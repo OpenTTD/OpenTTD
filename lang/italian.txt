@@ -393,7 +393,14 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacità Cargo
 STR_NO_WAITING_CARGO                                            :{BLACK}Non c'è nessun tipo di merce in attesa
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleziona tuti i fabbricati
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleziona tutti i tipi di merce (comprese le merci non in attesa)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Mostra una lista di motrici disponibili per quel tipo di veicolo
+STR_MANAGE_LIST                                                 :{BLACK}Gestisci lista
 STR_REPLACE_VEHICLES                                            :Rimpiazza Veicoli
+STR_SEND_TRAIN_TO_DEPOT                                         :Manda al deposito
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Manda al deposito
+STR_SEND_SHIP_TO_DEPOT                                          :Manda al deposito
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Manda all'hangar
+STR_SEND_FOR_SERVICING                                          :Manda per manutenzione
 
 ############ range for months starts
 STR_0162_JAN                                                    :Gen
@@ -727,7 +734,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Salva sc
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Carica Scenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Salva Scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Gioca Scenario
-STR_PLAY_HEIGHTMAP                                              :{BLACK}Play Heightmap
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Gioca Heightmap
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Inizia un nuovo gioco usando la heightmap come terreno
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Sei sicuro di voler abbondonare questo scenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Esci dall'editor
@@ -1066,11 +1073,11 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antiorario
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Orario
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}La curva di livello della mappa di uno scenario piano ha : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Dispersione max. stazione: {ORANGE}{STRING} {RED}Attenzione: Valore alto rallenta il gioco
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Dispersione max. stazione: {ORANGE}{STRING} {RED}Nota: Valore alto rallenta il gioco
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenzione elicotteri direttamente all'eliporto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Apri strumenti terreno assieme a quelli di costruzione: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Scorri mappa nella direzione opposta a quella del mouse: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostra un tooltip con le misure quando viene usato un tool di costruzione: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostra un tooltip di misura durante la costruzione: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostra le livree della società: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nessuna
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propria società

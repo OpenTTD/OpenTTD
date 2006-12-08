@@ -389,6 +389,14 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Ŝarĝkapablo
 STR_NO_WAITING_CARGO                                            :{BLACK}Nenia ŝarĝo atendas
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Elektu ĉiujn konstruaĵojn
 STR_SELECT_ALL_TYPES                                            :{BLACK}Elektu ĉiujn ŝarĝotipojn (inkluzive de ne atendanta ŝarĝo)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Vidu liston da ĉiuj haveblaj maŝinoj por ĉi tiu veturilspeco.
+STR_MANAGE_LIST                                                 :{BLACK}Manaĝu liston
+STR_REPLACE_VEHICLES                                            :Anstataŭu veturilojn
+STR_SEND_TRAIN_TO_DEPOT                                         :Sendu al Deponejo
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Sendu al Deponejo
+STR_SEND_SHIP_TO_DEPOT                                          :Sendu al Deponejo
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Sendu al Hangaro
+STR_SEND_FOR_SERVICING                                          :Sendu por Prizorgo
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -474,37 +482,37 @@ STR_01AA_NAME                                                   :{BLACK}Nomo
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days	starts
-STR_01AC_1ST                                                    :1a
-STR_01AD_2ND                                                    :2a
-STR_01AE_3RD                                                    :3a
-STR_01AF_4TH                                                    :4a
-STR_01B0_5TH                                                    :5a
-STR_01B1_6TH                                                    :6a
-STR_01B2_7TH                                                    :7a
-STR_01B3_8TH                                                    :8a
-STR_01B4_9TH                                                    :9a
-STR_01B5_10TH                                                   :10a
-STR_01B6_11TH                                                   :11a
-STR_01B7_12TH                                                   :12a
-STR_01B8_13TH                                                   :13a
-STR_01B9_14TH                                                   :14a
-STR_01BA_15TH                                                   :15a
-STR_01BB_16TH                                                   :16a
-STR_01BC_17TH                                                   :17a
-STR_01BD_18TH                                                   :18a
-STR_01BE_19TH                                                   :19a
-STR_01BF_20TH                                                   :20a
-STR_01C0_21ST                                                   :21a
-STR_01C1_22ND                                                   :22a
-STR_01C2_23RD                                                   :23a
-STR_01C3_24TH                                                   :24a
-STR_01C4_25TH                                                   :25a
-STR_01C5_26TH                                                   :26a
-STR_01C6_27TH                                                   :27a
-STR_01C7_28TH                                                   :28a
-STR_01C8_29TH                                                   :29a
-STR_01C9_30TH                                                   :30a
-STR_01CA_31ST                                                   :31a
+STR_01AC_1ST                                                    :1a de
+STR_01AD_2ND                                                    :2a de
+STR_01AE_3RD                                                    :3a de
+STR_01AF_4TH                                                    :4a de
+STR_01B0_5TH                                                    :5a de
+STR_01B1_6TH                                                    :6a de
+STR_01B2_7TH                                                    :7a de
+STR_01B3_8TH                                                    :8a de
+STR_01B4_9TH                                                    :9a de
+STR_01B5_10TH                                                   :10a de
+STR_01B6_11TH                                                   :11a de
+STR_01B7_12TH                                                   :12a de
+STR_01B8_13TH                                                   :13a de
+STR_01B9_14TH                                                   :14a de
+STR_01BA_15TH                                                   :15a de
+STR_01BB_16TH                                                   :16a de
+STR_01BC_17TH                                                   :17a de
+STR_01BD_18TH                                                   :18a de
+STR_01BE_19TH                                                   :19a de
+STR_01BF_20TH                                                   :20a de
+STR_01C0_21ST                                                   :21a de
+STR_01C1_22ND                                                   :22a de
+STR_01C2_23RD                                                   :23a de
+STR_01C3_24TH                                                   :24a de
+STR_01C4_25TH                                                   :25a de
+STR_01C5_26TH                                                   :26a de
+STR_01C6_27TH                                                   :27a de
+STR_01C7_28TH                                                   :28a de
+STR_01C8_29TH                                                   :29a de
+STR_01C9_30TH                                                   :30a de
+STR_01CA_31ST                                                   :31a de
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
@@ -564,6 +572,16 @@ STR_0201_MESSAGE_SETTINGS                                       :Mesaĝaj agordo
 STR_MESSAGE_HISTORY_MENU                                        :Mesaĝa Historio
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Montru lastan mesaĝon/novaĵon, montru mesaĝajn opciojn
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Mesaĝaj Opcioj
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Mesaĝtipoj:
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Unua veturilo atingas propran stacion
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Unua veturilo atingas konkurantan stacion
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Akcidentoj / katastrofoj
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Kompaniaj informoj
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomiaj ŝanĝoj
+STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Konsiloj / informoj pri propraj veturiloj
+STR_020C_NEW_VEHICLES                                           :{YELLOW}Novaj veturiloj
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ŝarĝakceptado ŝanĝiĝas
+STR_020E_SUBSIDIES                                              :{YELLOW}Subvencioj
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Ĝeneralaj informoj
 STR_MESSAGES_ALL                                                :{YELLOW}Turnu ĉiujn mesaĝtipojn al: Ne / Resume/ Plene
 STR_MESSAGE_SOUND                                               :{YELLOW}Ludu sonon por resumaj novaĵoj
@@ -694,50 +712,345 @@ STR_0288_PLANT_TREES                                            :{BLACK}Plantu a
 STR_0289_PLACE_SIGN                                             :{BLACK}Metu signon
 STR_028A_RANDOM_TREES                                           :{BLACK}Hazardaj Arboj
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Hazarde plantu arbojn en la tuta lando
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Metu rokecajn lokojn en la lando
+STR_0295                                                        :
+STR_0296_QUIT                                                   :Fermu
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Konservu scenaron, ŝarĝu scenaron, foriru el la kreilo, fermu
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Ŝarĝu Scenaron
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Konservu Scenaron
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Ludu Scenaron
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Ludu Altecmapon
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Startu novan ludon, uzante altecmapon por landaspekto
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ĉu vi certas ke vi volas forlasi ĉi tiun scenaron?
+STR_029C_QUIT_EDITOR                                            :{WHITE}Fermu Kreilon
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...nur konstruebla en urboj havantaj pli ol 1200 enloĝantojn
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Movu la komencdaton 1 jaron posten
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Movu la komencdaton 1 jaron antaŭen
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...ambaŭ pontfinoj devas esti sur lando
+STR_02A1_SMALL                                                  :{BLACK}Malgranda
+STR_02A2_MEDIUM                                                 :{BLACK}Mezgranda
+STR_02A3_LARGE                                                  :{BLACK}Granda
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Elektu urban grandecon
+STR_02A5_TOWN_SIZE                                              :{YELLOW}Urba grandeco:
 
+STR_02B6                                                        :{STRING}  -  {STRING}
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Montru lastan mesaĝon aŭ novaĵon
+STR_OFF                                                         :Ne
+STR_SUMMARY                                                     :Resume
+STR_FULL                                                        :Plene
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :Urbaro
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Veturilaj nomoj
+STR_02BD                                                        :{BLACK}{STRING}
+STR_02BE_DEFAULT                                                :Defaŭltaj
+STR_02BF_CUSTOM                                                 :Ŝanĝitaj
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Konservu ŝanĝitajn nomojn
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Elekto de veturilaj nomoj
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Konservu ŝanĝitajn veturilajn nomojn
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
+STR_02C3_GAME_OPTIONS                                           :Ludaj opcioj
+STR_02C5_DIFFICULTY_SETTINGS                                    :Malfacilec-agordoj
+STR_02C7_CONFIG_PATCHES                                         :Agordu flikojn
+STR_NEWGRF_SETTINGS                                             :Agordoj de NewGRF
+STR_GAMEOPTMENU_0A                                              :
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Urbonomoj montriĝas
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Staciaj nomoj montriĝas
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Signoj montriĝas
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Trairejoj montriĝas
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}Plena animado
+STR_02D2_FULL_DETAIL                                            :{SETX 12}Plenaj detaloj
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Travideblaj konstruaĵoj
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Travideblaj staciaj signoj
 ############ range ends	here
 
 ############ range for menu	starts
+STR_02D5_LAND_BLOCK_INFO                                        :Landkvadrataj informoj
+STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Ŝaltu Tekstmodon
+STR_02D7_SCREENSHOT_CTRL_S                                      :Ekranfoto (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giganta Ekranfoto (Ctrl-G)
+STR_02D9_ABOUT_OPENTTD                                          :Pri 'OpenTTD'
 ############ range ends	here
 
+STR_02DB_OFF                                                    :{BLACK}Malaktiva
+STR_02DA_ON                                                     :{BLACK}Aktiva
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Montru subvenciojn
+STR_02DD_SUBSIDIES                                              :Subvencioj
+STR_02DE_MAP_OF_WORLD                                           :Mondomapo
+STR_EXTRA_VIEW_PORT                                             :Plia videjo
+STR_SIGN_LIST                                                   :Signolisto
+STR_02DF_TOWN_DIRECTORY                                         :Urbaro
+STR_TOWN_POPULATION                                             :{BLACK}Monda enloĝantaro: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Videjo {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiu al videjo
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiu la lokon de la ĉefvido al ĉi tiu videjo
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Gluu de videjo
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Gluu la lokon de ĉi tiu videjo al la ĉefvido
 
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Monunuoj
+STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Elekto de monunuoj
+STR_MEASURING_UNITS                                             :{BLACK}Mezurunuoj
+STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Elekto de mezurunuoj
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Vojveturiloj
+STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Elektu vojflankon kie veturu vojveturiloj
+STR_02E9_DRIVE_ON_LEFT                                          :Veturu maldekstre
+STR_02EA_DRIVE_ON_RIGHT                                         :Veturu dekstre
+STR_02EB_TOWN_NAMES                                             :{BLACK}Urbonomoj
+STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Elektu stilon de urbonomoj
 
+STR_02F4_AUTOSAVE                                               :{BLACK}Aŭtomata konservado
+STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Elektu intervalon inter aŭtomataj konservadoj de la ludo
+STR_02F7_OFF                                                    :Malaktiva
+STR_02F8_EVERY_3_MONTHS                                         :Je ĉiuj 3 monatoj
+STR_02F9_EVERY_6_MONTHS                                         :Je ĉiuj 6 monatoj
+STR_02FA_EVERY_12_MONTHS                                        :Je ĉiuj 12 monatoj
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Startu novan ludon
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Ŝarĝu konservitan ludon
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Kreu mem ludmondon/scenaron
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Elektu unuludantan ludon
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Elektu plurludantan ludon por 2-8 ludantoj
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Montru ludajn opciojn
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Montru malfacilec-opciojn
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Komencu novan ludon per propra scenaro
+STR_0304_QUIT                                                   :{BLACK}Fermu
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Fermu 'OpenTTD'
+STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...nur konstruebla en urboj
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Elektu 'moderan' landstilon
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Elektu 'sub-arktikan' landstilon
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Elektu 'sub-tropikan' landstilon
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Elektu 'ludlandan' landstilon
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Fondu konstruadon de nova industrio
 
 ############ range for menu	starts
+STR_INDUSTRY_DIR                                                :Industriaro
+STR_0313_FUND_NEW_INDUSTRY                                      :Fondu novan industrion
 ############ range ends here
 
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fondu novan industrion
+STR_JUST_STRING                                                 :{STRING}
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...nur konstruebla en urboj
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...nur konstruebla en praarbaraj regionoj
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...nur konstruebla en dezertaj regionoj
+STR_0319_PAUSED                                                 :{YELLOW}* *  PAŬZO  *  *
 
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Ekranfoto sukcese konserviĝis kiel '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Ekranfoto fiaskis!
 
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Aĉetu landon por onta uzo
+STR_032F_AUTOSAVE                                               :{RED}AŬTOMATA KONSERVADO
+STR_SAVING_GAME                                                 :{RED}*  *  KONSERVAS LUDON  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ankoraŭ konservas,{}bv atendi ĝis finiĝo!
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Elektu programon de 'Facilvoja muziko'
 
+STR_0335_6                                                      :{BLACK}6
+STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angle (Origine)
+STR_TOWNNAME_FRENCH                                             :France
+STR_TOWNNAME_GERMAN                                             :Germane
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Angle (Aldone)
+STR_TOWNNAME_LATIN_AMERICAN                                     :Latin-Amerike
+STR_TOWNNAME_SILLY                                              :Angle (Stulte)
+STR_TOWNNAME_SWEDISH                                            :Svede
+STR_TOWNNAME_DUTCH                                              :Nederlande
+STR_TOWNNAME_FINNISH                                            :Finne
+STR_TOWNNAME_POLISH                                             :Pole
+STR_TOWNNAME_SLOVAKISH                                          :Slovake
+STR_TOWNNAME_NORWEGIAN                                          :Norvege
+STR_TOWNNAME_HUNGARIAN                                          :Hungare
+STR_TOWNNAME_AUSTRIAN                                           :Aŭstrie
+STR_TOWNNAME_ROMANIAN                                           :Rumane
+STR_TOWNNAME_CZECH                                              :Ĉeĥe
+STR_TOWNNAME_SWISS                                              :Svise
+STR_TOWNNAME_DANISH                                             :Dane
+STR_TOWNNAME_TURKISH                                            :Turke
+STR_TOWNNAME_ITALIAN                                            :Itale
+STR_TOWNNAME_CATALAN                                            :Katalune
 ############ end of	townname region
 
+STR_CURR_GBP                                                    :Pundoj (£)
+STR_CURR_USD                                                    :Dolaroj ($)
+STR_CURR_EUR                                                    :Eŭroj (€)
+STR_CURR_YEN                                                    :Enoj (¥)
+STR_CURR_ATS                                                    :Aŭstriaj Ŝilingoj (ATS)
+STR_CURR_BEF                                                    :Belgaj Frankoj (BEF)
+STR_CURR_CHF                                                    :Svisaj Frankoj (CHF)
+STR_CURR_CZK                                                    :Ĉeĥaj Korunoj (CZK)
+STR_CURR_DEM                                                    :Germanaj Markoj (DEM)
+STR_CURR_DKK                                                    :Danaj Kronoj (DKK)
+STR_CURR_ESP                                                    :Pesetoj (ESP)
+STR_CURR_FIM                                                    :Finnaj Markoj (FIM)
+STR_CURR_FRF                                                    :Frankoj (FRF)
+STR_CURR_GRD                                                    :Grekaj Draĥmoj (GRD)
+STR_CURR_HUF                                                    :Hungaraj Forintoj (HUF)
+STR_CURR_ISK                                                    :Islandaj Kronoj (ISK)
+STR_CURR_ITL                                                    :Italaj Liroj (ITL)
+STR_CURR_NLG                                                    :Nederlandaj Guldenoj (NLG)
+STR_CURR_NOK                                                    :Norvegaj Kronoj (NOK)
+STR_CURR_PLN                                                    :Polaj Zlotoj (PLN)
+STR_CURR_ROL                                                    :Rumanaj Leŭoj (ROL)
+STR_CURR_RUR                                                    :Rusaj Rubloj (RUR)
+STR_CURR_SIT                                                    :Slovenaj Tolaroj (SIT)
+STR_CURR_SEK                                                    :Svedaj Kronoj (SEK)
+STR_CURR_YTL                                                    :Turkaj Liroj (YTL)
+STR_CURR_SKK                                                    :Slovakaj Korunoj (SKK)
+STR_CURR_BRR                                                    :Brazilaj Realoj (BRL)
 
+STR_CURR_CUSTOM                                                 :Alia...
 
+STR_OPTIONS_LANG                                                :{BLACK}Lingvo
+STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Elektu uzotan interfacan lingvon
 
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Plena ekrano
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Ŝaltu ĉi tiun kvadrateton por plenekrane ludi OpenTTD
 
+STR_OPTIONS_RES                                                 :{BLACK}Ekrana montrogrando
+STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_RES_TIP                                             :{BLACK}Elektu uzotan ekranan montrograndon
 
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekranfota formato
+STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Elektu uzotan ekranfotan formaton
 
+STR_AUTOSAVE_1_MONTH                                            :Je ĉiu monato
+STR_AUTOSAVE_FAILED                                             :{WHITE}Fiaskis aŭtomate konservi
 
+STR_MONTH_JAN                                                   :Januaro
+STR_MONTH_FEB                                                   :Februaro
+STR_MONTH_MAR                                                   :Marto
+STR_MONTH_APR                                                   :Aprilo
+STR_MONTH_MAY                                                   :Majo
+STR_MONTH_JUN                                                   :Junio
+STR_MONTH_JUL                                                   :Julio
+STR_MONTH_AUG                                                   :Aŭgusto
+STR_MONTH_SEP                                                   :Septembro
+STR_MONTH_OCT                                                   :Oktobro
+STR_MONTH_NOV                                                   :Novembro
+STR_MONTH_DEC                                                   :Decembro
 
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Irante al {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Irante al {STATION}, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}Sen ordenoj
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Sen ordenoj, {VELOCITY}
 
+STR_PASSENGERS                                                  :pasaĝeroj
+STR_BAGS                                                        :sakoj
+STR_TONS                                                        :tunoj
+STR_LITERS                                                      :litroj
+STR_ITEMS                                                       :pecoj
+STR_CRATES                                                      :kestoj
+STR_RES_OTHER                                                   :alia
+STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Ne povas dividi ordenliston...
+STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Ne povas kopii ordenliston...
+STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fino de Dividitaj Ordenoj - -
 
+STR_TRAIN_IS_LOST                                               :{WHITE}Trajno {COMMA} perdiĝis.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}La gajno de trajno {COMMA} estis {CURRENCY} lastjare
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Eŭropa Mona Unio!{}{}De nun uziĝos la Eŭro kiel monunuo por ĉiutagaj montransskriboj en via lando!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Trajno {COMMA} havas maltro da ordenoj enplane
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Trajno {COMMA} havas malplenan ordenon
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trajno {COMMA} havas duoblajn ordenojn
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trajnno {COMMA} havas nevalidan stacion en la ordenoj
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Vojveturilo {COMMA} havas maltro da ordenoj enplane
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Vojveturilo {COMMA} havas malplenan ordenon
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Vojveturilo {COMMA} havas duoblajn ordenojn
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Vojveturilo {COMMA} havas nevalidan stacion en la ordenoj
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Ŝipo {COMMA} havas maltro da ordenoj enplane
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Ŝipo {COMMA} havas malplenan ordenon
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ŝipo {COMMA} havas duoblajn ordenojn
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Ŝipo {COMMA} havas nevalidan stacion en la ordenoj
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aviadilo {COMMA} havas maltro da ordenoj enplane
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aviadilo {COMMA} havas malplenan ordenon
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aviadilo {COMMA} havas duoblajn ordenojn
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aviadilo {COMMA} havas nevalidan stacion en la ordenoj
 # end of order system
 
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Aŭtomata novigo fiaskis al trajno {COMMA} (monlimo)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Aŭtomata novigo fiaskis al vojveturilo {COMMA} (monlimo)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Aŭtomata novigo fiaskis al ŝipo {COMMA} (monlimo)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Aŭtomata novigo fiaskis al aviadilo {COMMA} (monlimo)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trajno {COMMA} tro longas post ŝanĝo
 
+STR_CONFIG_PATCHES                                              :{BLACK}Agordu Flikojn
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Agordu la flikojn
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Agordu Flikojn
 
+STR_CONFIG_PATCHES_OFF                                          :Malaktiva
+STR_CONFIG_PATCHES_ON                                           :Aktiva
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Montru veturilrapidecon en statbreto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permesu konstrui sur kliniĝoj kaj bordoj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permesu pli realgrandaj kaptoregionoj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permesu konstruadon de tre longaj pontoj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permesu ordenojn por iri al deponejo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Permesu konstruadon de fontmalerialaj industrioj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Permesu pliajn similajn industriojn en la sama urbo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Samtipaj industrioj povas esti konstruataj proksime unu de la alia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Ĉiam montru longan daton en la statbreto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Montru signalojn veturflanke: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Montru financan fenestron fine de la jaro: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch-amika nonstop-traktado: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Vojveturila vicigo (kun kvantum-efektoj): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Ŝovu fenestron se la muso estas ĉe la rando: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permesu subaĉeti la lokajn estrojn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nekonformaj stacioj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova ĝenerala vojtrovado (NPF, superas NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Ĉiam permesu malgrandajn flughavenojn: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Avertu se trajno perdiĝas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Atentu veturilajn ordenojn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :jes, escepte de haltigitaj veturiloj
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :de ĉiuj veturiloj
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avertu se trajno negative enspezas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Veturiloj neniam eluziĝas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Aŭtomate anstataŭu veturilon se malnoviĝas
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Anstataŭu {ORANGE}{STRING}{LTBLUE} monatojn antaŭ/post maksimuma aĝo de veturilo
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimuma mono por anstataŭado: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Daŭro de erar-mesaĝo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Montru enloĝantaron en urbnomindikilo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nevideblaj arboj (ĉe travideblaj konstruaĵoj): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Landgenerilo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Origina
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimuma distanco de rando por Oleproduktejoj {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Neĝregiona alto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Nereguleco de tereno (nur por TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Tre Regule
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Regule
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Neregule
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Malregule
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Arbometa algoritmo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Nenia
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Origina
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Plibonigita
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Altecmapa turniĝo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Maldekstrume
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Dekstrume
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Kiom alta fariĝos scenara mapo: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksimuma stacivasteco: {ORANGE}{STRING} {RED}Atentu: Pli alte, malpli rapide
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Aŭtomate prizorgu helikopterojn sur helikopterejoj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligu landaspekta breto al rela, voja, akva kaj flughavena bretoj: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Vojveturila maksimumo por ĉiu ludanto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Aviadila maksimumo por ĉiu ludanto: {ORANGE}{STRING}
@@ -1245,6 +1558,7 @@ STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Konstruu
 ##id 0x6800
 
 ############ range for difficulty levels starts
+STR_6804_CUSTOM                                                 :{BLACK}Custom
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts

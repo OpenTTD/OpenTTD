@@ -394,11 +394,14 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacité
 STR_NO_WAITING_CARGO                                            :{BLACK}Pas de marchandises en attente
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tous les types de station
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tous les types de marchandise (y compris pas en attente)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Voir la liste des modèles disponibles pour ce type de véhicules.
+STR_MANAGE_LIST                                                 :{BLACK}Gérer la liste
 STR_REPLACE_VEHICLES                                            :Remplacer véhicules
-STR_SEND_TRAIN_TO_DEPOT                                         :Envoyer aux Dépôt
-STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Envoyer aux Dépôt
-STR_SEND_SHIP_TO_DEPOT                                          :Envoyer aux Dépôt
-STR_SEND_AIRCRAFT_TO_HANGAR                                     :Envoyer aux Hangar
+STR_SEND_TRAIN_TO_DEPOT                                         :Envoyer au dépôt
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Envoyer au dépôt
+STR_SEND_SHIP_TO_DEPOT                                          :Envoyer au dépôt
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Envoyer au hangar
+STR_SEND_FOR_SERVICING                                          :Envoyer en entretien
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -902,7 +905,7 @@ STR_CURR_DEM                                                    :Mark Allemand (
 STR_CURR_DKK                                                    :Couronne Danoise (DKK)
 STR_CURR_ESP                                                    :Peseta (ESP)
 STR_CURR_FIM                                                    :Mark Finlandais (FIM)
-STR_CURR_FRF                                                    :Franc Françai (FRF)
+STR_CURR_FRF                                                    :Franc Français (FRF)
 STR_CURR_GRD                                                    :Drachme Grec (GRD)
 STR_CURR_HUF                                                    :Florint Hongrois (HUF)
 STR_CURR_ISK                                                    :Couronne Islandaise (ISK)

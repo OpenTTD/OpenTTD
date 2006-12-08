@@ -2906,6 +2906,7 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}Add to s
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Add the selected NewGRF file to your configuration
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Rescan files
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Update the list of available NewGRF files
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Cannot add file: duplicate GRF ID
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Matching file not found
 STR_NEWGRF_DISABLED                                             :{RED}Disabled

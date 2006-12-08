@@ -1067,6 +1067,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Мак�
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Автоматичний техогляд гелікоптерів на площадках: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Включити меню рельєфу до меню будування: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Протилежний напрямок прокрутки: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Показати кольори компаній: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Жодна
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Моя компанія
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Всі компанії
@@ -1284,6 +1285,7 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}Інф�
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Мова:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Шаблонt:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу:  {WHITE}{STRING} : {NUM}
@@ -2164,6 +2166,7 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} викуплено {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Ця компанія поки ще не продається...
 
+STR_LIVERY_DEFAULT                                              :Стандартний колір
 STR_LIVERY_STEAM                                                :Паровози
 STR_LIVERY_DIESEL                                               :Дизельні потяги
 STR_LIVERY_ELECTRIC                                             :Електричні потяги
@@ -2173,9 +2176,12 @@ STR_LIVERY_DMU                                                  :
 STR_LIVERY_EMU                                                  :
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (пар)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (дизель)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажирський вагон (електричка)
+STR_LIVERY_FREIGHT_WAGON                                        :Завантажений вагон
 STR_LIVERY_BUS                                                  :Автобус
 STR_LIVERY_TRUCK                                                :Вантажівка
 STR_LIVERY_PASSENGER_SHIP                                       :Пасажиирський паром
+STR_LIVERY_FREIGHT_SHIP                                         :Завантажений корабель
 STR_LIVERY_HELICOPTER                                           :Гелікоптер
 STR_LIVERY_SMALL_PLANE                                          :Малий літак
 STR_LIVERY_LARGE_PLANE                                          :Великий літак
@@ -2501,6 +2507,7 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Нови
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Нові елекричні потяги
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Новий монорельсовий транспорт
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Новий транспорт на магнітній подушці
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Потяги
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Будувати
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Клонувати
@@ -2652,6 +2659,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Аварія!{}Водій загинув при зіткненні авто з поїздом
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Неможливо розвернути авто...
+STR_ONLY_TURN_SINGLE_UNIT                                       :
 STR_9034_RENAME                                                 :{BLACK}Зміна назви
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Перейменувати тип авто
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Перейменувати тип авто
@@ -2962,10 +2970,12 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Вибе
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів що вибрані ліворуч
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані праворуч на потяги що вибрані праворуч
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої Ви хочете оновити потяг
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :
 STR_REPLACE_HELP                                                :{BLACK}Це дозволить Вам оновити одні види потягів іншими, коли потяг прибуде в депо
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Продаж вагонів!!!: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони зберігаючи довжину потягу(починаючи спереду), якщо оновлення робить поїзд довшим.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}потяг неможна будувати
 
 STR_ENGINES                                                     :Потяги
@@ -3012,6 +3022,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK}  Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Місткість: {GOLD}{COMMA} пасажир{P "" и ів}, {COMMA} міш{P ок ки ків} пошти
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переобладнати на: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
 
 ########### String for New Landscape Generator
@@ -3070,5 +3081,7 @@ STR_HELIPORTS                                                   :{BLACK}Гелі
 
 STR_MEASURE_LENGTH                                              :{BLACK}Довжина: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Область: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Довжина: {NUM}{}Різниця висот: {NUM} м
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ділянка: {NUM} x {NUM}{}Різниця висот: {NUM} м
 
 ########

@@ -2877,6 +2877,12 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não exi
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome do ficheiro: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parâmetros: {SILVER}{STRING}
+STR_NEWGRF_NO_INFO                                              :{BLACK}Sem informação disponível
+
+
+STR_NEWGRF_DISABLED                                             :{RED}Desactivado
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de troca: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:

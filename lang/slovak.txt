@@ -457,7 +457,14 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapacita nákla
 STR_NO_WAITING_CARGO                                            :{BLACK}Necaka ziadny typ nakladu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit vsetky moznosti
 STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zobrazit zoznam dostupných dizajnov rušňov pre tento typ.
+STR_MANAGE_LIST                                                 :{BLACK}Možnosti
 STR_REPLACE_VEHICLES                                            :Vymena vozidiel
+STR_SEND_TRAIN_TO_DEPOT                                         :Poslat do depa
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Poslat do garáže
+STR_SEND_SHIP_TO_DEPOT                                          :Poslat do lodenice
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Poslat do hangáru
+STR_SEND_FOR_SERVICING                                          :Vykonat servis
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -2940,30 +2947,30 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastaven
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdit zmeny
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Nastavit parametre
 STR_NEWGRF_TIP                                                  :{BLACK}Zoznam vsetkych sad nainstalovanych novych grafik. Nastavenie zmenite kliknutim na set.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nie su nainstalovane ziadne subory s novou grafikou. Postup instalacie novych grafik najdete v manuali.
-STR_NEWGRF_FILENAME                                             :{BLACK}Nazov suboru: {SILVER}{STRING}
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nie sú nainštalované žiadne súbory s novou grafikou. Postup inštalácie nových grafík nájdete v manuály.
+STR_NEWGRF_FILENAME                                             :{BLACK}Názov súboru: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 
-STR_NEWGRF_ADD                                                  :{BLACK}Pridať
-STR_NEWGRF_ADD_TIP                                              :{BLACK}Pridať NewGRF súbor do zoznamu
+STR_NEWGRF_ADD                                                  :{BLACK}Pridat
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Pridat NewGRF súbor do zoznamu
 STR_NEWGRF_REMOVE                                               :{BLACK}Odstrániť
 STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Odstrániť vybraný NewGRF súbor zo zoznamu
 STR_NEWGRF_MOVEUP                                               :{BLACK}Vyššie
-STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Posunúť vybraný NewGRF súbor v zozname vyššie
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Posunút vybraný NewGRF súbor v zozname vyššie
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Nižšie
-STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Posunúť vybraný NewGRF súbor v zozname nižšie
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Posunút vybraný NewGRF súbor v zozname nižšie
 STR_NEWGRF_FILE_TIP                                             :{BLACK}Zoznam inštalovaných NewGRF súborov. Kliknite na súbor pre zmenu jeho parametrov.
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parametre: {SILVER}{STRING}
 STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Zadajte NewGRF parametre
 STR_NEWGRF_NO_INFO                                              :{BLACK}Žiadne dostupné informácie
 
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupné NewGRF súbory
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Pridať do výberu
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Pridat do výberu
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Pridat vybraný NewGRF súbor do konfigurácie
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Obnovit zoznam súborov
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Obnovit zoznam dostupných NewGRF súborov
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie je možné pridat súbor: duplicitný GRF ID
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie je možné pridat súbor: duplicitné GRF ID
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Príslušný súbor nenájdený
 STR_NEWGRF_DISABLED                                             :{RED}Nedostupný
