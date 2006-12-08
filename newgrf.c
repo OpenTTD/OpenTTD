@@ -1624,7 +1624,7 @@ static void NewSpriteGroup(byte *buf, int len)
 				case 2: group->g.determ.size = DSG_SIZE_DWORD; varsize = 4; break;
 			}
 
-			check_length(bufend - buf, 2 + (varsize * 3) + 2, "NewSpriteGroup (Deterministic) (2)");
+			check_length(bufend - buf, 5 + varsize, "NewSpriteGroup (Deterministic) (2)");
 
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have
 			 * from the outset, so we shall have to keep reallocing. */
