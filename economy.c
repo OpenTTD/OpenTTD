@@ -244,6 +244,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 // use PLAYER_SPECTATOR as new_player to delete the player.
 void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 {
+	Town *t;
 	PlayerID old = _current_player;
 	_current_player = old_player;
 
@@ -266,10 +267,9 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	}
 
 	/* Take care of rating in towns */
-	if (new_player != PLAYER_SPECTATOR) {
-		Town *t;
-		FOR_ALL_TOWNS(t) {
-			/* If a player takes over, give the ratings to that player. */
+	FOR_ALL_TOWNS(t) {
+		/* If a player takes over, give the ratings to that player. */
+		if (new_player != PLAYER_SPECTATOR) {
 			if (HASBIT(t->have_ratings, old_player)) {
 				if (HASBIT(t->have_ratings, new_player)) {
 					// use max of the two ratings.
@@ -279,10 +279,11 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					t->ratings[new_player] = t->ratings[old_player];
 				}
 			}
-
-			t->ratings[old_player] = 500;
-			CLRBIT(t->have_ratings, old_player);
 		}
+
+		/* Reset the ratings for the old player */
+		t->ratings[old_player] = 500;
+		CLRBIT(t->have_ratings, old_player);
 	}
 
 	{
