@@ -2218,6 +2218,9 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 		case 0x92: /* Game mode */
 			return _game_mode;
 
+		case 0x9A: /* Always -1 */
+			return -1;
+
 		case 0x9D: /* TTD Platform, 00=TTDPatch, 01=OpenTTD */
 			return 1;
 
