@@ -1423,8 +1423,8 @@ static const Widget _vehicle_list_widgets[] = {
 	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   170,   181, 0x0,                  STR_NULL},
 
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   105,   170,   181, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
-	{    WWT_TEXTBTN,     RESIZE_TB,    14,   106,   211,   170,   181, STR_MANAGE_LIST,      STR_SORT_CRITERIA_TIP},
-	{    WWT_TEXTBTN,     RESIZE_TB,    14,   212,   223,   170,   181, STR_0225,             STR_SORT_CRITERIA_TIP},
+	{    WWT_TEXTBTN,     RESIZE_TB,    14,   106,   211,   170,   181, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
+	{    WWT_TEXTBTN,     RESIZE_TB,    14,   212,   223,   170,   181, STR_0225,             STR_MANAGE_LIST_TIP},
 
 	{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   224,   235,   170,   181, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
 	{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   236,   247,   170,   181, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
