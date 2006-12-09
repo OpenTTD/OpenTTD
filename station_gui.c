@@ -44,38 +44,40 @@ static StationSortListingTypeFunction StationTypeSorter;
 static StationSortListingTypeFunction StationWaitingSorter;
 static StationSortListingTypeFunction StationRatingMaxSorter;
 
-static void StationsWndShowStationRating(int x, int y, int type, uint acceptance, int rating)
+/** Draw small boxes of cargo amount and ratings data at the given
+ * coordinates. If amount exceeds 576 units, it is shown 'full', same
+ * goes for the rating: at above 90% orso (224) it is also 'full'
+ * Each cargo-bar is 16 pixels wide and 6 pixels high
+ * Each rating 14 pixels wide and 1 pixel high and is 1 pixel below the cargo-bar
+ * @param x,y X/Y coordinate to draw the box at
+ * @param type Cargo type
+ * @param amount Cargo amount
+ * @param rating ratings data for that particular cargo */
+static void StationsWndShowStationRating(int x, int y, CargoID type, uint amount, byte rating)
 {
-	int color = _cargo_colours[type];
-	uint w;
+	int colour = _cargo_colours[type];
+	uint w = (minu(amount, 576) + 5) / 36;
 
-	if (acceptance > 575) acceptance = 575;
+	/* Draw total cargo (limited) on station (fits into 16 pixels) */
+	if (w != 0) GfxFillRect(x, y, x + w - 1, y + 6, colour);
 
-	acceptance = (acceptance + 7) / 8;
-
-	/* draw cargo */
-	w = acceptance / 8;
-	if (w != 0) {
-		GfxFillRect(x, y, x + w - 1, y + 6, color);
-		x += w;
+	/* Draw a one pixel-wide bar of additional cargo meter, useful
+	 * for stations with only a small amount (<=30) */
+	if (w == 0) {
+		uint rest = amount / 5;
+		if (rest != 0) {
+			w += x;
+			GfxFillRect(w, y + 6 - rest, w, y + 6, colour);
+		}
 	}
-
-	w = acceptance % 8;
-	if (w != 0) {
-		if (w == 7) w--;
-		GfxFillRect(x, y + (w - 1), x, y + 6, color);
-	}
-
-	x -= acceptance / 8;
 
 	DrawString(x + 1, y, _cargoc.names_short[type], 0x10);
 
-	/* draw green/red ratings bar */
-	GfxFillRect(x + 1, y + 8, x + 7, y + 8, 0xB8);
-
-	rating >>= 5;
-
-	if (rating != 0) GfxFillRect(x + 1, y + 8, x + rating, y + 8, 0xD0);
+	/* Draw green/red ratings bar (fits into 14 pixels) */
+	y += 8;
+	GfxFillRect(x + 1, y, x + 14, y, 0xB8);
+	rating = minu(rating,  224) / 16;
+	if (rating != 0) GfxFillRect(x + 1, y, x + rating, y, 0xD0);
 }
 
 const StringID _station_sort_listing[] = {
@@ -340,11 +342,11 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			y = 40; // start of the list-widget
 
 			for (i = w->vscroll.pos; i < max; ++i) { // do until max number of stations of owner
-				const Station* st = sl->sort_list[i];
-				uint j;
+				const Station *st = sl->sort_list[i];
+				CargoID j;
 				int x;
 
-				assert(st->xy);
+				assert(st->xy != 0);
 				assert(st->owner == owner);
 
 				SetDParam(0, st->index);
@@ -353,11 +355,11 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 				// show cargo waiting and station ratings
 				for (j = 0; j != NUM_CARGO; j++) {
-					uint acc = GB(st->goods[j].waiting_acceptance, 0, 12);
+					uint amount = GB(st->goods[j].waiting_acceptance, 0, 12);
 
-					if (acc != 0) {
-						StationsWndShowStationRating(x, y, j, acc, st->goods[j].rating);
-						x += 10;
+					if (amount != 0) {
+						StationsWndShowStationRating(x, y, j, amount, st->goods[j].rating);
+						x += 20;
 					}
 				}
 				y += 10;
