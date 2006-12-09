@@ -393,7 +393,15 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade de C
 STR_NO_WAITING_CARGO                                            :{BLACK}Nenhuma carga em espera
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar todas as acções
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccionar todos os tipos de carga (incluindo carga sem espera)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Ver lista de designs disponíveis de locomotivas para este tipo de veículo.
+STR_MANAGE_LIST                                                 :{BLACK}Gerir lista
+STR_MANAGE_LIST_TIP                                             :{BLACK}Enviar instruções a todos os veículos desta lista
 STR_REPLACE_VEHICLES                                            :Substituir Veículos
+STR_SEND_TRAIN_TO_DEPOT                                         :Enviar para Depósito
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Enviar para Depósito
+STR_SEND_SHIP_TO_DEPOT                                          :Enviar para Depósito
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Enviar para Hangar
+STR_SEND_FOR_SERVICING                                          :Enviar para Serviço
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1012,6 +1020,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Proibir
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Juntar estações ferroviárias construídas pegadas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Deixar estação quando uma das cargas esteja completa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Carregar veículos gradualmente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflação: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Entregar carga a uma estação só quando houver procura: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permitir a construção de pontes muito longas: {ORANGE}{STRING}
@@ -1028,6 +1037,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Desloca
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova procura de caminho global (NPF, overrides NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para simular comboios pesados: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -2869,6 +2879,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Dinheiro
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tem um empréstimo muito elevado?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de pontos sobre o máximo de pontos
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Definições NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definições Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar alterações
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Definir parâmetros
@@ -2876,11 +2887,29 @@ STR_NEWGRF_TIP                                                  :{BLACK}Lista de
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não existem ficheiros newgrf actualmente instalados! Por favor consulte o manual para instruções sobre instalar novos gráficos.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome do ficheiro: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 
+STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Adicionar um ficheiro NewGRF à lista
+STR_NEWGRF_REMOVE                                               :{BLACK}Remover
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Remover o ficheiro NewGRF seleccionado da lista
+STR_NEWGRF_MOVEUP                                               :{BLACK}Para Cima
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Mover o ficheiro NewGRF seleccionado para cima na lista
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Para Baixo
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Mover o ficheiro NewGRF seleccionado para baixo na lista
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Lista dos ficheiros NewGRF instalados. Clique num ficheiro para alterar os seus parâmetros
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parâmetros: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Insira parâmetros do NewGRF
 STR_NEWGRF_NO_INFO                                              :{BLACK}Sem informação disponível
 
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Ficheiros NewGRF disponíveis
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Adicionar à selecção
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Adicionar o ficheiro NewGRF seleccionado à configuração
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Reler ficheiros
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Actualizar a lista de ficheiros NewGRF disponíveis
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar ficheiro: GRF ID duplicado
 
+STR_NEWGRF_NOT_FOUND                                            :{RED}Ficheiro correspondente não encontrado
 STR_NEWGRF_DISABLED                                             :{RED}Desactivado
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada

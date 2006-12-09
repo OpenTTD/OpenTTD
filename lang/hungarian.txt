@@ -359,7 +359,7 @@ STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARG
 STR_0140_NEW_GAME                                               :{BLACK}Új játék
 STR_0141_LOAD_GAME                                              :{BLACK}Játék betöltése
 STR_SINGLE_PLAYER                                               :{BLACK}Egyjátékos
-STR_MULTIPLAYER                                                 :{BLACK}Többjátékos
+STR_MULTIPLAYER                                                 :{BLACK}Hálózati játék
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -459,11 +459,14 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Teherkapacitás
 STR_NO_WAITING_CARGO                                            :{BLACK}Semmilyen áru nem várakozik
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Minden szállítóegység kiválasztása
 STR_SELECT_ALL_TYPES                                            :{BLACK}Minden rakománytípus mutatása (beleértve ha nincs várakozó rakomány)
+STR_MANAGE_LIST                                                 :{BLACK}Lista kezelése
+STR_MANAGE_LIST_TIP                                             :{BLACK}A listán szereplő járműveknek utasítás küldése
 STR_REPLACE_VEHICLES                                            :Járművek lecserélése
 STR_SEND_TRAIN_TO_DEPOT                                         :Elküldi depóba
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Elküldi depóba
 STR_SEND_SHIP_TO_DEPOT                                          :Elküldi dokkba
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Elküldi hangárba
+STR_SEND_FOR_SERVICING                                          :Javításra küld
 
 ############ range for months starts
 STR_0162_JAN                                                    :jan
@@ -797,7 +800,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Pálya b
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Pálya betöltése
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Pálya mentése
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Játék saját pályán
-STR_PLAY_HEIGHTMAP                                              :{BLACK}Magasságtérképen játszás
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Játék magasságtérképen
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Új játékot kezd egy magasságtérkép alapján
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Kilépés a szerkesztőből
@@ -893,7 +896,7 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Új ját
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Mentett játék betöltése
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Testreszabott pálya készítése
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Egy játékos játék kiválasztása
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Többjátékos mód kiválasztása 2-8 játékosig
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Hálózati játék választása 2-8 játékosig
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}A játék beállításainak megmutatása
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}A nehézségi beállítások megmutatása
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Új játék kezdése saját pályán
@@ -1332,7 +1335,7 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}Figyelem
 
 ############ network gui strings
 
-STR_NETWORK_MULTIPLAYER                                         :{WHITE}Többjátékos
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}Hálózati játék
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Játékos neve:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}A többi játékos ilyen nével fog ismerni Téged.
@@ -1422,7 +1425,7 @@ STR_NETWORK_LANG_GERMAN                                         :Német
 STR_NETWORK_LANG_FRENCH                                         :Francia
 ############ End of leave-in-this-order
 
-STR_NETWORK_GAME_LOBBY                                          :{WHITE}Többjátékos játék-lobby
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Hálózati-játék lobby
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Készülődés a kapcsolódáshoz:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Egy lista az összes cégről aki játékban van. Beléphetsz egybe, vagy kezdhetsz egy

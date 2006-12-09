@@ -2903,7 +2903,7 @@ STR_NEWGRF_PARAMETER                                            :{BLACK}Paramete
 STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Schreibe neue NewGRF Parameter
 STR_NEWGRF_NO_INFO                                              :{BLACK}Keine Informationen verfügbar
 
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Verfügabre NewGRF Dateien
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Verfügbare NewGRF Dateien
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Zur Auswahl hinzufügen
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Füge die ausgewählte NewGRF Datei zu deiner Konfiguration hinzu
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Aktualisiere Dateiliste
