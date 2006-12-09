@@ -187,7 +187,7 @@ DEF_CONSOLE_CMD(ConSave)
 	if (argc == 2) {
 		char buf[200];
 
-		snprintf(buf, lengthof(buf), "%s%s%s.sav", _path.save_dir, PATHSEP, argv[1]);
+		snprintf(buf, lengthof(buf), "%s%s%s.sav", _paths.save_dir, PATHSEP, argv[1]);
 		IConsolePrint(_icolour_def, "Saving map...");
 
 		if (SaveOrLoad(buf, SL_SAVE) != SL_OK) {

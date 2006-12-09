@@ -90,7 +90,7 @@ static void DoPlaySong(void)
 {
 	char filename[256];
 	snprintf(filename, sizeof(filename), "%s%s",
-		_path.gm_dir, origin_songs_specs[_music_wnd_cursong - 1].filename);
+		_paths.gm_dir, origin_songs_specs[_music_wnd_cursong - 1].filename);
 	_music_driver->play_song(filename);
 }
 
@@ -109,7 +109,7 @@ static void SelectSongToPlay(void)
 	do {
 		if (_playlists[msf.playlist][i] != 0) {  // Don't evaluate playlist terminator
 			snprintf(filename, sizeof(filename),  "%s%s",
-				_path.gm_dir, origin_songs_specs[(_playlists[msf.playlist][i]) - 1].filename);
+				_paths.gm_dir, origin_songs_specs[(_playlists[msf.playlist][i]) - 1].filename);
 
 			/* we are now checking for the existence of that file prior
 			 * to add it to the list of available songs */

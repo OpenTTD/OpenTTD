@@ -911,7 +911,7 @@ void DeterminePaths(void)
 	char *s, *cfg;
 	wchar_t path[MAX_PATH];
 
-	_path.personal_dir = _path.game_data_dir = cfg = malloc(MAX_PATH);
+	_paths.personal_dir = _paths.game_data_dir = cfg = malloc(MAX_PATH);
 	GetCurrentDirectoryW(MAX_PATH - 1, path);
 	convert_from_fs(path, cfg, MAX_PATH);
 
@@ -919,25 +919,25 @@ void DeterminePaths(void)
 	s = strchr(cfg, '\0');
 	if (s[-1] != '\\') strcpy(s, "\\");
 
-	_path.save_dir = str_fmt("%ssave", cfg);
-	_path.autosave_dir = str_fmt("%s\\autosave", _path.save_dir);
-	_path.scenario_dir = str_fmt("%sscenario", cfg);
-	_path.heightmap_dir = str_fmt("%sscenario\\heightmap", cfg);
-	_path.gm_dir = str_fmt("%sgm\\", cfg);
-	_path.data_dir = str_fmt("%sdata\\", cfg);
-	_path.lang_dir = str_fmt("%slang\\", cfg);
+	_paths.save_dir = str_fmt("%ssave", cfg);
+	_paths.autosave_dir = str_fmt("%s\\autosave", _paths.save_dir);
+	_paths.scenario_dir = str_fmt("%sscenario", cfg);
+	_paths.heightmap_dir = str_fmt("%sscenario\\heightmap", cfg);
+	_paths.gm_dir = str_fmt("%sgm\\", cfg);
+	_paths.data_dir = str_fmt("%sdata\\", cfg);
+	_paths.lang_dir = str_fmt("%slang\\", cfg);
 
 	if (_config_file == NULL)
-		_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
+		_config_file = str_fmt("%sopenttd.cfg", _paths.personal_dir);
 
-	_highscore_file = str_fmt("%shs.dat", _path.personal_dir);
-	_log_file = str_fmt("%sopenttd.log", _path.personal_dir);
+	_highscore_file = str_fmt("%shs.dat", _paths.personal_dir);
+	_log_file = str_fmt("%sopenttd.log", _paths.personal_dir);
 
 	// make (auto)save and scenario folder
-	CreateDirectoryW(OTTD2FS(_path.save_dir), NULL);
-	CreateDirectoryW(OTTD2FS(_path.autosave_dir), NULL);
-	CreateDirectoryW(OTTD2FS(_path.scenario_dir), NULL);
-	CreateDirectoryW(OTTD2FS(_path.heightmap_dir), NULL);
+	CreateDirectoryW(OTTD2FS(_paths.save_dir), NULL);
+	CreateDirectoryW(OTTD2FS(_paths.autosave_dir), NULL);
+	CreateDirectoryW(OTTD2FS(_paths.scenario_dir), NULL);
+	CreateDirectoryW(OTTD2FS(_paths.heightmap_dir), NULL);
 }
 
 /**

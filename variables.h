@@ -262,7 +262,7 @@ typedef struct Paths {
 	char *second_data_dir;
 } Paths;
 
-VARDEF Paths _path;
+VARDEF Paths _paths;
 
 // NOSAVE: Used in palette animations only, not really important.
 VARDEF int _timer_counter;

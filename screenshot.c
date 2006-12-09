@@ -512,7 +512,7 @@ static char *MakeScreenshotName(const char *ext)
 
 	serial = 0;
 	for (;;) {
-		snprintf(filename, sizeof(filename), "%s%s", _path.personal_dir, _screenshot_name);
+		snprintf(filename, sizeof(filename), "%s%s", _paths.personal_dir, _screenshot_name);
 		if (!FileExists(filename))
 			break;
 		sprintf(base, " #%d.%s", ++serial, ext);

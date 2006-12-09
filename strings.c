@@ -1138,7 +1138,7 @@ bool ReadLanguagePack(int lang_index)
 	char *s;
 
 	{
-		char *lang = str_fmt("%s%s", _path.lang_dir, _dynlang.ent[lang_index].file);
+		char *lang = str_fmt("%s%s", _paths.lang_dir, _dynlang.ent[lang_index].file);
 		lang_pack = ReadFileToMem(lang, &len, 200000);
 		free(lang);
 	}
@@ -1225,7 +1225,7 @@ static int GetLanguageList(char **languages, int max)
 	struct dirent *dirent;
 	int num = 0;
 
-	dir = opendir(_path.lang_dir);
+	dir = opendir(_paths.lang_dir);
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			const char *d_name = FS2OTTD(dirent->d_name);
@@ -1271,7 +1271,7 @@ void InitializeLanguagePacks(void)
 	for (i = m = 0; i != n; i++) {
 		size_t j;
 
-		char *s = str_fmt("%s%s", _path.lang_dir, files[i]);
+		char *s = str_fmt("%s%s", _paths.lang_dir, files[i]);
 		in = fopen(s, "rb");
 		free(s);
 		if (in == NULL ||

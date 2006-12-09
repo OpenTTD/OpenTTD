@@ -289,10 +289,10 @@ static void LoadIntroGame(void)
 	SetupColorsAndInitialWindow();
 
 	// Generate a world.
-	snprintf(filename, lengthof(filename), "%sopntitle.dat",  _path.data_dir);
+	snprintf(filename, lengthof(filename), "%sopntitle.dat",  _paths.data_dir);
 #if defined SECOND_DATA_DIR
 	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {
-		snprintf(filename, lengthof(filename), "%sopntitle.dat",  _path.second_data_dir);
+		snprintf(filename, lengthof(filename), "%sopntitle.dat",  _paths.second_data_dir);
 	}
 #endif
 	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {
@@ -890,7 +890,7 @@ static void DoAutosave(void)
 		const Player *p = GetPlayer(_local_player);
 		char* s = buf;
 
-		s += snprintf(buf, lengthof(buf), "%s%s", _path.autosave_dir, PATHSEP);
+		s += snprintf(buf, lengthof(buf), "%s%s", _paths.autosave_dir, PATHSEP);
 
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
@@ -898,7 +898,7 @@ static void DoAutosave(void)
 		s = GetString(s, STR_4004, lastof(buf));
 		strecpy(s, ".sav", lastof(buf));
 	} else { /* generate a savegame name and number according to _patches.max_num_autosaves */
-		snprintf(buf, lengthof(buf), "%s%sautosave%d.sav", _path.autosave_dir, PATHSEP, _autosave_ctr);
+		snprintf(buf, lengthof(buf), "%s%sautosave%d.sav", _paths.autosave_dir, PATHSEP, _autosave_ctr);
 
 		_autosave_ctr++;
 		if (_autosave_ctr >= _patches.max_num_autosaves) {

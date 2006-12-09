@@ -169,11 +169,11 @@ void DeterminePaths(void)
 {
 	char *s;
 
-	_path.game_data_dir = malloc(MAX_PATH);
-	ttd_strlcpy(_path.game_data_dir, GAME_DATA_DIR, MAX_PATH);
+	_paths.game_data_dir = malloc(MAX_PATH);
+	ttd_strlcpy(_paths.game_data_dir, GAME_DATA_DIR, MAX_PATH);
 	#if defined SECOND_DATA_DIR
-	_path.second_data_dir = malloc(MAX_PATH);
-	ttd_strlcpy(_path.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
+	_paths.second_data_dir = malloc(MAX_PATH);
+	ttd_strlcpy(_paths.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
 	#endif
 
 #if defined(USE_HOMEDIR)
@@ -185,59 +185,59 @@ void DeterminePaths(void)
 			if (pw != NULL) homedir = pw->pw_dir;
 		}
 
-		_path.personal_dir = str_fmt("%s" PATHSEP "%s", homedir, PERSONAL_DIR);
+		_paths.personal_dir = str_fmt("%s" PATHSEP "%s", homedir, PERSONAL_DIR);
 	}
 
 #else /* not defined(USE_HOMEDIR) */
 
-	_path.personal_dir = malloc(MAX_PATH);
-	ttd_strlcpy(_path.personal_dir, PERSONAL_DIR, MAX_PATH);
+	_paths.personal_dir = malloc(MAX_PATH);
+	ttd_strlcpy(_paths.personal_dir, PERSONAL_DIR, MAX_PATH);
 
 	// check if absolute or relative path
-	s = strchr(_path.personal_dir, '/');
+	s = strchr(_paths.personal_dir, '/');
 
 	// add absolute path
-	if (s == NULL || _path.personal_dir != s) {
-		getcwd(_path.personal_dir, MAX_PATH);
-		s = strchr(_path.personal_dir, 0);
+	if (s == NULL || _paths.personal_dir != s) {
+		getcwd(_paths.personal_dir, MAX_PATH);
+		s = strchr(_paths.personal_dir, 0);
 		*s++ = '/';
 		ttd_strlcpy(s, PERSONAL_DIR, MAX_PATH);
 	}
 
 #endif /* defined(USE_HOMEDIR) */
 
-	s = strchr(_path.personal_dir, 0);
+	s = strchr(_paths.personal_dir, 0);
 
 	// append a / ?
 	if (s[-1] != '/') strcpy(s, "/");
 
-	_path.save_dir = str_fmt("%ssave", _path.personal_dir);
-	_path.autosave_dir = str_fmt("%s/autosave", _path.save_dir);
-	_path.scenario_dir = str_fmt("%sscenario", _path.personal_dir);
-	_path.heightmap_dir = str_fmt("%sscenario/heightmap", _path.personal_dir);
-	_path.gm_dir = str_fmt("%sgm/", _path.game_data_dir);
-	_path.data_dir = str_fmt("%sdata/", _path.game_data_dir);
+	_paths.save_dir = str_fmt("%ssave", _paths.personal_dir);
+	_paths.autosave_dir = str_fmt("%s/autosave", _paths.save_dir);
+	_paths.scenario_dir = str_fmt("%sscenario", _paths.personal_dir);
+	_paths.heightmap_dir = str_fmt("%sscenario/heightmap", _paths.personal_dir);
+	_paths.gm_dir = str_fmt("%sgm/", _paths.game_data_dir);
+	_paths.data_dir = str_fmt("%sdata/", _paths.game_data_dir);
 
 	if (_config_file == NULL)
-		_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
+		_config_file = str_fmt("%sopenttd.cfg", _paths.personal_dir);
 
-	_highscore_file = str_fmt("%shs.dat", _path.personal_dir);
-	_log_file = str_fmt("%sopenttd.log", _path.personal_dir);
+	_highscore_file = str_fmt("%shs.dat", _paths.personal_dir);
+	_log_file = str_fmt("%sopenttd.log", _paths.personal_dir);
 
 #if defined CUSTOM_LANG_DIR
 	// sets the search path for lng files to the custom one
-	_path.lang_dir = malloc( MAX_PATH );
-	ttd_strlcpy( _path.lang_dir, CUSTOM_LANG_DIR, MAX_PATH);
+	_paths.lang_dir = malloc( MAX_PATH );
+	ttd_strlcpy( _paths.lang_dir, CUSTOM_LANG_DIR, MAX_PATH);
 #else
-	_path.lang_dir = str_fmt("%slang/", _path.game_data_dir);
+	_paths.lang_dir = str_fmt("%slang/", _paths.game_data_dir);
 #endif
 
 	// create necessary folders
-	mkdir(_path.personal_dir, 0755);
-	mkdir(_path.save_dir, 0755);
-	mkdir(_path.autosave_dir, 0755);
-	mkdir(_path.scenario_dir, 0755);
-	mkdir(_path.heightmap_dir, 0755);
+	mkdir(_paths.personal_dir, 0755);
+	mkdir(_paths.save_dir, 0755);
+	mkdir(_paths.autosave_dir, 0755);
+	mkdir(_paths.scenario_dir, 0755);
+	mkdir(_paths.heightmap_dir, 0755);
 }
 
 bool InsertTextBufferClipboard(Textbuf *tb)

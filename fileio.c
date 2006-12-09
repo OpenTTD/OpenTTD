@@ -117,19 +117,19 @@ FILE *FioFOpenFile(const char *filename)
 	FILE *f;
 	char buf[MAX_PATH];
 
-	snprintf(buf, lengthof(buf), "%s%s", _path.data_dir, filename);
+	snprintf(buf, lengthof(buf), "%s%s", _paths.data_dir, filename);
 
 	f = fopen(buf, "rb");
 #if !defined(WIN32)
 	if (f == NULL) {
-		strtolower(buf + strlen(_path.data_dir) - 1);
+		strtolower(buf + strlen(_paths.data_dir) - 1);
 		f = fopen(buf, "rb");
 
 #if defined SECOND_DATA_DIR
 		// tries in the 2nd data directory
 		if (f == NULL) {
-			snprintf(buf, lengthof(buf), "%s%s", _path.second_data_dir, filename);
-			strtolower(buf + strlen(_path.second_data_dir) - 1);
+			snprintf(buf, lengthof(buf), "%s%s", _paths.second_data_dir, filename);
+			strtolower(buf + strlen(_paths.second_data_dir) - 1);
 			f = fopen(buf, "rb");
 		}
 #endif
@@ -143,7 +143,7 @@ void FioOpenFile(int slot, const char *filename)
 {
 	FILE *f = FioFOpenFile(filename);
 
-	if (f == NULL) error("Cannot open file '%s%s'", _path.data_dir, filename);
+	if (f == NULL) error("Cannot open file '%s%s'", _paths.data_dir, filename);
 
 	FioCloseFile(slot); // if file was opened before, close it
 	_fio.handles[slot] = f;

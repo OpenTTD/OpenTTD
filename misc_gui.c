@@ -1346,20 +1346,20 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		switch (_saveload_mode) {
 			case SLD_SAVE_GAME:
 			case SLD_LOAD_GAME:
-				ttd_strlcpy(&o_dir.name[0], _path.save_dir, sizeof(o_dir.name));
+				ttd_strlcpy(&o_dir.name[0], _paths.save_dir, sizeof(o_dir.name));
 				break;
 
 			case SLD_SAVE_SCENARIO:
 			case SLD_LOAD_SCENARIO:
-				ttd_strlcpy(&o_dir.name[0], _path.scenario_dir, sizeof(o_dir.name));
+				ttd_strlcpy(&o_dir.name[0], _paths.scenario_dir, sizeof(o_dir.name));
 				break;
 
 			case SLD_LOAD_HEIGHTMAP:
-				ttd_strlcpy(&o_dir.name[0], _path.heightmap_dir, sizeof(o_dir.name));
+				ttd_strlcpy(&o_dir.name[0], _paths.heightmap_dir, sizeof(o_dir.name));
 				break;
 
 			default:
-				ttd_strlcpy(&o_dir.name[0], _path.personal_dir, sizeof(o_dir.name));
+				ttd_strlcpy(&o_dir.name[0], _paths.personal_dir, sizeof(o_dir.name));
 		}
 		break;
 		}

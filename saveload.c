@@ -1649,7 +1649,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 void DoExitSave(void)
 {
 	char buf[200];
-	snprintf(buf, sizeof(buf), "%s%sexit.sav", _path.autosave_dir, PATHSEP);
+	snprintf(buf, sizeof(buf), "%s%sexit.sav", _paths.autosave_dir, PATHSEP);
 	SaveOrLoad(buf, SL_SAVE);
 }
 

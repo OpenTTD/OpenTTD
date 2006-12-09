@@ -39,7 +39,7 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 	size_t len;
 
 	/* open the file */
-	snprintf(filename, lengthof(filename), "%s%s", _path.data_dir, config->filename);
+	snprintf(filename, lengthof(filename), "%s%s", _paths.data_dir, config->filename);
 	f = fopen(filename, "rb");
 	if (f == NULL) return false;
 
@@ -176,7 +176,7 @@ static uint ScanPath(const char *path)
 		} else if (sb.st_mode & S_IFREG) {
 			/* File */
 			char *ext = strrchr(filename, '.');
-			char *file = filename + strlen(_path.data_dir) + 1; // Crop base path
+			char *file = filename + strlen(_paths.data_dir) + 1; // Crop base path
 
 			/* If no extension or extension isn't .grf, skip the file */
 			if (ext == NULL) continue;
@@ -226,7 +226,7 @@ void ScanNewGRFFiles(void)
 	_all_grfs = NULL;
 
 	DEBUG(grf, 1) ("[GRF] Scanning for NewGRFs");
-	num = ScanPath(_path.data_dir);
+	num = ScanPath(_paths.data_dir);
 	DEBUG(grf, 1) ("[GRF] Scan complete, found %d files", num);
 }
 
