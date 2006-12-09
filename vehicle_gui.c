@@ -1478,7 +1478,6 @@ static void CreateVehicleListWindow(Window *w)
 			break;
 
 		case VEH_Aircraft:
-			w->widget[VLW_WIDGET_CAPTION].data           = STR_A009_AIRCRAFT;
 			w->widget[VLW_WIDGET_LIST].tooltips          = STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT;
 			w->widget[VLW_WIDGET_NEW_VEHICLES].data = STR_A003_NEW_AIRCRAFT;
 			break;
