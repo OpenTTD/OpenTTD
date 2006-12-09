@@ -1431,7 +1431,9 @@ Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type)
 
 Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicle type)
 {
-	return CreateEffectVehicle(x, y, GetSlopeZ(x, y) + z, type);
+	int safe_x = clamp(x, 0, MapMaxX() * TILE_SIZE);
+	int safe_y = clamp(y, 0, MapMaxY() * TILE_SIZE);
+	return CreateEffectVehicle(x, y, GetSlopeZ(safe_x, safe_y) + z, type);
 }
 
 Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicle type)
