@@ -14,6 +14,7 @@
 #include <wininet.h>
 #include <io.h>
 #include <fcntl.h>
+#include <shlobj.h> // SHGetFolderPath
 #include "variables.h"
 #include "win32.h"
 #include "fios.h" // opendir/readdir/closedir
@@ -1091,4 +1092,53 @@ const char *FS2OTTD(const wchar_t *name)
 {
 	static char utf8_buf[512];
 	return convert_from_fs(name, utf8_buf, lengthof(utf8_buf));
+}
+
+/** Our very own SHGetFolderPath function for support of windows operating
+ * systems that don't have this function (eg Win9x, etc.). We try using the
+ * native function, and if that doesn't exist we will try a more crude approach
+ * of environment variables and hope for the best */
+HRESULT OTTDSHGetFolderPath(HWND hwnd, int csidl, HANDLE hToken, DWORD dwFlags, LPTSTR pszPath)
+{
+	static HRESULT (WINAPI *SHGetFolderPath)(HWND, int, HANDLE, DWORD, LPTSTR) = NULL;
+	static bool first_time = true;
+
+	/* We only try to load the library one time; if it fails, it fails */
+	if (first_time) {
+#if defined(UNICODE)
+# define W(x) x "W"
+#else
+# define W(x) x "A"
+#endif
+		if (!LoadLibraryList((Function*)&SHGetFolderPath, "SHFolder.dll\0" W("SHGetFolderPath") "\0\0")) {
+			DEBUG(misc, 0) ("Unable to load " W("SHGetFolderPath") "from SHFolder.dll");
+		}
+#undef W
+		first_time = false;
+	}
+
+	if (SHGetFolderPath != NULL) return SHGetFolderPath(hwnd, csidl, hToken, dwFlags, pszPath);
+
+	/* SHGetFolderPath doesn't exist, try a more conservative approach,
+	 * eg environment variables. This is only included for legacy modes
+	 * MSDN says: that 'pszPath' is a "Pointer to a null-terminated string of
+	 * length MAX_PATH which will receive the path" so let's assume that
+	 * Windows 95 with Internet Explorer 5.0, Windows 98 with Internet Explorer 5.0,
+	 * Windows 98 Second Edition (SE), Windows NT 4.0 with Internet Explorer 5.0,
+	 * Windows NT 4.0 with Service Pack 4 (SP4) */
+	{
+		DWORD ret;
+		switch (csidl) {
+			case CSIDL_FONTS: /* Get the system font path, eg %WINDIR%\Fonts */
+				ret = GetEnvironmentVariable(_T("WINDIR"), pszPath, MAX_PATH * sizeof(TCHAR));
+				if (ret == 0) break;
+				_tcsncat(pszPath, _T("\\Fonts"), MAX_PATH * sizeof(TCHAR));
+
+				return (HRESULT)0;
+				break;
+			/* XXX - other types to go here when needed... */
+		}
+	}
+
+	return E_INVALIDARG;
 }
