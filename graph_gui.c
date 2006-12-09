@@ -16,6 +16,8 @@
 #include "variables.h"
 #include "date.h"
 
+const byte _cargo_colours[NUM_CARGO] = {152, 32, 15, 174, 208, 194, 191, 84, 184, 10, 202, 48};
+
 static uint _legend_excludebits;
 static uint _legend_cargobits;
 
@@ -699,8 +701,6 @@ void ShowCompanyValueGraph(void)
 /* PAYMENT RATES */
 /*****************/
 
-static const byte _cargo_legend_colors[12] = {152, 32, 15, 174, 208, 194, 191, 84, 184, 10, 202, 215};
-
 static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -746,11 +746,11 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 			byte clk_dif = IsWindowWidgetLowered(w, i + 3) ? 1 : 0;
 
 			GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
-			GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, _cargo_legend_colors[i]);
+			GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, _cargo_colours[i]);
 			SetDParam(0, _cargoc.names_s[i]);
 			DrawString(x + 14 + clk_dif, y + clk_dif, STR_7065, 0);
 			y += 8;
-			gd.colors[i] = _cargo_legend_colors[i];
+			gd.colors[i] = _cargo_colours[i];
 			for (j = 0; j != 20; j++) {
 				gd.cost[i][j] = (uint64)GetTransportedGoodsIncome(10, 20, j * 6 + 6, i);
 			}

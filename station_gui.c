@@ -46,8 +46,7 @@ static StationSortListingTypeFunction StationRatingMaxSorter;
 
 static void StationsWndShowStationRating(int x, int y, int type, uint acceptance, int rating)
 {
-	static const byte _rating_colors[NUM_CARGO] = {152, 32, 15, 174, 208, 194, 191, 55, 184, 10, 191, 48};
-	int color = _rating_colors[type];
+	int color = _cargo_colours[type];
 	uint w;
 
 	if (acceptance > 575) acceptance = 575;
@@ -304,7 +303,6 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			int max;
 			int i, cg_ofst;
 			int x = 0, y = 0, xb = 2; // offset from top of widget
-			static const byte _cargo_legend_colors[NUM_CARGO] = {152, 32, 15, 174, 208, 194, 191, 84, 184, 10, 202, 215};
 
 			/* draw sorting criteria string */
 			DrawString(85, 26, _station_sort_listing[sl->sort_type], 0x10);
@@ -318,7 +316,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			for (i = 0; i < NUM_CARGO; i++) {
 				cg_ofst = IsWindowWidgetLowered(w, i + STATIONLIST_WIDGET_CARGOSTART) ? 2 : 1;
 
-				GfxFillRect(x + cg_ofst, y + cg_ofst + 1, x + cg_ofst + 10 , y + cg_ofst + 7, _cargo_legend_colors[i]);
+				GfxFillRect(x + cg_ofst, y + cg_ofst + 1, x + cg_ofst + 10 , y + cg_ofst + 7, _cargo_colours[i]);
 				DrawString(x + cg_ofst + 2, y + cg_ofst + 1, _cargoc.names_short[i], i == 11 ? 15 : 16);
 				x += 14;
 			}
