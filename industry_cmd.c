@@ -110,6 +110,7 @@ void DestroyIndustry(Industry *i)
 	}
 
 	_industry_sort_dirty = true;
+	_total_industries--;
 	DeleteSubsidyWithIndustry(i->index);
 	DeleteWindowById(WC_INDUSTRY_VIEW, i->index);
 	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
@@ -1361,7 +1362,7 @@ static Industry *AllocateIndustry(void)
 
 		if (IsValidIndustry(i)) continue;
 
-		if (i->index >= _total_industries) _total_industries = i->index + 1;
+		_total_industries++;
 
 		memset(i, 0, sizeof(*i));
 		i->index = index;
@@ -1917,7 +1918,7 @@ static void Load_INDY(void)
 		i = GetIndustry(index);
 		SlObject(i, _industry_desc);
 
-		if (index >= _total_industries) _total_industries = index + 1;
+		_total_industries++;
 	}
 }
 

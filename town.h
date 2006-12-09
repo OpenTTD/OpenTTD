@@ -171,7 +171,7 @@ static inline TownID GetMaxTownIndex(void)
 	 *  _really_ returns the highest index. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
-	return _total_towns - 1;
+	return GetTownPoolSize() - 1;
 }
 
 static inline uint GetNumTowns(void)

@@ -99,7 +99,7 @@ static inline IndustryID GetMaxIndustryIndex(void)
 	 *  _really_ returns the highest index. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
-	return _total_industries - 1;
+	return GetIndustryPoolSize() - 1;
 }
 
 static inline uint GetNumIndustries(void)

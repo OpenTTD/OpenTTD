@@ -54,6 +54,7 @@ void DestroyTown(Town *t)
 	 * and remove from list of sorted towns */
 	DeleteWindowById(WC_TOWN_VIEW, t->index);
 	_town_sort_dirty = true;
+	_total_towns--;
 
 	/* Delete all industries belonging to the town */
 	FOR_ALL_INDUSTRIES(i) if (i->town == t) DeleteIndustry(i);
@@ -983,7 +984,7 @@ static Town *AllocateTown(void)
 		if (!IsValidTown(t)) {
 			TownID index = t->index;
 
-			if (t->index >= _total_towns) _total_towns = t->index + 1;
+			_total_towns++;
 
 			memset(t, 0, sizeof(Town));
 			t->index = index;
@@ -1932,7 +1933,7 @@ static void Load_TOWN(void)
 		t = GetTown(index);
 		SlObject(t, _town_desc);
 
-		if ((uint)index >= _total_towns) _total_towns = index + 1;
+		_total_towns++;
 	}
 
 	/* This is to ensure all pointers are within the limits of
