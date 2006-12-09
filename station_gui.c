@@ -310,25 +310,26 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			DoDrawString(sl->flags & SL_ORDER ? DOWNARROW : UPARROW, 69, 26, 0x10);
 
 
-			x = 90;
+			x = 89;
 			y = 14;
 
 			for (i = 0; i < NUM_CARGO; i++) {
 				cg_ofst = IsWindowWidgetLowered(w, i + STATIONLIST_WIDGET_CARGOSTART) ? 2 : 1;
 
-				GfxFillRect(x + cg_ofst, y + cg_ofst + 1, x + cg_ofst + 10 , y + cg_ofst + 7, _cargo_colours[i]);
-				DrawString(x + cg_ofst + 2, y + cg_ofst + 1, _cargoc.names_short[i], i == 11 ? 15 : 16);
+				GfxFillRect(x + cg_ofst, y + cg_ofst, x + cg_ofst + 10 , y + cg_ofst + 7, _cargo_colours[i]);
+				DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, _cargoc.names_short[i], 0x10);
 				x += 14;
 			}
 
-			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_NOCARGOWAITING) ? 1 : 0;
-			DrawString(x + 2 + cg_ofst, y + 2 + cg_ofst, STR_ABBREV_NONE, 16);
+			x += 6;
+			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_NOCARGOWAITING) ? 2 : 1;
+			DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_NONE, 16);
 			x += 14;
-			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_CARGOALL) ? 1 : 0;
-			DrawString(x + 2 + cg_ofst, y + 2 + cg_ofst, STR_ABBREV_ALL, 16);
+			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_CARGOALL) ? 2 : 1;
+			DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, 16);
 
-			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_FACILALL) ? 1 : 0;
-			DrawString(72 + cg_ofst, y + 2 + cg_ofst, STR_ABBREV_ALL, 16);
+			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_FACILALL) ? 2 : 1;
+			DrawString(71 + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, 16);
 
 			if (w->vscroll.count == 0) { // player has no stations
 				DrawString(xb, 40, STR_304A_NONE, 0);
