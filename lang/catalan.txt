@@ -396,7 +396,7 @@ STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccio
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Veure una llista dels motors disponibles per aquest tipus de vehicle
 STR_MANAGE_LIST                                                 :{BLACK}Administra llista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Envia instruccions a tots els vehicles de la llista
-STR_REPLACE_VEHICLES                                            :Substituir Vehicles
+STR_REPLACE_VEHICLES                                            :Substitueix Vehicles
 STR_SEND_TRAIN_TO_DEPOT                                         :Enviar a la Cotxera
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Enviar a la Cotxera
 STR_SEND_SHIP_TO_DEPOT                                          :Enviar a la Drassana
@@ -437,10 +437,10 @@ STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra l
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra la llista d'aeronaus de l'empresa
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Apropar-se
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Allunyar-se
-STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir vies
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Construeix vies
 STR_0182_BUILD_ROADS                                            :{BLACK}Construeix carreteres
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Construir ports
-STR_0184_BUILD_AIRPORTS                                         :{BLACK}Construir aeroports
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Construeix ports
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}Construeix aeroports
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Planta arbres, situa senyals, etc.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informació del terreny
 STR_0187_OPTIONS                                                :{BLACK}Opcions
@@ -451,7 +451,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Tanca la
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Títol de la finestra - arrossega això per moure la finestra
 STR_STICKY_BUTTON                                               :{BLACK}Marca aquesta finestra com a no eliminable pel 'Tanca totes les Finestres'
 STR_RESIZE_BUTTON                                               :{BLACK}Prem i arrossega per canviar el tamany de la finestra
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Prem aquí per anar a l'actual directori de desar/carregar per defecte
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Prem aquí per anar a la carpeta per defecte actual de desa/carrega
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolició d'edificis etc. en un quadre de terreny
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Rebaixa una cantonada del terreny
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Eleva una cantonada del terreny
@@ -531,7 +531,7 @@ STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jukebox 
 STR_01D3_SOUND_MUSIC                                            :So/música
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Mostra la finestra de so/música
 STR_01D5_ALL                                                    :{TINYFONT}Tot
-STR_01D6_OLD_STYLE                                              :{TINYFONT}Estil Vell
+STR_01D6_OLD_STYLE                                              :{TINYFONT}Estil Antic
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Estil Nou
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
 STR_01D9_CUSTOM_1                                               :{TINYFONT}Opcional 1
@@ -615,11 +615,11 @@ STR_0223_LAND_GENERATION                                        :{WHITE}Generado
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND                                            :{BLACK}Terreny Aleatori
-STR_0227_RESET_LAND                                             :{BLACK}Restablir Terreny
+STR_0227_RESET_LAND                                             :{BLACK}Restableix Terreny
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Augmenta la mida de l'àrea de terreny a rebaixar/elevar
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Disminueix la mida de l'àrea de terreny a rebaixar/elevar
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genera un terreny aleatori
-STR_022B_RESET_LANDSCAPE                                        :{BLACK}Restablir paisatge
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}Restableix paisatge
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Restablir Paisatge
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Utilitza un mapa d'alçades
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Utilitza un mapa d'alçades
@@ -636,12 +636,12 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...massa
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...massa aprop d'una altra població
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...lloc inadequat
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...massa poblacions
-STR_CANNOT_GENERATE_TOWN                                        :{WHITE}No puc construir poblacions
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Impossible construir poblacions
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...no queda espai al mapa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Incrementa el tamany de la població
-STR_023C_EXPAND                                                 :{BLACK}Expandir
+STR_023C_EXPAND                                                 :{BLACK}Expandeix
 STR_023D_RANDOM_TOWN                                            :{BLACK}Localitat Aleatòria
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construir població en un lloc aleatori
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construeix una població en un lloc aleatori
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generació d'indústries
 STR_0240_COAL_MINE                                              :{BLACK}Mina de Carbó
 STR_0241_POWER_STATION                                          :{BLACK}Central Tèrmica
@@ -649,7 +649,7 @@ STR_0242_SAWMILL                                                :{BLACK}Asserrad
 STR_0243_FOREST                                                 :{BLACK}Bosc
 STR_0244_OIL_REFINERY                                           :{BLACK}Refineria de Petroli
 STR_0245_OIL_RIG                                                :{BLACK}Plataforma Petrolífera
-STR_0246_FACTORY                                                :{BLACK}Factoria
+STR_0246_FACTORY                                                :{BLACK}Fàbrica
 STR_0247_STEEL_MILL                                             :{BLACK}Alt Forn
 STR_0248_FARM                                                   :{BLACK}Granja
 STR_0249_IRON_ORE_MINE                                          :{BLACK}Mina de Ferro
@@ -678,41 +678,41 @@ STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Generado
 STR_0260_TOFFEE_QUARRY                                          :{BLACK}Cantera de Caramel
 STR_0261_SUGAR_MINE                                             :{BLACK}Mina de sucre
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construeix una Mina de Carbó
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construir Central Tèrmica
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construir Serradora
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construeix una Central Tèrmica
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construeix una Serralleria
 STR_0265_PLANT_FOREST                                           :{BLACK}Planta un Bosc
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construir Refineria de Petroli
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Construir Plataforma Petrolífera (Només es pot construir vora els límits del mapa)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construir Factoria
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construir Alt Forn
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construir Granja
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construir Mina de Ferro
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construir Pous de Petroli
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construir Banc (Només es pot construir en poblacions de més de 1200 hab.)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construir Paperera
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construir Planta de Manipulació de Queviures
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construir Arts Gràfiques
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construir Mina d'Or
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construir Banc (Només es pot construir en poblacions)
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construeix una Refineria de Petroli
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Construeix una Plataforma Petrolífera (Només es pot construir vora els límits del mapa)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construeix una Fàbrica
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construeix un Alt Forn
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construeix una Granja
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construeix una Mina de Ferro
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construeix uns Pous de Petroli
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construeix un Banc (Només es pot construir en poblacions de més de 1200 hab.)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construeix una Paperera
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construeix una Planta de Manipulació de Queviures
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construeix unes Arts Gràfiques
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construeix una Mina d'Or
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construeix un Banc (Només es pot construir en poblacions)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construeix una Cabana de Fusta (per netejar la selva tropical i produïr Fusta)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Crea una Plantació de Fruita
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Crea una Plantació de Cautxú
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construir Surtidor d'Aigua
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construir Torre d'aigua (Només es pot construir en poblacions)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construir Mina de Diamants
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construir Mina de Coure
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construeix un Surtidor d'Aigua
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construeix una Torre d'aigua (Només es pot construir en poblacions)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construeix una Mina de Diamants
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construeix una Mina de Coure
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Planta un Bosc de Cotó de Sucre
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construir Fàbrica de Dolços
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construir Granja de Piles
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construir Pous de Refresc
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construir Botiga de Joguines
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construir Fàbrica de Joguines
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construir Fonts de Plàstic
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construir Fàbrica de Begudes Gasoses
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construir Generador de Bombolles
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construeix una Fàbrica de Dolços
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construeix una Granja de Piles
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construeix uns Pous de Refresc
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construeix una Botiga de Joguines
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construeix una Fàbrica de Joguines
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construeix unes Fonts de Plàstic
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construeix una Fàbrica de Begudes Gasoses
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construeix un Generador de Bombolles
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construeix una Cantera de Caramel
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construir Mina de Sucre
-STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}No es pot construir {STRING} aquí...
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construeix una Mina de Sucre
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Aquí no es pot construir {STRING}...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...has de construir la població primer
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...només un permés per població
 STR_0288_PLANT_TREES                                            :{BLACK}Planta arbres
@@ -728,7 +728,7 @@ STR_0290_DELETE                                                 :{BLACK}Esborra
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Esborra totalment aquesta població
 STR_0292_SAVE_SCENARIO                                          :Desa l'escenari
 STR_0293_LOAD_SCENARIO                                          :Carrega un escenari
-STR_0294_QUIT_EDITOR                                            :Sortir de l' editor
+STR_0294_QUIT_EDITOR                                            :Sortir de l'editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Sortir
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Desa l'escenari, carrega un escenari, abandona l'editor d'escenaris, sortir
@@ -738,7 +738,7 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Juga un 
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Juga un mapa d'alçades
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Comença un nou joc, utilitzant un mapa d'alçades com a terreny
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur de voler deixar aquest escenari ?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Sortir del Editor
+STR_029C_QUIT_EDITOR                                            :{WHITE}Sortir de l'Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...només es pot construir en poblacions de més de 1200 hab.
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Retarda la data d'inici 1 any
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Avança la data d'inici 1 any
@@ -774,7 +774,7 @@ STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Mostra els noms de les poblacions
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Mostra els noms de les estacions
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Mostra les senyals
-STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Mostrar punts de control
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Mostra punts de control
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animació completa
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detall complet
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edificis Transparents
@@ -814,8 +814,8 @@ STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Unitats 
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Automòbils
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Selecciona el sentit de circulació dels automòbils
-STR_02E9_DRIVE_ON_LEFT                                          :Conduir per l'esquerra
-STR_02EA_DRIVE_ON_RIGHT                                         :Conduir per la dreta
+STR_02E9_DRIVE_ON_LEFT                                          :Condueix per l'esquerra
+STR_02EA_DRIVE_ON_RIGHT                                         :Condueix per la dreta
 STR_02EB_TOWN_NAMES                                             :{BLACK}Noms de Poblacions
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Selecciona l'estil des noms de poblacions
@@ -1011,12 +1011,12 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configur
 STR_CONFIG_PATCHES_OFF                                          :Inactiu
 STR_CONFIG_PATCHES_ON                                           :Actiu
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostra la velocitat del vehicle a la barra d'estat: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permetre construir en desnivells i costes: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permetre un tamany més real de l'àrea d'influència: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permet construir en desnivells i costes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permet un tamany més real de l'àrea d'influència: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permet l'esborrat de propietats de les poblacions: carreteres, ponts, túnels, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Activa la construcció de trens molt llargs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Activa l'acceleració realista per als trens: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibir fer girs de 90 graus als trens i vaixells: {ORANGE}{STRING} {LTBLUE} (necessita NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibeix fer girs de 90 graus als trens i vaixells: {ORANGE}{STRING} {LTBLUE} (necessita NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Ajunta estacions de tren fetes al costat d'una altra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Marxar de l'estació quan un tipus de càrrega és ple, si 'càrrega completa': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Utilitza algorisme millorat de càrrega: {ORANGE}{STRING}
@@ -1027,7 +1027,7 @@ STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permet 
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permet ordres anar a cotxeres: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Permet fabricar material no processat en indústries: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Permet vàries indústries similars per població: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Permetre construir a prop indústries del mateix tipus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Permet construir a prop indústries del mateix tipus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostra sempre la data llarga a la barra d'estat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Mostra senyals en el sentit de la marxa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Mostra finestra de balanç al finalitzar cada any: {ORANGE}{STRING}
@@ -1039,7 +1039,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estacio
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova cerca de rutes global (NPF, anul·la NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de pes per contenidor per simular trens pesats: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permetre sempre aeroports petits: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permet sempre aeroports petits: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Avisa si un tren es perd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Revisa ordres dels vehicles: {ORANGE}{STRING}
@@ -1083,7 +1083,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostra 
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Cap
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Pròpia companyia
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Totes les companyies
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Preferir chat d'equip amb <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Prefereix fer un chat d'equip amb <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automòbils per jugador: {ORANGE}{STRING}
@@ -1096,7 +1096,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desacti
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Desactiva vaixells per l'ordinador: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Activa nova IA (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permetre Inteligència Artificial en multijogador (experimental): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permet AI en multijugador (experimental): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Interval de manteniment per defecte dels trens: {ORANGE}{STRING} dies/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interval de manteniment per defecte dels trens: {ORANGE}desactivat
@@ -1115,7 +1115,7 @@ STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Data d'
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Fi del joc en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Activa economia suau (més canvis però més petits)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permet comprar participacions d'altres empreses
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}En arrossegant, sitúa senyals cada: {ORANGE}{STRING} quadre(s)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Arrossegant, sitúa senyals cada: {ORANGE}{STRING} quadre(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posició de la barra d'eines principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerra
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centre
@@ -1152,7 +1152,7 @@ STR_CHEAT_MONEY                                                 :{LTBLUE}Increme
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Juga com el jugador: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries, inamovibles): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Els túnels es poden creuar: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construir mentre el joc està en pausa: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construeix mentre el joc està en pausa: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avions a reacció no tindran (freqüents) accidents en els aeroports petits: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Canvia el clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canvia la data: {ORANGE} {DATE_SHORT}
@@ -1177,19 +1177,19 @@ STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita nom de punt de control
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}No es pot canviar el nom del punt de control...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Convertir via a punt de control
-STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}No es pot construir punt de control de tren aquí...
-STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}No es pot treure punt de control de tren aquí...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Converteix una via a punt de control
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Aquí no es pot construir punt de control de tren...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Aquí no es pot treure punt de control de tren...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construir via de tren usant el mode Autorail
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construeix vies de tren utilitzant el mode Autorail
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...no hi ha poblacions en aquest escenari
 
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Estàs segur de voler crear un paisatge aleatori?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Moltes poblacions aleatòries
-STR_RANDOM_TOWNS_TIP                                            :{BLACK}Omplir el mapa amb poblacions situades aleatòriament
+STR_RANDOM_TOWNS_TIP                                            :{BLACK}Omple el mapa amb poblacions situades aleatòriament
 STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Moltes indústries aleatòries
-STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Omplir el mapa amb indústries situades aleatòriament
+STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Omple el mapa amb indústries situades aleatòriament
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}No es poden generar indústries...
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Obre la barra d'eines del terreny per elevar/rebaixar nivell, plantar arbres, etc.
@@ -1200,12 +1200,12 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Nivell d
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres de tipus aleatori
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Situar arbres de tipus aleatori
 
-STR_CANT_BUILD_CANALS                                           :{WHITE}No es poden construir canals aquí...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Construir canals
+STR_CANT_BUILD_CANALS                                           :{WHITE}Aquí no es poden construir canals...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Construeix canals
 STR_LANDINFO_CANAL                                              :Canal
 
-STR_CANT_BUILD_LOCKS                                            :{WHITE}No es pot construir una resclosa aquí...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Construir rescloses
+STR_CANT_BUILD_LOCKS                                            :{WHITE}Aquí no es pot construir una resclosa...
+STR_BUILD_LOCKS_TIP                                             :{BLACK}Construeix rescloses
 STR_LANDINFO_LOCK                                               :Resclosa
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boia en ús!
@@ -1213,13 +1213,13 @@ STR_BUOY_IS_IN_USE                                              :{WHITE}...boia 
 STR_LANDINFO_COORDS                                             :{BLACK}Coordenades: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}No es pot treure part de la estació...
-STR_CANT_CONVERT_RAIL                                           :{WHITE}No es pot convertir el tipus de via aquí...
+STR_CANT_CONVERT_RAIL                                           :{WHITE}Aquí no es pot convertir el tipus de via...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Converteix/Millora el tipus de via
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Arrossega la màquina de tren aquí per vendre el tren sencer
 
 STR_DRAG_DROP                                                   :{BLACK}Arrossega i Deixa
-STR_STATION_DRAG_DROP                                           :{BLACK}Construir una estació arrossegant i deixant
+STR_STATION_DRAG_DROP                                           :{BLACK}Construeix una estació arrossegant i deixant
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Selecciona un tipus de estació a mostrar
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Selecciona el tipus de estació a construir
 
@@ -1231,13 +1231,13 @@ STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activa t
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Construeix Mina de Carbó
 STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Planta Bosc
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Construir Plataforma Petrolífera
+STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Construeix una Plataforma Petrolífera
 STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Funda Granja
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Construir Mina de Coure
+STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Construeix una Mina de Coure
 STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Perfora per buscar Petroli
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Construir Mina d'Or
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Construir Mina de Diamants
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Construir Mina de Ferro
+STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Construeix una Mina d'Or
+STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Construeix una Mina de Diamants
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Construeix una Mina de Ferro
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Funda Plantació de Fruita
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Funda Plantació de Cautxú
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Funda Surtidor d'Aigua
@@ -1245,9 +1245,9 @@ STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Planta B
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Funda Granja de Piles
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Perfora per buscar Cola
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Funda Fonts de Plàstic
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Construir Generador de Bombolles
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Construeix un Generador de Bombolles
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Funda Cantera de Caramel
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construir Mina de Sucre
+STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construeix una Mina de Sucre
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Indústries
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transportat)
@@ -1264,7 +1264,7 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}No es po
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Els intervals de manteniment estàn en percentatges: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Canvi de producció
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Benvingut a aquest nou AI, en desenvolupament. Pot ser que tinguis problemes. Quan en tinguis, fes una còpia de pantalla i publícala al forums. Disfruta!
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Benvingut a aquesta nova IA, en desenvolupament. Pot ser que tinguis problemes. Quan en tinguis, fes una còpia de pantalla i publícala al forums.
 TEMP_AI_ACTIVATED                                               :{WHITE}Atenció: aquest nova IA encara està en versió alfa! Actualment, només funcionen els autobusos i camions!
 TEMP_AI_MULTIPLAYER                                             :{WHITE}Atenció: aquesta funció encara és experimental. Si us plau, informeu de qualsevol problema amb ella a truelight@openttd.org (en anglès).
 
@@ -1287,7 +1287,7 @@ STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Clica en
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Busca servidor
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Cercant un servidor a la xarxa
-STR_NETWORK_ADD_SERVER                                          :{BLACK}Afegir servidor
+STR_NETWORK_ADD_SERVER                                          :{BLACK}Afegeix un servidor
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Afegeix un servidor a la llista que sempre es comprovarà per a jocs iniciats.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Entra l'adreça IP del servidor
 
@@ -1316,7 +1316,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Inicia u
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nom del joc:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}El nom del joc es mostrarà a altres jugadors en el menú de selecció de joc multijugador
-STR_NETWORK_SET_PASSWORD                                        :{BLACK}Establir contrasenya
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Posa una contrasenya
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protegeix el teu joc amb una contrasenya si no vols que d'altre gent el pugui utilitzar
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecciona un mapa:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}amb quin mapa vols jugar?
@@ -1368,7 +1368,7 @@ STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nova Emp
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Obre una nova Empresa
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Espectador
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Veure el joc com a espectador
-STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Unir-se a l'empresa
+STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Uneix-te a l'empresa
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Ajuda a gestionar aquesta empresa
 STR_NETWORK_REFRESH                                             :{BLACK}Actualitza servidor
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}Actualitza la informació del servidor
@@ -1404,7 +1404,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desconnecta
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Entra la quantitat de diners que vols obtenir
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introdueix la quantitat de diners que vols obtenir
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegit. Entra la contrasenya
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Entra la contrasenya
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Llista de Clients
@@ -1494,12 +1494,12 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Cost: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Ingressos: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Ingressos: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transferir: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfereix: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Transfereix: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Cost Estimat: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Ingressos Estimats: {CURRENCY}
-STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}No es pot elevar el terreny aquí...
-STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}No es pot rebaixar el terreny aquí...
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Aquí no es pot elevar el terreny...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Aquí no es pot rebaixar el terreny...
 STR_080A_ROCKS                                                  :Roques
 STR_080B_ROUGH_LAND                                             :Terreny Irregular
 STR_080C_BARE_LAND                                              :Terreny erm
@@ -1511,7 +1511,7 @@ STR_0810_DESERT                                                 :Desert
 ##id 0x1000
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terreny inclinat en direcció incorrecta
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Combinació de vies imposible
-STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}La excavació pot malmetre el tunel
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}La excavació pot malmetre el túnel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Ja ets a nivell del mar
 STR_1004_TOO_HIGH                                               :{WHITE}Massa alt
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Via de tren no apropiada
@@ -1522,24 +1522,24 @@ STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construc
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construcció de Monorail
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construcció de Maglev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Selecciona pont per la via
-STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}No es poden construir cotxeres de tren aquí...
-STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}No es pot construir una estació de tren aquí...
-STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}No es poden construir senyals aquí...
-STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}No es pot construir via de tren aquí...
-STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}No es pot treure via de tren d'aquí...
-STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}No es poden treure senyals d'aquí...
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Aquí no es poden construir cotxeres de tren...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Aquí no es pot construir una estació de tren...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Aquí no es poden construir senyals...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Aquí no es pot construir la via de tren...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Aquí no es pot treure la via de tren...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Aquí no es poden treure les senyals...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Cotxeres de Tren
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construcció de Ferrocarril
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Contrucció de Via Electrificada
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construcció de Monorail
 STR_1017_MAGLEV_CONSTRUCTION                                    :Construcció de Maglev
-STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir via de tren
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construeix via de tren
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Construcció de cotxeres de tren (per construcció i manteniment de trens)
-STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Construir estació de tren
-STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Construir senyals de tren
-STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Construir pont de tren
-STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Construir tunel de tren
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Intercanvia funció construir/treure per vies de tren i senyals
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Construeix una estació de tren
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Construeix senyals de tren
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Construeix un pont de tren
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Construeix túnel de tren
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Intercanvia funció construeix/treu per vies de tren i senyals
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Selecció de pont - clica al pont triat per construir-lo
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Selecciona la orientació de les Cotxeres de tren
 STR_1021_RAILROAD_TRACK                                         :Via de tren
@@ -1557,19 +1557,19 @@ STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}S'ha de 
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Obres en progrés
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construcció de Carreteres
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecciona un Pont per Carretera
-STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}No es pot construir una carretera aquí...
-STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}No es pot treure una carretera d'aquí...
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Aquí no es pot construir una carretera...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Aquí no es pot treure una carretera...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Cotxeres
-STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}No es pot construir cotxeres aquí...
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Aquí no es pot construir una cotxera...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}No es pot construir una parada d'autobús...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}No es pot construir estació de mercaderies...
 STR_180A_ROAD_CONSTRUCTION                                      :Construcció de Carreteres
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construeix una secció de carretera
-STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir Cotxera (per construir i mantenir vehicles)
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construeix una cotxera (per construir i mantenir vehicles)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Constueix una parada d'autobús
-STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construir moll de càrrega
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construeix un moll de càrrega
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construeix un pont per carretera
-STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construeix un tunel per carretera
+STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construeix un túnel per carretera
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Intercanvia funció construeix/treu per la construcció de carreteres
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Selecciona la orientació de les Cotxeres
 STR_1814_ROAD                                                   :Carretera
@@ -1662,7 +1662,7 @@ STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Inicia una mitjana campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Inicia una gran campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Patrocina la reconstrucció de la xarxa local de carrers. Causa una notable distorsió del trànsit durant 6 mesos.{}  Cost: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construir una estatua en honor a la teva empresa.{} Cost: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construeix una estatua en honor a la teva empresa.{} Cost: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Patrocina la construcció de nous edificis comercials en la població.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Compra per 1 any els drets exclusius de transport en la població. La autoritat local només permetrà utilitzar les instal·lacions de la teva empresa de transports als passatgers i les mercaderies.{} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Subornar les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen!!.{}  Cost: {CURRENCY}
@@ -1683,14 +1683,14 @@ STR_STATION                                                     :{STATION}
 ##id 0x2800
 STR_LANDSCAPING                                                 :Paisatges
 STR_2800_PLANT_TREES                                            :Planta arbres
-STR_2801_PLACE_SIGN                                             :Situa senyal
+STR_2801_PLACE_SIGN                                             :Situa una senyal
 STR_2802_TREES                                                  :{WHITE}Arbres
-STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...ja hi ha arbres aquí
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...aquí ja hi ha arbres
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...lloc inadequat
-STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}No es poden plantar arbres aquí...
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Aquí no es poden plantar arbres...
 STR_2806                                                        :{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...massa senyals
-STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}No es pot situar un senyal aquí...
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Aquí no es pot situar una senyal...
 STR_280A_SIGN                                                   :Senyal
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Edita el text de la senyal
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}No es pot canviar el nom del senyal...
@@ -1707,7 +1707,7 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Nombre d
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Mida de les andanes
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Massa a prop d'una altra estació de tren
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Fusiona més d'una estació/àrea de càrrega existent
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Massa estacions/àrees de càrrega en aquesta població
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Hi ha massa estacions/àrees de càrrega en aquesta població
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Massa estacions/àrees de càrrega
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Massa parades d'autobús
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Masses estacions de càrrega
@@ -1785,7 +1785,7 @@ STR_STAT_CLASS_WAYP                                             :Punt de pas
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Drassanes
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...s'han de construir dins l'aigua
-STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}No es pot construir una drassana aquí...
+STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Aquí no es pot construir una drassana...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Selecciona l'orientació de la drassana
 STR_3804_WATER                                                  :Aigua
 STR_3805_COAST_OR_RIVERBANK                                     :Costa o marge de riu
@@ -1799,11 +1799,11 @@ STR_4002_SAVE                                                   :{BLACK}Desa
 STR_4003_DELETE                                                 :{BLACK}Esborra
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes lliures
-STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Imposible llegir unitat de disc
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossible llegir la unitat de disc
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Desat del Joc erroni
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Impossible esborrar l'arxiu
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Càrrega del Joc errònia
-STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Llista de dispositius de disc, directoris i arxius de jocs desats
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Llista de dispositius de disc, carpetes i arxius de jocs desats
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nom actualment seleccionat per joc desat
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Esborra el joc desat actualment seleccionat
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Desa el joc actual, usant el nom seleccionat
@@ -2174,7 +2174,7 @@ STR_7076_COMPANY_VALUE                                          :{GOLD}Valor de 
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Compra un 25% d'accions
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vendre un 25% d'accions
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Compra el 25% d'accions d'aquesta empresa
-STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vendre un 25% d'accions d'aquesta empresa
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Ven un 25% d'accions d'aquesta empresa
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}No pots comprar el 25% de participació en aquesta empresa...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}No pots vendre el 25% de participació en aquesta empresa...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% propietat de {COMPANY})
@@ -2209,7 +2209,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Mostra e
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Mostra esquemes de colors dels avions
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Escolleix el color primari per l'esquema triat
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Escolleix el color secundari per l'esquema triat
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Selecciona un esquema de colors per canviar-lo, o diversos esquemes amb CTRL+click. Click a la casella per canviar l'esquema
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Selecciona un esquema de colors per canviar-lo, o diversos esquemes amb CTRL+Clic. Clica a la casella per canviar l'esquema
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
@@ -2525,13 +2525,13 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nous Tre
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nous Trens Maglev
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Vehicles amb Vies
 
-STR_881F_BUILD_VEHICLE                                          :{BLACK}Construir Vehicle
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Construeix Vehicle
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clona Vehicle
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Fer una còpia del vehicle. Control-clic compartirà les ordres
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Fer una còpia del vehicle. Prem aquest botó i alhora en un vehicle dins o fora cotxeres. Control-clic compartirà les ordres
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Fa una còpia del vehicle. Control-Clic compartirà les ordres
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Fa una còpia del vehicle. Prem aquest botó i després en un vehicle dins o fora cotxeres. Control-Clic compartirà les ordres
 STR_CLONE_TRAIN                                                 :{BLACK}Clona Tren
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Fer una còpia del tren inclosos tots els vagons. Control-clic compartirà les ordres
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Fer una còpia del tren inclosos tots els vagons. Prem aquest botó i alhora en un tren dins o fora cotxeres. Control-clic compartirà les ordres
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Fa una còpia del tren inclosos tots els vagons. Control-Clic compartirà les ordres
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Fa una còpia del tren inclosos tots els vagons. Prem aquest botó i després en un tren dins o fora cotxeres. Control-Clic compartirà les ordres
 STR_8820_RENAME                                                 :{BLACK}Reanomena
 STR_8823_SKIP                                                   :{BLACK}Salta
 STR_8824_DELETE                                                 :{BLACK}Esborra
@@ -2540,7 +2540,7 @@ STR_8826_GO_TO                                                  :{BLACK}Ves a
 STR_8827_FULL_LOAD                                              :{BLACK}Carrega
 STR_8828_UNLOAD                                                 :{BLACK}Descarrega
 STR_REFIT                                                       :{BLACK}Remodela
-STR_REFIT_TIP                                                   :{BLACK}Selecciona quin tipus de càrrega vols remodelar en aquesta ordre. Control + click per eliminar l'ordre de remodelar
+STR_REFIT_TIP                                                   :{BLACK}Selecciona quin tipus de càrrega vols remodelar en aquesta ordre. Control + Clic per eliminar l'ordre de remodelar
 STR_REFIT_ORDER                                                 :(Remodela a {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordres)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fí d'Ordres - -
@@ -2567,23 +2567,23 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}No es po
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}dies{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}%{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clica al tren per informació
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Construir nous trens (es necessita cotxera)
-STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clica al tren per info., arrossegar el vehicle per afegir/treure del tren
-STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construir nou element de tren
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Construeix nous trens (es necessita cotxera)
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clica al tren per info., arrossega el vehicle per afegir/treure del tren
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construeix un nou element de tren
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrossega l'element de tren fins aquí per vendre'l
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centra la vista de la pantalla principal en la situació de la cotxera
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Llista de selecció d'elements de tren - clica a l'element per informació
-STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir l'element de tren seleccionat
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construeix l'element de tren seleccionat
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Reanomena el tipus d'element del tren
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Acció de tren actual - clica aquí per parar/arrencar el tren
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Acció sobre el tren actual - clica aquí per parar/arrencar el tren
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Mostra les ordres del tren
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centra la vista de la pantalla principal a la situació del tren
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Envia el tren a cotxera
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Obliga al tren a actuar sense esperar a tenir la senyal lliure
-STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Invertir la direcció del tren
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Inverteix la direcció del tren
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Mostra els detalls del tren
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Augmenta l'interval de manteniment
-STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Disminuir l'interval de manteniment
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Disminueix l'interval de manteniment
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Mostra els detalls de càrrega transportada
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Mostra els detalls d'elements del tren
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostra les capacitats de cada element
@@ -2592,7 +2592,7 @@ STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Llista d
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Salta l'ordre actual i comença la següent
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Esborra l'ordre seleccionada
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer sense parades l'ordre seleccionada
-STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Afegir una nova ordre abans de la seleccionada, o afegir-la al final de la llista
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que en l'ordre seleccionada s'esperi a que l'element tingui càrrega total
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Obliga en l'ordre seleccionada a descarregar l'element
 STR_SERVICE_HINT                                                :{BLACK}Saltar l'ordre a menys que es necessiti manteniment
@@ -2616,7 +2616,7 @@ STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No es po
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Reanomena el tipus d'element del tren
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No es pot reanomenar el tipus d'element del tren...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que l'ordre marcada forci al vehicle a volcar la càrrega
-STR_886F_TRANSFER                                               :{BLACK}Transferir
+STR_886F_TRANSFER                                               :{BLACK}Transfereix
 
 STR_TRAIN_STOPPING                                              :{RED}Parant
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parant, a {VELOCITY}
@@ -2631,7 +2631,7 @@ STR_9002                                                        :{WHITE}{VEHICLE
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Cotxera de Vehicles Rodats
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nous Vehicles
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nous Vehicles Rodats
-STR_9007_BUILD_VEHICLE                                          :{BLACK}Construir Vehicle
+STR_9007_BUILD_VEHICLE                                          :{BLACK}Construeix Vehicle
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}No es pot construir l'automòbil...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detalls)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Edat: {LTBLUE}{STRING}{BLACK}   Cost de circulació: {LTBLUE}{CURRENCY}/any
@@ -2651,7 +2651,7 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisi�
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}No es pot enviar el vehicle a cotxera...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossible trobar la cotxera local
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automòbils - clica en un vehicle per informació
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construir nous automòbils (necessita una cotxera)
+STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construeix nous automòbils (necessita una cotxera)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/arrencar el vehicle
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Mostra les ordres dels vehicles
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centra la pantalla principal a la situació del vehicle
@@ -2659,7 +2659,7 @@ STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Envia el
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Obliga al vehicle a tornar
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Mostra els detalls del vehicle
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Vehicles - clica en un vehicle per informació
-STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Construir nou automòbil
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Construeix un nou automòbil
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arrossega el vehicle fins aquí per vendre'l
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centra la pantalla principal en la situació de la cotxera
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Llista de selecció de Vehicles Rodats - clica en un vehicle per informació
@@ -2693,15 +2693,15 @@ STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccio
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construcció de Port
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Construcció de Port
-STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}No es pot construir el port aquí...
+STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Aquí no es pot construir un port...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Drassana
 STR_9804_NEW_SHIPS                                              :{BLACK}Nous Vaixells
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Vaixells
 STR_9808_NEW_SHIPS                                              :{WHITE}Nous Vaixells
-STR_9809_BUILD_SHIP                                             :{BLACK}Construir Vaixell
+STR_9809_BUILD_SHIP                                             :{BLACK}Construeix un Vaixell
 STR_CLONE_SHIP                                                  :{BLACK}Clona Vaixell
-STR_CLONE_SHIP_INFO                                             :{BLACK}Fer una còpia del vaixell. Control-clic compartirà les ordres
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Fer una còpia del vaixell. Prem aquest botó i alhora en un vaixell dins o fora les drassanes. Control-clic compartirà les ordres
+STR_CLONE_SHIP_INFO                                             :{BLACK}Fa una còpia del vaixell. Control-Clic compartirà les ordres
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Fa una còpia del vaixell. Prem aquest botó i després en un vaixell dins o fora les drassanes. Control-Clic compartirà les ordres
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}El vaixell s'ha de parar a la drassana
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}No es pot vendre el vaixell...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}No es pot construir el vaixell...
@@ -2722,20 +2722,20 @@ STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Cap a l
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Revisió a la drassana de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la drassana de {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Vaixell {COMMA} esperant en drassana
-STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construir port
-STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construir drassana (per construir i mantindre vaixells)
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construeix un port
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construeix una drassana (per construir i revisar vaixells)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per informació
-STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Construir nou vaixell
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Construeix un nou vaixell
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Arrossega el vaixell fins aquí per vendre'l
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra la pantalla principal en la situació de la drassana
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per informació
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construir nous vaixells (necessites una drassana)
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construeix nous vaixells (necessites una drassana)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}LLista de selecció de Vaixells - clica en un vaixell per informació
-STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construir el vaixell seleccionat
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Accions del vaixell actual - clica aquí per parar/arrencar el vaixell
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construeix el vaixell seleccionat
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Accions sobre el vaixell actual - clica aquí per parar/arrencar el vaixell
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostra les ordres del vaixell
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra la pantalla principal en la situació del vaixell
-STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Envia el vaixell a la drassana. CTRL+click per només revisió
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Envia el vaixell a la drassana. CTRL+Clic per només revisió
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Mostra els detalls del vaixell
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nou vaixell disponible!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2746,7 +2746,7 @@ STR_9831_NAME_SHIP                                              :{WHITE}Anomena 
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}No es pot anomenar el vaixell...
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{}El 1er. vaixell arriba a {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Situa boia, que pot ser útil per marques de ruta addicionals
-STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}No es pot situar una boia aquí...
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Aquí no es pot situar una boia...
 STR_9836_RENAME                                                 :{BLACK}Reanomena
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Reanomena tipus de vaixell
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Reanomena tipus de vaixell
@@ -2765,14 +2765,14 @@ SERVICE_AT_SHIP_DEPOT                                           :Manteniment a d
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Aeroports
-STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}No es pot construir un aeroport aquí...
+STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Aquí no es pot construir un aeroport...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar d'Aeronaus
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nova Aeronau
 STR_CLONE_AIRCRAFT                                              :{BLACK}Clona Aeronau
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Fer una còpia de l'aeronau. Control-clic compartirà les ordres
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Fer una còpia de l'aeronau. Prem aquest botó i alhora en una aeronau dins o fora l'hangar. Control-clic compartirà les ordres
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Fa una còpia de l'aeronau. Control-Clic compartirà les ordres
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Fa una còpia de l'aeronau. Prem aquest botó i després en una aeronau dins o fora l'hangar. Control-Clic compartirà les ordres
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nova Aeronau
-STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construir Aeronau
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construeix una Aeronau
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}No es pot construir l'aeronau...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aeronaus
 STR_A00A                                                        :{WHITE}{VEHICLE}
@@ -2797,16 +2797,16 @@ STR_A01A_CAPACITY                                               :{BLACK}Capacita
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}L' aeronau s'ha de parar a l'hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}No es pot vendre l' aeronau...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construcció d'Aeroport
-STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construir aeroport
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construeix un aeroport
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau - clica en l'aeronau per informació
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construeix noves aeronaus (necessites un aeroport amb hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau - clica en l' aeronau per informació
-STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir noves aeronaus
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construeix noves aeronaus
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrossega l'aeronau fins aquí per vendre-la
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centra la pantalla principal en la situació de l'hangar
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Llista de selecció d'Aeronaus - clica en una aeronau per informació
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construir l'aeronau seleccionada
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Accions de l'actual aeronau - clica aquí per parar/arrencar l'aeronau
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construeix l'aeronau seleccionada
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Accions sobre l'aeronau actual - clica aquí per parar/arrencar l'aeronau
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra les ordres de l'aeronau
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centra la pantalla principal a la situació de l'aeronau
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envia aeronau a l'hangar
@@ -2939,7 +2939,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra t
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tots els vaixells que tinguin aquest port al seu itinerari
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres compartides de {COMMA} Vehicle{P "" s}
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tots els vehicles que tenen les mateixes ordres
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra tots els vehicles que tenen les mateixes ordres
 
 ### depot strings
 
@@ -2967,9 +2967,9 @@ STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Treure u
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Treure una llista de tots els vaixells amb aquesta drassana en les seves ordres
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Treu una llista de tots els avions amb algun hangar en aquest aeroport en les seves ordres
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autosubstituir tots els trens de la cotxera
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autosubstituir tots els vehicles de la cotxera
-STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autosubstituir tots els vaixells de la drassana
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autosubstitueix tots els trens de la cotxera
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autosubstitueix tots els vehicles de la cotxera
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autosubstitueix tots els vaixells de la drassana
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autosubstitueix tots els avions de l'hangar
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
@@ -2978,8 +2978,8 @@ STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Avió
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING}
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Començar a substituir
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de substituir
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Comença a substituir
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Para de substituir
 STR_NOT_REPLACING                                               :{BLACK}No substituint
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Cap vehicle seleccionat
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecciona el tipus de motor a substituir
@@ -2988,9 +2988,9 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Prem per
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Prem per iniciar el reemplaçament del tipus de motor seleccionat a l'esquerra pel seleccionat a la dreta
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tria el tipus de via pel que vols substituir motors
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mosyta quin motor dels seleccionats a l'esquerra es reemplaça, si hi ha
-STR_REPLACE_HELP                                                :{BLACK}Et permet substituir un tipus de motor amb un altre, quan els trens del tipus original entrin a cotxeres
+STR_REPLACE_HELP                                                :{BLACK}Et permet substituir un tipus de motor per un altre, quan els trens del tipus original entrin a cotxeres
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la sustitució automàtica mantinga la llargaria del tren eliminant vagons (començant pel front), si sustituira la màquina faria el tren més llarg
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la sustitució automàtica mantingui la llargària del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sustituint: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} CARACTERÍSTICA EXPERIMENTAL {}Alterna entre finestres de sustitució de vagons i de motors{}La sustitució del vagó només tindrà lloc si el nou vagó pot ser remodelat per admetre el mateix tipus de càrrega que el vell. Això es comprova per a cada vagó quan el reemplaçament es produeix.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}El motor no es pot construir

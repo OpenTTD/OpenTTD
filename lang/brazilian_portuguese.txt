@@ -393,7 +393,15 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade de C
 STR_NO_WAITING_CARGO                                            :{BLACK}Não há carga de nenhum tipo aguardando
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleicionar todas as instalações
 STR_SELECT_ALL_TYPES                                            :{BLACK}Selecionar todos os tipos de carga (inclusive as que não tem espera)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Ver uma lista dos designs de motor disponíveis para este tipo de veículo.
+STR_MANAGE_LIST                                                 :{BLACK}Administrar lista
+STR_MANAGE_LIST_TIP                                             :{BLACK}Envia instruções a todos os veículos desta lista
 STR_REPLACE_VEHICLES                                            :Substituir Veículos
+STR_SEND_TRAIN_TO_DEPOT                                         :Enviar para Depósito
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Enviar para Depósito
+STR_SEND_SHIP_TO_DEPOT                                          :Enviar para Depósito
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Enviar para Hangar
+STR_SEND_FOR_SERVICING                                          :Mandar para a Manutenção
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
