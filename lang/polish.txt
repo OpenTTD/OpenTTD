@@ -446,7 +446,15 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Pojemnosc
 STR_NO_WAITING_CARGO                                            :{BLACK}Nie ma zadnego czekajacego towaru
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Zaznacz wszystkie typy stacji
 STR_SELECT_ALL_TYPES                                            :{BLACK}Zaznacz wszystkie typy towaru (oraz brak czekajacego towaru)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zobacz listę dostępnych wyglądów lokomotywy dla tego typu pojazdu
+STR_MANAGE_LIST                                                 :{BLACK}Zarządzaj listą
+STR_MANAGE_LIST_TIP                                             :{BLACK}Wyślij instrukcje wszystkim pojazdom na tej liście
 STR_REPLACE_VEHICLES                                            :Zastap pojazdy
+STR_SEND_TRAIN_TO_DEPOT                                         :Wyślij do Zajezdni
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Wyślij do Zajezdni
+STR_SEND_SHIP_TO_DEPOT                                          :Wyślij do Stoczni
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Wyślij do Hangaru
+STR_SEND_FOR_SERVICING                                          :Wyślij do Serwisu
 
 ############ range for months starts
 STR_0162_JAN                                                    :Sty

@@ -394,11 +394,15 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Frachtkapazitä
 STR_NO_WAITING_CARGO                                            :{BLACK}Keine Fracht wartet
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Wähle alle Anlagen
 STR_SELECT_ALL_TYPES                                            :{BLACK}Wähle alle Frachtarten (einschließlich ohne wartender Fracht)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zeige eine Liste von verfügbaren Fahrzeugen für diesen Fahrzeugtyp
+STR_MANAGE_LIST                                                 :{BLACK}Verwalte die Liste
+STR_MANAGE_LIST_TIP                                             :{BLACK}Aufträge an alle Fahrzeuge in der Liste verschicken
 STR_REPLACE_VEHICLES                                            :Ersetze Fahrzeuge
 STR_SEND_TRAIN_TO_DEPOT                                         :Sende nach Depot
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Sende nach Depot
 STR_SEND_SHIP_TO_DEPOT                                          :Sende nach Depot
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Sende nach Hangar
+STR_SEND_FOR_SERVICING                                          :Zur Wartung schicken
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1017,6 +1021,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Verbiet
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Bahnhöfe vereinigen, die nebeneinander gebaut werden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Verlasse die Station, wenn eine Fracht vollgeladen ist: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Verbessertes Beladeverfahren nutzen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Fahrzeuge schrittweise beladen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Liefere Fracht nur, wenn die Station diese annimmt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Erlaube das Bauen von sehr langen Brücken: {ORANGE}{STRING}
@@ -2875,6 +2880,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Bargeld
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Schuldenfalle?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Erreichte Punkte von der maximal erreichbaren Anzahl
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Einstellungen
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf Einstellungen
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Änderungen anwenden
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parameter setzen
@@ -2882,6 +2888,30 @@ STR_NEWGRF_TIP                                                  :{BLACK}Eine Lis
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Keine Newgrf-Dateien installiert. Bitte Installationsanleitung im Handbuch nachschlagen.
 STR_NEWGRF_FILENAME                                             :{BLACK}Dateiname: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5-Summe: {SILVER}{STRING}
+
+STR_NEWGRF_ADD                                                  :{BLACK}Hinzufügen
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Füge eine neue NewGRF Datei zu Liste hinzu
+STR_NEWGRF_REMOVE                                               :{BLACK}Entfernen
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Entferne die ausgewählte NewGRF Datei von der Liste
+STR_NEWGRF_MOVEUP                                               :{BLACK}Nach oben
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Schiebe die ausgewählte NewGRF Datei in der Liste nach oben
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Nach unten
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Schiebe die ausgewählte NewGRF Datei in der Liste nach unten
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Eine Liste der installierten NewGRF Dateien. Wähle eine Datei und verändere deren Parameter
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parameter: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Schreibe neue NewGRF Parameter
+STR_NEWGRF_NO_INFO                                              :{BLACK}Keine Informationen verfügbar
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Verfügabre NewGRF Dateien
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Zur Auswahl hinzufügen
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Füge die ausgewählte NewGRF Datei zu deiner Konfiguration hinzu
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Aktualisiere Dateiliste
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Aktualisiere die Liste der verfügbaren NewGRF Dateien
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kann die Datei nicht hinzufügen: doppelte GRF ID
+
+STR_NEWGRF_NOT_FOUND                                            :{RED}Zugehörige Datei nicht gefunden
+STR_NEWGRF_DISABLED                                             :{RED}Ausgeschaltet
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Eigene Währung
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wechselkurs: {ORANGE}{CURRENCY} = £ {COMMA}
