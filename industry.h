@@ -90,6 +90,11 @@ static inline bool IsValidIndustry(const Industry *industry)
 	return industry->xy != 0;
 }
 
+static inline bool IsValidIndustryID(IndustryID index)
+{
+	return index < GetIndustryPoolSize() && IsValidIndustry(GetIndustry(index));
+}
+
 VARDEF int _total_industries;
 
 static inline IndustryID GetMaxIndustryIndex(void)
@@ -108,23 +113,23 @@ static inline uint GetNumIndustries(void)
 }
 
 /**
- * Return a random valid town.
+ * Return a random valid industry.
  */
 static inline Industry *GetRandomIndustry(void)
 {
-	uint num = RandomRange(GetNumIndustries());
-	uint index = 0;
+	int num = RandomRange(GetNumIndustries());
+	IndustryID index = INVALID_INDUSTRY;
 
 	if (GetNumIndustries() == 0) return NULL;
 
-	while (num > 0) {
+	while (num >= 0) {
 		num--;
-
 		index++;
+
 		/* Make sure we have a valid industry */
-		while (GetIndustry(index) == NULL) {
+		while (!IsValidIndustryID(index)) {
 			index++;
-			if (index > GetMaxIndustryIndex()) index = 0;
+			assert(index <= GetMaxIndustryIndex());
 		}
 	}
 

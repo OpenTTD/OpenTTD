@@ -6,6 +6,10 @@
 #include "oldpool.h"
 #include "player.h"
 
+enum {
+	INVALID_TOWN = 0xFFFF,
+};
+
 struct Town {
 	TileIndex xy;
 
@@ -162,6 +166,11 @@ static inline bool IsValidTown(const Town* town)
 	return town->xy != 0;
 }
 
+static inline bool IsValidTownID(TownID index)
+{
+	return index < GetTownPoolSize() && IsValidTown(GetTown(index));
+}
+
 VARDEF uint _total_towns;
 
 static inline TownID GetMaxTownIndex(void)
@@ -184,26 +193,21 @@ static inline uint GetNumTowns(void)
  */
 static inline Town *GetRandomTown(void)
 {
-	uint num = RandomRange(GetNumTowns());
-	uint index = 0;
+	int num = RandomRange(GetNumTowns());
+	TownID index = INVALID_TOWN;
 
-	while (num > 0) {
+	while (num >= 0) {
 		num--;
 
 		index++;
 		/* Make sure we have a valid industry */
-		while (GetTown(index) == NULL) {
+		while (!IsValidTownID(index)) {
 			index++;
-			if (index > GetMaxTownIndex()) index = 0;
+			assert(index <= GetMaxTownIndex());
 		}
 	}
 
 	return GetTown(index);
-}
-
-static inline bool IsValidTownID(uint index)
-{
-	return index < GetTownPoolSize() && IsValidTown(GetTown(index));
 }
 
 void DestroyTown(Town *t);
