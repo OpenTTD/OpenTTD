@@ -129,34 +129,30 @@ static uint32 CalcCRC(byte *data, uint size, uint32 crc) {
 
 static void GetFileInfo(DebugFileInfo *dfi, const TCHAR *filename)
 {
+	HANDLE file;
 	memset(dfi, 0, sizeof(dfi));
 
-	{
-		HANDLE file;
+	file = CreateFile(filename, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, 0);
+	if (file != INVALID_HANDLE_VALUE) {
 		byte buffer[1024];
 		DWORD numread;
 		uint32 filesize = 0;
 		FILETIME write_time;
 		uint32 crc = (uint32)-1;
 
-		file = CreateFile(filename, GENERIC_READ, FILE_SHARE_READ, NULL,
-			OPEN_EXISTING, 0, 0);
-		if (file != INVALID_HANDLE_VALUE) {
-			for (;;) {
-				if (ReadFile(file, buffer, sizeof(buffer), &numread, NULL) == 0 ||
-						numread == 0)
-					break;
-				filesize += numread;
-				crc = CalcCRC(buffer, numread, crc);
-			}
-			dfi->size = filesize;
-			dfi->crc32 = crc ^ (uint32)-1;
-
-			if (GetFileTime(file, NULL, NULL, &write_time)) {
-				FileTimeToSystemTime(&write_time, &dfi->file_time);
-			}
-			CloseHandle(file);
+		for (;;) {
+			if (ReadFile(file, buffer, sizeof(buffer), &numread, NULL) == 0 || numread == 0)
+				break;
+			filesize += numread;
+			crc = CalcCRC(buffer, numread, crc);
 		}
+		dfi->size = filesize;
+		dfi->crc32 = crc ^ (uint32)-1;
+
+		if (GetFileTime(file, NULL, NULL, &write_time)) {
+			FileTimeToSystemTime(&write_time, &dfi->file_time);
+		}
+		CloseHandle(file);
 	}
 }
 
@@ -185,23 +181,22 @@ static char *PrintModuleInfo(char *output, HMODULE mod)
 
 static char *PrintModuleList(char *output)
 {
-	BOOL (WINAPI *EnumProcessModules)(HANDLE,HMODULE*,DWORD,LPDWORD);
-	HANDLE proc;
-	HMODULE modules[100];
-	DWORD needed;
-	BOOL res;
-	int count,i;
+	BOOL (WINAPI *EnumProcessModules)(HANDLE, HMODULE*, DWORD, LPDWORD);
 
 	if (LoadLibraryList((Function*)&EnumProcessModules, "psapi.dll\0EnumProcessModules\0\0")) {
-		proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
-		if (proc) {
+		HMODULE modules[100];
+		DWORD needed;
+		BOOL res;
+		int count, i;
+
+		HANDLE proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
+		if (proc != NULL) {
 			res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
 			CloseHandle(proc);
 			if (res) {
-				count =
-					min(needed / sizeof(HMODULE), lengthof(modules));
-				for (i = 0; i != count; i++)
-					output = PrintModuleInfo(output, modules[i]);
+				count = min(needed / sizeof(HMODULE), lengthof(modules));
+
+				for (i = 0; i != count; i++) output = PrintModuleInfo(output, modules[i]);
 				return output;
 			}
 		}
@@ -256,7 +251,6 @@ static const char wininet_files[] =
 #undef M
 
 static WinInetProcs _wininet;
-
 
 static const TCHAR *SubmitCrashReport(HWND wnd, void *msg, size_t msglen, const TCHAR *arg)
 {
@@ -367,60 +361,57 @@ static bool DoEmergencySave(HWND wnd)
 static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM lParam)
 {
 	switch (msg) {
-	case WM_INITDIALOG: {
+		case WM_INITDIALOG: {
 #if defined(UNICODE)
-		wchar_t crash_msgW[8096];
+			wchar_t crash_msgW[8096];
 #endif
-		SetDlgItemText(wnd, 10, _crash_desc);
-		SetDlgItemText(wnd, 11, MB_TO_WIDE_BUFFER(_crash_msg, crash_msgW, lengthof(crash_msgW)));
-		SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
-		SetWndSize(wnd, -1);
-	} return TRUE;
-	case WM_COMMAND:
-		switch (wParam) {
-		case 12: // Close
-			ExitProcess(0);
-		case 13: { // Emergency save
-			if (DoEmergencySave(wnd)) {
-				MessageBox(wnd, _save_succeeded, _T("Save successful"), MB_ICONINFORMATION);
-			} else {
-				MessageBox(wnd, _T("Save failed"), _T("Save failed"), MB_ICONINFORMATION);
+			SetDlgItemText(wnd, 10, _crash_desc);
+			SetDlgItemText(wnd, 11, MB_TO_WIDE_BUFFER(_crash_msg, crash_msgW, lengthof(crash_msgW)));
+			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
+			SetWndSize(wnd, -1);
+		} return TRUE;
+		case WM_COMMAND:
+			switch (wParam) {
+				case 12: /* Close */
+					ExitProcess(0);
+				case 13: /* Emergency save */
+					if (DoEmergencySave(wnd)) {
+						MessageBox(wnd, _save_succeeded, _T("Save successful"), MB_ICONINFORMATION);
+					} else {
+						MessageBox(wnd, _T("Save failed"), _T("Save failed"), MB_ICONINFORMATION);
+					}
+					break;
+				case 14: { /* Submit crash report */
+					const TCHAR *s;
+
+					SetCursor(LoadCursor(NULL, IDC_WAIT));
+
+					s = SubmitCrashReport(wnd, _crash_msg, strlen(_crash_msg), _T(""));
+					if (s != NULL) {
+						MessageBox(wnd, s, _T("Error"), MB_ICONSTOP);
+						break;
+					}
+
+					// try to submit emergency savegame
+					if (_did_emerg_save || DoEmergencySave(wnd)) SubmitFile(wnd, _T("crash.sav"));
+
+					// try to submit the autosaved game
+					if (_opt.autosave) {
+						TCHAR buf[40];
+						_sntprintf(buf, lengthof(buf), _T("autosave%d.sav"), (_autosave_ctr - 1) & 3);
+						SubmitFile(wnd, buf);
+					}
+					EnableWindow(GetDlgItem(wnd, 14), FALSE);
+					SetCursor(LoadCursor(NULL, IDC_ARROW));
+					MessageBox(wnd, _T("Crash report submitted. Thank you."), _T("Crash Report"), MB_ICONINFORMATION);
+				}	break;
+				case 15: /* Expand window to show crash-message */
+					_expanded ^= 1;
+					SetWndSize(wnd, _expanded);
+					break;
 			}
-			break;
-		}
-		case 14: { // Submit crash report
-			const TCHAR *s;
-
-			SetCursor(LoadCursor(NULL, IDC_WAIT));
-
-			s = SubmitCrashReport(wnd, _crash_msg, strlen(_crash_msg), _T(""));
-			if (s != NULL) {
-				MessageBox(wnd, s, _T("Error"), MB_ICONSTOP);
-				break;
-			}
-
-			// try to submit emergency savegame
-			if (_did_emerg_save || DoEmergencySave(wnd)) SubmitFile(wnd, _T("crash.sav"));
-
-			// try to submit the autosaved game
-			if (_opt.autosave) {
-				TCHAR buf[40];
-				_sntprintf(buf, lengthof(buf), _T("autosave%d.sav"), (_autosave_ctr - 1) & 3);
-				SubmitFile(wnd, buf);
-			}
-			EnableWindow(GetDlgItem(wnd, 14), FALSE);
-			SetCursor(LoadCursor(NULL, IDC_ARROW));
-			MessageBox(wnd, _T("Crash report submitted. Thank you."), _T("Crash Report"), MB_ICONINFORMATION);
-			break;
-		}
-		case 15: // Expand
-			_expanded ^= 1;
-			SetWndSize(wnd, _expanded);
-			break;
-		}
-		return TRUE;
-	case WM_CLOSE:
-		ExitProcess(0);
+			return TRUE;
+		case WM_CLOSE: ExitProcess(0);
 	}
 
 	return FALSE;
@@ -775,12 +766,10 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 
 	do {
 		// skip whitespace
-		while (*line == ' ' || *line == '\t')
-			line++;
+		while (*line == ' ' || *line == '\t') line++;
 
 		// end?
-		if (*line == '\0')
-			break;
+		if (*line == '\0') break;
 
 		// special handling when quoted
 		if (*line == '"') {
@@ -808,7 +797,6 @@ void CreateConsole(void)
 	CONSOLE_SCREEN_BUFFER_INFO coninfo;
 
 	if (_has_console) return;
-
 	_has_console = true;
 
 	AllocConsole();
@@ -883,7 +871,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	_set_error_mode(_OUT_TO_MSGBOX); // force assertion output to messagebox
 
-	// setup random seed to something quite random
+	/* setup random seed to something quite random */
 	_random_seeds[1][0] = _random_seeds[0][0] = GetTickCount();
 	_random_seeds[1][1] = _random_seeds[0][1] = _random_seeds[0][0] * 0x1234567;
 	SeedMT(_random_seeds[0][0]);
