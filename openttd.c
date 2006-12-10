@@ -615,6 +615,8 @@ static void MakeNewGame(bool from_heightmap)
 {
 	_game_mode = GM_NORMAL;
 
+	ResetGRFConfig(true);
+
 	GenerateWorldSetCallback(&MakeNewGameDone);
 	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _patches.map_x, 1 << _patches.map_y);
 }
@@ -629,6 +631,8 @@ static void MakeNewEditorWorldDone(void)
 static void MakeNewEditorWorld(void)
 {
 	_game_mode = GM_EDITOR;
+
+	ResetGRFConfig(true);
 
 	GenerateWorldSetCallback(&MakeNewEditorWorldDone);
 	GenerateWorld(GW_EMPTY, 1 << _patches.map_x, 1 << _patches.map_y);
@@ -659,6 +663,8 @@ static void StartScenario(void)
 	ResetWindowSystem();
 
 	SetupColorsAndInitialWindow();
+
+	ResetGRFConfig(true);
 
 	// Load game
 	if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode) != SL_OK) {
@@ -799,7 +805,6 @@ void SwitchMode(int new_mode)
 			Player *p;
 
 			_opt_ptr = &_opt;
-			ResetGRFConfig(true);
 
 			_local_player = OWNER_NONE;
 			_generating_world = true;
