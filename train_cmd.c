@@ -42,14 +42,13 @@ static const byte _state_dir_table[4] = { 0x20, 8, 0x10, 4 };
 
 
 /** Return the cargo weight multiplier to use for a rail vehicle
- * @param v Vehicle (wagon) to get multiplier for
+ * @param cargo Cargo type to get multiplier for
  * @return Cargo weight multiplier
  */
-byte FreightWagonMult(const Vehicle *v)
+byte FreightWagonMult(CargoID cargo)
 {
-	assert(v->type == VEH_Train);
 	// XXX NewCargos introduces a specific "is freight" flag for this test.
-	if (v->cargo_type == CT_PASSENGERS || v->cargo_type == CT_MAIL) return 1;
+	if (cargo == CT_PASSENGERS || cargo == CT_MAIL) return 1;
 	return _patches.freight_trains;
 }
 
@@ -66,7 +65,7 @@ static void TrainCargoChanged(Vehicle* v)
 
 	for (u = v; u != NULL; u = u->next) {
 		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
-		uint32 vweight = (_cargoc.weights[u->cargo_type] * u->cargo_count * FreightWagonMult(u)) / 16;
+		uint32 vweight = (_cargoc.weights[u->cargo_type] * u->cargo_count * FreightWagonMult(u->cargo_type)) / 16;
 
 		// Vehicle weight is not added for articulated parts.
 		if (!IsArticulatedPart(u)) {

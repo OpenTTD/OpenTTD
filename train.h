@@ -222,6 +222,6 @@ uint CountArticulatedParts(EngineID engine_type);
 int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped);
 void CcCloneTrain(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
-byte FreightWagonMult(const Vehicle *v);
+byte FreightWagonMult(CargoID cargo);
 
 #endif /* TRAIN_H */
