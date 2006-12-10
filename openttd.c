@@ -1548,19 +1548,13 @@ bool AfterLoadGame(void)
 		ConvertNameArray();
 	}
 
-	/* from version 38 we have optional elrails */
+	/* from version 38 we have optional elrails, since we cannot know the
+	 * preference of a user, let elrails enabled; it can be disabled manually */
 	if (CheckSavegameVersion(38)) {
-		/* old game - before elrails made optional */
-		if (CheckSavegameVersion(24)) {
-			/* very old game - before elrail was introduced */
-			_patches.disable_elrails = true; // disable elrails
-		} else {
-			/* game with mandatory elrails (r4150+) */
-			_patches.disable_elrails = false; // enable elrails
-		}
+		_patches.disable_elrails = false; // enable elrails
+		/* do the same as when elrails were enabled/disabled manually just now */
+		SettingsDisableElrail(_patches.disable_elrails);
 	}
-	/* do the same as when elrails were enabled/disabled manually just now */
-	SettingsDisableElrail(_patches.disable_elrails);
 
 	return true;
 }
