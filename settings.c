@@ -1505,7 +1505,10 @@ const char *GRFProcessParams(const IniItem *item, uint index)
 	/* Loading newgrf stuff from configuration file */
 	c = calloc(1, sizeof(*c));
 	c->filename = strdup(item->name);
-	FillGRFDetails(c);
+	if (!FillGRFDetails(c)) {
+		ShowInfoF("ini: ignoring invalid NewGRF '%s'", c->filename);
+		return NULL;
+	}
 
 	if (*item->value != '\0') {
 		c->num_params = parse_intlist(item->value, (int*)c->param, lengthof(c->param));
