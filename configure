@@ -20,7 +20,7 @@ function showhelp() {
 	echo " --host-cxx          Sets the C++ host-compiler          []"
 	echo " --os                Sets the OS. Listens to:            [detected]"
 	echo "                        UNIX, OSX, FREEBSD, MORPHOS"
-	echo "                        BEOS, SUNOS, CYGWIN, MINGW"
+	echo "                        BEOS, SUNOS, CYGWIN, MINGW, OS2"
 	echo " --windres           Sets the windres (Windows)          [windres]"
 	echo " --force-le          Force LE platform                   [no]"
 	echo " --force-be          Force BE platform                   [no]"
@@ -276,6 +276,9 @@ then
 			;;
 		BEOS)
 			PARAM="$PARAM BEOS=1 UNIX=1"
+			;;
+		OS2)
+			PARAM="$PARAM OS2=1 UNIX=1"
 			;;
 		SUNOS)
 			PARAM="$PARAM SUNOS=1 UNIX=1"

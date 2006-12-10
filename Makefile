@@ -254,9 +254,13 @@ endif
 
 # Executable file extension
 ifdef WIN32
-EXE=.exe
+  EXE=.exe
 else
-EXE=
+  ifdef OS2
+    EXE=.exe
+  else
+    EXE=
+  endif
 endif
 
 # Set output executable names

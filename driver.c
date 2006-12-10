@@ -45,7 +45,7 @@ static const DriverDesc _music_driver_descs[] = {
 #ifdef __BEOS__
 	M("bemidi",  "BeOS MIDI Driver",        &_bemidi_music_driver),
 #endif
-#ifdef __OS2__
+#if defined(__OS2__) && !defined(__INNOTEK_LIBC__)
 	M("os2",     "OS/2 Music Driver",       &_os2_music_driver),
 #endif
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
