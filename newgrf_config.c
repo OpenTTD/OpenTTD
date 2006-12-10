@@ -6,6 +6,7 @@
 #include "macros.h"
 #include "debug.h"
 #include "variables.h"
+#include "string.h"
 #include "saveload.h"
 #include "md5.h"
 #include "newgrf.h"
@@ -258,6 +259,22 @@ const GRFConfig *GetGRFConfig(uint32 grfid)
 	}
 
 	return NULL;
+}
+
+
+/* Build a space separated list of parameters, and terminate */
+char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last)
+{
+	uint i;
+
+	/* Return an empty string if there are no parameters */
+	if (c->num_params == 0) return strecpy(dst, "", last);
+
+	for (i = 0; i < c->num_params; i++) {
+		if (i > 0) dst = strecpy(dst, " ", last);
+		dst += snprintf(dst, last - dst, "%d", c->param[i]);
+	}
+	return dst;
 }
 
 

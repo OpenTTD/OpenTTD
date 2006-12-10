@@ -40,6 +40,7 @@ void ClearGRFConfigList(GRFConfig *config);
 void ResetGRFConfig(bool defaults);
 bool IsGoodGRFConfigList(void);
 bool FillGRFDetails(GRFConfig *config);
+char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 
 /* In newgrf_gui.c */
 void ShowNewGRFSettings(bool editable, bool show_params, GRFConfig **config);

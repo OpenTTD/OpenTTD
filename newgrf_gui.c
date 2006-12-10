@@ -7,26 +7,9 @@
 #include "gfx.h"
 #include "gui.h"
 #include "window.h"
-#include "strings.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "newgrf_config.h"
-
-
-/* Build a space separated list of parameters, and terminate */
-static char *BuildParamList(char *dst, const GRFConfig *c, const char *last)
-{
-	uint i;
-
-	/* Return an empty string if there are no parameters */
-	if (c->num_params == 0) return strecpy(dst, "", last);
-
-	for (i = 0; i < c->num_params; i++) {
-		if (i > 0) dst = strecpy(dst, " ", last);
-		dst += snprintf(dst, last - dst, "%d", c->param[i]);
-	}
-	return dst;
-}
 
 
 /** Parse an integerlist string and set each found value
@@ -80,7 +63,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 	/* Show GRF parameter list */
 	if (show_params) {
 		if (c->num_params > 0) {
-			BuildParamList(buff, c, lastof(buff));
+			GRFBuildParamList(buff, c, lastof(buff));
 			SetDParamStr(0, buff);
 		} else {
 			SetDParam(0, STR_01A9_NONE);
@@ -401,7 +384,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					char buff[512];
 					if (WP(w, newgrf_d).sel == NULL) break;
 
-					BuildParamList(buff, WP(w, newgrf_d).sel, lastof(buff));
+					GRFBuildParamList(buff, WP(w, newgrf_d).sel, lastof(buff));
 					ShowQueryString(BindCString(buff), STR_NEWGRF_PARAMETER_QUERY, 63, 250, w->window_class, w->window_number, CS_ALPHANUMERAL);
 					break;
 				}
