@@ -12,6 +12,12 @@ bool LoadLibraryList(Function proc[], const char *dll);
 char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen);
 wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen);
 
+/* Function shortcuts for UTF-8 <> UNICODE conversion. When unicode is not
+ * defined these macros return the string passed to them, with UNICODE
+ * they return a pointer to the converted string. The only difference between
+ * XX_TO_YY and XX_TO_YY_BUFFER is that with the buffer variant you can
+ * specify where to put the converted string (and how long it can be). Without
+ * the buffer and internal buffer is used, of max 512 characters */
 #if defined(UNICODE)
 # define MB_TO_WIDE(str) OTTD2FS(str)
 # define MB_TO_WIDE_BUFFER(str, buffer, buflen) convert_to_fs(str, buffer, buflen)

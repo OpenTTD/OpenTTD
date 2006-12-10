@@ -368,6 +368,8 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM l
 	switch (msg) {
 		case WM_INITDIALOG: {
 #if defined(UNICODE)
+			/* We need to put the crash-log in a seperate buffer because the default
+			 * buffer in MB_TO_WIDE is not large enough (256 chars) */
 			wchar_t crash_msgW[8096];
 #endif
 			SetDlgItemText(wnd, 10, _crash_desc);
@@ -863,15 +865,16 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 {
 	int argc;
 	char *argv[64]; // max 64 command line arguments
+	char *cmdline;
 
 #if defined(UNICODE)
-	/* We need to backup the command line (arguments) because the pointer
-	 * of FS2OTTD() is only temporary */
-	char cmdline[MAX_PATH];
-	ttd_strlcpy(cmdline, FS2OTTD(GetCommandLine()), sizeof(cmdline));
-#else
-	char *cmdline = GetCommandLine();
+	/* For UNICODE we need to convert the commandline to char* _AND_
+	 * save it because argv[] points into this buffer and thus needs to
+	 * be available between subsequent calls to FS2OTTD() */
+	char cmdlinebuf[MAX_PATH];
 #endif
+
+	cmdline = WIDE_TO_MB_BUFFER(GetCommandLine(), cmdlinebuf, lengthof(cmdlinebuf));
 
 #if defined(_DEBUG)
 	CreateConsole();
@@ -954,20 +957,17 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 	uint16 width, length;
 
 	if (IsClipboardFormatAvailable(CF_UNICODETEXT)) {
-		int bytec;
+		const char *ret;
 
 		OpenClipboard(NULL);
 		cbuf = GetClipboardData(CF_UNICODETEXT);
 
 		ptr = GlobalLock(cbuf);
-		bytec = WideCharToMultiByte(CP_UTF8, 0, (wchar_t*)ptr, -1, utf8_buf, lengthof(utf8_buf), NULL, NULL);
+		ret = convert_from_fs((wchar_t*)ptr, utf8_buf, lengthof(utf8_buf));
 		GlobalUnlock(cbuf);
 		CloseClipboard();
 
-		if (bytec == 0) {
-			DEBUG(misc, 0) ("[utf8] Error converting '%s'. Errno %d", ptr, GetLastError());
-			return false;
-		}
+		if (*ret == '\0') return false;
 	} else if (IsClipboardFormatAvailable(CF_TEXT)) {
 		OpenClipboard(NULL);
 		cbuf = GetClipboardData(CF_TEXT);
@@ -1056,7 +1056,7 @@ wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen)
  * @return pointer to the converted string; if failed string is of zero-length */
 const wchar_t *OTTD2FS(const char *name)
 {
-	static wchar_t utf16_buf[MAX_PATH];
+	static wchar_t utf16_buf[512];
 	return convert_to_fs(name, utf16_buf, lengthof(utf16_buf));
 }
 
@@ -1071,7 +1071,7 @@ char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
 {
 	int len = WideCharToMultiByte(CP_UTF8, 0, name, -1, utf8_buf, buflen, NULL, NULL);
 	if (len == 0) {
-		DEBUG(misc, 0) ("[utf8] Error converting string. Errno %d", GetLastError());
+		DEBUG(misc, 0) ("[utf8] Error converting wide-string. Errno %d", GetLastError());
 		utf8_buf[0] = '\0';
 	}
 
