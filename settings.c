@@ -1495,7 +1495,7 @@ static const SettingDesc _currency_settings[] = {
 #undef NO
 #undef CR
 
-const char *GRFProcessParams(const IniItem *item, uint index)
+static const char *GRFProcessParams(const IniItem *item, uint index)
 {
 	GRFConfig *c;
 
@@ -1528,6 +1528,26 @@ const char *GRFProcessParams(const IniItem *item, uint index)
 	}
 
 	return c->filename;
+}
+
+static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *list)
+{
+	IniGroup *group = ini_getgroup(ini, grpname, -1);
+	IniItem **item;
+	const GRFConfig *c;
+
+	if (group == NULL) return;
+	group->item = NULL;
+	item = &group->item;
+
+	for (c = list; c != NULL; c = c->next) {
+		char params[512];
+		GRFBuildParamList(params, c, lastof(params));
+
+		*item = ini_item_alloc(group, c->filename, strlen(c->filename));
+		(*item)->value = pool_strdup(&ini->pool, params, strlen(params));
+		item = &(*item)->next;
+	}
 }
 
 /* Common handler for saving/loading variables to the configuration file */
@@ -1564,6 +1584,7 @@ void SaveToConfig(void)
 {
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, ini_save_settings, ini_save_setting_list);
+	GRFSaveConfig(ini, "newgrf", _grfconfig_newgame);
 	ini_save(_config_file, ini);
 	ini_free(ini);
 }
