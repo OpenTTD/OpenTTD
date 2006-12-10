@@ -223,6 +223,9 @@ static bool EmergencySave(void)
 	return true;
 }
 
+/* Disable the crash-save submit code as it's not used */
+#if 0
+
 typedef struct {
 	HINTERNET (WINAPI *InternetOpen)(LPCTSTR,DWORD, LPCTSTR, LPCTSTR, DWORD);
 	HINTERNET (WINAPI *InternetConnect)(HINTERNET, LPCTSTR, INTERNET_PORT, LPCTSTR, LPCTSTR, DWORD, DWORD, DWORD);
@@ -321,6 +324,8 @@ error1:
 	CloseHandle(h);
 }
 
+#endif /* Disabled crash-submit procedures */
+
 static const TCHAR * const _expand_texts[] = {_T("S&how report >>"), _T("&Hide report <<") };
 
 static void SetWndSize(HWND wnd, int mode)
@@ -381,6 +386,8 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM l
 						MessageBox(wnd, _T("Save failed"), _T("Save failed"), MB_ICONINFORMATION);
 					}
 					break;
+/* Disable the crash-save submit code as it's not used */
+#if 0
 				case 14: { /* Submit crash report */
 					const TCHAR *s;
 
@@ -405,6 +412,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM l
 					SetCursor(LoadCursor(NULL, IDC_ARROW));
 					MessageBox(wnd, _T("Crash report submitted. Thank you."), _T("Crash Report"), MB_ICONINFORMATION);
 				}	break;
+#endif /* Disabled crash-submit procedures */
 				case 15: /* Expand window to show crash-message */
 					_expanded ^= 1;
 					SetWndSize(wnd, _expanded);
