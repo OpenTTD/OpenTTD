@@ -2370,23 +2370,19 @@ static void SkipIf(byte *buf, int len)
 
 	param_val = GetParamVal(param, &cond_val);
 
-	/* Apply parameter mask, only for GRF parameters. */
-	if (param < 0x80) param_val &= mask;
-
 	DEBUG(grf, 7) ("Test condtype %d, param 0x%08X, condval 0x%08X", condtype, param_val, cond_val);
 	switch (condtype) {
 		case 0: result = !!(param_val & (1 << cond_val));
 			break;
 		case 1: result = !(param_val & (1 << cond_val));
 			break;
-		/* TODO: For the following, make it to work with paramsize>1. */
-		case 2: result = (param_val == cond_val);
+		case 2: result = (param_val & mask) == cond_val;
 			break;
-		case 3: result = (param_val != cond_val);
+		case 3: result = (param_val & mask) != cond_val;
 			break;
-		case 4: result = (param_val < cond_val);
+		case 4: result = (param_val & mask) < cond_val;
 			break;
-		case 5: result = (param_val > cond_val);
+		case 5: result = (param_val & mask) > cond_val;
 			break;
 
 		/* Tests 6 to 10 are only for param 0x88, GRFID checks */
