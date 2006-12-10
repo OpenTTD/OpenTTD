@@ -2466,6 +2466,7 @@ static void SkipIf(byte *buf, int len)
 	}
 }
 
+
 /* Action 0x08 (GLS_FILESCAN) */
 static void ScanInfo(byte *buf, int len)
 {
@@ -2473,16 +2474,30 @@ static void ScanInfo(byte *buf, int len)
 	uint32 grfid;
 	const char *name;
 	const char *info;
+	int name_len;
+	int info_len;
 
 	check_length(len, 8, "Info"); buf++;
 	version = grf_load_byte(&buf);
 	grfid = grf_load_dword(&buf);
-	name = (const char*)buf;
-	info = name + strlen(name) + 1;
 
 	_cur_grfconfig->grfid = grfid;
-	_cur_grfconfig->name  = TranslateTTDPatchCodes(name);
-	_cur_grfconfig->info  = TranslateTTDPatchCodes(info);
+
+	len -= 6;
+	name = (const char*)buf;
+	name_len = ttd_strnlen(name, len);
+
+	if (name_len < len) {
+		_cur_grfconfig->name = TranslateTTDPatchCodes(name);
+
+		len -= name_len + 1;
+		info = name + name_len + 1;
+		info_len = ttd_strnlen(info, len);
+
+		if (info_len < len) {
+			_cur_grfconfig->info  = TranslateTTDPatchCodes(info);
+		}
+	}
 
 	_skip_sprites = -1;
 }

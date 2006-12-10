@@ -46,6 +46,16 @@ typedef enum CharSetFilter {
 /** Convert the given string to lowercase, only works with ASCII! */
 void strtolower(char *str);
 
+
+/** Get the length of a string, within a limited buffer */
+static inline int ttd_strnlen(const char *str, int maxlen)
+{
+	const char *t;
+	for (t = str; *t != '\0' && t - str < maxlen; t++);
+	return t - str;
+}
+
+
 typedef uint32 WChar;
 
 /**
