@@ -2003,10 +2003,190 @@ STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Ŝanĝu 
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Ŝanĝu la nomon de la manaĝanto
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Ŝanĝu la nomon de la kompanio
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Alklaku la deziratan kolorskemon
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Nuligu elekton de nova vizaĝo
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Akceptu elekton de nova vizaĝo
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}Elektu virajn vizaĝojn
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Elektu virinajn vizaĝojn
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Kreu hazardan novan vizaĝon
+STR_704C_KEY                                                    :{BLACK}Ŝlosilo
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Montru ŝlosilon al grafikoj
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Ŝlosilo al kompanigrafikoj
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klaku ĉi tie por (mal)ŝalti la kompanian eron de la grafiko
+STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Kiom da ŝarĝo liveriĝis
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Kompania rendimento (maksimumo=1000)
+STR_7052_COMPANY_VALUES                                         :{WHITE}Kompaniaj valoroj
+STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Kompaniara tabelo
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportkompanio en problemoj!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} forvendiĝos aŭ bankrotiĝos krom se ĝi pli bone faros!
+STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Manaĝanto)
+STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transportkompania kuniĝo!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} vendiĝis al {COMPANY} por {CURRENCY}!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Ni serĉas transportkompanion por transpreni nian kompanion.{}{}Ĉu vi volas aĉeti {COMPANY} por {CURRENCY}?
+STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrote!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} estas fermita de kreditantoj kaj ĉiuj partoj vendiĝis!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nova transportkompanio lanĉiĝis!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} ekkonstruas ĉe {TOWN}!
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Ne povas aĉeti kompanion...
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Ŝarĝpagaj Tarifoj
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Tagoj en transporto
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Pago por liveri 10 unuojn (aŭ 10,000 litrojn) da ŝarĝo trans 20 kvadratoj
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}(Mal)ŝaltu grafikon por ŝarĝo
+STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER                                               :Inĝeniero
+STR_7067_TRAFFIC_MANAGER                                        :Trafikkontrolisto
+STR_7068_TRANSPORT_COORDINATOR                                  :Transportmanaĝanto
+STR_7069_ROUTE_SUPERVISOR                                       :Transporta Supervidanto
+STR_706A_DIRECTOR                                               :Direktoro
+STR_706B_CHIEF_EXECUTIVE                                        :Ĉefa Plenumanto
+STR_706C_CHAIRMAN                                               :Prezidanto
+STR_706D_PRESIDENT                                              :Potenculo
+STR_706E_TYCOON                                                 :Plejpotenculo
+STR_706F_BUILD_HQ                                               :{BLACK}Faru HQ
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Konstruu kompanian ĉefkonstruaĵon / vidu kompanian ĉefkonstruaĵon
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Ne povas konstrui kompanian ĉefkonstruaĵon...
+STR_7072_VIEW_HQ                                                :{BLACK}Vidu HQ
+STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Monda Recesio!{}{}Financaj spertuloj timas ke malpliboniĝas treege! Ekonomio malboniĝadas!
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesio finiĝis!{}{}Komerca pliboniĝos donas konfidon al industrioj! Ekonomio pliboniĝas!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Ŝaltu inter granda kaj malgranda fenestro
+STR_7076_COMPANY_VALUE                                          :{GOLD}Kompania valoro: {WHITE}{CURRENCY64}
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Aĉetu 25%-an dividaĵon en kompanio
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vendu 25%-an dividaĵon en kompanio
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Aĉetu 25%-an dividaĵon en ĉi tiu kompanio
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vendu 25%-an dividaĵon en ĉi tiu kompanio
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Ne povas aĉeti 25%-an dividaĵon en ĉi tiu kompanio...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Ne povas vendi 25%-an dividaĵon en ĉi tiu kompanio...
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% posedataj de {COMPANY})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% posedataj de {COMPANY}{}   {COMMA}% posedataj de {COMPANY})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} estas transprenita de {COMPANY}!
+STR_7080_PROTECTED                                              :{WHITE}Ĉi tiu kompanio ne sufiĉe aĝas por jam komerci dividaĵojn...
 
 
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vaporo)
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (Dizelo)
+STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Diesel
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diesel
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (Vaporo)
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (Vaporo)
+STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (Vaporo)
+STR_800A_SH_8P_STEAM                                            :SH '8P' (Vaporo)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (Dizelo)
+STR_800C_DASH_DIESEL                                            :'Dash' (Dizelo)
+STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (Dizelo)
+STR_800E_UU_37_DIESEL                                           :UU '37' (Dizelo)
+STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (Dizelo)
+STR_8010_CS_4000_DIESEL                                         :CS 4000 (Dizelo)
+STR_8011_CS_2400_DIESEL                                         :CS 2400 (Dizelo)
+STR_8012_CENTENNIAL_DIESEL                                      :Centennial (Dizelo)
+STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (Dizelo)
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (Dizelo)
+STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (Dizelo)
+STR_8016_SH_125_DIESEL                                          :SH '125' (Dizelo)
+STR_8017_SH_30_ELECTRIC                                         :SH '30' (Elektro)
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (Elektro)
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Elektro)
+STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Elektro)
+STR_801B_PASSENGER_CAR                                          :Pasaĝervagono
+STR_801C_MAIL_VAN                                               :Poŝtvagono
+STR_801D_COAL_CAR                                               :Karbvagono
+STR_801E_OIL_TANKER                                             :Olevagono
+STR_801F_LIVESTOCK_VAN                                          :Brutvagono
+STR_8020_GOODS_VAN                                              :Varvagono
+STR_8021_GRAIN_HOPPER                                           :Grenvagono
+STR_8022_WOOD_TRUCK                                             :Lignovagono
+STR_8023_IRON_ORE_HOPPER                                        :Ferercavagono
+STR_8024_STEEL_TRUCK                                            :Ŝtalvagono
+STR_8025_ARMORED_VAN                                            :Kirasa Vagono
+STR_8026_FOOD_VAN                                               :Manĝaĵvagono
+STR_8027_PAPER_TRUCK                                            :Papervagono
+STR_8028_COPPER_ORE_HOPPER                                      :Kuproercvagono
+STR_8029_WATER_TANKER                                           :Akvovagono
+STR_802A_FRUIT_TRUCK                                            :Fruktvagono
+STR_802B_RUBBER_TRUCK                                           :Kaŭĉukvagono
+STR_802C_SUGAR_TRUCK                                            :Sukervagono
+STR_802D_COTTON_CANDY_HOPPER                                    :Sukerŝpinaĵvagono
+STR_802E_TOFFEE_HOPPER                                          :Tofevagono
+STR_802F_BUBBLE_VAN                                             :Vezikvagono
+STR_8030_COLA_TANKER                                            :Kolavagono
+STR_8031_CANDY_VAN                                              :Dolĉaĵvagono
+STR_8032_TOY_VAN                                                :Ludilvagono
+STR_8033_BATTERY_TRUCK                                          :Baterivagono
+STR_8034_FIZZY_DRINK_TRUCK                                      :Amuztrinkaĵvagono
+STR_8035_PLASTIC_TRUCK                                          :Plastikvagono
+STR_8036_X2001_ELECTRIC                                         :'X2001' (Elektro)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Elektro)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8039_PASSENGER_CAR                                          :Pasaĝervagono
+STR_803A_MAIL_VAN                                               :Poŝtvagono
+STR_803B_COAL_CAR                                               :Karbvagono
+STR_803C_OIL_TANKER                                             :Olevagono
+STR_803D_LIVESTOCK_VAN                                          :Brutvagono
+STR_803E_GOODS_VAN                                              :Varvagono
+STR_803F_GRAIN_HOPPER                                           :Grenvagono
+STR_8040_WOOD_TRUCK                                             :Lignovagono
+STR_8041_IRON_ORE_HOPPER                                        :Ferercvagono
+STR_8042_STEEL_TRUCK                                            :Ŝtalvagono
+STR_8043_ARMORED_VAN                                            :Kirasa Vagono
+STR_8044_FOOD_VAN                                               :Manĝaĵvagono
+STR_8045_PAPER_TRUCK                                            :Papervagono
+STR_8046_COPPER_ORE_HOPPER                                      :Kuproercvagono
+STR_8047_WATER_TANKER                                           :Akvovagono
+STR_8048_FRUIT_TRUCK                                            :Fruktvagono
+STR_8049_RUBBER_TRUCK                                           :Kaŭĉukvagono
+STR_804A_SUGAR_TRUCK                                            :Sukervagono
+STR_804B_COTTON_CANDY_HOPPER                                    :Sukerŝpinaĵvagono
+STR_804C_TOFFEE_HOPPER                                          :Tofevagono
+STR_804D_BUBBLE_VAN                                             :Vezikvagono
+STR_804E_COLA_TANKER                                            :Kolavagono
+STR_804F_CANDY_VAN                                              :Dolĉaĵvagono
+STR_8050_TOY_VAN                                                :Ludilvagono
+STR_8051_BATTERY_TRUCK                                          :Baterivagono
+STR_8052_FIZZY_DRINK_TRUCK                                      :Amuztrinkaĵvagono
+STR_8053_PLASTIC_TRUCK                                          :Plastikvagono
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Levjatano' (Elektro)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Ciklopo' (Eletro)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasuso' (Elektro)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Ĥimero' (Elektro)
+STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
+STR_8059_PASSENGER_CAR                                          :Pasaĝervagono
+STR_805A_MAIL_VAN                                               :Poŝtvagono
+STR_805B_COAL_CAR                                               :Karbvagono
+STR_805C_OIL_TANKER                                             :Olevagono
+STR_805D_LIVESTOCK_VAN                                          :Brutvagono
+STR_805E_GOODS_VAN                                              :Varvagono
+STR_805F_GRAIN_HOPPER                                           :Grenvagono
+STR_8060_WOOD_TRUCK                                             :Lignovagono
+STR_8061_IRON_ORE_HOPPER                                        :Ferercvagono
+STR_8062_STEEL_TRUCK                                            :Ŝtalvagono
+STR_8063_ARMORED_VAN                                            :Kirasa Vagono
+STR_8064_FOOD_VAN                                               :Manĝaĵvagono
+STR_8065_PAPER_TRUCK                                            :Papervagono
+STR_8066_COPPER_ORE_HOPPER                                      :Kuproercvagono
+STR_8067_WATER_TANKER                                           :Akvovagono
+STR_8068_FRUIT_TRUCK                                            :Fruktvagono
+STR_8069_RUBBER_TRUCK                                           :Kaŭĉukvagono
+STR_806A_SUGAR_TRUCK                                            :Sukervagono
+STR_806B_COTTON_CANDY_HOPPER                                    :Sukerŝpinaĵvagono
+STR_806C_TOFFEE_HOPPER                                          :Tofevagono
+STR_806D_BUBBLE_VAN                                             :Vezikvagono
+STR_806E_COLA_TANKER                                            :Kolavagono
+STR_806F_CANDY_VAN                                              :Dolĉaĵvagono
+STR_8070_TOY_VAN                                                :Ludilvagono
+STR_8071_BATTERY_TRUCK                                          :Baterivagono
+STR_8072_FIZZY_DRINK_TRUCK                                      :Amuztrinkaĵvagono
+STR_8073_PLASTIC_TRUCK                                          :Plastikvagono
+STR_8074_MPS_REGAL_BUS                                          :Buso "MPS Regal"
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Buso "Hereford Leopard"
+STR_8076_FOSTER_BUS                                             :Buso "Foster"
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Buso "Foster MkII Superbus"
+STR_8078_PLODDYPHUT_MKI_BUS                                     :Buso "Ploddyphut MkI"
+STR_8079_PLODDYPHUT_MKII_BUS                                    :Buso "Ploddyphut MkII"
 
 ##id 0x8800
 
