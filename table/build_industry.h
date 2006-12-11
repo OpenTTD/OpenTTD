@@ -1209,7 +1209,7 @@ static const IndustrySpec _industry_specs[] = {
 	   IT_FOREST,         IT_PRINTING_WORKS,   IT_INVALID,       CHECK_NOTHING,
 	   CT_PAPER,       0, CT_INVALID,       0, 5,
 	   CT_WOOD,           CT_INVALID,          CT_INVALID,
-	   INDUSTRYLIFE_CLOSABLE,                  1 << LT_DESERT,
+	   INDUSTRYLIFE_CLOSABLE,                  1 << LT_HILLY,
 	   STR_4810_PAPER_MILL,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
