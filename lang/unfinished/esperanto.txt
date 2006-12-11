@@ -1720,21 +1720,167 @@ STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centre v
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Montru stacian takson
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Ŝanĝu nomon de stacio
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Montru liston de akceptataj ŝarĝoj
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Staciaj nomoj - alklaku nomon por centre de la ĉefvido vidi ĝin
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Elektu grandecon/tipon de flughaveno
+STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_305E_RAILROAD_STATION                                       :Stacidomo
+STR_305F_AIRCRAFT_HANGAR                                        :Aviadila hangaro
+STR_3060_AIRPORT                                                :Flughaveno
+STR_3061_TRUCK_LOADING_AREA                                     :Ŝarĝejo
+STR_3062_BUS_STATION                                            :Bushaltejo
+STR_3063_SHIP_DOCK                                              :Haveno
+STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Marku ŝarĝregionon ĉe proponata loko
+STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Ne marku ŝarĝregionon de proponata loko
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Ŝarĝregiona marko
+STR_3068_DOCK                                                   :{WHITE}Haveno
+STR_3069_BUOY                                                   :Buo
+STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...buo okupas la lokon
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stacio tro vastas
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...nekonformaj stacioj neebligitaj
 
 
 ##id 0x3800
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Ŝipdeponeja Direkto
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...devas esti konstruata sur akvo
+STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Ne povas konstrui ŝipdeponejon ĉi tie...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Elektu ŝipdeponejan direkton
+STR_3804_WATER                                                  :Akvo
+STR_3805_COAST_OR_RIVERBANK                                     :Mara aŭ rivera bordo
+STR_3806_SHIP_DEPOT                                             :Ŝipdeponejo
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Ne povas konstrui sur akvo
 
 ##id 0x4000
+STR_4000_SAVE_GAME                                              :{WHITE}Konservu Ludon
+STR_4001_LOAD_GAME                                              :{WHITE}Ŝarĝu Ludon
+STR_4002_SAVE                                                   :{BLACK}Konservu
+STR_4003_DELETE                                                 :{BLACK}Forviŝu
+STR_4004                                                        :{COMPANY} je {DATE_LONG}
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Ne eblas legi diskon
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Ludkonservado Fiaskis
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Ne eblas forviŝi dosieron
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Ludŝarĝado Fiaskis
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Listo da diskoj, dosierujoj kaj luddosieroj
+STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nune elektita nomo por luddosiero
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Forviŝu la nun elektitan luddosieron
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Konservu la nunan ludon per la elektita nomo
+STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Elektu Novan Ludtipon
+STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Elektu scenaron (green), antaŭ-agorditan ludon (blue), aŭ hazardan novan ludon
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generu hazardan novan ludon
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Ŝarĝu Altecmapon
 
 ##id 0x4800
+STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} okupas la lokon
+STR_4801                                                        :{WHITE}{INDUSTRY}
+STR_4802_COAL_MINE                                              :Karbminejo
+STR_4803_POWER_STATION                                          :Elektrejo
+STR_4804_SAWMILL                                                :Segejo
+STR_4805_FOREST                                                 :Arbaro
+STR_4806_OIL_REFINERY                                           :Oleproduktejo
+STR_4807_OIL_RIG                                                :Oleplatformo
+STR_4808_FACTORY                                                :Farejo
+STR_4809_PRINTING_WORKS                                         :Printejo
+STR_480A_STEEL_MILL                                             :Ŝtalejo
+STR_480B_FARM                                                   :Farmbieno
+STR_480C_COPPER_ORE_MINE                                        :Kuproercminejo
+STR_480D_OIL_WELLS                                              :Olefonto
+STR_480E_BANK                                                   :Banko
+STR_480F_FOOD_PROCESSING_PLANT                                  :Manĝaĵfarejo
+STR_4810_PAPER_MILL                                             :Paperejo
+STR_4811_GOLD_MINE                                              :Orminejo
+STR_4812_BANK                                                   :Banko
+STR_4813_DIAMOND_MINE                                           :Diamantminejo
+STR_4814_IRON_ORE_MINE                                          :Ferercminejo
+STR_4815_FRUIT_PLANTATION                                       :Fruktkulturejo
+STR_4816_RUBBER_PLANTATION                                      :Kaŭĉukkulturejo
+STR_4817_WATER_SUPPLY                                           :Akvofonto
+STR_4818_WATER_TOWER                                            :Akvoturo
+STR_4819_FACTORY                                                :Farejo
+STR_481A_FARM                                                   :Farmbieno
+STR_481B_LUMBER_MILL                                            :Lignejo
+STR_481C_COTTON_CANDY_FOREST                                    :Sukerŝpinaĵaro
+STR_481D_CANDY_FACTORY                                          :Dolĉaĵfarejo
+STR_481E_BATTERY_FARM                                           :Bateribieno
+STR_481F_COLA_WELLS                                             :Kolafonto
+STR_4820_TOY_SHOP                                               :Ludilvendejo
+STR_4821_TOY_FACTORY                                            :Ludilfarejo
+STR_4822_PLASTIC_FOUNTAINS                                      :Plastikfontanaro
+STR_4823_FIZZY_DRINK_FACTORY                                    :Farejo de Amuzaj Trinkaĵoj
+STR_4824_BUBBLE_GENERATOR                                       :Vezikgenerilo
+STR_4825_TOFFEE_QUARRY                                          :Tofeminejo
+STR_4826_SUGAR_MINE                                             :Sukerminejo
 
 ############ range for requires	starts
+STR_4827_REQUIRES                                               :{BLACK}Bezonas: {YELLOW}{STRING.n}
+STR_4828_REQUIRES                                               :{BLACK}Bezonas: {YELLOW}{STRING.n}, {STRING.n}
+STR_4829_REQUIRES                                               :{BLACK}Bezonas: {YELLOW}{STRING.n}, {STRING.n}, {STRING.n}
 ############ range for requires	ends
 
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Lastmonata produktado:
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportiĝis)
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centre en la ĉefvido vidu la industilokon
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nova {STRING} konstruiĝas ĉe {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nova {STRING} plantiĝas ĉe {TOWN}!
+STR_482F_COST                                                   :{BLACK}Kosto: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Industritipo ne konstrueblas ĉi tie...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...arbaro nur planteblas super neĝa limlinio
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anoncas tre baldaŭan fermiĝon!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Liverproblemoj devigas al {INDUSTRY} anonci tre baldaŭan fermiĝon!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Pro manko da proksimaj arboj {INDUSTRY} devas anonci tre baldaŭan fermiĝon!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} pliigas produktadon!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nova karbo trovita ĉe {INDUSTRY}!{}Oni atendas produktan duobligon!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nova oleo trovita ĉe {INDUSTRY}!{}Oni atendas produktan duobligon!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Pro pli bona agroteĥniko {INDUSTRY} verŝajne duobligos produktadon!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}La produktado de {INDUSTRY} duoniĝas
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insektoj kaŭzas plagon ĉe {INDUSTRY}!{}Produktado duoniĝas
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...nur lokebla ĉe la randoj de la mapo
 
 ##id 0x5000
+STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Trajno en tunelo
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Vojveturilo en tunelo
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Alia tunelo okupas la lokon
+STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Ne eblas liberigi la landon aliflanke de la tunelo
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Antaŭe forigu tunelon
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Antaŭe forigu ponton
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Ne povas komenci kaj fini en la sama loko
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Ebena lando aŭ akvo necesas sub la ponto
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Komenco kaj fino devas esti samliniaj
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Nekonvena loko por tunelkomenco
+STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL                                       :Ŝtala pendanta
+STR_500F_GIRDER_STEEL                                           :Ŝtala ebena
+STR_5010_CANTILEVER_STEEL                                       :Ŝtala luksa
+STR_5011_SUSPENSION_CONCRETE                                    :Betona pendanta
+STR_5012_WOODEN                                                 :Ligna
+STR_5013_CONCRETE                                               :Betona
+STR_5014_TUBULAR_STEEL                                          :Ŝtala tuba
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Ne povas konstrui ponton ĉi tie...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Ne povas konstrui tunelon ĉi tie...
+STR_5017_RAILROAD_TUNNEL                                        :Fervoja tunelo
+STR_5018_ROAD_TUNNEL                                            :Voja tunelo
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Ŝtala pendanta relponto
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Ŝtala ebena relponto
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Ŝtala luksa relponto
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Fortbetona pendanta relponto
+STR_501F_WOODEN_RAIL_BRIDGE                                     :Ligna relponto
+STR_5020_CONCRETE_RAIL_BRIDGE                                   :Betona relponto
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Ŝtala pendanta vojponto
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Ŝtala ebena vojponto
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Ŝtala luksa vojponto
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Fortbetona pendanta vojponto
+STR_5025_WOODEN_ROAD_BRIDGE                                     :Ligna vojponto
+STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betona vojponto
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :Tuba relponto
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :Tuba vojponto
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objekto okupas la lokon
+STR_5801_TRANSMITTER                                            :Transmitilo
+STR_5802_LIGHTHOUSE                                             :Lumturo
+STR_5803_COMPANY_HEADQUARTERS                                   :Kompania Ĉefkonstruaĵo
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...kompania ĉefkonstruaĵo okupas la lokon
+STR_5805_COMPANY_OWNED_LAND                                     :Kompanie posedata lando
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Ne povas aĉeti ĉi tiun regionon...
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...vi jam posedas ĝin!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
@@ -1745,18 +1891,118 @@ STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Montru l
 ############ end of	savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Malfacilec-nivelo
 
 ############ range for difficulty levels starts
-STR_6804_CUSTOM                                                 :{BLACK}Custom
+STR_6801_EASY                                                   :{BLACK}Facile
+STR_6802_MEDIUM                                                 :{BLACK}Meze
+STR_6803_HARD                                                   :{BLACK}Malfacile
+STR_6804_CUSTOM                                                 :{BLACK}Ŝanĝite
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maksimumo da konkurantoj: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Konkuranta komenctempo: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Kiom da urboj: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Kiom da industrioj: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksimuma komenca prunto: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Komenca rentumo: {ORANGE}{COMMA}%
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Veturilaj irkostoj: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Konkuranta konstrurapideco: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Konkuranta inteligenteco: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Veturilaj rompiĝoj: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Subvencia kiomobligo: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Konstrukostoj: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Terentipo: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Kiom da maroj/lagoj: {ORANGE}{STRING}
+STR_6813_ECONOMY                                                :{LTBLUE}Ekonomio: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Trajna inversigo: {ORANGE}{STRING}
+STR_6815_DISASTERS                                              :{LTBLUE}Katastrofoj: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL                                         :{LTBLUE}Urbestrara teniĝo al regiona strukturŝanĝiĝo: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Neniu
+STR_6816_LOW                                                    :Malalte
+STR_6817_NORMAL                                                 :Normale
+STR_6818_HIGH                                                   :Alte
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
+STR_681B_VERY_SLOW                                              :Tre Malrapide
+STR_681C_SLOW                                                   :Malrapide
+STR_681D_MEDIUM                                                 :Meze
+STR_681E_FAST                                                   :Rapide
+STR_681F_VERY_FAST                                              :Tre Rapide
+STR_6820_LOW                                                    :Malalte
+STR_6821_MEDIUM                                                 :Meze
+STR_6822_HIGH                                                   :Alte
+STR_6823_NONE                                                   :Neniu
+STR_6824_REDUCED                                                :Malpli
+STR_6825_NORMAL                                                 :Normale
+STR_6826_X1_5                                                   :x1.5
+STR_6827_X2                                                     :x2
+STR_6828_X3                                                     :x3
+STR_6829_X4                                                     :x4
+STR_682A_VERY_FLAT                                              :Tre Ebene
+STR_682B_FLAT                                                   :Ebene
+STR_682C_HILLY                                                  :Montete
+STR_682D_MOUNTAINOUS                                            :Monte
+STR_682E_STEADY                                                 :Neŝanĝiĝeme
+STR_682F_FLUCTUATING                                            :Ŝanĝiĝeme
+STR_6830_IMMEDIATE                                              :Tuj
+STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 monatoj post ludanto
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 monatoj post ludanto
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 monatoj post ludanto
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Finlinie, kaj stacidome
+STR_6835_AT_END_OF_LINE_ONLY                                    :Nur finlinie
+STR_6836_OFF                                                    :Malaktiva
+STR_6837_ON                                                     :Aktiva
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Montru plej bonajn ludantojn
+STR_6839_PERMISSIVE                                             :Permeseme
+STR_683A_TOLERANT                                               :Tolerante
+STR_683B_HOSTILE                                                :Gastige
 
 ##id 0x7000
+STR_7000                                                        :
+STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Ne povas ŝanĝi kompaninomon...
+STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Ne povas ŝanĝi manaĝantnomon...
+STR_700E_FINANCES                                               :{WHITE}Financoj de {COMPANY} {BLACK}{PLAYERNAME}
+STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Elspezo/Enspezo
+STR_7010                                                        :{WHITE}{NUM}
+STR_7011_CONSTRUCTION                                           :{GOLD}Konstruado
+STR_7012_NEW_VEHICLES                                           :{GOLD}Novaj Veturiloj
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Trajnaj Irkostoj
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Vojveturilaj Irkostoj
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Aviadilaj Irkostoj
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Ŝipaj Irkostoj
+STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Posedaĵa Konservado
+STR_7018_TRAIN_INCOME                                           :{GOLD}Trajna Enspezo
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Vojveturila Enspezo
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Aviadila Enspezo
+STR_701B_SHIP_INCOME                                            :{GOLD}Ŝipa Enspezo
+STR_701C_LOAN_INTEREST                                          :{GOLD}Rento pri Prunto
+STR_701D_OTHER                                                  :{GOLD}Alia
+STR_701E                                                        :{BLACK}-{CURRENCY64}
+STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_7020_TOTAL                                                  :{WHITE}Entute:
+STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7022_INCOME_GRAPH                                           :{WHITE}Enspeza Grafiko
+STR_7024                                                        :{COMMA}
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Gajna Grafiko
+STR_7026_BANK_BALANCE                                           :{WHITE}Banka Balanco
+STR_7027_LOAN                                                   :{WHITE}Prunto
+STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_7029_BORROW                                                 :{BLACK}Pruntu {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Repagu {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maksimuma permesata prunto estas {CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Ne povas prunti pli da mono...
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...ne estas repagebla prunto
+STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} necesas
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Ne povas repagi prunton...
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Elektu novan vizaĝon por la manaĝanto
+STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Ŝanĝu la kompaniveturilan koloraron
+STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Ŝanĝu la nomon de la manaĝanto
+STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Ŝanĝu la nomon de la kompanio
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Alklaku la deziratan kolorskemon
 
 
 

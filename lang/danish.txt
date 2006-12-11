@@ -393,7 +393,15 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lasteevne
 STR_NO_WAITING_CARGO                                            :{BLACK}Der er ingen fragt af nogen type, der venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg alle faciliteter
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle lasttyper (inklusiv fragttyper, der ikke venter)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Se liste over tilgængelige designs for denne køretøjstype.
+STR_MANAGE_LIST                                                 :{BLACK}Administrer liste
+STR_MANAGE_LIST_TIP                                             :{BLACK}Send instruktioner til alle køretøjer in denne liste
 STR_REPLACE_VEHICLES                                            :Udskift Køretøjer
+STR_SEND_TRAIN_TO_DEPOT                                         :Send til remise
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Send til værksted
+STR_SEND_SHIP_TO_DEPOT                                          :Send til dok
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Send til hangar
+STR_SEND_FOR_SERVICING                                          :Send til eftersyn
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1551,8 +1559,8 @@ STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vejkonst
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vælg vejbro
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan ikke bygge vej her...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kan ikke fjerne vej herfra...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Retning for garage
-STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge garage her...
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Retning af værksted
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge værksted her...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan ikke bygge rutebilstation...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kan ikke bygge fragtcentral...
 STR_180A_ROAD_CONSTRUCTION                                      :Vejkonstruktion
@@ -1563,7 +1571,7 @@ STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Byg frag
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Byg bro
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Byg tunnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Skift mellem bygning/fjernelse af veje
-STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vælg retning af garage
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vælg retning for værksted
 STR_1814_ROAD                                                   :Vej
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Vej med gadelygter
 STR_1816_TREE_LINED_ROAD                                        :Vej med vejtræer
@@ -2879,6 +2887,7 @@ STR_NEWGRF_TIP                                                  :{BLACK}Liste me
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Der er ingen newgrf filer installeret! Du kan læse i manualen hvordan man installerer newgrf sæt.
 STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 
 
 
