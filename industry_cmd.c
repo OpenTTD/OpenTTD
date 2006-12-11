@@ -1362,8 +1362,6 @@ static Industry *AllocateIndustry(void)
 
 		if (IsValidIndustry(i)) continue;
 
-		_total_industries++;
-
 		memset(i, 0, sizeof(*i));
 		i->index = index;
 
@@ -1380,6 +1378,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	uint32 r;
 	int j;
 
+	_total_industries++;
 	i->xy = tile;
 	i->width = i->height = 0;
 	i->type = type;

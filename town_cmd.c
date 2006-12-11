@@ -915,6 +915,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, uint siz
 	i = t->index;
 	memset(t, 0, sizeof(Town));
 	t->index = i;
+	_total_towns++;
 
 	t->xy = tile;
 	t->num_houses = 0;
@@ -983,8 +984,6 @@ static Town *AllocateTown(void)
 	for (t = GetTown(0); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) {
 		if (!IsValidTown(t)) {
 			TownID index = t->index;
-
-			_total_towns++;
 
 			memset(t, 0, sizeof(Town));
 			t->index = index;
