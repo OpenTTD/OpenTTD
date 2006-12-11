@@ -1220,7 +1220,6 @@ void ShowQuery(StringID caption, StringID message, void (*ok_cancel_callback)(bo
 
 	w = AllocateWindowDesc(&_query_desc);
 
-	LowerWindowWidget(w, 5);
 	WP(w, query_d).caption            = caption;
 	WP(w, query_d).message            = message;
 	WP(w, query_d).wnd_class          = window_class;
