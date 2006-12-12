@@ -2455,10 +2455,79 @@ STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne eblas
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vojveturiloj - alklaku veturilon por informoj
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Kreu novajn vojveturilojn (bezonas vojveturilan deponejon)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Nuna veturila ago - klaku ĉi tie por haltigi/starti veturilon
+STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Montru veturilajn ordenojn
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centre vidu la veturilon en la ĉefvido
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Sendu veturilon al deponejo. CTRL+klako nur prizorgos
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Igu veturilon ĉirkaŭturni
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Montru vojveturilajn detalojn
+STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Veturiloj - alklaku veturilojn por informoj
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Kreu novan vojveturilon
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Tiru vojveturilon ĉi tien por vendi
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centre vidu vojveturilan deponejon en la ĉefvido
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Vojveturilelektan liston - alklaku veturilon por informoj
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Kreu la elektitan vojveturilon
+STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nova vojveturilo nun haveblas!
+STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosto: {CURRENCY}{}Rapideco: {VELOCITY}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
 
+STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nomu vojveturilon
+STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ne povas nomi vojveturilon...
+STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nomu vojveturilon
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua buso alvenas en {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua ŝarĝaŭto alvenas en {STATION}!
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Vojveturila kraŝo!{}Veturanto mortas pro fajro post kolizio kun trajno
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Vojveturila Kraŝo!{}{COMMA} mortas pro fajro post kolizio kun trajno
+STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Ne povas ĉirkaŭturni veturilon...
+STR_9034_RENAME                                                 :{BLACK}Renomu
+STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renomu vojveturilan tipon
+STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renomu vojveturilan tipon
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Ne povas renomi vojveturilan tipon...
+STR_9038_GO_TO_ROADVEH_DEPOT                                    :Iru al {TOWN} Vojveturila Deponejo
 
 
 ##id 0x9800
+STR_9800_DOCK_CONSTRUCTION                                      :Havenkonstruado
+STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Havenkonstruado
+STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Ne povas konstrui havenon ĉi tie...
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Ŝipdeponejo
+STR_9804_NEW_SHIPS                                              :{BLACK}Novaj Ŝipoj
+STR_9808_NEW_SHIPS                                              :{WHITE}Novaj Ŝipoj
+STR_9809_BUILD_SHIP                                             :{BLACK}Kreu Ŝipon
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Ŝipo devas halti en deponejo
+STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Ne povas vendi ŝipon...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ne povas krei ŝipon...
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Ŝipo okupas la lokon
+STR_980F                                                        :{WHITE}{VEHICLE}
+STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaloj)
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}po {CURRENCY} jare
+STR_9813_MAX_SPEED                                              :{BLACK}Maksimuma rapideco: {LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
+STR_9817_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}
+STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ne povas haltigi/starti ŝipon...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ne povas sendi ŝipon al deponejo...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne eblas trovi lokan deponejon
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Ŝipo {COMMA} atendas en deponejo
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Konstruu havenon
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Konstruu ŝipdeponejon (por krei kaj prizorgi ŝipojn)
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Ŝipoj - alklaku ŝipon por informoj
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Kreu novan ŝipon
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Tiru ŝipon ĉi tien por vendi
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centre vidu ŝipdeponejon en ĉefvido
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Ŝipoj - alklaku ŝipon por informoj
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Kreu novajn ŝipojn (bezonas ŝipdeponejon)
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Ŝipelekta listo - alklaku ŝipon por informoj
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Kreu elektitan ŝipon
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Nuna ŝipa ago - klaku ĉi tie por haltigi/starti ŝipon
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Montru ŝipajn ordenojn
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centre vidu ŝipon en ĉefvido
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Sendu ŝipon al deponejo. CTRL+klako nur prizorgos
+STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Montru ŝipajn detalojn
+STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nova ŝipo nun haveblas!
+STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosto: {CURRENCY} Maksimuma rapideco: {VELOCITY}{}Kapablo: {CARGO}{}Irkosto: po {CURRENCY} jare
+STR_982F_NAME_SHIP                                              :{BLACK}Nomu ŝipon
 
 SERVICE_AT_SHIP_DEPOT                                           :Prizorgo en la ŝipdeponejo de {TOWN}
 
