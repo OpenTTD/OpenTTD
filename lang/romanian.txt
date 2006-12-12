@@ -395,7 +395,8 @@ STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege to
 STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Vezi o lista de proiecte disponibile de motoare pentru acest tip de vehicul.
 STR_MANAGE_LIST                                                 :{BLACK}Gestioneaza lista
-STR_REPLACE_VEHICLES                                            :Inlocuieste vehicule
+STR_MANAGE_LIST_TIP                                             :{BLACK}Trimite instructiunile tuturor vehiculelor din aceasta lista
+STR_REPLACE_VEHICLES                                            :Inlocuieste vehiculele
 STR_SEND_TRAIN_TO_DEPOT                                         :Trimite la depou
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Trimite la depou
 STR_SEND_SHIP_TO_DEPOT                                          :Trimite la depou

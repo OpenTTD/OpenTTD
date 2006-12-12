@@ -2259,13 +2259,159 @@ STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Plastikŝarĝa�
 STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :Vezikŝarĝaŭto "MightyMover"
 STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Vezikŝarĝaŭto "Powernaught"
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Vezikŝarĝaŭto "Wizzowow"
+STR_80CD_CS_INC_OIL_TANKER                                      :Oleŝipo "CS-Inc."
+STR_80CE_MPS_PASSENGER_FERRY                                    :Pasaĝerŝipo "MPS"
+STR_80CF_FFP_PASSENGER_FERRY                                    :Pasaĝerŝipo "FFP"
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Aeroglita "Bakewell 300"
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Pasaĝerŝipo "Chugger-Chug"
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Pasaĝerŝipo "Shivershake"
+STR_80D3_YATE_CARGO_SHIP                                        :Ŝarĝŝipo "Yate"
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Ŝarĝŝipo "Bakewell"
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Ŝarĝŝipo "Mightymover"
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Ŝarĝŝipo "Powernaut"
+STR_80D7_SAMPSON_U52                                            :Sampson U52
+STR_80D8_COLEMAN_COUNT                                          :Coleman Count
+STR_80D9_FFP_DART                                               :FFP Dart
+STR_80DA_YATE_HAUGAN                                            :Yate Haugan
+STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :Bakewell Cotswald LB-3
+STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :Bakewell Luckett LB-8
+STR_80DD_BAKEWELL_LUCKETT_LB_9                                  :Bakewell Luckett LB-9
+STR_80DE_BAKEWELL_LUCKETT_LB80                                  :Bakewell Luckett LB80
+STR_80DF_BAKEWELL_LUCKETT_LB_10                                 :Bakewell Luckett LB-10
+STR_80E0_BAKEWELL_LUCKETT_LB_11                                 :Bakewell Luckett LB-11
+STR_80E1_YATE_AEROSPACE_YAC_1_11                                :Yate Aerospace YAC 1-11
+STR_80E2_DARWIN_100                                             :Darwin 100
+STR_80E3_DARWIN_200                                             :Darwin 200
+STR_80E4_DARWIN_300                                             :Darwin 300
+STR_80E5_DARWIN_400                                             :Darwin 400
+STR_80E6_DARWIN_500                                             :Darwin 500
+STR_80E7_DARWIN_600                                             :Darwin 600
+STR_80E8_GURU_GALAXY                                            :Guru Galaxy
+STR_80E9_AIRTAXI_A21                                            :Airtaxi A21
+STR_80EA_AIRTAXI_A31                                            :Airtaxi A31
+STR_80EB_AIRTAXI_A32                                            :Airtaxi A32
+STR_80EC_AIRTAXI_A33                                            :Airtaxi A33
+STR_80ED_YATE_AEROSPACE_YAE46                                   :Yate Aerospace YAe46
+STR_80EE_DINGER_100                                             :Dinger 100
+STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
+STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttle
+STR_80F1_KELLING_K1                                             :Kelling K1
+STR_80F2_KELLING_K6                                             :Kelling K6
+STR_80F3_KELLING_K7                                             :Kelling K7
+STR_80F4_DARWIN_700                                             :Darwin 700
+STR_80F5_FFP_HYPERDART_2                                        :FFP Hyperdart 2
+STR_80F6_DINGER_200                                             :Dinger 200
+STR_80F7_DINGER_1000                                            :Dinger 1000
+STR_80F8_PLODDYPHUT_100                                         :Ploddyphut 100
+STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
+STR_80FA_FLASHBANG_X1                                           :Flashbang X1
+STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
+STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
+STR_80FD_TRICARIO_HELICOPTER                                    :Helikoptero "Tricario"
+STR_80FE_GURU_X2_HELICOPTER                                     :Helikoptero "Guru X2"
+STR_80FF_POWERNAUT_HELICOPTER                                   :Helikoptero "Powernaut"
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Mesaĝo de veturil-produktanto
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Nova {STRING} estas inventita - ĉu vi ŝatus jaron ekskluzive uzi la veturilon, por ke ni povu vidi ĝian funkciadon antaŭ ol ĝi estos plene havebla?
+STR_8102_RAILROAD_LOCOMOTIVE                                    :fervoja lokomotivo
+STR_8103_ROAD_VEHICLE                                           :vojveturilo
+STR_8104_AIRCRAFT                                               :aviadilo
+STR_8105_SHIP                                                   :ŝipo
+STR_8106_MONORAIL_LOCOMOTIVE                                    :unurellokomotivo
+STR_8107_MAGLEV_LOCOMOTIVE                                      :magleva lokomotivo
 
 ##id 0x8800
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Trajndeponejo
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Detaloj)
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trajno okupas la lokon
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8806_GO_TO                                                  :Iru al {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Iru al {STATION} (Transigu kaj prenu ŝarĝon)
+STR_8808_GO_TO_UNLOAD                                           :Iru al {STATION} (Deŝarĝu)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Iru al {STATION} (Transigu kaj lasu malplena)
+STR_880A_GO_TO_LOAD                                             :Iru al {STATION} (Ŝarĝu)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Iru al {STATION} (Transigu kaj atendu ĝis plena ŝarĝo)
+STR_880C_GO_NON_STOP_TO                                         :Iru senhalte al {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Iru senhalte al {STATION} (Transigu kaj prenu ŝarĝon)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Iru senhalte al {STATION} (Deŝarĝu)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Iru senhalte al {STATION} (Transigu kaj lasu malplena)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Iru senhalte al {STATION} (Ŝarĝu)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Iru senhalte al {STATION} (Transigu kaj atendu ĝis plena ŝarĝo)
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Iru senhalte al {TOWN} Trajndeponejo
 
 
 
+STR_8812_EMPTY                                                  :{LTBLUE}Malplena
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trajno {COMMA} atendas en deponejo
+STR_8815_NEW_VEHICLES                                           :{BLACK}Novaj Veturiloj
+STR_8816                                                        :{BLACK}-
+STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trajno tro longas
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Trajno nut povas esti adaptataj kiam halte en deponejo
 
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novaj Relaj Veturiloj
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novaj Unurelaj Veturiloj
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novaj Maglevaj Veturiloj
 
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Kreu Veturilon
+STR_8820_RENAME                                                 :{BLACK}Renomu
+STR_8823_SKIP                                                   :{BLACK}Plusaltu
+STR_8824_DELETE                                                 :{BLACK}Forviŝu
+STR_8825_NON_STOP                                               :{BLACK}Senhalte
+STR_8826_GO_TO                                                  :{BLACK}Iru al
+STR_8827_FULL_LOAD                                              :{BLACK}Plene ŝarĝu
+STR_8828_UNLOAD                                                 :{BLACK}Deŝarĝu
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordenoj)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fino de Ordenoj - -
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ne povas krei relan veturilon...
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valoro: {LTBLUE}{CURRENCY}
+STR_882E                                                        :{WHITE}{VEHICLE}
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Ŝarĝante / Deŝarĝante
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Ne povas sendi trajnon al deponejo...
+STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ne plu spaco por ordenoj
+STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Tro da ordenoj
+STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Ne povas enigi novan ordenon...
+STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Ne povas forviŝi ĉi tiun ordenon...
+STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Ne povas ŝanĝi ĉi tiun ordenon...
+STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ne povas movi veturilon
+STR_8838_N_A                                                    :N/A{SKIP}
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Ne povas vendi relan veturilon...
+STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Ne eblas trovi lokan deponejon
+STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Ne povas haltigi/starti trajnon...
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Prizorga intervalo: {LTBLUE}{COMMA}tagoj{BLACK}   Lasta prizorgo: {LTBLUE}{DATE_LONG}
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trajnoj - alklaku trajnon por pliaj informoj
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Kreu novajn trajnojn (bezonas trajndeponejon)
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trajnoj - alklaku trajnon por scii pli, tiru veturilon por aldoni aŭ forigi de trajno
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Kreu novan trajnan veturilon
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Tiru trajnan veturilon ĉi tien por vendi
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centre vidu la trajndeponejon en la ĉefvido
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Trajnveturila elektolisto - alklaku veturilon por informoj
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Kreu la elektitan trajnan veturilon
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renomu trajnveturilan tipon
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Nuna trajna ago - klaku por haltigi/starti la trajnon
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Montru trajnajn ordenojn
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centre vidu trajnan lokon en la ĉefvido
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Sendu trajnon al deponejo. CTRL+klako nur prizorgos
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Igu trajnon iri malgraŭ signalo
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Inversigu trajnan direkton
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Montru trajnajn detalojn
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Pliigu prizorgintervalon
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Malpliigu prizorgintervalon
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Montru detalojn de portata ŝarĝo
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Montru detalojn de trajnaj veturiloj
+STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Montru kapablojn de ĉiu veturilo
+STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Montru tutan kapablon de trajno, dividite laŭ ŝarĝtipo
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordena listo - alklaku ordenon por elekti. CTRL + klako skrolas al la stacio
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Saltu de la nuna ordeno al la sekva
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Forviŝu la elektitan ordenon
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Senhaltigu elektitan ordenon
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Enigu novan ordenon antaŭ la elektita ordeno, aŭ aldonu fine de la listo
+STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon atendi ĝis plena ŝarĝo
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon deŝarĝi
+STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nova {STRING} nun haveblas!
+STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 
 
 
