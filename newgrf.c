@@ -316,6 +316,10 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 					case 0x4C30: rvi[i].running_cost_class = 0; break;
 					case 0x4C36: rvi[i].running_cost_class = 1; break;
 					case 0x4C3C: rvi[i].running_cost_class = 2; break;
+					case 0: break; /* Used by wagons */
+					default:
+						grfmsg(GMS_WARN, "RailVehicleChangeInfo: Unsupported running cost base 0x%04X, ignoring.", base);
+						break;
 				}
 			}
 			break;
