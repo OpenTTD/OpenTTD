@@ -274,6 +274,8 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					/* Pick a colour */
 					if (HASBIT(c->flags, GCF_NOT_FOUND) || HASBIT(c->flags, GCF_DISABLED)) {
 						pal = PALETTE_TO_RED;
+					} else if (HASBIT(c->flags, GCF_STATIC)) {
+						pal = PALETTE_TO_YELLOW;
 					} else if (HASBIT(c->flags, GCF_ACTIVATED)) {
 						pal = PALETTE_TO_GREEN;
 					} else {

@@ -28,6 +28,7 @@
 GRFConfig *_all_grfs;
 GRFConfig *_grfconfig;
 GRFConfig *_grfconfig_newgame;
+GRFConfig *_grfconfig_static;
 
 
 /* Calculate the MD5 Sum for a GRF */
@@ -58,7 +59,7 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 
 
 /* Find the GRFID and calculate the md5sum */
-bool FillGRFDetails(GRFConfig *config)
+bool FillGRFDetails(GRFConfig *config, bool is_static)
 {
 	if (!FioCheckFileExists(config->filename)) {
 		SETBIT(config->flags, GCF_NOT_FOUND);
@@ -68,12 +69,24 @@ bool FillGRFDetails(GRFConfig *config)
 	/* Find and load the Action 8 information */
 	/* 62 is the last file slot before sample.cat.
 	 * Should perhaps be some "don't care" value */
-	LoadNewGRFFile(config, 62, GLS_FILESCAN);
+	LoadNewGRFFile(config, 62, is_static ? GLS_SAFETYSCAN : GLS_FILESCAN);
+
+	/* GCF_UNSAFE is set if GLS_SAFETYSCAN finds unsafe actions */
+	if (HASBIT(config->flags, GCF_UNSAFE)) return false;
 
 	/* Skip if the grfid is 0 (not read) or 0xFFFFFFFF (ttdp system grf) */
 	if (config->grfid == 0 || config->grfid == 0xFFFFFFFF) return false;
 
 	return CalcGRFMD5Sum(config);
+}
+
+
+void ClearGRFConfig(GRFConfig *config)
+{
+	free(config->filename);
+	free(config->name);
+	free(config->info);
+	free(config);
 }
 
 
@@ -83,16 +96,13 @@ void ClearGRFConfigList(GRFConfig *config)
 	GRFConfig *c, *next;
 	for (c = config; c != NULL; c = next) {
 		next = c->next;
-		free(c->filename);
-		free(c->name);
-		free(c->info);
-		free(c);
+		ClearGRFConfig(c);
 	}
 }
 
 
 /* Copy a GRF Config list */
-static void CopyGRFConfigList(GRFConfig **dst, GRFConfig *src)
+static GRFConfig **CopyGRFConfigList(GRFConfig **dst, GRFConfig *src)
 {
 	GRFConfig *c;
 
@@ -106,15 +116,21 @@ static void CopyGRFConfigList(GRFConfig **dst, GRFConfig *src)
 		*dst = c;
 		dst = &c->next;
 	}
+
+	return dst;
 }
 
 
 /* Reset the current GRF Config to either blank or newgame settings */
 void ResetGRFConfig(bool defaults)
 {
+	GRFConfig **c = &_grfconfig;
+
 	ClearGRFConfigList(_grfconfig);
 	_grfconfig = NULL;
-	if (defaults) CopyGRFConfigList(&_grfconfig, _grfconfig_newgame);
+
+	if (defaults) c = CopyGRFConfigList(c, _grfconfig_newgame);
+	CopyGRFConfigList(c, _grfconfig_static);
 }
 
 
@@ -138,7 +154,7 @@ bool IsGoodGRFConfigList(void)
 
 			res = false;
 		} else {
-			DEBUG(grf, 1) ("[GRF] Loading GRF %X from %s", BSWAP32(c->grfid), f->filename);
+			DEBUG(grf, 1) ("[GRF] Loading GRF %08X from %s", BSWAP32(c->grfid), f->filename);
 			c->filename = strdup(f->filename);
 			c->name     = strdup(f->name);
 			c->info     = strdup(f->info);
@@ -186,7 +202,7 @@ static uint ScanPath(const char *path)
 			c = calloc(1, sizeof(*c));
 			c->filename = strdup(file);
 
-			if (FillGRFDetails(c)) {
+			if (FillGRFDetails(c, false)) {
 				if (_all_grfs == NULL) {
 					_all_grfs = c;
 				} else {
@@ -294,6 +310,7 @@ static void Save_NGRF(void)
 	int index = 0;
 
 	for (c = _grfconfig; c != NULL; c = c->next) {
+		if (HASBIT(c->flags, GCF_STATIC)) continue;
 		SlSetArrayIndex(index++);
 		SlObject(c, _grfconfig_desc);
 	}
@@ -313,6 +330,9 @@ static void Load_NGRF(void)
 		*last = c;
 		last = &c->next;
 	}
+
+	/* Append static NewGRF configuration */
+	CopyGRFConfigList(last, _grfconfig_static);
 
 	ClearGRFConfigList(_grfconfig);
 	_grfconfig = first;

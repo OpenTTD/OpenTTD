@@ -8,6 +8,9 @@ enum {
 	GCF_DISABLED,
 	GCF_NOT_FOUND,
 	GCF_ACTIVATED,
+	GCF_SYSTEM,
+	GCF_UNSAFE,
+	GCF_STATIC,
 };
 
 typedef struct GRFConfig {
@@ -33,13 +36,17 @@ extern GRFConfig *_grfconfig;
 /* First item in list of default GRF set up */
 extern GRFConfig *_grfconfig_newgame;
 
+/* First item in list of static GRF set up */
+extern GRFConfig *_grfconfig_static;
+
 void ScanNewGRFFiles(void);
 const GRFConfig *FindGRFConfig(uint32 grfid, uint8 *md5sum);
 const GRFConfig *GetGRFConfig(uint32 grfid);
+void ClearGRFConfig(GRFConfig *config);
 void ClearGRFConfigList(GRFConfig *config);
 void ResetGRFConfig(bool defaults);
 bool IsGoodGRFConfigList(void);
-bool FillGRFDetails(GRFConfig *config);
+bool FillGRFDetails(GRFConfig *config, bool is_static);
 char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 
 /* In newgrf_gui.c */

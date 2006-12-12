@@ -2471,8 +2471,8 @@ static void SkipIf(byte *buf, int len)
 }
 
 
-/* Action 0x08 (GLS_FILESCAN) */
-static void ScanInfo(byte *buf, int len)
+/* Action 0x08 (GLS_SAFETYSCAN) */
+static void SafeInfo(byte *buf, int len)
 {
 	uint8 version;
 	uint32 grfid;
@@ -2486,6 +2486,9 @@ static void ScanInfo(byte *buf, int len)
 	grfid = grf_load_dword(&buf);
 
 	_cur_grfconfig->grfid = grfid;
+
+	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
+	if (GB(grfid, 24, 8) == 0xFF) SETBIT(_cur_grfconfig->flags, GCF_SYSTEM);
 
 	len -= 6;
 	name = (const char*)buf;
@@ -2502,7 +2505,14 @@ static void ScanInfo(byte *buf, int len)
 			_cur_grfconfig->info  = TranslateTTDPatchCodes(info);
 		}
 	}
+}
 
+/* Action 0x08 (GLS_INFOSCAN) */
+static void ScanInfo(byte *buf, int len)
+{
+	SafeInfo(buf, len);
+
+	/* GLS_INFOSCAN only looks for the action 8, so we can skip the rest of the file */
 	_skip_sprites = -1;
 }
 
@@ -3177,6 +3187,17 @@ static void GRFDataBlock(byte *buf, int len)
 	}
 }
 
+
+/* Used during safety scan on unsafe actions */
+static void GRFUnsafe(byte *buf, int len)
+{
+	SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
+
+	/* Skip remainder of GRF if GRF ID is set */
+	if (_cur_grfconfig->grfid != 0) _skip_sprites = -1;
+}
+
+
 static void InitializeGRFSpecial(void)
 {
 	_ttdpatch_flags[0] =  ((_patches.always_small_airport ? 1 : 0) << 0x0C)  // keepsmallairport
@@ -3517,25 +3538,25 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 	 * is not in memory and scanning the file every time would be too expensive.
 	 * In other stages we skip action 0x10 since it's already dealt with. */
 	static const SpecialSpriteHandler handlers[][GLS_END] = {
-		/* 0x00 */ { NULL,     NULL,            NULL,       FeatureChangeInfo, },
-		/* 0x01 */ { NULL,     NULL,            NULL,       NewSpriteSet, },
-		/* 0x02 */ { NULL,     NULL,            NULL,       NewSpriteGroup, },
-		/* 0x03 */ { NULL,     NULL,            NULL,       FeatureMapSpriteGroup, },
-		/* 0x04 */ { NULL,     NULL,            NULL,       FeatureNewName, },
-		/* 0x05 */ { NULL,     NULL,            NULL,       GraphicsNew, },
-		/* 0x06 */ { NULL,     NULL,            CfgApply,   CfgApply, },
-		/* 0x07 */ { NULL,     NULL,            NULL,       SkipIf, },
-		/* 0x08 */ { ScanInfo, NULL,            GRFInfo,    GRFInfo, },
-		/* 0x09 */ { NULL,     NULL,            SkipIf,     SkipIf, },
-		/* 0x0A */ { NULL,     NULL,            NULL,       SpriteReplace, },
-		/* 0x0B */ { NULL,     NULL,            GRFError,   GRFError, },
-		/* 0x0C */ { NULL,     NULL,            GRFComment, GRFComment, },
-		/* 0x0D */ { NULL,     NULL,            ParamSet,   ParamSet, },
-		/* 0x0E */ { NULL,     NULL,            GRFInhibit, GRFInhibit, },
-		/* 0x0F */ { NULL,     NULL,            NULL,       NULL, },
-		/* 0x10 */ { NULL,     DefineGotoLabel, NULL,       NULL, },
-		/* 0x11 */ { NULL,     NULL,            NULL,       GRFSound, },
-		/* 0x12 */ { NULL,     NULL,            NULL,       LoadFontGlyph, },
+		/* 0x00 */ { NULL,     GRFUnsafe, NULL,            NULL,       FeatureChangeInfo, },
+		/* 0x01 */ { NULL,     GRFUnsafe, NULL,            NULL,       NewSpriteSet, },
+		/* 0x02 */ { NULL,     GRFUnsafe, NULL,            NULL,       NewSpriteGroup, },
+		/* 0x03 */ { NULL,     GRFUnsafe, NULL,            NULL,       FeatureMapSpriteGroup, },
+		/* 0x04 */ { NULL,     NULL,      NULL,            NULL,       FeatureNewName, },
+		/* 0x05 */ { NULL,     NULL,      NULL,            NULL,       GraphicsNew, },
+		/* 0x06 */ { NULL,     NULL,      NULL,            CfgApply,   CfgApply, },
+		/* 0x07 */ { NULL,     NULL,      NULL,            NULL,       SkipIf, },
+		/* 0x08 */ { ScanInfo, SafeInfo,  NULL,            GRFInfo,    GRFInfo, },
+		/* 0x09 */ { NULL,     NULL,      NULL,            SkipIf,     SkipIf, },
+		/* 0x0A */ { NULL,     NULL,      NULL,            NULL,       SpriteReplace, },
+		/* 0x0B */ { NULL,     NULL,      NULL,            GRFError,   GRFError, },
+		/* 0x0C */ { NULL,     NULL,      NULL,            GRFComment, GRFComment, },
+		/* 0x0D */ { NULL,     GRFUnsafe, NULL,            ParamSet,   ParamSet, },
+		/* 0x0E */ { NULL,     GRFUnsafe, NULL,            GRFInhibit, GRFInhibit, },
+		/* 0x0F */ { NULL,     NULL,      NULL,            NULL,       NULL, },
+		/* 0x10 */ { NULL,     NULL,      DefineGotoLabel, NULL,       NULL, },
+		/* 0x11 */ { NULL,     GRFUnsafe, NULL,            NULL,       GRFSound, },
+		/* 0x12 */ { NULL,     NULL,      NULL,            NULL,       LoadFontGlyph, },
 	};
 
 	byte* buf;
@@ -3591,7 +3612,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 	 * During activation, only actions 0, 1, 2, 3, 4, 5, 7, 8, 9, 0A and 0B are
 	 * carried out.  All others are ignored, because they only need to be
 	 * processed once at initialization.  */
-	if (stage != GLS_FILESCAN && stage != GLS_LABELSCAN) {
+	if (stage != GLS_FILESCAN && stage != GLS_SAFETYSCAN && stage != GLS_LABELSCAN) {
 		_cur_grffile = GetFileByFilename(filename);
 		if (_cur_grffile == NULL) error("File ``%s'' lost in cache.\n", filename);
 		if (stage == GLS_ACTIVATION && !HASBIT(config->flags, GCF_ACTIVATED)) return;

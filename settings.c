@@ -1495,41 +1495,62 @@ static const SettingDesc _currency_settings[] = {
 #undef NO
 #undef CR
 
-static const char *GRFProcessParams(const IniItem *item, uint index)
+
+/* Load a GRF configuration from the given group name */
+static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_static)
 {
-	GRFConfig *c;
+	IniGroup *group = ini_getgroup(ini, grpname, -1);
+	IniItem *item;
+	GRFConfig *first = NULL;
+	GRFConfig **curr = &first;
 
-	/* Saving newgrf stuff to configuration, not done since it is kept the same */
-	if (item == NULL) return NULL;
+	if (group == NULL) return NULL;
 
-	/* Loading newgrf stuff from configuration file */
-	c = calloc(1, sizeof(*c));
-	c->filename = strdup(item->name);
-	if (!FillGRFDetails(c)) {
-		ShowInfoF("ini: ignoring invalid NewGRF '%s'", c->filename);
-		return NULL;
-	}
+	for (item = group->item; item != NULL; item = item->next) {
+		GRFConfig *c = calloc(1, sizeof(*c));
+		c->filename = strdup(item->name);
 
-	if (*item->value != '\0') {
-		c->num_params = parse_intlist(item->value, (int*)c->param, lengthof(c->param));
-		if (c->num_params == (byte)-1) {
-			ShowInfoF("ini: error in array '%s'", item->name);
-			c->num_params = 0;
+		/* Parse parameters */
+		if (*item->value != '\0') {
+			c->num_params = parse_intlist(item->value, (int*)c->param, lengthof(c->param));
+			if (c->num_params == (byte)-1) {
+				ShowInfoF("ini: error in array '%s'", item->name);
+				c->num_params = 0;
+			}
 		}
+
+		/* Check if item is valid */
+		if (!FillGRFDetails(c, is_static)) {
+			const char *msg;
+
+			if (HASBIT(c->flags, GCF_NOT_FOUND)) {
+				msg = "not found";
+			} else if (HASBIT(c->flags, GCF_UNSAFE)) {
+				msg = "unsafe for static use";
+			} else if (HASBIT(c->flags, GCF_SYSTEM)) {
+				msg = "system NewGRF";
+			} else {
+				msg = "unknown";
+			}
+
+			ShowInfoF("ini: ignoring invalid NewGRF '%s': %s", item->name, msg);
+			ClearGRFConfig(c);
+			continue;
+		}
+
+		/* Mark file as static to avoid saving in savegame. */
+		if (is_static) SETBIT(c->flags, GCF_STATIC);
+
+		/* Add item to list */
+		*curr = c;
+		curr = &c->next;
 	}
 
-	if (_grfconfig_newgame == NULL) {
-		_grfconfig_newgame = c;
-	} else {
-		GRFConfig *c2;
-		/* Attach the label to the end of the list */
-		for (c2 = _grfconfig_newgame; c2->next != NULL; c2 = c2->next);
-		c2->next = c;
-	}
-
-	return c->filename;
+	return first;
 }
 
+
+/* Save a GRF configuration to the given group name */
 static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *list)
 {
 	IniGroup *group = ini_getgroup(ini, grpname, -1);
@@ -1575,7 +1596,8 @@ void LoadFromConfig(void)
 {
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, ini_load_settings, ini_load_setting_list);
-	ini_load_setting_list(ini, "newgrf", NULL, 0, GRFProcessParams);
+	_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
+	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
 	ini_free(ini);
 }
 
@@ -1585,6 +1607,7 @@ void SaveToConfig(void)
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, ini_save_settings, ini_save_setting_list);
 	GRFSaveConfig(ini, "newgrf", _grfconfig_newgame);
+	GRFSaveConfig(ini, "newgrf-static", _grfconfig_static);
 	ini_save(_config_file, ini);
 	ini_free(ini);
 }

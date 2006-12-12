@@ -8,6 +8,7 @@
 
 typedef enum GrfLoadingStage {
 	GLS_FILESCAN,
+	GLS_SAFETYSCAN,
 	GLS_LABELSCAN,
 	GLS_INIT,
 	GLS_ACTIVATION,
