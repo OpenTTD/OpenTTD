@@ -1,4 +1,5 @@
-##ownname Русский (RU)
+##name Russian
+##ownname Русский
 ##isocode ru_RU.UTF-8
 
 ##id 0x0000
