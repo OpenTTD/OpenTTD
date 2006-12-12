@@ -2412,10 +2412,49 @@ STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elekt
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon deŝarĝi
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nova {STRING} nun haveblas!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
+STR_885C_BROKEN_DOWN                                            :{RED}Rompite
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}po {CURRENCY} jare
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
+STR_8861_STOPPED                                                :{RED}Haltis
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Ne povas igi trajnon transiri signalon je danĝero...
+STR_8863_CRASHED                                                :{RED}Kraŝis!
 
+STR_8865_NAME_TRAIN                                             :{WHITE}Nomu trajnon
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Ne povas nomi trajnon...
+STR_8867_NAME_TRAIN                                             :{BLACK}Nomu trajnon
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Trajna Kraŝo!{}{COMMA} mortis pro fajro post kolizio
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ne povas inversigi direkton de trajno...
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomu trajnan veturiltipon
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ne povas renomi trajnan veturiltipon...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon demeti la ŝarĝon
+STR_886F_TRANSFER                                               :{BLACK}Transigu
 
 
 ##id 0x9000
+STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vojveturilo okupas la lokon
+STR_9002                                                        :{WHITE}{VEHICLE}
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Vojveturila Deponejo
+STR_9004_NEW_VEHICLES                                           :{BLACK}Novaj Veturiloj
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Novaj Vojveturiloj
+STR_9007_BUILD_VEHICLE                                          :{BLACK}Kreu Veturilon
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ne povas krei vojveturilon
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaloj)
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}po {CURRENCY} jare
+STR_900E_MAX_SPEED                                              :{BLACK}Maksimuma rapideco: {LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
+STR_9012_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...devas esti haltigata en vojveturila deponejo
+STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ne povas vendi vojveturilon...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ne povas haltigi/starti vojveturilon...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vojveturilo {COMMA} atendas en deponejo
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ne povas sendi veturilon al deponejo...
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne eblas trovi lokan deponejon
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vojveturiloj - alklaku veturilon por informoj
+STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Kreu novajn vojveturilojn (bezonas vojveturilan deponejon)
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Nuna veturila ago - klaku ĉi tie por haltigi/starti veturilon
 
 
 
