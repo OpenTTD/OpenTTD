@@ -170,8 +170,8 @@ void AI_RunGameLoop(void)
 	/* Don't do anything if ai is disabled */
 	if (!_ai.enabled) return;
 
-	/* Don't do anything if we are a network-client */
-	if (_networking && !_network_server) return;
+	/* Don't do anything if we are a network-client, or the AI has been disabled */
+	if (_networking && (!_network_server || !_patches.ai_in_multiplayer)) return;
 
 	/* New tick */
 	_ai.tick++;
