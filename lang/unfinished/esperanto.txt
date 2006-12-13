@@ -1,6 +1,7 @@
 ##name Esperanto
 ##ownname Esperanto
 ##isocode eo_EO.UTF-8
+##plural 0
 ##case n
 
 ##id 0x0000
@@ -383,8 +384,8 @@ STR_ENGINE_SORT_ENGINE_ID                                       :Maŝina ID (kla
 STR_ENGINE_SORT_COST                                            :Kosto
 STR_ENGINE_SORT_POWER                                           :Potenco
 STR_ENGINE_SORT_INTRO_DATE                                      :Enkonduka dato
-STR_ENGINE_SORT_RUNNING_COST                                    :Kurkosto
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potenco/Kurkosto
+STR_ENGINE_SORT_RUNNING_COST                                    :Irkosto
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potenco/Irkosto
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Ŝarĝkapablo
 STR_NO_WAITING_CARGO                                            :{BLACK}Nenia ŝarĝo atendas
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Elektu ĉiujn konstruaĵojn
@@ -463,6 +464,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Vidu aŭ
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Gajno ĉi-jare: {CURRENCY} (pasintjare: {CURRENCY})
 
 ############ range for service numbers starts
+STR_AGE                                                         :{COMMA} jaro{P "" j} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} jaro{P "" j} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Vojveturilo
@@ -717,6 +720,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Metu rok
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Metu lumturon
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Metu transmitilon
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Difinu dezertan regionon.{}Premu kaj tenu CTRL por forigi ĝin
+STR_CREATE_LAKE                                                 :{BLACK}Difinu akvoregionon.{}Inundos la ĉirkaŭon se marnivele
 STR_0290_DELETE                                                 :{BLACK}Forigu
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Plene forigu ĉi tiun urbon
 STR_0292_SAVE_SCENARIO                                          :Konservu scenaron
@@ -1011,6 +1015,10 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permesu
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Permesu realecan rapidigon por trajnoj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Malpermesu trajnojn kaj ŝipojn ort-turniĝi: {ORANGE}{STRING} {LTBLUE} (bezonas NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Ligu stacidomojn konstruatajn unu apud la alia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Ĉe 'plene ŝarĝu' ekiru se ajna ŝarĝo estas plena: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Uzu plibonigitan ŝarĝalgoritmon: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Laŭgrade ŝarĝu veturilojn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflacio: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permesu konstruadon de tre longaj pontoj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permesu ordenojn por iri al deponejo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Permesu konstruadon de fontmalerialaj industrioj: {ORANGE}{STRING}
@@ -1065,7 +1073,15 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Kiom al
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksimuma stacivasteco: {ORANGE}{STRING} {RED}Atentu: Pli alte, malpli rapide
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Aŭtomate prizorgu helikopterojn sur helikopterejoj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligu landaspekta breto al rela, voja, akva kaj flughavena bretoj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inversigu skroldirekton: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Montru mezuran konsilbalonon ĉe uzo de konstruaj iloj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Montru kompaniajn liverojn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Neniuj
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propra kompanio
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Ĉiuj kompanioj
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Preferu teambabiladon per <ENTER>: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Trajna maksimumo por ĉiu ludanto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Vojveturila maksimumo por ĉiu ludanto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Aviadila maksimumo por ĉiu ludanto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Ŝipa maksimumo por ĉiu ludanto: {ORANGE}{STRING}
@@ -1106,7 +1122,7 @@ STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fenestr
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfaco
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruado
 STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Veturiloj
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stacidomoj
+STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stacioj
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomio
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Konkurantoj
 
@@ -1138,8 +1154,8 @@ STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Ŝanĝu
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ŝanĝu daton: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ebligu ŝanĝi produktvalorojn: {ORANGE}{STRING}
 
-STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Iranta al {WAYPOINT}
-STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Iranta al {WAYPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Irante al {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Irante al {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :Iru laŭ {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Iru senhalte laŭ {WAYPOINT}
@@ -1198,7 +1214,7 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Transigu
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Tiru la lokomotivon ĉi tien por vendi la tutan trajnon.
 
-STR_DRAG_DROP                                                   :{BLACK}Tiru
+STR_DRAG_DROP                                                   :{BLACK}Tiru k metu
 STR_STATION_DRAG_DROP                                           :{BLACK}Tiru por konstrui stacidomon
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Elektu stacidomklason por montri
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Elektu stacidomtipon por konstrui
@@ -1466,12 +1482,15 @@ STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ne po
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...io simple fiaskis. Pardonu. (probable aĉa dosiero)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Ne povas ŝarĝi landaspekton el BMP...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ne povis transigi bildotipon.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kosto: {CURRENCY}
 STR_0801_COST                                                   :{RED}Kosto: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Enspezo: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Enspezo: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transigo: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Transigo: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Estimated Cost: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Atendata enspezo: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Ne povas altigi landon ĉi tie...
@@ -1643,8 +1662,11 @@ STR_205A_TEPEES                                                 :Tipioj
 STR_205B_TEAPOT_HOUSE                                           :Tekruĉa Domo
 STR_205C_PIGGY_BANK                                             :Porko-Banko
 
+STR_INDUSTRY                                                    :{INDUSTRY}
+STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
 
 ##id 0x2800
+STR_LANDSCAPING                                                 :Landaspektigi
 STR_2800_PLANT_TREES                                            :Plantu arbojn
 STR_2801_PLACE_SIGN                                             :Metu signon
 STR_2802_TREES                                                  :{WHITE}Arboj
@@ -1833,6 +1855,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}La produktado de {INDUSTRY} duoniĝas
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insektoj kaŭzas plagon ĉe {INDUSTRY}!{}Produktado duoniĝas
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...nur lokebla ĉe la randoj de la mapo
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produktado de {STRING} ĉe {INDUSTRY} pliiĝas per {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produktado de {STRING} ĉe {INDUSTRY} malpliiĝas per {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Trajno en tunelo
@@ -1853,6 +1877,7 @@ STR_5011_SUSPENSION_CONCRETE                                    :Betona pendanta
 STR_5012_WOODEN                                                 :Ligna
 STR_5013_CONCRETE                                               :Betona
 STR_5014_TUBULAR_STEEL                                          :Ŝtala tuba
+STR_BRIDGE_TUBULAR_SILICON                                      :Tuba, Silicia
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Ne povas konstrui ponton ĉi tie...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Ne povas konstrui tunelon ĉi tie...
 STR_5017_RAILROAD_TUNNEL                                        :Fervoja tunelo
@@ -1986,6 +2011,7 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Entute:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Enspeza Grafiko
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Gajna Grafiko
 STR_7026_BANK_BALANCE                                           :{WHITE}Banka Balanco
@@ -1998,11 +2024,13 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Ne povas
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...ne estas repagebla prunto
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} necesas
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Ne povas repagi prunton...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Ne povas donaci monon pruntitan de la banko...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Elektu novan vizaĝon por la manaĝanto
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Ŝanĝu la kompaniveturilan koloraron
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Ŝanĝu la nomon de la manaĝanto
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Ŝanĝu la nomon de la kompanio
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Alklaku la deziratan kolorskemon
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} aviadiloj
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Nuligu elekton de nova vizaĝo
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Akceptu elekton de nova vizaĝo
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Elektu virajn vizaĝojn
@@ -2047,6 +2075,8 @@ STR_706F_BUILD_HQ                                               :{BLACK}Faru HQ
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Konstruu kompanian ĉefkonstruaĵon / vidu kompanian ĉefkonstruaĵon
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Ne povas konstrui kompanian ĉefkonstruaĵon...
 STR_7072_VIEW_HQ                                                :{BLACK}Vidu HQ
+STR_COMPANY_PASSWORD                                            :{BLACK}Pasvorto
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Pasvorte protektu vian kompanion por eviti ke eksteruloj aliĝu.
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Monda Recesio!{}{}Financaj spertuloj timas ke malpliboniĝas treege! Ekonomio malboniĝadas!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesio finiĝis!{}{}Komerca pliboniĝos donas konfidon al industrioj! Ekonomio pliboniĝas!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Ŝaltu inter granda kaj malgranda fenestro
@@ -2062,7 +2092,26 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} estas transprenita de {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Ĉi tiu kompanio ne sufiĉe aĝas por jam komerci dividaĵojn...
 
+STR_LIVERY_DEFAULT                                              :Normala Koloro
+STR_LIVERY_DIESEL                                               :Dizelmaŝino
+STR_LIVERY_ELECTRIC                                             :Elektromaŝino
+STR_LIVERY_MONORAIL                                             :Unurelmaŝino
+STR_LIVERY_MAGLEV                                               :Maglevmaŝino
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Pasaĝera Vagono (Vaporo)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Pasaĝera Vagono (Dizelo)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Pasaĝera Vagono (Elektro)
+STR_LIVERY_FREIGHT_WAGON                                        :Ŝarĝvagono
+STR_LIVERY_BUS                                                  :Buso
+STR_LIVERY_PASSENGER_SHIP                                       :Pasaĝera Ŝipo
+STR_LIVERY_FREIGHT_SHIP                                         :Ŝarĝŝipo
+STR_LIVERY_HELICOPTER                                           :Helikoptero
+STR_LIVERY_LARGE_PLANE                                          :Granda Aviadilo
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Montru ĝeneralajn kolorskemojn
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Montru aviadilajn kolorskemojn
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Elektu kolorskemon por ŝanĝi, aŭ plurajn per CTRL+click. Alklaku kvadraton por uzi/ne uzi skemon
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vaporo)
@@ -2338,12 +2387,19 @@ STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Iru senhalte al
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Iru senhalte al {STATION} (Transigu kaj lasu malplena)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Iru senhalte al {STATION} (Ŝarĝu)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Iru senhalte al {STATION} (Transigu kaj atendu ĝis plena ŝarĝo)
+STR_GO_TO_TRAIN_DEPOT                                           :Iru al {TOWN} Trajndeponejo
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Iru senhalte al {TOWN} Trajndeponejo
 
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Irante al {TOWN} Trajndeponejo
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Irante al {TOWN} Trajndeponejo, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Prizorgo ĉe {TOWN} Trajndeponejo
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Prizorgo ĉe {TOWN} Trajndeponejo, {VELOCITY}
 
+STR_INVALID_ORDER                                               :{RED} (Nevalida Ordeno)
 
 STR_8812_EMPTY                                                  :{LTBLUE}Malplena
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trajno {COMMA} atendas en deponejo
 STR_8815_NEW_VEHICLES                                           :{BLACK}Novaj Veturiloj
 STR_8816                                                        :{BLACK}-
@@ -2353,8 +2409,15 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Trajno n
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novaj Relaj Veturiloj
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novaj Unurelaj Veturiloj
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novaj Maglevaj Veturiloj
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Vojveturiloj
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Kreu Veturilon
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonu Veturilon
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Ĉi tiel konstruu kopion de la vojveturilo. CTRL+klako dividos la ordenojn
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Ĉi tio konstruas kopion de la vojveturilo. Alklaku ĉi tiun butenon kaj poste veturilon en aŭ ekster deponejo. CTRL+klako dividos la ordenojn
+STR_CLONE_TRAIN                                                 :{BLACK}Klonu Trajnon
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Ĉi tiel konstruu kopion de la trajno kun ĉiuj vagonoj. CTRL+klako dividos la ordenojn
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Ĉi tio konstruas kopion de la trajno kun ĉiuj vagonoj. Alklaku ĉi tiun butenon kaj poste trajnon en aŭ ekster deponejo. CTRL+klako dividos la ordenojn
 STR_8820_RENAME                                                 :{BLACK}Renomu
 STR_8823_SKIP                                                   :{BLACK}Plusaltu
 STR_8824_DELETE                                                 :{BLACK}Forviŝu
@@ -2364,6 +2427,7 @@ STR_8827_FULL_LOAD                                              :{BLACK}Plene ŝ
 STR_8828_UNLOAD                                                 :{BLACK}Deŝarĝu
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordenoj)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fino de Ordenoj - -
+STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ne povas krei relan veturilon...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valoro: {LTBLUE}{CURRENCY}
@@ -2430,6 +2494,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ne povas
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon demeti la ŝarĝon
 STR_886F_TRANSFER                                               :{BLACK}Transigu
 
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Neinterŝanĝeblaj reltipoj
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vojveturilo okupas la lokon
@@ -2450,6 +2515,10 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...devas
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ne povas vendi vojveturilon...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ne povas haltigi/starti vojveturilon...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vojveturilo {COMMA} atendas en deponejo
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Irante al {TOWN} Voja Deponejo
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Irante al {TOWN} Voja Deponejo, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Prizorgo ĉe {TOWN} Voja Deponejo
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Prizorgo ĉe {TOWN} Voja Deponejo, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ne povas sendi veturilon al deponejo...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne eblas trovi lokan deponejon
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vojveturiloj - alklaku veturilon por informoj
@@ -2493,6 +2562,9 @@ STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} �
 STR_9804_NEW_SHIPS                                              :{BLACK}Novaj Ŝipoj
 STR_9808_NEW_SHIPS                                              :{WHITE}Novaj Ŝipoj
 STR_9809_BUILD_SHIP                                             :{BLACK}Kreu Ŝipon
+STR_CLONE_SHIP                                                  :{BLACK}Klonu Ŝipon
+STR_CLONE_SHIP_INFO                                             :{BLACK}Ĉi tiel konstruu kopion de la ŝipo. CTRL+klako dividos la ordenojn
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Ĉi tio konstruas kopion de la ŝipo. Alklaku ĉi tiun butenon kaj poste ŝipon en aŭ ekster deponejo. CTRL+klako dividos la ordenojn
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Ŝipo devas halti en deponejo
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Ne povas vendi ŝipon...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ne povas krei ŝipon...
@@ -2508,6 +2580,10 @@ STR_9817_CAPACITY                                               :{BLACK}Kapablo:
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ne povas haltigi/starti ŝipon...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ne povas sendi ŝipon al deponejo...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne eblas trovi lokan deponejon
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Irante al {TOWN} Ŝipdeponejo
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Irante al {TOWN} Ŝipdeponejo, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Prizorgo ĉe {TOWN} Ŝipdeponejo
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Prizorgo ĉe {TOWN} Ŝipdeponejo, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Ŝipo {COMMA} atendas en deponejo
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Konstruu havenon
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Konstruu ŝipdeponejon (por krei kaj prizorgi ŝipojn)
@@ -2529,14 +2605,112 @@ STR_982D                                                        :{BLACK}{BIGFONT
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosto: {CURRENCY} Maksimuma rapideco: {VELOCITY}{}Kapablo: {CARGO}{}Irkosto: po {CURRENCY} jare
 STR_982F_NAME_SHIP                                              :{BLACK}Nomu ŝipon
 
+STR_9831_NAME_SHIP                                              :{WHITE}Nomu ŝipon
+STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Ne povas nomi ŝipon...
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua ŝipo alvenas en {STATION}!
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Metu buon kiu povas esti uzata kiel trairejo
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Ne povas meti buon ĉi tie...
+STR_9836_RENAME                                                 :{BLACK}Renomu
+STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Renomu ŝiptipon
+STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Renomu ŝiptipon
+STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Ne povas renomi ŝiptipon...
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Transformu ŝarĝŝipon por porti alian ŝarĝon
+STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Transformu)
+STR_983C_REFIT_SHIP                                             :{BLACK}Transformu ŝipon
+STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Elektu portotan ŝarĝotipon
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Transformu ŝipon por porti elektitan ŝarĝotipon
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Elektu ŝarĝotipon por porti:
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapablo: {GOLD}{CARGO}{}{BLACK}Transformkosto: {GOLD}{CURRENCY}
+STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Ne povas transformi ŝipon...
+STR_9842_REFITTABLE                                             :(transformebla)
+STR_GO_TO_SHIP_DEPOT                                            :Iru al {TOWN} Ŝipdeponejo
 SERVICE_AT_SHIP_DEPOT                                           :Prizorgo en la ŝipdeponejo de {TOWN}
 
 ##id 0xA000
+STR_A000_AIRPORTS                                               :{WHITE}Flughavenoj
+STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Ne povas konstrui flughavenon ĉi tie...
+STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangaro
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}Novaj Aviadiloj
+STR_CLONE_AIRCRAFT                                              :{BLACK}Klonu aviadilon
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Ĉi tiel konstruu kopion de la aviadilo. CTRL+klako dividos la ordenojn
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ĉi tio konstruas kopion de la aviadilo. Alklaku ĉi tiun butenon kaj poste aviadilon en aŭ ekster hangaro. CTRL+klako dividos la ordenojn
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}Novaj Aviadiloj
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Kreu Aviadilon
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Ne povas krei aviadilon...
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aviadiloj
+STR_A00A                                                        :{WHITE}{VEHICLE}
+STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Ordenoj)
+STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaloj)
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}po {CURRENCY} jare
+STR_A00E_MAX_SPEED                                              :{BLACK}Maksimuma rapideco: {LTBLUE}{VELOCITY}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
+STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Ne povas sendi aviadilon al hangaro...
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Irante al {STATION} Hangaro
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Irante al {STATION} Hangaro, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Prizorgo ĉe {STATION} Hangaro
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Prizorgo ĉe {STATION} Hangaro, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aviadilo {COMMA} atendas en la hangaro
+STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aviadilo okupas la lokon
+STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Ne povas haltigi/starti aviadilon...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aviadilo flugas
+STR_A019_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Aviadilo devas esti haltigata en la hangaro
+STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Ne povas vendi aviadilon...
+STR_A01D_AIRPORT_CONSTRUCTION                                   :Flughavena konstruado
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}Kreu flughavenon
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aviadiloj - alklaku aviadilon por informoj
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Kreu novan aviadilon (bezonas flughavenon kun hangaro)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aviadiloj - alklaku aviadilon por informoj
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Kreu novan aviadilon
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}DTiru aviadilon ĉi tien por vendi
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centre vidu hangaron en la ĉefvido
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Aviadilelekta listo - alklaku aviadilon por informoj
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Kreu la elektitan aviadilon
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Nuna aviadila ago - klaku ĉi tie por haltigi/starti aviadilon
+STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Montru aviadilajn ordenojn
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centre vidu aviadilon en la ĉefvido
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Sendu aviadilon al hangaro. CTRL+klako nur prizorgos
+STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Montru aviadilajn detalojn
+STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nova aviadilo nun haveblas!
+STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosto: {CURRENCY} Maksimuma rapideco: {VELOCITY}{}Kapablo: {COMMA} pasaĝeroj, {COMMA} sakoj da poŝto{}Irkosto: po {CURRENCY} jare
 
+STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nomu aviadilon
+STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Ne povas nomi aviadilon...
+STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nomu aviadilon
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua aviadilo alvenas en {STATION}!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Aviadilo Kraŝas!{}{COMMA} mortas pro fajro en {STATION}
+STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
+STR_A037_RENAME                                                 :{BLACK}Renomu
+STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Renomu aviadiltipon
+STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Renomu aviadiltipon
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Ne povas renomi aviadiltipon...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Transformu aviadilon por porti alian ŝarĝotipon
+STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Transformu)
+STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Transformu aviadilon
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Elektu portotan ŝarĝon de aviadilo
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Transformu aviadilon por porti elektitan ŝarĝotipon
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Elektu ŝarĝtipon por porti:
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapablo: {GOLD}{STRING}{}{BLACK}Transformkosto: {GOLD}{CURRENCY}
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ne povas reformi aviadilon...
+STR_GO_TO_AIRPORT_HANGAR                                        :Iru al {STATION} Hangaro
 SERVICE_AT_AIRPORT_HANGAR                                       :Prizorgo en la hangaro de {STATION}
 
 ##id 0xB000
+STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zepelina katastrofo en {STATION}!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Vojveturilo detruita en 'UFO'-kolizio!
+STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Oleprodukteja eksplodo ĉe {TOWN}!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Farejo detruita en suspektataj cirkonstancooj ĉe {TOWN}!
+STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' landiĝas ĉe {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Karbmineja terŝoviĝo lasas trakon da detruado ĉe {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Fluegoj!{}Almenaŭ {COMMA} mankas kaj verŝajne mortis pro signifoplena fluego!
 
+STR_BRIBE_FAILED                                                :{WHITE}Via subaĉeta provo estas
+STR_BRIBE_FAILED_2                                              :{WHITE}malkovrita de regiona esploristo
+STR_BUILD_DATE                                                  :{BLACK}Kreite: {LTBLUE}{DATE_LONG}
 
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
@@ -2546,21 +2720,55 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Alia monunuo
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Interŝanĝa valoro: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Dividilo:
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefikso:
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufikso:
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Ŝanĝu al Eŭroj: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Ŝanĝu al Eŭroj: {ORANGE}neniam
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Antaŭvido: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ŝanĝu parametron por alia monunuo
 
+STR_BUS                                                         :{BLACK}{BUS}
 
 
 
 
 ### depot strings
 
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Vi intencas vendi ĉiujn veturilojn en la deponejo.
+STR_ARE_YOU_SURE                                                :{BLACK}Ĉu vi certas?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Konfirmu ke vi volas vendi ĉiujn trajnojn en la deponejo
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Konfirmu ke vi volas vendi ĉiujn vojveturilojn en la deponejo
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Konfirmu ke vi volas vendi ĉiujn ŝipojn en la deponejo
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Konfirmu ke vi volas vendi ĉiujn aviadilojn en la hangaro
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ne vendu ĉiujn trajnojn en la deponejo
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ne vendu ĉiujn vojveturilojn en la deponejo
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ne vendu ĉiujn ŝipojn en la deponejo
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ne vendu ĉiujn aviadilojn en la hangaro
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vendu ĉiujn trajnojn en la deponejo
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vendu ĉiujn vojveturilojn en la deponejo
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vendu ĉiujn ŝipojn en la deponejo
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vendu ĉiujn aviadilojn en la hangaro
+
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Akiru liston da trajnoj kun ĉi tiu deponejo en siaj ordenoj
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Akiru liston da ĉiuj vojveturiloj kun ĉi tiu deponejo en siaj ordenoj
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Akiru liston da ĉiuj ŝipoj kun ĉi tiu deponejo en siaj ordenoj
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Akiru liston da ĉiuj aviadiloj kun ajna hangaro en ĉi tiu flughaveno en siaj ordenoj
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Aŭtomate anstataŭu ĉiujn trajnojn en la deponejo
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Aŭtomate anstataŭu ĉiujn vojveturilojn en la deponejo
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Aŭtomate anstataŭu ĉiujn ŝipojn en la deponejo
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Aŭtomate anstataŭu ĉiujn aviadilojn en la hangaro
 
 
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Maŝino ne kreeblas
 
-
-
-
-
-
+STR_ENGINES                                                     :Maŝinoj
 
 
 
@@ -2570,6 +2778,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Relaj Veturiloj
+STR_ELRAIL_VEHICLES                                             :Elektraj Relaj Veturiloj
 STR_MONORAIL_VEHICLES                                           :Unurelaj Veturiloj
 STR_MAGLEV_VEHICLES                                             :Maglevaj Veturiloj
 
@@ -2579,10 +2788,40 @@ STR_MAGLEV_VEHICLES                                             :Maglevaj Veturi
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}Generu
+STR_LAND_GENERATOR                                              :{BLACK}Landgenerilo:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Altecmapa turniĝo:
+STR_DATE                                                        :{BLACK}Dato:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skala averto
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ne rekomendindas tro ŝanĝi la grandecon de la mapo. Ĉu daŭrigi la generadon?
+STR_HEIGHTMAP_NAME                                              :{BLACK}Altecmapa nomo:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Grandeco: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Generante mondon...
+STR_GENERATION_ABORT                                            :{BLACK}Ĉesu
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Ĉesu generi mondon
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Ĉu vi vere volas ĉesi generi mondon?
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Ĉi tiu ago ŝanĝis la malfacilec-nivelon al 'ŝanĝite'
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Malaltigu la altecon de ebena lando per unu
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Altigu la altecon de ebena lando per unu
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ŝanĝu altecon de ebena lando
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Alteco de ebena lando:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 
 ########### String for new airports
+STR_CITY_AIRPORT                                                :{BLACK}Urbo
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internacia flughaveno
+STR_COMMUTER_AIRPORT                                            :{BLACK}Urbeta flughaveno
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinenta
+STR_HELIPORT                                                    :{BLACK}Helikopterejo
+STR_HELIDEPOT                                                   :{BLACK}Helikopterdeponejo
+STR_HELISTATION                                                 :{BLACK}Helikopterstacio
 
+STR_LARGE_AIRPORTS                                              :{BLACK}Grandaj flughavenoj
+STR_HUB_AIRPORTS                                                :{BLACK}Nabaj flughavenoj
+STR_HELIPORTS                                                   :{BLACK}Helikopterhaveno
 
 ############ Tooltip measurment
 
