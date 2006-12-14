@@ -41,7 +41,7 @@ extern GRFConfig *_grfconfig_static;
 
 void ScanNewGRFFiles(void);
 const GRFConfig *FindGRFConfig(uint32 grfid, uint8 *md5sum);
-const GRFConfig *GetGRFConfig(uint32 grfid);
+GRFConfig *GetGRFConfig(uint32 grfid);
 void ClearGRFConfig(GRFConfig *config);
 void ClearGRFConfigList(GRFConfig *config);
 void ResetGRFConfig(bool defaults);

@@ -266,7 +266,7 @@ const GRFConfig *FindGRFConfig(uint32 grfid, uint8 *md5sum)
 
 
 /* Retrieve a NewGRF from the current config by its grfid */
-const GRFConfig *GetGRFConfig(uint32 grfid)
+GRFConfig *GetGRFConfig(uint32 grfid)
 {
 	GRFConfig *c;
 

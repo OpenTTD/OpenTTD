@@ -2950,13 +2950,13 @@ static void GRFInhibit(byte *buf, int len)
 
 	for (i = 0; i < num; i++) {
 		uint32 grfid = grf_load_dword(&buf);
-		GRFFile *file = GetFileByGRFID(grfid);
+		GRFConfig *file = GetGRFConfig(grfid);
 
 		/* Unset activation flag */
 		if (file != NULL) {
 			grfmsg(GMS_NOTICE, "GRFInhibit: Deactivating file ``%s''", file->filename);
-			SETBIT(_cur_grfconfig->flags, GCF_DISABLED);
-			CLRBIT(_cur_grfconfig->flags, GCF_ACTIVATED);
+			SETBIT(file->flags, GCF_DISABLED);
+			CLRBIT(file->flags, GCF_ACTIVATED);
 		}
 	}
 }
