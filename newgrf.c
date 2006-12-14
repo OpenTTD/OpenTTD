@@ -2957,6 +2957,9 @@ static void GRFInhibit(byte *buf, int len)
 			grfmsg(GMS_NOTICE, "GRFInhibit: Deactivating file ``%s''", file->filename);
 			SETBIT(file->flags, GCF_DISABLED);
 			CLRBIT(file->flags, GCF_ACTIVATED);
+
+			/* Skip processing if the GRF deactivated itself */
+			if (file == _cur_grfconfig) _skip_sprites = -1;
 		}
 	}
 }
