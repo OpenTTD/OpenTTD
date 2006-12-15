@@ -2726,17 +2726,35 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Agordoj de NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apliku ŝanĝojn
+STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Agordu parametrojn
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nun ne estas instalitaj newgrf-dosieroj! Bonvolu legi la manlibron por ekscii kiel instali novajn grafikaĵojn
 STR_NEWGRF_FILENAME                                             :{BLACK}Dosiernomo: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 
 STR_NEWGRF_ADD                                                  :{BLACK}Aldonu
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Aldonu NewGRF-dosieron al la listo
+STR_NEWGRF_REMOVE                                               :{BLACK}Forviŝu
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Remove the selected NewGRF file from the list
+STR_NEWGRF_MOVEUP                                               :{BLACK}Movu Supren
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Movu la elektitan NewGRF-dosieron supren en la listo
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Movu Malsupren
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Movu la elektitan NewGRF-dosieron malsupren en la listo
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Listo da instalitaj NewGRF-dosieroj. Alklaku dosieron por ŝanĝi la parametrojn
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parametroj: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Enigu NewGRF-parametrojn
+STR_NEWGRF_NO_INFO                                              :{BLACK}Ne haveblas informoj
 
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Haveblaj NewGRF-dosieroj
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Aldonu al elekto
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Aldonu la elektitan NewGRF-dosieron al viaj agordoj
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Reserĉu dosierojn
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Ĝisdatigu la liston da haveblaj NewGRF-dosieroj
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne povas aldoni dosieron: duobla GRF ID
 
+STR_NEWGRF_NOT_FOUND                                            :{RED}Ne trovis apartenan dosieron
 STR_NEWGRF_DISABLED                                             :{RED}Malaktiva
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Alia monunuo
