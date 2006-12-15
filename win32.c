@@ -1126,9 +1126,9 @@ HRESULT OTTDSHGetFolderPath(HWND hwnd, int csidl, HANDLE hToken, DWORD dwFlags, 
 		DWORD ret;
 		switch (csidl) {
 			case CSIDL_FONTS: /* Get the system font path, eg %WINDIR%\Fonts */
-				ret = GetEnvironmentVariable(_T("WINDIR"), pszPath, MAX_PATH * sizeof(TCHAR));
+				ret = GetEnvironmentVariable(_T("WINDIR"), pszPath, MAX_PATH);
 				if (ret == 0) break;
-				_tcsncat(pszPath, _T("\\Fonts"), MAX_PATH * sizeof(TCHAR));
+				_tcsncat(pszPath, _T("\\Fonts"), MAX_PATH);
 
 				return (HRESULT)0;
 				break;
