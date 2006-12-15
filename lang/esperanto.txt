@@ -1395,6 +1395,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Kaptante ludinformojn..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Kaptante kompaniajn informojn..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kliento{P "" j} antaŭ vi
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kilobitokoj ĝis nun elŝutiĝis
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Malkonektu
@@ -1414,7 +1415,7 @@ STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Ne povi
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Ne povis konekti
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Konekto #{NUM} ekstertempiĝis
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Protokoleraro fariĝis kaj la konekto fermiĝis
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} La revidaĵo de la kliento ne kongruas la servilan revidaĵon
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} La revidaĵo de la kliento ne kongruas kun la servila revidaĵo
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Malĝusta pasvorto
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} La servilo plenas
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Oni forbaris vin de la servilo
@@ -2016,6 +2017,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Gajna Grafiko
 STR_7026_BANK_BALANCE                                           :{WHITE}Banka Balanco
 STR_7027_LOAN                                                   :{WHITE}Prunto
+STR_MAX_LOAN                                                    :{WHITE}Maksimuma prunto:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Pruntu {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Repagu {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -2093,6 +2095,7 @@ STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT
 STR_7080_PROTECTED                                              :{WHITE}Ĉi tiu kompanio ne sufiĉe aĝas por jam komerci dividaĵojn...
 
 STR_LIVERY_DEFAULT                                              :Normala Koloro
+STR_LIVERY_STEAM                                                :Vapormaŝino
 STR_LIVERY_DIESEL                                               :Dizelmaŝino
 STR_LIVERY_ELECTRIC                                             :Elektromaŝino
 STR_LIVERY_MONORAIL                                             :Unurelmaŝino
@@ -2104,13 +2107,20 @@ STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Pasaĝera Vagon
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Pasaĝera Vagono (Elektro)
 STR_LIVERY_FREIGHT_WAGON                                        :Ŝarĝvagono
 STR_LIVERY_BUS                                                  :Buso
+STR_LIVERY_TRUCK                                                :Ŝarĝaŭto
 STR_LIVERY_PASSENGER_SHIP                                       :Pasaĝera Ŝipo
 STR_LIVERY_FREIGHT_SHIP                                         :Ŝarĝŝipo
 STR_LIVERY_HELICOPTER                                           :Helikoptero
+STR_LIVERY_SMALL_PLANE                                          :Malgranda Aviadilo
 STR_LIVERY_LARGE_PLANE                                          :Granda Aviadilo
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Montru ĝeneralajn kolorskemojn
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Montru trajnajn kolorskemojn
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Montru vojveturilajn kolorskemojn
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Montru ŝipkolorajn skemojn
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Montru aviadilajn kolorskemojn
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Elektu la unuan koloron por la elektita skemo
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Elektu la duan koloron por la elektita skemo
 STR_LIVERY_PANEL_TIP                                            :{BLACK}Elektu kolorskemon por ŝanĝi, aŭ plurajn per CTRL+click. Alklaku kvadraton por uzi/ne uzi skemon
 
 ##id 0x8000
@@ -2632,7 +2642,7 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Ne povas
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangaro
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Novaj Aviadiloj
 STR_CLONE_AIRCRAFT                                              :{BLACK}Klonu aviadilon
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Ĉi tiel konstruu kopion de la aviadilo. CTRL+klako dividos la ordenojn
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Ĉi tio konstruas kopion de la aviadilo. CTRL+klako dividos la ordenojn
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ĉi tio konstruas kopion de la aviadilo. Alklaku ĉi tiun butenon kaj poste aviadilon en aŭ ekster hangaro. CTRL+klako dividos la ordenojn
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Novaj Aviadiloj
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Kreu Aviadilon
@@ -2716,9 +2726,18 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
+STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apliku ŝanĝojn
+STR_NEWGRF_FILENAME                                             :{BLACK}Dosiernomo: {SILVER}{STRING}
 
+STR_NEWGRF_ADD                                                  :{BLACK}Aldonu
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Aldonu NewGRF-dosieron al la listo
 
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Haveblaj NewGRF-dosieroj
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Aldonu al elekto
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Aldonu la elektitan NewGRF-dosieron al viaj agordoj
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne povas aldoni dosieron: duobla GRF ID
 
+STR_NEWGRF_DISABLED                                             :{RED}Malaktiva
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Alia monunuo
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Interŝanĝa valoro: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -2731,6 +2750,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Antaŭv
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ŝanĝu parametron por alia monunuo
 
 STR_BUS                                                         :{BLACK}{BUS}
+STR_LORRY                                                       :{BLACK}{LORRY}
 
 
 
@@ -2770,8 +2790,18 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Maŝino 
 
 STR_ENGINES                                                     :Maŝinoj
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Alklaku por haltigi ĉiujn trajnojn en la deponejo
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Alklaku por haltigi ĉiujn vojveturilojn en la deponejo
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Alklaku por haltigi ĉiujn ŝipojn en la deponejo
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Alklaku por haltigi ĉiujn aviadilojn en la hangaro
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Alklaku por starti ĉiujn trajnojn en la deponejo
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Alklaku por starti ĉiujn vojveturilojn en la deponejo
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Alklaku por starti ĉiujn ŝipojn en la deponejo
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Alklaku por starti ĉiujn aviadilojn en la hangaro
 
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Alklaku por haltigi ĉiujn veturilojn en la listo
+STR_MASS_START_LIST_TIP                                         :{BLACK}Alklaku por starti ĉiujn veturilojn en la listo
 
 
 
@@ -2812,6 +2842,7 @@ STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 ########### String for new airports
 STR_CITY_AIRPORT                                                :{BLACK}Urbo
+STR_METRO_AIRPORT                                               :{BLACK}Ĉefurba Flughaveno
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internacia flughaveno
 STR_COMMUTER_AIRPORT                                            :{BLACK}Urbeta flughaveno
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinenta
@@ -2825,5 +2856,9 @@ STR_HELIPORTS                                                   :{BLACK}Helikopt
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK}Longo: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Regiono: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longo: {NUM}{}Altecdiferenco: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Regiono: {NUM} x {NUM}{}Altecdiferenco: {NUM} m
 
 ########

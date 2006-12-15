@@ -394,6 +394,7 @@ STR_NO_WAITING_CARGO                                            :{BLACK}Hiç kar
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm türleri seç
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
 STR_MANAGE_LIST                                                 :{BLACK}Listeyi yönet
+STR_MANAGE_LIST_TIP                                             :{BLACK}Listedeki tüm araçlara komut ver
 STR_REPLACE_VEHICLES                                            :Araçları Değiştir
 STR_SEND_TRAIN_TO_DEPOT                                         :Gara Gönder
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Garaja Gönder
@@ -2871,6 +2872,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Bu şirk
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Bu şirketin bankadan aldığı kredi miktarı
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Toplam puan
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Ayarları
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf ayarları
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Uygula
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parametreler
@@ -2897,7 +2899,10 @@ STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Mümkün
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Seçime ekle
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}seçili NewGRF'i ayarlarıma ekle
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Dosyaları tekrar tara
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Mümkün olan NewGRF dosyalarının listesini güncelle
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Dosya eklenemiyor: GRF ID çakışması
 
+STR_NEWGRF_NOT_FOUND                                            :{RED}Eşleşen dosya bulunamadı
 STR_NEWGRF_DISABLED                                             :{RED}Etkisiz
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi

@@ -459,6 +459,7 @@ STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit 
 STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu)
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zobrazit zoznam dostupných dizajnov rušňov pre tento typ.
 STR_MANAGE_LIST                                                 :{BLACK}Možnosti
+STR_MANAGE_LIST_TIP                                             :{BLACK}Zadat príkazy všetkým vozidlám v zozname
 STR_REPLACE_VEHICLES                                            :Vymena vozidiel
 STR_SEND_TRAIN_TO_DEPOT                                         :Poslat do depa
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Poslat do garáže
