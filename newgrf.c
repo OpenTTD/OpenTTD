@@ -1843,6 +1843,11 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 				if (ctype == 0xFE) ctype = GC_DEFAULT_NA;
 				if (ctype == 0xFF) ctype = GC_PURCHASE;
 
+				if (ctype >= NUM_GLOBAL_CID) {
+					grfmsg(GMS_WARN, "FeatureMapSpriteGroup: Cargo type %d out of range, skipping.", ctype);
+					continue;
+				}
+
 				statspec->spritegroup[ctype] = _cur_grffile->spritegroups[groupid];
 			}
 		}
@@ -1918,6 +1923,11 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 			}
 
 			if (ctype == GC_INVALID) ctype = GC_PURCHASE;
+
+			if (ctype >= NUM_GLOBAL_CID) {
+				grfmsg(GMS_WARN, "FeatureMapSpriteGroup: Cargo type %d out of range, skipping.", ctype);
+				continue;
+			}
 
 			if (wagover) {
 				SetWagonOverrideSprites(engine, ctype, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);

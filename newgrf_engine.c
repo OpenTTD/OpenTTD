@@ -77,6 +77,9 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 	WagonOverrides *wos;
 	WagonOverride *wo;
 
+	assert(engine < TOTAL_NUM_ENGINES);
+	assert(cargo < NUM_GLOBAL_CID);
+
 	wos = &_engine_wagon_overrides[engine];
 	wos->overrides_count++;
 	wos->overrides = realloc(wos->overrides,
@@ -147,6 +150,8 @@ static const GRFFile *_engine_grf[TOTAL_NUM_ENGINES];
 void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *group)
 {
 	assert(engine < TOTAL_NUM_ENGINES);
+	assert(cargo < NUM_GLOBAL_CID);
+
 	if (engine_custom_sprites[engine][cargo] != NULL) {
 		DEBUG(grf, 6)("SetCustomEngineSprites: engine `%d' cargo `%d' already has group -- replacing.", engine, cargo);
 	}
