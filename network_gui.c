@@ -26,6 +26,7 @@
 #include "settings.h"
 #include "string.h"
 #include "town.h"
+#include "newgrf.h"
 
 #define BGC 5
 #define BTC 15
@@ -241,6 +242,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				sel->info.clients_on >= sel->info.clients_max || // Server full
 				!sel->info.compatible); // Revision mismatch
 
+		SetWindowWidgetHiddenState(w, 18, sel == NULL ||
+				!sel->online ||
+				sel->info.grfconfig == NULL);
+
 		SetDParam(0, 0x00);
 		SetDParam(7, _lan_internet_types_dropdown[_network_lan_internet]);
 		DrawWindowWidgets(w);
@@ -288,7 +293,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 					if (cur_item->info.use_password) DrawSprite(SPR_LOCK, w->widget[8].left + 5, y - 1);
 
 					// draw red or green icon, depending on compatibility with server.
-					DrawSprite(SPR_BLOT | (cur_item->info.compatible ? PALETTE_TO_GREEN : PALETTE_TO_RED), w->widget[8].left + 15, y);
+					DrawSprite(SPR_BLOT | (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), w->widget[8].left + 15, y);
 
 					// draw flag according to server language
 					DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, w->widget[8].left + 25, y);
@@ -362,7 +367,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			y += 2;
 
 			if (!sel->info.compatible) {
-				DrawStringCentered(425, y, STR_NETWORK_VERSION_MISMATCH, 0); // server mismatch
+				DrawStringCentered(425, y, sel->info.version_compatible ? STR_NETWORK_GRF_MISMATCH : STR_NETWORK_VERSION_MISMATCH, 0); // server mismatch
 			} else if (sel->info.clients_on == sel->info.clients_max) {
 				// Show: server full, when clients_on == clients_max
 				DrawStringCentered(425, y, STR_NETWORK_SERVER_FULL, 0); // server full
@@ -436,6 +441,9 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			if (nd->server != NULL)
 				NetworkQueryServer(nd->server->info.hostname, nd->server->port, true);
 			break;
+		case 18: // NewGRF Settings
+			if (nd->server != NULL) ShowNewGRFSettings(false, false, &nd->server->info.grfconfig);
+			break;
 
 	}	break;
 
@@ -496,7 +504,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 static const Widget _network_game_window_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   549,     0,    13, STR_NETWORK_MULTIPLAYER,     STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   549,    14,   249, 0x0,                         STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   549,    14,   261, 0x0,                         STR_NULL},
 
 /* LEFT SIDE */
 {      WWT_PANEL,   RESIZE_NONE,   BGC,   310,   461,    22,    33, 0x0,                         STR_NETWORK_ENTER_NAME_TIP},
@@ -508,26 +516,28 @@ static const Widget _network_game_window_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   171,   250,    42,    53, STR_NETWORK_CLIENTS_CAPTION, STR_NETWORK_CLIENTS_CAPTION_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   251,   290,    42,    53, STR_EMPTY,                   STR_NETWORK_INFO_ICONS_TIP},
 
-{     WWT_MATRIX,   RESIZE_NONE,   BGC,    10,   290,    54,   222, (12 << 8) + 1,               STR_NETWORK_CLICK_GAME_TO_SELECT},
-{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   291,   302,    42,   222, STR_NULL,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_MATRIX,   RESIZE_NONE,   BGC,    10,   290,    54,   234, (12 << 8) + 1,               STR_NETWORK_CLICK_GAME_TO_SELECT},
+{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   291,   302,    42,   234, STR_NULL,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    30,   130,   232,   243, STR_NETWORK_FIND_SERVER,     STR_NETWORK_FIND_SERVER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   180,   280,   232,   243, STR_NETWORK_ADD_SERVER,      STR_NETWORK_ADD_SERVER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    30,   130,   244,   255, STR_NETWORK_FIND_SERVER,     STR_NETWORK_FIND_SERVER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   180,   280,   244,   255, STR_NETWORK_ADD_SERVER,      STR_NETWORK_ADD_SERVER_TIP},
 
 /* RIGHT SIDE */
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   315,   415,   232,   243, STR_NETWORK_START_SERVER,    STR_NETWORK_START_SERVER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   232,   243, STR_012E_CANCEL,             STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   315,   415,   244,   255, STR_NETWORK_START_SERVER,    STR_NETWORK_START_SERVER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   244,   255, STR_012E_CANCEL,             STR_NULL},
 
-{      WWT_PANEL,   RESIZE_NONE,   BGC,   310,   540,    42,   222, 0x0,                         STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,   310,   540,    42,   234, 0x0,                         STR_NULL},
 
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   315,   415,   201,   212, STR_NETWORK_JOIN_GAME,       STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   201,   212, STR_NETWORK_REFRESH,         STR_NETWORK_REFRESH_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   315,   415,   213,   224, STR_NETWORK_JOIN_GAME,       STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   213,   224, STR_NETWORK_REFRESH,         STR_NETWORK_REFRESH_TIP},
+
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   195,   206, STR_NEWGRF_SETTINGS_BUTTON,  STR_NULL},
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _network_game_window_desc = {
-	WDP_CENTER, WDP_CENTER, 550, 250,
+	WDP_CENTER, WDP_CENTER, 550, 262,
 	WC_NETWORK_WINDOW,0,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_network_game_window_widgets,

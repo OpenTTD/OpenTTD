@@ -54,6 +54,17 @@ enum {
 	NETWORK_CLIENT_NAME_LENGTH =  25,
 	NETWORK_RCONCOMMAND_LENGTH = 500,
 
+	NETWORK_GRF_NAME_LENGTH    =  80, ///< Maximum length of the name of a GRF
+	/* Maximum number of GRFs that can be sent.
+	 * This value is related to number of handles (files) OpenTTD can open.
+	 * This is currently 64 and about 10 are currently used when OpenTTD loads
+	 * without any NewGRFs. Therefore one can only load about 55 NewGRFs, so
+	 * this is not a limit, but rather a way to easily check whether the limit
+	 * imposed by the handle count is reached. Secondly it isn't possible to
+	 * send much more GRF IDs + MD5sums in the PACKET_UDP_SERVER_RESPONSE, due
+	 * to the limited size of UDP packets. */
+	NETWORK_MAX_GRF_COUNT      =  55,
+
 	NETWORK_NUM_LANGUAGES      =   4,
 };
 
@@ -66,7 +77,8 @@ typedef struct NetworkGameInfo {
 	char server_revision[NETWORK_REVISION_LENGTH];  // The SVN version number the server is using (e.g.: 'r304')
 	                                                //  It even shows a SVN version in release-version, so
 	                                                //  it is easy to compare if a server is of the correct version
-	bool compatible;                                // Can we connect to this server or not? (based on server_revision)
+	bool version_compatible;                        // Can we connect to this server or not? (based on server_revision)
+	bool compatible;                                // Can we connect to this server or not? (based on server_revision _and_ grf_match
 	byte server_lang;                               // Language of the server (we should make a nice table for this)
 	byte use_password;                              // Is set to != 0 if it uses a password
 	char server_password[NETWORK_PASSWORD_LENGTH];  // On the server: the game password, on the client: != "" if server has password
@@ -84,6 +96,7 @@ typedef struct NetworkGameInfo {
 	byte map_set;                                   // Graphical set
 	bool dedicated;                                 // Is this a dedicated server?
 	char rcon_password[NETWORK_PASSWORD_LENGTH];    // RCon password for the server. "" if rcon is disabled
+	struct GRFConfig *grfconfig;                    // List of NewGRF files required
 } NetworkGameInfo;
 
 typedef struct NetworkPlayerInfo {

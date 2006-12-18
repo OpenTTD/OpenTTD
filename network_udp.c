@@ -11,6 +11,7 @@
 #include "network_gamelist.h"
 #include "network_udp.h"
 #include "variables.h"
+#include "newgrf_config.h"
 
 //
 // This file handles all the LAN-stuff
@@ -28,6 +29,8 @@ typedef enum {
 	PACKET_UDP_CLIENT_GET_LIST,      // Request for serverlist from master server
 	PACKET_UDP_MASTER_RESPONSE_LIST, // Response from master server with server ip's + port's
 	PACKET_UDP_SERVER_UNREGISTER,    // Request to be removed from the server-list
+	PACKET_UDP_CLIENT_GET_NEWGRFS,   // Requests the name for a list of GRFs (GRF_ID and MD5)
+	PACKET_UDP_SERVER_NEWGRFS,       // Sends the list of NewGRF's requested.
 	PACKET_UDP_END
 } PacketUDPType;
 
@@ -41,6 +44,34 @@ enum {
 static void NetworkSendUDP_Packet(SOCKET udp, Packet* p, struct sockaddr_in* recv);
 
 static NetworkClientState _udp_cs;
+
+/**
+ * Serializes the GRFIdentifier (GRF ID and MD5 checksum) to the packet
+ * @param p the packet to write the data to
+ * @param c the configuration to write the GRF ID and MD5 checksum from
+ */
+static void NetworkSend_GRFIdentifier(Packet *p, const GRFConfig *c)
+{
+	uint j;
+	NetworkSend_uint32(p, c->grfid);
+	for (j = 0; j < sizeof(c->md5sum); j++) {
+		NetworkSend_uint8 (p, c->md5sum[j]);
+	}
+}
+
+/**
+ * Deserializes the GRFIdentifier (GRF ID and MD5 checksum) from the packet
+ * @param p the packet to read the data from
+ * @param c the configuration to write the GRF ID and MD5 checksum to
+ */
+static void NetworkRecv_GRFIdentifier(Packet *p, GRFConfig *c)
+{
+	uint j;
+	c->grfid = NetworkRecv_uint32(&_udp_cs, p);
+	for (j = 0; j < sizeof(c->md5sum); j++) {
+		c->md5sum[j] = NetworkRecv_uint8(&_udp_cs, p);
+	}
+}
 
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 {
@@ -58,6 +89,27 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 	_network_game_info.map_set = _opt.landscape;
 
 	NetworkSend_uint8 (packet, NETWORK_GAME_INFO_VERSION);
+
+	/* NETWORK_GAME_INFO_VERSION = 4 */
+	{
+		/* Only send the GRF Identification (GRF_ID and MD5 checksum) of
+		 * the GRFs that are needed, i.e. the ones that the server has
+		 * selected in the NewGRF GUI and not the ones that are used due
+		 * to the fact that they are in [newgrf-static] in openttd.cfg */
+		const GRFConfig *c;
+		uint i = 0;
+
+		/* Count number of GRFs to send information about */
+		for (c = _grfconfig; c != NULL; c = c->next) {
+			if (!HASBIT(c->flags, GCF_STATIC)) i++;
+		}
+		NetworkSend_uint8 (packet, i); // Send number of GRFs
+
+		/* Send actual GRF Identifications */
+		for (c = _grfconfig; c != NULL; c = c->next) {
+			if (!HASBIT(c->flags, GCF_STATIC)) NetworkSend_GRFIdentifier(packet, c);
+		}
+	}
 
 	/* NETWORK_GAME_INFO_VERSION = 3 */
 	NetworkSend_uint32(packet, _network_game_info.game_date);
@@ -109,9 +161,41 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 	// Find next item
 	item = NetworkGameListAddItem(inet_addr(inet_ntoa(client_addr->sin_addr)), ntohs(client_addr->sin_port));
 
+	item->info.compatible = true;
 	/* Please observer the order. In the order in which packets are sent
 	 * they are to be received */
 	switch (game_info_version) {
+		case 4: {
+			GRFConfig *c, **dst = &item->info.grfconfig;
+			const GRFConfig *f;
+			uint i;
+			uint num_grfs = NetworkRecv_uint8(&_udp_cs, p);
+
+			for (i = 0; i < num_grfs; i++) {
+				c = calloc(1, sizeof(*c));
+				NetworkRecv_GRFIdentifier(p, c);
+
+				/* Find the matching GRF file */
+				f = FindGRFConfig(c->grfid, c->md5sum);
+				if (f == NULL) {
+					/* Don't know the GRF, so mark game incompatible and the (possibly)
+					 * already resolved name for this GRF (another server has sent the
+					 * name of the GRF already */
+					item->info.compatible = false;
+					c->name     = FindUnknownGRFName(c->grfid, c->md5sum, true);
+					SETBIT(c->flags, GCF_NOT_FOUND);
+				} else {
+					c->filename = f->filename;
+					c->name     = f->name;
+					c->info     = f->info;
+				}
+				SETBIT(c->flags, GCF_COPY);
+
+				/* Append GRFConfig to the list */
+				*dst = c;
+				dst = &c->next;
+			}
+		} /* Fallthrough */
 		case 3:
 			item->info.game_date     = NetworkRecv_uint32(&_udp_cs, p);
 			item->info.start_date    = NetworkRecv_uint32(&_udp_cs, p);
@@ -146,10 +230,48 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 				snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
 
 			/* Check if we are allowed on this server based on the revision-match */
-			item->info.compatible =
+			item->info.version_compatible =
 				strcmp(item->info.server_revision, _openttd_revision) == 0 ||
 				strcmp(item->info.server_revision, NOREV_STRING) == 0;
+			item->info.compatible &= item->info.version_compatible; // Already contains match for GRFs
 			break;
+	}
+
+	{
+		/* Checks whether there needs to be a request for names of GRFs and makes
+		 * the request if necessary. GRFs that need to be requested are the GRFs
+		 * that do not exist on the clients system and we do not have the name
+		 * resolved of, i.e. the name is still UNKNOWN_GRF_NAME_PLACEHOLDER.
+		 * The in_request array and in_request_count are used so there is no need
+		 * to do a second loop over the GRF list, which can be relatively expensive
+		 * due to the string comparisons. */
+		const GRFConfig *in_request[NETWORK_MAX_GRF_COUNT];
+		const GRFConfig *c;
+		uint in_request_count = 0;
+		struct sockaddr_in out_addr;
+
+		for (c = item->info.grfconfig; c != NULL; c = c->next) {
+			if (!HASBIT(c->flags, GCF_NOT_FOUND) || strcmp(c->name, UNKNOWN_GRF_NAME_PLACEHOLDER) != 0) continue;
+			in_request[in_request_count] = c;
+			in_request_count++;
+		}
+
+		if (in_request_count > 0) {
+			/* There are 'unknown' GRFs, now send a request for them */
+			uint i;
+			Packet *packet = NetworkSend_Init(PACKET_UDP_CLIENT_GET_NEWGRFS);
+
+			NetworkSend_uint8 (packet, in_request_count);
+			for (i = 0; i < in_request_count; i++) {
+				NetworkSend_GRFIdentifier(packet, in_request[i]);
+			}
+
+			out_addr.sin_family      = AF_INET;
+			out_addr.sin_port        = htons(item->port);
+			out_addr.sin_addr.s_addr = item->ip;
+			NetworkSendUDP_Packet(_udp_client_socket, packet, &out_addr);
+			free(packet);
+		}
 	}
 
 	item->online = true;
@@ -300,6 +422,104 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER)
 	}
 }
 
+/**
+ * A client has requested the names of some NewGRFs.
+ *
+ * Replying this can be tricky as we have a limit of SEND_MTU bytes
+ * in the reply packet and we can send up to 100 bytes per NewGRF
+ * (GRF ID, MD5sum and NETWORK_GRF_NAME_LENGTH bytes for the name).
+ * As SEND_MTU is _much_ less than 100 * NETWORK_MAX_GRF_COUNT, it
+ * could be that a packet overflows. To stop this we only reply
+ * with the first N NewGRFs so that if the first N + 1 NewGRFs
+ * would be sent, the packet overflows.
+ * in_reply and in_reply_count are used to keep a list of GRFs to
+ * send in the reply.
+ */
+DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS)
+{
+	uint8 num_grfs;
+	uint i;
+
+	const GRFConfig *in_reply[NETWORK_MAX_GRF_COUNT];
+	Packet *packet;
+	uint8 in_reply_count = 0;
+	uint packet_len = 0;
+
+	/* Just a fail-safe.. should never happen */
+	if (_udp_cs.has_quit) return;
+
+	DEBUG(net, 6)("[NET][UDP] NewGRF data request from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
+
+	num_grfs = NetworkRecv_uint8 (&_udp_cs, p);
+	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
+
+	for (i = 0; i < num_grfs; i++) {
+		GRFConfig c;
+		const GRFConfig *f;
+
+		NetworkRecv_GRFIdentifier(p, &c);
+
+		/* Find the matching GRF file */
+		f = FindGRFConfig(c.grfid, c.md5sum);
+		if (f == NULL) continue; // The GRF is unknown to this server
+
+		/* If the reply might exceed the size of the packet, only reply
+		 * the current list and do not send the other data */
+		packet_len += sizeof(c.grfid) + sizeof(c.md5sum) + min(strlen(f->name) + 1, NETWORK_GRF_NAME_LENGTH);
+		if (packet_len > SEND_MTU - 4) { // 4 is 3 byte header + grf count in reply
+			break;
+		}
+		in_reply[in_reply_count] = f;
+		in_reply_count++;
+	}
+
+	if (in_reply_count == 0) return;
+
+	packet = NetworkSend_Init(PACKET_UDP_SERVER_NEWGRFS);
+	NetworkSend_uint8 (packet, in_reply_count);
+	for (i = 0; i < in_reply_count; i++) {
+		char name[NETWORK_GRF_NAME_LENGTH];
+		ttd_strlcpy(name, in_reply[i]->name, sizeof(name));
+		NetworkSend_GRFIdentifier(packet, in_reply[i]);
+		NetworkSend_string(packet, name);
+	}
+
+	NetworkSendUDP_Packet(_udp_server_socket, packet, client_addr);
+	free(packet);
+}
+
+/** The return of the client's request of the names of some NewGRFs */
+DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS)
+{
+	uint8 num_grfs;
+	uint i;
+
+	/* Just a fail-safe.. should never happen */
+	if (_udp_cs.has_quit) return;
+
+	DEBUG(net, 6)("[NET][UDP] NewGRF data reply from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
+
+	num_grfs = NetworkRecv_uint8 (&_udp_cs, p);
+	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
+
+	for (i = 0; i < num_grfs; i++) {
+		char *unknown_name;
+		char name[NETWORK_GRF_NAME_LENGTH];
+		GRFConfig c;
+
+		NetworkRecv_GRFIdentifier(p, &c);
+		NetworkRecv_string(&_udp_cs, p, name, sizeof(name));
+
+		/* Finds the fake GRFConfig for the just read GRF ID and MD5sum tuple.
+		 * If it exists and not resolved yet, then name of the fake GRF is
+		 * overwritten with the name from the reply. */
+		unknown_name = FindUnknownGRFName(c.grfid, c.md5sum, false);
+		if (unknown_name != NULL && strcmp(unknown_name, UNKNOWN_GRF_NAME_PLACEHOLDER) == 0) {
+			ttd_strlcpy(unknown_name, name, NETWORK_GRF_NAME_LENGTH);
+		}
+	}
+}
+
 
 // The layout for the receive-functions by UDP
 typedef void NetworkUDPPacket(Packet *p, struct sockaddr_in *client_addr);
@@ -313,7 +533,9 @@ static NetworkUDPPacket* const _network_udp_packet[] = {
 	RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER),
 	NULL,
 	RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST),
-	NULL
+	NULL,
+	RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS),
+	RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS),
 };
 
 

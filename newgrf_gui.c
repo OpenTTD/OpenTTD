@@ -43,9 +43,11 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 	char *s;
 	uint i;
 
-	/* Draw filename */
-	SetDParamStr(0, c->filename);
-	y += DrawStringMultiLine(x, y, STR_NEWGRF_FILENAME, w);
+	/* Draw filename or not if it is not known (GRF sent over internet) */
+	if (c->filename != NULL) {
+		SetDParamStr(0, c->filename);
+		y += DrawStringMultiLine(x, y, STR_NEWGRF_FILENAME, w);
+	}
 
 	/* Prepare and draw GRF ID */
 	snprintf(buff, lengthof(buff), "%08X", (uint32)BSWAP32(c->grfid));

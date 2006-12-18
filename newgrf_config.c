@@ -9,6 +9,7 @@
 #include "string.h"
 #include "saveload.h"
 #include "md5.h"
+#include "network_data.h"
 #include "newgrf.h"
 #include "newgrf_config.h"
 
@@ -83,9 +84,12 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 
 void ClearGRFConfig(GRFConfig *config)
 {
-	free(config->filename);
-	free(config->name);
-	free(config->info);
+	/* GCF_COPY as in NOT strdupped/alloced the filename, name and info */
+	if (!HASBIT(config->flags, GCF_COPY)) {
+		free(config->filename);
+		free(config->name);
+		free(config->info);
+	}
 	free(config);
 }
 
@@ -262,6 +266,55 @@ const GRFConfig *FindGRFConfig(uint32 grfid, uint8 *md5sum)
 	}
 
 	return NULL;
+}
+
+/** Structure for UnknownGRFs; this is a lightweight variant of GRFConfig */
+typedef struct UnknownGRF UnknownGRF;
+struct UnknownGRF {
+	UnknownGRF *next;
+	uint32 grfid;
+	uint8  md5sum[16];
+	char   name[NETWORK_GRF_NAME_LENGTH];
+};
+
+/**
+ * Finds the name of a NewGRF in the list of names for unknown GRFs. An
+ * unknown GRF is a GRF where the .grf is not found during scanning.
+ *
+ * The names are resolved via UDP calls to servers that should know the name,
+ * though the replies may not come. This leaves "<Unknown>" as name, though
+ * that shouldn't matter _very_ much as they need GRF crawler or so to look
+ * up the GRF anyway and that works better with the GRF ID.
+ *
+ * @param grfid  the GRF ID part of the 'unique' GRF identifier
+ * @param md5sum the MD5 checksum part of the 'unique' GRF identifier
+ * @param create whether to create a new GRFConfig if the GRFConfig did not
+ *               exist in the fake list of GRFConfigs.
+ * @return the GRFConfig with the given GRF ID and MD5 checksum or NULL when
+ *         it does not exist and create is false. This value must NEVER be
+ *         freed by the caller.
+ */
+char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
+{
+	UnknownGRF *grf;
+	static UnknownGRF *unknown_grfs = NULL;
+
+	for (grf = unknown_grfs; grf != NULL; grf = grf->next) {
+		if (grf->grfid == grfid) {
+			if (memcmp(md5sum, grf->md5sum, sizeof(grf->md5sum)) == 0) return grf->name;
+		}
+	}
+
+	if (!create) return NULL;
+
+	grf = calloc(1, sizeof(*grf));
+	grf->grfid = grfid;
+	grf->next  = unknown_grfs;
+	ttd_strlcpy(grf->name, UNKNOWN_GRF_NAME_PLACEHOLDER, sizeof(grf->name));
+	memcpy(grf->md5sum, md5sum, sizeof(grf->md5sum));
+
+	unknown_grfs = grf;
+	return grf->name;
 }
 
 

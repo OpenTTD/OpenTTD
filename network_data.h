@@ -18,7 +18,7 @@
 #define NETWORK_EMPTY_INDEX 0
 
 // What version of game-info do we use?
-#define NETWORK_GAME_INFO_VERSION 3
+#define NETWORK_GAME_INFO_VERSION 4
 // What version of company info is this?
 #define NETWORK_COMPANY_INFO_VERSION 4
 // What version of master-server-protocol do we use?

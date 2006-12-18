@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "network_data.h"
+#include "newgrf_config.h"
 
 // This file handles the GameList
 // Also, it handles the request to a server for data about the server
@@ -56,6 +57,9 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 			} else {
 				prev_item->next = remove->next;
 			}
+
+			/* Remove GRFConfig information */
+			ClearGRFConfigList(remove->info.grfconfig);
 
 			free(remove);
 			DEBUG(net, 4) ("[NET][GameList] Removed server from list");

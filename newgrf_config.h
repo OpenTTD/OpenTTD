@@ -11,6 +11,7 @@ enum {
 	GCF_SYSTEM,
 	GCF_UNSAFE,
 	GCF_STATIC,
+	GCF_COPY,      ///< The data is copied from a grf in _all_grfs
 };
 
 typedef struct GRFConfig {
@@ -51,5 +52,9 @@ char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 
 /* In newgrf_gui.c */
 void ShowNewGRFSettings(bool editable, bool show_params, GRFConfig **config);
+
+/* For communication about GRFs over the network */
+#define UNKNOWN_GRF_NAME_PLACEHOLDER "<Unknown>"
+char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create);
 
 #endif /* NEWGRF_CONFIG_H */
