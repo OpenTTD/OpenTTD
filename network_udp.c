@@ -464,8 +464,10 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS)
 		if (f == NULL) continue; // The GRF is unknown to this server
 
 		/* If the reply might exceed the size of the packet, only reply
-		 * the current list and do not send the other data */
-		packet_len += sizeof(c.grfid) + sizeof(c.md5sum) + min(strlen(f->name) + 1, NETWORK_GRF_NAME_LENGTH);
+		 * the current list and do not send the other data.
+		 * The name could be an empty string, if so take the filename. */
+		packet_len += sizeof(c.grfid) + sizeof(c.md5sum) +
+				min(strlen((f->name != NULL && strlen(f->name) > 0) ? f->name : f->filename) + 1, NETWORK_GRF_NAME_LENGTH);
 		if (packet_len > SEND_MTU - 4) { // 4 is 3 byte header + grf count in reply
 			break;
 		}
@@ -479,8 +481,11 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS)
 	NetworkSend_uint8 (packet, in_reply_count);
 	for (i = 0; i < in_reply_count; i++) {
 		char name[NETWORK_GRF_NAME_LENGTH];
-		ttd_strlcpy(name, in_reply[i]->name, sizeof(name));
-		NetworkSend_GRFIdentifier(packet, in_reply[i]);
+
+		/* The name could be an empty string, if so take the filename */
+		ttd_strlcpy(name, (in_reply[i]->name != NULL && strlen(in_reply[i]->name) > 0) ?
+				in_reply[i]->name : in_reply[i]->filename, sizeof(name));
+	 	NetworkSend_GRFIdentifier(packet, in_reply[i]);
 		NetworkSend_string(packet, name);
 	}
 
@@ -509,6 +514,10 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS)
 
 		NetworkRecv_GRFIdentifier(p, &c);
 		NetworkRecv_string(&_udp_cs, p, name, sizeof(name));
+
+		/* An empty name is not possible under normal circumstances
+		 * and causes problems when showing the NewGRF list. */
+		if (strlen(name) == 0) continue;
 
 		/* Finds the fake GRFConfig for the just read GRF ID and MD5sum tuple.
 		 * If it exists and not resolved yet, then name of the fake GRF is
