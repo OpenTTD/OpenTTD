@@ -1164,6 +1164,10 @@ bool AfterLoadGame(void)
 	/* Check all NewGRFs are present */
 	if (!IsGoodGRFConfigList()) return false;
 
+	/* Update current year
+	 * must be done before loading sprites as some newgrfs check it */
+	SetDate(_date);
+
 	// Load the sprites
 	GfxLoadSprites();
 	LoadStringWidthTable();
@@ -1174,9 +1178,6 @@ bool AfterLoadGame(void)
 
 	/* Connect front and rear engines of multiheaded trains */
 	ConnectMultiheadedTrains();
-
-	// Update current year
-	SetDate(_date);
 
 	// reinit the landscape variables (landscape might have changed)
 	InitializeLandscapeVariables(true);

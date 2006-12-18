@@ -15,6 +15,7 @@
 #include "debug.h"
 #include "settings.h"
 #include "heightmap.h"
+#include "date.h"
 
 void GenerateLandscape(byte mode);
 void GenerateClearTile(void);
@@ -252,11 +253,14 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 	/* Make sure everything is done via OWNER_NONE */
 	_current_player = OWNER_NONE;
 
+	/* Set the date before loading sprites as some newgrfs check it */
+	SetDate(ConvertYMDToDate(_patches.starting_year, 0, 1));
+
 	/* Load the right landscape stuff */
 	GfxLoadSprites();
 	LoadStringWidthTable();
 
-	InitializeGame(IG_DATE_RESET, _gw.size_x, _gw.size_y);
+	InitializeGame(IG_NONE, _gw.size_x, _gw.size_y);
 	PrepareGenerateWorldProgress();
 
 	/* Re-init the windowing system */

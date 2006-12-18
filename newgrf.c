@@ -2193,6 +2193,9 @@ static void GraphicsNew(byte *buf, int len)
 static uint32 GetParamVal(byte param, uint32 *cond_val)
 {
 	switch (param) {
+		case 0x81: /* current year */
+			return clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
+
 		case 0x83: /* current climate, 0=temp, 1=arctic, 2=trop, 3=toyland */
 			return _opt.landscape;
 
