@@ -504,7 +504,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 static const Widget _network_game_window_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   549,     0,    13, STR_NETWORK_MULTIPLAYER,     STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   549,    14,   261, 0x0,                         STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   549,    14,   263, 0x0,                         STR_NULL},
 
 /* LEFT SIDE */
 {      WWT_PANEL,   RESIZE_NONE,   BGC,   310,   461,    22,    33, 0x0,                         STR_NETWORK_ENTER_NAME_TIP},
@@ -516,28 +516,28 @@ static const Widget _network_game_window_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   171,   250,    42,    53, STR_NETWORK_CLIENTS_CAPTION, STR_NETWORK_CLIENTS_CAPTION_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   251,   290,    42,    53, STR_EMPTY,                   STR_NETWORK_INFO_ICONS_TIP},
 
-{     WWT_MATRIX,   RESIZE_NONE,   BGC,    10,   290,    54,   234, (12 << 8) + 1,               STR_NETWORK_CLICK_GAME_TO_SELECT},
-{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   291,   302,    42,   234, STR_NULL,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_MATRIX,   RESIZE_NONE,   BGC,    10,   290,    54,   236, (13 << 8) + 1,               STR_NETWORK_CLICK_GAME_TO_SELECT},
+{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   291,   302,    42,   236, STR_NULL,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    30,   130,   244,   255, STR_NETWORK_FIND_SERVER,     STR_NETWORK_FIND_SERVER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   180,   280,   244,   255, STR_NETWORK_ADD_SERVER,      STR_NETWORK_ADD_SERVER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    30,   130,   246,   257, STR_NETWORK_FIND_SERVER,     STR_NETWORK_FIND_SERVER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   180,   280,   246,   257, STR_NETWORK_ADD_SERVER,      STR_NETWORK_ADD_SERVER_TIP},
 
 /* RIGHT SIDE */
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   315,   415,   244,   255, STR_NETWORK_START_SERVER,    STR_NETWORK_START_SERVER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   244,   255, STR_012E_CANCEL,             STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   315,   415,   246,   257, STR_NETWORK_START_SERVER,    STR_NETWORK_START_SERVER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   246,   257, STR_012E_CANCEL,             STR_NULL},
 
-{      WWT_PANEL,   RESIZE_NONE,   BGC,   310,   540,    42,   234, 0x0,                         STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,   310,   540,    42,   236, 0x0,                         STR_NULL},
 
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   315,   415,   213,   224, STR_NETWORK_JOIN_GAME,       STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   213,   224, STR_NETWORK_REFRESH,         STR_NETWORK_REFRESH_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   315,   415,   215,   226, STR_NETWORK_JOIN_GAME,       STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   215,   226, STR_NETWORK_REFRESH,         STR_NETWORK_REFRESH_TIP},
 
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   195,   206, STR_NEWGRF_SETTINGS_BUTTON,  STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   197,   208, STR_NEWGRF_SETTINGS_BUTTON,  STR_NULL},
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _network_game_window_desc = {
-	WDP_CENTER, WDP_CENTER, 550, 262,
+	WDP_CENTER, WDP_CENTER, 550, 264,
 	WC_NETWORK_WINDOW,0,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_network_game_window_widgets,
@@ -569,7 +569,7 @@ void ShowNetworkGameWindow(void)
 		querystr_d *querystr = &WP(w, network_ql_d).q;
 
 		ttd_strlcpy(_edit_str_buf, _network_player_name, lengthof(_edit_str_buf));
-		w->vscroll.cap = 12;
+		w->vscroll.cap = 13;
 
 		querystr->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&querystr->text, _edit_str_buf, lengthof(_edit_str_buf), 120);
