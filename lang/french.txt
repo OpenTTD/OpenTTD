@@ -1309,6 +1309,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Protég
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVEUR HORS-LIGNE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVEUR PLEIN
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSION NON CORRESPONDANTE
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF DIFFERENTS
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Rejoindre la partie
 

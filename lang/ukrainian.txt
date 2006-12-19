@@ -395,6 +395,11 @@ STR_NO_WAITING_CARGO                                            :{BLACK}Звід
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Вибрати весь транспорт
 STR_SELECT_ALL_TYPES                                            :{BLACK}Вибрати всі типи вантажів
 STR_REPLACE_VEHICLES                                            :Оновлення
+STR_SEND_TRAIN_TO_DEPOT                                         :Відправити до депо
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Відправити до депо
+STR_SEND_SHIP_TO_DEPOT                                          :Відправити до депо
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Відправити в ангар
+STR_SEND_FOR_SERVICING                                          :Відправити на техогляд
 
 ############ range for months starts
 STR_0162_JAN                                                    :Січ
@@ -614,6 +619,7 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Змен
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Створити випадкову ділянку
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Очистити ландшафт
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Очистити ландшафт
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Викортстовувати рельєф
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Взяти з карти висот
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Ви дійсно бажаєте очистити ландшафт?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Створення ландшафту
@@ -1052,25 +1058,30 @@ STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Класичн�
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :ТерраГен
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс віддаленість від нафтової свердловини {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Висота рівня снігу: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Нерівність землі (лише для TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Дуже гладкий
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкий
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубий
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Дуже грубий
 STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Алгоритм насадження дерев: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Нема
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Класичний
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Покращений
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Обертання карти висот: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Проти годинниковї
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :За годинниковою
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Рівень висоти для карт з плоским рельєфом: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. довжина станції: {ORANGE}{STRING} {RED}Велике значення гальмує гру
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Автоматичний техогляд гелікоптерів на площадках: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Включити меню рельєфу до меню будування: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Протилежний напрямок прокрутки: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Показувати розміри будівництва в підсказці: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Показати кольори компаній: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Жодна
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Моя компанія
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Всі компанії
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Командний чат по <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. поїздів у гравця: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. авто у гравця: {ORANGE}{STRING}
@@ -1473,6 +1484,8 @@ STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...фа�
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...неможливо конвертувати. треба 8 чи 24-bit PNG формат.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...Помилка. (можливо зіпсований файл)
 
+STR_BMPMAP_ERROR                                                :{WHITE}Неможу завантажити лашдшафт з BMP...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...неможливо претворити тип зображення
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Витрачено: {CURRENCY}
@@ -1795,6 +1808,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Збер
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Виберіть новий тип гри
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Виберіть сценарій (зелений), встановлена гра (синій), або випадкова нова гра
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Генерувати випадкову нову гру
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Завантажити ландшафт
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} на шляху
@@ -2606,6 +2620,7 @@ STR_TRAIN_STOPPING                                              :{RED}Зупин
 STR_TRAIN_STOPPING_VEL                                          :{RED}Зупиняється, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Залізничні колій несумісні
 STR_TRAIN_NO_POWER                                              :{RED}Неелектрифіковано
+STR_TRAIN_START_NO_CATENARY                                     :Нема електрики, поїзд стоїть
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}На шляху авто
@@ -2659,7 +2674,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Аварія!{}Водій загинув при зіткненні авто з поїздом
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Неможливо розвернути авто...
-STR_ONLY_TURN_SINGLE_UNIT                                       :
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Неможливо розвернути довгий транспорт
 STR_9034_RENAME                                                 :{BLACK}Зміна назви
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Перейменувати тип авто
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Перейменувати тип авто

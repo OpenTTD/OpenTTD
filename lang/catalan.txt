@@ -293,7 +293,7 @@ STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARG
 STR_0140_NEW_GAME                                               :{BLACK}Joc Nou
 STR_0141_LOAD_GAME                                              :{BLACK}Carrega el Joc
 STR_SINGLE_PLAYER                                               :{BLACK}Jugador individual
-STR_MULTIPLAYER                                                 :{BLACK}Multijugadors
+STR_MULTIPLAYER                                                 :{BLACK}Multijugador
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -1018,7 +1018,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Activa 
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Activa l'acceleració realista per als trens: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibeix fer girs de 90 graus als trens i vaixells: {ORANGE}{STRING} {LTBLUE} (necessita NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Ajunta estacions de tren fetes al costat d'una altra: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Marxar de l'estació quan un tipus de càrrega és ple, si 'càrrega completa': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Marxa de l'estació quan un tipus de càrrega estigui ple, si 'càrrega completa': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Utilitza algorisme millorat de càrrega: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Carrega els vehicles gradualment: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflació: {ORANGE}{STRING}
@@ -1031,7 +1031,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Permet 
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostra sempre la data llarga a la barra d'estat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Mostra senyals en el sentit de la marxa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Mostra finestra de balanç al finalitzar cada any: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Gestió de funció 'nonstop' compatible amb TTDPatch: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Gestió de la funció 'nonstop' compatible amb TTDPatch: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Cues d'automòbils (amb efectes quàntics): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Finestra d'avis quan el ratolí és al marc del programa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permet subornar a les autoritats locals: {ORANGE}{STRING}
@@ -1308,6 +1308,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Protegi
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVIDOR DESCONNECTAT
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVIDOR PLÉ
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}LA VERSIÓ NO COINCIDEIX
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NO COINCIDÈNCIA DE NEWGRF
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Connectar-se al joc
 
@@ -1628,7 +1629,7 @@ STR_202C_FROM_TO                                                :{ORANGE}{STRING
 STR_202D_UNTIL                                                  :{YELLOW}, fins a {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Oferiment de subvenció caducada: {}{}{STRING} des de {STRING} fins a {STRING} s'ha declarat desert.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvenció retirada:{}{}{STRING} des de {STATION} fins a {STATION} ja no està subvencionat.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subvenció per Servei oferida:{}{} Primer servei de {STRING} des de {STRING} fins a {STRING} tindrà una subvenció d'un any de l'autoritat local!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subvenció per un servei oferta:{}{} El primer servei de {STRING} des de {STRING} fins a {STRING} tindrà una subvenció d'un any de l'autoritat local!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvenció per Servei concedida a {COMPANY}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} rebrà un 50% addicional durant el pròxim any!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvenció per Servei concedida a {COMPANY}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el doble de la tarifa durant el pròxim any!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvenció per Servei concedida a {COMPANY}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el triple de la tarifa durant el pròxim any!

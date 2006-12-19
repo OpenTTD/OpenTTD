@@ -1918,6 +1918,7 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...vi ja
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Malfacilec-nivelo
+STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Konservu
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Facile
@@ -2417,6 +2418,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trajno t
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Trajno nut povas esti adaptataj kiam halte en deponejo
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novaj Relaj Veturiloj
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Novaj Elektraj Relaj Veturiloj
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novaj Unurelaj Veturiloj
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novaj Maglevaj Veturiloj
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Vojveturiloj
@@ -2557,6 +2559,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Vojveturila kraŝo!{}Veturanto mortas pro fajro post kolizio kun trajno
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Vojveturila Kraŝo!{}{COMMA} mortas pro fajro post kolizio kun trajno
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Ne povas ĉirkaŭturni veturilon...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Ne povas turni veturilojn konsistantaj el pluraj unuoj
 STR_9034_RENAME                                                 :{BLACK}Renomu
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renomu vojveturilan tipon
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renomu vojveturilan tipon
@@ -2722,13 +2725,29 @@ STR_BRIBE_FAILED                                                :{WHITE}Via suba
 STR_BRIBE_FAILED_2                                              :{WHITE}malkovrita de regiona esploristo
 STR_BUILD_DATE                                                  :{BLACK}Kreite: {LTBLUE}{DATE_LONG}
 
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detala rendimento
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaloj
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Malpleja gajno:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Malpleja enspezo:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Pleja enspezo:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Liverite:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Ŝarĝo:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prunto:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Enspezite en la plej malaltenspeza monato de la lasta 12 kvaronoj
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Enspezite en la plej altenspeza monato de la lasta 12 kvaronoj
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Ŝarĝunuoj liveritaj en la lastaj 4 kvaronoj
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Nombro da ŝarĝtipoj liveritaj en la lasta kvarono
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}La monkvanto pruntita de ĉi tiu kompanio
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Agordoj de NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apliku ŝanĝojn
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Agordu parametrojn
+STR_NEWGRF_TIP                                                  :{BLACK}Listo da ĉiuj instalitaj Newgrf-aj aroj. Alklaku aron por ŝanĝi la agordojn
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nun ne estas instalitaj newgrf-dosieroj! Bonvolu legi la manlibron por ekscii kiel instali novajn grafikaĵojn
 STR_NEWGRF_FILENAME                                             :{BLACK}Dosiernomo: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
@@ -2804,6 +2823,8 @@ STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Aŭtomat
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Aŭtomate anstataŭu ĉiujn aviadilojn en la hangaro
 
 
+STR_NOT_REPLACING                                               :{BLACK}Ne anstataŭante
+STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Ne elektiĝis veturilo
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Maŝino ne kreeblas
 
 STR_ENGINES                                                     :Maŝinoj
@@ -2822,6 +2843,7 @@ STR_MASS_STOP_LIST_TIP                                          :{BLACK}Alklaku 
 STR_MASS_START_LIST_TIP                                         :{BLACK}Alklaku por starti ĉiujn veturilojn en la listo
 
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Fiasko de ordeno transformi haltigis {STRING.n} {COMMA}
 
 ############ Lists rail types
 
@@ -2840,6 +2862,8 @@ STR_GENERATE                                                    :{WHITE}Generu
 STR_LAND_GENERATOR                                              :{BLACK}Landgenerilo:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Altecmapa turniĝo:
 STR_DATE                                                        :{BLACK}Dato:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Kiom da urboj:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Kiom da industrioj:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skala averto
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ne rekomendindas tro ŝanĝi la grandecon de la mapo. Ĉu daŭrigi la generadon?

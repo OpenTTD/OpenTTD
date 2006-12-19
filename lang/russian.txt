@@ -1307,6 +1307,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Защ�
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}СЕРВЕР ОТКЛЮЧЕН
 STR_NETWORK_SERVER_FULL                                         :{SILVER}СЕРВЕР ЗАПОЛНЕН
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}ВЕРСИЯ НЕ ПОДХОДИТ
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}НЕ СОВПАДАЕТ НАБОР NEWGRF
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Присоединиться к игре
 

@@ -2938,8 +2938,13 @@ STR_NEWGRF_REMOVE                                               :{BLACK}Eemalda
 STR_NEWGRF_MOVEUP                                               :{BLACK}Liiguta Üles
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Liiguta Alla
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parameetrid: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Sisesta NewGRF parameetrid
+STR_NEWGRF_NO_INFO                                              :{BLACK}Informatsioon puudub
 
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Olemasolevad NewGRF failid
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Lisa valikule
 
+STR_NEWGRF_DISABLED                                             :{RED}Väljas
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Personaalne valuuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{CURRENCY} = £ {COMMA}

@@ -1308,6 +1308,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Protegi
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVIDOR DESLIGADO
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVIDOR CHEIO
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSÃO INCOMPATÍVEL
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF INCOMPATÍVEL
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Juntar-se ao jogo
 
