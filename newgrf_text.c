@@ -179,7 +179,8 @@ char *TranslateTTDPatchCodes(const char *str)
 				d += Utf8Encode(d, SCC_SETX);
 				*d++ = *str++;
 				break;
-			case 0x0D: *d++ = 10; break;
+			case 0x0A: break;
+			case 0x0D: *d++ = 0x0A; break;
 			case 0x0E: d += Utf8Encode(d, SCC_TINYFONT); break;
 			case 0x0F: d += Utf8Encode(d, SCC_BIGFONT); break;
 			case 0x1F:
