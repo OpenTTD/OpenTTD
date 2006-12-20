@@ -82,15 +82,16 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 }
 
 
-void ClearGRFConfig(GRFConfig *config)
+void ClearGRFConfig(GRFConfig **config)
 {
 	/* GCF_COPY as in NOT strdupped/alloced the filename, name and info */
-	if (!HASBIT(config->flags, GCF_COPY)) {
-		free(config->filename);
-		free(config->name);
-		free(config->info);
+	if (!HASBIT((*config)->flags, GCF_COPY)) {
+		free((*config)->filename);
+		free((*config)->name);
+		free((*config)->info);
 	}
-	free(config);
+	free(*config);
+	*config = NULL;
 }
 
 
@@ -100,13 +101,13 @@ void ClearGRFConfigList(GRFConfig *config)
 	GRFConfig *c, *next;
 	for (c = config; c != NULL; c = next) {
 		next = c->next;
-		ClearGRFConfig(c);
+		ClearGRFConfig(&c);
 	}
 }
 
 
 /* Copy a GRF Config list */
-static GRFConfig **CopyGRFConfigList(GRFConfig **dst, GRFConfig *src)
+GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 {
 	GRFConfig *c;
 

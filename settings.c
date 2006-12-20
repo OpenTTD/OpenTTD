@@ -1534,7 +1534,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 			}
 
 			ShowInfoF("ini: ignoring invalid NewGRF '%s': %s", item->name, msg);
-			ClearGRFConfig(c);
+			ClearGRFConfig(&c);
 			continue;
 		}
 
