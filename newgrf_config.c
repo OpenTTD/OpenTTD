@@ -163,9 +163,17 @@ bool IsGoodGRFConfigList(void)
 			res = false;
 		} else {
 			DEBUG(grf, 1) ("[GRF] Loading GRF %08X from %s", BSWAP32(c->grfid), f->filename);
-			c->filename = strdup(f->filename);
-			c->name     = strdup(f->name);
-			c->info     = strdup(f->info);
+			/* The filename could be the filename as in the savegame. As we need
+			 * to load the GRF here, we need the correct filename, so overwrite that
+			 * in any case and set the name and info when it is not set already.
+			 * When the GCF_COPY flag is set, it is certain that the filename is
+			 * already a local one, so there is no need to replace it. */
+			if (!HASBIT(c->flags, GCF_COPY)) {
+				free(c->filename);
+				c->filename = strdup(f->filename);
+				if (c->name == NULL) c->name = strdup(f->name);
+				if (c->info == NULL) c->info = strdup(f->info);
+			}
 		}
 	}
 
