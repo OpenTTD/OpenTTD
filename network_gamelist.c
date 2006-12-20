@@ -59,9 +59,10 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 			}
 
 			/* Remove GRFConfig information */
-			ClearGRFConfigList(remove->info.grfconfig);
-
+			ClearGRFConfigList(&remove->info.grfconfig);
 			free(remove);
+			remove = NULL;
+
 			DEBUG(net, 4) ("[NET][GameList] Removed server from list");
 			UpdateNetworkGameWindow(false);
 			return;

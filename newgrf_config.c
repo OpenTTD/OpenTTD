@@ -96,17 +96,21 @@ void ClearGRFConfig(GRFConfig **config)
 
 
 /* Clear a GRF Config list */
-void ClearGRFConfigList(GRFConfig *config)
+void ClearGRFConfigList(GRFConfig **config)
 {
 	GRFConfig *c, *next;
-	for (c = config; c != NULL; c = next) {
+	for (c = *config; c != NULL; c = next) {
 		next = c->next;
 		ClearGRFConfig(&c);
 	}
+	*config = NULL;
 }
 
 
-/* Copy a GRF Config list */
+/** Copy a GRF Config list
+ * @param dst pointer to destination list
+ * @param srt pointer to source list values
+ * @return pointer to the last value added to the destination list */
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 {
 	GRFConfig *c;
@@ -131,8 +135,7 @@ void ResetGRFConfig(bool defaults)
 {
 	GRFConfig **c = &_grfconfig;
 
-	ClearGRFConfigList(_grfconfig);
-	_grfconfig = NULL;
+	ClearGRFConfigList(c);
 
 	if (defaults) c = CopyGRFConfigList(c, _grfconfig_newgame);
 	CopyGRFConfigList(c, _grfconfig_static);
@@ -244,8 +247,7 @@ void ScanNewGRFFiles(void)
 {
 	uint num;
 
-	ClearGRFConfigList(_all_grfs);
-	_all_grfs = NULL;
+	ClearGRFConfigList(&_all_grfs);
 
 	DEBUG(grf, 1) ("[GRF] Scanning for NewGRFs");
 	num = ScanPath(_paths.data_dir);
@@ -388,7 +390,7 @@ static void Load_NGRF(void)
 	/* Append static NewGRF configuration */
 	CopyGRFConfigList(last, _grfconfig_static);
 
-	ClearGRFConfigList(_grfconfig);
+	ClearGRFConfigList(&_grfconfig);
 	_grfconfig = first;
 }
 
