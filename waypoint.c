@@ -244,6 +244,7 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		UpdateWaypointSign(wp);
 		RedrawWaypointSign(wp);
+		YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
 	}
 
 	return _price.build_train_depot;
@@ -274,6 +275,7 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 	}
 
 	if (flags & DC_EXEC) {
+		Track track = GetRailWaypointTrack(tile);
 		wp = GetWaypointByTile(tile);
 
 		wp->deleted = 30; // let it live for this many days before we do the actual deletion.
@@ -284,9 +286,9 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 			MarkTileDirtyByTile(tile);
 		} else {
 			DoClearSquare(tile);
-			SetSignalsOnBothDir(tile, GetRailWaypointTrack(tile));
-			YapfNotifyTrackLayoutChange(tile, GetRailWaypointTrack(tile));
+			SetSignalsOnBothDir(tile, track);
 		}
+		YapfNotifyTrackLayoutChange(tile, track);
 	}
 
 	return _price.remove_train_depot;
