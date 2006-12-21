@@ -115,6 +115,8 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 {
 	GRFConfig *c;
 
+	/* Clear destination as it will be overwritten */
+	ClearGRFConfigList(dst);
 	for (; src != NULL; src = src->next) {
 		c = calloc(1, sizeof(*c));
 		*c = *src;
@@ -134,8 +136,6 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 void ResetGRFConfig(bool defaults)
 {
 	GRFConfig **c = &_grfconfig;
-
-	ClearGRFConfigList(c);
 
 	if (defaults) c = CopyGRFConfigList(c, _grfconfig_newgame);
 	CopyGRFConfigList(c, _grfconfig_static);
