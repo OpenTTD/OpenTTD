@@ -1657,6 +1657,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		break;
 	case WE_TIMEOUT:
 		RaiseWindowWidget(w, 3);
+		InvalidateWidget(w, 3);
 		break;
 	}
 }
