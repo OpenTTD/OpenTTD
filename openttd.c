@@ -1406,7 +1406,7 @@ bool AfterLoadGame(void)
 	} else {
 		/* As of version 17, we recalculate the custom graphic ID of waypoints
 		 * from the GRF ID / station index. */
-		UpdateAllWaypointCustomGraphics();
+		AfterLoadWaypoints();
 	}
 
 	/* From version 15, we moved a semaphore bit from bit 2 to bit 3 in m4, making

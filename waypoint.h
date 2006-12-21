@@ -68,6 +68,6 @@ void ShowRenameWaypointWindow(const Waypoint *cp);
 void DrawWaypointSprite(int x, int y, int image, RailType railtype);
 void FixOldWaypoints(void);
 void UpdateAllWaypointSigns(void);
-void UpdateAllWaypointCustomGraphics(void);
+void AfterLoadWaypoints(void);
 
 #endif /* WAYPOINT_H */

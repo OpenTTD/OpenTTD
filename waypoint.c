@@ -150,7 +150,7 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
  * Update waypoint graphics id against saved GRFID/localidx.
  * This is to ensure the chosen graphics are correct if GRF files are changed.
  */
-void UpdateAllWaypointCustomGraphics(void)
+void AfterLoadWaypoints(void)
 {
 	Waypoint *wp;
 
