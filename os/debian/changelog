@@ -1,8 +1,28 @@
+openttd (0.4.8svn) unstable; urgency=low
+
+  * Unreleased SVN version. Versioned to allow normal upgrades to released versions.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Thu, 21 Dec 2006 14:54:35 +0100
+
+openttd (0.4.8-1) unstable; urgency=low
+
+  * New upstream release
+  * Bump standards version to 3.7.2
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Mon, 14 Aug 2006 16:28:50 +0200
+
 openttd (0.4.7-1) unstable; urgency=low
 
+  * New upstream release.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Mon, 27 Mar 2006 23:40:00 +0200
+
+openttd (0.4.6-1) unstable; urgency=low
+
+  * New upstream release.
   * Remove old terminal messages and make sure that debconf is always called.
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Thu,  9 Mar 2006 00:04:33 +0100
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Wed,  8 Mar 2006 23:57:35 +0100
 
 openttd (0.4.5-1) unstable; urgency=low
 

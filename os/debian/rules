@@ -16,8 +16,8 @@ configure-stamp:
 	touch configure-stamp
 
 
-build: build-stamp
-build-stamp: configure-stamp
+build: configure build-stamp
+build-stamp:
 	dh_testdir
 
 	# Add here commands to compile the package.
@@ -38,12 +38,12 @@ clean: unpatch
 	-$(MAKE) clean
 	rm Makefile.config || true
 
-	dh_clean 
+	dh_clean
 
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k 
+	dh_clean -k
 	dh_installdirs
 
 	# Add here commands to install the package into debian/openttd.
@@ -85,4 +85,4 @@ binary-arch: build install
 	dh_builddeb
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install configure
+.PHONY: build clean binary-indep binary-arch binary install configure patch
