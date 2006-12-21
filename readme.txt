@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2006-08-12
-Release version: 0.4.8
+Last updated:    2006-12-21
+Release version: 0.5.0-RC1
 ------------------------------------------------------------------------
 
 
@@ -45,14 +45,13 @@ http://www.tt-forums.net/index.php?c=20
 
 2.1) Reporting Bugs:
 ---- ---------------
-To report a bug, please create a SourceForge account and follow the bugs
+To report a bug, please create a Flyspray account and follow the bugs
 link from our homepage. Please make sure the bug is reproducible and
 still occurs in the latest daily build or the current SVN version. Also
 please look through the existing bug reports briefly to see whether the bug
 is not already known.
 
-The SourceForge project page URL is: http://sourceforge.net/projects/openttd/
-Click on "Bugs" to see the bug tracker.
+The Flyspray project page URL is: http://bugs.openttd.org/
 
 Please include the following information in your bug report:
         - OpenTTD version (PLEASE test the latest SVN/daily build)
@@ -134,7 +133,7 @@ ingame by using the 'Configure Patches' window.
 7.0) Compiling:
 ---- ----------
 Windows:
-  You need Microsoft Visual Studio 6 or .NET. Open the project file
+  You need Microsoft Visual Studio .NET. Open the project file
   and it should build automatically. In case you want to build with SDL support
   you need to add WITH_SDL to the project settings.
   PNG (WITH_PNG) and ZLIB (WITH_ZLIB) support is enabled by default. For these
@@ -142,7 +141,7 @@ Windows:
   openttd-useful.zip file from SourceForge under the Files tab. Put the header
   files into your compiler's include/ directory and the library (.lib) files
   into the lib/ directory.
-  For more help with VS6 see docs/Readme_Windows_MSVC6.0.txt.
+  For more help with VS see docs/Readme_Windows_MSVC.txt.
 
   You can also build it using the Makefile with MSYS/MinGW or Cygwin/MinGW.
   Please read the Makefile for more information.
@@ -255,20 +254,37 @@ Under Windows 98 and lower it is impossible to use a dedicated server; it will
 fail to start. Perhaps this is for the better because those OS's are not known
 for their stability.
 
+With the added support for font-based text selecting a non-latin language will
+result in garbage (lots of '?') shown on screen. Please open your configuration
+file and add a desired font for small/medium/-and large_font. This can be a font
+name like "Tahoma" or a path to a font.
+
+Any NewGRF file used in a game is stored inside the savegame and will refuse
+to load if you don't have that grf file available. A list of missing files
+will be output to the console at the moment, so use the '-d' flag (on windows)
+to see this list. You just have to find the files (http://grfcrawler.tt-forums.net/)
+put them in the data/ folder and you're set to go.
+
 X.X) Credits:
 ---- --------
 The OpenTTD team (in alphabetical order):
+  Jean-Francois Claeys (Belugas) - In training, not yet specialized
   Bjarni Corfitzen (Bjarni)      - Mac OS X port, coder
+  Matthijs Kooijman (blathijs)   - Pathfinder-guru
   Victor Fischer (Celestar)      - Programming everywhere you need him to
   Tamás Faragó (Darkvater)       - Lead programmer
+  Loïc Guilloux (glx)            - In training, not yet specialized
+  Jaroslav Mazanec (KUDr)        - YAPG (Yet Another Pathfinder God) ;)
   Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
-  Owen Rudge (orudge)            - Contributor, forum host, master server host, OS/2 port
-  Peter Nelson (peter1138)       - NewGRF support wizard, OpenTTD addict
+
+  Peter Nelson (peter1138)       - Spiritual descendant from newgrf gods
+  Remko Bijker (Rubidium)        - Belugas code scrutinizer",
   Christoph Mallon (Tron)        - Programmer, code correctness police
   Patric Stout (TrueLight)       - Programmer, network guru, SVN-repository and website host
 
 Retired Developers:
   Dominik Scherer (dominik81)    - Lead programmer, GUI expert (0.3.0 - 0.3.6)
+  Owen Rudge (orudge)            - Contributor, forum host, master server host, OS/2 port (0.1 - 0.4.8)
   Ludvig Strigeus (ludde)        - OpenTTD author, main coder (0.1 - 0.3.3)
   Serge Paquet (vurlix)          - Assistant project manager, coder (0.1 - 0.3.3)
 
@@ -282,6 +298,7 @@ Thanks to:
   Mike Ragsdale - OpenTTD installer
   Cian Duffy (MYOB) - BeOS port / manual writing
   Christian Rosentreter (tokai) - MorphOS / AmigaOS port
+  Richard Kempton (richK) - additional airports, initial TGP implementation
   Michael Blunck - For revolutionizing TTD with awesome graphics
   George - Canal graphics
   All Translators - For their support to make OpenTTD a truly international game

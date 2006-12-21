@@ -15,49 +15,85 @@ or http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version.
 
-Bugs for 0.4.8
+Bugs for 0.5.0
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
--78	Low Save vs. Autosave
--73	vehicle selection bug
--66	wagon re-fitting
--65	short wagons bug
--51	Windows doesn't support CUSTOM_LANG_DIR
--50	Trains chosing an alternative path when encountering a 1-way presignal instead of waiting
--47	Low rating calculation and cargo loading priority
--20	Low Saving files when run from gdb 2005-12-06 Unconfirmed
+-456	'Fullload' switches between 'stop'/'service' at depot
+-455	Converting to monorail behaves badly
+-454	Problem with goods transfer income
+-450	GUI selecting disabled numbers (newstations)
+-445	unable to open previously saved game in r7425
+-444	Compile issues (networking) on Sun and SGI platforms
+-442	Alt-tab behaviour flawed whilst full screen (win32)
+-441	Low	Transparent stuff
+-435	Assertion window doesn't show when in fullscreen on Mac OS X
+-432	Assertion failed: AircraftController in aircraft_cmd.c (line 771)
+-431	failure to autorenew (core/GUI desync)
+-423	Improved loading causes high CPU use with long trains
+-415	Multiplayer Desync Error... (More)
+-410	Openttd in dedicated mode don't run without data files
+-404	Cargo never delivered to station after bribe and before first pickup
+-391	Smth stange with train depots
+-390	Multiplayer Desync Error...
+-379	Integer overflow with huge cities
+-365	Blimp Stuck at airport
+-362	Changing signal type affects whole square
+-357	CPU spikes in game
+-355	graphics bugs with trains - water, tunnels
+-354	Maglev Trains faster than All Planes
+-344	Nightly builds crash on Mac OS X PPC
+-339	Crash in Quicktime when exiting game
+-299	disable 90 deg turns patch - AI builds 90 deg turns
+-290	NPF - no path to depot from tunnel
+-282	layers do not clear loans as soon as they could
+-274	Autoclean ignores any share holdings
+-265	Subsidy awarded detection bug
+-259	AIs start unnamed companies that do nothing
+-216	AI build train vans one van less
+-210	Incorrect semaphor beaviour
+-202	2 Locomotives in 1 Train - Selling one results in Age of the other one Being 0
+-195	Cannot delete train
+-193	Inconsistent directory usage on Mac OS X
+-165	vehicle length not taken into account
+-163	Cargo: Station destroyed / High payment
+-158	Crash with !v->type == VEH_Ship error
+-153	Language crash with app renaming OSX
+-119	Clipping problems with vehicles on slopes
+-115	inactive logins do not get auto kicked
+- 89	Able to build railways/stations before engines become available
+- 65	short wagons bug
+- 51	Windows doesn't support CUSTOM_LANG_DIR
+- 47	Low rating calculation and cargo loading priority
 
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 
+-1616411	Game very slow when Xorg color depth is different than 8bpp
+-1573339	0.4.8.dmg Crash with intel 64bit
+-1460218	0.4.7 normal industry bug (non_smooth)
 -1459262	Towns building too many roads way too long now
 -1458995	Another bug with smooth_economy
 -1436419	Vehicles profits gone negative.......bug
--1434000	Error in Transfer-Function
 -1427531	Newspapers problem
 -1417453	Makefile and Variables issue
 -1397638	Economics bug?
--1394799	Dual headed engines disagreement
 -1393415	NPF & one-way sigs
 -1389986	Shares problem (nightly 3330)
--1299162	Music volume too low
--1250094	Towns Shrink when center tile is built on
 -1244842	Multiplayer interface bug (0.4.0.1)
 -1212267	station visited twice when servicing
 -1208170	Duplicate station names can be created
 -1197116	Some stations are cargo-less
--1174829	Waypoint / Orders Bug
--1168820	Some mouse and keyboard events are lost
--1167810	Cargo payment after deleting stations (st->xy = 0)
 -1116638	"More, but smaller changes" deficiency
 -1106356	re-offered prototypes
 -1085486	Subsidies: Only count when station is in right suburb
 
-Minor Bugs for 0.4.8
+Minor Bugs for 0.5.0
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 
+-1488896	enable higher resolutions
+-1461629	[r4180]Subsidy calculated wrong
 -1412031	fast forward scrolling is also fast forward :)
 -1387424	overtake insolvent company is to cheap
 -1382782	Loan interest calculated 'wrong'
