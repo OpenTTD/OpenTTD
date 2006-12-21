@@ -153,7 +153,7 @@ static void MenuClickSettings(int index)
 		case 0: ShowGameOptions();      return;
 		case 1: ShowGameDifficulty();   return;
 		case 2: ShowPatchesSelection(); return;
-		case 3: ShowNewGRFSettings(false, true, &_grfconfig);   return;
+		case 3: ShowNewGRFSettings(!_networking, true, true, &_grfconfig);   return;
 
 		case  5: _display_opt ^= DO_SHOW_TOWN_NAMES;    break;
 		case  6: _display_opt ^= DO_SHOW_STATION_NAMES; break;

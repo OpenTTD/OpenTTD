@@ -66,5 +66,6 @@ extern bool _have_2cc;
 
 void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage);
 void LoadNewGRF(uint load_index, uint file_index);
+void ReloadNewGRFData(void); // in openttd.c
 
 #endif /* NEWGRF_H */

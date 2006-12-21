@@ -442,7 +442,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				NetworkQueryServer(nd->server->info.hostname, nd->server->port, true);
 			break;
 		case 18: // NewGRF Settings
-			if (nd->server != NULL) ShowNewGRFSettings(false, false, &nd->server->info.grfconfig);
+			if (nd->server != NULL) ShowNewGRFSettings(false, false, false, &nd->server->info.grfconfig);
 			break;
 
 	}	break;

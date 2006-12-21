@@ -6,7 +6,7 @@
 #include "heightmap.h"
 #include "debug.h"
 #include "functions.h"
-#include "gfxinit.h"
+#include "newgrf.h"
 #include "saveload.h"
 #include "strings.h"
 #include "table/sprites.h"
@@ -1658,9 +1658,7 @@ static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 	if (p1 == -1) p1 = 3;
 	if (p1 ==  4) p1 = 0;
 	_opt.landscape = p1;
-	GfxLoadSprites();
-	LoadStringWidthTable();
-	MarkWholeScreenDirty();
+	ReloadNewGRFData();
 	return _opt.landscape;
 }
 

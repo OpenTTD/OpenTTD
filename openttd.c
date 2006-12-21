@@ -1559,3 +1559,24 @@ bool AfterLoadGame(void)
 
 	return true;
 }
+
+/** Reload all NewGRF files during a running game. This is a cut-down
+ * version of AfterLoadGame().
+ * XXX - We need to reset the vehicle position hash because with a non-empty
+ * hash AfterLoadVehicles() will loop infinitely. We need AfterLoadVehicles()
+ * to recalculate vehicle data as some NewGRF vehicle sets could have been
+ * removed or added and changed statistics */
+void ReloadNewGRFData(void)
+{
+	/* reload grf data */
+	GfxLoadSprites();
+	LoadStringWidthTable();
+	/* reload vehicles */
+	ResetVehiclePosHash();
+	AfterLoadVehicles();
+	/* update station and waypoint graphics */
+	AfterLoadWaypoints();
+	AfterLoadStations();
+	/* redraw the whole screen */
+	MarkWholeScreenDirty();
+}

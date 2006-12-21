@@ -277,6 +277,7 @@ Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z);
 
 void InitializeTrains(void);
 byte VehicleRandomBits(void);
+void ResetVehiclePosHash(void);
 
 bool CanFillVehicle(Vehicle *v);
 bool CanRefitTo(EngineID engine_type, CargoID cid_to);

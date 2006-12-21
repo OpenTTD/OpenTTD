@@ -84,7 +84,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		case 12: ShowGameOptions(); break;
 		case 13: ShowGameDifficulty(); break;
 		case 14: ShowPatchesSelection(); break;
-		case 15: ShowNewGRFSettings(true, true, &_grfconfig_newgame); break;
+		case 15: ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
 		case 16: HandleExitGameRequest(); break;
 		}
 		break;

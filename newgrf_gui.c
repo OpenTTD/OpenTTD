@@ -9,6 +9,7 @@
 #include "window.h"
 #include "table/strings.h"
 #include "table/sprites.h"
+#include "newgrf.h"
 #include "newgrf_config.h"
 
 
@@ -219,12 +220,15 @@ static const WindowDesc _newgrf_add_dlg_desc = {
 
 /* 'NewGRF Settings' dialogue */
 typedef struct newgrf_d {
-	GRFConfig **list;
-	GRFConfig *sel;
-	bool editable;
-	bool show_params;
+	GRFConfig **orig_list; ///< grf list the window is shown with
+	GRFConfig **list;      ///< temporary grf list to which changes are made
+	GRFConfig *sel;        ///< selected grf item
+	bool editable;         ///< is the window editable
+	bool show_params;      ///< are the grf-parameters shown in the info-panel
+	bool execute;          ///< on pressing 'apply changes' are grf changes applied immediately, or only list is updated
 } newgrf_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(newgrf_d));
+
 
 enum ShowNewGRFStateWidgets {
 	SNGRFS_ADD = 3,
@@ -234,7 +238,9 @@ enum ShowNewGRFStateWidgets {
 	SNGRFS_FILE_LIST = 7,
 	SNGRFS_NEWGRF_INFO = 9,
 	SNGRFS_SET_PARAMETERS,
+	SNGRFS_APPLY_CHANGES,
 };
+
 
 static void SetupNewGRFState(Window *w)
 {
@@ -266,6 +272,21 @@ static void SetupNewGRFWindow(Window *w)
 
 	w->vscroll.cap = (w->widget[SNGRFS_FILE_LIST].bottom - w->widget[SNGRFS_FILE_LIST].top) / 14 + 1;
 	SetVScrollCount(w, i);
+	SetWindowWidgetDisabledState(w, SNGRFS_APPLY_CHANGES, !WP(w, newgrf_d).editable);
+}
+
+
+/** Callback function for the newgrf 'apply changes' confirmation window
+ * @param yes_clicked boolean value, true when yes was clicked, false otherwise */
+static void NewGRFConfirmationCallback(bool yes_clicked)
+{
+	if (yes_clicked) {
+		Window *w = FindWindowById(WC_GAME_OPTIONS, 0);
+		newgrf_d *nd = &WP(w, newgrf_d);
+
+		CopyGRFConfigList(nd->orig_list, *nd->list);
+		ReloadNewGRFData();
+	}
 }
 
 
@@ -398,6 +419,20 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 
+				case SNGRFS_APPLY_CHANGES: /* Apply changes made to GRF list */
+					if (WP(w, newgrf_d).execute) {
+						ShowQuery(
+							STR_POPUP_CAUTION_CAPTION,
+							STR_NEWGRF_CONFIRMATION_TEXT,
+							NewGRFConfirmationCallback,
+							w->window_class,
+							w->window_number
+						);
+					} else {
+						CopyGRFConfigList(WP(w, newgrf_d).orig_list, *WP(w, newgrf_d).list);
+					}
+					break;
+
 				case SNGRFS_SET_PARAMETERS: { /* Edit parameters */
 					char buff[512];
 					if (WP(w, newgrf_d).sel == NULL) break;
@@ -419,6 +454,11 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 				if (c->num_params == (byte)-1) c->num_params = 0;
 			}
 			SetWindowDirty(w);
+			break;
+
+		case WE_DESTROY:
+			/* Remove the temporary copy of grf-list used in window */
+			ClearGRFConfigList(WP(w, newgrf_d).list);
 			break;
 
 		case WE_RESIZE:
@@ -447,8 +487,10 @@ static const Widget _newgrf_widgets[] = {
 /* NewGRF file info */
 {      WWT_PANEL,   RESIZE_RTB, 10,   0, 299, 100, 199, STR_NULL,                    STR_NULL },
 
-/* Edit parameter button... */
-{ WWT_PUSHTXTBTN,   RESIZE_RTB, 10,   0, 287, 200, 211, STR_NEWGRF_SET_PARAMETERS,   STR_NULL },
+/* Edit parameter and apply changes button... */
+{ WWT_PUSHTXTBTN,    RESIZE_TB, 10,   0, 143, 200, 211, STR_NEWGRF_SET_PARAMETERS,   STR_NULL },
+{ WWT_PUSHTXTBTN,   RESIZE_RTB, 10, 144, 287, 200, 211, STR_NEWGRF_APPLY_CHANGES,    STR_NULL },
+
 {  WWT_RESIZEBOX,  RESIZE_LRTB, 10, 288, 299, 200, 211, 0x0,                         STR_RESIZE_BUTTON },
 
 { WIDGETS_END },
@@ -464,8 +506,15 @@ static const WindowDesc _newgrf_desc = {
 };
 
 
-void ShowNewGRFSettings(bool editable, bool show_params, GRFConfig **config)
+/** Setup the NewGRF gui
+ * @param editable allow the user to make changes to the grfconfig in the window
+ * @param show_params show information about what parameters are set for the grf files
+ * @param exec_changes if changes are made to the list (editable is true), apply these
+ *        changes immediately or only update the list
+ * @param config pointer to a linked-list of grfconfig's that will be shown */
+void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config)
 {
+	static GRFConfig *local = NULL;
 	Window *w;
 
 	DeleteWindowByClass(WC_GAME_OPTIONS);
@@ -473,11 +522,14 @@ void ShowNewGRFSettings(bool editable, bool show_params, GRFConfig **config)
 	if (w == NULL) return;
 
 	w->resize.step_height = 14;
+	CopyGRFConfigList(&local, *config);
 
 	/* Clear selections */
 	WP(w, newgrf_d).sel         = NULL;
-	WP(w, newgrf_d).list        = config;
+	WP(w, newgrf_d).list        = &local;
+	WP(w, newgrf_d).orig_list   = config;
 	WP(w, newgrf_d).editable    = editable;
+	WP(w, newgrf_d).execute     = exec_changes;
 	WP(w, newgrf_d).show_params = show_params;
 
 	SetupNewGRFWindow(w);

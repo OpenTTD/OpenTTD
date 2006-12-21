@@ -440,6 +440,14 @@ static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 	}
 }
 
+void ResetVehiclePosHash(void)
+{
+	uint i;
+	for (i = 0; i < lengthof(_vehicle_position_hash); i++) {
+		_vehicle_position_hash[i] = INVALID_VEHICLE;
+	}
+}
+
 void InitializeVehicles(void)
 {
 	uint i;
@@ -449,12 +457,11 @@ void InitializeVehicles(void)
 	 *  vehicles (which is increased on-the-fly) */
 	CleanPool(&_Vehicle_pool);
 	AddBlockToPool(&_Vehicle_pool);
-	for (i = 0; i < BLOCKS_FOR_SPECIAL_VEHICLES; i++)
+	for (i = 0; i < BLOCKS_FOR_SPECIAL_VEHICLES; i++) {
 		AddBlockToPool(&_Vehicle_pool);
-
-	for (i = 0; i < lengthof(_vehicle_position_hash); i++) {
-		_vehicle_position_hash[i] = INVALID_VEHICLE;
 	}
+
+	ResetVehiclePosHash();
 }
 
 Vehicle *GetLastVehicleInChain(Vehicle *v)

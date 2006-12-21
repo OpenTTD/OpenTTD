@@ -52,7 +52,7 @@ bool FillGRFDetails(GRFConfig *config, bool is_static);
 char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 
 /* In newgrf_gui.c */
-void ShowNewGRFSettings(bool editable, bool show_params, GRFConfig **config);
+void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config);
 
 /* For communication about GRFs over the network */
 #define UNKNOWN_GRF_NAME_PLACEHOLDER "<Unknown>"
