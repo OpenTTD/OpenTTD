@@ -91,6 +91,7 @@
 - Codechange: [win32] Add native x64 target to VS2005 project files (r5813)
 - Codechange: [win32]The exception dialog showed the last modification-date of win32.c instead of the last compilation-date (r5801)
 - Codechange: Add owner attribute to canals and locks. This makes them more useful in multiplayer games, as only the owner can delete them. Does not affect usage (r5084)
+- Codechange: Add MSVC2005 support, project and solution files are in the _vs80.* files (r4581)
 - Codechange: [OSX] Shark (Xcode's profiling tool) can now relate CPU usage to lines (r3611)
 - Codechange: Rewrite the multistop slot assignment system. More resource-friendly, several slot-assignment improvements (r3730, r4259)
 - Codechange: Completely remove the deprecated -p parameter (is superseded by -n) (r3508)
