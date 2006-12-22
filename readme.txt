@@ -167,7 +167,7 @@ FreeBSD:
 MorphOS:
   Use "make". Note that you need the MorphOS SDK, latest libnix updates (else
   C++ parts of OpenTTD will not build) and the powersdl.library SDK. Optionally
-  libz and libpng developer files.
+  libz, libpng and freetype2 developer files.
 
 OS/2:
   Open Watcom C/C++ 1.3 or later is required to build the OS/2 version. See the
