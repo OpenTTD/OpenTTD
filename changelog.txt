@@ -2,6 +2,7 @@
 ------------------------------------------------------------------------
 
 - General fixes and improvements to TTDPatch's newgrf format, most noticable are newstations, newsounds, more callbacks and I18n
+- Added languages: Bulgarian, Esperanto, Russian, Ukrainian, Languages with proper diacretics: Czech, Hungarian, Turkish
 - Feature: Show NewGRF compatability of network games; green for full compatibility, yellow for missing newgrfs and red for invalid revision (r7505)
 - Feature: Load a list of NewGRFs from the config (in the [newgrf-static] section) that should always be loaded (r7490)
 - Feature: Double the length of the cargo and rating indicators in the station list window for better visibility (r7466)
