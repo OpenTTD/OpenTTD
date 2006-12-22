@@ -200,17 +200,17 @@ static const Widget _newgrf_add_dlg_widgets[] = {
 {  WWT_SCROLLBAR,     RESIZE_LRB, 14, 295, 306,  14, 221, 0x0,                     STR_NULL },
 
 /* NewGRF file info */
-{      WWT_PANEL,     RESIZE_RTB, 14,   0, 306, 222, 311, 0x0,                     STR_NULL },
+{      WWT_PANEL,     RESIZE_RTB, 14,   0, 306, 222, 324, 0x0,                     STR_NULL },
 
-{ WWT_PUSHTXTBTN,     RESIZE_RTB, 14,   0, 146, 312, 323, STR_NEWGRF_ADD_FILE,     STR_NEWGRF_ADD_FILE_TIP },
-{ WWT_PUSHTXTBTN,    RESIZE_LRTB, 14, 147, 294, 312, 323, STR_NEWGRF_RESCAN_FILES, STR_NEWGRF_RESCAN_FILES_TIP },
-{  WWT_RESIZEBOX,    RESIZE_LRTB, 14, 295, 306, 312, 323, 0x0,                     STR_RESIZE_BUTTON },
+{ WWT_PUSHTXTBTN,     RESIZE_RTB, 14,   0, 146, 325, 336, STR_NEWGRF_ADD_FILE,     STR_NEWGRF_ADD_FILE_TIP },
+{ WWT_PUSHTXTBTN,    RESIZE_LRTB, 14, 147, 294, 325, 336, STR_NEWGRF_RESCAN_FILES, STR_NEWGRF_RESCAN_FILES_TIP },
+{  WWT_RESIZEBOX,    RESIZE_LRTB, 14, 295, 306, 325, 336, 0x0,                     STR_RESIZE_BUTTON },
 {   WIDGETS_END },
 };
 
 
 static const WindowDesc _newgrf_add_dlg_desc = {
-	WDP_CENTER, WDP_CENTER, 307, 324,
+	WDP_CENTER, WDP_CENTER, 307, 337,
 	WC_SAVELOAD, 0,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_add_dlg_widgets,
@@ -485,20 +485,20 @@ static const Widget _newgrf_widgets[] = {
 {  WWT_SCROLLBAR,   RESIZE_LRB, 10, 288, 299,  30,  99, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST },
 
 /* NewGRF file info */
-{      WWT_PANEL,   RESIZE_RTB, 10,   0, 299, 100, 199, STR_NULL,                    STR_NULL },
+{      WWT_PANEL,   RESIZE_RTB, 10,   0, 299, 100, 212, STR_NULL,                    STR_NULL },
 
 /* Edit parameter and apply changes button... */
-{ WWT_PUSHTXTBTN,    RESIZE_TB, 10,   0, 143, 200, 211, STR_NEWGRF_SET_PARAMETERS,   STR_NULL },
-{ WWT_PUSHTXTBTN,   RESIZE_RTB, 10, 144, 287, 200, 211, STR_NEWGRF_APPLY_CHANGES,    STR_NULL },
+{ WWT_PUSHTXTBTN,    RESIZE_TB, 10,   0, 143, 213, 224, STR_NEWGRF_SET_PARAMETERS,   STR_NULL },
+{ WWT_PUSHTXTBTN,   RESIZE_RTB, 10, 144, 287, 213, 224, STR_NEWGRF_APPLY_CHANGES,    STR_NULL },
 
-{  WWT_RESIZEBOX,  RESIZE_LRTB, 10, 288, 299, 200, 211, 0x0,                         STR_RESIZE_BUTTON },
+{  WWT_RESIZEBOX,  RESIZE_LRTB, 10, 288, 299, 213, 224, 0x0,                         STR_RESIZE_BUTTON },
 
 { WIDGETS_END },
 };
 
 
 static const WindowDesc _newgrf_desc = {
-	WDP_CENTER, WDP_CENTER, 300, 212,
+	WDP_CENTER, WDP_CENTER, 300, 225,
 	WC_GAME_OPTIONS, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_widgets,
