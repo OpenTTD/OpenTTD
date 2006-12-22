@@ -217,7 +217,7 @@ static void PutUtf8(uint32 value)
 		PutByte(0x80 + GB(value,  6, 6));
 		PutByte(0x80 + GB(value,  0, 6));
 	} else {
-		warning("Invalid unicode value U+0x%X\n", value);
+		warning("Invalid unicode value U+0x%X", value);
 	}
 }
 
@@ -1386,6 +1386,11 @@ int CDECL main(int argc, char* argv[])
 		if (r == NULL || strcmp(r, ".txt") != 0) r = strchr(pathbuf, '\0');
 		ttd_strlcpy(r, ".lng", (size_t)(r - pathbuf));
 		WriteLangfile(pathbuf, show_todo);
+
+		/* if showing warnings, print a summary of the language */
+		if (show_todo == 2) {
+			fprintf(stdout, "%d warnings and %d errors for %s", _warnings, _errors, pathbuf);
+		}
 	} else {
 		fprintf(stderr, "Invalid arguments\n");
 	}
