@@ -1291,7 +1291,7 @@ uint GetPlatformLength(TileIndex tile, DiagDirection dir)
 static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 {
 	int w,h;
-	int32 cost;
+	int32 cost = 0;
 
 	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
 	if (_current_player == OWNER_WATER && _patches.nonuniform_stations)
@@ -1308,9 +1308,6 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 
 	assert(w != 0 && h != 0);
 
-	/* cost is area * constant */
-	cost = w*h*_price.remove_rail_station;
-
 	/* clear all areas of the station */
 	do {
 		int w_bak = w;
@@ -1319,6 +1316,7 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 			if (TileBelongsToRailStation(st, tile)) {
 				if (!EnsureNoVehicle(tile))
 					return CMD_ERROR;
+				cost += _price.remove_rail_station;
 				if (flags & DC_EXEC) {
 					Track track = GetRailStationTrack(tile);
 					DoClearSquare(tile);
