@@ -393,6 +393,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapasite
 STR_NO_WAITING_CARGO                                            :{BLACK}Hiç kargo yok
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm türleri seç
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Bu araç türü için mümkün olan lokomotif tasarimlari
 STR_MANAGE_LIST                                                 :{BLACK}Listeyi yönet
 STR_MANAGE_LIST_TIP                                             :{BLACK}Listedeki tüm araçlara komut ver
 STR_REPLACE_VEHICLES                                            :Araçları Değiştir
@@ -1080,6 +1081,7 @@ STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}İnşa 
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Hiçbiri
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Şirketi al
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tüm şirketler
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER> tuşu takım içi sohbette kullanılsın: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
@@ -1304,6 +1306,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Şifre 
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SUNUCU KAPALI
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SUNUCU DOLU
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}SÜRÜM UYUŞMAZLIĞI
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF UYUŞMAZLIĞI
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Oyuna gir
 

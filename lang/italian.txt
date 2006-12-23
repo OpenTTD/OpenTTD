@@ -154,6 +154,7 @@ STR_00B0_MAP                                                    :{WHITE}Mappa - 
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opzioni di gioco
 STR_00B2_MESSAGE                                                :{YELLOW}Messaggio
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Messaggio da {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Attenzione!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Non puoi fare questo....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Non puoi ripulire l'area....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Originale{COPYRIGHT} 1995 Chris Sawyer, Tutti i diritti riservati
@@ -1308,6 +1309,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Protett
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER PIENO
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIONE DIFFERENTE
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF DISALLINEATA
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Entra nel gioco
 
@@ -2888,6 +2890,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Non ci s
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome file: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Stai per fare cambiamenti a una partita in corso; questo pu• crashare OpenTTD.{}Sei assolutamente sicuro di farlo?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Aggiungi
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Aggiungi un file NewGRF alla lista

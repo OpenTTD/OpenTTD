@@ -1372,6 +1372,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Heslo:
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER JE OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER JE PLNY
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}ROZNE VERZIE
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF Chyba
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Pripojit sa
 

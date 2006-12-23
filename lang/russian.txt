@@ -153,6 +153,7 @@ STR_00B0_MAP                                                    :{WHITE}Карт
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Параметры
 STR_00B2_MESSAGE                                                :{YELLOW}Сообщение
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Сообщение из {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Осторожно!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Это невозможно
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Невозможно очистить
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Оригинальные авторские права {COPYRIGHT} 1995 Chris Sawyer, Все права защищены
@@ -2888,6 +2889,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}В на�
 STR_NEWGRF_FILENAME                                             :{BLACK}Имя файла: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}Сумма MD5: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы хотите сделать изменения в уже запущенной игре - это может привести к ошибке игры, и ее вылету.{}Вы абсолютно уверены в том, что хотите сделать?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Добавить
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавить NewGRF файл в список

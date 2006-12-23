@@ -154,6 +154,7 @@ STR_00B0_MAP                                                    :{WHITE}Kaart - 
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spelopties
 STR_00B2_MESSAGE                                                :{YELLOW}Bericht
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Bericht van {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Waarschuwing!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan dit niet uitvoeren....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan gebied niet ontruimen....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originele copyright {COPYRIGHT} 1995 Chris Sawyer, alle rechten voorbehouden
@@ -1308,6 +1309,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Beveili
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER VOL
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}ANDERE VERSIE
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF NIET GELIJK
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Meespelen
 
@@ -2888,6 +2890,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Er zijn 
 STR_NEWGRF_FILENAME                                             :{BLACK}Bestandsnaam: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Je staat op het punt om wijzigingen te maken aan een lopend spel; dit dan OpenTTD laten crashen.{}Weet je het heel zeker?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Toevoegen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg een NewGRF bestand toe aan te lijst

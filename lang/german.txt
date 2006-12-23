@@ -155,6 +155,7 @@ STR_00B0_MAP                                                    :{WHITE}Karte - 
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spieleinstellungen
 STR_00B2_MESSAGE                                                :{YELLOW}Nachricht
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Nachricht von {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Achtung!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kann dies nicht tun....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kann das Gebiet nicht räumen....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle Rechte vorbehalten
@@ -2889,6 +2890,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Keine Ne
 STR_NEWGRF_FILENAME                                             :{BLACK}Dateiname: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5-Summe: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du bist dabei Änderungen während eines laufenden Spiels zu machen. Dies kann zum Absturz von OpenTTD führen.{}Bist du Dir wirklich sicher?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Hinzufügen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Füge eine neue NewGRF Datei zu Liste hinzu

@@ -1308,6 +1308,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Passwor
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER FULL
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSION MISMATCH
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF MISMATCH
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Join game
 
