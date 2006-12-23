@@ -120,9 +120,9 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 	for (; src != NULL; src = src->next) {
 		c = calloc(1, sizeof(*c));
 		*c = *src;
-		c->filename = strdup(src->filename);
-		if (src->name != NULL) c->name = strdup(src->name);
-		if (src->info != NULL) c->info = strdup(src->info);
+		if (src->filename != NULL) c->filename = strdup(src->filename);
+		if (src->name     != NULL) c->name     = strdup(src->name);
+		if (src->info     != NULL) c->info     = strdup(src->info);
 
 		*dst = c;
 		dst = &c->next;
