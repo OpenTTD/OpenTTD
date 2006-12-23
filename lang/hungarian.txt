@@ -187,6 +187,7 @@ STR_00B0_MAP                                                    :{WHITE}Térkép
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Beállítások
 STR_00B2_MESSAGE                                                :{YELLOW}Üzenet
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}{STRING} üzenete
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Figyelem!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nem teheted ezt...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nem tisztíthatod meg a területet...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright {COPYRIGHT} 1995 Chris Sawyer, Minden jog fenntartva
@@ -1373,6 +1374,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Jelszó
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SZERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SZERVER TELE
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERZIÓ ELTÉRÉS
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF ELTÉRÉS
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Csatlakozás
 
@@ -2613,6 +2615,7 @@ STR_INVALID_ORDER                                               :{RED} (Hibás m
 STR_UNKNOWN_DESTINATION                                         :ismeretlen célpont
 STR_8812_EMPTY                                                  :{LTBLUE}Üres
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} {STATION} állomásról
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} {STATION} állomásról (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{COMMA}. vonat a járműtelepen várakozik
 STR_8815_NEW_VEHICLES                                           :{BLACK}Új járművek
 STR_8816                                                        :{BLACK}-
@@ -2988,6 +2991,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Jelenleg
 STR_NEWGRF_FILENAME                                             :{BLACK}Fájlnév: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Te éppen a jelenleg futó játékot akarod megváltoztatni; ettől elszállhat az OpenTTD.{}Teljesen biztos vagy benne, hogy ezt akarod?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Hozzáad
 STR_NEWGRF_ADD_TIP                                              :{BLACK}A NewGRF-et hozzáadja a listához
