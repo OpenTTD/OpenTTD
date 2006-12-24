@@ -318,8 +318,8 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 
 			/* Check if current tile is within the 1-pixel map edge or padding regions */
 			if ((DistanceFromEdge(tile) <= 1) ||
-					(row < row_pad) || (row >= (height - row_pad)) ||
-					(col < col_pad) || (col >= (width - col_pad))) {
+					(row < row_pad) || (row >= (img_height + row_pad)) ||
+					(col < col_pad) || (col >= (img_width  + col_pad))) {
 				SetTileHeight(tile, 0);
 			} else {
 				/* Use nearest neighbor resizing to scale map data.
