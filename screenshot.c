@@ -561,6 +561,7 @@ bool MakeScreenshot(void)
 	switch (current_screenshot_type) {
 		case SC_VIEWPORT:
 			UndrawMouseCursor();
+			DrawDirtyBlocks();
 			current_screenshot_type = SC_NONE;
 			return MakeSmallScreenshot();
 		case SC_WORLD:
