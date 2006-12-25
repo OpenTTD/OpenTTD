@@ -101,6 +101,8 @@
 # CYGWIN: build in Cygwin environment
 # MINGW: build with MingW compiler, link with MingW libraries
 #
+# CUSTOM_FONTCONFIG: use a custom name/path to the libfontconfig library. Useful for static linking
+#
 # VERBOSE: show full compiler invocations instead of brief progress messages
 #
 # Special for crosscompiling there are some commands available:
@@ -523,6 +525,13 @@ ifdef WITH_FONTCONFIG
 CDEFS += -DWITH_FONTCONFIG
 CCFLAGS_FONTCONFIG := $(shell $(FONTCONFIG_CONFIG) --cflags)
 LDFLAGS_FONTCONFIG := $(shell $(FONTCONFIG_CONFIG) --libs)
+
+ifdef CUSTOM_FONTCONFIG
+# To allow usage of non-default libs, such as absolute path to static libs
+# not stored in Makefile.config
+LDFLAGS_FONTCONFIG := $(CUSTOM_FONTCONFIG)
+endif
+
 CFLAGS += $(CCFLAGS_FONTCONFIG)
 LIBS += $(LDFLAGS_FONTCONFIG)
 endif
