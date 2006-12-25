@@ -1272,7 +1272,7 @@ static bool LoadWait(const Vehicle* v, const Vehicle* u)
 	FOR_ALL_VEHICLES(x) {
 		if ((x->type != VEH_Train || IsFrontEngine(x)) && // for all locs
 				u->last_station_visited == x->last_station_visited && // at the same station
-				!(x->vehstatus & VS_STOPPED) && // not stopped
+				!(x->vehstatus & (VS_STOPPED | VS_CRASHED)) && // not stopped or crashed
 				x->current_order.type == OT_LOADING && // loading
 				u != x) { // not itself
 			bool other_has_any_cargo = false;
