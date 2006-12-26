@@ -862,7 +862,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	// Queue the command for the clients (are send at the end of the frame
 	//   if they can handle it ;))
 	FOR_ALL_CLIENTS(new_cs) {
-		if (new_cs->status > STATUS_AUTH) {
+		if (new_cs->status >= STATUS_MAP) {
 			// Callbacks are only send back to the client who sent them in the
 			//  first place. This filters that out.
 			cp->callback = (new_cs != cs) ? 0 : callback;
