@@ -60,8 +60,9 @@ int UpdateCompanyRatingAndValue(Player *p, bool update);
 
 VARDEF Subsidy _subsidies[MAX_PLAYERS];
 Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode);
-void DeleteSubsidyWithIndustry(uint16 index);
-void DeleteSubsidyWithStation(uint16 index);
+void DeleteSubsidyWithTown(TownID index);
+void DeleteSubsidyWithIndustry(IndustryID index);
+void DeleteSubsidyWithStation(StationID index);
 
 int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type);
 uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount);
