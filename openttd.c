@@ -301,7 +301,7 @@ static void LoadIntroGame(void)
 	}
 
 	_pause = 0;
-	_local_player = 0;
+	SetLocalPlayer(0);
 	/* Make sure you can't scroll in the menu */
 	_scrolling_viewport = 0;
 	_cursor.fix_at = false;
@@ -595,14 +595,14 @@ static void MakeNewGameDone(void)
 {
 	/* In a dedicated server, the server does not play */
 	if (_network_dedicated) {
-		_local_player = PLAYER_SPECTATOR;
+		SetLocalPlayer(PLAYER_SPECTATOR);
 		return;
 	}
 
 	/* Create a single player */
 	DoStartupNewPlayer(false);
 
-	_local_player = 0;
+	SetLocalPlayer(0);
 	_current_player = _local_player;
 	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
@@ -623,7 +623,7 @@ static void MakeNewGame(bool from_heightmap)
 
 static void MakeNewEditorWorldDone(void)
 {
-	_local_player = OWNER_NONE;
+	SetLocalPlayer(OWNER_NONE);
 
 	MarkWholeScreenDirty();
 }
@@ -682,7 +682,7 @@ static void StartScenario(void)
 	StartupEngines();
 	StartupDisasters();
 
-	_local_player = 0;
+	SetLocalPlayer(0);
 	_current_player = _local_player;
 	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
@@ -773,7 +773,7 @@ void SwitchMode(int new_mode)
 		} else {
 			/* Update the local player for a loaded game. It is either always
 			 * player #1 (eg 0) or in the case of a dedicated server a spectator */
-			_local_player = _network_dedicated ? PLAYER_SPECTATOR : 0;
+			SetLocalPlayer(_network_dedicated ? PLAYER_SPECTATOR : 0);
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
@@ -794,7 +794,7 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_LOAD_HEIGHTMAP: /* Load heightmap from scenario editor */
-		_local_player = OWNER_NONE;
+		SetLocalPlayer(OWNER_NONE);
 
 		GenerateWorld(GW_HEIGHTMAP, 1 << _patches.map_x, 1 << _patches.map_y);
 		MarkWholeScreenDirty();
@@ -806,7 +806,7 @@ void SwitchMode(int new_mode)
 
 			_opt_ptr = &_opt;
 
-			_local_player = OWNER_NONE;
+			SetLocalPlayer(OWNER_NONE);
 			_generating_world = true;
 			/* Delete all players */
 			FOR_ALL_PLAYERS(p) {
@@ -838,7 +838,7 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_GENRANDLAND: /* Generate random land within scenario editor */
-		_local_player = OWNER_NONE;
+		SetLocalPlayer(OWNER_NONE);
 		GenerateWorld(GW_RANDOM, 1 << _patches.map_x, 1 << _patches.map_y);
 		// XXX: set date
 		MarkWholeScreenDirty();
@@ -1275,18 +1275,23 @@ bool AfterLoadGame(void)
 	 *  of course, we do need to initialize them for older savegames. */
 	if (CheckSavegameVersion(16)) {
 		FOR_ALL_PLAYERS(p) {
-			p->engine_renew_list = NULL;
-			p->engine_renew = false;
+			p->engine_renew_list   = NULL;
+			p->engine_renew        = false;
 			p->engine_renew_months = -6;
-			p->engine_renew_money = 100000;
+			p->engine_renew_money  = 100000;
 		}
-		if (IsValidPlayer(_local_player)) {
-			// Set the human controlled player to the patch settings
-			// Scenario editor do not have any companies
-			p = GetPlayer(_local_player);
-			p->engine_renew = _patches.autorenew;
+
+		/* When loading a game, _local_player is not yet set to the correct value.
+		 * However, in a dedicated server we are a spectator, so nothing needs to
+		 * happen. In case we are not a dedicated server, the local player always
+		 * becomes player 0, unless we are in the scenario editor where all the
+		 * players are 'invalid'.
+		 */
+		if (!_network_dedicated && IsValidPlayer(0)) {
+			p = GetPlayer(0);
+			p->engine_renew        = _patches.autorenew;
 			p->engine_renew_months = _patches.autorenew_months;
-			p->engine_renew_money = _patches.autorenew_money;
+			p->engine_renew_money  = _patches.autorenew_money;
 		}
 	}
 

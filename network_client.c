@@ -509,7 +509,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		if (_network_playas == PLAYER_NEW_COMPANY || !IsValidPlayer(_network_playas) ||
 				!GetPlayer(_network_playas)->is_active) {
 
-			_local_player = PLAYER_SPECTATOR;
+			SetLocalPlayer(PLAYER_SPECTATOR);
 
 			if (_network_playas == PLAYER_SPECTATOR) {
 				// The client wants to be a spectator..
@@ -521,10 +521,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			}
 		} else {
 			// take control over an existing company
-			_local_player = _network_playas;
-			_patches.autorenew = GetPlayer(_local_player)->engine_renew;
-			_patches.autorenew_months = GetPlayer(_local_player)->engine_renew_months;
-			_patches.autorenew_money = GetPlayer(_local_player)->engine_renew_money;
+			SetLocalPlayer(_network_playas);
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 		}
 	}

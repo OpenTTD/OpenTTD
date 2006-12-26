@@ -206,6 +206,7 @@ void GetNameOfOwner(Owner owner, TileIndex tile);
 int64 CalculateCompanyValue(const Player* p);
 void InvalidatePlayerWindows(const Player* p);
 void UpdatePlayerMoney32(Player *p);
+void SetLocalPlayer(PlayerID new_player);
 #define FOR_ALL_PLAYERS(p) for (p = _players; p != endof(_players); p++)
 
 VARDEF PlayerID _local_player;
