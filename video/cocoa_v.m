@@ -349,9 +349,9 @@ static void QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL dow
 	if (down) {
 		uint32 pressed_key = QZ_MapKey(keycode) | unicode;
 		HandleKeypress(pressed_key);
-		DEBUG(driver, 2)("cocoa_v: QZ_KeyEvent: %x (%x), down, mapping: %x", keycode, unicode, pressed_key);
+		DEBUG(driver, 2, "cocoa_v: QZ_KeyEvent: %x (%x), down, mapping: %x", keycode, unicode, pressed_key);
 	} else {
-		DEBUG(driver, 2)("cocoa_v: QZ_KeyEvent: %x (%x), up", keycode, unicode);
+		DEBUG(driver, 2, "cocoa_v: QZ_KeyEvent: %x (%x), up", keycode, unicode);
 	}
 }
 
@@ -663,8 +663,6 @@ static void QZ_GameLoop(void)
 #endif
 	int i;
 
-	DEBUG(driver, 1)("cocoa_v: QZ_GameLoop");
-
 #ifdef _DEBUG
 	et0 = GetTick();
 	st = 0;
@@ -742,10 +740,10 @@ static void QZ_GameLoop(void)
 #ifdef _DEBUG
 	et = GetTick();
 
-	DEBUG(driver, 1)("cocoa_v: nextEventMatchingMask took %i ms total", _cocoa_video_data.tEvent);
-	DEBUG(driver, 1)("cocoa_v: game loop took %i ms total (%i ms without sleep)", et - et0, et - et0 - st);
-	DEBUG(driver, 1)("cocoa_v: (nextEventMatchingMask total)/(game loop total) is %f%%", (double)_cocoa_video_data.tEvent / (double)(et - et0) * 100);
-	DEBUG(driver, 1)("cocoa_v: (nextEventMatchingMask total)/(game loop without sleep total) is %f%%", (double)_cocoa_video_data.tEvent / (double)(et - et0 - st) * 100);
+	DEBUG(driver, 1, "cocoa_v: nextEventMatchingMask took %i ms total", _cocoa_video_data.tEvent);
+	DEBUG(driver, 1, "cocoa_v: game loop took %i ms total (%i ms without sleep)", et - et0, et - et0 - st);
+	DEBUG(driver, 1, "cocoa_v: (nextEventMatchingMask total)/(game loop total) is %f%%", (double)_cocoa_video_data.tEvent / (double)(et - et0) * 100);
+	DEBUG(driver, 1, "cocoa_v: (nextEventMatchingMask total)/(game loop without sleep total) is %f%%", (double)_cocoa_video_data.tEvent / (double)(et - et0 - st) * 100);
 #endif
 }
 
@@ -1936,8 +1934,6 @@ static void setupApplication(void)
 
 static void CocoaVideoStop(void)
 {
-	DEBUG(driver, 1)("cocoa_v: CocoaVideoStop");
-
 	if (!_cocoa_video_started) return;
 
 	if (_cocoa_video_data.isset) QZ_UnsetVideoMode();
@@ -1950,8 +1946,6 @@ static void CocoaVideoStop(void)
 static const char *CocoaVideoStart(const char * const *parm)
 {
 	const char *ret;
-
-	DEBUG(driver, 1)("cocoa_v: CocoaVideoStart");
 
 	if (_cocoa_video_started) return "Already started";
 	_cocoa_video_started = true;
@@ -1984,20 +1978,15 @@ static void CocoaVideoMakeDirty(int left, int top, int width, int height)
 
 static void CocoaVideoMainLoop(void)
 {
-	DEBUG(driver, 1)("cocoa_v: CocoaVideoMainLoop");
-
 	/* Start the main event loop */
 	[NSApp run];
 }
 
 static bool CocoaVideoChangeRes(int w, int h)
 {
-	const char *ret;
-	DEBUG(driver, 1)("cocoa_v: CocoaVideoChangeRes");
-
-	ret = QZ_SetVideoModeAndRestoreOnFailure((uint)w, (uint)h, _cocoa_video_data.fullscreen);
+	const char *ret = QZ_SetVideoModeAndRestoreOnFailure((uint)w, (uint)h, _cocoa_video_data.fullscreen);
 	if (ret != NULL) {
-		DEBUG(driver, 1)("cocoa_v:  failed with message: %s", ret);
+		DEBUG(driver, 0, "cocoa_v: CocoaVideoChangeRes failed with message: %s", ret);
 	}
 
 	return ret == NULL;
@@ -2005,13 +1994,9 @@ static bool CocoaVideoChangeRes(int w, int h)
 
 static void CocoaVideoFullScreen(bool full_screen)
 {
-	const char *ret;
-
-	DEBUG(driver, 1)("cocoa_v: CocoaVideoFullScreen");
-
-	ret = QZ_SetVideoModeAndRestoreOnFailure(_cocoa_video_data.width, _cocoa_video_data.height, full_screen);
+	const char *ret = QZ_SetVideoModeAndRestoreOnFailure(_cocoa_video_data.width, _cocoa_video_data.height, full_screen);
 	if (ret != NULL) {
-		DEBUG(driver, 1)("cocoa_v:  failed with message: %s", ret);
+		DEBUG(driver, 0, "cocoa_v: CocoaVideoFullScreen failed with message: %s", ret);
 	}
 
 	_fullscreen = _cocoa_video_data.fullscreen;

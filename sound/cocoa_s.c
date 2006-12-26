@@ -55,8 +55,6 @@ static const char *CocoaSoundStart(const char * const *parm)
 	struct AudioUnitInputCallback callback;
 	AudioStreamBasicDescription requestedDesc;
 
-	DEBUG(driver, 1)("cocoa_s: CocoaSoundStart");
-
 	/* Setup a AudioStreamBasicDescription with the requested format */
 	requestedDesc.mFormatID = kAudioFormatLinearPCM;
 	requestedDesc.mFormatFlags = kLinearPCMFormatFlagIsPacked;
@@ -122,11 +120,9 @@ static void CocoaSoundStop(void)
 {
 	struct AudioUnitInputCallback callback;
 
-	DEBUG(driver, 1)("cocoa_s: CocoaSoundStop");
-
 	/* stop processing the audio unit */
 	if (AudioOutputUnitStop(_outputAudioUnit) != noErr) {
-		DEBUG(driver, 1)("cocoa_s: Core_CloseAudio: AudioOutputUnitStop failed");
+		DEBUG(driver, 0, "cocoa_s: Core_CloseAudio: AudioOutputUnitStop failed");
 		return;
 	}
 
@@ -134,12 +130,12 @@ static void CocoaSoundStop(void)
 	callback.inputProc = 0;
 	callback.inputProcRefCon = 0;
 	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_SetInputCallback, kAudioUnitScope_Input, 0, &callback, sizeof(callback)) != noErr) {
-		DEBUG(driver, 1)("cocoa_s: Core_CloseAudio: AudioUnitSetProperty (kAudioUnitProperty_SetInputCallback) failed");
+		DEBUG(driver, 0, "cocoa_s: Core_CloseAudio: AudioUnitSetProperty (kAudioUnitProperty_SetInputCallback) failed");
 		return;
 	}
 
 	if (CloseComponent(_outputAudioUnit) != noErr) {
-		DEBUG(driver, 1)("cocoa_s: Core_CloseAudio: CloseComponent failed");
+		DEBUG(driver, 0, "cocoa_s: Core_CloseAudio: CloseComponent failed");
 		return;
 	}
 }
