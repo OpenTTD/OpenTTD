@@ -161,16 +161,11 @@ static void CDECL grfmsg(grfmsg_severity severity, const char *str, ...)
 	DEBUG(grf, export_severity) ("[%s:%d][%s] %s", _cur_grffile->filename, _nfo_line, severitystr[severity], buf);
 }
 
-
-#define check_length(real, wanted, where) \
-do { \
-	if (real < wanted) { \
-		grfmsg(GMS_ERROR, "%s: Invalid special sprite length %d (expected %d)!", \
-		       where, real, wanted); \
-		return; \
-	} \
-} while (0)
-
+static inline void check_length(int real, int wanted, const char *str)
+{
+	if (real >= wanted) return;
+	grfmsg(0, "%s: Invalid pseudo sprite length %d (expected %d)!", str, real, wanted);
+}
 
 static inline byte grf_load_byte(byte **buf)
 {
@@ -2542,21 +2537,18 @@ static void GRFInfo(byte *buf, int len)
 	uint8 version;
 	uint32 grfid;
 	const char *name;
-	const char *info;
 
 	check_length(len, 8, "GRFInfo"); buf++;
 	version = grf_load_byte(&buf);
 	grfid = grf_load_dword(&buf);
 	name = (const char*)buf;
-	info = name + strlen(name) + 1;
 
 	_cur_grffile->grfid = grfid;
 	_cur_grffile->grf_version = version;
 	SETBIT(_cur_grfconfig->flags, GCF_ACTIVATED);
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
-	DEBUG(grf, 1) ("[%s] Loaded GRFv%d set %08lx - %s:\n%s",
-	               _cur_grffile->filename, version, BSWAP32(grfid), name, info);
+	DEBUG(grf, 1) ("Loaded GRFv%d set %08lX - %s", version, BSWAP32(grfid), name);
 }
 
 /* Action 0x0A */
@@ -2611,31 +2603,37 @@ static void GRFError(byte *buf, int len)
 	 * B parnum        see action 6, only used with built-in message 03 */
 	/* TODO: For now we just show the message, sometimes incomplete and never translated. */
 
-	static const char * const msgstr[4] = {
-		"Requires at least pseudo-TTDPatch version %s.",
-		"This file is for %s version of TTD.",
-		"Designed to be used with %s.",
-		"Invalid parameter %s.",
+	static const char *const msgstr[] = {
+		"%sRequires at least pseudo-TTDPatch version %s",
+		"%sThis file is for %s version of TTD",
+		"%sDesigned to be used with %s",
+		"%sInvalid parameter %s",
+		"%sMust be loaded before %s",
+		"%sMust be loaded after %s",
+		"%s%s"
 	};
-	uint8 severity;
+
+	static const char *const sevstr[] = {
+		"",
+		"Warning: ",
+		"Error: ",
+		"Fatal: ",
+	};
+	uint8 sevid;
 	uint8 msgid;
 
 	check_length(len, 6, "GRFError");
-	severity = buf[1];
+	sevid = buf[1];
 	msgid = buf[3];
 
 	// Undocumented TTDPatch feature.
-	if ((severity & 0x80) == 0 && _cur_stage < GLS_ACTIVATION) {
-		DEBUG(grf, 7) ("Skipping non-fatal GRFError in stage 1");
+	if (!HASBIT(sevid, 7) && _cur_stage < GLS_ACTIVATION) {
+		grfmsg(7, "Skipping non-fatal GRFError in stage 1");
 		return;
 	}
-	severity &= 0x7F;
 
-	if (msgid == 0xFF) {
-		grfmsg(severity, "%s", buf+4);
-	} else {
-		grfmsg(severity, msgstr[msgid], buf+4);
-	}
+	sevid = GB(sevid, 0, 2);
+	grfmsg(0,  msgstr[(msgid == 0xFF) ? lengthof(msgstr) - 1 : msgid], sevstr[sevid], buf[4]);
 }
 
 /* Action 0x0C */
@@ -3085,7 +3083,7 @@ static void LoadGRFSound(byte *buf, int len)
 	 * so that the indices used elsewhere are still correct. */
 	se = AllocateFileEntry();
 
-	if (grf_load_dword(&buf) != 'FFIR') {
+	if (grf_load_dword(&buf) != BSWAP32('RIFF')) {
 		grfmsg(GMS_WARN, "LoadGRFSound: Missing RIFF header");
 		return;
 	}
@@ -3093,7 +3091,7 @@ static void LoadGRFSound(byte *buf, int len)
 	/* Size of file -- we ignore this */
 	grf_load_dword(&buf);
 
-	if (grf_load_dword(&buf) != 'EVAW') {
+	if (grf_load_dword(&buf) != BSWAP32('WAVE')) {
 		grfmsg(GMS_WARN, "LoadGRFSound: Invalid RIFF type");
 		return;
 	}
