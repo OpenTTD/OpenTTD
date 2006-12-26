@@ -2603,7 +2603,7 @@ static void GRFError(byte *buf, int len)
 	}
 
 	sevid = GB(sevid, 0, 2);
-	grfmsg(0,  msgstr[(msgid == 0xFF) ? lengthof(msgstr) - 1 : msgid], sevstr[sevid], buf[4]);
+	grfmsg(0,  msgstr[(msgid == 0xFF) ? lengthof(msgstr) - 1 : msgid], sevstr[sevid], &buf[4]);
 }
 
 /* Action 0x0C */
