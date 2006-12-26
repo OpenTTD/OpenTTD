@@ -820,9 +820,8 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* This command is only executed in a multiplayer game */
 		if (!_networking) return CMD_ERROR;
 
-		/* ClientID would be valid up to MAX_CLIENT_INFO, but as it has to be a
-		 * new player, its valid range is restricted to that of players */
-		if (!(flags & DC_EXEC) || !IsValidPlayer((PlayerID)cid)) return 0;
+		/* Has the network client a correct ClientID? */
+		if (!(flags & DC_EXEC) || cid >= MAX_CLIENT_INFO) return 0;
 
 		/* Delete multiplayer progress bar */
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
