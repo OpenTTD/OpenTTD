@@ -69,7 +69,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	if (ret != ERROR_SUCCESS) ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T(FONT_DIR_9X), 0, KEY_READ, &hKey);
 
 	if (ret != ERROR_SUCCESS) {
-		DEBUG(freetype, 0) ("Cannot open registry key HKLM\\SOFTWARE\\Microsoft\\Windows (NT)\\CurrentVersion\\Fonts");
+		DEBUG(freetype, 0, "Cannot open registry key HKLM\\SOFTWARE\\Microsoft\\Windows (NT)\\CurrentVersion\\Fonts");
 		return err;
 	}
 
@@ -111,7 +111,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	}
 
 	if (!SUCCEEDED(SHGetFolderPath(NULL, CSIDL_FONTS, NULL, SHGFP_TYPE_CURRENT, vbuffer))) {
-		DEBUG(freetype, 0) ("SHGetFolderPath cannot return fonts directory");
+		DEBUG(freetype, 0, "SHGetFolderPath cannot return fonts directory");
 		goto folder_error;
 	}
 
@@ -241,7 +241,7 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 	if (error != FT_Err_Ok) error = GetFontByFaceName(font_name, face);
 
 	if (error == FT_Err_Ok) {
-		DEBUG(freetype, 2) ("[FreeType] Requested '%s', using '%s %s'", font_name, (*face)->family_name, (*face)->style_name);
+		DEBUG(freetype, 2, "Requested '%s', using '%s %s'", font_name, (*face)->family_name, (*face)->style_name);
 
 		/* Attempt to select the unicode character map */
 		error = FT_Select_Charmap(*face, ft_encoding_unicode);
@@ -278,7 +278,7 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 void InitFreeType(void)
 {
 	if (strlen(_freetype.small_font) == 0 && strlen(_freetype.medium_font) == 0 && strlen(_freetype.large_font) == 0) {
-		DEBUG(freetype, 1) ("[FreeType] No font faces specified, using sprite fonts instead");
+		DEBUG(freetype, 1, "No font faces specified, using sprite fonts instead");
 		return;
 	}
 
@@ -287,7 +287,7 @@ void InitFreeType(void)
 		return;
 	}
 
-	DEBUG(freetype, 2) ("[FreeType] Initialized");
+	DEBUG(freetype, 2, "Initialized");
 
 	/* Load each font */
 	LoadFreeTypeFont(_freetype.small_font,  &_face_small,  "small");
@@ -344,16 +344,16 @@ static GlyphEntry *GetGlyphPtr(FontSize size, WChar key)
 static void SetGlyphPtr(FontSize size, WChar key, const GlyphEntry *glyph)
 {
 	if (_glyph_ptr[size] == NULL) {
-		DEBUG(freetype, 3) ("[FreeType] Allocating root glyph cache for size %u", size);
+		DEBUG(freetype, 3, "Allocating root glyph cache for size %u", size);
 		_glyph_ptr[size] = calloc(256, sizeof(**_glyph_ptr));
 	}
 
 	if (_glyph_ptr[size][GB(key, 8, 8)] == NULL) {
-		DEBUG(freetype, 3) ("[FreeType] Allocating glyph cache for range 0x%02X00, size %u", GB(key, 8, 8), size);
+		DEBUG(freetype, 3, "Allocating glyph cache for range 0x%02X00, size %u", GB(key, 8, 8), size);
 		_glyph_ptr[size][GB(key, 8, 8)] = calloc(256, sizeof(***_glyph_ptr));
 	}
 
-	DEBUG(freetype, 4) ("[FreeType] Set glyph for unicode character 0x%04X, size %u", key, size);
+	DEBUG(freetype, 4, "Set glyph for unicode character 0x%04X, size %u", key, size);
 	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].sprite = glyph->sprite;
 	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].width  = glyph->width;
 }
@@ -519,4 +519,6 @@ void InitializeUnicodeGlyphMap(void)
 		}
 	}
 }
+
+
 

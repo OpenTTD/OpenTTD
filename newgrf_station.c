@@ -12,6 +12,7 @@
 #include "table/strings.h"
 #include "station.h"
 #include "station_map.h"
+#include "newgrf.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
@@ -74,7 +75,7 @@ StationClassID AllocateStationClass(uint32 class)
 		}
 	}
 
-	DEBUG(grf, 2)("StationClassAllocate: Already allocated %d classes, using default.", STAT_CLASS_MAX);
+	grfmsg(2, "StationClassAllocate: already allocated %d classes, using default", STAT_CLASS_MAX);
 	return STAT_CLASS_DFLT;
 }
 
@@ -390,7 +391,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		}
 	}
 
-	DEBUG(grf, 1)("Unhandled station property 0x%X", variable);
+	DEBUG(grf, 1, "Unhandled station property 0x%X", variable);
 
 	*available = false;
 	return -1;

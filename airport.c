@@ -219,14 +219,14 @@ static void AirportFTAClass_Constructor(AirportFTAClass *apc,
 	 * need to be changed, so don't allow that for now */
 	nofterminals = AirportGetTerminalCount(terminals, &nofterminalgroups);
 	if (nofterminals > MAX_TERMINALS) {
-		DEBUG(misc, 0) ("[Ap] Currently only maximum of %d terminals are supported (you wanted %d)", MAX_TERMINALS, nofterminals);
+		DEBUG(misc, 0, "[Ap] only a maximum of %d terminals are supported (requested %d)", MAX_TERMINALS, nofterminals);
 		assert(nofterminals <= MAX_TERMINALS);
 	}
 	apc->terminals = terminals;
 
 	nofhelipads = AirportGetTerminalCount(helipads, &nofhelipadgroups);
 	if (nofhelipads > MAX_HELIPADS) {
-		DEBUG(misc, 0) ("[Ap] Currently only maximum of %d helipads are supported (you wanted %d)", MAX_HELIPADS, nofhelipads);
+		DEBUG(misc, 0, "[Ap] only a maximum of %d helipads are supported (requested %d)", MAX_HELIPADS, nofhelipads);
 		assert(nofhelipads <= MAX_HELIPADS);
 	}
 	apc->helipads = helipads;
@@ -236,7 +236,7 @@ static void AirportFTAClass_Constructor(AirportFTAClass *apc,
 	 * later on to build and validate the state machine */
 	apc->nofelements = AirportGetNofElements(apFA);
 	if (entry_point >= apc->nofelements) {
-		DEBUG(misc, 0) ("[Ap] Entry (%d) must be within the airport (maximum %d)", entry_point, apc->nofelements);
+		DEBUG(misc, 0, "[Ap] entry (%d) must be within the airport (maximum %d)", entry_point, apc->nofelements);
 		assert(entry_point < apc->nofelements);
 	}
 
@@ -247,14 +247,14 @@ static void AirportFTAClass_Constructor(AirportFTAClass *apc,
 
 	/* Build the state machine itself */
 	AirportBuildAutomata(apc, apFA);
-	DEBUG(misc, 1) ("[Ap] #count %3d; #term %2d (%dgrp); #helipad %2d (%dgrp); entry %3d",
+	DEBUG(misc, 2, "[Ap] #count %3d; #term %2d (%dgrp); #helipad %2d (%dgrp); entry %3d",
 		apc->nofelements, nofterminals, nofterminalgroups, nofhelipads, nofhelipadgroups, apc->entry_point);
 
 	/* Test if everything went allright. This is only a rude static test checking
 	 * the symantic correctness. By no means does passing the test mean that the
 	 * airport is working correctly or will not deadlock for example */
 	{ byte ret = AirportTestFTA(apc);
-		if (ret != MAX_ELEMENTS) DEBUG(misc, 0) ("[Ap] ERROR with element: %d", ret - 1);
+		if (ret != MAX_ELEMENTS) DEBUG(misc, 0, "[Ap] problem with element: %d", ret - 1);
 		assert(ret == MAX_ELEMENTS);
 	}
 

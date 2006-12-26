@@ -153,7 +153,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-		DEBUG(net, 2) ("[NET] '%s' made an error and has been disconnected. Reason: %s", client_name, str);
+		DEBUG(net, 1, "'%s' made an error and has been disconnected. Reason: '%s'", client_name, str);
 
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
 
@@ -168,7 +168,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 			}
 		}
 	} else {
-		DEBUG(net, 2) ("[NET] Client %d made an error and has been disconnected. Reason: %s", cs->index, str);
+		DEBUG(net, 1, "Client %d made an error and has been disconnected. Reason: '%s'", cs->index, str);
 	}
 
 	cs->has_quit = true;
@@ -901,7 +901,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 
 	GetNetworkErrorMsg(str, errorno, lastof(str));
 
-	DEBUG(net, 2)("[NET] %s reported an error and is closing his connection (%s)", client_name, str);
+	DEBUG(net, 2, "'%s' reported an error and is closing its connection (%s)", client_name, str);
 
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
 
@@ -1057,7 +1057,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		}
 		break;
 	default:
-		DEBUG(net, 0)("[NET][Server] Received unknown destination type %d. Doing broadcast instead.");
+		DEBUG(net, 0, "[server] received unknown chat destination type %d. Doing broadcast instead", desttype);
 		/* fall-through to next case */
 	case DESTTYPE_BROADCAST:
 		FOR_ALL_CLIENTS(cs) {
@@ -1126,11 +1126,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
 	NetworkRecv_string(cs, p, command, sizeof(command));
 
 	if (strcmp(pass, _network_game_info.rcon_password) != 0) {
-		DEBUG(net, 0)("[RCon] Wrong password from client-id %d", cs->index);
+		DEBUG(net, 0, "[rcon] wrong password from client-id %d", cs->index);
 		return;
 	}
 
-	DEBUG(net, 0)("[RCon] Client-id %d executed: %s", cs->index, command);
+	DEBUG(net, 0, "[rcon] client-id %d executed: '%s'", cs->index, command);
 
 	_redirect_console_to_client = cs->index;
 	IConsoleCmdExec(command);
@@ -1314,7 +1314,7 @@ void NetworkUpdateClientInfo(uint16 client_index)
 static void NetworkCheckRestartMap(void)
 {
 	if (_network_restart_game_year != 0 && _cur_year >= _network_restart_game_year) {
-		DEBUG(net, 0)("Auto-restarting map. Year %d reached.", _cur_year);
+		DEBUG(net, 0, "Auto-restarting map. Year %d reached", _cur_year);
 
 		StartNewGameWithoutGUI(GENERATE_NEW_SEED);
 	}
@@ -1428,7 +1428,7 @@ bool NetworkServer_ReadPackets(NetworkClientState *cs)
 		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->has_quit) {
 			_network_server_packet[type](cs, p);
 		} else {
-			DEBUG(net, 0)("[NET][Server] Received invalid packet type %d", type);
+			DEBUG(net, 0, "[server] received invalid packet type %d", type);
 		}
 		free(p);
 	}

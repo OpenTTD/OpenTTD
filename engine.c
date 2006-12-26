@@ -54,7 +54,7 @@ void DeleteCustomEngineNames(void)
 void LoadCustomEngineNames(void)
 {
 	/* XXX: not done */
-	DEBUG(misc, 1) ("LoadCustomEngineNames: not done");
+	DEBUG(misc, 1, "LoadCustomEngineNames: not done");
 }
 
 static void SetupEngineNames(void)

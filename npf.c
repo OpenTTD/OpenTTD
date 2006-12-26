@@ -133,7 +133,7 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, Open
 		dist = NPFDistanceTrack(from, to);
 	}
 
-	DEBUG(npf, 4)("Calculating H for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), dist);
+	DEBUG(npf, 4, "Calculating H for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), dist);
 
 	if (dist < ftd->best_bird_dist) {
 		ftd->best_bird_dist = dist;
@@ -153,7 +153,7 @@ static void NPFFillTrackdirChoice(AyStarNode* current, OpenListNode* parent)
 		/* This is a first order decision, so we'd better save the
 		 * direction we chose */
 		current->user_data[NPF_TRACKDIR_CHOICE] = trackdir;
-		DEBUG(npf, 6)("Saving trackdir: 0x%X", trackdir);
+		DEBUG(npf, 6, "Saving trackdir: 0x%X", trackdir);
 	} else {
 		/* We've already made the decision, so just save our parent's decision */
 		current->user_data[NPF_TRACKDIR_CHOICE] = parent->path.node.user_data[NPF_TRACKDIR_CHOICE];
@@ -293,7 +293,7 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 		cost += _patches.npf_road_curve_penalty;
 
 	NPFMarkTile(tile);
-	DEBUG(npf, 4)("Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
+	DEBUG(npf, 4, "Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
 	return cost;
 }
 
@@ -397,7 +397,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	//TODO
 
 	NPFMarkTile(tile);
-	DEBUG(npf, 4)("Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
+	DEBUG(npf, 4, "Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
 	return cost;
 }
 
@@ -528,7 +528,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	TransportType type = aystar->user_data[NPF_TYPE];
 	/* Initialize to 0, so we can jump out (return) somewhere an have no neighbours */
 	aystar->num_neighbours = 0;
-	DEBUG(npf, 4)("Expanding: (%d, %d, %d) [%d]", TileX(src_tile), TileY(src_tile), src_trackdir, src_tile);
+	DEBUG(npf, 4, "Expanding: (%d, %d, %d) [%d]", TileX(src_tile), TileY(src_tile), src_trackdir, src_tile);
 
 	/* Find dest tile */
 	if (IsTunnelTile(src_tile) && GetTunnelDirection(src_tile) == src_exitdir) {
@@ -618,13 +618,13 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	}
 	trackdirbits = ts & TRACKDIR_BIT_MASK; /* Filter out signal status and the unused bits */
 
-	DEBUG(npf, 4)("Next node: (%d, %d) [%d], possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirbits);
+	DEBUG(npf, 4, "Next node: (%d, %d) [%d], possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirbits);
 	/* Select only trackdirs we can reach from our current trackdir */
 	trackdirbits &= TrackdirReachesTrackdirs(src_trackdir);
 	if (_patches.forbid_90_deg && (type == TRANSPORT_RAIL || type == TRANSPORT_WATER)) /* Filter out trackdirs that would make 90 deg turns for trains */
 		trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
 
-	DEBUG(npf,6)("After filtering: (%d, %d), possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), trackdirbits);
+	DEBUG(npf, 6, "After filtering: (%d, %d), possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), trackdirbits);
 
 	i = 0;
 	/* Enumerate possible track */
@@ -632,7 +632,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		Trackdir dst_trackdir;
 		dst_trackdir =  FindFirstBit2x64(trackdirbits);
 		trackdirbits = KillFirstBit2x64(trackdirbits);
-		DEBUG(npf, 5)("Expanded into trackdir: %d, remaining trackdirs: 0x%X", dst_trackdir, trackdirbits);
+		DEBUG(npf, 5, "Expanded into trackdir: %d, remaining trackdirs: 0x%X", dst_trackdir, trackdirbits);
 
 		/* Check for oneway signal against us */
 		if (IsTileType(dst_tile, MP_RAILWAY) && GetRailTileType(dst_tile) == RAIL_TILE_SIGNALS) {
@@ -712,10 +712,10 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start
 
 	if (result.best_bird_dist != 0) {
 		if (target != NULL) {
-			DEBUG(npf, 1) ("Could not find route to tile 0x%X from 0x%X.", target->dest_coords, start1->tile);
+			DEBUG(npf, 1, "Could not find route to tile 0x%X from 0x%X.", target->dest_coords, start1->tile);
 		} else {
 			/* Assumption: target == NULL, so we are looking for a depot */
-			DEBUG(npf, 1) ("Could not find route to a depot from tile 0x%X.", start1->tile);
+			DEBUG(npf, 1, "Could not find route to a depot from tile 0x%X.", start1->tile);
 		}
 
 	}
@@ -861,7 +861,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 			best_result = result;
 	}
 	if (result.best_bird_dist != 0) {
-		DEBUG(npf, 1) ("Could not find route to any depot from tile 0x%X.", tile);
+		DEBUG(npf, 1, "Could not find route to any depot from tile 0x%X.", tile);
 	}
 	return best_result;
 }

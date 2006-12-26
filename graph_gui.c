@@ -1152,9 +1152,7 @@ static void GlobalSortSignList(void)
 
 	/* Create array for sorting */
 	_sign_sort = realloc((void *)_sign_sort, (GetMaxSignIndex() + 1)* sizeof(_sign_sort[0]));
-	if (_sign_sort == NULL) {
-		error("Could not allocate memory for the sign-sorting-list");
-	}
+	if (_sign_sort == NULL) error("Could not allocate memory for the sign-sorting-list");
 
 	FOR_ALL_SIGNS(si) _sign_sort[n++] = si;
 	_num_sign_sort = n;
@@ -1163,7 +1161,7 @@ static void GlobalSortSignList(void)
 
 	_sign_sort_dirty = false;
 
-	DEBUG(misc, 1) ("Resorting global sign list...");
+	DEBUG(misc, 3, "Resorting global signs list");
 }
 
 static void SignListWndProc(Window *w, WindowEvent *e)

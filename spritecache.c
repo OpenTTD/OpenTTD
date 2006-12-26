@@ -87,7 +87,7 @@ static void* ReadSprite(SpriteID id)
 	uint num;
 	byte type;
 
-	DEBUG(spritecache, 9) ("load sprite %d", id);
+	DEBUG(sprite, 9, "Load sprite %d", id);
 
 	if (!SpriteExists(id)) {
 		error(
@@ -211,7 +211,7 @@ void IncreaseSpriteLRU(void)
 	// Increase all LRU values
 #if defined(WANT_NEW_LRU)
 	if (_sprite_lru_counter > 16384) {
-		DEBUG(spritecache, 2) ("fixing lru %d, inuse=%d", _sprite_lru_counter, GetSpriteCacheUsage());
+		DEBUG(sprite, 3, "Fixing lru %d, inuse=%d", _sprite_lru_counter, GetSpriteCacheUsage());
 
 		for (i = 0; i != MAX_SPRITES; i++)
 			if (_sprite_ptr[i] != NULL) {
@@ -244,9 +244,7 @@ static void CompactSpriteCache(void)
 {
 	MemBlock *s;
 
-	DEBUG(spritecache, 2) (
-		"compacting sprite cache, inuse=%d", GetSpriteCacheUsage()
-	);
+	DEBUG(sprite, 3, "Compacting sprite cache, inuse=%d", GetSpriteCacheUsage());
 
 	for (s = _spritecache_ptr; s->size != 0;) {
 		if (s->size & S_FREE_MASK) {
@@ -290,7 +288,7 @@ static void DeleteEntryFromSpriteCache(void)
 	MemBlock* s;
 	int cur_lru;
 
-	DEBUG(spritecache, 2) ("DeleteEntryFromSpriteCache, inuse=%d", GetSpriteCacheUsage());
+	DEBUG(sprite, 3, "DeleteEntryFromSpriteCache, inuse=%d", GetSpriteCacheUsage());
 
 #if defined(WANT_NEW_LRU)
 	cur_lru = 0xffff;

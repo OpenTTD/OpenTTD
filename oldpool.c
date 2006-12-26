@@ -13,7 +13,7 @@ void CleanPool(OldMemoryPool *pool)
 {
 	uint i;
 
-	DEBUG(misc, 4)("[Pool] (%s) Cleaning pool..", pool->name);
+	DEBUG(misc, 4, "[Pool] (%s) cleaning pool..", pool->name);
 
 	/* Free all blocks */
 	for (i = 0; i < pool->current_blocks; i++) {
@@ -46,12 +46,11 @@ bool AddBlockToPool(OldMemoryPool *pool)
 
 	pool->total_items = (pool->current_blocks + 1) * (1 << pool->block_size_bits);
 
-	DEBUG(misc, 4)("[Pool] (%s) Increasing size of pool to %d items (%d bytes)", pool->name, pool->total_items, pool->total_items * pool->item_size);
+	DEBUG(misc, 4, "[Pool] (%s) increasing size of pool to %d items (%d bytes)", pool->name, pool->total_items, pool->total_items * pool->item_size);
 
 	/* Increase the poolsize */
 	pool->blocks = realloc(pool->blocks, sizeof(pool->blocks[0]) * (pool->current_blocks + 1));
-	if (pool->blocks == NULL)
-		error("Pool: (%s) could not allocate memory for blocks", pool->name);
+	if (pool->blocks == NULL) error("Pool: (%s) could not allocate memory for blocks", pool->name);
 
 	/* Allocate memory to the new block item */
 	pool->blocks[pool->current_blocks] = malloc(pool->item_size * (1 << pool->block_size_bits));

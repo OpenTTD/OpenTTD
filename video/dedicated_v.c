@@ -92,7 +92,7 @@ static void CreateWindowsConsoleThread(void)
 	_hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, NULL, 0, &dwThreadId);
 	if (_hThread == NULL) error("Cannot create console thread!");
 
-	DEBUG(driver, 1) ("Windows console thread started...");
+	DEBUG(driver, 2, "Windows console thread started");
 }
 
 static void CloseWindowsConsoleThread(void)
@@ -100,7 +100,7 @@ static void CloseWindowsConsoleThread(void)
 	CloseHandle(_hThread);
 	CloseHandle(_hInputReady);
 	CloseHandle(_hWaitForInputHandling);
-	DEBUG(driver, 1) ("Windows console thread shut down...");
+	DEBUG(driver, 2, "Windows console thread shut down");
 }
 
 #endif
@@ -133,7 +133,7 @@ static const char *DedicatedVideoStart(const char * const *parm)
 	OS2_SwitchToConsoleMode();
 #endif
 
-	DEBUG(driver, 1)("Loading dedicated server...");
+	DEBUG(driver, 1, "Loading dedicated server");
 	return NULL;
 }
 
@@ -253,7 +253,7 @@ static void DedicatedVideoMainLoop(void)
 		 *  intro game... */
 		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL)) {
 			/* Loading failed, pop out.. */
-			DEBUG(net, 0)("Loading requested map failed. Aborting.");
+			DEBUG(net, 0, "Loading requested map failed, aborting");
 			_networking = false;
 		} else {
 			/* We can load this game, so go ahead */
@@ -264,7 +264,7 @@ static void DedicatedVideoMainLoop(void)
 	// Done loading, start game!
 
 	if (!_networking) {
-		DEBUG(net, 1)("Dedicated server could not be launched. Aborting.");
+		DEBUG(net, 0, "Dedicated server could not be started, aborting");
 		return;
 	}
 

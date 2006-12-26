@@ -124,7 +124,7 @@ static byte ReadByteFromFile(LoadgameState *ls)
 
 		/* We tried to read, but there is nothing in the file anymore.. */
 		if (count == 0) {
-			DEBUG(oldloader, 1)("[OldLoader] Read past end of file, loading failed");
+			DEBUG(oldloader, 0, "Read past end of file, loading failed");
 			ls->failed = true;
 		}
 
@@ -211,7 +211,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 						break;
 
 					case OC_ASSERT:
-						DEBUG(oldloader, 4)("[OldLoader] Assert point: 0x%X / 0x%X", ls->total_read, chunk->offset + _bump_assert_value);
+						DEBUG(oldloader, 4, "Assert point: 0x%X / 0x%X", ls->total_read, chunk->offset + _bump_assert_value);
 						if (ls->total_read != chunk->offset + _bump_assert_value) ls->failed = true;
 					default: break;
 				}
@@ -422,10 +422,9 @@ static void ReadTTDPatchFlags(void)
 	for (i = 0;       i < 17;      i++) _old_map3[i] = 0;
 	for (i = 0x1FE00; i < 0x20000; i++) _old_map3[i] = 0;
 
-	if (_new_ttdpatch_format)
-		DEBUG(oldloader, 1)("[OldLoader] Found TTDPatch game");
+	if (_new_ttdpatch_format) DEBUG(oldloader, 1, "Found TTDPatch game");
 
-	DEBUG(oldloader, 1)("[OldLoader] Vehicle-multiplier is set to %d (%d vehicles)", _old_vehicle_multiplier, _old_vehicle_multiplier * 850);
+	DEBUG(oldloader, 1, "Vehicle-multiplier is set to %d (%d vehicles)", _old_vehicle_multiplier, _old_vehicle_multiplier * 850);
 }
 
 static const OldChunks town_chunk[] = {
@@ -1095,7 +1094,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 
 	/* This chunk size should always be 10 bytes */
 	if (ls->total_read - temp != 10) {
-		DEBUG(oldloader, 4)("[OldLoader] Assert failed in Vehicle");
+		DEBUG(oldloader, 4, "Assert failed in Vehicle");
 		return false;
 	}
 
@@ -1204,7 +1203,7 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 
 		/* This should be consistent, else we have a big problem... */
 		if (v->index != _current_vehicle_id) {
-			DEBUG(oldloader, 0)("[OldLoader] -- Loading failed - vehicle-array is invalid");
+			DEBUG(oldloader, 0, "Loading failed - vehicle-array is invalid");
 			return false;
 		}
 
@@ -1490,13 +1489,13 @@ static bool LoadOldMain(LoadgameState *ls)
 	/* The first 49 is the name of the game + checksum, skip it */
 	fseek(ls->file, HEADER_SIZE, SEEK_SET);
 
-	DEBUG(oldloader, 4)("[OldLoader] Going to read main chunk..");
+	DEBUG(oldloader, 4, "Reading main chunk...");
 	/* Load the biggest chunk */
 	if (!LoadChunk(ls, NULL, main_chunk)) {
-		DEBUG(oldloader, 0)("[OldLoader] Loading failed!");
+		DEBUG(oldloader, 0, "Loading failed");
 		return false;
 	}
-	DEBUG(oldloader, 4)("[OldLoader] Done. Converting stuff..");
+	DEBUG(oldloader, 4, "Done, converting game data...");
 
 	/* Fix some general stuff */
 	_opt.landscape = _opt.landscape & 0xF;
@@ -1534,8 +1533,8 @@ static bool LoadOldMain(LoadgameState *ls)
 	/* We have a new difficulty setting */
 	_opt.diff.town_council_tolerance = clamp(_opt.diff_level, 0, 2);
 
-	DEBUG(oldloader, 4)("[OldLoader] Done!");
-	DEBUG(oldloader, 1)("[OldLoader] TTD(Patch) savegame successfully converted");
+	DEBUG(oldloader, 4, "Finished converting game data");
+	DEBUG(oldloader, 1, "TTD(Patch) savegame successfully converted");
 
 	return true;
 }
@@ -1544,7 +1543,7 @@ bool LoadOldSaveGame(const char *file)
 {
 	LoadgameState ls;
 
-	DEBUG(oldloader, 4)("[OldLoader] Trying to load an TTD(Patch) savegame");
+	DEBUG(oldloader, 4, "Trying to load a TTD(Patch) savegame");
 
 	InitLoading(&ls);
 
@@ -1552,7 +1551,7 @@ bool LoadOldSaveGame(const char *file)
 	ls.file = fopen(file, "rb");
 
 	if (ls.file == NULL) {
-		DEBUG(oldloader, 0)("[OldLoader] Could not open file %s", file);
+		DEBUG(oldloader, 0, "Cannot open file '%s'", file);
 		return false;
 	}
 

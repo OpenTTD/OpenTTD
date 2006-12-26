@@ -116,7 +116,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
-				DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: tunnel could not be built!");
+				DEBUG(ai, 0, "[BuildPath] tunnel could not be built (0x%X)", route[part]);
 				return 0;
 			}
 			return cost;
@@ -127,7 +127,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
-				DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: bridge could not be built!");
+				DEBUG(ai, 0, "[BuildPath] bridge could not be built (0x%X, 0x%X)", route[part], route[part - 1]);
 				return 0;
 			}
 			return cost;
@@ -166,7 +166,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
-				DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: tunnel could not be built!");
+				DEBUG(ai, 0, "[BuildPath] tunnel could not be built (0x%X)", route[part]);
 				return 0;
 			}
 			return cost;
@@ -177,7 +177,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
-				DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: bridge could not be built!");
+				DEBUG(ai, 0, "[BuildPath] bridge could not be built (0x%X, 0x%X)", route[part], route[part + 1]);
 				return 0;
 			}
 			return cost;
@@ -201,7 +201,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 					// Currently, we ignore CMD_ERRORs!
 					if (CmdFailed(res) && flag == DC_EXEC && !IsTileType(route[part], MP_STREET) && !EnsureNoVehicle(route[part])) {
 						// Problem.. let's just abort it all!
-						DEBUG(ai,0)("Darn, the route could not be built.. aborting!");
+						DEBUG(ai, 0, "[BuidPath] route building failed at tile 0x%X, aborting", route[part]);
 						p->ainew.state = AI_STATE_NOTHING;
 						return 0;
 					}

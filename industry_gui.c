@@ -563,8 +563,7 @@ static void MakeSortedIndustryList(void)
 
 	/* Create array for sorting */
 	_industry_sort = realloc((void *)_industry_sort, (GetMaxIndustryIndex() + 1) * sizeof(_industry_sort[0]));
-	if (_industry_sort == NULL)
-		error("Could not allocate memory for the industry-sorting-list");
+	if (_industry_sort == NULL) error("Could not allocate memory for the industry-sorting-list");
 
 	FOR_ALL_INDUSTRIES(i) _industry_sort[n++] = i;
 
@@ -573,7 +572,7 @@ static void MakeSortedIndustryList(void)
 
 	qsort((void*)_industry_sort, n, sizeof(_industry_sort[0]), GeneralIndustrySorter);
 
-	DEBUG(misc, 1) ("Resorting Industries list...");
+	DEBUG(misc, 3, "Resorting industries list");
 }
 
 

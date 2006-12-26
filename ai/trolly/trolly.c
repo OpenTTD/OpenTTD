@@ -445,8 +445,7 @@ static void AiNew_State_LocateRoute(Player *p)
 				p->ainew.to_ic = p->ainew.temp;
 				p->ainew.state = AI_STATE_FIND_STATION;
 
-				DEBUG(ai,1)(
-					"[AiNew - LocateRoute] Found bus-route of %d tiles long (from %d to %d)",
+				DEBUG(ai, 1, "[LocateRoute] found bus-route of %d tiles long (from %d to %d)",
 					distance,
 					p->ainew.from_ic,
 					p->ainew.temp
@@ -508,8 +507,7 @@ static void AiNew_State_LocateRoute(Player *p)
 					}
 					p->ainew.state = AI_STATE_FIND_STATION;
 
-					DEBUG(ai,1)(
-						"[AiNew - LocateRoute] Found truck-route of %d tiles long (from %d to %d)",
+					DEBUG(ai, 1, "[LocateRoute] found truck-route of %d tiles long (from %d to %d)",
 						distance,
 						p->ainew.from_ic,
 						p->ainew.temp
@@ -763,7 +761,7 @@ static void AiNew_State_FindPath(Player *p)
 	r = p->ainew.pathfinder->main(p->ainew.pathfinder);
 	switch (r) {
 		case AYSTAR_NO_PATH:
-			DEBUG(ai,1)("[AiNew] PathFinder found no route!");
+			DEBUG(ai, 1, "No route found by pathfinder");
 			// Start all over again
 			p->ainew.state = AI_STATE_NOTHING;
 			break;
@@ -955,7 +953,7 @@ static void AiNew_State_VerifyRoute(Player *p)
 	//  Check if we have enough money for it!
 	if (p->ainew.new_cost > p->player_money - AI_MINIMUM_MONEY) {
 		// Too bad..
-		DEBUG(ai,1)("[AiNew] Can't pay for this route (%d)", p->ainew.new_cost);
+		DEBUG(ai, 1, "Insufficient funds to build route (%d)", p->ainew.new_cost);
 		p->ainew.state = AI_STATE_NOTHING;
 		return;
 	}
@@ -975,7 +973,7 @@ static void AiNew_State_VerifyRoute(Player *p)
 	p->ainew.state = AI_STATE_BUILD_STATION;
 	p->ainew.temp = 0;
 
-	DEBUG(ai,1)("[AiNew] The route is set and buildable.. going to build it!");
+	DEBUG(ai, 1, "The route is set and buildable, building 0x%X to 0x%X...", p->ainew.from_tile, p->ainew.to_tile);
 }
 
 
@@ -993,7 +991,7 @@ static void AiNew_State_BuildStation(Player *p)
 		p->ainew.state = AI_STATE_BUILD_PATH;
 	}
 	if (CmdFailed(res)) {
-		DEBUG(ai,0)("[AiNew - BuildStation] Strange but true... station can not be built!");
+		DEBUG(ai, 0, "[BuildStation] station could not be built (0x%X)", p->ainew.to_tile);
 		p->ainew.state = AI_STATE_NOTHING;
 		// If the first station _was_ build, destroy it
 		if (p->ainew.temp != 0)
@@ -1010,7 +1008,7 @@ static void AiNew_State_BuildPath(Player *p)
 	assert(p->ainew.state == AI_STATE_BUILD_PATH);
 	// p->ainew.temp is set to -1 when this function is called for the first time
 	if (p->ainew.temp == -1) {
-		DEBUG(ai,1)("[AiNew] Starting to build the path..");
+		DEBUG(ai, 1, "Starting to build new path");
 		// Init the counter
 		p->ainew.counter = (4 - _opt.diff.competitor_speed) * AI_BUILDPATH_PAUSE + 1;
 		// Set the position to the startingplace (-1 because in a minute we do ++)
@@ -1091,8 +1089,7 @@ static void AiNew_State_BuildPath(Player *p)
 			}
 		}
 
-
-		DEBUG(ai,1)("[AiNew] Done building the path (cost: %d)", p->ainew.new_cost);
+		DEBUG(ai, 1, "Finished building path, cost: %d", p->ainew.new_cost);
 		p->ainew.state = AI_STATE_BUILD_DEPOT;
 	}
 }
@@ -1122,7 +1119,7 @@ static void AiNew_State_BuildDepot(Player *p)
 
 	res = AiNew_Build_Depot(p, p->ainew.depot_tile, p->ainew.depot_direction, DC_EXEC);
 	if (CmdFailed(res)) {
-		DEBUG(ai,0)("[AiNew - BuildDepot] Strange but true... depot can not be built!");
+		DEBUG(ai, 0, "[BuildDepot] depot could not be built (0x%X)", p->ainew.depot_tile);
 		p->ainew.state = AI_STATE_NOTHING;
 		return;
 	}

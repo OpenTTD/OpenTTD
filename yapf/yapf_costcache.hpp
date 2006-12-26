@@ -155,7 +155,7 @@ protected:
 		// some statistics
 		if (last_date != _date) {
 			last_date = _date;
-			DEBUG(yapf, 1) ("pf time today:%5d ms", _total_pf_time_us / 1000);
+			DEBUG(yapf, 2, "Pf time today: %5d ms", _total_pf_time_us / 1000);
 			_total_pf_time_us = 0;
 		}
 

@@ -1006,7 +1006,7 @@ void CheckOrders(const Vehicle* v)
 		if (problem_type < 0) return;
 
 		message = STR_TRAIN_HAS_TOO_FEW_ORDERS + ((v->type - VEH_Train) << 2) + problem_type;
-		//DEBUG(misc, 3) ("Triggered News Item for %d", v->index);
+		//DEBUG(misc, 3, "Triggered News Item for vehicle %d", v->index);
 
 		SetDParam(0, v->unitnumber);
 		AddNewsItem(

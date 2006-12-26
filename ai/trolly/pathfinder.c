@@ -200,14 +200,14 @@ static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *curre
 		PathFinderInfo->route[i++] = parent->node.tile;
 		if (i > lengthof(PathFinderInfo->route)) {
 			// We ran out of space for the PathFinder
-			DEBUG(ai, 0)("[AiPathFinder] Ran out of space in the route[] array!!!");
+			DEBUG(ai, 0, "No more space in pathfinder route[] array");
 			PathFinderInfo->route_length = -1; // -1 indicates out of space
 			return;
 		}
 		parent = parent->parent;
 	} while (parent != NULL);
 	PathFinderInfo->route_length = i;
-	DEBUG(ai, 1)("[Ai-PathFinding] Found route of %d nodes long in %d nodes of searching", i, Hash_Size(&aystar->ClosedListHash));
+	DEBUG(ai, 1, "Found route of %d nodes long in %d nodes of searching", i, Hash_Size(&aystar->ClosedListHash));
 }
 
 

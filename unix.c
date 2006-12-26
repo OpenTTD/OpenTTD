@@ -334,7 +334,7 @@ static const char *convert_tofrom_fs(iconv_t convd, const char *name)
 
 	iconv(convd, NULL, NULL, NULL, NULL);
 	if (iconv(convd, &inbuf, &inlen, &outbuf, &outlen) == (size_t)(-1)) {
-		DEBUG(misc, 0) ("[Iconv] Error converting '%s'. Errno %d", name, errno);
+		DEBUG(misc, 0, "[iconv] error converting '%s'. Errno %d", name, errno);
 	}
 
 	*outbuf = '\0';
@@ -353,7 +353,7 @@ const char *OTTD2FS(const char *name)
 		const char *env = GetLocalCode();
 		convd = iconv_open(env, INTERNALCODE);
 		if (convd == (iconv_t)(-1)) {
-			DEBUG(misc, 0) ("[iconv] Conversion from codeset '%s' to '%s' unsupported", INTERNALCODE, env);
+			DEBUG(misc, 0, "[iconv] conversion from codeset '%s' to '%s' unsupported", INTERNALCODE, env);
 			return name;
 		}
 	}
@@ -372,7 +372,7 @@ const char *FS2OTTD(const char *name)
 		const char *env = GetLocalCode();
 		convd = iconv_open(INTERNALCODE, env);
 		if (convd == (iconv_t)(-1)) {
-			DEBUG(misc, 0) ("[iconv] Conversion from codeset '%s' to '%s' unsupported", env, INTERNALCODE);
+			DEBUG(misc, 0, "[iconv] conversion from codeset '%s' to '%s' unsupported", env, INTERNALCODE);
 			return name;
 		}
 	}

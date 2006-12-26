@@ -17,6 +17,7 @@
 #include "variables.h"
 #include "macros.h"
 #include "table/strings.h"
+#include "newgrf.h"
 #include "newgrf_text.h"
 #include "table/control_codes.h"
 
@@ -327,7 +328,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 		if (!replaced) *ptext = newtext;
 	}
 
-	DEBUG(grf, 2)("Added 0x%X: grfid 0x%X string 0x%X lang 0x%X string %s", id, grfid, stringid, newtext->langid, newtext->text);
+	grfmsg(3, "Added 0x%X: grfid %08X string 0x%X lang 0x%X string '%s'", id, grfid, stringid, newtext->langid, newtext->text);
 
 	return (GRFTAB << TABSIZE) + id;
 }

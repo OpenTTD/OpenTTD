@@ -79,7 +79,7 @@ bool IsGenerateWorldThreaded(void)
 static void *_GenerateWorld(void *arg)
 {
 	_generating_world = true;
-	if (_network_dedicated) DEBUG(net, 0)("Generating map, please wait...");
+	if (_network_dedicated) DEBUG(net, 0, "Generating map, please wait...");
 	/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
 	if (_patches.generation_seed == GENERATE_NEW_SEED) _patches.generation_seed = _patches_newgame.generation_seed = InteractiveRandom();
 	_random_seeds[0][0] = _random_seeds[0][1] = _patches.generation_seed;
@@ -151,7 +151,7 @@ static void *_GenerateWorld(void *arg)
 	DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
 	MarkWholeScreenDirty();
 
-	if (_network_dedicated) DEBUG(net, 0)("Map generated, starting game");
+	if (_network_dedicated) DEBUG(net, 0, "Map generated, starting game");
 
 	return NULL;
 }
@@ -271,7 +271,7 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 
 	if (_network_dedicated ||
 	    (_gw.thread = OTTDCreateThread(&_GenerateWorld, NULL)) == NULL) {
-		DEBUG(misc, 1) ("[Sl] Cannot create savegame thread, reverting to single-threaded mode...");
+		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;
 		_GenerateWorld(NULL);
 		return;

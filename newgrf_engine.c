@@ -153,7 +153,7 @@ void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *grou
 	assert(cargo < NUM_GLOBAL_CID);
 
 	if (engine_custom_sprites[engine][cargo] != NULL) {
-		DEBUG(grf, 6)("SetCustomEngineSprites: engine `%d' cargo `%d' already has group -- replacing.", engine, cargo);
+		grfmsg(6, "SetCustomEngineSprites: engine %d cargo %d already has group -- replacing", engine, cargo);
 	}
 	engine_custom_sprites[engine][cargo] = group;
 }
@@ -183,7 +183,7 @@ void SetRotorOverrideSprites(EngineID engine, const SpriteGroup *group)
 	assert(engine < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES);
 
 	if (heli_rotor_custom_sprites[engine - AIRCRAFT_ENGINES_INDEX] != NULL) {
-		DEBUG(grf, 6)("SetRotorOverrideSprites: engine `%d' already has group -- replacing.", engine);
+		grfmsg(6, "SetRotorOverrideSprites: engine %d already has group -- replacing.", engine);
 	}
 	heli_rotor_custom_sprites[engine - AIRCRAFT_ENGINES_INDEX] = group;
 }
@@ -803,7 +803,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			break;
 	}
 
-	DEBUG(grf, 1)("Unhandled vehicle property 0x%X, type 0x%X", variable, v->type);
+	DEBUG(grf, 1, "Unhandled vehicle property 0x%X, type 0x%X", variable, v->type);
 
 	*available = false;
 	return -1;

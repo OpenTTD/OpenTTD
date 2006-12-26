@@ -2003,7 +2003,7 @@ void ToggleFullScreen(bool fs)
 {
 	_video_driver->toggle_fullscreen(fs);
 	if (_fullscreen != fs && _num_resolutions == 0) {
-		DEBUG(misc, 0) ("Could not find a suitable fullscreen resolution.");
+		DEBUG(driver, 0, "Could not find a suitable fullscreen resolution");
 	}
 }
 

@@ -533,7 +533,7 @@ static bool NtpVisit(NewTrackPathFinder* tpf, TileIndex tile, DiagDirection dir,
 		// allocate a link. if out of links, handle this by returning
 		// that a tile was already visisted.
 		if (tpf->num_links_left == 0) {
-			DEBUG(ntp, 1) ("[NTP] no links left");
+			DEBUG(ntp, 1, "No links left");
 			return false;
 		}
 
@@ -567,7 +567,7 @@ static bool NtpVisit(NewTrackPathFinder* tpf, TileIndex tile, DiagDirection dir,
 	/* get here if we need to add a new link to link,
 	 * first, allocate a new link, in the same way as before */
 	if (tpf->num_links_left == 0) {
-		DEBUG(ntp, 1) ("[NTP] no links left");
+		DEBUG(ntp, 1, "No links left");
 		return false;
 	}
 	tpf->num_links_left--;
@@ -735,7 +735,7 @@ start_at:
 
 			// too long search length? bail out.
 			if (si.cur_length >= tpf->maxlength) {
-				DEBUG(ntp,1) ("[NTP] cur_length too big");
+				DEBUG(ntp, 1, "Cur_length too big");
 				bits = 0;
 				break;
 			}
@@ -884,7 +884,7 @@ start_at:
 
 			// out of stack items, bail out?
 			if (tpf->nstack >= lengthof(tpf->stack)) {
-				DEBUG(ntp, 1) ("[NTP] out of stack");
+				DEBUG(ntp, 1, "Out of stack");
 				break;
 			}
 

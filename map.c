@@ -32,7 +32,7 @@ void AllocateMap(uint size_x, uint size_y)
 			(size_y&(size_y-1)) != 0)
 		error("Invalid map size");
 
-	DEBUG(map, 1)("Allocating map of size %dx%d", size_x, size_y);
+	DEBUG(map, 1, "Allocating map of size %dx%d", size_x, size_y);
 
 	_map_log_x = FindFirstBit(size_x);
 	_map_size_x = size_x;

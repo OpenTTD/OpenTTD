@@ -162,7 +162,7 @@ bool IsGoodGRFConfigList(void)
 
 			res = false;
 		} else {
-			DEBUG(grf, 1) ("[GRF] Loading GRF %08X from %s", BSWAP32(c->grfid), f->filename);
+			DEBUG(grf, 1, "Loading GRF %08X from '%s'", BSWAP32(c->grfid), f->filename);
 			/* The filename could be the filename as in the savegame. As we need
 			 * to load the GRF here, we need the correct filename, so overwrite that
 			 * in any case and set the name and info when it is not set already.
@@ -257,9 +257,9 @@ void ScanNewGRFFiles(void)
 
 	ClearGRFConfigList(&_all_grfs);
 
-	DEBUG(grf, 1) ("[GRF] Scanning for NewGRFs");
+	DEBUG(grf, 1, "Scanning for NewGRFs");
 	num = ScanPath(_paths.data_dir);
-	DEBUG(grf, 1) ("[GRF] Scan complete, found %d files", num);
+	DEBUG(grf, 1, "Scan complete, found %d files", num);
 }
 
 
@@ -405,4 +405,5 @@ static void Load_NGRF(void)
 const ChunkHandler _newgrf_chunk_handlers[] = {
 	{ 'NGRF', Save_NGRF, Load_NGRF, CH_ARRAY | CH_LAST }
 };
+
 

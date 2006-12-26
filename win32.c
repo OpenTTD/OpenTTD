@@ -1041,7 +1041,7 @@ wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen)
 {
 	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, utf16_buf, buflen);
 	if (len == 0) {
-		DEBUG(misc, 0) ("[utf8] Error converting '%s'. Errno %d", name, GetLastError());
+		DEBUG(misc, 0, "[utf8] error converting '%s'. Errno %d", name, GetLastError());
 		utf16_buf[0] = '\0';
 	}
 
@@ -1071,7 +1071,7 @@ char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
 {
 	int len = WideCharToMultiByte(CP_UTF8, 0, name, -1, utf8_buf, buflen, NULL, NULL);
 	if (len == 0) {
-		DEBUG(misc, 0) ("[utf8] Error converting wide-string. Errno %d", GetLastError());
+		DEBUG(misc, 0, "[utf8] error converting wide-string. Errno %d", GetLastError());
 		utf8_buf[0] = '\0';
 	}
 
@@ -1107,7 +1107,7 @@ HRESULT OTTDSHGetFolderPath(HWND hwnd, int csidl, HANDLE hToken, DWORD dwFlags, 
 # define W(x) x "A"
 #endif
 		if (!LoadLibraryList((Function*)&SHGetFolderPath, "SHFolder.dll\0" W("SHGetFolderPath") "\0\0")) {
-			DEBUG(misc, 0) ("Unable to load " W("SHGetFolderPath") "from SHFolder.dll");
+			DEBUG(misc, 0, "Unable to load " W("SHGetFolderPath") "from SHFolder.dll");
 		}
 #undef W
 		first_time = false;

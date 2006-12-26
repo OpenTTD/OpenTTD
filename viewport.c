@@ -419,7 +419,7 @@ void DrawGroundSpriteAt(uint32 image, int32 x, int32 y, byte z)
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
 	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
-		DEBUG(misc, 0) ("Out of sprite mem");
+		DEBUG(sprite, 0, "Out of sprite memory");
 		return;
 	}
 	ts = (TileSpriteToDraw*)vd->spritelist_mem;
@@ -487,7 +487,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 	vd->last_child = NULL;
 
 	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
-		DEBUG(misc, 0) ("Out of sprite mem");
+		DEBUG(sprite, 0, "Out of sprite memory");
 		return;
 	}
 	ps = (ParentSpriteToDraw*)vd->spritelist_mem;
@@ -499,7 +499,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 		//  parent_list somewhere below to a higher number.
 		// This can not really hurt you, it just gives some black
 		//  spots on the screen ;)
-		DEBUG(misc, 0) ("Out of sprite mem (parent_list)");
+		DEBUG(sprite, 0, "Out of sprite memory (parent_list)");
 		return;
 	}
 
@@ -551,7 +551,7 @@ void AddChildSpriteScreen(uint32 image, int x, int y)
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
 	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
-		DEBUG(misc, 0) ("Out of sprite mem");
+		DEBUG(sprite, 0, "Out of sprite memory");
 		return;
 	}
 	cs = (ChildScreenSpriteToDraw*)vd->spritelist_mem;
@@ -576,7 +576,7 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 	StringSpriteToDraw *ss;
 
 	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
-		DEBUG(misc, 0) ("Out of sprite mem");
+		DEBUG(sprite, 0, "Out of sprite memory");
 		return NULL;
 	}
 	ss = (StringSpriteToDraw*)vd->spritelist_mem;
@@ -1759,7 +1759,7 @@ void HandleViewportClicked(const ViewPort *vp, int x, int y)
 
 	v = CheckClickOnVehicle(vp, x, y);
 	if (v != NULL) {
-		DEBUG(misc, 2) ("Vehicle %d at %p", v->index, v);
+		DEBUG(misc, 2, "Vehicle %d (index %d) at %p", v->unitnumber, v->index, v);
 		_on_vehicle_click_proc[v->type - 0x10](v);
 	}
 }

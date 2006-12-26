@@ -157,13 +157,13 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 
 static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
 {
-	DEBUG(misc, 0) ("ERROR(libpng): %s - %s", message, (char *)png_get_error_ptr(png_ptr));
+	DEBUG(misc, 0, "[libpng] error: %s - %s", message, (char *)png_get_error_ptr(png_ptr));
 	longjmp(png_ptr->jmpbuf, 1);
 }
 
 static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 {
-	DEBUG(misc, 0) ("WARNING(libpng): %s - %s", message, (char *)png_get_error_ptr(png_ptr));
+	DEBUG(misc, 1, "[libpng] warning: %s - %s", message, (char *)png_get_error_ptr(png_ptr));
 }
 
 static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
@@ -570,4 +570,6 @@ bool MakeScreenshot(void)
 		default: return false;
 	}
 }
+
+
 

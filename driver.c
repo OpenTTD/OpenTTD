@@ -125,16 +125,13 @@ void LoadDriver(int driver, const char *name)
 		for (dd = dc->descs; dd->name != NULL; dd++) {
 			err = dd->drv->start(NULL);
 			if (err == NULL) break;
-			DEBUG(driver, 1) ("Probing %s driver \"%s\" failed with error: %s",
+			DEBUG(driver, 1, "Probing %s driver '%s' failed with error: %s",
 				dc->name, dd->name, err
 			);
 		}
-		if (dd->name == NULL) {
-			error("Couldn't find any suitable %s driver", dc->name);
-		}
+		if (dd->name == NULL) error("Couldn't find any suitable %s driver", dc->name);
 
-		DEBUG(driver, 1)
-			("Successfully probed %s driver \"%s\"", dc->name, dd->name);
+		DEBUG(driver, 1, "Successfully probed %s driver '%s'", dc->name, dd->name);
 
 		*dc->drv = dd->drv;
 	} else {

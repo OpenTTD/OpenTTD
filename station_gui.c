@@ -202,10 +202,9 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 
 	/* Create array for sorting */
 	station_sort = malloc((GetMaxStationIndex() + 1) * sizeof(station_sort[0]));
-	if (station_sort == NULL)
-		error("Could not allocate memory for the station-sorting-list");
+	if (station_sort == NULL) error("Could not allocate memory for the station-sorting-list");
 
-	DEBUG(misc, 1) ("Building station list for player %d...", owner);
+	DEBUG(misc, 3, "Building station list for player %d", owner);
 
 	FOR_ALL_STATIONS(st) {
 		if (st->owner == owner) {
@@ -476,7 +475,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 	case WE_TICK:
 		if (--sl->resort_timer == 0) {
-			DEBUG(misc, 1) ("Periodic rebuild station list player %d", owner);
+			DEBUG(misc, 3, "Periodic rebuild station list player %d", owner);
 			sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 			sl->flags |= VL_REBUILD;
 			SetWindowDirty(w);

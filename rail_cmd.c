@@ -1665,7 +1665,7 @@ make_red:
 				ssd->next_dir[ssd->cur_stack] = _dir_from_track[ssd->bit[i]];
 				ssd->cur_stack++;
 			} else {
-				DEBUG(misc, 0) ("NUM_SSD_STACK too small"); /// @todo WTF is this???
+				DEBUG(misc, 0, "NUM_SSD_STACK too small"); /// @todo WTF is this???
 			}
 		}
 

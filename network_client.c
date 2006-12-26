@@ -437,8 +437,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WAIT)
 	InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
 	// We are put on hold for receiving the map.. we need GUI for this ;)
-	DEBUG(net, 1)("[NET] The server is currently busy sending the map to someone else.. please hold..." );
-	DEBUG(net, 1)("[NET]  There are %d clients in front of you", _network_join_waiting);
+	DEBUG(net, 1, "The server is currently busy sending the map to someone else, please wait..." );
+	DEBUG(net, 1, "There are %d clients in front of you", _network_join_waiting);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -544,13 +544,13 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FRAME)
 #endif
 	}
 #endif
-	DEBUG(net, 7)("[NET] Received FRAME %d",_frame_counter_server);
+	DEBUG(net, 5, "Received FRAME %d", _frame_counter_server);
 
 	// Let the server know that we received this frame correctly
 	//  We do this only once per day, to save some bandwidth ;)
 	if (!_network_first_time && last_ack_frame < _frame_counter) {
 		last_ack_frame = _frame_counter + DAY_TICKS;
-		DEBUG(net,6)("[NET] Sent ACK at %d", _frame_counter);
+		DEBUG(net, 4, "Sent ACK at %d", _frame_counter);
 		SEND_COMMAND(PACKET_CLIENT_ACK)();
 	}
 
@@ -680,7 +680,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 		// The client is gone, give the NetworkClientInfo free
 		ci->client_index = NETWORK_EMPTY_INDEX;
 	} else {
-		DEBUG(net, 0)("[NET] Error - unknown client (%d) is leaving the game", index);
+		DEBUG(net, 0, "Unknown client (%d) is leaving the game", index);
 	}
 
 	InvalidateWindow(WC_CLIENT_LIST, 0);
@@ -807,7 +807,7 @@ NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientState *cs)
 			res = _network_client_packet[type](p);
 		} else {
 			res = NETWORK_RECV_STATUS_MALFORMED_PACKET;
-			DEBUG(net, 0)("[NET][client] Received invalid packet type %d", type);
+			DEBUG(net, 0, "[client] received invalid packet type %d", type);
 		}
 
 		free(p);

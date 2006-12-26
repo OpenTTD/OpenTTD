@@ -126,7 +126,7 @@ void IConsoleOpen(void);
 /* console output */
 void IConsolePrint(uint16 color_code, const char *string);
 void CDECL IConsolePrintF(uint16 color_code, const char *s, ...);
-void IConsoleDebug(const char *string);
+void IConsoleDebug(const char *dbg, const char *string);
 void IConsoleWarning(const char *string);
 void IConsoleError(const char *string);
 

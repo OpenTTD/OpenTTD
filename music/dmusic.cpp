@@ -162,7 +162,7 @@ static void DMusicMidiPlaySong(const char* filename)
 	if (FAILED(loader->GetObject(
 				&obj_desc, IID_IDirectMusicSegment, (LPVOID*)&segment
 			))) {
-		DEBUG(misc, 0) ("DirectMusic: Get object failed");
+		DEBUG(driver, 0, "DirectMusic: GetObject failed");
 		return;
 	}
 
@@ -170,19 +170,19 @@ static void DMusicMidiPlaySong(const char* filename)
 	if (FAILED(segment->SetParam(
 				GUID_StandardMIDIFile, 0xFFFFFFFF, 0, 0, performance
 			))) {
-		DEBUG(misc, 0) ("DirectMusic: SetParam (MIDI file) failed");
+		DEBUG(driver, 0, "DirectMusic: SetParam (MIDI file) failed");
 		return;
 	}
 
 	// tell the segment to 'download' the instruments
 	if (FAILED(segment->SetParam(GUID_Download, 0xFFFFFFFF, 0, 0, performance))) {
-		DEBUG(misc, 0) ("DirectMusic: Failed to download instruments");
+		DEBUG(driver, 0, "DirectMusic: failed to download instruments");
 		return;
 	}
 
 	// start playing the MIDI file
 	if (FAILED(performance->PlaySegment(segment, 0, 0, NULL))) {
-		DEBUG(misc, 0) ("DirectMusic: PlaySegment failed");
+		DEBUG(driver, 0, "DirectMusic: PlaySegment failed");
 		return;
 	}
 
@@ -193,7 +193,7 @@ static void DMusicMidiPlaySong(const char* filename)
 static void DMusicMidiStopSong(void)
 {
 	if (FAILED(performance->Stop(segment, NULL, 0, 0))) {
-		DEBUG(misc, 0) ("DirecMusic: StopSegment failed");
+		DEBUG(driver, 0, "DirectMusic: StopSegment failed");
 	}
 	seeking = false;
 }

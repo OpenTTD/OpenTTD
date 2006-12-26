@@ -54,7 +54,7 @@ static uint LoadGrfFile(const char* filename, uint load_index, int file_index)
 
 	FioOpenFile(file_index, filename);
 
-	DEBUG(spritecache, 2) ("Reading grf-file ``%s''", filename);
+	DEBUG(sprite, 2, "Reading grf-file '%s'", filename);
 
 	while (LoadNextSprite(load_index, file_index)) {
 		load_index++;
@@ -62,7 +62,7 @@ static uint LoadGrfFile(const char* filename, uint load_index, int file_index)
 			error("Too many sprites. Recompile with higher MAX_SPRITES value or remove some custom GRF files.");
 		}
 	}
-	DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
+	DEBUG(sprite, 2, "Currently %i sprites are loaded", load_index);
 
 	return load_index - load_index_org;
 }
@@ -74,7 +74,7 @@ static void LoadGrfIndexed(const char* filename, const SpriteID* index_tbl, int 
 
 	FioOpenFile(file_index, filename);
 
-	DEBUG(spritecache, 2) ("Reading indexed grf-file ``%s''", filename);
+	DEBUG(sprite, 2, "Reading indexed grf-file '%s'", filename);
 
 	while ((start = *index_tbl++) != END) {
 		uint end = *index_tbl++;
@@ -382,7 +382,7 @@ static void LoadSpriteTables(void)
 
 void GfxLoadSprites(void)
 {
-	DEBUG(spritecache, 1) ("Loading sprite set %d.", _opt.landscape);
+	DEBUG(sprite, 2, "Loading sprite set %d", _opt.landscape);
 
 	GfxInitSpriteMem();
 	LoadSpriteTables();

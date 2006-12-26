@@ -141,7 +141,7 @@ static void BuildVehicleList(vehiclelist_d* vl, PlayerID owner, StationID statio
 {
 	if (!(vl->l.flags & VL_REBUILD)) return;
 
-	DEBUG(misc, 1) ("Building vehicle list for player %d station %d...", owner, station);
+	DEBUG(misc, 3, "Building vehicle list for player %d at station %d", owner, station);
 
 	vl->l.list_length = GenerateVehicleSortList(&vl->sort_list, &vl->length_of_sort_list, vl->vehicle_type, owner, station, order, depot_airport_index, window_type);
 
@@ -1827,7 +1827,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 				StationID station = ((w->window_number & VLW_MASK) == VLW_STATION_LIST) ? GB(w->window_number, 16, 16) : INVALID_STATION;
 				PlayerID owner = (PlayerID)w->caption_color;
 
-				DEBUG(misc, 1) ("Periodic resort %d list player %d station %d", vl->vehicle_type, owner, station);
+				DEBUG(misc, 3, "Periodic resort %d list player %d at station %d", vl->vehicle_type, owner, station);
 				vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 				vl->l.flags |= VL_RESORT;
 				SetWindowDirty(w);

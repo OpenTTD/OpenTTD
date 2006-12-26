@@ -368,7 +368,7 @@ bool AllocateVehicles(Vehicle **vl, int num)
 }
 
 
-static VehicleID _vehicle_position_hash[0x1000];
+VehicleID _vehicle_position_hash[0x1000];
 
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 {
@@ -517,7 +517,7 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	if (v->first != NULL) {
 		if (IsFrontEngine(v->first) || IsFreeWagon(v->first)) return v->first;
 
-		DEBUG(misc, 0) ("v->first cache faulty. We shouldn't be here, rebuilding cache!");
+		DEBUG(misc, 0, "v->first cache faulty. We shouldn't be here, rebuilding cache!");
 	}
 
 	/* It is the fact (currently) that newly built vehicles do not have

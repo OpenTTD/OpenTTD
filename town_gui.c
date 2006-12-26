@@ -410,8 +410,7 @@ static void MakeSortedTownList(void)
 
 	/* Create array for sorting */
 	_town_sort = realloc((void*)_town_sort, (GetMaxTownIndex() + 1) * sizeof(_town_sort[0]));
-	if (_town_sort == NULL)
-		error("Could not allocate memory for the town-sorting-list");
+	if (_town_sort == NULL) error("Could not allocate memory for the town-sorting-list");
 
 	FOR_ALL_TOWNS(t) _town_sort[n++] = t;
 
@@ -420,7 +419,7 @@ static void MakeSortedTownList(void)
 	_last_town = NULL; // used for "cache"
 	qsort((void*)_town_sort, n, sizeof(_town_sort[0]), _town_sort_order & 2 ? TownPopSorter : TownNameSorter);
 
-	DEBUG(misc, 1) ("Resorting Towns list...");
+	DEBUG(misc, 3, "Resorting towns list");
 }
 
 

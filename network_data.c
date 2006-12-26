@@ -154,9 +154,8 @@ bool NetworkSend_Packets(NetworkClientState *cs)
 		res = send(cs->socket, p->buffer + p->pos, p->size - p->pos, 0);
 		if (res == -1) {
 			int err = GET_LAST_ERROR();
-			if (err != EWOULDBLOCK) {
-				// Something went wrong.. close client!
-				DEBUG(net, 0) ("[NET] send() failed with error %d", err);
+			if (err != EWOULDBLOCK) { // Something went wrong.. close client!
+				DEBUG(net, 0, "send failed with error %d", err);
 				CloseConnection(cs);
 				return false;
 			}
@@ -320,9 +319,8 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 			if (res == -1) {
 				int err = GET_LAST_ERROR();
 				if (err != EWOULDBLOCK) {
-					// Something went wrong..
-					if (err != 104) // 104 is Connection Reset by Peer
-						DEBUG(net, 0) ("[NET] recv() failed with error %d", err);
+					/* Something went wrong... (104 is connection reset by peer) */
+					if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
 					*status = CloseConnection(cs);
 					return NULL;
 				}
@@ -330,7 +328,7 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 				return NULL;
 			}
 			if (res == 0) {
-				// Client/server has left us :(
+				// Client/server has left
 				*status = CloseConnection(cs);
 				return NULL;
 			}
@@ -352,9 +350,8 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 		if (res == -1) {
 			int err = GET_LAST_ERROR();
 			if (err != EWOULDBLOCK) {
-				// Something went wrong..
-				if (err != 104) // 104 is Connection Reset by Peer
-					DEBUG(net, 0) ("[NET] recv() failed with error %d", err);
+				/* Something went wrong... (104 is connection reset by peer) */
+				if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
 				*status = CloseConnection(cs);
 				return NULL;
 			}
@@ -362,7 +359,7 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 			return NULL;
 		}
 		if (res == 0) {
-			// Client/server has left us :(
+			// Client/server has left
 			*status = CloseConnection(cs);
 			return NULL;
 		}
@@ -415,7 +412,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 	while (temp_callback < _callback_table_count && _callback_table[temp_callback] != callback)
 		temp_callback++;
 	if (temp_callback == _callback_table_count) {
-		DEBUG(net, 0) ("[NET] Unknown callback. (Pointer: %p) No callback sent.", callback);
+		DEBUG(net, 0, "Unknown callback. (Pointer: %p) No callback sent", callback);
 		temp_callback = 0; /* _callback_table[0] == NULL */
 	}
 
@@ -467,7 +464,7 @@ void NetworkExecuteCommand(CommandPacket *cp)
 	_cmd_text = cp->text;
 	/* cp->callback is unsigned. so we don't need to do lower bounds checking. */
 	if (cp->callback > _callback_table_count) {
-		DEBUG(net,0) ("[NET] Received out-of-bounds callback! (%d)", cp->callback);
+		DEBUG(net, 0, "Received out-of-bounds callback (%d)", cp->callback);
 		cp->callback = 0;
 	}
 	DoCommandP(cp->tile, cp->p1, cp->p2, _callback_table[cp->callback], cp->cmd | CMD_NETWORK_COMMAND);

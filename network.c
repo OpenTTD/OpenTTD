@@ -208,13 +208,13 @@ static void NetworkError(StringID error_string)
 
 static void ClientStartError(const char *error)
 {
-	DEBUG(net, 0)("[NET] Client could not start network: %s",error);
+	DEBUG(net, 0, "[client] could not start network: %s",error);
 	NetworkError(STR_NETWORK_ERR_CLIENT_START);
 }
 
 static void ServerStartError(const char *error)
 {
-	DEBUG(net, 0)("[NET] Server could not start network: %s",error);
+	DEBUG(net, 0, "[server] could not start network: %s",error);
 	NetworkError(STR_NETWORK_ERR_SERVER_START);
 }
 
@@ -347,13 +347,13 @@ static void NetworkFindIPs(void)
 	_broadcast_list[0] = 0;
 
 	if (sock < 0) {
-		DEBUG(net, 0)("Error creating socket!");
+		DEBUG(net, 0, "[core] error creating socket");
 		return;
 	}
 
 	output_length = _netstat(sock, &output_pointer, 1);
 	if (output_length < 0) {
-		DEBUG(net, 0)("Error running _netstat!");
+		DEBUG(net, 0, "[core] error running _netstat");
 		return;
 	}
 
@@ -484,10 +484,10 @@ static void NetworkFindIPs(void)
 
 	_broadcast_list[i] = 0;
 
-	DEBUG(net, 3)("Detected broadcast addresses:");
+	DEBUG(net, 3, "Detected broadcast addresses:");
 	// Now display to the debug all the detected ips
 	for (i = 0; _broadcast_list[i] != 0; i++) {
-		DEBUG(net, 3)(" %d) %s", i, inet_ntoa(*(struct in_addr *)&_broadcast_list[i]));//inet_ntoa(inaddr));
+		DEBUG(net, 3, "%d) %s", i, inet_ntoa(*(struct in_addr *)&_broadcast_list[i]));//inet_ntoa(inaddr));
 	}
 }
 
@@ -503,10 +503,10 @@ unsigned long NetworkResolveHost(const char *hostname)
 	if (ip == INADDR_NONE) {
 		struct hostent *he = gethostbyname(hostname);
 		if (he == NULL) {
-			DEBUG(net, 0) ("[NET] Cannot resolve %s", hostname);
+			DEBUG(net, 0, "Cannot resolve '%s'", hostname);
 		} else {
 			struct in_addr addr = *(struct in_addr *)he->h_addr_list[0];
-			DEBUG(net, 1) ("[NET] Resolved %s to %s", hostname, inet_ntoa(addr));
+			DEBUG(net, 1, "Resolved '%s' to %s", hostname, inet_ntoa(addr));
 			ip = addr.s_addr;
 		}
 	}
@@ -585,7 +585,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 		return;
 	}
 
-	DEBUG(net, 1) ("[NET] Closed client connection");
+	DEBUG(net, 1, "Closed client connection %d", cs->index);
 
 	if (!cs->has_quit && _network_server && cs->status > STATUS_INACTIVE) {
 		// We did not receive a leave message from this client...
@@ -666,7 +666,7 @@ static bool NetworkConnect(const char *hostname, int port)
 	SOCKET s;
 	struct sockaddr_in sin;
 
-	DEBUG(net, 1) ("[NET] Connecting to %s %d", hostname, port);
+	DEBUG(net, 1, "Connecting to %s %d", hostname, port);
 
 	s = socket(AF_INET, SOCK_STREAM, 0);
 	if (s == INVALID_SOCKET) {
@@ -674,7 +674,7 @@ static bool NetworkConnect(const char *hostname, int port)
 		return false;
 	}
 
-	if (!SetNoDelay(s)) DEBUG(net, 1)("[NET] Setting TCP_NODELAY failed");
+	if (!SetNoDelay(s)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
 
 	sin.sin_family = AF_INET;
 	sin.sin_addr.s_addr = NetworkResolveHost(hostname);
@@ -684,7 +684,7 @@ static bool NetworkConnect(const char *hostname, int port)
 	/* We failed to connect for which reason what so ever */
 	if (connect(s, (struct sockaddr*) &sin, sizeof(sin)) != 0) return false;
 
-	if (!SetNonBlocking(s)) DEBUG(net, 0)("[NET] Setting non-blocking failed"); // XXX should this be an error?
+	if (!SetNonBlocking(s)) DEBUG(net, 0, "Setting non-blocking mode failed"); // XXX should this be an error?
 
 	// in client mode, only the first client field is used. it's pointing to the server.
 	NetworkAllocClient(s);
@@ -712,7 +712,7 @@ static void NetworkAcceptClients(void)
 
 		SetNonBlocking(s); // XXX error handling?
 
-		DEBUG(net, 1) ("[NET] Client connected from %s on frame %d", inet_ntoa(sin.sin_addr), _frame_counter);
+		DEBUG(net, 1, "Client connected from %s on frame %d", inet_ntoa(sin.sin_addr), _frame_counter);
 
 		SetNoDelay(s); // XXX error handling?
 
@@ -724,7 +724,7 @@ static void NetworkAcceptClients(void)
 			if (sin.sin_addr.s_addr == inet_addr(_network_ban_list[i])) {
 				Packet *p = NetworkSend_Init(PACKET_SERVER_BANNED);
 
-				DEBUG(net, 1)("[NET] Banned ip tried to join (%s), refused", _network_ban_list[i]);
+				DEBUG(net, 1, "Banned ip tried to join (%s), refused", _network_ban_list[i]);
 
 				p->buffer[0] = p->size & 0xFF;
 				p->buffer[1] = p->size >> 8;
@@ -773,7 +773,7 @@ static bool NetworkListen(void)
 	SOCKET ls;
 	struct sockaddr_in sin;
 
-	DEBUG(net, 1) ("[NET] Listening on %s:%d", _network_server_bind_ip_host, _network_server_port);
+	DEBUG(net, 1, "Listening on %s:%d", _network_server_bind_ip_host, _network_server_port);
 
 	ls = socket(AF_INET, SOCK_STREAM, 0);
 	if (ls == INVALID_SOCKET) {
@@ -790,7 +790,7 @@ static bool NetworkListen(void)
 		}
 	}
 
-	if (!SetNonBlocking(ls)) DEBUG(net, 0)("[NET] Setting non-blocking failed"); // XXX should this be an error?
+	if (!SetNonBlocking(ls)) DEBUG(net, 0, "Setting non-blocking mode failed"); // XXX should this be an error?
 
 	sin.sin_family = AF_INET;
 	sin.sin_addr.s_addr = _network_server_bind_ip;
@@ -828,7 +828,7 @@ static void NetworkClose(void)
 		// We are a server, also close the listensocket
 		closesocket(_listensocket);
 		_listensocket = INVALID_SOCKET;
-		DEBUG(net, 1) ("[NET] Closed listener");
+		DEBUG(net, 1, "Closed listener");
 		NetworkUDPClose();
 	}
 }
@@ -1193,7 +1193,7 @@ static void NetworkHandleLocalQueue(void)
 		if (_frame_counter > cp->frame) {
 			// If we reach here, it means for whatever reason, we've already executed
 			// past the command we need to execute.
-			DEBUG(net, 0)("[NET] Trying to execute a packet in the past!");
+			DEBUG(net, 0, "Trying to execute a packet in the past!");
 			assert(0);
 		}
 
@@ -1230,7 +1230,7 @@ static bool NetworkDoClientLoop(void)
 			if (_sync_seed_1 != _random_seeds[0][0]) {
 #endif
 				NetworkError(STR_NETWORK_ERR_DESYNC);
-				DEBUG(net, 0)("[NET] Sync error detected!");
+				DEBUG(net, 0, "Sync error detected!");
 				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, DEREF_CLIENT(0));
 				return false;
 			}
@@ -1245,7 +1245,7 @@ static bool NetworkDoClientLoop(void)
 
 			_sync_frame = 0;
 		} else if (_sync_frame < _frame_counter) {
-			DEBUG(net, 1)("[NET] Missed frame for sync-test (%d / %d)", _sync_frame, _frame_counter);
+			DEBUG(net, 1, "Missed frame for sync-test (%d / %d)", _sync_frame, _frame_counter);
 			_sync_frame = 0;
 		}
 	}
@@ -1339,17 +1339,17 @@ static void NetworkGenerateUniqueId(void)
 // This tries to launch the network for a given OS
 void NetworkStartUp(void)
 {
-	DEBUG(net, 3) ("[NET][Core] Starting network...");
+	DEBUG(net, 3, "[core] starting network...");
 
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 	/*
 	 *  IMPORTANT NOTE: SocketBase needs to be initialized before we use _any_
 	 *  network related function, else: crash.
 	 */
-	DEBUG(misc,3) ("[NET][Core] Loading bsd socket library");
+	DEBUG(net, 3, "[core] loading bsd socket library");
 	SocketBase = OpenLibrary("bsdsocket.library", 4);
 	if (SocketBase == NULL) {
-		DEBUG(net, 0) ("[NET][Core] Error: couldn't open bsdsocket.library version 4. Network not available.");
+		DEBUG(net, 0, "[core] can't open bsdsocket.library version 4, network unavailable");
 		_network_available = false;
 		return;
 	}
@@ -1364,7 +1364,7 @@ void NetworkStartUp(void)
 				TimerBase = TimerRequest->tr_node.io_Device;
 				if (TimerBase == NULL) {
 					// free ressources...
-					DEBUG(net, 0) ("[NET][Core] Error: couldn't initialize timer. Network not available.");
+					DEBUG(net, 0, "[core] can't initialize timer, network unavailable");
 					_network_available = false;
 					return;
 				}
@@ -1404,9 +1404,9 @@ void NetworkStartUp(void)
 	#if defined(WIN32)
 	{
 		WSADATA wsa;
-		DEBUG(net, 3) ("[NET][Core] Loading windows socket library");
+		DEBUG(net, 3, "[core] loading windows socket library");
 		if (WSAStartup(MAKEWORD(2,0), &wsa) != 0) {
-			DEBUG(net, 0) ("[NET][Core] Error: WSAStartup failed. Network not available.");
+			DEBUG(net, 0, "[core] WSAStartup failed, network unavailable");
 			_network_available = false;
 			return;
 		}
@@ -1414,7 +1414,7 @@ void NetworkStartUp(void)
 	#endif // WIN32
 
 	NetworkInitialize();
-	DEBUG(net, 3) ("[NET][Core] Network online. Multiplayer available.");
+	DEBUG(net, 3, "[core] network online, multiplayer available");
 	NetworkFindIPs();
 }
 
@@ -1424,7 +1424,7 @@ void NetworkShutDown(void)
 	NetworkDisconnect();
 	NetworkUDPClose();
 
-	DEBUG(net, 3) ("[NET][Core] Shutting down the network.");
+	DEBUG(net, 3, "[core] shutting down network");
 
 	_network_available = false;
 

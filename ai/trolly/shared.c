@@ -109,7 +109,7 @@ bool AiNew_SetSpecialVehicleFlag(Player* p, Vehicle* v, uint flag)
 
 	// Out of special_vehicle spots :s
 	if (new_id == -1) {
-		DEBUG(ai, 1)("special_vehicles list is too small :(");
+		DEBUG(ai, 1, "special_vehicles list is too small");
 		return false;
 	}
 	p->ainew.special_vehicles[new_id].veh_id = v->index;

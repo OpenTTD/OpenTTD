@@ -427,11 +427,13 @@ void CDECL IConsolePrintF(uint16 color_code, const char *s, ...)
  * which is achieved by using this function. Can only be used by
  * @debug() in debug.c. You need at least a level 2 (developer) for debugging
  * messages to show up
+ * @param dbg debugging category
+ * @param string debugging message
  */
-void IConsoleDebug(const char *string)
+void IConsoleDebug(const char *dbg, const char *string)
 {
 	if (_stdlib_developer > 1)
-		IConsolePrintF(_icolour_dbg, "dbg: %s", string);
+		IConsolePrintF(_icolour_dbg, "dbg: [%s] %s", dbg, string);
 }
 
 /**

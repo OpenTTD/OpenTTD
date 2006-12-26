@@ -252,7 +252,7 @@ void ClearSlot(Vehicle *v)
 	assert(rs->num_vehicles != 0);
 	rs->num_vehicles--;
 
-	DEBUG(ms, 3) ("Multistop: Clearing slot at 0x%X", rs->xy);
+	DEBUG(ms, 3, "Clearing slot at 0x%X", rs->xy);
 }
 
 /** Sell a road vehicle.
@@ -1041,7 +1041,7 @@ static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Tra
 	void* perf = NpfBeginInterval();
 	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, target, type, owner, railtypes);
 	int t = NpfEndInterval(perf);
-	DEBUG(yapf, 4)("[YAPF][NPFR] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
+	DEBUG(yapf, 4, "[NPFR] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
 	return ret;
 }
 
@@ -1542,22 +1542,22 @@ again:
 			//we have arrived at the wrong station
 			//XXX The question is .. what to do? Actually we shouldn't be here
 			//but I guess we need to clear the slot
-			DEBUG(ms, 0) ("Multistop: Vehicle %d (index %d) arrived at wrong stop.", v->unitnumber, v->index);
+			DEBUG(ms, 0, "Vehicle %d (index %d) arrived at wrong stop", v->unitnumber, v->index);
 			if (v->tile != v->dest_tile) {
-				DEBUG(ms, 0) ("Multistop: -- Current tile 0x%X is not destination tile 0x%X. Route problem", v->tile, v->dest_tile);
+				DEBUG(ms, 2, " current tile 0x%X is not destination tile 0x%X. Route problem", v->tile, v->dest_tile);
 			}
 			if (v->dest_tile != v->u.road.slot->xy) {
-				DEBUG(ms, 0) ("Multistop: -- Stop tile 0x%X is not destination tile 0x%X. Multistop desync", v->u.road.slot->xy, v->dest_tile);
+				DEBUG(ms, 2, " stop tile 0x%X is not destination tile 0x%X. Multistop desync", v->u.road.slot->xy, v->dest_tile);
 			}
 			if (v->current_order.type != OT_GOTO_STATION) {
-				DEBUG(ms, 0) ("Multistop: -- Current order type (%d) is not OT_GOTO_STATION.", v->current_order.type);
+				DEBUG(ms, 2, " current order type (%d) is not OT_GOTO_STATION", v->current_order.type);
 			} else {
 				if (v->current_order.dest != st->index)
-					DEBUG(ms, 0) ("Multistop: -- Current station %d is not target station in current_order.station (%d).",
+					DEBUG(ms, 2, " current station %d is not target station in current_order.station (%d)",
 							st->index, v->current_order.dest);
 			}
 
-			DEBUG(ms, 0) ("           -- Force a slot clearing.");
+			DEBUG(ms, 2, " force a slot clearing");
 			ClearSlot(v);
 		}
 
@@ -1652,7 +1652,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 	//Current slot has expired
 	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot != NULL && v->u.road.slot_age-- == 0) {
-		DEBUG(ms, 2) ("Multistop: Slot expired for vehicle %d (index %d) at stop 0x%X",
+		DEBUG(ms, 3, "Slot expired for vehicle %d (index %d) at stop 0x%X",
 			v->unitnumber, v->index, v->u.road.slot->xy);
 		ClearSlot(v);
 	}
@@ -1670,22 +1670,21 @@ void OnNewDay_RoadVeh(Vehicle *v)
 				uint dist, badness;
 				uint minbadness = UINT_MAX;
 
-				DEBUG(ms, 2) (
-					"Multistop: Attempting to obtain a slot for vehicle %d (index %d) at station %d (0x%X)",
+				DEBUG(ms, 2, "Attempting to obtain a slot for vehicle %d (index %d) at station %d (0x%X)",
 					v->unitnumber, v->index, st->index, st->xy
 				);
 				/* Now we find the nearest road stop that has a free slot */
 				for (; rs != NULL; rs = rs->next) {
 					dist = RoadFindPathToStop(v, rs->xy);
 					if (dist == UINT_MAX) {
-						DEBUG(ms, 4) (" ---- stop 0x%X is not reachable, not treating further", rs->xy);
+						DEBUG(ms, 4, " stop 0x%X is unreachable, not treating further", rs->xy);
 						continue;
 					}
 					badness = (rs->num_vehicles + 1) * (rs->num_vehicles + 1) + dist;
 
-					DEBUG(ms, 4) (" ---- stop 0x%X has %d vehicle%s waiting", rs->xy, rs->num_vehicles, rs->num_vehicles == 1 ? "":"s");
-					DEBUG(ms, 4) (" ---- Distance is %u", dist);
-					DEBUG(ms, 4) (" -- Badness %u", badness);
+					DEBUG(ms, 4, " stop 0x%X has %d vehicle%s waiting", rs->xy, rs->num_vehicles, rs->num_vehicles == 1 ? "":"s");
+					DEBUG(ms, 4, " distance is %u", dist);
+					DEBUG(ms, 4, " badness %u", badness);
 
 					if (badness < minbadness) {
 						best = rs;
@@ -1695,20 +1694,20 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 				if (best != NULL) {
 					best->num_vehicles++;
-					DEBUG(ms, 3) (" -- Assigned to stop 0x%X", best->xy);
+					DEBUG(ms, 3, "Assigned to stop 0x%X", best->xy);
 
 					v->u.road.slot = best;
 					v->dest_tile = best->xy;
 					v->u.road.slot_age = 14;
 				} else {
-					DEBUG(ms, 3) (" -- Could not find a suitable stop");
+					DEBUG(ms, 3, "Could not find a suitable stop");
 				}
 			} else {
-				DEBUG(ms, 5) ("Multistop: --- Distance from station too far. Postponing slotting for vehicle %d (index %d) at station %d, (0x%X)",
+				DEBUG(ms, 5, "Distance from station too far. Postponing slotting for vehicle %d (index %d) at station %d, (0x%X)",
 						v->unitnumber, v->index, st->index, st->xy);
 			}
 		} else {
-			DEBUG(ms, 4) ("Multistop: No road stop for vehicle %d (index %d) at station %d (0x%X)",
+			DEBUG(ms, 4, "No road stop for vehicle %d (index %d) at station %d (0x%X)",
 					v->unitnumber, v->index, st->index, st->xy);
 		}
 	}

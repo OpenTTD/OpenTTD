@@ -139,7 +139,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 
 	free(packet);
 
-	DEBUG(net, 2)("[NET][UDP] Queried from %s", inet_ntoa(client_addr->sin_addr));
+	DEBUG(net, 2, "[udp] queried from '%s'", inet_ntoa(client_addr->sin_addr));
 }
 
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
@@ -156,7 +156,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 
 	if (_udp_cs.has_quit) return;
 
-	DEBUG(net, 6)("[NET][UDP] Server response from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
+	DEBUG(net, 4, "[udp] server response from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
 
 	// Find next item
 	item = NetworkGameListAddItem(inet_addr(inet_ntoa(client_addr->sin_addr)), ntohs(client_addr->sin_port));
@@ -414,12 +414,10 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST)
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER)
 {
 	_network_advertise_retries = 0;
-	DEBUG(net, 2)("[NET][UDP] We are advertised on the master-server!");
+	DEBUG(net, 2, "[udp] advertising on master server successfull");
 
-	if (!_network_advertise) {
-		/* We are advertised, but we don't want to! */
-		NetworkUDPRemoveAdvertise();
-	}
+	/* We are advertised, but we don't want to! */
+	if (!_network_advertise) NetworkUDPRemoveAdvertise();
 }
 
 /**
@@ -448,7 +446,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS)
 	/* Just a fail-safe.. should never happen */
 	if (_udp_cs.has_quit) return;
 
-	DEBUG(net, 6)("[NET][UDP] NewGRF data request from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
+	DEBUG(net, 6, "[udp] newgrf data request from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 
 	num_grfs = NetworkRecv_uint8 (&_udp_cs, p);
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
@@ -502,7 +500,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS)
 	/* Just a fail-safe.. should never happen */
 	if (_udp_cs.has_quit) return;
 
-	DEBUG(net, 6)("[NET][UDP] NewGRF data reply from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
+	DEBUG(net, 6, "[udp] newgrf data reply from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
 
 	num_grfs = NetworkRecv_uint8 (&_udp_cs, p);
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
@@ -566,9 +564,9 @@ static void NetworkHandleUDPPacket(Packet* p, struct sockaddr_in* client_addr)
 		_network_udp_packet[type](p, client_addr);
 	} else {
 		if (!_udp_cs.has_quit) {
-			DEBUG(net, 0)("[NET][UDP] Received invalid packet type %d", type);
+			DEBUG(net, 0, "[udp] received invalid packet type %d", type);
 		} else {
-			DEBUG(net, 0)("[NET][UDP] Received illegal packet");
+			DEBUG(net, 0, "[udp] received illegal packet");
 		}
 	}
 }
@@ -586,10 +584,8 @@ static void NetworkSendUDP_Packet(SOCKET udp, Packet* p, struct sockaddr_in* rec
 	// Send the buffer
 	res = sendto(udp, p->buffer, p->size, 0, (struct sockaddr *)recv, sizeof(*recv));
 
-	// Check for any errors, but ignore it for the rest
-	if (res == -1) {
-		DEBUG(net, 1)("[NET][UDP] Send error: %i", GET_LAST_ERROR());
-	}
+	// Check for any errors, but ignore it otherwise
+	if (res == -1) DEBUG(net, 1, "[udp] sendto failed with: %i", GET_LAST_ERROR());
 }
 
 // Start UDP listener
@@ -602,7 +598,7 @@ bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast)
 
 	*udp = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 	if (*udp == INVALID_SOCKET) {
-		DEBUG(net, 1)("[NET][UDP] Failed to start UDP support");
+		DEBUG(net, 0, "[udp] failed to start UDP listener");
 		return false;
 	}
 
@@ -622,7 +618,7 @@ bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast)
 	sin.sin_port = htons(port);
 
 	if (bind(*udp, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
-		DEBUG(net, 1) ("[NET][UDP] error: bind failed on %s:%i", inet_ntoa(*(struct in_addr *)&host), port);
+		DEBUG(net, 0, "[udp] bind failed on %s:%i", inet_ntoa(*(struct in_addr *)&host), port);
 		return false;
 	}
 
@@ -634,7 +630,7 @@ bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast)
 #endif
 	}
 
-	DEBUG(net, 1)("[NET][UDP] Listening on port %s:%d", inet_ntoa(*(struct in_addr *)&host), port);
+	DEBUG(net, 1, "[udp] listening on port %s:%d", inet_ntoa(*(struct in_addr *)&host), port);
 
 	return true;
 }
@@ -642,7 +638,7 @@ bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast)
 // Close UDP connection
 void NetworkUDPClose(void)
 {
-	DEBUG(net, 1) ("[NET][UDP] Closed listeners");
+	DEBUG(net, 1, "[udp] closed listeners");
 
 	if (_network_udp_server) {
 		if (_udp_server_socket != INVALID_SOCKET) {
@@ -715,7 +711,7 @@ static void NetworkUDPBroadCast(SOCKET udp)
 		out_addr.sin_port = htons(_network_server_port);
 		out_addr.sin_addr.s_addr = _broadcast_list[i];
 
-		DEBUG(net, 6)("[NET][UDP] Broadcasting to %s", inet_ntoa(out_addr.sin_addr));
+		DEBUG(net, 4, "[udp] broadcasting to %s", inet_ntoa(out_addr.sin_addr));
 
 		NetworkSendUDP_Packet(udp, p, &out_addr);
 	}
@@ -745,7 +741,7 @@ void NetworkUDPQueryMasterServer(void)
 
 	NetworkSendUDP_Packet(_udp_client_socket, p, &out_addr);
 
-	DEBUG(net, 2)("[NET][UDP] Queried Master Server at %s:%d", inet_ntoa(out_addr.sin_addr),ntohs(out_addr.sin_port));
+	DEBUG(net, 2, "[udp] master server queried at %s:%d", inet_ntoa(out_addr.sin_addr),ntohs(out_addr.sin_port));
 
 	free(p);
 }
@@ -754,15 +750,14 @@ void NetworkUDPQueryMasterServer(void)
 void NetworkUDPSearchGame(void)
 {
 	// We are still searching..
-	if (_network_udp_broadcast > 0)
-		return;
+	if (_network_udp_broadcast > 0) return;
 
 	// No UDP-socket yet..
 	if (_udp_client_socket == INVALID_SOCKET)
 		if (!NetworkUDPListen(&_udp_client_socket, 0, 0, true))
 			return;
 
-	DEBUG(net, 0)("[NET][UDP] Searching server");
+	DEBUG(net, 0, "[udp] searching server");
 
 	NetworkUDPBroadCast(_udp_client_socket);
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
@@ -808,15 +803,14 @@ void NetworkUDPRemoveAdvertise(void)
 	Packet *p;
 
 	/* Check if we are advertising */
-	if (!_networking || !_network_server || !_network_udp_server)
-		return;
+	if (!_networking || !_network_server || !_network_udp_server) return;
 
 	/* check for socket */
 	if (_udp_master_socket == INVALID_SOCKET)
 		if (!NetworkUDPListen(&_udp_master_socket, _network_server_bind_ip, 0, false))
 			return;
 
-	DEBUG(net, 2)("[NET][UDP] Removing advertise..");
+	DEBUG(net, 1, "[udp] removing advertise from master server");
 
 	/* Find somewhere to send */
 	out_addr.sin_family = AF_INET;
@@ -872,7 +866,7 @@ void NetworkUDPAdvertise(void)
 	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
 	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
 
-	DEBUG(net, 1)("[NET][UDP] Advertising to master server");
+	DEBUG(net, 1, "[udp] advertising to master server");
 
 	/* Send the packet */
 	p = NetworkSend_Init(PACKET_UDP_SERVER_REGISTER);

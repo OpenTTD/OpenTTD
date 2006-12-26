@@ -175,7 +175,7 @@ static bool CreateMainSurface(int w, int h)
 
 	GetAvailableVideoMode(&w, &h);
 
-	DEBUG(driver, 1) ("sdl: using mode %dx%d", w, h);
+	DEBUG(driver, 1, "SDL: using mode %dx%d", w, h);
 
 	/* Give the application an icon */
 	icon = SDL_CALL SDL_LoadBMP(ICON_DIR PATHSEP "openttd.32.bmp");
@@ -295,8 +295,8 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	if (sym->mod & KMOD_ALT)   key |= WKC_ALT;
 	// these two lines really help porting hotkey combos. Uncomment to use -- Bjarni
 #if 0
-	DEBUG(driver, 0) ("scancode character pressed %u", sym->scancode);
-	DEBUG(driver, 0) ("unicode character pressed %u", sym->unicode);
+	DEBUG(driver, 0, "Scancode character pressed %u", sym->scancode);
+	DEBUG(driver, 0, "Unicode character pressed %u", sym->unicode);
 #endif
 	return (key << 16) + sym->unicode;
 }
@@ -404,7 +404,7 @@ static const char *SdlVideoStart(const char * const *parm)
 	if (s != NULL) return s;
 
 	SDL_CALL SDL_VideoDriverName(buf, 30);
-	DEBUG(driver, 1) ("sdl: using driver '%s'", buf);
+	DEBUG(driver, 1, "SDL: using driver '%s'", buf);
 
 	GetVideoModes();
 	CreateMainSurface(_cur_resolution[0], _cur_resolution[1]);

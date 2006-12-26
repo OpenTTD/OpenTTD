@@ -36,7 +36,7 @@ NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 	} else {
 		prev_item->next = item;
 	}
-	DEBUG(net, 4) ("[NET][GameList] Added server to list");
+	DEBUG(net, 4, "[gamelist] added server to list");
 
 	UpdateNetworkGameWindow(false);
 
@@ -63,7 +63,7 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 			free(remove);
 			remove = NULL;
 
-			DEBUG(net, 4) ("[NET][GameList] Removed server from list");
+			DEBUG(net, 4, "[gamelist] removed server from list");
 			UpdateNetworkGameWindow(false);
 			return;
 		}

@@ -311,7 +311,7 @@ int SlIterateArray(void)
 		case CH_SPARSE_ARRAY: index = (int)SlReadSparseIndex(); break;
 		case CH_ARRAY:        index = _sl.array_index++; break;
 		default:
-			DEBUG(misc, 0) ("[Sl] SlIterateArray: error");
+			DEBUG(sl, 0, "SlIterateArray error");
 			return -1; // error
 		}
 
@@ -557,7 +557,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			case SLE_VAR_STRB:
 			case SLE_VAR_STRBQ:
 				if (len >= length) {
-					DEBUG(misc, 0) ("[Sl] String length in savegame is bigger than buffer, truncating");
+					DEBUG(sl, 1, "String length in savegame is bigger than buffer, truncating");
 					SlCopyBytes(ptr, length);
 					SlSkipBytes(len - length);
 					len = length - 1;
@@ -863,7 +863,7 @@ static void SlSaveChunk(const ChunkHandler *ch)
 	ChunkSaveLoadProc *proc = ch->save_proc;
 
 	SlWriteUint32(ch->id);
-	DEBUG(misc, 1) ("[Sl] Saving chunk %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);
+	DEBUG(sl, 2, "Saving chunk %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);
 
 	if (ch->flags & CH_AUTO_LENGTH) {
 		// Need to calculate the length. Solve that by calling SlAutoLength in the save_proc.
@@ -941,7 +941,7 @@ static void SlLoadChunks(void)
 	const ChunkHandler *ch;
 
 	for (id = SlReadUint32(); id != 0; id = SlReadUint32()) {
-		DEBUG(misc, 1) ("[Sl] Loading chunk %c%c%c%c", id >> 24, id >> 16, id >> 8, id);
+		DEBUG(sl, 2, "Loading chunk %c%c%c%c", id >> 24, id >> 16, id >> 8, id);
 
 		ch = SlFindChunkHandler(id);
 		if (ch == NULL) SlError("found unknown tag in savegame (sync error)");
@@ -1520,7 +1520,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 
 	_sl.fh = (mode == SL_SAVE) ? fopen(filename, "wb") : fopen(filename, "rb");
 	if (_sl.fh == NULL) {
-		DEBUG(misc, 0) ("[Sl] Cannot open savegame for saving/loading.");
+		DEBUG(sl, 0, "Cannot open savegame '%s' for saving/loading.", filename);
 		return SL_ERROR;
 	}
 
@@ -1556,7 +1556,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		_sl.write_bytes = fmt->writer;
 		_sl.excpt_uninit = fmt->uninit_write;
 		if (!fmt->init_write()) {
-			DEBUG(misc, 0) ("[Sl] Initializing writer %s failed.", fmt->name);
+			DEBUG(sl, 0, "Initializing writer '%s' failed.", fmt->name);
 			return AbortSaveLoad();
 		}
 
@@ -1569,7 +1569,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		SaveFileStart();
 		if (_network_server ||
 					(save_thread = OTTDCreateThread(&SaveFileToDisk, (void*)"")) == NULL) {
-			DEBUG(misc, 1) ("[Sl] Cannot create savegame thread, reverting to single-threaded mode...");
+			DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 			SaveFileToDisk(NULL);
 			SaveFileDone();
 		}
@@ -1578,7 +1578,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		assert(mode == SL_LOAD);
 
 		if (fread(hdr, sizeof(hdr), 1, _sl.fh) != 1) {
-			DEBUG(misc, 0) ("[Sl] Cannot read savegame header, aborting.");
+			DEBUG(sl, 0, "Cannot read savegame header, aborting");
 			return AbortSaveLoad();
 		}
 
@@ -1586,7 +1586,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		for (fmt = _saveload_formats; ; fmt++) {
 			/* No loader found, treat as version 0 and use LZO format */
 			if (fmt == endof(_saveload_formats)) {
-				DEBUG(misc, 0) ("[Sl] Unknown savegame type, trying to load it as the buggy format.");
+				DEBUG(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
 				rewind(_sl.fh);
 				_sl_version = 0;
 				_sl_minor_version = 0;
@@ -1603,11 +1603,11 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 				 *  So never EVER use this minor version again. -- TrueLight -- 22-11-2005 */
 				_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
 
-				DEBUG(misc, 1)("[Sl] Loading savegame version %d", _sl_version);
+				DEBUG(sl, 1, "Loading savegame version %d", _sl_version);
 
 				/* Is the version higher than the current? */
 				if (_sl_version > SAVEGAME_VERSION) {
-					DEBUG(misc, 0) ("[Sl] Savegame version invalid.");
+					DEBUG(sl, 0, "Savegame version invalid");
 					return AbortSaveLoad();
 				}
 				break;
@@ -1624,7 +1624,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		}
 
 		if (!fmt->init_read()) {
-			DEBUG(misc, 0) ("[Sl] Initializing loader %s failed.", fmt->name);
+			DEBUG(sl, 0, "Initializing loader '%s' failed", fmt->name);
 			return AbortSaveLoad();
 		}
 
@@ -1669,7 +1669,7 @@ int GetSavegameType(char *file)
 
 	f = fopen(file, "rb");
 	if (fread(&hdr, sizeof(hdr), 1, f) != 1) {
-		DEBUG(misc, 0) ("[Sl] Savegame is obsolete or invalid format");
+		DEBUG(sl, 0, "Savegame is obsolete or invalid format");
 		mode = SL_LOAD; // don't try to get filename, just show name as it is written
 	} else {
 		// see if we have any loader for this type.

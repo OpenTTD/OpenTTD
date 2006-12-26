@@ -16,24 +16,27 @@ int _debug_map_level;
 int _debug_misc_level;
 int _debug_ms_level;
 int _debug_net_level;
-int _debug_spritecache_level;
+int _debug_sprite_level;
 int _debug_oldloader_level;
 int _debug_ntp_level;
 int _debug_npf_level;
 int _debug_yapf_level;
 int _debug_freetype_level;
+int _debug_sl_level;
 
 
-void CDECL debug(const char *s, ...)
+void CDECL debug(const char *dbg, ...)
 {
 	va_list va;
+	const char *s;
 	char buf[1024];
 
-	va_start(va, s);
+	va_start(va, dbg);
+	s = va_arg(va, const char*);
 	vsnprintf(buf, lengthof(buf), s, va);
 	va_end(va);
-	fprintf(stderr, "dbg: %s\n", buf);
-	IConsoleDebug(buf);
+	fprintf(stderr, "dbg: [%s] %s\n", dbg, buf);
+	IConsoleDebug(dbg, buf);
 }
 
 typedef struct DebugLevel {
@@ -50,12 +53,13 @@ typedef struct DebugLevel {
 	DEBUG_LEVEL(misc),
 	DEBUG_LEVEL(ms),
 	DEBUG_LEVEL(net),
-	DEBUG_LEVEL(spritecache),
+	DEBUG_LEVEL(sprite),
 	DEBUG_LEVEL(oldloader),
 	DEBUG_LEVEL(ntp),
 	DEBUG_LEVEL(npf),
 	DEBUG_LEVEL(yapf),
-	DEBUG_LEVEL(freetype)
+	DEBUG_LEVEL(freetype),
+	DEBUG_LEVEL(sl),
 	};
 #undef DEBUG_LEVEL
 

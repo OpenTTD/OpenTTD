@@ -1546,8 +1546,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 
 static void AircraftEventHandler_General(Vehicle *v, const AirportFTAClass *apc)
 {
-	DEBUG(misc, 0) ("OK, you shouldn't be here, check your Airport Scheme!");
-	assert(0);
+	assert("OK, you shouldn't be here, check your Airport Scheme!" && 0);
 }
 
 static void AircraftEventHandler_TakeOff(Vehicle *v, const AirportFTAClass *apc) {
@@ -1748,7 +1747,7 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *apc)
 
 	// error handling
 	if (v->u.air.pos >= apc->nofelements) {
-		DEBUG(misc, 0) ("position %d is not valid for current airport. Max position is %d", v->u.air.pos, apc->nofelements-1);
+		DEBUG(misc, 0, "[Ap] position %d is not valid for current airport. Max position is %d", v->u.air.pos, apc->nofelements-1);
 		assert(v->u.air.pos < apc->nofelements);
 	}
 
@@ -1783,8 +1782,8 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *apc)
 		current = current->next;
 	} while (current != NULL);
 
-	DEBUG(misc, 0) ("Cannot move further on Airport...! pos:%d state:%d", v->u.air.pos, v->u.air.state);
-	DEBUG(misc, 0) ("Airport entry point: %d, Vehicle: %d", apc->entry_point, v->index);
+	DEBUG(misc, 0, "[Ap] cannot move further on Airport! (pos %d state %d)", v->u.air.pos, v->u.air.state);
+	DEBUG(misc, 0, "[Ap] airport entry point: %d, Vehicle: %d", apc->entry_point, v->index);
 	assert(0);
 	return false;
 }

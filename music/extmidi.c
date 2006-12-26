@@ -59,7 +59,7 @@ static bool ExtMidiIsPlaying(void)
 
 static void ExtMidiSetVolume(byte vol)
 {
-	DEBUG(driver, 1) ("extmidi: set volume not implemented");
+	DEBUG(driver, 1, "extmidi: set volume not implemented");
 }
 
 static void DoPlay(void)
@@ -82,7 +82,7 @@ static void DoPlay(void)
 		}
 
 		case -1:
-			DEBUG(driver, 0) ("extmidi: couldn't fork: %s", strerror(errno));
+			DEBUG(driver, 0, "extmidi: couldn't fork: %s", strerror(errno));
 			/* FALLTHROUGH */
 
 		default:

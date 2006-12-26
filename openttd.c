@@ -429,7 +429,7 @@ int ttd_main(int argc, char *argv[])
 	AI_Initialize();
 
 	// Sample catalogue
-	DEBUG(misc, 1) ("Loading sound effects...");
+	DEBUG(misc, 1, "Loading sound effects...");
 	MxInitialize(11025);
 	SoundInitialize("sample.cat");
 
@@ -442,7 +442,7 @@ int ttd_main(int argc, char *argv[])
 	/* Initialize game palette */
 	GfxInitPalettes();
 
-	DEBUG(driver, 1) ("Loading drivers...");
+	DEBUG(driver, 1, "Loading drivers...");
 	LoadDriver(SOUND_DRIVER, _ini_sounddriver);
 	LoadDriver(MUSIC_DRIVER, _ini_musicdriver);
 	LoadDriver(VIDEO_DRIVER, _ini_videodriver); // load video last, to prevent an empty window while sound and music loads
@@ -653,7 +653,7 @@ static void StartScenario(void)
 
 	// invalid type
 	if (_file_to_saveload.mode == SL_INVALID) {
-		DEBUG(misc, 0) ("[Sl] Savegame is obsolete or invalid format: %s", _file_to_saveload.name);
+		DEBUG(sl, 0, "Savegame is obsolete or invalid format: '%s'", _file_to_saveload.name);
 		ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 		_game_mode = GM_MENU;
 		return;
@@ -912,7 +912,7 @@ static void DoAutosave(void)
 		}
 	}
 
-	DEBUG(misc, 2) ("Autosaving to %s", buf);
+	DEBUG(sl, 2, "Autosaving to '%s'", buf);
 	if (SaveOrLoad(buf, SL_SAVE) != SL_OK)
 		ShowErrorMessage(INVALID_STRING_ID, STR_AUTOSAVE_FAILED, 0, 0);
 }
@@ -1123,7 +1123,6 @@ static inline RailType UpdateRailType(RailType rt, RailType min)
 {
 	return rt >= min ? (RailType)(rt + 1): rt;
 }
-
 
 bool AfterLoadGame(void)
 {

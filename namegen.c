@@ -773,7 +773,7 @@ uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type)
 			return FIXNUM(townnameparts - 86, lengthof(name_french_real), 0);
 
 		case 2: /* German */
-			DEBUG(misc, 0) ("German Townnames are buggy... (%d)", townnameparts);
+			DEBUG(misc, 0, "German Townnames are buggy (%d)", townnameparts);
 			return townnameparts;
 
 		case 4: /* Latin-American */

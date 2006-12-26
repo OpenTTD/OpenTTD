@@ -2769,11 +2769,11 @@ void BuildOilRig(TileIndex tile)
 	Station *st = AllocateStation();
 
 	if (st == NULL) {
-		DEBUG(misc, 0) ("Couldn't allocate station for oilrig at 0x%X, reverting to oilrig only...", tile);
+		DEBUG(misc, 0, "Can't allocate station for oilrig at 0x%X, reverting to oilrig only", tile);
 		return;
 	}
 	if (!GenerateStationName(st, tile, 2)) {
-		DEBUG(misc, 0) ("Couldn't allocate station-name for oilrig at 0x%X, reverting to oilrig only...", tile);
+		DEBUG(misc, 0, "Can't allocate station-name for oilrig at 0x%X, reverting to oilrig only", tile);
 		return;
 	}
 
