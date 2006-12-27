@@ -10,6 +10,3 @@ Normal and elrail depots look the same. Use 'X' (transparent buildings)
    to distinguish between them
 Missing curors / icons for construction (currently using the conventional ones)
 
-TODO:
-- Reallow the AI to build signals under bridges (about ai/default/default.c:1600) as
-  r4911 manually disallows it (not via the command)

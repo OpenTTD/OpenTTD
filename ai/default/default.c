@@ -1615,9 +1615,8 @@ clear_town_stuff:;
 
 			/* signals too? */
 			if (j & 3) {
-				/* XXX - we need to check manually whether we can build a signal if DC_EXEC is
-				   not set because the rail has not actually been built */
-				if (!IsTileType(c, MP_RAILWAY)) return CMD_ERROR;
+				// Can't build signals on a road.
+				if (IsTileType(c, MP_STREET)) return CMD_ERROR;
 
 				if (flag & DC_EXEC) {
 					j = 4 - j;
