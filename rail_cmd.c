@@ -253,7 +253,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				return CMD_ERROR;
 			}
 			if (!IsTileOwner(tile, _current_player) ||
-					GetRailType(tile) != railtype) {
+					!IsCompatibleRail(GetRailType(tile), railtype)) {
 				// Get detailed error message
 				return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
