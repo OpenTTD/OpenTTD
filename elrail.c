@@ -95,18 +95,10 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 				return AxisToTrackBits(DiagDirToAxis(GetTunnelDirection(t)));
 			} else {
 				if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
-				if (IsBridgeMiddle(t)) {
-					if (IsTransportUnderBridge(t) &&
-						GetTransportTypeUnderBridge(t) == TRANSPORT_RAIL) {
-						return GetRailBitsUnderBridge(t);
-					} else {
-						return 0;
-					}
-				} else {
-					if (override != NULL && DistanceMax(t, GetOtherBridgeEnd(t)) > 1) *override = 1 << GetBridgeRampDirection(t);
-
-					return AxisToTrackBits(DiagDirToAxis(GetBridgeRampDirection(t)));
+				if (override != NULL && DistanceMax(t, GetOtherBridgeEnd(t)) > 1) {
+					*override = 1 << GetBridgeRampDirection(t);
 				}
+				return AxisToTrackBits(DiagDirToAxis(GetBridgeRampDirection(t)));
 			}
 
 		case MP_STREET:
@@ -135,17 +127,15 @@ static void AdjustTileh(TileIndex tile, Slope *tileh)
 		if (IsTunnel(tile)) {
 			*tileh = SLOPE_FLAT;
 		} else {
-			if (IsBridgeRamp(tile)) {
-				if (*tileh != SLOPE_FLAT) {
-					*tileh = SLOPE_FLAT;
-				} else {
-					switch (GetBridgeRampDirection(tile)) {
-						case DIAGDIR_NE: *tileh = SLOPE_NE; break;
-						case DIAGDIR_SE: *tileh = SLOPE_SE; break;
-						case DIAGDIR_SW: *tileh = SLOPE_SW; break;
-						case DIAGDIR_NW: *tileh = SLOPE_NW; break;
-						default: break;
-					}
+			if (*tileh != SLOPE_FLAT) {
+				*tileh = SLOPE_FLAT;
+			} else {
+				switch (GetBridgeRampDirection(tile)) {
+					case DIAGDIR_NE: *tileh = SLOPE_NE; break;
+					case DIAGDIR_SE: *tileh = SLOPE_SE; break;
+					case DIAGDIR_SW: *tileh = SLOPE_SW; break;
+					case DIAGDIR_NW: *tileh = SLOPE_NW; break;
+					default: NOT_REACHED();
 				}
 			}
 		}
@@ -205,7 +195,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		for (k = 0; k < NUM_TRACKS_AT_PCP; k++) {
 			/* Next to us, we have a bridge head, don't worry about that one, if it shows away from us */
 			if (TrackSourceTile[i][k] == TS_NEIGHBOUR &&
-			    IsBridgeTile(neighbour) && IsBridgeRamp(neighbour) &&
+			    IsBridgeTile(neighbour) &&
 			    GetBridgeRampDirection(neighbour) == ReverseDiagDir(i)) {
 				continue;
 			}
@@ -232,7 +222,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 		/* Read the foundataions if they are present, and adjust the tileh */
 		if (IsTileType(neighbour, MP_RAILWAY) && GetRailType(neighbour) == RAILTYPE_ELECTRIC) foundation = GetRailFoundation(tileh[TS_NEIGHBOUR], trackconfig[TS_NEIGHBOUR]);
-		if (IsBridgeTile(neighbour) && IsBridgeRamp(neighbour)) {
+		if (IsBridgeTile(neighbour)) {
 			foundation = GetBridgeFoundation(tileh[TS_NEIGHBOUR], DiagDirToAxis(GetBridgeRampDirection(neighbour)));
 		}
 
@@ -260,6 +250,14 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		 * Remove those (simply by ANDing with allowed, since these markers are never allowed) */
 		if ((PPPallowed[i] & PPPpreferred[i]) != 0) PPPallowed[i] &= PPPpreferred[i];
 
+		if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile)) {
+			Track bridgetrack = GetBridgeAxis(ti->tile) == AXIS_X ? TRACK_X : TRACK_Y;
+			uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
+
+			if ((height <= TilePixelHeight(ti->tile) + TILE_HEIGHT) &&
+			(i == PCPpositions[bridgetrack][0] || i == PCPpositions[bridgetrack][1])) SETBIT(OverridePCP, i);
+		}
+
 		if (PPPallowed[i] != 0 && HASBIT(PCPstatus, i) && !HASBIT(OverridePCP, i)) {
 			for (k = 0; k < DIR_END; k++) {
 				byte temp = PPPorder[i][GetTLG(ti->tile)][k];
@@ -284,11 +282,10 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	}
 
 	/* Don't draw a wire under a low bridge */
-	if (IsBridgeTile(ti->tile) &&
-			IsBridgeMiddle(ti->tile) &&
-			!(_display_opt & DO_TRANS_BUILDINGS) &&
-			GetBridgeHeight(ti->tile) <= TilePixelHeight(ti->tile) + TILE_HEIGHT) {
-		return;
+	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !(_display_opt & DO_TRANS_BUILDINGS)) {
+		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
+
+		if (height <= TilePixelHeight(ti->tile) + TILE_HEIGHT) return;
 	}
 
 	/* Drawing of pylons is finished, now draw the wires */
@@ -335,7 +332,7 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 		sss = &CatenarySpriteData[WIRE_X_FLAT_SW + (num % 2) + offset];
 	}
 
-	height = GetBridgeHeight(ti->tile);
+	height = GetBridgeHeight(end);
 
 	AddSortableSpriteToDraw( sss->image, ti->x + sss->x_offset, ti->y + sss->y_offset,
 		sss->x_size, sss->y_size, sss->z_size, height + sss->z_offset
@@ -363,6 +360,13 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 
 void DrawCatenary(const TileInfo *ti)
 {
+	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile)) {
+		TileIndex head = GetNorthernBridgeEnd(ti->tile);
+
+		if (GetBridgeTransportType(head) == TRANSPORT_RAIL && GetRailType(head) == RAILTYPE_ELECTRIC) {
+			DrawCatenaryOnBridge(ti);
+		}
+	}
 	if (_patches.disable_elrails) return;
 
 	switch (GetTileType(ti->tile)) {
@@ -380,11 +384,9 @@ void DrawCatenary(const TileInfo *ti)
 			break;
 
 		case MP_TUNNELBRIDGE:
-			if (IsBridge(ti->tile) && IsBridgeMiddle(ti->tile) && GetRailTypeOnBridge(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenaryOnBridge(ti);
+		case MP_STREET:
+		case MP_STATION:
 			break;
-
-		case MP_STREET:  break;
-		case MP_STATION: break;
 
 		default: return;
 	}

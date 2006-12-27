@@ -21,7 +21,7 @@
 #include "water_map.h"
 #include "newgrf.h"
 
-const SpriteID _water_shore_sprites[15] = {
+static const SpriteID _water_shore_sprites[] = {
 	0,
 	SPR_SHORE_TILEH_1,
 	SPR_SHORE_TILEH_2,
@@ -65,6 +65,8 @@ int32 CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsClearWaterTile(tile) || !IsClearWaterTile(tile2))
 		return_cmd_error(STR_3801_MUST_BE_BUILT_ON_WATER);
+
+	if (IsBridgeAbove(tile) || IsBridgeAbove(tile2)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
@@ -138,6 +140,12 @@ static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 	if (CmdFailed(ret)) return CMD_ERROR;
 	if (GetTileSlope(tile + delta, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+	}
+
+	if ((MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) ||
+	    (MayHaveBridgeAbove(tile - delta) && IsBridgeAbove(tile - delta)) ||
+	    (MayHaveBridgeAbove(tile + delta) && IsBridgeAbove(tile + delta))) {
+		return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 	}
 
 	if (flags & DC_EXEC) {
@@ -230,6 +238,8 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	cost = 0;
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
+		int32 ret;
+
 		if (GetTileSlope(tile, NULL) != SLOPE_FLAT) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
@@ -237,38 +247,16 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		// can't make water of water!
 		if (IsTileType(tile, MP_WATER) && (!IsTileOwner(tile, OWNER_WATER) || HASBIT(p2, 0))) continue;
 
-		/* is middle piece of a bridge? */
-		if (IsBridgeTile(tile) && IsBridgeMiddle(tile)) {
-			if (IsTransportUnderBridge(tile)) {
-				return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
-			}
-
-			if (IsWaterUnderBridge(tile) && (!IsTileOwner(tile, OWNER_WATER) || HASBIT(p2, 0))) return_cmd_error(STR_1007_ALREADY_BUILT);
-
-			if (flags & DC_EXEC) {
-				if (TileHeight(tile) == 0 && HASBIT(p2, 0)) {
-					SetWaterUnderBridge(tile);
-				} else {
-					SetCanalUnderBridge(tile, _current_player);
-				}
-			}
-		} else {
-			/* no bridge, try to clear it. */
-			int32 ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-
-			if (CmdFailed(ret)) return ret;
-			cost += ret;
-
-			if (flags & DC_EXEC) {
-				if (TileHeight(tile) == 0 && HASBIT(p2, 0)) {
-					MakeWater(tile);
-				} else {
-					MakeCanal(tile, _current_player);
-				}
-			}
-		}
+		ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+		if (CmdFailed(ret)) return ret;
+		cost += ret;
 
 		if (flags & DC_EXEC) {
+			if (TileHeight(tile) == 0) {
+				MakeWater(tile);
+			} else {
+				MakeCanal(tile, _current_player);
+			}
 			MarkTileDirtyByTile(tile);
 			MarkTilesAroundDirty(tile);
 		}
@@ -366,14 +354,8 @@ static bool IsWateredTile(TileIndex tile)
 					return false;
 			}
 
-		case MP_STATION:
-			return IsOilRig(tile) || IsDock(tile) || IsBuoy_(tile);
-
-		case MP_TUNNELBRIDGE:
-			return IsBridge(tile) && IsBridgeMiddle(tile) && IsWaterUnderBridge(tile);
-
-		default:
-			return false;
+		case MP_STATION: return IsOilRig(tile) || IsDock(tile) || IsBuoy_(tile);
+		default:         return false;
 	}
 }
 
@@ -449,6 +431,7 @@ static void DrawTile_Water(TileInfo *ti)
 		case WATER_CLEAR:
 			DrawGroundSprite(SPR_FLAT_WATER_TILE);
 			if (ti->z != 0 || !IsTileOwner(ti->tile, OWNER_WATER)) DrawCanalWater(ti->tile);
+			DrawBridgeMiddle(ti);
 			break;
 
 		case WATER_COAST:
@@ -458,6 +441,7 @@ static void DrawTile_Water(TileInfo *ti)
 			} else {
 				DrawGroundSprite(_water_shore_sprites[ti->tileh]);
 			}
+			DrawBridgeMiddle(ti);
 			break;
 
 		case WATER_LOCK: {
@@ -570,27 +554,10 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 				}
 				break;
 
-			case MP_TUNNELBRIDGE:
-				if (IsBridge(target) && IsBridgeMiddle(target) && IsClearUnderBridge(target)) {
-					SetWaterUnderBridge(target);
-					MarkTileDirtyByTile(target);
-				}
-				break;
-
 			default:
 				break;
 		}
 	} else {
-		if (IsBridgeTile(target) && IsBridgeMiddle(target)) {
-			if (IsWaterUnderBridge(target) ||
-					(IsTransportUnderBridge(target) && GetTransportTypeUnderBridge(target) == TRANSPORT_WATER)) { // XXX does this happen at all?
-				return;
-			}
-			SetWaterUnderBridge(target);
-			MarkTileDirtyByTile(target);
-			return;
-		}
-
 		_current_player = OWNER_WATER;
 		{
 			Vehicle *v = FindVehicleOnTileZ(target, 0);

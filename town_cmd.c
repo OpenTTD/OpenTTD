@@ -26,6 +26,7 @@
 #include "water_map.h"
 #include "variables.h"
 #include "bridge.h"
+#include "bridge_map.h"
 #include "date.h"
 #include "table/town_land.h"
 #include "genworld.h"
@@ -1118,6 +1119,8 @@ static bool CheckBuildHouseMode(TileIndex tile, Slope tileh, int mode)
 	slope = GetTileSlope(tile, NULL);
 	if (IsSteepSlope(slope)) return false;
 
+	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
+
 	b = 0;
 	if ((slope != SLOPE_FLAT && ~slope & _masks[mode])) b = ~b;
 	if ((tileh != SLOPE_FLAT && ~tileh & _masks[mode+4])) b = ~b;
@@ -1159,6 +1162,8 @@ static bool CheckFree2x2Area(TileIndex tile)
 		tile += ToTileIndexDiff(_tile_add[i]);
 
 		if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return false;
+
+		if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
 
 		if (CmdFailed(DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_FORCETEST, CMD_LANDSCAPE_CLEAR)))
 			return false;
@@ -1291,6 +1296,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	// make sure it's possible
 	if (!EnsureNoVehicle(tile)) return false;
 	if (IsSteepSlope(GetTileSlope(tile, NULL))) return false;
+	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
 
 	r = DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(r)) return false;

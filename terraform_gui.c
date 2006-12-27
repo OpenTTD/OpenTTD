@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "clear_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -73,11 +74,20 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 	size_y = (ey - sy) + 1;
 
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
-		if (IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) {
-			MakeClear(tile, CLEAR_ROCKS, 3);
-			MarkTileDirtyByTile(tile);
-			success = true;
+		switch (GetTileType(tile)) {
+			case MP_CLEAR:
+				MakeClear(tile, CLEAR_ROCKS, 3);
+				break;
+
+			case MP_TREES:
+				MakeClear(tile, CLEAR_ROCKS, 3);
+				ClearBridgeMiddle(tile);
+				break;
+
+			default: continue;
 		}
+		MarkTileDirtyByTile(tile);
+		success = true;
 	} END_TILE_LOOP(tile, size_x, size_y, 0);
 
 	if (success) SndPlayTileFx(SND_1F_SPLAT, end);

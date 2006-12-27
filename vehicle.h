@@ -300,7 +300,6 @@ uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 
 StringID VehicleInTheWayErrMsg(const Vehicle* v);
 Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z);
-TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v);
 
 bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection direction);
 void SetSignalsOnBothDir(TileIndex tile, byte track);

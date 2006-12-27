@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "clear_map.h"
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -75,6 +76,7 @@ static void DoPlaceMoreTrees(TileIndex tile)
 
 		if (dist <= 13 &&
 				IsTileType(cur_tile, MP_CLEAR) &&
+				!IsBridgeAbove(cur_tile) &&
 				!IsClearGround(cur_tile, CLEAR_FIELDS) &&
 				!IsClearGround(cur_tile, CLEAR_ROCKS)) {
 			PlaceTree(cur_tile, r);
@@ -134,6 +136,7 @@ void PlaceTreesRandomly(void)
 		IncreaseGeneratingWorldProgress(GWP_TREE);
 
 		if (IsTileType(tile, MP_CLEAR) &&
+				!IsBridgeAbove(tile) &&
 				!IsClearGround(tile, CLEAR_FIELDS) &&
 				!IsClearGround(tile, CLEAR_ROCKS)) {
 			PlaceTree(tile, r);
@@ -167,7 +170,10 @@ void PlaceTreesRandomly(void)
 
 			IncreaseGeneratingWorldProgress(GWP_TREE);
 
-			if (IsTileType(tile, MP_CLEAR) && !IsClearGround(tile, CLEAR_FIELDS) && GetTropicZone(tile) == TROPICZONE_RAINFOREST) {
+			if (IsTileType(tile, MP_CLEAR) &&
+					!IsBridgeAbove(tile) &&
+					!IsClearGround(tile, CLEAR_FIELDS) &&
+					GetTropicZone(tile) == TROPICZONE_RAINFOREST) {
 				PlaceTree(tile, r);
 			}
 		} while (--i);
@@ -250,7 +256,8 @@ int32 CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					break;
 
 				case MP_CLEAR:
-					if (!IsTileOwner(tile, OWNER_NONE)) {
+					if (!IsTileOwner(tile, OWNER_NONE) ||
+							IsBridgeAbove(tile)) {
 						msg = STR_2804_SITE_UNSUITABLE;
 						continue;
 					}
@@ -547,7 +554,7 @@ static void TileLoop_Trees(TileIndex tile)
 
 						tile += TileOffsByDir(Random() & 7);
 
-						if (!IsTileType(tile, MP_CLEAR)) return;
+						if (!IsTileType(tile, MP_CLEAR) || IsBridgeAbove(tile)) return;
 
 						switch (GetClearGround(tile)) {
 							case CLEAR_GRASS:
@@ -580,6 +587,7 @@ static void TileLoop_Trees(TileIndex tile)
 					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
 					default: MakeClear(tile, CLEAR_SNOW, GetTreeDensity(tile)); break;
 				}
+				ClearBridgeMiddle(tile);
 			}
 			break;
 
@@ -602,6 +610,7 @@ void OnTick_Trees(void)
 	if (_opt.landscape == LT_DESERT &&
 			(r = Random(), tile = RandomTileSeed(r), GetTropicZone(tile) == TROPICZONE_RAINFOREST) &&
 			IsTileType(tile, MP_CLEAR) &&
+			!IsBridgeAbove(tile) &&
 			(ct = GetClearGround(tile), ct == CLEAR_GRASS || ct == CLEAR_ROUGH) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
 		MakeTree(tile, tree, 0, 0, ct == CLEAR_ROUGH ? TREE_GROUND_ROUGH : TREE_GROUND_GRASS, 0);
@@ -614,6 +623,7 @@ void OnTick_Trees(void)
 	r = Random();
 	tile = TILE_MASK(r);
 	if (IsTileType(tile, MP_CLEAR) &&
+			!IsBridgeAbove(tile) &&
 			(ct = GetClearGround(tile), ct == CLEAR_GRASS || ct == CLEAR_ROUGH || ct == CLEAR_SNOW) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
 		switch (ct) {

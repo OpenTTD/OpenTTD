@@ -9,6 +9,7 @@
 #include "map.h"
 #include "order.h"
 #include "rail_map.h"
+#include "bridge_map.h"
 #include "saveload.h"
 #include "station.h"
 #include "tile.h"
@@ -205,6 +206,8 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			(!_patches.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))) {
 		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
+
+	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
 	wp = FindDeletedWaypointCloseTo(tile);

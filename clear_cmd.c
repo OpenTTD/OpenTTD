@@ -12,6 +12,7 @@
 #include "viewport.h"
 #include "command.h"
 #include "tunnel_map.h"
+#include "bridge_map.h"
 #include "variables.h"
 #include "table/sprites.h"
 #include "unmovable_map.h"
@@ -276,25 +277,32 @@ int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	if (direction == -1) {
+	{
 		/* Check if tunnel would take damage */
 		int count;
 		TileIndex *ti = ts.tile_table;
 
 		for (count = ts.tile_table_count; count != 0; count--, ti++) {
-			uint z, t;
 			TileIndex tile = *ti;
 
-			z = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 0));
-			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 0));
-			if (t <= z) z = t;
-			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 1));
-			if (t <= z) z = t;
-			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
-			if (t <= z) z = t;
+			if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) {
+				return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+			}
 
-			if (IsTunnelInWay(tile, z * TILE_HEIGHT)) {
-				return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
+			if (direction == -1) {
+				uint z, t;
+
+				z = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 0));
+				t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 0));
+				if (t <= z) z = t;
+				t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 1));
+				if (t <= z) z = t;
+				t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
+				if (t <= z) z = t;
+
+				if (IsTunnelInWay(tile, z * TILE_HEIGHT)) {
+					return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
+				}
 			}
 		}
 	}
@@ -534,6 +542,7 @@ static void DrawTile_Clear(TileInfo *ti)
 	}
 
 	DrawClearLandFence(ti);
+	DrawBridgeMiddle(ti);
 }
 
 static uint GetSlopeZ_Clear(TileIndex tile, uint x, uint y)

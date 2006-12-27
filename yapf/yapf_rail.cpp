@@ -243,8 +243,6 @@ bool YapfCheckReverseTrain(Vehicle* v)
 	return reverse;
 }
 
-static TileIndex YapfGetVehicleOutOfTunnelTile(const Vehicle *v, bool bReverse);
-
 bool YapfFindNearestRailDepotTwoWay(Vehicle *v, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed)
 {
 	*depot_tile = INVALID_TILE;
@@ -252,12 +250,8 @@ bool YapfFindNearestRailDepotTwoWay(Vehicle *v, int max_distance, int reverse_pe
 
 	Vehicle* last_veh = GetLastVehicleInChain(v);
 
-	bool first_in_tunnel = v->u.rail.track == 0x40;
-	bool last_in_tunnel = last_veh->u.rail.track == 0x40;
-
-	// tile where the engine and last wagon are
-	TileIndex tile = first_in_tunnel ? YapfGetVehicleOutOfTunnelTile(v, false) : v->tile;
-	TileIndex last_tile = last_in_tunnel ? YapfGetVehicleOutOfTunnelTile(last_veh, true) : last_veh->tile;
+	TileIndex tile = v->tile;
+	TileIndex last_tile = last_veh->tile;
 
 	// their trackdirs
 	Trackdir td = GetVehicleTrackdir(v);
@@ -275,38 +269,6 @@ bool YapfFindNearestRailDepotTwoWay(Vehicle *v, int max_distance, int reverse_pe
 	bool ret = pfnFindNearestDepotTwoWay(v, tile, td, last_tile, td_rev, max_distance, reverse_penalty, depot_tile, reversed);
 	return ret;
 }
-
-/** Retrieve the exit-tile of the vehicle from inside a tunnel
-* Very similar to GetOtherTunnelEnd(), but we use the vehicle's
-* direction for determining which end of the tunnel to find
-* @param v the vehicle which is inside the tunnel and needs an exit
-* @param bReverse should we search for the tunnel exit in the opposite direction?
-* @return the exit-tile of the tunnel based on the vehicle's direction
-* taken from tunnelbridge_cmd.c where the function body was disabled by
-* #if 1 #else #endif (at r5951). Added bReverse argument to allow two-way
-* operation (YapfFindNearestRailDepotTwoWay).                              */
-static TileIndex YapfGetVehicleOutOfTunnelTile(const Vehicle *v, bool bReverse)
-{
-	TileIndex tile = v->tile;
-	DiagDirection dir = DirToDiagDir((Direction)v->direction);
-	TileIndexDiff delta = TileOffsByDiagDir(dir);
-	byte z = v->z_pos;
-
-	if (bReverse) {
-		delta = -delta;
-	} else {
-		dir = ReverseDiagDir(dir);
-	}
-	while (
-		!IsTunnelTile(tile) ||
-		GetTunnelDirection(tile) != dir ||
-		GetTileZ(tile) != z
-		) {
-			tile += delta;
-	}
-	return tile;
-}
-
 
 /** if any track changes, this counter is incremented - that will invalidate segment cost cache */
 int CSegmentCostCacheBase::s_rail_change_counter = 0;

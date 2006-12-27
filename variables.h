@@ -314,7 +314,6 @@ VARDEF StringID _switch_mode_errorstr;
 VARDEF bool _exit_game;
 VARDEF SmallFiosItem _file_to_saveload;
 
-VARDEF byte _get_z_hint; // used as a hint to getslopez to return the right height at a bridge.
 
 
 VARDEF Vehicle *_place_clicked_vehicle;

@@ -3,19 +3,25 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
+#include "variables.h"
 
 
 TileIndex GetBridgeEnd(TileIndex tile, DiagDirection dir)
 {
 	TileIndexDiff delta = TileOffsByDiagDir(dir);
 
-	assert(DiagDirToAxis(dir) == GetBridgeAxis(tile));
-
+	dir = ReverseDiagDir(dir);
 	do {
 		tile += delta;
-	} while (!IsBridgeRamp(tile));
+	} while (!IsBridgeTile(tile) || GetBridgeRampDirection(tile) != dir);
 
 	return tile;
+}
+
+
+TileIndex GetNorthernBridgeEnd(TileIndex t)
+{
+	return GetBridgeEnd(t, ReverseDiagDir(AxisToDiagDir(GetBridgeAxis(t))));
 }
 
 
@@ -27,11 +33,19 @@ TileIndex GetSouthernBridgeEnd(TileIndex t)
 
 TileIndex GetOtherBridgeEnd(TileIndex tile)
 {
-	TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
+	assert(IsBridgeTile(tile));
+	return GetBridgeEnd(tile, GetBridgeRampDirection(tile));
+}
 
-	do {
-		tile += delta;
-	} while (!IsBridgeRamp(tile));
+uint GetBridgeHeight(TileIndex t)
+{
+	uint h;
+	uint tileh = GetTileSlope(t, &h);
+	uint f = GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(t)));
 
-	return tile;
+	// one height level extra if the ramp is on a flat foundation
+	return
+		h + TILE_HEIGHT +
+		(IS_INT_INSIDE(f, 1, 15) ? TILE_HEIGHT : 0) +
+		(IsSteepSlope(tileh) ? TILE_HEIGHT : 0);
 }

@@ -11,6 +11,9 @@
 #include "tile.h"
 
 
+void DrawBridgeMiddle(const TileInfo* ti); // XXX
+
+
 static inline bool IsBridge(TileIndex t)
 {
 	assert(IsTileType(t, MP_TUNNELBRIDGE));
@@ -23,28 +26,22 @@ static inline bool IsBridgeTile(TileIndex t)
 }
 
 
-static inline bool IsBridgeRamp(TileIndex t)
+static inline bool MayHaveBridgeAbove(TileIndex t)
 {
-	assert(IsBridgeTile(t));
-	return !HASBIT(_m[t].m5, 6);
+	return
+		IsTileType(t, MP_CLEAR) ||
+		IsTileType(t, MP_RAILWAY) ||
+		IsTileType(t, MP_STREET) ||
+		IsTileType(t, MP_WATER) ||
+		IsTileType(t, MP_TUNNELBRIDGE) ||
+		IsTileType(t, MP_UNMOVABLE);
 }
 
-static inline bool IsBridgeMiddle(TileIndex t)
-{
-	assert(IsBridgeTile(t));
-	return HASBIT(_m[t].m5, 6);
-}
 
-
-/**
- * Determines which piece of a bridge is contained in the current tile
- * @param tile The tile to analyze
- * @return the piece
- */
-static inline uint GetBridgePiece(TileIndex t)
+static inline bool IsBridgeAbove(TileIndex t)
 {
-	assert(IsBridgeMiddle(t));
-	return GB(_m[t].m2, 0, 4);
+	assert(MayHaveBridgeAbove(t));
+	return GB(_m[t].extra, 6, 2) != 0;
 }
 
 
@@ -65,65 +62,22 @@ static inline uint GetBridgeType(TileIndex t)
  */
 static inline DiagDirection GetBridgeRampDirection(TileIndex t)
 {
-	assert(IsBridgeRamp(t));
-	return ReverseDiagDir(XYNSToDiagDir((Axis)GB(_m[t].m5, 0, 1), GB(_m[t].m5, 5, 1)));
+	assert(IsBridgeTile(t));
+	return (DiagDirection)GB(_m[t].m5, 0, 2);
 }
 
 
 static inline Axis GetBridgeAxis(TileIndex t)
 {
-	assert(IsBridgeMiddle(t));
-	return (Axis)GB(_m[t].m5, 0, 1);
+	assert(IsBridgeAbove(t));
+	return (Axis)(GB(_m[t].extra, 6, 2) - 1);
 }
 
 
 static inline TransportType GetBridgeTransportType(TileIndex t)
 {
 	assert(IsBridgeTile(t));
-	return (TransportType)GB(_m[t].m5, 1, 2);
-}
-
-
-static inline bool IsClearUnderBridge(TileIndex t)
-{
-	assert(IsBridgeMiddle(t));
-	return GB(_m[t].m5, 3, 3) == 0;
-}
-
-static inline bool IsWaterUnderBridge(TileIndex t)
-{
-	assert(IsBridgeMiddle(t));
-	return GB(_m[t].m5, 3, 3) == 1;
-}
-
-
-static inline bool IsTransportUnderBridge(TileIndex t)
-{
-	assert(IsBridgeMiddle(t));
-	return HASBIT(_m[t].m5, 5);
-}
-
-static inline TransportType GetTransportTypeUnderBridge(TileIndex t)
-{
-	assert(IsTransportUnderBridge(t));
-	return (TransportType)GB(_m[t].m5, 3, 2);
-}
-
-static inline RoadBits GetRoadBitsUnderBridge(TileIndex t)
-{
-	assert(GetTransportTypeUnderBridge(t) == TRANSPORT_ROAD);
-	return GetBridgeAxis(t) == AXIS_X ? ROAD_Y : ROAD_X;
-}
-
-static inline Track GetRailUnderBridge(TileIndex t)
-{
-	assert(GetTransportTypeUnderBridge(t) == TRANSPORT_RAIL);
-	return AxisToTrack(OtherAxis(GetBridgeAxis(t)));
-}
-
-static inline TrackBits GetRailBitsUnderBridge(TileIndex t)
-{
-	return TrackToTrackBits(GetRailUnderBridge(t));
+	return (TransportType)GB(_m[t].m5, 2, 2);
 }
 
 
@@ -131,6 +85,11 @@ static inline TrackBits GetRailBitsUnderBridge(TileIndex t)
  * Finds the end of a bridge in the specified direction starting at a middle tile
  */
 TileIndex GetBridgeEnd(TileIndex, DiagDirection);
+
+/**
+ * Finds the northern end of a bridge starting at a middle tile
+ */
+TileIndex GetNorthernBridgeEnd(TileIndex t);
 
 /**
  * Finds the southern end of a bridge starting at a middle tile
@@ -143,58 +102,36 @@ TileIndex GetSouthernBridgeEnd(TileIndex t);
  */
 TileIndex GetOtherBridgeEnd(TileIndex);
 
-uint GetBridgeHeight(TileIndex t);
+uint GetBridgeHeight(TileIndex tile);
+uint GetBridgeFoundation(Slope tileh, Axis axis);
 
-static inline void SetClearUnderBridge(TileIndex t)
+static inline void ClearSingleBridgeMiddle(TileIndex t, Axis a)
 {
-	assert(IsBridgeMiddle(t));
-	SetTileOwner(t, OWNER_NONE);
-	SB(_m[t].m5, 3, 3, 0 << 2 | 0);
-	SB(_m[t].m3, 0, 4, 0);
+	assert(MayHaveBridgeAbove(t));
+	CLRBIT(_m[t].extra, 6 + a);
 }
 
-static inline void SetWaterUnderBridge(TileIndex t)
+
+static inline void ClearBridgeMiddle(TileIndex t)
 {
-	assert(IsBridgeMiddle(t));
-	SetTileOwner(t, OWNER_WATER);
-	SB(_m[t].m5, 3, 3, 0 << 2 | 1);
-	SB(_m[t].m3, 0, 4, 0);
+	ClearSingleBridgeMiddle(t, AXIS_X);
+	ClearSingleBridgeMiddle(t, AXIS_Y);
 }
 
-static inline void SetCanalUnderBridge(TileIndex t, Owner o)
+static inline void SetBridgeMiddle(TileIndex t, Axis a)
 {
-	assert(IsBridgeMiddle(t));
-	SetTileOwner(t, o);
-	SB(_m[t].m5, 3, 3, 0 << 2 | 1);
-	SB(_m[t].m3, 0, 4, 0);
-}
-
-static inline void SetRailUnderBridge(TileIndex t, Owner o, RailType r)
-{
-	assert(IsBridgeMiddle(t));
-	SetTileOwner(t, o);
-	SB(_m[t].m5, 3, 3, 1 << 2 | TRANSPORT_RAIL);
-	SB(_m[t].m3, 0, 4, r);
-}
-
-static inline void SetRoadUnderBridge(TileIndex t, Owner o)
-{
-	assert(IsBridgeMiddle(t));
-	SetTileOwner(t, o);
-	SB(_m[t].m5, 3, 3, 1 << 2 | TRANSPORT_ROAD);
-	SB(_m[t].m3, 0, 4, 0);
+	assert(MayHaveBridgeAbove(t));
+	SETBIT(_m[t].extra, 6 + a);
 }
 
 
 static inline void MakeBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d, TransportType tt)
 {
-	uint northsouth = (d == DIAGDIR_NE || d == DIAGDIR_NW);
-
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);
 	_m[t].m2 = bridgetype << 4;
 	_m[t].m4 = 0;
-	_m[t].m5 = 1 << 7 | 0 << 6 | northsouth << 5 | tt << 1 | DiagDirToAxis(d);
+	_m[t].m5 = 1 << 7 | tt << 2 | d;
 }
 
 static inline void MakeRoadBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d)
@@ -207,28 +144,6 @@ static inline void MakeRailBridgeRamp(TileIndex t, Owner o, uint bridgetype, Dia
 {
 	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_RAIL);
 	_m[t].m3 = r;
-}
-
-
-static inline void MakeBridgeMiddle(TileIndex t, uint bridgetype, uint piece, Axis a, TransportType tt)
-{
-	SetTileType(t, MP_TUNNELBRIDGE);
-	SetTileOwner(t, OWNER_NONE);
-	_m[t].m2 = bridgetype << 4 | piece;
-	_m[t].m3 = 0;
-	_m[t].m4 = 0;
-	_m[t].m5 = 1 << 7 | 1 << 6 | 0 << 5 | 0 << 3 | tt << 1 | a;
-}
-
-static inline void MakeRoadBridgeMiddle(TileIndex t, uint bridgetype, uint piece, Axis a)
-{
-	MakeBridgeMiddle(t, bridgetype, piece, a, TRANSPORT_ROAD);
-}
-
-static inline void MakeRailBridgeMiddle(TileIndex t, uint bridgetype, uint piece, Axis a, RailType r)
-{
-	MakeBridgeMiddle(t, bridgetype, piece, a, TRANSPORT_RAIL);
-	SB(_m[t].m3, 4, 4, r);
 }
 
 

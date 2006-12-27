@@ -104,7 +104,6 @@ const Trackdir _dir_to_diag_trackdir[] = {
 
 RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 {
-	DiagDirection exitdir = TrackdirToExitdir(trackdir);
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			return GetRailType(tile);
@@ -120,26 +119,9 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 
 		case MP_TUNNELBRIDGE:
 			if (IsTunnel(tile)) {
-				if (GetTunnelTransportType(tile) == TRANSPORT_RAIL) {
-					return GetRailType(tile);
-				}
+				if (GetTunnelTransportType(tile) == TRANSPORT_RAIL) return GetRailType(tile);
 			} else {
-				if (IsBridgeRamp(tile)) {
-					if (GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
-						return GetRailType(tile);
-					}
-				} else {
-					if (GetBridgeAxis(tile) == DiagDirToAxis(exitdir)) {
-						if (GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
-							return GetRailTypeOnBridge(tile);
-						}
-					} else {
-						if (IsTransportUnderBridge(tile) &&
-								GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {
-							return GetRailType(tile);
-						}
-					}
-				}
+				if (GetBridgeTransportType(tile) == TRANSPORT_RAIL) return GetRailType(tile);
 			}
 			break;
 

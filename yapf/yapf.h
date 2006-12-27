@@ -95,6 +95,7 @@ typedef struct FollowTrack_t
 	TrackdirBits        m_new_td_bits;   ///< the new set of available trackdirs
 	DiagDirection       m_exitdir;       ///< exit direction (leaving the old tile)
 	bool                m_is_tunnel;     ///< last turn passed tunnel
+	bool                m_is_bridge;     ///< last turn passed bridge ramp
 	bool                m_is_station;    ///< last turn passed station
 	int                 m_tiles_skipped; ///< number of skipped tunnel or station tiles
 } FollowTrack_t;

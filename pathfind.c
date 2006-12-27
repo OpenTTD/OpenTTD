@@ -258,21 +258,27 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	RememberData rd;
 	TileIndex tile_org = tile;
 
-	// check if the old tile can be left at that direction
-	if (tpf->tracktype == TRANSPORT_ROAD) {
-		// road stops and depots now have a track (r4419)
-		// don't enter road stop from the back
-		if (IsRoadStopTile(tile) && GetRoadStopDir(tile) != direction) return;
-		// don't enter road depot from the back
-		if (IsTileDepotType(tile, TRANSPORT_ROAD) && GetRoadDepotDirection(tile) != direction) return;
-	}
-
-	if (IsTunnelTile(tile)) {
-		if (GetTunnelDirection(tile) != direction ||
-				GetTunnelTransportType(tile) != tpf->tracktype) {
-			return;
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		if (IsTunnel(tile)) {
+			if (GetTunnelDirection(tile) != direction ||
+					GetTunnelTransportType(tile) != tpf->tracktype) {
+				return;
+			}
+			tile = SkipToEndOfTunnel(tpf, tile, direction);
+		} else {
+			TileIndex tile_end;
+			if (GetBridgeRampDirection(tile) != direction ||
+					GetBridgeTransportType(tile) != tpf->tracktype) {
+				return;
+			}
+			//fprintf(stderr, "%s: Planning over bridge\n", __func__);
+			// TODO doesn't work - WHAT doesn't work?
+			TPFSetTileBit(tpf, tile, 14);
+			tile_end = GetOtherBridgeEnd(tile);
+			tpf->rd.cur_length += DistanceManhattan(tile, tile_end);
+			tile = tile_end;
+			TPFSetTileBit(tpf, tile, 14);
 		}
-		tile = SkipToEndOfTunnel(tpf, tile, direction);
 	}
 	tile += TileOffsByDiagDir(direction);
 
@@ -283,11 +289,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 		if (IsTileType(tile_org, MP_RAILWAY) || IsTileType(tile_org, MP_STATION) || IsTileType(tile_org, MP_TUNNELBRIDGE))
 			if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
-				/* Check if we are on a bridge (middle parts don't have an owner */
-				if (!IsBridgeTile(tile) || !IsBridgeMiddle(tile))
-					if (!IsBridgeTile(tile_org) || !IsBridgeMiddle(tile_org))
-						if (GetTileOwner(tile_org) != GetTileOwner(tile))
-							return;
+				if (GetTileOwner(tile_org) != GetTileOwner(tile)) return;
 	}
 
 	// check if the new tile can be entered from that direction
@@ -670,7 +672,6 @@ static void NTPEnum(NewTrackPathFinder* tpf, TileIndex tile, DiagDirection direc
 	uint track;
 	TileIndex tile_org;
 	StackedItem si;
-	FindLengthOfTunnelResult flotr;
 	int estimation;
 
 
@@ -708,22 +709,40 @@ callback_and_continue:
 start_at:
 		// If the tile is the entry tile of a tunnel, and we're not going out of the tunnel,
 		//   need to find the exit of the tunnel.
-		if (IsTunnelTile(tile) &&
-				GetTunnelDirection(tile) != ReverseDiagDir(direction)) {
-			/* We are not just driving out of the tunnel */
-			if (GetTunnelDirection(tile) != direction ||
-					GetTunnelTransportType(tile) != tpf->tracktype) {
-				// We are not driving into the tunnel, or it is an invalid tunnel
-				continue;
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+			if (IsTunnel(tile)) {
+				if (GetTunnelDirection(tile) != ReverseDiagDir(direction)) {
+					FindLengthOfTunnelResult flotr;
+
+					/* We are not just driving out of the tunnel */
+					if (GetTunnelDirection(tile) != direction ||
+							GetTunnelTransportType(tile) != tpf->tracktype) {
+						// We are not driving into the tunnel, or it is an invalid tunnel
+						continue;
+					}
+					if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
+						bits = 0;
+						break;
+					}
+					flotr = FindLengthOfTunnel(tile, direction);
+					si.cur_length += flotr.length * DIAG_FACTOR;
+					tile = flotr.tile;
+					// tile now points to the exit tile of the tunnel
+				}
+			} else {
+				TileIndex tile_end;
+				if (GetBridgeRampDirection(tile) != ReverseDiagDir(direction)) {
+					// We are not just leaving the bridge
+					if (GetBridgeRampDirection(tile) != direction ||
+							GetBridgeTransportType(tile) != tpf->tracktype) {
+						// Not entering the bridge or not compatible
+						continue;
+					}
+				}
+				tile_end = GetOtherBridgeEnd(tile);
+				si.cur_length += DistanceManhattan(tile, tile_end) * DIAG_FACTOR;
+				tile = tile_end;
 			}
-			if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
-				bits = 0;
-				break;
-			}
-			flotr = FindLengthOfTunnel(tile, direction);
-			si.cur_length += flotr.length * DIAG_FACTOR;
-			tile = flotr.tile;
-			// tile now points to the exit tile of the tunnel
 		}
 
 		// This is a special loop used to go through
@@ -751,12 +770,9 @@ start_at:
 				// Check that the tile contains exactly one track
 				if (bits == 0 || KILL_FIRST_BIT(bits) != 0) break;
 
-				/* Check the rail type only if the train is *NOT* on top of a bridge. */
-				if (!(IsBridgeTile(tile) && IsBridgeMiddle(tile) && GetBridgeAxis(tile) == DiagDirToAxis(direction))) {
-					if (!HASBIT(tpf->railtypes, IsTileType(tile, MP_STREET) ? GetRailTypeCrossing(tile) : GetRailType(tile))) {
-						bits = 0;
-						break;
-					}
+				if (!HASBIT(tpf->railtypes, IsTileType(tile, MP_STREET) ? GetRailTypeCrossing(tile) : GetRailType(tile))) {
+					bits = 0;
+					break;
 				}
 
 				///////////////////

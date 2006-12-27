@@ -181,6 +181,11 @@ static uint NPFTunnelCost(AyStarNode* current)
 	}
 }
 
+static inline uint NPFBridgeCost(AyStarNode *current)
+{
+	return NPF_TILE_LENGTH * GetBridgeLength(current->tile, GetOtherBridgeEnd(current->tile));
+}
+
 static uint NPFSlopeCost(AyStarNode* current)
 {
 	TileIndex next = current->tile + TileOffsByDiagDir(TrackdirToExitdir(current->direction));
@@ -265,11 +270,7 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	/* Determine base length */
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
-			if (IsTunnel(tile)) {
-				cost = NPFTunnelCost(current);
-			} else {
-				cost = NPF_TILE_LENGTH;
-			}
+			cost = IsTunnel(tile) ? NPFTunnelCost(current) : NPFBridgeCost(current);
 			break;
 
 		case MP_STREET:
@@ -310,12 +311,8 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	/* Determine base length */
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
-			if (IsTunnel(tile)) {
-				cost = NPFTunnelCost(current);
-				break;
-			}
-			/* Fall through if above if is false, it is a bridge
-			 * then. We treat that as ordinary rail */
+			cost = IsTunnel(tile) ? NPFTunnelCost(current) : NPFBridgeCost(current);
+			break;
 
 		case MP_RAILWAY:
 			cost = _trackdir_length[trackdir]; /* Should be different for diagonal tracks */
@@ -472,17 +469,7 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 
 		case MP_TUNNELBRIDGE:
 			if ((IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) ||
-					(IsBridge(tile) && (
-						(
-							IsBridgeRamp(tile) &&
-							GetBridgeTransportType(tile) == TRANSPORT_RAIL
-						) || (
-							IsBridgeMiddle(tile) &&
-							IsTransportUnderBridge(tile) &&
-							GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL &&
-							GetBridgeAxis(tile) != DiagDirToAxis(enterdir)
-						)
-					))) {
+					(IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL)) {
 				return IsTileOwner(tile, owner);
 			}
 			break;
@@ -526,6 +513,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	int i;
 	TrackdirBits trackdirbits, ts;
 	TransportType type = aystar->user_data[NPF_TYPE];
+	bool override_dst_check = false;
 	/* Initialize to 0, so we can jump out (return) somewhere an have no neighbours */
 	aystar->num_neighbours = 0;
 	DEBUG(npf, 4, "Expanding: (%d, %d, %d) [%d]", TileX(src_tile), TileY(src_tile), src_trackdir, src_tile);
@@ -536,6 +524,10 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		 * otherwise we wouldn't have got here. It is also facing us,
 		 * so we should skip it's body */
 		dst_tile = GetOtherTunnelEnd(src_tile);
+		override_dst_check = true;
+	} else if (IsBridgeTile(src_tile) && GetBridgeRampDirection(src_tile) == src_exitdir) {
+		dst_tile = GetOtherBridgeEnd(src_tile);
+		override_dst_check = true;
 	} else if (type != TRANSPORT_WATER && (IsRoadStopTile(src_tile) || IsTileDepotType(src_tile, type))) {
 		/* This is a road station or a train or road depot. We can enter and exit
 		 * those from one side only. Trackdirs don't support that (yet), so we'll
@@ -583,8 +575,14 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	/* I can't enter a tunnel entry/exit tile from a tile above the tunnel. Note
 	 * that I can enter the tunnel from a tile below the tunnel entrance. This
 	 * solves the problem of vehicles wanting to drive off a tunnel entrance */
-	if (IsTunnelTile(dst_tile) && GetTileZ(dst_tile) < GetTileZ(src_tile)) {
-		return;
+	if (!override_dst_check) {
+		if (IsTileType(dst_tile, MP_TUNNELBRIDGE)) {
+			if (IsTunnel(dst_tile)) {
+				if (GetTunnelDirection(dst_tile) != src_exitdir) return;
+			} else {
+				if (GetBridgeRampDirection(dst_tile) != src_exitdir) return;
+			}
+		}
 	}
 
 	/* check correct rail type (mono, maglev, etc) */

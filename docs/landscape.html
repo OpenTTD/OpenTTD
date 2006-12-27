@@ -554,31 +554,12 @@ m5 bits 7..4 clear: tunnel entrance/exit
 <li>m3 bits 3..0 = <a href="#TrackType">track type</a> for railway tunnel, must be 0 for road tunnel</li>
 <li>m4 bit 7 set = on snow or desert</li>
 </ul>
-m5 bit 7 set: bridge
-<ul><li>
-m5 bit 6 clear: bridge ending
+m5 bit 7 set: bridge ramp
 <ul>
-<li>m5 bit 5: clear - northern, set - southern ending</li>
-<li>m3 bits 3..0 = <a href="#TrackType">type of track</a> on the bridge, must be 0 for road bridge</li>
 <li>m1: <a href="#OwnershipInfo">owner</a> of the bridge</li>
-</ul>
-m5 bit 6 set: bridge middle part
-<ul>
-<li>m5 bit 5 clear:
-<ul>
-<li>m5 bits 4..3: land under bridge: <tt>0</tt> - grass, snow or desert, <tt>1</tt> - water</li>
-</ul>
-m5 bit 5 set:
-<ul>
-<li>m5 bits 4..3: transport route under bridge: <tt>0</tt> - railway, <tt>1</tt> - road</li>
-</ul>
-<li>m3 bits 7..4 = <a href="#TrackType">type of track</a> on the bridge, must be 0 for road bridge</li>
-<li>m3 bits 3..0 = <a href="#TrackType">type of track</a> under the bridge, if any</li>
-<li>m2 bits 3..0: bridge piece (<tt>0</tt>..<tt>5</tt>)
-<li>m1: <a href="#OwnershipInfo">owner</a> of the land under bridge</li>
-</ul></li>
-<li>m5 bits 2..1: <tt>0</tt> - railway bridge, <tt>1</tt> - road bridge</li>
-<li>m5 bit 0: clear - bridge in the X direction, set - bridge in the Y direction</li>
+<li>m3 bits 3..0 = <a href="#TrackType">type of track</a> on the bridge, must be 0 for road bridge</li>
+<li>m5 bits 3..2: <tt>0</tt> - railway bridge, <tt>1</tt> - road bridge</li>
+<li>m5 bit 0..1: DiagDirection onto the bridge</li>
 <li>m2 bits 7..4: <a name="BridgeType">bridge type</a>:
 <table>
 <tr><th align=left>Type&nbsp;</th><th align=left>Max. speed (mph)&nbsp;</th><th align=left>Description</th></tr>

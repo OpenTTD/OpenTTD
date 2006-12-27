@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "functions.h"
@@ -144,6 +145,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 				PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)) + PALETTE_MODIFIER_COLOR + SPR_BOUGHT_LAND,
 				ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 10, GetSlopeZ(ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2)
 			);
+			DrawBridgeMiddle(ti);
 			break;
 
 		default: {

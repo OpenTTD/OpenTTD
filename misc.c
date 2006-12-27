@@ -551,16 +551,26 @@ static void Load_MAPE(void)
 	uint size = MapSize();
 	uint i;
 
-	for (i = 0; i != size;) {
-		uint8 buf[1024];
-		uint j;
+	if (CheckSavegameVersion(42)) {
+		for (i = 0; i != size;) {
+			uint8 buf[1024];
+			uint j;
 
-		SlArray(buf, lengthof(buf), SLE_UINT8);
-		for (j = 0; j != lengthof(buf); j++) {
-			_m[i++].extra = GB(buf[j], 0, 2);
-			_m[i++].extra = GB(buf[j], 2, 2);
-			_m[i++].extra = GB(buf[j], 4, 2);
-			_m[i++].extra = GB(buf[j], 6, 2);
+			SlArray(buf, lengthof(buf), SLE_UINT8);
+			for (j = 0; j != lengthof(buf); j++) {
+				_m[i++].extra = GB(buf[j], 0, 2);
+				_m[i++].extra = GB(buf[j], 2, 2);
+				_m[i++].extra = GB(buf[j], 4, 2);
+				_m[i++].extra = GB(buf[j], 6, 2);
+			}
+		}
+	} else {
+		for (i = 0; i != size;) {
+			byte buf[4096];
+			uint j;
+
+			SlArray(buf, lengthof(buf), SLE_UINT8);
+			for (j = 0; j != lengthof(buf); j++) _m[i++].extra = buf[j];
 		}
 	}
 }
@@ -570,17 +580,12 @@ static void Save_MAPE(void)
 	uint size = MapSize();
 	uint i;
 
-	SlSetLength(size / 4);
+	SlSetLength(size);
 	for (i = 0; i != size;) {
-		uint8 buf[1024];
+		uint8 buf[4096];
 		uint j;
 
-		for (j = 0; j != lengthof(buf); j++) {
-			buf[j]  = _m[i++].extra << 0;
-			buf[j] |= _m[i++].extra << 2;
-			buf[j] |= _m[i++].extra << 4;
-			buf[j] |= _m[i++].extra << 6;
-		}
+		for (j = 0; j != lengthof(buf); j++) buf[j] = _m[i++].extra;
 		SlArray(buf, lengthof(buf), SLE_UINT8);
 	}
 }

@@ -87,11 +87,6 @@ static inline RailType GetRailTypeCrossing(TileIndex t)
 	return (RailType)GB(_m[t].m4, 0, 4);
 }
 
-static inline RailType GetRailTypeOnBridge(TileIndex t)
-{
-	return (RailType)GB(_m[t].m3, 4, 4);
-}
-
 static inline void SetRailType(TileIndex t, RailType r)
 {
 	SB(_m[t].m3, 0, 4, r);
@@ -101,11 +96,6 @@ static inline void SetRailType(TileIndex t, RailType r)
 static inline void SetRailTypeCrossing(TileIndex t, RailType r)
 {
 	SB(_m[t].m4, 0, 4, r);
-}
-
-static inline void SetRailTypeOnBridge(TileIndex t, RailType r)
-{
-	SB(_m[t].m3, 4, 4, r);
 }
 
 

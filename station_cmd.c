@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "debug.h"
 #include "functions.h"
 #include "station_map.h"
@@ -795,6 +796,10 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 	int flat_z;
 
 	BEGIN_TILE_LOOP(tile_cur, w, h, tile)
+		if (MayHaveBridgeAbove(tile_cur) && IsBridgeAbove(tile_cur)) {
+			return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+		}
+
 		if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
 
 		tileh = GetTileSlope(tile_cur, &z);
