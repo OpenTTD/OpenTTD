@@ -92,7 +92,7 @@ static void SetMIDITypeIfNeeded(const FSSpec *spec)
 	if (info.fdType != midiType && !(info.fdFlags & kIsAlias)) {
 		info.fdType = midiType;
 		FSpSetFInfo(spec, &info);
-		DEBUG(driver, 3) ("qtmidi: changed filetype to 'Midi'");
+		DEBUG(driver, 3, "qtmidi: changed filetype to 'Midi'");
 	}
 }
 
@@ -116,7 +116,7 @@ static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 	assert(path != NULL);
 	assert(moov != NULL);
 
-	DEBUG(driver, 2) ("qtmidi: begin loading '%s'...", path);
+	DEBUG(driver, 2, "qtmidi: start loading '%s'...", path);
 
 	/*
 	 * XXX Manual check for MIDI header ('MThd'), as I don't know how to make
@@ -130,7 +130,7 @@ static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 	close(fd);
 	if (ret < 4) return false;
 
-	DEBUG(driver, 3) ("qtmidi: header is '%.4s'", magic);
+	DEBUG(driver, 3, "qtmidi: header is '%.4s'", magic);
 	if (magic[0] != 'M' || magic[1] != 'T' || magic[2] != 'h' || magic[3] != 'd')
 		return false;
 
@@ -138,15 +138,14 @@ static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 	SetMIDITypeIfNeeded(&fsspec);
 
 	if (OpenMovieFile(&fsspec, &refnum, fsRdPerm) != noErr) return false;
-	DEBUG(driver, 1) ("qtmidi: '%s' successfully opened", path);
+	DEBUG(driver, 3, "qtmidi: '%s' successfully opened", path);
 
 	if (noErr != NewMovieFromFile(moov, refnum, &resid, NULL,
-				newMovieActive | newMovieDontAskUnresolvedDataRefs, NULL))
-	{
+				newMovieActive | newMovieDontAskUnresolvedDataRefs, NULL)) {
 		CloseMovieFile(refnum);
 		return false;
 	}
-	DEBUG(driver, 2) ("qtmidi: movie container created");
+	DEBUG(driver, 3, "qtmidi: movie container created");
 
 	CloseMovieFile(refnum);
 	return true;
@@ -171,14 +170,12 @@ static void InitQuickTimeIfNeeded(void)
 
 	if (_quicktime_started) return;
 
-	DEBUG(driver, 2) ("qtmidi: trying to initialize Quicktime");
+	DEBUG(driver, 2, "qtmidi: initializing Quicktime");
 	/* Be polite: check wether QuickTime is available and initialize it. */
 	_quicktime_started =
 		(noErr == Gestalt(gestaltQuickTime, &dummy)) &&
 		(noErr == EnterMovies());
-	DEBUG(driver, 1) ("qtmidi: Quicktime was %s initialized",
-		_quicktime_started ? "successfully" : "NOT"
-	);
+	if (!_quicktime_started) DEBUG(driver, 0, "qtmidi: Quicktime initialization failed!);
 }
 
 
@@ -256,10 +253,10 @@ static void StopDriver(void)
 {
 	if (!_quicktime_started) return;
 
-	DEBUG(driver, 2) ("qtmidi: trying to stop driver...");
+	DEBUG(driver, 2, "qtmidi: stopping driver...");
 	switch (_quicktime_state) {
 		case QT_STATE_IDLE:
-			DEBUG(driver, 3) ("qtmidi: nothing to do (already idle)");
+			DEBUG(driver, 3, "qtmidi: stopping not needed, already idle");
 			/* Do nothing. */
 			break;
 		case QT_STATE_PLAY:
@@ -270,7 +267,6 @@ static void StopDriver(void)
 
 	ExitMovies();
 	_quicktime_started = false;
-	DEBUG(driver, 1) ("qtmidi: driver successfully stopped");
 }
 
 
@@ -283,15 +279,15 @@ static void PlaySong(const char *filename)
 {
 	if (!_quicktime_started) return;
 
-	DEBUG(driver, 3) ("qtmidi: request playing of '%s'n", filename);
+	DEBUG(driver, 2, "qtmidi: trying to play '%s'", filename);
 	switch (_quicktime_state) {
 		case QT_STATE_PLAY:
 			StopSong();
-			DEBUG(driver, 2) ("qtmidi: previous tune stopped");
+			DEBUG(driver, 3, "qtmidi: previous tune stopped");
 			/* XXX Fall-through -- no break needed. */
 		case QT_STATE_STOP:
 			DisposeMovie(_quicktime_movie);
-			DEBUG(driver, 2) ("qtmidi: previous tune disposed");
+			DEBUG(driver, 3, "qtmidi: previous tune disposed");
 			_quicktime_state = QT_STATE_IDLE;
 			/* XXX Fall-through -- no break needed. */
 		case QT_STATE_IDLE:
@@ -300,7 +296,7 @@ static void PlaySong(const char *filename)
 			StartMovie(_quicktime_movie);
 			_quicktime_state = QT_STATE_PLAY;
 	}
-	DEBUG(driver, 1) ("qtmidi: playing '%s'", filename);
+	DEBUG(driver, 3, "qtmidi: playing '%s'", filename);
 }
 
 
@@ -315,13 +311,13 @@ static void StopSong(void)
 		case QT_STATE_IDLE:
 			/* XXX Fall-through -- no break needed. */
 		case QT_STATE_STOP:
-			DEBUG(driver, 2) ("qtmidi: stop requested, but already idle");
+			DEBUG(driver, 3, "qtmidi: stop requested, but already idle");
 			/* Do nothing. */
 			break;
 		case QT_STATE_PLAY:
 			StopMovie(_quicktime_movie);
 			_quicktime_state = QT_STATE_STOP;
-			DEBUG(driver, 1) ("qtmidi: player stopped");
+			DEBUG(driver, 3, "qtmidi: player stopped");
 	}
 }
 
@@ -341,7 +337,7 @@ static void SetVolume(byte vol)
 
 	_quicktime_volume = vol;
 
-	DEBUG(driver, 3) ("qtmidi: set volume to %u (%hi)", vol, VOLUME);
+	DEBUG(driver, 2, "qtmidi: set volume to %u (%hi)", vol, VOLUME);
 	switch (_quicktime_state) {
 		case QT_STATE_IDLE:
 			/* Do nothing. */
