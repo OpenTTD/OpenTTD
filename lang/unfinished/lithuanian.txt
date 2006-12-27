@@ -373,6 +373,7 @@ STR_SORT_BY_RATING_MAX                                          :Kroviniu reitin
 STR_NO_WAITING_CARGO                                            :{BLACK}Jokiu kroviniu nera pakrovimui
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Pazymeti visus pastatus
 STR_SELECT_ALL_TYPES                                            :{BLACK}Pazymeti visus krovinio tipus (iskaitant nelaukiancius kroviniu)
+STR_REPLACE_VEHICLES                                            :{BLACK}Keisti tr. priemones
 
 ############ range for months starts
 STR_0162_JAN                                                    :Sau
@@ -2437,10 +2438,12 @@ STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Traukinys per ilgas
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Sukeisti traukinius galima tiktai sustabdytus depe
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} traukiniai
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nauji Traukiniai
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nauji Elektriniai Traukiniai
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nauji Vienbegiai Traukiniai
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nauji Maglev Traukiniai
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Pirkti
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonuoti Masina
 STR_CLONE_TRAIN                                                 :{BLACK}Klonuoti Traukini
@@ -2786,6 +2789,9 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nera ins
 STR_NEWGRF_FILENAME                                             :{BLACK}Failo vardas: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 
+
+
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Pasirinkti valiuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Keitimo santykis: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skyriklis:
@@ -2813,10 +2819,16 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Rodyti v
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Rodyti visus laivus, kuriu uzduotyse yra pamineta si stotele
 
 
+### depot strings
 
 STR_SELL                                                        :{BLACK}Parduoti
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Keisti tr. priemones
+
+
+
+
+
+
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Keisti tr. priemones {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Pradeti keitima
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Sustabdyti keitima
@@ -2835,11 +2847,14 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Variklio
 
 STR_ENGINES                                                     :Varikliai
 
+
+
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Paspauskite noredami sustabdyti automobilius is saraso
 STR_MASS_START_LIST_TIP                                         :{BLACK}Paspauskite noredami paleisti automobilius is saraso
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zenklu sarasas - {COMMA} Zenklai
+
 
 ############ Lists rail types
 
@@ -2877,12 +2892,14 @@ STR_HEIGHTMAP_ROTATION                                          :{BLACK}Zemelapi
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Juros lygis:
 STR_SMOOTHNESS                                                  :{BLACK}Jautrumas:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sniego linijos aukstis:
+STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Miestu kiekis:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Industriju kiekis:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_SNOW_LINE_UP                                                :{BLACK}Pakeisti sniego linijos auksti vienu auksciau
 STR_SNOW_LINE_DOWN                                              :{BLACK}Pakeisti sniego linija viena zemiau
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Pakeisti sniego linijos auksti
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Keisti pradzios metus
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skales ispejimas
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Perdaryti pagrindini zemelapi per daug nerekomenduojama. Testi generavima?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
@@ -2894,15 +2911,23 @@ STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Nutraukt
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Ar jus tikrai norite nutraukti generavima?
 STR_PROGRESS                                                    :{WHITE}{NUM}% pabaigta
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Pasaulio generacija
+STR_TREE_GENERATION                                             :{BLACK}Medziu generacija
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Nejudinama generacija
+STR_CLEARING_TILES                                              :{BLACK}Daubų ir uolų generacija
 STR_SETTINGUP_GAME                                              :{BLACK}Sukurti zaidima
 STR_PREPARING_TILELOOP                                          :{BLACK}Paleidziamas tile-loop
 STR_PREPARING_GAME                                              :{BLACK}Ruosiamas zaidimas
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Sis veiksmas pakeite sunkumo lygi i specialu
 STR_SE_FLAT_WORLD                                               :{WHITE}Lygi zeme
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generuoti lygia zeme
 STR_SE_RANDOM_LAND                                              :{WHITE}Bet kokia zeme
 STR_SE_NEW_WORLD                                                :{BLACK}Sukurti nauja scenariju
 STR_SE_CAPTION                                                  :{WHITE}Scenarijaus tipas
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Pakeisk aukštį lygumos vienu zemyn
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Pakelti lygios zemes lygi vienu lygiu
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Keisti lygumos auksti
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Lygumos aukstis:
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centruoti maza zemelapi i sita vieta
 
@@ -2919,4 +2944,8 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Mazi oro
 STR_LARGE_AIRPORTS                                              :{BLACK}Dideli orouostai
 STR_HUB_AIRPORTS                                                :{BLACK}Issisakojantys orouostai
 STR_HELIPORTS                                                   :{BLACK}Heliportai
+
+############ Tooltip measurment
+
+
 ########

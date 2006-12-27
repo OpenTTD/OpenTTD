@@ -292,7 +292,7 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Càrrega
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Joc Nou
-STR_0141_LOAD_GAME                                              :{BLACK}Carrega el Joc
+STR_0141_LOAD_GAME                                              :{BLACK}Carrega un Joc
 STR_SINGLE_PLAYER                                               :{BLACK}Jugador individual
 STR_MULTIPLAYER                                                 :{BLACK}Multijugador
 
@@ -1796,7 +1796,7 @@ STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...No es
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Desa el Joc
-STR_4001_LOAD_GAME                                              :{WHITE}Carrega el Joc
+STR_4001_LOAD_GAME                                              :{WHITE}Carrega un Joc
 STR_4002_SAVE                                                   :{BLACK}Desa
 STR_4003_DELETE                                                 :{BLACK}Esborra
 STR_4004                                                        :{COMPANY}, {DATE_LONG}

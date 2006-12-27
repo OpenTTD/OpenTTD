@@ -154,6 +154,7 @@ STR_00B0_MAP                                                    :{WHITE}Kart - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spillinnstillinger
 STR_00B2_MESSAGE                                                :{YELLOW}Melding
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Melding fra {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Advarsel!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan ikke gjøre dette...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde dette området...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Opprinnelig opphavsbeskyttet {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
@@ -286,8 +287,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informas
 STR_013E_CAPACITIES                                             :{BLACK}Kapasitet
 STR_013E_TOTAL_CARGO                                            :{BLACK}Total last
 STR_013F_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Total kapasitet på dette toget:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nytt spill
 STR_0141_LOAD_GAME                                              :{BLACK}Last inn spill
 STR_SINGLE_PLAYER                                               :{BLACK}Énspiller
@@ -381,6 +384,7 @@ STR_SORT_BY_VALUE                                               :Verdi
 STR_SORT_BY_FACILITY                                            :Stasjonstype
 STR_SORT_BY_WAITING                                             :Verdi av ventende last
 STR_SORT_BY_RATING_MAX                                          :Vurdering av last
+STR_ENGINE_SORT_ENGINE_ID                                       :MaskinID (klassisk type)
 STR_ENGINE_SORT_COST                                            :Kostnad
 STR_ENGINE_SORT_POWER                                           :Kraft
 STR_ENGINE_SORT_INTRO_DATE                                      :Introduksjonsdato
@@ -390,7 +394,15 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lastkapasitet
 STR_NO_WAITING_CARGO                                            :{BLACK}Ingen last venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velg alle anlegg
 STR_SELECT_ALL_TYPES                                            :{BLACK}Velg alle lasttyper (inkludert last som ikke venter)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Se en liste over tilgjengelige maskindesigner for dette kjøretøyet.
+STR_MANAGE_LIST                                                 :{BLACK}Behandl liste
+STR_MANAGE_LIST_TIP                                             :{BLACK}Send instruksjoner til alle kjøretøyer i denne listen
 STR_REPLACE_VEHICLES                                            :Bytt ut kjøretøy
+STR_SEND_TRAIN_TO_DEPOT                                         :Send til depoet
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Send til depoet
+STR_SEND_SHIP_TO_DEPOT                                          :Send til depoet
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Send til hangar
+STR_SEND_FOR_SERVICING                                          :Send til vedlikehold
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -907,6 +919,8 @@ STR_CURR_RUR                                                    :Russisk rubel (
 STR_CURR_SIT                                                    :Slovensk tolar (SIT)
 STR_CURR_SEK                                                    :Svensk krone (SEK)
 STR_CURR_YTL                                                    :Tyrkiske lire (YTL)
+STR_CURR_SKK                                                    :Slovakisk Koruna (SKK)
+STR_CURR_BRR                                                    :Brasiliansk Real (BRL)
 
 STR_CURR_CUSTOM                                                 :Egendefinert...
 
@@ -1007,6 +1021,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forby t
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Slå sammen stasjoner som blir bygget på siden av hverandre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Forlat stasjonen når én type varevogn er full, hvis 'full last' er på: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Bruk forbedret lastingsalgoritme: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Last kjøretøy gradvis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflasjon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Lever varer til en stasjon bare når varen trengs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillat bygging av veldig lange broer: {ORANGE}{STRING}
@@ -1023,9 +1038,11 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Flytt p
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillat bestikkelser av bystyret: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke-ensartede stasjoner: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global rutesøking (NGR, overstyrer NTK): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Alltid tillat bygging av små flyplasser: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Vis en advarsel hvis et tog har kjørt seg vill{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Inspiser kjøretøyenes ordrer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, men ekskluder stoppede kjøretøy
@@ -1062,10 +1079,12 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks st
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Utfør vedlikehold på helikopter automatisk på helikopterlandingsteder: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskapsverktøylinja til tog-/vei-/vann- og flyplassverktøylinjene: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ved rulling med musen, flytt synsvinkelen i den motsatte retning: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Vis et målings-verktøytips når forskjellige "build-tools" brukes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Vis firmaovertakelser: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eget firma
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle firmaer
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Foretrekk lagchat med <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antall tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antall kjøretøy per spiller: {ORANGE}{STRING}
@@ -1090,6 +1109,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standar
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard vedlikeholdsintervall for skip: {ORANGE}deaktivert
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Deaktiver vedlikehold når havarier er slått av: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiver fartsgrenser for vogner: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Deaktiver elektriske tog: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Farge i avisen kommer i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Start spillet i år: {ORANGE}{STRING}
@@ -2492,16 +2512,20 @@ STR_INVALID_ORDER                                               :{RED} (Ugyldig 
 STR_UNKNOWN_DESTINATION                                         :ukjent destinasjon
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} fra {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} fra {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tog {COMMA} venter i togstallen
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nye tog/vogner
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er for langt
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan kun endres når det står stille i togstallen
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tog
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nye tog/vogner for jernbane
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nytt elektrisk tog
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye tog/vogner for monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye tog/vogner for maglev
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Skinnekjøretøy
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Kjøp tog/vogn
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klon et kjøretøy
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Dette vil skape en kopi av et kjøretøy. CTRL-klikk vil også sørge for delte ordrer
@@ -2665,6 +2689,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Bygg om 
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Bygg om bil
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Bygg om kjøretøyet til å ta den valgte lasten
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan ikke bygge om bil...
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Velg en type varer som kjøretøyet skal lastes med
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Bygg havn
@@ -2855,6 +2880,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Hvor mye
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Størrelsen på firmaets lån
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total poeng av mulige poeng
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Instillinger
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Innstillinger for ny grafikk
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Bruk forandringene
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Sett parametre
@@ -2862,6 +2888,31 @@ STR_NEWGRF_TIP                                                  :{BLACK}En liste
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Der er for tiden ikke noen nye grafikkfiler installert! Manualen inneholder instruksjoner for installering av ny grafikk
 STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjøre forandringer i et kjørende spill; Dette kan krasje OpenTTD.{}Er du helt sikker på at du vil gjøre dette?
+
+STR_NEWGRF_ADD                                                  :{BLACK}Legg til
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Legg en ny NewGRF-fil til listen
+STR_NEWGRF_REMOVE                                               :{BLACK}Fjern
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Fjern den valgte NewGRF filen fra listen
+STR_NEWGRF_MOVEUP                                               :{BLACK}Flytt opp
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Flytt den valgte NewGRF-filen oppover listen
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Flytt ned
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Flytt den valgte NewGRF-filen nedover listen
+STR_NEWGRF_FILE_TIP                                             :{BLACK}En liste over NewGRF-filene som er installert. Klikk på en fil for å forandre parameterene
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parametere: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Skriv NewGRF parameterene
+STR_NEWGRF_NO_INFO                                              :{BLACK}Ingen informasjon tilgjengelig
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Tilgjengelige NewGRF-filer
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Legg til i seleksjonen
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Legg den valgte NewGRF filen til i konfigurasjonen din
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Søk på nytt
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Oppdater listen over tilgjengelige NewGRF filer
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke legge til fil: to eller flere GFR ID-er
+
+STR_NEWGRF_NOT_FOUND                                            :{RED}Ingen passende fil funnet
+STR_NEWGRF_DISABLED                                             :{RED}Deaktivert
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanlig valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -2989,6 +3040,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vekt: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitet: {GOLD}{COMMA} passasjerer, {COMMA} sekker post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{POWER}{BLACK} Vekt: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Utstyrbart til: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Alle varetyper
+STR_PURCHASE_INFO_ALL_BUT                                       :Alt utenom {GOLD}
 
 ########### String for New Landscape Generator
 
@@ -3063,5 +3117,9 @@ STR_HELIPORTS                                                   :{BLACK}Helikopt
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK}Lengde: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Område: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengde: {NUM}{}Høydeforskjell: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Område: {NUM} x {NUM}{}Høydeforskjell: {NUM} m
 
 ########

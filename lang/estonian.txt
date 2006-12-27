@@ -211,6 +211,7 @@ STR_00B0_MAP                                                    :{WHITE}Kaart - 
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Mängu seaded
 STR_00B2_MESSAGE                                                :{YELLOW}Sõnum
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}{STRING} teatab
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Ettevaatust!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Seda ei saa teha....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Seda ala ei saa puhastada....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originaali autoriõigus {COPYRIGHT} 1995 Chris Sawyer, Kõik õigused kaitstud
@@ -450,7 +451,15 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Laadungi mahuta
 STR_NO_WAITING_CARGO                                            :{BLACK}Kaupa pole ootamas
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vali kõik tööstused
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vali kõik kaubatüüpid (ka mitteoodatav kaup)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Vaata nimekirja sellele sõidukitüübile saada olevatest veduritest.
+STR_MANAGE_LIST                                                 :{BLACK}Halda nimekirja
+STR_MANAGE_LIST_TIP                                             :{BLACK}Saada juhised kõigile selles nimekirjas olevatele sõidukitele
 STR_REPLACE_VEHICLES                                            :Asenda sõidukeid
+STR_SEND_TRAIN_TO_DEPOT                                         :Saada depoose
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Saada depoose
+STR_SEND_SHIP_TO_DEPOT                                          :Saada depoose
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Saada angaari
+STR_SEND_FOR_SERVICING                                          :Saada teenindusse
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jaan
@@ -1069,6 +1078,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Keela r
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Ühenda üksteise vastu ehitatud jaamad kokku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Lahku jaamast, kui üks kaupadest on täis laetud: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Kasuta parandatud laadimisalgoritmi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Laadi sõidukeid järkjärguliselt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflatsioon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Vii kaup jaama ainult siis, kui seal on nõudlus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Luba väga pikkade sildade ehitus: {ORANGE}{STRING}
@@ -1085,6 +1095,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Keri va
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Luba kohalikele võimudele altkäemaksu maksmine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Luba suvalise kujuga jaamad: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uus teeotsimise algoritm(NPF asendab NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Raskete rongide simuleerimiseks kasutatav raskuse korrutaja: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Luba väikesed lennujaamad kuni mängu lõpuni: {ORANGE}{STRING}
 
@@ -1155,6 +1166,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Vaikimi
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Vaikimisi teenindusvahemik laevadele: {ORANGE}välja lülitatud
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Peata hooldus, kui purunemine on keelatud: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Luba vaguni kiiruse limiidid: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Keela elektrirongid: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Värvilised uudised ilmuvad aastast {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Alustamise aeg: {ORANGE}{STRING}
@@ -1354,6 +1366,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Parooli
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER ON MAAS
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER ON TÄIS
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIOON EI SOBI
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF SOBIMATUS
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Liitu mänguga
 
@@ -2569,6 +2582,7 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Uus Raud
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Uued Elektrilised Raudtee sõidukid
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Uus Monorelssi Sõiduk
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Uus Maglevi Sõiduk
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Raudteesõidukid
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Ehita sõiduk
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klooni sõiduk
@@ -2924,6 +2938,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Raha arv
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Raha arv, mida see firma on võtnud laenuks
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Kokku punkte võimalikest punktidest
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF seaded
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Uue graafika sätted
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Kinnita sätted
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Vali parameetrid
@@ -2932,18 +2947,29 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Sa ei ol
 STR_NEWGRF_FILENAME                                             :{BLACK}Faili nimi: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Sa oled tegemas muudatusi töötavasse mängu; see võib OpenTTD kokku jooksutada.{}Kas sa oled täielikult veendunud selles?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Lisa
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Lisa nimekirja NewGRF fail
 STR_NEWGRF_REMOVE                                               :{BLACK}Eemalda
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Eemalda nimekirjast valitud NewGRF fail
 STR_NEWGRF_MOVEUP                                               :{BLACK}Liiguta Üles
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Liiguta valitud NewGRF fail nimekirjas üles
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Liiguta Alla
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Liiguta valitud NewGRF fail nimekirjas alla
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Nimekiri installeerimata NewGRF failidest. Parameetrite muutmiseks klõpsa failil.
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parameetrid: {SILVER}{STRING}
 STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Sisesta NewGRF parameetrid
 STR_NEWGRF_NO_INFO                                              :{BLACK}Informatsioon puudub
 
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Olemasolevad NewGRF failid
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Lisa valikule
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Lisa valitud NewGRF fail enda seadistusse
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Skanni failid uuesti
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Uuenda saadaval olevate NewGRF failide nimekirja
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ei saa faili lisada: korduv GRF ID
 
+STR_NEWGRF_NOT_FOUND                                            :{RED}Sobivat faili ei leitud
 STR_NEWGRF_DISABLED                                             :{RED}Väljas
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Personaalne valuuta

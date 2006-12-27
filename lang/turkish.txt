@@ -154,6 +154,7 @@ STR_00B0_MAP                                                    :{WHITE}Harita -
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Seçenekler
 STR_00B2_MESSAGE                                                :{YELLOW}Mesaj
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaj: {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Uyarı!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Yapılamaz....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Burası temizlenemez....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Orjinal kopyalama hakkı {COPYRIGHT} 1995 Chris Sawyer, Her Hakkı Saklıdır
@@ -2538,6 +2539,7 @@ STR_8826_GO_TO                                                  :{BLACK}Git
 STR_8827_FULL_LOAD                                              :{BLACK}Doldur
 STR_8828_UNLOAD                                                 :{BLACK}Boşalt
 STR_REFIT                                                       :{BLACK}Modifiye
+STR_REFIT_ORDER                                                 :(Moifiye ile > {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Komutlar)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Komutların Sonu - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3034,6 +3036,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Ağırl�
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Fiyat: {GOLD}{CURRENCY}{BLACK} Hız: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite: {GOLD}{COMMA} yolcu, {COMMA} çanta posta
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Güç Veren Vagonlar: {GOLD}+{POWER}{BLACK} Ağırlık: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modifiye edilebilir: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tüm kargo türleri
 STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD} hariç hepsi
 
