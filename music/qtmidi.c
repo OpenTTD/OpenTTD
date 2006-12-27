@@ -175,7 +175,7 @@ static void InitQuickTimeIfNeeded(void)
 	_quicktime_started =
 		(noErr == Gestalt(gestaltQuickTime, &dummy)) &&
 		(noErr == EnterMovies());
-	if (!_quicktime_started) DEBUG(driver, 0, "qtmidi: Quicktime initialization failed!);
+	if (!_quicktime_started) DEBUG(driver, 0, "qtmidi: Quicktime initialization failed!");
 }
 
 
