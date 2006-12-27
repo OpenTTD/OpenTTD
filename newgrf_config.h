@@ -44,6 +44,7 @@ void ScanNewGRFFiles(void);
 const GRFConfig *FindGRFConfig(uint32 grfid, uint8 *md5sum);
 GRFConfig *GetGRFConfig(uint32 grfid);
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src);
+void AppendStaticGRFConfigs(GRFConfig **dst);
 void ClearGRFConfig(GRFConfig **config);
 void ClearGRFConfigList(GRFConfig **config);
 void ResetGRFConfig(bool defaults);
