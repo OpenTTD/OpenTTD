@@ -25,20 +25,6 @@ int _debug_freetype_level;
 int _debug_sl_level;
 
 
-void CDECL debug(const char *dbg, ...)
-{
-	va_list va;
-	const char *s;
-	char buf[1024];
-
-	va_start(va, dbg);
-	s = va_arg(va, const char*);
-	vsnprintf(buf, lengthof(buf), s, va);
-	va_end(va);
-	fprintf(stderr, "dbg: [%s] %s\n", dbg, buf);
-	IConsoleDebug(dbg, buf);
-}
-
 typedef struct DebugLevel {
 	const char *name;
 	int *level;
@@ -62,6 +48,39 @@ typedef struct DebugLevel {
 	DEBUG_LEVEL(sl),
 	};
 #undef DEBUG_LEVEL
+
+#if !defined(NO_DEBUG_MESSAGES)
+
+/** Functionized DEBUG macro for compilers that don't support
+ * variadic macros (__VA_ARGS__) such as...yes MSVC2003 and lower */
+#if defined(NO_VARARG_MACRO)
+void CDECL DEBUG(int name, int level, ...)
+{
+	va_list va;
+	const char *dbg;
+	const DebugLevel *dl = &debug_level[name];
+
+	if (level != 0 && *dl->level < level) return;
+	dbg = dl->name;
+	va_start(va, level);
+#else
+void CDECL debug(const char *dbg, ...)
+{
+	va_list va;
+	va_start(va, dbg);
+#endif /* NO_VARARG_MACRO */
+	{
+		const char *s;
+		char buf[1024];
+
+		s = va_arg(va, const char*);
+		vsnprintf(buf, lengthof(buf), s, va);
+		va_end(va);
+		fprintf(stderr, "dbg: [%s] %s\n", dbg, buf);
+		IConsoleDebug(dbg, buf);
+	}
+}
+#endif /* NO_DEBUG_MESSAGES */
 
 void SetDebugString(const char *s)
 {

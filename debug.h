@@ -17,10 +17,43 @@
  * 6.. - extremely detailed spamming
  */
 
+/* Of course MSVC 2003 and lower has no support for variadic macros
+ * so we need to work around this... *sigh* */
+#if defined(_MSC_VER) && (_MSC_VER < 1400)
+	#define NO_VARARG_MACRO
+#endif
+
+#if defined(NO_VARARG_MACRO)
+	enum DebugLevelType {
+		ai,
+		driver,
+		grf,
+		map,
+		misc,
+		ms,
+		net,
+		sprite,
+		oldloader,
+		ntp,
+		npf,
+		yapf,
+		freetype,
+		sl,
+	};
+#endif /* NO_VARARG_MACRO */
+
 #ifdef NO_DEBUG_MESSAGES
-	#define DEBUG(name, level, ...)
-#else
-	#if defined(__GNUC__) && (__GNUC__ < 3)
+	#if defined(NO_VARARG_MACRO)
+		static inline void DEBUG(int name, int level, ...) {}
+	#elif defined(__GNUC__) && (__GNUC__ < 3)
+		#define DEBUG(name, level, args...)
+	#else
+		#define DEBUG(name, level, ...)
+	#endif
+#else /* NO_DEBUG_MESSAGES */
+	#if defined(NO_VARARG_MACRO)
+		void CDECL DEBUG(int name, int level, ...);
+	#elif defined(__GNUC__) && (__GNUC__ < 3)
 		#define DEBUG(name, level, args...) if ((level == 0) || ( _debug_ ## name ## _level >= level)) debug(#name, args)
 	#else
 		#define DEBUG(name, level, ...) if (level == 0 || _debug_ ## name ## _level >= level) debug(#name, __VA_ARGS__)
@@ -40,18 +73,20 @@
 	extern int _debug_yapf_level;
 	extern int _debug_freetype_level;
 	extern int _debug_sl_level;
-#endif
 
-void CDECL debug(const char *dbg, ...);
+	#if !defined(NO_VARARG_MACRO)
+		void CDECL debug(const char *dbg, ...);
+	#endif /* NO_VARARG_MACRO */
+#endif /* NO_DEBUG_MESSAGES */
 
 void SetDebugString(const char *s);
 const char *GetDebugString(void);
 
 /* MSVCRT of course has to have a different syntax for long long *sigh* */
 #if defined(_MSC_VER) || defined(__MINGW32__)
-# define OTTD_PRINTF64 "I64"
+	#define OTTD_PRINTF64 "I64"
 #else
-# define OTTD_PRINTF64 "ll"
+	#define OTTD_PRINTF64 "ll"
 #endif
 
 // Used for profiling

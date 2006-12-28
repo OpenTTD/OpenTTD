@@ -118,8 +118,7 @@ static const char *DedicatedVideoStart(const char * const *parm)
 	_screen.height = _cur_resolution[1];
 	_dedicated_video_mem = malloc(_cur_resolution[0]*_cur_resolution[1]);
 
-	_debug_net_level = 6;
-	_debug_misc_level = 0;
+	SetDebugString("net=6");
 
 #ifdef WIN32
 	// For win32 we need to allocate a console (debug mode does the same)
