@@ -547,19 +547,19 @@ typedef struct Units {
 
 /* Unit conversions */
 static const Units units[] = {
-	{ // Imperial (Original, mph, hp, metric ton, litre, metric ton force)
+	{ // Imperial (Original, mph, hp, metric ton, litre, kN)
 		  10,  4, STR_UNITS_VELOCITY_IMPERIAL,
 		   1,  0, STR_UNITS_POWER_IMPERIAL,
 		   1,  0, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
 		1000,  0, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
-		 835, 13, STR_UNITS_FORCE_METRIC,
+		   1,  0, STR_UNITS_FORCE_SI,
 	},
-	{ // Metric (km/h, hp, metric ton, litre, metric ton force)
+	{ // Metric (km/h, hp, metric ton, litre, kN)
 		   1,  0, STR_UNITS_VELOCITY_METRIC,
 		   1,  0, STR_UNITS_POWER_METRIC,
 		   1,  0, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
 		1000,  0, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
-		 835, 13, STR_UNITS_FORCE_METRIC,
+		   1,  0, STR_UNITS_FORCE_SI,
 	},
 	{ // SI (m/s, kilowatt, kilogram, cubic metres, kilonewton)
 		 284, 10, STR_UNITS_VELOCITY_SI,
