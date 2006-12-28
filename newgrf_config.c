@@ -181,7 +181,12 @@ void ResetGRFConfig(bool defaults)
 {
 	GRFConfig **c = &_grfconfig;
 
-	if (defaults) c = CopyGRFConfigList(c, _grfconfig_newgame);
+	if (defaults) {
+		c = CopyGRFConfigList(c, _grfconfig_newgame);
+	} else {
+		ClearGRFConfigList(c);
+	}
+
 	AppendStaticGRFConfigs(&_grfconfig);
 }
 
