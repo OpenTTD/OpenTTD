@@ -155,6 +155,7 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opciones del juego
 STR_00B2_MESSAGE                                                :{YELLOW}Mensaje
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mensaje de {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Precaución!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}No se puede hacer eso....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}No se puede desbrozar esta zona....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Original {COPYRIGHT} 1995 Chris Sawyer, Todos los derechos reservados
@@ -287,8 +288,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informac
 STR_013E_CAPACITIES                                             :{BLACK}Capacidades
 STR_013E_TOTAL_CARGO                                            :{BLACK}Carga total
 STR_013F_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Capacidad: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Carga total (capacidad) de este tren:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nuevo Juego
 STR_0141_LOAD_GAME                                              :{BLACK}Cargar Juego
 STR_SINGLE_PLAYER                                               :{BLACK}Un jugador
@@ -392,7 +395,15 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidad de ca
 STR_NO_WAITING_CARGO                                            :{BLACK}Ningún tipo de carga está esperando
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar todas las facilidades
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccionar todos los tipos de carga (incluidas las que no están en espera)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Ver la lista de los motores disponibles para este tipo de vehículo.
+STR_MANAGE_LIST                                                 :{BLACK}Administrar lista
+STR_MANAGE_LIST_TIP                                             :{BLACK}Enviar instrucciones a todos los vehículos de la lista
 STR_REPLACE_VEHICLES                                            :Reemplazar vehículos
+STR_SEND_TRAIN_TO_DEPOT                                         :Enviar a Depósito
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Enviar a Depósito
+STR_SEND_SHIP_TO_DEPOT                                          :Enviar a Depósito
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Enviar al Hangar
+STR_SEND_FOR_SERVICING                                          :Enviar para Servicio
 
 ############ range for months starts
 STR_0162_JAN                                                    :Ene
@@ -1011,6 +1022,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibi
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unir estaciones de tren unas junto a otras: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Abandona est. con alguna carga completa, en 'carga completa': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo mejorado de carga: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Cargar vehículos gradualmente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflacción: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Entregar mercancía a una estación sólo si hay demanda: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permitir la construcción de puentes muy largos: {ORANGE}{STRING}
@@ -1027,6 +1039,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Desplaz
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permitir sobornos a la autoridad local: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estaciones no uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nuevo sistema de busq. de rutas global (NPF, anula a NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Carga el multiplicador de peso para simular trenes pesados: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir siempre aeropuertos pequeños: {ORANGE}{STRING}
 
@@ -1072,6 +1085,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Ver est
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ninguno
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propia empresa
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Todas las empresas
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Charla de equipo preferida con <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máx vehículos de carretera por jugador: {ORANGE}{STRING}
@@ -1096,6 +1110,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de despacho por defecto para barcos: {ORANGE}no
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desactivar servicio cuando las averías están desactivadas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activar límites de velocidad en vagones: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Desactivar railes electricos: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Noticias en color aparecen en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Fecha de inicio: {ORANGE}{STRING}
@@ -1295,6 +1310,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Protegi
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVIDOR APAGADO
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVIDOR LLENO
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}INCOMPATIBILIDAD DE VERSIONES
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}PROBLEMA CON NEWGRF
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Unirme al juego
 
@@ -2498,16 +2514,20 @@ STR_INVALID_ORDER                                               :{RED} (Orden in
 STR_UNKNOWN_DESTINATION                                         :destino desconocido
 STR_8812_EMPTY                                                  :{LTBLUE}Vacío
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} desde {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} desde {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}El tren {COMMA} está esperando en el depósito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nuevos Vehículos
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren demasiado largo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Los trenes únicamente puede ser modificados en el interior de los depósitos
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Trenes
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nuevos vehículos de raíl
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nuevo Vehículo Eléctrico de Railes
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nuevos vehículos de monorraíl
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuevos vehículos de levitación magnética
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Vehículos de Rail
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Contruir Vehículo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar vehículo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esto construirá una copia del vehículo. Control-click compartirá las ordenes
@@ -2862,6 +2882,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Cantidad
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}¿Tienes un préstamo muy elevado?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de puntos ganados del máximo posible
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Configuración NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuración de Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar cambios
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Establecer parámetros
@@ -2869,6 +2890,31 @@ STR_NEWGRF_TIP                                                  :{BLACK}Un lista
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}¡No tiene ningún fichero newgrf instalado! Por favor, lea las instrucciones en el manual para instalar nuevos gráficos.
 STR_NEWGRF_FILENAME                                             :{BLACK}Fichero: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Se van a realizar cambios a un juego en ejecución; esto puede cerrar OpenTTD.{}¿Estás completamente seguro de realizar esto?
+
+STR_NEWGRF_ADD                                                  :{BLACK}Añadir
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Añadir un NewGRF a la lista
+STR_NEWGRF_REMOVE                                               :{BLACK}Quitar
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Quitar el NewGRF seleccionado de la lista
+STR_NEWGRF_MOVEUP                                               :{BLACK}Mover Arriba
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Mueve el NewGRF seleccionado arriba en la lista
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mover Abajo
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Mueve el NewGRF seleccionado abajo en la lista
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Una lista de los NewGRF instalados. Pulsa en el fichero para cambiar sus parámetros
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parametros: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Introduce los parámetros del NewGRF
+STR_NEWGRF_NO_INFO                                              :{BLACK}No tiene información disponible
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Ficheros NewGRF disponibles
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Añadir a la selección
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Añade el NewGRF seleccionado a tu configuración
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Actualizar ficheros
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Actualiza la lista de ficheros NewGRF disponibles
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No se puede añadir: GRF ID duplicado
+
+STR_NEWGRF_NOT_FOUND                                            :{RED}Fichero no encontrado
+STR_NEWGRF_DISABLED                                             :{RED}Desactivado
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}

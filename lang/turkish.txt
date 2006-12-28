@@ -1021,6 +1021,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Tren ve
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Yan yana yapılan tren istasyonlarını birleştir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}'tam doldur' etkinse istasyonu tam dolunca terket: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Geliştirilmiş yükleme algoritması kullan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Araçlar yavaş yavaş dolsun: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Enflasyon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Sadece istek varsa kargo kabul edilsin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Çok uzun köprülere izin ver: {ORANGE}{STRING}
@@ -1079,6 +1080,7 @@ STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikop
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubuğunu diğer araç çubuklarına bağla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Fareyle kaydırma hareketini ters çevir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}İnşa araçları kullanılırken ölçüm ipucu göster: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Şirketin renklerini göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Hiçbiri
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Şirketi al
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tüm şirketler
@@ -2054,7 +2056,7 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Oyuncu {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Yeni Surat
-STR_7005_COLOR_SCHEME                                           :{BLACK}Renk
+STR_7005_COLOR_SCHEME                                           :{BLACK}Renkler
 STR_7006_COLOR_SCHEME                                           :{GOLD}Renk:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Yeni Renk
 STR_7008_COMPANY_NAME                                           :{BLACK}Şirket ismi
@@ -2182,7 +2184,7 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}(%{COMMA
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY}, {COMPANY} tarafından alındı!
 STR_7080_PROTECTED                                              :{WHITE}Bu şirket hisselerini satacak kadar eski değil...
 
-STR_LIVERY_DEFAULT                                              :Standart Araç
+STR_LIVERY_DEFAULT                                              :Şirket Rengi
 STR_LIVERY_STEAM                                                :Buharlı Lokomotif
 STR_LIVERY_DIESEL                                               :Dizel Lokomotif
 STR_LIVERY_ELECTRIC                                             :Elektrikli Lokomotif
@@ -2209,6 +2211,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Gemi ren
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Uçakların renk şemalarını göster
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Seçili düzen için birincil rengi seç
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Seçili düzen için ikincil rengi seç
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Rengini değiştirmek için bir araç türü seçin. CTRL+tıklama birden fazla araç seçebilir. Rengi kullanmak için kutucukları içaretleyin
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Buhar)
@@ -2886,6 +2889,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Yüklenm
 STR_NEWGRF_FILENAME                                             :{BLACK}Dosya adı: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz; bu OpenTTD'yi çökertebilir.{}Emin misiniz?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Ekle
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Listeye NewGRF dosyası ekle

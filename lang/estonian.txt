@@ -259,14 +259,14 @@ STR_00E9_VEGETATION                                             :Taimestik
 STR_00EA_OWNERS                                                 :Omanikud
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Teed
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Raudteed
-STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Jaamad/Lennujaamad/Sadamad
-STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Ehitised/Tööstused
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Jaamad/lennujaamad/sadamad
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Ehitised/tööstused
 STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Sõidukid
-STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
-STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
-STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
-STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
-STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100 m
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200 m
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300 m
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400 m
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500 m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Rongid
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Maanteesõidukid
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Laevad
@@ -2661,6 +2661,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Maksumus
 STR_885C_BROKEN_DOWN                                            :{RED}Läks katki
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Kulud: {LTBLUE}{CURRENCY}/aastas
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Mass: {LTBLUE}{WEIGHT_S}  {BLACK}Energia: {LTBLUE}{POWER}{BLACK} Maks. Kiirus: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Mass: {LTBLUE}{WEIGHT_S} {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY} {BLACK}Suurim veojõud: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (eelmisel aastal: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Töötamisusaldus: {LTBLUE}{COMMA}%  {BLACK}Katki minekuid eelmisest hooldusest: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Peatatud
@@ -3102,6 +3103,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirenda
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ümberseadistatav: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kõik kaubatüübid
 STR_PURCHASE_INFO_ALL_BUT                                       :Kõik, välja arvatud {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurim veojõud: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 

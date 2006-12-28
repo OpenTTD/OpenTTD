@@ -2603,6 +2603,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена
 STR_885C_BROKEN_DOWN                                            :{RED}Поломка
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK} Стоимость обслуживания: {LTBLUE}{CURRENCY}/год
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вес: {LTBLUE}{WEIGHT_S}  {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вес: {LTBLUE}{WEIGHT_S} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Макс. Тяговое Усилие: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего ремонта: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Остановлен
@@ -3044,6 +3045,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Веду
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переоборуд. для: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всех типов грузов
 STR_PURCHASE_INFO_ALL_BUT                                       :Все, кроме {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. Тяговое Усилие: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 

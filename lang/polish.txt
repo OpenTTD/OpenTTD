@@ -23,7 +23,7 @@ STR_000D_ACCEPTS                                                :{BLACK}Akceptuj
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Pasażerowie
 STR_000F_PASSENGERS.d                                           :pasażerów
-STR_0010_COAL                                                   :Weigel
+STR_0010_COAL                                                   :Węgiel
 STR_0010_COAL.d                                                 :węgla
 STR_0011_MAIL                                                   :Poczta
 STR_0011_MAIL.d                                                 :poczty
@@ -198,6 +198,7 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opcje Gry
 STR_00B2_MESSAGE                                                :{YELLOW}Wiadomość
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Wiadomość od {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Uwaga!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nie można tego zrobić...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nie można wyczyścić terenu...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Prawa Autorskie {COPYRIGHT} 1995 Chris Sawyer, Wszelkie Prawa Zastrzeżone
@@ -1392,9 +1393,10 @@ STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adres s
 STR_NETWORK_START_DATE                                          :{SILVER}Data uruchomienia:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Bieżąca data:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Chronione hasłem!
-STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERWER WYLACZONY
-STR_NETWORK_SERVER_FULL                                         :{SILVER}SERWER PELNY
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERWER WYŁĄCZONY
+STR_NETWORK_SERVER_FULL                                         :{SILVER}SERWER PEŁNY
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}NIEZGODNA WERSJA
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NIEZGODNE NEWGRF
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Przyłącz się do gry
 
@@ -3017,6 +3019,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Obecnie 
 STR_NEWGRF_FILENAME                                             :{BLACK}Nazwa pliku: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}suma MD5: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Zamierzasz wprowadzić zmiany do gry w toku; to może zawiesić OpenTTD.{}Czy jesteś całkowicie pewien?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj plik NewGRF do listy
