@@ -62,6 +62,7 @@ typedef struct VehicleRail {
 	// cached values, recalculated when the cargo on a train changes (in addition to the conditions above)
 	uint32 cached_weight;     // total weight of the consist.
 	uint32 cached_veh_weight; // weight of the vehicle.
+	uint32 cached_max_te;     // max tractive effort of consist
 	/**
 	 * Position/type of visual effect.
 	 * bit 0 - 3 = position of effect relative to vehicle. (0 = front, 8 = centre, 15 = rear)

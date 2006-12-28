@@ -341,8 +341,9 @@ const EngineInfo orig_engine_info[] = {
  * @param i capacity
  * @param j cargo_type
  * @param k ai_rank
+ * Tractive effort coefficient by default is the same as TTDPatch, 0.30*256=76
  */
-#define RVI(a, b, c, d, e, f, g, h, i, j, k) { a, b, c, d, e, f, g, h, h, i, j, k, 0, 0, 0, 0, 0 }
+#define RVI(a, b, c, d, e, f, g, h, i, j, k) { a, b, c, d, e, f, g, h, h, i, j, k, 0, 0, 0, 0, 76, 0 }
 #define M RVI_MULTIHEAD
 #define W RVI_WAGON
 #define S 0

@@ -416,6 +416,10 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
+		case 0x1F: /* Tractive effort coefficient */
+			FOR_EACH_OBJECT rvi[i].tractive_effort = grf_load_byte(&buf);
+			break;
+
 		case 0x21: /* Shorter vehicle */
 			FOR_EACH_OBJECT rvi[i].shorten_factor = grf_load_byte(&buf);
 			break;
@@ -466,7 +470,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 		/* TODO */
 		/* Fall-through for unimplemented one byte long properties. */
-		case 0x1F: /* Tractive effort */
 		case 0x20: /* Air drag */
 		case 0x26: /* Retire vehicle early */
 			/* TODO */
@@ -3691,4 +3694,5 @@ void LoadNewGRF(uint load_index, uint file_index)
 	// Pre-calculate all refit masks after loading GRF files
 	CalculateRefitMasks();
 }
+
 

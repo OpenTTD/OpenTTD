@@ -27,6 +27,7 @@ typedef struct RailVehicleInfo {
 	                    //       kind of visual effect to generate for a vehicle (default, steam, diesel, electric).
 	                    //       Same goes for the callback result, which atm is only used to check if a wagon is powered.
 	byte shorten_factor; // length on main map for this type is 8 - shorten_factor
+	byte tractive_effort; ///< Tractive effort coefficient
 	byte user_def_data; ///! Property 0x25: "User-defined bit mask" Used only for (very few) NewGRF vehicles
 } RailVehicleInfo;
 

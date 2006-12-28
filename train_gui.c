@@ -232,6 +232,13 @@ void DrawTrainEnginePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 	DrawString(x,y, STR_PURCHASE_INFO_SPEED_POWER, 0);
 	y += 10;
 
+	/* Max tractive effort - not applicable if old acceleration or maglev */
+	if (_patches.realistic_acceleration && e->railtype != RAILTYPE_MAGLEV) {
+		SetDParam(0, ((rvi->weight << multihead) * 10 * rvi->tractive_effort) / 256);
+		DrawString(x, y, STR_PURCHASE_INFO_MAX_TE, 0);
+		y += 10;
+	}
+
 	/* Running cost */
 	SetDParam(0, (rvi->running_cost_base * _price.running_rail[rvi->running_cost_class] >> 8) << multihead);
 	DrawString(x,y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
@@ -939,7 +946,10 @@ static void DrawTrainDetailsWindow(Window *w)
 	SetDParam(2, v->u.rail.cached_max_speed);
 	SetDParam(1, v->u.rail.cached_power);
 	SetDParam(0, v->u.rail.cached_weight);
-	DrawString(x, 25, STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, 0);
+	SetDParam(3, v->u.rail.cached_max_te / 1000);
+	DrawString(x, 25, (_patches.realistic_acceleration && v->u.rail.railtype != RAILTYPE_MAGLEV) ?
+		STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE :
+		STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, 0);
 
 	SetDParam(0, v->profit_this_year);
 	SetDParam(1, v->profit_last_year);

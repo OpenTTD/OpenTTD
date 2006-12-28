@@ -55,6 +55,54 @@ byte FreightWagonMult(CargoID cargo)
 
 
 /**
+ * Recalculates the cached total power of a train. Should be called when the consist is changed
+ * @param v First vehicle of the consist.
+ */
+void TrainPowerChanged(Vehicle* v)
+{
+	Vehicle* u;
+	uint32 power = 0;
+	uint32 max_te = 0;
+
+	for (u = v; u != NULL; u = u->next) {
+		const RailVehicleInfo *rvi_u;
+		bool engine_has_power = true;
+		bool wagon_has_power = true;
+
+		/* Power is not added for articulated parts */
+		if (IsArticulatedPart(u)) continue;
+
+		if (IsLevelCrossingTile(u->tile)) {
+			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeCrossing(u->tile))) engine_has_power = false;
+			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeCrossing(u->tile))) wagon_has_power = false;
+		} else {
+			if (!HasPowerOnRail(u->u.rail.railtype, GetRailType(u->tile))) engine_has_power = false;
+			if (!HasPowerOnRail(v->u.rail.railtype, GetRailType(u->tile))) wagon_has_power = false;
+		}
+
+		rvi_u = RailVehInfo(u->engine_type);
+
+		if (engine_has_power && rvi_u->power != 0) {
+			power += rvi_u->power;
+			/* Tractive effort in (tonnes * 1000 * 10 =) N */
+			max_te += (u->u.rail.cached_veh_weight * 10000 * rvi_u->tractive_effort) / 256;
+		}
+
+		if (HASBIT(u->u.rail.flags, VRF_POWEREDWAGON) && (wagon_has_power)) {
+			power += RailVehInfo(u->u.rail.first_engine)->pow_wag_power;
+		}
+	}
+
+	if (v->u.rail.cached_power != power || v->u.rail.cached_max_te != max_te) {
+		v->u.rail.cached_power = power;
+		v->u.rail.cached_max_te = max_te;
+		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+	}
+}
+
+
+/**
  * Recalculates the cached weight of a train and its vehicles. Should be called each time the cargo on
  * the consist changes.
  * @param v First vehicle of the consist.
@@ -87,47 +135,11 @@ static void TrainCargoChanged(Vehicle* v)
 
 	// store consist weight in cache
 	v->u.rail.cached_weight = weight;
+
+	/* Now update train power (tractive effort is dependent on weight) */
+	TrainPowerChanged(v);
 }
 
-/**
- * Recalculates the cached total power of a train. Should be called when the consist is changed
- * @param v First vehicle of the consist.
- */
-void TrainPowerChanged(Vehicle* v)
-{
-	Vehicle* u;
-	uint32 power = 0;
-
-	for (u = v; u != NULL; u = u->next) {
-		const RailVehicleInfo *rvi_u;
-		bool engine_has_power = true;
-		bool wagon_has_power = true;
-
-		/* Power is not added for articulated parts */
-		if (IsArticulatedPart(u)) continue;
-
-		if (IsLevelCrossingTile(u->tile)) {
-			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeCrossing(u->tile))) engine_has_power = false;
-			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeCrossing(u->tile))) wagon_has_power = false;
-		} else {
-			if (!HasPowerOnRail(u->u.rail.railtype, GetRailType(u->tile))) engine_has_power = false;
-			if (!HasPowerOnRail(v->u.rail.railtype, GetRailType(u->tile))) wagon_has_power = false;
-		}
-
-		rvi_u = RailVehInfo(u->engine_type);
-
-		if (engine_has_power) power += rvi_u->power;
-		if (HASBIT(u->u.rail.flags, VRF_POWEREDWAGON) && (wagon_has_power)) {
-			power += RailVehInfo(u->u.rail.first_engine)->pow_wag_power;
-		}
-	}
-
-	if (v->u.rail.cached_power != power) {
-		v->u.rail.cached_power = power;
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-	}
-}
 
 /**
  * Recalculates the cached stuff of a train. Should be called each time a vehicle is added
@@ -231,9 +243,7 @@ void TrainConsistChanged(Vehicle* v)
 	// store consist weight/max speed in cache
 	v->u.rail.cached_max_speed = max_speed;
 
-	TrainPowerChanged(v);
-
-	// recalculate cached weights too (we do this *after* the rest, so it is known which wagons are powered and need extra weight added)
+	// recalculate cached weights and power too (we do this *after* the rest, so it is known which wagons are powered and need extra weight added)
 	TrainCargoChanged(v);
 }
 
@@ -307,6 +317,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	int curvecount[2] = {0, 0};
 	int sum = 0;
 	int numcurve = 0;
+	int max_te = v->u.rail.cached_max_te; // [N]
 
 	speed *= 10;
 	speed /= 16;
@@ -407,6 +418,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 				force = power / speed; //[N]
 				force *= 22;
 				force /= 10;
+				if (mode == AM_ACCEL && force > max_te) force = max_te;
 				break;
 
 			case RAILTYPE_MAGLEV:
@@ -415,7 +427,8 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		}
 	} else {
 		//"kickoff" acceleration
-		force = max(power, (mass * 8) + resistance);
+		force = (mode == AM_ACCEL && v->u.rail.railtype != RAILTYPE_MAGLEV) ? min(max_te, power) : power;
+		force = max(force, (mass * 8) + resistance);
 	}
 
 	if (force <= 0) force = 10000;
