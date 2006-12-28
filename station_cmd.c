@@ -37,9 +37,9 @@
 static void StationRect_Init(Station *st);
 static bool StationRect_IsEmpty(Station *st);
 static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, bool exec);
-static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, uint16 w, uint16 h, bool exec);
+static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, int w, int h, bool exec);
 static bool StationRect_AfterRemoveTile(Station *st, TileIndex tile);
-static bool StationRect_AfterRemoveRect(Station *st, TileIndex tile, uint16 w, uint16 h);
+static bool StationRect_AfterRemoveRect(Station *st, TileIndex tile, int w, int h);
 
 
 /**
@@ -744,7 +744,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 
 static void UpdateStationSignCoord(Station *st)
 {
-	StationRect *r = &st->rect;
+	Rect *r = &st->rect;
 
 	if (StationRect_IsEmpty(st)) return; // no tiles belong to this station
 
@@ -3149,14 +3149,14 @@ const ChunkHandler _station_chunk_handlers[] = {
 };
 
 
-#define my_min(a, b) (((a) < (b)) ? (a) : (b))
-#define my_max(a, b) (((a) > (b)) ? (a) : (b))
-#define my_value_in_range(v, a, b) ((a) <= (v) && (v) <= (b))
-#define my_pt_in_rect(r, x, y) (my_value_in_range(x, (r)->left, (r)->right) && my_value_in_range(y, (r)->top, (r)->bottom))
+static inline bool PtInRectXY(Rect *r, int x, int y)
+{
+	return (r->left <= x && x <= r->right && r->top <= y && y <= r->bottom);
+}
 
 static void StationRect_Init(Station *st)
 {
-	StationRect *r = &st->rect;
+	Rect *r = &st->rect;
 	r->left = r->top = r->right = r->bottom = 0;
 }
 
@@ -3167,20 +3167,20 @@ static bool StationRect_IsEmpty(Station *st)
 
 static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, bool exec)
 {
-	StationRect *r = &st->rect;
-	uint16 x = TileX(tile);
-	uint16 y = TileY(tile);
+	Rect *r = &st->rect;
+	int x = TileX(tile);
+	int y = TileY(tile);
 	if (StationRect_IsEmpty(st)) {
 		// we are adding the first station tile
 		r->left = r->right = x;
 		r->top = r->bottom = y;
-	} else if (!my_pt_in_rect(r, x, y)) {
+	} else if (!PtInRectXY(r, x, y)) {
 		// current rect is not empty and new point is outside this rect
 		// make new spread-out rectangle
-		StationRect new_rect = {my_min(x, r->left), my_min(y, r->top), my_max(x, r->right), my_max(y, r->bottom)};
+		Rect new_rect = {min(x, r->left), min(y, r->top), max(x, r->right), max(y, r->bottom)};
 		// check new rect dimensions against preset max
-		uint16 w = new_rect.right - new_rect.left + 1;
-		uint16 h = new_rect.bottom - new_rect.top + 1;
+		int w = new_rect.right - new_rect.left + 1;
+		int h = new_rect.bottom - new_rect.top + 1;
 		if (w > _patches.station_spread || h > _patches.station_spread) {
 			assert(!exec);
 			_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
@@ -3197,16 +3197,16 @@ static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, bool exec)
 	return true;
 }
 
-static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, uint16 w, uint16 h, bool exec)
+static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, int w, int h, bool exec)
 {
 	return StationRect_BeforeAddTile(st, tile, exec) && StationRect_BeforeAddTile(st, TILE_ADDXY(tile, w - 1, h - 1), exec);
 }
 
-static inline bool ScanRectForStationTiles(StationID st_id, uint16 left, uint16 top, uint16 right, uint16 bottom)
+static inline bool ScanRectForStationTiles(StationID st_id, int left, int top, int right, int bottom)
 {
 	TileIndex top_left = TileXY(left, top);
-	uint16 width = right - left + 1;
-	uint16 height = bottom - top + 1;
+	int width = right - left + 1;
+	int height = bottom - top + 1;
 	BEGIN_TILE_LOOP(tile, width, height, top_left)
 		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st_id) return true;
 	END_TILE_LOOP(tile, width, height, top_left);
@@ -3215,9 +3215,9 @@ static inline bool ScanRectForStationTiles(StationID st_id, uint16 left, uint16 
 
 static bool StationRect_AfterRemoveTile(Station *st, TileIndex tile)
 {
-	StationRect *r = &st->rect;
-	uint16 x = TileX(tile);
-	uint16 y = TileY(tile);
+	Rect *r = &st->rect;
+	int x = TileX(tile);
+	int y = TileY(tile);
 	bool reduce_x, reduce_y;
 
 	// look if removed tile was on the bounding rect edge
@@ -3262,11 +3262,11 @@ static bool StationRect_AfterRemoveTile(Station *st, TileIndex tile)
 	return false; // non-empty remaining rect
 }
 
-static bool StationRect_AfterRemoveRect(Station *st, TileIndex tile, uint16 w, uint16 h)
+static bool StationRect_AfterRemoveRect(Station *st, TileIndex tile, int w, int h)
 {
 	bool empty;
-	assert(my_pt_in_rect(&st->rect, TileX(tile), TileY(tile)));
-	assert(my_pt_in_rect(&st->rect, TileX(tile) + w - 1, TileY(tile) + h - 1));
+	assert(PtInRectXY(&st->rect, TileX(tile), TileY(tile)));
+	assert(PtInRectXY(&st->rect, TileX(tile) + w - 1, TileY(tile) + h - 1));
 	empty = StationRect_AfterRemoveTile(st, tile);
 	if (w != 1 || h != 1) empty = empty || StationRect_AfterRemoveTile(st, TILE_ADDXY(tile, w - 1, h - 1));
 	return empty;

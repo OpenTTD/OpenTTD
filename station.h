@@ -47,15 +47,6 @@ typedef struct StationSpecList {
 	uint8  localidx;   /// Station ID within GRF of station
 } StationSpecList;
 
-/** Station spread out rectangle (not saved) */
-typedef struct StationRect
-{
-	uint16 left;
-	uint16 top;
-	uint16 right;
-	uint16 bottom;
-} StationRect;
-
 struct Station {
 	TileIndex xy;
 	RoadStop *bus_stops;
@@ -104,7 +95,7 @@ struct Station {
 	byte bus_stop_status_obsolete;
 	byte blocked_months_obsolete;
 
-	StationRect rect;
+	Rect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
 };
 
 enum {
