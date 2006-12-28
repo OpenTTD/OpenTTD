@@ -112,9 +112,6 @@
 # OTTD_PPC, OTTD_PPC970, OTTD_i386: compile for target architecture.
 #    Multiple flags can be used so OTTD_PPC:=1 OTTD_i386:=1 produces the same result as UNIVERSAL_BINARY
 #
-# JAGUAR: Crosscompiling for OSX 1.2.8 (codenamed Jaguar). Only works if OSX is defined too. Only works with GCC 4 or newer
-#	This can be changed to any PPC version of OSX by changing the ppc flags in Makefile.config
-#
 # ENDIAN_FORCE: forces the endian-check to give a certain result. Can be BE, LE or PREPROCESSOR.
 #	PREPROCESSOR is always used on all OSX targets and will make the preprocessor pick the right endian.
 #	this means that you don't have to think about endianess when compiling for OSX.
@@ -538,10 +535,8 @@ endif
 
 # iconv is enabled defaultly on OSX >= 10.3
 ifdef OSX
-	ifndef JAGUAR
-		WITH_ICONV=1
-		LIBS += -liconv
-	endif
+	WITH_ICONV=1
+	LIBS += -liconv
 endif
 
 ifdef WITH_ICONV
