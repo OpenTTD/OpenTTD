@@ -154,7 +154,7 @@ Unix:
 MacOS X:
   Use "make" or Xcode (which will then call make for you)
 	This will give you a binary for your CPU type (PPC/Intel)
-	To make an universal binary type "make FAT_BINARY:=1"
+	To make a universal binary type "make UNIVERSAL_BINARY:=1"
 
 BeOS:
   Use "make".
