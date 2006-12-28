@@ -18,7 +18,6 @@ Use make or gmake to compile OpenTTD. You can adjust Makefile.config to compile 
 BeOS:
 On BeOS, run ./configure and then use jam. There are a variaty of options you can pass to your build tool, these are reported by ./configure.
 
-
 1.2 Installing OpenTTD.
 
 On Windows, insert your "Transport Tycoon Deluxe for Windows 95" disk. You can use a DOS version, but your graphics will be purple. NB: Even if your version of Transport Tycoon Deluxe ran on Windows 95, it may still be the DOS version. Then run the OpenTTD installer.
@@ -57,7 +56,6 @@ In OpenTTD, you can build rail stations up to seven squares long and with up to 
 However, there is an even more noticable difference in rail station construction. You may now add platforms and lenght to a station after it has been built, and you may also add platforms of a different type. Users of TTDPatch will be used to this behaviour. But beyond what TTDPatch has, you can make stations of uneven lenght/width, and even ones with perpendicular tracks. You can also delete single tiles or tracks from a station, by holding down Shift before pressing the station construction button.
 
 2.3 Checkpoint Stations
-
 
 Checkpoint stations (the small blue item in the rail construction window) are small 1x1 stations. They must be built on top of pre-existing track. They do not accept or produce carge of any kind. They exist solely for use as route points. They become useful when dealing with large networks  where trains may attempt to route themselves along undesirable or impossible routes. As an alternative to checkpoint stations, you can also direct trains to visit depots along the way. This has the advantage of also servicing the train and hence the train will rarely to never need to depart from its route to be serviced.
 

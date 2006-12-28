@@ -9,7 +9,7 @@ Multiplayer Manual for OpenTTD (0.3.5)
  - Type in a game name
  - Select the type of game ('LAN/Internet' or 'Internet (advertise)'. With the last one
     other people are able to see you online. Else they need your IP and port to join)
- - Click "start game" ,"load game" or "load scenario"
+ - Click "start game", "load game" or "load scenario"
  - Start playing
 
 
@@ -46,7 +46,7 @@ Multiplayer Manual for OpenTTD (0.3.5)
 
  - Open the console and type in the following command:
 
-    ]connect <ip/host>:<port>#<player-no>
+    connect <ip/host>:<port>#<player-no>
 
 
 4. Playing Internet-Games
@@ -54,7 +54,9 @@ Multiplayer Manual for OpenTTD (0.3.5)
 
  - Since OpenTTD 0.3.5 the network protocol has been rewritten and is very stable, even over slow connections.
 
- - Server with a red dot behind it have a different version then you have. You will not be able to join those servers.
+ - Servers with a red dot behind it have a different version then you have. You will not be able to join those servers.
+
+ - Servers with a yellow dot behind it have NewGRFs that you do not have. You will not be able to join those servers.
 
  - It can happen that a connection is that slow, or you have that many clients connected to your server, that your clients start to loose their connection. Some things you can do about it:
 
@@ -110,3 +112,10 @@ Multiplayer Manual for OpenTTD (0.3.5)
  - From 0.3.5, desyncs should not happen anymore
 
  - From 0.3.5, patch-settings are also synced. You can now play without deleting openttd.cfg, and with, for example, extra large trains enabled.
+
+7. Troubleshooting
+------------------
+
+ - My advertised server does not show up in the 'advertised server list' (servers.openttd.org)
+     Run openttd with the '-d net=2' parameter, as this will show whether it receives replies from the master server.
+     If it does not receive replies it is most likely that you need to configure your router to forward the OpenTTD ports 3979 (both TCP and UDP) to the computer that is hosting the game.
