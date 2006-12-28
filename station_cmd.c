@@ -34,10 +34,17 @@
 #include "yapf/yapf.h"
 #include "date.h"
 
+typedef enum StationRectModes
+{
+	RECT_MODE_TEST = 0,
+	RECT_MODE_TRY,
+	RECT_MODE_FORCE
+} StationRectMode;
+
 static void StationRect_Init(Station *st);
 static bool StationRect_IsEmpty(Station *st);
-static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, bool exec);
-static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, int w, int h, bool exec);
+static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, StationRectMode mode);
+static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, int w, int h, StationRectMode mode);
 static bool StationRect_AfterRemoveTile(Station *st, TileIndex tile);
 static bool StationRect_AfterRemoveRect(Station *st, TileIndex tile, int w, int h);
 
@@ -1026,7 +1033,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		}
 
 		//XXX can't we pack this in the "else" part of the if above?
-		if (!StationRect_BeforeAddRect(st, tile_org, w_org, h_org, false)) return CMD_ERROR;
+		if (!StationRect_BeforeAddRect(st, tile_org, w_org, h_org, RECT_MODE_TEST)) return CMD_ERROR;
 	} else {
 		// Create a new station
 		st = AllocateStation();
@@ -1085,7 +1092,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 
 		st->build_date = _date;
 
-		StationRect_BeforeAddRect(st, tile_org, w_org, h_org, true);
+		StationRect_BeforeAddRect(st, tile_org, w_org, h_org, RECT_MODE_TRY);
 
 		tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		track = AxisToTrack(axis);
@@ -1453,7 +1460,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
-		if (!StationRect_BeforeAddTile(st, tile, false)) return CMD_ERROR;
+		if (!StationRect_BeforeAddTile(st, tile, RECT_MODE_TEST)) return CMD_ERROR;
 
 		FindRoadStopSpot(type, st, &currstop, &prev);
 	} else {
@@ -1491,7 +1498,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		StationRect_BeforeAddTile(st, tile, true);
+		StationRect_BeforeAddTile(st, tile, RECT_MODE_TRY);
 
 		MakeRoadStop(tile, st->owner, st->index, type, p1);
 
@@ -1702,7 +1709,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (st->owner != OWNER_NONE && st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
-		if (!StationRect_BeforeAddRect(st, tile, w, h, false)) return CMD_ERROR;
+		if (!StationRect_BeforeAddRect(st, tile, w, h, RECT_MODE_TEST)) return CMD_ERROR;
 
 		if (st->airport_tile != 0)
 			return_cmd_error(STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT);
@@ -1739,7 +1746,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		StationRect_BeforeAddRect(st, tile, w, h, true);
+		StationRect_BeforeAddRect(st, tile, w, h, RECT_MODE_TRY);
 
 		/* if airport was demolished while planes were en-route to it, the
 		 * positions can no longer be the same (v->u.air.pos), since different
@@ -1974,7 +1981,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (st->owner != OWNER_NONE && st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
-		if (!StationRect_BeforeAddRect(st, tile, _dock_w_chk[direction], _dock_h_chk[direction], false)) return CMD_ERROR;
+		if (!StationRect_BeforeAddRect(st, tile, _dock_w_chk[direction], _dock_h_chk[direction], RECT_MODE_TEST)) return CMD_ERROR;
 
 		if (st->dock_tile != 0) return_cmd_error(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK);
 	} else {
@@ -2003,7 +2010,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		StationRect_BeforeAddRect(st, tile, _dock_w_chk[direction], _dock_h_chk[direction], true);
+		StationRect_BeforeAddRect(st, tile, _dock_w_chk[direction], _dock_h_chk[direction], RECT_MODE_TRY);
 
 		MakeDock(tile, st->owner, st->index, direction);
 
@@ -2915,7 +2922,7 @@ void AfterLoadStations(void)
 	for (tile = 0; tile < MapSize(); tile++) {
 		if (GetTileType(tile) != MP_STATION) continue;
 		st = GetStationByTile(tile);
-		StationRect_BeforeAddTile(st, tile, true);
+		StationRect_BeforeAddTile(st, tile, RECT_MODE_FORCE);
 	}
 }
 
@@ -3165,7 +3172,7 @@ static bool StationRect_IsEmpty(Station *st)
 	return (st->rect.left == 0 || st->rect.left > st->rect.right || st->rect.top > st->rect.bottom);
 }
 
-static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, bool exec)
+static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, StationRectMode mode)
 {
 	Rect *r = &st->rect;
 	int x = TileX(tile);
@@ -3181,13 +3188,13 @@ static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, bool exec)
 		// check new rect dimensions against preset max
 		int w = new_rect.right - new_rect.left + 1;
 		int h = new_rect.bottom - new_rect.top + 1;
-		if (w > _patches.station_spread || h > _patches.station_spread) {
-			assert(!exec);
+		if (mode != RECT_MODE_FORCE && (w > _patches.station_spread || h > _patches.station_spread)) {
+			assert(mode != RECT_MODE_TRY);
 			_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
 			return false;
 		}
 		// spread-out ok, return true
-		if (exec) {
+		if (mode != RECT_MODE_TEST) {
 			// we should update the station rect
 			*r = new_rect;
 		}
@@ -3197,9 +3204,9 @@ static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, bool exec)
 	return true;
 }
 
-static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, int w, int h, bool exec)
+static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, int w, int h, StationRectMode mode)
 {
-	return StationRect_BeforeAddTile(st, tile, exec) && StationRect_BeforeAddTile(st, TILE_ADDXY(tile, w - 1, h - 1), exec);
+	return StationRect_BeforeAddTile(st, tile, mode) && StationRect_BeforeAddTile(st, TILE_ADDXY(tile, w - 1, h - 1), mode);
 }
 
 static inline bool ScanRectForStationTiles(StationID st_id, int left, int top, int right, int bottom)
