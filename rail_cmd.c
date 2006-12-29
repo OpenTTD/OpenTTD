@@ -967,7 +967,6 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 {
 	int32 cost;
 	int32 ret;
-	TrackBits tracks = GetTrackBits(tile);
 
 	if (flags & DC_AUTO) {
 		if (!IsTileOwner(tile, _current_player))
@@ -985,6 +984,7 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 	switch (GetRailTileType(tile)) {
 		case RAIL_TILE_SIGNALS:
 		case RAIL_TILE_NORMAL: {
+			TrackBits tracks = GetTrackBits(tile);
 			uint i;
 
 			for_each_bit (i, tracks) {
