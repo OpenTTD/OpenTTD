@@ -272,7 +272,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			if (flags & DC_EXEC) {
 				SetRailGroundType(tile, RAIL_GROUND_BARREN);
-				_m[tile].m5 |= trackbit;
+				SetTrackBits(tile, GetTrackBits(tile) | trackbit);
 			}
 			break;
 
@@ -967,9 +967,7 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 {
 	int32 cost;
 	int32 ret;
-	byte m5;
-
-	m5 = _m[tile].m5;
+	TrackBits tracks = GetTrackBits(tile);
 
 	if (flags & DC_AUTO) {
 		if (!IsTileOwner(tile, _current_player))
@@ -985,35 +983,14 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 	cost = 0;
 
 	switch (GetRailTileType(tile)) {
-		/* XXX: Why the fuck do we remove these thow signals first? */
 		case RAIL_TILE_SIGNALS:
-			if (HasSignalOnTrack(tile, TRACK_X)) {
-				ret = DoCommand(tile, TRACK_X, 0, flags, CMD_REMOVE_SIGNALS);
-				if (CmdFailed(ret)) return CMD_ERROR;
-				cost += ret;
-			}
-			if (HasSignalOnTrack(tile, TRACK_LOWER)) {
-				ret = DoCommand(tile, TRACK_LOWER, 0, flags, CMD_REMOVE_SIGNALS);
-				if (CmdFailed(ret)) return CMD_ERROR;
-				cost += ret;
-			}
-
-			m5 &= TRACK_BIT_MASK;
-			if (!(flags & DC_EXEC)) {
-				for (; m5 != 0; m5 >>= 1) if (m5 & 1) cost += _price.remove_rail;
-				return cost;
-			}
-			/* FALLTHROUGH */
-
 		case RAIL_TILE_NORMAL: {
 			uint i;
 
-			for (i = 0; m5 != 0; i++, m5 >>= 1) {
-				if (m5 & 1) {
-					ret = DoCommand(tile, 0, i, flags, CMD_REMOVE_SINGLE_RAIL);
-					if (CmdFailed(ret)) return CMD_ERROR;
-					cost += ret;
-				}
+			for_each_bit (i, tracks) {
+				ret = DoCommand(tile, 0, i, flags, CMD_REMOVE_SINGLE_RAIL);
+				if (CmdFailed(ret)) return CMD_ERROR;
+				cost += ret;
 			}
 			return cost;
 		}
