@@ -86,33 +86,33 @@ typedef enum FrameFlags {
 void DrawFrameRect(int left, int top, int right, int bottom, int color, FrameFlags flags);
 
 enum WindowEventCodes {
-	WE_CLICK               =  0,
-	WE_PAINT               =  1,
-	WE_MOUSELOOP           =  2,
-	WE_TICK                =  3,
-	WE_4                   =  4,
-	WE_TIMEOUT             =  5,
-	WE_PLACE_OBJ           =  6,
-	WE_ABORT_PLACE_OBJ     =  7,
-	WE_DESTROY             =  8,
-	WE_ON_EDIT_TEXT        =  9,
-	WE_POPUPMENU_SELECT    = 10,
-	WE_POPUPMENU_OVER      = 11,
-	WE_DRAGDROP            = 12,
-	WE_PLACE_DRAG          = 13,
-	WE_PLACE_MOUSEUP       = 14,
-	WE_PLACE_PRESIZE       = 15,
-	WE_DROPDOWN_SELECT     = 16,
-	WE_RCLICK              = 17,
-	WE_KEYPRESS            = 18,
-	WE_CREATE              = 19,
-	WE_MOUSEOVER           = 20,
-	WE_ON_EDIT_TEXT_CANCEL = 21,
-	WE_RESIZE              = 22,
-	WE_MESSAGE             = 23,
-	WE_SCROLL              = 24,
-	WE_MOUSEWHEEL          = 25,
-	WE_INVALIDATE_DATA     = 26,
+	WE_CREATE,
+	WE_DESTROY,
+	WE_PAINT,
+	WE_KEYPRESS,
+	WE_CLICK,
+	WE_RCLICK,
+	WE_MOUSEOVER,
+	WE_MOUSELOOP,
+	WE_MOUSEWHEEL,
+	WE_TICK,
+	WE_4,
+	WE_TIMEOUT,
+	WE_PLACE_OBJ,
+	WE_ABORT_PLACE_OBJ,
+	WE_ON_EDIT_TEXT,
+	WE_ON_EDIT_TEXT_CANCEL,
+	WE_POPUPMENU_SELECT,
+	WE_POPUPMENU_OVER,
+	WE_DRAGDROP,
+	WE_PLACE_DRAG,
+	WE_PLACE_MOUSEUP,
+	WE_PLACE_PRESIZE,
+	WE_DROPDOWN_SELECT,
+	WE_RESIZE,
+	WE_MESSAGE,
+	WE_SCROLL,
+	WE_INVALIDATE_DATA,
 };
 
 struct WindowEvent {
@@ -263,7 +263,7 @@ typedef struct WindowDesc {
 	WindowProc *proc;
 } WindowDesc;
 
-enum {
+enum WindowDefaultFlag {
 	WDF_STD_TOOLTIPS    =  1, /* use standard routine when displaying tooltips */
 	WDF_DEF_WIDGET      =  2, /* default widget control for some widgets in the on click event */
 	WDF_STD_BTN         =  4, /* default handling for close and drag widgets (widget no 0 and 1) */
@@ -274,7 +274,7 @@ enum {
 };
 
 /* can be used as x or y coordinates to cause a specific placement */
-enum {
+enum WindowDefaultPosition {
 	WDP_AUTO      = -1, ///< Find a place automatically
 	WDP_CENTER    = -2, ///< Center the window (left/right or top/bottom)
 	WDP_ALIGN_TBR = -3, ///< Align the right side of the window with the right side of the main toolbar

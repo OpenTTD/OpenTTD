@@ -491,8 +491,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		_network_join_status = NETWORK_JOIN_STATUS_PROCESSING;
 		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
-		// The map is done downloading, load it
-		// Load the map
+		/* The map is done downloading, load it */
 		if (!SafeSaveOrLoad(filename, SL_LOAD, GM_NORMAL)) {
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 			_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;

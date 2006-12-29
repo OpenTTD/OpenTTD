@@ -875,13 +875,15 @@ void InitWindowSystem(void)
 
 void UnInitWindowSystem(void)
 {
-	Window* const *wz;
-	// delete all malloced widgets
+	Window **wz;
+	/* Delete all malloced widgets, and reset z-array */
 	FOR_ALL_WINDOWS(wz) {
 		free((*wz)->widget);
 		(*wz)->widget = NULL;
 		(*wz)->widget_count = 0;
+		*wz = NULL;
 	}
+	_last_z_window = _z_windows;
 }
 
 void ResetWindowSystem(void)

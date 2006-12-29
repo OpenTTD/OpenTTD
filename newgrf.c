@@ -2483,9 +2483,7 @@ static void SafeInfo(byte *buf, int len)
 		info = name + name_len + 1;
 		info_len = ttd_strnlen(info, len);
 
-		if (info_len < len) {
-			_cur_grfconfig->info  = TranslateTTDPatchCodes(info);
-		}
+		if (info_len < len) _cur_grfconfig->info  = TranslateTTDPatchCodes(info);
 	}
 }
 

@@ -43,8 +43,8 @@
 #include "network_gui.h"
 #include "industry.h"
 
-static int _rename_id;
-static int _rename_what;
+static int _rename_id = 1;
+static int _rename_what = -1;
 
 static byte _terraform_size = 1;
 RailType _last_built_railtype;
@@ -90,10 +90,12 @@ void HandleOnEditText(WindowEvent *e)
 		} else {
 			NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, id, msg, NETWORK_SERVER_INDEX);
 		}
-		break;
-	}
+	}	break;
 #endif /* ENABLE_NETWORK */
+		default: NOT_REACHED();
 	}
+
+	_rename_id = _rename_what = -1;
 }
 
 /**
@@ -1840,12 +1842,12 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_MOUSELOOP:
 		if (IsWindowWidgetLowered(w, 0) != !!_pause) {
 			ToggleWidgetLoweredState(w, 0);
-			SetWindowDirty(w);
+			InvalidateWidget(w, 0);
 		}
 
 		if (IsWindowWidgetLowered(w, 1) != !!_fast_forward) {
 			ToggleWidgetLoweredState(w, 1);
-			SetWindowDirty(w);
+			InvalidateWidget(w, 1);
 		}
 		break;
 
@@ -2371,7 +2373,7 @@ void SetupColorsAndInitialWindow(void)
 {
 	uint i;
 	Window *w;
-	int width,height;
+	int width, height;
 
 	for (i = 0; i != 16; i++) {
 		const byte *b = GetNonSprite(PALETTE_RECOLOR_START + i);
