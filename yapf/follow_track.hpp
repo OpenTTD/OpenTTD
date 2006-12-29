@@ -178,11 +178,19 @@ protected:
 			}
 		}
 
-		// tunnel tiles can be entered only from proper direction
-		if (!IsWaterTT() && !m_is_tunnel && IsTunnelTile(m_new_tile)) {
-			DiagDirection tunnel_enterdir = GetTunnelDirection(m_new_tile);
-			if (tunnel_enterdir != m_exitdir)
-				return false;
+		// tunnel holes and bridge ramps can be entered only from proper direction
+		if (!IsWaterTT() && IsTileType(m_new_tile, MP_TUNNELBRIDGE)) {
+			if (IsTunnel(m_new_tile)) {
+				if (!m_is_tunnel) {
+					DiagDirection tunnel_enterdir = GetTunnelDirection(m_new_tile);
+					if (tunnel_enterdir != m_exitdir) return false;
+				}
+			} else if (IsBridge(m_new_tile)) {
+				if (!m_is_bridge) {
+					DiagDirection ramp_enderdir = GetBridgeRampDirection(m_new_tile);
+					if (ramp_enderdir != m_exitdir) return false;
+				}
+			}
 		}
 
 		// special handling for rail stations - get to the end of platform
