@@ -2605,6 +2605,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Prix: {C
 STR_885C_BROKEN_DOWN                                            :{RED}En panne
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Âge: {LTBLUE}{STRING}{BLACK}   Coût d'entretien: {LTBLUE}{CURRENCY}/an
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Poids: {LTBLUE}{WEIGHT_S}  {BLACK}Puissance: {LTBLUE}{POWER}{BLACK} Vitesse max.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids: {LTBLUE}{WEIGHT_S} {BLACK}Puissance: {LTBLUE}{POWER}{BLACK} Vitesse max.: {LTBLUE}{VELOCITY} {BLACK}E.T. max.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit cette année: {LTBLUE}{CURRENCY}  (année précédente: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilité: {LTBLUE}{COMMA}%  {BLACK}Pannes depuis le dernier entretien: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppé
@@ -3046,6 +3047,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons M
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Réaménageable pour: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tous les types de cargaison
 STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Effort de traction max.: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 
