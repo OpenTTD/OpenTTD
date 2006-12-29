@@ -1169,68 +1169,112 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, realmaxlen, maxwidth);
 }
 
+
+enum QueryWidgets {
+	QUERY_WIDGET_CAPTION = 1,
+	QUERY_WIDGET_NO = 3,
+	QUERY_WIDGET_YES
+};
+
+
+typedef struct query_d {
+	StringID message;            ///< message shown for query window
+	uint32 params[20];           ///< local copy of _decode_parameters
+	void (*proc)(Window*, bool); ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
+	bool calledback;             ///< has callback been executed already (internal usage for WE_DESTROY event)
+} query_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(query_d));
+
+
 static void QueryWndProc(Window *w, WindowEvent *e)
 {
+	query_d *q = &WP(w, query_d);
+
 	switch (e->event) {
-	case WE_PAINT:
-		SetDParam(0, WP(w, query_d).caption);
-		DrawWindowWidgets(w);
+		case WE_PAINT:
+			COPY_IN_DPARAM(0, q->params, lengthof(q->params));
+			DrawWindowWidgets(w);
+			COPY_IN_DPARAM(0, q->params, lengthof(q->params));
 
-		DrawStringMultiCenter(90, 38, WP(w, query_d).message, 178);
-		break;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 3:
-		case 4:
-			WP(w, query_d).calledback = true;
-			if (WP(w, query_d).ok_cancel_callback != NULL) WP(w, query_d).ok_cancel_callback(e->we.click.widget == 4);
-			DeleteWindow(w);
+			DrawStringMultiCenter(w->width / 2, (w->height / 2) - 10, q->message, w->width);
 			break;
-		}
-		break;
 
-	case WE_MOUSELOOP:
-		if (!FindWindowById(WP(w, query_d).wnd_class, WP(w, query_d).wnd_num)) DeleteWindow(w);
-		break;
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case QUERY_WIDGET_YES:
+					q->calledback = true;
+					if (q->proc != NULL) q->proc(w->parent, true);
+					/* Fallthrough */
+				case QUERY_WIDGET_NO:
+					DeleteWindow(w);
+					break;
+				}
+			break;
 
-	case WE_DESTROY:
-		if (!WP(w, query_d).calledback && WP(w, query_d).ok_cancel_callback != NULL) WP(w, query_d).ok_cancel_callback(false);
-		break;
+		case WE_KEYPRESS: /* ESC closes the window, Enter confirms the action */
+			switch (e->we.keypress.keycode) {
+				case WKC_RETURN:
+				case WKC_NUM_ENTER:
+					q->calledback = true;
+					if (q->proc != NULL) q->proc(w->parent, true);
+					/* Fallthrough */
+				case WKC_ESC:
+					e->we.keypress.cont = false;
+					DeleteWindow(w);
+					break;
+			}
+			break;
+
+		case WE_DESTROY: /* Call callback function (if any) on window close if not yet called */
+			if (!q->calledback && q->proc != NULL) q->proc(w->parent, false);
+			break;
 	}
 }
 
+
 static const Widget _query_widgets[] = {
-{ WWT_CLOSEBOX, RESIZE_NONE,  4,   0,  10,   0,  13, STR_00C5,        STR_018B_CLOSE_WINDOW},
-{  WWT_CAPTION, RESIZE_NONE,  4,  11, 179,   0,  13, STR_012D,        STR_NULL},
-{    WWT_PANEL, RESIZE_NONE,  4,   0, 179,  14,  91, 0x0,             STR_NULL},
-{  WWT_TEXTBTN, RESIZE_NONE, 12,  25,  84,  72,  83, STR_012E_CANCEL, STR_NULL},
-{  WWT_TEXTBTN, RESIZE_NONE, 12,  95, 154,  72,  83, STR_012F_OK,     STR_NULL},
-{  WIDGETS_END },
+{  WWT_CLOSEBOX, RESIZE_NONE,  4,   0,  10,   0,  13, STR_00C5,        STR_018B_CLOSE_WINDOW},
+{   WWT_CAPTION, RESIZE_NONE,  4,  11, 209,   0,  13, STR_NULL,        STR_NULL},
+{     WWT_PANEL, RESIZE_NONE,  4,   0, 209,  14,  81, 0x0, /*OVERRIDE*/STR_NULL},
+{WWT_PUSHTXTBTN, RESIZE_NONE,  3,  20,  90,  62,  73, STR_00C9_NO,     STR_NULL},
+{WWT_PUSHTXTBTN, RESIZE_NONE,  3, 120, 190,  62,  73, STR_00C8_YES,    STR_NULL},
+{   WIDGETS_END },
 };
 
 static const WindowDesc _query_desc = {
-	WDP_CENTER, WDP_CENTER, 180, 92,
-	WC_OK_CANCEL_QUERY, 0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDP_CENTER, WDP_CENTER, 210, 82,
+	WC_CONFIRM_POPUP_QUERY, 0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_DEF_WIDGET | WDF_MODAL,
 	_query_widgets,
 	QueryWndProc
 };
 
-void ShowQuery(StringID caption, StringID message, void (*ok_cancel_callback)(bool ok_clicked), WindowClass window_class, WindowNumber window_number)
+/** Show a modal confirmation window with standard 'yes' and 'no' buttons
+ * The window is aligned to the centre of its parent.
+ * NOTE: You cannot use BindCString as parameter for this window!
+ * @param caption string shown as window caption
+ * @param message string that will be shown for the window
+ * @param parent pointer to parent window, if this pointer is NULL the parent becomes
+ * the main window WC_MAIN_WINDOW
+ * @param x,y coordinates to show the window at
+ * @param yes_no_callback callback function called when window is closed through any button */
+void ShowQuery(StringID caption, StringID message, Window *parent, void (*callback)(Window*, bool))
 {
-	Window *w;
+	Window *w = AllocateWindowDesc(&_query_desc);
+	if (w == NULL) return;
 
-	DeleteWindowById(WC_OK_CANCEL_QUERY, 0);
+	if (parent == NULL) parent = FindWindowById(WC_MAIN_WINDOW, 0);
+	w->parent = parent;
+	w->left = parent->left + (parent->width / 2) - (w->width / 2);
+	w->top = parent->top + (parent->height / 2) - (w->height / 2);
 
-	w = AllocateWindowDesc(&_query_desc);
-
-	WP(w, query_d).caption            = caption;
-	WP(w, query_d).message            = message;
-	WP(w, query_d).wnd_class          = window_class;
-	WP(w, query_d).wnd_num            = window_number;
-	WP(w, query_d).ok_cancel_callback = ok_cancel_callback;
-	WP(w, query_d).calledback         = false;
+	/* Create a backup of the variadic arguments to strings because it will be
+	 * overridden pretty often. We will copy these back for drawing */
+	COPY_OUT_DPARAM(WP(w, query_d).params, 0, lengthof(WP(w, query_d).params));
+	w->widget[QUERY_WIDGET_CAPTION].data = caption;
+	WP(w, query_d).message    = message;
+	WP(w, query_d).proc       = callback;
+	WP(w, query_d).calledback = false;
 }
 
 

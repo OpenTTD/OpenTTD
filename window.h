@@ -350,16 +350,6 @@ typedef struct querystr_d {
 } querystr_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(querystr_d));
 
-typedef struct query_d {
-	StringID caption;
-	StringID message;
-	WindowClass wnd_class;
-	WindowNumber wnd_num;
-	void (*ok_cancel_callback)(bool ok_clicked);
-	bool calledback;
-} query_d;
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(query_d));
-
 typedef struct {
 	byte item_count;      /* follow_vehicle */
 	byte sel_index;       /* scrollpos_x */

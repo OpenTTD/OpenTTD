@@ -278,10 +278,9 @@ static void SetupNewGRFWindow(Window *w)
 
 /** Callback function for the newgrf 'apply changes' confirmation window
  * @param yes_clicked boolean value, true when yes was clicked, false otherwise */
-static void NewGRFConfirmationCallback(bool yes_clicked)
+static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 {
-	if (yes_clicked) {
-		Window *w = FindWindowById(WC_GAME_OPTIONS, 0);
+	if (confirmed) {
 		newgrf_d *nd = &WP(w, newgrf_d);
 
 		CopyGRFConfigList(nd->orig_list, *nd->list);
@@ -424,9 +423,8 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 						ShowQuery(
 							STR_POPUP_CAUTION_CAPTION,
 							STR_NEWGRF_CONFIRMATION_TEXT,
-							NewGRFConfirmationCallback,
-							w->window_class,
-							w->window_number
+							w,
+							NewGRFConfirmationCallback
 						);
 					} else {
 						CopyGRFConfigList(WP(w, newgrf_d).orig_list, *WP(w, newgrf_d).list);

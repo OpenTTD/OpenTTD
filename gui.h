@@ -127,7 +127,7 @@ void ShowBuildBridgeWindow(uint start, uint end, byte type);
 
 void ShowBuildIndustryWindow(void);
 void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number, CharSetFilter afilter);
-void ShowQuery(StringID caption, StringID message, void (*ok_cancel_callback)(bool ok_clicked), WindowClass window_class, WindowNumber window_number);
+void ShowQuery(StringID caption, StringID message, Window *w, void (*callback)(Window*, bool));
 void ShowMusicWindow(void);
 
 /* main_gui.c */

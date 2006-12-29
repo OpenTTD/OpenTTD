@@ -176,16 +176,9 @@ static void StartGeneratingLandscape(glwp_modes mode)
 	}
 }
 
-static void HeightmapScaledTooMuchCallback(bool ok_clicked)
+static void HeightmapScaledTooMuchCallback(Window *w, bool confirmed)
 {
-	if (ok_clicked) {
-		Window *w;
-		glwp_modes mode = 0;
-		for (mode = 0; mode < GLWP_END; mode++) {
-			w = FindWindowById(WC_GENERATE_LANDSCAPE, mode);
-			if (w != NULL) StartGeneratingLandscape(mode);
-		}
-	}
+	if (confirmed) StartGeneratingLandscape((glwp_modes)w->window_number);
 }
 
 void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
@@ -330,7 +323,11 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			if (mode == GLWP_HEIGHTMAP && (
 					_heightmap_x * 2 < (1U << _patches_newgame.map_x) || _heightmap_x / 2 > (1U << _patches_newgame.map_x) ||
 					_heightmap_y * 2 < (1U << _patches_newgame.map_y) || _heightmap_y / 2 > (1U << _patches_newgame.map_y))) {
-				ShowQuery(STR_HEIGHTMAP_SCALE_WARNING_CAPTION, STR_HEIGHTMAP_SCALE_WARNING_MESSAGE, HeightmapScaledTooMuchCallback, WC_GENERATE_LANDSCAPE, mode);
+				ShowQuery(
+					STR_HEIGHTMAP_SCALE_WARNING_CAPTION,
+					STR_HEIGHTMAP_SCALE_WARNING_MESSAGE,
+					w,
+					HeightmapScaledTooMuchCallback);
 			} else {
 				StartGeneratingLandscape(mode);
 			}
@@ -722,10 +719,13 @@ typedef struct tp_info {
 
 static tp_info _tp;
 
-static void AbortGeneratingWorldCallback(bool ok_clicked)
+static void AbortGeneratingWorldCallback(Window *w, bool confirmed)
 {
-	if (ok_clicked) AbortGeneratingWorld();
-	else if (IsGeneratingWorld() && !IsGeneratingWorldAborted()) SetMouseCursor(SPR_CURSOR_ZZZ);
+	if (confirmed) {
+		AbortGeneratingWorld();
+	} else if (IsGeneratingWorld() && !IsGeneratingWorldAborted()) {
+		SetMouseCursor(SPR_CURSOR_ZZZ);
+	}
 }
 
 static void ShowTerrainProgressProc(Window* w, WindowEvent* e)
@@ -735,7 +735,12 @@ static void ShowTerrainProgressProc(Window* w, WindowEvent* e)
 		switch (e->we.click.widget) {
 		case 2:
 			if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
-			ShowQuery(STR_GENERATION_ABORT_CAPTION, STR_GENERATION_ABORT_MESSAGE, AbortGeneratingWorldCallback, WC_GENERATE_PROGRESS_WINDOW, 0);
+			ShowQuery(
+				STR_GENERATION_ABORT_CAPTION,
+				STR_GENERATION_ABORT_MESSAGE,
+				w,
+				AbortGeneratingWorldCallback
+			);
 			break;
 		}
 		break;
