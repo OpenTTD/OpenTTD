@@ -286,6 +286,40 @@ static uint32 GetPlatformInfoHelper(TileIndex tile, bool check_type, bool check_
 }
 
 
+static uint32 GetRailContinuationInfo(TileIndex tile)
+{
+	/* Tile offsets and exit dirs for X axis */
+	static Direction x_dir[8] = { DIR_SW, DIR_NE, DIR_SE, DIR_NW, DIR_S, DIR_E, DIR_W, DIR_N };
+	static DiagDirection x_exits[8] = { DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SW, DIAGDIR_NE };
+
+	/* Tile offsets and exit dirs for Y axis */
+	static Direction y_dir[8] = { DIR_SE, DIR_NW, DIR_SW, DIR_NE, DIR_S, DIR_W, DIR_E, DIR_N };
+	static DiagDirection y_exits[8] = { DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SE, DIAGDIR_NW };
+
+	Axis axis = IsTileType(tile, MP_RAILWAY) ? GetWaypointAxis(tile) : GetRailStationAxis(tile);
+
+	/* Choose appropriate lookup table to use */
+	Direction *dir = axis == AXIS_X ? x_dir : y_dir;
+	DiagDirection *diagdir = axis == AXIS_X ? x_exits : y_exits;
+
+	uint32 res = 0;
+	uint i;
+
+	for (i = 0; i < lengthof(x_dir); i++, dir++, diagdir++) {
+		uint32 ts = GetTileTrackStatus(tile + TileOffsByDir(*dir), TRANSPORT_RAIL);
+		if (ts != 0) {
+			/* If there is any track on the tile, set the bit in the second byte */
+			SETBIT(res, i + 8);
+
+			/* If any track reaches our exit direction, set the bit in the lower byte */
+			if (ts & DiagdirReachesTracks(*diagdir)) SETBIT(res, i);
+		}
+	}
+
+	return res;
+}
+
+
 /* Station Resolver Functions */
 static uint32 StationGetRandomBits(const ResolverObject *object)
 {
@@ -342,6 +376,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			       (GetRailType(tile) << 8);
 		case 0x43: return st->owner; /* Station owner */
 		case 0x44: return 2;         /* PBS status */
+		case 0x45: return GetRailContinuationInfo(tile);
 		case 0x46: return GetPlatformInfoHelper(tile, false, false, true);
 		case 0x47: return GetPlatformInfoHelper(tile, true,  false, true);
 		case 0x48: { /* Accepted cargo types */
@@ -361,6 +396,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0x62: return st->goods[parameter].rating;
 		case 0x63: return st->goods[parameter].enroute_time;
 		case 0x64: return st->goods[parameter].last_speed | (st->goods[parameter].last_age << 8);
+		case 0x65: return GB(st->goods[parameter].waiting_acceptance, 12, 4);
 
 		/* General station properties */
 		case 0x82: return 50;
