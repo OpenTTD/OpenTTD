@@ -287,6 +287,21 @@ void SetWindowDirty(const Window *w)
 	SetDirtyBlocks(w->left, w->top, w->left + w->width, w->top + w->height);
 }
 
+/** Find the Window whose parent pointer points to this window
+ * @parent w Window to find child of
+ * @return return a Window pointer that is the child of w, or NULL otherwise */
+static Window *FindChildWindow(const Window *w)
+{
+	Window* const *wz;
+
+	FOR_ALL_WINDOWS(wz) {
+		Window *v = *wz;
+		if (v->parent == w) return v;
+	}
+
+	return NULL;
+}
+
 /** Find the z-value of a window. A window must already be open
  * or the behaviour is undefined but function should never fail */
 Window **FindWindowZPosition(const Window *w)
@@ -301,8 +316,13 @@ Window **FindWindowZPosition(const Window *w)
 
 void DeleteWindow(Window *w)
 {
+	Window *v;
 	Window **wz;
 	if (w == NULL) return;
+
+	/* Delete any children a window might have in a head-recursive manner */
+	v = FindChildWindow(w);
+	if (v != NULL) DeleteWindow(v);
 
 	if (_thd.place_mode != VHM_NONE &&
 			_thd.window_class == w->window_class &&
@@ -317,6 +337,7 @@ void DeleteWindow(Window *w)
 	free(w->widget);
 	w->widget = NULL;
 	w->widget_count = 0;
+	w->parent = NULL;
 
 	/* Find the window in the z-array, and effectively remove it
 	 * by moving all windows after it one to the left */

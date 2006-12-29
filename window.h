@@ -335,6 +335,7 @@ struct Window {
 	uint32 desc_flags;
 
 	WindowMessage message;
+	Window *parent;
 	byte custom[WINDOW_CUSTOM_SIZE];
 };
 
