@@ -253,7 +253,7 @@ const byte _ffb_64[128] = {
 
 static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
-	uint bits;
+	uint bits = 0;
 	int i;
 	RememberData rd;
 	TileIndex tile_org = tile;
@@ -282,28 +282,54 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	}
 	tile += TileOffsByDiagDir(direction);
 
-	/* Check in case of rail if the owner is the same */
-	if (tpf->tracktype == TRANSPORT_RAIL) {
-		// don't enter train depot from the back
-		if (IsTileDepotType(tile, TRANSPORT_RAIL) && GetRailDepotDirection(tile) == direction) return;
+	/* check if the new tile can be entered from that direction */
+	/* Inside this block we should not use 'return' to indicate 'no way' condition (at least for rail transport type) */
+	if (tpf->tracktype == TRANSPORT_ROAD || tpf->tracktype == TRANSPORT_RAIL) {
+		if (tpf->tracktype == TRANSPORT_RAIL) {
+			/* don't enter train depot from the back */
+			if (IsTileDepotType(tile, TRANSPORT_RAIL) && GetRailDepotDirection(tile) == direction) goto no_way;
 
-		if (IsTileType(tile_org, MP_RAILWAY) || IsTileType(tile_org, MP_STATION) || IsTileType(tile_org, MP_TUNNELBRIDGE))
-			if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
-				if (GetTileOwner(tile_org) != GetTileOwner(tile)) return;
+			/* Check in case of rail if the owner is the same */
+			if (IsTileType(tile_org, MP_RAILWAY) || IsTileType(tile_org, MP_STATION) || IsTileType(tile_org, MP_TUNNELBRIDGE))
+				if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
+					if (GetTileOwner(tile_org) != GetTileOwner(tile)) goto no_way;
+		}
+
+		if (tpf->tracktype == TRANSPORT_ROAD) {
+			/* road stops and depots now have a track (r4419) */
+			/* don't enter road stop from the back */
+			if (IsRoadStopTile(tile) && ReverseDiagDir(GetRoadStopDir(tile)) != direction) goto no_way;
+			/* don't enter road depot from the back */
+			if (IsTileDepotType(tile, TRANSPORT_ROAD) && ReverseDiagDir(GetRoadDepotDirection(tile)) != direction) goto no_way;
+		}
+
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+			if (IsTunnel(tile)) {
+				/* tunnel hole can be entered only from one direction */
+				if (GetTunnelDirection(tile) != direction) goto no_way;
+			} else if (IsBridge(tile)) {
+				/* bridge ramp can be entered only from one direction (without custom bridge heads) */
+				if (GetBridgeRampDirection(tile) != direction) goto no_way;
+			}
+		}
+		if (tpf->tracktype == TRANSPORT_RAIL) {
+			/* check for the rail type compatibility */
+			Trackdir td = DiagdirToDiagTrackdir(direction);
+			RailType type_org = GetTileRailType(tile_org, td);
+			RailType type = GetTileRailType(tile, td);
+			if (type != type_org) {
+				// they can be compatible only if one is normal and the other one is elrail
+				if (type_org == RAILTYPE_RAIL && type != RAILTYPE_ELECTRIC) goto no_way;
+				if (type == RAILTYPE_RAIL && type_org != RAILTYPE_ELECTRIC) goto no_way;
+			}
+		}
 	}
 
-	// check if the new tile can be entered from that direction
-	if (tpf->tracktype == TRANSPORT_ROAD) {
-		// road stops and depots now have a track (r4419)
-		// don't enter road stop from the back
-		if (IsRoadStopTile(tile) && ReverseDiagDir(GetRoadStopDir(tile)) != direction) return;
-		// don't enter road depot from the back
-		if (IsTileDepotType(tile, TRANSPORT_ROAD) && ReverseDiagDir(GetRoadDepotDirection(tile)) != direction) return;
-	}
+	/* the next line is skipped when the new tile can't be entered from tile_org */
+	bits = GetTileTrackStatus(tile, tpf->tracktype);
+no_way:
 
 	tpf->rd.cur_length++;
-
-	bits = GetTileTrackStatus(tile, tpf->tracktype);
 
 	if ((byte)bits != tpf->var2) {
 		bits &= _tpfmode1_and[direction];
