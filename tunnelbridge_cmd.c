@@ -798,7 +798,6 @@ uint GetBridgeFoundation(Slope tileh, Axis axis)
 static void DrawTile_TunnelBridge(TileInfo *ti)
 {
 	uint32 image;
-	bool ice = _m[ti->tile].m4 & 0x80;
 
 	if (IsTunnel(ti->tile)) {
 		if (GetTunnelTransportType(ti->tile) == TRANSPORT_RAIL) {
@@ -807,7 +806,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			image = SPR_TUNNEL_ENTRY_REAR_ROAD;
 		}
 
-		if (ice) image += 32;
+		if (HasTunnelSnowOrDesert(ti->tile)) image += 32;
 
 		image += GetTunnelDirection(ti->tile) * 2;
 		DrawGroundSprite(image);
@@ -817,6 +816,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		DrawBridgeMiddle(ti);
 	} else if (IsBridge(ti->tile)) { // XXX is this necessary?
 		int base_offset;
+		bool ice = HasBridgeSnowOrDesert(ti->tile);
 
 		if (GetBridgeTransportType(ti->tile) == TRANSPORT_RAIL) {
 			base_offset = GetRailTypeInfo(GetRailType(ti->tile))->bridge_offset;
@@ -1109,17 +1109,26 @@ static void AnimateTile_TunnelBridge(TileIndex tile)
 
 static void TileLoop_TunnelBridge(TileIndex tile)
 {
+	bool snow_or_desert = IsTunnelTile(tile) ? HasTunnelSnowOrDesert(tile) : HasBridgeSnowOrDesert(tile);
 	switch (_opt.landscape) {
 		case LT_HILLY:
-			if (HASBIT(_m[tile].m4, 7) != (GetTileZ(tile) > _opt.snow_line)) {
-				TOGGLEBIT(_m[tile].m4, 7);
+			if (snow_or_desert != (GetTileZ(tile) > _opt.snow_line)) {
+				if (IsTunnelTile(tile)) {
+					SetTunnelSnowOrDesert(tile, !snow_or_desert);
+				} else {
+					SetBridgeSnowOrDesert(tile, !snow_or_desert);
+				}
 				MarkTileDirtyByTile(tile);
 			}
 			break;
 
 		case LT_DESERT:
-			if (GetTropicZone(tile) == TROPICZONE_DESERT && !(_m[tile].m4 & 0x80)) {
-				_m[tile].m4 |= 0x80;
+			if (GetTropicZone(tile) == TROPICZONE_DESERT && !snow_or_desert) {
+				if (IsTunnelTile(tile)) {
+					SetTunnelSnowOrDesert(tile, true);
+				} else {
+					SetBridgeSnowOrDesert(tile, true);
+				}
 				MarkTileDirtyByTile(tile);
 			}
 			break;

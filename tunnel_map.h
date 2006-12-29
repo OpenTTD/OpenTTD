@@ -35,6 +35,18 @@ static inline TransportType GetTunnelTransportType(TileIndex t)
 	return (TransportType)GB(_m[t].m5, 2, 2);
 }
 
+static inline bool HasTunnelSnowOrDesert(TileIndex t)
+{
+	assert(IsTunnelTile(t));
+	return HASBIT(_m[t].m4, 7);
+}
+
+static inline void SetTunnelSnowOrDesert(TileIndex t, bool snow_or_desert)
+{
+	assert(IsTunnelTile(t));
+	SB(_m[t].m4, 7, 1, snow_or_desert);
+}
+
 
 TileIndex GetOtherTunnelEnd(TileIndex);
 bool IsTunnelInWay(TileIndex, uint z);

@@ -81,6 +81,19 @@ static inline TransportType GetBridgeTransportType(TileIndex t)
 }
 
 
+static inline bool HasBridgeSnowOrDesert(TileIndex t)
+{
+	assert(IsBridgeTile(t));
+	return HASBIT(_m[t].m4, 7);
+}
+
+
+static inline void SetBridgeSnowOrDesert(TileIndex t, bool snow_or_desert)
+{
+	assert(IsBridgeTile(t));
+	SB(_m[t].m4, 7, 1, snow_or_desert);
+}
+
 /**
  * Finds the end of a bridge in the specified direction starting at a middle tile
  */
