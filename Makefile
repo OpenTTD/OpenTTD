@@ -1037,8 +1037,12 @@ endif
 	install -m 644 lang/*.lng $(DATA_DIR_INSTALL)/lang
 	install -m 644 data/*.grf $(DATA_DIR_INSTALL)/data
 	install -m 644 data/opntitle.dat $(DATA_DIR_INSTALL)/data
+	# Generic menu icon
 	install -m 644 media/openttd.64.png $(ICON_DIR_INSTALL)
+	# Debian menu icon
 	install -m 644 media/openttd.32.xpm $(ICON_DIR_INSTALL)
+	# Window icon
+	install -m 644 media/openttd.32.bmp $(ICON_DIR_INSTALL)
 else	#MorphOS
 install:
 	$(error make install is not supported on MorphOS)
