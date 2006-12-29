@@ -118,9 +118,10 @@ public:
 
 		// find the best path
 		bool path_found = Yapf().FindPath(v);
-		if (!path_found && path_not_found != NULL) {
+		if (path_not_found != NULL) {
 			// tell controller that the path was only 'guessed'
-			*path_not_found = !path_found;
+			// treat the path as found if stopped on the first two way signal(s)
+			*path_not_found = !(path_found || Yapf().m_stopped_on_first_two_way_signal);
 		}
 
 		// if path not found - return INVALID_TRACKDIR
