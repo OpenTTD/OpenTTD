@@ -358,7 +358,7 @@ STR_015C_SAVE_GAME                                              :Salvar jogo
 STR_015D_LOAD_GAME                                              :Abrir jogo
 STR_015E_QUIT_GAME                                              :Abandonar jogo
 STR_015F_QUIT                                                   :Sair
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Tem certeza que deseja abandonar este jogo?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Tem certeza que deseja abandonar este jogo?
 STR_0161_QUIT_GAME                                              :{WHITE}Abandonar jogo
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecione forma de classificação (descendente/ascendente)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecione um critério de classificação
@@ -737,7 +737,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Guardar 
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Jogar Cenário
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Jogar num mapa de altitudes
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Inica um novo jogo, a partir de um mapa de altitude
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Tem a certeza que deseja abandonar este cenário?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Tem a certeza que deseja abandonar este cenário?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sair do Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só pode ser construído em cidades com pelo menos 1200 habitantes
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Retroceder data de inicio 1 ano
@@ -2942,21 +2942,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordens c
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra todos os veículos com a mesma rota
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Vender
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Você estará vendendo todos os veículos do depósito
-STR_ARE_YOU_SURE                                                :{BLACK}Tem certeza?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirma a venda de todos os trens
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirma a venda de todos os veículos
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirma a venda de todos os navios
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Confirma a venda de todas as aeronaves
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Cancela a venda de todos os trens
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Cancela a venda de todos os veículos
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Cancela a venda de todos os navios
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Cencela a venda das aeronaves
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os trens no depósito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender todos os veículos no depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender todos os navios no depósito

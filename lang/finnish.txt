@@ -358,7 +358,7 @@ STR_015C_SAVE_GAME                                              :Tallenna peli
 STR_015D_LOAD_GAME                                              :Lataa peli
 STR_015E_QUIT_GAME                                              :Lopeta peli
 STR_015F_QUIT                                                   :Poistu
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Lopetetaanko peli?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Lopetetaanko peli?
 STR_0161_QUIT_GAME                                              :{WHITE}Lopeta peli
 STR_SORT_ORDER_TIP                                              :{BLACK}Valitse järjestys (laskeva/nouseva).
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Valitse järjestyskriteeri.
@@ -729,7 +729,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Tallenna
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Pelaa skenaariota
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Pelaa korkeuskartta
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Aloita uusi peli, käyttäen korkeuskarttaa maastona
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Lopetetaanko skenaario?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Lopetetaanko skenaario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sulje muokkain
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...voidaan rakentaa vain kaupunkeihin, joissa on yli 1200 asukasta.
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Siirrä aloituspäivää vuodella taaksepäin.
@@ -2919,21 +2919,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared o
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Näytä kaikki ajoneuvot, joilla on sama aikataulu
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Myy
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Olet myymässä kaikki varikolla olevat ajoneuvot.
-STR_ARE_YOU_SURE                                                :{BLACK}Oletko varma?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Vahvista kaikkien varikolla olevien junien myyminen
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Vahvista kaikkien varikolla olevien ajoneuvojen myyminen
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Vahvista kaikkien telakalla olevien laivojen myyminen
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Vahvista että haluat myydä kaikki hallissa olevat ilma-alukset
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Älä myy kaikkia varikolla olevia junia
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Älä myy varikolla olevia ajoneuvoja
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Älä myy telakalla olevia laivoja
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Älä myy hallissa olevia ilma-aluksia
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Myy kaikki varikolla olevat junat
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Myy kaikki varikolla olevat ajoneuvot
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Myy kaikki telakalla olevat laivat

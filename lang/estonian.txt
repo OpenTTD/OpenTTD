@@ -416,7 +416,7 @@ STR_015C_SAVE_GAME                                              :Salvesta mäng
 STR_015D_LOAD_GAME                                              :Laadi mäng
 STR_015E_QUIT_GAME                                              :Lahku mängust
 STR_015F_QUIT                                                   :Välju
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Oled sa kindel, et tahad sellest mängust lahkuda?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Oled sa kindel, et tahad sellest mängust lahkuda?
 STR_0161_QUIT_GAME                                              :{WHITE}Mängust lahkumine
 STR_SORT_ORDER_TIP                                              :{BLACK}Sorteerimise järjekorra valimine (kahanev/kasvav)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorteerimistingimuse valimine
@@ -795,7 +795,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Salvesta
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Mängi stsenaariumit
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Mängi Kõrguskaarti
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Alusta uut mängu kasutades kõrguskaarti maastikuna
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Kas sa oled kindel, et sa tahad kaardi tegemise lõpetada?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Kas sa oled kindel, et sa tahad kaardi tegemise lõpetada?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Lahku redaktorist
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...saab ainult ehitada linna, mille rahvastikuarv ületab 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Liiguta algusaega aasta võrra tagasi
@@ -3003,21 +3003,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Jagatud 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Näita kõiki sama sõidukavaga sõidukeid
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Müü
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Sa müüd hetkel kõik oma autod garaažist
-STR_ARE_YOU_SURE                                                :{BLACK}Kas sa oled kindel?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Kinnita, et sa tahad müüa kõiki ronge jaamast
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Kinnita, et sa tahad müüa kõiki autosi garaažist
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Kinnita, et sa tahad müüa kõiki laevaangaaris olevaid laevu
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Kinnita, et sa tahad müüa kõiki lennukeid angaaris
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ära müü kõiki ronge jaamast
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ära müü kõiki autosi garaažist
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ära müü kõiki laevu sadamast
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ära müü kõiki lennukeid angaarist
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Müü kõik rongid jaamast
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Müü kõik autod garaažist
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Müü kõik laevad sadamast

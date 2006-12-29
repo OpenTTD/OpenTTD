@@ -358,7 +358,7 @@ STR_015C_SAVE_GAME                                              :Salveazã jocul
 STR_015D_LOAD_GAME                                              :Încarcã joc
 STR_015E_QUIT_GAME                                              :Iesire în meniul principal
 STR_015F_QUIT                                                   :Iesire din joc
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Esti sigur cã vrei sã renunti la acest joc?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Esti sigur cã vrei sã renunti la acest joc?
 STR_0161_QUIT_GAME                                              :{WHITE}Iesire din joc
 STR_SORT_ORDER_TIP                                              :{BLACK}Alegeti ordinea de sortare ascendenta/descendenta
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Alegeti criteriul de sortare
@@ -737,7 +737,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Salveaz�
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Joacã scenariu
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Reda harta inaltimi
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Porneste un nou joc, folosind o scara de inaltimi ca peisaj
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Esti sigur cã vrei sã renunti la acest scenariu?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Esti sigur cã vrei sã renunti la acest scenariu?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Iesire din editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...Se poate construi doar in orase cu populatia de cel putin 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Schimbã data de start cu un an în urmã
@@ -2942,21 +2942,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Comenzi 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Arata toate vehiculele care se incadreaza in acest program
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Vinde
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Esti pe punctul de a vinde toate vehiculele din depou.
-STR_ARE_YOU_SURE                                                :{BLACK}Esti sigur?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirma vinderea tuturor trenurilor din depou
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirma vinderea tuturor autovehiculelor din depou
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirma vindere tuturor vaselor din depou
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Confirma vinderea tuturor aeronavelor din hangar
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Nu vinde toate trenurile din depou
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Nu vinde toate autovehiculele din depou
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Nu vinde toate vasele din depou
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Nu vinde toate aeronavele din hangar
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vinde toate trenurile din the depou
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vinde toate autovehiculele din depou
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vinde toate vasele din depou

@@ -360,7 +360,7 @@ STR_015C_SAVE_GAME                                              :Зберегт�
 STR_015D_LOAD_GAME                                              :Завантажити гру
 STR_015E_QUIT_GAME                                              :Покинути гру
 STR_015F_QUIT                                                   :Вихід
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Покинути гру?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Покинути гру?
 STR_0161_QUIT_GAME                                              :{WHITE}Покинути гру
 STR_SORT_ORDER_TIP                                              :{BLACK}Виберіть порядок сортування (спадаючий/зростаючий)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Виберіть критерій сортування
@@ -739,7 +739,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Збер
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Грати за сценарієм
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Грати з карти висот
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Почати нову гру, використавши карту висот за ландшафт
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ви дійсно бажаєти вийти з сценарію?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ви дійсно бажаєти вийти з сценарію?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Вихід з редактору
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можливо будувати лише у містах з населення не менш 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Перенести початкову дату на 1 рік назад
@@ -2946,21 +2946,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Спіл
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Показати транспорт з таким самим маршрутом
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Продати
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Ви збираєтеся продати всі авто з депо
-STR_ARE_YOU_SURE                                                :{BLACK}Ви впевнені?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Підтвердіть, що ви хочете продати всі поїди з депо
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Підтвердіть, що Ви хочете продати всі авто з депо
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Підтвердіть, що Ви хочете продати всі кораблі з депо
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Підтвердіть, що хочете продати всі літаки з ангару
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Не продавати всі поїзди з депо
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Не продавати всі авто з депо
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Не продавати всі кораблі з депо
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Не продавати всі літаки з ангару
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Продати всі поїзди з депо
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Продати всі автомобілі з депо
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Продати всі кораблі з депо

@@ -358,7 +358,7 @@ STR_015C_SAVE_GAME                                              :Gem Spil
 STR_015D_LOAD_GAME                                              :Hent Spil
 STR_015E_QUIT_GAME                                              :Afslut Spil
 STR_015F_QUIT                                                   :Afslut
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på, at du vil afslutte dette spil ?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på, at du vil afslutte dette spil ?
 STR_0161_QUIT_GAME                                              :{WHITE}Afslut Spil
 STR_SORT_ORDER_TIP                                              :{BLACK}Vælg sorteringsorden (faldende/stigende)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vælg sorteringskriterie
@@ -737,7 +737,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Gem scen
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spil et scenarie
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Spil højdekort
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start et nyt spil med et højdekort som landskab
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på, at du vil afslutte dette scenarie ?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Er du sikker på, at du vil afslutte dette scenarie ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Afslut Editoren
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan kun bygges i byer med mindst 1200 indbyggere
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flyt startdatoen 1 år tilbage
@@ -2922,21 +2922,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte or
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, som har den samme rute
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Sælg
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du er ved at sælge alle køretøjer i værkstedet
-STR_ARE_YOU_SURE                                                :{BLACK}Er du sikker?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bekræft at du ønsker at sælge alle toge i remisen
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bekræft at du ønsker at sælge alle køretøjer i værkstedet
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bekræft at du ønsker at sælge alle skibe i dokken
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bekræft at du ønsker at sælge alle fly i hangaren
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Sælg ikke togene i remisen
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Sælg ikke køretøjerne i værkstedet
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Sælg ikke skibene i dokken
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Sælg ikke flyene i hangaren
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sælg alle toge i remisen
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sælg alle køretøjer i værkstedet
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sælg alle skibe i dokken

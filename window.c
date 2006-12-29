@@ -1405,8 +1405,17 @@ static bool HandleViewportScroll(void)
 	return false;
 }
 
-static void MaybeBringWindowToFront(const Window *w)
+/** Check if a window can be made top-most window, and if so do
+ * it. If a window does not obscure any other windows, it will not
+ * be brought to the foreground. Also if the only obscuring windows
+ * are so-called system-windows, the window will not be moved.
+ * The function will return false when a child window of this window is a
+ * modal-popup; function returns a false and child window gets a white border
+ * @param w Window to bring on-top
+ * @return false if the window has an active modal child, true otherwise */
+static bool MaybeBringWindowToFront(const Window *w)
 {
+	bool bring_to_front = false;
 	Window* const *wz;
 	Window* const *uz;
 
@@ -1414,12 +1423,19 @@ static void MaybeBringWindowToFront(const Window *w)
 			IsVitalWindow(w) ||
 			w->window_class == WC_TOOLTIPS ||
 			w->window_class == WC_DROPDOWN_MENU) {
-		return;
+		return true;
 	}
 
 	wz = FindWindowZPosition(w);
 	for (uz = wz; ++uz != _last_z_window;) {
-		const Window *u = *uz;
+		Window *u = *uz;
+
+		/* A modal child will prevent the activation of the parent window */
+		if (u->parent == w && (u->desc_flags & WDF_MODAL)) {
+			u->flags4 |= WF_WHITE_BORDER_MASK;
+			SetWindowDirty(u);
+			return false;
+		}
 
 		if (u->window_class == WC_MAIN_WINDOW ||
 				IsVitalWindow(u) ||
@@ -1428,6 +1444,7 @@ static void MaybeBringWindowToFront(const Window *w)
 			continue;
 		}
 
+		/* Window sizes don't interfere, leave z-order alone */
 		if (w->left + w->width <= u->left ||
 				u->left + u->width <= w->left ||
 				w->top  + w->height <= u->top ||
@@ -1435,9 +1452,11 @@ static void MaybeBringWindowToFront(const Window *w)
 			continue;
 		}
 
-		BringWindowToFront(w);
-		return;
+		bring_to_front = true;
 	}
+
+	if (bring_to_front) BringWindowToFront(w);
+	return true;
 }
 
 /** Send a message from one window to another. The receiving window is found by
@@ -1616,7 +1635,7 @@ void MouseLoop(int click, int mousewheel)
 
 	w = FindWindowFromPt(x, y);
 	if (w == NULL) return;
-	MaybeBringWindowToFront(w);
+	if (!MaybeBringWindowToFront(w)) return;
 	vp = IsPtInWindowViewport(w, x, y);
 
 	/* Don't allow any action in a viewport if either in menu of in generating world */

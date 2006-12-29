@@ -471,7 +471,7 @@ STR_015C_SAVE_GAME                                              :Uložit hru
 STR_015D_LOAD_GAME                                              :Načíst hru
 STR_015E_QUIT_GAME                                              :Ukončit hru
 STR_015F_QUIT                                                   :Ukončit program
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Opravdu chceš ukončit tuto hru?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Opravdu chceš ukončit tuto hru?
 STR_0161_QUIT_GAME                                              :{WHITE}Konec hry
 STR_SORT_ORDER_TIP                                              :{BLACK}Vyber způsob řazeni (sestupně/vzestupně)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vyber, podle čeho se má třídit
@@ -842,7 +842,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Uložit 
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Hrát mapu
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Hrát z výškové mapy
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Začne novou hru s použitím výškové mapy k vytvoření krajiny
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Určite chceš opustit toto mapu?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Určite chceš opustit toto mapu?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Ukončit editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... může být budováno jen ve městech s populací 1200 lidí a více
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Posunout startovní rok o rok zpět
@@ -3021,21 +3021,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Sdílen�
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit všechny prostředky se stejným jízdním řádem
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Prodat
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Chceš prodat všechna vozidla v depu.
-STR_ARE_YOU_SURE                                                :{BLACK}Jsi si jistý?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Potvrď, že chceš prodat všechny lodě v depu
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Potvrď, že chceš prodat všechna silniční vozidla v depu
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Potvrď, že chceš prodat všechny lodě v depu
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Potvrď, že chceš prodat všechna letadla a vrtulníky v hangáru
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Neprodávat vlaky nacházející se v depu
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Neprodávat silniční vozidla nacházející se v depu
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Neprodávat lodě nacházející se v depu
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Neprodávat letadla a vrtulníky nacházející se v hangáru
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Prodat všechny vlaky v depu
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Prodat všechna silniční vozidla v depu
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Prodat všechny lodě v depu

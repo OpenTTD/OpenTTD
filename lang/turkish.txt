@@ -359,7 +359,7 @@ STR_015C_SAVE_GAME                                              :Kaydet
 STR_015D_LOAD_GAME                                              :Yükle
 STR_015E_QUIT_GAME                                              :Bitir
 STR_015F_QUIT                                                   :Çıkış
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Oyunu bitirmek istediğinizden emin misiniz?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Oyunu bitirmek istediğinizden emin misiniz?
 STR_0161_QUIT_GAME                                              :{WHITE}Oyunu Bitir
 STR_SORT_ORDER_TIP                                              :{BLACK}Sıralama türü seçin (azalan/artan)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sıralama kriteri seçin
@@ -738,7 +738,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Senaryo 
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Senaryo Oyna
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Yükseklik Haritası Oyna
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Yükseklik haritasını kullanarak yeni oyun başlat
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Bu senaryodan çıkmak istediğinizden emin misiniz ?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Bu senaryodan çıkmak istediğinizden emin misiniz ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Editörden Çık
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...nüfusu en az 1200 olan şehirlere yapılabilir
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Baslama yılını düşür
@@ -2944,21 +2944,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Aynı talimatlara sahip bütün araçları göster
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Sat
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Garajdaki tüm araçları satmak üzeresiniz.
-STR_ARE_YOU_SURE                                                :{BLACK}Emin misiniz?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Gardaki tüm trenleri satmayı onaylayın
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Garajdaki tüm arabaları satmayı onaylayın
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Tersanedeki tüm gemileri satmayı onaylayın
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Hangardaki bütün uçakları satmayı onaylayın
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Gardaki tüm trenları satma
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Garajdaki tüm arabaları satma
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Tersanedeki tüm gemileri satma
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Hangardaki bütün uçakları satma
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Gardaki tüm trenleri sat
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Garajdaki tüm arabaları sat
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Tersanedeki tüm gemileri sat

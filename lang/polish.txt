@@ -412,7 +412,7 @@ STR_015C_SAVE_GAME                                              :Zapisz grę
 STR_015D_LOAD_GAME                                              :Wczytaj grę
 STR_015E_QUIT_GAME                                              :Opuść grę
 STR_015F_QUIT                                                   :Wyjście
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Jesteś pewien że chcesz skończyć grę?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Jesteś pewien że chcesz skończyć grę?
 STR_0161_QUIT_GAME                                              :{WHITE}Wyjście
 STR_SORT_ORDER_TIP                                              :{BLACK}Wybierz porządek sortowania (malejąco/rosnąco)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Wybierz kryterium sortowania
@@ -825,7 +825,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Zapisz s
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Zagraj Scenariusz
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Zagraj z mapy wysokości
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Rozpocznij nowa grę używając mapy wysokości jako krajobrazu
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Jesteś pewien że chcesz opuścić scenariusz?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Jesteś pewien że chcesz opuścić scenariusz?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Wyjście z edytora
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...można zbudować jedynie w miastach o populacji przynajmniej 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Zmień datę początkową do tyłu o 1 rok
@@ -3074,21 +3074,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Wspoldzi
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Sprzedaj
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Sprzedasz wszystkie pojazdy z zajezdni
-STR_ARE_YOU_SURE                                                :{BLACK}Jesteś pewien?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Potwierdź chęć sprzedaży wszystkich pociągów z zajezdni
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Potwierdź chęć sprzedaży wszystkich samochodów z zajezdni
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Potwierdź chęć sprzedaży wszystkich statków ze stoczni
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Potwierdź chęć sprzedaży wszystkich samolotów z hangaru
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Nie sprzedawaj wszystkich pociągów z zajezdni
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Nie sprzedawaj wszystkich samochodów z zajezdni
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Nie sprzedawaj wszystkich statków ze stoczni
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Nie sprzedawaj wszystkich samolotów z hangaru
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sprzedaj wszystkie pociągi z zajezdni
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sprzedaj wszystkie samochody z zajezdni
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sprzedaj wszystkie statki ze stoczni

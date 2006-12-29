@@ -359,7 +359,7 @@ STR_015C_SAVE_GAME                                              :Spara spelet
 STR_015D_LOAD_GAME                                              :Ladda ett spel
 STR_015E_QUIT_GAME                                              :Avsluta spelet
 STR_015F_QUIT                                                   :Avsluta
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Vill du verkligen avsluta spelet?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Vill du verkligen avsluta spelet?
 STR_0161_QUIT_GAME                                              :{WHITE}Avsluta spelet
 STR_SORT_ORDER_TIP                                              :{BLACK}Välj sorteringsordning (fallande/stigande)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Välj sortering
@@ -738,7 +738,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Spara sc
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spela scenario
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Spela höjdkarta
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Starta ett nytt spel, och använd en höjdkarta som landskap
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Vill du verkligen avsluta detta scenario?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Vill du verkligen avsluta detta scenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Avsluta editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan bara byggas i städer med minst 1200 invånare
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytta startdatumet 1 år bakåt
@@ -2944,21 +2944,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delade i
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Visa alla fordon som har samma schema
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Sälj
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du är på väg att sälja alla fordon i depån.
-STR_ARE_YOU_SURE                                                :{BLACK}Är du säker?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bekräfta att du vill sälja alla tåg i depån
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bekräfta att du vill sälja alla fordon i depån
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bekräfta att du vill sälja alla skepp i depån
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bekräfta att du vill sälja alla flygplan i hangaren
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Sälj inte alla tåg i depån
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Sälj inte alla fordon i depån
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Sälj inte alla skepp i depån
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Sälj inte alla flygplan i hangaren
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sälj alla tåg i depån
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sälj alla vägfordon i depån
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sälj alla skepp i depån

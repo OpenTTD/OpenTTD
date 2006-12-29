@@ -355,7 +355,7 @@ STR_015C_SAVE_GAME                                              :Konservu ludon
 STR_015D_LOAD_GAME                                              :Ŝarĝu ludon
 STR_015E_QUIT_GAME                                              :Foriru de la ludo
 STR_015F_QUIT                                                   :Fermu
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ĉu vi certas ke vi volas foriri?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ĉu vi certas ke vi volas foriri?
 STR_0161_QUIT_GAME                                              :{WHITE}Foriri de la ludo
 STR_SORT_ORDER_TIP                                              :{BLACK}Elektu vicordo (deira/alira)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Elektu ordigaj kondiĉoj
@@ -734,7 +734,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Konservu
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Ludu Scenaron
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Ludu Altecmapon
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Startu novan ludon, uzante altecmapon por landaspekto
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ĉu vi certas ke vi volas forlasi ĉi tiun scenaron?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ĉu vi certas ke vi volas forlasi ĉi tiun scenaron?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Fermu Kreilon
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...nur konstruebla en urboj havantaj pli ol 1200 enloĝantojn
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Movu la komencdaton 1 jaron posten
@@ -2793,20 +2793,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 
 
 ### depot strings
-
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Vi intencas vendi ĉiujn veturilojn en la deponejo.
-STR_ARE_YOU_SURE                                                :{BLACK}Ĉu vi certas?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Konfirmu ke vi volas vendi ĉiujn trajnojn en la deponejo
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Konfirmu ke vi volas vendi ĉiujn vojveturilojn en la deponejo
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Konfirmu ke vi volas vendi ĉiujn ŝipojn en la deponejo
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Konfirmu ke vi volas vendi ĉiujn aviadilojn en la hangaro
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ne vendu ĉiujn trajnojn en la deponejo
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ne vendu ĉiujn vojveturilojn en la deponejo
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ne vendu ĉiujn ŝipojn en la deponejo
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ne vendu ĉiujn aviadilojn en la hangaro
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vendu ĉiujn trajnojn en la deponejo
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vendu ĉiujn vojveturilojn en la deponejo
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vendu ĉiujn ŝipojn en la deponejo

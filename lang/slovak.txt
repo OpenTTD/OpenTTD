@@ -423,7 +423,7 @@ STR_015C_SAVE_GAME                                              :Ulozit hru
 STR_015D_LOAD_GAME                                              :Nahrat hru
 STR_015E_QUIT_GAME                                              :Ukoncit hru
 STR_015F_QUIT                                                   :Ukoncit OpenTTD
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Si si isty ze chces ukoncit tuto hru ?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Si si isty ze chces ukoncit tuto hru ?
 STR_0161_QUIT_GAME                                              :{WHITE}Ukoncit hru
 STR_SORT_ORDER_TIP                                              :{BLACK}Vyber sposob triedenia (zostupny/vzostupny)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vyber kriterium triedenia
@@ -802,7 +802,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Ulozit s
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Hrat scenar
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Hrat vyskovu mapu
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Zacat novu hru s pouzitim vyskovej mapy ako krajiny
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Si si isty ze chces ukoncit tento scenar ?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Si si isty ze chces ukoncit tento scenar ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Ukoncit Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...moze byt postavene v mestach z populaciou vacsou ako 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Posunut zaciatok o rok dozadu
@@ -3009,21 +3009,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Zdielane
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit vsetky vozidla s rovnakym zoznamom prikazov
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Predat
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Všetky vozidlá budú poslané do depa
-STR_ARE_YOU_SURE                                                :{BLACK}Ste si istí?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Potvrdte predaj vlakov v depe
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Potvrdte predaj všetkých vozidiel v garáži
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Potvrdte predaj všetkých lodí v lodenici
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Potvrdte predaj všetkých lietadiel v hangári
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Nepredavat všetky vlaky v depe
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Nepredavat všetky vozidlá v garáži
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Nepredavat všetky lode v lodenici
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Nepredavat všetky lietadlá v hangári
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Predat všetky vlaky v depe
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Predat všetky vozidlá v garáži
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Predat všetky lode v lodenici

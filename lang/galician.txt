@@ -355,7 +355,7 @@ STR_015C_SAVE_GAME                                              :Grabar Partida
 STR_015D_LOAD_GAME                                              :Cargar Partida
 STR_015E_QUIT_GAME                                              :Saír ó menu principal
 STR_015F_QUIT                                                   :Saír do programa
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}¿Está seguro de que desexa saír da partida?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}¿Está seguro de que desexa saír da partida?
 STR_0161_QUIT_GAME                                              :{WHITE}Saír ó menú principal
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecciona o modo de ordeamento(descendente/ascendente)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecciona o criterio de orde
@@ -714,7 +714,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Grabar e
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Cargar Escenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Grabar Escenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Xogar Escenario
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}¿Estás seguro de que desexas saír deste escenario?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}¿Estás seguro de que desexas saír deste escenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Saír do Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só se pode construír en cidades con polo menos 1200 hab.
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Move-lo ano de comezo un ano hacia atrás
@@ -2824,12 +2824,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tódolos vehículos que comparte esta planificación
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Vender
-STR_ARE_YOU_SURE                                                :{BLACK}¿Estás seguro?
-
-
-
 
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autorreemprazar tódolos trens no depósito

@@ -359,7 +359,7 @@ STR_015C_SAVE_GAME                                              :Save game
 STR_015D_LOAD_GAME                                              :Load game
 STR_015E_QUIT_GAME                                              :Quit game
 STR_015F_QUIT                                                   :Quit
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Are you sure you want to quit this game ?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Are you sure you want to quit this game ?
 STR_0161_QUIT_GAME                                              :{WHITE}Quit Game
 STR_SORT_ORDER_TIP                                              :{BLACK}Select sorting order (descending/ascending)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Select sorting criteria
@@ -738,7 +738,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Save Sce
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Play Scenario
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Play Heightmap
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start a new game, using a heightmap as landscape
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Are you sure you want to quit this scenario ?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Are you sure you want to quit this scenario ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Quit Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...can only be built in towns with a population of at least 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Move the starting date backward 1 year
@@ -2946,21 +2946,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared o
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles which have the same schedule
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Sell
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}You are about to sell all vehicles in the depot.
-STR_ARE_YOU_SURE                                                :{BLACK}Are you sure?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirm that you want to sell all trains in the depot
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirm that you want to sell all road vehicles in the depot
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirm that you want to sell all ships in the depot
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Confirm that you want to sell all aircraft in the hangar
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Do not sell all trains in the depot
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Do not sell all road vehicles in the depot
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Do not sell all ships in the depot
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Do not sell all aircraft in the hangar
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sell all trains in the depot
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sell all road vehicles in the depot
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sell all ships in the depot

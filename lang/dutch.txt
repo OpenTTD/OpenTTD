@@ -359,7 +359,7 @@ STR_015C_SAVE_GAME                                              :Spel opslaan
 STR_015D_LOAD_GAME                                              :Spel laden
 STR_015E_QUIT_GAME                                              :Spel stoppen
 STR_015F_QUIT                                                   :Afsluiten
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Weet je zeker dat je dit spel wilt afsluiten?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Weet je zeker dat je dit spel wilt afsluiten?
 STR_0161_QUIT_GAME                                              :{WHITE}Spel stoppen
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecteer sorteerrichting (aflopend/oplopend)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecteer sorteringscriteria
@@ -738,7 +738,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Scenario spelen
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Speel Hoogtekaart
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start een nieuw spel, gebruik een hoogtekaart als landschap
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Weet je zeker dat je dit scenario wilt sluiten?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Weet je zeker dat je dit scenario wilt sluiten?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sluit editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan alleen in steden met bevolking van meer dan 1200 gebouwd worden
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Verplaats begindatum 1 jaar achteruit
@@ -2945,21 +2945,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gedeelde
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Toon alle voertuigen met de zelfde orders
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Verkoop
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Je staat op het punt alle voertuigen in het depot te verkopen.
-STR_ARE_YOU_SURE                                                :{BLACK}Weet je het zeker?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bevestig dat je alle treinen in het depot wilt verkopen
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bevestig dat je alle weg voertuigen in het depot wilt verkopen
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bevestig dat je alle schepen in het depot wilt verkopen
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bevestig dat je alle vliegtuigen in de hangar wilt verkopen
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Verkoop niet alle treinen in het depot
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Verkoop niet alle weg voertuigen in het depot
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Verkoop niet alle schepen in het depot
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Verkoop niet alle vliegtuigen in de hangar
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Verkoop alle treinen in het depot
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Verkoop alle weg voertuigen in het depot
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Verkoop alle schepen in het depot

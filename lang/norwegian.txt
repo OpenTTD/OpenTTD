@@ -359,7 +359,7 @@ STR_015C_SAVE_GAME                                              :Lagre spill
 STR_015D_LOAD_GAME                                              :Last inn spill
 STR_015E_QUIT_GAME                                              :Avslutt gjeldende spill
 STR_015F_QUIT                                                   :Avslutt OpenTTD
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på du vil avslutte dette spillet ?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på du vil avslutte dette spillet ?
 STR_0161_QUIT_GAME                                              :{WHITE}Avslutt spill
 STR_SORT_ORDER_TIP                                              :{BLACK}Velg sorteringsrekkefølge (synkende/stigende)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Velg sorteringskriterier
@@ -738,7 +738,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Lagre sc
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spill scenario
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Spill høydekart
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start et nytt spill, bruk et høydekart som landskap
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på du vil forlate dette scenariet?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Er du sikker på du vil forlate dette scenariet?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Avslutt redigeringsprogrammet
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan kun bygges i byer med mer en 1200 innbyggere
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen tilbake ett år
@@ -2944,21 +2944,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte or
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle kjøretøy som har samme ruteplan
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Selg
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du er i ferd med å selge alle kjøretøyene i depotet
-STR_ARE_YOU_SURE                                                :{BLACK}Er du sikker?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bekreft at du vil selge alle togene i depotet
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bekreft at du vil selge alle bilene i depotet
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bekreft at du vil selge alle skipene i depotet
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bekreft at du vil slge all flyene i hangaren
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ikke selg alle skip i depodet
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ikke selg alle bilene i garasjen
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ikke selg alle skip i depodet
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ikke selg alle flyene i hangaren
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Selg alle tog i depodet
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Selg alle kjøretøy i garasjen
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Selg alle skip i depotet

@@ -359,7 +359,7 @@ STR_015C_SAVE_GAME                                              :Desa el joc
 STR_015D_LOAD_GAME                                              :Carrega el joc
 STR_015E_QUIT_GAME                                              :Abandona el joc
 STR_015F_QUIT                                                   :Sortir
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur que vols abandonar aquest joc?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Estàs segur que vols abandonar aquest joc?
 STR_0161_QUIT_GAME                                              :{WHITE}Abandona el Joc
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecciona ordre de classificació (descendent/ascendent)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecciona criteri de classificació
@@ -738,7 +738,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Desa l'E
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Juga un Escenari
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Juga un mapa d'alçades
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Comença un nou joc, utilitzant un mapa d'alçades com a terreny
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur que vols sortir d'aquest escenari ?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Estàs segur que vols sortir d'aquest escenari ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sortir de l'Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...només es pot construir en poblacions de més de 1200 hab.
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Retarda la data d'inici 1 any
@@ -2945,21 +2945,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres c
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra tots els vehicles que tenen les mateixes ordres
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Vendre
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Estàs a punt de vendre tots els vehicles de la cotxera
-STR_ARE_YOU_SURE                                                :{BLACK}N'estàs segur?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirma que vols vendre tots els trens de la cotxera
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirma que vols vendre tots els vehicles de la cotxera
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirma que vols vendre tots els vaixells de la drassana
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Confirma que vols vendre tots els avions de l'hangar
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}No vendre tots els trens de la cotxera
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}No vendre tots els vehicles de la cotxera
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}No vendre tots els vaixells de la drassana
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}No vendre tots els avions de l'hangar
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vendre tots els trens de la cotxera
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vendre tots els vehicles de la cotxera
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vendre tots els vaixells de la drassana

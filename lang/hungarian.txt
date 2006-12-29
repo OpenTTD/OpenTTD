@@ -425,7 +425,7 @@ STR_015C_SAVE_GAME                                              :Játék mentés
 STR_015D_LOAD_GAME                                              :Jaték betöltése
 STR_015E_QUIT_GAME                                              :Kilépés a játékból
 STR_015F_QUIT                                                   :Kilépés
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Biztosan kilépsz ebből a játékból ?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Biztosan kilépsz ebből a játékból ?
 STR_0161_QUIT_GAME                                              :{WHITE}Kilépés a játékból
 STR_SORT_ORDER_TIP                                              :{BLACK}Csökkenő/növekvő sorbarendezés
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorbarendezési kritérium
@@ -803,7 +803,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Pálya m
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Játék saját pályán
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Játék magasságtérképen
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Új játékot kezd egy magasságtérkép alapján
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését ?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Kilépés a szerkesztőből
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...csak 1200-nál nagyobb lakosságú városokba építhető
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}A kezdődátum visszább állítása egy évvel
@@ -3046,21 +3046,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Megmutatja az összes járművet, aminek ugyanaz a menetrendje
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Elad
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Te éppen a depotban lévő járműveket készülsz eladni
-STR_ARE_YOU_SURE                                                :{BLACK}Biztos vagy benne?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Erősítsd meg, hogy el akarod adni az összes depóbeli vonatot
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Erősítsd meg, hogy el akarod adni az összes depóbeli közúti járművet
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Erősítsd meg, hogy el akarod adni az összes dokkbeli hajót
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Erősítsd meg, hogy a hangárban lévő összes repülőt el akarod adni
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ne add el az összes depóbeli vonatot
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ne add el a depóbeli összes közúti járművet
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ne add el az összes dokkbeli hajót
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ne add el a hangárbeli összes repülőt
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Összes depóbeli vonat eladása
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Összes depóbeli jármű eladása
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Összes dokkbeli hajó eladása

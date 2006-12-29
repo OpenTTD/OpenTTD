@@ -356,7 +356,7 @@ STR_015C_SAVE_GAME                                              :Запази и
 STR_015D_LOAD_GAME                                              :Отвори игра
 STR_015E_QUIT_GAME                                              :Преустанови играта
 STR_015F_QUIT                                                   :Изход
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Желаете ли да преустановите играта?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Желаете ли да преустановите играта?
 STR_0161_QUIT_GAME                                              :{WHITE}Преустанови играта
 STR_SORT_ORDER_TIP                                              :{BLACK}Избери вида на сортирането (намаляващо/нарастващо)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Избери критерий за сортиране
@@ -727,7 +727,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Запи
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Играене на сценарий
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Игра височинна карта
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Нова игра, използвайки височинна карта като терен
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Наистина ли желаете изход от сценария?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Наистина ли желаете изход от сценария?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Затваряне на редактора
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...може да бъде построен само в градове с население повече от 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Премести назад началната дата с 1 година
@@ -2901,21 +2901,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Спод
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Показване на всички превозни средства които споделят разписанието
 
 ### depot strings
-
-STR_SELL                                                        :{BLACK}Продаване
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Ще продадете всичко в депото.
-STR_ARE_YOU_SURE                                                :{BLACK}Сигурен ли си?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Потвърдете продажбата всички влакове в депото
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Потвърдете продажбата всички автомобили в гаража
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Потвърдете продажбата всички кораби в депото
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Потвърдете продажбата на всички самолети в хангара
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Отказ продажбата всички влакове в депото
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Отказ продажбата всички автомобили в гаража
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Отказ продажбата всички кораби в депото
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Отказ продажбата всички самолети в хангара
-
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Продажба всички влакове в депото
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Продажба всички автомобили в гаража
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Продажба всички кораби в депото
