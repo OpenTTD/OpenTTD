@@ -106,20 +106,13 @@ void ShowSelectGameWindow(void)
 	AllocateWindowDesc(&_select_game_desc);
 }
 
-static const Widget _ask_abandon_game_widgets[] = {
-{ WWT_CLOSEBOX, RESIZE_NONE,  4,   0,  10,   0,  13, STR_00C5,      STR_018B_CLOSE_WINDOW},
-{  WWT_CAPTION, RESIZE_NONE,  4,  11, 179,   0,  13, STR_00C7_QUIT, STR_NULL},
-{    WWT_PANEL, RESIZE_NONE,  4,   0, 179,  14,  91, 0x0,           STR_NULL},
-{  WWT_TEXTBTN, RESIZE_NONE, 12,  25,  84,  72,  83, STR_00C9_NO,   STR_NULL},
-{  WWT_TEXTBTN, RESIZE_NONE, 12,  95, 154,  72,  83, STR_00C8_YES,  STR_NULL},
-{  WIDGETS_END },
-};
-
-static void AskAbandonGameWndProc(Window *w, WindowEvent *e)
+static void AskExitGameCallback(Window *w, bool confirmed)
 {
-	switch (e->event) {
-	case WE_PAINT:
-		DrawWindowWidgets(w);
+	if (confirmed) _exit_game = true;
+}
+
+void AskExitGame(void)
+{
 #if defined(_WIN32)
 		SetDParam(0, STR_0133_WINDOWS);
 #elif defined(__APPLE__)
@@ -135,86 +128,26 @@ static void AskAbandonGameWndProc(Window *w, WindowEvent *e)
 #else
 		SetDParam(0, STR_0134_UNIX);
 #endif
-		DrawStringMultiCenter(90, 38, STR_00CA_ARE_YOU_SURE_YOU_WANT_TO, 178);
-		return;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-			case 3: DeleteWindow(w);   break;
-			case 4: _exit_game = true; break;
-		}
-		break;
-
-	case WE_KEYPRESS: /* Exit game on pressing 'Enter' */
-		switch (e->we.keypress.keycode) {
-			case WKC_RETURN:
-			case WKC_NUM_ENTER:
-				_exit_game = true;
-				break;
-		}
-		break;
-	}
+	ShowQuery(
+		STR_00C7_QUIT,
+		STR_00CA_ARE_YOU_SURE_YOU_WANT_TO,
+		NULL,
+		AskExitGameCallback
+	);
 }
 
-static const WindowDesc _ask_abandon_game_desc = {
-	WDP_CENTER, WDP_CENTER, 180, 92,
-	WC_ASK_ABANDON_GAME,0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
-	_ask_abandon_game_widgets,
-	AskAbandonGameWndProc
-};
 
-void AskExitGame(void)
+static void AskExitToGameMenuCallback(Window *w, bool confirmed)
 {
-	AllocateWindowDescFront(&_ask_abandon_game_desc, 0);
+	if (confirmed) _switch_mode = SM_MENU;
 }
-
-
-static const Widget _ask_quit_game_widgets[] = {
-{ WWT_CLOSEBOX, RESIZE_NONE,  4,   0,  10,   0,  13, STR_00C5,           STR_018B_CLOSE_WINDOW},
-{  WWT_CAPTION, RESIZE_NONE,  4,  11, 179,   0,  13, STR_0161_QUIT_GAME, STR_NULL},
-{    WWT_PANEL, RESIZE_NONE,  4,   0, 179,  14,  91, 0x0,                STR_NULL},
-{  WWT_TEXTBTN, RESIZE_NONE, 12,  25,  84,  72,  83, STR_00C9_NO,        STR_NULL},
-{  WWT_TEXTBTN, RESIZE_NONE, 12,  95, 154,  72,  83, STR_00C8_YES,       STR_NULL},
-{  WIDGETS_END },
-};
-
-static void AskQuitGameWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT:
-			DrawWindowWidgets(w);
-			DrawStringMultiCenter(
-				90, 38,
-				_game_mode != GM_EDITOR ?
-					STR_0160_ARE_YOU_SURE_YOU_WANT_TO : STR_029B_ARE_YOU_SURE_YOU_WANT_TO,
-				178
-			);
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case 3: DeleteWindow(w);        break;
-				case 4: _switch_mode = SM_MENU; break;
-			}
-			break;
-
-		case WE_KEYPRESS: /* Return to main menu on pressing 'Enter' */
-			if (e->we.keypress.keycode == WKC_RETURN) _switch_mode = SM_MENU;
-			break;
-	}
-}
-
-static const WindowDesc _ask_quit_game_desc = {
-	WDP_CENTER, WDP_CENTER, 180, 92,
-	WC_QUIT_GAME,0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
-	_ask_quit_game_widgets,
-	AskQuitGameWndProc
-};
-
 
 void AskExitToGameMenu(void)
 {
-	AllocateWindowDescFront(&_ask_quit_game_desc, 0);
+	ShowQuery(
+		STR_0161_QUIT_GAME,
+		(_game_mode != GM_EDITOR) ? STR_ABANDON_GAME_QUERY : STR_QUIT_SCENARIO_QUERY,
+		NULL,
+		AskExitToGameMenuCallback
+	);
 }

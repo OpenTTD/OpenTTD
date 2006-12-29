@@ -142,89 +142,12 @@ static inline void ShowVehicleViewWindow(const Vehicle *v)
 	}
 }
 
-static void DepotSellAllWndProc(Window *w, WindowEvent *e)
+static void DepotSellAllConfirmationCallback(Window *w, bool confirmed)
 {
-	TileIndex tile = w->window_number;
-	byte vehicle_type = WP(w, depot_d).type;
-
-	switch (e->event) {
-		case WE_PAINT:
-			if (vehicle_type == VEH_Aircraft) {
-				SetDParam(0, GetStationIndex(tile)); // Airport name
-			} else {
-				Depot *depot = GetDepotByTile(tile);
-				assert(depot != NULL);
-
-				SetDParam(0, depot->town_index);
-			}
-			DrawWindowWidgets(w);
-
-			DrawStringCentered(150, 25, STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM, 0);
-			DrawStringCentered(150, 38, STR_ARE_YOU_SURE, 0);
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case 4:
-					DoCommandP(tile, vehicle_type, 0, NULL, CMD_DEPOT_SELL_ALL_VEHICLES);
-					/* Fallthrough */
-				case 3:
-					DeleteWindow(w);
-					break;
-			}
-			break;
-	}
-}
-
-static const Widget _depot_sell_all_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},
-	{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   299,     0,    13, 0x0,             STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{      WWT_PANEL,   RESIZE_NONE,    14,     0,   299,    14,    71, 0x0,             STR_NULL},
-	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    85,   144,    52,    63, STR_012E_CANCEL, STR_NULL},
-	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   155,   214,    52,    63, STR_SELL,        STR_NULL},
-	{   WIDGETS_END},
-};
-
-static const WindowDesc _depot_sell_all_desc = {
-	WDP_CENTER, WDP_CENTER, 300, 72,
-	WC_DEPOT_SELL_ALL, WC_VEHICLE_DEPOT,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_depot_sell_all_widgets,
-	DepotSellAllWndProc
-};
-
-static void ShowDepotSellAllWindow(TileIndex tile, byte type)
-{
-	Window *w = AllocateWindowDescFront(&_depot_sell_all_desc, tile);
-
-	if (w != NULL) {
-		w->caption_color = GetTileOwner(tile);
-		WP(w, depot_d).type = type;
-		switch (type) {
-			case VEH_Train:
-				w->widget[1].data     = STR_8800_TRAIN_DEPOT;
-				w->widget[3].tooltips = STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP;
-				w->widget[4].tooltips = STR_DEPOT_SELL_ALL_TRAIN_TIP;
-				break;
-
-			case VEH_Road:
-				w->widget[1].data     = STR_9003_ROAD_VEHICLE_DEPOT;
-				w->widget[3].tooltips = STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP;
-				w->widget[4].tooltips = STR_DEPOT_SELL_ALL_ROADVEH_TIP;
-				break;
-
-			case VEH_Ship:
-				w->widget[1].data     = STR_9803_SHIP_DEPOT;
-				w->widget[3].tooltips = STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP;
-				w->widget[4].tooltips = STR_DEPOT_SELL_ALL_SHIP_TIP;
-				break;
-
-			case VEH_Aircraft:
-				w->widget[1].data     = STR_A002_AIRCRAFT_HANGAR;
-				w->widget[3].tooltips = STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP;
-				w->widget[4].tooltips = STR_DEPOT_SELL_ALL_AIRCRAFT_TIP;
-				break;
-		}
+	if (confirmed) {
+		TileIndex tile = w->window_number;
+		byte vehtype = WP(w, depot_d).type;
+		DoCommandP(tile, vehtype, 0, NULL, CMD_DEPOT_SELL_ALL_VEHICLES);
 	}
 }
 
@@ -849,7 +772,22 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 				case DEPOT_WIDGET_SELL_ALL:
 					/* Only open the confimation window if there are anything to sell */
 					if (WP(w, depot_d).engine_count != 0 || WP(w, depot_d).wagon_count != 0) {
-						ShowDepotSellAllWindow(w->window_number, WP(w, depot_d).type);
+						static const StringID confirm_captions[] = {
+							STR_8800_TRAIN_DEPOT,
+							STR_9003_ROAD_VEHICLE_DEPOT,
+							STR_9803_SHIP_DEPOT,
+							STR_A002_AIRCRAFT_HANGAR
+						};
+						TileIndex tile = w->window_number;
+						byte vehtype = WP(w, depot_d).type - VEH_Train;
+
+						SetDParam(0, (vehtype == VEH_Aircraft) ? GetStationIndex(tile) : GetDepotByTile(tile)->town_index);
+						ShowQuery(
+							confirm_captions[vehtype],
+							STR_DEPOT_SELL_CONFIRMATION_TEXT,
+							w,
+							DepotSellAllConfirmationCallback
+						);
 					}
 					break;
 
