@@ -308,10 +308,13 @@ Window **FindWindowZPosition(const Window *w)
 {
 	Window **wz;
 
-	for (wz = _z_windows;; wz++) {
-		assert(wz < _last_z_window);
+	for (wz = _z_windows; wz != _last_z_window; wz++) {
 		if (*wz == w) return wz;
 	}
+
+	DEBUG(misc, 3, "Window (class %d, number %d) is not open, probably removed by recursive calls",
+		w->window_class, w->window_number);
+	return NULL;
 }
 
 void DeleteWindow(Window *w)
@@ -342,6 +345,7 @@ void DeleteWindow(Window *w)
 	/* Find the window in the z-array, and effectively remove it
 	 * by moving all windows after it one to the left */
 	wz = FindWindowZPosition(w);
+	if (wz == NULL) return;
 	memmove(wz, wz + 1, (byte*)_last_z_window - (byte*)wz);
 	_last_z_window--;
 }

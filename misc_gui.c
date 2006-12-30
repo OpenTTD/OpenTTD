@@ -1226,7 +1226,10 @@ static void QueryWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_DESTROY: /* Call callback function (if any) on window close if not yet called */
-			if (!q->calledback && q->proc != NULL) q->proc(w->parent, false);
+			if (!q->calledback && q->proc != NULL) {
+				q->calledback = true;
+				q->proc(w->parent, false);
+			}
 			break;
 	}
 }
