@@ -19,10 +19,15 @@ public:
 protected:
 	int           m_max_cost;
 	CBlobT<int>   m_sig_look_ahead_costs;
+public:
+	bool          m_stopped_on_first_two_way_signal;
+protected:
 
 	static const int s_max_segment_cost = 10000;
 
-	CYapfCostRailT() : m_max_cost(0)
+	CYapfCostRailT()
+		: m_max_cost(0)
+		, m_stopped_on_first_two_way_signal(false)
 	{
 		// pre-compute look-ahead penalties into array
 		int p0 = Yapf().PfGetSettings().rail_look_ahead_signal_p0;
@@ -116,6 +121,7 @@ public:
 					if (Yapf().TreatFirstRedTwoWaySignalAsEOL() && n.flags_u.flags_s.m_choice_seen && has_signal_against && n.m_num_signals_passed == 0) {
 						// yes, the first signal is two-way red signal => DEAD END
 						n.m_segment->flags_u.flags_s.m_end_of_line = true;
+						Yapf().m_stopped_on_first_two_way_signal = true;
 						return -1;
 					}
 					SignalType sig_type = GetSignalType(tile);
