@@ -342,8 +342,8 @@ void ShowBuildRoadToolbar(void)
 
 static const Widget _build_road_scen_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   161,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   162,   173,     0,    13, 0x0,                        STR_STICKY_BUTTON},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   140,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   141,   152,     0,    13, 0x0,                        STR_STICKY_BUTTON},
 
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_ROAD_NW,            STR_180B_BUILD_ROAD_SECTION},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_ROAD_NE,            STR_180B_BUILD_ROAD_SECTION},
@@ -354,13 +354,12 @@ static const Widget _build_road_scen_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    66,   107,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   108,   129,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   130,   151,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   152,   173,    14,    35, SPR_IMG_LANDSCAPING,        STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_road_scen_desc = {
-	WDP_AUTO, WDP_AUTO, 174, 36,
-	WC_SCEN_BUILD_ROAD,0,
+	WDP_AUTO, WDP_AUTO, 152, 36,
+	WC_SCEN_BUILD_ROAD, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_scen_widgets,
 	BuildRoadToolbWndProc
