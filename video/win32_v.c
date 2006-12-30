@@ -564,17 +564,18 @@ static void MakeWindow(bool full_screen)
 
 	{
 		RECT r;
-		uint style;
+		DWORD style, showstyle;
 		int x, y, w, h;
 
+		showstyle = SW_SHOWNORMAL;
 		_wnd.fullscreen = full_screen;
 		if (_wnd.fullscreen) {
-			style = WS_POPUP | WS_VISIBLE;
+			style = WS_POPUP;
 			SetRect(&r, 0, 0, _wnd.width_org, _wnd.height_org);
 		} else {
-			style = WS_OVERLAPPEDWINDOW | WS_VISIBLE;
+			style = WS_OVERLAPPEDWINDOW;
 			/* On window creation, check if we were in maximize mode before */
-			if (_window_maximize) style |= WS_MAXIMIZE;
+			if (_window_maximize) showstyle = SW_SHOWMAXIMIZED;
 			SetRect(&r, 0, 0, _wnd.width, _wnd.height);
 		}
 
@@ -595,6 +596,7 @@ static void MakeWindow(bool full_screen)
 
 			_wnd.main_wnd = CreateWindow(_T("OTTD"), Windowtitle, style, x, y, w, h, 0, 0, GetModuleHandle(NULL), 0);
 			if (_wnd.main_wnd == NULL) error("CreateWindow failed");
+			ShowWindow(_wnd.main_wnd, showstyle);
 		}
 	}
 	GameSizeChanged(); // invalidate all windows, force redraw
