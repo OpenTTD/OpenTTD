@@ -589,17 +589,16 @@ static void PlayersGenStatistics(void)
 
 	FOR_ALL_PLAYERS(p) {
 		if (p->is_active) {
-			memmove(&p->old_economy, &p->cur_economy, sizeof(p->old_economy));
+			memmove(&p->old_economy[1], &p->old_economy[0], sizeof(p->old_economy) - sizeof(p->old_economy[0]));
+			p->old_economy[0] = p->cur_economy;
 			memset(&p->cur_economy, 0, sizeof(p->cur_economy));
 
-			if (p->num_valid_stat_ent != 24)
-				p->num_valid_stat_ent++;
+			if (p->num_valid_stat_ent != 24) p->num_valid_stat_ent++;
 
 			UpdateCompanyRatingAndValue(p, true);
 			PlayersCheckBankrupt(p);
 
-			if (p->block_preview != 0)
-				p->block_preview--;
+			if (p->block_preview != 0) p->block_preview--;
 		}
 	}
 
