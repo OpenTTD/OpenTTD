@@ -658,7 +658,7 @@ skip_cont:;
 		} else if (c == SCC_BIGFONT) { // {BIGFONT}
 			size = FS_LARGE;
 		} else {
-			DEBUG(misc, 0, "[utf8] unknown string command character %d", c);
+			DEBUG(misc, 0) ("[utf8] unknown string command character %d", c);
 		}
 	}
 }
