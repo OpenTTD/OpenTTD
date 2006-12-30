@@ -126,11 +126,12 @@ extern const byte _fios_colors[];
 void ShowBuildBridgeWindow(uint start, uint end, byte type);
 
 void ShowBuildIndustryWindow(void);
-void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number, CharSetFilter afilter);
+void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter);
 void ShowQuery(StringID caption, StringID message, Window *w, void (*callback)(Window*, bool));
 void ShowMusicWindow(void);
 
 /* main_gui.c */
+void HandleOnEditText(const char *str);
 VARDEF byte _station_show_coverage;
 VARDEF PlaceProc *_place_proc;
 

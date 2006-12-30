@@ -54,27 +54,23 @@ extern void GenerateIndustries(void);
 extern bool GenerateTowns(void);
 
 
-void HandleOnEditText(WindowEvent *e)
+void HandleOnEditText(const char *str)
 {
-	const char *b = e->we.edittext.str;
-	int id;
-
-	_cmd_text = b;
-
-	id = _rename_id;
+	int id = _rename_id;
+	_cmd_text = str;
 
 	switch (_rename_what) {
 	case 0: /* Rename a s sign, if string is empty, delete sign */
 		DoCommandP(0, id, 0, NULL, CMD_RENAME_SIGN | CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME));
 		break;
 	case 1: /* Rename a waypoint */
-		if (*b == '\0') return;
+		if (*str == '\0') return;
 		DoCommandP(0, id, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
 		break;
 #ifdef ENABLE_NETWORK
 	case 3: { /* Give money, you can only give money in excess of loan */
 		const Player *p = GetPlayer(_current_player);
-		int32 money = min(p->money64 - p->current_loan, atoi(e->we.edittext.str) / _currency->rate);
+		int32 money = min(p->money64 - p->current_loan, atoi(str) / _currency->rate);
 		char msg[20];
 
 		money = clamp(money, 0, 20000000); // Clamp between 20 million and 0
@@ -311,7 +307,7 @@ void ShowNetworkGiveMoneyWindow(PlayerID player)
 {
 	_rename_id = player;
 	_rename_what = 3;
-	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, 180, 1, 0, CS_NUMERAL);
+	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, 180, NULL, CS_NUMERAL);
 }
 #endif /* ENABLE_NETWORK */
 
@@ -319,7 +315,7 @@ void ShowRenameSignWindow(const Sign *si)
 {
 	_rename_id = si->index;
 	_rename_what = 0;
-	ShowQueryString(si->str, STR_280B_EDIT_SIGN_TEXT, 30, 180, 1, 0, CS_ALPHANUMERAL);
+	ShowQueryString(si->str, STR_280B_EDIT_SIGN_TEXT, 30, 180, NULL, CS_ALPHANUMERAL);
 }
 
 void ShowRenameWaypointWindow(const Waypoint *wp)
@@ -336,7 +332,7 @@ void ShowRenameWaypointWindow(const Waypoint *wp)
 	_rename_id = id;
 	_rename_what = 1;
 	SetDParam(0, id);
-	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, 30, 180, 1, 0, CS_ALPHANUMERAL);
+	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, 30, 180, NULL, CS_ALPHANUMERAL);
 }
 
 static void SelectSignTool(void)
@@ -1837,8 +1833,6 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		SetWindowDirty(w);
 	} break;
 
-	case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
-
 	case WE_MOUSELOOP:
 		if (IsWindowWidgetLowered(w, 0) != !!_pause) {
 			ToggleWidgetLoweredState(w, 0);
@@ -2037,8 +2031,6 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		RaiseWindowWidget(w, 25);
 		SetWindowDirty(w);
 	} break;
-
-	case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
 
 	case WE_MOUSELOOP:
 		if (IsWindowWidgetLowered(w, 0) != !!_pause) {

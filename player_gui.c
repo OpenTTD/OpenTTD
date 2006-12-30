@@ -765,7 +765,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					const Player *p = GetPlayer(w->window_number);
 					WP(w, def_d).byte_1 = 0;
 					SetDParam(0, p->president_name_2);
-					ShowQueryString(p->president_name_1, STR_700B_PRESIDENT_S_NAME, 31, 94, w->window_class, w->window_number, CS_ALPHANUMERAL);
+					ShowQueryString(p->president_name_1, STR_700B_PRESIDENT_S_NAME, 31, 94, w, CS_ALPHANUMERAL);
 					break;
 				}
 
@@ -773,7 +773,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					Player *p = GetPlayer(w->window_number);
 					WP(w,def_d).byte_1 = 1;
 					SetDParam(0, p->name_2);
-					ShowQueryString(p->name_1, STR_700A_COMPANY_NAME, 31, 150, w->window_class, w->window_number, CS_ALPHANUMERAL);
+					ShowQueryString(p->name_1, STR_700A_COMPANY_NAME, 31, 150, w, CS_ALPHANUMERAL);
 					break;
 				}
 
@@ -812,7 +812,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					if (w->window_number == _local_player) {
 						WP(w,def_d).byte_1 = 2;
 						ShowQueryString(BindCString(_network_player_info[_local_player].password),
-							STR_SET_COMPANY_PASSWORD, sizeof(_network_player_info[_local_player].password), 250, w->window_class, w->window_number, CS_ALPHANUMERAL);
+							STR_SET_COMPANY_PASSWORD, sizeof(_network_player_info[_local_player].password), 250, w, CS_ALPHANUMERAL);
 					}
 					break;
 				#endif /* ENABLE_NETWORK */

@@ -515,7 +515,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 					EngineID sel_eng = bv->sel_engine;
 					if (sel_eng != INVALID_ENGINE) {
 						bv->rename_engine = sel_eng;
-						ShowQueryString(GetCustomEngineName(sel_eng), STR_886A_RENAME_TRAIN_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
+						ShowQueryString(GetCustomEngineName(sel_eng), STR_886A_RENAME_TRAIN_VEHICLE_TYPE, 31, 160, w, CS_ALPHANUMERAL);
 					}
 					break;
 				}
@@ -1037,7 +1037,7 @@ static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 		case 2: /* name train */
 			v = GetVehicle(w->window_number);
 			SetDParam(0, v->unitnumber);
-			ShowQueryString(v->string_id, STR_8865_NAME_TRAIN, 31, 150, w->window_class, w->window_number, CS_ALPHANUMERAL);
+			ShowQueryString(v->string_id, STR_8865_NAME_TRAIN, 31, 150, w, CS_ALPHANUMERAL);
 			break;
 		case 6: /* inc serv interval */
 			mod = _ctrl_pressed? 5 : 10;

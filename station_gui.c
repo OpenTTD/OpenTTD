@@ -749,7 +749,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 		case 9: {
 			SetDParam(0, w->window_number);
-			ShowQueryString(STR_STATION, STR_3030_RENAME_STATION_LOADING, 31, 180, w->window_class, w->window_number, CS_ALPHANUMERAL);
+			ShowQueryString(STR_STATION, STR_3030_RENAME_STATION_LOADING, 31, 180, w, CS_ALPHANUMERAL);
 		} break;
 
 		case 10: { /* Show a list of scheduled trains to this station */

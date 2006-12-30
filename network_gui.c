@@ -424,8 +424,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				STR_NETWORK_ENTER_IP,
 				31 | 0x1000,  // maximum number of characters OR
 				250, // characters up to this width pixels, whichever is satisfied first
-				w->window_class,
-				w->window_number, CS_ALPHANUMERAL);
+				w, CS_ALPHANUMERAL);
 		} break;
 		case 13: /* Start server */
 			ShowNetworkStartServerWindow();
@@ -648,8 +647,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 4: /* Set password button */
-			ShowQueryString(BindCString(_network_server_password),
-				STR_NETWORK_SET_PASSWORD, 20, 250, w->window_class, w->window_number, CS_ALPHANUMERAL);
+			ShowQueryString(BindCString(_network_server_password), STR_NETWORK_SET_PASSWORD, 20, 250, w, CS_ALPHANUMERAL);
 			break;
 
 		case 5: { /* Select map */
@@ -1381,7 +1379,7 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt)
 		case NETWORK_GAME_PASSWORD:    caption = STR_NETWORK_NEED_GAME_PASSWORD_CAPTION; break;
 		case NETWORK_COMPANY_PASSWORD: caption = STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION; break;
 	}
-	ShowQueryString(STR_EMPTY, caption, 20, 180, WC_NETWORK_STATUS_WINDOW, 0, CS_ALPHANUMERAL);
+	ShowQueryString(STR_EMPTY, caption, 20, 180, FindWindowById(WC_NETWORK_STATUS_WINDOW, 0), CS_ALPHANUMERAL);
 }
 
 
@@ -1421,13 +1419,14 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 			case 0: /* Close 'X' */
 			case 3: /* Disconnect button */
 				NetworkDisconnect();
-				DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+				DeleteWindow(w);
 				SwitchMode(SM_MENU);
 				ShowNetworkGameWindow();
 				break;
 		}
 		break;
 
+		/* If the server asks for a password, we need to fill it in */
 		case WE_ON_EDIT_TEXT_CANCEL:
 			NetworkDisconnect();
 			ShowNetworkGameWindow();
@@ -1709,10 +1708,8 @@ void ShowNetworkChatQueryWindow(DestType type, byte dest)
 	w = AllocateWindowDesc(&_chat_window_desc);
 
 	LowerWindowWidget(w, 2);
-	WP(w,querystr_d).caption = GB(type, 0, 8) | (dest << 8); // Misuse of caption
-	WP(w,querystr_d).wnd_class = WC_MAIN_TOOLBAR;
-	WP(w,querystr_d).wnd_num = 0;
-	WP(w,querystr_d).afilter = CS_ALPHANUMERAL;
+	WP(w, querystr_d).caption = GB(type, 0, 8) | (dest << 8); // Misuse of caption
+	WP(w, querystr_d).afilter = CS_ALPHANUMERAL;
 	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), 0);
 }
 

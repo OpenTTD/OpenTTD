@@ -345,7 +345,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		case 19: // Year text
 			WP(w, def_d).data_3 = START_DATE_QUERY;
 			SetDParam(0, _patches_newgame.starting_year);
-			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, WC_GENERATE_LANDSCAPE, mode, CS_NUMERAL);
+			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, w, CS_NUMERAL);
 			break;
 		case 21: case 23: // Snow line buttons
 			/* Don't allow too fast scrolling */
@@ -360,7 +360,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		case 22: // Snow line text
 			WP(w, def_d).data_3 = SNOW_LINE_QUERY;
 			SetDParam(0, _patches_newgame.snow_line_height);
-			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_SNOW_LINE_QUERY_CAPT, 3, 100, WC_GENERATE_LANDSCAPE, mode, CS_NUMERAL);
+			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_SNOW_LINE_QUERY_CAPT, 3, 100, w, CS_NUMERAL);
 			break;
 		case 24: case 25: // Tree placer
 			ShowDropDownMenu(w, tree_placer, _patches_newgame.tree_placer, 25, 0, 0);
@@ -604,7 +604,7 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		case 15: // Year text
 			WP(w, def_d).data_3 = START_DATE_QUERY;
 			SetDParam(0, _patches_newgame.starting_year);
-			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, WC_GENERATE_LANDSCAPE, GLWP_SCENARIO, CS_NUMERAL);
+			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, w, CS_NUMERAL);
 			break;
 		case 17: case 19: // Height level buttons
 			/* Don't allow too fast scrolling */
@@ -619,7 +619,7 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		case 18: // Height level text
 			WP(w, def_d).data_3 = FLAT_WORLD_HEIGHT_QUERY;
 			SetDParam(0, _patches_newgame.se_flat_world_height);
-			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, WC_GENERATE_LANDSCAPE, GLWP_SCENARIO, CS_NUMERAL);
+			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, w, CS_NUMERAL);
 			break;
 		}
 		break;

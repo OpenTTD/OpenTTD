@@ -125,7 +125,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 		case 2: /* rename */
 			v = GetVehicle(w->window_number);
 			SetDParam(0, v->unitnumber);
-			ShowQueryString(v->string_id, STR_A030_NAME_AIRCRAFT, 31, 150, w->window_class, w->window_number, CS_ALPHANUMERAL);
+			ShowQueryString(v->string_id, STR_A030_NAME_AIRCRAFT, 31, 150, w, CS_ALPHANUMERAL);
 			break;
 		case 5: /* increase int */
 			mod = _ctrl_pressed? 5 : 10;

@@ -1038,93 +1038,87 @@ void DrawEditBox(Window *w, querystr_d *string, int wid)
 	_cur_dpi = old_dpi;
 }
 
+enum QueryStringWidgets {
+	QUERY_STR_WIDGET_TEXT = 3,
+	QUERY_STR_WIDGET_CANCEL,
+	QUERY_STR_WIDGET_OK
+};
+
+
 static void QueryStringWndProc(Window *w, WindowEvent *e)
 {
-	static bool closed = false;
+	querystr_d *qs = &WP(w, querystr_d);
+
 	switch (e->event) {
-	case WE_CREATE:
-		SETBIT(_no_scroll, SCROLL_EDIT);
-		closed = false;
-		break;
+		case WE_CREATE:
+			SETBIT(_no_scroll, SCROLL_EDIT);
+			break;
 
-	case WE_PAINT:
-		SetDParam(0, WP(w,querystr_d).caption);
-		DrawWindowWidgets(w);
+		case WE_PAINT:
+			SetDParam(0, qs->caption);
+			DrawWindowWidgets(w);
 
-		DrawEditBox(w, &WP(w,querystr_d), 5);
-		break;
+			DrawEditBox(w, qs, QUERY_STR_WIDGET_TEXT);
+			break;
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 3: DeleteWindow(w); break;
-		case 4:
-press_ok:;
-			if (WP(w, querystr_d).orig != NULL &&
-					strcmp(WP(w, querystr_d).text.buf, WP(w, querystr_d).orig) == 0) {
-				DeleteWindow(w);
-			} else {
-				char *buf = WP(w,querystr_d).text.buf;
-				WindowClass wnd_class = WP(w,querystr_d).wnd_class;
-				WindowNumber wnd_num = WP(w,querystr_d).wnd_num;
-				Window *parent;
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case QUERY_STR_WIDGET_OK:
+		press_ok:;
+					if (qs->orig == NULL || strcmp(qs->text.buf, qs->orig) != 0) {
+						Window *parent = w->parent;
+						qs->handled = true;
 
-				// Mask the edit-box as closed, so we don't send out a CANCEL
-				closed = true;
-
-				DeleteWindow(w);
-
-				parent = FindWindowById(wnd_class, wnd_num);
-				if (parent != NULL) {
-					WindowEvent e;
-					e.event = WE_ON_EDIT_TEXT;
-					e.we.edittext.str = buf;
-					parent->wndproc(parent, &e);
-				}
+						/* If the parent is NULL, the editbox is handled by general function
+						 * HandleOnEditText */
+						if (parent != NULL) {
+							WindowEvent e;
+							e.event = WE_ON_EDIT_TEXT;
+							e.we.edittext.str = qs->text.buf;
+							parent->wndproc(parent, &e);
+						} else {
+							HandleOnEditText(qs->text.buf);
+						}
+					}
+					/* Fallthrough */
+				case QUERY_STR_WIDGET_CANCEL:
+					DeleteWindow(w);
+					break;
 			}
 			break;
-		}
-		break;
 
-	case WE_MOUSELOOP: {
-		if (!FindWindowById(WP(w,querystr_d).wnd_class, WP(w,querystr_d).wnd_num)) {
-			DeleteWindow(w);
-			return;
-		}
-		HandleEditBox(w, &WP(w, querystr_d), 5);
-	} break;
-
-	case WE_KEYPRESS: {
-		switch (HandleEditBoxKey(w, &WP(w, querystr_d), 5, e)) {
-		case 1: // Return
-			goto press_ok;
-		case 2: // Escape
-			DeleteWindow(w);
+		case WE_MOUSELOOP:
+			HandleEditBox(w, qs, QUERY_STR_WIDGET_TEXT);
 			break;
-		}
-	} break;
 
-	case WE_DESTROY:
-		// If the window is not closed yet, it means it still needs to send a CANCEL
-		if (!closed) {
-			Window *parent = FindWindowById(WP(w,querystr_d).wnd_class, WP(w,querystr_d).wnd_num);
-			if (parent != NULL) {
+		case WE_KEYPRESS:
+			switch (HandleEditBoxKey(w, qs, QUERY_STR_WIDGET_TEXT, e)) {
+				case 1: goto press_ok; /* Enter pressed, confirms change */
+				case 2: DeleteWindow(w); break; /* ESC pressed, closes window, abandons changes */
+			}
+			break;
+
+		case WE_DESTROY: /* Call cancellation of query, if we have not handled it before */
+			if (!qs->handled && w->parent != NULL) {
 				WindowEvent e;
+				Window *parent = w->parent;
+
+				qs->handled = true;
 				e.event = WE_ON_EDIT_TEXT_CANCEL;
 				parent->wndproc(parent, &e);
 			}
+			CLRBIT(_no_scroll, SCROLL_EDIT);
+			break;
 		}
-		CLRBIT(_no_scroll, SCROLL_EDIT);
-		break;
-	}
 }
 
 static const Widget _query_string_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   259,     0,    13, STR_012D,        STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   259,    14,    29, 0x0,             STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,   257,    16,    27, 0x0,             STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,   129,    30,    41, STR_012E_CANCEL, STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   130,   259,    30,    41, STR_012F_OK,     STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     2,   257,    16,    27, 0x0,             STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -1137,10 +1131,19 @@ static const WindowDesc _query_string_desc = {
 };
 
 static char _edit_str_buf[64];
-static char _orig_str_buf[lengthof(_edit_str_buf)];
 
-void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number, CharSetFilter afilter)
+/** Show a query popup window with a textbox in it.
+ * @param str StringID for the text shown in the textbox
+ * @param caption StringID of text shown in caption of querywindow
+ * @param maxlen maximum length in characters allowed. If bit 12 is set we
+ * will not check the resulting string against to original string to return success
+ * @param maxwidth maximum width in pixels allowed
+ * @param parent pointer to a Window that will handle the events (ok/cancel) of this
+ * window. If NULL, results are handled by global function HandleOnEditText
+ * @param afilter filters out unwanted character input */
+void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter)
 {
+	static char orig_str_buf[lengthof(_edit_str_buf)];
 	Window *w;
 	uint realmaxlen = maxlen & ~0x1000;
 
@@ -1150,6 +1153,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	DeleteWindowById(WC_SAVELOAD, 0);
 
 	w = AllocateWindowDesc(&_query_string_desc);
+	w->parent = parent;
 
 	GetString(_edit_str_buf, str, lastof(_edit_str_buf));
 	_edit_str_buf[realmaxlen - 1] = '\0';
@@ -1157,14 +1161,12 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	if (maxlen & 0x1000) {
 		WP(w, querystr_d).orig = NULL;
 	} else {
-		strecpy(_orig_str_buf, _edit_str_buf, lastof(_orig_str_buf));
-		WP(w, querystr_d).orig = _orig_str_buf;
+		strecpy(orig_str_buf, _edit_str_buf, lastof(orig_str_buf));
+		WP(w, querystr_d).orig = orig_str_buf;
 	}
 
-	LowerWindowWidget(w, 5);
+	LowerWindowWidget(w, QUERY_STR_WIDGET_TEXT);
 	WP(w, querystr_d).caption = caption;
-	WP(w, querystr_d).wnd_class = window_class;
-	WP(w, querystr_d).wnd_num = window_number;
 	WP(w, querystr_d).afilter = afilter;
 	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, realmaxlen, maxwidth);
 }

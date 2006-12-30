@@ -845,7 +845,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 					WP(w,def_d).data_3 = btn;
 					SetDParam(0, value);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, WC_GAME_OPTIONS, 0, CS_NUMERAL);
+					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, w, CS_NUMERAL);
 				}
 			}
 
@@ -1061,14 +1061,8 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			}
 
 			if (len != 0) {
-				WP(w,def_d).data_2 = line;
-				ShowQueryString(
-				str,
-				STR_CURRENCY_CHANGE_PARAMETER,
-				len + 1, // maximum number of characters OR
-				250, // characters up to this width pixels, whichever is satisfied first
-				w->window_class,
-				w->window_number, afilter);
+				WP(w, def_d).data_2 = line;
+				ShowQueryString(str, STR_CURRENCY_CHANGE_PARAMETER, len + 1, 250, w, afilter);
 			}
 
 			w->flags4 |= 5 << WF_TIMEOUT_SHL;

@@ -41,8 +41,6 @@ static const Widget _select_game_widgets[] = {
 {   WIDGETS_END},
 };
 
-extern void HandleOnEditText(WindowEvent *e);
-
 static inline void SetNewLandscapeType(byte landscape)
 {
 	_opt_newgame.landscape = landscape;
@@ -88,8 +86,6 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		case 16: HandleExitGameRequest(); break;
 		}
 		break;
-
-		case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
 	}
 }
 

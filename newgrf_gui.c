@@ -436,7 +436,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					if (WP(w, newgrf_d).sel == NULL) break;
 
 					GRFBuildParamList(buff, WP(w, newgrf_d).sel, lastof(buff));
-					ShowQueryString(BindCString(buff), STR_NEWGRF_PARAMETER_QUERY, 63, 250, w->window_class, w->window_number, CS_ALPHANUMERAL);
+					ShowQueryString(BindCString(buff), STR_NEWGRF_PARAMETER_QUERY, 63, 250, w, CS_ALPHANUMERAL);
 					break;
 				}
 			}

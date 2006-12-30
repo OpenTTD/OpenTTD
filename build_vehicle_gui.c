@@ -396,7 +396,7 @@ static void BuildAircraftClickEvent(Window *w, WindowEvent *e)
 			EngineID sel_eng = bv->sel_engine;
 			if (sel_eng != INVALID_ENGINE) {
 				bv->rename_engine = sel_eng;
-				ShowQueryString(GetCustomEngineName(sel_eng), STR_A039_RENAME_AIRCRAFT_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
+				ShowQueryString(GetCustomEngineName(sel_eng), STR_A039_RENAME_AIRCRAFT_TYPE, 31, 160, w, CS_ALPHANUMERAL);
 			}
 			break;
 		}

@@ -161,7 +161,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		case 2: /* rename */
 			v = GetVehicle(w->window_number);
 			SetDParam(0, v->unitnumber);
-			ShowQueryString(v->string_id, STR_9831_NAME_SHIP, 31, 150, w->window_class, w->window_number, CS_ALPHANUMERAL);
+			ShowQueryString(v->string_id, STR_9831_NAME_SHIP, 31, 150, w, CS_ALPHANUMERAL);
 			break;
 		case 5: /* increase int */
 			mod = _ctrl_pressed? 5 : 10;
@@ -302,9 +302,8 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 		case 6: { /* rename */
 			EngineID sel_eng = WP(w,buildvehicle_d).sel_engine;
 			if (sel_eng != INVALID_ENGINE) {
-				WP(w,buildvehicle_d).rename_engine = sel_eng;
-				ShowQueryString(GetCustomEngineName(sel_eng),
-					STR_9838_RENAME_SHIP_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
+				WP(w, buildvehicle_d).rename_engine = sel_eng;
+				ShowQueryString(GetCustomEngineName(sel_eng), STR_9838_RENAME_SHIP_TYPE, 31, 160, w, CS_ALPHANUMERAL);
 			}
 		}	break;
 		}

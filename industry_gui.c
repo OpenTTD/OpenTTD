@@ -380,10 +380,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					// clicked the text
 					WP(w,vp2_d).data_1 = line;
 					SetDParam(0, i->production_rate[line] * 8);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32,
-							STR_CONFIG_GAME_PRODUCTION,
-							10, 100, w->window_class,
-							w->window_number, CS_ALPHANUMERAL);
+					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_GAME_PRODUCTION, 10, 100, w, CS_ALPHANUMERAL);
 				}
 			}
 		} break;

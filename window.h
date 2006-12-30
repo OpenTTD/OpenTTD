@@ -342,11 +342,10 @@ struct Window {
 
 typedef struct querystr_d {
 	StringID caption;
-	WindowClass wnd_class;
-	WindowNumber wnd_num;
 	Textbuf text;
 	const char *orig;
 	CharSetFilter afilter;
+	bool handled;
 } querystr_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(querystr_d));
 

@@ -266,7 +266,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 			case 8: /* rename */
 				SetDParam(0, w->window_number);
-				ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, 31, 130, w->window_class, w->window_number, CS_ALPHANUMERAL);
+				ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, 31, 130, w, CS_ALPHANUMERAL);
 				break;
 
 			case 9: /* expand town */
