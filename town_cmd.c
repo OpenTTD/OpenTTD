@@ -79,6 +79,7 @@ void DestroyTown(Town *t)
 	}
 
 	DeleteName(t->townnametype);
+	DeleteSubsidyWithTown(t->index);
 
 	MarkWholeScreenDirty();
 }

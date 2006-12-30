@@ -848,6 +848,19 @@ Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode)
 	return tp;
 }
 
+void DeleteSubsidyWithTown(TownID index)
+{
+	Subsidy *s;
+
+	for (s = _subsidies; s != endof(_subsidies); s++) {
+		if (s->cargo_type != CT_INVALID && s->age < 12 &&
+				(((s->cargo_type == CT_PASSENGERS || s->cargo_type == CT_MAIL) && (index == s->from || index == s->to)) ||
+				((s->cargo_type == CT_GOODS || s->cargo_type == CT_FOOD) && index == s->to))) {
+			s->cargo_type = CT_INVALID;
+		}
+	}
+}
+
 void DeleteSubsidyWithIndustry(IndustryID index)
 {
 	Subsidy *s;
@@ -855,7 +868,7 @@ void DeleteSubsidyWithIndustry(IndustryID index)
 	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type != CT_INVALID && s->age < 12 &&
 				s->cargo_type != CT_PASSENGERS && s->cargo_type != CT_MAIL &&
-				(index == s->from || (s->cargo_type!=CT_GOODS && s->cargo_type!=CT_FOOD && index==s->to))) {
+				(index == s->from || (s->cargo_type != CT_GOODS && s->cargo_type != CT_FOOD && index == s->to))) {
 			s->cargo_type = CT_INVALID;
 		}
 	}
