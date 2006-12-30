@@ -10,7 +10,7 @@
 void ShowNetworkNeedPassword(NetworkPasswordType npt);
 void ShowNetworkGiveMoneyWindow(byte player); // PlayerID
 void ShowNetworkChatQueryWindow(DestType type, byte dest);
-void ShowJoinStatusWindowAfterJoin(void);
+void ShowJoinStatusWindow(void);
 void ShowNetworkGameWindow(void);
 void ShowClientList(void);
 
@@ -19,7 +19,6 @@ void ShowClientList(void);
 
 static inline void ShowNetworkChatQueryWindow(byte desttype, byte dest) {}
 static inline void ShowClientList(void) {}
-static inline void ShowJoinStatusWindowAfterJoin(void) {}
 static inline void ShowNetworkGameWindow(void) {}
 
 #endif /* ENABLE_NETWORK */

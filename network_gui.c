@@ -1416,8 +1416,7 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-			case 0: /* Close 'X' */
-			case 3: /* Disconnect button */
+			case 2: /* Disconnect button */
 				NetworkDisconnect();
 				DeleteWindow(w);
 				SwitchMode(SM_MENU);
@@ -1439,8 +1438,7 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _network_join_status_window_widget[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   249,     0,    13, STR_NETWORK_CONNECTING, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,   RESIZE_NONE,    14,     0,   249,     0,    13, STR_NETWORK_CONNECTING, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   249,    14,    84, 0x0,                    STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    75,   175,    69,    80, STR_NETWORK_DISCONNECT, STR_NULL},
 {   WIDGETS_END},
@@ -1449,26 +1447,18 @@ static const Widget _network_join_status_window_widget[] = {
 static const WindowDesc _network_join_status_window_desc = {
 	WDP_CENTER, WDP_CENTER, 250, 85,
 	WC_NETWORK_STATUS_WINDOW, 0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_MODAL,
 	_network_join_status_window_widget,
 	NetworkJoinStatusWindowWndProc,
 };
 
 void ShowJoinStatusWindow(void)
 {
+	Window *w;
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
-	AllocateWindowDesc(&_network_join_status_window_desc);
-}
-
-void ShowJoinStatusWindowAfterJoin(void)
-{
-	/* This is a special instant of ShowJoinStatusWindow, because
-	    it is opened after the map is loaded, but the client maybe is not
-	    done registering itself to the server */
-	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-	_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
-	AllocateWindowDesc(&_network_join_status_window_desc);
+	w = AllocateWindowDesc(&_network_join_status_window_desc);
+	/* Parent the status window to the lobby */
+	if (w != NULL) w->parent = FindWindowById(WC_NETWORK_WINDOW, 0);
 }
 
 static void SendChat(const char *buf, DestType type, byte dest)

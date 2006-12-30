@@ -29,6 +29,7 @@
 #include "network_server.h"
 #include "network_udp.h"
 #include "network_gamelist.h"
+#include "network_gui.h"
 #include "console.h" /* IConsoleCmdExec */
 #include <stdarg.h> /* va_list */
 #include "md5.h"
@@ -47,7 +48,6 @@ static byte _network_clients_connected = 0;
 static uint16 _network_client_index = NETWORK_SERVER_INDEX + 1;
 
 /* Some externs / forwards */
-extern void ShowJoinStatusWindow(void);
 extern void StateGameLoop(void);
 
 // Function that looks up the CI for a given client-index
@@ -689,6 +689,7 @@ static bool NetworkConnect(const char *hostname, int port)
 	// in client mode, only the first client field is used. it's pointing to the server.
 	NetworkAllocClient(s);
 
+	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
 	ShowJoinStatusWindow();
 
 	return true;

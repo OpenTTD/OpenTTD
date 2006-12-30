@@ -2359,7 +2359,6 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 
 
 void ShowSelectGameWindow(void);
-extern void ShowJoinStatusWindowAfterJoin(void);
 
 void SetupColorsAndInitialWindow(void)
 {
@@ -2377,32 +2376,20 @@ void SetupColorsAndInitialWindow(void)
 	width = _screen.width;
 	height = _screen.height;
 
+	w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
+	AssignWindowViewport(w, 0, 0, width, height, TileXY(32, 32), 0);
+
 	// XXX: these are not done
 	switch (_game_mode) {
-	case GM_MENU:
-		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
-		AssignWindowViewport(w, 0, 0, width, height, TileXY(32, 32), 0);
-		ShowSelectGameWindow();
-		break;
-	case GM_NORMAL:
-		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
-		AssignWindowViewport(w, 0, 0, width, height, TileXY(32, 32), 0);
+		default: NOT_REACHED();
+		case GM_MENU:
+			ShowSelectGameWindow();
+			break;
 
-		ShowVitalWindows();
-
-		/* Bring joining GUI to front till the client is really joined */
-		if (_networking && !_network_server)
-			ShowJoinStatusWindowAfterJoin();
-
-		break;
-	case GM_EDITOR:
-		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
-		AssignWindowViewport(w, 0, 0, width, height, 0, 0);
-
-		ShowVitalWindows();
-		break;
-	default:
-		NOT_REACHED();
+		case GM_NORMAL:
+		case GM_EDITOR:
+			ShowVitalWindows();
+			break;
 	}
 }
 

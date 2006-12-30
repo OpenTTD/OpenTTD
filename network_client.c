@@ -497,6 +497,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
+		/* If the savegame has successfully loaded, ALL windows have been removed,
+		 * only toolbar/statusbar and gamefield are visible */
 
 		_opt_ptr = &_opt; // during a network game you are always in-game
 
@@ -510,18 +512,16 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 			SetLocalPlayer(PLAYER_SPECTATOR);
 
-			if (_network_playas == PLAYER_SPECTATOR) {
-				// The client wants to be a spectator..
-				DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-			} else {
+			if (_network_playas != PLAYER_SPECTATOR) {
 				/* We have arrived and ready to start playing; send a command to make a new player;
 				 * the server will give us a client-id and let us in */
+				_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
+				ShowJoinStatusWindow();
 				NetworkSend_Command(0, 0, 0, CMD_PLAYER_CTRL, NULL);
 			}
 		} else {
 			// take control over an existing company
 			SetLocalPlayer(_network_playas);
-			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 		}
 	}
 
