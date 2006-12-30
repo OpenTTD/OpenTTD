@@ -203,6 +203,7 @@ static IndustryDrawTileProc * const _industry_draw_tile_procs[5] = {
 
 static void DrawTile_Industry(TileInfo *ti)
 {
+	const IndustryGfx gfx = GetIndustryGfx(ti->tile);
 	const Industry *ind;
 	const DrawBuildingsTileStruct *dits;
 	byte z;
@@ -213,7 +214,9 @@ static void DrawTile_Industry(TileInfo *ti)
 	ormod = GENERAL_SPRITE_COLOR(ind->random_color);
 
 	/* Retrieve pointer to the draw industry tile struct */
-	dits = &_industry_draw_tile_data[GetIndustryGfx(ti->tile) << 2 | GetIndustryConstructionStage(ti->tile)];
+	dits = &_industry_draw_tile_data[gfx << 2 | (_industry_section_draw_animation_state[gfx] ?
+			GetIndustryAnimationState(ti->tile) & 3 :
+			GetIndustryConstructionStage(ti->tile))];
 
 	image = dits->ground;
 	if (image & PALETTE_MODIFIER_COLOR && (image & PALETTE_SPRITE_MASK) == 0)
@@ -496,7 +499,7 @@ static void AnimateTile_Industry(TileIndex tile)
 				if (state < 0x20 || state >= 0x180) {
 					m = GetIndustryAnimationState(tile);
 					if (!(m & 0x40)) {
-						SetIndustryAnimationState(tile, m |= 0x40);
+						SetIndustryAnimationState(tile, m | 0x40);
 						SndPlayTileFx(SND_0B_MINING_MACHINERY, tile);
 					}
 					if (state & 7)

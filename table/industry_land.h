@@ -989,3 +989,34 @@ static const byte _industry_section_bits[NUM_INDUSTRY_GFXES] = {
 	16, 16, 16, 16, 16, 16, 16, 16,
 	16, 16, 16, 16, 16, 16, 16,
 };
+
+/**
+ * When true, the tile has to be drawn using the animation
+ * state instead of the construction state.
+ * The indices into this table are the ones as described by
+ * the enum with GFX_*s in industry_map.h.
+ */
+static const bool _industry_section_draw_animation_state[NUM_INDUSTRY_GFXES] = {
+	false, true,  false, false, false, false, false, false, // <- animated wheel tower of coal mine
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, true,  true,  // <- animated oil well
+	true,  false, false, false, false, false, false, false, // <- animated oil well
+	false, false, false, false, false, false, false, false,
+	true,  false, false, false, false, false, false, false, // <- animated wheel tower of copper mine
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	true,  false, false, false, false, false, false, false, // <- animated wheel tower of gold mine
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false,
+};

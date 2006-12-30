@@ -60,6 +60,7 @@
 #include "rail_map.h"
 #include "road_map.h"
 #include "water_map.h"
+#include "industry_map.h"
 
 #include <stdarg.h>
 
@@ -1630,6 +1631,33 @@ bool AfterLoadGame(void)
 		_patches.disable_elrails = false; // enable elrails
 		/* do the same as when elrails were enabled/disabled manually just now */
 		SettingsDisableElrail(_patches.disable_elrails);
+	}
+
+	if (CheckSavegameVersion(43)) {
+		BEGIN_TILE_LOOP(tile_cur, MapSizeX(), MapSizeY(), 0) {
+			if (IsTileType(tile_cur, MP_INDUSTRY)) {
+				switch (GetIndustryGfx(tile_cur)) {
+					case GFX_POWERPLANT_SPARKS:
+						SetIndustryAnimationState(tile_cur, GB(_m[tile_cur].m1, 2, 5));
+						break;
+
+					case GFX_OILWELL_ANIMATED_1:
+					case GFX_OILWELL_ANIMATED_2:
+					case GFX_OILWELL_ANIMATED_3:
+						SetIndustryAnimationState(tile_cur, GB(_m[tile_cur].m1, 0, 2));
+						break;
+
+					case GFX_COAL_MINE_TOWER_ANIMATED:
+					case GFX_COPPER_MINE_TOWER_ANIMATED:
+					case GFX_GOLD_MINE_TOWER_ANIMATED:
+						 SetIndustryAnimationState(tile_cur, _m[tile_cur].m1);
+						 break;
+
+					default: /* No animation states to change */
+						break;
+				}
+			}
+		} END_TILE_LOOP(tile_cur, MapSizeX(), MapSizeY(), 0)
 	}
 
 	return true;
