@@ -40,7 +40,7 @@ uint64 _rdtsc(void)
 #endif
 
 /* rdtsc for PPC which has this not */
-#if defined(__POWERPC__) && !defined(RDTSC_AVAILABLE)
+#if (defined(__POWERPC__) || defined(__powerpc__)) && !defined(RDTSC_AVAILABLE)
 uint64 _rdtsc(void)
 {
 	uint32 high = 0, high2 = 0, low;

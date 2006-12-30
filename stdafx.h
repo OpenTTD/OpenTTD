@@ -196,7 +196,7 @@ typedef unsigned char byte;
 #endif
 
 // This is already defined in unix
-#if !defined(UNIX) && !defined(__CYGWIN__) && !defined(__BEOS__)
+#if !defined(UNIX) && !defined(__CYGWIN__) && !defined(__BEOS__) && !defined(__MORPHOS__)
   typedef unsigned int uint;
 #endif
 // Not defined in QNX Neutrino (6.x)
