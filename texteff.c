@@ -324,7 +324,7 @@ void DeleteAnimatedTile(TileIndex tile)
 	for (ti = _animated_tile_list; ti != endof(_animated_tile_list); ti++) {
 		if (tile == *ti) {
 			/* remove the hole */
-			memmove(ti, ti + 1, endof(_animated_tile_list) - 1 - ti);
+			memmove(ti, ti + 1, (lastof(_animated_tile_list) - ti) * sizeof(_animated_tile_list[0]));
 			/* and clear last item */
 			endof(_animated_tile_list)[-1] = 0;
 			MarkTileDirtyByTile(tile);
