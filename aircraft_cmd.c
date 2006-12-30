@@ -543,7 +543,6 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		if (!IsValidStation(st) || st->airport_tile == 0 || GetAirport(st->airport_type)->nof_depots == 0) {
 			StationID station;
 
-			if (!(p2 & DEPOT_LOCATE_HANGAR)) return CMD_ERROR;
 			// the aircraft has to search for a hangar on its own
 			station = FindNearestHangar(v);
 
@@ -561,7 +560,7 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			v->current_order.refit_cargo = CT_INVALID;
 			v->current_order.dest = next_airport_index;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-			if (p2 & DEPOT_LOCATE_HANGAR || (p2 & DEPOT_SERVICE && v->u.air.state == FLYING && !next_airport_has_hangar)) {
+			if (v->u.air.state == FLYING && !next_airport_has_hangar) {
 				/* The aircraft is now heading for a different hangar than the next in the orders */
 				AircraftNextAirportPos_and_Order(v);
 				v->u.air.targetairport = next_airport_index;
