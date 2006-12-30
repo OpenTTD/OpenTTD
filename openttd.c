@@ -150,7 +150,7 @@ static void showhelp(void)
 		"  -e                  = Start Editor\n"
 		"  -g [savegame]       = Start new/save game immediately\n"
 		"  -G seed             = Set random seed\n"
-		"  -n [ip#player:port] = Start networkgame\n"
+		"  -n [ip:port#player] = Start networkgame\n"
 		"  -D                  = Start dedicated server\n"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"  -f                  = Fork into the background (dedicated only)\n"

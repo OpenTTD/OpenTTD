@@ -1,104 +1,108 @@
-Compiling OpenTTD using Microsoft Visual C++ 6.0
+Compiling OpenTTD using Microsoft Visual C++
+December 28, 2006
+--------------------------------------------
+PLEASE READ THE ENTIRE DOCUMENT BEFORE DOING ANY ACTUAL CHANGES!!
 
+SUPPORTED MSVC COMPILERS
+------------------------
+OpenTTD includes projects for MSVC 2003.NET and MSVC 2005.NET. Both will
+compile out of the box, providing you have the required libraries/headers;
+which ones, see below. There is no support for VS6, you are therefore
+strongly encouraged to either upgrade to MSVC 2005 Express (free) or use GCC.
+MSVC 2002 probably works as well, but it has not been tested.
 
-Step 1: Ingredients
-
+1) REQUIRED FILES
+-----------------
+You might already have some of the files already installed, so check before
+downloading; mostly because the DirectX SDK and Platform SDK are about
+500MB each.
 Download the following files:
 
-    * Openttd-useful.zip (http://sourceforge.net/project/showfiles.php?group_id=103924&amp;package_id=114307&amp;release_id=228633)
-    * DirectX 8.1 SDK (http://neuron.tuke.sk/~mizanin/eng/Dx81sdk-include-lib.rar) (or alternatively the latest DirectX SDK from Microsoft)
-    * The February 2003 Microsoft Platform SDK (http://www.microsoft.com/msdownload/platformsdk/sdkupdate/XPSP2FULLInstall.htm) (newer SDK's do not work with MSVC6)
-    * afxres.h (http://www-d0.fnal.gov/d0dist/dist/packages/d0ve/devel/windows/AFXRES.H) (maybe you not need this)
+	* openttd-useful.zip (http://sf.net/project/showfiles.php?group_id=103924&package_id=114307)
+	* DirectX 8.1 SDK (http://neuron.tuke.sk/~mizanin/eng/Dx81sdk-include-lib.rar) (or alternatively the latest DirectX SDK from Microsoft)
+	* MS Windows Platform SDK (http://www.microsoft.com/downloads/details.aspx?FamilyId=A55B6B43-E24F-4EA3-A93E-40C0EC4F68E5&displaylang=en)
+	* afxres.h (http://www-d0.fnal.gov/d0dist/dist/packages/d0ve/devel/windows/AFXRES.H)
 
 ...and of course the newest source from svn://svn.openttd.org/trunk
 
-You have to have a SVN-client to download the source:
+You need an SVN-client to download the source from subversion:
 
-    * Command line version (Subversion 1.2.3 Win32 binaries) (http://subversion.tigris.org/servlets/ProjectDocumentList?folderID=91)
-    * GUI TortoiseSVN (http://tortoisesvn.tigris.org/download.html)
+	* CLI Subversion (http://subversion.tigris.org/servlets/ProjectDocumentList?folderID=91)
+	* GUI TortoiseSVN (http://tortoisesvn.tigris.org/download.html)
 
-Step 2: Includes and Libraries
+2) INCLUDES AND LIBRARIES
+-------------------------
+Put the newly downloaded files in the VC lib\ and include\ directories; where
+"C:\Program Files\Microsoft Visual Studio 8\VC" is your location of Visual C.
+If you are compiling for an x64 system, use the include\ and lib\ directories
+from the win64/ folder.
 
-Put the newly downloaded files in the VC lib and include directories (Where "C:\Program Files\Microsoft Visual Studio\VC98" is your local location of VC)
+	* openttd-useful.zip\include\*
+	* afxresh.h
+	to >	C:\Program Files\Microsoft Visual Studio 8\VC\Include
 
+	* openttd-useful.zip\lib\*
+	to >	C:\Program Files\Microsoft Visual Studio 8\VC\Lib
 
-    * zconf.h [useful.zip]
-    * zlib.h [useful.zip]
-    * png.h [useful.zip]
-    * pngconf.h [useful.zip]
-    * afxres.h
-
-in
-
- C:\Program Files\Microsoft Visual Studio\VC98\Include
-
-and
-
-    * zlibstat.lib [useful.zip]
-    * libpng.lib [useful.zip]
-
-in
-
- C:\Program Files\Microsoft Visual Studio\VC98\Lib
+Custom directories might be recommended, check 2.2)
 
 
-Step 3: DirectX SDK
+2.1) INCLUDES AND LIBRARIES - DIRECTX/PLATFORM SDK
+--------------------------------------------------
+Basically the same procedure as with the useful zip file, providing
+you are not using the Microsoft installer. Put the include files in the
+include\ directory and the library files to the Lib\ directory.
 
-(This should work with the latest DirectX SDK as well.)
+It is recommended to use custom directories so you don't overwrite any
+default header or library files.
 
-There are 2 folder in the compressed file: Include and Lib
+2.2) CUSTOM DIRECTORIES
+-----------------------
+If you have put the above include and/or library files into custom folders,
+MSVC will not find them by default. You need to add these paths to VC through:
 
-Copy all files from Include folder to
+Tools > Options > Projects and Solutions > VC++ Directories > show directories for
 
-C:\Program Files\Microsoft Visual Studio\VC98\Include
+	* Include files: Add the DirectX/Platform SDK include dir you've created
+	* Library files: Add the path to the SDK custom lib dir
 
-and all files from Lib folder to
+NOTE: make sure that the directory for the DirectX SDK is the first one in the
+list, above all others, otherwise compilation will most likely fail!!
 
-C:\Program Files\Microsoft Visual Studio\VC98\Lib
-
-
-
-You can also make custom directories, which is recommended so you don't overwrite VS6 files, for libraries (.lib) and includes/header files (.h) and add it to the VC paths via:
-
-Tools -> Options -> Directories -> show directories for:
-
-a) include files (the include dir: C:\Program Files\Microsoft Visual Studio\VC98\DirectX 8.1 SDK\include )
-
-b) library files (the lib dir, C:\Program Files\Microsoft Visual Studio\VC98\DirectX 8.1 SDK\lib )
-
-NOTE: make sure that the directory for the DirectX SDK is the first one in the list, above all others, otherwise compilation will most likely fail!!
-
-Step 4: TTD Graphics files
-
+3) TTD GRAPHICS FILES
+---------------------
 Copy the following files from Transport Tycoon Deluxe to the data folder
 
-    * sample.cat
-    * trg1r.grf
-    * trgcr.grf
-    * trghr.grf
-    * trgir.grf
-    * trgtr.grf
+	* sample.cat
+	* trg1r.grf
+	* trgcr.grf
+	* trghr.grf
+	* trgir.grf
+	* trgtr.grf
 
 
-Step 5: Compiling
-
-Open trunk/openttd.dsw
-
-Build menu > Set active configuration > Select: "openttd - Win32 Release"
-
+4) COMPILING
+------------
+Open trunk/openttd[_vs80].sln
+Set the build mode to 'Release' in
+Build > Configuration manager > Active solution configuration > select "Release"
 Compile...
 
+If everything works well the binary should be in trunk/Release/openttd.exe
 
-Now it should work, it worked for me :)
+5) EDITING, CHANGING SOURCE CODE
+--------------------------------
+Set the build mode (back to) 'Debug'
+Change the startup project to openttd by right-clicking the 'openttd' project
+in the Solution Explorer and selecting 'Set as Startup Project'. The 'openttd'
+project should now show up bold instead of 'strgen'.
 
-From r1319 you can compile branch/map in Debug mode (by Bociusz)
+6) PROBLEMS?
+------------
+If compilation fails, double-check that you are using the latest SVN (!)
+source. If it still doesn't work, check in on IRC (irc://irc.oftc.net/openttd),
+to ask about reasons; or just wait. The problem will most likely solve itself
+within a few days as the problem is noticed and fixed.
 
-For compiling branch/cargo-packets you have to add cargo.c and .h to this tree's openttd.dsp
-
-If it's not working, and you checked that you using the newest SVN (!) report to Bociusz on IRC (irc://irc.freenode.net/openttd)
-
-Go ahead and make that patch! Happy Hacking! :)
-
-Originally written by Dribbel
-
-Project file updating by Bociusz
+An up-to-date version of this README can be found on the wiki:
+http://wiki.openttd.org/index.php/MicrosoftVisualCExpress

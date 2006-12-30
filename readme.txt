@@ -35,7 +35,7 @@ more information, see the file 'COPYING'.
 ---- ----------
 The easiest way to contact the OpenTTD team is by submitting bug reports or
 posting comments in our forums. You can also chat with us on IRC (#openttd
-on irc.freenode.net).
+on irc.oftc.net).
 
 The OpenTTD homepage is http://www.openttd.org/.
 
@@ -54,7 +54,7 @@ is not already known.
 The Flyspray project page URL is: http://bugs.openttd.org/
 
 Please include the following information in your bug report:
-        - OpenTTD version (PLEASE test the latest SVN/daily build)
+        - OpenTTD version (PLEASE test the latest SVN/nightly build)
         - Bug details, including instructions how to reproduce it
         - Platform and compiler (Win32, Linux, FreeBSD, ...)
         - Attach a saved game or a screenshot if possible
@@ -70,13 +70,13 @@ OpenTTD has been ported to several platforms and operating systems. It shouldn't
 be very difficult to port it to a new platform. The currently working platforms
 are:
 
-	BeOS                 - SDL
-	FreeBSD              - SDL
-	Linux                - SDL
-	MacOS X (universal)  - Cocoa video and sound drivers (SDL works too, but not 100% and not as a universal binary)
-	MorphOS              - SDL
-	OS/2                 - SDL
-	Windows              - Win32 GDI (faster) or SDL
+  BeOS                 - SDL
+  FreeBSD              - SDL
+  Linux                - SDL
+  MacOS X (universal)  - Cocoa video and sound drivers (SDL works too, but not 100% and not as a universal binary)
+  MorphOS              - SDL
+  OS/2                 - SDL
+  Windows              - Win32 GDI (faster) or SDL
 
 
 4.0) Running OpenTTD:
@@ -120,7 +120,7 @@ Several important non-standard controls:
 * Use Ctrl to place semaphore signals
 * Ctrl-D toggles double mode in the Windows version
 * Ingame console. More information at
-  http://wiki.openttd.org/index.php/OpenTTDDevBlackBook
+  http://wiki.openttd.org/index.php/Console
 
 
 6.0) Configuration File:
@@ -149,12 +149,11 @@ Windows:
 Unix:
   OpenTTD can be built with GNU "make". On non-GNU systems it's called "gmake".
   Note that you need SDL-devel 1.2.5 (or higher) to compile OpenTTD.
-  (see also docs/Readme_Mandrake_Linux.txt)
 
 MacOS X:
   Use "make" or Xcode (which will then call make for you)
-	This will give you a binary for your CPU type (PPC/Intel)
-	To make an universal binary type "make FAT_BINARY:=1"
+  This will give you a binary for your CPU type (PPC/Intel)
+  To make a universal binary type "make UNIVERSAL_BINARY:=1"
 
 BeOS:
   Use "make".
@@ -272,13 +271,13 @@ The OpenTTD team (in alphabetical order):
   Bjarni Corfitzen (Bjarni)      - Mac OS X port, coder
   Matthijs Kooijman (blathijs)   - Pathfinder-guru
   Victor Fischer (Celestar)      - Programming everywhere you need him to
-  Tam·s FaragÛ (Darkvater)       - Lead programmer
-  LoÔc Guilloux (glx)            - In training, not yet specialized
+  Tam√°s Farag√≥ (Darkvater)       - Lead programmer
+  Lo√Øc Guilloux (glx)            - In training, not yet specialized
   Jaroslav Mazanec (KUDr)        - YAPG (Yet Another Pathfinder God) ;)
   Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
 
   Peter Nelson (peter1138)       - Spiritual descendant from newgrf gods
-  Remko Bijker (Rubidium)        - Belugas code scrutinizer",
+  Remko Bijker (Rubidium)        - Programmer
   Christoph Mallon (Tron)        - Programmer, code correctness police
   Patric Stout (TrueLight)       - Programmer, network guru, SVN-repository and website host
 
@@ -289,18 +288,18 @@ Retired Developers:
   Serge Paquet (vurlix)          - Assistant project manager, coder (0.1 - 0.3.3)
 
 Thanks to:
-  Josef Drexler - For his great work on TTDPatch.
-  Marcin Grzegorczyk - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations)
-  Matthijs Kooijman (blathijs) - For his many patches, suggestions and major work on maprewrite
-  Petr Baudis (pasky) - Many patches, newgrf support, etc.
-  Simon Sasburg (HackyKid) - For the many bugfixes he has blessed us with (and future PBS)
-  Stefan Meiﬂner (sign_de) - For his work on the console
-  Mike Ragsdale - OpenTTD installer
-  Cian Duffy (MYOB) - BeOS port / manual writing
-  Christian Rosentreter (tokai) - MorphOS / AmigaOS port
-  Richard Kempton (richK) - additional airports, initial TGP implementation
-  Michael Blunck - For revolutionizing TTD with awesome graphics
-  George - Canal graphics
-  All Translators - For their support to make OpenTTD a truly international game
-  Bug Reporters - Thanks for all bug reports
-  Chris Sawyer - For an amazing game!
+  Josef Drexler                  - For his great work on TTDPatch.
+  Marcin Grzegorczyk             - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations)
+  Matthijs Kooijman (blathijs)   - For his many patches, suggestions and major work on maprewrite
+  Petr Baudis (pasky)            - Many patches, newgrf support, etc.
+  Simon Sasburg (HackyKid)       - For the many bugfixes he has blessed us with (and future PBS)
+  Stefan Mei√üner (sign_de)       - For his work on the console
+  Mike Ragsdale                  - OpenTTD installer
+  Cian Duffy (MYOB)              - BeOS port / manual writing
+  Christian Rosentreter (tokai)  - MorphOS / AmigaOS port
+  Richard Kempton (RichK67)      - Additional airports, initial TGP implementation
+  Michael Blunck                 - For revolutionizing TTD with awesome graphics
+  George                         - Canal graphics
+  All Translators                - For their support to make OpenTTD a truly international game
+  Bug Reporters                  - Thanks for all bug reports
+  Chris Sawyer                   - For an amazing game!

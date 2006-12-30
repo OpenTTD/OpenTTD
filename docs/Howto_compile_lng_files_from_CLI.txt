@@ -32,17 +32,3 @@ this will need english.txt to be present
 -w
 strgen will print any missing strings to standard error output(stderr)
 this will need english.txt to be present
-
-here are a very useful tool for translators:
-http://openttd.rulez.org/
-
-
-HOWTO compile strgen:
-(this should be useless as you can just type make)
-Goto the main dir
-Compile by typing
-gcc strgen/strgen.c -o strgen/strgen -DUNIX
-or if you want it to tell the revision too
-gcc strgen/strgen.c rev.o -o strgen/strgen -DUNIX -DWITH_REV (this is the one the makefile uses)
-
-you now have a program called strgen in the strgen directory

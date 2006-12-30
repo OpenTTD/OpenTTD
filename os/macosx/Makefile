@@ -106,9 +106,6 @@ endif
 $(OSX_STRIP): $(TTD)
 	$(Q)$(STRIP) openttd
 
-ifdef JAGUAR
-JAGUAR_POSTFIX := -jaguar
-endif
 
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
@@ -136,15 +133,12 @@ release: all
 	$(Q)mkdir -p "OpenTTD $(REV)/scenario"
 	$(Q)cp -R $(OSXAPP) "OpenTTD $(REV)/"
 	$(Q)cp docs/OSX_install_instructions.txt "OpenTTD $(REV)/How to install (please read).txt"
-	$(Q)cp docs/OSX_why_multiple_applications.txt "OpenTTD $(REV)/why a special Jaguar download.txt"
 	$(Q)cp readme.txt "OpenTTD $(REV)/docs/"
-	$(Q)cp docs/console.txt "OpenTTD $(REV)/docs/"
 	$(Q)cp COPYING "OpenTTD $(REV)/docs/"
 	$(Q)cp changelog.txt "OpenTTD $(REV)/docs/"
-	$(Q)cp os/macosx/*.webloc "OpenTTD $(REV)"
 	$(Q)cp known-bugs.txt "OpenTTD $(REV)/known-bugs.txt"
 	$(Q)cp -R scenario/* "OpenTTD $(REV)/scenario/"
-	$(Q)hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(REV)" openttd-"$(REV)"-osx"$(JAGUAR_POSTFIX)".dmg
+	$(Q)hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(REV)" openttd-"$(REV)"-osx.dmg
 	$(Q)rm -fr "OpenTTD $(REV)"
 
 $(OSX): $(TTD) $(OSX_STRIP) BUILD_OSX_BUNDLE

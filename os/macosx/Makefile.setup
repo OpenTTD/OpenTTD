@@ -38,6 +38,10 @@ endif
 
 ifeq ($(shell uname), Darwin)
 	# it's a hardware mac, not crosscompiling
+	ifeq ($(shell uname -r), 6.8)
+	# OSX 10.2.8 uses Darwin 6.8, so we better set JAGUAR so we avoid the stuff that was added in 10.3 or later
+$(error OpenTTD can not run or compile on MacOS X 10.2. 10.3.9 or newer is needed)
+	endif
 	NATIVE_OSX:=1
 endif
 
@@ -85,26 +89,13 @@ ifdef OTTD_PPC970
 	endif
 endif
 
-ifdef JAGUAR
-	CFLAGS  += -isysroot /Developer/SDKs/MacOSX10.2.8.sdk
-	LDFLAGS += -Wl,-syslibroot,/Developer/SDKs/MacOSX10.2.8.sdk
-	OTTD_PPC:=1
-endif
-
 # setting up flags to make a binary, that fits the system it builds on
 ifdef NATIVE_OSX
 	ifndef UNIVERSAL_BINARY
 		# we are not crosscompiling for other macs
-		ifndef JAGUAR
-			# the next line fails if it got whitespace in front of it
+		# the next line fails if it got whitespace in front of it
 $(shell $(CC) os/macosx/G5_detector.c -o os/macosx/G5_detector)
-			IS_G5:=$(shell os/macosx/G5_detector)
-			ifeq ($(shell uname -r), 6.8)
-			# OSX 10.2.8 uses Darwin 6.8, so we better set JAGUAR so we avoid the stuff that was added in 10.3 or later
-				JAGUAR:=1
-				OTTD_PPC:=1
-			endif
-		endif
+		IS_G5:=$(shell os/macosx/G5_detector)
 	endif
 endif
 
