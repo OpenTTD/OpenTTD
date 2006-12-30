@@ -449,6 +449,11 @@ end_of_inner_loop:
 	}
 }
 
+/** Draw a given string with the centre around the given x coordinates
+ * @param x Centre the string around this pixel width
+ * @param y Draw the string at this pixel height (first line's bottom)
+ * @param str String to draw
+ * @param max Maximum width the string can have before it is wrapped */
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 {
 	char buffer[512];
@@ -555,10 +560,10 @@ BoundingRect GetStringBoundingBox(const char *str)
 			br.width += GetCharacterWidth(size, c);
 		} else {
 			switch (c) {
-				case SCC_SETX: br.width += (byte)*++str; break;
+				case SCC_SETX: br.width += (byte)*str++; break;
 				case SCC_SETXY:
-					br.width += (byte)*++str;
-					br.height += (byte)*++str;
+					br.width += (byte)*str++;
+					br.height += (byte)*str++;
 					break;
 				case SCC_TINYFONT: size = FS_SMALL; break;
 				case SCC_BIGFONT:  size = FS_LARGE; break;
@@ -653,7 +658,7 @@ skip_cont:;
 		} else if (c == SCC_BIGFONT) { // {BIGFONT}
 			size = FS_LARGE;
 		} else {
-			printf("Unknown string command character %d\n", c);
+			DEBUG(misc, 0, "[utf8] unknown string command character %d", c);
 		}
 	}
 }
