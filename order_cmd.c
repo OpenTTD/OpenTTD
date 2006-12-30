@@ -611,8 +611,17 @@ int32 CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			u = GetFirstVehicleFromSharedList(v);
 			DeleteOrderWarnings(u);
 			for (; u != NULL; u = u->next_shared) {
-				/* toggle u->current_order "Full load" flag if it changed */
+				/* Toggle u->current_order "Full load" flag if it changed.
+				 * However, as the same flag is used for depot orders, check
+				 * whether we are not going to a depot as there are three
+				 * cases where the full load flag can be active and only
+				 * one case where the flag is used for depot orders. In the
+				 * other cases for the OrderType the flags are not used,
+				 * so do not care and those orders should not be active
+				 * when this function is called.
+				 */
 				if (sel_ord == u->cur_order_index &&
+						u->current_order.type != OT_GOTO_DEPOT &&
 						HASBIT(u->current_order.flags, OFB_FULL_LOAD) != HASBIT(order->flags, OFB_FULL_LOAD)) {
 					TOGGLEBIT(u->current_order.flags, OFB_FULL_LOAD);
 				}
