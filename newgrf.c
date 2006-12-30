@@ -3425,7 +3425,7 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 	/* Copy the initial parameter list */
 	assert(lengthof(newfile->param) == lengthof(config->param) && lengthof(config->param) == 0x80);
 	newfile->param_end = config->num_params;
-	memcpy(newfile->param, config->param, 0x80 * sizeof(newfile->param[0]));
+	memcpy(newfile->param, config->param, sizeof(newfile->param));
 
 	if (_first_grffile == NULL) {
 		_cur_grffile = newfile;
