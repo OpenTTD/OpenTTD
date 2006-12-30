@@ -2946,6 +2946,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared o
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles which have the same schedule
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}You are about to sell all the vehicles in the depot. Are you sure?
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sell all trains in the depot
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sell all road vehicles in the depot
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sell all ships in the depot

@@ -2594,7 +2594,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Helikopter Tric
 STR_80FE_GURU_X2_HELICOPTER                                     :Helikopter Guru X2
 STR_80FF_POWERNAUT_HELICOPTER                                   :Helikopter Powernaut
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Wiadomość od producenta pojazdów
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Właśnie zaprojektowaliśmy now{G y a e} {STRING.b} - czy jesteś zainteresowany w rocznej wyłączności na użycie tego pojazdu, żebyśmy mogli zobaczyć jak się sprawuje przed wypuszczeniem na rynek?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Właśnie zaprojektowaliśmy now{G y ą e} {STRING.b} - czy jesteś zainteresowany w rocznej wyłączności na użycie tego pojazdu, żebyśmy mogli zobaczyć przed wypuszczeniem na rynek jak się sprawuje?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=f}lokomotywa
 STR_8102_RAILROAD_LOCOMOTIVE.b                                  :{G=f}lokomotywę
 STR_8103_ROAD_VEHICLE                                           :{G=m}samochód
@@ -2733,6 +2733,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koszt: {
 STR_885C_BROKEN_DOWN                                            :{RED}Awaria
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Waga: {LTBLUE}{WEIGHT_S}  {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Max. prędkość: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Waga: {LTBLUE}{WEIGHT_S} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Max. prędkość: {LTBLUE}{VELOCITY} {BLACK}Max. S.P.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (w ostatnim roku: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Zatrzymany
@@ -2949,7 +2950,7 @@ STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koszt: {
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nazwa samolotu
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nie można zmienić nazwy samolotu...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nazwa samolotu
-STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy samolot przyleciał do {STATION}!
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy samolot przyleciał na {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Katastrofa lotnicza!{}{COMMA} ofiar{P a y ""} na {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Wypadek lotniczy!{}Samolot rozbił się z powodu braku paliwa, zginęło {COMMA} osób!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
@@ -3074,6 +3075,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Wspoldzi
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
 ### depot strings
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sprzedaj wszystkie pociągi z zajezdni
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sprzedaj wszystkie samochody z zajezdni
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sprzedaj wszystkie statki ze stoczni
@@ -3159,6 +3161,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GO
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można przebudować na: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy towarów
 STR_PURCHASE_INFO_ALL_BUT                                       :Wszystko oprócz {GOLD}}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Siła Pociągowa: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 

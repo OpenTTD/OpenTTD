@@ -2603,6 +2603,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Fiyat: {
 STR_885C_BROKEN_DOWN                                            :{RED}Bozuldu
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Yaş: {LTBLUE}{STRING}{BLACK}   Bakım: {LTBLUE}{CURRENCY}/sene
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_S}  {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Mak. hız: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_S} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Mak. hız: {LTBLUE}{VELOCITY} {BLACK}Max. Ç.G.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kâr: {LTBLUE}{CURRENCY}  (geçen sene: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Son servisteki bozulmalar: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Durdu
@@ -2944,6 +2945,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Aynı talimatlara sahip bütün araçları göster
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Garajdaki bütün araçları satmak üzeresiniz. Emin misiniz?
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Gardaki tüm trenleri sat
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Garajdaki tüm arabaları sat
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Tersanedeki tüm gemileri sat
@@ -3028,6 +3031,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Güç Ve
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modifiye edilebilir: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tüm kargo türleri
 STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD} hariç hepsi
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Mak. Çekim Gücü: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 

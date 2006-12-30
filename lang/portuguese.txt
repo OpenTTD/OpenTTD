@@ -2946,6 +2946,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordens p
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra todos os veículos que seguem o mesmo trajecto
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está prestes a vender todos os veículos no depósito. Tem a certeza?
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os combóios no depósito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender todos os veículos no depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender todos os navios no depósito

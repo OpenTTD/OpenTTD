@@ -2605,6 +2605,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Coste: {
 STR_885C_BROKEN_DOWN                                            :{RED}Averiado
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Operativo: {LTBLUE}{CURRENCY}/año
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S}  {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad Máx.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Max. velocidad: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (último año: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último mantenimiento: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Parado
@@ -2946,6 +2947,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordenes 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ver todos los vehículos que tienen el mismo calendario
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vas a vender todos los vehículos que tienes en el depósito.  ¿Estás seguro?
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos los trenes del depósito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender todos los vehículos del depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender todos los barcos del depósito
@@ -3031,6 +3034,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Convertible a: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos de carga
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Esfuerzo de Tracción {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 

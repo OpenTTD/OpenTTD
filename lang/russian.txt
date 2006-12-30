@@ -2945,6 +2945,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Общи
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Показать весь транспорт с этим расписанием
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Весь транспорт в депо будет продан. Вы уверены?
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Продать все поезда в депо
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Продать все авто в гараже
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Продать все суда в доке
