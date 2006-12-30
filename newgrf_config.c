@@ -120,9 +120,9 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 	for (; src != NULL; src = src->next) {
 		c = calloc(1, sizeof(*c));
 		*c = *src;
-		c->filename = strdup(src->filename);
-		if (src->name != NULL) c->name = strdup(src->name);
-		if (src->info != NULL) c->info = strdup(src->info);
+		if (src->filename != NULL) c->filename = strdup(src->filename);
+		if (src->name     != NULL) c->name     = strdup(src->name);
+		if (src->info     != NULL) c->info     = strdup(src->info);
 
 		*dst = c;
 		dst = &c->next;
@@ -131,14 +131,63 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 	return dst;
 }
 
+/**
+ * Removes duplicates from lists of GRFConfigs. These duplicates
+ * are introduced when the _grfconfig_static GRFs are appended
+ * to the _grfconfig on a newgame or savegame. As the parameters
+ * of the static GRFs could be different that the parameters of
+ * the ones used non-statically. This can result in desyncs in
+ * multiplayers, so the duplicate static GRFs have to be removed.
+ *
+ * This function _assumes_ that all static GRFs are placed after
+ * the non-static GRFs.
+ *
+ * @param list the list to remove the duplicates from
+ */
+static void RemoveDuplicatesFromGRFConfigList(GRFConfig *list)
+{
+	GRFConfig *prev;
+	GRFConfig *cur;
+
+	if (list == NULL) return;
+
+	for (prev = list, cur = list->next; cur != NULL; prev = cur, cur = cur->next) {
+		if (cur->grfid != list->grfid) continue;
+		assert(HASBIT(cur->flags, GCF_STATIC));
+		prev->next = cur->next;
+		ClearGRFConfig(&cur);
+		cur = prev; // Just go back one so it continues as normal later on
+	}
+
+	RemoveDuplicatesFromGRFConfigList(list->next);
+}
+
+/**
+ * Appends the static GRFs to a list of GRFs
+ * @param dst the head of the list to add to
+ */
+void AppendStaticGRFConfigs(GRFConfig **dst)
+{
+	GRFConfig **tail = dst;
+	while (*tail != NULL) tail = &(*tail)->next;
+
+	CopyGRFConfigList(tail, _grfconfig_static);
+	RemoveDuplicatesFromGRFConfigList(*dst);
+}
+
 
 /* Reset the current GRF Config to either blank or newgame settings */
 void ResetGRFConfig(bool defaults)
 {
 	GRFConfig **c = &_grfconfig;
 
-	if (defaults) c = CopyGRFConfigList(c, _grfconfig_newgame);
-	CopyGRFConfigList(c, _grfconfig_static);
+	if (defaults) {
+		c = CopyGRFConfigList(c, _grfconfig_newgame);
+	} else {
+		ClearGRFConfigList(c);
+	}
+
+	AppendStaticGRFConfigs(&_grfconfig);
 }
 
 
@@ -400,6 +449,7 @@ static void Load_NGRF(void)
 
 	ClearGRFConfigList(&_grfconfig);
 	_grfconfig = first;
+	AppendStaticGRFConfigs(&_grfconfig);
 }
 
 const ChunkHandler _newgrf_chunk_handlers[] = {
