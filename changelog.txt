@@ -2,6 +2,7 @@
 ------------------------------------------------------------------------
 
 - General fixes and improvements to TTDPatch's newgrf format, most noticable are newstations, newsounds, more callbacks and I18n
+- Added languages: Bulgarian, Esperanto, Russian, Ukrainian, Languages with proper diacretics: Czech, Hungarian, Turkish
 - Feature: Show NewGRF compatability of network games; green for full compatibility, yellow for missing newgrfs and red for invalid revision (r7505)
 - Feature: Load a list of NewGRFs from the config (in the [newgrf-static] section) that should always be loaded (r7490)
 - Feature: Double the length of the cargo and rating indicators in the station list window for better visibility (r7466)
@@ -91,6 +92,7 @@
 - Codechange: [win32] Add native x64 target to VS2005 project files (r5813)
 - Codechange: [win32]The exception dialog showed the last modification-date of win32.c instead of the last compilation-date (r5801)
 - Codechange: Add owner attribute to canals and locks. This makes them more useful in multiplayer games, as only the owner can delete them. Does not affect usage (r5084)
+- Codechange: Add MSVC2005 support, project and solution files are in the _vs80.* files (r4581)
 - Codechange: [OSX] Shark (Xcode's profiling tool) can now relate CPU usage to lines (r3611)
 - Codechange: Rewrite the multistop slot assignment system. More resource-friendly, several slot-assignment improvements (r3730, r4259)
 - Codechange: Completely remove the deprecated -p parameter (is superseded by -n) (r3508)
