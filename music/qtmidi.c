@@ -83,16 +83,25 @@ static bool PathToFSSpec(const char *path, FSSpec *spec)
  */
 static void SetMIDITypeIfNeeded(const FSSpec *spec)
 {
-	FInfo info;
+	FSRef ref;
+	FSCatalogInfo catalogInfo;
+
 	assert(spec);
 
-	if (noErr != FSpGetFInfo(spec, &info)) return;
-
-	/* Set file type to 'Midi' if the file is _not_ an alias. */
-	if (info.fdType != midiType && !(info.fdFlags & kIsAlias)) {
-		info.fdType = midiType;
-		FSpSetFInfo(spec, &info);
-		DEBUG(driver, 3, "qtmidi: changed filetype to 'Midi'");
+	if (noErr != FSpMakeFSRef(spec, &ref)) return;
+	if (noErr != FSGetCatalogInfo(&ref, kFSCatInfoNodeFlags | kFSCatInfoFinderInfo, &catalogInfo, NULL, NULL, NULL)) return;
+	if (!(catalogInfo.nodeFlags & kFSNodeIsDirectoryMask)) {
+		FileInfo * const info = (FileInfo *) catalogInfo.finderInfo;
+		if (info->fileType != midiType && !(info->finderFlags & kIsAlias)) {
+			OSErr e;
+			info->fileType = midiType;
+			e = FSSetCatalogInfo(&ref, kFSCatInfoFinderInfo, &catalogInfo);
+			if (e == noErr) {
+				DEBUG(driver, 3, "qtmidi: changed filetype to 'Midi'");
+			} else {
+				DEBUG(driver, 0, "qtmidi: changing filetype to 'Midi' failed - error %d", e);
+			}
+		}
 	}
 }
 
