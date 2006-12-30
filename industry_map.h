@@ -48,6 +48,7 @@ enum {
 	GFX_BUBBLE_CATCHER                 = 162,
 	GFX_TOFFEE_QUARY                   = 165,
 	GFX_SUGAR_MINE_SIEVE               = 174,
+	NUM_INDUSTRY_GFXES                 = 175,
 };
 
 static inline IndustryID GetIndustryIndex(TileIndex t)
@@ -212,7 +213,7 @@ static const IndustryTypeSolver industry_gfx_Solver [IT_END] = {
 /**
  * Get the animation loop number
  * @param tile the tile to get the animation loop number of
- * @pre IsTileType(tile, MP_INDUSTRY
+ * @pre IsTileType(tile, MP_INDUSTRY)
  */
 static inline byte GetIndustryAnimationLoop(TileIndex tile)
 {
@@ -224,7 +225,7 @@ static inline byte GetIndustryAnimationLoop(TileIndex tile)
  * Set the animation loop number
  * @param tile the tile to set the animation loop number of
  * @param count the new animation frame number
- * @pre IsTileType(tile, MP_INDUSTRY
+ * @pre IsTileType(tile, MP_INDUSTRY)
  */
 static inline void SetIndustryAnimationLoop(TileIndex tile, byte count)
 {

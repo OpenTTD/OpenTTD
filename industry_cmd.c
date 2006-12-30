@@ -451,8 +451,10 @@ static void AnimateTile_Industry(TileIndex tile)
 		}
 		break;
 
-	case 148: case 149: case 150: case 151:
-	case 152: case 153: case 154: case 155:
+	case GFX_PLASTIC_FOUNTAIN_ANIMATED_1: case GFX_PLASTIC_FOUNTAIN_ANIMATED_2:
+	case GFX_PLASTIC_FOUNTAIN_ANIMATED_3: case GFX_PLASTIC_FOUNTAIN_ANIMATED_4:
+	case GFX_PLASTIC_FOUNTAIN_ANIMATED_5: case GFX_PLASTIC_FOUNTAIN_ANIMATED_6:
+	case GFX_PLASTIC_FOUNTAIN_ANIMATED_7: case GFX_PLASTIC_FOUNTAIN_ANIMATED_8:
 		if ((_tick_counter & 3) == 0) {
 			IndustryGfx gfx = GetIndustryGfx(tile);
 
@@ -567,14 +569,10 @@ static void MakeIndustryTileBigger(TileIndex tile)
 		SetIndustryAnimationLoop(tile, 0);
 		break;
 
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_1:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_2:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_3:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_4:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_5:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_6:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_7:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_8:
+	case GFX_PLASTIC_FOUNTAIN_ANIMATED_1: case GFX_PLASTIC_FOUNTAIN_ANIMATED_2:
+	case GFX_PLASTIC_FOUNTAIN_ANIMATED_3: case GFX_PLASTIC_FOUNTAIN_ANIMATED_4:
+	case GFX_PLASTIC_FOUNTAIN_ANIMATED_5: case GFX_PLASTIC_FOUNTAIN_ANIMATED_6:
+	case GFX_PLASTIC_FOUNTAIN_ANIMATED_7: case GFX_PLASTIC_FOUNTAIN_ANIMATED_8:
 		AddAnimatedTile(tile);
 		break;
 	}
@@ -1106,31 +1104,6 @@ static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 
 	return t;
 }
-
-static const byte _industry_section_bits[] = {
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16,  4,  2, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16,  4,  2, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 16, 16, 16, 16, 16,
-};
 
 static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, int type)
 {

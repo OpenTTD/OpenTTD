@@ -15,7 +15,7 @@ typedef struct DrawIndustrySpec4Struct {
 
 #define M(s1, s2, sx, sy, w, h, dz, p) { s1, s2, sx, sy, w - 1, h - 1, dz, p }
 
-static const DrawBuildingsTileStruct _industry_draw_tile_data[700] = {
+static const DrawBuildingsTileStruct _industry_draw_tile_data[NUM_INDUSTRY_GFXES * 4] = {
 	M(     0xf54,      0x7db,  7,  0,  9,  9,  10, 0),
 	M(     0xf54,      0x7dc,  7,  0,  9,  9,  30, 0),
 	M(     0xf54,      0x7dd,  7,  0,  9,  9,  30, 0),
@@ -898,52 +898,60 @@ static const byte _industry_anim_offs_2[] = {
 static const byte _coal_plant_sparks_x[] = {11, 11, 14, 13, 18, 15};
 static const byte _coal_plant_sparks_y[] = {23, 11,  6,  3,  1,  0};
 
-/* next frame in an animation */
 #define N 255
-static const byte _industry_section_animation_next[] = {
+/**
+ * Next frame in an animation
+ * The indices into this table are the ones as described by
+ * the enum with GFX_*s in industry_map.h.
+ */
+static const byte _industry_section_animation_next[NUM_INDUSTRY_GFXES] = {
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
-N,   16,  N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
+N,   16,  N,   N,   N,   N,   N,   N, // <- growing forest
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   129, N,   N,   N,   N,   N,
-135, N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   129, N,   N,   N,   N,   N, // <- growing candyfloss
+135, N,   N,   N,   N,   N,   N,   N, // <- 'growing' batteries
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,
 };
 
-/* animation to start when goods is produced */
-static const byte _industry_produce_section[] = {
+/**
+ * Animation to start when goods is produced
+ * The indices into this table are the ones as described by
+ * the enum with GFX_*s in industry_map.h.
+ */
+static const byte _industry_produce_section[NUM_INDUSTRY_GFXES] = {
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
-17,  N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
+17,  N,   N,   N,   N,   N,   N,   N, // <- chopping forest
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
-N,   130, N,   N,   N,   N,   N,   136,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   130, N,   N,   N,   N,   N,   136,  // <- chopping candyfloss and reaping batteries
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
 N,   N,   N,   N,   N,   N,   N,   N,
@@ -952,3 +960,32 @@ N,   N,   N,   N,   N,   N,   N,
 };
 
 #undef N
+
+/**
+ * The indices into this table are the ones as described by
+ * the enum with GFX_*s in industry_map.h.
+ */
+static const byte _industry_section_bits[NUM_INDUSTRY_GFXES] = {
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16,  4,  2, 16, 16, 16, 16, // <- temperate bank
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16,  4,  2, 16, 16, 16, 16, 16, // <- sub-arctic/sub-tropical bank
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16, 16,
+	16, 16, 16, 16, 16, 16, 16,
+};
