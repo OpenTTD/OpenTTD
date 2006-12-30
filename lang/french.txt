@@ -2947,6 +2947,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres p
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Afficher tous les véhicules partageant ce programme
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vous êtes sur le point de vendre tous les véhicules du dépôt. Etes-vous sûr ?
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vendre tous les trains du dépôt
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vendre tous les véhicules routiers du dépôt
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vendre tous les navires du dépôt
