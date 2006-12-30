@@ -158,6 +158,20 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath=".\lang\esperanto.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating esperanto language file"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs="lang\esperanto.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath=".\lang\estonian.txt"
 			>
 			<FileConfiguration
