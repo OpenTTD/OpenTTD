@@ -420,7 +420,8 @@ static void PlayersCheckBankrupt(Player *p)
 					p->bankrupt_timeout = 0x456;
 					break;
 				} else if (owner == _local_player) {
-					_local_player = _network_playas = PLAYER_SPECTATOR;
+					_network_playas = PLAYER_SPECTATOR;
+					SetLocalPlayer(PLAYER_SPECTATOR);
 				}
 
 #ifdef ENABLE_NETWORK

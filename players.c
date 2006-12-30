@@ -28,6 +28,29 @@
 #include "date.h"
 #include "window.h"
 
+/**
+ * Sets the local player and updates the patch settings that are set on a
+ * per-company (player) basis to reflect the core's state in the GUI.
+ * @param new_player the new player
+ * @pre IsValidPlayer(new_player) || new_player == PLAYER_SPECTATOR || new_player == OWNER_NONE
+ */
+void SetLocalPlayer(PlayerID new_player)
+{
+	/* Player could also be PLAYER_SPECTATOR or OWNER_NONE */
+	assert(IsValidPlayer(new_player) || new_player == PLAYER_SPECTATOR || new_player == OWNER_NONE);
+
+	_local_player = new_player;
+
+	/* Do not update the patches if we are in the intro GUI */
+	if (IsValidPlayer(new_player) && _game_mode != GM_MENU) {
+		const Player *p = GetPlayer(new_player);
+		_patches.autorenew        = p->engine_renew;
+		_patches.autorenew_months = p->engine_renew_months;
+		_patches.autorenew_money  = p->engine_renew_money;
+		InvalidateWindow(WC_GAME_OPTIONS, 0);
+	}
+}
+
 
 uint16 GetDrawStringPlayerColor(PlayerID player)
 {
@@ -820,9 +843,8 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* This command is only executed in a multiplayer game */
 		if (!_networking) return CMD_ERROR;
 
-		/* ClientID would be valid up to MAX_CLIENT_INFO, but as it has to be a
-		 * new player, its valid range is restricted to that of players */
-		if (!(flags & DC_EXEC) || !IsValidPlayer((PlayerID)cid)) return 0;
+		/* Has the network client a correct ClientID? */
+		if (!(flags & DC_EXEC) || cid >= MAX_CLIENT_INFO) return 0;
 
 		/* Delete multiplayer progress bar */
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
@@ -839,7 +861,8 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			} else
 #endif /* ENABLE_NETWORK */
 			{
-				_local_player = _network_playas = PLAYER_SPECTATOR;
+				_network_playas = PLAYER_SPECTATOR;
+				SetLocalPlayer(PLAYER_SPECTATOR);
 			}
 			break;
 		}
@@ -847,7 +870,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* This is the joining client who wants a new company */
 		if (_local_player != _network_playas) {
 			assert(_local_player == PLAYER_SPECTATOR && _network_playas == p->index);
-			_local_player = p->index;
+			SetLocalPlayer(p->index);
 			MarkWholeScreenDirty();
 		}
 

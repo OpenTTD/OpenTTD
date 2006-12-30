@@ -133,7 +133,7 @@ static void *_GenerateWorld(void *arg)
 	}
 
 	ResetObjectToPlace();
-	_local_player = _gw.lp;
+	SetLocalPlayer(_gw.lp);
 
 	SetGeneratingWorldProgress(GWP_GAME_START, 1);
 	/* Call any callback */
@@ -249,7 +249,7 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 	_gw.threaded      = true;
 
 	/* This disables some commands and stuff */
-	_local_player   = PLAYER_SPECTATOR;
+	SetLocalPlayer(PLAYER_SPECTATOR);
 	/* Make sure everything is done via OWNER_NONE */
 	_current_player = OWNER_NONE;
 
