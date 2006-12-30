@@ -233,4 +233,64 @@ static inline void SetIndustryAnimationLoop(TileIndex tile, byte count)
 	_m[tile].m4 = count;
 }
 
+/**
+ * Get the animation state
+ * @param tile the tile to get the animation state of
+ * @pre IsTileType(tile, MP_INDUSTRY)
+ */
+static inline byte GetIndustryAnimationState(TileIndex tile)
+{
+	assert(IsTileType(tile, MP_INDUSTRY));
+	switch (GetIndustryGfx(tile)) {
+		case GFX_POWERPLANT_SPARKS:
+			return GB(_m[tile].m1, 2, 5);
+			break;
+
+		case GFX_OILWELL_ANIMATED_1:
+		case GFX_OILWELL_ANIMATED_2:
+		case GFX_OILWELL_ANIMATED_3:
+			return GB(_m[tile].m1, 0, 2);
+
+		case GFX_COAL_MINE_TOWER_ANIMATED:
+		case GFX_COPPER_MINE_TOWER_ANIMATED:
+		case GFX_GOLD_MINE_TOWER_ANIMATED:
+			return _m[tile].m1;
+
+		default:
+			return _m[tile].m3;
+	}
+}
+
+/**
+ * Set the animation state
+ * @param tile the tile to set the animation state of
+ * @param count the new animation state
+ * @pre IsTileType(tile, MP_INDUSTRY)
+ */
+static inline void SetIndustryAnimationState(TileIndex tile, byte state)
+{
+	assert(IsTileType(tile, MP_INDUSTRY));
+	switch (GetIndustryGfx(tile)) {
+		case GFX_POWERPLANT_SPARKS:
+			SB(_m[tile].m1, 2, 5, state);
+			break;
+
+		case GFX_OILWELL_ANIMATED_1:
+		case GFX_OILWELL_ANIMATED_2:
+		case GFX_OILWELL_ANIMATED_3:
+			SB(_m[tile].m1, 0, 2, state);
+			break;
+
+		case GFX_COAL_MINE_TOWER_ANIMATED:
+		case GFX_COPPER_MINE_TOWER_ANIMATED:
+		case GFX_GOLD_MINE_TOWER_ANIMATED:
+			_m[tile].m1 = state;
+			break;
+
+		default:
+			_m[tile].m3 = state;
+			break;
+	}
+}
+
 #endif /* INDUSTRY_MAP_H */

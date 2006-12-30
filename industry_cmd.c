@@ -123,7 +123,7 @@ static void IndustryDrawSugarMine(const TileInfo *ti)
 
 	if (!IsIndustryCompleted(ti->tile)) return;
 
-	d = &_draw_industry_spec1[_m[ti->tile].m3];
+	d = &_draw_industry_spec1[GetIndustryAnimationState(ti->tile)];
 
 	AddChildSpriteScreen(SPR_IT_SUGAR_MINE_SIEVE + d->image_1, d->x, 0);
 
@@ -142,7 +142,7 @@ static void IndustryDrawToffeeQuarry(const TileInfo *ti)
 	int x = 0;
 
 	if (IsIndustryCompleted(ti->tile)) {
-		x = _industry_anim_offs[_m[ti->tile].m3];
+		x = _industry_anim_offs[GetIndustryAnimationState(ti->tile)];
 		if ( (byte)x == 0xFF)
 			x = 0;
 	}
@@ -154,7 +154,7 @@ static void IndustryDrawToffeeQuarry(const TileInfo *ti)
 static void IndustryDrawBubbleGenerator( const TileInfo *ti)
 {
 	if (IsIndustryCompleted(ti->tile)) {
-		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_BUBBLE, 5, _industry_anim_offs_2[_m[ti->tile].m3]);
+		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_BUBBLE, 5, _industry_anim_offs_2[GetIndustryAnimationState(ti->tile)]);
 	} else {
 		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_SPRING, 3, 67);
 	}
@@ -164,7 +164,7 @@ static void IndustryDrawToyFactory(const TileInfo *ti)
 {
 	const DrawIndustrySpec4Struct *d;
 
-	d = &_industry_anim_offs_3[_m[ti->tile].m3];
+	d = &_industry_anim_offs_3[GetIndustryAnimationState(ti->tile)];
 
 	if (d->image_1 != 0xFF) {
 		AddChildSpriteScreen(SPR_IT_TOY_FACTORY_CLAY, 50 - d->image_1 * 2, 96 + d->image_1);
@@ -181,7 +181,7 @@ static void IndustryDrawToyFactory(const TileInfo *ti)
 static void IndustryDrawCoalPlantSparks(const TileInfo *ti)
 {
 	if (IsIndustryCompleted(ti->tile)) {
-		uint image = GB(_m[ti->tile].m1, 2, 5);
+		uint image = GetIndustryAnimationState(ti->tile);
 
 		if (image != 0 && image < 7) {
 			AddChildSpriteScreen(image + SPR_IT_POWER_PLANT_TRANSFORMERS,
@@ -362,7 +362,7 @@ static void AnimateTile_Industry(TileIndex tile)
 	switch (GetIndustryGfx(tile)) {
 	case GFX_SUGAR_MINE_SIEVE:
 		if ((_tick_counter & 1) == 0) {
-			m = _m[tile].m3 + 1;
+			m = GetIndustryAnimationState(tile) + 1;
 
 			switch (m & 7) {
 			case 2: SndPlayTileFx(SND_2D_RIP_2, tile); break;
@@ -373,7 +373,7 @@ static void AnimateTile_Industry(TileIndex tile)
 				m = 0;
 				DeleteAnimatedTile(tile);
 			}
-			_m[tile].m3 = m;
+			SetIndustryAnimationState(tile, m);
 
 			MarkTileDirtyByTile(tile);
 		}
@@ -381,7 +381,7 @@ static void AnimateTile_Industry(TileIndex tile)
 
 	case GFX_TOFFEE_QUARY:
 		if ((_tick_counter & 3) == 0) {
-			m = _m[tile].m3;
+			m = GetIndustryAnimationState(tile);
 
 			if (_industry_anim_offs[m] == 0xFF) {
 				SndPlayTileFx(SND_30_CARTOON_SOUND, tile);
@@ -391,21 +391,21 @@ static void AnimateTile_Industry(TileIndex tile)
 				m = 0;
 				DeleteAnimatedTile(tile);
 			}
-			_m[tile].m3 = m;
+			SetIndustryAnimationState(tile, m);
 
 			MarkTileDirtyByTile(tile);
 		}
 		break;
 
 	case GFX_BUBBLE_CATCHER:
-		if ((_tick_counter&1) == 0) {
-			m = _m[tile].m3;
+		if ((_tick_counter & 1) == 0) {
+			m = GetIndustryAnimationState(tile);
 
 			if (++m >= 40) {
 				m = 0;
 				DeleteAnimatedTile(tile);
 			}
-			_m[tile].m3 = m;
+			SetIndustryAnimationState(tile, m);
 
 			MarkTileDirtyByTile(tile);
 		}
@@ -414,12 +414,12 @@ static void AnimateTile_Industry(TileIndex tile)
 	// Sparks on a coal plant
 	case GFX_POWERPLANT_SPARKS:
 		if ((_tick_counter & 3) == 0) {
-			m = _m[tile].m1;
-			if (GB(m, 2, 5) == 6) {
-				SB(_m[tile].m1, 2, 5, 0);
+			m = GetIndustryAnimationState(tile);
+			if (m == 6) {
+				SetIndustryAnimationState(tile, 0);
 				DeleteAnimatedTile(tile);
 			} else {
-				_m[tile].m1 = m + (1<<2);
+				SetIndustryAnimationState(tile, m + 1);
 				MarkTileDirtyByTile(tile);
 			}
 		}
@@ -427,7 +427,7 @@ static void AnimateTile_Industry(TileIndex tile)
 
 	case GFX_TOY_FACTORY:
 		if ((_tick_counter & 1) == 0) {
-			m = _m[tile].m3 + 1;
+			m = GetIndustryAnimationState(tile) + 1;
 
 			if (m == 1) {
 				SndPlayTileFx(SND_2C_MACHINERY, tile);
@@ -446,7 +446,7 @@ static void AnimateTile_Industry(TileIndex tile)
 				}
 				SetIndustryAnimationLoop(tile, n);
 			}
-			_m[tile].m3 = m;
+			SetIndustryAnimationState(tile, m);
 			MarkTileDirtyByTile(tile);
 		}
 		break;
@@ -471,13 +471,13 @@ static void AnimateTile_Industry(TileIndex tile)
 			bool b = CHANCE16(1,7);
 			IndustryGfx gfx = GetIndustryGfx(tile);
 
-			m = GB(_m[tile].m1, 0, 2) + 1;
+			m = GetIndustryAnimationState(tile) + 1;
 			if (m == 4 && (m = 0, ++gfx) == GFX_OILWELL_ANIMATED_3 + 1 && (gfx = GFX_OILWELL_ANIMATED_1, b)) {
-				_m[tile].m1 = 0x83;
 				SetIndustryGfx(tile, GFX_OILWELL_NOT_ANIMATED);
+				SetIndustryConstructionStage(tile, 3);
 				DeleteAnimatedTile(tile);
 			} else {
-				SB(_m[tile].m1, 0, 2, m);
+				SetIndustryAnimationState(tile, m);
 				SetIndustryGfx(tile, gfx);
 				MarkTileDirtyByTile(tile);
 			}
@@ -494,8 +494,9 @@ static void AnimateTile_Industry(TileIndex tile)
 
 			if (state < 0x1A0) {
 				if (state < 0x20 || state >= 0x180) {
-					if (!(_m[tile].m1 & 0x40)) {
-						_m[tile].m1 |= 0x40;
+					m = GetIndustryAnimationState(tile);
+					if (!(m & 0x40)) {
+						SetIndustryAnimationState(tile, m |= 0x40);
 						SndPlayTileFx(SND_0B_MINING_MACHINERY, tile);
 					}
 					if (state & 7)
@@ -504,9 +505,9 @@ static void AnimateTile_Industry(TileIndex tile)
 					if (state & 3)
 						return;
 				}
-				m = (_m[tile].m1 + 1) | 0x40;
+				m = (GetIndustryAnimationState(tile) + 1) | 0x40;
 				if (m > 0xC2) m = 0xC0;
-				_m[tile].m1 = m;
+				SetIndustryAnimationState(tile, m);
 				MarkTileDirtyByTile(tile);
 			} else if (state >= 0x200 && state < 0x3A0) {
 				int i;
@@ -514,9 +515,9 @@ static void AnimateTile_Industry(TileIndex tile)
 				if (state & i)
 					return;
 
-				m = (_m[tile].m1 & 0xBF) - 1;
+				m = (GetIndustryAnimationState(tile) & 0xBF) - 1;
 				if (m < 0x80) m = 0x82;
-				_m[tile].m1 = m;
+				SetIndustryAnimationState(tile, m);
 				MarkTileDirtyByTile(tile);
 			}
 		} break;
@@ -565,7 +566,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	case GFX_TOY_FACTORY:
 	case GFX_BUBBLE_CATCHER:
 	case GFX_TOFFEE_QUARY:
-		_m[tile].m3 = 0;
+		SetIndustryAnimationState(tile, 0);
 		SetIndustryAnimationLoop(tile, 0);
 		break;
 
@@ -606,6 +607,7 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 static void TileLoop_Industry(TileIndex tile)
 {
 	IndustryGfx newgfx;
+	IndustryGfx gfx;
 
 	if (!IsIndustryCompleted(tile)) {
 		MakeIndustryTileBigger(tile);
@@ -624,10 +626,9 @@ static void TileLoop_Industry(TileIndex tile)
 		return;
 	}
 
-#define SET_AND_ANIMATE(tile, a, b)   { SetIndustryGfx(tile, a); _m[tile].m1 = b; AddAnimatedTile(tile); }
-#define SET_AND_UNANIMATE(tile, a, b) { SetIndustryGfx(tile, a); _m[tile].m1 = b; DeleteAnimatedTile(tile); }
+	gfx = GetIndustryGfx(tile);
 
-	switch (GetIndustryGfx(tile)) {
+	switch (gfx) {
 	case GFX_OILRIG_1: // coast line at oilrigs
 	case GFX_OILRIG_2:
 	case GFX_OILRIG_3:
@@ -637,38 +638,42 @@ static void TileLoop_Industry(TileIndex tile)
 		break;
 
 	case GFX_COAL_MINE_TOWER_NOT_ANIMATED:
-		if (!(_tick_counter & 0x400) && CHANCE16(1,2))
-			SET_AND_ANIMATE(tile, GFX_COAL_MINE_TOWER_ANIMATED, 0x80);
-		break;
-
 	case GFX_COPPER_MINE_TOWER_NOT_ANIMATED:
-		if (!(_tick_counter & 0x400) && CHANCE16(1,2))
-			SET_AND_ANIMATE(tile, GFX_COPPER_MINE_TOWER_ANIMATED, 0x80);
-		break;
-
 	case GFX_GOLD_MINE_TOWER_NOT_ANIMATED:
-		if (!(_tick_counter & 0x400) && CHANCE16(1,2))
-			SET_AND_ANIMATE(tile, GFX_GOLD_MINE_TOWER_ANIMATED, 0x80);
+		if (!(_tick_counter & 0x400) && CHANCE16(1, 2)) {
+			switch (gfx) {
+				case GFX_COAL_MINE_TOWER_NOT_ANIMATED:   gfx = GFX_COAL_MINE_TOWER_ANIMATED;   break;
+				case GFX_COPPER_MINE_TOWER_NOT_ANIMATED: gfx = GFX_COPPER_MINE_TOWER_ANIMATED; break;
+				case GFX_GOLD_MINE_TOWER_NOT_ANIMATED:   gfx = GFX_GOLD_MINE_TOWER_ANIMATED;   break;
+			}
+			SetIndustryGfx(tile, gfx);
+			SetIndustryAnimationState(tile, 0x80);
+			AddAnimatedTile(tile);
+		}
 		break;
 
 	case GFX_OILWELL_NOT_ANIMATED:
-		if (CHANCE16(1,6))
-			SET_AND_ANIMATE(tile, GFX_OILWELL_ANIMATED_1, 0x80);
+		if (CHANCE16(1, 6)) {
+			SetIndustryGfx(tile, GFX_OILWELL_ANIMATED_1);
+			SetIndustryAnimationState(tile, 0);
+			AddAnimatedTile(tile);
+		}
 		break;
 
 	case GFX_COAL_MINE_TOWER_ANIMATED:
-		if (!(_tick_counter & 0x400))
-			SET_AND_UNANIMATE(tile, GFX_COAL_MINE_TOWER_NOT_ANIMATED, 0x83);
-		break;
-
 	case GFX_COPPER_MINE_TOWER_ANIMATED:
-		if (!(_tick_counter & 0x400))
-			SET_AND_UNANIMATE(tile, GFX_COPPER_MINE_TOWER_NOT_ANIMATED, 0x83);
-		break;
-
 	case GFX_GOLD_MINE_TOWER_ANIMATED:
-		if (!(_tick_counter & 0x400))
-			SET_AND_UNANIMATE(tile, GFX_GOLD_MINE_TOWER_NOT_ANIMATED, 0x83);
+		if (!(_tick_counter & 0x400)) {
+			switch (gfx) {
+				case GFX_COAL_MINE_TOWER_ANIMATED:   gfx = GFX_COAL_MINE_TOWER_NOT_ANIMATED;   break;
+				case GFX_COPPER_MINE_TOWER_ANIMATED: gfx = GFX_COPPER_MINE_TOWER_NOT_ANIMATED; break;
+				case GFX_GOLD_MINE_TOWER_ANIMATED:   gfx = GFX_GOLD_MINE_TOWER_NOT_ANIMATED;   break;
+			}
+			SetIndustryGfx(tile, gfx);
+			SetIndustryCompleted(tile, true);
+			SetIndustryConstructionStage(tile, 3);
+			DeleteAnimatedTile(tile);
+		}
 		break;
 
 	case GFX_POWERPLANT_SPARKS:
@@ -1408,7 +1413,10 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 			DoCommand(cur_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
 			MakeIndustry(cur_tile, i->index, it->gfx);
-			if (_generating_world) _m[cur_tile].m1 = 0x1E; /* maturity */
+			if (_generating_world) {
+				SetIndustryConstructionCounter(cur_tile, 3);
+				SetIndustryConstructionStage(cur_tile, 2);
+			}
 		}
 	} while ((++it)->ti.x != -0x80);
 
