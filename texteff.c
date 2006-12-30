@@ -16,6 +16,13 @@
 #include <stdarg.h> /* va_list */
 #include "date.h"
 
+enum {
+	MAX_TEXTMESSAGE_LENGTH = 150,
+	MAX_TEXT_MESSAGES      =  30,
+	MAX_CHAT_MESSAGES      =  10,
+	MAX_ANIMATED_TILES     = 256,
+};
+
 typedef struct TextEffect {
 	StringID string_id;
 	int32 x;
@@ -27,7 +34,6 @@ typedef struct TextEffect {
 	uint32 params_2;
 } TextEffect;
 
-#define MAX_TEXTMESSAGE_LENGTH 150
 
 typedef struct TextMessage {
 	char message[MAX_TEXTMESSAGE_LENGTH];
@@ -35,10 +41,9 @@ typedef struct TextMessage {
 	Date end_date;
 } TextMessage;
 
-#define MAX_CHAT_MESSAGES 10
-static TextEffect _text_effect_list[30];
+static TextEffect _text_effect_list[MAX_TEXT_MESSAGES];
 static TextMessage _textmsg_list[MAX_CHAT_MESSAGES];
-TileIndex _animated_tile_list[256];
+TileIndex _animated_tile_list[MAX_ANIMATED_TILES];
 
 static bool _textmessage_dirty = false;
 static bool _textmessage_visible = false;
@@ -113,19 +118,20 @@ void InitTextMessage(void)
 	}
 }
 
-// Hide the textbox
+/* Hide the textbox */
 void UndrawTextMessage(void)
 {
 	if (_textmessage_visible) {
-		// Sometimes we also need to hide the cursor
-		//   This is because both textmessage and the cursor take a shot of the
-		//   screen before drawing.
-		//   Now the textmessage takes his shot and paints his data before the cursor
-		//   does, so in the shot of the cursor is the screen-data of the textmessage
-		//   included when the cursor hangs somewhere over the textmessage. To
-		//   avoid wrong repaints, we undraw the cursor in that case, and everything
-		//   looks nicely ;)
-		// (and now hope this story above makes sense to you ;))
+		/* Sometimes we also need to hide the cursor
+		 *   This is because both textmessage and the cursor take a shot of the
+		 *   screen before drawing.
+		 *   Now the textmessage takes his shot and paints his data before the cursor
+		 *   does, so in the shot of the cursor is the screen-data of the textmessage
+		 *   included when the cursor hangs somewhere over the textmessage. To
+		 *   avoid wrong repaints, we undraw the cursor in that case, and everything
+		 *   looks nicely ;)
+		 * (and now hope this story above makes sense to you ;))
+		 */
 
 		if (_cursor.visible) {
 			if (_cursor.draw_pos.x + _cursor.draw_size.x >= _textmsg_box.x &&
@@ -137,20 +143,20 @@ void UndrawTextMessage(void)
 		}
 
 		_textmessage_visible = false;
-		// Put our 'shot' back to the screen
+		/* Put our 'shot' back to the screen */
 		memcpy_pitch(
 			_screen.dst_ptr + _textmsg_box.x + (_screen.height - _textmsg_box.y - _textmsg_box.height) * _screen.pitch,
 			_textmessage_backup,
 			_textmsg_box.width, _textmsg_box.height, _textmsg_box.width, _screen.pitch);
 
-		// And make sure it is updated next time
+		/* And make sure it is updated next time */
 		_video_driver->make_dirty(_textmsg_box.x, _screen.height - _textmsg_box.y - _textmsg_box.height, _textmsg_box.width, _textmsg_box.height);
 
 		_textmessage_dirty = true;
 	}
 }
 
-// Check if a message is expired every day
+/* Check if a message is expired every day */
 void TextMessageDailyLoop(void)
 {
 	uint i;
@@ -174,14 +180,14 @@ void TextMessageDailyLoop(void)
 	}
 }
 
-// Draw the textmessage-box
+/* Draw the textmessage-box */
 void DrawTextMessage(void)
 {
 	uint y, count;
 
 	if (!_textmessage_dirty) return;
 
-	// First undraw if needed
+	/* First undraw if needed */
 	UndrawTextMessage();
 
 	if (_iconsole_mode == ICONSOLE_FULL) return;
@@ -190,7 +196,7 @@ void DrawTextMessage(void)
 	count = GetTextMessageCount();
 	if (count == 0) return;
 
-	// Make a copy of the screen as it is before painting (for undraw)
+	/* Make a copy of the screen as it is before painting (for undraw) */
 	memcpy_pitch(
 		_textmessage_backup,
 		_screen.dst_ptr + _textmsg_box.x + (_screen.height - _textmsg_box.y - _textmsg_box.height) * _screen.pitch,
@@ -212,7 +218,7 @@ void DrawTextMessage(void)
 		DoDrawString(_textmsg_list[count].message, _textmsg_box.x + 3, _screen.height - _textmsg_box.y - y + 1, _textmsg_list[count].color);
  	}
 
-	// Make sure the data is updated next flush
+	/* Make sure the data is updated next flush */
 	_video_driver->make_dirty(_textmsg_box.x, _screen.height - _textmsg_box.y - _textmsg_box.height, _textmsg_box.width, _textmsg_box.height);
 
 	_textmessage_visible = true;
@@ -319,14 +325,14 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 
 void DeleteAnimatedTile(TileIndex tile)
 {
-	TileIndex* ti;
+	TileIndex *ti;
 
 	for (ti = _animated_tile_list; ti != endof(_animated_tile_list); ti++) {
 		if (tile == *ti) {
 			/* remove the hole */
-			memmove(ti, ti + 1, (lastof(_animated_tile_list) - ti) * sizeof(_animated_tile_list[0]));
+			memmove(ti, ti + 1, (lastof(_animated_tile_list) - ti) * sizeof(*ti));
 			/* and clear last item */
-			endof(_animated_tile_list)[-1] = 0;
+			*lastof(_animated_tile_list) = 0;
 			MarkTileDirtyByTile(tile);
 			return;
 		}
@@ -335,7 +341,7 @@ void DeleteAnimatedTile(TileIndex tile)
 
 bool AddAnimatedTile(TileIndex tile)
 {
-	TileIndex* ti;
+	TileIndex *ti;
 
 	for (ti = _animated_tile_list; ti != endof(_animated_tile_list); ti++) {
 		if (tile == *ti || *ti == 0) {
@@ -364,7 +370,7 @@ void InitializeAnimatedTiles(void)
 
 static void SaveLoad_ANIT(void)
 {
-	// In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;)
+	/* In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;) */
 	if (CheckSavegameVersion(6)) {
 		SlArray(_animated_tile_list, lengthof(_animated_tile_list), SLE_FILE_U16 | SLE_VAR_U32);
 	} else {
