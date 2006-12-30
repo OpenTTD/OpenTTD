@@ -101,6 +101,8 @@
 # CYGWIN: build in Cygwin environment
 # MINGW: build with MingW compiler, link with MingW libraries
 #
+# CUSTOM_FONTCONFIG: use a custom name/path to the libfontconfig library. Useful for static linking
+#
 # VERBOSE: show full compiler invocations instead of brief progress messages
 #
 # Special for crosscompiling there are some commands available:
@@ -523,6 +525,13 @@ ifdef WITH_FONTCONFIG
 CDEFS += -DWITH_FONTCONFIG
 CCFLAGS_FONTCONFIG := $(shell $(FONTCONFIG_CONFIG) --cflags)
 LDFLAGS_FONTCONFIG := $(shell $(FONTCONFIG_CONFIG) --libs)
+
+ifdef CUSTOM_FONTCONFIG
+# To allow usage of non-default libs, such as absolute path to static libs
+# not stored in Makefile.config
+LDFLAGS_FONTCONFIG := $(CUSTOM_FONTCONFIG)
+endif
+
 CFLAGS += $(CCFLAGS_FONTCONFIG)
 LIBS += $(LDFLAGS_FONTCONFIG)
 endif
@@ -1031,8 +1040,12 @@ endif
 	install -m 644 lang/*.lng $(DATA_DIR_INSTALL)/lang
 	install -m 644 data/*.grf $(DATA_DIR_INSTALL)/data
 	install -m 644 data/opntitle.dat $(DATA_DIR_INSTALL)/data
+	# Generic menu icon
 	install -m 644 media/openttd.64.png $(ICON_DIR_INSTALL)
+	# Debian menu icon
 	install -m 644 media/openttd.32.xpm $(ICON_DIR_INSTALL)
+	# Window icon
+	install -m 644 media/openttd.32.bmp $(ICON_DIR_INSTALL)
 else	#MorphOS
 install:
 	$(error make install is not supported on MorphOS)
