@@ -612,14 +612,15 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 	} else {
 		int i;
 
-		// Reached a tunnel? Then continue at the other side of it.
-		if (IsTunnelTile(tile) && GetTunnelTransportType(tile) == TRANSPORT_ROAD) {
-			*tile_ptr = GetOtherTunnelEnd(tile);
+		// Reached a tunnel/bridge? Then continue at the other side of it.
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+			if (IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_ROAD) {
+				*tile_ptr = GetOtherTunnelEnd(tile);
+			} else if (IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_ROAD) {
+				*tile_ptr = GetOtherBridgeEnd(tile);
+			}
 			return;
 		}
-
-		// For any other kind of tunnel/bridge, bail out.
-		if (IsTileType(tile, MP_TUNNELBRIDGE)) return;
 
 		// Possibly extend the road in a direction.
 		// Randomize a direction and if it has a road, bail out.
