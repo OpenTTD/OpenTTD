@@ -154,6 +154,7 @@ STR_00B0_MAP                                                    :{WHITE}Harita -
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Seçenekler
 STR_00B2_MESSAGE                                                :{YELLOW}Mesaj
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaj: {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Uyarı!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Yapılamaz....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Burası temizlenemez....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Orjinal kopyalama hakkı {COPYRIGHT} 1995 Chris Sawyer, Her Hakkı Saklıdır
@@ -393,6 +394,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapasite
 STR_NO_WAITING_CARGO                                            :{BLACK}Hiç kargo yok
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm türleri seç
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Bu araç türü için mümkün olan lokomotif tasarimlari
 STR_MANAGE_LIST                                                 :{BLACK}Listeyi yönet
 STR_MANAGE_LIST_TIP                                             :{BLACK}Listedeki tüm araçlara komut ver
 STR_REPLACE_VEHICLES                                            :Araçları Değiştir
@@ -1019,6 +1021,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Tren ve
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Yan yana yapılan tren istasyonlarını birleştir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}'tam doldur' etkinse istasyonu tam dolunca terket: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Geliştirilmiş yükleme algoritması kullan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Araçlar yavaş yavaş dolsun: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Enflasyon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Sadece istek varsa kargo kabul edilsin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Çok uzun köprülere izin ver: {ORANGE}{STRING}
@@ -1077,9 +1080,11 @@ STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikop
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubuğunu diğer araç çubuklarına bağla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Fareyle kaydırma hareketini ters çevir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}İnşa araçları kullanılırken ölçüm ipucu göster: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Şirketin renklerini göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Hiçbiri
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Şirketi al
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tüm şirketler
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER> tuşu takım içi sohbette kullanılsın: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
@@ -1304,6 +1309,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Şifre 
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SUNUCU KAPALI
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SUNUCU DOLU
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}SÜRÜM UYUŞMAZLIĞI
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF UYUŞMAZLIĞI
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Oyuna gir
 
@@ -2050,7 +2056,7 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Oyuncu {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Yeni Surat
-STR_7005_COLOR_SCHEME                                           :{BLACK}Renk
+STR_7005_COLOR_SCHEME                                           :{BLACK}Renkler
 STR_7006_COLOR_SCHEME                                           :{GOLD}Renk:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Yeni Renk
 STR_7008_COMPANY_NAME                                           :{BLACK}Şirket ismi
@@ -2178,7 +2184,7 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}(%{COMMA
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY}, {COMPANY} tarafından alındı!
 STR_7080_PROTECTED                                              :{WHITE}Bu şirket hisselerini satacak kadar eski değil...
 
-STR_LIVERY_DEFAULT                                              :Standart Araç
+STR_LIVERY_DEFAULT                                              :Şirket Rengi
 STR_LIVERY_STEAM                                                :Buharlı Lokomotif
 STR_LIVERY_DIESEL                                               :Dizel Lokomotif
 STR_LIVERY_ELECTRIC                                             :Elektrikli Lokomotif
@@ -2205,6 +2211,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Gemi ren
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Uçakların renk şemalarını göster
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Seçili düzen için birincil rengi seç
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Seçili düzen için ikincil rengi seç
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Rengini değiştirmek için bir araç türü seçin. CTRL+tıklama birden fazla araç seçebilir. Rengi kullanmak için kutucukları içaretleyin
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Buhar)
@@ -2535,6 +2542,7 @@ STR_8826_GO_TO                                                  :{BLACK}Git
 STR_8827_FULL_LOAD                                              :{BLACK}Doldur
 STR_8828_UNLOAD                                                 :{BLACK}Boşalt
 STR_REFIT                                                       :{BLACK}Modifiye
+STR_REFIT_ORDER                                                 :(Moifiye ile > {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Komutlar)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Komutların Sonu - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2881,6 +2889,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Yüklenm
 STR_NEWGRF_FILENAME                                             :{BLACK}Dosya adı: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz; bu OpenTTD'yi çökertebilir.{}Emin misiniz?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Ekle
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Listeye NewGRF dosyası ekle
@@ -2935,7 +2944,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Aynı talimatlara sahip bütün araçları göster
 
 ### depot strings
-
 STR_SELL                                                        :{BLACK}Sat
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Garajdaki tüm araçları satmak üzeresiniz.
 STR_ARE_YOU_SURE                                                :{BLACK}Emin misiniz?
@@ -3031,6 +3039,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Ağırl�
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Fiyat: {GOLD}{CURRENCY}{BLACK} Hız: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite: {GOLD}{COMMA} yolcu, {COMMA} çanta posta
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Güç Veren Vagonlar: {GOLD}+{POWER}{BLACK} Ağırlık: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modifiye edilebilir: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tüm kargo türleri
 STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD} hariç hepsi
 

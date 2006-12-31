@@ -218,6 +218,7 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Nastavenia hry
 STR_00B2_MESSAGE                                                :{YELLOW}Sprava
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sprava od {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Upozornenie!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nie je mozne vykonat ...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast nie je mozne vycistit ...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Povodny copyright: {COPYRIGHT} 1995 Chris Sawyer, vsetky prava vyhradene
@@ -1372,6 +1373,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Heslo:
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER JE OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER JE PLNY
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}ROZNE VERZIE
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF Chyba
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Pripojit sa
 
@@ -2952,6 +2954,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nie sú 
 STR_NEWGRF_FILENAME                                             :{BLACK}Názov súboru: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Chystáte sa vykonat zmeny v spustenej hre, co može sposobit pád hry.{}Naozaj ich chcete vykonat?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Pridat
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Pridat NewGRF súbor do zoznamu

@@ -154,6 +154,7 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opcions del Joc
 STR_00B2_MESSAGE                                                :{YELLOW}Missatge
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Missatge de {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Alerta!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}No es pot fer això....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}No es pot netejar l'àrea....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Tots els drets reservats
@@ -166,7 +167,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Sortir
 STR_00C8_YES                                                    :{BLACK}Si
 STR_00C9_NO                                                     :{BLACK}No
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur de voler abandonar aquest joc i tornar a {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur que vols abandonar aquest joc i tornar a {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -291,7 +292,7 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Càrrega
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Joc Nou
-STR_0141_LOAD_GAME                                              :{BLACK}Carrega el Joc
+STR_0141_LOAD_GAME                                              :{BLACK}Carrega un Joc
 STR_SINGLE_PLAYER                                               :{BLACK}Jugador individual
 STR_MULTIPLAYER                                                 :{BLACK}Multijugador
 
@@ -358,7 +359,7 @@ STR_015C_SAVE_GAME                                              :Desa el joc
 STR_015D_LOAD_GAME                                              :Carrega el joc
 STR_015E_QUIT_GAME                                              :Abandona el joc
 STR_015F_QUIT                                                   :Sortir
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur de voler abandonar aquest joc?
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur que vols abandonar aquest joc?
 STR_0161_QUIT_GAME                                              :{WHITE}Abandona el Joc
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecciona ordre de classificació (descendent/ascendent)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecciona criteri de classificació
@@ -422,7 +423,7 @@ STR_016E                                                        :{TINYFONT}{STRI
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Para el joc
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Desa el joc, deixa el joc, sortir
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Desa el joc, abandona el joc, sortir
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra la llista d'estacions de l'empresa
 STR_0174_DISPLAY_MAP                                            :{BLACK}Mostra el mapa
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Mostra el mapa, directori de poblacions
@@ -623,7 +624,7 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Restable
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Restablir Paisatge
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Utilitza un mapa d'alçades
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Utilitza un mapa d'alçades
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Estàs segur de voler restablir el paisatge?
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Estàs segur que vols restablir el paisatge?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generació de Paisatges
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generació de Poblacions
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generació d'indústries
@@ -737,7 +738,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Desa l'E
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Juga un Escenari
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Juga un mapa d'alçades
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Comença un nou joc, utilitzant un mapa d'alçades com a terreny
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur de voler deixar aquest escenari ?
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur que vols sortir d'aquest escenari ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sortir de l'Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...només es pot construir en poblacions de més de 1200 hab.
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Retarda la data d'inici 1 any
@@ -1096,7 +1097,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desacti
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Desactiva vaixells per l'ordinador: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Activa nova IA (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permet AI en multijugador (experimental): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permet IAs en multijugador (experimental): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Interval de manteniment per defecte dels trens: {ORANGE}{STRING} dies/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interval de manteniment per defecte dels trens: {ORANGE}desactivat
@@ -1185,7 +1186,7 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construe
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...no hi ha poblacions en aquest escenari
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Estàs segur de voler crear un paisatge aleatori?
+STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Estàs segur que vols crear un paisatge aleatori?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Moltes poblacions aleatòries
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Omple el mapa amb poblacions situades aleatòriament
 STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Moltes indústries aleatòries
@@ -1795,7 +1796,7 @@ STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...No es
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Desa el Joc
-STR_4001_LOAD_GAME                                              :{WHITE}Carrega el Joc
+STR_4001_LOAD_GAME                                              :{WHITE}Carrega un Joc
 STR_4002_SAVE                                                   :{BLACK}Desa
 STR_4003_DELETE                                                 :{BLACK}Esborra
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
@@ -2889,6 +2890,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Ara no h
 STR_NEWGRF_FILENAME                                             :{BLACK}Nom d'arxiu: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}Id de GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Estàs a punt de fer canvis en un joc actiu; això pot fer que OpenTTD es pengi.{}Estàs completament segur que vols fer-los?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Afegeix
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Afegeix un arxiu NewGRF a la llista

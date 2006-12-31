@@ -155,6 +155,7 @@ STR_00B0_MAP                                                    :{WHITE}Карт
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Опції ігри
 STR_00B2_MESSAGE                                                :{YELLOW}Повідомлення
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Повідомлення від {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Обережно!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Неможливо це зробити...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Неможливо очистити цю ділянку...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Авторське право {COPYRIGHT} 1995 Кріс Сойєр, Всі права захищені
@@ -394,6 +395,9 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Місткіс�
 STR_NO_WAITING_CARGO                                            :{BLACK}Звідси поки-що нічого перевозити
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Вибрати весь транспорт
 STR_SELECT_ALL_TYPES                                            :{BLACK}Вибрати всі типи вантажів
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Перелік доступного транспорту
+STR_MANAGE_LIST                                                 :{BLACK}Редагувати список
+STR_MANAGE_LIST_TIP                                             :{BLACK}Дати завдання всьому транспорту зі списку
 STR_REPLACE_VEHICLES                                            :Оновлення
 STR_SEND_TRAIN_TO_DEPOT                                         :Відправити до депо
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Відправити до депо
@@ -1306,6 +1310,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Зах�
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}Сервер відключений
 STR_NETWORK_SERVER_FULL                                         :{SILVER}Сервер зайнятий
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}Версія не сумісна
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF ПОМИЛКА
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Приєднатися до гри
 
@@ -2886,6 +2891,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Відс
 STR_NEWGRF_FILENAME                                             :{BLACK}Ім'я файлу: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID графіки: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5сума: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Ви хочете зробити зміни у вже запущеній грі; це може привести до зависання OpenTTD.{}Ви впевнені що хочете зробити це?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Додати
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Додатифайли NewGRF до списку
@@ -2985,10 +2991,12 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Вибе
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів що вибрані ліворуч
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані праворуч на потяги що вибрані праворуч
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої Ви хочете оновити потяг
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Показує на який потяг буде замінено потяг, зображелий ліворуч
 STR_REPLACE_HELP                                                :{BLACK}Це дозволить Вам оновити одні види потягів іншими, коли потяг прибуде в депо
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Продаж вагонів!!!: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони зберігаючи довжину потягу(починаючи спереду), якщо оновлення робить поїзд довшим.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ЕКСПЕРИМЕНТАЛЬНО {}Переключення між вікнами заміни потягів та вагонів.{}Автозаміна потягів відбудеться лише в тому випадку, якщо співпаде тип вантажу що перевозиться. Ця перевірка проводиться для кожного вагону під час автозаміни.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}потяг неможна будувати
 
 STR_ENGINES                                                     :Потяги
@@ -3037,24 +3045,35 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Міст
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переобладнати на: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
+STR_PURCHASE_INFO_ALL_BUT                                       :Всі крім {GOLD}
 
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Генерувати
+STR_RANDOM                                                      :{BLACK}Випадково
 STR_RANDOM_HELP                                                 :{BLACK}Змінити початкове значення для генератора
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Створеня світу
 STR_RANDOM_SEED                                                 :{BLACK}Початкове значення:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Клік для вводу значення
 STR_LAND_GENERATOR                                              :{BLACK}Генерація ландшафту:
 STR_TREE_PLACER                                                 :{BLACK}Насадження дерев:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Поворот рельєфу
+STR_TERRAIN_TYPE                                                :{BLACK}Тип ландшафту:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Рівень моря:
+STR_SMOOTHNESS                                                  :{BLACK}Згладжений:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Лінія снігу:
 STR_DATE                                                        :{BLACK}Дата:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}К-ть міст:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}К-ть промисловостей:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Підвищити лінію снігу
+STR_SNOW_LINE_DOWN                                              :{BLACK}Понизити лінію снігу
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Змінити висоту лінії снігу
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Змінити рік початку гри
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Завелике значення
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Розміри дуже великі. Продовжити генерацію?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Ім'я рельєфа:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Розмір: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Генерація світу...
 STR_GENERATION_ABORT                                            :{BLACK}Перервати
@@ -3064,15 +3083,24 @@ STR_PROGRESS                                                    :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Створеня світу
 STR_TREE_GENERATION                                             :{BLACK}Насадження дерев
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Генерація нерухомості
+STR_CLEARING_TILES                                              :{BLACK}Розкидати каміня
 STR_SETTINGUP_GAME                                              :{BLACK}Налаштування гри
+STR_PREPARING_TILELOOP                                          :{BLACK}Виконуємо цикл
 STR_PREPARING_GAME                                              :{BLACK}Генерується гра
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Змінити рівень складності
 STR_SE_FLAT_WORLD                                               :{WHITE}Рівнина
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Генерувати рівнину
 STR_SE_RANDOM_LAND                                              :{WHITE}Випадково
 STR_SE_NEW_WORLD                                                :{BLACK}Створити новий сценарій
 STR_SE_CAPTION                                                  :{WHITE}Тип сценарію
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Підняти рівень рівної землі на 1
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Опустити рівень рівної землі на 1
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Змінити висоту рівня рівної землі
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Висота рівня моря
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Центрувати мінікарту сюди
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Малий
