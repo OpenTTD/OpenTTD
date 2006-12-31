@@ -21,6 +21,7 @@ STR_000C_ACCEPTS                                                :{BLACK}Võtab v
 STR_000D_ACCEPTS                                                :{BLACK}Võtab vastu: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Reisijad
+STR_000F_PASSENGERS.g                                           :Reisijate
 STR_0010_COAL                                                   :Kivisüsi
 STR_0010_COAL.g                                                 :Kivisöe
 STR_0011_MAIL                                                   :Post
@@ -75,64 +76,47 @@ STR_0025_TOYS                                                   :Mänguasjad
 STR_0025_TOYS.g                                                 :Mänguasjade
 STR_0025_TOYS.genitiiv                                          :Mänguasjade
 STR_0026_CANDY                                                  :Maiustused
+STR_0026_CANDY.g                                                :Maiustuste
 STR_0026_CANDY.genitiiv                                         :Maiustuste
 STR_0027_COLA                                                   :Koola
 STR_0027_COLA.g                                                 :Koola
-STR_0027_COLA.genitiiv                                          :Koola
 STR_0028_COTTON_CANDY                                           :Suhkruvatt
 STR_0028_COTTON_CANDY.g                                         :Suhkruvati
-STR_0028_COTTON_CANDY.genitiiv                                  :Suhkruvati
 STR_0029_BUBBLES                                                :Mullid
 STR_0029_BUBBLES.g                                              :Mullide
-STR_0029_BUBBLES.genitiiv                                       :Mullide
 STR_002A_TOFFEE                                                 :Iiris
 STR_002A_TOFFEE.g                                               :Iirise
-STR_002A_TOFFEE.genitiiv                                        :Iirise
 STR_002B_BATTERIES                                              :Patareid
 STR_002B_BATTERIES.g                                            :Patareide
-STR_002B_BATTERIES.genitiiv                                     :Patareide
 STR_002C_PLASTIC                                                :Plastmass
 STR_002C_PLASTIC.g                                              :Plastmassi
-STR_002C_PLASTIC.genitiiv                                       :Plastmassi
 STR_002D_FIZZY_DRINKS                                           :Kihisevad joogid
 STR_002D_FIZZY_DRINKS.g                                         :Kihisevate jookide
-STR_002D_FIZZY_DRINKS.genitiiv                                  :Kihisevate jookide
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Reisija
 STR_002F_PASSENGER.g                                            :Reisijate
-STR_002F_PASSENGER.genitiiv                                     :Reisijate
 STR_0030_COAL                                                   :Kivisüsi
 STR_0030_COAL.g                                                 :Kivisöe
-STR_0030_COAL.genitiiv                                          :Kivisöe
 STR_0031_MAIL                                                   :Post
 STR_0031_MAIL.g                                                 :Posti
 STR_0032_OIL                                                    :Nafta
 STR_0032_OIL.g                                                  :Nafta
-STR_0032_OIL.genitiiv                                           :Nafta
 STR_0033_LIVESTOCK                                              :Kariloom
 STR_0033_LIVESTOCK.g                                            :Kariloomade
-STR_0033_LIVESTOCK.genitiiv                                     :Kariloomade
 STR_0034_GOODS                                                  :Kaubad
 STR_0034_GOODS.g                                                :Kaupade
-STR_0034_GOODS.genitiiv                                         :Kaupade
 STR_0035_GRAIN                                                  :Teravili
 STR_0035_GRAIN.g                                                :Teravilja
-STR_0035_GRAIN.genitiiv                                         :Teravilja
 STR_0036_WOOD                                                   :Puit
 STR_0036_WOOD.g                                                 :Puidu
-STR_0036_WOOD.genitiiv                                          :Puidu
 STR_0037_IRON_ORE                                               :Rauamaak
 STR_0037_IRON_ORE.g                                             :Rauamaagi
-STR_0037_IRON_ORE.genitiiv                                      :Rauamaagi
 STR_0038_STEEL                                                  :Teras
 STR_0038_STEEL.g                                                :Terase
-STR_0038_STEEL.genitiiv                                         :Terase
 STR_0039_VALUABLES                                              :Väärisesemed
 STR_0039_VALUABLES.g                                            :Väärisesemete
-STR_0039_VALUABLES.genitiiv                                     :Väärisesemete
 STR_003A_COPPER_ORE                                             :Vasemaak
 STR_003A_COPPER_ORE.g                                           :Vasemaagi
-STR_003A_COPPER_ORE.genitiiv                                    :Vasemaagi
 STR_003B_MAIZE                                                  :Mais
 STR_003B_MAIZE.g                                                :Maisi
 STR_003C_FRUIT                                                  :Puuviljad
@@ -150,7 +134,7 @@ STR_0041_WATER.g                                                :Vee
 STR_0042_WHEAT                                                  :Nisu
 STR_0042_WHEAT.g                                                :Nisu
 STR_0043_RUBBER                                                 :Kumm
-STR_0043_RUBBER.genitiiv                                        :Kummi
+STR_0043_RUBBER.g                                               :kummi
 STR_0044_SUGAR                                                  :Suhkur
 STR_0044_SUGAR.g                                                :Suhkru
 STR_0045_TOY                                                    :Mänguasjad
@@ -246,9 +230,9 @@ STR_00B3_MESSAGE_FROM                                           :{YELLOW}{STRING
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Ettevaatust!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Seda ei saa teha....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Seda ala ei saa puhastada....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originaali autoriõigus {COPYRIGHT} 1995 Chris Sawyer, Kõik õigused kaitstud
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originaali autorikaitse {COPYRIGHT} 1995 Chris Sawyer, kõik õigused kaitstud
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versioon {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD tiim
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD meeskond
 STR_TRANSLATED_BY                                               :{BLACK}  Tõlgi(d) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
