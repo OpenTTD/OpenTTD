@@ -155,6 +155,7 @@ STR_00B0_MAP                                                    :{WHITE}Mapo - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Ludaj Opcioj
 STR_00B2_MESSAGE                                                :{YELLOW}Mesaĝo
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaĝo de {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Atentu!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ne eblas fari ĉi tion....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Ne eblas malplenigi la regionon....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Origina kopirajto {COPYRIGHT} 1995 Chris Sawyer, Ĉiuj rajtoj rezervitaj
@@ -327,12 +328,16 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} angla{P "" j} tuno{P "" j}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tuno{P "" j}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galjono{P "" j}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" j}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
@@ -1913,6 +1918,39 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...vi ja
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
 
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :Norda {STRING}
+STR_SV_STNAME_SOUTH                                             :Suda {STRING}
+STR_SV_STNAME_EAST                                              :Orienta {STRING}
+STR_SV_STNAME_WEST                                              :Okcidenta {STRING}
+STR_SV_STNAME_CENTRAL                                           :Centra {STRING}
+STR_SV_STNAME_TRANSFER                                          :Transiga {STRING}
+STR_SV_STNAME_HALT                                              :Halteja {STRING}
+STR_SV_STNAME_VALLEY                                            :Valo de {STRING}
+STR_SV_STNAME_HEIGHTS                                           :Alta {STRING}
+STR_SV_STNAME_WOODS                                             :{STRING} Arbaro
+STR_SV_STNAME_LAKESIDE                                          :Lago ĉe {STRING}
+STR_SV_STNAME_EXCHANGE                                          :Interŝanĝa {STRING}
+STR_SV_STNAME_AIRPORT                                           :Flughaveno de {STRING}
+STR_SV_STNAME_OILFIELD                                          :Olefonto de {STRING}
+STR_SV_STNAME_MINES                                             :Minejo de {STRING}
+STR_SV_STNAME_DOCKS                                             :Haveno de {STRING}
+STR_SV_STNAME_BUOY_1                                            :{STRING} Buo 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Buo 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Buo 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Buo 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Buo 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Buo 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Buo 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Buo 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Buo 9
+STR_SV_STNAME_ANNEXE                                            :Ekstera {STRING}
+STR_SV_STNAME_SIDINGS                                           :Flanka {STRING}
+STR_SV_STNAME_BRANCH                                            :Branĉa {STRING}
+STR_SV_STNAME_UPPER                                             :Supra {STRING}
+STR_SV_STNAME_LOWER                                             :Malsupra {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterejo
+STR_SV_STNAME_FOREST                                            :Arbaro de {STRING}
 
 ############ end of	savegame specific region!
 
@@ -1959,6 +1997,7 @@ STR_681C_SLOW                                                   :Malrapide
 STR_681D_MEDIUM                                                 :Meze
 STR_681E_FAST                                                   :Rapide
 STR_681F_VERY_FAST                                              :Tre Rapide
+STR_VERY_LOW                                                    :Tre Malalte
 STR_6820_LOW                                                    :Malalte
 STR_6821_MEDIUM                                                 :Meze
 STR_6822_HIGH                                                   :Alte
@@ -1990,6 +2029,16 @@ STR_683B_HOSTILE                                                :Gastige
 
 ##id 0x7000
 STR_7000                                                        :
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7002_PLAYER                                                 :(Ludanto {COMMA})
+STR_7004_NEW_FACE                                               :{BLACK}Novan Vizaĝon
+STR_7005_COLOR_SCHEME                                           :{BLACK}Kolorskemo
+STR_7006_COLOR_SCHEME                                           :{GOLD}Kolorskemo:
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Novan Kolorskemon
+STR_7008_COMPANY_NAME                                           :{BLACK}Kompania Nomo
+STR_7009_PRESIDENT_NAME                                         :{BLACK}Manaĝanta Nomo
+STR_700A_COMPANY_NAME                                           :Kompania Nomo
+STR_700B_PRESIDENT_S_NAME                                       :Nomo de la Manaĝanto
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Ne povas ŝanĝi kompaninomon...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Ne povas ŝanĝi manaĝantnomon...
 STR_700E_FINANCES                                               :{WHITE}Financoj de {COMPANY} {BLACK}{PLAYERNAME}
@@ -2033,7 +2082,20 @@ STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Ŝanĝu 
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Ŝanĝu la nomon de la manaĝanto
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Ŝanĝu la nomon de la kompanio
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Alklaku la deziratan kolorskemon
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Grandigu prunton
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Repagu pruntparton
+STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Manaĝanto)
+STR_7038_INAUGURATED                                            :{GOLD}Enaŭguris: {WHITE}{NUM}
+STR_7039_VEHICLES                                               :{GOLD}Veturiloj:
+STR_TRAINS                                                      :{WHITE}{COMMA} trajno{P "" j}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} vojveturilo{P "" j}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} aviadiloj
+STR_SHIPS                                                       :{WHITE}{COMMA} ŝipo{P "" j}
+STR_7042_NONE                                                   :{WHITE}Neniu
+STR_7043_FACE_SELECTION                                         :{WHITE}Vizaĝelekto
+STR_7044_MALE                                                   :{BLACK}Vira
+STR_7045_FEMALE                                                 :{BLACK}Virina
+STR_7046_NEW_FACE                                               :{BLACK}Novan Vizaĝon
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Nuligu elekton de nova vizaĝo
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Akceptu elekton de nova vizaĝo
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Elektu virajn vizaĝojn
@@ -2076,10 +2138,13 @@ STR_706D_PRESIDENT                                              :Potenculo
 STR_706E_TYCOON                                                 :Plejpotenculo
 STR_706F_BUILD_HQ                                               :{BLACK}Faru HQ
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Konstruu kompanian ĉefkonstruaĵon / vidu kompanian ĉefkonstruaĵon
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Rekonstruu kompanian ĉefkonstruaĵon aliloke por 1% de kompanivaloro
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Ne povas konstrui kompanian ĉefkonstruaĵon...
 STR_7072_VIEW_HQ                                                :{BLACK}Vidu HQ
+STR_RELOCATE_HQ                                                 :{BLACK}Relokigu HQ
 STR_COMPANY_PASSWORD                                            :{BLACK}Pasvorto
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Pasvorte protektu vian kompanion por eviti ke eksteruloj aliĝu.
+STR_SET_COMPANY_PASSWORD                                        :Agordu kompanian pasvorton
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Monda Recesio!{}{}Financaj spertuloj timas ke malpliboniĝas treege! Ekonomio malboniĝadas!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesio finiĝis!{}{}Komerca pliboniĝos donas konfidon al industrioj! Ekonomio pliboniĝas!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Ŝaltu inter granda kaj malgranda fenestro
@@ -2257,6 +2322,16 @@ STR_8080_PERRY_MAIL_TRUCK                                       :Poŝtaŭto "Per
 STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :Poŝtaŭto "MightyMover"
 STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Poŝtaŭto "Powernaught"
 STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Poŝtaŭto "Wizzowow"
+STR_8084_WITCOMBE_OIL_TANKER                                    :Oleŝipo "Witcombe"
+STR_8085_FOSTER_OIL_TANKER                                      :Oleŝipo "Foster"
+STR_8086_PERRY_OIL_TANKER                                       :Oleŝipo "Perry"
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Brutŝarĝaŭto "Talbott"
+STR_8088_UHL_LIVESTOCK_VAN                                      :Brutŝarĝaŭto "Uhl"
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Brutŝarĝaŭto "Foster"
+STR_808A_BALOGH_GOODS_TRUCK                                     :Varŝarĝaŭto "Balogh"
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Varŝarĝaŭto "Craighead"
+STR_808C_GOSS_GOODS_TRUCK                                       :Varŝarĝaŭto "Goss"
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Grenŝarĝaŭto "Hereford"
 STR_808E_THOMAS_GRAIN_TRUCK                                     :Grenŝarĝaŭto "Thomas"
 STR_808F_GOSS_GRAIN_TRUCK                                       :Grenŝarĝaŭto "Goss"
 STR_8090_WITCOMBE_WOOD_TRUCK                                    :Lignoŝarĝaŭto "Witcombe"
@@ -2319,6 +2394,7 @@ STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Plastikŝarĝa�
 STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :Vezikŝarĝaŭto "MightyMover"
 STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Vezikŝarĝaŭto "Powernaught"
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Vezikŝarĝaŭto "Wizzowow"
+STR_80CC_MPS_OIL_TANKER                                         :Oleŝipo "MPS"
 STR_80CD_CS_INC_OIL_TANKER                                      :Oleŝipo "CS-Inc."
 STR_80CE_MPS_PASSENGER_FERRY                                    :Pasaĝerŝipo "MPS"
 STR_80CF_FFP_PASSENGER_FERRY                                    :Pasaĝerŝipo "FFP"
@@ -2399,7 +2475,9 @@ STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Iru senhalte al
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Iru senhalte al {STATION} (Ŝarĝu)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Iru senhalte al {STATION} (Transigu kaj atendu ĝis plena ŝarĝo)
 STR_GO_TO_TRAIN_DEPOT                                           :Iru al {TOWN} Trajndeponejo
+STR_SERVICE_AT_TRAIN_DEPOT                                      :Prizorgo ĉe {TOWN} Trajndeponejo
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Iru senhalte al {TOWN} Trajndeponejo
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Prizorgo senhalte ĉe {TOWN} Trajndeponejo
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Irante al {TOWN} Trajndeponejo
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Irante al {TOWN} Trajndeponejo, {VELOCITY}
@@ -2408,6 +2486,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Prizorg
 
 STR_INVALID_ORDER                                               :{RED} (Nevalida Ordeno)
 
+STR_UNKNOWN_DESTINATION                                         :nekonata destino
 STR_8812_EMPTY                                                  :{LTBLUE}Malplena
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})
@@ -2416,6 +2495,7 @@ STR_8815_NEW_VEHICLES                                           :{BLACK}Novaj Ve
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trajno tro longas
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Trajno nut povas esti adaptataj kiam halte en deponejo
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Trajno{P "" j}
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novaj Relaj Veturiloj
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Novaj Elektraj Relaj Veturiloj
@@ -2437,14 +2517,19 @@ STR_8825_NON_STOP                                               :{BLACK}Senhalte
 STR_8826_GO_TO                                                  :{BLACK}Iru al
 STR_8827_FULL_LOAD                                              :{BLACK}Plene ŝarĝu
 STR_8828_UNLOAD                                                 :{BLACK}Deŝarĝu
+STR_REFIT                                                       :{BLACK}Transformu
+STR_REFIT_TIP                                                   :{BLACK}Elektu ŝarĝtipon por transformo en ĉi tiu ordeno. CTRL+klako por forigi instrukcion
+STR_REFIT_ORDER                                                 :(Transformu al {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordenoj)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fino de Ordenoj - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
+STR_SERVICE                                                     :{BLACK}Prizorgo
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ne povas krei relan veturilon...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valoro: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Ŝarĝante / Deŝarĝante
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trajno estu halta en deponejo
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Ne povas sendi trajnon al deponejo...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ne plu spaco por ordenoj
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Tro da ordenoj
@@ -2452,11 +2537,13 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Ne povas
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Ne povas forviŝi ĉi tiun ordenon...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Ne povas ŝanĝi ĉi tiun ordenon...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ne povas movi veturilon
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}La malantaŭa maŝino ĉiam sekvos la antaŭan
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Ne povas vendi relan veturilon...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Ne eblas trovi lokan deponejon
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Ne povas haltigi/starti trajnon...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Prizorga intervalo: {LTBLUE}{COMMA}tagoj{BLACK}   Lasta prizorgo: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Prizorga intervalo: {LTBLUE}{COMMA}%{BLACK}   Lasta prizorgo: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trajnoj - alklaku trajnon por pliaj informoj
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Kreu novajn trajnojn (bezonas trajndeponejon)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trajnoj - alklaku trajnon por scii pli, tiru veturilon por aldoni aŭ forigi de trajno
@@ -2486,10 +2573,14 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Senhalti
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Enigu novan ordenon antaŭ la elektita ordeno, aŭ aldonu fine de la listo
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon atendi ĝis plena ŝarĝo
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon deŝarĝi
+STR_SERVICE_HINT                                                :{BLACK}Transsaltu ordenon ĝis prizorgo necesos
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nova {STRING} nun haveblas!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosto: {CURRENCY} Pezo: {WEIGHT_S}{}Rapideco: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Rompite
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}po {CURRENCY} jare
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pezo: {LTBLUE}{WEIGHT_S}  {BLACK}Forto: {LTBLUE}{POWER}{BLACK} Pleja rapideco: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pezo: {LTBLUE}{WEIGHT_S} {BLACK}Forto: {LTBLUE}{POWER}{BLACK} Pleja rapideco: {LTBLUE}{VELOCITY} {BLACK}Pleja T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Haltis
@@ -2506,7 +2597,11 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ne povas
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon demeti la ŝarĝon
 STR_886F_TRANSFER                                               :{BLACK}Transigu
 
+STR_TRAIN_STOPPING                                              :{RED}Haltiĝas
+STR_TRAIN_STOPPING_VEL                                          :{RED}Haltiĝas, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Neinterŝanĝeblaj reltipoj
+STR_TRAIN_NO_POWER                                              :{RED}Senforte
+STR_TRAIN_START_NO_CATENARY                                     :Mankas ĉi-trake supera elektro, do la trajno ne povas starti
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vojveturilo okupas la lokon
@@ -2731,6 +2826,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCO
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veturiloj:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Malpleja gajno:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Malpleja enspezo:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Pleja enspezo:
@@ -2793,6 +2889,7 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 
 
 ### depot strings
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vendu ĉiujn trajnojn en la deponejo
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vendu ĉiujn vojveturilojn en la deponejo
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vendu ĉiujn ŝipojn en la deponejo
