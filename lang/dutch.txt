@@ -2604,6 +2604,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Prijs: {
 STR_885C_BROKEN_DOWN                                            :{RED}Kapot
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Leeftijd: {LTBLUE}{STRING}{BLACK}   Brandstofkosten: {LTBLUE}{CURRENCY}/jr
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S}  {BLACK}Kracht: {LTBLUE}{POWER}{BLACK} Max. snelheid: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S} {BLACK}Kracht: {LTBLUE}{POWER}{BLACK} Max. snelheid: {LTBLUE}{VELOCITY} {BLACK}Max. T.K.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Winst dit jaar: {LTBLUE}{CURRENCY}  (vorig jaar: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Pechgevallen sinds laatste reparatie: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Gestopt
@@ -2945,6 +2946,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gedeelde
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Toon alle voertuigen met de zelfde orders
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Je staat op het punt alle voertuigen in het depot te verkopen. Weet je het zeker?
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Verkoop alle treinen in het depot
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Verkoop alle weg voertuigen in het depot
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Verkoop alle schepen in het depot
@@ -3030,6 +3033,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedre
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Herindeel naar: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vracht typen
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalve {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Trekkracht: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 

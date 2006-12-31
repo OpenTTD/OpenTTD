@@ -1077,7 +1077,7 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horaire
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Le terrain d'un scénario plat a pour altitude : {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Etendue max. des stations: {ORANGE}{STRING} {RED}Attention: Valeur élevée = jeu lent
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'heliport: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'héliport: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils Paysage avec celle des rails/routes/eau et aéroport: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inverser la direction lors du défilement avec la souris : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Montrer une infobulle de mesure lors de l'utilisation de divers outils de construction: {ORANGE}{STRING}
@@ -1974,7 +1974,7 @@ STR_SV_STNAME_SIDINGS                                           :{STRING} Voies 
 STR_SV_STNAME_BRANCH                                            :{STRING} Embranchement
 STR_SV_STNAME_UPPER                                             :Haut {STRING}
 STR_SV_STNAME_LOWER                                             :Bas {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} Héli-port
+STR_SV_STNAME_HELIPORT                                          :{STRING} Héliport
 STR_SV_STNAME_FOREST                                            :{STRING} Forêt
 
 ############ end of	savegame specific region!
@@ -2468,9 +2468,9 @@ STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
 STR_80FA_FLASHBANG_X1                                           :Flashbang X1
 STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
 STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
-STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Hélicoptère
-STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Hélicoptère
-STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Hélicoptère
+STR_80FD_TRICARIO_HELICOPTER                                    :Hélicoptère Tricario
+STR_80FE_GURU_X2_HELICOPTER                                     :Hélicoptère Guru X2
+STR_80FF_POWERNAUT_HELICOPTER                                   :Hélicoptère Powernaut
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Communiqué du fabriquant d'engins
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Nous venons juste d'inventer: {STRING} - Voulez vous l'exclusivité de ce véhicule pendant un an, afin que nous puissions le tester avant sa mise sur le marché ?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=f}locomotive
@@ -3098,14 +3098,14 @@ STR_METRO_AIRPORT                                               :{BLACK}Aéropor
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}International
 STR_COMMUTER_AIRPORT                                            :{BLACK}de Banlieue
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
-STR_HELIPORT                                                    :{BLACK}Héli-tour
-STR_HELIDEPOT                                                   :{BLACK}Héli-dépôt
-STR_HELISTATION                                                 :{BLACK}Héli-station
+STR_HELIPORT                                                    :{BLACK}Hélitour
+STR_HELIDEPOT                                                   :{BLACK}Hélidépôt
+STR_HELISTATION                                                 :{BLACK}Hélistation
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Petits aéroports
 STR_LARGE_AIRPORTS                                              :{BLACK}Grands aéroports
 STR_HUB_AIRPORTS                                                :{BLACK}Aéroports Internodaux
-STR_HELIPORTS                                                   :{BLACK}Héli-ports
+STR_HELIPORTS                                                   :{BLACK}Héliports
 
 ############ Tooltip measurment
 

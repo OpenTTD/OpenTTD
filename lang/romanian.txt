@@ -154,6 +154,7 @@ STR_00B0_MAP                                                    :{WHITE}Harta - 
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Optiuni
 STR_00B2_MESSAGE                                                :{YELLOW}Mesaj
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaj de la {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Atentie!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nu pot face asta....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nu pot curãta terenul....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, toate drepturile rezervate
@@ -1308,6 +1309,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Proteja
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER PLIN
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIUNE DIFERITA
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF NEPOTRIVIRE
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Intrã în joc
 
@@ -2602,6 +2604,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {C
 STR_885C_BROKEN_DOWN                                            :{RED}Defectiune
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vechimea: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Greutate: {LTBLUE}{WEIGHT_S}  {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Vitezã max.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Greutate: {LTBLUE}{WEIGHT_S} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteza max.: {LTBLUE}{VELOCITY} {BLACK}E.T. max.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Oprit
@@ -2888,6 +2891,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nu exist
 STR_NEWGRF_FILENAME                                             :{BLACK}Nume fisier: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Esti pe cale sa faci modificari intr-un joc activ. Aceasta poate destabiliza OpenTTD.{}Esti absolut sigur ca vrei sa faci asta?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adauga
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adauga un fisier NewGRF in lista
@@ -2942,6 +2946,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Comenzi 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Arata toate vehiculele care se incadreaza in acest program
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Esti pe cale sa vinzi toate vehiculele din depou. Esti sigur?
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vinde toate trenurile din the depou
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vinde toate autovehiculele din depou
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vinde toate vasele din depou
@@ -3027,6 +3033,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Rearanjabil in: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Toate tipurile de incarcaturi
 STR_PURCHASE_INFO_ALL_BUT                                       :Toate, cu exceptia {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Efort tractor max.: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 

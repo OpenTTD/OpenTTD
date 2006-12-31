@@ -3075,6 +3075,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Wspoldzi
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Sprzedasz wszystkie pojazdy z zajezdni. Jesteś pewien?
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sprzedaj wszystkie pociągi z zajezdni
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sprzedaj wszystkie samochody z zajezdni
