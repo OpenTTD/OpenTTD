@@ -1,3 +1,20 @@
+0.5.0-RC2 (2006-12-31)
+------------------------------------------------------------------------
+- General Removed support for OSX older than 10.3.9. Either upgrade, or use 0.4.8 (compatible with OSX 10.2)
+- Codechange: Drastically reduce the CPU usage in certain cases (AI using CheckStationSpreadOut()) (r7585)
+- Fix: Internal bug in updating the animated_tiles table caused desyncs between (different endian) machines in MP (r7631)
+- Fix: Signal update got propagated through incompatible railtypes and under certain circumstances tunnels and rail on top (r7620)
+- Fix: Remove landscaping toolbar option from road consturction toolbar in scenario editor [FS#473] (r7586)
+- Fix: The server could under certain circumstances tell a client too late to start syncing if it has been waiting to join (r7566)
+- Fix: Removing towns in scenario editor didn't remove their subsidies causing possible crashes [FS#468] (r7563)
+- Fix: Internal and (patches) GUI were disagreeing about autorenew settings [FS#431] (r7561)
+- Fix: No new company could be created if more than 8 clients were connected, even if not all 8 companies were used (r7560)
+- Fix; Clicking 'full load' could under certain circumstances change the current depot order [FS#456] (r7559)
+- Fix: Do not wait till a crashed vehicle is removed before starting to load other vehicles [FS#464] (r7558)
+- Fix: MorhpOS compile and install fixes (r7548)
+- Fix: Removing rail station cost was calculated on occupied area not on number of tiles with an actual station on (r7547)
+
+
 0.5.0-RC1 (2006-12-21)
 ------------------------------------------------------------------------
 
