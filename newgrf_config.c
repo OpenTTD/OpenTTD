@@ -328,6 +328,8 @@ const GRFConfig *FindGRFConfig(uint32 grfid, uint8 *md5sum)
 	return NULL;
 }
 
+#ifdef ENABLE_NETWORK
+
 /** Structure for UnknownGRFs; this is a lightweight variant of GRFConfig */
 typedef struct UnknownGRF UnknownGRF;
 struct UnknownGRF {
@@ -376,6 +378,8 @@ char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
 	unknown_grfs = grf;
 	return grf->name;
 }
+
+#endif /* ENABLE_NETWORK */
 
 
 /* Retrieve a NewGRF from the current config by its grfid */

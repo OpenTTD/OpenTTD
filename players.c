@@ -844,7 +844,10 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!_networking) return CMD_ERROR;
 
 		/* Has the network client a correct ClientID? */
-		if (!(flags & DC_EXEC) || cid >= MAX_CLIENT_INFO) return 0;
+		if (!(flags & DC_EXEC)) return 0;
+#ifdef ENABLE_NETWORK
+		if (cid >= MAX_CLIENT_INFO) return 0;
+#endif /* ENABLE_NETWORK */
 
 		/* Delete multiplayer progress bar */
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);

@@ -55,8 +55,10 @@ char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 /* In newgrf_gui.c */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config);
 
+#ifdef ENABLE_NETWORK
 /* For communication about GRFs over the network */
 #define UNKNOWN_GRF_NAME_PLACEHOLDER "<Unknown>"
 char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create);
+#endif /* ENABLE_NETWORK */
 
 #endif /* NEWGRF_CONFIG_H */
