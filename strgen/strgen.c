@@ -1389,7 +1389,7 @@ int CDECL main(int argc, char* argv[])
 
 		/* if showing warnings, print a summary of the language */
 		if (show_todo == 2) {
-			fprintf(stdout, "%d warnings and %d errors for %s", _warnings, _errors, pathbuf);
+			fprintf(stdout, "%d warnings and %d errors for %s\n", _warnings, _errors, pathbuf);
 		}
 	} else {
 		fprintf(stderr, "Invalid arguments\n");
