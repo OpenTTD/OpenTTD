@@ -19,23 +19,25 @@ Bugs for 0.5.0
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
--456	'Fullload' switches between 'stop'/'service' at depot
--455	Converting to monorail behaves badly
--454	Problem with goods transfer income
+-489	[0.5.0rc1] Sound choppy on Vista
+-488	Can't build trains after year 2000
+-483	!invalid string id 0 in GetString when trying to host a game after upgrade to 0.5.0-RC1 - workaround
+-474	Overtaking car doesn't hit the against-riding car.
+-465	Crash in Linux (Debian)
+-460	vehicles not avaible - unable to build
+-459	Merging is buggy
+-458	Crash when changing Resolution on Mac OS X (x86)
 -450	GUI selecting disabled numbers (newstations)
 -445	unable to open previously saved game in r7425
 -444	Compile issues (networking) on Sun and SGI platforms
 -442	Alt-tab behaviour flawed whilst full screen (win32)
--441	Low	Transparent stuff
+-441	Transparent stuff
 -435	Assertion window doesn't show when in fullscreen on Mac OS X
 -432	Assertion failed: AircraftController in aircraft_cmd.c (line 771)
--431	failure to autorenew (core/GUI desync)
 -423	Improved loading causes high CPU use with long trains
--415	Multiplayer Desync Error... (More)
 -410	Openttd in dedicated mode don't run without data files
 -404	Cargo never delivered to station after bribe and before first pickup
 -391	Smth stange with train depots
--390	Multiplayer Desync Error...
 -379	Integer overflow with huge cities
 -365	Blimp Stuck at airport
 -362	Changing signal type affects whole square
@@ -69,6 +71,7 @@ URL: http://bugs.openttd.org
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 
+-1623073	0.5.0 RC1 gotten money to build bridge
 -1616411	Game very slow when Xorg color depth is different than 8bpp
 -1573339	0.4.8.dmg Crash with intel 64bit
 -1460218	0.4.7 normal industry bug (non_smooth)
@@ -86,7 +89,6 @@ URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 -1197116	Some stations are cargo-less
 -1116638	"More, but smaller changes" deficiency
 -1106356	re-offered prototypes
--1085486	Subsidies: Only count when station is in right suburb
 
 Minor Bugs for 0.5.0
 ------------------------------------------------------------------------
@@ -97,7 +99,6 @@ URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 -1412031	fast forward scrolling is also fast forward :)
 -1387424	overtake insolvent company is to cheap
 -1382782	Loan interest calculated 'wrong'
--1236320	Bug in main menu allows moving screen
 -1201284	permanent hilight in a depot
 -1185852	Scrollbars get arbitrarily small
 -1184634	Replace vehicles window bug
