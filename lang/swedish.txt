@@ -2193,7 +2193,7 @@ STR_LIVERY_MAGLEV                                               :Maglev-Tåg
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagerarvagn (Ånga)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagerarvagn (Disel)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagervagn (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagerarvagn (Elektricitet)
 STR_LIVERY_FREIGHT_WAGON                                        :Fraktvagn
 STR_LIVERY_BUS                                                  :Buss
@@ -3054,8 +3054,8 @@ STR_DATE                                                        :{BLACK}Datum:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Antal städer:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Antal industrier:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
-STR_SNOW_LINE_UP                                                :{BLACK}Flytta snölinjens höjd upp ett steg
-STR_SNOW_LINE_DOWN                                              :{BLACK}Flytta snölinjens höjd ner ett steg
+STR_SNOW_LINE_UP                                                :{BLACK}Höj snölinjens höjd ett upp
+STR_SNOW_LINE_DOWN                                              :{BLACK}Sänk snölinjens höjd ett ner
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Ändra snölinjens höjd
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Ändra Startår
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skala-varning
@@ -3070,7 +3070,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vill du
 STR_PROGRESS                                                    :{WHITE}{NUM}% färdigt
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Generera Värld
-STR_TREE_GENERATION                                             :{BLACK}Träd generering
+STR_TREE_GENERATION                                             :{BLACK}Generera Träd
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Icke flyttbar generering
 STR_CLEARING_TILES                                              :{BLACK}Svår och stenig markgenerering
 STR_SETTINGUP_GAME                                              :{BLACK}Ställer in spel
@@ -3099,7 +3099,7 @@ STR_COMMUTER_AIRPORT                                            :{BLACK}Pendlare
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Jättestor flygplats
 STR_HELIPORT                                                    :{BLACK}Helikopterplatta
 STR_HELIDEPOT                                                   :{BLACK}Helikopterhangar
-STR_HELISTATION                                                 :{BLACK}Helikopterplatta
+STR_HELISTATION                                                 :{BLACK}Helikopterstation
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Små flygfält
 STR_LARGE_AIRPORTS                                              :{BLACK}Stora Flygplatser
