@@ -942,12 +942,13 @@ void UpdateTextBufferSize(Textbuf *tb)
 	WChar c = Utf8Consume(&buf);
 
 	tb->width = 0;
+	tb->length = 0;
 
 	for (; c != '\0' && tb->length < (tb->maxlength - 1); c = Utf8Consume(&buf)) {
 		tb->width += GetCharacterWidth(FS_NORMAL, c);
+		tb->length += Utf8CharLen(c);
 	}
 
-	tb->length = buf - tb->buf - 1;
 	tb->caretpos = tb->length;
 	tb->caretxoffs = tb->width;
 }
