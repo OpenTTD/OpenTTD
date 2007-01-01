@@ -301,6 +301,22 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 		if (IsTileDepotType(tile, TRANSPORT_ROAD) && ReverseDiagDir(GetRoadDepotDirection(tile)) != direction) return;
 	}
 
+	/* Check if the new tile is a tunnel or bridge head and that the direction
+	 * and transport type match */
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		if (IsTunnel(tile)) {
+			if (GetTunnelDirection(tile) != direction ||
+					GetTunnelTransportType(tile) != tpf->tracktype) {
+				return;
+			}
+		} else if (IsBridge(tile)) {
+			if (GetBridgeRampDirection(tile) != direction ||
+					GetBridgeTransportType(tile) != tpf->tracktype) {
+				return;
+			}
+		}
+	}
+
 	tpf->rd.cur_length++;
 
 	bits = GetTileTrackStatus(tile, tpf->tracktype);
