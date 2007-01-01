@@ -2351,65 +2351,63 @@ static void SkipIf(byte *buf, int len)
 		return;
 	}
 
-	if (param == 0x88 && GetFileByGRFID(cond_val) == NULL) {
-		grfmsg(7, "GRFID 0x%08X unknown, skipping test", BSWAP32(cond_val));
-		return;
-	}
-
 	param_val = GetParamVal(param, &cond_val);
 
 	grfmsg(7, "Test condtype %d, param 0x%08X, condval 0x%08X", condtype, param_val, cond_val);
-	switch (condtype) {
-		case 0: result = !!(param_val & (1 << cond_val));
-			break;
-		case 1: result = !(param_val & (1 << cond_val));
-			break;
-		case 2: result = (param_val & mask) == cond_val;
-			break;
-		case 3: result = (param_val & mask) != cond_val;
-			break;
-		case 4: result = (param_val & mask) < cond_val;
-			break;
-		case 5: result = (param_val & mask) > cond_val;
-			break;
 
-		/* Tests 6 to 10 are only for param 0x88, GRFID checks */
-		case 6: { /* Is GRFID active? */
-			const GRFConfig *c = GetGRFConfig(cond_val);
-			if (c == NULL) return;
-			result = HASBIT(c->flags, GCF_ACTIVATED);
-			break;
+	if (param == 0x88) {
+		/* GRF ID checks */
+
+		const GRFConfig *c = GetGRFConfig(cond_val);
+
+		if (condtype != 10 && c == NULL) {
+			grfmsg(7, "GRFID 0x%08X unknown, skipping test", BSWAP32(cond_val));
+			return;
 		}
 
-		case 7: { /* Is GRFID non-active? */
-			const GRFConfig *c = GetGRFConfig(cond_val);
-			if (c == NULL) return;
-			result = !HASBIT(c->flags, GCF_ACTIVATED);
-			break;
-		}
+		switch (condtype) {
+			/* Tests 6 to 10 are only for param 0x88, GRFID checks */
+			case 6: /* Is GRFID active? */
+				result = HASBIT(c->flags, GCF_ACTIVATED);
+				break;
 
-		case 8: { /* GRFID is not but will be active? */
-			const GRFConfig *c = GetGRFConfig(cond_val);
-			if (c == NULL) return;
-			result = !HASBIT(c->flags, GCF_ACTIVATED) && !HASBIT(c->flags, GCF_DISABLED);
-			break;
-		}
+			case 7: /* Is GRFID non-active? */
+				result = !HASBIT(c->flags, GCF_ACTIVATED);
+				break;
 
-		case 9: { /* GRFID is or will be active? */
-			const GRFConfig *c = GetGRFConfig(cond_val);
-			if (c == NULL) return;
-			result = !HASBIT(c->flags, GCF_NOT_FOUND) && !HASBIT(c->flags, GCF_DISABLED);
-			break;
-		}
+			case 8: /* GRFID is not but will be active? */
+				result = !HASBIT(c->flags, GCF_ACTIVATED) && !HASBIT(c->flags, GCF_DISABLED);
+				break;
 
-		case 10: { /* GRFID is not nor will be active */
-			const GRFConfig *c = GetGRFConfig(cond_val);
-			/* This is the only condtype that doesn't get ignored if the GRFID is not found */
-			result = c == NULL || HASBIT(c->flags, GCF_DISABLED) || HASBIT(c->flags, GCF_NOT_FOUND);
-			break;
-		}
+			case 9: /* GRFID is or will be active? */
+				result = !HASBIT(c->flags, GCF_NOT_FOUND) && !HASBIT(c->flags, GCF_DISABLED);
+				break;
 
-		default: grfmsg(1, "Unsupported test %d. Ignoring", condtype); return;
+			case 10: /* GRFID is not nor will be active */
+				/* This is the only condtype that doesn't get ignored if the GRFID is not found */
+				result = c == NULL || HASBIT(c->flags, GCF_DISABLED) || HASBIT(c->flags, GCF_NOT_FOUND);
+				break;
+
+			default: grfmsg(1, "Unsupported GRF test %d. Ignoring", condtype); return;
+		}
+	} else {
+		/* Parameter or variable tests */
+		switch (condtype) {
+			case 0: result = !!(param_val & (1 << cond_val));
+				break;
+			case 1: result = !(param_val & (1 << cond_val));
+				break;
+			case 2: result = (param_val & mask) == cond_val;
+				break;
+			case 3: result = (param_val & mask) != cond_val;
+				break;
+			case 4: result = (param_val & mask) < cond_val;
+				break;
+			case 5: result = (param_val & mask) > cond_val;
+				break;
+
+			default: grfmsg(1, "Unsupported test %d. Ignoring", condtype); return;
+		}
 	}
 
 	if (!result) {
