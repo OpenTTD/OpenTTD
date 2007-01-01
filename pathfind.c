@@ -341,8 +341,8 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	if (tpf->hasbit_13)
 		return;
 
-	tile = tile_org;
 	direction = ReverseDiagDir(direction);
+	tile += TileOffsByDiagDir(direction);
 
 	bits = GetTileTrackStatus(tile, tpf->tracktype);
 	bits |= (bits >> 8);
