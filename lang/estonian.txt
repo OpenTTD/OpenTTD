@@ -80,63 +80,90 @@ STR_0026_CANDY.g                                                :Maiustuste
 STR_0026_CANDY.genitiiv                                         :Maiustuste
 STR_0027_COLA                                                   :Koola
 STR_0027_COLA.g                                                 :Koola
+STR_0027_COLA.genitiiv                                          :Koola
 STR_0028_COTTON_CANDY                                           :Suhkruvatt
 STR_0028_COTTON_CANDY.g                                         :Suhkruvati
+STR_0028_COTTON_CANDY.genitiiv                                  :Suhkruvati
 STR_0029_BUBBLES                                                :Mullid
 STR_0029_BUBBLES.g                                              :Mullide
+STR_0029_BUBBLES.genitiiv                                       :Mullide
 STR_002A_TOFFEE                                                 :Iiris
 STR_002A_TOFFEE.g                                               :Iirise
+STR_002A_TOFFEE.genitiiv                                        :Iirise
 STR_002B_BATTERIES                                              :Patareid
 STR_002B_BATTERIES.g                                            :Patareide
+STR_002B_BATTERIES.genitiiv                                     :Patareide
 STR_002C_PLASTIC                                                :Plastmass
 STR_002C_PLASTIC.g                                              :Plastmassi
+STR_002C_PLASTIC.genitiiv                                       :Plastmassi
 STR_002D_FIZZY_DRINKS                                           :Kihisevad joogid
 STR_002D_FIZZY_DRINKS.g                                         :Kihisevate jookide
+STR_002D_FIZZY_DRINKS.genitiiv                                  :Kihisevate jookide
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Reisija
 STR_002F_PASSENGER.g                                            :Reisijate
+STR_002F_PASSENGER.genitiiv                                     :Reisijate
 STR_0030_COAL                                                   :Kivisüsi
 STR_0030_COAL.g                                                 :Kivisöe
+STR_0030_COAL.genitiiv                                          :Kivisöe
 STR_0031_MAIL                                                   :Post
 STR_0031_MAIL.g                                                 :Posti
 STR_0032_OIL                                                    :Nafta
 STR_0032_OIL.g                                                  :Nafta
+STR_0032_OIL.genitiiv                                           :Nafta
 STR_0033_LIVESTOCK                                              :Kariloom
 STR_0033_LIVESTOCK.g                                            :Kariloomade
+STR_0033_LIVESTOCK.genitiiv                                     :Kariloomade
 STR_0034_GOODS                                                  :Kaubad
 STR_0034_GOODS.g                                                :Kaupade
+STR_0034_GOODS.genitiiv                                         :Kaupade
 STR_0035_GRAIN                                                  :Teravili
 STR_0035_GRAIN.g                                                :Teravilja
+STR_0035_GRAIN.genitiiv                                         :Teravilja
 STR_0036_WOOD                                                   :Puit
 STR_0036_WOOD.g                                                 :Puidu
+STR_0036_WOOD.genitiiv                                          :Puidu
 STR_0037_IRON_ORE                                               :Rauamaak
 STR_0037_IRON_ORE.g                                             :Rauamaagi
+STR_0037_IRON_ORE.genitiiv                                      :Rauamaagi
 STR_0038_STEEL                                                  :Teras
 STR_0038_STEEL.g                                                :Terase
+STR_0038_STEEL.genitiiv                                         :Terase
 STR_0039_VALUABLES                                              :Väärisesemed
 STR_0039_VALUABLES.g                                            :Väärisesemete
+STR_0039_VALUABLES.genitiiv                                     :Väärisesemete
 STR_003A_COPPER_ORE                                             :Vasemaak
 STR_003A_COPPER_ORE.g                                           :Vasemaagi
+STR_003A_COPPER_ORE.genitiiv                                    :Vasemaagi
 STR_003B_MAIZE                                                  :Mais
 STR_003B_MAIZE.g                                                :Maisi
 STR_003C_FRUIT                                                  :Puuviljad
 STR_003C_FRUIT.g                                                :Puuviljade
+STR_003C_FRUIT.genitiiv                                         :Puuviljade
 STR_003D_DIAMOND                                                :Teemant
 STR_003D_DIAMOND.g                                              :Teemantite
+STR_003D_DIAMOND.genitiiv                                       :Teemantite
 STR_003E_FOOD                                                   :Toit
 STR_003E_FOOD.g                                                 :Toidu
+STR_003E_FOOD.genitiiv                                          :Toidu
 STR_003F_PAPER                                                  :Paber
 STR_003F_PAPER.g                                                :Paberi
+STR_003F_PAPER.genitiiv                                         :Paberi
 STR_0040_GOLD                                                   :Kuld
 STR_0040_GOLD.g                                                 :Kulla
+STR_0040_GOLD.genitiiv                                          :Kulla
 STR_0041_WATER                                                  :Vesi
 STR_0041_WATER.g                                                :Vee
+STR_0041_WATER.genitiiv                                         :Vee
 STR_0042_WHEAT                                                  :Nisu
 STR_0042_WHEAT.g                                                :Nisu
+STR_0042_WHEAT.genitiiv                                         :Nisu
 STR_0043_RUBBER                                                 :Kumm
 STR_0043_RUBBER.g                                               :kummi
+STR_0043_RUBBER.genitiiv                                        :Kummi
 STR_0044_SUGAR                                                  :Suhkur
 STR_0044_SUGAR.g                                                :Suhkru
+STR_0044_SUGAR.genitiiv                                         :Suhkru
 STR_0045_TOY                                                    :Mänguasjad
 STR_0045_TOY.genitiiv                                           :Mänguasjade
 STR_0046_CANDY                                                  :Maiustus
@@ -1004,9 +1031,9 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Mängus 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Täisekraan
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Märgistades selle kasti, toimub mäng täisekraanis
 
-STR_OPTIONS_RES                                                 :{BLACK}Ekraani resolutsioon
+STR_OPTIONS_RES                                                 :{BLACK}Kuvari eraldusvõime
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Ekraani resolutsiooni valimine
+STR_OPTIONS_RES_TIP                                             :{BLACK}Kuvari eraldusvõime valimine
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekraanitõmmise formaat
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

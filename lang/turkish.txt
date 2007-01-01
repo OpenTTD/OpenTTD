@@ -88,7 +88,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT} kömü
 STR_QUANTITY_MAIL                                               :{COMMA} çanta posta
 STR_QUANTITY_OIL                                                :{VOLUME} petrol
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} tane hayvan
-STR_QUANTITY_GOODS                                              :{COMMA} kasa esya
+STR_QUANTITY_GOODS                                              :{COMMA} kasa eşya
 STR_QUANTITY_GRAIN                                              :{WEIGHT} tahıl
 STR_QUANTITY_WOOD                                               :{WEIGHT} odun
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} demir
@@ -550,7 +550,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Sarki{SETX 88}Basligi
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Sarki{SETX 88}Başlığı
 STR_01E9_SHUFFLE                                                :{TINYFONT}Rastgele
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Müzik Programi Seçimi
@@ -741,8 +741,8 @@ STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Yüksekl
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Bu senaryodan çıkmak istediğinizden emin misiniz ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Editörden Çık
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...nüfusu en az 1200 olan şehirlere yapılabilir
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Baslama yılını düşür
-STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Baslama yılını arttır
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Başlama yılını düşür
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Başlama yılını arttır
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...köprünün uçları karada olmalı
 STR_02A1_SMALL                                                  :{BLACK}Küçük
 STR_02A2_MEDIUM                                                 :{BLACK}Orta
@@ -1350,7 +1350,7 @@ STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{S
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Konuşulan dil:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Diğer oyuncular sunucuda hangi dilin konuşulacağını bilecek
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_START_GAME                                          :{BLACK}Oyunu Baslat
+STR_NETWORK_START_GAME                                          :{BLACK}Oyunu Başlat
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Rastgele harita ya da senaryoda network oyunu aç
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Oyun Yükle
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Kayıtlı oyunu devam ettir (doğru oyuncu olarak bağlandığından emin ol)
@@ -2106,7 +2106,7 @@ STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Araç re
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Müdürün ismini değiştir
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Şirket ismini değiştir
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}İstediginiz rengi seçin
-STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Kredi miktarını arttır
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Kredi ödünç al
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Krediyi öde
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Manager)
 STR_7038_INAUGURATED                                            :{GOLD}Kuruluş: {WHITE}{NUM}
@@ -2156,9 +2156,9 @@ STR_7067_TRAFFIC_MANAGER                                        :Trafik Müdür�
 STR_7068_TRANSPORT_COORDINATOR                                  :Nakliyeci
 STR_7069_ROUTE_SUPERVISOR                                       :Rota Yöneticisi
 STR_706A_DIRECTOR                                               :Yönetmen
-STR_706B_CHIEF_EXECUTIVE                                        :Bas Yönetici
+STR_706B_CHIEF_EXECUTIVE                                        :Baş Yönetici
 STR_706C_CHAIRMAN                                               :Başkan
-STR_706D_PRESIDENT                                              :Basbakan
+STR_706D_PRESIDENT                                              :Başbakan
 STR_706E_TYCOON                                                 :Kodaman(Tycoon)
 STR_706F_BUILD_HQ                                               :{BLACK}Bina Yap
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Şirket binasi yap / şirket binasina bak
@@ -2968,7 +2968,7 @@ STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Uçak
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} Değiştir
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Araçları Değiştirmeye Basla
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Araçları Değiştirmeye Başla
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Araçları değiştirmeyi durdur
 STR_NOT_REPLACING                                               :{BLACK}Değiştirilmiyor
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Hiç Araç Seçilmedi
@@ -3055,7 +3055,7 @@ STR_GENERATE_DATE                                               :{BLACK}{DATE_LO
 STR_SNOW_LINE_UP                                                :{BLACK}Kar yüksekliğini bir arttır
 STR_SNOW_LINE_DOWN                                              :{BLACK}Kar yüksekliğini bir azalt
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Kar yüksekliğini değiştir
-STR_START_DATE_QUERY_CAPT                                       :{WHITE}Baslangic yılını değiştir
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Başlangıç yılını değiştir
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
