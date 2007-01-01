@@ -779,11 +779,11 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 							STR_A002_AIRCRAFT_HANGAR
 						};
 						TileIndex tile = w->window_number;
-						byte vehtype = WP(w, depot_d).type - VEH_Train;
+						byte vehtype = WP(w, depot_d).type;
 
 						SetDParam(0, (vehtype == VEH_Aircraft) ? GetStationIndex(tile) : GetDepotByTile(tile)->town_index);
 						ShowQuery(
-							confirm_captions[vehtype],
+							confirm_captions[vehtype - VEH_Train],
 							STR_DEPOT_SELL_CONFIRMATION_TEXT,
 							w,
 							DepotSellAllConfirmationCallback
