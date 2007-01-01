@@ -154,6 +154,7 @@ STR_00B0_MAP                                                    :{WHITE}Kort - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spilindstillinger
 STR_00B2_MESSAGE                                                :{YELLOW}Besked
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Besked fra {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Advarsel!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Det kan du ikke....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde området....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheder reserveret
@@ -1308,6 +1309,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Beskytt
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVEREN ER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVEREN ER FULD
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}Din og serverens version passer ikke sammen
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF MATCHER IKKE
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Tilslut dig et spil
 
@@ -2602,6 +2604,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {C
 STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_S}  {BLACK}Styrke: {LTBLUE}{POWER}{BLACK} Maks hastighed: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hastighed: {LTBLUE}{VELOCITY} {BLACK}Maks. trækkraft: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dette års profit: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed {LTBLUE}{COMMA}%  {BLACK}nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppet
@@ -2888,9 +2891,30 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Der er i
 STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er ved at lave ændringer i et igangværende spil; dette kan få OpenTTD til at gå ned.{}Er du helt sikker på at du vil fortsætte?
 
+STR_NEWGRF_ADD                                                  :{BLACK}Tilføj
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Tilføj et NewGRF-arkiv til listen
+STR_NEWGRF_REMOVE                                               :{BLACK}Fjern
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Fjern det valgte NewGRF-arkiv fra listen
+STR_NEWGRF_MOVEUP                                               :{BLACK}Flyt op
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Flyt det valgte NewGRF-arkiv op i listen
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Flyt ned
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Flyt det valgte NewGRF-arkiv ned i listen
+STR_NEWGRF_FILE_TIP                                             :{BLACK}En liste over de NewGRF-arkiver der er installeret. Klik på et arkiv for at ændre dets indstillinger.
+STR_NEWGRF_PARAMETER                                            :{BLACK}Indstillinger: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Indtast NewGRF-indstillinger
+STR_NEWGRF_NO_INFO                                              :{BLACK}Ingen information tilgængelig
 
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Tilgængelige NewGRF-arkiver
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Tilføj til udvalg
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Tilføj det valgte NewGRF-arkiv til din konfiguration
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Genindlæs arkiver
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Opdater listen over tilgængelige NewGRF-arkiver
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke tilføje arkiv: dobbelt GRF ID
 
+STR_NEWGRF_NOT_FOUND                                            :{RED}Tilsvarende arkiv blev ikke fundet
+STR_NEWGRF_DISABLED                                             :{RED}Deaktiveret
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Brugerdefineret møntfod
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -2922,6 +2946,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte or
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, som har den samme rute
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er ved at sælge alle køretøjer i depotet. Er du sikker?
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sælg alle toge i remisen
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sælg alle køretøjer i værkstedet
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sælg alle skibe i dokken
@@ -3007,6 +3033,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motorise
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kan ombygges til: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle lasttyper
 STR_PURCHASE_INFO_ALL_BUT                                       :Alle undtagen {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. trækkraft: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 
