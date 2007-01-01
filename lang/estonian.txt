@@ -113,7 +113,6 @@ STR_0032_OIL.g                                                  :Nafta
 STR_0032_OIL.genitiiv                                           :Nafta
 STR_0033_LIVESTOCK                                              :Kariloom
 STR_0033_LIVESTOCK.g                                            :Kariloomade
-STR_0033_LIVESTOCK.genitiiv                                     :Kariloomade
 STR_0034_GOODS                                                  :Kaubad
 STR_0034_GOODS.g                                                :Kaupade
 STR_0034_GOODS.genitiiv                                         :Kaupade
@@ -2581,7 +2580,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :maglevi vedur
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Rongi Depoo
-STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab. . .{}Esimene rong saabus {STATION}i!
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab. . .{}Esimene rong saabus {STATION} jaama!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detailid)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Rong on ees
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2774,8 +2773,8 @@ STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Hind: {C
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nimeta maanteeveok ümber
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ei saa maanteveokit ümber nimetada...
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nimeta maanteeveok ümber
-STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}Esimene buss saabus {STATION}s!
-STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}Esimene maanteesõiduk saabus jaama {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}Esimene buss saabus {STATION} jaama!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}Esimene maanteesõiduk saabus {STATION} jaama!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Rongikokkupõrge!{}Juht suri peale õnnetust tules
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Maanteesõiduki kokkupõrge rongiga!{}{COMMA} suri tules peale kokkupõrget rongiga
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Maanteesõidukit ei saa ringi pöörata...
@@ -2847,7 +2846,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}Anna lae
 
 STR_9831_NAME_SHIP                                              :{WHITE}Anna laevale nimi
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Ei saa laeva ümber nimetada...
-STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}Esimene laev saabus {STATION}i
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}Esimene laev saabus {STATION} sadamasse!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Aseta teemärgisena kasutatav poi
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Poid ei saa siia asetada...
 STR_9836_RENAME                                                 :{BLACK}Nimeta ümber
@@ -3150,7 +3149,7 @@ STR_TERRAIN_TYPE                                                :{BLACK}Maapinna
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Merepinna tase:
 STR_SMOOTHNESS                                                  :{BLACK}Tasapinnalisus:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Lumepiiri kõrgus:
-STR_DATE                                                        :{BLACK}Daatum:
+STR_DATE                                                        :{BLACK}Algus:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Linnade arv:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Tehaste arv
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}

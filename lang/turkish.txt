@@ -1012,7 +1012,7 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Yamalar�
 STR_CONFIG_PATCHES_OFF                                          :Kapalı
 STR_CONFIG_PATCHES_ON                                           :Açık
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Durum çubuğunda arabanın hızını göster: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Sahil ve eğimli araziye inşaat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Sahile ve eğimli araziye inşaat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Daha gerçekçi kapsama alanı: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Şehrin yollarını, köprülerini yıkma izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Çok uzun trenlere izin ver: {ORANGE}{STRING}
