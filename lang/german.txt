@@ -385,7 +385,7 @@ STR_SORT_BY_VALUE                                               :Wert
 STR_SORT_BY_FACILITY                                            :Stationsart
 STR_SORT_BY_WAITING                                             :Menge der wartenden Fracht
 STR_SORT_BY_RATING_MAX                                          :Frachtbewertung
-STR_ENGINE_SORT_ENGINE_ID                                       :Baureihe
+STR_ENGINE_SORT_ENGINE_ID                                       :Loknummer
 STR_ENGINE_SORT_COST                                            :Kosten
 STR_ENGINE_SORT_POWER                                           :Leistung
 STR_ENGINE_SORT_INTRO_DATE                                      :Einführungsdatum
