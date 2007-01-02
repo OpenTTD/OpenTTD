@@ -2112,7 +2112,7 @@ generate_src_osx() {
 	BASE_SRC_OBJS_DIR="$OBJS_DIR/intel"
 	cc_host="$cc_host_orig -arch i386"
 	cxx_host="$cxx_host_orig -arch i386"
-	generate_src_normal "[intel]" "objs/intel"
+	generate_src_normal "[Intel]" "objs/intel"
 
 	BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc970"
 	cc_host="$cc_host_orig -arch ppc970"
