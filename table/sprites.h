@@ -1314,9 +1314,9 @@ enum Modifiers {
  * @see SpriteSetup */
 enum SpriteMasks {
 	///Maximum number of sprites that can be loaded at a given time.
-	MAX_SPRITES = (1 << SPRITE_WIDTH) - 1,
+	MAX_SPRITES = 1 << SPRITE_WIDTH,
 	///The mask to for the main sprite
-	SPRITE_MASK = MAX_SPRITES,
+	SPRITE_MASK = MAX_SPRITES - 1,
 	///The mask for the auxiliary sprite (the one that takes care of recoloring)
 	PALETTE_SPRITE_MASK = ((1 << PALETTE_SPRITE_WIDTH) - 1) << PALETTE_SPRITE_START,
 	///Mask for the auxiliary sprites if it is locate in the LSBs
