@@ -171,10 +171,10 @@ endif
 	$(Q)cp "$(ROOT_DIR)/media/openttd.64.png" "$(BUNDLE_DIR)/media/"
 	$(Q)cp "$(ROOT_DIR)/media/openttd.32.xpm" "$(BUNDLE_DIR)/media/"
 	$(Q)cp "$(ROOT_DIR)/media/openttd.32.bmp" "$(BUNDLE_DIR)/media/"
-ifeq ($(shell if test -d $(BIN_DIR)/scenario/*.scn; then echo 1; fi), 1)
+ifeq ($(shell if test -d "$(BIN_DIR)/scenario"; then echo 1; fi), 1)
 	$(Q)cp "$(BIN_DIR)/scenario/"*.scn        "$(BUNDLE_DIR)/scenario/"
 endif
-ifeq ($(shell if test -d $(BIN_DIR)/scenario/heightmaps/*; then echo 1; fi), 1)
+ifeq ($(shell if test -d "$(BIN_DIR)/scenario/heightmaps"; then echo 1; fi), 1)
 	$(Q)cp "$(BIN_DIR)/scenario/heightmaps/"* "$(BUNDLE_DIR)/scenario/heightmap/"
 endif
 
