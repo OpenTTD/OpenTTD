@@ -22,8 +22,8 @@ build-stamp:
 
 	# Add here commands to compile the package.
 	
-	rm Makefile.config || true
-	$(MAKE) PREFIX=/usr MIDI=/usr/bin/timidity INSTALL=1 BINARY_DIR=games DATA_DIR=share/games/openttd ICON_DIR=share/pixmaps PERSONAL_DIR=.openttd USE_HOMEDIR=1
+	./configure --prefix-dir=/usr --binary-dir=games --data-dir=share/games/openttd --icon-dir=share/pixmaps --personal-dir=.openttd --enable-install --install-dir=debian/openttd
+	make
 
 	#/usr/bin/docbook-to-man debian/openttd.sgml > openttd.1
 
@@ -36,7 +36,6 @@ clean: unpatch
 
 	# Add here commands to clean up after the build process.
 	-$(MAKE) clean
-	rm Makefile.config || true
 
 	dh_clean
 
@@ -47,7 +46,7 @@ install: build
 	dh_installdirs
 
 	# Add here commands to install the package into debian/openttd.
-	$(MAKE) DEST_DIR=debian/openttd install
+	$(MAKE) install
 
 # Build architecture-independent files here.
 binary-indep: build install
