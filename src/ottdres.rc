@@ -34,8 +34,8 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_DEFAULT
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-100                     ICON    DISCARDABLE     "openttd.ico"
-101                     ICON    DISCARDABLE     "mainicon.ico"
+100                     ICON    DISCARDABLE     "../media/openttd.ico"
+101                     ICON    DISCARDABLE     "../media/mainicon.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
