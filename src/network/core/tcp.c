@@ -6,7 +6,7 @@
 #include "../../debug.h"
 #include "../../openttd.h"
 #include "../../variables.h"
-#include "../../table/strings.h"
+#include "table/strings.h"
 #include "../../functions.h"
 
 #include "os_abstraction.h"

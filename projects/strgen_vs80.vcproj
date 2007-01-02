@@ -4,6 +4,7 @@
 	Version="8.00"
 	Name="strgen"
 	ProjectGUID="{A133A442-BD0A-4ADE-B117-AD7545E4BDD1}"
+	RootNamespace="strgen"
 	>
 	<Platforms>
 		<Platform
@@ -15,8 +16,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory=".\Debug"
-			IntermediateDirectory=".\Debug"
+			OutputDirectory="..\objs\strgen"
+			IntermediateDirectory="..\objs\strgen"
 			ConfigurationType="1"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
@@ -42,14 +43,17 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="0"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;STRGEN"
-				BasicRuntimeChecks="3"
+				Optimization="1"
+				GlobalOptimizations="TRUE"
+				FavorSizeOrSpeed="2"
+				PreprocessorDefinitions="STRGEN;WIN32;_DEBUG;_CONSOLE"
+				BasicRuntimeChecks="0"
 				RuntimeLibrary="1"
-				PrecompiledHeaderFile=".\Debug/strgen.pch"
-				AssemblerListingLocation=".\Debug/"
-				ObjectFile=".\Debug/"
-				ProgramDataBaseFileName=".\Debug/"
+				PrecompiledHeaderFile=""
+				AssemblerOutput="2"
+				AssemblerListingLocation="$(IntDir)/"
+				ObjectFile="$(IntDir)/"
+				ProgramDataBaseFileName="$(IntDir)/$(TargetName).pdb"
 				WarningLevel="3"
 				WarnAsError="true"
 				SuppressStartupBanner="true"
@@ -68,11 +72,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile=".\Debug/strgen.exe"
+				OutputFile="$(IntDir)\strgen.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile=".\Debug/strgen.pdb"
+				ProgramDatabaseFile="$(IntDir)\strgen.pdb"
 				SubSystem="1"
 				TargetMachine="1"
 			/>
@@ -110,13 +114,32 @@
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 			>
 			<File
-				RelativePath="strgen.c"
+				RelativePath="..\src\strgen\strgen.c"
 				>
 			</File>
 			<File
-				RelativePath="..\string.c">
-			</File>
+				RelativePath="..\src\string.c"
+				>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)/$(InputName)1.obj"/>
+					</FileConfiguration>
+				</File>
 		</Filter>
+		<File
+			RelativePath="..\src\macros.h"
+			>
+		</File>
+		<File
+			RelativePath="..\src\stdafx.h"
+			>
+		</File>
+		<File
+			RelativePath="..\src\string.h"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

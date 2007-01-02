@@ -1,0 +1,372 @@
+# Source Files
+airport.c
+aystar.c
+bmp.c
+callback_table.c
+command.c
+console.c
+console_cmds.c
+currency.c
+date.c
+debug.c
+dedicated.c
+depot.c
+driver.c
+economy.c
+elrail.c
+engine.c
+fileio.c
+fios.c
+fontcache.c
+genworld.c
+gfx.c
+gfxinit.c
+heightmap.c
+helpers.cpp
+landscape.c
+map.c
+md5.c
+mersenne.c
+minilzo.c
+misc.c
+mixer.c
+music.c
+namegen.c
+network/core/packet.c
+network/core/tcp.c
+network/core/udp.c
+network/network.c
+network/network_client.c
+network/network_data.c
+network/network_gamelist.c
+network/network_server.c
+network/network_udp.c
+npf.c
+oldloader.c
+oldpool.c
+openttd.c
+os_timer.c
+#if WIN32
+	ottdres.rc
+#end
+pathfind.c
+players.c
+queue.c
+rail.c
+saveload.c
+screenshot.c
+#if SDL
+	sdl.c
+#end
+settings.c
+signs.c
+sound.c
+spritecache.c
+string.c
+strings.c
+texteff.c
+tgp.c
+thread.c
+tile.c
+#if WIN32
+#else
+	unix.c
+#end
+vehicle.c
+viewport.c
+waypoint.c
+widget.c
+#if WIN32
+	win32.c
+#end
+window.c
+
+# Header Files
+airport.h
+airport_movement.h
+aystar.h
+bmp.h
+command.h
+console.h
+currency.h
+date.h
+debug.h
+video/dedicated_v.h
+depot.h
+music/dmusic.h
+driver.h
+economy.h
+engine.h
+fontcache.h
+fileio.h
+fios.h
+functions.h
+genworld.h
+gfx.h
+gfxinit.h
+gui.h
+hal.h
+heightmap.h
+industry.h
+livery.h
+macros.h
+map.h
+md5.h
+mixer.h
+music.h
+network/core/config.h
+network/core/game.h
+network/core/os_abstraction.h
+network/core/packet.h
+network/core/tcp.h
+network/core/udp.h
+network/network.h
+network/network_client.h
+network/network_data.h
+network/network_gamelist.h
+network/network_gui.h
+network/network_server.h
+network/network_udp.h
+newgrf.h
+newgrf_callbacks.h
+newgrf_cargo.h
+newgrf_config.h
+newgrf_engine.h
+newgrf_sound.h
+newgrf_spritegroup.h
+newgrf_station.h
+newgrf_text.h
+news.h
+npf.h
+music/null_m.h
+sound/null_s.h
+video/null_v.h
+oldpool.h
+openttd.h
+pathfind.h
+player.h
+queue.h
+rail.h
+road_cmd.h
+saveload.h
+screenshot.h
+sound/sdl_s.h
+video/sdl_v.h
+settings.h
+signs.h
+slope.h
+sound.h
+sprite.h
+station.h
+stdafx.h
+string.h
+tgp.h
+thread.h
+tile.h
+town.h
+train.h
+variables.h
+vehicle.h
+vehicle_gui.h
+viewport.h
+waypoint.h
+music/win32_m.h
+sound/win32_s.h
+video/win32_v.h
+window.h
+
+# GUI Source Code
+aircraft_gui.c
+airport_gui.c
+bridge_gui.c
+build_vehicle_gui.c
+depot_gui.c
+dock_gui.c
+engine_gui.c
+genworld_gui.c
+graph_gui.c
+industry_gui.c
+intro_gui.c
+main_gui.c
+misc_gui.c
+music_gui.c
+network/network_gui.c
+newgrf_gui.c
+news_gui.c
+order_gui.c
+player_gui.c
+rail_gui.c
+road_gui.c
+roadveh_gui.c
+settings_gui.c
+ship_gui.c
+smallmap_gui.c
+station_gui.c
+subsidy_gui.c
+terraform_gui.c
+town_gui.c
+train_gui.c
+vehicle_gui.c
+
+# Landscape
+aircraft_cmd.c
+clear_cmd.c
+disaster_cmd.c
+dummy_land.c
+industry_cmd.c
+misc_cmd.c
+order_cmd.c
+rail_cmd.c
+road_cmd.c
+roadveh_cmd.c
+ship_cmd.c
+station_cmd.c
+town_cmd.c
+train_cmd.c
+tree_cmd.c
+tunnelbridge_cmd.c
+unmovable_cmd.c
+water_cmd.c
+
+# Tables
+table/ai_rail.h
+table/allstrings.h
+table/animcursors.h
+table/autorail.h
+table/build_industry.h
+table/clear_land.h
+table/elrail_data.h
+table/engines.h
+table/genland.h
+table/industry_land.h
+table/landscape_const.h
+table/landscape_sprite.h
+table/namegen.h
+table/palettes.h
+table/road_land.h
+table/roadveh.h
+table/sprites.h
+table/station_land.h
+table/strings.h
+table/town_land.h
+table/track_land.h
+table/train_cmd.h
+table/tree_land.h
+table/tunnel_land.h
+table/unmovable_land.h
+table/water_land.h
+
+# AI Files
+ai/ai.c
+ai/default/default.c
+ai/trolly/build.c
+ai/trolly/pathfinder.c
+ai/trolly/shared.c
+ai/trolly/trolly.c
+
+# NewGRF
+newgrf.c
+newgrf_cargo.c
+newgrf_config.c
+newgrf_engine.c
+newgrf_sound.c
+newgrf_spritegroup.c
+newgrf_station.c
+newgrf_text.c
+
+# Map Accessors
+bridge_map.c
+bridge_map.h
+clear_map.h
+industry_map.h
+rail_map.h
+road_map.c
+road_map.h
+station_map.c
+station_map.h
+town_map.h
+tree_map.h
+tunnel_map.c
+tunnel_map.h
+unmovable_map.h
+void_map.h
+water_map.h
+
+# YAPF
+yapf/array.hpp
+yapf/autocopyptr.hpp
+yapf/binaryheap.hpp
+yapf/blob.hpp
+yapf/countedptr.hpp
+yapf/crc32.hpp
+yapf/fixedsizearray.hpp
+yapf/follow_track.cpp
+yapf/follow_track.hpp
+yapf/hashtable.hpp
+yapf/nodelist.hpp
+yapf/track_dir.hpp
+yapf/yapf.h
+yapf/yapf.hpp
+yapf/yapf_base.hpp
+yapf/yapf_common.cpp
+yapf/yapf_common.hpp
+yapf/yapf_costbase.hpp
+yapf/yapf_costcache.hpp
+yapf/yapf_costrail.hpp
+yapf/yapf_destrail.hpp
+yapf/yapf_node.hpp
+yapf/yapf_node_rail.hpp
+yapf/yapf_node_road.hpp
+yapf/yapf_rail.cpp
+yapf/yapf_road.cpp
+yapf/yapf_settings.h
+yapf/yapf_ship.cpp
+
+# Video
+video/dedicated_v.c
+video/null_v.c
+#if SDL
+	video/sdl_v.c
+#end
+#if WIN32
+	video/win32_v.c
+#end
+
+# Music
+#if DIRECTMUSIC
+	music/dmusic.cpp
+#end
+music/null_m.c
+#if WIN32
+	music/win32_m.c
+#else
+	music/extmidi.c
+#end
+#if BEOS
+ 	music/bemidi.cpp
+#end
+
+# Sound
+sound/null_s.c
+#if SDL
+	sound/sdl_s.c
+#end
+#if WIN32
+	sound/win32_s.c
+#end
+
+#if OSX
+# OSX Files
+	os/macosx/macos.m
+
+	#if DEDICATED
+	#else
+		music/qtmidi.c
+	#end
+
+	#if COCOA
+		video/cocoa_v.m
+		sound/cocoa_s.c
+		os/macosx/splash.c
+	#end
+#end

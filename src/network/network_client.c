@@ -9,7 +9,7 @@
 #include "network_data.h"
 #include "core/tcp.h"
 #include "../date.h"
-#include "../table/strings.h"
+#include "table/strings.h"
 #include "../functions.h"
 #include "network_client.h"
 #include "network_gamelist.h"

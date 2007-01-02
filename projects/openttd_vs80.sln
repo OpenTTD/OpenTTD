@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "strgen", "strgen\strgen_vs80.vcproj", "{A133A442-BD0A-4ADE-B117-AD7545E4BDD1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "strgen", "strgen_vs80.vcproj", "{A133A442-BD0A-4ADE-B117-AD7545E4BDD1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openttd", "openttd_vs80.vcproj", "{668328A0-B40E-4CDB-BD72-D0064424414A}"
 	ProjectSection(ProjectDependencies) = postProject

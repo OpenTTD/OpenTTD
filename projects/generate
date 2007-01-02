@@ -1,0 +1,158 @@
+#!/bin/bash
+
+# This file generates all project files based on sources.list, so everyone who
+#  can start a bash process, can update the project files.
+
+ROOT_DIR="`pwd`/.."
+if ! [ -e "$ROOT_DIR/source.list" ]
+then
+	ROOT_DIR="`pwd`"
+fi
+if ! [ -e "$ROOT_DIR/source.list" ]
+then
+	echo "Can't find source.list, needed in order to make this run. Please go to either"
+	echo " the project dir, or the root dir of a clean SVN checkout."
+	exit 1
+fi
+
+# openttd_vs80.sln    is for MSVC 2005
+# openttd_vs80.vcproj is for MSVC 2005
+# langs_vs80.vcproj   is for MSVC 2005
+# strgen_vs80.vcprojc is vor MSVC 2005
+
+# openttd.sln         is for MSVC 2003
+# openttd.vcproj      is for MSVC 2003
+# langs.vcproj        is for MSVC 2003
+# strgen.vcproj       is for MSVC 2003
+
+# openttd.tgt         is for WatCom
+
+
+
+# First, collect the list of Windows files
+sdl_config="1"
+os="MSVC"
+enable_dedicated="0"
+with_cocoa="0"
+enable_directmusic="1"
+file_prefix="..\\\\src\\\\"
+
+load_main_data() {
+	# Read the source.list and process it
+	RES="`awk '
+		/^(	*)#end/  { if (deep == skip) { skip -= 1; } deep -= 1; next; }
+		/^(	*)#else/ { if (deep == skip) { skip -= 1; } else if (deep - 1 == skip) { skip += 1; } next; }
+		/^(	*)#if/   {
+			gsub("	", "", $0);
+			gsub("^#if", "", $0);
+			gsub("^ ", "", $0);
+
+			if (deep != skip) { deep += 1; next; }
+
+			deep += 1;
+
+			if ($0 == "SDL"         && "'$sdl_config'" == "")          { next; }
+			if ($0 == "OSX"         && "'$os'" != "OSX")               { next; }
+			if ($0 == "DEDICATED"   && "'$enable_dedicated'" != "1")   { next; }
+			if ($0 == "COCOA"       && "'$with_cocoa'" == "0")         { next; }
+			if ($0 == "BEOS"        && "'$os'" != "BEOS")              { next; }
+			if ($0 == "WIN32"       && "'$os'" != "MINGW" &&
+											"'$os'" != "CYGWIN" && "'$os'" != "MSVC" ) { next; }
+			if ($0 == "MSVC"        && "'$os'" != "MSVC")              { next; }
+			if ($0 == "DIRECTMUSIC" && "'$enable_directmusic'" != "1") { next; }
+
+			skip += 1;
+
+			next;
+		}
+		/^(	*)#/ {
+			if (deep == skip) {
+				gsub("	", "", $0);
+				gsub("^#", "", $0);
+				gsub("^ ", "", $0);
+
+				if (first_time != 0) {
+					print "		</Filter>";
+				} else {
+					first_time = 1;
+				}
+
+				print "		<Filter";
+				print "			Name=\\""$0"\\"";
+				print "			Filter=\\"\\">";
+			}
+
+			next;
+		}
+		/^$/ { next }
+		{
+			if (deep == skip) {
+				gsub("	", "", $0);
+				gsub("/", "\\\\", $0);
+				print "			<File";
+				print "				RelativePath=\\".\\\\'$file_prefix'"$0"\\">";
+				print "			</File>";
+			}
+		}
+		END { print "		</Filter>"; }
+	' < $1`"
+
+	eval "$2=\"\$RES\""
+}
+
+load_lang_data() {
+	RES=""
+	for i in `ls $1`
+	do
+		i=`basename $i | sed s/.txt$//g`
+		RES="$RES
+		<File
+			RelativePath=\"..\\src\\lang\\"$i".txt\"
+			>
+			<FileConfiguration
+				Name=\"Debug|Win32\">
+				<Tool
+					Name=\"VCCustomBuildTool\"
+					Description=\"Generating "$i" language file\"
+					CommandLine=\"..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang &quot;\$(InputPath)&quot;&#x0D;&#x0A;\"
+					AdditionalDependencies=\"\"
+					Outputs=\"..\\bin\\lang\\"$i".lng\"
+				/>
+			</FileConfiguration>
+		</File>"
+	done
+
+	eval "$2=\"\$RES\""
+}
+
+generate() {
+	echo "Generating $2..."
+	# Everything above the !!FILES!! marker
+	RES="`awk '
+		/!!FILES!!/ { stop = 1; }
+		{
+			if (stop == 0) { print $0 }
+		}
+	' < \"$ROOT_DIR/projects/$2\".in > \"$ROOT_DIR/projects/$2\"`"
+
+	# The files-list
+	echo "$1" >> "$ROOT_DIR/projects/$2"
+
+	# Everything below the !!FILES!! marker
+	RES="`awk '
+		BEGIN { stop = 1; }
+		/!!FILES!!/ { stop = 2; }
+		{
+			if (stop == 0) { print $0 }
+			if (stop == 2) { stop = 0 }
+		}
+	' < \"$ROOT_DIR/projects/$2.in\" >> \"$ROOT_DIR/projects/$2\"`"
+}
+
+load_main_data "$ROOT_DIR/source.list" openttd
+load_lang_data "$ROOT_DIR/src/lang/*.txt" lang
+
+generate "$openttd" "openttd.vcproj"
+generate "$openttd" "openttd_vs80.vcproj"
+generate "$lang" "langs_vs80.vcproj"
+generate "$lang" "langs.vcproj"

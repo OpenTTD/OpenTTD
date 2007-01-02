@@ -1,0 +1,323 @@
+#!/bin/sh
+
+# This 'configure' script is a very easy wrapper around 'make updateconf'
+#  It allows cross-compilers to do their job much more easy.
+
+function showhelp() {
+	echo "Configure for OpenTTD"
+	echo ""
+	echo "Usage:"
+	echo " $0 --your_options"
+	echo ""
+	echo "Params:"
+	echo " --debug             Create debug-release                [no]"
+	echo " --profile           Create profile-release              [no]"
+	echo " --dedicated         Make a dedicated build              [no]"
+	echo " --revision          Set the revision of the compilation [detected]"
+	echo " --target-cc         Sets the target-compiler            [\$CC]"
+	echo " --target-cxx        Sets the C++ target-compiler        []"
+	echo " --host-cc           Sets the host-compiler              [\$CC]"
+	echo " --host-cxx          Sets the C++ host-compiler          []"
+	echo " --os                Sets the OS. Listens to:            [detected]"
+	echo "                        UNIX, OSX, FREEBSD, MORPHOS"
+	echo "                        BEOS, SUNOS, CYGWIN, MINGW, OS2"
+	echo " --windres           Sets the windres (Windows)          [windres]"
+	echo " --force-le          Force LE platform                   [no]"
+	echo " --force-be          Force BE platform                   [no]"
+	echo ""
+	echo "Params that can be used with --with or --without"
+	echo "   (e.g.: --without-static disables static (default))"
+	echo " static              Do you want a static build?         [no]"
+	echo " directmusic         Do you want direct-music?           [no]"
+	echo " zlib                Do you want zlib-support?           [yes]"
+	echo " sdl                 Do you want SDL-support?            [yes]"
+	echo " png                 Do you want PNG-support?            [yes]"
+	echo " iconv               Do you want iconv-support?          [no]"
+	echo " network             Do you want network-support?        [yes]"
+	echo " cocoa               Do you want cocoa-support? (MacOSX) [no]"
+	echo " freetype            Do you want freetype-support?       [yes]"
+	echo " fontconfig          Do you want fontconfig-support?     [yes]"
+	echo ""
+	echo "Params used to configure external libs:"
+	echo " --static-zlib-path  Set the path to your static zlib    []"
+	echo " --sdl-config        Where is your sdl-config            [sdl-config]"
+	echo " --libpng-config     Where is your libpng-config         [libpng-config]"
+	echo " --freetype-config   Where is your freetype-config       [freetype-config]"
+	echo " --fontconfig-config Where is your fontconfig-config     [pkg-config fontconfig]"
+	echo " --with-iconv        Set the path to your iconv headers  []"
+	echo " "
+}
+
+function handle() {
+	PARAM="$PARAM \"$1=`awk 'BEGIN { FS="="; $0="'"$2"'"; print $2;}'`\""
+}
+
+# The things you can use inside this case:
+#  handle NAME VALUE - Sets the value to give the 'make upgradeconf'
+#                         Value is in form: tag=REAL_VALUE
+#  ITEM="NAME"       - Will set the value as above, only with the next param
+#  SITEM="NAME"      - Will set the var $NAME to the next param
+for n in "$@"
+do
+	case "$n" in
+		--help | -h)
+			showhelp
+			exit 0
+			;;
+
+		--debug)
+			DEBUG_SET=1
+			ITEM="DEBUG"
+			;;
+		--debug=*)
+			handle "DEBUG" "$n"
+			;;
+		--profile)
+			PARAM="$PARAM PROFILE=1"
+			;;
+		--dedicated)
+			PARAM="$PARAM DEDICATED=1"
+			;;
+		--revision=*)
+			RELEASE=`awk 'BEGIN { FS="="; $0="'"$n"'"; print $2;}'`
+			;;
+		--revision)
+			SITEM="RELEASE"
+			;;
+		--target-cc=*)
+			handle "CC_TARGET" "$n"
+			;;
+		--target-cc)
+			ITEM="CC_TARGET"
+			;;
+		--target-cxx=*)
+			handle "CXX_TARGET" "$n"
+			;;
+		--target-cxx)
+			SITEM="CXX_TARGET"
+			;;
+		--host-cc=*)
+			handle "CC_HOST" "$n"
+			;;
+		--host-cc)
+			ITEM="CC_HOST"
+			;;
+		--host-cxx=*)
+			handle "CXX_HOST" "$n"
+			;;
+		--host-cxx)
+			ITEM="CXX_HOST"
+			;;
+		--host-cflags=*)
+			handle CFLAGS_HOST "$n"
+			;;
+		--host-cflags)
+			ITEM="CFLAGS_HOST"
+			;;
+		--os=*)
+			TARGET_OS=`awk 'BEGIN { FS="="; $0="'"$n"'"; print $2;}'`
+			;;
+		--os)
+			SITEM="TARGET_OS"
+			;;
+		--windres=*)
+			handle WINDRES "$n"
+			;;
+		--windres)
+			ITEM="WINDRES"
+			;;
+		--force-le)
+			PARAM="$PARAM ENDIAN_FORCE=LE"
+			;;
+		--force-be)
+			PARAM="$PARAM ENDIAN_FORCE=BE"
+			;;
+
+		--with-static)
+			PARAM="$PARAM STATIC=1"
+			;;
+		--without-static)
+			PARAM="$PARAM STATIC="
+			;;
+		--with-directmusic)
+			PARAM="$PARAM WITH_DIRECTMUSIC=1"
+			;;
+		--without-directmusic)
+			PARAM="$PARAM WITH_DIRECTMUSIC="
+			;;
+		--with-zlib)
+			PARAM="$PARAM WITH_ZLIB=1"
+			;;
+		--without-zlib)
+			PARAM="$PARAM WITH_ZLIB="
+			;;
+		--with-sdl)
+			PARAM="$PARAM WITH_SDL=1"
+			;;
+		--without-sdl)
+			PARAM="$PARAM WITH_SDL="
+			;;
+		--with-png)
+			PARAM="$PARAM WITH_PNG=1"
+			;;
+		--without-png)
+			PARAM="$PARAM WITH_PNG="
+			;;
+		--with-iconv)
+			PARAM="$PARAM WITH_ICONV=1"
+			;;
+		--with-iconv=*)
+			PARAM="$PARAM WITH_ICONV=1"
+			handle WITH_ICONV_PATH "$n"
+			;;
+		--without-iconv)
+			PARAM="$PARAM WITH_ICONV="
+			;;
+		--with-cocoa)
+			PARAM="$PARAM WITH_COCOA=1"
+			;;
+		--with-network)
+			PARAM="$PARAM WITH_NETWORK=1"
+			;;
+		--without-network)
+			PARAM="$PARAM WITH_NETWORK="
+			;;
+		--without-cocoa)
+			PARAM="$PARAM WITH_COCOA="
+			;;
+		--with-freetype)
+			PARAM="$PARAM WITH_FREETYPE=1"
+			;;
+		--without-freetype)
+			PARAM="$PARAM WITH_FREETYPE="
+			;;
+		--with-fontconfig)
+			PARAM="$PARAM WITH_FONTCONFIG=1"
+			;;
+		--without-fontconfig)
+			PARAM="$PARAM WITH_FONTCONFIG="
+			;;
+		--static-zlib-path=*)
+			handle STATIC_ZLIB_PATH "$n"
+			;;
+		--static-zlib-path)
+			ITEM="STATIC_ZLIB_PATH"
+			;;
+		--sdl-config=*)
+			handle SDL_CONFIG "$n"
+			;;
+		--sdl-config)
+			ITEM="SDL_CONFIG"
+			;;
+		--libpng-config=*)
+			handle LIBPNG_CONFIG "$n"
+			;;
+		--libpng-config)
+			ITEM="LIBPNG_CONFIG"
+			;;
+		--freetype-config=*)
+			handle FREETYPE_CONFIG "$n"
+			;;
+		--freetype-config)
+			ITEM="FREETYPE_CONFIG"
+			;;
+		--fontconfig-config=*)
+			handle FONTCONFIG_CONFIG "$n"
+			;;
+		--fontconfig-config)
+			ITEM="FONTCONFIG_CONFIG"
+			;;
+
+		--*=*)
+			echo -n "Unknown switch "
+			echo `awk 'BEGIN { FS="="; $0="'"$n"'"; print $1;}'`
+			exit 1
+			;;
+		-*)
+			echo "Unknown switch $n"
+			exit 1
+			;;
+
+		*)
+			if ! test -z "$ITEM"
+			then
+				PARAM="$PARAM $ITEM=\"$n\""
+				ITEM="";
+			elif ! test -z "$SITEM"
+			then
+				export $SITEM="$n"
+				SITEM=""
+			else
+				echo "Unknown switch $n"
+				exit 1
+			fi
+			;;
+	esac
+done
+
+if ! test -z "$TARGET_OS"
+then
+	TARGET_OS=`echo $TARGET_OS | tr '[:lower:]' '[:upper:]'`
+	case "$TARGET_OS" in
+		WIN32)
+			PARAM="$PARAM WIN32=1"
+			;;
+		UNIX)
+			PARAM="$PARAM UNIX=1"
+			;;
+		OSX)
+			PARAM="$PARAM OSX=1 UNIX=1"
+			;;
+		FREEBSD)
+			PARAM="$PARAM FREEBSD=1"
+			;;
+		MORPHOS)
+			PARAM="$PARAM MORPHOS=1 UNIX=1"
+			;;
+		BEOS)
+			PARAM="$PARAM BEOS=1 UNIX=1"
+			;;
+		OS2)
+			PARAM="$PARAM OS2=1 UNIX=1"
+			;;
+		SUNOS)
+			PARAM="$PARAM SUNOS=1 UNIX=1"
+			;;
+		CYGWIN)
+			PARAM="$PARAM CYGWIN=1 WIN32=1"
+			;;
+		MINGW)
+			PARAM="$PARAM MINGW=1 WIN32=1"
+			;;
+		*)
+			echo "Unknown OS: $TARGET_OS"
+			exit 1
+			;;
+	esac
+	PARAM="$PARAM BYPASS_OS_DETECT=1"
+fi
+
+if ! test -z "$DEBUG_SET"
+then
+	if test -z "`echo $PARAM | grep "DEBUG="`"
+	then
+		# Someone did --debug, without assigning a value, assume 1
+		PARAM="$PARAM DEBUG=1"
+	fi
+fi
+
+# First remove the Makefile.config, else you can have double entries
+rm -f Makefile.config
+
+echo "make upgradeconf $PARAM" > Makefile.run
+. Makefile.run
+rm -f Makefile.run
+
+# Makefile.config currently doesn't support custom RELEASE (revision), so, we add the line
+# yourself!
+
+if ! test -z "$RELEASE"
+then
+	echo "RELEASE=$RELEASE" >> Makefile.config
+fi
+

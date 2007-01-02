@@ -1,0 +1,249 @@
+# Auto-generated file -- DO NOT EDIT
+
+# Check if we want to show what we are doing
+ifdef VERBOSE
+	Q =
+else
+	Q = @
+endif
+
+include Makefile.am
+
+SOURCE_LIST = !!SOURCE_LIST!!
+CONFIG_CACHE_SOURCE_LIST = !!CONFIG_CACHE_SOURCE_LIST!!
+CONFIGURE_FILES = !!CONFIGURE_FILES!!
+LIPO = !!LIPO!!
+BIN_DIR = !!BIN_DIR!!
+SRC_DIR = !!SRC_DIR!!
+ROOT_DIR = !!ROOT_DIR!!
+BUNDLE_DIR = "$(ROOT_DIR)/bundle"
+BUNDLES_DIR = "$(ROOT_DIR)/bundles"
+INSTALL_DIR = !!INSTALL_DIR!!
+INSTALL_BINARY_DIR = "$(INSTALL_DIR)/"!!BINARY_DIR!!
+INSTALL_ICON_DIR = "$(INSTALL_DIR)/"!!ICON_DIR!!
+INSTALL_DATA_DIR = "$(INSTALL_DIR)/"!!DATA_DIR!!
+INSTALL_PERSONAL_DIR = !!PERSONAL_DIR!!
+# TODO: ENABLE_INSTALL should be removed when the search path patch has been applied
+ENABLE_INSTALL = !!ENABLE_INSTALL!!
+TTD = !!TTD!!
+TTDS = $(SRC_DIRS:%=%/$(TTD))
+OS = !!OS!!
+OSXAPP = !!OSXAPP!!
+
+RES := $(shell if ! [ -f $(CONFIG_CACHE_SOURCE_LIST) ] || [ -n "`cmp $(CONFIG_CACHE_SOURCE_LIST) $(SOURCE_LIST)`" ]; then cp $(SOURCE_LIST) $(CONFIG_CACHE_SOURCE_LIST); fi )
+
+all: config.cache
+	@for dir in $(DIRS); do \
+		$(MAKE) -C $$dir all; \
+	done
+ifdef LIPO
+# Lipo is an OSX thing. If it is defined, it means we are building for universal,
+# and so we have have to combine the binaries into one big binary
+
+# Remove the last binary made by the last compiled target
+	rm -f $(BIN_DIR)/$(TTD)
+# Make all the binaries into one
+	$(LIPO) -create -output $(BIN_DIR)/$(TTD) $(TTDS)
+endif
+
+config.cache: $(CONFIG_CACHE_SOURCE_LIST) $(CONFIGURE_FILES)
+ifeq ($(shell if test -f config.cache; then echo 1; fi), 1)
+	@echo "----------------"
+	@echo "The system detected that source.list or any configure file is altered."
+	@echo " Going to reconfigure with last known settings..."
+	@echo "----------------"
+# Make sure we don't lock config.cache
+	@$(shell cat config.cache) || exit 1
+	@echo "----------------"
+	@echo "Reconfig done. Now compiling..."
+	@echo "----------------"
+else
+	@echo "----------------"
+	@echo "Have not found a configuration, please run configure first."
+	@echo "----------------"
+	@exit 1
+endif
+
+clean:
+	@for dir in $(DIRS); do \
+		$(MAKE) -C $$dir clean; \
+	done
+	$(Q)rm -rf $(BUNDLE_TARGET)
+
+lang:
+	@for dir in $(LANG_DIRS); do \
+		$(MAKE) -C $$dir all; \
+	done
+
+mrproper:
+	@for dir in $(DIRS); do \
+		$(MAKE) -C $$dir mrproper; \
+		rm -f $$dir/Makefile; \
+	done
+	$(Q)rm -rf objs
+	$(Q)rm -f Makefile Makefile.am
+	$(Q)rm -f $(CONFIG_CACHE_SOURCE_LIST) config.cache config.log
+	$(Q)rm -rf $(BUNDLE_DIR)
+	$(Q)rm -rf $(BUNDLES_DIR)
+
+depend:
+	@for dir in $(SRC_DIRS); do \
+		$(MAKE) -C $$dir depend; \
+	done
+
+run: all
+	$(Q)cd !!BIN_DIR!! && ./!!TTD!!
+
+%.o:
+	@for dir in $(SRC_DIRS); do \
+		$(MAKE) -C $$dir $@; \
+	done
+
+%.lng:
+	@for dir in $(LANG_DIRS); do \
+		$(MAKE) -C $$dir $@; \
+	done
+
+#
+# Creation of bundles
+#
+
+# The revision is needed for the bundle name and creating an OSX application bundle.
+ifdef REVISION
+REV := $(REVISION)
+else
+# Are we a SVN dir?
+ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
+# Find if the local source if modified
+REV_MODIFIED := $(shell svnversion $(SRC_DIR) | sed -n 's/.*\(M\).*/\1/p' )
+# Find the revision like: rXXXX-branch
+REV := $(shell LC_ALL=C svn info $(SRC_DIR) | awk '/^URL:.*branches/ { split($$2, a, "/"); BRANCH="-"a[5] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
+endif
+endif
+# Make sure we have something in REV
+ifeq ($(REV),)
+REV := norev000
+endif
+
+ifndef BUNDLE_NAME
+BUNDLE_NAME = OTTD-$(OS)-custom-$(REV)
+endif
+
+# An OSX application bundle needs the data files, lang files and openttd executable in a different location.
+ifdef OSXAPP
+DATA_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Data
+LANG_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Lang
+TTD_DIR  = $(BUNDLE_DIR)/$(OSXAPP)/Contents/MacOS
+else
+DATA_DIR = $(BUNDLE_DIR)/data
+LANG_DIR = $(BUNDLE_DIR)/lang
+TTD_DIR  = $(BUNDLE_DIR)
+endif
+
+bundle: all
+	@echo '[BUNDLE] Constructing bundle'
+	$(Q)rm -rf   "${BUNDLE_DIR}"
+	$(Q)mkdir -p "${BUNDLE_DIR}"
+	$(Q)mkdir -p "$(BUNDLE_DIR)/docs"
+	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario"
+	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario/heightmap"
+	$(Q)mkdir -p "$(BUNDLE_DIR)/media"
+	$(Q)mkdir -p "$(TTD_DIR)"
+	$(Q)mkdir -p "$(DATA_DIR)"
+	$(Q)mkdir -p "$(LANG_DIR)"
+ifdef OSXAPP
+	$(Q)mkdir -p "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources"
+	$(Q)echo "APPL????" >                                          "$(BUNDLE_DIR)/$(OSXAPP)/Contents/PkgInfo"
+	$(Q)cp    "$(ROOT_DIR)/os/macosx/openttd.icns"                 "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/openttd.icns"
+	$(Q)$(ROOT_DIR)/os/macosx/plistgen.sh                          "${BUNDLE_DIR}/$(OSXAPP)" "$(REV)"
+	$(Q)cp    "$(ROOT_DIR)/docs/OSX_install_instructions.txt"      "$(BUNDLE_DIR)/docs/"
+	$(Q)cp    "$(ROOT_DIR)/docs/OSX_why_multiple_applications.txt" "$(BUNDLE_DIR)/docs/"
+	$(Q)cp    "$(ROOT_DIR)/os/macosx/splash.png"                   "$(DATA_DIR)"
+endif
+	$(Q)cp "$(BIN_DIR)/$(TTD)"                "$(TTD_DIR)/"
+	$(Q)cp "$(BIN_DIR)/data/"*.grf            "$(DATA_DIR)/"
+	$(Q)cp "$(BIN_DIR)/data/opntitle.dat"     "$(DATA_DIR)/"
+	$(Q)cp "$(BIN_DIR)/lang/"*.lng            "$(LANG_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/readme.txt"           "$(BUNDLE_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/COPYING"              "$(BUNDLE_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/known-bugs.txt"       "$(BUNDLE_DIR)/docs/"
+	$(Q)cp "$(ROOT_DIR)/docs/multiplayer.txt" "$(BUNDLE_DIR)/docs/"
+	$(Q)cp "$(ROOT_DIR)/changelog.txt"        "$(BUNDLE_DIR)/docs/"
+	$(Q)cp "$(ROOT_DIR)/media/openttd.64.png" "$(BUNDLE_DIR)/media/"
+	$(Q)cp "$(ROOT_DIR)/media/openttd.32.xpm" "$(BUNDLE_DIR)/media/"
+	$(Q)cp "$(ROOT_DIR)/media/openttd.32.bmp" "$(BUNDLE_DIR)/media/"
+ifeq ($(shell if test -d $(BIN_DIR)/scenario/*.scn; then echo 1; fi), 1)
+	$(Q)cp "$(BIN_DIR)/scenario/"*.scn        "$(BUNDLE_DIR)/scenario/"
+endif
+ifeq ($(shell if test -d $(BIN_DIR)/scenario/heightmaps/*; then echo 1; fi), 1)
+	$(Q)cp "$(BIN_DIR)/scenario/heightmaps/"* "$(BUNDLE_DIR)/scenario/heightmap/"
+endif
+
+### Packing the current bundle into several compressed file formats ###
+#
+# Zips & dmgs do not contain a root folder, i.e. they have files in the root of the zip/dmg.
+# gzip, bzip2 and lha archives have a root folder, with the same name as the bundle.
+#
+# One can supply a custom name by adding BUNDLE_NAME:=<name> to the make command.
+#
+bundle_zip: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).zip'
+	$(Q)mkdir -p "$(BUNDLES_DIR)"
+	$(Q)cd "$(BUNDLE_DIR)" && zip -r $(shell if test -z "$(VERBOSE)"; then echo '-q'; fi) "$(BUNDLES_DIR)/$(BUNDLE_NAME).zip" .
+
+bundle_gzip: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).tar.gz'
+	$(Q)mkdir -p "$(BUNDLES_DIR)/.gzip/$(BUNDLE_NAME)"
+	$(Q)cp -R    "$(BUNDLE_DIR)/"* "$(BUNDLES_DIR)/.gzip/$(BUNDLE_NAME)/"
+	$(Q)cd "$(BUNDLES_DIR)/.gzip" && tar -zc$(shell if test -n "$(VERBOSE)"; then echo 'v'; fi)f "$(BUNDLES_DIR)/$(BUNDLE_NAME).tar.gz" "$(BUNDLE_NAME)"
+	$(Q)rm -rf   "$(BUNDLES_DIR)/.gzip"
+
+bundle_bzip2: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).tar.bz2'
+	$(Q)mkdir -p "$(BUNDLES_DIR)/.bzip2/$(BUNDLE_NAME)"
+	$(Q)cp -R    "$(BUNDLE_DIR)/"* "$(BUNDLES_DIR)/.bzip2/$(BUNDLE_NAME)/"
+	$(Q)cd "$(BUNDLES_DIR)/.bzip2" && tar -jc$(shell if test -n "$(VERBOSE)"; then echo 'v'; fi)f "$(BUNDLES_DIR)/$(BUNDLE_NAME).tar.bz2" "$(BUNDLE_NAME)"
+	$(Q)rm -rf   "$(BUNDLES_DIR)/.bzip2"
+
+bundle_lha: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).lha'
+	$(Q)mkdir -p "$(BUNDLES_DIR)/.lha/$(BUNDLE_NAME)"
+	$(Q)cp -R    "$(BUNDLE_DIR)/"* "$(BUNDLES_DIR)/.lha/$(BUNDLE_NAME)/"
+	$(Q)cd "$(BUNDLES_DIR)/.lha" && lha ao6 "$(BUNDLES_DIR)/$(BUNDLE_NAME).lha" "$(BUNDLE_NAME)"
+	$(Q)rm -rf   "$(BUNDLES_DIR)/.lha"
+
+bundle_dmg: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).dmg'
+	$(Q)mkdir -p "$(BUNDLES_DIR)"
+	$(Q)hdiutil create -ov -format UDZO -srcfolder "$(BUNDLE_DIR)" "$(BUNDLES_DIR)/$(BUNDLE_NAME).dmg"
+
+# TODO: ENABLE_INSTALL should be removed when the search path patch has been applied
+ifeq ($(ENABLE_INSTALL), 0)
+install:
+	@echo '[INSTALL] Cannot install. Not compiled with installation paths'
+else
+ifdef OSXAPP
+install:
+	@echo '[INSTALL] Cannot install the OSX Application Bundle'
+else
+install: bundle
+	@echo '[INSTALL] Installing OpenTTD'
+	$(Q)install -d "$(INSTALL_BINARY_DIR)"
+	$(Q)install -d "$(INSTALL_ICON_DIR)"
+	$(Q)install -d "$(INSTALL_DATA_DIR)/gm"
+	$(Q)install -d "$(INSTALL_DATA_DIR)/data"
+	$(Q)install -d "$(INSTALL_DATA_DIR)/lang"
+	$(Q)install -d "$(INSTALL_DATA_DIR)/docs"
+	$(Q)install -m 755 "$(BUNDLE_DIR)/$(TTD)" "$(INSTALL_BINARY_DIR)"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/lang/"* "$(INSTALL_DATA_DIR)/lang"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/data/"* "$(INSTALL_DATA_DIR)/data"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/docs/"* "$(INSTALL_DATA_DIR)/docs"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/media/"* "$(INSTALL_ICON_DIR)"
+ifdef INSTALL_PERSONAL_DIR
+	$(Q)mkdir -p ~/"$(INSTALL_PERSONAL_DIR)"
+	$(Q)cp -R "$(BUNDLE_DIR)/scenario" ~/"$(INSTALL_PERSONAL_DIR)"
+else
+	$(Q)cp -R "$(BUNDLE_DIR)/scenario" "$(INSTALL_DATA_DIR)"
+endif # INSTALL_PERSONAL_DIR
+endif # OSXAPP
+endif # ENABLE_INSTALL

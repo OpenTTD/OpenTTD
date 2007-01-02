@@ -10,7 +10,7 @@
 #include "../date.h"
 
 #include "../fios.h"
-#include "../table/strings.h"
+#include "table/strings.h"
 #include "../functions.h"
 #include "network_data.h"
 #include "network_client.h"

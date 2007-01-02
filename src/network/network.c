@@ -25,7 +25,7 @@
 #include "../variables.h"
 #include "../date.h"
 #include "../newgrf_config.h"
-#include "../table/strings.h"
+#include "table/strings.h"
 #include "network_client.h"
 #include "network_server.h"
 #include "network_udp.h"

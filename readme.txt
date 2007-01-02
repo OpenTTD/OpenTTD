@@ -148,25 +148,29 @@ Windows:
 
 Unix:
   OpenTTD can be built with GNU "make". On non-GNU systems it's called "gmake".
+  However, for the first build one has to do a "./configure" first.
   Note that you need SDL-devel 1.2.5 (or higher) to compile OpenTTD.
 
 MacOS X:
   Use "make" or Xcode (which will then call make for you)
   This will give you a binary for your CPU type (PPC/Intel)
-  To make a universal binary type "make UNIVERSAL_BINARY:=1"
+  However, for the first build one has to do a "./configure" first.
+  To make a universal binary type "./configure --enabled-universal"
+  instead of "./configure".
 
 BeOS:
-  Use "make".
+  Use "make", but do a "./configure" before the first build.
 
 FreeBSD:
   You need the port devel/sdl12 for a non-dedicated build.
   graphics/png is optional for screenshots in the PNG format.
-  Use "gmake".
+  Use "gmake", but do a "./configure" before the first build.
 
 MorphOS:
-  Use "make". Note that you need the MorphOS SDK, latest libnix updates (else
-  C++ parts of OpenTTD will not build) and the powersdl.library SDK. Optionally
-  libz, libpng and freetype2 developer files.
+  Use "make". However, for the first build one has to do a "./configure" first.
+  Note that you need the MorphOS SDK, latest libnix updates (else C++ parts of
+  OpenTTD will not build) and the powersdl.library SDK. Optionally libz,
+  libpng and freetype2 developer files.
 
 OS/2:
   Open Watcom C/C++ 1.3 or later is required to build the OS/2 version. See the

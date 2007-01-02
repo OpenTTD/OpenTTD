@@ -13,7 +13,7 @@ Once you have obtained a recent copy of the source, you must build it. Windows b
 On UNIX platforms (including OS-X and BeOS), ensure you have a recent GCC (2.9  or above, or 3 and above).You will also need SDL development headers and libraries (libSDL 1.2 or higher). For PNG screenshot support and zlib compressed games, you will need libpng 1.0.12 or higher and zlib 1.2 or higher.
 
 Most UNIX platforms:
-Use make or gmake to compile OpenTTD. You can adjust Makefile.config to compile with other options.
+First run ./configure, them use make or gmake to compile OpenTTD. You can configure the different compile options via ./configure.
 
 BeOS:
 On BeOS, run ./configure and then use jam. There are a variaty of options you can pass to your build tool, these are reported by ./configure.

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="langs"
+	ProjectGUID="{0F066B23-18DF-4284-8265-F4A5E7E3B966}"
+	RootNamespace="langs"
+	SccProjectName=""
+	SccLocalPath=""
+	Keyword="MakeFileProj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="..\bin\lang\"
+			IntermediateDirectory="..\objs\langs\"
+			ConfigurationType="10"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCMIDLTool"
+				TypeLibraryName="./langs.tlb"
+				HeaderFileName=""/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Generating strings.h"
+				CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\objs\langs\table"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+!!FILES!!
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

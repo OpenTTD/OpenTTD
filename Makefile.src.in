@@ -1,0 +1,263 @@
+# Auto-generated file -- DO NOT EDIT
+
+CC_HOST      = !!CC_HOST!!
+CXX_HOST     = !!CXX_HOST!!
+CC_BUILD     = !!CC_BUILD!!
+WINDRES      = !!WINDRES!!
+STRIP        = !!STRIP!!
+CC_CFLAGS    = !!CC_CFLAGS!!
+CFLAGS       = !!CFLAGS!!
+CFLAGS_BUILD = !!CFLAGS_BUILD!!
+LIBS         = !!LIBS!!
+LDFLAGS      = !!LDFLAGS!!
+BIN_DIR      = !!BIN_DIR!!
+LANG_DIR     = !!LANG_DIR!!
+SRC_OBJS_DIR = !!SRC_OBJS_DIR!!
+LANG_OBJS_DIR= !!LANG_OBJS_DIR!!
+SRC_DIR      = !!SRC_DIR!!
+MEDIA_DIR    = !!MEDIA_DIR!!
+TTD          = !!TTD!!
+STRGEN       = !!STRGEN!!
+ENDIAN_CHECK = !!ENDIAN_CHECK!!
+ENDIAN_FORCE = !!ENDIAN_FORCE!!
+OS           = !!OS!!
+STAGE        = !!STAGE!!
+MAKEDEPEND   = !!MAKEDEPEND!!
+CFLAGS_MAKEDEP= !!CFLAGS_MAKEDEP!!
+SORT         = !!SORT!!
+CONFIG_CACHE_COMPILER = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_COMPILER!!
+CONFIG_CACHE_LINKER   = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_LINKER!!
+CONFIG_CACHE_ENDIAN   = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_ENDIAN!!
+CONFIG_CACHE_SOURCE   = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_SOURCE!!
+CONFIG_CACHE_VERSION  = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_VERSION!!
+
+OBJS_C   := !!OBJS_C!!
+OBJS_CPP := !!OBJS_CPP!!
+OBJS_M   := !!OBJS_M!!
+OBJS_RC  := !!OBJS_RC!!
+OBJS     := $(OBJS_C) $(OBJS_CPP) $(OBJS_M) $(OBJS_RC)
+SRCS     := !!SRCS!!
+
+# All C-files depend on those 3 files
+FILE_DEP := $(CONFIG_CACHE_COMPILER) $(LANG_OBJS_DIR)/table/strings.h endian_target.h
+# Create all dirs and subdirs
+RES      := $(shell mkdir -p $(BIN_DIR) $(sort $(dir $(OBJS))))
+
+# Make sure endian_target.h is reasable as if it was in the src/ dir
+CFLAGS += -I $(SRC_OBJS_DIR) -I $(LANG_OBJS_DIR)
+
+ENDIAN_TARGETS := endian_target.h $(ENDIAN_CHECK)
+
+# Check if we want to show what we are doing
+ifdef VERBOSE
+	Q =
+	E = @true
+else
+	Q = @
+	E = @echo
+endif
+
+# Our default target
+all: $(TTD)
+
+# This are 2 rules that are pointing back to STRGEN stuff.
+#  There is not really a need to have them here, but in case
+#  some weirdo wants to run 'make' in the 'src' dir and expects
+#  the languages to be recompiled, this catches that case and
+#  takes care of it nicely.
+$(LANG_OBJS_DIR)/$(STRGEN):
+	$(MAKE) -C $(LANG_OBJS_DIR) $(STRGEN)
+
+$(LANG_OBJS_DIR)/table/strings.h: $(LANG_DIR)/english.txt $(LANG_OBJS_DIR)/$(STRGEN)
+	$(MAKE) -C $(LANG_OBJS_DIR) table/strings.h
+
+# Make the revision number
+ifdef REVISION
+REV := $(REVISION)
+else
+# Are we a SVN dir?
+ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
+# Find if the local source if modified
+REV_MODIFIED := $(shell svnversion $(SRC_DIR) | sed -n 's/.*\(M\).*/\1/p' )
+# Find the revision like: rXXXX-branch
+REV := $(shell LC_ALL=C svn info $(SRC_DIR) | awk '/^URL:.*branch/ { split($$2, a, "/"); BRANCH="-"a[5] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
+endif
+endif
+# Make sure we have something in REV
+ifeq ($(REV),)
+REV := norev000
+endif
+
+# This helps to recompile if flags change
+RES := $(shell if [ "`cat $(CONFIG_CACHE_COMPILER) 2>/dev/null`" != "$(CC_CFLAGS) $(CFLAGS)" ]; then echo "$(CC_CFLAGS) $(CFLAGS)" > $(CONFIG_CACHE_COMPILER); fi )
+RES := $(shell if [ "`cat $(CONFIG_CACHE_LINKER) 2>/dev/null`" != "$(LDFLAGS) $(LIBS)" ]; then echo "$(LDFLAGS) $(LIBS)" > $(CONFIG_CACHE_LINKER); fi )
+RES := $(shell if [ "`cat $(CONFIG_CACHE_ENDIAN) 2>/dev/null`" != "$(ENDIAN_FORCE)" ]; then echo "$(ENDIAN_FORCE)" > $(CONFIG_CACHE_ENDIAN); fi )
+
+# If there is a change in the source-file-list, make sure we recheck the deps
+RES := $(shell if [ "`cat $(CONFIG_CACHE_SOURCE) 2>/dev/null`" != "$(SRCS)" ]; then echo "$(SRCS)" > $(CONFIG_CACHE_SOURCE); fi )
+# If there is a change in the revision, make sure we recompile rev.c
+RES := $(shell if [ "`cat $(CONFIG_CACHE_VERSION) 2>/dev/null`" != "$(REV)" ]; then echo "$(REV)" > $(CONFIG_CACHE_VERSION); fi )
+
+ifndef MAKEDEPEND
+# The slow, but always correct, dep-check
+DEP_MASK := %.d
+DEPS     := $(OBJS:%.o=%.d)
+
+# Only include the deps if we are compiling everything
+ifeq ($(filter $(ENDIAN_TARGETS) %.o clean mrproper, $(MAKECMDGOALS)),)
+-include $(DEPS)
+else
+# In case we want to compile a single target, include the .d file for it
+ifneq ($(filter %.o, $(MAKECMDGOALS)),)
+SINGLE_DEP := $(filter %.o, $(MAKECMDGOALS))
+-include $(SINGLE_DEP:%.o=%.d)
+endif
+endif
+
+# Find the deps via GCC. Rarely wrong, but a bit slow
+
+$(OBJS_C:%.o=%.d): %.d: $(SRC_DIR)/%.c $(FILE_DEP)
+	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.c=%.c)'
+	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:%.d=%.o):#' > $@
+
+$(OBJS_CPP:%.o=%.d): %.d: $(SRC_DIR)/%.cpp $(FILE_DEP)
+	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.cpp=%.cpp)'
+	$(Q)$(CXX_HOST) $(CFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:%.d=%.o):#' > $@
+
+$(OBJS_M:%.o=%.d): %.d: $(SRC_DIR)/%.m $(FILE_DEP)
+	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.m=%.m)'
+	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:%.d=%.o):#' > $@
+
+else
+# The much faster, but can be wrong, dep-check
+DEP_MASK :=
+DEPS     := Makefile.dep
+
+# Only include the deps if we are not cleaning
+ifeq ($(filter $(ENDIAN_TARGETS) depend clean mrproper, $(MAKECMDGOALS)),)
+-include Makefile.dep
+endif
+
+# Make sure that only 'make depend' ALWAYS triggers a recheck
+ifeq ($(filter depend, $(MAKECMDGOALS)),)
+Makefile.dep: $(FILE_DEP) $(SRCS:%=$(SRC_DIR)/%) $(CONFIG_CACHE_SOURCE)
+else
+Makefile.dep: FORCE
+endif
+	$(E) '$(STAGE) DEP CHECK (all files)'
+	$(Q)rm -f Makefile.dep.tmp
+	$(Q)touch Makefile.dep.tmp
+
+# Calculate the deps via makedepend
+	$(Q)$(MAKEDEPEND) -f$(SRC_OBJS_DIR)/Makefile.dep.tmp -o.o -Y -v -- $(CFLAGS_MAKEDEP) -- $(SRCS:%=$(SRC_DIR)/%) 2>/dev/null
+
+# Convert x:/... paths to /x/... for mingw
+ifeq ($(OS), MINGW)
+	@cat Makefile.dep.tmp | sed 's@\([a-zA-Z]\):/@/\1/@g' > Makefile.dep.tmp.mingw
+	@cp Makefile.dep.tmp.mingw Makefile.dep.tmp
+	@rm -f Makefile.dep.tmp.mingw
+endif
+
+# Remove all comments and includes that don't start with $(SRC_DIR)
+# Remove $(SRC_DIR) from object-file-name
+	@awk '                              \
+	/^# DO NOT/ { print $$0 ; next}     \
+	/^#/ {next}                         \
+	/:/ {                               \
+		left = NF - 1;                    \
+		for (n = 2; n <= NF; n++) {       \
+			if (match($$n, "^$(SRC_DIR)") == 0) { \
+				$$n = "";                     \
+				left--;                       \
+			}                               \
+		}                                 \
+		gsub("$(SRC_DIR)/", "", $$1);     \
+		if (left > 0) {                   \
+			print $$0;                      \
+			$$1 = "Makefile.dep:";          \
+			print $$0;                      \
+		}                                 \
+		next                              \
+	}                                   \
+	{                                   \
+		print $$0                         \
+	}                                   \
+	' < Makefile.dep.tmp | sed 's/  */ /g;s/ $$//' | $(SORT) > Makefile.dep
+
+	$(Q)rm -f Makefile.dep.tmp Makefile.dep.tmp.bak
+
+endif
+
+# Avoid problems with deps if a .h file is deleted without the deps
+#  being updated. Now the Makefile continues, the deps are recreated
+#  and all will be fine.
+%.h:
+	@true
+
+
+# Compile all the files according to the targets
+
+$(OBJS_C): %.o: $(SRC_DIR)/%.c $(DEP_MASK) $(FILE_DEP)
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.c=%.c)'
+	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -c -o $@ $<
+
+$(OBJS_CPP): %.o: $(SRC_DIR)/%.cpp $(DEP_MASK) $(FILE_DEP)
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
+	$(Q)$(CXX_HOST) $(CFLAGS) -c -o $@ $<
+
+$(OBJS_M): %.o: $(SRC_DIR)/%.m $(DEP_MASK) $(FILE_DEP)
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.m=%.m)'
+	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -c -o $@ $<
+
+$(OBJS_RC): %.o: $(SRC_DIR)/%.rc $(FILE_DEP)
+	$(E) '$(STAGE) Compiling resource $(<:$(SRC_DIR)/%.rc=%.rc)'
+	$(Q)$(WINDRES) -o $@ -I $(MEDIA_DIR) $<
+
+$(TTD): rev.o $(OBJS) $(CONFIG_CACHE_LINKER)
+	$(E) '$(STAGE) Linking $@'
+	$(Q)$(CXX_HOST) $(LDFLAGS) rev.o $(OBJS) $(LIBS) -o $@ && cp $@ $(BIN_DIR)/
+ifdef STRIP
+	$(Q)$(STRIP) $@
+endif
+
+# The targets to compile the endian-code
+
+endian_target.h: $(ENDIAN_CHECK) $(CONFIG_CACHE_ENDIAN)
+	$(E) '$(STAGE) Testing endianness for target'
+	$(Q)./$(ENDIAN_CHECK) $(ENDIAN_FORCE) > $@
+
+$(ENDIAN_CHECK): $(SRC_DIR)/endian_check.c
+	$(E) '$(STAGE) Compiling and Linking $@'
+	$(Q)$(CC_BUILD) $(CFLAGS_BUILD) $< -o $@
+
+# Revision files
+
+rev.c: $(CONFIG_CACHE_VERSION)
+# setting the revision number in a place, there the binary can read it
+	@echo 'const char _openttd_revision[] = "$(REV)";' > rev.c
+# Some additions for MorphOS versions tag
+ifeq ($(OS),MORPHOS)
+	@echo '#ifdef __MORPHOS__' >> rev.c
+	@echo 'const char morphos_versions_tag[] = "\\0$$VER: OpenTTD $(REV) ('`date +%d.%m.%y`') (C) OpenTTD Team [MorphOS, PowerPC]";' >> rev.c
+	@echo '#endif' >> rev.c
+endif
+
+rev.o: rev.c $(FILE_DEP)
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.c=%.c)'
+	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -c -o $@ $<
+
+FORCE:
+
+depend: $(DEPS)
+
+clean:
+	$(E) '$(STAGE) Cleaning up object files'
+	$(Q)rm -f $(DEPS) $(OBJS) $(TTD) $(TTD:%=$(BIN_DIR)/%) $(CONFIG_CACHE_COMPILER) $(CONFIG_CACHE_LINKER) $(CONFIG_CACHE_ENDIAN) $(CONFIG_CACHE_SOURCE) $(ENDIAN_TARGETS) rev.o
+
+mrproper: clean
+	$(Q)rm -f rev.c
+
+%.o:
+	@echo '$(STAGE) No such source-file: $(@:%.o=%).[c|cpp|m|rc]'
+
+.PHONY: all mrproper depend clean FORCE
