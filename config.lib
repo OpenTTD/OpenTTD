@@ -657,11 +657,11 @@ check_params() {
 	if [ "$enable_translator" != "0" ]
 	then
 		log 1 "checking translator... debug"
-		strgen_flags=""
-	else
-		log 1 "checking translator... no"
 		# -t shows TODO items, normally they are muted
 		strgen_flags="-t"
+	else
+		log 1 "checking translator... no"
+		strgen_flags=""
 	fi
 
 	if [ "$enable_assert" != "0" ]
