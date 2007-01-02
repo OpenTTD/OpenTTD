@@ -2109,10 +2109,10 @@ generate_src_osx() {
 	cxx_host="$cxx_host_orig -arch ppc"
 	generate_src_normal "[PowerPC]" "objs/ppc"
 
-	BASE_SRC_OBJS_DIR="$OBJS_DIR/i386"
+	BASE_SRC_OBJS_DIR="$OBJS_DIR/intel"
 	cc_host="$cc_host_orig -arch i386"
 	cxx_host="$cxx_host_orig -arch i386"
-	generate_src_normal "[i386]" "objs/i386"
+	generate_src_normal "[intel]" "objs/intel"
 
 	BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc970"
 	cc_host="$cc_host_orig -arch ppc970"
