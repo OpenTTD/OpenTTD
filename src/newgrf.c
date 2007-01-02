@@ -3682,8 +3682,10 @@ void LoadNewGRF(uint load_index, uint file_index)
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
 			LoadNewGRFFile(c, slot++, stage);
-			if (stage == GLS_ACTIVATION) ClearTemporaryNewGRFData();
-			DEBUG(sprite, 2, "Currently %i sprites are loaded", load_index);
+			if (stage == GLS_ACTIVATION) {
+				ClearTemporaryNewGRFData();
+				DEBUG(sprite, 2, "Currently %i sprites are loaded", _cur_spriteid);
+			}
 		}
 	}
 
