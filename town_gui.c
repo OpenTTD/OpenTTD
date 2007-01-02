@@ -14,7 +14,7 @@
 #include "gui.h"
 #include "command.h"
 #include "player.h"
-#include "network.h"
+#include "network/network.h"
 #include "variables.h"
 
 static const Widget _town_authority_widgets[] = {

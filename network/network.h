@@ -7,7 +7,9 @@
 
 #ifdef ENABLE_NETWORK
 
-#include "player.h"
+#include "../player.h"
+#include "core/config.h"
+#include "core/game.h"
 
 // If this line is enable, every frame will have a sync test
 //  this is not needed in normal games. Normal is like 1 sync in 100
@@ -31,73 +33,12 @@
 // Do not change this next line. It should _ALWAYS_ be MAX_CLIENTS + 1
 #define MAX_CLIENT_INFO (MAX_CLIENTS + 1)
 
-/* Stuff for the master-server */
-#define NETWORK_MASTER_SERVER_PORT 3978
-#define NETWORK_MASTER_SERVER_HOST "master.openttd.org"
-#define NETWORK_MASTER_SERVER_WELCOME_MESSAGE "OpenTTDRegister"
-
-#define NETWORK_DEFAULT_PORT 3979
-
 #define MAX_INTERFACES 9
 
 
 // How many vehicle/station types we put over the network
 #define NETWORK_VEHICLE_TYPES 5
 #define NETWORK_STATION_TYPES 5
-
-enum {
-	NETWORK_NAME_LENGTH        =  80,
-	NETWORK_HOSTNAME_LENGTH    =  80,
-	NETWORK_REVISION_LENGTH    =  15,
-	NETWORK_PASSWORD_LENGTH    =  20,
-	NETWORK_PLAYERS_LENGTH     = 200,
-	NETWORK_CLIENT_NAME_LENGTH =  25,
-	NETWORK_RCONCOMMAND_LENGTH = 500,
-
-	NETWORK_GRF_NAME_LENGTH    =  80, ///< Maximum length of the name of a GRF
-	/* Maximum number of GRFs that can be sent.
-	 * This value is related to number of handles (files) OpenTTD can open.
-	 * This is currently 64 and about 10 are currently used when OpenTTD loads
-	 * without any NewGRFs. Therefore one can only load about 55 NewGRFs, so
-	 * this is not a limit, but rather a way to easily check whether the limit
-	 * imposed by the handle count is reached. Secondly it isn't possible to
-	 * send much more GRF IDs + MD5sums in the PACKET_UDP_SERVER_RESPONSE, due
-	 * to the limited size of UDP packets. */
-	NETWORK_MAX_GRF_COUNT      =  55,
-
-	NETWORK_NUM_LANGUAGES      =   4,
-};
-
-// This is the struct used by both client and server
-//  some fields will be empty on the client (like game_password) by default
-//  and only filled with data a player enters.
-typedef struct NetworkGameInfo {
-	char server_name[NETWORK_NAME_LENGTH];          // Server name
-	char hostname[NETWORK_HOSTNAME_LENGTH];         // Hostname of the server (if any)
-	char server_revision[NETWORK_REVISION_LENGTH];  // The SVN version number the server is using (e.g.: 'r304')
-	                                                //  It even shows a SVN version in release-version, so
-	                                                //  it is easy to compare if a server is of the correct version
-	bool version_compatible;                        // Can we connect to this server or not? (based on server_revision)
-	bool compatible;                                // Can we connect to this server or not? (based on server_revision _and_ grf_match
-	byte server_lang;                               // Language of the server (we should make a nice table for this)
-	byte use_password;                              // Is set to != 0 if it uses a password
-	char server_password[NETWORK_PASSWORD_LENGTH];  // On the server: the game password, on the client: != "" if server has password
-	byte clients_max;                               // Max clients allowed on server
-	byte clients_on;                                // Current count of clients on server
-	byte companies_max;                             // Max companies allowed on server
-	byte companies_on;                              // How many started companies do we have (XXX - disabled for server atm, use ActivePlayerCount())
-	byte spectators_max;                            // Max spectators allowed on server
-	byte spectators_on;                             // How many spectators do we have? (XXX - disabled for server atm, use NetworkSpectatorCount())
-	Date game_date;                                 // Current date
-	Date start_date;                                // When the game started
-	char map_name[NETWORK_NAME_LENGTH];             // Map which is played ["random" for a randomized map]
-	uint16 map_width;                               // Map width
-	uint16 map_height;                              // Map height
-	byte map_set;                                   // Graphical set
-	bool dedicated;                                 // Is this a dedicated server?
-	char rcon_password[NETWORK_PASSWORD_LENGTH];    // RCon password for the server. "" if rcon is disabled
-	struct GRFConfig *grfconfig;                    // List of NewGRF files required
-} NetworkGameInfo;
 
 typedef struct NetworkPlayerInfo {
 	char company_name[NETWORK_NAME_LENGTH];         // Company name

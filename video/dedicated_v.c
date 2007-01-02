@@ -8,7 +8,7 @@
 #include "../debug.h"
 #include "../functions.h"
 #include "../gfx.h"
-#include "../network.h"
+#include "../network/network.h"
 #include "../window.h"
 #include "../console.h"
 #include "../variables.h"

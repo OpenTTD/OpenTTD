@@ -4,7 +4,7 @@
 #include "../openttd.h"
 #include "../variables.h"
 #include "../command.h"
-#include "../network.h"
+#include "../network/network.h"
 #include "ai.h"
 #include "default/default.h"
 

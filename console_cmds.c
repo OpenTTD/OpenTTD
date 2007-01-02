@@ -9,10 +9,10 @@
 #include "saveload.h"
 #include "string.h"
 #include "variables.h"
-#include "network_data.h"
-#include "network_client.h"
-#include "network_server.h"
-#include "network_udp.h"
+#include "network/network_data.h"
+#include "network/network_client.h"
+#include "network/network_server.h"
+#include "network/network_udp.h"
 #include "command.h"
 #include "settings.h"
 #include "fios.h"
@@ -22,7 +22,7 @@
 #include "screenshot.h"
 #include "genworld.h"
 #include "date.h"
-#include "network.h"
+#include "network/network.h"
 
 // ** scriptfile handling ** //
 static FILE *_script_file;

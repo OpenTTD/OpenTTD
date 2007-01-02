@@ -14,7 +14,7 @@
 #include "tile.h"
 #include "depot.h"
 #include "tunnel_map.h"
-#include "network.h"
+#include "network/network.h"
 #include "water_map.h"
 
 static AyStar _npf_aystar;

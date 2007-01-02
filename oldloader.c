@@ -16,7 +16,7 @@
 #include "signs.h"
 #include "debug.h"
 #include "depot.h"
-#include "network.h"
+#include "network/network.h"
 #include "ai/ai.h"
 #include "date.h"
 

@@ -22,7 +22,7 @@
 #include "player.h"
 #include "town.h"
 #include "sound.h"
-#include "network.h"
+#include "network/network.h"
 #include "string.h"
 #include "variables.h"
 #include "vehicle.h"

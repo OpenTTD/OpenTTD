@@ -23,7 +23,7 @@
 #include "vehicle.h"
 #include "console.h"
 #include "sound.h"
-#include "network.h"
+#include "network/network.h"
 #include "signs.h"
 #include "waypoint.h"
 #include "variables.h"
@@ -37,10 +37,10 @@
 #include "vehicle_gui.h"
 #include "newgrf_config.h"
 
-#include "network_data.h"
-#include "network_client.h"
-#include "network_server.h"
-#include "network_gui.h"
+#include "network/network_data.h"
+#include "network/network_client.h"
+#include "network/network_server.h"
+#include "network/network_gui.h"
 #include "industry.h"
 
 static int _rename_id = 1;

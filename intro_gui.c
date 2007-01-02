@@ -9,12 +9,12 @@
 #include "gui.h"
 #include "gfx.h"
 #include "player.h"
-#include "network.h"
+#include "network/network.h"
 #include "variables.h"
 #include "settings.h"
 #include "heightmap.h"
 #include "genworld.h"
-#include "network_gui.h"
+#include "network/network_gui.h"
 #include "newgrf.h"
 
 static const Widget _select_game_widgets[] = {

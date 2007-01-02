@@ -11,7 +11,7 @@
 #include "gfx.h"
 #include "gfxinit.h"
 #include "gui.h"
-#include "network.h"
+#include "network/network.h"
 #include "debug.h"
 #include "settings.h"
 #include "heightmap.h"

@@ -19,7 +19,7 @@
 #include "settings.h"
 #include "debug.h"
 #include "genworld.h"
-#include "network.h"
+#include "network/network.h"
 #include "thread.h"
 #include "date.h"
 #include "newgrf_config.h"

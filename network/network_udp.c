@@ -2,37 +2,25 @@
 
 #ifdef ENABLE_NETWORK
 
-#include "stdafx.h"
-#include "debug.h"
-#include "string.h"
+#include "../stdafx.h"
+#include "../debug.h"
+#include "../string.h"
 #include "network_data.h"
-#include "date.h"
-#include "map.h"
+#include "../date.h"
+#include "../map.h"
 #include "network_gamelist.h"
 #include "network_udp.h"
-#include "variables.h"
-#include "newgrf_config.h"
+#include "../variables.h"
+#include "../newgrf_config.h"
 
-//
-// This file handles all the LAN-stuff
-// Stuff like:
-//   - UDP search over the network
-//
+#include "core/udp.h"
 
-typedef enum {
-	PACKET_UDP_CLIENT_FIND_SERVER,
-	PACKET_UDP_SERVER_RESPONSE,
-	PACKET_UDP_CLIENT_DETAIL_INFO,
-	PACKET_UDP_SERVER_DETAIL_INFO,   // Is not used in OpenTTD itself, only for external querying
-	PACKET_UDP_SERVER_REGISTER,      // Packet to register itself to the master server
-	PACKET_UDP_MASTER_ACK_REGISTER,  // Packet indicating registration has succedeed
-	PACKET_UDP_CLIENT_GET_LIST,      // Request for serverlist from master server
-	PACKET_UDP_MASTER_RESPONSE_LIST, // Response from master server with server ip's + port's
-	PACKET_UDP_SERVER_UNREGISTER,    // Request to be removed from the server-list
-	PACKET_UDP_CLIENT_GET_NEWGRFS,   // Requests the name for a list of GRFs (GRF_ID and MD5)
-	PACKET_UDP_SERVER_NEWGRFS,       // Sends the list of NewGRF's requested.
-	PACKET_UDP_END
-} PacketUDPType;
+/**
+ * @file network_udp.c This file handles the UDP related communication.
+ *
+ * This is the GameServer <-> MasterServer and GameServer <-> GameClient
+ * communication before the game is being joined.
+ */
 
 enum {
 	ADVERTISE_NORMAL_INTERVAL = 30000, // interval between advertising in ticks (15 minutes)
@@ -41,37 +29,8 @@ enum {
 };
 
 #define DEF_UDP_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(Packet *p, struct sockaddr_in *client_addr)
-static void NetworkSendUDP_Packet(SOCKET udp, Packet* p, struct sockaddr_in* recv);
 
 static NetworkClientState _udp_cs;
-
-/**
- * Serializes the GRFIdentifier (GRF ID and MD5 checksum) to the packet
- * @param p the packet to write the data to
- * @param c the configuration to write the GRF ID and MD5 checksum from
- */
-static void NetworkSend_GRFIdentifier(Packet *p, const GRFConfig *c)
-{
-	uint j;
-	NetworkSend_uint32(p, c->grfid);
-	for (j = 0; j < sizeof(c->md5sum); j++) {
-		NetworkSend_uint8 (p, c->md5sum[j]);
-	}
-}
-
-/**
- * Deserializes the GRFIdentifier (GRF ID and MD5 checksum) from the packet
- * @param p the packet to read the data from
- * @param c the configuration to write the GRF ID and MD5 checksum to
- */
-static void NetworkRecv_GRFIdentifier(Packet *p, GRFConfig *c)
-{
-	uint j;
-	c->grfid = NetworkRecv_uint32(&_udp_cs, p);
-	for (j = 0; j < sizeof(c->md5sum); j++) {
-		c->md5sum[j] = NetworkRecv_uint8(&_udp_cs, p);
-	}
-}
 
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 {
@@ -83,56 +42,15 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 	packet = NetworkSend_Init(PACKET_UDP_SERVER_RESPONSE);
 
 	// Update some game_info
-	_network_game_info.game_date = _date;
-	_network_game_info.map_width = MapSizeX();
-	_network_game_info.map_height = MapSizeY();
-	_network_game_info.map_set = _opt.landscape;
+	_network_game_info.game_date     = _date;
+	_network_game_info.map_width     = MapSizeX();
+	_network_game_info.map_height    = MapSizeY();
+	_network_game_info.map_set       = _opt.landscape;
+	_network_game_info.companies_on  = ActivePlayerCount();
+	_network_game_info.spectators_on = NetworkSpectatorCount();
+	_network_game_info.grfconfig     = _grfconfig;
 
-	NetworkSend_uint8 (packet, NETWORK_GAME_INFO_VERSION);
-
-	/* NETWORK_GAME_INFO_VERSION = 4 */
-	{
-		/* Only send the GRF Identification (GRF_ID and MD5 checksum) of
-		 * the GRFs that are needed, i.e. the ones that the server has
-		 * selected in the NewGRF GUI and not the ones that are used due
-		 * to the fact that they are in [newgrf-static] in openttd.cfg */
-		const GRFConfig *c;
-		uint i = 0;
-
-		/* Count number of GRFs to send information about */
-		for (c = _grfconfig; c != NULL; c = c->next) {
-			if (!HASBIT(c->flags, GCF_STATIC)) i++;
-		}
-		NetworkSend_uint8 (packet, i); // Send number of GRFs
-
-		/* Send actual GRF Identifications */
-		for (c = _grfconfig; c != NULL; c = c->next) {
-			if (!HASBIT(c->flags, GCF_STATIC)) NetworkSend_GRFIdentifier(packet, c);
-		}
-	}
-
-	/* NETWORK_GAME_INFO_VERSION = 3 */
-	NetworkSend_uint32(packet, _network_game_info.game_date);
-	NetworkSend_uint32(packet, _network_game_info.start_date);
-
-	/* NETWORK_GAME_INFO_VERSION = 2 */
-	NetworkSend_uint8 (packet, _network_game_info.companies_max);
-	NetworkSend_uint8 (packet, ActivePlayerCount());
-	NetworkSend_uint8 (packet, _network_game_info.spectators_max);
-
-	/* NETWORK_GAME_INFO_VERSION = 1 */
-	NetworkSend_string(packet, _network_game_info.server_name);
-	NetworkSend_string(packet, _network_game_info.server_revision);
-	NetworkSend_uint8 (packet, _network_game_info.server_lang);
-	NetworkSend_uint8 (packet, _network_game_info.use_password);
-	NetworkSend_uint8 (packet, _network_game_info.clients_max);
-	NetworkSend_uint8 (packet, _network_game_info.clients_on);
-	NetworkSend_uint8 (packet, NetworkSpectatorCount());
-	NetworkSend_string(packet, _network_game_info.map_name);
-	NetworkSend_uint16(packet, _network_game_info.map_width);
-	NetworkSend_uint16(packet, _network_game_info.map_height);
-	NetworkSend_uint8 (packet, _network_game_info.map_set);
-	NetworkSend_uint8 (packet, _network_game_info.dedicated);
+	NetworkSend_NetworkGameInfo(p, &_network_game_info);
 
 	// Let the client know that we are here
 	NetworkSendUDP_Packet(_udp_server_socket, packet, client_addr);
@@ -142,101 +60,40 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 	DEBUG(net, 2, "[udp] queried from '%s'", inet_ntoa(client_addr->sin_addr));
 }
 
+void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config)
+{
+	/* Find the matching GRF file */
+	const GRFConfig *f = FindGRFConfig(config->grfid, config->md5sum);
+	if (f == NULL) {
+		/* Don't know the GRF, so mark game incompatible and the (possibly)
+		 * already resolved name for this GRF (another server has sent the
+		 * name of the GRF already */
+		config->name     = FindUnknownGRFName(config->grfid, config->md5sum, true);
+		SETBIT(config->flags, GCF_NOT_FOUND);
+	} else {
+		config->filename = f->filename;
+		config->name     = f->name;
+		config->info     = f->info;
+	}
+	SETBIT(config->flags, GCF_COPY);
+}
+
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 {
 	extern const char _openttd_revision[];
 	NetworkGameList *item;
-	byte game_info_version;
 
 	// Just a fail-safe.. should never happen
-	if (_network_udp_server)
-		return;
-
-	game_info_version = NetworkRecv_uint8(&_udp_cs, p);
-
-	if (_udp_cs.has_quit) return;
+	if (_network_udp_server || _udp_cs.has_quit) return;
 
 	DEBUG(net, 4, "[udp] server response from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
 
 	// Find next item
 	item = NetworkGameListAddItem(inet_addr(inet_ntoa(client_addr->sin_addr)), ntohs(client_addr->sin_port));
 
+	NetworkRecv_NetworkGameInfo(&_udp_cs, p, &item->info);
+
 	item->info.compatible = true;
-	/* Please observer the order. In the order in which packets are sent
-	 * they are to be received */
-	switch (game_info_version) {
-		case 4: {
-			GRFConfig *c, **dst = &item->info.grfconfig;
-			const GRFConfig *f;
-			uint i;
-			uint num_grfs = NetworkRecv_uint8(&_udp_cs, p);
-
-			for (i = 0; i < num_grfs; i++) {
-				c = calloc(1, sizeof(*c));
-				NetworkRecv_GRFIdentifier(p, c);
-
-				/* Find the matching GRF file */
-				f = FindGRFConfig(c->grfid, c->md5sum);
-				if (f == NULL) {
-					/* Don't know the GRF, so mark game incompatible and the (possibly)
-					 * already resolved name for this GRF (another server has sent the
-					 * name of the GRF already */
-					item->info.compatible = false;
-					c->name     = FindUnknownGRFName(c->grfid, c->md5sum, true);
-					SETBIT(c->flags, GCF_NOT_FOUND);
-				} else {
-					c->filename = f->filename;
-					c->name     = f->name;
-					c->info     = f->info;
-				}
-				SETBIT(c->flags, GCF_COPY);
-
-				/* Append GRFConfig to the list */
-				*dst = c;
-				dst = &c->next;
-			}
-		} /* Fallthrough */
-		case 3:
-			item->info.game_date     = NetworkRecv_uint32(&_udp_cs, p);
-			item->info.start_date    = NetworkRecv_uint32(&_udp_cs, p);
-			/* Fallthrough */
-		case 2:
-			item->info.companies_max = NetworkRecv_uint8(&_udp_cs, p);
-			item->info.companies_on = NetworkRecv_uint8(&_udp_cs, p);
-			item->info.spectators_max = NetworkRecv_uint8(&_udp_cs, p);
-			/* Fallthrough */
-		case 1:
-			NetworkRecv_string(&_udp_cs, p, item->info.server_name, sizeof(item->info.server_name));
-			NetworkRecv_string(&_udp_cs, p, item->info.server_revision, sizeof(item->info.server_revision));
-			item->info.server_lang   = NetworkRecv_uint8(&_udp_cs, p);
-			item->info.use_password  = NetworkRecv_uint8(&_udp_cs, p);
-			item->info.clients_max   = NetworkRecv_uint8(&_udp_cs, p);
-			item->info.clients_on    = NetworkRecv_uint8(&_udp_cs, p);
-			item->info.spectators_on = NetworkRecv_uint8(&_udp_cs, p);
-			if (game_info_version < 3) { // 16 bits dates got scrapped and are read earlier
-				item->info.game_date     = NetworkRecv_uint16(&_udp_cs, p) + DAYS_TILL_ORIGINAL_BASE_YEAR;
-				item->info.start_date    = NetworkRecv_uint16(&_udp_cs, p) + DAYS_TILL_ORIGINAL_BASE_YEAR;
-			}
-			NetworkRecv_string(&_udp_cs, p, item->info.map_name, sizeof(item->info.map_name));
-			item->info.map_width     = NetworkRecv_uint16(&_udp_cs, p);
-			item->info.map_height    = NetworkRecv_uint16(&_udp_cs, p);
-			item->info.map_set       = NetworkRecv_uint8(&_udp_cs, p);
-			item->info.dedicated     = NetworkRecv_uint8(&_udp_cs, p);
-
-			if (item->info.server_lang >= NETWORK_NUM_LANGUAGES) item->info.server_lang = 0;
-			if (item->info.map_set >= NUM_LANDSCAPE ) item->info.map_set = 0;
-
-			if (item->info.hostname[0] == '\0')
-				snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
-
-			/* Check if we are allowed on this server based on the revision-match */
-			item->info.version_compatible =
-				strcmp(item->info.server_revision, _openttd_revision) == 0 ||
-				strcmp(item->info.server_revision, NOREV_STRING) == 0;
-			item->info.compatible &= item->info.version_compatible; // Already contains match for GRFs
-			break;
-	}
-
 	{
 		/* Checks whether there needs to be a request for names of GRFs and makes
 		 * the request if necessary. GRFs that need to be requested are the GRFs
@@ -251,6 +108,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 		struct sockaddr_in out_addr;
 
 		for (c = item->info.grfconfig; c != NULL; c = c->next) {
+			if (HASBIT(c->flags, GCF_NOT_FOUND)) item->info.compatible = false;
 			if (!HASBIT(c->flags, GCF_NOT_FOUND) || strcmp(c->name, UNKNOWN_GRF_NAME_PLACEHOLDER) != 0) continue;
 			in_request[in_request_count] = c;
 			in_request_count++;
@@ -273,6 +131,18 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 			free(packet);
 		}
 	}
+
+	if (item->info.server_lang >= NETWORK_NUM_LANGUAGES) item->info.server_lang = 0;
+	if (item->info.map_set >= NUM_LANDSCAPE ) item->info.map_set = 0;
+
+	if (item->info.hostname[0] == '\0')
+		snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
+
+	/* Check if we are allowed on this server based on the revision-match */
+	item->info.version_compatible =
+		strcmp(item->info.server_revision, _openttd_revision) == 0 ||
+		strcmp(item->info.server_revision, NOREV_STRING) == 0;
+	item->info.compatible &= item->info.version_compatible; // Already contains match for GRFs
 
 	item->online = true;
 
@@ -455,7 +325,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS)
 		GRFConfig c;
 		const GRFConfig *f;
 
-		NetworkRecv_GRFIdentifier(p, &c);
+		NetworkRecv_GRFIdentifier(&_udp_cs, p, &c);
 
 		/* Find the matching GRF file */
 		f = FindGRFConfig(c.grfid, c.md5sum);
@@ -510,7 +380,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS)
 		char name[NETWORK_GRF_NAME_LENGTH];
 		GRFConfig c;
 
-		NetworkRecv_GRFIdentifier(p, &c);
+		NetworkRecv_GRFIdentifier(&_udp_cs, p, &c);
 		NetworkRecv_string(&_udp_cs, p, name, sizeof(name));
 
 		/* An empty name is not possible under normal circumstances
@@ -550,7 +420,7 @@ static NetworkUDPPacket* const _network_udp_packet[] = {
 assert_compile(lengthof(_network_udp_packet) == PACKET_UDP_END);
 
 
-static void NetworkHandleUDPPacket(Packet* p, struct sockaddr_in* client_addr)
+void NetworkHandleUDPPacket(Packet *p, struct sockaddr_in *client_addr)
 {
 	byte type;
 
@@ -571,69 +441,6 @@ static void NetworkHandleUDPPacket(Packet* p, struct sockaddr_in* client_addr)
 	}
 }
 
-
-// Send a packet over UDP
-static void NetworkSendUDP_Packet(SOCKET udp, Packet* p, struct sockaddr_in* recv)
-{
-	int res;
-
-	// Put the length in the buffer
-	p->buffer[0] = p->size & 0xFF;
-	p->buffer[1] = p->size >> 8;
-
-	// Send the buffer
-	res = sendto(udp, p->buffer, p->size, 0, (struct sockaddr *)recv, sizeof(*recv));
-
-	// Check for any errors, but ignore it otherwise
-	if (res == -1) DEBUG(net, 1, "[udp] sendto failed with: %i", GET_LAST_ERROR());
-}
-
-// Start UDP listener
-bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast)
-{
-	struct sockaddr_in sin;
-
-	// Make sure socket is closed
-	closesocket(*udp);
-
-	*udp = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-	if (*udp == INVALID_SOCKET) {
-		DEBUG(net, 0, "[udp] failed to start UDP listener");
-		return false;
-	}
-
-	// set nonblocking mode for socket
-	{
-		unsigned long blocking = 1;
-#ifndef BEOS_NET_SERVER
-		ioctlsocket(*udp, FIONBIO, &blocking);
-#else
-		setsockopt(*udp, SOL_SOCKET, SO_NONBLOCK, &blocking, NULL);
-#endif
-	}
-
-	sin.sin_family = AF_INET;
-	// Listen on all IPs
-	sin.sin_addr.s_addr = host;
-	sin.sin_port = htons(port);
-
-	if (bind(*udp, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
-		DEBUG(net, 0, "[udp] bind failed on %s:%i", inet_ntoa(*(struct in_addr *)&host), port);
-		return false;
-	}
-
-	if (broadcast) {
-		/* Enable broadcast */
-		unsigned long val = 1;
-#ifndef BEOS_NET_SERVER // will work around this, some day; maybe.
-		setsockopt(*udp, SOL_SOCKET, SO_BROADCAST, (char *) &val , sizeof(val));
-#endif
-	}
-
-	DEBUG(net, 1, "[udp] listening on port %s:%d", inet_ntoa(*(struct in_addr *)&host), port);
-
-	return true;
-}
 
 // Close UDP connection
 void NetworkUDPClose(void)
@@ -659,42 +466,6 @@ void NetworkUDPClose(void)
 			_udp_client_socket = INVALID_SOCKET;
 		}
 		_network_udp_broadcast = 0;
-	}
-}
-
-// Receive something on UDP level
-void NetworkUDPReceive(SOCKET udp)
-{
-	struct sockaddr_in client_addr;
-	socklen_t client_len;
-	int nbytes;
-	static Packet *p = NULL;
-	int packet_len;
-
-	// If p is NULL, malloc him.. this prevents unneeded mallocs
-	if (p == NULL) p = malloc(sizeof(*p));
-
-	packet_len = sizeof(p->buffer);
-	client_len = sizeof(client_addr);
-
-	// Try to receive anything
-	nbytes = recvfrom(udp, p->buffer, packet_len, 0, (struct sockaddr *)&client_addr, &client_len);
-
-	// We got some bytes.. just asume we receive the whole packet
-	if (nbytes > 0) {
-		// Get the size of the buffer
-		p->size = (uint16)p->buffer[0];
-		p->size += (uint16)p->buffer[1] << 8;
-		// Put the position on the right place
-		p->pos = 2;
-		p->next = NULL;
-
-		// Handle the packet
-		NetworkHandleUDPPacket(p, &client_addr);
-
-		// Free the packet
-		free(p);
-		p = NULL;
 	}
 }
 

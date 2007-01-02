@@ -9,7 +9,7 @@
 #include "string.h"
 #include "saveload.h"
 #include "md5.h"
-#include "network_data.h"
+#include "network/network_data.h"
 #include "newgrf.h"
 #include "newgrf_config.h"
 

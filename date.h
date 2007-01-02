@@ -3,6 +3,8 @@
 #ifndef DATE_H
 #define DATE_H
 
+#include "openttd.h"
+
 /**
  * 1 day is 74 ticks; _date_fract used to be uint16 and incremented by 885. On
  *                    an overflow the new day begun and 65535 / 885 = 74.

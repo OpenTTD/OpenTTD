@@ -3,35 +3,20 @@
 #ifndef NETWORK_DATA_H
 #define NETWORK_DATA_H
 
-#include "openttd.h"
-#include "network.h"
-#include "network_core.h"
-
 // Is the network enabled?
 #ifdef ENABLE_NETWORK
 
-#define SEND_MTU 1460
+#include "../openttd.h"
+#include "network.h"
+#include "core/os_abstraction.h"
+#include "core/config.h"
+#include "core/packet.h"
+
 #define MAX_TEXT_MSG_LEN 1024 /* long long long long sentences :-) */
 
 // The client-info-server-index is always 1
 #define NETWORK_SERVER_INDEX 1
 #define NETWORK_EMPTY_INDEX 0
-
-// What version of game-info do we use?
-#define NETWORK_GAME_INFO_VERSION 4
-// What version of company info is this?
-#define NETWORK_COMPANY_INFO_VERSION 4
-// What version of master-server-protocol do we use?
-#define NETWORK_MASTER_SERVER_VERSION 1
-
-typedef uint16 PacketSize;
-
-typedef struct Packet {
-	struct Packet *next;
-	PacketSize size;
-	PacketSize pos;
-	byte buffer[SEND_MTU];
-} Packet;
 
 typedef struct CommandPacket {
 	struct CommandPacket *next;
@@ -112,7 +97,7 @@ typedef enum {
 } NetworkPasswordType;
 
 // To keep the clients all together
-typedef struct NetworkClientState {
+struct NetworkClientState { // Typedeffed in network_core/packet.h
 	SOCKET socket;
 	uint16 index;
 	uint32 last_frame;
@@ -127,47 +112,7 @@ typedef struct NetworkClientState {
 	Packet *packet_recv; // Partially received packet
 
 	CommandPacket *command_queue; // The command-queue awaiting delivery
-} NetworkClientState;
-
-// What packet types are there
-// WARNING: The first 3 packets can NEVER change order again
-//   it protects old clients from joining newer servers (because SERVER_ERROR
-//   is the respond to a wrong revision)
-typedef enum {
-	PACKET_SERVER_FULL,
-	PACKET_SERVER_BANNED,
-	PACKET_CLIENT_JOIN,
-	PACKET_SERVER_ERROR,
-	PACKET_CLIENT_COMPANY_INFO,
-	PACKET_SERVER_COMPANY_INFO,
-	PACKET_SERVER_CLIENT_INFO,
-	PACKET_SERVER_NEED_PASSWORD,
-	PACKET_CLIENT_PASSWORD,
-	PACKET_SERVER_WELCOME,
-	PACKET_CLIENT_GETMAP,
-	PACKET_SERVER_WAIT,
-	PACKET_SERVER_MAP,
-	PACKET_CLIENT_MAP_OK,
-	PACKET_SERVER_JOIN,
-	PACKET_SERVER_FRAME,
-	PACKET_SERVER_SYNC,
-	PACKET_CLIENT_ACK,
-	PACKET_CLIENT_COMMAND,
-	PACKET_SERVER_COMMAND,
-	PACKET_CLIENT_CHAT,
-	PACKET_SERVER_CHAT,
-	PACKET_CLIENT_SET_PASSWORD,
-	PACKET_CLIENT_SET_NAME,
-	PACKET_CLIENT_QUIT,
-	PACKET_CLIENT_ERROR,
-	PACKET_SERVER_QUIT,
-	PACKET_SERVER_ERROR_QUIT,
-	PACKET_SERVER_SHUTDOWN,
-	PACKET_SERVER_NEWGAME,
-	PACKET_SERVER_RCON,
-	PACKET_CLIENT_RCON,
-	PACKET_END // Should ALWAYS be on the end of this list!! (period)
-} PacketType;
+};
 
 typedef enum {
 	DESTTYPE_BROADCAST, ///< Send message/notice to all players (All)
@@ -202,22 +147,6 @@ NetworkClientState _clients[MAX_CLIENTS];
 #define FOR_ALL_CLIENTS(cs) for (cs = _clients; cs != endof(_clients) && cs->socket != INVALID_SOCKET; cs++)
 #define FOR_ALL_ACTIVE_CLIENT_INFOS(ci) for (ci = _network_client_info; ci != endof(_network_client_info); ci++) if (ci->client_index != NETWORK_EMPTY_INDEX)
 
-Packet *NetworkSend_Init(PacketType type);
-void NetworkSend_uint8(Packet *packet, uint8 data);
-void NetworkSend_uint16(Packet *packet, uint16 data);
-void NetworkSend_uint32(Packet *packet, uint32 data);
-void NetworkSend_uint64(Packet *packet, uint64 data);
-void NetworkSend_string(Packet *packet, const char* data);
-void NetworkSend_Packet(Packet *packet, NetworkClientState *cs);
-
-uint8 NetworkRecv_uint8(NetworkClientState *cs, Packet *packet);
-uint16 NetworkRecv_uint16(NetworkClientState *cs, Packet *packet);
-uint32 NetworkRecv_uint32(NetworkClientState *cs, Packet *packet);
-uint64 NetworkRecv_uint64(NetworkClientState *cs, Packet *packet);
-void NetworkRecv_string(NetworkClientState *cs, Packet *packet, char* buffer, size_t size);
-Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status);
-
-bool NetworkSend_Packets(NetworkClientState *cs);
 void NetworkExecuteCommand(CommandPacket *cp);
 void NetworkAddCommandQueue(NetworkClientState *cs, CommandPacket *cp);
 

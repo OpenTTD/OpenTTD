@@ -15,7 +15,7 @@
 #include "engine.h"
 #include "screenshot.h"
 #include "newgrf.h"
-#include "network.h"
+#include "network/network.h"
 #include "town.h"
 #include "variables.h"
 #include "settings.h"

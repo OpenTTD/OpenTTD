@@ -54,7 +54,7 @@ extern void HideMenuBar(void);
 #include "../macros.h"
 #include "../sdl.h"
 #include "../window.h"
-#include "../network.h"
+#include "../network/network.h"
 #include "../variables.h"
 #include "../os/macosx/splash.h"
 

@@ -13,13 +13,13 @@
 #include "command.h"
 #include "vehicle.h"
 #include "economy.h"
-#include "network.h"
+#include "network/network.h"
 #include "variables.h"
 #include "train.h"
 #include "date.h"
 #include "newgrf.h"
-#include "network_data.h"
-#include "network_client.h"
+#include "network/network_data.h"
+#include "network/network_client.h"
 
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied);
 

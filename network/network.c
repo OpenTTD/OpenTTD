@@ -1,6 +1,6 @@
 /* $Id$ */
 
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "network_data.h"
 
 #if defined(WITH_REV)
@@ -15,24 +15,27 @@
 
 #ifdef ENABLE_NETWORK
 
-#include "openttd.h"
-#include "debug.h"
-#include "functions.h"
-#include "string.h"
-#include "strings.h"
-#include "map.h"
-#include "command.h"
-#include "variables.h"
-#include "date.h"
-#include "table/strings.h"
+#include "../openttd.h"
+#include "../debug.h"
+#include "../functions.h"
+#include "../string.h"
+#include "../strings.h"
+#include "../map.h"
+#include "../command.h"
+#include "../variables.h"
+#include "../date.h"
+#include "../newgrf_config.h"
+#include "../table/strings.h"
 #include "network_client.h"
 #include "network_server.h"
 #include "network_udp.h"
 #include "network_gamelist.h"
+#include "core/udp.h"
+#include "core/tcp.h"
 #include "network_gui.h"
-#include "console.h" /* IConsoleCmdExec */
+#include "../console.h" /* IConsoleCmdExec */
 #include <stdarg.h> /* va_list */
-#include "md5.h"
+#include "../md5.h"
 
 #ifdef __MORPHOS__
 // the library base is required here

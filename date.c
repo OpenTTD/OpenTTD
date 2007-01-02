@@ -6,9 +6,9 @@
 #include "variables.h"
 #include "macros.h"
 #include "vehicle.h"
-#include "network.h"
-#include "network_data.h"
-#include "network_server.h"
+#include "network/network.h"
+#include "network/network_data.h"
+#include "network/network_server.h"
 #include "functions.h"
 #include "currency.h"
 

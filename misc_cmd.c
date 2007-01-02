@@ -11,7 +11,7 @@
 #include "window.h"
 #include "gui.h"
 #include "economy.h"
-#include "network.h"
+#include "network/network.h"
 #include "variables.h"
 #include "livery.h"
 

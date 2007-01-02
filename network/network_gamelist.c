@@ -2,10 +2,10 @@
 
 #ifdef ENABLE_NETWORK
 
-#include "stdafx.h"
-#include "debug.h"
+#include "../stdafx.h"
+#include "../debug.h"
 #include "network_data.h"
-#include "newgrf_config.h"
+#include "../newgrf_config.h"
 
 // This file handles the GameList
 // Also, it handles the request to a server for data about the server

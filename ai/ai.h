@@ -2,7 +2,7 @@
 #define AI_H
 
 #include "../functions.h"
-#include "../network.h"
+#include "../network/network.h"
 #include "../player.h"
 #include "../command.h"
 

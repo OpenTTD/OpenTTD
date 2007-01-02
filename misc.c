@@ -24,7 +24,7 @@ char _name_array[512][32];
 #ifndef MERSENNE_TWISTER
 
 #ifdef RANDOM_DEBUG
-#include "network_data.h"
+#include "network/network_data.h"
 uint32 DoRandom(int line, const char *file)
 #else // RANDOM_DEBUG
 uint32 Random(void)

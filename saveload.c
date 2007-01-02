@@ -26,7 +26,7 @@
 #include "town.h"
 #include "player.h"
 #include "saveload.h"
-#include "network.h"
+#include "network/network.h"
 #include "variables.h"
 #include <setjmp.h>
 
@@ -1042,7 +1042,6 @@ static void UninitNoComp(void)
 //********** START OF MEMORY CODE (in ram)****
 //********************************************
 
-#include "network.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "gfx.h"

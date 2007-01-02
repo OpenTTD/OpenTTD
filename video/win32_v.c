@@ -5,7 +5,7 @@
 #include "../functions.h"
 #include "../gfx.h"
 #include "../macros.h"
-#include "../network.h"
+#include "../network/network.h"
 #include "../variables.h"
 #include "../win32.h"
 #include "../window.h"

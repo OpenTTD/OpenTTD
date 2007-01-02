@@ -2,23 +2,24 @@
 
 #ifdef ENABLE_NETWORK
 
-#include "stdafx.h"
-#include "debug.h"
-#include "string.h"
-#include "strings.h"
+#include "../stdafx.h"
+#include "../debug.h"
+#include "../string.h"
+#include "../strings.h"
 #include "network_data.h"
-#include "date.h"
-#include "table/strings.h"
-#include "functions.h"
+#include "core/tcp.h"
+#include "../date.h"
+#include "../table/strings.h"
+#include "../functions.h"
 #include "network_client.h"
 #include "network_gamelist.h"
 #include "network_gui.h"
-#include "saveload.h"
-#include "command.h"
-#include "window.h"
-#include "console.h"
-#include "variables.h"
-#include "ai/ai.h"
+#include "../saveload.h"
+#include "../command.h"
+#include "../window.h"
+#include "../console.h"
+#include "../variables.h"
+#include "../ai/ai.h"
 
 
 // This file handles all the client-commands

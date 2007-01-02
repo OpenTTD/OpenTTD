@@ -21,7 +21,7 @@
 #include "saveload.h"
 #include "command.h"
 #include "sound.h"
-#include "network.h"
+#include "network/network.h"
 #include "variables.h"
 #include "engine.h"
 #include "ai/ai.h"

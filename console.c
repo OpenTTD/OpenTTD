@@ -13,9 +13,9 @@
 #include <stdarg.h>
 #include <string.h>
 #include "console.h"
-#include "network.h"
-#include "network_data.h"
-#include "network_server.h"
+#include "network/network.h"
+#include "network/network_data.h"
+#include "network/network_server.h"
 
 #define ICON_BUFFER 79
 #define ICON_HISTORY_SIZE 20

@@ -653,27 +653,39 @@
 				>
 			</File>
 			<File
-				RelativePath=".\network.c"
+				RelativePath=".\network\core\packet.c"
 				>
 			</File>
 			<File
-				RelativePath=".\network_client.c"
+				RelativePath=".\network\core\tcp.c"
 				>
 			</File>
 			<File
-				RelativePath=".\network_data.c"
+				RelativePath=".\network\core\udp.c"
 				>
 			</File>
 			<File
-				RelativePath=".\network_gamelist.c"
+				RelativePath=".\network\network.c"
 				>
 			</File>
 			<File
-				RelativePath=".\network_server.c"
+				RelativePath=".\network\network_client.c"
 				>
 			</File>
 			<File
-				RelativePath=".\network_udp.c"
+				RelativePath=".\network\network_data.c"
+				>
+			</File>
+			<File
+				RelativePath=".\network\network_gamelist.c"
+				>
+			</File>
+			<File
+				RelativePath=".\network\network_server.c"
+				>
+			</File>
+			<File
+				RelativePath=".\network\network_udp.c"
 				>
 			</File>
 			<File
@@ -1036,35 +1048,55 @@
 				>
 			</File>
 			<File
-				RelativePath=".\network.h"
+				RelativePath=".\networe\core\config.h"
 				>
 			</File>
 			<File
-				RelativePath=".\network_client.h"
+				RelativePath=".\network\core\game.h"
 				>
 			</File>
 			<File
-				RelativePath=".\network_core.h"
+				RelativePath=".\network\core\os_abstraction.h"
 				>
 			</File>
 			<File
-				RelativePath=".\network_data.h"
+				RelativePath=".\network\core\packet.h"
 				>
 			</File>
 			<File
-				RelativePath=".\network_gamelist.h"
+				RelativePath=".\network\core\tcp.h"
 				>
 			</File>
 			<File
-				RelativePath=".\network_gui.h"
+				RelativePath=".\network\core\udp.h"
 				>
 			</File>
 			<File
-				RelativePath=".\network_server.h"
+				RelativePath=".\network\network.h"
 				>
 			</File>
 			<File
-				RelativePath=".\network_udp.h"
+				RelativePath=".\network\network_client.h"
+				>
+			</File>
+			<File
+				RelativePath=".\network\network_data.h"
+				>
+			</File>
+			<File
+				RelativePath=".\network\network_gamelist.h"
+				>
+			</File>
+			<File
+				RelativePath=".\network\network_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\network\network_server.h"
+				>
+			</File>
+			<File
+				RelativePath=".\network\network_udp.h"
 				>
 			</File>
 			<File

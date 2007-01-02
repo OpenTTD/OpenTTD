@@ -2,25 +2,26 @@
 
 #ifdef ENABLE_NETWORK
 
-#include "stdafx.h"
-#include "openttd.h" // XXX StringID
-#include "debug.h"
-#include "string.h"
-#include "strings.h"
+#include "../stdafx.h"
+#include "../openttd.h" // XXX StringID
+#include "../debug.h"
+#include "../string.h"
+#include "../strings.h"
 #include "network_data.h"
-#include "train.h"
-#include "date.h"
-#include "table/strings.h"
-#include "functions.h"
+#include "core/tcp.h"
+#include "../train.h"
+#include "../date.h"
+#include "../table/strings.h"
+#include "../functions.h"
 #include "network_server.h"
 #include "network_udp.h"
-#include "console.h"
-#include "command.h"
-#include "saveload.h"
-#include "vehicle.h"
-#include "station.h"
-#include "variables.h"
-#include "genworld.h"
+#include "../console.h"
+#include "../command.h"
+#include "../saveload.h"
+#include "../vehicle.h"
+#include "../station.h"
+#include "../variables.h"
+#include "../genworld.h"
 
 // This file handles all the server-commands
 
