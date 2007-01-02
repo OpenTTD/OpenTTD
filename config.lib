@@ -1558,7 +1558,7 @@ detect_sdl() {
 	log 2 "  returned $version"
 	log 2 "  exit code $ret"
 
-	if [ -z $version ] || [ "$ret" != "0" ]
+	if [ -z "$version" ] || [ "$ret" != "0" ]
 	then
 		log 1 "checking SDL... not found"
 
