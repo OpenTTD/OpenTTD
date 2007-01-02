@@ -1099,10 +1099,10 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Õhusõi
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Õhusõiduki {COMMA} plaanis on kehtetud jaam
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Rongi automaatne uuendamine {COMMA} ebaõnnestus (money limit)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Maanteesõiduki automaatne uuendus ebaõnnestus {COMMA} (money limit)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laeva automaatne uuendus ebaõnnestus {COMMA} (money limit)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Õhusõiduki automaatne uuendus ebaõnnestus{COMMA} (money limit)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Rongi automaatne uuendamine {COMMA} ebaõnnestus (rahalimiit)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Maanteesõiduki automaatne uuendus ebaõnnestus {COMMA} (rahalimiit)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laeva automaatne uuendus ebaõnnestus {COMMA} (rahalimiit)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Õhusõiduki automaatne uuendus ebaõnnestus{COMMA} (rahalimiit)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Rong {COMMA} on peale asendust liiga pikk
 
 STR_CONFIG_PATCHES                                              :{BLACK}Paranduste seaded
