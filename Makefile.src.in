@@ -219,10 +219,11 @@ $(OBJS_RC): %.o: $(SRC_DIR)/%.rc $(FILE_DEP)
 
 $(TTD): rev.o $(OBJS) $(CONFIG_CACHE_LINKER)
 	$(E) '$(STAGE) Linking $@'
-	$(Q)$(CXX_HOST) $(LDFLAGS) rev.o $(OBJS) $(LIBS) -o $@ && cp $@ $(BIN_DIR)/
+	$(Q)$(CXX_HOST) $(LDFLAGS) rev.o $(OBJS) $(LIBS) -o $@
 ifdef STRIP
 	$(Q)$(STRIP) $@
 endif
+	$(Q)cp $@ $(BIN_DIR)/
 
 # The targets to compile the endian-code
 
