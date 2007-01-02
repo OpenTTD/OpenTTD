@@ -33,7 +33,7 @@ then
 fi
 
 set_default
-detect_params $@
+detect_params "$@"
 save_params
 check_params
 make_cflags_and_ldflags
