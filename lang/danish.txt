@@ -464,7 +464,7 @@ STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Vis indu
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Vis transportruter på kortet
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Vis vegetation på kortet
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Vis landejere på kortet
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Tænd/sluk bynavne
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Vis/skjul bynavne på kort
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Dette års overskud: {CURRENCY} (sidste år: {CURRENCY})
 
 ############ range for service numbers starts
@@ -568,8 +568,8 @@ STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Vælg 'C
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Select 'Custom 2' (brugerdefineret) programmet
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Ryd det valgte program (Gælder kun Custom1/Custom2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Gem opsætning for musik
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klik på et musiknummer for at tilføje det til programlisten (Kun for Custom1/Custom2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klik på et musiknummer for at fjerne det fra programlisten (kun Custom1 eller Custom2)
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klik på et musiknummer for at tilføje det til programlisten (kun for Custom1/Custom2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klik på et musiknummer for at fjerne det fra programlisten (kun for Custom1/Custom2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Tilfældig afspilning til/fra
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Vis vinduet med musiknummervalg
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen
@@ -977,7 +977,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Sl
 
 STR_TRAIN_IS_LOST                                               :{WHITE}Tog {COMMA} er faret vild.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Tog {COMMA}'s profit sidste år var {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europæisk fællesvaluta!{}{}Euroen er introduceret som eneste betalingsmiddel it dit land!
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europæisk fællesvaluta!{}{}Euroen er introduceret som eneste betalingsmiddel i dit land!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -996,7 +996,7 @@ STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skib {CO
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Fly {COMMA} har for få ordre i sin flyveplan
 STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Fly {COMMA} har en ugyldig ordre
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COMMA} har dobbelt ordre
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig station i sin flyveplan
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig lufthavn i sin flyveplan
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornyelse af tog mislykkedes {COMMA} (ikke penge nok)
@@ -1186,7 +1186,7 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Byg jern
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...der er ingen byer i dette scenarie
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Er du sikker på, at ud vil have lavet et tilfældigt landskab?
+STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Er du sikker på, at du vil lave et tilfældigt landskab?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Mange tilfældige byer
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Dæk kortet med tilfældigt placerede byer
 STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Mange tilfældige industrier
@@ -3063,10 +3063,10 @@ STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}At ænd
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Højdekortets navn:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Størrelse: {ORANGE}{NUM} x {NUM}
-STR_GENERATION_WORLD                                            :{WHITE}Generere verden...
+STR_GENERATION_WORLD                                            :{WHITE}Genererer verden...
 STR_GENERATION_ABORT                                            :{BLACK}Afbryd
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Afbryd Kort Genereringen
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vil du virkelig afbryde kort genereringen?
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Afbryd Kortgenereringen
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vil du virkelig afbryde kortgenereringen?
 STR_PROGRESS                                                    :{WHITE}{NUM}% færdig
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Verdensgenerering
@@ -3082,10 +3082,10 @@ STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generér
 STR_SE_RANDOM_LAND                                              :{WHITE}Tilfældigt land
 STR_SE_NEW_WORLD                                                :{BLACK}Opret nyt scenarie
 STR_SE_CAPTION                                                  :{WHITE}Scenarietype
-STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flyt højden af flat land en ned
-STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flyt højden af flat land en up
-STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ændre højden af flat land
-STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Højde af flat land:
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flyt højden af fladt land en ned
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flyt højden af fladt land en op
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ændre højden af fladt land
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Højde af fladt land:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrer det lille kort ved den nuværende position

@@ -113,6 +113,7 @@ STR_0032_OIL.g                                                  :Nafta
 STR_0032_OIL.genitiiv                                           :Nafta
 STR_0033_LIVESTOCK                                              :Kariloom
 STR_0033_LIVESTOCK.g                                            :Kariloomade
+STR_0033_LIVESTOCK.genitiiv                                     :Kariloomade
 STR_0034_GOODS                                                  :Kaubad
 STR_0034_GOODS.g                                                :Kaupade
 STR_0034_GOODS.genitiiv                                         :Kaupade
@@ -368,7 +369,7 @@ STR_012C_MESSAGE                                                :{WHITE}Teade
 STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Loobu
 STR_012F_OK                                                     :{BLACK}OK
-STR_0130_RENAME                                                 :{BLACK}Nime muutmine
+STR_0130_RENAME                                                 :{BLACK}Muuda nime
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Liiga palju määratletud nimesid
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Valitud nimi on juba kasutusel
 
@@ -386,7 +387,7 @@ STR_013D_INFORMATION                                            :{BLACK}Informat
 STR_013E_CAPACITIES                                             :{BLACK}Mahutavused
 STR_013E_TOTAL_CARGO                                            :{BLACK}Laadungit kokku
 STR_013F_CAPACITY                                               :{BLACK}Mahutavus: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Mahutuvus: {LTBLUE}{CARGO} (x{NUM})
+STR_CAPACITY_MULT                                               :{BLACK}Mahutavus: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Rongi kogumahutavus:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -415,7 +416,7 @@ STR_UNITS_METRIC                                                :Meetriline
 STR_UNITS_SI                                                    :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} miili tunnis
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km tunnis
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hj
@@ -1174,7 +1175,7 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastu-päevapid
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Päevapidi
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Kõrguse level kui kõrgele lapik kaart läheb: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksimaalne jaama ala: {ORANGE}{STRING} {RED}Hoiatus: Kõrged seaded aeglustavad mängu
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksimaalne jaama ala: {ORANGE}{STRING} {RED}Hoiatus: kõrged seaded aeglustavad mängu
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Kopteri jaamades helikopterite automaatne teenindus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Lingi maastiku riba raudtee/tee/vee/lennujaama tööriistaribaga: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Kui kerid hiirega, liiguta vaade vastassuunda: {ORANGE}{STRING}
@@ -1247,7 +1248,7 @@ STR_TOYLAND_LANDSCAPE                                           :Mänguasjamaa
 
 STR_CHEATS                                                      :{WHITE}Petmine
 STR_CHEATS_TIP                                                  :{BLACK}Märgistatud kastid näitavad et, kas sa oled varem seda pettust kasutanud
-STR_CHEATS_WARNING                                              :{BLACK}Hoiatus! Sa kavatsed oma konkurente reeta. Pea meeles, et sellest häbist ei saa sa enam kunagi lahti.
+STR_CHEATS_WARNING                                              :{BLACK}Hoiatus! Sa kavatsed oma konkurente reeta. Pea meeles, et sellisest häbist ei saa sa enam kunagi lahti.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Suurenda raha hulka {CURRENCY64} võrra
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Mängi, kui mängija: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Maagiline buldooser(eemaldamatute objektide eemaldamine): {ORANGE}{STRING}
@@ -1365,7 +1366,7 @@ STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Teenind
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Tootlikuse muutmine
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Tervitused uuele TI'le(AI). Töö selle kallal veel käib. Peaksite eeldama, et esineb probleeme. Kui juhtud tegema kuvatõmmise, siis postita see ka foorumisse. Edu!
-TEMP_AI_ACTIVATED                                               :{WHITE}Hoiatus: uus TI(AI) on veel alfa staadiumis! Ainult maanteesõidukid töötavad!
+TEMP_AI_ACTIVATED                                               :{WHITE}Hoiatus: uus tehisintelligents on veel katsetamisel! Hetkel töötavad ainult maanteesõidukid!
 TEMP_AI_MULTIPLAYER                                             :{WHITE}TÄHELEPANU! Seda funksiooni veel teistitakse. Palun teata kõik probleemid sellega truelight@openttd.org.
 
 ############ network gui strings
@@ -1629,7 +1630,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Siia ei 
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Siia ei saa raudteed ehitada...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Siit ei saa raudteed eemaldada...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Siit ei saa signaaltulesid eemaldada...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Depoo orientatsioon
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Depoo suuna
 STR_1015_RAILROAD_CONSTRUCTION                                  :Raudtee ehitus
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektriraudtee ehitus
 STR_1016_MONORAIL_CONSTRUCTION                                  :Monorelsi ehitus
@@ -1642,7 +1643,7 @@ STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Ehita ra
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Ehita rongitunnel
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Rööbaste ja signaaltulede ehitamine/eemaldamine
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Silla valik - klõpsa sobivale sillale, et seda ehitada
-STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Depoo orientatsiooni valimine
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Depoole suuna valimine
 STR_1021_RAILROAD_TRACK                                         :Raudtee
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Rongidepoo
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...ala kuulub teisele ettevõttele
@@ -1660,7 +1661,7 @@ STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Teede eh
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vali sillatüüp
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Siia ei saa maanteed ehitada...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Siit ei saa maanteed eemaldada...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Depoo orientatsioon
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Depoo suund
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Siia ei saa depood ehitada...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Siia ei saa bussijaama ehitada...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Siia ei saa laadimisplatsi ehitada...
@@ -1672,7 +1673,7 @@ STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Ehita ve
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Ehita sild
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Ehita tunnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Teeehituse ja -eemaldamise vahetamine
-STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vali depoo orientatsioon
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vali depoole suund
 STR_1814_ROAD                                                   :Maantee
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Valgustatud maantee
 STR_1816_TREE_LINED_ROAD                                        :Kolmerajaline tee
@@ -1840,8 +1841,8 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}Jaam {ST
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}Jaam {STATION} ei võta enam vastu veoseid {STRING}, ega {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}Jaam {STATION} võtab nüüd vastu veost {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}Jaam {STATION} võtab nüüd vastu veoseid {STRING} ja {STRING}
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Bussijaama orientatsioon
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Laadimisplatsi orientatsioon
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Bussijaama suund
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Laadimisplatsi suund
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Bussijaam tuleb enne hävitada
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Enne pead laadimisplatsi hävitama
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Jaam{P "" ad}
@@ -1850,11 +1851,11 @@ STR_304A_NONE                                                   :{YELLOW}- Puudu
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...ebasobiv koht
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Liiga lähedal teisele sadamale
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Enne pead sadama hävitama
-STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Raudteejaama orientatsiooni valimine
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Raudteejaamale suuna valimine
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Vali raudteejaama platvormide arv
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Vali raudteejaama pikkus
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Vali bussijaama orientatsioon
-STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vali laadimisplatsi orientatsioon
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Vali bussijaamale suund
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vali laadimisplatsile suund
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Vaate viimine jaama juurde
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Näita jaama reitinguid
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Muuda jaama nime
@@ -1887,7 +1888,7 @@ STR_STAT_CLASS_WAYP                                             :Kontrollpunktid
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Paadikuuri Orientatsioon
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...peab ehitama vette
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Siia ei saa laevaangaari ehitada...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Laevaangaari orientatsiooni valimine
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Laevaangaarile suuna valimine
 STR_3804_WATER                                                  :Vesi
 STR_3805_COAST_OR_RIVERBANK                                     :Kallas
 STR_3806_SHIP_DEPOT                                             :Laevaangaar
@@ -1911,7 +1912,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Salvesta
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vali uue mängu tüüp
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vali valmis kaart (roheline), eelseadistatud mäng (sinine), või juhusliku kaardiga uus mäng
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Tekita juhuslik kaart
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Lae kõrgustekaart
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Laadi kõrguskaart
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} on ees
@@ -2037,43 +2038,43 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...see o
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Nimetu
 STR_SV_TRAIN_NAME                                               :Rong {COMMA}
-STR_SV_ROADVEH_NAME                                             :Maantee sõiduk {COMMA}
+STR_SV_ROADVEH_NAME                                             :Maanteesõiduk {COMMA}
 STR_SV_SHIP_NAME                                                :Laev {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Õhusõiduk {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :{STRING} Põhi
-STR_SV_STNAME_SOUTH                                             :{STRING} Lõuna
-STR_SV_STNAME_EAST                                              :{STRING} Ida
-STR_SV_STNAME_WEST                                              :{STRING} Lääs
-STR_SV_STNAME_CENTRAL                                           :{STRING} Keskus
-STR_SV_STNAME_TRANSFER                                          :{STRING} Transport
-STR_SV_STNAME_HALT                                              :{STRING} Peatus
-STR_SV_STNAME_VALLEY                                            :{STRING} Org
-STR_SV_STNAME_HEIGHTS                                           :{STRING} Kõrgendikud
-STR_SV_STNAME_WOODS                                             :{STRING} Metsad
-STR_SV_STNAME_LAKESIDE                                          :{STRING} Järveäärne
-STR_SV_STNAME_EXCHANGE                                          :{STRING} Vahetus
-STR_SV_STNAME_AIRPORT                                           :{STRING} Lennujaam
-STR_SV_STNAME_OILFIELD                                          :{STRING} Naftaväli
-STR_SV_STNAME_MINES                                             :{STRING} Kaevandus
-STR_SV_STNAME_DOCKS                                             :{STRING} Sadam
-STR_SV_STNAME_BUOY_1                                            :{STRING} Poi 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Poi 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Poi 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Poi 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Poi 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Poi 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Poi 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Poi 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Poi 9
-STR_SV_STNAME_ANNEXE                                            :{STRING} Juurdeehitis
-STR_SV_STNAME_SIDINGS                                           :{STRING} Hargnemine
-STR_SV_STNAME_BRANCH                                            :{STRING} Filiaal
+STR_SV_STNAME_NORTH                                             :Põhja {STRING}
+STR_SV_STNAME_SOUTH                                             : Lõuna {STRING}
+STR_SV_STNAME_EAST                                              : Ida {STRING}
+STR_SV_STNAME_WEST                                              : Lääne {STRING}
+STR_SV_STNAME_CENTRAL                                           :{STRING} keskus
+STR_SV_STNAME_TRANSFER                                          :{STRING} ülekanne
+STR_SV_STNAME_HALT                                              :{STRING} peatus
+STR_SV_STNAME_VALLEY                                            :{STRING} org
+STR_SV_STNAME_HEIGHTS                                           :{STRING} kõrgendikud
+STR_SV_STNAME_WOODS                                             :{STRING} metsad
+STR_SV_STNAME_LAKESIDE                                          :{STRING} järveäärne
+STR_SV_STNAME_EXCHANGE                                          :{STRING} vahetus
+STR_SV_STNAME_AIRPORT                                           :{STRING} lennujaam
+STR_SV_STNAME_OILFIELD                                          :{STRING} naftaväli
+STR_SV_STNAME_MINES                                             :{STRING} kaevandused
+STR_SV_STNAME_DOCKS                                             :{STRING} sadam
+STR_SV_STNAME_BUOY_1                                            :{STRING} poi #1
+STR_SV_STNAME_BUOY_2                                            :{STRING} poi #2
+STR_SV_STNAME_BUOY_3                                            :{STRING} poi #3
+STR_SV_STNAME_BUOY_4                                            :{STRING} poi #4
+STR_SV_STNAME_BUOY_5                                            :{STRING} poi #5
+STR_SV_STNAME_BUOY_6                                            :{STRING} poi #6
+STR_SV_STNAME_BUOY_7                                            :{STRING} poi #7
+STR_SV_STNAME_BUOY_8                                            :{STRING} poi #8
+STR_SV_STNAME_BUOY_9                                            :{STRING} poi #9
+STR_SV_STNAME_ANNEXE                                            :{STRING} juurdeehitis
+STR_SV_STNAME_SIDINGS                                           :{STRING} hargnemine
+STR_SV_STNAME_BRANCH                                            :{STRING} filiaal
 STR_SV_STNAME_UPPER                                             :Ülemine {STRING}
 STR_SV_STNAME_LOWER                                             :Alumine {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopteri plats
-STR_SV_STNAME_FOREST                                            :{STRING} Mets
+STR_SV_STNAME_HELIPORT                                          :{STRING} helikopteri maandumisplats
+STR_SV_STNAME_FOREST                                            :{STRING} mets
 
 ############ end of	savegame specific region!
 
@@ -2190,7 +2191,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Opereerimiskasumi graafik
 STR_7026_BANK_BALANCE                                           :{WHITE}Kontojääk
 STR_7027_LOAN                                                   :{WHITE}Laen
-STR_MAX_LOAN                                                    :{WHITE}Maksimaalne laen:  {BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Suurim võimalik laen:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Laena {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Maksa tagasi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -2276,8 +2277,8 @@ STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Osta 25%
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Müü 25% ettevõtte aktsiatest
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Osta 25% ettevõtte aktsiatest
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Müü 25% ettevõtte aktsiatest
-STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Ei saa 25% selle ettevõtte aktsiatest osta...
-STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Ei saa 25% selle ettevõtte aktsiatest müüa...
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Selle ettevõtte aktsiatest ei saa 25% osta...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Selle ettevõtte aktsiatest ei saa 25% müüa...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% on ettevõtte {COMPANY} käes)
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% on ettevõtte {COMPANY} käes{}   {COMMA}% on ettevõtte {COMPANY} käes)
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} võeti üle ettevõtte {COMPANY} poolt!
@@ -2313,52 +2314,52 @@ STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Vali tei
 STR_LIVERY_PANEL_TIP                                            :{BLACK}Vali värviskeem  mida muuta, või mitu tükki vajutades CTRL+Kõps. Vajuta kastil et valida värviskeemi kaustamise vahel.
 
 ##id 0x8000
-STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Auruvedur)
-STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diisel)
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (auruvedur)
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (diisel)
 STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphuti tšuhh-tšuhh
 STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernauti tšuhh-tšuhh
-STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Choo-Choo
-STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Diesel
-STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diesel
-STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (Auruvedur)
-STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (Auruvedur)
-STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (Auruvedur)
-STR_800A_SH_8P_STEAM                                            :SH '8P' (Auruvedur)
-STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (Diisel)
-STR_800C_DASH_DIESEL                                            :'Dash' (Diisel)
-STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (Diisel)
-STR_800E_UU_37_DIESEL                                           :UU '37' (Diisel)
-STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (Diisel)
-STR_8010_CS_4000_DIESEL                                         :CS 4000 (Diisel)
-STR_8011_CS_2400_DIESEL                                         :CS 2400 (Diisel)
-STR_8012_CENTENNIAL_DIESEL                                      :Centennial (Diisel)
-STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (Diisel)
-STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (Diisel)
-STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (Diisel)
-STR_8016_SH_125_DIESEL                                          :SH '125' (Diisel)
-STR_8017_SH_30_ELECTRIC                                         :SH '30' (Elektrivedur)
-STR_8018_SH_40_ELECTRIC                                         :SH '40' (Elektrivedur)
-STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Elektrivedur)
-STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Elektrivedur)
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymoveri tšuhh-tšuhh
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut diisel
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut diisel
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (auruvedur)
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (auruvedur)
+STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (auruvedur)
+STR_800A_SH_8P_STEAM                                            :SH '8P' (auruvedur)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (diisel)
+STR_800C_DASH_DIESEL                                            :'Dash' (diisel)
+STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (diisel)
+STR_800E_UU_37_DIESEL                                           :UU '37' (diisel)
+STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (diisel)
+STR_8010_CS_4000_DIESEL                                         :CS 4000 (diisel)
+STR_8011_CS_2400_DIESEL                                         :CS 2400 (diisel)
+STR_8012_CENTENNIAL_DIESEL                                      :Centennial (diisel)
+STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (diisel)
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (diisel)
+STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (diisel)
+STR_8016_SH_125_DIESEL                                          :SH '125' (diisel)
+STR_8017_SH_30_ELECTRIC                                         :SH '30' (elektrivedur)
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (elektrivedur)
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (elektrivedur)
+STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (elektrivedur)
 STR_801B_PASSENGER_CAR                                          :Reisivagun
 STR_801C_MAIL_VAN                                               :Postivagun
-STR_801D_COAL_CAR                                               :Söevagun
+STR_801D_COAL_CAR                                               :Kivisöevagun
 STR_801E_OIL_TANKER                                             :Naftatanker
-STR_801F_LIVESTOCK_VAN                                          :Kariloomade veok
+STR_801F_LIVESTOCK_VAN                                          :Loomavagun
 STR_8020_GOODS_VAN                                              :Kaubavagun
 STR_8021_GRAIN_HOPPER                                           :Teraviljavagun
-STR_8022_WOOD_TRUCK                                             :Puiduveok
-STR_8023_IRON_ORE_HOPPER                                        :Rauamaagi vagun
-STR_8024_STEEL_TRUCK                                            :Teraseveok
+STR_8022_WOOD_TRUCK                                             :Palgivagun
+STR_8023_IRON_ORE_HOPPER                                        :Rauamaagivagun
+STR_8024_STEEL_TRUCK                                            :Terasevagun
 STR_8025_ARMORED_VAN                                            :Soomusvagun
 STR_8026_FOOD_VAN                                               :Toiduvagun
 STR_8027_PAPER_TRUCK                                            :Paberivagun
-STR_8028_COPPER_ORE_HOPPER                                      :Vasemaagi vagun
-STR_8029_WATER_TANKER                                           :Vee Tanker
+STR_8028_COPPER_ORE_HOPPER                                      :Vasemaagivagun
+STR_8029_WATER_TANKER                                           :Veetanker
 STR_802A_FRUIT_TRUCK                                            :Puuviljavagun
 STR_802B_RUBBER_TRUCK                                           :Kummivagun
 STR_802C_SUGAR_TRUCK                                            :Suhkruvagun
-STR_802D_COTTON_CANDY_HOPPER                                    :Suhkruvati vagun
+STR_802D_COTTON_CANDY_HOPPER                                    :Suhkruvativagun
 STR_802E_TOFFEE_HOPPER                                          :Iirisevagun
 STR_802F_BUBBLE_VAN                                             :Mullivagun
 STR_8030_COLA_TANKER                                            :Koolavagun
@@ -2366,167 +2367,167 @@ STR_8031_CANDY_VAN                                              :Maiustuste vagu
 STR_8032_TOY_VAN                                                :Mänguasjavagun
 STR_8033_BATTERY_TRUCK                                          :Patareivagun
 STR_8034_FIZZY_DRINK_TRUCK                                      :Kihisevate jookide vagun
-STR_8035_PLASTIC_TRUCK                                          :Plastiku vagun
-STR_8036_X2001_ELECTRIC                                         :'X2001' (Elektri)
-STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Elektri)
+STR_8035_PLASTIC_TRUCK                                          :Plastikuvagun
+STR_8036_X2001_ELECTRIC                                         :'X2001' (elektri)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (elektri)
 STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 STR_8039_PASSENGER_CAR                                          :Reisivagun
 STR_803A_MAIL_VAN                                               :Postivagun
-STR_803B_COAL_CAR                                               :Kivisöe vagun
+STR_803B_COAL_CAR                                               :Kivisöevagun
 STR_803C_OIL_TANKER                                             :Naftatanker
-STR_803D_LIVESTOCK_VAN                                          :Kariloomade vagun
+STR_803D_LIVESTOCK_VAN                                          :Loomavagun
 STR_803E_GOODS_VAN                                              :Kaubavagun
-STR_803F_GRAIN_HOPPER                                           :Teravilja vagun
-STR_8040_WOOD_TRUCK                                             :Puidu vagun
-STR_8041_IRON_ORE_HOPPER                                        :Rauamaagi vagun
-STR_8042_STEEL_TRUCK                                            :Terase vagun
+STR_803F_GRAIN_HOPPER                                           :Teraviljavagun
+STR_8040_WOOD_TRUCK                                             :Palgivagun
+STR_8041_IRON_ORE_HOPPER                                        :Rauamaagivagun
+STR_8042_STEEL_TRUCK                                            :Terasevagun
 STR_8043_ARMORED_VAN                                            :Soomusvagun
-STR_8044_FOOD_VAN                                               :Toidu vagun
-STR_8045_PAPER_TRUCK                                            :Paberi vagun
-STR_8046_COPPER_ORE_HOPPER                                      :Vasemaagi vagun
-STR_8047_WATER_TANKER                                           :Vee Tanker
-STR_8048_FRUIT_TRUCK                                            :Puuvilja vagun
-STR_8049_RUBBER_TRUCK                                           :Kummi vagun
+STR_8044_FOOD_VAN                                               :Toiduvagun
+STR_8045_PAPER_TRUCK                                            :Paberivagun
+STR_8046_COPPER_ORE_HOPPER                                      :Vasemaagivagun
+STR_8047_WATER_TANKER                                           :Veetanker
+STR_8048_FRUIT_TRUCK                                            :Puuviljavagun
+STR_8049_RUBBER_TRUCK                                           :Kummivagun
 STR_804A_SUGAR_TRUCK                                            :Suhkruvagun
-STR_804B_COTTON_CANDY_HOPPER                                    :Suhkruvati vagun
-STR_804C_TOFFEE_HOPPER                                          :Iirise vagun
+STR_804B_COTTON_CANDY_HOPPER                                    :Suhkruvativagun
+STR_804C_TOFFEE_HOPPER                                          :Iirisevagun
 STR_804D_BUBBLE_VAN                                             :Mullivagun
 STR_804E_COLA_TANKER                                            :Koolatanker
-STR_804F_CANDY_VAN                                              :Maiustuste vagun
-STR_8050_TOY_VAN                                                :Mänguasjade vagun
+STR_804F_CANDY_VAN                                              :Maiustustevagun
+STR_8050_TOY_VAN                                                :Mänguasjavagun
 STR_8051_BATTERY_TRUCK                                          :Patareivagun
 STR_8052_FIZZY_DRINK_TRUCK                                      :Kihisevate jookide vagun
-STR_8053_PLASTIC_TRUCK                                          :Plastiku vagun
-STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Elektri)
-STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (Elektri)
-STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Elektri)
-STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Elektri)
+STR_8053_PLASTIC_TRUCK                                          :Plastikuvagun
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (elektri)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (elektri)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (elektri)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (elektri)
 STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
 STR_8059_PASSENGER_CAR                                          :Reisivagun
 STR_805A_MAIL_VAN                                               :Postivagun
-STR_805B_COAL_CAR                                               :Kivisöe vagun
+STR_805B_COAL_CAR                                               :Kivisöevagun
 STR_805C_OIL_TANKER                                             :Naftatanker
-STR_805D_LIVESTOCK_VAN                                          :Kariloomade vagun
+STR_805D_LIVESTOCK_VAN                                          :Loomavagun
 STR_805E_GOODS_VAN                                              :Kaubavagun
-STR_805F_GRAIN_HOPPER                                           :Teravilja vagun
-STR_8060_WOOD_TRUCK                                             :Puidu vagun
-STR_8061_IRON_ORE_HOPPER                                        :Rauamaagi vagun
-STR_8062_STEEL_TRUCK                                            :Terase vagun
+STR_805F_GRAIN_HOPPER                                           :Teraviljavagun
+STR_8060_WOOD_TRUCK                                             :Palgivagun
+STR_8061_IRON_ORE_HOPPER                                        :Rauamaagivagun
+STR_8062_STEEL_TRUCK                                            :Terasevagun
 STR_8063_ARMORED_VAN                                            :Soomusvagun
 STR_8064_FOOD_VAN                                               :Toiduvagun
 STR_8065_PAPER_TRUCK                                            :Paberivagun
-STR_8066_COPPER_ORE_HOPPER                                      :Vasemaagi vagun
+STR_8066_COPPER_ORE_HOPPER                                      :Vasemaagivagun
 STR_8067_WATER_TANKER                                           :Veetanker
-STR_8068_FRUIT_TRUCK                                            :Puuvilja vagun
+STR_8068_FRUIT_TRUCK                                            :Puuviljavagun
 STR_8069_RUBBER_TRUCK                                           :Kummivagun
 STR_806A_SUGAR_TRUCK                                            :Suhkruvagun
-STR_806B_COTTON_CANDY_HOPPER                                    :Suhkruvati vagun
-STR_806C_TOFFEE_HOPPER                                          :Iirise vagun
+STR_806B_COTTON_CANDY_HOPPER                                    :Suhkruvativagun
+STR_806C_TOFFEE_HOPPER                                          :Iirisevagun
 STR_806D_BUBBLE_VAN                                             :Mullivagun
-STR_806E_COLA_TANKER                                            :Koola Tanker
-STR_806F_CANDY_VAN                                              :Maiustuste vagun
+STR_806E_COLA_TANKER                                            :Koolatanker
+STR_806F_CANDY_VAN                                              :Maiustustevagun
 STR_8070_TOY_VAN                                                :Mänguasjavagun
-STR_8071_BATTERY_TRUCK                                          :Patareide vagun
+STR_8071_BATTERY_TRUCK                                          :Patareivagun
 STR_8072_FIZZY_DRINK_TRUCK                                      :Kihisevate jookide vagun
-STR_8073_PLASTIC_TRUCK                                          :Plastiku vagun
-STR_8074_MPS_REGAL_BUS                                          :MPS Kuninglik Buss
-STR_8075_HEREFORD_LEOPARD_BUS                                   :Herefordi Leopardi Buss
-STR_8076_FOSTER_BUS                                             :Foster Buss
-STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII Superbuss
-STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI Buss
-STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII Buss
-STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII Buss
-STR_807B_BALOGH_COAL_TRUCK                                      :Balogh Söe Veok
-STR_807C_UHL_COAL_TRUCK                                         :Uhl Söe Veok
-STR_807D_DW_COAL_TRUCK                                          :DW Söe Veok
-STR_807E_MPS_MAIL_TRUCK                                         :MPS Postiauto
-STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard Postiauto
-STR_8080_PERRY_MAIL_TRUCK                                       :Perry Postiauto
-STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover Postiauto
-STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught Postiauto
-STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow Postiauto
+STR_8073_PLASTIC_TRUCK                                          :Plastikuvagun
+STR_8074_MPS_REGAL_BUS                                          :Kuninglik MPS buss
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard buss
+STR_8076_FOSTER_BUS                                             :Foster buss
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII superbuss
+STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI buss
+STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII buss
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII buss
+STR_807B_BALOGH_COAL_TRUCK                                      :Balogh kivisöeveok
+STR_807C_UHL_COAL_TRUCK                                         :Uhl kivisõeveok
+STR_807D_DW_COAL_TRUCK                                          :DW kivisõeveok
+STR_807E_MPS_MAIL_TRUCK                                         :MPS postiauto
+STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard postiauto
+STR_8080_PERRY_MAIL_TRUCK                                       :Perry postiauto
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover postiauto
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught postiauto
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow postiauto
 STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe naftaveok
 STR_8085_FOSTER_OIL_TANKER                                      :Foster naftaveok
 STR_8086_PERRY_OIL_TANKER                                       :Perry naftaveok
-STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott Karjaveoauto
-STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl Karjaveoauto
-STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster Karjaveoauto
-STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh Kaubaveoauto
-STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead Kaubaveoauto
-STR_808C_GOSS_GOODS_TRUCK                                       :Goss Kaubaveoauto
-STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford Viljaveoauto
-STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas Viljaveoauto
-STR_808F_GOSS_GRAIN_TRUCK                                       :Goss Viljaveoauto
-STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Puiduveoauto
-STR_8091_FOSTER_WOOD_TRUCK                                      :Foster Puiduveoauto
-STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland Puiduveoauto
-STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS Rauamaagiveoauto
-STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl Rauamaagiveoauto
-STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy Rauamaagiveoauto
-STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh Teraseveoauto
-STR_8097_UHL_STEEL_TRUCK                                        :Uhl Teraseveoauto
-STR_8098_KELLING_STEEL_TRUCK                                    :Kelling Teraseveoauto
-STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh Soomusauto
-STR_809A_UHL_ARMORED_TRUCK                                      :Uhl Soomusauto
-STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster Soomusauto
-STR_809C_FOSTER_FOOD_VAN                                        :Foster Toiduveoauto
-STR_809D_PERRY_FOOD_VAN                                         :Perry Toiduveoauto
-STR_809E_CHIPPY_FOOD_VAN                                        :Chippy Toiduveoauto
-STR_809F_UHL_PAPER_TRUCK                                        :Uhl Paberiveoauto
-STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh Paberiveoauto
-STR_80A1_MPS_PAPER_TRUCK                                        :MPS Paberiveoauto
-STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS Vasemaagiveoauto
-STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Vasemaagiveoauto
-STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Vasemaagiveoauto
-STR_80A5_UHL_WATER_TANKER                                       :Uhl Veeveoauto
-STR_80A6_BALOGH_WATER_TANKER                                    :Balogh Veeveoauto
-STR_80A7_MPS_WATER_TANKER                                       :MPS Veeveoauto
-STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Veeveoauto
-STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Puuviljaveoauto
-STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Puuviljaveoauto
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott loomaveok
+STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl loomaveok
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster loomaveok
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh kaubaveok
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead kaubaveok
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss kaubaveok
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford viljaveok
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas viljaveok
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss viljaveok
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe palgiveok
+STR_8091_FOSTER_WOOD_TRUCK                                      :Foster palgiveok
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland palgiveok
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS rauamaagiveok
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl rauamaagiveok
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy rauamaagiveok
+STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh teraseveok
+STR_8097_UHL_STEEL_TRUCK                                        :Uhl teraseveok
+STR_8098_KELLING_STEEL_TRUCK                                    :Kelling teraseveok
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh soomusauto
+STR_809A_UHL_ARMORED_TRUCK                                      :Uhl soomusauto
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster soomusauto
+STR_809C_FOSTER_FOOD_VAN                                        :Foster toiduveok
+STR_809D_PERRY_FOOD_VAN                                         :Perry toiduveok
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy toiduveok
+STR_809F_UHL_PAPER_TRUCK                                        :Uhl paberiveok
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh paberiveok
+STR_80A1_MPS_PAPER_TRUCK                                        :MPS paberiveok
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS vasemaagiveok
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl vasemaagiveok
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss vasemaagiveok
+STR_80A5_UHL_WATER_TANKER                                       :Uhl veeveok
+STR_80A6_BALOGH_WATER_TANKER                                    :Balogh veeveok
+STR_80A7_MPS_WATER_TANKER                                       :MPS veeveok
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh veeveok
+STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl puuviljaveok
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling puuviljaveok
 STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh kummiveok
 STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl kummiveok
 STR_80AD_RMT_RUBBER_TRUCK                                       :RMT kummiveok
-STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover Suhkruveoauto
-STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught Suhkruveoauto
-STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Suhkruveoauto
-STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover Koolaveoauto
-STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught Koolaveoauto
-STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow Koolaveoauto
-STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover Suhkruvativeoauto
-STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught Suhkruvativeoauto
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow Suhkruvativeoauto
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover Iiriseveoauto
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught Iiriseveoauto
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow Iiriseveoauto
-STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover Mänguasjaveoauto
-STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught Mänguasjaveoauto
-STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow Mänguasjaveoauto
-STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover Maiustusteveoauto
-STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught Maiustusteveoauto
-STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow Maiustusteveoauto
-STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover Patareiveoauto
-STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught Patareiveoauto
-STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow Patareiveoauto
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover Limonaadiveoauto
-STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught Limonaadiveoauto
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow Limonaadiveoauto
-STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover Plastikuveoauto
-STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught Plastikuveoauto
-STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow Plastikuveoauto
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover Mulliveoauto
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught Mulliveoauto
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow Mulliveoauto
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover suhkruveok
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught suhkruveok
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow suhkruveok
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover koolaveok
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught koolaveok
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow koolaveok
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover suhkruvativeok
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught suhkruvativeok
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow suhkruvativeok
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover iiriseveok
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught iiriseveok
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow iiriseveok
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover mänguasjaveok
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught mänguasjaveok
+STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow mänguasjaveok
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover maiustusteveok
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught maiustusteveok
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow maiustusteveok
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover patareiveok
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught patareiveok
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow patareiveok
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover limonaadiveok
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught limonaadiveok
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow limonaadiveok
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover plastikuveok
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught plastikuveok
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow plastikuveok
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover mulliveok
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught mulliveok
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow mulliveok
 STR_80CC_MPS_OIL_TANKER                                         :MPS naftatanker
 STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. naftatanker
-STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Praam
-STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Praam
-STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Hõljuk
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Praam
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Praam
-STR_80D3_YATE_CARGO_SHIP                                        :Yate Kaubalaev
-STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell Kaubalaev
-STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover Kaubalaev
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS reisipraam
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP reisipraam
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 hõljuklaev
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug reisipraam
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake reisipraam
+STR_80D3_YATE_CARGO_SHIP                                        :Yate kaubalaev
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell kaubalaev
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover kaubalaev
 STR_80D6_POWERNAUT_CARGO_SHIP                                   :Powernaut Kaubalaev
 STR_80D7_SAMPSON_U52                                            :Sampson U52
 STR_80D8_COLEMAN_COUNT                                          :Coleman Count
@@ -2580,7 +2581,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :maglevi vedur
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Rongi Depoo
-STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab. . .{}Esimene rong saabus {STATION} jaama!
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab. . .{}{STATION} jaama saabus esimene rong!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detailid)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Rong on ees
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2595,15 +2596,15 @@ STR_880C_GO_NON_STOP_TO                                         :Sõida läbi {S
 STR_880D_GO_TO_NON_STOP_TRANSFER                                :Sõida läbi {STATION} (Vea ja oota täislaadingut)
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Sõida läbi {STATION} (Laadi maha)
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Sõida läbi {STATION} (Vea ja jäta tühjaks)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Sõida läbi {STATION} (Lae)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Sõida läbi {STATION} (laadi)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Sõida läbi {STATION} (Vea ja oota täislaadingut)
-STR_GO_TO_TRAIN_DEPOT                                           :Mine {TOWN} Rongidepoosse
+STR_GO_TO_TRAIN_DEPOT                                           :Mine linna {TOWN} rongidepoosse
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Hooldus linna {TOWN} rongidepoos
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Sõida läbi {TOWN} Rongidepoo
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Hooldus Läbisõidul läbi {TOWN} Rongidepoo
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Sõida läbi linna {TOWN} rongidepoo
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Hooldus Läbisõidul läbi linna {TOWN} rongidepoo
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Suundub {TOWN} Rongidepoosse
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Suundub {TOWN} Rongidepoosse, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Suundub linna {TOWN} rongidepoosse
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Suundub linna {TOWN} rongidepoosse, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Parandus{TOWN} Rongijaamas
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Parandus {TOWN} Rongijaamas, {VELOCITY}
 
@@ -2633,13 +2634,13 @@ STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}See ehit
 STR_CLONE_TRAIN                                                 :{BLACK}Klooni rong
 STR_CLONE_TRAIN_INFO                                            :{BLACK}See ehitab koopia rongist koos kõikide vagunitega. CTRL-klikk jagab sihtpunkte
 STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}See ehitab koopia rongist koos kõikide vagunitega. Vajuta sellele nuppule, ning seejärel rongile depoo sees või väljas. CTRL-klikk jagab sihtpunkte
-STR_8820_RENAME                                                 :{BLACK}Nimeta ümber
+STR_8820_RENAME                                                 :{BLACK}Muuda nime
 STR_8823_SKIP                                                   :{BLACK}Jäta vahele
 STR_8824_DELETE                                                 :{BLACK}Kustuta
 STR_8825_NON_STOP                                               :{BLACK}Peatuseta
 STR_8826_GO_TO                                                  :{BLACK}Mine
-STR_8827_FULL_LOAD                                              :{BLACK}Täis laadung
-STR_8828_UNLOAD                                                 :{BLACK}Lae maha
+STR_8827_FULL_LOAD                                              :{BLACK}Laadi täis
+STR_8828_UNLOAD                                                 :{BLACK}Laadi maha
 STR_REFIT                                                       :{BLACK}Taasseadista
 STR_REFIT_TIP                                                   :{BLACK}Vali, millist laadungit ümber seadistada selles järjestuses. Ümberseadistuse käsu eemaldamiseks hoia klõpsamise ajal all Control nuppu
 STR_REFIT_ORDER                                                 :(Taasseadista {STRING})
@@ -2651,8 +2652,8 @@ STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ei saa e
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Väärtus: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
-STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Laen / Laen maha
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Rong peab olema depoos peatutud
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Laadin / Laadin maha
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Rong peab olema depoos peatatud
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Ei saa saata rongi depoosse...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Pole ruumi käskudeks
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Liiga palju käske
@@ -2675,7 +2676,7 @@ STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Tiri ron
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Keskenda põhivaade rongidepoo kohale
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Rongivagunite nimekiri - vajuta sõidukile info jaoks
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Ehita valitud rongi sõiduk
-STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Nimeta ümber rongisõiduki tüüp
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Muuda rongisõiduki tüübi nime
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Praegune rongi tegevus - vajuta siia et peatada/käivitada rong
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Näita rongi käske
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Vaate viimine rongi asukohale
@@ -2715,7 +2716,7 @@ STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Ei saa n
 STR_8867_NAME_TRAIN                                             :{BLACK}Rongi nimi
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}RONGIKOKKUPÕRGE!{}{COMMA} surid tules peale kokkusõitmist
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ei saa rongi ümber pöörata.
-STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Nimeta ümber rongisõiduki tüüp
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Muuda rongisõiduki tüübi nime
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ei saa nimetada ümber rongisõiduki tüüpi...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Sunni valitud käsul visata maha laadung
 STR_886F_TRANSFER                                               :{BLACK}Transpordi
@@ -2730,7 +2731,7 @@ STR_TRAIN_START_NO_CATENARY                                     :Selle raja ahel
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Maanteesõiduk on ees
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Maanteesõiduk{P "" s}
 STR_9002                                                        :{WHITE}{VEHICLE}
-STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Maanteesõiduki depoo
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Linna {TOWN} maanteesõidukite depoo
 STR_9004_NEW_VEHICLES                                           :{BLACK}Uued sõidukid
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Uued maanteesõidukid
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Ehita sõidukeid
@@ -2773,13 +2774,13 @@ STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Hind: {C
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nimeta maanteeveok ümber
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ei saa maanteveokit ümber nimetada...
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nimeta maanteeveok ümber
-STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}Esimene buss saabus {STATION} jaama!
-STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}Esimene maanteesõiduk saabus {STATION} jaama!
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}{STATION} jaama saabus esimene buss!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}{STATION} jaama saabus esimene maanteesõiduk!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Rongikokkupõrge!{}Juht suri peale õnnetust tules
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Maanteesõiduki kokkupõrge rongiga!{}{COMMA} suri tules peale kokkupõrget rongiga
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Maanteesõidukit ei saa ringi pöörata...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Sa ei saa pöörata sõidukeid millel on mitu üksust
-STR_9034_RENAME                                                 :{BLACK}Nimeta ümber
+STR_9034_RENAME                                                 :{BLACK}Muuda nime
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Nimeta maanteesõiduki tüüp ümber
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Nimeta maanteesõiduki tüüp ümber
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Ei saa nimetada ümber maanteesõiduki tüüpi...
@@ -2787,9 +2788,9 @@ STR_9038_GO_TO_ROADVEH_DEPOT                                    :Mine linna {TOW
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Hoolda {TOWN} Garaaþis
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Seadista maanteesõidukit kandma teist tüüpi laadungit
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Seadista maantee sõiduk ümber
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Muuda maanteesõiduki seadistust
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Seadista maanteesõiduk kandma valitud laadungitüüpi
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ei saa seadistada maantee sõidukit ümber
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Maanteesõiduki seadistust ei saa ümber muuta
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali, millist tüüpi laadungit sõiduk veab
 
 ##id 0x9800
@@ -2832,7 +2833,7 @@ STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Müügik
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vii pea vaade paadikuuri juurde
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Laevad - info saamiseks vajuta laevale
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Ehita uus laev (vajad paadikuuri)
-STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Laeva valimisnimekiri - info saamiseks vajuta laevale
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Laevade nimekiri - info saamiseks vajuta laevale
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Ehita valitud laev
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Praegune laeva tegevus - vajuta siia, et peatada/käivitada laeva
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Näita laeva sihtpunkte
@@ -2846,10 +2847,10 @@ STR_982F_NAME_SHIP                                              :{BLACK}Anna lae
 
 STR_9831_NAME_SHIP                                              :{WHITE}Anna laevale nimi
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Ei saa laeva ümber nimetada...
-STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}Esimene laev saabus {STATION} sadamasse!
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}{STATION} sadamasse saabus esimene laev!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Aseta teemärgisena kasutatav poi
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Poid ei saa siia asetada...
-STR_9836_RENAME                                                 :{BLACK}Nimeta ümber
+STR_9836_RENAME                                                 :{BLACK}Muuda nime
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Nimeta laeva tüüp ümber
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Nimeta laeva tüüp ümber
 STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Ei saa laeva tüüpi ümber nimetada...
@@ -2878,7 +2879,7 @@ STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Ehita le
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Ei saa ehitada lennukit...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Lennuk
 STR_A00A                                                        :{WHITE}{VEHICLE}
-STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Sihtpunktid)
+STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (sihtpunktid)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detailid)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Hoolduskulud: {LTBLUE}{CURRENCY}/aastas
 STR_A00E_MAX_SPEED                                              :{BLACK}Maks. kiirus: {LTBLUE}{VELOCITY}
@@ -2920,11 +2921,11 @@ STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Hind: {C
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Anna lennukile nimi
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Ei saa lennukile nime anda
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nimeta lennuk ümber
-STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}Esimene lennuk saabub {STATION}i!
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}{STATION} lennujaama saabus esimene lennuk!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lennuõnnetus!{}{COMMA} surid tules {STATION}s
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lennuõnnetus!{}Lennukil lõppes kütus, {COMMA} surid tules!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
-STR_A037_RENAME                                                 :{BLACK}Nimeta ümber
+STR_A037_RENAME                                                 :{BLACK}Muuda nime
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Nimeta lennuki tüüp ümber
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Nimeta lennuki tüüp ümber
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Ei saa lennuki tüüpi ümber nimetada...
@@ -3090,7 +3091,7 @@ STR_WAGONS                                                      :Vaguneid
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Vajuta, kui tahad seisata kõiki ronge jaamas
 STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Vajuta, kui tahad seisata kõiki masinaid garaažis
-STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Vajuta, kui tahad seisata kõiki laevu sadamas
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klõpsa, et peatada kõik sadamas olevad laevad.
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Vajuta, kui tahad seisata kõiki lennukeid angaaris
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klõpsa kõikide depoos asuvate rongide käivitamiseks
@@ -3120,14 +3121,14 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Maksuvus: {GOLD}{CURRENCY}{BLACK} Kaal: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kiirus: {GOLD}{VELOCITY}{BLACK}   Võimsus: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Kiirus: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Hoodluskulud: {GOLD}{CURRENCY}/aasta
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Mahutuvus: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Hoolduskulud: {GOLD}{CURRENCY}/aasta
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Mahutavus: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Kujundatud: {GOLD}{NUM}{BLACK} Vanus: {GOLD}{COMMA} aastat
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Suurim töökindlus: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Maksuvus: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Kaal: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Maksumus: {GOLD}{CURRENCY}{BLACK} Kiirus: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Mahutuvusy: {GOLD}{COMMA} reisjat, {COMMA} kotti kirju
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Mahutavus: {GOLD}{COMMA} reisijat, {COMMA} kotti kirju
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirendavad vagunid: {GOLD}+{POWER}{BLACK} Kaal: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ümberseadistatav: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kõik kaubatüübid
