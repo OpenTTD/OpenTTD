@@ -41,9 +41,9 @@ ifdef LIPO
 # and so we have have to combine the binaries into one big binary
 
 # Remove the last binary made by the last compiled target
-	rm -f $(BIN_DIR)/$(TTD)
+	$(Q)rm -f $(BIN_DIR)/$(TTD)
 # Make all the binaries into one
-	$(LIPO) -create -output $(BIN_DIR)/$(TTD) $(TTDS)
+	$(Q)$(LIPO) -create -output $(BIN_DIR)/$(TTD) $(TTDS)
 endif
 
 config.cache: $(CONFIG_CACHE_SOURCE_LIST) $(CONFIGURE_FILES)
