@@ -128,6 +128,10 @@ $(OBJS_M:%.o=%.d): %.d: $(SRC_DIR)/%.m $(FILE_DEP)
 	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.m=%.m)'
 	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:%.d=%.o):#' > $@
 
+$(OBJS_RC:%.o=%.d): %.d: $(SRC_DIR)/%.rc $(FILE_DEP)
+	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.m=%.m)'
+	$(Q)touch $@
+
 else
 # The much faster, but can be wrong, dep-check
 DEP_MASK :=
