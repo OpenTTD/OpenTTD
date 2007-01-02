@@ -622,7 +622,7 @@ check_params() {
 		log 1 "checking GDI video driver... skipping"
 		log 1 "checking dedicated... found"
 
-		if [ "$enable_network" != "0" ]
+		if [ "$enable_network" = "0" ]
 		then
 			log 1 "WARNING: compiling a dedicated server without network is pointless"
 			sleep 5
