@@ -157,7 +157,6 @@ ifdef OSXAPP
 	$(Q)cp    "$(ROOT_DIR)/os/macosx/openttd.icns"                 "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/openttd.icns"
 	$(Q)$(ROOT_DIR)/os/macosx/plistgen.sh                          "${BUNDLE_DIR}/$(OSXAPP)" "$(REV)"
 	$(Q)cp    "$(ROOT_DIR)/docs/OSX_install_instructions.txt"      "$(BUNDLE_DIR)/docs/"
-	$(Q)cp    "$(ROOT_DIR)/docs/OSX_why_multiple_applications.txt" "$(BUNDLE_DIR)/docs/"
 	$(Q)cp    "$(ROOT_DIR)/os/macosx/splash.png"                   "$(DATA_DIR)"
 endif
 	$(Q)cp "$(BIN_DIR)/$(TTD)"                "$(TTD_DIR)/"
