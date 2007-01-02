@@ -176,6 +176,11 @@ static inline bool SetNoDelay(int d)
 #endif
 }
 
+#ifdef __APPLE__
+/* Looks like sys/socket.h uses a name we got in macros.h */
+#undef ALIGN
+#endif
+
 #endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_OS_ABSTRACTION_H */
