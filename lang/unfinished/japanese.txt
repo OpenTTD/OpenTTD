@@ -1,2 +1,1436 @@
 ##name Japanese
-##ownname æ¥æ
+##ownname 日本語
+##isocode ja_JP.UTF-8
+##plural 1
+
+##id 0x0000
+STR_NULL                                                        :
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}地図のエッジはちょっと近いです
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}地図のエッジはちょっと近いです
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}お金はありません。{CURRENCY}がかかります
+STR_0004                                                        :{WHITE}{CURRENCY64}
+STR_0005                                                        :{RED}{CURRENCY64}
+STR_EMPTY                                                       :
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}平たい地面がかかります
+STR_0008_WAITING                                                :{BLACK}待っています： {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000B                                                        :{YELLOW}{STATION})
+STR_000C_ACCEPTS                                                :{BLACK}受け取れる事は： {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}受け取れる事は： {GOLD}
+STR_000E                                                        :
+STR_000F_PASSENGERS                                             :乗客
+STR_0010_COAL                                                   :石炭
+STR_0011_MAIL                                                   :郵便物
+STR_0012_OIL                                                    :原油
+STR_0013_LIVESTOCK                                              :家畜
+STR_0014_GOODS                                                  :商品
+STR_0015_GRAIN                                                  :穀物
+STR_0016_WOOD                                                   :木材
+STR_0017_IRON_ORE                                               :鉄鉱
+STR_0018_STEEL                                                  :鋼鉄
+STR_0019_VALUABLES                                              :貴重品
+STR_001A_COPPER_ORE                                             :銅鉱
+STR_001B_MAIZE                                                  :トウモロコシ
+STR_001C_FRUIT                                                  :果物
+STR_001D_DIAMONDS                                               :ダイヤモンド
+STR_001E_FOOD                                                   :食べ物
+STR_001F_PAPER                                                  :紙
+STR_0020_GOLD                                                   :金
+STR_0021_WATER                                                  :水
+STR_0022_WHEAT                                                  :小麦
+STR_0023_RUBBER                                                 :ゴム
+STR_0024_SUGAR                                                  :砂糖
+STR_0025_TOYS                                                   :おもちゃ
+STR_0026_CANDY                                                  :お菓子
+STR_0027_COLA                                                   :コーラ
+STR_0028_COTTON_CANDY                                           :綿あめ
+STR_0029_BUBBLES                                                :泡
+STR_002A_TOFFEE                                                 :タフィー
+STR_002B_BATTERIES                                              :乾電池
+STR_002C_PLASTIC                                                :プラスチク
+STR_002D_FIZZY_DRINKS                                           :清涼飲料水
+STR_002E                                                        :
+STR_002F_PASSENGER                                              :乗客
+STR_0030_COAL                                                   :石炭
+STR_0031_MAIL                                                   :郵便物
+STR_0032_OIL                                                    :原油
+STR_0033_LIVESTOCK                                              :家畜
+STR_0034_GOODS                                                  :商品
+STR_0035_GRAIN                                                  :穀物
+STR_0036_WOOD                                                   :木材
+STR_0037_IRON_ORE                                               :鉄鉱
+STR_0038_STEEL                                                  :鋼鉄
+STR_0039_VALUABLES                                              :貴重品
+STR_003A_COPPER_ORE                                             :銅鉱
+STR_003B_MAIZE                                                  :トウモロコシ
+STR_003C_FRUIT                                                  :果物
+STR_003D_DIAMOND                                                :ダイヤモンド
+STR_003E_FOOD                                                   :食べ物
+STR_003F_PAPER                                                  :紙
+STR_0040_GOLD                                                   :金
+STR_0041_WATER                                                  :水
+STR_0042_WHEAT                                                  :小麦
+STR_0043_RUBBER                                                 :ゴム
+STR_0044_SUGAR                                                  :砂糖
+STR_0045_TOY                                                    :おもちゃ
+STR_0046_CANDY                                                  :お菓子
+STR_0047_COLA                                                   :コーラ
+STR_0048_COTTON_CANDY                                           :綿あめ
+STR_0049_BUBBLE                                                 :泡
+STR_004A_TOFFEE                                                 :タフィー
+STR_004B_BATTERY                                                :乾電池
+STR_004C_PLASTIC                                                :プラスチク
+STR_004D_FIZZY_DRINK                                            :清涼飲料水
+STR_QUANTITY_NOTHING                                            :
+STR_00AE                                                        :{WHITE}{DATE_SHORT}
+STR_00AF                                                        :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                    :{WHITE}地図－ {STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}ゲーム設定
+STR_00B2_MESSAGE                                                :{YELLOW}メッセージ
+STR_00B3_MESSAGE_FROM                                           :{YELLOW} {STRING}からメッセージ
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}出来ません
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}その所を空けません
+STR_00B7_VERSION                                                :{BLACK}OpenTTD バージョン {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 The OpenTTD team
+STR_TRANSLATED_BY                                               :{BLACK}  訳者－
+
+STR_00C5                                                        :{BLACK}{CROSS}
+STR_00C6                                                        :{SILVER}{CROSS}
+STR_00C8_YES                                                    :{BLACK}はい
+STR_00C9_NO                                                     :{BLACK}いいえ
+STR_00CB_1                                                      :{BLACK}1
+STR_00CC_2                                                      :{BLACK}2
+STR_00CD_3                                                      :{BLACK}3
+STR_00CE_4                                                      :{BLACK}4
+STR_00CF_5                                                      :{BLACK}5
+STR_00D0_NOTHING                                                :何も
+STR_00D1_DARK_BLUE                                              :紺青色
+STR_00D2_PALE_GREEN                                             :薄緑色
+STR_00D3_PINK                                                   :ピンク
+STR_00D4_YELLOW                                                 :黄色
+STR_00D5_RED                                                    :赤色
+STR_00D6_LIGHT_BLUE                                             :薄青色
+STR_00D7_GREEN                                                  :緑色
+STR_00D8_DARK_GREEN                                             :濃緑色
+STR_00D9_BLUE                                                   :青色
+STR_00DA_CREAM                                                  :クリーム色
+STR_00DB_MAUVE                                                  :藤色
+STR_00DC_PURPLE                                                 :紫色
+STR_00DD_ORANGE                                                 :オレンジ色
+STR_00DE_BROWN                                                  :茶色
+STR_00DF_GREY                                                   :灰色
+STR_00E0_WHITE                                                  :白色
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}ゲームのバス／トラック数の制限を超えています
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
+STR_00E4_LOCATION                                               :{BLACK}見付けます
+STR_00E7_INDUSTRIES                                             :産業
+STR_00E8_ROUTES                                                 :経路
+STR_00E9_VEGETATION                                             :植物
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}道路
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}鉄道
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}駅／空港／波止場
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}建物／産業
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}電車
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}バス／トラック
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}船
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}飛行機
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}運送経路
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}炭坑
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}発電所
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}森林
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}製材工場
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}製油所
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT} 農場
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT} 工場
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}印刷所
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}油井
+STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}鉄鉱石鉱山
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}製鋼所
+STR_0105_BANK                                                   :{BLACK}{TINYFONT}銀行
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}製紙工場
+STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}金鉱
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}食品加工場
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}ダイヤモンド鉱山
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}銅鉱山
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}果物農園
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}ゴム園
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}給水設備
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}給水塔
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}製材所
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}綿菓子
+STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}お菓子工場
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}電池農園
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}コーラ泉
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}玩具店
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}玩具工場
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}プラスチック泉
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}ソーダ工場
+STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}泡の発生器
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}トッフィー採石場
+STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}砂糖鉱山
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}駅
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}トラック荷役所
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}バス停
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}空港／ヘリポート
+STR_011F_DOCK                                                   :{BLACK}{TINYFONT}波止場
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}でこぼこの土地
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}草地
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}裸地
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}田畑
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}木
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}
+STR_0126_WATER                                                  :{BLACK}{TINYFONT}水
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}所有者なし
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}町
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}産業
+STR_012A_DESERT                                                 :{BLACK}{TINYFONT}砂漠
+STR_012B_SNOW                                                   :{BLACK}{TINYFONT}雪
+STR_012C_MESSAGE                                                :{WHITE}メッセージ
+STR_012D                                                        :{WHITE}{STRING}
+STR_012E_CANCEL                                                 :{BLACK}キャンセル
+STR_012F_OK                                                     :{BLACK}OK
+STR_0130_RENAME                                                 :{BLACK}名称を変更
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}名称定義数の制限を超えています
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}指定した名称は既に使用中です
+
+STR_0133_WINDOWS                                                :Windows
+STR_0134_UNIX                                                   :Unix
+STR_0135_OSX                                                    :OS X
+
+STR_013B_OWNED_BY                                               :{WHITE}...所有者は {STRING}
+STR_013C_CARGO                                                  :{BLACK}貨物
+STR_013D_INFORMATION                                            :{BLACK}情報
+STR_013E_CAPACITIES                                             :{BLACK}容量
+STR_013E_TOTAL_CARGO                                            :{BLACK}合計貨物
+STR_013F_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
+STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}この電車の貨物最大容量：
+STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_0140_NEW_GAME                                               :{BLACK}新しいゲーム
+STR_0141_LOAD_GAME                                              :{BLACK}ゲームを開く
+
+STR_64                                                          :64
+STR_128                                                         :128
+STR_256                                                         :256
+STR_512                                                         :512
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_BY                                                          :{BLACK}＊
+STR_0148_GAME_OPTIONS                                           :{BLACK}ゲームの設定
+
+STR_0150_SOMEONE                                                :誰かは{SKIP}{SKIP}
+STR_0151_MAP_OF_WORLD                                           :世界の地図
+STR_0152_TOWN_DIRECTORY                                         :町のリスト
+STR_0153_SUBSIDIES                                              :助成金
+
+STR_UNITS_METRIC                                                :メートル法
+
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}ホースポワー
+STR_UNITS_POWER_METRIC                                          :{COMMA}ホースポワー
+STR_UNITS_POWER_SI                                              :{COMMA}キロワット
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}トン
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}トン
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}キロ
+
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} 英トン
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} 仏トン
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} キロ
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}ガロン
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}リットル
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} ガロン
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} リットル
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+
+
+############ range for menu	starts
+STR_0154_OPERATING_PROFIT_GRAPH                                 :営業利益
+STR_0155_INCOME_GRAPH                                           :所得グラフ
+STR_0156_DELIVERED_CARGO_GRAPH                                  :運送した貨物のグラフ
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :成績グラフ
+STR_0158_COMPANY_VALUE_GRAPH                                    :会社価値グラフ
+STR_0159_CARGO_PAYMENT_RATES                                    :貨物運送料
+STR_015A_COMPANY_LEAGUE_TABLE                                   :会社の成績表
+############ range for menu	ends
+
+STR_015B_OPENTTD                                                :{WHITE}OpenTTDとは？でぐち
+STR_015C_SAVE_GAME                                              :ゲームを保存
+STR_015D_LOAD_GAME                                              :ゲームを開く
+STR_015E_QUIT_GAME                                              :ゲームを断念
+STR_015F_QUIT                                                   :出口
+STR_0161_QUIT_GAME                                              :{WHITE}ゲームの断念
+
+STR_SORT_BY_POPULATION                                          :{BLACK}人口
+STR_SORT_BY_TYPE                                                :{BLACK}種類
+STR_SORT_BY_TRANSPORTED                                         :{BLACK}運びだ
+STR_SORT_BY_NAME                                                :{BLACK}名前
+STR_SORT_BY_DROPDOWN_NAME                                       :名前
+STR_SORT_BY_NUMBER                                              :番号
+STR_SORT_BY_VALUE                                               :価値
+STR_SORT_BY_WAITING                                             :待っている積荷価値
+STR_ENGINE_SORT_COST                                            :値段
+
+############ range for months starts
+STR_0162_JAN                                                    :1月
+STR_0163_FEB                                                    :2月
+STR_0164_MAR                                                    :3月
+STR_0165_APR                                                    :4月
+STR_0166_MAY                                                    :5月
+STR_0167_JUN                                                    :6月
+STR_0168_JUL                                                    :7月
+STR_0169_AUG                                                    :8月
+STR_016A_SEP                                                    :9月
+STR_016B_OCT                                                    :10月
+STR_016C_NOV                                                    :11月
+STR_016D_DEC                                                    :12月
+############ range for months ends
+
+STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
+STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_0170                                                        :{TINYFONT}{STRING}-
+STR_0171_PAUSE_GAME                                             :{BLACK}ポーズ
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}ゲームを保存、ゲームを断念、終了
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}会社の駅を表示します
+STR_0174_DISPLAY_MAP                                            :{BLACK}地図を見せます
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}地図、町のリストを表示します
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}町のリストを表示します
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}会社の財務状況を表示します
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}会社の一般情報を表示します
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}グラフを表示します
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}会社の成績表を表示します
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}会社の電車のリストを表示します
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}会社のバス／トラックのリストを表示します
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}会社の船のリストを表示します
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}会社の飛行機のリストを表示します
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}拡大します
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}縮小します
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}鉄道を建造します
+STR_0182_BUILD_ROADS                                            :{BLACK}道路を建造します
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}波止場を建造します
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}空港を建造します
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}木の植え、標示の置くことなど
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}地域情報
+STR_0187_OPTIONS                                                :{BLACK}設定
+STR_0188                                                        :{BLACK}{SMALLUPARROW}
+STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}整備間隔が変更できません
+STR_018B_CLOSE_WINDOW                                           :{BLACK}ウィンドウを閉じます
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}ウィンドウのタイトル - ウィンドウを動くには、クリックしてドラッグします
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}土地上の建物などを破壊します
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}土地の角を下げます
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}土地の角を上げます
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}スクロールバー
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}地図に土地の形勢を表示します
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}地図に乗り物を表示します
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}地図に産業を表示します
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}地図に運送経路を表示します
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}地図に植物を表示します
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}地図に土地の所有者を表示します
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}地図に町名の表示を入／切にします
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}今年の利益：{CURRENCY} (去年：{CURRENCY})
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+STR_019C_ROAD_VEHICLE                                           :バス／トラック
+STR_019D_AIRCRAFT                                               :飛行機
+STR_019E_SHIP                                                   :船
+STR_019F_TRAIN                                                  :電車
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} は古くなっています
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} はかねて古くなっています
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} はかねて古くなっていて、緊急に取り替えられなければなりません
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}地域情報
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}破壊の価格：{LTBLUE}破壊不可
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}破壊の価格：{LTBLUE}{CURRENCY}
+STR_01A6_N_A                                                    :N/A
+STR_01A7_OWNER                                                  :{BLACK}所有者：{LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK} 地方官庁：{LTBLUE}{STRING}
+STR_01A9_NONE                                                   :何も
+STR_01AA_NAME                                                   :{BLACK}名前
+STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+
+############ range for days	starts
+STR_01AC_1ST                                                    :1日
+STR_01AD_2ND                                                    :2日
+STR_01AE_3RD                                                    :3日
+STR_01AF_4TH                                                    :4日
+STR_01B0_5TH                                                    :5日
+STR_01B1_6TH                                                    :6日
+STR_01B2_7TH                                                    :7日
+STR_01B3_8TH                                                    :8日
+STR_01B4_9TH                                                    :9日
+STR_01B5_10TH                                                   :10日
+STR_01B6_11TH                                                   :11日
+STR_01B7_12TH                                                   :12日
+STR_01B8_13TH                                                   :13日
+STR_01B9_14TH                                                   :14日
+STR_01BA_15TH                                                   :15日
+STR_01BB_16TH                                                   :16日
+STR_01BC_17TH                                                   :17日
+STR_01BD_18TH                                                   :18日
+STR_01BE_19TH                                                   :19日
+STR_01BF_20TH                                                   :20日
+STR_01C0_21ST                                                   :21日
+STR_01C1_22ND                                                   :22日
+STR_01C2_23RD                                                   :23日
+STR_01C3_24TH                                                   :24日
+STR_01C4_25TH                                                   :25日
+STR_01C5_26TH                                                   :26日
+STR_01C6_27TH                                                   :27日
+STR_01C7_28TH                                                   :28日
+STR_01C8_29TH                                                   :２９日
+STR_01C9_30TH                                                   :30日
+STR_01CA_31ST                                                   :31日
+############ range for days	ends
+
+STR_01CB                                                        :{TINYFONT}{COMMA}
+
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}受け取る集荷： {LTBLUE}
+
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
+STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}ジャズジュークボックス
+STR_01D3_SOUND_MUSIC                                            :エフェクト／音楽
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}エフェクト／音楽のウィンドウを表示します
+STR_01D5_ALL                                                    :{TINYFONT}すべて
+STR_01D6_OLD_STYLE                                              :{TINYFONT}旧式
+STR_01D7_NEW_STYLE                                              :{TINYFONT}新式
+STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
+STR_01D9_CUSTOM_1                                               :{TINYFONT}カスタム 1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}カスタム 2
+STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}音楽の音量
+STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}エフェクトの音量
+STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}選択部分の前の曲へジャンプ
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}選択部分の次の曲へジャンプ
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}音楽の再生を停止
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}音楽の再生を開始
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}音楽とエフェクトの音量を設定するには、スライダーをドラッグします
+STR_01E3                                                        :{DKGREEN}{TINYFONT}--
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
+STR_01E6                                                        :{DKGREEN}{TINYFONT}------
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}曲{SETX 88}タイトル
+STR_01E9_SHUFFLE                                                :{TINYFONT}シャッフル
+STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}プレイリスト
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}プレイリストの選択
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}曲のリスト
+STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}プレイリスト - '{STRING}'
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}消去
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}保存
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}再生中のプレイリスト
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}プレイリスト「すべての曲」を選択します
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}プレイリスト「旧式音楽」を選択します
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}プレイリスト「新式音楽」を選択します
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}プレイリスト「カスタム 1」を選択します
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}プレイリスト「カスタム 2」を選択します
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}選択したプレイリストの内容を消去します（カスタム 1／2 のみ）。
+STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}音楽の設定を保存
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}選択したプレイリストへ追加するには、曲をクリックします（カスタム 1／2 のみ）。
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}プレイリストのシャッフルを入／切にします
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}曲の選択のウィンドウ表示します
+STR_01FE_DIFFICULTY                                             :{BLACK}難しさ（{STRING})
+STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
+STR_0200_LAST_MESSAGE_NEWS_REPORT                               :最後メッセージ
+STR_0201_MESSAGE_SETTINGS                                       :メッセージ設定
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}最後メッセージそれとも、メッセージ設定を見せます
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}メッセージ設定
+STR_0205_MESSAGE_TYPES                                          :{BLACK}メッセージタイプ：
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}プレヤーのバス停／駅などへ乗り物の初めての到着
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}競争者のバス停／駅などへ乗り物の初めての到着
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}事件／災害
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}会社情報
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}経済の変化
+STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}プレヤーの乗り物についての情報
+STR_020C_NEW_VEHICLES                                           :{YELLOW}乗り物の新登場
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}貨物の受け取りの変化
+STR_020E_SUBSIDIES                                              :{YELLOW}助成金
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}一般情報
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...前の行き先から遠すぎます
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}{NUM}{}({STRING} レベル) に当たった最高の会社
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}{NUM}の会社リーグ表
+STR_0212                                                        :{BIGFONT}{COMMA}.
+STR_0213_BUSINESSMAN                                            :ビジネスマン
+STR_0214_ENTREPRENEUR                                           :企業家
+STR_0215_INDUSTRIALIST                                          :産業主義者
+STR_0216_CAPITALIST                                             :資本家
+STR_0217_MAGNATE                                                :大立者
+STR_0218_MOGUL                                                  :大御所
+STR_0219_TYCOON_OF_THE_CENTURY                                  :大将軍
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}、　{COMPANY}
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} は「{STRING}」に当たった！
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME}（{COMPANY}）は「{STRING}」に当たった！
+STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}シナリオを作成
+STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}シナリオエディタ
+STR_0223_LAND_GENERATION                                        :{WHITE}地勢の生成
+STR_0224                                                        :{BLACK}{UPARROW}
+STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}ランダムな地勢
+STR_0227_RESET_LAND                                             :{BLACK}地勢をリセット
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}あげる／下げる地域のサイズを拡大します
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}あげる／下げる地域のサイズを縮小します
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}ランダムな地勢を生成します
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}地勢をリセットします
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}地勢のリセット
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}地勢をリセットしてもよろしいですか？
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}地勢の生成
+STR_022F_TOWN_GENERATION                                        :{BLACK}市町村の生成
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}産業の生成
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}道路の生成
+STR_0233_TOWN_GENERATION                                        :{WHITE}市町村の生成
+STR_0234_NEW_TOWN                                               :{BLACK}新規町
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}新規町を建造します
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}ここで町が建造できません...
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...他の町の近すぎます
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...地域が不適当です
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...市町村数の制限を超えています
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}町のサイズをあげます
+STR_023C_EXPAND                                                 :{BLACK}拡大
+STR_023D_RANDOM_TOWN                                            :{BLACK}ランダムな町
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}ランダムなところに町を建造します
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}産業の生成
+STR_0240_COAL_MINE                                              :{BLACK}炭坑
+STR_0241_POWER_STATION                                          :{BLACK}発電所
+STR_0242_SAWMILL                                                :{BLACK}製材工場
+STR_0243_FOREST                                                 :{BLACK}森林
+STR_0244_OIL_REFINERY                                           :{BLACK}製油所
+STR_0246_FACTORY                                                :{BLACK}工場
+STR_0247_STEEL_MILL                                             :{BLACK}製鋼所
+STR_0248_FARM                                                   :{BLACK}農場
+STR_0249_IRON_ORE_MINE                                          :{BLACK}鉄鉱石鉱山
+STR_024A_OIL_WELLS                                              :{BLACK}油井
+STR_024B_BANK                                                   :{BLACK}銀行
+STR_024C_PAPER_MILL                                             :{BLACK}製紙工場
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}食品加工場
+STR_024E_PRINTING_WORKS                                         :{BLACK}印刷所
+STR_024F_GOLD_MINE                                              :{BLACK}金鉱
+STR_0250_LUMBER_MILL                                            :{BLACK}製材所
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}果物農園
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}ゴム園
+STR_0253_WATER_SUPPLY                                           :{BLACK}給水設備
+STR_0254_WATER_TOWER                                            :{BLACK}給水塔
+STR_0255_DIAMOND_MINE                                           :{BLACK}ダイヤモンド鉱山
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}銅鉱石鉱山
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}そこに {STRING} を建てられません
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...まずは町を建造しなければなりません
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...一町内に一つしか建造できません
+STR_0296_QUIT                                                   :出口
+STR_0298_LOAD_SCENARIO                                          :{WHITE}シナリオを開く
+STR_0299_SAVE_SCENARIO                                          :{WHITE}シナリオを保存
+STR_029A_PLAY_SCENARIO                                          :{BLACK}シナリオをプレイ
+STR_029C_QUIT_EDITOR                                            :{WHITE}エディタの終了
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...人口が1200人以上の市町のみに建造できます
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}開始日を1年間減らします
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}開始日を1年間増やします
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...橋の端は両方土地上に建造しなければなりません
+STR_02A1_SMALL                                                  :{BLACK}小さい
+STR_02A2_MEDIUM                                                 :{BLACK}町
+STR_02A3_LARGE                                                  :{BLACK}大きい
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}町のサイズを選択します
+STR_02A5_TOWN_SIZE                                              :{YELLOW}町のサイズ：
+
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}最後のメッセージ／報道を表示します
+STR_SUMMARY                                                     :粗筋
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :市町村のリスト
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}乗り物の名称
+STR_02BD                                                        :{BLACK}{STRING}
+STR_02BE_DEFAULT                                                :デフォルト
+STR_02BF_CUSTOM                                                 :カスタム
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}カスタム名称を保存
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}乗り物の名称の選択
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}カスタマイズした乗り物の名称を保存します
+
+STR_CHECKMARK                                                   :{CHECKMARK}
+############ range for menu	starts
+STR_02C3_GAME_OPTIONS                                           :ゲーム設定
+STR_02C5_DIFFICULTY_SETTINGS                                    :難しさ設定
+STR_02C7_CONFIG_PATCHES                                         :パッチの設定
+STR_GAMEOPTMENU_0A                                              :
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}市町村名の表示
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}駅／バス停名の表示
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}標示の表示
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}高級のアニメーション
+STR_02D2_FULL_DETAIL                                            :{SETX 12}高級の画像
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}透明な建物
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}澄む駅看板
+############ range ends	here
+
+############ range for menu	starts
+STR_02D5_LAND_BLOCK_INFO                                        :地域情報
+STR_02D6                                                        :
+STR_02D7_SCREENSHOT_CTRL_S                                      :スクリーンショット（Ctrl-S）
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :大型スクリーンショット（Ctrl-G）
+STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD'とは？
+############ range ends	here
+
+STR_02DB_OFF                                                    :{BLACK}切
+STR_02DA_ON                                                     :{BLACK}入
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}助成金を表示
+STR_02DD_SUBSIDIES                                              :助成金
+STR_02DE_MAP_OF_WORLD                                           :世界の地図
+STR_02DF_TOWN_DIRECTORY                                         :市町村のリスト
+STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
+
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}通貨単位
+STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}通貨単位の選択
+STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}バス／トラック
+STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02E9_DRIVE_ON_LEFT                                          :左に運転します
+STR_02EA_DRIVE_ON_RIGHT                                         :右に運転します
+STR_02EB_TOWN_NAMES                                             :{BLACK}市町村名
+STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}市町村名の種類の選択
+
+STR_02F4_AUTOSAVE                                               :{BLACK}自動保存
+STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}自動保存の間隔を選択します
+STR_02F7_OFF                                                    :切
+STR_02F8_EVERY_3_MONTHS                                         :毎3月
+STR_02F9_EVERY_6_MONTHS                                         :毎6月
+STR_02FA_EVERY_12_MONTHS                                        :毎12月
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}新しいゲームを始めます
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}ゲームを開きます
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}カスタムシナリオを作成します
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}一人プレイを選択します
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}多人数プレイ（２〜８人）を選択します
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}ゲーム設定を見せます
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}難しさ設定を見せます
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}カスタムシナリオを使用して新規ゲームを開始します
+STR_0304_QUIT                                                   :{BLACK}出口
+STR_0305_QUIT_OPENTTD                                           :{BLACK}'OpenTTD'を止めます
+STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}…町の外に建てません
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}温帯地域を選択します
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}亜寒帯地域を選択します
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}亜熱帯地域を選択します
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}おもちゃの国を選択します
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}新規産業の建造に資金を供給します
+
+############ range for menu	starts
+STR_0313_FUND_NEW_INDUSTRY                                      :新規産業の建造に資金を出す
+############ range ends here
+
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}新規産業の建造に資金の供給
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}…町の外に建てません
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...雨林地域のみに建造できます
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...砂漠地域のみに建造できます
+STR_0319_PAUSED                                                 :{YELLOW}＊＊ポーズ＊＊
+
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}スクリーンショットを '{STRING}' に正常に保存しました
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}スクリーンショットが失敗しました！
+
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}将来用に土地を購入
+STR_032F_AUTOSAVE                                               :{RED}自動保存
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}'Ezy Street 式の音楽'のプレイリストを選択します
+
+STR_0335_6                                                      :{BLACK}6
+STR_0336_7                                                      :{BLACK}7
+
+############ start of townname region
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :イギリス
+STR_TOWNNAME_FRENCH                                             :フランス
+STR_TOWNNAME_GERMAN                                             :ドイツ
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :イギリス（おまけ）
+STR_TOWNNAME_LATIN_AMERICAN                                     :ラテンアメリカ
+STR_TOWNNAME_SILLY                                              :愚
+STR_TOWNNAME_SWEDISH                                            :スウェーデン
+STR_TOWNNAME_POLISH                                             :ポーランド
+STR_TOWNNAME_SLOVAKISH                                          :スロバキア
+STR_TOWNNAME_NORWEGIAN                                          :ノルウェー
+STR_TOWNNAME_HUNGARIAN                                          :洪牙利
+STR_TOWNNAME_AUSTRIAN                                           :オーストリア
+STR_TOWNNAME_ROMANIAN                                           :ルーマニア
+STR_TOWNNAME_CZECH                                              :チェコ
+STR_TOWNNAME_SWISS                                              :瑞西
+STR_TOWNNAME_DANISH                                             :デーン
+STR_TOWNNAME_TURKISH                                            :土国
+STR_TOWNNAME_ITALIAN                                            :イタリ
+STR_TOWNNAME_CATALAN                                            :カタラン
+############ end of	townname region
+
+STR_CURR_YEN                                                    :日本の円（￥）
+
+
+STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+
+
+STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+
+STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+
+STR_AUTOSAVE_1_MONTH                                            :毎月
+
+STR_MONTH_JAN                                                   :1月
+STR_MONTH_FEB                                                   :2月
+STR_MONTH_MAR                                                   :3月
+STR_MONTH_APR                                                   :4月
+STR_MONTH_MAY                                                   :5月
+STR_MONTH_JUN                                                   :6月
+STR_MONTH_JUL                                                   :７月
+STR_MONTH_AUG                                                   :8月
+STR_MONTH_SEP                                                   :9月
+STR_MONTH_OCT                                                   :10月
+STR_MONTH_NOV                                                   :11月
+STR_MONTH_DEC                                                   :12月
+
+
+STR_TONS                                                        :トン
+
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+
+
+STR_TRAIN_IS_LOST                                               :{WHITE}電車{COMMA}は迷います
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}去年、電車{COMMA}の取り柄は{CURRENCY}
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}電車{COMMA}のルートは過小駅があります
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}電車{COMMA}は 空々予定があります
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}電車{COMMA}のルートはデュープリケート 駅があります
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}電車{COMMA} のルートは無効な駅があります
+# end of order system
+
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}電車{COMMA} のオート取り替えられません （お金のかぎり）
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}付け替えの後で、電車{COMMA}は ちょっと長いです
+
+
+
+
+
+
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :何も
+
+
+
+
+
+
+
+STR_CONFIG_PATCHES_INT32                                        :{NUM}
+STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
+
+
+STR_TEMPERATE_LANDSCAPE                                         :温帯国
+STR_SUB_ARCTIC_LANDSCAPE                                        :北極国
+STR_SUB_TROPICAL_LANDSCAPE                                      :亜熱帯国
+STR_TOYLAND_LANDSCAPE                                           :おまちゃ国
+
+
+
+
+
+
+STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW                                                :{WAYPOINT}
+
+
+
+
+
+
+
+STR_TREES_RANDOM_TYPE                                           :{BLACK}ランドム種類の木
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}ランドム種類の木を植えます
+
+
+
+
+
+
+
+
+
+
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+
+
+
+TEMP_AI_IN_PROGRESS                                             :{WHITE}いらっしゃいませ！このAIは発展中です。問題があったら、スクリーンショットを取って、フォーラムに送ってください
+TEMP_AI_ACTIVATED                                               :{WHITE}注意：AIはまだアルファです！今、貨物自動車とバスだけ疲われます！
+TEMP_AI_MULTIPLAYER                                             :{WHITE}注意：AIはまだ実験段階です！問題があったら、英語でtruelight@openttd.orgをメールしてください。
+
+############ network gui strings
+
+
+
+
+STR_NETWORK_GAME_NAME                                           :{BLACK}名前
+
+
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_ORANGE                                                      :{ORANGE}{STRING}
+STR_NETWORK_LANGUAGE                                            :{SILVER}国語：　 {WHITE}{STRING}
+
+
+
+
+STR_NETWORK_INTERNET                                            :インターネット
+STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+
+############ Leave those lines in this order!!
+STR_NETWORK_LANG_ENGLISH                                        :英語
+STR_NETWORK_LANG_GERMAN                                         :ドイツ語
+STR_NETWORK_LANG_FRENCH                                         :フランス語
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+
+##### PNG-MAP-Loader
+
+
+
+##id 0x0800
+STR_0800_COST                                                   :{TINYFONT}{RED}値段：{CURRENCY}
+STR_0801_COST                                                   :{RED}値段： {CURRENCY}
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}所得：{CURRENCY}
+STR_0803_INCOME                                                 :{GREEN}所得：{CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}評価の価値：{CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}評価の所得：{CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}ここに土地が上げられません
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}ここに土地が下げられません
+STR_080A_ROCKS                                                  :岩石
+STR_080B_ROUGH_LAND                                             :でこぼこの土地
+STR_080C_BARE_LAND                                              :裸地
+STR_080D_GRASS                                                  :草地
+STR_080E_FIELDS                                                 :田畑
+STR_080F_SNOW_COVERED_LAND                                      :積雪地域
+STR_0810_DESERT                                                 :砂漠
+
+##id 0x1000
+STR_1004_TOO_HIGH                                               :{WHITE}ちょっと高いです
+STR_1007_ALREADY_BUILT                                          :{WHITE}…もう建てました
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}鉄道の建造
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}電鉄建造
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}モノレールの建造
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}マグレブの建造
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}鉄道の橋の選択
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}ここに電車庫が建造できません
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}ここに駅が建造できません
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}ここに信号が建造できません
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}ここに線路が建造できません
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}ここから線路が廃止できません
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}ここから信号が廃止できません
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}電車庫の配置
+STR_1015_RAILROAD_CONSTRUCTION                                  :鉄道の建造
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :電鉄建造
+STR_1016_MONORAIL_CONSTRUCTION                                  :モノレールの建造
+STR_1017_MAGLEV_CONSTRUCTION                                    :マグレブの建造
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}線路を建造します
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}（電車の建造や整備のための）電車庫を建造します
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}駅を建造します
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}鉄道の信号を建造します
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}鉄道の橋を建造します
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}鉄道のトンネルを建造します
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}線路と信号の建造／廃止を切り替えます
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}橋の選択 - お好きな橋を建造するにはクリックします
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}電車庫の配置を選択します
+STR_1021_RAILROAD_TRACK                                         :線路
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :電車庫
+STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...この土地は他の会社に所有されています
+
+
+
+##id 0x1800
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}ここから道路が廃止できません...
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}車庫の配置
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}ここに車庫が建造できません...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}バス停が建造できません...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}荷役所が建造できません...
+STR_180A_ROAD_CONSTRUCTION                                      :道路の建造
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}道路の部分を建造します
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}（バス、トラックの建造、整備のための）車庫を建造します
+STR_180D_BUILD_BUS_STATION                                      :{BLACK}バス停を建造します
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}荷役所を建造します
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}道路の端を建造します
+STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}道路のトンネルを建造します
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}道路の建造／廃止を切り替えます
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}車庫の配置の選択
+STR_1814_ROAD                                                   :道路
+STR_1815_ROAD_WITH_STREETLIGHTS                                 :街路照明のある道路
+STR_1816_TREE_LINED_ROAD                                        :並木道
+STR_1817_ROAD_VEHICLE_DEPOT                                     :車庫
+STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :踏切
+
+##id 0x2000
+STR_2000_TOWNS                                                  :{WHITE}町
+STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} （{COMMA}）
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
+STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}まずは建物を破壊しなければなりません
+STR_2005                                                        :{WHITE}{TOWN}
+STR_2006_POPULATION                                             :{BLACK}人口：{ORANGE}{COMMA}人{BLACK}　建物：{ORANGE}{COMMA}戸
+STR_2007_RENAME_TOWN                                            :町名を変更
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}町名が変更できません...
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}の町議会は許可しません
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}町名 - 画面をその町に集中するには、クリックします
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}画面を町に集中します
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}町名を変更します
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}先月の乗客：{ORANGE}{COMMA}人{BLACK}　最大：{ORANGE}{COMMA}人
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}先月の郵便物：{ORANGE}{COMMA}個{BLACK}　最大：{ORANGE}{COMMA}個
+STR_200F_TALL_OFFICE_BLOCK                                      :超高層ビル
+STR_2010_OFFICE_BLOCK                                           :オフィスビル
+STR_2011_SMALL_BLOCK_OF_FLATS                                   :アパート
+STR_2012_CHURCH                                                 :チャーチ
+STR_2013_LARGE_OFFICE_BLOCK                                     :大型オフィスビル
+STR_2014_TOWN_HOUSES                                            :マンション
+STR_2015_HOTEL                                                  :ホテル
+STR_2016_STATUE                                                 :彫像
+STR_2017_FOUNTAIN                                               :噴水
+STR_2018_PARK                                                   :公園
+STR_2019_OFFICE_BLOCK                                           :オフィスビル
+STR_201A_SHOPS_AND_OFFICES                                      :雑居ビル
+STR_201B_MODERN_OFFICE_BUILDING                                 :近代のオフィスビル
+STR_201C_WAREHOUSE                                              :倉庫
+STR_201D_OFFICE_BLOCK                                           :オフィスビル
+STR_201E_STADIUM                                                :スタジアム
+STR_201F_OLD_HOUSES                                             :老舗
+STR_2020_LOCAL_AUTHORITY                                        :{BLACK}町議会
+STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}町議会の情報を表示します
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN}の町議会
+STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}会社の町内の世評：
+STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}：　{ORANGE}{STRING}
+STR_2025_SUBSIDIES                                              :{WHITE}助成金
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}次の運送経路に助成金を提案します：
+STR_2027_FROM_TO                                                :{ORANGE}{STRING}を{STRING}から{STRING}へ
+STR_2028_BY                                                     :{YELLOW} （{DATE_SHORT}の前）
+STR_202A_NONE                                                   :{ORANGE}何も
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}既に助成金を受けている運送経路：
+STR_202C_FROM_TO                                                :{ORANGE}{STRING}{STATION}から{STATION}まで{YELLOW} （{COMPANY}
+STR_202D_UNTIL                                                  :{YELLOW}、{DATE_SHORT}まで）
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}助成金の提案の有効期限が切られた：{}{}{STRING}を{STRING}から{STRING}への運送経路は今から助成金を受けない。
+STR_2036_COTTAGES                                               :小屋
+STR_2037_HOUSES                                                 :家
+STR_2038_FLATS                                                  :アパート
+STR_2039_TALL_OFFICE_BLOCK                                      :大型オフィスビル
+STR_203A_SHOPS_AND_OFFICES                                      :雑居
+STR_203B_SHOPS_AND_OFFICES                                      :雑居
+STR_203C_THEATER                                                :劇場
+STR_203D_STADIUM                                                :スタジアム
+STR_203E_OFFICES                                                :オフィスビル
+STR_203F_HOUSES                                                 :家
+STR_2040_CINEMA                                                 :映画館
+STR_2041_SHOPPING_MALL                                          :デパート
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}この町の起こせる動作 - 詳しくは項目をクリックします
+STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}上記のリストの洗濯中の動作を起こします。
+STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}起こせる動作：
+STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :小型広告キャンペーン
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :中型広告キャンペーン
+STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :大型広告キャンペーン
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :道路再建を出資
+STR_204A_BUILD_STATUE_OF_COMPANY                                :会社長の彫像を建造
+STR_204B_FUND_NEW_BUILDINGS                                     :市街地開発を出資
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :地方自治体を買収します
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} あなたの運送経路の利用率を増やすには、町内の小型広告キャンペーンを行います。{}  価値：{CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} あなたの運送経路の利用率を増やすには、町内の中型広告キャンペーンを行います。{}  価値：{CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} あなたの運送経路の利用率を増やすには、町内の大型広告キャンペーンを行います。{}  価値：{CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} 町内の道路の再建を出資します。最高 6 ヶ月間まで、道路交通に途絶を与えます。{}  価値：{CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} 名声を増殖します地方自治体を買収します。けれども、あぶないです！{}  値段： {CURRENCY}
+STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} （{COMMA}）
+
+STR_INDUSTRY                                                    :{INDUSTRY}
+STR_TOWN                                                        :{TOWN}
+STR_INDUSTRY_FORMAT                                             :{TOWN}　{STRING}
+STR_STATION                                                     :{STATION}
+
+##id 0x2800
+STR_2802_TREES                                                  :{WHITE}木
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...木はもうあります
+STR_2806                                                        :{WHITE}{STRING}
+STR_280E_TREES                                                  :木
+
+##id 0x3000
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}線路数
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}ホームの長さ
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}他の駅に近すぎます
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}町内に駅／バス停／荷役所が多すぎます
+STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}駅／荷役所が多すぎます
+STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}バス停が多すぎます
+STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}荷役所が多すぎます
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}他の駅／荷役所に近すぎます
+STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}まずは駅を破壊しなければなりません
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}他の空港に近すぎます
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}まずは空港を破壊しなければなりません
+
+STR_3030_RENAME_STATION_LOADING                                 :駅／荷役所の名称の変更
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}駅名が変更できません...
+
+############ range for rating starts
+STR_3035_APPALLING                                              :最低
+STR_3036_VERY_POOR                                              :とても悪い
+STR_3037_POOR                                                   :悪い
+STR_3038_MEDIOCRE                                               :平凡
+STR_3039_GOOD                                                   :良い
+STR_303A_VERY_GOOD                                              :とても良い
+STR_303B_EXCELLENT                                              :すばらしい
+STR_303C_OUTSTANDING                                            :最高
+############ range for rating ends
+
+STR_303D                                                        :{WHITE}{STRING}： {YELLOW}{STRING} （{COMMA}％）
+STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
+STR_304A_NONE                                                   :{YELLOW}- 何も-
+STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}駅の線路数を選択します
+STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}駅のホームの長さを選択します
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}バス停の配置を選択します
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}荷役所の配置を選択します
+STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}駅の評価を表示します
+STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}駅名を変更します
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}受け取る貨物のリストを表示します
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}空港のサイズ／種類を選択します
+STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
+STR_305E_RAILROAD_STATION                                       :駅
+STR_305F_AIRCRAFT_HANGAR                                        :格納庫
+STR_3060_AIRPORT                                                :空港
+STR_3061_TRUCK_LOADING_AREA                                     :荷役所
+STR_3062_BUS_STATION                                            :バス停
+STR_3063_SHIP_DOCK                                              :波止場
+STR_3068_DOCK                                                   :{WHITE}波止場
+STR_3069_BUOY                                                   :ブイ
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...駅が広すぎます
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}もっと事を選ぶために、CTRLをプッシュ
+
+STR_UNDEFINED                                                   :（ハンナ・ストリング）
+STR_STAT_CLASS_DFLT                                             :デフォルト駅
+STR_STAT_CLASS_WAYP                                             :通過点
+
+##id 0x3800
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}造船所の配置
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}造船所の配置を選択します
+STR_3804_WATER                                                  :水
+STR_3806_SHIP_DEPOT                                             :造船所
+
+##id 0x4000
+STR_4000_SAVE_GAME                                              :{WHITE}ゲームを保存
+STR_4001_LOAD_GAME                                              :{WHITE}ゲームを開く
+STR_4002_SAVE                                                   :{BLACK}保存
+STR_4003_DELETE                                                 :{BLACK}削除
+STR_4004                                                        :{COMPANY}、 {DATE_LONG}
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB 使用可能
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}ゲームの保存が失敗しました
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}ファイルを削除できません
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}ゲームの読み込むが失敗しました
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}ドライブ、フォルダ、ゲームファイルのリスト
+STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}ゲームのファイル名
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}選択したゲームを削除します
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}指定したファイル名に現在のゲームを保存します
+STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}新規ゲーム種類の選択
+STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}シナリオ（緑）、プリセットゲーム（青）もしくは新規ランダムゲームを選択します
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :新規ランダムゲームを作成
+
+##id 0x4800
+STR_4801                                                        :{WHITE}{INDUSTRY}
+STR_4802_COAL_MINE                                              :炭坑
+STR_4803_POWER_STATION                                          :発電所
+STR_4804_SAWMILL                                                :製材工場
+STR_4805_FOREST                                                 :森林
+STR_4806_OIL_REFINERY                                           :石油精製所
+STR_4808_FACTORY                                                :工場
+STR_4809_PRINTING_WORKS                                         :印刷所
+STR_480A_STEEL_MILL                                             :製鋼所
+STR_480B_FARM                                                   :農場
+STR_480C_COPPER_ORE_MINE                                        :銅鉱石鉱山
+STR_480D_OIL_WELLS                                              :油井
+STR_480E_BANK                                                   :銀行
+STR_480F_FOOD_PROCESSING_PLANT                                  :食品加工場
+STR_4810_PAPER_MILL                                             :製紙工場
+STR_4811_GOLD_MINE                                              :金山
+STR_4812_BANK                                                   :銀行
+STR_4813_DIAMOND_MINE                                           :ダイヤモンド鉱山
+STR_4814_IRON_ORE_MINE                                          :鉄鉱石鉱山
+STR_4815_FRUIT_PLANTATION                                       :果物農園
+STR_4816_RUBBER_PLANTATION                                      :ゴム園
+STR_4817_WATER_SUPPLY                                           :給水設備
+STR_4818_WATER_TOWER                                            :給水塔
+STR_4819_FACTORY                                                :工場
+STR_481A_FARM                                                   :農場
+STR_481B_LUMBER_MILL                                            :製材所
+STR_481E_BATTERY_FARM                                           :電池園
+STR_4826_SUGAR_MINE                                             :砂糖鉱山
+
+############ range for requires	starts
+############ range for requires	ends
+
+STR_482F_COST                                                   :{BLACK}値段：　{YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}この産業がここに建造できません...
+
+##id 0x5000
+STR_500D                                                        :{GOLD}{STRING}、｛｝ {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL                                       :つり橋、鋼鉄製
+STR_500F_GIRDER_STEEL                                           :けた橋、鋼鉄製
+STR_5010_CANTILEVER_STEEL                                       :カンチレバー橋、鋼鉄製
+STR_5011_SUSPENSION_CONCRETE                                    :つり橋、コンクリート製
+STR_5012_WOODEN                                                 :木製
+STR_5013_CONCRETE                                               :コンクリート製
+STR_5014_TUBULAR_STEEL                                          :鋼管橋、鋼鉄製
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}橋がここに建造できません...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}トンネルがここに建造できません...
+STR_5017_RAILROAD_TUNNEL                                        :鉄道トンネル
+STR_5018_ROAD_TUNNEL                                            :道路トンネル
+
+##id 0x5800
+STR_5801_TRANSMITTER                                            :送信機
+STR_5802_LIGHTHOUSE                                             :灯台
+STR_5803_COMPANY_HEADQUARTERS                                   :交通会社本部ビル
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...交通会社本部ビルがあります
+
+
+############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
+############ These strings may never get a new id, or savegames	will break!
+##id 0x6000
+STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :名前無し
+STR_SV_TRAIN_NAME                                               :電車{COMMA}
+STR_SV_ROADVEH_NAME                                             :車{COMMA}
+STR_SV_SHIP_NAME                                                :シップ{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :飛行機{COMMA}
+
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} 北
+STR_SV_STNAME_SOUTH                                             :{STRING} 南
+STR_SV_STNAME_EAST                                              :{STRING} 東
+STR_SV_STNAME_WEST                                              :{STRING} 西
+STR_SV_STNAME_CENTRAL                                           :{STRING}中
+STR_SV_STNAME_TRANSFER                                          :{STRING}乗り換え
+STR_SV_STNAME_HALT                                              :{STRING} 停留
+STR_SV_STNAME_VALLEY                                            :{STRING} 谷
+STR_SV_STNAME_HEIGHTS                                           :{STRING}高地
+STR_SV_STNAME_WOODS                                             :{STRING} 森
+STR_SV_STNAME_LAKESIDE                                          :{STRING} 池側
+STR_SV_STNAME_EXCHANGE                                          :{STRING}更代
+STR_SV_STNAME_AIRPORT                                           :{STRING}空港
+STR_SV_STNAME_OILFIELD                                          :{STRING}油田
+STR_SV_STNAME_MINES                                             :{STRING} 鉱区
+STR_SV_STNAME_DOCKS                                             :{STRING} 船渠
+STR_SV_STNAME_BUOY_1                                            :{STRING} ボイ1
+STR_SV_STNAME_BUOY_2                                            :{STRING} ボイ2
+STR_SV_STNAME_BUOY_3                                            :{STRING} ボイ3
+STR_SV_STNAME_BUOY_4                                            :{STRING} ボイ4
+STR_SV_STNAME_BUOY_5                                            :{STRING} ボイ5
+STR_SV_STNAME_BUOY_6                                            :{STRING} ボイ6
+STR_SV_STNAME_BUOY_7                                            :{STRING} ボイ7
+STR_SV_STNAME_BUOY_8                                            :{STRING} ボイ8
+STR_SV_STNAME_BUOY_9                                            :{STRING} ボイ9
+STR_SV_STNAME_ANNEXE                                            :{STRING}新館
+STR_SV_STNAME_SIDINGS                                           :{STRING} 側線
+STR_SV_STNAME_BRANCH                                            :{STRING}支所
+STR_SV_STNAME_UPPER                                             :{STRING}上
+STR_SV_STNAME_LOWER                                             :{STRING}下
+STR_SV_STNAME_HELIPORT                                          :{STRING}ヘリポート
+STR_SV_STNAME_FOREST                                            :{STRING} 森林
+
+############ end of	savegame specific region!
+
+##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}難易度
+
+############ range for difficulty levels starts
+STR_6801_EASY                                                   :{BLACK}安い
+STR_6802_MEDIUM                                                 :{BLACK}中位
+STR_6803_HARD                                                   :{BLACK}難しい
+STR_6804_CUSTOM                                                 :{BLACK}カスタム
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}競争者数の上限：{ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}競争者の開始遅延：{ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}市町村数：{ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}工業数：{ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}初期の最高貸付金：{ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}初期の金利：{ORANGE}{COMMA}％
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}乗り物の運転費：{ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}競争者の建造速度：{ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}競争者の能力レベル：{ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}乗り物の機能停止：{ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}助成金の乗数：{ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}建造の価値：{ORANGE}{STRING}
+STR_6813_ECONOMY                                                :{LTBLUE}経済の傾向：{ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING                                        :{LTBLUE}電車の反転：{ORANGE}{STRING}
+STR_6815_DISASTERS                                              :{LTBLUE}災害：{ORANGE}{STRING}
+STR_16816_CITY_APPROVAL                                         :{LTBLUE}町議会の地域の再構築に関わる姿勢：{ORANGE}{STRING}
+############ range for difficulty settings ends
+
+STR_26816_NONE                                                  :何も
+STR_6816_LOW                                                    :低い
+STR_6817_NORMAL                                                 :通常
+STR_6818_HIGH                                                   :高い
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
+STR_681B_VERY_SLOW                                              :特に遅い
+STR_681C_SLOW                                                   :遅い
+STR_681D_MEDIUM                                                 :中位
+STR_681E_FAST                                                   :速い
+STR_681F_VERY_FAST                                              :特に速い
+STR_6820_LOW                                                    :低い
+STR_6821_MEDIUM                                                 :中位
+STR_6822_HIGH                                                   :高い
+STR_6823_NONE                                                   :なし
+STR_6824_REDUCED                                                :軽減
+STR_6825_NORMAL                                                 :通常
+STR_6826_X1_5                                                   :x1.5
+STR_6827_X2                                                     :x2
+STR_6828_X3                                                     :x3
+STR_6829_X4                                                     :x4
+STR_682A_VERY_FLAT                                              :特に平たい
+STR_682B_FLAT                                                   :平たい
+STR_682C_HILLY                                                  :丘陵地
+STR_682D_MOUNTAINOUS                                            :山岳地
+STR_682E_STEADY                                                 :安定的
+STR_682F_FLUCTUATING                                            :変動的
+STR_6830_IMMEDIATE                                              :すぐに
+STR_6831_3_MONTHS_AFTER_PLAYER                                  :開始から 3 ヶ月
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :開始から 6 ヶ月
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :開始から 9 ヶ月
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :線路終点と駅
+STR_6835_AT_END_OF_LINE_ONLY                                    :線路終点のみ
+STR_6836_OFF                                                    :切
+STR_6837_ON                                                     :入
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}ハイスコアを表示
+
+##id 0x7000
+STR_7000                                                        :
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7008_COMPANY_NAME                                           :{BLACK}会社名
+STR_7009_PRESIDENT_NAME                                         :{BLACK}社長の名前
+STR_700A_COMPANY_NAME                                           :会社名
+STR_700B_PRESIDENT_S_NAME                                       :社長の名前
+STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}会社名が変更できません...
+STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}社長の名前が変更できません...
+STR_7010                                                        :{WHITE}{NUM}
+STR_701E                                                        :{BLACK}-{CURRENCY64}
+STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_7024                                                        :{COMMA}
+STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_TRAINS                                                      :{WHITE}{COMMA} 電車
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} 飛行機
+STR_7042_NONE                                                   :{WHITE}何も
+STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+
+STR_LIVERY_BUS                                                  :バス
+
+
+##id 0x8000
+STR_8104_AIRCRAFT                                               :飛行機
+
+##id 0x8800
+
+
+
+STR_UNKNOWN_DESTINATION                                         :不明行き先
+STR_8816                                                        :{BLACK}-
+
+
+STR_881F_BUILD_VEHICLE                                          :{BLACK}車両を購入
+STR_8820_RENAME                                                 :{BLACK}名称を変更
+STR_8823_SKIP                                                   :{BLACK}スキップ
+STR_8824_DELETE                                                 :{BLACK}削除
+STR_8825_NON_STOP                                               :{BLACK}直行便
+STR_8826_GO_TO                                                  :{BLACK}駅を選択
+STR_8827_FULL_LOAD                                              :{BLACK}全負荷
+STR_8828_UNLOAD                                                 :{BLACK}降ろす
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE}（指令）
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 指名終了 - -
+STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}鉄道車両が購入できません...
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入日付：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}　価値：{LTBLUE}{CURRENCY}
+STR_882E                                                        :{WHITE}{VEHICLE}
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}積み降ろし中
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}電車は車庫に止めなければ成らないんです
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}電車が電車庫へ回送できません...
+STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}これ以上の指令が追加できません
+STR_8832_TOO_MANY_ORDERS                                        :{WHITE}指令が多すぎます
+STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}新規指令が挿入できません...
+STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}この指令が削除できません...
+STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}この指令が変更できません...
+STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}この車輌が移動できません...
+STR_8838_N_A                                                    :N/A{SKIP}
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}車両が販売できません...
+STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}電車庫への経路が見つけられません
+STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}電車が開始／停止できません...
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}補修間隔：{LTBLUE}{COMMA}日間{BLACK}  最新の補修：{LTBLUE}{DATE_LONG}
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}電車 - 情報を見るには電車をクリックします
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}新規電車を購入（電車庫が必要）
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}電車 - 情報を見るには電車をクリックします。車両を追加／取り除くにはドラッグします。
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}新規電車車両を購入
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}車両を販売するには、ここへドラッグします
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}電車車両のリスト - 情報を見るには車両をクリックします
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}選択した車両を購入
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}車両名を変更
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}電車の現在の動作 - 開始／停止するにはここにクリックします
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}電車の指令を表示します
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}電車を電車庫へ回送します。Control+クリックすすると、補修のみします。
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}信号が青になるまで待たずに電車の続行を強制します
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}電車を逆転します
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}電車の情報を表示します
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}補修間隔を増やす
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}補修間隔を減らす
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}積んだ貨物の情報を表示します
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}電車車両の情報を表示します
+STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}各車両の容量を表示します
+STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}貨物種類に並べ替えて電車の合計容量を表示します
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}指令リスト - 指令を選択するにはクリックします。
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}現在の指令をスキップして、次へ移動します
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}選択した指令を削除します
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令を「直行便」にします
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}選択した指令の前／リストの終わりに新規指令を挿入します
+STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に全負荷まで待つことを強制します
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に降ろすことを強制します
+STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}{STRING} が新登場！
+STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}値段： {CURRENCY}重さ： {WEIGHT_S}{}スピード： {VELOCITY}  力： {POWER}{}運転費：{CURRENCY}／年{}体積： {CARGO}
+STR_885C_BROKEN_DOWN                                            :{RED}故障
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}1 年間に{CURRENCY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重さ： {LTBLUE}{WEIGHT_S}  {BLACK}力： {LTBLUE}{POWER}{BLACK} 最大スピード： {LTBLUE}{VELOCITY}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の利益：{LTBLUE}{CURRENCY}（去年：{CURRENCY}）
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最新補修後の故障：{LTBLUE}{COMMA}
+STR_8861_STOPPED                                                :{RED}停止中
+
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}電車事件！{}{COMMA} 人が死亡
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}電車が逆転できません...
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}電車車両名を変更
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}車両名が変更できません...
+
+STR_TRAIN_STOPPING                                              :{RED}止まっています
+STR_TRAIN_STOPPING_VEL                                          :{RED}止まっています、 {VELOCITY}
+STR_TRAIN_NO_POWER                                              :{RED}電源はありません
+STR_TRAIN_START_NO_CATENARY                                     :電車はけん垂線がありませんから、電車は動き出せません。
+
+##id 0x9000
+STR_9002                                                        :{WHITE}{VEHICLE}
+STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
+
+
+
+##id 0x9800
+STR_980F                                                        :{WHITE}{VEHICLE}
+
+
+##id 0xA000
+STR_A00A                                                        :{WHITE}{VEHICLE}
+STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
+
+STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
+
+##id 0xB000
+
+
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}（{CURRCOMPACT}／{CURRCOMPACT}）
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}（{COMMA}／{COMMA}）
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
+STR_LORRY                                                       :{BLACK}{LORRY}
+STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} 飛行機
+
+
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}シェアード ・ルート{COMMA} 車
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}このスケジュールの車全部を見せます
+
+### depot strings
+
+
+
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} 電車
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} 車
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} シップ
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} 飛行機
+
+
+
+
+
+
+STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
+
+
+########### String for New Landscape Generator
+
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}世界発電
+STR_TREE_PLACER                                                 :{BLACK}木アルゴリズム：
+STR_TERRAIN_TYPE                                                :{BLACK}地形種類：
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}始める年を変えます
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} ／ {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}世界発電
+STR_TREE_GENERATION                                             :{BLACK}木発電
+STR_UNMOVABLE_GENERATION                                        :{BLACK}可動ない 発電
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
+
+
+########### String for new airports
+
+
+############ Tooltip measurment
+
+
+########
