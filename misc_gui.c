@@ -1181,9 +1181,9 @@ enum QueryWidgets {
 
 
 typedef struct query_d {
+	void (*proc)(Window*, bool); ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
 	StringID message;            ///< message shown for query window
 	uint32 params[20];           ///< local copy of _decode_parameters
-	void (*proc)(Window*, bool); ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
 	bool calledback;             ///< has callback been executed already (internal usage for WE_DESTROY event)
 } query_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(query_d));
