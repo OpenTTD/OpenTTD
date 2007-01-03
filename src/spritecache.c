@@ -12,9 +12,45 @@
 #define SPRITE_CACHE_SIZE 1024*1024
 
 
-static void* _sprite_ptr[MAX_SPRITES];
-static uint32 _sprite_file_pos[MAX_SPRITES];
-static int16 _sprite_lru_new[MAX_SPRITES];
+typedef struct SpriteCache {
+	void *ptr;
+	uint32 file_pos;
+	int16 lru;
+} SpriteCache;
+
+
+static uint _spritecache_items = 0;
+static SpriteCache *_spritecache = NULL;
+
+
+static inline SpriteCache *GetSpriteCache(uint index)
+{
+	return &_spritecache[index];
+}
+
+
+static SpriteCache *AllocateSpriteCache(uint index)
+{
+	if (index >= _spritecache_items) {
+		/* Add another 1024 items to the 'pool' */
+		uint items = ALIGN(index + 1, 1024);
+
+		DEBUG(sprite, 4, "Increasing sprite cache to %d items (%d bytes)", items, items * sizeof(*_spritecache));
+
+		_spritecache = realloc(_spritecache, items * sizeof(*_spritecache));
+
+		if (_spritecache == NULL) {
+			error("Unable to allocate sprite cache of %d items (%d bytes)", items, items * sizeof(*_spritecache));
+		}
+
+		/* Reset the new items and update the count */
+		memset(_spritecache + _spritecache_items, 0, (items - _spritecache_items) * sizeof(*_spritecache));
+		_spritecache_items = items;
+	}
+
+	return GetSpriteCache(index);
+}
+
 
 typedef struct MemBlock {
 	uint32 size;
@@ -69,12 +105,14 @@ static bool ReadSpriteHeaderSkipData(void)
 bool SpriteExists(SpriteID id)
 {
 	/* Special case for Sprite ID zero -- its position is also 0... */
-	return _sprite_file_pos[id] != 0 || id == 0;
+	if (id == 0) return true;
+
+	return GetSpriteCache(id)->file_pos != 0;
 }
 
 static void* AllocSprite(size_t);
 
-static void* ReadSprite(SpriteID id)
+static void* ReadSprite(SpriteCache *sc, SpriteID id)
 {
 	uint num;
 	byte type;
@@ -89,14 +127,14 @@ static void* ReadSprite(SpriteID id)
 		);
 	}
 
-	FioSeekToFile(_sprite_file_pos[id]);
+	FioSeekToFile(sc->file_pos);
 
 	num  = FioReadWord();
 	type = FioReadByte();
 	if (type == 0xFF) {
 		byte* dest = AllocSprite(num);
 
-		_sprite_ptr[id] = dest;
+		sc->ptr = dest;
 		FioReadBlock(dest, num);
 
 		return dest;
@@ -108,7 +146,7 @@ static void* ReadSprite(SpriteID id)
 
 		num = (type & 0x02) ? width * height : num - 8;
 		sprite = AllocSprite(sizeof(*sprite) + num);
-		_sprite_ptr[id] = sprite;
+		sc->ptr = sprite;
 		sprite->info   = type;
 		sprite->height = (id != 142) ? height : 10; // Compensate for a TTD bug
 		sprite->width  = width;
@@ -139,6 +177,7 @@ static void* ReadSprite(SpriteID id)
 
 bool LoadNextSprite(int load_index, byte file_index)
 {
+	SpriteCache *sc;
 	uint32 file_pos = FioGetPos() | (file_index << 24);
 
 	if (!ReadSpriteHeaderSkipData()) return false;
@@ -147,11 +186,10 @@ bool LoadNextSprite(int load_index, byte file_index)
 		error("Tried to load too many sprites (#%d; max %d)", load_index, MAX_SPRITES);
 	}
 
-	_sprite_file_pos[load_index] = file_pos;
-
-	_sprite_ptr[load_index] = NULL;
-
-	_sprite_lru_new[load_index] = 0;
+	sc = AllocateSpriteCache(load_index);
+	sc->file_pos = file_pos;
+	sc->ptr = NULL;
+	sc->lru = 0;
 
 	return true;
 }
@@ -159,8 +197,11 @@ bool LoadNextSprite(int load_index, byte file_index)
 
 void DupSprite(SpriteID old, SpriteID new)
 {
-	_sprite_file_pos[new] = _sprite_file_pos[old];
-	_sprite_ptr[new] = NULL;
+	SpriteCache *scold = GetSpriteCache(old);
+	SpriteCache *scnew = AllocateSpriteCache(new);
+
+	scnew->file_pos = scold->file_pos;
+	scnew->ptr = NULL;
 }
 
 
@@ -193,20 +234,22 @@ static uint32 GetSpriteCacheUsage(void)
 
 void IncreaseSpriteLRU(void)
 {
-	int i;
-
 	// Increase all LRU values
 	if (_sprite_lru_counter > 16384) {
+		SpriteID i;
+
 		DEBUG(sprite, 3, "Fixing lru %d, inuse=%d", _sprite_lru_counter, GetSpriteCacheUsage());
 
-		for (i = 0; i != MAX_SPRITES; i++)
-			if (_sprite_ptr[i] != NULL) {
-				if (_sprite_lru_new[i] >= 0) {
-					_sprite_lru_new[i] = -1;
-				} else if (_sprite_lru_new[i] != -32768) {
-					_sprite_lru_new[i]--;
+		for (i = 0; i != _spritecache_items; i++) {
+			SpriteCache *sc = GetSpriteCache(i);
+			if (sc->ptr != NULL) {
+				if (sc->lru >= 0) {
+					sc->lru = -1;
+				} else if (sc->lru != -32768) {
+					sc->lru--;
 				}
 			}
+		}
 		_sprite_lru_counter = 0;
 	}
 
@@ -229,7 +272,7 @@ static void CompactSpriteCache(void)
 		if (s->size & S_FREE_MASK) {
 			MemBlock* next = NextBlock(s);
 			MemBlock temp;
-			void** i;
+			SpriteID i;
 
 			// Since free blocks are automatically coalesced, this should hold true.
 			assert(!(next->size & S_FREE_MASK));
@@ -239,11 +282,11 @@ static void CompactSpriteCache(void)
 				break;
 
 			// Locate the sprite belonging to the next pointer.
-			for (i = _sprite_ptr; *i != next->data; ++i) {
-				assert(i != endof(_sprite_ptr));
+			for (i = 0; GetSpriteCache(i)->ptr != next->data; i++) {
+				assert(i != _spritecache_items);
 			}
 
-			*i = s->data; // Adjust sprite array entry
+			GetSpriteCache(i)->ptr = s->data; // Adjust sprite array entry
 			// Swap this and the next block
 			temp = *s;
 			memmove(s, next, next->size);
@@ -262,31 +305,32 @@ static void CompactSpriteCache(void)
 
 static void DeleteEntryFromSpriteCache(void)
 {
-	int i;
-	int best = -1;
+	SpriteID i;
+	uint best = -1;
 	MemBlock* s;
 	int cur_lru;
 
 	DEBUG(sprite, 3, "DeleteEntryFromSpriteCache, inuse=%d", GetSpriteCacheUsage());
 
 	cur_lru = 0xffff;
-	for (i = 0; i != MAX_SPRITES; i++) {
-		if (_sprite_ptr[i] != NULL && _sprite_lru_new[i] < cur_lru) {
-			cur_lru = _sprite_lru_new[i];
+	for (i = 0; i != _spritecache_items; i++) {
+		SpriteCache *sc = GetSpriteCache(i);
+		if (sc->ptr != NULL && sc->lru < cur_lru) {
+			cur_lru = sc->lru;
 			best = i;
 		}
 	}
 
 	// Display an error message and die, in case we found no sprite at all.
 	// This shouldn't really happen, unless all sprites are locked.
-	if (best == -1)
+	if (best == (uint)-1)
 		error("Out of sprite memory");
 
 	// Mark the block as free (the block must be in use)
-	s = (MemBlock*)_sprite_ptr[best] - 1;
+	s = (MemBlock*)GetSpriteCache(best)->ptr - 1;
 	assert(!(s->size & S_FREE_MASK));
 	s->size |= S_FREE_MASK;
-	_sprite_ptr[best] = NULL;
+	GetSpriteCache(best)->ptr = NULL;
 
 	// And coalesce adjacent free blocks
 	for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s)) {
@@ -338,16 +382,20 @@ static void* AllocSprite(size_t mem_req)
 
 const void *GetRawSprite(SpriteID sprite)
 {
+	SpriteCache *sc;
 	void* p;
 
 	assert(sprite < MAX_SPRITES);
 
-	// Update LRU
-	_sprite_lru_new[sprite] = ++_sprite_lru_counter;
+	sc = GetSpriteCache(sprite);
 
-	p = _sprite_ptr[sprite];
+	// Update LRU
+	sc->lru = ++_sprite_lru_counter;
+
+	p = sc->ptr;
+
 	// Load the sprite, if it is not loaded, yet
-	if (p == NULL) p = ReadSprite(sprite);
+	if (p == NULL) p = ReadSprite(sc, sprite);
 	return p;
 }
 
@@ -362,7 +410,10 @@ void GfxInitSpriteMem(void)
 	// Sentinel block (identified by size == 0)
 	NextBlock(_spritecache_ptr)->size = 0;
 
-	memset(_sprite_ptr, 0, sizeof(_sprite_ptr));
+	/* Reset the spritecache 'pool' */
+	free(_spritecache);
+	_spritecache_items = 0;
+	_spritecache = NULL;
 
 	_compact_cache_counter = 0;
 }
