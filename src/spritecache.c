@@ -335,58 +335,12 @@ static void* AllocSprite(size_t mem_req)
 	}
 }
 
-#if defined(NEW_ROTATION)
-#define X15(x) else if (s >= x && s < (x+15)) { s = _rotate_tile_sprite[s - x] + x; }
-#define X19(x) else if (s >= x && s < (x+19)) { s = _rotate_tile_sprite[s - x] + x; }
-#define MAP(from,to,map) else if (s >= from && s <= to) { s = map[s - from] + from; }
-
-
-static uint RotateSprite(uint s)
-{
-	static const byte _rotate_tile_sprite[19] = { 0, 2, 4, 6, 8, 10, 12, 14, 1, 3, 5, 7, 9, 11, 13, 17, 18, 16, 15 };
-	static const byte _coast_map[9] = {0, 4, 3, 1, 2, 6, 8, 5, 7};
-	static const byte _fence_map[6] = {1, 0, 5, 4, 3, 2};
-
-	if (0);
-	X19(752)
-	X15(990-1)
-	X19(3924)
-	X19(3943)
-	X19(3962)
-	X19(3981)
-	X19(4000)
-	X19(4023)
-	X19(4042)
-	MAP(4061, 4069, _coast_map)
-	X19(4126)
-	X19(4145)
-	X19(4164)
-	X19(4183)
-	X19(4202)
-	X19(4221)
-	X19(4240)
-	X19(4259)
-	X19(4259)
-	X19(4278)
-	MAP(4090, 4095, _fence_map)
-	MAP(4096, 4101, _fence_map)
-	MAP(4102, 4107, _fence_map)
-	MAP(4108, 4113, _fence_map)
-	MAP(4114, 4119, _fence_map)
-	MAP(4120, 4125, _fence_map)
-	return s;
-}
-#endif
 
 const void *GetRawSprite(SpriteID sprite)
 {
 	void* p;
 
 	assert(sprite < MAX_SPRITES);
-
-#if defined(NEW_ROTATION)
-	sprite = RotateSprite(sprite);
-#endif
 
 	// Update LRU
 	_sprite_lru_new[sprite] = ++_sprite_lru_counter;

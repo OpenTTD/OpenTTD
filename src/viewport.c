@@ -329,13 +329,8 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	x = ((x << vp->zoom) + vp->virtual_left) >> 2;
 	y = ((y << vp->zoom) + vp->virtual_top) >> 1;
 
-#if !defined(NEW_ROTATION)
 	a = y-x;
 	b = y+x;
-#else
-	a = x+y;
-	b = x-y;
-#endif
 
 	/* we need to move variables in to the valid range, as the
 	 * GetTileZoomCenterWindow() function can call here with invalid x and/or y,
@@ -719,13 +714,9 @@ static void ViewportAddLandscape(void)
 	_cur_ti = &ti;
 
 	// Transform into tile coordinates and round to closest full tile
-#if !defined(NEW_ROTATION)
 	x = ((vd->dpi.top >> 1) - (vd->dpi.left >> 2)) & ~0xF;
 	y = ((vd->dpi.top >> 1) + (vd->dpi.left >> 2) - 0x10) & ~0xF;
-#else
-	x = ((vd->dpi.top >> 1) + (vd->dpi.left >> 2) - 0x10) & ~0xF;
-	y = ((vd->dpi.left >> 2) - (vd->dpi.top >> 1)) & ~0xF;
-#endif
+
 	// determine size of area
 	{
 		Point pt = RemapCoords(x, y, 241);
@@ -762,13 +753,9 @@ static void ViewportAddLandscape(void)
 				tt = MP_VOID;
 			}
 
-#if !defined(NEW_ROTATION)
 			y_cur += 0x10;
 			x_cur -= 0x10;
-#else
-			y_cur += 0x10;
-			x_cur += 0x10;
-#endif
+
 			_added_tile_sprite = false;
 			_offset_ground_sprites = false;
 
@@ -776,17 +763,11 @@ static void ViewportAddLandscape(void)
 			DrawTileSelection(&ti);
 		} while (--width_cur);
 
-#if !defined(NEW_ROTATION)
-		if ( (direction^=1) != 0)
+		if ((direction ^= 1) != 0) {
 			y += 0x10;
-		else
+		} else {
 			x += 0x10;
-#else
-		if ( (direction^=1) != 0)
-			x += 0x10;
-		else
-			y -= 0x10;
-#endif
+		}
 	} while (--height);
 }
 
@@ -1263,7 +1244,6 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	vd.first_tile = NULL;
 
 	ViewportAddLandscape();
-#if !defined(NEW_ROTATION)
 	ViewportAddVehicles(&vd.dpi);
 	DrawTextEffects(&vd.dpi);
 
@@ -1271,7 +1251,6 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	ViewportAddStationNames(&vd.dpi);
 	ViewportAddSigns(&vd.dpi);
 	ViewportAddWaypoints(&vd.dpi);
-#endif
 
 	// This assert should never happen (because the length of the parent_list
 	//  is checked)
@@ -1354,7 +1333,6 @@ void UpdateViewportPosition(Window *w)
 
 		SetViewportPosition(w, pt.x, pt.y);
 	} else {
-#if !defined(NEW_ROTATION)
 		int x;
 		int y;
 		int vx;
@@ -1376,26 +1354,6 @@ void UpdateViewportPosition(Window *w)
 		// Set position
 		WP(w, vp_d).scrollpos_x = x - vp->virtual_width / 2;
 		WP(w, vp_d).scrollpos_y = y - vp->virtual_height / 2;
-#else
-		int x,y,t;
-		int err;
-
-		x = WP(w,vp_d).scrollpos_x >> 2;
-		y = WP(w,vp_d).scrollpos_y >> 1;
-
-		t = x;
-		x = x + y;
-		y = x - y;
-		err= 0;
-
-		if (err != 0) {
-			/* coordinate remap */
-			Point pt = RemapCoords(x, y, 0);
-			t = (-1) << vp->zoom;
-			WP(w,vp_d).scrollpos_x = pt.x & t;
-			WP(w,vp_d).scrollpos_y = pt.y & t;
-		}
-#endif
 
 		SetViewportPosition(w, WP(w, vp_d).scrollpos_x, WP(w, vp_d).scrollpos_y);
 	}

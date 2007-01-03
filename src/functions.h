@@ -20,15 +20,9 @@ bool IsValidTile(TileIndex tile);
 
 static inline Point RemapCoords(int x, int y, int z)
 {
-#if !defined(NEW_ROTATION)
 	Point pt;
 	pt.x = (y - x) * 2;
 	pt.y = y + x - z;
-#else
-	Point pt;
-	pt.x = (x + y) * 2;
-	pt.y = x - y - z;
-#endif
 	return pt;
 }
 
