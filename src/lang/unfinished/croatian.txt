@@ -1629,13 +1629,85 @@ STR_7080_PROTECTED                                              :{WHITE}Ova tvrk
 
 
 ##id 0x8000
+STR_8063_ARMORED_VAN                                            :Oklopno vozilo
+STR_80E2_DARWIN_100                                             :Darwin 100
+STR_80E3_DARWIN_200                                             :Darwin 200
+STR_80E4_DARWIN_300                                             :Darwin 300
+STR_80E5_DARWIN_400                                             :Darwin 400
+STR_80E6_DARWIN_500                                             :Darwin 500
+STR_80E7_DARWIN_600                                             :Darwin 600
+STR_80E8_GURU_GALAXY                                            :Guru Galaxy
+STR_80E9_AIRTAXI_A21                                            :Airtaxi A21
+STR_80EA_AIRTAXI_A31                                            :Airtaxi A31
+STR_80EB_AIRTAXI_A32                                            :Airtaxi A32
+STR_80EC_AIRTAXI_A33                                            :Airtaxi A33
+STR_80ED_YATE_AEROSPACE_YAE46                                   :Yate Aerospace YAe46
+STR_80EE_DINGER_100                                             :Dinger 100
+STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
+STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttle
+STR_80F1_KELLING_K1                                             :Kelling K1
+STR_80F2_KELLING_K6                                             :Kelling K6
+STR_80F3_KELLING_K7                                             :Kelling K7
+STR_80F4_DARWIN_700                                             :Darwin 700
+STR_80F5_FFP_HYPERDART_2                                        :FFP Hyperdart 2
+STR_80F6_DINGER_200                                             :Dinger 200
+STR_80F7_DINGER_1000                                            :Dinger 1000
+STR_80F8_PLODDYPHUT_100                                         :Ploddyphut 100
+STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
+STR_80FA_FLASHBANG_X1                                           :Flashbang X1
+STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
+STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
+STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helicopter
+STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
+STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helicopter
+STR_8102_RAILROAD_LOCOMOTIVE                                    :željeznička lokomotiva
+STR_8103_ROAD_VEHICLE                                           :cestovno vozilo
+STR_8104_AIRCRAFT                                               :zrakoplov
+STR_8105_SHIP                                                   :brod
+STR_8106_MONORAIL_LOCOMOTIVE                                    :monorail lokomotiva
+STR_8107_MAGLEV_LOCOMOTIVE                                      :maglev lokomotiva
 
 ##id 0x8800
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na putu
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8806_GO_TO                                                  :Idi do {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Idi do {STATION} (Transferiraj i preuzmi teret)
+STR_8808_GO_TO_UNLOAD                                           :Idi do {STATION} (Istovar)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Go to {STATION} (Transferiraj i otiđi prazan)
+STR_880A_GO_TO_LOAD                                             :Idi do{STATION} (Ukrcaj)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Idi do {STATION} (Transferiraj i pričekaj puni utovar)
+STR_880C_GO_NON_STOP_TO                                         :Idi non-stop do {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Idi non-stop do {STATION} (Transferiraj i preuzmi teret)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Idi non-stop do {STATION} (Istovar)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Idi non-stop do {STATION} (Transferiraj i otiđi prazan)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Idi non-stop do{STATION} (Ukrcaj)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Idi non-stop do {STATION} (Transferiraj i pričekaj puni utovar)
+STR_GO_TO_TRAIN_DEPOT                                           :Idi do {TOWN} spremište vlakova
+STR_SERVICE_AT_TRAIN_DEPOT                                      :Servisiraj u {TOWN} spremištu vlakova
 
 
 
+STR_UNKNOWN_DESTINATION                                         :nepoznato odredište
+STR_8812_EMPTY                                                  :{LTBLUE}Prazan
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} iz {STATION}
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} čeka u spremištu
+STR_8815_NEW_VEHICLES                                           :{BLACK}Nova vozila
+STR_8816                                                        :{BLACK}-
+STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak predugačak
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlakovi mogu biti izmjenjeni jedino kad su zaustavljeni u spremištu
 
 
+STR_CLONE_TRAIN                                                 :{BLACK}Kloniraj vlak
+STR_8820_RENAME                                                 :{BLACK}Preimenuj
+STR_8823_SKIP                                                   :{BLACK}Preskoči
+STR_8824_DELETE                                                 :{BLACK}Obriši
+STR_8825_NON_STOP                                               :{BLACK}Non-stop
+STR_8826_GO_TO                                                  :{BLACK}Idi do
+STR_8827_FULL_LOAD                                              :{BLACK}Puni utovar
+STR_8828_UNLOAD                                                 :{BLACK}Istovar
+STR_REFIT                                                       :{BLACK}Prenamijeni
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nema mjesta za nove naredbe
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Previše naredbi
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Ne možeš ubaciti novu naredbu...

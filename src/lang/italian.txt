@@ -1014,7 +1014,7 @@ STR_CONFIG_PATCHES_ON                                           :Si
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostra velocità veicoli sulla barra di stato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Consenti la costruzione sui pendii e coste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permetti aree di carico/scarico più realistiche: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permetti la rimozione di strade, ponti, ecc. appartenuti alle città: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permetti rimozione di strade, ponti, ecc. appartenuti alle città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Abilita accelerazione realistica per i treni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Vieta ai treni e navi di fare curve di 90°: {ORANGE}{STRING} {LTBLUE} (Richiede YAPF o NPF)

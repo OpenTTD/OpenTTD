@@ -174,16 +174,16 @@ STR_00CD_3                                                      :{BLACK}3
 STR_00CE_4                                                      :{BLACK}4
 STR_00CF_5                                                      :{BLACK}5
 STR_00D0_NOTHING                                                :Intet
-STR_00D1_DARK_BLUE                                              :Mørk Blå
-STR_00D2_PALE_GREEN                                             :Lys Grøn
+STR_00D1_DARK_BLUE                                              :Mørkeblå
+STR_00D2_PALE_GREEN                                             :Bleggrøn
 STR_00D3_PINK                                                   :Lyserød
 STR_00D4_YELLOW                                                 :Gul
 STR_00D5_RED                                                    :Rød
-STR_00D6_LIGHT_BLUE                                             :Lys Blå
+STR_00D6_LIGHT_BLUE                                             :Lyseblå
 STR_00D7_GREEN                                                  :Grøn
-STR_00D8_DARK_GREEN                                             :Mørk Grøn
+STR_00D8_DARK_GREEN                                             :Mørkegrøn
 STR_00D9_BLUE                                                   :Blå
-STR_00DA_CREAM                                                  :Lys Brun
+STR_00DA_CREAM                                                  :Lysebrun
 STR_00DB_MAUVE                                                  :Grålilla
 STR_00DC_PURPLE                                                 :Lilla
 STR_00DD_ORANGE                                                 :Orange
@@ -344,7 +344,7 @@ STR_UNITS_FORCE_METRIC                                          :{COMMA} ton kra
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf for overskud
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf over overskud
 STR_0155_INCOME_GRAPH                                           :Graf over indkomster
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf over leveret last
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Graf over præstation
@@ -374,7 +374,7 @@ STR_SORT_BY_DROPDOWN_NAME                                       :Navn
 STR_SORT_BY_DATE                                                :{BLACK}Dato
 STR_SORT_BY_NUMBER                                              :Nummer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Udbytte sidste år
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Udbytte dette år
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Udbytte i år
 STR_SORT_BY_AGE                                                 :Alder
 STR_SORT_BY_RELIABILITY                                         :Pålidelighed
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapacitet for hver lasttype
@@ -753,8 +753,8 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystør
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Vis seneste besked eller nyhedsrapport
 STR_OFF                                                         :Fra
-STR_SUMMARY                                                     :Resume
-STR_FULL                                                        :Fuldt
+STR_SUMMARY                                                     :Kortfattet
+STR_FULL                                                        :Fuld
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Byoversigt
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Køretøjsdesignnavne
@@ -1050,7 +1050,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :Ja, på alle k�
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et tog har underskud: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køretøjernes levealder udløber aldrig: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatisk fornyelse af køretøjer når de bliver gamle
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automatisk fornyelse når køretøj er {ORANGE}{STRING}{LTBLUE} måneder under/over max alder
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Forny automatisk når køretøj er {ORANGE}{STRING}{LTBLUE} md. før/efter maks. alder
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Antal penge i banken før automatisk fornyelse af køretøjer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Levetid for fejlmeddelser: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Vis byens indbyggertal i bynavnet: {ORANGE}{STRING}
@@ -1077,7 +1077,7 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Den hø
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landskabs værktøjsbaren til skinne/vej/vand/lufthavn værktøjsbaren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Forbind landskabsværktøjslinjen med skinne/vej/vand/lufthavn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Når der scrolles med musen, flyt viewet i den modsatte retning: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Vis værktøjstip for måling under brug af div. bygge-værktøjer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Vis selskabsfarver: {ORANGE}{STRING}
@@ -1117,7 +1117,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Afslut 
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Aktiver rolig økonomi (flere små ændringer)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillad at købe aktier i andre selskaber
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved trækning placer signal hvert: {ORANGE}{STRING} felt
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Placering af værktøjslinie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Placering af værktøjslinje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Venstre
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Center
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Højre
@@ -1193,7 +1193,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Mange ti
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Dæk kortet med tilfældigt placerede industrier
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Kan ikke lave industrier...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Åbn landskabsværktøjslinien for at hæve/sænke terræn, plante træer, osv.
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Åbn landskabsværktøjslinjen for at hæve/sænke terræn, plante træer, osv.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskabsværktøjer
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Udjævn land
 
@@ -1294,7 +1294,7 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Skriv ad
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienter
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienter online / max klienter
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienter online / maks. klienter{}Selskaber online / maks. selskaber
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPIL INFO
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1388,10 +1388,10 @@ STR_NETWORK_VEHICLES                                            :{SILVER}Køret�
 STR_NETWORK_STATIONS                                            :{SILVER}Stationer:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_PLAYERS                                             :{SILVER}Spillere:  {WHITE}{STRING}
 
-STR_NETWORK_CONNECTING                                          :{WHITE}Forbinder...
+STR_NETWORK_CONNECTING                                          :{WHITE}Tilslutter...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Forbinder..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Tilslutter..
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Godkender..
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Venter..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Henter kort..
@@ -1596,8 +1596,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} d
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Bynavne - klik på et navn for at centrere skærmen over byen
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer skærmen over byens placering
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Ændre navnet på byen
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagerer sidste måned: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post sidste måned: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagerer sidste måned: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post sidste måned: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Høj kontorbygning
 STR_2010_OFFICE_BLOCK                                           :Kontorbygning
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Lille lejlighedskompleks
@@ -1651,7 +1651,7 @@ STR_2041_SHOPPING_MALL                                          :Indkøbscenter
 STR_2042_DO_IT                                                  :{BLACK}Gør det
 STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Liste af ting der kan gøres i denne by - klik på en ting for yderligere detaljer
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Udfør den markerede ting i listen herover
-STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Handlinger til Rådighed:
+STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Handlinger til rådighed:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Lille reklamekampagne
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Mellem reklamekampagne
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Stor reklamekampagne
@@ -1772,7 +1772,7 @@ STR_3062_BUS_STATION                                            :Rutebilstation
 STR_3063_SHIP_DOCK                                              :Havn
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Marker dækningsområdet af den foreslåede placering
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Marker ikke dækningsområdet af den foreslåede placering
-STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Markering af dækningsområdet
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Vis dækningsområde
 STR_3068_DOCK                                                   :{WHITE}Havn
 STR_3069_BUOY                                                   :Bøje
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...der er en bøje i vejen
@@ -2088,7 +2088,7 @@ STR_7021                                                        :{COMPANY}{PLAYE
 STR_7022_INCOME_GRAPH                                           :{WHITE}Indkomst Graf
 STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
-STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf for overskud
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf over overskud
 STR_7026_BANK_BALANCE                                           :{WHITE}Bank balance
 STR_7027_LOAN                                                   :{WHITE}Lån
 STR_MAX_LOAN                                                    :{WHITE}Maks. Lån:  {BLACK}{CURRENCY64}
@@ -2566,8 +2566,8 @@ STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan ikke sælge jernbanekøretøjet...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan ikke finde en route til et lokalt depot
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kan ikke stoppe/starte toget...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Serviceinterval: {LTBLUE}{COMMA}dage{BLACK}   Sidste Service: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}%{BLACK}   Sidste Service: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Serviceinterval: {LTBLUE}{COMMA}dage{BLACK}   Sidste service: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}%{BLACK}   Sidste service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Tog - klik på et tog for information
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Byg nye tog (kræver en remise)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Tog - klik på et tog for information., træk vogn/lokomotiv for at fjerne/tilføje det til toget
@@ -2880,7 +2880,7 @@ STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Antal en
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Antallet af lasttyper fragtet i sidste kvartal
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Kapital denne virksomhed har i banken
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Har du et stort lån?
-STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Samlet point af max point
+STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Samlet point ud af mulige points
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF indstillinger
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF indstillinger
@@ -2891,7 +2891,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Der er i
 STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er ved at lave ændringer i et igangværende spil; dette kan få OpenTTD til at gå ned.{}Er du helt sikker på at du vil fortsætte?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er ved at ændre et igangværende spil; dette kan få OpenTTD til at gå ned.{}Er du helt sikker på at du vil fortsætte?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Tilføj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Tilføj et NewGRF sæt til listen
