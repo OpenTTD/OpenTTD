@@ -1672,7 +1672,7 @@ detect_zlib() {
 		fi
 	else
 		# Make sure it exists
-		if [ -f "$zlib" ]
+		if [ -f "$with_zlib" ]
 		then
 			zlib=`ls $with_zlib 2>/dev/null`
 		else
