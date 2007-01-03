@@ -2451,8 +2451,8 @@ static void SkipIf(byte *buf, int len)
 }
 
 
-/* Action 0x08 (GLS_SAFETYSCAN) */
-static void SafeInfo(byte *buf, int len)
+/* Action 0x08 (GLS_FILESCAN) */
+static void ScanInfo(byte *buf, int len)
 {
 	uint8 version;
 	uint32 grfid;
@@ -2483,12 +2483,6 @@ static void SafeInfo(byte *buf, int len)
 
 		if (info_len < len) _cur_grfconfig->info  = TranslateTTDPatchCodes(info);
 	}
-}
-
-/* Action 0x08 (GLS_INFOSCAN) */
-static void ScanInfo(byte *buf, int len)
-{
-	SafeInfo(buf, len);
 
 	/* GLS_INFOSCAN only looks for the action 8, so we can skip the rest of the file */
 	_skip_sprites = -1;
@@ -2908,6 +2902,37 @@ static void ParamSet(byte *buf, int len)
 	}
 }
 
+/* Action 0x0E (GLS_SAFETYSCAN) */
+static void SafeGRFInhibit(byte *buf, int len)
+{
+	/* <0E> <num> <grfids...>
+	 *
+	 * B num           Number of GRFIDs that follow
+	 * D grfids        GRFIDs of the files to deactivate */
+
+	byte num;
+	int i;
+
+	check_length(len, 1, "GRFInhibit");
+	buf++, len--;
+	num = grf_load_byte(&buf); len--;
+	check_length(len, 4 * num, "GRFInhibit");
+
+	for (i = 0; i < num; i++) {
+		uint32 grfid = grf_load_dword(&buf);
+
+		/* GRF is unsafe it if tries to deactivate other GRFs */
+		if (grfid != _cur_grfconfig->grfid) {
+			SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
+
+			/* Skip remainder of GRF */
+			_skip_sprites = -1;
+
+			return;
+		}
+	}
+}
+
 /* Action 0x0E */
 static void GRFInhibit(byte *buf, int len)
 {
@@ -3169,8 +3194,8 @@ static void GRFUnsafe(byte *buf, int len)
 {
 	SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
 
-	/* Skip remainder of GRF if GRF ID is set */
-	if (_cur_grfconfig->grfid != 0) _skip_sprites = -1;
+	/* Skip remainder of GRF */
+	_skip_sprites = -1;
 }
 
 
@@ -3522,13 +3547,13 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x05 */ { NULL,     NULL,      NULL,            NULL,       GraphicsNew, },
 		/* 0x06 */ { NULL,     NULL,      NULL,            CfgApply,   CfgApply, },
 		/* 0x07 */ { NULL,     NULL,      NULL,            NULL,       SkipIf, },
-		/* 0x08 */ { ScanInfo, SafeInfo,  NULL,            GRFInfo,    GRFInfo, },
+		/* 0x08 */ { ScanInfo, NULL,      NULL,            GRFInfo,    GRFInfo, },
 		/* 0x09 */ { NULL,     NULL,      NULL,            SkipIf,     SkipIf, },
 		/* 0x0A */ { NULL,     NULL,      NULL,            NULL,       SpriteReplace, },
 		/* 0x0B */ { NULL,     NULL,      NULL,            GRFError,   GRFError, },
 		/* 0x0C */ { NULL,     NULL,      NULL,            GRFComment, GRFComment, },
 		/* 0x0D */ { NULL,     GRFUnsafe, NULL,            ParamSet,   ParamSet, },
-		/* 0x0E */ { NULL,     GRFUnsafe, NULL,            GRFInhibit, GRFInhibit, },
+		/* 0x0E */ { NULL,     SafeGRFInhibit, NULL,       GRFInhibit, GRFInhibit, },
 		/* 0x0F */ { NULL,     NULL,      NULL,            NULL,       NULL, },
 		/* 0x10 */ { NULL,     NULL,      DefineGotoLabel, NULL,       NULL, },
 		/* 0x11 */ { NULL,     GRFUnsafe, NULL,            NULL,       GRFSound, },
