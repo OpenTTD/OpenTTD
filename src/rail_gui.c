@@ -694,6 +694,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		bool newstations = _railstation.newstations;
 		int y_offset;
 		DrawPixelInfo tmp_dpi, *old_dpi;
+		const StationSpec *statspec = newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
 
 		if (WP(w,def_d).close) return;
 
@@ -712,23 +713,14 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		if (_station_show_coverage)
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
-		/* Update buttons for correct spread value */
-		for (bits = _patches.station_spread; bits < 7; bits++) {
-			DisableWindowWidget(w, bits + 5);
-			DisableWindowWidget(w, bits + 12);
-		}
-
-		if (newstations) {
-			const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, _railstation.station_type);
-
-			for (bits = 0; bits < 7; bits++) {
-				if (statspec == NULL) {
-					EnableWindowWidget(w, bits +  5);
-					EnableWindowWidget(w, bits + 12);
-				} else {
-					SetWindowWidgetDisabledState(w, bits +  5, HASBIT(statspec->disallowed_platforms, bits));
-					SetWindowWidgetDisabledState(w, bits + 12, HASBIT(statspec->disallowed_lengths,   bits));
-				}
+		for (bits = 0; bits < 7; bits++) {
+			bool disable = bits >= _patches.station_spread;
+			if (statspec == NULL) {
+				SetWindowWidgetDisabledState(w, bits +  5, disable);
+				SetWindowWidgetDisabledState(w, bits + 12, disable);
+			} else {
+				SetWindowWidgetDisabledState(w, bits +  5, HASBIT(statspec->disallowed_platforms, bits) || disable);
+				SetWindowWidgetDisabledState(w, bits + 12, HASBIT(statspec->disallowed_lengths,   bits) || disable);
 			}
 		}
 
