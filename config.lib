@@ -933,7 +933,7 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -mwin32"
 		LDFLAGS="$LDFLAGS -mwin32"
 	fi
-	if [ "$os" = "MINGW" ]
+	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]
 	then
 		CFLAGS="$CFLAGS -mno-cygwin"
 		LDFLAGS="$LDFLAGS -mno-cygwin"
@@ -951,7 +951,7 @@ make_cflags_and_ldflags() {
 		LIBS="$LIBS -lrt"
 	fi
 
-	if [ "$os" != "MINGW" ]
+	if [ "$os" != "CYGWIN" ] && [ "$os" != "MINGW" ]
 	then
 		LIBS="$LIBS -lc"
 	fi
