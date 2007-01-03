@@ -1705,6 +1705,11 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (st != NULL && st->facilities) st = NULL;
 	}
 
+	if (w > _patches.station_spread || h > _patches.station_spread) {
+		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
+		return CMD_ERROR;
+	}
+
 	if (st != NULL) {
 		if (st->owner != OWNER_NONE && st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
