@@ -165,6 +165,7 @@ static void showhelp(void)
 		"  -i                  = Force to use the DOS palette\n"
 		"                          (use this if you see a lot of pink)\n"
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
+		"  -x                  = Do not automatically save to config file on exit\n"
 		"\n",
 		lastof(buf)
 	);
@@ -333,6 +334,7 @@ int ttd_main(int argc, char *argv[])
 	uint generation_seed = GENERATE_NEW_SEED;
 	bool dedicated = false;
 	bool network   = false;
+	bool save_config = true;
 	char *network_conn = NULL;
 
 	musicdriver[0] = sounddriver[0] = videodriver[0] = 0;
@@ -347,7 +349,7 @@ int ttd_main(int argc, char *argv[])
 	//   a letter means: it accepts that param (e.g.: -h)
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
-	optformat = "m:s:v:hDn::eit:d::r:g::G:c:"
+	optformat = "m:s:v:hDn::eit:d::r:g::G:c:x"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"f"
 #endif
@@ -390,6 +392,7 @@ int ttd_main(int argc, char *argv[])
 			break;
 		case 'G': generation_seed = atoi(mgo.opt); break;
 		case 'c': _config_file = strdup(mgo.opt); break;
+		case 'x': save_config = false; break;
 		case -2:
 		case 'h':
 			showhelp();
@@ -523,8 +526,11 @@ int ttd_main(int argc, char *argv[])
 	_music_driver->stop();
 	_sound_driver->stop();
 
-	SaveToConfig();
-	SaveToHighScore();
+	/* only save config if we have to */
+	if (save_config) {
+		SaveToConfig();
+		SaveToHighScore();
+	}
 
 	// uninitialize airport state machines
 	UnInitializeAirports();

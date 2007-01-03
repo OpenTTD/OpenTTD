@@ -201,6 +201,19 @@ DEF_CONSOLE_CMD(ConSave)
 	return false;
 }
 
+/* Explicitly save the configuration */
+DEF_CONSOLE_CMD(ConSaveConfig)
+{
+	if (argc == 0) {
+		IConsoleHelp("Saves the current config, typically to 'openttd.cfg'.");
+		return true;
+	}
+
+	SaveToConfig();
+	IConsolePrint(_icolour_def, "Saved config.");
+	return true;
+}
+
 static const FiosItem* GetFiosItem(const char* file)
 {
 	int i;
@@ -1475,6 +1488,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("load",         ConLoad);
 	IConsoleCmdRegister("rm",           ConRemove);
 	IConsoleCmdRegister("save",         ConSave);
+	IConsoleCmdRegister("saveconfig",   ConSaveConfig);
 	IConsoleCmdRegister("ls",           ConListFiles);
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
