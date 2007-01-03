@@ -11,18 +11,10 @@
 
 #define SPRITE_CACHE_SIZE 1024*1024
 
-#define WANT_NEW_LRU
-
 
 static void* _sprite_ptr[MAX_SPRITES];
 static uint32 _sprite_file_pos[MAX_SPRITES];
-
-#if defined(WANT_NEW_LRU)
 static int16 _sprite_lru_new[MAX_SPRITES];
-#else
-static uint16 _sprite_lru[MAX_SPRITES];
-static uint16 _sprite_lru_cur[MAX_SPRITES];
-#endif
 
 typedef struct MemBlock {
 	uint32 size;
@@ -159,12 +151,7 @@ bool LoadNextSprite(int load_index, byte file_index)
 
 	_sprite_ptr[load_index] = NULL;
 
-#if defined(WANT_NEW_LRU)
 	_sprite_lru_new[load_index] = 0;
-#else
-	_sprite_lru[load_index] = 0xFFFF;
-	_sprite_lru_cur[load_index] = 0;
-#endif
 
 	return true;
 }
@@ -209,7 +196,6 @@ void IncreaseSpriteLRU(void)
 	int i;
 
 	// Increase all LRU values
-#if defined(WANT_NEW_LRU)
 	if (_sprite_lru_counter > 16384) {
 		DEBUG(sprite, 3, "Fixing lru %d, inuse=%d", _sprite_lru_counter, GetSpriteCacheUsage());
 
@@ -223,13 +209,6 @@ void IncreaseSpriteLRU(void)
 			}
 		_sprite_lru_counter = 0;
 	}
-#else
-	for (i = 0; i != MAX_SPRITES; i++)
-		if (_sprite_ptr[i] != NULL && _sprite_lru[i] != 65535)
-			_sprite_lru[i]++;
-	// Reset the lru counter.
-	_sprite_lru_counter = 0;
-#endif
 
 	// Compact sprite cache every now and then.
 	if (++_compact_cache_counter >= 740) {
@@ -290,7 +269,6 @@ static void DeleteEntryFromSpriteCache(void)
 
 	DEBUG(sprite, 3, "DeleteEntryFromSpriteCache, inuse=%d", GetSpriteCacheUsage());
 
-#if defined(WANT_NEW_LRU)
 	cur_lru = 0xffff;
 	for (i = 0; i != MAX_SPRITES; i++) {
 		if (_sprite_ptr[i] != NULL && _sprite_lru_new[i] < cur_lru) {
@@ -298,26 +276,6 @@ static void DeleteEntryFromSpriteCache(void)
 			best = i;
 		}
 	}
-#else
-	{
-	uint16 cur_lru = 0, cur_lru_cur = 0xffff;
-	for (i = 0; i != MAX_SPRITES; i++) {
-		if (_sprite_ptr[i] == NULL || _sprite_lru[i] < cur_lru) continue;
-
-		// Found a sprite with a higher LRU value, then remember it.
-		if (_sprite_lru[i] != cur_lru) {
-			cur_lru = _sprite_lru[i];
-			best = i;
-
-		// Else if both sprites were very recently referenced, compare by the cur value instead.
-		} else if (cur_lru == 0 && _sprite_lru_cur[i] <= cur_lru_cur) {
-			cur_lru_cur = _sprite_lru_cur[i];
-			cur_lru = _sprite_lru[i];
-			best = i;
-		}
-	}
-	}
-#endif
 
 	// Display an error message and die, in case we found no sprite at all.
 	// This shouldn't really happen, unless all sprites are locked.
@@ -431,12 +389,7 @@ const void *GetRawSprite(SpriteID sprite)
 #endif
 
 	// Update LRU
-#if defined(WANT_NEW_LRU)
 	_sprite_lru_new[sprite] = ++_sprite_lru_counter;
-#else
-	_sprite_lru_cur[sprite] = ++_sprite_lru_counter;
-	_sprite_lru[sprite] = 0;
-#endif
 
 	p = _sprite_ptr[sprite];
 	// Load the sprite, if it is not loaded, yet
