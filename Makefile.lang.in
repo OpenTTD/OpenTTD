@@ -59,7 +59,7 @@ table/strings.h: lang/english.txt $(STRGEN)
 
 $(LANGS): %.lng: $(LANG_DIR)/%.txt $(STRGEN) lang/english.txt
 	$(E) '$(STAGE) Compiling language $(*F)'
-	$(Q)./$(STRGEN) $(STRGEN_FLAGS) -s $(LANG_DIR) -d $(LANG_OBJS_DIR) $< $(LANG_ERRORS) && cp $@ $(BIN_DIR)/lang
+	$(Q)./$(STRGEN) $(STRGEN_FLAGS) -s $(LANG_DIR) -d $(LANG_OBJS_DIR) $< $(LANG_ERRORS) && cp $@ $(BIN_DIR)/lang || true # Do not fail all languages when one fails
 
 # The targets to compile the endian-code
 
