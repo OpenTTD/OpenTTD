@@ -158,7 +158,7 @@ static void showhelp(void)
 		"  -g [savegame]       = Start new/save game immediately\n"
 		"  -G seed             = Set random seed\n"
 		"  -n [ip:port#player] = Start networkgame\n"
-		"  -D                  = Start dedicated server\n"
+		"  -D [ip][:port]      = Start dedicated server\n"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"  -f                  = Fork into the background (dedicated only)\n"
 #endif
@@ -336,6 +336,8 @@ int ttd_main(int argc, char *argv[])
 	bool network   = false;
 	bool save_config = true;
 	char *network_conn = NULL;
+	char *dedicated_host = NULL;
+	uint16 dedicated_port = 0;
 
 	musicdriver[0] = sounddriver[0] = videodriver[0] = 0;
 
@@ -349,7 +351,7 @@ int ttd_main(int argc, char *argv[])
 	//   a letter means: it accepts that param (e.g.: -h)
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
-	optformat = "m:s:v:hDn::eit:d::r:g::G:c:x"
+	optformat = "m:s:v:hD::n::eit:d::r:g::G:c:x"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"f"
 #endif
@@ -366,6 +368,16 @@ int ttd_main(int argc, char *argv[])
 			strcpy(sounddriver, "null");
 			strcpy(videodriver, "dedicated");
 			dedicated = true;
+			if (mgo.opt != NULL)
+			{
+				/* Use the existing method for parsing (openttd -n).
+				 * However, we do ignore the #player part. */
+				const char *temp = NULL;
+				const char *port = NULL;
+				ParseConnectionString(&temp, &port, mgo.opt);
+				if (*mgo.opt != '\0') dedicated_host = mgo.opt;
+				if (port != NULL) dedicated_port = atoi(port);
+			}
 			break;
 		case 'f': _dedicated_forks = true; break;
 		case 'n':
@@ -421,6 +433,8 @@ int ttd_main(int argc, char *argv[])
 	if (startyear != INVALID_YEAR) _patches_newgame.starting_year = startyear;
 	if (generation_seed != GENERATE_NEW_SEED) _patches_newgame.generation_seed = generation_seed;
 
+	if (dedicated_host) snprintf(_network_server_bind_ip_host, NETWORK_HOSTNAME_LENGTH, "%s", dedicated_host);
+	if (dedicated_port) _network_server_port = dedicated_port;
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 
 	// enumerate language files
