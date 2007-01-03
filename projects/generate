@@ -39,7 +39,7 @@ file_prefix="..\\\\src\\\\"
 
 load_main_data() {
 	# Read the source.list and process it
-	RES="`awk '
+	RES="`cat $1 | tr '\r' '\n' | awk '
 		/^(	*)#end/  { if (deep == skip) { skip -= 1; } deep -= 1; next; }
 		/^(	*)#else/ { if (deep == skip) { skip -= 1; } else if (deep - 1 == skip) { skip += 1; } next; }
 		/^(	*)#if/   {
@@ -95,7 +95,7 @@ load_main_data() {
 			}
 		}
 		END { print "		</Filter>"; }
-	' < $1`"
+	'`"
 
 	eval "$2=\"\$RES\""
 }
@@ -128,25 +128,27 @@ load_lang_data() {
 generate() {
 	echo "Generating $2..."
 	# Everything above the !!FILES!! marker
-	RES="`awk '
+	RES="`cat \"$ROOT_DIR/projects/$2\".in | tr '\r' '\n' | awk '
+		/^$/ { next }
 		/!!FILES!!/ { stop = 1; }
 		{
 			if (stop == 0) { print $0 }
 		}
-	' < \"$ROOT_DIR/projects/$2\".in > \"$ROOT_DIR/projects/$2\"`"
+	' > \"$ROOT_DIR/projects/$2\"`"
 
 	# The files-list
 	echo "$1" >> "$ROOT_DIR/projects/$2"
 
 	# Everything below the !!FILES!! marker
-	RES="`awk '
+	RES="`cat \"$ROOT_DIR/projects/$2\".in | tr '\r' '\n' | awk '
 		BEGIN { stop = 1; }
+		/^$/ { next }
 		/!!FILES!!/ { stop = 2; }
 		{
 			if (stop == 0) { print $0 }
 			if (stop == 2) { stop = 0 }
 		}
-	' < \"$ROOT_DIR/projects/$2.in\" >> \"$ROOT_DIR/projects/$2\"`"
+	' >> \"$ROOT_DIR/projects/$2\"`"
 }
 
 load_main_data "$ROOT_DIR/source.list" openttd
