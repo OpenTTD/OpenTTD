@@ -492,37 +492,37 @@ STR_01AA_NAME                                                   :{BLACK}Vardas
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days	starts
-STR_01AC_1ST                                                    :1-ma(s)
-STR_01AD_2ND                                                    :2-ra(s)
-STR_01AE_3RD                                                    :3-čia(s)
-STR_01AF_4TH                                                    :4-ta(s)
-STR_01B0_5TH                                                    :5-ta(s)
-STR_01B1_6TH                                                    :6-ta(s)
-STR_01B2_7TH                                                    :7-ta(s)
-STR_01B3_8TH                                                    :8-ta(s)
-STR_01B4_9TH                                                    :9-ta(s)
-STR_01B5_10TH                                                   :10-ta(s)
-STR_01B6_11TH                                                   :11-ta(s)
-STR_01B7_12TH                                                   :12-ta(s)
-STR_01B8_13TH                                                   :13-ta(s)
-STR_01B9_14TH                                                   :14-ta(s)
-STR_01BA_15TH                                                   :15-ta(s)
-STR_01BB_16TH                                                   :16-ta(s)
-STR_01BC_17TH                                                   :17-ta(s)
-STR_01BD_18TH                                                   :18-ta(s)
-STR_01BE_19TH                                                   :19-ta(s)
-STR_01BF_20TH                                                   :20-ta(s)
-STR_01C0_21ST                                                   :21-ma(s)
-STR_01C1_22ND                                                   :22-ra(s)
-STR_01C2_23RD                                                   :23-čia(s)
-STR_01C3_24TH                                                   :24-ta(s)
-STR_01C4_25TH                                                   :25-ta(s)
-STR_01C5_26TH                                                   :26-ta(s)
-STR_01C6_27TH                                                   :27-ta(s)
-STR_01C7_28TH                                                   :28-ta(s)
-STR_01C8_29TH                                                   :29-ta(s)
-STR_01C9_30TH                                                   :30-ta(s)
-STR_01CA_31ST                                                   :31-ma(s)
+STR_01AC_1ST                                                    :1
+STR_01AD_2ND                                                    :2
+STR_01AE_3RD                                                    :3
+STR_01AF_4TH                                                    :4
+STR_01B0_5TH                                                    :5
+STR_01B1_6TH                                                    :6
+STR_01B2_7TH                                                    :7
+STR_01B3_8TH                                                    :8
+STR_01B4_9TH                                                    :9
+STR_01B5_10TH                                                   :10
+STR_01B6_11TH                                                   :11
+STR_01B7_12TH                                                   :12
+STR_01B8_13TH                                                   :13
+STR_01B9_14TH                                                   :14
+STR_01BA_15TH                                                   :15
+STR_01BB_16TH                                                   :16
+STR_01BC_17TH                                                   :17
+STR_01BD_18TH                                                   :18
+STR_01BE_19TH                                                   :19
+STR_01BF_20TH                                                   :20
+STR_01C0_21ST                                                   :21
+STR_01C1_22ND                                                   :22
+STR_01C2_23RD                                                   :23
+STR_01C3_24TH                                                   :24
+STR_01C4_25TH                                                   :25
+STR_01C5_26TH                                                   :26
+STR_01C6_27TH                                                   :27
+STR_01C7_28TH                                                   :28
+STR_01C8_29TH                                                   :29
+STR_01C9_30TH                                                   :30
+STR_01CA_31ST                                                   :31
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
@@ -1059,7 +1059,7 @@ STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Rodyti 
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nematomi medziai (kai ijungti permatomi pastatai): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Sausumos kūrimas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Originalus
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Standartinis
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Didžiausias atstumas nuo kraštų naftos perdirbimo įmonėms  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sniego linijos aukstis: {ORANGE}{STRING}
@@ -1071,7 +1071,7 @@ STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Labai kalnuotas
 STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Medžių sodinimo algoritmas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Jokio
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Standartinis
-STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Pagerintas
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Naujasis
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Aukščių žemėlapio pasukimas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Prieš laikrodžio rodyklę
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pagal laikrodžio rodyklę
@@ -2000,12 +2000,12 @@ STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksima
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Pradinis palukanu procentas: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Islaidu transporto priem. eksploatacijai lygis: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Priesininku konstrukciju statymo greitis: {ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Priesininku intelektas: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Priešininkų intelektas: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Trensporto priemoniu gedimo lygis: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Subsidiju daugiklis: {ORANGE}{STRING}
-STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Konstrukciju kainos lygis: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Statybų kainos: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Vietoves tipas: {ORANGE}{STRING}
-STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Juros/ezeru kiekis: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Vandens telinių gausa: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomika: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Traukiniai apsisuka: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Nelaimes, katastrofos: {ORANGE}{STRING}
@@ -2013,9 +2013,9 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Miesto 
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Nera
-STR_6816_LOW                                                    :Zemas
-STR_6817_NORMAL                                                 :Normalus
-STR_6818_HIGH                                                   :Aukstas
+STR_6816_LOW                                                    :Žemas
+STR_6817_NORMAL                                                 :Vidutinis
+STR_6818_HIGH                                                   :Aukštas
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Labai letas
@@ -2034,24 +2034,24 @@ STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
 STR_6829_X4                                                     :x4
-STR_682A_VERY_FLAT                                              :Labai lygus
-STR_682B_FLAT                                                   :Lygus
+STR_682A_VERY_FLAT                                              :Tik lygumos
+STR_682B_FLAT                                                   :Lygumos
 STR_682C_HILLY                                                  :Kalvos
-STR_682D_MOUNTAINOUS                                            :Kalnuotas
+STR_682D_MOUNTAINOUS                                            :Kalnai
 STR_682E_STEADY                                                 :Pastovi
 STR_682F_FLUCTUATING                                            :Kintanti
 STR_6830_IMMEDIATE                                              :Kartu su zaideju
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 menesiai nuo zaidimo pradzios
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 menesiai nuo zaidimo pradzios
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 menesiai nuo zaidimo pradzios
-STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Trasos pabaigoje, stotelese
-STR_6835_AT_END_OF_LINE_ONLY                                    :Tiktai trasos pabaigoje
-STR_6836_OFF                                                    :Isjungta
-STR_6837_ON                                                     :Ijungta
-STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Rodyti rezultatu lentele
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Bėgių pabaigoje, stotelėse
+STR_6835_AT_END_OF_LINE_ONLY                                    :Tik bėgių pabaigoje
+STR_6836_OFF                                                    :Išjungta
+STR_6837_ON                                                     :Įjungta
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Rodyti rezultatų lentelę
 STR_6839_PERMISSIVE                                             :Atlaidus
 STR_683A_TOLERANT                                               :Tolerantiskas
-STR_683B_HOSTILE                                                :Priesiskas
+STR_683B_HOSTILE                                                :Priešiškas
 
 ##id 0x7000
 STR_7000                                                        :
@@ -3040,25 +3040,25 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Did. tra
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Generuoti
-STR_RANDOM                                                      :{BLACK}Bet kaip
+STR_RANDOM                                                      :{BLACK}Atsitiktinai
 STR_RANDOM_HELP                                                 :{BLACK}Pakeisti i bet koki Pasaulio Generavima
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Pasaulio kūrimas
-STR_RANDOM_SEED                                                 :{BLACK}Bet koks:
+STR_RANDOM_SEED                                                 :{BLACK}Atsitiktinė pradžia:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Paspauskite noredami ivesti bet koki seed
-STR_LAND_GENERATOR                                              :{BLACK}Pasaulio generatorius:
+STR_LAND_GENERATOR                                              :{BLACK}Pasaulio kūrimas:
 STR_TREE_PLACER                                                 :{BLACK}Medžių algoritmas:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Zemelapio rotacija:
 STR_TERRAIN_TYPE                                                :{BLACK}Vietovės tipas:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Juros lygis:
 STR_SMOOTHNESS                                                  :{BLACK}Jautrumas:
-STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sniego linijos aukstis:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sniego linija:
 STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Miestu kiekis:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Industriju kiekis:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
-STR_SNOW_LINE_UP                                                :{BLACK}Pakeisti sniego linijos auksti vienu auksciau
-STR_SNOW_LINE_DOWN                                              :{BLACK}Pakeisti sniego linija viena zemiau
-STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Pakeisti sniego linijos auksti
+STR_SNOW_LINE_UP                                                :{BLACK}Paaukštinti sniego liniją
+STR_SNOW_LINE_DOWN                                              :{BLACK}Pažeminti sniego liniją
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Pakeisti snieko linijos aukštį
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Keisti pradzios metus
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skales ispejimas
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Perdaryti pagrindini zemelapi per daug nerekomenduojama. Testi generavima?
@@ -3093,7 +3093,7 @@ STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 STR_SMALLMAP_CENTER                                             :{BLACK}Centruoti maza zemelapi i sita vieta
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Mazas
+STR_SMALL_AIRPORT                                               :{BLACK}Mažas
 STR_CITY_AIRPORT                                                :{BLACK}Miestas
 STR_METRO_AIRPORT                                               :{BLACK}Metropoliteno orouostas
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internacionalinis orouostas
@@ -3103,7 +3103,7 @@ STR_HELIPORT                                                    :{BLACK}Heliport
 STR_HELIDEPOT                                                   :{BLACK}Helidepas
 STR_HELISTATION                                                 :{BLACK}Helistotis
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Mazi orouostai
+STR_SMALL_AIRPORTS                                              :{BLACK}Maži orouostai
 STR_LARGE_AIRPORTS                                              :{BLACK}Dideli orouostai
 STR_HUB_AIRPORTS                                                :{BLACK}Issisakojantys orouostai
 STR_HELIPORTS                                                   :{BLACK}Heliportai
