@@ -5,6 +5,9 @@
 
 #ifdef ENABLE_NETWORK
 
+#include "os_abstraction.h"
+#include "packet.h"
+
 /**
  * @file tcp.h Basic functions to receive and send TCP packets.
  */

@@ -6,8 +6,6 @@
 #include "../../macros.h"
 #include "../../string.h"
 
-#include "os_abstraction.h"
-#include "config.h"
 #include "packet.h"
 
 /**

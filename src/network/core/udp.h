@@ -5,6 +5,11 @@
 
 #ifdef ENABLE_NETWORK
 
+#include "os_abstraction.h"
+#include "game.h"
+#include "packet.h"
+#include "../../newgrf_config.h"
+
 /**
  * @file udp.h Basic functions to receive and send UDP packets.
  */

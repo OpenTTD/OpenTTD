@@ -5,6 +5,8 @@
 
 #ifdef ENABLE_NETWORK
 
+#include "config.h"
+
 /**
  * @file packet.h Basic functions to create, fill and read packets.
  */

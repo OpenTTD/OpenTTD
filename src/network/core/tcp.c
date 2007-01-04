@@ -9,10 +9,8 @@
 #include "table/strings.h"
 #include "../../functions.h"
 
-#include "os_abstraction.h"
-#include "config.h"
-#include "packet.h"
 #include "../network_data.h"
+#include "packet.h"
 #include "tcp.h"
 
 /**

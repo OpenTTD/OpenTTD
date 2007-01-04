@@ -5,6 +5,10 @@
 
 #ifdef ENABLE_NETWORK
 
+#include "config.h"
+#include "../../date.h"
+#include "../../newgrf_config.h"
+
 /**
  * @file game.h Information about a game that is sent between a
  *              game server, game client and masterserver.

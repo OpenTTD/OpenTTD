@@ -3,14 +3,8 @@
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
-#include "../../date.h"
 #include "../../debug.h"
 #include "../../macros.h"
-#include "../../newgrf_config.h"
-
-#include "os_abstraction.h"
-#include "config.h"
-#include "game.h"
 #include "packet.h"
 #include "udp.h"
 
