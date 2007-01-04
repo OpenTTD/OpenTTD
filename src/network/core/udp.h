@@ -11,8 +11,10 @@
 
 ///** Sending/receiving of UDP packets **////
 
-void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv);
 bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast);
+void NetworkUDPClose(SOCKET *udp);
+
+void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv);
 void NetworkUDPReceive(SOCKET udp);
 
 /**

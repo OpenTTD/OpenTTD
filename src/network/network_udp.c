@@ -446,30 +446,19 @@ void NetworkHandleUDPPacket(SOCKET udp, Packet *p, struct sockaddr_in *client_ad
 
 
 // Close UDP connection
-void NetworkUDPClose(void)
+void NetworkUDPStop(void)
 {
 	DEBUG(net, 1, "[udp] closed listeners");
 
 	if (_network_udp_server) {
-		if (_udp_server_socket != INVALID_SOCKET) {
-			closesocket(_udp_server_socket);
-			_udp_server_socket = INVALID_SOCKET;
-		}
-
-		if (_udp_master_socket != INVALID_SOCKET) {
-			closesocket(_udp_master_socket);
-			_udp_master_socket = INVALID_SOCKET;
-		}
-
-		_network_udp_server = false;
-		_network_udp_broadcast = 0;
+		NetworkUDPClose(&_udp_server_socket);
+		NetworkUDPClose(&_udp_master_socket);
 	} else {
-		if (_udp_client_socket != INVALID_SOCKET) {
-			closesocket(_udp_client_socket);
-			_udp_client_socket = INVALID_SOCKET;
-		}
-		_network_udp_broadcast = 0;
+		NetworkUDPClose(&_udp_client_socket);
 	}
+
+	_network_udp_server = false;
+	_network_udp_broadcast = 0;
 }
 
 // Broadcast to all ips

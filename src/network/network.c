@@ -833,7 +833,7 @@ static void NetworkClose(void)
 		closesocket(_listensocket);
 		_listensocket = INVALID_SOCKET;
 		DEBUG(net, 1, "Closed listener");
-		NetworkUDPClose();
+		NetworkUDPStop();
 	}
 }
 
@@ -949,7 +949,7 @@ bool NetworkClientConnectGame(const char *host, uint16 port)
 	_network_last_port = port;
 
 	NetworkDisconnect();
-	NetworkUDPClose();
+	NetworkUDPStop();
 	NetworkInitialize();
 
 	// Try to connect
@@ -1426,7 +1426,7 @@ void NetworkStartUp(void)
 void NetworkShutDown(void)
 {
 	NetworkDisconnect();
-	NetworkUDPClose();
+	NetworkUDPStop();
 
 	DEBUG(net, 3, "[core] shutting down network");
 

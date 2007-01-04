@@ -19,25 +19,6 @@
  */
 
 /**
- * Send a packet over UDP
- * @param udp  the socket to send over
- * @param p    the packet to send
- * @param recv the receiver (target) of the packet
- */
-void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv)
-{
-	int res;
-
-	NetworkSend_FillPacketSize(p);
-
-	/* Send the buffer */
-	res = sendto(udp, p->buffer, p->size, 0, (struct sockaddr *)recv, sizeof(*recv));
-
-	/* Check for any errors, but ignore it otherwise */
-	if (res == -1) DEBUG(net, 1, "[udp] sendto failed with: %i", GET_LAST_ERROR());
-}
-
-/**
  * Start listening on the given host and port.
  * @param udp       the place where the (references to the) UDP are stored
  * @param host      the host (ip) to listen on
@@ -89,6 +70,38 @@ bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast)
 	DEBUG(net, 1, "[udp] listening on port %s:%d", inet_ntoa(*(struct in_addr *)&host), port);
 
 	return true;
+}
+
+/**
+ * Close the given UDP socket
+ * @param udp the socket to close
+ */
+void NetworkUDPClose(SOCKET *udp)
+{
+	if (*udp == INVALID_SOCKET) return;
+
+	closesocket(*udp);
+	*udp = INVALID_SOCKET;
+}
+
+
+/**
+ * Send a packet over UDP
+ * @param udp  the socket to send over
+ * @param p    the packet to send
+ * @param recv the receiver (target) of the packet
+ */
+void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv)
+{
+	int res;
+
+	NetworkSend_FillPacketSize(p);
+
+	/* Send the buffer */
+	res = sendto(udp, p->buffer, p->size, 0, (struct sockaddr *)recv, sizeof(*recv));
+
+	/* Check for any errors, but ignore it otherwise */
+	if (res == -1) DEBUG(net, 1, "[udp] sendto failed with: %i", GET_LAST_ERROR());
 }
 
 /**

@@ -179,7 +179,7 @@ void UpdateNetworkGameWindow(bool unselect);
 void CheckMinPlayers(void);
 
 void NetworkStartUp(void);
-void NetworkUDPClose(void);
+void NetworkUDPStop(void);
 void NetworkShutDown(void);
 void NetworkGameLoop(void);
 void NetworkUDPGameLoop(void);
