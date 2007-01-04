@@ -1012,7 +1012,7 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Розш
 
 STR_CONFIG_PATCHES_OFF                                          :Викл.
 STR_CONFIG_PATCHES_ON                                           :Вкл.
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Показувати швидкість у строкі стану: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Показувати швидкість у рядку стану: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Будувати на схилах та узбережжях: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Великий району обслуговування: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Переміщувати дороги, мости та іншу власність міста: {ORANGE}{STRING}
@@ -1030,7 +1030,7 @@ STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Нак�
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Будувати виробництво сировини: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Подібна промисловість в одному місті: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Будувати промисловість однакового типу поруч: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Завжди показувати повну дату в строкі стану: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Завжди показувати повну дату в рядку стану: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Показувати сигнали за напрямом руху: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Показувати вікно фінансів в кінці року: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch compatible nonstop handling: {ORANGE}{STRING}
@@ -2605,6 +2605,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ціна
 STR_885C_BROKEN_DOWN                                            :{RED}Зламався
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Транспортні витрати: {LTBLUE}{CURRENCY}/рік
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_S}  {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_S} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидк: {LTBLUE}{VELOCITY} {BLACK} Макс. тяга.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Зупинено
@@ -2946,6 +2947,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Спіл
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Показати транспорт з таким самим маршрутом
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ви дійсно хочете продати ВСІ техзасоби з депо?
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Продати всі поїзди з депо
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Продати всі автомобілі з депо
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Продати всі кораблі з депо
@@ -3031,6 +3034,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Поту
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переобладнати на: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
 STR_PURCHASE_INFO_ALL_BUT                                       :Всі крім {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тяга: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 

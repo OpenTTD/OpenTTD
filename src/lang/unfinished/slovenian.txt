@@ -1749,33 +1749,33 @@ STR_5013_CONCRETE                                               :Betonski
 STR_5014_TUBULAR_STEEL                                          :Cevast, Jeklen
 STR_BRIDGE_TUBULAR_SILICON                                      :Cevast, Silicijev
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Tukaj ni mogoče zgraditi mostu ...
-STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Tukaj ni mogoče zgraditi predora ...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Tukaj ni mogoce zgraditi predora ...
 STR_5017_RAILROAD_TUNNEL                                        :Zelezniski predor
 STR_5018_ROAD_TUNNEL                                            :Cestni predor
-STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Viseč jekleni železniški most
-STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Nosilen jeklen železniški most
-STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Nosilen jeklen železniški most
-STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Ojačan viseč betonski železniški most
-STR_501F_WOODEN_RAIL_BRIDGE                                     :Lesen železniški most
-STR_5020_CONCRETE_RAIL_BRIDGE                                   :Betonski železniški most
-STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Viseč jeklen cestni most
-STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Nosilen jeklen cestni most
-STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Jeklen cestni most na nosilcih
-STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Ojačan viseč betonski cestni most
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Visec jeklen zelezniski most
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Zelezniski most z jeklenimi krizi
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Zelezniski most z jeklenim obokom
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Ojačan visec betonski zelezniški most
+STR_501F_WOODEN_RAIL_BRIDGE                                     :Lesen zelezniski most
+STR_5020_CONCRETE_RAIL_BRIDGE                                   :Betonski zelezniski most
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Visec jeklen cestni most
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Cestni most z jeklenimi krizi
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Cestni most z jeklenim obokom
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Ojacan visec betonski cestni most
 STR_5025_WOODEN_ROAD_BRIDGE                                     :Lesen cestni most
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betonski cestni most
-STR_5027_TUBULAR_RAIL_BRIDGE                                    :Cevast železniški most
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :Cevast zelezniski most
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Cevast cestni most
 
 ##id 0x5800
-STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objekt na poti
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Ovira na poti
 STR_5801_TRANSMITTER                                            :Oddajnik
 STR_5802_LIGHTHOUSE                                             :Svetilnik
-STR_5803_COMPANY_HEADQUARTERS                                   :Sedež podjetja
-STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE} ... sedež podjetja na poti
+STR_5803_COMPANY_HEADQUARTERS                                   :Sedez podjetja
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE} ... sedez podjetja na poti
 STR_5805_COMPANY_OWNED_LAND                                     :Ozemlje v lasti podjetja
-STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Ni mogoče kupiti tega zemljišča ...
-STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE} ... ste že lastnik!
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Nemogoc nakup tega zemljišča ...
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE} ... si ze lastnik!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
@@ -1792,32 +1792,32 @@ STR_SV_STNAME_UPPER                                             :Zgornje {STRING
 ############ end of	savegame specific region!
 
 ##id 0x6800
-STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Težavnostna stopnja
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Tezavnostna stopnja
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Preprosto
 STR_6802_MEDIUM                                                 :{BLACK}Srednje
-STR_6803_HARD                                                   :{BLACK}Težko
+STR_6803_HARD                                                   :{BLACK}Tezko
 STR_6804_CUSTOM                                                 :{BLACK}Po meri
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Največje število nasprotnikov: {ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Nasportnikov začetni čas: {ORANGE}{STRING}
-STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Št. mest: {ORANGE}{STRING}
-STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Št. industrij: {ORANGE}{STRING}
-STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Najvišje možno posojilo: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Obrestna mera: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Cena vzdrževanja vozil: {ORANGE}{STRING}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Najvecje stevilo nasprotnikov: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Nasprotnikov zacetni cas: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}St. mest: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}St. industrij: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Najvisje mozno posojilo: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Zacetna obrestna mera: {ORANGE}{COMMA}%
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Cena vzdrzevanja vozil: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Nasprotnikova hitrost gradnje: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Inteligenca nasprotnikov: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Okvare vozil: {ORANGE}{STRING}
-STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Večkratnik subvencij: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Veckratnik subvencij: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Cena gradnje: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Tip terena: {ORANGE}{STRING}
-STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Količina vodovij: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Velikost in st. morij/jezer: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomija: {ORANGE}{STRING}
-STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Obračanje vlakov: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Obracanje vlakov: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Katastrofe: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL                                         :{LTBLUE}Odnos mestnega sveta do rekonstrukcije: {ORANGE}{STRING}
 ############ range for difficulty settings ends
@@ -1828,29 +1828,29 @@ STR_6817_NORMAL                                                 :Normalno
 STR_6818_HIGH                                                   :Visoko
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
-STR_681B_VERY_SLOW                                              :Zelo počasno
-STR_681C_SLOW                                                   :Počasno
+STR_681B_VERY_SLOW                                              :Zelo pocasno
+STR_681C_SLOW                                                   :Pocasno
 STR_681D_MEDIUM                                                 :Srednje
 STR_681E_FAST                                                   :Hitro
 STR_681F_VERY_FAST                                              :Zelo hitro
 STR_VERY_LOW                                                    :Zelo Nizko
-STR_6820_LOW                                                    :Nizko
+STR_6820_LOW                                                    :Malo
 STR_6821_MEDIUM                                                 :Srednje
-STR_6822_HIGH                                                   :Visoko
-STR_6823_NONE                                                   :Nobeno
-STR_6824_REDUCED                                                :Zmanjšano
+STR_6822_HIGH                                                   :Veliko
+STR_6823_NONE                                                   :Brez
+STR_6824_REDUCED                                                :Zmanjsano
 STR_6825_NORMAL                                                 :Normalno
 STR_6826_X1_5                                                   :x1,5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
 STR_6829_X4                                                     :x4
-STR_682A_VERY_FLAT                                              :Zelo položno
-STR_682B_FLAT                                                   :Položno
-STR_682C_HILLY                                                  :Hribovito
-STR_682D_MOUNTAINOUS                                            :Gorato
-STR_682E_STEADY                                                 :Stalno
-STR_682F_FLUCTUATING                                            :Fluktuacija
-STR_6830_IMMEDIATE                                              :Takojšnje
+STR_682A_VERY_FLAT                                              :Zelo ploscat
+STR_682B_FLAT                                                   :Ploscat
+STR_682C_HILLY                                                  :Hribovit
+STR_682D_MOUNTAINOUS                                            :Gorat
+STR_682E_STEADY                                                 :Stabilna
+STR_682F_FLUCTUATING                                            :Nihajoca
+STR_6830_IMMEDIATE                                              :Takojšnji
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 mesece za igralcem
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mesecev za igralcem
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 mesecev za igralcem
@@ -1858,222 +1858,247 @@ STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Na koncu linije
 STR_6835_AT_END_OF_LINE_ONLY                                    :Samo na koncu linije
 STR_6836_OFF                                                    :Izklopljeno
 STR_6837_ON                                                     :Vklopljeno
-STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Pokaži tabelo najboljših
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Pokazi tabelo najboljših
 STR_6839_PERMISSIVE                                             :Dopustno
 STR_683A_TOLERANT                                               :Tolerantno
-STR_683B_HOSTILE                                                :Sovražno
+STR_683B_HOSTILE                                                :Sovrazno
 
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Igralec {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nov obraz
-STR_7005_COLOR_SCHEME                                           :{BLACK}Barva
-STR_7006_COLOR_SCHEME                                           :{GOLD}Barva:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nova barva
+STR_7005_COLOR_SCHEME                                           :{BLACK}Barvna shema
+STR_7006_COLOR_SCHEME                                           :{GOLD}Barvna shema:
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nova barvna shema
 STR_7008_COMPANY_NAME                                           :{BLACK}Ime podjetja
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Ime lastnika
 STR_700A_COMPANY_NAME                                           :Ime podjetja
 STR_700B_PRESIDENT_S_NAME                                       :Ime lastnika
-STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Ni mogoče spremeniti imena podjetja ...
-STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Ni mogoče spremeniti imena lastnika ...
+STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Ni mogoce spremeniti imena podjetja ...
+STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Ni mogoce spremeniti imena lastnika ...
 STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finance {BLACK}{PLAYERNAME}
-STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Izdatki/Prilivi
-STR_7011_CONSTRUCTION                                           :{GOLD}Konstrukcija
+STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Stroski/dohodek
+STR_7011_CONSTRUCTION                                           :{GOLD}Gradnja
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nova vozila
-STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Cena delovanja vlakov
-STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Cena delovanja cestnih vozil
-STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Cena delovanja letal
-STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Cena delovanja ladij
-STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Vzdrževanje
-STR_7018_TRAIN_INCOME                                           :{GOLD}Priliv vlakov
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Priliv cestnih vozil
-STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Priliv letal
-STR_701B_SHIP_INCOME                                            :{GOLD}Priliv ladij
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Cene delovanja vlakov
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Cene delovanja cestnih vozil
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Cene delovanja letal
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Cene delovanja ladij
+STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Vzdrzevanje lastnine
+STR_7018_TRAIN_INCOME                                           :{GOLD}Prihodek vlakov
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Prihodek cestnih vozil
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Prihodek letal
+STR_701B_SHIP_INCOME                                            :{GOLD}Prihodek ladij
 STR_701C_LOAN_INTEREST                                          :{GOLD}Obresti posojila
 STR_701D_OTHER                                                  :{GOLD}Drugo
 STR_7020_TOTAL                                                  :{WHITE}Skupaj:
-STR_7022_INCOME_GRAPH                                           :{WHITE}Graf priliva
-STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf čistega dobička
-STR_7026_BANK_BALANCE                                           :{WHITE}Stanje na banki
+STR_7022_INCOME_GRAPH                                           :{WHITE}Graf prihodkov
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf cistega dobicka
+STR_7026_BANK_BALANCE                                           :{WHITE}Bancno stanje
 STR_7027_LOAN                                                   :{WHITE}Posojilo
-STR_7029_BORROW                                                 :{BLACK}Sposodi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Odplačaj {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE} ... najvišje posojilo je {CURRENCY}
-STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Ni si mogoče izposoditi več denarja ...
-STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE} ... ni posojila za odplačati
+STR_7029_BORROW                                                 :{BLACK}Izposoja {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Vracilo {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE} ... najvisje posojilo je {CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Ni si mogoce izposoditi vec denarja ...
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE} ... ni posojila za odplacati
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} potrebno
-STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Ni mogoče odplačati posojila ...
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Ni mogoce odplacati posojila ...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Izberi nov obraz za lastnika
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Spremeni barvo vozil podjetja
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Spremeni ime lastnika
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Spremeni ime podjetja
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Kliknite na željeno barvo
-STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Povečaj višino posojila
-STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Odplačaj del posojila
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Kliknite na zeljeno barvo
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Povecaj visino posojila
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Odplacaj del posojila
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Lastnik)
-STR_7038_INAUGURATED                                            :{GOLD}Postavljen spomenik: {WHITE}{NUM}
+STR_7038_INAUGURATED                                            :{GOLD}Ustanovljeno: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Vozila:
-STR_TRAINS                                                      :{WHITE}{COMMA} vlak{P "" s}
+STR_TRAINS                                                      :{WHITE}{COMMA} vlak{P "" a i ov}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} letalo
-STR_7042_NONE                                                   :{WHITE}Nič
+STR_7042_NONE                                                   :{WHITE}Brez
 STR_7043_FACE_SELECTION                                         :{WHITE}Izbira obraza
-STR_7044_MALE                                                   :{BLACK}Moški
-STR_7045_FEMALE                                                 :{BLACK}Ženska
+STR_7044_MALE                                                   :{BLACK}Moski
+STR_7045_FEMALE                                                 :{BLACK}Zenska
 STR_7046_NEW_FACE                                               :{BLACK}Nov obraz
-STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Prekliči izbiro novega obraza
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Preklici izbiro novega obraza
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Sprejmi nov obraz
-STR_7049_SELECT_MALE_FACES                                      :{BLACK}Izberi moške slike
-STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Izberi ženske slike
-STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Naredi naključno novo sliko
-STR_704C_KEY                                                    :{BLACK}Ključ
-STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Prikaži ključe grafov
-STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Ključi grafov podjetij
-STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Kliknite sem za napise podjetja na grafu vključeno/izključeno
-STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Enot tovora dostavljenega
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}Izberi moske slike
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Izberi zenske slike
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Naredi nakljucno novo sliko
+STR_704C_KEY                                                    :{BLACK}Kljuc
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Prikazi kljuce grafov
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Kljuci grafov podjetij
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Kliknite sem za napise podjetja na grafu vkljuceno/izkljuceno
+STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Enot dostavljenega tovora
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Ocene podjetja (max=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Vrednosti podjetij
-STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Seznam najboljših podjetij
-STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Podjetje v težavah!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :Podjetje {BLACK}{BIGFONT}{COMPANY} bo prodano ali prisiljeno v stečajni postopek, če se stanje kmalu ne izboljša!
+STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Seznam najboljsih podjetij
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Podjetje v tezavah!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :Podjetje {BLACK}{BIGFONT}{COMPANY} bo prodano ali prisiljeno v stecajni postopek, ce se stanje kmalu ne izboljša!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Lastnik)
-STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Združevalec podjetij!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :Podjetje {BLACK}{BIGFONT}{COMPANY} je bilo prodano podejtju {COMPANY} za {CURRENCY}!
-STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Iščemo novega lastnika, ki bi prevzel naše podjetje.{}{}Ali bi želeli kupiti podjetje {COMPANY} za {CURRENCY}?
-STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrotirali ste!
+STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Združitev podjetij!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :Podjetje {BLACK}{BIGFONT}{COMPANY} je bilo prodano podejtju {COMPANY} za ceno {CURRENCY}!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Iscemo novega lastnika, ki bi prevzel nase podjetje.{}{}Ali zelis odkupiti podjetje {COMPANY} za ceno {CURRENCY}?
+STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrot!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :Investitorji so zaprli podjetje {BLACK}{BIGFONT}{COMPANY} in prodali vse imetje!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Ustanoveljno novo podjetje!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :Podjetje {BLACK}{BIGFONT}{COMPANY} začenja gradnjo blizu mesta {TOWN}!
-STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Ne morete kupiti podjetja ...
-STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Ocene plačevanja tovora
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :Podjetje {BLACK}{BIGFONT}{COMPANY} zacenja gradnjo blizu mesta {TOWN}!
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Ne mores kupiti podjetja ...
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Cene tovora
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dni v prevozu
-STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Plačilo za dostavo 10 enot (ali 10.000 litrov) tovora za razdaljo 20 kvadratkov
-STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Prikaži graf za tip tovora vključen/izključen
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Placilo za dostavo 10 enot (ali 10.000 litrov) tovora za razdaljo 20 kvadratkov
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Prikazi graf za tip tovora vkljucen/izkljucen
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
-STR_7066_ENGINEER                                               :Inženir
+STR_7066_ENGINEER                                               :Inzenir
 STR_7067_TRAFFIC_MANAGER                                        :Vodja prometa
 STR_7068_TRANSPORT_COORDINATOR                                  :Koordinator transporta
-STR_7069_ROUTE_SUPERVISOR                                       :Nadzornik dostave
+STR_7069_ROUTE_SUPERVISOR                                       :Nadzornik poti
 STR_706A_DIRECTOR                                               :Direktor
-STR_706B_CHIEF_EXECUTIVE                                        :Vrhovni direktor
-STR_706C_CHAIRMAN                                               :Minister
+STR_706B_CHIEF_EXECUTIVE                                        :Izvrsni direktor
+STR_706C_CHAIRMAN                                               :Vrhovni direktor
 STR_706D_PRESIDENT                                              :Predsednik
 STR_706E_TYCOON                                                 :Velekapitalist
-STR_706F_BUILD_HQ                                               :{BLACK}Zgradi sedež podjetja
-STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Zgradi sedež podjetja / poglej sedež podjetja
-STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Ne morem zgraditi sedeža podjetja
-STR_7072_VIEW_HQ                                                :{BLACK}Poglej sedež podjetja
+STR_706F_BUILD_HQ                                               :{BLACK}Zgradi sedez podjetja
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Zgradi sedez podjetja / poglej sedez podjetja
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nemogoca gradnja sedeza podjetja
+STR_7072_VIEW_HQ                                                :{BLACK}Poglej sedez podjetja
 STR_COMPANY_PASSWORD                                            :{BLACK}Geslo
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Zaščitite svoje podjetje z geslom, da preprečite priključitev drugih uporabnikov k podjetju.
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svetovna recesija!{}{}Ekonomisti se bojijo najhujšega ob trenutnem poteku dogodkov!
-STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Konec recesije!{}{}Izboljšanje trgovanja povečuje zaupanje domače industrije, gospodarstvo napreduje!
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Konec recesije!{}{}Izboljsanje trgovanja povecuje zaupanje domace industrije, gospodarstvo napreduje!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Menjaj veliko/majhno velikost okna
 STR_7076_COMPANY_VALUE                                          :{GOLD}Vrednost podjetja: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kupi 25% delnic podjetja
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Prodaj 25% delnic podjetja
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kupi 25% delnic tega podjetja
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Prodaj 25% delnic tega podjetja
-STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Ni mogoče kupiti 25% tržnega deleža tega podjetja ...
-STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Ni mogoče prodati 25% tržnega deleža tega podjetja ...
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Ni mogoce kupiti 25% delnic tega podjetja ...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Ni mogoce prodati 25% delnic tega podjetja ...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% last podjetja {COMPANY})
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% last podjetja {COMPANY}{}   {COMMA}% last podjetja {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :Podjetje {BLACK}{BIGFONT}{COMPANY} je bilo prevzeto iz strani podjetja {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Podjetje še ni dovolj staro, da bi lahko trgovalo z lastnimi delnicami ...
+STR_7080_PROTECTED                                              :{WHITE}Podjetje se ni dovolj staro, da bi lahko trgovalo z lastnimi delnicami ...
 
 
 
 ##id 0x8000
-STR_8017_SH_30_ELECTRIC                                         :SH '30' (Električen)
-STR_8018_SH_40_ELECTRIC                                         :SH '40' (Električen)
-STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Električen)
-STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Električen)
-STR_801B_PASSENGER_CAR                                          :Potniški prevoz
-STR_801C_MAIL_VAN                                               :Kamion s pošto
-STR_801D_COAL_CAR                                               :Kamion s premogom
-STR_801E_OIL_TANKER                                             :Naftni tanker
-STR_801F_LIVESTOCK_VAN                                          :Kamion z živino
-STR_8020_GOODS_VAN                                              :Kamion z dobrinami
-STR_8021_GRAIN_HOPPER                                           :Kamion z žitom
-STR_8022_WOOD_TRUCK                                             :Kamion z lesom
-STR_8023_IRON_ORE_HOPPER                                        :Kamion z železovo rudo
-STR_8024_STEEL_TRUCK                                            :Kamion z jeklom
-STR_8025_ARMORED_VAN                                            :Oklepen kamion
-STR_8026_FOOD_VAN                                               :Kamion s hrano
-STR_8027_PAPER_TRUCK                                            :Kamion s papirjem
-STR_8028_COPPER_ORE_HOPPER                                      :Kamion z bakrovo rudo
-STR_8029_WATER_TANKER                                           :Cisterna z vodo
-STR_802A_FRUIT_TRUCK                                            :Kamion s sadjem
-STR_802B_RUBBER_TRUCK                                           :Kamion z gumo
-STR_802C_SUGAR_TRUCK                                            :Kamion s sladkorjem
-STR_802D_COTTON_CANDY_HOPPER                                    :Kamion s sladkorno peno
-STR_802E_TOFFEE_HOPPER                                          :Kamion s toffee
-STR_802F_BUBBLE_VAN                                             :Kamion z mehurčki
-STR_8030_COLA_TANKER                                            :Kamion s Cockto
-STR_8031_CANDY_VAN                                              :Kamion s sladkarijami
-STR_8032_TOY_VAN                                                :Kamion z igračami
-STR_8033_BATTERY_TRUCK                                          :Kamion z baterijami
-STR_8034_FIZZY_DRINK_TRUCK                                      :Kamion z gaziranimi pijačami
-STR_8035_PLASTIC_TRUCK                                          :Kamion s plastiko
-STR_8036_X2001_ELECTRIC                                         :'X2001' (Električen)
-STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Električen)
-STR_8039_PASSENGER_CAR                                          :Prevoz potnikov
-STR_803A_MAIL_VAN                                               :Tovornjak pošte
-STR_803B_COAL_CAR                                               :Tovornjak premoga
-STR_803C_OIL_TANKER                                             :Cisterna z nafto
-STR_803D_LIVESTOCK_VAN                                          :Tovornjak živine
-STR_803E_GOODS_VAN                                              :Tovornjak dobrin
-STR_803F_GRAIN_HOPPER                                           :Tovornjak žita
-STR_8040_WOOD_TRUCK                                             :Tovornjak lesa
-STR_8041_IRON_ORE_HOPPER                                        :Tovornjak železove rude
-STR_8042_STEEL_TRUCK                                            :Tovornjak jekla
-STR_8043_ARMORED_VAN                                            :Oklepen tovornjak
-STR_8044_FOOD_VAN                                               :Tovornjak hrane
-STR_8045_PAPER_TRUCK                                            :Tovornjak papirja
-STR_8046_COPPER_ORE_HOPPER                                      :Tovornjak bakrove rude
-STR_8047_WATER_TANKER                                           :Cisterna z vodo
-STR_8048_FRUIT_TRUCK                                            :Tovornjak sadja
-STR_8049_RUBBER_TRUCK                                           :Tovornjak gume
-STR_804A_SUGAR_TRUCK                                            :Tovornjak sladkorja
-STR_804B_COTTON_CANDY_HOPPER                                    :Tovornjak sladkorne pene
-STR_804C_TOFFEE_HOPPER                                          :Tovornjak toffee
-STR_804D_BUBBLE_VAN                                             :Tovornjak mehurčkov
-STR_804E_COLA_TANKER                                            :Tovornjak Cockte
-STR_804F_CANDY_VAN                                              :Tovornjak slaščic
-STR_8050_TOY_VAN                                                :Tovornjak igrač
-STR_8051_BATTERY_TRUCK                                          :Tovornjak baterij
-STR_8052_FIZZY_DRINK_TRUCK                                      :Tovornjak gaziranih pijač
-STR_8053_PLASTIC_TRUCK                                          :Tovornjak plastike
-STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Električen)
-STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (Električen)
-STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Električen)
-STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Električen)
-STR_8059_PASSENGER_CAR                                          :Potniški vagon
-STR_805A_MAIL_VAN                                               :Poštni vagon
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (parna)
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
+STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Diesel
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diesel
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (parna)
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (parna)
+STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (parna)
+STR_800A_SH_8P_STEAM                                            :SH '8P' (parna)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (Diesel)
+STR_800C_DASH_DIESEL                                            :'Dash' (Diesel)
+STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (Diesel)
+STR_800E_UU_37_DIESEL                                           :UU '37' (Diesel)
+STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (Diesel)
+STR_8010_CS_4000_DIESEL                                         :CS 4000 (Diesel)
+STR_8011_CS_2400_DIESEL                                         :CS 2400 (Diesel)
+STR_8012_CENTENNIAL_DIESEL                                      :Centennial (Diesel)
+STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (Diesel)
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (Diesel)
+STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (Diesel)
+STR_8016_SH_125_DIESEL                                          :SH '125' (Diesel)
+STR_8017_SH_30_ELECTRIC                                         :SH '30' (Elektricna)
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (Elektricna)
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Elektricna)
+STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Elektricna)
+STR_801B_PASSENGER_CAR                                          :Potniski vagon
+STR_801C_MAIL_VAN                                               :Postni vagon
+STR_801D_COAL_CAR                                               :Vagon za premog
+STR_801E_OIL_TANKER                                             :Naftna cisterna
+STR_801F_LIVESTOCK_VAN                                          :Vagon za zivino
+STR_8020_GOODS_VAN                                              :Vagon za izdelke
+STR_8021_GRAIN_HOPPER                                           :Vagon za zito
+STR_8022_WOOD_TRUCK                                             :Vagon za les
+STR_8023_IRON_ORE_HOPPER                                        :Vagon za zel. rudo
+STR_8024_STEEL_TRUCK                                            :Vagon za jeklo
+STR_8025_ARMORED_VAN                                            :Oklepni vagon
+STR_8026_FOOD_VAN                                               :Vagon za hrano
+STR_8027_PAPER_TRUCK                                            :Vagon za papir
+STR_8028_COPPER_ORE_HOPPER                                      :Vagon za bakr. rudo
+STR_8029_WATER_TANKER                                           :Vodna cisterna
+STR_802A_FRUIT_TRUCK                                            :Vagon za sadje
+STR_802B_RUBBER_TRUCK                                           :Vagon za kavcuk
+STR_802C_SUGAR_TRUCK                                            :Vagon za sladkor
+STR_802D_COTTON_CANDY_HOPPER                                    :Vagon za sladk. peno
+STR_802E_TOFFEE_HOPPER                                          :Vagon za karamel
+STR_802F_BUBBLE_VAN                                             :Vagon za mehurcke
+STR_8030_COLA_TANKER                                            :Cisterna za cockto
+STR_8031_CANDY_VAN                                              :Vagon za sladkarije
+STR_8032_TOY_VAN                                                :Vagon za igrace
+STR_8033_BATTERY_TRUCK                                          :Vagon za baterije
+STR_8034_FIZZY_DRINK_TRUCK                                      :Vagon z gaz. pijacami
+STR_8035_PLASTIC_TRUCK                                          :Vagon za plastiko
+STR_8036_X2001_ELECTRIC                                         :'X2001' (Elektricna)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Elektricna)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8039_PASSENGER_CAR                                          :Potniski vagon
+STR_803A_MAIL_VAN                                               :Postni vagon
+STR_803B_COAL_CAR                                               :Vagon za premog
+STR_803C_OIL_TANKER                                             :Cisterna za nafto
+STR_803D_LIVESTOCK_VAN                                          :Vagon za zivino
+STR_803E_GOODS_VAN                                              :Vagon za izdelke
+STR_803F_GRAIN_HOPPER                                           :Vagon za zito
+STR_8040_WOOD_TRUCK                                             :Vagon za les
+STR_8041_IRON_ORE_HOPPER                                        :Vagon za zel. rudo
+STR_8042_STEEL_TRUCK                                            :Vagon za jeklo
+STR_8043_ARMORED_VAN                                            :Oklepni vagon
+STR_8044_FOOD_VAN                                               :Vagon za hrano
+STR_8045_PAPER_TRUCK                                            :Vagon za papir
+STR_8046_COPPER_ORE_HOPPER                                      :Vagon za bark. rudo
+STR_8047_WATER_TANKER                                           :Cisterna za vodo
+STR_8048_FRUIT_TRUCK                                            :Vagon za sadje
+STR_8049_RUBBER_TRUCK                                           :Vagon za kavcuk
+STR_804A_SUGAR_TRUCK                                            :Vagon za sladkor
+STR_804B_COTTON_CANDY_HOPPER                                    :Vagon za sladk. peno
+STR_804C_TOFFEE_HOPPER                                          :Vagon za karamel
+STR_804D_BUBBLE_VAN                                             :Vagon za mehurcke
+STR_804E_COLA_TANKER                                            :Cisterna za cockto
+STR_804F_CANDY_VAN                                              :Vagon za sladkarije
+STR_8050_TOY_VAN                                                :Vagon za igrace
+STR_8051_BATTERY_TRUCK                                          :Vagon za baterije
+STR_8052_FIZZY_DRINK_TRUCK                                      :Vagon za gaz. pijace
+STR_8053_PLASTIC_TRUCK                                          :Vagon za plastiko
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Elektricna)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (Elektricna)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Elektricna)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Elektricna)
+STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
+STR_8059_PASSENGER_CAR                                          :Potniski vagon
+STR_805A_MAIL_VAN                                               :Postni vagon
 STR_805B_COAL_CAR                                               :Vagon za premog
-STR_805C_OIL_TANKER                                             :Vagon za nafto
-STR_805D_LIVESTOCK_VAN                                          :Vagon za živino
-STR_805E_GOODS_VAN                                              :Vagon za dobrine
-STR_805F_GRAIN_HOPPER                                           :Vagon za žito
+STR_805C_OIL_TANKER                                             :Cisterna za nafto
+STR_805D_LIVESTOCK_VAN                                          :Vagon za zivino
+STR_805E_GOODS_VAN                                              :Vagon za izdelke
+STR_805F_GRAIN_HOPPER                                           :Vagon za zito
 STR_8060_WOOD_TRUCK                                             :Vagon za les
-STR_8061_IRON_ORE_HOPPER                                        :Vagon za železovo rudo
+STR_8061_IRON_ORE_HOPPER                                        :Vagon za zel. rudo
 STR_8062_STEEL_TRUCK                                            :Vagon za jeklo
 STR_8063_ARMORED_VAN                                            :Oklepni vagon
 STR_8064_FOOD_VAN                                               :Vagon za hrano
 STR_8065_PAPER_TRUCK                                            :Vagon za papir
-STR_8066_COPPER_ORE_HOPPER                                      :Vagon za bakrovo rudo
-STR_8067_WATER_TANKER                                           :Vodna cisterna
+STR_8066_COPPER_ORE_HOPPER                                      :Vagon za bakr. rudo
+STR_8067_WATER_TANKER                                           :Cisterna za vodo
 STR_8068_FRUIT_TRUCK                                            :Vagon za sadje
-STR_8069_RUBBER_TRUCK                                           :Vagon za gumo
+STR_8069_RUBBER_TRUCK                                           :Vagon za kavcuk
 STR_806A_SUGAR_TRUCK                                            :Vagon za sladkor
-STR_806B_COTTON_CANDY_HOPPER                                    :Vagon za sladkorno peno
+STR_806B_COTTON_CANDY_HOPPER                                    :Vagon za sladk. peno
 STR_806C_TOFFEE_HOPPER                                          :Vagon za karamelo
-STR_806D_BUBBLE_VAN                                             :Vagon za mehurčke
-STR_806E_COLA_TANKER                                            :Cisterna za Cockto
-STR_806F_CANDY_VAN                                              :Vagon za slaščice
-STR_8070_TOY_VAN                                                :Vagon za igrače
-STR_8071_BATTERY_TRUCK                                          :Tovornjak za baterije
-STR_8072_FIZZY_DRINK_TRUCK                                      :Tovornjak za gazirane pijače
-STR_8073_PLASTIC_TRUCK                                          :Tovornjak za plastiko
+STR_806D_BUBBLE_VAN                                             :Vagon za mehurcke
+STR_806E_COLA_TANKER                                            :Cisterna za cockto
+STR_806F_CANDY_VAN                                              :Vagon za sladkarije
+STR_8070_TOY_VAN                                                :Vagon za igrace
+STR_8071_BATTERY_TRUCK                                          :Vagon za baterije
+STR_8072_FIZZY_DRINK_TRUCK                                      :Vagon za gaz. pijace
+STR_8073_PLASTIC_TRUCK                                          :Vagon za plastiko
 STR_8074_MPS_REGAL_BUS                                          :MPS regionalni avtobus
 STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard avtobus
 STR_8076_FOSTER_BUS                                             :Foster avtobus
@@ -2084,91 +2109,91 @@ STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkII
 STR_807B_BALOGH_COAL_TRUCK                                      :Balogh tovornjak za premog
 STR_807C_UHL_COAL_TRUCK                                         :Uhl tovornjak za premog
 STR_807D_DW_COAL_TRUCK                                          :DW tovornjak za premog
-STR_807E_MPS_MAIL_TRUCK                                         :MPS tovornjak za pošto
-STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard tovornjak za pošto
-STR_8080_PERRY_MAIL_TRUCK                                       :Perry tovornjak za pošto
-STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover tovornjak za pošto
-STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught tovornjak za pošto
-STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow tovornjak za pošto
+STR_807E_MPS_MAIL_TRUCK                                         :MPS tovornjak za posto
+STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard tovornjak za posto
+STR_8080_PERRY_MAIL_TRUCK                                       :Perry tovornjak za posto
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover tovornjak za posto
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught tovornjak za posto
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow tovornjak za posto
 STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe cisterna za nafto
 STR_8085_FOSTER_OIL_TANKER                                      :Foster cisterna za nafto
 STR_8086_PERRY_OIL_TANKER                                       :Perry cisterna za nafto
-STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott tovornjak za živino
-STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl tovornjak za živino
-STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster tovornjak za živino
-STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh tovornjak za dobrine
-STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead tovornjak za dobrine
-STR_808C_GOSS_GOODS_TRUCK                                       :Goss tovornjak za dobrine
-STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford tovornjak za žito
-STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas tovornjak za žito
-STR_808F_GOSS_GRAIN_TRUCK                                       :Goss tovornjak za žito
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott tovornjak za zivino
+STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl tovornjak za zivino
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster tovornjak za zivino
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh tovornjak za izdelke
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead tovornjak za izdelke
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss tovornjak za izdelke
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford tovornjak za zito
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas tovornjak za zito
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss tovornjak za zito
 STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe tovornjak za les
 STR_8091_FOSTER_WOOD_TRUCK                                      :Fooster tovornjak za les
 STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland tovornjak za les
-STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS tovornjak za železovo rudo
-STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl tovornjak za železovo rudo
-STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy tovornjak za železovo rudo
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS tovornjak za zel. rudo
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl tovornjak za zel. rudo
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy tovornjak za zel. rudo
 STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh tovornjak za jeklo
 STR_8097_UHL_STEEL_TRUCK                                        :Uhl tovornjak za jeklo
 STR_8098_KELLING_STEEL_TRUCK                                    :Kelling tovornjak za jeklo
 STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh oklepni tovornjak
 STR_809A_UHL_ARMORED_TRUCK                                      :Uhl oklepni tovornjak
 STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster oklepni tovornjak
-STR_809C_FOSTER_FOOD_VAN                                        :Foster tovornjak za živila
-STR_809D_PERRY_FOOD_VAN                                         :Perry tovornjak za živila
-STR_809E_CHIPPY_FOOD_VAN                                        :Chippy tovornjak za živila
+STR_809C_FOSTER_FOOD_VAN                                        :Foster tovornjak za hrano
+STR_809D_PERRY_FOOD_VAN                                         :Perry tovornjak za hrano
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy tovornjak za hrano
 STR_809F_UHL_PAPER_TRUCK                                        :Uhl tovornjak za papir
 STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh tovornjak za papir
 STR_80A1_MPS_PAPER_TRUCK                                        :MPS tovornjak za papir
-STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS tovornjak za bakrovo rudo
-STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl tovornjak za bakrovo rudo
-STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss tovornjak za bakrovo rudo
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS tovornjak za bakr. rudo
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl tovornjak za bakr. rudo
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss tovornjak za bakr. rudo
 STR_80A5_UHL_WATER_TANKER                                       :Uhl cisterna za vodo
 STR_80A6_BALOGH_WATER_TANKER                                    :Balogh cisterna za vodo
 STR_80A7_MPS_WATER_TANKER                                       :MPS cisterna za vodo
 STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh tovornjak za sadje
 STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl tovornjak za sadje
 STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling tovornjak za sadje
-STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh tovornjak za gumo
-STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl tovornjak za gumo
-STR_80AD_RMT_RUBBER_TRUCK                                       :RMT tovornjak za gumo
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh tovornjak za kavcuk
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl tovornjak za kavcuk
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT tovornjak za kavcuk
 STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover tovornjak za sladkor
 STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught tovornjak za sladkor
 STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow tovornjak za sladkor
 STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover cisterna za Cockto
 STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught cisterna za Cockto
 STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow cisterna za Cockto
-STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover tovornjak za sladkorno peno
-STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught tovornjak za sladkorno peno
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow tovornjak za sladkorno peno
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover tovornjak za toffee
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught tovornjak za toffee
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow tovornjak za toffee
-STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover tovornjak za igrače
-STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught tovornjak za igrače
-STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow tovornjak za igrače
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover tovornjak za sladk. peno
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught tovornjak za sladk. peno
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow tovornjak za sladk. peno
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover tovornjak za karamel
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught tovornjak za karamel
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow tovornjak za karamel
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover tovornjak za igrace
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught tovornjak za igrace
+STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow tovornjak za igrace
 STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover tovornjak za sladkarije
 STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught tovornjak za sladkarije
 STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow tovornjak za sladkarije
 STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover tovornjak za baterije
 STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught tovornjak za baterije
 STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow tovornjak za baterije
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover tovornjak za gazirane pijače
-STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught tovornjak za gazirane pijače
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow tovornjak za gazirane pijače
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover tovornjak za gaz. pijače
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught tovornjak za gaz. pijače
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow tovornjak za gaz. pijače
 STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover tovornjak za plastiko
 STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught tovornjak za plastiko
 STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow tovornjak za plastiko
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover tovornjak za mehurčke
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught tovornjak za mehurčke
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow tovornjak za mehurčke
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover tovornjak za mehurcke
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught tovornjak za mehurcke
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow tovornjak za mehurcke
 STR_80CC_MPS_OIL_TANKER                                         :MPS naftni tanker
 STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. naftni tanker
-STR_80CE_MPS_PASSENGER_FERRY                                    :MPS potniški trajekt
-STR_80CF_FFP_PASSENGER_FERRY                                    :FFP potniški trajekt
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS potniski trajekt
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP potniski trajekt
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Hovercraft
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug potniški trajekt
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake potniški trajekt
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug potniski trajekt
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake potniski trajekt
 STR_80D3_YATE_CARGO_SHIP                                        :Yate tovorna ladja
 STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell tovorna ladja
 STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover tovorna ladja
@@ -2214,9 +2239,9 @@ STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizze
 STR_80FD_TRICARIO_HELICOPTER                                    :Tricario helikopter
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 helikopter
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut helikopter
-STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Sporočilo od proizvajalca vozila
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Pravkar smo izdelali novi {STRING} - ali vas zanima enoletna ekskluzivna pravica do uporabe tega vozila, preden ga ponudimo na trgu?
-STR_8102_RAILROAD_LOCOMOTIVE                                    :železniška lokomotiva
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Sporocilo od proizvajalca vozila
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Na novo smo izdelali {STRING} - ali te zanima enoletna izkljucna  pravica do uporabe tega vozila, preden ga ponudimo na trgu?
+STR_8102_RAILROAD_LOCOMOTIVE                                    :zelezniska lokomotiva
 STR_8103_ROAD_VEHICLE                                           :cestno vozilo
 STR_8104_AIRCRAFT                                               :letalo
 STR_8105_SHIP                                                   :ladja
@@ -2224,38 +2249,39 @@ STR_8106_MONORAIL_LOCOMOTIVE                                    :enotirna lokomo
 STR_8107_MAGLEV_LOCOMOTIVE                                      :magnetna lokomotiva
 
 ##id 0x8800
-STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Železniška garaža
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Zelezniška garaza
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prvi vlak je pripeljal na postajo {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Podrobnosti)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na poti
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}{STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}{STRING}
-STR_8806_GO_TO                                                  :Pojdi do postaje {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Pojdi do postaje {STATION} (Prenesi in vzemi tovor)
-STR_8808_GO_TO_UNLOAD                                           :Pojdi do postaje {STATION} (Raztovori)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Pojdi do postaje {STATION} (Prenesi in pusti prazno)
-STR_880A_GO_TO_LOAD                                             :Pojdi do postaje {STATION} (Naloži)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Pojdi do postaje {STATION} (Prenesi in počakaj na polno breme)
-STR_880C_GO_NON_STOP_TO                                         :Pojdi brez postanka do postaje {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Pojdi brez postanka do postaje {STATION} (Prenesi in vzemi tovor)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Pojdi brez postanka do postaje {STATION} (Raztovori)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Pojdi brez postanka do postaje {STATION} (Prenesi in pusti prazno)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Pojdi brez postanka do postaje {STATION} (Nalozi)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Pojdi brez postanka do postaje {STATION} (Prenesi in počakaj na polno breme)
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Pojdi brez postanka do garaže {TOWN}
+STR_8806_GO_TO                                                  :Pojdi do {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Pojdi do {STATION} (Prenesi in vzemi tovor)
+STR_8808_GO_TO_UNLOAD                                           :Pojdi do {STATION} (Raztovori)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Pojdi do {STATION} (Prenesi in pusti prazno)
+STR_880A_GO_TO_LOAD                                             :Pojdi do  {STATION} (Nalozi)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Pojdi do {STATION} (Prenesi in pocakaj na polno breme)
+STR_880C_GO_NON_STOP_TO                                         :Pojdi brez postanka do {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Pojdi brez postanka do {STATION} (Prenesi in vzemi tovor)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Pojdi brez postanka do {STATION} (Raztovori)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Pojdi brez postanka do {STATION} (Prenesi in pusti prazno)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Pojdi brez postanka do {STATION} (Nalozi)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Pojdi brez postanka do {STATION} (Prenesi in pocakaj na polno breme)
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Pojdi brez postanka do garaze {TOWN}
 
 
 
 STR_UNKNOWN_DESTINATION                                         :neznana lokacija
 STR_8812_EMPTY                                                  :{LTBLUE}Prazen
 STR_8813_FROM                                                   :Tovor {LTBLUE}{CARGO} iz postaje {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} čaka v garaži
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} caka v garazi
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nova vozila
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak je predolg
-STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaki so lahko spremenjeni šele, ko stojijo v garaži
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaki so lahko spremenjeni sele, ko stojijo v garazi
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Vlak{P "" a i ov}
 
-STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nova železniška vozila
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nova zelezniska vozila
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nova enotirna vozila
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nova magnetna vozila
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Železniška vozila
@@ -2268,78 +2294,78 @@ STR_CLONE_TRAIN                                                 :{BLACK}Kloniraj
 STR_CLONE_TRAIN_INFO                                            :{BLACK}To bo zgradilo kopijo vlaka vključno z vsemi vagoni. CTRL+klik skopira tudi navodila
 STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}To bo zgradilo kopijo vlaka vključno z vsemi vagoni. Kliknite na ta gumb in nato na vlak v ali zunaj garaže. CTRL+klik skopira tudi navodila
 STR_8820_RENAME                                                 :{BLACK}Preimenuj
-STR_8823_SKIP                                                   :{BLACK}Preskoči
-STR_8824_DELETE                                                 :{BLACK}Izbriši
+STR_8823_SKIP                                                   :{BLACK}Preskoci
+STR_8824_DELETE                                                 :{BLACK}Izbrisi
 STR_8825_NON_STOP                                               :{BLACK}Brez prestanka
 STR_8826_GO_TO                                                  :{BLACK}Pojdi do
-STR_8827_FULL_LOAD                                              :{BLACK}Naloži polno
+STR_8827_FULL_LOAD                                              :{BLACK}Nalozi polno
 STR_8828_UNLOAD                                                 :{BLACK}Raztovori
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Navodila)
-STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Konec navodil - -
-STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ni mogoče kupiti vozila ...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zgrajen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Konec ukazov - -
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ni mogoce kupiti vozila ...
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zgrajeno: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Vrednost: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Natovarjanje / Raztovarjanje
-STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Vlaka ni mogoče poslati v garažo ...
-STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ni več prostora za navodila
-STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Preveč navodil
-STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Ni moogče vstaviti nov ukaz ...
-STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Ni mogoče izbrisati ukaza ...
-STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Ni mogoče spreminjati ukaza ...
-STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ni mogoče premakniti vozila ...
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Vlaka ni mogoce poslati v garazo ...
+STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ni vec prostora za ukaze
+STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Prevec ukazov
+STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Ni mogoce vstaviti nov ukaz ...
+STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Ni mogoce izbrisati ukaza ...
+STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Ni mogoce spreminjati ukaza ...
+STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ni mogoce premakniti vozila ...
 STR_8838_N_A                                                    :Ni na voljo{SKIP}
-STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Vlaka ni mogoče prodati ...
-STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Ni mogoče najti poti do najbližje garaže
-STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Ni mogoče ustaviti/zagnati vlaka ...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Interval servisiranja: {LTBLUE}{COMMA}dni{BLACK}   Zadnji servis: {LTBLUE}{DATE_LONG}
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Vlaka ni mogoce prodati ...
+STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Ni mogoce najti poti do najblizje garaze
+STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Ni mogoce ustaviti/zagnati vlaka ...
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}IObdobje servisiranja: {LTBLUE}{COMMA}dni{BLACK}   Zadnji servis: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaki - kliknite na vlak za informacije
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Zgradi nove vlake (zahteva železniško garažo)
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Zgradi nove vlake (zahteva zeleznisko garazo)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaki - kliknite na vlak za informacije, povlecite vozilo za dodajanje/odstranjevanje iz vlaka
-STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Zgradi novo železniško vozilo
-STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Povlecite železniško vozilo sem, če ga želite prodati
-STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Pogled na železniško garažo
-STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Seznam železniških vozil - kliknite na vozilo za informacije
-STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Zgradi izbrano železniško vozilo
-STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Preimenuj železniško vozilo
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Trenutno železniško vozilo - kliknite sem za izklop/zagon vozila
-STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Pokaži navodila železniškega vozila
-STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Pogled na železniško vozilo
-STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Pošlji vlak v železniško garažo. CTRL+klik samo na servis
-STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Prisili vlak, naj nadaljuje brez čakanja semaforjev
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Zgradi novo zeleznisko vozilo
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Povleci zeleznisko vozilo sem, ce ga zelis prodati
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Pogled na zeleznisko garazo
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Seznam zelezniskih vozil - kliknite na vozilo za informacije
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Zgradi izbrano zeleznisko vozilo
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Preimenuj zeleznisko vozilo
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Trenutno zeleznisko vozilo - kliknite sem za izklop/zagon vozila
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Pokazi ukaze zelezniskega vozila
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Pogled na zeleznisko vozilo
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Pošlji vlak v zeleznisko garazo. CTRL+klik samo na servis
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Prisili vlak, naj nadaljuje brez cakanja semaforjev
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Obrni smer vlaka
-STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Pokaži podrobnosti vlaka
-STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Podaljšaj čas med servisi
-STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Skrajšaj čas med servisi
-STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokaži podrobnosti tovora na vlaku
-STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokaži podrobnosti o vagonih
-STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Prikaži kapacitete vsakega vagona
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Prikaži polno kapaciteto vlaka, razdeli glede na tip tovora
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Seznam navodil - kliknite na ukaz, da ga izberete. CTRL+klik prikaže postajo
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenuten ukaz in izvrši naslednjega
-STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Zbriši izbran ukaz
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označi izbran ukaz kot brez-postanka
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Pokazi podrobnosti vlaka
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Podaljsaj cas med servisi
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Skrajsaj cas med servisi
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokazi podrobnosti tovora na vlaku
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokazi podrobnosti o vagonih
+STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Prikazi kapacitete vsakega vagona
+STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Prikazi polno kapaciteto vlaka, razdeli glede na tip tovora
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Seznam navodil - kliknite na ukaz, da ga izberete. CTRL+klik prikaze postajo
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoci trenuten ukaz in izvrsi naslednjega
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Zbrisi izbran ukaz
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaci izbran ukaz kot brez-postanka
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vstavi nov ukaz pred izbranega ali pa ga dodaj na koncu seznama
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označi izbran ukaz, naj vozilo čaka na polno obremenitev
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označi izbran ukaz, naj se vozilo v celoti raztovori
+STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaci izbran ukaz, naj vozilo caka na polno obremenitev
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaci izbran ukaz, naj se vozilo v celoti raztovori
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nov {STRING} je sedaj na voljo!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885C_BROKEN_DOWN                                            :{RED}Pokvarjen
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Stroški obratovanja: {LTBLUE}{CURRENCY}/leto
+STR_885C_BROKEN_DOWN                                            :{RED}V okvari
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Stroski delovanja: {LTBLUE}{CURRENCY}/leto
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Teza: {LTBLUE}{WEIGHT_S}  {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Letošnji profit: {LTBLUE}{CURRENCY}  (lansko leto: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanseljivost: {LTBLUE}{COMMA}%  {BLACK}Št. okvar od zadnjega servisa: {LTBLUE}{COMMA}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Letosnji profit: {LTBLUE}{CURRENCY}  (lansko leto: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanseljivost: {LTBLUE}{COMMA}%  {BLACK}St. okvar od zadnjega servisa: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Ustavljeno
-STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo semaforjev ...
-STR_8863_CRASHED                                                :{RED}Nesreča!
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Ni mogoce, da vlak v nevarnosti pelje mimo semaforjev ...
+STR_8863_CRASHED                                                :{RED}Unicen!
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Poimenuj vlak
-STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Ni mogoče poimenovati vlaka ...
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Ni mogoce poimenovati vlaka ...
 STR_8867_NAME_TRAIN                                             :{BLACK}Poimenuj vlak
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Železniška nesreča!{}{COMMA} je umrlo v plamenih ob trku
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ni mogoče spremeniti smeri vlaka ...
-STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenuj železniško vozilo
-STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ni mogoče preimenovati železniškega vozila ...
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Zelezniška nesreca!{}{COMMA} je umrlo v plamenih po trku
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ni mogoce spremeniti smeri vlaka ...
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenuj zeleznisko vozilo
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ni mogoce preimenovati zelezniskega vozila ...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Nastavi ukaz, naj prisili vozilo, da se raztovori
 STR_886F_TRANSFER                                               :{BLACK}Prenos
 
@@ -2350,19 +2376,19 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Ustavljam,
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestno vozilo na poti
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Cestna vozila
 STR_9002                                                        :{WHITE}{VEHICLE}
-STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Garaža za cestna vozila
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Garaza za cestna vozila
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nova vozila
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nova cestna vozila
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Zgradi vozilo
-STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ni mogoče zgraditi cestnega vozila ...
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ni mogoce zgraditi cestnega vozila ...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Podrobnosti)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Stroški obratovanja: {LTBLUE}{CURRENCY}/leto
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Stroski delovanja: {LTBLUE}{CURRENCY}/leto
 STR_900E_MAX_SPEED                                              :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Letošnji profit: {LTBLUE}{CURRENCY}  (lansko leto: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanesljivost: {LTBLUE}{COMMA}%  {BLACK}Št. okvar od zadnjega servisa: {LTBLUE}{COMMA}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Letosnji profit: {LTBLUE}{CURRENCY}  (lansko leto: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanesljivost: {LTBLUE}{COMMA}%  {BLACK}St. okvar od zadnjega servisa: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zgrajen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapaciteta: {LTBLUE}{CARGO}
-STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE} ... mora biti ustavljen v garaži
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE} ... mora biti ustavljen v garazi
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ni mogoče prodati cestnega vozila ...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ni mogoče ustaviti/zagnati cestnega vozila ...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Cestno vozilo {COMMA} čaka v garaži

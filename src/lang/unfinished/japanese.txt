@@ -800,6 +800,7 @@ STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{S
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
 STR_AUTOSAVE_1_MONTH                                            :毎月
+STR_AUTOSAVE_FAILED                                             :{WHITE}自動保存が失敗しました
 
 STR_MONTH_JAN                                                   :1月
 STR_MONTH_FEB                                                   :2月
@@ -814,14 +815,29 @@ STR_MONTH_OCT                                                   :10月
 STR_MONTH_NOV                                                   :11月
 STR_MONTH_DEC                                                   :12月
 
+STR_HEADING_FOR_STATION                                         :{LTBLUE}次の駅：{STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}次の駅：{STATION}、{VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}指令なし
+STR_NO_ORDERS_VEL                                               :{LTBLUE}指令なし、{VELOCITY}
 
+STR_PASSENGERS                                                  :人の乗客
+STR_BAGS                                                        :包
 STR_TONS                                                        :トン
+STR_LITERS                                                      :リートル
+STR_ITEMS                                                       :件
+STR_CRATES                                                      :箱
+STR_RES_OTHER                                                   :その他
+STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}指令リストが共有できません...
+STR_CANT_COPY_ORDER_LIST                                        :{WHITE}指令リストがコピーできません...
+STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共有指令の終わり - -
 
 STR_TRAIN_IS_LOST                                               :{WHITE}電車{COMMA}は迷います
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}去年、電車{COMMA}の取り柄は{CURRENCY}
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}欧州通貨統合！{}{}我が国はここからユーロを通貨として使用！
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -829,15 +845,77 @@ STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}電車{C
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}電車{COMMA}は 空々予定があります
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}電車{COMMA}のルートはデュープリケート 駅があります
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}電車{COMMA} のルートは無効な駅があります
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}車両 {COMMA} の指令リストに入っている指令が少なすぎます
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}車両 {COMMA} の指令リストに不正な指令が入っています
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}車両 {COMMA} の指令リストに重複している指令が入っています
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}車両 {COMMA} の指令リストに不正な駅が入っています
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}船 {COMMA} の指令リストに入っている指令が少なすぎます
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}船 {COMMA} の指令リストに不正な指令が入っています
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}船 {COMMA} の指令リストに重複している指令が入っています
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}船 {COMMA} の指令リストに不正な波止場が入っています
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}飛行機 {COMMA} の指令リストに入っている指令が少なすぎます
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}飛行機 {COMMA} の指令リストに不正な指令が入っています
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}飛行機 {COMMA} の指令リストに重複している指令が入っています
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}飛行機 {COMMA} の指令リストに不正な空港が入っています
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}電車{COMMA} のオート取り替えられません （お金のかぎり）
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}車両 {COMMA} の自動取り替えが失敗しました（資金制限）
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}船 {COMMA} の自動取り替えが失敗しました（資金制限）
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飛行機 {COMMA} の自動取り替えが失敗しました（資金制限）
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}付け替えの後で、電車{COMMA}は ちょっと長いです
 
+STR_CONFIG_PATCHES                                              :{BLACK}パッチの設定
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}パッチを設定します
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}パッチの設定
 
+STR_CONFIG_PATCHES_OFF                                          :切
+STR_CONFIG_PATCHES_ON                                           :入
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}状況バーに車両速度を表示：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}傾斜地／海岸上の建造を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}より現実的な受け取る地域を使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}より多くの町有の道路／橋などの廃止を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}超長型電車の作成を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}電車の現実的な加速を使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}電車／船が直角が曲げれないようにする：{ORANGE}{STRING} {LTBLUE}（NPF が必要）
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}隣接した駅を一つの駅に統合：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}全負荷が入の場合、何でもの貨物が「全負荷」となるときに出発：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}改良の読み込むアルゴリズムを使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}車両を次第に読み込む：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}インフレ：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}需要のあるときのみ駅へ貨物を運送：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}超長型橋の建造を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}「車庫へ行く」指令を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}原料生産者の建造を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}町内に重複している工業を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}同類の工業を近くに建造することを許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}常に状況バーに長型日付を表示：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}信号を運転側に表示：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}年末に財政ウインドウを表示：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch に対応している直行便方法を使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}車両の待ち行列を使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}マウスが端にあるとき画面を移動：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}町議会の買収を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}不整形の駅を許容：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}常に小型空港の建造を許容：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}電車が行方不明となった場合は通告：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}車両の指令をレビュー：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :切
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :入（停止中の車両を取り除く）
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :入（すべての車両）
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}電車の収益が赤字となったときは報告：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}車両が古くなるとき自動交換
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}車両が最高年齢の {ORANGE}{STRING}{LTBLUE} ヶ月間前／後に自動交換
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}自動交換するための最小資金：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}エラーメッセージの表示時間：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}町名に人口を含む：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}木を不可視にする（建物が透明）：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}陸地作成：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :元
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :何も
 
