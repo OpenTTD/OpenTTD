@@ -287,6 +287,9 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 		_oldest_news = increaseIndex(_oldest_news);
 	}
 
+	/*DEBUG(misc, 0) ("+cur %3d, old %2d, lat %3d, for %3d, tot %2d",
+	  _current_news, _oldest_news, _latest_news, _forced_news, _total_news); */
+
 	{ /* Add news to _latest_news */
 		Window *w;
 		NewsItem *ni = &_news_items[_latest_news];
@@ -314,7 +317,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 }
 
 
-// don't show item if it's older than x days
+/* Don't show item if it's older than x days, corresponds with NewsType in news.h */
 static const byte _news_items_age[] = {60, 60, 90, 60, 90, 30, 150, 30, 90, 180};
 
 static const Widget _news_type13_widgets[] = {
@@ -438,6 +441,10 @@ static void ShowNewspaper(NewsItem *ni)
 			break;
 		}
 	}
+
+	/*DEBUG(misc, 0) (" cur %3d, old %2d, lat %3d, for %3d, tot %2d",
+	  _current_news, _oldest_news, _latest_news, _forced_news, _total_news); */
+
 	WP(w, news_d).ni = &_news_items[_forced_news == INVALID_NEWS ? _current_news : _forced_news];
 	w->flags4 |= WF_DISABLE_VP_SCROLL;
 }
@@ -885,9 +892,9 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 			if (_forced_news == n || _current_news == n) MoveToNextItem();
 			_total_news--;
 
-			// If this is the last news item, invalidate _latest_news
-			if (_latest_news == _oldest_news) {
-				assert(_total_news == 0);
+			/* If this is the last news item, invalidate _latest_news */
+			if (_total_news == 0) {
+				assert(_latest_news == _oldest_news);
 				_latest_news = INVALID_NEWS;
 			}
 
@@ -898,17 +905,29 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 			 * [------O--------n-----L--]
 			 * will become (change dramatized to make clear)
 			 * [---------O-----------L--]
-			 * Also update the current news item in case it was pointing to the
-			 * oldest, now shifted item */
+			 * We also need an update of the current, forced and visible (open window)
+			 * news's as this shifting could change the items they were pointing to */
 			if (_total_news != 0) {
-				NewsID i;
-				for (i = n; i != _oldest_news; i = decreaseIndex(i)) {
-					_news_items[i] = _news_items[decreaseIndex(i)];
-				}
+				NewsID i, visible_news;
+				w = FindWindowById(WC_NEWS_WINDOW, 0);
+				visible_news = (w != NULL) ? (NewsID)(WP(w, news_d).ni - _news_items) : INVALID_NEWS;
 
-				if (_current_news == _oldest_news) _current_news = increaseIndex(_current_news);
+				i = n;
+				do {
+					_news_items[i] = _news_items[decreaseIndex(i)];
+
+					if (i == _current_news) _current_news = increaseIndex(_current_news);
+					if (i == _forced_news) _forced_news = increaseIndex(_forced_news);
+					if (i == visible_news) WP(w, news_d).ni = &_news_items[increaseIndex(visible_news)];
+
+					i = decreaseIndex(i);
+				} while (i != _oldest_news);
+
 				_oldest_news = increaseIndex(_oldest_news);
 			}
+
+			/*DEBUG(misc, 0) ("-cur %3d, old %2d, lat %3d, for %3d, tot %2d",
+			  _current_news, _oldest_news, _latest_news, _forced_news, _total_news); */
 
 			w = FindWindowById(WC_MESSAGE_HISTORY, 0);
 			if (w != NULL) {
