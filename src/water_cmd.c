@@ -252,7 +252,7 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		cost += ret;
 
 		if (flags & DC_EXEC) {
-			if (TileHeight(tile) == 0) {
+			if (TileHeight(tile) == 0 && HASBIT(p2, 0)) {
 				MakeWater(tile);
 			} else {
 				MakeCanal(tile, _current_player);
