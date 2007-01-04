@@ -32,15 +32,11 @@
 #include "network_gamelist.h"
 #include "core/udp.h"
 #include "core/tcp.h"
+#include "core/core.h"
 #include "network_gui.h"
 #include "../console.h" /* IConsoleCmdExec */
 #include <stdarg.h> /* va_list */
 #include "../md5.h"
-
-#ifdef __MORPHOS__
-// the library base is required here
-struct Library *SocketBase = NULL;
-#endif
 
 // The listen socket for the server
 static SOCKET _listensocket;
@@ -1345,45 +1341,14 @@ void NetworkStartUp(void)
 {
 	DEBUG(net, 3, "[core] starting network...");
 
-#if defined(__MORPHOS__) || defined(__AMIGA__)
-	/*
-	 *  IMPORTANT NOTE: SocketBase needs to be initialized before we use _any_
-	 *  network related function, else: crash.
-	 */
-	DEBUG(net, 3, "[core] loading bsd socket library");
-	SocketBase = OpenLibrary("bsdsocket.library", 4);
-	if (SocketBase == NULL) {
-		DEBUG(net, 0, "[core] can't open bsdsocket.library version 4, network unavailable");
-		_network_available = false;
-		return;
-	}
-
-#if defined(__AMIGA__)
-	// for usleep() implementation (only required for legacy AmigaOS builds)
-	TimerPort = CreateMsgPort();
-	if (TimerPort != NULL) {
-		TimerRequest = (struct timerequest*)CreateIORequest(TimerPort, sizeof(struct timerequest);
-		if (TimerRequest != NULL) {
-			if (OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest*)TimerRequest, 0) == 0) {
-				TimerBase = TimerRequest->tr_node.io_Device;
-				if (TimerBase == NULL) {
-					// free ressources...
-					DEBUG(net, 0, "[core] can't initialize timer, network unavailable");
-					_network_available = false;
-					return;
-				}
-			}
-		}
-	}
-#endif // __AMIGA__
-#endif // __MORPHOS__ / __AMIGA__
-
 	// Network is available
 	_network_available = true;
 	_network_dedicated = false;
 	_network_last_advertise_frame = 0;
 	_network_need_advertise = true;
 	_network_advertise_retries = 0;
+
+	NetworkCoreInitialize();
 
 	/* Load the ip from the openttd.cfg */
 	_network_server_bind_ip = inet_addr(_network_server_bind_ip_host);
@@ -1404,18 +1369,6 @@ void NetworkStartUp(void)
 		_network_game_info.spectators_max = sp_max;
 	}
 
-	// Let's load the network in windows
-	#if defined(WIN32)
-	{
-		WSADATA wsa;
-		DEBUG(net, 3, "[core] loading windows socket library");
-		if (WSAStartup(MAKEWORD(2,0), &wsa) != 0) {
-			DEBUG(net, 0, "[core] WSAStartup failed, network unavailable");
-			_network_available = false;
-			return;
-		}
-	}
-	#endif // WIN32
 
 	NetworkInitialize();
 	DEBUG(net, 3, "[core] network online, multiplayer available");
@@ -1432,20 +1385,7 @@ void NetworkShutDown(void)
 
 	_network_available = false;
 
-#if defined(__MORPHOS__) || defined(__AMIGA__)
-	// free allocated ressources
-#if defined(__AMIGA__)
-	if (TimerBase    != NULL) CloseDevice((struct IORequest*)TimerRequest); // XXX This smells wrong
-	if (TimerRequest != NULL) DeleteIORequest(TimerRequest);
-	if (TimerPort    != NULL) DeleteMsgPort(TimerPort);
-#endif
-
-	if (SocketBase != NULL) CloseLibrary(SocketBase);
-#endif
-
-#if defined(WIN32)
-	WSACleanup();
-#endif
+	NetworkCoreShutdown();
 }
 
 #endif /* ENABLE_NETWORK */

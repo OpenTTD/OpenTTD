@@ -543,6 +543,9 @@
 				RelativePath=".\..\src\namegen.c">
 			</File>
 			<File
+				RelativePath=".\..\src\network\core\core.c">
+			</File>
+			<File
 				RelativePath=".\..\src\network\core\packet.c">
 			</File>
 			<File
@@ -758,6 +761,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\network\core\config.h">
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\core.h">
 			</File>
 			<File
 				RelativePath=".\..\src\network\core\game.h">

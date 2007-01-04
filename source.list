@@ -32,6 +32,7 @@ misc.c
 mixer.c
 music.c
 namegen.c
+network/core/core.c
 network/core/packet.c
 network/core/tcp.c
 network/core/udp.c
@@ -115,6 +116,7 @@ md5.h
 mixer.h
 music.h
 network/core/config.h
+network/core/core.h
 network/core/game.h
 network/core/os_abstraction.h
 network/core/packet.h
