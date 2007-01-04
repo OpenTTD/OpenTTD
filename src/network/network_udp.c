@@ -28,7 +28,7 @@ enum {
 	ADVERTISE_RETRY_TIMES     =     3  // give up readvertising after this much failed retries
 };
 
-#define DEF_UDP_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(Packet *p, struct sockaddr_in *client_addr)
+#define DEF_UDP_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(Packet *p, const struct sockaddr_in *client_addr)
 
 static NetworkClientState _udp_cs;
 
@@ -403,7 +403,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS)
  * game information of some 'random' host.
  */
 typedef struct NetworkUDPPacketAndSocket {
-	void (*callback)(Packet *p, struct sockaddr_in *client_addr);
+	void (*callback)(Packet *p, const struct sockaddr_in *client_addr);
 	SOCKET *incoming_socket;
 } NetworkUPDPacketAndSocket;
 
@@ -421,7 +421,7 @@ static const NetworkUPDPacketAndSocket _network_udp_packet[PACKET_UDP_END] = {
 	{ RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS),       &_udp_client_socket },
 };
 
-void NetworkHandleUDPPacket(SOCKET udp, Packet *p, struct sockaddr_in *client_addr)
+void NetworkHandleUDPPacket(const SOCKET udp, Packet *p, const struct sockaddr_in *client_addr)
 {
 	byte type;
 

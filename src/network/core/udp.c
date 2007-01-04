@@ -20,7 +20,7 @@
  * @param broadcast whether to allow broadcast sending/receiving
  * @return true if the listening succeeded
  */
-bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast)
+bool NetworkUDPListen(SOCKET *udp, const uint32 host, const uint16 port, const bool broadcast)
 {
 	struct sockaddr_in sin;
 
@@ -85,7 +85,7 @@ void NetworkUDPClose(SOCKET *udp)
  * @param p    the packet to send
  * @param recv the receiver (target) of the packet
  */
-void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv)
+void NetworkSendUDP_Packet(const SOCKET udp, Packet *p, const struct sockaddr_in *recv)
 {
 	int res;
 
@@ -102,7 +102,7 @@ void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv)
  * Receive a packet at UDP level
  * @param udp the socket to receive the packet on
  */
-void NetworkUDPReceive(SOCKET udp)
+void NetworkUDPReceive(const SOCKET udp)
 {
 	struct sockaddr_in client_addr;
 	socklen_t client_len;

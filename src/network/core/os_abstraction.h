@@ -150,7 +150,7 @@ typedef unsigned long in_addr_t;
 #	endif
 #endif // __MORPHOS__ || __AMIGA__
 
-static inline bool SetNonBlocking(int d)
+static inline bool SetNonBlocking(const int d)
 {
 #ifdef WIN32
 	u_long nonblocking = 1;
@@ -164,7 +164,7 @@ static inline bool SetNonBlocking(int d)
 #endif
 }
 
-static inline bool SetNoDelay(int d)
+static inline bool SetNoDelay(const int d)
 {
 	/* XXX should this be done at all? */
 #if !defined(BEOS_NET_SERVER) // not implemented on BeOS net_server

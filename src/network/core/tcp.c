@@ -46,7 +46,7 @@ NetworkRecvStatus CloseConnection(NetworkClientState *cs)
  * @param cs the client to check
  * @return true if the client has quit
  */
-bool HasClientQuit(NetworkClientState *cs)
+bool HasClientQuit(const NetworkClientState *cs)
 {
 	return cs->has_quit;
 }

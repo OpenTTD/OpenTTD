@@ -68,7 +68,7 @@ bool NetworkCoreInitialize(void)
 void NetworkCoreShutdown(void)
 {
 #if defined(__MORPHOS__) || defined(__AMIGA__)
-	/* free allocated ressources */
+	/* free allocated resources */
 #if defined(__AMIGA__)
 	if (TimerBase    != NULL) CloseDevice((struct IORequest*)TimerRequest); // XXX This smells wrong
 	if (TimerRequest != NULL) DeleteIORequest(TimerRequest);

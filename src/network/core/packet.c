@@ -22,7 +22,7 @@ extern void NORETURN CDECL error(const char *str, ...);
  * @param type the of packet
  * @return the newly created packet
  */
-Packet *NetworkSend_Init(PacketType type)
+Packet *NetworkSend_Init(const PacketType type)
 {
 	Packet *packet = malloc(sizeof(Packet));
 	/* An error is inplace here, because it simply means we ran out of memory. */
@@ -112,7 +112,7 @@ void NetworkSend_string(Packet *packet, const char* data)
 extern uint CloseConnection(NetworkClientState *cs);
 
 /** Is it safe to read from the packet, i.e. didn't we run over the buffer ? */
-static inline bool CanReadFromPacket(NetworkClientState *cs, Packet *packet, uint bytes_to_read)
+static inline bool CanReadFromPacket(NetworkClientState *cs, const Packet *packet, const uint bytes_to_read)
 {
 	/* Don't allow reading from a closed socket */
 	if (HasClientQuit(cs)) return false;

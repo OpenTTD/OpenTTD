@@ -16,11 +16,11 @@
 
 ///** Sending/receiving of UDP packets **////
 
-bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast);
+bool NetworkUDPListen(SOCKET *udp, const uint32 host, const uint16 port, const bool broadcast);
 void NetworkUDPClose(SOCKET *udp);
 
-void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv);
-void NetworkUDPReceive(SOCKET udp);
+void NetworkSendUDP_Packet(const SOCKET udp, Packet *p, const struct sockaddr_in *recv);
+void NetworkUDPReceive(const SOCKET udp);
 
 /**
  * Function that is called for every received UDP packet.
@@ -28,7 +28,7 @@ void NetworkUDPReceive(SOCKET udp);
  * @param packet      the received packet
  * @param client_addr the address of the sender of the packet
  */
-void NetworkHandleUDPPacket(SOCKET udp, Packet *p, struct sockaddr_in *client_addr);
+void NetworkHandleUDPPacket(const SOCKET udp, Packet *p, const struct sockaddr_in *client_addr);
 
 
 ///** Sending/receiving of (large) chuncks of UDP packets **////

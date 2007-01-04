@@ -21,7 +21,7 @@ typedef struct NetworkClientState NetworkClientState;
  * @param cs the state to query
  * @param true if the connection should be considered dropped
  */
-bool HasClientQuit(NetworkClientState *cs);
+bool HasClientQuit(const NetworkClientState *cs);
 
 typedef uint16 PacketSize; ///< Size of the whole packet.
 typedef uint8  PacketType; ///< Identifier for the packet
@@ -49,7 +49,7 @@ typedef struct Packet {
 } Packet;
 
 
-Packet *NetworkSend_Init(PacketType type);
+Packet *NetworkSend_Init(const PacketType type);
 void NetworkSend_FillPacketSize(Packet *packet);
 void NetworkSend_uint8 (Packet *packet, uint8 data);
 void NetworkSend_uint16(Packet *packet, uint16 data);
