@@ -50,7 +50,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 	_network_game_info.spectators_on = NetworkSpectatorCount();
 	_network_game_info.grfconfig     = _grfconfig;
 
-	NetworkSend_NetworkGameInfo(p, &_network_game_info);
+	NetworkSend_NetworkGameInfo(packet, &_network_game_info);
 
 	// Let the client know that we are here
 	NetworkSendUDP_Packet(_udp_server_socket, packet, client_addr);
