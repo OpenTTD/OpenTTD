@@ -3,6 +3,7 @@
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
+#include "../../debug.h"
 #include "os_abstraction.h"
 
 #ifdef __MORPHOS__
