@@ -397,30 +397,31 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS)
 	}
 }
 
+/**
+ * Every type of UDP packet should only be received by a single socket;
+ * The socket communicating with the masterserver should receive the
+ * game information of some 'random' host.
+ */
+typedef struct NetworkUDPPacketAndSocket {
+	void (*callback)(Packet *p, struct sockaddr_in *client_addr);
+	SOCKET *incoming_socket;
+} NetworkUPDPacketAndSocket;
 
-// The layout for the receive-functions by UDP
-typedef void NetworkUDPPacket(Packet *p, struct sockaddr_in *client_addr);
-
-static NetworkUDPPacket* const _network_udp_packet[] = {
-	RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER),
-	RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE),
-	RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO),
-	NULL,
-	NULL,
-	RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER),
-	NULL,
-	RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST),
-	NULL,
-	RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS),
-	RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS),
+static const NetworkUPDPacketAndSocket _network_udp_packet[PACKET_UDP_END] = {
+	{ RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER),   &_udp_server_socket },
+	{ RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE),      &_udp_client_socket },
+	{ RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO),   &_udp_server_socket },
+	{ NULL,                                             NULL                },
+	{ NULL,                                             NULL                },
+	{ RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER),  &_udp_master_socket },
+	{ NULL,                                             NULL                },
+	{ RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST), &_udp_client_socket },
+	{ NULL,                                             NULL                },
+	{ RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS),   &_udp_server_socket },
+	{ RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS),       &_udp_client_socket },
 };
 
-
-// If this fails, check the array above with network_data.h
-assert_compile(lengthof(_network_udp_packet) == PACKET_UDP_END);
-
-
-void NetworkHandleUDPPacket(Packet *p, struct sockaddr_in *client_addr)
+void NetworkHandleUDPPacket(SOCKET udp, Packet *p, struct sockaddr_in *client_addr)
 {
 	byte type;
 
@@ -430,13 +431,15 @@ void NetworkHandleUDPPacket(Packet *p, struct sockaddr_in *client_addr)
 
 	type = NetworkRecv_uint8(&_udp_cs, p);
 
-	if (type < PACKET_UDP_END && _network_udp_packet[type] != NULL && !_udp_cs.has_quit) {
-		_network_udp_packet[type](p, client_addr);
+	if (type < PACKET_UDP_END && *_network_udp_packet[type].incoming_socket == udp && !_udp_cs.has_quit) {
+		_network_udp_packet[type].callback(p, client_addr);
 	} else {
-		if (!_udp_cs.has_quit) {
-			DEBUG(net, 0, "[udp] received invalid packet type %d", type);
+		if (*_network_udp_packet[type].incoming_socket != udp) {
+			DEBUG(net, 0, "[udp] received packet on wrong port from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
+		} else if (!_udp_cs.has_quit) {
+			DEBUG(net, 0, "[udp] received invalid packet type %d from %s:%d", type,  inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
 		} else {
-			DEBUG(net, 0, "[udp] received illegal packet");
+			DEBUG(net, 0, "[udp] received illegal packet from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
 		}
 	}
 }

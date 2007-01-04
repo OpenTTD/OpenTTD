@@ -17,10 +17,11 @@ void NetworkUDPReceive(SOCKET udp);
 
 /**
  * Function that is called for every received UDP packet.
+ * @param udp         the socket the packet is received on
  * @param packet      the received packet
  * @param client_addr the address of the sender of the packet
  */
-void NetworkHandleUDPPacket(Packet *p, struct sockaddr_in *client_addr);
+void NetworkHandleUDPPacket(SOCKET udp, Packet *p, struct sockaddr_in *client_addr);
 
 
 ///** Sending/receiving of (large) chuncks of UDP packets **////

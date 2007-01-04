@@ -119,7 +119,7 @@ void NetworkUDPReceive(SOCKET udp)
 		p.next = NULL;
 
 		/* Handle the packet */
-		NetworkHandleUDPPacket(&p, &client_addr);
+		NetworkHandleUDPPacket(udp, &p, &client_addr);
 	}
 }
 
