@@ -844,7 +844,7 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Vælg 't
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Vælg 'subarktisk' landskab
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Vælg 'subtropisk' landskab
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Vælg 'legetøjsland' landskab
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Betal for bygning af nye industrier
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financiér opførelse af ny industri
 
 ############ range for menu	starts
 STR_INDUSTRY_DIR                                                :Industrioversigt
@@ -1028,7 +1028,7 @@ STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillad 
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Tillad gå til depot ordrer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Tillad opførslen af råmateriale industrier: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Tillad flere af samme slags industri per by: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Tillad at flere af samme slags industri kan være tæt på hinanden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Tillad flere af samme type industri tæt på hinanden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vis altid lang dato i statusbaren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Vis signaler i kørselssiden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Vis finansvinduet i slutningen af året: {ORANGE}{STRING}
@@ -1050,8 +1050,8 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :Ja, på alle k�
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et tog har underskud: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køretøjernes levealder udløber aldrig: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatisk fornyelse af køretøjer når de bliver gamle
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Forny automatisk når køretøj er {ORANGE}{STRING}{LTBLUE} md. før/efter maks. alder
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Antal penge i banken før automatisk fornyelse af køretøjer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Forny automatisk køretøj {ORANGE}{STRING}{LTBLUE} md. før/efter maks. alder
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Min. kontanter før automatisk køretøjsfornyelse: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Levetid for fejlmeddelser: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Vis byens indbyggertal i bynavnet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlige træer (med gennemsigtige bygninger): {ORANGE}{STRING}
@@ -1075,11 +1075,11 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mod uret
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med uret
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Den højde et flat scenariekort får: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. stationudbredelse: {ORANGE}{STRING} {RED}Obs: Høj værdi gør spillet langsomt
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Forbind landskabsværktøjslinjen med skinne/vej/vand/lufthavn: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Når der scrolles med musen, flyt viewet i den modsatte retning: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Vis værktøjstip for måling under brug af div. bygge-værktøjer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Forbind landskabsværktøjer med skinne/vej/vand/lufthavn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Flyt i modsat retning ved scroll med musen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Vis måleværktøjstip ved brug af div. bygge-værktøjer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Vis selskabsfarver: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eget selskab

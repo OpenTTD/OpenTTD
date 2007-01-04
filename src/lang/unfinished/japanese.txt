@@ -14,6 +14,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}平たい地面がかかります
 STR_0008_WAITING                                                :{BLACK}待っています： {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  （途上から場所は
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}受け取れる事は： {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}受け取れる事は： {GOLD}
@@ -156,7 +157,7 @@ STR_00B3_MESSAGE_FROM                                           :{YELLOW}{STRING
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}ご注意！
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}これはできません...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}その所を空けません
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}元の著作権保持者 {COPYRIGHT} 1995 Chris Sawyer。無断複写・転載を禁じます。
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}オリジナル版権{COPYRIGHT} 1995 Chris Sawyer、不許複製
 STR_00B7_VERSION                                                :{BLACK}OpenTTD バージョン {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  訳者－
@@ -193,17 +194,17 @@ STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}ゲー�
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}見付けます
-STR_00E5_CONTOURS                                               :等高線
-STR_00E6_VEHICLES                                               :車両
+STR_00E5_CONTOURS                                               :輪郭
+STR_00E6_VEHICLES                                               :カルマ
 STR_00E7_INDUSTRIES                                             :産業
 STR_00E8_ROUTES                                                 :経路
 STR_00E9_VEGETATION                                             :植物
-STR_00EA_OWNERS                                                 :所有者
+STR_00EA_OWNERS                                                 :オーナー
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}道路
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}鉄道
 STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}駅／空港／波止場
 STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}建物／産業
-STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}車両
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}車
 STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
 STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
 STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
@@ -310,11 +311,11 @@ STR_0151_MAP_OF_WORLD                                           :世界の地図
 STR_0152_TOWN_DIRECTORY                                         :町のリスト
 STR_0153_SUBSIDIES                                              :助成金
 
-STR_UNITS_IMPERIAL                                              :US
+STR_UNITS_IMPERIAL                                              :インペリアル
 STR_UNITS_METRIC                                                :メートル法
-STR_UNITS_SI                                                    :SI 単位
+STR_UNITS_SI                                                    :国際単位系
 
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} マイル毎時
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
@@ -339,7 +340,7 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} リッ�
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} トンフォース
+STR_UNITS_FORCE_METRIC                                          :{COMMA} 重量トン
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -372,10 +373,11 @@ STR_SORT_BY_NAME                                                :{BLACK}名前
 STR_SORT_BY_DROPDOWN_NAME                                       :名前
 STR_SORT_BY_DATE                                                :{BLACK}日付
 STR_SORT_BY_NUMBER                                              :番号
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :去年の収益
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年の収益
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :去年の採算
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年の採算
 STR_SORT_BY_AGE                                                 :年齢
 STR_SORT_BY_RELIABILITY                                         :信頼度
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :貨物種類当たり総数体積
 STR_SORT_BY_MAX_SPEED                                           :最高速度
 STR_SORT_BY_MODEL                                               :モデル
 STR_SORT_BY_VALUE                                               :価値
@@ -559,6 +561,7 @@ STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}音楽�
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}選択したプレイリストへ追加するには、曲をクリックします（カスタム 1／2 のみ）。
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}プレイリストのシャッフルを入／切にします
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}曲の選択のウィンドウ表示します
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}町／インダストリを見るためにサービスをクリックして下さい
 STR_01FE_DIFFICULTY                                             :{BLACK} 難易度 ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :最後のメッセージ
@@ -632,6 +635,7 @@ STR_0241_POWER_STATION                                          :{BLACK}発電�
 STR_0242_SAWMILL                                                :{BLACK}製材工場
 STR_0243_FOREST                                                 :{BLACK}森林
 STR_0244_OIL_REFINERY                                           :{BLACK}製油所
+STR_0245_OIL_RIG                                                :{BLACK}油田掘削施設
 STR_0246_FACTORY                                                :{BLACK}工場
 STR_0247_STEEL_MILL                                             :{BLACK}製鋼所
 STR_0248_FARM                                                   :{BLACK}農場
@@ -649,6 +653,7 @@ STR_0253_WATER_SUPPLY                                           :{BLACK}給水�
 STR_0254_WATER_TOWER                                            :{BLACK}給水塔
 STR_0255_DIAMOND_MINE                                           :{BLACK}ダイヤモンド鉱山
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}銅鉱石鉱山
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}綿飴森
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}ここに {STRING} が建造できません
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...まずは町を建造しなければなりません
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...一町内に一つしか建造できません
@@ -688,6 +693,7 @@ STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}市町村名の表示
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}駅／バス停名の表示
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}標示の表示
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}通過点を見せています
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}高級のアニメーション
 STR_02D2_FULL_DETAIL                                            :{SETX 12}高級の画像
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}透明な建物
@@ -775,6 +781,8 @@ STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :イギリス（
 STR_TOWNNAME_LATIN_AMERICAN                                     :ラテンアメリカ
 STR_TOWNNAME_SILLY                                              :愚
 STR_TOWNNAME_SWEDISH                                            :スウェーデン
+STR_TOWNNAME_DUTCH                                              :オランダ
+STR_TOWNNAME_FINNISH                                            :フィンランド
 STR_TOWNNAME_POLISH                                             :ポーランド
 STR_TOWNNAME_SLOVAKISH                                          :スロバキア
 STR_TOWNNAME_NORWEGIAN                                          :ノルウェー
@@ -937,7 +945,11 @@ STR_TOYLAND_LANDSCAPE                                           :おまちゃ国
 
 
 
+STR_WAYPOINTNAME_CITY                                           :{TOWN}の通過点
+STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN}の通過点 #{COMMA}
 
+STR_WAYPOINT                                                    :{WHITE}通過点
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}通過点種類を選んで下さい
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
@@ -958,6 +970,7 @@ STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}ラン�
 
 
 
+STR_STATION_DRAG_DROP                                           :{BLACK}ドラッグとドロップで駅を建てます
 
 
 
@@ -1410,6 +1423,7 @@ STR_681C_SLOW                                                   :遅い
 STR_681D_MEDIUM                                                 :中位
 STR_681E_FAST                                                   :速い
 STR_681F_VERY_FAST                                              :特に速い
+STR_VERY_LOW                                                    :すごく少し
 STR_6820_LOW                                                    :低い
 STR_6821_MEDIUM                                                 :中位
 STR_6822_HIGH                                                   :高い
@@ -1609,12 +1623,14 @@ STR_9029                                                        :{BLACK}{BIGFONT
 ##id 0x9800
 STR_980F                                                        :{WHITE}{VEHICLE}
 
+SERVICE_AT_SHIP_DEPOT                                           :{TOWN}の造船所でサービスします
 
 ##id 0xA000
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
+SERVICE_AT_AIRPORT_HANGAR                                       : {STATION}のハンガーでサービスします
 
 ##id 0xB000
 
@@ -1652,6 +1668,7 @@ STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} 飛行機
 
 
+STR_WAGONS                                                      :車
 
 
 

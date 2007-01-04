@@ -1402,7 +1402,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ricezion
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ricezione informazioni compagnia..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} clients in attesa
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes scaricati fin'ora
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbyte scaricati
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Disconnessione
 
