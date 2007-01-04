@@ -5,7 +5,7 @@
 
 #ifdef ENABLE_NETWORK
 
-void NetworkCoreInitialize(void);
+bool NetworkCoreInitialize(void);
 void NetworkCoreShutdown(void);
 
 #endif /* ENABLE_NETWORK */

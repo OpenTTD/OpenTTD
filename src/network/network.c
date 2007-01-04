@@ -1336,19 +1336,17 @@ static void NetworkGenerateUniqueId(void)
 	snprintf(_network_unique_id, sizeof(_network_unique_id), "%s", hex_output);
 }
 
-// This tries to launch the network for a given OS
+/** This tries to launch the network for a given OS */
 void NetworkStartUp(void)
 {
 	DEBUG(net, 3, "[core] starting network...");
 
-	// Network is available
-	_network_available = true;
+	/* Network is available */
+	_network_available = NetworkCoreInitialize();;
 	_network_dedicated = false;
 	_network_last_advertise_frame = 0;
 	_network_need_advertise = true;
 	_network_advertise_retries = 0;
-
-	NetworkCoreInitialize();
 
 	/* Load the ip from the openttd.cfg */
 	_network_server_bind_ip = inet_addr(_network_server_bind_ip_host);
@@ -1375,7 +1373,7 @@ void NetworkStartUp(void)
 	NetworkFindIPs();
 }
 
-// This shuts the network down
+/** This shuts the network down */
 void NetworkShutDown(void)
 {
 	NetworkDisconnect();

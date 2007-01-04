@@ -13,7 +13,7 @@ struct Library *SocketBase = NULL;
 /**
  * Initializes the network core (as that is needed for some platforms
  */
-void NetworkCoreInitialize(void)
+bool NetworkCoreInitialize(void)
 {
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 	/*
@@ -24,8 +24,7 @@ void NetworkCoreInitialize(void)
 	SocketBase = OpenLibrary("bsdsocket.library", 4);
 	if (SocketBase == NULL) {
 		DEBUG(net, 0, "[core] can't open bsdsocket.library version 4, network unavailable");
-		_network_available = false;
-		return;
+		return false;
 	}
 
 #if defined(__AMIGA__)
@@ -37,10 +36,9 @@ void NetworkCoreInitialize(void)
 			if (OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest*)TimerRequest, 0) == 0) {
 				TimerBase = TimerRequest->tr_node.io_Device;
 				if (TimerBase == NULL) {
-					// free ressources...
+					/* free ressources... */
 					DEBUG(net, 0, "[core] can't initialize timer, network unavailable");
-					_network_available = false;
-					return;
+					return false;
 				}
 			}
 		}
@@ -55,11 +53,12 @@ void NetworkCoreInitialize(void)
 		DEBUG(net, 3, "[core] loading windows socket library");
 		if (WSAStartup(MAKEWORD(2, 0), &wsa) != 0) {
 			DEBUG(net, 0, "[core] WSAStartup failed, network unavailable");
-			_network_available = false;
-			return;
+			return false;
 		}
 	}
 #endif /* WIN32 */
+
+	return true;
 }
 
 /**
