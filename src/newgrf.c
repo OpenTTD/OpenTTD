@@ -1412,6 +1412,34 @@ static void FeatureChangeInfo(byte *buf, int len)
 	}
 }
 
+/* Action 0x00 (GLS_SAFETYSCAN) */
+static void SafeChangeInfo(byte *buf, int len)
+{
+	uint8 feature;
+	uint8 numprops;
+	uint8 numinfo;
+	uint8 index;
+
+	check_length(len, 6, "SafeChangeInfo");
+	buf++;
+	feature  = grf_load_byte(&buf);
+	numprops = grf_load_byte(&buf);
+	numinfo  = grf_load_byte(&buf);
+	index    = grf_load_byte(&buf);
+
+	if (feature == GSF_BRIDGE && numprops == 1) {
+		uint8 prop = grf_load_byte(&buf);
+		/* Bridge property 0x0D is redefinition of sprite layout tables, which
+		 * is considered safe. */
+		if (prop == 0x0D) return;
+	}
+
+	SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
+
+	/* Skip remainder of GRF */
+	_skip_sprites = -1;
+}
+
 #undef FOR_EACH_OBJECT
 
 /**
@@ -2613,6 +2641,29 @@ static void GRFComment(byte *buf, int len)
 	grfmsg(2, "GRFComment: %s", comment);
 }
 
+/* Action 0x0D (GLS_SAFETYSCAN) */
+static void SafeParamSet(byte *buf, int len)
+{
+	uint8 target;
+
+	check_length(len, 5, "SafeParamSet");
+	buf++;
+	target = grf_load_byte(&buf);
+
+	/* Only writing GRF parameters is considered safe */
+	if (target < 0x80) return;
+
+	/* GRM could be unsafe, but as here it can only happen after other GRFs
+	 * are loaded, it should be okay. If the GRF tried to use the slots it
+	 * reserved, it would be marked unsafe anyway. GRM for (e.g. bridge)
+	 * sprites  is considered safe. */
+
+	SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
+
+	/* Skip remainder of GRF */
+	_skip_sprites = -1;
+}
+
 /* Action 0x0D */
 static void ParamSet(byte *buf, int len)
 {
@@ -3539,7 +3590,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 	 * is not in memory and scanning the file every time would be too expensive.
 	 * In other stages we skip action 0x10 since it's already dealt with. */
 	static const SpecialSpriteHandler handlers[][GLS_END] = {
-		/* 0x00 */ { NULL,     GRFUnsafe, NULL,            NULL,       FeatureChangeInfo, },
+		/* 0x00 */ { NULL,     SafeChangeInfo, NULL,       NULL,       FeatureChangeInfo, },
 		/* 0x01 */ { NULL,     GRFUnsafe, NULL,            NULL,       NewSpriteSet, },
 		/* 0x02 */ { NULL,     GRFUnsafe, NULL,            NULL,       NewSpriteGroup, },
 		/* 0x03 */ { NULL,     GRFUnsafe, NULL,            NULL,       FeatureMapSpriteGroup, },
@@ -3552,7 +3603,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x0A */ { NULL,     NULL,      NULL,            NULL,       SpriteReplace, },
 		/* 0x0B */ { NULL,     NULL,      NULL,            GRFError,   GRFError, },
 		/* 0x0C */ { NULL,     NULL,      NULL,            GRFComment, GRFComment, },
-		/* 0x0D */ { NULL,     GRFUnsafe, NULL,            ParamSet,   ParamSet, },
+		/* 0x0D */ { NULL,     SafeParamSet, NULL,         ParamSet,   ParamSet, },
 		/* 0x0E */ { NULL,     SafeGRFInhibit, NULL,       GRFInhibit, GRFInhibit, },
 		/* 0x0F */ { NULL,     NULL,      NULL,            NULL,       NULL, },
 		/* 0x10 */ { NULL,     NULL,      DefineGotoLabel, NULL,       NULL, },
