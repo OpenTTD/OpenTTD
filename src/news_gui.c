@@ -912,17 +912,15 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 				w = FindWindowById(WC_NEWS_WINDOW, 0);
 				visible_news = (w != NULL) ? (NewsID)(WP(w, news_d).ni - _news_items) : INVALID_NEWS;
 
-				i = n;
-				do {
+				for (i = n;; i = decreaseIndex(i)) {
 					_news_items[i] = _news_items[decreaseIndex(i)];
 
 					if (i == _current_news) _current_news = increaseIndex(_current_news);
 					if (i == _forced_news) _forced_news = increaseIndex(_forced_news);
 					if (i == visible_news) WP(w, news_d).ni = &_news_items[increaseIndex(visible_news)];
 
-					i = decreaseIndex(i);
-				} while (i != _oldest_news);
-
+					if (i == _oldest_news) break;
+				}
 				_oldest_news = increaseIndex(_oldest_news);
 			}
 
