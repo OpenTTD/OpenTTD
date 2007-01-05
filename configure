@@ -3,7 +3,7 @@
 # This 'configure' script is a very easy wrapper around 'make updateconf'
 #  It allows cross-compilers to do their job much more easy.
 
-function showhelp() {
+showhelp() {
 	echo "Configure for OpenTTD"
 	echo ""
 	echo "Usage:"
@@ -48,7 +48,7 @@ function showhelp() {
 	echo " "
 }
 
-function handle() {
+handle() {
 	PARAM="$PARAM \"$1=`awk 'BEGIN { FS="="; $0="'"$2"'"; print $2;}'`\""
 }
 
@@ -309,9 +309,9 @@ fi
 # First remove the Makefile.config, else you can have double entries
 rm -f Makefile.config
 
-echo "make upgradeconf $PARAM" > Makefile.run
-. Makefile.run
-rm -f Makefile.run
+echo "make upgradeconf $PARAM" > ./Makefile.run
+. ./Makefile.run
+rm -f ./Makefile.run
 
 # Makefile.config currently doesn't support custom RELEASE (revision), so, we add the line
 # yourself!
