@@ -72,404 +72,163 @@ detect_params() {
 		optarg=`expr "x$p" : 'x[^=]*=\(.*\)'`
 
 		case "$p" in
-			--help | -h)
-				showhelp
-				exit 0
-				;;
+			--help | -h)                  showhelp; exit 0;;
 
-			--config-log)
-				prev_p="config_log"
-				;;
-			--config-log=*)
-				config_log="$optarg"
-				;;
+			--config-log)                 prev_p="config_log";;
+			--config-log=*)               config_log="$optarg";;
 
-			--build)
-				prev_p="build"
-				;;
-			--build=*)
-				build="$optarg"
-				;;
+			--build)                      prev_p="build";;
+			--build=*)                    build="$optarg";;
 
-			--host)
-				prev_p="host"
-				;;
-			--host=*)
-				host="$optarg"
-				;;
+			--host)                       prev_p="host";;
+			--host=*)                     host="$optarg";;
 
-			--os)
-				prev_p="os"
-				;;
-			--os=*)
-				os="$optarg"
-				;;
+			--os)                         prev_p="os";;
+			--os=*)                       os="$optarg";;
 
-			--revision=*)
-				revision="$optarg"
-				;;
+			--revision=*)                 revision="$optarg";;
 
-			--cc-build)
-				prevp_p="cc_build"
-				;;
-			--cc-build=*)
-				cc_build="$optarg"
-				;;
-			--cc-host)
-				prevp_p="cc_host"
-				;;
-			--cc-host=*)
-				cc_host="$optarg"
-				;;
-			--cxx-host)
-				prevp_p="cxx_host"
-				;;
-			--cxx-host=*)
-				cxx_host="$optarg"
-				;;
-			--windres)
-				prevp_p="windres"
-				;;
-			--windres=*)
-				windres="$optarg"
-				;;
-			--strip)
-				prevp_p="strip"
-				;;
-			--strip=*)
-				strip="$optarg"
-				;;
-			--lipo)
-				prevp_p="lipo"
-				;;
-			--lipo=*)
-				lipo="$optarg"
-				;;
+			--cc-build)                   prevp_p="cc_build";;
+			--cc-build=*)                 cc_build="$optarg";;
+			--cc-host)                    prevp_p="cc_host";;
+			--cc-host=*)                  cc_host="$optarg";;
+			--cxx-host)                   prevp_p="cxx_host";;
+			--cxx-host=*)                 cxx_host="$optarg";;
+			--windres)                    prevp_p="windres";;
+			--windres=*)                  windres="$optarg";;
+			--strip)                      prevp_p="strip";;
+			--strip=*)                    strip="$optarg";;
+			--lipo)                       prevp_p="lipo";;
+			--lipo=*)                     lipo="$optarg";;
 
-			--endian)
-				prev_p="endian"
-				;;
-			--endian=*)
-				endian="$optarg"
-				;;
+			--endian)                     prev_p="endian";;
+			--endian=*)                   endian="$optarg";;
 
 
 
-			--prefix-dir)
-				prevp_p="prefix-dir"
-				;;
-			--prefix-dir=*)
-				prefix_dir="$optarg"
-				;;
+			--prefix-dir)                 prevp_p="prefix-dir";;
+			--prefix-dir=*)               prefix_dir="$optarg";;
 
-			--binary-dir)
-				prevp_p="binary-dir"
-				;;
-			--binary-dir=*)
-				binary_dir="$optarg"
-				;;
+			--binary-dir)                 prevp_p="binary-dir";;
+			--binary-dir=*)               binary_dir="$optarg";;
 
-			--data-dir)
-				prevp_p="data-dir"
-				;;
-			--data-dir=*)
-				data_dir="$optarg"
-				;;
+			--data-dir)                   prevp_p="data-dir";;
+			--data-dir=*)                 data_dir="$optarg";;
 
-			--icon-dir)
-				prevp_p="icon-dir"
-				;;
-			--icon-dir=*)
-				icon_dir="$optarg"
-				;;
+			--icon-dir)                   prevp_p="icon-dir";;
+			--icon-dir=*)                 icon_dir="$optarg";;
 
-			--personal-dir)
-				prevp_p="personal-dir"
-				;;
-			--personal-dir=*)
-				personal_dir="$optarg"
-				;;
+			--personal-dir)               prevp_p="personal-dir";;
+			--personal-dir=*)             personal_dir="$optarg";;
 
-			--install-dir)
-				prevp_p="install-dir"
-				;;
-			--install-dir=*)
-				install_dir="$optarg"
-				;;
+			--install-dir)                prevp_p="install-dir";;
+			--install-dir=*)              install_dir="$optarg";;
 
 # TODO: The next few cases will be removed when the search path patch is applied
-			--custom-lang-dir)
-				prevp_p="custom-lang-dir"
-				;;
-			--custom-lang-dir=*)
-				custom_lang_dir="$optarg"
-				;;
+			--custom-lang-dir)            prevp_p="custom-lang-dir";;
+			--custom-lang-dir=*)          custom_lang_dir="$optarg";;
 
-			--second-data-dir)
-				prevp_p="second-data-dir"
-				;;
-			--second-data-dir=*)
-				second_data_dir="$optarg"
-				;;
+			--second-data-dir)            prevp_p="second-data-dir";;
+			--second-data-dir=*)          second_data_dir="$optarg";;
 
-			--enable-install)
-				enable_install="1"
-				;;
-			--enable-install=*)
-				enable_install="$optarg"
-				;;
+			--enable-install)             enable_install="1";;
+			--enable-install=*)           enable_install="$optarg";;
 # TODO: End of to be removed cases
 
 
-			--enable-debug)
-				enable_debug="1"
-				;;
-			--enable-debug=*)
-				enable_debug="$optarg"
-				;;
-			--enable-profiling)
-				enable_profiling="1"
-				;;
-			--enable-profiling=*)
-				enable_profiling="$optarg"
-				;;
-			--enable-dedicated)
-				enable_dedicated="1"
-				;;
-			--enable-dedicated=*)
-				enable_dedicated="$optarg"
-				;;
-			--enable-network=*)
-				enable_network="$optarg"
-				;;
-			--disable-network)
-				enable_network="0"
-				;;
-			--disable-static)
-				enable_static="0"
-				;;
-			--enable-static)
-				enable_static="2"
-				;;
-			--enable-static=*)
-				enable_static="$optarg"
-				;;
-			--disable-translator)
-				enable_translator="0"
-				;;
-			--enable-translator)
-				enable_translator="2"
-				;;
-			--enable-translator=*)
-				enable_translator="$optarg"
-				;;
-			--disable-assert)
-				enable_assert="0"
-				;;
-			--enable-assert)
-				enable_assert="2"
-				;;
-			--enable-assert=*)
-				enable_assert="$optarg"
-				;;
-			--disable-strip)
-				enable_strip="0"
-				;;
-			--enable-strip)
-				enable_strip="2"
-				;;
-			--enable-strip=*)
-				enable_strip="$optarg"
-				;;
-			--disable-universal)
-				enable_universal="0"
-				;;
-			--enable-universal)
-				enable_universal="2"
-				;;
-			--enable-universal=*)
-				enable_universal="$optarg"
-				;;
-			--disable-osx-g5)
-				enable_osx_g5="0"
-				;;
-			--enable-osx-g5)
-				enable_osx_g5="2"
-				;;
-			--enable-osx-g5=*)
-				enable_osx_g5="$optarg"
-				;;
+			--enable-debug)               enable_debug="1";;
+			--enable-debug=*)             enable_debug="$optarg";;
+			--enable-profiling)           enable_profiling="1";;
+			--enable-profiling=*)         enable_profiling="$optarg";;
+			--enable-dedicated)           enable_dedicated="1";;
+			--enable-dedicated=*)         enable_dedicated="$optarg";;
+			--enable-network=*)           enable_network="$optarg";;
+			--disable-network)            enable_network="0";;
+			--disable-static)             enable_static="0";;
+			--enable-static)              enable_static="2";;
+			--enable-static=*)            enable_static="$optarg";;
+			--disable-translator)         enable_translator="0";;
+			--enable-translator)          enable_translator="2";;
+			--enable-translator=*)        enable_translator="$optarg";;
+			--disable-assert)             enable_assert="0";;
+			--enable-assert)              enable_assert="2";;
+			--enable-assert=*)            enable_assert="$optarg";;
+			--disable-strip)              enable_strip="0";;
+			--enable-strip)               enable_strip="2";;
+			--enable-strip=*)             enable_strip="$optarg";;
+			--disable-universal)          enable_universal="0";;
+			--enable-universal)           enable_universal="2";;
+			--enable-universal=*)         enable_universal="$optarg";;
+			--disable-osx-g5)             enable_osx_g5="0";;
+			--enable-osx-g5)              enable_osx_g5="2";;
+			--enable-osx-g5=*)            enable_osx_g5="$optarg";;
 
-			--with-sdl)
-				with_sdl="2"
-				;;
-			--without-sdl)
-				with_sdl="0"
-				;;
-			--with-sdl=*)
-				with_sdl="$optarg"
-				;;
+			--with-sdl)                   with_sdl="2";;
+			--without-sdl)                with_sdl="0";;
+			--with-sdl=*)                 with_sdl="$optarg";;
 
-			--with-cocoa)
-				with_cocoa="2"
-				;;
-			--without-cocoa)
-				with_cocoa="0"
-				;;
-			--with-cocoa=*)
-				with_cocoa="$optarg"
-				;;
+			--with-cocoa)                 with_cocoa="2";;
+			--without-cocoa)              with_cocoa="0";;
+			--with-cocoa=*)               with_cocoa="$optarg";;
 
-			--with-zlib)
-				with_zlib="2"
-				;;
-			--without-zlib)
-				with_zlib="0"
-				;;
-			--with-zlib=*)
-				with_zlib="$optarg"
-				;;
+			--with-zlib)                  with_zlib="2";;
+			--without-zlib)               with_zlib="0";;
+			--with-zlib=*)                with_zlib="$optarg";;
 
-			--with-png)
-				with_png="2"
-				;;
-			--without-png)
-				with_png="0"
-				;;
-			--with-png=*)
-				with_png="$optarg"
-				;;
-			--with-libpng)
-				with_png="2"
-				;;
-			--without-libpng)
-				with_png="0"
-				;;
-			--with-libpng=*)
-				with_png="$optarg"
-				;;
+			--with-png)                   with_png="2";;
+			--without-png)                with_png="0";;
+			--with-png=*)                 with_png="$optarg";;
+			--with-libpng)                with_png="2";;
+			--without-libpng)             with_png="0";;
+			--with-libpng=*)              with_png="$optarg";;
 
-			--with-freetype)
-				with_freetype="2"
-				;;
-			--without-freetype)
-				with_freetype="0"
-				;;
-			--with-freetype=*)
-				with_freetype="$optarg"
-				;;
-			--with-libfreetype)
-				with_freetype="2"
-				;;
-			--without-libfreetype)
-				with_freetype="0"
-				;;
-			--with-libfreetype=*)
-				with_freetype="$optarg"
-				;;
+			--with-freetype)              with_freetype="2";;
+			--without-freetype)           with_freetype="0";;
+			--with-freetype=*)            with_freetype="$optarg";;
+			--with-libfreetype)           with_freetype="2";;
+			--without-libfreetype)        with_freetype="0";;
+			--with-libfreetype=*)         with_freetype="$optarg";;
 
-			--with-fontconfig)
-				with_fontconfig="2"
-				;;
-			--without-fontconfig)
-				with_fontconfig="0"
-				;;
-			--with-fontconfig=*)
-				with_fontconfig="$optarg"
-				;;
-			--with-libfontconfig)
-				with_fontconfig="2"
-				;;
-			--without-libfontconfig)
-				with_fontconfig="0"
-				;;
-			--with-libfontconfig=*)
-				with_fontconfig="$optarg"
-				;;
+			--with-fontconfig)            with_fontconfig="2";;
+			--without-fontconfig)         with_fontconfig="0";;
+			--with-fontconfig=*)          with_fontconfig="$optarg";;
+			--with-libfontconfig)         with_fontconfig="2";;
+			--without-libfontconfig)      with_fontconfig="0";;
+			--with-libfontconfig=*)       with_fontconfig="$optarg";;
 
-			--with-makedepend)
-				with_makedepend="2"
-				;;
-			--without-makedepend)
-				with_makedepend="0"
-				;;
-			--with-makedepend=*)
-				with_makedepend="$optarg"
-				;;
+			--with-makedepend)            with_makedepend="2";;
+			--without-makedepend)         with_makedepend="0";;
+			--with-makedepend=*)          with_makedepend="$optarg";;
 
-			--with-direct-music)
-				with_direct_music="2"
-				;;
-			--without-direct-music)
-				with_direct_music="0"
-				;;
-			--with-direct-music=*)
-				with_direct_music="$optarg"
-				;;
+			--with-direct-music)          with_direct_music="2";;
+			--without-direct-music)       with_direct_music="0";;
+			--with-direct-music=*)        with_direct_music="$optarg";;
 
-			--with-sort)
-				with_sort="2"
-				;;
-			--without-sort)
-				with_sort="0"
-				;;
-			--with-sort=*)
-				with_sort="$optarg"
-				;;
+			--with-sort)                  with_sort="2";;
+			--without-sort)               with_sort="0";;
+			--with-sort=*)                with_sort="$optarg";;
 
-			--with-iconv)
-				with_iconv="2"
-				;;
-			--without-iconv)
-				with_iconv="0"
-				;;
-			--with-iconv=*)
-				with_iconv="$optarg"
-				;;
+			--with-iconv)                 with_iconv="2";;
+			--without-iconv)              with_iconv="0";;
+			--with-iconv=*)               with_iconv="$optarg";;
 
-			--with-midi=*)
-				with_midi="$optarg"
-				;;
-			--with-midi-arg=*)
-				with_midi_arg="$optarg"
-				;;
+			--with-midi=*)                with_midi="$optarg";;
+			--with-midi-arg=*)            with_midi_arg="$optarg";;
 
-			--without-osx-sysroot)
-				with_osx_sysroot="0"
-				;;
-			--with-osx-sysroot)
-				with_osx_sysroot="2"
-				;;
-			--with-osx-sysroot=*)
-				with_osx_sysroot="$optarg"
-				;;
+			--without-osx-sysroot)        with_osx_sysroot="0";;
+			--with-osx-sysroot)           with_osx_sysroot="2";;
+			--with-osx-sysroot=*)         with_osx_sysroot="$optarg";;
 
-			--without-application-bundle)
-				with_applicant_bundle="0"
-				;;
-			--with-application-bundle)
-				with_applicant_bundle="1"
-				;;
-			--with-application-bundle=*)
-				with_applicant_bundle="$optarg"
-				;;
+			--without-application-bundle) with_applicant_bundle="0";;
+			--with-application-bundle)    with_applicant_bundle="1";;
+			--with-application-bundle=*)  with_applicant_bundle="$optarg";;
 
-			CC=* | --CC=*)
-				CC="$optarg"
-				;;
-			CXX=* | --CXX=*)
-				CXX="$optarg"
-				;;
-			CFLAGS=* | --CFLAGS=*)
-				CFLAGS="$optarg"
-				;;
-			LDFLAGS=* | --LDFLAGS=*)
-				LDFLAGS="$optarg"
-				;;
+			CC=* | --CC=*)                CC="$optarg";;
+			CXX=* | --CXX=*)              CXX="$optarg";;
+			CFLAGS=* | --CFLAGS=*)        CFLAGS="$optarg";;
+			LDFLAGS=* | --LDFLAGS=*)      LDFLAGS="$optarg";;
 
-			--ignore-extra-parameters)
-				ignore_extra_parameters="1"
-				;;
+			--ignore-extra-parameters)    ignore_extra_parameters="1";;
 
 			--*)
 				if [ "$ignore_extra_parameters" = "0" ]
