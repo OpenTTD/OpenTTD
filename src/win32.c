@@ -207,7 +207,7 @@ static char *PrintModuleList(char *output)
 
 static const TCHAR _crash_desc[] =
 	_T("A serious fault condition occured in the game. The game will shut down.\n")
-	_T("Please send the crash information and the crash.dmp (if any) to the developers.\n")
+	_T("Please send the crash information and the crash.dmp file (if any) to the developers.\n")
 	_T("This will greatly help debugging. The correct place to do this is http://bugs.openttd.org. ")
 	_T("The information contained in the report is displayed below.\n")
 	_T("Press \"Emergency save\" to attempt saving the game.");
