@@ -1226,7 +1226,7 @@ detect_os() {
 					/sunos/        { print "SUNOS";   exit}
 					/cygwin/       { print "CYGWIN";  exit}
 					/mingw/        { print "MINGW";   exit}
-					/os\/2/        { print "OS2";     exit}
+					/os2/          { print "OS2";     exit}
 		'`
 
 		if [ -z "$os" ]
