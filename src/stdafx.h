@@ -56,9 +56,10 @@
 
 #ifdef __APPLE__
 # include "os/macosx/osx_stdafx.h"
-// make endian swapping use Apple's macros to increase speed
-# define BSWAP32(x) Endian32_Swap(x)
-# define BSWAP16(x) Endian16_Swap(x)
+/* make endian swapping use Apple's macros to increase speed (since it will use hardware swapping if available)
+ * Even though they should return uint16 and uint32, we get warnings if we don't cast those (why?) */
+# define BSWAP32(x) ((uint32)Endian32_Swap(x))
+# define BSWAP16(x) ((uint16)Endian16_Swap(x))
 #else
 # define BSWAP32(x) ((((x) >> 24) & 0xFF) | (((x) >> 8) & 0xFF00) | (((x) << 8) & 0xFF0000) | (((x) << 24) & 0xFF000000))
 # define BSWAP16(x) ((x) >> 8 | (x) << 8)
