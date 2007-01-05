@@ -25,7 +25,7 @@ bool NetworkUDPListen(SOCKET *udp, const uint32 host, const uint16 port, const b
 	struct sockaddr_in sin;
 
 	/* Make sure socket is closed */
-	closesocket(*udp);
+	NetworkUDPClose(udp);
 
 	*udp = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 	if (*udp == INVALID_SOCKET) {
