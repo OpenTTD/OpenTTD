@@ -29,6 +29,7 @@ TTD = !!TTD!!
 TTDS = $(SRC_DIRS:%=%/$(TTD))
 OS = !!OS!!
 OSXAPP = !!OSXAPP!!
+REVISION = !!REVISION!!
 
 RES := $(shell if ! [ -f $(CONFIG_CACHE_SOURCE_LIST) ] || [ -n "`cmp $(CONFIG_CACHE_SOURCE_LIST) $(SOURCE_LIST)`" ]; then cp $(SOURCE_LIST) $(CONFIG_CACHE_SOURCE_LIST); fi )
 
