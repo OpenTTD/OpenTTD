@@ -344,7 +344,7 @@ STR_UNITS_FORCE_METRIC                                          :{COMMA} ton kra
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf over overskud
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf over udbytte
 STR_0155_INCOME_GRAPH                                           :Graf over indkomster
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf over leveret last
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Graf over præstation
@@ -363,7 +363,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du s
 STR_0161_QUIT_GAME                                              :{WHITE}Afslut Spil
 STR_SORT_ORDER_TIP                                              :{BLACK}Vælg sorteringsorden (faldende/stigende)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vælg sorteringskriterie
-STR_SORT_BY                                                     :{BLACK}Sorter efter
+STR_SORT_BY                                                     :{BLACK}Sortér på
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Indbyggertal
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produktion
@@ -384,12 +384,12 @@ STR_SORT_BY_VALUE                                               :Værdi
 STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Værdi af ventende fragt
 STR_SORT_BY_RATING_MAX                                          :Fragtrangering
-STR_ENGINE_SORT_ENGINE_ID                                       :LokomotivID (klassisk sortering)
+STR_ENGINE_SORT_ENGINE_ID                                       :Lokomotiv ID (klassisk)
 STR_ENGINE_SORT_COST                                            :Omkostning
 STR_ENGINE_SORT_POWER                                           :Drivmiddel
 STR_ENGINE_SORT_INTRO_DATE                                      :Introduktionsdato
 STR_ENGINE_SORT_RUNNING_COST                                    :Driftsomkostning
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Drivmiddel/driftsomkostning
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Drivmiddel/omkostninger
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lasteevne
 STR_NO_WAITING_CARGO                                            :{BLACK}Der er ingen fragt af nogen type, der venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg alle faciliteter
@@ -400,7 +400,7 @@ STR_MANAGE_LIST_TIP                                             :{BLACK}Send ins
 STR_REPLACE_VEHICLES                                            :Udskift køretøjer
 STR_SEND_TRAIN_TO_DEPOT                                         :Send til remise
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Send til værksted
-STR_SEND_SHIP_TO_DEPOT                                          :Send til dok
+STR_SEND_SHIP_TO_DEPOT                                          :Send til skibsdok
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Send til hangar
 STR_SEND_FOR_SERVICING                                          :Send til eftersyn
 
@@ -1996,7 +1996,7 @@ STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Antal b
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Antal industrier: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksimalt startlån: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Startrenten: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Køretøjers kørselsomkostning: {ORANGE}{STRING}
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Køretøjers driftsomkostninger: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Byggehastighed for modstandere: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Modstandernes inteligens: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Nedbrud af køretøjer: {ORANGE}{STRING}
@@ -2055,7 +2055,7 @@ STR_683B_HOSTILE                                                :Fjendtlig
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Spiller {COMMA})
-STR_7004_NEW_FACE                                               :{BLACK}Nyt Ansigt
+STR_7004_NEW_FACE                                               :{BLACK}Nyt ansigt
 STR_7005_COLOR_SCHEME                                           :{BLACK}Farvetema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Farvetema:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nyt Farvetema
@@ -2088,10 +2088,10 @@ STR_7021                                                        :{COMPANY}{PLAYE
 STR_7022_INCOME_GRAPH                                           :{WHITE}Indkomst Graf
 STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
-STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf over overskud
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Udbytte Graf
 STR_7026_BANK_BALANCE                                           :{WHITE}Bank balance
 STR_7027_LOAN                                                   :{WHITE}Lån
-STR_MAX_LOAN                                                    :{WHITE}Maks. Lån:  {BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Maks. lån:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Lån {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Tilbagebetal {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -2119,7 +2119,7 @@ STR_7042_NONE                                                   :{WHITE}Ingen
 STR_7043_FACE_SELECTION                                         :{WHITE}Ansigtsvalg
 STR_7044_MALE                                                   :{BLACK}Mand
 STR_7045_FEMALE                                                 :{BLACK}Kvinde
-STR_7046_NEW_FACE                                               :{BLACK}Nyt Ansigt
+STR_7046_NEW_FACE                                               :{BLACK}Nyt ansigt
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Annuller nyt valg af ansigt
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Accepter nyt ansigtsvalg
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Vælg mandlige ansigter
@@ -2136,7 +2136,7 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Selskabs
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportselskab i vanskeligheder!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} vil blive erklæret bankerupt eller solgt hvis ikke ydelsen stiger snart!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} vil blive erklæret konkurs eller solgt, hvis ikke ydelsen stiger snart!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Direktør)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Fussion mellem transportselskaber!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} er blevet solgt til {COMPANY} for {CURRENCY}!
@@ -2490,13 +2490,13 @@ STR_8806_GO_TO                                                  :Gå til {STATIO
 STR_8807_GO_TO_TRANSFER                                         :Gå til {STATION} (Overfør og tag gods)
 STR_8808_GO_TO_UNLOAD                                           :Gå til {STATION} (Aflæs)
 STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Gå til {STATION} (Overfør og efterlad tom)
-STR_880A_GO_TO_LOAD                                             :Gå til {STATION} (Fuld Last)
+STR_880A_GO_TO_LOAD                                             :Gå til {STATION} (Fuld last)
 STR_880B_GO_TO_TRANSFER_LOAD                                    :Gå til {STATION} (Overfør og vent på fuld last)
 STR_880C_GO_NON_STOP_TO                                         :Gå uden stop til {STATION}
 STR_880D_GO_TO_NON_STOP_TRANSFER                                :Gå uden stop til {STATION} (Overfør og tag gods)
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Gå uden stop til {STATION} (Aflæs)
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Gå uden stop til {STATION} (Overfør og efterlad tom)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Gå uden stop til {STATION} (Fuld Last)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Gå uden stop til {STATION} (Fuld last)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Gå uden stop til {STATION} (Overfør og vent på fuld last)
 STR_GO_TO_TRAIN_DEPOT                                           :Gå til {TOWN} remise
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN} remise
@@ -2539,7 +2539,7 @@ STR_8823_SKIP                                                   :{BLACK}Spring o
 STR_8824_DELETE                                                 :{BLACK}Slet
 STR_8825_NON_STOP                                               :{BLACK}Uden stop
 STR_8826_GO_TO                                                  :{BLACK}Gå til
-STR_8827_FULL_LOAD                                              :{BLACK}Fuld Last
+STR_8827_FULL_LOAD                                              :{BLACK}Fuld last
 STR_8828_UNLOAD                                                 :{BLACK}Aflæs
 STR_REFIT                                                       :{BLACK}Ombyg
 STR_REFIT_TIP                                                   :{BLACK}Vælg hvilken lasttype der skal ombygges til i denne ordre. CTRL+klik for at fjerne ombygningsinstruktion
@@ -2597,12 +2597,12 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Lav den 
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Indsæt en ny ordre før den markerede eller ved slutningen af ordrelisten
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den markerede ordre til at tvinge toget til at vente på en fuld last
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den markerede ordre til at tvinge toget til at aflæsse
-STR_SERVICE_HINT                                                :{BLACK}Spring denne ordre over hvis der ikke er behov for service
+STR_SERVICE_HINT                                                :{BLACK}Spring denne ordre over medmindre der er behov for service
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Ny {STRING} tilgængelig nu!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_S}  {BLACK}Styrke: {LTBLUE}{POWER}{BLACK} Maks. hastighed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hastighed: {LTBLUE}{VELOCITY} {BLACK}Maks. trækkraft: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Udbytte i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
@@ -2619,7 +2619,7 @@ STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan ikke
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Omdøb tog-/togvognstypen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikke omdøbe tog-/togvognstypen...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den valgte ordre til at tvinge køretøjet til at smide lasten
-STR_886F_TRANSFER                                               :{BLACK}Transfer
+STR_886F_TRANSFER                                               :{BLACK}Overfør
 
 STR_TRAIN_STOPPING                                              :{RED}Stopper
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopper, {VELOCITY}
@@ -2637,7 +2637,7 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nye kør
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Byg køretøj
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge køretøj...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_900E_MAX_SPEED                                              :{BLACK}Maks. hastighed: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Udbytte i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
@@ -2669,7 +2669,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Liste ov
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Byg det markerede køretøj
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nyt køretøj er tilgængeligt!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pris: {CURRENCY}{}Hastighed: {VELOCITY}{}Kørselsomkostning: {CURRENCY}/år{}Kapacitet: {CARGO}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pris: {CURRENCY}{}Hastighed: {VELOCITY}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Giv køretøjet et navn
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan ikke give køretøjet et navn...
@@ -2684,8 +2684,8 @@ STR_9034_RENAME                                                 :{BLACK}Omdøb
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Omdøb køretøjstypen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Omdøb køretøjstypen
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikke omdøbe køretøjstypen...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Gå til {TOWN} Værksted
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service i {TOWN} Værksted
+STR_9038_GO_TO_ROADVEH_DEPOT                                    :Gå til {TOWN} værksted
+STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service i {TOWN} værksted
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Ombyg vejkøretøj til at laste en anden type last
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Ombyg lastbil
@@ -2697,7 +2697,7 @@ STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg la
 STR_9800_DOCK_CONSTRUCTION                                      :Havnekonstruktion
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Havnekonstruktion
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kan ikke bygge en havn her...
-STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Skibsdok
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} skibsdok
 STR_9804_NEW_SHIPS                                              :{BLACK}Nye skibe
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Skibe
 STR_9808_NEW_SHIPS                                              :{WHITE}Nye skibe
@@ -2711,7 +2711,7 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikke
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Der er et skib i vejen
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_9813_MAX_SPEED                                              :{BLACK}Maks. hastighed: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Udbytte i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
@@ -2742,7 +2742,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send ski
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Vis detaljer omkring skibet
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nyt skib er tilgængeligt!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks. hastighed: {VELOCITY}{}Kapacitet: {CARGO}{}Kørselsomkostning: {CURRENCY}/år
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks. hastighed: {VELOCITY}{}Kapacitet: {CARGO}{}Driftsomkostninger: {CURRENCY}/år
 STR_982F_NAME_SHIP                                              :{BLACK}Giv skibet et navn
 
 STR_9831_NAME_SHIP                                              :{WHITE}Giv skibet et navn
@@ -2764,12 +2764,12 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapac
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
 STR_9842_REFITTABLE                                             :(ombygning mulig)
 STR_GO_TO_SHIP_DEPOT                                            :Sejl til {TOWN} skibsdok
-SERVICE_AT_SHIP_DEPOT                                           :Service i {TOWN} Skibsdok
+SERVICE_AT_SHIP_DEPOT                                           :Service i {TOWN} skibsdok
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Lufthavne
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Kan ikke bygge en lufthavn her...
-STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Flyhangar
+STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} flyhangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nyt fly
 STR_CLONE_AIRCRAFT                                              :{BLACK}Klon fly
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Dette vil bygge en kopi af et fly. Control-click vil dele ordre
@@ -2781,7 +2781,7 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Ordre)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_A00E_MAX_SPEED                                              :{BLACK}Maks. hastighed: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Udbytte i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
@@ -2816,7 +2816,7 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send fly
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Vis detaljet omkring flyet
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nyt fly tilgængeligt!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks. hastighed: {VELOCITY}{}Kapacitet: {COMMA} passagerer, {COMMA} sække post{}Kørselsomkostning: {CURRENCY}/år
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks. hastighed: {VELOCITY}{}Kapacitet: {COMMA} passagerer, {COMMA} sække post{}Driftsomkostninger: {CURRENCY}/år
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Navngiv flyet
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Kan ikke navngive flyet...
@@ -2863,7 +2863,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Køretøjer:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationer:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. udbytte:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Minimum indkomst:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. indkomst:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Maks. indtægt:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Afleveret:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Last:
@@ -3021,7 +3021,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Vægt: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighed: {GOLD}{VELOCITY}{BLACK}   Styrke: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighed: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Kørselsudgift: {GOLD}{CURRENCY}/år
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftsomkostninger: {GOLD}{CURRENCY}/år
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Lasteevne: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designet: {GOLD}{NUM}{BLACK} Levealder: {GOLD}{COMMA} år
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. pålidelighed: {GOLD}{COMMA}%

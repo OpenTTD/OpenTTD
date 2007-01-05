@@ -1629,7 +1629,40 @@ STR_7080_PROTECTED                                              :{WHITE}Ova tvrk
 
 
 ##id 0x8000
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (Električni)
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Električni)
+STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Električni)
+STR_801B_PASSENGER_CAR                                          :Putnički prijevoz
+STR_8036_X2001_ELECTRIC                                         :'X2001' (Električni)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Električni)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8039_PASSENGER_CAR                                          :Putnički prijevoz
+STR_803C_OIL_TANKER                                             :Naftni tanker
+STR_8043_ARMORED_VAN                                            :Oklopno vozilo
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Električni)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (Električni)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Električni)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Električni)
+STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
 STR_8063_ARMORED_VAN                                            :Oklopno vozilo
+STR_8074_MPS_REGAL_BUS                                          :MPS Regal Bus
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard Bus
+STR_8076_FOSTER_BUS                                             :Foster Bus
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII Superbus
+STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI Bus
+STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII Bus
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII Bus
+STR_80D7_SAMPSON_U52                                            :Sampson U52
+STR_80D8_COLEMAN_COUNT                                          :Coleman Count
+STR_80D9_FFP_DART                                               :FFP Dart
+STR_80DA_YATE_HAUGAN                                            :Yate Haugan
+STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :Bakewell Cotswald LB-3
+STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :Bakewell Luckett LB-8
+STR_80DD_BAKEWELL_LUCKETT_LB_9                                  :Bakewell Luckett LB-9
+STR_80DE_BAKEWELL_LUCKETT_LB80                                  :Bakewell Luckett LB80
+STR_80DF_BAKEWELL_LUCKETT_LB_10                                 :Bakewell Luckett LB-10
+STR_80E0_BAKEWELL_LUCKETT_LB_11                                 :Bakewell Luckett LB-11
+STR_80E1_YATE_AEROSPACE_YAC_1_11                                :Yate Aerospace YAC 1-11
 STR_80E2_DARWIN_100                                             :Darwin 100
 STR_80E3_DARWIN_200                                             :Darwin 200
 STR_80E4_DARWIN_300                                             :Darwin 300
@@ -1660,6 +1693,8 @@ STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizze
 STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helicopter
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helicopter
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Poruka od proizvođača vozila
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Upravo smo dizajnirani novi {STRING} - jeste li zainteresirani za jednogodišnje isključivo pravo uporabe ovog vozila, tako da vidimo kako se vozilo ponaša prije nego što postane univerzalno dostupno?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :željeznička lokomotiva
 STR_8103_ROAD_VEHICLE                                           :cestovno vozilo
 STR_8104_AIRCRAFT                                               :zrakoplov
@@ -1668,7 +1703,9 @@ STR_8106_MONORAIL_LOCOMOTIVE                                    :monorail lokomo
 STR_8107_MAGLEV_LOCOMOTIVE                                      :maglev lokomotiva
 
 ##id 0x8800
-STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Spremište vlakova
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi vlak stiže na {STATION}!
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalji)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na putu
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
@@ -1676,16 +1713,17 @@ STR_8806_GO_TO                                                  :Idi do {STATION
 STR_8807_GO_TO_TRANSFER                                         :Idi do {STATION} (Transferiraj i preuzmi teret)
 STR_8808_GO_TO_UNLOAD                                           :Idi do {STATION} (Istovar)
 STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Go to {STATION} (Transferiraj i otiđi prazan)
-STR_880A_GO_TO_LOAD                                             :Idi do{STATION} (Ukrcaj)
+STR_880A_GO_TO_LOAD                                             :Idi do{STATION} (Utovar)
 STR_880B_GO_TO_TRANSFER_LOAD                                    :Idi do {STATION} (Transferiraj i pričekaj puni utovar)
 STR_880C_GO_NON_STOP_TO                                         :Idi non-stop do {STATION}
 STR_880D_GO_TO_NON_STOP_TRANSFER                                :Idi non-stop do {STATION} (Transferiraj i preuzmi teret)
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Idi non-stop do {STATION} (Istovar)
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Idi non-stop do {STATION} (Transferiraj i otiđi prazan)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Idi non-stop do{STATION} (Ukrcaj)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Idi non-stop do{STATION} (Utovar)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Idi non-stop do {STATION} (Transferiraj i pričekaj puni utovar)
 STR_GO_TO_TRAIN_DEPOT                                           :Idi do {TOWN} spremište vlakova
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Servisiraj u {TOWN} spremištu vlakova
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idi non-stop do {TOWN} spremišta vlakova
 
 
 
@@ -1698,7 +1736,11 @@ STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak predugačak
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlakovi mogu biti izmjenjeni jedino kad su zaustavljeni u spremištu
 
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nova željeznička vozila
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nova monorail vozila
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nova maglev vozila
 
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Izgradi vozilo
 STR_CLONE_TRAIN                                                 :{BLACK}Kloniraj vlak
 STR_8820_RENAME                                                 :{BLACK}Preimenuj
 STR_8823_SKIP                                                   :{BLACK}Preskoči
@@ -1708,27 +1750,144 @@ STR_8826_GO_TO                                                  :{BLACK}Idi do
 STR_8827_FULL_LOAD                                              :{BLACK}Puni utovar
 STR_8828_UNLOAD                                                 :{BLACK}Istovar
 STR_REFIT                                                       :{BLACK}Prenamijeni
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Naredbe)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Kraj naredbi - -
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ne mogu izgraditi željezničko vozilo...
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Izgrađen: {LTBLUE}{NUM}{BLACK} Vrijednost: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Vrijednost: {LTBLUE}{CURRENCY}
+STR_882E                                                        :{WHITE}{VEHICLE}
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Utovar / Istovar
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Ne mogu poslati vlak u spremište...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nema mjesta za nove naredbe
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Previše naredbi
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Ne možeš ubaciti novu naredbu...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Ne možeš obrisati ovu naredbu...
-STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Can't modify this order...
-STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ne možeš micati vozilo...
+STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Ne možeš izmjeniti ovu naredbu...
+STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ne možeš pomaknuti vozilo...
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Ne možeš prodati željezničko vozilo
-STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Ne može pronaći put do lokalnog servisa
+STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Ne može pronaći put do lokalnog spremišta
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Ne možeš zaustaviti/pokrenuti vlak...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Interval servisiranja: {LTBLUE}{COMMA}dana{BLACK}   Zadnji servis: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Servisni interval: {LTBLUE}{COMMA}dana{BLACK}   Zadnji servis: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlakovi - klikni na vlak za informacije
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Izgradi/kupi nove vlakove (potreban servis)
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Izgradi/kupi nove vlakove (zahtijeva spremište vlakova)
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlakovi - klikni na vlak za informacije., vuci vozilo kako bi dodao/oduzeo od vlaka
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Prikaži detalje vlaka
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Povećaj servisni interval
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Smanji servisni interval
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokaži detalje prevoženog tereta
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenutnu naredbu i počni sa sljedećom
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Obriši označenu naredbu
+STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Novi {STRING} od sada dostupan!
+STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
+STR_885C_BROKEN_DOWN                                            :{RED}Pokvaren
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Troškovi uporabe: {LTBLUE}{CURRENCY}/god
 
 
 
 ##id 0x9000
+STR_9007_BUILD_VEHICLE                                          :{BLACK}Izgradi vozilo
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ne mogu izgraditi cestovno vozilo...
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detalji)
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Trošak uporabe {LTBLUE}{CURRENCY}/god
+STR_900E_MAX_SPEED                                              :{BLACK}Maks brzina: {LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zarada ove godine: {LTBLUE}{CURRENCY}  (prošle godine: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pouzdanost: {LTBLUE}{COMMA}%  {BLACK}Kvarovi od posljednjeg servisa: {LTBLUE}{COMMA}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Izgrađen: {LTBLUE}{NUM}{BLACK} Vrijednost: {LTBLUE}{CURRENCY}
+STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...mora biti zaustavljen unutar spremišta cestovnih vozila
+STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ne mogu prodati cestovno vozilo...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ne mogu zaustaviti/pokrenuti cestovno vozilo...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Cestovno vozilo {COMMA} čeka u spremištu
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Kreće se prema {TOWN} cestovnom spremištu
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Kreće se prema {TOWN} cestovnom spremištu, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servisiranje u {TOWN} cestovnom spremištu
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Seervisiranje u {TOWN} cestovnom spremištu, {VELOCITY}
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ne mogu poslati vozilo u spremište...
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne mogu pronaći lokalno spremište
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Cestovna vozila - klikni na vozilo za informacije
+STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Izgradi nova cestovna vozila (zahtijeva spremište cestovnih vozila)
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Trenutna radnja vozila - klikni ovdje kako bi zaustavio/pokrenuo vozilo
+STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Prikaži naredbe vozila
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centriraj glavni pogled na lokaciju vozila
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Pošalji vozilo u spremište. CTRL+klik će samo servisirati
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Natjeraj vozila da se okrene natrag
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Prikaži detalje cestovnog vozila
+STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Vozila - klikni na vozilo za informaciju
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Izgradi novo cestovno vozilo
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Povuci cestovno vozilo ovdje kako bi ga prodao
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centriraj glavni pogled na lokaciju spremišta cestovnih vozila
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Popis cestovnih vozila - klikni na vozilo za informacije
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Izgradi označeno cestovno vozilo
+STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Novo cestovno vozilo od sada dostupno!
+STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Trošak: {CURRENCY}{}Brzina: {VELOCITY}{}Trošak uporabe: {CURRENCY}/god{}Kapacitet: {CARGO}
 
+STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Imenuj cestovno vozilo
+STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ne mogu preimenovati cestovno vozilo...
+STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Imenuj cestovno vozilo
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi bus stiže na {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi kamion stiže na {STATION}!
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Sudar cestovnog vozila!{}Vozač poginuo u eksploziji nakon sudara s vlakom
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Sudar cestovnog vozila!{}{COMMA} poginulih u eksploziji nakon sudara s vlakom
+STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Ne mogu natjerati vozilo da se okrene...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Ne mogu okreniti vozila koja se sastoje od više jedinica
+STR_9034_RENAME                                                 :{BLACK}Preimenuj
+STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Preimenuj vrstu cestovnog vozila
+STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Preimenuj vrstu cestovnog vozila
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Ne mogu preimenovati vrstu cestovnog vozila...
+STR_9038_GO_TO_ROADVEH_DEPOT                                    :Idi prema {TOWN} spremištu cestovnih vozila
+STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servisiranje pri {TOWN} spremištu cestovnih vozila
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Prenamijeni cestovno vozilo za prijevoz druge vrste tereta
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Prenamijeni cestovno vozilo
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Prenamijeni cestovno vozilo za prijevoz druge vrste tereta
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ne mogu prenamijeniti cestovno vozilo...
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izaberi vrstu tereta koje će cestovno vozilo prevoziti
 
 ##id 0x9800
+STR_9800_DOCK_CONSTRUCTION                                      :Izgradnja pristaništa
+STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Izgradnja pristaništa
+STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Ne mogu izgraditi pristanište ovdje...
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Spremište brodova
+STR_9804_NEW_SHIPS                                              :{BLACK}Novi brodovi
+STR_9808_NEW_SHIPS                                              :{WHITE}Novi brodovi
+STR_9809_BUILD_SHIP                                             :{BLACK}Izgradi brod
+STR_CLONE_SHIP                                                  :{BLACK}Kloniraj brod
+STR_CLONE_SHIP_INFO                                             :{BLACK}Ovo će izgradi kopiju broda. Control-klik će doprinijeti dijeljenju naredbi
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Brod mora biti zaustavljen u spremištu
+STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Ne mogu prodati brod...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ne mogu izgraditi brod...
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Brod smeta
+STR_980F                                                        :{WHITE}{VEHICLE}
+STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detalji)
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Trošak uporabe: {LTBLUE}{CURRENCY}/god
+STR_9813_MAX_SPEED                                              :{BLACK}Maks brzina: {LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zarada ove godine: {LTBLUE}{CURRENCY}  (prošle godine: {CURRENCY})
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pouzdanost: {LTBLUE}{COMMA}%  {BLACK}Kvarova od posljednjeg servisa: {LTBLUE}{COMMA}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Izgrađeno: {LTBLUE}{NUM}{BLACK} Vrijednost: {LTBLUE}{CURRENCY}
+STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
+STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ne mogu pokrenuti/zaustaviti brod...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ne mogu poslati brod u skladište...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ne mogu naći lokalno spremište
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Kreće se prema {TOWN} spremištu brodova
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Kreće se prema {TOWN} spremištu brodova, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servisiranje u {TOWN} spremištu brodova
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisiranje u {TOWN} spremištu brodova, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Brod {COMMA} čeka u spremištu
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Izgradi brodsko pristanište
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Izgradi spremište brodova (za gradnu i servisiranje brodova)
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Brodovi - klikni na brod za informacije
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Izgradi novi brod
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Povuci brod ovdje kako bi ga prodao
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centriraj glavni pogled na lokaciju spremišta brodova
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Brodovi - klikni na brod za informacije
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Izgradi nove brodove (zahtijeva spremište brodova)
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Popis brodova - klikni na brod za informacije
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Izgradi označeni brod
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Trenutna radnja broda - klikni ovdje za zaustavljanje/pokretanje broda
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Prikaži naredbe broda
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centriraj glavni pogled na lokaciju broda
 
 SERVICE_AT_SHIP_DEPOT                                           :Servis u brodskom spremištu grada {TOWN}
 
