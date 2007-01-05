@@ -32,7 +32,7 @@ typedef unsigned long in_addr_t;
 #endif /* WIN32 */
 
 /* UNIX stuff */
-#if defined(UNIX)
+#if defined(UNIX) && !defined(__OS2__)
 #	define SOCKET int
 #	define INVALID_SOCKET -1
 #	if !defined(__MORPHOS__) && !defined(__AMIGA__)
