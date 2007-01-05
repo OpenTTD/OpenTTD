@@ -2282,6 +2282,7 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaki so
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Vlak{P "" a i ov}
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nova zelezniska vozila
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nova elektricna tirna vozila
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nova enotirna vozila
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nova magnetna vozila
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Železniška vozila
@@ -2300,13 +2301,19 @@ STR_8825_NON_STOP                                               :{BLACK}Brez pre
 STR_8826_GO_TO                                                  :{BLACK}Pojdi do
 STR_8827_FULL_LOAD                                              :{BLACK}Nalozi polno
 STR_8828_UNLOAD                                                 :{BLACK}Raztovori
+STR_REFIT                                                       :{BLACK}Predelaj
+STR_REFIT_TIP                                                   :{BLACK}Izberi predelavo za vrsto tovora, ki ga zelis. CTRL in klik za odstranitev ukaza predelave
+STR_REFIT_ORDER                                                 :(Predelaj za {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Navodila)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Konec ukazov - -
+STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
+STR_SERVICE                                                     :{BLACK}Servis
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ni mogoce kupiti vozila ...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zgrajeno: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Vrednost: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Natovarjanje / Raztovarjanje
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak mora biti ustavljen v garazi
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Vlaka ni mogoce poslati v garazo ...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ni vec prostora za ukaze
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Prevec ukazov
@@ -2314,11 +2321,13 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Ni mogoc
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Ni mogoce izbrisati ukaza ...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Ni mogoce spreminjati ukaza ...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ni mogoce premakniti vozila ...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadnja lokomotiva vedno sledi prvi
 STR_8838_N_A                                                    :Ni na voljo{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Vlaka ni mogoce prodati ...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Ni mogoce najti poti do najblizje garaze
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Ni mogoce ustaviti/zagnati vlaka ...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}IObdobje servisiranja: {LTBLUE}{COMMA}dni{BLACK}   Zadnji servis: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Obdobje servisiranja: {LTBLUE}{COMMA}%{BLACK}   Zadnji servis: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaki - kliknite na vlak za informacije
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Zgradi nove vlake (zahteva zeleznisko garazo)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaki - kliknite na vlak za informacije, povlecite vozilo za dodajanje/odstranjevanje iz vlaka
@@ -2348,6 +2357,7 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaci i
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vstavi nov ukaz pred izbranega ali pa ga dodaj na koncu seznama
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaci izbran ukaz, naj vozilo caka na polno obremenitev
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaci izbran ukaz, naj se vozilo v celoti raztovori
+STR_SERVICE_HINT                                                :{BLACK}Preskoci ta ukaz, razen ce je potreben servis
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nov {STRING} je sedaj na voljo!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}V okvari
@@ -2371,6 +2381,7 @@ STR_886F_TRANSFER                                               :{BLACK}Prenos
 
 STR_TRAIN_STOPPING                                              :{RED}Ustavljam
 STR_TRAIN_STOPPING_VEL                                          :{RED}Ustavljam, {VELOCITY}
+STR_TRAIN_START_NO_CATENARY                                     :Ta proga nima vodov napetosti, zato vlak ne more z mesta
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestno vozilo na poti
