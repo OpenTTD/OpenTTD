@@ -1301,12 +1301,7 @@ detect_sdl() {
 
 	if [ "$with_sdl" = "1" ] || [ "$with_sdl" = "" ] || [ "$with_sdl" = "2" ]
 	then
-		if [ "$os" = "FREEBSD" ]
-		then
-			sdl_config="sdl11-config"
-		else
-			sdl_config="sdl-config"
-		fi
+		sdl_config="sdl-config"
 	else
 		sdl_config="$with_sdl"
 	fi
