@@ -516,7 +516,7 @@ check_params() {
 				log 1 "checking OSX sysroot... no (use system default)"
 				with_osx_sysroot="0"
 			else
-				log 1 "checking OSX sysroot... automaticly"
+				log 1 "checking OSX sysroot... automatically"
 				with_osx_sysroot="3"
 			fi
 		fi
@@ -1734,7 +1734,7 @@ detect_sort() {
 make_sed() {
 	# We check here if we are PPC, because then we need to enable FOUR_BYTE_BOOL
 	#  We do this here, and not sooner, so universal builds also have this
-	#  automaticly correct
+	#  automatically correct
 	# FOUR_BYTE_BOOL is needed, because C++ uses 4byte for a bool on PPC, where
 	#  we use 1 byte per bool normally in C part. So convert that last one to 4
 	#  bytes too, but only for PPC.
