@@ -12,6 +12,63 @@
 
 /**
  * @file udp.h Basic functions to receive and send UDP packets.
+ *
+ *
+ * *** Requesting game information from a server ***
+ *
+ * This describes the on-the-wire structure of the request and reply
+ * packet of the NetworkGameInfo (see game.h) data.
+ *
+ * --- Points of attention ---
+ *  - all > 1 byte integral values are written in little endian,
+ *    unless specified otherwise.
+ *      Thus, 0x01234567 would be sent as {0x67, 0x45, 0x23, 0x01}.
+ *  - all sent strings are of variable length and terminated by a '\0'.
+ *      Thus, the length of the strings is not sent.
+ *  - years that are leap years in the 'days since X' to 'date' calculations:
+ *     (year % 4 == 0) and ((year % 100 != 0) or (year % 400 == 0))
+ *
+ * --- Request ---
+ * Bytes:  Description:
+ *   2       size of the whole packet, in this case 3
+ *   1       type of packet, in this case PACKET_UDP_CLIENT_FIND_SERVER (0)
+ * This packet would look like: { 0x03, 0x00, 0x00 }
+ *
+ * --- Reply ---
+ * Version: Bytes:  Description:
+ *   all      2       size of the whole packet
+ *   all      1       type of packet, in this case PACKET_UDP_SERVER_RESPONSE (1)
+ *   all      1       the version of this packet's structure
+ *
+ *   4+       1       number of GRFs attached (n)
+ *   4+       n * 20  unique identifier for GRF files. Constists of:
+ *                     - one 4 byte variable with the GRF ID
+ *                     - 16 bytes (sent sequentially) for the MD5 checksum
+ *                       of the GRF
+ *
+ *   3+       4       current game date in days since 1-1-0 (DMY)
+ *   3+       4       game introduction date in days since 1-1-0 (DMY)
+ *
+ *   2+       1       maximum number of companies allowed on the server
+ *   2+       1       number of companies on the server
+ *   2+       1       maximum number of spectators allowed on the server
+ *
+ *   1+       var     string with the name of the server
+ *   1+       var     string with the revision of the server
+ *   1+       1       the language run on the server
+ *                    (0 = any, 1 = English, 2 = German, 3 = French)
+ *   1+       1       whether the server uses a password (0 = no, 1 = yes)
+ *   1+       1       maximum number of clients allowed on the server
+ *   1+       1       number of clients on the server
+ *   1+       1       number of spectators on the server
+ *   1 & 2    2       current game date in days since 1-1-1920 (DMY)
+ *   1 & 2    2       game introduction date in days since 1-1-1920 (DMY)
+ *   1+       var     string with the name of the map
+ *   1+       2       width of the map in tiles
+ *   1+       2       height of the map in tiles
+ *   1+       1       type of map:
+ *                    (0 = temperate, 1 = arctic, 2 = desert, 3 = toyland)
+ *   1+       1       whether the server is dedicated (0 = no, 1 = yes)
  */
 
 ///** Sending/receiving of UDP packets **////

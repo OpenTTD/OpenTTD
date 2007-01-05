@@ -175,6 +175,8 @@ void NetworkSend_NetworkGameInfo(Packet *p, const NetworkGameInfo *info)
 	 * The parts must be read in the same order as they are sent!
 	 */
 
+	/* Update the documentation in udp.h on changes
+	 * to the NetworkGameInfo wire-protocol! */
 
 	/* NETWORK_GAME_INFO_VERSION = 4 */
 	{
@@ -235,6 +237,9 @@ void NetworkRecv_NetworkGameInfo(NetworkClientState *cs, Packet *p, NetworkGameI
 	 *              Please observe the order.
 	 * The parts must be read in the same order as they are sent!
 	 */
+
+	/* Update the documentation in udp.h on changes
+	 * to the NetworkGameInfo wire-protocol! */
 
 	switch (info->game_info_version) {
 		case 4: {
