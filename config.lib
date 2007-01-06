@@ -620,25 +620,10 @@ make_cflags_and_ldflags() {
 	# LDFLAGS used for HOST
 	LDFLAGS="$LDFLAGS"
 
-	# Each debug level reduces the optimalization by a bit
-	if [ $enable_debug -ge 1 ]
-	then
-		CFLAGS="$CFLAGS -g -D_DEBUG"
-		OBJS_SUBDIR="debug"
-	else
-		OBJS_SUBDIR="release"
-	fi
-	if [ $enable_debug -ge 2 ]
-	then
-		CFLAGS="$CFLAGS -fno-inline"
-	fi
-	if [ $enable_debug -ge 3 ]
-	then
-		CFLAGS="$CFLAGS -O0"
-	fi
 	if [ $enable_debug = 0 ]
 	then
 		# No debug, add default stuff
+		OBJS_SUBDIR="release"
 		if [ "$os" = "OSX" ]
 		then
 			# these compilerflags makes the app run as fast as possible without making the app unstable. It works on G3 or newer
@@ -652,18 +637,30 @@ make_cflags_and_ldflags() {
 
 			CFLAGS="$CFLAGS -O2 -fomit-frame-pointer"
 		fi
-
-		if [ "$enable_profiling" != "0" ]
-		then
-			CFLAGS="$CFLAGS -pg"
-			LDFLAGS="$LDFLAGS -pg"
-		fi
 	else
-		if [ "$enable_profiling" != "0" ]
+		OBJS_SUBDIR="debug"
+
+		# Each debug level reduces the optimalization by a bit
+		if [ $enable_debug -ge 1 ]
 		then
-			CFLAGS="$CFLAGS -p"
-			LDFLAGS="$LDFLAGS -pg"
+			CFLAGS="$CFLAGS -g -D_DEBUG"
 		fi
+		if [ $enable_debug -ge 2 ]
+		then
+			CFLAGS="$CFLAGS -fno-inline"
+		fi
+		if [ $enable_debug -ge 3 ]
+		then
+			CFLAGS="$CFLAGS -O0"
+		else
+			CFLAGS="$CFLAGS -O2"
+		fi
+	fi
+
+	if [ "$enable_profiling" != "0" ]
+	then
+		CFLAGS="$CFLAGS -p"
+		LDFLAGS="$LDFLAGS -pg"
 	fi
 
 	# Enable some things only for certain GCC versions
@@ -671,7 +668,7 @@ make_cflags_and_ldflags() {
 
 	if [ $cc_version -ge 29 ]
 	then
-		CFLAGS="$CFLAGS -O -Wall -Wno-multichar -Wsign-compare -Wundef"
+		CFLAGS="$CFLAGS -Wall -Wno-multichar -Wsign-compare -Wundef"
 		CFLAGS="$CFLAGS -Wwrite-strings -Wpointer-arith"
 
 		CC_CFLAGS="$CC_CFLAGS -Wstrict-prototypes"

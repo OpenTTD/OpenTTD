@@ -6,7 +6,7 @@
 #ifdef ENABLE_NETWORK
 
 /** DNS hostname of the masterserver */
-#define NETWORK_MASTER_SERVER_HOST "master.openttd.org"
+#define NETWORK_MASTER_SERVER_HOST "localhost"
 /** Message sent to the masterserver to 'identify' this client as OpenTTD */
 #define NETWORK_MASTER_SERVER_WELCOME_MESSAGE "OpenTTDRegister"
 

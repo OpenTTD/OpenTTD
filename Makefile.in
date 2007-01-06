@@ -97,7 +97,7 @@ run: all
 
 %.o:
 	@for dir in $(SRC_DIRS); do \
-		$(MAKE) -C $$dir $@; \
+		$(MAKE) -C $$dir $(@:src/%=%); \
 	done
 
 %.lng:
