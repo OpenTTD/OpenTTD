@@ -1144,7 +1144,7 @@ STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Usa YAP
 STR_TEMPERATE_LANDSCAPE                                         :Paesaggio 'temperato'
 STR_SUB_ARCTIC_LANDSCAPE                                        :Paesaggio 'sub-artico'
 STR_SUB_TROPICAL_LANDSCAPE                                      :Paesaggio 'sub-tropicale'
-STR_TOYLAND_LANDSCAPE                                           :paesaggio 'Città dei Giocattoli'
+STR_TOYLAND_LANDSCAPE                                           :Paesaggio 'Città dei Giocattoli'
 
 STR_CHEATS                                                      :{WHITE}Trucchi
 STR_CHEATS_TIP                                                  :{BLACK}Le caselle indicano se hai già utilizzato questo trucco in passato

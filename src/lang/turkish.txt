@@ -396,7 +396,7 @@ STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm tü
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Bu araç türü için mümkün olan lokomotif tasarimlari
 STR_MANAGE_LIST                                                 :{BLACK}Listeyi yönet
-STR_MANAGE_LIST_TIP                                             :{BLACK}Listedeki tüm araçlara komut ver
+STR_MANAGE_LIST_TIP                                             :{BLACK}Listedeki tüm araçlara talimat ver
 STR_REPLACE_VEHICLES                                            :Araçları Değiştir
 STR_SEND_TRAIN_TO_DEPOT                                         :Gara Gönder
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Garaja Gönder
@@ -2542,9 +2542,10 @@ STR_8826_GO_TO                                                  :{BLACK}Git
 STR_8827_FULL_LOAD                                              :{BLACK}Doldur
 STR_8828_UNLOAD                                                 :{BLACK}Boşalt
 STR_REFIT                                                       :{BLACK}Modifiye
+STR_REFIT_TIP                                                   :{BLACK}Bu talimatta değiştirilecek kargo türünü seçin. Değiştirmeyi kaldırmak için CTRL ile tıklayın
 STR_REFIT_ORDER                                                 :(Moifiye ile > {STRING})
-STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Komutlar)
-STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Komutların Sonu - -
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Talimatlar)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Talimatların Sonu - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Bakım
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Tren satın alınamaz...
@@ -2589,13 +2590,13 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Taşına
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Trenin ayrıntıları
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Her aracın kapasitesi
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Trenin kargo türlerine ayrilmis toplam kapasitesini göster
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Komut listesi - seçmek için komutu tıklayın. CTRL + tıklama istasyona kaydırir
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Şimdiki komutu atlayıp sıradakine geç
-STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Seçili komutu sil
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili komutu durmadan yap
-STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Seçili komutun önüne ya da listenin sonuna komut ekle
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili komutu yaparken tren dolana kadar beklesin
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili komutu yaparken tren mutlaka yükünü boşaltsın
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Talimat listesi - seçmek için komutu tıklayın. CTRL + tıklama istasyona kaydırir
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Şimdiki talimatı atlayıp sıradakine geç
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Seçili talimatı sil
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı durmadan yap
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Seçili talimatın önüne ya da listenin sonuna komut ekle
+STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren dolana kadar beklesin
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren mutlaka yükünü boşaltsın
 STR_SERVICE_HINT                                                :{BLACK}Bakım gerekmiyorsa bunu atla
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Yeni bir araç üretildi: {STRING}
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2655,7 +2656,7 @@ STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Yerel ga
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Arabalar - bilgi için arabaya tıklayın
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Yeni araba al (araba garajı gerekir)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Aracın durumu - durdurmak/başlatmak için tıklayın
-STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Aracın komutlarını görmek için tıklayın
+STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Aracın talimatlarını görmek için tıklayın
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Arabayı göster
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Aracı garaja gönder
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Aracı etrafta dolaşmaya zorla
@@ -2841,7 +2842,7 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Servis: {STATIO
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeplin düştü - {STATION}!
-STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}UFO'ya çarpan araba parçalandı!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}UFO'yla çarpışan araba parçalandı!
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}{TOWN} yakınlarındaki petrol rafinerisi patladı!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}{TOWN} yakınlarındaki fabrika kundaklandı!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}{TOWN} yakınlarına UFO kondu!
@@ -2936,10 +2937,10 @@ STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Uçaklar
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Gemiler
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Komut listesinde bu durak olan trenleri listele
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Komut listesinde bu durak olan arabaları listele
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Komut listesinde bu durak olan uçakları listele
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Komut listesinde bu durak olan gemileri listele
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Talimat listesinde bu durak olan trenleri listele
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Talimat listesinde bu durak olan arabaları listele
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Talimat listesinde bu durak olan uçakları listele
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Talimat listesinde bu durak olan gemileri listele
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} Aracın paylaşılan talimatları
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Aynı talimatlara sahip bütün araçları göster
@@ -3004,6 +3005,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Listedek
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Talimat değiştirme başarısız durduruldu {STRING} {COMMA}
 
 ############ Lists rail types
 

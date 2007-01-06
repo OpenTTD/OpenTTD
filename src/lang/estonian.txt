@@ -1979,8 +1979,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} toodang langes 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Putukate rünnak - {INDUSTRY}!{}Toodang langes 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...saab ainult ehitada kaardi serva
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING.g} toodang ettevõttes {INDUSTRY} langeb {COMMA} võrra%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING.g} toodang ettevõttes {INDUSTRY} langeb {COMMA} võrra%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING.g} toodang ettevõttes {INDUSTRY} langeb {COMMA}% võrra!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING.g} toodang ettevõttes {INDUSTRY} langeb {COMMA}% võrra!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Rong tunnelis
@@ -2154,7 +2154,7 @@ STR_683B_HOSTILE                                                :Vaenulik
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY}{BLACK}{PLAYERNAME}
-STR_7002_PLAYER                                                 :(mängija {COMMA})
+STR_7002_PLAYER                                                 : (mängija {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Uus nägu
 STR_7005_COLOR_SCHEME                                           :{BLACK}Värvivalik
 STR_7006_COLOR_SCHEME                                           :{GOLD}Värvivalik:
@@ -2615,7 +2615,7 @@ STR_8812_EMPTY                                                  :{LTBLUE}Tühi
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} {STATION}'st
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} jaamast {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Rong {COMMA} ootab depoos
-STR_8815_NEW_VEHICLES                                           :{BLACK}Uued veovahendid
+STR_8815_NEW_VEHICLES                                           :{BLACK}Uus rong
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Rong on liiga pikk
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Ronge saab ainult siis muuta kui nad on peatatud depoo sees
@@ -2732,7 +2732,7 @@ STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Maantees
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} maanteesõiduk{P "" it}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Linna {TOWN} maanteesõidukidepoo
-STR_9004_NEW_VEHICLES                                           :{BLACK}Uued transpordivahendid
+STR_9004_NEW_VEHICLES                                           :{BLACK}Uus maanteesõiduk
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Uued maanteesõidukid
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Ehita veovahend
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Maanteesõidukit ei saa ehitada...
