@@ -849,11 +849,11 @@ make_cflags_and_ldflags() {
 
 	if [ -n "$with_midi" ]
 	then
-		CFLAGS="$CFLAGS -DEXTERNAL_PLAYER=\"$with_midi\""
+		CFLAGS="$CFLAGS -DEXTERNAL_PLAYER=\\\\\"$with_midi\\\\\""
 	fi
 	if [ -n "$with_midi_arg" ]
 	then
-		CFLAGS="$CFLAGS -DMIDI_ARG=\"$with_midi_arg\""
+		CFLAGS="$CFLAGS -DMIDI_ARG=\\\\\"$with_midi_arg\\\\\""
 	fi
 
 	if [ "$enable_dedicated" != "0" ]
