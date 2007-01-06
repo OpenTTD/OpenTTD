@@ -1321,6 +1321,37 @@ STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Ime bo p
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Nastavi geslo
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Zasciti igro z geslom, ce zelis prepreciti dostop nepovabljenim
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Izberi ozemlje:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kateri zemljevid želite igrati?
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Dovoljeno število odjemalcev:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Izberite največje število odjemalcev. Ni potrebno, da so vsi prisotni
+STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :Lokalno omrežje
+STR_NETWORK_INTERNET                                            :Internet
+STR_NETWORK_LAN_INTERNET                                        :Lokalno omrežje / Internet
+STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oglašuj)
+STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 igralcev
+STR_NETWORK_1_PLAYERS                                           :1 igralec
+STR_NETWORK_2_PLAYERS                                           :2 igralca
+STR_NETWORK_3_PLAYERS                                           :3 igralci
+STR_NETWORK_4_PLAYERS                                           :4 igralci
+STR_NETWORK_5_PLAYERS                                           :5 igralcev
+STR_NETWORK_6_PLAYERS                                           :6 igralcev
+STR_NETWORK_7_PLAYERS                                           :7 igralcev
+STR_NETWORK_8_PLAYERS                                           :8 igralcev
+STR_NETWORK_9_PLAYERS                                           :9 igralcev
+STR_NETWORK_10_PLAYERS                                          :10 igralcev
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Dovoljeno število podjetij:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Omeji strežnik na določeno število podjetij
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Dovoljeno število opazovalcev:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Omeji strežnik na določeno število opazovalcev
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Govorni jezik:
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Drugi igralci bodo lahko vedeli, kateri jezik se govori na strežniku
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_GAME                                          :{BLACK}Začni igro
+STR_NETWORK_LOAD_GAME                                           :{BLACK}Naloži igro
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -2462,6 +2493,10 @@ STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit l
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanesljivost: {LTBLUE}{COMMA}%  {BLACK}Št. okvar od zadnjegea servisa: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zgrajen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapaciteta: {LTBLUE}{CARGO}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Gre na servis v {TOWN} ladijsko garazo
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Gre na servis v {TOWN} ladijsko garazo, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Ladja {COMMA} caka v garazi
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Zgradi ladijski dok
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Zgradi ladjedelnico (za izgradnjo in servisiranje ladij)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Ladje - kliknite na ladjo za informacije
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Zgradi novo ladjo
@@ -2499,6 +2534,7 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Izberite 
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapaciteta: {GOLD}{CARGO}{}{BLACK}Cena za preureditev: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Ni mogoče preurediti ladje ...
 STR_9842_REFITTABLE                                             :(spremenljivo)
+STR_GO_TO_SHIP_DEPOT                                            :Pojdi v {TOWN} ladijsko garazo
 SERVICE_AT_SHIP_DEPOT                                           :Storitev v {TOWN} doku
 
 ##id 0xA000
@@ -2522,6 +2558,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit l
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanesljivost: {LTBLUE}{COMMA}%  {BLACK}Št. okvar od zadnjega servisa: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zgrajen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Ni mogoče poslati letala v hangar ...
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Na poti v {STATION} hangar
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Na poti v {STATION} hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Gre na servis v {STATION} hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Gre na servis v {STATION} hangar, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Letalo {COMMA} čaka v hangarju
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Letalo v napoto
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Ni mogoče ustaviti/zagnati letala ...
@@ -2554,6 +2594,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Ni mogo�
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Poimenuj letalo
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prvo letalo pristalo na postaji {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Letalska nesreča!{}{COMMA} umrlo v plamenih na letališču {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Letalska nesreca!{}Letalu je zmanjkalo goriva, {COMMA} mrt {P ev va vi vih}l!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Preimenuj
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Preimenuj letalo
@@ -2567,6 +2608,7 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Preuredi
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Izberite tip tovora:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapaciteta: {GOLD}{STRING}{}{BLACK}Cena za preureditev: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ni mogoče preurediti letala ...
+STR_GO_TO_AIRPORT_HANGAR                                        :Pojdi v {STATION} hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Storitev v {STATION} Hangarju
 
 ##id 0xB000
@@ -2582,25 +2624,114 @@ STR_BRIBE_FAILED                                                :{WHITE}Vaša po
 STR_BRIBE_FAILED_2                                              :{WHITE}odkrita s strani lokalnih preiskovalcev
 STR_BUILD_DATE                                                  :{BLACK}Zgrajeno: {LTBLUE}{DATE_LONG}
 
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detajlirana ocena uspeha
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detajl
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozila:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Postaje:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. dobicek:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. prihodek:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. prihodek:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Dostavljeno:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Tovor:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Denar:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Posojilo:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Skupaj:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Stevilo vozil: vsteta so cestna vozila, vlaki, ladje, letala
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Stevilo delov postaj. Vsak del postaje (avtobusna, letalisce)je stet, tudi ce so povezani v eno
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Dobicek vozila z najnizjim prihodkom (vsa starejsa vozila od 2 let)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Mesecni znesek denarja z najnizjim dobickom od zadnjih 12 cetrtin
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Mesecni znesek denarja z najvisjim dobickom zadnjih 12 cetrtin
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Enote tovora, dostavljene v zadnjih 4 cetrtinah
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Stevilo tipov tovora dostavljenega v zadnji cetrtini
+STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Znesek denarja podjetja na banki
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Znesek posojila podjetja
+STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Skupno tock od vseh moznih
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF nastavitve
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF nastavitve
+STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potrdi spremembe
+STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Nastavi parametre
+STR_NEWGRF_TIP                                                  :{BLACK}Seznam vseh Newgrf kompletov, ki so namesceni. Klikni na komplet za spremembo nastavitev
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Trenutno ni NEWgrf datotek namescenih! Prosim, poglej navodila za namestitev novih grafik
+STR_NEWGRF_FILENAME                                             :{BLACK}Ime datoteke: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Pripravljas se narediti spremembe na zagnani igri; to lahko sesuje OpenTTD.{}Si zagotovo zelis tega?
 
+STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj NewGRF datoteko na seznam
+STR_NEWGRF_REMOVE                                               :{BLACK}Odstrani
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Odstrani izbrano NewGRF datoteko iz seznama
+STR_NEWGRF_MOVEUP                                               :{BLACK}Premakni gor
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Premakne izbrano NewGRF gor po seznamu
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Premakni dol
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Premakne izbrano NewGRF dol po seznamu
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Seznam namescenih NewGRF datotek. Klikni datoteko za spremembo parametrov
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parametri: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Vnesi NewGRF parametre
+STR_NEWGRF_NO_INFO                                              :{BLACK}Ni informacij
 
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}NewGRF datoteke na voljo
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Dodaj izboru
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Doda izbrano NewGRF datoteko tvoji konfiguraciji
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Ponovno preisci
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Posodobi seznam moznih NewGRF datotek
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne morem dodati datoteke: podvojen GRF ID
 
+STR_NEWGRF_NOT_FOUND                                            :{RED}Ni ujemajoce datoteke
+STR_NEWGRF_DISABLED                                             :{RED}Onemogoceno
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Valuta po meri
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Menjalni tecaj: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Locitev:
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Predpona:
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Zapona:
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Preklop na Euro: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Preklop na Euro: {ORANGE}nikoli
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Predogled: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zamenjaj parameter valute po meri
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
+STR_LORRY                                                       :{BLACK}{LORRY}
+STR_PLANE                                                       :{BLACK}{PLANE}
+STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Vlak{P "" a i ov}
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} cestn{P o i a ih} vozil{P o i a ""}
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Letal
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} lad{P ja ji je ij}
 
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Prikaz vsah vlakov, ki imajo to postajo na urniku
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Prikaz vseh cestnih vozil, ki imajo to postajo na urniku
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Prikaz vseh letal, ki imajo to postajo na urniku
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Prikaz vseh ladij, ki imajo to postajo na urniku
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Izmenjani ukazi {COMMA} vozila
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Prikaz vseh vozil, ki si delijo ta urnik
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Pripravljas se na prodajo vseh vozil v garazi. Zagotovo?
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Prodaj vlake v garazi
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Prodaj vsa vestna vozila v garazi
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Prodaj vse ladje v garazi
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Prodaj vsa letala v hangarju
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Prikaz seznama vlakov s to garazo na urniku
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Prikaz seznama vseh cestnih vozil s to garazo na urniku
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Prikaz seznama vseh ladij s to garazo na urniku
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Prikaz seznama vseh letal s to garazo na urniku
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Avtomatsko zamenjaj vse vlake v garazi
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Avtomatsko zamenjaj vsa cestna vozila v garazi
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Avtomatsko zamenjaj vse ladje v garazi
 
 
 

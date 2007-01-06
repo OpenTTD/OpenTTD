@@ -117,70 +117,70 @@ STR_004C_PLASTIC                                                :Plastmasės
 STR_004D_FIZZY_DRINK                                            :Gaiviųjų gėrimų
 STR_004D_FIZZY_DRINK.ko                                         :gaiviųjų gėrimų
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} keleiviai
-STR_QUANTITY_COAL                                               :{WEIGHT} tonu anglies
-STR_QUANTITY_MAIL                                               :{COMMA} pasto maisu
+STR_QUANTITY_PASSENGERS                                         :{COMMA} keleivi{P is iai ių}
+STR_QUANTITY_COAL                                               :{WEIGHT} anglies
+STR_QUANTITY_MAIL                                               :{COMMA} pašto maiš{P as ai ų}
 STR_QUANTITY_OIL                                                :{VOLUME} naftos
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} galvijas
-STR_QUANTITY_GOODS                                              :{COMMA} prekiu deze
-STR_QUANTITY_GRAIN                                              :{WEIGHT} tonu grudu
-STR_QUANTITY_WOOD                                               :{WEIGHT} tonu medienos
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} tonu gelezies rudos
-STR_QUANTITY_STEEL                                              :{WEIGHT} tonu plieno
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} galvij{P as ai ių}
+STR_QUANTITY_GOODS                                              :{COMMA} prekių dež{P ė ės ių}
+STR_QUANTITY_GRAIN                                              :{WEIGHT} grūdų
+STR_QUANTITY_WOOD                                               :{WEIGHT} medienos
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} geležies rūdos
+STR_QUANTITY_STEEL                                              :{WEIGHT} plieno
 STR_QUANTITY_VALUABLES                                          :{COMMA} maiš{P as ai ų} brangenybių
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} tonu vario rudos
-STR_QUANTITY_MAIZE                                              :{WEIGHT} tonu kukuruzu
-STR_QUANTITY_FRUIT                                              :{WEIGHT} tonu vaisiu
-STR_QUANTITY_DIAMONDS                                           :{COMMA} deziu deimantu
-STR_QUANTITY_FOOD                                               :{WEIGHT} tonu maisto
-STR_QUANTITY_PAPER                                              :{WEIGHT} tonu popieriaus
-STR_QUANTITY_GOLD                                               :{COMMA} aukso kapsu
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} vario rūdos
+STR_QUANTITY_MAIZE                                              :{WEIGHT} kukurūzų
+STR_QUANTITY_FRUIT                                              :{WEIGHT} vaisių
+STR_QUANTITY_DIAMONDS                                           :{COMMA} dėž{P ė ės ių} deimantų
+STR_QUANTITY_FOOD                                               :{WEIGHT} maisto
+STR_QUANTITY_PAPER                                              :{WEIGHT} popieriaus
+STR_QUANTITY_GOLD                                               :{COMMA} aukso kapš{P as ai ų}
 STR_QUANTITY_WATER                                              :{VOLUME} vandens
-STR_QUANTITY_WHEAT                                              :{WEIGHT} tonu kvieciu
-STR_QUANTITY_RUBBER                                             :{VOLUME} kauciuko
-STR_QUANTITY_SUGAR                                              :{WEIGHT} tonu cukraus
-STR_QUANTITY_TOYS                                               :{COMMA} zaislu
-STR_QUANTITY_SWEETS                                             :{COMMA} saldumynu krepseliu
-STR_QUANTITY_COLA                                               :{VOLUME} Coca-Colos
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} tonu cukraus vatos
-STR_QUANTITY_BUBBLES                                            :{COMMA} burbulu
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} tonu karameles
-STR_QUANTITY_BATTERIES                                          :{COMMA} bateriju
-STR_QUANTITY_PLASTIC                                            :{VOLUME} plastmases
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gaiviuju gerimu
+STR_QUANTITY_WHEAT                                              :{WEIGHT} kviečių
+STR_QUANTITY_RUBBER                                             :{VOLUME} kaučiuko
+STR_QUANTITY_SUGAR                                              :{WEIGHT} cukraus
+STR_QUANTITY_TOYS                                               :{COMMA} žaislų
+STR_QUANTITY_SWEETS                                             :{COMMA} saldumynų krepšel{P is iai ių}
+STR_QUANTITY_COLA                                               :{VOLUME} colos
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} cukraus vatos
+STR_QUANTITY_BUBBLES                                            :{COMMA} burbul{P as ai ų}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamelės
+STR_QUANTITY_BATTERIES                                          :{COMMA} baterij{P a os ių}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} plastmasės
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gaiv{P usis ieji iųjų} gėrim{P as ai ų}
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
-STR_ABBREV_COAL                                                 :{TINYFONT}CL
-STR_ABBREV_MAIL                                                 :{TINYFONT}ML
-STR_ABBREV_OIL                                                  :{TINYFONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
-STR_ABBREV_GOODS                                                :{TINYFONT}GD
-STR_ABBREV_GRAIN                                                :{TINYFONT}GR
-STR_ABBREV_WOOD                                                 :{TINYFONT}WD
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
-STR_ABBREV_STEEL                                                :{TINYFONT}ST
-STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
-STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
-STR_ABBREV_FRUIT                                                :{TINYFONT}FT
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}KL
+STR_ABBREV_COAL                                                 :{TINYFONT}AN
+STR_ABBREV_MAIL                                                 :{TINYFONT}PT
+STR_ABBREV_OIL                                                  :{TINYFONT}NF
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}GJ
+STR_ABBREV_GOODS                                                :{TINYFONT}PR
+STR_ABBREV_GRAIN                                                :{TINYFONT}GD
+STR_ABBREV_WOOD                                                 :{TINYFONT}MD
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}GL
+STR_ABBREV_STEEL                                                :{TINYFONT}PN
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VT
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}VR
+STR_ABBREV_MAIZE                                                :{TINYFONT}KK
+STR_ABBREV_FRUIT                                                :{TINYFONT}VS
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}FD
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
-STR_ABBREV_GOLD                                                 :{TINYFONT}GD
-STR_ABBREV_WATER                                                :{TINYFONT}WR
-STR_ABBREV_WHEAT                                                :{TINYFONT}WH
-STR_ABBREV_RUBBER                                               :{TINYFONT}RB
-STR_ABBREV_SUGAR                                                :{TINYFONT}SG
-STR_ABBREV_TOYS                                                 :{TINYFONT}TY
-STR_ABBREV_SWEETS                                               :{TINYFONT}SW
+STR_ABBREV_FOOD                                                 :{TINYFONT}MT
+STR_ABBREV_PAPER                                                :{TINYFONT}PP
+STR_ABBREV_GOLD                                                 :{TINYFONT}AU
+STR_ABBREV_WATER                                                :{TINYFONT}VD
+STR_ABBREV_WHEAT                                                :{TINYFONT}VN
+STR_ABBREV_RUBBER                                               :{TINYFONT}KČ
+STR_ABBREV_SUGAR                                                :{TINYFONT}CK
+STR_ABBREV_TOYS                                                 :{TINYFONT}ŽL
+STR_ABBREV_SWEETS                                               :{TINYFONT}SL
 STR_ABBREV_COLA                                                 :{TINYFONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CV
 STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
-STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
+STR_ABBREV_TOFFEE                                               :{TINYFONT}KR
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
-STR_ABBREV_NONE                                                 :{TINYFONT}NE
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PM
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}GG
+STR_ABBREV_NONE                                                 :{TINYFONT}-
 STR_ABBREV_ALL                                                  :{TINYFONT}VISI
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
@@ -732,7 +732,7 @@ STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Statyti 
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Pastatykite lentpjūvę (perdirbama nukirsta mediena)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Užsodinti vaismedžių plantaciją
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Užsodinti kaučiukmedžių plantaciją
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Statyti vandentiekį
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Statyti vandens gręžinį
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Statyti vandentiekio bokštą (tik miestuose)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Statyti deimantų kasyklą
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Statyti vario rūdos kasyklą
@@ -1275,7 +1275,7 @@ STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Statyti 
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Statyti anglies rudos kasykla
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Užsodinti vaismedžių plantaciją
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Užsodinti kaučiukmedžių plantaciją
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Statyti vandens siurbline
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Statyti vandens gręžinį
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Uzsodinti ledinuku miska
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Statyti baterijų ūkį
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}grezti kokakolos grezini
@@ -1872,7 +1872,7 @@ STR_4813_DIAMOND_MINE                                           :deimantu kasykl
 STR_4814_IRON_ORE_MINE                                          :gelezies rudos kasykla
 STR_4815_FRUIT_PLANTATION                                       :vaisiu plantacijoje
 STR_4816_RUBBER_PLANTATION                                      :kauciuko plantacijoje
-STR_4817_WATER_SUPPLY                                           :vandens saugykloje
+STR_4817_WATER_SUPPLY                                           :vandens gręžinyje
 STR_4818_WATER_TOWER                                            :vandentiekio bokste
 STR_4819_FACTORY                                                :gamykloje
 STR_481A_FARM                                                   :ūkis
@@ -2319,7 +2319,7 @@ STR_8043_ARMORED_VAN                                            :Armoured Van
 STR_8044_FOOD_VAN                                               :Food Van
 STR_8045_PAPER_TRUCK                                            :Paper Truck
 STR_8046_COPPER_ORE_HOPPER                                      :Copper Ore Hopper
-STR_8047_WATER_TANKER                                           :Water Tanker
+STR_8047_WATER_TANKER                                           :Vandens cisterna
 STR_8048_FRUIT_TRUCK                                            :Fruit Truck
 STR_8049_RUBBER_TRUCK                                           :Rubber Truck
 STR_804A_SUGAR_TRUCK                                            :Sugar Truck
@@ -2351,7 +2351,7 @@ STR_8063_ARMORED_VAN                                            :Armoured Van
 STR_8064_FOOD_VAN                                               :Food Van
 STR_8065_PAPER_TRUCK                                            :Paper Truck
 STR_8066_COPPER_ORE_HOPPER                                      :Copper Ore Hopper
-STR_8067_WATER_TANKER                                           :Water Tanker
+STR_8067_WATER_TANKER                                           :Vandens cisterna
 STR_8068_FRUIT_TRUCK                                            :Fruit Truck
 STR_8069_RUBBER_TRUCK                                           :Rubber Truck
 STR_806A_SUGAR_TRUCK                                            :Sugar Truck
@@ -2413,9 +2413,9 @@ STR_80A1_MPS_PAPER_TRUCK                                        :MPS Paper Truck
 STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS Copper Ore Truck
 STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Copper Ore Truck
 STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Copper Ore Truck
-STR_80A5_UHL_WATER_TANKER                                       :Uhl vandens tankeris
-STR_80A6_BALOGH_WATER_TANKER                                    :Balogh vandens tankeris
-STR_80A7_MPS_WATER_TANKER                                       :MPS vandens tanklaivis
+STR_80A5_UHL_WATER_TANKER                                       :Uhl vandens cisterna
+STR_80A6_BALOGH_WATER_TANKER                                    :Balogh vandens cisterna
+STR_80A7_MPS_WATER_TANKER                                       :MPS vandens cisterna
 STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Fruit Truck
 STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Fruit Truck
 STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Fruit Truck
@@ -2505,7 +2505,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario maluns
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 malunsparnis
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut malunsparnis
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Automobiliu gamintojo zinute
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Mes ka tik sukonstravome nauja masina {STRING} - ar tu noretum vienerius metus isskirtinemis teisemis bandyti si gamini pries pradedant serijine gamyba?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Mes ką tik sukūrėme naują {STRING.ka}! Ar norėtumėt vienerius metus išskirtinėmis teisėmis bandyti šią transporto priemonęm, kol dar nepradėta jos serijinė gamyba?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :lokomotyvas
 STR_8103_ROAD_VEHICLE                                           :automobilis
 STR_8104_AIRCRAFT                                               :lektuvas
@@ -3081,7 +3081,7 @@ STR_LAND_GENERATOR                                              :{BLACK}Pasaulio
 STR_TREE_PLACER                                                 :{BLACK}Medžių algoritmas:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Zemelapio rotacija:
 STR_TERRAIN_TYPE                                                :{BLACK}Vietovės tipas:
-STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Juros lygis:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Jūros lygis:
 STR_SMOOTHNESS                                                  :{BLACK}Jautrumas:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sniego linija:
 STR_DATE                                                        :{BLACK}Data:
