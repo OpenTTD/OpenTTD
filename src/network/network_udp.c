@@ -53,7 +53,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 	NetworkSend_NetworkGameInfo(packet, &_network_game_info);
 
 	// Let the client know that we are here
-//	NetworkSendUDP_Packet(_udp_server_socket, packet, client_addr);
+	NetworkSendUDP_Packet(_udp_server_socket, packet, client_addr);
 
 	free(packet);
 

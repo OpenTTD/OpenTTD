@@ -116,18 +116,10 @@ void NetworkUDPReceive(const SOCKET udp)
 	/* Try to receive anything */
 	nbytes = recvfrom(udp, p.buffer, packet_len, 0, (struct sockaddr *)&client_addr, &client_len);
 
-	/* We got some bytes for the base header of the packet. */
+	/* We got some bytes for the base header of the packet.
+	 * Assume we received the whole packet. */
 	if (nbytes > 2) {
 		NetworkRecv_ReadPacketSize(&p);
-
-		/* If the size does not match the packet must be corrupted.
-		 * Otherwise it will be marked as corrupted later on. */
-		if (nbytes != p.size) {
-			DEBUG(net, 1, "received a packet with mismatching size from %s:%d",
-					inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
-
-			return;
-		}
 
 		/* Put the position on the right place */
 		p.pos = 2;
