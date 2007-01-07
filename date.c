@@ -92,9 +92,22 @@ void ConvertDateToYMD(Date date, YearMonthDay *ymd)
 	int rem = date % (365 * 400 + 97);
 	uint16 x;
 
-	/* There are 24 leap years in 100 years */
-	yr += 100 * (rem / (365 * 100 + 24));
-	rem = rem % (365 * 100 + 24);
+	if (rem >= 365 * 100 + 25) {
+		/* There are 25 leap years in the first 100 years after
+		 * every 400th year, as every 400th year is a leap year */
+		yr  += 100;
+		rem -= 365 * 100 + 25;
+
+		/* There are 24 leap years in the next couple of 100 years */
+		yr += 100 * (rem / (365 * 100 + 24));
+		rem = (rem % (365 * 100 + 24));
+	}
+
+	if (!IsLeapYear(yr) && rem >= 365 * 4) {
+		/* The first 4 year of the century are not always a leap year */
+		yr  += 4;
+		rem -= 365 * 4;
+	}
 
 	/* There is 1 leap year every 4 years */
 	yr += 4 * (rem / (365 * 4 + 1));
