@@ -337,10 +337,7 @@ static void QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL dow
 
 		case QZ_RETURN:
 		case QZ_f:
-			if (down && (
-						(_cocoa_video_data.current_mods & NSControlKeyMask) ||
-						(_cocoa_video_data.current_mods & NSCommandKeyMask)
-					)) {
+			if (down && (_cocoa_video_data.current_mods & NSCommandKeyMask)) {
 				CocoaVideoFullScreen(!_fullscreen);
 			}
 			break;
