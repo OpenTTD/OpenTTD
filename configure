@@ -19,10 +19,8 @@ LANG_DIR="$SRC_DIR/lang"
 MEDIA_DIR="$ROOT_DIR/media"
 SOURCE_LIST="$ROOT_DIR/source.list"
 
-if [ "$1" = "--reconfig" ]
-then
-	if ! [ -f "config.cache" ]
-	then
+if [ "$1" = "--reconfig" ]; then
+	if ! [ -f "config.cache" ]; then
 		echo "can't reconfigure, because never configured before"
 		exit 1
 	fi
@@ -39,8 +37,7 @@ check_params
 make_cflags_and_ldflags
 
 EXE=""
-if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "OS2" ]
-then
+if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "OS2" ]; then
 	EXE=".exe"
 fi
 
@@ -48,15 +45,13 @@ TTD="openttd$EXE"
 STRGEN="strgen$EXE"
 ENDIAN_CHECK="endian_check$EXE"
 
-if [ -z "$sort" ]
-then
+if [ -z "$sort" ]; then
 	PIPE_SORT="sed s/a/a/"
 else
 	PIPE_SORT="$sort"
 fi
 
-if ! [ -f "$LANG_DIR/english.txt" ]
-then
+if ! [ -f "$LANG_DIR/english.txt" ]; then
 	echo "Languages not found in $LANG_DIR. Can't continue without it."
 	echo "Please make sure the dir exists and contains at least english.txt"
 fi
@@ -107,8 +102,7 @@ OBJS_RC="` echo \"$SRCS\" | awk ' { ORS = " " } /\.rc$/  { gsub(".rc$",  ".o", $
 SRCS="`    echo \"$SRCS\" | awk ' { ORS = " " } { print $0; }'`"
 
 # In makefiles, we always use -u for sort
-if [ -z "$sort" ]
-then
+if [ -z "$sort" ]; then
 	sort="sed s/a/a/"
 else
 	sort="$sort -u"
