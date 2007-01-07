@@ -70,13 +70,18 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 	/* Find and load the Action 8 information */
 	/* 62 is the last file slot before sample.cat.
 	 * Should perhaps be some "don't care" value */
-	LoadNewGRFFile(config, 62, is_static ? GLS_SAFETYSCAN : GLS_FILESCAN);
-
-	/* GCF_UNSAFE is set if GLS_SAFETYSCAN finds unsafe actions */
-	if (HASBIT(config->flags, GCF_UNSAFE)) return false;
+	LoadNewGRFFile(config, 62, GLS_FILESCAN);
 
 	/* Skip if the grfid is 0 (not read) or 0xFFFFFFFF (ttdp system grf) */
 	if (config->grfid == 0 || config->grfid == 0xFFFFFFFF) return false;
+
+	if (is_static) {
+		/* Perform a 'safety scan' for static GRFs */
+		LoadNewGRFFile(config, 62, GLS_SAFETYSCAN);
+
+		/* GCF_UNSAFE is set if GLS_SAFETYSCAN finds unsafe actions */
+		if (HASBIT(config->flags, GCF_UNSAFE)) return false;
+	}
 
 	return CalcGRFMD5Sum(config);
 }

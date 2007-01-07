@@ -1438,6 +1438,34 @@ static void FeatureChangeInfo(byte *buf, int len)
 	}
 }
 
+/* Action 0x00 (GLS_SAFETYSCAN) */
+static void SafeChangeInfo(byte *buf, int len)
+{
+	uint8 feature;
+	uint8 numprops;
+	uint8 numinfo;
+	uint8 index;
+
+	check_length(len, 6, "SafeChangeInfo");
+	buf++;
+	feature  = grf_load_byte(&buf);
+	numprops = grf_load_byte(&buf);
+	numinfo  = grf_load_byte(&buf);
+	index    = grf_load_byte(&buf);
+
+	if (feature == GSF_BRIDGE && numprops == 1) {
+		uint8 prop = grf_load_byte(&buf);
+		/* Bridge property 0x0D is redefinition of sprite layout tables, which
+		 * is considered safe. */
+		if (prop == 0x0D) return;
+	}
+
+	SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
+
+	/* Skip remainder of GRF */
+	_skip_sprites = -1;
+}
+
 #undef FOR_EACH_OBJECT
 
 /**
@@ -2380,67 +2408,63 @@ static void SkipIf(byte *buf, int len)
 		return;
 	}
 
-	if (param == 0x88 && GetFileByGRFID(cond_val) == NULL) {
-		DEBUG(grf, 7) ("GRFID 0x%08X unknown, skipping test", BSWAP32(cond_val));
-		return;
-	}
-
 	param_val = GetParamVal(param, &cond_val);
 
 	DEBUG(grf, 7) ("Test condtype %d, param 0x%08X, condval 0x%08X", condtype, param_val, cond_val);
-	switch (condtype) {
-		case 0: result = !!(param_val & (1 << cond_val));
-			break;
-		case 1: result = !(param_val & (1 << cond_val));
-			break;
-		case 2: result = (param_val & mask) == cond_val;
-			break;
-		case 3: result = (param_val & mask) != cond_val;
-			break;
-		case 4: result = (param_val & mask) < cond_val;
-			break;
-		case 5: result = (param_val & mask) > cond_val;
-			break;
 
-		/* Tests 6 to 10 are only for param 0x88, GRFID checks */
-		case 6: { /* Is GRFID active? */
-			const GRFConfig *c = GetGRFConfig(cond_val);
-			if (c == NULL) return;
-			result = HASBIT(c->flags, GCF_ACTIVATED);
-			break;
-		}
+	if (param == 0x88) {
+		/* GRF ID checks */
 
-		case 7: { /* Is GRFID non-active? */
-			const GRFConfig *c = GetGRFConfig(cond_val);
-			if (c == NULL) return;
-			result = !HASBIT(c->flags, GCF_ACTIVATED);
-			break;
-		}
+		const GRFConfig *c = GetGRFConfig(cond_val);
 
-		case 8: { /* GRFID is not but will be active? */
-			const GRFConfig *c = GetGRFConfig(cond_val);
-			if (c == NULL) return;
-			result = !HASBIT(c->flags, GCF_ACTIVATED) && !HASBIT(c->flags, GCF_DISABLED);
-			break;
-		}
-
-		case 9: { /* GRFID is or will be active? */
-			const GRFConfig *c = GetGRFConfig(cond_val);
-			if (c == NULL) return;
-			result = !HASBIT(c->flags, GCF_NOT_FOUND) && !HASBIT(c->flags, GCF_DISABLED);
-			break;
-		}
-
-		case 10: { /* GRFID is not nor will be active */
-			const GRFConfig *c = GetGRFConfig(cond_val);
-			/* This is the only condtype that doesn't get ignored if the GRFID is not found */
-			result = c == NULL || HASBIT(c->flags, GCF_DISABLED) || HASBIT(c->flags, GCF_NOT_FOUND);
-			break;
-		}
-
-		default:
-			grfmsg(GMS_WARN, "Unsupported test %d. Ignoring.", condtype);
+		if (condtype != 10 && c == NULL) {
+			grfmsg(7, "GRFID 0x%08X unknown, skipping test", BSWAP32(cond_val));
 			return;
+		}
+
+		switch (condtype) {
+			/* Tests 6 to 10 are only for param 0x88, GRFID checks */
+			case 6: /* Is GRFID active? */
+				result = HASBIT(c->flags, GCF_ACTIVATED);
+				break;
+
+			case 7: /* Is GRFID non-active? */
+				result = !HASBIT(c->flags, GCF_ACTIVATED);
+				break;
+
+			case 8: /* GRFID is not but will be active? */
+				result = !HASBIT(c->flags, GCF_ACTIVATED) && !HASBIT(c->flags, GCF_DISABLED);
+				break;
+
+			case 9: /* GRFID is or will be active? */
+				result = !HASBIT(c->flags, GCF_NOT_FOUND) && !HASBIT(c->flags, GCF_DISABLED);
+				break;
+
+			case 10: /* GRFID is not nor will be active */
+				/* This is the only condtype that doesn't get ignored if the GRFID is not found */
+				result = c == NULL || HASBIT(c->flags, GCF_DISABLED) || HASBIT(c->flags, GCF_NOT_FOUND);
+				break;
+
+			default: grfmsg(GMS_WARN, "Unsupported GRF test %d. Ignoring", condtype); return;
+		}
+	} else {
+		/* Parameter or variable tests */
+		switch (condtype) {
+			case 0: result = !!(param_val & (1 << cond_val));
+				break;
+			case 1: result = !(param_val & (1 << cond_val));
+				break;
+			case 2: result = (param_val & mask) == cond_val;
+				break;
+			case 3: result = (param_val & mask) != cond_val;
+				break;
+			case 4: result = (param_val & mask) < cond_val;
+				break;
+			case 5: result = (param_val & mask) > cond_val;
+				break;
+
+			default: grfmsg(GMS_WARN, "Unsupported test %d. Ignoring", condtype); return;
+		}
 	}
 
 	if (!result) {
@@ -2484,8 +2508,8 @@ static void SkipIf(byte *buf, int len)
 }
 
 
-/* Action 0x08 (GLS_SAFETYSCAN) */
-static void SafeInfo(byte *buf, int len)
+/* Action 0x08 (GLS_FILESCAN) */
+static void ScanInfo(byte *buf, int len)
 {
 	uint8 version;
 	uint32 grfid;
@@ -2518,12 +2542,6 @@ static void SafeInfo(byte *buf, int len)
 			_cur_grfconfig->info  = TranslateTTDPatchCodes(info);
 		}
 	}
-}
-
-/* Action 0x08 (GLS_INFOSCAN) */
-static void ScanInfo(byte *buf, int len)
-{
-	SafeInfo(buf, len);
 
 	/* GLS_INFOSCAN only looks for the action 8, so we can skip the rest of the file */
 	_skip_sprites = -1;
@@ -2650,6 +2668,29 @@ static void GRFComment(byte *buf, int len)
 
 	ttd_strlcpy(comment, (char*)(buf + 1), minu(sizeof(comment), len));
 	grfmsg(GMS_NOTICE, "GRFComment: %s", comment);
+}
+
+/* Action 0x0D (GLS_SAFETYSCAN) */
+static void SafeParamSet(byte *buf, int len)
+{
+	uint8 target;
+
+	check_length(len, 5, "SafeParamSet");
+	buf++;
+	target = grf_load_byte(&buf);
+
+	/* Only writing GRF parameters is considered safe */
+	if (target < 0x80) return;
+
+	/* GRM could be unsafe, but as here it can only happen after other GRFs
+	 * are loaded, it should be okay. If the GRF tried to use the slots it
+	 * reserved, it would be marked unsafe anyway. GRM for (e.g. bridge)
+	 * sprites  is considered safe. */
+
+	SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
+
+	/* Skip remainder of GRF */
+	_skip_sprites = -1;
 }
 
 /* Action 0x0D */
@@ -2945,6 +2986,37 @@ static void ParamSet(byte *buf, int len)
 	}
 }
 
+/* Action 0x0E (GLS_SAFETYSCAN) */
+static void SafeGRFInhibit(byte *buf, int len)
+{
+	/* <0E> <num> <grfids...>
+	 *
+	 * B num           Number of GRFIDs that follow
+	 * D grfids        GRFIDs of the files to deactivate */
+
+	byte num;
+	int i;
+
+	check_length(len, 1, "GRFInhibit");
+	buf++, len--;
+	num = grf_load_byte(&buf); len--;
+	check_length(len, 4 * num, "GRFInhibit");
+
+	for (i = 0; i < num; i++) {
+		uint32 grfid = grf_load_dword(&buf);
+
+		/* GRF is unsafe it if tries to deactivate other GRFs */
+		if (grfid != _cur_grfconfig->grfid) {
+			SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
+
+			/* Skip remainder of GRF */
+			_skip_sprites = -1;
+
+			return;
+		}
+	}
+}
+
 /* Action 0x0E */
 static void GRFInhibit(byte *buf, int len)
 {
@@ -3206,8 +3278,8 @@ static void GRFUnsafe(byte *buf, int len)
 {
 	SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
 
-	/* Skip remainder of GRF if GRF ID is set */
-	if (_cur_grfconfig->grfid != 0) _skip_sprites = -1;
+	/* Skip remainder of GRF */
+	_skip_sprites = -1;
 }
 
 
@@ -3551,7 +3623,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 	 * is not in memory and scanning the file every time would be too expensive.
 	 * In other stages we skip action 0x10 since it's already dealt with. */
 	static const SpecialSpriteHandler handlers[][GLS_END] = {
-		/* 0x00 */ { NULL,     GRFUnsafe, NULL,            NULL,       FeatureChangeInfo, },
+		/* 0x00 */ { NULL,     SafeChangeInfo, NULL,       NULL,       FeatureChangeInfo, },
 		/* 0x01 */ { NULL,     GRFUnsafe, NULL,            NULL,       NewSpriteSet, },
 		/* 0x02 */ { NULL,     GRFUnsafe, NULL,            NULL,       NewSpriteGroup, },
 		/* 0x03 */ { NULL,     GRFUnsafe, NULL,            NULL,       FeatureMapSpriteGroup, },
@@ -3559,13 +3631,13 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x05 */ { NULL,     NULL,      NULL,            NULL,       GraphicsNew, },
 		/* 0x06 */ { NULL,     NULL,      NULL,            CfgApply,   CfgApply, },
 		/* 0x07 */ { NULL,     NULL,      NULL,            NULL,       SkipIf, },
-		/* 0x08 */ { ScanInfo, SafeInfo,  NULL,            GRFInfo,    GRFInfo, },
+		/* 0x08 */ { ScanInfo, NULL,      NULL,            GRFInfo,    GRFInfo, },
 		/* 0x09 */ { NULL,     NULL,      NULL,            SkipIf,     SkipIf, },
 		/* 0x0A */ { NULL,     NULL,      NULL,            NULL,       SpriteReplace, },
 		/* 0x0B */ { NULL,     NULL,      NULL,            GRFError,   GRFError, },
 		/* 0x0C */ { NULL,     NULL,      NULL,            GRFComment, GRFComment, },
-		/* 0x0D */ { NULL,     GRFUnsafe, NULL,            ParamSet,   ParamSet, },
-		/* 0x0E */ { NULL,     GRFUnsafe, NULL,            GRFInhibit, GRFInhibit, },
+		/* 0x0D */ { NULL,     SafeParamSet, NULL,         ParamSet,   ParamSet, },
+		/* 0x0E */ { NULL,     SafeGRFInhibit, NULL,       GRFInhibit, GRFInhibit, },
 		/* 0x0F */ { NULL,     NULL,      NULL,            NULL,       NULL, },
 		/* 0x10 */ { NULL,     NULL,      DefineGotoLabel, NULL,       NULL, },
 		/* 0x11 */ { NULL,     GRFUnsafe, NULL,            NULL,       GRFSound, },
