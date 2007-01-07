@@ -1176,7 +1176,7 @@ check_makedepend() {
 	log 2 "  returned `cat makedepend.tmp`"
 	log 2 "  exit code $ret"
 
-	if [ -z "`cat makedepend.tmp`" ]
+	if [ ! -s makedepend.tmp ]
 	then
 		rm -f makedepend.tmp makedepend.tmp.bak
 
@@ -1819,7 +1819,7 @@ generate_main() {
 
 	# Create the main Makefile
 	echo "Generating Makefile..."
-	cat $ROOT_DIR/Makefile.in | sed "$SRC_REPLACE" > Makefile
+	< $ROOT_DIR/Makefile.in sed "$SRC_REPLACE" > Makefile
 	echo "# Auto-generated file -- DO NOT EDIT" > Makefile.am
 	echo "" > Makefile.am
 	# Make the copy of the source-list, so we don't trigger an unwanted recompile
@@ -1837,7 +1837,7 @@ generate_lang() {
 	mkdir -p $LANG_OBJS_DIR
 
 	echo "Generating lang/Makefile..."
-	cat $ROOT_DIR/Makefile.lang.in | sed "$SRC_REPLACE" > $LANG_OBJS_DIR/Makefile
+	< $ROOT_DIR/Makefile.lang.in sed "$SRC_REPLACE" > $LANG_OBJS_DIR/Makefile
 	echo "DIRS += $LANG_OBJS_DIR" >> Makefile.am
 	echo "LANG_DIRS += $LANG_OBJS_DIR" >> Makefile.am
 }
@@ -1851,7 +1851,7 @@ generate_src_normal() {
 	mkdir -p $SRC_OBJS_DIR
 
 	echo "Generating $2/Makefile..."
-	cat $ROOT_DIR/Makefile.src.in | sed "$SRC_REPLACE" > $SRC_OBJS_DIR/Makefile
+	< $ROOT_DIR/Makefile.src.in sed "$SRC_REPLACE" > $SRC_OBJS_DIR/Makefile
 	echo "DIRS += $SRC_OBJS_DIR" >> Makefile.am
 	echo "SRC_DIRS += $SRC_OBJS_DIR" >> Makefile.am
 }

@@ -62,7 +62,7 @@ then
 fi
 
 # Read the source.list and process it
-SRCS="`cat $ROOT_DIR/source.list | tr '\r' '\n' | awk '
+SRCS="`< $ROOT_DIR/source.list tr '\r' '\n' | awk '
 	{  }
 	/^(	*)#end/  { if (deep == skip) { skip -= 1; } deep -= 1; next; }
 	/^(	*)#else/ { if (deep == skip) { skip -= 1; } else if (deep - 1 == skip) { skip += 1; } next; }
