@@ -3,7 +3,7 @@
 ##isocode lv_LV.UTF-8
 ##plural 3
 
-##id 2002-20067
+##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}A'rpus kartes robez'as
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Pa'ra'k tuvu kartes malai

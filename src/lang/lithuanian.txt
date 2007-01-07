@@ -5,7 +5,7 @@
 ##case kas ko kam ka kuo kur kreip
 ##gender vyr mot
 
-##id 2002-20067
+##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Už žemelapio kraštų
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Per arti žemėlapio krašto
@@ -193,7 +193,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}To daryt
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Negalima griauti šios teritorijos....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Pradinės versijos teisės priklauso {COPYRIGHT} 1995 Chris Sawyer, Visos teisės saugomos
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versija {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-20067 OpenTTD komanda
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD komanda
 STR_TRANSLATED_BY                                               :{BLACK}  Vertejai: Mindaugas Surdokas (L781), Vytautas Liuolia
 
 STR_00C5                                                        :{BLACK}{CROSS}

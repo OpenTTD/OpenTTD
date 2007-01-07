@@ -3,7 +3,7 @@
 ##isocode af_ZA.UTF-8
 ##plural 0
 
-##id 2002-20067
+##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Oor kant van kaart
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Te naby aan kant van kaart

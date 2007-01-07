@@ -4,7 +4,7 @@
 ##plural 0
 ##case g genitiiv
 
-##id 2002-20067
+##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Väljaspool kaardi piire
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Kaardi äärele liiga lähedal
@@ -259,7 +259,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Seda ei 
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Seda ala ei saa puhastada....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originaali autorikaitse {COPYRIGHT} 1995 Chris Sawyer, kõik õigused kaitstud
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versioon {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-20067 OpenTTD meeskond
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD meeskond
 STR_TRANSLATED_BY                                               :{BLACK}  Tõlgi(d) -
 
 STR_00C5                                                        :{BLACK}{CROSS}

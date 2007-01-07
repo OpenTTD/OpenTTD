@@ -3,7 +3,7 @@
 ##isocode sl_SL.UTF-8
 ##plural 8
 
-##id 2002-20067
+##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Cez rob mape
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Preblizu roba mape

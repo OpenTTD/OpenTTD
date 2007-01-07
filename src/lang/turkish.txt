@@ -3,7 +3,7 @@
 ##isocode tr_TR.UTF-8
 ##plural 1
 
-##id 2002-20067
+##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Harita kenarında
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Sınıra çok yakın
@@ -159,7 +159,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Yapılam
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Burası temizlenemez....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Orjinal kopyalama hakkı {COPYRIGHT} 1995 Chris Sawyer, Her Hakkı Saklıdır
 STR_00B7_VERSION                                                :{BLACK}OpenTTD sürüm {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-20067 OpenTTD takımı
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD takımı
 STR_TRANSLATED_BY                                               :{BLACK}  Çevirenler -
 
 STR_00C5                                                        :{BLACK}{CROSS}

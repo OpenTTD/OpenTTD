@@ -2,7 +2,7 @@
 ##ownname Русский
 ##isocode ru_RU.UTF-8
 
-##id 2002-20067
+##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Край карты
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Слишком близко к краю карты
@@ -158,7 +158,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Это �
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Невозможно очистить
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Оригинальные авторские права {COPYRIGHT} 1995 Chris Sawyer, Все права защищены
 STR_00B7_VERSION                                                :{BLACK}OpenTTD v{REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-20067 Команда разработчиков OpenTTD
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 Команда разработчиков OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Переводчики - Назаров Дмитрий (aka Smoky555), Олег Попков (aka Oleg)  - http://forums.ttdrussia.net
 
 STR_00C5                                                        :{BLACK}{CROSS}
