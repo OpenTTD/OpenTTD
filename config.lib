@@ -1821,7 +1821,7 @@ generate_main() {
 	echo "Generating Makefile..."
 	< $ROOT_DIR/Makefile.in sed "$SRC_REPLACE" > Makefile
 	echo "# Auto-generated file -- DO NOT EDIT" > Makefile.am
-	echo "" > Makefile.am
+	echo >> Makefile.am
 	# Make the copy of the source-list, so we don't trigger an unwanted recompile
 	cp $SOURCE_LIST config.cache.source.list
 	# Make sure config.cache is OLDER then config.cache.source.list
