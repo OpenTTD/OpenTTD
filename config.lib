@@ -449,6 +449,10 @@ check_params() {
 			strip_arg="--strip-all --strip-unneeded --remove-section .comment"
 		elif [ "$os" = "OSX" ]; then
 			strip_arg=""
+		elif [ "$os" = "OS2" ]; then
+			strip_arg=""
+			# OS2 uses strip via gcc, because it needs to be feed to emxbind
+			LDFLAGS="$LDFLAGS -s"
 		else
 			strip_arg="-s"
 		fi
@@ -988,7 +992,10 @@ check_windres() {
 }
 
 check_strip() {
-	if [ "$os" = "OSX" ]; then
+	if [ "$os" = "OS2" ]; then
+		# OS2 via gcc is a bit weird.. stripping HAS to be done via emxbind, which is via gcc directly
+		echo "checking for host strip... using gcc -s option"
+	elif [ "$os" = "OSX" ]; then
 		# Most targets have -V in strip, to see if they exists... OSX doesn't.. so execute something
 		echo "int main(int argc, char *argv[]) { }" > strip.test.c
 		$cc_host strip.test.c -o strip.test
