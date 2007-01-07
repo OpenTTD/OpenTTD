@@ -25,8 +25,9 @@ if [ "$1" = "--reconfig" ]; then
 		exit 1
 	fi
 	# Make sure we don't lock config.cache
-	configure=`cat config.cache`
-	$configure
+	cat config.cache > cache.tmp
+	sh cache.tmp
+	rm -f cache.tmp
 	exit $?
 fi
 

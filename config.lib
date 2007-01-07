@@ -257,10 +257,10 @@ save_params() {
 
 	configure="$0 --ignore-extra-parameters"
 	for p in $save_params_array; do
-		eval "v=\$$p"
+		eval "v=\"\$$p\""
 		p=`echo "$p" | sed 's/_/-/g;s/\n//g;'`
 		# Only save those params that aren't empty
-		configure="$configure --$p=$v"
+		configure="$configure --$p=\"$v\""
 	done
 
 	echo "$configure" >> $config_log
