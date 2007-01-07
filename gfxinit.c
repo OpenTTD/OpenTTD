@@ -121,6 +121,20 @@ static bool FileMD5(const MD5File file, bool warn)
 	}
 #endif
 
+#if defined SECOND_DATA_DIR
+	/* If we failed to find the file in the first data directory, we will try the other one */
+
+	if (f == NULL) {
+		snprintf(buf, lengthof(buf), "%s%s", _paths.second_data_dir, file.filename);
+		f = fopen(buf, "rb");
+
+		if (f == NULL) {
+			strtolower(buf + strlen(_paths.second_data_dir) - 1);
+			f = fopen(buf, "rb");
+		}
+	}
+#endif
+
 	if (f != NULL) {
 		md5_state_t filemd5state;
 		md5_byte_t buffer[1024];
