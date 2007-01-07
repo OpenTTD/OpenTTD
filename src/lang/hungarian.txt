@@ -4,7 +4,7 @@
 ##plural 1
 ##case t ba
 
-##id 0x0000
+##id 2002-20067
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Kilóg a térképről
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Túl közel van a térkép széléhez
@@ -192,7 +192,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nem tehe
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nem tisztíthatod meg a területet...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright {COPYRIGHT} 1995 Chris Sawyer, Minden jog fenntartva
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 Az OpenTTD csapat
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-20067 Az OpenTTD csapat
 STR_TRANSLATED_BY                                               :{BLACK}  Fordítók -
 
 STR_00C5                                                        :{BLACK}{CROSS}

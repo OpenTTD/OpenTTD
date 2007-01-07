@@ -3,7 +3,7 @@
 ##isocode nb_NO.UTF-8
 ##plural 0
 
-##id 0x0000
+##id 2002-20067
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Utenfor kartet
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}For nært kanten av kartet
@@ -159,7 +159,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan ikke
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde dette området...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Opprinnelig opphavsbeskyttet {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versjon {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD-teamet
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-20067 OpenTTD-teamet
 STR_TRANSLATED_BY                                               :{BLACK}  Oversetter(e) -
 
 STR_00C5                                                        :{BLACK}{CROSS}

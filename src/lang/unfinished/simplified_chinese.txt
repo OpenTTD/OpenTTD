@@ -2,7 +2,7 @@
 ##ownname 简体中文
 ##isocode zh_CN.UTF-8
 
-##id 0x0000
+##id 2002-20067
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}超过地图边缘
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}距离地图边缘太近
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}现金不足：需要{CURRENCY}

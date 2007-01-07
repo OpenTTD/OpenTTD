@@ -4,7 +4,7 @@
 ##plural 0
 ##gender m f n
 
-##id 0x0000
+##id 2002-20067
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Απο την άκρη του χάρτη
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Πολυ κοντά στην άκρη του χάρτη
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτεί {CURRENCY}

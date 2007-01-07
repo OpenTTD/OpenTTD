@@ -3,7 +3,7 @@
 ##isocode gl_ES.UTF-8
 ##plural 0
 
-##id 0x0000
+##id 2002-20067
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fora do borde do mapa
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Demasiado cerca do borde do mapa
@@ -158,7 +158,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Non pode
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Non podes limpar esta área....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Orixinal {COPYRIGHT} 1995 Chris Sawyer, Tódolos dereitos reservados
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versión {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 O Equipo de OpenTTD
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-20067 O Equipo de OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Traductor(es) -
 
 STR_00C5                                                        :{BLACK}{CROSS}

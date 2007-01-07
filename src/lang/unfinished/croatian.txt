@@ -4,7 +4,7 @@
 ##plural 6
 ##gender male female middle
 
-##id 0x0000
+##id 2002-20067
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Izvan rubova karte
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Preblizu rubu karte

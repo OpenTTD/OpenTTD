@@ -3,7 +3,7 @@
 ##isocode ro_RO.UTF-8
 ##plural 0
 
-##id 0x0000
+##id 2002-20067
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Depãseste limita hãrtii
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Prea aproape de marginea hãrtii
@@ -159,7 +159,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nu pot f
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nu pot curãta terenul....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, toate drepturile rezervate
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versiunea {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 Echipa OpenTTD
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-20067 Echipa OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Translator(i) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
