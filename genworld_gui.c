@@ -43,7 +43,6 @@ typedef enum glwp_modes {
 	GLWP_END
 } glwp_modes;
 
-static char _edit_str_buf[LEN_RND_SEED];
 static uint _heightmap_x = 0;
 static uint _heightmap_y = 0;
 static StringID _heightmap_str = STR_NULL;
@@ -200,11 +199,22 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 	static const StringID num_towns[]   = {STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
 	static const StringID num_inds[]    = {STR_26816_NONE, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
 
+	/* Data used for the generate seed edit box */
+	static querystr_d _genseed_query;
+	static char _genseed_buffer[LEN_RND_SEED];
+
 	uint mode = w->window_number;
 	uint y;
 
 	switch (e->event) {
-	case WE_CREATE: LowerWindowWidget(w, _opt_newgame.landscape + 3); break;
+	case WE_CREATE:
+		LowerWindowWidget(w, _opt_newgame.landscape + 3);
+
+		snprintf(_genseed_buffer, sizeof(_genseed_buffer), "%u", _patches_newgame.generation_seed);
+		InitializeTextBuffer(&_genseed_query.text, _genseed_buffer, lengthof(_genseed_buffer), 120);
+		_genseed_query.caption = STR_NULL;
+		_genseed_query.afilter = CS_NUMERAL;
+		break;
 
 	case WE_PAINT:
 		/* You can't select smoothness if not terragenesis */
@@ -251,7 +261,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		}
 
 		DrawString( 12, 153 + y, STR_RANDOM_SEED, 0);
-		DrawEditBox(w, &WP(w, querystr_d), SEED_EDIT);
+		DrawEditBox(w, &_genseed_query, SEED_EDIT);
 
 		DrawString(182, 113 + y, STR_DATE, 0);
 		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
@@ -322,8 +332,8 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			break;
 		case 16: // Random seed
 			_patches_newgame.generation_seed = InteractiveRandom();
-			snprintf(_edit_str_buf, lengthof(_edit_str_buf), "%u", _patches_newgame.generation_seed);
-			UpdateTextBufferSize(&WP(w, querystr_d).text);
+			snprintf(_genseed_buffer, lengthof(_genseed_buffer), "%u", _patches_newgame.generation_seed);
+			UpdateTextBufferSize(&_genseed_query.text);
 			SetWindowDirty(w);
 			break;
 		case 17: // Generate
@@ -388,17 +398,17 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		HandleEditBox(w, &WP(w, querystr_d), SEED_EDIT);
+		HandleEditBox(w, &_genseed_query, SEED_EDIT);
 		break;
 
 	case WE_KEYPRESS:
-		HandleEditBoxKey(w, &WP(w, querystr_d), SEED_EDIT, e);
+		HandleEditBoxKey(w, &_genseed_query, SEED_EDIT, e);
 		/* the seed is unsigned, therefore atoi cannot be used.
 		 * As 2^32 - 1 (MAX_UVALUE(uint32)) is a 'magic' value
 		 * (use random seed) it should not be possible to be
 		 * entered into the input field; the generate seed
 		 * button can be used instead. */
-		_patches_newgame.generation_seed = minu(strtoul(_edit_str_buf, NULL, 10), MAX_UVALUE(uint32) - 1);
+		_patches_newgame.generation_seed = minu(strtoul(_genseed_buffer, NULL, sizeof(_genseed_buffer) - 1), MAX_UVALUE(uint32) - 1);
 		break;
 
 	case WE_DROPDOWN_SELECT:
@@ -506,13 +516,6 @@ static void _ShowGenerateLandscape(glwp_modes mode)
 	w = AllocateWindowDescFront((mode == GLWP_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc, mode);
 
 	if (w != NULL) {
-		querystr_d *querystr = &WP(w, querystr_d);
-
-		snprintf(_edit_str_buf, lengthof(_edit_str_buf), "%u", _patches_newgame.generation_seed);
-
-		InitializeTextBuffer(&querystr->text, _edit_str_buf, lengthof(_edit_str_buf), 120);
-		querystr->caption = STR_NULL;
-		querystr->afilter = CS_NUMERAL;
 
 		InvalidateWindow(WC_GENERATE_LANDSCAPE, mode);
 	}
