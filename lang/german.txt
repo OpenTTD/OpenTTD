@@ -160,7 +160,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kann die
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kann das Gebiet nicht räumen....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle Rechte vorbehalten
 STR_00B7_VERSION                                                :{BLACK}OpenTTD Version {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD-Team
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD-Team
 STR_TRANSLATED_BY                                               :{BLACK}  Übersetzer -
 
 STR_00C5                                                        :{BLACK}{CROSS}

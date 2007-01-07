@@ -159,7 +159,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Това
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Изчистването е невъзможно....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Авторски права {COPYRIGHT} 1995 Крис Сойер (Chris Sawyer), Всички права са запазени
 STR_00B7_VERSION                                                :{BLACK}OpenTTD версия {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 The OpenTTD team
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Преводач(и) -
 
 STR_00C5                                                        :{BLACK}{CROSS}

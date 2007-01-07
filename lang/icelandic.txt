@@ -159,7 +159,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Get ekki
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Get ekki hreinsað þetta svæði....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Upphaflegur höfundarréttur {COPYRIGHT} 1995 Chris Sawyer, Öll réttindi áskilin
 STR_00B7_VERSION                                                :{BLACK}OpenTTD útgáfa {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD hópurinn
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD hópurinn
 STR_TRANSLATED_BY                                               :{BLACK}  Þýðendur -
 
 STR_00C5                                                        :{BLACK}{CROSS}

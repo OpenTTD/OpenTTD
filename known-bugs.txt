@@ -19,6 +19,7 @@ Bugs for 0.5.0
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+-524	OSX sometimes (not always) fails to find free disk space
 -523	Aircraft too cheap
 -522	overflow on vehicle costs
 -521	Mythical train

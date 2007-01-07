@@ -78,7 +78,7 @@
 - Feature: Also allow horizontal and vertical rails on steep slopes (r5864)
 - Feature: Allow building of (certain) rails, roads and bridge ramps on steep sloped tiles (r5833)
 - Feature: Replacing from a train engine without cargo capacity to one with cargo capacity will now make autoreplace refit the engine to carry the cargo type from the last wagon in the train (r5465)
-- Feature: [OSX] Macs with touchpads that support two finger scrolling can now use this feature to move around the map (r5460)
+- Feature: [OSX] Macs with touchpads that support two finger scrolling can now use this "scrollwheel" to scroll up/down (r5460)
 - Feature: Allow building canals at sea-level, using ctrl to toggle canal or plain water tile. This allows building of non-raisable sea-level water ways (useful in multiplayer) and dikes for low-level areas (r5403)
 - Feature: Add 4 new airports. 2 for aircraft, 2 for helicopters (r5346)
 - Feature: Implement smooth horizontal depot and, vehicle list scrolling for trains (r5046)

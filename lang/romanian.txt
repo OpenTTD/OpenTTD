@@ -159,7 +159,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nu pot f
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nu pot curãta terenul....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, toate drepturile rezervate
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versiunea {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 Echipa OpenTTD
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 Echipa OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Translator(i) -
 
 STR_00C5                                                        :{BLACK}{CROSS}

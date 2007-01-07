@@ -86,7 +86,7 @@ BEGIN
             VALUE "FileDescription", "OpenTTD\0"
             VALUE "FileVersion", "Development Version\0"
             VALUE "InternalName", "openttd\0"
-            VALUE "LegalCopyright", "Copyright © OpenTTD Developers 2002-2006. All Rights Reserved.\0"
+            VALUE "LegalCopyright", "Copyright © OpenTTD Developers 2002-2007. All Rights Reserved.\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "openttd.exe\0"
             VALUE "PrivateBuild", "\0"
