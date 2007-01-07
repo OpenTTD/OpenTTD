@@ -3301,7 +3301,7 @@ static void InitializeGRFSpecial(void)
 	                   |        ((_patches.mammoth_trains ? 1 : 0) << 0x08)  // mammothtrains
 	                   |                                        (1 << 0x09)  // trainrefit
 	                   |                                        (0 << 0x0B)  // subsidiaries
-	                   |       ((_patches.gradual_loading ? 1 : 0) << 0x1C)  // gradualloading
+	                   |       ((_patches.gradual_loading ? 1 : 0) << 0x0C)  // gradualloading
 	                   |                                        (1 << 0x12)  // unifiedmaglevmode - set bit 0 mode. Not revelant to OTTD
 	                   |                                        (1 << 0x13)  // unifiedmaglevmode - set bit 1 mode
 	                   |                                        (1 << 0x14)  // bridgespeedlimits
