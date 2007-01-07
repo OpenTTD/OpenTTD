@@ -440,7 +440,9 @@ static void SdlVideoMainLoop(void)
 #if defined(_DEBUG)
 		if (_shift_pressed)
 #else
-		if (keys[SDLK_TAB])
+		/* Speedup when pressing tab, except when using ALT+TAB
+		 * to switch to another application */
+		if (keys[SDLK_TAB] && (mod & KMOD_ALT) == 0)
 #endif
 		{
 			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
