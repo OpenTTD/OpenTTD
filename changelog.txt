@@ -1,3 +1,13 @@
+0.5.0-RC3 (2007-01-07)
+------------------------------------------------------------------------
+- Codechange: Add Lithuanian language as an official translation (r7806)
+- Fix: The configure script did not work work for dash, a sh compatible shell [FS#485] (r7893)
+- Fix: [OSX] control + enter no longer fullscreens, interfered with team-chat (r7886)
+- Fix: Offset engines/wagons by half width in details window; fixes overflowing for display (r7864)
+- Fix: [OSX] Remove incorrect debug message about missing grf files. (r7766)
+- Fix: [sdl] sometimes ALT-TAB could trigger the fast forward (r7727)
+
+
 0.5.0-RC2 (2006-12-31)
 ------------------------------------------------------------------------
 - General Removed support for OSX older than 10.3.9. Either upgrade, or use 0.4.8 (compatible with OSX 10.2)

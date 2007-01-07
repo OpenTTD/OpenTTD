@@ -19,8 +19,17 @@ Bugs for 0.5.0
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+-523	Aircraft too cheap
+-522	overflow on vehicle costs
+-521	Mythical train
+-519	Bridge building results in 'missing' pieces
+-518	Vehicle at final leg of transfer chain gets negative profit on load
+-513	Client Crash - Server running saved game
+-508	Destroying trees and replanting => raised rating
+-503	Load game failed: inflate() failed.
+-502	OSX can incorrectly print "dbg: [sl] Cannot open savegame 'data/opntitle.dat' for saving/loading."
+-501	Mouse pointer gets hidden, when draging out of window and back again. Only affects Wacom etc.
 -489	[0.5.0rc1] Sound choppy on Vista
--488	Can't build trains after year 2000
 -483	!invalid string id 0 in GetString when trying to host a game after upgrade to 0.5.0-RC1 - workaround
 -474	Overtaking car doesn't hit the against-riding car.
 -465	Crash in Linux (Debian)
@@ -28,7 +37,6 @@ URL: http://bugs.openttd.org
 -459	Merging is buggy
 -458	Crash when changing Resolution on Mac OS X (x86)
 -450	GUI selecting disabled numbers (newstations)
--445	unable to open previously saved game in r7425
 -444	Compile issues (networking) on Sun and SGI platforms
 -442	Alt-tab behaviour flawed whilst full screen (win32)
 -441	Transparent stuff
@@ -37,14 +45,12 @@ URL: http://bugs.openttd.org
 -423	Improved loading causes high CPU use with long trains
 -410	Openttd in dedicated mode don't run without data files
 -404	Cargo never delivered to station after bribe and before first pickup
--391	Smth stange with train depots
 -379	Integer overflow with huge cities
 -365	Blimp Stuck at airport
 -362	Changing signal type affects whole square
 -357	CPU spikes in game
 -355	graphics bugs with trains - water, tunnels
 -354	Maglev Trains faster than All Planes
--344	Nightly builds crash on Mac OS X PPC
 -339	Crash in Quicktime when exiting game
 -299	disable 90 deg turns patch - AI builds 90 deg turns
 -290	NPF - no path to depot from tunnel
@@ -53,9 +59,7 @@ URL: http://bugs.openttd.org
 -265	Subsidy awarded detection bug
 -259	AIs start unnamed companies that do nothing
 -216	AI build train vans one van less
--210	Incorrect semaphor beaviour
 -202	2 Locomotives in 1 Train - Selling one results in Age of the other one Being 0
--195	Cannot delete train
 -193	Inconsistent directory usage on Mac OS X
 -165	vehicle length not taken into account
 -163	Cargo: Station destroyed / High payment
@@ -71,18 +75,11 @@ URL: http://bugs.openttd.org
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 
--1623073	0.5.0 RC1 gotten money to build bridge
--1616411	Game very slow when Xorg color depth is different than 8bpp
 -1573339	0.4.8.dmg Crash with intel 64bit
 -1460218	0.4.7 normal industry bug (non_smooth)
 -1459262	Towns building too many roads way too long now
 -1458995	Another bug with smooth_economy
--1436419	Vehicles profits gone negative.......bug
--1427531	Newspapers problem
--1417453	Makefile and Variables issue
--1397638	Economics bug?
 -1393415	NPF & one-way sigs
--1389986	Shares problem (nightly 3330)
 -1244842	Multiplayer interface bug (0.4.0.1)
 -1212267	station visited twice when servicing
 -1208170	Duplicate station names can be created
@@ -109,9 +106,9 @@ URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 -1084620	Minor bug considering buses/trucks
 -1034310	color mauve in diagrams
 -1030661	It's possible to build a tunnel under oil wells
--0993516	Canal + bouy -> wrong graphics.
--0987891	Large UFO destruction bug
--0987883	Aircraft landing/taking off
--0987880	company league table updating
--0985924	aircraft taxi speed
--0941694	Clipping problems stations/vehicles on slopes
+- 993516	Canal + bouy -> wrong graphics.
+- 987891	Large UFO destruction bug
+- 987883	Aircraft landing/taking off
+- 987880	company league table updating
+- 985924	aircraft taxi speed
+- 941694	Clipping problems stations/vehicles on slopes
