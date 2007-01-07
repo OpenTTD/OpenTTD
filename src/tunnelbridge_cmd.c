@@ -371,9 +371,9 @@ not_valid_below:;
 	}
 
 	if (flags & DC_EXEC) {
-		Axis axis = AxisToTrack(direction);
-		SetSignalsOnBothDir(tile_start, axis);
-		YapfNotifyTrackLayoutChange(tile_start, axis);
+		Track track = AxisToTrack(direction);
+		SetSignalsOnBothDir(tile_start, track);
+		YapfNotifyTrackLayoutChange(tile_start, track);
 	}
 
 	/* for human player that builds the bridge he gets a selection to choose from bridges (DC_QUERY_COST)
