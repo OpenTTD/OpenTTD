@@ -253,7 +253,7 @@ const byte _ffb_64[128] = {
 
 static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
-	uint bits = 0;
+	uint bits;
 	int i;
 	RememberData rd;
 	TileIndex tile_org = tile;
@@ -276,53 +276,41 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	}
 	tile += TileOffsByDiagDir(direction);
 
-	/* check if the new tile can be entered from that direction */
-	/* Inside this block we should not use 'return' to indicate 'no way' condition (at least for rail transport type) */
-	if (tpf->tracktype == TRANSPORT_ROAD || tpf->tracktype == TRANSPORT_RAIL) {
-		if (tpf->tracktype == TRANSPORT_RAIL) {
-			/* don't enter train depot from the back */
-			if (IsTileDepotType(tile, TRANSPORT_RAIL) && GetRailDepotDirection(tile) == direction) goto no_way;
+	/* Check in case of rail if the owner is the same */
+	if (tpf->tracktype == TRANSPORT_RAIL) {
+		// don't enter train depot from the back
+		if (IsTileDepotType(tile, TRANSPORT_RAIL) && GetRailDepotDirection(tile) == direction) return;
 
-			/* Check in case of rail if the owner is the same */
-			if (IsTileType(tile_org, MP_RAILWAY) || IsTileType(tile_org, MP_STATION) || IsTileType(tile_org, MP_TUNNELBRIDGE))
-				if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
-					/* Check if we are on a bridge (middle parts don't have an owner */
-					if (!IsBridgeTile(tile) || !IsBridgeMiddle(tile))
-						if (!IsBridgeTile(tile_org) || !IsBridgeMiddle(tile_org))
-							if (GetTileOwner(tile_org) != GetTileOwner(tile)) goto no_way;
+		if (IsTileType(tile_org, MP_RAILWAY) || IsTileType(tile_org, MP_STATION) || IsTileType(tile_org, MP_TUNNELBRIDGE))
+			if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
+				/* Check if we are on a bridge (middle parts don't have an owner */
+				if (!IsBridgeTile(tile) || !IsBridgeMiddle(tile))
+					if (!IsBridgeTile(tile_org) || !IsBridgeMiddle(tile_org))
+						if (GetTileOwner(tile_org) != GetTileOwner(tile))
+							return;
+	}
 
-		} else if (tpf->tracktype == TRANSPORT_ROAD) {
-			/* road stops and depots now have a track (r4419) */
-			/* don't enter road stop from the back */
-			if (IsRoadStopTile(tile) && ReverseDiagDir(GetRoadStopDir(tile)) != direction) goto no_way;
-			/* don't enter road depot from the back */
-			if (IsTileDepotType(tile, TRANSPORT_ROAD) && ReverseDiagDir(GetRoadDepotDirection(tile)) != direction) goto no_way;
-		}
+	// check if the new tile can be entered from that direction
+	if (tpf->tracktype == TRANSPORT_ROAD) {
+		// road stops and depots now have a track (r4419)
+		// don't enter road stop from the back
+		if (IsRoadStopTile(tile) && ReverseDiagDir(GetRoadStopDir(tile)) != direction) return;
+		// don't enter road depot from the back
+		if (IsTileDepotType(tile, TRANSPORT_ROAD) && ReverseDiagDir(GetRoadDepotDirection(tile)) != direction) return;
+	}
 
-		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (IsTunnel(tile)) {
-				/* tunnel hole can be entered only from one direction */
-				if (GetTunnelDirection(tile) != direction) goto no_way;
-			}
-		}
-		if (tpf->tracktype == TRANSPORT_RAIL) {
-			/* check for the rail type compatibility */
-			Trackdir td = DiagdirToDiagTrackdir(direction);
-			RailType type_org = GetTileRailType(tile_org, td);
-			RailType type = GetTileRailType(tile, td);
-			if (type != type_org) {
-				// they can be compatible only if one is normal and the other one is elrail
-				if (type_org == RAILTYPE_RAIL && type != RAILTYPE_ELECTRIC) goto no_way;
-				if (type == RAILTYPE_RAIL && type_org != RAILTYPE_ELECTRIC) goto no_way;
-			}
+	/* Check if the new tile is a tunnel or bridge head and that the direction
+	 * and transport type match */
+	if (IsTileType(tile, MP_TUNNELBRIDGE) && IsTunnel(tile)) {
+		if (GetTunnelDirection(tile) != direction ||
+				GetTunnelTransportType(tile) != tpf->tracktype) {
+			return;
 		}
 	}
 
-	/* the next line is skipped when the new tile can't be entered from tile_org */
-	bits = GetTileTrackStatus(tile, tpf->tracktype);
-no_way:
-
 	tpf->rd.cur_length++;
+
+	bits = GetTileTrackStatus(tile, tpf->tracktype);
 
 	if ((byte)bits != tpf->var2) {
 		bits &= _tpfmode1_and[direction];
@@ -360,8 +348,8 @@ no_way:
 	if (tpf->hasbit_13)
 		return;
 
-	tile = tile_org;
 	direction = ReverseDiagDir(direction);
+	tile += TileOffsByDiagDir(direction);
 
 	bits = GetTileTrackStatus(tile, tpf->tracktype);
 	bits |= (bits >> 8);
