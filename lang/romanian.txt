@@ -154,6 +154,7 @@ STR_00B0_MAP                                                    :{WHITE}Harta - 
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Optiuni
 STR_00B2_MESSAGE                                                :{YELLOW}Mesaj
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaj de la {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Atentie!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nu pot face asta....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nu pot curãta terenul....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, toate drepturile rezervate
@@ -1308,6 +1309,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Proteja
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER PLIN
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIUNE DIFERITA
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF NEPOTRIVIRE
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Intrã în joc
 
@@ -2888,6 +2890,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nu exist
 STR_NEWGRF_FILENAME                                             :{BLACK}Nume fisier: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Esti pe cale sa faci modificari intr-un joc activ. Aceasta poate destabiliza OpenTTD.{}Esti absolut sigur ca vrei sa faci asta?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adauga
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adauga un fisier NewGRF in lista

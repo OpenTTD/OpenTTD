@@ -1079,7 +1079,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de paisagem com as de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ao deslizar com o rato, mover a vista na direcção oposta: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar as medidas quando se usam ferramentas de construção: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar medidas ao usar ferramentas de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar estampagens da companhia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Própria companhia

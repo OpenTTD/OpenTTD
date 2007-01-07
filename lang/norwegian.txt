@@ -1309,6 +1309,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Passord
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}TJENEREN ER KOBLET AV
 STR_NETWORK_SERVER_FULL                                         :{SILVER}TJENEREN ER FULL
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}DU HAR EN ANNEN VERSJON EN TJENEREN
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF MATCHER IKKE
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Bli med på spill
 
@@ -3015,6 +3016,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klikk fo
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} skilt
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Ombygningsordre stoppet pga. en feil {STRING} {COMMA}
 
 ############ Lists rail types
 

@@ -1310,6 +1310,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Passwor
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER VOLL
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}Versionskonflikt festgestellt
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF KONFLIKT
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Spiel betreten
 

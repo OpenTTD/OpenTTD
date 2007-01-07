@@ -1021,6 +1021,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Förbju
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Kombinera tågstationer som byggs bredvid varandra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Lämna stationen när något gods är fullt, om 'full load': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Använd förbättrad algoritm: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Lasta fordon gradvis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Leverera gods till en station enbart om någon frågar efter det: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillåt väldigt långa broar: {ORANGE}{STRING}

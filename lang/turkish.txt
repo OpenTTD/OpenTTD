@@ -88,7 +88,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT} kömü
 STR_QUANTITY_MAIL                                               :{COMMA} çanta posta
 STR_QUANTITY_OIL                                                :{VOLUME} petrol
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} tane hayvan
-STR_QUANTITY_GOODS                                              :{COMMA} kasa esya
+STR_QUANTITY_GOODS                                              :{COMMA} kasa eşya
 STR_QUANTITY_GRAIN                                              :{WEIGHT} tahıl
 STR_QUANTITY_WOOD                                               :{WEIGHT} odun
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} demir
@@ -396,7 +396,7 @@ STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm tü
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Bu araç türü için mümkün olan lokomotif tasarimlari
 STR_MANAGE_LIST                                                 :{BLACK}Listeyi yönet
-STR_MANAGE_LIST_TIP                                             :{BLACK}Listedeki tüm araçlara komut ver
+STR_MANAGE_LIST_TIP                                             :{BLACK}Listedeki tüm araçlara talimat ver
 STR_REPLACE_VEHICLES                                            :Araçları Değiştir
 STR_SEND_TRAIN_TO_DEPOT                                         :Gara Gönder
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Garaja Gönder
@@ -550,7 +550,7 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Sarki{SETX 88}Basligi
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Sarki{SETX 88}Başlığı
 STR_01E9_SHUFFLE                                                :{TINYFONT}Rastgele
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Müzik Programi Seçimi
@@ -741,8 +741,8 @@ STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Yüksekl
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Bu senaryodan çıkmak istediğinizden emin misiniz ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Editörden Çık
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...nüfusu en az 1200 olan şehirlere yapılabilir
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Baslama yılını düşür
-STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Baslama yılını arttır
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Başlama yılını düşür
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Başlama yılını arttır
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...köprünün uçları karada olmalı
 STR_02A1_SMALL                                                  :{BLACK}Küçük
 STR_02A2_MEDIUM                                                 :{BLACK}Orta
@@ -1012,7 +1012,7 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Yamalar�
 STR_CONFIG_PATCHES_OFF                                          :Kapalı
 STR_CONFIG_PATCHES_ON                                           :Açık
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Durum çubuğunda arabanın hızını göster: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Sahil ve eğimli araziye inşaat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Sahile ve eğimli araziye inşaat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Daha gerçekçi kapsama alanı: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Şehrin yollarını, köprülerini yıkma izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Çok uzun trenlere izin ver: {ORANGE}{STRING}
@@ -1350,7 +1350,7 @@ STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{S
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Konuşulan dil:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Diğer oyuncular sunucuda hangi dilin konuşulacağını bilecek
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_START_GAME                                          :{BLACK}Oyunu Baslat
+STR_NETWORK_START_GAME                                          :{BLACK}Oyunu Başlat
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Rastgele harita ya da senaryoda network oyunu aç
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Oyun Yükle
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Kayıtlı oyunu devam ettir (doğru oyuncu olarak bağlandığından emin ol)
@@ -2106,7 +2106,7 @@ STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Araç re
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Müdürün ismini değiştir
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Şirket ismini değiştir
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}İstediginiz rengi seçin
-STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Kredi miktarını arttır
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Kredi ödünç al
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Krediyi öde
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Manager)
 STR_7038_INAUGURATED                                            :{GOLD}Kuruluş: {WHITE}{NUM}
@@ -2156,9 +2156,9 @@ STR_7067_TRAFFIC_MANAGER                                        :Trafik Müdür�
 STR_7068_TRANSPORT_COORDINATOR                                  :Nakliyeci
 STR_7069_ROUTE_SUPERVISOR                                       :Rota Yöneticisi
 STR_706A_DIRECTOR                                               :Yönetmen
-STR_706B_CHIEF_EXECUTIVE                                        :Bas Yönetici
+STR_706B_CHIEF_EXECUTIVE                                        :Baş Yönetici
 STR_706C_CHAIRMAN                                               :Başkan
-STR_706D_PRESIDENT                                              :Basbakan
+STR_706D_PRESIDENT                                              :Başbakan
 STR_706E_TYCOON                                                 :Kodaman(Tycoon)
 STR_706F_BUILD_HQ                                               :{BLACK}Bina Yap
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Şirket binasi yap / şirket binasina bak
@@ -2542,9 +2542,10 @@ STR_8826_GO_TO                                                  :{BLACK}Git
 STR_8827_FULL_LOAD                                              :{BLACK}Doldur
 STR_8828_UNLOAD                                                 :{BLACK}Boşalt
 STR_REFIT                                                       :{BLACK}Modifiye
+STR_REFIT_TIP                                                   :{BLACK}Bu talimatta değiştirilecek kargo türünü seçin. Değiştirmeyi kaldırmak için CTRL ile tıklayın
 STR_REFIT_ORDER                                                 :(Moifiye ile > {STRING})
-STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Komutlar)
-STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Komutların Sonu - -
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Talimatlar)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Talimatların Sonu - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Bakım
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Tren satın alınamaz...
@@ -2589,13 +2590,13 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Taşına
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Trenin ayrıntıları
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Her aracın kapasitesi
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Trenin kargo türlerine ayrilmis toplam kapasitesini göster
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Komut listesi - seçmek için komutu tıklayın. CTRL + tıklama istasyona kaydırir
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Şimdiki komutu atlayıp sıradakine geç
-STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Seçili komutu sil
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili komutu durmadan yap
-STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Seçili komutun önüne ya da listenin sonuna komut ekle
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili komutu yaparken tren dolana kadar beklesin
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili komutu yaparken tren mutlaka yükünü boşaltsın
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Talimat listesi - seçmek için komutu tıklayın. CTRL + tıklama istasyona kaydırir
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Şimdiki talimatı atlayıp sıradakine geç
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Seçili talimatı sil
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı durmadan yap
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Seçili talimatın önüne ya da listenin sonuna komut ekle
+STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren dolana kadar beklesin
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren mutlaka yükünü boşaltsın
 STR_SERVICE_HINT                                                :{BLACK}Bakım gerekmiyorsa bunu atla
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Yeni bir araç üretildi: {STRING}
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2654,7 +2655,7 @@ STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Yerel ga
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Arabalar - bilgi için arabaya tıklayın
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Yeni araba al (araba garajı gerekir)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Aracın durumu - durdurmak/başlatmak için tıklayın
-STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Aracın komutlarını görmek için tıklayın
+STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Aracın talimatlarını görmek için tıklayın
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Arabayı göster
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Aracı garaja gönder
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Aracı etrafta dolaşmaya zorla
@@ -2840,7 +2841,7 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Servis: {STATIO
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeplin düştü - {STATION}!
-STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}UFO'ya çarpan araba parçalandı!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}UFO'yla çarpışan araba parçalandı!
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}{TOWN} yakınlarındaki petrol rafinerisi patladı!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}{TOWN} yakınlarındaki fabrika kundaklandı!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}{TOWN} yakınlarına UFO kondu!
@@ -2935,10 +2936,10 @@ STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Uçaklar
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Gemiler
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Komut listesinde bu durak olan trenleri listele
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Komut listesinde bu durak olan arabaları listele
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Komut listesinde bu durak olan uçakları listele
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Komut listesinde bu durak olan gemileri listele
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Talimat listesinde bu durak olan trenleri listele
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Talimat listesinde bu durak olan arabaları listele
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Talimat listesinde bu durak olan uçakları listele
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Talimat listesinde bu durak olan gemileri listele
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} Aracın paylaşılan talimatları
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Aynı talimatlara sahip bütün araçları göster
@@ -2979,7 +2980,7 @@ STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Uçak
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} Değiştir
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Araçları Değiştirmeye Basla
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Araçları Değiştirmeye Başla
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Araçları değiştirmeyi durdur
 STR_NOT_REPLACING                                               :{BLACK}Değiştirilmiyor
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Hiç Araç Seçilmedi
@@ -3015,6 +3016,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Listedek
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Talimat değiştirme başarısız durduruldu {STRING} {COMMA}
 
 ############ Lists rail types
 
@@ -3065,7 +3067,7 @@ STR_GENERATE_DATE                                               :{BLACK}{DATE_LO
 STR_SNOW_LINE_UP                                                :{BLACK}Kar yüksekliğini bir arttır
 STR_SNOW_LINE_DOWN                                              :{BLACK}Kar yüksekliğini bir azalt
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Kar yüksekliğini değiştir
-STR_START_DATE_QUERY_CAPT                                       :{WHITE}Baslangic yılını değiştir
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Başlangıç yılını değiştir
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}

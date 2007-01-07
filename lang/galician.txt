@@ -286,8 +286,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informac
 STR_013E_CAPACITIES                                             :{BLACK}Capacidades
 STR_013E_TOTAL_CARGO                                            :{BLACK}Carga Total
 STR_013F_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Capacidade: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Carga total (capacidade) deste tren:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nova Partida
 STR_0141_LOAD_GAME                                              :{BLACK}Cargar Partida
 STR_SINGLE_PLAYER                                               :{BLACK}Un Xogador
@@ -384,7 +386,13 @@ STR_ENGINE_SORT_INTRO_DATE                                      :Data de Present
 STR_ENGINE_SORT_RUNNING_COST                                    :Coste Mantemento
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potencia/Coste Mantemento
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade De Carga
+STR_NO_WAITING_CARGO                                            :{BLACK}Non queda ningún tipo de carga en espera
+STR_MANAGE_LIST                                                 :{BLACK}Xestionar lista
 STR_REPLACE_VEHICLES                                            :Reemplazar Vehículos
+STR_SEND_TRAIN_TO_DEPOT                                         :Enviar o Depósito
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Enviar o Depósito
+STR_SEND_SHIP_TO_DEPOT                                          :Enviar o Depósito
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Enviar o Hangar
 
 ############ range for months starts
 STR_0162_JAN                                                    :Xan
@@ -894,6 +902,7 @@ STR_CURR_RUR                                                    :Rublo Ruso (RUR
 STR_CURR_SIT                                                    :Tolar Esloveno (SIT)
 STR_CURR_SEK                                                    :Corona Sueca(SEK)
 STR_CURR_YTL                                                    :Lira Turca (YTL)
+STR_CURR_BRR                                                    :Real Brasileño (BRL)
 
 STR_CURR_CUSTOM                                                 :Persoal...
 
@@ -1173,6 +1182,7 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Arrastra
 
 STR_DRAG_DROP                                                   :{BLACK}Arrastrar e Soltar
 STR_STATION_DRAG_DROP                                           :{BLACK}Construír estación arrastrando e soltando
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Selecciona o tipo da estación a construir
 
 STR_FAST_FORWARD                                                :{BLACK}Avance rápido da partida
 STR_MESSAGE_HISTORY                                             :{WHITE}Historial de Mensaxes
@@ -1409,6 +1419,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} O servi
 
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Cliente
+STR_NETWORK_SPECTATORS                                          :Espectadores
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(ningún)
 STR_NETWORK_CLIENTLIST_KICK                                     :Patear
@@ -2129,6 +2140,12 @@ STR_LIVERY_MONORAIL                                             :Máquina Monorr
 STR_LIVERY_MAGLEV                                               :Máquina Maglev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagón De Pasaxeiros (Vapor)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagón De Pasaxeiros (Diésel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagón De Pasaxeiros (Eléctrico)
+STR_LIVERY_FREIGHT_WAGON                                        :Vagón de Carga
+STR_LIVERY_BUS                                                  :Autobús
+STR_LIVERY_TRUCK                                                :Camión
 STR_LIVERY_PASSENGER_SHIP                                       :Barco de Pasaxeiros
 STR_LIVERY_FREIGHT_SHIP                                         :Barco de Carga
 STR_LIVERY_HELICOPTER                                           :Helicóptero
@@ -2436,15 +2453,18 @@ STR_INVALID_ORDER                                               :{RED} (Orde Inv
 STR_UNKNOWN_DESTINATION                                         :destino descoñecido
 STR_8812_EMPTY                                                  :{LTBLUE}Valeiro
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} desde {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}O tren {COMMA} está a esperar no depósito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Novos Vehículos
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}O tren é demasiado longo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Os trens só se poden alterar cando estean parados nunha estación
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Trens
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novos Vehículos de Ferrocarril
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novos Vehículos de Monorraíl
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novos Vehículos de Maglev
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construír Vehículo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar Vehículo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esto construíra unha copia do vehículo. CTRL+Click compartirá as ordes
@@ -2794,6 +2814,19 @@ STR_NEWGRF_TIP                                                  :{BLACK}Unha lis
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}¡Non hai ficheiros newgrf instalados! Consulta no manual as instruccións para instalar novos gráficos
 STR_NEWGRF_FILENAME                                             :{BLACK}Ficheiro: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}Suma MD5: {SILVER}{STRING}
+
+STR_NEWGRF_ADD                                                  :{BLACK}Engadir
+STR_NEWGRF_REMOVE                                               :{BLACK}Eliminar
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Elimina-lo arquivo NewGRF seleccionado da lista
+STR_NEWGRF_MOVEUP                                               :{BLACK}Mover Arriba
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Move-lo arquivo NewGRF seleccionado arriba na lista
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mover Abaixo
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Move-lo arquivo NewGRF seleccionado abaixo na lista
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parámetros: {SILVER}{STRING}
+
+
+STR_NEWGRF_DISABLED                                             :{RED}Desactivado
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda persoalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -2825,11 +2858,9 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar 
 
 ### depot strings
 
-STR_SELL                                                        :{BLACK}Vender
-STR_ARE_YOU_SURE                                                :{BLACK}¿Estás seguro?
-
-
-
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender tódolos trens do depósito
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender tódolos barcos no depósito
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender tódalas aeronaves do hangar
 
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autorreemprazar tódolos trens no depósito
@@ -2900,9 +2931,11 @@ STR_RANDOM                                                      :{BLACK}Aleatori
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Xeración do mundo
 STR_RANDOM_SEED                                                 :{BLACK}Semilla Aleatoria:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Pincha para introducir unha semilla
+STR_LAND_GENERATOR                                              :{BLACK}Xerador de terreo:
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreo:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nivel do mar:
 STR_SMOOTHNESS                                                  :{BLACK}Suavidade:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Altura da liña de neve:
 STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. de cidades:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. de industrias:
@@ -2945,5 +2978,7 @@ STR_HELIPORTS                                                   :{BLACK}Aeroport
 
 STR_MEASURE_LENGTH                                              :{BLACK}Lonxitude: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Área: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lonxitude: {NUM}{}Diferencia de altura: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {NUM} x {NUM}{}Diferencia de altura: {NUM} m
 
 ########

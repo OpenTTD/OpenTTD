@@ -244,8 +244,7 @@
 		<File
 			RelativePath=".\lang\lithuanian.txt">
 			<FileConfiguration
-				Name="Debug|Win32"
-				ExcludedFromBuild="TRUE">
+				Name="Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating lithuanian language file"

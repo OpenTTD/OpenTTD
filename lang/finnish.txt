@@ -154,11 +154,12 @@ STR_00B0_MAP                                                    :{WHITE}Kartta -
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Pelin asetukset
 STR_00B2_MESSAGE                                                :{YELLOW}Viesti
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Viesti: {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Varoitus!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ei onnistu....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Aluetta ei voi tyhjentää....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Alkuperäiset oikeudet {COPYRIGHT} 1995 Chris Sawyer, kaikki oikeudet pidätetään
 STR_00B7_VERSION                                                :{BLACK}OpenTTD-versio {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD-yhteisö
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Kääntäjä(t) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -166,7 +167,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Sulje
 STR_00C8_YES                                                    :{BLACK}Kyllä
 STR_00C9_NO                                                     :{BLACK}Ei
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Hylätäänkö peli ja palataan {STRING}-järjestelmään?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Lopetetaanko peli ja palataan {STRING}-järjestelmään?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -201,21 +202,21 @@ STR_00E9_VEGETATION                                             :Kasvillisuus
 STR_00EA_OWNERS                                                 :Omistajat
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Tie
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Rautatie
-STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Asema/lentokenttä/satama
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Asemat/lentokentät/satamat
 STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Rakennus
-STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Liikenneväline
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Liikennevälineet
 STR_00F0_100M                                                   :{BLACK}{TINYFONT}100 m
 STR_00F1_200M                                                   :{BLACK}{TINYFONT}200 m
 STR_00F2_300M                                                   :{BLACK}{TINYFONT}300 m
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400 m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500 m
-STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Juna
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Ajoneuvo
-STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Laiva
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lentokone
-STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Kuljetusreitti
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Junat
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Ajoneuvot
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Laivat
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lentokoneet
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Kuljetusreitit
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Hiilikaivos
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Sähkölaitos
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Voimala
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Metsä
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Saha
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Öljynjalostamo
@@ -229,7 +230,7 @@ STR_0105_BANK                                                   :{BLACK}{TINYFON
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Paperitehdas
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Kultakaivos
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Ruoanjalostamo
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}timanttikaivos
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Timanttikaivos
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Kuparikaivos
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Hedelmäviljelmä
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kumiviljelmä
@@ -242,7 +243,7 @@ STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFON
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Limsakenttä
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Lelukauppa
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Lelutehdas
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Muovikaivo
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Muovilähde
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Sihijuomatehdas
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Kuplageneraattori
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Toffeelouhos
@@ -269,8 +270,8 @@ STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Peruuta
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Nimeä uud.
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Liian monta nimeä määritelty.
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Nimi on jo käytössä.
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Liian monta nimeä määritelty
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Nimi on jo käytössä
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
@@ -282,7 +283,7 @@ STR_OSNAME_OS2                                                  :OS/2
 
 STR_013B_OWNED_BY                                               :{WHITE}...omistaja: {STRING}
 STR_013C_CARGO                                                  :{BLACK}Rahti
-STR_013D_INFORMATION                                            :{BLACK}Tietoja
+STR_013D_INFORMATION                                            :{BLACK}Tietoa
 STR_013E_CAPACITIES                                             :{BLACK}Kapasiteetit
 STR_013E_TOTAL_CARGO                                            :{BLACK}Rahtia yhteensä
 STR_013F_CAPACITY                                               :{BLACK}Kapaisteetti: {LTBLUE}{CARGO}
@@ -308,7 +309,7 @@ STR_0148_GAME_OPTIONS                                           :{BLACK}Pelin as
 STR_0150_SOMEONE                                                :joku{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Maailmankartta
 STR_0152_TOWN_DIRECTORY                                         :Kaupunkihakemisto
-STR_0153_SUBSIDIES                                              :Tukitarjoukset
+STR_0153_SUBSIDIES                                              :Tukiaiset
 
 STR_UNITS_IMPERIAL                                              :Englantilainen
 STR_UNITS_METRIC                                                :Metrinen
@@ -343,17 +344,17 @@ STR_UNITS_FORCE_METRIC                                          :{COMMA} tf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Käyttökatekuvaaja
-STR_0155_INCOME_GRAPH                                           :Ansiotulon kuvaaja
-STR_0156_DELIVERED_CARGO_GRAPH                                  :Kuljetetun rahdin kuvaaja
-STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Suoritehistoriakuvaaja
-STR_0158_COMPANY_VALUE_GRAPH                                    :Yhtiön arvon kuvaaja
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Liikevoitto
+STR_0155_INCOME_GRAPH                                           :Tulot
+STR_0156_DELIVERED_CARGO_GRAPH                                  :Kuljetettu rahti
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Suoritehistoria
+STR_0158_COMPANY_VALUE_GRAPH                                    :Yhtiön arvo
 STR_0159_CARGO_PAYMENT_RATES                                    :Rahtimaksutaksat
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Yhtiökilpataulukko
 STR_PERFORMANCE_DETAIL_MENU                                     :Suoritearviointi
 ############ range for menu	ends
 
-STR_015B_OPENTTD                                                :{WHITE}Tietoja OpenTTD:stä
+STR_015B_OPENTTD                                                :{WHITE}Tietoa OpenTTD:stä
 STR_015C_SAVE_GAME                                              :Tallenna peli
 STR_015D_LOAD_GAME                                              :Lataa peli
 STR_015E_QUIT_GAME                                              :Lopeta peli
@@ -393,7 +394,14 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Rahtikapasiteet
 STR_NO_WAITING_CARGO                                            :{BLACK}Minkäänlaista lastia ei ole odottamassa
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Valitse kaikki laitteet
 STR_SELECT_ALL_TYPES                                            :{BLACK}Valitse kaikki lastityypit (myös odottava lasti)
+STR_MANAGE_LIST                                                 :{BLACK}Muokkaa listaa
+STR_MANAGE_LIST_TIP                                             :{BLACK}Ohjaa kaikkia listan ajoneuvoja
 STR_REPLACE_VEHICLES                                            :Korvaa liikennevälineitä
+STR_SEND_TRAIN_TO_DEPOT                                         :Lähetä varikolle
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Lähetä varikolle
+STR_SEND_SHIP_TO_DEPOT                                          :Lähetä varikolle
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Lähetä varikolle
+STR_SEND_FOR_SERVICING                                          :Lähetä huollettavaksi
 
 ############ range for months starts
 STR_0162_JAN                                                    :01.
@@ -417,7 +425,7 @@ STR_0171_PAUSE_GAME                                             :{BLACK}Tauko
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Pelin tallennus, hylkääminen ja lopetus.
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Näytä luettelo yhtiön asemista.
 STR_0174_DISPLAY_MAP                                            :{BLACK}Näytä kartta.
-STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Näytä kartta, kaupunkihakemisto
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Näytä kartta, kaupunkihakemisto.
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Näytä kaupunkihakemisto.
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Näytä yhtiön taloustiedot.
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Näytä yhtiön yleiset tiedot.
@@ -438,7 +446,7 @@ STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Maa-alue
 STR_0187_OPTIONS                                                :{BLACK}Asetukset
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
-STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Huoltoväliä ei voi muuttaa...
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Huoltoväliä ei voi muuttaa.
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Sulje ikkuna
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Ikkunan otsake - vedä tästä siirtääksesi ikkunaa
 STR_STICKY_BUTTON                                               :{BLACK}Merkitse ikkuna tahmeaksi; 'Sulje kaikki ikkunat'-nappi ei vaikuta tahmeisiin ikkunoihin.
@@ -468,11 +476,11 @@ STR_019D_AIRCRAFT                                               :Lentokone
 STR_019E_SHIP                                                   :Laiva
 STR_019F_TRAIN                                                  :Juna
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} vanhenee.
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} on kohta todella vanha.
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} on kohta todella vanha ja pitää pikaisesti korvata.
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} on todella vanha.
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} on todella vanha ja täytyy korvata pikaisesti.
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maa-aluetiedot
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhdistuksen kustannus: {LTBLUE}-
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhdistuksen kustannus: {LTBLUE}{CURRENCY}
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhdistuksen hinta: {LTBLUE}-
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhdistuksen hinta: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :-
 STR_01A7_OWNER                                                  :{BLACK}Omistaja: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Kunta: {LTBLUE}{STRING}
@@ -521,7 +529,7 @@ STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Vastaano
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz-jukeboksi
 STR_01D3_SOUND_MUSIC                                            :Ääni/musiikki
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Näytä ääniasetukset.
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Näytä ääni- ja musiikkiasetukset
 STR_01D5_ALL                                                    :{TINYFONT}Kaikki
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Vanha tyyli
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Uusi tyyli
@@ -535,7 +543,7 @@ STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Hyppää
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Hyppää seuraavaan raitaan.
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Pysäytä musiikki.
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Aloita musiikki.
-STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Aseta liukusäätimiä vetämällä sopiva äänenvoimakkuus musiikille ja äänitehosteille.
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Aseta liukusäätimillä sopiva äänenvoimakkuus musiikille ja tehosteille.
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
@@ -543,23 +551,23 @@ STR_01E6                                                        :{DKGREEN}{TINYF
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Raita{SETX 88}Nimi
 STR_01E9_SHUFFLE                                                :{TINYFONT}Sekoita
-STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Ohjelmoi
+STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Soittolista
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Soittolistan valinta
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Raita
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Soittolista - '{STRING}'
-STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Tyhjää
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Tyhjennä
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Tallenna
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Raitojen nykyinen soittolista
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Nykyinen soittolista
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Valitse 'kaikki raidat'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Valitse 'vanhan tyylin musiikki'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Valitse 'uuden tyylin musiikki'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Valitse 'oma 1' (käyttäjän määritettävissä)
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Valitse 'oma 2' (käyttäjän määritettävissä)
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Tyhjää nykyinen soittolista (vain Oma1 tai Oma2)
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Tyhjennä nykyinen soittolista (vain Oma1 tai Oma2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Tallenna musiikkiasetukset
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Napsauta musiikkiraitaa lisätäksesi sen nykyiseen soittolistaan (vain Oma1 tai Oma2).
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Valitse musiikkiraita lisätäksesi sen nykyiseen soittolistaan (vain Oma1 tai Oma2).
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klikkaa raitaa poistaaksesi se nykyisestä ohjelmasta (ainoastaan Custom1 tai Custom2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Sekoittaminen päälle/pois
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Näytä musiikkiraitojen valintaikkuna
@@ -603,14 +611,14 @@ STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Luo skenaario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Skenaariomuokkain
-STR_0223_LAND_GENERATION                                        :{WHITE}Maan luominen
+STR_0223_LAND_GENERATION                                        :{WHITE}Maanrakennus
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND                                            :{BLACK}Satunnainen maa
 STR_0227_RESET_LAND                                             :{BLACK}Nollaa maa
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Suurenna madallettavan/korotettavan maa-alueen kokoa.
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Pienennä madallettavan/korotettavan maa-alueen kokoa.
-STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Luo satunnainen maa.
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Luo satunnainen maa
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nollaa maasto
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nollaa maasto
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Käytä korkeuskarttaa
@@ -633,10 +641,10 @@ STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...karta
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Suurenna kaupunkia
 STR_023C_EXPAND                                                 :{BLACK}Laajenna
 STR_023D_RANDOM_TOWN                                            :{BLACK}Satunnainen kaupunki
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Rakenna kaupunki satunnaiseen kohtaan
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Rakenna kaupunki satunnaiseen paikkaan
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Luo teollisuutta
 STR_0240_COAL_MINE                                              :{BLACK}Hiilikaivos
-STR_0241_POWER_STATION                                          :{BLACK}Sähkölaitos
+STR_0241_POWER_STATION                                          :{BLACK}Voimala
 STR_0242_SAWMILL                                                :{BLACK}Saha
 STR_0243_FOREST                                                 :{BLACK}Metsä
 STR_0244_OIL_REFINERY                                           :{BLACK}Öljynjalostamo
@@ -1029,6 +1037,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Vierit�
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Epäyhtenäiset asemat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uusi globaali tienhakualgor. (NPF, korvaa NTP:n): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Kerroin rahdin painolle raskaiden junien simuilointiin: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Salli aina pienet lentokentät: {ORANGE}{STRING}
 
@@ -2177,7 +2186,7 @@ STR_LIVERY_STEAM                                                :Höyryveturi
 STR_LIVERY_DIESEL                                               :Dieselveturi
 STR_LIVERY_ELECTRIC                                             :Sähköveturi
 STR_LIVERY_MONORAIL                                             :Yksiraiteinen veturi
-STR_LIVERY_MAGLEV                                               :Maglev veturi
+STR_LIVERY_MAGLEV                                               :Maglev-veturi
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Matkustajavaunu (höyry)
@@ -2199,7 +2208,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Näytä 
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Näytä lentokoneiden väriteemat
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Valitse valitulle teemalle ensisijainen väri
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Valitse valitulle teemalle toissijainen väri
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Valitse muutettava väriteema, tai valitse useita CTRL+klikkaus. Klikkaa valintalaatikkoa valitaksesi teeman
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Valitse muutettava väriteema, tai valitse useita CTRL pohjassa. Paina valintalaatikkoa valitaksesi teeman
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (höyry)
@@ -2878,16 +2887,30 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Yhtään
 STR_NEWGRF_FILENAME                                             :{BLACK}Tiedostonimi: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5-summa: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Olet tekemässä muutoksia käynnissä olevaan peliin. OpenTTD voi kaatua.{}Oletko varma?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Lisää
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lisää NewGRF-tiedosto listaan
 STR_NEWGRF_REMOVE                                               :{BLACK}Poista
 STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Poista valittu NewGRF-tiedosto listalta
 STR_NEWGRF_MOVEUP                                               :{BLACK}Siirrä ylös
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Siirrä valittua NewGRF-tiedostoa listassa ylöspäin
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Siirrä alas
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Siirrä valittua NewGRF-tiedostoa listassa alaspäin
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Lista asennetuista NewGRF-tiedostoista. Valitse tiedosto muokataksesi sen parametreja.
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parametrit: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Anna NewGRF-parametrit
+STR_NEWGRF_NO_INFO                                              :{BLACK}Ei tietoa
 
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}NewGRF-tiedostot
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Lisää valintaan
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Lisää valittu NewGRF-tiedosto peliin
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Päivitä
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Päivitä saatavilla olevien NewGRF-tiedostojen lista
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ei voi lisätä tiedostoa: duplicate GRF ID
 
+STR_NEWGRF_NOT_FOUND                                            :{RED}Sopivaa tiedostoa ei löydy
+STR_NEWGRF_DISABLED                                             :{RED}Ei käytössä
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuutta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vaihtokurssi: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -2997,7 +3020,7 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}Käskyn 
 
 STR_RAIL_VEHICLES                                               :Rautatiejunat
 STR_ELRAIL_VEHICLES                                             :Sähköjunat
-STR_MONORAIL_VEHICLES                                           :Yksiraidejunat
+STR_MONORAIL_VEHICLES                                           :Yksiraiteiset
 STR_MAGLEV_VEHICLES                                             :Maglev-junat
 
 ############ End of list of rail types

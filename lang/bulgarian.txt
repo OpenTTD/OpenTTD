@@ -154,6 +154,7 @@ STR_00B0_MAP                                                    :{WHITE}Карт
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Настройки
 STR_00B2_MESSAGE                                                :{YELLOW}Съобщение
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Съобщение от {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Внимание!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Това е невъзможно....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Изчистването е невъзможно....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Авторски права {COPYRIGHT} 1995 Крис Сойер (Chris Sawyer), Всички права са запазени
@@ -286,8 +287,10 @@ STR_013D_INFORMATION                                            :{BLACK}Инфо
 STR_013E_CAPACITIES                                             :{BLACK}Вместимости
 STR_013E_TOTAL_CARGO                                            :{BLACK}Общо товар
 STR_013F_CAPACITY                                               :{BLACK}Вместимост: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Капацитет: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Обща товарна вместимост на влака:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Нова игра
 STR_0141_LOAD_GAME                                              :{BLACK}Отвори игра
 STR_SINGLE_PLAYER                                               :{BLACK}Сам играч
@@ -391,7 +394,15 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Товарен 
 STR_NO_WAITING_CARGO                                            :{BLACK}Няма чакащ товар
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Избор на всички съоръжения
 STR_SELECT_ALL_TYPES                                            :{BLACK}Избор на всички товари (включително нечакащите)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Виж списъкът с наличните видове машини за този тип превозно средство.
+STR_MANAGE_LIST                                                 :{BLACK}Направи списък
+STR_MANAGE_LIST_TIP                                             :{BLACK}Прати инструкциите до всички машини в този лист
 STR_REPLACE_VEHICLES                                            :Замяна на превозни средства
+STR_SEND_TRAIN_TO_DEPOT                                         :Прати в депото
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Прати в сервиза
+STR_SEND_SHIP_TO_DEPOT                                          :Прати в дока
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Прати в хангара
+STR_SEND_FOR_SERVICING                                          :Прати за обслужване
 
 ############ range for months starts
 STR_0162_JAN                                                    :Ян
@@ -1010,6 +1021,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Заб�
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Обединяване на гари построени една до друга: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Напускане на станцията когато някой товар е пълен, при 'пълно зареждане': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Подобрен алгоритъм за зареждане: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Постепенно зареждане на автомобилите: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Инфлация: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Доставяне на стока до станция само ако има търсене: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Строене на много дълги мостове: {ORANGE}{STRING}
@@ -1026,6 +1038,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Пре�
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Подкупване на местната власт: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Нестандартни станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Нов глобален навигатор (NPF, отменя NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Теглови множител към товарите за симулация на тежки влакове: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Малки летища са винаги разрешени: {ORANGE}{STRING}
 
@@ -1296,6 +1309,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Защ�
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}ИЗКЛЮЧЕН СЪРВЪР
 STR_NETWORK_SERVER_FULL                                         :{SILVER}ПЪЛЕН СЪРВЪР
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}ГРЕШНА ВЕРСИЯ
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF БЪРКОТИЯ
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Присъединяване към игра
 
@@ -1999,7 +2013,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Отн�
 STR_26816_NONE                                                  :Николко
 STR_6816_LOW                                                    :Ниско/Малко
 STR_6817_NORMAL                                                 :Нормално
-STR_6818_HIGH                                                   :Високо/Много
+STR_6818_HIGH                                                   :Много
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Много бавно
@@ -2499,16 +2513,20 @@ STR_INVALID_ORDER                                               :{RED} (Нева
 STR_UNKNOWN_DESTINATION                                         :неизвестна дестинация
 STR_8812_EMPTY                                                  :{LTBLUE}Празен
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} от {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} от {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Влакът {COMMA} чака в депото
 STR_8815_NEW_VEHICLES                                           :{BLACK}Нови МПС-та
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Влакът е прекалено дълъг
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Влаковете могат да бъдат променяни само когато са спрени в депото
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Влак{P "" ове}
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Нови Машини за Двурелсов път
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Нови електрически влакове
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Нови Машини за Монорелсов път
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Нови Машини за Магниторелсов път
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}ЖП превозни средства
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Купи Машина
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Копиране на превозно средство
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Така ще бъде построено копие на пътното превозно средство. Натисни CTRL за да споделиш задачите
@@ -2863,6 +2881,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Сума
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Сума пари тази компания е всела от банката
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Натрупани точки от общия възможен брой
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF настройки
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf настройки
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Прилагане на промените
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Настройване на параметрите
@@ -2870,6 +2889,31 @@ STR_NEWGRF_TIP                                                  :{BLACK}Спис
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}В момента няма инсталирани newgrf файлове! Моля обърнете се към наръчника за инструкции по инсталирането на нова графика
 STR_NEWGRF_FILENAME                                             :{BLACK}Име на файл: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5 сума: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}На път си да извършиш промени в активна игра; това може да крашне OpenTTD.{}Напълно ли си сигурен в това?
+
+STR_NEWGRF_ADD                                                  :{BLACK}Добави
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавяне на NewGRF файл към списъка
+STR_NEWGRF_REMOVE                                               :{BLACK}Махни
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Премахва избрания NewGRF файл от списъка
+STR_NEWGRF_MOVEUP                                               :{BLACK}Нагоре
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Премества избрания NewGRF файл нагоре в списъка
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Надолу
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Премества избрания NewGRF файл надолу в списъка
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Списък на инсталираните NewGRF файлове. Изберете файл за да промените параметрите му
+STR_NEWGRF_PARAMETER                                            :{BLACK}Параметри: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Въвеждане на NewGRF параметри
+STR_NEWGRF_NO_INFO                                              :{BLACK}Няма налична информация
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Налични NewGRF файлове
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Добави избраните
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Добавя избраните NewGRF файлове към конфигурацията
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Обнови
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Обновява списъка с налични NewGRF файлове
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Не може да добавиш файл: дупликиран GRF ID
+
+STR_NEWGRF_NOT_FOUND                                            :{RED}Не е намерен отговарящ файл
+STR_NEWGRF_DISABLED                                             :{RED}Изключен
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Поръчкова валута
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменен курс: {ORANGE}{CURRENCY} = £ {COMMA}

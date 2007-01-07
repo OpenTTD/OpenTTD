@@ -1936,15 +1936,15 @@ STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}... les 
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} oznamuje skore uzavretie!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zasobovacie problemy donutili {INDUSTRY} oznamit skore uzavretie!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Nedostatok dostupnej drevnej suroviny donutil {INDUSTRY} oznamit skore uzavretie!
-STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zvysuje produkciu!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zvyšuje produkciu!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nove nalezisko uhlia sa objavilo v {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nove nalezisko ropy sa objavilo na {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Na {INDUSTRY} zlepsili pouzivane metody!Ocakava sa zdvojnasobenie produkcie!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} znizuje produkciu o 50%
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} znižuje produkciu o 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Premnozenie skodcov sposobilo znicenie urody na {INDUSTRY}!{}Produkcia sa znizila o 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}... moze byt umiestnene len pri okraji mapy
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{1:INDUSTRY} zvysuje produkciu {0:STRING.g} o {2:COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY} znizuje produkciu {0:STRING.g} o {2:COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{1:INDUSTRY} zvyšuje produkciu {0:STRING.g} o {2:COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY} znižuje produkciu {0:STRING.g} o {2:COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vlak v tuneli
