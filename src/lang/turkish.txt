@@ -1150,7 +1150,7 @@ STR_CHEATS                                                      :{WHITE}Hileler
 STR_CHEATS_TIP                                                  :{BLACK}Onay kutuları bu hilenin daha önce kullanılıp kullanmadığını bildirir.
 STR_CHEATS_WARNING                                              :{BLACK}Uyarı! Rakiplerine ihanet etmek üzeresin. Böyle bir davranışı sonsuza dek unutmayacaklarını akılda tut.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Parayı {CURRENCY64} kadar arttır
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Oyuncunun yerine geçme: {ORANGE}{COMMA}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Oyuncunun yerine geç: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Sihirli buldözer (normalde silinemeyen binaları siler): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tüneller kesişebilir: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Duraklama zamanında inşaat yap: {ORANGE}{STRING}
@@ -2054,7 +2054,7 @@ STR_683B_HOSTILE                                                :Katı
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
-STR_7002_PLAYER                                                 :(Oyuncu {COMMA})
+STR_7002_PLAYER                                                 :({COMMA}. Oyuncu)
 STR_7004_NEW_FACE                                               :{BLACK}Yeni Surat
 STR_7005_COLOR_SCHEME                                           :{BLACK}Renkler
 STR_7006_COLOR_SCHEME                                           :{GOLD}Renk:

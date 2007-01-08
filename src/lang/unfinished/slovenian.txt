@@ -1351,12 +1351,21 @@ STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Govorni 
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Drugi igralci bodo lahko vedeli, kateri jezik se govori na strežniku
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Začni igro
+STR_NETWORK_START_GAME_TIP                                      :{BLACK}Pozeni novo vecigralsko igro na nakljucnem ozemlju
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Naloži igro
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Nadaljuj prej shranjeno vecigralsko igro (pazi, da se povezes kot pravilen igralec)
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :Kakrsna koli
+STR_NETWORK_LANG_ENGLISH                                        :Angleska
+STR_NETWORK_LANG_GERMAN                                         :Nemska
+STR_NETWORK_LANG_FRENCH                                         :Francoska
 ############ End of leave-in-this-order
 
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Seje vecigralskih iger
 
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Priprava na vstop:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Seznam podjetij trenutno v tej igri. Lahko se pridruzis eni ali pozenes novo, ce je kako mesto podjetja prosto
 
 
 
@@ -2298,13 +2307,22 @@ STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Pojdi brez post
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Pojdi brez postanka do {STATION} (Prenesi in pusti prazno)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Pojdi brez postanka do {STATION} (Nalozi)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Pojdi brez postanka do {STATION} (Prenesi in pocakaj na polno breme)
+STR_GO_TO_TRAIN_DEPOT                                           :Pojdi v {TOWN} zeleznisko garazo
+STR_SERVICE_AT_TRAIN_DEPOT                                      :Na servis v {TOWN} zeleznisko garazo
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Pojdi brez postanka do garaze {TOWN}
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Non stop na servis v {TOWN} zeleznisko garazo
 
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Pelje v {TOWN} zeleznisko garazo
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Pelje v {TOWN} zeleznisko garazo, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Na servis v {TOWN} zeleznisko garazo
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Na servis v {TOWN} zeleznisko garazo, {VELOCITY}
 
+STR_INVALID_ORDER                                               :{RED} (Neveljaven ukaz)
 
 STR_UNKNOWN_DESTINATION                                         :neznana lokacija
 STR_8812_EMPTY                                                  :{LTBLUE}Prazen
 STR_8813_FROM                                                   :Tovor {LTBLUE}{CARGO} iz postaje {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} iz {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} caka v garazi
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nova vozila
 STR_8816                                                        :{BLACK}-
@@ -2391,9 +2409,11 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaci i
 STR_SERVICE_HINT                                                :{BLACK}Preskoci ta ukaz, razen ce je potreben servis
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nov {STRING} je sedaj na voljo!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Teza: {WEIGHT_S}{}Hitrost: {VELOCITY}  Moc: {POWER}{}Cena delovanja: {CURRENCY}/leto{}Zmogljivost: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}V okvari
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Stroski delovanja: {LTBLUE}{CURRENCY}/leto
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Teza: {LTBLUE}{WEIGHT_S}  {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Teza: {LTBLUE}{WEIGHT_S} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Najvecja hitrost: {LTBLUE}{VELOCITY} {BLACK}Max. v.sila: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Letosnji profit: {LTBLUE}{CURRENCY}  (lansko leto: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanseljivost: {LTBLUE}{COMMA}%  {BLACK}St. okvar od zadnjega servisa: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Ustavljeno
@@ -2412,6 +2432,8 @@ STR_886F_TRANSFER                                               :{BLACK}Prenos
 
 STR_TRAIN_STOPPING                                              :{RED}Ustavljam
 STR_TRAIN_STOPPING_VEL                                          :{RED}Ustavljam, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Nezdruzljiv tip tirov
+STR_TRAIN_NO_POWER                                              :{RED}Ni napetosti
 STR_TRAIN_START_NO_CATENARY                                     :Ta proga nima vodov napetosti, zato vlak ne more z mesta
 
 ##id 0x9000
@@ -2434,6 +2456,10 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE} ... mor
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ni mogoče prodati cestnega vozila ...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ni mogoče ustaviti/zagnati cestnega vozila ...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Cestno vozilo {COMMA} čaka v garaži
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Pelje v {TOWN} cestno garazo
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Pelje v {TOWN} cestno garazo, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Na servisiranje v {TOWN} cestno garazo
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Na servisiranje v {TOWN} cestno garazo, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ni mogoče poslati vozila v garažo ...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ni mogoče najti najbližje garaže
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Cestna vozila - kliknite na vozilo za informacije
@@ -2462,12 +2488,19 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Prometna nesreča!{}Voznik umrl v plamenih ob trku z vlakom
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Prometna nesreča!{}{COMMA} umrlo v plamenih ob trku z vlakom
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Ni mogoče okoli obrniti vozila ...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Ni moc obrniti vozil, sestavljenih iz vecih enot
 STR_9034_RENAME                                                 :{BLACK}Preimenuj
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Preimenuj cestno vozilo
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Preimenuj cestno vozilo
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Ni mogoče preimenovati cestnega vozila ...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Pojdi v garažo v mestu {TOWN}
+STR_SERVICE_AT_ROADVEH_DEPOT                                    :Na servis v {TOWN} cestno garazo
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Predelaj vozilo za prevoz druge vrste tovora
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Predelaj cestno vozilo
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Predelaj cestno vozilo za prevoz oznacenega tipa tovora
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ni mozna predelava cestnega vozila
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izberi tip tovora, ki ga bo vozilo prevazalo
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Gradnja pomola
@@ -2493,6 +2526,11 @@ STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit l
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanesljivost: {LTBLUE}{COMMA}%  {BLACK}Št. okvar od zadnjegea servisa: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zgrajen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapaciteta: {LTBLUE}{CARGO}
+STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ni mogoce ustaviti/zagnati ladje...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ni mogoce poslati ladje v garazo...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ni moc najti lokalne garaze
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Pelje v {TOWN} ladijsko garazo
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Pelje v {TOWN} ladijsko garazo, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Gre na servis v {TOWN} ladijsko garazo
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Gre na servis v {TOWN} ladijsko garazo, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Ladja {COMMA} caka v garazi
@@ -2732,34 +2770,156 @@ STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Prikaz s
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Avtomatsko zamenjaj vse vlake v garazi
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Avtomatsko zamenjaj vsa cestna vozila v garazi
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Avtomatsko zamenjaj vse ladje v garazi
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Samozamenjaj vsa letala v hangarju
 
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Vlak{P "" a i ov}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Cestn{P o i a ih} vozil{P o i a ""}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Lad{P ja ji je ij}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} letal{P o i a ""}
 
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zamenjaj {STRING}
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Zacni menjavo vozil
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ustavi menjavo vozil
+STR_NOT_REPLACING                                               :{BLACK}Ni menjave
+STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Ni izbranih vozil
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izberi tip lokomotive za zamenjati
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izberi vrsto lokomotive, ki jo hoces prestaviti na levo oznaceno mesto
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pritisni za zaustavitev zamenjave na levi izbranega tipa lokomotive
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pritisni za zacetek menjave levo oznacenega tipa lokomotive s tistim na desni.
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Izberi tip tirov, za katere zelis menjati lokomotive
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Prikaz tipa lokomotive, s katero bo zamenjana levo oznacena
+STR_REPLACE_HELP                                                :{BLACK}To ti dovoljuje zamenjavo enega tipa lokomotive z drugim, ko le-ta vstopi v garazo
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranitev vagonov: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Dovoli samozamenjavi, da z odstranitvijo vagonov, zacensi na zacetku, ohrani isto dolzino vlaka, ce bi ga menjava lokomotive podaljsala.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamenjuje: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} POSKUSNA MOZNOST {}Preklop med okni za menjavo lokomotiv in vagonov.{}Zamenjava vagonov je mozna edino, ce je lahko drugi tip vagona predelan za prevoz iste vrste tovora, kot prvi. To je preverjeno za vsak vagon, ko se izvrsi zamenjava,
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotive ni moc zgraditi
 
+STR_ENGINES                                                     :Lokomotive
 STR_WAGONS                                                      :Vagoni
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klikni za ustaviti vse vlake v garazi
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klikni za ustaviti vsa cestna vozila v garazi
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klikni za ustaviti vse ladje v garazi
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klikni za ustaviti vsa letala v hangarju
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klikni za zagon vseh vlakov v garazi
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klikni za zagon vseh cestnih vozil v garazi
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klikni za zagon vseh ladij v garazi
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klikni za zagon vseh letal v hangarju
 
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klikni za zaustavitev vseh vozil na seznamu
+STR_MASS_START_LIST_TIP                                         :{BLACK}Klikni za zagon vseh vozil na seznamu
 
+STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam oznak - {COMMA} oznak{P a i e ""}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Ukaz o neuspeli predelavi zaustavljen {STRING} {COMMA}
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES                                               :Tirna vozila
+STR_ELRAIL_VEHICLES                                             :Elektricna tirna vozila
+STR_MONORAIL_VEHICLES                                           :Enotirna vozila
+STR_MAGLEV_VEHICLES                                             :Magnetna tirna vozila
 
 ############ End of list of rail types
 
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Teza: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hitrost: {GOLD}{VELOCITY}{BLACK}   Moc: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hitrost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena delovanja: {GOLD}{CURRENCY}/leto
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Zmogljivost: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zasnova: {GOLD}{NUM}{BLACK} Zivlj. doba: {GOLD}{COMMA} let
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. zanesljivost: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Teza: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hitrost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Zmogljivost: {GOLD}{COMMA} potnikov, {COMMA} vrec poste
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pogonski vagoni: {GOLD}+{POWER}{BLACK} Teza: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Nadgradljivo za: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Vse vrste tovora
+STR_PURCHASE_INFO_ALL_BUT                                       :Vse, razen {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Najvecja vlecna moc: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}Ustvari
+STR_RANDOM                                                      :{BLACK}Nakljucno
+STR_RANDOM_HELP                                                 :{BLACK}Spremeni nakljucno seme za ustvarjanje terena
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Ustvarjanje sveta
+STR_RANDOM_SEED                                                 :{BLACK}Nakljucno seme:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Klikni za vnos nakljucnega semena
+STR_LAND_GENERATOR                                              :{BLACK}Ustvarjalec terena:
+STR_TREE_PLACER                                                 :{BLACK}Algoritem dreves:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Zasuk visinskega zemljevida:
+STR_TERRAIN_TYPE                                                :{BLACK}Tip terena:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Morska gladina:
+STR_SMOOTHNESS                                                  :{BLACK}Gladkost:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Visina snezne meje:
+STR_DATE                                                        :{BLACK}Datum:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Stevilo mest:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Stevilo industrij:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Premik snezne meje eno enoto visje
+STR_SNOW_LINE_DOWN                                              :{BLACK}Premik snezne meje eno enoto nizje
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Spremeni visino snezne meje
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Spremeni zacetno leto
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Opozorilo za merilo
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prevelika sprememba velikosti ozemlja ni priporocena. Nadaljujem?
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Ime visinskega zemljevida:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Velikost: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Ustvarjanje sveta...
+STR_GENERATION_ABORT                                            :{BLACK}Opusti
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Opusti ustvarjanje sveta
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Zares zapuscas ustvarjanje?
+STR_PROGRESS                                                    :{WHITE}{NUM}% narejeno
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Ustvarjanje sveta
+STR_TREE_GENERATION                                             :{BLACK}Ustvarjanje dreves
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Nepremicno ustvarjanje
 STR_CLEARING_TILES                                              :{BLACK}Generiranje grobih in skalnatih tal
+STR_SETTINGUP_GAME                                              :{BLACK}Nastavljanje igre
+STR_PREPARING_TILELOOP                                          :{BLACK}Zagon ponavljanja kvadratkov
+STR_PREPARING_GAME                                              :{BLACK}Priprave igre
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Zamenjava stopnje na nacin "po meri"
+STR_SE_FLAT_WORLD                                               :{WHITE}Raven teren
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Ustvari raven teren
+STR_SE_RANDOM_LAND                                              :{WHITE}Nakljucni teren
+STR_SE_NEW_WORLD                                                :{BLACK}Ustvari novo ozemlje
+STR_SE_CAPTION                                                  :{WHITE}Tip ozemlja
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Premik visine ravnega terena eno enoto nizje
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Premik visine ravnega terena eno enoto visje
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Spremeni visino ravnega terena
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Visina ravnega terena:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Centrira majhen zemljevid na trenutno tocko
 
 ########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Majno letalisce
 STR_CITY_AIRPORT                                                :{BLACK}Mestno
+STR_METRO_AIRPORT                                               :{BLACK}Medmestno letalisce
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Mednarodno letalisce
 STR_COMMUTER_AIRPORT                                            :{BLACK}Vozač
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Medkontinentalno letalisce
+STR_HELIPORT                                                    :{BLACK}Pristajalisce
+STR_HELIDEPOT                                                   :{BLACK}Helikopterska garaza
+STR_HELISTATION                                                 :{BLACK}Helikopterska postaja
 
+STR_SMALL_AIRPORTS                                              :{BLACK}Majhna letalisca
+STR_LARGE_AIRPORTS                                              :{BLACK}Velika letalisca
+STR_HUB_AIRPORTS                                                :{BLACK}Hub letalisca
+STR_HELIPORTS                                                   :{BLACK}Helikopterska pristajalisca
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK}Dolzina: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Obmocje: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dolzina: {NUM}{}Visinska razlika: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Obmocje: {NUM} x {NUM}{}Visinska razlika: {NUM} m
 
 ########

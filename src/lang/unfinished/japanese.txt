@@ -1021,8 +1021,11 @@ STR_STATION_DRAG_DROP                                           :{BLACK}ドラ�
 
 
 
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}）{YELLOW}（{COMMA}％が運送された）
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}／{CARGO}）{YELLOW}（{COMMA}％／{COMMA}％が運送された）
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...他の産業に近すぎます。
 
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}いらっしゃいませ！このAIは発展中です。問題があったら、スクリーンショットを取って、フォーラムに送ってください
@@ -1031,41 +1034,130 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}注意�
 
 ############ network gui strings
 
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}多人数ゲーム
 
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}プレヤー名：
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}他人のプレヤーが見えるあなたの名前です
+STR_NETWORK_CONNECTION                                          :{BLACK}接続：
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}ローカルネットワークもしくはインターネット上のゲームを選択します
 
+STR_NETWORK_START_SERVER                                        :{BLACK}サーバを開始
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}自分のサーバを開始します
 
 STR_NETWORK_GAME_NAME                                           :{BLACK}名前
+STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}ゲーム名
+STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}言語、サーババージョンなど
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}選択するにはリスト内のゲームをクリックします
 
+STR_NETWORK_FIND_SERVER                                         :{BLACK}サーバを検索
+STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}ネットワーク上のサーバを検索します
+STR_NETWORK_ADD_SERVER                                          :{BLACK}サーバを追加
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}検索時にゲームが実行しているかどうかを常に確認するサーバを追加します
+STR_NETWORK_ENTER_IP                                            :{BLACK}ホストアドレスを入力します
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}クライアント
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}オンラインのクライアント人数／最高クライアント人数{}オンラインの会社数／最高会社数
+STR_NETWORK_GAME_INFO                                           :{SILVER}ゲーム情報
 STR_ORANGE                                                      :{ORANGE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}クライアント：{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}国語：　 {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}地図のサイズ：{WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}サーババージョン：{WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}サーバアドレス：{WHITE}{STRING}：{NUM}
+STR_NETWORK_START_DATE                                          :{SILVER}開始の日付：{WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}現在の日付：{WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD                                            :{SILVER}パスワードが必要！
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}サーバがオフライン
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}バージョン不一致
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF 不一致
+
+STR_NETWORK_JOIN_GAME                                           :{BLACK}ゲームに参加
 
 
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}新規多人数ゲームを開始
 
-
+STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}ゲーム名：
+STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}他のプレヤーが見える多人数ゲームメニューに表示するゲーム名を指定します
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}パスワードを指定
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}ゲームをパスワードで保護することができます。正しいパスワードを入力しないと、接続できません。
+STR_NETWORK_SELECT_MAP                                          :{BLACK}地図を選択：
+STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :インターネット
+STR_NETWORK_LAN_INTERNET                                        :LAN／インターネット
+STR_NETWORK_INTERNET_ADVERTISE                                  :インターネット（公開）
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :０人のプレヤー
+STR_NETWORK_1_PLAYERS                                           :１人のプレヤー
+STR_NETWORK_2_PLAYERS                                           :２人のプレヤー
+STR_NETWORK_3_PLAYERS                                           :３人のプレヤー
+STR_NETWORK_4_PLAYERS                                           :４人のプレヤー
+STR_NETWORK_5_PLAYERS                                           :５人のプレヤー
+STR_NETWORK_6_PLAYERS                                           :６人のプレヤー
+STR_NETWORK_7_PLAYERS                                           :７人のプレヤー
+STR_NETWORK_8_PLAYERS                                           :８人のプレヤー
+STR_NETWORK_9_PLAYERS                                           :９人のプレヤー
+STR_NETWORK_10_PLAYERS                                          :１０人のプレヤー
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}最高交通会社数：
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}最高傍観者人数：
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}言語：
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_GAME                                          :{BLACK}ゲームを開始
+STR_NETWORK_START_GAME_TIP                                      :{BLACK}ランダムな地図もしくはシナリオを用いて新規ネットワークゲームを開始します
+STR_NETWORK_LOAD_GAME                                           :{BLACK}ゲームを開く
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}以前に保存した多人数ゲームを再会します（注：以前と同様のプレヤーとして接続しなければなりません）
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :何でも
 STR_NETWORK_LANG_ENGLISH                                        :英語
 STR_NETWORK_LANG_GERMAN                                         :ドイツ語
 STR_NETWORK_LANG_FRENCH                                         :フランス語
 ############ End of leave-in-this-order
 
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}多人数ゲームロビー
 
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}次のゲームを準備中：{ORANGE}{STRING}
+STR_NETWORK_NEW_COMPANY                                         :{BLACK}新規会社
+STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}新規交通会社を作成します
+STR_NETWORK_SPECTATE_GAME                                       :{BLACK}ゲームを傍観
+STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}傍観者としてゲームを見ます
+STR_NETWORK_JOIN_COMPANY                                        :{BLACK}会社に加入
+STR_NETWORK_REFRESH                                             :{BLACK}サーバを更新
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}サーバ情報を更新します
 
+STR_NETWORK_COMPANY_INFO                                        :{SILVER}交通会社情報
 
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}会社名：{WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}開業日付：{WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}会社の価値：{WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}口座の残額：{WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}昨年の収益：{WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}パフォーマンス：{WHITE}{NUM}
 
+STR_NETWORK_VEHICLES                                            :{SILVER}車両：{WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {PLANE}、{NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}駅／バス停／空港／波止場：{WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {PLANE}、{NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}プレヤー：{WHITE}{STRING}
 
+STR_NETWORK_CONNECTING                                          :{WHITE}接続中...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}（１／６）接続中...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}（２／６）認証中...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}（３／６）待機中...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}（４／６）地図をダウンロード中...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}（５／６）データを処理中...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}（６／６）登録中...
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}ゲーム情報を読み込み中...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}会社情報を読み込み中...
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}先に {NUM} 人のプレヤーがいる
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM}／{NUM} kb がダウンロードした
 
+STR_NETWORK_DISCONNECT                                          :{BLACK}接続を解除
 
 
 

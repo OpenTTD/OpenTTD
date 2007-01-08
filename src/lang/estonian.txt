@@ -2666,7 +2666,7 @@ STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Raudteesõidukit ei saa müüa...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Ei leia teed kohalikku depoosse
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Ei saa peatada/startida rongi...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Teeninduse ajavahemik: {LTBLUE}{COMMA}Päeva{BLACK}   Viimane teenindus: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Teenindusperiood: {LTBLUE}{COMMA} päeva{BLACK}  Viimati teenindatud: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Teeninduse ajavahemik: {LTBLUE}{COMMA}%{BLACK}   Viimane teenindus: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Rongid - vajuta rongile info jaoks
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Ehita uued rongid (vajab rongidepood)

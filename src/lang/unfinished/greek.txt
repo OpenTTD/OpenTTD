@@ -7,7 +7,7 @@
 ##id 0x0000
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Απο την άκρη του χάρτη
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Πολυ κοντά στην άκρη του χάρτη
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτεί {CURRENCY}
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτούνται {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}.
 STR_0005                                                        :{RED}{CURRENCY64}.
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Απαιτείται επίπεδο εδαφος
@@ -59,7 +59,7 @@ STR_0034_GOODS                                                  :Αγαθό
 STR_0035_GRAIN                                                  :Σιτάρι
 STR_0036_WOOD                                                   :Ξύλο
 STR_0037_IRON_ORE                                               :Μετάλλευμα Σιδήρου
-STR_0038_STEEL                                                  :
+STR_0038_STEEL                                                  :Χάλυβας
 STR_0039_VALUABLES                                              :Τιμαλφή
 STR_003A_COPPER_ORE                                             :Μετάλλευμα Χαλκού
 STR_003B_MAIZE                                                  :Αραβόσιτος
@@ -81,22 +81,47 @@ STR_004A_TOFFEE                                                 :Τόφυ
 STR_004B_BATTERY                                                :Μπαταρία
 STR_004C_PLASTIC                                                :Πλαστικό
 STR_004D_FIZZY_DRINK                                            :Αναψυκτικό
+STR_QUANTITY_WOOD                                               :{WEIGHT} ξύλου
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} μεταλλεύματος σιδήρου
+STR_QUANTITY_STEEL                                              :{WEIGHT} ατσαλιού
+STR_QUANTITY_VALUABLES                                          :{COMMA} τσάντ{P α ες} με τιμαλφή
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} μεταλλεύματος χαλκού
+STR_QUANTITY_MAIZE                                              :{WEIGHT} αραβόσιτου
+STR_QUANTITY_FRUIT                                              :{WEIGHT} φρούτων
+STR_QUANTITY_DIAMONDS                                           :{COMMA} τσάντ{P α ες} με διαμάντια
+STR_QUANTITY_FOOD                                               :{WEIGHT} τροφίμων
+STR_QUANTITY_PAPER                                              :{WEIGHT} χαρτιού
+STR_QUANTITY_GOLD                                               :{COMMA} τσάντ{P α ες} με χρυσό
+STR_QUANTITY_WATER                                              :{VOLUME} νερού
+STR_QUANTITY_WHEAT                                              :{WEIGHT} σιταριού
+STR_QUANTITY_RUBBER                                             :{VOLUME} καουτσούκ
+STR_QUANTITY_SUGAR                                              :{WEIGHT} ζάχαρης
+STR_QUANTITY_TOYS                                               :{COMMA} παιχνίδι{P "" α}
+STR_QUANTITY_SWEETS                                             :{COMMA} τσάντ{P α ες} με γλυκά
+STR_QUANTITY_COLA                                               :{VOLUME} κόλας
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} μαλλί της γριάς
+STR_QUANTITY_BUBBLES                                            :{COMMA} φυσαλίδ{P α ες}
+STR_QUANTITY_BATTERIES                                          :{COMMA} μπαταρί{P α ες}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} πλαστικού
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} αναψυκτικ{P ό ά}
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Χάρτης - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Επιλογές Παιχνιδιού
 STR_00B2_MESSAGE                                                :{YELLOW}Μήνυμα
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Μήνυμα από {STRING}
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Δεν μπορεί να γίνει αυτό....
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Προσχή!
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Αυτό δεν γίνεται....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Αυτή η περιοχή είναι αδύνατο να καθαριστεί...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Αρχικά Πνευματικά Δικαιώματα {COPYRIGHT} 1995 Chris Sawyer, Όλα τα δικαιώματα διατηρούνται
 STR_00B7_VERSION                                                :{BLACK}OpenTTD έκδοση {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 Η ομάδα του OpenTTD
+STR_TRANSLATED_BY                                               :{BLACK}  Μεταφραστής\ές -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Έξοδος
-STR_00C8_YES                                                    :{BLACK}Ναί
+STR_00C8_YES                                                    :{BLACK}Ναι
 STR_00C9_NO                                                     :{BLACK}Όχι
 STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Είστε σίγουρος/η ότι θέλετε να παρατήσετε το παιχνίδι και να επιστρέψετε στο {STRING};
 STR_00CB_1                                                      :{BLACK}1
@@ -214,10 +239,13 @@ STR_013D_INFORMATION                                            :{BLACK}Πληρ
 STR_013E_CAPACITIES                                             :{BLACK}Χωρητικότητες
 STR_013E_TOTAL_CARGO                                            :{BLACK}Συνολικό Φορτίο
 STR_013F_CAPACITY                                               :{BLACK}Χωρητικότητα: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Χωριτηκότητα: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Συνολική χωρητικότητα φορτίου του τραίνου:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Νέο Παιχνίδι
 STR_0141_LOAD_GAME                                              :{BLACK}Φόρτωση Παιχνιδιού
+STR_SINGLE_PLAYER                                               :{BLACK}Ένας παίκτης
+STR_MULTIPLAYER                                                 :{BLACK}Πολοί παίκτες
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -225,6 +253,7 @@ STR_256                                                         :256
 STR_512                                                         :512
 STR_1024                                                        :1024
 STR_2048                                                        :2048
+STR_MAPSIZE                                                     :{BLACK}Διάσταση χάρτη:
 STR_0148_GAME_OPTIONS                                           :{BLACK}Επιλογές Παιχνιδιού
 
 STR_0150_SOMEONE                                                :κάποιος{SKIP}{SKIP}
@@ -233,6 +262,7 @@ STR_0152_TOWN_DIRECTORY                                         :Κατάλογ�
 STR_0153_SUBSIDIES                                              :Επιχορηγήσεις
 
 
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} χλμ/ώρα
 
 
 
@@ -257,6 +287,30 @@ STR_015E_QUIT_GAME                                              :Παραίτη�
 STR_015F_QUIT                                                   :Έξοδος
 STR_0161_QUIT_GAME                                              :{WHITE}Παραίτηση από το Παιχνίδι
 
+STR_SORT_BY_PRODUCTION                                          :{BLACK}Παραγωγή
+STR_SORT_BY_TYPE                                                :{BLACK}Τύπος
+STR_SORT_BY_NAME                                                :{BLACK}Όνομα
+STR_SORT_BY_DROPDOWN_NAME                                       :Όνομα
+STR_SORT_BY_DATE                                                :{BLACK}Μέρα
+STR_SORT_BY_NUMBER                                              :Αριθμός
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Κέρδος προηγούμενου χρόνου
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Κέρδος αυτού του χρόνου
+STR_SORT_BY_AGE                                                 :Ηλικία
+STR_SORT_BY_RELIABILITY                                         :αξιοπιστία
+STR_SORT_BY_MAX_SPEED                                           :Μέγιστη ταχύτητα
+STR_SORT_BY_MODEL                                               :Μοντέλο
+STR_SORT_BY_VALUE                                               :Αξία
+STR_SORT_BY_FACILITY                                            :Τύπος σταθμού
+STR_ENGINE_SORT_COST                                            :Κόστος
+STR_ENGINE_SORT_POWER                                           :Δύναμη
+STR_NO_WAITING_CARGO                                            :{BLACK}Κανένα εμπόρευμα κανενός τύπου δεν περιμένει
+STR_MANAGE_LIST_TIP                                             :{BLACK}Στείλε οδηγίες σε όλα τα οχήματα σε αυτή λίστα
+STR_REPLACE_VEHICLES                                            :Αντικατέστησε τα οχήματα
+STR_SEND_TRAIN_TO_DEPOT                                         :Στείλε στο υπόστεγο
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Στείλε στο υπόστεγο
+STR_SEND_SHIP_TO_DEPOT                                          :Στείλε στο υπόστεγο
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Στείλε στο υπόστεγο
+STR_SEND_FOR_SERVICING                                          :Στείλε για επισκευή
 
 ############ range for months starts
 STR_0162_JAN                                                    :Ιαν
@@ -318,6 +372,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Εναλ
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Κέρδος αυτό το έτος: {CURRENCY} (προηγούμενο έτος: {CURRENCY})
 
 ############ range for service numbers starts
+STR_AGE                                                         :{COMMA} χρόν{P ος ια} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} χρόν{P ος ια} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Όχημα δρόμου
@@ -424,6 +480,7 @@ STR_01FE_DIFFICULTY                                             :{BLACK}{G=f}Δ�
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Τελευταίο μήνυμα/αναφορά νέων
 STR_0201_MESSAGE_SETTINGS                                       :Ρυθμίσεις μηνυμάτων
+STR_MESSAGE_HISTORY_MENU                                        :
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Εμφάνιση τελευταίου μηνύματος/αναφοράς νέων, επιλογές μηνυμάτων
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Επιλογές Μηνυμάτων
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Τύποι μηνυμάτων:
@@ -447,6 +504,8 @@ STR_0216_CAPITALIST                                             :Κεφαλαι�
 STR_0217_MAGNATE                                                :Μεγιστάνας
 STR_0218_MOGUL                                                  :Τυχοδιώκτης
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Μεγιστάνας του Αιώνα
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} έφτασε  στο επίπεδο '{STRING}'
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} της εταιρείας {COMPANY} έφτασε στο επίπεδο '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
@@ -476,6 +535,7 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...πο�
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...πολύ κοντά σε άλλη πόλη
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...ακατάλληλη περιοχή
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...πάρα πολλές πόλεις
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...δεν υπάρχει αλλος χώρος στον χάρτη
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Αύξηση μεγέθους πόλεως
 STR_023C_EXPAND                                                 :{BLACK}Επέκταση
 STR_023D_RANDOM_TOWN                                            :{BLACK}Τυχαία Πόλη
@@ -572,6 +632,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Αποθ
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Φόρτωση Σεναρίου
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Αποθήκευση Σεναρίου
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Παιξτε το Σενάριο
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Είστε σίγουροι οτι θέλετε ναφύγετε από το πίστα;
 STR_029C_QUIT_EDITOR                                            :{WHITE}Έξοδος από το Πρόγραμμα Επεξεργασίας
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...μπορεί να χτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
@@ -605,6 +666,7 @@ STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Πιν
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Πλήρες animation
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Πλήρης λεπτομέρεια
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Διαφανή κτίρια
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Διαφανές ταμπέλες σταθμών
 ############ range ends	here
 
 ############ range for menu	starts
@@ -620,6 +682,7 @@ STR_02DA_ON                                                     :{BLACK}Ενερ
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Εμφάνιση χρηματοδοτήσεων
 STR_02DD_SUBSIDIES                                              :Χρηματοδοτήσεις
 STR_02DE_MAP_OF_WORLD                                           :Χάρτης του κόσμου
+STR_SIGN_LIST                                                   :Λίστα ταμπελών
 STR_02DF_TOWN_DIRECTORY                                         :Κατάλογος πόλεων
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Νομισματικές μονάδες

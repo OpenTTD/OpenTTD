@@ -721,7 +721,7 @@ STR_0249_IRON_ORE_MINE                                          :{BLACK}Zelezoru
 STR_024A_OIL_WELLS                                              :{BLACK}Vrtna veza
 STR_024B_BANK                                                   :{BLACK}Banka
 STR_024C_PAPER_MILL                                             :{BLACK}Vyroba papiera
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Vyroba jedla
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Potravinársky podnik
 STR_024E_PRINTING_WORKS                                         :{BLACK}Tlaciaren
 STR_024F_GOLD_MINE                                              :{BLACK}Zlata bana
 STR_0250_LUMBER_MILL                                            :{BLACK}Pila
@@ -755,7 +755,7 @@ STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Postavit
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Postavit ropny vrt
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Postavit banku (len v mestach kde je populacia vacsia ako 1200)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Postavit vyrobu papiera
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Postavit vyrobu jedla
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Postavit potravinársky podnik
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Postavit tlaciaren
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Postavit zlatu banu
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Postavit banku (len v mestach)
@@ -1894,7 +1894,7 @@ STR_480B_FARM                                                   :Farma
 STR_480C_COPPER_ORE_MINE                                        :Medenna bana
 STR_480D_OIL_WELLS                                              :Ropna plosina
 STR_480E_BANK                                                   :Banka
-STR_480F_FOOD_PROCESSING_PLANT                                  :Vyroba jedla
+STR_480F_FOOD_PROCESSING_PLANT                                  :Potravinársky podnik
 STR_4810_PAPER_MILL                                             :Vyroba papiera
 STR_4811_GOLD_MINE                                              :Zlata bana
 STR_4812_BANK                                                   :Banka
@@ -2149,7 +2149,7 @@ STR_701E                                                        :{BLACK}-{CURREN
 STR_701F                                                        :{BLACK}+{CURRENCY64}
 STR_7020_TOTAL                                                  :{WHITE}Spolu:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
-STR_7022_INCOME_GRAPH                                           :{WHITE}Graf zisku
+STR_7022_INCOME_GRAPH                                           :{WHITE}Graf príjmov
 STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf prevadzkoveho zisku
@@ -2613,7 +2613,7 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Ko
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Oprava
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nemozno kupit vlak...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vyrobene: {LTBLUE}{NUM}{BLACK} cena: {LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vyrobene: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Hodnota: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Naklada/Vyklada
@@ -2959,8 +2959,8 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Chystá
 
 STR_NEWGRF_ADD                                                  :{BLACK}Pridat
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Pridat NewGRF súbor do zoznamu
-STR_NEWGRF_REMOVE                                               :{BLACK}Odstrániť
-STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Odstrániť vybraný NewGRF súbor zo zoznamu
+STR_NEWGRF_REMOVE                                               :{BLACK}Odstránit
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Odstránit vybraný NewGRF súbor zo zoznamu
 STR_NEWGRF_MOVEUP                                               :{BLACK}Vyššie
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Posunút vybraný NewGRF súbor v zozname vyššie
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Nižšie

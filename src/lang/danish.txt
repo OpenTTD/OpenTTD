@@ -2481,7 +2481,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :magnetskinnelok
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Remise
-STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerene fester . . .{}Første tog ankommer til {STATION}!
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første tog ankommer til {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i vejen
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2747,7 +2747,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}Giv skib
 
 STR_9831_NAME_SHIP                                              :{WHITE}Giv skibet et navn
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Kan ikke give skibet et navn...
-STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggere fester . . .{}Første skib ankommer til {STATION}!
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første skib ankommer til {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Positionsbøje, kan bruges som yderligere navigationspunkt
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Kan ikke placere en bøje her...
 STR_9836_RENAME                                                 :{BLACK}Omdøb
@@ -2821,7 +2821,7 @@ STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {C
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Navngiv flyet
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Kan ikke navngive flyet...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Navngiv fluet
-STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerene fester . . .{}Første fly ankommer til{STATION}!
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første fly ankommer til {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Flystyrt!{}{COMMA} dør i flammerne ved {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flystyrt!{}Fly løb tør for brændstof, {COMMA} døde i ildhelvede!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
@@ -2874,8 +2874,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Antal af køretøjer; dette inkludere vejkøretøjer, tog, skibe og fly
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Antallet af stationer. Alle dele af en station (f.eks. tog station, bus station, lufthavn) tæller med, også selvom de er sat sammen til en station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Udbytte for det køretøj, med lavest indkomst (af alle køretøjer ældre end 2 år)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Indkomst i den måned, med lavest udbytte, i de sidste 12 kvartaler
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Indkomst i den måned, med højest udbytte, i de sidste 12 kvartaler
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Indtægt i måneden med den laveste indtægt i de sidste 12 kvartaler
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Indtægt i måneden med den højeste indtægt i de sidste 12 kvartaler
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Antal enheder fragtet i de sidste 4 kvartaler
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Antallet af lasttyper fragtet i sidste kvartal
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Kapital denne virksomhed har i banken

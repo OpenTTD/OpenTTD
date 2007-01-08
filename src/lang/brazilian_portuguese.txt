@@ -2,6 +2,7 @@
 ##ownname Português-Brasil
 ##isocode pt_BR.UTF-8
 ##plural 2
+##gender masculino feminino neutro
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -154,6 +155,7 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opções do Jogo
 STR_00B2_MESSAGE                                                :{YELLOW}Mensagem
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mensagem de {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Cuidado!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Não é possível fazer isto....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Não é possível limpar esta área....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Todos os direitos reservados
@@ -1308,6 +1310,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Protegi
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVIDOR DESLIGADO
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVIDOR CHEIO
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSÃO INCOMPATÍVEL
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF NÃO ENCONTRADO
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Juntar-se ao jogo
 
@@ -1877,8 +1880,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Em {INDUSTRY} diminui produção em 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Infestação de insetos causa destruição em {INDUSTRY}!{}Produção diminui em 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...só pode ser colocado perto das bordas do mapa
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} a produção em {INDUSTRY} aumenta {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} a produção em {INDUSTRY} diminui {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produção de {STRING} em {INDUSTRY} aumenta {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produção de {STRING} em {INDUSTRY} diminui {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Há um trem no túnel
@@ -2602,6 +2605,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Custo: {
 STR_885C_BROKEN_DOWN                                            :{RED}Quebrado
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de circulação: {LTBLUE}{CURRENCY}/ano
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S}  {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade Máx.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade: {LTBLUE}{VELOCITY} {BLACK}Manutenção.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros deste ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Parado
@@ -2888,6 +2892,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não exi
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome do ficheiro: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual; isto pode danificar o OpenTTD.{}Tem absoluta certeza que deseja fazer isto?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adiciona um NewGRF à lista
@@ -2942,6 +2947,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordens c
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra todos os veículos com a mesma rota
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Você está prestes a vender todos os veículos da garagem. Você tem certeza?
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os trens no depósito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender todos os veículos no depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender todos os navios no depósito
@@ -3027,6 +3034,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Readaptável para: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos as cargas
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tração : {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 
