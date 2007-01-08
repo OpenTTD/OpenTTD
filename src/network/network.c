@@ -81,7 +81,7 @@ NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index)
 {
 	NetworkClientState *cs;
 
-	for (cs = _clients; cs != &_clients[MAX_CLIENT_INFO]; cs++) {
+	for (cs = _clients; cs != endof(_clients); cs++) {
 		if (cs->index == client_index) return cs;
 	}
 
