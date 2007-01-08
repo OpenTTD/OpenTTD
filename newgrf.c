@@ -2418,7 +2418,7 @@ static void SkipIf(byte *buf, int len)
 		const GRFConfig *c = GetGRFConfig(cond_val);
 
 		if (condtype != 10 && c == NULL) {
-			DEBUG(grf, 7) ("GRFID 0x%08X unknown, skipping test", BSWAP32(cond_val));
+			grfmsg(7, "GRFID 0x%08X unknown, skipping test", BSWAP32(cond_val));
 			return;
 		}
 
