@@ -2814,6 +2814,7 @@ static int GetDirectionToVehicle(const Vehicle *v, int x, int y)
 static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 {
 	switch (GetTileType(tile)) {
+		case MP_TUNNELBRIDGE:
 		case MP_RAILWAY:
 		case MP_STATION:
 			// normal tracks, jump to owner check
