@@ -24,7 +24,13 @@ bool _dbg_screen_rect;
 Colour _cur_palette[256];
 byte _stringwidth_table[FS_END][224];
 
-static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode);
+typedef enum BlitterModes {
+	BM_NORMAL,
+	BM_COLOUR_REMAP,
+	BM_TRANSPARENT,
+} BlitterMode;
+
+static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode);
 
 FontSize _cur_fontsize;
 static FontSize _last_fontsize;
@@ -638,7 +644,7 @@ skip_cont:;
 		if (IsPrintable(c)) {
 			if (x >= dpi->left + dpi->width) goto skip_char;
 			if (x + 26 >= dpi->left) {
-				GfxMainBlitter(GetGlyph(size, c), x, y, 1);
+				GfxMainBlitter(GetGlyph(size, c), x, y, BM_COLOUR_REMAP);
 			}
 			x += GetCharacterWidth(size, c);
 		} else if (c == '\n') { // newline = {}
@@ -675,12 +681,12 @@ void DrawSprite(uint32 img, int x, int y)
 {
 	if (img & PALETTE_MODIFIER_COLOR) {
 		_color_remap_ptr = GetNonSprite(GB(img, PALETTE_SPRITE_START, PALETTE_SPRITE_WIDTH)) + 1;
-		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, 1);
+		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, BM_COLOUR_REMAP);
 	} else if (img & PALETTE_MODIFIER_TRANSPARENT) {
 		_color_remap_ptr = GetNonSprite(GB(img, PALETTE_SPRITE_START, PALETTE_SPRITE_WIDTH)) + 1;
-		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, 2);
+		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, BM_TRANSPARENT);
 	} else {
-		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, 0);
+		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, BM_NORMAL);
 	}
 }
 
@@ -688,7 +694,7 @@ typedef struct BlitterParams {
 	int start_x, start_y;
 	const byte *sprite;
 	Pixel *dst;
-	int mode;
+	BlitterMode mode;
 	int width, height;
 	int width_org;
 	int pitch;
@@ -705,7 +711,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 
 	src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 	switch (bp->mode) {
-		case 1:
+		case BM_COLOUR_REMAP:
 			do {
 				do {
 					done = src_o[0];
@@ -748,7 +754,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 			} while (--bp->height != 0);
 			break;
 
-		case 2:
+		case BM_TRANSPARENT:
 			do {
 				do {
 					done = src_o[0];
@@ -841,7 +847,7 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 	assert(width > 0);
 
 	switch (bp->mode) {
-		case 1: {
+		case BM_COLOUR_REMAP: {
 			const byte *ctab = _color_remap_ptr;
 
 			do {
@@ -856,7 +862,7 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 			break;
 		}
 
-		case 2: {
+		case BM_TRANSPARENT: {
 			const byte *ctab = _color_remap_ptr;
 
 			do {
@@ -906,7 +912,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 
 	src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 	switch (bp->mode) {
-		case 1:
+		case BM_COLOUR_REMAP:
 			do {
 				do {
 					done = src_o[0];
@@ -956,7 +962,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 			} while (--bp->height != 0);
 			break;
 
-		case 2:
+		case BM_TRANSPARENT:
 			do {
 				do {
 					done = src_o[0];
@@ -1068,7 +1074,7 @@ static void GfxBlitZoomMediumUncomp(BlitterParams *bp)
 	assert(width > 0);
 
 	switch (bp->mode) {
-		case 1: {
+		case BM_COLOUR_REMAP: {
 			const byte *ctab = _color_remap_ptr;
 
 			for (height >>= 1; height != 0; height--) {
@@ -1083,7 +1089,7 @@ static void GfxBlitZoomMediumUncomp(BlitterParams *bp)
 			break;
 		}
 
-		case 2: {
+		case BM_TRANSPARENT: {
 			const byte *ctab = _color_remap_ptr;
 
 			for (height >>= 1; height != 0; height--) {
@@ -1117,7 +1123,7 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 
 	src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 	switch (bp->mode) {
-		case 1:
+		case BM_COLOUR_REMAP:
 			for (;;) {
 				do {
 					done = src_o[0];
@@ -1187,7 +1193,7 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 			}
 			break;
 
-		case  2:
+		case BM_TRANSPARENT:
 			for (;;) {
 				do {
 					done = src_o[0];
@@ -1338,7 +1344,7 @@ static void GfxBlitZoomOutUncomp(BlitterParams *bp)
 	assert(width > 0);
 
 	switch (bp->mode) {
-		case 1: {
+		case BM_COLOUR_REMAP: {
 			const byte *ctab = _color_remap_ptr;
 
 			for (height >>= 2; height != 0; height--) {
@@ -1353,7 +1359,7 @@ static void GfxBlitZoomOutUncomp(BlitterParams *bp)
 			break;
 		}
 
-		case 2: {
+		case BM_TRANSPARENT: {
 			const byte *ctab = _color_remap_ptr;
 
 			for (height >>= 2; height != 0; height--) {
@@ -1377,7 +1383,7 @@ static void GfxBlitZoomOutUncomp(BlitterParams *bp)
 }
 
 
-static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode)
+static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 {
 	const DrawPixelInfo *dpi = _cur_dpi;
 	int start_x, start_y;
