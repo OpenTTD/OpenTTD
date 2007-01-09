@@ -263,7 +263,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	v->left_coord = INVALID_COORD;
 	v->first = NULL;
 	v->next = NULL;
-	v->next_hash = INVALID_VEHICLE;
+	v->next_hash = NULL;
 	v->string_id = 0;
 	v->next_shared = NULL;
 	v->prev_shared = NULL;
@@ -368,7 +368,7 @@ bool AllocateVehicles(Vehicle **vl, int num)
 }
 
 
-VehicleID _vehicle_position_hash[0x1000];
+static Vehicle *_vehicle_position_hash[0x1000];
 
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 {
@@ -385,14 +385,13 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 
 	for (y = yl;; y = (y + (1 << 6)) & (0x3F << 6)) {
 		for (x = xl;; x = (x + 1) & 0x3F) {
-			VehicleID veh = _vehicle_position_hash[(x + y) & 0xFFFF];
+			Vehicle *v = _vehicle_position_hash[(x + y) & 0xFFFF];
 
-			while (veh != INVALID_VEHICLE) {
-				Vehicle *v = GetVehicle(veh);
+			while (v != NULL) {
 				void* a = proc(v, data);
 
 				if (a != NULL) return a;
-				veh = v->next_hash;
+				v = v->next_hash;
 			}
 
 			if (x == xu) break;
@@ -406,10 +405,9 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 
 static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 {
-	VehicleID *old_hash, *new_hash;
+	Vehicle **old_hash, **new_hash;
 	int old_x = v->left_coord;
 	int old_y = v->top_coord;
-	Vehicle *u;
 
 	new_hash = (x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(x,y)];
 	old_hash = (old_x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(old_x, old_y)];
@@ -419,11 +417,11 @@ static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 	/* remove from hash table? */
 	if (old_hash != NULL) {
 		Vehicle *last = NULL;
-		VehicleID idx = *old_hash;
-		while ((u = GetVehicle(idx)) != v) {
-			idx = u->next_hash;
-			assert(idx != INVALID_VEHICLE);
+		Vehicle *u = *old_hash;
+		while (u != v) {
 			last = u;
+			u = u->next_hash;
+			assert(u != NULL);
 		}
 
 		if (last == NULL) {
@@ -436,16 +434,13 @@ static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 	/* insert into hash table? */
 	if (new_hash != NULL) {
 		v->next_hash = *new_hash;
-		*new_hash = v->index;
+		*new_hash = v;
 	}
 }
 
 void ResetVehiclePosHash(void)
 {
-	uint i;
-	for (i = 0; i < lengthof(_vehicle_position_hash); i++) {
-		_vehicle_position_hash[i] = INVALID_VEHICLE;
-	}
+	memset(_vehicle_position_hash, 0, sizeof(_vehicle_position_hash));
 }
 
 void InitializeVehicles(void)
@@ -574,7 +569,7 @@ void DestroyVehicle(Vehicle *v)
 	}
 
 	UpdateVehiclePosHash(v, INVALID_COORD, 0);
-	v->next_hash = INVALID_VEHICLE;
+	v->next_hash = NULL;
 	if (v->orders != NULL) DeleteVehicleOrders(v);
 
 	/* Now remove any artic part. This will trigger an other
@@ -831,11 +826,9 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 
 	for (y = yl;; y = (y + (1 << 6)) & (0x3F << 6)) {
 		for (x = xl;; x = (x + 1) & 0x3F) {
-			VehicleID veh = _vehicle_position_hash[(x + y) & 0xFFFF];
+			const Vehicle *v = _vehicle_position_hash[(x + y) & 0xFFFF];
 
-			while (veh != INVALID_VEHICLE) {
-				const Vehicle* v = GetVehicle(veh);
-
+			while (v != NULL) {
 				if (!(v->vehstatus & VS_HIDDEN) &&
 						l <= v->right_coord &&
 						t <= v->bottom_coord &&
@@ -843,7 +836,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 						b >= v->top_coord) {
 					DoDrawVehicle(v);
 				}
-				veh = v->next_hash;
+				v = v->next_hash;
 			}
 
 			if (x == xu) break;
