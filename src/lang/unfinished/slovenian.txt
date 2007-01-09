@@ -1366,32 +1366,127 @@ STR_NETWORK_GAME_LOBBY                                          :{WHITE}Seje vec
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Priprava na vstop:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Seznam podjetij trenutno v tej igri. Lahko se pridruzis eni ali pozenes novo, ce je kako mesto podjetja prosto
+STR_NETWORK_NEW_COMPANY                                         :{BLACK}Novo podjetje
+STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Ustvari novo podjetje
+STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Ogled igre
+STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Sodeluj kot gledalec
+STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Pridruzi se podjetju
+STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Pomagaj upravljati podjetje
+STR_NETWORK_REFRESH                                             :{BLACK}Osvezi streznik
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Osvezi informacije streznika
 
+STR_NETWORK_COMPANY_INFO                                        :{SILVER}COMPANY INFO
 
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Ime podjetja:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Ustanovljeno:  {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Vrednost podjetja:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Trenutno stanje:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Lanski dohodek:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Ocene:  {WHITE}{NUM}
 
+STR_NETWORK_VEHICLES                                            :{SILVER}Vozila:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Postaje:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Igralci:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING                                          :{WHITE}Povezujem...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Povezujem..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Pooblascam..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Cakam..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Prenasam zemljevid..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Obdelujem podatke..
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registriram..
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Iscem informacije o igri..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Iscem informacije o podjetju...
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} gost{P "" a i ov} je pred tabo
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytov prenesenih
 
+STR_NETWORK_DISCONNECT                                          :{BLACK}Odklopi
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vnesi kolicino denarja, ki ga podarjas
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Streznik je zasciten.Vnesi geslo
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Podjetje je zasciteno.Vnesi geslo
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}Seznam gostov
 
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ni najdenih mreznih naprav ali ni aktiviran ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Ni mogoce najti mreznih iger
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} TStreznik ni odgovoril zahtevi
+STR_NETWORK_ERR_DESYNC                                          :{WHITE} Sinhronizacija mrezne igre ni uspela
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Povezava mrezne igre je padla
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Ni mogoce naloziti shranjene igre
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Nemogoc zagon streznika
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Nemogoca povezava
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Povezava #{NUM} je potekla
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Narejena je bila napaka protokola in povezava je bila prekinjena
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Razlicica tega gosta je neskladna s streznikovo razlicico
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Napacno geslo
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Streznik je zaseden
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Izvrzen/a si iz tega streznika
+STR_NETWORK_ERR_KICKED                                          :{WHITE} Brcnjen/a si iz igre
+STR_NETWORK_ERR_CHEATER                                         :{WHITE} Goljufanje ni dovoljeno na tem strezniku
 
+STR_NETWORK_ERR_LEFT                                            :zapusca igro
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL                                  :splosna napaka
+STR_NETWORK_ERR_CLIENT_DESYNC                                   :desinhronizacijska napaka
+STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :nemogoce nalaganje zemljevida
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :povezava prekinjena
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :napaka protokola
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nepooblascen
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :sprejet je bil cuden paket
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :napacna razlicica
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :ime je ze v uporabi
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :napacno geslo
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :napacen ID igralca v DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED                                   :brcnjen od gostitelja
+STR_NETWORK_ERR_CLIENT_CHEATER                                  :je poskusil/a uporabiti goljufanje
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :gostitelj zaseden
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED                                       :se pridruzuje igri
+STR_NETWORK_GIVE_MONEY                                          :je odstopil/a tvojemu podjetju nekaj denarja ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY                                     :dal/a si {STRING} nekaj denarja ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Skupina] :
+STR_NETWORK_CHAT_COMPANY                                        :[Skupina] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Skupina] Za {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privatno] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Vsi] :
+STR_NETWORK_CHAT_ALL                                            :[Vsi] {STRING}: {GRAY}{STRING}
+STR_NETWORK_NAME_CHANGE                                         :je spremenil/a svoje ime v
+STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Gostitelj je zaprl sejo
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Gostitelj se zaganja...{}Prosim pocakaj...
+
+STR_NETWORK_SERVER                                              :Gostitelj
+STR_NETWORK_CLIENT                                              :Gost
+STR_NETWORK_SPECTATORS                                          :Opazovalci
+
+STR_NETWORK_CLIENTLIST_NONE                                     :(brez)
+STR_NETWORK_CLIENTLIST_KICK                                     :Brcni
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Daj denar
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Pogovor vsem
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Pogovor podjetju
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privatno sporocilo
 
 
-
-
+STR_NETWORK_SEND                                                :{BLACK}Poslji
 
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-velikost ozemlja: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-velikost ozemlja: {ORANGE}{STRING}
 
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Ni mogoce naloziti ozemlja iz PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...datoteke ni.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nemogoca pretvorba vrste slike. Potrebujes 8 ali 24-bit PNG sliko.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...nekaj je narobe. (najbrz nepopolna datoteka)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Ni mogoče naložiti pokrajine iz formata BMP ...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE} ... ni mogoče spremeniti tipa slike.
@@ -1401,6 +1496,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Stroski: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Prihodki: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Prihodki: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Prenos: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Prenos: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Ocenjeni stroski: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Predvideni prihodki: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Tukaj ni mozen dvig terena ...
@@ -1450,11 +1547,16 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Izberi s
 STR_1021_RAILROAD_TRACK                                         :Zelezniska proga
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Zelezniska garaza
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE} ... zemljisce je last drugega podjetja
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zelezniski tiri z normalnimi signali
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zelezniski tiri s pred-signali
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zelezniski tiri z izhodnimi signali
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zelezniski tiri s kombiniranimi signali
 
 
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Najprej odstrani cesto
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Cestna dela napredujejo
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Cestne gradnje
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Izberi cestni most
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Nemogoca gradnja ceste ...
@@ -1575,8 +1677,13 @@ STR_205A_TEPEES                                                 :Tipi
 STR_205B_TEAPOT_HOUSE                                           :Cajnik-hisa
 STR_205C_PIGGY_BANK                                             :Prasickova banka
 
+STR_INDUSTRY                                                    :{INDUSTRY}
+STR_TOWN                                                        :{TOWN}
+STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
+STR_STATION                                                     :{STATION}
 
 ##id 0x2800
+STR_LANDSCAPING                                                 :Oblikovanje terena
 STR_2800_PLANT_TREES                                            :Posadi drevesa
 STR_2801_PLACE_SIGN                                             :Postavi znak
 STR_2802_TREES                                                  :{WHITE}Drevesa
@@ -1656,6 +1763,7 @@ STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Prikazi 
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Imena postaj - kliknite na ime za pogled na postajo
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Izbira velikosti/tipa letalisca
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Zelezniska postaja
 STR_305F_AIRCRAFT_HANGAR                                        :Hangar
 STR_3060_AIRPORT                                                :Letalisce
@@ -1670,7 +1778,11 @@ STR_3069_BUOY                                                   :Boja
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE} ... boja na poti
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE} ... postaja prevec razsirjena
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE} ... nehomogene postaje izklopljene
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Drzi CTRL za izbor vec stvari
 
+STR_UNDEFINED                                                   :(nedefinirana vrstica)
+STR_STAT_CLASS_DFLT                                             :privzeta postaja
+STR_STAT_CLASS_WAYP                                             :tocke poti
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientacija ladjedelnice
@@ -1767,6 +1879,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} proizvodnja zmanjšana za 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insekti povzrocili opustosenje v {INDUSTRY}!{}Proizvodnja zmanjsana za 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE} ... mogoce zgraditi samo ob robu zemljevida
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} proizvodnja v {INDUSTRY} narasca za {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} proizvodnja v {INDUSTRY} vpada za {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vlak v predoru
@@ -1821,18 +1935,52 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE} ... si 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Neimenovano
 STR_SV_TRAIN_NAME                                               :Vlak {COMMA}
+STR_SV_ROADVEH_NAME                                             :cestno vozilo {COMMA}
+STR_SV_SHIP_NAME                                                :ladja {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :letalo {COMMA}
 
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Sever
 STR_SV_STNAME_SOUTH                                             :{STRING} Jug
+STR_SV_STNAME_EAST                                              :{STRING} vzhod
 STR_SV_STNAME_WEST                                              :{STRING} Zahod
+STR_SV_STNAME_CENTRAL                                           :{STRING} Centralna
+STR_SV_STNAME_TRANSFER                                          :{STRING} Preklop
+STR_SV_STNAME_HALT                                              :{STRING} postanek
 STR_SV_STNAME_VALLEY                                            :{STRING} Dolina
+STR_SV_STNAME_HEIGHTS                                           :{STRING} visja
+STR_SV_STNAME_WOODS                                             :{STRING} gozdna
+STR_SV_STNAME_LAKESIDE                                          :{STRING} ob jezeru
+STR_SV_STNAME_EXCHANGE                                          :{STRING} izmenjalna
+STR_SV_STNAME_AIRPORT                                           :{STRING} letalisce
+STR_SV_STNAME_OILFIELD                                          :{STRING} naftna polja
+STR_SV_STNAME_MINES                                             :{STRING} Rudniki
+STR_SV_STNAME_DOCKS                                             :{STRING} Doki
+STR_SV_STNAME_BUOY_1                                            :{STRING} Boja 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Boja 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Boja 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Boja 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Boja 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Boja 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Boja 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Boja 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Boja 9
+STR_SV_STNAME_ANNEXE                                            :{STRING} Prikljucna
+STR_SV_STNAME_SIDINGS                                           :{STRING} Stranska
+STR_SV_STNAME_BRANCH                                            :{STRING} Razvodna
 STR_SV_STNAME_UPPER                                             :Zgornje {STRING}
+STR_SV_STNAME_LOWER                                             :Dolnja {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} Pristajalisce
+STR_SV_STNAME_FOREST                                            :{STRING} Gozd
 
 ############ end of	savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Tezavnostna stopnja
+STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Shrani
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Preprosto
@@ -1919,6 +2067,7 @@ STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Ni mogoc
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Ni mogoce spremeniti imena lastnika ...
 STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finance {BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Stroski/dohodek
+STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Gradnja
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nova vozila
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Cene delovanja vlakov
@@ -1932,11 +2081,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Prihodek 
 STR_701B_SHIP_INCOME                                            :{GOLD}Prihodek ladij
 STR_701C_LOAN_INTEREST                                          :{GOLD}Obresti posojila
 STR_701D_OTHER                                                  :{GOLD}Drugo
+STR_701E                                                        :{BLACK}-{CURRENCY64}
+STR_701F                                                        :{BLACK}+{CURRENCY64}
 STR_7020_TOTAL                                                  :{WHITE}Skupaj:
+STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf prihodkov
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf cistega dobicka
 STR_7026_BANK_BALANCE                                           :{WHITE}Bancno stanje
 STR_7027_LOAN                                                   :{WHITE}Posojilo
+STR_MAX_LOAN                                                    :{WHITE}Meja posojila:  {BLACK}{CURRENCY64}
+STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Izposoja {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Vracilo {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE} ... najvisje posojilo je {CURRENCY}
@@ -1944,6 +2100,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Ni si mo
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE} ... ni posojila za odplacati
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} potrebno
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Ni mogoce odplacati posojila ...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Ni mogoca oddaja denarja, ki je izposojen od banke...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Izberi nov obraz za lastnika
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Spremeni barvo vozil podjetja
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Spremeni ime lastnika
@@ -1955,7 +2112,9 @@ STR_7037_PRESIDENT                                              :{WHITE}{PLAYERN
 STR_7038_INAUGURATED                                            :{GOLD}Ustanovljeno: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Vozila:
 STR_TRAINS                                                      :{WHITE}{COMMA} vlak{P "" a i ov}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} cestn{P o i a ih} vozil{P o i a ""}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} letalo
+STR_SHIPS                                                       :{WHITE}{COMMA} lad{P ja ji je ij}
 STR_7042_NONE                                                   :{WHITE}Brez
 STR_7043_FACE_SELECTION                                         :{WHITE}Izbira obraza
 STR_7044_MALE                                                   :{BLACK}Moski
@@ -1974,6 +2133,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Enot dos
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Ocene podjetja (max=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Vrednosti podjetij
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Seznam najboljsih podjetij
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Podjetje v tezavah!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :Podjetje {BLACK}{BIGFONT}{COMPANY} bo prodano ali prisiljeno v stecajni postopek, ce se stanje kmalu ne izboljša!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Lastnik)
@@ -2001,10 +2162,13 @@ STR_706D_PRESIDENT                                              :Predsednik
 STR_706E_TYCOON                                                 :Velekapitalist
 STR_706F_BUILD_HQ                                               :{BLACK}Zgradi sedez podjetja
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Zgradi sedez podjetja / poglej sedez podjetja
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Preseli sedez podjetja drugam za ceno 1% vrednosti podjetja
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nemogoca gradnja sedeza podjetja
 STR_7072_VIEW_HQ                                                :{BLACK}Poglej sedez podjetja
+STR_RELOCATE_HQ                                                 :{BLACK}Preseli sedez
 STR_COMPANY_PASSWORD                                            :{BLACK}Geslo
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Zaščitite svoje podjetje z geslom, da preprečite priključitev drugih uporabnikov k podjetju.
+STR_SET_COMPANY_PASSWORD                                        :Nastavi geslo podjetja
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svetovna recesija!{}{}Ekonomisti se bojijo najhujšega ob trenutnem poteku dogodkov!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Konec recesije!{}{}Izboljsanje trgovanja povecuje zaupanje domace industrije, gospodarstvo napreduje!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Menjaj veliko/majhno velikost okna
@@ -2020,7 +2184,34 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :Podjetje {BLACK}{BIGFONT}{COMPANY} je bilo prevzeto iz strani podjetja {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Podjetje se ni dovolj staro, da bi lahko trgovalo z lastnimi delnicami ...
 
+STR_LIVERY_DEFAULT                                              :standardni pogon
+STR_LIVERY_STEAM                                                :parna lokomotiva
+STR_LIVERY_DIESEL                                               :diesel lokomotiva
+STR_LIVERY_ELECTRIC                                             :elektricna lokomotiva
+STR_LIVERY_MONORAIL                                             :enotirna lokomotiva
+STR_LIVERY_MAGLEV                                               :magnetna lokomotiva
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :potniski vagon (para)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :potniski vagon (diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :potniski vagon (elektricni)
+STR_LIVERY_FREIGHT_WAGON                                        :tovorni vagon
+STR_LIVERY_BUS                                                  :avtobus
+STR_LIVERY_TRUCK                                                :tovornjak
+STR_LIVERY_PASSENGER_SHIP                                       :potniska ladja
+STR_LIVERY_FREIGHT_SHIP                                         :tovorna ladja
+STR_LIVERY_HELICOPTER                                           :Helikopter
+STR_LIVERY_SMALL_PLANE                                          :Majhno letalo
+STR_LIVERY_LARGE_PLANE                                          :Veliko letalo
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Prikaz glavnih barvnih shem
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Prikaz barvnih shem vlakov
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Prikaz barvnih shem cestnih vozil
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Prikaz barvnih shem ladij
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Prikaz barvnih shem letal
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Izberi glavno barvo za izbrano shemo
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Izberi drugo barvo za izbrano shemo
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Izberi barvno shemo za zamenjati ali vec shem s CTRL+klik. Klikni na okno za preklop sheme
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (parna)
