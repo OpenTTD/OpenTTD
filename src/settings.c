@@ -247,7 +247,7 @@ static IniFile *ini_load(const char *filename)
 		// it's a group?
 		if (s[0] == '[') {
 			if (e[-1] != ']') {
-				ShowInfoF("ini: invalid group name '%s'\n", buffer);
+				ShowInfoF("ini: invalid group name '%s'", buffer);
 			} else {
 				e--;
 			}
@@ -282,7 +282,7 @@ static IniFile *ini_load(const char *filename)
 			item->value = pool_strdup(&ini->pool, t, e - t);
 		} else {
 			// it's an orphan item
-			ShowInfoF("ini: '%s' outside of group\n", buffer);
+			ShowInfoF("ini: '%s' outside of group", buffer);
 		}
 	}
 
