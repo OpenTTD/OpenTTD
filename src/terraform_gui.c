@@ -76,12 +76,8 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		switch (GetTileType(tile)) {
 			case MP_CLEAR:
-				MakeClear(tile, CLEAR_ROCKS, 3);
-				break;
-
 			case MP_TREES:
 				MakeClear(tile, CLEAR_ROCKS, 3);
-				ClearBridgeMiddle(tile);
 				break;
 
 			default: continue;

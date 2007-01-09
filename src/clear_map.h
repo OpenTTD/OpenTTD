@@ -5,6 +5,7 @@
 
 #include "macros.h"
 #include "tile.h"
+#include "bridge_map.h"
 
 /* ground type, m5 bits 2...4
  * valid densities (bits 0...1) in comments after the enum
@@ -123,12 +124,17 @@ static inline void SetFenceSW(TileIndex t, uint h)
 
 static inline void MakeClear(TileIndex t, ClearGround g, uint density)
 {
+	/* If this is a non-bridgeable tile, clear the bridge bits while the rest
+	 * of the tile information is still here. */
+	if (!MayHaveBridgeAbove(t)) SB(_m[t].extra, 6, 2, 0);
+
 	SetTileType(t, MP_CLEAR);
 	SetTileOwner(t, OWNER_NONE);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0 << 5 | 0 << 2;
 	SetClearGroundDensity(t, g, density);
+	SB(_m[t].extra, 2, 4, 0);
 }
 
 

@@ -587,7 +587,6 @@ static void TileLoop_Trees(TileIndex tile)
 					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
 					default: MakeClear(tile, CLEAR_SNOW, GetTreeDensity(tile)); break;
 				}
-				ClearBridgeMiddle(tile);
 			}
 			break;
 
