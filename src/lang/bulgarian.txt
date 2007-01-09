@@ -2,6 +2,8 @@
 ##ownname Български
 ##isocode bg_BG.UTF-8
 ##plural 0
+##case accusative dative vocative nominative instrumental locative genitive
+##gender мъжки женски среден
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -793,12 +795,12 @@ STR_02D9_ABOUT_OPENTTD                                          :За 'OpenTTD'
 
 STR_02DB_OFF                                                    :{BLACK}Изключен
 STR_02DA_ON                                                     :{BLACK}Включен
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}
-STR_02DD_SUBSIDIES                                              :
-STR_02DE_MAP_OF_WORLD                                           :
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Покажи субсидиите
+STR_02DD_SUBSIDIES                                              :Субсидии
+STR_02DE_MAP_OF_WORLD                                           :Карта на света
 STR_EXTRA_VIEW_PORT                                             :Допълнителна камера
 STR_SIGN_LIST                                                   :Списък с табели
-STR_02DF_TOWN_DIRECTORY                                         :
+STR_02DF_TOWN_DIRECTORY                                         :Списък със селищата
 STR_TOWN_POPULATION                                             :{BLACK}Световна популация: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Камера {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Преместване на камерата
@@ -806,26 +808,26 @@ STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Прем
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Преместване глобалната камера
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Преместване глобалната камера до тази
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Валутна единица
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Парична единица
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
-STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Избиране на валутна единица
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Избор на парична единица
 STR_MEASURING_UNITS                                             :{BLACK}Мерни единици
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Избор на мерни единици
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Пътни превозни средства
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Движение по пътищата
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Избери посока на движение по пътищата
-STR_02E9_DRIVE_ON_LEFT                                          :Ляво движение
-STR_02EA_DRIVE_ON_RIGHT                                         :Дясно движение
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Избор посоката на движение по пътищата
+STR_02E9_DRIVE_ON_LEFT                                          :ляво
+STR_02EA_DRIVE_ON_RIGHT                                         :дясно
 STR_02EB_TOWN_NAMES                                             :{BLACK}Имена на градовете
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Избери стила на имената на градовете
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Избор стила на имената на градовете
 
-STR_02F4_AUTOSAVE                                               :{BLACK}Автозапазване
+STR_02F4_AUTOSAVE                                               :{BLACK}Автозаписване
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Избери интервала между две автозапазвания
-STR_02F7_OFF                                                    :Изключено
-STR_02F8_EVERY_3_MONTHS                                         :На всеки 3 месеца
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Интервала между две автозаписваня
+STR_02F7_OFF                                                    :изключено
+STR_02F8_EVERY_3_MONTHS                                         :на всеки 3 месеца
 STR_02F9_EVERY_6_MONTHS                                         :На всеки 6 месеца
 STR_02FA_EVERY_12_MONTHS                                        :На всеки 12 месеца
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Започни нова игра
@@ -871,56 +873,56 @@ STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Английски
-STR_TOWNNAME_FRENCH                                             :Френски
-STR_TOWNNAME_GERMAN                                             :Германски
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Английски (допълнителни)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Латиноамерикански
-STR_TOWNNAME_SILLY                                              :Глупави
-STR_TOWNNAME_SWEDISH                                            :Шведски
-STR_TOWNNAME_DUTCH                                              :Холандски
-STR_TOWNNAME_FINNISH                                            :Финландски
-STR_TOWNNAME_POLISH                                             :Полски
-STR_TOWNNAME_SLOVAKISH                                          :Словашки
-STR_TOWNNAME_NORWEGIAN                                          :Норвежки
-STR_TOWNNAME_HUNGARIAN                                          :Унгарски
-STR_TOWNNAME_AUSTRIAN                                           :Австрийски
-STR_TOWNNAME_ROMANIAN                                           :Румънски
-STR_TOWNNAME_CZECH                                              :Чешки
-STR_TOWNNAME_SWISS                                              :Швейцарски
-STR_TOWNNAME_DANISH                                             :Датски
-STR_TOWNNAME_TURKISH                                            :Турски
-STR_TOWNNAME_ITALIAN                                            :Италиански
-STR_TOWNNAME_CATALAN                                            :Каталонски
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :английски (оригинални)
+STR_TOWNNAME_FRENCH                                             :френски
+STR_TOWNNAME_GERMAN                                             :германски
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :английски (допълнителни)
+STR_TOWNNAME_LATIN_AMERICAN                                     :латиноамерикански
+STR_TOWNNAME_SILLY                                              :глупави
+STR_TOWNNAME_SWEDISH                                            :шведски
+STR_TOWNNAME_DUTCH                                              :холандски
+STR_TOWNNAME_FINNISH                                            :финландски
+STR_TOWNNAME_POLISH                                             :полски
+STR_TOWNNAME_SLOVAKISH                                          :словашки
+STR_TOWNNAME_NORWEGIAN                                          :норвежки
+STR_TOWNNAME_HUNGARIAN                                          :унгарски
+STR_TOWNNAME_AUSTRIAN                                           :австрийски
+STR_TOWNNAME_ROMANIAN                                           :румънски
+STR_TOWNNAME_CZECH                                              :чешки
+STR_TOWNNAME_SWISS                                              :швейцарски
+STR_TOWNNAME_DANISH                                             :датски
+STR_TOWNNAME_TURKISH                                            :турски
+STR_TOWNNAME_ITALIAN                                            :италиански
+STR_TOWNNAME_CATALAN                                            :каталонски
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Паунд (£)
-STR_CURR_USD                                                    :Долар ($)
-STR_CURR_EUR                                                    :Евро (€)
-STR_CURR_YEN                                                    :Йена (¥)
-STR_CURR_ATS                                                    :Австрийски шилинг (ATS)
-STR_CURR_BEF                                                    :Белгийски франк (BEF)
-STR_CURR_CHF                                                    :Швейцарски франк (CHF)
-STR_CURR_CZK                                                    :Чешка крона (CZK)
-STR_CURR_DEM                                                    :Немска марка (DEM)
-STR_CURR_DKK                                                    :Данска крона (DKK)
-STR_CURR_ESP                                                    :Песета (ESP)
-STR_CURR_FIM                                                    :Финландска марка
-STR_CURR_FRF                                                    :Франк (FRF)
-STR_CURR_GRD                                                    :Гръцка драхма (GRD)
-STR_CURR_HUF                                                    :Унгарски форинт (HUF)
-STR_CURR_ISK                                                    :Исландска крона (ISK)
-STR_CURR_ITL                                                    :Италианска лира (ITL)
-STR_CURR_NLG                                                    :Немски гилдер (NLG)
-STR_CURR_NOK                                                    :Норвежка крона (NOK)
-STR_CURR_PLN                                                    :Полска злота (PLN)
-STR_CURR_ROL                                                    :Ромънска лея (ROL)
-STR_CURR_RUR                                                    :Руска рубла (RUR)
-STR_CURR_SIT                                                    :Словенски толар (SIT)
-STR_CURR_SEK                                                    :Шведска крона (SEK)
-STR_CURR_YTL                                                    :Турска лира (YTL)
-STR_CURR_SKK                                                    :Словашка коруна (SKK)
-STR_CURR_BRR                                                    :Бразилски реал (BRL)
+STR_CURR_GBP                                                    :британска лира (£)
+STR_CURR_USD                                                    :долар ($)
+STR_CURR_EUR                                                    :евро (€)
+STR_CURR_YEN                                                    :йена (¥)
+STR_CURR_ATS                                                    :австрийски шилинг (ATS)
+STR_CURR_BEF                                                    :белгийски франк (BEF)
+STR_CURR_CHF                                                    :швейцарски франк (CHF)
+STR_CURR_CZK                                                    :чешка крона (CZK)
+STR_CURR_DEM                                                    :германска марка (DEM)
+STR_CURR_DKK                                                    :датска крона (DKK)
+STR_CURR_ESP                                                    :песета (ESP)
+STR_CURR_FIM                                                    :финландска марка (FIM)
+STR_CURR_FRF                                                    :френски франк (FRF)
+STR_CURR_GRD                                                    :гръцка драхма (GRD)
+STR_CURR_HUF                                                    :унгарски форинт (HUF)
+STR_CURR_ISK                                                    :исландска крона (ISK)
+STR_CURR_ITL                                                    :италианска лира (ITL)
+STR_CURR_NLG                                                    :холандски гулден (NLG)
+STR_CURR_NOK                                                    :норвежка крона (NOK)
+STR_CURR_PLN                                                    :полска злота (PLN)
+STR_CURR_ROL                                                    :румънска лея (ROL)
+STR_CURR_RUR                                                    :руска рубла (RUR)
+STR_CURR_SIT                                                    :словенски толар (SIT)
+STR_CURR_SEK                                                    :шведска крона (SEK)
+STR_CURR_YTL                                                    :турска лира (YTL)
+STR_CURR_SKK                                                    :словашка крона (SKK)
+STR_CURR_BRR                                                    :бразилски реал (BRL)
 
 STR_CURR_CUSTOM                                                 :Друга...
 
@@ -1005,7 +1007,7 @@ STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Авто
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Автообновяването на самолет е неуспешно {COMMA} (ограничени средства)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Влак {COMMA} е прекалено дълъг след замяната
 
-STR_CONFIG_PATCHES                                              :{BLACK}Конфигурация на кръпки
+STR_CONFIG_PATCHES                                              :{BLACK}Настройка на кръпки
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Настройки на кръпките
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Настройка на кръпките
 
@@ -1060,7 +1062,7 @@ STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Ген�
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Оригинал
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :ТераГенезис
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Максимално разстояние на нефтените рафинерии от краищата на картата {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Височина на снежната ивица: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Снежната ивица: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Ръбавост на терен (само за TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Много гладък
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладен
@@ -1114,11 +1116,11 @@ STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Без 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Цветни нови се появяват през: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Начална година: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Край на играта през: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Плавна икономика (повече, по-малки промени)
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Плавна икономика (повече и по-малки промени)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Позволяване покупката на акции от други компании
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При влачене, поставяне на семафори всеки: {ORANGE}{STRING} плочка(и)
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Позиция на лента за инструменти: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Лево
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Ляво
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Център
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Дясно
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Прилепване на прозорците: {ORANGE}{STRING} px
@@ -1141,7 +1143,7 @@ STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}YAPF з
 STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}YAPF за автомобили: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}YAPF за влакове: {ORANGE}{STRING}
 
-STR_TEMPERATE_LANDSCAPE                                         :Умерен климат
+STR_TEMPERATE_LANDSCAPE                                         :умерен климат
 STR_SUB_ARCTIC_LANDSCAPE                                        :Арктичен климат
 STR_SUB_TROPICAL_LANDSCAPE                                      :Тропически климат
 STR_TOYLAND_LANDSCAPE                                           :Земята на играчките
@@ -2510,7 +2512,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Рем�
 
 STR_INVALID_ORDER                                               :{RED} (Невалидна заповед)
 
-STR_UNKNOWN_DESTINATION                                         :неизвестна дестинация
+STR_UNKNOWN_DESTINATION                                         :неизвестно назначение
 STR_8812_EMPTY                                                  :{LTBLUE}Празен
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} от {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} от {STATION} (x{NUM})
@@ -2916,7 +2918,7 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Не м�
 STR_NEWGRF_NOT_FOUND                                            :{RED}Не е намерен отговарящ файл
 STR_NEWGRF_DISABLED                                             :{RED}Изключен
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Поръчкова валута
+STR_CURRENCY_WINDOW                                             :{WHITE}Парична единица
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменен курс: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделител:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Представка:
@@ -2924,7 +2926,7 @@ STR_CURRENCY_SUFFIX                                             :{LTBLUE}Над�
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Преобразуване в евро: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Преобразуване в евро: {ORANGE}никога
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Преглед: {ORANGE}{CURRENCY}
-STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Промяна параметрите на поръчкова валута
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Промяна параметрите на парична единица
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}

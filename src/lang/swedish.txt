@@ -70,7 +70,7 @@ STR_003E_FOOD                                                   :Mat
 STR_003F_PAPER                                                  :Papper
 STR_0040_GOLD                                                   :Guld
 STR_0041_WATER                                                  :Vatten
-STR_0042_WHEAT                                                  :Vete
+STR_0042_WHEAT                                                  :Spannmål
 STR_0043_RUBBER                                                 :Gummi
 STR_0044_SUGAR                                                  :Socker
 STR_0045_TOY                                                    :Leksaker
@@ -379,11 +379,11 @@ STR_SORT_BY_AGE                                                 :Ålder
 STR_SORT_BY_RELIABILITY                                         :Pålitlighet
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapacitet per godstyp
 STR_SORT_BY_MAX_SPEED                                           :Maximal hastighet
-STR_SORT_BY_MODEL                                               :
-STR_SORT_BY_VALUE                                               :
+STR_SORT_BY_MODEL                                               :Modell
+STR_SORT_BY_VALUE                                               :Värde
 STR_SORT_BY_FACILITY                                            :Stationstyp
 STR_SORT_BY_WAITING                                             :Väntande last-värde
-STR_SORT_BY_RATING_MAX                                          :Last Värdering
+STR_SORT_BY_RATING_MAX                                          :Lasts-värdering
 STR_ENGINE_SORT_ENGINE_ID                                       :MotorID (Klassisk Sort)
 STR_ENGINE_SORT_COST                                            :Kostnad
 STR_ENGINE_SORT_POWER                                           :Elektriskt
@@ -736,7 +736,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Spara sc
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Öppna scenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Spara scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spela scenario
-STR_PLAY_HEIGHTMAP                                              :{BLACK}Spela höjdkarta
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Kör höjdkarta
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Starta ett nytt spel, och använd en höjdkarta som landskap
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Vill du verkligen avsluta detta scenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Avsluta editor
@@ -770,7 +770,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C3_GAME_OPTIONS                                           :Spelinställningar
 STR_02C5_DIFFICULTY_SETTINGS                                    :Svårighetsgrad
 STR_02C7_CONFIG_PATCHES                                         :Ändra Patchar
-STR_NEWGRF_SETTINGS                                             :Newgrf inställningar
+STR_NEWGRF_SETTINGS                                             :NewGRF inställningar
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Stadsnamn visas
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stationsnamn visas
@@ -796,11 +796,11 @@ STR_02DA_ON                                                     :{BLACK}På
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Visa subventioner
 STR_02DD_SUBSIDIES                                              :Subventioner
 STR_02DE_MAP_OF_WORLD                                           :Världskarta
-STR_EXTRA_VIEW_PORT                                             :Nytt vy fönster
+STR_EXTRA_VIEW_PORT                                             :Nytt vyfönster
 STR_SIGN_LIST                                                   :Skyltlista
 STR_02DF_TOWN_DIRECTORY                                         :Stadslista
 STR_TOWN_POPULATION                                             :{BLACK}Världsbefolkning: {COMMA}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vy fönster {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vyfönster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiera till vy
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiera kartans position till detta Vyfönster
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Klistra in vyn
@@ -883,15 +883,15 @@ STR_TOWNNAME_FINNISH                                            :Finska
 STR_TOWNNAME_POLISH                                             :Polska
 STR_TOWNNAME_SLOVAKISH                                          :Slovakiska
 STR_TOWNNAME_NORWEGIAN                                          :Norska
-STR_TOWNNAME_HUNGARIAN                                          :Hungarianska
-STR_TOWNNAME_AUSTRIAN                                           :Australienska
+STR_TOWNNAME_HUNGARIAN                                          :Ungerska
+STR_TOWNNAME_AUSTRIAN                                           :Österrikisk
 STR_TOWNNAME_ROMANIAN                                           :Rumänska
 STR_TOWNNAME_CZECH                                              :Tjeckiska
 STR_TOWNNAME_SWISS                                              :Schweiziska
 STR_TOWNNAME_DANISH                                             :Danska
 STR_TOWNNAME_TURKISH                                            :Turkiska
 STR_TOWNNAME_ITALIAN                                            :Italienska
-STR_TOWNNAME_CATALAN                                            :Katalan
+STR_TOWNNAME_CATALAN                                            :Katalanska
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)
@@ -914,7 +914,7 @@ STR_CURR_ITL                                                    :Italienska lire
 STR_CURR_NLG                                                    :Holländska guilder (NLG)
 STR_CURR_NOK                                                    :Norska kronor (NOK)
 STR_CURR_PLN                                                    :Polska Zloty (PLN)
-STR_CURR_ROL                                                    :RumÃ€nsk Leu (ROL)
+STR_CURR_ROL                                                    :Rumänsk Leu (ROL)
 STR_CURR_RUR                                                    :Ryska rubel (RUR)
 STR_CURR_SIT                                                    :Slovenska Tolar (SIT)
 STR_CURR_SEK                                                    :Svenska kronor (SEK)
@@ -975,8 +975,8 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan inte
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan inte kopiera orderlistan...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slut på delade order - -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}Tåg {COMMA} har tappat bort sig.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Tåg {COMMA}s vinst förra året var {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}Tåg {COMMA} är vilse
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Förra året fölorade Tåg {COMMA}  {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeiska Valutasystemet!{}{}Euron introduceras och ditt land går över till den som dess enda valuta!
 
 # Start of order review system.
@@ -1160,7 +1160,7 @@ STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Byt dat
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktivera modifierande produceringsvärden: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}På väg mot {WAYPOINT}
-STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}På väg mot {WAYPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}På väg mot {WAYPOINT} i {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :Gå via {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Gå via {WAYPOINT} utan att stanna
@@ -1220,14 +1220,14 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Konverte
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Drag loket här för att sälja hela tåget
 
 STR_DRAG_DROP                                                   :{BLACK}Drag & Släpp
-STR_STATION_DRAG_DROP                                           :{BLACK}Bygg en station genom drag & släpp
+STR_STATION_DRAG_DROP                                           :{BLACK}Bygg en station genom att dra & släppa
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Välj vilken stationsklass som ska visas
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Välj stationstyp att bygga
 
 STR_FAST_FORWARD                                                :{BLACK}Snabbspola spelet
 STR_MESSAGE_HISTORY                                             :{WHITE}Meddelandehistorik
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}En lista av dom senaste nyheterna
-STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Avaktivera alla
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Deaktivera alla
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Aktivera alla
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Bygg kolgruva
@@ -1235,11 +1235,11 @@ STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Plantera
 STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Bygg oljerigg
 STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Bygg farm
 STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Bygg koppargruva
-STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Bygg oljekälla
+STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Borra efter olja
 STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Bygg guldgruva
 STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Bygg diamantgruva
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Bygg järnmalmsgruva
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Plantera fruktplantage
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Finansiera fruktplantage
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Plantera gummiplantage
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Bygg vattentillgång
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Plantera sockervaddskog
@@ -1274,7 +1274,7 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}Varning:
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}Flera spelare
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spelarnamn:
-STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Namnet som andra spelare kommer se dig under
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Namnet som andra spelare kommer se dej som
 STR_NETWORK_CONNECTION                                          :{BLACK}Anslutning:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Välj mellan att spela över internet eller det lokala nätverket
 
@@ -1283,7 +1283,7 @@ STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Starta e
 
 STR_NETWORK_GAME_NAME                                           :{BLACK}Namn
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Namn på nätverksspelet
-STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Språk, server version, mm
+STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Språk, serverversion, mm
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klicka på ett spel från listan för att välja det
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Leta server
@@ -1305,10 +1305,10 @@ STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverv
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server adress:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Startdatum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Nuvarande datum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_PASSWORD                                            :{SILVER}Lösenordsskyddad!
+STR_NETWORK_PASSWORD                                            :{SILVER}Lösenordsskyddat!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER AVSTÄNGD
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER FULL
-STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIONERNA FUNKAR INTE IHOP
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIONERNA MATCHAR EJ
 STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NewGRF Matchar Ej
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Gå med i spelet
@@ -1318,7 +1318,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Starta e
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Namn:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Namnet på nätverksspelet kommer att synas för andra spelare i multiplayer menyn
-STR_NETWORK_SET_PASSWORD                                        :{BLACK}Ange lösenord
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Bestäm lösenord
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Skydda spelet med ett lösenord så att inte andra än dom som har lösenordet kan gå med i spelet
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Välj karta:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Vilken karta vill du spela?
@@ -1330,7 +1330,7 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (publik)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 spelare
+STR_NETWORK_0_PLAYERS                                           :Inga spelare
 STR_NETWORK_1_PLAYERS                                           :1 spelare
 STR_NETWORK_2_PLAYERS                                           :2 spelare
 STR_NETWORK_3_PLAYERS                                           :3 spelare
@@ -1462,7 +1462,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Servern
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
-STR_NETWORK_SPECTATORS                                          :Åskådare
+STR_NETWORK_SPECTATORS                                          :Publik
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(ingen)
 STR_NETWORK_CLIENTLIST_KICK                                     :Kasta ut
@@ -1496,8 +1496,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Kostnad: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Inkomst: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Inkomst: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Omlastning: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Omlastning: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Överförning: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Överförning: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Uppskattad kostnad: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Uppskattad inkomst: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kan inte höja marken här...
@@ -1549,7 +1549,7 @@ STR_1023_RAILROAD_TRAIN_DEPOT                                   :Järnvägsdepå
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...området ägs av ett annat företag
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Järnväg med vanliga signaler
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Järnväg med för-signaler
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Järnväg med exit-signaler
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Järnväg med utgående signaler
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Järnväg med kombinerade signaler
 
 
@@ -1943,22 +1943,22 @@ STR_SV_SHIP_NAME                                                :Skepp {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Flygplan {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :{STRING} norr
+STR_SV_STNAME_NORTH                                             :{STRING} norra
 STR_SV_STNAME_SOUTH                                             :{STRING} söder
-STR_SV_STNAME_EAST                                              :{STRING} öster
-STR_SV_STNAME_WEST                                              :{STRING} väster
-STR_SV_STNAME_CENTRAL                                           :{STRING} central
+STR_SV_STNAME_EAST                                              :{STRING} östra
+STR_SV_STNAME_WEST                                              :{STRING} västra
+STR_SV_STNAME_CENTRAL                                           :{STRING} centralstation
 STR_SV_STNAME_TRANSFER                                          :{STRING} transfer
-STR_SV_STNAME_HALT                                              :{STRING} stopp
-STR_SV_STNAME_VALLEY                                            :{STRING} dalgång
+STR_SV_STNAME_HALT                                              :{STRING} hållplats
+STR_SV_STNAME_VALLEY                                            :{STRING}dal
 STR_SV_STNAME_HEIGHTS                                           :{STRING} höjder
-STR_SV_STNAME_WOODS                                             :{STRING} skogar
-STR_SV_STNAME_LAKESIDE                                          :{STRING} sjö
+STR_SV_STNAME_WOODS                                             :{STRING} skog
+STR_SV_STNAME_LAKESIDE                                          :{STRING} sjöstrand
 STR_SV_STNAME_EXCHANGE                                          :{STRING} växel
 STR_SV_STNAME_AIRPORT                                           :{STRING} flygplats
 STR_SV_STNAME_OILFIELD                                          :{STRING} oljefält
 STR_SV_STNAME_MINES                                             :{STRING} gruva
-STR_SV_STNAME_DOCKS                                             :{STRING} Hamnar
+STR_SV_STNAME_DOCKS                                             :{STRING} Kaj
 STR_SV_STNAME_BUOY_1                                            :{STRING} boj 1
 STR_SV_STNAME_BUOY_2                                            :{STRING} boj 2
 STR_SV_STNAME_BUOY_3                                            :{STRING} boj 3
@@ -1969,8 +1969,8 @@ STR_SV_STNAME_BUOY_7                                            :{STRING} boj 7
 STR_SV_STNAME_BUOY_8                                            :{STRING} boj 8
 STR_SV_STNAME_BUOY_9                                            :{STRING} boj 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} annex
-STR_SV_STNAME_SIDINGS                                           :{STRING} sida
-STR_SV_STNAME_BRANCH                                            :{STRING} område
+STR_SV_STNAME_SIDINGS                                           :{STRING} förort
+STR_SV_STNAME_BRANCH                                            :{STRING} förgrening
 STR_SV_STNAME_UPPER                                             :Övre {STRING}
 STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterplats
@@ -2162,10 +2162,10 @@ STR_706D_PRESIDENT                                              :Verkställande 
 STR_706E_TYCOON                                                 :Tycoon
 STR_706F_BUILD_HQ                                               :{BLACK}Bygg Högkvarter
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Bygg huvudkontor / visa företagets huvudkontor
-STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Bygg om huvudkontor på annan plats (kostar 1% av företagets värde)
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Bygg om högkvarter på annan plats (kostar 1% av företagets värde)
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Kan inte bygga huvudkontor här...
 STR_7072_VIEW_HQ                                                :{BLACK}Visa högkvarter
-STR_RELOCATE_HQ                                                 :{BLACK}Flytta huvudkontoret
+STR_RELOCATE_HQ                                                 :{BLACK}Flytta högkvarter
 STR_COMPANY_PASSWORD                                            :{BLACK}Lösenord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Lösenordsskydda ditt företag för att förhindra att obehöriga spelare ansluter.
 STR_SET_COMPANY_PASSWORD                                        :Ange företagets lösenord
@@ -2600,10 +2600,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gör mar
 STR_SERVICE_HINT                                                :{BLACK}Skippa den här ordern om inte servning behövs
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nytt {STRING} nu tillgängligt!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kostnad: {CURRENCY} Vikt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Effekt: {POWER}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {CARGO}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kostnad: {CURRENCY} Vikt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Kraft {POWER}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Motorstopp
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/år
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vikt: {LTBLUE}{WEIGHT_S}  {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Tophastighet: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vikt: {LTBLUE}{WEIGHT_S}  {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Tophastighet: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vikt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maxhastighet: {LTBLUE}{VELOCITY} {BLACK}Maximal Dragkraft: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra året: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
@@ -2625,7 +2625,7 @@ STR_TRAIN_STOPPING                                              :{RED}Stannar
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stannar, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Fel järnvägstyp
 STR_TRAIN_NO_POWER                                              :{RED}Ingen Kraft
-STR_TRAIN_START_NO_CATENARY                                     :Loket kan inte starta för att detta spår saknar elledningar
+STR_TRAIN_START_NO_CATENARY                                     :
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vägfordon i vägen
@@ -2648,9 +2648,9 @@ STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan inte
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan inte stoppa/starta vägfordon...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vägfordon {COMMA} väntar i depån
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}På väg mot {TOWN}s vägdepå
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}På väg mot {TOWN}s vägdepå, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}På väg mot {TOWN}s vägdepå i {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Service vid {TOWN}s vägdepå
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Service vid {TOWN}s vägdepå, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Service vid {TOWN}s vägdepå i {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan inte skicka fordon till depå...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan inte hitta till lokal depå
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vägfordon - klicka på fordon för information
@@ -2721,9 +2721,9 @@ STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan inte
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan inte skicka skepp till depå...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan inte finna en lokal depå
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}På väg mot {TOWN}s Skeppsdepå
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}På väg mot {TOWN}s Skeppsdepå, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}På väg mot {TOWN}s Skeppsdepå i {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service vid {TOWN}s skeppsdepå
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Service vid {TOWN}s skeppsdepå, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Service vid {TOWN}s skeppsdepå, i{VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skepp {COMMA} väntar i depå
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bygg hamn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bygg skeppsdepå (för byggnad och lagning av skepp)
@@ -2790,7 +2790,7 @@ STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan inte
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}På väg mot {STATION}s hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}På väg mot {STATION}s hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Service vid {STATION}s hangar
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Service vid {STATION}s hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Service vid {STATION}s hangar i {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flygplan {COMMA} väntar i flygplanshangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flygplan i vägen
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan inte stoppa/starta flygplan...
@@ -2879,7 +2879,7 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Mängden
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Enheter av gods levererat de senaste fyra kvartalen.
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Typer av gods levererat det senaste kvartalet.
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Mängden pengar på hand
-STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Har du ett stort lån?
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Mängd pengar detta företag har lånat
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totalt antal poäng utav möjligt antal poäng
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Inställningar
@@ -2899,7 +2899,7 @@ STR_NEWGRF_REMOVE                                               :{BLACK}Ta bort
 STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Ta bort den markerade NewGRF-filen från listan
 STR_NEWGRF_MOVEUP                                               :{BLACK}Flytta upp
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Flytta upp den markerade NewGRF-filen i listan
-STR_NEWGRF_MOVEDOWN                                             :{BLACK}Fytta ned
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Flytta ned
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Flytta ner den markerade NewGRF-filen i listan
 STR_NEWGRF_FILE_TIP                                             :{BLACK}En lista med installerade NewGRF-filer . Välj en fil för att ändra dess parametrar
 STR_NEWGRF_PARAMETER                                            :{BLACK}Paramerar: {SILVER}{STRING}
@@ -2909,7 +2909,7 @@ STR_NEWGRF_NO_INFO                                              :{BLACK}Ingen in
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Tillgängliga NewGRF filer
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Lägg till markering
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Lägg till den markerade NewGRF-filen till din konfiguration
-STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Läs om filer
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Scanna om filer
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Uppdatera listan med tillgängliga NewGRF-filer
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan inte lägga till filen: redan existerande GRF ID
 
@@ -2920,7 +2920,7 @@ STR_CURRENCY_WINDOW                                             :{WHITE}Egen val
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Avskiljare:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix:
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Ändelse:
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Går över till Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Går över till Euro: {ORANGE}aldrig
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Förhandsgranska: {ORANGE}{CURRENCY}
@@ -3019,7 +3019,7 @@ STR_MAGLEV_VEHICLES                                             :Maglevfordon
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vikt: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK}   Effekt: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK}   Kraft: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftkostnader: {GOLD}{CURRENCY}/år
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitet: {GOLD}{CARGO} {STRING}
@@ -3032,7 +3032,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacite
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserade vagnar: {GOLD}+{POWER}{BLACK} Vikt: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Upprustningsbar till: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alla typer av last
-STR_PURCHASE_INFO_ALL_BUT                                       :Alla utom {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :Allt utom {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximal Dragkraft: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
@@ -3071,7 +3071,7 @@ STR_PROGRESS                                                    :{WHITE}{NUM}% f
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Generera Värld
 STR_TREE_GENERATION                                             :{BLACK}Generera Träd
-STR_UNMOVABLE_GENERATION                                        :{BLACK}Icke flyttbar generering
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Oflyttbar generera
 STR_CLEARING_TILES                                              :{BLACK}Svår och stenig markgenerering
 STR_SETTINGUP_GAME                                              :{BLACK}Ställer in spel
 STR_PREPARING_TILELOOP                                          :{BLACK}Kör tile-loop
@@ -3096,7 +3096,7 @@ STR_CITY_AIRPORT                                                :{BLACK}Stad
 STR_METRO_AIRPORT                                               :{BLACK}Storstads-Flygplats
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internationell Flygplats
 STR_COMMUTER_AIRPORT                                            :{BLACK}Pendlare
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Jättestor flygplats
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinental
 STR_HELIPORT                                                    :{BLACK}Helikopterplatta
 STR_HELIDEPOT                                                   :{BLACK}Helikopterhangar
 STR_HELISTATION                                                 :{BLACK}Helikopterstation

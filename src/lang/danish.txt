@@ -167,7 +167,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Afslut
 STR_00C8_YES                                                    :{BLACK}Ja
 STR_00C9_NO                                                     :{BLACK}Nej
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på du vil afslutte dette spil og returnere til {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på, at du vil forlade dette spil og returnere til {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -344,7 +344,7 @@ STR_UNITS_FORCE_METRIC                                          :{COMMA} ton kra
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf over udbytte
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf over afkast
 STR_0155_INCOME_GRAPH                                           :Graf over indkomster
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf over leveret last
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Graf over præstation
@@ -357,10 +357,10 @@ STR_PERFORMANCE_DETAIL_MENU                                     :Præstations ov
 STR_015B_OPENTTD                                                :{WHITE}Om OpenTTD
 STR_015C_SAVE_GAME                                              :Gem Spil
 STR_015D_LOAD_GAME                                              :Hent Spil
-STR_015E_QUIT_GAME                                              :Afslut Spil
+STR_015E_QUIT_GAME                                              :Forlad spillet
 STR_015F_QUIT                                                   :Afslut
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på, at du vil afslutte dette spil ?
-STR_0161_QUIT_GAME                                              :{WHITE}Afslut Spil
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på, at du vil forlade dette spil ?
+STR_0161_QUIT_GAME                                              :{WHITE}Forlad spillet
 STR_SORT_ORDER_TIP                                              :{BLACK}Vælg sorteringsorden (faldende/stigende)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vælg sorteringskriterie
 STR_SORT_BY                                                     :{BLACK}Sortér på
@@ -373,8 +373,8 @@ STR_SORT_BY_NAME                                                :{BLACK}Navn
 STR_SORT_BY_DROPDOWN_NAME                                       :Navn
 STR_SORT_BY_DATE                                                :{BLACK}Dato
 STR_SORT_BY_NUMBER                                              :Nummer
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Udbytte sidste år
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Udbytte i år
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Afkast sidste år
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Afkast i år
 STR_SORT_BY_AGE                                                 :Alder
 STR_SORT_BY_RELIABILITY                                         :Pålidelighed
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapacitet for hver lasttype
@@ -405,25 +405,25 @@ STR_SEND_AIRCRAFT_TO_HANGAR                                     :Send til hangar
 STR_SEND_FOR_SERVICING                                          :Send til eftersyn
 
 ############ range for months starts
-STR_0162_JAN                                                    :Jan
-STR_0163_FEB                                                    :Feb
-STR_0164_MAR                                                    :Mar
-STR_0165_APR                                                    :Apr
-STR_0166_MAY                                                    :Maj
-STR_0167_JUN                                                    :Jun
-STR_0168_JUL                                                    :Jul
-STR_0169_AUG                                                    :Aug
-STR_016A_SEP                                                    :Sep
-STR_016B_OCT                                                    :Okt
-STR_016C_NOV                                                    :Nov
-STR_016D_DEC                                                    :Dec
+STR_0162_JAN                                                    :jan
+STR_0163_FEB                                                    :feb
+STR_0164_MAR                                                    :mar
+STR_0165_APR                                                    :apr
+STR_0166_MAY                                                    :maj
+STR_0167_JUN                                                    :jun
+STR_0168_JUL                                                    :jul
+STR_0169_AUG                                                    :aug
+STR_016A_SEP                                                    :sep
+STR_016B_OCT                                                    :okt
+STR_016C_NOV                                                    :nov
+STR_016D_DEC                                                    :dec
 ############ range for months ends
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Pause spillet
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Gem spillet, afslut spillet, afslut
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Gem spillet, forlad spillet, afslut
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis en liste over selskabets stationer
 STR_0174_DISPLAY_MAP                                            :{BLACK}Vis kortet
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Vis kortet, byoversigt
@@ -465,7 +465,7 @@ STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Vis tran
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Vis vegetation på kortet
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Vis landejere på kortet
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Vis/skjul bynavne på kort
-STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Udbytte i år: {CURRENCY} (sidste år: {CURRENCY})
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Afkast i år: {CURRENCY} (sidste år: {CURRENCY})
 
 ############ range for service numbers starts
 STR_AGE                                                         :{COMMA} år ({COMMA})
@@ -942,18 +942,18 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vælg sk
 STR_AUTOSAVE_1_MONTH                                            :Hver måned
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fejl under autogem
 
-STR_MONTH_JAN                                                   :Januar
-STR_MONTH_FEB                                                   :Februar
-STR_MONTH_MAR                                                   :Marts
-STR_MONTH_APR                                                   :April
-STR_MONTH_MAY                                                   :Maj
-STR_MONTH_JUN                                                   :Juni
-STR_MONTH_JUL                                                   :Juli
-STR_MONTH_AUG                                                   :August
-STR_MONTH_SEP                                                   :September
-STR_MONTH_OCT                                                   :Oktober
-STR_MONTH_NOV                                                   :November
-STR_MONTH_DEC                                                   :December
+STR_MONTH_JAN                                                   :januar
+STR_MONTH_FEB                                                   :februar
+STR_MONTH_MAR                                                   :marts
+STR_MONTH_APR                                                   :april
+STR_MONTH_MAY                                                   :maj
+STR_MONTH_JUN                                                   :juni
+STR_MONTH_JUL                                                   :juli
+STR_MONTH_AUG                                                   :august
+STR_MONTH_SEP                                                   :september
+STR_MONTH_OCT                                                   :oktober
+STR_MONTH_NOV                                                   :november
+STR_MONTH_DEC                                                   :december
 
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Retning mod {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Retning mod {STATION}, {VELOCITY}
@@ -976,7 +976,7 @@ STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slut på delt ordreliste - -
 
 STR_TRAIN_IS_LOST                                               :{WHITE}Tog {COMMA} er faret vild.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Tog {COMMA}'s udbytte sidste år var {CURRENCY}
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Tog {COMMA}'s afkast sidste år var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europæisk fællesvaluta!{}{}Euroen er introduceret som eneste betalingsmiddel i dit land!
 
 # Start of order review system.
@@ -2088,7 +2088,7 @@ STR_7021                                                        :{COMPANY}{PLAYE
 STR_7022_INCOME_GRAPH                                           :{WHITE}Indkomst Graf
 STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
-STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Udbytte Graf
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Afkast Graf
 STR_7026_BANK_BALANCE                                           :{WHITE}Bank balance
 STR_7027_LOAN                                                   :{WHITE}Lån
 STR_MAX_LOAN                                                    :{WHITE}Maks. lån:  {BLACK}{CURRENCY64}
@@ -2605,7 +2605,7 @@ STR_885C_BROKEN_DOWN                                            :{RED}Gået i st
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_S}  {BLACK}Styrke: {LTBLUE}{POWER}{BLACK} Maks. hastighed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hastighed: {LTBLUE}{VELOCITY} {BLACK}Maks. trækkraft: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Udbytte i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Afkast i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed {LTBLUE}{COMMA}%  {BLACK}nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppet
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan ikke få toget til at passere signalet...
@@ -2639,7 +2639,7 @@ STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_900E_MAX_SPEED                                              :{BLACK}Maks. hastighed: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Udbytte i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Afkast i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
@@ -2713,7 +2713,7 @@ STR_980F                                                        :{WHITE}{VEHICLE
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_9813_MAX_SPEED                                              :{BLACK}Maks. hastighed: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Udbytte i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Afkast i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
@@ -2783,7 +2783,7 @@ STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_A00E_MAX_SPEED                                              :{BLACK}Maks. hastighed: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Udbytte i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Afkast i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan ikke sende flyet til en hangar...
@@ -2862,7 +2862,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Køretøjer:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationer:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. udbytte:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. afkast:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. indkomst:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Maks. indtægt:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Afleveret:
@@ -2873,7 +2873,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Antal af køretøjer; dette inkludere vejkøretøjer, tog, skibe og fly
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Antallet af stationer. Alle dele af en station (f.eks. tog station, bus station, lufthavn) tæller med, også selvom de er sat sammen til en station
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Udbytte for det køretøj, med lavest indkomst (af alle køretøjer ældre end 2 år)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Afkast for det køretøj med laveste indkomst (af alle køretøjer ældre end 2 år)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Indtægt i måneden med den laveste indtægt i de sidste 12 kvartaler
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Indtægt i måneden med den højeste indtægt i de sidste 12 kvartaler
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Antal enheder fragtet i de sidste 4 kvartaler
@@ -2953,10 +2953,10 @@ STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sælg al
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sælg alle skibe i dokken
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Sælg alle fly i hangaren
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Få vist en liste over alle toge med denne remise i deres ordreliste
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Få vist en liste over alle køretøjer med dette værksted i deres ordreliste
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Få vist en liste over alle skibe med denne dok i deres ordreliste
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Få vist en liste over alle fly med en hangar ved denne lufthavn i deres ordreliste
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Vis en liste over alle toge med denne remise i ordrelisten
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Vis liste over alle køretøjer med dette værksted i ordrelisten
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Vis liste over alle skibe med denne skibsdok i ordrelisten
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Vis liste over alle fly med en hangar ved denne lufthavn i ordrelisten
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Udskift automatisk all toge i remisen
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Udskift automatisk alle køretøjer i værkstedet

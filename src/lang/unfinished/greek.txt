@@ -146,7 +146,7 @@ STR_00DD_ORANGE                                                 :Πορτοκα�
 STR_00DE_BROWN                                                  :Καφέ
 STR_00DF_GREY                                                   :Γκρι
 STR_00E0_WHITE                                                  :Λευκό
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Πάρα πολλά οχήματα στο παιχνίδι
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Πάρα πολλά οχήματα στον χάρτη
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Τοποθεσία
@@ -746,21 +746,61 @@ STR_0336_7                                                      :{BLACK}7
 ############ start of townname region
 ############ end of	townname region
 
+STR_CURR_GBP                                                    :Αγγλική Λίρα (£)
+STR_CURR_GRD                                                    :Δραχμή(δρχ.)
 
 
+STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Σε όλη την οθόνη
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Τσεκάρεται αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
+
+STR_OPTIONS_RES                                                 :{BLACK}Ανάλυση οθόνης
+STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_RES_TIP                                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
+
+STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+
+STR_AUTOSAVE_1_MONTH                                            :Κάθε μήνα
+STR_AUTOSAVE_FAILED                                             :{WHITE}Το αυτόματο σώσιμο απέτυχε
+
+STR_MONTH_JAN                                                   :Ιανουάριος
+STR_MONTH_FEB                                                   :Φεβρουάριος
+STR_MONTH_MAR                                                   :Μάρτιος
+STR_MONTH_APR                                                   :Απρίλιος
+STR_MONTH_MAY                                                   :Μάιος
+STR_MONTH_JUN                                                   :Ιούνιος
+STR_MONTH_JUL                                                   :Ιούλιος
+STR_MONTH_AUG                                                   :Άυγουστος
+STR_MONTH_SEP                                                   :Σεπτέμβριος
+STR_MONTH_OCT                                                   :Οκτόβριος
+STR_MONTH_NOV                                                   :Νοέμβριος
+STR_MONTH_DEC                                                   :Δεκέμβριος
+
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Πάει προς {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Πάει προς {STATION}, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}Δεν έχει οδηγίες
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Δεν έχει οδηγίες, {VELOCITY}
+
+STR_PASSENGERS                                                  :Επιβάτες
+STR_BAGS                                                        :Τσάντες
+STR_TONS                                                        :Τόνοι
+STR_LITERS                                                      :Λίτρα
+STR_CRATES                                                      :Κουτιά
+STR_RES_OTHER                                                   :άλλα
+STR_NOTHING                                                     :
+
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 
-
-
-
-
-
-
-
-
+STR_TRAIN_IS_LOST                                               :{WHITE}Το τραίνο {COMMA} Χάθηκε
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Το τραίνο {COMMA} έχει τόσες λίγες οδηγίες
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Το Οδικό όχημα {COMMA} έχει τόσες λίγες οδηγίες
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Το πλοίο {COMMA} έχει τόσες λίγες οδηγίες
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Το αεροσκάφος {COMMA} has too few orders in the schedule
 # end of order system
 
 

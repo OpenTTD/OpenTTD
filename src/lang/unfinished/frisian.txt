@@ -1,3 +1,4 @@
+##name Frisian
 ##ownname Frysk
 ##isocode fy.UTF-8
 
@@ -949,7 +950,7 @@ STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Middelgrutte pr
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Grutte promoasjekampanje
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Subsidiearje lokale weiferbouwing
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Bou stânbyld fan bedrieuwseigner
-STR_204B_FUND_NEW_BUILDINGS                                     :Betelje neie gebouen
+STR_204B_FUND_NEW_BUILDINGS                                     :Betelje bouw fan nije gebouwen
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Begjin in lytse advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}  Kostet: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Begjin in middelgrutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}  Kostet: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Begjin in grutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}  Kostet: {CURRENCY}
@@ -960,7 +961,7 @@ STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (yn oa
 STR_2059_IGLOO                                                  :Yglo
 STR_205A_TEPEES                                                 :Tipi's
 STR_205B_TEAPOT_HOUSE                                           :Teepothûs
-STR_205C_PIGGY_BANK                                             :Bargebank
+STR_205C_PIGGY_BANK                                             :Sparbaarch
 
 
 ##id 0x2800

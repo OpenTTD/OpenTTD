@@ -27,10 +27,10 @@ STR_0013_LIVESTOCK                                              :Bestiame
 STR_0014_GOODS                                                  :Beni
 STR_0015_GRAIN                                                  :Grano
 STR_0016_WOOD                                                   :Legname
-STR_0017_IRON_ORE                                               :Minerale Ferroso
+STR_0017_IRON_ORE                                               :Minerali Ferrosi
 STR_0018_STEEL                                                  :Acciaio
 STR_0019_VALUABLES                                              :Valori
-STR_001A_COPPER_ORE                                             :Minerale di Rame
+STR_001A_COPPER_ORE                                             :Minerali di Rame
 STR_001B_MAIZE                                                  :Mais
 STR_001C_FRUIT                                                  :Frutta
 STR_001D_DIAMONDS                                               :Diamanti
