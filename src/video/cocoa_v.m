@@ -674,7 +674,7 @@ static void QZ_GameLoop(void)
 	CSleep(1);
 
 	for (;;) {
-		uint32 prev_cur_ticks; // to check for wrapping
+		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 		InteractiveRandom(); // randomness
 
 		while (QZ_PollEvent()) {}
