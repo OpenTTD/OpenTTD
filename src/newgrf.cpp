@@ -139,10 +139,11 @@ void CDECL grfmsg(int severity, const char *str, ...)
 	DEBUG(grf, severity, "[%s:%d] %s", _cur_grfconfig->filename, _nfo_line, buf);
 }
 
-static inline void check_length(int real, int wanted, const char *str)
+static inline bool check_length(int real, int wanted, const char *str)
 {
-	if (real >= wanted) return;
+	if (real >= wanted) return true;
 	grfmsg(0, "%s: Invalid pseudo sprite length %d (expected %d)!", str, real, wanted);
+	return false;
 }
 
 static inline byte grf_load_byte(byte **buf)
@@ -1334,7 +1335,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 		return;
 	}
 
-	check_length(len, 6, "FeatureChangeInfo");
+	if (!check_length(len, 6, "FeatureChangeInfo")) return;
 	buf++;
 	feature  = grf_load_byte(&buf);
 	numprops = grf_load_byte(&buf);
@@ -1420,7 +1421,7 @@ static void SafeChangeInfo(byte *buf, int len)
 	uint8 numinfo;
 	uint8 index;
 
-	check_length(len, 6, "SafeChangeInfo");
+	if (!check_length(len, 6, "SafeChangeInfo")) return;
 	buf++;
 	feature  = grf_load_byte(&buf);
 	numprops = grf_load_byte(&buf);
@@ -1502,7 +1503,7 @@ static void NewSpriteSet(byte *buf, int len)
 	uint num_ents;
 	uint i;
 
-	check_length(len, 4, "NewSpriteSet");
+	if (!check_length(len, 4, "NewSpriteSet")) return;
 	buf++;
 	feature  = grf_load_byte(&buf);
 	num_sets = grf_load_byte(&buf);
@@ -1586,7 +1587,7 @@ static void NewSpriteGroup(byte *buf, int len)
 	SpriteGroup *group = NULL;
 	byte *bufend = buf + len;
 
-	check_length(len, 5, "NewSpriteGroup");
+	if (!check_length(len, 5, "NewSpriteGroup")) return;
 	buf++;
 
 	feature = grf_load_byte(&buf);
@@ -1615,7 +1616,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			uint i;
 
 			/* Check we can load the var size parameter */
-			check_length(bufend - buf, 1, "NewSpriteGroup (Deterministic) (1)");
+			if (!check_length(bufend - buf, 1, "NewSpriteGroup (Deterministic) (1)")) return;
 
 			group = AllocateSpriteGroup();
 			group->type = SGT_DETERMINISTIC;
@@ -1628,7 +1629,7 @@ static void NewSpriteGroup(byte *buf, int len)
 				case 2: group->g.determ.size = DSG_SIZE_DWORD; varsize = 4; break;
 			}
 
-			check_length(bufend - buf, 5 + varsize, "NewSpriteGroup (Deterministic) (2)");
+			if (!check_length(bufend - buf, 5 + varsize, "NewSpriteGroup (Deterministic) (2)")) return;
 
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have
 			 * from the outset, so we shall have to keep reallocing. */
@@ -1636,7 +1637,7 @@ static void NewSpriteGroup(byte *buf, int len)
 				DeterministicSpriteGroupAdjust *adjust;
 
 				if (group->g.determ.num_adjusts > 0) {
-					check_length(bufend - buf, 2 + varsize + 3, "NewSpriteGroup (Deterministic) (3)");
+					if (!check_length(bufend - buf, 2 + varsize + 3, "NewSpriteGroup (Deterministic) (3)")) return;
 				}
 
 				group->g.determ.num_adjusts++;
@@ -1668,7 +1669,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			group->g.determ.num_ranges = grf_load_byte(&buf);
 			CallocT(&group->g.determ.ranges, group->g.determ.num_ranges);
 
-			check_length(bufend - buf, 2 + (2 + 2 * varsize) * group->g.determ.num_ranges, "NewSpriteGroup (Deterministic)");
+			if (!check_length(bufend - buf, 2 + (2 + 2 * varsize) * group->g.determ.num_ranges, "NewSpriteGroup (Deterministic)")) return;
 
 			for (i = 0; i < group->g.determ.num_ranges; i++) {
 				group->g.determ.ranges[i].group = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
@@ -1687,7 +1688,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			byte triggers;
 			uint i;
 
-			check_length(bufend - buf, 7, "NewSpriteGroup (Randomized) (1)");
+			if (!check_length(bufend - buf, 7, "NewSpriteGroup (Randomized) (1)")) return;
 
 			group = AllocateSpriteGroup();
 			group->type = SGT_RANDOMIZED;
@@ -1700,7 +1701,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			group->g.random.num_groups     = grf_load_byte(&buf);
 			CallocT(&group->g.random.groups, group->g.random.num_groups);
 
-			check_length(bufend - buf, 2 * group->g.random.num_groups, "NewSpriteGroup (Randomized) (2)");
+			if (!check_length(bufend - buf, 2 * group->g.random.num_groups, "NewSpriteGroup (Randomized) (2)")) return;
 
 			for (i = 0; i < group->g.random.num_groups; i++) {
 				group->g.random.groups[i] = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
@@ -1731,7 +1732,7 @@ static void NewSpriteGroup(byte *buf, int len)
 						return;
 					}
 
-					check_length(bufend - buf, 2 * num_loaded + 2 * num_loading, "NewSpriteGroup (Real) (1)");
+					if (!check_length(bufend - buf, 2 * num_loaded + 2 * num_loading, "NewSpriteGroup (Real) (1)")) return;
 
 					group = AllocateSpriteGroup();
 					group->type = SGT_REAL;
@@ -1796,11 +1797,11 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 	uint8 cidcount;
 	int c, i;
 
-	check_length(len, 6, "FeatureMapSpriteGroup");
+	if (!check_length(len, 6, "FeatureMapSpriteGroup")) return;
 	feature = buf[1];
 	idcount = buf[2] & 0x7F;
 	wagover = (buf[2] & 0x80) == 0x80;
-	check_length(len, 3 + idcount, "FeatureMapSpriteGroup");
+	if (!check_length(len, 3 + idcount, "FeatureMapSpriteGroup")) return;
 
 	/* If ``n-id'' (or ``idcount'') is zero, this is a ``feature
 	 * callback''. */
@@ -1810,7 +1811,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 	}
 
 	cidcount = buf[3 + idcount];
-	check_length(len, 4 + idcount + cidcount * 3, "FeatureMapSpriteGroup");
+	if (!check_length(len, 4 + idcount + cidcount * 3, "FeatureMapSpriteGroup")) return;
 
 	grfmsg(6, "FeatureMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d",
 			feature, idcount, cidcount, wagover);
@@ -2004,7 +2005,7 @@ static void FeatureNewName(byte *buf, int len)
 	bool new_scheme = _cur_grffile->grf_version >= 7;
 	bool generic;
 
-	check_length(len, 6, "FeatureNewName");
+	if (!check_length(len, 6, "FeatureNewName")) return;
 	buf++;
 	feature  = grf_load_byte(&buf);
 	lang     = grf_load_byte(&buf);
@@ -2125,7 +2126,7 @@ static void GraphicsNew(byte *buf, int len)
 	uint16 num;
 	SpriteID replace = 0;
 
-	check_length(len, 2, "GraphicsNew");
+	if (!check_length(len, 2, "GraphicsNew")) return;
 	buf++;
 	type = grf_load_byte(&buf);
 	num  = grf_load_extended(&buf);
@@ -2356,7 +2357,7 @@ static void SkipIf(byte *buf, int len)
 	GRFLabel *label;
 	GRFLabel *choice = NULL;
 
-	check_length(len, 6, "SkipIf");
+	if (!check_length(len, 6, "SkipIf")) return;
 	buf++;
 	param     = grf_load_byte(&buf);
 	paramsize = grf_load_byte(&buf);
@@ -2489,7 +2490,7 @@ static void ScanInfo(byte *buf, int len)
 	int name_len;
 	int info_len;
 
-	check_length(len, 8, "Info"); buf++;
+	if (!check_length(len, 8, "Info")) return; buf++;
 	version = grf_load_byte(&buf);
 	grfid = grf_load_dword(&buf);
 
@@ -2530,7 +2531,7 @@ static void GRFInfo(byte *buf, int len)
 	uint32 grfid;
 	const char *name;
 
-	check_length(len, 8, "GRFInfo"); buf++;
+	if (!check_length(len, 8, "GRFInfo")) return; buf++;
 	version = grf_load_byte(&buf);
 	grfid = grf_load_dword(&buf);
 	name = (const char*)buf;
@@ -2613,7 +2614,7 @@ static void GRFError(byte *buf, int len)
 	uint8 sevid;
 	uint8 msgid;
 
-	check_length(len, 6, "GRFError");
+	if (!check_length(len, 6, "GRFError")) return;
 	sevid = buf[1];
 	msgid = buf[3];
 
@@ -2646,7 +2647,7 @@ static void SafeParamSet(byte *buf, int len)
 {
 	uint8 target;
 
-	check_length(len, 5, "SafeParamSet");
+	if (!check_length(len, 5, "SafeParamSet")) return;
 	buf++;
 	target = grf_load_byte(&buf);
 
@@ -2696,7 +2697,7 @@ static void ParamSet(byte *buf, int len)
 	uint32 data = 0;
 	uint32 res;
 
-	check_length(len, 5, "ParamSet");
+	if (!check_length(len, 5, "ParamSet")) return;
 	buf++;
 	target = grf_load_byte(&buf);
 	oper = grf_load_byte(&buf);
@@ -2964,10 +2965,10 @@ static void SafeGRFInhibit(byte *buf, int len)
 	byte num;
 	int i;
 
-	check_length(len, 1, "GRFInhibit");
+	if (!check_length(len, 1, "GRFInhibit")) return;
 	buf++, len--;
 	num = grf_load_byte(&buf); len--;
-	check_length(len, 4 * num, "GRFInhibit");
+	if (!check_length(len, 4 * num, "GRFInhibit")) return;
 
 	for (i = 0; i < num; i++) {
 		uint32 grfid = grf_load_dword(&buf);
@@ -2995,10 +2996,10 @@ static void GRFInhibit(byte *buf, int len)
 	byte num;
 	int i;
 
-	check_length(len, 1, "GRFInhibit");
+	if (!check_length(len, 1, "GRFInhibit")) return;
 	buf++, len--;
 	num = grf_load_byte(&buf); len--;
-	check_length(len, 4 * num, "GRFInhibit");
+	if (!check_length(len, 4 * num, "GRFInhibit")) return;
 
 	for (i = 0; i < num; i++) {
 		uint32 grfid = grf_load_dword(&buf);
@@ -3023,7 +3024,7 @@ static void DefineGotoLabel(byte *buf, int len)
 
 	GRFLabel *label;
 
-	check_length(len, 1, "DefineGotoLabel");
+	if (!check_length(len, 1, "DefineGotoLabel")) return;
 	buf++; len--;
 
 	MallocT(&label, 1);
@@ -3054,7 +3055,7 @@ static void GRFSound(byte *buf, int len)
 
 	uint16 num;
 
-	check_length(len, 1, "GRFSound");
+	if (!check_length(len, 1, "GRFSound")) return;
 	buf++;
 	num = grf_load_word(&buf);
 
@@ -3191,11 +3192,11 @@ static void LoadFontGlyph(byte *buf, int len)
 	uint i;
 
 	buf++; len--;
-	check_length(len, 1, "LoadFontGlyph");
+	if (!check_length(len, 1, "LoadFontGlyph")) return;
 
 	num_def = grf_load_byte(&buf);
 
-	check_length(len, 1 + num_def * 4, "LoadFontGlyph");
+	if (!check_length(len, 1 + num_def * 4, "LoadFontGlyph")) return;
 
 	for (i = 0; i < num_def; i++) {
 		FontSize size    = (FontSize)grf_load_byte(&buf);
