@@ -2108,7 +2108,7 @@ STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Şirket 
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}İstediginiz rengi seçin
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Kredi ödünç al
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Krediyi öde
-STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Manager)
+STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Yönetici)
 STR_7038_INAUGURATED                                            :{GOLD}Kuruluş: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Araçlar:
 STR_TRAINS                                                      :{WHITE}{COMMA} tren
@@ -2137,7 +2137,7 @@ STR_7054                                                        :{WHITE}{STRING}
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Şirket tehlikede!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY}, performansı artmazsa satılacak ya da yok olacak!
-STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Manager)
+STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Yönetici)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Şirketler birleşti!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY}, {COMPANY} tarafından {CURRENCY} fiyatıyla alındı!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Şirketimizi satın alacak birilerini arıyoruz.{}{} {COMPANY} şirketini şu fiyata almak ister misiniz: {CURRENCY}?

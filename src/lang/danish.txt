@@ -260,7 +260,7 @@ STR_0123_FIELDS                                                 :{BLACK}{TINYFON
 STR_0124_TREES                                                  :{BLACK}{TINYFONT}Træer
 STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Klipper
 STR_0126_WATER                                                  :{BLACK}{TINYFONT}Vand
-STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Ingen Ejer
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Ingen ejer
 STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Byer
 STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}Industrier
 STR_012A_DESERT                                                 :{BLACK}{TINYFONT}Ørken
@@ -271,7 +271,7 @@ STR_012E_CANCEL                                                 :{BLACK}Annuller
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Omdøb
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}For mange navne defineret
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Valgt navn er allerede i brug
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Valgte navn bruges allerede
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
@@ -291,8 +291,8 @@ STR_CAPACITY_MULT                                               :{BLACK}Kapacite
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Samlet last (lasteevne) på dette tog:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
-STR_0140_NEW_GAME                                               :{BLACK}Nyt Spil
-STR_0141_LOAD_GAME                                              :{BLACK}Hent Spil
+STR_0140_NEW_GAME                                               :{BLACK}Nyt spil
+STR_0141_LOAD_GAME                                              :{BLACK}Hent spil
 STR_SINGLE_PLAYER                                               :{BLACK}En spiller
 STR_MULTIPLAYER                                                 :{BLACK}Flere spillere
 
@@ -355,8 +355,8 @@ STR_PERFORMANCE_DETAIL_MENU                                     :Præstations ov
 ############ range for menu	ends
 
 STR_015B_OPENTTD                                                :{WHITE}Om OpenTTD
-STR_015C_SAVE_GAME                                              :Gem Spil
-STR_015D_LOAD_GAME                                              :Hent Spil
+STR_015C_SAVE_GAME                                              :Gem spil
+STR_015D_LOAD_GAME                                              :Hent spil
 STR_015E_QUIT_GAME                                              :Forlad spillet
 STR_015F_QUIT                                                   :Afslut
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på, at du vil forlade dette spil ?
@@ -396,7 +396,7 @@ STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg al
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle lasttyper (inklusiv fragttyper, der ikke venter)
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Se liste over tilgængelige designs for denne køretøjstype.
 STR_MANAGE_LIST                                                 :{BLACK}Administrer liste
-STR_MANAGE_LIST_TIP                                             :{BLACK}Send instruktioner til alle køretøjer in denne liste
+STR_MANAGE_LIST_TIP                                             :{BLACK}Send instruktioner til alle køretøjer i denne liste
 STR_REPLACE_VEHICLES                                            :Udskift køretøjer
 STR_SEND_TRAIN_TO_DEPOT                                         :Send til remise
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Send til værksted
@@ -933,7 +933,7 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Afkryds 
 
 STR_OPTIONS_RES                                                 :{BLACK}Skærmopløsning
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Vælg skørmopløsning
+STR_OPTIONS_RES_TIP                                             :{BLACK}Vælg ønskede skærmopløsning
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skærmbillede format
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1045,8 +1045,8 @@ STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillad 
 STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Advar hvis tog er faret vild: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Kontroller køretøjers ordreliste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Nej
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Ja, på nær ved stoppet køretøjer
-STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :Ja, på alle køretøjer
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, men udelad stoppede køretøjer
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :af alle køretøjer
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et tog har underskud: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køretøjernes levealder udløber aldrig: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatisk fornyelse af køretøjer når de bliver gamle
@@ -1087,7 +1087,7 @@ STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle selskaber
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Foretræk hold-chat med <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per spiller: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal køretøjer per spiller: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. antal køretøjer per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks antal fly per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Maks antal skibe per spiller: {ORANGE}{STRING}
 
@@ -1289,7 +1289,7 @@ STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klik på
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Find server
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Søg netværket for en server
 STR_NETWORK_ADD_SERVER                                          :{BLACK}Tilføj server
-STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Tilføj en server til listen, som altid vil blive checket for om den kører et spil
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Tilføjer en server til listen, som altid vil blive tjekket for kørerende spil.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Skriv adressen på en server
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
@@ -1567,7 +1567,7 @@ STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan ikke
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kan ikke bygge fragtcentral...
 STR_180A_ROAD_CONSTRUCTION                                      :Vejkonstruktion
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Byg en sektion vej
-STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Byg værksted (til servicering og bygning af vejkøretøjer)
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Byg værksted (til bygning og servicering af vejkøretøjer)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Byg rutebilstation
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Byg fragtcentral
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Byg bro
@@ -1785,7 +1785,7 @@ STR_STAT_CLASS_DFLT                                             :Standard statio
 STR_STAT_CLASS_WAYP                                             :Kontrolsteder
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Skibsdok Orientering
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Skibsdok orientering
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...skal bygges på vand
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Kan ikke bygge en skibsdok her...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Vælg orientering af skibsdok
@@ -2471,7 +2471,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Heliko
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helikopter
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helikopter
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Besked fra køretøjsfabrikken
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Vi har lige designet en ny {STRING} - er du interesseret i et års ekslusiv testkørsel, så vi kan se hvordan den klarer sig inden vi gør den frit tilgængelig ?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Vi har lige designet et nyt {STRING} - er du interesseret i et års ekslusiv testkørsel, så vi kan se hvordan det klarer sig inden vi gør det frit tilgængeligt?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :jernbanelokomotiv
 STR_8103_ROAD_VEHICLE                                           :vejkøretøj
 STR_8104_AIRCRAFT                                               :fly
@@ -2500,7 +2500,7 @@ STR_8810_GO_NON_STOP_TO_LOAD                                    :Gå uden stop t
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Gå uden stop til {STATION} (Overfør og vent på fuld last)
 STR_GO_TO_TRAIN_DEPOT                                           :Gå til {TOWN} remise
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN} remise
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå uden stop til {TOWN} Remise
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå uden stop til {TOWN} remise
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service uden stop i {TOWN} remise
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kører til {TOWN} remise
@@ -2521,15 +2521,15 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan kun ændres når de er stoppet i en remise
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tog
 
-STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nye Jernbanekøretøjer
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nye jernbanekøretøjer
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nyt Elektrisk lokomotiv
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye Monorailkøretøjer
-STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye Magnetskinne køretøjer
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye monorailkøretøjer
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye magnetskinne køretøjer
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Jernbanekøretøjer
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Byg Køretøj
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klon køretøj
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Dette vil bygge en kopi af køretøjet. Control-click vil dele ordre
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Dette vil bygge en kopi af vejkøretøjet. CTRL-klik vil dele ordrer
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Dette vil bygge en kopi af køretøjet. Klik på denne knap, så på et køretøj indeni eller udenfor værkstedet. CTRL-klik vil dele ordrer
 STR_CLONE_TRAIN                                                 :{BLACK}Klon tog
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Dette vil bygge en kopi af toget inklusiv alle vogne. Control-click vil dele ordre
@@ -2654,7 +2654,7 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Eftersy
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan ikke sende køretøj til værksted...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt værksted
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Køretøjer - klik på et køretøj for information
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Byg nye køretøjer (kræver et værktøj)
+STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Byg nye køretøjer (kræver et værksted)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Nuværende opførsel - klik her for at stoppe/starte køretøjet
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Vis køretøjets ordrer
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrer skærmen over placeringen af køretøjet
@@ -2667,7 +2667,7 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Træk k�
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrer skærmen over placeringen af værkstedet
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Liste over køretøjstyper - klik på køretøj for information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Byg det markerede køretøj
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nyt køretøj er tilgængeligt!
+STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nyt vejkøretøj er tilgængeligt!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pris: {CURRENCY}{}Hastighed: {VELOCITY}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
 
@@ -2873,7 +2873,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Antal af køretøjer; dette inkludere vejkøretøjer, tog, skibe og fly
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Antallet af stationer. Alle dele af en station (f.eks. tog station, bus station, lufthavn) tæller med, også selvom de er sat sammen til en station
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Afkast for det køretøj med laveste indkomst (af alle køretøjer ældre end 2 år)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Afkast for køretøjet med laveste indkomst (af alle køretøjer ældre end 2 år)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Indtægt i måneden med den laveste indtægt i de sidste 12 kvartaler
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Indtægt i måneden med den højeste indtægt i de sidste 12 kvartaler
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Antal enheder fragtet i de sidste 4 kvartaler

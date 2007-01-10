@@ -1,7 +1,7 @@
 ##name Brazilian_Portuguese
 ##ownname Português (BR)
 ##isocode pt_BR.UTF-8
-##plural 0
+##plural 2
 ##gender masculino feminino neutro
 
 ##id 0x0000
@@ -52,7 +52,7 @@ STR_002B_BATTERIES                                              :Baterias
 STR_002C_PLASTIC                                                :Plástico
 STR_002D_FIZZY_DRINKS                                           :Refrigerantes
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Passageiro
+STR_002F_PASSENGER                                              :Passageiros
 STR_0030_COAL                                                   :Carvão
 STR_0031_MAIL                                                   :Correspondência
 STR_0032_OIL                                                    :Petróleo
@@ -506,19 +506,19 @@ STR_01B7_12TH                                                   :12
 STR_01B8_13TH                                                   :13
 STR_01B9_14TH                                                   :14
 STR_01BA_15TH                                                   :15
-STR_01BB_16TH                                                   :16o
+STR_01BB_16TH                                                   :16
 STR_01BC_17TH                                                   :17
 STR_01BD_18TH                                                   :18
-STR_01BE_19TH                                                   :19o
-STR_01BF_20TH                                                   :20o
-STR_01C0_21ST                                                   :21o
-STR_01C1_22ND                                                   :22o
-STR_01C2_23RD                                                   :23o
-STR_01C3_24TH                                                   :24o
-STR_01C4_25TH                                                   :25o
-STR_01C5_26TH                                                   :26o
-STR_01C6_27TH                                                   :27o
-STR_01C7_28TH                                                   :28o
+STR_01BE_19TH                                                   :19
+STR_01BF_20TH                                                   :20
+STR_01C0_21ST                                                   :21
+STR_01C1_22ND                                                   :22
+STR_01C2_23RD                                                   :23
+STR_01C3_24TH                                                   :24
+STR_01C4_25TH                                                   :25
+STR_01C5_26TH                                                   :26
+STR_01C6_27TH                                                   :27
+STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
@@ -1365,7 +1365,7 @@ STR_NETWORK_LANG_FRENCH                                         :Francês
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de espera de jogo multi-jogador
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparando para conectar-se:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparando para conectar em:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Lista das companhias ativas neste jogo. Pode juntar-se a uma delas ou iniciar uma nova companhia.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nova empresa
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Criar uma nova empresa
@@ -1618,7 +1618,7 @@ STR_201E_STADIUM                                                :Estádio
 STR_201F_OLD_HOUSES                                             :Casas velhas
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Autoridade local
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Ver informações sobre a autoridade local
-STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} autoridade local
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}autoridade local de {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Avaliações da companhia de transporte
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsídios
@@ -1636,7 +1636,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio de transporte concedido a {COMPANY}!{}{}{STRING} ligação de {STATION} para {STATION} pagará em dobro durante o próximo ano!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio de transporte concedido a {COMPANY}!{}{}{STRING} ligação de {STATION} para {STATION} pagará o triplo durante o próximo ano!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio de transporte concedido a {COMPANY}!{}{}{STRING} ligação de {STATION} para {STATION} pagará o quadruplo durante o próximo ano!
-STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} a autoridade local não permite que outro aeroporto seja construído nesta cidade
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}a autoridade local de {TOWN} não permite que outro aeroporto seja construído nesta cidade
 STR_2036_COTTAGES                                               :Casas de campo
 STR_2037_HOUSES                                                 :Casas
 STR_2038_FLATS                                                  :Apartamentos

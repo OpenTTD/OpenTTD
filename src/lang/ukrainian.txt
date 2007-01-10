@@ -453,7 +453,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Закр
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Заголовок вікна - потягніть для переміщення вікна
 STR_STICKY_BUTTON                                               :{BLACK}Закріпити вікно
 STR_RESIZE_BUTTON                                               :{BLACK}Натисніть і тягніть для зміни розміру вікна
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Натисніть для переходу до поточного каталогу запису/завантаження
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Натисніть для переходу до поточного каталогу збереження/завантаження
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Зруйнувати будинки, дороги і т.п.
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Опустити ділянку землі
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Підняти ділянку землі
@@ -792,7 +792,7 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Копія вс
 STR_02D9_ABOUT_OPENTTD                                          :Про гру 'OpenTTD'
 ############ range ends	here
 
-STR_02DB_OFF                                                    :{BLACK}Викл
+STR_02DB_OFF                                                    :{BLACK}Ні
 STR_02DA_ON                                                     :{BLACK}Вкл
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Показати субсидії
 STR_02DD_SUBSIDIES                                              :Субсидії
@@ -982,19 +982,19 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Поїзд {COMMA} має дуже мало завдань
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Поїзд {COMMA} не має завдань
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Поїзд {COMMA} має пустий наказ
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Поїзд {COMMA} має подвійні накази
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Поїзд {COMMA} має в наказі невірну станцію
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Авто {COMMA} має дуже мало завдань
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Авто {COMMA} не має завдань
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Авто {COMMA} має пустий наказ
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Авто {COMMA} має подвійні накази
 STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Авто {COMMA} має в наказі невірну станцію
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Корабель {COMMA} має дуже мало завдань
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Корабель {COMMA} не має завдань
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Корабель {COMMA} має пустий наказ
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Корабель {COMMA} має подвійні накази
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Корабель {COMMA} має в наказі невірну станцію
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Літак {COMMA} має дуже мало завдань
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Літак {COMMA} не має завдань
 STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Літак {COMMA} має пустий наказ
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Літак {COMMA} має подвійні накази
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Літак {COMMA} має в наказі невірну станцію
@@ -1010,7 +1010,7 @@ STR_CONFIG_PATCHES                                              :{BLACK}Розш
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Розширені налаштування2
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Розширені налаштування3
 
-STR_CONFIG_PATCHES_OFF                                          :Викл.
+STR_CONFIG_PATCHES_OFF                                          :ВикЛ
 STR_CONFIG_PATCHES_ON                                           :Вкл.
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Показувати швидкість у рядку стану: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Будувати на схилах та узбережжях: {ORANGE}{STRING}
@@ -1220,7 +1220,7 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Моде
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Перетягніть сюди поїзд для його продажу повністю
 
-STR_DRAG_DROP                                                   :{BLACK}Перетягнути й відпустити
+STR_DRAG_DROP                                                   :{BLACK}Малювати
 STR_STATION_DRAG_DROP                                           :{BLACK}Будувати станцію за методом "перетягнути й відпустити"
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Виберіть тип станції для відображення
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Виберіть тип станції для забудови
@@ -1531,7 +1531,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Немо
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Неможливо будувати колію тут...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Неможливо прибрати колію звідси...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Неможливо прибрати сигнали звідси...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Направлення депо
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Орієнтація депо
 STR_1015_RAILROAD_CONSTRUCTION                                  :Залізниця
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Будувати електрифіковану колію
 STR_1016_MONORAIL_CONSTRUCTION                                  :Монорельс
@@ -1544,7 +1544,7 @@ STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Буду
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Будувати туннель
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Будувати/демонтувати колію або сигнали
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Вибір мосту - натисніть на міст, який бажаєте збудувати
-STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Вибір направлення депо
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Вибір орієнтації депо
 STR_1021_RAILROAD_TRACK                                         :Залізнична колія
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Залізничне депо
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...ця ділянка у власності іншої компанії
@@ -1562,7 +1562,7 @@ STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Буді
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Виберіть дорожний міст
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Неможливо будувати дорогу тут...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Неможливо прибрати дорогу звідси...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Направлення депо
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Орієнтація депо
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Неможливо будувати депо тут...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Неможливо будувати зупинку тут...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Неможливо будувати вантажну станцію тут...
@@ -1705,7 +1705,7 @@ STR_2810_CACTUS_PLANTS                                          :Кактуси
 ##id 0x3000
 STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Вибір станції
 STR_3001_AIRPORT_SELECTION                                      :{WHITE}Вибір аеропорту
-STR_3002_ORIENTATION                                            :{BLACK}Направлення
+STR_3002_ORIENTATION                                            :{BLACK}Орієнтація
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Кількість колій
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Довжина платформи
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Дуже близько до іншої залізничної станції
@@ -1742,8 +1742,8 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} більше не приймає {STRING} або {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} тепер приймає {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} тепер приймає {STRING} і {STRING}
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Направлення зупинки
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Направлення станції
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Орієнтація зупинки
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Орієнтація станції
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Спочатку зруйнуйте зупинку
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Спочатку зруйнуйте вантажну станцію
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} станці{P я ї й}
@@ -1786,7 +1786,7 @@ STR_STAT_CLASS_DFLT                                             :Default station
 STR_STAT_CLASS_WAYP                                             :Пункт
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Направлення корабельного депо
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Орієнтація депо
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...має бути збудовано на воді
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Неможливо будувати корабельне депо тут...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Виберіть направлення корабельного депо
@@ -1857,9 +1857,9 @@ STR_4825_TOFFEE_QUARRY                                          :Ірисков�
 STR_4826_SUGAR_MINE                                             :Цукрова копальня
 
 ############ range for requires	starts
-STR_4827_REQUIRES                                               :{BLACK}Потрібно: {YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}Потрібно: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}Потрібно: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}Потребує: {YELLOW}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Потребує: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES                                               :{BLACK}Потребує: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Вироблено за місяць:
@@ -2045,7 +2045,7 @@ STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 місяці�
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 місяців після гравця
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :В кінці лінії, або на станціях
 STR_6835_AT_END_OF_LINE_ONLY                                    :Лише в кінці лінії
-STR_6836_OFF                                                    :Викл
+STR_6836_OFF                                                    :ВиКл
 STR_6837_ON                                                     :Вкл
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Показати таблицю рекордів
 STR_6839_PERMISSIVE                                             :Допустиме
@@ -2189,18 +2189,18 @@ STR_LIVERY_DEFAULT                                              :Стандар�
 STR_LIVERY_STEAM                                                :Паровози
 STR_LIVERY_DIESEL                                               :Дизельні потяги
 STR_LIVERY_ELECTRIC                                             :Електричні потяги
-STR_LIVERY_MONORAIL                                             :Монорельсові потяги
+STR_LIVERY_MONORAIL                                             :Монорельс
 STR_LIVERY_MAGLEV                                               :Потяги на магнітній подушці
 STR_LIVERY_DMU                                                  :
 STR_LIVERY_EMU                                                  :
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (пар)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (дизель)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажирський вагон (електричка)
-STR_LIVERY_FREIGHT_WAGON                                        :Завантажений вагон
+STR_LIVERY_FREIGHT_WAGON                                        :Товарний вагон
 STR_LIVERY_BUS                                                  :Автобус
 STR_LIVERY_TRUCK                                                :Вантажівка
 STR_LIVERY_PASSENGER_SHIP                                       :Пасажиирський паром
-STR_LIVERY_FREIGHT_SHIP                                         :Завантажений корабель
+STR_LIVERY_FREIGHT_SHIP                                         :Товарний корабель
 STR_LIVERY_HELICOPTER                                           :Гелікоптер
 STR_LIVERY_SMALL_PLANE                                          :Малий літак
 STR_LIVERY_LARGE_PLANE                                          :Великий літак
@@ -2489,13 +2489,13 @@ STR_8804                                                        :{SETX 10}{COMMA
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}{STRING}
 STR_8806_GO_TO                                                  :Прямувати до {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Прямувати до {STATION} (Пересадити і забрати вантаж)
-STR_8808_GO_TO_UNLOAD                                           :Прямувати до {STATION} (Не завантажувати)
+STR_8808_GO_TO_UNLOAD                                           :Прямувати до {STATION} (розвантажитися)
 STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Прямувати до {STATION} (Пересадити і залишити вантаж)
-STR_880A_GO_TO_LOAD                                             :Прямувати до {STATION} (Завантажити)
+STR_880A_GO_TO_LOAD                                             :Прямувати до {STATION} (Завантажитися)
 STR_880B_GO_TO_TRANSFER_LOAD                                    :Прямувати до {STATION} (Пересадити і завантажити повністю)
 STR_880C_GO_NON_STOP_TO                                         :Прямувати без зупинок до {STATION}
 STR_880D_GO_TO_NON_STOP_TRANSFER                                :Прямувати без зупинок до {STATION} (Пересадити і забрати вантаж)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Прямувати без зупинок до {STATION} (Не завантажувати)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Прямувати без зупинок до {STATION} (розвантажитися)
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Прямувати без зупинок до {STATION} (Пересадити і залишити вантаж)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Прямувати без зупинок до {STATION} (Завантажити)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Прямувати без зупинок до {STATION} (Пересадити і завантажити повністю)
@@ -2538,10 +2538,10 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Буду
 STR_8820_RENAME                                                 :{BLACK}Перейменувати
 STR_8823_SKIP                                                   :{BLACK}Пропустити
 STR_8824_DELETE                                                 :{BLACK}Видалити
-STR_8825_NON_STOP                                               :{BLACK}Без зупинок
+STR_8825_NON_STOP                                               :{BLACK}Беззупн
 STR_8826_GO_TO                                                  :{BLACK}Прямувати
-STR_8827_FULL_LOAD                                              :{BLACK}Повне завантаження
-STR_8828_UNLOAD                                                 :{BLACK}Не завантажувати
+STR_8827_FULL_LOAD                                              :{BLACK}Повністю
+STR_8828_UNLOAD                                                 :{BLACK}Розвант
 STR_REFIT                                                       :{BLACK}Переобладнати
 STR_REFIT_TIP                                                   :{BLACK}Оберіть на який тип вантажу переобладнати це завдання. Control+клік видалити команду переобладнання
 STR_REFIT_ORDER                                                 :(Переобладнати до {STRING})
@@ -2553,7 +2553,7 @@ STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Немо
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Ціна: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
-STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Завантаження
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Завантажуюся/Розвантажуюся
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поїзд повинен стояти в депо
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Неможлтво відправити поїзд в депо...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Не має місця для наказів
@@ -2601,7 +2601,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Лише
 STR_SERVICE_HINT                                                :{BLACK}Пропустити це завдання поки обслуговування потрібне!!!
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Доступний новий {STRING}!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ціна: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}  Потужність: {POWER}{}Вартість експлуатації: {CURRENCY}/рік{}Місткість: {CARGO}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ціна: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}{}Потужність: {POWER}{}Вартість експлуатації: {CURRENCY}/рік{}Місткість: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Зламався
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Транспортні витрати: {LTBLUE}{CURRENCY}/рік
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_S}  {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}

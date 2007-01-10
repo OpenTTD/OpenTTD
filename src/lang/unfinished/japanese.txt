@@ -1783,17 +1783,275 @@ STR_LIVERY_BUS                                                  :バス
 
 
 ##id 0x8000
+STR_8031_CANDY_VAN                                              :菓子トラック
+STR_8032_TOY_VAN                                                :玩具トラック
+STR_8033_BATTERY_TRUCK                                          :電池トラック
+STR_8034_FIZZY_DRINK_TRUCK                                      :炭酸飲料トラック
+STR_8035_PLASTIC_TRUCK                                          :プラスチックトラック
+STR_8036_X2001_ELECTRIC                                         :「X2001」（電動）
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :「ミレニアム Z1」（電動）
+STR_8039_PASSENGER_CAR                                          :客車
+STR_803A_MAIL_VAN                                               :郵便車
+STR_803B_COAL_CAR                                               :石炭貨車
+STR_803C_OIL_TANKER                                             :石油タンク車
+STR_803D_LIVESTOCK_VAN                                          :家畜車
+STR_803E_GOODS_VAN                                              :商品貨車
+STR_803F_GRAIN_HOPPER                                           :穀物ホッパー
+STR_8040_WOOD_TRUCK                                             :木材貨車
+STR_8041_IRON_ORE_HOPPER                                        :鉄鉱ホッパー
+STR_8042_STEEL_TRUCK                                            :鋼鉄貨車
+STR_8043_ARMORED_VAN                                            :装甲車
+STR_8044_FOOD_VAN                                               :食品貨車
+STR_8045_PAPER_TRUCK                                            :紙貨車
+STR_8046_COPPER_ORE_HOPPER                                      :銅鉱ホッパー
+STR_8047_WATER_TANKER                                           :水タンク車
+STR_8048_FRUIT_TRUCK                                            :果物貨車
+STR_8049_RUBBER_TRUCK                                           :ゴム貨車
+STR_804A_SUGAR_TRUCK                                            :砂糖貨車
+STR_804B_COTTON_CANDY_HOPPER                                    :綿菓子ホッパー
+STR_804C_TOFFEE_HOPPER                                          :トフィーホッパー
+STR_804D_BUBBLE_VAN                                             :泡貨車
+STR_804E_COLA_TANKER                                            :コーラタンク車
+STR_804F_CANDY_VAN                                              :菓子トラック
+STR_8050_TOY_VAN                                                :玩具トラック
+STR_8051_BATTERY_TRUCK                                          :電池トラック
+STR_8052_FIZZY_DRINK_TRUCK                                      :炭酸飲料トラック
+STR_8053_PLASTIC_TRUCK                                          :プラスチックトラック
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :浮一系「リバイアサン」（電動）
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :浮二系「シクロプス」（電動）
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :浮三系「ペガサス」（電動）
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :浮四系「キメラ」（電動）
+STR_8059_PASSENGER_CAR                                          :客車
+STR_805A_MAIL_VAN                                               :郵便車
+STR_805B_COAL_CAR                                               :石炭貨車
+STR_805C_OIL_TANKER                                             :石油タンク車
+STR_805D_LIVESTOCK_VAN                                          :家畜車
+STR_805E_GOODS_VAN                                              :商品貨車
+STR_805F_GRAIN_HOPPER                                           :穀物ホッパー
+STR_8060_WOOD_TRUCK                                             :木材貨車
+STR_8061_IRON_ORE_HOPPER                                        :鉄鉱ホッパー
+STR_8062_STEEL_TRUCK                                            :鋼鉄貨車
+STR_8063_ARMORED_VAN                                            :装甲車
+STR_8064_FOOD_VAN                                               :食品貨車
+STR_8065_PAPER_TRUCK                                            :紙貨車
+STR_8066_COPPER_ORE_HOPPER                                      :銅鉱ホッパー
+STR_8067_WATER_TANKER                                           :水タンク車
+STR_8068_FRUIT_TRUCK                                            :果物貨車
+STR_8069_RUBBER_TRUCK                                           :ゴム貨車
+STR_806A_SUGAR_TRUCK                                            :砂糖貨車
+STR_806B_COTTON_CANDY_HOPPER                                    :綿菓子ホッパー
+STR_806C_TOFFEE_HOPPER                                          :トフィーホッパー
+STR_806D_BUBBLE_VAN                                             :泡貨車
+STR_806E_COLA_TANKER                                            :コーラタンク車
+STR_806F_CANDY_VAN                                              :菓子トラック
+STR_8070_TOY_VAN                                                :玩具トラック
+STR_8071_BATTERY_TRUCK                                          :電池トラック
+STR_8072_FIZZY_DRINK_TRUCK                                      :炭酸飲料トラック
+STR_8073_PLASTIC_TRUCK                                          :プラスチックトラック
+STR_8074_MPS_REGAL_BUS                                          :MPS Regal社バス
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard社バス
+STR_8076_FOSTER_BUS                                             :Foster社バス
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster社第２スーパーバス
+STR_8078_PLODDYPHUT_MKI_BUS                                     :ブーブー社第１バス
+STR_8079_PLODDYPHUT_MKII_BUS                                    :ブーブー社第２バス
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :ブーブー社第３バス
+STR_807B_BALOGH_COAL_TRUCK                                      :Balogh社石炭トラック
+STR_807C_UHL_COAL_TRUCK                                         :Uhl社石炭トラック
+STR_807D_DW_COAL_TRUCK                                          :DW社石炭トラック
+STR_807E_MPS_MAIL_TRUCK                                         :MPS社郵便車
+STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard社郵便車
+STR_8080_PERRY_MAIL_TRUCK                                       :Perry社郵便車
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :巨大ムーブ社郵便車
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :パワーノート社郵便車
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :ヒューピュー社郵便車
+STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe社石油タンク車
+STR_8085_FOSTER_OIL_TANKER                                      :Foster社石油タンク車
+STR_8086_PERRY_OIL_TANKER                                       :Perry社石油タンク車
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott社家畜トラック
+STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl社家畜トラック
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster社家畜トラック
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh社商品トラック
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead社商品トラック
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss社商品トラック
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford社穀物トラック
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas社穀物トラック
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss社穀物トラック
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe社木材トラック
+STR_8091_FOSTER_WOOD_TRUCK                                      :Foster社木材トラック
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland社木材トラック
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS社鉄鉱トラック
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl社鉄鉱トラック
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy社鉄鉱トラック
+STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh社鋼鉄トラック
+STR_8097_UHL_STEEL_TRUCK                                        :Uhl社鋼鉄トラック
+STR_8098_KELLING_STEEL_TRUCK                                    :Kelling社鋼鉄トラック
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh社装甲車
+STR_809A_UHL_ARMORED_TRUCK                                      :Uhl社装甲車
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster社装甲車
+STR_809C_FOSTER_FOOD_VAN                                        :Foster社食品トラック
+STR_809D_PERRY_FOOD_VAN                                         :Perry社食品トラック
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy社食品トラック
+STR_809F_UHL_PAPER_TRUCK                                        :Uhl社紙トラック
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh社紙トラック
+STR_80A1_MPS_PAPER_TRUCK                                        :MPS社紙トラック
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS社銅鉱トラック
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl社銅鉱トラック
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss社銅鉱トラック
+STR_80A5_UHL_WATER_TANKER                                       :Uhl社給水車
+STR_80A6_BALOGH_WATER_TANKER                                    :Balogh社給水車
+STR_80A7_MPS_WATER_TANKER                                       :MPS社給水車
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh社果物トラック
+STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl社果物トラック
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling社果物トラック
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh社ゴムトラック
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl社ゴムトラック
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT社ゴムトラック
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :巨大ムーブ社砂糖トラック
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :パワーノート社砂糖トラック
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :ヒューピュー社砂糖トラック
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :巨大ムーブ社コーラタンク車
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :パワーノート社コーラタンク車
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :ヒューピュー社コーラタンク車
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :巨大ムーブ社綿菓子トラック
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :パワーノート社綿菓子トラック
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :ヒューピュー社綿菓子トラック
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :巨大ムーブ社トフィートラック
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :パワーノート社トフィートラック
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :ヒューピュー社トフィートラック
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :巨大ムーブ社玩具トラック
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :パワーノート社玩具トラック
+STR_80BC_WIZZOWOW_TOY_VAN                                       :ヒューピュー社玩具トラック
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :巨大ムーブ社菓子トラック
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :パワーノート社菓子トラック
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :ヒューピュー社菓子トラック
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :巨大ムーブ社電池トラック
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :パワーノート社電池トラック
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :ヒューピュー社電池トラック
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :巨大ムーブ社炭酸飲料トラック
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :パワーノート社炭酸飲料トラック
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :ヒューピュー社炭酸飲料トラック
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :巨大ムーブ社プラスチックトラック
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :パワーノート社プラスチックトラック
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :ヒューピュー社プラスチックトラック
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :巨大ムーブ社泡トラック
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :パワーノート社泡トラック
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :ヒューピュー社泡トラック
+STR_80CC_MPS_OIL_TANKER                                         :MPS社油槽船
+STR_80CD_CS_INC_OIL_TANKER                                      :CS社油槽船
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS社客船
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP社客船
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell社３００系ホバークラフト
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :シュッシュッ社客船
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :ビクビク社客船
+STR_80D3_YATE_CARGO_SHIP                                        :Yate社貨物船
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell社貨物船
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :巨大ムーブ社貨物船
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :パワーノート社貨物船
+STR_80D7_SAMPSON_U52                                            :Sampson社U52型
+STR_80D8_COLEMAN_COUNT                                          :Coleman社「カウント」
+STR_80D9_FFP_DART                                               :FFP社「ダート」
+STR_80DA_YATE_HAUGAN                                            :コンコルド
+STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :Bakewell社「Cotswold」LB-3型
+STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :Bakewell社「Luckett」LB-8型
+STR_80DD_BAKEWELL_LUCKETT_LB_9                                  :Bakewell社「Luckett」LB-9型
+STR_80DE_BAKEWELL_LUCKETT_LB80                                  :Bakewell社「Luckett」LB-80型
+STR_80DF_BAKEWELL_LUCKETT_LB_10                                 :Bakewell社「Luckett」LB-10型
+STR_80E0_BAKEWELL_LUCKETT_LB_11                                 :Bakewell社「Luckett」LB-11型
+STR_80E1_YATE_AEROSPACE_YAC_1_11                                :Yate エアロスペース社 YAC 1-11型
+STR_80E2_DARWIN_100                                             :Darwin社100型
+STR_80E3_DARWIN_200                                             :Darwin社200型
+STR_80E4_DARWIN_300                                             :Darwin社300型
+STR_80E5_DARWIN_400                                             :Darwin社400型
+STR_80E6_DARWIN_500                                             :Darwin社500型
+STR_80E7_DARWIN_600                                             :Darwin社600型
+STR_80E8_GURU_GALAXY                                            :Guru社「ャラクシー」
+STR_80E9_AIRTAXI_A21                                            :Airtaxi社A21型
+STR_80EA_AIRTAXI_A31                                            :Airtaxi社A31型
+STR_80EB_AIRTAXI_A32                                            :Airtaxi社A32型
+STR_80EC_AIRTAXI_A33                                            :Airtaxi社A33型
+STR_80ED_YATE_AEROSPACE_YAE46                                   :Yate エアロスペース社YAe46型
+STR_80EE_DINGER_100                                             :Dinger社100型
+STR_80EF_AIRTAXI_A34_1000                                       :Airtaxi社A34-100型
+STR_80F0_YATE_Z_SHUTTLE                                         :Yate社Z-Shuttle
+STR_80F1_KELLING_K1                                             :Kelling社K1型
+STR_80F2_KELLING_K6                                             :Kelling社K6型
+STR_80F3_KELLING_K7                                             :Kelling社K7型
+STR_80F4_DARWIN_700                                             :Darwin社700型
+STR_80F5_FFP_HYPERDART_2                                        :FFP社ハイパーダート2型
+STR_80F6_DINGER_200                                             :Dinger社200型
+STR_80F7_DINGER_1000                                            :Dinger社1000型
+STR_80F8_PLODDYPHUT_100                                         :ポンポン社100型
+STR_80F9_PLODDYPHUT_500                                         :ポンポン社500型
+STR_80FA_FLASHBANG_X1                                           :雷電社X1型
+STR_80FB_JUGGERPLANE_M1                                         :巨大エーロスペース社M1型
+STR_80FC_FLASHBANG_WIZZER                                       :雷電社「ヒュー」
+STR_80FD_TRICARIO_HELICOPTER                                    :Tricario社ヘリコプター
+STR_80FE_GURU_X2_HELICOPTER                                     :Guru社X2型ヘリコプター
+STR_80FF_POWERNAUT_HELICOPTER                                   :パワーノート社ヘリコプター
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}製造社からのメッセージ
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}新しい{STRING}を設計いたしてきました。パフォーマンスなどを検査するには登場前に一年間の独占的利用を貴社に提供いたしてもよろしいですか？
+STR_8102_RAILROAD_LOCOMOTIVE                                    :鉄道車両
+STR_8103_ROAD_VEHICLE                                           :道路車両
 STR_8104_AIRCRAFT                                               :飛行機
+STR_8105_SHIP                                                   :船
+STR_8106_MONORAIL_LOCOMOTIVE                                    :モノレール車両
+STR_8107_MAGLEV_LOCOMOTIVE                                      :磁気浮上式鉄道車両
 
 ##id 0x8800
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} 電車庫
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀{}{STATION}で初めての到着！
+STR_8802_DETAILS                                                :{WHITE}{STRING}（詳細）
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}電車があります
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8806_GO_TO                                                  :{STATION}へ行く
+STR_8807_GO_TO_TRANSFER                                         :{STATION}へ行く（Transfer and take cargo）
+STR_8808_GO_TO_UNLOAD                                           :{STATION}へ行く（貨物を降ろす）
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :{STATION}へ行く（Transfer and leave empty）
+STR_880A_GO_TO_LOAD                                             :{STATION}へ行く（全負荷）
+STR_880B_GO_TO_TRANSFER_LOAD                                    :{STATION}へ行く（Transfer and wait for full load）
+STR_880C_GO_NON_STOP_TO                                         :{STATION}へ直行で行く
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :{STATION}へ直行で行く（Transfer and take cargo）
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :{STATION}へ直行で行く（貨物を降ろす）
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :{STATION}へ直行で行く（Transfer and leave empty）
+STR_8810_GO_NON_STOP_TO_LOAD                                    :{STATION}へ直行で行く（全負荷）
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :{STATION}へ直行で行く（Transfer and wait for a full load）
+STR_GO_TO_TRAIN_DEPOT                                           :{TOWN}電車庫へ行く
+STR_SERVICE_AT_TRAIN_DEPOT                                      :{TOWN}電車庫で修理する
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :{TOWN}電車庫へ直行で行く
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :{TOWN}電車庫へ直行で行って修理する
 
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN}電車庫行き
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN}電車庫行き、{VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN}電車庫で修理
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN}電車庫で修理、{VELOCITY}
 
+STR_INVALID_ORDER                                               :{RED}（不正な指令）
 
 STR_UNKNOWN_DESTINATION                                         :不明行き先
+STR_8812_EMPTY                                                  :{LTBLUE}空
+STR_8813_FROM                                                   :{LTBLUE}{CARGO}（原点：{STATION}）
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO}（原点：{STATION}）（x{NUM}）
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}電車 {COMMA} は電車庫で待機しています
+STR_8815_NEW_VEHICLES                                           :{BLACK}新規車両
 STR_8816                                                        :{BLACK}-
+STR_8819_TRAIN_TOO_LONG                                         :{WHITE}電車が長過ぎます
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}電車の変更は電車庫内のみに行えます
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} 電車
 
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}新規鉄道車両
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}新規電動鉄道車両
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}新規モノレール車両
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}新規磁気浮上式鉄道車両
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}鉄道車両
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}車両を購入
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}車両をクローン
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}道路車両を複製します。Control+クリックすると、指令を共有します。
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}道路車両を複製します。このボタンをクリックして、他の車両をクリックします。車庫内でも車庫外でもかまいません。Control+クリックすると、指令を共有します。
+STR_CLONE_TRAIN                                                 :{BLACK}列車をクローン
+STR_CLONE_TRAIN_INFO                                            :{BLACK}すべての車両を含めて、この列車を複製します。Control+クリックすると、指令を共有します。
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}すべての車両を含めて、この列車を複製します。このボタンをクリックして、他の列車をクリックします。も電車庫内でも電車庫外でもかまいません。Control+クリックすると、指令を共有します。
 STR_8820_RENAME                                                 :{BLACK}名称を変更
 STR_8823_SKIP                                                   :{BLACK}スキップ
 STR_8824_DELETE                                                 :{BLACK}削除
@@ -1801,9 +2059,13 @@ STR_8825_NON_STOP                                               :{BLACK}直行�
 STR_8826_GO_TO                                                  :{BLACK}駅を選択
 STR_8827_FULL_LOAD                                              :{BLACK}全負荷
 STR_8828_UNLOAD                                                 :{BLACK}降ろす
+STR_REFIT                                                       :{BLACK}再装備
+STR_REFIT_TIP                                                   :{BLACK}貨物の種類を選択してください。Control+クリックすると、再装備をキャンセルします。
+STR_REFIT_ORDER                                                 :（{STRING}に再装備）
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE}（指令）
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 指名終了 - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
+STR_SERVICE                                                     :{BLACK}修理
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}鉄道車両が購入できません...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入日付：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}　価値：{LTBLUE}{CURRENCY}
@@ -1822,6 +2084,7 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}車両�
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}電車庫への経路が見つけられません
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}電車が開始／停止できません...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}補修間隔：{LTBLUE}{COMMA}日間{BLACK}  最新の補修：{LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}修理の間隔：{LTBLUE}{COMMA}％{BLACK}　最終の修理：{LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}電車 - 情報を見るには電車をクリックします
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}新規電車を購入（電車庫が必要）
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}電車 - 情報を見るには電車をクリックします。車両を追加／取り除くにはドラッグします。
@@ -1849,16 +2112,22 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択�
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}選択した指令の前／リストの終わりに新規指令を挿入します
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に全負荷まで待つことを強制します
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に降ろすことを強制します
+STR_SERVICE_HINT                                                :{BLACK}修理が必要でないとこの指令をスキップ
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}{STRING} が新登場！
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}値段： {CURRENCY}重さ： {WEIGHT_S}{}スピード： {VELOCITY}  力： {POWER}{}運転費：{CURRENCY}／年{}体積： {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}故障
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}1 年間に{CURRENCY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重さ： {LTBLUE}{WEIGHT_S}  {BLACK}力： {LTBLUE}{POWER}{BLACK} 最大スピード： {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_S} {BLACK}出力：{LTBLUE}{POWER} {BLACK}最大速度：{LTBLUE}{VELOCITY} {BLACK}最大T.E.：{LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の利益：{LTBLUE}{CURRENCY}（去年：{CURRENCY}）
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最新補修後の故障：{LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}停止中
+STR_8863_CRASHED                                                :{RED}事故！
 
+STR_8865_NAME_TRAIN                                             :{WHITE}列車を名付ける
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}列車が名付けられません...
+STR_8867_NAME_TRAIN                                             :{BLACK}列車を名付ける
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}電車事件！{}{COMMA} 人が死亡
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}電車が逆転できません...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}電車車両名を変更
@@ -1866,11 +2135,24 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}車両�
 
 STR_TRAIN_STOPPING                                              :{RED}止まっています
 STR_TRAIN_STOPPING_VEL                                          :{RED}止まっています、 {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :互換性がない線路の種類
 STR_TRAIN_NO_POWER                                              :{RED}電源はありません
 STR_TRAIN_START_NO_CATENARY                                     :電車はけん垂線がありませんから、電車は動き出せません。
 
 ##id 0x9000
+STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}道路車両があります
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} 道路車両
 STR_9002                                                        :{WHITE}{VEHICLE}
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN}車庫
+STR_9004_NEW_VEHICLES                                           :{BLACK}新規車両
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}新規道路車両
+STR_9007_BUILD_VEHICLE                                          :{BLACK}車両を購入
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}道路車両が購入できません...
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
+STR_900E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の収益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障：{LTBLUE}{COMMA}
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 
 

@@ -807,8 +807,20 @@ STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Το α�
 
 
 
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :όχι
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :από όλα τα οχήματα
 
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Αυθεντικό
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ απαλός
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Απαλός
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ ανώμαλος
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Κανένας
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Αυθεντικό
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Βελτιωμένος
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Δεξιόστροφα
 
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Κανένας
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Όλες οι εταιρίες
 
 
 
