@@ -51,7 +51,7 @@ set_default() {
 	with_iconv="1"
 	with_midi=""
 	with_midi_arg=""
-	with_freetpye="1"
+	with_freetype="1"
 	with_fontconfig="1"
 
 	save_params_array="build host cc_build cc_host cxx_host windres strip lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_osx_sysroot enable_universal enable_osx_g5 with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_freetype with_fontconfig CC CXX CFLAGS LDFLAGS"
