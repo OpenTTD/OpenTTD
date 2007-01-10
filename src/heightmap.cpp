@@ -249,7 +249,7 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 			return false;
 		}
 
-		MallocT(map, info.width * info.height);
+		MallocT(/* NO & */map, info.width * info.height);
 		if (*map == NULL) {
 			ShowErrorMessage(STR_PNGMAP_ERR_MISC, STR_BMPMAP_ERROR, 0, 0);
 			fclose(f);

@@ -1076,7 +1076,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 
 				if (bridge->sprite_table == NULL) {
 					/* Allocate memory for sprite table pointers and zero out */
-					CallocT(bridge->sprite_table, 7);
+					CallocT(&bridge->sprite_table, 7);
 				}
 
 				for (; numtables-- != 0; tableid++) {
