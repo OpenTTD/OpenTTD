@@ -786,11 +786,14 @@ static void CheckPaletteAnim(void)
 static void Win32GdiMainLoop(void)
 {
 	MSG mesg;
-	uint32 next_tick = GetTickCount() + 30, cur_ticks;
+	uint32 cur_ticks = GetTickCount();
+	uint32 next_tick = cur_ticks + 30;
 
 	_wnd.running = true;
 
 	for (;;) {
+		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
+
 		while (PeekMessage(&mesg, NULL, 0, 0, PM_REMOVE)) {
 			InteractiveRandom(); // randomness
 			DispatchMessage(&mesg);
@@ -810,11 +813,8 @@ static void Win32GdiMainLoop(void)
 		}
 
 		cur_ticks = GetTickCount();
-		if ((_fast_forward && !_pause) || cur_ticks > next_tick)
-			next_tick = cur_ticks;
-
-		if (cur_ticks == next_tick) {
-			next_tick += 30;
+		if (cur_ticks >= next_tick || (_fast_forward && !_pause) || cur_ticks < prev_cur_ticks) {
+			next_tick = cur_ticks + 30;
 			_ctrl_pressed = _wnd.has_focus && GetAsyncKeyState(VK_CONTROL)<0;
 			_shift_pressed = _wnd.has_focus && GetAsyncKeyState(VK_SHIFT)<0;
 #ifdef _DEBUG
