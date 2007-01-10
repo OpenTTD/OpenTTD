@@ -46,7 +46,7 @@ string.o: $(SRC_DIR)/string.cpp endian_host.h
 
 lang/english.txt: $(LANG_DIR)/english.txt
 	$(Q)mkdir -p lang
-	$(Q)cp -u $(LANG_DIR)/english.txt lang/english.txt
+	$(Q)cp $(LANG_DIR)/english.txt lang/english.txt
 
 $(STRGEN): string.o strgen.o
 	$(E) '$(STAGE) Compiling and Linking $@'
