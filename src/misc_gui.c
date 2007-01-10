@@ -42,85 +42,25 @@ extern void SwitchMode(int new_mode);
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
 
-typedef struct LandInfoData {
-	Town *town;
-	int32 costclear;
-	AcceptedCargo ac;
-	TileIndex tile;
-	TileDesc td;
-} LandInfoData;
+enum {
+	LAND_INFO_LINES          =   7,
+	LAND_INFO_LINE_BUFF_SIZE = 512,
+};
+
+static char _landinfo_data[LAND_INFO_LINES][LAND_INFO_LINE_BUFF_SIZE];
 
 static void LandInfoWndProc(Window *w, WindowEvent *e)
 {
 	if (e->event == WE_PAINT) {
-		const LandInfoData *lid;
-		StringID str;
-		int i;
-
 		DrawWindowWidgets(w);
 
-		lid = WP(w,void_d).data;
-
-		SetDParam(0, lid->td.dparam[0]);
-		DrawStringCentered(140, 16, lid->td.str, 13);
-
-		SetDParam(0, STR_01A6_N_A);
-		if (lid->td.owner != OWNER_NONE && lid->td.owner != OWNER_WATER)
-			GetNameOfOwner(lid->td.owner, lid->tile);
-		DrawStringCentered(140, 27, STR_01A7_OWNER, 0);
-
-		str = STR_01A4_COST_TO_CLEAR_N_A;
-		if (!CmdFailed(lid->costclear)) {
-			SetDParam(0, lid->costclear);
-			str = STR_01A5_COST_TO_CLEAR;
-		}
-		DrawStringCentered(140, 38, str, 0);
-
-		snprintf(_userstring, lengthof(_userstring), "0x%.4X", lid->tile);
-		SetDParam(0, TileX(lid->tile));
-		SetDParam(1, TileY(lid->tile));
-		SetDParam(2, STR_SPEC_USERSTRING);
-		DrawStringCentered(140, 49, STR_LANDINFO_COORDS, 0);
-
-		SetDParam(0, STR_01A9_NONE);
-		if (lid->town != NULL) {
-			SetDParam(0, STR_TOWN);
-			SetDParam(1, lid->town->index);
-		}
-		DrawStringCentered(140,60, STR_01A8_LOCAL_AUTHORITY, 0);
-
-		{
-			char buf[512];
-			char *p = GetString(buf, STR_01CE_CARGO_ACCEPTED, lastof(buf));
-			bool found = false;
-
-			for (i = 0; i < NUM_CARGO; ++i) {
-				if (lid->ac[i] > 0) {
-					// Add a comma between each item.
-					if (found) {
-						*p++ = ',';
-						*p++ = ' ';
-					}
-					found = true;
-
-					// If the accepted value is less than 8, show it in 1/8:ths
-					if (lid->ac[i] < 8) {
-						SetDParam(0, lid->ac[i]);
-						SetDParam(1, _cargoc.names_s[i]);
-						p = GetString(p, STR_01D1_8, lastof(buf));
-					} else {
-						p = GetString(p, _cargoc.names_s[i], lastof(buf));
-					}
-				}
-			}
-
-			if (found) DrawStringMultiCenter(140, 76, BindCString(buf), 276);
-		}
-
-		if (lid->td.build_date != 0) {
-			SetDParam(0,lid->td.build_date);
-			DrawStringCentered(140,71, STR_BUILD_DATE, 0);
-		}
+		DoDrawStringCentered(140, 16, _landinfo_data[0], 13);
+		DoDrawStringCentered(140, 27, _landinfo_data[1], 0);
+		DoDrawStringCentered(140, 38, _landinfo_data[2], 0);
+		DoDrawStringCentered(140, 49, _landinfo_data[3], 0);
+		DoDrawStringCentered(140, 60, _landinfo_data[4], 0);
+		if (_landinfo_data[5][0] != '\0') DrawStringMultiCenter(140, 76, BindCString(_landinfo_data[5]), 276);
+		if (_landinfo_data[6][0] != '\0') DoDrawStringCentered(140, 71, _landinfo_data[6], 0);
 	}
 }
 
@@ -142,31 +82,94 @@ static const WindowDesc _land_info_desc = {
 static void Place_LandInfo(TileIndex tile)
 {
 	Player *p;
-	static LandInfoData lid;
 	Window *w;
+	Town *t;
 	int64 old_money;
+	int64 costclear;
+	AcceptedCargo ac;
+	TileDesc td;
+	StringID str;
 
 	DeleteWindowById(WC_LAND_INFO, 0);
 
 	w = AllocateWindowDesc(&_land_info_desc);
-	WP(w,void_d).data = &lid;
-
-	lid.tile = tile;
-	lid.town = ClosestTownFromTile(tile, _patches.dist_local_authority);
+	WP(w, void_d).data = &_landinfo_data;
 
 	p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : 0);
+	t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
 	old_money = p->money64;
 	p->money64 = p->player_money = 0x7fffffff;
-	lid.costclear = DoCommand(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
+	costclear = DoCommand(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
 	p->money64 = old_money;
 	UpdatePlayerMoney32(p);
 
-	// Becuase build_date is not set yet in every TileDesc, we make sure it is empty
-	lid.td.build_date = 0;
+	/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
+	td.build_date = 0;
+	GetAcceptedCargo(tile, ac);
+	GetTileDesc(tile, &td);
 
-	GetAcceptedCargo(tile, lid.ac);
-	GetTileDesc(tile, &lid.td);
+	SetDParam(0, td.dparam[0]);
+	GetString(_landinfo_data[0], td.str, lastof(_landinfo_data[0]));
+
+	SetDParam(0, STR_01A6_N_A);
+	if (td.owner != OWNER_NONE && td.owner != OWNER_WATER) GetNameOfOwner(td.owner, tile);
+	GetString(_landinfo_data[1], STR_01A7_OWNER, lastof(_landinfo_data[1]));
+
+	str = STR_01A4_COST_TO_CLEAR_N_A;
+	if (!CmdFailed(costclear)) {
+		SetDParam(0, costclear);
+		str = STR_01A5_COST_TO_CLEAR;
+	}
+	GetString(_landinfo_data[2], str, lastof(_landinfo_data[2]));
+
+	snprintf(_userstring, lengthof(_userstring), "0x%.4X", tile);
+	SetDParam(0, TileX(tile));
+	SetDParam(1, TileY(tile));
+	SetDParam(2, STR_SPEC_USERSTRING);
+	GetString(_landinfo_data[3], STR_LANDINFO_COORDS, lastof(_landinfo_data[3]));
+
+	SetDParam(0, STR_01A9_NONE);
+	if (t != NULL && IsValidTown(t)) {
+		SetDParam(0, STR_TOWN);
+		SetDParam(1, t->index);
+	}
+	GetString(_landinfo_data[4], STR_01A8_LOCAL_AUTHORITY, lastof(_landinfo_data[4]));
+
+	{
+		int i;
+		char *p = GetString(_landinfo_data[5], STR_01CE_CARGO_ACCEPTED, lastof(_landinfo_data[5]));
+		bool found = false;
+
+		for (i = 0; i < NUM_CARGO; ++i) {
+			if (ac[i] > 0) {
+				/* Add a comma between each item. */
+				if (found) {
+					*p++ = ',';
+					*p++ = ' ';
+				}
+				found = true;
+
+				/* If the accepted value is less than 8, show it in 1/8:ths */
+				if (ac[i] < 8) {
+					SetDParam(0, ac[i]);
+					SetDParam(1, _cargoc.names_s[i]);
+					p = GetString(p, STR_01D1_8, lastof(_landinfo_data[5]));
+				} else {
+					p = GetString(p, _cargoc.names_s[i], lastof(_landinfo_data[5]));
+				}
+			}
+		}
+
+		if (!found) _landinfo_data[5][0] = '\0';
+	}
+
+	if (td.build_date != 0) {
+		SetDParam(0, td.build_date);
+		GetString(_landinfo_data[6], STR_BUILD_DATE, lastof(_landinfo_data[6]));
+	} else {
+		_landinfo_data[6][0] = '\0';
+	}
 
 #if defined(_DEBUG)
 #	define LANDINFOD_LEVEL 0
