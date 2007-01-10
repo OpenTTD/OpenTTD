@@ -80,6 +80,8 @@ typedef enum OldChunkTypes {
 	OC_END       = 0 ///< End of the whole chunk, all 32bits set to zero
 } OldChunkType;
 
+DECLARE_ENUM_AS_BIT_SET(OldChunkType);
+
 typedef bool OldChunkProc(LoadgameState *ls, int num);
 
 typedef struct OldChunks {
@@ -97,9 +99,9 @@ assert_compile(sizeof(TileIndex) == 4);
 static uint32 _bump_assert_value;
 static bool   _read_ttdpatch_flags;
 
-static OldChunkType GetOldChunkType(OldChunkType type)     {return GB(type, 0, 8);}
-static OldChunkType GetOldChunkVarType(OldChunkType type)  {return GB(type, 8, 8) << 8;}
-static OldChunkType GetOldChunkFileType(OldChunkType type) {return GB(type, 16, 8) << 16;}
+static OldChunkType GetOldChunkType(OldChunkType type)     {return (OldChunkType)GB(type, 0, 8);}
+static OldChunkType GetOldChunkVarType(OldChunkType type)  {return (OldChunkType)(GB(type, 8, 8) << 8);}
+static OldChunkType GetOldChunkFileType(OldChunkType type) {return (OldChunkType)(GB(type, 16, 8) << 16);}
 
 static inline byte CalcOldVarLen(OldChunkType type)
 {
@@ -189,10 +191,10 @@ static inline uint32 ReadUint32(LoadgameState *ls)
 static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 {
 	const OldChunks *chunk = chunks;
-	byte *base_ptr = base;
+	byte *base_ptr = (byte*)base;
 
 	while (chunk->type != OC_END) {
-		byte* ptr = chunk->ptr;
+		byte* ptr = (byte*)chunk->ptr;
 		uint i;
 
 		for (i = 0; i < chunk->amount; i++) {
@@ -959,9 +961,9 @@ static const OldChunks player_chunk[] = {
 
 static bool LoadOldPlayer(LoadgameState *ls, int num)
 {
-	Player *p = GetPlayer(num);
+	Player *p = GetPlayer((PlayerID)num);
 
-	_current_player_id = num;
+	_current_player_id = (PlayerID)num;
 
 	if (!LoadChunk(ls, p, player_chunk)) return false;
 
@@ -996,7 +998,7 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 	 * really figured out as of now, p->ai.cur_veh; needed for 'sell vehicle'
 	 * is NULL and the function will crash. To fix this, just change the state
 	 * to some harmless state, like 'loop vehicle'; 1 */
-	if (!IsHumanPlayer(num) && p->ai.state == 20) p->ai.state = 1;
+	if (!IsHumanPlayer((PlayerID)num) && p->ai.state == 20) p->ai.state = 1;
 
 	if (p->is_ai && (!_networking || _network_server) && _ai.enabled)
 		AI_StartNewAI(p->index);

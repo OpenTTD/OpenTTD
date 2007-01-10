@@ -8,6 +8,7 @@
 #include "spritecache.h"
 #include "table/sprites.h"
 #include "fileio.h"
+#include "helpers.hpp"
 
 #define SPRITE_CACHE_SIZE 1024*1024
 
@@ -37,7 +38,7 @@ static SpriteCache *AllocateSpriteCache(uint index)
 
 		DEBUG(sprite, 4, "Increasing sprite cache to %d items (%d bytes)", items, items * sizeof(*_spritecache));
 
-		_spritecache = realloc(_spritecache, items * sizeof(*_spritecache));
+		ReallocT(&_spritecache, items);
 
 		if (_spritecache == NULL) {
 			error("Unable to allocate sprite cache of %d items (%d bytes)", items, items * sizeof(*_spritecache));
@@ -132,7 +133,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id)
 	num  = FioReadWord();
 	type = FioReadByte();
 	if (type == 0xFF) {
-		byte* dest = AllocSprite(num);
+		byte* dest = (byte*)AllocSprite(num);
 
 		sc->ptr = dest;
 		FioReadBlock(dest, num);
@@ -145,7 +146,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id)
 		byte* dest;
 
 		num = (type & 0x02) ? width * height : num - 8;
-		sprite = AllocSprite(sizeof(*sprite) + num);
+		sprite = (Sprite*)AllocSprite(sizeof(*sprite) + num);
 		sc->ptr = sprite;
 		sprite->info   = type;
 		sprite->height = (id != 142) ? height : 10; // Compensate for a TTD bug
@@ -195,10 +196,10 @@ bool LoadNextSprite(int load_index, byte file_index)
 }
 
 
-void DupSprite(SpriteID old, SpriteID new)
+void DupSprite(SpriteID old_spr, SpriteID new_spr)
 {
-	SpriteCache *scold = GetSpriteCache(old);
-	SpriteCache *scnew = AllocateSpriteCache(new);
+	SpriteCache *scold = GetSpriteCache(old_spr);
+	SpriteCache *scnew = AllocateSpriteCache(new_spr);
 
 	scnew->file_pos = scold->file_pos;
 	scnew->ptr = NULL;
@@ -306,7 +307,7 @@ static void CompactSpriteCache(void)
 static void DeleteEntryFromSpriteCache(void)
 {
 	SpriteID i;
-	uint best = -1;
+	uint best = UINT_MAX;
 	MemBlock* s;
 	int cur_lru;
 
@@ -403,7 +404,7 @@ const void *GetRawSprite(SpriteID sprite)
 void GfxInitSpriteMem(void)
 {
 	// initialize sprite cache heap
-	if (_spritecache_ptr == NULL) _spritecache_ptr = malloc(SPRITE_CACHE_SIZE);
+	if (_spritecache_ptr == NULL) _spritecache_ptr = (MemBlock*)malloc(SPRITE_CACHE_SIZE);
 
 	// A big free block
 	_spritecache_ptr->size = (SPRITE_CACHE_SIZE - sizeof(MemBlock)) | S_FREE_MASK;

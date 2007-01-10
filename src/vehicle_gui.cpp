@@ -27,6 +27,7 @@
 #include "aircraft.h"
 #include "roadveh.h"
 #include "depot.h"
+#include "helpers.hpp"
 
 typedef struct Sorting {
 	Listing aircraft;
@@ -153,7 +154,7 @@ static void SortVehicleList(vehiclelist_d *vl)
 {
 	if (!(vl->l.flags & VL_RESORT)) return;
 
-	_internal_sort_order = vl->l.flags & VL_DESC;
+	_internal_sort_order = (vl->l.flags & VL_DESC) != 0;
 	qsort((void*)vl->sort_list, vl->l.list_length, sizeof(vl->sort_list[0]),
 		_vehicle_sorter[vl->l.sort_type]);
 
@@ -206,8 +207,10 @@ typedef struct RefitList {
 static RefitList *BuildRefitList(const Vehicle *v)
 {
 	uint max_lines = 256;
-	RefitOption *refit = calloc(max_lines, sizeof(*refit));
-	RefitList *list = calloc(1, sizeof(*list));
+	RefitOption *refit;
+	CallocT(&refit, max_lines);
+	RefitList *list;
+	CallocT(&list, 1);
 	Vehicle *u = (Vehicle*)v;
 	uint num_lines = 0;
 	uint i;
@@ -855,12 +858,12 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			if (selected_id[0] != INVALID_ENGINE) {
 				const ShipVehicleInfo* svi = ShipVehInfo(selected_id[0]);
 				CargoID cargo = svi->cargo_type;
-				byte refittable = svi->refittable;
+				bool refittable = svi->refittable;
 
 				for (i = SHIP_ENGINES_INDEX; i < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; i++) {
 					if (HASBIT(GetEngine(i)->player_avail, _local_player) && (
 								ShipVehInfo(i)->cargo_type == cargo ||
-								ShipVehInfo(i)->refittable & refittable
+								ShipVehInfo(i)->refittable && refittable
 							)) {
 						if (sel[1] == count2) selected_id[1] = i;
 						count2++;
@@ -1205,7 +1208,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-			_railtype_selected_in_replace_gui = e->we.dropdown.index;
+			_railtype_selected_in_replace_gui = (RailType)e->we.dropdown.index;
 			/* Reset scrollbar positions */
 			w->vscroll.pos  = 0;
 			w->vscroll2.pos = 0;
@@ -1437,7 +1440,7 @@ static void CreateVehicleListWindow(Window *w)
 {
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
 	uint16 window_type = w->window_number & VLW_MASK;
-	PlayerID player = GB(w->window_number, 0, 8);
+	PlayerID player = (PlayerID)GB(w->window_number, 0, 8);
 
 	vl->vehicle_type = GB(w->window_number, 11, 5);
 	vl->length_of_sort_list = 0;
@@ -1550,7 +1553,7 @@ static void CreateVehicleListWindow(Window *w)
 		default: NOT_REACHED(); break;
 	}
 
-	vl->l.flags = VL_REBUILD | (vl->_sorting->order << (VL_DESC - 1));
+	vl->l.flags = VL_REBUILD | (vl->_sorting->order ? VL_DESC : VL_NONE);
 	vl->l.sort_type = vl->_sorting->criteria;
 	vl->sort_list = NULL;
 	vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer

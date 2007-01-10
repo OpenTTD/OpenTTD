@@ -16,6 +16,7 @@
 #include "industry.h"
 #include "town.h"
 #include "variables.h"
+#include "helpers.hpp"
 
 const byte _build_industry_types[4][12] = {
 	{  1,  2,  4,  6,  8,  0,  3,  5,  9, 11, 18 },
@@ -559,7 +560,7 @@ static void MakeSortedIndustryList(void)
 	if (GetNumIndustries() == 0) return;
 
 	/* Create array for sorting */
-	_industry_sort = realloc((void *)_industry_sort, (GetMaxIndustryIndex() + 1) * sizeof(_industry_sort[0]));
+	ReallocT(&_industry_sort, GetMaxIndustryIndex() + 1);
 	if (_industry_sort == NULL) error("Could not allocate memory for the industry-sorting-list");
 
 	FOR_ALL_INDUSTRIES(i) _industry_sort[n++] = i;

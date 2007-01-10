@@ -4,12 +4,10 @@
 
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
 
-extern "C" {
-	#include "../openttd.h"
-	#include "../debug.h"
-	#include "../win32.h"
-	#include "dmusic.h"
-}
+#include "../openttd.h"
+#include "../debug.h"
+#include "../win32.h"
+#include "dmusic.h"
 
 #include <windows.h>
 #include <dmksctrl.h>

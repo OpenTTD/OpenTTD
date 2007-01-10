@@ -17,6 +17,7 @@
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 #include "date.h"
+#include "helpers.hpp"
 
 static StationClass station_classes[STAT_CLASS_MAX];
 
@@ -31,8 +32,7 @@ enum {
  */
 void ResetStationClasses(void)
 {
-	StationClassID i;
-	for (i = 0; i < STAT_CLASS_MAX; i++) {
+	for (StationClassID i = STAT_CLASS_BEGIN; i < STAT_CLASS_MAX; i++) {
 		station_classes[i].id = 0;
 		station_classes[i].name = STR_EMPTY;
 		station_classes[i].stations = 0;
@@ -45,13 +45,13 @@ void ResetStationClasses(void)
 	station_classes[0].id = 'DFLT';
 	station_classes[0].name = STR_STAT_CLASS_DFLT;
 	station_classes[0].stations = 1;
-	station_classes[0].spec = malloc(sizeof(*station_classes[0].spec));
+	MallocT(&station_classes[0].spec, 1);
 	station_classes[0].spec[0] = NULL;
 
 	station_classes[1].id = 'WAYP';
 	station_classes[1].name = STR_STAT_CLASS_WAYP;
 	station_classes[1].stations = 1;
-	station_classes[1].spec = malloc(sizeof(*station_classes[1].spec));
+	MallocT(&station_classes[1].spec, 1);
 	station_classes[1].spec[0] = NULL;
 }
 
@@ -60,17 +60,15 @@ void ResetStationClasses(void)
  * @param classid A 32 bit value identifying the class.
  * @return Index into station_classes of allocated class.
  */
-StationClassID AllocateStationClass(uint32 class)
+StationClassID AllocateStationClass(uint32 cls)
 {
-	StationClassID i;
-
-	for (i = 0; i < STAT_CLASS_MAX; i++) {
-		if (station_classes[i].id == class) {
+	for (StationClassID i = STAT_CLASS_BEGIN; i < STAT_CLASS_MAX; i++) {
+		if (station_classes[i].id == cls) {
 			// ClassID is already allocated, so reuse it.
 			return i;
 		} else if (station_classes[i].id == 0) {
 			// This class is empty, so allocate it to the ClassID.
-			station_classes[i].id = class;
+			station_classes[i].id = cls;
 			return i;
 		}
 	}
@@ -150,7 +148,7 @@ void SetCustomStationSpec(StationSpec *statspec)
 	station_class = &station_classes[statspec->sclass];
 
 	i = station_class->stations++;
-	station_class->spec = realloc(station_class->spec, station_class->stations * sizeof(*station_class->spec));
+	ReallocT(&station_class->spec, station_class->stations);
 
 	station_class->spec[i] = statspec;
 	statspec->allocated = true;
@@ -176,10 +174,9 @@ const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station)
 
 const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx)
 {
-	StationClassID i;
 	uint j;
 
-	for (i = STAT_CLASS_DFLT; i < STAT_CLASS_MAX; i++) {
+	for (StationClassID i = STAT_CLASS_BEGIN; i < STAT_CLASS_MAX; i++) {
 		for (j = 0; j < station_classes[i].stations; j++) {
 			const StationSpec *statspec = station_classes[i].spec[j];
 			if (statspec == NULL) continue;
@@ -364,7 +361,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		}
 
 		*available = false;
-		return -1;
+		return UINT_MAX;
 	}
 
 	switch (variable) {
@@ -430,7 +427,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 	DEBUG(grf, 1, "Unhandled station property 0x%X", variable);
 
 	*available = false;
-	return -1;
+	return UINT_MAX;
 }
 
 
@@ -610,7 +607,7 @@ int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
 	if (exec) {
 		if (i >= st->num_specs) {
 			st->num_specs = i + 1;
-			st->speclist = realloc(st->speclist, st->num_specs * sizeof(*st->speclist));
+			ReallocT(&st->speclist, st->num_specs);
 
 			if (st->num_specs == 2) {
 				/* Initial allocation */
@@ -656,7 +653,7 @@ void DeallocateSpecFromStation(Station* st, byte specindex)
 		for (; st->speclist[st->num_specs - 1].grfid == 0 && st->num_specs > 1; st->num_specs--);
 
 		if (st->num_specs > 1) {
-			st->speclist = realloc(st->speclist, st->num_specs * sizeof(*st->speclist));
+			ReallocT(&st->speclist, st->num_specs);
 		} else {
 			free(st->speclist);
 			st->num_specs = 0;
@@ -696,7 +693,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	if (statspec->renderdata == NULL) {
 		sprites = GetStationTileLayout(tile + axis);
 	} else {
-		sprites = &statspec->renderdata[(tile < statspec->tiles) ? tile + axis : axis];
+		sprites = &statspec->renderdata[(tile < statspec->tiles) ? tile + axis : (uint)axis];
 	}
 
 	image = sprites->ground_sprite;

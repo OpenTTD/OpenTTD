@@ -182,7 +182,7 @@ void WaitTillGeneratedWorld(void)
 {
 	if (_gw.thread == NULL) return;
 	_gw.quit_thread = true;
-	OTTDJoinThread(_gw.thread);
+	OTTDJoinThread((OTTDThread*)_gw.thread);
 	_gw.thread   = NULL;
 	_gw.threaded = false;
 }

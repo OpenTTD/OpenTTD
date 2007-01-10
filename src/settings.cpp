@@ -40,6 +40,7 @@
 #include "genworld.h"
 #include "date.h"
 #include "rail.h"
+#include "helpers.hpp"
 #ifdef WITH_FREETYPE
 #include "gfx.h"
 #include "fontcache.h"
@@ -74,7 +75,7 @@ static SettingsMemoryPool *pool_new(uint minsize)
 	SettingsMemoryPool *p;
 	if (minsize < 4096 - 12) minsize = 4096 - 12;
 
-	p = malloc(sizeof(SettingsMemoryPool) - 1 + minsize);
+	p = (SettingsMemoryPool*)malloc(sizeof(SettingsMemoryPool) - 1 + minsize);
 	p->pos = 0;
 	p->size = minsize;
 	p->next = NULL;
@@ -111,7 +112,7 @@ static void *pool_alloc(SettingsMemoryPool **pool, uint size)
 
 static void *pool_strdup(SettingsMemoryPool **pool, const char *mem, uint size)
 {
-	byte *p = pool_alloc(pool, size + 1);
+	byte *p = (byte*)pool_alloc(pool, size + 1);
 	p[size] = 0;
 	memcpy(p, mem, size);
 	return p;
@@ -168,9 +169,9 @@ static IniFile *ini_alloc(void)
 // allocate an ini group object
 static IniGroup *ini_group_alloc(IniFile *ini, const char *grpt, int len)
 {
-	IniGroup *grp = pool_alloc(&ini->pool, sizeof(IniGroup));
+	IniGroup *grp = (IniGroup*)pool_alloc(&ini->pool, sizeof(IniGroup));
 	grp->ini = ini;
-	grp->name = pool_strdup(&ini->pool, grpt, len);
+	grp->name = (char*)pool_strdup(&ini->pool, grpt, len);
 	if (!strcmp(grp->name, "newgrf") || !strcmp(grp->name, "servers") || !strcmp(grp->name, "bans")) {
 		grp->type = IGT_LIST;
 	} else {
@@ -187,8 +188,8 @@ static IniGroup *ini_group_alloc(IniFile *ini, const char *grpt, int len)
 
 static IniItem *ini_item_alloc(IniGroup *group, const char *name, int len)
 {
-	IniItem *item = pool_alloc(&group->ini->pool, sizeof(IniItem));
-	item->name = pool_strdup(&group->ini->pool, name, len);
+	IniItem *item = (IniItem*)pool_alloc(&group->ini->pool, sizeof(IniItem));
+	item->name = (char*)pool_strdup(&group->ini->pool, name, len);
 	item->next = NULL;
 	item->comment = NULL;
 	item->value = NULL;
@@ -235,7 +236,7 @@ static IniFile *ini_load(const char *filename)
 			if (ns > a) {
 				a = max(a, 128);
 				do a*=2; while (a < ns);
-				comment = realloc(comment, comment_alloc = a);
+				ReallocT(&comment, comment_alloc = a);
 			}
 			pos = comment_size;
 			comment_size += (e - s + 1);
@@ -254,7 +255,7 @@ static IniFile *ini_load(const char *filename)
 			s++; // skip [
 			group = ini_group_alloc(ini, s, e - s);
 			if (comment_size) {
-				group->comment = pool_strdup(&ini->pool, comment, comment_size);
+				group->comment = (char*)pool_strdup(&ini->pool, comment, comment_size);
 				comment_size = 0;
 			}
 		} else if (group) {
@@ -264,7 +265,7 @@ static IniFile *ini_load(const char *filename)
 			// it's an item in an existing group
 			item = ini_item_alloc(group, s, t-s);
 			if (comment_size) {
-				item->comment = pool_strdup(&ini->pool, comment, comment_size);
+				item->comment = (char*)pool_strdup(&ini->pool, comment, comment_size);
 				comment_size = 0;
 			}
 
@@ -279,7 +280,7 @@ static IniFile *ini_load(const char *filename)
 			if (e > t && e[-1] == '\"') e--;
 			*e = '\0';
 
-			item->value = pool_strdup(&ini->pool, t, e - t);
+			item->value = (char*)pool_strdup(&ini->pool, t, e - t);
 		} else {
 			// it's an orphan item
 			ShowInfoF("ini: '%s' outside of group", buffer);
@@ -287,7 +288,7 @@ static IniFile *ini_load(const char *filename)
 	}
 
 	if (comment_size > 0) {
-		ini->comment = pool_strdup(&ini->pool, comment, comment_size);
+		ini->comment = (char*)pool_strdup(&ini->pool, comment, comment_size);
 		comment_size = 0;
 	}
 
@@ -311,7 +312,7 @@ static IniGroup *ini_getgroup(IniFile *ini, const char *name, int len)
 
 	// otherwise make a new one
 	group = ini_group_alloc(ini, name, len);
-	group->comment = pool_strdup(&ini->pool, "\n", 1);
+	group->comment = (char*)pool_strdup(&ini->pool, "\n", 1);
 	return group;
 }
 
@@ -603,6 +604,7 @@ static const void *string_to_val(const SettingDescBase *desc, const char *str)
 
 	case SDT_STRING:
 	case SDT_INTLIST: return str;
+	default: break;
 	}
 
 	return NULL;
@@ -704,7 +706,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			switch (GetVarMemType(sld->conv)) {
 				case SLE_VAR_STRB:
 				case SLE_VAR_STRBQ:
-					if (p != NULL) ttd_strlcpy((char*)ptr, p, sld->length);
+					if (p != NULL) ttd_strlcpy((char*)ptr, (const char*)p, sld->length);
 					break;
 				case SLE_VAR_STR:
 				case SLE_VAR_STRQ:
@@ -719,7 +721,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			break;
 
 		case SDT_INTLIST: {
-			if (!load_intlist(p, ptr, sld->length, GetVarMemType(sld->conv)))
+			if (!load_intlist((const char*)p, ptr, sld->length, GetVarMemType(sld->conv)))
 				ShowInfoF("ini: error in array '%s'", sdb->name);
 			break;
 		}
@@ -782,7 +784,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			case SDT_MANYOFMANY:
 				switch (GetVarMemType(sld->conv)) {
 				case SLE_VAR_BL:
-					if (*(bool*)ptr == (bool)(unsigned long)p) continue;
+					if (*(bool*)ptr == (p != NULL)) continue;
 					break;
 				case SLE_VAR_I8:
 				case SLE_VAR_U8:
@@ -838,7 +840,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		}
 
 		/* The value is different, that means we have to write it to the ini */
-		item->value = pool_strdup(&ini->pool, buf, strlen(buf));
+		item->value = (char*)pool_strdup(&ini->pool, buf, strlen(buf));
 	}
 }
 
@@ -945,12 +947,12 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
  * place) and you DON'T have to increase the savegame version. */
 
 #define NSD_GENERAL(name, def, cmd, guiflags, min, max, interval, many, str, proc)\
-	{name, (const void*)(def), cmd, guiflags, min, max, interval, many, str, proc}
+	{name, (const void*)(def), {cmd}, {guiflags}, min, max, interval, many, str, proc}
 
 /* Macros for various objects to go in the configuration file.
  * This section is for global variables */
 #define SDTG_GENERAL(name, sdt_cmd, sle_cmd, type, flags, guiflags, var, length, def, min, max, interval, full, str, proc, from, to)\
-{NSD_GENERAL(name, def, sdt_cmd, guiflags, min, max, interval, full, str, proc), SLEG_GENERAL(sle_cmd, var, type | flags, length, from, to)}
+	{NSD_GENERAL(name, def, sdt_cmd, guiflags, min, max, interval, full, str, proc), SLEG_GENERAL(sle_cmd, var, type | flags, length, from, to)}
 
 #define SDTG_CONDVAR(name, type, flags, guiflags, var, def, min, max, interval, str, proc, from, to)\
 	SDTG_GENERAL(name, SDT_NUMX, SL_VAR, type, flags, guiflags, var, 0, def, min, max, interval, NULL, str, proc, from, to)
@@ -983,9 +985,9 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 	SDTG_CONDMMANY(name, type, flags, guiflags, var, def, full, str, proc, 0, SL_MAX_VERSION)
 
 #define SDTG_CONDNULL(length, from, to)\
-	{{"", NULL, 0, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLEG_CONDNULL(length, from, to)}
+	{{"", NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL}, SLEG_CONDNULL(length, from, to)}
 
-#define SDTG_END() {{NULL, NULL, 0, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLEG_END()}
+#define SDTG_END() {{NULL, NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL}, SLEG_END()}
 
 /* Macros for various objects to go in the configuration file.
  * This section is for structures where their various members are saved */
@@ -1032,9 +1034,9 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 	SDT_CONDMMANY(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, full, str, proc)
 
 #define SDT_CONDNULL(length, from, to)\
-	{{"", NULL, 0, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLE_CONDNULL(length, from, to)}
+	{{"", NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL}, SLE_CONDNULL(length, from, to)}
 
-#define SDT_END() {{NULL, NULL, 0, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLE_END()}
+#define SDT_END() {{NULL, NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL}, SLE_END()}
 
 /* Shortcuts for macros below. Logically if we don't save the value
  * we also don't sync it in a network game */
@@ -1507,7 +1509,8 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 	if (group == NULL) return NULL;
 
 	for (item = group->item; item != NULL; item = item->next) {
-		GRFConfig *c = calloc(1, sizeof(*c));
+		GRFConfig *c;
+		CallocT(&c, 1);
 		c->filename = strdup(item->name);
 
 		/* Parse parameters */
@@ -1566,7 +1569,7 @@ static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *li
 		GRFBuildParamList(params, c, lastof(params));
 
 		*item = ini_item_alloc(group, c->filename, strlen(c->filename));
-		(*item)->value = pool_strdup(&ini->pool, params, strlen(params));
+		(*item)->value = (char*)pool_strdup(&ini->pool, params, strlen(params));
 		item = &(*item)->next;
 	}
 }
@@ -1843,7 +1846,7 @@ void UpdatePatches(void)
 	_patches = _patches_newgame; /* backwards compatibility */
 }
 
-const ChunkHandler _setting_chunk_handlers[] = {
+extern const ChunkHandler _setting_chunk_handlers[] = {
 	{ 'OPTS', Save_OPTS, Load_OPTS, CH_RIFF},
 	{ 'PATS', Save_PATS, Load_PATS, CH_RIFF | CH_LAST},
 };

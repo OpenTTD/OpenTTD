@@ -85,7 +85,7 @@ void MxMixSamples(void *buffer, uint samples)
 	// Mix each channel
 	for (mc = _channels; mc != endof(_channels); mc++) {
 		if (mc->active) {
-			mix_int8_to_int16(mc, buffer, samples);
+			mix_int8_to_int16(mc, (int16*)buffer, samples);
 			if (mc->samples_left == 0) MxCloseChannel(mc);
 		}
 	}

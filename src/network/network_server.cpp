@@ -22,6 +22,7 @@
 #include "../station.h"
 #include "../variables.h"
 #include "../genworld.h"
+#include "../helpers.hpp"
 
 // This file handles all the server-commands
 
@@ -571,7 +572,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	char name[NETWORK_CLIENT_NAME_LENGTH];
 	char unique_id[NETWORK_NAME_LENGTH];
 	NetworkClientInfo *ci;
-	byte playas;
+	PlayerID playas;
 	NetworkLanguage client_lang;
 	char client_revision[NETWORK_REVISION_LENGTH];
 
@@ -588,8 +589,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 #endif
 
 	NetworkRecv_string(cs, p, name, sizeof(name));
-	playas = NetworkRecv_uint8(cs, p);
-	client_lang = NetworkRecv_uint8(cs, p);
+	playas = (Owner)NetworkRecv_uint8(cs, p);
+	client_lang = (NetworkLanguage)NetworkRecv_uint8(cs, p);
 	NetworkRecv_string(cs, p, unique_id, sizeof(unique_id));
 
 	if (cs->has_quit) return;
@@ -654,7 +655,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 	char password[NETWORK_PASSWORD_LENGTH];
 	const NetworkClientInfo *ci;
 
-	type = NetworkRecv_uint8(cs, p);
+	type = (NetworkPasswordType)NetworkRecv_uint8(cs, p);
 	NetworkRecv_string(cs, p, password, sizeof(password));
 
 	if (cs->status == STATUS_INACTIVE && type == NETWORK_GAME_PASSWORD) {
@@ -792,7 +793,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	const NetworkClientInfo *ci;
 	byte callback;
 
-	CommandPacket *cp = malloc(sizeof(CommandPacket));
+	CommandPacket *cp;
+	MallocT(&cp, 1);
 
 	// The client was never joined.. so this is impossible, right?
 	//  Ignore the packet, give the client a warning, and close his connection
@@ -801,7 +803,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return;
 	}
 
-	cp->player = NetworkRecv_uint8(cs, p);
+	cp->player = (Owner)NetworkRecv_uint8(cs, p);
 	cp->cmd    = NetworkRecv_uint32(cs, p);
 	cp->p1     = NetworkRecv_uint32(cs, p);
 	cp->p2     = NetworkRecv_uint32(cs, p);
@@ -851,7 +853,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		/* XXX - Execute the command as a valid player. Normally this would be done by a
 		 * spectator, but that is not allowed any commands. So do an impersonation. The drawback
 		 * of this is that the first company's last_built_tile is also updated... */
-		cp->player = 0;
+		cp->player = OWNER_BEGIN;
 		cp->p2 = cs - _clients; // XXX - UGLY! p2 is mis-used to get the client-id in CmdPlayerCtrl
 	}
 
@@ -890,7 +892,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 	NetworkClientState *new_cs;
 	char str[100];
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
-	NetworkErrorCode errorno = NetworkRecv_uint8(cs, p);
+	NetworkErrorCode errorno = (NetworkErrorCode)NetworkRecv_uint8(cs, p);
 
 	// The client was never joined.. thank the client for the packet, but ignore it
 	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
@@ -1044,7 +1046,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		if (ci != NULL && show_local) {
 			if (from_index == NETWORK_SERVER_INDEX) {
 				char name[NETWORK_NAME_LENGTH];
-				StringID str = IsValidPlayer(ci_to->client_playas) ? GetPlayer(ci_to->client_playas)->name_1 : STR_NETWORK_SPECTATORS;
+				StringID str = IsValidPlayer(ci_to->client_playas) ? GetPlayer(ci_to->client_playas)->name_1 : (uint16)STR_NETWORK_SPECTATORS;
 				GetString(name, str, lastof(name));
 				NetworkTextMessage(action, GetDrawStringPlayerColor(ci_own->client_playas), true, name, "%s", msg);
 			} else {
@@ -1073,8 +1075,8 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 {
-	NetworkAction action = NetworkRecv_uint8(cs, p);
-	DestType desttype = NetworkRecv_uint8(cs, p);
+	NetworkAction action = (NetworkAction)NetworkRecv_uint8(cs, p);
+	DestType desttype = (DestType)NetworkRecv_uint8(cs, p);
 	int dest = NetworkRecv_uint8(cs, p);
 	char msg[MAX_TEXT_MSG_LEN];
 

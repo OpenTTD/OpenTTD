@@ -30,7 +30,7 @@ enum{
 typedef struct AyStarNode AyStarNode;
 struct AyStarNode {
 	TileIndex tile;
-	uint direction;
+	int direction;
 	uint user_data[2];
 };
 

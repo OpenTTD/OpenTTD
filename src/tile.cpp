@@ -16,7 +16,7 @@ Slope GetTileSlope(TileIndex tile, uint *h)
 
 	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) {
 		if (h != NULL) *h = 0;
-		return 0;
+		return SLOPE_FLAT;
 	}
 
 	min = a = TileHeight(tile);
@@ -35,7 +35,7 @@ Slope GetTileSlope(TileIndex tile, uint *h)
 
 	if (h != NULL) *h = min * TILE_HEIGHT;
 
-	return r;
+	return (Slope)r;
 }
 
 uint GetTileZ(TileIndex tile)

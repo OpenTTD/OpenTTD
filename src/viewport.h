@@ -139,7 +139,7 @@ typedef struct TileHighlightData {
 
 
 // common button handler
-bool HandlePlacePushButton(Window *w, int widget, uint32 cursor, int mode, PlaceProc *placeproc);
+bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, PlaceProc *placeproc);
 
 VARDEF Point _tile_fract_coords;
 

@@ -12,6 +12,7 @@
 #include "../network_data.h"
 #include "packet.h"
 #include "tcp.h"
+#include "../../helpers.hpp"
 
 /**
  * @file tcp.c Basic functions to receive and send TCP packets.
@@ -99,7 +100,7 @@ bool NetworkSend_Packets(NetworkClientState *cs)
 
 	p = cs->packet_queue;
 	while (p != NULL) {
-		res = send(cs->socket, p->buffer + p->pos, p->size - p->pos, 0);
+		res = send(cs->socket, (const char*)p->buffer + p->pos, p->size - p->pos, 0);
 		if (res == -1) {
 			int err = GET_LAST_ERROR();
 			if (err != EWOULDBLOCK) {
@@ -148,7 +149,7 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 	if (cs->socket == INVALID_SOCKET) return NULL;
 
 	if (cs->packet_recv == NULL) {
-		cs->packet_recv = malloc(sizeof(Packet));
+		MallocT(&cs->packet_recv, 1);
 		if (cs->packet_recv == NULL) error("Failed to allocate packet");
 		/* Set pos to zero! */
 		cs->packet_recv->pos = 0;
@@ -161,7 +162,7 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 	if (p->pos < sizeof(PacketSize)) {
 		while (p->pos < sizeof(PacketSize)) {
 			/* Read the size of the packet */
-			res = recv(cs->socket, p->buffer + p->pos, sizeof(PacketSize) - p->pos, 0);
+			res = recv(cs->socket, (char*)p->buffer + p->pos, sizeof(PacketSize) - p->pos, 0);
 			if (res == -1) {
 				int err = GET_LAST_ERROR();
 				if (err != EWOULDBLOCK) {
@@ -191,7 +192,7 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 
 	/* Read rest of packet */
 	while (p->pos < p->size) {
-		res = recv(cs->socket, p->buffer + p->pos, p->size - p->pos, 0);
+		res = recv(cs->socket, (char*)p->buffer + p->pos, p->size - p->pos, 0);
 		if (res == -1) {
 			int err = GET_LAST_ERROR();
 			if (err != EWOULDBLOCK) {

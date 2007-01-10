@@ -132,8 +132,8 @@ public:
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	inline bool PfCalcEstimate(Node& n)
 	{
-		int dx = abs(TileX(n.GetTile()) - TileX(m_destTile));
-		int dy = abs(TileY(n.GetTile()) - TileY(m_destTile));
+		int dx = delta(TileX(n.GetTile()), TileX(m_destTile));
+		int dy = delta(TileY(n.GetTile()), TileY(m_destTile));
 		assert(dx >= 0 && dy >= 0);
 		int dd = min(dx, dy);
 		int dxy = abs(dx - dy);

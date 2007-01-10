@@ -10,11 +10,13 @@
 
 enum {
 	INVALID_VEH_ORDER_ID = 0xFF,
-	INVALID_ORDER        = 0xFFFF,
 };
 
+static const OrderID INVALID_ORDER = 0xFFFF;
+
 /* Order types */
-enum OrderTypes {
+enum OrderType {
+	OT_BEGIN         = 0,
 	OT_NOTHING       = 0,
 	OT_GOTO_STATION  = 1,
 	OT_GOTO_DEPOT    = 2,
@@ -22,9 +24,14 @@ enum OrderTypes {
 	OT_LEAVESTATION  = 4,
 	OT_DUMMY         = 5,
 	OT_GOTO_WAYPOINT = 6,
+	OT_END
 };
+
 /* It needs to be 8bits, because we save and load it as such */
-typedef uint8 OrderType;
+/** Define basic enum properties */
+template <> struct EnumPropsT<OrderType> : MakeEnumPropsT<OrderType, byte, OT_BEGIN, OT_END, OT_END> {};
+typedef TinyEnumT<OrderType> OrderTypeByte;
+
 
 /* Order flags -- please use OFB instead OF and use HASBIT/SETBIT/CLEARBIT */
 
@@ -82,7 +89,7 @@ enum {
  * - REF_SHEDULE (all REFs are currently limited to 16 bits!!)
  */
 typedef struct Order {
-	OrderType type;
+	OrderTypeByte type;
 	uint8  flags;
 	DestinationID dest;   ///< The destionation of the order.
 

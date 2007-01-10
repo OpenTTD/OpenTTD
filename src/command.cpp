@@ -504,7 +504,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	 */
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
 		PlayerID pbck = _local_player;
-		if (_network_dedicated || (_network_server && pbck == PLAYER_SPECTATOR)) _local_player = 0;
+		if (_network_dedicated || (_network_server && pbck == PLAYER_SPECTATOR)) _local_player = PLAYER_FIRST;
 		NetworkSend_Command(tile, p1, p2, cmd, callback);
 		if (_network_dedicated || (_network_server && pbck == PLAYER_SPECTATOR)) _local_player = pbck;
 		_docommand_recursive = 0;

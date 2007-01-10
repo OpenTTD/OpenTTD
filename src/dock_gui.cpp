@@ -254,7 +254,7 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 			case 3:
 			case 4:
 				RaiseWindowWidget(w, _station_show_coverage + 3);
-				_station_show_coverage = e->we.click.widget - 3;
+				_station_show_coverage = (e->we.click.widget != 3);
 				LowerWindowWidget(w, _station_show_coverage + 3);
 				SndPlayFx(SND_15_BEEP);
 				SetWindowDirty(w);
@@ -328,7 +328,7 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 		case 3:
 		case 4:
 			RaiseWindowWidget(w, _ship_depot_direction + 3);
-			_ship_depot_direction = e->we.click.widget - 3;
+			_ship_depot_direction = (e->we.click.widget == 3 ? AXIS_X : AXIS_Y);
 			LowerWindowWidget(w, _ship_depot_direction + 3);
 			SndPlayFx(SND_15_BEEP);
 			UpdateDocksDirection();

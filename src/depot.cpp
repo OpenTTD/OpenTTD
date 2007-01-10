@@ -122,6 +122,6 @@ static void Load_DEPT(void)
 	}
 }
 
-const ChunkHandler _depot_chunk_handlers[] = {
+extern const ChunkHandler _depot_chunk_handlers[] = {
 	{ 'DEPT', Save_DEPT, Load_DEPT, CH_ARRAY | CH_LAST},
 };

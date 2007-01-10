@@ -19,6 +19,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "aystar.h"
+#include "helpers.hpp"
 
 int _aystar_stats_open_size;
 int _aystar_stats_closed_size;
@@ -35,7 +36,8 @@ static PathNode* AyStarMain_ClosedList_IsInList(AyStar *aystar, const AyStarNode
 static void AyStarMain_ClosedList_Add(AyStar *aystar, const PathNode *node)
 {
 	// Add a node to the ClosedList
-	PathNode *new_node = malloc(sizeof(*new_node));
+	PathNode *new_node;
+	MallocT(&new_node, 1);
 	*new_node = *node;
 	Hash_Set(&aystar->ClosedListHash, node->node.tile, node->node.direction, new_node);
 }
@@ -66,7 +68,8 @@ static OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar)
 static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, const AyStarNode *node, int f, int g)
 {
 	// Add a new Node to the OpenList
-	OpenListNode *new_node = malloc(sizeof(*new_node));
+	OpenListNode *new_node;
+	MallocT(&new_node, 1);
 	new_node->g = g;
 	new_node->path.parent = parent;
 	new_node->path.node = *node;

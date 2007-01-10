@@ -335,7 +335,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS)
 		 * the current list and do not send the other data.
 		 * The name could be an empty string, if so take the filename. */
 		packet_len += sizeof(c.grfid) + sizeof(c.md5sum) +
-				min(strlen((f->name != NULL && strlen(f->name) > 0) ? f->name : f->filename) + 1, NETWORK_GRF_NAME_LENGTH);
+				min(strlen((f->name != NULL && strlen(f->name) > 0) ? f->name : f->filename) + 1, (size_t)NETWORK_GRF_NAME_LENGTH);
 		if (packet_len > SEND_MTU - 4) { // 4 is 3 byte header + grf count in reply
 			break;
 		}

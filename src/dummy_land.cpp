@@ -66,7 +66,7 @@ static uint32 GetTileTrackStatus_Dummy(TileIndex tile, TransportType mode)
 	return 0;
 }
 
-const TileTypeProcs _tile_type_dummy_procs = {
+extern const TileTypeProcs _tile_type_dummy_procs = {
 	DrawTile_Dummy,           /* draw_tile_proc */
 	GetSlopeZ_Dummy,          /* get_slope_z_proc */
 	ClearTile_Dummy,          /* clear_tile_proc */

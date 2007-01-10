@@ -7,9 +7,9 @@
 	extern const char _openttd_revision[];
 #elif defined(WITH_REV_HACK)
 	#define WITH_REV
-	const char _openttd_revision[] = WITH_REV_HACK;
+	extern const char _openttd_revision[] = WITH_REV_HACK;
 #else
-	const char _openttd_revision[] = NOREV_STRING;
+	extern const char _openttd_revision[] = NOREV_STRING;
 #endif
 
 
@@ -37,6 +37,19 @@
 #include "../console.h" /* IConsoleCmdExec */
 #include <stdarg.h> /* va_list */
 #include "../md5.h"
+
+// global variables (declared in network_data.h)
+CommandPacket *_local_command_queue;
+
+SOCKET _udp_client_socket; // udp client socket
+SOCKET _udp_server_socket; // udp server socket
+SOCKET _udp_master_socket; // udp master socket
+
+// Here we keep track of the clients
+//  (and the client uses [0] for his own communication)
+NetworkClientState _clients[MAX_CLIENTS];
+
+
 
 // The listen socket for the server
 static SOCKET _listensocket;
@@ -277,7 +290,7 @@ char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last)
 		STR_NETWORK_ERR_CLIENT_SERVER_FULL
 	};
 
-	if (err >= lengthof(network_error_strings)) err = 0;
+	if (err >= (ptrdiff_t)lengthof(network_error_strings)) err = NETWORK_ERROR_GENERAL;
 
 	return GetString(buf, network_error_strings[err], last);
 }
@@ -729,7 +742,7 @@ static void NetworkAcceptClients(void)
 				p->buffer[0] = p->size & 0xFF;
 				p->buffer[1] = p->size >> 8;
 
-				send(s, p->buffer, p->size, 0);
+				send(s, (const char*)p->buffer, p->size, 0);
 				closesocket(s);
 
 				free(p);
@@ -750,7 +763,7 @@ static void NetworkAcceptClients(void)
 			p->buffer[0] = p->size & 0xFF;
 			p->buffer[1] = p->size >> 8;
 
-			send(s, p->buffer, p->size, 0);
+			send(s, (const char*)p->buffer, p->size, 0);
 			closesocket(s);
 
 			free(p);
@@ -1032,7 +1045,7 @@ bool NetworkServerStart(void)
 	_network_own_client_index = NETWORK_SERVER_INDEX;
 
 	/* Non-dedicated server will always be player #1 */
-	if (!_network_dedicated) _network_playas = 0;
+	if (!_network_dedicated) _network_playas = PLAYER_FIRST;
 
 	_network_clients_connected = 0;
 

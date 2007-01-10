@@ -5,6 +5,7 @@
 
 #include "station.h"
 #include "newgrf_config.h"
+#include "helpers.hpp"
 
 typedef enum GrfLoadingStage {
 	GLS_FILESCAN,
@@ -14,6 +15,9 @@ typedef enum GrfLoadingStage {
 	GLS_ACTIVATION,
 	GLS_END,
 } GrfLoadingStage;
+
+DECLARE_POSTFIX_INCREMENT(GrfLoadingStage);
+
 
 typedef struct GRFLabel {
 	byte label;

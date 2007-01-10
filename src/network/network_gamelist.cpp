@@ -6,6 +6,7 @@
 #include "../debug.h"
 #include "network_data.h"
 #include "../newgrf_config.h"
+#include "../helpers.hpp"
 
 // This file handles the GameList
 // Also, it handles the request to a server for data about the server
@@ -25,7 +26,7 @@ NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 		prev_item = item;
 	}
 
-	item = malloc(sizeof(*item));
+	MallocT(&item, 1);
 	memset(item, 0, sizeof(*item));
 	item->next = NULL;
 	item->ip = ip;

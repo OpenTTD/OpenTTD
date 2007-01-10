@@ -23,19 +23,19 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 			}
 
 		case MP_STATION:
-			if (!IsRoadStopTile(tile)) return 0;
+			if (!IsRoadStopTile(tile)) return ROAD_NONE;
 			return DiagDirToRoadBits(GetRoadStopDir(tile));
 
 		case MP_TUNNELBRIDGE:
 			if (IsTunnel(tile)) {
-				if (GetTunnelTransportType(tile) != TRANSPORT_ROAD) return 0;
+				if (GetTunnelTransportType(tile) != TRANSPORT_ROAD) return ROAD_NONE;
 				return DiagDirToRoadBits(ReverseDiagDir(GetTunnelDirection(tile)));
 			} else {
-				if (GetBridgeTransportType(tile) != TRANSPORT_ROAD) return 0;
+				if (GetBridgeTransportType(tile) != TRANSPORT_ROAD) return ROAD_NONE;
 				return DiagDirToRoadBits(ReverseDiagDir(GetBridgeRampDirection(tile)));
 			}
 
-		default: return 0;
+		default: return ROAD_NONE;
 	}
 }
 
@@ -46,9 +46,9 @@ TrackBits GetAnyRoadTrackBits(TileIndex tile)
 
 	// Don't allow local authorities to build roads through road depots or road stops.
 	if ((IsTileType(tile, MP_STREET) && IsTileDepotType(tile, TRANSPORT_ROAD)) || IsTileType(tile, MP_STATION)) {
-		return 0;
+		return TRACK_BIT_NONE;
 	}
 
 	r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
-	return (byte)(r | (r >> 8));
+	return (TrackBits)(byte)(r | (r >> 8));
 }

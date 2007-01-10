@@ -6,6 +6,8 @@
 #include "macros.h"
 #include "string.h"
 #include "order.h"
+#include "rail.h"
+#include "airport.h"
 
 typedef struct WindowEvent WindowEvent;
 
@@ -38,7 +40,7 @@ typedef void WindowProc(Window *w, WindowEvent *e);
      w->resize.width or w->resize.height.
    That was all.. good luck, and enjoy :) -- TrueLight */
 
-enum ResizeFlags {
+typedef enum ResizeFlags {
 	RESIZE_NONE   = 0,
 
 	RESIZE_LEFT   = 1,
@@ -77,11 +79,14 @@ typedef struct Widget {
 } Widget;
 
 typedef enum FrameFlags {
+	FR_NONE         = 0x00,
 	FR_TRANSPARENT  = 0x01,  ///< Makes the background transparent if set
 	FR_BORDERONLY   = 0x10,  ///< Draw border only, no background
 	FR_LOWERED      = 0x20,  ///< If set the frame is lowered and the background color brighter (ie. buttons when pressed)
 	FR_DARKENED     = 0x40,  ///< If set the background is darker, allows for lowered frames with normal background color when used with FR_LOWERED (ie. dropdown boxes)
 } FrameFlags;
+
+DECLARE_ENUM_AS_BIT_SET(FrameFlags);
 
 void DrawFrameRect(int left, int top, int right, int bottom, int color, FrameFlags flags);
 
@@ -165,9 +170,9 @@ struct WindowEvent {
 		} keypress;
 
 		struct {
-			uint msg;      // message to be sent
-			uint wparam;   // additional message-specific information
-			uint lparam;   // additional message-specific information
+			int msg;      // message to be sent
+			int wparam;   // additional message-specific information
+			int lparam;   // additional message-specific information
 		} message;
 
 		struct {
@@ -178,80 +183,6 @@ struct WindowEvent {
 			int wheel;     // how much was 'wheel'd'
 		} wheel;
 	} we;
-};
-
-enum WindowKeyCodes {
-	WKC_SHIFT = 0x8000,
-	WKC_CTRL  = 0x4000,
-	WKC_ALT   = 0x2000,
-	WKC_META  = 0x1000,
-
-	// Special ones
-	WKC_NONE        =  0,
-	WKC_ESC         =  1,
-	WKC_BACKSPACE   =  2,
-	WKC_INSERT      =  3,
-	WKC_DELETE      =  4,
-
-	WKC_PAGEUP      =  5,
-	WKC_PAGEDOWN    =  6,
-	WKC_END         =  7,
-	WKC_HOME        =  8,
-
-	// Arrow keys
-	WKC_LEFT        =  9,
-	WKC_UP          = 10,
-	WKC_RIGHT       = 11,
-	WKC_DOWN        = 12,
-
-	// Return & tab
-	WKC_RETURN      = 13,
-	WKC_TAB         = 14,
-
-	// Numerical keyboard
-	WKC_NUM_0       = 16,
-	WKC_NUM_1       = 17,
-	WKC_NUM_2       = 18,
-	WKC_NUM_3       = 19,
-	WKC_NUM_4       = 20,
-	WKC_NUM_5       = 21,
-	WKC_NUM_6       = 22,
-	WKC_NUM_7       = 23,
-	WKC_NUM_8       = 24,
-	WKC_NUM_9       = 25,
-	WKC_NUM_DIV     = 26,
-	WKC_NUM_MUL     = 27,
-	WKC_NUM_MINUS   = 28,
-	WKC_NUM_PLUS    = 29,
-	WKC_NUM_ENTER   = 30,
-	WKC_NUM_DECIMAL = 31,
-
-	// Space
-	WKC_SPACE       = 32,
-
-	// Function keys
-	WKC_F1          = 33,
-	WKC_F2          = 34,
-	WKC_F3          = 35,
-	WKC_F4          = 36,
-	WKC_F5          = 37,
-	WKC_F6          = 38,
-	WKC_F7          = 39,
-	WKC_F8          = 40,
-	WKC_F9          = 41,
-	WKC_F10         = 42,
-	WKC_F11         = 43,
-	WKC_F12         = 44,
-
-	// backquote is the key left of "1"
-	// we only store this key here, no matter what character is really mapped to it
-	// on a particular keyboard. (US keyboard: ` and ~ ; German keyboard: ^ and °)
-	WKC_BACKQUOTE   = 45,
-	WKC_PAUSE       = 46,
-
-	// 0-9 are mapped to 48-57
-	// A-Z are mapped to 65-90
-	// a-z are mapped to 97-122
 };
 
 typedef struct WindowDesc {
@@ -389,8 +320,8 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
 typedef struct {
 	byte vehicle_type;
 	union {
-		byte railtype;
-		byte acc_planes; // AIRCRAFT_ONLY, ALL, HELICOPTERS_ONLY
+		RailTypeByte railtype;
+		AcceptPlanesByte acc_planes; // AIRCRAFT_ONLY, ALL, HELICOPTERS_ONLY
 	} filter;
 	byte sel_index;  // deprecated value, used for 'unified' ship and road
 	bool descending_sort_order;
@@ -494,10 +425,14 @@ typedef struct {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(scroller_d));
 
 typedef enum SortListFlags {
+	VL_NONE    = 0x00,
 	VL_DESC    = 0x01,  // sort descending or ascending
 	VL_RESORT  = 0x02,  // instruct the code to resort the list in the next loop
-	VL_REBUILD = 0x04   // create sort-listing to use for qsort and friends
+	VL_REBUILD = 0x04,  // create sort-listing to use for qsort and friends
+	VL_END     = 0x08
 } SortListFlags;
+
+DECLARE_ENUM_AS_BIT_SET(SortListFlags);
 
 typedef struct Listing {
 	bool order;    // Ascending/descending
@@ -596,8 +531,8 @@ enum WindowFlags {
 void CallWindowEventNP(Window *w, int event);
 void CallWindowTickEvent(void);
 void SetWindowDirty(const Window *w);
-void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, uint wparam, uint lparam);
-void SendWindowMessageClass(WindowClass wnd_class, uint msg, uint wparam, uint lparam);
+void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, int msg, int wparam, int lparam);
+void SendWindowMessageClass(WindowClass wnd_class, int msg, int wparam, int lparam);
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 void DeleteWindow(Window *w);
@@ -775,9 +710,6 @@ void UnInitWindowSystem(void);
 void ResetWindowSystem(void);
 int GetMenuItemIndex(const Window *w, int x, int y);
 void InputLoop(void);
-void HandleKeypress(uint32 key);
-void HandleMouseEvents(void);
-void UpdateWindows(void);
 void InvalidateWidget(const Window *w, byte widget_index);
 void InvalidateThisWindowData(Window *w);
 void InvalidateWindowData(WindowClass cls, WindowNumber number);
@@ -815,12 +747,6 @@ extern Window **_last_z_window;
 #define FOR_ALL_WINDOWS(wz) for (wz = _z_windows; wz != _last_z_window; wz++)
 
 VARDEF Point _cursorpos_drag_start;
-
-VARDEF bool _left_button_down;
-VARDEF bool _left_button_clicked;
-
-VARDEF bool _right_button_down;
-VARDEF bool _right_button_clicked;
 
 VARDEF int _scrollbar_start_pos;
 VARDEF int _scrollbar_size;

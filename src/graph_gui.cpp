@@ -15,6 +15,7 @@
 #include "debug.h"
 #include "variables.h"
 #include "date.h"
+#include "helpers.hpp"
 
 const byte _cargo_colours[NUM_CARGO] = {152, 32, 15, 174, 208, 194, 191, 84, 184, 10, 202, 48};
 
@@ -65,7 +66,7 @@ static void DrawGraph(const GraphDrawer *gw)
 
 	/* the colors and cost array of GraphDrawer must accomodate
 	 * both values for cargo and players. So if any are higher, quit */
-	assert(GRAPH_NUM >= NUM_CARGO && GRAPH_NUM >= MAX_PLAYERS);
+	assert(GRAPH_NUM >= (int)NUM_CARGO && GRAPH_NUM >= (int)MAX_PLAYERS);
 
 	color = _colour_gradient[gw->bg_line_color][4];
 
@@ -118,7 +119,7 @@ static void DrawGraph(const GraphDrawer *gw)
 			col_ptr = row_ptr;
 			do {
 				if (*col_ptr != INVALID_VALUE) {
-					mx = max64(mx, myabs64(*col_ptr));
+					mx = max64(mx, *col_ptr);
 				}
 			} while (col_ptr++, --num_x);
 		}
@@ -906,11 +907,10 @@ void ShowCompanyLeagueTable(void)
 
 static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 {
-	static PlayerID _performance_rating_detail_player = 0;
+	static PlayerID _performance_rating_detail_player = PLAYER_FIRST;
 
 	switch (e->event) {
 		case WE_PAINT: {
-			int i;
 			byte x;
 			uint16 y = 14;
 			int total_score = 0;
@@ -920,7 +920,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			DrawWindowWidgets(w);
 
 			// Paint the player icons
-			for (i = 0; i < MAX_PLAYERS; i++) {
+			for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
 				if (!GetPlayer(i)->is_active) {
 					// Check if we have the player as an active player
 					if (!IsWindowWidgetDisabled(w, i + 13)) {
@@ -930,7 +930,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 						if (IsWindowWidgetLowered(w, i + 13)) {
 							RaiseWindowWidget(w, i + 13);
 							LowerWindowWidget(w, 13);
-							_performance_rating_detail_player = 0;
+							_performance_rating_detail_player = PLAYER_FIRST;
 						}
 						// We need a repaint
 						SetWindowDirty(w);
@@ -955,7 +955,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			color_notdone = _colour_gradient[COLOUR_RED][4];
 
 			// Draw all the score parts
-			for (i = 0; i < NUM_SCORE; i++) {
+			for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) {
 				int val    = _score_part[_performance_rating_detail_player][i];
 				int needed = _score_info[i].needed;
 				int score  = _score_info[i].score;
@@ -1030,7 +1030,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 				// Is it no on disable?
 				if (!IsWindowWidgetDisabled(w, e->we.click.widget)) {
 					RaiseWindowWidget(w, _performance_rating_detail_player + 13);
-					_performance_rating_detail_player = e->we.click.widget - 13;
+					_performance_rating_detail_player = (PlayerID)(e->we.click.widget - 13);
 					LowerWindowWidget(w, _performance_rating_detail_player + 13);
 					SetWindowDirty(w);
 				}
@@ -1038,11 +1038,11 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_CREATE: {
-			int i;
+			PlayerID i;
 			Player *p2;
 
 			/* Disable the players who are not active */
-			for (i = 0; i < MAX_PLAYERS; i++) {
+			for (i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
 				SetWindowWidgetDisabledState(w, i + 13, !GetPlayer(i)->is_active);
 			}
 			/* Update all player stats with the current data
@@ -1054,7 +1054,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			w->custom[0] = DAY_TICKS;
 			w->custom[1] = 5;
 
-			_performance_rating_detail_player = 0;
+			_performance_rating_detail_player = PLAYER_FIRST;
 			LowerWindowWidget(w, _performance_rating_detail_player + 13);
 			SetWindowDirty(w);
 
@@ -1151,7 +1151,7 @@ static void GlobalSortSignList(void)
 	uint n = 0;
 
 	/* Create array for sorting */
-	_sign_sort = realloc((void *)_sign_sort, (GetMaxSignIndex() + 1)* sizeof(_sign_sort[0]));
+	ReallocT(&_sign_sort, GetMaxSignIndex() + 1);
 	if (_sign_sort == NULL) error("Could not allocate memory for the sign-sorting-list");
 
 	FOR_ALL_SIGNS(si) _sign_sort[n++] = si;

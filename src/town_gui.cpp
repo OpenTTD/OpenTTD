@@ -16,6 +16,7 @@
 #include "player.h"
 #include "network/network.h"
 #include "variables.h"
+#include "helpers.hpp"
 
 static const Widget _town_authority_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
@@ -409,7 +410,7 @@ static void MakeSortedTownList(void)
 	uint n = 0;
 
 	/* Create array for sorting */
-	_town_sort = realloc((void*)_town_sort, (GetMaxTownIndex() + 1) * sizeof(_town_sort[0]));
+	ReallocT(&_town_sort, GetMaxTownIndex() + 1);
 	if (_town_sort == NULL) error("Could not allocate memory for the town-sorting-list");
 
 	FOR_ALL_TOWNS(t) _town_sort[n++] = t;

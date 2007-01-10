@@ -67,13 +67,6 @@ static inline TileIndex TileVirtXY(uint x, uint y)
 	return (y >> 4 << MapLogX()) + (x >> 4);
 }
 
-typedef byte Owner;
-enum Owners {
-	OWNER_TOWN      = 0x0F, // a town owns the tile
-	OWNER_NONE      = 0x10, // nobody owns the tile
-	OWNER_WATER     = 0x11, // "water" owns the tile
-	OWNER_END       = 0x12,
-};
 
 enum {
 	INVALID_TILE = (TileIndex)-1

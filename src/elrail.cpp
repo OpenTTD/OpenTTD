@@ -67,7 +67,7 @@
 
 static inline TLG GetTLG(TileIndex t)
 {
-	return (HASBIT(TileX(t), 0) << 1) + HASBIT(TileY(t), 0);
+	return (TLG)((HASBIT(TileX(t), 0) << 1) + HASBIT(TileY(t), 0));
 }
 
 /** Finds which Rail Bits are present on a given tile. For bridge tiles,
@@ -77,24 +77,24 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 {
 	switch (GetTileType(t)) {
 		case MP_RAILWAY:
-			if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
+			if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
 			switch (GetRailTileType(t)) {
 				case RAIL_TILE_NORMAL: case RAIL_TILE_SIGNALS:
 					return GetTrackBits(t);
 				case RAIL_TILE_DEPOT_WAYPOINT:
 					if (GetRailTileSubtype(t) == RAIL_SUBTYPE_WAYPOINT) return GetRailWaypointBits(t);
 				default:
-					return 0;
+					return TRACK_BIT_NONE;
 			}
 			break;
 
 		case MP_TUNNELBRIDGE:
 			if (IsTunnel(t)) {
-				if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
+				if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
 				if (override != NULL) *override = 1 << GetTunnelDirection(t);
 				return AxisToTrackBits(DiagDirToAxis(GetTunnelDirection(t)));
 			} else {
-				if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
+				if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
 				if (override != NULL && DistanceMax(t, GetOtherBridgeEnd(t)) > 1) {
 					*override = 1 << GetBridgeRampDirection(t);
 				}
@@ -102,18 +102,18 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 			}
 
 		case MP_STREET:
-			if (GetRoadTileType(t) != ROAD_TILE_CROSSING) return 0;
-			if (GetRailTypeCrossing(t) != RAILTYPE_ELECTRIC) return 0;
+			if (GetRoadTileType(t) != ROAD_TILE_CROSSING) return TRACK_BIT_NONE;
+			if (GetRailTypeCrossing(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
 			return GetCrossingRailBits(t);
 
 		case MP_STATION:
-			if (!IsRailwayStation(t)) return 0;
-			if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
-			if (!IsStationTileElectrifiable(t)) return 0;
+			if (!IsRailwayStation(t)) return TRACK_BIT_NONE;
+			if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
+			if (!IsStationTileElectrifiable(t)) return TRACK_BIT_NONE;
 			return TrackToTrackBits(GetRailStationTrack(t));
 
 		default:
-			return 0;
+			return TRACK_BIT_NONE;
 	}
 }
 
@@ -171,7 +171,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	 *    which have no middle tiles */
 	trackconfig[TS_HOME] = GetRailTrackBitsUniversal(ti->tile, &OverridePCP);
 	/* If a track bit is present that is not in the main direction, the track is level */
-	isflat[TS_HOME] = trackconfig[TS_HOME] & (TRACK_BIT_HORZ | TRACK_BIT_VERT);
+	isflat[TS_HOME] = ((trackconfig[TS_HOME] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
 
 	AdjustTileh(ti->tile, &tileh[TS_HOME]);
 
@@ -184,8 +184,8 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		 * existing foundataions, so we do have to do that manually later on.*/
 		tileh[TS_NEIGHBOUR] = GetTileSlope(neighbour, NULL);
 		trackconfig[TS_NEIGHBOUR] = GetRailTrackBitsUniversal(neighbour, NULL);
-		if (IsTunnelTile(neighbour) && i != GetTunnelDirection(neighbour)) trackconfig[TS_NEIGHBOUR] = 0;
-		isflat[TS_NEIGHBOUR] = trackconfig[TS_NEIGHBOUR] & (TRACK_BIT_HORZ | TRACK_BIT_VERT);
+		if (IsTunnelTile(neighbour) && i != GetTunnelDirection(neighbour)) trackconfig[TS_NEIGHBOUR] = TRACK_BIT_NONE;
+		isflat[TS_NEIGHBOUR] = ((trackconfig[TS_NEIGHBOUR] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
 
 		PPPpreferred[i] = 0xFF; /* We start with preferring everything (end-of-line in any direction) */
 		PPPallowed[i] = AllowedPPPonPCP[i];
@@ -289,7 +289,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	}
 
 	/* Drawing of pylons is finished, now draw the wires */
-	for (t = 0; t < TRACK_END; t++) {
+	for (t = TRACK_BEGIN; t < TRACK_END; t++) {
 		if (HASBIT(trackconfig[TS_HOME], t)) {
 
 			byte PCPconfig = HASBIT(PCPstatus, PCPpositions[t][0]) +
@@ -321,7 +321,7 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 	Axis axis = GetBridgeAxis(ti->tile);
 	TLG tlg = GetTLG(ti->tile);
 
-	CatenarySprite offset = axis == AXIS_X ? 0 : WIRE_Y_FLAT_BOTH - WIRE_X_FLAT_BOTH;
+	CatenarySprite offset = (CatenarySprite)(axis == AXIS_X ? 0 : WIRE_Y_FLAT_BOTH - WIRE_X_FLAT_BOTH);
 
 	if ((length % 2) && num == length) {
 		/* Draw the "short" wire on the southern end of the bridge

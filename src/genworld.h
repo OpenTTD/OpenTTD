@@ -34,7 +34,7 @@ typedef struct gw_info {
 	bool quit_thread;      //! Do we want to quit the active thread
 	bool threaded;         //! Whether we run _GenerateWorld threaded
 	int mode;              //! What mode are we making a world in
-	byte lp;               //! The local_player before generating
+	PlayerID lp;               //! The local_player before generating
 	uint size_x;           //! X-size of the map
 	uint size_y;           //! Y-size of the map
 	gw_done_proc *proc;    //! Proc that is called when done (can be NULL)
@@ -84,8 +84,8 @@ bool IsGeneratingWorldAborted(void);
 void HandleGeneratingWorldAbortion(void);
 
 /* genworld_gui.c */
-void SetGeneratingWorldProgress(gwp_class class, uint total);
-void IncreaseGeneratingWorldProgress(gwp_class class);
+void SetGeneratingWorldProgress(gwp_class cls, uint total);
+void IncreaseGeneratingWorldProgress(gwp_class cls);
 void PrepareGenerateWorldProgress(void);
 void ShowGenerateWorldProgress(void);
 void StartNewGameWithoutGUI(uint seed);

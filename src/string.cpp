@@ -6,6 +6,7 @@
 #include "string.h"
 #include "macros.h"
 #include "table/control_codes.h"
+#include "helpers.hpp"
 
 #include <stdarg.h>
 #include <ctype.h> // required for tolower()
@@ -63,7 +64,7 @@ char* CDECL str_fmt(const char* str, ...)
 	va_start(va, str);
 	len = vsnprintf(buf, lengthof(buf), str, va);
 	va_end(va);
-	p = malloc(len + 1);
+	MallocT(&p, len + 1);
 	if (p != NULL) memcpy(p, buf, len + 1);
 	return p;
 }

@@ -161,220 +161,220 @@
 			Name="Source Files"
 			Filter="">
 			<File
-				RelativePath=".\..\src\airport.c">
+				RelativePath=".\..\src\airport.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\aystar.c">
+				RelativePath=".\..\src\aystar.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\bmp.c">
+				RelativePath=".\..\src\bmp.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\callback_table.c">
+				RelativePath=".\..\src\callback_table.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\command.c">
+				RelativePath=".\..\src\command.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\console.c">
+				RelativePath=".\..\src\console.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\console_cmds.c">
+				RelativePath=".\..\src\console_cmds.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\currency.c">
+				RelativePath=".\..\src\currency.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\date.c">
+				RelativePath=".\..\src\date.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\debug.c">
+				RelativePath=".\..\src\debug.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\dedicated.c">
+				RelativePath=".\..\src\dedicated.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\depot.c">
+				RelativePath=".\..\src\depot.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\driver.c">
+				RelativePath=".\..\src\driver.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\economy.c">
+				RelativePath=".\..\src\economy.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\elrail.c">
+				RelativePath=".\..\src\elrail.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\engine.c">
+				RelativePath=".\..\src\engine.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\fileio.c">
+				RelativePath=".\..\src\fileio.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\fios.c">
+				RelativePath=".\..\src\fios.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\fontcache.c">
+				RelativePath=".\..\src\fontcache.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\genworld.c">
+				RelativePath=".\..\src\genworld.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\gfx.c">
+				RelativePath=".\..\src\gfx.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\gfxinit.c">
+				RelativePath=".\..\src\gfxinit.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\heightmap.c">
+				RelativePath=".\..\src\heightmap.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\helpers.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\landscape.c">
+				RelativePath=".\..\src\landscape.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\map.c">
+				RelativePath=".\..\src\map.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\md5.c">
+				RelativePath=".\..\src\md5.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\mersenne.c">
+				RelativePath=".\..\src\mersenne.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\minilzo.c">
+				RelativePath=".\..\src\minilzo.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\misc.c">
+				RelativePath=".\..\src\misc.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\mixer.c">
+				RelativePath=".\..\src\mixer.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\music.c">
+				RelativePath=".\..\src\music.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\namegen.c">
+				RelativePath=".\..\src\namegen.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\core\core.c">
+				RelativePath=".\..\src\network\core\core.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\core\packet.c">
+				RelativePath=".\..\src\network\core\packet.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\core\tcp.c">
+				RelativePath=".\..\src\network\core\tcp.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\core\udp.c">
+				RelativePath=".\..\src\network\core\udp.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\network.c">
+				RelativePath=".\..\src\network\network.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\network_client.c">
+				RelativePath=".\..\src\network\network_client.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\network_data.c">
+				RelativePath=".\..\src\network\network_data.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\network_gamelist.c">
+				RelativePath=".\..\src\network\network_gamelist.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\network_server.c">
+				RelativePath=".\..\src\network\network_server.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\network_udp.c">
+				RelativePath=".\..\src\network\network_udp.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\npf.c">
+				RelativePath=".\..\src\npf.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\oldloader.c">
+				RelativePath=".\..\src\oldloader.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\oldpool.c">
+				RelativePath=".\..\src\oldpool.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\openttd.c">
+				RelativePath=".\..\src\openttd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\os_timer.c">
+				RelativePath=".\..\src\os_timer.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\ottdres.rc">
 			</File>
 			<File
-				RelativePath=".\..\src\pathfind.c">
+				RelativePath=".\..\src\pathfind.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\players.c">
+				RelativePath=".\..\src\players.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\queue.c">
+				RelativePath=".\..\src\queue.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\rail.c">
+				RelativePath=".\..\src\rail.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\saveload.c">
+				RelativePath=".\..\src\saveload.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\screenshot.c">
+				RelativePath=".\..\src\screenshot.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\sdl.c">
+				RelativePath=".\..\src\sdl.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\settings.c">
+				RelativePath=".\..\src\settings.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\signs.c">
+				RelativePath=".\..\src\signs.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\sound.c">
+				RelativePath=".\..\src\sound.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\spritecache.c">
+				RelativePath=".\..\src\spritecache.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\string.c">
+				RelativePath=".\..\src\string.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\strings.c">
+				RelativePath=".\..\src\strings.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\texteff.c">
+				RelativePath=".\..\src\texteff.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\tgp.c">
+				RelativePath=".\..\src\tgp.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\thread.c">
+				RelativePath=".\..\src\thread.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\tile.c">
+				RelativePath=".\..\src\tile.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\vehicle.c">
+				RelativePath=".\..\src\vehicle.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\viewport.c">
+				RelativePath=".\..\src\viewport.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\waypoint.c">
+				RelativePath=".\..\src\waypoint.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\widget.c">
+				RelativePath=".\..\src\widget.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\win32.c">
+				RelativePath=".\..\src\win32.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\window.c">
+				RelativePath=".\..\src\window.cpp">
 			</File>
 		</Filter>
 		<Filter
@@ -664,155 +664,155 @@
 			Name="GUI Source Code"
 			Filter="">
 			<File
-				RelativePath=".\..\src\aircraft_gui.c">
+				RelativePath=".\..\src\aircraft_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\airport_gui.c">
+				RelativePath=".\..\src\airport_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\bridge_gui.c">
+				RelativePath=".\..\src\bridge_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\build_vehicle_gui.c">
+				RelativePath=".\..\src\build_vehicle_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\depot_gui.c">
+				RelativePath=".\..\src\depot_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\dock_gui.c">
+				RelativePath=".\..\src\dock_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\engine_gui.c">
+				RelativePath=".\..\src\engine_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\genworld_gui.c">
+				RelativePath=".\..\src\genworld_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\graph_gui.c">
+				RelativePath=".\..\src\graph_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\industry_gui.c">
+				RelativePath=".\..\src\industry_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\intro_gui.c">
+				RelativePath=".\..\src\intro_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\main_gui.c">
+				RelativePath=".\..\src\main_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\misc_gui.c">
+				RelativePath=".\..\src\misc_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\music_gui.c">
+				RelativePath=".\..\src\music_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\network_gui.c">
+				RelativePath=".\..\src\network\network_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\newgrf_gui.c">
+				RelativePath=".\..\src\newgrf_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\news_gui.c">
+				RelativePath=".\..\src\news_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\order_gui.c">
+				RelativePath=".\..\src\order_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\player_gui.c">
+				RelativePath=".\..\src\player_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\rail_gui.c">
+				RelativePath=".\..\src\rail_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\road_gui.c">
+				RelativePath=".\..\src\road_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\roadveh_gui.c">
+				RelativePath=".\..\src\roadveh_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\settings_gui.c">
+				RelativePath=".\..\src\settings_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\ship_gui.c">
+				RelativePath=".\..\src\ship_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\smallmap_gui.c">
+				RelativePath=".\..\src\smallmap_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\station_gui.c">
+				RelativePath=".\..\src\station_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\subsidy_gui.c">
+				RelativePath=".\..\src\subsidy_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\terraform_gui.c">
+				RelativePath=".\..\src\terraform_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\town_gui.c">
+				RelativePath=".\..\src\town_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\train_gui.c">
+				RelativePath=".\..\src\train_gui.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\vehicle_gui.c">
+				RelativePath=".\..\src\vehicle_gui.cpp">
 			</File>
 		</Filter>
 		<Filter
 			Name="Landscape"
 			Filter="">
 			<File
-				RelativePath=".\..\src\aircraft_cmd.c">
+				RelativePath=".\..\src\aircraft_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\clear_cmd.c">
+				RelativePath=".\..\src\clear_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\disaster_cmd.c">
+				RelativePath=".\..\src\disaster_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\dummy_land.c">
+				RelativePath=".\..\src\dummy_land.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\industry_cmd.c">
+				RelativePath=".\..\src\industry_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\misc_cmd.c">
+				RelativePath=".\..\src\misc_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\order_cmd.c">
+				RelativePath=".\..\src\order_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\rail_cmd.c">
+				RelativePath=".\..\src\rail_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\road_cmd.c">
+				RelativePath=".\..\src\road_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\roadveh_cmd.c">
+				RelativePath=".\..\src\roadveh_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\ship_cmd.c">
+				RelativePath=".\..\src\ship_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\station_cmd.c">
+				RelativePath=".\..\src\station_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\town_cmd.c">
+				RelativePath=".\..\src\town_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\train_cmd.c">
+				RelativePath=".\..\src\train_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\tree_cmd.c">
+				RelativePath=".\..\src\tree_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\tunnelbridge_cmd.c">
+				RelativePath=".\..\src\tunnelbridge_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\unmovable_cmd.c">
+				RelativePath=".\..\src\unmovable_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\water_cmd.c">
+				RelativePath=".\..\src\water_cmd.cpp">
 			</File>
 		</Filter>
 		<Filter
@@ -901,57 +901,57 @@
 			Name="AI Files"
 			Filter="">
 			<File
-				RelativePath=".\..\src\ai\ai.c">
+				RelativePath=".\..\src\ai\ai.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\ai\default\default.c">
+				RelativePath=".\..\src\ai\default\default.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\ai\trolly\build.c">
+				RelativePath=".\..\src\ai\trolly\build.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\ai\trolly\pathfinder.c">
+				RelativePath=".\..\src\ai\trolly\pathfinder.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\ai\trolly\shared.c">
+				RelativePath=".\..\src\ai\trolly\shared.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\ai\trolly\trolly.c">
+				RelativePath=".\..\src\ai\trolly\trolly.cpp">
 			</File>
 		</Filter>
 		<Filter
 			Name="NewGRF"
 			Filter="">
 			<File
-				RelativePath=".\..\src\newgrf.c">
+				RelativePath=".\..\src\newgrf.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\newgrf_cargo.c">
+				RelativePath=".\..\src\newgrf_cargo.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\newgrf_config.c">
+				RelativePath=".\..\src\newgrf_config.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\newgrf_engine.c">
+				RelativePath=".\..\src\newgrf_engine.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\newgrf_sound.c">
+				RelativePath=".\..\src\newgrf_sound.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\newgrf_spritegroup.c">
+				RelativePath=".\..\src\newgrf_spritegroup.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\newgrf_station.c">
+				RelativePath=".\..\src\newgrf_station.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\newgrf_text.c">
+				RelativePath=".\..\src\newgrf_text.cpp">
 			</File>
 		</Filter>
 		<Filter
 			Name="Map Accessors"
 			Filter="">
 			<File
-				RelativePath=".\..\src\bridge_map.c">
+				RelativePath=".\..\src\bridge_map.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\bridge_map.h">
@@ -966,13 +966,13 @@
 				RelativePath=".\..\src\rail_map.h">
 			</File>
 			<File
-				RelativePath=".\..\src\road_map.c">
+				RelativePath=".\..\src\road_map.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\road_map.h">
 			</File>
 			<File
-				RelativePath=".\..\src\station_map.c">
+				RelativePath=".\..\src\station_map.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\station_map.h">
@@ -984,7 +984,7 @@
 				RelativePath=".\..\src\tree_map.h">
 			</File>
 			<File
-				RelativePath=".\..\src\tunnel_map.c">
+				RelativePath=".\..\src\tunnel_map.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\tunnel_map.h">
@@ -1091,16 +1091,16 @@
 			Name="Video"
 			Filter="">
 			<File
-				RelativePath=".\..\src\video\dedicated_v.c">
+				RelativePath=".\..\src\video\dedicated_v.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\video\null_v.c">
+				RelativePath=".\..\src\video\null_v.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\video\sdl_v.c">
+				RelativePath=".\..\src\video\sdl_v.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\video\win32_v.c">
+				RelativePath=".\..\src\video\win32_v.cpp">
 			</File>
 		</Filter>
 		<Filter
@@ -1110,23 +1110,23 @@
 				RelativePath=".\..\src\music\dmusic.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\music\null_m.c">
+				RelativePath=".\..\src\music\null_m.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\music\win32_m.c">
+				RelativePath=".\..\src\music\win32_m.cpp">
 			</File>
 		</Filter>
 		<Filter
 			Name="Sound"
 			Filter="">
 			<File
-				RelativePath=".\..\src\sound\null_s.c">
+				RelativePath=".\..\src\sound\null_s.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\sound\sdl_s.c">
+				RelativePath=".\..\src\sound\sdl_s.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\sound\win32_s.c">
+				RelativePath=".\..\src\sound\win32_s.cpp">
 			</File>
 		</Filter>
 		<File

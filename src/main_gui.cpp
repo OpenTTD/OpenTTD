@@ -215,12 +215,12 @@ static void MenuClickSubsidies(int index)
 
 static void MenuClickStations(int index)
 {
-	ShowPlayerStations(index);
+	ShowPlayerStations((PlayerID)index);
 }
 
 static void MenuClickFinances(int index)
 {
-	ShowPlayerFinances(index);
+	ShowPlayerFinances((PlayerID)index);
 }
 
 static void MenuClickCompany(int index)
@@ -229,7 +229,7 @@ static void MenuClickCompany(int index)
 		ShowClientList();
 	} else {
 		if (_networking) index--;
-		ShowPlayerCompany(index);
+		ShowPlayerCompany((PlayerID)index);
 	}
 }
 
@@ -263,27 +263,27 @@ static void MenuClickIndustry(int index)
 
 static void MenuClickShowTrains(int index)
 {
-	ShowVehicleListWindow(index, INVALID_STATION, VEH_Train);
+	ShowVehicleListWindow((PlayerID)index, INVALID_STATION, VEH_Train);
 }
 
 static void MenuClickShowRoad(int index)
 {
-	ShowVehicleListWindow(index, INVALID_STATION, VEH_Road);
+	ShowVehicleListWindow((PlayerID)index, INVALID_STATION, VEH_Road);
 }
 
 static void MenuClickShowShips(int index)
 {
-	ShowVehicleListWindow(index, INVALID_STATION, VEH_Ship);
+	ShowVehicleListWindow((PlayerID)index, INVALID_STATION, VEH_Ship);
 }
 
 static void MenuClickShowAir(int index)
 {
-	ShowVehicleListWindow(index, INVALID_STATION, VEH_Aircraft);
+	ShowVehicleListWindow((PlayerID)index, INVALID_STATION, VEH_Aircraft);
 }
 
 static void MenuClickBuildRail(int index)
 {
-	_last_built_railtype = index;
+	_last_built_railtype = (RailType)index;
 	ShowBuildRailToolbar(_last_built_railtype, -1);
 }
 
@@ -1564,7 +1564,7 @@ static bool AnyTownExists(void)
 	return false;
 }
 
-extern Industry *CreateNewIndustry(TileIndex tile, int type);
+extern Industry *CreateNewIndustry(TileIndex tile, IndustryType type);
 
 /**
  * Search callback function for TryBuildIndustry
@@ -2283,7 +2283,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 			case '1' | WKC_ALT: /* Gimme money */
 				/* Server can not cheat in advertise mode either! */
 				if (!_networking || !_network_server || !_network_advertise)
-					DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
+					DoCommandP(0, 10000000, 0, NULL, CMD_MONEY_CHEAT);
 				break;
 
 			case '2' | WKC_ALT: /* Update the coordinates of all station signs */
@@ -2430,7 +2430,7 @@ void GameSizeChanged(void)
 void InitializeMainGui(void)
 {
 	/* Clean old GUI values */
-	_last_built_railtype = 0;
+	_last_built_railtype = RAILTYPE_RAIL;
 }
 
 

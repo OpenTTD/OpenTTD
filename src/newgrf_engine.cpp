@@ -17,6 +17,7 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_cargo.h"
 #include "date.h"
+#include "helpers.hpp"
 
 
 
@@ -82,8 +83,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 
 	wos = &_engine_wagon_overrides[engine];
 	wos->overrides_count++;
-	wos->overrides = realloc(wos->overrides,
-		wos->overrides_count * sizeof(*wos->overrides));
+	ReallocT(&wos->overrides, wos->overrides_count);
 
 	wo = &wos->overrides[wos->overrides_count - 1];
 	/* FIXME: If we are replacing an override, release original SpriteGroup
@@ -92,7 +92,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 	wo->group = group;
 	wo->cargo = cargo;
 	wo->trains = trains;
-	wo->train_id = malloc(trains);
+	MallocT(&wo->train_id, trains);
 	memcpy(wo->train_id, train_id, trains);
 }
 
@@ -563,7 +563,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		}
 
 		*available = false;
-		return -1;
+		return UINT_MAX;
 	}
 
 	/* Calculated vehicle parameters */
@@ -628,7 +628,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			return v->owner;
 
 		case 0x44: /* Aircraft information */
-			if (v->type != VEH_Aircraft) return -1;
+			if (v->type != VEH_Aircraft) return UINT_MAX;
 
 			{
 				const Vehicle *w = v->next;
@@ -806,7 +806,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 	DEBUG(grf, 1, "Unhandled vehicle property 0x%X, type 0x%X", variable, v->type);
 
 	*available = false;
-	return -1;
+	return UINT_MAX;
 }
 
 

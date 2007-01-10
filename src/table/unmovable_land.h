@@ -10,7 +10,7 @@ typedef struct DrawTileUnmovableStruct {
 	byte unused;
 } DrawTileUnmovableStruct;
 
-#define TILE_SEQ_END() { 0x80, 0, 0, 0, 0, 0, 0 }
+#define TILE_SEQ_END() { (byte)0x80, 0, 0, 0, 0, 0, 0 }
 
 static const DrawTileUnmovableStruct _draw_tile_unmovable_data[] = {
 	{0xA29, 7, 7, 2, 2, 70, 0},

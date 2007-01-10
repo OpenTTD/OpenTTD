@@ -18,6 +18,7 @@
 #include "vehicle_gui.h"
 #include "date.h"
 #include "vehicle.h"
+#include "helpers.hpp"
 
 enum StationListWidgets {
 	STATIONLIST_WIDGET_CLOSEBOX = 0,
@@ -156,6 +157,8 @@ typedef enum StationListFlags {
 	SL_REBUILD = 0x04,
 } StationListFlags;
 
+DECLARE_ENUM_AS_BIT_SET(StationListFlags);
+
 typedef struct plstations_d {
 	const Station** sort_list;
 	uint16 list_length;
@@ -201,7 +204,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 	if (!(sl->flags & SL_REBUILD)) return;
 
 	/* Create array for sorting */
-	station_sort = malloc((GetMaxStationIndex() + 1) * sizeof(station_sort[0]));
+	MallocT(&station_sort, GetMaxStationIndex() + 1);
 	if (station_sort == NULL) error("Could not allocate memory for the station-sorting-list");
 
 	DEBUG(misc, 3, "Building station list for player %d", owner);
@@ -228,7 +231,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 	}
 
 	free((void*)sl->sort_list);
-	sl->sort_list = malloc(n * sizeof(sl->sort_list[0]));
+	MallocT(&sl->sort_list, n);
 	if (n != 0 && sl->sort_list == NULL) error("Could not allocate memory for the station-sorting-list");
 	sl->list_length = n;
 
@@ -260,7 +263,7 @@ static void SortStationsList(plstations_d *sl)
 
 static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 {
-	const PlayerID owner = w->window_number;
+	const PlayerID owner = (PlayerID)w->window_number;
 	static byte facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 	static uint16 cargo_filter = CARGO_ALL_SELECTED;
 	plstations_d *sl = &WP(w, plstations_d);
@@ -432,7 +435,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 		case STATIONLIST_WIDGET_SORTBY: /*flip sorting method asc/desc*/
-			TOGGLEBIT(sl->flags, 0); //DESC-flag
+			sl->flags ^= SL_ORDER; //DESC-flag
 			sl->flags |= SL_RESORT;
 			w->flags4 |= 5 << WF_TIMEOUT_SHL;
 			LowerWindowWidget(w, STATIONLIST_WIDGET_SORTBY);
@@ -477,7 +480,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		if (--sl->resort_timer == 0) {
 			DEBUG(misc, 3, "Periodic rebuild station list player %d", owner);
 			sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-			sl->flags |= VL_REBUILD;
+			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
 		}
 		break;

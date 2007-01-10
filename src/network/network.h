@@ -59,7 +59,7 @@ typedef struct NetworkClientInfo {
 	uint16 client_index;                            // Index of the client (same as ClientState->index)
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];   // Name of the client
 	byte client_lang;                               // The language of the client
-	byte client_playas;                             // As which player is this client playing (PlayerID)
+	PlayerID client_playas;                         // As which player is this client playing (PlayerID)
 	uint32 client_ip;                               // IP-address of the client (so he can be banned)
 	Date join_date;                                 // Gamedate the player has joined
 	char unique_id[NETWORK_NAME_LENGTH];            // Every play sends an unique id so we can indentify him
@@ -188,7 +188,6 @@ bool NetworkClientConnectGame(const char *host, uint16 port);
 void NetworkReboot(void);
 void NetworkDisconnect(void);
 
-VARDEF bool _networking;         ///< are we in networking mode?
 VARDEF bool _network_server;     ///< network-server is active
 VARDEF bool _network_available;  ///< is network mode available?
 

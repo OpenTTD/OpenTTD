@@ -11,6 +11,7 @@
 #include "table/sprites.h"
 #include "newgrf.h"
 #include "newgrf_config.h"
+#include "helpers.hpp"
 
 
 /** Parse an integerlist string and set each found value
@@ -164,7 +165,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 						}
 
 						/* Copy GRF details from scanned list */
-						c = calloc(1, sizeof(*c));
+						CallocT(&c, 1);
 						*c = *src;
 						c->filename = strdup(src->filename);
 						if (src->name != NULL) c->name = strdup(src->name);

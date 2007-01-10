@@ -38,7 +38,7 @@ DEFINE_OLD_POOL(Order, Order, OrderPoolNewBlock, NULL)
 Order UnpackOldOrder(uint16 packed)
 {
 	Order order;
-	order.type    = GB(packed, 0, 4);
+	order.type    = (OrderType)GB(packed, 0, 4);
 	order.flags   = GB(packed, 4, 4);
 	order.dest    = GB(packed, 8, 8);
 	order.next    = NULL;
@@ -65,7 +65,7 @@ Order UnpackOldOrder(uint16 packed)
 static Order UnpackVersion4Order(uint16 packed)
 {
 	Order order;
-	order.type  = GB(packed, 0, 4);
+	order.type  = (OrderType)GB(packed, 0, 4);
 	order.flags = GB(packed, 4, 4);
 	order.dest  = GB(packed, 8, 8);
 	order.next  = NULL;
@@ -359,12 +359,12 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		Vehicle *u;
-		Order *new = AllocateOrder();
-		AssignOrder(new, new_order);
+		Order *new_o = AllocateOrder();
+		AssignOrder(new_o, new_order);
 
 		/* Create new order and link in list */
 		if (v->orders == NULL) {
-			v->orders = new;
+			v->orders = new_o;
 		} else {
 			/* Try to get the previous item (we are inserting above the
 			    selected) */
@@ -375,17 +375,17 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				    But because the orders can be shared, we copy the info over
 				    the v->orders, so we don't have to change the pointers of
 				    all vehicles */
-				SwapOrders(v->orders, new);
+				SwapOrders(v->orders, new_o);
 				/* Now update the next pointers */
-				v->orders->next = new;
+				v->orders->next = new_o;
 			} else if (order == NULL) {
 				/* 'sel' is a non-existing order, add him to the end */
 				order = GetLastVehicleOrder(v);
-				order->next = new;
+				order->next = new_o;
 			} else {
 				/* Put the new order in between */
-				new->next = order->next;
-				order->next = new;
+				new_o->next = order->next;
+				order->next = new_o;
 			}
 		}
 
@@ -616,7 +616,7 @@ int32 CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				 * whether we are not going to a depot as there are three
 				 * cases where the full load flag can be active and only
 				 * one case where the flag is used for depot orders. In the
-				 * other cases for the OrderType the flags are not used,
+				 * other cases for the OrderTypeByte the flags are not used,
 				 * so do not care and those orders should not be active
 				 * when this function is called.
 				 */
@@ -1273,6 +1273,6 @@ static void Load_ORDR(void)
 	}
 }
 
-const ChunkHandler _order_chunk_handlers[] = {
+extern const ChunkHandler _order_chunk_handlers[] = {
 	{ 'ORDR', Save_ORDR, Load_ORDR, CH_ARRAY | CH_LAST},
 };

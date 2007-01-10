@@ -9,31 +9,42 @@
  * with the SLE_ (SLE_VAR/SLE_FILE) enums in saveload.h
  * @see VarTypes
  * @see SettingDescBase */
-enum SettingDescType {
+enum SettingDescTypeLong {
 	/* 4 bytes allocated a maximum of 16 types for GenericType */
+	SDT_BEGIN       = 0,
 	SDT_NUMX        = 0, // any number-type
 	SDT_BOOLX       = 1, // a boolean number
 	SDT_ONEOFMANY   = 2, // bitmasked number where only ONE bit may be set
 	SDT_MANYOFMANY  = 3, // bitmasked number where MULTIPLE bits may be set
 	SDT_INTLIST     = 4, // list of integers seperated by a comma ','
 	SDT_STRING      = 5, // string with a pre-allocated buffer
+	SDT_END,
 	/* 10 more possible primitives */
 };
 
-enum SettingGuiFlag {
+template <> struct EnumPropsT<SettingDescTypeLong> : MakeEnumPropsT<SettingDescTypeLong, byte, SDT_BEGIN, SDT_END, SDT_END> {};
+typedef TinyEnumT<SettingDescTypeLong> SettingDescType;
+
+
+enum SettingGuiFlagLong {
 	/* 8 bytes allocated for a maximum of 8 flags
 	 * Flags directing saving/loading of a variable */
+	SGF_NONE = 0,
 	SGF_0ISDISABLED  = 1 << 0, ///< a value of zero means the feature is disabled
 	SGF_NOCOMMA      = 1 << 1, ///< number without any thousand seperators (no formatting)
 	SGF_MULTISTRING  = 1 << 2, ///< the value represents a limited number of string-options (internally integer)
 	SGF_NETWORK_ONLY = 1 << 3, ///< this setting only applies to network games
 	SGF_CURRENCY     = 1 << 4, ///< the number represents money, so when reading value multiply by exchange rate
+	SGF_END          = 1 << 5,
 	/* 3 more possible flags */
 };
 
+DECLARE_ENUM_AS_BIT_SET(SettingGuiFlagLong);
+template <> struct EnumPropsT<SettingGuiFlagLong> : MakeEnumPropsT<SettingGuiFlagLong, byte, SGF_NONE, SGF_END, SGF_END> {};
+typedef TinyEnumT<SettingGuiFlagLong> SettingGuiFlag;
+
+
 typedef int32 OnChange(int32 var);
-typedef byte SettingDescType;
-typedef byte SettingGuiFlag;
 
 typedef struct SettingDescBase {
 	const char *name;       ///< name of the setting. Used in configuration file and for console

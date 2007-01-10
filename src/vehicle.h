@@ -76,9 +76,9 @@ typedef struct VehicleRail {
 	// 0xffff == not in train
 	EngineID first_engine;
 
-	byte track;
+	TrackBitsByte track;
 	byte force_proceed;
-	byte railtype;
+	RailTypeByte railtype;
 	RailTypeMask compatible_railtypes;
 
 	byte flags;
@@ -138,7 +138,7 @@ typedef struct VehicleDisaster {
 } VehicleDisaster;
 
 typedef struct VehicleShip {
-	byte state;
+	TrackBitsByte state;
 } VehicleShip;
 
 
@@ -155,7 +155,7 @@ struct Vehicle {
 	StringID string_id;      // Displayed string
 
 	UnitID unitnumber;       // unit number, for display purposes only
-	PlayerID owner;          // which player owns the vehicle?
+	PlayerByte owner;          // which player owns the vehicle?
 
 	TileIndex tile;          // Current tile index
 	TileIndex dest_tile;     // Heading for this tile
@@ -163,7 +163,7 @@ struct Vehicle {
 	int32 x_pos;             // coordinates
 	int32 y_pos;
 	byte z_pos;
-	byte direction;          // facing
+	DirectionByte direction; // facing
 
 	byte spritenum;          // currently displayed sprite index
 	                         // 0xfd == custom sprite, 0xfe == custom second head sprite
@@ -455,9 +455,7 @@ static inline Vehicle *GetFirstVehicleFromSharedList(const Vehicle *v)
 VARDEF VehicleID _new_vehicle_id;
 VARDEF uint16 _returned_refit_capacity;
 
-enum {
-	INVALID_VEHICLE = 0xFFFF,
-};
+static const VehicleID INVALID_VEHICLE = 0xFFFF;
 
 /**
  * Get the colour map for an engine. This used for unbuilt engines in the user interface.

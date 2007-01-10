@@ -202,11 +202,11 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 	// type of bridge
 	if (HASBIT(p2, 15)) {
-		railtype = 0;
+		railtype = RAILTYPE_BEGIN; // ??
 		transport = TRANSPORT_ROAD;
 	} else {
 		if (!ValParamRailtype(GB(p2, 8, 8))) return CMD_ERROR;
-		railtype = GB(p2, 8, 8);
+		railtype = (RailType)GB(p2, 8, 8);
 		transport = TRANSPORT_RAIL;
 	}
 
@@ -469,8 +469,8 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		if (GB(p1, 9, 1) == TRANSPORT_RAIL) {
-			MakeRailTunnel(start_tile, _current_player, direction,                 GB(p1, 0, 4));
-			MakeRailTunnel(end_tile,   _current_player, ReverseDiagDir(direction), GB(p1, 0, 4));
+			MakeRailTunnel(start_tile, _current_player, direction,                 (RailType)GB(p1, 0, 4));
+			MakeRailTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RailType)GB(p1, 0, 4));
 			UpdateSignalsOnSegment(start_tile, direction);
 			YapfNotifyTrackLayoutChange(start_tile, AxisToTrack(DiagDirToAxis(direction)));
 		} else {
@@ -1030,7 +1030,7 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 				} else if (f < 15) {
 					return z + TILE_HEIGHT;
 				}
-				tileh = _inclined_tileh[f - 15];
+				tileh = (Slope)_inclined_tileh[f - 15];
 			}
 		}
 	}
@@ -1050,7 +1050,7 @@ static Slope GetSlopeTileh_TunnelBridge(TileIndex tile, Slope tileh)
 
 			if (f == 0) return tileh;
 			if (f < 15) return SLOPE_FLAT;
-			return _inclined_tileh[f - 15];
+			return (Slope)_inclined_tileh[f - 15];
 		}
 	}
 }
@@ -1206,7 +1206,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				}
 				if (fc == _tunnel_fractcoord_2[dir]) {
 					v->tile = tile;
-					v->u.rail.track = 0x40;
+					v->u.rail.track = TRACK_BIT_WORMHOLE;
 					v->vehstatus |= VS_HIDDEN;
 					return 4;
 				}
@@ -1215,7 +1215,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			if (dir == ReverseDiagDir(vdir) && fc == _tunnel_fractcoord_3[dir] && z == 0) {
 				/* We're at the tunnel exit ?? */
 				v->tile = tile;
-				v->u.rail.track = _exit_tunnel_track[dir];
+				v->u.rail.track = (TrackBits)_exit_tunnel_track[dir];
 				assert(v->u.rail.track);
 				v->vehstatus &= ~VS_HIDDEN;
 				return 4;
@@ -1272,7 +1272,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				case DIAGDIR_NW: if ((y & 0xF) != 0)             return 0; break;
 			}
 			if (v->type == VEH_Train) {
-				v->u.rail.track = 0x40;
+				v->u.rail.track = TRACK_BIT_WORMHOLE;
 				CLRBIT(v->u.rail.flags, VRF_GOINGUP);
 				CLRBIT(v->u.rail.flags, VRF_GOINGDOWN);
 			} else {
@@ -1283,7 +1283,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			v->tile = tile;
 			if (v->type == VEH_Train) {
 				if (v->u.rail.track == 0x40) {
-					v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? 1 : 2);
+					v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 					return 4;
 				}
 			} else {
@@ -1299,7 +1299,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 	return 0;
 }
 
-const TileTypeProcs _tile_type_tunnelbridge_procs = {
+extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	DrawTile_TunnelBridge,           /* draw_tile_proc */
 	GetSlopeZ_TunnelBridge,          /* get_slope_z_proc */
 	ClearTile_TunnelBridge,          /* clear_tile_proc */

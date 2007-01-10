@@ -8,7 +8,7 @@
 #include "network_data.h"
 
 void ShowNetworkNeedPassword(NetworkPasswordType npt);
-void ShowNetworkGiveMoneyWindow(byte player); // PlayerID
+void ShowNetworkGiveMoneyWindow(PlayerID player); // PlayerID
 void ShowNetworkChatQueryWindow(DestType type, byte dest);
 void ShowJoinStatusWindow(void);
 void ShowNetworkGameWindow(void);

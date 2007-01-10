@@ -129,7 +129,7 @@ void StartupEngines(void)
 		uint32 r;
 
 		e->age = 0;
-		e->railtype = ei->railtype;
+		e->railtype = (RailType)ei->railtype;
 		e->flags = 0;
 		e->player_avail = 0;
 
@@ -189,7 +189,7 @@ static void AcceptEnginePreview(Engine *e, PlayerID player)
 	SETBIT(e->player_avail, player);
 	SETBIT(p->avail_railtypes, e->railtype);
 
-	e->preview_player = 0xFF;
+	e->preview_player = INVALID_PLAYER;
 	if (player == _local_player) {
 		InvalidateWindowClassesData(WC_BUILD_VEHICLE);
 		InvalidateWindowClasses(WC_REPLACE_VEHICLE);
@@ -217,7 +217,7 @@ static PlayerID GetBestPlayer(PlayerID pp)
 		if (best_player == PLAYER_SPECTATOR) return PLAYER_SPECTATOR;
 
 		SETBIT(mask, best_player);
-	} while (--pp != 0);
+	} while (pp--, pp != 0);
 
 	return best_player;
 }
@@ -242,7 +242,7 @@ void EnginesDailyLoop(void)
 				PlayerID best_player = GetBestPlayer(e->preview_player);
 
 				if (best_player == PLAYER_SPECTATOR) {
-					e->preview_player = 0xFF;
+					e->preview_player = INVALID_PLAYER;
 					continue;
 				}
 
@@ -364,7 +364,7 @@ void EnginesMonthlyLoop(void)
 
 				// Do not introduce new rail wagons
 				if (!IsWagon(e - _engines))
-					e->preview_player = 1; // Give to the player with the highest rating.
+					e->preview_player = (PlayerID)1; // Give to the player with the highest rating.
 			}
 		}
 	}
@@ -636,7 +636,7 @@ static void LoadSave_ENGS(void)
 	SlArray(_engine_name_strings, lengthof(_engine_name_strings), SLE_STRINGID);
 }
 
-const ChunkHandler _engine_chunk_handlers[] = {
+extern const ChunkHandler _engine_chunk_handlers[] = {
 	{ 'ENGN', Save_ENGN,     Load_ENGN,     CH_ARRAY          },
 	{ 'ENGS', LoadSave_ENGS, LoadSave_ENGS, CH_RIFF           },
 	{ 'ERNW', Save_ERNW,     Load_ERNW,     CH_ARRAY | CH_LAST},

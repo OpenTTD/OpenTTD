@@ -379,6 +379,6 @@ static void SaveLoad_ANIT(void)
 }
 
 
-const ChunkHandler _animated_tile_chunk_handlers[] = {
+extern const ChunkHandler _animated_tile_chunk_handlers[] = {
 	{ 'ANIT', SaveLoad_ANIT, SaveLoad_ANIT, CH_RIFF | CH_LAST},
 };

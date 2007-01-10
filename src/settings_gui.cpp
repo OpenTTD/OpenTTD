@@ -21,6 +21,7 @@
 #include "settings.h"
 #include "vehicle.h"
 #include "date.h"
+#include "helpers.hpp"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;
@@ -409,8 +410,8 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 		y = GAMEDIFF_WND_TOP_OFFSET;
 		for (i = 0; i != GAME_DIFFICULTY_NUM; i++) {
-			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, GetBitAndShift(&click_a) ? FR_LOWERED : 0);
-			DrawFrameRect(15, y, 15 + 8, y + 8, 3, GetBitAndShift(&click_b) ? FR_LOWERED : 0);
+			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, GetBitAndShift(&click_a) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(15, y, 15 + 8, y + 8, 3, GetBitAndShift(&click_b) ? FR_LOWERED : FR_NONE);
 			if (GetBitAndShift(&disabled) || (_networking && !_network_server)) {
 				int color = PALETTE_MODIFIER_GREYOUT | _colour_gradient[COLOUR_YELLOW][2];
 				GfxFillRect( 6, y + 1,  6 + 8, y + 8, color);
@@ -499,7 +500,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 				if (val != ((int*)&_opt_ptr->diff)[btn])
 					DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 			}
-			DoCommandP(0, -1, _opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+			DoCommandP(0, UINT_MAX, _opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 			DeleteWindow(w);
 			// If we are in the editor, we should reload the economy.
 			//  This way when you load a game, the max loan and interest rate
@@ -693,7 +694,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			for (page = &_patches_page[0]; page != endof(_patches_page); page++) {
 				uint i;
 
-				page->entries = malloc(page->num * sizeof(*page->entries));
+				MallocT(&page->entries, page->num);
 				for (i = 0; i != page->num; i++) {
 					uint index;
 					const SettingDesc *sd = GetPatchFromName(page->names[i], &index);
@@ -734,7 +735,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				/* Draw checkbox for boolean-value either on/off */
 				bool on = (*(bool*)var);
 
-				DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : 0);
+				DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : FR_NONE);
 				SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 			} else {
 				int32 value;
@@ -930,8 +931,8 @@ void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, b
 {
 	int color = PALETTE_MODIFIER_GREYOUT | _colour_gradient[COLOUR_YELLOW][2];
 
-	DrawFrameRect(x,      y + 1, x +  9, y + 9, ctab, (state == 1) ? FR_LOWERED : 0);
-	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, ctab, (state == 2) ? FR_LOWERED : 0);
+	DrawFrameRect(x,      y + 1, x +  9, y + 9, ctab, (state == 1) ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, ctab, (state == 2) ? FR_LOWERED : FR_NONE);
 	DrawStringCentered(x +  5, y + 1, STR_6819, 0); // [<]
 	DrawStringCentered(x + 15, y + 1, STR_681A, 0); // [>]
 
@@ -961,19 +962,19 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			y += 12;
 
 			// separator
-			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 2, 2) ? FR_LOWERED : 0);
+			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 2, 2) ? FR_LOWERED : FR_NONE);
 			x = DrawString(35, y + 1, STR_CURRENCY_SEPARATOR, 0);
 			DoDrawString(_str_separator, x + 4, y + 1, 6);
 			y += 12;
 
 			// prefix
-			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 4, 2) ? FR_LOWERED : 0);
+			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 4, 2) ? FR_LOWERED : FR_NONE);
 			x = DrawString(35, y + 1, STR_CURRENCY_PREFIX, 0);
 			DoDrawString(_custom_currency.prefix, x + 4, y + 1, 6);
 			y += 12;
 
 			// suffix
-			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 6, 2) ? FR_LOWERED : 0);
+			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 6, 2) ? FR_LOWERED : FR_NONE);
 			x = DrawString(35, y + 1, STR_CURRENCY_SUFFIX, 0);
 			DoDrawString(_custom_currency.suffix, x + 4, y + 1, 6);
 			y += 12;

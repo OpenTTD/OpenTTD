@@ -1,10 +1,12 @@
 /* $Id$ */
 
 #include "stdafx.h"
+#include "hal.h"
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
 #include "macros.h"
+#include "helpers.hpp"
 #include "saveload.h"
 #include "string.h"
 #include "gfx.h"
@@ -447,8 +449,8 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	_ident = GetTickCount(); // something pretty unique
 
-	MakeCRCTable(alloca(256 * sizeof(uint32)));
-	_crash_msg = output = LocalAlloc(LMEM_FIXED, 8192);
+	MakeCRCTable((uint32*)alloca(256 * sizeof(uint32)));
+	_crash_msg = output = (char*)LocalAlloc(LMEM_FIXED, 8192);
 
 	{
 		SYSTEMTIME time;
@@ -634,7 +636,7 @@ static inline DIR *dir_calloc(void)
 	DIR *d;
 
 	if (_global_dir_is_in_use) {
-		d = calloc(1, sizeof(*d));
+		CallocT(&d, 1);
 	} else {
 		_global_dir_is_in_use = true;
 		d = &_global_dir;
@@ -911,7 +913,7 @@ void DeterminePaths(void)
 	char *s, *cfg;
 	wchar_t path[MAX_PATH];
 
-	_paths.personal_dir = _paths.game_data_dir = cfg = malloc(MAX_PATH);
+	_paths.personal_dir = _paths.game_data_dir = cfg = (char*)malloc(MAX_PATH);
 	GetCurrentDirectoryW(MAX_PATH - 1, path);
 	convert_from_fs(path, cfg, MAX_PATH);
 
@@ -962,7 +964,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 		OpenClipboard(NULL);
 		cbuf = GetClipboardData(CF_UNICODETEXT);
 
-		ptr = GlobalLock(cbuf);
+		ptr = (const char*)GlobalLock(cbuf);
 		ret = convert_from_fs((wchar_t*)ptr, utf8_buf, lengthof(utf8_buf));
 		GlobalUnlock(cbuf);
 		CloseClipboard();
@@ -972,7 +974,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 		OpenClipboard(NULL);
 		cbuf = GetClipboardData(CF_TEXT);
 
-		ptr = GlobalLock(cbuf);
+		ptr = (const char*)GlobalLock(cbuf);
 		ttd_strlcpy(utf8_buf, ptr, lengthof(utf8_buf));
 		GlobalUnlock(cbuf);
 		CloseClipboard();

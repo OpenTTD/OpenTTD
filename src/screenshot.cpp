@@ -13,6 +13,7 @@
 #include "screenshot.h"
 #include "variables.h"
 #include "date.h"
+#include "helpers.hpp"
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;
@@ -118,7 +119,7 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	maxlines = clamp(65536 / padw, 16, 128);
 
 	// now generate the bitmap bits
-	buff = malloc(padw * maxlines); // by default generate 128 lines at a time.
+	MallocT(&buff, padw * maxlines); // by default generate 128 lines at a time.
 	if (buff == NULL) {
 		fclose(f);
 		return false;
@@ -225,7 +226,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	maxlines = clamp(65536 / w, 16, 128);
 
 	// now generate the bitmap bits
-	buff = malloc(w * maxlines); // by default generate 128 lines at a time.
+	MallocT(&buff, w * maxlines); // by default generate 128 lines at a time.
 	if (buff == NULL) {
 		png_destroy_write_struct(&png_ptr, &info_ptr);
 		fclose(f);
@@ -322,7 +323,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	maxlines = clamp(65536 / w, 16, 128);
 
 	// now generate the bitmap bits
-	buff = malloc(w * maxlines); // by default generate 128 lines at a time.
+	MallocT(&buff, w * maxlines); // by default generate 128 lines at a time.
 	if (buff == NULL) {
 		fclose(f);
 		return false;

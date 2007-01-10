@@ -246,7 +246,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->unitnumber = unit_num;
 		v->type = u->type = VEH_Aircraft;
-		v->direction = 3;
+		v->direction = DIR_SE;
 
 		v->owner = u->owner = _current_player;
 
@@ -382,7 +382,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			u->next = w;
 
 			w->type = VEH_Aircraft;
-			w->direction = 0;
+			w->direction = DIR_N;
 			w->owner = _current_player;
 			w->x_pos = v->x_pos;
 			w->y_pos = v->y_pos;
@@ -907,7 +907,8 @@ static bool AircraftController(Vehicle *v)
 	Station *st;
 	const AirportMovingData *amd;
 	Vehicle *u;
-	byte z,newdir,maxz,curz;
+	byte z, maxz, curz;
+	Direction newdir;
 	GetNewVehiclePosResult gp;
 	uint dist;
 	int x,y;
@@ -1419,7 +1420,7 @@ static void AircraftLeaveHangar(Vehicle *v)
 	v->cur_speed = 0;
 	v->subspeed = 0;
 	v->progress = 0;
-	v->direction = 3;
+	v->direction = DIR_SE;
 	v->vehstatus &= ~VS_HIDDEN;
 	{
 		Vehicle *u = v->next;

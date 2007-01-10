@@ -55,7 +55,7 @@ const byte _tileh_to_sprite[32] = {
 	0, 0, 0, 0, 0, 0, 0, 16, 0, 0,  0, 17,  0, 15, 18, 0,
 };
 
-const byte _inclined_tileh[] = {
+const Slope _inclined_tileh[] = {
 	SLOPE_SW,  SLOPE_NW,  SLOPE_SW,  SLOPE_SE, SLOPE_NE, SLOPE_SE, SLOPE_NE, SLOPE_NW,
 	SLOPE_E,   SLOPE_N,   SLOPE_W,   SLOPE_S,
 	SLOPE_NWS, SLOPE_WSE, SLOPE_SEN, SLOPE_ENW
@@ -276,7 +276,7 @@ uint32 GetTileTrackStatus(TileIndex tile, TransportType mode)
 	return _tile_type_procs[GetTileType(tile)]->get_tile_track_status_proc(tile, mode);
 }
 
-void ChangeTileOwner(TileIndex tile, byte old_player, byte new_player)
+void ChangeTileOwner(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	_tile_type_procs[GetTileType(tile)]->change_tile_owner_proc(tile, old_player, new_player);
 }
@@ -468,13 +468,13 @@ static void GenerateTerrain(int type, int flag)
 	uint y;
 	uint w;
 	uint h;
-	const Sprite* template;
+	const Sprite* templ;
 	const byte *p;
 	Tile* tile;
 	byte direction;
 
 	r = Random();
-	template = GetSprite((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + 4845);
+	templ = GetSprite((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + 4845);
 
 	x = r & MapMaxX();
 	y = (r >> MapLogX()) & MapMaxY();
@@ -484,13 +484,13 @@ static void GenerateTerrain(int type, int flag)
 
 	direction = GB(r, 22, 2);
 	if (direction & 1) {
-		w = template->height;
-		h = template->width;
+		w = templ->height;
+		h = templ->width;
 	} else {
-		w = template->width;
-		h = template->height;
+		w = templ->width;
+		h = templ->height;
 	}
-	p = template->data;
+	p = templ->data;
 
 	if (flag & 4) {
 		uint xw = x * MapSizeY();

@@ -7,6 +7,7 @@
 #include <stddef.h>
 #include <string.h>
 #include <stdlib.h>
+#include <limits.h>
 
 // MacOS X will use an NSAlert to display failed assertaions since they're lost unless running from a terminal
 // strgen always runs from terminal and don't need a window for asserts
@@ -103,6 +104,7 @@
 # define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
 # pragma warning(disable: 4244)  // 'conversion' conversion from 'type1' to 'type2', possible loss of data
 # pragma warning(disable: 4761)  // integral size mismatch in argument : conversion supplied
+# pragma warning(disable: 4200)  // nonstandard extension used : zero-sized array in struct/union
 
 # if _MSC_VER >= 1400              // MSVC 2005 safety checks
 #  pragma warning(disable: 4996)   // 'strdup' was declared deprecated
@@ -305,8 +307,5 @@ assert_compile(sizeof(uint8)  == 1);
 // it seems AmigaOS already have a Point declared
 # define Point OTTD_AMIGA_POINT
 #endif
-
-#define EXTERN_C_BEGIN extern "C" {
-#define EXTERN_C_END   }
 
 #endif /* STDAFX_H */

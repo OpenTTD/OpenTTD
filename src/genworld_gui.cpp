@@ -196,7 +196,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 	static querystr_d _genseed_query;
 	static char _genseed_buffer[LEN_RND_SEED];
 
-	uint mode = w->window_number;
+	glwp_modes mode = (glwp_modes)w->window_number;
 	uint y;
 
 	switch (e->event) {
@@ -714,7 +714,7 @@ static const Widget _show_terrain_progress_widgets[] = {
 
 typedef struct tp_info {
 	uint percent;
-	StringID class;
+	StringID cls;
 	uint current;
 	uint total;
 	int timer;
@@ -753,12 +753,12 @@ static void ShowTerrainProgressProc(Window* w, WindowEvent* e)
 
 		/* Draw the % complete with a bar and a text */
 		DrawFrameRect(19, 20, (w->width - 18), 37, 14, FR_BORDERONLY);
-		DrawFrameRect(20, 21, (int)((w->width - 40) * _tp.percent / 100) + 20, 36, 10, 0);
+		DrawFrameRect(20, 21, (int)((w->width - 40) * _tp.percent / 100) + 20, 36, 10, FR_NONE);
 		SetDParam(0, _tp.percent);
 		DrawStringCentered(90, 25, STR_PROGRESS, 0);
 
 		/* Tell which class we are generating */
-		DrawStringCentered(90, 46, _tp.class, 0);
+		DrawStringCentered(90, 46, _tp.cls, 0);
 
 		/* And say where we are in that class */
 		SetDParam(0, _tp.current);
@@ -783,7 +783,7 @@ static const WindowDesc _show_terrain_progress_desc = {
  */
 void PrepareGenerateWorldProgress(void)
 {
-	_tp.class   = STR_WORLD_GENERATION;
+	_tp.cls   = STR_WORLD_GENERATION;
 	_tp.current = 0;
 	_tp.total   = 0;
 	_tp.percent = 0;
@@ -798,7 +798,7 @@ void ShowGenerateWorldProgress(void)
 	AllocateWindowDescFront(&_show_terrain_progress_desc, 0);
 }
 
-static void _SetGeneratingWorldProgress(gwp_class class, uint progress, uint total)
+static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total)
 {
 	static const int percent_table[GWP_CLASS_COUNT + 1] = {0, 5, 15, 20, 40, 60, 65, 80, 85, 99, 100 };
 	static const StringID class_table[GWP_CLASS_COUNT]  = {
@@ -814,7 +814,7 @@ static void _SetGeneratingWorldProgress(gwp_class class, uint progress, uint tot
 		STR_PREPARING_GAME
 	};
 
-	assert(class < GWP_CLASS_COUNT);
+	assert(cls < GWP_CLASS_COUNT);
 
 	/* Do not run this function if we aren't in a thread */
 	if (!IsGenerateWorldThreaded() && !_network_dedicated) return;
@@ -822,13 +822,13 @@ static void _SetGeneratingWorldProgress(gwp_class class, uint progress, uint tot
 	if (IsGeneratingWorldAborted()) HandleGeneratingWorldAbortion();
 
 	if (total == 0) {
-		assert(_tp.class == class_table[class]);
+		assert(_tp.cls == class_table[cls]);
 		_tp.current += progress;
 	} else {
-		_tp.class   = class_table[class];
+		_tp.cls   = class_table[cls];
 		_tp.current = progress;
 		_tp.total   = total;
-		_tp.percent = percent_table[class];
+		_tp.percent = percent_table[cls];
 	}
 
 	/* Don't update the screen too often. So update it once in every 200ms.
@@ -837,7 +837,7 @@ static void _SetGeneratingWorldProgress(gwp_class class, uint progress, uint tot
 	if (!_network_dedicated && _tp.timer != 0 && _timer_counter - _tp.timer < (200 * 8 / 30)) return;
 
 	/* Percentage is about the number of completed tasks, so 'current - 1' */
-	_tp.percent = percent_table[class] + (percent_table[class + 1] - percent_table[class]) * (_tp.current == 0 ? 0 : _tp.current - 1) / _tp.total;
+	_tp.percent = percent_table[cls] + (percent_table[cls + 1] - percent_table[cls]) * (_tp.current == 0 ? 0 : _tp.current - 1) / _tp.total;
 	_tp.timer = _timer_counter;
 
 	if (_network_dedicated) {
@@ -877,11 +877,11 @@ static void _SetGeneratingWorldProgress(gwp_class class, uint progress, uint tot
  * Warning: this function isn't clever. Don't go from class 4 to 3. Go upwards, always.
  *  Also, progress works if total is zero, total works if progress is zero.
  */
-void SetGeneratingWorldProgress(gwp_class class, uint total)
+void SetGeneratingWorldProgress(gwp_class cls, uint total)
 {
 	if (total == 0) return;
 
-	_SetGeneratingWorldProgress(class, 0, total);
+	_SetGeneratingWorldProgress(cls, 0, total);
 }
 
 /**
@@ -891,8 +891,8 @@ void SetGeneratingWorldProgress(gwp_class class, uint total)
  * Warning: this function isn't clever. Don't go from class 4 to 3. Go upwards, always.
  *  Also, progress works if total is zero, total works if progress is zero.
  */
-void IncreaseGeneratingWorldProgress(gwp_class class)
+void IncreaseGeneratingWorldProgress(gwp_class cls)
 {
 	/* In fact the param 'class' isn't needed.. but for some security reasons, we want it around */
-	_SetGeneratingWorldProgress(class, 1, 0);
+	_SetGeneratingWorldProgress(cls, 1, 0);
 }

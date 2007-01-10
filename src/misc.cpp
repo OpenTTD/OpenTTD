@@ -611,13 +611,13 @@ static void Load_CHTS(void)
 	uint i;
 
 	for (i = 0; i < count; i++) {
-		cht[i].been_used = SlReadByte();
-		cht[i].value     = SlReadByte();
+		cht[i].been_used = (SlReadByte() != 0);
+		cht[i].value     = (SlReadByte() != 0);
 	}
 }
 
 
-const ChunkHandler _misc_chunk_handlers[] = {
+extern const ChunkHandler _misc_chunk_handlers[] = {
 	{ 'MAPS', Save_MAPS,     Load_MAPS,     CH_RIFF },
 	{ 'MAPT', Save_MAPT,     Load_MAPT,     CH_RIFF },
 	{ 'MAPO', Save_MAP1,     Load_MAP1,     CH_RIFF },

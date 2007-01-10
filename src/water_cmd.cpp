@@ -83,8 +83,8 @@ int32 CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		depot->xy = tile;
 		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		MakeShipDepot(tile,_current_player, DEPOT_NORTH, p1);
-		MakeShipDepot(tile2,_current_player, DEPOT_SOUTH, p1);
+		MakeShipDepot(tile, _current_player, DEPOT_NORTH, (Axis)p1);
+		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, (Axis)p1);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 	}
@@ -471,7 +471,7 @@ void DrawShipDepotSprite(int x, int y, int image)
 static uint GetSlopeZ_Water(TileIndex tile, uint x, uint y)
 {
 	uint z;
-	uint tileh = GetTileSlope(tile, &z);
+	Slope tileh = GetTileSlope(tile, &z);
 
 	return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 }
@@ -672,7 +672,7 @@ static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
 
 	switch (GetWaterTileType(tile)) {
 		case WATER_CLEAR: ts = TRACK_BIT_ALL; break;
-		case WATER_COAST: ts = coast_tracks[GetTileSlope(tile, NULL) & 0xF]; break;
+		case WATER_COAST: ts = (TrackBits)coast_tracks[GetTileSlope(tile, NULL) & 0xF]; break;
 		case WATER_LOCK:  ts = AxisToTrackBits(DiagDirToAxis(GetLockDirection(tile))); break;
 		case WATER_DEPOT: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;
 		default: return 0;
@@ -714,7 +714,7 @@ static uint32 VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)
 }
 
 
-const TileTypeProcs _tile_type_water_procs = {
+extern const TileTypeProcs _tile_type_water_procs = {
 	DrawTile_Water,           /* draw_tile_proc */
 	GetSlopeZ_Water,          /* get_slope_z_proc */
 	ClearTile_Water,          /* clear_tile_proc */

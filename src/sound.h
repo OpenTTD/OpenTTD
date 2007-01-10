@@ -3,6 +3,8 @@
 #ifndef SOUND_H
 #define SOUND_H
 
+#include "helpers.hpp"
+
 typedef struct MusicFileSettings {
 	byte playlist;
 	byte music_vol;
@@ -30,7 +32,8 @@ bool SoundInitialize(const char *filename);
 uint GetNumOriginalSounds(void);
 
 typedef enum SoundFx {
-	SND_02_SPLAT,                          //  0 == 0x00 !
+	SND_BEGIN = 0,
+	SND_02_SPLAT = 0,                          //  0 == 0x00 !
 	SND_03_FACTORY_WHISTLE,
 	SND_04_TRAIN,
 	SND_05_TRAIN_THROUGH_TUNNEL,
@@ -102,8 +105,13 @@ typedef enum SoundFx {
 	SND_45_PLANE_CRASHING,
 	SND_46_PLANE_ENGINE_SPUTTERING,
 	SND_47_MAGLEV_2,
-	SND_48_DISTANT_BIRD                    // 72 == 0x48
+	SND_48_DISTANT_BIRD,                    // 72 == 0x48
+	SND_END
 } SoundFx;
+
+/** Define basic enum properties */
+template <> struct EnumPropsT<SoundFx> : MakeEnumPropsT<SoundFx, byte, SND_BEGIN, SND_END, SND_END> {};
+typedef TinyEnumT<SoundFx> SoundFxByte;
 
 void SndPlayTileFx(SoundFx sound, TileIndex tile);
 void SndPlayVehicleFx(SoundFx sound, const Vehicle *v);

@@ -11,6 +11,7 @@
 #include "gfx.h"
 #include "string.h"
 #include "fontcache.h"
+#include "helpers.hpp"
 
 #ifdef WITH_FREETYPE
 
@@ -77,7 +78,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	 * normal char to match the data returned by RegEnumValue,
 	 * otherwise just use parameter */
 #if defined(UNICODE)
-	font_namep = malloc(MAX_PATH * sizeof(TCHAR));
+	MallocT(&font_namep, MAX_PATH);
 	MB_TO_WIDE_BUFFER(font_name, font_namep, MAX_PATH * sizeof(TCHAR));
 #else
 	font_namep = (char*)font_name; // only cast because in unicode pointer is not const
@@ -345,12 +346,12 @@ static void SetGlyphPtr(FontSize size, WChar key, const GlyphEntry *glyph)
 {
 	if (_glyph_ptr[size] == NULL) {
 		DEBUG(freetype, 3, "Allocating root glyph cache for size %u", size);
-		_glyph_ptr[size] = calloc(256, sizeof(**_glyph_ptr));
+		CallocT(&_glyph_ptr[size], 256);
 	}
 
 	if (_glyph_ptr[size][GB(key, 8, 8)] == NULL) {
 		DEBUG(freetype, 3, "Allocating glyph cache for range 0x%02X00, size %u", GB(key, 8, 8), size);
-		_glyph_ptr[size][GB(key, 8, 8)] = calloc(256, sizeof(***_glyph_ptr));
+		CallocT(&_glyph_ptr[size][GB(key, 8, 8)], 256);
 	}
 
 	DEBUG(freetype, 4, "Set glyph for unicode character 0x%04X, size %u", key, size);
@@ -395,7 +396,7 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	height = max(1, slot->bitmap.rows  + (size == FS_NORMAL));
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
-	sprite = calloc(width * height + 8, 1);
+	sprite = (Sprite*)calloc(width * height + 8, 1);
 	sprite->info   = 1;
 	sprite->width  = width;
 	sprite->height = height;
@@ -483,8 +484,8 @@ SpriteID GetUnicodeGlyph(FontSize size, uint32 key)
 
 void SetUnicodeGlyph(FontSize size, uint32 key, SpriteID sprite)
 {
-	if (_unicode_glyph_map[size] == NULL) _unicode_glyph_map[size] = calloc(256, sizeof(*_unicode_glyph_map[size]));
-	if (_unicode_glyph_map[size][GB(key, 8, 8)] == NULL) _unicode_glyph_map[size][GB(key, 8, 8)] = calloc(256, sizeof(**_unicode_glyph_map[size]));
+	if (_unicode_glyph_map[size] == NULL) CallocT(&_unicode_glyph_map[size], 256);
+	if (_unicode_glyph_map[size][GB(key, 8, 8)] == NULL) CallocT(&_unicode_glyph_map[size][GB(key, 8, 8)], 256);
 	_unicode_glyph_map[size][GB(key, 8, 8)][GB(key, 0, 8)] = sprite;
 }
 

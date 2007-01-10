@@ -4,6 +4,7 @@
 #include "../macros.h"
 #include "../string.h"
 #include "../table/control_codes.h"
+#include "../helpers.hpp"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -11,6 +12,8 @@
 
 #if (!defined(WIN32) && !defined(WIN64)) || defined(__CYGWIN__)
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #endif
 
 #if defined WIN32 || defined __WATCOMC__
@@ -113,7 +116,7 @@ static const char *_cur_ident;
 
 typedef struct CmdPair {
 	const CmdStruct *a;
-	char *v;
+	const char *v;
 } CmdPair;
 
 typedef struct ParsedCommandStruct {
@@ -842,7 +845,7 @@ static void HandleString(char *str, bool master)
 			}
 
 			// Allocate a new LangString
-			ent = calloc(1, sizeof(*ent));
+			CallocT(&ent, 1);
 			_strings[_next_string_id] = ent;
 			ent->index = _next_string_id++;
 			ent->name = strdup(str);
@@ -852,7 +855,8 @@ static void HandleString(char *str, bool master)
 		}
 
 		if (casep != NULL) {
-			Case* c = malloc(sizeof(*c));
+			Case* c;
+			MallocT(&c, 1);
 
 			c->caseidx = ResolveCaseName(casep, strlen(casep));
 			c->string = strdup(s);
@@ -881,7 +885,8 @@ static void HandleString(char *str, bool master)
 			if (!CheckCommandsMatch(s, ent->english, str)) return;
 
 			if (casep != NULL) {
-				Case* c = malloc(sizeof(*c));
+				Case* c;
+				MallocT(&c, 1);
 
 				c->caseidx = ResolveCaseName(casep, strlen(casep));
 				c->string = strdup(s);
@@ -1021,17 +1026,12 @@ static void WriteStringsH(const char *filename)
 	out = fopen("tmp.xxx", "w");
 	if (out == NULL) fatal("can't open tmp.xxx");
 
-	fprintf(out, "enum {");
+	fprintf(out, "enum StringIdEnum {");
 
 	lastgrp = 0;
 
 	for (i = 0; i != lengthof(_strings); i++) {
 		if (_strings[i] != NULL) {
-			if (lastgrp != (i >> 11)) {
-				lastgrp = (i >> 11);
-				fprintf(out, "};\n\nenum {");
-			}
-
 			fprintf(out, next == i ? "\t%s,\n" : "\n\t%s = 0x%X,\n", _strings[i]->name, i);
 			next = i + 1;
 		}

@@ -8,9 +8,8 @@
 #define VARDEF extern
 #endif
 
-typedef struct Rect {
-	int left,top,right,bottom;
-} Rect;
+#include "hal.h"
+#include "helpers.hpp"
 
 typedef struct Oblong {
 	int x, y;
@@ -21,10 +20,6 @@ typedef struct BoundingRect {
 	int width;
 	int height;
 } BoundingRect;
-
-typedef struct Point {
-	int x,y;
-} Point;
 
 typedef struct Pair {
 	int a;
@@ -45,13 +40,11 @@ typedef struct Town Town;
 typedef struct NewsItem NewsItem;
 typedef struct Industry Industry;
 typedef struct DrawPixelInfo DrawPixelInfo;
-typedef byte PlayerID;
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
 typedef byte CargoID;
 typedef byte LandscapeID;
 typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colortables
 typedef uint32 PalSpriteID;   ///< The number of a sprite plus all the mapping bits and colortables
-typedef uint32 CursorID;
 typedef uint16 EngineID;
 typedef uint16 UnitID;
 typedef uint16 StringID;
@@ -77,7 +70,7 @@ assert_compile(sizeof(DestinationID) == sizeof(DepotID));
 assert_compile(sizeof(DestinationID) == sizeof(WaypointID));
 assert_compile(sizeof(DestinationID) == sizeof(StationID));
 
-typedef uint32 WindowNumber;
+typedef int32 WindowNumber;
 typedef byte WindowClass;
 
 enum {
@@ -88,12 +81,6 @@ enum {
 typedef int32 Year;
 typedef int32 Date;
 
-
-enum GameModes {
-	GM_MENU,
-	GM_NORMAL,
-	GM_EDITOR
-};
 
 enum SwitchModes {
 	SM_NONE            =  0,
@@ -124,6 +111,32 @@ enum InitializeGameModes {
 	IG_DATE_RESET = 1,  /* Reset the date when initializing a game */
 };
 
+enum Owner {
+	PLAYER_INACTIVE_CLIENT = 253,
+	PLAYER_NEW_COMPANY = 254,
+	PLAYER_SPECTATOR = 255,
+	OWNER_BEGIN     = 0x00,
+	PLAYER_FIRST    = 0x00,
+	MAX_PLAYERS     = 8,
+	OWNER_TOWN      = 0x0F, // a town owns the tile
+	OWNER_NONE      = 0x10, // nobody owns the tile
+	OWNER_WATER     = 0x11, // "water" owns the tile
+	OWNER_END       = 0x12,
+	INVALID_OWNER   = 0xFF,
+	INVALID_PLAYER  = 0xFF,
+	/* Player identifiers All players below MAX_PLAYERS are playable
+	* players, above, they are special, computer controlled players */
+};
+
+typedef Owner PlayerID;
+
+DECLARE_POSTFIX_INCREMENT(Owner);
+
+/** Define basic enum properties */
+template <> struct EnumPropsT<Owner> : MakeEnumPropsT<Owner, byte, OWNER_BEGIN, OWNER_END, INVALID_OWNER> {};
+typedef TinyEnumT<Owner> OwnerByte;
+typedef OwnerByte PlayerByte;
+
 
 typedef enum TransportTypes {
 	/* These constants are for now linked to the representation of bridges
@@ -132,12 +145,18 @@ typedef enum TransportTypes {
 	 * accessing tunnels and bridges. For now, you should just not change
 	 * the values for road and rail.
 	 */
+	TRANSPORT_BEGIN = 0,
 	TRANSPORT_RAIL = 0,
 	TRANSPORT_ROAD = 1,
 	TRANSPORT_WATER, // = 2
 	TRANSPORT_END,
 	INVALID_TRANSPORT = 0xff,
 } TransportType;
+
+/** Define basic enum properties */
+template <> struct EnumPropsT<TransportType> : MakeEnumPropsT<TransportType, byte, TRANSPORT_BEGIN, TRANSPORT_END, INVALID_TRANSPORT> {};
+typedef TinyEnumT<TransportType> TransportTypeByte;
+
 
 typedef struct TileInfo {
 	uint x;

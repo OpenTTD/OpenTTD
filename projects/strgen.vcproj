@@ -80,10 +80,10 @@
 			Name="Source Files"
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
 			<File
-				RelativePath="..\src\strgen\strgen.c">
+				RelativePath="..\src\strgen\strgen.cpp">
 			</File>
 			<File
-				RelativePath="..\src\string.c">
+				RelativePath="..\src\string.cpp">
 				<FileConfiguration
 					Name="Release|Win32">
 					<Tool

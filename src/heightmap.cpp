@@ -13,6 +13,7 @@
 #include "gui.h"
 #include "saveload.h"
 #include "bmp.h"
+#include "helpers.hpp"
 
 /**
  * Convert RGB colors to Grayscale using 29.9% Red, 58.7% Green, 11.4% Blue
@@ -135,7 +136,7 @@ static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
 	}
 
 	if (map != NULL) {
-		*map = malloc(info_ptr->width * info_ptr->height * sizeof(byte));
+		MallocT(/* NO & */map, info_ptr->width * info_ptr->height);
 
 		if (*map == NULL) {
 			ShowErrorMessage(STR_PNGMAP_ERR_MISC, STR_PNGMAP_ERROR, 0, 0);
@@ -248,7 +249,7 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 			return false;
 		}
 
-		*map = malloc(info.width * info.height * sizeof(byte));
+		MallocT(map, info.width * info.height);
 		if (*map == NULL) {
 			ShowErrorMessage(STR_PNGMAP_ERR_MISC, STR_BMPMAP_ERROR, 0, 0);
 			fclose(f);

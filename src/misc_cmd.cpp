@@ -40,7 +40,7 @@ int32 CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p, *pp;
 	byte colour;
-	LiveryScheme scheme = GB(p1, 0, 8);
+	LiveryScheme scheme = (LiveryScheme)GB(p1, 0, 8);
 	byte state = GB(p1, 8, 2);
 
 	if (p2 >= 16) return CMD_ERROR; // max 16 colours
@@ -271,7 +271,7 @@ int32 CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (_networking) return CMD_ERROR;
 #endif
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	return (int32)p1;
+	return -(int32)p1;
 }
 
 /** Transfer funds (money) from one player to another.
@@ -296,7 +296,7 @@ int32 CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		/* Add money to player */
 		PlayerID old_cp = _current_player;
-		_current_player = p2;
+		_current_player = (PlayerID)p2;
 		SubtractMoneyFromPlayer(-amount);
 		_current_player = old_cp;
 	}

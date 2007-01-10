@@ -6,6 +6,8 @@
 /** @file engine.h */
 
 #include "oldpool.h"
+#include "rail.h"
+#include "sound.h"
 
 typedef struct RailVehicleInfo {
 	byte image_index;
@@ -38,8 +40,8 @@ typedef struct ShipVehicleInfo {
 	CargoID cargo_type;
 	uint16 capacity;
 	byte running_cost;
-	byte sfx;
-	byte refittable;
+	SoundFxByte sfx;
+	bool refittable;
 } ShipVehicleInfo;
 
 // Aircraft subtypes
@@ -53,7 +55,7 @@ typedef struct AircraftVehicleInfo {
 	byte base_cost;
 	byte running_cost;
 	byte subtype;
-	byte sfx;
+	SoundFxByte sfx;
 	byte acceleration;
 	byte max_speed;
 	byte mail_capacity;
@@ -64,7 +66,7 @@ typedef struct RoadVehicleInfo {
 	byte image_index;
 	byte base_cost;
 	byte running_cost;
-	byte sfx;
+	SoundFxByte sfx;
 	byte max_speed;
 	byte capacity;
 	CargoID cargo_type;
@@ -96,9 +98,9 @@ typedef struct Engine {
 	uint16 duration_phase_1, duration_phase_2, duration_phase_3;
 	byte lifelength;
 	byte flags;
-	byte preview_player;
+	PlayerByte preview_player;
 	byte preview_wait;
-	byte railtype;
+	RailTypeByte railtype;
 	byte player_avail;
 	byte type; // type, ie VEH_Road, VEH_Train, etc. Same as in vehicle.h
 } Engine;
@@ -122,9 +124,8 @@ enum {
 	NUM_VEHICLE_TYPES = 6
 };
 
-enum {
-	INVALID_ENGINE = 0xFFFF,
-};
+static const EngineID INVALID_ENGINE = 0xFFFF;
+
 
 void AddTypeToEngines(void);
 void StartupEngines(void);

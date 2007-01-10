@@ -47,7 +47,7 @@ const ScoreInfo _score_info[] = {
 	{ SCORE_TOTAL,             0,   0 }
 };
 
-int _score_part[MAX_PLAYERS][NUM_SCORE];
+int _score_part[MAX_PLAYERS][SCORE_END];
 
 int64 CalculateCompanyValue(const Player* p)
 {
@@ -209,11 +209,10 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 	// Now we calculate the score for each item..
 	{
-		int i;
 		int total_score = 0;
 		int s;
 		score = 0;
-		for (i = 0; i < NUM_SCORE; i++) {
+		for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) {
 			// Skip the total
 			if (i == SCORE_TOTAL) continue;
 			// Check the score
@@ -467,7 +466,7 @@ void DrawNewsBankrupcy(Window *w)
 
 	DrawNewsBorder(w);
 
-	p = GetPlayer(GB(WP(w,news_d).ni->string_id, 0, 4));
+	p = GetPlayer((PlayerID)GB(WP(w,news_d).ni->string_id, 0, 4));
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
 	GfxFillRect(3, 23, 3+91, 23+118, 0x323 | USE_COLORTABLE);
 
@@ -536,7 +535,7 @@ void DrawNewsBankrupcy(Window *w)
 
 StringID GetNewsStringBankrupcy(const NewsItem *ni)
 {
-	const Player *p = GetPlayer(GB(ni->string_id, 0, 4));
+	const Player *p = GetPlayer((PlayerID)GB(ni->string_id, 0, 4));
 
 	switch (ni->string_id & 0xF0) {
 	case NB_BTROUBLE:
@@ -1562,7 +1561,7 @@ void PlayersMonthlyLoop(void)
 static void DoAcquireCompany(Player *p)
 {
 	Player *owner;
-	int i,pi;
+	int i;
 	int64 value;
 
 	SetDParam(0, p->name_1);
@@ -1571,7 +1570,7 @@ static void DoAcquireCompany(Player *p)
 	AddNewsItem( (StringID)(_current_player | NB_BMERGER), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 	// original code does this a little bit differently
-	pi = p->index;
+	PlayerID pi = p->index;
 	ChangeOwnershipOfPlayerItems(pi, _current_player);
 
 	if (p->bankrupt_value == 0) {
@@ -1595,7 +1594,7 @@ static void DoAcquireCompany(Player *p)
 	RebuildVehicleLists(); //Updates the open windows to add the newly acquired vehicles to the lists
 }
 
-extern int GetAmountOwnedBy(Player *p, byte owner);
+extern int GetAmountOwnedBy(const Player *p, PlayerID owner);
 
 /** Acquire shares in an opposing company.
  * @param tile unused
@@ -1611,7 +1610,7 @@ int32 CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = GetPlayer(p1);
+	p = GetPlayer((PlayerID)p1);
 
 	/* Protect new companies from hostile takeovers */
 	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_7080_PROTECTED);
@@ -1624,7 +1623,7 @@ int32 CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	cost = CalculateCompanyValue(p) >> 2;
 	if (flags & DC_EXEC) {
-		PlayerID* b = p->share_owners;
+		PlayerByte* b = p->share_owners;
 		int i;
 
 		while (*b != PLAYER_SPECTATOR) b++; /* share owners is guaranteed to contain at least one PLAYER_SPECTATOR */
@@ -1656,7 +1655,7 @@ int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = GetPlayer(p1);
+	p = GetPlayer((PlayerID)p1);
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(p, _current_player) == 0) return 0;
@@ -1666,7 +1665,7 @@ int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	cost = -(cost - (cost >> 7));
 
 	if (flags & DC_EXEC) {
-		PlayerID* b = p->share_owners;
+		PlayerByte* b = p->share_owners;
 		while (*b != _current_player) b++; /* share owners is guaranteed to contain player */
 		*b = PLAYER_SPECTATOR;
 		InvalidateWindow(WC_COMPANY, p1);
@@ -1690,7 +1689,7 @@ int32 CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsValidPlayer((PlayerID)p1) || _networking) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = GetPlayer(p1);
+	p = GetPlayer((PlayerID)p1);
 
 	if (!p->is_ai) return CMD_ERROR;
 
@@ -1730,7 +1729,7 @@ static void SaveLoad_ECMY(void)
 	SlObject(&_economy, _economy_desc);
 }
 
-const ChunkHandler _economy_chunk_handlers[] = {
+extern const ChunkHandler _economy_chunk_handlers[] = {
 	{ 'PRIC', SaveLoad_PRIC, SaveLoad_PRIC, CH_RIFF | CH_AUTO_LENGTH},
 	{ 'CAPR', SaveLoad_CAPR, SaveLoad_CAPR, CH_RIFF | CH_AUTO_LENGTH},
 	{ 'SUBS', Save_SUBS,     Load_SUBS,     CH_ARRAY},

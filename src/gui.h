@@ -132,7 +132,7 @@ void ShowMusicWindow(void);
 
 /* main_gui.c */
 void HandleOnEditText(const char *str);
-VARDEF byte _station_show_coverage;
+VARDEF bool _station_show_coverage;
 VARDEF PlaceProc *_place_proc;
 
 /* vehicle_gui.c */

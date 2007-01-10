@@ -548,7 +548,7 @@ static void DrawTile_Clear(TileInfo *ti)
 static uint GetSlopeZ_Clear(TileIndex tile, uint x, uint y)
 {
 	uint z;
-	uint tileh = GetTileSlope(tile, &z);
+	Slope tileh = GetTileSlope(tile, &z);
 
 	return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 }
@@ -786,7 +786,7 @@ void InitializeClearLand(void)
 	_opt.snow_line = _patches.snow_line_height * TILE_HEIGHT;
 }
 
-const TileTypeProcs _tile_type_clear_procs = {
+extern const TileTypeProcs _tile_type_clear_procs = {
 	DrawTile_Clear,           /* draw_tile_proc */
 	GetSlopeZ_Clear,          /* get_slope_z_proc */
 	ClearTile_Clear,          /* clear_tile_proc */

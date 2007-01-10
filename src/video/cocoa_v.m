@@ -46,23 +46,17 @@ extern void HideMenuBar(void);
 # endif
 #endif
 
-#include "../stdafx.h"
-#include "../openttd.h"
-#include "../debug.h"
-#include "../functions.h"
-#include "../gfx.h"
-#include "../macros.h"
-#include "../sdl.h"
-#include "../window.h"
-#include "../network/network.h"
-#include "../variables.h"
-#include "../os/macosx/splash.h"
 
+#include "../stdafx.h"
+#include "../debug.h"
+#include "../macros.h"
+#include "../os/macosx/splash.h"
 #include "cocoa_v.h"
 #include "cocoa_keys.h"
 
 #undef Point
 #undef Rect
+
 
 
 /* Subclass of NSWindow to fix genie effect and support resize events  */
@@ -162,7 +156,7 @@ static struct CocoaVideoData {
 	NSQuickDrawView *qdview;
 
 #define MAX_DIRTY_RECTS 100
-	OTTDRect dirty_rects[MAX_DIRTY_RECTS];
+	Rect dirty_rects[MAX_DIRTY_RECTS];
 	int num_dirty_rects;
 
 	uint16 palette16[256];

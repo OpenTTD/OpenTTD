@@ -3,6 +3,8 @@
 #ifndef AIRPORT_H
 #define AIRPORT_H
 
+#include "direction.h"
+
 enum {MAX_TERMINALS =  10};
 enum {MAX_HELIPADS  =   4};
 enum {MAX_ELEMENTS  = 255};
@@ -23,11 +25,17 @@ enum {
 };
 
 // do not change unless you change v->subtype too. This aligns perfectly with its current setting
-enum {
+enum AcceptPlanes {
+	ACC_BEGIN        = 0,
 	AIRCRAFT_ONLY    = 0,
 	ALL              = 1,
 	HELICOPTERS_ONLY = 2,
+	ACC_END
 };
+
+/** Define basic enum properties */
+template <> struct EnumPropsT<AcceptPlanes> : MakeEnumPropsT<AcceptPlanes, byte, ACC_BEGIN, ACC_END, ACC_END> {};
+typedef TinyEnumT<AcceptPlanes> AcceptPlanesByte;
 
 enum {
 	AMED_NOSPDCLAMP = 1 << 0,
@@ -122,7 +130,7 @@ enum {
 typedef struct AirportMovingData {
 	int x,y;
 	byte flag;
-	byte direction;
+	DirectionByte direction;
 } AirportMovingData;
 
 // Finite sTate mAchine --> FTA
@@ -131,7 +139,7 @@ typedef struct AirportFTAClass {
 	const byte *terminals;
 	const byte *helipads;
 	byte entry_point;                     // when an airplane arrives at this airport, enter it at position entry_point
-	byte acc_planes;                      // accept airplanes or helicopters or both
+	AcceptPlanesByte acc_planes;                      // accept airplanes or helicopters or both
 	const TileIndexDiffC *airport_depots; // gives the position of the depots on the airports
 	byte nof_depots;                      // number of depots this airport has
 	struct AirportFTA *layout;            // state machine for airport

@@ -127,9 +127,9 @@ void ShowOSErrorBox(const char *buf)
 }
 
 #ifdef WITH_COCOA
-void cocoaSetWorkingDirectory(void);
-void cocoaSetupAutoreleasePool(void);
-void cocoaReleaseAutoreleasePool(void);
+extern "C" void cocoaSetWorkingDirectory(void);
+extern "C" void cocoaSetupAutoreleasePool(void);
+extern "C" void cocoaReleaseAutoreleasePool(void);
 #endif
 
 int CDECL main(int argc, char* argv[])
@@ -169,10 +169,10 @@ void DeterminePaths(void)
 {
 	char *s;
 
-	_paths.game_data_dir = malloc(MAX_PATH);
+	MallocT(&_paths.game_data_dir, MAX_PATH);
 	ttd_strlcpy(_paths.game_data_dir, GAME_DATA_DIR, MAX_PATH);
 	#if defined SECOND_DATA_DIR
-	_paths.second_data_dir = malloc(MAX_PATH);
+	MallocT(&_paths.second_data_dir, MAX_PATH);
 	ttd_strlcpy(_paths.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
 	#endif
 
@@ -190,7 +190,7 @@ void DeterminePaths(void)
 
 #else /* not defined(USE_HOMEDIR) */
 
-	_paths.personal_dir = malloc(MAX_PATH);
+	MallocT(&_paths.personal_dir, MAX_PATH);
 	ttd_strlcpy(_paths.personal_dir, PERSONAL_DIR, MAX_PATH);
 
 	// check if absolute or relative path
@@ -226,7 +226,7 @@ void DeterminePaths(void)
 
 #if defined CUSTOM_LANG_DIR
 	// sets the search path for lng files to the custom one
-	_paths.lang_dir = malloc( MAX_PATH );
+	MallocT(&_paths.lang_dir, MAX_PATH );
 	ttd_strlcpy( _paths.lang_dir, CUSTOM_LANG_DIR, MAX_PATH);
 #else
 	_paths.lang_dir = str_fmt("%slang/", _paths.game_data_dir);

@@ -26,6 +26,7 @@
 #include "../../variables.h"
 #include "../../bridge.h"
 #include "../../date.h"
+#include "../../helpers.hpp"
 #include "default.h"
 
 // remove some day perhaps?
@@ -63,10 +64,10 @@ enum {
 
 #include "../../table/ai_rail.h"
 
-static byte GetRailTrackStatus(TileIndex tile)
+static TrackBits GetRailTrackStatus(TileIndex tile)
 {
 	uint32 r = GetTileTrackStatus(tile, TRANSPORT_RAIL);
-	return (byte) (r | r >> 8);
+	return (TrackBits)(byte) (r | r >> 8);
 }
 
 
@@ -644,8 +645,8 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 	}
 
 	if (fr->cargo == CT_PASSENGERS || fr->cargo == CT_MAIL) {
-		const Town* from = fr->from;
-		const Town* to   = fr->to;
+		const Town* from = (const Town*)fr->from;
+		const Town* to   = (const Town*)fr->to;
 
 		if (from->pct_pass_transported > 0x99 ||
 				to->pct_pass_transported > 0x99) {
@@ -783,7 +784,7 @@ static void AiWantLongIndustryRoute(Player *p)
 	p->ai.order_list_blocks[2] = 255;
 
 	p->ai.state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
-	p->ai.state_mode = -1;
+	p->ai.state_mode = UCHAR_MAX;
 	p->ai.state_counter = 0;
 	p->ai.timeout_counter = 0;
 }
@@ -851,7 +852,7 @@ static void AiWantMediumIndustryRoute(Player *p)
 	p->ai.order_list_blocks[1] = 1;
 	p->ai.order_list_blocks[2] = 255;
 	p->ai.state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
-	p->ai.state_mode = -1;
+	p->ai.state_mode = UCHAR_MAX;
 	p->ai.state_counter = 0;
 	p->ai.timeout_counter = 0;
 }
@@ -919,7 +920,7 @@ static void AiWantShortIndustryRoute(Player *p)
 	p->ai.order_list_blocks[1] = 1;
 	p->ai.order_list_blocks[2] = 255;
 	p->ai.state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
-	p->ai.state_mode = -1;
+	p->ai.state_mode = UCHAR_MAX;
 	p->ai.state_counter = 0;
 	p->ai.timeout_counter = 0;
 }
@@ -1020,7 +1021,7 @@ static void AiWantMailRoute(Player *p)
 	p->ai.order_list_blocks[1] = 1;
 	p->ai.order_list_blocks[2] = 255;
 	p->ai.state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
-	p->ai.state_mode = -1;
+	p->ai.state_mode = UCHAR_MAX;
 	p->ai.state_counter = 0;
 	p->ai.timeout_counter = 0;
 }
@@ -1089,7 +1090,7 @@ static void AiWantPassengerRoute(Player *p)
 	p->ai.order_list_blocks[1] = 1;
 	p->ai.order_list_blocks[2] = 255;
 	p->ai.state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
-	p->ai.state_mode = -1;
+	p->ai.state_mode = UCHAR_MAX;
 	p->ai.state_counter = 0;
 	p->ai.timeout_counter = 0;
 }
@@ -1164,7 +1165,7 @@ static void AiWantLongRoadIndustryRoute(Player *p)
 	p->ai.order_list_blocks[2] = 255;
 
 	p->ai.state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
-	p->ai.state_mode = -1;
+	p->ai.state_mode = UCHAR_MAX;
 	p->ai.state_counter = 0;
 	p->ai.timeout_counter = 0;
 }
@@ -1220,7 +1221,7 @@ static void AiWantMediumRoadIndustryRoute(Player *p)
 	p->ai.order_list_blocks[2] = 255;
 
 	p->ai.state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
-	p->ai.state_mode = -1;
+	p->ai.state_mode = UCHAR_MAX;
 	p->ai.state_counter = 0;
 	p->ai.timeout_counter = 0;
 }
@@ -1278,7 +1279,7 @@ static void AiWantLongRoadPassengerRoute(Player *p)
 	p->ai.order_list_blocks[2] = 255;
 
 	p->ai.state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
-	p->ai.state_mode = -1;
+	p->ai.state_mode = UCHAR_MAX;
 	p->ai.state_counter = 0;
 	p->ai.timeout_counter = 0;
 }
@@ -1334,7 +1335,7 @@ static void AiWantPassengerRouteInsideTown(Player *p)
 	p->ai.order_list_blocks[2] = 255;
 
 	p->ai.state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
-	p->ai.state_mode = -1;
+	p->ai.state_mode = UCHAR_MAX;
 	p->ai.state_counter = 0;
 	p->ai.timeout_counter = 0;
 }
@@ -1852,7 +1853,7 @@ static bool AiDoFollowTrack(const Player* p)
 	arpfd.tile2 = p->ai.cur_tile_a;
 	arpfd.flag = false;
 	arpfd.count = 0;
-	FollowTrack(p->ai.cur_tile_a + TileOffsByDiagDir(p->ai.cur_dir_a), 0x2000 | TRANSPORT_RAIL, p->ai.cur_dir_a^2,
+	FollowTrack(p->ai.cur_tile_a + TileOffsByDiagDir(p->ai.cur_dir_a), 0x2000 | TRANSPORT_RAIL, (DiagDirection)(p->ai.cur_dir_a^2),
 		(TPFEnumProc*)AiEnumFollowTrack, NULL, &arpfd);
 	return arpfd.count > 8;
 }
@@ -1941,7 +1942,7 @@ static bool AiCheckRailPathBetter(AiRailFinder *arf, const byte *p)
 		}
 	}
 	arf->recursive_mode = 0;
-	arf->cur_best_dist = (uint)-1;
+	arf->cur_best_dist = UINT_MAX;
 	arf->cur_best_depth = 0xff;
 
 	return better;
@@ -2185,7 +2186,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 		} else {
 			// Check if the bridge points in the right direction.
 			// This is not really needed the first place AiRemoveTileAndGoForward is called.
-			if (DiagDirToAxis(GetBridgeRampDirection(tile)) != (p->ai.cur_dir_a & 1U)) return false;
+			if (DiagDirToAxis(GetBridgeRampDirection(tile)) != (p->ai.cur_dir_a & 1)) return false;
 
 			tile = GetOtherBridgeEnd(tile);
 
@@ -2820,7 +2821,7 @@ static bool AiCheckRoadFinished(Player *p)
 	are.best_dist = (uint)-1;
 
 	for_each_bit(i, bits) {
-		FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, _dir_by_track[i], (TPFEnumProc*)AiEnumFollowRoad, NULL, &are);
+		FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, (DiagDirection)_dir_by_track[i], (TPFEnumProc*)AiEnumFollowRoad, NULL, &are);
 	}
 
 	if (DistanceManhattan(tile, are.dest) <= are.best_dist) return false;
@@ -3583,7 +3584,7 @@ static void AiStateRemoveStation(Player *p)
 	p->ai.state = AIS_1;
 
 	// Get a list of all stations that are in use by a vehicle
-	in_use = malloc(GetMaxStationIndex() + 1);
+	MallocT(&in_use, GetMaxStationIndex() + 1);
 	memset(in_use, 0, GetMaxStationIndex() + 1);
 	FOR_ALL_ORDERS(ord) {
 		if (ord->type == OT_GOTO_STATION) in_use[ord->dest] = 1;
@@ -3705,7 +3706,7 @@ pos_3:
 			return;
 		}
 
-		rails = 0;
+		rails = TRACK_BIT_NONE;
 
 		switch (GetBridgeRampDirection(tile)) {
 			default:
@@ -3798,7 +3799,6 @@ static void AiHandleTakeover(Player *p)
 		uint asked = p->bankrupt_asked;
 		Player *pp, *best_pl = NULL;
 		int32 best_val = -1;
-		uint old_p;
 
 		// Ask the guy with the highest performance hist.
 		FOR_ALL_PLAYERS(pp) {
@@ -3830,7 +3830,7 @@ static void AiHandleTakeover(Player *p)
 		// Too little money for computer to buy it?
 		if (best_pl->player_money >> 1 >= p->bankrupt_value) {
 			// Computer wants to buy it.
-			old_p = _current_player;
+			PlayerID old_p = _current_player;
 			_current_player = p->index;
 			DoCommand(0, old_p, 0, DC_EXEC, CMD_BUY_COMPANY);
 			_current_player = old_p;

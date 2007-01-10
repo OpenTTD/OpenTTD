@@ -9,6 +9,7 @@
 #include "tile.h"
 
 typedef enum RailTypes {
+	RAILTYPE_BEGIN    = 0,
 	RAILTYPE_RAIL     = 0,
 	RAILTYPE_ELECTRIC = 1,
 	RAILTYPE_MONO     = 2,
@@ -19,10 +20,17 @@ typedef enum RailTypes {
 
 typedef byte RailTypeMask;
 
+/** Allow incrementing of Track variables */
+DECLARE_POSTFIX_INCREMENT(RailType);
+/** Define basic enum properties */
+template <> struct EnumPropsT<RailType> : MakeEnumPropsT<RailType, byte, RAILTYPE_BEGIN, RAILTYPE_END, INVALID_RAILTYPE> {};
+typedef TinyEnumT<RailType> RailTypeByte;
+
 
 /** These are used to specify a single track.
  * Can be translated to a trackbit with TrackToTrackbit */
 typedef enum Track {
+	TRACK_BEGIN = 0,
 	TRACK_X     = 0,
 	TRACK_Y     = 1,
 	TRACK_UPPER = 2,
@@ -32,6 +40,12 @@ typedef enum Track {
 	TRACK_END,
 	INVALID_TRACK = 0xFF
 } Track;
+
+/** Allow incrementing of Track variables */
+DECLARE_POSTFIX_INCREMENT(Track);
+/** Define basic enum properties */
+template <> struct EnumPropsT<Track> : MakeEnumPropsT<Track, byte, TRACK_BEGIN, TRACK_END, INVALID_TRACK> {};
+typedef TinyEnumT<Track> TrackByte;
 
 
 /** Convert an Axis to the corresponding Track
@@ -62,9 +76,18 @@ typedef enum TrackBits {
 	TRACK_BIT_3WAY_SW = TRACK_BIT_X     | TRACK_BIT_LOWER | TRACK_BIT_LEFT,
 	TRACK_BIT_3WAY_NW = TRACK_BIT_Y     | TRACK_BIT_UPPER | TRACK_BIT_LEFT,
 	TRACK_BIT_ALL     = TRACK_BIT_CROSS | TRACK_BIT_HORZ  | TRACK_BIT_VERT,
-	TRACK_BIT_MASK    = 0x3FU
+	TRACK_BIT_MASK    = 0x3FU,
+	TRACK_BIT_WORMHOLE = 0x40U,
+	TRACK_BIT_SPECIAL = 0x80U,
+	INVALID_TRACK_BIT = 0xFF
 } TrackBits;
 
+/** Define basic enum properties */
+template <> struct EnumPropsT<TrackBits> : MakeEnumPropsT<TrackBits, byte, TRACK_BIT_NONE, TRACK_BIT_ALL, INVALID_TRACK_BIT> {};
+typedef TinyEnumT<TrackBits> TrackBitsByte;
+
+DECLARE_ENUM_AS_BIT_SET(TrackBits);
+DECLARE_ENUM_AS_BIT_INDEX(Track, TrackBits);
 
 /**
  * Maps a Track to the corresponding TrackBits value
@@ -84,6 +107,7 @@ static inline TrackBits AxisToTrackBits(Axis a)
 /** These are a combination of tracks and directions. Values are 0-5 in one
  * direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum Trackdirs {
+	TRACKDIR_BEGIN    =  0,
 	TRACKDIR_X_NE     =  0,
 	TRACKDIR_Y_SE     =  1,
 	TRACKDIR_UPPER_E  =  2,
@@ -101,6 +125,10 @@ typedef enum Trackdirs {
 	TRACKDIR_END,
 	INVALID_TRACKDIR  = 0xFF,
 } Trackdir;
+
+/** Define basic enum properties */
+template <> struct EnumPropsT<Trackdir> : MakeEnumPropsT<Trackdir, byte, TRACKDIR_BEGIN, TRACKDIR_END, INVALID_TRACKDIR> {};
+typedef TinyEnumT<Trackdir> TrackdirByte;
 
 /** These are a combination of tracks and directions. Values are 0-5 in one
  * direction (corresponding to the Track enum) and 8-13 in the other direction. */
@@ -122,6 +150,12 @@ typedef enum TrackdirBits {
 	TRACKDIR_BIT_MASK     = 0x3F3F,
 	INVALID_TRACKDIR_BIT  = 0xFFFF,
 } TrackdirBits;
+
+/** Define basic enum properties */
+template <> struct EnumPropsT<TrackdirBits> : MakeEnumPropsT<TrackdirBits, uint16, TRACKDIR_BIT_NONE, TRACKDIR_BIT_MASK, INVALID_TRACKDIR_BIT> {};
+typedef TinyEnumT<TrackdirBits> TrackdirBitsShort;
+DECLARE_ENUM_AS_BIT_SET(TrackdirBits);
+DECLARE_ENUM_AS_BIT_INDEX(Trackdir, TrackdirBits);
 
 /** This struct contains all the info that is needed to draw and construct tracks.
  */
@@ -214,6 +248,58 @@ enum {
 static inline TrackdirBits TrackdirToTrackdirBits(Trackdir trackdir) { return (TrackdirBits)(1 << trackdir); }
 
 /**
+* Removes first Track from TrackBits and returns it
+*/
+static inline Track RemoveFirstTrack(TrackBits &tracks)
+{
+	if (tracks != TRACK_BIT_NONE && tracks != INVALID_TRACK_BIT) {
+		Track first = (Track)FIND_FIRST_BIT(tracks);
+		tracks = ClrBitT(tracks, first);
+		return first;
+	}
+	return INVALID_TRACK;
+}
+
+/**
+* Removes first Trackdir from TrackdirBits and returns it
+*/
+static inline Trackdir RemoveFirstTrackdir(TrackdirBits &trackdirs)
+{
+	if (trackdirs != TRACKDIR_BIT_NONE && trackdirs != INVALID_TRACKDIR_BIT) {
+		Trackdir first = (Trackdir)FindFirstBit2x64(trackdirs);
+		trackdirs = ClrBitT(trackdirs, first);
+		return first;
+	}
+	return INVALID_TRACKDIR;
+}
+
+/**
+* Returns first Track from TrackBits or INVALID_TRACK
+*/
+static inline Track FindFirstTrack(TrackBits tracks)
+{
+	return (tracks != TRACK_BIT_NONE && tracks != INVALID_TRACK_BIT) ? (Track)FIND_FIRST_BIT(tracks) : INVALID_TRACK;
+}
+
+/**
+* Converts TrackBits to Track. TrackBits must contain just one Track or INVALID_TRACK_BIT!
+*/
+static inline Track TrackBitsToTrack(TrackBits tracks)
+{
+	assert (tracks == INVALID_TRACK_BIT || (tracks != TRACK_BIT_NONE && KILL_FIRST_BIT(tracks) == 0));
+	return tracks != INVALID_TRACK_BIT ? (Track)FIND_FIRST_BIT(tracks) : INVALID_TRACK;
+}
+
+/**
+* Returns first Trackdir from TrackdirBits or INVALID_TRACKDIR
+*/
+static inline Trackdir FindFirstTrackdir(TrackdirBits trackdirs)
+{
+	assert((trackdirs & ~TRACKDIR_BIT_MASK) == TRACKDIR_BIT_NONE);
+	return (trackdirs != TRACKDIR_BIT_NONE) ? (Trackdir)FindFirstBit2x64(trackdirs) : INVALID_TRACKDIR;
+}
+
+/**
  * These functions check the validity of Tracks and Trackdirs. assert against
  * them when convenient.
  */
@@ -263,7 +349,9 @@ static inline byte SignalOnTrack(Track track) {
 /**
  * Maps a trackdir to the reverse trackdir.
  */
-static inline Trackdir ReverseTrackdir(Trackdir trackdir) {
+static inline Trackdir ReverseTrackdir(Trackdir trackdir)
+{
+	assert(trackdir != INVALID_TRACKDIR);
 	return (Trackdir)(trackdir ^ 8);
 }
 

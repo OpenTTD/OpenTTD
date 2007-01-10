@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "thread.h"
 #include <stdlib.h>
+#include "helpers.hpp"
 
 #if defined(__AMIGA__) || defined(__MORPHOS__) || defined(NO_THREADS)
 OTTDThread *OTTDCreateThread(OTTDThreadFunc function, void *arg) { return NULL; }
@@ -24,20 +25,21 @@ struct OTTDThread {
 
 static void Proxy(void* arg)
 {
-	OTTDThread* t = arg;
+	OTTDThread* t = (OTTDThread*)arg;
 	t->ret = t->func(t->arg);
 }
 
 OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg)
 {
-	OTTDThread* t = malloc(sizeof(*t));
+	OTTDThread* t;
+	MallocT(&t, 1);
 
 	if (t == NULL) return NULL;
 
 	t->func = function;
 	t->arg  = arg;
 	t->thread = _beginthread(Proxy, NULL, 32768, t);
-	if (t->thread != -1) {
+	if (t->thread != (TID)-1) {
 		return t;
 	} else {
 		free(t);
@@ -72,7 +74,8 @@ struct OTTDThread {
 
 OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg)
 {
-	OTTDThread* t = malloc(sizeof(*t));
+	OTTDThread* t;
+	MallocT(&t, 1);
 
 	if (t == NULL) return NULL;
 
@@ -113,14 +116,15 @@ struct OTTDThread {
 
 static DWORD WINAPI Proxy(LPVOID arg)
 {
-	OTTDThread* t = arg;
+	OTTDThread* t = (OTTDThread*)arg;
 	t->ret = t->func(t->arg);
 	return 0;
 }
 
 OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg)
 {
-	OTTDThread* t = malloc(sizeof(*t));
+	OTTDThread* t;
+	MallocT(&t, 1);
 	DWORD dwThreadId;
 
 	if (t == NULL) return NULL;

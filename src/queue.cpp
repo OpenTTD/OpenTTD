@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "queue.h"
+#include "helpers.hpp"
 
 static void Stack_Clear(Queue* q, bool free_values)
 {
@@ -48,14 +49,15 @@ static Queue* init_stack(Queue* q, uint max_size)
 	q->free = Stack_Free;
 	q->data.stack.max_size = max_size;
 	q->data.stack.size = 0;
-	q->data.stack.elements = malloc(max_size * sizeof(*q->data.stack.elements));
+	MallocT(&q->data.stack.elements, max_size);
 	q->freeq = false;
 	return q;
 }
 
 Queue* new_Stack(uint max_size)
 {
-	Queue* q = malloc(sizeof(*q));
+	Queue* q;
+	MallocT(&q, 1);
 
 	init_stack(q, max_size);
 	q->freeq = true;
@@ -125,14 +127,15 @@ static Queue* init_fifo(Queue* q, uint max_size)
 	q->data.fifo.max_size = max_size;
 	q->data.fifo.head = 0;
 	q->data.fifo.tail = 0;
-	q->data.fifo.elements = malloc(max_size * sizeof(*q->data.fifo.elements));
+	MallocT(&q->data.fifo.elements, max_size);
 	q->freeq = false;
 	return q;
 }
 
 Queue* new_Fifo(uint max_size)
 {
-	Queue* q = malloc(sizeof(*q));
+	Queue* q;
+	MallocT(&q, 1);
 
 	init_fifo(q, max_size);
 	q->freeq = true;
@@ -166,7 +169,8 @@ static void InsSort_Free(Queue* q, bool free_values)
 
 static bool InsSort_Push(Queue* q, void* item, int priority)
 {
-	InsSortNode* newnode = malloc(sizeof(*newnode));
+	InsSortNode* newnode;
+	MallocT(&newnode, 1);
 
 	if (newnode == NULL) return false;
 	newnode->item = item;
@@ -220,7 +224,8 @@ void init_InsSort(Queue* q)
 
 Queue* new_InsSort(void)
 {
-	Queue* q = malloc(sizeof(*q));
+	Queue* q;
+	MallocT(&q, 1);
 
 	init_InsSort(q);
 	q->freeq = true;
@@ -299,7 +304,7 @@ static bool BinaryHeap_Push(Queue* q, void* item, int priority)
 	if (q->data.binaryheap.elements[q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS] == NULL) {
 		/* The currently allocated blocks are full, allocate a new one */
 		assert((q->data.binaryheap.size & BINARY_HEAP_BLOCKSIZE_MASK) == 0);
-		q->data.binaryheap.elements[q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS] = malloc(BINARY_HEAP_BLOCKSIZE * sizeof(*q->data.binaryheap.elements[0]));
+		MallocT(&q->data.binaryheap.elements[q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS], BINARY_HEAP_BLOCKSIZE);
 		q->data.binaryheap.blocks++;
 #ifdef QUEUE_DEBUG
 		printf("[BinaryHeap] Increasing size of elements to %d nodes\n", q->data.binaryheap.blocks *  BINARY_HEAP_BLOCKSIZE);
@@ -427,8 +432,8 @@ void init_BinaryHeap(Queue* q, uint max_size)
 	q->data.binaryheap.size = 0;
 	// We malloc memory in block of BINARY_HEAP_BLOCKSIZE
 	//   It autosizes when it runs out of memory
-	q->data.binaryheap.elements = calloc((max_size - 1) / BINARY_HEAP_BLOCKSIZE + 1, sizeof(*q->data.binaryheap.elements));
-	q->data.binaryheap.elements[0] = malloc(BINARY_HEAP_BLOCKSIZE * sizeof(*q->data.binaryheap.elements[0]));
+	CallocT(&q->data.binaryheap.elements, (max_size - 1) / BINARY_HEAP_BLOCKSIZE + 1);
+	MallocT(&q->data.binaryheap.elements[0], BINARY_HEAP_BLOCKSIZE);
 	q->data.binaryheap.blocks = 1;
 	q->freeq = false;
 #ifdef QUEUE_DEBUG
@@ -438,7 +443,8 @@ void init_BinaryHeap(Queue* q, uint max_size)
 
 Queue* new_BinaryHeap(uint max_size)
 {
-	Queue* q = malloc(sizeof(*q));
+	Queue* q;
+	MallocT(&q, 1);
 
 	init_BinaryHeap(q, max_size);
 	q->freeq = true;
@@ -464,7 +470,7 @@ void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets)
 	h->hash = hash;
 	h->size = 0;
 	h->num_buckets = num_buckets;
-	h->buckets = malloc(num_buckets * (sizeof(*h->buckets) + sizeof(*h->buckets_in_use)));
+	h->buckets = (HashNode*)malloc(num_buckets * (sizeof(*h->buckets) + sizeof(*h->buckets_in_use)));
 #ifdef HASH_DEBUG
 	debug("Buckets = %p", h->buckets);
 #endif
@@ -475,7 +481,8 @@ void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets)
 
 Hash* new_Hash(Hash_HashProc* hash, int num_buckets)
 {
-	Hash* h = malloc(sizeof(*h));
+	Hash* h;
+	MallocT(&h, 1);
 
 	init_Hash(h, hash, num_buckets);
 	h->freeh = true;
@@ -709,7 +716,7 @@ void* Hash_Set(Hash* h, uint key1, uint key2, void* value)
 		node = h->buckets + hash;
 	} else {
 		/* Add it after prev */
-		node = malloc(sizeof(*node));
+		MallocT(&node, 1);
 		prev->next = node;
 	}
 	node->next = NULL;

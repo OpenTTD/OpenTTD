@@ -26,7 +26,7 @@ typedef enum UnmovableType {
 static inline UnmovableType GetUnmovableType(TileIndex t)
 {
 	assert(IsTileType(t, MP_UNMOVABLE));
-	return _m[t].m5;
+	return (UnmovableType)_m[t].m5;
 }
 
 

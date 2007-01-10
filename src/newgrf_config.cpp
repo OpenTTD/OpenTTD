@@ -12,6 +12,7 @@
 #include "network/network_data.h"
 #include "newgrf.h"
 #include "newgrf_config.h"
+#include "helpers.hpp"
 
 #include "fileio.h"
 #include "fios.h"
@@ -123,7 +124,7 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 	/* Clear destination as it will be overwritten */
 	ClearGRFConfigList(dst);
 	for (; src != NULL; src = src->next) {
-		c = calloc(1, sizeof(*c));
+		CallocT(&c, 1);
 		*c = *src;
 		if (src->filename != NULL) c->filename = strdup(src->filename);
 		if (src->name     != NULL) c->name     = strdup(src->name);
@@ -269,7 +270,7 @@ static uint ScanPath(const char *path)
 			if (ext == NULL) continue;
 			if (strcasecmp(ext, ".grf") != 0) continue;
 
-			c = calloc(1, sizeof(*c));
+			CallocT(&c, 1);
 			c->filename = strdup(file);
 
 			if (FillGRFDetails(c, false)) {
@@ -374,7 +375,7 @@ char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
 
 	if (!create) return NULL;
 
-	grf = calloc(1, sizeof(*grf));
+	CallocT(&grf, 1);
 	grf->grfid = grfid;
 	grf->next  = unknown_grfs;
 	ttd_strlcpy(grf->name, UNKNOWN_GRF_NAME_PLACEHOLDER, sizeof(grf->name));
@@ -445,7 +446,8 @@ static void Load_NGRF(void)
 	GRFConfig **last = &first;
 
 	while (SlIterateArray() != -1) {
-		GRFConfig *c = calloc(1, sizeof(*c));
+		GRFConfig *c;
+		CallocT(&c, 1);
 		SlObject(c, _grfconfig_desc);
 
 		/* Append our configuration to the list */
@@ -461,7 +463,7 @@ static void Load_NGRF(void)
 	AppendStaticGRFConfigs(&_grfconfig);
 }
 
-const ChunkHandler _newgrf_chunk_handlers[] = {
+extern const ChunkHandler _newgrf_chunk_handlers[] = {
 	{ 'NGRF', Save_NGRF, Load_NGRF, CH_ARRAY | CH_LAST }
 };
 

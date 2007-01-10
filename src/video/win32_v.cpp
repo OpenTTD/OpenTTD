@@ -42,7 +42,7 @@ static void MakePalette(void)
 	LOGPALETTE *pal;
 	uint i;
 
-	pal = alloca(sizeof(LOGPALETTE) + (256-1) * sizeof(PALETTEENTRY));
+	pal = (LOGPALETTE*)alloca(sizeof(LOGPALETTE) + (256-1) * sizeof(PALETTEENTRY));
 
 	pal->palVersion = 0x300;
 	pal->palNumEntries = 256;
@@ -169,7 +169,7 @@ int RedrawScreenDebug(void)
 	dc = GetDC(_wnd.main_wnd);
 	dc2 = CreateCompatibleDC(dc);
 
-	old_bmp = SelectObject(dc2, _wnd.dib_sect);
+	old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
 	old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
 	BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
 	SelectPalette(dc, old_palette, TRUE);
@@ -222,7 +222,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			BeginPaint(hwnd, &ps);
 			dc = ps.hdc;
 			dc2 = CreateCompatibleDC(dc);
-			old_bmp = SelectObject(dc2, _wnd.dib_sect);
+			old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
 			old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
 
 			if (_pal_last_dirty != -1) {
@@ -358,7 +358,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			GetKeyboardState(ks);
 			if (ToUnicode(wParam, 0, ks, &w, 1, 0) != 1) {
 				/* On win9x ToUnicode always fails, so fall back to ToAscii */
-				if (ToAscii(wParam, 0, ks, &w, 0) != 1) w = 0; // no translation was possible
+				if (ToAscii(wParam, 0, ks, (LPWORD)&w, 0) != 1) w = 0; // no translation was possible
 			}
 
 			pressed_key = w | MapWindowsKey(wParam) << 16;
@@ -496,7 +496,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		}
 
 		case WM_ACTIVATEAPP:
-			_wnd.has_focus = (bool)wParam;
+			_wnd.has_focus = (wParam != 0);
 			break;
 	}
 	return DefWindowProc(hwnd, msg, wParam, lParam);
@@ -622,13 +622,13 @@ static bool AllocateDibSection(int w, int h)
 		_wnd.alloced_bits = NULL;
 	}
 
-	bi = alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD)*256);
+	bi = (BITMAPINFO*)alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD)*256);
 	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD)*256);
 	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
 
 	if (_wnd.double_size) {
 		w = ALIGN(w, 4);
-		_wnd.alloced_bits = _wnd.buffer_bits = malloc(w * h);
+		_wnd.alloced_bits = _wnd.buffer_bits = (Pixel*)malloc(w * h);
 		w *= 2;
 		h *= 2;
 	}

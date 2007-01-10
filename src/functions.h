@@ -10,7 +10,7 @@ uint GetPartialZ(int x, int y, Slope corners);
 uint GetSlopeZ(int x, int y);
 uint32 GetTileTrackStatus(TileIndex tile, TransportType mode);
 void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
-void ChangeTileOwner(TileIndex tile, byte old_player, byte new_player);
+void ChangeTileOwner(TileIndex tile, PlayerID old_player, PlayerID new_player);
 void AnimateTile(TileIndex tile);
 void ClickTile(TileIndex tile);
 void GetTileDesc(TileIndex tile, TileDesc *td);
@@ -217,5 +217,4 @@ void HandleExitGameRequest(void);
 
 void DeterminePaths(void);
 
-void CSleep(int milliseconds);
 #endif /* FUNCTIONS_H */

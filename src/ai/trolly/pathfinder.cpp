@@ -57,7 +57,7 @@ static bool IsRoad(TileIndex tile)
 // Check if the current tile is in our end-area
 static int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *current)
 {
-	const Ai_PathFinderInfo* PathFinderInfo = aystar->user_target;
+	const Ai_PathFinderInfo* PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 
 	// It is not allowed to have a station on the end of a bridge or tunnel ;)
 	if (current->path.node.user_data[0] != 0) return AYSTAR_DONE;
@@ -82,7 +82,7 @@ static uint AiPathFinder_Hash(uint key1, uint key2)
 static void AyStar_AiPathFinder_Free(AyStar *aystar)
 {
 	AyStarMain_Free(aystar);
-	free(aystar);
+	delete aystar;
 }
 
 
@@ -99,7 +99,7 @@ AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFin
 	uint x;
 	uint y;
 	// Create AyStar
-	AyStar *result = malloc(sizeof(AyStar));
+	AyStar *result = new AyStar();
 	init_AyStar(result, AiPathFinder_Hash, 1 << 10);
 	// Set the function pointers
 	result->CalculateG = AyStar_AiPathFinder_CalculateG;
@@ -170,7 +170,7 @@ void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo
 // The h-value, simple calculation
 static int32 AyStar_AiPathFinder_CalculateH(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
 {
-	const Ai_PathFinderInfo* PathFinderInfo = aystar->user_target;
+	const Ai_PathFinderInfo* PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 	int r, r2;
 
 	if (PathFinderInfo->end_direction != AI_PATHFINDER_NO_DIRECTION) {
@@ -214,7 +214,6 @@ static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *curre
 // What tiles are around us.
 static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *current)
 {
-	uint i;
 	int ret;
 	int dir;
 
@@ -223,7 +222,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 	aystar->num_neighbours = 0;
 
 	// Go through all surrounding tiles and check if they are within the limits
-	for (i = 0; i < 4; i++) {
+	for (DiagDirection i = DIAGDIR_BEGIN; i < DIAGDIR_END; i++) {
 		TileIndex ctile = current->path.node.tile; // Current tile
 		TileIndex atile = ctile + TileOffsByDiagDir(i); // Adjacent tile
 
@@ -238,7 +237,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 					if (IsTunnel(atile)) {
 						if (GetTunnelDirection(atile) != i) continue;
 					} else {
-						if ((_m[atile].m5 & 1U) != DiagDirToAxis(i)) continue;
+						if ((_m[atile].m5 & 1) != DiagDirToAxis(i)) continue;
 					}
 				}
 			}
@@ -246,7 +245,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 			if (!PathFinderInfo->rail_or_road && IsRoad(ctile)) {
 				if (IsTileType(ctile, MP_TUNNELBRIDGE)) {
 					// An existing bridge/tunnel... let's test the direction ;)
-					if ((_m[ctile].m5 & 1U) != (i & 1)) continue;
+					if ((_m[ctile].m5 & 1) != (i & 1)) continue;
 				}
 			}
 
@@ -254,7 +253,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 					(AI_PATHFINDER_FLAG_TUNNEL & current->path.node.user_data[0]) != 0) {
 				// We are a bridge/tunnel, how cool!!
 				//  This means we can only point forward.. get the direction from the user_data
-				if (i != (current->path.node.user_data[0] >> 8)) continue;
+				if ((uint)i != (current->path.node.user_data[0] >> 8)) continue;
 			}
 			dir = 0;
 
@@ -371,7 +370,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 
 
 extern uint GetRailFoundation(Slope tileh, TrackBits bits); // XXX function declaration in .c
-extern uint GetRoadFoundation(Slope tileh, uint bits); // XXX function declaration in .c
+extern uint GetRoadFoundation(Slope tileh, RoadBits bits); // XXX function declaration in .c
 extern uint GetBridgeFoundation(Slope tileh, Axis); // XXX function declaration in .c
 enum {
 	BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
@@ -417,7 +416,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		// Skip if the tile was from a bridge or tunnel
 		if (parent->path.node.user_data[0] == 0 && current->user_data[0] == 0) {
 			if (PathFinderInfo->rail_or_road) {
-				r = GetRailFoundation(parent_tileh, 1 << AiNew_GetRailDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
+				r = GetRailFoundation(parent_tileh, (TrackBits)(1 << AiNew_GetRailDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile)));
 				// Maybe is BRIDGE_NO_FOUNDATION a bit strange here, but it contains just the right information..
 				if (r >= 15 || (r == 0 && HASBIT(BRIDGE_NO_FOUNDATION, tileh))) {
 					res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
@@ -426,7 +425,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 				}
 			} else {
 				if (!IsRoad(parent->path.node.tile) || !IsTileType(parent->path.node.tile, MP_TUNNELBRIDGE)) {
-					r = GetRoadFoundation(parent_tileh, AiNew_GetRoadDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
+					r = GetRoadFoundation(parent_tileh, (RoadBits)AiNew_GetRoadDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
 					if (r >= 15 || r == 0) {
 						res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 					} else {
@@ -452,13 +451,13 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		// Check if we are going up or down, first for the starting point
 		// In user_data[0] is at the 8th bit the direction
 		if (!HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh)) {
-			if (GetBridgeFoundation(parent_tileh, (current->user_data[0] >> 8) & 1) < 15) {
+			if (GetBridgeFoundation(parent_tileh, (Axis)((current->user_data[0] >> 8) & 1)) < 15) {
 				res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
 			}
 		}
 		// Second for the end point
 		if (!HASBIT(BRIDGE_NO_FOUNDATION, tileh)) {
-			if (GetBridgeFoundation(tileh, (current->user_data[0] >> 8) & 1) < 15) {
+			if (GetBridgeFoundation(tileh, (Axis)((current->user_data[0] >> 8) & 1)) < 15) {
 				res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
 			}
 		}

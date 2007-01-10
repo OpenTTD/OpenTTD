@@ -396,11 +396,11 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 		DrawFrameRect(214, 23, 280, 26, 14, FR_LOWERED);
 
 		DrawFrameRect(
-			108 + msf.music_vol / 2, 22, 111 + msf.music_vol / 2, 28, 14, 0
+			108 + msf.music_vol / 2, 22, 111 + msf.music_vol / 2, 28, 14, FR_NONE
 		);
 
 		DrawFrameRect(
-			214 + msf.effect_vol / 2, 22, 217 + msf.effect_vol / 2, 28, 14, 0
+			214 + msf.effect_vol / 2, 22, 217 + msf.effect_vol / 2, 28, 14, FR_NONE
 		);
 	} break;
 

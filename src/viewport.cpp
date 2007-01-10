@@ -680,9 +680,7 @@ static void DrawTileSelection(const TileInfo *ti)
 				side = 0;
 			} else {
 				TileIndex start = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
-				int diffx = myabs(TileX(start) - TileX(ti->tile));
-				int diffy = myabs(TileY(start) - TileY(ti->tile));
-				side = myabs(diffx - diffy);
+				side = delta(delta(TileX(start), TileX(ti->tile)), delta(TileY(start), TileY(ti->tile)));
 			}
 
 			image = SPR_AUTORAIL_BASE + _AutorailTilehSprite[ti->tileh][_AutorailType[dir][side]];
@@ -838,7 +836,7 @@ static void AddStation(const Station *st, StringID str, uint16 width)
 {
 	StringSpriteToDraw *sstd;
 
-	sstd = AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities);
+	sstd = (StringSpriteToDraw*)AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities);
 	if (sstd != NULL) {
 		sstd->color = (st->owner == OWNER_NONE || st->facilities == 0) ? 0xE : _player_colors[st->owner];
 		sstd->width = width;
@@ -905,7 +903,7 @@ static void AddSign(const Sign *si, StringID str, uint16 width)
 {
 	StringSpriteToDraw *sstd;
 
-	sstd = AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->str, 0);
+	sstd = (StringSpriteToDraw*)AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->str, 0);
 	if (sstd != NULL) {
 		sstd->color = (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner];
 		sstd->width = width;
@@ -972,7 +970,7 @@ static void AddWaypoint(const Waypoint *wp, StringID str, uint16 width)
 {
 	StringSpriteToDraw *sstd;
 
-	sstd = AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, str, wp->index, 0);
+	sstd = (StringSpriteToDraw*)AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, str, wp->index, 0);
 	if (sstd != NULL) {
 		sstd->color = (wp->deleted ? 0xE : 11);
 		sstd->width = width;
@@ -1175,7 +1173,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 			if (!(_display_opt & DO_TRANS_SIGNS) || ss->string == STR_2806)
 				DrawFrameRect(
 					x, y, x + w, bottom, ss->color,
-					(_display_opt & DO_TRANS_BUILDINGS) ? FR_TRANSPARENT : 0
+					(_display_opt & DO_TRANS_BUILDINGS) ? FR_TRANSPARENT : FR_NONE
 				);
 		}
 
@@ -2318,8 +2316,8 @@ calc_heightdiff_single_direction:;
 			int limit = (_thd.sizelimit - 1) * TILE_SIZE;
 			x = sx + clamp(x - sx, -limit, limit);
 			y = sy + clamp(y - sy, -limit, limit);
-			/* Fallthrough */
-		case VPM_X_AND_Y: /* drag an X by Y area */
+			} /* Fallthrough */
+		case VPM_X_AND_Y: { /* drag an X by Y area */
 			if (_patches.measure_tooltip) {
 				static const StringID measure_strings_area[] = {
 					STR_NULL, STR_NULL, STR_MEASURE_AREA, STR_MEASURE_AREA_HEIGHTDIFF
@@ -2327,8 +2325,8 @@ calc_heightdiff_single_direction:;
 
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
-				uint dx = abs(TileX(t0) - TileX(t1)) + 1;
-				uint dy = abs(TileY(t0) - TileY(t1)) + 1;
+				uint dx = delta(TileX(t0), TileX(t1)) + 1;
+				uint dy = delta(TileY(t0), TileY(t1)) + 1;
 				byte index = 0;
 				uint params[3];
 

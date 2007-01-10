@@ -5,6 +5,8 @@
 #include "../../stdafx.h"
 #include "../../macros.h"
 #include "../../string.h"
+#include "../../helpers.hpp"
+#include "../network_data.h"
 
 #include "packet.h"
 
@@ -24,7 +26,8 @@ extern void NORETURN CDECL error(const char *str, ...);
  */
 Packet *NetworkSend_Init(const PacketType type)
 {
-	Packet *packet = malloc(sizeof(Packet));
+	Packet *packet;
+	MallocT(&packet, 1);
 	/* An error is inplace here, because it simply means we ran out of memory. */
 	if (packet == NULL) error("Failed to allocate Packet");
 
@@ -109,7 +112,7 @@ void NetworkSend_string(Packet *packet, const char* data)
  */
 
 
-extern uint CloseConnection(NetworkClientState *cs);
+extern NetworkRecvStatus CloseConnection(NetworkClientState *cs);
 
 /** Is it safe to read from the packet, i.e. didn't we run over the buffer ? */
 static inline bool CanReadFromPacket(NetworkClientState *cs, const Packet *packet, const uint bytes_to_read)

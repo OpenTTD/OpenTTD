@@ -794,7 +794,7 @@ static void AiNew_State_FindDepot(Player *p)
 
 	for (i=2;i<p->ainew.path_info.route_length-2;i++) {
 		tile = p->ainew.path_info.route[i];
-		for (j = 0; j < 4; j++) {
+		for (j = DIAGDIR_BEGIN; j < DIAGDIR_END; j++) {
 			TileIndex t = tile + TileOffsByDiagDir(j);
 
 			if (IsTileType(t, MP_STREET) &&
@@ -825,7 +825,7 @@ static void AiNew_State_FindDepot(Player *p)
 
 		tile = p->ainew.path_info.route[i];
 
-		for (j = 0; j < 4; j++) {
+		for (j = DIAGDIR_BEGIN; j < DIAGDIR_END; j++) {
 			TileIndex t = tile + TileOffsByDiagDir(j);
 
 			// It may not be placed on the road/rail itself
@@ -901,7 +901,8 @@ static int AiNew_HowManyVehicles(Player *p)
 		}
 
 		// This is because moving 60% is more than we can dream of!
-		max_cargo *= 0.6;
+		max_cargo *= 6;
+		max_cargo /= 10;
 		// We want all the cargo to be gone in a month.. so, we know the cargo it delivers
 		//  we know what the vehicle takes with him, and we know the time it takes him
 		//  to get back here.. now let's do some math!
@@ -1051,7 +1052,7 @@ static void AiNew_State_BuildPath(Player *p)
 					dir3 = p->ainew.to_direction;
 				}
 
-				ret = AI_DoCommand(tile, DiagDirToRoadBits(ReverseDiagDir(dir1)), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				ret = AI_DoCommand(tile, DiagDirToRoadBits(ReverseDiagDir((DiagDirection)dir1)), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (!CmdFailed(ret)) {
 					dir1 = TileOffsByDiagDir(dir1);
 					if (IsTileType(tile + dir1, MP_CLEAR) || IsTileType(tile + dir1, MP_TREES)) {
@@ -1063,7 +1064,7 @@ static void AiNew_State_BuildPath(Player *p)
 					}
 				}
 
-				ret = AI_DoCommand(tile, DiagDirToRoadBits(ReverseDiagDir(dir2)), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				ret = AI_DoCommand(tile, DiagDirToRoadBits(ReverseDiagDir((DiagDirection)dir2)), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (!CmdFailed(ret)) {
 					dir2 = TileOffsByDiagDir(dir2);
 					if (IsTileType(tile + dir2, MP_CLEAR) || IsTileType(tile + dir2, MP_TREES)) {
@@ -1075,7 +1076,7 @@ static void AiNew_State_BuildPath(Player *p)
 					}
 				}
 
-				ret = AI_DoCommand(tile, DiagDirToRoadBits(dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				ret = AI_DoCommand(tile, DiagDirToRoadBits((DiagDirection)dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (!CmdFailed(ret)) {
 					dir3 = TileOffsByDiagDir(dir3);
 					if (IsTileType(tile + dir3, MP_CLEAR) || IsTileType(tile + dir3, MP_TREES)) {

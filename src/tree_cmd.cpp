@@ -28,20 +28,20 @@ static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 {
 	switch (_opt.landscape) {
 		case LT_NORMAL:
-			return seed * TREE_COUNT_TEMPERATE / 256 + TREE_TEMPERATE;
+			return (TreeType)(seed * TREE_COUNT_TEMPERATE / 256 + TREE_TEMPERATE);
 
 		case LT_HILLY:
-			return seed * TREE_COUNT_SUB_ARCTIC / 256 + TREE_SUB_ARCTIC;
+			return (TreeType)(seed * TREE_COUNT_SUB_ARCTIC / 256 + TREE_SUB_ARCTIC);
 
 		case LT_DESERT:
 			switch (GetTropicZone(tile)) {
-				case TROPICZONE_INVALID: return seed * TREE_COUNT_SUB_TROPICAL / 256 + TREE_SUB_TROPICAL;
-				case TROPICZONE_DESERT:  return (seed > 12) ? TREE_INVALID : TREE_CACTUS;
-				default:                 return seed * TREE_COUNT_RAINFOREST / 256 + TREE_RAINFOREST;
+				case TROPICZONE_INVALID: return (TreeType)(seed * TREE_COUNT_SUB_TROPICAL / 256 + TREE_SUB_TROPICAL);
+				case TROPICZONE_DESERT:  return (TreeType)((seed > 12) ? TREE_INVALID : TREE_CACTUS);
+				default:                 return (TreeType)(seed * TREE_COUNT_RAINFOREST / 256 + TREE_RAINFOREST);
 			}
 
 		default:
-			return seed * TREE_COUNT_TOYLAND / 256 + TREE_TOYLAND;
+			return (TreeType)(seed * TREE_COUNT_TOYLAND / 256 + TREE_TOYLAND);
 	}
 }
 
@@ -55,10 +55,10 @@ static void PlaceTree(TileIndex tile, uint32 r)
 		// above snowline?
 		if (_opt.landscape == LT_HILLY && GetTileZ(tile) > _opt.snow_line) {
 			SetTreeGroundDensity(tile, TREE_GROUND_SNOW_DESERT, 3);
-			SetTreeCounter(tile, GB(r, 24, 3));
+			SetTreeCounter(tile, (TreeGround)GB(r, 24, 3));
 		} else {
-			SetTreeGroundDensity(tile, GB(r, 28, 1), 0);
-			SetTreeCounter(tile, GB(r, 24, 4));
+			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 0);
+			SetTreeCounter(tile, (TreeGround)GB(r, 24, 4));
 		}
 	}
 }
@@ -116,7 +116,7 @@ void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 			continue;
 
 		/* Not too much height difference */
-		if (myabs(GetTileZ(cur_tile) - height) > 2) continue;
+		if (delta(GetTileZ(cur_tile), height) > 2) continue;
 
 		/* Place one tree and quit */
 		PlaceTree(cur_tile, r);
@@ -278,7 +278,7 @@ int32 CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 								ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM);
 						}
 
-						treetype = p1;
+						treetype = (TreeType)p1;
 						if (treetype == TREE_INVALID) {
 							treetype = GetRandomTreeType(tile, GB(Random(), 24, 8));
 							if (treetype == TREE_INVALID) treetype = TREE_CACTUS;
@@ -408,7 +408,7 @@ static void DrawTile_Trees(TileInfo *ti)
 static uint GetSlopeZ_Trees(TileIndex tile, uint x, uint y)
 {
 	uint z;
-	uint tileh = GetTileSlope(tile, &z);
+	Slope tileh = GetTileSlope(tile, &z);
 
 	return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 }
@@ -654,7 +654,7 @@ void InitializeTrees(void)
 }
 
 
-const TileTypeProcs _tile_type_trees_procs = {
+extern const TileTypeProcs _tile_type_trees_procs = {
 	DrawTile_Trees,           /* draw_tile_proc */
 	GetSlopeZ_Trees,          /* get_slope_z_proc */
 	ClearTile_Trees,          /* clear_tile_proc */

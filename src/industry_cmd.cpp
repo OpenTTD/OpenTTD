@@ -765,14 +765,14 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, Axis direct
 		tile = TILE_MASK(tile);
 
 		if (IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) {
-			byte or = type;
+			byte or_ = type;
 
-			if (or == 1 && CHANCE16(1, 7)) or = 2;
+			if (or_ == 1 && CHANCE16(1, 7)) or_ = 2;
 
 			if (direction == AXIS_X) {
-				SetFenceSE(tile, or);
+				SetFenceSE(tile, or_);
 			} else {
-				SetFenceSW(tile, or);
+				SetFenceSW(tile, or_);
 			}
 		}
 
@@ -942,7 +942,7 @@ static void ProduceIndustryGoods(Industry *i)
 	if ((i->counter & 0x3F) == 0) {
 		if (CHANCE16R(1,14,r) && (num=_industry_sounds[i->type][0]) != 0) {
 			SndPlayTileFx(
-				_industry_sounds[i->type][1] + (((r >> 16) * num) >> 16),
+				(SoundFx)(_industry_sounds[i->type][1] + (((r >> 16) * num) >> 16)),
 				i->xy);
 		}
 	}
@@ -1225,7 +1225,7 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
 			return false;
 
 		/* Don't allow too big of a change if this is the sub-tile check */
-		if (internal != 0 && myabs(curh - height) > 1) return false;
+		if (internal != 0 && delta(curh, height) > 1) return false;
 
 		/* Different height, so the surrounding tiles of this tile
 		 *  has to be correct too (in level, or almost in level)
@@ -1353,7 +1353,7 @@ static Industry *AllocateIndustry(void)
 	return AddBlockToPool(&_Industry_pool) ? AllocateIndustry() : NULL;
 }
 
-static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, const Town *t, byte owner)
+static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, const Town *t, Owner owner)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	uint32 r;
@@ -1595,25 +1595,25 @@ static void ExtChangeIndustryProduction(Industry *i)
 		default: /* INDUSTRY_PRODUCTION */
 			for (j = 0; j < 2 && i->produced_cargo[j] != CT_INVALID; j++){
 				uint32 r = Random();
-				int old, new, percent;
+				int old_prod, new_prod, percent;
 				int mag;
 
-				new = old = i->production_rate[j];
+				new_prod = old_prod = i->production_rate[j];
 				if (CHANCE16I(20, 1024, r))
-					new -= ((RandomRange(50) + 10) * old) >> 8;
+					new_prod -= ((RandomRange(50) + 10) * old_prod) >> 8;
 				if (CHANCE16I(20 + (i->pct_transported[j] * 20 >> 8), 1024, r >> 16))
-					new += ((RandomRange(50) + 10) * old) >> 8;
+					new_prod += ((RandomRange(50) + 10) * old_prod) >> 8;
 
-				new = clamp(new, 0, 255);
-				if (new == old) {
+				new_prod = clamp(new_prod, 0, 255);
+				if (new_prod == old_prod) {
 					closeit = false;
 					continue;
 				}
 
-				percent = new * 100 / old - 100;
-				i->production_rate[j] = new;
+				percent = new_prod * 100 / old_prod - 100;
+				i->production_rate[j] = new_prod;
 
-				if (new >= indspec->production_rate[j] / 4)
+				if (new_prod >= indspec->production_rate[j] / 4)
 					closeit = false;
 
 				mag = abs(percent);
@@ -1827,7 +1827,7 @@ void InitializeIndustries(void)
 	_industry_sound_tile = 0;
 }
 
-const TileTypeProcs _tile_type_industry_procs = {
+extern const TileTypeProcs _tile_type_industry_procs = {
 	DrawTile_Industry,           /* draw_tile_proc */
 	GetSlopeZ_Industry,          /* get_slope_z_proc */
 	ClearTile_Industry,          /* clear_tile_proc */
@@ -1905,6 +1905,6 @@ static void Load_INDY(void)
 	}
 }
 
-const ChunkHandler _industry_chunk_handlers[] = {
+extern const ChunkHandler _industry_chunk_handlers[] = {
 	{ 'INDY', Save_INDY, Load_INDY, CH_ARRAY | CH_LAST},
 };

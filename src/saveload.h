@@ -3,6 +3,12 @@
 #ifndef SAVELOAD_H
 #define SAVELOAD_H
 
+#ifdef SIZE_MAX
+#undef SIZE_MAX
+#endif
+
+#define SIZE_MAX ((size_t)-1)
+
 typedef enum SaveOrLoadResult {
 	SL_OK     = 0, // completed successfully
 	SL_ERROR  = 1, // error that was caught before internal structures were modified

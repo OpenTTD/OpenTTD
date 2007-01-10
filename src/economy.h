@@ -29,7 +29,8 @@ typedef struct Subsidy {
 } Subsidy;
 
 
-enum {
+enum ScoreID {
+	SCORE_BEGIN      = 0,
 	SCORE_VEHICLES   = 0,
 	SCORE_STATIONS   = 1,
 	SCORE_MIN_PROFIT = 2,
@@ -40,12 +41,13 @@ enum {
 	SCORE_MONEY      = 7,
 	SCORE_LOAN       = 8,
 	SCORE_TOTAL      = 9, // This must always be the last entry
-
-	NUM_SCORE = 10, // How many scores are there..
+	SCORE_END        = 10, // How many scores are there..
 
 	SCORE_MAX = 1000 // The max score that can be in the performance history
 	//  the scores together of score_info is allowed to be more!
 };
+
+DECLARE_POSTFIX_INCREMENT(ScoreID);
 
 typedef struct ScoreInfo {
 	byte id;    // Unique ID of the score
@@ -54,7 +56,7 @@ typedef struct ScoreInfo {
 } ScoreInfo;
 
 extern const ScoreInfo _score_info[];
-extern int _score_part[MAX_PLAYERS][NUM_SCORE];
+extern int _score_part[MAX_PLAYERS][SCORE_END];
 
 int UpdateCompanyRatingAndValue(Player *p, bool update);
 

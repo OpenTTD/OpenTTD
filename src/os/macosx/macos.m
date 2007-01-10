@@ -8,11 +8,7 @@
 #include <mach/machine.h>
 #include <stdio.h>
 #include "../../stdafx.h"
-#include "../../openttd.h"
-#include "../../newgrf.h"
-#include "../../gfx.h"
 #include "../../macros.h"
-#include "../../string.h"
 
 #ifndef CPU_SUBTYPE_POWERPC_970
 #define CPU_SUBTYPE_POWERPC_970 ((cpu_subtype_t) 100)
@@ -25,6 +21,8 @@
  * Note: TrueLight's crosscompiler can handle this, but it likely needs a manual modification for each change in this file.
  * To insure that the crosscompiler still works, let him try any changes before they are committed
  */
+
+void ToggleFullScreen(bool fs);
 
 static char *GetOSString(void)
 {
@@ -74,7 +72,7 @@ static char *GetOSString(void)
 	}
 
 	// make a list of used newgrf files
-	if (_first_grffile != NULL) {
+/*	if (_first_grffile != NULL) {
 		char* n = newgrf;
 		const GRFFile* file;
 
@@ -82,9 +80,9 @@ static char *GetOSString(void)
 			n = strecpy(n, " ", lastof(newgrf));
 			n = strecpy(n, file->filename, lastof(newgrf));
 		}
-	} else {
+	} else {*/
 		sprintf(newgrf, "none");
-	}
+//	}
 
 	snprintf(
 		buffer, lengthof(buffer),

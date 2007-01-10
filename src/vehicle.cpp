@@ -35,6 +35,7 @@
 #include "date.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
+#include "helpers.hpp"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
@@ -145,7 +146,7 @@ bool EnsureNoVehicle(TileIndex tile)
 
 static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
-	const TileInfo *ti = data;
+	const TileInfo *ti = (const TileInfo*)data;
 
 	if (v->tile != ti->tile || v->type == VEH_Disaster) return NULL;
 	if (v->z_pos > ti->z) return NULL;
@@ -171,7 +172,7 @@ Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z)
 	ti.tile = tile;
 	ti.z = z;
 
-	return VehicleFromPos(tile, &ti, EnsureNoVehicleProcZ);
+	return (Vehicle*)VehicleFromPos(tile, &ti, EnsureNoVehicleProcZ);
 }
 
 Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z)
@@ -643,7 +644,7 @@ void CallVehicleTicks(void)
 	// hotfix for desync problem:
 	//  for MP games invalidate the YAPF cache every tick to keep it exactly the same on the server and all clients
 	if (_networking) {
-		YapfNotifyTrackLayoutChange(0, 0);
+		YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
 	}
 #endif //ENABLE_NETWORK
 
@@ -1959,7 +1960,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 
 	if (v->cargo_type == new_cargo_type || CanRefitTo(engine_type, v->cargo_type)) {
 		if (VerifyAutoreplaceRefitForOrders(v, engine_type)) {
-			return v->cargo_type == new_cargo_type ? CT_NO_REFIT : v->cargo_type;
+			return v->cargo_type == new_cargo_type ? (CargoID)CT_NO_REFIT : v->cargo_type;
 		} else {
 			return CT_INVALID;
 		}
@@ -2258,7 +2259,7 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 static inline void ExtendVehicleListSize(const Vehicle ***engine_list, uint16 *engine_list_length, uint16 step_size)
 {
 	*engine_list_length = min(*engine_list_length + step_size, GetMaxVehicleIndex() + 1);
-	*engine_list = realloc((void*)*engine_list, (*engine_list_length) * sizeof((*engine_list)[0]));
+	ReallocT((Vehicle ***)/* NO & */engine_list, *engine_list_length);
 }
 
 /** Generates a list of vehicles inside a depot
@@ -2435,7 +2436,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 		 * We will still make it have room for 50 extra vehicles to prevent having
 		 * to move the whole array if just one vehicle is added later */
 		*length_of_array = n + 50;
-		*sort_list = realloc((void*)*sort_list, (*length_of_array) * sizeof((*sort_list)[0]));
+		ReallocT((Vehicle***)/* NO & */sort_list, (*length_of_array) * sizeof((*sort_list)[0]));
 	}
 
 	return n;
@@ -2460,7 +2461,7 @@ int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID own
 	/* Send all the vehicles to a depot */
 	for (i = 0; i < n; i++) {
 		const Vehicle *v = sort_list[i];
-		int32 ret = DoCommand(v->tile, v->index, service | DEPOT_DONT_CANCEL, flags, CMD_SEND_TO_DEPOT(type));
+		int32 ret = DoCommand(v->tile, v->index, (service ? 1 : 0) | DEPOT_DONT_CANCEL, flags, CMD_SEND_TO_DEPOT(type));
 
 		/* Return 0 if DC_EXEC is not set this is a valid goto depot command)
 			* In this case we know that at least one vehicle can be sent to a depot
@@ -2505,7 +2506,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		case VEH_Ship:
 			InvalidateWindowClasses(WC_SHIPS_LIST);
-			v->u.ship.state = 0x80;
+			v->u.ship.state = TRACK_BIT_SPECIAL;
 			RecalcShipStuff(v);
 			break;
 
@@ -2709,7 +2710,7 @@ Direction GetDirectionTowards(const Vehicle* v, int x, int y)
 
 Trackdir GetVehicleTrackdir(const Vehicle* v)
 {
-	if (v->vehstatus & VS_CRASHED) return 0xFF;
+	if (v->vehstatus & VS_CRASHED) return INVALID_TRACKDIR;
 
 	switch (v->type) {
 		case VEH_Train:
@@ -2719,14 +2720,14 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 			if (v->u.rail.track == 0x40) /* train in tunnel, so just use his direction and assume a diagonal track */
 				return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 
-			return TrackDirectionToTrackdir(FIND_FIRST_BIT(v->u.rail.track),v->direction);
+			return TrackDirectionToTrackdir(FindFirstTrack(v->u.rail.track), v->direction);
 
 		case VEH_Ship:
 			if (IsShipInDepot(v))
 				/* We'll assume the ship is facing outwards */
 				return DiagdirToDiagTrackdir(GetShipDepotDirection(v->tile));
 
-			return TrackDirectionToTrackdir(FIND_FIRST_BIT(v->u.ship.state),v->direction);
+			return TrackDirectionToTrackdir(FindFirstTrack(v->u.ship.state), v->direction);
 
 		case VEH_Road:
 			if (IsRoadVehInDepot(v)) /* We'll assume the road vehicle is facing outwards */
@@ -2736,13 +2737,13 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 				return DiagdirToDiagTrackdir(GetRoadStopDir(v->tile)); /* Road vehicle in a station */
 
 			/* If vehicle's state is a valid track direction (vehicle is not turning around) return it */
-			if ((v->u.road.state & 7) < 6) return v->u.road.state;
+			if ((v->u.road.state & 7) < 6) return (Trackdir)v->u.road.state;
 
 			/* Vehicle is turning around, get the direction from vehicle's direction */
 			return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 
 		/* case VEH_Aircraft: case VEH_Special: case VEH_Disaster: */
-		default: return 0xFF;
+		default: return INVALID_TRACKDIR;
 	}
 }
 /* Return value has bit 0x2 set, when the vehicle enters a station. Then,
@@ -2780,7 +2781,7 @@ UnitID GetFreeUnitNumber(byte type)
 	if (max > gmax) {
 		gmax = max;
 		free(cache);
-		cache = malloc((max + 1) * sizeof(*cache));
+		MallocT(&cache, max + 1);
 	}
 
 	// Clear the cache
@@ -2908,7 +2909,7 @@ PalSpriteID GetVehiclePalette(const Vehicle *v)
 }
 
 // Save and load of vehicles
-const SaveLoad _common_veh_desc[] = {
+extern const SaveLoad _common_veh_desc[] = {
 	    SLE_VAR(Vehicle, subtype,              SLE_UINT8),
 
 	    SLE_REF(Vehicle, next,                 REF_VEHICLE_OLD),
@@ -3174,7 +3175,7 @@ static void Save_VEHS(void)
 	// Write the vehicles
 	FOR_ALL_VEHICLES(v) {
 		SlSetArrayIndex(v->index);
-		SlObject(v, _veh_descs[v->type - 0x10]);
+		SlObject(v, (SaveLoad*)_veh_descs[v->type - 0x10]);
 	}
 }
 
@@ -3191,7 +3192,7 @@ static void Load_VEHS(void)
 			error("Vehicles: failed loading savegame: too many vehicles");
 
 		v = GetVehicle(index);
-		SlObject(v, _veh_descs[SlReadByte()]);
+		SlObject(v, (SaveLoad*)_veh_descs[SlReadByte()]);
 
 		/* Old savegames used 'last_station_visited = 0xFF' */
 		if (CheckSavegameVersion(5) && v->last_station_visited == 0xFF)
@@ -3201,7 +3202,7 @@ static void Load_VEHS(void)
 			/* Convert the current_order.type (which is a mix of type and flags, because
 			 *  in those versions, they both were 4 bits big) to type and flags */
 			v->current_order.flags = (v->current_order.type & 0xF0) >> 4;
-			v->current_order.type  =  v->current_order.type & 0x0F;
+			v->current_order.type.m_val &= 0x0F;
 		}
 	}
 
@@ -3223,6 +3224,6 @@ static void Load_VEHS(void)
 	}
 }
 
-const ChunkHandler _veh_chunk_handlers[] = {
+extern const ChunkHandler _veh_chunk_handlers[] = {
 	{ 'VEHS', Save_VEHS, Load_VEHS, CH_SPARSE_ARRAY | CH_LAST},
 };

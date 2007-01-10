@@ -11,9 +11,15 @@
  * the function then adds text that tells the user to update and then report the bug if it's present in the newest version
  * It also quits in a nice way since we call it when we know something happened that will crash OpenTTD (like a needed pointer turns out to be NULL or similar)
  */
-void ShowMacDialog ( const char *title, const char *message, const char *buttonLabel );
-void ShowMacAssertDialog ( const char *function, const char *file, const int line, const char *expression );
-void ShowMacErrorDialog(const char *error);
+#ifdef __cplusplus
+extern "C" {
+#endif //__cplusplus
+	void ShowMacDialog ( const char *title, const char *message, const char *buttonLabel );
+	void ShowMacAssertDialog ( const char *function, const char *file, const int line, const char *expression );
+	void ShowMacErrorDialog(const char *error);
+#ifdef __cplusplus
+}
+#endif //__cplusplus
 
 // Since MacOS X users will never see an assert unless they started the game from a terminal
 // we're using a custom assert(e) macro.

@@ -95,7 +95,7 @@ static void Place_LandInfo(TileIndex tile)
 	w = AllocateWindowDesc(&_land_info_desc);
 	WP(w, void_d).data = &_landinfo_data;
 
-	p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : 0);
+	p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
 	t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
 	old_money = p->money64;
@@ -166,7 +166,7 @@ static void Place_LandInfo(TileIndex tile)
 
 	if (td.build_date != 0) {
 		SetDParam(0, td.build_date);
-		GetString(_landinfo_data[6], STR_BUILD_DATE, lastof(_landinfo_data[6]));
+	GetString(_landinfo_data[6], STR_BUILD_DATE, lastof(_landinfo_data[6]));
 	} else {
 		_landinfo_data[6][0] = '\0';
 	}
@@ -505,7 +505,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 					_errmsg_message_1,
 					238);
 		} else {
-			const Player *p = GetPlayer(GetDParamX(_errmsg_decode_params,2));
+			const Player *p = GetPlayer((PlayerID)GetDParamX(_errmsg_decode_params,2));
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
 
 			DrawStringMultiCenter(
@@ -1383,7 +1383,7 @@ static void GenerateFileName(void)
 {
 	/* Check if we are not a specatator who wants to generate a name..
 	    Let's use the name of player #0 for now. */
-	const Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : 0);
+	const Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
 
 	SetDParam(0, p->name_1);
 	SetDParam(1, p->name_2);
@@ -1691,7 +1691,7 @@ void SetFiosType(const byte fiostype)
 
 static int32 ClickMoneyCheat(int32 p1, int32 p2)
 {
-		DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
+		DoCommandP(0, 10000000, 0, NULL, CMD_MONEY_CHEAT);
 		return true;
 }
 
@@ -1739,9 +1739,17 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 
 typedef int32 CheckButtonClick(int32, int32);
 
-enum ce_flags {CE_CLICK = 1 << 0};
+enum ce_flags_long
+{
+	CE_NONE = 0,
+	CE_CLICK = 1 << 0,
+	CE_END = 1 << 1,
+};
 
-typedef byte ce_flags;
+/** Define basic enum properties */
+template <> struct EnumPropsT<ce_flags_long> : MakeEnumPropsT<ce_flags_long, byte, CE_NONE, CE_END, CE_END> {};
+typedef TinyEnumT<ce_flags_long> ce_flags;
+
 
 typedef struct CheatEntry {
 	VarType type;          // type of selector
@@ -1754,15 +1762,15 @@ typedef struct CheatEntry {
 } CheatEntry;
 
 static const CheatEntry _cheats_ui[] = {
-	{SLE_BOOL,CE_CLICK, STR_CHEAT_MONEY,          &_cheats.money.value,           &_cheats.money.been_used,           &ClickMoneyCheat,         0,  0},
-	{SLE_UINT8,      0, STR_CHEAT_CHANGE_PLAYER,  &_local_player,                 &_cheats.switch_player.been_used,   &ClickChangePlayerCheat,  0, 11},
-	{SLE_BOOL,       0, STR_CHEAT_EXTRA_DYNAMITE, &_cheats.magic_bulldozer.value, &_cheats.magic_bulldozer.been_used, NULL,                     0,  0},
-	{SLE_BOOL,       0, STR_CHEAT_CROSSINGTUNNELS,&_cheats.crossing_tunnels.value,&_cheats.crossing_tunnels.been_used,NULL,                     0,  0},
-	{SLE_BOOL,       0, STR_CHEAT_BUILD_IN_PAUSE, &_cheats.build_in_pause.value,  &_cheats.build_in_pause.been_used,  NULL,                     0,  0},
-	{SLE_BOOL,       0, STR_CHEAT_NO_JETCRASH,    &_cheats.no_jetcrash.value,     &_cheats.no_jetcrash.been_used,     NULL,                     0,  0},
-	{SLE_BOOL,       0, STR_CHEAT_SETUP_PROD,     &_cheats.setup_prod.value,      &_cheats.setup_prod.been_used,      NULL,                     0,  0},
-	{SLE_UINT8,      0, STR_CHEAT_SWITCH_CLIMATE, &_opt.landscape,                &_cheats.switch_climate.been_used,  &ClickChangeClimateCheat,-1,  4},
-	{SLE_INT32,      0, STR_CHEAT_CHANGE_DATE,    &_cur_year,                     &_cheats.change_date.been_used,     &ClickChangeDateCheat,   -1,  1},
+	{SLE_BOOL, {CE_CLICK}, STR_CHEAT_MONEY,          &_cheats.money.value,           &_cheats.money.been_used,           &ClickMoneyCheat,         0,  0},
+	{SLE_UINT8, {CE_NONE}, STR_CHEAT_CHANGE_PLAYER,  &_local_player,                 &_cheats.switch_player.been_used,   &ClickChangePlayerCheat,  0, 11},
+	{SLE_BOOL,  {CE_NONE}, STR_CHEAT_EXTRA_DYNAMITE, &_cheats.magic_bulldozer.value, &_cheats.magic_bulldozer.been_used, NULL,                     0,  0},
+	{SLE_BOOL,  {CE_NONE}, STR_CHEAT_CROSSINGTUNNELS,&_cheats.crossing_tunnels.value,&_cheats.crossing_tunnels.been_used,NULL,                     0,  0},
+	{SLE_BOOL,  {CE_NONE}, STR_CHEAT_BUILD_IN_PAUSE, &_cheats.build_in_pause.value,  &_cheats.build_in_pause.been_used,  NULL,                     0,  0},
+	{SLE_BOOL,  {CE_NONE}, STR_CHEAT_NO_JETCRASH,    &_cheats.no_jetcrash.value,     &_cheats.no_jetcrash.been_used,     NULL,                     0,  0},
+	{SLE_BOOL,  {CE_NONE}, STR_CHEAT_SETUP_PROD,     &_cheats.setup_prod.value,      &_cheats.setup_prod.been_used,      NULL,                     0,  0},
+	{SLE_UINT8, {CE_NONE}, STR_CHEAT_SWITCH_CLIMATE, &_opt.landscape,                &_cheats.switch_climate.been_used,  &ClickChangeClimateCheat,-1,  4},
+	{SLE_INT32, {CE_NONE}, STR_CHEAT_CHANGE_DATE,    &_cur_year,                     &_cheats.change_date.been_used,     &ClickChangeDateCheat,   -1,  1},
 };
 
 
@@ -1801,14 +1809,14 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				bool on = (*(bool*)ce->variable);
 
 				if (ce->flags & CE_CLICK) {
-					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, 0, (clk - (i * 2) == 1) ? FR_LOWERED : 0);
+					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, 0, (clk - (i * 2) == 1) ? FR_LOWERED : FR_NONE);
 					if (i == 0) { // XXX - hack/hack for first element which is increase money. Told ya it's a mess
 						SetDParam64(0, 10000000);
 					} else {
 						SetDParam(0, false);
 					}
 				} else {
-					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, on ? 6 : 4, on ? FR_LOWERED : 0);
+					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, on ? 6 : 4, on ? FR_LOWERED : FR_NONE);
 					SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 				}
 			} break;

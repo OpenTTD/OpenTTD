@@ -454,7 +454,7 @@ void OnTick_Town(void)
 static RoadBits GetTownRoadMask(TileIndex tile)
 {
 	TrackBits b = GetAnyRoadTrackBits(tile);
-	RoadBits r = 0;
+	RoadBits r = ROAD_NONE;
 
 	if (b & TRACK_BIT_X)     r |= ROAD_X;
 	if (b & TRACK_BIT_Y)     r |= ROAD_Y;
@@ -602,13 +602,13 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 			// That means that the road is only allowed if there is a house
 			//  at any side of the new road.
 		}
-		rcmd = (1 << a) + (1 << b);
+		rcmd = (RoadBits)((1 << a) + (1 << b));
 
 	} else if (block < 5 && !HASBIT(mask,block^2)) {
 		// Continue building on a partial road.
 		// Always OK.
 		_grow_town_result = 0;
-		rcmd = 1 << (block ^ 2);
+		rcmd = (RoadBits)(1 << (block ^ 2));
 	} else {
 		int i;
 
@@ -649,7 +649,7 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 		}
 
 		_grow_town_result = 0;
-		rcmd = 1 << i;
+		rcmd = (RoadBits)(1 << i);
 	}
 
 	// Return if a water tile
@@ -721,7 +721,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 
 		// Exclude the source position from the bitmask
 		// and return if no more road blocks available
-		CLRBIT(mask, (block ^ 2));
+		mask = ClrBitT(mask, (block ^ 2));
 		if (mask == 0)
 			return _grow_town_result;
 
@@ -757,7 +757,7 @@ static RoadBits GenRandomRoadBits(void)
 	uint a = GB(r, 0, 2);
 	uint b = GB(r, 8, 2);
 	if (a == b) b ^= 2;
-	return (1 << a) + (1 << b);
+	return (RoadBits)((1 << a) + (1 << b));
 }
 
 // Grow the town
@@ -794,7 +794,7 @@ static bool GrowTown(Town *t)
 		if (GetAnyRoadTrackBits(tile) != 0) {
 			int r = GrowTownAtRoad(t, tile);
 			_current_player = old_player;
-			return r;
+			return r != 0;
 		}
 		tile = TILE_ADD(tile, ToTileIndexDiff(*ptr));
 	}
@@ -949,7 +949,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, uint siz
 		t->ratings[i] = 500;
 
 	t->have_ratings = 0;
-	t->exclusivity = (byte)-1;
+	t->exclusivity = INVALID_PLAYER;
 	t->exclusive_counter = 0;
 	t->statues = 0;
 
@@ -1423,7 +1423,7 @@ void ExpandTown(Town *t)
 	_generating_world = false;
 }
 
-const byte _town_action_costs[8] = {
+extern const byte _town_action_costs[8] = {
 	2, 4, 9, 35, 48, 53, 117, 175
 };
 
@@ -1808,7 +1808,7 @@ void TownsMonthlyLoop(void)
 		if (t->road_build_months != 0) t->road_build_months--;
 
 		if (t->exclusive_counter != 0)
-			if (--t->exclusive_counter == 0) t->exclusivity = (byte)-1;
+			if (--t->exclusive_counter == 0) t->exclusivity = INVALID_PLAYER;
 
 		UpdateTownGrowRate(t);
 		UpdateTownAmounts(t);
@@ -1834,7 +1834,7 @@ void InitializeTowns(void)
 	_town_sort_dirty = true;
 }
 
-const TileTypeProcs _tile_type_town_procs = {
+extern const TileTypeProcs _tile_type_town_procs = {
 	DrawTile_Town,           /* draw_tile_proc */
 	GetSlopeZ_Town,          /* get_slope_z_proc */
 	ClearTile_Town,          /* clear_tile_proc */
@@ -1960,6 +1960,6 @@ void AfterLoadTown(void)
 }
 
 
-const ChunkHandler _town_chunk_handlers[] = {
+extern const ChunkHandler _town_chunk_handlers[] = {
 	{ 'CITY', Save_TOWN, Load_TOWN, CH_ARRAY | CH_LAST},
 };

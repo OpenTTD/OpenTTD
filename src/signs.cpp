@@ -272,6 +272,6 @@ static void Load_SIGN(void)
 	_sign_sort_dirty = true;
 }
 
-const ChunkHandler _sign_chunk_handlers[] = {
+extern const ChunkHandler _sign_chunk_handlers[] = {
 	{ 'SIGN', Save_SIGN, Load_SIGN, CH_ARRAY | CH_LAST},
 };

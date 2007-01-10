@@ -27,7 +27,7 @@ static void NullVideoMainLoop(void)
 
 	for (i = 0; i < 1000; i++) {
 		GameLoop();
-		_screen.dst_ptr = _null_video_mem;
+		_screen.dst_ptr = (Pixel*)_null_video_mem;
 		UpdateWindows();
 	}
 }

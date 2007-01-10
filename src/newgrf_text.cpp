@@ -20,6 +20,7 @@
 #include "newgrf.h"
 #include "newgrf_text.h"
 #include "table/control_codes.h"
+#include "helpers.hpp"
 
 #define GRFTAB  28
 #define TABSIZE 11
@@ -157,7 +158,8 @@ static byte _currentLangID = GRFLX_ENGLISH;  //by default, english is used.
 
 char *TranslateTTDPatchCodes(const char *str)
 {
-	char *tmp = malloc(strlen(str) * 10 + 1); /* Allocate space to allow for expansion */
+	char *tmp;
+	MallocT(&tmp, strlen(str) * 10 + 1); /* Allocate space to allow for expansion */
 	char *d = tmp;
 	bool unicode = false;
 	WChar c;
@@ -253,7 +255,8 @@ char *TranslateTTDPatchCodes(const char *str)
 	}
 
 	*d = '\0';
-	return realloc(tmp, strlen(tmp) + 1);
+	ReallocT(&tmp, strlen(tmp) + 1);
+	return tmp;
 }
 
 
@@ -295,7 +298,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 
 	translatedtext = TranslateTTDPatchCodes(text_to_add);
 
-	newtext = malloc(sizeof(*newtext) + strlen(translatedtext) + 1);
+	newtext = (GRFText*)malloc(sizeof(*newtext) + strlen(translatedtext) + 1);
 	newtext->next   = NULL;
 	newtext->langid = langid_to_add;
 	strcpy(newtext->text, translatedtext);

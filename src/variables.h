@@ -276,23 +276,15 @@ VARDEF bool _do_autosave;
 VARDEF int _autosave_ctr;
 
 VARDEF byte _display_opt;
-VARDEF byte _pause;
 VARDEF int _caret_timer;
 VARDEF uint32 _news_display_opt;
 VARDEF bool _news_ticker_sound;
-VARDEF byte _game_mode;
 
 VARDEF StringID _error_message;
 VARDEF int32 _additional_cash_required;
 
 VARDEF uint32 _decode_parameters[20];
 
-VARDEF bool _ctrl_pressed;   // Is Ctrl pressed?
-VARDEF bool _shift_pressed;  // Is Shift pressed?
-VARDEF byte _dirkeys;        // 1 = left, 2 = up, 4 = right, 8 = down
-
-VARDEF bool _fullscreen;
-VARDEF bool _fast_forward;
 VARDEF bool _rightclick_emulate;
 
 // IN/OUT parameters to commands
@@ -311,7 +303,6 @@ typedef struct {
 // Used when switching from the intro menu.
 VARDEF byte _switch_mode;
 VARDEF StringID _switch_mode_errorstr;
-VARDEF bool _exit_game;
 VARDEF SmallFiosItem _file_to_saveload;
 
 
@@ -406,7 +397,7 @@ StringID BindCString(const char *str);
 
 /* landscape.c */
 extern const byte _tileh_to_sprite[32];
-extern const byte _inclined_tileh[16];
+extern const Slope _inclined_tileh[16];
 
 extern const TileTypeProcs * const _tile_type_procs[16];
 

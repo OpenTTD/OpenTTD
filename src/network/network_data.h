@@ -20,7 +20,7 @@
 
 typedef struct CommandPacket {
 	struct CommandPacket *next;
-	PlayerID player; /// player that is executing the command
+	PlayerByte player; /// player that is executing the command
 	uint32 cmd;    /// command being executed
 	uint32 p1;     /// parameter p1
 	uint32 p2;     /// parameter p2
@@ -120,15 +120,17 @@ typedef enum {
 	DESTTYPE_CLIENT,    ///< Send message/notice to only a certain player (Private)
 } DestType;
 
-CommandPacket *_local_command_queue;
+// following externs are instantiated at network.cpp
+extern CommandPacket *_local_command_queue;
 
-SOCKET _udp_client_socket; // udp client socket
-SOCKET _udp_server_socket; // udp server socket
-SOCKET _udp_master_socket; // udp master socket
+extern SOCKET _udp_client_socket; // udp client socket
+extern SOCKET _udp_server_socket; // udp server socket
+extern SOCKET _udp_master_socket; // udp master socket
 
 // Here we keep track of the clients
 //  (and the client uses [0] for his own communication)
-NetworkClientState _clients[MAX_CLIENTS];
+extern NetworkClientState _clients[MAX_CLIENTS];
+
 #define DEREF_CLIENT(i) (&_clients[i])
 // This returns the NetworkClientInfo from a NetworkClientState
 #define DEREF_CLIENT_INFO(cs) (&_network_client_info[cs - _clients])

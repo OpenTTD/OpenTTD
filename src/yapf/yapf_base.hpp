@@ -3,9 +3,7 @@
 #ifndef  YAPF_BASE_HPP
 #define  YAPF_BASE_HPP
 
-EXTERN_C_BEGIN
 #include "../debug.h"
-EXTERN_C_END
 
 #include "fixedsizearray.hpp"
 #include "blob.hpp"

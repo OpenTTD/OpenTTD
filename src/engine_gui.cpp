@@ -24,6 +24,7 @@ static StringID GetEngineCategoryName(EngineID engine)
 			case RAILTYPE_ELECTRIC: return STR_8102_RAILROAD_LOCOMOTIVE;
 			case RAILTYPE_MONO:     return STR_8106_MONORAIL_LOCOMOTIVE;
 			case RAILTYPE_MAGLEV:   return STR_8107_MAGLEV_LOCOMOTIVE;
+			default: NOT_REACHED();
 		}
 	}
 

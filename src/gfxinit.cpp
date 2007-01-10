@@ -17,13 +17,13 @@
 #include <string.h>
 
 typedef struct MD5File {
-	const char * const filename;     // filename
-	const md5_byte_t hash[16]; // md5 sum of the file
+	const char * filename;     // filename
+	md5_byte_t hash[16]; // md5 sum of the file
 } MD5File;
 
 typedef struct FileList {
-	const MD5File basic[4];     // grf files that always have to be loaded
-	const MD5File landscape[3]; // landscape specific grf files
+	MD5File basic[4];     // grf files that always have to be loaded
+	MD5File landscape[3]; // landscape specific grf files
 } FileList;
 
 enum {

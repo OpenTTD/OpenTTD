@@ -26,9 +26,10 @@ typedef enum RoadStopType {
 } RoadStopType;
 
 enum {
-	INVALID_STATION = 0xFFFF,
 	ROAD_STOP_LIMIT = 16,
 };
+
+static const StationID INVALID_STATION = 0xFFFF;
 
 typedef struct RoadStop {
 	TileIndex xy;
@@ -64,7 +65,7 @@ struct Station {
 	byte time_since_load;
 	byte time_since_unload;
 	byte delete_ctr;
-	PlayerID owner;
+	PlayerByte owner;
 	byte facilities;
 	byte airport_type;
 

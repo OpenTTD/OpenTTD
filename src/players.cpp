@@ -483,7 +483,7 @@ static Player *AllocatePlayer(void)
 	// Find a free slot
 	FOR_ALL_PLAYERS(p) {
 		if (!p->is_active) {
-			int i = p->index;
+			PlayerID i = p->index;
 			memset(p, 0, sizeof(Player));
 			p->index = i;
 			return p;
@@ -494,9 +494,7 @@ static Player *AllocatePlayer(void)
 
 void ResetPlayerLivery(Player *p)
 {
-	LiveryScheme scheme;
-
-	for (scheme = 0; scheme < LS_END; scheme++) {
+	for (LiveryScheme scheme = LS_BEGIN; scheme < LS_END; scheme++) {
 		p->livery[scheme].in_use  = false;
 		p->livery[scheme].colour1 = p->player_color;
 		p->livery[scheme].colour2 = p->player_color;
@@ -583,10 +581,8 @@ static void MaybeStartNewPlayer(void)
 
 void InitializePlayers(void)
 {
-	uint i;
-
 	memset(_players, 0, sizeof(_players));
-	for (i = 0; i != MAX_PLAYERS; i++) _players[i].index = i;
+	for (PlayerID i = PLAYER_FIRST; i != MAX_PLAYERS; i++) _players[i].index = i;
 	_cur_player_tick_index = 0;
 }
 
@@ -596,7 +592,7 @@ void OnTick_Players(void)
 
 	if (_game_mode == GM_EDITOR) return;
 
-	p = GetPlayer(_cur_player_tick_index);
+	p = GetPlayer((PlayerID)_cur_player_tick_index);
 	_cur_player_tick_index = (_cur_player_tick_index + 1) % MAX_PLAYERS;
 	if (p->name_1 != 0) GenerateCompanyName(p);
 
@@ -614,7 +610,7 @@ StringID GetPlayerNameString(PlayerID player, uint index)
 	return STR_EMPTY;
 }
 
-extern void ShowPlayerFinances(int player);
+extern void ShowPlayerFinances(PlayerID player);
 
 void PlayersYearlyLoop(void)
 {
@@ -928,11 +924,11 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	case 2: { /* Delete a player */
 		Player *p;
 
-		if (!IsValidPlayer(p2)) return CMD_ERROR;
+		if (!IsValidPlayer((PlayerID)p2)) return CMD_ERROR;
 
 		if (!(flags & DC_EXEC)) return 0;
 
-		p = GetPlayer(p2);
+		p = GetPlayer((PlayerID)p2);
 
 		/* Only allow removal of HUMAN companies */
 		if (IsHumanPlayer(p->index)) {
@@ -953,8 +949,8 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} break;
 
 	case 3: { /* Merge a company (#1) into another company (#2), elimination company #1 */
-		PlayerID pid_old = GB(p2,  0, 16);
-		PlayerID pid_new = GB(p2, 16, 16);
+		PlayerID pid_old = (PlayerID)GB(p2,  0, 16);
+		PlayerID pid_new = (PlayerID)GB(p2, 16, 16);
 
 		if (!IsValidPlayer(pid_old) || !IsValidPlayer(pid_new)) return CMD_ERROR;
 
@@ -1323,7 +1319,7 @@ static void Load_PLYR(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		Player *p = GetPlayer(index);
+		Player *p = GetPlayer((PlayerID)index);
 		SaveLoad_PLYR(p);
 		_player_colors[index] = p->player_color;
 		UpdatePlayerMoney32(p);
@@ -1334,6 +1330,6 @@ static void Load_PLYR(void)
 	}
 }
 
-const ChunkHandler _player_chunk_handlers[] = {
+extern const ChunkHandler _player_chunk_handlers[] = {
 	{ 'PLYR', Save_PLYR, Load_PLYR, CH_ARRAY | CH_LAST},
 };

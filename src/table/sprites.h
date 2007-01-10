@@ -1336,6 +1336,9 @@ enum Recoloring {
 };
 
 #define PALETTE_RECOLOR_SPRITE(a) (a << PALETTE_SPRITE_START | PALETTE_MODIFIER_COLOR)
+
+static const PalSpriteID PALETTE_CRASH = PALETTE_RECOLOR_SPRITE(0x324);
+
 enum PaletteSprites {
 	//note: these numbers are already the modified once the renderer needs.
 	//the actual sprite number is the upper 16 bits of the number
@@ -1384,7 +1387,8 @@ enum PaletteSprites {
 	PALETTE_TO_TRANSPARENT      = 0x322 << PALETTE_SPRITE_START | PALETTE_MODIFIER_TRANSPARENT, //This sets the sprite to transparent
 	//This is used for changing the tubular bridges to the silicon display, or some grayish color
 	PALETTE_TO_STRUCT_GREY      = PALETTE_RECOLOR_SPRITE(0x323),
-	PALETTE_CRASH               = PALETTE_RECOLOR_SPRITE(0x324),  //this changes stuff to the "crash color"
+
+	//XXX - const - PALETTE_CRASH               = PALETTE_RECOLOR_SPRITE(0x324),  //this changes stuff to the "crash color"
 	//XXX another place where structures are colored.
 	//I'm not sure which colors these are
 	PALETTE_59E                 = PALETTE_RECOLOR_SPRITE(0x59E),

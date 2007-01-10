@@ -33,6 +33,7 @@
 #include "newgrf_station.h"
 #include "yapf/yapf.h"
 #include "date.h"
+#include "helpers.hpp"
 
 typedef enum StationRectModes
 {
@@ -982,7 +983,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	if (!ValParamRailtype(p2 & 0xF)) return CMD_ERROR;
 
 	/* unpack parameters */
-	axis = p1 & 1;
+	axis = (Axis)(p1 & 1);
 	numtracks = GB(p1,  8, 8);
 	plat_len  = GB(p1, 16, 8);
 	/* w = length, h = num_tracks */
@@ -1052,7 +1053,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	if (GB(p2, 8, 8) >= STAT_CLASS_MAX) return CMD_ERROR;
 
 	/* Check if we can allocate a custom stationspec to this station */
-	statspec = GetCustomStationSpec(GB(p2, 8, 8), GB(p2, 16, 8));
+	statspec = GetCustomStationSpec((StationClassID)GB(p2, 8, 8), GB(p2, 16, 8));
 	specindex = AllocateSpecToStation(statspec, st, flags & DC_EXEC);
 	if (specindex == -1) return CMD_ERROR;
 
@@ -1097,7 +1098,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		track = AxisToTrack(axis);
 
-		layout_ptr = alloca(numtracks * plat_len);
+		layout_ptr = (byte*)alloca(numtracks * plat_len);
 		GetStationLayout(layout_ptr, numtracks, plat_len, statspec);
 
 		numtracks_orig = numtracks;
@@ -1107,7 +1108,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 			int w = plat_len;
 			do {
 				byte layout = *layout_ptr++;
-				MakeRailStation(tile, st->owner, st->index, axis, layout, GB(p2, 0, 4));
+				MakeRailStation(tile, st->owner, st->index, axis, layout, (RailType)GB(p2, 0, 4));
 				SetCustomStationSpecIndex(tile, specindex);
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
 
@@ -1424,7 +1425,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	bool type = !!p2;
 
 	/* Saveguard the parameters */
-	if (!IsValidDiagDirection(p1)) return CMD_ERROR;
+	if (!IsValidDiagDirection((DiagDirection)p1)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -1435,7 +1436,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (CmdFailed(ret)) return ret;
 	cost = ret;
 
-	st = GetStationAround(tile, 1, 1, -1);
+	st = GetStationAround(tile, 1, 1, INVALID_STATION);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	/* Find a station close to us */
@@ -1500,7 +1501,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		StationRect_BeforeAddTile(st, tile, RECT_MODE_TRY);
 
-		MakeRoadStop(tile, st->owner, st->index, type, p1);
+		MakeRoadStop(tile, st->owner, st->index, type ? RS_TRUCK : RS_BUS, (DiagDirection)p1);
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
@@ -1696,7 +1697,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (CmdFailed(ret)) return ret;
 	cost = ret;
 
-	st = GetStationAround(tile, w, h, -1);
+	st = GetStationAround(tile, w, h, INVALID_STATION);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	/* Find a station close to us */
@@ -1973,7 +1974,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* middle */
 	st = GetStationAround(
 		tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
-		_dock_w_chk[direction], _dock_h_chk[direction], -1);
+		_dock_w_chk[direction], _dock_h_chk[direction], INVALID_STATION);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	/* Find a station close to us */
@@ -2109,7 +2110,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 			/* Ensure the chosen tile layout is valid for this custom station */
 			if (statspec->renderdata != NULL) {
-				t = &statspec->renderdata[tile < statspec->tiles ? tile : GetRailStationAxis(ti->tile)];
+				t = &statspec->renderdata[tile < statspec->tiles ? tile : (uint)GetRailStationAxis(ti->tile)];
 			}
 		}
 	}
@@ -2507,10 +2508,10 @@ static void UpdateStationRating(Station *st)
 			}
 
 			{
-				int or = ge->rating; // old rating
+				int or_ = ge->rating; // old rating
 
 				// only modify rating in steps of -2, -1, 0, 1 or 2
-				ge->rating = rating = or + clamp(clamp(rating, 0, 255) - or, -2, 2);
+				ge->rating = rating = or_ + clamp(clamp(rating, 0, 255) - or_, -2, 2);
 
 				// if rating is <= 64 and more than 200 items waiting, remove some random amount of goods from the station
 				if (rating <= 64 && waiting >= 200) {
@@ -2932,7 +2933,7 @@ void AfterLoadStations(void)
 }
 
 
-const TileTypeProcs _tile_type_station_procs = {
+extern const TileTypeProcs _tile_type_station_procs = {
 	DrawTile_Station,           /* draw_tile_proc */
 	GetSlopeZ_Station,          /* get_slope_z_proc */
 	ClearTile_Station,          /* clear_tile_proc */
@@ -3064,7 +3065,7 @@ static void SaveLoad_STNS(Station *st)
 
 	if (st->num_specs != 0) {
 		/* Allocate speclist memory when loading a game */
-		if (st->speclist == NULL) st->speclist = calloc(st->num_specs, sizeof(*st->speclist));
+		if (st->speclist == NULL) CallocT(&st->speclist, st->num_specs);
 		for (i = 0; i < st->num_specs; i++) SlObject(&st->speclist[i], _station_speclist_desc);
 	}
 }
@@ -3155,7 +3156,7 @@ static void Load_ROADSTOP(void)
 	}
 }
 
-const ChunkHandler _station_chunk_handlers[] = {
+extern const ChunkHandler _station_chunk_handlers[] = {
 	{ 'STNS', Save_STNS,      Load_STNS,      CH_ARRAY },
 	{ 'ROAD', Save_ROADSTOP,  Load_ROADSTOP,  CH_ARRAY | CH_LAST},
 };

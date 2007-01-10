@@ -20,9 +20,10 @@
 #undef max
 #endif
 
-static inline int min(int a, int b) { if (a <= b) return a; return b; }
 static inline int max(int a, int b) { if (a >= b) return a; return b; }
-static inline int64 max64(int64 a, int64 b) { if (a >= b) return a; return b; }
+static inline double dmax(double a, double b) { if (a >= b) return a; return b; }
+static inline uint64 max64(uint64 a, uint64 b) { if (a >= b) return a; return b; }
+static inline int min(int a, int b) { if (a <= b) return a; return b; }
 
 static inline uint minu(uint a, uint b) { if (a <= b) return a; return b; }
 static inline uint maxu(uint a, uint b) { if (a >= b) return a; return b; }
@@ -136,14 +137,10 @@ static inline int KillFirstBit2x64(int value)
 
 #define abs myabs
 
-
 static inline int intxchg_(int *a, int b) { int t = *a; *a = b; return t; }
 #define intswap(a,b) ((b) = intxchg_(&(a), (b)))
 static inline int uintxchg_(uint *a, uint b) { uint t = *a; *a = b; return t; }
 #define uintswap(a,b) ((b) = uintxchg_(&(a), (b)))
-
-static inline int myabs(int a) { if (a<0) a = -a; return a; }
-static inline int64 myabs64(int64 a) { if (a<0) a = -a; return a; }
 
 static inline void swap_byte(byte *a, byte *b) { byte t = *a; *a = *b; *b = t; }
 static inline void swap_uint16(uint16 *a, uint16 *b) { uint16 t = *a; *a = *b; *b = t; }

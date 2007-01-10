@@ -562,7 +562,7 @@ DEF_CONSOLE_CMD(ConStatus)
 		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 		const char* status;
 
-		status = (cs->status < lengthof(stat_str) ? stat_str[cs->status] : "unknown");
+		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrintF(8, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",
 			cs->index, ci->client_name, status, lag,
 			ci->client_playas + (IsValidPlayer(ci->client_playas) ? 1 : 0),
@@ -684,7 +684,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 
 	if (argc != 2) return false;
 
-	index = atoi(argv[1]) - 1;
+	index = (PlayerID)(atoi(argv[1]) - 1);
 
 	/* Check valid range */
 	if (!IsValidPlayer(index)) {
@@ -770,7 +770,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 
 	IConsolePrintF(_icolour_def, "Connecting to %s...", ip);
 	if (player != NULL) {
-		_network_playas = atoi(player);
+		_network_playas = (PlayerID)atoi(player);
 		IConsolePrintF(_icolour_def, "    player-no: %d", _network_playas);
 
 		/* From a user pov 0 is a new player, internally it's different and all

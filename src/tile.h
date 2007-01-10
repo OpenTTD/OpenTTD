@@ -4,6 +4,7 @@
 #define TILE_H
 
 #include "macros.h"
+#include "openttd.h"
 #include "map.h"
 #include "slope.h"
 

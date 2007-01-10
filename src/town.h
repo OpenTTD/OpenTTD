@@ -36,7 +36,7 @@ struct Town {
 	// Player ratings as well as a mask that determines which players have a rating.
 	byte have_ratings;
 	uint8 unwanted[MAX_PLAYERS]; // how many months companies aren't wanted by towns (bribe)
-	PlayerID exclusivity;        // which player has exslusivity
+	PlayerByte exclusivity;        // which player has exslusivity
 	uint8 exclusive_counter;     // months till the exclusivity expires
 	int16 ratings[MAX_PLAYERS];
 

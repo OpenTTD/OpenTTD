@@ -22,6 +22,7 @@
 #include "music.h"
 #include "date.h"
 #include "industry.h"
+#include "helpers.hpp"
 
 #ifdef WIN32
 /* for opendir/readdir/closedir */
@@ -751,7 +752,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				//   8bit   - cargo type
 				//   16-bit - cargo count
 				CargoID cargo = GetInt32(&argv);
-				StringID cargo_str = (cargo == CT_INVALID) ? STR_8838_N_A : _cargoc.names_long[cargo];
+				StringID cargo_str = (cargo == CT_INVALID) ? (StringID)STR_8838_N_A : _cargoc.names_long[cargo];
 				buff = GetStringWithArgs(buff, cargo_str, argv++, last);
 				break;
 			}
@@ -1139,7 +1140,7 @@ bool ReadLanguagePack(int lang_index)
 
 	{
 		char *lang = str_fmt("%s%s", _paths.lang_dir, _dynlang.ent[lang_index].file);
-		lang_pack = ReadFileToMem(lang, &len, 200000);
+		lang_pack = (LanguagePack*)ReadFileToMem(lang, &len, 200000);
 		free(lang);
 	}
 	if (lang_pack == NULL) return false;
@@ -1165,7 +1166,7 @@ bool ReadLanguagePack(int lang_index)
 	}
 
 	// Allocate offsets
-	langpack_offs = malloc(tot_count * sizeof(*langpack_offs));
+	MallocT(&langpack_offs, tot_count);
 
 	// Fill offsets
 	s = lang_pack->data;
@@ -1229,7 +1230,7 @@ static int GetLanguageList(char **languages, int max)
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			const char *d_name = FS2OTTD(dirent->d_name);
-			char *t = strrchr(d_name, '.');
+			const char *t = strrchr(d_name, '.');
 
 			if (t != NULL && strcmp(t, ".lng") == 0) {
 				languages[num++] = strdup(d_name);

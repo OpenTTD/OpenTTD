@@ -30,7 +30,7 @@
 #include "variables.h"
 #include <setjmp.h>
 
-const uint16 SAVEGAME_VERSION = 43;
+extern const uint16 SAVEGAME_VERSION = 43;
 uint16 _sl_version;       /// the major savegame version identifier
 byte   _sl_minor_version; /// the minor savegame version, DO NOT USE!
 
@@ -511,7 +511,7 @@ static inline size_t SlCalcStringLen(const void *ptr, size_t length, VarType con
 		case SLE_VAR_STR:
 		case SLE_VAR_STRQ:
 			str = *(const char**)ptr;
-			len = -1;
+			len = SIZE_MAX;
 			break;
 		case SLE_VAR_STRB:
 		case SLE_VAR_STRBQ:
@@ -538,12 +538,12 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			default: NOT_REACHED();
 			case SLE_VAR_STRB:
 			case SLE_VAR_STRBQ:
-				len = SlCalcNetStringLen(ptr, length);
+				len = SlCalcNetStringLen((char*)ptr, length);
 				break;
 			case SLE_VAR_STR:
 			case SLE_VAR_STRQ:
 				ptr = *(char**)ptr;
-				len = SlCalcNetStringLen(ptr, -1);
+				len = SlCalcNetStringLen((char*)ptr, SIZE_MAX);
 				break;
 		}
 
@@ -568,7 +568,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			case SLE_VAR_STR:
 			case SLE_VAR_STRQ: /* Malloc'd string, free previous incarnation, and allocate */
 				free(*(char**)ptr);
-				*(char**)ptr = malloc(len + 1); // terminating '\0'
+				*(char**)ptr = (char*)malloc(len + 1); // terminating '\0'
 				ptr = *(char**)ptr;
 				SlCopyBytes(ptr, len);
 				break;
@@ -714,9 +714,9 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 		case SL_REF: /* Reference variable, translate */
 			/// @todo XXX - another artificial limitof 65K elements of pointers?
 			if (_sl.save) { // XXX - read/write pointer as uint16? What is with higher indeces?
-				SlWriteUint16(ReferenceToInt(*(void**)ptr, conv));
+				SlWriteUint16(ReferenceToInt(*(void**)ptr, (SLRefType)conv));
 			} else {
-				*(void**)ptr = IntToReference(SlReadUint16(), conv);
+				*(void**)ptr = IntToReference(SlReadUint16(), (SLRefType)conv);
 			}
 			break;
 		case SL_ARR: SlArray(ptr, sld->length, conv); break;
@@ -1397,7 +1397,7 @@ static inline SaveOrLoadResult AbortSaveLoad(void)
  * saving takes Aaaaages */
 void SaveFileStart(void)
 {
-	_ts.ff_state = _fast_forward;
+	_ts.ff_state = (_fast_forward != 0);
 	_fast_forward = false;
 	if (_cursor.sprite == SPR_CURSOR_MOUSE) SetMouseCursor(SPR_CURSOR_ZZZ);
 
@@ -1525,7 +1525,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 
 	_sl.bufe = _sl.bufp = NULL;
 	_sl.offs_base = 0;
-	_sl.save = mode;
+	_sl.save = (mode != 0);
 	_sl.includes = _desc_includes;
 	_sl.chs = _chunk_handlers;
 

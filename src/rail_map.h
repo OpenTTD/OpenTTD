@@ -266,7 +266,7 @@ static inline SignalState GetSignalStateByTrackdir(TileIndex tile, Trackdir trac
  * The given trackdir is used when there are (could be) multiple rail types on
  * one tile.
  */
-RailType GetTileRailType(TileIndex tile, Trackdir trackdir);
+RailType GetTileRailType(TileIndex tile, Track track);
 
 
 typedef enum RailGroundType {

@@ -27,6 +27,7 @@
 #include "../string.h"
 #include "../town.h"
 #include "../newgrf.h"
+#include "../helpers.hpp"
 
 #define BGC 5
 #define BTC 15
@@ -166,7 +167,7 @@ static void BuildNetworkGameList(network_ql_d *nqld)
 
 	/* Create temporary array of games to use for listing */
 	free(nqld->sort_list);
-	nqld->sort_list = malloc(n * sizeof(nqld->sort_list[0]));
+	MallocT(&nqld->sort_list, n);
 	if (nqld->sort_list == NULL) error("Could not allocate memory for the network-game-sorting-list");
 	nqld->l.list_length = n;
 
@@ -221,7 +222,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		nd->server = NULL;
 
 		WP(w, network_ql_d).sort_list = NULL;
-		ld->flags = VL_REBUILD | (_ng_sorting.order << (VL_DESC - 1));
+		ld->flags = VL_REBUILD | (_ng_sorting.order ? VL_DESC : VL_NONE);
 		ld->sort_type = _ng_sorting.criteria;
 		break;
 
@@ -787,19 +788,19 @@ static void ShowNetworkStartServerWindow(void)
 	InitializeTextBuffer(&WP(w, network_ql_d).q.text, _edit_str_buf, lengthof(_edit_str_buf), 160);
 }
 
-static byte NetworkLobbyFindCompanyIndex(byte pos)
+static PlayerID NetworkLobbyFindCompanyIndex(byte pos)
 {
-	byte i;
+	PlayerID i;
 
 	/* Scroll through all _network_player_info and get the 'pos' item
 	    that is not empty */
-	for (i = 0; i < MAX_PLAYERS; i++) {
+	for (i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
 		if (_network_player_info[i].company_name[0] != '\0') {
 			if (pos-- == 0) return i;
 		}
 	}
 
-	return 0;
+	return PLAYER_FIRST;
 }
 
 /* uses network_d WP macro */
@@ -809,7 +810,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 	case WE_CREATE:
-		nd->company = (byte)-1;
+		nd->company = INVALID_PLAYER;
 		break;
 
 	case WE_PAINT: {
@@ -919,7 +920,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			if (id_v >= w->vscroll.cap) return;
 
 			id_v += w->vscroll.pos;
-			nd->company = (id_v >= nd->server->info.companies_on) ? (byte)-1 : NetworkLobbyFindCompanyIndex(id_v);
+			nd->company = (id_v >= nd->server->info.companies_on) ? INVALID_PLAYER : NetworkLobbyFindCompanyIndex(id_v);
 			SetWindowDirty(w);
 		}	break;
 		case 7: /* Join company */
@@ -1411,7 +1412,7 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* Draw nice progress bar :) */
-		DrawFrameRect(20, 18, (int)((w->width - 20) * progress / 100), 28, 10, 0);
+		DrawFrameRect(20, 18, (int)((w->width - 20) * progress / 100), 28, 10, FR_NONE);
 	}	break;
 
 	case WE_CLICK:
@@ -1465,9 +1466,9 @@ static void SendChat(const char *buf, DestType type, byte dest)
 {
 	if (buf[0] == '\0') return;
 	if (!_network_server) {
-		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT + type, type, dest, buf);
+		SEND_COMMAND(PACKET_CLIENT_CHAT)((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf);
 	} else {
-		NetworkServer_HandleChat(NETWORK_ACTION_CHAT + type, type, dest, buf, NETWORK_SERVER_INDEX);
+		NetworkServer_HandleChat((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf, NETWORK_SERVER_INDEX);
 	}
 }
 
@@ -1635,7 +1636,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 			case 3: { /* Send */
-				DestType type = GB(WP(w, querystr_d).caption, 0, 8);
+				DestType type = (DestType)GB(WP(w, querystr_d).caption, 0, 8);
 				byte dest = GB(WP(w, querystr_d).caption, 8, 8);
 				SendChat(WP(w, querystr_d).text.buf, type, dest);
 			} /* FALLTHROUGH */
@@ -1654,7 +1655,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 			_chat_tab_completion_active = false;
 			switch (HandleEditBoxKey(w, &WP(w, querystr_d), 2, e)) {
 				case 1: { /* Return */
-				DestType type = GB(WP(w, querystr_d).caption, 0, 8);
+				DestType type = (DestType)GB(WP(w, querystr_d).caption, 0, 8);
 				byte dest = GB(WP(w, querystr_d).caption, 8, 8);
 				SendChat(WP(w, querystr_d).text.buf, type, dest);
 			} /* FALLTHROUGH */

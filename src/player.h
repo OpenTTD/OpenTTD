@@ -38,7 +38,7 @@ typedef struct PlayerAI {
 
 	byte state_mode;
 	byte banned_tile_count;
-	byte railtype_to_use;
+	RailTypeByte railtype_to_use;
 
 	CargoID cargo_type;
 	byte num_wagons;
@@ -132,7 +132,7 @@ typedef struct PlayerAiNew {
 	bool to_deliver;
 
 	TileIndex depot_tile;
-	byte depot_direction;
+	DiagDirectionByte depot_direction;
 
 	byte amount_veh;       // How many vehicles we are going to build in this route
 	byte cur_veh;          // How many vehicles did we bought?
@@ -166,14 +166,14 @@ typedef struct Player {
 	byte player_money_fraction;
 	byte avail_railtypes;
 	byte block_preview;
-	PlayerID index;
+	PlayerByte index;
 
 	uint16 cargo_types; /* which cargo types were transported the last year */
 
 	TileIndex location_of_house;
 	TileIndex last_build_coordinate;
 
-	PlayerID share_owners[4];
+	PlayerByte share_owners[4];
 
 	Year inaugurated_year;
 	byte num_valid_stat_ent;
@@ -212,15 +212,6 @@ void SetLocalPlayer(PlayerID new_player);
 VARDEF PlayerID _local_player;
 VARDEF PlayerID _current_player;
 
-/* Player identifiers All players below MAX_PLAYERS are playable
- * players, above, they are special, computer controlled players */
-enum Players {
-	PLAYER_INACTIVE_CLIENT = 253,
-	PLAYER_NEW_COMPANY = 254, ///< Command 'player' in Multiplayer to create a new company
-	PLAYER_SPECTATOR   = 255, ///< Spectator in Multiplayer or the player in the scenario editor
-	MAX_PLAYERS        = 8,
-};
-
 VARDEF Player _players[MAX_PLAYERS];
 // NOSAVE: can be determined from player structs
 VARDEF byte _player_colors[MAX_PLAYERS];
@@ -239,7 +230,7 @@ static inline byte ActivePlayerCount(void)
 
 static inline Player* GetPlayer(PlayerID i)
 {
-	assert(i < lengthof(_players));
+	assert(i < (PlayerID)lengthof(_players));
 	return &_players[i];
 }
 

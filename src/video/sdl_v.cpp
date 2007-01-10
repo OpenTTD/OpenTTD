@@ -469,7 +469,7 @@ static void SdlVideoMainLoop(void)
 				(keys[SDLK_DOWN]  ? 8 : 0);
 			GameLoop();
 
-			_screen.dst_ptr = _sdl_screen->pixels;
+			_screen.dst_ptr = (Pixel*)_sdl_screen->pixels;
 			UpdateWindows();
 			if (++pal_tick > 4) {
 				CheckPaletteAnim();
@@ -478,7 +478,7 @@ static void SdlVideoMainLoop(void)
 			DrawSurfaceToScreen();
 		} else {
 			SDL_CALL SDL_Delay(1);
-			_screen.dst_ptr = _sdl_screen->pixels;
+			_screen.dst_ptr = (Pixel*)_sdl_screen->pixels;
 			DrawTextMessage();
 			DrawMouseCursor();
 			DrawSurfaceToScreen();

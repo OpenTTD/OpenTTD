@@ -30,6 +30,7 @@
 #include "newgrf_config.h"
 #include "newgrf_sound.h"
 #include "newgrf_spritegroup.h"
+#include "helpers.hpp"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -542,7 +543,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x12: /* SFX */
-			FOR_EACH_OBJECT rvi[i].sfx = grf_load_byte(&buf);
+			FOR_EACH_OBJECT rvi[i].sfx = (SoundFx)grf_load_byte(&buf);
 			break;
 
 		case 0x13: /* Power in 10hp */
@@ -627,7 +628,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x09: /* Refittable */
-			FOR_EACH_OBJECT svi[i].refittable = grf_load_byte(&buf);
+			FOR_EACH_OBJECT svi[i].refittable = (grf_load_byte(&buf) != 0);
 			break;
 
 		case 0x0A: /* Cost factor */
@@ -666,7 +667,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x10: /* SFX */
-			FOR_EACH_OBJECT svi[i].sfx = grf_load_byte(&buf);
+			FOR_EACH_OBJECT svi[i].sfx = (SoundFx)grf_load_byte(&buf);
 			break;
 
 		case 0x11: /* Cargos available for refitting */
@@ -779,7 +780,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			break;
 
 		case 0x12: /* SFX */
-			FOR_EACH_OBJECT avi[i].sfx = grf_load_byte(&buf);
+			FOR_EACH_OBJECT avi[i].sfx = (SoundFx)grf_load_byte(&buf);
 			break;
 
 		case 0x13: /* Cargos available for refitting */
@@ -841,7 +842,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	}
 
 	/* Allocate station specs if necessary */
-	if (_cur_grffile->stations == NULL) _cur_grffile->stations = calloc(MAX_STATIONS, sizeof(*_cur_grffile->stations));
+	if (_cur_grffile->stations == NULL) CallocT(&_cur_grffile->stations, MAX_STATIONS);
 
 	statspec = &_cur_grffile->stations[stid];
 
@@ -861,7 +862,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				uint32 classid;
 
 				/* Property 0x08 is special; it is where the station is allocated */
-				if (statspec[i] == NULL) statspec[i] = calloc(1, sizeof(*statspec[i]));
+				if (statspec[i] == NULL) CallocT(&statspec[i], 1);
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
 				classid = grf_load_dword(&buf);
@@ -875,7 +876,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				uint t;
 
 				statspec->tiles = grf_load_extended(&buf);
-				statspec->renderdata = calloc(statspec->tiles, sizeof(*statspec->renderdata));
+				CallocT(&statspec->renderdata, statspec->tiles);
 				statspec->copied_renderdata = false;
 
 				for (t = 0; t < statspec->tiles; t++) {
@@ -890,7 +891,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						DrawTileSeqStruct *dtss;
 
 						// no relative bounding box support
-						dts->seq = realloc((void*)dts->seq, ++seq_count * sizeof(DrawTileSeqStruct));
+						ReallocT((DrawTileSeqStruct**)&dts->seq, ++seq_count);
 						dtss = (DrawTileSeqStruct*) &dts->seq[seq_count - 1];
 
 						dtss->delta_x = grf_load_byte(&buf);
@@ -956,10 +957,10 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 					//debug("l %d > %d ?", length, stat->lengths);
 					if (length > statspec->lengths) {
-						statspec->platforms = realloc(statspec->platforms, length);
+						ReallocT(&statspec->platforms, length);
 						memset(statspec->platforms + statspec->lengths, 0, length - statspec->lengths);
 
-						statspec->layouts = realloc(statspec->layouts, length * sizeof(*statspec->layouts));
+						ReallocT(&statspec->layouts, length);
 						memset(statspec->layouts + statspec->lengths, 0,
 						       (length - statspec->lengths) * sizeof(*statspec->layouts));
 
@@ -969,8 +970,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 					//debug("p %d > %d ?", number, stat->platforms[l]);
 					if (number > statspec->platforms[l]) {
-						statspec->layouts[l] = realloc(statspec->layouts[l],
-						                               number * sizeof(**statspec->layouts));
+						ReallocT(&statspec->layouts[l], number);
 						// We expect NULL being 0 here, but C99 guarantees that.
 						memset(statspec->layouts[l] + statspec->platforms[l], 0,
 						       (number - statspec->platforms[l]) * sizeof(**statspec->layouts));
@@ -979,7 +979,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					}
 
 					p = 0;
-					layout = malloc(length * number);
+					MallocT(&layout, length * number);
 					for (l = 0; l < length; l++) {
 						for (p = 0; p < number; p++) {
 							layout[l * number + p] = grf_load_byte(&buf);
@@ -1075,7 +1075,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 
 				if (bridge->sprite_table == NULL) {
 					/* Allocate memory for sprite table pointers and zero out */
-					bridge->sprite_table = calloc(7, sizeof(*bridge->sprite_table));
+					CallocT(bridge->sprite_table, 7);
 				}
 
 				for (; numtables-- != 0; tableid++) {
@@ -1088,7 +1088,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 					}
 
 					if (bridge->sprite_table[tableid] == NULL) {
-						bridge->sprite_table[tableid] = malloc(32 * sizeof(**bridge->sprite_table));
+						MallocT(&bridge->sprite_table[tableid], 32);
 					}
 
 					for (sprite = 0; sprite < 32; sprite++)
@@ -1595,7 +1595,7 @@ static void NewSpriteGroup(byte *buf, int len)
 
 	if (setid >= _cur_grffile->spritegroups_count) {
 		// Allocate memory for new sprite group references.
-		_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, (setid + 1) * sizeof(*_cur_grffile->spritegroups));
+		ReallocT(&_cur_grffile->spritegroups, setid + 1);
 		// Initialise new space to NULL
 		for (; _cur_grffile->spritegroups_count < (setid + 1); _cur_grffile->spritegroups_count++)
 			_cur_grffile->spritegroups[_cur_grffile->spritegroups_count] = NULL;
@@ -1640,18 +1640,18 @@ static void NewSpriteGroup(byte *buf, int len)
 				}
 
 				group->g.determ.num_adjusts++;
-				group->g.determ.adjusts = realloc(group->g.determ.adjusts, group->g.determ.num_adjusts * sizeof(*group->g.determ.adjusts));
+				ReallocT(&group->g.determ.adjusts, group->g.determ.num_adjusts);
 
 				adjust = &group->g.determ.adjusts[group->g.determ.num_adjusts - 1];
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
-				adjust->operation = group->g.determ.num_adjusts == 1 ? DSGA_OP_ADD : grf_load_byte(&buf);
+				adjust->operation = group->g.determ.num_adjusts == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)grf_load_byte(&buf);
 				adjust->variable  = grf_load_byte(&buf);
 				adjust->parameter = IS_BYTE_INSIDE(adjust->variable, 0x60, 0x80) ? grf_load_byte(&buf) : 0;
 
 				varadjust = grf_load_byte(&buf);
 				adjust->shift_num = GB(varadjust, 0, 5);
-				adjust->type      = GB(varadjust, 6, 2);
+				adjust->type      = (DeterministicSpriteGroupAdjustType)GB(varadjust, 6, 2);
 				adjust->and_mask  = grf_load_var(varsize, &buf);
 
 				if (adjust->type != DSGA_TYPE_NONE) {
@@ -1666,7 +1666,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			} while (HASBIT(varadjust, 5));
 
 			group->g.determ.num_ranges = grf_load_byte(&buf);
-			group->g.determ.ranges = calloc(group->g.determ.num_ranges, sizeof(*group->g.determ.ranges));
+			CallocT(&group->g.determ.ranges, group->g.determ.num_ranges);
 
 			check_length(bufend - buf, 2 + (2 + 2 * varsize) * group->g.determ.num_ranges, "NewSpriteGroup (Deterministic)");
 
@@ -1698,7 +1698,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			group->g.random.cmp_mode       = HASBIT(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
 			group->g.random.lowest_randbit = grf_load_byte(&buf);
 			group->g.random.num_groups     = grf_load_byte(&buf);
-			group->g.random.groups = calloc(group->g.random.num_groups, sizeof(*group->g.random.groups));
+			CallocT(&group->g.random.groups, group->g.random.num_groups);
 
 			check_length(bufend - buf, 2 * group->g.random.num_groups, "NewSpriteGroup (Randomized) (2)");
 
@@ -1738,8 +1738,8 @@ static void NewSpriteGroup(byte *buf, int len)
 
 					group->g.real.num_loaded  = num_loaded;
 					group->g.real.num_loading = num_loading;
-					if (num_loaded  > 0) group->g.real.loaded  = calloc(num_loaded,  sizeof(*group->g.real.loaded));
-					if (num_loading > 0) group->g.real.loading = calloc(num_loading, sizeof(*group->g.real.loading));
+					if (num_loaded  > 0) CallocT(&group->g.real.loaded, num_loaded);
+					if (num_loading > 0) CallocT(&group->g.real.loading, num_loading);
 
 					grfmsg(6, "NewSpriteGroup: New SpriteGroup 0x%02X, %u views, %u loaded, %u loading",
 							setid, sprites, num_loaded, num_loading);
@@ -1884,7 +1884,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 	}
 
 	if (!wagover && last_engines_count != idcount) {
-		last_engines = realloc(last_engines, idcount);
+		ReallocT(&last_engines, idcount);
 		last_engines_count = idcount;
 	}
 
@@ -2235,7 +2235,7 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 			return _game_mode;
 
 		case 0x9A: /* Always -1 */
-			return -1;
+			return UINT_MAX;
 
 		case 0x9D: /* TTD Platform, 00=TTDPatch, 01=OpenTTD */
 			return 1;
@@ -2249,7 +2249,7 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 
 			/* In-game variable. */
 			grfmsg(1, "Unsupported in-game variable 0x%02X", param);
-			return -1;
+			return UINT_MAX;
 	}
 }
 
@@ -2274,7 +2274,7 @@ static void CfgApply(byte *buf, int len)
 
 	/* Check if the sprite is a pseudo sprite. We can't operate on real sprites. */
 	if (type == 0xFF) {
-		_preload_sprite = malloc(num);
+		MallocT(&_preload_sprite, num);
 		FioReadBlock(_preload_sprite, num);
 	}
 
@@ -2788,7 +2788,7 @@ static void ParamSet(byte *buf, int len)
 								}
 
 								grfmsg(1, "GRM: Unable to allocate %d vehicles", count);
-								src1 = -1;
+								src1 = UINT_MAX;
 							}
 							break;
 						}
@@ -3026,7 +3026,7 @@ static void DefineGotoLabel(byte *buf, int len)
 	check_length(len, 1, "DefineGotoLabel");
 	buf++; len--;
 
-	label = malloc(sizeof(*label));
+	MallocT(&label, 1);
 	label->label    = grf_load_byte(&buf);
 	label->nfo_line = _nfo_line;
 	label->pos      = FioGetPos();
@@ -3198,7 +3198,7 @@ static void LoadFontGlyph(byte *buf, int len)
 	check_length(len, 1 + num_def * 4, "LoadFontGlyph");
 
 	for (i = 0; i < num_def; i++) {
-		FontSize size    = grf_load_byte(&buf);
+		FontSize size    = (FontSize)grf_load_byte(&buf);
 		uint8  num_char  = grf_load_byte(&buf);
 		uint16 base_char = grf_load_word(&buf);
 		uint c;
@@ -3489,7 +3489,7 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 		return;
 	}
 
-	newfile = calloc(1, sizeof(*newfile));
+	CallocT(&newfile, 1);
 
 	if (newfile == NULL) error ("Out of memory");
 
@@ -3617,7 +3617,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 	if (_preload_sprite == NULL) {
 		/* No preloaded sprite to work with; allocate and read the
 		 * pseudo sprite content. */
-		buf = malloc(num);
+		MallocT(&buf, num);
 		if (buf == NULL) error("DecodeSpecialSprite: Could not allocate memory");
 		FioReadBlock(buf, num);
 	} else {
@@ -3768,5 +3768,6 @@ void LoadNewGRF(uint load_index, uint file_index)
 	// Pre-calculate all refit masks after loading GRF files
 	CalculateRefitMasks();
 }
+
 
 

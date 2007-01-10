@@ -3,6 +3,7 @@
 CC_HOST      = !!CC_HOST!!
 CXX_HOST     = !!CXX_HOST!!
 CC_BUILD     = !!CC_BUILD!!
+CXX_BUILD    = !!CXX_BUILD!!
 WINDRES      = !!WINDRES!!
 STRIP        = !!STRIP!!
 CC_CFLAGS    = !!CC_CFLAGS!!
@@ -96,7 +97,7 @@ RES := $(shell if [ "`cat $(CONFIG_CACHE_ENDIAN) 2>/dev/null`" != "$(ENDIAN_FORC
 
 # If there is a change in the source-file-list, make sure we recheck the deps
 RES := $(shell if [ "`cat $(CONFIG_CACHE_SOURCE) 2>/dev/null`" != "$(SRCS)" ]; then echo "$(SRCS)" > $(CONFIG_CACHE_SOURCE); fi )
-# If there is a change in the revision, make sure we recompile rev.c
+# If there is a change in the revision, make sure we recompile rev.cpp
 RES := $(shell if [ "`cat $(CONFIG_CACHE_VERSION) 2>/dev/null`" != "$(REV)" ]; then echo "$(REV)" > $(CONFIG_CACHE_VERSION); fi )
 
 ifndef MAKEDEPEND
@@ -232,25 +233,25 @@ endian_target.h: $(ENDIAN_CHECK) $(CONFIG_CACHE_ENDIAN)
 	$(E) '$(STAGE) Testing endianness for target'
 	$(Q)./$(ENDIAN_CHECK) $(ENDIAN_FORCE) > $@
 
-$(ENDIAN_CHECK): $(SRC_DIR)/endian_check.c
+$(ENDIAN_CHECK): $(SRC_DIR)/endian_check.cpp
 	$(E) '$(STAGE) Compiling and Linking $@'
-	$(Q)$(CC_BUILD) $(CFLAGS_BUILD) $< -o $@
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $< -o $@
 
 # Revision files
 
-rev.c: $(CONFIG_CACHE_VERSION)
+rev.cpp: $(CONFIG_CACHE_VERSION)
 # setting the revision number in a place, there the binary can read it
-	@echo 'const char _openttd_revision[] = "$(REV)";' > rev.c
+	@echo 'extern const char _openttd_revision[] = "$(REV)";' > rev.cpp
 # Some additions for MorphOS versions tag
 ifeq ($(OS),MORPHOS)
-	@echo '#ifdef __MORPHOS__' >> rev.c
-	@echo 'const char morphos_versions_tag[] = "\\0$$VER: OpenTTD $(REV) ('`date +%d.%m.%y`') (C) OpenTTD Team [MorphOS, PowerPC]";' >> rev.c
-	@echo '#endif' >> rev.c
+	@echo '#ifdef __MORPHOS__' >> rev.cpp
+	@echo 'extern const char morphos_versions_tag[] = "\\0$$VER: OpenTTD $(REV) ('`date +%d.%m.%y`') (C) OpenTTD Team [MorphOS, PowerPC]";' >> rev.cpp
+	@echo '#endif' >> rev.cpp
 endif
 
-rev.o: rev.c $(FILE_DEP)
-	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.c=%.c)'
-	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -c -o $@ $<
+rev.o: rev.cpp $(FILE_DEP)
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
+	$(Q)$(CXX_HOST) $(CFLAGS) -c -o $@ $<
 
 FORCE:
 
@@ -261,7 +262,7 @@ clean:
 	$(Q)rm -f $(DEPS) $(OBJS) $(TTD) $(TTD:%=$(BIN_DIR)/%) $(CONFIG_CACHE_COMPILER) $(CONFIG_CACHE_LINKER) $(CONFIG_CACHE_ENDIAN) $(CONFIG_CACHE_SOURCE) $(ENDIAN_TARGETS) rev.o
 
 mrproper: clean
-	$(Q)rm -f rev.c
+	$(Q)rm -f rev.cpp
 
 %.o:
 	@echo '$(STAGE) No such source-file: $(@:%.o=%).[c|cpp|m|rc]'

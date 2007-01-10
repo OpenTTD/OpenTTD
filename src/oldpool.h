@@ -16,11 +16,11 @@ typedef void OldMemoryPoolCleanBlock(uint start_item, uint end_item);
  *  please try to avoid manual calls!
  */
 struct OldMemoryPool {
-	const char* const name;     ///< Name of the pool (just for debugging)
+	const char* name;     ///< Name of the pool (just for debugging)
 
-	const uint max_blocks;      ///< The max amount of blocks this pool can have
-	const uint block_size_bits; ///< The size of each block in bits
-	const uint item_size;       ///< How many bytes one block is
+	uint max_blocks;      ///< The max amount of blocks this pool can have
+	uint block_size_bits; ///< The size of each block in bits
+	uint item_size;       ///< How many bytes one block is
 
 	/// Pointer to a function that is called after a new block is added
 	OldMemoryPoolNewBlock *new_block_proc;

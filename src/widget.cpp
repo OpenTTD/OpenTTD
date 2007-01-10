@@ -206,7 +206,7 @@ void DrawWindowWidgets(const Window *w)
 		case WWT_IMGBTN_2: {
 			int img = wi->data;
 			assert(img != 0);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 
 			/* show different image when clicked for WWT_IMGBTN_2 */
 			if ((wi->type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++;
@@ -216,13 +216,13 @@ void DrawWindowWidgets(const Window *w)
 
 		case WWT_PANEL: {
 			assert(wi->data == 0);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			goto draw_default;
 		}
 
 		case WWT_TEXTBTN:
 		case WWT_TEXTBTN_2: {
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			}
 		/* fall through */
 
@@ -248,7 +248,7 @@ void DrawWindowWidgets(const Window *w)
 			int x, amt1, amt2;
 			int color;
 
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 
 			c = GB(wi->data, 0, 8);
 			amt1 = (wi->right - wi->left + 1) / c;
@@ -296,11 +296,11 @@ void DrawWindowWidgets(const Window *w)
 
 			// draw up/down buttons
 			clicked = ((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP);
-			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color, (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, 0x10);
 
 			clicked = (((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN));
-			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
 
 			c1 = _colour_gradient[wi->color&0xF][3];
@@ -317,7 +317,7 @@ void DrawWindowWidgets(const Window *w)
 			GfxFillRect(r.left+8, r.top+10, r.left+8, r.bottom-10, c2);
 
 			pt = HandleScrollbarHittest(&w->vscroll, r.top, r.bottom);
-			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE ? FR_LOWERED : FR_NONE);
 			break;
 		}
 		case WWT_SCROLL2BAR: {
@@ -328,11 +328,11 @@ void DrawWindowWidgets(const Window *w)
 
 			// draw up/down buttons
 			clicked = ((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2));
-			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color,  (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color,  (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, 0x10);
 
 			clicked = ((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2));
-			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color,  (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color,  (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
 
 			c1 = _colour_gradient[wi->color&0xF][3];
@@ -349,7 +349,7 @@ void DrawWindowWidgets(const Window *w)
 			GfxFillRect(r.left+8, r.top+10, r.left+8, r.bottom-10, c2);
 
 			pt = HandleScrollbarHittest(&w->vscroll2, r.top, r.bottom);
-			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2) ? FR_LOWERED : FR_NONE);
 			break;
 		}
 
@@ -361,11 +361,11 @@ void DrawWindowWidgets(const Window *w)
 			assert(r.bottom - r.top == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			clicked = ((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL));
-			DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawSprite(SPR_ARROW_LEFT, r.left + 1 + clicked, r.top + 1 + clicked);
 
 			clicked = ((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL));
-			DrawFrameRect(r.right-9, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.right-9, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawSprite(SPR_ARROW_RIGHT, r.right - 8 + clicked, r.top + 1 + clicked);
 
 			c1 = _colour_gradient[wi->color&0xF][3];
@@ -383,7 +383,7 @@ void DrawWindowWidgets(const Window *w)
 
 			// draw actual scrollbar
 			pt = HandleScrollbarHittest(&w->hscroll, r.left, r.right);
-			DrawFrameRect(pt.x, r.top, pt.y, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL) ? FR_LOWERED : 0);
+			DrawFrameRect(pt.x, r.top, pt.y, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL) ? FR_LOWERED : FR_NONE);
 
 			break;
 		}
@@ -423,7 +423,7 @@ void DrawWindowWidgets(const Window *w)
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			clicked = !!(w->flags4 & WF_STICKY);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, r.left + 2 + clicked, r.top + 3 + clicked);
 			break;
 		}
@@ -432,7 +432,7 @@ void DrawWindowWidgets(const Window *w)
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			clicked = !!(w->flags4 & WF_SIZING);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawSprite(SPR_WINDOW_RESIZE, r.left + 3 + clicked, r.top + 3 + clicked);
 			break;
 		}
@@ -440,7 +440,7 @@ void DrawWindowWidgets(const Window *w)
 		case WWT_CLOSEBOX: {
 			assert(r.right - r.left == 10); // ensure the same sizes are used everywhere
 
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_NONE);
 			DrawString(r.left + 2, r.top + 2, STR_00C5, 0);
 			break;
 		}

@@ -31,7 +31,7 @@ Trackdir YapfChooseRoadTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir)
  * @param no_path_found [out] true is returned if no path can be found (returned Trackdir is only a 'guess')
  * @return         the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
  */
-Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool *path_not_found);
+Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found);
 
 /** Used by RV multistop feature to find the nearest road stop that has a free slot.
  * @param v      RV (its current tile will be the origin)

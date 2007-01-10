@@ -14,6 +14,7 @@
 #include "variables.h"
 #include "table/sprites.h"
 #include "genworld.h"
+#include "helpers.hpp"
 
 // delta between mouse cursor and upper left corner of dragged window
 static Point _drag_delta;
@@ -312,7 +313,7 @@ Window **FindWindowZPosition(const Window *w)
 		if (*wz == w) return wz;
 	}
 
-	DEBUG(misc, 3, "Window (class %d, number %d) is not open, probably removed by recursive calls",
+	DEBUG(misc, 3, "Window (cls %d, number %d) is not open, probably removed by recursive calls",
 		w->window_class, w->window_number);
 	return NULL;
 }
@@ -543,7 +544,7 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 
 		for (wi = widget; wi->type != WWT_LAST; wi++) index++;
 
-		w->widget = realloc(w->widget, sizeof(*w->widget) * index);
+		ReallocT(&w->widget, index);
 		memcpy(w->widget, widget, sizeof(*w->widget) * index);
 		w->widget_count = index - 1;
 	} else {
@@ -1488,7 +1489,7 @@ static void SendWindowMessageW(Window *w, uint msg, uint wparam, uint lparam)
  * @param wparam Specifies additional message-specific information
  * @param lparam Specifies additional message-specific information
  */
-void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, uint wparam, uint lparam)
+void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, int msg, int wparam, int lparam)
 {
 	Window *w = FindWindowById(wnd_class, wnd_num);
 	if (w != NULL) SendWindowMessageW(w, msg, wparam, lparam);
@@ -1501,7 +1502,7 @@ void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, ui
  * @param wparam Specifies additional message-specific information
  * @param lparam Specifies additional message-specific information
  */
-void SendWindowMessageClass(WindowClass wnd_class, uint msg, uint wparam, uint lparam)
+void SendWindowMessageClass(WindowClass wnd_class, int msg, int wparam, int lparam)
 {
 	Window* const *wz;
 

@@ -63,6 +63,6 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 	if (callback == CALLBACK_FAILED) return false;
 	if (callback >= GetNumOriginalSounds()) callback += file->sound_offset - GetNumOriginalSounds();
 
-	if (callback < GetNumSounds()) SndPlayVehicleFx(callback, v);
+	if (callback < GetNumSounds()) SndPlayVehicleFx((SoundFx)callback, v);
 	return true;
 }

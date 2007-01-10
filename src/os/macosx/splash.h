@@ -5,6 +5,14 @@
 
 #define SPLASH_IMAGE_FILE		"splash.png"
 
-void DisplaySplashImage(void);
+#ifdef __cplusplus
+extern "C" {
+#endif //__cplusplus
+
+	void DisplaySplashImage(void);
+
+#ifdef __cplusplus
+}
+#endif //__cplusplus
 
 #endif

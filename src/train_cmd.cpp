@@ -171,7 +171,7 @@ void TrainConsistChanged(Vehicle* v)
 		if (u->first == NULL) u->first = v;
 
 		// update the 'first engine'
-		u->u.rail.first_engine = (v == u) ? INVALID_ENGINE : first_engine;
+		u->u.rail.first_engine = (v == u) ? (EngineID)INVALID_ENGINE : first_engine;
 		u->u.rail.railtype = GetEngine(u->engine_type)->railtype;
 
 		if (IsTrainEngine(u)) first_engine = u->engine_type;
@@ -424,6 +424,8 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 			case RAILTYPE_MAGLEV:
 				force = power / 25;
 				break;
+
+			default: NOT_REACHED();
 		}
 	} else {
 		//"kickoff" acceleration
@@ -466,7 +468,7 @@ int GetTrainImage(const Vehicle* v, Direction direction)
 	if (HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) direction = ReverseDir(direction);
 
 	if (is_custom_sprite(img)) {
-		base = GetCustomVehicleSprite(v, direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img));
+		base = GetCustomVehicleSprite(v, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img)));
 		if (base != 0) return base;
 		img = orig_rail_vehicle_info[v->engine_type].image_index;
 	}
@@ -501,7 +503,7 @@ void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
 		x += 15;
 		image = 0;
 		if (is_custom_sprite(img)) {
-			image = GetCustomVehicleIcon(engine, 2);
+			image = GetCustomVehicleIcon(engine, DIR_E);
 			if (image == 0) img = orig_rail_vehicle_info[engine].image_index;
 		}
 		if (image == 0) {
@@ -646,7 +648,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->z_pos = GetSlopeZ(x,y);
 			v->owner = _current_player;
 			v->z_height = 6;
-			v->u.rail.track = 0x80;
+			v->u.rail.track = TRACK_BIT_SPECIAL;
 			v->vehstatus = VS_HIDDEN | VS_DEFPAL;
 
 			v->subtype = 0;
@@ -719,7 +721,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 	u->y_pos = v->y_pos;
 	u->z_pos = v->z_pos;
 	u->z_height = 6;
-	u->u.rail.track = 0x80;
+	u->u.rail.track = TRACK_BIT_SPECIAL;
 	u->vehstatus = v->vehstatus & ~VS_STOPPED;
 	u->subtype = 0;
 	SetMultiheaded(u);
@@ -807,7 +809,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->y_pos = y;
 			v->z_pos = GetSlopeZ(x,y);
 			v->z_height = 6;
-			v->u.rail.track = 0x80;
+			v->u.rail.track = TRACK_BIT_SPECIAL;
 			v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 			v->spritenum = rvi->image_index;
 			v->cargo_type = rvi->cargo_type;
@@ -903,7 +905,7 @@ int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped)
 }
 
 /* Used to check if the train is inside the depot and verifying that the VS_STOPPED flag is set */
-inline int CheckTrainStoppedInDepot(const Vehicle *v)
+int CheckTrainStoppedInDepot(const Vehicle *v)
 {
 	return CheckTrainInDepot(v, true);
 }
@@ -1593,8 +1595,8 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 		}
 
 		/* swap variables */
-		swap_byte(&a->u.rail.track, &b->u.rail.track);
-		swap_byte(&a->direction, &b->direction);
+		SwapT(&a->u.rail.track, &b->u.rail.track);
+		SwapT(&a->direction, &b->direction);
 
 		/* toggle direction */
 		if (!(a->u.rail.track & 0x80)) a->direction = ReverseDir(a->direction);
@@ -2110,7 +2112,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 		if (IsTileDepotType(v->tile, TRANSPORT_RAIL) || IsTunnelTile(v->tile)) continue;
 
 		// No sparks for electric vehicles on nonelectrified tracks
-		if (!HasPowerOnRail(v->u.rail.railtype, GetTileRailType(v->tile, GetVehicleTrackdir(v)))) continue;
+		if (!HasPowerOnRail(v->u.rail.railtype, GetTileRailType(v->tile, TrackdirToTrack(GetVehicleTrackdir(v))))) continue;
 
 		if (effect_type == 0) {
 			// Use default effect type for engine class.
@@ -2177,6 +2179,7 @@ static void TrainPlayLeaveStationSound(const Vehicle* v)
 
 		case RAILTYPE_MONO: SndPlayVehicleFx(SND_47_MAGLEV_2, v); break;
 		case RAILTYPE_MAGLEV: SndPlayVehicleFx(SND_41_MAGLEV, v); break;
+		default: NOT_REACHED();
 	}
 }
 
@@ -2214,8 +2217,8 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 	InvalidateWindowClasses(WC_TRAINS_LIST);
 	TrainPlayLeaveStationSound(v);
 
-	v->u.rail.track = 1;
-	if (v->direction & 2) v->u.rail.track = 2;
+	v->u.rail.track = TRACK_BIT_X;
+	if (v->direction & 2) v->u.rail.track = TRACK_BIT_Y;
 
 	v->vehstatus &= ~VS_HIDDEN;
 	v->cur_speed = 0;
@@ -2236,10 +2239,10 @@ typedef struct TrainTrackFollowerData {
 	StationID station_index; // station index we're heading for
 	uint best_bird_dist;
 	uint best_track_dist;
-	byte best_track;
+	TrackdirByte best_track;
 } TrainTrackFollowerData;
 
-static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, int track, uint length)
+static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, Trackdir track, uint length)
 {
 	// heading for nowhere?
 	if (ttfd->dest_coords == 0) return false;
@@ -2307,10 +2310,10 @@ static const byte _search_directions[6][4] = {
 static const byte _pick_track_table[6] = {1, 3, 2, 2, 0, 0};
 
 /* choose a track */
-static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirbits)
+static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
 	TrainTrackFollowerData fd;
-	uint best_track;
+	Track best_track;
 	// pathfinders are able to tell that route was only 'guessed'
 	bool path_not_found = false;
 
@@ -2318,17 +2321,17 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 	TIC()
 #endif
 
-	assert((trackdirbits & ~0x3F) == 0);
+	assert((tracks & ~0x3F) == 0);
 
 	/* quick return in case only one possible track is available */
-	if (KILL_FIRST_BIT(trackdirbits) == 0) return FIND_FIRST_BIT(trackdirbits);
+	if (KILL_FIRST_BIT(tracks) == 0) return FindFirstTrack(tracks);
 
 	if (_patches.yapf.rail_use_yapf) {
-		Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, trackdirbits, &path_not_found);
+		Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, tracks, &path_not_found);
 		if (trackdir != INVALID_TRACKDIR) {
 			best_track = TrackdirToTrack(trackdir);
 		} else {
-			best_track = FIND_FIRST_BIT(TrackdirBitsToTrackBits(trackdirbits));
+			best_track = FindFirstTrack(tracks);
 		}
 	} else if (_patches.new_pathfinding_all) { /* Use a new pathfinding for everything */
 		void* perf = NpfBeginInterval();
@@ -2349,7 +2352,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 			/* We are already at our target. Just do something */
 			//TODO: maybe display error?
 			//TODO: go straight ahead if possible?
-			best_track = FIND_FIRST_BIT(trackdirbits);
+			best_track = FindFirstTrack(tracks);
 		} else {
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
 			the direction we need to take to get there, if ftd.best_bird_dist is not 0,
@@ -2371,7 +2374,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 		/* New train pathfinding */
 		fd.best_bird_dist = (uint)-1;
 		fd.best_track_dist = (uint)-1;
-		fd.best_track = 0xFF;
+		fd.best_track = INVALID_TRACKDIR;
 
 		NewTrainPathfind(tile - TileOffsByDiagDir(enterdir), v->dest_tile,
 			v->u.rail.compatible_railtypes, enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
@@ -2381,9 +2384,9 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 
 		if (fd.best_track == 0xff) {
 			// blaha
-			best_track = FIND_FIRST_BIT(trackdirbits);
+			best_track = FindFirstTrack(tracks);
 		} else {
-			best_track = fd.best_track & 7;
+			best_track = TrackdirToTrack(fd.best_track);
 		}
 
 		time = NpfEndInterval(perf);
@@ -2450,7 +2453,7 @@ static bool CheckReverseTrain(Vehicle *v)
 	} else if (_patches.new_pathfinding_all) { /* Use a new pathfinding for everything */
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
-		byte trackdir, trackdir_rev;
+		Trackdir trackdir, trackdir_rev;
 		Vehicle* last = GetLastVehicleInChain(v);
 
 		NPFFillWithOrderData(&fstd, v);
@@ -2476,7 +2479,7 @@ static bool CheckReverseTrain(Vehicle *v)
 			fd.best_bird_dist = (uint)-1;
 			fd.best_track_dist = (uint)-1;
 
-			NewTrainPathfind(v->tile, v->dest_tile, v->u.rail.compatible_railtypes, reverse ^ i, (NTPEnumProc*)NtpCallbFindStation, &fd);
+			NewTrainPathfind(v->tile, v->dest_tile, v->u.rail.compatible_railtypes, (DiagDirection)(reverse ^ i), (NTPEnumProc*)NtpCallbFindStation, &fd);
 
 			if (best_track != -1) {
 				if (best_bird_dist != 0) {
@@ -2768,8 +2771,8 @@ static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 }
 
 static const Direction _new_vehicle_direction_table[11] = {
-	DIR_N , DIR_NW, DIR_W , 0,
-	DIR_NE, DIR_N , DIR_SW, 0,
+	DIR_N , DIR_NW, DIR_W , INVALID_DIR,
+	DIR_NE, DIR_N , DIR_SW, INVALID_DIR,
 	DIR_E , DIR_SE, DIR_S
 };
 
@@ -2885,7 +2888,7 @@ static void AffectSpeedByZChange(Vehicle *v, byte old_z)
 }
 
 static const DiagDirection _otherside_signal_directions[] = {
-	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, 0, 0,
+	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, INVALID_DIAGDIR, INVALID_DIAGDIR,
 	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE
 };
 
@@ -2906,7 +2909,7 @@ typedef struct TrainCollideChecker {
 
 static void *FindTrainCollideEnum(Vehicle *v, void *data)
 {
-	const TrainCollideChecker* tcc = data;
+	const TrainCollideChecker* tcc = (TrainCollideChecker*)data;
 
 	if (v != tcc->v &&
 			v != tcc->v_skip &&
@@ -2968,7 +2971,7 @@ static void CheckTrainCollision(Vehicle *v)
 	tcc.v_skip = v->next;
 
 	/* find colliding vehicle */
-	realcoll = VehicleFromPos(TileVirtXY(v->x_pos, v->y_pos), &tcc, FindTrainCollideEnum);
+	realcoll = (Vehicle*)VehicleFromPos(TileVirtXY(v->x_pos, v->y_pos), &tcc, FindTrainCollideEnum);
 	if (realcoll == NULL) return;
 
 	coll = GetFirstVehicleInChain(realcoll);
@@ -3005,7 +3008,7 @@ typedef struct VehicleAtSignalData {
 
 static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 {
-	const VehicleAtSignalData* vasd = data;
+	const VehicleAtSignalData* vasd = (VehicleAtSignalData*)data;
 
 	if (v->type == VEH_Train && IsFrontEngine(v) && v->tile == vasd->tile) {
 		DirDiff diff = ChangeDirDiff(DirDifference(v->direction, vasd->direction), DIRDIFF_90RIGHT);
@@ -3020,12 +3023,12 @@ static void TrainController(Vehicle *v, bool update_image)
 	Vehicle *prev;
 	GetNewVehiclePosResult gp;
 	uint32 r, tracks,ts;
-	int i;
+	Trackdir i;
 	DiagDirection enterdir;
 	Direction dir;
 	Direction newdir;
 	Direction chosen_dir;
-	byte chosen_track;
+	TrackBits chosen_track;
 	byte old_z;
 
 	/* For every vehicle after and including the given vehicle */
@@ -3064,7 +3067,7 @@ static void TrainController(Vehicle *v, bool update_image)
 			} else {
 				/* A new tile is about to be entered. */
 
-				byte bits;
+				TrackBits bits;
 				/* Determine what direction we're entering the new tile from */
 				dir = GetNewVehicleDirectionByTile(gp.new_tile, gp.old_tile);
 				enterdir = DirToDiagDir(dir);
@@ -3078,14 +3081,14 @@ static void TrainController(Vehicle *v, bool update_image)
 				 * Now, the lower byte contains the track status, and the byte at bit 16 contains
 				 * the signal status. */
 				tracks = ts | (ts >> 8);
-				bits = tracks & 0xFF;
+				bits = (TrackBits)(tracks & TRACK_BIT_MASK);
 				if ((_patches.new_pathfinding_all || _patches.yapf.rail_use_yapf) && _patches.forbid_90_deg && prev == NULL) {
 					/* We allow wagons to make 90 deg turns, because forbid_90_deg
 					 * can be switched on halfway a turn */
-					bits &= ~TrackCrossesTracks(FIND_FIRST_BIT(v->u.rail.track));
+					bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
 				}
 
-				if (bits == 0) {
+				if (bits == TRACK_BIT_NONE) {
 					//debug("%x == 0", bits);
 					goto invalid_rail;
 				}
@@ -3109,7 +3112,7 @@ static void TrainController(Vehicle *v, bool update_image)
 					static byte _matching_tracks[8] = {0x30, 1, 0xC, 2, 0x30, 1, 0xC, 2};
 
 					/* The wagon is active, simply follow the prev vehicle. */
-					chosen_track = (byte)(_matching_tracks[GetDirectionToVehicle(prev, gp.x, gp.y)] & bits);
+					chosen_track = (TrackBits)(byte)(_matching_tracks[GetDirectionToVehicle(prev, gp.x, gp.y)] & bits);
 				}
 
 				/* make sure chosen track is a valid track */
@@ -3120,7 +3123,7 @@ static void TrainController(Vehicle *v, bool update_image)
 					const byte *b = _initial_tile_subcoord[FIND_FIRST_BIT(chosen_track)][enterdir];
 					gp.x = (gp.x & ~0xF) | b[0];
 					gp.y = (gp.y & ~0xF) | b[1];
-					chosen_dir = b[2];
+					chosen_dir = (Direction)b[2];
 				}
 
 				/* Call the landscape function and tell it that the vehicle entered the tile */
@@ -3140,7 +3143,7 @@ static void TrainController(Vehicle *v, bool update_image)
 				if (!(r&0x4)) {
 					v->tile = gp.new_tile;
 
-					if (GetTileRailType(gp.new_tile, chosen_track) != GetTileRailType(gp.old_tile, v->u.rail.track)) {
+					if (GetTileRailType(gp.new_tile, FindFirstTrack(chosen_track)) != GetTileRailType(gp.old_tile, FindFirstTrack(v->u.rail.track))) {
 						TrainPowerChanged(GetFirstVehicleInChain(v));
 					}
 
@@ -3201,7 +3204,7 @@ red_light: {
 	/* We're in front of a red signal ?? */
 		/* find the first set bit in ts. need to do it in 2 steps, since
 		 * FIND_FIRST_BIT only handles 6 bits at a time. */
-		i = FindFirstBit2x64(ts);
+		i = FindFirstTrackdir((TrackdirBits)(uint16)ts);
 
 		if (!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(i))) {
 			v->cur_speed = 0;
@@ -3441,6 +3444,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		case DIR_SE: x = y;            break;
 		case DIR_S : x = x + y - 8;    break;
 		case DIR_W : x = ~y + x + 8;   break;
+		default: break;
 	}
 
 	if (GB(ts, 0, 16) != 0) {

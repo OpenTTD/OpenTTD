@@ -1,6 +1,7 @@
 /* $Id$ */
 
 #include "stdafx.h"
+#define VARDEF
 #include "string.h"
 #include "table/strings.h"
 #include "debug.h"
@@ -10,8 +11,8 @@
 #include "map.h"
 #include "tile.h"
 #include "void_map.h"
+#include "helpers.hpp"
 
-#define VARDEF
 #include "openttd.h"
 #include "bridge_map.h"
 #include "functions.h"
@@ -73,7 +74,7 @@ void InitializeStations(void);
 void DeleteAllPlayerStations(void);
 
 extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
-extern void DoStartupNewPlayer(bool is_ai);
+extern Player* DoStartupNewPlayer(bool is_ai);
 extern void ShowOSErrorBox(const char *buf);
 
 /* TODO: usrerror() for errors which are not of an internal nature but
@@ -119,7 +120,7 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 	fseek(in, 0, SEEK_END);
 	len = ftell(in);
 	fseek(in, 0, SEEK_SET);
-	if (len > maxsize || (mem = malloc(len + 1)) == NULL) {
+	if (len > maxsize || !MallocT(&mem, len + 1)) {
 		fclose(in);
 		return NULL;
 	}
@@ -135,9 +136,9 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 	return mem;
 }
 
+extern const char _openttd_revision[];
 static void showhelp(void)
 {
-	extern const char _openttd_revision[];
 	char buf[4096], *p;
 
 	p = buf;
@@ -175,25 +176,26 @@ static void showhelp(void)
 }
 
 
-typedef struct {
+struct MyGetOptData {
 	char *opt;
 	int numleft;
 	char **argv;
 	const char *options;
-	char *cont;
-} MyGetOptData;
+	const char *cont;
 
-static void MyGetOptInit(MyGetOptData *md, int argc, char **argv, const char *options)
-{
-	md->cont = NULL;
-	md->numleft = argc;
-	md->argv = argv;
-	md->options = options;
-}
+	MyGetOptData(int argc, char **argv, const char *options)
+	{
+		opt = NULL;
+		numleft = argc;
+		this->argv = argv;
+		this->options = options;
+		cont = NULL;
+	}
+};
 
 static int MyGetOpt(MyGetOptData *md)
 {
-	char *s,*r,*t;
+	const char *s,*r,*t;
 
 	s = md->cont;
 	if (s != NULL)
@@ -226,7 +228,7 @@ md_continue_here:;
 							md->argv++;
 						}
 					}
-					md->opt = t;
+					md->opt = (char*)t;
 					md->cont = NULL;
 					return *s;
 				}
@@ -244,7 +246,7 @@ md_continue_here:;
 
 static void ParseResolution(int res[2], const char *s)
 {
-	char *t = strchr(s, 'x');
+	const char *t = strchr(s, 'x');
 	if (t == NULL) {
 		ShowInfoF("Invalid resolution '%s'", s);
 		return;
@@ -308,7 +310,7 @@ static void LoadIntroGame(void)
 	}
 
 	_pause = 0;
-	SetLocalPlayer(0);
+	SetLocalPlayer(PLAYER_FIRST);
 	/* Make sure you can't scroll in the menu */
 	_scrolling_viewport = 0;
 	_cursor.fix_at = false;
@@ -324,7 +326,6 @@ extern void DedicatedFork(void);
 
 int ttd_main(int argc, char *argv[])
 {
-	MyGetOptData mgo;
 	int i;
 	const char *optformat;
 	char musicdriver[16], sounddriver[16], videodriver[16];
@@ -356,7 +357,8 @@ int ttd_main(int argc, char *argv[])
 #endif
 	;
 
-	MyGetOptInit(&mgo, argc-1, argv+1, optformat);
+	MyGetOptData mgo(argc-1, argv+1, optformat);
+
 	while ((i = MyGetOpt(&mgo)) != -1) {
 		switch (i) {
 		case 'm': ttd_strlcpy(musicdriver, mgo.opt, sizeof(musicdriver)); break;
@@ -512,7 +514,7 @@ int ttd_main(int argc, char *argv[])
 			ParseConnectionString(&player, &port, network_conn);
 
 			if (player != NULL) {
-				_network_playas = atoi(player);
+				_network_playas = (PlayerID)atoi(player);
 
 				if (_network_playas != PLAYER_SPECTATOR) {
 					_network_playas--;
@@ -628,7 +630,7 @@ static void MakeNewGameDone(void)
 	/* Create a single player */
 	DoStartupNewPlayer(false);
 
-	SetLocalPlayer(0);
+	SetLocalPlayer(PLAYER_FIRST);
 	_current_player = _local_player;
 	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
@@ -708,7 +710,7 @@ static void StartScenario(void)
 	StartupEngines();
 	StartupDisasters();
 
-	SetLocalPlayer(0);
+	SetLocalPlayer(PLAYER_FIRST);
 	_current_player = _local_player;
 	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
@@ -799,7 +801,7 @@ void SwitchMode(int new_mode)
 		} else {
 			/* Update the local player for a loaded game. It is either always
 			 * player #1 (eg 0) or in the case of a dedicated server a spectator */
-			SetLocalPlayer(_network_dedicated ? PLAYER_SPECTATOR : 0);
+			SetLocalPlayer(_network_dedicated ? PLAYER_SPECTATOR : PLAYER_FIRST);
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
@@ -1096,7 +1098,7 @@ static void UpdateExclusiveRights(void)
 	Town *t;
 
 	FOR_ALL_TOWNS(t) {
-		t->exclusivity = (byte)-1;
+		t->exclusivity = INVALID_PLAYER;
 	}
 
 	/* FIXME old exclusive rights status is not being imported (stored in s->blocked_months_obsolete)
@@ -1312,8 +1314,8 @@ bool AfterLoadGame(void)
 		 * becomes player 0, unless we are in the scenario editor where all the
 		 * players are 'invalid'.
 		 */
-		if (!_network_dedicated && IsValidPlayer(0)) {
-			p = GetPlayer(0);
+		if (!_network_dedicated && IsValidPlayer(PLAYER_FIRST)) {
+			p = GetPlayer(PLAYER_FIRST);
 			p->engine_renew        = _patches.autorenew;
 			p->engine_renew_months = _patches.autorenew_months;
 			p->engine_renew_money  = _patches.autorenew_money;
@@ -1387,7 +1389,7 @@ bool AfterLoadGame(void)
 				continue;
 			}
 			if (v->type == VEH_Train) {
-				v->u.rail.track = 0x40;
+				v->u.rail.track = TRACK_BIT_WORMHOLE;
 			} else {
 				v->u.road.state = 0xFF;
 			}
@@ -1567,10 +1569,9 @@ bool AfterLoadGame(void)
 	{
 		/* Set up the engine count for all players */
 		Player *players[MAX_PLAYERS];
-		int i;
 		const Vehicle *v;
 
-		for (i = 0; i < MAX_PLAYERS; i++) players[i] = GetPlayer(i);
+		for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) players[i] = GetPlayer(i);
 
 		FOR_ALL_VEHICLES(v) {
 			if (!IsEngineCountable(v)) continue;
@@ -1702,3 +1703,25 @@ void ReloadNewGRFData(void)
 	/* redraw the whole screen */
 	MarkWholeScreenDirty();
 }
+
+HalMusicDriver *_music_driver;
+HalSoundDriver *_sound_driver;
+HalVideoDriver *_video_driver;
+
+byte _dirkeys;        // 1 = left, 2 = up, 4 = right, 8 = down
+bool _fullscreen;
+CursorVars _cursor;
+bool _ctrl_pressed;   // Is Ctrl pressed?
+bool _shift_pressed;  // Is Shift pressed?
+byte _fast_forward;
+bool _left_button_down;
+bool _left_button_clicked;
+bool _right_button_down;
+bool _right_button_clicked;
+DrawPixelInfo _screen;
+bool _exit_game;
+bool _networking;         ///< are we in networking mode?
+byte _game_mode;
+byte _pause;
+int _pal_first_dirty;
+int _pal_last_dirty;

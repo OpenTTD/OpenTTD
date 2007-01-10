@@ -437,6 +437,6 @@ static void Load_WAYP(void)
 	}
 }
 
-const ChunkHandler _waypoint_chunk_handlers[] = {
+extern const ChunkHandler _waypoint_chunk_handlers[] = {
 	{ 'CHKP', Save_WAYP, Load_WAYP, CH_ARRAY | CH_LAST},
 };

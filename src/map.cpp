@@ -7,10 +7,11 @@
 #include "macros.h"
 #include "map.h"
 #include "direction.h"
+#include "helpers.hpp"
 
 #if defined(_MSC_VER) && _MSC_VER >= 1400 /* VStudio 2005 is stupid! */
 /* Why the hell is that not in all MSVC headers?? */
-_CRTIMP void __cdecl _assert(void *, void *, unsigned);
+extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
 #endif
 
 uint _map_log_x;
@@ -41,7 +42,7 @@ void AllocateMap(uint size_x, uint size_y)
 	_map_tile_mask = _map_size - 1;
 
 	free(_m);
-	_m = calloc(_map_size, sizeof(*_m));
+	CallocT(&_m, _map_size);
 
 	// XXX TODO handle memory shortage more gracefully
 	if (_m == NULL) error("Failed to allocate memory for the map");
@@ -121,14 +122,14 @@ uint TileAddWrap(TileIndex tile, int addx, int addy)
 	return INVALID_TILE;
 }
 
-const TileIndexDiffC _tileoffs_by_diagdir[] = {
+extern const TileIndexDiffC _tileoffs_by_diagdir[] = {
 	{-1,  0}, // DIAGDIR_NE
 	{ 0,  1}, // DIAGDIR_SE
 	{ 1,  0}, // DIAGDIR_SW
 	{ 0, -1}  // DIAGDIR_NW
 };
 
-const TileIndexDiffC _tileoffs_by_dir[] = {
+extern const TileIndexDiffC _tileoffs_by_dir[] = {
 	{-1, -1}, // DIR_N
 	{-1,  0}, // DIR_NE
 	{-1,  1}, // DIR_E
@@ -141,8 +142,8 @@ const TileIndexDiffC _tileoffs_by_dir[] = {
 
 uint DistanceManhattan(TileIndex t0, TileIndex t1)
 {
-	const uint dx = abs(TileX(t0) - TileX(t1));
-	const uint dy = abs(TileY(t0) - TileY(t1));
+	const uint dx = delta(TileX(t0), TileX(t1));
+	const uint dy = delta(TileY(t0), TileY(t1));
 	return dx + dy;
 }
 
@@ -157,16 +158,16 @@ uint DistanceSquare(TileIndex t0, TileIndex t1)
 
 uint DistanceMax(TileIndex t0, TileIndex t1)
 {
-	const uint dx = abs(TileX(t0) - TileX(t1));
-	const uint dy = abs(TileY(t0) - TileY(t1));
+	const uint dx = delta(TileX(t0), TileX(t1));
+	const uint dy = delta(TileY(t0), TileY(t1));
 	return dx > dy ? dx : dy;
 }
 
 
 uint DistanceMaxPlusManhattan(TileIndex t0, TileIndex t1)
 {
-	const uint dx = abs(TileX(t0) - TileX(t1));
-	const uint dy = abs(TileY(t0) - TileY(t1));
+	const uint dx = delta(TileX(t0), TileX(t1));
+	const uint dy = delta(TileY(t0), TileY(t1));
 	return dx > dy ? 2 * dx + dy : 2 * dy + dx;
 }
 

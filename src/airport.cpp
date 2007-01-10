@@ -9,6 +9,7 @@
 #include "variables.h"
 #include "airport_movement.h"
 #include "date.h"
+#include "helpers.hpp"
 
 /* Uncomment this to print out a full report of the airport-structure
  * You should either use
@@ -30,7 +31,7 @@ static AirportFTAClass *HeliStation;
 
 static void AirportFTAClass_Constructor(AirportFTAClass *apc,
 	const byte *terminals, const byte *helipads,
-	const byte entry_point,  const byte acc_planes,
+	const byte entry_point,  const AcceptPlanes acc_planes,
 	const AirportFTAbuildup *apFA,
 	const TileIndexDiffC *depots, const byte nof_depots,
 	uint size_x, uint size_y
@@ -49,7 +50,7 @@ static void AirportPrintOut(const AirportFTAClass *apc, bool full_report);
 void InitializeAirports(void)
 {
 	// country airport
-	CountryAirport = malloc(sizeof(AirportFTAClass));
+	MallocT(&CountryAirport, 1);
 
 	AirportFTAClass_Constructor(
 		CountryAirport,
@@ -64,7 +65,7 @@ void InitializeAirports(void)
 	);
 
 	// city airport
-	CityAirport = malloc(sizeof(AirportFTAClass));
+	MallocT(&CityAirport, 1);
 
 	AirportFTAClass_Constructor(
 		CityAirport,
@@ -79,7 +80,7 @@ void InitializeAirports(void)
 	);
 
 	// metropolitan airport
-	MetropolitanAirport = malloc(sizeof(AirportFTAClass));
+	MallocT(&MetropolitanAirport, 1);
 
 	AirportFTAClass_Constructor(
 		MetropolitanAirport,
@@ -94,7 +95,7 @@ void InitializeAirports(void)
 	);
 
 	// international airport
-	InternationalAirport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
+	MallocT(&InternationalAirport, 1);
 
 	AirportFTAClass_Constructor(
 		InternationalAirport,
@@ -109,7 +110,7 @@ void InitializeAirports(void)
 	);
 
 	// intercontintental airport
-	IntercontinentalAirport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
+	MallocT(&IntercontinentalAirport, 1);
 
 	AirportFTAClass_Constructor(
 		IntercontinentalAirport,
@@ -124,7 +125,7 @@ void InitializeAirports(void)
 	);
 
 	// heliport, oilrig
-	Heliport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
+	MallocT(&Heliport, 1);
 
 	AirportFTAClass_Constructor(
 		Heliport,
@@ -141,7 +142,7 @@ void InitializeAirports(void)
 	Oilrig = Heliport;  // exactly the same structure for heliport/oilrig, so share state machine
 
 	// commuter airport
-	CommuterAirport = malloc(sizeof(AirportFTAClass));
+	MallocT(&CommuterAirport, 1);
 
 	AirportFTAClass_Constructor(
 		CommuterAirport,
@@ -156,7 +157,7 @@ void InitializeAirports(void)
 	);
 
 	// helidepot airport
-	HeliDepot = malloc(sizeof(AirportFTAClass));
+	MallocT(&HeliDepot, 1);
 
 	AirportFTAClass_Constructor(
 		HeliDepot,
@@ -171,7 +172,7 @@ void InitializeAirports(void)
 	);
 
 	// helistation airport
-	HeliStation = malloc(sizeof(AirportFTAClass));
+	MallocT(&HeliStation, 1);
 
 	AirportFTAClass_Constructor(
 		HeliStation,
@@ -202,7 +203,7 @@ void UnInitializeAirports(void)
 
 static void AirportFTAClass_Constructor(AirportFTAClass *apc,
 	const byte *terminals, const byte *helipads,
-	const byte entry_point, const byte acc_planes,
+	const byte entry_point, const AcceptPlanes acc_planes,
 	const AirportFTAbuildup *apFA,
 	const TileIndexDiffC *depots, const byte nof_depots,
 	uint size_x, uint size_y
@@ -323,7 +324,8 @@ static byte AirportGetTerminalCount(const byte *terminals, byte *groups)
 static void AirportBuildAutomata(AirportFTAClass *apc, const AirportFTAbuildup *apFA)
 {
 	AirportFTA *current;
-	AirportFTA *FAutomata = malloc(sizeof(AirportFTA) * apc->nofelements);
+	AirportFTA *FAutomata;
+	MallocT(&FAutomata, apc->nofelements);
 	uint16 internalcounter = 0;
 	uint16 i;
 
@@ -337,7 +339,8 @@ static void AirportBuildAutomata(AirportFTAClass *apc, const AirportFTAbuildup *
 
 		// outgoing nodes from the same position, create linked list
 		while (current->position == apFA[internalcounter + 1].position) {
-			AirportFTA *newNode = malloc(sizeof(AirportFTA));
+			AirportFTA *newNode;
+			MallocT(&newNode, 1);
 
 			newNode->position      = apFA[internalcounter + 1].position;
 			newNode->heading       = apFA[internalcounter + 1].heading;

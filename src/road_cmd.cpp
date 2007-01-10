@@ -56,7 +56,7 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool* edge_roa
 	if (_cheats.magic_bulldozer.value) return true;
 
 	// Get a bitmask of which neighbouring roads has a tile
-	n = 0;
+	n = ROAD_NONE;
 	present = GetAnyRoadBits(tile);
 	if (present & ROAD_NE && GetAnyRoadBits(TILE_ADDXY(tile,-1, 0)) & ROAD_SW) n |= ROAD_NE;
 	if (present & ROAD_SE && GetAnyRoadBits(TILE_ADDXY(tile, 0, 1)) & ROAD_NW) n |= ROAD_SE;
@@ -103,7 +103,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) */
 	if (p1 >> 4) return CMD_ERROR;
-	pieces = p1;
+	pieces = (RoadBits)p1;
 
 	if (!IsTileType(tile, MP_STREET)) return CMD_ERROR;
 
@@ -132,8 +132,8 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			if (GetTileSlope(tile, NULL) != SLOPE_FLAT  &&
 					(present == ROAD_Y || present == ROAD_X)) {
-				c |= (c & 0xC) >> 2;
-				c |= (c & 0x3) << 2;
+				c |= (RoadBits)((c & 0xC) >> 2);
+				c |= (RoadBits)((c & 0x3) << 2);
 			}
 
 			// limit the bits to delete to the existing bits.
@@ -164,7 +164,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				MakeRailNormal(tile, GetTileOwner(tile), GetCrossingRailBits(tile), GetRailTypeCrossing(tile));
 				MarkTileDirtyByTile(tile);
-				YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(GetTrackBits(tile)));
+				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
 			}
 			return _price.remove_road * 2;
 		}
@@ -179,15 +179,15 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 static const RoadBits _valid_tileh_slopes_road[][15] = {
 	// set of normal ones
 	{
-		ROAD_ALL, 0, 0,
-		ROAD_X,   0, 0,  // 3, 4, 5
-		ROAD_Y,   0, 0,
-		ROAD_Y,   0, 0,  // 9, 10, 11
-		ROAD_X,   0, 0
+		ROAD_ALL, ROAD_NONE, ROAD_NONE,
+		ROAD_X,   ROAD_NONE, ROAD_NONE,  // 3, 4, 5
+		ROAD_Y,   ROAD_NONE, ROAD_NONE,
+		ROAD_Y,   ROAD_NONE, ROAD_NONE,  // 9, 10, 11
+		ROAD_X,   ROAD_NONE, ROAD_NONE
 	},
 	// allowed road for an evenly raised platform
 	{
-		0,
+		ROAD_NONE,
 		ROAD_SW | ROAD_NW,
 		ROAD_SW | ROAD_SE,
 		ROAD_Y  | ROAD_SW,
@@ -216,8 +216,8 @@ static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 	if (IsSteepSlope(tileh)) {
 		if (existing == 0) {
 			// force full pieces.
-			*pieces |= (*pieces & 0xC) >> 2;
-			*pieces |= (*pieces & 0x3) << 2;
+			*pieces |= (RoadBits)((*pieces & 0xC) >> 2);
+			*pieces |= (RoadBits)((*pieces & 0x3) << 2);
 			if (*pieces == ROAD_X || *pieces == ROAD_Y) return _price.terraform;
 		}
 		return CMD_ERROR;
@@ -239,8 +239,8 @@ static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 	// partly leveled up tile, only if there's no road on that tile
 	if (existing == 0 && (tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)) {
 		// force full pieces.
-		*pieces |= (*pieces & 0xC) >> 2;
-		*pieces |= (*pieces & 0x3) << 2;
+		*pieces |= (RoadBits)((*pieces & 0xC) >> 2);
+		*pieces |= (RoadBits)((*pieces & 0x3) << 2);
 		if (*pieces == ROAD_X || *pieces == ROAD_Y) return _price.terraform;
 	}
 	return CMD_ERROR;
@@ -255,7 +255,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost = 0;
 	int32 ret;
-	RoadBits existing = 0;
+	RoadBits existing = ROAD_NONE;
 	RoadBits pieces;
 	Slope tileh;
 
@@ -264,7 +264,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
 	 * if a non-player is building the road */
 	if ((p1 >> 4) || (IsValidPlayer(_current_player) && p2 != 0) || !IsValidTownID(p2)) return CMD_ERROR;
-	pieces = p1;
+	pieces = (RoadBits)p1;
 
 	tileh = GetTileSlope(tile, NULL);
 
@@ -325,7 +325,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(GetTrackBits(tile)));
+				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
 				MakeRoadCrossing(tile, _current_player, GetTileOwner(tile), roaddir, GetRailType(tile), p2);
 				MarkTileDirtyByTile(tile);
 			}
@@ -382,7 +382,7 @@ int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 	if (exec) {
 		SetRailTypeCrossing(tile, totype);
 		MarkTileDirtyByTile(tile);
-		YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(GetCrossingRailBits(tile)));
+		YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetCrossingRailBits(tile)));
 	}
 
 	return _price.build_rail >> 1;
@@ -540,7 +540,7 @@ int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		dep->xy = tile;
 		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		MakeRoadDepot(tile, _current_player, p1);
+		MakeRoadDepot(tile, _current_player, (DiagDirection)p1);
 		MarkTileDirtyByTile(tile);
 	}
 	return cost + _price.build_road_depot;
@@ -1048,7 +1048,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 }
 
 
-const TileTypeProcs _tile_type_road_procs = {
+extern const TileTypeProcs _tile_type_road_procs = {
 	DrawTile_Road,           /* draw_tile_proc */
 	GetSlopeZ_Road,          /* get_slope_z_proc */
 	ClearTile_Road,          /* clear_tile_proc */

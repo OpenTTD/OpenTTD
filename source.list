@@ -1,86 +1,86 @@
 # Source Files
-airport.c
-aystar.c
-bmp.c
-callback_table.c
-command.c
-console.c
-console_cmds.c
-currency.c
-date.c
-debug.c
-dedicated.c
-depot.c
-driver.c
-economy.c
-elrail.c
-engine.c
-fileio.c
-fios.c
-fontcache.c
-genworld.c
-gfx.c
-gfxinit.c
-heightmap.c
+airport.cpp
+aystar.cpp
+bmp.cpp
+callback_table.cpp
+command.cpp
+console.cpp
+console_cmds.cpp
+currency.cpp
+date.cpp
+debug.cpp
+dedicated.cpp
+depot.cpp
+driver.cpp
+economy.cpp
+elrail.cpp
+engine.cpp
+fileio.cpp
+fios.cpp
+fontcache.cpp
+genworld.cpp
+gfx.cpp
+gfxinit.cpp
+heightmap.cpp
 helpers.cpp
-landscape.c
-map.c
-md5.c
-mersenne.c
-minilzo.c
-misc.c
-mixer.c
-music.c
-namegen.c
-network/core/core.c
-network/core/packet.c
-network/core/tcp.c
-network/core/udp.c
-network/network.c
-network/network_client.c
-network/network_data.c
-network/network_gamelist.c
-network/network_server.c
-network/network_udp.c
-npf.c
-oldloader.c
-oldpool.c
-openttd.c
-os_timer.c
+landscape.cpp
+map.cpp
+md5.cpp
+mersenne.cpp
+minilzo.cpp
+misc.cpp
+mixer.cpp
+music.cpp
+namegen.cpp
+network/core/core.cpp
+network/core/packet.cpp
+network/core/tcp.cpp
+network/core/udp.cpp
+network/network.cpp
+network/network_client.cpp
+network/network_data.cpp
+network/network_gamelist.cpp
+network/network_server.cpp
+network/network_udp.cpp
+npf.cpp
+oldloader.cpp
+oldpool.cpp
+openttd.cpp
+os_timer.cpp
 #if WIN32
 	ottdres.rc
 #end
-pathfind.c
-players.c
-queue.c
-rail.c
-saveload.c
-screenshot.c
+pathfind.cpp
+players.cpp
+queue.cpp
+rail.cpp
+saveload.cpp
+screenshot.cpp
 #if SDL
-	sdl.c
+	sdl.cpp
 #end
-settings.c
-signs.c
-sound.c
-spritecache.c
-string.c
-strings.c
-texteff.c
-tgp.c
-thread.c
-tile.c
+settings.cpp
+signs.cpp
+sound.cpp
+spritecache.cpp
+string.cpp
+strings.cpp
+texteff.cpp
+tgp.cpp
+thread.cpp
+tile.cpp
 #if WIN32
 #else
-	unix.c
+	unix.cpp
 #end
-vehicle.c
-viewport.c
-waypoint.c
-widget.c
+vehicle.cpp
+viewport.cpp
+waypoint.cpp
+widget.cpp
 #if WIN32
-	win32.c
+	win32.cpp
 #end
-window.c
+window.cpp
 
 # Header Files
 airport.h
@@ -178,57 +178,57 @@ video/win32_v.h
 window.h
 
 # GUI Source Code
-aircraft_gui.c
-airport_gui.c
-bridge_gui.c
-build_vehicle_gui.c
-depot_gui.c
-dock_gui.c
-engine_gui.c
-genworld_gui.c
-graph_gui.c
-industry_gui.c
-intro_gui.c
-main_gui.c
-misc_gui.c
-music_gui.c
-network/network_gui.c
-newgrf_gui.c
-news_gui.c
-order_gui.c
-player_gui.c
-rail_gui.c
-road_gui.c
-roadveh_gui.c
-settings_gui.c
-ship_gui.c
-smallmap_gui.c
-station_gui.c
-subsidy_gui.c
-terraform_gui.c
-town_gui.c
-train_gui.c
-vehicle_gui.c
+aircraft_gui.cpp
+airport_gui.cpp
+bridge_gui.cpp
+build_vehicle_gui.cpp
+depot_gui.cpp
+dock_gui.cpp
+engine_gui.cpp
+genworld_gui.cpp
+graph_gui.cpp
+industry_gui.cpp
+intro_gui.cpp
+main_gui.cpp
+misc_gui.cpp
+music_gui.cpp
+network/network_gui.cpp
+newgrf_gui.cpp
+news_gui.cpp
+order_gui.cpp
+player_gui.cpp
+rail_gui.cpp
+road_gui.cpp
+roadveh_gui.cpp
+settings_gui.cpp
+ship_gui.cpp
+smallmap_gui.cpp
+station_gui.cpp
+subsidy_gui.cpp
+terraform_gui.cpp
+town_gui.cpp
+train_gui.cpp
+vehicle_gui.cpp
 
 # Landscape
-aircraft_cmd.c
-clear_cmd.c
-disaster_cmd.c
-dummy_land.c
-industry_cmd.c
-misc_cmd.c
-order_cmd.c
-rail_cmd.c
-road_cmd.c
-roadveh_cmd.c
-ship_cmd.c
-station_cmd.c
-town_cmd.c
-train_cmd.c
-tree_cmd.c
-tunnelbridge_cmd.c
-unmovable_cmd.c
-water_cmd.c
+aircraft_cmd.cpp
+clear_cmd.cpp
+disaster_cmd.cpp
+dummy_land.cpp
+industry_cmd.cpp
+misc_cmd.cpp
+order_cmd.cpp
+rail_cmd.cpp
+road_cmd.cpp
+roadveh_cmd.cpp
+ship_cmd.cpp
+station_cmd.cpp
+town_cmd.cpp
+train_cmd.cpp
+tree_cmd.cpp
+tunnelbridge_cmd.cpp
+unmovable_cmd.cpp
+water_cmd.cpp
 
 # Tables
 table/ai_rail.h
@@ -259,36 +259,36 @@ table/unmovable_land.h
 table/water_land.h
 
 # AI Files
-ai/ai.c
-ai/default/default.c
-ai/trolly/build.c
-ai/trolly/pathfinder.c
-ai/trolly/shared.c
-ai/trolly/trolly.c
+ai/ai.cpp
+ai/default/default.cpp
+ai/trolly/build.cpp
+ai/trolly/pathfinder.cpp
+ai/trolly/shared.cpp
+ai/trolly/trolly.cpp
 
 # NewGRF
-newgrf.c
-newgrf_cargo.c
-newgrf_config.c
-newgrf_engine.c
-newgrf_sound.c
-newgrf_spritegroup.c
-newgrf_station.c
-newgrf_text.c
+newgrf.cpp
+newgrf_cargo.cpp
+newgrf_config.cpp
+newgrf_engine.cpp
+newgrf_sound.cpp
+newgrf_spritegroup.cpp
+newgrf_station.cpp
+newgrf_text.cpp
 
 # Map Accessors
-bridge_map.c
+bridge_map.cpp
 bridge_map.h
 clear_map.h
 industry_map.h
 rail_map.h
-road_map.c
+road_map.cpp
 road_map.h
-station_map.c
+station_map.cpp
 station_map.h
 town_map.h
 tree_map.h
-tunnel_map.c
+tunnel_map.cpp
 tunnel_map.h
 unmovable_map.h
 void_map.h
@@ -325,36 +325,36 @@ yapf/yapf_settings.h
 yapf/yapf_ship.cpp
 
 # Video
-video/dedicated_v.c
-video/null_v.c
+video/dedicated_v.cpp
+video/null_v.cpp
 #if SDL
-	video/sdl_v.c
+	video/sdl_v.cpp
 #end
 #if WIN32
-	video/win32_v.c
+	video/win32_v.cpp
 #end
 
 # Music
 #if DIRECTMUSIC
 	music/dmusic.cpp
 #end
-music/null_m.c
+music/null_m.cpp
 #if WIN32
-	music/win32_m.c
+	music/win32_m.cpp
 #else
-	music/extmidi.c
+	music/extmidi.cpp
 #end
 #if BEOS
  	music/bemidi.cpp
 #end
 
 # Sound
-sound/null_s.c
+sound/null_s.cpp
 #if SDL
-	sound/sdl_s.c
+	sound/sdl_s.cpp
 #end
 #if WIN32
-	sound/win32_s.c
+	sound/win32_s.cpp
 #end
 
 #if OSX
@@ -363,12 +363,12 @@ sound/null_s.c
 
 	#if DEDICATED
 	#else
-		music/qtmidi.c
+		music/qtmidi.cpp
 	#end
 
 	#if COCOA
 		video/cocoa_v.m
-		sound/cocoa_s.c
-		os/macosx/splash.c
+		sound/cocoa_s.cpp
+		os/macosx/splash.cpp
 	#end
 #end

@@ -12,6 +12,7 @@ set_default() {
 	host=""
 	cc_build=""
 	cc_host=""
+	cxx_build=""
 	cxx_host=""
 	windres=""
 	strip=""
@@ -54,7 +55,7 @@ set_default() {
 	with_freetype="1"
 	with_fontconfig="1"
 
-	save_params_array="build host cc_build cc_host cxx_host windres strip lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_osx_sysroot enable_universal enable_osx_g5 with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_freetype with_fontconfig CC CXX CFLAGS LDFLAGS"
+	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_osx_sysroot enable_universal enable_osx_g5 with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_freetype with_fontconfig CC CXX CFLAGS LDFLAGS"
 }
 
 detect_params() {
@@ -90,6 +91,8 @@ detect_params() {
 			--cc-build=*)                 cc_build="$optarg";;
 			--cc-host)                    prevp_p="cc_host";;
 			--cc-host=*)                  cc_host="$optarg";;
+			--cxx-build)                  prevp_p="cxx_build";;
+			--cxx-build=*)                cxx_build="$optarg";;
 			--cxx-host)                   prevp_p="cxx_host";;
 			--cxx-host=*)                 cxx_host="$optarg";;
 			--windres)                    prevp_p="windres";;
@@ -320,7 +323,8 @@ check_params() {
 	log 1 "checking for build gcc... $cc_build"
 	log 1 "checking for host gcc... $cc_host"
 
-	check_cxx
+	check_cxx_build
+	check_cxx_host
 	check_windres
 	check_strip
 	check_lipo
@@ -535,7 +539,7 @@ check_params() {
 			native=`LC_ALL=C uname | tr [:upper:] [:lower:] | grep darwin`
 			# If $host doesn't match $build , we are cross-compiling
 			if [ -n "$native" ] && [ "$build" != "$host" ]; then
-				$cc_build $SRC_DIR/os/macosx/G5_detector.c -o G5_detector
+				$cc_build $SRC_DIR/os/macosx/G5_detector.cpp -o G5_detector
 				res=`./G5_detector`
 				rm -f G5_detector
 				if [ -n "$res" ]; then
@@ -981,7 +985,13 @@ check_host() {
 	check_compiler "host system type" "cc_host" "$host" "$cc_host" "$CC" "gcc" "cc" "0" "-dumpmachine"
 }
 
-check_cxx() {
+check_cxx_build() {
+	check_compiler "build g++" "cxx_build" "$build" "$cxx_build" "$CXX" "g++" "c++" 1 "-dumpmachine"
+}
+
+check_cxx_host() {
+	# By default the host is the build
+	if [ -z "$host" ]; then host="$build"; fi
 	check_compiler "host g++" "cxx_host" "$host" "$cxx_host" "$CXX" "g++" "c++" 1 "-dumpmachine"
 }
 
@@ -1584,6 +1594,7 @@ make_sed() {
 		s#!!CC_HOST!!#$cc_host#g;
 		s#!!CXX_HOST!!#$cxx_host#g;
 		s#!!CC_BUILD!!#$cc_build#g;
+		s#!!CXX_BUILD!!#$cxx_build#g;
 		s#!!WINDRES!!#$windres#g;
 		s#!!STRIP!!#$strip $strip_arg#g;
 		s#!!LIPO!!#$lipo#g;

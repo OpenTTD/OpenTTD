@@ -28,8 +28,8 @@ static bool _remove_button_clicked;
 
 static byte _place_road_flag;
 
-static byte _road_depot_orientation;
-static byte _road_station_picker_orientation;
+static DiagDirection _road_depot_orientation;
+static DiagDirection _road_station_picker_orientation;
 
 void CcPlaySound1D(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
@@ -83,7 +83,7 @@ void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 		ResetObjectToPlace();
-		BuildRoadOutsideStation(tile, p1);
+		BuildRoadOutsideStation(tile, (DiagDirection)p1);
 	}
 }
 
@@ -388,7 +388,7 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 3: case 4: case 5: case 6:
 			RaiseWindowWidget(w, _road_depot_orientation + 3);
-			_road_depot_orientation = e->we.click.widget - 3;
+			_road_depot_orientation = (DiagDirection)(e->we.click.widget - 3);
 			LowerWindowWidget(w, _road_depot_orientation + 3);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
@@ -454,10 +454,10 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 
 		image = (w->window_class == WC_BUS_STATION) ? 0x47 : 0x43;
 
-		StationPickerDrawSprite(103, 35, 0, image);
-		StationPickerDrawSprite(103, 85, 0, image+1);
-		StationPickerDrawSprite(35, 85, 0, image+2);
-		StationPickerDrawSprite(35, 35, 0, image+3);
+		StationPickerDrawSprite(103, 35, RAILTYPE_BEGIN, image);
+		StationPickerDrawSprite(103, 85, RAILTYPE_BEGIN, image+1);
+		StationPickerDrawSprite(35, 85, RAILTYPE_BEGIN, image+2);
+		StationPickerDrawSprite(35, 35, RAILTYPE_BEGIN, image+3);
 
 		DrawStationCoverageAreaText(2, 146,
 			((w->window_class == WC_BUS_STATION) ? (1<<CT_PASSENGERS) : ~(1<<CT_PASSENGERS)),
@@ -469,14 +469,14 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 3: case 4: case 5: case 6:
 			RaiseWindowWidget(w, _road_station_picker_orientation + 3);
-			_road_station_picker_orientation = e->we.click.widget - 3;
+			_road_station_picker_orientation = (DiagDirection)(e->we.click.widget - 3);
 			LowerWindowWidget(w, _road_station_picker_orientation + 3);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		case 7: case 8:
 			RaiseWindowWidget(w, _station_show_coverage + 7);
-			_station_show_coverage = e->we.click.widget - 7;
+			_station_show_coverage = (e->we.click.widget != 7);
 			LowerWindowWidget(w, _station_show_coverage + 7);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
@@ -555,6 +555,6 @@ static void ShowTruckStationPicker(void)
 
 void InitializeRoadGui(void)
 {
-	_road_depot_orientation = 3;
-	_road_station_picker_orientation = 3;
+	_road_depot_orientation = DIAGDIR_NW;
+	_road_station_picker_orientation = DIAGDIR_NW;
 }

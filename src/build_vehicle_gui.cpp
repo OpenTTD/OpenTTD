@@ -302,6 +302,8 @@ static void GenerateBuildAircraftList(Window *w)
 					break;
 
 				case ALL: break;
+				default:
+					NOT_REACHED();
 			}
 			EngList_Add(&bv->eng_list, eid);
 
@@ -479,7 +481,7 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 
 	switch (type) {
 		case VEH_Aircraft: {
-			byte acc_planes = (tile == 0) ? ALL : GetAirport(GetStationByTile(tile)->airport_type)->acc_planes;
+			AcceptPlanes acc_planes = (tile == 0) ? ALL : GetAirport(GetStationByTile(tile)->airport_type)->acc_planes;
 			bv->filter.acc_planes = acc_planes;
 			break;
 		}

@@ -148,7 +148,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		PlayerID player = w->window_number;
+		PlayerID player = (PlayerID)w->window_number;
 		const Player *p = GetPlayer(player);
 
 		if (player == _local_player) {
@@ -170,7 +170,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 		case 2: {/* toggle size */
 			byte mode = (byte)WP(w,def_d).data_1;
 			bool stickied = !!(w->flags4 & WF_STICKY);
-			PlayerID player = w->window_number;
+			PlayerID player = (PlayerID)w->window_number;
 			DeleteWindow(w);
 			DoShowPlayerFinances(player, !HASBIT(mode, 0), stickied);
 		} break;
@@ -305,11 +305,11 @@ static void ShowColourDropDownMenu(Window *w, uint32 widget)
 	}
 
 	/* Get the first selected livery to use as the default dropdown item */
-	for (scheme = 0; scheme < LS_END; scheme++) {
+	for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
 		if (HASBIT(WP(w, livery_d).sel, scheme)) break;
 	}
 	if (scheme == LS_END) scheme = LS_DEFAULT;
-	livery = &GetPlayer(w->window_number)->livery[scheme];
+	livery = &GetPlayer((PlayerID)w->window_number)->livery[scheme];
 
 	ShowDropDownMenu(w, _colour_dropdown, widget == 10 ? livery->colour1 : livery->colour2, widget, used_colours, 0);
 }
@@ -326,7 +326,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_PAINT: {
-			const Player *p = GetPlayer(w->window_number);
+			const Player *p = GetPlayer((PlayerID)w->window_number);
 			LiveryScheme scheme = LS_DEFAULT;
 			int y = 51;
 
@@ -337,7 +337,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 			SetWindowWidgetDisabledState(w, 12, (WP(w, livery_d).sel == 0));
 
 			if (!(WP(w, livery_d).sel == 0)) {
-				for (scheme = 0; scheme < LS_END; scheme++) {
+				for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
 					if (HASBIT(WP(w, livery_d).sel, scheme)) break;
 				}
 				if (scheme == LS_END) scheme = LS_DEFAULT;
@@ -383,7 +383,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 					LiveryScheme scheme;
 
 					RaiseWindowWidget(w, WP(w, livery_d).livery_class + 2);
-					WP(w, livery_d).livery_class = e->we.click.widget - 2;
+					WP(w, livery_d).livery_class = (LiveryClass)(e->we.click.widget - 2);
 					WP(w, livery_d).sel = 0;
 					LowerWindowWidget(w, WP(w, livery_d).livery_class + 2);
 
@@ -413,9 +413,9 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 
 				case 13: {
 					LiveryScheme scheme;
-					LiveryScheme j = (e->we.click.pt.y - 48) / 14;
+					LiveryScheme j = (LiveryScheme)((e->we.click.pt.y - 48) / 14);
 
-					for (scheme = 0; scheme <= j; scheme++) {
+					for (scheme = LS_BEGIN; scheme <= j; scheme++) {
 						if (livery_class[scheme] != WP(w, livery_d).livery_class) j++;
 						if (scheme >= LS_END) return;
 					}
@@ -423,7 +423,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 
 					/* If clicking on the left edge, toggle using the livery */
 					if (e->we.click.pt.x < 10) {
-						DoCommandP(0, j | (2 << 8), !GetPlayer(w->window_number)->livery[j].in_use, NULL, CMD_SET_PLAYER_COLOR);
+						DoCommandP(0, j | (2 << 8), !GetPlayer((PlayerID)w->window_number)->livery[j].in_use, NULL, CMD_SET_PLAYER_COLOR);
 					}
 
 					if (_ctrl_pressed) {
@@ -511,7 +511,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 		Player *p;
 		LowerWindowWidget(w, WP(w, facesel_d).gender + 5);
 		DrawWindowWidgets(w);
-		p = GetPlayer(w->window_number);
+		p = GetPlayer((PlayerID)w->window_number);
 		DrawPlayerFace(WP(w,facesel_d).face, p->player_color, 2, 16);
 	} break;
 
@@ -675,7 +675,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT: {
-			const Player *p = GetPlayer(w->window_number);
+			const Player *p = GetPlayer((PlayerID)w->window_number);
 			bool local = w->window_number == _local_player;
 
 			SetWindowWidgetHiddenState(w, PCW_WIDGET_NEW_FACE,       !local);
@@ -711,14 +711,14 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
-			SetDParam(2, GetPlayerNameString((byte)w->window_number, 3));
+			SetDParam(2, GetPlayerNameString((PlayerID)w->window_number, 3));
 
 			DrawWindowWidgets(w);
 
 			SetDParam(0, p->inaugurated_year);
 			DrawString(110, 25, STR_7038_INAUGURATED, 0);
 
-			DrawPlayerVehiclesAmount(w->window_number);
+			DrawPlayerVehiclesAmount((PlayerID)w->window_number);
 
 			DrawString(110,48, STR_7006_COLOR_SCHEME, 0);
 			// Draw company-colour bus
@@ -744,7 +744,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					Window *wf = AllocateWindowDescFront(&_select_player_face_desc, w->window_number);
 					if (wf != NULL) {
 						wf->caption_color = w->window_number;
-						WP(wf,facesel_d).face = GetPlayer(wf->window_number)->face;
+						WP(wf,facesel_d).face = GetPlayer((PlayerID)wf->window_number)->face;
 						WP(wf,facesel_d).gender = 0;
 					}
 					break;
@@ -762,7 +762,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				}
 
 				case PCW_WIDGET_PRESIDENT_NAME: {
-					const Player *p = GetPlayer(w->window_number);
+					const Player *p = GetPlayer((PlayerID)w->window_number);
 					WP(w, def_d).byte_1 = 0;
 					SetDParam(0, p->president_name_2);
 					ShowQueryString(p->president_name_1, STR_700B_PRESIDENT_S_NAME, 31, 94, w, CS_ALPHANUMERAL);
@@ -770,7 +770,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				}
 
 				case PCW_WIDGET_COMPANY_NAME: {
-					Player *p = GetPlayer(w->window_number);
+					Player *p = GetPlayer((PlayerID)w->window_number);
 					WP(w,def_d).byte_1 = 1;
 					SetDParam(0, p->name_2);
 					ShowQueryString(p->name_1, STR_700A_COMPANY_NAME, 31, 150, w, CS_ALPHANUMERAL);
@@ -778,7 +778,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				}
 
 				case PCW_WIDGET_BUILD_VIEW_HQ: {
-					TileIndex tile = GetPlayer(w->window_number)->location_of_house;
+					TileIndex tile = GetPlayer((PlayerID)w->window_number)->location_of_house;
 					if (tile == 0) {
 						if ((byte)w->window_number != _local_player)
 							return;
@@ -890,7 +890,7 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		Player *p = GetPlayer(w->window_number);
+		Player *p = GetPlayer((PlayerID)w->window_number);
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
 		DrawWindowWidgets(w);

@@ -114,16 +114,16 @@ static const byte _bits_mask[4] = {
 	0x2A,
 };
 
-static const byte _tpf_new_direction[14] = {
-	0, 1, 0, 1, 2, 1,
-	0, 0,
-	2, 3, 3, 2, 3, 0,
+static const DiagDirection _tpf_new_direction[14] = {
+	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE,
+	INVALID_DIAGDIR, INVALID_DIAGDIR,
+	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE,
 };
 
-static const byte _tpf_prev_direction[14] = {
-	0, 1, 1, 0, 1, 2,
-	0, 0,
-	2, 3, 2, 3, 0, 3,
+static const DiagDirection _tpf_prev_direction[14] = {
+	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW,
+	INVALID_DIAGDIR, INVALID_DIAGDIR,
+	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_NW,
 };
 
 
@@ -182,7 +182,7 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 		}
 
 continue_here:;
-		tpf->the_dir = i + (HASBIT(_otherdir_mask[direction], i) ? 8 : 0);
+		tpf->the_dir = (Trackdir)(i + (HASBIT(_otherdir_mask[direction], i) ? 8 : 0));
 
 		if (!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length, NULL)) {
 			TPFMode2(tpf, tile, _tpf_new_direction[tpf->the_dir]);
@@ -333,7 +333,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 				i = FIND_FIRST_BIT(bits);
 				bits = KILL_FIRST_BIT(bits);
 
-				tpf->the_dir = (_otherdir_mask[direction] & (byte)(1 << i)) ? (i+8) : i;
+				tpf->the_dir = (Trackdir)((_otherdir_mask[direction] & (byte)(1 << i)) ? (i+8) : i);
 				rd = tpf->rd;
 
 				if (TPFSetTileBit(tpf, tile, tpf->the_dir) &&
@@ -375,7 +375,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 		i = FIND_FIRST_BIT(bits);
 		bits = KILL_FIRST_BIT(bits);
 
-		tpf->the_dir = (_otherdir_mask[direction] & (byte)(1 << i)) ? (i+8) : i;
+		tpf->the_dir = (Trackdir)((_otherdir_mask[direction] & (byte)(1 << i)) ? (i+8) : i);
 		rd = tpf->rd;
 		if (TPFSetTileBit(tpf, tile, tpf->the_dir) &&
 				!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length, &tpf->rd.pft_var6) ) {
@@ -407,11 +407,11 @@ void FollowTrack(TileIndex tile, uint16 flags, DiagDirection direction, TPFEnumP
 	tpf.hasbit_13         = HASBIT(flags, 13);  /* 0x2000 */
 
 
-	tpf.tracktype = (byte)flags;
+	tpf.tracktype = (TransportType)(flags & 0xFF);
 
 	if (HASBIT(flags, 11)) {
 		tpf.rd.pft_var6 = 0xFF;
-		tpf.enum_proc(tile, data, 0, 0, 0);
+		tpf.enum_proc(tile, data, INVALID_TRACKDIR, 0, 0);
 		TPFMode2(&tpf, tile, direction);
 	} else {
 		/* clear the hash_heads */
@@ -427,19 +427,19 @@ typedef struct {
 	TileIndex tile;
 	uint16 cur_length; // This is the current length to this tile.
 	uint16 priority; // This is the current length + estimated length to the goal.
-	byte track;
+	TrackdirByte track;
 	byte depth;
 	byte state;
 	byte first_track;
 } StackedItem;
 
-static const byte _new_track[6][4] = {
-{0,    0xff, 8,    0xff,},
-{0xff, 1,    0xff, 9,},
-{0xff, 2,    10,   0xff,},
-{3,    0xff, 0xff, 11,},
-{12,   4,    0xff, 0xff,},
-{0xff, 0xff, 5,    13,},
+static const Trackdir _new_trackdir[6][4] = {
+{TRACKDIR_X_NE,    INVALID_TRACKDIR, TRACKDIR_X_SW,    INVALID_TRACKDIR,},
+{INVALID_TRACKDIR, TRACKDIR_Y_SE,    INVALID_TRACKDIR, TRACKDIR_Y_NW,},
+{INVALID_TRACKDIR, TRACKDIR_UPPER_E, TRACKDIR_UPPER_W, INVALID_TRACKDIR,},
+{TRACKDIR_LOWER_E, INVALID_TRACKDIR, INVALID_TRACKDIR, TRACKDIR_LOWER_W,},
+{TRACKDIR_LEFT_N,  TRACKDIR_LEFT_S,  INVALID_TRACKDIR, INVALID_TRACKDIR,},
+{INVALID_TRACKDIR, INVALID_TRACKDIR, TRACKDIR_RIGHT_S, TRACKDIR_RIGHT_N,},
 };
 
 typedef struct HashLink {
@@ -539,7 +539,7 @@ static bool NtpVisit(NewTrackPathFinder* tpf, TileIndex tile, DiagDirection dir,
 	}
 
 	if (head != 0xffff) {
-		if (tile == tpf->hash_tile[hash] && (head & 0x3) == dir) {
+		if (tile == tpf->hash_tile[hash] && (head & 0x3) == (uint)dir) {
 
 			// longer length
 			if (length >= (head >> 2)) return false;
@@ -574,7 +574,7 @@ static bool NtpVisit(NewTrackPathFinder* tpf, TileIndex tile, DiagDirection dir,
 		uint offs = tpf->hash_tile[hash];
 		do {
 			link = NTP_GET_LINK_PTR(tpf, offs);
-			if (tile == link->tile && (link->typelength & 0x3U) == dir) {
+			if (tile == link->tile && (link->typelength & 0x3U) == (uint)dir) {
 				if (length >= (uint)(link->typelength >> 2)) return false;
 				link->typelength = dir | (length << 2);
 				return true;
@@ -657,8 +657,8 @@ static const uint16 _is_upwards_slope[15] = {
 
 static uint DistanceMoo(TileIndex t0, TileIndex t1)
 {
-	const uint dx = abs(TileX(t0) - TileX(t1));
-	const uint dy = abs(TileY(t0) - TileY(t1));
+	const uint dx = delta(TileX(t0), TileX(t1));
+	const uint dy = delta(TileY(t0), TileY(t1));
 
 	const uint straightTracks = 2 * min(dx, dy); /* The number of straight (not full length) tracks */
 	/* OPTIMISATION:
@@ -685,7 +685,7 @@ static const byte _length_of_track[16] = {
 static void NTPEnum(NewTrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
 	TrackBits bits, allbits;
-	uint track;
+	Trackdir track;
 	TileIndex tile_org;
 	StackedItem si;
 	int estimation;
@@ -737,7 +737,7 @@ start_at:
 						continue;
 					}
 					if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
-						bits = 0;
+						bits = TRACK_BIT_NONE;
 						break;
 					}
 					flotr = FindLengthOfTunnel(tile, direction);
@@ -771,7 +771,7 @@ start_at:
 			// too long search length? bail out.
 			if (si.cur_length >= tpf->maxlength) {
 				DEBUG(ntp, 1, "Cur_length too big");
-				bits = 0;
+				bits = TRACK_BIT_NONE;
 				break;
 			}
 
@@ -780,14 +780,14 @@ start_at:
 			if (!IsTileType(tile, MP_RAILWAY) || !IsPlainRailTile(tile)) {
 				// We found a tile which is not a normal railway tile.
 				// Determine which tracks that exist on this tile.
-				bits = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _tpfmode1_and[direction];
-				bits = (bits | (bits >> 8)) & 0x3F;
+				uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _tpfmode1_and[direction];
+				bits = TrackdirBitsToTrackBits((TrackdirBits)(ts & TRACKDIR_BIT_MASK));
 
 				// Check that the tile contains exactly one track
 				if (bits == 0 || KILL_FIRST_BIT(bits) != 0) break;
 
 				if (!HASBIT(tpf->railtypes, IsTileType(tile, MP_STREET) ? GetRailTypeCrossing(tile) : GetRailType(tile))) {
-					bits = 0;
+					bits = TRACK_BIT_NONE;
 					break;
 				}
 
@@ -797,7 +797,7 @@ start_at:
 				//   bits - bitmask of which track that exist on the tile (exactly one bit is set)
 				//   direction - which direction are we moving in?
 				///////////////////
-				si.track = _new_track[FIND_FIRST_BIT(bits)][direction];
+				si.track = _new_trackdir[FIND_FIRST_BIT(bits)][direction];
 				si.cur_length += _length_of_track[si.track];
 				goto callback_and_continue;
 			}
@@ -810,18 +810,18 @@ start_at:
 			/* The tile has no reachable tracks => End of rail segment
 			 * or Intersection => End of rail segment. We check this agains all the
 			 * bits, not just reachable ones, to prevent infinite loops. */
-			if (bits == 0 || TracksOverlap(allbits)) break;
+			if (bits == TRACK_BIT_NONE || TracksOverlap(allbits)) break;
 
 			if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
-				bits = 0;
+				bits = TRACK_BIT_NONE;
 				break;
 			}
 
 			/* If we reach here, the tile has exactly one track, and this
 			 track is reachable => Rail segment continues */
 
-			track = _new_track[FIND_FIRST_BIT(bits)][direction];
-			assert(track != 0xff);
+			track = _new_trackdir[FIND_FIRST_BIT(bits)][direction];
+			assert(track != INVALID_TRACKDIR);
 
 			si.cur_length += _length_of_track[track];
 
@@ -837,7 +837,7 @@ start_at:
 				if (!HasSignalOnTrackdir(tile, track)) {
 					// if one way signal not pointing towards us, stop going in this direction => End of rail segment.
 					if (HasSignalOnTrackdir(tile, ReverseTrackdir(track))) {
-						bits = 0;
+						bits = TRACK_BIT_NONE;
 						break;
 					}
 				} else if (GetSignalStateByTrackdir(tile, track) == SIGNAL_STATE_GREEN) {
@@ -850,7 +850,7 @@ start_at:
 						// stop going in this direction => End of rail segment.
 						// this is to prevent us from going into a full platform.
 						if (!(si.state&1)) {
-							bits = 0;
+							bits = TRACK_BIT_NONE;
 							break;
 						}
 					}
@@ -874,14 +874,14 @@ start_at:
 
 			// safety check if we're running around chasing our tail... (infinite loop)
 			if (tile == tile_org) {
-				bits = 0;
+				bits = TRACK_BIT_NONE;
 				break;
 			}
 		}
 
 		// There are no tracks to choose between.
 		// Stop searching in this direction
-		if (bits == 0)
+		if (bits == TRACK_BIT_NONE)
 			continue;
 
 		////////////////
@@ -909,8 +909,9 @@ start_at:
 		if (si.depth == 0)
 			continue; /* We overflowed our depth. No more searching in this direction. */
 		si.tile = tile;
-		do {
-			si.track = _new_track[FIND_FIRST_BIT(bits)][direction];
+		while (bits != TRACK_BIT_NONE) {
+			Track track = RemoveFirstTrack(bits);
+			si.track = _new_trackdir[track][direction];
 			assert(si.track != 0xFF);
 			si.priority = si.cur_length + estimation;
 
@@ -922,7 +923,7 @@ start_at:
 
 			tpf->stack[tpf->nstack] = si;
 			HeapifyUp(tpf);
-		} while ((bits = KILL_FIRST_BIT(bits)) != 0);
+		};
 
 		// If this is the first intersection, we need to fill the first_track member.
 		// so the code outside knows which path is better.
@@ -931,11 +932,11 @@ start_at:
 			assert(tpf->nstack == 1 || tpf->nstack == 2 || tpf->nstack == 3);
 			if (tpf->nstack != 1) {
 				uint32 r = Random();
-				if (r&1) swap_byte(&tpf->stack[0].track, &tpf->stack[1].track);
+				if (r&1) SwapT(&tpf->stack[0].track, &tpf->stack[1].track);
 				if (tpf->nstack != 2) {
-					byte t = tpf->stack[2].track;
-					if (r&2) swap_byte(&tpf->stack[0].track, &t);
-					if (r&4) swap_byte(&tpf->stack[1].track, &t);
+					TrackdirByte t = tpf->stack[2].track;
+					if (r&2) SwapT(&tpf->stack[0].track, &t);
+					if (r&4) SwapT(&tpf->stack[1].track, &t);
 					tpf->stack[2].first_track = tpf->stack[2].track = t;
 				}
 				tpf->stack[0].first_track = tpf->stack[0].track;

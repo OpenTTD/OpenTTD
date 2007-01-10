@@ -5,6 +5,7 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../macros.h"
+#include "../../helpers.hpp"
 #include "packet.h"
 #include "udp.h"
 
@@ -92,7 +93,7 @@ void NetworkSendUDP_Packet(const SOCKET udp, Packet *p, const struct sockaddr_in
 	NetworkSend_FillPacketSize(p);
 
 	/* Send the buffer */
-	res = sendto(udp, p->buffer, p->size, 0, (struct sockaddr *)recv, sizeof(*recv));
+	res = sendto(udp, (const char*)p->buffer, p->size, 0, (struct sockaddr *)recv, sizeof(*recv));
 
 	/* Check for any errors, but ignore it otherwise */
 	if (res == -1) DEBUG(net, 1, "[udp] sendto failed with: %i", GET_LAST_ERROR());
@@ -114,7 +115,7 @@ void NetworkUDPReceive(const SOCKET udp)
 	client_len = sizeof(client_addr);
 
 	/* Try to receive anything */
-	nbytes = recvfrom(udp, p.buffer, packet_len, 0, (struct sockaddr *)&client_addr, &client_len);
+	nbytes = recvfrom(udp, (char*)p.buffer, packet_len, 0, (struct sockaddr *)&client_addr, &client_len);
 
 	/* We got some bytes for the base header of the packet. */
 	if (nbytes > 2) {
@@ -256,7 +257,7 @@ void NetworkRecv_NetworkGameInfo(NetworkClientState *cs, Packet *p, NetworkGameI
 			uint num_grfs = NetworkRecv_uint8(cs, p);
 
 			for (i = 0; i < num_grfs; i++) {
-				c = calloc(1, sizeof(*c));
+				CallocT(&c, 1);
 				NetworkRecv_GRFIdentifier(cs, p, c);
 				HandleIncomingNetworkGameInfoGRFConfig(c);
 
@@ -290,7 +291,7 @@ void NetworkRecv_NetworkGameInfo(NetworkClientState *cs, Packet *p, NetworkGameI
 			info->map_width      = NetworkRecv_uint16(cs, p);
 			info->map_height     = NetworkRecv_uint16(cs, p);
 			info->map_set        = NetworkRecv_uint8 (cs, p);
-			info->dedicated      = NetworkRecv_uint8 (cs, p);
+			info->dedicated      = (NetworkRecv_uint8 (cs, p) != 0);
 	}
 }
 

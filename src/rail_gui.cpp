@@ -37,7 +37,7 @@ static struct {
 	bool dragdrop;
 
 	bool newstations;
-	byte station_class;
+	StationClassIDByte station_class;
 	byte station_type;
 	byte station_count;
 } _railstation;
@@ -107,7 +107,7 @@ static const uint16 _place_depot_extra[12] = {
 void CcRailDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		DiagDirection dir = p2;
+		DiagDirection dir = (DiagDirection)p2;
 
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
 		ResetObjectToPlace();
@@ -834,7 +834,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 		case 20:
 		case 21:
-			_station_show_coverage = e->we.click.widget - 20;
+			_station_show_coverage = (e->we.click.widget != 20);
 			SetWindowWidgetLoweredState(w, 20, !_station_show_coverage);
 			SetWindowWidgetLoweredState(w, 21, _station_show_coverage);
 			SndPlayFx(SND_15_BEEP);
@@ -873,7 +873,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 	case WE_DROPDOWN_SELECT:
 		if (_railstation.station_class != e->we.dropdown.index) {
-			_railstation.station_class = e->we.dropdown.index;
+			_railstation.station_class = (StationClassID)e->we.dropdown.index;
 			_railstation.station_type  = 0;
 			_railstation.station_count = GetNumCustomStations(_railstation.station_class);
 
@@ -1023,7 +1023,7 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 			case 5:
 			case 6:
 				RaiseWindowWidget(w, _build_depot_direction + 3);
-				_build_depot_direction = e->we.click.widget - 3;
+				_build_depot_direction = (DiagDirection)(e->we.click.widget - 3);
 				LowerWindowWidget(w, _build_depot_direction + 3);
 				SndPlayFx(SND_15_BEEP);
 				SetWindowDirty(w);

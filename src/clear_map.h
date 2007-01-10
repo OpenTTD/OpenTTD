@@ -23,7 +23,7 @@ typedef enum ClearGround {
 static inline ClearGround GetClearGround(TileIndex t)
 {
 	assert(IsTileType(t, MP_CLEAR));
-	return GB(_m[t].m5, 2, 3);
+	return (ClearGround)GB(_m[t].m5, 2, 3);
 }
 
 static inline bool IsClearGround(TileIndex t, ClearGround ct)

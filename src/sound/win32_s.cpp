@@ -5,6 +5,7 @@
 #include "../driver.h"
 #include "../functions.h"
 #include "../mixer.h"
+#include "../helpers.hpp"
 #include "win32_s.h"
 #include <windows.h>
 #include <mmsystem.h>
@@ -17,7 +18,7 @@ static void PrepareHeader(WAVEHDR *hdr)
 {
 	hdr->dwBufferLength = _bufsize * 4;
 	hdr->dwFlags = 0;
-	hdr->lpData = malloc(_bufsize * 4);
+	MallocT(&hdr->lpData, _bufsize * 4);
 	if (hdr->lpData == NULL ||
 			waveOutPrepareHeader(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR)
 		error("waveOutPrepareHeader failed");

@@ -4,6 +4,7 @@
 #define PATHFIND_H
 
 #include "direction.h"
+#include "openttd.h"
 
 enum {
 	STR_FACTOR  = 2,
@@ -14,7 +15,7 @@ enum {
 //supported on all archs)
 
 typedef struct TrackPathFinder TrackPathFinder;
-typedef bool TPFEnumProc(TileIndex tile, void *data, int track, uint length, byte *state);
+typedef bool TPFEnumProc(TileIndex tile, void *data, Trackdir trackdir, uint length, byte *state);
 typedef void TPFAfterProc(TrackPathFinder *tpf);
 
 typedef bool NTPEnumProc(TileIndex tile, void *data, int track, uint length);
@@ -51,9 +52,9 @@ struct TrackPathFinder {
 
 	RememberData rd;
 
-	int the_dir;
+	TrackdirByte the_dir;
 
-	byte tracktype;
+	TransportTypeByte tracktype;
 	byte var2;
 	bool disable_tile_hash;
 	bool hasbit_13;

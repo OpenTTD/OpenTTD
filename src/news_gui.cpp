@@ -74,6 +74,7 @@ static DrawNewsCallbackProc * const _draw_news_callback[] = {
 	DrawNewsBankrupcy,        /* DNC_BANKRUPCY */
 };
 
+extern GetNewsStringCallbackProc * const _get_news_string_callback[];
 GetNewsStringCallbackProc * const _get_news_string_callback[] = {
 	GetNewsStringNewTrainAvail,    /* DNC_TRAINAVAIL */
 	GetNewsStringNewRoadVehAvail,  /* DNC_ROADAVAIL */
@@ -218,7 +219,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 		if (w->viewport != NULL)
 			w->viewport->top += y - w->top;
 
-		diff = abs(w->top - y);
+		diff = delta(w->top, y);
 		w->top = y;
 
 		SetDirtyBlocks(w->left, w->top - diff, w->left + w->width, w->top + w->height);
@@ -367,14 +368,14 @@ static WindowDesc _news_type0_desc = {
 static const SoundFx _news_sounds[] = {
 	SND_1D_APPLAUSE,
 	SND_1D_APPLAUSE,
-	0,
-	0,
-	0,
-	0,
+	SND_BEGIN,
+	SND_BEGIN,
+	SND_BEGIN,
+	SND_BEGIN,
 	SND_1E_OOOOH,
-	0,
-	0,
-	0
+	SND_BEGIN,
+	SND_BEGIN,
+	SND_BEGIN
 };
 
 /** Get the value of an item of the news-display settings. This is
@@ -752,7 +753,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 		for (i = 0, y = 26; i != 10; i++, y += 12, click_state >>= 1, val >>= 2) {
 			bool clicked = !!(click_state & 1);
 
-			DrawFrameRect(13, y, 89, 11 + y, 3, (clicked) ? FR_LOWERED : 0);
+			DrawFrameRect(13, y, 89, 11 + y, 3, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawStringCentered(((13 + 89 + 1) >> 1) + clicked, ((y + 11 + y + 1) >> 1) - 5 + clicked, message_opt[val & 0x3], 0x10);
 			DrawString(103, y + 1, i + STR_0206_ARRIVAL_OF_FIRST_VEHICLE, 0);
 		}

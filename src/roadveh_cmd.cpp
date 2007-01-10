@@ -1,7 +1,6 @@
 /* $Id$ */
 
 #include "stdafx.h"
-#include <limits.h>
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
@@ -144,7 +143,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		const RoadVehicleInfo *rvi = RoadVehInfo(p1);
 
 		v->unitnumber = unit_num;
-		v->direction = 0;
+		v->direction = INVALID_DIR;
 		v->owner = _current_player;
 
 		v->tile = tile;
@@ -296,19 +295,19 @@ int32 CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 typedef struct RoadFindDepotData {
 	uint best_length;
 	TileIndex tile;
-	byte owner;
+	OwnerByte owner;
 } RoadFindDepotData;
 
 static const DiagDirection _road_pf_directions[] = {
-	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, 255, 255,
-	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, 255, 255
+	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, INVALID_DIAGDIR, INVALID_DIAGDIR,
+	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, INVALID_DIAGDIR, INVALID_DIAGDIR
 };
 
-static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, int track, uint length, byte* state)
+static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, Trackdir trackdir, uint length, byte* state)
 {
-	RoadFindDepotData* rfdd = data;
+	RoadFindDepotData* rfdd = (RoadFindDepotData*)data;
 
-	tile += TileOffsByDiagDir(_road_pf_directions[track]);
+	tile += TileOffsByDiagDir(_road_pf_directions[trackdir]);
 
 	if (IsTileType(tile, MP_STREET) &&
 			GetRoadTileType(tile) == ROAD_TILE_DEPOT &&
@@ -341,13 +340,12 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 		/* We do not search in two directions here, why should we? We can't reverse right now can we? */
 	} else {
 		RoadFindDepotData rfdd;
-		DiagDirection i;
 
 		rfdd.owner = v->owner;
 		rfdd.best_length = (uint)-1;
 
 		/* search in all directions */
-		for (i = 0; i != 4; i++) {
+		for (DiagDirection i = DIAGDIR_BEGIN; i != DIAGDIR_END; i++) {
 			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, i, EnumRoadSignalFindDepot, NULL, &rfdd);
 		}
 
@@ -564,7 +562,7 @@ static void RoadVehIsCrashed(Vehicle *v)
 
 static void* EnumCheckRoadVehCrashTrain(Vehicle* v, void* data)
 {
-	const Vehicle* u = data;
+	const Vehicle* u = (Vehicle*)data;
 
 	return
 		v->type == VEH_Train &&
@@ -789,7 +787,7 @@ static void* EnumCheckRoadVehClose(Vehicle *v, void* data)
 	static const int8 dist_x[] = { -4, -8, -4, -1, 4, 8, 4, 1 };
 	static const int8 dist_y[] = { -4, -1, 4, 8, 4, 1, -4, -8 };
 
-	const RoadVehFindData* rvf = data;
+	const RoadVehFindData* rvf = (RoadVehFindData*)data;
 
 	short x_diff = v->x_pos - rvf->x;
 	short y_diff = v->y_pos - rvf->y;
@@ -818,7 +816,7 @@ static Vehicle* RoadVehFindCloseTo(Vehicle* v, int x, int y, Direction dir)
 	rvf.y = y;
 	rvf.dir = dir;
 	rvf.veh = v;
-	u = VehicleFromPos(TileVirtXY(x, y), &rvf, EnumCheckRoadVehClose);
+	u = (Vehicle*)VehicleFromPos(TileVirtXY(x, y), &rvf, EnumCheckRoadVehClose);
 
 	// This code protects a roadvehicle from being blocked for ever
 	//  If more than 1480 / 74 days a road vehicle is blocked, it will
@@ -900,8 +898,8 @@ static bool RoadVehAccelerate(Vehicle *v)
 static Direction RoadVehGetNewDirection(const Vehicle* v, int x, int y)
 {
 	static const Direction _roadveh_new_dir[] = {
-		DIR_N , DIR_NW, DIR_W , 0,
-		DIR_NE, DIR_N , DIR_SW, 0,
+		DIR_N , DIR_NW, DIR_W , INVALID_DIR,
+		DIR_NE, DIR_N , DIR_SW, INVALID_DIR,
 		DIR_E , DIR_SE, DIR_S
 	};
 
@@ -914,13 +912,13 @@ static Direction RoadVehGetNewDirection(const Vehicle* v, int x, int y)
 
 static Direction RoadVehGetSlidingDirection(const Vehicle* v, int x, int y)
 {
-	Direction new = RoadVehGetNewDirection(v, x, y);
-	Direction old = v->direction;
+	Direction new_dir = RoadVehGetNewDirection(v, x, y);
+	Direction old_dir = v->direction;
 	DirDiff delta;
 
-	if (new == old) return old;
-	delta = (DirDifference(new, old) > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
-	return ChangeDir(old, delta);
+	if (new_dir == old_dir) return old_dir;
+	delta = (DirDifference(new_dir, old_dir) > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
+	return ChangeDir(old_dir, delta);
 }
 
 typedef struct OvertakeData {
@@ -932,7 +930,7 @@ typedef struct OvertakeData {
 
 static void* EnumFindVehToOvertake(Vehicle* v, void* data)
 {
-	const OvertakeData* od = data;
+	const OvertakeData* od = (OvertakeData*)data;
 
 	return
 		v->tile == od->tile && v->type == VEH_Road && v != od->u && v != od->v ?
@@ -1025,9 +1023,9 @@ typedef struct {
 	uint mindist;
 } FindRoadToChooseData;
 
-static bool EnumRoadTrackFindDist(TileIndex tile, void* data, int track, uint length, byte* state)
+static bool EnumRoadTrackFindDist(TileIndex tile, void* data, Trackdir trackdir, uint length, byte* state)
 {
-	FindRoadToChooseData* frd = data;
+	FindRoadToChooseData* frd = (FindRoadToChooseData*)data;
 	uint dist = DistanceManhattan(tile, frd->dest);
 
 	if (dist <= frd->mindist) {
@@ -1133,7 +1131,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	} else if (_patches.new_pathfinding_all) {
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
-		byte trackdir;
+		Trackdir trackdir;
 
 		NPFFillWithOrderData(&fstd, v);
 		trackdir = DiagdirToDiagTrackdir(enterdir);
@@ -1215,7 +1213,7 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 	} else {
 		// use NPF
 		NPFFindStationOrTileData fstd;
-		byte trackdir = GetVehicleTrackdir(v);
+		Trackdir trackdir = GetVehicleTrackdir(v);
 		assert(trackdir != 0xFF);
 
 		fstd.dest_coords = tile;
@@ -1363,7 +1361,7 @@ static void RoadVehController(Vehicle *v)
 // switch to another tile
 	if (rd.x & 0x80) {
 		TileIndex tile = v->tile + TileOffsByDiagDir(rd.x & 3);
-		int dir = RoadFindPathToDest(v, tile, rd.x & 3);
+		int dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3));
 		uint32 r;
 		Direction newdir;
 		const RoadDriveEntry *rdp;
@@ -1428,7 +1426,7 @@ again:
 	}
 
 	if (rd.x & 0x40) {
-		int dir = RoadFindPathToDest(v, v->tile, rd.x & 3);
+		int dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3));
 		uint32 r;
 		int tmp;
 		Direction newdir;

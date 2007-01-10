@@ -1,10 +1,8 @@
 /* $Id$ */
 #include "stdafx.h"
 
-EXTERN_C_BEGIN
 #include "openttd.h"
 #include "engine.h"
-EXTERN_C_END
 
 #include <new>
 #include "yapf/blob.hpp"

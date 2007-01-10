@@ -5,6 +5,7 @@
 #include "../variables.h"
 #include "../command.h"
 #include "../network/network.h"
+#include "../helpers.hpp"
 #include "ai.h"
 #include "default/default.h"
 
@@ -50,11 +51,11 @@ static void AI_PutCommandInQueue(PlayerID player, TileIndex tile, uint32 p1, uin
 
 	if (_ai_player[player].queue_tail == NULL) {
 		/* There is no item in the queue yet, create the queue */
-		_ai_player[player].queue = malloc(sizeof(AICommand));
+		MallocT(&_ai_player[player].queue, 1);
 		_ai_player[player].queue_tail = _ai_player[player].queue;
 	} else {
 		/* Add an item at the end */
-		_ai_player[player].queue_tail->next = malloc(sizeof(AICommand));
+		MallocT(&_ai_player[player].queue_tail->next, 1);
 		_ai_player[player].queue_tail = _ai_player[player].queue_tail->next;
 	}
 

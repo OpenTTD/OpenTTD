@@ -7,7 +7,6 @@
 
 #include "track_dir.hpp"
 
-EXTERN_C_BEGIN
 #include "../depot.h"
 #include "../road_map.h"
 #include "../tunnel_map.h"
@@ -22,12 +21,9 @@ EXTERN_C_BEGIN
 #include "../pathfind.h"
 #include "../waypoint.h"
 #include "../debug.h"
-EXTERN_C_END
 
-EXTERN_C_BEGIN
-	extern Patches _patches_newgame;
-	extern uint64 _rdtsc(void);
-EXTERN_C_END
+extern Patches _patches_newgame;
+extern uint64 _rdtsc(void);
 
 #include <limits.h>
 #include <new>

@@ -3,31 +3,7 @@
 #ifndef GFX_H
 #define GFX_H
 
-typedef byte Pixel;
-
-struct DrawPixelInfo {
-	Pixel *dst_ptr;
-	int left, top, width, height;
-	int pitch;
-	uint16 zoom;
-};
-
-
-typedef struct CursorVars {
-	Point pos, size, offs, delta; ///< position, size, offset from top-left, and movement
-	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
-	CursorID sprite; ///< current image of cursor
-
-	int wheel;       ///< mouse wheel movement
-	const CursorID *animate_list, *animate_cur; ///< in case of animated cursor, list of frames
-	uint animate_timeout;                       ///< current frame in list of animated cursor
-
-	bool visible;    ///< cursor is visible
-	bool dirty;      ///< the rect occupied by the mouse is dirty (redraw)
-	bool fix_at;     ///< mouse is moving, but cursor is not (used for scrolling)
-	bool in_window;  ///< mouse inside this window, determines drawing logic
-} CursorVars;
-
+#include "helpers.hpp"
 
 typedef enum FontSizes {
 	FS_NORMAL,
@@ -36,6 +12,7 @@ typedef enum FontSizes {
 	FS_END,
 } FontSize;
 
+DECLARE_POSTFIX_INCREMENT(FontSize);
 
 void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
@@ -83,7 +60,7 @@ bool FillDrawPixelInfo(DrawPixelInfo* n, int left, int top, int width, int heigh
 /* window.c */
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 
-void SetMouseCursor(uint cursor);
+void SetMouseCursor(CursorID cursor);
 void SetAnimatedMouseCursor(const CursorID *table);
 void CursorTick(void);
 void DrawMouseCursor(void);
@@ -91,7 +68,7 @@ void ScreenSizeChanged(void);
 void UndrawMouseCursor(void);
 bool ChangeResInGame(int w, int h);
 void SortResolutions(int count);
-void ToggleFullScreen(bool fs);
+extern "C" void ToggleFullScreen(bool fs);
 
 /* gfx.c */
 #define ASCII_LETTERSTART 32
@@ -109,9 +86,7 @@ static inline byte GetCharacterHeight(FontSize size)
 	}
 }
 
-VARDEF DrawPixelInfo _screen;
 VARDEF DrawPixelInfo *_cur_dpi;
-VARDEF CursorVars _cursor;
 
 enum {
 	COLOUR_DARK_BLUE,
@@ -138,19 +113,7 @@ enum {
  */
 VARDEF byte _colour_gradient[16][8];
 
-VARDEF int _pal_first_dirty;
-VARDEF int _pal_last_dirty;
-
 VARDEF bool _use_dos_palette;
-
-typedef struct Colour {
-	byte r;
-	byte g;
-	byte b;
-} Colour;
-
-extern Colour _cur_palette[256];
-
 
 typedef enum StringColorFlags {
 	IS_PALETTE_COLOR = 0x100, // color value is already a real palette color index, not an index of a StringColor

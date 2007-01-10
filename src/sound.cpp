@@ -11,6 +11,7 @@
 #include "viewport.h"
 #include "fileio.h"
 #include "newgrf_sound.h"
+#include "helpers.hpp"
 
 static uint _file_count;
 static FileEntry *_files;
@@ -28,7 +29,7 @@ static void OpenBankFile(const char *filename)
 
 	FioOpenFile(SOUND_SLOT, filename);
 	count = FioReadDword() / 8;
-	fe = calloc(count, sizeof(*fe));
+	CallocT(&fe, count);
 
 	if (fe == NULL) {
 		_file_count = 0;
@@ -109,7 +110,7 @@ static bool SetBankSource(MixerChannel *mc, uint bank)
 
 	if (fe->file_size == 0) return false;
 
-	mem = malloc(fe->file_size);
+	MallocT(&mem, fe->file_size);
 	if (mem == NULL) return false;
 
 	FioSeekToFile(fe->file_offset);

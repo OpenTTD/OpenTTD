@@ -74,7 +74,7 @@ void UpdateCompanyHQ(Player *p, uint score)
  * @param p1 unused
  * @param p2 unused
  */
-extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, int *);
+extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station);
 int32 CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p = GetPlayer(_current_player);
@@ -183,7 +183,7 @@ static uint GetSlopeZ_Unmovable(TileIndex tile, uint x, uint y)
 {
 	if (IsOwnedLand(tile)) {
 		uint z;
-		uint tileh = GetTileSlope(tile, &z);
+		Slope tileh = GetTileSlope(tile, &z);
 
 		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 	} else {
@@ -397,7 +397,7 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, PlayerID old_player, Playe
 	}
 }
 
-const TileTypeProcs _tile_type_unmovable_procs = {
+extern const TileTypeProcs _tile_type_unmovable_procs = {
 	DrawTile_Unmovable,             /* draw_tile_proc */
 	GetSlopeZ_Unmovable,            /* get_slope_z_proc */
 	ClearTile_Unmovable,            /* clear_tile_proc */

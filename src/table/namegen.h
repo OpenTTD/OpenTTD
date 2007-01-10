@@ -1727,6 +1727,9 @@ typedef enum CzechAllow {
 	CZA_LONG = 4,
 	CZA_ALL = ~0
 } CzechAllow;
+
+DECLARE_ENUM_AS_BIT_SET(CzechAllow);
+
 // All these flags must be satisfied (in the stem->others direction):
 typedef enum CzechChoose {
 	CZC_NONE = 0, // No requirements.
@@ -1735,6 +1738,8 @@ typedef enum CzechChoose {
 	CZC_NOPOSTFIX = 4, // Matched if no postfix was inserted.
 	CZC_ANY = ~0
 } CzechChoose;
+
+DECLARE_ENUM_AS_BIT_SET(CzechChoose);
 
 typedef struct CzechNameSubst {
 	CzechGender gender;

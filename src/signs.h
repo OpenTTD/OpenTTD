@@ -11,7 +11,7 @@ typedef struct Sign {
 	int32        x;
 	int32        y;
 	byte         z;
-	PlayerID     owner; // placed by this player. Anyone can delete them though. OWNER_NONE for gray signs from old games.
+	PlayerByte   owner; // placed by this player. Anyone can delete them though. OWNER_NONE for gray signs from old games.
 
 	SignID       index;
 } Sign;

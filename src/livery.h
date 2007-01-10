@@ -3,10 +3,12 @@
 #ifndef LIVERY_H
 #define LIVERY_H
 
+#include "helpers.hpp"
 
 /* List of different livery schemes. */
 typedef enum LiverySchemes {
-	LS_DEFAULT,
+	LS_BEGIN = 0,
+	LS_DEFAULT = 0,
 
 	/* Rail vehicles */
 	LS_STEAM,
@@ -37,6 +39,7 @@ typedef enum LiverySchemes {
 	LS_END
 } LiveryScheme;
 
+DECLARE_POSTFIX_INCREMENT(LiveryScheme);
 
 /* List of different livery classes, used only by the livery GUI. */
 typedef enum LiveryClasses {

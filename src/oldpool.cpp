@@ -5,6 +5,7 @@
 #include "debug.h"
 #include "functions.h"
 #include "oldpool.h"
+#include "helpers.hpp"
 
 /**
  * Clean a pool in a safe way (does free all blocks)
@@ -49,11 +50,11 @@ bool AddBlockToPool(OldMemoryPool *pool)
 	DEBUG(misc, 4, "[Pool] (%s) increasing size of pool to %d items (%d bytes)", pool->name, pool->total_items, pool->total_items * pool->item_size);
 
 	/* Increase the poolsize */
-	pool->blocks = realloc(pool->blocks, sizeof(pool->blocks[0]) * (pool->current_blocks + 1));
+	ReallocT(&pool->blocks, pool->current_blocks + 1);
 	if (pool->blocks == NULL) error("Pool: (%s) could not allocate memory for blocks", pool->name);
 
 	/* Allocate memory to the new block item */
-	pool->blocks[pool->current_blocks] = malloc(pool->item_size * (1 << pool->block_size_bits));
+	MallocT(&pool->blocks[pool->current_blocks], pool->item_size * (1 << pool->block_size_bits));
 	if (pool->blocks[pool->current_blocks] == NULL)
 		error("Pool: (%s) could not allocate memory for blocks", pool->name);
 

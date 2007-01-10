@@ -37,8 +37,8 @@ static const uint _trackdir_length[TRACKDIR_END] = {
  */
 static uint NPFDistanceTrack(TileIndex t0, TileIndex t1)
 {
-	const uint dx = abs(TileX(t0) - TileX(t1));
-	const uint dy = abs(TileY(t0) - TileY(t1));
+	const uint dx = delta(TileX(t0), TileX(t1));
+	const uint dy = delta(TileY(t0), TileY(t1));
 
 	const uint straightTracks = 2 * min(dx, dy); /* The number of straight (not full length) tracks */
 	/* OPTIMISATION:
@@ -74,7 +74,7 @@ static uint NPFHash(uint key1, uint key2)
 	uint part1 = TileX(key1) & NPF_HASH_HALFMASK;
 	uint part2 = TileY(key1) & NPF_HASH_HALFMASK;
 
-	assert(IsValidTrackdir(key2));
+	assert(IsValidTrackdir((Trackdir)key2));
 	assert(IsValidTile(key1));
 	return ((part1 << NPF_HASH_HALFBITS | part2) + (NPF_HASH_SIZE * key2 / TRACKDIR_END)) % NPF_HASH_SIZE;
 }
@@ -137,7 +137,7 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, Open
 
 	if (dist < ftd->best_bird_dist) {
 		ftd->best_bird_dist = dist;
-		ftd->best_trackdir = current->user_data[NPF_TRACKDIR_CHOICE];
+		ftd->best_trackdir = (Trackdir)current->user_data[NPF_TRACKDIR_CHOICE];
 	}
 	return dist;
 }
@@ -188,7 +188,7 @@ static inline uint NPFBridgeCost(AyStarNode *current)
 
 static uint NPFSlopeCost(AyStarNode* current)
 {
-	TileIndex next = current->tile + TileOffsByDiagDir(TrackdirToExitdir(current->direction));
+	TileIndex next = current->tile + TileOffsByDiagDir(TrackdirToExitdir((Trackdir)current->direction));
 	int x,y;
 	int8 z1,z2;
 
@@ -290,7 +290,7 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 
 	/* Check for turns. Road vehicles only really drive diagonal, turns are
 	 * represented by non-diagonal tracks */
-	if (!IsDiagonalTrackdir(current->direction))
+	if (!IsDiagonalTrackdir((Trackdir)current->direction))
 		cost += _patches.npf_road_curve_penalty;
 
 	NPFMarkTile(tile);
@@ -403,7 +403,7 @@ static int32 NPFFindDepot(AyStar* as, OpenListNode *current)
 {
 	/* It's not worth caching the result with NPF_FLAG_IS_TARGET here as below,
 	 * since checking the cache not that much faster than the actual check */
-	return IsTileDepotType(current->path.node.tile, as->user_data[NPF_TYPE]) ?
+	return IsTileDepotType(current->path.node.tile, (TransportType)as->user_data[NPF_TYPE]) ?
 		AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
 }
 
@@ -511,8 +511,9 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	DiagDirection src_exitdir = TrackdirToExitdir(src_trackdir);
 	TileIndex dst_tile = INVALID_TILE;
 	int i;
-	TrackdirBits trackdirbits, ts;
-	TransportType type = aystar->user_data[NPF_TYPE];
+	uint32 ts;
+	TrackdirBits trackdirbits;
+	TransportType type = (TransportType)aystar->user_data[NPF_TYPE];
 	bool override_dst_check = false;
 	/* Initialize to 0, so we can jump out (return) somewhere an have no neighbours */
 	aystar->num_neighbours = 0;
@@ -587,13 +588,13 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 
 	/* check correct rail type (mono, maglev, etc) */
 	if (type == TRANSPORT_RAIL) {
-		RailType dst_type = GetTileRailType(dst_tile, src_trackdir);
+		RailType dst_type = GetTileRailType(dst_tile, TrackdirToTrack(src_trackdir));
 		if (!HASBIT(aystar->user_data[NPF_RAILTYPES], dst_type))
 			return;
 	}
 
 	/* Check the owner of the tile */
-	if (!VehicleMayEnterTile(aystar->user_data[NPF_OWNER], dst_tile, TrackdirToExitdir(src_trackdir))) {
+	if (!VehicleMayEnterTile((Owner)aystar->user_data[NPF_OWNER], dst_tile, TrackdirToExitdir(src_trackdir))) {
 		return;
 	}
 
@@ -614,7 +615,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	} else {
 		ts = GetTileTrackStatus(dst_tile, type);
 	}
-	trackdirbits = ts & TRACKDIR_BIT_MASK; /* Filter out signal status and the unused bits */
+	trackdirbits = (TrackdirBits)(ts & TRACKDIR_BIT_MASK); /* Filter out signal status and the unused bits */
 
 	DEBUG(npf, 4, "Next node: (%d, %d) [%d], possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirbits);
 	/* Select only trackdirs we can reach from our current trackdir */
@@ -627,9 +628,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	i = 0;
 	/* Enumerate possible track */
 	while (trackdirbits != 0) {
-		Trackdir dst_trackdir;
-		dst_trackdir =  FindFirstBit2x64(trackdirbits);
-		trackdirbits = KillFirstBit2x64(trackdirbits);
+		Trackdir dst_trackdir = RemoveFirstTrackdir(trackdirbits);
 		DEBUG(npf, 5, "Expanded into trackdir: %d, remaining trackdirs: 0x%X", dst_trackdir, trackdirbits);
 
 		/* Check for oneway signal against us */
@@ -739,7 +738,7 @@ NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir track
 
 NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypeMask railtypes)
 {
-	return NPFRouteToStationOrTileTwoWay(tile, trackdir, INVALID_TILE, 0, target, type, owner, railtypes);
+	return NPFRouteToStationOrTileTwoWay(tile, trackdir, INVALID_TILE, INVALID_TRACKDIR, target, type, owner, railtypes);
 }
 
 NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, TransportType type, Owner owner, RailTypeMask railtypes, uint reverse_penalty)
@@ -763,7 +762,7 @@ NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir t
 
 NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, Trackdir trackdir, TransportType type, Owner owner, RailTypeMask railtypes)
 {
-	return NPFRouteToDepotBreadthFirstTwoWay(tile, trackdir, INVALID_TILE, 0, type, owner, railtypes, 0);
+	return NPFRouteToDepotBreadthFirstTwoWay(tile, trackdir, INVALID_TILE, INVALID_TRACKDIR, type, owner, railtypes, 0);
 }
 
 NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, TransportType type, Owner owner, RailTypeMask railtypes)
@@ -827,7 +826,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 	best_result.best_bird_dist = (uint)-1;
 
 	/* Just iterate the depots in order of increasing distance */
-	while ((current = depots.pop(&depots))) {
+	while ((current = (Depot*)depots.pop(&depots))) {
 		/* Check to see if we already have a path shorter than this
 		 * depot's manhattan distance. HACK: We call DistanceManhattan
 		 * again, we should probably modify the queue to give us that

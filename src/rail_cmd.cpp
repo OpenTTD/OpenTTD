@@ -114,13 +114,13 @@ static const TrackBits _valid_tileh_slopes[][15] = {
 	TRACK_BIT_X,
 
 	TRACK_BIT_LEFT,
-	0,
+	TRACK_BIT_NONE,
 	TRACK_BIT_Y,
 	TRACK_BIT_LOWER,
 
 	TRACK_BIT_LOWER,
 	TRACK_BIT_Y,
-	0,
+	TRACK_BIT_NONE,
 	TRACK_BIT_LEFT,
 
 	TRACK_BIT_X,
@@ -130,7 +130,7 @@ static const TrackBits _valid_tileh_slopes[][15] = {
 
 // allowed rail for an evenly raised platform
 {
-	0,
+	TRACK_BIT_NONE,
 	TRACK_BIT_LEFT,
 	TRACK_BIT_LOWER,
 	TRACK_BIT_Y | TRACK_BIT_LOWER | TRACK_BIT_LEFT,
@@ -237,7 +237,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost = 0;
 	int32 ret;
 
-	if (!ValParamRailtype(p1) || !ValParamTrackOrientation(p2)) return CMD_ERROR;
+	if (!ValParamRailtype(p1) || !ValParamTrackOrientation((Track)p2)) return CMD_ERROR;
 	railtype = (RailType)p1;
 	track = (Track)p2;
 
@@ -304,7 +304,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* FALLTHROUGH */
 
 		default:
-			ret = CheckRailSlope(tileh, trackbit, 0, tile);
+			ret = CheckRailSlope(tileh, trackbit, TRACK_BIT_NONE, tile);
 			if (CmdFailed(ret)) return ret;
 			cost += ret;
 
@@ -337,7 +337,7 @@ int32 CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost = _price.remove_rail;
 	bool crossing = false;
 
-	if (!ValParamTrackOrientation(p2)) return CMD_ERROR;
+	if (!ValParamTrackOrientation((Track)p2)) return CMD_ERROR;
 	trackbit = TrackToTrackBits(track);
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -427,7 +427,7 @@ static int32 ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileIndex end
 	int ey = TileY(end);
 	int dx, dy, trdx, trdy;
 
-	if (!ValParamTrackOrientation(*trackdir)) return CMD_ERROR;
+	if (!ValParamTrackOrientation(TrackdirToTrack(*trackdir))) return CMD_ERROR;
 
 	// calculate delta x,y from start to end tile
 	dx = ex - x;
@@ -450,7 +450,7 @@ static int32 ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileIndex end
 		(trdy >= 0 && dy < 0)
 	) {
 		if (!HASBIT(*trackdir, 3)) { // first direction is invalid, try the other
-			SETBIT(*trackdir, 3); // reverse the direction
+			*trackdir = SetBitT(*trackdir, 3); // reverse the direction
 			trdx = -trdx;
 			trdy = -trdy;
 		} else { // other direction is invalid too, invalid drag
@@ -513,7 +513,7 @@ static int32 CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		tile += ToTileIndexDiff(_trackdelta[trackdir]);
 
 		// toggle railbit for the non-diagonal tracks
-		if (!IsDiagonalTrackdir(trackdir)) trackdir ^= 1;
+		if (!IsDiagonalTrackdir(trackdir)) trackdir = ToggleBitT(trackdir, 0);
 	}
 
 	return (total_cost == 0) ? CMD_ERROR : total_cost;
@@ -586,14 +586,15 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (d == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		MakeRailDepot(tile, _current_player, p2, p1);
+		DiagDirection dir = (DiagDirection)p2;
+		MakeRailDepot(tile, _current_player, dir, (RailType)p1);
 		MarkTileDirtyByTile(tile);
 
 		d->xy = tile;
 		d->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		UpdateSignalsOnSegment(tile, p2);
-		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(p2)));
+		UpdateSignalsOnSegment(tile, dir);
+		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
 	}
 
 	return cost + _price.build_train_depot;
@@ -676,7 +677,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					// cycle between normal -> pre -> exit -> combo -> ...
 					SignalType type = GetSignalType(tile);
 
-					SetSignalType(tile, type == SIGTYPE_COMBO ? SIGTYPE_NORMAL : type + 1);
+					SetSignalType(tile, type == SIGTYPE_COMBO ? SIGTYPE_NORMAL : (SignalType)(type + 1));
 				} else {
 					CycleSignalSide(tile, track);
 				}
@@ -714,7 +715,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	TileIndex end_tile;
 
 	int mode = p2 & 0x1;
-	Track track = GB(p2, 4, 3);
+	Track track = (Track)GB(p2, 4, 3);
 	Trackdir trackdir = TrackToTrackdir(track);
 	byte semaphores = (HASBIT(p2, 3) ? 8 : 0);
 	byte signal_density = (p2 >> 24);
@@ -773,7 +774,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 		signal_ctr++;
 
 		// toggle railbit for the non-diagonal tracks (|, -- tracks)
-		if (!IsDiagonalTrackdir(trackdir)) trackdir ^= 1;
+		if (!IsDiagonalTrackdir(trackdir)) trackdir = ToggleBitT(trackdir, 0);
 	}
 
 	return error ? CMD_ERROR : total_cost;
@@ -853,13 +854,14 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 
 	// change type.
 	if (exec) {
-		TrackBits tracks;
 		SetRailType(tile, totype);
 		MarkTileDirtyByTile(tile);
 
 		// notify YAPF about the track layout change
-		for (tracks = GetTrackBits(tile); tracks != TRACK_BIT_NONE; tracks = KILL_FIRST_BIT(tracks))
-			YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(tracks));
+		TrackBits tracks = GetTrackBits(tile);
+		while (tracks != TRACK_BIT_NONE) {
+			YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(tracks));
+		}
 
 		if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
 			Vehicle *v;
@@ -926,7 +928,7 @@ int32 CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				default: continue;
 			}
 
-			ret = proc(tile, p2, false);
+			ret = proc(tile, (RailType)p2, false);
 			if (CmdFailed(ret)) continue;
 			cost += ret;
 
@@ -936,7 +938,7 @@ int32 CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					_additional_cash_required = ret;
 					return cost - ret;
 				}
-				proc(tile, p2, true);
+				proc(tile, (RailType)p2, true);
 			}
 		}
 	}
@@ -985,10 +987,9 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 		case RAIL_TILE_SIGNALS:
 		case RAIL_TILE_NORMAL: {
 			TrackBits tracks = GetTrackBits(tile);
-			uint i;
-
-			for_each_bit (i, tracks) {
-				ret = DoCommand(tile, 0, i, flags, CMD_REMOVE_SINGLE_RAIL);
+			while (tracks != TRACK_BIT_NONE) {
+				Track track = RemoveFirstTrack(tracks);
+				ret = DoCommand(tile, 0, track, flags, CMD_REMOVE_SINGLE_RAIL);
 				if (CmdFailed(ret)) return CMD_ERROR;
 				cost += ret;
 			}
@@ -1011,7 +1012,7 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 
 static void DrawSingleSignal(TileIndex tile, byte condition, uint image, uint pos)
 {
-	bool side = _opt.road_side & _patches.signal_side;
+	bool side = (_opt.road_side != 0) && _patches.signal_side;
 	static const Point SignalPositions[2][12] = {
 		{      /* Signals on the left side */
 		/*  LEFT      LEFT      RIGHT     RIGHT     UPPER     UPPER */
@@ -1403,28 +1404,28 @@ typedef struct SetSignalsData {
 	int presignal_exits_free;
 
 	// these are used to keep track of the signals that change.
-	byte bit[NUM_SSD_ENTRY];
+	TrackdirByte bit[NUM_SSD_ENTRY];
 	TileIndex tile[NUM_SSD_ENTRY];
 
 	// these are used to keep track of the stack that modifies presignals recursively
 	TileIndex next_tile[NUM_SSD_STACK];
-	byte next_dir[NUM_SSD_STACK];
+	DiagDirectionByte next_dir[NUM_SSD_STACK];
 
 } SetSignalsData;
 
-static bool SetSignalsEnumProc(TileIndex tile, void* data, int track, uint length, byte* state)
+static bool SetSignalsEnumProc(TileIndex tile, void* data, Trackdir trackdir, uint length, byte* state)
 {
-	SetSignalsData* ssd = data;
+	SetSignalsData* ssd = (SetSignalsData*)data;
 
 	if (!IsTileType(tile, MP_RAILWAY)) return false;
 
 	// the tile has signals?
-	if (HasSignalOnTrack(tile, TrackdirToTrack(track))) {
-		if (HasSignalOnTrackdir(tile, ReverseTrackdir(track))) {
+	if (HasSignalOnTrack(tile, TrackdirToTrack(trackdir))) {
+		if (HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir))) {
 			// yes, add the signal to the list of signals
 			if (ssd->cur != NUM_SSD_ENTRY) {
 				ssd->tile[ssd->cur] = tile; // remember the tile index
-				ssd->bit[ssd->cur] = track; // and the controlling bit number
+				ssd->bit[ssd->cur] = trackdir; // and the controlling bit number
 				ssd->cur++;
 			}
 
@@ -1432,10 +1433,10 @@ static bool SetSignalsEnumProc(TileIndex tile, void* data, int track, uint lengt
 			ssd->has_presignal |= IsPresignalEntry(tile);
 		}
 
-		if (HasSignalOnTrackdir(tile, track) && IsPresignalExit(tile)) {
+		if (HasSignalOnTrackdir(tile, trackdir) && IsPresignalExit(tile)) {
 			// this is an exit signal that points out from the segment
 			ssd->presignal_exits++;
-			if (GetSignalStateByTrackdir(tile, track) != SIGNAL_STATE_RED)
+			if (GetSignalStateByTrackdir(tile, trackdir) != SIGNAL_STATE_RED)
 				ssd->presignal_exits_free++;
 		}
 
@@ -1455,7 +1456,7 @@ typedef struct SignalVehicleCheckStruct {
 
 static void *SignalVehicleCheckProc(Vehicle *v, void *data)
 {
-	const SignalVehicleCheckStruct* dest = data;
+	const SignalVehicleCheckStruct* dest = (SignalVehicleCheckStruct*)data;
 
 	if (v->type != VEH_Train) return NULL;
 
@@ -1514,7 +1515,7 @@ static bool SignalVehicleCheck(TileIndex tile, uint track)
 
 static void SetSignalsAfterProc(TrackPathFinder *tpf)
 {
-	SetSignalsData *ssd = tpf->userdata;
+	SetSignalsData *ssd = (SetSignalsData*)tpf->userdata;
 	const TrackPathFinderLink* link;
 	uint offs;
 	uint i;
@@ -1550,9 +1551,9 @@ static void SetSignalsAfterProc(TrackPathFinder *tpf)
 	}
 }
 
-static const byte _dir_from_track[14] = {
-	0,1,0,1,2,1, 0,0,
-	2,3,3,2,3,0,
+static const DiagDirection _dir_from_track[14] = {
+	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_NE,
+	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE,
 };
 
 
@@ -1909,7 +1910,7 @@ static void ChangeTileOwner_Track(TileIndex tile, PlayerID old_player, PlayerID 
 
 static const byte _fractcoords_behind[4] = { 0x8F, 0x8, 0x80, 0xF8 };
 static const byte _fractcoords_enter[4] = { 0x8A, 0x48, 0x84, 0xA8 };
-static const byte _deltacoord_leaveoffset[8] = {
+static const signed char _deltacoord_leaveoffset[8] = {
 	-1,  0,  1,  0, /* x */
 	 0,  1,  0, -1  /* y */
 };
@@ -1945,7 +1946,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	} else if (_fractcoords_enter[dir] == fract_coord) {
 		if (DiagDirToDir(ReverseDiagDir(dir)) == v->direction) {
 			/* enter the depot */
-			v->u.rail.track = 0x80,
+			v->u.rail.track = TRACK_BIT_SPECIAL,
 			v->vehstatus |= VS_HIDDEN; /* hide it */
 			v->direction = ReverseDir(v->direction);
 			if (v->next == NULL) VehicleEnterDepot(v);
@@ -1959,7 +1960,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 			/* leave the depot? */
 			if ((v = v->next) != NULL) {
 				v->vehstatus &= ~VS_HIDDEN;
-				v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? 1 : 2);
+				v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 			}
 		}
 	}
@@ -1968,7 +1969,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 }
 
 
-const TileTypeProcs _tile_type_rail_procs = {
+extern const TileTypeProcs _tile_type_rail_procs = {
 	DrawTile_Track,           /* draw_tile_proc */
 	GetSlopeZ_Track,          /* get_slope_z_proc */
 	ClearTile_Track,          /* clear_tile_proc */

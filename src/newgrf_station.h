@@ -7,12 +7,21 @@
 
 #include "engine.h"
 #include "newgrf_cargo.h"
+#include "helpers.hpp"
 
 typedef enum {
-	STAT_CLASS_DFLT,     ///< Default station class.
-	STAT_CLASS_WAYP,     ///< Waypoint class.
-	STAT_CLASS_MAX = 32, ///< Maximum number of classes.
+	STAT_CLASS_BEGIN = 0,    ///< the lowest valid value
+	STAT_CLASS_DFLT = 0,     ///< Default station class.
+	STAT_CLASS_WAYP,         ///< Waypoint class.
+	STAT_CLASS_MAX = 32,     ///< Maximum number of classes.
 } StationClassID;
+
+/** Define basic enum properties */
+template <> struct EnumPropsT<StationClassID> : MakeEnumPropsT<StationClassID, byte, STAT_CLASS_BEGIN, STAT_CLASS_MAX, STAT_CLASS_MAX> {};
+typedef TinyEnumT<StationClassID> StationClassIDByte;
+
+/** Allow incrementing of StationClassID variables */
+DECLARE_POSTFIX_INCREMENT(StationClassID);
 
 /* Station layout for given dimensions - it is a two-dimensional array
  * where index is computed as (x * platforms) + platform. */

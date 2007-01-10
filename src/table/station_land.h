@@ -1,6 +1,6 @@
 /* $Id$ */
 
-#define TILE_SEQ_END()	{ 0x80, 0, 0, 0, 0, 0, 0 }
+#define TILE_SEQ_END()	{ (byte)0x80, 0, 0, 0, 0, 0, 0 }
 
 static const DrawTileSeqStruct _station_display_datas_0[] = {
 	{  0,  0,  0, 16,  5,  2, SPR_RAIL_PLATFORM_X_REAR  | PALETTE_MODIFIER_COLOR },
@@ -30,7 +30,7 @@ static const DrawTileSeqStruct _station_display_datas_4[] = {
 	{  0,  0,  0, 16,  5,  7, SPR_RAIL_PLATFORM_PILLARS_X_REAR | PALETTE_MODIFIER_COLOR },
 	{  0, 11,  0, 16,  5,  2, SPR_RAIL_PLATFORM_X_FRONT        | PALETTE_MODIFIER_COLOR },
 	{  0,  0, 16, 16, 16, 10, SPR_RAIL_ROOF_STRUCTURE_X_TILE_A | PALETTE_MODIFIER_COLOR },
-	{  0,  0,0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_X_TILE_A     | PALETTE_TO_TRANSPARENT },
+	{  0,  0,(byte)0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_X_TILE_A     | PALETTE_TO_TRANSPARENT },
 	TILE_SEQ_END()
 };
 
@@ -38,7 +38,7 @@ static const DrawTileSeqStruct _station_display_datas_5[] = {
 	{  0,  0,  0,  5, 16,  2, SPR_RAIL_PLATFORM_PILLARS_Y_REAR | PALETTE_MODIFIER_COLOR },
 	{ 11,  0,  0,  5, 16,  2, SPR_RAIL_PLATFORM_Y_FRONT        | PALETTE_MODIFIER_COLOR },
 	{  0,  0, 16, 16, 16, 10, SPR_RAIL_ROOF_STRUCTURE_Y_TILE_A | PALETTE_MODIFIER_COLOR },
-	{  0,  0,0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_Y_TILE_A     | PALETTE_TO_TRANSPARENT },
+	{  0,  0,(byte)0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_Y_TILE_A     | PALETTE_TO_TRANSPARENT },
 	TILE_SEQ_END()
 };
 
@@ -46,7 +46,7 @@ static const DrawTileSeqStruct _station_display_datas_6[] = {
 	{  0,  0,  0, 16,  5,  2, SPR_RAIL_PLATFORM_X_REAR          | PALETTE_MODIFIER_COLOR },
 	{  0, 11,  0, 16,  5,  2, SPR_RAIL_PLATFORM_PILLARS_X_FRONT | PALETTE_MODIFIER_COLOR },
 	{  0,  0, 16, 16, 16, 10, SPR_RAIL_ROOF_STRUCTURE_X_TILE_B  | PALETTE_MODIFIER_COLOR },
-	{  0,  0,0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_X_TILE_B      | PALETTE_TO_TRANSPARENT },
+	{  0,  0,(byte)0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_X_TILE_B      | PALETTE_TO_TRANSPARENT },
 	TILE_SEQ_END()
 };
 
@@ -54,7 +54,7 @@ static const DrawTileSeqStruct _station_display_datas_7[] = {
 	{  0,  0,  0,  5, 16,  2, SPR_RAIL_PLATFORM_Y_REAR          | PALETTE_MODIFIER_COLOR },
 	{ 11,  0,  0,  5, 16,  2, SPR_RAIL_PLATFORM_PILLARS_Y_FRONT | PALETTE_MODIFIER_COLOR },
 	{  0,  0, 16, 16, 16, 10, SPR_RAIL_ROOF_STRUCTURE_Y_TILE_B  | PALETTE_MODIFIER_COLOR },
-	{  0,  0,0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_Y_TILE_B      | PALETTE_TO_TRANSPARENT },
+	{  0,  0,(byte)0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_Y_TILE_B      | PALETTE_TO_TRANSPARENT },
 	TILE_SEQ_END()
 };
 

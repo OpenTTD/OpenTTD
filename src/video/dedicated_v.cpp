@@ -277,7 +277,7 @@ static void DedicatedVideoMainLoop(void)
 			next_tick = cur_ticks + 30;
 
 			GameLoop();
-			_screen.dst_ptr = _dedicated_video_mem;
+			_screen.dst_ptr = (Pixel*)_dedicated_video_mem;
 			UpdateWindows();
 		}
 		CSleep(1);

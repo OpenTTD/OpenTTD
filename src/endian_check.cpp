@@ -1,6 +1,7 @@
 /* $Id$ */
 
 #include <stdio.h>
+#include <string.h>
 
 // This pretty simple file checks if the system is LITTLE_ENDIAN or BIG_ENDIAN
 //  it does that by putting a 1 and a 0 in an array, and read it out as one

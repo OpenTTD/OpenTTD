@@ -35,14 +35,14 @@ typedef enum TreeGround {
 static inline TreeType GetTreeType(TileIndex t)
 {
 	assert(IsTileType(t, MP_TREES));
-	return _m[t].m3;
+	return (TreeType)_m[t].m3;
 }
 
 
 static inline TreeGround GetTreeGround(TileIndex t)
 {
 	assert(IsTileType(t, MP_TREES));
-	return GB(_m[t].m2, 4, 2);
+	return (TreeGround)GB(_m[t].m2, 4, 2);
 }
 
 

@@ -3,8 +3,11 @@
 #ifndef DIRECTION_H
 #define DIRECTION_H
 
+#include "helpers.hpp"
+
 /* Direction as commonly used in v->direction, 8 way. */
 typedef enum Direction {
+	DIR_BEGIN = 0,
 	DIR_N   = 0,
 	DIR_NE  = 1,      /* Northeast, upper right on your monitor */
 	DIR_E   = 2,
@@ -16,6 +19,10 @@ typedef enum Direction {
 	DIR_END,
 	INVALID_DIR = 0xFF,
 } Direction;
+
+/** Define basic enum properties */
+template <> struct EnumPropsT<Direction> : MakeEnumPropsT<Direction, byte, DIR_BEGIN, DIR_END, INVALID_DIR> {};
+typedef TinyEnumT<Direction> DirectionByte;
 
 static inline Direction ReverseDir(Direction d)
 {
@@ -51,6 +58,7 @@ static inline Direction ChangeDir(Direction d, DirDiff delta)
 
 /* Direction commonly used as the direction of entering and leaving tiles, 4-way */
 typedef enum DiagDirection {
+	DIAGDIR_BEGIN = 0,
 	DIAGDIR_NE  = 0,      /* Northeast, upper right on your monitor */
 	DIAGDIR_SE  = 1,
 	DIAGDIR_SW  = 2,
@@ -58,6 +66,12 @@ typedef enum DiagDirection {
 	DIAGDIR_END,
 	INVALID_DIAGDIR = 0xFF,
 } DiagDirection;
+
+DECLARE_POSTFIX_INCREMENT(DiagDirection);
+
+/** Define basic enum properties */
+template <> struct EnumPropsT<DiagDirection> : MakeEnumPropsT<DiagDirection, byte, DIAGDIR_BEGIN, DIAGDIR_END, INVALID_DIAGDIR> {};
+typedef TinyEnumT<DiagDirection> DiagDirectionByte;
 
 static inline DiagDirection ReverseDiagDir(DiagDirection d)
 {

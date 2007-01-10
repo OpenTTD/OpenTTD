@@ -20,7 +20,7 @@
 #include "../console.h"
 #include "../variables.h"
 #include "../ai/ai.h"
-
+#include "../helpers.hpp"
 
 // This file handles all the client-commands
 
@@ -286,14 +286,14 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 	if (!MY_CLIENT->has_quit && company_info_version == NETWORK_COMPANY_INFO_VERSION) {
 		byte total;
-		byte current;
+		PlayerID current;
 
 		total = NetworkRecv_uint8(MY_CLIENT, p);
 
 		// There is no data at all..
 		if (total == 0) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
-		current = NetworkRecv_uint8(MY_CLIENT, p);
+		current = (Owner)NetworkRecv_uint8(MY_CLIENT, p);
 		if (!IsValidPlayer(current)) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
 		NetworkRecv_string(MY_CLIENT, p, _network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
@@ -325,7 +325,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 {
 	NetworkClientInfo *ci;
 	uint16 index = NetworkRecv_uint16(MY_CLIENT, p);
-	PlayerID playas = NetworkRecv_uint8(MY_CLIENT, p);
+	PlayerID playas = (Owner)NetworkRecv_uint8(MY_CLIENT, p);
 	char name[NETWORK_NAME_LENGTH];
 	char unique_id[NETWORK_NAME_LENGTH];
 
@@ -375,7 +375,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 {
-	NetworkErrorCode error = NetworkRecv_uint8(MY_CLIENT, p);
+	NetworkErrorCode error = (NetworkErrorCode)NetworkRecv_uint8(MY_CLIENT, p);
 
 	switch (error) {
 		/* We made an error in the protocol, and our connection is closed.... */
@@ -410,7 +410,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 {
-	NetworkPasswordType type = NetworkRecv_uint8(MY_CLIENT, p);
+	NetworkPasswordType type = (NetworkPasswordType)NetworkRecv_uint8(MY_CLIENT, p);
 
 	switch (type) {
 		case NETWORK_GAME_PASSWORD:
@@ -570,8 +570,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SYNC)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 {
-	CommandPacket *cp = malloc(sizeof(CommandPacket));
-	cp->player = NetworkRecv_uint8(MY_CLIENT, p);
+	CommandPacket *cp;
+	MallocT(&cp, 1);
+	cp->player = (PlayerID)NetworkRecv_uint8(MY_CLIENT, p);
 	cp->cmd = NetworkRecv_uint32(MY_CLIENT, p);
 	cp->p1 = NetworkRecv_uint32(MY_CLIENT, p);
 	cp->p2 = NetworkRecv_uint32(MY_CLIENT, p);
@@ -601,9 +602,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	char name[NETWORK_NAME_LENGTH], msg[MAX_TEXT_MSG_LEN];
 	const NetworkClientInfo *ci = NULL, *ci_to;
 
-	NetworkAction action = NetworkRecv_uint8(MY_CLIENT, p);
+	NetworkAction action = (NetworkAction)NetworkRecv_uint8(MY_CLIENT, p);
 	uint16 index = NetworkRecv_uint16(MY_CLIENT, p);
-	bool self_send = NetworkRecv_uint8(MY_CLIENT, p);
+	bool self_send = (NetworkRecv_uint8(MY_CLIENT, p) != 0);
 	NetworkRecv_string(MY_CLIENT, p, msg, MAX_TEXT_MSG_LEN);
 
 	ci_to = NetworkFindClientInfoFromIndex(index);
@@ -623,7 +624,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				if (!IsValidPlayer(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY;
 				/* fallthrough */
 			case NETWORK_ACTION_CHAT_COMPANY: {
-				StringID str = IsValidPlayer(ci_to->client_playas) ? GetPlayer(ci_to->client_playas)->name_1 : STR_NETWORK_SPECTATORS;
+				StringID str = IsValidPlayer(ci_to->client_playas) ? GetPlayer(ci_to->client_playas)->name_1 : (uint16)STR_NETWORK_SPECTATORS;
 
 				GetString(name, str, lastof(name));
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
@@ -649,7 +650,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 	NetworkClientInfo *ci;
 
 	index = NetworkRecv_uint16(MY_CLIENT, p);
-	GetNetworkErrorMsg(str, NetworkRecv_uint8(MY_CLIENT, p), lastof(str));
+	GetNetworkErrorMsg(str, (NetworkErrorCode)NetworkRecv_uint8(MY_CLIENT, p), lastof(str));
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {

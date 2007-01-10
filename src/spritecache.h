@@ -17,19 +17,19 @@ bool SpriteExists(SpriteID sprite);
 
 static inline const Sprite *GetSprite(SpriteID sprite)
 {
-	return GetRawSprite(sprite);
+	return (Sprite*)GetRawSprite(sprite);
 }
 
 static inline const byte *GetNonSprite(SpriteID sprite)
 {
-	return GetRawSprite(sprite);
+	return (byte*)GetRawSprite(sprite);
 }
 
 void GfxInitSpriteMem(void);
 void IncreaseSpriteLRU(void);
 
 bool LoadNextSprite(int load_index, byte file_index);
-void DupSprite(SpriteID old, SpriteID new);
+void DupSprite(SpriteID old_spr, SpriteID new_spr);
 void SkipSprites(uint count);
 
 #endif /* SPRITECACHE_H */

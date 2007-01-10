@@ -7,7 +7,7 @@ LANG_DIR     = !!LANG_DIR!!
 BIN_DIR      = !!BIN_DIR!!
 LANGS_SRC    = $(shell ls $(LANG_DIR)/*.txt)
 LANGS        = $(LANGS_SRC:$(LANG_DIR)/%.txt=%.lng)
-CC_BUILD     = !!CC_BUILD!!
+CXX_BUILD    = !!CXX_BUILD!!
 CFLAGS_BUILD = !!CFLAGS_BUILD!!
 STRGEN_FLAGS = !!STRGEN_FLAGS!!
 STAGE        = !!STAGE!!
@@ -36,13 +36,13 @@ RES := $(shell mkdir -p $(BIN_DIR)/lang )
 
 all: table/strings.h $(LANGS)
 
-strgen.o: $(SRC_DIR)/strgen/strgen.c endian_host.h
-	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.c=%.c)'
-	$(Q)$(CC_BUILD) $(CFLAGS_BUILD) -DSTRGEN -c -o $@ $<
+strgen.o: $(SRC_DIR)/strgen/strgen.cpp endian_host.h
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSTRGEN -c -o $@ $<
 
-string.o: $(SRC_DIR)/string.c endian_host.h
-	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.c=%.c)'
-	$(Q)$(CC_BUILD) $(CFLAGS_BUILD) -DSTRGEN -c -o $@ $<
+string.o: $(SRC_DIR)/string.cpp endian_host.h
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSTRGEN -c -o $@ $<
 
 lang/english.txt: $(LANG_DIR)/english.txt
 	$(Q)mkdir -p lang
@@ -50,7 +50,7 @@ lang/english.txt: $(LANG_DIR)/english.txt
 
 $(STRGEN): string.o strgen.o
 	$(E) '$(STAGE) Compiling and Linking $@'
-	$(Q)$(CC_BUILD) string.o strgen.o -o $@
+	$(Q)$(CXX_BUILD) string.o strgen.o -o $@
 
 table/strings.h: lang/english.txt $(STRGEN)
 	$(E) '$(STAGE) Generating $@'
@@ -67,9 +67,9 @@ endian_host.h: $(ENDIAN_CHECK)
 	$(E) '$(STAGE) Testing endianness for host'
 	$(Q)./$(ENDIAN_CHECK) > $@
 
-$(ENDIAN_CHECK): $(SRC_DIR)/endian_check.c
+$(ENDIAN_CHECK): $(SRC_DIR)/endian_check.cpp
 	$(E) '$(STAGE) Compiling and Linking $@'
-	$(Q)$(CC_BUILD) $(CFLAGS_BUILD) $< -o $@
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $< -o $@
 
 depend:
 
