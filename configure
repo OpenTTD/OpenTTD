@@ -72,6 +72,7 @@ SRCS="`< $ROOT_DIR/source.list tr '\r' '\n' | awk '
 
 		if ($0 == "SDL"         && "'$sdl_config'" == "")          { next; }
 		if ($0 == "OSX"         && "'$os'" != "OSX")               { next; }
+		if ($0 == "OS2"         && "'$os'" != "OS2")               { next; }
 		if ($0 == "DEDICATED"   && "'$enable_dedicated'" != "1")   { next; }
 		if ($0 == "COCOA"       && "'$with_cocoa'" == "0")         { next; }
 		if ($0 == "BEOS"        && "'$os'" != "BEOS")              { next; }

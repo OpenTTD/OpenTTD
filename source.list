@@ -71,7 +71,11 @@ thread.cpp
 tile.cpp
 #if WIN32
 #else
-	unix.cpp
+	#if OS2
+		os2.cpp
+	#else
+		unix.cpp
+	#end
 #end
 vehicle.cpp
 viewport.cpp
