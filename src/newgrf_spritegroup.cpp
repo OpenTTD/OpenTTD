@@ -95,7 +95,7 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 /* Evaluate an adjustment for a variable of the given size.
 * U is the unsigned type and S is the signed type to use. */
 template <typename U, typename S>
-static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value, int32 value)
+static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value, uint32 value)
 {
 	value >>= adjust->shift_num;
 	value  &= adjust->and_mask;
@@ -108,9 +108,6 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value,
 		case DSGA_TYPE_NONE: break;
 	}
 
-	/* Get our value to the correct range */
-	value = (U)value;
-
 	switch (adjust->operation) {
 		case DSGA_OP_ADD:  return last_value + value;
 		case DSGA_OP_SUB:  return last_value - value;
@@ -118,8 +115,8 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value,
 		case DSGA_OP_SMAX: return max((S)last_value, (S)value);
 		case DSGA_OP_UMIN: return min((U)last_value, (U)value);
 		case DSGA_OP_UMAX: return max((U)last_value, (U)value);
-		case DSGA_OP_SDIV: return last_value / value;
-		case DSGA_OP_SMOD: return last_value % value;
+		case DSGA_OP_SDIV: return (S)last_value / (S)value;
+		case DSGA_OP_SMOD: return (S)last_value % (S)value;
 		case DSGA_OP_UDIV: return (U)last_value / (U)value;
 		case DSGA_OP_UMOD: return (U)last_value % (U)value;
 		case DSGA_OP_MUL:  return last_value * value;
@@ -134,8 +131,8 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value,
 static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, ResolverObject *object)
 {
 	static SpriteGroup nvarzero;
-	int32 last_value = object->last_value;
-	int32 value = -1;
+	uint32 last_value = object->last_value;
+	uint32 value = 0;
 	uint i;
 
 	object->scope = group->g.determ.var_scope;
@@ -170,7 +167,7 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 	}
 
 	for (i = 0; i < group->g.determ.num_ranges; i++) {
-		if (group->g.determ.ranges[i].low <= (uint32)value && (uint32)value <= group->g.determ.ranges[i].high) {
+		if (group->g.determ.ranges[i].low <= value && value <= group->g.determ.ranges[i].high) {
 			return Resolve(group->g.determ.ranges[i].group, object);
 		}
 	}
