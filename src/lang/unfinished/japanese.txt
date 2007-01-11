@@ -383,6 +383,7 @@ STR_SORT_BY_MODEL                                               :モデル
 STR_SORT_BY_VALUE                                               :価値
 STR_SORT_BY_FACILITY                                            :駅の種類
 STR_SORT_BY_WAITING                                             :待っている積荷価値
+STR_SORT_BY_RATING_MAX                                          :貨物評価
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID（旧式）
 STR_ENGINE_SORT_COST                                            :値段
 STR_ENGINE_SORT_POWER                                           :馬力
@@ -390,12 +391,16 @@ STR_ENGINE_SORT_INTRO_DATE                                      :登場日付
 STR_ENGINE_SORT_RUNNING_COST                                    :運転費
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :馬力／運転費
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :貨物容量
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}すべての設備を選択
+STR_SELECT_ALL_TYPES                                            :{BLACK}すべての貨物種類を選択（include no waiting cargo）
 STR_MANAGE_LIST                                                 :{BLACK}リストを管理
 STR_MANAGE_LIST_TIP                                             :{BLACK}リスト内のすべての車両へこの指令を送信
+STR_REPLACE_VEHICLES                                            :車両を交換
 STR_SEND_TRAIN_TO_DEPOT                                         :電車庫へ回送
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :車庫へ回送
 STR_SEND_SHIP_TO_DEPOT                                          :造船所へ回送
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :格納庫へ回送
+STR_SEND_FOR_SERVICING                                          :修理へ回送
 
 ############ range for months starts
 STR_0162_JAN                                                    :1月
@@ -443,11 +448,14 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}整備間隔が変更できません
 STR_018B_CLOSE_WINDOW                                           :{BLACK}ウィンドウを閉じます
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}ウィンドウのタイトル - ウィンドウを動くには、クリックしてドラッグします
+STR_STICKY_BUTTON                                               :{BLACK}「すべてのウィンドウを閉じる」をクリックしてもこのウィンドウを閉じられないようにします
 STR_RESIZE_BUTTON                                               :{BLACK}リサイズするには、クリックしてドラッグします
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}デフォルトの保存先フォルダへジャンプするにはここへクリックします
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}土地上の建物などを破壊します
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}土地の角を下げます
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}土地の角を上げます
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}スクロールバー
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}スクロールバー - リストをスクロールします
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}地図に土地の形勢を表示します
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}地図に乗り物を表示します
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}地図に産業を表示します
@@ -559,6 +567,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}プレ�
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}選択したプレイリストの内容を消去します（カスタム 1／2 のみ）。
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}音楽の設定を保存
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}選択したプレイリストへ追加するには、曲をクリックします（カスタム 1／2 のみ）。
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}洗濯中のプレイリストから取り除くには、曲をクリックします（カスタム１、２のみ）
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}プレイリストのシャッフルを入／切にします
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}曲の選択のウィンドウ表示します
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}町／インダストリを見るためにサービスをクリックして下さい
@@ -611,6 +620,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}あげ�
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}ランダムな地勢を生成します
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}地勢をリセットします
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}地勢のリセット
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}ハイトマップを使用
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}ハイトマップを使用
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}地勢をリセットしてもよろしいですか？
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}地勢の生成
 STR_022F_TOWN_GENERATION                                        :{BLACK}市町村の生成
@@ -625,6 +636,7 @@ STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...他�
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...地域が不適当です
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...市町村数の制限を超えています
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}市町村が建造できません
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...地図に空のスペースがありません
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}町のサイズをあげます
 STR_023C_EXPAND                                                 :{BLACK}拡大
 STR_023D_RANDOM_TOWN                                            :{BLACK}ランダムな町
@@ -698,16 +710,32 @@ STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}プラ�
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}清涼飲料水工場を建てます
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}バブルジェナレーターを建てます
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}タフィー石切り場を建てます
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}砂糖鉱山を作成
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}ここに{STRING}が建造できません
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...まずは町を建造しなければなりません
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...一町内に一つしか建造できません
 STR_0288_PLANT_TREES                                            :{BLACK}木を植えます
 STR_0289_PLACE_SIGN                                             :{BLACK}サインを立てます
 STR_028A_RANDOM_TREES                                           :{BLACK}ランドム木
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}木をランダムに植えます
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}土地に岩石をおきます
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}灯台を建造します
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}送信機を建造します
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}砂漠を作成します。{}Control+クリックすると消去します
+STR_0290_DELETE                                                 :{BLACK}廃止
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}この町を完全に廃止します
+STR_0292_SAVE_SCENARIO                                          :シナリオを保存
+STR_0293_LOAD_SCENARIO                                          :シナリオを開く
+STR_0294_QUIT_EDITOR                                            :エディタを終了
+STR_0295                                                        :
 STR_0296_QUIT                                                   :出口
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}シナリオを開く、保存、エディタを終了など
 STR_0298_LOAD_SCENARIO                                          :{WHITE}シナリオを開く
 STR_0299_SAVE_SCENARIO                                          :{WHITE}シナリオを保存
 STR_029A_PLAY_SCENARIO                                          :{BLACK}シナリオをプレイ
+STR_PLAY_HEIGHTMAP                                              :{BLACK}ハイトマップをプレイ
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}地形をハイトマップに基づいて新規ゲームを開始します
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}このシナリオを終了してもよろしいですか？
 STR_029C_QUIT_EDITOR                                            :{WHITE}エディタの終了
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...人口が1200人以上の市町のみに建造できます
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}開始日を1年間減らします
@@ -719,8 +747,11 @@ STR_02A3_LARGE                                                  :{BLACK}市
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}町のサイズを選択します
 STR_02A5_TOWN_SIZE                                              :{YELLOW}町のサイズ：
 
+STR_02B6                                                        :{STRING} - {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}最後のメッセージ／報道を表示します
+STR_OFF                                                         :切
 STR_SUMMARY                                                     :粗筋
+STR_FULL                                                        :完全
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :市町村のリスト
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}乗り物の名称
@@ -736,6 +767,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C3_GAME_OPTIONS                                           :ゲーム設定
 STR_02C5_DIFFICULTY_SETTINGS                                    :難易度の設定
 STR_02C7_CONFIG_PATCHES                                         :パッチの設定
+STR_NEWGRF_SETTINGS                                             :NewGRF 設定
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}市町村名の表示
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}駅／バス停名の表示
@@ -750,6 +782,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}澄む
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :地域情報
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :コンソールの切り替え
 STR_02D7_SCREENSHOT_CTRL_S                                      :スクリーンショット（Ctrl-S）
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :大型スクリーンショット（Ctrl-G）
 STR_02D9_ABOUT_OPENTTD                                          :OpenTTD について
@@ -760,15 +793,25 @@ STR_02DA_ON                                                     :{BLACK}入
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}助成金を表示
 STR_02DD_SUBSIDIES                                              :助成金
 STR_02DE_MAP_OF_WORLD                                           :世界の地図
+STR_EXTRA_VIEW_PORT                                             :特別ビューア
+STR_SIGN_LIST                                                   :標示のリスト
 STR_02DF_TOWN_DIRECTORY                                         :市町村のリスト
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビューア {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}ビューアへコピー
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}主の画面の場所をこのビューアにコピーします
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}ビューアからペースト
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}このビューアの場所を主の画面にペーストします
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}通貨単位
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}通貨単位の選択
+STR_MEASURING_UNITS                                             :{BLACK}測定単位
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}測定単位の選択
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}バス／トラック
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}道路の運転側を選択します
 STR_02E9_DRIVE_ON_LEFT                                          :左に運転します
 STR_02EA_DRIVE_ON_RIGHT                                         :右に運転します
 STR_02EB_TOWN_NAMES                                             :{BLACK}市町村名
@@ -801,10 +844,12 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}おも�
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}新規産業の建造に資金を供給します
 
 ############ range for menu	starts
+STR_INDUSTRY_DIR                                                :産業リスト
 STR_0313_FUND_NEW_INDUSTRY                                      :新規産業の建造に資金を出す
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}新規産業の建造に資金の供給
+STR_JUST_STRING                                                 :{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...町内のみに建造できます
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...雨林地域のみに建造できます
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...砂漠地域のみに建造できます
@@ -815,6 +860,8 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}スク�
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}将来用に土地を購入
 STR_032F_AUTOSAVE                                               :{RED}自動保存
+STR_SAVING_GAME                                                 :{RED}* * ゲームを保存中 * *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}ゲームを保存しています{}完了してからしばらくお待ちください！
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}'Ezy Street 式の音楽'のプレイリストを選択します
 
 STR_0335_6                                                      :{BLACK}6
@@ -844,15 +891,50 @@ STR_TOWNNAME_ITALIAN                                            :イタリ
 STR_TOWNNAME_CATALAN                                            :カタラン
 ############ end of	townname region
 
+STR_CURR_GBP                                                    :英ポンド（£）
+STR_CURR_USD                                                    :米ドラー（$）
+STR_CURR_EUR                                                    :ユーロ（€）
 STR_CURR_YEN                                                    :日本の円（￥）
+STR_CURR_ATS                                                    :オーストリアシリング（ATS）
+STR_CURR_BEF                                                    :ベルギーフランク（BEF）
+STR_CURR_CHF                                                    :スイスフランク（CHF）
+STR_CURR_CZK                                                    :チェココルナ（CZK）
+STR_CURR_DEM                                                    :ドイッチマルク（DEM）
+STR_CURR_DKK                                                    :デンマーククローネ（DKK）
+STR_CURR_ESP                                                    :スペインペセタ（ESP）
+STR_CURR_FIM                                                    :フィンランドマーカ（FIM）
+STR_CURR_FRF                                                    :仏フランク（FRF）
+STR_CURR_GRD                                                    :ギリシアドラクマ（GRD）
+STR_CURR_HUF                                                    :ハンガリーフォリント（HUF）
+STR_CURR_ISK                                                    :アイスランドクローナ（ISK）
+STR_CURR_ITL                                                    :イタリアリーラ（ITL）
+STR_CURR_NLG                                                    :オランダギルダー（NLG）
+STR_CURR_NOK                                                    :ノルウェイクローネ（NOK）
+STR_CURR_PLN                                                    :ポーランドズロティ（PLN）
+STR_CURR_ROL                                                    :ルーマニアレイ（ROL）
+STR_CURR_RUR                                                    :ロシアルーブル（RUR）
+STR_CURR_SIT                                                    :スロベニアトラール（SIT）
+STR_CURR_SEK                                                    :スウェーデンクローナ（SEK）
+STR_CURR_YTL                                                    :トルコリーラ（YTL）
+STR_CURR_SKK                                                    :スロバキアコルナ（SKK）
+STR_CURR_BRR                                                    :ブラジルレアル（BRL）
 
+STR_CURR_CUSTOM                                                 :カスタム...
 
+STR_OPTIONS_LANG                                                :{BLACK}言語
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_LANG_TIP                                            :{BLACK}ゲームの言語を選択します
 
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}フルスクリーン
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD をフルスクリーンでプレイするにはチックします
 
+STR_OPTIONS_RES                                                 :{BLACK}画面の解像度
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_RES_TIP                                             :{BLACK}画面の解像度を選択します
 
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}スクリーンショットフォーマット
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}スクリーンショットのファイルフォーマットを選択します
 
 STR_AUTOSAVE_1_MONTH                                            :毎月
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動保存が失敗しました
@@ -952,6 +1034,8 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}車両�
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}マウスが端にあるとき画面を移動：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}町議会の買収を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}不整形の駅を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}新型グローバルパスファインダー（NPF）：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}重い列車のシミュレーションのための重量乗数の指定：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}常に小型空港の建造を許容：{ORANGE}{STRING}
 
@@ -971,29 +1055,110 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}木を�
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}陸地作成：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :元
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}雪線の位置：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}地形のでこぼこ（TerraGenesis のみ）：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :特にスムーズ
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :スムーズ
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :でこぼこ
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :特にでこぼこ
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}植林アルゴリズム：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :なし
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :旧式
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :新式
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}ハイトマップの回転：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :反時計回り
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :時計回り
 
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}駅の幅の上限：{ORANGE}{STRING} {RED}注意：高い数はパフォーマンスに悪影響を与えます
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}ヘリコプターを自動的ヘリパッドで修理：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}地形のツールバーを鉄道／道路／船／空港のツールバーに付ける：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}スクロールの方面を逆転：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}会社のカラースキームを表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :何も
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :プレヤーの会社
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :すべての会社
 
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}一人の列車数上限：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}一人の道路車両数上限：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}一人の飛行機数上限：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}一人の船数上限：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}コンピュータの鉄道車両の使用を切にする：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}コンピュータの道路車両の使用を切にする：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}コンピュータの飛行機の使用を切にする：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}コンピュータの船の使用を切にする：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}新式 AI を使用（実験的）：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}多人数ゲームに AI を許容（実験的）：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}列車のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}列車のデフォルトの修理間隔：{ORANGE}切
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}道路車両のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}道路車両のデフォルトの修理間隔：{ORANGE}切
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}飛行機のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}飛行機のデフォルトの修理間隔：{ORANGE}切
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}船のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}船のデフォルトの修理間隔：{ORANGE}切
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}故障を切にすると修理も切にする：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}貨車の速度制限を使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}電気鉄道を切にする：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}色刷ニュースの開始年：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}開始年：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}終了年：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}スムーズな経済を使用
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}他の会社が所有している株の購入を入にする
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}ドラッグするときの信号設備頻度：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}主のツールバーの位置：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :左
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :中位
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :右
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}切
 
+STR_CONFIG_PATCHES_GUI                                          :{BLACK}インターフェース
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}建造
+STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}車両
+STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}駅／バス停／空港／波止場
+STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}経済
+STR_CONFIG_PATCHES_AI                                           :{BLACK}競争者
 
+STR_CONFIG_PATCHES_DISABLED                                     :切
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
+STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}設定を変更します
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}船に YAPF を使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}道路車両に YAPF を使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}列車に YAPF を使用：{ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :温帯国
 STR_SUB_ARCTIC_LANDSCAPE                                        :北極国
 STR_SUB_TROPICAL_LANDSCAPE                                      :亜熱帯国
 STR_TOYLAND_LANDSCAPE                                           :おまちゃ国
 
+STR_CHEATS                                                      :{WHITE}チート
+STR_CHEATS_TIP                                                  :{BLACK}以前にこのチートを使用したことがあることを示します
+STR_CHEATS_WARNING                                              :{BLACK}中位！チートすると、競争者の裏切りとして見られていて、永遠にのろわれる可能性があります！
+STR_CHEAT_MONEY                                                 :{LTBLUE}残額に{CURRENCY64}を追加
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}プレヤーの変更：{ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}ゴジラブルドーザー（産業など何でも廃止できる）：{ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}トンネルが交差可能ようにする：{ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}ポーズ中に建造可能ようにする：{ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}ジェット飛行機が小型空港での事故頻度を減少：{ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}気候を変更：{ORANGE}{STRING}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}日付を変更：{ORANGE}{DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}生産のレベルの変更を入にする：{ORANGE}{STRING}
 
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}{WAYPOINT}へ行く
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}{WAYPOINT}へ行く、{VELOCITY}
 
+STR_GO_TO_WAYPOINT                                              :{WAYPOINT}を経て行く
+STR_GO_NON_STOP_TO_WAYPOINT                                     :{WAYPOINT}を経て直行で行く
 
 STR_WAYPOINTNAME_CITY                                           :{TOWN}の通過点
 STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN}の通過点 #{COMMA}
+STR_LANDINFO_WAYPOINT                                           :道標
 
 STR_WAYPOINT                                                    :{WHITE}通過点
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}通過点種類を選んで下さい
@@ -1001,20 +1166,46 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}通過�
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}道標名を変更
 
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}道標名が変更できません...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}線路を道標に交換します
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}ここに線路道標が建造できません...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}ここに線路道標が廃止できません...
 
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}自動線路モードを用いて線路を建造します
 
+STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...このシナリオに市町村がありません
 
+STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}ランダムな地形を作成してもよろしいですか？
+STR_MANY_RANDOM_TOWNS                                           :{BLACK}多くのランダムな市町村
+STR_RANDOM_TOWNS_TIP                                            :{BLACK}地図にたくさんの市町村を建造します
+STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}多くのランダムな産業
+STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}地図にたくさんの産業を建造します
+STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}産業が建造できません...
 
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}整地したり、木を植えたりするには、地形のツールバーを開きます
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}地形
+STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}土地をならす
 
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}ランドム種類の木
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}ランドム種類の木を植えます
 
+STR_CANT_BUILD_CANALS                                           :{WHITE}ここに運河が建造できません...
+STR_BUILD_CANALS_TIP                                            :{BLACK}運河を建造します。Control+クリックすると海のタイルも建造できます（海水位にのみ）
+STR_LANDINFO_CANAL                                              :運河
 
+STR_CANT_BUILD_LOCKS                                            :{WHITE}ここに水門が建造できません...
+STR_BUILD_LOCKS_TIP                                             :{BLACK}水門の建造
+STR_LANDINFO_LOCK                                               :水門
 
+STR_BUOY_IS_IN_USE                                              :{WHITE}...ブイは使用中です！
 
+STR_LANDINFO_COORDS                                             :{BLACK}座標：{LTBLUE}{NUM}x{NUM}（{STRING}）
 
+STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}駅の部分が廃止できません...
+STR_CANT_CONVERT_RAIL                                           :{WHITE}ここに線路の種類が交換できません...
 
 
 STR_STATION_DRAG_DROP                                           :{BLACK}ドラッグとドロップで駅を建てます
@@ -2153,6 +2344,17 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}年齢�
 STR_900E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の収益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障：{LTBLUE}{COMMA}
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}車両が車庫へ回送できません...
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}付近の車庫が見つかりません
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}道路車両 - クリックして情報を表示します
+STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}新規道路車両を購入（車庫が必要）
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}車両の現在の動作 - 開始／停止するにはクリックします
+STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}車両の指令を表示します
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}車両を車庫へ改装します。Control+クリックすると修理しか行いません。
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}車両を逆転します
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}車両の情報を表示します
+STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}車両 - クリックして情報を表示します
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}新規道路車両を購入
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 
 
@@ -2209,37 +2411,108 @@ STR_WAGONS                                                      :車
 
 
 
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}リストに入っているすべての車両を停止するにはクリックします
+STR_MASS_START_LIST_TIP                                         :{BLACK}リストに入っているすべての車両を開始するにはクリックします
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}標示のリスト - {COMMA}つの標示
 
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES                                               :鉄道車両
+STR_ELRAIL_VEHICLES                                             :電動鉄道車両
+STR_MONORAIL_VEHICLES                                           :モノレール車両
+STR_MAGLEV_VEHICLES                                             :磁気浮上式鉄道車両
 
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}価格：{GOLD}{CURRENCY}{BLACK}　重量：{GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}最大速度：{GOLD}{VELOCITY}{BLACK}　出力：{GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}最大速度：{GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}運転費：{GOLD}一年間{CURRENCY}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}容量：{GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}設計年：{GOLD}{NUM}{BLACK}　年限：{GOLD}{COMMA}年間
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最高信頼度：{GOLD}{COMMA}％
+STR_PURCHASE_INFO_COST                                          :{BLACK}価格：{GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_S}（{WEIGHT_S}）
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}価格：{GOLD}{CURRENCY}{BLACK}　最大速度：{GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}容量：{GOLD}{COMMA}人の乗客、{COMMA}包の郵便袋
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}再装備の貨物種類：{GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :すべて
+STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}を除いてすべて
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力：{GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}作成
+STR_RANDOM                                                      :{BLACK}ランダム化
+STR_RANDOM_HELP                                                 :{BLACK}地形作成のランダムシードを変更します
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}世界発電
+STR_RANDOM_SEED                                                 :{BLACK}ランダムシード：
+STR_LAND_GENERATOR                                              :{BLACK}地形作成：
 STR_TREE_PLACER                                                 :{BLACK}木アルゴリズム：
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}ハイトマップの回転：
 STR_TERRAIN_TYPE                                                :{BLACK}地形種類：
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK} 海水位：
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}雪線の位置：
+STR_DATE                                                        :{BLACK}日付：
+STR_NUMBER_OF_TOWNS                                             :{BLACK}市町村数：
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}産業数：
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}雪線を上げる
+STR_SNOW_LINE_DOWN                                              :{BLACK}雪線を下げる
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}雪線の位置を変更
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}始める年を変えます
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}ソース地図をリサイズしすぎることはお勧めしません。地形作成を続けてもよろしいですか？
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}ハイトマップ名：
+STR_HEIGHTMAP_SIZE                                              :{BLACK}サイズ：{ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}地形作成中...
+STR_GENERATION_ABORT                                            :{BLACK}キャンセル
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}地形作成のキャンセル
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}地形作成をキャンセルしてもよろしいですか？
+STR_PROGRESS                                                    :{WHITE}{NUM}％完了
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} ／ {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}世界発電
 STR_TREE_GENERATION                                             :{BLACK}木発電
 STR_UNMOVABLE_GENERATION                                        :{BLACK}可動ない 発電
+STR_CLEARING_TILES                                              :{BLACK}岩石／でこぼこの地形を作成中
+STR_SETTINGUP_GAME                                              :{BLACK}ゲームを設定中
+STR_PREPARING_TILELOOP                                          :{BLACK}タイルループを実行中
+STR_PREPARING_GAME                                              :{BLACK}ゲームを準備中
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}この動作によって難易度がカスタムになりました。
+STR_SE_FLAT_WORLD                                               :{WHITE}平たい土地
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}平たい地形を作成
+STR_SE_RANDOM_LAND                                              :{WHITE}ランダムな地形
+STR_SE_NEW_WORLD                                                :{BLACK}新規シナリオを作成
+STR_SE_CAPTION                                                  :{WHITE}シナリオの種類
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 
 ########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}町空港
+STR_CITY_AIRPORT                                                :{BLACK}市空港
+STR_METRO_AIRPORT                                               :{BLACK}都市空港
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}国際空港
+STR_COMMUTER_AIRPORT                                            :{BLACK}通勤空港
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}大陸間空港
+STR_HELIPORT                                                    :{BLACK}ヘリポート
+STR_HELIDEPOT                                                   :{BLACK}ヘリコプター庫
+STR_HELISTATION                                                 :{BLACK}ヘリステーション
 
+STR_SMALL_AIRPORTS                                              :{BLACK}小型空港
+STR_LARGE_AIRPORTS                                              :{BLACK}大型空港
+STR_HUB_AIRPORTS                                                :{BLACK}ハブ型空港
+STR_HELIPORTS                                                   :{BLACK}ヘリコプター空港
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK}長さ：{NUM}
+STR_MEASURE_AREA                                                :{BLACK}地域：{NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長さ：{NUM}{}高さの違い：{NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域：{NUM} x {NUM}{}高さの違い：{NUM} m
 
 ########

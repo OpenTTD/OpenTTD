@@ -826,6 +826,9 @@ STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Όλες οι �
 
 
 
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Αριστερά
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Κέντρο
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Δεξιά
 
 
 
