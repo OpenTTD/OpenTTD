@@ -119,7 +119,7 @@ static void DrawGraph(const GraphDrawer *gw)
 			col_ptr = row_ptr;
 			do {
 				if (*col_ptr != INVALID_VALUE) {
-					mx = max64(mx, *col_ptr);
+					mx = max((uint64)mx, *col_ptr);
 				}
 			} while (col_ptr++, --num_x);
 		}
@@ -306,7 +306,7 @@ static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
 {
 	const Player* p;
 	uint excludebits = _legend_excludebits;
-	int nums;
+	byte nums;
 	int mo,yr;
 
 	// Exclude the players which aren't valid

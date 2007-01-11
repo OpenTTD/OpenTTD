@@ -366,7 +366,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					/* Clicked buttons, decrease or increase production */
 					if (x < 15) {
 						if (isProductionMinimum(i, line)) return;
-						i->production_rate[line] = maxu(i->production_rate[line] / 2, 1);
+						i->production_rate[line] = max(i->production_rate[line] / 2, 1);
 					} else {
 						if (isProductionMaximum(i, line)) return;
 						i->production_rate[line] = minu(i->production_rate[line] * 2, 255);

@@ -832,7 +832,7 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 	} else if (v->cargo_count == 0 || totalsets == 2) {
 		set = 0;
 	} else {
-		set = v->cargo_count * (totalsets - 2) / max(1, v->cargo_cap) + 1;
+		set = v->cargo_count * (totalsets - 2) / max((uint16)1, v->cargo_cap) + 1;
 	}
 
 	return in_motion ? group->g.real.loaded[set] : group->g.real.loading[set];

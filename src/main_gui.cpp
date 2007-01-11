@@ -1054,7 +1054,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 {
 	int sizex, sizey;
-	byte h;
+	uint h;
 
 	_generating_world = true; // used to create green terraformed land
 

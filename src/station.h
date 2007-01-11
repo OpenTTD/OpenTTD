@@ -119,7 +119,8 @@ enum {
 	HVOT_BUOY     = 1 << 6
 };
 
-enum {
+typedef enum CatchmentAeras {
+	CA_NONE            =  0,
 	CA_BUS             =  3,
 	CA_TRUCK           =  3,
 	CA_AIR_OILPAD      =  3,
@@ -134,7 +135,7 @@ enum {
 	CA_AIR_HELIDEPOT   =  4,
 	CA_AIR_INTERCON    = 10,
 	CA_AIR_HELISTATION =  4,
-};
+} CatchmentAera;
 
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);
 

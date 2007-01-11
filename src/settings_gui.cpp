@@ -437,7 +437,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			const GameSettingData *info;
 			int x, y;
 			uint btn, dis;
-			int val;
+			int16 val;
 
 			// Don't allow clients to make any changes
 			if  (_networking && !_network_server)
@@ -473,7 +473,8 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 				SETBIT(_difficulty_click_b, btn);
 			} else {
 				// Decrease button clicked
-				val = max(val - info->step, info->min);
+				val -= info->step;
+				val = max(val,  info->min);
 				SETBIT(_difficulty_click_a, btn);
 			}
 

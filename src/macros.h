@@ -20,13 +20,11 @@
 #undef max
 #endif
 
-static inline int max(int a, int b) { if (a >= b) return a; return b; }
-static inline double dmax(double a, double b) { if (a >= b) return a; return b; }
-static inline uint64 max64(uint64 a, uint64 b) { if (a >= b) return a; return b; }
+template <typename T> T max(T a, T b) { return a >= b ? a : b; }
+
 static inline int min(int a, int b) { if (a <= b) return a; return b; }
 
 static inline uint minu(uint a, uint b) { if (a <= b) return a; return b; }
-static inline uint maxu(uint a, uint b) { if (a >= b) return a; return b; }
 
 
 static inline int clamp(int a, int min, int max)

@@ -114,8 +114,8 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value,
 	switch (adjust->operation) {
 		case DSGA_OP_ADD:  return last_value + value;
 		case DSGA_OP_SUB:  return last_value - value;
-		case DSGA_OP_SMIN: return min(last_value, value);
-		case DSGA_OP_SMAX: return max(last_value, value);
+		case DSGA_OP_SMIN: return min((S)last_value, (S)value);
+		case DSGA_OP_SMAX: return max((S)last_value, (S)value);
 		case DSGA_OP_UMIN: return min((U)last_value, (U)value);
 		case DSGA_OP_UMAX: return max((U)last_value, (U)value);
 		case DSGA_OP_SDIV: return last_value / value;

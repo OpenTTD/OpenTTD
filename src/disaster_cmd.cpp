@@ -134,7 +134,7 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
 		BeginVehicleMove(u);
 
 		u->x_pos = x;
-		u->y_pos = y - 1 - (max(z - GetSlopeZ(safe_x, safe_y), 0) >> 3);
+		u->y_pos = y - 1 - (max(z - GetSlopeZ(safe_x, safe_y), 0U) >> 3);
 		safe_y = clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
 		u->z_pos = GetSlopeZ(safe_x, safe_y);
 		u->direction = v->direction;

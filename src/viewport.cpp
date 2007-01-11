@@ -2091,7 +2091,7 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
 			h0 = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t])));
 			ht = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t + 1])));
-			h0 = maxu(h0, ht);
+			h0 = max(h0, ht);
 
 			/* Use lookup table for end-tile based on HighLightStyle direction
 			 * flip around side (lower/upper, left/right) based on distance */
@@ -2099,7 +2099,7 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
 			h1 = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t])));
 			ht = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t + 1])));
-			h1 = maxu(h1, ht);
+			h1 = max(h1, ht);
 		} break;
 	}
 

@@ -234,13 +234,13 @@ static void GetAcceptedCargo_Unmovable(TileIndex tile, AcceptedCargo ac)
 
 	// Top town building generates 10, so to make HQ interesting, the top
 	// type makes 20.
-	ac[CT_PASSENGERS] = max(1, level);
+	ac[CT_PASSENGERS] = max(1U, level);
 
 	// Top town building generates 4, HQ can make up to 8. The
 	// proportion passengers:mail is different because such a huge
 	// commercial building generates unusually high amount of mail
 	// correspondence per physical visitor.
-	ac[CT_MAIL] = max(1, level / 2);
+	ac[CT_MAIL] = max(1U, level / 2);
 }
 
 

@@ -536,7 +536,7 @@ static void HeightMapCoastLines(void)
 	for (y = 0; y <= _height_map.size_y; y++) {
 		/* Top right */
 		max_x = myabs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.9, 53) + 0.25) * 5 + (perlin_coast_noise_2D(y, y, 0.35, 179) + 1) * 12);
-		max_x = dmax((smallest_size * smallest_size / 16) + max_x, (smallest_size * smallest_size / 16) + margin - max_x);
+		max_x = max((smallest_size * smallest_size / 16) + max_x, (smallest_size * smallest_size / 16) + margin - max_x);
 		if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
 		for (x = 0; x < max_x; x++) {
 			HeightMapXY(x, y) = 0;
@@ -544,7 +544,7 @@ static void HeightMapCoastLines(void)
 
 		/* Bottom left */
 		max_x = myabs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.85, 101) + 0.3) * 6 + (perlin_coast_noise_2D(y, y, 0.45,  67) + 0.75) * 8);
-		max_x = dmax((smallest_size * smallest_size / 16) + max_x, (smallest_size * smallest_size / 16) + margin - max_x);
+		max_x = max((smallest_size * smallest_size / 16) + max_x, (smallest_size * smallest_size / 16) + margin - max_x);
 		if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
 		for (x = _height_map.size_x; x > (_height_map.size_x - 1 - max_x); x--) {
 			HeightMapXY(x, y) = 0;
@@ -555,7 +555,7 @@ static void HeightMapCoastLines(void)
 	for (x = 0; x <= _height_map.size_x; x++) {
 		/* Top left */
 		max_y = myabs((perlin_coast_noise_2D(x, _height_map.size_y / 2, 0.9, 167) + 0.4) * 5 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.4, 211) + 0.7) * 9);
-		max_y = dmax((smallest_size * smallest_size / 16) + max_y, (smallest_size * smallest_size / 16) + margin - max_y);
+		max_y = max((smallest_size * smallest_size / 16) + max_y, (smallest_size * smallest_size / 16) + margin - max_y);
 		if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
 		for (y = 0; y < max_y; y++) {
 			HeightMapXY(x, y) = 0;
@@ -564,7 +564,7 @@ static void HeightMapCoastLines(void)
 
 		/* Bottom right */
 		max_y = myabs((perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.85, 71) + 0.25) * 6 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.35, 193) + 0.75) * 12);
-		max_y = dmax((smallest_size * smallest_size / 16) + max_y, (smallest_size * smallest_size / 16) + margin - max_y);
+		max_y = max((smallest_size * smallest_size / 16) + max_y, (smallest_size * smallest_size / 16) + margin - max_y);
 		if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
 		for (y = _height_map.size_y; y > (_height_map.size_y - 1 - max_y); y--) {
 			HeightMapXY(x, y) = 0;

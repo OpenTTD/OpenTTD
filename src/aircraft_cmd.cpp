@@ -1066,7 +1066,7 @@ static bool AircraftController(Vehicle *v)
 		if (curz > z) {
 			z++;
 		} else {
-			int t = max(1, dist - 4);
+			int t = max(1U, dist - 4);
 
 			z -= ((z - curz) + t - 1) / t;
 			if (z < curz) z = curz;

@@ -200,7 +200,7 @@ RoadStop *AllocateRoadStop(void)
  *  radius that is available within the station */
 static uint FindCatchmentRadius(const Station* st)
 {
-	uint ret = 0;
+	CatchmentAera ret = CA_NONE;
 
 	if (st->bus_stops != NULL)   ret = max(ret, CA_BUS);
 	if (st->truck_stops != NULL) ret = max(ret, CA_TRUCK);
@@ -2525,7 +2525,7 @@ static void UpdateStationRating(Station *st)
 				if (rating <= 127 && waiting != 0) {
 					uint32 r = Random();
 					if ( (uint)rating <= (r & 0x7F) ) {
-						waiting = max(waiting - ((r >> 8)&3) - 1, 0);
+						waiting = max(waiting - ((r >> 8)&3) - 1, 0U);
 						waiting_changed = true;
 					}
 				}

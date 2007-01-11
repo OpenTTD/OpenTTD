@@ -194,7 +194,8 @@ static void DrawDepotWindow(Window *w)
 {
 	Vehicle **vl = WP(w, depot_d).vehicle_list;
 	TileIndex tile = w->window_number;
-	int x, y, i, hnum, max;
+	int x, y, i, maxval;
+	uint16 hnum;
 	uint16 num = WP(w, depot_d).engine_count;
 
 	/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
@@ -218,7 +219,7 @@ static void DrawDepotWindow(Window *w)
 		hnum = 8;
 		for (num = 0; num < WP(w, depot_d).engine_count; num++) {
 			const Vehicle *v = vl[num];
-			hnum = maxu(hnum, v->u.rail.cached_total_length);
+			hnum = max(hnum, v->u.rail.cached_total_length);
 		}
 		/* Always have 1 empty row, so people can change the setting of the train */
 		SetVScrollCount(w, WP(w, depot_d).engine_count + WP(w, depot_d).wagon_count + 1);
@@ -240,22 +241,22 @@ static void DrawDepotWindow(Window *w)
 	DrawWindowWidgets(w);
 
 	num = w->vscroll.pos * boxes_in_each_row;
-	max = min(WP(w, depot_d).engine_count, num + (rows_in_display * boxes_in_each_row));
+	maxval = min(WP(w, depot_d).engine_count, num + (rows_in_display * boxes_in_each_row));
 
-	for (x = 2, y = 15; num < max; y += w->resize.step_height, x = 2) { // Draw the rows
+	for (x = 2, y = 15; num < maxval; y += w->resize.step_height, x = 2) { // Draw the rows
 		byte i;
 
-		for (i = 0; i < boxes_in_each_row && num < max; i++, num++, x += w->resize.step_width) {
+		for (i = 0; i < boxes_in_each_row && num < maxval; i++, num++, x += w->resize.step_width) {
 			/* Draw all vehicles in the current row */
 			const Vehicle *v = vl[num];
 			DrawVehicleInDepot(w, v, x, y);
 		}
 	}
 
-	max = min(WP(w, depot_d).engine_count + WP(w, depot_d).wagon_count, (w->vscroll.pos * boxes_in_each_row) + (rows_in_display * boxes_in_each_row));
+	maxval = min(WP(w, depot_d).engine_count + WP(w, depot_d).wagon_count, (w->vscroll.pos * boxes_in_each_row) + (rows_in_display * boxes_in_each_row));
 
 	/* draw the train wagons, that do not have an engine in front */
-	for (; num < max; num++, y += 14) {
+	for (; num < maxval; num++, y += 14) {
 		const Vehicle *v = WP(w, depot_d).wagon_list[num - WP(w, depot_d).engine_count];
 		const Vehicle *u;
 

@@ -234,7 +234,7 @@ static IniFile *ini_load(const char *filename)
 			uint pos;
 			// add to comment
 			if (ns > a) {
-				a = max(a, 128);
+				a = max(a, 128U);
 				do a*=2; while (a < ns);
 				ReallocT(&comment, comment_alloc = a);
 			}
