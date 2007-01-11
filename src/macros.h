@@ -20,7 +20,11 @@
 #undef max
 #endif
 
-template <typename T> T max(T a, T b) { return a >= b ? a : b; }
+template <typename T>
+static inline T max(T a, T b)
+{
+	return a >= b ? a : b;
+}
 
 static inline int min(int a, int b) { if (a <= b) return a; return b; }
 
