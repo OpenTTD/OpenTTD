@@ -415,7 +415,7 @@ void InitializeLandscape(void)
 		for (x = 0; x < maxx; x++) {
 			MakeClear(sizex * y + x, CLEAR_GRASS, 3);
 			SetTileHeight(sizex * y + x, 0);
-			_m[sizex * y + x].extra = 0;
+			SetTropicZone(sizex * y + x, TROPICZONE_INVALID);
 			ClearBridgeMiddle(sizex * y + x);
 		}
 		MakeVoid(sizex * y + x);

@@ -1344,10 +1344,10 @@ static bool LoadOldMapPart1(LoadgameState *ls, int num)
 	}
 	for (i = 0; i < OLD_MAP_SIZE / 4; i++) {
 		byte b = ReadByte(ls);
-		_m[i * 4 + 0].extra = GB(b, 0, 2);
-		_m[i * 4 + 1].extra = GB(b, 2, 2);
-		_m[i * 4 + 2].extra = GB(b, 4, 2);
-		_m[i * 4 + 3].extra = GB(b, 6, 2);
+		_m[i * 4 + 0].m6 = GB(b, 0, 2);
+		_m[i * 4 + 1].m6 = GB(b, 2, 2);
+		_m[i * 4 + 2].m6 = GB(b, 4, 2);
+		_m[i * 4 + 3].m6 = GB(b, 6, 2);
 	}
 
 	return !ls->failed;

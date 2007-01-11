@@ -41,7 +41,7 @@ static inline bool MayHaveBridgeAbove(TileIndex t)
 static inline bool IsBridgeAbove(TileIndex t)
 {
 	assert(MayHaveBridgeAbove(t));
-	return GB(_m[t].extra, 6, 2) != 0;
+	return GB(_m[t].m6, 6, 2) != 0;
 }
 
 
@@ -70,7 +70,7 @@ static inline DiagDirection GetBridgeRampDirection(TileIndex t)
 static inline Axis GetBridgeAxis(TileIndex t)
 {
 	assert(IsBridgeAbove(t));
-	return (Axis)(GB(_m[t].extra, 6, 2) - 1);
+	return (Axis)(GB(_m[t].m6, 6, 2) - 1);
 }
 
 
@@ -121,7 +121,7 @@ uint GetBridgeFoundation(Slope tileh, Axis axis);
 static inline void ClearSingleBridgeMiddle(TileIndex t, Axis a)
 {
 	assert(MayHaveBridgeAbove(t));
-	CLRBIT(_m[t].extra, 6 + a);
+	CLRBIT(_m[t].m6, 6 + a);
 }
 
 
@@ -134,7 +134,7 @@ static inline void ClearBridgeMiddle(TileIndex t)
 static inline void SetBridgeMiddle(TileIndex t, Axis a)
 {
 	assert(MayHaveBridgeAbove(t));
-	SETBIT(_m[t].extra, 6 + a);
+	SETBIT(_m[t].m6, 6 + a);
 }
 
 

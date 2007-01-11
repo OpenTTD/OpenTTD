@@ -546,8 +546,9 @@ static void Save_MAP5(void)
 	}
 }
 
-static void Load_MAPE(void)
+static void Load_MAP6(void)
 {
+	/* Still available for loading old games */
 	uint size = MapSize();
 	uint i;
 
@@ -558,10 +559,10 @@ static void Load_MAPE(void)
 
 			SlArray(buf, lengthof(buf), SLE_UINT8);
 			for (j = 0; j != lengthof(buf); j++) {
-				_m[i++].extra = GB(buf[j], 0, 2);
-				_m[i++].extra = GB(buf[j], 2, 2);
-				_m[i++].extra = GB(buf[j], 4, 2);
-				_m[i++].extra = GB(buf[j], 6, 2);
+				_m[i++].m6 = GB(buf[j], 0, 2);
+				_m[i++].m6 = GB(buf[j], 2, 2);
+				_m[i++].m6 = GB(buf[j], 4, 2);
+				_m[i++].m6 = GB(buf[j], 6, 2);
 			}
 		}
 	} else {
@@ -570,12 +571,12 @@ static void Load_MAPE(void)
 			uint j;
 
 			SlArray(buf, lengthof(buf), SLE_UINT8);
-			for (j = 0; j != lengthof(buf); j++) _m[i++].extra = buf[j];
+			for (j = 0; j != lengthof(buf); j++) _m[i++].m6 = buf[j];
 		}
 	}
 }
 
-static void Save_MAPE(void)
+static void Save_MAP6(void)
 {
 	uint size = MapSize();
 	uint i;
@@ -585,7 +586,7 @@ static void Save_MAPE(void)
 		uint8 buf[4096];
 		uint j;
 
-		for (j = 0; j != lengthof(buf); j++) buf[j] = _m[i++].extra;
+		for (j = 0; j != lengthof(buf); j++) buf[j] = _m[i++].m6;
 		SlArray(buf, lengthof(buf), SLE_UINT8);
 	}
 }
@@ -625,7 +626,7 @@ extern const ChunkHandler _misc_chunk_handlers[] = {
 	{ 'M3LO', Save_MAP3,     Load_MAP3,     CH_RIFF },
 	{ 'M3HI', Save_MAP4,     Load_MAP4,     CH_RIFF },
 	{ 'MAP5', Save_MAP5,     Load_MAP5,     CH_RIFF },
-	{ 'MAPE', Save_MAPE,     Load_MAPE,     CH_RIFF },
+	{ 'MAPE', Save_MAP6,     Load_MAP6,     CH_RIFF },
 
 	{ 'NAME', Save_NAME,     Load_NAME,     CH_ARRAY},
 	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, CH_RIFF},

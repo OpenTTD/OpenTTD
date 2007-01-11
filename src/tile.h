@@ -105,7 +105,7 @@ static inline bool IsTileOwner(TileIndex tile, Owner owner)
 static inline void SetTropicZone(TileIndex tile, TropicZone type)
 {
 	assert(tile < MapSize());
-	SB(_m[tile].extra, 0, 2, type);
+	SB(_m[tile].m6, 0, 2, type);
 }
 
 /**
@@ -117,6 +117,6 @@ static inline void SetTropicZone(TileIndex tile, TropicZone type)
 static inline TropicZone GetTropicZone(TileIndex tile)
 {
 	assert(tile < MapSize());
-	return (TropicZone)GB(_m[tile].extra, 0, 2);
+	return (TropicZone)GB(_m[tile].m6, 0, 2);
 }
 #endif /* TILE_H */

@@ -23,7 +23,7 @@ typedef struct Tile {
 	byte m3;
 	byte m4;
 	byte m5;
-	byte extra;
+	byte m6;
 } Tile;
 
 extern Tile* _m;
