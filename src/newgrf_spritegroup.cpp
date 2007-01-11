@@ -92,48 +92,43 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 }
 
 
-/* Evaluate an adjustment for a variable of the given size. This is a bit of
- * an unwieldy macro, but it saves triplicating the code. */
-#define BUILD_EVAL_ADJUST(size, usize) \
-static inline usize EvalAdjust_ ## size(const DeterministicSpriteGroupAdjust *adjust, usize last_value, int32 value) \
-{ \
-	value >>= adjust->shift_num; \
-	value  &= adjust->and_mask; \
-\
-	if (adjust->type != DSGA_TYPE_NONE) value += (size)adjust->add_val; \
-\
-	switch (adjust->type) { \
-		case DSGA_TYPE_DIV:  value /= (size)adjust->divmod_val; break; \
-		case DSGA_TYPE_MOD:  value %= (usize)adjust->divmod_val; break; \
-		case DSGA_TYPE_NONE: break; \
-	} \
-\
-	/* Get our value to the correct range */ \
-	value = (usize)value; \
-\
-	switch (adjust->operation) { \
-		case DSGA_OP_ADD:  return last_value + value; \
-		case DSGA_OP_SUB:  return last_value - value; \
-		case DSGA_OP_SMIN: return min(last_value, value); \
-		case DSGA_OP_SMAX: return max(last_value, value); \
-		case DSGA_OP_UMIN: return min((usize)last_value, (usize)value); \
-		case DSGA_OP_UMAX: return max((usize)last_value, (usize)value); \
-		case DSGA_OP_SDIV: return last_value / value; \
-		case DSGA_OP_SMOD: return last_value % value; \
-		case DSGA_OP_UDIV: return (usize)last_value / (usize)value; \
-		case DSGA_OP_UMOD: return (usize)last_value % (usize)value; \
-		case DSGA_OP_MUL:  return last_value * value; \
-		case DSGA_OP_AND:  return last_value & value; \
-		case DSGA_OP_OR:   return last_value | value; \
-		case DSGA_OP_XOR:  return last_value ^ value; \
-		default:           return value; \
-	} \
+/* Evaluate an adjustment for a variable of the given size.
+* U is the unsigned type and S is the signed type to use. */
+template <typename U, typename S>
+static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value, int32 value)
+{
+	value >>= adjust->shift_num;
+	value  &= adjust->and_mask;
+
+	if (adjust->type != DSGA_TYPE_NONE) value += (S)adjust->add_val;
+
+	switch (adjust->type) {
+		case DSGA_TYPE_DIV:  value /= (S)adjust->divmod_val; break;
+		case DSGA_TYPE_MOD:  value %= (U)adjust->divmod_val; break;
+		case DSGA_TYPE_NONE: break;
+	}
+
+	/* Get our value to the correct range */
+	value = (U)value;
+
+	switch (adjust->operation) {
+		case DSGA_OP_ADD:  return last_value + value;
+		case DSGA_OP_SUB:  return last_value - value;
+		case DSGA_OP_SMIN: return min(last_value, value);
+		case DSGA_OP_SMAX: return max(last_value, value);
+		case DSGA_OP_UMIN: return min((U)last_value, (U)value);
+		case DSGA_OP_UMAX: return max((U)last_value, (U)value);
+		case DSGA_OP_SDIV: return last_value / value;
+		case DSGA_OP_SMOD: return last_value % value;
+		case DSGA_OP_UDIV: return (U)last_value / (U)value;
+		case DSGA_OP_UMOD: return (U)last_value % (U)value;
+		case DSGA_OP_MUL:  return last_value * value;
+		case DSGA_OP_AND:  return last_value & value;
+		case DSGA_OP_OR:   return last_value | value;
+		case DSGA_OP_XOR:  return last_value ^ value;
+		default:           return value;
+	}
 }
-
-
-BUILD_EVAL_ADJUST(int8, uint8)
-BUILD_EVAL_ADJUST(int16, uint16)
-BUILD_EVAL_ADJUST(int32, uint32)
 
 
 static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, ResolverObject *object)
@@ -159,9 +154,9 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		}
 
 		switch (group->g.determ.size) {
-			case DSG_SIZE_BYTE:  value = EvalAdjust_int8(adjust, last_value, value); break;
-			case DSG_SIZE_WORD:  value = EvalAdjust_int16(adjust, last_value, value); break;
-			case DSG_SIZE_DWORD: value = EvalAdjust_int32(adjust, last_value, value); break;
+			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8, int8>(adjust, last_value, value); break;
+			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16, int16>(adjust, last_value, value); break;
+			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32, int32>(adjust, last_value, value); break;
 			default: NOT_REACHED(); break;
 		}
 		last_value = value;
