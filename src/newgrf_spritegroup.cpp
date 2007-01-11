@@ -131,7 +131,7 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value,
 static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, ResolverObject *object)
 {
 	static SpriteGroup nvarzero;
-	uint32 last_value = object->last_value;
+	uint32 last_value = 0;
 	uint32 value = 0;
 	uint i;
 
@@ -158,6 +158,8 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		}
 		last_value = value;
 	}
+
+	object->last_value = last_value;
 
 	if (group->g.determ.num_ranges == 0) {
 		/* nvar == 0 is a special case -- we turn our value into a callback result */
