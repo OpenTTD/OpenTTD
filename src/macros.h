@@ -140,13 +140,6 @@ static inline int intxchg_(int *a, int b) { int t = *a; *a = b; return t; }
 static inline int uintxchg_(uint *a, uint b) { uint t = *a; *a = b; return t; }
 #define uintswap(a,b) ((b) = uintxchg_(&(a), (b)))
 
-static inline void swap_byte(byte *a, byte *b) { byte t = *a; *a = *b; *b = t; }
-static inline void swap_uint16(uint16 *a, uint16 *b) { uint16 t = *a; *a = *b; *b = t; }
-static inline void swap_int16(int16 *a, int16 *b) { int16 t = *a; *a = *b; *b = t; }
-static inline void swap_uint32(uint32 *a, uint32 *b) { uint32 t = *a; *a = *b; *b = t; }
-static inline void swap_int32(int32 *a, int32 *b) { int32 t = *a; *a = *b; *b = t; }
-static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a = *b; *b = t; }
-
 
 static inline uint16 ReadLE16Aligned(const void* x)
 {

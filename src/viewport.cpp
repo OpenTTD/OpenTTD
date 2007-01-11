@@ -2043,7 +2043,7 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 	uint h0, h1, ht; // start heigth, end height, and temp variable
 
 	if (start_tile == end_tile) return 0;
-	if (swap) swap_tile(&start_tile, &end_tile);
+	if (swap) SwapT(&start_tile, &end_tile);
 
 	switch (style & HT_DRAG_MASK) {
 		case HT_RECT: {
@@ -2103,7 +2103,7 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 		} break;
 	}
 
-	if (swap) swap_uint32(&h0, &h1);
+	if (swap) SwapT(&h0, &h1);
 	/* Minimap shows height in intervals of 50 meters, let's do the same */
 	return (int)(h1 - h0) * 50;
 }
