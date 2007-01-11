@@ -391,6 +391,7 @@ STR_ENGINE_SORT_INTRO_DATE                                      :登場日付
 STR_ENGINE_SORT_RUNNING_COST                                    :運転費
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :馬力／運転費
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :貨物容量
+STR_NO_WAITING_CARGO                                            :{BLACK}到着待ちの貨物がありません
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}すべての設備を選択
 STR_SELECT_ALL_TYPES                                            :{BLACK}すべての貨物種類を選択（include no waiting cargo）
 STR_MANAGE_LIST                                                 :{BLACK}リストを管理
@@ -722,6 +723,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}土地�
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}灯台を建造します
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}送信機を建造します
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}砂漠を作成します。{}Control+クリックすると消去します
+STR_CREATE_LAKE                                                 :{BLACK}湖を作成します。{}海水位の場合は周辺地域を水浸します
 STR_0290_DELETE                                                 :{BLACK}廃止
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}この町を完全に廃止します
 STR_0292_SAVE_SCENARIO                                          :シナリオを保存
@@ -1045,6 +1047,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :切
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :入（停止中の車両を取り除く）
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :入（すべての車両）
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}電車の収益が赤字となったときは報告：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}車両の購入期限がない：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}車両が古くなるとき自動交換
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}車両が最高年齢の {ORANGE}{STRING}{LTBLUE} ヶ月間前／後に自動交換
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}自動交換するための最小資金：{ORANGE}{STRING}
@@ -1055,6 +1058,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}木を�
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}陸地作成：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :元
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}石油精製所の建設のための地図の端から最大距離：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}雪線の位置：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}地形のでこぼこ（TerraGenesis のみ）：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :特にスムーズ
@@ -1068,11 +1072,13 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :新式
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}ハイトマップの回転：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :反時計回り
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :時計回り
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}平たいシナリオの高さ：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}駅の幅の上限：{ORANGE}{STRING} {RED}注意：高い数はパフォーマンスに悪影響を与えます
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}ヘリコプターを自動的ヘリパッドで修理：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}地形のツールバーを鉄道／道路／船／空港のツールバーに付ける：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}スクロールの方面を逆転：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}様々な建設のツールを使用するときに、測定ツールティップを表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}会社のカラースキームを表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :何も
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :プレヤーの会社
@@ -1128,6 +1134,7 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}設定を変更します
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}以下のデフォルトの修理間隔は選択した設定に対応していません！５〜９０％もしくは３０〜８００日が使用できます。
 STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}船に YAPF を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}道路車両に YAPF を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}列車に YAPF を使用：{ORANGE}{STRING}
@@ -1206,18 +1213,53 @@ STR_LANDINFO_COORDS                                             :{BLACK}座標�
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}駅の部分が廃止できません...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}ここに線路の種類が交換できません...
+STR_CONVERT_RAIL_TIP                                            :{BLACK}線路種類を交換／更新
 
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}列車の全般を販売するにはここへドラッグします
 
+STR_DRAG_DROP                                                   :{BLACK}ドラッグアンドドロップ
 STR_STATION_DRAG_DROP                                           :{BLACK}ドラッグとドロップで駅を建てます
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}駅の種類を選択します
 
+STR_FAST_FORWARD                                                :{BLACK}ゲームを早送り
+STR_MESSAGE_HISTORY                                             :{WHITE}メッセージ履歴
+STR_MESSAGE_HISTORY_TIP                                         :{BLACK}最近表示したニュースやその他のメッセージのリストを表示します
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}すべてを切
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}すべてを入
 
+STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}石炭鉱山を建設します
+STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}森林を植林します
+STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}石油掘削装置を建設します
+STR_CONSTRUCT_FARM_TIP                                          :{BLACK}農場を建設します
+STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}銅鉱鉱山を建設します
+STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}油井を建設します
+STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}金鉱山を建設します
+STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}ダイヤモンド鉱山を建設します
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}鉄鉱鉱山を建設します
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}果物農園を建設します
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}ゴム園を建設します
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}給水塔を建設します
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}綿菓子森林を植林します
+STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}電気農場を建設します
+STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}コーラ泉を建設します
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}プラスチック泉を建設します
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}発泡所を建設します
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}トフィー鉱山を建設します
+STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}砂糖鉱山を建設します
 
+STR_INDUSTRYDIR_CAPTION                                         :{WHITE}産業
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}）{YELLOW}（{COMMA}％が運送された）
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}／{CARGO}）{YELLOW}（{COMMA}％／{COMMA}％が運送された）
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...他の産業に近すぎます。
 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}他の貨物種類を運送するに列車を再装備
+STR_RAIL_REFIT_VEHICLE                                          :{BLACK}列車を再装備
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}列車が運送する貨物を選択
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}選択した貨物種類に再装備
+STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}列車が再装備できません...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}修理間隔をパーセントで表示：{ORANGE}{STRING}
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}いらっしゃいませ！このAIは発展中です。問題があったら、スクリーンショットを取って、フォーラムに送ってください
 TEMP_AI_ACTIVATED                                               :{WHITE}注意：AIはまだアルファです！今、貨物自動車とバスだけ疲われます！
@@ -1253,6 +1295,7 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}ゲー�
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}クライアント：{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}国語：　 {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}タイルセット：{WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}地図のサイズ：{WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}サーババージョン：{WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}サーバアドレス：{WHITE}{STRING}：{NUM}
@@ -1260,6 +1303,7 @@ STR_NETWORK_START_DATE                                          :{SILVER}開始�
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}現在の日付：{WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}パスワードが必要！
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}サーバがオフライン
+STR_NETWORK_SERVER_FULL                                         :{SILVER}サーバ満員
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}バージョン不一致
 STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF 不一致
 
@@ -1273,6 +1317,9 @@ STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}他の�
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}パスワードを指定
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}ゲームをパスワードで保護することができます。正しいパスワードを入力しないと、接続できません。
 STR_NETWORK_SELECT_MAP                                          :{BLACK}地図を選択：
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}プレイするマップを選択してください
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}最大接続数：
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}接続できるコンピュータの最大数を選択します。
 STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :インターネット
@@ -1291,10 +1338,13 @@ STR_NETWORK_8_PLAYERS                                           :８人のプレ
 STR_NETWORK_9_PLAYERS                                           :９人のプレヤー
 STR_NETWORK_10_PLAYERS                                          :１０人のプレヤー
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}最高交通会社数：
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}サーバ上の会社上限を指定します
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}最高傍観者人数：
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}サーバ上の傍観者上限を指定します
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}言語：
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}サーバ上の主の言語を表示します
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}ゲームを開始
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}ランダムな地図もしくはシナリオを用いて新規ネットワークゲームを開始します
@@ -1311,11 +1361,13 @@ STR_NETWORK_LANG_FRENCH                                         :フランス語
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}多人数ゲームロビー
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}次のゲームを準備中：{ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}このゲームに現在参加している交通会社のリストです。空のスロットがあった場合は、交遊会社を開業できます。そうしないと、すでに経営している交通会社に参加できます。
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}新規会社
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}新規交通会社を作成します
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}ゲームを傍観
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}傍観者としてゲームを見ます
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}会社に加入
+STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}この交通会社の経営に参加します
 STR_NETWORK_REFRESH                                             :{BLACK}サーバを更新
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}サーバ情報を更新します
 
@@ -1350,29 +1402,97 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM}／
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}接続を解除
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}送金する金額を入力してください
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}サーバへ接続するにはパスワードを入力してください
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}会社の経営に参加するにはパスワードを入力してください
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}クライアントリスト
 
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}ネットワークデバイスが見つかりませんでした。ENABLE_NETWORK を切にしてコンパイルされた可能性もあります。
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}ネットワークゲームが見つかりませんでした
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}サーバが応答しませんでした
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}ネットワークゲームの同期が失敗しました
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}ネットワークゲームへの接続が解除されました
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}保存したゲームが開けませんでした
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}サーバが開始できませんでした
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}接続できませんでした
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}接続 {NUM} にタイムアウトエラーが発生しました
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}プロトコルエラーによって接続が解除されました
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}クライアントバージョンはサーババージョンと一致していません
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}不正なパスワード
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}サーバが満員です
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}このサーバに禁止されています
+STR_NETWORK_ERR_KICKED                                          :{WHITE}げーむから蹴られました
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}このサーバ上にチートを許可しません
 
+STR_NETWORK_ERR_LEFT                                            :が撤退しました
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL                                  :一般エラー
+STR_NETWORK_ERR_CLIENT_DESYNC                                   :同期エラー
+STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :保存したゲームが開けなかった
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :接続解除
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :プロトコルエラー
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :認証していない
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :不明なパケットを受信した
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :対応していないバージョン
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :プレヤー名がすでに使用中
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :不正なパスワード
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :DoCommand にプレヤー名が不正
+STR_NETWORK_ERR_CLIENT_KICKED                                   :サーバに蹴られた
+STR_NETWORK_ERR_CLIENT_CHEATER                                  :チートして試していた
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :サーバ満員
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED                                       :がゲームに参加してきました
+STR_NETWORK_GIVE_MONEY                                          :に送金してもらいました（{CURRENCY}）
+STR_NETWORK_GAVE_MONEY_AWAY                                     :{STRING}に送金してあげました（{CURRENCY}）
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :『チーム』：
+STR_NETWORK_CHAT_COMPANY                                        :『チーム』{STRING}：{GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :『チーム』{STRING}へ：{GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :『秘密』：
+STR_NETWORK_CHAT_CLIENT                                         :『秘密』{STRING}：{GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :『秘密』{STRING}へ：{GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :『全員』：
+STR_NETWORK_CHAT_ALL                                            :『全員』{STRING}：{GRAY}{STRING}
+STR_NETWORK_NAME_CHANGE                                         :がプレヤー名を変更した。新名が
+STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}サーバがセッションを終了しました
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE}サーバが再起道中...{}しばらくお待ちください...
+
+STR_NETWORK_SERVER                                              :サーバ
+STR_NETWORK_CLIENT                                              :クライアント
+STR_NETWORK_SPECTATORS                                          :傍観者
+
+STR_NETWORK_CLIENTLIST_NONE                                     :（なし）
+STR_NETWORK_CLIENTLIST_KICK                                     :蹴る
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :送金
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :全員へ発言
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :チームへ発言
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :秘密メッセージ
 
 
-
-
+STR_NETWORK_SEND                                                :{BLACK}送信
 
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}地図のX軸の長さ：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}地図のY軸の長さ：{ORANGE}{STRING}
 
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}PNG ファイルから地形が読み込めません...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...ファイルが見つかりませんでした
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...イメージのフォーマットが交換できませんでした。256色もしくは1670万色のPNGファイルしか対応していません。
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...不明なエラーが発生しました。破損したファイルの可能性があります。
 
+STR_BMPMAP_ERROR                                                :{WHITE}BMP ファイルから地形が読み込めません...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...イメージのフォーマットが交換できませんでした。
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}価値：{CURRENCY}
 STR_0801_COST                                                   :{RED}価値：{CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}所得：{CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}所得：{CURRENCY}
+STR_FEEDER                                                      :{YELLOW}送金：{CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}評価の価値：{CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}評価の所得：{CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}ここに土地が上げられません
@@ -1386,8 +1506,13 @@ STR_080F_SNOW_COVERED_LAND                                      :積雪地域
 STR_0810_DESERT                                                 :砂漠
 
 ##id 0x1000
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}土地の傾きが違います
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}掘削はトンネルを破壊します
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}すでに海水位です
 STR_1004_TOO_HIGH                                               :{WHITE}高すぎます
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}適当な線路がありません
 STR_1007_ALREADY_BUILT                                          :{WHITE}...既に建造されました
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}先に線路を廃止しなければなりません
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}鉄道の建造
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}電鉄建造
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}モノレールの建造
@@ -1416,10 +1541,19 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}電車�
 STR_1021_RAILROAD_TRACK                                         :線路
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :電車庫
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...この土地は他の会社に所有されています
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :通常信号のある線路
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :前位信号のある線路
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :後位信号のある線路
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :統合信号のある線路
 
 
 
 ##id 0x1800
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}先に道路を廃止しなければなりません
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}道路工事中
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}道路の建設
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}道路の橋を選択
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}ここに道路が建設できません...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}ここから道路が廃止できません...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}車庫の配置
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}ここに車庫が建造できません...
@@ -1489,6 +1623,13 @@ STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}既に�
 STR_202C_FROM_TO                                                :{ORANGE}{STRING}を{STATION}から{STATION}へ{YELLOW}（{COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}、{DATE_SHORT}まで）
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}助成金の提案の有効期限が切られた：{}{}{STRING}を{STRING}から{STRING}への運送経路は今から助成金を受けない。
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}助成金の終止{}{}{STRING}の運送（{STATION}から{STATION}へ）は今後助成金を受けず
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}助成金の報告{}{}最初の{STRING}の運送（{STRING}から{STRING}へ）は一年間助成金を受ける！
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の運送（{STATION}から{STATION}へ）は一年間に５０％の助成金を受ける！
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の運送（{STATION}から{STATION}へ）は一年間に１００％の助成金を受ける！
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の運送（{STATION}から{STATION}へ）は一年間に２００％の助成金を受ける！
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の運送（{STATION}から{STATION}へ）は一年間に３００％の助成金を受ける！
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}町議会は町内に他の空港の建設を許可しません
 STR_2036_COTTAGES                                               :小屋
 STR_2037_HOUSES                                                 :家屋
 STR_2038_FLATS                                                  :アパート
@@ -1501,6 +1642,7 @@ STR_203E_OFFICES                                                :オフィスビ
 STR_203F_HOUSES                                                 :家屋
 STR_2040_CINEMA                                                 :映画館
 STR_2041_SHOPPING_MALL                                          :商店街
+STR_2042_DO_IT                                                  :{BLACK}続ける
 STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}この町の起こせる動作 - 詳しくは項目をクリックします
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}上記のリストの洗濯中の動作を起こします。
 STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}起こせる動作：
@@ -1510,12 +1652,16 @@ STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :大型広告キ
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :道路再建を出資
 STR_204A_BUILD_STATUE_OF_COMPANY                                :会社長の彫像を建造
 STR_204B_FUND_NEW_BUILDINGS                                     :市街地開発を出資
+STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :独占的運送権を購入
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :地方自治体を買収します
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} あなたの運送経路の利用率を増やすには、町内の小型広告キャンペーンを行います。{}  価値：{CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} あなたの運送経路の利用率を増やすには、町内の中型広告キャンペーンを行います。{}  価値：{CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} あなたの運送経路の利用率を増やすには、町内の大型広告キャンペーンを行います。{}  価値：{CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} 町内の道路の再建を出資します。最高 6 ヶ月間まで、道路交通に途絶を与えます。{}  価値：{CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}会社を推進するに彫像を建設{}価格：{CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}町内の商店街などの建設に資金をだす{}　価格：{CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} 名声を増殖します地方自治体を買収します。けれども、あぶないです！{}  値段： {CURRENCY}
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}で渋滞！{}{}{COMPANY}が出資した道路工事は６ヶ月間続く！
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} （{COMMA}）
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING}（工事中）
@@ -1530,6 +1676,7 @@ STR_INDUSTRY_FORMAT                                             :{TOWN}　{STRIN
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
+STR_LANDSCAPING                                                 :地形
 STR_2800_PLANT_TREES                                            :木を植える
 STR_2801_PLACE_SIGN                                             :標示を設置する
 STR_2802_TREES                                                  :{WHITE}木
@@ -1602,9 +1749,11 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}駅の�
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}駅のホームの長さを選択します
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}バス停の配置を選択します
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}荷役所の配置を選択します
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}主の画面を駅の場所に移動します
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}駅の評価を表示します
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}駅名を変更します
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}受け取る貨物のリストを表示します
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}駅名 - 主の画面を駅の場所に移動するに駅名をクリックします
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}空港のサイズ／種類を選択します
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
@@ -1614,6 +1763,9 @@ STR_3060_AIRPORT                                                :空港
 STR_3061_TRUCK_LOADING_AREA                                     :荷役所
 STR_3062_BUS_STATION                                            :バス停
 STR_3063_SHIP_DOCK                                              :波止場
+STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}提案の位置の範囲をハイライトします
+STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}提案の位置の範囲をハイライトしません
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}提案の位置の範囲をハイライト
 STR_3068_DOCK                                                   :{WHITE}波止場
 STR_3069_BUOY                                                   :ブイ
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...ブイがあります
@@ -1626,6 +1778,7 @@ STR_STAT_CLASS_WAYP                                             :通過点
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}造船所の配置
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...水上に建設しなければなりません
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}ここに造船所が建造できません...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}造船所の配置を選択します
 STR_3804_WATER                                                  :水
@@ -1654,6 +1807,7 @@ STR_4010_GENERATE_RANDOM_NEW_GAME                               :新規ランダ
 STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}ハイトマップを開く
 
 ##id 0x4800
+STR_4800_IN_THE_WAY                                             :{WHITE}{STRING}があります
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :炭坑
 STR_4803_POWER_STATION                                          :発電所
@@ -1694,10 +1848,14 @@ STR_4825_TOFFEE_QUARRY                                          :トフィー鉱
 STR_4826_SUGAR_MINE                                             :砂糖鉱山
 
 ############ range for requires	starts
+STR_4827_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}、{STRING}
+STR_4829_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}、{STRING}、{STRING}
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}先月の生産：
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK}（{COMMA}％運送済み）
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}主の画面を産業の場所に移動します
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}新しい{STRING}が{TOWN}町に工事中！
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}新しい{STRING}が{TOWN}町に植林中！
 STR_482F_COST                                                   :{BLACK}価値：{YELLOW}{CURRENCY}
@@ -1898,6 +2056,7 @@ STR_700A_COMPANY_NAME                                           :会社名
 STR_700B_PRESIDENT_S_NAME                                       :社長の名前
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}会社名が変更できません...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}社長の名前が変更できません...
+STR_700E_FINANCES                                               :{WHITE}{COMPANY}の経営状況　{BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}支払い／収益
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}建造
@@ -1927,17 +2086,25 @@ STR_MAX_LOAN                                                    :{WHITE}最高�
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}を借りる
 STR_702A_REPAY                                                  :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}を返済
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...最大ローンが{CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}より借入できません...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...未払いの負債がありません
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} が必要
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}ローンが返済できません...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}マネジャーの新しい顔を選択します
+STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}交通会社のカラースキームを変更
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}マネジャーの名前を変更します
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}会社名を変更します
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}カラースキームを選択
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}ローンを増大
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}ローンを返済
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}（マネジャー）
 STR_7038_INAUGURATED                                            :{GOLD}開業日付：{WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}車両数：
 STR_TRAINS                                                      :{WHITE}{COMMA} 電車
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA}つの道路車両
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} 飛行機
+STR_SHIPS                                                       :{WHITE}{COMMA}つの船舶
 STR_7042_NONE                                                   :{WHITE}何もありません
 STR_7043_FACE_SELECTION                                         :{WHITE}顔の選択
 STR_7044_MALE                                                   :{BLACK}男性
@@ -1950,11 +2117,27 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}女性�
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}ランダムな顔を作成します
 STR_704C_KEY                                                    :{BLACK}説明
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}グラフの説明を表示します
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}会社グラフの説明
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}この会社をグラフに表示するかどうかを切り替えます
+STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}運送済みの貨物
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}会社のパフォーマンス率（最大＝1000）
+STR_7052_COMPANY_VALUES                                         :{WHITE}会社の価値
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}交通会社成績表
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}交通会社が経営困難！
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}もうすぐ{COMPANY}のパフォーマンスが改良なしで売却および破産のリスク！
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}（マネジャー）
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}交通会社の合併！
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY}が{COMPANY}に売却、価格：{CURRENCY}！
+STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}破産！
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY}が閉鎖、債権者が資産を販売！
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}新しい交通会社が開業！
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY}が{TOWN}の付近に建設を開始します！
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}会社が買収できません...
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}貨物の運送価格
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}運送日
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}貨物種類のグラフを切り替えます
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :技術者
 STR_7067_TRAFFIC_MANAGER                                        :交通部長
@@ -1965,15 +2148,99 @@ STR_706B_CHIEF_EXECUTIVE                                        :最高責任者
 STR_706C_CHAIRMAN                                               :取締役会長
 STR_706D_PRESIDENT                                              :社長
 STR_706E_TYCOON                                                 :大物
+STR_706F_BUILD_HQ                                               :{BLACK}本部ビルを建設
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}本部ビルを建設／見る
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}会社の本部ビルを移動します（価格：会社の価値の１％）
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}交通会社本部ビルが建造できません...
 STR_7072_VIEW_HQ                                                :{BLACK}本部ビルを見る
+STR_RELOCATE_HQ                                                 :{BLACK}本部ビルを移動
+STR_COMPANY_PASSWORD                                            :{BLACK}パスワード
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}他のプレヤーがこの会社の経営に参加できないようにするには、パスワードで保護します。
+STR_SET_COMPANY_PASSWORD                                        :会社のパスワードを設定
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}世界中不景気！{}{}経済がスランプに陥る、アナリストの不安説！
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}スランプの終わり！{}{}経済が上昇気流、産業が好転！
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}大きい／小さいウィンドウサイズを切り替えます
+STR_7076_COMPANY_VALUE                                          :{GOLD}会社の価値：{WHITE}{CURRENCY64}
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}会社の２５％の株を購入
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}会社の２５％の株を販売
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}この会社の２５％の株を購入
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}この会社の２５％の株を販売
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}この会社の２５％の株が購入できません...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}この会社の２５％の株が販売できません...
 
+STR_LIVERY_DMU                                                  :気動車
+STR_LIVERY_EMU                                                  :電動車
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :客車（蒸気動）
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :客車（ディーゼル動）
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :客車（電動）
+STR_LIVERY_FREIGHT_WAGON                                        :貨車
 STR_LIVERY_BUS                                                  :バス
+STR_LIVERY_TRUCK                                                :トラック
+STR_LIVERY_PASSENGER_SHIP                                       :客船
+STR_LIVERY_FREIGHT_SHIP                                         :貨物船
+STR_LIVERY_HELICOPTER                                           :ヘリコプター
+STR_LIVERY_SMALL_PLANE                                          :小型飛行機
+STR_LIVERY_LARGE_PLANE                                          :大型飛行機
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}一般のカラースキームを表示します
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}列車のカラースキームを表示します
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}道路車両のカラースキームを表示します
+STR_LIVERY_SHIP_TIP                                             :{BLACK}船舶のカラースキームを表示します
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}飛行機のカラースキームを表示します
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}選択したカラースキームの主の色を選択します
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}選択したカラースキームの二次色を選択します
+STR_LIVERY_PANEL_TIP                                            :{BLACK}変更するにはカラースキームを選択します。Control+クリックすると多数のカラースキームが選択できます。カラースキームの使用を切り替えるにはチックボックスをクリックします。
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul社タンク機関車（蒸気動）
+STR_8001_MJS_250_DIESEL                                         :MJS社250系（ディーゼル動）
+STR_8002_PLODDYPHUT_CHOO_CHOO                                   :ポンポン社「シュッシュッ」
+STR_8003_POWERNAUT_CHOO_CHOO                                    :パワーノート社「シュッシュッ」
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :巨大ムーブ社「シュッシュッ」
+STR_8005_PLODDYPHUT_DIESEL                                      :ポンポン社ディーゼル
+STR_8006_POWERNAUT_DIESEL                                       :パワーノート社ディーゼル
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills社2-8-0（蒸気動）
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney社「記念祭」（蒸気動）
+STR_8009_GINZU_A4_STEAM                                         :Ginzu社A4系（蒸気動）
+STR_800A_SH_8P_STEAM                                            :SH社8P系（蒸気動）
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel社気動車（ディーゼル動）
+STR_800C_DASH_DIESEL                                            :「ダッシュ」（ディーゼル動）
+STR_800D_SH_HENDRY_25_DIESEL                                    :SH社25系「Hendry」（ディーゼル動）
+STR_800E_UU_37_DIESEL                                           :UU社37系（ディーゼル動）
+STR_800F_FLOSS_47_DIESEL                                        :Floss社47系（ディーゼル動）
+STR_8010_CS_4000_DIESEL                                         :CS社4000系（ディーゼル動）
+STR_8011_CS_2400_DIESEL                                         :CS社2400系（ディーゼル動）
+STR_8012_CENTENNIAL_DIESEL                                      :「百年祭」（ディーゼル動）
+STR_8013_KELLING_3100_DIESEL                                    :Kelling社3100系（ディーゼル動）
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner社「ターボ」（ディーゼル動）
+STR_8015_MJS_1000_DIESEL                                        :MJS社1000系（ディーゼル動）
+STR_8016_SH_125_DIESEL                                          :SH社125系（ディーゼル動）
+STR_8017_SH_30_ELECTRIC                                         :SH社30系（電動）
+STR_8018_SH_40_ELECTRIC                                         :SH社40系（電動）
+STR_8019_T_I_M_ELECTRIC                                         :「T.I.M.」（電動）
+STR_801A_ASIASTAR_ELECTRIC                                      :「アジアスター」（電動）
+STR_801B_PASSENGER_CAR                                          :客車
+STR_801C_MAIL_VAN                                               :郵便車
+STR_801D_COAL_CAR                                               :石炭貨車
+STR_801E_OIL_TANKER                                             :石油タンク車
+STR_801F_LIVESTOCK_VAN                                          :家畜貨車
+STR_8020_GOODS_VAN                                              :商品貨車
+STR_8021_GRAIN_HOPPER                                           :穀物ホッパー
+STR_8022_WOOD_TRUCK                                             :木材貨車
+STR_8023_IRON_ORE_HOPPER                                        :鉄鉱ホッパー
+STR_8024_STEEL_TRUCK                                            :鋼鉄貨車
+STR_8025_ARMORED_VAN                                            :装甲車
+STR_8026_FOOD_VAN                                               :食品貨車
+STR_8027_PAPER_TRUCK                                            :紙貨車
+STR_8028_COPPER_ORE_HOPPER                                      :銅鉱ホッパー
+STR_8029_WATER_TANKER                                           :水タンク車
+STR_802A_FRUIT_TRUCK                                            :果物貨車
+STR_802B_RUBBER_TRUCK                                           :ゴム貨車
+STR_802C_SUGAR_TRUCK                                            :砂糖貨車
+STR_802D_COTTON_CANDY_HOPPER                                    :綿菓子ホッパー
+STR_802E_TOFFEE_HOPPER                                          :トフィーホッパー
+STR_802F_BUBBLE_VAN                                             :泡貨車
+STR_8030_COLA_TANKER                                            :コーラタンク車
 STR_8031_CANDY_VAN                                              :菓子トラック
 STR_8032_TOY_VAN                                                :玩具トラック
 STR_8033_BATTERY_TRUCK                                          :電池トラック
@@ -1981,6 +2248,7 @@ STR_8034_FIZZY_DRINK_TRUCK                                      :炭酸飲料ト
 STR_8035_PLASTIC_TRUCK                                          :プラスチックトラック
 STR_8036_X2001_ELECTRIC                                         :「X2001」（電動）
 STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :「ミレニアム Z1」（電動）
+STR_8038_WIZZOWOW_Z99                                           :ヒューピュー社Z99系
 STR_8039_PASSENGER_CAR                                          :客車
 STR_803A_MAIL_VAN                                               :郵便車
 STR_803B_COAL_CAR                                               :石炭貨車
@@ -2012,6 +2280,7 @@ STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :浮一系「リ
 STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :浮二系「シクロプス」（電動）
 STR_8056_LEV3_PEGASUS_ELECTRIC                                  :浮三系「ペガサス」（電動）
 STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :浮四系「キメラ」（電動）
+STR_8058_WIZZOWOW_ROCKETEER                                     :ヒューピュー社「ロケット」
 STR_8059_PASSENGER_CAR                                          :客車
 STR_805A_MAIL_VAN                                               :郵便車
 STR_805B_COAL_CAR                                               :石炭貨車
@@ -2270,6 +2539,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}新規�
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}この指令が削除できません...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}この指令が変更できません...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}この車輌が移動できません...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}ダブルヘッドの場合、後部の機関車は常に前部の機関車について行きます
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}車両が販売できません...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}電車庫への経路が見つけられません
@@ -2314,6 +2584,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量�
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の利益：{LTBLUE}{CURRENCY}（去年：{CURRENCY}）
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最新補修後の故障：{LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}停止中
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}赤信号を無視して列車を進行させることができません...
 STR_8863_CRASHED                                                :{RED}事故！
 
 STR_8865_NAME_TRAIN                                             :{WHITE}列車を名付ける
@@ -2344,6 +2615,16 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}年齢�
 STR_900E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の収益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障：{LTBLUE}{COMMA}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
+STR_9012_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...車庫内に停止しなければなりません
+STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}道路車両が販売できません...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}道路車両が開始／停止できません...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}道路車両 {COMMA} は車庫内で待機しています
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN}車庫へ行く
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN}車庫へ行く、{VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN}車庫で修理
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN}車庫で修理、{VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}車両が車庫へ回送できません...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}付近の車庫が見つかりません
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}道路車両 - クリックして情報を表示します
@@ -2355,61 +2636,280 @@ STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}車両�
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}車両の情報を表示します
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}車両 - クリックして情報を表示します
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}新規道路車両を購入
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}販売するには道路車両をここへドラッグします
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}道路車両のリスト - 情報を見るには車両をクリックします
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}選択した道路車両を購入します
+STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}新しい道路車両が新登場！
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}価格：{CURRENCY}{}最大速度：{VELOCITY}{}運転費：一年間{CURRENCY}{}容量：{CARGO}
 
+STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}道路車両を名付ける
+STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}道路車両が名付けません...
+STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}道路車両を名付ける
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀！{}{STATION}で初めてのバスが到着！
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀！{}{STATION}で初めてのトラックが到着！
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}交通事故！{}列車に衝突、運転者が死亡
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}交通事故！{}列車に衝突、{COMMA}人が死亡
+STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}車両が逆転させられません...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}多数の部分を含む車両が逆転できません
+STR_9034_RENAME                                                 :{BLACK}名称変更
+STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}道路車両の名称を変更
+STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}道路車両の名称を変更
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}道路車両の名称が変更できません...
+STR_9038_GO_TO_ROADVEH_DEPOT                                    :{TOWN}車庫へ行く
+STR_SERVICE_AT_ROADVEH_DEPOT                                    :{TOWN}車庫で修理
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}他の貨物の種類を運送するに道路車両を再装備します
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}道路車両を再装備
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}選択した貨物種類を運送するに道路車両を再装備します
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}道路車両が再装備できません...
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}運送する貨物種類を選択します
 
 ##id 0x9800
+STR_9800_DOCK_CONSTRUCTION                                      :埠頭の建設
+STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}埠頭の建設
+STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}ここに埠頭が建設できません...
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}造船所
+STR_9804_NEW_SHIPS                                              :{BLACK}新規船舶
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA}つの船舶
+STR_9808_NEW_SHIPS                                              :{WHITE}新規船舶
+STR_9809_BUILD_SHIP                                             :{BLACK}船舶を購入
+STR_CLONE_SHIP                                                  :{BLACK}船舶をクローン
+STR_CLONE_SHIP_INFO                                             :{BLACK}船舶を複製します。Control+クリックすると、指令もコピーします
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}船舶を複製します。このボタンをクリックして、造船所内および造船所外の船舶をクリックします。Control+クリックすると、指令もコピーします
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}船舶は造船所内で停止しなければなりません
+STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}船舶が販売できません...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}船舶が購入できません...
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}船舶があります
 STR_980F                                                        :{WHITE}{VEHICLE}
+STR_9811_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
+STR_9813_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年の損益：{CURRENCY}）
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障：{LTBLUE}{COMMA}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
+STR_9817_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
+STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}船舶が開始／停止できません...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}船舶が造船所へ回送できません...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}付近の造船所が見つかりません
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}{TOWN}造船所へ行く
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{TOWN}造船所へ行く、{VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN}造船所で修理
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN}造船所で修理、{VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}船舶 {COMMA} は造船所内で待機しています
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}埠頭を建設します
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}造船所を建設します（船舶の購入、修理などのため）
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}新規船舶を購入
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}販売するには船舶をここへドラッグします
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}新規船舶を購入（造船所が必要）
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}選択した船舶を購入
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}船舶の現在の動作 - 開始／停止するにはここへクリックします
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}船舶の指令を表示
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}船舶を造船所へ回送します。Contorl+クリックすると修理のみをします
+STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}船舶の情報を表示
+STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}新しい船舶が新登場！
 
+STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}船舶の名称を変更
+STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}船舶の名称が変更できません...
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}他の貨物種類を運送するには貨物船を再装備します
+STR_983B_REFIT                                                  :{WHITE}{VEHICLE}（再装備）
+STR_983C_REFIT_SHIP                                             :{BLACK}船舶を再装備
+STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}運送する貨物種類を選択します
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}選択した貨物種類を運送するに船舶を再装備します
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}運送する貨物種類を選択：
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}再装備後の容量：{GOLD}{CARGO}{}{BLACK}再装備の価格：{GOLD}{CURRENCY}
+STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}船舶が再装備できません...
 SERVICE_AT_SHIP_DEPOT                                           :{TOWN}の造船所でサービスします
 
 ##id 0xA000
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}飛行機を購入
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}飛行機が購入できません...
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA}台の飛行機
 STR_A00A                                                        :{WHITE}{VEHICLE}
+STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE}（指令）
+STR_A00C_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
+STR_A00E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年の損益：{CURRENCY}）
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障：{LTBLUE}{COMMA}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
+STR_A01A_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}飛行機を格納庫内で停止しなければなりません
+STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}飛行機が販売できません...
+STR_A01D_AIRPORT_CONSTRUCTION                                   :空港の建設
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}空港を建設
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}飛行機 - 情報を見るには飛行機をクリックします
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}新規飛行機を購入（格納庫が必要）
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}飛行機 - 情報を見るには飛行機をクリックします
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}新規飛行機を購入
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}販売するには飛行機をここへドラッグします
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}飛行機のリスト - 情報を見るには飛行機をクリックします
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}選択した飛行機を購入
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}飛行機の現在の動作 - 開始／停止するにはここへクリックします
+STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}飛行機の指令を表示
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}飛行機を格納庫へ回送します。Control+クリックすると修理のみします
+STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}飛行機の情報を表示
+STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}新しい飛行機が新登場！
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}価格：{CURRENCY}　最大速度：{VELOCITY}{}容量：{COMMA}人の乗客、{COMMA}包の郵便袋{}運転費：一年間{CURRENCY}
 
+STR_A030_NAME_AIRCRAFT                                          :{WHITE}飛行機を名付ける
+STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}飛行機が名付けられません...
+STR_A032_NAME_AIRCRAFT                                          :{BLACK}飛行機を名付ける
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民が祝賀！{}{STATION}で初めての飛行機が到着！
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}墜落事故！{}{COMMA}人が{STATION}で死亡
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}墜落事故！{}燃料切れ、{COMMA}人が死亡
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
+STR_A037_RENAME                                                 :{BLACK}名称を変更
+STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}飛行機の名称を変更
+STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}飛行機の名称を変更
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}飛行機の名称が変更できません...
 SERVICE_AT_AIRPORT_HANGAR                                       : {STATION}のハンガーでサービスします
 
 ##id 0xB000
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}交通事故！UFO と衝突、車両が壊れた！
+STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}{TOWN}付近に石油精製所の爆発！
+STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}{TOWN}付近にUFOが着陸！
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}炭鉱の地盤沈下によって{TOWN}が壊れた！
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}洪水！{}浸水後に{COMMA}人が死亡
 
+STR_BUILD_DATE                                                  :{BLACK}購入年：{LTBLUE}{DATE_LONG}
 
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}詳細
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}（{CURRCOMPACT}／{CURRCOMPACT}）
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}（{COMMA}／{COMMA}）
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}％
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}車両数：
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}駅数：
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}最小収益：
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}最小所得：
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}最大所得：
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}運送済み：
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}貨物：
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}資金：
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}ローン：
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}合計：
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}車両数：道路車両、列車、船舶や飛行機を含みます
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}駅数：駅のすべての部分（駅、バス停、空港）を一つとして数えます
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF 設定
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 設定
+STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}変更を適用
+STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}パラメータを設定
+STR_NEWGRF_TIP                                                  :{BLACK}インストールした NewGRF セットのリストです。設定を変更するにはセットをクリックします
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}インストールした NewGRF がありません。NewGRF ファイルのインストール方法を見るには、説明書をご参照ください。
+STR_NEWGRF_FILENAME                                             :{BLACK}ファイル名：{SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID：{SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum：{SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}実行中のゲームに変更を適用して、クラッシュのリスクがあります。{}続けてもよろしいですか？
 
+STR_NEWGRF_ADD                                                  :{BLACK}追加
+STR_NEWGRF_ADD_TIP                                              :{BLACK}NewGRF ファイルをリストに追加します
+STR_NEWGRF_REMOVE                                               :{BLACK}削除
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}NewGRF ファイルをリストから削除します
+STR_NEWGRF_FILE_TIP                                             :{BLACK}インストールした NewGRF ファイルのリストです。設定を変更するにはファイルをクリックします。
+STR_NEWGRF_PARAMETER                                            :{BLACK}設定：{SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}NewGRF 設定を入力
+STR_NEWGRF_NO_INFO                                              :{BLACK}情報はありません
 
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}使用可能 NewGRF ファイル
+STR_NEWGRF_ADD_FILE                                             :{BLACK}リストに追加
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}選択した NewGRF ファイルをリストに追加します
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}ファイルを更新
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}使用可能な NewGRF ファイルのリストを更新
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}ファイルが追加できません：重複の GRF ID
 
+STR_NEWGRF_NOT_FOUND                                            :{RED}一致しているファイルが見つかりません
+STR_NEWGRF_DISABLED                                             :{RED}切
 
+STR_CURRENCY_WINDOW                                             :{WHITE}カスタム通貨
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}為替レート：{ORANGE}{CURRENCY} ＝ £ {COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分離記号：
+STR_CURRENCY_PREFIX                                             :{LTBLUE}接頭文字：
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}接尾文字：
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}ユーロに切替え：{ORANGE}{NUM}年
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}ユーロに切替え：{ORANGE}しない
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}プレビュー：{ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}カスタム通貨の設定を変更
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
+STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA}つの列車
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA}つの道路車両
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} 飛行機
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA}つの船舶
 
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}この駅が指令リストに入っているすべての列車を表示します
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}このバス停／荷役所が指令リストに入っているすべての道路車両を表示します
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}この空港が指令リストに入っているすべての飛行機を表示します
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}この埠頭が指令リストに入っているすべての船舶を表示します
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}シェアード ・ルート{COMMA} 車
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}このスケジュールの車全部を見せます
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}車庫／格納庫／造船所内のすべての車両を販売します。続けてもよろしいですか？
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}電車庫内のすべての列車を販売します
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}車庫内のすべての道路車両を販売します
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}造船所内のすべての船舶を販売します
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}格納庫内のすべての飛行機を販売します
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}選択中の電車庫が指令リストに入っているすべての列車のリストを表示します
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}選択中の車庫が指令リストに入っているすべての道路車両のリストを表示します
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}選択中の造船所が指令リストに入っているすべての船舶のリストを表示します
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}選択中の格納庫が指令リストに入っているすべての飛行機のリストを表示します
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}電車庫内のすべての列車を自動的に交換します
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}車庫内のすべての道路車両を自動的に交換します
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}造船所内のすべての船舶を自動的に交換します
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}格納庫内のすべての飛行機を自動的に交換します
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} 電車
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} 車
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} シップ
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} 飛行機
 
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}を交換
+STR_REPLACE_VEHICLES_START                                      :{BLACK}車両の交換を開始
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}車両の交換を停止
+STR_NOT_REPLACING                                               :{BLACK}交換していない
+STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}選択した車両がありません
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}交換する機関車の種類を選択
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}左に選択した機関車の種類の代わりに使用する機関車の種類を選択
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}左に選択した機関車の種類の交換を停止するにはクリックします
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}左に選択した機関車の種類を右に選択した機関車の種類を開始するにはクリックします
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}交換する機関車の線路種類を選択します
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}選択した場合は左に選択した機関車を交換する機関車を表示します
+STR_REPLACE_HELP                                                :{BLACK}左に選択した鉄道車両の種類が電車庫に入ったときに右に選択した他の種類に交換することができます。
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}列車の縮小：{ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}自動交換によって列車の長さが長くなる場合は、列車の長さを保守するには客車／貨車を取り除くことができます。列車の先頭から開始します。
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}交換：{ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}実験的機能{}機関車／貨車のウィンドウに切り替えます。{}貨車交換は新貨車が旧貨車と同様の貨物種類に再装備できるときのみに行います。自動交換中に各貨車を検査します。
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}機関車が購入できません
 
+STR_ENGINES                                                     :機関車
 STR_WAGONS                                                      :車
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}電車庫内のすべての列車を停車するにはクリックします
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}車庫内のすべての道路車両を停車するにはクリックします
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}造船所内のすべての船舶を停止するにはクリックします
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}格納庫内のすべての飛行機を停止するにはクリックします
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}電車庫内のすべての列車を開始するにはクリックします
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}車庫内のすべての道路車両を開始するにはクリックします
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}造船所内のすべての船舶を開始するにはクリックします
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}格納庫内のすべての飛行機を開始するにはクリックします
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}リストに入っているすべての車両を停止するにはクリックします
 STR_MASS_START_LIST_TIP                                         :{BLACK}リストに入っているすべての車両を開始するにはクリックします
@@ -2452,11 +2952,13 @@ STR_RANDOM                                                      :{BLACK}ラン�
 STR_RANDOM_HELP                                                 :{BLACK}地形作成のランダムシードを変更します
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}世界発電
 STR_RANDOM_SEED                                                 :{BLACK}ランダムシード：
+STR_RANDOM_SEED_HELP                                            :{BLACK}ランダムシードを入力するにはクリックします
 STR_LAND_GENERATOR                                              :{BLACK}地形作成：
 STR_TREE_PLACER                                                 :{BLACK}木アルゴリズム：
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}ハイトマップの回転：
 STR_TERRAIN_TYPE                                                :{BLACK}地形種類：
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK} 海水位：
+STR_SMOOTHNESS                                                  :{BLACK}スムーズ度：
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}雪線の位置：
 STR_DATE                                                        :{BLACK}日付：
 STR_NUMBER_OF_TOWNS                                             :{BLACK}市町村数：
@@ -2466,6 +2968,7 @@ STR_SNOW_LINE_UP                                                :{BLACK}雪線�
 STR_SNOW_LINE_DOWN                                              :{BLACK}雪線を下げる
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}雪線の位置を変更
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}始める年を変えます
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}リサイズ警告
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}ソース地図をリサイズしすぎることはお勧めしません。地形作成を続けてもよろしいですか？
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}ハイトマップ名：
@@ -2489,6 +2992,9 @@ STR_SE_FLAT_WORLD_TIP                                           :{BLACK}平た�
 STR_SE_RANDOM_LAND                                              :{WHITE}ランダムな地形
 STR_SE_NEW_WORLD                                                :{BLACK}新規シナリオを作成
 STR_SE_CAPTION                                                  :{WHITE}シナリオの種類
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}平たい土地の高さを上げる
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}平たい土地の高さを変更
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}平たい土地の高さ：
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 

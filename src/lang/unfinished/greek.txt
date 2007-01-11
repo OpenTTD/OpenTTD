@@ -830,12 +830,22 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Αριστερ�
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Κέντρο
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Δεξιά
 
+STR_CONFIG_PATCHES_AI                                           :{BLACK}Ανταγωνιστές
+
+STR_CONFIG_PATCHES_INT32                                        :{NUM}
+STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 
+STR_TEMPERATE_LANDSCAPE                                         :Συγκρατημένο τοπίο
+STR_SUB_ARCTIC_LANDSCAPE                                        :Πολικό τοπίο
+STR_SUB_TROPICAL_LANDSCAPE                                      :Υποτροπικό τοπίο
+STR_TOYLAND_LANDSCAPE                                           :Παιχνιδιάστικο τοπίο
 
+STR_CHEATS                                                      :{WHITE}Κλεψιές
 
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Καθ' οδόν {WAYPOINT}
 
-
+STR_GO_TO_WAYPOINT                                              :Πήγαινε δια μέσου {WAYPOINT}
 
 
 

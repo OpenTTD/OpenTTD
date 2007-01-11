@@ -1782,10 +1782,27 @@ STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Pokvaren
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Troškovi uporabe: {LTBLUE}{CURRENCY}/god
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zarada ove godine: {LTBLUE}{CURRENCY}  (prošle godine: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pouzdanost: {LTBLUE}{COMMA}%  {BLACK}Kvarova od zadnjeg servisa: {LTBLUE}{COMMA}
+STR_8861_STOPPED                                                :{RED}Zaustavljen
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Ne mogu natjerati vlak da ignorira signale dok je opasnost...
+STR_8863_CRASHED                                                :{RED}Slupan!
 
+STR_8865_NAME_TRAIN                                             :{WHITE}Imenuj vlak
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Ne mogu imenovati vlak...
+STR_8867_NAME_TRAIN                                             :{BLACK}Imenuj vlak
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vlak se sudario!{}{COMMA} poginulih u eksploziji nakon sudara
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ne mogu promijeniti smjer vlaka...
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenuj vrstu vlaka
+STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 
 ##id 0x9000
+STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestovno vozilo na putu
+STR_9002                                                        :{WHITE}{VEHICLE}
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Spremište cestovnih vozila
+STR_9004_NEW_VEHICLES                                           :{BLACK}Nova vozila
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nova cestovna vozila
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Izgradi vozilo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ne mogu izgraditi cestovno vozilo...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detalji)
@@ -1889,9 +1906,44 @@ STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Trenutna
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Prikaži naredbe broda
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centriraj glavni pogled na lokaciju broda
 
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi brod stigao do {STATION}!
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Smjesti plutaču koja može biti korištena kao pokazatelj puta
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Ne mogu staviti plutaču ovdje...
+STR_9836_RENAME                                                 :{BLACK}Preimenuj
+STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Preimenuj vrstu broda
+STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Preimenuj vrstu broda
+STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Ne mogu preimenovati vrstu broda...
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Prenamijeni teretni brod da nosi neku drugu vrstu tereta
+STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Prenamijeni)
+STR_983C_REFIT_SHIP                                             :{BLACK}Prenamijeni brod
+STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Ne mogu prenamijeniti brod...
+STR_9842_REFITTABLE                                             :(prenamjenjiv)
 SERVICE_AT_SHIP_DEPOT                                           :Servis u brodskom spremištu grada {TOWN}
 
 ##id 0xA000
+STR_A000_AIRPORTS                                               :{WHITE}Zračne luke
+STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Ne možeš graditi zračnu luku ovdje...
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}Novi zrakoplov
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}Novi zrakoplov
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Izgradi zrakoplov
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Ne mogu izgraditi zrakoplov...
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} zrakoplov
+STR_A00A                                                        :{WHITE}{VEHICLE}
+STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Naredbe)
+STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detalji)
+STR_A00E_MAX_SPEED                                              :{BLACK}Maks brzina: {LTBLUE}{VELOCITY}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zarada ove godine: {LTBLUE}{CURRENCY}  (prošle godine: {CURRENCY})
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Zrakoplov je u letu
+STR_A019_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Zrakoplov mora biti zaustavljen u hangaru
+STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Ne možeš prodati zrakoplov...
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}Izgradi zračnu luku
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Zrakoplov - klikni na zrakoplov za informacije
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Izgradi novi zrakoplov
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Povuci zrakoplov ovdje kako bi ga prodao
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centriraj glavni pogled na lokaciju hangara
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Popis zrakoplova - klini na zrakoplov za informacije
 
 SERVICE_AT_AIRPORT_HANGAR                                       :Servisiranje u hangaru {STATION}
 
@@ -1905,18 +1957,59 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+STR_NEWGRF_DISABLED                                             :{RED}Onemogućeno
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Proizvoljna valuta
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni tečaj: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Razdjelnik:
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks:
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks:
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Prebaci se na euro: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Prebaci se na euro: {ORANGE}nikad
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prikaz: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Promijeni parametar proizvoljne valute
 
+STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
+STR_LORRY                                                       :{BLACK}{LORRY}
+STR_PLANE                                                       :{BLACK}{PLANE}
+STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Zrakoplov
 
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Prikaži sve vlakove koji imaju ovu stanicu u svom rasporedu
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Prikaži sva cestovna vozila koja imaju ovu stanicu u svom rasporedu
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Prikaži sve zrakoplove koji imaju ovu stanicu u svom rasporedu
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Prikaži sve brodove koji imaju ovu stanicu u svom rasporedu
 
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Prikaži sva vozila koja dijele ovaj raspored.
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Upravo se spremaš prodati sva vozila u spremištu. Jesi li siguran?
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Prodaj sve vlakove u spremištu
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Prodaj sva cestovna vozila u spremištu
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Prodaj sve brodove u spremištu
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Prodaj sve zrakoplove u hangaru
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Daje popis svih vlakova u trenutnom spremištu, zajedno s njihovim naredbama
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Daje popis svih cestovnih vozila u trenutnom spremištu, zajedno s njihovim naredbama
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Daje popis svih brodova u trenutnom spremištu, zajedno s njihovim naredbama
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Daje popis svih zrakoplova u trenutnom spremištu, zajedno s njihovim naredbama
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Automatski zamijeni sve vlakove u spremištu
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Automatski zamijeni sva cestovna vozikla u spremištu
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Automatski zamijeni sve brodove u spremištu
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Automatski zamijeni sve zrakoplove u spremištu
 
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Zrakoplov
 
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zamijeni {STRING}
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Počni zamijenjivati vozila
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Prestani zamijenjivati vozila
+STR_NOT_REPLACING                                               :{BLACK}Ne zamijenjujem
+STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Niti jedno vozilo nije odabrano
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izaberi vrstu motora koju želiš zamijeniti
 
 
 
