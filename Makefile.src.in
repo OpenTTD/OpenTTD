@@ -60,7 +60,7 @@ else
 endif
 
 # Our default target
-all: $(TTD)
+all: $(BIN_DIR)/$(TTD)
 
 # This are 2 rules that are pointing back to STRGEN stuff.
 #  There is not really a need to have them here, but in case
@@ -219,13 +219,15 @@ $(OBJS_RC): %.o: $(SRC_DIR)/%.rc $(FILE_DEP)
 	$(E) '$(STAGE) Compiling resource $(<:$(SRC_DIR)/%.rc=%.rc)'
 	$(Q)$(WINDRES) -o $@ -I $(MEDIA_DIR) $<
 
+$(BIN_DIR)/$(TTD): $(TTD)
+	$(Q)cp $< $@
+
 $(TTD): rev.o $(OBJS) $(CONFIG_CACHE_LINKER)
 	$(E) '$(STAGE) Linking $@'
 	$(Q)$(CXX_HOST) $(LDFLAGS) rev.o $(OBJS) $(LIBS) -o $@
 ifdef STRIP
 	$(Q)$(STRIP) $@
 endif
-	$(Q)cp $@ $(BIN_DIR)/
 
 # The targets to compile the endian-code
 
