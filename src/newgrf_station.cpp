@@ -45,13 +45,13 @@ void ResetStationClasses(void)
 	station_classes[0].id = 'DFLT';
 	station_classes[0].name = STR_STAT_CLASS_DFLT;
 	station_classes[0].stations = 1;
-	MallocT(&station_classes[0].spec, 1);
+	station_classes[0].spec = MallocT<StationSpec*>(1);
 	station_classes[0].spec[0] = NULL;
 
 	station_classes[1].id = 'WAYP';
 	station_classes[1].name = STR_STAT_CLASS_WAYP;
 	station_classes[1].stations = 1;
-	MallocT(&station_classes[1].spec, 1);
+	station_classes[1].spec = MallocT<StationSpec*>(1);
 	station_classes[1].spec[0] = NULL;
 }
 
@@ -148,7 +148,7 @@ void SetCustomStationSpec(StationSpec *statspec)
 	station_class = &station_classes[statspec->sclass];
 
 	i = station_class->stations++;
-	ReallocT(&station_class->spec, station_class->stations);
+	station_class->spec = ReallocT(station_class->spec, station_class->stations);
 
 	station_class->spec[i] = statspec;
 	statspec->allocated = true;
@@ -607,7 +607,7 @@ int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
 	if (exec) {
 		if (i >= st->num_specs) {
 			st->num_specs = i + 1;
-			ReallocT(&st->speclist, st->num_specs);
+			st->speclist = ReallocT(st->speclist, st->num_specs);
 
 			if (st->num_specs == 2) {
 				/* Initial allocation */
@@ -653,7 +653,7 @@ void DeallocateSpecFromStation(Station* st, byte specindex)
 		for (; st->speclist[st->num_specs - 1].grfid == 0 && st->num_specs > 1; st->num_specs--);
 
 		if (st->num_specs > 1) {
-			ReallocT(&st->speclist, st->num_specs);
+			st->speclist = ReallocT(st->speclist, st->num_specs);
 		} else {
 			free(st->speclist);
 			st->num_specs = 0;

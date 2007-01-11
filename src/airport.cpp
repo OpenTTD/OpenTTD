@@ -50,7 +50,7 @@ static void AirportPrintOut(const AirportFTAClass *apc, bool full_report);
 void InitializeAirports(void)
 {
 	// country airport
-	MallocT(&CountryAirport, 1);
+	CountryAirport = MallocT<AirportFTAClass>(1);
 
 	AirportFTAClass_Constructor(
 		CountryAirport,
@@ -65,7 +65,7 @@ void InitializeAirports(void)
 	);
 
 	// city airport
-	MallocT(&CityAirport, 1);
+	CityAirport = MallocT<AirportFTAClass>(1);
 
 	AirportFTAClass_Constructor(
 		CityAirport,
@@ -80,7 +80,7 @@ void InitializeAirports(void)
 	);
 
 	// metropolitan airport
-	MallocT(&MetropolitanAirport, 1);
+	MetropolitanAirport = MallocT<AirportFTAClass>(1);
 
 	AirportFTAClass_Constructor(
 		MetropolitanAirport,
@@ -95,7 +95,7 @@ void InitializeAirports(void)
 	);
 
 	// international airport
-	MallocT(&InternationalAirport, 1);
+	InternationalAirport = MallocT<AirportFTAClass>(1);
 
 	AirportFTAClass_Constructor(
 		InternationalAirport,
@@ -110,7 +110,7 @@ void InitializeAirports(void)
 	);
 
 	// intercontintental airport
-	MallocT(&IntercontinentalAirport, 1);
+	IntercontinentalAirport = MallocT<AirportFTAClass>(1);
 
 	AirportFTAClass_Constructor(
 		IntercontinentalAirport,
@@ -125,7 +125,7 @@ void InitializeAirports(void)
 	);
 
 	// heliport, oilrig
-	MallocT(&Heliport, 1);
+	Heliport = MallocT<AirportFTAClass>(1);
 
 	AirportFTAClass_Constructor(
 		Heliport,
@@ -142,7 +142,7 @@ void InitializeAirports(void)
 	Oilrig = Heliport;  // exactly the same structure for heliport/oilrig, so share state machine
 
 	// commuter airport
-	MallocT(&CommuterAirport, 1);
+	CommuterAirport = MallocT<AirportFTAClass>(1);
 
 	AirportFTAClass_Constructor(
 		CommuterAirport,
@@ -157,7 +157,7 @@ void InitializeAirports(void)
 	);
 
 	// helidepot airport
-	MallocT(&HeliDepot, 1);
+	HeliDepot = MallocT<AirportFTAClass>(1);
 
 	AirportFTAClass_Constructor(
 		HeliDepot,
@@ -172,7 +172,7 @@ void InitializeAirports(void)
 	);
 
 	// helistation airport
-	MallocT(&HeliStation, 1);
+	HeliStation = MallocT<AirportFTAClass>(1);
 
 	AirportFTAClass_Constructor(
 		HeliStation,
@@ -324,8 +324,7 @@ static byte AirportGetTerminalCount(const byte *terminals, byte *groups)
 static void AirportBuildAutomata(AirportFTAClass *apc, const AirportFTAbuildup *apFA)
 {
 	AirportFTA *current;
-	AirportFTA *FAutomata;
-	MallocT(&FAutomata, apc->nofelements);
+	AirportFTA *FAutomata = MallocT<AirportFTA>(apc->nofelements);
 	uint16 internalcounter = 0;
 	uint16 i;
 
@@ -339,8 +338,7 @@ static void AirportBuildAutomata(AirportFTAClass *apc, const AirportFTAbuildup *
 
 		// outgoing nodes from the same position, create linked list
 		while (current->position == apFA[internalcounter + 1].position) {
-			AirportFTA *newNode;
-			MallocT(&newNode, 1);
+			AirportFTA *newNode = MallocT<AirportFTA>(1);
 
 			newNode->position      = apFA[internalcounter + 1].position;
 			newNode->heading       = apFA[internalcounter + 1].heading;

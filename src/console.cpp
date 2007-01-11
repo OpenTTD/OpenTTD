@@ -224,7 +224,7 @@ void IConsoleInit(void)
 	memset(_iconsole_history, 0, sizeof(_iconsole_history));
 	memset(_iconsole_buffer, 0, sizeof(_iconsole_buffer));
 	memset(_iconsole_cbuffer, 0, sizeof(_iconsole_cbuffer));
-	CallocT(&_iconsole_cmdline.buf, ICON_CMDLN_SIZE); // create buffer and zero it
+	_iconsole_cmdline.buf = CallocT<char>(ICON_CMDLN_SIZE); // create buffer and zero it
 	_iconsole_cmdline.maxlength = ICON_CMDLN_SIZE;
 
 	IConsolePrintF(13, "OpenTTD Game Console Revision 7 - %s", _openttd_revision);
@@ -613,8 +613,7 @@ void IConsoleVarHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *
 void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc)
 {
 	char *new_cmd = strdup(name);
-	IConsoleCmd *item_new;
-	MallocT(&item_new, 1);
+	IConsoleCmd *item_new = MallocT<IConsoleCmd>(1);
 
 	item_new->next = NULL;
 	item_new->proc = proc;
@@ -651,8 +650,7 @@ void IConsoleAliasRegister(const char *name, const char *cmd)
 {
 	char *new_alias = strdup(name);
 	char *cmd_aliased = strdup(cmd);
-	IConsoleAlias *item_new;
-	MallocT(&item_new, 1);
+	IConsoleAlias *item_new = MallocT<IConsoleAlias>(1);
 
 	item_new->next = NULL;
 	item_new->cmdline = cmd_aliased;
@@ -787,8 +785,7 @@ void IConsoleVarStringRegister(const char *name, void *addr, uint32 size, const 
 void IConsoleVarRegister(const char *name, void *addr, IConsoleVarTypes type, const char *help)
 {
 	char *new_cmd = strdup(name);
-	IConsoleVar *item_new;
-	MallocT(&item_new, 1);
+	IConsoleVar *item_new = MallocT<IConsoleVar>(1);
 
 	item_new->help = (help != NULL) ? strdup(help) : NULL;
 

@@ -167,7 +167,7 @@ static void BuildNetworkGameList(network_ql_d *nqld)
 
 	/* Create temporary array of games to use for listing */
 	free(nqld->sort_list);
-	MallocT(&nqld->sort_list, n);
+	nqld->sort_list = MallocT<NetworkGameList*>(n);
 	if (nqld->sort_list == NULL) error("Could not allocate memory for the network-game-sorting-list");
 	nqld->l.list_length = n;
 

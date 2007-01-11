@@ -252,12 +252,12 @@ void NetworkRecv_NetworkGameInfo(NetworkClientState *cs, Packet *p, NetworkGameI
 
 	switch (info->game_info_version) {
 		case 4: {
-			GRFConfig *c, **dst = &info->grfconfig;
+			GRFConfig **dst = &info->grfconfig;
 			uint i;
 			uint num_grfs = NetworkRecv_uint8(cs, p);
 
 			for (i = 0; i < num_grfs; i++) {
-				CallocT(&c, 1);
+				GRFConfig *c = CallocT<GRFConfig>(1);
 				NetworkRecv_GRFIdentifier(cs, p, c);
 				HandleIncomingNetworkGameInfoGRFConfig(c);
 

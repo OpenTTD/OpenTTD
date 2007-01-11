@@ -50,11 +50,11 @@ bool AddBlockToPool(OldMemoryPool *pool)
 	DEBUG(misc, 4, "[Pool] (%s) increasing size of pool to %d items (%d bytes)", pool->name, pool->total_items, pool->total_items * pool->item_size);
 
 	/* Increase the poolsize */
-	ReallocT(&pool->blocks, pool->current_blocks + 1);
+	pool->blocks = ReallocT(pool->blocks, pool->current_blocks + 1);
 	if (pool->blocks == NULL) error("Pool: (%s) could not allocate memory for blocks", pool->name);
 
 	/* Allocate memory to the new block item */
-	MallocT(&pool->blocks[pool->current_blocks], pool->item_size * (1 << pool->block_size_bits));
+	pool->blocks[pool->current_blocks] = MallocT<byte>(pool->item_size * (1 << pool->block_size_bits));
 	if (pool->blocks[pool->current_blocks] == NULL)
 		error("Pool: (%s) could not allocate memory for blocks", pool->name);
 

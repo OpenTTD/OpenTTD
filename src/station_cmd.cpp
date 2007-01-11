@@ -3065,7 +3065,7 @@ static void SaveLoad_STNS(Station *st)
 
 	if (st->num_specs != 0) {
 		/* Allocate speclist memory when loading a game */
-		if (st->speclist == NULL) CallocT(&st->speclist, st->num_specs);
+		if (st->speclist == NULL) st->speclist = CallocT<StationSpecList>(st->num_specs);
 		for (i = 0; i < st->num_specs; i++) SlObject(&st->speclist[i], _station_speclist_desc);
 	}
 }

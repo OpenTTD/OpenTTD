@@ -154,7 +154,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 				case 6: /* Add selection to list */
 					if (WP(w, newgrf_add_d).sel != NULL) {
 						const GRFConfig *src = WP(w, newgrf_add_d).sel;
-						GRFConfig **list, *c;
+						GRFConfig **list;
 
 						/* Find last entry in the list, checking for duplicate grfid on the way */
 						for (list = WP(w, newgrf_add_d).list; *list != NULL; list = &(*list)->next) {
@@ -165,7 +165,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 						}
 
 						/* Copy GRF details from scanned list */
-						CallocT(&c, 1);
+						GRFConfig *c = CallocT<GRFConfig>(1);
 						*c = *src;
 						c->filename = strdup(src->filename);
 						if (src->name != NULL) c->name = strdup(src->name);

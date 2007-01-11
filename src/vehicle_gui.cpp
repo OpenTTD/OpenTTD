@@ -207,10 +207,8 @@ typedef struct RefitList {
 static RefitList *BuildRefitList(const Vehicle *v)
 {
 	uint max_lines = 256;
-	RefitOption *refit;
-	CallocT(&refit, max_lines);
-	RefitList *list;
-	CallocT(&list, 1);
+	RefitOption *refit = CallocT<RefitOption>(max_lines);
+	RefitList *list = CallocT<RefitList>(1);
 	Vehicle *u = (Vehicle*)v;
 	uint num_lines = 0;
 	uint i;

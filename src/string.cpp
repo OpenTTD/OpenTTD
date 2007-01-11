@@ -59,12 +59,11 @@ char* CDECL str_fmt(const char* str, ...)
 	char buf[4096];
 	va_list va;
 	int len;
-	char* p;
 
 	va_start(va, str);
 	len = vsnprintf(buf, lengthof(buf), str, va);
 	va_end(va);
-	MallocT(&p, len + 1);
+	char* p = MallocT<char>(len + 1);
 	if (p != NULL) memcpy(p, buf, len + 1);
 	return p;
 }

@@ -329,7 +329,7 @@ bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 		}
 		if (info->palette_size == 0) info->palette_size = 1 << info->bpp;
 
-		CallocT(&data->palette, info->palette_size);
+		data->palette = CallocT<Colour>(info->palette_size);
 		if (data->palette == NULL) return false;
 
 		for (i = 0; i < info->palette_size; i++) {

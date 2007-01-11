@@ -236,7 +236,7 @@ static IniFile *ini_load(const char *filename)
 			if (ns > a) {
 				a = max(a, 128U);
 				do a*=2; while (a < ns);
-				ReallocT(&comment, comment_alloc = a);
+				comment = ReallocT(comment, comment_alloc = a);
 			}
 			pos = comment_size;
 			comment_size += (e - s + 1);
@@ -1509,8 +1509,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 	if (group == NULL) return NULL;
 
 	for (item = group->item; item != NULL; item = item->next) {
-		GRFConfig *c;
-		CallocT(&c, 1);
+		GRFConfig *c = CallocT<GRFConfig>(1);
 		c->filename = strdup(item->name);
 
 		/* Parse parameters */

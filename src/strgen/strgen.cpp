@@ -845,7 +845,7 @@ static void HandleString(char *str, bool master)
 			}
 
 			// Allocate a new LangString
-			CallocT(&ent, 1);
+			ent = CallocT<LangString>(1);
 			_strings[_next_string_id] = ent;
 			ent->index = _next_string_id++;
 			ent->name = strdup(str);
@@ -855,8 +855,7 @@ static void HandleString(char *str, bool master)
 		}
 
 		if (casep != NULL) {
-			Case* c;
-			MallocT(&c, 1);
+			Case* c = MallocT<Case>(1);
 
 			c->caseidx = ResolveCaseName(casep, strlen(casep));
 			c->string = strdup(s);
@@ -885,8 +884,7 @@ static void HandleString(char *str, bool master)
 			if (!CheckCommandsMatch(s, ent->english, str)) return;
 
 			if (casep != NULL) {
-				Case* c;
-				MallocT(&c, 1);
+				Case* c = MallocT<Case>(1);
 
 				c->caseidx = ResolveCaseName(casep, strlen(casep));
 				c->string = strdup(s);

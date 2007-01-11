@@ -158,8 +158,7 @@ static byte _currentLangID = GRFLX_ENGLISH;  //by default, english is used.
 
 char *TranslateTTDPatchCodes(const char *str)
 {
-	char *tmp;
-	MallocT(&tmp, strlen(str) * 10 + 1); /* Allocate space to allow for expansion */
+	char *tmp = MallocT<char>(strlen(str) * 10 + 1); /* Allocate space to allow for expansion */
 	char *d = tmp;
 	bool unicode = false;
 	WChar c;
@@ -255,7 +254,7 @@ char *TranslateTTDPatchCodes(const char *str)
 	}
 
 	*d = '\0';
-	ReallocT(&tmp, strlen(tmp) + 1);
+	tmp = ReallocT(tmp, strlen(tmp) + 1);
 	return tmp;
 }
 

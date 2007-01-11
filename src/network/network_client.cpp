@@ -570,8 +570,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SYNC)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 {
-	CommandPacket *cp;
-	MallocT(&cp, 1);
+	CommandPacket *cp = MallocT<CommandPacket>(1);
 	cp->player = (PlayerID)NetworkRecv_uint8(MY_CLIENT, p);
 	cp->cmd = NetworkRecv_uint32(MY_CLIENT, p);
 	cp->p1 = NetworkRecv_uint32(MY_CLIENT, p);

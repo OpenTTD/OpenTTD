@@ -3575,7 +3575,6 @@ return_to_loop:;
 static void AiStateRemoveStation(Player *p)
 {
 	// Remove stations that aren't in use by any vehicle
-	byte *in_use;
 	const Order *ord;
 	const Station *st;
 	TileIndex tile;
@@ -3584,7 +3583,7 @@ static void AiStateRemoveStation(Player *p)
 	p->ai.state = AIS_1;
 
 	// Get a list of all stations that are in use by a vehicle
-	MallocT(&in_use, GetMaxStationIndex() + 1);
+	byte *in_use = MallocT<byte>(GetMaxStationIndex() + 1);
 	memset(in_use, 0, GetMaxStationIndex() + 1);
 	FOR_ALL_ORDERS(ord) {
 		if (ord->type == OT_GOTO_STATION) in_use[ord->dest] = 1;

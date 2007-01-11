@@ -36,8 +36,7 @@ static PathNode* AyStarMain_ClosedList_IsInList(AyStar *aystar, const AyStarNode
 static void AyStarMain_ClosedList_Add(AyStar *aystar, const PathNode *node)
 {
 	// Add a node to the ClosedList
-	PathNode *new_node;
-	MallocT(&new_node, 1);
+	PathNode *new_node = MallocT<PathNode>(1);
 	*new_node = *node;
 	Hash_Set(&aystar->ClosedListHash, node->node.tile, node->node.direction, new_node);
 }
@@ -68,8 +67,7 @@ static OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar)
 static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, const AyStarNode *node, int f, int g)
 {
 	// Add a new Node to the OpenList
-	OpenListNode *new_node;
-	MallocT(&new_node, 1);
+	OpenListNode *new_node = MallocT<OpenListNode>(1);
 	new_node->g = g;
 	new_node->path.parent = parent;
 	new_node->path.node = *node;

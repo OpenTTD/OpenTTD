@@ -560,7 +560,7 @@ static void MakeSortedIndustryList(void)
 	if (GetNumIndustries() == 0) return;
 
 	/* Create array for sorting */
-	ReallocT(&_industry_sort, GetMaxIndustryIndex() + 1);
+	_industry_sort = ReallocT(_industry_sort, GetMaxIndustryIndex() + 1);
 	if (_industry_sort == NULL) error("Could not allocate memory for the industry-sorting-list");
 
 	FOR_ALL_INDUSTRIES(i) _industry_sort[n++] = i;

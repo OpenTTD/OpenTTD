@@ -31,8 +31,7 @@ static void Proxy(void* arg)
 
 OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg)
 {
-	OTTDThread* t;
-	MallocT(&t, 1);
+	OTTDThread* t = MallocT<OTTDThread>(1);
 
 	if (t == NULL) return NULL;
 
@@ -74,8 +73,7 @@ struct OTTDThread {
 
 OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg)
 {
-	OTTDThread* t;
-	MallocT(&t, 1);
+	OTTDThread* t = MallocT<OTTDThread>(1);
 
 	if (t == NULL) return NULL;
 
@@ -123,8 +121,7 @@ static DWORD WINAPI Proxy(LPVOID arg)
 
 OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg)
 {
-	OTTDThread* t;
-	MallocT(&t, 1);
+	OTTDThread* t = MallocT<OTTDThread>(1);
 	DWORD dwThreadId;
 
 	if (t == NULL) return NULL;

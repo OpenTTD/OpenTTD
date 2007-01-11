@@ -149,7 +149,7 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 	if (cs->socket == INVALID_SOCKET) return NULL;
 
 	if (cs->packet_recv == NULL) {
-		MallocT(&cs->packet_recv, 1);
+		cs->packet_recv = MallocT<Packet>(1);
 		if (cs->packet_recv == NULL) error("Failed to allocate packet");
 		/* Set pos to zero! */
 		cs->packet_recv->pos = 0;

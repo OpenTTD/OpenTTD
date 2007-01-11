@@ -26,8 +26,7 @@ extern void NORETURN CDECL error(const char *str, ...);
  */
 Packet *NetworkSend_Init(const PacketType type)
 {
-	Packet *packet;
-	MallocT(&packet, 1);
+	Packet *packet = MallocT<Packet>(1);
 	/* An error is inplace here, because it simply means we ran out of memory. */
 	if (packet == NULL) error("Failed to allocate Packet");
 

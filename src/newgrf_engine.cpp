@@ -83,7 +83,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 
 	wos = &_engine_wagon_overrides[engine];
 	wos->overrides_count++;
-	ReallocT(&wos->overrides, wos->overrides_count);
+	wos->overrides = ReallocT(wos->overrides, wos->overrides_count);
 
 	wo = &wos->overrides[wos->overrides_count - 1];
 	/* FIXME: If we are replacing an override, release original SpriteGroup
@@ -92,7 +92,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 	wo->group = group;
 	wo->cargo = cargo;
 	wo->trains = trains;
-	MallocT(&wo->train_id, trains);
+	wo->train_id = MallocT<byte>(trains);
 	memcpy(wo->train_id, train_id, trains);
 }
 

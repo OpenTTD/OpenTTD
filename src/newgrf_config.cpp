@@ -119,12 +119,10 @@ void ClearGRFConfigList(GRFConfig **config)
  * @return pointer to the last value added to the destination list */
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 {
-	GRFConfig *c;
-
 	/* Clear destination as it will be overwritten */
 	ClearGRFConfigList(dst);
 	for (; src != NULL; src = src->next) {
-		CallocT(&c, 1);
+		GRFConfig *c = CallocT<GRFConfig>(1);
 		*c = *src;
 		if (src->filename != NULL) c->filename = strdup(src->filename);
 		if (src->name     != NULL) c->name     = strdup(src->name);
@@ -245,7 +243,6 @@ static uint ScanPath(const char *path)
 	struct stat sb;
 	struct dirent *dirent;
 	DIR *dir;
-	GRFConfig *c;
 
 	if ((dir = opendir(path)) == NULL) return 0;
 
@@ -270,7 +267,7 @@ static uint ScanPath(const char *path)
 			if (ext == NULL) continue;
 			if (strcasecmp(ext, ".grf") != 0) continue;
 
-			CallocT(&c, 1);
+			GRFConfig *c = CallocT<GRFConfig>(1);
 			c->filename = strdup(file);
 
 			if (FillGRFDetails(c, false)) {
@@ -375,7 +372,7 @@ char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
 
 	if (!create) return NULL;
 
-	CallocT(&grf, 1);
+	grf = CallocT<UnknownGRF>(1);
 	grf->grfid = grfid;
 	grf->next  = unknown_grfs;
 	ttd_strlcpy(grf->name, UNKNOWN_GRF_NAME_PLACEHOLDER, sizeof(grf->name));
@@ -446,8 +443,7 @@ static void Load_NGRF(void)
 	GRFConfig **last = &first;
 
 	while (SlIterateArray() != -1) {
-		GRFConfig *c;
-		CallocT(&c, 1);
+		GRFConfig *c = CallocT<GRFConfig>(1);
 		SlObject(c, _grfconfig_desc);
 
 		/* Append our configuration to the list */

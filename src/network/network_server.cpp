@@ -793,8 +793,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	const NetworkClientInfo *ci;
 	byte callback;
 
-	CommandPacket *cp;
-	MallocT(&cp, 1);
+	CommandPacket *cp = MallocT<CommandPacket>(1);
 
 	// The client was never joined.. so this is impossible, right?
 	//  Ignore the packet, give the client a warning, and close his connection

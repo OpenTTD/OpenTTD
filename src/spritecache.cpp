@@ -38,7 +38,7 @@ static SpriteCache *AllocateSpriteCache(uint index)
 
 		DEBUG(sprite, 4, "Increasing sprite cache to %d items (%d bytes)", items, items * sizeof(*_spritecache));
 
-		ReallocT(&_spritecache, items);
+		_spritecache = ReallocT(_spritecache, items);
 
 		if (_spritecache == NULL) {
 			error("Unable to allocate sprite cache of %d items (%d bytes)", items, items * sizeof(*_spritecache));

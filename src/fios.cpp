@@ -48,7 +48,7 @@ FiosItem *FiosAlloc(void)
 {
 	if (_fios_count == _fios_alloc) {
 		_fios_alloc += 256;
-		ReallocT(&_fios_items, _fios_alloc);
+		_fios_items = ReallocT(_fios_items, _fios_alloc);
 	}
 	return &_fios_items[_fios_count++];
 }
@@ -324,7 +324,7 @@ FiosItem *FiosGetSavegameList(int mode)
 	static char *_fios_save_path = NULL;
 
 	if (_fios_save_path == NULL) {
-		MallocT(&_fios_save_path, MAX_PATH);
+		_fios_save_path = MallocT<char>(MAX_PATH);
 		ttd_strlcpy(_fios_save_path, _paths.save_dir, MAX_PATH);
 	}
 
@@ -372,7 +372,7 @@ FiosItem *FiosGetScenarioList(int mode)
 	static char *_fios_scn_path = NULL;
 
 	if (_fios_scn_path == NULL) {
-		MallocT(&_fios_scn_path, MAX_PATH);
+		_fios_scn_path = MallocT<char>(MAX_PATH);
 		ttd_strlcpy(_fios_scn_path, _paths.scenario_dir, MAX_PATH);
 	}
 
@@ -403,7 +403,7 @@ FiosItem *FiosGetHeightmapList(int mode)
 	static char *_fios_hmap_path = NULL;
 
 	if (_fios_hmap_path == NULL) {
-		MallocT(&_fios_hmap_path, MAX_PATH);
+		_fios_hmap_path = MallocT<char>(MAX_PATH);
 		strcpy(_fios_hmap_path, _paths.heightmap_dir);
 	}
 

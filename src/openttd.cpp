@@ -120,7 +120,7 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 	fseek(in, 0, SEEK_END);
 	len = ftell(in);
 	fseek(in, 0, SEEK_SET);
-	if (len > maxsize || !MallocT(&mem, len + 1)) {
+	if (len > maxsize || (mem = MallocT<byte>(len + 1)) == NULL) {
 		fclose(in);
 		return NULL;
 	}

@@ -843,7 +843,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	}
 
 	/* Allocate station specs if necessary */
-	if (_cur_grffile->stations == NULL) CallocT(&_cur_grffile->stations, MAX_STATIONS);
+	if (_cur_grffile->stations == NULL) _cur_grffile->stations = CallocT<StationSpec*>(MAX_STATIONS);
 
 	statspec = &_cur_grffile->stations[stid];
 
@@ -863,7 +863,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				uint32 classid;
 
 				/* Property 0x08 is special; it is where the station is allocated */
-				if (statspec[i] == NULL) CallocT(&statspec[i], 1);
+				if (statspec[i] == NULL) statspec[i] = CallocT<StationSpec>(1);
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
 				classid = grf_load_dword(&buf);
@@ -877,7 +877,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				uint t;
 
 				statspec->tiles = grf_load_extended(&buf);
-				CallocT(&statspec->renderdata, statspec->tiles);
+				statspec->renderdata = CallocT<DrawTileSprites>(statspec->tiles);
 				statspec->copied_renderdata = false;
 
 				for (t = 0; t < statspec->tiles; t++) {
@@ -892,7 +892,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						DrawTileSeqStruct *dtss;
 
 						// no relative bounding box support
-						ReallocT((DrawTileSeqStruct**)&dts->seq, ++seq_count);
+						dts->seq = ReallocT((DrawTileSeqStruct*)dts->seq, ++seq_count);
 						dtss = (DrawTileSeqStruct*) &dts->seq[seq_count - 1];
 
 						dtss->delta_x = grf_load_byte(&buf);
@@ -958,10 +958,10 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 					//debug("l %d > %d ?", length, stat->lengths);
 					if (length > statspec->lengths) {
-						ReallocT(&statspec->platforms, length);
+						statspec->platforms = ReallocT(statspec->platforms, length);
 						memset(statspec->platforms + statspec->lengths, 0, length - statspec->lengths);
 
-						ReallocT(&statspec->layouts, length);
+						statspec->layouts = ReallocT(statspec->layouts, length);
 						memset(statspec->layouts + statspec->lengths, 0,
 						       (length - statspec->lengths) * sizeof(*statspec->layouts));
 
@@ -971,7 +971,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 					//debug("p %d > %d ?", number, stat->platforms[l]);
 					if (number > statspec->platforms[l]) {
-						ReallocT(&statspec->layouts[l], number);
+						statspec->layouts[l] = ReallocT(statspec->layouts[l], number);
 						// We expect NULL being 0 here, but C99 guarantees that.
 						memset(statspec->layouts[l] + statspec->platforms[l], 0,
 						       (number - statspec->platforms[l]) * sizeof(**statspec->layouts));
@@ -980,7 +980,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					}
 
 					p = 0;
-					MallocT(&layout, length * number);
+					layout = MallocT<byte>(length * number);
 					for (l = 0; l < length; l++) {
 						for (p = 0; p < number; p++) {
 							layout[l * number + p] = grf_load_byte(&buf);
@@ -1076,7 +1076,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 
 				if (bridge->sprite_table == NULL) {
 					/* Allocate memory for sprite table pointers and zero out */
-					CallocT(&bridge->sprite_table, 7);
+					bridge->sprite_table = CallocT<PalSpriteID*>(7);
 				}
 
 				for (; numtables-- != 0; tableid++) {
@@ -1089,7 +1089,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 					}
 
 					if (bridge->sprite_table[tableid] == NULL) {
-						MallocT(&bridge->sprite_table[tableid], 32);
+						bridge->sprite_table[tableid] = MallocT<PalSpriteID>(32);
 					}
 
 					for (sprite = 0; sprite < 32; sprite++)
@@ -1596,7 +1596,7 @@ static void NewSpriteGroup(byte *buf, int len)
 
 	if (setid >= _cur_grffile->spritegroups_count) {
 		// Allocate memory for new sprite group references.
-		ReallocT(&_cur_grffile->spritegroups, setid + 1);
+		_cur_grffile->spritegroups = ReallocT(_cur_grffile->spritegroups, setid + 1);
 		// Initialise new space to NULL
 		for (; _cur_grffile->spritegroups_count < (setid + 1); _cur_grffile->spritegroups_count++)
 			_cur_grffile->spritegroups[_cur_grffile->spritegroups_count] = NULL;
@@ -1641,7 +1641,7 @@ static void NewSpriteGroup(byte *buf, int len)
 				}
 
 				group->g.determ.num_adjusts++;
-				ReallocT(&group->g.determ.adjusts, group->g.determ.num_adjusts);
+				group->g.determ.adjusts = ReallocT(group->g.determ.adjusts, group->g.determ.num_adjusts);
 
 				adjust = &group->g.determ.adjusts[group->g.determ.num_adjusts - 1];
 
@@ -1667,7 +1667,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			} while (HASBIT(varadjust, 5));
 
 			group->g.determ.num_ranges = grf_load_byte(&buf);
-			CallocT(&group->g.determ.ranges, group->g.determ.num_ranges);
+			group->g.determ.ranges = CallocT<DeterministicSpriteGroupRange>(group->g.determ.num_ranges);
 
 			if (!check_length(bufend - buf, 2 + (2 + 2 * varsize) * group->g.determ.num_ranges, "NewSpriteGroup (Deterministic)")) return;
 
@@ -1699,7 +1699,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			group->g.random.cmp_mode       = HASBIT(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
 			group->g.random.lowest_randbit = grf_load_byte(&buf);
 			group->g.random.num_groups     = grf_load_byte(&buf);
-			CallocT(&group->g.random.groups, group->g.random.num_groups);
+			group->g.random.groups = CallocT<const SpriteGroup*>(group->g.random.num_groups);
 
 			if (!check_length(bufend - buf, 2 * group->g.random.num_groups, "NewSpriteGroup (Randomized) (2)")) return;
 
@@ -1739,8 +1739,8 @@ static void NewSpriteGroup(byte *buf, int len)
 
 					group->g.real.num_loaded  = num_loaded;
 					group->g.real.num_loading = num_loading;
-					if (num_loaded  > 0) CallocT(&group->g.real.loaded, num_loaded);
-					if (num_loading > 0) CallocT(&group->g.real.loading, num_loading);
+					if (num_loaded  > 0) group->g.real.loaded = CallocT<const SpriteGroup*>(num_loaded);
+					if (num_loading > 0) group->g.real.loading = CallocT<const SpriteGroup*>(num_loading);
 
 					grfmsg(6, "NewSpriteGroup: New SpriteGroup 0x%02X, %u views, %u loaded, %u loading",
 							setid, sprites, num_loaded, num_loading);
@@ -1885,7 +1885,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 	}
 
 	if (!wagover && last_engines_count != idcount) {
-		ReallocT(&last_engines, idcount);
+		last_engines = ReallocT(last_engines, idcount);
 		last_engines_count = idcount;
 	}
 
@@ -2275,7 +2275,7 @@ static void CfgApply(byte *buf, int len)
 
 	/* Check if the sprite is a pseudo sprite. We can't operate on real sprites. */
 	if (type == 0xFF) {
-		MallocT(&_preload_sprite, num);
+		_preload_sprite = MallocT<byte>(num);
 		FioReadBlock(_preload_sprite, num);
 	}
 
@@ -3027,7 +3027,7 @@ static void DefineGotoLabel(byte *buf, int len)
 	if (!check_length(len, 1, "DefineGotoLabel")) return;
 	buf++; len--;
 
-	MallocT(&label, 1);
+	label = MallocT<GRFLabel>(1);
 	label->label    = grf_load_byte(&buf);
 	label->nfo_line = _nfo_line;
 	label->pos      = FioGetPos();
@@ -3490,7 +3490,7 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 		return;
 	}
 
-	CallocT(&newfile, 1);
+	newfile = CallocT<GRFFile>(1);
 
 	if (newfile == NULL) error ("Out of memory");
 
@@ -3618,7 +3618,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 	if (_preload_sprite == NULL) {
 		/* No preloaded sprite to work with; allocate and read the
 		 * pseudo sprite content. */
-		MallocT(&buf, num);
+		buf = MallocT<byte>(num);
 		if (buf == NULL) error("DecodeSpecialSprite: Could not allocate memory");
 		FioReadBlock(buf, num);
 	} else {

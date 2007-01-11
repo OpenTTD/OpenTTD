@@ -544,7 +544,7 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 
 		for (wi = widget; wi->type != WWT_LAST; wi++) index++;
 
-		ReallocT(&w->widget, index);
+		w->widget = ReallocT(w->widget, index);
 		memcpy(w->widget, widget, sizeof(*w->widget) * index);
 		w->widget_count = index - 1;
 	} else {

@@ -239,7 +239,7 @@ static inline bool AllocHeightMap(void)
 	/* Allocate memory block for height map row pointers */
 	_height_map.total_size = (_height_map.size_x + 1) * (_height_map.size_y + 1);
 	_height_map.dim_x = _height_map.size_x + 1;
-	CallocT(&_height_map.h, _height_map.total_size);
+	_height_map.h = CallocT<height_t>(_height_map.total_size);
 	if (_height_map.h == NULL) return false;
 
 	/* Iterate through height map initialize values */
@@ -467,12 +467,12 @@ static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_
 	height_t h_min, h_max, h_avg, h_water_level;
 	int water_tiles, desired_water_tiles;
 	height_t *h;
-	int *hist_buf, *hist;
+	int *hist;
 
 	HeightMapGetMinMaxAvg(&h_min, &h_max, &h_avg);
 
 	/* Allocate histogram buffer and clear its cells */
-	CallocT(&hist_buf, h_max - h_min + 1);
+	int *hist_buf = CallocT<int>(h_max - h_min + 1);
 	/* Fill histogram */
 	hist = HeightMapMakeHistogram(h_min, h_max, hist_buf);
 

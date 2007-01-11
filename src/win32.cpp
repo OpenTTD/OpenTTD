@@ -636,7 +636,7 @@ static inline DIR *dir_calloc(void)
 	DIR *d;
 
 	if (_global_dir_is_in_use) {
-		CallocT(&d, 1);
+		d = CallocT<DIR>(1);
 	} else {
 		_global_dir_is_in_use = true;
 		d = &_global_dir;

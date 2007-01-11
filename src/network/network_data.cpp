@@ -14,8 +14,7 @@
 // Add a command to the local command queue
 void NetworkAddCommandQueue(NetworkClientState *cs, CommandPacket *cp)
 {
-	CommandPacket* new_cp;
-	MallocT(&new_cp, 1);
+	CommandPacket* new_cp = MallocT<CommandPacket>(1);
 
 	*new_cp = *cp;
 
@@ -31,8 +30,7 @@ void NetworkAddCommandQueue(NetworkClientState *cs, CommandPacket *cp)
 // Prepare a DoCommand to be send over the network
 void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback)
 {
-	CommandPacket *c;
-	MallocT(&c, 1);
+	CommandPacket *c = MallocT<CommandPacket>(1);
 	byte temp_callback;
 
 	c->player = _local_player;

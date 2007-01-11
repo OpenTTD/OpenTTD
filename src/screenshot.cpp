@@ -68,7 +68,6 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	BitmapFileHeader bfh;
 	BitmapInfoHeader bih;
 	RgbQuad rq[256];
-	Pixel *buff;
 	FILE *f;
 	uint i, padw;
 	uint n, maxlines;
@@ -119,7 +118,7 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	maxlines = clamp(65536 / padw, 16, 128);
 
 	// now generate the bitmap bits
-	MallocT(&buff, padw * maxlines); // by default generate 128 lines at a time.
+	Pixel *buff = MallocT<Pixel>(padw * maxlines); // by default generate 128 lines at a time.
 	if (buff == NULL) {
 		fclose(f);
 		return false;
@@ -170,7 +169,6 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	png_color rq[256];
-	Pixel *buff;
 	FILE *f;
 	uint i, y, n;
 	uint maxlines;
@@ -226,7 +224,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	maxlines = clamp(65536 / w, 16, 128);
 
 	// now generate the bitmap bits
-	MallocT(&buff, w * maxlines); // by default generate 128 lines at a time.
+	Pixel *buff = MallocT<Pixel>(w * maxlines); // by default generate 128 lines at a time.
 	if (buff == NULL) {
 		png_destroy_write_struct(&png_ptr, &info_ptr);
 		fclose(f);
@@ -283,7 +281,6 @@ assert_compile(sizeof(PcxHeader) == 128);
 
 static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
-	Pixel *buff;
 	FILE *f;
 	uint maxlines;
 	uint y;
@@ -323,7 +320,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	maxlines = clamp(65536 / w, 16, 128);
 
 	// now generate the bitmap bits
-	MallocT(&buff, w * maxlines); // by default generate 128 lines at a time.
+	Pixel *buff = MallocT<Pixel>(w * maxlines); // by default generate 128 lines at a time.
 	if (buff == NULL) {
 		fclose(f);
 		return false;

@@ -26,7 +26,7 @@ NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 		prev_item = item;
 	}
 
-	MallocT(&item, 1);
+	item = MallocT<NetworkGameList>(1);
 	memset(item, 0, sizeof(*item));
 	item->next = NULL;
 	item->ip = ip;

@@ -695,7 +695,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			for (page = &_patches_page[0]; page != endof(_patches_page); page++) {
 				uint i;
 
-				MallocT(&page->entries, page->num);
+				page->entries = MallocT<PatchEntry>(page->num);
 				for (i = 0; i != page->num; i++) {
 					uint index;
 					const SettingDesc *sd = GetPatchFromName(page->names[i], &index);

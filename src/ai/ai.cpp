@@ -51,11 +51,11 @@ static void AI_PutCommandInQueue(PlayerID player, TileIndex tile, uint32 p1, uin
 
 	if (_ai_player[player].queue_tail == NULL) {
 		/* There is no item in the queue yet, create the queue */
-		MallocT(&_ai_player[player].queue, 1);
+		_ai_player[player].queue = MallocT<AICommand>(1);
 		_ai_player[player].queue_tail = _ai_player[player].queue;
 	} else {
 		/* Add an item at the end */
-		MallocT(&_ai_player[player].queue_tail->next, 1);
+		_ai_player[player].queue_tail->next = MallocT<AICommand>(1);
 		_ai_player[player].queue_tail = _ai_player[player].queue_tail->next;
 	}
 

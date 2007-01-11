@@ -23,13 +23,12 @@ static FileEntry *_files;
 
 static void OpenBankFile(const char *filename)
 {
-	FileEntry *fe;
 	uint count;
 	uint i;
 
 	FioOpenFile(SOUND_SLOT, filename);
 	count = FioReadDword() / 8;
-	CallocT(&fe, count);
+	FileEntry *fe = CallocT<FileEntry>(count);
 
 	if (fe == NULL) {
 		_file_count = 0;
@@ -102,7 +101,6 @@ uint GetNumOriginalSounds(void)
 static bool SetBankSource(MixerChannel *mc, uint bank)
 {
 	const FileEntry *fe;
-	int8 *mem;
 	uint i;
 
 	if (bank >= GetNumSounds()) return false;
@@ -110,7 +108,7 @@ static bool SetBankSource(MixerChannel *mc, uint bank)
 
 	if (fe->file_size == 0) return false;
 
-	MallocT(&mem, fe->file_size);
+	int8 *mem = MallocT<int8>(fe->file_size);
 	if (mem == NULL) return false;
 
 	FioSeekToFile(fe->file_offset);

@@ -2259,7 +2259,7 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 static inline void ExtendVehicleListSize(const Vehicle ***engine_list, uint16 *engine_list_length, uint16 step_size)
 {
 	*engine_list_length = min(*engine_list_length + step_size, GetMaxVehicleIndex() + 1);
-	ReallocT((Vehicle ***)/* NO & */engine_list, *engine_list_length);
+	*engine_list = ReallocT(*engine_list, *engine_list_length);
 }
 
 /** Generates a list of vehicles inside a depot
@@ -2436,7 +2436,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 		 * We will still make it have room for 50 extra vehicles to prevent having
 		 * to move the whole array if just one vehicle is added later */
 		*length_of_array = n + 50;
-		ReallocT((Vehicle***)/* NO & */sort_list, (*length_of_array) * sizeof((*sort_list)[0]));
+		*sort_list = ReallocT(*sort_list, (*length_of_array) * sizeof((*sort_list)[0]));
 	}
 
 	return n;
@@ -2781,7 +2781,7 @@ UnitID GetFreeUnitNumber(byte type)
 	if (max > gmax) {
 		gmax = max;
 		free(cache);
-		MallocT(&cache, max + 1);
+		cache = MallocT<bool>(max + 1);
 	}
 
 	// Clear the cache

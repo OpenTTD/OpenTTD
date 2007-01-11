@@ -410,7 +410,7 @@ static void MakeSortedTownList(void)
 	uint n = 0;
 
 	/* Create array for sorting */
-	ReallocT(&_town_sort, GetMaxTownIndex() + 1);
+	_town_sort = ReallocT(_town_sort, GetMaxTownIndex() + 1);
 	if (_town_sort == NULL) error("Could not allocate memory for the town-sorting-list");
 
 	FOR_ALL_TOWNS(t) _town_sort[n++] = t;

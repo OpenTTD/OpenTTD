@@ -1166,7 +1166,7 @@ bool ReadLanguagePack(int lang_index)
 	}
 
 	// Allocate offsets
-	MallocT(&langpack_offs, tot_count);
+	langpack_offs = MallocT<char*>(tot_count);
 
 	// Fill offsets
 	s = lang_pack->data;

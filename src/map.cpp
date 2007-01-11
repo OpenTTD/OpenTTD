@@ -42,7 +42,7 @@ void AllocateMap(uint size_x, uint size_y)
 	_map_tile_mask = _map_size - 1;
 
 	free(_m);
-	CallocT(&_m, _map_size);
+	_m = CallocT<Tile>(_map_size);
 
 	// XXX TODO handle memory shortage more gracefully
 	if (_m == NULL) error("Failed to allocate memory for the map");

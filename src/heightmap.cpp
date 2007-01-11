@@ -136,7 +136,7 @@ static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
 	}
 
 	if (map != NULL) {
-		MallocT(/* NO & */map, info_ptr->width * info_ptr->height);
+		*map = MallocT<byte>(info_ptr->width * info_ptr->height);
 
 		if (*map == NULL) {
 			ShowErrorMessage(STR_PNGMAP_ERR_MISC, STR_PNGMAP_ERROR, 0, 0);
@@ -249,7 +249,7 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 			return false;
 		}
 
-		MallocT(/* NO & */map, info.width * info.height);
+		*map = MallocT<byte>(info.width * info.height);
 		if (*map == NULL) {
 			ShowErrorMessage(STR_PNGMAP_ERR_MISC, STR_BMPMAP_ERROR, 0, 0);
 			fclose(f);
