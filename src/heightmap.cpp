@@ -226,6 +226,9 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 	BmpData data;
 	BmpBuffer buffer;
 
+	// Init BmpData
+	memset(&data, 0, sizeof(data));
+
 	f = fopen(filename, "rb");
 	if (f == NULL) {
 		ShowErrorMessage(STR_PNGMAP_ERR_FILE_NOT_FOUND, STR_BMPMAP_ERROR, 0, 0);
