@@ -860,7 +860,7 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 		// notify YAPF about the track layout change
 		TrackBits tracks = GetTrackBits(tile);
 		while (tracks != TRACK_BIT_NONE) {
-			YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(tracks));
+			YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(&tracks));
 		}
 
 		if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
@@ -988,7 +988,7 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 		case RAIL_TILE_NORMAL: {
 			TrackBits tracks = GetTrackBits(tile);
 			while (tracks != TRACK_BIT_NONE) {
-				Track track = RemoveFirstTrack(tracks);
+				Track track = RemoveFirstTrack(&tracks);
 				ret = DoCommand(tile, 0, track, flags, CMD_REMOVE_SINGLE_RAIL);
 				if (CmdFailed(ret)) return CMD_ERROR;
 				cost += ret;

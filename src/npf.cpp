@@ -628,7 +628,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	i = 0;
 	/* Enumerate possible track */
 	while (trackdirbits != 0) {
-		Trackdir dst_trackdir = RemoveFirstTrackdir(trackdirbits);
+		Trackdir dst_trackdir = RemoveFirstTrackdir(&trackdirbits);
 		DEBUG(npf, 5, "Expanded into trackdir: %d, remaining trackdirs: 0x%X", dst_trackdir, trackdirbits);
 
 		/* Check for oneway signal against us */

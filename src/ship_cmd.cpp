@@ -468,7 +468,7 @@ static uint FindShipTrack(Vehicle *v, TileIndex tile, DiagDirection dir, TrackBi
 	best_track = INVALID_TRACK;
 
 	do {
-		i = RemoveFirstTrack(bits);
+		i = RemoveFirstTrack(&bits);
 
 		pfs.best_bird_dist = (uint)-1;
 		pfs.best_length = (uint)-1;

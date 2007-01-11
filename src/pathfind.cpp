@@ -910,7 +910,7 @@ start_at:
 			continue; /* We overflowed our depth. No more searching in this direction. */
 		si.tile = tile;
 		while (bits != TRACK_BIT_NONE) {
-			Track track = RemoveFirstTrack(bits);
+			Track track = RemoveFirstTrack(&bits);
 			si.track = _new_trackdir[track][direction];
 			assert(si.track != 0xFF);
 			si.priority = si.cur_length + estimation;
