@@ -20,11 +20,14 @@
 #undef max
 #endif
 
+/* Objective C don't like templates */
+#ifdef __cplusplus
 template <typename T>
 static inline T max(T a, T b)
 {
 	return a >= b ? a : b;
 }
+#endif
 
 static inline int min(int a, int b) { if (a <= b) return a; return b; }
 
