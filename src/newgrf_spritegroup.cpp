@@ -81,7 +81,7 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 		case 0x10: return object->callback_param1;
 		case 0x11: return 0;
 		case 0x18: return object->callback_param2;
-		case 0x1A: return (uint32)-1;
+		case 0x1A: return UINT_MAX;
 		case 0x1B: return GB(_display_opt, 0, 6);
 		case 0x1C: return object->last_value;
 		case 0x20: return _opt.landscape == LT_HILLY ? _opt.snow_line : 0xFF;
