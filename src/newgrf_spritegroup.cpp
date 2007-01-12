@@ -5,6 +5,7 @@
 #include "variables.h"
 #include "macros.h"
 #include "oldpool.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
 #include "date.h"
 
@@ -142,7 +143,16 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 
 		/* Try to get the variable. We shall assume it is available, unless told otherwise. */
 		bool available = true;
-		value = GetVariable(object, adjust->variable, adjust->parameter, &available);
+		if (adjust->variable == 0x7E) {
+			const SpriteGroup *subgroup = Resolve(adjust->subroutine, object);
+			if (subgroup == NULL || subgroup->type != SGT_CALLBACK) {
+				value = CALLBACK_FAILED;
+			} else {
+				value = subgroup->g.callback.result;
+			}
+		} else {
+			value = GetVariable(object, adjust->variable, adjust->parameter, &available);
+		}
 
 		if (!available) {
 			/* Unsupported property: skip further processing and return either

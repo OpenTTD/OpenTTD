@@ -69,6 +69,7 @@ typedef struct DeterministicSpriteGroupAdjust {
 	uint32 and_mask;
 	uint32 add_val;
 	uint32 divmod_val;
+	const SpriteGroup *subroutine;
 } DeterministicSpriteGroupAdjust;
 
 

@@ -1648,7 +1648,12 @@ static void NewSpriteGroup(byte *buf, int len)
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
 				adjust->operation = group->g.determ.num_adjusts == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)grf_load_byte(&buf);
 				adjust->variable  = grf_load_byte(&buf);
-				adjust->parameter = IS_BYTE_INSIDE(adjust->variable, 0x60, 0x80) ? grf_load_byte(&buf) : 0;
+				if (adjust->variable == 0x7E) {
+					/* Link subroutine group */
+					adjust->subroutine = GetGroupFromGroupID(setid, type, grf_load_byte(&buf));
+				} else {
+					adjust->parameter = IS_BYTE_INSIDE(adjust->variable, 0x60, 0x80) ? grf_load_byte(&buf) : 0;
+				}
 
 				varadjust = grf_load_byte(&buf);
 				adjust->shift_num = GB(varadjust, 0, 5);
