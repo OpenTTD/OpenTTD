@@ -9,6 +9,8 @@
 #include "game.h"
 #include "packet.h"
 #include "../../newgrf_config.h"
+#include "../../debug.h"
+#include "../network_data.h"
 
 /**
  * @file udp.h Basic functions to receive and send UDP packets.
@@ -71,28 +73,8 @@
  *   1+       1       whether the server is dedicated (0 = no, 1 = yes)
  */
 
-///** Sending/receiving of UDP packets **////
-
-bool NetworkUDPListen(SOCKET *udp, const uint32 host, const uint16 port, const bool broadcast);
-void NetworkUDPClose(SOCKET *udp);
-
-void NetworkSendUDP_Packet(const SOCKET udp, Packet *p, const struct sockaddr_in *recv);
-void NetworkUDPReceive(const SOCKET udp);
-
-/**
- * Function that is called for every received UDP packet.
- * @param udp         the socket the packet is received on
- * @param packet      the received packet
- * @param client_addr the address of the sender of the packet
- */
-void NetworkHandleUDPPacket(const SOCKET udp, Packet *p, const struct sockaddr_in *client_addr);
-
-
-///** Sending/receiving of (large) chuncks of UDP packets **////
-
-
 /** Enum with all types of UDP packets. The order MUST not be changed **/
-enum {
+enum PacketUDPType {
 	PACKET_UDP_CLIENT_FIND_SERVER,   ///< Queries a game server for game information
 	PACKET_UDP_SERVER_RESPONSE,      ///< Reply of the game server with game information
 	PACKET_UDP_CLIENT_DETAIL_INFO,   ///< Queries a game server about details of the game, such as companies
@@ -107,20 +89,54 @@ enum {
 	PACKET_UDP_END                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
-void NetworkSend_GRFIdentifier(Packet *p, const GRFConfig *c);
-void NetworkSend_NetworkGameInfo(Packet *p, const NetworkGameInfo *info);
+#define DECLARE_UDP_RECEIVE_COMMAND(type) virtual void NetworkPacketReceive_## type ##_command(Packet *p, const struct sockaddr_in *)
 
-void NetworkRecv_GRFIdentifier(NetworkClientState *cs, Packet *p, GRFConfig *c);
-void NetworkRecv_NetworkGameInfo(NetworkClientState *cs, Packet *p, NetworkGameInfo *info);
+class NetworkUDPSocketHandler {
+private:
+	SOCKET udp;
+protected:
+	NetworkClientState cs;
+	/* Declare all possible packets here. If it can be received by the
+	 * a specific handler, it has to be implemented. */
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_DETAIL_INFO);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_REGISTER);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_LIST);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_UNREGISTER);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS);
+	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS);
 
-/**
- * Function that is called for every GRFConfig that is read when receiving
- * a NetworkGameInfo. Only grfid and md5sum are set, the rest is zero. This
- * function must set all appropriate fields. This GRF is later appended to
- * the grfconfig list of the NetworkGameInfo.
- * @param config the GRF to handle
- */
-void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config);
+	void HandleUDPPacket(Packet *p, const struct sockaddr_in *client_addr);
+
+	/**
+	 * Function that is called for every GRFConfig that is read when receiving
+	 * a NetworkGameInfo. Only grfid and md5sum are set, the rest is zero. This
+	 * function must set all appropriate fields. This GRF is later appended to
+	 * the grfconfig list of the NetworkGameInfo.
+	 * @param config the GRF to handle
+	 */
+	virtual void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config) { NOT_REACHED(); }
+public:
+	NetworkUDPSocketHandler();
+	virtual ~NetworkUDPSocketHandler() { this->Close(); }
+
+	bool IsListening() { return this->udp != INVALID_SOCKET; }
+	bool Listen(uint32 host, uint16 port, bool broadcast);
+	void Close();
+
+	void SendPacket(Packet *p, const struct sockaddr_in *recv);
+	void ReceivePackets();
+
+	void Send_GRFIdentifier(Packet *p, const GRFConfig *c);
+	void Send_NetworkGameInfo(Packet *p, const NetworkGameInfo *info);
+
+	void Recv_GRFIdentifier(Packet *p, GRFConfig *c);
+	void Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *info);
+};
 
 #endif /* ENABLE_NETWORK */
 

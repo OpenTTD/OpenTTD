@@ -41,9 +41,9 @@
 // global variables (declared in network_data.h)
 CommandPacket *_local_command_queue;
 
-SOCKET _udp_client_socket; // udp client socket
-SOCKET _udp_server_socket; // udp server socket
-SOCKET _udp_master_socket; // udp master socket
+extern NetworkUDPSocketHandler *_udp_client_socket; ///< udp client socket
+extern NetworkUDPSocketHandler *_udp_server_socket; ///< udp server socket
+extern NetworkUDPSocketHandler *_udp_master_socket; ///< udp master socket
 
 // Here we keep track of the clients
 //  (and the client uses [0] for his own communication)
@@ -842,7 +842,7 @@ static void NetworkClose(void)
 		closesocket(_listensocket);
 		_listensocket = INVALID_SOCKET;
 		DEBUG(net, 1, "Closed listener");
-		NetworkUDPStop();
+		NetworkUDPCloseAll();
 	}
 }
 
@@ -958,7 +958,7 @@ bool NetworkClientConnectGame(const char *host, uint16 port)
 	_network_last_port = port;
 
 	NetworkDisconnect();
-	NetworkUDPStop();
+	NetworkUDPCloseAll();
 	NetworkInitialize();
 
 	// Try to connect
@@ -1034,7 +1034,7 @@ bool NetworkServerStart(void)
 
 	// Try to start UDP-server
 	_network_udp_server = true;
-	_network_udp_server = NetworkUDPListen(&_udp_server_socket, _network_server_bind_ip, _network_server_port, false);
+	_network_udp_server = _udp_server_socket->Listen(_network_server_bind_ip, _network_server_port, false);
 
 	_network_server = true;
 	_networking = true;
@@ -1270,12 +1270,10 @@ static bool NetworkDoClientLoop(void)
 void NetworkUDPGameLoop(void)
 {
 	if (_network_udp_server) {
-		NetworkUDPReceive(_udp_server_socket);
-		if (_udp_master_socket != INVALID_SOCKET) {
-			NetworkUDPReceive(_udp_master_socket);
-		}
-	} else if (_udp_client_socket != INVALID_SOCKET) {
-		NetworkUDPReceive(_udp_client_socket);
+		_udp_server_socket->ReceivePackets();
+		_udp_master_socket->ReceivePackets();
+	} else {
+		_udp_client_socket->ReceivePackets();
 		if (_network_udp_broadcast > 0) _network_udp_broadcast--;
 	}
 }
@@ -1390,7 +1388,7 @@ void NetworkStartUp(void)
 void NetworkShutDown(void)
 {
 	NetworkDisconnect();
-	NetworkUDPStop();
+	NetworkUDPShutdown();
 
 	DEBUG(net, 3, "[core] shutting down network");
 

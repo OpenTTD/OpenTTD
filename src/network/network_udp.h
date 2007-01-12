@@ -11,6 +11,7 @@ void NetworkUDPQueryMasterServer(void);
 NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port);
 void NetworkUDPAdvertise(void);
 void NetworkUDPRemoveAdvertise(void);
+void NetworkUDPShutdown(void);
 
 #endif /* ENABLE_NETWORK */
 

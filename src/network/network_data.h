@@ -123,10 +123,6 @@ typedef enum {
 // following externs are instantiated at network.cpp
 extern CommandPacket *_local_command_queue;
 
-extern SOCKET _udp_client_socket; // udp client socket
-extern SOCKET _udp_server_socket; // udp server socket
-extern SOCKET _udp_master_socket; // udp master socket
-
 // Here we keep track of the clients
 //  (and the client uses [0] for his own communication)
 extern NetworkClientState _clients[MAX_CLIENTS];
