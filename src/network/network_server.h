@@ -6,16 +6,16 @@
 #ifdef ENABLE_NETWORK
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP);
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkClientState *cs, uint16 client_index, NetworkErrorCode errorno);
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, NetworkErrorCode error);
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkTCPSocketHandler *cs, uint16 client_index, NetworkErrorCode errorno);
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, NetworkErrorCode error);
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SHUTDOWN);
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME);
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientState *cs, uint16 color, const char *command);
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkTCPSocketHandler *cs, uint16 color, const char *command);
 
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 void NetworkServer_HandleChat(NetworkAction action, DestType type, int dest, const char *msg, uint16 from_index);
 
-bool NetworkServer_ReadPackets(NetworkClientState *cs);
+bool NetworkServer_ReadPackets(NetworkTCPSocketHandler *cs);
 void NetworkServer_Tick(bool send_frame);
 void NetworkServerMonthlyLoop(void);
 void NetworkServerYearlyLoop(void);

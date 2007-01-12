@@ -6,11 +6,11 @@
 #ifdef ENABLE_NETWORK
 
 #include "os_abstraction.h"
+#include "core.h"
 #include "game.h"
 #include "packet.h"
 #include "../../newgrf_config.h"
 #include "../../debug.h"
-#include "../network_data.h"
 
 /**
  * @file udp.h Basic functions to receive and send UDP packets.
@@ -91,11 +91,11 @@ enum PacketUDPType {
 
 #define DECLARE_UDP_RECEIVE_COMMAND(type) virtual void NetworkPacketReceive_## type ##_command(Packet *p, const struct sockaddr_in *)
 
-class NetworkUDPSocketHandler {
-private:
-	SOCKET udp;
+/** Base socket handler for all UDP sockets */
+class NetworkUDPSocketHandler : public NetworkSocketHandler {
 protected:
-	NetworkClientState cs;
+	NetworkRecvStatus CloseConnection();
+
 	/* Declare all possible packets here. If it can be received by the
 	 * a specific handler, it has to be implemented. */
 	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER);
@@ -121,10 +121,8 @@ protected:
 	 */
 	virtual void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config) { NOT_REACHED(); }
 public:
-	NetworkUDPSocketHandler();
 	virtual ~NetworkUDPSocketHandler() { this->Close(); }
 
-	bool IsListening() { return this->udp != INVALID_SOCKET; }
 	bool Listen(uint32 host, uint16 port, bool broadcast);
 	void Close();
 

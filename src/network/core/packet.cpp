@@ -6,7 +6,6 @@
 #include "../../macros.h"
 #include "../../string.h"
 #include "../../helpers.hpp"
-#include "../network_data.h"
 
 #include "packet.h"
 
@@ -111,17 +110,15 @@ void NetworkSend_string(Packet *packet, const char* data)
  */
 
 
-extern NetworkRecvStatus CloseConnection(NetworkClientState *cs);
-
 /** Is it safe to read from the packet, i.e. didn't we run over the buffer ? */
-static inline bool CanReadFromPacket(NetworkClientState *cs, const Packet *packet, const uint bytes_to_read)
+static inline bool CanReadFromPacket(NetworkSocketHandler *cs, const Packet *packet, const uint bytes_to_read)
 {
-	/* Don't allow reading from a closed socket */
-	if (HasClientQuit(cs)) return false;
+	/* Don't allow reading from a quit client/client who send bad data */
+	if (cs->HasClientQuit()) return false;
 
 	/* Check if variable is within packet-size */
 	if (packet->pos + bytes_to_read > packet->size) {
-		CloseConnection(cs);
+		cs->CloseConnection();
 		return false;
 	}
 
@@ -138,7 +135,7 @@ void NetworkRecv_ReadPacketSize(Packet *packet)
 	packet->size += (uint16)packet->buffer[1] << 8;
 }
 
-uint8 NetworkRecv_uint8(NetworkClientState *cs, Packet *packet)
+uint8 NetworkRecv_uint8(NetworkSocketHandler *cs, Packet *packet)
 {
 	uint8 n;
 
@@ -148,7 +145,7 @@ uint8 NetworkRecv_uint8(NetworkClientState *cs, Packet *packet)
 	return n;
 }
 
-uint16 NetworkRecv_uint16(NetworkClientState *cs, Packet *packet)
+uint16 NetworkRecv_uint16(NetworkSocketHandler *cs, Packet *packet)
 {
 	uint16 n;
 
@@ -159,7 +156,7 @@ uint16 NetworkRecv_uint16(NetworkClientState *cs, Packet *packet)
 	return n;
 }
 
-uint32 NetworkRecv_uint32(NetworkClientState *cs, Packet *packet)
+uint32 NetworkRecv_uint32(NetworkSocketHandler *cs, Packet *packet)
 {
 	uint32 n;
 
@@ -172,7 +169,7 @@ uint32 NetworkRecv_uint32(NetworkClientState *cs, Packet *packet)
 	return n;
 }
 
-uint64 NetworkRecv_uint64(NetworkClientState *cs, Packet *packet)
+uint64 NetworkRecv_uint64(NetworkSocketHandler *cs, Packet *packet)
 {
 	uint64 n;
 
@@ -190,13 +187,13 @@ uint64 NetworkRecv_uint64(NetworkClientState *cs, Packet *packet)
 }
 
 /** Reads a string till it finds a '\0' in the stream */
-void NetworkRecv_string(NetworkClientState *cs, Packet *p, char *buffer, size_t size)
+void NetworkRecv_string(NetworkSocketHandler *cs, Packet *p, char *buffer, size_t size)
 {
 	PacketSize pos;
 	char *bufp = buffer;
 
 	/* Don't allow reading from a closed socket */
-	if (HasClientQuit(cs)) return;
+	if (cs->HasClientQuit()) return;
 
 	pos = p->pos;
 	while (--size > 0 && pos < p->size && (*buffer++ = p->buffer[pos++]) != '\0') {}

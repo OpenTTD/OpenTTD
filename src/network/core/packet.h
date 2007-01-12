@@ -6,22 +6,11 @@
 #ifdef ENABLE_NETWORK
 
 #include "config.h"
+#include "core.h"
 
 /**
  * @file packet.h Basic functions to create, fill and read packets.
  */
-
-typedef struct NetworkClientState NetworkClientState;
-
-/**
- * Queries the network client state struct to determine whether
- * the client has quit. It indirectly also queries whether the
- * packet is corrupt as the connection will be closed if it is
- * reading beyond the boundary of the received packet.
- * @param cs the state to query
- * @param true if the connection should be considered dropped
- */
-bool HasClientQuit(const NetworkClientState *cs);
 
 typedef uint16 PacketSize; ///< Size of the whole packet.
 typedef uint8  PacketType; ///< Identifier for the packet
@@ -58,11 +47,11 @@ void NetworkSend_uint64(Packet *packet, uint64 data);
 void NetworkSend_string(Packet *packet, const char* data);
 
 void NetworkRecv_ReadPacketSize(Packet *packet);
-uint8  NetworkRecv_uint8 (NetworkClientState *cs, Packet *packet);
-uint16 NetworkRecv_uint16(NetworkClientState *cs, Packet *packet);
-uint32 NetworkRecv_uint32(NetworkClientState *cs, Packet *packet);
-uint64 NetworkRecv_uint64(NetworkClientState *cs, Packet *packet);
-void   NetworkRecv_string(NetworkClientState *cs, Packet *packet, char* buffer, size_t size);
+uint8  NetworkRecv_uint8 (NetworkSocketHandler *cs, Packet *packet);
+uint16 NetworkRecv_uint16(NetworkSocketHandler *cs, Packet *packet);
+uint32 NetworkRecv_uint32(NetworkSocketHandler *cs, Packet *packet);
+uint64 NetworkRecv_uint64(NetworkSocketHandler *cs, Packet *packet);
+void   NetworkRecv_string(NetworkSocketHandler *cs, Packet *packet, char* buffer, size_t size);
 
 #endif /* ENABLE_NETWORK */
 

@@ -18,6 +18,26 @@
  * @file tcp.c Basic functions to receive and send TCP packets.
  */
 
+/** Very ugly temporary hack !!! */
+void NetworkTCPSocketHandler::Initialize()
+{
+	this->sock              = INVALID_SOCKET;
+
+	this->index             = 0;
+	this->last_frame        = 0;
+	this->last_frame_server = 0;
+	this->lag_test          = 0;
+
+	this->status            = STATUS_INACTIVE;
+	this->has_quit          = false;
+	this->writable          = false;
+
+	this->packet_queue      = NULL;
+	this->packet_recv       = NULL;
+
+	this->command_queue     = NULL;
+}
+
 /**
  * Functions to help NetworkRecv_Packet/NetworkSend_Packet a bit
  *  A socket can make errors. When that happens this handles what to do.
@@ -25,10 +45,11 @@
  * For servers: close connection and that is it
  * @param cs the client to close the connection of
  * @return the new status
+ * TODO: needs to be splitted when using client and server socket packets
  */
-NetworkRecvStatus CloseConnection(NetworkClientState *cs)
+NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection()
 {
-	NetworkCloseClient(cs);
+	NetworkCloseClient(this);
 
 	/* Clients drop back to the main menu */
 	if (!_network_server && _networking) {
@@ -43,23 +64,13 @@ NetworkRecvStatus CloseConnection(NetworkClientState *cs)
 }
 
 /**
- * Whether the client has quit or not (used in packet.c)
- * @param cs the client to check
- * @return true if the client has quit
- */
-bool HasClientQuit(const NetworkClientState *cs)
-{
-	return cs->has_quit;
-}
-
-/**
  * This function puts the packet in the send-queue and it is send as
  * soon as possible. This is the next tick, or maybe one tick later
  * if the OS-network-buffer is full)
  * @param packet the packet to send
  * @param cs     the client to send to
  */
-void NetworkSend_Packet(Packet *packet, NetworkClientState *cs)
+void NetworkSend_Packet(Packet *packet, NetworkTCPSocketHandler *cs)
 {
 	Packet *p;
 	assert(packet != NULL);
@@ -89,31 +100,31 @@ void NetworkSend_Packet(Packet *packet, NetworkClientState *cs)
  *   3) sending took too long
  * @param cs the client to send the packets for
  */
-bool NetworkSend_Packets(NetworkClientState *cs)
+bool NetworkSend_Packets(NetworkTCPSocketHandler *cs)
 {
 	ssize_t res;
 	Packet *p;
 
 	/* We can not write to this socket!! */
 	if (!cs->writable) return false;
-	if (cs->socket == INVALID_SOCKET) return false;
+	if (!cs->IsConnected()) return false;
 
 	p = cs->packet_queue;
 	while (p != NULL) {
-		res = send(cs->socket, (const char*)p->buffer + p->pos, p->size - p->pos, 0);
+		res = send(cs->sock, (const char*)p->buffer + p->pos, p->size - p->pos, 0);
 		if (res == -1) {
 			int err = GET_LAST_ERROR();
 			if (err != EWOULDBLOCK) {
 				/* Something went wrong.. close client! */
 				DEBUG(net, 0, "send failed with error %d", err);
-				CloseConnection(cs);
+				cs->CloseConnection();
 				return false;
 			}
 			return true;
 		}
 		if (res == 0) {
 			/* Client/server has left us :( */
-			CloseConnection(cs);
+			cs->CloseConnection();
 			return false;
 		}
 
@@ -139,14 +150,14 @@ bool NetworkSend_Packets(NetworkClientState *cs)
  * @param status the variable to store the status into
  * @return the received packet (or NULL when it didn't receive one)
  */
-Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
+Packet *NetworkRecv_Packet(NetworkTCPSocketHandler *cs, NetworkRecvStatus *status)
 {
 	ssize_t res;
 	Packet *p;
 
 	*status = NETWORK_RECV_STATUS_OKAY;
 
-	if (cs->socket == INVALID_SOCKET) return NULL;
+	if (!cs->IsConnected()) return NULL;
 
 	if (cs->packet_recv == NULL) {
 		cs->packet_recv = MallocT<Packet>(1);
@@ -161,14 +172,14 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 	/* Read packet size */
 	if (p->pos < sizeof(PacketSize)) {
 		while (p->pos < sizeof(PacketSize)) {
-			/* Read the size of the packet */
-			res = recv(cs->socket, (char*)p->buffer + p->pos, sizeof(PacketSize) - p->pos, 0);
+		/* Read the size of the packet */
+			res = recv(cs->sock, (char*)p->buffer + p->pos, sizeof(PacketSize) - p->pos, 0);
 			if (res == -1) {
 				int err = GET_LAST_ERROR();
 				if (err != EWOULDBLOCK) {
 					/* Something went wrong... (104 is connection reset by peer) */
 					if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
-					*status = CloseConnection(cs);
+					*status = cs->CloseConnection();
 					return NULL;
 				}
 				/* Connection would block, so stop for now */
@@ -176,7 +187,7 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 			}
 			if (res == 0) {
 				/* Client/server has left */
-				*status = CloseConnection(cs);
+				*status = cs->CloseConnection();
 				return NULL;
 			}
 			p->pos += res;
@@ -185,20 +196,20 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 		NetworkRecv_ReadPacketSize(p);
 
 		if (p->size > SEND_MTU) {
-			*status = CloseConnection(cs);
+			*status = cs->CloseConnection();
 			return NULL;
 		}
 	}
 
 	/* Read rest of packet */
 	while (p->pos < p->size) {
-		res = recv(cs->socket, (char*)p->buffer + p->pos, p->size - p->pos, 0);
+		res = recv(cs->sock, (char*)p->buffer + p->pos, p->size - p->pos, 0);
 		if (res == -1) {
 			int err = GET_LAST_ERROR();
 			if (err != EWOULDBLOCK) {
 				/* Something went wrong... (104 is connection reset by peer) */
 				if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
-				*status = CloseConnection(cs);
+				*status = cs->CloseConnection();
 				return NULL;
 			}
 			/* Connection would block */
@@ -206,7 +217,7 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 		}
 		if (res == 0) {
 			/* Client/server has left */
-			*status = CloseConnection(cs);
+			*status = cs->CloseConnection();
 			return NULL;
 		}
 

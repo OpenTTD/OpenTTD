@@ -13,12 +13,6 @@
  * @file udp.c Basic functions to receive and send UDP packets.
  */
 
-/** Initialize the sockets with an INVALID_SOCKET */
-NetworkUDPSocketHandler::NetworkUDPSocketHandler()
-{
-	this->udp = INVALID_SOCKET;
-}
-
 /**
  * Start listening on the given host and port.
  * @param udp       the place where the (references to the) UDP are stored
@@ -34,8 +28,8 @@ bool NetworkUDPSocketHandler::Listen(const uint32 host, const uint16 port, const
 	/* Make sure socket is closed */
 	this->Close();
 
-	this->udp = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-	if (this->udp == INVALID_SOCKET) {
+	this->sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	if (!this->IsConnected()) {
 		DEBUG(net, 0, "[udp] failed to start UDP listener");
 		return false;
 	}
@@ -44,9 +38,9 @@ bool NetworkUDPSocketHandler::Listen(const uint32 host, const uint16 port, const
 	{
 		unsigned long blocking = 1;
 #ifndef BEOS_NET_SERVER
-		ioctlsocket(this->udp, FIONBIO, &blocking);
+		ioctlsocket(this->sock, FIONBIO, &blocking);
 #else
-		setsockopt(this->udp, SOL_SOCKET, SO_NONBLOCK, &blocking, NULL);
+		setsockopt(this->sock, SOL_SOCKET, SO_NONBLOCK, &blocking, NULL);
 #endif
 	}
 
@@ -55,7 +49,7 @@ bool NetworkUDPSocketHandler::Listen(const uint32 host, const uint16 port, const
 	sin.sin_addr.s_addr = host;
 	sin.sin_port = htons(port);
 
-	if (bind(this->udp, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
+	if (bind(this->sock, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
 		DEBUG(net, 0, "[udp] bind failed on %s:%i", inet_ntoa(*(struct in_addr *)&host), port);
 		return false;
 	}
@@ -64,7 +58,7 @@ bool NetworkUDPSocketHandler::Listen(const uint32 host, const uint16 port, const
 		/* Enable broadcast */
 		unsigned long val = 1;
 #ifndef BEOS_NET_SERVER // will work around this, some day; maybe.
-		setsockopt(this->udp, SOL_SOCKET, SO_BROADCAST, (char *) &val , sizeof(val));
+		setsockopt(this->sock, SOL_SOCKET, SO_BROADCAST, (char *) &val , sizeof(val));
 #endif
 	}
 
@@ -79,12 +73,17 @@ bool NetworkUDPSocketHandler::Listen(const uint32 host, const uint16 port, const
  */
 void NetworkUDPSocketHandler::Close()
 {
-	if (this->udp == INVALID_SOCKET) return;
+	if (!this->IsConnected()) return;
 
-	closesocket(this->udp);
-	this->udp = INVALID_SOCKET;
+	closesocket(this->sock);
+	this->sock = INVALID_SOCKET;
 }
 
+NetworkRecvStatus NetworkUDPSocketHandler::CloseConnection()
+{
+	this->has_quit = true;
+	return NETWORK_RECV_STATUS_OKAY;
+}
 
 /**
  * Send a packet over UDP
@@ -99,7 +98,7 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, const struct sockaddr_in *re
 	NetworkSend_FillPacketSize(p);
 
 	/* Send the buffer */
-	res = sendto(this->udp, (const char*)p->buffer, p->size, 0, (struct sockaddr *)recv, sizeof(*recv));
+	res = sendto(this->sock, (const char*)p->buffer, p->size, 0, (struct sockaddr *)recv, sizeof(*recv));
 
 	/* Check for any errors, but ignore it otherwise */
 	if (res == -1) DEBUG(net, 1, "[udp] sendto failed with: %i", GET_LAST_ERROR());
@@ -117,13 +116,13 @@ void NetworkUDPSocketHandler::ReceivePackets()
 	Packet p;
 	int packet_len;
 
-	if (this->udp == INVALID_SOCKET) return;
+	if (!this->IsConnected()) return;
 
 	packet_len = sizeof(p.buffer);
 	client_len = sizeof(client_addr);
 
 	/* Try to receive anything */
-	nbytes = recvfrom(this->udp, (char*)p.buffer, packet_len, 0, (struct sockaddr *)&client_addr, &client_len);
+	nbytes = recvfrom(this->sock, (char*)p.buffer, packet_len, 0, (struct sockaddr *)&client_addr, &client_len);
 
 	/* We got some bytes for the base header of the packet. */
 	if (nbytes > 2) {
@@ -170,9 +169,9 @@ void NetworkUDPSocketHandler::Send_GRFIdentifier(Packet *p, const GRFConfig *c)
 void NetworkUDPSocketHandler::Recv_GRFIdentifier(Packet *p, GRFConfig *c)
 {
 	uint j;
-	c->grfid = NetworkRecv_uint32(&this->cs, p);
+	c->grfid = NetworkRecv_uint32(this, p);
 	for (j = 0; j < sizeof(c->md5sum); j++) {
-		c->md5sum[j] = NetworkRecv_uint8(&this->cs, p);
+		c->md5sum[j] = NetworkRecv_uint8(this, p);
 	}
 }
 
@@ -246,7 +245,7 @@ void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameI
  */
 void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *info)
 {
-	info->game_info_version = NetworkRecv_uint8(&this->cs, p);
+	info->game_info_version = NetworkRecv_uint8(this, p);
 
 	/*
 	 *              Please observe the order.
@@ -260,7 +259,7 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 		case 4: {
 			GRFConfig **dst = &info->grfconfig;
 			uint i;
-			uint num_grfs = NetworkRecv_uint8(&this->cs, p);
+			uint num_grfs = NetworkRecv_uint8(this, p);
 
 			for (i = 0; i < num_grfs; i++) {
 				GRFConfig *c = CallocT<GRFConfig>(1);
@@ -273,31 +272,31 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 			}
 		} /* Fallthrough */
 		case 3:
-			info->game_date      = NetworkRecv_uint32(&this->cs, p);
-			info->start_date     = NetworkRecv_uint32(&this->cs, p);
+			info->game_date      = NetworkRecv_uint32(this, p);
+			info->start_date     = NetworkRecv_uint32(this, p);
 			/* Fallthrough */
 		case 2:
-			info->companies_max  = NetworkRecv_uint8 (&this->cs, p);
-			info->companies_on   = NetworkRecv_uint8 (&this->cs, p);
-			info->spectators_max = NetworkRecv_uint8 (&this->cs, p);
+			info->companies_max  = NetworkRecv_uint8 (this, p);
+			info->companies_on   = NetworkRecv_uint8 (this, p);
+			info->spectators_max = NetworkRecv_uint8 (this, p);
 			/* Fallthrough */
 		case 1:
-			NetworkRecv_string(&this->cs, p, info->server_name,     sizeof(info->server_name));
-			NetworkRecv_string(&this->cs, p, info->server_revision, sizeof(info->server_revision));
-			info->server_lang    = NetworkRecv_uint8 (&this->cs, p);
-			info->use_password   = NetworkRecv_uint8 (&this->cs, p);
-			info->clients_max    = NetworkRecv_uint8 (&this->cs, p);
-			info->clients_on     = NetworkRecv_uint8 (&this->cs, p);
-			info->spectators_on  = NetworkRecv_uint8 (&this->cs, p);
+			NetworkRecv_string(this, p, info->server_name,     sizeof(info->server_name));
+			NetworkRecv_string(this, p, info->server_revision, sizeof(info->server_revision));
+			info->server_lang    = NetworkRecv_uint8 (this, p);
+			info->use_password   = NetworkRecv_uint8 (this, p);
+			info->clients_max    = NetworkRecv_uint8 (this, p);
+			info->clients_on     = NetworkRecv_uint8 (this, p);
+			info->spectators_on  = NetworkRecv_uint8 (this, p);
 			if (info->game_info_version < 3) { // 16 bits dates got scrapped and are read earlier
-				info->game_date    = NetworkRecv_uint16(&this->cs, p) + DAYS_TILL_ORIGINAL_BASE_YEAR;
-				info->start_date   = NetworkRecv_uint16(&this->cs, p) + DAYS_TILL_ORIGINAL_BASE_YEAR;
+				info->game_date    = NetworkRecv_uint16(this, p) + DAYS_TILL_ORIGINAL_BASE_YEAR;
+				info->start_date   = NetworkRecv_uint16(this, p) + DAYS_TILL_ORIGINAL_BASE_YEAR;
 			}
-			NetworkRecv_string(&this->cs, p, info->map_name, sizeof(info->map_name));
-			info->map_width      = NetworkRecv_uint16(&this->cs, p);
-			info->map_height     = NetworkRecv_uint16(&this->cs, p);
-			info->map_set        = NetworkRecv_uint8 (&this->cs, p);
-			info->dedicated      = (NetworkRecv_uint8(&this->cs, p) != 0);
+			NetworkRecv_string(this, p, info->map_name, sizeof(info->map_name));
+			info->map_width      = NetworkRecv_uint16(this, p);
+			info->map_height     = NetworkRecv_uint16(this, p);
+			info->map_set        = NetworkRecv_uint8 (this, p);
+			info->dedicated      = (NetworkRecv_uint8(this, p) != 0);
 	}
 }
 
@@ -313,13 +312,12 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, const struct sockaddr_i
 {
 	PacketUDPType type;
 
-	/* Fake a client, so we can see when there is an illegal packet */
-	this->cs.socket = INVALID_SOCKET;
-	this->cs.has_quit = false;
+	/* New packet == new client, which has not quit yet */
+	this->has_quit = false;
 
-	type = (PacketUDPType)NetworkRecv_uint8(&this->cs, p);
+	type = (PacketUDPType)NetworkRecv_uint8(this, p);
 
-	switch (this->cs.has_quit ? PACKET_UDP_END : type) {
+	switch (this->HasClientQuit() ? PACKET_UDP_END : type) {
 		UDP_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER);
 		UDP_COMMAND(PACKET_UDP_SERVER_RESPONSE);
 		UDP_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO);
@@ -333,7 +331,7 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, const struct sockaddr_i
 		UDP_COMMAND(PACKET_UDP_SERVER_NEWGRFS);
 
 		default:
-			if (!this->cs.has_quit) {
+			if (this->HasClientQuit()) {
 				DEBUG(net, 0, "[udp] received invalid packet type %d from %s:%d", type,  inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 			} else {
 				DEBUG(net, 0, "[udp] received illegal packet from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
@@ -351,8 +349,8 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, const struct sockaddr_i
 #define DEFINE_UNAVAILABLE_UDP_RECEIVE_COMMAND(type) \
 void NetworkUDPSocketHandler::NetworkPacketReceive_## type ##_command(\
 		Packet *p, const struct sockaddr_in *client_addr) { \
-	DEBUG(net, 0, "[udp] received packet on wrong port from %s:%d", \
-			inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port)); \
+	DEBUG(net, 0, "[udp] received packet type %d on wrong port from %s:%d", \
+			type, inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port)); \
 }
 
 DEFINE_UNAVAILABLE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER);

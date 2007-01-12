@@ -427,7 +427,7 @@ static void PlayersCheckBankrupt(Player *p)
 				/* The server has to handle all administrative issues, for example
 				 * updating and notifying all clients of what has happened */
 				if (_network_server) {
-					const NetworkClientState *cs;
+					NetworkTCPSocketHandler *cs;
 					NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 
 					/* The server has just gone belly-up, mark it as spectator */

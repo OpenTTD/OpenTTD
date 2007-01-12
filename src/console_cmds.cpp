@@ -550,7 +550,7 @@ DEF_CONSOLE_CMD(ConStatus)
 		"active"
 	};
 
-	const NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 
 	if (argc == 0) {
 		IConsoleHelp("List the status of all clients connected to the server. Usage 'status'");
@@ -672,7 +672,7 @@ DEF_CONSOLE_CMD(ConKick)
 DEF_CONSOLE_CMD(ConResetCompany)
 {
 	const Player *p;
-	const NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 	const NetworkClientInfo *ci;
 	PlayerID index;
 

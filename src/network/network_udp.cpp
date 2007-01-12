@@ -93,7 +93,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 
 DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 {
-	NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 	NetworkClientInfo *ci;
 	Packet *packet;
 	Player *player;
@@ -221,7 +221,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 
 	DEBUG(net, 6, "[udp] newgrf data request from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 
-	num_grfs = NetworkRecv_uint8 (&this->cs, p);
+	num_grfs = NetworkRecv_uint8 (this, p);
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
 
 	for (i = 0; i < num_grfs; i++) {
@@ -360,14 +360,15 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_MASTER_RESPONSE_LIST)
 	 * an uint32 (ip) and an uint16 (port) for each pair
 	 */
 
-	ver = NetworkRecv_uint8(&this->cs, p);
-
-	if (this->cs.has_quit) return;
+	ver = NetworkRecv_uint8(this, p);
 
 	if (ver == 1) {
-		for (i = NetworkRecv_uint16(&this->cs, p); i != 0 ; i--) {
-			ip.s_addr = TO_LE32(NetworkRecv_uint32(&this->cs, p));
-			port = NetworkRecv_uint16(&this->cs, p);
+		for (i = NetworkRecv_uint16(this, p); i != 0 ; i--) {
+			ip.s_addr = TO_LE32(NetworkRecv_uint32(this, p));
+			port = NetworkRecv_uint16(this, p);
+
+			/* Somehow we reached the end of the packet */
+			if (this->HasClientQuit()) return;
 			NetworkUDPQueryServer(inet_ntoa(ip), port);
 		}
 	}
@@ -381,7 +382,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 
 	DEBUG(net, 6, "[udp] newgrf data reply from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 
-	num_grfs = NetworkRecv_uint8 (&this->cs, p);
+	num_grfs = NetworkRecv_uint8 (this, p);
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
 
 	for (i = 0; i < num_grfs; i++) {
@@ -390,7 +391,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 		GRFConfig c;
 
 		this->Recv_GRFIdentifier(p, &c);
-		NetworkRecv_string(&this->cs, p, name, sizeof(name));
+		NetworkRecv_string(this, p, name, sizeof(name));
 
 		/* An empty name is not possible under normal circumstances
 		 * and causes problems when showing the NewGRF list. */
@@ -465,7 +466,7 @@ void NetworkUDPQueryMasterServer(void)
 	struct sockaddr_in out_addr;
 	Packet *p;
 
-	if (!_udp_client_socket->IsListening()) {
+	if (!_udp_client_socket->IsConnected()) {
 		if (!_udp_client_socket->Listen(0, 0, true)) return;
 	}
 
@@ -492,7 +493,7 @@ void NetworkUDPSearchGame(void)
 	if (_network_udp_broadcast > 0) return;
 
 	// No UDP-socket yet..
-	if (!_udp_client_socket->IsListening()) {
+	if (!_udp_client_socket->IsConnected()) {
 		if (!_udp_client_socket->Listen(0, 0, true)) return;
 	}
 
@@ -509,7 +510,7 @@ NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port)
 	NetworkGameList *item;
 
 	// No UDP-socket yet..
-	if (!_udp_client_socket->IsListening()) {
+	if (!_udp_client_socket->IsConnected()) {
 		if (!_udp_client_socket->Listen(0, 0, true)) return NULL;
 	}
 
@@ -545,7 +546,7 @@ void NetworkUDPRemoveAdvertise(void)
 	if (!_networking || !_network_server || !_network_udp_server) return;
 
 	/* check for socket */
-	if (!_udp_master_socket->IsListening()) {
+	if (!_udp_master_socket->IsConnected()) {
 		if (!_udp_master_socket->Listen(0, 0, false)) return;
 	}
 
@@ -578,7 +579,7 @@ void NetworkUDPAdvertise(void)
 		return;
 
 	/* check for socket */
-	if (!_udp_master_socket->IsListening()) {
+	if (!_udp_master_socket->IsConnected()) {
 		if (!_udp_master_socket->Listen(0, 0, false)) return;
 	}
 

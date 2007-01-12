@@ -12,7 +12,7 @@
 #include "../helpers.hpp"
 
 // Add a command to the local command queue
-void NetworkAddCommandQueue(NetworkClientState *cs, CommandPacket *cp)
+void NetworkAddCommandQueue(NetworkTCPSocketHandler *cs, CommandPacket *cp)
 {
 	CommandPacket* new_cp = MallocT<CommandPacket>(1);
 
@@ -65,7 +65,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 		//   client on the server can do everything 1 tick faster than others.
 		//   So to keep the game fair, we delay the command with 1 tick
 		//   which gives about the same speed as most clients.
-		NetworkClientState *cs;
+		NetworkTCPSocketHandler *cs;
 
 		// And we queue it for delivery to the clients
 		FOR_ALL_CLIENTS(cs) {

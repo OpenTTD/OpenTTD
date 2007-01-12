@@ -47,7 +47,7 @@ extern NetworkUDPSocketHandler *_udp_master_socket; ///< udp master socket
 
 // Here we keep track of the clients
 //  (and the client uses [0] for his own communication)
-NetworkClientState _clients[MAX_CLIENTS];
+NetworkTCPSocketHandler _clients[MAX_CLIENTS];
 
 
 
@@ -90,9 +90,9 @@ NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip)
 }
 
 // Function that looks up the CS for a given client-index
-NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index)
+NetworkTCPSocketHandler *NetworkFindClientStateFromIndex(uint16 client_index)
 {
-	NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 
 	for (cs = _clients; cs != endof(_clients); cs++) {
 		if (cs->index == client_index) return cs;
@@ -103,7 +103,7 @@ NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index)
 
 // NetworkGetClientName is a server-safe function to get the name of the client
 //  if the user did not send it yet, Client #<no> is used.
-void NetworkGetClientName(char *client_name, size_t size, const NetworkClientState *cs)
+void NetworkGetClientName(char *client_name, size_t size, const NetworkTCPSocketHandler *cs)
 {
 	const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 
@@ -116,7 +116,7 @@ void NetworkGetClientName(char *client_name, size_t size, const NetworkClientSta
 
 byte NetworkSpectatorCount(void)
 {
-	const NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 	byte count = 0;
 
 	FOR_ALL_CLIENTS(cs) {
@@ -197,7 +197,7 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 }
 
 // Calculate the frame-lag of a client
-uint NetworkCalculateLag(const NetworkClientState *cs)
+uint NetworkCalculateLag(const NetworkTCPSocketHandler *cs)
 {
 	int lag = cs->last_frame_server - cs->last_frame;
 	// This client has missed his ACK packet after 1 DAY_TICKS..
@@ -230,7 +230,7 @@ static void ServerStartError(const char *error)
 	NetworkError(STR_NETWORK_ERR_SERVER_START);
 }
 
-static void NetworkClientError(NetworkRecvStatus res, NetworkClientState* cs)
+static void NetworkClientError(NetworkRecvStatus res, NetworkTCPSocketHandler* cs)
 {
 	// First, send a CLIENT_ERROR to the server, so he knows we are
 	//  disconnection (and why!)
@@ -298,7 +298,7 @@ char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last)
 /* Count the number of active clients connected */
 static uint NetworkCountPlayers(void)
 {
-	const NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 	uint count = 0;
 
 	FOR_ALL_CLIENTS(cs) {
@@ -549,9 +549,9 @@ void ParseConnectionString(const char **player, const char **port, char *connect
 
 // Creates a new client from a socket
 //   Used both by the server and the client
-static NetworkClientState *NetworkAllocClient(SOCKET s)
+static NetworkTCPSocketHandler *NetworkAllocClient(SOCKET s)
 {
-	NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 	byte client_no = 0;
 
 	if (_network_server) {
@@ -564,11 +564,8 @@ static NetworkClientState *NetworkAllocClient(SOCKET s)
 	}
 
 	cs = DEREF_CLIENT(client_no);
-	memset(cs, 0, sizeof(*cs));
-	cs->socket = s;
-	cs->last_frame = 0;
-	cs->has_quit = false;
-
+	cs->Initialize();
+	cs->sock = s;
 	cs->last_frame = _frame_counter;
 	cs->last_frame_server = _frame_counter;
 
@@ -588,11 +585,11 @@ static NetworkClientState *NetworkAllocClient(SOCKET s)
 }
 
 // Close a connection
-void NetworkCloseClient(NetworkClientState *cs)
+void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 {
 	NetworkClientInfo *ci;
 	// Socket is already dead
-	if (cs->socket == INVALID_SOCKET) {
+	if (cs->sock == INVALID_SOCKET) {
 		cs->has_quit = true;
 		return;
 	}
@@ -604,7 +601,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 		NetworkErrorCode errorno = NETWORK_ERROR_CONNECTION_LOST;
 		char str[100];
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
-		NetworkClientState *new_cs;
+		NetworkTCPSocketHandler *new_cs;
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
@@ -626,7 +623,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 		NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused", NETWORK_SERVER_INDEX);
 	}
 
-	closesocket(cs->socket);
+	closesocket(cs->sock);
 	cs->writable = false;
 	cs->has_quit = true;
 
@@ -653,7 +650,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 		if (cs->status > STATUS_INACTIVE) _network_game_info.clients_on--;
 		_network_clients_connected--;
 
-		while ((cs + 1) != DEREF_CLIENT(MAX_CLIENTS) && (cs + 1)->socket != INVALID_SOCKET) {
+		while ((cs + 1) != DEREF_CLIENT(MAX_CLIENTS) && (cs + 1)->sock != INVALID_SOCKET) {
 			*cs = *(cs + 1);
 			*ci = *(ci + 1);
 			cs++;
@@ -664,7 +661,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 	}
 
 	// Reset the status of the last socket
-	cs->socket = INVALID_SOCKET;
+	cs->sock = INVALID_SOCKET;
 	cs->status = STATUS_INACTIVE;
 	cs->index = NETWORK_EMPTY_INDEX;
 	ci->client_index = NETWORK_EMPTY_INDEX;
@@ -711,7 +708,7 @@ static bool NetworkConnect(const char *hostname, int port)
 static void NetworkAcceptClients(void)
 {
 	struct sockaddr_in sin;
-	NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 	uint i;
 	bool banned;
 
@@ -827,7 +824,7 @@ static bool NetworkListen(void)
 // Close all current connections
 static void NetworkClose(void)
 {
-	NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 
 	FOR_ALL_CLIENTS(cs) {
 		if (!_network_server) {
@@ -849,16 +846,13 @@ static void NetworkClose(void)
 // Inits the network (cleans sockets and stuff)
 static void NetworkInitialize(void)
 {
-	NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 
 	_local_command_queue = NULL;
 
 	// Clean all client-sockets
-	memset(_clients, 0, sizeof(_clients));
 	for (cs = _clients; cs != &_clients[MAX_CLIENTS]; cs++) {
-		cs->socket = INVALID_SOCKET;
-		cs->status = STATUS_INACTIVE;
-		cs->command_queue = NULL;
+		cs->Initialize();
 	}
 
 	// Clean the client_info memory
@@ -1071,7 +1065,7 @@ bool NetworkServerStart(void)
 void NetworkReboot(void)
 {
 	if (_network_server) {
-		NetworkClientState *cs;
+		NetworkTCPSocketHandler *cs;
 		FOR_ALL_CLIENTS(cs) {
 			SEND_COMMAND(PACKET_SERVER_NEWGAME)(cs);
 			NetworkSend_Packets(cs);
@@ -1095,7 +1089,7 @@ void NetworkReboot(void)
 void NetworkDisconnect(void)
 {
 	if (_network_server) {
-		NetworkClientState *cs;
+		NetworkTCPSocketHandler *cs;
 		FOR_ALL_CLIENTS(cs) {
 			SEND_COMMAND(PACKET_SERVER_SHUTDOWN)(cs);
 			NetworkSend_Packets(cs);
@@ -1122,7 +1116,7 @@ void NetworkDisconnect(void)
 // Receives something from the network
 static bool NetworkReceive(void)
 {
-	NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 	int n;
 	fd_set read_fd, write_fd;
 	struct timeval tv;
@@ -1131,8 +1125,8 @@ static bool NetworkReceive(void)
 	FD_ZERO(&write_fd);
 
 	FOR_ALL_CLIENTS(cs) {
-		FD_SET(cs->socket, &read_fd);
-		FD_SET(cs->socket, &write_fd);
+		FD_SET(cs->sock, &read_fd);
+		FD_SET(cs->sock, &write_fd);
 	}
 
 	// take care of listener port
@@ -1151,8 +1145,8 @@ static bool NetworkReceive(void)
 
 	// read stuff from clients
 	FOR_ALL_CLIENTS(cs) {
-		cs->writable = !!FD_ISSET(cs->socket, &write_fd);
-		if (FD_ISSET(cs->socket, &read_fd)) {
+		cs->writable = !!FD_ISSET(cs->sock, &write_fd);
+		if (FD_ISSET(cs->sock, &read_fd)) {
 			if (_network_server) {
 				NetworkServer_ReadPackets(cs);
 			} else {
@@ -1177,7 +1171,7 @@ static bool NetworkReceive(void)
 // This sends all buffered commands (if possible)
 static void NetworkSend(void)
 {
-	NetworkClientState *cs;
+	NetworkTCPSocketHandler *cs;
 	FOR_ALL_CLIENTS(cs) {
 		if (cs->writable) {
 			NetworkSend_Packets(cs);
