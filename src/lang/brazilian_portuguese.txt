@@ -12,7 +12,7 @@ STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Não há
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}É necessário terreno plano
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Precisa de terreno plano
 STR_0008_WAITING                                                :{BLACK}Aguardando: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (em rota de
@@ -21,44 +21,44 @@ STR_000C_ACCEPTS                                                :{BLACK}Aceita: 
 STR_000D_ACCEPTS                                                :{BLACK}Aceita: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passageiros
-STR_0010_COAL                                                   :Carvão
-STR_0011_MAIL                                                   :Correspondência
-STR_0012_OIL                                                    :Petróleo
-STR_0013_LIVESTOCK                                              :Gado
+STR_0010_COAL                                                   :Carvões
+STR_0011_MAIL                                                   :Correspondências
+STR_0012_OIL                                                    :Petróleos
+STR_0013_LIVESTOCK                                              :Gados
 STR_0014_GOODS                                                  :Bens
-STR_0015_GRAIN                                                  :Grão
-STR_0016_WOOD                                                   :Madeira
-STR_0017_IRON_ORE                                               :Minério de Ferro
-STR_0018_STEEL                                                  :Aço
+STR_0015_GRAIN                                                  :Cereais
+STR_0016_WOOD                                                   :Madeiras
+STR_0017_IRON_ORE                                               :Minérios de Ferro
+STR_0018_STEEL                                                  :Aços
 STR_0019_VALUABLES                                              :Valores
-STR_001A_COPPER_ORE                                             :Minério de Cobre
-STR_001B_MAIZE                                                  :Milho
-STR_001C_FRUIT                                                  :Fruta
+STR_001A_COPPER_ORE                                             :Minérios de Cobre
+STR_001B_MAIZE                                                  :Milhos
+STR_001C_FRUIT                                                  :Frutas
 STR_001D_DIAMONDS                                               :Diamantes
-STR_001E_FOOD                                                   :Comida
-STR_001F_PAPER                                                  :Papel
-STR_0020_GOLD                                                   :Ouro
-STR_0021_WATER                                                  :Água
-STR_0022_WHEAT                                                  :Trigo
-STR_0023_RUBBER                                                 :Borracha
-STR_0024_SUGAR                                                  :Açúcar
+STR_001E_FOOD                                                   :Comidas
+STR_001F_PAPER                                                  :Papéis
+STR_0020_GOLD                                                   :Ouros
+STR_0021_WATER                                                  :Águas
+STR_0022_WHEAT                                                  :Trigos
+STR_0023_RUBBER                                                 :Borrachas
+STR_0024_SUGAR                                                  :Açúcares
 STR_0025_TOYS                                                   :Brinquedos
 STR_0026_CANDY                                                  :Doces
-STR_0027_COLA                                                   :Cola
-STR_0028_COTTON_CANDY                                           :Algodão Doce
+STR_0027_COLA                                                   :Colas
+STR_0028_COTTON_CANDY                                           :Algodões Doces
 STR_0029_BUBBLES                                                :Bolhas
-STR_002A_TOFFEE                                                 :Caramelo
-STR_002B_BATTERIES                                              :Baterias
-STR_002C_PLASTIC                                                :Plástico
+STR_002A_TOFFEE                                                 :Caramelos
+STR_002B_BATTERIES                                              :Pilhas
+STR_002C_PLASTIC                                                :Plásticos
 STR_002D_FIZZY_DRINKS                                           :Refrigerantes
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Passageiros
+STR_002F_PASSENGER                                              :Passageiro
 STR_0030_COAL                                                   :Carvão
 STR_0031_MAIL                                                   :Correspondência
 STR_0032_OIL                                                    :Petróleo
 STR_0033_LIVESTOCK                                              :Gado
-STR_0034_GOODS                                                  :Bens
-STR_0035_GRAIN                                                  :Grão
+STR_0034_GOODS                                                  :Bem
+STR_0035_GRAIN                                                  :Cereal
 STR_0036_WOOD                                                   :Madeira
 STR_0037_IRON_ORE                                               :Minério de Ferro
 STR_0038_STEEL                                                  :Aço
@@ -80,40 +80,40 @@ STR_0047_COLA                                                   :Cola
 STR_0048_COTTON_CANDY                                           :Algodão Doce
 STR_0049_BUBBLE                                                 :Bolha
 STR_004A_TOFFEE                                                 :Caramelo
-STR_004B_BATTERY                                                :Bateria
+STR_004B_BATTERY                                                :Pilha
 STR_004C_PLASTIC                                                :Plástico
 STR_004D_FIZZY_DRINK                                            :Refrigerante
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passageiro{P "" s}
-STR_QUANTITY_COAL                                               :{WEIGHT} de carvão
-STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correspondências
-STR_QUANTITY_OIL                                                :{VOLUME} de petróleo
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} insumo{P "" s} de gado
-STR_QUANTITY_GOODS                                              :{COMMA} caixas de bens
-STR_QUANTITY_GRAIN                                              :{WEIGHT} de cereais
-STR_QUANTITY_WOOD                                               :{WEIGHT} de madeira
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de minério de ferro
-STR_QUANTITY_STEEL                                              :{WEIGHT} de aço
-STR_QUANTITY_VALUABLES                                          :{COMMA} saco{P "" s} de valores
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de minério de cobre
-STR_QUANTITY_MAIZE                                              :{WEIGHT} de milho
-STR_QUANTITY_FRUIT                                              :{WEIGHT} de fruta
-STR_QUANTITY_DIAMONDS                                           :{COMMA} saco{P "" s} de diamantes
-STR_QUANTITY_FOOD                                               :{WEIGHT} de comida
-STR_QUANTITY_PAPER                                              :{WEIGHT} de papel
+STR_QUANTITY_COAL                                               :{WEIGHT} de carv{P ão ões}
+STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correspondência{P "" s}
+STR_QUANTITY_OIL                                                :{VOLUME} de petróleo{P "" s}
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} insumo{P "" s} de gado{P "" s}
+STR_QUANTITY_GOODS                                              :{COMMA} caixa{P "" s} de be{P m ns}
+STR_QUANTITY_GRAIN                                              :{WEIGHT} de cerea{P l is}
+STR_QUANTITY_WOOD                                               :{WEIGHT} de madeira{P "" s}
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de minério{P "" s} de ferro
+STR_QUANTITY_STEEL                                              :{WEIGHT} de aço{P "" s}
+STR_QUANTITY_VALUABLES                                          :{COMMA} saco{P "" s} de valor{P "" es}
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de minério{P "" s} de cobre
+STR_QUANTITY_MAIZE                                              :{WEIGHT} de milho{P "" s}
+STR_QUANTITY_FRUIT                                              :{WEIGHT} de fruta{P "" s}
+STR_QUANTITY_DIAMONDS                                           :{COMMA} saco{P "" s} de diamante{P "" s}
+STR_QUANTITY_FOOD                                               :{WEIGHT} de comida{P "" s}
+STR_QUANTITY_PAPER                                              :{WEIGHT} de pap{P el éis}
 STR_QUANTITY_GOLD                                               :{COMMA} saco{P "" s} de ouro
-STR_QUANTITY_WATER                                              :{VOLUME} de água
-STR_QUANTITY_WHEAT                                              :{WEIGHT} de trigo
-STR_QUANTITY_RUBBER                                             :{VOLUME} de borracha
-STR_QUANTITY_SUGAR                                              :{WEIGHT} de açúcar
+STR_QUANTITY_WATER                                              :{VOLUME} de água{P "" s}
+STR_QUANTITY_WHEAT                                              :{WEIGHT} de trigo{P "" s}
+STR_QUANTITY_RUBBER                                             :{VOLUME} de borracha{P "" s}
+STR_QUANTITY_SUGAR                                              :{WEIGHT} de açúcar{P "" es}
 STR_QUANTITY_TOYS                                               :{COMMA} brinquedo{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} saco{P "" s} de doces
-STR_QUANTITY_COLA                                               :{VOLUME} de cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de algodão doce
+STR_QUANTITY_SWEETS                                             :{COMMA} saco{P "" s} de doce{P "" s}
+STR_QUANTITY_COLA                                               :{VOLUME} de cola{P "" s}
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de algod{P ão ões} doce{P "" s}
 STR_QUANTITY_BUBBLES                                            :{COMMA} bolha{P "" s}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} de caramelo
-STR_QUANTITY_BATTERIES                                          :{COMMA} bateria{P "" s}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} de plástico
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} de caramelo{P "" s}
+STR_QUANTITY_BATTERIES                                          :{COMMA} pilha{P "" s}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} de plástico{P "" s}
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} refrigerante{P "" s}
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
@@ -152,7 +152,7 @@ STR_ABBREV_ALL                                                  :{TINYFONT}TODOS
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Opções de Jogo
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Opções do Jogo
 STR_00B2_MESSAGE                                                :{YELLOW}Mensagem
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mensagem de {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Cuidado!
@@ -362,9 +362,9 @@ STR_015E_QUIT_GAME                                              :Abandonar jogo
 STR_015F_QUIT                                                   :Sair
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Tem certeza que deseja abandonar este jogo?
 STR_0161_QUIT_GAME                                              :{WHITE}Abandonar jogo
-STR_SORT_ORDER_TIP                                              :{BLACK}Selecione forma de classificação (descendente/ascendente)
+STR_SORT_ORDER_TIP                                              :{BLACK}Selecione forma de ordenação (descendente/ascendente)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecione um critério de classificação
-STR_SORT_BY                                                     :{BLACK}Classificar por
+STR_SORT_BY                                                     :{BLACK}Ordenar por
 
 STR_SORT_BY_POPULATION                                          :{BLACK}População
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produção
@@ -393,17 +393,17 @@ STR_ENGINE_SORT_RUNNING_COST                                    :Custo de Manute
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potência por Custo
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade de Carga
 STR_NO_WAITING_CARGO                                            :{BLACK}Não há carga de nenhum tipo aguardando
-STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleicionar todas as instalações
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Selecionar todas as instalações
 STR_SELECT_ALL_TYPES                                            :{BLACK}Selecionar todos os tipos de carga (inclusive as que não tem espera)
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Ver uma lista dos designs de motor disponíveis para este tipo de veículo.
 STR_MANAGE_LIST                                                 :{BLACK}Administrar lista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Envia instruções a todos os veículos desta lista
 STR_REPLACE_VEHICLES                                            :Substituir Veículos
 STR_SEND_TRAIN_TO_DEPOT                                         :Enviar para Depósito
-STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Enviar para Depósito
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Enviar para Garagem
 STR_SEND_SHIP_TO_DEPOT                                          :Enviar para Depósito
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Enviar para Hangar
-STR_SEND_FOR_SERVICING                                          :Mandar para a Manutenção
+STR_SEND_FOR_SERVICING                                          :Enviar para Manutenção
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -596,7 +596,7 @@ STR_MESSAGES_ALL                                                :{YELLOW}Configu
 STR_MESSAGE_SOUND                                               :{YELLOW}Tocar som para notícias resumidas
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...muito distante do destino anterior
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top de companhias que chegaram a {NUM}{}({STRING} Nível)
-STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabela da Liga de Companhias em {NUM}
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabela da Liga de Empresas em {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Negociante
 STR_0214_ENTREPRENEUR                                           :Empresário
@@ -800,7 +800,7 @@ STR_02DE_MAP_OF_WORLD                                           :Mapa do mundo
 STR_EXTRA_VIEW_PORT                                             :Visualizador extra
 STR_SIGN_LIST                                                   :Lista de sinais
 STR_02DF_TOWN_DIRECTORY                                         :Lista de cidades
-STR_TOWN_POPULATION                                             :{BLACK}População Mundial: {COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}População mundial: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Visualizador {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar para o visualizador
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar a localização do visualizador global para este visualizador
@@ -872,7 +872,7 @@ STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inglês
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inglês (Original)
 STR_TOWNNAME_FRENCH                                             :Francês
 STR_TOWNNAME_GERMAN                                             :Alemão
 STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Inglês (Adicional)
@@ -982,15 +982,15 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}O trem {COMMA} tem muito poucas ordens definidas
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}O trem {COMMA} tem uma ordem inválida
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}O trem {COMMA} tem ordens duplicadas
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}O trem {COMMA} tem uma estação inválida nas suas ordens
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}O trem {COMMA} possui poucas ordens definidas
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}O trem {COMMA} possui uma ordem inválida
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}O trem {COMMA} possui ordens duplicadas
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}O trem {COMMA} possui uma estação inválida em suas ordens
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}O veículo de estrada {COMMA} tem muito poucas ordens definidas
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}O veículo de estrada {COMMA} tem uma ordem inválida
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}O veículo de estrada {COMMA} tem ordens duplicadas
 STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}O veículo de estrada {COMMA} tem uma estação inválida nas suas ordens
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}O barco {COMMA} tem muito poucas ordens definidas
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}O barco {COMMA} tem poucas ordens definidas
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}O barco {COMMA} tem uma ordem inválida
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}O barco {COMMA} tem ordens duplicadas
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}O barco {COMMA} tem uma estação inválida nas suas ordens
@@ -1143,7 +1143,7 @@ STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Usar YA
 STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Usar YAPF para trens: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :terreno temperado
-STR_SUB_ARCTIC_LANDSCAPE                                        :terreno subárctico
+STR_SUB_ARCTIC_LANDSCAPE                                        :terreno subártico
 STR_SUB_TROPICAL_LANDSCAPE                                      :terreno subtropical
 STR_TOYLAND_LANDSCAPE                                           :terreno 'toyland'
 
@@ -1549,7 +1549,7 @@ STR_1021_RAILROAD_TRACK                                         :Ferrovias
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Depósito ferroviário
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...a área é propriedade de outra empresa
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia com sinais normais
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ferrovia com pre-sinais
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ferrovia com pré-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ferrovia com sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ferrovia com sinais combinados
 
@@ -1782,8 +1782,8 @@ STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...Esta�
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Segure CTRL para selecionar mais de um item
 
 STR_UNDEFINED                                                   :(undefined string)
-STR_STAT_CLASS_DFLT                                             :Estação Padrão
-STR_STAT_CLASS_WAYP                                             :Pontos de Controle
+STR_STAT_CLASS_DFLT                                             :Estação padrão
+STR_STAT_CLASS_WAYP                                             :Pontos de controle
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientação do Depósito
@@ -1939,17 +1939,17 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...já a
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sem nome
 STR_SV_TRAIN_NAME                                               :Trem {COMMA}
-STR_SV_ROADVEH_NAME                                             :Veículo de Estrada {COMMA}
+STR_SV_ROADVEH_NAME                                             :Veículo {COMMA}
 STR_SV_SHIP_NAME                                                :Barco {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :Norte de {STRING}
 STR_SV_STNAME_SOUTH                                             :Sul de {STRING}
-STR_SV_STNAME_EAST                                              :{STRING} Leste
+STR_SV_STNAME_EAST                                              :Leste de {STRING}
 STR_SV_STNAME_WEST                                              :Oeste de {STRING}
 STR_SV_STNAME_CENTRAL                                           :Central de {STRING}
-STR_SV_STNAME_TRANSFER                                          :{STRING} Baldeação
+STR_SV_STNAME_TRANSFER                                          :Baldeação de {STRING}
 STR_SV_STNAME_HALT                                              :Parada de {STRING}
 STR_SV_STNAME_VALLEY                                            :Vale de {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Montes de {STRING}
@@ -2169,7 +2169,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Ver sede
 STR_RELOCATE_HQ                                                 :{BLACK}Mover sede
 STR_COMPANY_PASSWORD                                            :{BLACK}Senha
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Usar senha na empresa para prevenir utilizadores não autorizados.
-STR_SET_COMPANY_PASSWORD                                        :Definir senha da empresa
+STR_SET_COMPANY_PASSWORD                                        :Definir senha para empresa
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recesso Mundial!{}{}Economistas temem crise!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Fim do recesso!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Alternar entre janela grande/pequena
@@ -2622,8 +2622,8 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Não é 
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Força o veículo a deixar a carga na ordem selecionada
 STR_886F_TRANSFER                                               :{BLACK}Transferir
 
-STR_TRAIN_STOPPING                                              :{RED}A Parar
-STR_TRAIN_STOPPING_VEL                                          :{RED}A Parar, {VELOCITY}
+STR_TRAIN_STOPPING                                              :{RED}Parando
+STR_TRAIN_STOPPING_VEL                                          :{RED}Parando, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo de ferrovia incompatível
 STR_TRAIN_NO_POWER                                              :{RED}Sem força
 STR_TRAIN_START_NO_CATENARY                                     :Essa linha não tem energia, portanto o trem não parte
@@ -2686,7 +2686,7 @@ STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renomear
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renomear tipo de veículo
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Não é possível renomear tipo de veículo
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Ir para a garagem de {TOWN}
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Manutenção no depósito de {TOWN}
+STR_SERVICE_AT_ROADVEH_DEPOT                                    :Manutenção na garagem de {TOWN}
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reacondicionar veículo para carregar tipo de carga diferente
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reacondicionar automóvel
@@ -2934,14 +2934,14 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Tre{P m ns}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Veiculos de Estrada
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aviões
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Navio
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Veículo{P "" s}
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aeronave
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Barco
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostrar todos os trens que têm esta estação nas ordens de serviço
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar todos os veiculos de estrada que têm esta estação nas ordens de serviço
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar todos os aviões que têm esta estação nas ordens de serviço
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar todos os navios de cujo itinerário esta estação faz parte
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostrar todos os trens que possuem esta estação nas ordens de serviço
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar todos os veículos que possuem esta estação nas ordens de serviço
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar todas as aeronaves que possuem esta estação nas ordens de serviço
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar todos os barcos que possuem esta estação nas ordens de serviço
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordens compartilhadas de {COMMA} veículo{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra todos os veículos com a mesma rota
@@ -2974,11 +2974,11 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar Substituição de Veículos
 STR_NOT_REPLACING                                               :{BLACK}Não substituindo
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Nenhum veículo seleccionado
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Seleccione o tipo de motor a substituir
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Seleccione o novo tipo de motor para substituir o que seleccionou à esquerda
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pressione para parar a subsituição do tipo de motor que seleccionou à esquerda
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pressione para iniciar a substituição do tipo de motor que seleccionou à esquerda, com o tipo de motor seleccionado à direita
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccione o tipo de carril para o qual deseja efectuar a substituição dos motores
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecione o de motor para substituir
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecione o novo tipo de motor para substituir o que selecionou à esquerda
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pressione para parar a subsituição do tipo de motor que selecionou à esquerda
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pressione para iniciar a substituição do tipo de motor que selecionou à esquerda, com o tipo de motor seleccionado à direita
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecione o tipo de carga para o qual deseja efetuar a substituição dos motores
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
 STR_REPLACE_HELP                                                :{BLACK}Permite a substiuição de um tipo de motor por outro, quando comboios do tipo original entram num depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoção de vagões: {ORANGE}{SKIP}{STRING}
@@ -3004,7 +3004,7 @@ STR_MASS_STOP_LIST_TIP                                          :{BLACK}Clique p
 STR_MASS_START_LIST_TIP                                         :{BLACK}Clique para mandar todos os veículos para o trabalho
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sina{P l is}
 
 STR_ORDER_REFIT_FAILED                                          :{WHITE}Erro na ordem de readaptação {STRING} {COMMA}
 
