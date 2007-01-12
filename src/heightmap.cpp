@@ -287,18 +287,15 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 
 	/* Get map size and calculate scale and padding values */
 	switch (_patches.heightmap_rotation) {
-	case HM_COUNTER_CLOCKWISE:
-		width   = MapSizeX();
-		height  = MapSizeY();
-		break;
-	case HM_CLOCKWISE:
-		width   = MapSizeY();
-		height  = MapSizeX();
-		break;
-	default:
-		NOT_REACHED();
-		/* Avoids compiler warnings */
-		return;
+		default: NOT_REACHED();
+		case HM_COUNTER_CLOCKWISE:
+			width   = MapSizeX();
+			height  = MapSizeY();
+			break;
+		case HM_CLOCKWISE:
+			width   = MapSizeY();
+			height  = MapSizeX();
+			break;
 	}
 
 	if ((img_width * num_div) / img_height > ((width * num_div) / height)) {
@@ -315,9 +312,9 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 	for (row = 0; row < height - 1; row++) {
 		for (col = 0; col < width - 1; col++) {
 			switch (_patches.heightmap_rotation) {
-			case HM_COUNTER_CLOCKWISE: tile = TileXY(col, row); break;
-			case HM_CLOCKWISE:         tile = TileXY(row, col); break;
-			default:                   NOT_REACHED(); return;
+				default: NOT_REACHED();
+				case HM_COUNTER_CLOCKWISE: tile = TileXY(col, row); break;
+				case HM_CLOCKWISE:         tile = TileXY(row, col); break;
 			}
 
 			/* Check if current tile is within the 1-pixel map edge or padding regions */
@@ -330,16 +327,13 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 				 *  We rotate the map 45 degrees (counter)clockwise */
 				img_row = (((row - row_pad) * num_div) / img_scale);
 				switch (_patches.heightmap_rotation) {
-				case HM_COUNTER_CLOCKWISE:
-					img_col = (((width - 1 - col - col_pad) * num_div) / img_scale);
-					break;
-				case HM_CLOCKWISE:
-					img_col = (((col - col_pad) * num_div) / img_scale);
-					break;
-				default:
-					NOT_REACHED();
-					/* Avoids compiler warnings */
-					return;
+					default: NOT_REACHED();
+					case HM_COUNTER_CLOCKWISE:
+						img_col = (((width - 1 - col - col_pad) * num_div) / img_scale);
+						break;
+					case HM_CLOCKWISE:
+						img_col = (((col - col_pad) * num_div) / img_scale);
+						break;
 				}
 
 				assert(img_row < img_height);
@@ -408,17 +402,13 @@ static void FixSlopes(void)
 static bool ReadHeightMap(char *filename, uint *x, uint *y, byte **map)
 {
 	switch (_file_to_saveload.mode) {
+		default: NOT_REACHED();
 #ifdef WITH_PNG
 		case SL_PNG:
 			return ReadHeightmapPNG(filename, x, y, map);
 #endif /* WITH_PNG */
 		case SL_BMP:
 			return ReadHeightmapBMP(filename, x, y, map);
-
-		default:
-			NOT_REACHED();
-			/* Avoids compiler warnings */
-			return false;
 	}
 }
 
