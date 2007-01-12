@@ -313,16 +313,30 @@
 			</FileConfiguration>
 		</File>
 		<File
-			RelativePath="..\src\lang\norwegian.txt"
+			RelativePath="..\src\lang\norwegian-bokmal.txt"
 			>
 			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"
-					Description="Generating norwegian language file"
+					Description="Generating norwegian-bokmal language file"
 					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					AdditionalDependencies=""
-					Outputs="..\bin\lang\norwegian.lng"
+					Outputs="..\bin\lang\norwegian-bokmal.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath="..\src\lang\norwegian-nynorsk.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating norwegian-nynorsk language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					AdditionalDependencies=""
+					Outputs="..\bin\lang\norwegian-nynorsk.lng"
 				/>
 			</FileConfiguration>
 		</File>
