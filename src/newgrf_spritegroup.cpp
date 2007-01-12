@@ -144,7 +144,8 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		/* Try to get the variable. We shall assume it is available, unless told otherwise. */
 		bool available = true;
 		if (adjust->variable == 0x7E) {
-			const SpriteGroup *subgroup = Resolve(adjust->subroutine, object);
+			ResolverObject subobject = *object;
+			const SpriteGroup *subgroup = Resolve(adjust->subroutine, &subobject);
 			if (subgroup == NULL || subgroup->type != SGT_CALLBACK) {
 				value = CALLBACK_FAILED;
 			} else {
