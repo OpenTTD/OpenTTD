@@ -104,6 +104,8 @@ STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} šeće
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} mliječne karamele
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastike
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
+STR_ABBREV_ALL                                                  :{TINYFONT}SVE
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Karta - {STRING}
@@ -309,6 +311,7 @@ STR_015C_SAVE_GAME                                              :Spremi igru
 STR_015D_LOAD_GAME                                              :Učitaj igru
 STR_015E_QUIT_GAME                                              :Napusti igru
 STR_015F_QUIT                                                   :Izlaz
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Jesi li siguran da želiš napustiti ovu igru?
 STR_0161_QUIT_GAME                                              :{WHITE}Napusti igru
 STR_SORT_ORDER_TIP                                              :{BLACK}Izaberi način sortiranja (silazno/uzlazno)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Izaberi kriterij za sortiranje
@@ -342,6 +345,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Nosivost tereta
 STR_NO_WAITING_CARGO                                            :{BLACK}Nijedna vrsta tereta ne čeka
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Izaberi sva sredstva
 STR_SELECT_ALL_TYPES                                            :{BLACK}Izaberi sve vrste tereta (uključujući i teret koji ne čeka)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Pogledaj popis dostupnih dizajna motora za ovu vrstu vozila.
 
 ############ range for months starts
 STR_0162_JAN                                                    :Sij
@@ -514,6 +518,7 @@ STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Ne možeš izgraditi nije jedan grad
 STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Tvornica gaziranih pića
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Generator balona
 STR_0260_TOFFEE_QUARRY                                          :{BLACK}Iskop mliječne karamele
@@ -767,23 +772,41 @@ STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Ne možeš dijeliti listu naredbi...
+STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Ne možeš kopirati listu naredbi...
 
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Zrakoplov {COMMA} ima premalo naredbi u svom rasporedu
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Zrakoplov {COMMA} ima praznu naredbu
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Zrakoplov {COMMA} ima duplikate naredbi
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Zrakoplov {COMMA} ima pogrešnu stanicu u svojim naredbama
 # end of order system
 
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Neuspjela automatska zamjena zrakoplova {COMMA} (novčano ograničenje)
+
+STR_CONFIG_PATCHES                                              :{BLACK}Konfiguriraj zakrpe
+
+
+
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatski zamijeni vozilo kada postane staro
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automatski obnovi vozilo kada je {ORANGE}{STRING}{LTBLUE} mjeseci prije/poslije maksimalnog godišta
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimum novca potrebnih za automatsko obnavljanje: {ORANGE}{STRING}
 
 
 
 
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Isključi vlakove za računalo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Isključi cestovna vozila za računalo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Isključi zrakoplov za računalo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Isključi cestovna vozila za računalo: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Omogući novi AI (alfa): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Omogući AI u modu s više igrača (eksperimentalno): {ORANGE}{STRING}
 
 
-
-
-
-
-
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Dopusti kupovanje udjela drugih tvrtki
 
 STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Vozila
 STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stanice
@@ -796,22 +819,39 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 
 
+STR_CHEATS                                                      :{WHITE}Varanje
+STR_CHEATS_TIP                                                  :{BLACK}Kvačice ukazuju na to jesi li koristio ovo varanje prije
+STR_CHEATS_WARNING                                              :{BLACK}Upozorenje! Upravo se spremaš izdati svoj kolege natjecatelje. Imaj na umu da se takva sramota pamti zauvijek.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Povećava novce za {CURRENCY64}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Igraj kao igrač: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Čudesni buldožer (uklanja industrije, nepokretne objekte): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneli se mogu ukrštavati međusobno: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Gradi dok je vrijeme zaustavljeno: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Veliki avioni se ne će rušiti (često) na malim zračnim lukama: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Promijeni klimu: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Promijeni datum: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Omogući izmjeni produkcijskih vrijednosti: {ORANGE}{STRING}
 
 
 
 
 
 
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Ne možeš promijeniti ime smjerokaza...
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Ne možeš izgraditi željeznički smjerokaz ovdje...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Ne možeš ukloniti željeznički smjerokaz odavdje...
+
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Izgradi željezničku tračnicu koristeći Autorail modus
 
 
-
+STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Ne možeš generirati gospodarstva...
 
 
 
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Stavi drveće nasumičnog tipa
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Ovdje ne možeš graditi kanale...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Izgradi kanale. Pritisni CTRL kako bi smjestio vodone pločice (samo na razini mora).
+STR_BUILD_CANALS_TIP                                            :{BLACK}Izgradi kanale. Pritisni CTRL kako bi smjestio vodene pločice (samo na razini mora).
 STR_LANDINFO_CANAL                                              :Kanal
 
 
@@ -820,6 +860,7 @@ STR_BUOY_IS_IN_USE                                              :{WHITE}...pluta
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinate: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Ne možeš ukloniti dio stanice...
+STR_CANT_CONVERT_RAIL                                           :{WHITE}Ne možeš pretvoriti vrstu tračnica ovdje...
 
 
 
@@ -985,6 +1026,8 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Razgovaraj s tv
 ##### PNG-MAP-Loader
 
 
+STR_BMPMAP_ERROR                                                :{WHITE}Ne mogu učitati krajolik iz BMP...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ne mogu pretvoriti tip slike.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Trošak: {CURRENCY}
@@ -1613,6 +1656,8 @@ STR_706F_BUILD_HQ                                               :{BLACK}Izgradi 
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Izgradi središte tvrtke / pogledaj sjedište tvrtke
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Ne mogu izgraditi sjedište tvrke...
 STR_7072_VIEW_HQ                                                :{BLACK}Pogledaj sjedište tvrtke
+STR_COMPANY_PASSWORD                                            :{BLACK}Zaporka
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Zaštiti svoju tvrku od neovlaštenog korištenje pomoću zaporke.
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svjetska recesija!{}{}Financijski stručnjaci očekuju najgore zbog ekonomske krize!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesija završena!{}{}Obrat  u trgovanu daje samopouzdanje gospodarstvu jer ekonomija jača!
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kupi 25% udjela u tvrtci
@@ -1739,9 +1784,13 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlakovi 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nova željeznička vozila
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nova monorail vozila
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nova maglev vozila
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Željeznička vozila
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Izgradi vozilo
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kloniraj vozilo
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Ovo će izgraditi kopiju cestovnog vozila. Control-clik će dijeliti naredbe
 STR_CLONE_TRAIN                                                 :{BLACK}Kloniraj vlak
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Ovo će izgraditi kopiju vlaka uključujući sve vagone. Control-klik će dijeliti naredbe
 STR_8820_RENAME                                                 :{BLACK}Preimenuj
 STR_8823_SKIP                                                   :{BLACK}Preskoči
 STR_8824_DELETE                                                 :{BLACK}Obriši
@@ -1871,7 +1920,7 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Novi bro
 STR_9808_NEW_SHIPS                                              :{WHITE}Novi brodovi
 STR_9809_BUILD_SHIP                                             :{BLACK}Izgradi brod
 STR_CLONE_SHIP                                                  :{BLACK}Kloniraj brod
-STR_CLONE_SHIP_INFO                                             :{BLACK}Ovo će izgradi kopiju broda. Control-klik će doprinijeti dijeljenju naredbi
+STR_CLONE_SHIP_INFO                                             :{BLACK}Ovo će izgradi kopiju broda. Control-klik će dijeliti naredbe
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Brod mora biti zaustavljen u spremištu
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Ne mogu prodati brod...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ne mogu izgraditi brod...
@@ -1924,6 +1973,8 @@ SERVICE_AT_SHIP_DEPOT                                           :Servis u brodsk
 STR_A000_AIRPORTS                                               :{WHITE}Zračne luke
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Ne možeš graditi zračnu luku ovdje...
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Novi zrakoplov
+STR_CLONE_AIRCRAFT                                              :{BLACK}Kloniraj zrakoplov
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Ovo će izgraditi kopiju zrakoplova. Control-klik će dijeliti naredbe
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Novi zrakoplov
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Izgradi zrakoplov
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Ne mogu izgraditi zrakoplov...
@@ -1944,11 +1995,43 @@ STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Izgradi 
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Povuci zrakoplov ovdje kako bi ga prodao
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centriraj glavni pogled na lokaciju hangara
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Popis zrakoplova - klini na zrakoplov za informacije
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Izgradi označeni zrakoplov
+STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Prikaži naredbe zrakoplova
+STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Prikaži detalje zrakoplova
+STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Novi zrakoplov od sada dostupan!
+STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 
+STR_A030_NAME_AIRCRAFT                                          :{WHITE}Imenuj zrakoplov
+STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Ne mogu imenovati zrakoplov...
+STR_A032_NAME_AIRCRAFT                                          :{BLACK}Imenuj zrakoplov
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi zrakoplov stigao je na {STATION}!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Pad zrakoplova!{}{COMMA} poginulih u eksploziji na {STATION}
+STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
+STR_A037_RENAME                                                 :{BLACK}Preimenuj
+STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Preimenuj vrstu zrakoplova
+STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Preimenuj vrstu zrakoplova
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Ne mogu preimenovati vrstu zrakoplova...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Prenamijeni zrakoplov da nosi drugu vrstu tereta
+STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Prenamijeni)
+STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Prenamijeni zrakoplov
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izaberi vrstu tereta koju će zrakoplov nositi
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Prenamijeni zrakoplov da nosi označenu vrstu tereta
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Označi vrstu tereta za prijenos:
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Novi kapacitet: {GOLD}{STRING}{}{BLACK}Trošak prenamijene: {GOLD}{CURRENCY}
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ne mogu prenamijeniti zrakoplov...
 SERVICE_AT_AIRPORT_HANGAR                                       :Servisiranje u hangaru {STATION}
 
 ##id 0xB000
+STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Cepelin je pao kod {STATION}!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Cestovno vozilo uništeno u 'NLO' sudaru!
+STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Eksplozija rafinerije nafte blizu {TOWN}!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Tvornica uništena pod sumnjivim okolnostima u blizini {TOWN}!
+STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'NLO' sletio blizu {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Poplave!{}Najmanje {COMMA} nestalih, pretpostavlja se poginulih nakon značajnih poplava!
 
+STR_BRIBE_FAILED                                                :{WHITE}Tvoj pokušaj podmićivanja je
+STR_BRIBE_FAILED_2                                              :{WHITE}otkriven od strane regionalnog istražitelja
+STR_BUILD_DATE                                                  :{BLACK}Izgrađeno: {LTBLUE}{DATE_LONG}
 
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
@@ -2026,9 +2109,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izaberi 
 
 ########### String for New Landscape Generator
 
+STR_CLEARING_TILES                                              :{BLACK}Generiranje grubog i stjenovitog područja
 
 
 ########### String for new airports
+STR_CITY_AIRPORT                                                :{BLACK}Grad
+STR_COMMUTER_AIRPORT                                            :{BLACK}Redoviti putnik
 
 
 ############ Tooltip measurment

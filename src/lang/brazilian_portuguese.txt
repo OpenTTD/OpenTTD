@@ -328,8 +328,8 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P "" s}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonelada{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
@@ -459,13 +459,13 @@ STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Baixar u
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Elevar um canto do terreno
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Barra de rolagem - rola a lista acima/abaixo
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Barra de rolagem - Move a lista para esquerda/direita
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Mostrar contornos do terreno no mapa
-STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Mostrar veículos no mapa
-STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Mostrar indústrias no mapa
-STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Mostrar rotas de transporte no mapa
-STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Mostrar vegetação no mapa
-STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Mostrar proprietários do terreno no mapa
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Mostrar nomes das cidades no mapa
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Exibir o relevo do terreno no mapa
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Exibir os veículos no mapa
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Exibir as indústrias no mapa
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Exibir as rotas de transporte no mapa
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Exibir a vegetação no mapa
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Exibir os proprietários do terreno no mapa
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Exibir os nomes das cidades no mapa
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Lucro deste ano: {CURRENCY} (ano passado: {CURRENCY})
 
 ############ range for service numbers starts
@@ -473,7 +473,7 @@ STR_AGE                                                         :{COMMA} ano{P "
 STR_AGE_RED                                                     :{RED}{COMMA} ano{P "" s} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Veículo
+STR_019C_ROAD_VEHICLE                                           :Automóvel
 STR_019D_AIRCRAFT                                               :Aeronave
 STR_019E_SHIP                                                   :Barco
 STR_019F_TRAIN                                                  :Trem
@@ -639,7 +639,7 @@ STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...muito
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...local inadequado
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...muitas cidades
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Impossível construir qualquer cidade
-STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...não há espaço no mapa
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...não há mais espaço no mapa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Aumentar o tamanho da cidade
 STR_023C_EXPAND                                                 :{BLACK}Expandir
 STR_023D_RANDOM_TOWN                                            :{BLACK}Cidade Aleatória
@@ -753,7 +753,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamanho
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Mostrar a última mensagem ou notícia
-STR_OFF                                                         :Off
+STR_OFF                                                         :Desligado
 STR_SUMMARY                                                     :Resumo
 STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
@@ -792,8 +792,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Captura gigante
 STR_02D9_ABOUT_OPENTTD                                          :Sobre o OpenTTD...
 ############ range ends	here
 
-STR_02DB_OFF                                                    :{BLACK}Desativado
-STR_02DA_ON                                                     :{BLACK}Ativado
+STR_02DB_OFF                                                    :{BLACK}Desativar
+STR_02DA_ON                                                     :{BLACK}Ativar
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Mostrar subsídios
 STR_02DD_SUBSIDIES                                              :Subsídios
 STR_02DE_MAP_OF_WORLD                                           :Mapa do mundo
@@ -1185,7 +1185,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Não é 
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construir ferrovias usando o modo automático
 
-STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...não existe nenhuma cidade neste cenário
+STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...não existe cidade neste cenário
 
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Tem certeza que deseja criar um terreno aleatório?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Várias cidades aleatórias
@@ -1291,17 +1291,17 @@ STR_NETWORK_FIND_SERVER                                         :{BLACK}Localiza
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Pesquisar por um servidor na rede
 STR_NETWORK_ADD_SERVER                                          :{BLACK}Adicionar servidor
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Adiciona um servidor à lista que será sempre verificada se existem jogos ocorrendo.
-STR_NETWORK_ENTER_IP                                            :{BLACK}Introduza o endereço IP do servidor
+STR_NETWORK_ENTER_IP                                            :{BLACK}Coloque o endereço IP do servidor
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clientes
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clientes ligados / max. clientes
-STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAÇÃO DE JOGO
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clientes ligados / max. clientes{}Empresas ligados / max, empresas
+STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAÇÃO DO JOGO
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamanho do Mapa:  {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamanho do mapa:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versão do servidor:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}IP do servidor:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Data de inicio:  {WHITE}{DATE_SHORT}
@@ -1312,7 +1312,7 @@ STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVIDO
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSÃO INCOMPATÍVEL
 STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF NÃO ENCONTRADO
 
-STR_NETWORK_JOIN_GAME                                           :{BLACK}Juntar-se ao jogo
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Entrar no jogo
 
 
 STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Iniciar novo jogo
@@ -1320,11 +1320,11 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Iniciar 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nome do jogo:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}O nome do jogo será mostrado aos outros jogadores no menu de seleção de jogos multi-jogador
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Definir senha
-STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Proteja o jogo com uma senha se não desejar que pessoas indesejadas entrem
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Proteja o jogo com uma senha se não desejar que seja publicamente acessível
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecione um mapa:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Em que mapa deseja jogar?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não necessitam estar todos presentes.
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não precisam estar todos preenchidos
 STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Rede Local
 STR_NETWORK_INTERNET                                            :Internet
@@ -1342,8 +1342,8 @@ STR_NETWORK_7_PLAYERS                                           :7 jogadores
 STR_NETWORK_8_PLAYERS                                           :8 jogadores
 STR_NETWORK_9_PLAYERS                                           :9 jogadores
 STR_NETWORK_10_PLAYERS                                          :10 jogadores
-STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Limite de companhias:
-STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita o servidor para um certo valor de companhias
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo de empresas:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita o servidor para uma certa quantia de empresas
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max espectadores:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limita o servidor para um certa quantia de espectadores
@@ -1352,7 +1352,7 @@ STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma f
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores saberão o idioma utilizado no servidor.
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Iniciar Jogo
-STR_NETWORK_START_GAME_TIP                                      :{BLACK}Iniciar um novo jogo em rede
+STR_NETWORK_START_GAME_TIP                                      :{BLACK}Iniciar um novo jogo em rede com mapa ou cenário aleatórios
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Abrir Jogo
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Continuar um jogo multi-jogador anteriormente gravado (assegure-se de conectar com o jogador correto)
 
@@ -1363,24 +1363,24 @@ STR_NETWORK_LANG_GERMAN                                         :Alemão
 STR_NETWORK_LANG_FRENCH                                         :Francês
 ############ End of leave-in-this-order
 
-STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de espera de jogo multi-jogador
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de espera do jogo
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparando para conectar em:   {ORANGE}{STRING}
-STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Lista das companhias ativas neste jogo. Pode juntar-se a uma delas ou iniciar uma nova companhia.
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Lista de todas as empresas ativas no jogo. Você pode juntar-se a uma delas ou iniciar uma nova empresa.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nova empresa
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Criar uma nova empresa
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Observar jogo
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Ver jogo como um espectador
-STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Juntar-se à companhia
+STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Unir-se à empresa
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Auxiliar na gestão desta companhia
 STR_NETWORK_REFRESH                                             :{BLACK}Atualizar dados
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}Atualiza as informações sobre o servidor
 
-STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFORMAÇÃO DA COMPANHIA
+STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFORMAÇÃO DA EMPRESA
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nome da empresa:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguração:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Valor da Companhia: {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Valor da empresa: {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanço atual: {WHITE}{CURRENCY64}
 STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Rendimento do último ano: {WHITE}{CURRENCY64}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Desempenho: {WHITE}{NUM}
@@ -1394,13 +1394,13 @@ STR_NETWORK_CONNECTING                                          :{WHITE}Conectan
 ############ Leave those lines in this order!!
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Conectando..
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizando..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Em espera..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Esperando..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Obtendo mapa..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Processando dados..
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrando..
 
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtendo informações do jogo..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtendo informações da Companhia..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtendo informações da empresa..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} à sua frente
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes obtidos até agora
@@ -1408,24 +1408,24 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desconectar
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Digite o valor do dinheiro que pretende dar
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Digite a senha
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Companhia protegida. Digite a senha
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor está protegido. Digite a senha
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa está protegida. Digite a senha
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de clientes
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Não foram encontradas interfaces de rede ou o jogo foi compilado sem ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Não foram encontrados jogos de rede
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Não foram encontrados jogos em rede
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} O servidor não respondeu ao pedido
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} A sincronização do jogo de rede falhou.
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} A conexão do jogo de rede perdeu-se.
+STR_NETWORK_ERR_DESYNC                                          :{WHITE} A sincronização do jogo falhou.
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} A conexão do jogo foi perdida
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Não foi possível abrir o jogo.
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Não foi possível iniciar o servidor
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Não foi possível estabelecer ligação
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Tempo de espera esgotado na conexão #{NUM}.
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Ocorreu um erro de protocolo e a conexão foi encerrada
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} A revisão deste cliente não condiz com a revisão do servidor
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Senha incorrecta
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Servidor cheio
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Você foi banido deste SERVIDOR
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} A versão deste cliente não condiz com a versão do servidor
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Senha incorreta
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} O servidor está cheio
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Você foi banido deste servidor
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Você foi expulso do jogo
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Trapaceiros não são permitidos neste servidor
 
@@ -1438,12 +1438,12 @@ STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :conexão perdid
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :erro de protocolo
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :não autorizado
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recebido um pacote estranho
-STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :revisão incorreta
-STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nome já está sendo utilizado
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :A senha do jogo está incorreta
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :versão incorreta
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nome já está em uso
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :senha incorreta
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :id do jogador incorreta em DoCommand
-STR_NETWORK_ERR_CLIENT_KICKED                                   :chutado pelo servidor
-STR_NETWORK_ERR_CLIENT_CHEATER                                  :estava a tentando trapacear
+STR_NETWORK_ERR_CLIENT_KICKED                                   :expulso pelo servidor
+STR_NETWORK_ERR_CLIENT_CHEATER                                  :estava tentando trapacear
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheio
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :entrou no jogo
@@ -1459,7 +1459,7 @@ STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
 STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :mudou o nome dele/dela para
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} O servidor fechou a sessão
-STR_NETWORK_SERVER_REBOOT                                       :{WHITE} O servidor está reiniciando...{}Por favor espere...
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE} O servidor está reiniciando...{}Aguarde...
 
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Cliente
@@ -1619,7 +1619,7 @@ STR_201F_OLD_HOUSES                                             :Casas velhas
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Autoridade local
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Ver informações sobre a autoridade local
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}autoridade local de {TOWN}
-STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Avaliações da companhia de transporte
+STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Avaliações das empresas
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsídios
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta de subsídios para os serviços:
@@ -2066,7 +2066,7 @@ STR_700A_COMPANY_NAME                                           :Nome da Empresa
 STR_700B_PRESIDENT_S_NAME                                       :Nome do Presidente
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Não é possível alterar o nome da empresa...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Não é possível alterar o nome do presidente...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finanças {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}Finanças de {COMPANY} {BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Despesas/Lucros
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Construção
@@ -2074,7 +2074,7 @@ STR_7012_NEW_VEHICLES                                           :{GOLD}Novos Ve�
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Circulação de Trens
 STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Circulação de Veículos
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Circulação de Aeronaves
-STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Circulação de Navios
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Circulação de Barcos
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Manutenção de Propriedades
 STR_7018_TRAIN_INCOME                                           :{GOLD}Lucros dos Trens
 STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Lucros dos Veículos
@@ -2176,10 +2176,10 @@ STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Alternar
 STR_7076_COMPANY_VALUE                                          :{GOLD}Valor da empresa: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Comprar 25% de ações
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vender 25% de ações
-STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Comprar 25% de ações desta empresa
-STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vender 25% de ações desta empresa
-STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Não é possível comprar 25% de ações desta empresa...
-STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Não é possível vender 25% de ações desta empresa...
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Comprar 25% das ações desta empresa
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vender 25% das ações desta empresa
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Não é possível comprar 25% das ações desta empresa...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Não é possível vender 25% das ações desta empresa...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% propriedade de {COMPANY})
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% propriedade de {COMPANY}{}   {COMMA}% propriedade de {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} foi comprada por {COMPANY}!
@@ -2266,8 +2266,8 @@ STR_802F_BUBBLE_VAN                                             :Vagão de Bolha
 STR_8030_COLA_TANKER                                            :Tanque de Cola
 STR_8031_CANDY_VAN                                              :Vagão de Doces
 STR_8032_TOY_VAN                                                :Vagão de Brinquedos
-STR_8033_BATTERY_TRUCK                                          :Vagão de Baterias
-STR_8034_FIZZY_DRINK_TRUCK                                      :Vagão de Bebidas Gasosas
+STR_8033_BATTERY_TRUCK                                          :Vagão de Pilhas
+STR_8034_FIZZY_DRINK_TRUCK                                      :Tanque de Refrigerante
 STR_8035_PLASTIC_TRUCK                                          :Vagão de Plástico
 STR_8036_X2001_ELECTRIC                                         :'X2001' (Elétrico)
 STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Elétrico)
@@ -2481,7 +2481,7 @@ STR_8106_MONORAIL_LOCOMOTIVE                                    :locomotiva mono
 STR_8107_MAGLEV_LOCOMOTIVE                                      :locomotiva trem-bala
 
 ##id 0x8800
-STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Depósito Ferroviário
+STR_8800_TRAIN_DEPOT                                            :{WHITE}Depósito Ferroviário de {TOWN}
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro trem chega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalhes)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trem no caminho
@@ -2573,7 +2573,7 @@ STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - 
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Construir novos trens (necessita depósito de trens)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clique num trem para informações, arraste um veículo o adicionar ao tren ou remover
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construir novo veículo ferroviário
-STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arraste o veículo ferroviário para aqui para o vender
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arraste o veículo aqui para vendê-lo
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar visualização na localização de um depósito ferroviário
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir o veículo ferroviário seleccionado
@@ -2888,8 +2888,8 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definiç
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar alterações
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Definir parâmetros
 STR_NEWGRF_TIP                                                  :{BLACK}Lista de todos os conjuntos Newgrf que instalou. Clique num conjunto para alterar as definições.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não existem ficheiros newgrf actualmente instalados! Por favor consulte o manual para instruções sobre instalar novos gráficos.
-STR_NEWGRF_FILENAME                                             :{BLACK}Nome do ficheiro: {SILVER}{STRING}
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não existem arquivos newgrf atualmente instalados! Consulte o manual de instruções sobre instalar novos gráficos.
+STR_NEWGRF_FILENAME                                             :{BLACK}Nome do arquivo: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual; isto pode danificar o OpenTTD.{}Tem absoluta certeza que deseja fazer isto?
@@ -2897,7 +2897,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você e
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adiciona um NewGRF à lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Remover
-STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Remove to NewGRF selecionado da lista
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Remove o NewGRF selecionado da lista
 STR_NEWGRF_MOVEUP                                               :{BLACK}Mover para cima
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Move o NewGRF selecionado para cima
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mover para baixo
@@ -2973,7 +2973,7 @@ STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitu
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar Substituição de Veículos
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar Substituição de Veículos
 STR_NOT_REPLACING                                               :{BLACK}Não substituindo
-STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Nenhum veículo seleccionado
+STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Nenhum veículo selecionado
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecione o de motor para substituir
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecione o novo tipo de motor para substituir o que selecionou à esquerda
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pressione para parar a subsituição do tipo de motor que selecionou à esquerda

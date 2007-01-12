@@ -3049,7 +3049,7 @@ STR_TREE_PLACER                                                 :{BLACK}Arba alg
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Mapa turniĝo:
 STR_TERRAIN_TYPE                                                :{BLACK}Terentipo:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Marnivelo:
-STR_SMOOTHNESS                                                  :{BLACK}Ebeneco:
+STR_SMOOTHNESS                                                  :{BLACK}Reguleco:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Neĝlinia alteco:
 STR_DATE                                                        :{BLACK}Dato:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Kiom da urboj:
