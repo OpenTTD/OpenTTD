@@ -558,21 +558,24 @@ static int32 RemoveRoadDepot(TileIndex tile, uint32 flags)
 	return _price.remove_road_depot;
 }
 
-#define M(x) (1<<(x))
-
 static int32 ClearTile_Road(TileIndex tile, byte flags)
 {
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_NORMAL: {
 			RoadBits b = GetRoadBits(tile);
 
-			if (!((1 << b) & (M(1)|M(2)|M(4)|M(8))) &&
-					(!(flags & DC_AI_BUILDING) || !IsTileOwner(tile, OWNER_TOWN)) &&
-					flags & DC_AUTO) {
-				return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
+#define M(x) (1 << (x))
+			/* Clear the road if only one piece is on the tile OR the AI tries
+			 * to clear town road OR we are not using the DC_AUTO flag */
+			if ((M(b) & (M(ROAD_NW) | M(ROAD_SW) | M(ROAD_SE) | M(ROAD_NE))) ||
+			    ((flags & DC_AI_BUILDING) && IsTileOwner(tile, OWNER_TOWN)) ||
+			    !(flags & DC_AUTO)
+				) {
+				return DoCommand(tile, b, 0, flags, CMD_REMOVE_ROAD);
 			}
-			return DoCommand(tile, b, 0, flags, CMD_REMOVE_ROAD);
-		}
+			return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
+		} break;
+#undef M
 
 		case ROAD_TILE_CROSSING: {
 			int32 ret;
