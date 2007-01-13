@@ -360,6 +360,7 @@ STR_015C_SAVE_GAME                                              :Lagre spel
 STR_015D_LOAD_GAME                                              :Last inn spel
 STR_015E_QUIT_GAME                                              :Avslutt noverande spel
 STR_015F_QUIT                                                   :Avslutt OpenTTD
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på at du vil avslutte spelet ?
 STR_0161_QUIT_GAME                                              :{WHITE}Avslutt spel
 STR_SORT_ORDER_TIP                                              :{BLACK}Vel sorteringsrekkefølge (synkende/stigende)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vel sorteringskriterier
@@ -423,7 +424,7 @@ STR_016E                                                        :{TINYFONT}{STRI
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Pause
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Lagre spel, avbryt spelet, avslutte
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Lagre, avbryt, eller avslutt spelet
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over stasjonane til firmaet
 STR_0174_DISPLAY_MAP                                            :{BLACK}Vis kart
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Vis kart og byoversikt
@@ -738,6 +739,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Lagra sc
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spel scenario
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Spel høgdekart
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start eit nytt spel, bruk eit høgdekart som landskap
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Er du sikker på at du vil avslutte scenariet ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Avslutt redigeringsprogrammet
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan berre byggast i byar med meir en 1200 innbyggarar
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen attende eit år
@@ -2603,6 +2605,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koster: 
 STR_885C_BROKEN_DOWN                                            :{RED}Havarert
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnad: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_S}  {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. fart: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Max. fart: {LTBLUE}{VELOCITY} {BLACK}Max. Trekkraft.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Truverd: {LTBLUE}{COMMA} %  {BLACK}Havarier siden førre vedlikehald: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppat
@@ -2914,6 +2917,7 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikkj
 STR_NEWGRF_NOT_FOUND                                            :{RED}Ingen passande filer funnet
 STR_NEWGRF_DISABLED                                             :{RED}Deaktivert
 
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanlig valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Deler:
@@ -2944,6 +2948,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte or
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle kjøretøy som har same ruteplan
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du held på å selje alle kjøyretøya i depotet, er du sikker ?
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sel alle toga i depodet
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sel alle kjøretøya i garasjen
@@ -3030,6 +3035,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomoti
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Utstyrbart til: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle varetyper
 STR_PURCHASE_INFO_ALL_BUT                                       :Alt utanom {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Trekkraft: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 

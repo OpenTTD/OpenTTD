@@ -2915,6 +2915,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Dosya ek
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Eşleşen dosya bulunamadı
 STR_NEWGRF_DISABLED                                             :{RED}Etkisiz
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Eşleşen dosya bulunamadı (uyumlu GRF yüklendi)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Eksik dosyalar için uyumlu GRF(ler) yüklendi
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Eksik GRF dosyaları etkisizleştirildi
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Oyunu yüklemek için gerekli olan GRF dosyaları eksik
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{CURRENCY} = £ {COMMA}
