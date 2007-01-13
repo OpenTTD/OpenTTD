@@ -75,7 +75,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 	if (HASBIT(c->flags, GCF_DISABLED))  y += DrawStringMultiLine(x, y, STR_NEWGRF_DISABLED, w);
 
 	/* Draw GRF info if it exists */
-	if (c->info != NULL && strlen(c->info) != 0) {
+	if (c->info != NULL && !StrEmpty(c->info)) {
 		SetDParamStr(0, c->info);
 		y += DrawStringMultiLine(x, y, STR_02BD, w);
 	} else {
@@ -116,7 +116,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 			for (c = _all_grfs; c != NULL; c = c->next) {
 				if (n >= w->vscroll.pos && n < w->vscroll.pos + w->vscroll.cap) {
 					bool h = c == WP(w, newgrf_add_d).sel;
-					const char *text = (c->name != NULL && strlen(c->name) != 0) ? c->name : c->filename;
+					const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
 
 					/* Draw selection background */
 					if (h) GfxFillRect(3, y, w->width - 15, y + 9, 156);
@@ -310,7 +310,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 			y = w->widget[SNGRFS_FILE_LIST].top;
 			for (c = *WP(w, newgrf_d).list, i = 0; c != NULL; c = c->next, i++) {
 				if (i >= w->vscroll.pos && i < w->vscroll.pos + w->vscroll.cap) {
-					const char *text = (c->name != NULL && strlen(c->name) != 0) ? c->name : c->filename;
+					const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
 					PalSpriteID pal;
 
 					/* Pick a colour */

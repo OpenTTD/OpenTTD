@@ -1291,8 +1291,9 @@ void NetworkPopulateCompanyInfo(void)
 
 		ci = DEREF_CLIENT_INFO(cs);
 		if (ci != NULL && IsValidPlayer(ci->client_playas)) {
-			if (strlen(_network_player_info[ci->client_playas].players) != 0)
+			if (!StrEmpty(_network_player_info[ci->client_playas].players)) {
 				ttd_strlcat(_network_player_info[ci->client_playas].players, ", ", lengthof(_network_player_info[0].players));
+			}
 
 			ttd_strlcat(_network_player_info[ci->client_playas].players, client_name, lengthof(_network_player_info[0].players));
 		}

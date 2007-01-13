@@ -47,6 +47,9 @@ typedef enum CharSetFilter {
 void strtolower(char *str);
 
 
+static inline bool StrEmpty(const char* s) { return s[0] == '\0'; }
+
+
 /** Get the length of a string, within a limited buffer */
 static inline int ttd_strnlen(const char *str, int maxlen)
 {

@@ -235,7 +235,7 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 {
 	FT_Error error;
 
-	if (strlen(font_name) == 0) return;
+	if (StrEmpty(font_name)) return;
 
 	error = FT_New_Face(_library, font_name, 0, face);
 
@@ -278,7 +278,7 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 
 void InitFreeType(void)
 {
-	if (strlen(_freetype.small_font) == 0 && strlen(_freetype.medium_font) == 0 && strlen(_freetype.large_font) == 0) {
+	if (StrEmpty(_freetype.small_font) && StrEmpty(_freetype.medium_font) && StrEmpty(_freetype.large_font)) {
 		DEBUG(freetype, 1, "No font faces specified, using sprite fonts instead");
 		return;
 	}
