@@ -1283,37 +1283,41 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="YAPF"
+			Name="Misc"
 			Filter="">
 			<File
-				RelativePath=".\..\src\yapf\array.hpp">
+				RelativePath=".\..\src\misc\array.hpp">
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\autocopyptr.hpp">
+				RelativePath=".\..\src\misc\autocopyptr.hpp">
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\binaryheap.hpp">
+				RelativePath=".\..\src\misc\binaryheap.hpp">
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\blob.hpp">
+				RelativePath=".\..\src\misc\blob.hpp">
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\countedptr.hpp">
+				RelativePath=".\..\src\misc\countedptr.hpp">
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\crc32.hpp">
+				RelativePath=".\..\src\misc\crc32.hpp">
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\fixedsizearray.hpp">
+				RelativePath=".\..\src\misc\fixedsizearray.hpp">
 			</File>
+			<File
+				RelativePath=".\..\src\misc\hashtable.hpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="YAPF"
+			Filter="">
 			<File
 				RelativePath=".\..\src\yapf\follow_track.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\yapf\follow_track.hpp">
-			</File>
-			<File
-				RelativePath=".\..\src\yapf\hashtable.hpp">
 			</File>
 			<File
 				RelativePath=".\..\src\yapf\nodelist.hpp">

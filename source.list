@@ -298,17 +298,19 @@ unmovable_map.h
 void_map.h
 water_map.h
 
+# Misc
+misc/array.hpp
+misc/autocopyptr.hpp
+misc/binaryheap.hpp
+misc/blob.hpp
+misc/countedptr.hpp
+misc/crc32.hpp
+misc/fixedsizearray.hpp
+misc/hashtable.hpp
+
 # YAPF
-yapf/array.hpp
-yapf/autocopyptr.hpp
-yapf/binaryheap.hpp
-yapf/blob.hpp
-yapf/countedptr.hpp
-yapf/crc32.hpp
-yapf/fixedsizearray.hpp
 yapf/follow_track.cpp
 yapf/follow_track.hpp
-yapf/hashtable.hpp
 yapf/nodelist.hpp
 yapf/track_dir.hpp
 yapf/yapf.h
