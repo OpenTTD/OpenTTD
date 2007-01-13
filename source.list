@@ -112,6 +112,7 @@ gfxinit.h
 gui.h
 hal.h
 heightmap.h
+helpers.hpp
 industry.h
 livery.h
 macros.h

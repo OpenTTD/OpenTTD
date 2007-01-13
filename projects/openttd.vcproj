@@ -456,6 +456,9 @@
 				RelativePath=".\..\src\heightmap.h">
 			</File>
 			<File
+				RelativePath=".\..\src\helpers.hpp">
+			</File>
+			<File
 				RelativePath=".\..\src\industry.h">
 			</File>
 			<File
