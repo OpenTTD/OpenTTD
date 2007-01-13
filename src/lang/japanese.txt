@@ -1624,7 +1624,7 @@ STR_202C_FROM_TO                                                :{ORANGE}{STRING
 STR_202D_UNTIL                                                  :{YELLOW}、{DATE_SHORT}まで）
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}助成金提案の有効期限が切られた：{}{}{STRING}の{STRING}から{STRING}への運送経路は今後助成金を受けず
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}助成金の終止{}{}{STRING}の{STATION}から{STATION}への運送は今後助成金を受けず
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}助成金提案の報告{}{}最初の{STRING}のSTRING}から{STRING}への運送は一年間助成金を受ける！
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}助成金提案の報告{}{}最初の{STRING}の{STRING}から{STRING}への運送は一年間助成金を受ける！
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の{STATION}から{STATION}への運送は一年間に５０％の助成金を受ける！
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の{STATION}から{STATION}への運送は一年間に１００％の助成金を受ける！
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の{STATION}から{STATION}への運送は一年間に２００％の助成金を受ける！
@@ -1872,7 +1872,7 @@ STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}{INDUSTRY}で虫がついている！{} 生産量が50％縮小
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...地図の端のみに設置できます
 STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{1:INDUSTRY}で{0:STRING}の生産量が{2:COMMA}％増加！
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY}で{0:0STRING}の生産量が{2:COMMA}％縮小！
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY}で{0:STRING}の生産量が{2:COMMA}％縮小！
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}トンネルに列車があります
