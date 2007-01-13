@@ -5,8 +5,8 @@
 
 #include "../debug.h"
 
-#include "fixedsizearray.hpp"
-#include "blob.hpp"
+#include "../misc/fixedsizearray.hpp"
+#include "../misc/blob.hpp"
 #include "nodelist.hpp"
 
 extern int _total_pf_time_us;

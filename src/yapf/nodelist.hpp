@@ -3,9 +3,9 @@
 #ifndef  NODELIST_HPP
 #define  NODELIST_HPP
 
-#include "array.hpp"
-#include "hashtable.hpp"
-#include "binaryheap.hpp"
+#include "../misc/array.hpp"
+#include "../misc/hashtable.hpp"
+#include "../misc/binaryheap.hpp"
 
 /** Hash table based node list multi-container class.
  *  Implements open list, closed list and priority queue for A-star

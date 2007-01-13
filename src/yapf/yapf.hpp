@@ -71,12 +71,12 @@ typedef CPerfStartFake CPerfStart;
 //#undef FORCEINLINE
 //#define FORCEINLINE inline
 
-#include "crc32.hpp"
-#include "blob.hpp"
-#include "fixedsizearray.hpp"
-#include "array.hpp"
-#include "hashtable.hpp"
-#include "binaryheap.hpp"
+#include "../misc/crc32.hpp"
+#include "../misc/blob.hpp"
+#include "../misc/fixedsizearray.hpp"
+#include "../misc/array.hpp"
+#include "../misc/hashtable.hpp"
+#include "../misc/binaryheap.hpp"
 #include "nodelist.hpp"
 #include "yapf_base.hpp"
 #include "yapf_node.hpp"

@@ -5,7 +5,7 @@
 #include "engine.h"
 
 #include <new>
-#include "yapf/blob.hpp"
+#include "misc/blob.hpp"
 
 /* Engine list manipulators - current implementation is only C wrapper around CBlobT<EngineID> (see yapf/blob.hpp) */
 
