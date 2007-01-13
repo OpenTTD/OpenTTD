@@ -194,10 +194,10 @@ endif
 
 endif
 
-# Avoid problems with deps if a .h file is deleted without the deps
+# Avoid problems with deps if a .h/.hpp file is deleted without the deps
 #  being updated. Now the Makefile continues, the deps are recreated
 #  and all will be fine.
-%.h:
+%.h %.hpp:
 	@true
 
 
