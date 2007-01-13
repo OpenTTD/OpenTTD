@@ -278,9 +278,19 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
 		newgrf_d *nd = &WP(w, newgrf_d);
+		GRFConfig *c;
+		int i = 0;
 
 		CopyGRFConfigList(nd->orig_list, *nd->list);
 		ReloadNewGRFData();
+
+		/* Show new, updated list */
+		for (c = *nd->list; c != NULL && c != nd->sel; c = c->next, i++);
+		CopyGRFConfigList(nd->list, *nd->orig_list);
+		for (c = *nd->list; c != NULL && i > 0; c = c->next, i--);
+		nd->sel = c;
+
+		SetWindowDirty(w);
 	}
 }
 
