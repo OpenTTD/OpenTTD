@@ -169,7 +169,7 @@ int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 {
 	int ret;
 	ret = _vsnprintf(str, size, format, ap);
-	if (ret < 0 || ret == 0) str[size - 1] = '\0';
+	if (ret < 0 || ret == size) str[size - 1] = '\0';
 	return ret;
 }
 #endif /* _MSC_VER */
