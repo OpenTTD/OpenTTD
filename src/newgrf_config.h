@@ -41,7 +41,7 @@ extern GRFConfig *_grfconfig_newgame;
 extern GRFConfig *_grfconfig_static;
 
 void ScanNewGRFFiles(void);
-const GRFConfig *FindGRFConfig(uint32 grfid, uint8 *md5sum);
+const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum = NULL);
 GRFConfig *GetGRFConfig(uint32 grfid);
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src);
 void AppendStaticGRFConfigs(GRFConfig **dst);

@@ -312,15 +312,13 @@ void ScanNewGRFFiles(void)
 }
 
 
-/* Find a NewGRF in the scanned list */
-const GRFConfig *FindGRFConfig(uint32 grfid, uint8 *md5sum)
+/* Find a NewGRF in the scanned list, if md5sum is NULL, we don't care about it*/
+const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum)
 {
-	GRFConfig *c;
-	static const uint8 blanksum[sizeof(c->md5sum)] = { 0 };
-
-	for (c = _all_grfs; c != NULL; c = c->next) {
+	for (const GRFConfig *c = _all_grfs; c != NULL; c = c->next) {
 		if (c->grfid == grfid) {
-			if (memcmp(blanksum, c->md5sum, sizeof(c->md5sum)) == 0) CalcGRFMD5Sum(c);
+			if (md5sum == NULL) return c;
+
 			if (memcmp(md5sum, c->md5sum, sizeof(c->md5sum)) == 0) return c;
 		}
 	}
