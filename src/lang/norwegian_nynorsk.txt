@@ -1,7 +1,8 @@
-##name New-norwegian
-##ownname Norsk, nynorsk
+##name Norwegian new
+##ownname Norsk, Nynorsk
 ##isocode nn_NO.UTF-8
 ##plural 0
+##gender masculine feminine neuter
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -239,7 +240,7 @@ STR_010E_WATER_TOWER                                            :{BLACK}{TINYFON
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Sagbruk
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Sukkerspinnskog
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Godterifabrikk
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Batterifarm
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Batterigard
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Colabrønner
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Leikebutikk
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Leikefabrikk
@@ -288,7 +289,7 @@ STR_013E_CAPACITIES                                             :{BLACK}Kapasite
 STR_013E_TOTAL_CARGO                                            :{BLACK}Total last
 STR_013F_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Total kapasitet på dette toget:
+STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Total kapasitet for dette toget:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nytt spel
@@ -359,7 +360,6 @@ STR_015C_SAVE_GAME                                              :Lagre spel
 STR_015D_LOAD_GAME                                              :Last inn spel
 STR_015E_QUIT_GAME                                              :Avslutt noverande spel
 STR_015F_QUIT                                                   :Avslutt OpenTTD
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på du vil avslutte dette spelet ?
 STR_0161_QUIT_GAME                                              :{WHITE}Avslutt spel
 STR_SORT_ORDER_TIP                                              :{BLACK}Vel sorteringsrekkefølge (synkende/stigende)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vel sorteringskriterier
@@ -444,16 +444,16 @@ STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Bygg kai
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Bygg flyplassar
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plant tre, skilt, o.l.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informasjon om felt
-STR_0187_OPTIONS                                                :{BLACK}Instillinger
+STR_0187_OPTIONS                                                :{BLACK}Instillingar
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Kan ikkje endre serviceintervall...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Lukk vindauge
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Vindaugstittel - dra her for å flytte vindaug
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Vindaugstittel - dra her for å flytte vindauget
 STR_STICKY_BUTTON                                               :{BLACK}Beskytt dette vindauget mot 'Lukk alle vindauge'-knappen
 STR_RESIZE_BUTTON                                               :{BLACK}Klikk og dra for å endra storleiken på på vndauget
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikk her for å komma til standardmappa for lagring og lasting
-STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Riv bygninger o.l.
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Riv bygningar o.l.
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Senk et hjørne av et landstykke
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hev et hjørne av et landstykke
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scroll bar - scroller listen opp/ned
@@ -463,16 +463,16 @@ STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Vis kjø
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Vis industri på kartet
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Vis transportruter på kartet
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Vis vegetasjon på kartet
-STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Vis landeiere på kartet
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Vis landeigarar på kartet
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Skru av/på bynamn på kartet
-STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Forteneste i år: {CURRENCY} (sist år: {CURRENCY})
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Forteneste i år: {CURRENCY} (førre år: {CURRENCY})
 
 ############ range for service numbers starts
 STR_AGE                                                         :{COMMA} år ({COMMA})
 STR_AGE_RED                                                     :{RED}{COMMA} år ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Kjøretøy
+STR_019C_ROAD_VEHICLE                                           :Kjøyretøy
 STR_019D_AIRCRAFT                                               :Fly
 STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Tog
@@ -488,6 +488,7 @@ STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokal my
 STR_01A9_NONE                                                   :Ingen
 STR_01AA_NAME                                                   :{BLACK}Namn
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}v
+
 ############ range for days	starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
@@ -737,7 +738,6 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Lagra sc
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spel scenario
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Spel høgdekart
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start eit nytt spel, bruk eit høgdekart som landskap
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på du vil forlata dette scenariet?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Avslutt redigeringsprogrammet
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan berre byggast i byar med meir en 1200 innbyggarar
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen attende eit år
@@ -1550,6 +1550,9 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbanespor me
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbanespor med for-signal
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbanespor med ut-signal
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbanespor med samansatte signal
+
+
+
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Må fjerna veg først
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vegarbeid i gong
@@ -2833,7 +2836,7 @@ STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vel varet
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapasitet: {GOLD}{STRING}{}{BLACK}Kostnad for ombygging: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan ikkje bygge om flyet...
 STR_GO_TO_AIRPORT_HANGAR                                        :Fly til {STATION} hangar
-SERVICE_AT_AIRPORT_HANGAR                                       :Vedlikehald ved {STATION} hangar
+SERVICE_AT_AIRPORT_HANGAR                                       :Service ved {STATION} Hangar.
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinulukke på {STATION}!
@@ -2941,19 +2944,6 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte or
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle kjøretøy som har same ruteplan
 
 ### depot strings
-STR_SELL                                                        :{BLACK}Sel
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du held på å selje alle kjøretøya i depotet
-STR_ARE_YOU_SURE                                                :{BLACK}Er du sikker?
-
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bekreft at du vil selje alle toga i depotet
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bekreft at du vil selje alle bilane i depotet
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bekreft at du vil selje alle skipa i depotet
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bekreft at du vil selje all flya i hangaren
-
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ikkje sel alle toga i depodet
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ikkje sel alle bilane i garasjen
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ikkje sel alle skipa i depodet
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ikkje sel alle flya i hangaren
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sel alle toga i depodet
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sel alle kjøretøya i garasjen

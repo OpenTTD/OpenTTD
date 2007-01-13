@@ -21,53 +21,53 @@ STR_000C_ACCEPTS                                                :{BLACK}Aceita: 
 STR_000D_ACCEPTS                                                :{BLACK}Aceita: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passageiros
-STR_0010_COAL                                                   :Carvões
-STR_0011_MAIL                                                   :Correspondências
-STR_0012_OIL                                                    :Petróleos
-STR_0013_LIVESTOCK                                              :Gados
+STR_0010_COAL                                                   :Carvão
+STR_0011_MAIL                                                   :Cartas
+STR_0012_OIL                                                    :Petróleo
+STR_0013_LIVESTOCK                                              :Gado
 STR_0014_GOODS                                                  :Bens
-STR_0015_GRAIN                                                  :Cereais
-STR_0016_WOOD                                                   :Madeiras
-STR_0017_IRON_ORE                                               :Minérios de Ferro
-STR_0018_STEEL                                                  :Aços
-STR_0019_VALUABLES                                              :Valores
-STR_001A_COPPER_ORE                                             :Minérios de Cobre
-STR_001B_MAIZE                                                  :Milhos
-STR_001C_FRUIT                                                  :Frutas
-STR_001D_DIAMONDS                                               :Diamantes
-STR_001E_FOOD                                                   :Comidas
-STR_001F_PAPER                                                  :Papéis
-STR_0020_GOLD                                                   :Ouros
-STR_0021_WATER                                                  :Águas
-STR_0022_WHEAT                                                  :Trigos
-STR_0023_RUBBER                                                 :Borrachas
-STR_0024_SUGAR                                                  :Açúcares
+STR_0015_GRAIN                                                  :Grãos
+STR_0016_WOOD                                                   :Madeira
+STR_0017_IRON_ORE                                               :Minério de Ferro
+STR_0018_STEEL                                                  :Aço
+STR_0019_VALUABLES                                              :Dinheiro
+STR_001A_COPPER_ORE                                             :Minério de Cobre
+STR_001B_MAIZE                                                  :Milho
+STR_001C_FRUIT                                                  :Fruta
+STR_001D_DIAMONDS                                               :Diamante
+STR_001E_FOOD                                                   :Alimento
+STR_001F_PAPER                                                  :Papel
+STR_0020_GOLD                                                   :Ouro
+STR_0021_WATER                                                  :Água
+STR_0022_WHEAT                                                  :Trigo
+STR_0023_RUBBER                                                 :Borracha
+STR_0024_SUGAR                                                  :Açúcar
 STR_0025_TOYS                                                   :Brinquedos
 STR_0026_CANDY                                                  :Doces
-STR_0027_COLA                                                   :Colas
-STR_0028_COTTON_CANDY                                           :Algodões Doces
+STR_0027_COLA                                                   :Cola
+STR_0028_COTTON_CANDY                                           :Algodão Doce
 STR_0029_BUBBLES                                                :Bolhas
-STR_002A_TOFFEE                                                 :Caramelos
+STR_002A_TOFFEE                                                 :Caramelo
 STR_002B_BATTERIES                                              :Pilhas
-STR_002C_PLASTIC                                                :Plásticos
+STR_002C_PLASTIC                                                :Plástico
 STR_002D_FIZZY_DRINKS                                           :Refrigerantes
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Passageiro
 STR_0030_COAL                                                   :Carvão
-STR_0031_MAIL                                                   :Correspondência
+STR_0031_MAIL                                                   :Cartas
 STR_0032_OIL                                                    :Petróleo
 STR_0033_LIVESTOCK                                              :Gado
-STR_0034_GOODS                                                  :Bem
-STR_0035_GRAIN                                                  :Cereal
+STR_0034_GOODS                                                  :Bens
+STR_0035_GRAIN                                                  :Grãos
 STR_0036_WOOD                                                   :Madeira
 STR_0037_IRON_ORE                                               :Minério de Ferro
 STR_0038_STEEL                                                  :Aço
-STR_0039_VALUABLES                                              :Valores
+STR_0039_VALUABLES                                              :Dinheiro
 STR_003A_COPPER_ORE                                             :Minério de Cobre
 STR_003B_MAIZE                                                  :Milho
 STR_003C_FRUIT                                                  :Fruta
 STR_003D_DIAMOND                                                :Diamante
-STR_003E_FOOD                                                   :Comida
+STR_003E_FOOD                                                   :Alimento
 STR_003F_PAPER                                                  :Papel
 STR_0040_GOLD                                                   :Ouro
 STR_0041_WATER                                                  :Água
@@ -85,70 +85,70 @@ STR_004C_PLASTIC                                                :Plástico
 STR_004D_FIZZY_DRINK                                            :Refrigerante
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passageiro{P "" s}
-STR_QUANTITY_COAL                                               :{WEIGHT} de carv{P ão ões}
-STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correspondência{P "" s}
-STR_QUANTITY_OIL                                                :{VOLUME} de petróleo{P "" s}
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} insumo{P "" s} de gado{P "" s}
-STR_QUANTITY_GOODS                                              :{COMMA} caixa{P "" s} de be{P m ns}
-STR_QUANTITY_GRAIN                                              :{WEIGHT} de cerea{P l is}
-STR_QUANTITY_WOOD                                               :{WEIGHT} de madeira{P "" s}
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de minério{P "" s} de ferro
-STR_QUANTITY_STEEL                                              :{WEIGHT} de aço{P "" s}
-STR_QUANTITY_VALUABLES                                          :{COMMA} saco{P "" s} de valor{P "" es}
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de minério{P "" s} de cobre
-STR_QUANTITY_MAIZE                                              :{WEIGHT} de milho{P "" s}
-STR_QUANTITY_FRUIT                                              :{WEIGHT} de fruta{P "" s}
-STR_QUANTITY_DIAMONDS                                           :{COMMA} saco{P "" s} de diamante{P "" s}
-STR_QUANTITY_FOOD                                               :{WEIGHT} de comida{P "" s}
-STR_QUANTITY_PAPER                                              :{WEIGHT} de pap{P el éis}
+STR_QUANTITY_COAL                                               :{WEIGHT} de carvão
+STR_QUANTITY_MAIL                                               :{COMMA} pacote{P "" s} de cartas
+STR_QUANTITY_OIL                                                :{VOLUME} de petróleo
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} insumo{P "" s} de gado
+STR_QUANTITY_GOODS                                              :{COMMA} caixa{P "" s} de bens
+STR_QUANTITY_GRAIN                                              :{WEIGHT} de grãos
+STR_QUANTITY_WOOD                                               :{WEIGHT} de madeira
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de minério de ferro
+STR_QUANTITY_STEEL                                              :{WEIGHT} de aço
+STR_QUANTITY_VALUABLES                                          :{COMMA} saco{P "" s} de dinheiro
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de minério de cobre
+STR_QUANTITY_MAIZE                                              :{WEIGHT} de milho
+STR_QUANTITY_FRUIT                                              :{WEIGHT} de fruta
+STR_QUANTITY_DIAMONDS                                           :{COMMA} saco{P "" s} de diamante
+STR_QUANTITY_FOOD                                               :{WEIGHT} de alimento
+STR_QUANTITY_PAPER                                              :{WEIGHT} de papel
 STR_QUANTITY_GOLD                                               :{COMMA} saco{P "" s} de ouro
-STR_QUANTITY_WATER                                              :{VOLUME} de água{P "" s}
-STR_QUANTITY_WHEAT                                              :{WEIGHT} de trigo{P "" s}
-STR_QUANTITY_RUBBER                                             :{VOLUME} de borracha{P "" s}
-STR_QUANTITY_SUGAR                                              :{WEIGHT} de açúcar{P "" es}
+STR_QUANTITY_WATER                                              :{VOLUME} de água
+STR_QUANTITY_WHEAT                                              :{WEIGHT} de trigo
+STR_QUANTITY_RUBBER                                             :{VOLUME} de borracha
+STR_QUANTITY_SUGAR                                              :{WEIGHT} de açúcar
 STR_QUANTITY_TOYS                                               :{COMMA} brinquedo{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA} saco{P "" s} de doce{P "" s}
-STR_QUANTITY_COLA                                               :{VOLUME} de cola{P "" s}
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de algod{P ão ões} doce{P "" s}
+STR_QUANTITY_COLA                                               :{VOLUME} de cola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de algodão doce
 STR_QUANTITY_BUBBLES                                            :{COMMA} bolha{P "" s}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} de caramelo{P "" s}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} de caramelo
 STR_QUANTITY_BATTERIES                                          :{COMMA} pilha{P "" s}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} de plástico{P "" s}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} de plástico
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} refrigerante{P "" s}
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
-STR_ABBREV_COAL                                                 :{TINYFONT}CL
-STR_ABBREV_MAIL                                                 :{TINYFONT}ML
-STR_ABBREV_OIL                                                  :{TINYFONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
-STR_ABBREV_GOODS                                                :{TINYFONT}GD
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PA
+STR_ABBREV_COAL                                                 :{TINYFONT}CV
+STR_ABBREV_MAIL                                                 :{TINYFONT}CA
+STR_ABBREV_OIL                                                  :{TINYFONT}PE
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}GA
+STR_ABBREV_GOODS                                                :{TINYFONT}BE
 STR_ABBREV_GRAIN                                                :{TINYFONT}GR
-STR_ABBREV_WOOD                                                 :{TINYFONT}WD
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
-STR_ABBREV_STEEL                                                :{TINYFONT}ST
-STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
-STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
+STR_ABBREV_WOOD                                                 :{TINYFONT}MA
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}MF
+STR_ABBREV_STEEL                                                :{TINYFONT}AÇ
+STR_ABBREV_VALUABLES                                            :{TINYFONT}DI
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}MC
+STR_ABBREV_MAIZE                                                :{TINYFONT}MI
 STR_ABBREV_FRUIT                                                :{TINYFONT}FT
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}FD
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
-STR_ABBREV_GOLD                                                 :{TINYFONT}GD
-STR_ABBREV_WATER                                                :{TINYFONT}WR
-STR_ABBREV_WHEAT                                                :{TINYFONT}WH
-STR_ABBREV_RUBBER                                               :{TINYFONT}RB
-STR_ABBREV_SUGAR                                                :{TINYFONT}SG
-STR_ABBREV_TOYS                                                 :{TINYFONT}TY
-STR_ABBREV_SWEETS                                               :{TINYFONT}SW
-STR_ABBREV_COLA                                                 :{TINYFONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
-STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
-STR_ABBREV_NONE                                                 :{TINYFONT}NENHUM
-STR_ABBREV_ALL                                                  :{TINYFONT}TODOS
+STR_ABBREV_FOOD                                                 :{TINYFONT}AL
+STR_ABBREV_PAPER                                                :{TINYFONT}PL
+STR_ABBREV_GOLD                                                 :{TINYFONT}OU
+STR_ABBREV_WATER                                                :{TINYFONT}AG
+STR_ABBREV_WHEAT                                                :{TINYFONT}TG
+STR_ABBREV_RUBBER                                               :{TINYFONT}BO
+STR_ABBREV_SUGAR                                                :{TINYFONT}ÇU
+STR_ABBREV_TOYS                                                 :{TINYFONT}BR
+STR_ABBREV_SWEETS                                               :{TINYFONT}DO
+STR_ABBREV_COLA                                                 :{TINYFONT}CO
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}AD
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BO
+STR_ABBREV_TOFFEE                                               :{TINYFONT}CL
+STR_ABBREV_BATTERIES                                            :{TINYFONT}PI
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PS
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}RE
+STR_ABBREV_NONE                                                 :{TINYFONT}NADA
+STR_ABBREV_ALL                                                  :{TINYFONT}TUDO
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
@@ -185,7 +185,7 @@ STR_00D7_GREEN                                                  :Verde
 STR_00D8_DARK_GREEN                                             :Verde Escuro
 STR_00D9_BLUE                                                   :Azul
 STR_00DA_CREAM                                                  :Creme
-STR_00DB_MAUVE                                                  :Malva
+STR_00DB_MAUVE                                                  :Preto
 STR_00DC_PURPLE                                                 :Roxo
 STR_00DD_ORANGE                                                 :Laranja
 STR_00DE_BROWN                                                  :Marrom
@@ -195,7 +195,7 @@ STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Existem 
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Localização
-STR_00E5_CONTOURS                                               :Contornos
+STR_00E5_CONTOURS                                               :Relevos
 STR_00E6_VEHICLES                                               :Veículos
 STR_00E7_INDUSTRIES                                             :Indústrias
 STR_00E8_ROUTES                                                 :Rotas
@@ -212,7 +212,7 @@ STR_00F2_300M                                                   :{BLACK}{TINYFON
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Trens
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Veículos
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Automóveis
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Barcos
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeronaves
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Rotas de Transporte
@@ -230,27 +230,27 @@ STR_0104_STEEL_MILL                                             :{BLACK}{TINYFON
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banco
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Fábrica de Papel
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Mina de Ouro
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Indústria alimentícia
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Indústria Alimentícia
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Mina de Diamante
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Mina de Cobre
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Plantação de Fruta
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Plantação de Seringueira
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Suprimento de Água
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Pomar
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Plantação de Seringueiras
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Poço Artesiano
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Reservatório de Água
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Serraria
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Floresta de Algodão Doce
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Fábrica de Doce
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Fazenda de Bateria
+STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Fábrica de Doces
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Fazenda de Pilhas
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Poços de Cola
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Loja de Brinquedo
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Fábrica de Brinquedo
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Loja de Brinquedos
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Fábrica de Brinquedos
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Fontes de Plástico
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Fábrica de Refrigerante
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Produtor de Bolha
+STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Gerador de Bolhas
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Extração de Caramelo
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Mina de Açúcar
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Estação Ferroviária
-STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Área de Carregamento de Caminhões
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Carga de Caminhões
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Estação de Ônibus
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Aeroporto/Heliporto
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Doca
@@ -308,7 +308,7 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Opções do Jogo
 
 STR_0150_SOMEONE                                                :alguém{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :Mapa mundial
+STR_0151_MAP_OF_WORLD                                           :Mapa mundi
 STR_0152_TOWN_DIRECTORY                                         :Lista de cidades
 STR_0153_SUBSIDIES                                              :Subsídios
 
@@ -347,7 +347,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Lucros operacionais
 STR_0155_INCOME_GRAPH                                           :Receita
-STR_0156_DELIVERED_CARGO_GRAPH                                  :Carga entregue
+STR_0156_DELIVERED_CARGO_GRAPH                                  :Cargas entregues
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Histórico de lucro
 STR_0158_COMPANY_VALUE_GRAPH                                    :Valor da empresa
 STR_0159_CARGO_PAYMENT_RATES                                    :Tarifas por carga
@@ -425,18 +425,18 @@ STR_016F                                                        :{TINYFONT}{STRI
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Pausar o jogo
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Salvar jogo, abandonar jogo, sair
-STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostrar lista de estações da empresa
-STR_0174_DISPLAY_MAP                                            :{BLACK}Mostrar mapa
-STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Mostrar mapa, lista de cidades
-STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Mostrar lista de cidades
-STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Mostrar informações financeiras da empresa
-STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Mostrar informações gerais da empresa
-STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Mostrar gráficos
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Mostrar tabela de classificação de empresas
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostrar lista de trens da empresa
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostrar lista de veículos da empresa
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostrar lista de barcos da empresa
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostrar lista de aeronaves da empresa
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Exibir lista de estações da empresa
+STR_0174_DISPLAY_MAP                                            :{BLACK}Exibir mapa
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Exibir mapa, lista de cidades
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Exibir lista de cidades
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Exibir informações financeiras da empresa
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Exibir informações gerais da empresa
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Exibir gráficos
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Exibir tabela de classificação das empresas
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Exibir lista de trens da empresa
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Exibir lista de automóveis da empresa
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Exibir lista de barcos da empresa
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Exibir lista de aeronaves da empresa
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Ampliar
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Reduzir
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir ferrovias
@@ -444,7 +444,7 @@ STR_0182_BUILD_ROADS                                            :{BLACK}Construi
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Construir docas
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Construir aeroportos
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plantar árvores, colocar placas, etc...
-STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informações do terreno
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informações sobre o terreno
 STR_0187_OPTIONS                                                :{BLACK}Opções
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
@@ -459,13 +459,13 @@ STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Baixar u
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Elevar um canto do terreno
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Barra de rolagem - rola a lista acima/abaixo
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Barra de rolagem - Move a lista para esquerda/direita
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Exibir o relevo do terreno no mapa
-STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Exibir os veículos no mapa
-STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Exibir as indústrias no mapa
-STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Exibir as rotas de transporte no mapa
-STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Exibir a vegetação no mapa
-STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Exibir os proprietários do terreno no mapa
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Exibir os nomes das cidades no mapa
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Exibir relevo do terreno no mapa
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Exibir veículos no mapa
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Exibir indústrias no mapa
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Exibir rotas de transporte no mapa
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Exibir vegetação no mapa
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Exibir propriedades no mapa
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Exibir nomes das cidades no mapa
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Lucro deste ano: {CURRENCY} (ano passado: {CURRENCY})
 
 ############ range for service numbers starts
@@ -595,7 +595,7 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informa
 STR_MESSAGES_ALL                                                :{YELLOW}Configurações para todos os tipos de mensagem(on/off/resumo)
 STR_MESSAGE_SOUND                                               :{YELLOW}Tocar som para notícias resumidas
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...muito distante do destino anterior
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top de companhias que chegaram a {NUM}{}({STRING} Nível)
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top de empresas que chegaram a {NUM}{}({STRING} Nível)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabela da Liga de Empresas em {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Negociante
@@ -617,15 +617,15 @@ STR_0223_LAND_GENERATION                                        :{WHITE}Gerar Te
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND                                            :{BLACK}Terreno Aleatório
-STR_0227_RESET_LAND                                             :{BLACK}Resetar Terreno
+STR_0227_RESET_LAND                                             :{BLACK}Limpar Terreno
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Aumentar área de terreno a baixar/levantar
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Diminuir área de terreno a baixar/levantar
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Gerar terreno aleatório
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Resetar terreno
-STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetar Terreno
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Limpar Terreno
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usar mapa de altitudes
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usar mapa de altitudes
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Tem a certeza que deseja resetar o terreno?
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Tem a certeza que deseja limpar o terreno?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Gerar terreno
 STR_022F_TOWN_GENERATION                                        :{BLACK}Gerar cidades
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Gerar indústrias
@@ -662,21 +662,21 @@ STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Indústr
 STR_024E_PRINTING_WORKS                                         :{BLACK}Gráfica
 STR_024F_GOLD_MINE                                              :{BLACK}Mina de Ouro
 STR_0250_LUMBER_MILL                                            :{BLACK}Serraria
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Plantação de Frutas
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}Pomar
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}Plantação de Seringueiras
-STR_0253_WATER_SUPPLY                                           :{BLACK}Suprimento de Água
+STR_0253_WATER_SUPPLY                                           :{BLACK}Poço Artesiano
 STR_0254_WATER_TOWER                                            :{BLACK}Reservatório de Água
 STR_0255_DIAMOND_MINE                                           :{BLACK}Mina de Diamante
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Mina de Cobre
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Floresta de Algodão Doce
 STR_0258_CANDY_FACTORY                                          :{BLACK}Fábrica de Doces
-STR_0259_BATTERY_FARM                                           :{BLACK}Fazenda de Baterias
+STR_0259_BATTERY_FARM                                           :{BLACK}Fazenda de Pilhas
 STR_025A_COLA_WELLS                                             :{BLACK}Poços de Cola
 STR_025B_TOY_SHOP                                               :{BLACK}Loja de Brinquedos
 STR_025C_TOY_FACTORY                                            :{BLACK}Fábrica de Brinquedos
 STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Fontes de Plástico
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Fontes de Bebidas Gasosas
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Produtor de Bolhas
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Fontes de Refrigerantes
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Gerador de Bolhas
 STR_0260_TOFFEE_QUARRY                                          :{BLACK}Extração de Caramelo
 STR_0261_SUGAR_MINE                                             :{BLACK}Mina de Açúcar
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construir Mina de Carvão
@@ -689,29 +689,29 @@ STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construi
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construir Siderúrgica
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construir Fazenda
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construir Mina de Ferro
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construir Poços de Petróleo
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Perfurar Poços de Petróleo
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construir Banco (só pode ser construído em cidades com mais de 1200 habitantes)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construir Fábrica de Papel
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construir Indústria alimentícia
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construir Indústria Alimentícia
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construir Gráfica
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construir Mina de Ouro
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construir Banco (só pode ser construído em cidades)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construir Serraria (para limpar a floresta e produzir Madeira)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Criar Plantação de Frutas
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plantar Pomar
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Criar Plantação de Seringueiras
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construir Suprimento de Água
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Perfurar Poço Artesiano
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construir Reservatório de Água (só pode ser construído em cidades)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construir Mina de Diamante
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construir Mina de Cobre
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plantar Floresta de Algodão Doce
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construir Fábrica de Doces
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construir Fazenda de Baterias
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construir Poços de Cola
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construir Fazenda de Pilhas
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Perfurar Poços de Cola
 STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construir Loja de Brinquedos
 STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construir Fábrica de Brinquedos
 STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construir Fontes de Plástico
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construir Fábrica de Refrigerante
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construir Produtor de Bolhas
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construir Gerador de Bolhas
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construir Extração de Caramelo
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construir Mina de Açúcar
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Não é possível construir {STRING} aqui...
@@ -724,7 +724,7 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plantar 
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar rochas no terreno
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar farol
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmissor
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desértica.{}Pressione e segure CTRL para remove-la
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desértica.{}Pressione e segure CTRL para removê-la
 STR_CREATE_LAKE                                                 :{BLACK}Define área de água.{}Ela irá inundar quando no nível do mar
 STR_0290_DELETE                                                 :{BLACK}Apagar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Apagar completamente esta cidade
@@ -742,9 +742,9 @@ STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Inica um
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Tem a certeza que deseja abandonar este cenário?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sair do Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só pode ser construído em cidades com pelo menos 1200 habitantes
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Retroceder data de inicio 1 ano
-STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Avançar data de inicio 1 ano
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...ambos os extremos da ponte devem estar em terra
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Retroceder data de inicio em 1 ano
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Avançar data de inicio em 1 ano
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...os extremos da ponte devem estar sobre a terra
 STR_02A1_SMALL                                                  :{BLACK}Pequena
 STR_02A2_MEDIUM                                                 :{BLACK}Média
 STR_02A3_LARGE                                                  :{BLACK}Grande
@@ -760,9 +760,9 @@ STR_02BA                                                        :{SILVER}- -  {C
 STR_02BB_TOWN_DIRECTORY                                         :Lista de cidades
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Nomes dos veículos
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Predefinição
+STR_02BE_DEFAULT                                                :Padrão
 STR_02BF_CUSTOM                                                 :Personalizado
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Gravar nomes personalizados
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Salvar nomes personalizados
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Seleção de nomes dos veículos
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salvar nomes dos veículos personalizados
 
@@ -773,9 +773,9 @@ STR_02C5_DIFFICULTY_SETTINGS                                    :Configurações
 STR_02C7_CONFIG_PATCHES                                         :Configurar correções
 STR_NEWGRF_SETTINGS                                             :Definições Newgrf
 STR_GAMEOPTMENU_0A                                              :
-STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Mostrar nomes de cidades
-STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Mostrar nomes de estações
-STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Mostrar indicações
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Exibir nomes de cidades
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Exibir nomes de estações
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Exibir placas
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Mostrar pontos de controle
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animação completa
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Máximo de detalhes
@@ -794,9 +794,9 @@ STR_02D9_ABOUT_OPENTTD                                          :Sobre o OpenTTD
 
 STR_02DB_OFF                                                    :{BLACK}Desativar
 STR_02DA_ON                                                     :{BLACK}Ativar
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Mostrar subsídios
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Exibir subsídios
 STR_02DD_SUBSIDIES                                              :Subsídios
-STR_02DE_MAP_OF_WORLD                                           :Mapa do mundo
+STR_02DE_MAP_OF_WORLD                                           :Mapa mundi
 STR_EXTRA_VIEW_PORT                                             :Visualizador extra
 STR_SIGN_LIST                                                   :Lista de sinais
 STR_02DF_TOWN_DIRECTORY                                         :Lista de cidades
@@ -807,15 +807,15 @@ STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar a
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Colar do visualizador
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a localização deste visualizador para o visualizador global
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unidades monetárias
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unidade monetária
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
-STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Seleção de unidades monetárias
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Seleção de unidade monetária
 STR_MEASURING_UNITS                                             :{BLACK}Unidade de medida
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Seleção da unidade de medida
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Veículos
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Automóveis
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Escolha o lado da estrada por onde os veículos deverão dirigir
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Escolha o lado da estrada por onde os automóveis deverão dirigir
 STR_02E9_DRIVE_ON_LEFT                                          :Andam pela esquerda
 STR_02EA_DRIVE_ON_RIGHT                                         :Andam pela direita
 STR_02EB_TOWN_NAMES                                             :{BLACK}Nomes das cidades
@@ -830,19 +830,19 @@ STR_02F8_EVERY_3_MONTHS                                         :A cada 3 meses
 STR_02F9_EVERY_6_MONTHS                                         :A cada 6 meses
 STR_02FA_EVERY_12_MONTHS                                        :A cada 12 meses
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Iniciar um novo jogo
-STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carregar um jogo gravado
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carregar um jogo salvado
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Criar um cenário de jogo personalizado
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Selecionar jogo de 1 jogador
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Selecione jogo multiplayer de 2 a 8 jogadores
-STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Mostrar opções de jogo
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Mostrar opções de dificuldade
-STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Iniciar um novo jogo, utilizando um cenário personalizado gravado no disco
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Selecionar jogo de 2 a 8 jogadores
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Exibir opções de jogo
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Exibir opções de dificuldade
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Iniciar um novo jogo, usando um cenário personalizado
 STR_0304_QUIT                                                   :{BLACK}Sair
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Sair de 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
-STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só se pode construir em cidades
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só se pode ser construído em cidades
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Selecionar cenário do estilo 'temperado'
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Selecionar cenário do estilo 'subárctico'
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Selecionar cenário do estilo 'subártico'
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Selecionar cenário do estilo 'subtropical'
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Selecionar cenário do estilo 'toyland'
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financiar a construção de uma nova indústria
@@ -854,12 +854,12 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financiar nova 
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financiar nova indústria
 STR_JUST_STRING                                                 :{STRING}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só se pode construir em cidades
-STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...só se pode construir em zonas de floresta
-STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...só se pode construir em zonas de deserto
-STR_0319_PAUSED                                                 :{YELLOW}* *  EM PAUSA  *  *
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só pode ser construído em cidades
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...só pode ser construído em zonas florestais
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...só pode ser construído em áreas desérticas
+STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSADO *  *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Captura de tela gravada com sucesso como '{STRING}'
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Foto salvado com sucesso como '{STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}A foto falhou!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Comprar terreno para uso futuro
@@ -1513,7 +1513,7 @@ STR_0810_DESERT                                                 :Deserto
 
 ##id 0x1000
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terreno inclinado na direção incorreta
-STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Combinação de linhas impossível
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Impossível combinação de linhas
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}A escavação estragaria o túnel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Já está ao nível do mar
 STR_1004_TOO_HIGH                                               :{WHITE}Muito alto
@@ -1562,23 +1562,23 @@ STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construi
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecionar Ponte de Estrada
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Não é possível construir estrada aqui...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Não é possível remover estrada daqui...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientação do Depósito
-STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Não é possível construir depósito de veículos de estrada aqui...
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientação da Garagem
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Não é possível construir garagem aqui...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Não é possível construir estação de ônibus...
-STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Não é possível construir estação de carregamento de caminhões...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Não é possível construir carga de caminhões...
 STR_180A_ROAD_CONSTRUCTION                                      :Construir estradas
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construir estradas
-STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir depósito (para criação e manutenção de veículos de estrada)
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir garagem (para criação e manutenção de automóveis)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construir estação de ônibus
-STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construir área de carregamento de caminhões
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construir carga de caminhões
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construir ponte de estrada
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construir túnel de estrada
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Alternar entre construir/remover estradas
-STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Selecionar a orientação do depósito
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Selecionar a orientação da garagem
 STR_1814_ROAD                                                   :Estrada
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Estrada com iluminação
 STR_1816_TREE_LINED_ROAD                                        :Estrada com árvores
-STR_1817_ROAD_VEHICLE_DEPOT                                     :Depósito de veículos de estrada
+STR_1817_ROAD_VEHICLE_DEPOT                                     :Garagem
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passagem de nível
 
 ##id 0x2000
@@ -1598,7 +1598,7 @@ STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Nomes da
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centralizar visualização na cidade
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Alterar o nome da cidade
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passageiros no mês passado: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Correspondências no mês passado: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Cartas no mês passado: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Edifício alto de escritórios
 STR_2010_OFFICE_BLOCK                                           :Edifício de escritórios
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Edifício de apartamentos grande
@@ -1626,7 +1626,7 @@ STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta d
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} para {STRING}
 STR_2028_BY                                                     :{YELLOW} (por {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nenhum
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Serviços já subsidiados:
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Serviço já subsidiado:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} de {STATION} para {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, até {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} já não é subsidiado.
@@ -1657,17 +1657,17 @@ STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Pequena campanh
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Média campanha publicitária
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Grande campanha publicitária
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Financiar a reconstrução das estradas locais
-STR_204A_BUILD_STATUE_OF_COMPANY                                :Construir estátua do proprietário da companhia
+STR_204A_BUILD_STATUE_OF_COMPANY                                :Construir estátua do proprietário da empresa
 STR_204B_FUND_NEW_BUILDINGS                                     :Financiar novos edifícios
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Comprar exclusividade da rede de transportes
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Subornar a autoridade local
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária pequena, para atrair mais passageiros e carga à sua companhia.{}  Custo: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária média, para atrair mais passageiros e carga à sua companhia.{}  Custo: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária grande, para atrair mais passageiros e carga à sua companhia.{}  Custo: {CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária pequena, para atrair mais passageiros e cargas para sua empresa.{}  Custo: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária média, para atrair mais passageiros e cargas para sua empresa.{}  Custo: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária grande, para atrair mais passageiros e cargas para sua empresa.{}  Custo: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Financiar a reconstrução da rede rodoviária urbana. Causa engarrafamentos consideráveis ao tráfego por até 6 meses.{}  Custo: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construir uma estátua em honra da sua companhia.{} Custo: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construir uma estátua em honra da sua empresa.{} Custo: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Financiar a construção de edifícios comerciais novos na cidade.{}  Custo: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Comprar a exclusividade dos serviços durante 1 ano na cidade. A autoridade da cidade permitirá que os passageiros e a carga usem somente estações da sua companhia.{} Custo: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Comprar a exclusividade dos serviços durante 1 ano na cidade. A autoridade da cidade permitirá que os passageiros e cargas usem somente estações da sua empresa.{} Custo: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Subornar a autoridade local para aumentar a sua avaliação, correndo o  risco de uma penalidade severa se apanhado.{}  Custo: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Programa de reconstrução de estradas financiado por {COMPANY} provoca 6 meses de miséria aos condutores!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
@@ -1680,7 +1680,7 @@ STR_205C_PIGGY_BANK                                             :Mealheiro
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{TOWN}, {STRING}
+STR_INDUSTRY_FORMAT                                             :{1:STRING} de {0:TOWN}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
@@ -1693,7 +1693,7 @@ STR_2804_SITE_UNSUITABLE                                        :{WHITE}...local
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Impossível plantar árvore aqui...
 STR_2806                                                        :{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...muitos sinais
-STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Não pode colocar um sinal aqui...
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Impossível colocar um sinal aqui...
 STR_280A_SIGN                                                   :Sinal
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editar texto do sinal
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Não pode alterar o nome do sinal...
@@ -1714,11 +1714,11 @@ STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Muitas e
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Muitas estações/locais de carga
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Muitos pontos de ônibus
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Muitos locais de carga
-STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Muito perto de uma estação/local de carga
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Muito perto de outra estação/local de carga
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Precisa de demolir a estação primeiro
 STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Muito perto de outro aeroporto
-STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Precisa de demolir o aeroporto primeiro
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Precisa demolir o aeroporto primeiro
 
 STR_3030_RENAME_STATION_LOADING                                 :Alterar nome de estação/local de carga
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Não pode alterar o nome da estação...
@@ -1730,7 +1730,7 @@ STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Avaliaç
 STR_3035_APPALLING                                              :Inexistente
 STR_3036_VERY_POOR                                              :Muito Fraco
 STR_3037_POOR                                                   :Fraco
-STR_3038_MEDIOCRE                                               :Medíocre
+STR_3038_MEDIOCRE                                               :Mediano
 STR_3039_GOOD                                                   :Bom
 STR_303A_VERY_GOOD                                              :Muito Bom
 STR_303B_EXCELLENT                                              :Excelente
@@ -1755,8 +1755,8 @@ STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Deverá 
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Selecionar a orientação da estação ferroviária
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Selecionar o número de linhas da estação ferroviária
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Selecionar o tamanho da estação ferroviária
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Selecionar a orientação da parada de ônibus
-STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Selecionar a orientação da estação de carga dos caminhões
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Selecionar a orientação do ponto de ônibus
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Selecionar a orientação do local de carga
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centralizar visualização no local estação
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Mostrar avaliações da estação
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Alterar o nome da estação
@@ -1768,7 +1768,7 @@ STR_STATION_SIGN_TINY                                           :{TINYFONT}{STAT
 STR_305E_RAILROAD_STATION                                       :Estação ferroviária
 STR_305F_AIRCRAFT_HANGAR                                        :Hangar
 STR_3060_AIRPORT                                                :Aeroporto
-STR_3061_TRUCK_LOADING_AREA                                     :Área de carregamento de caminhões
+STR_3061_TRUCK_LOADING_AREA                                     :Área de carga de caminhões
 STR_3062_BUS_STATION                                            :Ponto de ônibus
 STR_3063_SHIP_DOCK                                              :Doca
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Destacar área de cobertura da construção proposta
@@ -1813,13 +1813,13 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Salvar o
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selecionar Novo Tipo de Jogo
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Selecionar cenário (verde), jogo pré-programado (azul), ou novo jogo aleatório
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Gerar novo jogo aleatório
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Carregad Mapa de Altitudes
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Carregar Relevo
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} no caminho
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Mina de Carvão
-STR_4803_POWER_STATION                                          :Termeléctrica
+STR_4803_POWER_STATION                                          :Usina de Energia
 STR_4804_SAWMILL                                                :Serraria
 STR_4805_FOREST                                                 :Floresta
 STR_4806_OIL_REFINERY                                           :Refinaria de Petróleo
@@ -1831,13 +1831,13 @@ STR_480B_FARM                                                   :Fazenda
 STR_480C_COPPER_ORE_MINE                                        :Mina de Cobre
 STR_480D_OIL_WELLS                                              :Poços de Petróleo
 STR_480E_BANK                                                   :Banco
-STR_480F_FOOD_PROCESSING_PLANT                                  :Companhia Alimenticia
+STR_480F_FOOD_PROCESSING_PLANT                                  :Indústria Alimentícia
 STR_4810_PAPER_MILL                                             :Fábrica de Papel
 STR_4811_GOLD_MINE                                              :Mina de Ouro
 STR_4812_BANK                                                   :Banco
 STR_4813_DIAMOND_MINE                                           :Mina de Diamante
 STR_4814_IRON_ORE_MINE                                          :Mina de Ferro
-STR_4815_FRUIT_PLANTATION                                       :Plantação de Frutas
+STR_4815_FRUIT_PLANTATION                                       :Pomar
 STR_4816_RUBBER_PLANTATION                                      :Plantação de Seringueiras
 STR_4817_WATER_SUPPLY                                           :Poço Artesiano
 STR_4818_WATER_TOWER                                            :Reservatório de Água
@@ -1846,13 +1846,13 @@ STR_481A_FARM                                                   :Fazenda
 STR_481B_LUMBER_MILL                                            :Serraria
 STR_481C_COTTON_CANDY_FOREST                                    :Floresta de Algodão Doce
 STR_481D_CANDY_FACTORY                                          :Fábrica de Doces
-STR_481E_BATTERY_FARM                                           :Campo de Baterias
+STR_481E_BATTERY_FARM                                           :Campo de Pilhas
 STR_481F_COLA_WELLS                                             :Poços de Cola
 STR_4820_TOY_SHOP                                               :Loja de Brinquedos
 STR_4821_TOY_FACTORY                                            :Fábrica de Brinquedos
 STR_4822_PLASTIC_FOUNTAINS                                      :Fontes de Plástico
-STR_4823_FIZZY_DRINK_FACTORY                                    :Fábrica de Bebidas Gasosas
-STR_4824_BUBBLE_GENERATOR                                       :Produtor de Bolhas
+STR_4823_FIZZY_DRINK_FACTORY                                    :Fábrica de Refrigerante
+STR_4824_BUBBLE_GENERATOR                                       :Gerador de Bolhas
 STR_4825_TOFFEE_QUARRY                                          :Extração de Caramelo
 STR_4826_SUGAR_MINE                                             :Mina de Açúcar
 
@@ -1870,22 +1870,22 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Custo: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Não é possível construir este tipo de indústria aqui...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...a floresta só pode ser plantada acima do nível de neve
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}Em {INDUSTRY} anuncia fechamento em breve!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anuncia falência iminente!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemas de abastecimento forçaram {INDUSTRY} a anunciar falência iminente!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Falta de árvores nas proximidades forçaram {INDUSTRY} a anunciar falência iminente!
-STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}Em {INDUSTRY} aumenta a produção!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nova jazida de carvão encontrada em {INDUSTRY}!{}A expectativa é de dobrar a produção!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Novas reservas de petróleo encontradas em {INDUSTRY}!{}A expectativa é de dobrar a produção!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Métodos aperfeiçoados de agricultura em {INDUSTRY}! A expectativa é de dobrar a produção!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Em {INDUSTRY} diminui produção em 50%
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} aumenta a produção!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nova jazida de carvão encontrada em {INDUSTRY}!{}A expectativa é dobrar a produção!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Novas reservas de petróleo encontradas em {INDUSTRY}!{}A expectativa é dobrar a produção!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Métodos aperfeiçoados de agricultura em {INDUSTRY}! A expectativa é dobrar a produção!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} diminui a produção em 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Infestação de insetos causa destruição em {INDUSTRY}!{}Produção diminui em 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...só pode ser colocado perto das bordas do mapa
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produção de {STRING} em {INDUSTRY} aumenta {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produção de {STRING} em {INDUSTRY} diminui {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}A produção de {STRING} em {INDUSTRY} aumentou em {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}A produção de {STRING} em {INDUSTRY} diminuiu em {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Há um trem no túnel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Há um veículo de estrada no túnel
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Há um automóvel no túnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Há outro túnel no caminho
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Não é possível escavar o terreno para o outro lado do túnel
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Deverá demolir o túnel primeiro
@@ -1898,7 +1898,7 @@ STR_500D                                                        :{GOLD}{STRING},
 STR_500E_SUSPENSION_STEEL                                       :Suspensa, Aço
 STR_500F_GIRDER_STEEL                                           :Vigas, Aço
 STR_5010_CANTILEVER_STEEL                                       :Cantilever, Aço
-STR_5011_SUSPENSION_CONCRETE                                    :Suspensa, Betão
+STR_5011_SUSPENSION_CONCRETE                                    :Suspensa, Concreto
 STR_5012_WOODEN                                                 :De madeira
 STR_5013_CONCRETE                                               :Concreto
 STR_5014_TUBULAR_STEEL                                          :Tubular, Aço
@@ -2001,7 +2001,7 @@ STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Custos 
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Velocidade de construção dos oponentes: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Inteligência dos oponentes: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Quebras de veículos: {ORANGE}{STRING}
-STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Multiplicador de subsídio: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Multiplicador dos subsídios: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Custos de construção: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Tipo de terreno: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Quantidade de mar/lagos: {ORANGE}{STRING}
