@@ -1016,6 +1016,8 @@ void DrawEditBox(Window *w, querystr_d *string, int wid)
 	const Widget *wi = &w->widget[wid];
 	const Textbuf *tb = &string->text;
 
+	GfxFillRect(wi->left + 1, wi->top + 1, wi->right - 1, wi->bottom - 1, 215);
+
 	/* Limit the drawing of the string inside the widget boundaries */
 	if (!FillDrawPixelInfo(&dpi,
 	      wi->left + 4,
@@ -1023,8 +1025,6 @@ void DrawEditBox(Window *w, querystr_d *string, int wid)
 	      wi->right - wi->left - 4,
 	      wi->bottom - wi->top - 1)
 	) return;
-
-	GfxFillRect(wi->left + 1, wi->top + 1, wi->right - 1, wi->bottom - 1, 215);
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &dpi;
