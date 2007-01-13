@@ -205,12 +205,9 @@ bool IsGoodGRFConfigList(void)
 		const GRFConfig *f = FindGRFConfig(c->grfid, c->md5sum);
 		if (f == NULL) {
 			char buf[512], *p = buf;
-			uint i;
 
 			p += snprintf(p, lastof(buf) - p, "Couldn't find NewGRF %08X (%s) checksum ", BSWAP32(c->grfid), c->filename);
-			for (i = 0; i < lengthof(c->md5sum); i++) {
-				p += snprintf(p, lastof(buf) - p, "%02X", c->md5sum[i]);
-			}
+			md5sumToString(p, lastof(buf), c->md5sum);
 			ShowInfo(buf);
 
 			res = false;

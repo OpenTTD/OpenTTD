@@ -41,9 +41,7 @@ static int parse_intlist(const char *p, int *items, int maxitems)
 
 static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show_params)
 {
-	char buff[512];
-	char *s;
-	uint i;
+	char buff[256];
 
 	/* Draw filename or not if it is not known (GRF sent over internet) */
 	if (c->filename != NULL) {
@@ -57,10 +55,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 	y += DrawStringMultiLine(x, y, STR_NEWGRF_GRF_ID, w);
 
 	/* Prepare and draw MD5 sum */
-	s = buff;
-	for (i = 0; i < lengthof(c->md5sum); i++) {
-		s += snprintf(s, lastof(buff) - s, "%02X", c->md5sum[i]);
-	}
+	md5sumToString(buff, lastof(buff), c->md5sum);
 	SetDParamStr(0, buff);
 	y += DrawStringMultiLine(x, y, STR_NEWGRF_MD5SUM, w);
 
