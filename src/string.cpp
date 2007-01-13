@@ -160,11 +160,16 @@ int CDECL snprintf(char *str, size_t size, const char *format, ...)
 }
 
 #ifdef _MSC_VER
+/* *nprintf broken, not POSIX compliant, MSDN description
+ * - If len < count, then len characters are stored in buffer, a null-terminator is appended, and len is returned.
+ * - If len = count, then len characters are stored in buffer, no null-terminator is appended, and len is returned.
+ * - If len > count, then count characters are stored in buffer, no null-terminator is appended, and a negative value is returned
+ */
 int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 {
 	int ret;
 	ret = _vsnprintf(str, size, format, ap);
-	if (ret < 0) str[size - 1] = '\0';
+	if (ret < 0 || ret == 0) str[size - 1] = '\0';
 	return ret;
 }
 #endif /* _MSC_VER */
