@@ -750,8 +750,7 @@ static void HandleRoadVehLoading(Vehicle *v)
 			}
 
 			b = v->current_order;
-			v->current_order.type = OT_LEAVESTATION;
-			v->current_order.flags = 0;
+			v->LeaveStation();
 			if (!(b.flags & OF_NON_STOP)) return;
 			break;
 		}
@@ -1508,7 +1507,7 @@ again:
 			RoadVehArrivesAt(v, st);
 
 			old_order = v->current_order;
-			v->current_order.type = OT_LOADING;
+			v->BeginLoading();
 			v->current_order.flags = 0;
 
 			if (old_order.type == OT_GOTO_STATION &&

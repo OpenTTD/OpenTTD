@@ -1370,7 +1370,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 	}
 
 	old_order = v->current_order;
-	v->current_order.type = OT_LOADING;
+	v->BeginLoading();
 	v->current_order.flags = 0;
 
 	if (old_order.type == OT_GOTO_STATION &&

@@ -292,8 +292,7 @@ static void HandleShipLoading(Vehicle *v)
 
 		{
 			Order b = v->current_order;
-			v->current_order.type = OT_LEAVESTATION;
-			v->current_order.flags = 0;
+			v->LeaveStation();
 			if (!(b.flags & OF_NON_STOP)) return;
 		}
 	}
@@ -704,7 +703,7 @@ static void ShipController(Vehicle *v)
 							/* Process station in the orderlist. */
 							st = GetStation(v->current_order.dest);
 							if (st->facilities & FACIL_DOCK) { /* ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations */
-								v->current_order.type = OT_LOADING;
+								v->BeginLoading();
 								v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER;
 								v->current_order.flags |= OF_NON_STOP;
 								ShipArrivesAt(v, st);
@@ -717,7 +716,6 @@ static void ShipController(Vehicle *v)
 								InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 							} else { /* leave stations without docks right aways */
 								v->current_order.type = OT_LEAVESTATION;
-								v->current_order.flags = 0;
 								v->cur_order_index++;
 								InvalidateVehicleOrder(v);
 							}

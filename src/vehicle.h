@@ -251,6 +251,9 @@ struct Vehicle {
 		VehicleDisaster disaster;
 		VehicleShip ship;
 	} u;
+
+	void BeginLoading();
+	void LeaveStation();
 };
 
 #define is_custom_sprite(x) (x >= 0xFD)

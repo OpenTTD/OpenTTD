@@ -2647,8 +2647,7 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 
 		{
 			Order b = v->current_order;
-			v->current_order.type = OT_LEAVESTATION;
-			v->current_order.flags = 0;
+			v->LeaveStation();
 
 			// If this was not the final order, don't remove it from the list.
 			if (!(b.flags & OF_NON_STOP)) return;
@@ -2721,12 +2720,12 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 			v->current_order.dest == station) {
 		// Yeah, keep the load/unload flags
 		// Non Stop now means if the order should be increased.
-		v->current_order.type = OT_LOADING;
+		v->BeginLoading();
 		v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER;
 		v->current_order.flags |= OF_NON_STOP;
 	} else {
 		// No, just do a simple load
-		v->current_order.type = OT_LOADING;
+		v->BeginLoading();
 		v->current_order.flags = 0;
 	}
 	v->current_order.dest = 0;

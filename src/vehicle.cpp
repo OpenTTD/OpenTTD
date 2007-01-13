@@ -3227,3 +3227,17 @@ static void Load_VEHS(void)
 extern const ChunkHandler _veh_chunk_handlers[] = {
 	{ 'VEHS', Save_VEHS, Load_VEHS, CH_SPARSE_ARRAY | CH_LAST},
 };
+
+void Vehicle::BeginLoading()
+{
+	assert(IsTileType(tile, MP_STATION) || type == VEH_Ship);
+	current_order.type = OT_LOADING;
+}
+
+void Vehicle::LeaveStation()
+{
+	assert(IsTileType(tile, MP_STATION) || type == VEH_Ship);
+	assert(current_order.type == OT_LOADING);
+	current_order.type = OT_LEAVESTATION;
+	current_order.flags = 0;
+}
