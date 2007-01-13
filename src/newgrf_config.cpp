@@ -195,24 +195,45 @@ void ResetGRFConfig(bool defaults)
 }
 
 
-/* Check if all GRFs in the GRF Config can be loaded */
-bool IsGoodGRFConfigList(void)
+/** Check if all GRFs in the GRF config from a savegame can be loaded.
+ * @return will return any of the following 3 values:<br>
+ * <ul>
+ * <li> GCF_ACTIVATED: No problems occured, all GRF files were found and loaded
+ * <li> GCF_COMPATIBLE: For one or more GRF's no exact match was found, but a
+ *     compatible GRF with the same grfid was found and used instead
+ * <li> GCF_NOT_FOUND: For one or more GRF's no match was found at all
+ * </ul> */
+GCF_Flags IsGoodGRFConfigList(void)
 {
-	bool res = true;
-	GRFConfig *c;
+	GCF_Flags res = GCF_ACTIVATED;
 
-	for (c = _grfconfig; c != NULL; c = c->next) {
+	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 		const GRFConfig *f = FindGRFConfig(c->grfid, c->md5sum);
 		if (f == NULL) {
-			char buf[512], *p = buf;
+			char buf[256], *p = buf;
 
-			p += snprintf(p, lastof(buf) - p, "Couldn't find NewGRF %08X (%s) checksum ", BSWAP32(c->grfid), c->filename);
-			md5sumToString(p, lastof(buf), c->md5sum);
-			ShowInfo(buf);
+			/* If we have not found the exactly matching GRF try to find one with the
+			 * same grfid, as it most likely is compatible */
+			f = FindGRFConfig(c->grfid);
+			if (f != NULL) {
+				md5sumToString(buf, lastof(buf), c->md5sum);
+				DEBUG(grf, 1, "NewGRF %08X (%s) not found; checksum %s. Compatibility mode on", BSWAP32(c->grfid), c->filename, buf);
+				SETBIT(c->flags, GCF_COMPATIBLE);
 
-			res = false;
+				/* Non-found has precedence over compatibility load */
+				if (res != GCF_NOT_FOUND) res = GCF_COMPATIBLE;
+				goto compatible_grf;
+			}
+
+			/* No compatible grf was found, mark it as disabled */
+			md5sumToString(buf, lastof(buf), c->md5sum);
+			DEBUG(grf, 0, "NewGRF %08X (%s) not found; checksum %s", BSWAP32(c->grfid), c->filename, buf);
+
+			SETBIT(c->flags, GCF_NOT_FOUND);
+			res = GCF_NOT_FOUND;
 		} else {
-			DEBUG(grf, 1, "Loading GRF %08X from '%s'", BSWAP32(c->grfid), f->filename);
+compatible_grf:
+			DEBUG(grf, 1, "Loading GRF %08X from %s", BSWAP32(f->grfid), f->filename);
 			/* The filename could be the filename as in the savegame. As we need
 			 * to load the GRF here, we need the correct filename, so overwrite that
 			 * in any case and set the name and info when it is not set already.
@@ -221,6 +242,7 @@ bool IsGoodGRFConfigList(void)
 			if (!HASBIT(c->flags, GCF_COPY)) {
 				free(c->filename);
 				c->filename = strdup(f->filename);
+				memcpy(c->md5sum, f->md5sum, sizeof(c->md5sum));
 				if (c->name == NULL) c->name = strdup(f->name);
 				if (c->info == NULL) c->info = strdup(f->info);
 			}

@@ -71,8 +71,9 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 	}
 
 	/* Show flags */
-	if (HASBIT(c->flags, GCF_NOT_FOUND)) y += DrawStringMultiLine(x, y, STR_NEWGRF_NOT_FOUND, w);
-	if (HASBIT(c->flags, GCF_DISABLED))  y += DrawStringMultiLine(x, y, STR_NEWGRF_DISABLED, w);
+	if (HASBIT(c->flags, GCF_NOT_FOUND))  y += DrawStringMultiLine(x, y, STR_NEWGRF_NOT_FOUND, w);
+	if (HASBIT(c->flags, GCF_DISABLED))   y += DrawStringMultiLine(x, y, STR_NEWGRF_DISABLED, w);
+	if (HASBIT(c->flags, GCF_COMPATIBLE)) y += DrawStringMultiLine(x, y, STR_NEWGRF_COMPATIBLE_LOADED, w);
 
 	/* Draw GRF info if it exists */
 	if (c->info != NULL && !StrEmpty(c->info)) {
@@ -317,7 +318,9 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					if (HASBIT(c->flags, GCF_NOT_FOUND) || HASBIT(c->flags, GCF_DISABLED)) {
 						pal = PALETTE_TO_RED;
 					} else if (HASBIT(c->flags, GCF_STATIC)) {
-						pal = PALETTE_TO_YELLOW;
+						pal = PALETTE_TO_GREY;
+					} else if (HASBIT(c->flags, GCF_COMPATIBLE)) {
+						pal = PALETTE_TO_ORANGE;
 					} else if (HASBIT(c->flags, GCF_ACTIVATED)) {
 						pal = PALETTE_TO_GREEN;
 					} else {
