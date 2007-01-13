@@ -574,7 +574,7 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 				return DoCommand(tile, b, 0, flags, CMD_REMOVE_ROAD);
 			}
 			return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
-		} break;
+		}
 #undef M
 
 		case ROAD_TILE_CROSSING: {
