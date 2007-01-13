@@ -3,6 +3,8 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
+#include "gfx.h"
+
 void DoClearSquare(TileIndex tile);
 void RunTileLoop(void);
 

@@ -5,6 +5,7 @@
 #ifndef RAIL_H
 #define RAIL_H
 
+#include "gfx.h"
 #include "direction.h"
 #include "tile.h"
 

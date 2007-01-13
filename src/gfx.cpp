@@ -21,6 +21,24 @@
 bool _dbg_screen_rect;
 #endif
 
+byte _dirkeys;        // 1 = left, 2 = up, 4 = right, 8 = down
+bool _fullscreen;
+CursorVars _cursor;
+bool _ctrl_pressed;   // Is Ctrl pressed?
+bool _shift_pressed;  // Is Shift pressed?
+byte _fast_forward;
+bool _left_button_down;
+bool _left_button_clicked;
+bool _right_button_down;
+bool _right_button_clicked;
+DrawPixelInfo _screen;
+bool _exit_game;
+bool _networking;         ///< are we in networking mode?
+byte _game_mode;
+byte _pause;
+int _pal_first_dirty;
+int _pal_last_dirty;
+
 Colour _cur_palette[256];
 byte _stringwidth_table[FS_END][224];
 

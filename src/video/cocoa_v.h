@@ -4,6 +4,7 @@
 #define VIDEO_COCOA_H
 
 #include "../hal.h"
+#include "../gfx.h"
 
 #ifdef __cplusplus
 extern "C" {
