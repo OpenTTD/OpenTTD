@@ -210,7 +210,7 @@ GCF_Flags IsGoodGRFConfigList(void)
 	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 		const GRFConfig *f = FindGRFConfig(c->grfid, c->md5sum);
 		if (f == NULL) {
-			char buf[256], *p = buf;
+			char buf[256];
 
 			/* If we have not found the exactly matching GRF try to find one with the
 			 * same grfid, as it most likely is compatible */
