@@ -2915,6 +2915,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan inte
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Matchande fil hittades ej
 STR_NEWGRF_DISABLED                                             :{RED}Avstängd
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil saknas (kompatibel GRF laddad)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF laddad för saknade filer
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad GRF fil har stängts av
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Saknas GRF fil för att kunna ladda spel
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY} = £ {COMMA}

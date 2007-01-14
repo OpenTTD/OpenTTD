@@ -294,7 +294,7 @@ STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARG
 STR_0140_NEW_GAME                                               :{BLACK}Nyt spil
 STR_0141_LOAD_GAME                                              :{BLACK}Hent spil
 STR_SINGLE_PLAYER                                               :{BLACK}En spiller
-STR_MULTIPLAYER                                                 :{BLACK}Flere spillere
+STR_MULTIPLAYER                                                 :{BLACK}Netværksspil
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -309,7 +309,7 @@ STR_0148_GAME_OPTIONS                                           :{BLACK}Spilinds
 STR_0150_SOMEONE                                                :en eller anden{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Kort over verden
 STR_0152_TOWN_DIRECTORY                                         :Byoversigt
-STR_0153_SUBSIDIES                                              :Statsstøttede aftaler
+STR_0153_SUBSIDIES                                              :Tilskudsordninger
 
 STR_UNITS_IMPERIAL                                              :Britisk standard
 STR_UNITS_METRIC                                                :Metersystem
@@ -359,7 +359,7 @@ STR_015C_SAVE_GAME                                              :Gem spil
 STR_015D_LOAD_GAME                                              :Hent spil
 STR_015E_QUIT_GAME                                              :Forlad spillet
 STR_015F_QUIT                                                   :Afslut
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på, at du vil forlade dette spil ?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på du vil forlade dette spil ?
 STR_0161_QUIT_GAME                                              :{WHITE}Forlad spillet
 STR_SORT_ORDER_TIP                                              :{BLACK}Vælg sorteringsorden (faldende/stigende)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vælg sorteringskriterie
@@ -589,7 +589,7 @@ STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonom
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rådgivning / information om spillerens køretøjer
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye køretøjer
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ændring i accepteret last
-STR_020E_SUBSIDIES                                              :{YELLOW}Statsstøttede aftaler
+STR_020E_SUBSIDIES                                              :{YELLOW}Tilskudsordninger
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Generel information
 STR_MESSAGES_ALL                                                :{YELLOW}Sæt alle beskedtyper til: Fra / Kortfattet / Fuld
 STR_MESSAGE_SOUND                                               :{YELLOW}Afspil lyd for refererede nyheder
@@ -793,8 +793,8 @@ STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
 
 STR_02DB_OFF                                                    :{BLACK}Fra
 STR_02DA_ON                                                     :{BLACK}Til
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Vis statsstøttede aftaler
-STR_02DD_SUBSIDIES                                              :Statsstøttede aftaler
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Vis tilskudsordninger
+STR_02DD_SUBSIDIES                                              :Tilskudsordninger
 STR_02DE_MAP_OF_WORLD                                           :Kort over verden
 STR_EXTRA_VIEW_PORT                                             :Flere lokalitetsvinduer
 STR_SIGN_LIST                                                   :Liste over skilte
@@ -832,7 +832,7 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start et
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Hent et gemt spil
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Lav en brugerdefineret verden/scenarie
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vælg enkeltspiller spil
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vælg flerspiller spil med 2-8 spillere
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vælg netværksspil med 2-8 spillere
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Vis spilindstillinger
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vis sværhedsgrad-indstillinger
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start et nyt spil med et brugerdefineret scenarie
@@ -1097,7 +1097,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deaktiv
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Slå den nye kunstige intelligents til (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillad AI i multiplayer (experimentiel): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillad AI i netværksspil (experimentiel): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard service interval for tog: {ORANGE}{STRING} dage/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard service interval for tog: {ORANGE}slået fra
@@ -1372,8 +1372,8 @@ STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Tilskuer
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Se et spil som tilskuer
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Tilslut dig selskab
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Hjælp med at bestyrre dette selskab
-STR_NETWORK_REFRESH                                             :{BLACK}Genopfrisk serveren
-STR_NETWORK_REFRESH_TIP                                         :{BLACK}Genopfrisk server info
+STR_NETWORK_REFRESH                                             :{BLACK}Genopfrisk server
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Genopfrisk serverens info
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}SELSKABSINFO
 
@@ -1620,21 +1620,21 @@ STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Vis info
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} lokal myndighed
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transportselskabsbedømmelse:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
-STR_2025_SUBSIDIES                                              :{WHITE}Statsstøttede aftaler
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Statsstøttede aftaler i licitation:
+STR_2025_SUBSIDIES                                              :{WHITE}Tilskudsordninger
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Tilskudsordninger i licitation:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} fra {STRING} til {STRING}
 STR_2028_BY                                                     :{YELLOW} (inden {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Ingen
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Statsstøttede aftaler der allerede er vundet:
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Tilskudsordninger der allerede er vundet:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, indtil {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Statsstøttet aftale udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse tilskud.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Licitation af statsstøttet aftale tilbagetrukket:{}{}{STRING} fragt fra {STATION} til {STATION} er ikke længere i licitation.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Statsstøttet aftale i licitation:{}{}Første {STRING} fragt fra {STRING} til {STRING} vil udløse et års tilskud fra de lokale myndigheder!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Statsstøttet aftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give 50% mere i de næste 12 måneder!
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Statsstøttet aftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give dobbelt udbytte i de næste 12 måneder!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Statsstøttet aftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give tredobbelt udbytte i de næste 12 måneder!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Statsstøttet aftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give firedobbelt udbytte i de næste 12 måneder!
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Licitation af tilskudsordning udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse tilskud.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Tilskudsordning tilbagetrukket:{}{}{STRING} fragt fra {STATION} til {STATION} modtager ikke længere tilskud.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Tilskudsordning i licitation:{}{}Første {STRING} fragt fra {STRING} til {STRING} vil udløse et års tilskud fra de lokale myndigheder!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give 50% mere i de næste 12 måneder!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give dobbelt udbytte i de næste 12 måneder!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give tredobbelt udbytte i de næste 12 måneder!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give firedobbelt udbytte i de næste 12 måneder!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} de lokale myndigheder tillader ikke, at der bliver bygget en lufthavn mere i byen
 STR_2036_COTTAGES                                               :Hytter
 STR_2037_HOUSES                                                 :Huse
@@ -2062,7 +2062,7 @@ STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nyt farv
 STR_7008_COMPANY_NAME                                           :{BLACK}Selskabs navn
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Direktørnavn
 STR_700A_COMPANY_NAME                                           :Selskabs navn
-STR_700B_PRESIDENT_S_NAME                                       :Direktørens Navn
+STR_700B_PRESIDENT_S_NAME                                       :Direktørens navn
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Kan ikke ændre selskabets navn...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Kan ikke ændre direktørens navn...
 STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finanser {BLACK}{PLAYERNAME}
@@ -2152,7 +2152,7 @@ STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFON
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Skift grafen for denne lasttype til/fra
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Ingeniør
-STR_7067_TRAFFIC_MANAGER                                        :Trafikbestyrrer
+STR_7067_TRAFFIC_MANAGER                                        :Trafikbestyrer
 STR_7068_TRANSPORT_COORDINATOR                                  :Trafikkoordinator
 STR_7069_ROUTE_SUPERVISOR                                       :Routesuperviser
 STR_706A_DIRECTOR                                               :Direktør
@@ -2604,7 +2604,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {C
 STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_S}  {BLACK}Styrke: {LTBLUE}{POWER}{BLACK} Maks. hastighed: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hastighed: {LTBLUE}{VELOCITY} {BLACK}Maks. trækkraft: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY} {BLACK}Maks. t.k.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Afkast i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed {LTBLUE}{COMMA}%  {BLACK}nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppet
@@ -2762,7 +2762,7 @@ STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Ombyg sk
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den lasttype der skal sejles med:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{CARGO}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
-STR_9842_REFITTABLE                                             :(ombygning mulig)
+STR_9842_REFITTABLE                                             :(kan ombygges)
 STR_GO_TO_SHIP_DEPOT                                            :Sejl til {TOWN} skibsdok
 SERVICE_AT_SHIP_DEPOT                                           :Service i {TOWN} skibsdok
 
@@ -2915,7 +2915,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Tilsvarende fil blev ikke fundet
 STR_NEWGRF_DISABLED                                             :{RED}Deaktiveret
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Tilsvarende fil ikke fundet (kompatibel GRF indlæst)
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible GRF fil(er) indlæst i stedet for manglende fil(er)
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF fil(er) er blevet slået fra
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mangler GRF fil(er) for at kunne indlæse spillet
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Brugerdefineret møntfod
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs: {ORANGE}{CURRENCY} = £ {COMMA}

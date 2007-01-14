@@ -2917,6 +2917,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Не м�
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Не е намерен отговарящ файл
 STR_NEWGRF_DISABLED                                             :{RED}Изключен
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Липсват файлове (заредени са съвместими GRF файлове)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Съвместими GRF файлове за заредени вместо липсващите
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Липсващите GRF файлове за изключени
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Липсващи GRF файлове при зареждане на игра
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Парична единица
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменен курс: {ORANGE}{CURRENCY} = £ {COMMA}

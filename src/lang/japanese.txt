@@ -394,6 +394,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :貨物容量
 STR_NO_WAITING_CARGO                                            :{BLACK}到着待ちの貨物がありません
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}すべての駅を選択
 STR_SELECT_ALL_TYPES                                            :{BLACK}すべての貨物種類を選択（include no waiting cargo）
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}この車両種類のデザインのリストを表示します
 STR_MANAGE_LIST                                                 :{BLACK}リストを管理
 STR_MANAGE_LIST_TIP                                             :{BLACK}リスト内のすべての車両へこの指令を送信
 STR_REPLACE_VEHICLES                                            :車両を交換
@@ -1083,6 +1084,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}会社�
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :なし
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :プレヤーの会社
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :すべての会社
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER>でのチームチャットを優先：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}一人の列車数上限：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}一人の道路車両数上限：{ORANGE}{STRING}
@@ -1219,6 +1221,7 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}列車�
 
 STR_DRAG_DROP                                                   :{BLACK}ドラッグアンドドロップ
 STR_STATION_DRAG_DROP                                           :{BLACK}ドラッグとドロップで駅を建設します
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}駅の種類を選択します
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}駅の種類を選択します
 
 STR_FAST_FORWARD                                                :{BLACK}ゲームを早送り
@@ -2097,6 +2100,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}より�
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...残額がありません
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY}が必要
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}借入金が返済できません...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}借入した資金が送金できません...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}社長の新しい顔を選択します
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}交通会社のカラースキームを変更
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}社長の名前を変更します
@@ -2136,6 +2140,7 @@ STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}（社長）
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}交通会社の合併！
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY}が{COMPANY}に売却、価格：{CURRENCY}！
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}経済の現状によって当社を他の交通会社へご売却いたします。{}{}{COMPANY}を{CURRENCY}で買収しますか？
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}破産！
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY}が閉鎖、債権者が資産を販売！
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}新しい交通会社が開業！
@@ -2612,6 +2617,7 @@ STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}列車�
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}鉄道車両の名称を変更
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}鉄道車両の名称が変更できません...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に貨物の降ろすことを含みます
+STR_886F_TRANSFER                                               :{BLACK}運搬
 
 STR_TRAIN_STOPPING                                              :{RED}停車中
 STR_TRAIN_STOPPING_VEL                                          :{RED}停車中、{VELOCITY}
@@ -2841,6 +2847,8 @@ STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}炭鉱の地盤沈下によって{TOWN}が壊れた！
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}洪水！{}浸水後に{COMMA}人が死亡
 
+STR_BRIBE_FAILED                                                :{WHITE}買収未遂が
+STR_BRIBE_FAILED_2                                              :{WHITE}地方の腐敗防止監視機関に露見されました
 STR_BUILD_DATE                                                  :{BLACK}購入年：{LTBLUE}{DATE_LONG}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}パフォーマンス評価の詳細
@@ -2863,10 +2871,12 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}合計�
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}車両数：道路車両、列車、船舶や飛行機を含みます
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}駅数：駅のすべての部分（駅、バス停、空港）を一つとして数えます
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}最小収益のある（年齢2年以上の）車両の損益を表示します
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}一年間に運送した貨物単位を表示します
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}直前の四半期に運送した貨物種類数を表示します
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}この会社の残高を表示します
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}この会社が借入している残額を表示します
+STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}最大ポイントから合計ポイント
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF設定
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF設定
@@ -2901,7 +2911,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}ファ�
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}一致しているファイルが見つかりません
 STR_NEWGRF_DISABLED                                             :{RED}切
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}一致しているファイルが見つかりません（代替 GRF を使用中）
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}見つからないファイルの代わりに対応している代替 GRF ファイルを使用しています
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}見つからない GRF ファイルを切にしています
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}ゲームを開くには次の GRF ファイルが必要
 
 STR_CURRENCY_WINDOW                                             :{WHITE}カスタム通貨
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}為替レート：{ORANGE}{CURRENCY} ＝ £ {COMMA}

@@ -3018,6 +3018,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nem lehe
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}File nem található
 STR_NEWGRF_DISABLED                                             :{RED}Kikapcsolva
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Pontosan megegyező fájlt nem találtam (kompatibilis GRF-fel helyettesítve)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilis GRF(ek) betöltve a hiányzó fájl(ok) helyett
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Hiányzó GRF fájl(oka)t kikapcsoltam
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Kritikus GRF fájl(ok) hiányoznak, a játék nem betölthető
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = £ {COMMA}

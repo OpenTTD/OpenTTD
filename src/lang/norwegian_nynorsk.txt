@@ -17,8 +17,8 @@ STR_0008_WAITING                                                :{BLACK}Ventar: 
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (på veg frå
 STR_000B                                                        :{YELLOW}{STATION})
-STR_000C_ACCEPTS                                                :{BLACK}Godtat: {WHITE}
-STR_000D_ACCEPTS                                                :{BLACK}Godtar: {GOLD}
+STR_000C_ACCEPTS                                                :{BLACK}Godtek: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Godtek: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passasjerar
 STR_0010_COAL                                                   :Kol
@@ -31,7 +31,7 @@ STR_0016_WOOD                                                   :Tømmer
 STR_0017_IRON_ORE                                               :Jernmalm
 STR_0018_STEEL                                                  :Stål
 STR_0019_VALUABLES                                              :Verdisaker
-STR_001A_COPPER_ORE                                             :Kobbermalm
+STR_001A_COPPER_ORE                                             :Koparmalm
 STR_001B_MAIZE                                                  :Mais
 STR_001C_FRUIT                                                  :Frukt
 STR_001D_DIAMONDS                                               :Diamantar
@@ -152,12 +152,12 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kart - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Spelinstillinger
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Spelinstillingar
 STR_00B2_MESSAGE                                                :{YELLOW}Melding
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Melding frå {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Åtvaring
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan ikkje gjere dette...
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikkje rydda dette området...
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikkje rydde dette området...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Opphaveleg opphavsbeskytta {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versjon {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD-teamet
@@ -168,7 +168,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Avslutt
 STR_00C8_YES                                                    :{BLACK}Ja
 STR_00C9_NO                                                     :{BLACK}Nei
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på at du vil avslutta og gå attende til {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på at du vil avslutte og gå attende til {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -181,8 +181,8 @@ STR_00D3_PINK                                                   :Rosa
 STR_00D4_YELLOW                                                 :Gul
 STR_00D5_RED                                                    :Raud
 STR_00D6_LIGHT_BLUE                                             :Lyseblå
-STR_00D7_GREEN                                                  :Grønn
-STR_00D8_DARK_GREEN                                             :Mørkegrønn
+STR_00D7_GREEN                                                  :Grøn
+STR_00D8_DARK_GREEN                                             :Mørkegrøn
 STR_00D9_BLUE                                                   :Blå
 STR_00DA_CREAM                                                  :Kremgul
 STR_00DB_MAUVE                                                  :Fiolett
@@ -191,20 +191,20 @@ STR_00DD_ORANGE                                                 :Oransje
 STR_00DE_BROWN                                                  :Brun
 STR_00DF_GREY                                                   :Grå
 STR_00E0_WHITE                                                  :Kvit
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}For mange kjøretøy i spelt
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}For mange køyretøy i spelet
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
-STR_00E4_LOCATION                                               :{BLACK}Sted
-STR_00E5_CONTOURS                                               :Konturer
-STR_00E6_VEHICLES                                               :Kjøretøy
+STR_00E4_LOCATION                                               :{BLACK}Stad
+STR_00E5_CONTOURS                                               :Konturar
+STR_00E6_VEHICLES                                               :Køyretøy
 STR_00E7_INDUSTRIES                                             :Industriar
 STR_00E8_ROUTES                                                 :Ruter
 STR_00E9_VEGETATION                                             :Vegetasjon
 STR_00EA_OWNERS                                                 :Eigarar
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Vegar
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Jernbaner
-STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stasjoner/Flyplassar/Havner
-STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Bygninger/Industribygg
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stasjonar/Flyplassar/Hamner
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Bygningar/Industribygg
 STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Kjøretøy
 STR_00F0_100M                                                   :{BLACK}{TINYFONT}100 m
 STR_00F1_200M                                                   :{BLACK}{TINYFONT}200 m
@@ -212,18 +212,18 @@ STR_00F2_300M                                                   :{BLACK}{TINYFON
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400 m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500 m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Tog
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Kjøretøy
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Køyretøy
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Skip
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Fly
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transportruter
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Kullgruve
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Kolgruve
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Kraftverk
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Skog
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Sagbruk
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Oljeraffineri
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Gård
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Gard
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabrikk
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Trykkeri
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Trykkjeri
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Oljebrønn
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Jerngruve
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Smelteverk
@@ -235,13 +235,13 @@ STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFON
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Kopargruve
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Fruktplantasje
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Gummiplantasje
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vatnkilde
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vatntårn
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vasskjelde
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vasstårn
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Sagbruk
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Sukkerspinnskog
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Godterifabrikk
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Batterigard
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Colabrønner
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Colabrønnar
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Leikebutikk
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Leikefabrikk
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastfontener
@@ -257,9 +257,9 @@ STR_011F_DOCK                                                   :{BLACK}{TINYFON
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Utmark
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Gras
 STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Bart land
-STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Jorder
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Jorde
 STR_0124_TREES                                                  :{BLACK}{TINYFONT}Tre
-STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Steiner
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Steinar
 STR_0126_WATER                                                  :{BLACK}{TINYFONT}Vatn
 STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Ingen eigar
 STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Byar
@@ -271,8 +271,8 @@ STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Avbryt
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Gje nytt namn
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}For mange namn oppgjedd
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Namnet er alt i i bruk
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}For mange namn oppgjeve
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Namnet er allereie i i bruk
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
@@ -282,7 +282,7 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_013B_OWNED_BY                                               :{WHITE}...eigd av {STRING}
+STR_013B_OWNED_BY                                               :{WHITE}...ått av {STRING}
 STR_013C_CARGO                                                  :{BLACK}Last
 STR_013D_INFORMATION                                            :{BLACK}Informasjon
 STR_013E_CAPACITIES                                             :{BLACK}Kapasitet
@@ -305,12 +305,12 @@ STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Kartstorleik:
 STR_BY                                                          :{BLACK}*
-STR_0148_GAME_OPTIONS                                           :{BLACK}Spelinstillinger
+STR_0148_GAME_OPTIONS                                           :{BLACK}Spelinnstillingar
 
 STR_0150_SOMEONE                                                :nokon{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Verdskart
 STR_0152_TOWN_DIRECTORY                                         :Bykatalog
-STR_0153_SUBSIDIES                                              :Subsidier
+STR_0153_SUBSIDIES                                              :Subsidiar
 
 STR_UNITS_IMPERIAL                                              :Imperiell
 STR_UNITS_METRIC                                                :Metrisk
@@ -406,18 +406,18 @@ STR_SEND_AIRCRAFT_TO_HANGAR                                     :Send til hangar
 STR_SEND_FOR_SERVICING                                          :Send til vedlikehald
 
 ############ range for months starts
-STR_0162_JAN                                                    :Jan
-STR_0163_FEB                                                    :Feb
-STR_0164_MAR                                                    :Mar
-STR_0165_APR                                                    :Apr
-STR_0166_MAY                                                    :Mai
-STR_0167_JUN                                                    :Jun
-STR_0168_JUL                                                    :Jul
-STR_0169_AUG                                                    :Aug
-STR_016A_SEP                                                    :Sep
-STR_016B_OCT                                                    :Okt
-STR_016C_NOV                                                    :Nov
-STR_016D_DEC                                                    :Des
+STR_0162_JAN                                                    :jan
+STR_0163_FEB                                                    :feb
+STR_0164_MAR                                                    :mar
+STR_0165_APR                                                    :apr
+STR_0166_MAY                                                    :mai
+STR_0167_JUN                                                    :jun
+STR_0168_JUL                                                    :jul
+STR_0169_AUG                                                    :aug
+STR_016A_SEP                                                    :sep
+STR_016B_OCT                                                    :okt
+STR_016C_NOV                                                    :nov
+STR_016D_DEC                                                    :des
 ############ range for months ends
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
@@ -429,38 +429,38 @@ STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis list
 STR_0174_DISPLAY_MAP                                            :{BLACK}Vis kart
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Vis kart og byoversikt
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Vis byoversikt
-STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Vis firmaets økonomiske data
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Vis dei økonomiske data til firmaet
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Vis firmaets generelle data
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Vis grafar
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Vis firmarangeringstabell
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over toga til firmaet
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over firmaets biler
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over bilane til firmaet
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over skipa til firmaet
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over flya til firmaet
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Zoom inn
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Zoom ut
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Bygg jernbanespor
-STR_0182_BUILD_ROADS                                            :{BLACK}Bygg veg
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Bygg kaiar
+STR_0182_BUILD_ROADS                                            :{BLACK}Bygg vegar
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Bygg kaier
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Bygg flyplassar
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plant tre, skilt, o.l.
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plant tre, plasser skilt o.l.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informasjon om felt
 STR_0187_OPTIONS                                                :{BLACK}Instillingar
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Kan ikkje endre serviceintervall...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Lukk vindauge
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Vindaugstittel - dra her for å flytte vindauget
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Tittel på vindauget - dra for å flytte vindauget
 STR_STICKY_BUTTON                                               :{BLACK}Beskytt dette vindauget mot 'Lukk alle vindauge'-knappen
 STR_RESIZE_BUTTON                                               :{BLACK}Klikk og dra for å endra storleiken på på vndauget
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikk her for å komma til standardmappa for lagring og lasting
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Riv bygningar o.l.
-STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Senk et hjørne av et landstykke
-STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hev et hjørne av et landstykke
-STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scroll bar - scroller listen opp/ned
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Senk eit hjørne av eit landstykke
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hev eit hjørne av eit landstykke
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Rullefelt - blar lista opp/ned
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Rullefelt - ruller listen til venstre/høgre
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Vis landkonturer på kartet
-STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Vis kjøretøy på kartet
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Vis landkonturar på kartet
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Vis køyretøy på kartet
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Vis industri på kartet
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Vis transportruter på kartet
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Vis vegetasjon på kartet
@@ -473,7 +473,7 @@ STR_AGE                                                         :{COMMA} år ({C
 STR_AGE_RED                                                     :{RED}{COMMA} år ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Kjøyretøy
+STR_019C_ROAD_VEHICLE                                           :Køyretøy
 STR_019D_AIRCRAFT                                               :Fly
 STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Tog
@@ -481,14 +481,14 @@ STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} er veldig gamal
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} er veldig gamal og må byttast ut snøggast råd
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informasjon om felt
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for å fjerna: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for å fjerna:  {LTBLUE}{CURRENCY}
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for å fjerne: {LTBLUE}N/A
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for å fjerne:  {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Eigar: {LTBLUE}{STRING}
-STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokal myndighet: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokale styresmaktar: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ingen
 STR_01AA_NAME                                                   :{BLACK}Namn
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}v
+STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days	starts
 STR_01AC_1ST                                                    :1.
@@ -526,7 +526,7 @@ STR_01CA_31ST                                                   :31.
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
-STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Godtatte varer: {LTBLUE}
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Godtekne varer: {LTBLUE}
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz-jukeboks
@@ -545,7 +545,7 @@ STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Spel fø
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Spel neste spor
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Stopp musikken
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Start musikken
-STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Dra for å endra volum på musikk og lydeffektar
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Dra for å endre volum på musikk og lydeffektar
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
@@ -563,38 +563,38 @@ STR_01F0_CLEAR                                                  :{TINYFONT}{BLAC
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Lagre
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Gjeldande program for musikkspor
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Vel alle spor
-STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Vel 'old style music'-program
-STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Vel 'new style music'-program
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Vel 'gamle slagerar'-program
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Vel 'nye godbetar'-program
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Vel 'Eigendefinert 1'-program
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Vel 'Eigendefinert 2'-program
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Slett gjeldande program (Gjelder bare Eigendefinert 1 og 2)
-STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Lagre musikkvalg
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klikk på musikkspor for å legge til gjeldande program (Gjeld berre eigendefinert 1 og 2)
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Slett gjeldande program (gjeld berre Eigendefinert 1 og 2)
+STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Lagre musikkval
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klikk på musikkspor for å leggje til gjeldande program (gjeld berre Eigendefinert 1 og 2)
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klikk på eit musikkspor for å fjerne det frå gjeldande program (Gjeld berre eigendefinert 1 og 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Skru tilfeldig program av/på
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Vis musikkspormeny
-STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Trykk for å sentere biletet rundt industri/by
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Trykk for å sentrere biletet rundt industri/by
 STR_01FE_DIFFICULTY                                             :{BLACK}Vanskegrad ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Siste melding/nyhende
-STR_0201_MESSAGE_SETTINGS                                       :Meldingsinstillinger
+STR_0201_MESSAGE_SETTINGS                                       :Meldingsinstillingar
 STR_MESSAGE_HISTORY_MENU                                        :Tidligare meldingar
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vis siste melding/hende, vis meldingsinstillinger
-STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Meldingsinstillinger
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vis siste melding/nyhende, vis meldingsinstillingar
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Meldingsinstillingar
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Meldingstypar:
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankommst av første kjøretøy på spelars stasjon
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankommst av første kjøretøy på motstanders stasjon
-STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ulykker/katastrofer
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Første køyretøy kjem fram på stasjonen til spelaren
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Første køyretøy kjem fram på stasjonen til motstandaren
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ulykker/katastrofar
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmainformasjon
-STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiske endringer
-STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Råd/informasjon om spelars kjøretøy
-STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye kjøretøy
-STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Endringer i godtatte varer
-STR_020E_SUBSIDIES                                              :{YELLOW}Subsidier
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiske endringar
+STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Råd/informasjon om køyretøya til spelaren
+STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye køyretøy
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Endringar i godtekne varer
+STR_020E_SUBSIDIES                                              :{YELLOW}Subsidiar
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Generell informasjon
 STR_MESSAGES_ALL                                                :{YELLOW}Innstilling for alle meldingstyper (på/av/sammendrag)
 STR_MESSAGE_SOUND                                               :{YELLOW}Spel av lyd for samandrag av nyhende
-STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...for langt i frå førre destinasjon
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...for langt borte frå førre destinasjon
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Beste firma som nådde {NUM}{}({STRING} Nivå)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Firmarangering i {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
@@ -604,28 +604,28 @@ STR_0215_INDUSTRIALIST                                          :Industrialist
 STR_0216_CAPITALIST                                             :Kapitalist
 STR_0217_MAGNATE                                                :Magnat
 STR_0218_MOGUL                                                  :Mogul
-STR_0219_TYCOON_OF_THE_CENTURY                                  :Århundrets finansfyrste
+STR_0219_TYCOON_OF_THE_CENTURY                                  :Hundreårets finansfyrste
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} oppnår '{STRING}'-status!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} frå {COMPANY} oppnår '{STRING}'-status!
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} oppnår status som '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} frå {COMPANY} oppnår status som '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Lag scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
-STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarioredigerer
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarioredigering
 STR_0223_LAND_GENERATION                                        :{WHITE}Landgenerering
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND                                            :{BLACK}Tilfeldig landforming
-STR_0227_RESET_LAND                                             :{BLACK}Attendestill land
-STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Øk storleik av landareal å heve/senke
-STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Mink storleiken på landareal å heve/senke
+STR_0227_RESET_LAND                                             :{BLACK}Nullstill land
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Øk storleiken på landarealet som skal hevast/senkast
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Mink storleiken på landarealet som skal hevast/senkast
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generer tilfeldig landskap
-STR_022B_RESET_LANDSCAPE                                        :{BLACK}Attendestill landskap
-STR_022C_RESET_LANDSCAPE                                        :{WHITE}Attendestill landskap
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nullstill landskap
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nullstill landskap
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Bruk høgdekart
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Bruk høgdekart
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Er du sikkert på du vil attendestilla landskapet?
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Er du sikker på at du vil nullstille landskapet?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskapsgenerering
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrigenerering
@@ -633,45 +633,45 @@ STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Vegbyggi
 STR_0233_TOWN_GENERATION                                        :{WHITE}Bygenerering
 STR_0234_NEW_TOWN                                               :{BLACK}Ny by
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Grunnlegg ein ny by
-STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kan ikkje grunnlegga by her...
-STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...for nært kanten av kartet
-STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...for nært en anna by
-STR_0239_SITE_UNSUITABLE                                        :{WHITE}...feltet er ikke høveleg
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kan ikkje grunnleggje by her...
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...for nært kanten på kartet
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...for nært ein annan by
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...feltet er ikkje høveleg
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...for mange byar
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan ikkje bygge byar
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...det er ikkje meir plass på kartet
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Auk bystorleik
 STR_023C_EXPAND                                                 :{BLACK}Utvid
 STR_023D_RANDOM_TOWN                                            :{BLACK}Lag tilfeldig by
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Skipa by eit tilfeldig sted
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bygg by ein tilfeldig stad
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Industrigenerering
 STR_0240_COAL_MINE                                              :{BLACK}Kolgruve
 STR_0241_POWER_STATION                                          :{BLACK}Kraftstasjon
 STR_0242_SAWMILL                                                :{BLACK}Sagbruk
 STR_0243_FOREST                                                 :{BLACK}Skog
 STR_0244_OIL_REFINERY                                           :{BLACK}Oljeraffineri
-STR_0245_OIL_RIG                                                :{BLACK}Oljeplatform
+STR_0245_OIL_RIG                                                :{BLACK}Oljeplattform
 STR_0246_FACTORY                                                :{BLACK}Fabrikk
 STR_0247_STEEL_MILL                                             :{BLACK}Smelteverk
 STR_0248_FARM                                                   :{BLACK}Gard
 STR_0249_IRON_ORE_MINE                                          :{BLACK}Jerngruve
-STR_024A_OIL_WELLS                                              :{BLACK}Oljebrønner
+STR_024A_OIL_WELLS                                              :{BLACK}Oljebrønnar
 STR_024B_BANK                                                   :{BLACK}Bank
 STR_024C_PAPER_MILL                                             :{BLACK}Papirfabrikk
 STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Matforedlingsfabrikk
-STR_024E_PRINTING_WORKS                                         :{BLACK}Trykkeri
+STR_024E_PRINTING_WORKS                                         :{BLACK}Trykkjeri
 STR_024F_GOLD_MINE                                              :{BLACK}Gullgruve
 STR_0250_LUMBER_MILL                                            :{BLACK}Sagbruk
 STR_0251_FRUIT_PLANTATION                                       :{BLACK}Fruktplantasje
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}Gummiplantasje
-STR_0253_WATER_SUPPLY                                           :{BLACK}Vatnreservoar
-STR_0254_WATER_TOWER                                            :{BLACK}Vatntårn
+STR_0253_WATER_SUPPLY                                           :{BLACK}Vassreservoar
+STR_0254_WATER_TOWER                                            :{BLACK}Vasstårn
 STR_0255_DIAMOND_MINE                                           :{BLACK}Diamantgruve
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Kopargruve
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Sukkerspinnskog
 STR_0258_CANDY_FACTORY                                          :{BLACK}Søtsakfabrikk
-STR_0259_BATTERY_FARM                                           :{BLACK}Batterigård
-STR_025A_COLA_WELLS                                             :{BLACK}Colabrønner
+STR_0259_BATTERY_FARM                                           :{BLACK}Batterigard
+STR_025A_COLA_WELLS                                             :{BLACK}Colabrønnar
 STR_025B_TOY_SHOP                                               :{BLACK}Leiketøysbutikk
 STR_025C_TOY_FACTORY                                            :{BLACK}Leiketøysfabrikk
 STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastikkfontener
@@ -684,28 +684,28 @@ STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Bygg kra
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Bygg sagbruk
 STR_0265_PLANT_FOREST                                           :{BLACK}Plant skog
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Bygg oljeraffineri
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Bygg oljeplatform (kan kun byggast nær kanten av kartet)
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Bygg oljeplattform (kan berre byggjast nær kanten på kartet)
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Bygg fabrikk
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Bygg smelteverk
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Bygg gard
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Bygg jerngruve
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Bygg oljebrønn
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bygg bank (kan kun byggast i byar med fleire enn 1200 innbyggarar)
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bygg bank (kan berre byggjast i byar med fleire enn 1200 innbyggjarar)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Bygg papirfabrikk
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Bygg matforedlingsfabrikk
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Bygg trykkeri
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Bygg trykkjeri
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Bygg gullgruve
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bygg bank (kan kun byggast i byar)
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bygg bank (kan berre byggjast i byar)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Bygg sagbruk (fjerner regnskog og produserer tømmer)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plant fruktplantasje
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Plant gummiplantasje
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Bygg vatnreservoar
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Bygg vatntårn (kan kun byggast i byar)
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Bygg vassreservoar
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Bygg vasstårn (kan berre byggjast i byar)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Bygg diamantgruve
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Bygg kopargruve
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plant sukkerspinnskog
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Bygg søtsakfabrikk
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Bygg batterigård
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Bygg batterigard
 STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Bygg colabrønn
 STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Bygg leiketøysbutikk
 STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Bygg leiketøysfabrikk
@@ -714,37 +714,37 @@ STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Bygg min
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Bygg boblegenerator
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Bygg karamellbrudd
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Bygg sukkergruve
-STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan ikkje bygge {STRING} her...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...må bygge ein by først
-STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...kun ein er tillatt per by
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan ikkje byggje {STRING} her...
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...må byggje ein by først
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...berre éin er tillatt per by
 STR_0288_PLANT_TREES                                            :{BLACK}Plant tre
 STR_0289_PLACE_SIGN                                             :{BLACK}Plasser skilt
-STR_028A_RANDOM_TREES                                           :{BLACK}Plant tre tilfeldig
+STR_028A_RANDOM_TREES                                           :{BLACK}Plant tilfeldige tre
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plasser tre tilfeldig i landskapet
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plasser steinete felt i landskapet
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plasser fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plasser radiosendar
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Trykk og hold inne CTRL for å fjerne den
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Trykk og held inne CTRL for å fjerne det
 STR_CREATE_LAKE                                                 :{BLACK}Definer vatnområde.{}Det vil oversvømma landa rundt dersom det er på høgd med sjøen.
 STR_0290_DELETE                                                 :{BLACK}Slett
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett byen heil
-STR_0292_SAVE_SCENARIO                                          :Lagra scenario
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett byen heilt
+STR_0292_SAVE_SCENARIO                                          :Lagre scenario
 STR_0293_LOAD_SCENARIO                                          :Last inn scenario
 STR_0294_QUIT_EDITOR                                            :Avslutt redigeringsprogram
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Avslutt
-STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Lagra scenario, last inn scenario, forlate redigeringsprogrammet, avslutte
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Lagre scenario, last inn scenario, forlat redigeringsprogrammet, avslutt
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Last inn scenario
-STR_0299_SAVE_SCENARIO                                          :{WHITE}Lagra scenario
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Lagre scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spel scenario
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Spel høgdekart
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start eit nytt spel, bruk eit høgdekart som landskap
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Er du sikker på at du vil avslutte scenariet ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Avslutt redigeringsprogrammet
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan berre byggast i byar med meir en 1200 innbyggarar
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan berre byggjast i byar med meir enn 1200 innbyggjarar
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen attende eit år
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen fram eit år
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...endane på brua måvera på land
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...endane på brua må vere på land
 STR_02A1_SMALL                                                  :{BLACK}Liten
 STR_02A2_MEDIUM                                                 :{BLACK}Middels
 STR_02A3_LARGE                                                  :{BLACK}Stor
@@ -758,17 +758,17 @@ STR_SUMMARY                                                     :Sammendrag
 STR_FULL                                                        :Fullt
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Byoversikt
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Namn på kjøretøy
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Namn på køyretøy
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Standard
 STR_02BF_CUSTOM                                                 :Eigendefinert
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Lagre eigendefinerte namn
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Vel namn på kjøretøy
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Vel namn på køyretøy
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Lagre eigendefinerte namn på kjøretøy
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
-STR_02C3_GAME_OPTIONS                                           :Spelinstillinger
+STR_02C3_GAME_OPTIONS                                           :Spelinstillingar
 STR_02C5_DIFFICULTY_SETTINGS                                    :Vanskegrad
 STR_02C7_CONFIG_PATCHES                                         :Konfigurer patcher
 STR_NEWGRF_SETTINGS                                             :Instillinger for ny grafikk
@@ -2916,7 +2916,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikkj
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Ingen passande filer funnet
 STR_NEWGRF_DISABLED                                             :{RED}Deaktivert
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Kunne ikkje finne ein passande fil (lasta inn ein kompatibel GRF-fil)
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Ein eller fleire kompatible GRF-filar har vorte lasta inn i plassen for manglande filar
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ein eller fleire manglande GRF-filar har vorte deaktiverte
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Manglar ein eller fleire GRF-filar for å kunne laste inn spelet
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanlig valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}

@@ -2916,6 +2916,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kann die
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Zugehörige Datei nicht gefunden
 STR_NEWGRF_DISABLED                                             :{RED}Ausgeschaltet
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passende Datei nicht gefunden (kompatible GRF geladen)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible GRF(s) für fehlende Dateien geladen
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlende GRF-Dateien wurden deaktiviert.
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Es fehlen GRF-Dateien um das Spiel zu laden
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Eigene Währung
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wechselkurs: {ORANGE}{CURRENCY} = £ {COMMA}

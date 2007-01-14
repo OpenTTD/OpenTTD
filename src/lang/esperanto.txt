@@ -2916,6 +2916,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne povas
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Ne trovis apartenan dosieron
 STR_NEWGRF_DISABLED                                             :{RED}Malaktiva
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ne troviĝis apartena dosiero (ŝarĝis taŭgan GRF)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Taŭga(j) GRF(oj) ŝarĝiĝis por mankaj dosieroj
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manka(j) GRF-dosiero(j) malŝaltiĝis
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mankas GRF-dosiero(j) por povi ŝarĝi la ludon
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Alia monunuo
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Interŝanĝa valoro: {ORANGE}{CURRENCY} = £ {COMMA}

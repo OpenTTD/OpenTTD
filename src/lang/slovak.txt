@@ -2979,6 +2979,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie je m
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Príslušný súbor nenájdený
 STR_NEWGRF_DISABLED                                             :{RED}Nedostupný
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Príslušný súbor nenájdený (použitý kompatibilný GRF)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilné GRF použité namiesto chýbajúcich súborov
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chýbajúce GRF súbory boli vypnuté
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Cýbajú GRF súbory potrebné pre nahratie hry
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastná mena
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = £ {COMMA}

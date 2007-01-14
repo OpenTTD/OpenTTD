@@ -2212,9 +2212,9 @@ STR_7037_PRESIDENT                                              :{WHITE}{PLAYERN
 STR_7038_INAUGURATED                                            :{GOLD}Asutatud: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Sõidukeid:
 STR_TRAINS                                                      :{WHITE}{COMMA} rong{P "" i}
-STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} veoki {P "" s}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} veok {P "" it}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} lennuk
-STR_SHIPS                                                       :{WHITE}{COMMA} laev{P "" s}
+STR_SHIPS                                                       :{WHITE}{COMMA} laev{P "" a}
 STR_7042_NONE                                                   :{WHITE}Mitte ühtegi
 STR_7043_FACE_SELECTION                                         :{WHITE}Näo valik
 STR_7044_MALE                                                   :{BLACK}Mees
@@ -3015,6 +3015,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ei saa f
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Sobivat faili ei leitud
 STR_NEWGRF_DISABLED                                             :{RED}Väljas
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sobivat faili ei leitud (ühilduv GRF fail on laaditud)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Puuduvatele failidele on laaditud ühilduvad GRF failid
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuduvad GRF failid on välja lülitatud
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mängu laadimiseks puudu olevad GRF failid
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Personaalne valuuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{CURRENCY} = £ {COMMA}

@@ -1702,7 +1702,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finansuoti naujų komercinių pastatų statybą mieste.{}  Kaina: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Pirkti isškirtines pervežimo teises mieste 1 metams. Miesto valdžia keleivius ir krovinius leis pervežti tik tavo kompanijai.{} Kaina: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Paperkant vietinę valdžią pakeliamas Jūsų reitingas, tačiau, jeigu pagaus, bus taikoma sunki bausmė.{}  Kaina: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Sutriko susisiekimas {TOWN} keliais!{}{}Kelių rekonstrukcija, finansuojama {COMPANY}, sutrigdė susisiekimą keliais 6 mėnesiams!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}: Sutriko susisiekimas keliais!{}{}Kelių rekonstrukcija, finansuojama {COMPANY}, sutrigdė susisiekimą keliais 6 mėnesiams!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (statoma)
@@ -2514,7 +2514,7 @@ STR_8106_MONORAIL_LOCOMOTIVE                                    :vienbegis lokom
 STR_8107_MAGLEV_LOCOMOTIVE                                      :magnetinis lokomotyvas
 
 ##id 0x8800
-STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Traukiniu depas
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Traukinių depas
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Gyventojai džiūgauja. . .{}Pirmas traukinys atvažiavo į {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detales)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Traukinys kelyje
@@ -2534,7 +2534,7 @@ STR_8810_GO_NON_STOP_TO_LOAD                                    :Vykti be sustoj
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Vykti be sustojimo i {STATION} (Perkrauti ir palaukti pilno pakrovimo)
 STR_GO_TO_TRAIN_DEPOT                                           :Vaziuoti i {TOWN} Traukinio Depa
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Remontas {TOWN} traukiniu depe
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Vaziuoti nestojant i {TOWN} traukiniu depa
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Važiuoti nestojant į {TOWN} traukinių depą
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Remontas nestojant {TOWN} traukiniu depe
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kursas i {TOWN} depa
@@ -2949,6 +2949,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Negalima
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Atitinkamas failas nerastas
 STR_NEWGRF_DISABLED                                             :{RED}Uždrausta
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Atitinkamas failas nerastas (panaudotas suderinamas grafikos failas)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Suderinami grafikos failai panaudoti vietoj trūkstamų
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Trūkstami grafikos failai nenaudojami
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Trūksta žaidimo paleidimui reikalingų grafikos failų
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Pasirinkti valiuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Keitimo santykis: {ORANGE}{CURRENCY} = £ {COMMA}
