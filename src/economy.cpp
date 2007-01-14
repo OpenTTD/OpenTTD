@@ -1526,7 +1526,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 
 	if (result != 0) {
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		MarkStationTilesDirty(st);
+		st->MarkTilesDirty();
 
 		if (result & 2) InvalidateWindow(WC_STATION_VIEW, last_visited);
 

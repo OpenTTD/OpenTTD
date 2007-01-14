@@ -3,6 +3,7 @@
 #ifndef STATION_H
 #define STATION_H
 
+#include <deque>
 #include "player.h"
 #include "oldpool.h"
 #include "sprite.h"
@@ -97,6 +98,26 @@ struct Station {
 	byte blocked_months_obsolete;
 
 	Rect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
+
+	static const int cDebugCtorLevel = 1;
+
+	Station(TileIndex tile = 0);
+	~Station();
+
+	/* normal new/delete operators. Used when building/removing station */
+	void* operator new (size_t size);
+	void operator delete(void *p);
+
+	/* new/delete operators accepting station index. Used when loading station from savegame. */
+	void* operator new (size_t size, int st_idx);
+	void operator delete(void *p, int st_idx);
+
+	void MarkDirty() const;
+	void MarkTilesDirty() const;
+	bool TileBelongsToRailStation(TileIndex tile) const;
+
+protected:
+	static Station *AllocateRaw(void);
 };
 
 enum {
@@ -176,14 +197,6 @@ static inline bool IsValidStationID(StationID index)
 	return index < GetStationPoolSize() && IsValidStation(GetStation(index));
 }
 
-void DestroyStation(Station *st);
-
-static inline void DeleteStation(Station *st)
-{
-	DestroyStation(st);
-	st->xy = 0;
-}
-
 #define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) if (IsValidStation(st))
 #define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
 
@@ -219,7 +232,6 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile, int w, int
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int h, int rad);
 uint GetStationPlatforms(const Station *st, TileIndex tile);
 uint GetPlatformLength(TileIndex tile, DiagDirection dir);
-void MarkStationTilesDirty(const Station *st);
 
 
 const DrawTileSprites *GetStationTileLayout(byte gfx);

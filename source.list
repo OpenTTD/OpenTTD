@@ -63,6 +63,7 @@ settings.cpp
 signs.cpp
 sound.cpp
 spritecache.cpp
+station.cpp
 string.cpp
 strings.cpp
 texteff.cpp

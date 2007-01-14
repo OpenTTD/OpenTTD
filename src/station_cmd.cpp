@@ -42,7 +42,7 @@ typedef enum StationRectModes
 	RECT_MODE_FORCE
 } StationRectMode;
 
-static void StationRect_Init(Station *st);
+void StationRect_Init(Station *st);
 static bool StationRect_IsEmpty(Station *st);
 static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, StationRectMode mode);
 static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, int w, int h, StationRectMode mode);
@@ -70,6 +70,7 @@ static void StationPoolCleanBlock(uint start_item, uint end_item)
 		Station *st = GetStation(i);
 		free(st->speclist);
 		st->speclist = NULL;
+		if (IsValidStation(st)) st->~Station();
 	}
 }
 
@@ -90,43 +91,6 @@ DEFINE_OLD_POOL(RoadStop, RoadStop, RoadStopPoolNewBlock, NULL)
 
 
 extern void UpdateAirplanesOnNewStation(Station *st);
-
-static bool TileBelongsToRailStation(const Station *st, TileIndex tile)
-{
-	return IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st->index && IsRailwayStation(tile);
-}
-
-void MarkStationTilesDirty(const Station *st)
-{
-	TileIndex tile = st->train_tile;
-	int w, h;
-
-	// XXX No station is recorded as 0, not INVALID_TILE...
-	if (tile == 0) return;
-
-	for (h = 0; h < st->trainst_h; h++) {
-		for (w = 0; w < st->trainst_w; w++) {
-			if (TileBelongsToRailStation(st, tile)) {
-				MarkTileDirtyByTile(tile);
-			}
-			tile += TileDiffXY(1, 0);
-		}
-		tile += TileDiffXY(-w, 1);
-	}
-}
-
-static void MarkStationDirty(const Station* st)
-{
-	if (st->sign.width_1 != 0) {
-		InvalidateWindowWidget(WC_STATION_VIEW, st->index, 1);
-
-		MarkAllViewportsDirty(
-			st->sign.left - 6,
-			st->sign.top,
-			st->sign.left + (st->sign.width_1 << 2) + 12,
-			st->sign.top + 48);
-	}
-}
 
 static void InitializeRoadStop(RoadStop *road_stop, RoadStop *previous, TileIndex tile, StationID index)
 {
@@ -263,7 +227,6 @@ static Station *AllocateStation(void)
 
 			memset(st, 0, sizeof(Station));
 			st->index = index;
-
 			return st;
 		}
 	}
@@ -456,37 +419,6 @@ static Station* GetClosestStationFromTile(TileIndex tile, uint threshold, Player
 	return best_station;
 }
 
-static void StationInitialize(Station *st, TileIndex tile)
-{
-	GoodsEntry *ge;
-
-	st->xy = tile;
-	st->airport_tile = st->dock_tile = st->train_tile = 0;
-	st->bus_stops = st->truck_stops = NULL;
-	st->had_vehicle_of_type = 0;
-	st->time_since_load = 255;
-	st->time_since_unload = 255;
-	st->delete_ctr = 0;
-	st->facilities = 0;
-
-	st->last_vehicle_type = VEH_Invalid;
-
-	for (ge = st->goods; ge != endof(st->goods); ge++) {
-		ge->waiting_acceptance = 0;
-		ge->days_since_pickup = 0;
-		ge->enroute_from = INVALID_STATION;
-		ge->rating = 175;
-		ge->last_speed = 0;
-		ge->last_age = 0xFF;
-		ge->feeder_profit = 0;
-	}
-
-	st->random_bits = Random();
-	st->waiting_triggers = 0;
-
-	StationRect_Init(st);
-}
-
 // Update the virtual coords needed to draw the station sign.
 // st = Station to update for.
 static void UpdateStationVirtCoord(Station *st)
@@ -514,9 +446,9 @@ void UpdateAllStationVirtCoord(void)
 // Update the station virt coords while making the modified parts dirty.
 static void UpdateStationVirtCoordDirty(Station *st)
 {
-	MarkStationDirty(st);
+	st->MarkDirty();
 	UpdateStationVirtCoord(st);
-	MarkStationDirty(st);
+	st->MarkDirty();
 }
 
 // Get a mask of the cargo types that the station accepts.
@@ -1020,6 +952,10 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		if (st != NULL && st->facilities) st = NULL;
 	}
 
+	/* In case of new station if DC_EXEC is NOT set we still need to create the station
+	 * to test if everything is OK. In this case we need to delete it before return. */
+	std::auto_ptr<Station> st_auto_delete;
+
 	if (st != NULL) {
 		// Reuse an existing station.
 		if (st->owner != OWNER_NONE && st->owner != _current_player)
@@ -1036,17 +972,19 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		//XXX can't we pack this in the "else" part of the if above?
 		if (!StationRect_BeforeAddRect(st, tile_org, w_org, h_org, RECT_MODE_TEST)) return CMD_ERROR;
 	} else {
-		// Create a new station
-		st = AllocateStation();
+		/* allocate and initialize new station */
+		st = new Station(tile_org);
 		if (st == NULL) return CMD_ERROR;
 
-		st->town = ClosestTownFromTile(tile_org, (uint)-1);
-		if (IsValidPlayer(_current_player) && (flags & DC_EXEC))
-			SETBIT(st->town->have_ratings, _current_player);
+		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
+		st_auto_delete = std::auto_ptr<Station>(st);
 
+		st->town = ClosestTownFromTile(tile_org, (uint)-1);
 		if (!GenerateStationName(st, tile_org, 0)) return CMD_ERROR;
 
-		if (flags & DC_EXEC) StationInitialize(st, tile_org);
+		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
+			SETBIT(st->town->have_ratings, _current_player);
+		}
 	}
 
 	/* Check if the given station class is valid */
@@ -1126,11 +1064,13 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 			tile_org += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
 		} while (--numtracks);
 
-		MarkStationTilesDirty(st);
+		st->MarkTilesDirty();
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
+		/* success, so don't delete the new station */
+		st_auto_delete.release();
 	}
 
 	return cost;
@@ -1148,7 +1088,7 @@ restart:
 	// too small?
 	if (w != 0 && h != 0) {
 		// check the left side, x = constant, y changes
-		for (i = 0; !TileBelongsToRailStation(st, tile + TileDiffXY(0, i));) {
+		for (i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(0, i));) {
 			// the left side is unused?
 			if (++i == h) {
 				tile += TileDiffXY(1, 0);
@@ -1158,7 +1098,7 @@ restart:
 		}
 
 		// check the right side, x = constant, y changes
-		for (i = 0; !TileBelongsToRailStation(st, tile + TileDiffXY(w - 1, i));) {
+		for (i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(w - 1, i));) {
 			// the right side is unused?
 			if (++i == h) {
 				w--;
@@ -1167,7 +1107,7 @@ restart:
 		}
 
 		// check the upper side, y = constant, x changes
-		for (i = 0; !TileBelongsToRailStation(st, tile + TileDiffXY(i, 0));) {
+		for (i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(i, 0));) {
 			// the left side is unused?
 			if (++i == w) {
 				tile += TileDiffXY(0, 1);
@@ -1177,7 +1117,7 @@ restart:
 		}
 
 		// check the lower side, y = constant, x changes
-		for (i = 0; !TileBelongsToRailStation(st, tile + TileDiffXY(i, h - 1));) {
+		for (i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(i, h - 1));) {
 			// the left side is unused?
 			if (++i == w) {
 				h--;
@@ -1224,7 +1164,7 @@ int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint
 		// now we need to make the "spanned" area of the railway station smaller if we deleted something at the edges.
 		// we also need to adjust train_tile.
 		MakeRailwayStationAreaSmaller(st);
-		MarkStationTilesDirty(st);
+		st->MarkTilesDirty();
 		UpdateStationSignCoord(st);
 
 		// if we deleted the whole station, delete the train facility.
@@ -1244,7 +1184,7 @@ uint GetStationPlatforms(const Station *st, TileIndex tile)
 	TileIndexDiff delta;
 	Axis axis;
 	uint len;
-	assert(TileBelongsToRailStation(st, tile));
+	assert(st->TileBelongsToRailStation(tile));
 
 	len = 0;
 	axis = GetRailStationAxis(tile);
@@ -1255,14 +1195,14 @@ uint GetStationPlatforms(const Station *st, TileIndex tile)
 	do {
 		t -= delta;
 		len++;
-	} while (TileBelongsToRailStation(st, t) && GetRailStationAxis(t) == axis);
+	} while (st->TileBelongsToRailStation(t) && GetRailStationAxis(t) == axis);
 
 	// find ending tile
 	t = tile;
 	do {
 		t += delta;
 		len++;
-	} while (TileBelongsToRailStation(st, t) && GetRailStationAxis(t) == axis);
+	} while (st->TileBelongsToRailStation(t) && GetRailStationAxis(t) == axis);
 
 	return len - 1;
 }
@@ -1314,7 +1254,7 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 		int w_bak = w;
 		do {
 			// for nonuniform stations, only remove tiles that are actually train station tiles
-			if (TileBelongsToRailStation(st, tile)) {
+			if (st->TileBelongsToRailStation(tile)) {
 				if (!EnsureNoVehicle(tile))
 					return CMD_ERROR;
 				cost += _price.remove_rail_station;
@@ -1456,6 +1396,10 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
 	}
 
+	/* In case of new station if DC_EXEC is NOT set we still need to create the station
+	* to test if everything is OK. In this case we need to delete it before return. */
+	std::auto_ptr<Station> st_auto_delete;
+
 	if (st != NULL) {
 		if (st->owner != OWNER_NONE && st->owner != _current_player) {
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
@@ -1465,24 +1409,24 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		FindRoadStopSpot(type, st, &currstop, &prev);
 	} else {
-		Town *t;
-
-		st = AllocateStation();
+		/* allocate and initialize new station */
+		st = new Station(tile);
 		if (st == NULL) return CMD_ERROR;
 
-		st->town = t = ClosestTownFromTile(tile, (uint)-1);
+		/* ensure that in case of error (or no DC_EXEC) the new station gets deleted upon return */
+		st_auto_delete = std::auto_ptr<Station>(st);
+
+
+		Town *t = st->town = ClosestTownFromTile(tile, (uint)-1);
+		if (!GenerateStationName(st, tile, 0)) return CMD_ERROR;
 
 		FindRoadStopSpot(type, st, &currstop, &prev);
 
-		if (IsValidPlayer(_current_player) && (flags & DC_EXEC)) {
+		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
 			SETBIT(t->have_ratings, _current_player);
 		}
 
 		st->sign.width_1 = 0;
-
-		if (!GenerateStationName(st, tile, 0)) return CMD_ERROR;
-
-		if (flags & DC_EXEC) StationInitialize(st, tile);
 	}
 
 	cost += (type) ? _price.build_truck_station : _price.build_bus_station;
@@ -1507,6 +1451,8 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
+		/* success, so don't delete the new station */
+		st_auto_delete.release();
 	}
 	return cost;
 }
@@ -1711,6 +1657,10 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
+	/* In case of new station if DC_EXEC is NOT set we still need to create the station
+	 * to test if everything is OK. In this case we need to delete it before return. */
+	std::auto_ptr<Station> st_auto_delete;
+
 	if (st != NULL) {
 		if (st->owner != OWNER_NONE && st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
@@ -1722,13 +1672,18 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} else {
 		airport_upgrade = false;
 
-		st = AllocateStation();
+		/* allocate and initialize new station */
+		st = new Station(tile);
 		if (st == NULL) return CMD_ERROR;
+
+		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
+		st_auto_delete = std::auto_ptr<Station>(st);
 
 		st->town = t;
 
-		if (IsValidPlayer(_current_player) && (flags & DC_EXEC))
+		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
 			SETBIT(t->have_ratings, _current_player);
+		}
 
 		st->sign.width_1 = 0;
 
@@ -1736,8 +1691,6 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		// type 5 name, which is heliport, otherwise airport names (1)
 		if (!GenerateStationName(st, tile, (p1 == AT_HELIPORT)||(p1 == AT_HELIDEPOT)||(p1 == AT_HELISTATION) ? 5 : 1))
 			return CMD_ERROR;
-
-		if (flags & DC_EXEC) StationInitialize(st, tile);
 	}
 
 	cost += _price.build_airport * w * h;
@@ -1775,6 +1728,8 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
+		/* success, so don't delete the new station */
+		st_auto_delete.release();
 	}
 
 	return cost;
@@ -1841,8 +1796,12 @@ int32 CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsClearWaterTile(tile) || tile == 0) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 
-	st = AllocateStation();
+	/* allocate and initialize new station */
+	st = new Station(tile);
 	if (st == NULL) return CMD_ERROR;
+
+	/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
+	std::auto_ptr<Station> st_auto_delete = std::auto_ptr<Station>(st);
 
 	st->town = ClosestTownFromTile(tile, (uint)-1);
 	st->sign.width_1 = 0;
@@ -1850,7 +1809,6 @@ int32 CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!GenerateStationName(st, tile, 4)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		StationInitialize(st, tile);
 		st->dock_tile = tile;
 		st->facilities |= FACIL_DOCK;
 		/* Buoys are marked in the Station struct by this flag. Yes, it is this
@@ -1866,6 +1824,8 @@ int32 CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
+		/* success, so don't delete the new station */
+		st_auto_delete.release();
 	}
 
 	return _price.build_dock;
@@ -1983,6 +1943,10 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (st!=NULL && st->facilities) st = NULL;
 	}
 
+	/* In case of new station if DC_EXEC is NOT set we still need to create the station
+	* to test if everything is OK. In this case we need to delete it before return. */
+	std::auto_ptr<Station> st_auto_delete;
+
 	if (st != NULL) {
 		if (st->owner != OWNER_NONE && st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
@@ -1991,21 +1955,22 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (st->dock_tile != 0) return_cmd_error(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK);
 	} else {
-		Town *t;
-
-		st = AllocateStation();
+		/* allocate and initialize new station */
+		st = new Station(tile);
 		if (st == NULL) return CMD_ERROR;
 
-		st->town = t = ClosestTownFromTile(tile, (uint)-1);
+		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
+		st_auto_delete = std::auto_ptr<Station>(st);
 
-		if (IsValidPlayer(_current_player) && (flags & DC_EXEC))
+		Town *t = st->town = ClosestTownFromTile(tile, (uint)-1);
+
+		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
 			SETBIT(t->have_ratings, _current_player);
+		}
 
 		st->sign.width_1 = 0;
 
 		if (!GenerateStationName(st, tile, 3)) return CMD_ERROR;
-
-		if (flags & DC_EXEC) StationInitialize(st, tile);
 	}
 
 	if (flags & DC_EXEC) {
@@ -2024,6 +1989,8 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
+		/* success, so don't delete the new station */
+		st_auto_delete.release();
 	}
 	return _price.build_dock;
 }
@@ -2402,41 +2369,13 @@ void DestroyRoadStop(RoadStop* rs)
 	if (rs->next != NULL) rs->next->prev = rs->prev;
 }
 
-/**
- * Clean up a station by clearing vehicle orders and invalidating windows.
- * Aircraft-Hangar orders need special treatment here, as the hangars are
- * actually part of a station (tiletype is STATION), but the order type
- * is OT_GOTO_DEPOT.
- * @param st Station to be deleted
- */
-void DestroyStation(Station *st)
-{
-	StationID index;
-
-	index = st->index;
-
-	DeleteName(st->string_id);
-	MarkStationDirty(st);
-	RebuildStationLists();
-	InvalidateWindowClasses(WC_STATION_LIST);
-
-	DeleteWindowById(WC_STATION_VIEW, index);
-
-	/* Now delete all orders that go to the station */
-	RemoveOrderFromAllVehicles(OT_GOTO_STATION, index);
-
-	//Subsidies need removal as well
-	DeleteSubsidyWithStation(index);
-
-	free(st->speclist);
-}
 
 void DeleteAllPlayerStations(void)
 {
 	Station *st;
 
 	FOR_ALL_STATIONS(st) {
-		if (IsValidPlayer(st->owner)) DeleteStation(st);
+		if (IsValidPlayer(st->owner)) delete st;
 	}
 }
 
@@ -2445,7 +2384,7 @@ static void StationHandleBigTick(Station *st)
 {
 	UpdateStationAcceptance(st, true);
 
-	if (st->facilities == 0 && ++st->delete_ctr >= 8) DeleteStation(st);
+	if (st->facilities == 0 && ++st->delete_ctr >= 8) delete st;
 
 }
 
@@ -2609,7 +2548,7 @@ static void UpdateStationWaiting(Station *st, int type, uint amount)
 	st->goods[type].enroute_time = 0;
 	st->goods[type].enroute_from = st->index;
 	InvalidateWindow(WC_STATION_VIEW, st->index);
-	MarkStationTilesDirty(st);
+	st->MarkTilesDirty();
 }
 
 /** Rename a station
@@ -2786,7 +2725,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 void BuildOilRig(TileIndex tile)
 {
 	uint j;
-	Station *st = AllocateStation();
+	Station *st = new Station();
 
 	if (st == NULL) {
 		DEBUG(misc, 0, "Can't allocate station for oilrig at 0x%X, reverting to oilrig only", tile);
@@ -2843,7 +2782,7 @@ void DeleteOilRig(TileIndex tile)
 	st->facilities &= ~(FACIL_AIRPORT | FACIL_DOCK);
 	st->airport_flags = 0;
 	UpdateStationVirtCoordDirty(st);
-	DeleteStation(st);
+	if (st->facilities == 0) delete st;
 }
 
 static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerID new_player)
@@ -3084,12 +3023,8 @@ static void Load_STNS(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		Station *st;
+		Station *st = new (index) Station();
 
-		if (!AddBlockIfNeeded(&_Station_pool, index))
-			error("Stations: failed loading savegame: too many stations");
-
-		st = GetStation(index);
 		SaveLoad_STNS(st);
 
 		// this means it's an oldstyle savegame without support for nonuniform stations
@@ -3167,7 +3102,7 @@ static inline bool PtInRectXY(Rect *r, int x, int y)
 	return (r->left <= x && x <= r->right && r->top <= y && y <= r->bottom);
 }
 
-static void StationRect_Init(Station *st)
+void StationRect_Init(Station *st)
 {
 	Rect *r = &st->rect;
 	r->left = r->top = r->right = r->bottom = 0;
