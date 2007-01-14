@@ -3060,7 +3060,6 @@ static void Save_ROADSTOP(void)
 static void Load_ROADSTOP(void)
 {
 	int index;
-	Vehicle *v;
 
 	while ((index = SlIterateArray()) != -1) {
 		RoadStop *rs;
@@ -3070,10 +3069,6 @@ static void Load_ROADSTOP(void)
 
 		rs = GetRoadStop(index);
 		SlObject(rs, _roadstop_desc);
-	}
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road && v->u.road.slot != NULL) v->u.road.slot->num_vehicles++;
 	}
 }
 
