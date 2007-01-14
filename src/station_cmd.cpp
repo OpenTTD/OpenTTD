@@ -70,8 +70,6 @@ static void StationPoolCleanBlock(uint start_item, uint end_item)
 
 	for (i = start_item; i <= end_item; i++) {
 		Station *st = GetStation(i);
-		free(st->speclist);
-		st->speclist = NULL;
 		if (IsValidStation(st)) st->~Station();
 	}
 }
