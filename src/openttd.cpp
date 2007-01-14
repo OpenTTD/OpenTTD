@@ -263,9 +263,15 @@ static void InitializeDynamicVariables(void)
 	_industry_sort = NULL;
 }
 
-static void UnInitializeDynamicVariables(void)
+
+static void UnInitializeGame(void)
 {
-	/* Dynamic stuff needs to be free'd somewhere... */
+	UnInitWindowSystem();
+
+	/* Uninitialize airport state machines */
+	UnInitializeAirports();
+
+	/* Uninitialize variables that are allocated dynamically */
 	CleanPool(&_Town_pool);
 	CleanPool(&_Industry_pool);
 	CleanPool(&_Station_pool);
@@ -275,11 +281,6 @@ static void UnInitializeDynamicVariables(void)
 
 	free((void*)_town_sort);
 	free((void*)_industry_sort);
-}
-
-static void UnInitializeGame(void)
-{
-	UnInitWindowSystem();
 
 	free(_config_file);
 }
@@ -547,18 +548,14 @@ int ttd_main(int argc, char *argv[])
 		SaveToHighScore();
 	}
 
-	// uninitialize airport state machines
-	UnInitializeAirports();
-
-	/* uninitialize variables that are allocated dynamic */
-	UnInitializeDynamicVariables();
+	/* Reset windowing system and free config file */
+	UnInitializeGame();
 
 	/* stop the AI */
 	AI_Uninitialize();
 
 	/* Close all and any open filehandles */
 	FioCloseAll();
-	UnInitializeGame();
 
 	return 0;
 }
