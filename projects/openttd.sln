@@ -1,12 +1,12 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "strgen", "strgen.vcproj", "{A133A442-BD0A-4ADE-B117-AD7545E4BDD1}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openttd", "openttd.vcproj", "{668328A0-B40E-4CDB-BD72-D0064424414A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0F066B23-18DF-4284-8265-F4A5E7E3B966} = {0F066B23-18DF-4284-8265-F4A5E7E3B966}
 		{A133A442-BD0A-4ADE-B117-AD7545E4BDD1} = {A133A442-BD0A-4ADE-B117-AD7545E4BDD1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "strgen", "strgen.vcproj", "{A133A442-BD0A-4ADE-B117-AD7545E4BDD1}"
+	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "langs", "langs.vcproj", "{0F066B23-18DF-4284-8265-F4A5E7E3B966}"
