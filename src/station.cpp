@@ -55,12 +55,12 @@ Station::Station(TileIndex tile)
 }
 
 /**
-* Clean up a station by clearing vehicle orders and invalidating windows.
-* Aircraft-Hangar orders need special treatment here, as the hangars are
-* actually part of a station (tiletype is STATION), but the order type
-* is OT_GOTO_DEPOT.
-* @param st Station to be deleted
-*/
+	* Clean up a station by clearing vehicle orders and invalidating windows.
+	* Aircraft-Hangar orders need special treatment here, as the hangars are
+	* actually part of a station (tiletype is STATION), but the order type
+	* is OT_GOTO_DEPOT.
+	* @param st Station to be deleted
+	*/
 Station::~Station()
 {
 	DEBUG(station, cDebugCtorLevel, "I-%3d", index);
@@ -75,7 +75,7 @@ Station::~Station()
 	/* Now delete all orders that go to the station */
 	RemoveOrderFromAllVehicles(OT_GOTO_STATION, index);
 
-	//Subsidies need removal as well
+	/* Subsidies need removal as well */
 	DeleteSubsidyWithStation(index);
 
 	free(speclist);
@@ -123,7 +123,7 @@ void Station::MarkTilesDirty() const
 	TileIndex tile = train_tile;
 	int w, h;
 
-	// XXX No station is recorded as 0, not INVALID_TILE...
+	/* XXX No station is recorded as 0, not INVALID_TILE... */
 	if (tile == 0) return;
 
 	for (h = 0; h < trainst_h; h++) {
@@ -196,14 +196,16 @@ bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 	int x = TileX(tile);
 	int y = TileY(tile);
 	if (IsEmpty()) {
-		// we are adding the first station tile
+		/* we are adding the first station tile */
 		left = right = x;
 		top = bottom = y;
+
 	} else if (!PtInRectXY(x, y)) {
-		// current rect is not empty and new point is outside this rect
-		// make new spread-out rectangle
+		/* current rect is not empty and new point is outside this rect */
+		/* make new spread-out rectangle */
 		Rect new_rect = {min(x, left), min(y, top), max(x, right), max(y, bottom)};
-		// check new rect dimensions against preset max
+
+		/* check new rect dimensions against preset max */
 		int w = new_rect.right - new_rect.left + 1;
 		int h = new_rect.bottom - new_rect.top + 1;
 		if (mode != ADD_FORCE && (w > _patches.station_spread || h > _patches.station_spread)) {
@@ -211,9 +213,10 @@ bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 			_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
 			return false;
 		}
-		// spread-out ok, return true
+
+		/* spread-out ok, return true */
 		if (mode != ADD_TEST) {
-			// we should update the station rect
+			/* we should update the station rect */
 			*this = new_rect;
 		}
 	} else {
@@ -232,9 +235,11 @@ bool StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mo
 	TileIndex top_left = TileXY(left_a, top_a);
 	int width = right_a - left_a + 1;
 	int height = bottom_a - top_a + 1;
+
 	BEGIN_TILE_LOOP(tile, width, height, top_left)
 		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st_id) return true;
 	END_TILE_LOOP(tile, width, height, top_left);
+
 	return false;
 }
 
@@ -242,43 +247,45 @@ bool StationRect::AfterRemoveTile(Station *st, TileIndex tile)
 {
 	int x = TileX(tile);
 	int y = TileY(tile);
-	bool reduce_x, reduce_y;
 
-	// look if removed tile was on the bounding rect edge
-	// and try to reduce the rect by this edge
-	// do it until we have empty rect or nothing to do
+	/* look if removed tile was on the bounding rect edge
+	 * and try to reduce the rect by this edge
+	 * do it until we have empty rect or nothing to do */
 	for (;;) {
-		// check if removed tile is on rect edge
+		/* check if removed tile is on rect edge */
 		bool left_edge = (x == left);
 		bool right_edge = (x == right);
 		bool top_edge = (y == top);
 		bool bottom_edge = (y == bottom);
-		// can we reduce the rect in either direction?
-		reduce_x = ((left_edge || right_edge) && !ScanForStationTiles(st->index, x, top, x, bottom));
-		reduce_y = ((top_edge || bottom_edge) && !ScanForStationTiles(st->index, left, y, right, y));
+
+		/* can we reduce the rect in either direction? */
+		bool reduce_x = ((left_edge || right_edge) && !ScanForStationTiles(st->index, x, top, x, bottom));
+		bool reduce_y = ((top_edge || bottom_edge) && !ScanForStationTiles(st->index, left, y, right, y));
 		if (!(reduce_x || reduce_y)) break; // nothing to do (can't reduce)
+
 		if (reduce_x) {
-			// reduce horizontally
+			/* reduce horizontally */
 			if (left_edge) {
-				// move left edge right
+				/* move left edge right */
 				left = x = x + 1;
 			} else {
-				// move right edge left
+				/* move right edge left */
 				right = x = x - 1;
 			}
 		}
 		if (reduce_y) {
-			// reduce vertically
+			/* reduce vertically */
 			if (top_edge) {
-				// move top edge down
+				/* move top edge down */
 				top = y = y + 1;
 			} else {
-				// move bottom edge up
+				/* move bottom edge up */
 				bottom = y = y - 1;
 			}
 		}
+
 		if (left > right || top > bottom) {
-			// can't continue, if the remaining rectangle is empty
+			/* can't continue, if the remaining rectangle is empty */
 			MakeEmpty();
 			return true; // empty remaining rect
 		}
@@ -288,10 +295,10 @@ bool StationRect::AfterRemoveTile(Station *st, TileIndex tile)
 
 bool StationRect::AfterRemoveRect(Station *st, TileIndex tile, int w, int h)
 {
-	bool empty;
 	assert(PtInRectXY(TileX(tile), TileY(tile)));
 	assert(PtInRectXY(TileX(tile) + w - 1, TileY(tile) + h - 1));
-	empty = AfterRemoveTile(st, tile);
+
+	bool empty = AfterRemoveTile(st, tile);
 	if (w != 1 || h != 1) empty = empty || AfterRemoveTile(st, TILE_ADDXY(tile, w - 1, h - 1));
 	return empty;
 }
