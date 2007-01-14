@@ -2302,6 +2302,8 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
 					bool teamchat = false;
 
+					if (cio == NULL) break;
+
 					/* Only players actually playing can speak to team. Eg spectators cannot */
 					if (_patches.prefer_teamchat && IsValidPlayer(cio->client_playas)) {
 						const NetworkClientInfo *ci;
@@ -2323,8 +2325,10 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 
 			case WKC_CTRL | WKC_RETURN: case WKC_CTRL | 'T': // send text to all team mates
 				if (_networking) {
-					const NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
-					ShowNetworkChatQueryWindow(DESTTYPE_TEAM, ci->client_playas);
+					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
+					if (cio == NULL) break;
+
+					ShowNetworkChatQueryWindow(DESTTYPE_TEAM, cio->client_playas);
 				}
 				break;
 #endif
