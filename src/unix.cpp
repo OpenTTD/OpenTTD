@@ -111,7 +111,7 @@ static void ChangeWorkingDirectory(char *exe)
 
 void ShowInfo(const char *str)
 {
-	fprintf(stderr, str);
+	fprintf(stderr, "%s\n", str);
 }
 
 void ShowOSErrorBox(const char *buf)

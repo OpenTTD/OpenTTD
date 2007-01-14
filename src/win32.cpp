@@ -838,7 +838,7 @@ void CreateConsole(void)
 void ShowInfo(const char *str)
 {
 	if (_has_console) {
-		fprintf(stderr, str);
+		fprintf(stderr, "%s\n", str);
 	} else {
 		bool old;
 
