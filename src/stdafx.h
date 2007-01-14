@@ -290,9 +290,17 @@ assert_compile(sizeof(uint8)  == 1);
 #define lengthof(x) (sizeof(x)/sizeof(x[0]))
 #define endof(x) (&x[lengthof(x)])
 #define lastof(x) (&x[lengthof(x) - 1])
-#ifndef offsetof
-# define offsetof(s,m)   (size_t)&(((s *)0)->m)
+
+#ifdef offsetof
+# undef offsetof
 #endif
+
+#ifndef __cplusplus
+# define offsetof(s,m)   (size_t)&(((s *)0)->m)
+#else /* __cplusplus */
+# define cpp_offsetof(s,m)   (((size_t)&reinterpret_cast<const volatile char&>((((s*)(char*)8)->m))) - 8)
+# define offsetof(s,m)       cpp_offsetof(s, m)
+#endif /* __cplusplus */
 
 
 // take care of some name clashes on macos
