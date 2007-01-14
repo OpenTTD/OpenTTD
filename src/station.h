@@ -59,6 +59,29 @@ typedef struct StationSpecList {
 	uint8  localidx;   /// Station ID within GRF of station
 } StationSpecList;
 
+/** StationRect - used to track station spread out rectangle - cheaper than scanning whole map */
+struct StationRect : public Rect {
+	enum StationRectMode
+	{
+		ADD_TEST = 0,
+		ADD_TRY,
+		ADD_FORCE
+	};
+
+	StationRect();
+	void MakeEmpty();
+	bool PtInRectXY(int x, int y) const;
+	bool IsEmpty() const;
+	bool BeforeAddTile(TileIndex tile, StationRectMode mode);
+	bool BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode);
+	bool AfterRemoveTile(Station *st, TileIndex tile);
+	bool AfterRemoveRect(Station *st, TileIndex tile, int w, int h);
+
+	static bool ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a);
+
+	StationRect& operator = (Rect src);
+};
+
 struct Station {
 	TileIndex xy;
 	RoadStop *bus_stops;
@@ -107,9 +130,9 @@ struct Station {
 	byte bus_stop_status_obsolete;
 	byte blocked_months_obsolete;
 
-	Rect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
+	StationRect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
 
-	static const int cDebugCtorLevel = 1;
+	static const int cDebugCtorLevel = 3;
 
 	Station(TileIndex tile = 0);
 	~Station();

@@ -37,21 +37,6 @@
 
 #include <memory>     // for auto_ptr
 
-typedef enum StationRectModes
-{
-	RECT_MODE_TEST = 0,
-	RECT_MODE_TRY,
-	RECT_MODE_FORCE
-} StationRectMode;
-
-void StationRect_Init(Station *st);
-static bool StationRect_IsEmpty(Station *st);
-static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, StationRectMode mode);
-static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, int w, int h, StationRectMode mode);
-static bool StationRect_AfterRemoveTile(Station *st, TileIndex tile);
-static bool StationRect_AfterRemoveRect(Station *st, TileIndex tile, int w, int h);
-
-
 /**
  * Called if a new block is added to the station-pool
  */
@@ -684,9 +669,9 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 
 static void UpdateStationSignCoord(Station *st)
 {
-	Rect *r = &st->rect;
+	StationRect *r = &st->rect;
 
-	if (StationRect_IsEmpty(st)) return; // no tiles belong to this station
+	if (r->IsEmpty()) return; // no tiles belong to this station
 
 	// clamp sign coord to be inside the station rect
 	st->xy = TileXY(clampu(TileX(st->xy), r->left, r->right), clampu(TileY(st->xy), r->top, r->bottom));
@@ -970,7 +955,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		}
 
 		//XXX can't we pack this in the "else" part of the if above?
-		if (!StationRect_BeforeAddRect(st, tile_org, w_org, h_org, RECT_MODE_TEST)) return CMD_ERROR;
+		if (!st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TEST)) return CMD_ERROR;
 	} else {
 		/* allocate and initialize new station */
 		st = new Station(tile_org);
@@ -1031,7 +1016,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 
 		st->build_date = _date;
 
-		StationRect_BeforeAddRect(st, tile_org, w_org, h_org, RECT_MODE_TRY);
+		st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TRY);
 
 		tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		track = AxisToTrack(axis);
@@ -1155,7 +1140,7 @@ int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint
 		uint specindex = GetCustomStationSpecIndex(tile);
 		Track track = GetRailStationTrack(tile);
 		DoClearSquare(tile);
-		StationRect_AfterRemoveTile(st, tile);
+		st->rect.AfterRemoveTile(st, tile);
 		SetSignalsOnBothDir(tile, track);
 		YapfNotifyTrackLayoutChange(tile, track);
 
@@ -1272,7 +1257,7 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 	} while (--h);
 
 	if (flags & DC_EXEC) {
-		StationRect_AfterRemoveRect(st, st->train_tile, st->trainst_w, st->trainst_h);
+		st->rect.AfterRemoveRect(st, st->train_tile, st->trainst_w, st->trainst_h);
 
 		st->train_tile = 0;
 		st->trainst_w = st->trainst_h = 0;
@@ -1405,7 +1390,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
-		if (!StationRect_BeforeAddTile(st, tile, RECT_MODE_TEST)) return CMD_ERROR;
+		if (!st->rect.BeforeAddTile(tile, StationRect::ADD_TEST)) return CMD_ERROR;
 
 		FindRoadStopSpot(type, st, &currstop, &prev);
 	} else {
@@ -1443,7 +1428,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		StationRect_BeforeAddTile(st, tile, RECT_MODE_TRY);
+		st->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
 
 		MakeRoadStop(tile, st->owner, st->index, type ? RS_TRUCK : RS_BUS, (DiagDirection)p1);
 
@@ -1494,7 +1479,7 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 
 		DeleteRoadStop(cur_stop);
 		DoClearSquare(tile);
-		StationRect_AfterRemoveTile(st, tile);
+		st->rect.AfterRemoveTile(st, tile);
 
 		UpdateStationVirtCoordDirty(st);
 		DeleteStationIfEmpty(st);
@@ -1665,7 +1650,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (st->owner != OWNER_NONE && st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
-		if (!StationRect_BeforeAddRect(st, tile, w, h, RECT_MODE_TEST)) return CMD_ERROR;
+		if (!st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TEST)) return CMD_ERROR;
 
 		if (st->airport_tile != 0)
 			return_cmd_error(STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT);
@@ -1705,7 +1690,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		StationRect_BeforeAddRect(st, tile, w, h, RECT_MODE_TRY);
+		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
 		/* if airport was demolished while planes were en-route to it, the
 		 * positions can no longer be the same (v->u.air.pos), since different
@@ -1771,7 +1756,7 @@ static int32 RemoveAirport(Station *st, uint32 flags)
 			);
 		}
 
-		StationRect_AfterRemoveRect(st, tile, w, h);
+		st->rect.AfterRemoveRect(st, tile, w, h);
 
 		st->airport_tile = 0;
 		st->facilities &= ~FACIL_AIRPORT;
@@ -1951,7 +1936,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (st->owner != OWNER_NONE && st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
-		if (!StationRect_BeforeAddRect(st, tile, _dock_w_chk[direction], _dock_h_chk[direction], RECT_MODE_TEST)) return CMD_ERROR;
+		if (!st->rect.BeforeAddRect(tile, _dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TEST)) return CMD_ERROR;
 
 		if (st->dock_tile != 0) return_cmd_error(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK);
 	} else {
@@ -1981,7 +1966,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		StationRect_BeforeAddRect(st, tile, _dock_w_chk[direction], _dock_h_chk[direction], RECT_MODE_TRY);
+		st->rect.BeforeAddRect(tile, _dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TRY);
 
 		MakeDock(tile, st->owner, st->index, direction);
 
@@ -2012,8 +1997,8 @@ static int32 RemoveDock(Station *st, uint32 flags)
 		DoClearSquare(tile1);
 		MakeWater(tile2);
 
-		StationRect_AfterRemoveTile(st, tile1);
-		StationRect_AfterRemoveTile(st, tile2);
+		st->rect.AfterRemoveTile(st, tile1);
+		st->rect.AfterRemoveTile(st, tile2);
 
 		MarkTileDirtyByTile(tile2);
 
@@ -2868,7 +2853,7 @@ void AfterLoadStations(void)
 	for (tile = 0; tile < MapSize(); tile++) {
 		if (GetTileType(tile) != MP_STATION) continue;
 		st = GetStationByTile(tile);
-		StationRect_BeforeAddTile(st, tile, RECT_MODE_FORCE);
+		st->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
 	}
 }
 
@@ -3098,125 +3083,3 @@ extern const ChunkHandler _station_chunk_handlers[] = {
 };
 
 
-static inline bool PtInRectXY(Rect *r, int x, int y)
-{
-	return (r->left <= x && x <= r->right && r->top <= y && y <= r->bottom);
-}
-
-void StationRect_Init(Station *st)
-{
-	Rect *r = &st->rect;
-	r->left = r->top = r->right = r->bottom = 0;
-}
-
-static bool StationRect_IsEmpty(Station *st)
-{
-	return (st->rect.left == 0 || st->rect.left > st->rect.right || st->rect.top > st->rect.bottom);
-}
-
-static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, StationRectMode mode)
-{
-	Rect *r = &st->rect;
-	int x = TileX(tile);
-	int y = TileY(tile);
-	if (StationRect_IsEmpty(st)) {
-		// we are adding the first station tile
-		r->left = r->right = x;
-		r->top = r->bottom = y;
-	} else if (!PtInRectXY(r, x, y)) {
-		// current rect is not empty and new point is outside this rect
-		// make new spread-out rectangle
-		Rect new_rect = {min(x, r->left), min(y, r->top), max(x, r->right), max(y, r->bottom)};
-		// check new rect dimensions against preset max
-		int w = new_rect.right - new_rect.left + 1;
-		int h = new_rect.bottom - new_rect.top + 1;
-		if (mode != RECT_MODE_FORCE && (w > _patches.station_spread || h > _patches.station_spread)) {
-			assert(mode != RECT_MODE_TRY);
-			_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
-			return false;
-		}
-		// spread-out ok, return true
-		if (mode != RECT_MODE_TEST) {
-			// we should update the station rect
-			*r = new_rect;
-		}
-	} else {
-		; // new point is inside the rect, we don't need to do anything
-	}
-	return true;
-}
-
-static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, int w, int h, StationRectMode mode)
-{
-	return StationRect_BeforeAddTile(st, tile, mode) && StationRect_BeforeAddTile(st, TILE_ADDXY(tile, w - 1, h - 1), mode);
-}
-
-static inline bool ScanRectForStationTiles(StationID st_id, int left, int top, int right, int bottom)
-{
-	TileIndex top_left = TileXY(left, top);
-	int width = right - left + 1;
-	int height = bottom - top + 1;
-	BEGIN_TILE_LOOP(tile, width, height, top_left)
-		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st_id) return true;
-	END_TILE_LOOP(tile, width, height, top_left);
-	return false;
-}
-
-static bool StationRect_AfterRemoveTile(Station *st, TileIndex tile)
-{
-	Rect *r = &st->rect;
-	int x = TileX(tile);
-	int y = TileY(tile);
-	bool reduce_x, reduce_y;
-
-	// look if removed tile was on the bounding rect edge
-	// and try to reduce the rect by this edge
-	// do it until we have empty rect or nothing to do
-	for (;;) {
-		// check if removed tile is on rect edge
-		bool left_edge = (x == r->left);
-		bool right_edge = (x == r->right);
-		bool top_edge = (y == r->top);
-		bool bottom_edge = (y == r->bottom);
-		// can we reduce the rect in either direction?
-		reduce_x = ((left_edge || right_edge) && !ScanRectForStationTiles(st->index, x, r->top, x, r->bottom));
-		reduce_y = ((top_edge || bottom_edge) && !ScanRectForStationTiles(st->index, r->left, y, r->right, y));
-		if (!(reduce_x || reduce_y)) break; // nothing to do (can't reduce)
-		if (reduce_x) {
-			// reduce horizontally
-			if (left_edge) {
-				// move left edge right
-				r->left = x = x + 1;
-			} else {
-				// move right edge left
-				r->right = x = x - 1;
-			}
-		}
-		if (reduce_y) {
-			// reduce vertically
-			if (top_edge) {
-				// move top edge down
-				r->top = y = y + 1;
-			} else {
-				// move bottom edge up
-				r->bottom = y = y - 1;
-			}
-		}
-		if (r->left > r->right || r->top > r->bottom) {
-		// can't continue, if the remaining rectangle is empty
-			StationRect_Init(st);
-			return true; // empty remaining rect
-		}
-	}
-	return false; // non-empty remaining rect
-}
-
-static bool StationRect_AfterRemoveRect(Station *st, TileIndex tile, int w, int h)
-{
-	bool empty;
-	assert(PtInRectXY(&st->rect, TileX(tile), TileY(tile)));
-	assert(PtInRectXY(&st->rect, TileX(tile) + w - 1, TileY(tile) + h - 1));
-	empty = StationRect_AfterRemoveTile(st, tile);
-	if (w != 1 || h != 1) empty = empty || StationRect_AfterRemoveTile(st, TILE_ADDXY(tile, w - 1, h - 1));
-	return empty;
-}

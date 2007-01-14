@@ -35,8 +35,6 @@
 #include "date.h"
 #include "helpers.hpp"
 
-void StationRect_Init(Station *st); // don't worry, will be removed soon
-
 Station::Station(TileIndex tile)
 {
 	DEBUG(station, cDebugCtorLevel, "I+%3d", index);
@@ -54,8 +52,6 @@ Station::Station(TileIndex tile)
 
 	random_bits = Random();
 	waiting_triggers = 0;
-
-	StationRect_Init(this);
 }
 
 /**
@@ -168,3 +164,144 @@ bool Station::TileBelongsToRailStation(TileIndex tile) const
 	_error_message = STR_3008_TOO_MANY_STATIONS_LOADING;
 	return NULL;
 }
+
+
+
+/************************************************************************/
+/*                     StationRect implementation                       */
+/************************************************************************/
+
+StationRect::StationRect()
+{
+	MakeEmpty();
+}
+
+void StationRect::MakeEmpty()
+{
+	left = top = right = bottom = 0;
+}
+
+bool StationRect::PtInRectXY(int x, int y) const
+{
+	return (left <= x && x <= right && top <= y && y <= bottom);
+}
+
+bool StationRect::IsEmpty() const
+{
+	return (left == 0 || left > right || top > bottom);
+}
+
+bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
+{
+	int x = TileX(tile);
+	int y = TileY(tile);
+	if (IsEmpty()) {
+		// we are adding the first station tile
+		left = right = x;
+		top = bottom = y;
+	} else if (!PtInRectXY(x, y)) {
+		// current rect is not empty and new point is outside this rect
+		// make new spread-out rectangle
+		Rect new_rect = {min(x, left), min(y, top), max(x, right), max(y, bottom)};
+		// check new rect dimensions against preset max
+		int w = new_rect.right - new_rect.left + 1;
+		int h = new_rect.bottom - new_rect.top + 1;
+		if (mode != ADD_FORCE && (w > _patches.station_spread || h > _patches.station_spread)) {
+			assert(mode != ADD_TRY);
+			_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
+			return false;
+		}
+		// spread-out ok, return true
+		if (mode != ADD_TEST) {
+			// we should update the station rect
+			*this = new_rect;
+		}
+	} else {
+		; // new point is inside the rect, we don't need to do anything
+	}
+	return true;
+}
+
+bool StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode)
+{
+	return BeforeAddTile(tile, mode) && BeforeAddTile(TILE_ADDXY(tile, w - 1, h - 1), mode);
+}
+
+/*static*/ bool StationRect::ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a)
+{
+	TileIndex top_left = TileXY(left_a, top_a);
+	int width = right_a - left_a + 1;
+	int height = bottom_a - top_a + 1;
+	BEGIN_TILE_LOOP(tile, width, height, top_left)
+		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st_id) return true;
+	END_TILE_LOOP(tile, width, height, top_left);
+	return false;
+}
+
+bool StationRect::AfterRemoveTile(Station *st, TileIndex tile)
+{
+	int x = TileX(tile);
+	int y = TileY(tile);
+	bool reduce_x, reduce_y;
+
+	// look if removed tile was on the bounding rect edge
+	// and try to reduce the rect by this edge
+	// do it until we have empty rect or nothing to do
+	for (;;) {
+		// check if removed tile is on rect edge
+		bool left_edge = (x == left);
+		bool right_edge = (x == right);
+		bool top_edge = (y == top);
+		bool bottom_edge = (y == bottom);
+		// can we reduce the rect in either direction?
+		reduce_x = ((left_edge || right_edge) && !ScanForStationTiles(st->index, x, top, x, bottom));
+		reduce_y = ((top_edge || bottom_edge) && !ScanForStationTiles(st->index, left, y, right, y));
+		if (!(reduce_x || reduce_y)) break; // nothing to do (can't reduce)
+		if (reduce_x) {
+			// reduce horizontally
+			if (left_edge) {
+				// move left edge right
+				left = x = x + 1;
+			} else {
+				// move right edge left
+				right = x = x - 1;
+			}
+		}
+		if (reduce_y) {
+			// reduce vertically
+			if (top_edge) {
+				// move top edge down
+				top = y = y + 1;
+			} else {
+				// move bottom edge up
+				bottom = y = y - 1;
+			}
+		}
+		if (left > right || top > bottom) {
+			// can't continue, if the remaining rectangle is empty
+			MakeEmpty();
+			return true; // empty remaining rect
+		}
+	}
+	return false; // non-empty remaining rect
+}
+
+bool StationRect::AfterRemoveRect(Station *st, TileIndex tile, int w, int h)
+{
+	bool empty;
+	assert(PtInRectXY(TileX(tile), TileY(tile)));
+	assert(PtInRectXY(TileX(tile) + w - 1, TileY(tile) + h - 1));
+	empty = AfterRemoveTile(st, tile);
+	if (w != 1 || h != 1) empty = empty || AfterRemoveTile(st, TILE_ADDXY(tile, w - 1, h - 1));
+	return empty;
+}
+
+StationRect& StationRect::operator = (Rect src)
+{
+	left = src.left;
+	top = src.top;
+	right = src.right;
+	bottom = src.bottom;
+	return *this;
+}
+
