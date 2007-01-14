@@ -1293,7 +1293,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 // If we do, the sprite memory will overflow.
 static void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int bottom)
 {
-	if (((bottom - top) * (right - left) << vp->zoom) > 180000) {
+	if (((bottom - top) * (right - left) << (2 * vp->zoom)) > 180000) {
 		if ((bottom - top) > (right - left)) {
 			int t = (top + bottom) >> 1;
 			ViewportDrawChk(vp, left, top, right, t);
