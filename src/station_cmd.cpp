@@ -2524,8 +2524,8 @@ static void UpdateStationRating(Station *st)
 				// if rating is <= 127 and there are any items waiting, maybe remove some goods.
 				if (rating <= 127 && waiting != 0) {
 					uint32 r = Random();
-					if ( (uint)rating <= (r & 0x7F) ) {
-						waiting = max(waiting - ((r >> 8)&3) - 1, 0U);
+					if (rating <= (int)GB(r, 0, 7)) {
+						waiting = max(waiting - (int)GB(r, 8, 2) - 1, 0);
 						waiting_changed = true;
 					}
 				}
