@@ -177,19 +177,19 @@ void InitializeVehiclesGuiList(void)
 // draw the vehicle profit button in the vehicle list window.
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 {
-	uint32 ormod;
+	SpriteID pal;
 
 	// draw profit-based colored icons
 	if (v->age <= 365 * 2) {
-		ormod = PALETTE_TO_GREY;
+		pal = PALETTE_TO_GREY;
 	} else if (v->profit_last_year < 0) {
-		ormod = PALETTE_TO_RED;
+		pal = PALETTE_TO_RED;
 	} else if (v->profit_last_year < 10000) {
-		ormod = PALETTE_TO_YELLOW;
+		pal = PALETTE_TO_YELLOW;
 	} else {
-		ormod = PALETTE_TO_GREEN;
+		pal = PALETTE_TO_GREEN;
 	}
-	DrawSprite(SPR_BLOT | ormod, x, y);
+	DrawSprite(SPR_BLOT, pal, x, y);
 }
 
 typedef struct RefitOption {

@@ -466,14 +466,14 @@ static const VehicleID INVALID_VEHICLE = 0xFFFF;
  * @param player ID of player
  * @return A ready-to-use palette modifier
  */
-PalSpriteID GetEnginePalette(EngineID engine_type, PlayerID player);
+SpriteID GetEnginePalette(EngineID engine_type, PlayerID player);
 
 /**
  * Get the colour map for a vehicle.
  * @param v Vehicle to get colour map for
  * @return A ready-to-use palette modifier
  */
-PalSpriteID GetVehiclePalette(const Vehicle *v);
+SpriteID GetVehiclePalette(const Vehicle *v);
 
 /* A lot of code calls for the invalidation of the status bar, which is widget 5.
  * Best is to have a virtual value for it when it needs to change again */

@@ -57,7 +57,8 @@ typedef struct StringSpriteToDraw {
 } StringSpriteToDraw;
 
 typedef struct TileSpriteToDraw {
-	uint32 image;
+	SpriteID image;
+	SpriteID pal;
 	struct TileSpriteToDraw *next;
 	int32 x;
 	int32 y;
@@ -65,14 +66,16 @@ typedef struct TileSpriteToDraw {
 } TileSpriteToDraw;
 
 typedef struct ChildScreenSpriteToDraw {
-	uint32 image;
+	SpriteID image;
+	SpriteID pal;
 	int32 x;
 	int32 y;
 	struct ChildScreenSpriteToDraw *next;
 } ChildScreenSpriteToDraw;
 
 typedef struct ParentSpriteToDraw {
-	uint32 image;
+	SpriteID image;
+	SpriteID pal;
 	int32 left;
 	int32 top;
 	int32 right;
@@ -406,7 +409,7 @@ void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte 
 	InvalidateWidget(w, widget_zoom_out);
 }
 
-void DrawGroundSpriteAt(uint32 image, int32 x, int32 y, byte z)
+void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z)
 {
 	ViewportDrawer *vd = _cur_vd;
 	TileSpriteToDraw *ts;
@@ -422,6 +425,7 @@ void DrawGroundSpriteAt(uint32 image, int32 x, int32 y, byte z)
 	vd->spritelist_mem += sizeof(TileSpriteToDraw);
 
 	ts->image = image;
+	ts->pal = pal;
 	ts->next = NULL;
 	ts->x = x;
 	ts->y = y;
@@ -430,14 +434,14 @@ void DrawGroundSpriteAt(uint32 image, int32 x, int32 y, byte z)
 	vd->last_tile = &ts->next;
 }
 
-void DrawGroundSprite(uint32 image)
+void DrawGroundSprite(SpriteID image, SpriteID pal)
 {
 	if (_offset_ground_sprites) {
 		// offset ground sprite because of foundation?
-		AddChildSpriteScreen(image, _cur_vd->offs_x, _cur_vd->offs_y);
+		AddChildSpriteScreen(image, pal, _cur_vd->offs_x, _cur_vd->offs_y);
 	} else {
 		_added_tile_sprite = true;
-		DrawGroundSpriteAt(image, _cur_ti->x, _cur_ti->y, _cur_ti->z);
+		DrawGroundSpriteAt(image, pal, _cur_ti->x, _cur_ti->y, _cur_ti->z);
 	}
 }
 
@@ -449,7 +453,7 @@ void OffsetGroundSprite(int x, int y)
 	_offset_ground_sprites = true;
 }
 
-static void AddCombinedSprite(uint32 image, int x, int y, byte z)
+static void AddCombinedSprite(SpriteID image, SpriteID pal, int x, int y, byte z)
 {
 	const ViewportDrawer *vd = _cur_vd;
 	Point pt = RemapCoords(x, y, z);
@@ -461,11 +465,11 @@ static void AddCombinedSprite(uint32 image, int x, int y, byte z)
 			pt.y + spr->y_offs + spr->height <= vd->dpi.top)
 		return;
 
-	AddChildSpriteScreen(image, pt.x - vd->parent_list[-1]->left, pt.y - vd->parent_list[-1]->top);
+	AddChildSpriteScreen(image, pal, pt.x - vd->parent_list[-1]->left, pt.y - vd->parent_list[-1]->top);
 }
 
 
-void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, byte z)
+void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, int h, byte dz, byte z)
 {
 	ViewportDrawer *vd = _cur_vd;
 	ParentSpriteToDraw *ps;
@@ -475,7 +479,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
 	if (vd->combine_sprites == 2) {
-		AddCombinedSprite(image, x, y, z);
+		AddCombinedSprite(image, pal, x, y, z);
 		return;
 	}
 
@@ -510,6 +514,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 	vd->spritelist_mem += sizeof(ParentSpriteToDraw);
 
 	ps->image = image;
+	ps->pal = pal;
 	ps->xmin = x;
 	ps->xmax = x + w - 1;
 
@@ -538,7 +543,7 @@ void EndSpriteCombine(void)
 	_cur_vd->combine_sprites = 0;
 }
 
-void AddChildSpriteScreen(uint32 image, int x, int y)
+void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y)
 {
 	ViewportDrawer *vd = _cur_vd;
 	ChildScreenSpriteToDraw *cs;
@@ -559,6 +564,7 @@ void AddChildSpriteScreen(uint32 image, int x, int y)
 	vd->last_child = &cs->next;
 
 	cs->image = image;
+	cs->pal = pal;
 	cs->x = x;
 	cs->y = y;
 	cs->next = NULL;
@@ -593,12 +599,12 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 }
 
 
-static void DrawSelectionSprite(uint32 image, const TileInfo *ti)
+static void DrawSelectionSprite(SpriteID image, SpriteID pal, const TileInfo *ti)
 {
 	if (_added_tile_sprite && !(_thd.drawstyle & HT_LINE)) { // draw on real ground
-		DrawGroundSpriteAt(image, ti->x, ti->y, ti->z + 7);
+		DrawGroundSpriteAt(image, pal, ti->x, ti->y, ti->z + 7);
 	} else { // draw on top of foundation
-		AddSortableSpriteToDraw(image, ti->x, ti->y, 0x10, 0x10, 1, ti->z + 7);
+		AddSortableSpriteToDraw(image, pal, ti->x, ti->y, 0x10, 0x10, 1, ti->z + 7);
 	}
 }
 
@@ -636,11 +642,12 @@ static const int _AutorailType[6][2] = {
 
 static void DrawTileSelection(const TileInfo *ti)
 {
-	uint32 image;
+	SpriteID image;
+	SpriteID pal;
 
 	// Draw a red error square?
 	if (_thd.redsq != 0 && _thd.redsq == ti->tile) {
-		DrawSelectionSprite(PALETTE_TILE_RED_PULSATING | (SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh]), ti);
+		DrawSelectionSprite(SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh], PALETTE_TILE_RED_PULSATING, ti);
 		return;
 	}
 
@@ -652,8 +659,7 @@ static void DrawTileSelection(const TileInfo *ti)
 			IS_INSIDE_1D(ti->y, _thd.pos.y, _thd.size.y)) {
 		if (_thd.drawstyle & HT_RECT) {
 			image = SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh];
-			if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
-			DrawSelectionSprite(image, ti);
+			DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE, ti);
 		} else if (_thd.drawstyle & HT_POINT) {
 			// Figure out the Z coordinate for the single dot.
 			byte z = ti->z;
@@ -661,19 +667,29 @@ static void DrawTileSelection(const TileInfo *ti)
 				z += TILE_HEIGHT;
 				if (ti->tileh == SLOPE_STEEP_N) z += TILE_HEIGHT;
 			}
-			DrawGroundSpriteAt(_cur_dpi->zoom != 2 ? SPR_DOT : SPR_DOT_SMALL, ti->x, ti->y, z);
+			DrawGroundSpriteAt(_cur_dpi->zoom != 2 ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti->x, ti->y, z);
 		} else if (_thd.drawstyle & HT_RAIL /*&& _thd.place_mode == VHM_RAIL*/) {
 			// autorail highlight piece under cursor
 			uint type = _thd.drawstyle & 0xF;
-			assert(type <= 5);
-			image = SPR_AUTORAIL_BASE + _AutorailTilehSprite[ti->tileh][_AutorailType[type][0]];
+			int offset;
 
-			if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
-			DrawSelectionSprite(image, ti);
+			assert(type <= 5);
+
+			offset = _AutorailTilehSprite[ti->tileh][_AutorailType[type][0]];
+			if (offset >= 0) {
+				image = SPR_AUTORAIL_BASE + offset;
+				pal = PAL_NONE;
+			} else {
+				image = SPR_AUTORAIL_BASE - offset;
+				pal = PALETTE_TO_RED;
+			}
+
+			DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti);
 
 		} else if (IsPartOfAutoLine(ti->x, ti->y)) {
 			// autorail highlighting long line
 			int dir = _thd.drawstyle & ~0xF0;
+			int offset;
 			uint side;
 
 			if (dir < 2) {
@@ -683,10 +699,16 @@ static void DrawTileSelection(const TileInfo *ti)
 				side = delta(delta(TileX(start), TileX(ti->tile)), delta(TileY(start), TileY(ti->tile)));
 			}
 
-			image = SPR_AUTORAIL_BASE + _AutorailTilehSprite[ti->tileh][_AutorailType[dir][side]];
+			offset = _AutorailTilehSprite[ti->tileh][_AutorailType[dir][side]];
+			if (offset >= 0) {
+				image = SPR_AUTORAIL_BASE + offset;
+				pal = PAL_NONE;
+			} else {
+				image = SPR_AUTORAIL_BASE - offset;
+				pal = PALETTE_TO_RED;
+			}
 
-			if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
-			DrawSelectionSprite(image, ti);
+			DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti);
 		}
 		return;
 	}
@@ -697,7 +719,7 @@ static void DrawTileSelection(const TileInfo *ti)
 			IS_INSIDE_1D(ti->x, _thd.pos.x + _thd.offs.x, _thd.size.x + _thd.outersize.x) &&
 			IS_INSIDE_1D(ti->y, _thd.pos.y + _thd.offs.y, _thd.size.y + _thd.outersize.y)) {
 		// Draw a blue rect.
-		DrawSelectionSprite(PALETTE_SEL_TILE_BLUE | (SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh]), ti);
+		DrawSelectionSprite(SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh], PALETTE_SEL_TILE_BLUE, ti);
 		return;
 	}
 }
@@ -1056,7 +1078,7 @@ static void ViewportDrawTileSprites(TileSpriteToDraw *ts)
 {
 	do {
 		Point pt = RemapCoords(ts->x, ts->y, ts->z);
-		DrawSprite(ts->image, pt.x, pt.y);
+		DrawSprite(ts->image, ts->pal, pt.x, pt.y);
 		ts = ts->next;
 	} while (ts != NULL);
 }
@@ -1128,10 +1150,10 @@ static void ViewportDrawParentSprites(ParentSpriteToDraw *psd[])
 		Point pt = RemapCoords(ps->xmin, ps->ymin, ps->zmin);
 		const ChildScreenSpriteToDraw* cs;
 
-		DrawSprite(ps->image, pt.x, pt.y);
+		DrawSprite(ps->image, ps->pal, pt.x, pt.y);
 
 		for (cs = ps->child; cs != NULL; cs = cs->next) {
-			DrawSprite(cs->image, ps->left + cs->x, ps->top + cs->y);
+			DrawSprite(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y);
 		}
 	}
 }
@@ -2412,14 +2434,14 @@ bool VpHandlePlaceSizingDrag(void)
 	return false;
 }
 
-void SetObjectToPlaceWnd(CursorID icon, byte mode, Window *w)
+void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, byte mode, Window *w)
 {
-	SetObjectToPlace(icon, mode, w->window_class, w->window_number);
+	SetObjectToPlace(icon, pal, mode, w->window_class, w->window_number);
 }
 
 #include "table/animcursors.h"
 
-void SetObjectToPlace(CursorID icon, byte mode, WindowClass window_class, WindowNumber window_num)
+void SetObjectToPlace(CursorID icon, SpriteID pal, byte mode, WindowClass window_class, WindowNumber window_num)
 {
 	Window *w;
 
@@ -2451,10 +2473,10 @@ void SetObjectToPlace(CursorID icon, byte mode, WindowClass window_class, Window
 	if ( (int)icon < 0)
 		SetAnimatedMouseCursor(_animcursors[~icon]);
 	else
-		SetMouseCursor(icon);
+		SetMouseCursor(icon, pal);
 }
 
 void ResetObjectToPlace(void)
 {
-	SetObjectToPlace(SPR_CURSOR_MOUSE, VHM_NONE, 0, 0);
+	SetObjectToPlace(SPR_CURSOR_MOUSE, PAL_NONE, VHM_NONE, 0, 0);
 }

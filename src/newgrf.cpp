@@ -885,8 +885,13 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					uint seq_count = 0;
 
 					dts->seq = NULL;
-					dts->ground_sprite = grf_load_dword(&buf);
+					dts->ground_sprite = grf_load_word(&buf);
+					dts->ground_pal = grf_load_word(&buf);
 					if (dts->ground_sprite == 0) continue;
+					if (HASBIT(dts->ground_pal, 15)) {
+						CLRBIT(dts->ground_pal, 15);
+						SETBIT(dts->ground_sprite, SPRITE_MODIFIER_USE_OFFSET);
+					}
 
 					while (buf < *bufp + len) {
 						DrawTileSeqStruct *dtss;
@@ -902,16 +907,22 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						dtss->size_x = grf_load_byte(&buf);
 						dtss->size_y = grf_load_byte(&buf);
 						dtss->size_z = grf_load_byte(&buf);
-						dtss->image = grf_load_dword(&buf);
+						dtss->image = grf_load_word(&buf);
+						dtss->pal = grf_load_word(&buf);
 
 						/* Remap flags as ours collide */
-						if (HASBIT(dtss->image, 31)) {
-							CLRBIT(dtss->image, 31);
-							SETBIT(dtss->image, 30);
+						if (HASBIT(dtss->pal, 15)) {
+							CLRBIT(dtss->pal, 15);
+							SETBIT(dtss->image, SPRITE_MODIFIER_USE_OFFSET);
+						}
+
+						if (HASBIT(dtss->image, 15)) {
+							CLRBIT(dtss->image, 15);
+							SETBIT(dtss->image, PALETTE_MODIFIER_COLOR);
 						}
 						if (HASBIT(dtss->image, 14)) {
 							CLRBIT(dtss->image, 14);
-							SETBIT(dtss->image, 31);
+							SETBIT(dtss->image, PALETTE_MODIFIER_TRANSPARENT);
 						}
 					}
 				}
@@ -1092,8 +1103,20 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 						bridge->sprite_table[tableid] = MallocT<PalSpriteID>(32);
 					}
 
-					for (sprite = 0; sprite < 32; sprite++)
-						bridge->sprite_table[tableid][sprite] = grf_load_dword(&buf);
+					for (sprite = 0; sprite < 32; sprite++) {
+						SpriteID image = grf_load_word(&buf);
+						SpriteID pal   = grf_load_word(&buf);
+
+						if (HASBIT(pal, 15)) {
+							SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+						}
+
+						/* Clear old color modifer bit */
+						CLRBIT(image, 15);
+
+						bridge->sprite_table[tableid][sprite].sprite = image;
+						bridge->sprite_table[tableid][sprite].pal    = pal;
+					}
 				}
 			}
 			break;
@@ -3774,6 +3797,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 	// Pre-calculate all refit masks after loading GRF files
 	CalculateRefitMasks();
 }
+
 
 
 

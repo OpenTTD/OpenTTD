@@ -118,7 +118,7 @@ bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, Pla
 		return false;
 	}
 
-	SetObjectToPlace(cursor, mode, w->window_class, w->window_number);
+	SetObjectToPlace(cursor, PAL_NONE, mode, w->window_class, w->window_number);
 	LowerWindowWidget(w, widget);
 	_place_proc = placeproc;
 	return true;
@@ -340,7 +340,7 @@ static void SelectSignTool(void)
 	if (_cursor.sprite == SPR_CURSOR_SIGN) {
 		ResetObjectToPlace();
 	} else {
-		SetObjectToPlace(SPR_CURSOR_SIGN, 1, 1, 0);
+		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, 1, 1, 0);
 		_place_proc = PlaceProc_Sign;
 	}
 }
@@ -1256,7 +1256,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 
 			assert(n != 0);
 			do {
-				DrawSprite(SPR_WHITE_POINT, 77 + coords[0], 55 + coords[1]);
+				DrawSprite(SPR_WHITE_POINT, PAL_NONE, 77 + coords[0], 55 + coords[1]);
 				coords += 2;
 			} while (--n);
 		}
@@ -1771,7 +1771,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		// Draw brown-red toolbar bg.
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
-		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | PALETTE_MODIFIER_GREYOUT);
+		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
 
 		/* If spectator, disable all construction buttons
 		 * ie : Build road, rail, ships, airports and landscaping
@@ -1984,7 +1984,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 
 		// Draw brown-red toolbar bg.
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
-		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | PALETTE_MODIFIER_GREYOUT);
+		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
 
 		DrawWindowWidgets(w);
 
@@ -2145,7 +2145,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 			}
 		}
 
-		if (WP(w, def_d).data_2 > 0) DrawSprite(SPR_BLOT | PALETTE_TO_RED, 489, 2);
+		if (WP(w, def_d).data_2 > 0) DrawSprite(SPR_BLOT, PALETTE_TO_RED, 489, 2);
 	} break;
 
 	case WE_MESSAGE:
@@ -2208,14 +2208,14 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 		if (_game_mode == GM_MENU) {
 			off_x = _screen.width / 2;
 
-			DrawSprite(SPR_OTTD_O, off_x - 120, 50);
-			DrawSprite(SPR_OTTD_P, off_x -  86, 50);
-			DrawSprite(SPR_OTTD_E, off_x -  53, 50);
-			DrawSprite(SPR_OTTD_N, off_x -  22, 50);
+			DrawSprite(SPR_OTTD_O, PAL_NONE, off_x - 120, 50);
+			DrawSprite(SPR_OTTD_P, PAL_NONE, off_x -  86, 50);
+			DrawSprite(SPR_OTTD_E, PAL_NONE, off_x -  53, 50);
+			DrawSprite(SPR_OTTD_N, PAL_NONE, off_x -  22, 50);
 
-			DrawSprite(SPR_OTTD_T, off_x +  34, 50);
-			DrawSprite(SPR_OTTD_T, off_x +  65, 50);
-			DrawSprite(SPR_OTTD_D, off_x +  96, 50);
+			DrawSprite(SPR_OTTD_T, PAL_NONE, off_x +  34, 50);
+			DrawSprite(SPR_OTTD_T, PAL_NONE, off_x +  65, 50);
+			DrawSprite(SPR_OTTD_D, PAL_NONE, off_x +  96, 50);
 
 			/*
 			DrawSprite(SPR_OTTD_R, off_x + 119, 50);
@@ -2432,5 +2432,6 @@ void InitializeMainGui(void)
 	/* Clean old GUI values */
 	_last_built_railtype = RAILTYPE_RAIL;
 }
+
 
 

@@ -193,7 +193,7 @@ void PlaceLandBlockInfo(void)
 		ResetObjectToPlace();
 	} else {
 		_place_proc = Place_LandInfo;
-		SetObjectToPlace(SPR_CURSOR_QUERY, 1, 1, 0);
+		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, 1, 1, 0);
 	}
 }
 
@@ -308,11 +308,17 @@ void ShowAboutWindow(void)
 
 static int _tree_to_plant;
 
-static const uint32 _tree_sprites[] = {
-	0x655, 0x663, 0x678, 0x62B, 0x647, 0x639, 0x64E, 0x632, 0x67F, 0x68D, 0x69B, 0x6A9,
-	0x6AF, 0x6D2, 0x6D9, 0x6C4, 0x6CB, 0x6B6, 0x6BD, 0x6E0,
-	0x72E, 0x734, 0x74A, 0x74F, 0x76B, 0x78F, 0x788, 0x77B, 0x75F, 0x774, 0x720, 0x797,
-	0x79E, 0x7A5 | PALETTE_TO_GREEN, 0x7AC | PALETTE_TO_RED, 0x7B3, 0x7BA, 0x7C1 | PALETTE_TO_RED, 0x7C8 | PALETTE_TO_PALE_GREEN, 0x7CF | PALETTE_TO_YELLOW, 0x7D6 | PALETTE_TO_RED
+static const PalSpriteID _tree_sprites[] = {
+	{ 0x655, PAL_NONE }, { 0x663, PAL_NONE }, { 0x678, PAL_NONE }, { 0x62B, PAL_NONE },
+	{ 0x647, PAL_NONE }, { 0x639, PAL_NONE }, { 0x64E, PAL_NONE }, { 0x632, PAL_NONE },
+	{ 0x67F, PAL_NONE }, { 0x68D, PAL_NONE }, { 0x69B, PAL_NONE }, { 0x6A9, PAL_NONE },
+	{ 0x6AF, PAL_NONE }, { 0x6D2, PAL_NONE }, { 0x6D9, PAL_NONE }, { 0x6C4, PAL_NONE },
+	{ 0x6CB, PAL_NONE }, { 0x6B6, PAL_NONE }, { 0x6BD, PAL_NONE }, { 0x6E0, PAL_NONE },
+	{ 0x72E, PAL_NONE }, { 0x734, PAL_NONE }, { 0x74A, PAL_NONE }, { 0x74F, PAL_NONE },
+	{ 0x76B, PAL_NONE }, { 0x78F, PAL_NONE }, { 0x788, PAL_NONE }, { 0x77B, PAL_NONE },
+	{ 0x75F, PAL_NONE }, { 0x774, PAL_NONE }, { 0x720, PAL_NONE }, { 0x797, PAL_NONE },
+	{ 0x79E, PAL_NONE }, { 0x7A5, PALETTE_TO_GREEN }, { 0x7AC, PALETTE_TO_RED }, { 0x7B3, PAL_NONE },
+	{ 0x7BA, PAL_NONE }, { 0x7C1, PALETTE_TO_RED, }, { 0x7C8, PALETTE_TO_PALE_GREEN }, { 0x7CF, PALETTE_TO_YELLOW }, { 0x7D6, PALETTE_TO_RED }
 };
 
 static void BuildTreesWndProc(Window *w, WindowEvent *e)
@@ -330,7 +336,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 		x = 18;
 		y = 54;
 		do {
-			DrawSprite(_tree_sprites[i], x, y);
+			DrawSprite(_tree_sprites[i].sprite, _tree_sprites[i].pal, x, y);
 			x += 35;
 			if (!(++i & 3)) {
 				x -= 35 * 4;
@@ -1619,7 +1625,7 @@ void ShowSaveLoadDialog(int mode)
 	const WindowDesc *sld = &_save_dialog_desc;
 
 
-	SetObjectToPlace(SPR_CURSOR_ZZZ, 0, 0, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, 0, 0, 0);
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
@@ -1802,7 +1808,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 		for (i = 0; i != lengthof(_cheats_ui); i++) {
 			const CheatEntry *ce = &_cheats_ui[i];
 
-			DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, x + 5, y + 2);
+			DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, x + 5, y + 2);
 
 			switch (ce->type) {
 			case SLE_BOOL: {

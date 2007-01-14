@@ -44,7 +44,10 @@ typedef byte VehicleOrderID;  ///< The index of an order within its current vehi
 typedef byte CargoID;
 typedef byte LandscapeID;
 typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colortables
-typedef uint32 PalSpriteID;   ///< The number of a sprite plus all the mapping bits and colortables
+typedef struct PalSpriteID {
+	SpriteID sprite;
+	SpriteID pal;
+} PalSpriteID;
 typedef uint16 EngineID;
 typedef uint16 UnitID;
 typedef uint16 StringID;

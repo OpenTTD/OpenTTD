@@ -42,19 +42,19 @@ const Bridge orig_bridge[] = {
 	     |  |   |    |    maximum speed
 	     |  |   |    |    |  sprite to use in GUI                string with description
 	     |  |   |    |    |  |                                   |                            */
-	{    0, 0, 16,  80,  32, 0xA24                             , STR_5012_WOODEN             , NULL, 0 },
-	{    0, 0,  2, 112,  48, 0xA26 | PALETTE_TO_STRUCT_RED     , STR_5013_CONCRETE           , NULL, 0 },
-	{ 1930, 0,  5, 144,  64, 0xA25                             , STR_500F_GIRDER_STEEL       , NULL, 0 },
-	{    0, 2, 10, 168,  80, 0xA22 | PALETTE_TO_STRUCT_CONCRETE, STR_5011_SUSPENSION_CONCRETE, NULL, 0 },
-	{ 1930, 3, 16, 185,  96, 0xA22                             , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
-	{ 1930, 3, 16, 192, 112, 0xA22 | PALETTE_TO_STRUCT_YELLOW  , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
-	{ 1930, 3,  7, 224, 160, 0xA23                             , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
-	{ 1930, 3,  8, 232, 208, 0xA23 | PALETTE_TO_STRUCT_BROWN   , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
-	{ 1930, 3,  9, 248, 240, 0xA23 | PALETTE_TO_STRUCT_RED     , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
-	{ 1930, 0,  2, 240, 256, 0xA27                             , STR_500F_GIRDER_STEEL       , NULL, 0 },
-	{ 1995, 2, 16, 255, 320, 0xA28                             , STR_5014_TUBULAR_STEEL      , NULL, 0 },
-	{ 2005, 2, 32, 380, 512, 0xA28 | PALETTE_TO_STRUCT_YELLOW  , STR_5014_TUBULAR_STEEL      , NULL, 0 },
-	{ 2010, 2, 32, 510, 608, 0xA28 | PALETTE_TO_STRUCT_GREY    , STR_BRIDGE_TUBULAR_SILICON  , NULL, 0 }
+	{    0, 0, 16,  80,  32, 0xA24, PAL_NONE                  , STR_5012_WOODEN             , NULL, 0 },
+	{    0, 0,  2, 112,  48, 0xA26, PALETTE_TO_STRUCT_RED     , STR_5013_CONCRETE           , NULL, 0 },
+	{ 1930, 0,  5, 144,  64, 0xA25, PAL_NONE                  , STR_500F_GIRDER_STEEL       , NULL, 0 },
+	{    0, 2, 10, 168,  80, 0xA22, PALETTE_TO_STRUCT_CONCRETE, STR_5011_SUSPENSION_CONCRETE, NULL, 0 },
+	{ 1930, 3, 16, 185,  96, 0xA22, PAL_NONE                  , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
+	{ 1930, 3, 16, 192, 112, 0xA22, PALETTE_TO_STRUCT_YELLOW  , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
+	{ 1930, 3,  7, 224, 160, 0xA23, PAL_NONE                  , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
+	{ 1930, 3,  8, 232, 208, 0xA23, PALETTE_TO_STRUCT_BROWN   , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
+	{ 1930, 3,  9, 248, 240, 0xA23, PALETTE_TO_STRUCT_RED     , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
+	{ 1930, 0,  2, 240, 256, 0xA27, PAL_NONE                  , STR_500F_GIRDER_STEEL       , NULL, 0 },
+	{ 1995, 2, 16, 255, 320, 0xA28, PAL_NONE                  , STR_5014_TUBULAR_STEEL      , NULL, 0 },
+	{ 2005, 2, 32, 380, 512, 0xA28, PALETTE_TO_STRUCT_YELLOW  , STR_5014_TUBULAR_STEEL      , NULL, 0 },
+	{ 2010, 2, 32, 510, 608, 0xA28, PALETTE_TO_STRUCT_GREY    , STR_BRIDGE_TUBULAR_SILICON  , NULL, 0 }
 };
 
 Bridge _bridge[MAX_BRIDGES];
@@ -723,13 +723,15 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 }
 
 
-static void DrawBridgePillars(PalSpriteID image, const TileInfo* ti, Axis axis, uint type, int x, int y, int z)
+static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis axis, uint type, int x, int y, int z)
 {
+	SpriteID image = psid->sprite;
 	if (image != 0) {
 		bool drawfarpillar = !HASBIT(GetBridgeFlags(type), 0);
 		int back_height, front_height;
 		int i = z;
 		const byte *p;
+		SpriteID pal;
 
 		static const byte _tileh_bits[4][8] = {
 			{ 2, 1, 8, 4,  16,  2, 0, 9 },
@@ -738,7 +740,12 @@ static void DrawBridgePillars(PalSpriteID image, const TileInfo* ti, Axis axis, 
 			{ 2, 4, 8, 1,   2, 16, 9, 0 }
 		};
 
-		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
+		if (_display_opt & DO_TRANS_BUILDINGS) {
+			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+			pal = PALETTE_TO_TRANSPARENT;
+		} else {
+			pal = psid->pal;
+		}
 
 		p = _tileh_bits[(image & 1) * 2 + (axis == AXIS_X ? 0 : 1)];
 		front_height = ti->z + (ti->tileh & p[0] ? TILE_HEIGHT : 0);
@@ -754,11 +761,11 @@ static void DrawBridgePillars(PalSpriteID image, const TileInfo* ti, Axis axis, 
 			 * sprites is at the top
 			 */
 			if (z >= front_height) { // front facing pillar
-				AddSortableSpriteToDraw(image, x, y, p[4], p[5], 1, z);
+				AddSortableSpriteToDraw(image, pal, x, y, p[4], p[5], 1, z);
 			}
 
 			if (drawfarpillar && z >= back_height && z < i - TILE_HEIGHT) { // back facing pillar
-				AddSortableSpriteToDraw(image, x - p[6], y - p[7], p[4], p[5], 1, z);
+				AddSortableSpriteToDraw(image, pal, x - p[6], y - p[7], p[4], p[5], 1, z);
 			}
 		}
 	}
@@ -800,7 +807,8 @@ uint GetBridgeFoundation(Slope tileh, Axis axis)
  */
 static void DrawTile_TunnelBridge(TileInfo *ti)
 {
-	uint32 image;
+	SpriteID image;
+	SpriteID pal;
 
 	if (IsTunnel(ti->tile)) {
 		if (GetTunnelTransportType(ti->tile) == TRANSPORT_RAIL) {
@@ -812,12 +820,13 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		if (HasTunnelSnowOrDesert(ti->tile)) image += 32;
 
 		image += GetTunnelDirection(ti->tile) * 2;
-		DrawGroundSprite(image);
+		DrawGroundSprite(image, PAL_NONE);
 		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
-		AddSortableSpriteToDraw(image+1, ti->x + TILE_SIZE - 1, ti->y + TILE_SIZE - 1, 1, 1, 8, (byte)ti->z);
+		AddSortableSpriteToDraw(image+1, PAL_NONE, ti->x + TILE_SIZE - 1, ti->y + TILE_SIZE - 1, 1, 1, 8, (byte)ti->z);
 		DrawBridgeMiddle(ti);
 	} else if (IsBridge(ti->tile)) { // XXX is this necessary?
+		const PalSpriteID *psid;
 		int base_offset;
 		bool ice = HasBridgeSnowOrDesert(ti->tile);
 
@@ -842,23 +851,31 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		if (ti->tileh == SLOPE_FLAT) base_offset += 4; // sloped bridge head
 
 		/* Table number 6 always refers to the bridge heads for any bridge type */
-		image = GetBridgeSpriteTable(GetBridgeType(ti->tile), 6)[base_offset];
+		psid = &GetBridgeSpriteTable(GetBridgeType(ti->tile), 6)[base_offset];
 
 		if (!ice) {
 			DrawClearLandTile(ti, 3);
 		} else {
-			DrawGroundSprite(SPR_FLAT_SNOWY_TILE + _tileh_to_sprite[ti->tileh]);
+			DrawGroundSprite(SPR_FLAT_SNOWY_TILE + _tileh_to_sprite[ti->tileh], PAL_NONE);
 		}
 
 		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
+		image = psid->sprite;
+
 		// draw ramp
-		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
+		if (_display_opt & DO_TRANS_BUILDINGS) {
+			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+			pal = PALETTE_TO_TRANSPARENT;
+		} else {
+			pal = psid->pal;
+		}
+
 		/* HACK set the height of the BB of a sloped ramp to 1 so a vehicle on
 		 * it doesn't disappear behind it
 		 */
 		AddSortableSpriteToDraw(
-			image, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 1 : 8, ti->z
+			image, pal, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 1 : 8, ti->z
 		);
 
 		DrawBridgeMiddle(ti);
@@ -900,8 +917,9 @@ static uint CalcBridgePiece(uint north, uint south)
 
 void DrawBridgeMiddle(const TileInfo* ti)
 {
-	const PalSpriteID* b;
-	PalSpriteID image;
+	const PalSpriteID* psid;
+	SpriteID image;
+	SpriteID pal;
 	uint base_offset;
 	TileIndex rampnorth;
 	TileIndex rampsouth;
@@ -930,45 +948,64 @@ void DrawBridgeMiddle(const TileInfo* ti)
 		base_offset = 8;
 	}
 
-	b = base_offset + GetBridgeSpriteTable(type, piece);
-	if (axis != AXIS_X) b += 4;
+	psid = base_offset + GetBridgeSpriteTable(type, piece);
+	if (axis != AXIS_X) psid += 4;
 
 	x = ti->x;
 	y = ti->y;
 	z = GetBridgeHeight(rampsouth) - 3;
 
-	image = b[0];
-	if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
-	if (axis == AXIS_X) {
-		AddSortableSpriteToDraw(image, x, y, 16, 11, 1, z);
+	image = psid->sprite;
+	if (_display_opt & DO_TRANS_BUILDINGS) {
+		SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+		pal = PALETTE_TO_TRANSPARENT;
 	} else {
-		AddSortableSpriteToDraw(image, x, y, 11, 16, 1, z);
+		pal = psid->pal;
 	}
 
-	image = b[1];
-	if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
+	if (axis == AXIS_X) {
+		AddSortableSpriteToDraw(image, pal, x, y, 16, 11, 1, z);
+	} else {
+		AddSortableSpriteToDraw(image, pal, x, y, 11, 16, 1, z);
+	}
+
+	psid++;
+	image = psid->sprite;
+	if (_display_opt & DO_TRANS_BUILDINGS) {
+		SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+		pal = PALETTE_TO_TRANSPARENT;
+	} else {
+		pal = psid->pal;
+	}
 
 	// draw roof, the component of the bridge which is logically between the vehicle and the camera
 	if (axis == AXIS_X) {
 		y += 12;
-		if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x, y, 16, 1, 0x28, z);
+		if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, pal, x, y, 16, 1, 0x28, z);
 	} else {
 		x += 12;
-		if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x, y, 1, 16, 0x28, z);
+		if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, pal, x, y, 1, 16, 0x28, z);
 	}
 
 	if (GetRailType(rampsouth) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
+	psid++;
 	if (ti->z + 5 == z) {
 		// draw poles below for small bridges
-		image = b[2];
-		if (image != 0) {
-			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
-			DrawGroundSpriteAt(image, x, y, z);
+		if (psid->sprite != 0) {
+			image = psid->sprite;
+			if (_display_opt & DO_TRANS_BUILDINGS) {
+				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+				pal = PALETTE_TO_TRANSPARENT;
+			} else {
+				pal = psid->pal;
+			}
+
+			DrawGroundSpriteAt(image, pal, x, y, z);
 		}
 	} else if (_patches.bridge_pillars) {
 		// draw pillars below for high bridges
-		DrawBridgePillars(b[2], ti, axis, type, x, y, z);
+		DrawBridgePillars(psid, ti, axis, type, x, y, z);
 	}
 }
 

@@ -1399,7 +1399,7 @@ void SaveFileStart(void)
 {
 	_ts.ff_state = (_fast_forward != 0);
 	_fast_forward = false;
-	if (_cursor.sprite == SPR_CURSOR_MOUSE) SetMouseCursor(SPR_CURSOR_ZZZ);
+	if (_cursor.sprite == SPR_CURSOR_MOUSE) SetMouseCursor(SPR_CURSOR_ZZZ, PAL_NONE);
 
 	SendWindowMessage(WC_STATUS_BAR, 0, true, 0, 0);
 	_ts.saveinprogress = true;
@@ -1410,7 +1410,7 @@ void SaveFileStart(void)
 void SaveFileDone(void)
 {
 	_fast_forward = _ts.ff_state;
-	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
+	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
 
 	SendWindowMessage(WC_STATUS_BAR, 0, false, 0, 0);
 	_ts.saveinprogress = false;

@@ -370,33 +370,33 @@ void DrawCanalWater(TileIndex tile)
 	wa += IsWateredTile(TILE_ADDXY(tile, 1, 0)) << 2;
 	wa += IsWateredTile(TILE_ADDXY(tile, 0, -1)) << 3;
 
-	if (!(wa & 1)) DrawGroundSprite(SPR_CANALS_BASE + 57);
-	if (!(wa & 2)) DrawGroundSprite(SPR_CANALS_BASE + 58);
-	if (!(wa & 4)) DrawGroundSprite(SPR_CANALS_BASE + 59);
-	if (!(wa & 8)) DrawGroundSprite(SPR_CANALS_BASE + 60);
+	if (!(wa & 1)) DrawGroundSprite(SPR_CANALS_BASE + 57, PAL_NONE);
+	if (!(wa & 2)) DrawGroundSprite(SPR_CANALS_BASE + 58, PAL_NONE);
+	if (!(wa & 4)) DrawGroundSprite(SPR_CANALS_BASE + 59, PAL_NONE);
+	if (!(wa & 8)) DrawGroundSprite(SPR_CANALS_BASE + 60, PAL_NONE);
 
 	// right corner
 	switch (wa & 0x03) {
-		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 4); break;
-		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 8); break;
+		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 4, PAL_NONE); break;
+		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 8, PAL_NONE); break;
 	}
 
 	// bottom corner
 	switch (wa & 0x06) {
-		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 5); break;
-		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 9); break;
+		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 5, PAL_NONE); break;
+		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 9, PAL_NONE); break;
 	}
 
 	// left corner
 	switch (wa & 0x0C) {
-		case  0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 6); break;
-		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 10); break;
+		case  0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 6, PAL_NONE); break;
+		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 10, PAL_NONE); break;
 	}
 
 	// upper corner
 	switch (wa & 0x09) {
-		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 7); break;
-		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 11); break;
+		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 7, PAL_NONE); break;
+		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 11, PAL_NONE); break;
 	}
 }
 
@@ -409,19 +409,26 @@ typedef struct LocksDrawTileStruct {
 #include "table/water_land.h"
 
 static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
-	uint32 palette, uint base
+	SpriteID palette, uint base
 )
 {
-	DrawGroundSprite(wdts++->image);
+	DrawGroundSprite(wdts++->image, PAL_NONE);
 
 	for (; wdts->delta_x != 0x80; wdts++) {
-		uint32 image = wdts->image + base;
+		SpriteID image = wdts->image + base;
+		SpriteID pal;
+
 		if (_display_opt & DO_TRANS_BUILDINGS) {
-			MAKE_TRANSPARENT(image);
+			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+			pal = PALETTE_TO_TRANSPARENT;
 		} else {
-			image |= palette;
+			pal = palette;
 		}
-		AddSortableSpriteToDraw(image, ti->x + wdts->delta_x, ti->y + wdts->delta_y, wdts->width, wdts->height, wdts->unk, ti->z + wdts->delta_z);
+
+		AddSortableSpriteToDraw(image, pal,
+			ti->x + wdts->delta_x, ti->y + wdts->delta_y,
+			wdts->width, wdts->height,
+			wdts->unk, ti->z + wdts->delta_z);
 	}
 }
 
@@ -429,7 +436,7 @@ static void DrawTile_Water(TileInfo *ti)
 {
 	switch (GetWaterTileType(ti->tile)) {
 		case WATER_CLEAR:
-			DrawGroundSprite(SPR_FLAT_WATER_TILE);
+			DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
 			if (ti->z != 0 || !IsTileOwner(ti->tile, OWNER_WATER)) DrawCanalWater(ti->tile);
 			DrawBridgeMiddle(ti);
 			break;
@@ -437,9 +444,9 @@ static void DrawTile_Water(TileInfo *ti)
 		case WATER_COAST:
 			assert(!IsSteepSlope(ti->tileh));
 			if (_coast_base != 0) {
-				DrawGroundSprite(_coast_base + ti->tileh);
+				DrawGroundSprite(_coast_base + ti->tileh, PAL_NONE);
 			} else {
-				DrawGroundSprite(_water_shore_sprites[ti->tileh]);
+				DrawGroundSprite(_water_shore_sprites[ti->tileh], PAL_NONE);
 			}
 			DrawBridgeMiddle(ti);
 			break;
@@ -459,11 +466,11 @@ void DrawShipDepotSprite(int x, int y, int image)
 {
 	const WaterDrawTileStruct *wdts = _shipdepot_display_seq[image];
 
-	DrawSprite(wdts++->image, x, y);
+	DrawSprite(wdts++->image, PAL_NONE, x, y);
 
 	for (; wdts->delta_x != 0x80; wdts++) {
 		Point pt = RemapCoords(wdts->delta_x, wdts->delta_y, wdts->delta_z);
-		DrawSprite(wdts->image + PLAYER_SPRITE_COLOR(_local_player), x + pt.x, y + pt.y);
+		DrawSprite(wdts->image, PLAYER_SPRITE_COLOR(_local_player), x + pt.x, y + pt.y);
 	}
 }
 

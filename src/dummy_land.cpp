@@ -10,7 +10,7 @@
 
 static void DrawTile_Dummy(TileInfo *ti)
 {
-	DrawGroundSpriteAt(SPR_SHADOW_CELL, ti->x, ti->y, ti->z);
+	DrawGroundSpriteAt(SPR_SHADOW_CELL, PAL_NONE, ti->x, ti->y, ti->z);
 }
 
 

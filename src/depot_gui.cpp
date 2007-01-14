@@ -184,7 +184,7 @@ static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 		diff_y = 12;
 	}
 
-	DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x + diff_x, y + diff_y);
+	DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, x + diff_x, y + diff_y);
 
 	SetDParam(0, v->unitnumber);
 	DrawString(x, y + 2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
@@ -431,7 +431,7 @@ static void DepotClick(Window *w, int x, int y)
 
 				WP(w, depot_d).sel = v->index;
 				SetWindowDirty(w);
-				SetObjectToPlaceWnd(GetVehiclePalette(v) | image, 4, w);
+				SetObjectToPlaceWnd(image, GetVehiclePalette(v), 4, w);
 			}
 			}
 			break;
@@ -757,7 +757,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 						};
 
 						_place_clicked_vehicle = NULL;
-						SetObjectToPlaceWnd(clone_icons[WP(w, depot_d).type - VEH_Train], VHM_RECT, w);
+						SetObjectToPlaceWnd(clone_icons[WP(w, depot_d).type - VEH_Train], PAL_NONE, VHM_RECT, w);
 					} else {
 						ResetObjectToPlace();
 					}

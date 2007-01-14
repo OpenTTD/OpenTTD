@@ -82,7 +82,7 @@ int GetRoadVehImage(const Vehicle* v, Direction direction)
 	return image;
 }
 
-void DrawRoadVehEngine(int x, int y, EngineID engine, uint32 image_ormod)
+void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal)
 {
 	int spritenum = RoadVehInfo(engine)->image_index;
 
@@ -90,12 +90,12 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, uint32 image_ormod)
 		int sprite = GetCustomVehicleIcon(engine, DIR_W);
 
 		if (sprite != 0) {
-			DrawSprite(sprite | image_ormod, x, y);
+			DrawSprite(sprite, pal, x, y);
 			return;
 		}
 		spritenum = orig_road_vehicle_info[engine - ROAD_ENGINES_INDEX].image_index;
 	}
-	DrawSprite((6 + _roadveh_images[spritenum]) | image_ormod, x, y);
+	DrawSprite(6 + _roadveh_images[spritenum], pal, x, y);
 }
 
 static int32 EstimateRoadVehCost(EngineID engine_type)

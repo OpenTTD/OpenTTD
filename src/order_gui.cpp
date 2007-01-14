@@ -342,7 +342,7 @@ static void OrderClick_Goto(Window *w, const Vehicle *v)
 	ToggleWidgetLoweredState(w, 7);
 	if (IsWindowWidgetLowered(w, 7)) {
 		_place_clicked_vehicle = NULL;
-		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, 1, w);
+		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, 1, w);
 	} else {
 		ResetObjectToPlace();
 	}

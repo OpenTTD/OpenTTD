@@ -18,6 +18,7 @@
 #include "vehicle_gui.h"
 #include "date.h"
 #include "vehicle.h"
+#include "table/sprites.h"
 #include "helpers.hpp"
 
 enum StationListWidgets {
@@ -655,7 +656,7 @@ static void DrawStationViewWindow(Window *w)
 			int cur_x = x;
 			num = min(num, 23);
 			do {
-				DrawSprite(_cargoc.sprites[i], cur_x, y);
+				DrawSprite(_cargoc.sprites[i], PAL_NONE, cur_x, y);
 				cur_x += 10;
 			} while (--num);
 		}

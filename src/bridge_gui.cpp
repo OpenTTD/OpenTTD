@@ -52,7 +52,7 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 			SetDParam(2, _bridgedata.costs[i + w->vscroll.pos]);
 			SetDParam(1, b->speed);
 			SetDParam(0, b->material);
-			DrawSprite(b->sprite, 3, 15 + i * 22);
+			DrawSprite(b->sprite, b->pal, 3, 15 + i * 22);
 
 			DrawString(44, 15 + i * 22 , STR_500D, 0);
 		}

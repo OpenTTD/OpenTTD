@@ -125,14 +125,14 @@ static void IndustryDrawSugarMine(const TileInfo *ti)
 
 	d = &_draw_industry_spec1[GetIndustryAnimationState(ti->tile)];
 
-	AddChildSpriteScreen(SPR_IT_SUGAR_MINE_SIEVE + d->image_1, d->x, 0);
+	AddChildSpriteScreen(SPR_IT_SUGAR_MINE_SIEVE + d->image_1, PAL_NONE, d->x, 0);
 
 	image = d->image_2;
-	if (image != 0) AddChildSpriteScreen(SPR_IT_SUGAR_MINE_CLOUDS + image - 1, 8, 41);
+	if (image != 0) AddChildSpriteScreen(SPR_IT_SUGAR_MINE_CLOUDS + image - 1, PAL_NONE, 8, 41);
 
 	image = d->image_3;
 	if (image != 0) {
-		AddChildSpriteScreen(SPR_IT_SUGAR_MINE_PILE + image - 1,
+		AddChildSpriteScreen(SPR_IT_SUGAR_MINE_PILE + image - 1, PAL_NONE,
 			_drawtile_proc1_x[image - 1], _drawtile_proc1_y[image - 1]);
 	}
 }
@@ -147,16 +147,16 @@ static void IndustryDrawToffeeQuarry(const TileInfo *ti)
 			x = 0;
 	}
 
-	AddChildSpriteScreen(SPR_IT_TOFFEE_QUARRY_SHOVEL, 22 - x, 24 + x);
-	AddChildSpriteScreen(SPR_IT_TOFFEE_QUARRY_TOFFEE, 6, 14);
+	AddChildSpriteScreen(SPR_IT_TOFFEE_QUARRY_SHOVEL, PAL_NONE, 22 - x, 24 + x);
+	AddChildSpriteScreen(SPR_IT_TOFFEE_QUARRY_TOFFEE, PAL_NONE, 6, 14);
 }
 
 static void IndustryDrawBubbleGenerator( const TileInfo *ti)
 {
 	if (IsIndustryCompleted(ti->tile)) {
-		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_BUBBLE, 5, _industry_anim_offs_2[GetIndustryAnimationState(ti->tile)]);
+		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_BUBBLE, PAL_NONE, 5, _industry_anim_offs_2[GetIndustryAnimationState(ti->tile)]);
 	} else {
-		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_SPRING, 3, 67);
+		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_SPRING, PAL_NONE, 3, 67);
 	}
 }
 
@@ -167,15 +167,15 @@ static void IndustryDrawToyFactory(const TileInfo *ti)
 	d = &_industry_anim_offs_3[GetIndustryAnimationState(ti->tile)];
 
 	if (d->image_1 != 0xFF) {
-		AddChildSpriteScreen(SPR_IT_TOY_FACTORY_CLAY, 50 - d->image_1 * 2, 96 + d->image_1);
+		AddChildSpriteScreen(SPR_IT_TOY_FACTORY_CLAY, PAL_NONE, 50 - d->image_1 * 2, 96 + d->image_1);
 	}
 
 	if (d->image_2 != 0xFF) {
-		AddChildSpriteScreen(SPR_IT_TOY_FACTORY_ROBOT, 16 - d->image_2 * 2, 100 + d->image_2);
+		AddChildSpriteScreen(SPR_IT_TOY_FACTORY_ROBOT, PAL_NONE, 16 - d->image_2 * 2, 100 + d->image_2);
 	}
 
-	AddChildSpriteScreen(SPR_IT_TOY_FACTORY_STAMP, 7, d->image_3);
-	AddChildSpriteScreen(SPR_IT_TOY_FACTORY_STAMP_HOLDER, 0, 42);
+	AddChildSpriteScreen(SPR_IT_TOY_FACTORY_STAMP, PAL_NONE, 7, d->image_3);
+	AddChildSpriteScreen(SPR_IT_TOY_FACTORY_STAMP_HOLDER, PAL_NONE, 0, 42);
 }
 
 static void IndustryDrawCoalPlantSparks(const TileInfo *ti)
@@ -185,6 +185,7 @@ static void IndustryDrawCoalPlantSparks(const TileInfo *ti)
 
 		if (image != 0 && image < 7) {
 			AddChildSpriteScreen(image + SPR_IT_POWER_PLANT_TRANSFORMERS,
+				PAL_NONE,
 				_coal_plant_sparks_x[image - 1],
 				_coal_plant_sparks_y[image - 1]
 			);
@@ -207,41 +208,46 @@ static void DrawTile_Industry(TileInfo *ti)
 	const Industry *ind;
 	const DrawBuildingsTileStruct *dits;
 	byte z;
-	uint32 image, ormod;
+	SpriteID image;
+	SpriteID pal;
 
 	/* Pointer to industry */
 	ind = GetIndustryByTile(ti->tile);
-	ormod = GENERAL_SPRITE_COLOR(ind->random_color);
 
 	/* Retrieve pointer to the draw industry tile struct */
 	dits = &_industry_draw_tile_data[gfx << 2 | (_industry_section_draw_animation_state[gfx] ?
 			GetIndustryAnimationState(ti->tile) & 3 :
 			GetIndustryConstructionStage(ti->tile))];
 
-	image = dits->ground;
-	if (image & PALETTE_MODIFIER_COLOR && (image & PALETTE_SPRITE_MASK) == 0)
-		image |= ormod;
+	image = dits->ground.sprite;
+	if (HASBIT(image, PALETTE_MODIFIER_COLOR) && dits->ground.pal == PAL_NONE) {
+		pal = GENERAL_SPRITE_COLOR(ind->random_color);
+	} else {
+		pal = dits->ground.pal;
+	}
 
 	z = ti->z;
 	/* Add bricks below the industry? */
 	if (ti->tileh != SLOPE_FLAT) {
-		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, ti->x, ti->y, 16, 16, 7, z);
-		AddChildSpriteScreen(image, 31, 1);
+		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, PAL_NONE, ti->x, ti->y, 16, 16, 7, z);
+		AddChildSpriteScreen(image, pal, 31, 1);
 		z += TILE_HEIGHT;
 	} else {
 		/* Else draw regular ground */
-		DrawGroundSprite(image);
+		DrawGroundSprite(image, pal);
 	}
 
 	/* Add industry on top of the ground? */
-	image = dits->building;
+	image = dits->building.sprite;
 	if (image != 0) {
-		if (image & PALETTE_MODIFIER_COLOR && (image & PALETTE_SPRITE_MASK) == 0)
-			image |= ormod;
+		if (_display_opt & DO_TRANS_BUILDINGS) {
+			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+			pal = PALETTE_TO_TRANSPARENT;
+		} else {
+			pal = dits->building.pal;
+		}
 
-		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
-
-		AddSortableSpriteToDraw(image,
+		AddSortableSpriteToDraw(image, pal,
 			ti->x + dits->subtile_x,
 			ti->y + dits->subtile_y,
 			dits->width  + 1,

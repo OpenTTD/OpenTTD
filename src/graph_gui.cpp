@@ -218,7 +218,7 @@ static void DrawGraph(const GraphDrawer *gw)
 
 void DrawPlayerIcon(PlayerID p, int x, int y)
 {
-	DrawSprite(SPRITE_PALETTE(PLAYER_SPRITE_COLOR(p) + 0x2EB), x, y);
+	DrawSprite(0x2EB, PLAYER_SPRITE_COLOR(p), x, y);
 }
 
 static void GraphLegendWndProc(Window *w, WindowEvent *e)

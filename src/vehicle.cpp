@@ -796,15 +796,19 @@ int32 GetRefitCost(EngineID engine_type)
 
 static void DoDrawVehicle(const Vehicle *v)
 {
-	uint32 image = v->cur_image;
+	SpriteID image = v->cur_image;
+	SpriteID pal;
 
 	if (v->vehstatus & VS_SHADOW) {
-		MAKE_TRANSPARENT(image);
+		SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+		pal = PALETTE_TO_TRANSPARENT;
 	} else if (v->vehstatus & VS_DEFPAL) {
-		image |= (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+		pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+	} else {
+		pal = PAL_NONE;
 	}
 
-	AddSortableSpriteToDraw(image, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
+	AddSortableSpriteToDraw(image, pal, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
 		v->sprite_width, v->sprite_height, v->z_height, v->z_pos);
 }
 
@@ -2801,7 +2805,7 @@ UnitID GetFreeUnitNumber(byte type)
 	return unit;
 }
 
-static PalSpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, EngineID parent_engine_type, CargoID cargo_type)
+static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, EngineID parent_engine_type, CargoID cargo_type)
 {
 	SpriteID map;
 	const Player *p = GetPlayer(player);
@@ -2886,15 +2890,15 @@ static PalSpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Eng
 		(SPR_2CCMAP_BASE + p->livery[scheme].colour1 + p->livery[scheme].colour2 * 16) :
 		(PALETTE_RECOLOR_START + p->livery[scheme].colour1);
 
-	return SPRITE_PALETTE(map << PALETTE_SPRITE_START);
+	return map;
 }
 
-PalSpriteID GetEnginePalette(EngineID engine_type, PlayerID player)
+SpriteID GetEnginePalette(EngineID engine_type, PlayerID player)
 {
 	return GetEngineColourMap(engine_type, player, INVALID_ENGINE, CT_INVALID);
 }
 
-PalSpriteID GetVehiclePalette(const Vehicle *v)
+SpriteID GetVehiclePalette(const Vehicle *v)
 {
 	if (v->type == VEH_Train) {
 		return GetEngineColourMap(

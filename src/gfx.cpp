@@ -170,15 +170,15 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 
 	dst = dpi->dst_ptr + top * dpi->pitch + left;
 
-	if (!(color & PALETTE_MODIFIER_GREYOUT)) {
-		if (!(color & USE_COLORTABLE)) {
+	if (!HASBIT(color, PALETTE_MODIFIER_GREYOUT)) {
+		if (!HASBIT(color, USE_COLORTABLE)) {
 			do {
 				memset(dst, color, right);
 				dst += dpi->pitch;
 			} while (--bottom);
 		} else {
 			/* use colortable mode */
-			const byte* ctab = GetNonSprite(color & COLORTABLE_MASK) + 1;
+			const byte* ctab = GetNonSprite(GB(color, 0, PALETTE_WIDTH)) + 1;
 
 			do {
 				int i;
@@ -695,16 +695,16 @@ int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw
 	return DoDrawString(buffer, x, y, color);
 }
 
-void DrawSprite(uint32 img, int x, int y)
+void DrawSprite(SpriteID img, SpriteID pal, int x, int y)
 {
-	if (img & PALETTE_MODIFIER_COLOR) {
-		_color_remap_ptr = GetNonSprite(GB(img, PALETTE_SPRITE_START, PALETTE_SPRITE_WIDTH)) + 1;
-		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, BM_COLOUR_REMAP);
-	} else if (img & PALETTE_MODIFIER_TRANSPARENT) {
-		_color_remap_ptr = GetNonSprite(GB(img, PALETTE_SPRITE_START, PALETTE_SPRITE_WIDTH)) + 1;
-		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, BM_TRANSPARENT);
+	if (HASBIT(img, PALETTE_MODIFIER_TRANSPARENT)) {
+		_color_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH)) + 1;
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_TRANSPARENT);
+	} else if (pal != PAL_NONE) {
+		_color_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH)) + 1;
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_COLOUR_REMAP);
 	} else {
-		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, BM_NORMAL);
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_NORMAL);
 	}
 }
 
@@ -1739,7 +1739,7 @@ void DrawMouseCursor(void)
 
 	// Draw cursor on screen
 	_cur_dpi = &_screen;
-	DrawSprite(_cursor.sprite, _cursor.pos.x, _cursor.pos.y);
+	DrawSprite(_cursor.sprite, _cursor.pal, _cursor.pos.x, _cursor.pos.y);
 
 	_video_driver->make_dirty(_cursor.draw_pos.x, _cursor.draw_pos.y, _cursor.draw_size.x, _cursor.draw_size.y);
 
@@ -1967,15 +1967,16 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 	return true;
 }
 
-static void SetCursorSprite(CursorID cursor)
+static void SetCursorSprite(SpriteID cursor, SpriteID pal)
 {
 	CursorVars *cv = &_cursor;
 	const Sprite *p;
 
 	if (cv->sprite == cursor) return;
 
-	p = GetSprite(cursor & SPRITE_MASK);
+	p = GetSprite(GB(cursor, 0, SPRITE_WIDTH));
 	cv->sprite = cursor;
+	cv->pal    = pal;
 	cv->size.y = p->height;
 	cv->size.x = p->width;
 	cv->offs.x = p->x_offs;
@@ -1997,7 +1998,7 @@ static void SwitchAnimatedCursor(void)
 	cv->animate_timeout = cur[1];
 	cv->animate_cur = cur + 2;
 
-	SetCursorSprite(sprite);
+	SetCursorSprite(sprite, cv->pal);
 }
 
 void CursorTick(void)
@@ -2006,18 +2007,19 @@ void CursorTick(void)
 		SwitchAnimatedCursor();
 }
 
-void SetMouseCursor(CursorID cursor)
+void SetMouseCursor(SpriteID sprite, SpriteID pal)
 {
 	// Turn off animation
 	_cursor.animate_timeout = 0;
 	// Set cursor
-	SetCursorSprite(cursor);
+	SetCursorSprite(sprite, pal);
 }
 
 void SetAnimatedMouseCursor(const CursorID *table)
 {
 	_cursor.animate_list = table;
 	_cursor.animate_cur = NULL;
+	_cursor.pal = PAL_NONE;
 	SwitchAnimatedCursor();
 }
 

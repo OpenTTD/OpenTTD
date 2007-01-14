@@ -146,7 +146,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 					vp = w->viewport;
 					GfxFillRect(vp->left - w->left, vp->top - w->top,
 						vp->left - w->left + vp->width - 1, vp->top - w->top + vp->height - 1,
-						(ni->flags & NF_INCOLOR ? 0x322 : 0x323) | USE_COLORTABLE
+						(ni->flags & NF_INCOLOR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY) | (1 << USE_COLORTABLE)
 					);
 
 					COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));

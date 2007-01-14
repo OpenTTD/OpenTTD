@@ -313,20 +313,21 @@ int32 CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 typedef struct TreeListEnt {
-	uint32 image;
+	SpriteID image;
+	SpriteID pal;
 	byte x,y;
 } TreeListEnt;
 
 static void DrawTile_Trees(TileInfo *ti)
 {
-	const uint32 *s;
+	const PalSpriteID *s;
 	const TreePos* d;
 	byte z;
 
 	switch (GetTreeGround(ti->tile)) {
 		case TREE_GROUND_GRASS: DrawClearLandTile(ti, 3); break;
 		case TREE_GROUND_ROUGH: DrawHillyLandTile(ti); break;
-		default: DrawGroundSprite(_tree_sprites_1[GetTreeDensity(ti->tile)] + _tileh_to_sprite[ti->tileh]); break;
+		default: DrawGroundSprite(_tree_sprites_1[GetTreeDensity(ti->tile)] + _tileh_to_sprite[ti->tileh], PAL_NONE); break;
 	}
 
 	DrawClearLandFence(ti);
@@ -372,9 +373,16 @@ static void DrawTile_Trees(TileInfo *ti)
 		/* put the trees to draw in a list */
 		i = GetTreeCount(ti->tile) + 1;
 		do {
-			uint32 image = s[0] + (--i == 0 ? GetTreeGrowth(ti->tile) : 3);
-			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
+			SpriteID image = s[0].sprite + (--i == 0 ? GetTreeGrowth(ti->tile) : 3);
+			SpriteID pal;
+			if (_display_opt & DO_TRANS_BUILDINGS) {
+				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+				pal = PALETTE_TO_TRANSPARENT;
+			} else {
+				pal = s[0].pal;
+			}
 			te[i].image = image;
+			te[i].pal   = pal;
 			te[i].x = d->x;
 			te[i].y = d->y;
 			s++;
@@ -396,7 +404,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 			if (tep == NULL) break;
 
-			AddSortableSpriteToDraw(tep->image, ti->x + tep->x, ti->y + tep->y, 5, 5, 0x10, z);
+			AddSortableSpriteToDraw(tep->image, tep->pal, ti->x + tep->x, ti->y + tep->y, 5, 5, 0x10, z);
 			tep->image = 0;
 		}
 	}

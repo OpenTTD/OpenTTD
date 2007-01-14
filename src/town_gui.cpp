@@ -141,8 +141,9 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 					(str++,                    true);                    // Outstanding
 
 					SetDParam(4, str);
-					if (t->exclusivity == p->index) // red icon for player with exclusive rights
-						DrawSprite(SPR_BLOT | PALETTE_TO_RED, 18, y);
+					if (t->exclusivity == p->index) { // red icon for player with exclusive rights
+						DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
+					}
 
 					DrawString(28, y, STR_2024, 0);
 					y += 10;

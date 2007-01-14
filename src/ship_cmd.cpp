@@ -43,7 +43,7 @@ static TrackBits GetTileShipTrackStatus(TileIndex tile)
 	return TrackdirBitsToTrackBits((TrackdirBits)(TRACKDIR_BIT_MASK & (r | r >> 8)));
 }
 
-void DrawShipEngine(int x, int y, EngineID engine, uint32 image_ormod)
+void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal)
 {
 	int spritenum = ShipVehInfo(engine)->image_index;
 
@@ -51,12 +51,12 @@ void DrawShipEngine(int x, int y, EngineID engine, uint32 image_ormod)
 		int sprite = GetCustomVehicleIcon(engine, DIR_W);
 
 		if (sprite != 0) {
-			DrawSprite(sprite | image_ormod, x, y);
+			DrawSprite(sprite, pal, x, y);
 			return;
 		}
 		spritenum = orig_ship_vehicle_info[engine - SHIP_ENGINES_INDEX].image_index;
 	}
-	DrawSprite((6 + _ship_sprites[spritenum]) | image_ormod, x, y);
+	DrawSprite(6 + _ship_sprites[spritenum], pal, x, y);
 }
 
 int GetShipImage(const Vehicle* v, Direction direction)

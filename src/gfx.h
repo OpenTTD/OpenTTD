@@ -108,7 +108,8 @@ typedef struct Rect {
 typedef struct CursorVars {
 	Point pos, size, offs, delta; ///< position, size, offset from top-left, and movement
 	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
-	CursorID sprite; ///< current image of cursor
+	SpriteID sprite; ///< current image of cursor
+	SpriteID pal;
 
 	int wheel;       ///< mouse wheel movement
 	const CursorID *animate_list, *animate_cur; ///< in case of animated cursor, list of frames
@@ -236,6 +237,7 @@ bool FillDrawPixelInfo(DrawPixelInfo* n, int left, int top, int width, int heigh
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 
 void SetMouseCursor(CursorID cursor);
+void SetMouseCursor(SpriteID sprite, SpriteID pal);
 void SetAnimatedMouseCursor(const CursorID *table);
 void CursorTick(void);
 void DrawMouseCursor(void);

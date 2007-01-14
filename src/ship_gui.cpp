@@ -71,7 +71,7 @@ void DrawShipPurchaseInfo(int x, int y, uint w, EngineID engine_number)
 
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
-	DrawSprite(GetShipImage(v, DIR_W) | GetVehiclePalette(v), x + 32, y + 10);
+	DrawSprite(GetShipImage(v, DIR_W), GetVehiclePalette(v), x + 32, y + 10);
 
 	if (v->index == selection) {
 		DrawFrameRect(x - 5, y - 1, x + 67, y + 21, 15, FR_BORDERONLY);
@@ -427,7 +427,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 			}
 
 		/* draw the flag plus orders */
-		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, 2, w->widget[5].top + 1);
+		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, 2, w->widget[5].top + 1);
 		DrawStringCenteredTruncated(w->widget[5].left + 8, w->widget[5].right, w->widget[5].top + 1, str, 0);
 		DrawWindowViewport(w);
 	} break;

@@ -94,7 +94,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile);
 
 static void TownDrawHouseLift(const TileInfo *ti)
 {
-	AddChildSpriteScreen(SPR_LIFT, 14, 60 - GetLiftPosition(ti->tile));
+	AddChildSpriteScreen(SPR_LIFT, PAL_NONE, 14, 60 - GetLiftPosition(ti->tile));
 }
 
 typedef void TownDrawTileProc(const TileInfo *ti);
@@ -106,7 +106,8 @@ static TownDrawTileProc * const _town_draw_tile_procs[1] = {
 static void DrawTile_Town(TileInfo *ti)
 {
 	const DrawBuildingsTileStruct *dcts;
-	uint32 image;
+	SpriteID image;
+	SpriteID pal;
 
 	/* Retrieve pointer to the draw town tile struct */
 	{
@@ -121,14 +122,22 @@ static void DrawTile_Town(TileInfo *ti)
 	}
 
 	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
-	DrawGroundSprite(dcts->ground);
+
+	image = dcts->ground.sprite;
+	pal   = dcts->ground.pal;
+	DrawGroundSprite(image, pal);
 
 	/* Add a house on top of the ground? */
-	image = dcts->building;
+	image = dcts->building.sprite;
 	if (image != 0) {
-		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
+		if (_display_opt & DO_TRANS_BUILDINGS) {
+			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+			pal = PALETTE_TO_TRANSPARENT;
+		} else {
+			pal = dcts->building.pal;
+		}
 
-		AddSortableSpriteToDraw(image,
+		AddSortableSpriteToDraw(image, pal,
 			ti->x + dcts->subtile_x,
 			ti->y + dcts->subtile_y,
 			dcts->width + 1,

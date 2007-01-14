@@ -468,7 +468,7 @@ void DrawNewsBankrupcy(Window *w)
 
 	p = GetPlayer((PlayerID)GB(WP(w,news_d).ni->string_id, 0, 4));
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
-	GfxFillRect(3, 23, 3+91, 23+118, 0x323 | USE_COLORTABLE);
+	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
 
 	SetDParam(0, p->president_name_1);
 	SetDParam(1, p->president_name_2);

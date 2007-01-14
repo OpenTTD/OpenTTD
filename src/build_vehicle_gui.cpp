@@ -252,12 +252,12 @@ void DrawAircraftPurchaseInfo(int x, int y, uint w, EngineID engine_number)
 
 void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
-	PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-	DrawSprite(GetAircraftImage(v, DIR_W) | pal, x + 25, y + 10);
+	SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+	DrawSprite(GetAircraftImage(v, DIR_W), pal, x + 25, y + 10);
 	if (v->subtype == 0) {
 		SpriteID rotor_sprite = GetCustomRotorSprite(v, true);
 		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
-		DrawSprite(rotor_sprite, x + 25, y + 5);
+		DrawSprite(rotor_sprite, PAL_NONE, x + 25, y + 5);
 	}
 	if (v->index == selection) {
 		DrawFrameRect(x - 1, y - 1, x + 58, y + 21, 0xF, FR_BORDERONLY);

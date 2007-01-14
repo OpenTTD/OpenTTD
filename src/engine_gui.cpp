@@ -46,7 +46,7 @@ static const Widget _engine_preview_widgets[] = {
 {   WIDGETS_END},
 };
 
-typedef void DrawEngineProc(int x, int y, EngineID engine, uint32 image_ormod);
+typedef void DrawEngineProc(int x, int y, EngineID engine, SpriteID pal);
 typedef void DrawEngineInfoProc(EngineID, int x, int y, int maxw);
 
 typedef struct DrawEngineInfo {
@@ -156,7 +156,7 @@ void DrawNewsNewTrainAvail(Window *w)
 	DrawStringMultiCenter(w->width >> 1, 57, STR_885A, w->width - 2);
 
 	DrawTrainEngine(w->width >> 1, 88, engine, 0);
-	GfxFillRect(25, 56, w->width - 56, 112, 0x323 | USE_COLORTABLE);
+	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
 	DrawTrainEngineInfo(engine, w->width >> 1, 129, w->width - 52);
 }
 
@@ -196,7 +196,7 @@ void DrawNewsNewAircraftAvail(Window *w)
 	DrawStringMultiCenter(w->width >> 1, 57, STR_A02D, w->width - 2);
 
 	DrawAircraftEngine(w->width >> 1, 93, engine, 0);
-	GfxFillRect(25, 56, w->width - 56, 110, 0x323 | USE_COLORTABLE);
+	GfxFillRect(25, 56, w->width - 56, 110, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
 	DrawAircraftEngineInfo(engine, w->width >> 1, 131, w->width - 52);
 }
 
@@ -235,7 +235,7 @@ void DrawNewsNewRoadVehAvail(Window *w)
 	DrawStringMultiCenter(w->width >> 1, 57, STR_9029, w->width - 2);
 
 	DrawRoadVehEngine(w->width >> 1, 88, engine, 0);
-	GfxFillRect(25, 56, w->width - 56, 112, 0x323 | USE_COLORTABLE);
+	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
 	DrawRoadVehEngineInfo(engine, w->width >> 1, 129, w->width - 52);
 }
 
@@ -273,7 +273,7 @@ void DrawNewsNewShipAvail(Window *w)
 	DrawStringMultiCenter(w->width >> 1, 57, STR_982D, w->width - 2);
 
 	DrawShipEngine(w->width >> 1, 93, engine, 0);
-	GfxFillRect(25, 56, w->width - 56, 110, 0x323 | USE_COLORTABLE);
+	GfxFillRect(25, 56, w->width - 56, 110, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
 	DrawShipEngineInfo(engine, w->width >> 1, 131, w->width - 52);
 }
 

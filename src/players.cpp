@@ -80,44 +80,46 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 		flag |= 2;
 
 	/* draw the gradient */
-	DrawSprite(GENERAL_SPRITE_COLOR(color) + SPRITE_PALETTE(SPR_GRADIENT), x, y);
+	DrawSprite(SPR_GRADIENT, GENERAL_SPRITE_COLOR(color), x, y);
 
 	/* draw the cheeks */
-	DrawSprite(cheeks_table[flag&3], x, y);
+	DrawSprite(cheeks_table[flag&3], PAL_NONE, x, y);
 
 	/* draw the chin */
 	/* FIXME: real code uses -2 in zoomlevel 1 */
 	{
 		uint val = GB(face, 4, 2);
 		if (!(flag & 2)) {
-			DrawSprite(0x327 + (flag&1?0:val), x, y);
+			DrawSprite(0x327 + (flag&1?0:val), PAL_NONE, x, y);
 		} else {
-			DrawSprite((flag&1?0x3B1:0x391) + (val>>1), x, y);
+			DrawSprite((flag&1?0x3B1:0x391) + (val>>1), PAL_NONE, x, y);
 		}
 	}
 	/* draw the eyes */
 	{
 		uint val1 = GB(face,  6, 4);
 		uint val2 = GB(face, 20, 3);
-		uint32 high = 0x314 << PALETTE_SPRITE_START;
+		SpriteID pal;
 
-		if (val2 >= 6) {
-			high = 0x30F << PALETTE_SPRITE_START;
-			if (val2 != 6)
-				high = 0x30D << PALETTE_SPRITE_START;
+		if (val2 < 6) {
+			pal = PALETTE_TO_BROWN;
+		} else if (val2 == 6) {
+			pal = PALETTE_TO_BLUE;
+		} else {
+			pal = PALETTE_TO_GREEN;
 		}
 
 		if (!(flag & 2)) {
 			if (!(flag & 1)) {
-				DrawSprite(high+((val1 * 12 >> 4) + SPRITE_PALETTE(0x32B)), x, y);
+				DrawSprite(0x32B + (val1 * 12 >> 4), pal, x, y);
 			} else {
-				DrawSprite(high+(val1 + SPRITE_PALETTE(0x337)), x, y);
+				DrawSprite(0x337 + val1, pal, x, y);
 			}
 		} else {
 			if (!(flag & 1)) {
-				DrawSprite(high+((val1 * 11 >> 4) + SPRITE_PALETTE(0x39A)), x, y);
+				DrawSprite(0x39A + (val1 * 11 >> 4), pal, x, y);
 			} else {
-				DrawSprite(high+(val1 + SPRITE_PALETTE(0x3B8)), x, y);
+				DrawSprite(0x3B8 + val1, pal, x, y);
 			}
 		}
 	}
@@ -131,7 +133,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 			val2 = ((val&0xF) * 15 >> 4);
 
 			if (val2 < 3) {
-				DrawSprite((flag&2 ? 0x397 : 0x367) + val2, x, y);
+				DrawSprite((flag&2 ? 0x397 : 0x367) + val2, PAL_NONE, x, y);
 				/* skip the rest */
 				goto skip_mouth;
 			}
@@ -141,26 +143,26 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 				if (val2 > 8) val2 = 0;
 				val2 += 0x3A5 - 0x35B;
 			}
-			DrawSprite(val2 + 0x35B, x, y);
+			DrawSprite(val2 + 0x35B, PAL_NONE, x, y);
 		} else if (!(flag&2)) {
-			DrawSprite(((val&0xF) * 10 >> 4) + 0x351, x, y);
+			DrawSprite(((val&0xF) * 10 >> 4) + 0x351, PAL_NONE, x, y);
 		} else {
-			DrawSprite(((val&0xF) * 9 >> 4) + 0x3C8, x, y);
+			DrawSprite(((val&0xF) * 9 >> 4) + 0x3C8, PAL_NONE, x, y);
 		}
 
 		val >>= 3;
 
 		if (!(flag&2)) {
 			if (!(flag&1)) {
-				DrawSprite(0x349 + val, x, y);
+				DrawSprite(0x349 + val, PAL_NONE, x, y);
 			} else {
-				DrawSprite( mouth_table[(val*3>>3)], x, y);
+				DrawSprite( mouth_table[(val*3>>3)], PAL_NONE, x, y);
 			}
 		} else {
 			if (!(flag&1)) {
-				DrawSprite(0x393 + (val&3), x, y);
+				DrawSprite(0x393 + (val&3), PAL_NONE, x, y);
 			} else {
-				DrawSprite(0x3B3 + (val*5>>3), x, y);
+				DrawSprite(0x3B3 + (val*5>>3), PAL_NONE, x, y);
 			}
 		}
 
@@ -173,15 +175,15 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 		uint val = GB(face, 16, 4);
 		if (flag & 2) {
 			if (flag & 1) {
-				DrawSprite(0x3D9 + (val * 5 >> 4), x, y);
+				DrawSprite(0x3D9 + (val * 5 >> 4), PAL_NONE, x, y);
 			} else {
-				DrawSprite(0x3D4 + (val * 5 >> 4), x, y);
+				DrawSprite(0x3D4 + (val * 5 >> 4), PAL_NONE, x, y);
 			}
 		} else {
 			if (flag & 1) {
-				DrawSprite(0x38B + (val * 5 >> 4), x, y);
+				DrawSprite(0x38B + (val * 5 >> 4), PAL_NONE, x, y);
 			} else {
-				DrawSprite(0x382 + (val * 9 >> 4), x, y);
+				DrawSprite(0x382 + (val * 9 >> 4), PAL_NONE, x, y);
 			}
 		}
 	}
@@ -191,15 +193,15 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 		uint val = GB(face, 20, 8);
 
 		if (!(flag&1)) {
-			DrawSprite(0x36B + (GB(val, 0, 2) * 3 >> 2), x, y);
-			DrawSprite(0x36E + (GB(val, 2, 2) * 4 >> 2), x, y);
-			DrawSprite(0x372 + (GB(val, 4, 4) * 6 >> 4), x, y);
+			DrawSprite(0x36B + (GB(val, 0, 2) * 3 >> 2), PAL_NONE, x, y);
+			DrawSprite(0x36E + (GB(val, 2, 2) * 4 >> 2), PAL_NONE, x, y);
+			DrawSprite(0x372 + (GB(val, 4, 4) * 6 >> 4), PAL_NONE, x, y);
 		} else {
-			DrawSprite(0x378 + (GB(val, 0, 2) * 3 >> 2), x, y);
-			DrawSprite(0x37B + (GB(val, 2, 2) * 4 >> 2), x, y);
+			DrawSprite(0x378 + (GB(val, 0, 2) * 3 >> 2), PAL_NONE, x, y);
+			DrawSprite(0x37B + (GB(val, 2, 2) * 4 >> 2), PAL_NONE, x, y);
 
 			val >>= 4;
-			if (val < 3) DrawSprite((flag & 2 ? 0x3D1 : 0x37F) + val, x, y);
+			if (val < 3) DrawSprite((flag & 2 ? 0x3D1 : 0x37F) + val, PAL_NONE, x, y);
 		}
 	}
 
@@ -208,9 +210,9 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 		uint val = GB(face, 28, 3);
 
 		if (flag & 2) {
-			if (val <= 1) DrawSprite(0x3AE + val, x, y);
+			if (val <= 1) DrawSprite(0x3AE + val, PAL_NONE, x, y);
 		} else {
-			if (val <= 1) DrawSprite(0x347 + val, x, y);
+			if (val <= 1) DrawSprite(0x347 + val, PAL_NONE, x, y);
 		}
 	}
 }

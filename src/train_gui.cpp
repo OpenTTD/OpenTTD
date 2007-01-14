@@ -608,8 +608,8 @@ void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, Vehicle
 
 		if (dx + width > 0) {
 			if (dx <= count) {
-				PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-				DrawSprite(GetTrainImage(v, DIR_W) | pal, 16 + WagonLengthToPixels(dx), 7 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
+				SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+				DrawSprite(GetTrainImage(v, DIR_W), pal, 16 + WagonLengthToPixels(dx), 7 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 				if (v->index == selection) {
 					/* Set the highlight position */
 					highlight_l = WagonLengthToPixels(dx) + 1;
@@ -747,7 +747,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* draw the flag plus orders */
-		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, 2, w->widget[5].top + 1);
+		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, 2, w->widget[5].top + 1);
 		DrawStringCenteredTruncated(w->widget[5].left + 8, w->widget[5].right, w->widget[5].top + 1, str, 0);
 		DrawWindowViewport(w);
 	}	break;
@@ -977,8 +977,8 @@ static void DrawTrainDetailsWindow(Window *w)
 
 				u = v;
 				do {
-					PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-					DrawSprite(GetTrainImage(u, DIR_W) | pal, x + WagonLengthToPixels(4 + dx), y + 6 + (is_custom_sprite(RailVehInfo(u->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
+					SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+					DrawSprite(GetTrainImage(u, DIR_W), pal, x + WagonLengthToPixels(4 + dx), y + 6 + (is_custom_sprite(RailVehInfo(u->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 					dx += u->u.rail.cached_veh_length;
 					u = u->next;
 				} while (u != NULL && IsArticulatedPart(u) && u->cargo_cap == 0);

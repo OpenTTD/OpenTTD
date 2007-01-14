@@ -765,7 +765,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 				if (statspec != NULL && statspec->name != 0) {
 					if (HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) && GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
-						GfxFillRect(8, y - 2, 127, y + 10, PALETTE_MODIFIER_GREYOUT);
+						GfxFillRect(8, y - 2, 127, y + 10, (1 << PALETTE_MODIFIER_GREYOUT));
 					}
 
 					DrawStringTruncated(9, y, statspec->name, i == _railstation.station_type ? 12 : 16, 118);
@@ -1087,7 +1087,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 				if (statspec != NULL &&
 						HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) &&
 						GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
-					GfxFillRect(4 + i * 68, 18, 67 + i * 68, 75, PALETTE_MODIFIER_GREYOUT);
+					GfxFillRect(4 + i * 68, 18, 67 + i * 68, 75, (1 << PALETTE_MODIFIER_GREYOUT));
 				}
 			}
 		}

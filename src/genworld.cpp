@@ -84,7 +84,7 @@ static void *_GenerateWorld(void *arg)
 	if (_patches.generation_seed == GENERATE_NEW_SEED) _patches.generation_seed = _patches_newgame.generation_seed = InteractiveRandom();
 	_random_seeds[0][0] = _random_seeds[0][1] = _patches.generation_seed;
 	SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
-	SetObjectToPlace(SPR_CURSOR_ZZZ, 0, 0, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, 0, 0, 0);
 
 	IncreaseGeneratingWorldProgress(GWP_MAP_INIT);
 	// Must start economy early because of the costs.
@@ -140,7 +140,7 @@ static void *_GenerateWorld(void *arg)
 	if (_gw.proc != NULL) _gw.proc();
 	IncreaseGeneratingWorldProgress(GWP_GAME_START);
 
-	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
+	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
 	/* Show all vital windows again, because we have hidden them */
 	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
 	_gw.active   = false;
@@ -213,7 +213,7 @@ void HandleGeneratingWorldAbortion(void)
 
 	if (_gw.abortp != NULL) _gw.abortp();
 
-	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
+	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
 	/* Show all vital windows again, because we have hidden them */
 	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
 	_gw.active   = false;

@@ -1053,7 +1053,7 @@ static void DrawSingleSignal(TileIndex tile, byte condition, uint image, uint po
 		sprite = _signal_base + (GetSignalType(tile) - 1) * 16 + GetSignalVariant(tile) * 64 + image + condition;
 	}
 
-	AddSortableSpriteToDraw(sprite, x, y, 1, 1, 10, GetSlopeZ(x,y));
+	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, 1, 1, 10, GetSlopeZ(x,y));
 }
 
 static uint32 _drawtile_track_palette;
@@ -1061,17 +1061,17 @@ static uint32 _drawtile_track_palette;
 
 static void DrawTrackFence_NW(const TileInfo *ti)
 {
-	uint32 image = 0x515;
+	SpriteID image = 0x515;
 	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x519 : 0x51B;
-	AddSortableSpriteToDraw(image | _drawtile_track_palette,
+	AddSortableSpriteToDraw(image, _drawtile_track_palette,
 		ti->x, ti->y + 1, 16, 1, 4, ti->z);
 }
 
 static void DrawTrackFence_SE(const TileInfo *ti)
 {
-	uint32 image = 0x515;
+	SpriteID image = 0x515;
 	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x519 : 0x51B;
-	AddSortableSpriteToDraw(image | _drawtile_track_palette,
+	AddSortableSpriteToDraw(image, _drawtile_track_palette,
 		ti->x, ti->y + TILE_SIZE - 1, 16, 1, 4, ti->z);
 }
 
@@ -1083,17 +1083,17 @@ static void DrawTrackFence_NW_SE(const TileInfo *ti)
 
 static void DrawTrackFence_NE(const TileInfo *ti)
 {
-	uint32 image = 0x516;
+	SpriteID image = 0x516;
 	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x51A : 0x51C;
-	AddSortableSpriteToDraw(image | _drawtile_track_palette,
+	AddSortableSpriteToDraw(image, _drawtile_track_palette,
 		ti->x + 1, ti->y, 1, 16, 4, ti->z);
 }
 
 static void DrawTrackFence_SW(const TileInfo *ti)
 {
-	uint32 image = 0x516;
+	SpriteID image = 0x516;
 	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x51A : 0x51C;
-	AddSortableSpriteToDraw(image | _drawtile_track_palette,
+	AddSortableSpriteToDraw(image, _drawtile_track_palette,
 		ti->x + TILE_SIZE - 1, ti->y, 1, 16, 4, ti->z);
 }
 
@@ -1107,7 +1107,7 @@ static void DrawTrackFence_NS_1(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_W) z += TILE_HEIGHT;
-	AddSortableSpriteToDraw(0x517 | _drawtile_track_palette,
+	AddSortableSpriteToDraw(0x517, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
@@ -1115,7 +1115,7 @@ static void DrawTrackFence_NS_2(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_E) z += TILE_HEIGHT;
-	AddSortableSpriteToDraw(0x517 | _drawtile_track_palette,
+	AddSortableSpriteToDraw(0x517, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
@@ -1123,7 +1123,7 @@ static void DrawTrackFence_WE_1(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_N) z += TILE_HEIGHT;
-	AddSortableSpriteToDraw(0x518 | _drawtile_track_palette,
+	AddSortableSpriteToDraw(0x518, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
@@ -1131,7 +1131,7 @@ static void DrawTrackFence_WE_2(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_S) z += TILE_HEIGHT;
-	AddSortableSpriteToDraw(0x518 | _drawtile_track_palette,
+	AddSortableSpriteToDraw(0x518, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
@@ -1165,7 +1165,8 @@ static void DrawTrackDetails(const TileInfo* ti)
 static void DrawTrackBits(TileInfo* ti, TrackBits track)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
-	PalSpriteID image;
+	SpriteID image;
+	SpriteID pal = PAL_NONE;
 	bool junction = false;
 
 	// Select the sprite to use.
@@ -1199,21 +1200,21 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 	}
 
 	switch (GetRailGroundType(ti->tile)) {
-		case RAIL_GROUND_BARREN:     image |= PALETTE_TO_BARE_LAND; break;
+		case RAIL_GROUND_BARREN:     pal = PALETTE_TO_BARE_LAND; break;
 		case RAIL_GROUND_ICE_DESERT: image += rti->snow_offset; break;
 		default: break;
 	}
 
-	DrawGroundSprite(image);
+	DrawGroundSprite(image, pal);
 
 	// Draw track pieces individually for junction tiles
 	if (junction) {
-		if (track & TRACK_BIT_X)     DrawGroundSprite(rti->base_sprites.single_y);
-		if (track & TRACK_BIT_Y)     DrawGroundSprite(rti->base_sprites.single_x);
-		if (track & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n);
-		if (track & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s);
-		if (track & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w);
-		if (track & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e);
+		if (track & TRACK_BIT_X)     DrawGroundSprite(rti->base_sprites.single_y, PAL_NONE);
+		if (track & TRACK_BIT_Y)     DrawGroundSprite(rti->base_sprites.single_x, PAL_NONE);
+		if (track & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n, PAL_NONE);
+		if (track & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s, PAL_NONE);
+		if (track & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w, PAL_NONE);
+		if (track & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e, PAL_NONE);
 	}
 
 	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
@@ -1255,9 +1256,9 @@ static void DrawSignals(TileIndex tile, TrackBits rails)
 static void DrawTile_Track(TileInfo *ti)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
-	PalSpriteID image;
+	SpriteID image;
 
-	_drawtile_track_palette = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)));
+	_drawtile_track_palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
 	if (IsPlainRailTile(ti->tile)) {
 		TrackBits rails = GetTrackBits(ti->tile);
@@ -1337,20 +1338,25 @@ default_waypoint:
 			}
 		}
 
-		DrawGroundSprite(image);
+		DrawGroundSprite(image, PAL_NONE);
 
 		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 		foreach_draw_tile_seq(dtss, dts->seq) {
-			uint32 image = dtss->image + relocation;
+			SpriteID image = dtss->image + relocation;
+			SpriteID pal;
 
 			if (_display_opt & DO_TRANS_BUILDINGS) {
-				MAKE_TRANSPARENT(image);
-			} else if (image & PALETTE_MODIFIER_COLOR) {
-				image |= _drawtile_track_palette;
+				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+				pal = PALETTE_TO_TRANSPARENT;
+			} else if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+				pal = _drawtile_track_palette;
+			} else {
+				pal = dtss->pal;
 			}
+
 			AddSortableSpriteToDraw(
-				image,
+				image, pal,
 				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 				dtss->size_x, dtss->size_y,
 				dtss->size_z, ti->z + dtss->delta_z
@@ -1361,24 +1367,23 @@ default_waypoint:
 }
 
 
-static void DrawTileSequence(int x, int y, uint32 ground, const DrawTileSeqStruct* dtss, uint32 offset)
+static void DrawTileSequence(int x, int y, SpriteID ground, const DrawTileSeqStruct* dtss, uint32 offset)
 {
-	uint32 palette = PLAYER_SPRITE_COLOR(_local_player);
+	SpriteID palette = PLAYER_SPRITE_COLOR(_local_player);
 
-	DrawSprite(ground, x, y);
+	DrawSprite(ground, PAL_NONE, x, y);
 	for (; dtss->image != 0; dtss++) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
-		uint32 image = dtss->image + offset;
+		SpriteID image = dtss->image + offset;
 
-		if (image & PALETTE_MODIFIER_COLOR) image |= palette;
-		DrawSprite(image, x + pt.x, y + pt.y);
+		DrawSprite(image, HASBIT(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
 	}
 }
 
 void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 {
 	const DrawTileSprites* dts = &_depot_gfx_table[dir];
-	uint32 image = dts->ground_sprite;
+	SpriteID image = dts->ground_sprite;
 	uint32 offset = GetRailTypeInfo(railtype)->total_offset;
 
 	if (image != SPR_FLAT_GRASS_TILE) image += offset;

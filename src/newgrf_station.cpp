@@ -676,8 +676,8 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	const DrawTileSeqStruct *seq;
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID relocation;
-	PalSpriteID image;
-	PalSpriteID colourmod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player));
+	SpriteID image;
+	SpriteID pal = PLAYER_SPRITE_COLOR(_local_player);
 	uint tile = 2;
 
 	statspec = GetCustomStationSpec(sclass, station);
@@ -697,22 +697,19 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	}
 
 	image = sprites->ground_sprite;
-	if (HASBIT(image, 31)) {
-		CLRBIT(image, 31);
+	if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
 		image += GetCustomStationGroundRelocation(statspec, NULL, INVALID_TILE);
 		image += rti->custom_ground_offset;
 	} else {
 		image += rti->total_offset;
 	}
 
-	if (image & PALETTE_MODIFIER_COLOR) image &= SPRITE_MASK;
-	DrawSprite(image, x, y);
+	DrawSprite(image, PAL_NONE, x, y);
 
 	foreach_draw_tile_seq(seq, sprites->seq) {
 		Point pt;
 		image = seq->image;
-		if (HASBIT(image, 30)) {
-			CLRBIT(image, 30);
+		if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += rti->total_offset;
 		} else {
 			image += relocation;
@@ -720,7 +717,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 		if ((byte)seq->delta_z != 0x80) {
 			pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);
-			DrawSprite((image & SPRITE_MASK) | colourmod, x + pt.x, y + pt.y);
+			DrawSprite(image, pal, x + pt.x, y + pt.y);
 		}
 	}
 

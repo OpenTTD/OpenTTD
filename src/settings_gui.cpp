@@ -413,7 +413,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, GetBitAndShift(&click_a) ? FR_LOWERED : FR_NONE);
 			DrawFrameRect(15, y, 15 + 8, y + 8, 3, GetBitAndShift(&click_b) ? FR_LOWERED : FR_NONE);
 			if (GetBitAndShift(&disabled) || (_networking && !_network_server)) {
-				int color = PALETTE_MODIFIER_GREYOUT | _colour_gradient[COLOUR_YELLOW][2];
+				int color = (1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[COLOUR_YELLOW][2];
 				GfxFillRect( 6, y + 1,  6 + 8, y + 8, color);
 				GfxFillRect(16, y + 1, 16 + 8, y + 8, color);
 			}
@@ -930,7 +930,7 @@ void ShowPatchesSelection(void)
  */
 void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, bool clickable_right)
 {
-	int color = PALETTE_MODIFIER_GREYOUT | _colour_gradient[COLOUR_YELLOW][2];
+	int color = (1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[COLOUR_YELLOW][2];
 
 	DrawFrameRect(x,      y + 1, x +  9, y + 9, ctab, (state == 1) ? FR_LOWERED : FR_NONE);
 	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, ctab, (state == 2) ? FR_LOWERED : FR_NONE);

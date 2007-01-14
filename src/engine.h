@@ -131,10 +131,10 @@ void AddTypeToEngines(void);
 void StartupEngines(void);
 
 
-void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod);
-void DrawRoadVehEngine(int x, int y, EngineID engine, uint32 image_ormod);
-void DrawShipEngine(int x, int y, EngineID engine, uint32 image_ormod);
-void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod);
+void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal);
+void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal);
+void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal);
+void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal);
 
 void LoadCustomEngineNames(void);
 void DeleteCustomEngineNames(void);

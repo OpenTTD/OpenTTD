@@ -136,11 +136,11 @@ SpriteID GetRotorImage(const Vehicle *v)
 	return SPR_ROTOR_STOPPED + w->u.air.state;
 }
 
-void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod)
+void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal)
 {
 	const AircraftVehicleInfo* avi = AircraftVehInfo(engine);
 	int spritenum = avi->image_index;
-	int sprite = (6 + _aircraft_sprite[spritenum]);
+	SpriteID sprite = (6 + _aircraft_sprite[spritenum]);
 
 	if (is_custom_sprite(spritenum)) {
 		sprite = GetCustomVehicleIcon(engine, DIR_W);
@@ -150,12 +150,12 @@ void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod)
 		}
 	}
 
-	DrawSprite(sprite | image_ormod, x, y);
+	DrawSprite(sprite, pal, x, y);
 
 	if (!(avi->subtype & AIR_CTOL)) {
 		SpriteID rotor_sprite = GetCustomRotorIcon(engine);
 		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
-		DrawSprite(rotor_sprite, x, y - 5);
+		DrawSprite(rotor_sprite, PAL_NONE, x, y - 5);
 	}
 }
 

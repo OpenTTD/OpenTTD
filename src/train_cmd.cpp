@@ -479,12 +479,12 @@ int GetTrainImage(const Vehicle* v, Direction direction)
 	return base;
 }
 
-void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
+void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
 
 	int img = rvi->image_index;
-	uint32 image = 0;
+	SpriteID image = 0;
 
 	if (is_custom_sprite(img)) {
 		image = GetCustomVehicleIcon(engine, DIR_W);
@@ -499,7 +499,7 @@ void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	}
 
 	if (rvi->flags & RVI_MULTIHEAD) {
-		DrawSprite(image | image_ormod, x - 14, y);
+		DrawSprite(image, pal, x - 14, y);
 		x += 15;
 		image = 0;
 		if (is_custom_sprite(img)) {
@@ -512,7 +512,7 @@ void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
 				_engine_sprite_base[img + 1];
 		}
 	}
-	DrawSprite(image | image_ormod, x, y);
+	DrawSprite(image, pal, x, y);
 }
 
 uint CountArticulatedParts(EngineID engine_type)
@@ -3045,7 +3045,7 @@ static void TrainController(Vehicle *v, bool update_image)
 				} else {
 					/* is not inside depot */
 
-					if (!TrainCheckIfLineEnds(v)) return;
+					if (IsFrontEngine(v) && !TrainCheckIfLineEnds(v)) return;
 
 					r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
 					if (r & 0x8) {

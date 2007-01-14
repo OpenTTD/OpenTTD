@@ -159,7 +159,7 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, FrameFlag
 	uint light        = _colour_gradient[ctab][7];
 
 	if (flags & FR_TRANSPARENT) {
-		GfxFillRect(left, top, right, bottom, 0x322 | USE_COLORTABLE);
+		GfxFillRect(left, top, right, bottom, PALETTE_TO_TRANSPARENT | (1 << USE_COLORTABLE));
 	} else {
 		uint interior;
 
@@ -210,7 +210,7 @@ void DrawWindowWidgets(const Window *w)
 
 			/* show different image when clicked for WWT_IMGBTN_2 */
 			if ((wi->type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++;
-			DrawSprite(img, r.left + 1 + clicked, r.top + 1 + clicked);
+			DrawSprite(img, PAL_NONE, r.left + 1 + clicked, r.top + 1 + clicked);
 			goto draw_default;
 		}
 
@@ -308,7 +308,7 @@ void DrawWindowWidgets(const Window *w)
 
 			// draw "shaded" background
 			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c2);
-			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | PALETTE_MODIFIER_GREYOUT);
+			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
 
 			// draw shaded lines
 			GfxFillRect(r.left+2, r.top+10, r.left+2, r.bottom-10, c1);
@@ -340,7 +340,7 @@ void DrawWindowWidgets(const Window *w)
 
 			// draw "shaded" background
 			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c2);
-			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | PALETTE_MODIFIER_GREYOUT);
+			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
 
 			// draw shaded lines
 			GfxFillRect(r.left+2, r.top+10, r.left+2, r.bottom-10, c1);
@@ -362,18 +362,18 @@ void DrawWindowWidgets(const Window *w)
 
 			clicked = ((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL));
 			DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawSprite(SPR_ARROW_LEFT, r.left + 1 + clicked, r.top + 1 + clicked);
+			DrawSprite(SPR_ARROW_LEFT, PAL_NONE, r.left + 1 + clicked, r.top + 1 + clicked);
 
 			clicked = ((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL));
 			DrawFrameRect(r.right-9, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawSprite(SPR_ARROW_RIGHT, r.right - 8 + clicked, r.top + 1 + clicked);
+			DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, r.right - 8 + clicked, r.top + 1 + clicked);
 
 			c1 = _colour_gradient[wi->color&0xF][3];
 			c2 = _colour_gradient[wi->color&0xF][7];
 
 			// draw "shaded" background
 			GfxFillRect(r.left+10, r.top, r.right-10, r.bottom, c2);
-			GfxFillRect(r.left+10, r.top, r.right-10, r.bottom, c1 | PALETTE_MODIFIER_GREYOUT);
+			GfxFillRect(r.left+10, r.top, r.right-10, r.bottom, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
 
 			// draw shaded lines
 			GfxFillRect(r.left+10, r.top+2, r.right-10, r.top+2, c1);
@@ -424,7 +424,7 @@ void DrawWindowWidgets(const Window *w)
 
 			clicked = !!(w->flags4 & WF_STICKY);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, r.left + 2 + clicked, r.top + 3 + clicked);
+			DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, PAL_NONE, r.left + 2 + clicked, r.top + 3 + clicked);
 			break;
 		}
 
@@ -433,7 +433,7 @@ void DrawWindowWidgets(const Window *w)
 
 			clicked = !!(w->flags4 & WF_SIZING);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawSprite(SPR_WINDOW_RESIZE, r.left + 3 + clicked, r.top + 3 + clicked);
+			DrawSprite(SPR_WINDOW_RESIZE, PAL_NONE, r.left + 3 + clicked, r.top + 3 + clicked);
 			break;
 		}
 
@@ -457,7 +457,7 @@ void DrawWindowWidgets(const Window *w)
 			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top+2, wi->data, 0x84);
 draw_default:;
 			if (IsWindowWidgetDisabled(w, i)) {
-				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _colour_gradient[wi->color&0xF][2] | PALETTE_MODIFIER_GREYOUT);
+				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _colour_gradient[wi->color&0xF][2] | (1 << PALETTE_MODIFIER_GREYOUT));
 			}
 		}
 		}
@@ -529,7 +529,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 
 						if (HASBIT(WP(w,dropdown_d).disabled_state, i)) {
 							GfxFillRect(x, y, x + width, y + 9,
-								PALETTE_MODIFIER_GREYOUT | _colour_gradient[_dropdown_menu_widgets[0].color][5]
+								(1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[_dropdown_menu_widgets[0].color][5]
 							);
 						}
 					} else {

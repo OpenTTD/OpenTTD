@@ -656,7 +656,8 @@ static void DrawRoadBits(TileInfo* ti)
 {
 	RoadBits road = GetRoadBits(ti->tile);
 	const DrawRoadTileStruct *drts;
-	PalSpriteID image = 0;
+	SpriteID image = 0;
+	SpriteID pal = PAL_NONE;
 	Roadside roadside;
 
 	if (ti->tileh != SLOPE_FLAT) {
@@ -677,18 +678,18 @@ static void DrawRoadBits(TileInfo* ti)
 		image += 19;
 	} else {
 		switch (roadside) {
-			case ROADSIDE_BARREN:           image |= PALETTE_TO_BARE_LAND; break;
+			case ROADSIDE_BARREN:           pal = PALETTE_TO_BARE_LAND; break;
 			case ROADSIDE_GRASS:            break;
 			case ROADSIDE_GRASS_ROAD_WORKS: break;
 			default:                        image -= 19; break; // Paved
 		}
 	}
 
-	DrawGroundSprite(image);
+	DrawGroundSprite(image, pal);
 
 	if (HasRoadWorks(ti->tile)) {
 		// Road works
-		DrawGroundSprite(road & ROAD_X ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y);
+		DrawGroundSprite(road & ROAD_X ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y, PAL_NONE);
 		return;
 	}
 
@@ -701,7 +702,7 @@ static void DrawRoadBits(TileInfo* ti)
 		int y = ti->y | drts->subcoord_y;
 		byte z = ti->z;
 		if (ti->tileh != SLOPE_FLAT) z = GetSlopeZ(x, y);
-		AddSortableSpriteToDraw(drts->image, x, y, 2, 2, 0x10, z);
+		AddSortableSpriteToDraw(drts->image, PAL_NONE, x, y, 2, 2, 0x10, z);
 	}
 }
 
@@ -713,7 +714,8 @@ static void DrawTile_Road(TileInfo *ti)
 			break;
 
 		case ROAD_TILE_CROSSING: {
-			PalSpriteID image;
+			SpriteID image;
+			SpriteID pal = PAL_NONE;
 
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
@@ -726,13 +728,13 @@ static void DrawTile_Road(TileInfo *ti)
 				image += 8;
 			} else {
 				switch (GetRoadside(ti->tile)) {
-					case ROADSIDE_BARREN: image |= PALETTE_TO_BARE_LAND; break;
+					case ROADSIDE_BARREN: pal = PALETTE_TO_BARE_LAND; break;
 					case ROADSIDE_GRASS:  break;
 					default:              image += 4; break; // Paved
 				}
 			}
 
-			DrawGroundSprite(image);
+			DrawGroundSprite(image, pal);
 			if (GetRailTypeCrossing(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 			break;
 		}
@@ -741,26 +743,30 @@ static void DrawTile_Road(TileInfo *ti)
 		case ROAD_TILE_DEPOT: {
 			const DrawTileSprites* dts;
 			const DrawTileSeqStruct* dtss;
-			uint32 palette;
+			SpriteID palette;
 
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
 			palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
 			dts =  &_road_depot[GetRoadDepotDirection(ti->tile)];
-			DrawGroundSprite(dts->ground_sprite);
+			DrawGroundSprite(dts->ground_sprite, PAL_NONE);
 
 			for (dtss = dts->seq; dtss->image != 0; dtss++) {
-				uint32 image = dtss->image;
+				SpriteID image = dtss->image;
+				SpriteID pal;
 
 				if (_display_opt & DO_TRANS_BUILDINGS) {
-					MAKE_TRANSPARENT(image);
-				} else if (image & PALETTE_MODIFIER_COLOR) {
-					image |= palette;
+					SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+					pal = PALETTE_TO_TRANSPARENT;
+				} else if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+					pal = palette;
+				} else {
+					pal = PAL_NONE;
 				}
 
 				AddSortableSpriteToDraw(
-					image,
+					image, pal,
 					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 					dtss->size_x, dtss->size_y,
 					dtss->size_z, ti->z
@@ -774,22 +780,20 @@ static void DrawTile_Road(TileInfo *ti)
 
 void DrawRoadDepotSprite(int x, int y, DiagDirection dir)
 {
-	uint32 palette = PLAYER_SPRITE_COLOR(_local_player);
+	SpriteID palette = PLAYER_SPRITE_COLOR(_local_player);
 	const DrawTileSprites* dts =  &_road_depot[dir];
 	const DrawTileSeqStruct* dtss;
 
 	x += 33;
 	y += 17;
 
-	DrawSprite(dts->ground_sprite, x, y);
+	DrawSprite(dts->ground_sprite, PAL_NONE, x, y);
 
 	for (dtss = dts->seq; dtss->image != 0; dtss++) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
-		uint32 image = dtss->image;
+		SpriteID image = dtss->image;
 
-		if (image & PALETTE_MODIFIER_COLOR) image |= palette;
-
-		DrawSprite(image, x + pt.x, y + pt.y);
+		DrawSprite(image, HASBIT(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
 	}
 }
 

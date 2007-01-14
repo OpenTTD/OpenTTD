@@ -353,16 +353,16 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 					bool sel = HASBIT(WP(w, livery_d).sel, scheme) != 0;
 
 					if (scheme != LS_DEFAULT) {
-						DrawSprite(p->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, 2, y);
+						DrawSprite(p->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, 2, y);
 					}
 
 					DrawString(15, y, STR_LIVERY_DEFAULT + scheme, sel ? 0xC : 0x10);
 
-					DrawSprite(SPR_SQUARE | GENERAL_SPRITE_COLOR(p->livery[scheme].colour1) | PALETTE_MODIFIER_COLOR, 152, y);
+					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour1), 152, y);
 					DrawString(165, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour1, sel ? 0xC : 2);
 
 					if (_have_2cc) {
-						DrawSprite(SPR_SQUARE | GENERAL_SPRITE_COLOR(p->livery[scheme].colour2) | PALETTE_MODIFIER_COLOR, 277, y);
+						DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour2), 277, y);
 						DrawString(290, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour2, sel ? 0xC : 2);
 					}
 
@@ -722,7 +722,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 			DrawString(110,48, STR_7006_COLOR_SCHEME, 0);
 			// Draw company-colour bus
-			DrawSprite(PLAYER_SPRITE_COLOR(p->index) + SPRITE_PALETTE(SPR_VEH_BUS_SW_VIEW), 215, 49);
+			DrawSprite(SPR_VEH_BUS_SW_VIEW, PLAYER_SPRITE_COLOR(p->index), 215, 49);
 
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
 
@@ -782,7 +782,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					if (tile == 0) {
 						if ((byte)w->window_number != _local_player)
 							return;
-						SetObjectToPlaceWnd(SPR_CURSOR_HQ, 1, w);
+						SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, 1, w);
 						SetTileSelectSize(2, 2);
 						LowerWindowWidget(w, PCW_WIDGET_BUILD_VIEW_HQ);
 						InvalidateWidget(w, PCW_WIDGET_BUILD_VIEW_HQ);
@@ -793,7 +793,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				}
 
 				case PCW_WIDGET_RELOCATE_HQ:
-					SetObjectToPlaceWnd(SPR_CURSOR_HQ, 1, w);
+					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, 1, w);
 					SetTileSelectSize(2, 2);
 					LowerWindowWidget(w, PCW_WIDGET_RELOCATE_HQ);
 					InvalidateWidget(w, PCW_WIDGET_RELOCATE_HQ);
@@ -959,7 +959,7 @@ static void SetupHighScoreEndWindow(Window *w, uint *x, uint *y)
 	*x = max(0, (_screen.width  / 2) - (640 / 2));
 	*y = max(0, (_screen.height / 2) - (480 / 2));
 	for (i = 0; i < 10; i++) // the image is split into 10 50px high parts
-		DrawSprite(WP(w, highscore_d).background_img + i, *x, *y + (i * 50));
+		DrawSprite(WP(w, highscore_d).background_img + i, PAL_NONE, *x, *y + (i * 50));
 }
 
 extern StringID EndGameGetPerformanceTitleFromValue(uint value);

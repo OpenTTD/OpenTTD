@@ -2036,7 +2036,6 @@ const DrawTileSprites *GetStationTileLayout(byte gfx)
 
 static void DrawTile_Station(TileInfo *ti)
 {
-	uint32 image;
 	const DrawTileSeqStruct *dtss;
 	const DrawTileSprites *t = NULL;
 	RailType railtype = GetRailType(ti->tile);
@@ -2045,7 +2044,8 @@ static void DrawTile_Station(TileInfo *ti)
 	const Station *st = NULL;
 	const StationSpec *statspec = NULL;
 	PlayerID owner = GetTileOwner(ti->tile);
-	uint32 palette;
+	SpriteID image;
+	SpriteID palette;
 
 	if (IsValidPlayer(owner)) {
 		palette = PLAYER_SPRITE_COLOR(owner);
@@ -2085,67 +2085,68 @@ static void DrawTile_Station(TileInfo *ti)
 	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationGfx(ti->tile)];
 
 	image = t->ground_sprite;
-	if (HASBIT(image, 31)) {
-		CLRBIT(image, 31);
+	if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
 		image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
 		image += rti->custom_ground_offset;
 	} else {
 		image += rti->total_offset;
 	}
-	if (image & PALETTE_MODIFIER_COLOR) image |= palette;
 
 	// station_land array has been increased from 82 elements to 114
 	// but this is something else. If AI builds station with 114 it looks all weird
-	DrawGroundSprite(image);
+	DrawGroundSprite(image, HASBIT(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
 
 	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
 
 	foreach_draw_tile_seq(dtss, t->seq) {
+		SpriteID pal;
+
 		image = dtss->image;
-		if (HASBIT(image, 30)) {
-			CLRBIT(image, 30);
+		if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += rti->total_offset;
 		} else {
 			image += relocation;
 		}
 
 		if (_display_opt & DO_TRANS_BUILDINGS) {
-			MAKE_TRANSPARENT(image);
-		} else if (image & PALETTE_MODIFIER_COLOR) {
-			image |= palette;
+			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+			pal = PALETTE_TO_TRANSPARENT;
+		} else if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+			pal = palette;
+		} else {
+			pal = dtss->pal;
 		}
 
 		if ((byte)dtss->delta_z != 0x80) {
 			AddSortableSpriteToDraw(
-				image,
+				image, pal,
 				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 				dtss->size_x, dtss->size_y,
 				dtss->size_z, ti->z + dtss->delta_z
 			);
 		} else {
-			AddChildSpriteScreen(image, dtss->delta_x, dtss->delta_y);
+			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y);
 		}
 	}
 }
 
 void StationPickerDrawSprite(int x, int y, RailType railtype, int image)
 {
-	uint32 ormod, img;
+	SpriteID pal, img;
 	const DrawTileSeqStruct *dtss;
 	const DrawTileSprites *t;
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 
-	ormod = PLAYER_SPRITE_COLOR(_local_player);
+	pal = PLAYER_SPRITE_COLOR(_local_player);
 
 	t = &_station_display_datas[image];
 
 	img = t->ground_sprite;
-	if (img & PALETTE_MODIFIER_COLOR) img |= ormod;
-	DrawSprite(img + rti->total_offset, x, y);
+	DrawSprite(img + rti->total_offset, HASBIT(img, PALETTE_MODIFIER_COLOR) ? pal : PAL_NONE, x, y);
 
 	foreach_draw_tile_seq(dtss, t->seq) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
-		DrawSprite((dtss->image | ormod) + rti->total_offset, x + pt.x, y + pt.y);
+		DrawSprite(dtss->image + rti->total_offset, pal, x + pt.x, y + pt.y);
 	}
 }
 

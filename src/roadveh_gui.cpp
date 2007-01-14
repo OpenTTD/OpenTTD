@@ -71,8 +71,8 @@ void DrawRoadVehPurchaseInfo(int x, int y, uint w, EngineID engine_number)
 
 void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
-	PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-	DrawSprite(GetRoadVehImage(v, DIR_W) | pal, x + 14, y + 6);
+	SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+	DrawSprite(GetRoadVehImage(v, DIR_W), pal, x + 14, y + 6);
 
 	if (v->index == selection) {
 		DrawFrameRect(x - 1, y - 1, x + 28, y + 12, 15, FR_BORDERONLY);
@@ -291,7 +291,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* draw the flag plus orders */
-		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, 2, w->widget[5].top + 1);
+		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, 2, w->widget[5].top + 1);
 		DrawStringCenteredTruncated(w->widget[5].left + 8, w->widget[5].right, w->widget[5].top + 1, str, 0);
 		DrawWindowViewport(w);
 	} break;
@@ -542,5 +542,6 @@ void ShowBuildRoadVehWindow(TileIndex tile)
 		w->caption_color = _local_player;
 	}
 }
+
 
 

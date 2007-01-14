@@ -100,7 +100,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 
 	AddTypeToEngines(); // make sure all engines have a type
 
-	SetObjectToPlace(SPR_CURSOR_ZZZ, 0, 0, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, 0, 0, 0);
 
 	_pause = 0;
 	_fast_forward = 0;

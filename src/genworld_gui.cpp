@@ -727,7 +727,7 @@ static void AbortGeneratingWorldCallback(Window *w, bool confirmed)
 	if (confirmed) {
 		AbortGeneratingWorld();
 	} else if (IsGeneratingWorld() && !IsGeneratingWorldAborted()) {
-		SetMouseCursor(SPR_CURSOR_ZZZ);
+		SetMouseCursor(SPR_CURSOR_ZZZ, PAL_NONE);
 	}
 }
 
@@ -737,7 +737,7 @@ static void ShowTerrainProgressProc(Window* w, WindowEvent* e)
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 		case 2:
-			if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
+			if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
 			ShowQuery(
 				STR_GENERATION_ABORT_CAPTION,
 				STR_GENERATION_ABORT_MESSAGE,

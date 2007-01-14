@@ -312,7 +312,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 			for (c = *WP(w, newgrf_d).list, i = 0; c != NULL; c = c->next, i++) {
 				if (i >= w->vscroll.pos && i < w->vscroll.pos + w->vscroll.cap) {
 					const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
-					PalSpriteID pal;
+					SpriteID pal;
 
 					/* Pick a colour */
 					if (HASBIT(c->flags, GCF_NOT_FOUND) || HASBIT(c->flags, GCF_DISABLED)) {
@@ -327,7 +327,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 						pal = PALETTE_TO_BLUE;
 					}
 
-					DrawSprite(SPRITE_PALETTE(SPR_SQUARE | pal), 5, y + 2);
+					DrawSprite(SPR_SQUARE, pal, 5, y + 2);
 					DoDrawString(text, 25, y + 3, WP(w, newgrf_d).sel == c ? 0xC : 0x10);
 					y += 14;
 				}

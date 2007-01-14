@@ -15,11 +15,13 @@ typedef struct DrawTileSeqStruct {
 	byte size_x;
 	byte size_y;
 	byte size_z;
-	uint32 image;
+	SpriteID image;
+	SpriteID pal;
 } DrawTileSeqStruct;
 
 typedef struct DrawTileSprites {
 	SpriteID ground_sprite;
+	SpriteID ground_pal;
 	const DrawTileSeqStruct* seq;
 } DrawTileSprites;
 
@@ -28,8 +30,8 @@ typedef struct DrawTileSprites {
  * Buildings here reference a general type of construction
  */
 typedef struct DrawBuildingsTileStruct {
-	SpriteID ground;
-	SpriteID building;
+	PalSpriteID ground;
+	PalSpriteID building;
 	byte subtile_x:4;
 	byte subtile_y:4;
 	byte width:4;

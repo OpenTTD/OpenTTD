@@ -210,7 +210,7 @@ void DrawTextMessage(void)
 			_screen.height - _textmsg_box.y - count * 13 - 2,
 			_textmsg_box.x + _textmsg_box.width - 1,
 			_screen.height - _textmsg_box.y - 2,
-			0x322 | USE_COLORTABLE // black, but with some alpha for background
+			PALETTE_TO_TRANSPARENT | (1 << USE_COLORTABLE) // black, but with some alpha for background
 		);
 
 	/* Paint the messages starting with the lowest at the bottom */

@@ -212,7 +212,7 @@ static bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 
 void DrawFoundation(TileInfo *ti, uint f)
 {
-	uint32 sprite_base = SPR_SLOPES_BASE - 15;
+	SpriteID sprite_base = SPR_SLOPES_BASE - 15;
 	Slope slope;
 	uint z;
 
@@ -221,26 +221,26 @@ void DrawFoundation(TileInfo *ti, uint f)
 	if (!HasFoundationNE(ti->tile, slope, z)) sprite_base += 44;
 
 	if (IsSteepSlope(ti->tileh)) {
-		uint32 lower_base;
+		SpriteID lower_base;
 
 		// Lower part of foundation
 		lower_base = sprite_base;
 		if (lower_base == SPR_SLOPES_BASE - 15) lower_base = SPR_FOUNDATION_BASE;
 		AddSortableSpriteToDraw(
-			lower_base + (ti->tileh & ~SLOPE_STEEP), ti->x, ti->y, 16, 16, 7, ti->z
+			lower_base + (ti->tileh & ~SLOPE_STEEP), PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z
 		);
 		ti->z += TILE_HEIGHT;
 		ti->tileh = _inclined_tileh[f - 15];
 		if (f < 15 + 8) {
 			// inclined
-			AddSortableSpriteToDraw(sprite_base + f, ti->x, ti->y, 16, 16, 1, ti->z);
+			AddSortableSpriteToDraw(sprite_base + f, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
 			OffsetGroundSprite(31, 9);
 		} else if (f >= 15 + 8 + 4) {
 			// three corners raised
-			uint32 upper = sprite_base + 15 + (f - 15 - 8 - 4) * 2;
+			SpriteID upper = sprite_base + 15 + (f - 15 - 8 - 4) * 2;
 
-			AddSortableSpriteToDraw(upper, ti->x, ti->y, 16, 16, 1, ti->z);
-			AddChildSpriteScreen(upper + 1, 31, 9);
+			AddSortableSpriteToDraw(upper, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
+			AddChildSpriteScreen(upper + 1, PAL_NONE, 31, 9);
 			OffsetGroundSprite(31, 9);
 		} else {
 			// one corner raised
@@ -252,13 +252,13 @@ void DrawFoundation(TileInfo *ti, uint f)
 			// Use the original slope sprites if NW and NE borders should be visible
 			if (sprite_base  == SPR_SLOPES_BASE - 15) sprite_base = SPR_FOUNDATION_BASE;
 
-			AddSortableSpriteToDraw(sprite_base + f, ti->x, ti->y, 16, 16, 7, ti->z);
+			AddSortableSpriteToDraw(sprite_base + f, PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
 			ti->z += TILE_HEIGHT;
 			ti->tileh = SLOPE_FLAT;
 			OffsetGroundSprite(31, 1);
 		} else {
 			// inclined foundation
-			AddSortableSpriteToDraw(sprite_base + f, ti->x, ti->y, 16, 16, 1, ti->z);
+			AddSortableSpriteToDraw(sprite_base + f, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
 			ti->tileh = _inclined_tileh[f - 15];
 			OffsetGroundSprite(31, 9);
 		}

@@ -155,8 +155,8 @@ void InvalidateWindowClassesData(WindowClass cls);
 void DeleteWindowById(WindowClass cls, WindowNumber number);
 void DeleteWindowByClass(WindowClass cls);
 
-void SetObjectToPlaceWnd(CursorID icon, byte mode, Window *w);
-void SetObjectToPlace(CursorID icon, byte mode, WindowClass window_class, WindowNumber window_num);
+void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, byte mode, Window *w);
+void SetObjectToPlace(CursorID icon, SpriteID pal, byte mode, WindowClass window_class, WindowNumber window_num);
 
 void ResetObjectToPlace(void);
 
@@ -164,7 +164,7 @@ bool ScrollWindowTo(int x, int y, Window * w);
 
 bool ScrollMainWindowToTile(TileIndex tile);
 bool ScrollMainWindowTo(int x, int y);
-void DrawSprite(uint32 img, int x, int y);
+void DrawSprite(SpriteID img, SpriteID pal, int x, int y);
 bool EnsureNoVehicle(TileIndex tile);
 bool EnsureNoVehicleOnGround(TileIndex tile);
 void MarkAllViewportsDirty(int left, int top, int right, int bottom);
