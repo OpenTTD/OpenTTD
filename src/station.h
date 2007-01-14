@@ -10,7 +10,19 @@
 #include "tile.h"
 #include "newgrf_station.h"
 
+static const StationID INVALID_STATION = 0xFFFF;
+
 typedef struct GoodsEntry {
+	GoodsEntry() :
+		waiting_acceptance(0),
+		days_since_pickup(0),
+		rating(175),
+		enroute_from(INVALID_STATION),
+		last_speed(0),
+		last_age(255),
+		feeder_profit(0)
+	{}
+
 	uint16 waiting_acceptance;
 	byte days_since_pickup;
 	byte rating;
@@ -29,8 +41,6 @@ typedef enum RoadStopType {
 enum {
 	ROAD_STOP_LIMIT = 16,
 };
-
-static const StationID INVALID_STATION = 0xFFFF;
 
 typedef struct RoadStop {
 	TileIndex xy;

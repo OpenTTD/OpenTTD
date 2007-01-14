@@ -52,16 +52,6 @@ Station::Station(TileIndex tile)
 
 	last_vehicle_type = VEH_Invalid;
 
-	for (GoodsEntry *ge = goods; ge != endof(goods); ge++) {
-		ge->waiting_acceptance = 0;
-		ge->days_since_pickup = 0;
-		ge->enroute_from = INVALID_STATION;
-		ge->rating = 175;
-		ge->last_speed = 0;
-		ge->last_age = 0xFF;
-		ge->feeder_profit = 0;
-	}
-
 	random_bits = Random();
 	waiting_triggers = 0;
 
