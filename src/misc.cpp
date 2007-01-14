@@ -266,16 +266,18 @@ void InitializeLandscapeVariables(bool only_constants)
 
 int FindFirstBit(uint32 value)
 {
-	// This is much faster than the one that was before here.
-	//  Created by Darkvater.. blame him if it is wrong ;)
-	// Btw, the macro FINDFIRSTBIT is better to use when your value is
-	//  not more than 128.
+	// The macro FIND_FIRST_BIT is better to use when your value is
+	// not more than 128.
 	byte i = 0;
-	if (value & 0xffff0000) { value >>= 16; i += 16; }
-	if (value & 0x0000ff00) { value >>= 8;  i +=  8; }
-	if (value & 0x000000f0) { value >>= 4;  i +=  4; }
-	if (value & 0x0000000c) { value >>= 2;  i +=  2; }
-	if (value & 0x00000002) { i += 1; }
+
+	if (value == 0) return 0;
+
+	if ((value & 0x0000ffff) == 0) { value >>= 16; i += 16; }
+	if ((value & 0x000000ff) == 0) { value >>= 8;  i += 8;  }
+	if ((value & 0x0000000f) == 0) { value >>= 4;  i += 4;  }
+	if ((value & 0x00000003) == 0) { value >>= 2;  i += 2;  }
+	if ((value & 0x00000001) == 0) { i += 1; }
+
 	return i;
 }
 
