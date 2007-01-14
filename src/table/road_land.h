@@ -1,35 +1,35 @@
 /* $Id$ */
 
-#define TILE_SEQ_LINE(img, dx, dy, sx, sy) { dx, dy, 0, sx, sy, 20, img },
-#define TILE_SEQ_END() { 0, 0, 0, 0, 0, 0, 0 }
+#define TILE_SEQ_LINE(img, pal, dx, dy, sx, sy) { dx, dy, 0, sx, sy, 20, img, pal },
+#define TILE_SEQ_END() { 0, 0, 0, 0, 0, 0, 0, 0 }
 
 static const DrawTileSeqStruct _road_depot_NE[] = {
-	TILE_SEQ_LINE(0x584 | PALETTE_MODIFIER_COLOR, 0, 15, 16, 1)
+	TILE_SEQ_LINE(0x584 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 0, 15, 16, 1)
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _road_depot_SE[] = {
-	TILE_SEQ_LINE(0x580, 0, 0, 1, 16)
-	TILE_SEQ_LINE(0x581 | PALETTE_MODIFIER_COLOR, 15, 0, 1, 16)
+	TILE_SEQ_LINE(0x580, PAL_NONE, 0, 0, 1, 16)
+	TILE_SEQ_LINE(0x581 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 15, 0, 1, 16)
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _road_depot_SW[] = {
-	TILE_SEQ_LINE(0x582, 0, 0, 16, 1)
-	TILE_SEQ_LINE(0x583 | PALETTE_MODIFIER_COLOR, 0, 15, 16, 1)
+	TILE_SEQ_LINE(0x582, PAL_NONE, 0, 0, 16, 1)
+	TILE_SEQ_LINE(0x583 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 0, 15, 16, 1)
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _road_depot_NW[] = {
-	TILE_SEQ_LINE(0x585 | PALETTE_MODIFIER_COLOR, 15, 0, 1, 16)
+	TILE_SEQ_LINE(0x585 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 15, 0, 1, 16)
 	TILE_SEQ_END()
 };
 
 static const DrawTileSprites _road_depot[] = {
-	{ 0xA4A, _road_depot_NE },
-	{ 0xA4A, _road_depot_SE },
-	{ 0xA4A, _road_depot_SW },
-	{ 0xA4A, _road_depot_NW }
+	{ 0xA4A, PAL_NONE, _road_depot_NE },
+	{ 0xA4A, PAL_NONE, _road_depot_SE },
+	{ 0xA4A, PAL_NONE, _road_depot_SW },
+	{ 0xA4A, PAL_NONE, _road_depot_NW }
 };
 
 #undef TILE_SEQ_BEGIN

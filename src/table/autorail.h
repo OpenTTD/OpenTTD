@@ -9,7 +9,7 @@
  */
 
 // mark invalid tiles red
-#define RED(c) c | PALETTE_SEL_TILE_RED
+#define RED(c) -c
 
 // table maps each of the six rail directions and tileh combinations to a sprite
 // invalid entries are required to make sure that this array can be quickly accessed

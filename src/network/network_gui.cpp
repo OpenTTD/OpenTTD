@@ -298,13 +298,13 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				// only draw icons if the server is online
 				if (cur_item->online) {
 					// draw a lock if the server is password protected.
-					if (cur_item->info.use_password) DrawSprite(SPR_LOCK, w->widget[8].left + 5, y - 1);
+					if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, w->widget[8].left + 5, y - 1);
 
 					// draw red or green icon, depending on compatibility with server.
-					DrawSprite(SPR_BLOT | (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), w->widget[8].left + 15, y);
+					DrawSprite(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), w->widget[8].left + 15, y);
 
 					// draw flag according to server language
-					DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, w->widget[8].left + 25, y);
+					DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, PAL_NONE, w->widget[8].left + 25, y);
 				}
 
 				cur_item = cur_item->next;
@@ -845,11 +845,11 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 				GfxFillRect(11, y - 1, 154, y + 10, 10); // show highlighted item with a different colour
 
 			DoDrawStringTruncated(_network_player_info[company].company_name, 13, y, 16, 135 - 13);
-			if (_network_player_info[company].use_password != 0) DrawSprite(SPR_LOCK, 135, y);
+			if (_network_player_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, 135, y);
 
 			/* If the company's income was positive puts a green dot else a red dot */
 			if (_network_player_info[company].income >= 0) income = true;
-			DrawSprite(SPR_BLOT | (income ? PALETTE_TO_GREEN : PALETTE_TO_RED), 145, y);
+			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, 145, y);
 
 			pos++;
 			y += NET_PRC__SIZE_OF_ROW;
