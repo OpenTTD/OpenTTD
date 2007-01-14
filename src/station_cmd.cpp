@@ -35,6 +35,8 @@
 #include "date.h"
 #include "helpers.hpp"
 
+#include <memory>     // for auto_ptr
+
 typedef enum StationRectModes
 {
 	RECT_MODE_TEST = 0,
