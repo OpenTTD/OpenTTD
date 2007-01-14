@@ -131,11 +131,29 @@ const iso_grf iso_codes[] = {
  * Each of those elements represent the string,
  * but according to a different lang.
  */
-typedef struct GRFText {
-	struct GRFText *next;
-	byte langid;
-	char text[VARARRAY_SIZE];
-} GRFText;
+struct GRFText {
+	public:
+		static GRFText* New(byte langid, const char* text)
+		{
+			return new(strlen(text) + 1) GRFText(langid, text);
+		}
+
+	private:
+		GRFText(byte langid_, const char* text_) : next(NULL), langid(langid_)
+		{
+			strcpy(text, text_);
+		}
+
+		void* operator new(size_t size, size_t extra)
+		{
+			return ::operator new(size + extra);
+		}
+
+	public:
+		GRFText *next;
+		byte langid;
+		char text[VARARRAY_SIZE];
+};
 
 
 /**
@@ -265,7 +283,6 @@ char *TranslateTTDPatchCodes(const char *str)
 StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool new_scheme, const char *text_to_add, StringID def_string)
 {
 	char *translatedtext;
-	GRFText *newtext;
 	uint id;
 
 	/* When working with the old language scheme (grf_version is less than 7) and
@@ -297,10 +314,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 
 	translatedtext = TranslateTTDPatchCodes(text_to_add);
 
-	newtext = (GRFText*)malloc(sizeof(*newtext) + strlen(translatedtext) + 1);
-	newtext->next   = NULL;
-	newtext->langid = langid_to_add;
-	strcpy(newtext->text, translatedtext);
+	GRFText *newtext = GRFText::New(langid_to_add, translatedtext);
 
 	free(translatedtext);
 
@@ -321,7 +335,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 			if (text->langid != langid_to_add) continue;
 			newtext->next = text->next;
 			*ptext = newtext;
-			free(text);
+			delete text;
 			replaced = true;
 			break;
 		}
@@ -426,7 +440,7 @@ void CleanUpStrings(void)
 		GRFText *grftext = _grf_text[id].textholder;
 		while (grftext != NULL) {
 			GRFText *grftext2 = grftext->next;
-			free(grftext);
+			delete grftext;
 			grftext = grftext2;
 		}
 		_grf_text[id].grfid      = 0;
