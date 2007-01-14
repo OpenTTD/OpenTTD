@@ -43,6 +43,7 @@ extern "C" {
 		yapf,
 		freetype,
 		sl,
+		station,
 	};
 #endif /* NO_VARARG_MACRO */
 
@@ -77,6 +78,7 @@ extern "C" {
 	extern int _debug_yapf_level;
 	extern int _debug_freetype_level;
 	extern int _debug_sl_level;
+	extern int _debug_station_level;
 
 	#if !defined(NO_VARARG_MACRO)
 		void CDECL debug(const char *dbg, ...);

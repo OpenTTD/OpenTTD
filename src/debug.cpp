@@ -23,6 +23,7 @@ int _debug_npf_level;
 int _debug_yapf_level;
 int _debug_freetype_level;
 int _debug_sl_level;
+int _debug_station_level;
 
 
 typedef struct DebugLevel {
@@ -46,6 +47,7 @@ typedef struct DebugLevel {
 	DEBUG_LEVEL(yapf),
 	DEBUG_LEVEL(freetype),
 	DEBUG_LEVEL(sl),
+	DEBUG_LEVEL(station),
 	};
 #undef DEBUG_LEVEL
 
