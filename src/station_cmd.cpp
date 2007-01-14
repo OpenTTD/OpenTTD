@@ -1786,7 +1786,7 @@ int32 CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (st == NULL) return CMD_ERROR;
 
 	/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
-	std::auto_ptr<Station> st_auto_delete = std::auto_ptr<Station>(st);
+	std::auto_ptr<Station> st_auto_delete(st);
 
 	st->town = ClosestTownFromTile(tile, (uint)-1);
 	st->sign.width_1 = 0;
