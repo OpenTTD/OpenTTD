@@ -2957,6 +2957,7 @@ extern const SaveLoad _common_veh_desc[] = {
 	    SLE_VAR(Vehicle, cargo_days,           SLE_UINT8),
 	SLE_CONDVAR(Vehicle, cargo_source,         SLE_FILE_U8  | SLE_VAR_U16,  0, 6),
 	SLE_CONDVAR(Vehicle, cargo_source,         SLE_UINT16,                  7, SL_MAX_VERSION),
+	SLE_CONDVAR(Vehicle, cargo_source_xy,      SLE_UINT32,                 44, SL_MAX_VERSION),
 	    SLE_VAR(Vehicle, cargo_cap,            SLE_UINT16),
 	    SLE_VAR(Vehicle, cargo_count,          SLE_UINT16),
 

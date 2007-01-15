@@ -195,6 +195,7 @@ struct Vehicle {
 	CargoID cargo_type;      // type of cargo this vehicle is carrying
 	byte cargo_days;         // how many days have the pieces been in transit
 	StationID cargo_source;  // source of cargo
+	TileIndex cargo_source_xy; //< stores the Tile where the source station is located, in case it is removed
 	uint16 cargo_cap;        // total capacity
 	uint16 cargo_count;      // how many pieces are used
 	byte cargo_subtype;      ///< Used for livery refits (NewGRF variations)

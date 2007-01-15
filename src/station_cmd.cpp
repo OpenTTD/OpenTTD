@@ -2533,6 +2533,7 @@ static void UpdateStationWaiting(Station *st, int type, uint amount)
 
 	st->goods[type].enroute_time = 0;
 	st->goods[type].enroute_from = st->index;
+	st->goods[type].enroute_from_xy = st->xy;
 	InvalidateWindow(WC_STATION_VIEW, st->index);
 	st->MarkTilesDirty();
 }
@@ -2748,6 +2749,7 @@ void BuildOilRig(TileIndex tile)
 		st->goods[j].waiting_acceptance = 0;
 		st->goods[j].days_since_pickup = 0;
 		st->goods[j].enroute_from = INVALID_STATION;
+		st->goods[j].enroute_from_xy = INVALID_TILE;
 		st->goods[j].rating = 175;
 		st->goods[j].last_speed = 0;
 		st->goods[j].last_age = 255;
@@ -2958,6 +2960,7 @@ static const SaveLoad _goods_desc[] = {
 	    SLE_VAR(GoodsEntry, rating,             SLE_UINT8),
 	SLE_CONDVAR(GoodsEntry, enroute_from,       SLE_FILE_U8 | SLE_VAR_U16,  0, 6),
 	SLE_CONDVAR(GoodsEntry, enroute_from,       SLE_UINT16,                 7, SL_MAX_VERSION),
+	SLE_CONDVAR(GoodsEntry, enroute_from_xy,    SLE_UINT32,                44, SL_MAX_VERSION),
 	    SLE_VAR(GoodsEntry, enroute_time,       SLE_UINT8),
 	    SLE_VAR(GoodsEntry, last_speed,         SLE_UINT8),
 	    SLE_VAR(GoodsEntry, last_age,           SLE_UINT8),

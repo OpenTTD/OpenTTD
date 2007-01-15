@@ -1213,7 +1213,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 	return false;
 }
 
-static int32 DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, byte days_in_transit)
+static int32 DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, TileIndex source_tile, byte days_in_transit)
 {
 	bool subsidised;
 	Station *s_from, *s_to;
@@ -1243,7 +1243,7 @@ static int32 DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	DeliverGoodsToIndustry(s_to->xy, cargo_type, num_pieces);
 
 	// Determine profit
-	profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(s_from->xy, s_to->xy), days_in_transit, cargo_type);
+	profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(source_tile, s_to->xy), days_in_transit, cargo_type);
 
 	// Modify profit if a subsidy is in effect
 	if (subsidised) {
@@ -1376,7 +1376,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 
 				unloading_time += v->cargo_count; /* TTDBUG: bug in original TTD */
 				if (just_arrived && !HASBIT(v->load_status, LS_CARGO_PAID_FOR)) {
-					profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_days);
+					profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_source_xy, v->cargo_days);
 					SETBIT(v->load_status, LS_CARGO_PAID_FOR);
 				}
 				result |= 1;
@@ -1388,7 +1388,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 				if (just_arrived && (u->current_order.flags & OF_TRANSFER) && !HASBIT(v->load_status, LS_CARGO_PAID_FOR)) {
 					v_profit = GetTransportedGoodsIncome(
 						v->cargo_count,
-						DistanceManhattan(GetStation(v->cargo_source)->xy, GetStation(last_visited)->xy),
+						DistanceManhattan(v->cargo_source_xy, GetStation(last_visited)->xy),
 						v->cargo_days,
 						v->cargo_type) * 3 / 2;
 
@@ -1402,12 +1402,15 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 					// No goods waiting at station
 					ge->enroute_time = v->cargo_days;
 					ge->enroute_from = v->cargo_source;
+					ge->enroute_from_xy = v->cargo_source_xy;
 				} else {
 					// Goods already waiting at station. Set counters to the worst value.
-					if (v->cargo_days >= ge->enroute_time)
-						ge->enroute_time = v->cargo_days;
-					if (last_visited != ge->enroute_from)
+					if (v->cargo_days >= ge->enroute_time) ge->enroute_time = v->cargo_days;
+
+					if (last_visited != ge->enroute_from) {
 						ge->enroute_from = v->cargo_source;
+						ge->enroute_from_xy = v->cargo_source_xy;
+					}
 				}
 				// Update amount of waiting cargo
 				SB(ge->waiting_acceptance, 0, 12, min(amount_unloaded + t, 0xFFF));
@@ -1451,8 +1454,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 			int cargoshare;
 			int feeder_profit_share;
 
-			if (v->cargo_count == 0)
-				TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
+			if (v->cargo_count == 0) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
 
 			/* Skip loading this vehicle if another train/vehicle is already handling
 			 * the same cargo type at this station */
@@ -1482,6 +1484,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 
 			// And record the source of the cargo, and the days in travel.
 			v->cargo_source = ge->enroute_from;
+			v->cargo_source_xy = ge->enroute_from_xy;
 			v->cargo_days = ge->enroute_time;
 			result |= 2;
 			st->last_vehicle_type = v->type;

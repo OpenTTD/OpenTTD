@@ -1689,6 +1689,19 @@ bool AfterLoadGame(void)
 		} END_TILE_LOOP(tile_cur, MapSizeX(), MapSizeY(), 0)
 	}
 
+	if (CheckSavegameVersion(44)) {
+		Vehicle *v;
+		/* If we remove a station while cargo from it is still enroute, payment calculation will assume
+		 * 0, 0 to be the origin of the cargo, resulting in very high payments usually. v->cargo_source_xy
+		 * stores the coordinates, preserving them even if the station is removed. However, if a game is loaded
+		 * where this situation exists, the cargo-source information is lost. in this case, we set the origin
+		 * to the current tile of the vehicle to prevent excessive profits
+		 */
+		FOR_ALL_VEHICLES(v) {
+			v->cargo_source_xy = IsValidStationID(v->cargo_source) ? GetStation(v->cargo_source)->xy : v->tile;
+		}
+	}
+
 	return true;
 }
 

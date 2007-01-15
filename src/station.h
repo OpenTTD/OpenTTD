@@ -18,6 +18,7 @@ typedef struct GoodsEntry {
 		days_since_pickup(0),
 		rating(175),
 		enroute_from(INVALID_STATION),
+		enroute_from_xy(INVALID_TILE),
 		last_speed(0),
 		last_age(255),
 		feeder_profit(0)
@@ -27,6 +28,7 @@ typedef struct GoodsEntry {
 	byte days_since_pickup;
 	byte rating;
 	StationID enroute_from;
+	TileIndex enroute_from_xy;
 	byte enroute_time;
 	byte last_speed;
 	byte last_age;
