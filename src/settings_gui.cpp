@@ -585,6 +585,7 @@ static const char *_patches_construction[] = {
 	"always_small_airport",
 	"drag_signals_density",
 	"oil_refinery_limit",
+	"semaphore_build_before",
 };
 
 static const char *_patches_stations[] = {

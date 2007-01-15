@@ -186,6 +186,7 @@ typedef struct Patches {
 	uint8 map_y;
 
 	byte drag_signals_density;          // many signals density
+	Year semaphore_build_before;        // Build semaphore signals automatically before this year
 	bool ainew_active;                  // Is the new AI active?
 	bool ai_in_multiplayer;             // Do we allow AIs in multiplayer
 

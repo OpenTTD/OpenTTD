@@ -1292,6 +1292,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, signal_side,                   N, 0,  true,        STR_CONFIG_PATCHES_SIGNALSIDE,          RedrawScreen),
 	SDT_BOOL(Patches, always_small_airport,          0, 0, false,        STR_CONFIG_PATCHES_SMALL_AIRPORTS,      NULL),
 	 SDT_VAR(Patches, drag_signals_density,SLE_UINT8,S, 0,  4, 1, 20, 0, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY,NULL),
+	 SDT_VAR(Patches, semaphore_build_before,SLE_INT32, S, NC, 1975, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE, NULL),
 
 	/***************************************************************************/
 	/* Vehicle section of the GUI-configure patches window */

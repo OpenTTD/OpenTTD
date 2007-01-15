@@ -7,6 +7,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
+#include "date.h"
 #include "map.h"
 #include "tile.h"
 #include "window.h"
@@ -181,7 +182,13 @@ static void GenericPlaceSignals(TileIndex tile)
 	}
 
 	if (!_remove_button_clicked) {
-		DoCommandP(tile, i + (_ctrl_pressed ? 8 : 0), 0, CcPlaySound1E,
+		uint32 p1 = _ctrl_pressed ? 8 : 0;
+		if (!HasSignals(tile) && _cur_year < _patches.semaphore_build_before) {
+			/* Reverse the logic, so semaphores are normally built, and light
+			 * signals can be built with ctrl held down. */
+			p1 = _ctrl_pressed ? 0 : 8;
+		}
+		DoCommandP(tile, i + p1, 0, CcPlaySound1E,
 			CMD_BUILD_SIGNALS | CMD_AUTO | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE));
 	} else {
 		DoCommandP(tile, i, 0, CcPlaySound1E,
@@ -360,10 +367,17 @@ static void HandleAutoSignalPlacement(void)
 {
 	TileHighlightData *thd = &_thd;
 	byte trackstat = thd->drawstyle & 0xF; // 0..5
+	byte semaphore = _ctrl_pressed ? 1 : 0;
 
 	if (thd->drawstyle == HT_RECT) { // one tile case
 		GenericPlaceSignals(TileVirtXY(thd->selend.x, thd->selend.y));
 		return;
+	}
+
+	if (!HasSignals(TileVirtXY(thd->selstart.x, thd->selstart.y)) && _cur_year < _patches.semaphore_build_before) {
+		/* Reverse the logic, so semaphores are normally built, and light
+		 * signals can be built with ctrl held down. */
+		semaphore = _ctrl_pressed ? 0 : 1;
 	}
 
 	// _patches.drag_signals_density is given as a parameter such that each user in a network
@@ -371,7 +385,7 @@ static void HandleAutoSignalPlacement(void)
 	DoCommandP(
 		TileVirtXY(thd->selstart.x, thd->selstart.y),
 		TileVirtXY(thd->selend.x, thd->selend.y),
-		(_ctrl_pressed ? 1 << 3 : 0) | (trackstat << 4) | (_patches.drag_signals_density << 24),
+		(semaphore << 3) | (trackstat << 4) | (_patches.drag_signals_density << 24),
 		CcPlaySound1E,
 		_remove_button_clicked ?
 			CMD_REMOVE_SIGNAL_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
