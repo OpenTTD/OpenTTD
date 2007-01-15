@@ -2915,6 +2915,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Ingen passende fil funnet
 STR_NEWGRF_DISABLED                                             :{RED}Deaktivert
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchende fil ikke funnet(kompatibel GRF lastet)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible GRF(er) lastet for manglene filer
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF fil(er) har blitt avslått
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mangler GRF fil(er) for å kunne laste spill
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanlig valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}

@@ -2,7 +2,8 @@
 ##ownname Português (BR)
 ##isocode pt_BR.UTF-8
 ##plural 2
-##gender masculino feminino neutro
+##case m f n
+##gender m f n
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -2916,6 +2917,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossí
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Arquivo correspondente não encontrado
 STR_NEWGRF_DISABLED                                             :{RED}Desativado
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo procurado não encontrado (carregado compatível com GRF)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Carregado compativel com GRF(s)  por falta de arquivo
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}arquivo(s) GRF em falta foram desativados
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Falta(m) arquivo(s) GRF para carregar o jogo
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de câmbio: {ORANGE}{CURRENCY} = £ {COMMA}

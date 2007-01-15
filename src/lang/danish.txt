@@ -821,7 +821,7 @@ STR_02EB_TOWN_NAMES                                             :{BLACK}Bynavne
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Vælg stil for bynavne
 
-STR_02F4_AUTOSAVE                                               :{BLACK}Autogem
+STR_02F4_AUTOSAVE                                               :{BLACK}Automatisk gemning
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Vælg interval imellem automatisk gemning
 STR_02F7_OFF                                                    :Fra
@@ -957,8 +957,8 @@ STR_MONTH_DEC                                                   :december
 
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Retning mod {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Retning mod {STATION}, {VELOCITY}
-STR_NO_ORDERS                                                   :{LTBLUE}Ingen ordre
-STR_NO_ORDERS_VEL                                               :{LTBLUE}Ingen ordre, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}Ingen ordrer
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Ingen ordrer, {VELOCITY}
 
 STR_PASSENGERS                                                  :passagerer
 STR_BAGS                                                        :sække
@@ -981,21 +981,21 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA} har for få ordrer i sin køreplan
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA} har for få ordrer i sin odreliste
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tog {COMMA} har en ugyldig ordre
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har dobbelt ordre
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har dobbelt ordrer
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har en ugyldig station i sin køreplan
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Køretøj {COMMA} har for få ordre i sin køreplan
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Køretøj {COMMA} har for få ordrer i sin køreplan
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Køretøj {COMMA} har en ugyldig ordre
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Køretøj {COMMA} har dobbelt ordre
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Køretøj {COMMA} har dobbelt ordrer
 STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Køretøj {COMMA} har en ugyldig station i sin køreplan
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skib {COMMA} har for få ordrer i sin sejlplan
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skib {COMMA} har for få ordrer i sin ordreliste
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skib {COMMA} har en ugyldig ordre
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skib {COMMA} har dobbelt ordre
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skib {COMMA} har dobbelt ordrer
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skib {COMMA} har en ugyldig havn i sin sejlplan
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Fly {COMMA} har for få ordre i sin flyveplan
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Fly {COMMA} har for få ordrer i sin ordreliste
 STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Fly {COMMA} har en ugyldig ordre
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COMMA} har dobbelt ordre
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COMMA} har dobbelt ordrer
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig lufthavn i sin flyveplan
 # end of order system
 
@@ -1377,7 +1377,7 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Genopfri
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}SELSKABSINFO
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Selskabs navn:  {WHITE}{STRING}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Selskabsnavn:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Grundlagt:  {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}Virksomhedens værdi:  {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nuværende beholdning:  {WHITE}{CURRENCY64}
@@ -2059,9 +2059,9 @@ STR_7004_NEW_FACE                                               :{BLACK}Nyt ansi
 STR_7005_COLOR_SCHEME                                           :{BLACK}Farvetema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Farvetema:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nyt farvetema
-STR_7008_COMPANY_NAME                                           :{BLACK}Selskabs navn
+STR_7008_COMPANY_NAME                                           :{BLACK}Selskabsnavn
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Direktørnavn
-STR_700A_COMPANY_NAME                                           :Selskabs navn
+STR_700A_COMPANY_NAME                                           :Selskabsnavn
 STR_700B_PRESIDENT_S_NAME                                       :Direktørens navn
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Kan ikke ændre selskabets navn...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Kan ikke ændre direktørens navn...
@@ -2542,10 +2542,10 @@ STR_8826_GO_TO                                                  :{BLACK}Gå til
 STR_8827_FULL_LOAD                                              :{BLACK}Fuld last
 STR_8828_UNLOAD                                                 :{BLACK}Aflæs
 STR_REFIT                                                       :{BLACK}Ombyg
-STR_REFIT_TIP                                                   :{BLACK}Vælg hvilken lasttype der skal ombygges til i denne ordre. CTRL+klik for at fjerne ombygningsinstruktion
+STR_REFIT_TIP                                                   :{BLACK}Vælg hvilken lasttype der skal ombygges til i denne ordre. CTRL-klik for at fjerne ombygningsinstruktion
 STR_REFIT_ORDER                                                 :(Ombyg til {STRING})
-STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordre)
-STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Slut på ordre - -
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordrer)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Slut på ordrer - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Service
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Kan ikke bygge jernbanekøretøj...
@@ -2555,8 +2555,8 @@ STR_882E                                                        :{WHITE}{VEHICLE
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Læsser / Aflæsser
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget skal være stoppet inde i en remise
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kan ikke sende toget til remise...
-STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ikke mere plads til flere ordre
-STR_8832_TOO_MANY_ORDERS                                        :{WHITE}For mange ordre
+STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ikke mere plads til ordrer
+STR_8832_TOO_MANY_ORDERS                                        :{WHITE}For mange ordrer
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikke indsætte ny ordre...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan ikke slette denne ordre...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikke ændre denne ordre...
@@ -2590,7 +2590,7 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Vis deta
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Vis detaljer omkring toget/vognene
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Vis kapaciteten af hver togvogn
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Vis total lasteevne på toget, fordelt på lasttyper
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordreliste - klik på en ordre for at markere den
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordreliste - klik på en ordre for at markere den. CTRL-klik for at centrere skærmen over stationen
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Spring over den nuværende ordre og gå til den næste
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Slet den markerede ordre
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Lav den markerede ordre til en "uden stop" ordre
@@ -2772,8 +2772,8 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Kan ikke
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} flyhangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nyt fly
 STR_CLONE_AIRCRAFT                                              :{BLACK}Klon fly
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Dette vil bygge en kopi af et fly. Control-click vil dele ordre
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dette vil bygge en kopi af et fly. Klik på denne knap, så på et fly indeni eller udenfor hangaren. CTRL+klik vil dele ordrer
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Dette vil bygge en kopi af et fly. CTRL-klik vil dele ordrer
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dette vil bygge en kopi af et fly. Klik på denne knap, så på et fly indeni eller udenfor hangaren. CTRL-klik vil dele ordrer
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nyt fly
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Byg et fly
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan ikke bygge fly...
@@ -2810,7 +2810,7 @@ STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrer 
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Flytypeliste - klik på en flytype for mere information
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Byg det markerede fly
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Nuværende opførsel - klik her for at starte/stoppe flyet
-STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Vis flyets ordre
+STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Vis flyets ordrer
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrer skærmen over placeringen af flyet
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send flyet til en hangar. CTRL+klik vil kun servicere
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Vis detaljet omkring flyet

@@ -624,8 +624,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Нама
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Генерирай случаен терен
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Изчисти терена
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Изчисти терена
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Използване на височинна карта
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Използване на височинна карта
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Ползвай топо-карта
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Ползвай топо-карта
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Желаете ли да изчистите терена?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Създаване на терен
 STR_022F_TOWN_GENERATION                                        :{BLACK}Създаване на град
@@ -728,13 +728,13 @@ STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Пост
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Избери пустинен терен.{}Задръж CTRL за да го премахнеш.
 STR_CREATE_LAKE                                                 :{BLACK}Посочване на водна зона.{}Ще наводни съседните ако са на морското ниво
 STR_0290_DELETE                                                 :{BLACK}Изтрий
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Премахни този град
-STR_0292_SAVE_SCENARIO                                          :
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Премахни напълно града
+STR_0292_SAVE_SCENARIO                                          :Запис на сценарий
 STR_0293_LOAD_SCENARIO                                          :Зареждане на сценарий
 STR_0294_QUIT_EDITOR                                            :Изход от редактора
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Изход
-STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Запис и зареждане на сценарий, затваряне редактора, изход
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Запис, зареждане на сценарий, затваряне на редактора, изход
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Зареждане на сценарии
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Запис на сценарии
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Играене на сценарий
@@ -1927,8 +1927,8 @@ STR_5028_TUBULAR_ROAD_BRIDGE                                    :Тръбови�
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Обект на пътя
 STR_5801_TRANSMITTER                                            :Предавател
 STR_5802_LIGHTHOUSE                                             :Фар
-STR_5803_COMPANY_HEADQUARTERS                                   :Централен офис
-STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...централен офис е на пътя
+STR_5803_COMPANY_HEADQUARTERS                                   :централа
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...централата е на пътя
 STR_5805_COMPANY_OWNED_LAND                                     :Земя, притежавана от компанията
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Земята не може да бъде закупена...
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...вие вече притежавате това!
@@ -1985,10 +1985,10 @@ STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Ниво
 STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Запис
 
 ############ range for difficulty levels starts
-STR_6801_EASY                                                   :{BLACK}Лесно
-STR_6802_MEDIUM                                                 :{BLACK}Средно
-STR_6803_HARD                                                   :{BLACK}Трудно
-STR_6804_CUSTOM                                                 :{BLACK}По твой избор
+STR_6801_EASY                                                   :{BLACK}лесно
+STR_6802_MEDIUM                                                 :{BLACK}средно
+STR_6803_HARD                                                   :{BLACK}трудно
+STR_6804_CUSTOM                                                 :{BLACK}по поръчка
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
@@ -2001,11 +2001,11 @@ STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Нач�
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Оперативни разходи на превозните средства: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Скорост на строене на конкурентите: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Интелигентност на конкурентите: {ORANGE}{STRING}
-STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Повреди на превозното средство: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Повреди на превозните средства: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Множител на субсидиите: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Цена на строителството: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Тип на терена: {ORANGE}{STRING}
-STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Съотношение морета/езера: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Количество морета/езера: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Икономика: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Обръщане на влаковете: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Бедствия: {ORANGE}{STRING}
@@ -2013,60 +2013,60 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Отн�
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Николко
-STR_6816_LOW                                                    :Ниско/Малко
-STR_6817_NORMAL                                                 :Нормално
-STR_6818_HIGH                                                   :Много
+STR_6816_LOW                                                    :малко
+STR_6817_NORMAL                                                 :нормално
+STR_6818_HIGH                                                   :много
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
-STR_681B_VERY_SLOW                                              :Много бавно
-STR_681C_SLOW                                                   :Бавно
-STR_681D_MEDIUM                                                 :Средно
-STR_681E_FAST                                                   :Бързо
-STR_681F_VERY_FAST                                              :Много бързо
+STR_681B_VERY_SLOW                                              :много бавно
+STR_681C_SLOW                                                   :бавно
+STR_681D_MEDIUM                                                 :средно
+STR_681E_FAST                                                   :бързо
+STR_681F_VERY_FAST                                              :много бързо
 STR_VERY_LOW                                                    :Много нисък
 STR_6820_LOW                                                    :Ниска/Малка
-STR_6821_MEDIUM                                                 :Средна
-STR_6822_HIGH                                                   :Висока/Голяма
-STR_6823_NONE                                                   :Без
-STR_6824_REDUCED                                                :Намалени
-STR_6825_NORMAL                                                 :Нормални
+STR_6821_MEDIUM                                                 :средна
+STR_6822_HIGH                                                   :висока/голяма
+STR_6823_NONE                                                   :без
+STR_6824_REDUCED                                                :намалени
+STR_6825_NORMAL                                                 :нормални
 STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
 STR_6829_X4                                                     :x4
-STR_682A_VERY_FLAT                                              :Изключително равнинен
-STR_682B_FLAT                                                   :Равнинен
-STR_682C_HILLY                                                  :Хълмист
-STR_682D_MOUNTAINOUS                                            :Планински
-STR_682E_STEADY                                                 :Стабилна
-STR_682F_FLUCTUATING                                            :Променлива
-STR_6830_IMMEDIATE                                              :Веднага
+STR_682A_VERY_FLAT                                              :много равнинен
+STR_682B_FLAT                                                   :равнинен
+STR_682C_HILLY                                                  :хълмист
+STR_682D_MOUNTAINOUS                                            :планински
+STR_682E_STEADY                                                 :стабилна
+STR_682F_FLUCTUATING                                            :променлива
+STR_6830_IMMEDIATE                                              :веднага
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 месеца след играча
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 месеца след играча
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 месеца след играча
-STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :В края на линията и на станциите
-STR_6835_AT_END_OF_LINE_ONLY                                    :Само в края на линията
-STR_6836_OFF                                                    :Изключено
-STR_6837_ON                                                     :Включено
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :в края на линията и на станциите
+STR_6835_AT_END_OF_LINE_ONLY                                    :само в края на линията
+STR_6836_OFF                                                    :изключено
+STR_6837_ON                                                     :включено
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Покажи класирането
-STR_6839_PERMISSIVE                                             :Разрешаващи
-STR_683A_TOLERANT                                               :Толерантни
-STR_683B_HOSTILE                                                :Враждебни
+STR_6839_PERMISSIVE                                             :разрешаващи
+STR_683A_TOLERANT                                               :толерантни
+STR_683B_HOSTILE                                                :враждебни
 
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Играч {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Ново лице
-STR_7005_COLOR_SCHEME                                           :{BLACK}Цветова схема
-STR_7006_COLOR_SCHEME                                           :{GOLD}Цветова гама:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Нова цветова гама
-STR_7008_COMPANY_NAME                                           :{BLACK}Име на Компанията
-STR_7009_PRESIDENT_NAME                                         :{BLACK}Име на Управителят
-STR_700A_COMPANY_NAME                                           :Име на Компанията
-STR_700B_PRESIDENT_S_NAME                                       :Име на Управителя
-STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Не може да промениш името на компанията...
-STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Не може да промениш името на управителя...
+STR_7005_COLOR_SCHEME                                           :{BLACK}Цветове
+STR_7006_COLOR_SCHEME                                           :{GOLD}Цветове:
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Нова цветове
+STR_7008_COMPANY_NAME                                           :{BLACK}Име на компанията
+STR_7009_PRESIDENT_NAME                                         :{BLACK}Име на управителят
+STR_700A_COMPANY_NAME                                           :Име на компанията
+STR_700B_PRESIDENT_S_NAME                                       :Име на управителя
+STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Не може да бъде променено името на компанията...
+STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Не може да се промени името на управителя...
 STR_700E_FINANCES                                               :{WHITE}{COMPANY} Финанси {BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Разходи/Приходи
 STR_7010                                                        :{WHITE}{NUM}

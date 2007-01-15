@@ -2148,6 +2148,7 @@ STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}会社が買収できません...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}貨物の運送価格
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}運送日
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}貨物10単位（もしくは1万リットル）を距離20角運送するとの運賃を表示します
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}貨物種類のグラフを切り替えます
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :技術者
@@ -2181,6 +2182,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}この�
 STR_707D_OWNED_BY                                               :{WHITE}（{1:COMPANY}が{0:COMMA}％株式保有）
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}（{1:COMPANY}が{0:COMMA}％株式保有）{}　（{3:COMPANY}が{2:COMMA}％株式保有）
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY}が{COMPANY}に買収！
+STR_7080_PROTECTED                                              :{WHITE}まだ早いため、この会社は株式取引できません...
 
 STR_LIVERY_DEFAULT                                              :通常のカラースキーム
 STR_LIVERY_STEAM                                                :蒸気機関車
@@ -2872,6 +2874,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}合計�
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}車両数：道路車両、列車、船舶や飛行機を含みます
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}駅数：駅のすべての部分（駅、バス停、空港）を一つとして数えます
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}最小収益のある（年齢2年以上の）車両の損益を表示します
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}先一年間の最小収益のある一ヶ月間の収益を表示します
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}先一年間の最大収益のある一ヶ月間の収益を表示します
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}一年間に運送した貨物単位を表示します
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}直前の四半期に運送した貨物種類数を表示します
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}この会社の残高を表示します
@@ -3006,6 +3010,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}リス�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標示のリスト - {COMMA}つの標示
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}再装備の失敗によって{STRING}{COMMA}
 
 ############ Lists rail types
 

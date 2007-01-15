@@ -348,11 +348,11 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Gajna grafiko
 STR_0155_INCOME_GRAPH                                           :Enspeza grafiko
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Liveriteca grafiko
-STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Kvalithistoria grafiko
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Rendimenta grafiko
 STR_0158_COMPANY_VALUE_GRAPH                                    :Kompanivalora grafiko
 STR_0159_CARGO_PAYMENT_RATES                                    :Ŝarĝpaga grafiko
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Kompaniara tabelo
-STR_PERFORMANCE_DETAIL_MENU                                     :Detala kvalittakso
+STR_PERFORMANCE_DETAIL_MENU                                     :Detala rendimento
 ############ range for menu	ends
 
 STR_015B_OPENTTD                                                :{WHITE}Pri OpenTTD
