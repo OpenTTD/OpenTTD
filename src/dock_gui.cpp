@@ -105,10 +105,6 @@ static void BuildDocksClick_Buoy(Window *w)
 	HandlePlacePushButton(w, DTW_BUOY, SPR_CURSOR_BOUY, 1, PlaceDocks_Buoy);
 }
 
-static void BuildDocksClick_Landscaping(Window *w)
-{
-	ShowTerraformToolbar();
-}
 
 typedef void OnButtonClick(Window *w);
 static OnButtonClick * const _build_docks_button_proc[] = {
@@ -118,8 +114,7 @@ static OnButtonClick * const _build_docks_button_proc[] = {
 	BuildDocksClick_Demolish,
 	BuildDocksClick_Depot,
 	BuildDocksClick_Dock,
-	BuildDocksClick_Buoy,
-	BuildDocksClick_Landscaping,
+	BuildDocksClick_Buoy
 };
 
 static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
@@ -141,7 +136,6 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 			case '4': BuildDocksClick_Depot(w); break;
 			case '5': BuildDocksClick_Dock(w); break;
 			case '6': BuildDocksClick_Buoy(w); break;
-			case 'l': BuildDocksClick_Landscaping(w); break;
 			default:  return;
 		}
 		break;
@@ -198,8 +192,8 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 
 static const Widget _build_docks_toolb_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   145,     0,    13, STR_9801_DOCK_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   146,   157,     0,    13, 0x0,                        STR_STICKY_BUTTON},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   123,     0,    13, STR_9801_DOCK_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   124,   135,     0,    13, 0x0,                        STR_STICKY_BUTTON},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,        STR_BUILD_CANALS_TIP},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,         STR_BUILD_LOCKS_TIP},
 
@@ -209,12 +203,11 @@ static const Widget _build_docks_toolb_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    70,    91,    14,    35, SPR_IMG_SHIP_DEPOT,         STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    92,   113,    14,    35, SPR_IMG_SHIP_DOCK,          STR_981D_BUILD_SHIP_DOCK},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   114,   135,    14,    35, SPR_IMG_BOUY,               STR_9834_POSITION_BUOY_WHICH_CAN},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   136,   157,    14,    35, SPR_IMG_LANDSCAPING,        STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_docks_toolbar_desc = {
-	WDP_ALIGN_TBR, 22, 158, 36,
+	WDP_ALIGN_TBR, 22, 136, 36,
 	WC_BUILD_TOOLBAR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_docks_toolb_widgets,

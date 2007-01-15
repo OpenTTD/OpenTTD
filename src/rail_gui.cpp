@@ -333,10 +333,6 @@ static void BuildRailClick_Convert(Window *w)
 	HandlePlacePushButton(w, RTW_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, 1, PlaceRail_ConvertRail);
 }
 
-static void BuildRailClick_Landscaping(Window *w)
-{
-	ShowTerraformToolbar();
-}
 
 static void DoRailroadTrack(int mode)
 {
@@ -400,8 +396,7 @@ static OnButtonClick * const _build_railroad_button_proc[] = {
 	BuildRailClick_Bridge,
 	BuildRailClick_Tunnel,
 	BuildRailClick_Remove,
-	BuildRailClick_Convert,
-	BuildRailClick_Landscaping,
+	BuildRailClick_Convert
 };
 
 static const uint16 _rail_keycodes[] = {
@@ -419,7 +414,6 @@ static const uint16 _rail_keycodes[] = {
 	'T', // tunnel
 	'R', // remove
 	'C', // convert rail
-	'L', // landscaping
 };
 
 
@@ -547,8 +541,8 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 
 static const Widget _build_rail_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   359,     0,    13, STR_100A_RAILROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   360,   371,     0,    13, 0x0,                            STR_STICKY_BUTTON},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   337,     0,    13, STR_100A_RAILROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   338,   349,     0,    13, 0x0,                            STR_STICKY_BUTTON},
 
 {      WWT_PANEL,   RESIZE_NONE,     7,   110,   113,    14,    35, 0x0,                            STR_NULL},
 
@@ -569,13 +563,11 @@ static const Widget _build_rail_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   306,   327,    14,    35, SPR_IMG_REMOVE,                 STR_101E_TOGGLE_BUILD_REMOVE_FOR},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   328,   349,    14,    35, SPR_IMG_CONVERT_RAIL,           STR_CONVERT_RAIL_TIP},
 
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   350,   371,    14,    35, SPR_IMG_LANDSCAPING,            STR_LANDSCAPING_TOOLBAR_TIP},
-
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_rail_desc = {
-	WDP_ALIGN_TBR, 22, 372, 36,
+	WDP_ALIGN_TBR, 22, 350, 36,
 	WC_BUILD_TOOLBAR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_rail_widgets,

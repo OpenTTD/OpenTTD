@@ -57,16 +57,11 @@ static void BuildAirClick_Demolish(Window *w)
 	HandlePlacePushButton(w, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, 1, PlaceAir_DemolishArea);
 }
 
-static void BuildAirClick_Landscaping(Window *w)
-{
-	ShowTerraformToolbar();
-}
 
 typedef void OnButtonClick(Window *w);
 static OnButtonClick * const _build_air_button_proc[] = {
 	BuildAirClick_Airport,
 	BuildAirClick_Demolish,
-	BuildAirClick_Landscaping,
 };
 
 static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
@@ -85,7 +80,6 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		switch (e->we.keypress.keycode) {
 			case '1': BuildAirClick_Airport(w); break;
 			case '2': BuildAirClick_Demolish(w); break;
-			case 'l': BuildAirClick_Landscaping(w); break;
 			default: return;
 		}
 	} break;
@@ -120,17 +114,16 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 
 static const Widget _air_toolbar_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,    73,     0,    13, STR_A000_AIRPORTS,   STR_018C_WINDOW_TITLE_DRAG_THIS },
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,    74,    85,     0,    13, 0x0,                 STR_STICKY_BUTTON },
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,    51,     0,    13, STR_A000_AIRPORTS,   STR_018C_WINDOW_TITLE_DRAG_THIS },
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,    52,    63,     0,    13, 0x0,                 STR_STICKY_BUTTON },
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    41,    14,    35, SPR_IMG_AIRPORT,     STR_A01E_BUILD_AIRPORT },
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    42,    63,    14,    35, SPR_IMG_DYNAMITE,    STR_018D_DEMOLISH_BUILDINGS_ETC },
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    64,    85,    14,    35, SPR_IMG_LANDSCAPING, STR_LANDSCAPING_TOOLBAR_TIP },
 {   WIDGETS_END},
 };
 
 
 static const WindowDesc _air_toolbar_desc = {
-	WDP_ALIGN_TBR, 22, 86, 36,
+	WDP_ALIGN_TBR, 22, 64, 36,
 	WC_BUILD_TOOLBAR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_air_toolbar_widgets,
