@@ -10,6 +10,8 @@
 # define MAX_PATH 260
 #endif
 
+#include "gfx.h"
+
 // Prices and also the fractional part.
 VARDEF Prices _price;
 VARDEF uint16 _price_frac[NUM_PRICES];
