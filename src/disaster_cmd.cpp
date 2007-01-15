@@ -477,7 +477,7 @@ static void DisasterTick_3(Vehicle *v)
 		TileIndex tile;
 		uint ind;
 
-		x = v->x_pos - 15 * TILE_SIZE;
+		x = v->x_pos + (15 * TILE_SIZE);
 		y = v->y_pos;
 
 		if ( (uint)x > MapMaxX() * TILE_SIZE - 1)
