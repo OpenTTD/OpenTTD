@@ -750,7 +750,7 @@ static const byte _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 
 static bool IsBadFarmFieldTile(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
-		case MP_CLEAR: return IsClearGround(tile, CLEAR_FIELDS) || IsClearGround(tile, CLEAR_SNOW);
+		case MP_CLEAR: return IsClearGround(tile, CLEAR_FIELDS) || IsClearGround(tile, CLEAR_SNOW) || IsClearGround(tile, CLEAR_DESERT);
 		case MP_TREES: return false;
 		default:       return true;
 	}
@@ -759,7 +759,7 @@ static bool IsBadFarmFieldTile(TileIndex tile)
 static bool IsBadFarmFieldTile2(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
-		case MP_CLEAR: return IsClearGround(tile, CLEAR_SNOW);
+		case MP_CLEAR: return IsClearGround(tile, CLEAR_SNOW) || IsClearGround(tile, CLEAR_DESERT);
 		case MP_TREES: return false;
 		default:       return true;
 	}
@@ -960,7 +960,7 @@ static void ProduceIndustryGoods(Industry *i)
 		i->cargo_waiting[0] = min(0xffff, i->cargo_waiting[0] + i->production_rate[0]);
 		i->cargo_waiting[1] = min(0xffff, i->cargo_waiting[1] + i->production_rate[1]);
 
-		if (i->type == IT_FARM) {
+		if (i->type == IT_FARM || i->type == IT_FARM_2) {
 			MaybePlantFarmField(i);
 		} else if (i->type == IT_LUMBER_MILL && (i->counter & 0x1FF) == 0) {
 			ChopLumberMillTrees(i);
