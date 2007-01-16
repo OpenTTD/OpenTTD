@@ -141,10 +141,17 @@ static int CDECL NGameAllowedSorter(const void *a, const void *b)
 {
 	const NetworkGameList *cmp1 = *(const NetworkGameList**)a;
 	const NetworkGameList *cmp2 = *(const NetworkGameList**)b;
-	/* Reverse default as we are interested in compatible clients first */
-	int r = cmp2->info.compatible - cmp1->info.compatible;
 
+	/* The servers we do not know anything about (the ones that did not reply) should be at the bottom) */
+	int r = (cmp1->info.server_revision[0] == '\0') - (cmp2->info.server_revision[0] == '\0');
+
+	/* Reverse default as we are interested in version-compatible clients first */
+	if (r == 0) r = cmp2->info.version_compatible - cmp1->info.version_compatible;
+	/* The version-compatible ones are then sorted with NewGRF compatible first, incompatible last */
+	if (r == 0) r = cmp2->info.compatible - cmp1->info.compatible;
+	/* Passworded servers should be below unpassworded servers */
 	if (r == 0) r = cmp1->info.use_password - cmp2->info.use_password;
+	/* Finally sort on the name of the server */
 	if (r == 0) r = strcasecmp(cmp1->info.server_name, cmp2->info.server_name);
 
 	return _internal_sort_order ? -r : r;
@@ -1409,7 +1416,7 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 				DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_DOWNLOADING, 14);
 				/* Fallthrough */
 			default: /* Waiting is 15%, so the resting receivement of map is maximum 70% */
-				progress = 15 + _network_join_kbytes * (100 - 15) / _network_join_kbytes_total;
+				progress = 15 + _network_join_kbytes * (100 - 15) / (_network_join_kbytes_total+1);
 		}
 
 		/* Draw nice progress bar :) */

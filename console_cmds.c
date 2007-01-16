@@ -756,6 +756,11 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	ParseConnectionString(&player, &port, ip);
 
 	IConsolePrintF(_icolour_def, "Connecting to %s...", ip);
+	if (port != NULL) {
+		rport = atoi(port);
+		IConsolePrintF(_icolour_def, "    port: %s", port);
+	}
+
 	if (player != NULL) {
 		_network_playas = atoi(player);
 		IConsolePrintF(_icolour_def, "    player-no: %d", _network_playas);
@@ -766,10 +771,6 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 			_network_playas--;
 			if (!IsValidPlayer(_network_playas)) return false;
 		}
-	}
-	if (port != NULL) {
-		rport = atoi(port);
-		IConsolePrintF(_icolour_def, "    port: %s", port);
 	}
 
 	NetworkClientConnectGame(ip, rport);

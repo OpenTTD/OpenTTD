@@ -82,7 +82,7 @@ NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index)
 {
 	NetworkClientState *cs;
 
-	for (cs = _clients; cs != &_clients[MAX_CLIENT_INFO]; cs++) {
+	for (cs = _clients; cs != endof(_clients); cs++) {
 		if (cs->index == client_index) return cs;
 	}
 
@@ -513,24 +513,25 @@ unsigned long NetworkResolveHost(const char *hostname)
 	return ip;
 }
 
-// Converts a string to ip/port/player
-//  Format: IP#player:port
-//
-// connection_string will be re-terminated to seperate out the hostname, and player and port will
-// be set to the player and port strings given by the user, inside the memory area originally
-// occupied by connection_string.
+/** Converts a string to ip/port/player
+ *  Format: IP#player:port
+ *
+ * connection_string will be re-terminated to seperate out the hostname, and player and port will
+ * be set to the player and port strings given by the user, inside the memory area originally
+ * occupied by connection_string. */
 void ParseConnectionString(const char **player, const char **port, char *connection_string)
 {
 	char *p;
 	for (p = connection_string; *p != '\0'; p++) {
-		if (*p == '#') {
-			*p = '\0';
-			*player = ++p;
-			while (IsValidChar(*p, CS_NUMERAL)) p++;
-			if (*p == '\0') break;
-		} else if (*p == ':') {
-			*port = p + 1;
-			*p = '\0';
+		switch (*p) {
+			case '#':
+				*player = p + 1;
+				*p = '\0';
+				break;
+			case ':':
+				*port = p + 1;
+				*p = '\0';
+				break;
 		}
 	}
 }
