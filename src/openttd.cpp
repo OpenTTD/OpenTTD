@@ -158,11 +158,13 @@ static void showhelp(void)
 		"  -e                  = Start Editor\n"
 		"  -g [savegame]       = Start new/save game immediately\n"
 		"  -G seed             = Set random seed\n"
+#if defined(ENABLE_NETWORK)
 		"  -n [ip:port#player] = Start networkgame\n"
 		"  -D [ip][:port]      = Start dedicated server\n"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"  -f                  = Fork into the background (dedicated only)\n"
 #endif
+#endif /* ENABLE_NETWORK */
 		"  -i                  = Force to use the DOS palette\n"
 		"                          (use this if you see a lot of pink)\n"
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
@@ -333,12 +335,14 @@ int ttd_main(int argc, char *argv[])
 	int resolution[2] = {0,0};
 	Year startyear = INVALID_YEAR;
 	uint generation_seed = GENERATE_NEW_SEED;
+	bool save_config = true;
+#if defined(ENABLE_NETWORK)
 	bool dedicated = false;
 	bool network   = false;
-	bool save_config = true;
 	char *network_conn = NULL;
 	char *dedicated_host = NULL;
 	uint16 dedicated_port = 0;
+#endif /* ENABLE_NETWORK */
 
 	musicdriver[0] = sounddriver[0] = videodriver[0] = 0;
 
@@ -365,6 +369,7 @@ int ttd_main(int argc, char *argv[])
 		case 'm': ttd_strlcpy(musicdriver, mgo.opt, sizeof(musicdriver)); break;
 		case 's': ttd_strlcpy(sounddriver, mgo.opt, sizeof(sounddriver)); break;
 		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
+#if defined(ENABLE_NETWORK)
 		case 'D':
 			strcpy(musicdriver, "null");
 			strcpy(sounddriver, "null");
@@ -386,6 +391,7 @@ int ttd_main(int argc, char *argv[])
 			network = true;
 			network_conn = mgo.opt; // optional IP parameter, NULL if unset
 			break;
+#endif /* ENABLE_NETWORK */
 		case 'r': ParseResolution(resolution, mgo.opt); break;
 		case 't': startyear = atoi(mgo.opt); break;
 		case 'd': {
@@ -435,9 +441,11 @@ int ttd_main(int argc, char *argv[])
 	if (startyear != INVALID_YEAR) _patches_newgame.starting_year = startyear;
 	if (generation_seed != GENERATE_NEW_SEED) _patches_newgame.generation_seed = generation_seed;
 
+#if defined(ENABLE_NETWORK)
 	if (dedicated_host) snprintf(_network_server_bind_ip_host, NETWORK_HOSTNAME_LENGTH, "%s", dedicated_host);
 	if (dedicated_port) _network_server_port = dedicated_port;
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
+#endif /* ENABLE_NETWORK */
 
 	// enumerate language files
 	InitializeLanguagePacks();
