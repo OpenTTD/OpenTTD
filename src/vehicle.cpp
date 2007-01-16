@@ -1901,6 +1901,14 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 		} while (source->cargo_count > 0 && (dest = dest->next) != NULL);
 		dest = v;
 	} while ((source = source->next) != NULL);
+
+	/*
+	 * The of the train will be incorrect at this moment. This is due
+	 * to the fact that removing the old wagon updates the weight of
+	 * the complete train, which is without the weight of cargo we just
+	 * moved back into some (of the) new wagon(s).
+	 */
+	if (dest->type == VEH_Train) TrainConsistChanged(dest->first);
 }
 
 static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, const EngineID engine_type)
