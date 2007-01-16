@@ -13,8 +13,6 @@
  *     state is kept by v->current_order.dest variable. Each achieved sub-target
  *     will increase this value, and the last one will remove the disaster itself
  * </ol>
- * @see ChunkHandler
- * @see SaveLoad
  */
 
 
@@ -41,21 +39,21 @@
 #include "date.h"
 
 enum DisasterSubType {
-	ST_Zeppeliner = 0,
-	ST_Zeppeliner_Shadow = 1,
-	ST_Small_Ufo = 2,
-	ST_Small_Ufo_Shadow = 3,
-	ST_Airplane = 4,
-	ST_Airplane_Shadow = 5,
-	ST_Helicopter = 6,
-	ST_Helicopter_Shadow = 7,
-	ST_Helicopter_Rotors = 8,
-	ST_Big_Ufo = 9,
-	ST_Big_Ufo_Shadow = 10,
-	ST_Big_Ufo_Destroyer = 11,
-	ST_Big_Ufo_Destroyer_Shadow = 12,
-	ST_Small_Submarine = 13,
-	ST_Big_Submarine = 14,
+	ST_Zeppeliner,
+	ST_Zeppeliner_Shadow,
+	ST_Small_Ufo,
+	ST_Small_Ufo_Shadow,
+	ST_Airplane,
+	ST_Airplane_Shadow,
+	ST_Helicopter,
+	ST_Helicopter_Shadow,
+	ST_Helicopter_Rotors,
+	ST_Big_Ufo,
+	ST_Big_Ufo_Shadow,
+	ST_Big_Ufo_Destroyer,
+	ST_Big_Ufo_Destroyer_Shadow,
+	ST_Small_Submarine,
+	ST_Big_Submarine,
 };
 
 static void DisasterClearSquare(TileIndex tile)
@@ -564,9 +562,8 @@ static void DisasterTick_Helicopter_Rotors(Vehicle *v)
 
 /**
  * (Big) Ufo handling, v->current_order.dest states:
- * 0: Fly around to the middle of the map, then randomly, after a while target a road vehicle
- * 1: Home in on a piece of clear rail (without signals) and land there and breakdown all trains
- *    in a radius of 12 tiles; and now we wait...
+ * 0: Fly around to the middle of the map, then randomly for a while and home in on a piece of rail
+ * 1: Land there and breakdown all trains in a radius of 12 tiles; and now we wait...
  *    because as soon as the Ufo lands, a fighter jet, a Skyranger, is called to clear up the mess
  */
 static void DisasterTick_Big_Ufo(Vehicle *v)
@@ -809,7 +806,7 @@ static void Disaster_Zeppeliner_Init(void)
 
 /** Ufo which flies around aimlessly from the middle of the map a bit
  * until it locates a road vehicle which it targets and then destroys */
-static void Disaster_Ufo_Init(void)
+static void Disaster_Small_Ufo_Init(void)
 {
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	int x;
@@ -936,7 +933,7 @@ static void Disaster_Big_Ufo_Init(void)
 
 
 /* Curious submarine #1, just floats around */
-static void Disaster_Submarine1_Init(void)
+static void Disaster_Small_Submarine_Init(void)
 {
 	Vehicle *v = ForceAllocateSpecialVehicle();
 	int x, y;
@@ -961,7 +958,7 @@ static void Disaster_Submarine1_Init(void)
 
 
 /* Curious submarine #2, just floats around */
-static void Disaster_Submarine2_Init(void)
+static void Disaster_Big_Submarine_Init(void)
 {
 	Vehicle *v = ForceAllocateSpecialVehicle();
 	int x,y;
@@ -1019,12 +1016,12 @@ static void Disaster_CoalMine_Init(void)
 
 static DisasterInitProc * const _disaster_initprocs[] = {
 	Disaster_Zeppeliner_Init,
-	Disaster_Ufo_Init,
+	Disaster_Small_Ufo_Init,
 	Disaster_Airplane_Init,
 	Disaster_Helicopter_Init,
 	Disaster_Big_Ufo_Init,
-	Disaster_Submarine1_Init,
-	Disaster_Submarine2_Init,
+	Disaster_Small_Submarine_Init,
+	Disaster_Big_Submarine_Init,
 	Disaster_CoalMine_Init,
 };
 
