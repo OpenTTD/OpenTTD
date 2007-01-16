@@ -3011,6 +3011,13 @@ static void SaveLoad_STNS(Station *st)
 		if (CheckSavegameVersion(7) && st->goods[i].enroute_from == 0xFF) {
 			st->goods[i].enroute_from = INVALID_STATION;
 		}
+		if (CheckSavegameVersion(44)) {
+			/* Store position of the station where the goods come from, so there are no
+			 * very high payments when stations get removed. However, if the station
+			 * where the goods came from is already removed, the source information is
+			 * lost. In that case we set it to the position of this station */
+			st->goods[i].enroute_from_xy = IsValidStationID(st->goods[i].enroute_from) ? GetStation(st->goods[i].enroute_from)->xy : st->xy;
+		}
 	}
 
 	if (st->num_specs != 0) {
