@@ -672,7 +672,7 @@ static void DisasterTick_5_and_6(Vehicle *v)
 
 	tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (IsValidTile(tile) &&
-			(r=GetTileTrackStatus(tile,TRANSPORT_WATER),(byte)(r+(r >> 8)) == 0x3F) &&
+			(r=GetTileTrackStatus(tile,TRANSPORT_WATER),(byte)(r|(r >> 8)) == 0x3F) &&
 			!CHANCE16(1,90)) {
 		GetNewVehiclePos(v, &gp);
 		SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
