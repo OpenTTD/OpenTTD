@@ -107,7 +107,7 @@ bool SpriteExists(SpriteID id)
 {
 	/* Special case for Sprite ID zero -- its position is also 0... */
 	if (id == 0) return true;
-
+	if (id >= _spritecache_items) return false;
 	return GetSpriteCache(id)->file_pos != 0;
 }
 
@@ -386,7 +386,7 @@ const void *GetRawSprite(SpriteID sprite)
 	SpriteCache *sc;
 	void* p;
 
-	assert(sprite < MAX_SPRITES);
+	assert(sprite < _spritecache_items);
 
 	sc = GetSpriteCache(sprite);
 
