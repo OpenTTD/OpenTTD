@@ -468,10 +468,19 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 		_frame_counter = _frame_counter_server = _frame_counter_max = NetworkRecv_uint32(MY_CLIENT, p);
 
-		_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
 		_network_join_kbytes = 0;
 		_network_join_kbytes_total = NetworkRecv_uint32(MY_CLIENT, p) / 1024;
-		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
+
+		/* If the network connection has been closed due to loss of connection
+		 * or when _network_join_kbytes_total is 0, the join status window will
+		 * do a division by zero. When the connection is lost, we just return
+		 * that. If kbytes_total is 0, the packet must be malformed as a
+		 * savegame less than 1 kilobyte is practically impossible. */
+		if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_CONN_LOST;
+		if (_network_join_kbytes_total == 0) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
+		_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
+ 		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
 		// The first packet does not contain any more data
 		return NETWORK_RECV_STATUS_OKAY;
