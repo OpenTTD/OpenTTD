@@ -242,7 +242,7 @@ compatible_grf:
 			if (!HASBIT(c->flags, GCF_COPY)) {
 				free(c->filename);
 				c->filename = strdup(f->filename);
-				/*memcpy(c->md5sum, f->md5sum, sizeof(c->md5sum));*/
+				memcpy(c->md5sum, f->md5sum, sizeof(c->md5sum));
 				if (c->name == NULL) c->name = strdup(f->name);
 				if (c->info == NULL) c->info = strdup(f->info);
 			}
