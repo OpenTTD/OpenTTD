@@ -183,7 +183,7 @@ static void GenericPlaceSignals(TileIndex tile)
 
 	if (!_remove_button_clicked) {
 		uint32 p1 = _ctrl_pressed ? 8 : 0;
-		if (!HasSignals(tile) && _cur_year < _patches.semaphore_build_before) {
+		if (IsTileType(tile, MP_RAILWAY) && !HasSignals(tile) && _cur_year < _patches.semaphore_build_before) {
 			/* Reverse the logic, so semaphores are normally built, and light
 			 * signals can be built with ctrl held down. */
 			p1 = _ctrl_pressed ? 0 : 8;
@@ -374,7 +374,8 @@ static void HandleAutoSignalPlacement(void)
 		return;
 	}
 
-	if (!HasSignals(TileVirtXY(thd->selstart.x, thd->selstart.y)) && _cur_year < _patches.semaphore_build_before) {
+	TileIndex start_tile = TileVirtXY(thd->selstart.x, thd->selstart.y);
+	if (IsTileType(start_tile, MP_RAILWAY) && !HasSignals(start_tile) && _cur_year < _patches.semaphore_build_before) {
 		/* Reverse the logic, so semaphores are normally built, and light
 		 * signals can be built with ctrl held down. */
 		semaphore = _ctrl_pressed ? 0 : 1;
@@ -383,7 +384,7 @@ static void HandleAutoSignalPlacement(void)
 	// _patches.drag_signals_density is given as a parameter such that each user in a network
 	// game can specify his/her own signal density
 	DoCommandP(
-		TileVirtXY(thd->selstart.x, thd->selstart.y),
+		start_tile,
 		TileVirtXY(thd->selend.x, thd->selend.y),
 		(semaphore << 3) | (trackstat << 4) | (_patches.drag_signals_density << 24),
 		CcPlaySound1E,
