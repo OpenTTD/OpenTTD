@@ -193,7 +193,7 @@ STR_00E0_WHITE                                                  :白色
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}ゲームの車両数の制限を超えています
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
-STR_00E4_LOCATION                                               :{BLACK}ロケーション
+STR_00E4_LOCATION                                               :{BLACK}見つける
 STR_00E5_CONTOURS                                               :地形
 STR_00E6_VEHICLES                                               :車両
 STR_00E7_INDUSTRIES                                             :産業
@@ -321,15 +321,15 @@ STR_UNITS_VELOCITY_SI                                           :{COMMA} m/秒
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}馬力
 STR_UNITS_POWER_METRIC                                          :{COMMA}馬力
-STR_UNITS_POWER_SI                                              :{COMMA}キロワット
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}トン
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}トン
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}キロ
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}インペリアルトン
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}メートルトン
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}キログラム
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}トン
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}トン
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}ガロン
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}リットル
@@ -375,7 +375,7 @@ STR_SORT_BY_DATE                                                :{BLACK}日付
 STR_SORT_BY_NUMBER                                              :番号
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :昨年の損益
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年の損益
-STR_SORT_BY_AGE                                                 :年齢
+STR_SORT_BY_AGE                                                 :使用年数
 STR_SORT_BY_RELIABILITY                                         :信頼度
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :貨物種類当たりの総容量
 STR_SORT_BY_MAX_SPEED                                           :最大速度
@@ -468,17 +468,17 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}地図�
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}今年の損益：{CURRENCY} (去年：{CURRENCY})
 
 ############ range for service numbers starts
-STR_AGE                                                         :{COMMA}年間（{COMMA}）
-STR_AGE_RED                                                     :{RED}{COMMA}年間（{COMMA}）
+STR_AGE                                                         :{COMMA}年（{COMMA}年）
+STR_AGE_RED                                                     :{RED}{COMMA}年（{COMMA}年）
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :道路車両
 STR_019D_AIRCRAFT                                               :飛行機
 STR_019E_SHIP                                                   :船舶
 STR_019F_TRAIN                                                  :列車
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} は古くなっています
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} はかねて古くなっています
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} はかねて古くなっていて、緊急に取り替えられなければなりません
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}{COMMA}は古くなっています
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}{COMMA}はかねて古くなっています
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}{COMMA}はかねて古くなっていて、緊急に交換しなければなりません
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}地域情報
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}破壊の価格：{LTBLUE}破壊不可
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}破壊の価格：{LTBLUE}{CURRENCY}
@@ -773,7 +773,7 @@ STR_02C7_CONFIG_PATCHES                                         :パッチの設
 STR_NEWGRF_SETTINGS                                             :NewGRFの設定
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}市町村名を表示
-STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}駅／バス停名を表示
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}駅名を表示
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}標示を表示
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}通過点を標示
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}高級のアニメーション
@@ -1000,7 +1000,7 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}飛行�
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}列車{COMMA}の自動交換が失敗しました（資金制限）
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}道路車両{COMMA} の自動交換が失敗しました（資金制限）
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}道路車両{COMMA}の自動交換が失敗しました（資金制限）
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}船舶{COMMA}の自動交換が失敗しました（資金制限）
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飛行機{COMMA}の自動交換が失敗しました（資金制限）
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}交換後に列車{COMMA}は長過ぎます
@@ -1050,7 +1050,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :入（すべて
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}列車の損益が赤字となったときは報告：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}車両の購入期限がない：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}車両が古くなるとき自動交換
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}車両が最高年齢の {ORANGE}{STRING}{LTBLUE} ヶ月間前／後に自動交換
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}車両が最高使用年数の {ORANGE}{STRING}{LTBLUE} ヶ月間前／後に自動交換
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}自動交換するための最小資金：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}エラーメッセージの表示時間：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}町名に人口を含む：{ORANGE}{STRING}
@@ -1086,10 +1086,10 @@ STR_CONFIG_PATCHES_LIVERIES_OWN                                 :プレヤーの
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :すべての会社
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER>でのチームチャットを優先：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}一人の列車数上限：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}一人の道路車両数上限：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}一人の飛行機数上限：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}一人の船数上限：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}一人のプレヤーの列車数上限：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}一人のプレヤーの道路車両数上限：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}一人のプレヤーの飛行機数上限：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}一人のプレヤーの船舶数上限：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}コンピュータに鉄道車両の使用を切にする：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}コンピュータに道路車両の使用を切にする：{ORANGE}{STRING}
@@ -1115,8 +1115,9 @@ STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}色刷�
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}開始年：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}終了年：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}スムーズな経済を使用
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}他の会社が所有している株の購入を入にする
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}他の会社が所有している株式の購入を入にする
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}ドラッグするときの信号設備頻度：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}次の年まで腕木式信号を建設：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}主のツールバーの位置：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :左
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :中位
@@ -1127,7 +1128,7 @@ STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}ウィ�
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}インターフェース
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}建設
 STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}車両
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}駅／バス停／空港／埠頭
+STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}駅
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}経済
 STR_CONFIG_PATCHES_AI                                           :{BLACK}競争者
 
@@ -1520,10 +1521,10 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}適当�
 STR_1007_ALREADY_BUILT                                          :{WHITE}...既に建設されました
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}先に線路を破壊しなければなりません
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}鉄道の建設
-STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}電鉄建設
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}電鉄の建設
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}モノレールの建設
-STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}マグレブの建設
-STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}鉄道の橋の選択
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}磁気浮上式鉄道の建設
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}鉄道橋を選択
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}ここに電車庫が建設できません
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}ここに駅が建設できません
 STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}ここに信号が建設できません
@@ -1532,14 +1533,14 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}ここ�
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}ここから信号が破壊できません
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}電車庫の配置
 STR_1015_RAILROAD_CONSTRUCTION                                  :鉄道の建設
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :電鉄建設
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :電鉄の建設
 STR_1016_MONORAIL_CONSTRUCTION                                  :モノレールの建設
-STR_1017_MAGLEV_CONSTRUCTION                                    :マグレブの建設
+STR_1017_MAGLEV_CONSTRUCTION                                    :磁気浮上式鉄道の建設
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}線路を建設します
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}（列車の建設や修理のための）電車庫を建設します
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}駅を建設します
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}鉄道の信号を建設します
-STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}鉄道の橋を建設します
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}鉄道橋を建設します
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}鉄道のトンネルを建設します
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}線路と信号の建設／破壊を切り替えます
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}橋の選択 - お好きな橋を建設するにはクリックします
@@ -1558,7 +1559,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :統合信号の
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}先に道路を破壊しなければなりません
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}道路工事中
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}道路の建設
-STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}道路の橋を選択
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}道路橋を選択
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}ここに道路が建設できません...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}ここから道路が破壊できません...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}車庫の配置
@@ -1621,15 +1622,15 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN}�
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}会社の町内の世評：
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}：{ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}助成金
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}次の運送経路に助成金を提案します：
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}次の運送経路に助成金を提案：
 STR_2027_FROM_TO                                                :{ORANGE}{STRING}を{STRING}から{STRING}へ
 STR_2028_BY                                                     :{YELLOW}（有効期限：{DATE_SHORT}）
 STR_202A_NONE                                                   :{ORANGE}なし
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}すでに助成金を受けている運送経路：
 STR_202C_FROM_TO                                                :{ORANGE}{STRING}を{STATION}から{STATION}へ{YELLOW}（{COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}、{DATE_SHORT}まで）
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}助成金提案の有効期限が切られた：{}{}{STRING}の{STRING}から{STRING}への運送経路は今後助成金を受けず
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}助成金の終止{}{}{STRING}の{STATION}から{STATION}への運送は今後助成金を受けず
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}助成金提案の有効期限が切られた：{}{}{STRING}の{STRING}から{STRING}への{}運送経路は今後助成金を受けず
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}助成金の終止{}{}{STRING}の{STATION}から{STATION}への{}運送は今後助成金を受けず
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}助成金提案の報告{}{}最初の{STRING}の{STRING}から{STRING}への運送は一年間助成金を受ける！
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の{STATION}から{STATION}への運送は一年間に５０％の助成金を受ける！
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の{STATION}から{STATION}への運送は一年間に１００％の助成金を受ける！
@@ -1659,15 +1660,15 @@ STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :道路再建を
 STR_204A_BUILD_STATUE_OF_COMPANY                                :会社長の彫像を建設
 STR_204B_FUND_NEW_BUILDINGS                                     :市街地開発を出資
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :独占的運送権を購入
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :町議会を買収します
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やすには、町内の小型広告キャンペーンを行います。{}  価格：{CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やすには、町内の中型広告キャンペーンを行います。{}  価格：{CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やすには、町内の大型広告キャンペーンを行います。{}  価格：{CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}町内の道路の再建を出資します。最高6ヶ月間まで、道路交通に途絶を与えます。{}  価格：{CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :町議会を買収
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やすには、{}町内の小型広告キャンペーンを行います。{}  価格：{CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やすには、{}町内の中型広告キャンペーンを行います。{}  価格：{CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やすには、{}町内の大型広告キャンペーンを行います。{}  価格：{CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}町内の道路の再建を出資します。{}最高6ヶ月間まで、道路交通に途絶を与えます。{}  価格：{CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}会社を推進するに彫像を建設{}価格：{CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}町内の市街地の開発を出資{}　価格：{CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}一年間独占的運送権利を買収します。町議会は乗客や貨物があなたの交通会社の運送経路の使用のみを制御します。{}価格：{CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}名声を増殖します地方自治体を買収します。けれども、あぶないです！{}  価格： {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}町議会間の評価を高めるに買収する。注：露見された場合は処罰が厳しい！{}価格：{CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}で渋滞！{}{}{COMPANY}が出資した道路工事は６ヶ月間続く！
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK}（{COMMA}）
@@ -1745,7 +1746,7 @@ STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}バス�
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}荷役所の配置
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}先にバス停を破壊しなければなりません
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}先にバス停を破壊しなければなりません
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA}つの駅
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA}軒の駅
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- なし -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...不適当な立地
@@ -1759,7 +1760,7 @@ STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}荷役�
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}主の画面を駅の場所に移動します
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}駅の評価を表示します
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}駅名を変更します
-STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}受け取る貨物のリストを表示します
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}受入れる貨物のリストを表示します
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}駅名 - 主の画面を駅の場所に移動するに駅名をクリックします
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}空港のサイズ／種類を選択します
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
@@ -2111,10 +2112,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}返済
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}（社長）
 STR_7038_INAUGURATED                                            :{GOLD}開業日付：{WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}車両数：
-STR_TRAINS                                                      :{WHITE}{COMMA}台の列車
-STR_ROAD_VEHICLES                                               :{WHITE}{COMMA}台の道路車両
+STR_TRAINS                                                      :{WHITE}列車{COMMA}本
+STR_ROAD_VEHICLES                                               :{WHITE}道路車両{COMMA}両
 STR_AIRCRAFT                                                    :{WHITE}{COMMA}台の飛行機
-STR_SHIPS                                                       :{WHITE}{COMMA}台の船舶
+STR_SHIPS                                                       :{WHITE}{COMMA}隻の船舶
 STR_7042_NONE                                                   :{WHITE}なし
 STR_7043_FACE_SELECTION                                         :{WHITE}顔の選択
 STR_7044_MALE                                                   :{BLACK}男性
@@ -2519,7 +2520,7 @@ STR_8815_NEW_VEHICLES                                           :{BLACK}新規�
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}列車が長過ぎます
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}列車の変更は電車庫内のみに行えます
-STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA}台の列車
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - 列車{COMMA}本
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}新規鉄道車両
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}新規電動鉄道車両
@@ -2602,11 +2603,11 @@ STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}価格：{CURRENCY}　重量：{WEIGHT_S}{}最大速度：{VELOCITY}　出力：{POWER}{}運転費：一年間{CURRENCY}{}容量：{CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}故障
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}1年間に{CURRENCY}
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}1年間に{CURRENCY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_S}　{BLACK}出力：{LTBLUE}{POWER}{BLACK}　最大速度：{LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_S}　{BLACK}出力：{LTBLUE}{POWER}　{BLACK}最大速度：{LTBLUE}{VELOCITY} {BLACK}最大T.E.：{LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最新補修後の故障：{LTBLUE}{COMMA}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}停止中
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}赤信号を無視して列車を進行させることができません...
 STR_8863_CRASHED                                                :{RED}事故！
@@ -2629,7 +2630,7 @@ STR_TRAIN_START_NO_CATENARY                                     :線路は懸垂
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}道路車両があります
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} 道路車両
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - 道路車両{COMMA}両
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN}車庫
 STR_9004_NEW_VEHICLES                                           :{BLACK}新規車両
@@ -2637,16 +2638,16 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}新規�
 STR_9007_BUILD_VEHICLE                                          :{BLACK}車両を購入
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}道路車両が購入できません...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
 STR_900E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障：{LTBLUE}{COMMA}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...車庫内に停止しなければなりません
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}道路車両が販売できません...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}道路車両が開始／停止できません...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}道路車両 {COMMA} は車庫内で待機しています
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}道路車両{COMMA}は車庫内で待機しています
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN}車庫へ回送
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN}車庫へ回送、{VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN}車庫で修理
@@ -2699,7 +2700,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}埠頭�
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}ここに埠頭が建設できません...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}造船所
 STR_9804_NEW_SHIPS                                              :{BLACK}新規船舶
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA}つの船舶
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA}隻の船舶
 STR_9808_NEW_SHIPS                                              :{WHITE}新規船舶
 STR_9809_BUILD_SHIP                                             :{BLACK}船舶を購入
 STR_CLONE_SHIP                                                  :{BLACK}船舶をクローン
@@ -2711,10 +2712,10 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}船舶�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}船舶があります
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
 STR_9813_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障：{LTBLUE}{COMMA}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}船舶が開始／停止できません...
@@ -2724,7 +2725,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}{TOWN}�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{TOWN}造船所へ回送、{VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN}造船所で修理
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN}造船所で修理、{VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}船舶 {COMMA} は造船所内で待機しています
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}船舶{COMMA}は造船所内で待機しています
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}埠頭を建設します
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}造船所を建設します（船舶の購入、修理などのため）
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
@@ -2781,10 +2782,10 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE}（指令）
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}一年間{CURRENCY}
 STR_A00E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障：{LTBLUE}{COMMA}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}飛行機が格納庫へ回送できません...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION}格納庫へ行く
@@ -2937,10 +2938,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA}台の列車
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA}台の道路車両
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA}台の飛行機
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA}台の船舶
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - 列車{COMMA}本
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - 道路車両{COMMA}両
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - 飛行機{COMMA}台
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - 船舶{COMMA}隻
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}この駅が指令リストに入っているすべての列車を表示します
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}このバス停／荷役所が指令リストに入っているすべての道路車両を表示します
@@ -2968,10 +2969,10 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}車庫�
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}造船所内のすべての船舶を自動的に交換します
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}格納庫内のすべての飛行機を自動的に交換します
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} 電車
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} 車
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} シップ
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} 飛行機
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA}本の列車
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA}両の道路車両
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA}隻の船舶
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA}台の飛行機
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}を交換
 STR_REPLACE_VEHICLES_START                                      :{BLACK}車両の交換を開始
@@ -2992,7 +2993,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}実験�
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}機関車が購入できません
 
 STR_ENGINES                                                     :機関車
-STR_WAGONS                                                      :車
+STR_WAGONS                                                      :貨車
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}電車庫内のすべての列車を停車するにはクリックします
 STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}車庫内のすべての道路車両を停車するにはクリックします

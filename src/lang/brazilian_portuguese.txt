@@ -1082,7 +1082,7 @@ STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manuten
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de terreno às ferramentas de transportes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Rolar a tela no sentido oposto ao movimento do mouse: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar distâncias quando usar ferramentas de construção: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar cores de companhias: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar cores das empresas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Minha empresa
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Todas as empresas
@@ -1119,6 +1119,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Termina
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ativar economia regular (alterações menores)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite comprar ações de outras companhias
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticamente constroi semáforos anteriores: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
@@ -1373,7 +1374,7 @@ STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Criar um
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Observar jogo
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Ver jogo como um espectador
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Unir-se à empresa
-STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Auxiliar na gestão desta companhia
+STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Auxiliar na gestão desta empresa
 STR_NETWORK_REFRESH                                             :{BLACK}Atualizar dados
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}Atualiza as informações sobre o servidor
 
@@ -1420,7 +1421,7 @@ STR_NETWORK_ERR_DESYNC                                          :{WHITE} A sincr
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} A conexão do jogo foi perdida
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Não foi possível abrir o jogo.
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Não foi possível iniciar o servidor
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Não foi possível estabelecer ligação
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Não foi possível estabelecer conexão
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Tempo de espera esgotado na conexão #{NUM}.
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Ocorreu um erro de protocolo e a conexão foi encerrada
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} A versão deste cliente não condiz com a versão do servidor
@@ -1530,20 +1531,20 @@ STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Não é 
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Não é possível construir estação ferroviária aqui...
 STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Não é possível construir sinais aqui...
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Não é possível construir linha férrea aqui...
-STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Não é possível remover linha férrea daqui...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Não é possível remover a ferrovia daqui...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Não é possível remover sinais daqui...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientação do Depósito
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construir ferrovias
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construção de Linhas Eletrificadas
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construir ferrovias (monotrilho)
 STR_1017_MAGLEV_CONSTRUCTION                                    :Construir ferrovias (trem-bala)
-STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir linha férrea
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir ferrovias
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Construir depósito (para criação e manutenção de trens)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Construir estação ferroviária
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Construir sinais ferroviários
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Construir ponte ferroviária
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Construir túnel ferroviário
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Alternar entre construir/remover linha férrea e sinais
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Alternar entre construir/remover ferrovias e sinais
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Seleção de ponte - clique na ponte desejada para construir
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Selecionar a orientação do depósito
 STR_1021_RAILROAD_TRACK                                         :Ferrovias
@@ -1623,7 +1624,7 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}autorida
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Avaliações das empresas
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsídios
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta de subsídios para os serviços:
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta de subsídios para o serviço:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} para {STRING}
 STR_2028_BY                                                     :{YELLOW} (por {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nenhum
@@ -1651,7 +1652,7 @@ STR_203F_HOUSES                                                 :Casas
 STR_2040_CINEMA                                                 :Cinema
 STR_2041_SHOPPING_MALL                                          :Centro Comercial
 STR_2042_DO_IT                                                  :{BLACK}Aplicar
-STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Lista de ações disponíveis nesta cidade - clique no item para mais detalhes
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Lista de ações disponíveis desta cidade - clique no item para mais detalhes
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Realizar a ação destacada na lista acima
 STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Ações disponíveis:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Pequena campanha publicitária
@@ -1665,10 +1666,10 @@ STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Subornar a auto
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária pequena, para atrair mais passageiros e cargas para sua empresa.{}  Custo: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária média, para atrair mais passageiros e cargas para sua empresa.{}  Custo: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária grande, para atrair mais passageiros e cargas para sua empresa.{}  Custo: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Financiar a reconstrução da rede rodoviária urbana. Causa engarrafamentos consideráveis ao tráfego por até 6 meses.{}  Custo: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construir uma estátua em honra da sua empresa.{} Custo: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Financiar a reconstrução da malha rodoviária urbana. Causa engarrafamentos consideráveis ao tráfego por até 6 meses.{}  Custo: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construir uma estátua em honra para sua empresa.{} Custo: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Financiar a construção de edifícios comerciais novos na cidade.{}  Custo: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Comprar a exclusividade dos serviços durante 1 ano na cidade. A autoridade da cidade permitirá que os passageiros e cargas usem somente estações da sua empresa.{} Custo: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Comprar a exclusividade dos serviços durante 1 ano na cidade. A autoridade da cidade permitirá que os passageiros e cargas usem somente estações de sua empresa.{} Custo: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Subornar a autoridade local para aumentar a sua avaliação, correndo o  risco de uma penalidade severa se apanhado.{}  Custo: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Programa de reconstrução de estradas financiado por {COMPANY} provoca 6 meses de miséria aos condutores!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
@@ -2124,13 +2125,13 @@ STR_7045_FEMALE                                                 :{BLACK}Feminino
 STR_7046_NEW_FACE                                               :{BLACK}Novo Rosto
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Cancelar seleção da novo rosto
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Aceitar selecção da novo rosto
-STR_7049_SELECT_MALE_FACES                                      :{BLACK}Selecionar rostos masculinas
-STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Seleccionar rostos femininas
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}Rostos masculinos
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Rostos femininos
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Gerar novo rosto aleatoriamente
 STR_704C_KEY                                                    :{BLACK}Legenda
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Mostrar legenda dos gráficos
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legendas dos gráficos da empresa
-STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Clique aqui para mostrar/ocultar companhia no gráfico
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Clique aqui para mostrar/ocultar empresa no gráfico
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unidades de carga entregues
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Avaliações da empresa (máximo=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Valor da empresa
@@ -2244,17 +2245,17 @@ STR_8018_SH_40_ELECTRIC                                         :SH '40' (Elétr
 STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Elétrico)
 STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Elétrico)
 STR_801B_PASSENGER_CAR                                          :Vagão de Passageiros
-STR_801C_MAIL_VAN                                               :Vagão de Correspondências
+STR_801C_MAIL_VAN                                               :Vagão de Cartas
 STR_801D_COAL_CAR                                               :Vagão de Carvão
 STR_801E_OIL_TANKER                                             :Tanque de Petróleo
 STR_801F_LIVESTOCK_VAN                                          :Vagão de Gado
 STR_8020_GOODS_VAN                                              :Vagão de Bens
-STR_8021_GRAIN_HOPPER                                           :Vagão de Cereais
+STR_8021_GRAIN_HOPPER                                           :Vagão de Grãos
 STR_8022_WOOD_TRUCK                                             :Vagão de Madeira
 STR_8023_IRON_ORE_HOPPER                                        :Vagão de Minério de Ferro
 STR_8024_STEEL_TRUCK                                            :Vagão de Aço
 STR_8025_ARMORED_VAN                                            :Vagão Blindado
-STR_8026_FOOD_VAN                                               :Vagão de Comida
+STR_8026_FOOD_VAN                                               :Vagão de Alimento
 STR_8027_PAPER_TRUCK                                            :Vagão de Papel
 STR_8028_COPPER_ORE_HOPPER                                      :Vagão de Minério de Cobre
 STR_8029_WATER_TANKER                                           :Tanque de Água
@@ -2274,17 +2275,17 @@ STR_8036_X2001_ELECTRIC                                         :'X2001' (Elétr
 STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Elétrico)
 STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 STR_8039_PASSENGER_CAR                                          :Vagão de Passageiros
-STR_803A_MAIL_VAN                                               :Vagão de Correspondências
+STR_803A_MAIL_VAN                                               :Vagão de Cartas
 STR_803B_COAL_CAR                                               :Vagão de Carvão
 STR_803C_OIL_TANKER                                             :Tanque de Petróleo
 STR_803D_LIVESTOCK_VAN                                          :Vagão de Gado
 STR_803E_GOODS_VAN                                              :Vagão de Bens
-STR_803F_GRAIN_HOPPER                                           :Vagão de Cereais
+STR_803F_GRAIN_HOPPER                                           :Vagão de Grãos
 STR_8040_WOOD_TRUCK                                             :Vagão de Madeira
 STR_8041_IRON_ORE_HOPPER                                        :Vagão de Minério de Ferro
 STR_8042_STEEL_TRUCK                                            :Vagão de Aço
 STR_8043_ARMORED_VAN                                            :Vagão Blindado
-STR_8044_FOOD_VAN                                               :Vagão de Comida
+STR_8044_FOOD_VAN                                               :Vagão de Alimento
 STR_8045_PAPER_TRUCK                                            :Vagão de Papel
 STR_8046_COPPER_ORE_HOPPER                                      :Vagão de Minério de Cobre
 STR_8047_WATER_TANKER                                           :Tanque de Água
@@ -2297,8 +2298,8 @@ STR_804D_BUBBLE_VAN                                             :Vagão de Bolha
 STR_804E_COLA_TANKER                                            :Tanque de Cola
 STR_804F_CANDY_VAN                                              :Vagão de Doces
 STR_8050_TOY_VAN                                                :Vagão de Brinquedos
-STR_8051_BATTERY_TRUCK                                          :Vagão de Baterias
-STR_8052_FIZZY_DRINK_TRUCK                                      :Vagão de Bebidas Gasosas
+STR_8051_BATTERY_TRUCK                                          :Vagão de Pilhas
+STR_8052_FIZZY_DRINK_TRUCK                                      :Vagão de Refrigerante
 STR_8053_PLASTIC_TRUCK                                          :Vagão de Plástico
 STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Elétrico)
 STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (Elétrico)
@@ -2306,17 +2307,17 @@ STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' 
 STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Elétrico)
 STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
 STR_8059_PASSENGER_CAR                                          :Vagão de Passageiros
-STR_805A_MAIL_VAN                                               :Vagão de Correspondências
+STR_805A_MAIL_VAN                                               :Vagão de Cartas
 STR_805B_COAL_CAR                                               :Vagão de Carvão
 STR_805C_OIL_TANKER                                             :Tanque de Petróleo
 STR_805D_LIVESTOCK_VAN                                          :Vagão de Gado
 STR_805E_GOODS_VAN                                              :Vagão de Bens
-STR_805F_GRAIN_HOPPER                                           :Vagão de Cereais
+STR_805F_GRAIN_HOPPER                                           :Vagão de Grãos
 STR_8060_WOOD_TRUCK                                             :Vagão de Madeira
 STR_8061_IRON_ORE_HOPPER                                        :Vagão de Minério de Ferro
 STR_8062_STEEL_TRUCK                                            :Vagão de Aço
 STR_8063_ARMORED_VAN                                            :Vagão Blindado
-STR_8064_FOOD_VAN                                               :Vagão de Comida
+STR_8064_FOOD_VAN                                               :Vagão de Alimento
 STR_8065_PAPER_TRUCK                                            :Vagão de Papel
 STR_8066_COPPER_ORE_HOPPER                                      :Vagão de Minério de Cobre
 STR_8067_WATER_TANKER                                           :Tanque de Água
@@ -2329,8 +2330,8 @@ STR_806D_BUBBLE_VAN                                             :Vagão de Bolha
 STR_806E_COLA_TANKER                                            :Tanque de Cola
 STR_806F_CANDY_VAN                                              :Vagão de Doces
 STR_8070_TOY_VAN                                                :Vagão de Brinquedos
-STR_8071_BATTERY_TRUCK                                          :Vagão de Baterias
-STR_8072_FIZZY_DRINK_TRUCK                                      :Vagão de Bebidas Gasosas
+STR_8071_BATTERY_TRUCK                                          :Vagão de Pilha
+STR_8072_FIZZY_DRINK_TRUCK                                      :Vagão de Refrigerante
 STR_8073_PLASTIC_TRUCK                                          :Vagão de Plástico
 STR_8074_MPS_REGAL_BUS                                          :Ônibus MPS Regal
 STR_8075_HEREFORD_LEOPARD_BUS                                   :Ônibus Hereford Leopard
@@ -2342,12 +2343,12 @@ STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ônibus Ploddyp
 STR_807B_BALOGH_COAL_TRUCK                                      :Caminhão de Carvão Balogh
 STR_807C_UHL_COAL_TRUCK                                         :Caminhão de Carvão Uhl
 STR_807D_DW_COAL_TRUCK                                          :Caminhão de Carvão DW
-STR_807E_MPS_MAIL_TRUCK                                         :Caminhão de Correspondências MPS
-STR_807F_REYNARD_MAIL_TRUCK                                     :Caminhão de Correspondências Reynard
-STR_8080_PERRY_MAIL_TRUCK                                       :Caminhão de Correspondências Perry
-STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :Caminhão de Correspondências MightyMover
-STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Caminhão de Correspondências Powernaught
-STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Caminhão de Correspondências Wizzowow
+STR_807E_MPS_MAIL_TRUCK                                         :Caminhão de Cartas MPS
+STR_807F_REYNARD_MAIL_TRUCK                                     :Caminhão de Cartas Reynard
+STR_8080_PERRY_MAIL_TRUCK                                       :Caminhão de Cartas Perry
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :Caminhão de Cartas MightyMover
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Caminhão de Cartas Powernaught
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Caminhão de Cartas Wizzowow
 STR_8084_WITCOMBE_OIL_TANKER                                    :Tanque de Petróleo Witcombe
 STR_8085_FOSTER_OIL_TANKER                                      :Tanque de Petróleo Foster
 STR_8086_PERRY_OIL_TANKER                                       :Tanque de Petróleo Perry
@@ -2357,9 +2358,9 @@ STR_8089_FOSTER_LIVESTOCK_VAN                                   :Caminhão de Ga
 STR_808A_BALOGH_GOODS_TRUCK                                     :Caminhão de Bens Balogh
 STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Caminhão de Bens Craighead
 STR_808C_GOSS_GOODS_TRUCK                                       :Caminhão de Bens Goss
-STR_808D_HEREFORD_GRAIN_TRUCK                                   :Caminhão de Cereais Hereford
-STR_808E_THOMAS_GRAIN_TRUCK                                     :Caminhão de Cereais Thomas
-STR_808F_GOSS_GRAIN_TRUCK                                       :Caminhão de Cereais Goss
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Caminhão de Grãoa Hereford
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Caminhão de Grãos Thomas
+STR_808F_GOSS_GRAIN_TRUCK                                       :Caminhão de Grãos Goss
 STR_8090_WITCOMBE_WOOD_TRUCK                                    :Caminhão de Madeira Witcombe
 STR_8091_FOSTER_WOOD_TRUCK                                      :Caminhão de Madeira Foster
 STR_8092_MORELAND_WOOD_TRUCK                                    :Caminhão de Madeira Moreland
@@ -2372,18 +2373,18 @@ STR_8098_KELLING_STEEL_TRUCK                                    :Caminhão de A�
 STR_8099_BALOGH_ARMORED_TRUCK                                   :Caminhão Blindado Balogh
 STR_809A_UHL_ARMORED_TRUCK                                      :Caminhão Blindado Uhl
 STR_809B_FOSTER_ARMORED_TRUCK                                   :Caminhão Blindado Foster
-STR_809C_FOSTER_FOOD_VAN                                        :Caminhão de Comida Foster
-STR_809D_PERRY_FOOD_VAN                                         :Caminhão de Comida Perry
-STR_809E_CHIPPY_FOOD_VAN                                        :Caminhão de Comida Chippy
+STR_809C_FOSTER_FOOD_VAN                                        :Caminhão de Alimento Foster
+STR_809D_PERRY_FOOD_VAN                                         :Caminhão de Alimento Perry
+STR_809E_CHIPPY_FOOD_VAN                                        :Caminhão de Alimento Chippy
 STR_809F_UHL_PAPER_TRUCK                                        :Caminhão de Papel Uhl
 STR_80A0_BALOGH_PAPER_TRUCK                                     :Caminhão de Papel Balogh
 STR_80A1_MPS_PAPER_TRUCK                                        :Caminhão de Papel MPS
 STR_80A2_MPS_COPPER_ORE_TRUCK                                   :Caminhão de Minério de Cobre MPS
 STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Caminhão de Minério de Cobre Uhl
 STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Caminhão de Minério de Cobre Goss
-STR_80A5_UHL_WATER_TANKER                                       :Cisterna de Água Uhl
-STR_80A6_BALOGH_WATER_TANKER                                    :Cisterna de Água Balogh
-STR_80A7_MPS_WATER_TANKER                                       :Cisterna de Água MPS
+STR_80A5_UHL_WATER_TANKER                                       :Caminhão Pipa Uhl
+STR_80A6_BALOGH_WATER_TANKER                                    :Caminhão Pipa Balogh
+STR_80A7_MPS_WATER_TANKER                                       :Caminhão Pipa MPS
 STR_80A8_BALOGH_FRUIT_TRUCK                                     :Caminhão de Fruta Balogh
 STR_80A9_UHL_FRUIT_TRUCK                                        :Caminhão de Fruta Uhl
 STR_80AA_KELLING_FRUIT_TRUCK                                    :Caminhão de Fruta Kelling
@@ -2408,29 +2409,29 @@ STR_80BC_WIZZOWOW_TOY_VAN                                       :Caminhão de Br
 STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :Caminhão de Doces MightyMover
 STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Caminhão de Doces Powernaught
 STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Caminhão de Doces Wizzowow
-STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :Caminhão de Baterias MightyMover
-STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Caminhão de Baterias Powernaught
-STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Caminhão de Baterias Wizzowow
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :Caminhão de Bebidas Gasosas MightyMover
-STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Caminhão de Bebidas Gasosas Powernaught
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Caminhão de Bebidas Gasosas Wizzowow
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :Caminhão de Pilha MightyMover
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Caminhão de Pilha Powernaught
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Caminhão de Pilha Wizzowow
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :Caminhão de Refrigerante MightyMover
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Caminhão de Refrigerante Powernaught
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Caminhão de Refrigerante Wizzowow
 STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :Caminhão de Plástico MightyMover
 STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Caminhão de Plástico Powernaught
 STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Caminhão de Plástico Wizzowow
 STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :Caminhão de Bolhas MightyMover
 STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Caminhão de Bolhas Powernaught
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Caminhão de Bolhas Wizzowow
-STR_80CC_MPS_OIL_TANKER                                         :Cisterna de Petróleo MPS
-STR_80CD_CS_INC_OIL_TANKER                                      :Cisterna de Petróleo CS-Inc.
-STR_80CE_MPS_PASSENGER_FERRY                                    :Navio de Passageiros MPS
-STR_80CF_FFP_PASSENGER_FERRY                                    :Navio de Passageiros FFP
+STR_80CC_MPS_OIL_TANKER                                         :Caminhão de Petróleo MPS
+STR_80CD_CS_INC_OIL_TANKER                                      :Caminhão de Petróleo CS-Inc.
+STR_80CE_MPS_PASSENGER_FERRY                                    :Barco de Passageiros MPS
+STR_80CF_FFP_PASSENGER_FERRY                                    :Barco de Passageiros FFP
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Hovercraft Bakewell 300
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Navio de Passageiros Chugger-Chug
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Navio de Passageiros Shivershake
-STR_80D3_YATE_CARGO_SHIP                                        :Navio de Bens Yate
-STR_80D4_BAKEWELL_CARGO_SHIP                                    :Navio de Bens Bakewell
-STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Navio de Bens Mightymover
-STR_80D6_POWERNAUT_CARGO_SHIP                                   :Navio de Bens Powernaut
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Barco de Passageiros Chugger-Chug
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Barco de Passageiros Shivershake
+STR_80D3_YATE_CARGO_SHIP                                        :Barco de Bens Yate
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Barco de Bens Bakewell
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Barco de Bens Mightymover
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Barco de Bens Powernaut
 STR_80D7_SAMPSON_U52                                            :Sampson U52
 STR_80D8_COLEMAN_COUNT                                          :Coleman Count
 STR_80D9_FFP_DART                                               :FFP Dart
@@ -2449,13 +2450,13 @@ STR_80E5_DARWIN_400                                             :Darwin 400
 STR_80E6_DARWIN_500                                             :Darwin 500
 STR_80E7_DARWIN_600                                             :Darwin 600
 STR_80E8_GURU_GALAXY                                            :Guru Galaxy
-STR_80E9_AIRTAXI_A21                                            :Airtaxi A21
-STR_80EA_AIRTAXI_A31                                            :Airtaxi A31
-STR_80EB_AIRTAXI_A32                                            :Airtaxi A32
-STR_80EC_AIRTAXI_A33                                            :Airtaxi A33
+STR_80E9_AIRTAXI_A21                                            :Táxi Aéreo A21
+STR_80EA_AIRTAXI_A31                                            :Táxi Aéreo A31
+STR_80EB_AIRTAXI_A32                                            :Táxi Aéreo A32
+STR_80EC_AIRTAXI_A33                                            :Táxi Aéreo A33
 STR_80ED_YATE_AEROSPACE_YAE46                                   :Yate Aerospace YAe46
 STR_80EE_DINGER_100                                             :Dinger 100
-STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
+STR_80EF_AIRTAXI_A34_1000                                       :Táxi Aéreo A34-1000
 STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttle
 STR_80F1_KELLING_K1                                             :Kelling K1
 STR_80F2_KELLING_K6                                             :Kelling K6
@@ -2473,9 +2474,9 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Helicóptero Tr
 STR_80FE_GURU_X2_HELICOPTER                                     :Helicóptero Guru X2
 STR_80FF_POWERNAUT_HELICOPTER                                   :Helicóptero Powernaut
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Mensagem de um fabricante de veículos
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Projetamos um novo {STRING} - gostaria de ter um ano de exclusividade de uso deste veículo, de modo a que possamos avaliar a sua performance antes de o disponibilizar para todos ?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Projetamos um novo {STRING} - estaria interessado em um ano de exclusividade do uso deste veículo, de modo a que possamos avaliar a sua performance antes de o disponibilizar para todos ?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :locomotiva ferroviária
-STR_8103_ROAD_VEHICLE                                           :veículo de estrada
+STR_8103_ROAD_VEHICLE                                           :automóvel
 STR_8104_AIRCRAFT                                               :aeronave
 STR_8105_SHIP                                                   :barco
 STR_8106_MONORAIL_LOCOMOTIVE                                    :locomotiva monotrilho
@@ -3035,7 +3036,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Confiabi
 STR_PURCHASE_INFO_COST                                          :{BLACK}Custo: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} passageiros, {COMMA} malas de correspondência
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} passageiros, {COMMA} sacos de cartas
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões energizados: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Readaptável para: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos as cargas

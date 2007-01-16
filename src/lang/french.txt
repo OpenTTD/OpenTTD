@@ -1118,6 +1118,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Année 
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Permettre une économie stable (plus de petits changements)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permettre d'acheter des actions d'autres compagnies
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Espacements des signaux en mode drag & drop : {ORANGE}{STRING} case(s)
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construire automatiquement des sémaphores avant: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position de la barre d'outils principale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :À gauche
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centrée

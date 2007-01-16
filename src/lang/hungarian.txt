@@ -1183,6 +1183,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Játék
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Egyenletes gazdaság (több, kisebb változás)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Másik cégekből részvényt lehet vásárolni
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Amikor megragadom helyezzen lámpákat minden {ORANGE}{STRING}. mezőre
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatikusan szemafor épüljön eddig: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}A fő eszközsor helye: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Balra
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Középen

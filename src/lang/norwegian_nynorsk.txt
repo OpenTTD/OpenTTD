@@ -161,7 +161,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikkj
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Opphaveleg opphavsbeskytta {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versjon {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD-teamet
-STR_TRANSLATED_BY                                               :{BLACK}  Omsetjar(ar) -
+STR_TRANSLATED_BY                                               :{BLACK}  Omsett av -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -247,7 +247,7 @@ STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFON
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastfontener
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Brusfabrikk
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Boblegenerator
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Karamellbrudd
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Karamellbrot
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Sukkergruve
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Jernbanestasjon
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Lasteterminal
@@ -328,7 +328,7 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA} t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} britisk tonn
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} britisk{P "" e} tonn
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
@@ -712,7 +712,7 @@ STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Bygg lei
 STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Bygg plastfontener
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Bygg mineralvatnfabrikk
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Bygg boblegenerator
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Bygg karamellbrudd
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Bygg karamellbrot
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Bygg sukkergruve
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan ikkje byggje {STRING} her...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...må byggje ein by først
@@ -800,7 +800,7 @@ STR_02DE_MAP_OF_WORLD                                           :Verdskart
 STR_EXTRA_VIEW_PORT                                             :Ekstra vindauge
 STR_SIGN_LIST                                                   :Skiltliste
 STR_02DF_TOWN_DIRECTORY                                         :Byoversikt
-STR_TOWN_POPULATION                                             :{BLACK}Verdsbefolkning: {COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}Verdsinnbyggjartal: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vindauge {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopier til vindauge
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopier staden til den globale synsvinkelen til dette vindauget
@@ -976,16 +976,16 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikkj
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikkje kopiere ordreliste...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slutt på delte ordrar - -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}Tog {COMMA} har kjørt seg vill.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Tog {COMMA}s forteneste sist år var {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}Tog {COMMA} har køyrt seg vill
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Tog {COMMA}s forteneste førre år var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeisk valutaunion!{}{} Euro er introdusert som den einaste gjeldande valuta for kvadagslege forretningar i landet ditt.
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA} har for få ordrar i kjøreplanen
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA} har for få ordrar i køyreplanen
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tog {COMMA} har ein tom ordre
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har to like ordre
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har ein ugyldig stasjon i ordrene
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har to like ordrar
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har ein ugyldig stasjon i ordrane
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Køyretøy {COMMA} har for få ordrar i køyreplanen
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Køyretøy {COMMA} har ein tom ordre
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Køyretøy {COMMA} har to like ordrar
@@ -1000,11 +1000,11 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COM
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har ein ugyldig stasjon i ordrane
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autoforny gjekk gale for tog {COMMA} (money limit)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autoforny gjekk gale for køyretøy {COMMA} (pengegrense)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autoforny feila på skip {COMMA} (pengegrense)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autoforny gjekk gale for fly {COMMA} (pengegrense)
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Toget {COMMA} er for langt etter erstatting
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autoforny gjekk gale for tog {COMMA} (pengegrense)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatik fornying gjekk gale for køyretøy {COMMA} (pengegrense)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornying gjekk gale på skip {COMMA} (pengegrense)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornying gjekk gale for fly {COMMA} (pengegrense)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tog {COMMA} er vorte for langt etter utskifte
 
 STR_CONFIG_PATCHES                                              :{BLACK}Tilleggsinnstillingar
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Endre tilleggsinstillingar
@@ -1050,9 +1050,9 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, men utelat 
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :av alle køyretøy
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Åtvar dersom eit tog går med underskot: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køyretøy utgår aldri: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autoforny køyretøy når det vert gamalt
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny når køyretøy er {ORANGE}{STRING}{LTBLUE} månader før/etter maks alder
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimum pengar som trengst for autofornying: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Forny køyretøy automatisk når det vert gamalt
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Forny køyretøy automatisk når det er  {ORANGE}{STRING}{LTBLUE} månader før/etter maks alder
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimum pengar som trengst for automatisk fornying: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Varigskap for feilmelding: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Vis innbyggjartalet til byane i tittel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlige tre (med gjennomsiktige bygningar): {ORANGE}{STRING}
@@ -1118,6 +1118,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Spelet 
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Jamn økonomi (fleire, mindre endringar)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillat kjøping av aksjar i andre selskap
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal hver: {ORANGE}{STRING} rute{P "" r}
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg semaforer automatisk før: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovudverktøylinje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Venstre
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Midtstilt
@@ -1145,7 +1146,7 @@ STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Tog ska
 STR_TEMPERATE_LANDSCAPE                                         :Temperert landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarktisk landskap
 STR_SUB_TROPICAL_LANDSCAPE                                      :subtropisk landskap
-STR_TOYLAND_LANDSCAPE                                           :leikeland landskap
+STR_TOYLAND_LANDSCAPE                                           :"Leikeland"-landskap
 
 STR_CHEATS                                                      :{WHITE}Juks
 STR_CHEATS_TIP                                                  :{BLACK}Avkrysningsbokser fortel at du har nytta denne juksekoden tidlegare
@@ -1248,7 +1249,7 @@ STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Finansie
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Bygg colabrønn
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Finansier plastfontener
 STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Bygg boblegenerator
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Finansier karamellbrudd
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Finansier karamellbrot
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Bygg sukkergruve
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industriar
@@ -1266,9 +1267,9 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikkj
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikehaldsintervall er i prosent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Hei. Velkommen til den nye AIen.  Den er høgst eksperimentel, og feil er ventelege.  Dersom du opplev slike, ta eit skjermbilete av det og post det i forumet. Mor deg!
-TEMP_AI_ACTIVATED                                               :{WHITE}Åtvaring: den nye AIen er framleis alfa! Nett nå virker berre bussar og tog.!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Åtvaring: dette er framleis eksperimentelt. Ver venlege rapporter problemer til truelight@openttd.org.
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Hei. Velkomen til den nye AIen.  Den er høgst eksperimentell, og feil er ventelege.  Dersom du opplev slike, ta eit skjermbilete og post det i forumet. Mor deg!
+TEMP_AI_ACTIVATED                                               :{WHITE}Åtvaring: den nye AIen er framleis i alfa-status! Nett no verkar berre bussar og tog!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Åtvaring: dette er framleis eksperimentelt. Ver venleg og rapporter problem til truelight@openttd.org.
 
 ############ network gui strings
 
@@ -1660,7 +1661,7 @@ STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Finansier lokal
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Bygg statue av grunnleggjaren til firmaet
 STR_204B_FUND_NEW_BUILDINGS                                     :Finansier nye bygningar
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Kjøp eksklusive transportrettar
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Bestikk bystyret
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Smør bystyret
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Start ein liten lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{}  Kostnad: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Start ein middels stor lokal reklamekampanje for å trekkje til deg fleire passajerar og varer til tenestene dine.{}  Kostnad: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Start ein stor lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{}  Kostnad: {CURRENCY}
@@ -1668,7 +1669,7 @@ STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bygg ein statue for å heidre grunnleggjaren av firmaet.{} Kostnad: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finansier bygging av nye forretningsbygg i byen.{}  Kostnad: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kjøp ekslusive transportrettar for eit år i byen. Bystyret tillèt då berre bruk av tenestene dine.{} Kostnad: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bestikk bystyret til å forbetre vurderinga av firmaet,  du riskerer bøter dersom du blir oppdaga.{}  Koster: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Smør bystyret til å forbetre vurderinga av firmaet, du risikerer bøter dersom du vert oppdaga.{}  Kostnad: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafikkaos i {TOWN}!{}{}Ombygging av vegen, finansiert av {COMPANY}, vil gje vegproblem i 6 månader.
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -1779,7 +1780,7 @@ STR_3069_BUOY                                                   :Bøye
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bøya er i vegen
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stasjonen er spreidd for mykje
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ikkje-einsarta stasjonar er deaktiverte
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold nede CTRL for å velje meir en en ting
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hald nede CTRL for å velje meir enn éin ting
 
 STR_UNDEFINED                                                   :(udefinert streng)
 STR_STAT_CLASS_DFLT                                             :Standard stasjon
@@ -2554,7 +2555,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Verdi: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Lastar på/av
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget må vera stoppa i togstallen
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget må vere stoppa i togstallen
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kan ikkje sende tog til togstall...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ikkje plass til fleire ordrar
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}For mange ordrar
@@ -2601,11 +2602,11 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Alltid t
 STR_SERVICE_HINT                                                :{BLACK}Hopp over ordren dersom ikkje vedlikehald trengst
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nytt {STRING} er no tilgjengeleg!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koster: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kostnad: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}{}Driftskostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Havarert
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftskostnad: {LTBLUE}{CURRENCY}/år
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_S}  {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. fart: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Max. fart: {LTBLUE}{VELOCITY} {BLACK}Max. Trekkraft.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_S}  {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks fart: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks fart: {LTBLUE}{VELOCITY} {BLACK}Maks trekkraft: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (førre år: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelegskap: {LTBLUE}{COMMA} %  {BLACK}Havari sidan førre vedlikehald: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppa
@@ -2625,8 +2626,8 @@ STR_886F_TRANSFER                                               :{BLACK}Overfør
 STR_TRAIN_STOPPING                                              :{RED}Stoppar
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stoppar, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Jernbanetypane passar ikkje saman
-STR_TRAIN_NO_POWER                                              :{RED}Ingen strøm
-STR_TRAIN_START_NO_CATENARY                                     :Dette sporet manglar eit kjede, så toget kan ikkje starta
+STR_TRAIN_NO_POWER                                              :{RED}Ingen straum
+STR_TRAIN_START_NO_CATENARY                                     :Dette sporet manglar eit kjede, så toget kan ikkje starte
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køyretøy i vegen
@@ -2948,8 +2949,8 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Vis alle fly som har denne stasjonen på timeplanen sin
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle skip som har denne stasjonen på timeplanen sin
 
-STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordre av {COMMA} kjøretøy
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle kjøretøy som har same ruteplan
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordre av {COMMA} køyretøy
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle køyretøy som har same ruteplan
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er i ferd med å selje alle køyretøya i depotet. Er du sikker?
@@ -2970,7 +2971,7 @@ STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autoerst
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autoerstatt alle flya i hangaren
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} tog
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} kjøretøy
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} køyretøy
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} skip
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} fly
 
@@ -3046,7 +3047,7 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks tre
 STR_GENERATE                                                    :{WHITE}Generer
 STR_RANDOM                                                      :{BLACK}Gjer tilfeldig
 STR_RANDOM_HELP                                                 :{BLACK}Endre tilfeldig-nummer som nyttast for terreng-generering
-STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generer en verd
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generer ei verd
 STR_RANDOM_SEED                                                 :{BLACK}Tilfeldig nummer:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Trykk her for å taste inn eit tilfeldig nummer
 STR_LAND_GENERATOR                                              :{BLACK}Landskapsgenerator:
@@ -3075,7 +3076,7 @@ STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Avbryt v
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vil du verkeleg avbryte verdsgenereringa?
 STR_PROGRESS                                                    :{WHITE}{NUM} % ferdig
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
-STR_WORLD_GENERATION                                            :{BLACK}Generer en verden
+STR_WORLD_GENERATION                                            :{BLACK}Generer ei verd
 STR_TREE_GENERATION                                             :{BLACK}Tregenerering
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Ikkje-flyttbar generering
 STR_CLEARING_TILES                                              :{BLACK}Generering av ulendt og steinete område

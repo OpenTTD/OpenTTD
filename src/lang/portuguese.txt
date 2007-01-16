@@ -1117,6 +1117,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Termina
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Activar economia regular (alterações menores)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite comprar acções de outras companhias
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir automaticamente semáforos antes de: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
