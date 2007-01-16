@@ -335,8 +335,8 @@ void ShowBuildRoadToolbar(void)
 
 static const Widget _build_road_scen_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   140,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   141,   152,     0,    13, 0x0,                        STR_STICKY_BUTTON},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   140,   151,     0,    13, 0x0,                        STR_STICKY_BUTTON},
 
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_ROAD_NW,            STR_180B_BUILD_ROAD_SECTION},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_ROAD_NE,            STR_180B_BUILD_ROAD_SECTION},
