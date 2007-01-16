@@ -450,14 +450,14 @@ static uint GetAcceptanceMask(const Station *st)
 
 // Items contains the two cargo names that are to be accepted or rejected.
 // msg is the string id of the message to display.
-static void ShowRejectOrAcceptNews(const Station *st, uint32 items, StringID msg)
+static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *cargo, StringID msg)
 {
-	if (items) {
-		SetDParam(2, GB(items, 16, 16));
-		SetDParam(1, GB(items,  0, 16));
-		SetDParam(0, st->index);
-		AddNewsItem(msg + (GB(items, 16, 16) ? 1 : 0), NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_TILE, NT_ACCEPTANCE, 0), st->xy, 0);
+	for (uint i = 0; i < num_items; i++) {
+		SetDParam(i + 1, _cargoc.names_s[cargo[i]]);
 	}
+
+	SetDParam(0, st->index);
+	AddNewsItem(msg, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_TILE, NT_ACCEPTANCE, 0), st->xy, 0);
 }
 
 // Get a list of the cargo types being produced around the tile.
@@ -648,19 +648,41 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 
 	// show a message to report that the acceptance was changed?
 	if (show_msg && st->owner == _local_player && st->facilities) {
-		uint32 accept=0, reject=0; /* these contain two string ids each */
-		const StringID *str = _cargoc.names_s;
+		/* List of accept and reject strings for different number of
+		 * cargo types */
+		static const StringID accept_msg[] = {
+			STR_3040_NOW_ACCEPTS,
+			STR_3041_NOW_ACCEPTS_AND,
+		};
+		static const StringID reject_msg[] = {
+			STR_303E_NO_LONGER_ACCEPTS,
+			STR_303F_NO_LONGER_ACCEPTS_OR,
+		};
 
-		do {
-			if (new_acc & 1) {
-				if (!(old_acc & 1)) accept = (accept << 16) | *str;
+		/* Array of accepted and rejected cargo types */
+		CargoID accepts[2] = { CT_INVALID, CT_INVALID };
+		CargoID rejects[2] = { CT_INVALID, CT_INVALID };
+		uint num_acc = 0;
+		uint num_rej = 0;
+
+		/* Test each cargo type to see if its acceptange has changed */
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
+			if (HASBIT(new_acc, i)) {
+				if (!HASBIT(old_acc, i) && num_acc < lengthof(accepts)) {
+					/* New cargo is accepted */
+					accepts[num_acc++] = i;
+				}
 			} else {
-				if (old_acc & 1) reject = (reject << 16) | *str;
+				if (HASBIT(old_acc, i) && num_rej < lengthof(rejects)) {
+					/* Old cargo is no longer accepted */
+					rejects[num_rej++] = i;
+				}
 			}
-		} while (str++,(new_acc>>=1) != (old_acc>>=1));
+		}
 
-		ShowRejectOrAcceptNews(st, accept, STR_3040_NOW_ACCEPTS);
-		ShowRejectOrAcceptNews(st, reject, STR_303E_NO_LONGER_ACCEPTS);
+		/* Show news message if there are any changes */
+		if (num_acc > 0) ShowRejectOrAcceptNews(st, num_acc, accepts, accept_msg[num_acc - 1]);
+		if (num_rej > 0) ShowRejectOrAcceptNews(st, num_rej, rejects, reject_msg[num_rej - 1]);
 	}
 
 	// redraw the station view since acceptance changed
