@@ -1595,7 +1595,7 @@ STR_2007_RENAME_TOWN                                            :Omdøb byen
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan ikke omdøbe byen...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} de lokale myndigheder nægter at tillade dette
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Bynavne - klik på et navn for at centrere skærmen over byen
-STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer sk&#230;rmen over byens lokalitet
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer skærmen over byens lokalitet
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Ændre navnet på byen
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagerer sidste måned: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post sidste måned: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
@@ -1757,7 +1757,7 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Vælg an
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Vælg længde af banegård
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Vælg retning af rutebilstation
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vælg retning af fragtcentral
-STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrer sk&#230;rmen over stationens lokalitet
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrer skærmen over stationens lokalitet
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Vis stationens bedømmelse
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Ændre stationens navn
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Vis liste over accepteret last
@@ -1864,7 +1864,7 @@ STR_4829_REQUIRES                                               :{BLACK}Kræver:
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion sidste måned:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporteret)
-STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer sk&#230;rmen over industriens lokalitet
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer skærmen over industriens lokalitet
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Ny {STRING} under opførelse tæt på {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Ny {STRING} bliver plantet tæt på {TOWN}!
 STR_482F_COST                                                   :{BLACK}Pris: {YELLOW}{CURRENCY}
@@ -2574,13 +2574,13 @@ STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Byg nye 
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Tog - klik på et tog for information., træk vogn/lokomotiv for at fjerne/tilføje det til toget
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Byg nyt tog/togvogn
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Træk tog/togvogn her hen for at sælge
-STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer sk&#230;rmen over remisens lokalitet
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer skærmen over remisens lokalitet
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Togvalgsliste - klik på et køretøj for mere information
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Byg det markerede lokomotiv/togvogn
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Omdøb tog-/togvognstypen
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Nuværende opførsel - klik her for at starte/stoppe toget
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Vis togets ordrer
-STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer sk&#230;rmen over togets lokalitet
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer skærmen over togets lokalitet
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Send toget til remise. CTRL+klik vil kun servicere
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Tving toget til at fortsætte uden at vente på at signalet skifter til grønt
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Vend retningen af toget
@@ -2650,22 +2650,22 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Køretøj {COMMA} venter i værksted
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Kører til {TOWN} værksted
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Kører til {TOWN} værksted, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Service p&#229; {TOWN} v&#230;rksted
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Service p&#229; {TOWN} v&#230;rksted, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Service på {TOWN} værksted
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Service på {TOWN} værksted, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan ikke sende køretøj til værksted...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt værksted
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Køretøjer - klik på et køretøj for information
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Byg nye køretøjer (kræver et værksted)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Nuværende opførsel - klik her for at stoppe/starte køretøjet
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Vis køretøjets ordrer
-STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrer sk&#230;rmen over k&#248;ret&#248;jets lokalitet
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrer skærmen over køretøjets lokalitet
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Send køretøjet til værksted. CTRL+klik vil kun servicere
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Tving køretøjet til at vende
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Vis køretøjets detaljer
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Køretøjer - klik på et køretøj for mere information
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Byg nyt køretøj
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Træk køretøjet herhen for at sælge
-STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrer sk&#230;rmen over v&#230;rkstedets lokalitet
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrer skærmen over værkstedets lokalitet
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Liste over køretøjstyper - klik på køretøj for information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Byg det markerede køretøj
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nyt vejkøretøj er tilgængeligt!
@@ -2731,14 +2731,14 @@ STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Byg skib
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skibe - klik på et skib for information
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Byg nyt skib
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Træk det her for at sælge det
-STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer sk&#230;rmen over skibsdokkens lokalitet
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer skærmen over skibsdokkens lokalitet
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skibe - klik på et skib for information
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Byg nye skibe (kræver en dok)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Skibstypeliste - klik på skibstype for information
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Byg det markerede skib
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Nuværende opførsel - klik her for at starte/stoppe skibet
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Vis skibets ordrer
-STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer sk&#230;rmen over skibets lokalitet
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer skærmen over skibets lokalitet
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send skibet til dok. CTRL+klik vil kun servicere
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Vis detaljer omkring skibet
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nyt skib er tilgængeligt!
@@ -2798,7 +2798,7 @@ STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flyet er i luften
 STR_A019_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}, {CARGO}
 STR_A01A_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
-STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flyet skal v&#230;re stoppet i en hangar
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flyet skal være stoppet i en hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kan ikke sælge flyet...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Lufthavnskonstruktion
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Byg en lufthavn
@@ -2807,12 +2807,12 @@ STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Byg nyt 
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Fly - klik på et fly for information
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Byg nyt fly
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Træk fly her hen for at sælge
-STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrer sk&#230;rmen over hangarens lokalitet
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrer skærmen over hangarens lokalitet
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Flytypeliste - klik på en flytype for mere information
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Byg det markerede fly
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Nuværende opførsel - klik her for at starte/stoppe flyet
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Vis flyets ordrer
-STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrer sk&#230;rmen over flyets lokalitet
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrer skærmen over flyets lokalitet
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send flyet til en hangar. CTRL+klik vil kun servicere
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Vis detaljet omkring flyet
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nyt fly tilgængeligt!

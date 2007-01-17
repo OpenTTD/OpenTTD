@@ -2124,7 +2124,7 @@ STR_7044_MALE                                                   :{BLACK}Masculin
 STR_7045_FEMALE                                                 :{BLACK}Feminino
 STR_7046_NEW_FACE                                               :{BLACK}Novo Rosto
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Cancelar seleção da novo rosto
-STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Aceitar sele&#231;&#227;o da novo rosto
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Aceitar seleção da novo rosto
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Rostos masculinos
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Rostos femininos
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Gerar novo rosto aleatoriamente
