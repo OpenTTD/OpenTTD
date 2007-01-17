@@ -463,7 +463,11 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	_docommand_recursive = 1;
 
 	// cost estimation only?
-	if (!IsGeneratingWorld() && _shift_pressed && IsLocalPlayer() && !(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR))) {
+	if (!IsGeneratingWorld() &&
+			_shift_pressed &&
+			IsLocalPlayer() &&
+			!(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR)) &&
+			(cmd & 0xFF) != CMD_PAUSE) {
 		// estimate the cost.
 		res = proc(tile, flags, p1, p2);
 		if (CmdFailed(res)) {

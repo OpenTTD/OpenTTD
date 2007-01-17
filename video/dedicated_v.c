@@ -224,10 +224,8 @@ static void DedicatedHandleKeyInput(void)
 
 static void DedicatedVideoMainLoop(void)
 {
-	uint32 next_tick;
-	uint32 cur_ticks;
-
-	next_tick = GetTime() + 30;
+	uint32 cur_ticks = GetTime();
+	uint32 next_tick = cur_ticks + 30;
 
 	/* Signal handlers */
 #ifdef UNIX
@@ -269,15 +267,15 @@ static void DedicatedVideoMainLoop(void)
 	}
 
 	while (!_exit_game) {
+		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 		InteractiveRandom(); // randomness
 
 		if (!_dedicated_forks)
 			DedicatedHandleKeyInput();
 
 		cur_ticks = GetTime();
-
-		if (cur_ticks >= next_tick) {
-			next_tick += 30;
+		if (cur_ticks >= next_tick || cur_ticks < prev_cur_ticks) {
+			next_tick = cur_ticks + 30;
 
 			GameLoop();
 			_screen.dst_ptr = _dedicated_video_mem;

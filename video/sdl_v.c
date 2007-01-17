@@ -422,14 +422,15 @@ static void SdlVideoStop(void)
 
 static void SdlVideoMainLoop(void)
 {
-	uint32 next_tick = SDL_CALL SDL_GetTicks() + 30;
-	uint32 cur_ticks;
+	uint32 cur_ticks = SDL_CALL SDL_GetTicks();
+	uint32 next_tick = cur_ticks + 30;
 	uint32 pal_tick = 0;
 	uint32 mod;
 	int numkeys;
 	Uint8 *keys;
 
 	for (;;) {
+		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 		InteractiveRandom(); // randomness
 
 		while (PollEvent() == -1) {}
@@ -451,11 +452,8 @@ static void SdlVideoMainLoop(void)
 		}
 
 		cur_ticks = SDL_CALL SDL_GetTicks();
-		if ((_fast_forward && !_pause) || cur_ticks > next_tick)
-			next_tick = cur_ticks;
-
-		if (cur_ticks == next_tick) {
-			next_tick += 30;
+		if (cur_ticks >= next_tick || (_fast_forward && !_pause) || cur_ticks < prev_cur_ticks) {
+			next_tick = cur_ticks + 30;
 
 			_ctrl_pressed  = !!(mod & KMOD_CTRL);
 			_shift_pressed = !!(mod & KMOD_SHIFT);
