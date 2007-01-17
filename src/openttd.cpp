@@ -1517,29 +1517,37 @@ bool AfterLoadGame(void)
 	 *  room for PBS. Now in version 21 move it back :P. */
 	if (CheckSavegameVersion(21) && !CheckSavegameVersion(15)) {
 		for (TileIndex t = 0; t < map_size; t++) {
-			if (IsTileType(t, MP_RAILWAY)) {
-				if (HasSignals(t)) {
-					// convert PBS signals to combo-signals
-					if (HASBIT(_m[t].m4, 2)) SetSignalType(t, SIGTYPE_COMBO);
+			switch (GetTileType(t)) {
+				case MP_RAILWAY:
+					if (HasSignals(t)) {
+						// convert PBS signals to combo-signals
+						if (HASBIT(_m[t].m4, 2)) SetSignalType(t, SIGTYPE_COMBO);
 
-					// move the signal variant back
-					SetSignalVariant(t, HASBIT(_m[t].m4, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
-					CLRBIT(_m[t].m4, 3);
-				}
+						// move the signal variant back
+						SetSignalVariant(t, HASBIT(_m[t].m4, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
+						CLRBIT(_m[t].m4, 3);
+					}
 
-				// Clear PBS reservation on track
-				if (!IsTileDepotType(t, TRANSPORT_RAIL)) {
-					SB(_m[t].m4, 4, 4, 0);
-				} else {
+					// Clear PBS reservation on track
+					if (!IsTileDepotType(t, TRANSPORT_RAIL)) {
+						SB(_m[t].m4, 4, 4, 0);
+					} else {
+						CLRBIT(_m[t].m3, 6);
+					}
+					break;
+
+				case MP_STREET:
+					// Clear PBS reservation on crossing
+					if (IsLevelCrossing(t)) CLRBIT(_m[t].m5, 0);
+					break;
+
+				case MP_STATION:
+					// Clear PBS reservation on station
 					CLRBIT(_m[t].m3, 6);
-				}
+					break;
+
+				default: break;
 			}
-
-			// Clear PBS reservation on crossing
-			if (IsTileType(t, MP_STREET) && IsLevelCrossing(t)) CLRBIT(_m[t].m5, 0);
-
-			// Clear PBS reservation on station
-			if (IsTileType(t, MP_STATION)) CLRBIT(_m[t].m3, 6);
 		}
 	}
 
