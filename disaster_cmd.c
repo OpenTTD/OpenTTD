@@ -477,7 +477,7 @@ static void DisasterTick_3(Vehicle *v)
 		TileIndex tile;
 		uint ind;
 
-		x = v->x_pos - 15 * TILE_SIZE;
+		x = v->x_pos + (15 * TILE_SIZE);
 		y = v->y_pos;
 
 		if ( (uint)x > MapMaxX() * TILE_SIZE - 1)
@@ -672,7 +672,7 @@ static void DisasterTick_5_and_6(Vehicle *v)
 
 	tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (IsValidTile(tile) &&
-			(r=GetTileTrackStatus(tile,TRANSPORT_WATER),(byte)(r+(r >> 8)) == 0x3F) &&
+			(r=GetTileTrackStatus(tile,TRANSPORT_WATER),(byte)(r|(r >> 8)) == 0x3F) &&
 			!CHANCE16(1,90)) {
 		GetNewVehiclePos(v, &gp);
 		SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);

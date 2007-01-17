@@ -876,12 +876,19 @@ void InitWindowSystem(void)
 void UnInitWindowSystem(void)
 {
 	Window* const *wz;
-	// delete all malloced widgets
+
+restart_search:
+	/* Delete all windows, reset z-array.
+	 *When we find the window to delete, we need to restart the search
+	 * as deleting this window could cascade in deleting (many) others
+	 * anywhere in the z-array. We call DeleteWindow() so that it can properly
+	 * release own alloc'd memory, which otherwise could result in memleaks */
 	FOR_ALL_WINDOWS(wz) {
-		free((*wz)->widget);
-		(*wz)->widget = NULL;
-		(*wz)->widget_count = 0;
+		DeleteWindow(*wz);
+		goto restart_search;
 	}
+
+	assert(_last_z_window == _z_windows);
 }
 
 void ResetWindowSystem(void)

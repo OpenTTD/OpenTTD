@@ -264,6 +264,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 	const PlayerID owner = w->window_number;
 	static byte facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 	static uint16 cargo_filter = CARGO_ALL_SELECTED;
+	static Listing station_sort = {0, 0};
+
 	plstations_d *sl = &WP(w, plstations_d);
 
 	switch (e->event) {
@@ -281,7 +283,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 		sl->sort_list = NULL;
 		sl->flags = SL_REBUILD;
-		sl->sort_type = 0;
+		sl->sort_type = station_sort.criteria;
+		if (station_sort.order) sl->flags |= SL_ORDER;
 		sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 		break;
 	}
@@ -434,6 +437,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		}
 		case STATIONLIST_WIDGET_SORTBY: /*flip sorting method asc/desc*/
 			TOGGLEBIT(sl->flags, 0); //DESC-flag
+			station_sort.order = GB(sl->flags, 0, 1);
 			sl->flags |= SL_RESORT;
 			w->flags4 |= 5 << WF_TIMEOUT_SHL;
 			LowerWindowWidget(w, STATIONLIST_WIDGET_SORTBY);
@@ -469,6 +473,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		if (sl->sort_type != e->we.dropdown.index) {
 			// value has changed -> resort
 			sl->sort_type = e->we.dropdown.index;
+			station_sort.criteria = sl->sort_type;
 			sl->flags |= SL_RESORT;
 		}
 		SetWindowDirty(w);
