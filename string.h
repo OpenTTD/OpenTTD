@@ -55,6 +55,8 @@ static inline int ttd_strnlen(const char *str, int maxlen)
 	return t - str;
 }
 
+/** Convert the md5sum number to a 'hexadecimal' string, return next pos in buffer */
+char *md5sumToString(char *buf, const char *last, const uint8 md5sum[16]);
 
 typedef uint32 WChar;
 

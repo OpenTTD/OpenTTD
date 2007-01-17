@@ -40,9 +40,7 @@ static int parse_intlist(const char *p, int *items, int maxitems)
 
 static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show_params)
 {
-	char buff[512];
-	char *s;
-	uint i;
+	char buff[256];
 
 	/* Draw filename or not if it is not known (GRF sent over internet) */
 	if (c->filename != NULL) {
@@ -56,10 +54,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 	y += DrawStringMultiLine(x, y, STR_NEWGRF_GRF_ID, w);
 
 	/* Prepare and draw MD5 sum */
-	s = buff;
-	for (i = 0; i < lengthof(c->md5sum); i++) {
-		s += snprintf(s, lastof(buff) - s, "%02X", c->md5sum[i]);
-	}
+	md5sumToString(buff, lastof(buff), c->md5sum);
 	SetDParamStr(0, buff);
 	y += DrawStringMultiLine(x, y, STR_NEWGRF_MD5SUM, w);
 
@@ -75,8 +70,9 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 	}
 
 	/* Show flags */
-	if (HASBIT(c->flags, GCF_NOT_FOUND)) y += DrawStringMultiLine(x, y, STR_NEWGRF_NOT_FOUND, w);
-	if (HASBIT(c->flags, GCF_DISABLED))  y += DrawStringMultiLine(x, y, STR_NEWGRF_DISABLED, w);
+	if (HASBIT(c->flags, GCF_NOT_FOUND))  y += DrawStringMultiLine(x, y, STR_NEWGRF_NOT_FOUND, w);
+	if (HASBIT(c->flags, GCF_DISABLED))   y += DrawStringMultiLine(x, y, STR_NEWGRF_DISABLED, w);
+	if (HASBIT(c->flags, GCF_COMPATIBLE)) y += DrawStringMultiLine(x, y, STR_NEWGRF_COMPATIBLE_LOADED, w);
 
 	/* Draw GRF info if it exists */
 	if (c->info != NULL && strlen(c->info) != 0) {
@@ -283,9 +279,19 @@ static void NewGRFConfirmationCallback(bool yes_clicked)
 	if (yes_clicked) {
 		Window *w = FindWindowById(WC_GAME_OPTIONS, 0);
 		newgrf_d *nd = &WP(w, newgrf_d);
+		GRFConfig *c;
+		int i = 0;
 
 		CopyGRFConfigList(nd->orig_list, *nd->list);
 		ReloadNewGRFData();
+
+		/* Show new, updated list */
+		for (c = *nd->list; c != NULL && c != nd->sel; c = c->next, i++);
+		CopyGRFConfigList(nd->list, *nd->orig_list);
+		for (c = *nd->list; c != NULL && i > 0; c = c->next, i--);
+		nd->sel = c;
+
+		SetWindowDirty(w);
 	}
 }
 
@@ -312,7 +318,9 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					if (HASBIT(c->flags, GCF_NOT_FOUND) || HASBIT(c->flags, GCF_DISABLED)) {
 						pal = PALETTE_TO_RED;
 					} else if (HASBIT(c->flags, GCF_STATIC)) {
-						pal = PALETTE_TO_YELLOW;
+						pal = PALETTE_TO_GREY;
+					} else if (HASBIT(c->flags, GCF_COMPATIBLE)) {
+						pal = PALETTE_TO_ORANGE;
 					} else if (HASBIT(c->flags, GCF_ACTIVATED)) {
 						pal = PALETTE_TO_GREEN;
 					} else {

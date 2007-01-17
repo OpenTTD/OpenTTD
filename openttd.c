@@ -1157,8 +1157,17 @@ bool AfterLoadGame(void)
 	// convert road side to my format.
 	if (_opt.road_side) _opt.road_side = 1;
 
-	/* Check all NewGRFs are present */
-	if (!IsGoodGRFConfigList()) return false;
+	{
+		/* Check if all NewGRFs are present, we are very strict in MP mode */
+		GCF_Flags gcf_res = IsGoodGRFConfigList();
+		if (_networking && gcf_res != GCF_ACTIVATED) return false;
+
+		switch (gcf_res) {
+			case GCF_COMPATIBLE: _switch_mode_errorstr = STR_NEWGRF_COMPATIBLE_LOAD_WARNING; break;
+			case GCF_NOT_FOUND: return false; /*_switch_mode_errorstr = STR_NEWGRF_DISABLED_WARNING; break; */
+			default: break;
+		}
+	}
 
 	/* Update current year
 	 * must be done before loading sprites as some newgrfs check it */
