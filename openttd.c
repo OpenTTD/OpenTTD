@@ -157,8 +157,7 @@ static void showhelp(void)
 #endif
 		"  -i                  = Force to use the DOS palette\n"
 		"                          (use this if you see a lot of pink)\n"
-		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
-		"\n",
+		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n",
 		lastof(buf)
 	);
 

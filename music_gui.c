@@ -288,7 +288,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 
 #if 0
 		case 12: // save
-			ShowInfo("MusicTrackSelectionWndProc:save not implemented\n");
+			ShowInfo("MusicTrackSelectionWndProc:save not implemented");
 			break;
 #endif
 
