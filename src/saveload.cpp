@@ -1049,7 +1049,7 @@ static void UninitNoComp(void)
 
 typedef struct ThreadedSave {
 	uint count;
-	bool ff_state;
+	byte ff_state;
 	bool saveinprogress;
 	CursorID cursor;
 } ThreadedSave;
@@ -1397,8 +1397,8 @@ static inline SaveOrLoadResult AbortSaveLoad(void)
  * saving takes Aaaaages */
 void SaveFileStart(void)
 {
-	_ts.ff_state = (_fast_forward != 0);
-	_fast_forward = false;
+	_ts.ff_state = _fast_forward;
+	_fast_forward = 0;
 	if (_cursor.sprite == SPR_CURSOR_MOUSE) SetMouseCursor(SPR_CURSOR_ZZZ, PAL_NONE);
 
 	SendWindowMessage(WC_STATUS_BAR, 0, true, 0, 0);
