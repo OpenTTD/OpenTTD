@@ -1428,7 +1428,7 @@ static OTTDThread* save_thread;
 /** We have written the whole game into memory, _Savegame_pool, now find
  * and appropiate compressor and start writing to file.
  */
-static void* SaveFileToDisk(void *arg)
+static SaveOrLoadResult SaveFileToDisk(bool threaded)
 {
 	const SaveLoadFormat *fmt;
 	uint32 hdr[2];
@@ -1440,12 +1440,12 @@ static void* SaveFileToDisk(void *arg)
 		_sl.excpt_uninit();
 
 		fprintf(stderr, "Save game failed: %s.", _sl.excpt_msg);
-		if (arg != NULL) {
+		if (threaded) {
 			OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_ERROR);
 		} else {
 			SaveFileError();
 		}
-		return NULL;
+		return SL_ERROR;
 	}
 
 	fmt = GetSavegameFormat(_savegame_format);
@@ -1478,7 +1478,14 @@ static void* SaveFileToDisk(void *arg)
 	GetSavegameFormat("memory")->uninit_write(); // clean the memorypool
 	fclose(_sl.fh);
 
-	if (arg != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_DONE);
+	if (threaded) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_DONE);
+
+	return SL_OK;
+}
+
+static void* SaveFileToDiskThread(void *arg)
+{
+	SaveFileToDisk(true);
 	return NULL;
 }
 
@@ -1567,12 +1574,14 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 
 		SaveFileStart();
 		if (_network_server ||
-					(save_thread = OTTDCreateThread(&SaveFileToDisk, (void*)"")) == NULL) {
-			DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
-			SaveFileToDisk(NULL);
-			SaveFileDone();
-		}
+					(save_thread = OTTDCreateThread(&SaveFileToDiskThread, NULL)) == NULL) {
+			if (!_network_server) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
+			SaveOrLoadResult result = SaveFileToDisk(false);
+			SaveFileDone();
+
+			return result;
+		}
 	} else { /* LOAD game */
 		assert(mode == SL_LOAD);
 

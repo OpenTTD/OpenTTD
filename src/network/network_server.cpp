@@ -289,6 +289,8 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		file_pointer = fopen(filename, "rb");
 		fseek(file_pointer, 0, SEEK_END);
 
+		if (ftell(file_pointer) == 0) error("network savedump failed - zero sized savegame?");
+
 		// Now send the _frame_counter and how many packets are coming
 		p = NetworkSend_Init(PACKET_SERVER_MAP);
 		NetworkSend_uint8(p, MAP_PACKET_START);
