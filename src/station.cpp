@@ -312,3 +312,100 @@ StationRect& StationRect::operator = (Rect src)
 	return *this;
 }
 
+
+/************************************************************************/
+/*                     RoadStop implementation                          */
+/************************************************************************/
+
+/** Allocates a new RoadStop onto the pool, or recycles an unsed one
+ *  @return a pointer to the new roadstop
+ */
+void *RoadStop::operator new(size_t size)
+{
+	RoadStop *rs = AllocateRaw();
+	return rs;
+}
+
+/** Gets a RoadStop with a given index and allocates it when needed
+  * @return a pointer to the roadstop
+  */
+void *RoadStop::operator new(size_t size, int index)
+{
+	if (!AddBlockIfNeeded(&_RoadStop_pool, index)) {
+		error("RoadStops: failed loading savegame: too many RoadStops");
+	}
+
+	RoadStop *rs = GetRoadStop(index);
+	return rs;
+}
+
+void RoadStop::operator delete(void *p)
+{
+}
+
+void RoadStop::operator delete(void *p, int index)
+{
+}
+
+/** Initializes a RoadStop */
+RoadStop::RoadStop(TileIndex tile, StationID index)
+{
+	DEBUG(ms, cDebugCtorLevel,  "I+%3d at %d[0x%x]", index, tile, tile);
+	xy = tile;
+	used = true;
+	status = 3; //stop is free
+	next = NULL;
+	prev = NULL;
+	station = index;
+	num_vehicles = 0;
+}
+
+/** De-Initializes a RoadStops. This includes clearing all slots that vehicles might
+  * have and unlinks it from the linked list of road stops at the given station
+  */
+RoadStop::~RoadStop()
+{
+	Vehicle *v;
+
+	/* Clear the slot assignment of all vehicles heading for this road stop */
+	if (num_vehicles != 0) {
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_Road && v->u.road.slot == this) ClearSlot(v);
+		}
+	}
+	assert(num_vehicles == 0);
+
+	if (prev != NULL) prev->next = next;
+	if (next != NULL) next->prev = prev;
+
+	used = false;
+	DEBUG(ms, cDebugCtorLevel , "I- at %3d%d[0x%x]", station, xy, xy);
+
+	xy = INVALID_TILE;
+	station = INVALID_STATION;
+}
+
+
+/** Low-level function for allocating a RoadStop on the pool */
+RoadStop *RoadStop::AllocateRaw( void )
+{
+	RoadStop *rs;
+
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (rs = GetRoadStop(0); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) {
+		if (!IsValidRoadStop(rs)) {
+			RoadStopID index = rs->index;
+
+			memset(rs, 0, sizeof(*rs));
+			rs->index = index;
+
+			return rs;
+		}
+	}
+
+	/* Check if we can add a block to the pool */
+	if (AddBlockToPool(&_RoadStop_pool)) return AllocateRaw();
+
+	return NULL;
+}

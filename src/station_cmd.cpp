@@ -77,16 +77,6 @@ DEFINE_OLD_POOL(RoadStop, RoadStop, RoadStopPoolNewBlock, NULL)
 
 extern void UpdateAirplanesOnNewStation(Station *st);
 
-static void InitializeRoadStop(RoadStop *road_stop, RoadStop *previous, TileIndex tile, StationID index)
-{
-	road_stop->xy = tile;
-	road_stop->used = true;
-	road_stop->status = 3; //stop is free
-	road_stop->next = NULL;
-	road_stop->prev = previous;
-	road_stop->station = index;
-	road_stop->num_vehicles = 0;
-}
 
 RoadStop* GetPrimaryRoadStop(const Station* st, RoadStopType type)
 {
@@ -122,28 +112,6 @@ uint GetNumRoadStopsInStation(const Station* st, RoadStopType type)
 	return num;
 }
 
-RoadStop *AllocateRoadStop(void)
-{
-	RoadStop *rs;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (rs = GetRoadStop(0); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) {
-		if (!IsValidRoadStop(rs)) {
-			RoadStopID index = rs->index;
-
-			memset(rs, 0, sizeof(*rs));
-			rs->index = index;
-
-			return rs;
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_RoadStop_pool)) return AllocateRoadStop();
-
-	return NULL;
-}
 
 /* Calculate the radius of the station. Basicly it is the biggest
  *  radius that is available within the station */
@@ -1393,7 +1361,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	//give us a road stop in the list, and check if something went wrong
-	road_stop = AllocateRoadStop();
+	road_stop = new RoadStop(tile, INVALID_STATION);
 	if (road_stop == NULL) {
 		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
 	}
@@ -1443,7 +1411,8 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		*currstop = road_stop;
 
 		//initialize an empty station
-		InitializeRoadStop(road_stop, prev, tile, st->index);
+		road_stop->prev = prev;
+		road_stop->station = st->index;
 		if (!st->facilities) st->xy = tile;
 		st->facilities |= (type) ? FACIL_TRUCK_STOP : FACIL_BUS_STOP;
 		st->owner = _current_player;
@@ -1499,7 +1468,7 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 			*primary_stop = (*primary_stop)->next;
 		}
 
-		DeleteRoadStop(cur_stop);
+		delete cur_stop;
 		DoClearSquare(tile);
 		st->rect.AfterRemoveTile(st, tile);
 
@@ -2356,27 +2325,6 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 	return 0;
 }
 
-/**
- * Cleanup a RoadStop. Make sure no vehicles try to go to this roadstop.
- */
-void DestroyRoadStop(RoadStop* rs)
-{
-	Vehicle *v;
-
-	/* Clear the slot assignment of all vehicles heading for this road stop */
-	if (rs->num_vehicles != 0) {
-		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_Road && v->u.road.slot == rs) {
-				ClearSlot(v);
-			}
-		}
-	}
-	assert(rs->num_vehicles == 0);
-
-	if (rs->prev != NULL) rs->prev->next = rs->next;
-	if (rs->next != NULL) rs->next->prev = rs->prev;
-}
-
 
 void DeleteAllPlayerStations(void)
 {
@@ -3059,18 +3007,16 @@ static void Load_STNS(void)
 		 *  convert, if needed */
 		if (CheckSavegameVersion(6)) {
 			if (st->bus_tile_obsolete != 0) {
-				st->bus_stops = AllocateRoadStop();
+				st->bus_stops = new RoadStop(st->bus_tile_obsolete, st->index);
 				if (st->bus_stops == NULL)
 					error("Station: too many busstations in savegame");
 
-				InitializeRoadStop(st->bus_stops, NULL, st->bus_tile_obsolete, st->index);
 			}
 			if (st->lorry_tile_obsolete != 0) {
-				st->truck_stops = AllocateRoadStop();
+				st->truck_stops = new RoadStop(st->lorry_tile_obsolete, st->index);
 				if (st->truck_stops == NULL)
 					error("Station: too many truckstations in savegame");
 
-				InitializeRoadStop(st->truck_stops, NULL, st->lorry_tile_obsolete, st->index);
 			}
 		}
 	}
@@ -3094,12 +3040,8 @@ static void Load_ROADSTOP(void)
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
-		RoadStop *rs;
+		RoadStop *rs = new (index) RoadStop(INVALID_TILE, INVALID_STATION);
 
-		if (!AddBlockIfNeeded(&_RoadStop_pool, index))
-			error("RoadStops: failed loading savegame: too many RoadStops");
-
-		rs = GetRoadStop(index);
 		SlObject(rs, _roadstop_desc);
 	}
 }

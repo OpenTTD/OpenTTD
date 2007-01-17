@@ -53,6 +53,20 @@ typedef struct RoadStop {
 	StationID station;
 	struct RoadStop *next;
 	struct RoadStop *prev;
+
+	static const int cDebugCtorLevel = 3;
+
+	RoadStop(TileIndex tile, StationID index);
+	~RoadStop();
+
+	void *operator new (size_t size);
+	void operator delete(void *rs);
+
+	/* For loading games */
+	void *operator new (size_t size, int index);
+	void operator delete(void *rs, int index);
+
+	static RoadStop *AllocateRaw( void );
 } RoadStop;
 
 typedef struct StationSpecList {
@@ -246,14 +260,6 @@ DECLARE_OLD_POOL(RoadStop, RoadStop, 5, 2000)
 static inline bool IsValidRoadStop(const RoadStop *rs)
 {
 	return rs->used;
-}
-
-void DestroyRoadStop(RoadStop* rs);
-
-static inline void DeleteRoadStop(RoadStop *rs)
-{
-	DestroyRoadStop(rs);
-	rs->used = false;
 }
 
 #define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) if (IsValidRoadStop(rs))

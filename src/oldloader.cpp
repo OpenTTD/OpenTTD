@@ -314,27 +314,10 @@ static void FixOldStations(void)
 		}
 
 		/* Check if there is a bus or truck station, and convert to new format */
-		if (st->bus_tile_obsolete != 0) {
-			st->bus_stops = AllocateRoadStop();
-			st->bus_stops->xy = st->bus_tile_obsolete;
-			st->bus_stops->used = true;
-			st->bus_stops->status = 3;
-			st->bus_stops->station = st->index;
-			st->bus_stops->next = NULL;
-			st->bus_stops->prev = NULL;
-			st->bus_stops->num_vehicles = 0;
-		}
+		if (st->bus_tile_obsolete != 0) st->bus_stops = new RoadStop(st->bus_tile_obsolete, st->index);
 
-		if (st->lorry_tile_obsolete != 0) {
-			st->truck_stops = AllocateRoadStop();
-			st->truck_stops->xy = st->lorry_tile_obsolete;
-			st->truck_stops->used = true;
-			st->truck_stops->status = 3;
-			st->truck_stops->station = st->index;
-			st->truck_stops->next = NULL;
-			st->truck_stops->prev = NULL;
-			st->truck_stops->num_vehicles = 0;
-		}
+		if (st->lorry_tile_obsolete != 0) st->truck_stops = new RoadStop(st->lorry_tile_obsolete, st->index);
+
 	}
 }
 
