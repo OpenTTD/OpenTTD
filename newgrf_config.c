@@ -158,7 +158,7 @@ static void RemoveDuplicatesFromGRFConfigList(GRFConfig *list)
 
 	for (prev = list, cur = list->next; cur != NULL; prev = cur, cur = cur->next) {
 		if (cur->grfid != list->grfid) continue;
-		assert(HASBIT(cur->flags, GCF_STATIC));
+
 		prev->next = cur->next;
 		ClearGRFConfig(&cur);
 		cur = prev; // Just go back one so it continues as normal later on

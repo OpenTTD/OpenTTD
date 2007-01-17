@@ -106,19 +106,21 @@ public:
 	 *      - or the open list is empty (no route to destination).
 	 *      - or the maximum amount of loops reached - m_max_search_nodes (default = 10000)
 	 * @return true if the path was found */
-	inline bool FindPath(const Vehicle* v)
+	inline bool FindPath(const Vehicle *v)
 	{
 		m_veh = v;
 
+#ifndef NO_DEBUG_MESSAGES
 		CPerformanceTimer perf;
 		perf.Start();
+#endif /* !NO_DEBUG_MESSAGES */
+
 		Yapf().PfSetStartupNodes();
 
 		while (true) {
 			m_num_steps++;
-			Node* n = m_nodes.GetBestOpenNode();
-			if (n == NULL)
-				break;
+			Node *n = m_nodes.GetBestOpenNode();
+			if (n == NULL) break;
 
 			// if the best open node was worse than the best path found, we can finish
 			if (m_pBestDestNode != NULL && m_pBestDestNode->GetCost() < n->GetCostEstimate())
@@ -135,18 +137,25 @@ public:
 		}
 		bool bDestFound = (m_pBestDestNode != NULL);
 
-		int16 veh_idx = (m_veh != NULL) ? m_veh->unitnumber : 0;
-
-//		if (veh_idx != 433) return bDestFound;
-
+#ifndef NO_DEBUG_MESSAGES
 		perf.Stop();
-		int t = perf.Get(1000000);
-		_total_pf_time_us += t;
-		char ttc = Yapf().TransportTypeChar();
-		float cache_hit_ratio = (float)m_stats_cache_hits / (float)(m_stats_cache_hits + m_stats_cost_calcs) * 100.0f;
-		int cost = bDestFound ? m_pBestDestNode->m_cost : -1;
-		int dist = bDestFound ? m_pBestDestNode->m_estimate - m_pBestDestNode->m_cost : -1;
-		DEBUG(yapf, 3)("[YAPF][YAPF%c]%c%4d- %d us - %d rounds - %d open - %d closed - CHR %4.1f%% - c%d(sc%d, ts%d, o%d) -- ", ttc, bDestFound ? '-' : '!', veh_idx, t, m_num_steps, m_nodes.OpenCount(), m_nodes.ClosedCount(), cache_hit_ratio, cost, dist, m_perf_cost.Get(1000000), m_perf_slope_cost.Get(1000000), m_perf_ts_cost.Get(1000000), m_perf_other_cost.Get(1000000));
+		if (_debug_yapf_level >= 3) {
+			int t = perf.Get(1000000);
+			_total_pf_time_us += t;
+
+			UnitID veh_idx = (m_veh != NULL) ? m_veh->unitnumber : 0;
+			char ttc = Yapf().TransportTypeChar();
+			float cache_hit_ratio = (m_stats_cache_hits == 0) ? 0.0f : ((float)m_stats_cache_hits / (float)(m_stats_cache_hits + m_stats_cost_calcs) * 100.0f);
+			int cost = bDestFound ? m_pBestDestNode->m_cost : -1;
+			int dist = bDestFound ? m_pBestDestNode->m_estimate - m_pBestDestNode->m_cost : -1;
+
+			DEBUG(yapf, 3) ("[YAPF%c]%c%4d- %d us - %d rounds - %d open - %d closed - CHR %4.1f%% - c%d(sc%d, ts%d, o%d) -- ",
+			  ttc, bDestFound ? '-' : '!', veh_idx, t, m_num_steps, m_nodes.OpenCount(), m_nodes.ClosedCount(),
+			  cache_hit_ratio, cost, dist, m_perf_cost.Get(1000000), m_perf_slope_cost.Get(1000000),
+			  m_perf_ts_cost.Get(1000000), m_perf_other_cost.Get(1000000)
+			);
+		}
+#endif /* !NO_DEBUG_MESSAGES */
 		return bDestFound;
 	}
 

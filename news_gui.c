@@ -272,7 +272,6 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 	if (_total_news == MAX_NEWS && (_oldest_news == _current_news || _oldest_news == _forced_news))
 		MoveToNextItem();
 
-	_forced_news = INVALID_NEWS;
 	if (_total_news < MAX_NEWS) _total_news++;
 
 	/* Increase _latest_news. If we have no news yet, use _oldest news as an
@@ -555,16 +554,17 @@ static void ShowNewsMessage(NewsID i)
 
 void ShowLastNewsMessage(void)
 {
-	switch (_forced_news) {
-		case INVALID_NEWS: // Not forced any news yet, show the current one
-			ShowNewsMessage(_current_news);
-			break;
-		case 0: //
-			ShowNewsMessage(_total_news != MAX_NEWS ? _latest_news : MAX_NEWS - 1);
-			break;
-		default: // 'Scrolling' through news history show each one in turn
-			ShowNewsMessage(_forced_news - 1);
-			break;
+	if (_forced_news == INVALID_NEWS) {
+		/* Not forced any news yet, show the current one, unless a news window is
+		 * open (which can only be the current one), then show the previous item */
+		const Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
+		ShowNewsMessage((w == NULL) ? _current_news : decreaseIndex(_current_news));
+	} else if (_forced_news == _oldest_news) {
+		/* We have reached the oldest news, start anew with the latest */
+		ShowNewsMessage(_latest_news);
+	} else {
+		/* 'Scrolling' through news history show each one in turn */
+		ShowNewsMessage(decreaseIndex(_forced_news));
 	}
 }
 
@@ -889,7 +889,10 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 				(news == INVALID_STRING_ID || ni->string_id == news)) {
 			Window *w;
 
-			if (_forced_news == n || _current_news == n) MoveToNextItem();
+			/* If we delete a forced news and it is just before the current news
+			 * then we need to advance to the next news (if any) */
+			if (_forced_news == n) MoveToNextItem();
+			if (_forced_news == INVALID_NEWS && _current_news == n) MoveToNextItem();
 			_total_news--;
 
 			/* If this is the last news item, invalidate _latest_news */
@@ -908,7 +911,7 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 			 * We also need an update of the current, forced and visible (open window)
 			 * news's as this shifting could change the items they were pointing to */
 			if (_total_news != 0) {
-				NewsID i, visible_news;
+				NewsID visible_news, i;
 				w = FindWindowById(WC_NEWS_WINDOW, 0);
 				visible_news = (w != NULL) ? (NewsID)(WP(w, news_d).ni - _news_items) : INVALID_NEWS;
 
