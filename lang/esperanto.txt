@@ -14,7 +14,7 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Necesas ebena lando
 STR_0008_WAITING                                                :{BLACK}Atendas: {WHITE}{STRING}
-STR_0009                                                        :{WHITE} {CARGO}
+STR_0009                                                        :{WHITE}{CARGO}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (survoje de
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Akceptas: {WHITE}
@@ -1937,7 +1937,7 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...vi ja
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
-STR_SV_UNNAMED                                                  :Sennome
+STR_SV_UNNAMED                                                  :Sennoma
 STR_SV_TRAIN_NAME                                               :Trajno {COMMA}
 STR_SV_ROADVEH_NAME                                             :Vojveturilo {COMMA}
 STR_SV_SHIP_NAME                                                :Ŝipo {COMMA}
@@ -2980,6 +2980,7 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Aŭtomat
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Aŭtomate anstataŭu ĉiujn ŝipojn en la deponejo
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Aŭtomate anstataŭu ĉiujn aviadilojn en la hangaro
 
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Trajno{P "" j}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vojveturilo{P "" j}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Ŝipo{P "" j}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aviadilo{P "" j}
@@ -3054,7 +3055,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Ĉio krom {GOLD
 
 STR_GENERATE                                                    :{WHITE}Generu
 STR_RANDOM                                                      :{BLACK}Hazardigu
-STR_RANDOM_HELP                                                 :{BLACK}Ŝanĝo la hazardan enigon uzatan de la terengenerilo
+STR_RANDOM_HELP                                                 :{BLACK}Ŝanĝu la hazardan enigon uzatan de la terengenerilo
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Mondgenerado
 STR_RANDOM_SEED                                                 :{BLACK}Hazarda Enigo:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Klaku por enigi hazardan enigon

@@ -738,7 +738,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Salva Sc
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Gioca Scenario
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Gioca Heightmap
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Inizia un nuovo gioco usando la heightmap come terreno
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Sei sicuro di voler abbondonare questo scenario?
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Sei sicuro di voler abbandonare questo scenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Esci dall'editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...può essere costruita solo in città con una popolazione di almeno 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Sposta la data d'inizio indietro di un'anno
@@ -1144,7 +1144,7 @@ STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Usa YAP
 STR_TEMPERATE_LANDSCAPE                                         :Paesaggio 'temperato'
 STR_SUB_ARCTIC_LANDSCAPE                                        :Paesaggio 'sub-artico'
 STR_SUB_TROPICAL_LANDSCAPE                                      :Paesaggio 'sub-tropicale'
-STR_TOYLAND_LANDSCAPE                                           :paesaggio 'Città dei Giocattoli'
+STR_TOYLAND_LANDSCAPE                                           :Paesaggio 'Città dei Giocattoli'
 
 STR_CHEATS                                                      :{WHITE}Trucchi
 STR_CHEATS_TIP                                                  :{BLACK}Le caselle indicano se hai già utilizzato questo trucco in passato

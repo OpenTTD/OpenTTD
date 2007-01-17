@@ -313,36 +313,36 @@ STR_0151_MAP_OF_WORLD                                           :Карта на
 STR_0152_TOWN_DIRECTORY                                         :Списък с градове
 STR_0153_SUBSIDIES                                              :Субсидии
 
-STR_UNITS_IMPERIAL                                              :Английска
-STR_UNITS_METRIC                                                :Метрическа
-STR_UNITS_SI                                                    :СИ
+STR_UNITS_IMPERIAL                                              :имперска
+STR_UNITS_METRIC                                                :метрична
+STR_UNITS_SI                                                    :международна (SI)
 
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} мили/ч
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} м/ч
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/ч
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_SI                                           :{COMMA} м/с
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}к.с.
 STR_UNITS_POWER_METRIC                                          :{COMMA}кс
-STR_UNITS_POWER_SI                                              :{COMMA}кв
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}т.
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}т.
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}кг.
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тон{P "" ове}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тон{P "" ове}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тон{P "" а}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тон{P "" а}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} кг
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}галон
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}гал.
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}л.
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}куб. м.
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}м³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галон{P "" а}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} литър{P "" и}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} лит{P ър ри}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} куб. м.
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} тон сила
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ фунта
+STR_UNITS_FORCE_METRIC                                          :{COMMA} тон{P "" а}
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -924,7 +924,7 @@ STR_CURR_YTL                                                    :турска л
 STR_CURR_SKK                                                    :словашка крона (SKK)
 STR_CURR_BRR                                                    :бразилски реал (BRL)
 
-STR_CURR_CUSTOM                                                 :Поръчкова...
+STR_CURR_CUSTOM                                                 :Друга...
 
 STR_OPTIONS_LANG                                                :{BLACK}Език
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
