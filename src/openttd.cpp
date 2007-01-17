@@ -1159,6 +1159,7 @@ static inline RailType UpdateRailType(RailType rt, RailType min)
 
 bool AfterLoadGame(void)
 {
+	TileIndex map_size = MapSize();
 	Window *w;
 	ViewPort *vp;
 	Player *p;
@@ -1180,14 +1181,11 @@ bool AfterLoadGame(void)
 	    (4.3) version, so I just check when versions are older, and then
 	    walk through the whole map.. */
 	if (CheckSavegameVersionOldStyle(4, 3)) {
-		TileIndex tile = TileXY(0, 0);
-		uint w = MapSizeX();
-		uint h = MapSizeY();
-
-		BEGIN_TILE_LOOP(tile_cur, w, h, tile)
-			if (IsTileType(tile_cur, MP_WATER) && GetTileOwner(tile_cur) >= MAX_PLAYERS)
-				SetTileOwner(tile_cur, OWNER_WATER);
-		END_TILE_LOOP(tile_cur, w, h, tile)
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_WATER) && GetTileOwner(t) >= MAX_PLAYERS) {
+				SetTileOwner(t, OWNER_WATER);
+			}
+		}
 	}
 
 	// convert road side to my format.
@@ -1282,25 +1280,25 @@ bool AfterLoadGame(void)
 	 *  to use m2 (16bit big), so we need to clean m2, and that is where this is
 	 *  all about ;) */
 	if (CheckSavegameVersionOldStyle(6, 1)) {
-		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
-			switch (GetTileType(tile)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			switch (GetTileType(t)) {
 				case MP_HOUSE:
-					_m[tile].m4 = _m[tile].m2;
-					SetTownIndex(tile, CalcClosestTownFromTile(tile, (uint)-1)->index);
+					_m[t].m4 = _m[t].m2;
+					SetTownIndex(t, CalcClosestTownFromTile(t, (uint)-1)->index);
 					break;
 
 				case MP_STREET:
-					_m[tile].m4 |= (_m[tile].m2 << 4);
-					if (IsTileOwner(tile, OWNER_TOWN)) {
-						SetTownIndex(tile, CalcClosestTownFromTile(tile, (uint)-1)->index);
+					_m[t].m4 |= (_m[t].m2 << 4);
+					if (IsTileOwner(t, OWNER_TOWN)) {
+						SetTownIndex(t, CalcClosestTownFromTile(t, (uint)-1)->index);
 					} else {
-						SetTownIndex(tile, 0);
+						SetTownIndex(t, 0);
 					}
 					break;
 
 				default: break;
 			}
-		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
+		}
 	}
 
 	/* From version 9.0, we update the max passengers of a town (was sometimes negative
@@ -1335,49 +1333,47 @@ bool AfterLoadGame(void)
 	}
 
 	if (CheckSavegameVersion(42)) {
-		TileIndex map_end = MapSize();
-		TileIndex tile;
 		Vehicle* v;
 
-		for (tile = 0; tile != map_end; tile++) {
-			if (MayHaveBridgeAbove(tile)) ClearBridgeMiddle(tile);
-			if (IsBridgeTile(tile)) {
-				if (HASBIT(_m[tile].m5, 6)) { // middle part
-					Axis axis = (Axis)GB(_m[tile].m5, 0, 1);
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (MayHaveBridgeAbove(t)) ClearBridgeMiddle(t);
+			if (IsBridgeTile(t)) {
+				if (HASBIT(_m[t].m5, 6)) { // middle part
+					Axis axis = (Axis)GB(_m[t].m5, 0, 1);
 
-					if (HASBIT(_m[tile].m5, 5)) { // transport route under bridge?
-						if (GB(_m[tile].m5, 3, 2) == TRANSPORT_RAIL) {
+					if (HASBIT(_m[t].m5, 5)) { // transport route under bridge?
+						if (GB(_m[t].m5, 3, 2) == TRANSPORT_RAIL) {
 							MakeRailNormal(
-								tile,
-								GetTileOwner(tile),
+								t,
+								GetTileOwner(t),
 								axis == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X,
-								GetRailType(tile)
+								GetRailType(t)
 							);
 						} else {
-							TownID town = IsTileOwner(tile, OWNER_TOWN) ? ClosestTownFromTile(tile, (uint)-1)->index : 0;
+							TownID town = IsTileOwner(t, OWNER_TOWN) ? ClosestTownFromTile(t, (uint)-1)->index : 0;
 
 							MakeRoadNormal(
-								tile,
-								GetTileOwner(tile),
+								t,
+								GetTileOwner(t),
 								axis == AXIS_X ? ROAD_Y : ROAD_X,
 								town
 							);
 						}
 					} else {
-						if (GB(_m[tile].m5, 3, 2) == 0) {
-							MakeClear(tile, CLEAR_GRASS, 3);
+						if (GB(_m[t].m5, 3, 2) == 0) {
+							MakeClear(t, CLEAR_GRASS, 3);
 						} else {
-							MakeCanal(tile, GetTileOwner(tile));
+							MakeCanal(t, GetTileOwner(t));
 						}
 					}
-					SetBridgeMiddle(tile, axis);
+					SetBridgeMiddle(t, axis);
 				} else { // ramp
-					Axis axis = (Axis)GB(_m[tile].m5, 0, 1);
-					uint north_south = GB(_m[tile].m5, 5, 1);
+					Axis axis = (Axis)GB(_m[t].m5, 0, 1);
+					uint north_south = GB(_m[t].m5, 5, 1);
 					DiagDirection dir = ReverseDiagDir(XYNSToDiagDir(axis, north_south));
-					TransportType type = (TransportType)GB(_m[tile].m5, 1, 2);
+					TransportType type = (TransportType)GB(_m[t].m5, 1, 2);
 
-					_m[tile].m5 = 1 << 7 | type << 2 | dir;
+					_m[t].m5 = 1 << 7 | type << 2 | dir;
 				}
 			}
 		}
@@ -1412,7 +1408,6 @@ bool AfterLoadGame(void)
 	if (CheckSavegameVersion(24)) {
 		Vehicle *v;
 		uint i;
-		TileIndex t;
 		RailType min_rail = RAILTYPE_ELECTRIC;
 
 		for (i = 0; i < lengthof(_engines); i++) {
@@ -1433,7 +1428,7 @@ bool AfterLoadGame(void)
 		}
 
 		/* .. so we convert the entire map from normal to elrail (so maintain "fairness") */
-		for (t = 0; t < MapSize(); t++) {
+		for (TileIndex t = 0; t < map_size; t++) {
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
 					SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
@@ -1521,33 +1516,31 @@ bool AfterLoadGame(void)
 	/* From version 15, we moved a semaphore bit from bit 2 to bit 3 in m4, making
 	 *  room for PBS. Now in version 21 move it back :P. */
 	if (CheckSavegameVersion(21) && !CheckSavegameVersion(15)) {
-		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
-			if (IsTileType(tile, MP_RAILWAY)) {
-				if (HasSignals(tile)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_RAILWAY)) {
+				if (HasSignals(t)) {
 					// convert PBS signals to combo-signals
-					if (HASBIT(_m[tile].m4, 2)) SetSignalType(tile, SIGTYPE_COMBO);
+					if (HASBIT(_m[t].m4, 2)) SetSignalType(t, SIGTYPE_COMBO);
 
 					// move the signal variant back
-					SetSignalVariant(tile, HASBIT(_m[tile].m4, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
-					CLRBIT(_m[tile].m4, 3);
+					SetSignalVariant(t, HASBIT(_m[t].m4, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
+					CLRBIT(_m[t].m4, 3);
 				}
 
 				// Clear PBS reservation on track
-				if (!IsTileDepotType(tile, TRANSPORT_RAIL)) {
-					SB(_m[tile].m4, 4, 4, 0);
+				if (!IsTileDepotType(t, TRANSPORT_RAIL)) {
+					SB(_m[t].m4, 4, 4, 0);
 				} else {
-					CLRBIT(_m[tile].m3, 6);
+					CLRBIT(_m[t].m3, 6);
 				}
 			}
 
 			// Clear PBS reservation on crossing
-			if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile))
-				CLRBIT(_m[tile].m5, 0);
+			if (IsTileType(t, MP_STREET) && IsLevelCrossing(t)) CLRBIT(_m[t].m5, 0);
 
 			// Clear PBS reservation on station
-			if (IsTileType(tile, MP_STATION))
-				CLRBIT(_m[tile].m3, 6);
-		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
+			if (IsTileType(t, MP_STATION)) CLRBIT(_m[t].m3, 6);
+		}
 	}
 
 	if (CheckSavegameVersion(22))  UpdatePatches();
@@ -1627,11 +1620,11 @@ bool AfterLoadGame(void)
 	if (CheckSavegameVersion(32)) {
 		Industry *i;
 
-		BEGIN_TILE_LOOP(tile_cur, MapSizeX(), MapSizeY(), 0) {
-			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS)) {
-				MakeClear(tile_cur, CLEAR_GRASS, 3);
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_FIELDS)) {
+				MakeClear(t, CLEAR_GRASS, 3);
 			}
-		} END_TILE_LOOP(tile_cur, MapSizeX(), MapSizeY(), 0)
+		}
 
 		FOR_ALL_INDUSTRIES(i) {
 			uint j;
@@ -1671,30 +1664,30 @@ bool AfterLoadGame(void)
 	}
 
 	if (CheckSavegameVersion(43)) {
-		BEGIN_TILE_LOOP(tile_cur, MapSizeX(), MapSizeY(), 0) {
-			if (IsTileType(tile_cur, MP_INDUSTRY)) {
-				switch (GetIndustryGfx(tile_cur)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_INDUSTRY)) {
+				switch (GetIndustryGfx(t)) {
 					case GFX_POWERPLANT_SPARKS:
-						SetIndustryAnimationState(tile_cur, GB(_m[tile_cur].m1, 2, 5));
+						SetIndustryAnimationState(t, GB(_m[t].m1, 2, 5));
 						break;
 
 					case GFX_OILWELL_ANIMATED_1:
 					case GFX_OILWELL_ANIMATED_2:
 					case GFX_OILWELL_ANIMATED_3:
-						SetIndustryAnimationState(tile_cur, GB(_m[tile_cur].m1, 0, 2));
+						SetIndustryAnimationState(t, GB(_m[t].m1, 0, 2));
 						break;
 
 					case GFX_COAL_MINE_TOWER_ANIMATED:
 					case GFX_COPPER_MINE_TOWER_ANIMATED:
 					case GFX_GOLD_MINE_TOWER_ANIMATED:
-						 SetIndustryAnimationState(tile_cur, _m[tile_cur].m1);
+						 SetIndustryAnimationState(t, _m[t].m1);
 						 break;
 
 					default: /* No animation states to change */
 						break;
 				}
 			}
-		} END_TILE_LOOP(tile_cur, MapSizeX(), MapSizeY(), 0)
+		}
 	}
 
 	if (CheckSavegameVersion(44)) {
