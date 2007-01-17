@@ -33,6 +33,7 @@
 #include "network/network.h"
 #include "yapf/yapf.h"
 #include "date.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "helpers.hpp"
@@ -2813,11 +2814,25 @@ UnitID GetFreeUnitNumber(byte type)
 	return unit;
 }
 
-static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, EngineID parent_engine_type, CargoID cargo_type)
+static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, EngineID parent_engine_type, const Vehicle *v)
 {
-	SpriteID map;
+	SpriteID map = PAL_NONE;
 	const Player *p = GetPlayer(player);
 	LiveryScheme scheme = LS_DEFAULT;
+	CargoID cargo_type = v == NULL ? (CargoID)CT_INVALID : v->cargo_type;
+
+	/* Check if we should use the colour map callback */
+	if (HASBIT(EngInfo(engine_type)->callbackmask, CBM_COLOUR_REMAP)) {
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
+		/* A return value of 0xC000 is stated to "use the default two-color
+		 * maps" which happens to be the failure action too... */
+		if (callback != CALLBACK_FAILED && callback != 0xC000) {
+			map = GB(callback, 0, 14);
+			/* If bit 14 is set, then the company colours are applied to the
+			 * map else it's returned as-is. */
+			if (!HASBIT(callback, 14)) return map;
+		}
+	}
 
 	/* The default livery is always available for use, but its in_use flag determines
 	 * whether any _other_ liveries are in use. */
@@ -2894,16 +2909,19 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 		if (!p->livery[scheme].in_use) scheme = LS_DEFAULT;
 	}
 
-	map = HASBIT(EngInfo(engine_type)->misc_flags, EF_USES_2CC) ?
-		(SPR_2CCMAP_BASE + p->livery[scheme].colour1 + p->livery[scheme].colour2 * 16) :
-		(PALETTE_RECOLOR_START + p->livery[scheme].colour1);
+	bool twocc = HASBIT(EngInfo(engine_type)->misc_flags, EF_USES_2CC);
+
+	if (map == PAL_NONE) map = twocc ? (SpriteID)SPR_2CCMAP_BASE : (SpriteID)PALETTE_RECOLOR_START;
+
+	map += p->livery[scheme].colour1;
+	if (twocc) map += p->livery[scheme].colour2 * 16;
 
 	return map;
 }
 
 SpriteID GetEnginePalette(EngineID engine_type, PlayerID player)
 {
-	return GetEngineColourMap(engine_type, player, INVALID_ENGINE, CT_INVALID);
+	return GetEngineColourMap(engine_type, player, INVALID_ENGINE, NULL);
 }
 
 SpriteID GetVehiclePalette(const Vehicle *v)
@@ -2912,12 +2930,10 @@ SpriteID GetVehiclePalette(const Vehicle *v)
 		return GetEngineColourMap(
 			(v->u.rail.first_engine != INVALID_ENGINE && (IsArticulatedPart(v) || UsesWagonOverride(v))) ?
 				v->u.rail.first_engine : v->engine_type,
-			v->owner,
-			v->u.rail.first_engine,
-			v->cargo_type);
+			v->owner, v->u.rail.first_engine, v);
 	}
 
-	return GetEngineColourMap(v->engine_type, v->owner, INVALID_ENGINE, v->cargo_type);
+	return GetEngineColourMap(v->engine_type, v->owner, INVALID_ENGINE, v);
 }
 
 // Save and load of vehicles
