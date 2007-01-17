@@ -1903,6 +1903,14 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 		} while (source->cargo_count > 0 && (dest = dest->next) != NULL);
 		dest = v;
 	} while ((source = source->next) != NULL);
+
+	/*
+	 * The of the train will be incorrect at this moment. This is due
+	 * to the fact that removing the old wagon updates the weight of
+	 * the complete train, which is without the weight of cargo we just
+	 * moved back into some (of the) new wagon(s).
+	 */
+	if (dest->type == VEH_Train) TrainConsistChanged(dest->first);
 }
 
 static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, const EngineID engine_type)
@@ -2140,7 +2148,7 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 	const Player *p = GetPlayer(v->owner);
 	byte flags = 0;
 	int32 cost, temp_cost = 0;
-	bool stopped = false;
+	bool stopped;
 
 	/* Remember the length in case we need to trim train later on
 	 * If it's not a train, the value is unused
@@ -2158,11 +2166,11 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 
 	assert(v->vehstatus & VS_STOPPED); // the vehicle should have been stopped in VehicleEnteredDepotThisTick() if needed
 
-	if (v->leave_depot_instantly) {
-		// we stopped the vehicle to do this, so we have to remember to start it again when we are done
-		// we need to store this info as the engine might be replaced and lose this info
-		stopped = true;
-	}
+	/* Remember the flag v->leave_depot_instantly because if we replace the vehicle, the vehicle holding this flag will be sold
+	 * If it is set, then we only stopped the vehicle to replace it (if needed) and we will need to start it again.
+	 * We also need to reset the flag since it should remain false except from when the vehicle enters a depot until autoreplace is handled in the same tick */
+	stopped = v->leave_depot_instantly;
+	v->leave_depot_instantly = false;
 
 	for (;;) {
 		cost = 0;

@@ -1462,6 +1462,11 @@ bool AfterLoadGame(void)
 				v->u.road.slot_age = 0;
 			}
 		}
+	} else {
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_Road && v->u.road.slot != NULL) v->u.road.slot->num_vehicles++;
+		}
 	}
 
 	if (CheckSavegameVersion(26)) {
