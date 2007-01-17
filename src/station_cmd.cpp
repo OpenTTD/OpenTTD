@@ -68,7 +68,10 @@ static void RoadStopPoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (rs = GetRoadStop(start_item); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) rs->index = start_item++;
+	for (rs = GetRoadStop(start_item); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) {
+		rs->xy    = INVALID_TILE;
+		rs->index = start_item++;
+	}
 }
 
 DEFINE_OLD_POOL(Station, Station, StationPoolNewBlock, StationPoolCleanBlock)
@@ -2847,7 +2850,7 @@ extern const TileTypeProcs _tile_type_station_procs = {
 
 static const SaveLoad _roadstop_desc[] = {
 	SLE_VAR(RoadStop,xy,           SLE_UINT32),
-	SLE_VAR(RoadStop,used,         SLE_BOOL),
+	SLE_CONDNULL(1, 0, 44),
 	SLE_VAR(RoadStop,status,       SLE_UINT8),
 	/* Index was saved in some versions, but this is not needed */
 	SLE_CONDNULL(4, 0, 8),

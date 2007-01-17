@@ -350,7 +350,6 @@ void RoadStop::operator delete(void *p, int index)
 /** Initializes a RoadStop */
 RoadStop::RoadStop(TileIndex tile) :
 	xy(tile),
-	used(true),
 	status(3), // stop is free
 	num_vehicles(0),
 	next(NULL),
@@ -377,7 +376,6 @@ RoadStop::~RoadStop()
 	if (prev != NULL) prev->next = next;
 	if (next != NULL) next->prev = prev;
 
-	used = false;
 	DEBUG(ms, cDebugCtorLevel , "I- at %d[0x%x]", xy, xy);
 
 	xy = INVALID_TILE;

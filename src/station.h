@@ -46,9 +46,8 @@ enum {
 
 typedef struct RoadStop {
 	TileIndex xy;
-	bool used;
-	byte status;
 	RoadStopID index;
+	byte status;
 	byte num_vehicles;
 	struct RoadStop *next;
 	struct RoadStop *prev;
@@ -258,7 +257,7 @@ DECLARE_OLD_POOL(RoadStop, RoadStop, 5, 2000)
  */
 static inline bool IsValidRoadStop(const RoadStop *rs)
 {
-	return rs->used;
+	return rs->xy != INVALID_TILE;
 }
 
 #define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) if (IsValidRoadStop(rs))
