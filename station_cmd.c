@@ -2129,7 +2129,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	foreach_draw_tile_seq(dtss, t->seq) {
 		image = dtss->image;
-		if (HASBIT(image, 30)) {
+		if (relocation == 0 || HASBIT(image, 30)) {
 			CLRBIT(image, 30);
 			image += rti->total_offset;
 		} else {

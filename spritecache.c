@@ -9,7 +9,9 @@
 #include "table/sprites.h"
 #include "fileio.h"
 
-#define SPRITE_CACHE_SIZE 1024*1024
+#ifndef SPRITE_CACHE_SIZE
+# define SPRITE_CACHE_SIZE 2*1024*1024
+#endif /* SPRITE_CACHE_SIZE */
 
 #define WANT_NEW_LRU
 
