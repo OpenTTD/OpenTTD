@@ -67,16 +67,25 @@ BUILDING THE OS/2 VERSION
 Compiler
 --------
 
-Open Watcom 1.3 was used to build OpenTTD (earlier versions will
-NOT work). See http://www.openwatcom.org/ to download it. It may
-also be possible to build OpenTTD with GCC: I attempted this
-before using Open Watcom, but found the tools available for OS/2
-at the time to be a bit more tricky to get working.
+Innotek GCC, an OS/2 port of the popular GCC compiler, was used to build OpenTTD.
+See www.innotek.de for more information. You WILL need a reasonably UNIX-like
+build environment in order to build OpenTTD successfully - the following link
+may help to set one up (although some of the links from that page are broken):
 
-Due to complexities in my set-up, I actually used the Win32 version
-of Open Watcom to initially compile OpenTTD for OS/2. There should
-be no reason of course why the OS/2 version cannot be used, and I
-have subsequently built OpenTTD successfully this way.
+   http://www.mozilla.org/ports/os2/gccsetup.html
+
+To build, you should, if your environment is set up well enough, be able to just
+type `./configure' (or `sh configure' if you're using the OS/2 shell) and `make'.
+
+A note on Open Watcom
+---------------------
+
+Open Watcom C/C++ was previously used to build OpenTTD (version 0.4.x and earlier).
+However, due to advanced C++ features used in the YAPF portion of OpenTTD 0.5
+in particular, the compiler is no longer able to build the game at the moment.
+Hopefully one day Open Watcom will be able to catch up and we will be able to build
+the game once again (it's easier than getting an OS/2 UNIX-like environment set up
+in my opinion!), but until then, OpenTTD 0.5 and later can only be built with GCC.
 
 Libraries Required
 ------------------
@@ -87,41 +96,22 @@ to an IDE project file and built a library. Do not use the makefiles
 provided, they are not designed for Watcom (apart from SDL):
 
 - zlib
-  http://www.zlib.org/ - contains a makefile for OS/2, but is out
-  of date and uses EMX, ignore this
+  http://www.zlib.org/
 
 - libpng
-  http://www.libpng.org/ - contains an EMX/gcc makefile, ignore this
+  http://www.libpng.org/
 
 - SDL for OS/2
   ftp://ftp.netlabs.org/pub/sdl/sdl-1.2.7-src-20051222.zip used for
   0.4.7
 
-If you do not wish to build the libraries yourself, pre-built versions
-can be downloaded from the Files section at
+- Freetype
+  http://freetype.sourceforge.net/
+
+Currently, there are no pre-built libraries available for GCC. If you manage to get
+OpenTTD working on Watcom though (do let us know if this is the case!), pre-built
+versions can be downloaded from the Files section at
 http://sourceforge.net/projects/openttd/ - see "os2-useful-v1.1.zip".
-
-A Note About Subversion Revision Numbers
-----------------------------------------
-
-The project file uses a bit of a hack to find out the SVN revision number and
-create an appropriate rev.c file. You'll need the SVN tools in your path
-(specifically, "svnversion"). If "svnversion" can't be found, a generic rev.c
-with the revision set to "norev000" will be created. To specifically force a
-version number, set the environment variable "RELEASE" to the number (eg, "0.3.6")
--before- starting the Open Watcom IDE (which must be launched from the same shell
-session). Also, beware, as you WILL cause incompatibilities if you try to
-play a multiplayer game with a different version.
-
-Compiling
----------
-
-To compile, open the os/os2/openttd.wpj file in the IDE and first build
-the strgen.exe target. This will build the .lng file generator, and will
-also attempt to build all the language files (plus the table\strings.h
-file which is required for openttd.exe to be built). Once strgen.exe and
-the language files are built successfully, you can build the openttd.exe
-target.
 
 Contact Information
 -------------------
@@ -130,4 +120,6 @@ If you have any questions regarding OS/2 issues, please contact me
 (owen@owenrudge.net) and I'll try to help you out. For general OpenTTD
 issues, see the Contacting section of readme.txt.
 
-- Owen Rudge
+Thanks to Paul Smedley for his help with getting OpenTTD to compile under GCC on OS/2.
+
+- Owen Rudge, 8th January 2007

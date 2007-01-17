@@ -9,52 +9,81 @@
 #include "gui.h"
 #include "functions.h"
 #include "macros.h"
+#include "fios.h"
 
-#include <direct.h>
+#include <dirent.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <time.h>
-#include <dos.h>
+#ifndef __INNOTEK_LIBC__
+	#include <dos.h>
+#endif
 
 #define INCL_WIN
 #define INCL_WINCLIPBOARD
 
 #include <os2.h>
-#include <i86.h>
+#ifndef __INNOTEK_LIBC__
+	#include <i86.h>
+#endif
 
 bool FiosIsRoot(const char *file)
 {
-	return path[3] == '\0';
+	return file[3] == '\0';
 }
 
 void FiosGetDrives(void)
 {
-	FiosItem *fios;
 	unsigned disk, disk2, save, total;
 
+#ifndef __INNOTEK_LIBC__
 	_dos_getdrive(&save); // save original drive
+#else
+	save = _getdrive(); // save original drive
+	total = 'z';
+#endif
 
 	/* get an available drive letter */
+#ifndef __INNOTEK_LIBC__
 	for (disk = 1;; disk++) {
 		_dos_setdrive(disk, &total);
+#else
+	for (disk = 'A';; disk++) {
+		_chdrive(disk);
+#endif
 		if (disk >= total) return;
+
+#ifndef __INNOTEK_LIBC__
 		_dos_getdrive(&disk2);
+#else
+		disk2 = _getdrive();
+#endif
 
 		if (disk == disk2) {
 			FiosItem *fios = FiosAlloc();
 			fios->type = FIOS_TYPE_DRIVE;
 			fios->mtime = 0;
+#ifndef __INNOTEK_LIBC__
 			snprintf(fios->name, lengthof(fios->name),  "%c:", 'A' + disk - 1);
+#else
+			snprintf(fios->name, lengthof(fios->name),  "%c:", disk);
+#endif
 			ttd_strlcpy(fios->title, fios->name, lengthof(fios->title));
 		}
 	}
 
-	_dos_setdrive(save, &total); // restore the original drive
+	/* Restore the original drive */
+#ifndef __INNOTEK_LIBC__
+	_dos_setdrive(save, &total);
+#else
+	_chdrive(save);
+#endif
 }
 
 bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
 {
+#ifndef __INNOTEK_LIBC__
 	struct diskfree_t free;
 	char drive = path[0] - 'A' + 1;
 
@@ -64,6 +93,20 @@ bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
 	}
 
 	return false;
+#else
+	uint32 free = 0;
+
+#ifdef HAS_STATVFS
+	{
+		struct statvfs s;
+
+		if (statvfs(path, &s) != 0) return false;
+		free = (uint64)s.f_frsize * s.f_bavail >> 20;
+	}
+#endif
+	if (tot != NULL) *tot = free;
+	return true;
+#endif
 }
 
 bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
@@ -78,15 +121,16 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 
 static void ChangeWorkingDirectory(char *exe)
 {
-	char *s = strrchr(exe, '\\');
+	char *s = strrchr(exe, PATHSEPCHAR);
+
 	if (s != NULL) {
 		*s = '\0';
 		chdir(exe);
-		*s = '\\';
+		*s = PATHSEPCHAR;
 	}
 }
 
-void ShowInfo(const char *str)
+void ShowInfo(const unsigned char *str)
 {
 	HAB hab;
 	HMQ hmq;
@@ -96,14 +140,14 @@ void ShowInfo(const char *str)
 	hmq = WinCreateMsgQueue((hab = WinInitialize(0)), 0);
 
 	// display the box
-	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, str, "OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_INFORMATION);
+	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, str, (const unsigned char *)"OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_INFORMATION);
 
 	// terminate PM env.
 	WinDestroyMsgQueue(hmq);
 	WinTerminate(hab);
 }
 
-void ShowOSErrorBox(const char *buf)
+void ShowOSErrorBox(const unsigned char *buf)
 {
 	HAB hab;
 	HMQ hmq;
@@ -113,7 +157,7 @@ void ShowOSErrorBox(const char *buf)
 	hmq = WinCreateMsgQueue((hab = WinInitialize(0)), 0);
 
 	// display the box
-	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, buf, "OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_ERROR);
+	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, buf, (const unsigned char *)"OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_ERROR);
 
 	// terminate PM env.
 	WinDestroyMsgQueue(hmq);
@@ -134,12 +178,12 @@ void DeterminePaths(void)
 {
 	char *s;
 
-	_paths.game_data_dir = malloc(MAX_PATH);
+	_paths.game_data_dir = (char *)malloc(MAX_PATH);
 	ttd_strlcpy(_paths.game_data_dir, GAME_DATA_DIR, MAX_PATH);
-	#if defined SECOND_DATA_DIR
+#if defined SECOND_DATA_DIR
 	_paths.second_data_dir = malloc(MAX_PATH);
 	ttd_strlcpy(_paths.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
-	#endif
+#endif
 
 #if defined(USE_HOMEDIR)
 	{
@@ -155,17 +199,17 @@ void DeterminePaths(void)
 
 #else /* not defined(USE_HOMEDIR) */
 
-	_paths.personal_dir = malloc(MAX_PATH);
+	_paths.personal_dir = (char *)malloc(MAX_PATH);
 	ttd_strlcpy(_paths.personal_dir, PERSONAL_DIR, MAX_PATH);
 
 	// check if absolute or relative path
-	s = strchr(_paths.personal_dir, '\\');
+	s = strchr(_paths.personal_dir, PATHSEPCHAR);
 
 	// add absolute path
 	if (s == NULL || _paths.personal_dir != s) {
 		getcwd(_paths.personal_dir, MAX_PATH);
 		s = strchr(_paths.personal_dir, 0);
-		*s++ = '\\';
+		*s++ = PATHSEPCHAR;
 		ttd_strlcpy(s, PERSONAL_DIR, MAX_PATH);
 	}
 
@@ -174,14 +218,14 @@ void DeterminePaths(void)
 	s = strchr(_paths.personal_dir, 0);
 
 	// append a / ?
-	if (s[-1] != '\\') strcpy(s, "\\");
+	if (s[-1] != PATHSEPCHAR) strcpy(s, PATHSEP);
 
 	_paths.save_dir = str_fmt("%ssave", _paths.personal_dir);
-	_paths.autosave_dir = str_fmt("%s\\autosave", _paths.save_dir);
+	_paths.autosave_dir = str_fmt("%s" PATHSEP "autosave", _paths.save_dir);
 	_paths.scenario_dir = str_fmt("%sscenario", _paths.personal_dir);
-	_paths.heightmap_dir = str_fmt("%sscenario\\heightmap", _paths.personal_dir);
-	_paths.gm_dir = str_fmt("%sgm\\", _paths.game_data_dir);
-	_paths.data_dir = str_fmt("%sdata\\", _paths.game_data_dir);
+	_paths.heightmap_dir = str_fmt("%sscenario" PATHSEP "heightmap", _paths.personal_dir);
+	_paths.gm_dir = str_fmt("%sgm" PATHSEP, _paths.game_data_dir);
+	_paths.data_dir = str_fmt("%sdata" PATHSEP, _paths.game_data_dir);
 
 	if (_config_file == NULL)
 		_config_file = str_fmt("%sopenttd.cfg", _paths.personal_dir);
@@ -194,15 +238,23 @@ void DeterminePaths(void)
 	_paths.lang_dir = malloc( MAX_PATH );
 	ttd_strlcpy( _paths.lang_dir, CUSTOM_LANG_DIR, MAX_PATH);
 #else
-	_paths.lang_dir = str_fmt("%slang\\", _paths.game_data_dir);
+	_paths.lang_dir = str_fmt("%slang" PATHSEP, _paths.game_data_dir);
 #endif
 
 	// create necessary folders
+#ifndef __INNOTEK_LIBC__
 	mkdir(_paths.personal_dir);
 	mkdir(_paths.save_dir);
 	mkdir(_paths.autosave_dir);
 	mkdir(_paths.scenario_dir);
 	mkdir(_paths.heightmap_dir);
+#else
+	mkdir(_paths.personal_dir, 0755);
+	mkdir(_paths.save_dir, 0755);
+	mkdir(_paths.autosave_dir, 0755);
+	mkdir(_paths.scenario_dir, 0755);
+	mkdir(_paths.heightmap_dir, 0755);
+#endif
 }
 
 /**
@@ -214,6 +266,8 @@ void DeterminePaths(void)
  */
 bool InsertTextBufferClipboard(Textbuf *tb)
 {
+/* XXX -- Currently no clipboard support implemented with GCC */
+#ifndef __INNOTEK_LIBC__
 	HAB hab = 0;
 
 	if (WinOpenClipbrd(hab))
@@ -252,14 +306,18 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 
 		WinCloseClipbrd(hab);
 	}
-
+#endif
 	return false;
 }
 
 
 void CSleep(int milliseconds)
 {
-	delay(milliseconds);
+#ifndef __INNOTEK_LIBC__
+ 	delay(milliseconds);
+#else
+	usleep(milliseconds * 1000);
+#endif
 }
 
 const char *FS2OTTD(const char *name) {return name;}

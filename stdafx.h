@@ -180,7 +180,7 @@
 # endif
 #endif /* WIN32 || __OS2__ || WIN64 */
 
-#if defined(WIN32) || defined(WIN64) || defined(__OS2__)
+#if defined(WIN32) || defined(WIN64) || defined(__OS2__) && !defined(__INNOTEK_LIBC__)
 # define PATHSEP "\\"
 # define PATHSEPCHAR '\\'
 #else
