@@ -225,6 +225,9 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 	BmpData data;
 	BmpBuffer buffer;
 
+	// Init BmpData
+	memset(&data, 0, sizeof(data));
+
 	f = fopen(filename, "rb");
 	if (f == NULL) {
 		ShowErrorMessage(STR_PNGMAP_ERR_FILE_NOT_FOUND, STR_BMPMAP_ERROR, 0, 0);
@@ -300,11 +303,11 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 	if ((img_width * num_div) / img_height > ((width * num_div) / height)) {
 		/* Image is wider than map - center vertically */
 		img_scale = (width * num_div) / img_width;
-		row_pad = (height - ((img_height * img_scale) / num_div)) / 2;
+		row_pad = (1 + height - ((img_height * img_scale) / num_div)) / 2;
 	} else {
 		/* Image is taller than map - center horizontally */
 		img_scale = (height * num_div) / img_height;
-		col_pad = (width - ((img_width * img_scale) / num_div)) / 2;
+		col_pad = (1 + width - ((img_width * img_scale) / num_div)) / 2;
 	}
 
 	/* Form the landscape */
@@ -318,8 +321,8 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 
 			/* Check if current tile is within the 1-pixel map edge or padding regions */
 			if ((DistanceFromEdge(tile) <= 1) ||
-					(row < row_pad) || (row >= (img_height + row_pad)) ||
-					(col < col_pad) || (col >= (img_width  + col_pad))) {
+					(row < row_pad) || (row >= (height - row_pad - 1)) ||
+					(col < col_pad) || (col >= (width  - col_pad - 1))) {
 				SetTileHeight(tile, 0);
 			} else {
 				/* Use nearest neighbor resizing to scale map data.

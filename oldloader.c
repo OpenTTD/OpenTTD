@@ -723,7 +723,6 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 }
 
 static PlayerID _current_player_id;
-static uint16 _old_inaugurated_year;
 static int32 _old_yearly;
 
 static const OldChunks player_yearly_chunk[] = {
@@ -938,9 +937,9 @@ static const OldChunks player_chunk[] = {
 	OCL_CHUNK( 3, OldPlayerYearly ),
 	OCL_CHUNK( 1, OldPlayerEconomy ),
 
-	OCL_VAR ( OC_UINT16,   1,    &_old_inaugurated_year ),
-	OCL_SVAR(   OC_TILE, Player, last_build_coordinate ),
-	OCL_SVAR(  OC_UINT8, Player, num_valid_stat_ent ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Player, inaugurated_year),
+	OCL_SVAR(                  OC_TILE, Player, last_build_coordinate ),
+	OCL_SVAR(                 OC_UINT8, Player, num_valid_stat_ent ),
 
 	OCL_CHUNK( 1, OldPlayerAI ),
 
@@ -989,7 +988,7 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 		p->money64 = p->player_money = p->current_loan = 100000;
 
 	_player_colors[num] = p->player_color;
-	p->inaugurated_year = _old_inaugurated_year;
+	p->inaugurated_year -= ORIGINAL_BASE_YEAR;
 	if (p->location_of_house == 0xFFFF)
 		p->location_of_house = 0;
 
