@@ -2078,7 +2078,7 @@ static void DrawTile_Station(TileInfo *ti)
 		SpriteID pal;
 
 		image = dtss->image;
-		if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
+		if (relocation == 0 || HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += rti->total_offset;
 		} else {
 			image += relocation;
