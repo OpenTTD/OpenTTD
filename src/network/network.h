@@ -190,6 +190,8 @@ void NetworkDisconnect(void);
 
 VARDEF bool _network_server;     ///< network-server is active
 VARDEF bool _network_available;  ///< is network mode available?
+VARDEF bool _network_dedicated;  ///< are we a dedicated server?
+VARDEF bool _network_advertise;  ///< is the server advertising to the master server?
 
 #else /* ENABLE_NETWORK */
 /* Network function stubs when networking is disabled */
@@ -200,12 +202,12 @@ static inline void NetworkShutDown(void) {}
 #define _networking 0
 #define _network_server 0
 #define _network_available 0
+#define _network_dedicated 0
+#define _network_advertise 0
 
 #endif /* ENABLE_NETWORK */
 
-/* These variables must always be registered! */
-VARDEF bool _network_dedicated;  ///< are we a dedicated server?
-VARDEF bool _network_advertise;  ///< is the server advertising to the master server?
+/* Thss variable must always be registered! */
 VARDEF PlayerID _network_playas; ///< an id to play as.. (see players.h:Players)
 
 #endif /* NETWORK_H */
