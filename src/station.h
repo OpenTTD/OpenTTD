@@ -66,7 +66,7 @@ typedef struct RoadStop {
 	void *operator new (size_t size, int index);
 	void operator delete(void *rs, int index);
 
-	static RoadStop *AllocateRaw( void );
+	static RoadStop *AllocateRaw(void);
 } RoadStop;
 
 typedef struct StationSpecList {

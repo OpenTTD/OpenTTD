@@ -348,16 +348,16 @@ void RoadStop::operator delete(void *p, int index)
 }
 
 /** Initializes a RoadStop */
-RoadStop::RoadStop(TileIndex tile, StationID index)
+RoadStop::RoadStop(TileIndex tile, StationID index) :
+	xy(tile),
+	used(true),
+	status(3), // stop is free
+	num_vehicles(0),
+	station(index),
+	next(NULL),
+	prev(NULL)
 {
 	DEBUG(ms, cDebugCtorLevel,  "I+%3d at %d[0x%x]", index, tile, tile);
-	xy = tile;
-	used = true;
-	status = 3; //stop is free
-	next = NULL;
-	prev = NULL;
-	station = index;
-	num_vehicles = 0;
 }
 
 /** De-Initializes a RoadStops. This includes clearing all slots that vehicles might
@@ -365,10 +365,10 @@ RoadStop::RoadStop(TileIndex tile, StationID index)
   */
 RoadStop::~RoadStop()
 {
-	Vehicle *v;
-
 	/* Clear the slot assignment of all vehicles heading for this road stop */
 	if (num_vehicles != 0) {
+		Vehicle *v;
+
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == VEH_Road && v->u.road.slot == this) ClearSlot(v);
 		}
@@ -379,7 +379,7 @@ RoadStop::~RoadStop()
 	if (next != NULL) next->prev = prev;
 
 	used = false;
-	DEBUG(ms, cDebugCtorLevel , "I- at %3d%d[0x%x]", station, xy, xy);
+	DEBUG(ms, cDebugCtorLevel , "I-%3d at %d[0x%x]", station, xy, xy);
 
 	xy = INVALID_TILE;
 	station = INVALID_STATION;
