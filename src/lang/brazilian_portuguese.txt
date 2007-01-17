@@ -2096,8 +2096,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Balanço
 STR_7027_LOAN                                                   :{WHITE}Empréstimo
 STR_MAX_LOAN                                                    :{WHITE}Empréstimo Máximo:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
-STR_7029_BORROW                                                 :{BLACK}Pedir emprestado {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Pagar empréstimo {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Pedir {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Pagar {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...o empréstimo máximo permitido é de {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Não é possível pedir mais dinheiro emprestado...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...não há empréstimo para pagar
@@ -2124,7 +2124,7 @@ STR_7044_MALE                                                   :{BLACK}Masculin
 STR_7045_FEMALE                                                 :{BLACK}Feminino
 STR_7046_NEW_FACE                                               :{BLACK}Novo Rosto
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Cancelar seleção da novo rosto
-STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Aceitar selecção da novo rosto
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Aceitar sele&#231;&#227;o da novo rosto
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Rostos masculinos
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Rostos femininos
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Gerar novo rosto aleatoriamente

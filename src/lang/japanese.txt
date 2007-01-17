@@ -167,7 +167,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}終了
 STR_00C8_YES                                                    :{BLACK}はい
 STR_00C9_NO                                                     :{BLACK}いいえ
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}このゲームを終了して、{STRING}に戻してもよろしいですか？
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}&#12371;&#12398;&#12466;&#12540;&#12512;&#12434;&#32066;&#20102;&#12375;&#12390;&#12289;{}{STRING}&#12395;&#25147;&#12375;&#12390;&#12418;&#12424;&#12429;&#12375;&#12356;&#12391;&#12377;&#12363;&#65311;
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -591,8 +591,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}車両�
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}貨物の受け取りの変化
 STR_020E_SUBSIDIES                                              :{YELLOW}助成金
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}一般情報
-STR_MESSAGES_ALL                                                :{YELLOW}すべてのメッセージ種類を：切 / 要約 / 完全
-STR_MESSAGE_SOUND                                               :{YELLOW}要約ニュースを表示するときに、サウンドを再生
+STR_MESSAGES_ALL                                                :{YELLOW}&#12377;&#12409;&#12390;&#12398;&#12513;&#12483;&#12475;&#12540;&#12472;&#31278;&#39006;&#12434;&#65306;&#20999;&#65295;&#27010;&#35201;&#65295;&#23436;&#20840;
+STR_MESSAGE_SOUND                                               :{YELLOW}&#27010;&#35201;&#12491;&#12517;&#12540;&#12473;&#12434;&#34920;&#31034;&#12377;&#12427;&#12392;&#12365;&#12395;&#12289;&#12469;&#12454;&#12531;&#12489;&#12434;&#20877;&#29983;
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...前の行き先から遠すぎます
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}{NUM}{}({STRING} レベル) に当たった最高の会社
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}{NUM}の会社リーグ表
@@ -753,7 +753,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}町の�
 STR_02B6                                                        :{STRING} - {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}最後のメッセージ／報道を表示します
 STR_OFF                                                         :切
-STR_SUMMARY                                                     :粗筋
+STR_SUMMARY                                                     :&#27010;&#35201;
 STR_FULL                                                        :完全
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :市町村のリスト
@@ -1013,14 +1013,14 @@ STR_CONFIG_PATCHES_OFF                                          :切
 STR_CONFIG_PATCHES_ON                                           :入
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}状況バーに車両速度を表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}傾斜地／海岸上の建設を許容：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}より現実的な受け取る地域を使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}&#12424;&#12426;&#29694;&#23455;&#30340;&#12394;&#21463;&#20837;&#12428;&#12427;&#22320;&#22495;&#12434;&#20351;&#29992;&#65306;{ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}より多くの町有の道路／橋などの破壊を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}超長型列車の作成を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}列車の現実的な加速を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}列車／船舶が直角で曲げれないようにする：{ORANGE}{STRING}{LTBLUE}（NPF が必要）
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}隣接した駅を一つの駅に統合：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}全負荷が入の場合、何でもの貨物が「全負荷」となるときに出発：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}改良の読み込むアルゴリズムを使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}&#25913;&#33391;&#12375;&#12383;&#35501;&#12415;&#36796;&#12416;&#12450;&#12523;&#12468;&#12522;&#12474;&#12512;&#12434;&#20351;&#29992;&#65306;{ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}車両を次第に読み込む：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}インフレ：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}需要のあるときのみ駅へ貨物を運送：{ORANGE}{STRING}
@@ -1038,7 +1038,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}マウ�
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}町議会の買収を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}不統一の駅を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}新型グローバルパスファインダー（NPF）：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}重い列車のシミュレーションのための重量乗数の指定：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}&#37325;&#12356;&#21015;&#36554;&#12398;&#12471;&#12511;&#12517;&#12524;&#12540;&#12471;&#12519;&#12531;&#12398;&#12383;&#12417;&#12398;&#37325;&#37327;&#20055;&#25968;&#12398;&#35373;&#23450;&#65306;{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}常に小型空港の建設を許容：{ORANGE}{STRING}
 
@@ -1048,7 +1048,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :切
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :入（停止中の車両を取り除く）
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :入（すべての車両）
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}列車の損益が赤字となったときは報告：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}車両の購入期限がない：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}&#36554;&#20001;&#12398;&#36092;&#20837;&#21487;&#33021;&#26399;&#38480;&#12364;&#12394;&#12356;&#65306;{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}車両が古くなるとき自動交換
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}車両が最高使用年数の {ORANGE}{STRING}{LTBLUE} ヶ月間前／後に自動交換
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}自動交換するための最小資金：{ORANGE}{STRING}
@@ -1109,7 +1109,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}船舶�
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}船舶のデフォルトの修理間隔：{ORANGE}切
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}故障を切にすると修理も切にする：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}貨車の速度制限を使用：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}電気鉄道を切にする：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}&#38651;&#37444;&#12434;&#20999;&#12395;&#12377;&#12427;&#65306;{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}色刷ニュースの開始年：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}開始年：{ORANGE}{STRING}
@@ -1220,8 +1220,8 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}線路�
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}列車の全般を販売するにはここへドラッグします
 
-STR_DRAG_DROP                                                   :{BLACK}ドラッグアンドドロップ
-STR_STATION_DRAG_DROP                                           :{BLACK}ドラッグとドロップで駅を建設します
+STR_DRAG_DROP                                                   :{BLACK}&#33258;&#21205;&#12469;&#12452;&#12474;
+STR_STATION_DRAG_DROP                                           :{BLACK}&#12489;&#12521;&#12483;&#12464;&#12450;&#12531;&#12489;&#12489;&#12525;&#12483;&#12503;&#12391;&#39365;&#12434;&#24314;&#35373;&#12375;&#12414;&#12377;
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}駅の種類を選択します
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}駅の種類を選択します
 
@@ -1518,7 +1518,7 @@ STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}掘削�
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}すでに海水位です
 STR_1004_TOO_HIGH                                               :{WHITE}高すぎます
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}適当な線路がありません
-STR_1007_ALREADY_BUILT                                          :{WHITE}...既に建設されました
+STR_1007_ALREADY_BUILT                                          :{WHITE}...&#12377;&#12391;&#12395;&#24314;&#35373;&#12373;&#12428;&#12414;&#12375;&#12383;
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}先に線路を破壊しなければなりません
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}鉄道の建設
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}電鉄の建設
@@ -1529,8 +1529,8 @@ STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}ここ�
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}ここに駅が建設できません
 STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}ここに信号が建設できません
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}ここに線路が建設できません
-STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}ここから線路が破壊できません
-STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}ここから信号が破壊できません
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}&#12371;&#12371;&#12395;&#32218;&#36335;&#12364;&#30772;&#22730;&#12391;&#12365;&#12414;&#12379;&#12435;
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}&#12371;&#12371;&#12395;&#30772;&#22730;&#12391;&#12365;&#12427;&#20449;&#21495;&#12364;&#12354;&#12426;&#12414;&#12379;&#12435;
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}電車庫の配置
 STR_1015_RAILROAD_CONSTRUCTION                                  :鉄道の建設
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :電鉄の建設
@@ -1680,7 +1680,7 @@ STR_205C_PIGGY_BANK                                             :ブタ型貯金
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{TOWN}　{STRING}
+STR_INDUSTRY_FORMAT                                             :{TOWN}{STRING}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
@@ -1771,9 +1771,9 @@ STR_3060_AIRPORT                                                :空港
 STR_3061_TRUCK_LOADING_AREA                                     :荷役所
 STR_3062_BUS_STATION                                            :バス停
 STR_3063_SHIP_DOCK                                              :埠頭
-STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}提案の位置の範囲をハイライトします
-STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}提案の位置の範囲をハイライトしません
-STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}提案の位置の範囲をハイライト
+STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}&#39365;&#12398;&#21463;&#20837;&#12428;&#12427;&#22320;&#22495;&#12434;&#12495;&#12452;&#12521;&#12452;&#12488;&#12375;&#12414;&#12377;
+STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}&#39365;&#12398;&#21463;&#20837;&#12428;&#12427;&#22320;&#22495;&#12434;&#12495;&#12452;&#12521;&#12452;&#12488;&#12375;&#12414;&#12379;&#12435;
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}&#39365;&#12398;&#21463;&#20837;&#12428;&#12427;&#22320;&#22495;&#12434;&#12495;&#12452;&#12521;&#12452;&#12488;
 STR_3068_DOCK                                                   :{WHITE}埠頭
 STR_3069_BUOY                                                   :ブイ
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...ブイがあります
@@ -2482,7 +2482,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :磁気浮上式
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}電車庫
-STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀{}{STATION}で初めての到着！
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}&#30010;&#27665;&#12398;&#31069;&#36032;{}&#21021;&#21015;&#36554;&#12364;{STATION}&#12395;&#21040;&#30528;&#65281;
 STR_8802_DETAILS                                                :{WHITE}{STRING}（詳細）
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}列車があります
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2546,7 +2546,7 @@ STR_REFIT                                                       :{BLACK}再装�
 STR_REFIT_TIP                                                   :{BLACK}貨物の種類を選択してください。Control+クリックすると、再装備をキャンセルします。
 STR_REFIT_ORDER                                                 :（{STRING}に再装備）
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE}（指令）
-STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 指名終了 - -
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - &#25351;&#20196;&#32066;&#20102; - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}修理
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}鉄道車両が購入できません...
@@ -2675,8 +2675,8 @@ STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}価格�
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}道路車両を名付ける
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}道路車両が名付けません...
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}道路車両を名付ける
-STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀！{}{STATION}で初めてのバスが到着！
-STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀！{}{STATION}で初めてのトラックが到着！
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}&#30010;&#27665;&#12398;&#31069;&#36032;&#65281;{}&#21021;&#12496;&#12473;&#12364;{STATION}&#12395;&#21040;&#30528;&#65281;
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}&#30010;&#27665;&#12398;&#31069;&#36032;&#65281;{}&#21021;&#12488;&#12521;&#12483;&#12463;&#12364;{STATION}&#12395;&#21040;&#30528;&#65281;
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}交通事故！{}列車に衝突、運転者が死亡
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}交通事故！{}列車に衝突、{COMMA}人が死亡
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}車両が逆転させられません...
@@ -2748,7 +2748,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}船舶�
 
 STR_9831_NAME_SHIP                                              :{WHITE}船舶を名付ける
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}船舶が名付けられません...
-STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀...{}{STATION}で初めての船舶が到着！
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}&#30010;&#27665;&#12398;&#31069;&#36032;&#65281;{}&#21021;&#33337;&#33334;&#12364;{STATION}&#12395;&#21040;&#30528;&#65281;
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}通過点として使えるブイを設置します
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}ここにブイが設置できません
 STR_9836_RENAME                                                 :{BLACK}名称を変更
@@ -2822,7 +2822,7 @@ STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}価格�
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}飛行機を名付ける
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}飛行機が名付けられません...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}飛行機を名付ける
-STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民が祝賀！{}{STATION}で初めての飛行機が到着！
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}&#30010;&#27665;&#12398;&#31069;&#36032;&#65281;{}&#21021;&#39131;&#34892;&#27231;&#12364;{STATION}&#12395;&#21040;&#30528;&#65281;
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}墜落事故！{}{COMMA}人が{STATION}で死亡
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}墜落事故！{}燃料切れ、{COMMA}人が死亡
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}

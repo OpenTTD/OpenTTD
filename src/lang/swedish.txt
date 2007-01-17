@@ -1117,6 +1117,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Avsluta
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Lugn ekonomi (flera små ändringar)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillåt inköp av aktier från andra företag
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vid utdragning av signaler, placera en signal var: {ORANGE}{STRING} ruta
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg automatiskt semaforer innan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position av verktygsraden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Vänster
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centrerad

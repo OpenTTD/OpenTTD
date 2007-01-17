@@ -84,7 +84,7 @@ STR_004B_BATTERY                                                :Baterija
 STR_004C_PLASTIC                                                :Plastika
 STR_004D_FIZZY_DRINK                                            :Gazirana pijaca
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} potnikov
+STR_QUANTITY_PASSENGERS                                         :{COMMA} potnik{P "" a i ov}
 STR_QUANTITY_COAL                                               :{WEIGHT} ton premoga
 STR_QUANTITY_MAIL                                               :{COMMA} vrec poste
 STR_QUANTITY_OIL                                                :{VOLUME} nafte
@@ -1013,54 +1013,54 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Nastavit
 STR_CONFIG_PATCHES_OFF                                          :Izklopi
 STR_CONFIG_PATCHES_ON                                           :Vklopi
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Prikaz hitrosti vozil v vrstici stanja: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Dovoli gradnjo his na nagibih ali obali: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Dovoli gradnjo hi&#353; na nagibih ali obali: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Dovoli bolj resnicni obmocni zajem postaj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest, mostov, itd.: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Omogoci gradnjo zelo dolgih vlakov: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Omogoci bolj resnicne pospeske vlakov: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prepreci vlakom in ladjam 90-stopinjsko zavijanje: {ORANGE}{STRING} {LTBLUE} (potrebuje NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Zdruzi zelezniske postaje, ki si stojijo blizu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Omogo&#269;i gradnjo zelo dolgih vlakov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Omogo&#269;i bolj resni&#269;ne pospe&#353;ke vlakov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prepre&#269;i vlakom in ladjam 90-stopinjske zavoje: {ORANGE}{STRING} {LTBLUE} (potrebuje NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Zdru&#382;i &#382;elezni&#353;ke postaje, ki si stojijo blizu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Zapusti postajo ko je ves tovor napolnjen ob podukazu 'napolni do vrha': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Uporabi izboljsan algoritem polnjenja: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Uporabi izbolj&#353;an algoritem polnjenja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Postopno polni vozila: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflacija: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Dostavi tovor postaji le ob povprasevanju: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Dostavi tovor postaji le ob povpra&#353;evanju: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Dovoli gradnjo zelo dolgih mostov: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Dovoli ukaz 'pojdi v garazo': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Dovoli ukaz 'pojdi v gara&#382;o': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Dovoli gradnjo industrije surovin: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Dovoli vec enakih industrij na mesto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Dovoli ve&#269; enakih industrij na mesto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industrije enakega tipa lahko stojijo skupaj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vedno pokazi dolg datum v vrstici stanja: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vedno poka&#382;i dolg datum v vrstici stanja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Pokaz signalov na vozni smeri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Prikaz okna financ na koncu leta: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch zdruzljivo neprekinjeno rokovanje: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch zdru&#382;ljivo neprekinjeno rokovanje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Cestna vozila v vrsti (s quantum efekti): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Premakni okno, ko je miska na robu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Premakni okno, ko je mi&#353;ka na robu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Dovoli podkupovanje mestnih oblasti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Neenake postaje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo skupno iskanje poti (NPF, prevlada NTP): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Koeficient teže tovora za simulacijo tezkih vlakov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Koeficient te&#382;e tovora za simulacijo te&#382;kih vlakov: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vedno dovoli majhna letalisca: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Opozori, ce se vlak izgubi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Pregled ukazov vozila: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :da, toda izloci ustavljena vozila
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :da, toda izlo&#269;i ustavljena vozila
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :vseh vozil
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Opozori, ce je dobicek vlaka negativen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozila nikoli ne dotrajajo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autoobnovi vozila, ko se postarajo
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoobnovi, ko je vozilo {ORANGE}{STRING}{LTBLUE} mesecev pred/po najvecji starosti
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autoobnovi najmanj potrebnega denarja za obnovo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Trajanje sporocila o napaki: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Prikaz stevila prebivalcev ob imenu mesta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Samoobnovi vozila, ko se postarajo
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Samoobnovi, ko je vozilo {ORANGE}{STRING}{LTBLUE} mesecev pred/po najve&#269;ji starosti
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Samoobnovi najmanj potrebnega denarja za obnovo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Trajanje sporo&#269;ila o napaki: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Prikaz &#353;tevila prebivalcev ob imenu mesta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Prozorna drevesa (ob prozornih zgradbah): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Urejevalnik terena: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Najvecja oddaljenost od roba za naftne rafinerije {ORANGE}{STRING}
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Najve&#269;ja oddaljenost od roba za naftne rafinerije {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Nadmorska visina snezne odeje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Valovitost terena (samo TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Zelo zglajen
@@ -1071,53 +1071,53 @@ STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algorit
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Brez
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Izboljsan
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Zasuk visinskega zemljevida: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Nasprotna urina smer
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Zasuk vi&#353;inskega zemljevida: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Nasprotno urini smeri
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Urina smer
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Visina, do katere sega raven tip terena: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Najvecja razsiritev postaje: {ORANGE}{STRING} {RED}Pozor: Visoka vrednost upocasnjuje igro
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Avtomatski servis helikopterjev na pristajaliscu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Pripni orodje za teren k orodju za gradnjo cest/zeleznic itd.: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Avtomatski servis helikopterjev na pristajali&#353;&#269;u: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Pripni orodje za teren k orodju za gradnjo cest/&#382;eleznic itd.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Obrni smer premika okna: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Prikaz merilnega nasveta med uporabo gradbenih orodij: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Prikaz znakov podjetij: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Brez
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Lastno podjetje
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Vsa podjetja
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Izberi skupinski pogovor z <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Izberi skupinski pogovor z/s <ENTER>: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Najvec vlakov na igralca: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Najvec cestnih vozil na igralca: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Najvec letal na igralca: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Najvec ladij na igralca: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Najve&#269; vlakov na igralca: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Najve&#269; cestnih vozil na igralca: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Najve&#269; letal na igralca: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Najve&#269; ladij na igralca: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Onemogoci vlake za racunalnik: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Onemogoci cestna vozila za racunalnik: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Onemogoci letala za racunalnik: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Onemogoci ladje za racunalnik: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Onemogo&#269;i vlake za ra&#269;unalnik: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Onemogo&#269;i cestna vozila za ra&#269;unalnik: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Onemogo&#269;i letala za ra&#269;unalnik: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Onemogo&#269;i ladje za ra&#269;unalnik: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Omogoci novo inteligenco (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Omogoci inteligence v vec igralcih (poskusno): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Omogo&#269;i novo UI (alfa): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Omogo&#269;i UI v ve&#269;igralskem na&#269;inu (poskusno): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}onemogoceno
 STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Privzeto obdobje servisiranja za cestna vozila: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Privzeto obdobje servisiranja za cestna vozila: {ORANGE}onemogoceno
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Privzeto obdobje servisiranja za letala: {ORANGE}{STRING} dni/%
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Privzeto obdobje servisiranja za letala: {ORANGE}onemogoceno
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Privzeto obdobje servisiranja za letala: {ORANGE}onemogo&#269;eno
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Privzeto obdobje servisiranja za ladje: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Privzeto obdobje servisiranja za ladje: {ORANGE}onemogoceno
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Onemogoci servisiranje, ce so onemogocene okvare: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Onemogo&#269;i servisiranje, &#269;e so onemogo&#269;ene okvare: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Omogoci omejitve hitrosti vagonov: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Onemogoci elektricne tire: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Onemogo&#269;i elektri&#269;ne tire: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Barvni casopis se pojavi leta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Barvni &#269;asopis se pojavi leta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Zacetno leto: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Zakljucno leto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Zaklju&#269;no leto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Omogoci gladko ekonomijo (vec manjsih sprememb)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Dovoli kupovanje delnic od drugih podjetij
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Med vlecenjem postavi signale vsakih: {ORANGE}{STRING} ploscic
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Med vle&#269;enjem postavi signale vsakih: {ORANGE}{STRING} plo&#353;&#269;ic
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Samodejno postavi semaforje pred: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozicija glavne orodne vrstice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Levo
@@ -1133,12 +1133,12 @@ STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Postaje
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomija
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Tekmeci
 
-STR_CONFIG_PATCHES_DISABLED                                     :dizejblano
+STR_CONFIG_PATCHES_DISABLED                                     :onemogoceno
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Spremeni vrednost
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Nekatera ali vsa privzeta obdobja servisiranja spodaj niso zdruzljiva z izborom! 5-90% in 30-800 dni je veljavno
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Nekatera ali vsa privzeta obdobja servisiranja spodaj niso zdru&#382;ljiva z izborom! 5-90% in 30-800 dni je veljavno
 STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Uporabi YAPF za ladje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Uporabi YAPF za cestna vozila: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Uporabi YAPF za vlake: {ORANGE}{STRING}
@@ -1598,7 +1598,7 @@ STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} m
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Imena mest - kliknite na ime za pogled na mesto
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Premakni celotni pogled na mesto
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Spremeni ime mesta
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Potnikov prejsnji mesec: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Potnikov prej&#353;nji mesec: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Poste prejsnji mesec: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Visok pisarniski blok
 STR_2010_OFFICE_BLOCK                                           :Pisarniski blok
@@ -2169,7 +2169,7 @@ STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nemogoca
 STR_7072_VIEW_HQ                                                :{BLACK}Poglej sedez podjetja
 STR_RELOCATE_HQ                                                 :{BLACK}Preseli sedez
 STR_COMPANY_PASSWORD                                            :{BLACK}Geslo
-STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Zaščitite svoje podjetje z geslom, da preprečite priključitev drugih uporabnikov k podjetju.
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Za&#353;&#269;iti svoje podjetje z geslom, da prepre&#269;i&#353; priklju&#269;itev drugih uporabnikov k podjetju.
 STR_SET_COMPANY_PASSWORD                                        :Nastavi geslo podjetja
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svetovna recesija!{}{}Ekonomisti se bojijo najhujšega ob trenutnem poteku dogodkov!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Konec recesije!{}{}Izboljsanje trgovanja povecuje zaupanje domace industrije, gospodarstvo napreduje!
@@ -2194,13 +2194,13 @@ STR_LIVERY_MONORAIL                                             :enotirna lokomo
 STR_LIVERY_MAGLEV                                               :magnetna lokomotiva
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :potniski vagon (para)
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :potni&#353;ki vagon (para)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :potniski vagon (diesel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :potniski vagon (elektricni)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :potniski vagon (elektri&#269;ni)
 STR_LIVERY_FREIGHT_WAGON                                        :tovorni vagon
 STR_LIVERY_BUS                                                  :avtobus
 STR_LIVERY_TRUCK                                                :tovornjak
-STR_LIVERY_PASSENGER_SHIP                                       :potniska ladja
+STR_LIVERY_PASSENGER_SHIP                                       :potni&#353;ka ladja
 STR_LIVERY_FREIGHT_SHIP                                         :tovorna ladja
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Majhno letalo
@@ -2243,7 +2243,7 @@ STR_8017_SH_30_ELECTRIC                                         :SH '30' (Elektr
 STR_8018_SH_40_ELECTRIC                                         :SH '40' (Elektricna)
 STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Elektricna)
 STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Elektricna)
-STR_801B_PASSENGER_CAR                                          :Potniski vagon
+STR_801B_PASSENGER_CAR                                          :Potni&#353;ki vagon
 STR_801C_MAIL_VAN                                               :Postni vagon
 STR_801D_COAL_CAR                                               :Vagon za premog
 STR_801E_OIL_TANKER                                             :Naftna cisterna
@@ -2273,7 +2273,7 @@ STR_8035_PLASTIC_TRUCK                                          :Vagon za plasti
 STR_8036_X2001_ELECTRIC                                         :'X2001' (Elektricna)
 STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Elektricna)
 STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
-STR_8039_PASSENGER_CAR                                          :Potniski vagon
+STR_8039_PASSENGER_CAR                                          :Potni&#353;ki vagon
 STR_803A_MAIL_VAN                                               :Postni vagon
 STR_803B_COAL_CAR                                               :Vagon za premog
 STR_803C_OIL_TANKER                                             :Cisterna za nafto
@@ -2305,7 +2305,7 @@ STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' 
 STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Elektricna)
 STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Elektricna)
 STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
-STR_8059_PASSENGER_CAR                                          :Potniski vagon
+STR_8059_PASSENGER_CAR                                          :Potni&#353;ki vagon
 STR_805A_MAIL_VAN                                               :Postni vagon
 STR_805B_COAL_CAR                                               :Vagon za premog
 STR_805C_OIL_TANKER                                             :Cisterna za nafto
@@ -2422,11 +2422,11 @@ STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught tov
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow tovornjak za mehurcke
 STR_80CC_MPS_OIL_TANKER                                         :MPS naftni tanker
 STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. naftni tanker
-STR_80CE_MPS_PASSENGER_FERRY                                    :MPS potniski trajekt
-STR_80CF_FFP_PASSENGER_FERRY                                    :FFP potniski trajekt
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS potni&#353;ki trajekt
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP potni&#353;ki trajekt
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Hovercraft
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug potniski trajekt
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake potniski trajekt
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug potni&#353;ki trajekt
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake potni&#353;ki trajekt
 STR_80D3_YATE_CARGO_SHIP                                        :Yate tovorna ladja
 STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell tovorna ladja
 STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover tovorna ladja
@@ -2535,7 +2535,7 @@ STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}To bo zg
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}To bo zgradilo kopijo vozila. Kliknite na ta gumb in nato na vozilo v ali zunaj garaže. CTRL+klik skopira tudi navodila
 STR_CLONE_TRAIN                                                 :{BLACK}Kloniraj vlak
 STR_CLONE_TRAIN_INFO                                            :{BLACK}To bo zgradilo kopijo vlaka vključno z vsemi vagoni. CTRL+klik skopira tudi navodila
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}To bo zgradilo kopijo vlaka vključno z vsemi vagoni. Kliknite na ta gumb in nato na vlak v ali zunaj garaže. CTRL+klik skopira tudi navodila
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}To bo zgradilo kopijo vlaka vklju&#269;no z vsemi vagoni. Klikni na ta gumb in nato na vlak v ali zunaj gara&#382;e. CTRL+klik skopira tudi navodila
 STR_8820_RENAME                                                 :{BLACK}Preimenuj
 STR_8823_SKIP                                                   :{BLACK}Preskoci
 STR_8824_DELETE                                                 :{BLACK}Izbrisi

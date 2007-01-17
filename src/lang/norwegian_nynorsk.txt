@@ -1000,7 +1000,7 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COM
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har ein ugyldig stasjon i ordrane
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autoforny gjekk gale for tog {COMMA} (pengegrense)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornying gjekk gale for tog {COMMA} (pengegrense)
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatik fornying gjekk gale for køyretøy {COMMA} (pengegrense)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornying gjekk gale på skip {COMMA} (pengegrense)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornying gjekk gale for fly {COMMA} (pengegrense)
