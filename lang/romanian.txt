@@ -2914,6 +2914,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nu pot a
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Nici un fisier potrivit
 STR_NEWGRF_DISABLED                                             :{RED}Dezactivat
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nu am gasit niciun fisier corespunzator (am incarcat un GRF compatibil)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Fisier(e) GRF compatibil(e) incarcate pentru fisierele lipsa
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fisierele GRF lipsa au fost dezactivate
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fisierele GRF lipsa pentru permiterea incarcarii jocului
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda proprie
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Curs de schimb: {ORANGE}{CURRENCY} = £ {COMMA}

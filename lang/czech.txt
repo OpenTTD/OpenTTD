@@ -2,7 +2,7 @@
 ##ownname Česky
 ##isocode cs_CS.UTF-8
 ##plural 6
-##case nom gen acc dat voc loc ins big
+##case nom gen acc dat voc loc ins big news subs
 ##gender m m_a m_i f n
 
 ##id 0x0000
@@ -24,90 +24,146 @@ STR_000E                                                        :
 STR_000F_PASSENGERS                                             :cestující
 STR_000F_PASSENGERS.gen                                         :cestujících
 STR_000F_PASSENGERS.big                                         :Cestující
+STR_000F_PASSENGERS.news                                        :cestujících
+STR_000F_PASSENGERS.subs                                        :Cestující
 STR_0010_COAL                                                   :uhlí
 STR_0010_COAL.big                                               :Uhlí
+STR_0010_COAL.subs                                              :Uhlí
 STR_0011_MAIL                                                   :pošta
 STR_0011_MAIL.gen                                               :pošty
 STR_0011_MAIL.big                                               :Pošta
+STR_0011_MAIL.news                                              :pošty
+STR_0011_MAIL.subs                                              :Pošta
 STR_0012_OIL                                                    :ropa
 STR_0012_OIL.gen                                                :ropy
 STR_0012_OIL.big                                                :Ropa
+STR_0012_OIL.news                                               :ropy
+STR_0012_OIL.subs                                               :Ropa
 STR_0013_LIVESTOCK                                              :dobytek
 STR_0013_LIVESTOCK.gen                                          :dobytka
 STR_0013_LIVESTOCK.big                                          :Dobytek
+STR_0013_LIVESTOCK.news                                         :dobytka
+STR_0013_LIVESTOCK.subs                                         :Dobytek
 STR_0014_GOODS                                                  :zboží
 STR_0014_GOODS.big                                              :Zboží
+STR_0014_GOODS.subs                                             :Zboží
 STR_0015_GRAIN                                                  :zrní
 STR_0015_GRAIN.big                                              :Zrní
+STR_0015_GRAIN.subs                                             :Zrní
 STR_0016_WOOD                                                   :dřevo
 STR_0016_WOOD.gen                                               :dřeva
 STR_0016_WOOD.big                                               :Dřevo
+STR_0016_WOOD.news                                              :dreva
+STR_0016_WOOD.subs                                              :Drevo
 STR_0017_IRON_ORE                                               :železná ruda
 STR_0017_IRON_ORE.gen                                           :železné rudy
 STR_0017_IRON_ORE.big                                           :Železná ruda
+STR_0017_IRON_ORE.news                                          :železné rudy
+STR_0017_IRON_ORE.subs                                          :Železná ruda
 STR_0018_STEEL                                                  :ocel
 STR_0018_STEEL.gen                                              :oceli
 STR_0018_STEEL.big                                              :Ocel
+STR_0018_STEEL.news                                             :oceli
+STR_0018_STEEL.subs                                             :Ocel
 STR_0019_VALUABLES                                              :ceniny
 STR_0019_VALUABLES.gen                                          :cenin
 STR_0019_VALUABLES.big                                          :Ceniny
+STR_0019_VALUABLES.news                                         :cenin
+STR_0019_VALUABLES.subs                                         :Ceniny
 STR_001A_COPPER_ORE                                             :měděná ruda
 STR_001A_COPPER_ORE.gen                                         :měděné rudy
 STR_001A_COPPER_ORE.big                                         :Měděná ruda
+STR_001A_COPPER_ORE.news                                        :medene rudy
+STR_001A_COPPER_ORE.subs                                        :Medena ruda
 STR_001B_MAIZE                                                  :kukuřice
 STR_001B_MAIZE.big                                              :Kukuřice
+STR_001B_MAIZE.subs                                             :Kukurice
 STR_001C_FRUIT                                                  :ovoce
 STR_001C_FRUIT.big                                              :Ovoce
+STR_001C_FRUIT.subs                                             :Ovoce
 STR_001D_DIAMONDS                                               :diamanty
 STR_001D_DIAMONDS.gen                                           :diamantů
 STR_001D_DIAMONDS.big                                           :Diamanty
+STR_001D_DIAMONDS.news                                          :diamantu
+STR_001D_DIAMONDS.subs                                          :Diamanty
 STR_001E_FOOD                                                   :jídlo
 STR_001E_FOOD.gen                                               :jídlo
 STR_001E_FOOD.big                                               :Jídlo
+STR_001E_FOOD.news                                              :jídlo
+STR_001E_FOOD.subs                                              :Jídlo
 STR_001F_PAPER                                                  :papír
 STR_001F_PAPER.gen                                              :papíru
 STR_001F_PAPER.big                                              :Papír
+STR_001F_PAPER.news                                             :papíru
+STR_001F_PAPER.subs                                             :Papír
 STR_0020_GOLD                                                   :zlato
 STR_0020_GOLD.gen                                               :zlata
 STR_0020_GOLD.big                                               :Zlato
+STR_0020_GOLD.news                                              :zlata
+STR_0020_GOLD.subs                                              :Zlato
 STR_0021_WATER                                                  :voda
 STR_0021_WATER.gen                                              :vody
 STR_0021_WATER.big                                              :Voda
+STR_0021_WATER.news                                             :vody
+STR_0021_WATER.subs                                             :Voda
 STR_0022_WHEAT                                                  :pšenice
 STR_0022_WHEAT.big                                              :Pšenice
+STR_0022_WHEAT.subs                                             :Pšenice
 STR_0023_RUBBER                                                 :kaučuk
 STR_0023_RUBBER.gen                                             :kaučuku
 STR_0023_RUBBER.big                                             :Kaučuk
+STR_0023_RUBBER.news                                            :kaucuku
+STR_0023_RUBBER.subs                                            :Kaucuk
 STR_0024_SUGAR                                                  :cukr
 STR_0024_SUGAR.gen                                              :cukru
 STR_0024_SUGAR.big                                              :Cukr
+STR_0024_SUGAR.news                                             :cukru
+STR_0024_SUGAR.subs                                             :Cukr
 STR_0025_TOYS                                                   :hračky
 STR_0025_TOYS.gen                                               :hraček
 STR_0025_TOYS.big                                               :Hračky
+STR_0025_TOYS.news                                              :hracek
+STR_0025_TOYS.subs                                              :Hracky
 STR_0026_CANDY                                                  :bonbony
 STR_0026_CANDY.gen                                              :bonbonů
 STR_0026_CANDY.big                                              :Bonbony
+STR_0026_CANDY.news                                             :bonbonu
+STR_0026_CANDY.subs                                             :Bonbony
 STR_0027_COLA                                                   :kola
 STR_0027_COLA.gen                                               :koly
 STR_0027_COLA.big                                               :Kola
+STR_0027_COLA.news                                              :coly
+STR_0027_COLA.subs                                              :Cola
 STR_0028_COTTON_CANDY                                           :cukrová vata
 STR_0028_COTTON_CANDY.gen                                       :cukrové vaty
 STR_0028_COTTON_CANDY.big                                       :Cukrová vata
+STR_0028_COTTON_CANDY.news                                      :cukrové vaty
+STR_0028_COTTON_CANDY.subs                                      :Cukrová vata
 STR_0029_BUBBLES                                                :bubliny
 STR_0029_BUBBLES.gen                                            :bublin
 STR_0029_BUBBLES.big                                            :Bubliny
+STR_0029_BUBBLES.news                                           :bublin
+STR_0029_BUBBLES.subs                                           :Bubliny
 STR_002A_TOFFEE                                                 :karamel
 STR_002A_TOFFEE.gen                                             :karamelu
 STR_002A_TOFFEE.big                                             :Karamel
+STR_002A_TOFFEE.news                                            :karamelu
+STR_002A_TOFFEE.subs                                            :Karamel
 STR_002B_BATTERIES                                              :baterie
 STR_002B_BATTERIES.gen                                          :baterií
 STR_002B_BATTERIES.big                                          :Baterie
+STR_002B_BATTERIES.news                                         :baterií
+STR_002B_BATTERIES.subs                                         :Baterie
 STR_002C_PLASTIC                                                :plast
 STR_002C_PLASTIC.gen                                            :plastu
 STR_002C_PLASTIC.big                                            :Plast
+STR_002C_PLASTIC.news                                           :plastu
+STR_002C_PLASTIC.subs                                           :Plast
 STR_002D_FIZZY_DRINKS                                           :limonáda
 STR_002D_FIZZY_DRINKS.gen                                       :limonád
 STR_002D_FIZZY_DRINKS.big                                       :Limonáda
+STR_002D_FIZZY_DRINKS.news                                      :limonád
+STR_002D_FIZZY_DRINKS.subs                                      :Limonáda
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :cestujících
 STR_0030_COAL                                                   :uhlí
@@ -2972,6 +3028,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nelze p�
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Nenalezen odpovídající soubor
 STR_NEWGRF_DISABLED                                             :{RED}Vypnuto
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odpovídající soubor nenalezen (načten kompatibilní GRF)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilní GRF načteny místo chybějících
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chybějící soubory GRF byly vyřazeny
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Pro načtení hry chybí GRF soubory
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní měna
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{CURRENCY} = £ {COMMA}

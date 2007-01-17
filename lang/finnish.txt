@@ -394,6 +394,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Rahtikapasiteet
 STR_NO_WAITING_CARGO                                            :{BLACK}Minkäänlaista lastia ei ole odottamassa
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Valitse kaikki laitteet
 STR_SELECT_ALL_TYPES                                            :{BLACK}Valitse kaikki lastityypit (myös odottava lasti)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Näytä lista mahdollisista moottorimalleista tälle kulkuneuvolle.
 STR_MANAGE_LIST                                                 :{BLACK}Muokkaa listaa
 STR_MANAGE_LIST_TIP                                             :{BLACK}Ohjaa kaikkia listan ajoneuvoja
 STR_REPLACE_VEHICLES                                            :Korvaa liikennevälineitä
@@ -1083,6 +1084,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Näytä
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ei yhtään
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Oma yritys
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Kaikki yritykset
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Suosi ryhmäkeskustelua <ENTER> {ORANGE}{STRING} kanssa
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Junia/pelaaja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Ajoneuvoja/pelaaja: {ORANGE}{STRING}
@@ -1307,6 +1309,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Salasan
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}PALVELIN KIINNI
 STR_NETWORK_SERVER_FULL                                         :{SILVER}PALVELIN TÄYNNÄ
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIO EI TÄSMÄÄ
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF YHTEENSOPIMATTOMUUS
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Liity peliin
 
@@ -2911,6 +2914,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ei voi l
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Sopivaa tiedostoa ei löydy
 STR_NEWGRF_DISABLED                                             :{RED}Ei käytössä
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sopivaa tiedostoa ei löytynyt (korvaava GRF ladattu)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Yhteensopivat GRF:t ladattu puuttuvien tiedostojen korvaamiseksi
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuttuvat GRF tiedostot ovat poistettu käytöstä
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Puuttuvat GRF tiedostot tarvitaan pelin lataamiseksi.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuutta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vaihtokurssi: {ORANGE}{CURRENCY} = £ {COMMA}

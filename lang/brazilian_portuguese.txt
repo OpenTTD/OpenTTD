@@ -2,6 +2,7 @@
 ##ownname Português-Brasil
 ##isocode pt_BR.UTF-8
 ##plural 2
+##gender masculino feminino neutro
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -154,6 +155,7 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opções do Jogo
 STR_00B2_MESSAGE                                                :{YELLOW}Mensagem
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mensagem de {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Cuidado!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Não é possível fazer isto....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Não é possível limpar esta área....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Todos os direitos reservados
@@ -1308,6 +1310,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Protegi
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVIDOR DESLIGADO
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVIDOR CHEIO
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSÃO INCOMPATÍVEL
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF NÃO ENCONTRADO
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Juntar-se ao jogo
 
@@ -1877,8 +1880,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Em {INDUSTRY} diminui produção em 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Infestação de insetos causa destruição em {INDUSTRY}!{}Produção diminui em 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...só pode ser colocado perto das bordas do mapa
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} a produção em {INDUSTRY} aumenta {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} a produção em {INDUSTRY} diminui {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produção de {STRING} em {INDUSTRY} aumenta {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produção de {STRING} em {INDUSTRY} diminui {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Há um trem no túnel
@@ -2091,8 +2094,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Balanço
 STR_7027_LOAN                                                   :{WHITE}Empréstimo
 STR_MAX_LOAN                                                    :{WHITE}Empréstimo Máximo:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
-STR_7029_BORROW                                                 :{BLACK}Pedir emprestado {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Pagar empréstimo {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Pedir {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Pagar {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...o empréstimo máximo permitido é de {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Não é possível pedir mais dinheiro emprestado...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...não há empréstimo para pagar
@@ -2119,7 +2122,7 @@ STR_7044_MALE                                                   :{BLACK}Masculin
 STR_7045_FEMALE                                                 :{BLACK}Feminino
 STR_7046_NEW_FACE                                               :{BLACK}Novo Rosto
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Cancelar seleção da novo rosto
-STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Aceitar selecção da novo rosto
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Aceitar seleção da novo rosto
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Selecionar rostos masculinas
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Seleccionar rostos femininas
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Gerar novo rosto aleatoriamente
@@ -2888,6 +2891,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não exi
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome do ficheiro: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual; isto pode danificar o OpenTTD.{}Tem absoluta certeza que deseja fazer isto?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adiciona um NewGRF à lista

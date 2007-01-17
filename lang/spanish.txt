@@ -1080,7 +1080,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Expansi
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Mantener los helicópteros en helipuertos automáticamente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Une la caja de paisaje a la barra de rail/carretera...: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}El scroll de ratón mueve la vista en dirección opuesta: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Muestra información de medidas cuando usamos herramientras construcción: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Muestra medidas con las herramientras construcción: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Ver estaciones de la empresa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ninguno
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propia empresa
@@ -2915,6 +2915,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No se pu
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Fichero no encontrado
 STR_NEWGRF_DISABLED                                             :{RED}Desactivado
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fichero no encontrado (GRF compatible cargado)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargos para ficheros que faltan
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichero(s) GRF perdidos han sido desactivados
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichero(s) GRF para poder cargar el juego
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3060,7 +3065,7 @@ STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotació
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreno
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nivel del mar:
 STR_SMOOTHNESS                                                  :{BLACK}Suavidad:
-STR_SNOW_LINE_HEIGHT                                            :{BLACK}Altura línea nieve
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Altura línea nieve:
 STR_DATE                                                        :{BLACK}Fecha:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}No. de ciudades:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}No. de industrias:

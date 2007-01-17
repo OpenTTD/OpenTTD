@@ -2914,6 +2914,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan best
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Bestand niet gevonden
 STR_NEWGRF_DISABLED                                             :{RED}Uitgeschakeld
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bijbehorend bestand niet gevonden (compatibel GRF geladen)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatibele GRF(s) geladen voor ontbrekende bestanden
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ontbrekende GRF bestand(en) zijn uitgeschakeld
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}GRF bestand(en) om dit spel te kunnen laden ontbreken
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = £ {COMMA}

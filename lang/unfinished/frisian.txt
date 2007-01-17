@@ -1,3 +1,4 @@
+##name Frisian
 ##ownname Frysk
 ##isocode fy.UTF-8
 
@@ -24,7 +25,7 @@ STR_0013_LIVESTOCK                                              :Fee
 STR_0014_GOODS                                                  :Guod
 STR_0015_GRAIN                                                  :Nôt
 STR_0016_WOOD                                                   :Hout
-STR_0017_IRON_ORE                                               :Iizererts
+STR_0017_IRON_ORE                                               :Izererts
 STR_0018_STEEL                                                  :Stiel
 STR_0019_VALUABLES                                              :Kostber guod
 STR_001A_COPPER_ORE                                             :Kopererts
@@ -46,7 +47,7 @@ STR_0029_BUBBLES                                                :Bubbels
 STR_002A_TOFFEE                                                 :Toffee
 STR_002B_BATTERIES                                              :Batterijen
 STR_002C_PLASTIC                                                :Plastic
-STR_002D_FIZZY_DRINKS                                           :Frisdrank
+STR_002D_FIZZY_DRINKS                                           :Frisdrinken
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Passazjier
 STR_0030_COAL                                                   :Stienkoal
@@ -78,7 +79,7 @@ STR_0049_BUBBLE                                                 :Bubbel
 STR_004A_TOFFEE                                                 :Toffee
 STR_004B_BATTERY                                                :Batterij
 STR_004C_PLASTIC                                                :Plastic
-STR_004D_FIZZY_DRINK                                            :Frisdrank
+STR_004D_FIZZY_DRINK                                            :Frisdrinken
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passazjiers
 STR_QUANTITY_COAL                                               :{WEIGHT} ton coal
@@ -101,7 +102,7 @@ STR_00B1_GAME_OPTIONS                                           :{WHITE}Spul Ops
 STR_00B2_MESSAGE                                                :{YELLOW}Berjocht
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Berjocht fan {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kin dit net dwaan....
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kin dit gebied net leech meitsje....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kin dit gebiet net leech meitsje....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Orizjineel copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION                                                :{BLACK}OpenTTD fersje {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 It OpenTTD team
@@ -128,7 +129,7 @@ STR_00D7_GREEN                                                  :Grien
 STR_00D8_DARK_GREEN                                             :Tsjuster Grien
 STR_00D9_BLUE                                                   :Blauw
 STR_00DA_CREAM                                                  :Krêm
-STR_00DB_MAUVE                                                  :Griis Rôze
+STR_00DB_MAUVE                                                  :Ljocht pears
 STR_00DC_PURPLE                                                 :Pears
 STR_00DD_ORANGE                                                 :Oranje
 STR_00DE_BROWN                                                  :Brún
@@ -139,16 +140,16 @@ STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Lokaasje
 STR_00E5_CONTOURS                                               :Kontoeren
-STR_00E6_VEHICLES                                               :Fiertúgen
+STR_00E6_VEHICLES                                               :Reauen
 STR_00E7_INDUSTRIES                                             :Yndustrieen
 STR_00E8_ROUTES                                                 :Rûtes
 STR_00E9_VEGETATION                                             :Fegetaasje
 STR_00EA_OWNERS                                                 :Eigners
-STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Wegen
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Diken
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Treinspoaren
-STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stasjons/Fleanfjilden/Surken
-STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Gebouen/Yndustrieen
-STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Fiertúgen
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stasjons/Fleanfjilden/Havens
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Gebouwen/Yndustrieen
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Reauen
 STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
 STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
 STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
@@ -162,7 +163,7 @@ STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFON
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Stienkoalmyn
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Stroomsintrale
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Bosk
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Houtsagerij
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Houtseachmole
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Oaljeraffinaderij
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Buorkerij
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabryk
@@ -171,7 +172,7 @@ STR_0102_OIL_WELLS                                              :{BLACK}{TINYFON
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Iizerertsmyn
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Stielfabryk
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bank
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Paperfabryk
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Papierfabryk
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Goudmyn
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Itensfabryk
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamantmyn
@@ -180,15 +181,15 @@ STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFON
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Rubberplantaazje
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Wetteroanfier
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Wettertoer
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Houtsagerij
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Houtseachmole
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Sûkerspinnebosk
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Snobbersguodfabryk
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Batterijebuorkerij
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Colabron
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Kolabron
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Boartersguodwinkel
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Boartersguodfabryk
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plestikfonteinen
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Frisdankfabryk
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plasticfonteinen
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Frisdrinkenfabryk
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Bubbelgenerator
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Toffeemyn
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Sûkermyn
@@ -198,11 +199,11 @@ STR_011D_BUS_STATION                                            :{BLACK}{TINYFON
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Fleanfjild/Helipoart
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Dok
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Rûch Lân
-STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Gêrslân
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Gerslân
 STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Skraal Lân
 STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Fjilden
-STR_0124_TREES                                                  :{BLACK}{TINYFONT}Beamen
-STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Stienen
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}Beammen
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Stiennen
 STR_0126_WATER                                                  :{BLACK}{TINYFONT}Wetter
 STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Gjin eigner
 STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Stêden
@@ -215,7 +216,7 @@ STR_012E_CANCEL                                                 :{BLACK}Annulear
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Omneame
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Te folle nammen definearre
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Dizze namme is al brûkt
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Dizze namme wurd al brûkt
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
@@ -232,14 +233,15 @@ STR_0140_NEW_GAME                                               :{BLACK}Nei Spul
 STR_0141_LOAD_GAME                                              :{BLACK}Laad Spul
 
 STR_128                                                         :128
+STR_256                                                         :256
 STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spul Opsjes
 
-STR_0150_SOMEONE                                                :ien{SKIP}{SKIP}
+STR_0150_SOMEONE                                                :immen{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Kaart fan 'e wrâld
 STR_0152_TOWN_DIRECTORY                                         :List fan stêden
-STR_0153_SUBSIDIES                                              :Subsidjes
+STR_0153_SUBSIDIES                                              :Subsydzjes
 
 
 
@@ -252,7 +254,7 @@ STR_0153_SUBSIDIES                                              :Subsidjes
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Fertsjinst grafyk
 STR_0155_INCOME_GRAPH                                           :Ynkomsten grafyk
-STR_0156_DELIVERED_CARGO_GRAPH                                  :Oflevere fracht grafyk
+STR_0156_DELIVERED_CARGO_GRAPH                                  :Ôflevere fracht grafyk
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Prestaasje skiednis grafyk
 STR_0158_COMPANY_VALUE_GRAPH                                    :Bedriuwswearde grafyk
 STR_0159_CARGO_PAYMENT_RATES                                    :Fracht ôfbetelling grafyk
@@ -303,14 +305,14 @@ STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Zoom it 
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Zoom it byld út
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Bou in spoarwei
 STR_0182_BUILD_ROADS                                            :{BLACK}Bou in autodyk
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Bou surken
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Bou havens
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Bou fleanfjilden
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plantsje beamen, set buordsjes del, ensfh.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Lân ynformaasje
 STR_0187_OPTIONS                                                :{BLACK}Opsjes
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
-STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Kin tiid tusken ûnderhâlden net feroarje...
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Kin tiid tusken ûnderhâldsbeurten net feroarje...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Slút finster
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Finstertitel - hjirmei kinst it finster ferslepe
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Brek gebouen ensfh. ôf op in stikje lân
@@ -330,13 +332,13 @@ STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLAC
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Auto
-STR_019D_AIRCRAFT                                               :Fleantúg
+STR_019D_AIRCRAFT                                               :Fleanmasine
 STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Trein
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} begjint âld te wurden
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} begjint hiel âld te wurden
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} begjint hiel âld te wurden en mat sa snel mooglik ferfong wurde
-STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}lân Gebied Ynformaasje
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} begjint hiel âld te wurden en mat sa fluch mooglik ferfong wurde
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Lân Gebiet Ynformaasje
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kosten om leech te meitsjen: {LTBLUE}N/B
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kosten om leech te meitsjen: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/B
@@ -390,7 +392,7 @@ STR_01D3_SOUND_MUSIC                                            :Lûd/musyk
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Lit lûd/musyk finster sjen
 STR_01D5_ALL                                                    :{TINYFONT}Alles
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Alde Stijl
-STR_01D7_NEW_STYLE                                              :{TINYFONT}Neie Stijl
+STR_01D7_NEW_STYLE                                              :{TINYFONT}Nije Stijl
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
 STR_01D9_CUSTOM_1                                               :{TINYFONT}Eigen 1
 STR_01DA_CUSTOM_2                                               :{TINYFONT}Eigen 2
@@ -420,7 +422,7 @@ STR_01F1_SAVE                                                   :{TINYFONT}{BLAC
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Hjoeddeiske musykprogramma
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Selektear programma: 'alle nûmers'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Selektear programma: 'âlde stijl'
-STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Selektear programma: 'neie stijl'
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Selektear programma: 'nije stijl'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Selektear programma: 'Eigen 1 (selsmakke)'
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Selektear programma: 'Eigen 2 (selsmakke)'
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Leechje dit programma (allinnich Eigen 1 of Eigen 2)
@@ -436,18 +438,18 @@ STR_0201_MESSAGE_SETTINGS                                       :Berjocht ynstel
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Lit lêste (neis)berjocht sjen / lit berjocht ynstellings sjen
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Berjocht Opsjes
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Berjochttypes:
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oankomst fan earste fiertúg op stasjon fan spyler
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oankomst fan earste fiertúg op stasjon fan tsjinstander
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oankomst fan earste reau op stasjon fan spyler
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oankomst fan earste reau op stasjon fan tsjinstander
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ungemakken / rampen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Bedriuwsynformaasje
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Feroarings yn 'e ekonomie
-STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Advys / ynformaasje foar fiertúgen
-STR_020C_NEW_VEHICLES                                           :{YELLOW}Neie fiertúgen
+STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Advys / ynformaasje foar reauen
+STR_020C_NEW_VEHICLES                                           :{YELLOW}Nije reauen
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Feroarings yn akseptearen fan fracht
-STR_020E_SUBSIDIES                                              :{YELLOW}Subsydjes
+STR_020E_SUBSIDIES                                              :{YELLOW}Subsydzjes
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Algemiene ynformaasje
-STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...te fier fan lêste eindpunt
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top bedriuwen dy 't {NUM}{}({STRING} helle ha)
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...te fier fan lêste bestimming
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top bedriuwen dy't  niveau {NUM}{}({STRING} helle ha)
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Sakeman
 STR_0214_ENTREPRENEUR                                           :Undernimmer
@@ -478,8 +480,8 @@ STR_022F_TOWN_GENERATION                                        :{BLACK}Stêd ge
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Yndustry generaasje
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Wegenbou
 STR_0233_TOWN_GENERATION                                        :{WHITE}Stêd Generaasje
-STR_0234_NEW_TOWN                                               :{BLACK}Neie Stêd
-STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Bou neie stêd
+STR_0234_NEW_TOWN                                               :{BLACK}Nije Stêd
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Bou nije stêd
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kin hjir gjin stêd boue...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...te ticht by de râne fan 'e map
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...te ticht by in oare stêd
@@ -492,21 +494,21 @@ STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Bou sama
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Yndustry Generaasje
 STR_0240_COAL_MINE                                              :{BLACK}Stienkoalmyn
 STR_0241_POWER_STATION                                          :{BLACK}Stroomsintrale
-STR_0242_SAWMILL                                                :{BLACK}Houtsagerij
+STR_0242_SAWMILL                                                :{BLACK}Houtseachmole
 STR_0243_FOREST                                                 :{BLACK}Bosk
-STR_0244_OIL_REFINERY                                           :{BLACK}Oalje raffinaderij
-STR_0245_OIL_RIG                                                :{BLACK}Oalje boarplatform
+STR_0244_OIL_REFINERY                                           :{BLACK}Oaljeraffinaderij
+STR_0245_OIL_RIG                                                :{BLACK}Boarplatfoarm
 STR_0246_FACTORY                                                :{BLACK}Fabryk
 STR_0247_STEEL_MILL                                             :{BLACK}Stielfabryk
 STR_0248_FARM                                                   :{BLACK}Buorkerij
-STR_0249_IRON_ORE_MINE                                          :{BLACK}IIzerertsmyn
+STR_0249_IRON_ORE_MINE                                          :{BLACK}Izerertsmyn
 STR_024A_OIL_WELLS                                              :{BLACK}Oaljebron
 STR_024B_BANK                                                   :{BLACK}Bank
 STR_024C_PAPER_MILL                                             :{BLACK}Papierfabryk
 STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Itensfabryk
 STR_024E_PRINTING_WORKS                                         :{BLACK}Drukkerij
 STR_024F_GOLD_MINE                                              :{BLACK}Goudmyn
-STR_0250_LUMBER_MILL                                            :{BLACK}Houtsagerij
+STR_0250_LUMBER_MILL                                            :{BLACK}Houtseachmole
 STR_0251_FRUIT_PLANTATION                                       :{BLACK}Fruitplantaazje
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}Rubberplantaazje
 STR_0253_WATER_SUPPLY                                           :{BLACK}Wetterbron
@@ -516,7 +518,7 @@ STR_0256_COPPER_ORE_MINE                                        :{BLACK}Koperert
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Sûkerspinnebosk
 STR_0258_CANDY_FACTORY                                          :{BLACK}Snobbersguodfabryk
 STR_0259_BATTERY_FARM                                           :{BLACK}Batterijebuorkerij
-STR_025A_COLA_WELLS                                             :{BLACK}Colabron
+STR_025A_COLA_WELLS                                             :{BLACK}Kolabron
 STR_025B_TOY_SHOP                                               :{BLACK}Boartersguodwinkel
 STR_025C_TOY_FACTORY                                            :{BLACK}Boartersguodfabryk
 STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plasticfonteinen
@@ -533,7 +535,7 @@ STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Bou in O
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Bou in Fabryk
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Bou in Stielfabryk
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Bou in Buorkerij
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Bou in IIzerertsmyn
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Bou in Izerertsmyn
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Bou in Oaljebron
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bou in Bank (Kin allinnich bout wurde yn stêden mei mear as 1200 ynwenners)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Bou in Papierfabryk
@@ -541,9 +543,9 @@ STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Bou in I
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Bou in Drukkerij
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Bou in Goudmyn
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bou in Bank (Allinnich yn stêden)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Bou in Houtsagerij
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Bou in Houtseachmole (om bosk fuort te heljen en Hout te meitsjen)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plantsje in Fruitplantaazje
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Plantsje in Fruitplantaazje
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Plantsje in Rubberplantaazje
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Bou in Wetterbron
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Bou in Wettertoer (Allinnich yn stêden)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Bou in Diamantmyn
@@ -551,10 +553,10 @@ STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Bou in K
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plantsje in Sûkerspinnebosk
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Bou in Snobbersguodfabryk
 STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Bou in Batterijebuorkerij
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Bou in Colabron
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Bou in Kolabron
 STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Bou in Boartersguodwinkel
 STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Bouin Boartersguodfabryk
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Bou in Plestikfontein
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Bou in Plasticfontein
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Bou in Frisdrankfabryk
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Bou in Bubbelgenerator
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Bou in Toffeemyn
@@ -562,14 +564,14 @@ STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Bou in S
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kin hjir gjin {STRING} boue...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...stêd moat earst bout wurde
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}..mei mar ien per stêd wêze
-STR_0288_PLANT_TREES                                            :{BLACK}Plantsje beamen
+STR_0288_PLANT_TREES                                            :{BLACK}Plantsje beammen
 STR_0289_PLACE_SIGN                                             :{BLACK}Set in buordsje del
-STR_028A_RANDOM_TREES                                           :{BLACK}Samar wat beamen
-STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plantsje samar wat beamen yn it lânskip
+STR_028A_RANDOM_TREES                                           :{BLACK}Samar wat beammen
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plantsje samar wat beammen yn it lânskip
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Set rotsen yn it lânskip
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Bou in fjoertoer
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Bou in sendmast
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiearje woastyngebiet.{}Hâld CTRL yndrukt om it fuort te heljen
 STR_0290_DELETE                                                 :{BLACK}Fuort
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Helje dizze hiele stêd fuort
 STR_0292_SAVE_SCENARIO                                          :Sla scenario op
@@ -583,9 +585,9 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Sla Scen
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spylje Scenario
 STR_029C_QUIT_EDITOR                                            :{WHITE}Slút Scenariobouer
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kin allinnich bout wurde yn stêden mei 1200 ynwenners of mear
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Set it startjier 1 jier efterrút
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Set it startjier 1 jier efterút
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Set it startjier 1 jier foarút
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...beide úteinden fan'e brêge moatte oan lân lizze
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...beide úteinden fan'e brêge moatte op lân lizze
 STR_02A1_SMALL                                                  :{BLACK}Lyts
 STR_02A2_MEDIUM                                                 :{BLACK}Middel
 STR_02A3_LARGE                                                  :{BLACK}Grut
@@ -596,28 +598,28 @@ STR_02B6                                                        :{STRING}  -  {S
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Lit lêste (neis)berjocht sjen
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Stêden list
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Fiertúg ûntwerp nammen
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Reau ûntwerp nammen
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Standert
 STR_02BF_CUSTOM                                                 :Oars
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Sla eigen nammen op
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Fiertúg ûntwerp nammen seleksje
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sla eigen fiertúg ûntwerp nammen op
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Reau ûntwerp nammen seleksje
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sla eigen reau ûntwerp nammen op
 
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Spul Opsjes
-STR_02C5_DIFFICULTY_SETTINGS                                    :Moeilikhyd ynstellings
+STR_02C5_DIFFICULTY_SETTINGS                                    :Swierrichheid ynstellings
 STR_02C7_CONFIG_PATCHES                                         :Patches Ynstellings
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Stêd nammen sjen litte
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stasjon nammen sjen litte
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Buordsjes sjen litte
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Folle animaasje
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Folle detail
-STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Trochsichtige gebouen
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Trochsichtige gebouwen
 ############ range ends	here
 
 ############ range for menu	starts
-STR_02D5_LAND_BLOCK_INFO                                        :Giebiet Ynformaasje
+STR_02D5_LAND_BLOCK_INFO                                        :Gebiet Ynformaasje
 STR_02D6                                                        :
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skermfoto (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Grutte Skermfoto (Ctrl-G)
@@ -626,27 +628,27 @@ STR_02D9_ABOUT_OPENTTD                                          :Oer 'OpenTTD'
 
 STR_02DB_OFF                                                    :{BLACK}Ut
 STR_02DA_ON                                                     :{BLACK}Oan
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Lit Subsidjes sjen
-STR_02DD_SUBSIDIES                                              :Subsydjes
-STR_02DE_MAP_OF_WORLD                                           :Map fan 'e wrâld
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Lit Subsydzjes sjen
+STR_02DD_SUBSIDIES                                              :Subsydzjes
+STR_02DE_MAP_OF_WORLD                                           :Kaart fan 'e wrâld
 STR_02DF_TOWN_DIRECTORY                                         :Stêden list
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Muntienhyd
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Muntienheid
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
-STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Muntienhyd seleksje
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Muntienheid seleksje
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Auto's
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Selektear hokker side fan 'e dyk de auto's op ryde moatte
-STR_02E9_DRIVE_ON_LEFT                                          :Ryde links
-STR_02EA_DRIVE_ON_RIGHT                                         :Ryde rjochts
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Selektear op hokker side fan 'e dyk de auto's ride moatte
+STR_02E9_DRIVE_ON_LEFT                                          :Lofts ride
+STR_02EA_DRIVE_ON_RIGHT                                         :Rjochts ride
 STR_02EB_TOWN_NAMES                                             :{BLACK}Stêd nammen
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Selektear stijl fan 'e nammen
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Automatysk opslaan
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Selektear tiid tusken automatyske ûnderhaldsbar
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Selektear tiid tusken automatyske spulopslach
 STR_02F7_OFF                                                    :Ut
 STR_02F8_EVERY_3_MONTHS                                         :Eltse 3 moannen
 STR_02F9_EVERY_6_MONTHS                                         :Eltse 6 moannen
@@ -657,7 +659,7 @@ STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Meitsje 
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Selektear ien-spyler spul
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Selektear mear-spyler spul fan 2 oant 8 spylers
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Lit spul opsjes sjen
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Lit moeilikhyds opsjes sjen
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Lit swierrichheid opsjes sjen
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start in nei spul, mei in selsmakke lânskip
 STR_0304_QUIT                                                   :{BLACK}Ofslúte
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Slút 'OpenTTD' ôf
@@ -667,13 +669,13 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Selektea
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Selektear 'iis' lânskip
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Selektear 'subtropysk' lânskip
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Selektear 'boartersguodlân' lânskip
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Betelje de bou fan in neie yndustry
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Betelje de bou fan in nije yndustry
 
 ############ range for menu	starts
-STR_0313_FUND_NEW_INDUSTRY                                      :Betelje neie yndustry
+STR_0313_FUND_NEW_INDUSTRY                                      :Betelje nije yndustry
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Betelje neie yndustry
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Betelje nije yndustry
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kin allinnich yn stêden bout wurde
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kin allinnich yn in reinwâld bout wurde
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kin allinnich yn in woastine bout wurde
@@ -807,15 +809,15 @@ STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Kin it l
 STR_080A_ROCKS                                                  :Rotsen
 STR_080B_ROUGH_LAND                                             :Rûch lân
 STR_080C_BARE_LAND                                              :Leech lân
-STR_080D_GRASS                                                  :Gêrs
-STR_080E_FIELDS                                                 :Fjild
+STR_080D_GRASS                                                  :Gers
+STR_080E_FIELDS                                                 :Fjilden
 STR_080F_SNOW_COVERED_LAND                                      :Snie
 STR_0810_DESERT                                                 :Woastine
 
 ##id 0x1000
-STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Lân rint ferkeard ôf
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Lân rint skean yn 'e ferkearde rjochting
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Spoar kombinaasje net mooglik
-STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Utgraven soe tunnel beskeadigje
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Utgrave soe tunnel beskeadigje
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Lân is al op seenivo
 STR_1004_TOO_HIGH                                               :{WHITE}Te heech
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Spoar is net geskikt
@@ -824,7 +826,7 @@ STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Spoar mo
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Spoarwei Konstruksje
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorail Konstruksje
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev Konstruksje
-STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Selektear Spoar Brêge
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Selektear Spoarbrêge
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Kin hjir gjin trein depot boue...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Kin hjir gjin treinstasjon boue...
 STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Kin hjir gjin stopljochten boue...
@@ -836,16 +838,16 @@ STR_1015_RAILROAD_CONSTRUCTION                                  :Spoarwei konstr
 STR_1016_MONORAIL_CONSTRUCTION                                  :Monorail konstruksje
 STR_1017_MAGLEV_CONSTRUCTION                                    :MagLev konstruksje
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Bou spoarwei
-STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Bou trein depot (foar bou en ûnderhâld fan treinen)
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Bou treindepot (foar bou en ûnderhâld fan treinen)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Bou treinstasjon
-STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Bou stopljochten foar oan it spoar
-STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Bou in spoar brêge
-STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Bou in spoar tunnel
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Bou spoarseinen
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Bou in spoarbrêge
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Bou in spoartunnel
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Set bouen/fuortheljen foar spoaren en stopljochten oan/út
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Brêge seleksje - klik op de brêge dyst boue wolst
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Selektearje treindepot rjochting
 STR_1021_RAILROAD_TRACK                                         :Spoarwei
-STR_1023_RAILROAD_TRAIN_DEPOT                                   :Trein depot
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :Treindepot
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...gebiet is fan in oar bedriuw
 
 
@@ -948,19 +950,99 @@ STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Middelgrutte pr
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Grutte promoasjekampanje
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Subsidiearje lokale weiferbouwing
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Bou stânbyld fan bedrieuwseigner
+STR_204B_FUND_NEW_BUILDINGS                                     :Betelje bouw fan nije gebouwen
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Begjin in lytse advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}  Kostet: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Begjin in middelgrutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}  Kostet: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Begjin in grutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}  Kostet: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bou in stânbyld ter eare fan jo bedriuw.{} Kostet: {CURRENCY}
+STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (yn oanbou)
+STR_2059_IGLOO                                                  :Yglo
+STR_205A_TEPEES                                                 :Tipi's
+STR_205B_TEAPOT_HOUSE                                           :Teepothûs
+STR_205C_PIGGY_BANK                                             :Sparbaarch
 
 
 ##id 0x2800
+STR_2800_PLANT_TREES                                            :Plantsje beammen
+STR_2801_PLACE_SIGN                                             :Set buordsje del
+STR_2802_TREES                                                  :{WHITE}Beammen
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...hjir stiet al in beam
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...bouplak net geskikt
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kin hjir gjin beam plantsje
+STR_2806                                                        :{WHITE}{STRING}
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...te folle buordsjes
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Kin hjir gjin buordsje delsette
+STR_280A_SIGN                                                   :Buordsje
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Feroarje tekst fan buordsje
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Kin tekst net feroarje...
+STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Selektear soart beam
+STR_280E_TREES                                                  :Beammen
+STR_280F_RAINFOREST                                             :Reinwâld
+STR_2810_CACTUS_PLANTS                                          :Kaktussen
 
 ##id 0x3000
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Treinstasjon Seleksje
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}Fleanfjild Seleksje
+STR_3002_ORIENTATION                                            :{BLACK}Rjochting
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Oantal banen
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}Stasjon lengte
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Te ticht by in oar stasjon
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Ferbynt mear dan ien stasjon
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te folle stasjons yn dizze stêd
+STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te folle stasjons
+STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Te folle bushaltes
+STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te folle frachtstasjons
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Te ticht by in oar stasjon
+STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Treinspoar moat earst fuorthelle wurde
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Te ticht by in oar fleanfjild
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Fleanfjild moat earst fuorthelle wurde
 
+STR_3030_RENAME_STATION_LOADING                                 :Jou stasjon in oare namme
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Kin namme fan stasjon net feroarje
+STR_3033_ACCEPTS                                                :{BLACK}
 
 ############ range for rating starts
+STR_3035_APPALLING                                              :Ferskriklik
+STR_3036_VERY_POOR                                              :Hiel Min
+STR_3037_POOR                                                   :Min
+STR_3039_GOOD                                                   :Goed
+STR_303A_VERY_GOOD                                              :Hiel Goed
+STR_303B_EXCELLENT                                              :
+STR_303C_OUTSTANDING                                            :
 ############ range for rating ends
 
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} akseptearret gjin {STRING} mear
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} akseptearret gjin {STRING} en {STRING} mear
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} akseptearrret no {STRING}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} akseptearret no {STRING} en {STRING}
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Bushalte moat earst fuorthelle wurde
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Frachtstasjon moat earst fuorthelle wurde
+STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
+STR_304A_NONE                                                   :{YELLOW}- Gjin -
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}...bouterrein net geskikt
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Te ticht by in oare haven
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Haven moat earst fuorthelle wurde
+STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Selektear oantal banen foar treinstasjon
+STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Selektear lengte fan treinstasjon
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Sintrear haadskerm op stasjon
+STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_305E_RAILROAD_STATION                                       :Treinstasjon
+STR_3060_AIRPORT                                                :Fleanfjild
+STR_3062_BUS_STATION                                            :Bushalte
+STR_3063_SHIP_DOCK                                              :Haven
+STR_3068_DOCK                                                   :{WHITE}Haven
+STR_3069_BUOY                                                   :Boei
+STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boei yn it paad
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stasjon is te grut
 
 
 ##id 0x3800
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...moat bout wurde op it wetter
+STR_3804_WATER                                                  :Wetter
 
 ##id 0x4000
 
@@ -990,6 +1072,7 @@ STR_204A_BUILD_STATUE_OF_COMPANY                                :Bou stânbyld f
 ############ range for difficulty settings starts
 ############ range for difficulty settings ends
 
+STR_26816_NONE                                                  :Gjin
 
 ##id 0x7000
 

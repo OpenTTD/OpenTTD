@@ -2212,9 +2212,9 @@ STR_7037_PRESIDENT                                              :{WHITE}{PLAYERN
 STR_7038_INAUGURATED                                            :{GOLD}Asutatud: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Sõidukeid:
 STR_TRAINS                                                      :{WHITE}{COMMA} rong{P "" i}
-STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} veoki {P "" s}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} veok {P "" it}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} lennuk
-STR_SHIPS                                                       :{WHITE}{COMMA} laev{P "" s}
+STR_SHIPS                                                       :{WHITE}{COMMA} laev{P "" a}
 STR_7042_NONE                                                   :{WHITE}Mitte ühtegi
 STR_7043_FACE_SELECTION                                         :{WHITE}Näo valik
 STR_7044_MALE                                                   :{BLACK}Mees
@@ -2666,7 +2666,7 @@ STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Raudteesõidukit ei saa müüa...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Ei leia teed kohalikku depoosse
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Ei saa peatada/startida rongi...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Teeninduse ajavahemik: {LTBLUE}{COMMA}Päeva{BLACK}   Viimane teenindus: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Teenindusperiood: {LTBLUE}{COMMA} päeva{BLACK}  Viimati teenindatud: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Teeninduse ajavahemik: {LTBLUE}{COMMA}%{BLACK}   Viimane teenindus: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Rongid - vajuta rongile info jaoks
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Ehita uued rongid (vajab rongidepood)
@@ -3014,6 +3014,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ei saa f
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Sobivat faili ei leitud
 STR_NEWGRF_DISABLED                                             :{RED}Väljas
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sobivat faili ei leitud (ühilduv GRF fail on laaditud)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Puuduvatele failidele on laaditud ühilduvad GRF failid
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuduvad GRF failid on välja lülitatud
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mängu laadimiseks puudu olevad GRF failid
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Personaalne valuuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{CURRENCY} = £ {COMMA}

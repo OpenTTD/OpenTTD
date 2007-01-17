@@ -2915,6 +2915,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ajout im
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Fichier correspondant non trouvé
 STR_NEWGRF_DISABLED                                             :{RED}Désactivé
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fichier exact non trouvé (GRF compatible chargé)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatible(s) chargé(s) pour les fichiers absents
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichier(s) GRF absent(s) désactivés
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichier(s) GRF absent(s) pour pouvoir charger la partie
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change : {ORANGE}{CURRENCY} = £ {COMMA}

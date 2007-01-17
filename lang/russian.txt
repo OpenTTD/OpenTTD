@@ -1,6 +1,5 @@
 ##name Russian
-##ownname Русский
-##isocode ru_RU.UTF-8
+##ownname Russian
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -150,7 +149,7 @@ STR_ABBREV_ALL                                                  :{TINYFONT}Вс�
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Карта - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Параметры
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Настройки игры
 STR_00B2_MESSAGE                                                :{YELLOW}Сообщение
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Сообщение из {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Осторожно!
@@ -290,8 +289,8 @@ STR_CAPACITY_MULT                                               :{BLACK}Емко
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Общая загруженность этого транспорта:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
-STR_0140_NEW_GAME                                               :{BLACK}Новая Игра
-STR_0141_LOAD_GAME                                              :{BLACK}Загрузить Игру
+STR_0140_NEW_GAME                                               :{BLACK}Новая игра
+STR_0141_LOAD_GAME                                              :{BLACK}Загрузить игру
 STR_SINGLE_PLAYER                                               :{BLACK}Один игрок
 STR_MULTIPLAYER                                                 :{BLACK}Сетевая игра
 
@@ -303,14 +302,14 @@ STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Размер карты:
 STR_BY                                                          :{BLACK}*
-STR_0148_GAME_OPTIONS                                           :{BLACK}Настройки Игры
+STR_0148_GAME_OPTIONS                                           :{BLACK}Настройки игры
 
 STR_0150_SOMEONE                                                :кто-нибудь{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Карта
 STR_0152_TOWN_DIRECTORY                                         :Список городов
 STR_0153_SUBSIDIES                                              :Субсидии
 
-STR_UNITS_IMPERIAL                                              :Имперкие
+STR_UNITS_IMPERIAL                                              :Британская
 STR_UNITS_METRIC                                                :Метрическая
 STR_UNITS_SI                                                    :СИ
 
@@ -608,9 +607,9 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} достиг статуса '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} из {COMPANY} достиг статуса '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Создать Сценарий
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Создать сценарий
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
-STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Редактор Сценария
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Редактор сценариев
 STR_0223_LAND_GENERATION                                        :{WHITE}Генератор карты
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
@@ -732,13 +731,13 @@ STR_0294_QUIT_EDITOR                                            :Выйти из
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Выход
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Сохранить, загрузить сценарий, выход из редактора
-STR_0298_LOAD_SCENARIO                                          :{WHITE}Загрузить Сценарий
-STR_0299_SAVE_SCENARIO                                          :{WHITE}Сохранить Сценарий
-STR_029A_PLAY_SCENARIO                                          :{BLACK}Играть Сценарий
-STR_PLAY_HEIGHTMAP                                              :{BLACK}Играть РЕЛЬЕФ
-STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Начать новую игру, используя РЕЛЬЕФ в качестве шаблона карты
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Загрузить сценарий
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Сохранить сценарий
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Играть сценарий
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Играть карту высот
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Начать новую игру, используя карту высот в качестве шаблона карты
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Вы уверены что хотите выйти из этого сценария ?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Выход из Редактора
+STR_029C_QUIT_EDITOR                                            :{WHITE}Выход из редактора
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...может быть построен только в городах с населением не менее 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Уменьшить год начала игры на 1
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Увеличить год начала игры на 1
@@ -761,7 +760,7 @@ STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :По умолчанию
 STR_02BF_CUSTOM                                                 :Пользовательские
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Сохранить названия транспорта
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Выбор названия транспортных средств
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Выбор названий транспортных средств
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Сохранить пользовательские названия транспорта
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -805,7 +804,7 @@ STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Скоп
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Вставить позицию из окна просмотра
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Вставить эту позицию из окна просмотра
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Денежные единицы
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Валюта
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Выбор валюты
 STR_MEASURING_UNITS                                             :{BLACK}Единицы измерения
@@ -818,7 +817,7 @@ STR_02E9_DRIVE_ON_LEFT                                          :Левосто�
 STR_02EA_DRIVE_ON_RIGHT                                         :Правостороннее
 STR_02EB_TOWN_NAMES                                             :{BLACK}Названия городов
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Выбор стиля названия городов
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Выбор языка названий городов
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Автосохранение
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -827,20 +826,20 @@ STR_02F7_OFF                                                    :Не сохра
 STR_02F8_EVERY_3_MONTHS                                         :Каждые 3 месяца
 STR_02F9_EVERY_6_MONTHS                                         :Каждые 6 месяцев
 STR_02FA_EVERY_12_MONTHS                                        :Каждый год
-STR_02FB_START_A_NEW_GAME                                       :{BLACK}Новая игра
-STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Загрузить игру
-STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Создать собственную карту/сценарий
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Выбор одиночной игры
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Выбор сетевой игры 2-8 игроков
-STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Показать настройки игры
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Показать настройки сложности
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Начать новую игру
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Загрузить сохраненную игру
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Создать собственный сценарий
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Выбрать одиночную игру
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Выбрать сетевую игру на 2-8 игроков
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Открыть настройки игры
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Открыть настройки сложности
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Начать новую игру, используя сценарий
 STR_0304_QUIT                                                   :{BLACK}Выход
-STR_0305_QUIT_OPENTTD                                           :{BLACK}Выход из 'OpenTTD'
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Выйти из OpenTTD
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можно строить только в городах
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Выбрать умеренный климат
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Выбрать арктический климат
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Выбрать субарктический климат
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Выбрать субтропический климат
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Выбрать игрушечный климат
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Профинансировать создание нового предприятия
@@ -872,12 +871,12 @@ STR_0336_7                                                      :{BLACK}7
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Английские (Ориг.)
 STR_TOWNNAME_FRENCH                                             :Французкие
-STR_TOWNNAME_GERMAN                                             :Германские
+STR_TOWNNAME_GERMAN                                             :Немецкие
 STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Английские (Доп.)
 STR_TOWNNAME_LATIN_AMERICAN                                     :Латино-Американские
 STR_TOWNNAME_SILLY                                              :Шуточные
 STR_TOWNNAME_SWEDISH                                            :Шведские
-STR_TOWNNAME_DUTCH                                              :Немецкие
+STR_TOWNNAME_DUTCH                                              :Нидерландские
 STR_TOWNNAME_FINNISH                                            :Финские
 STR_TOWNNAME_POLISH                                             :Польские
 STR_TOWNNAME_SLOVAKISH                                          :Словацкие
@@ -915,13 +914,13 @@ STR_CURR_NOK                                                    :Норвежс�
 STR_CURR_PLN                                                    :Польская Зелота (PLN)
 STR_CURR_ROL                                                    :Римская Лея (ROL)
 STR_CURR_RUR                                                    :Российский Рубль (RUR)
-STR_CURR_SIT                                                    :Словенский талер(SIT)
+STR_CURR_SIT                                                    :Словенский талер (SIT)
 STR_CURR_SEK                                                    :Шведская Крона (SEK)
 STR_CURR_YTL                                                    :Турецкая лира (YTL)
 STR_CURR_SKK                                                    :Словацкая коруна (SKK)
 STR_CURR_BRR                                                    :Бразильский реал (BRL)
 
-STR_CURR_CUSTOM                                                 :Ручной...
+STR_CURR_CUSTOM                                                 :Своя...
 
 STR_OPTIONS_LANG                                                :{BLACK}Язык
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1004,9 +1003,9 @@ STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Ошиб
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Ошибка автообновления для {COMMA} (денег мало)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Поезд {COMMA} слишком длинный после автозамены
 
-STR_CONFIG_PATCHES                                              :{BLACK}Настройка патчей
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Настройка патчей
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Настройка патчей
+STR_CONFIG_PATCHES                                              :{BLACK}Настройки патчей
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Открыть настройки патчей
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Настройки патчей
 
 STR_CONFIG_PATCHES_OFF                                          :Выкл
 STR_CONFIG_PATCHES_ON                                           :Вкл
@@ -1982,73 +1981,73 @@ STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Уров
 STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Сохранить
 
 ############ range for difficulty levels starts
-STR_6801_EASY                                                   :{BLACK}Легкий
-STR_6802_MEDIUM                                                 :{BLACK}Средний
-STR_6803_HARD                                                   :{BLACK}Тяжелый
+STR_6801_EASY                                                   :{BLACK}Легко
+STR_6802_MEDIUM                                                 :{BLACK}Средне
+STR_6803_HARD                                                   :{BLACK}Тяжело
 STR_6804_CUSTOM                                                 :{BLACK}Пользоват.
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Максимальное число противников: {ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Начало игры противников: {ORANGE}{STRING}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Противники начинают игру: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Количество городов: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Количество предприятий: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Максимальная начальная ссуда: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Начальная процентная ставка: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Затраты на содержание транспорта: {ORANGE}{STRING}
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Уровень затрат на содержание транспорта: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Скорость строительства конкурентов: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Интеллект конкурентов: {ORANGE}{STRING}
-STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Поломки транспорта: {ORANGE}{STRING}
-STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Множитель дохода от субсидии: {ORANGE}{STRING}
-STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Затраты на  строительство: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Интенсивность поломок транспорта: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Множитель дохода от субсидий: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Затраты на строительство: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Тип местности: {ORANGE}{STRING}
-STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Количество морей и озер: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Процент покрытия территории водой: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Экономика: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Разворот поездов: {ORANGE}{STRING}
-STR_6815_DISASTERS                                              :{LTBLUE}Бедствия: {ORANGE}{STRING}
+STR_6815_DISASTERS                                              :{LTBLUE}Катастрофы: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL                                         :{LTBLUE}Отношение властей к изменению территорий: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Ничего
-STR_6816_LOW                                                    :Мало
-STR_6817_NORMAL                                                 :Нормально
-STR_6818_HIGH                                                   :Много
+STR_26816_NONE                                                  :нет
+STR_6816_LOW                                                    :мало
+STR_6817_NORMAL                                                 :нормально
+STR_6818_HIGH                                                   :много
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
-STR_681B_VERY_SLOW                                              :Очень Медленно
-STR_681C_SLOW                                                   :Медленно
-STR_681D_MEDIUM                                                 :Средне
-STR_681E_FAST                                                   :Быстро
-STR_681F_VERY_FAST                                              :Очень Быстро
-STR_VERY_LOW                                                    :Очень Низко
-STR_6820_LOW                                                    :Низкий
-STR_6821_MEDIUM                                                 :Средний
-STR_6822_HIGH                                                   :Высокий
-STR_6823_NONE                                                   :Нет
-STR_6824_REDUCED                                                :Уменьшенное
-STR_6825_NORMAL                                                 :Нормальное
+STR_681B_VERY_SLOW                                              :очень медленная
+STR_681C_SLOW                                                   :медленная
+STR_681D_MEDIUM                                                 :средняя
+STR_681E_FAST                                                   :быстрая
+STR_681F_VERY_FAST                                              :очень быстрая
+STR_VERY_LOW                                                    :очень низкий
+STR_6820_LOW                                                    :низкий
+STR_6821_MEDIUM                                                 :средний
+STR_6822_HIGH                                                   :высокий
+STR_6823_NONE                                                   :нет
+STR_6824_REDUCED                                                :уменьшенное
+STR_6825_NORMAL                                                 :нормальное
 STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
 STR_6829_X4                                                     :x4
-STR_682A_VERY_FLAT                                              :Очень плоский
-STR_682B_FLAT                                                   :Плоский
-STR_682C_HILLY                                                  :Холмистый
-STR_682D_MOUNTAINOUS                                            :Гористый
-STR_682E_STEADY                                                 :Стабильная
-STR_682F_FLUCTUATING                                            :Изменчивая
-STR_6830_IMMEDIATE                                              :Немедленно
+STR_682A_VERY_FLAT                                              :очень плоский
+STR_682B_FLAT                                                   :плоский
+STR_682C_HILLY                                                  :холмистый
+STR_682D_MOUNTAINOUS                                            :гористый
+STR_682E_STEADY                                                 :стабильная
+STR_682F_FLUCTUATING                                            :неустойчивая
+STR_6830_IMMEDIATE                                              :немедленно
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :через 3 месяца
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :через полгода
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :через 9 месяцев
-STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :В конце линии, и на станции
-STR_6835_AT_END_OF_LINE_ONLY                                    :Только в конце линии
-STR_6836_OFF                                                    :Выкл
-STR_6837_ON                                                     :Вкл
-STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Показать таблицу рекордов
-STR_6839_PERMISSIVE                                             :Допустимое
-STR_683A_TOLERANT                                               :Терпимое
-STR_683B_HOSTILE                                                :Отрицательное
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :в конце линий и на станциях
+STR_6835_AT_END_OF_LINE_ONLY                                    :только в конце линий
+STR_6836_OFF                                                    :выключены
+STR_6837_ON                                                     :включены
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}показать таблицу рекордов
+STR_6839_PERMISSIVE                                             :снисходительное
+STR_683A_TOLERANT                                               :терпимое
+STR_683B_HOSTILE                                                :отрицательное
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2913,14 +2912,19 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Нево
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Файл не найден
 STR_NEWGRF_DISABLED                                             :{RED}Отключено
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Соответствующий файл не найден (загружен совместимый GRF)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Вместо отсутствующих загружены совместимые GRF
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Отсутствующие GRF файлы были отключены
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Не найдены GRF файлы, необходимые для загрузки игры
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Валюта
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{CURRENCY} = Ј {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс:
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Переход на Евро: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Переход на Евро: {ORANGE}never
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Переход на евро: {ORANGE}никогда
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Образец: {ORANGE}{CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Изменить параметр валюты
 

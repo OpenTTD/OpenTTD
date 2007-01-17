@@ -242,7 +242,23 @@
 			</FileConfiguration>
 		</File>
 		<File
-			RelativePath=".\lang\lithuanian.txt">
+			RelativePath="lang\japanese.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating japanese language file"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;
+"
+					AdditionalDependencies=""
+					Outputs="lang\japanese.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath="lang\lithuanian.txt"
+			>
 			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
@@ -254,15 +270,27 @@
 			</FileConfiguration>
 		</File>
 		<File
-			RelativePath=".\lang\norwegian.txt">
+			RelativePath=".\lang\norwegian_bokmal.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"
-					Description="Generating norwegian language file"
+					Description="Generating norwegian_bokmal language file"
 					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;
 "
-					Outputs="lang\norwegian.lng"/>
+					Outputs="lang\norwegian_bokmal.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\lang\norwegian_nynorsk.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating norwegian_nynorsk language file"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;
+"
+					Outputs="lang\norwegian_nynorsk.lng"/>
 			</FileConfiguration>
 		</File>
 		<File
@@ -338,7 +366,23 @@
 			</FileConfiguration>
 		</File>
 		<File
-			RelativePath=".\lang\spanish.txt">
+			RelativePath="lang\slovenian.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating slovenian language file"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;
+"
+					AdditionalDependencies=""
+					Outputs="lang\slovenian.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath="lang\spanish.txt"
+			>
 			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool

@@ -460,6 +460,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Teherkapacitás
 STR_NO_WAITING_CARGO                                            :{BLACK}Semmilyen áru nem várakozik
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Minden szállítóegység kiválasztása
 STR_SELECT_ALL_TYPES                                            :{BLACK}Minden rakománytípus mutatása (beleértve ha nincs várakozó rakomány)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Tekintsd meg az ehhez a járműtípushoz választható mozdonyok listáját
 STR_MANAGE_LIST                                                 :{BLACK}Lista kezelése
 STR_MANAGE_LIST_TIP                                             :{BLACK}A listán szereplő járműveknek utasítás küldése
 STR_REPLACE_VEHICLES                                            :Járművek lecserélése
@@ -2645,6 +2646,7 @@ STR_8827_FULL_LOAD                                              :{BLACK}Telepako
 STR_8828_UNLOAD                                                 :{BLACK}Lepakol
 STR_REFIT                                                       :{BLACK}Átalakít
 STR_REFIT_TIP                                                   :{BLACK}Válaszd ki minek a szállítására álljunk át. Ctrl+kattintással eltávolítod az átalakítási utasítást.
+STR_REFIT_ORDER                                                 :(Átalakít erre: {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} menetrendje
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Menetrend vége - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3015,6 +3017,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nem lehe
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}File nem található
 STR_NEWGRF_DISABLED                                             :{RED}Kikapcsolva
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Pontosan megegyező fájlt nem találtam (kompatibilis GRF-fel helyettesítve)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilis GRF(ek) betöltve a hiányzó fájl(ok) helyett
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Hiányzó GRF fájl(oka)t kikapcsoltam
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Kritikus GRF fájl(ok) hiányoznak, a játék nem betölthető
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = £ {COMMA}

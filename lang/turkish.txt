@@ -1150,7 +1150,7 @@ STR_CHEATS                                                      :{WHITE}Hileler
 STR_CHEATS_TIP                                                  :{BLACK}Onay kutuları bu hilenin daha önce kullanılıp kullanmadığını bildirir.
 STR_CHEATS_WARNING                                              :{BLACK}Uyarı! Rakiplerine ihanet etmek üzeresin. Böyle bir davranışı sonsuza dek unutmayacaklarını akılda tut.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Parayı {CURRENCY64} kadar arttır
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Oyuncunun yerine geçme: {ORANGE}{COMMA}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Oyuncunun yerine geç: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Sihirli buldözer (normalde silinemeyen binaları siler): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tüneller kesişebilir: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Duraklama zamanında inşaat yap: {ORANGE}{STRING}
@@ -2054,7 +2054,7 @@ STR_683B_HOSTILE                                                :Katı
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
-STR_7002_PLAYER                                                 :(Oyuncu {COMMA})
+STR_7002_PLAYER                                                 :({COMMA}. Oyuncu)
 STR_7004_NEW_FACE                                               :{BLACK}Yeni Surat
 STR_7005_COLOR_SCHEME                                           :{BLACK}Renkler
 STR_7006_COLOR_SCHEME                                           :{GOLD}Renk:
@@ -2108,7 +2108,7 @@ STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Şirket 
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}İstediginiz rengi seçin
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Kredi ödünç al
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Krediyi öde
-STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Manager)
+STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Yönetici)
 STR_7038_INAUGURATED                                            :{GOLD}Kuruluş: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Araçlar:
 STR_TRAINS                                                      :{WHITE}{COMMA} tren
@@ -2137,7 +2137,7 @@ STR_7054                                                        :{WHITE}{STRING}
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Şirket tehlikede!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY}, performansı artmazsa satılacak ya da yok olacak!
-STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Manager)
+STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Yönetici)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Şirketler birleşti!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY}, {COMPANY} tarafından {CURRENCY} fiyatıyla alındı!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Şirketimizi satın alacak birilerini arıyoruz.{}{} {COMPANY} şirketini şu fiyata almak ister misiniz: {CURRENCY}?
@@ -2914,6 +2914,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Dosya ek
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Eşleşen dosya bulunamadı
 STR_NEWGRF_DISABLED                                             :{RED}Etkisiz
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Eşleşen dosya bulunamadı (uyumlu GRF yüklendi)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Eksik dosyalar için uyumlu GRF(ler) yüklendi
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Eksik GRF dosyaları etkisizleştirildi
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Oyunu yüklemek için gerekli olan GRF dosyaları eksik
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{CURRENCY} = £ {COMMA}

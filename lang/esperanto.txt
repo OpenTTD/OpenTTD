@@ -348,11 +348,11 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Gajna grafiko
 STR_0155_INCOME_GRAPH                                           :Enspeza grafiko
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Liveriteca grafiko
-STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Kvalithistoria grafiko
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Rendimenta grafiko
 STR_0158_COMPANY_VALUE_GRAPH                                    :Kompanivalora grafiko
 STR_0159_CARGO_PAYMENT_RATES                                    :Ŝarĝpaga grafiko
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Kompaniara tabelo
-STR_PERFORMANCE_DETAIL_MENU                                     :Detala kvalittakso
+STR_PERFORMANCE_DETAIL_MENU                                     :Detala rendimento
 ############ range for menu	ends
 
 STR_015B_OPENTTD                                                :{WHITE}Pri OpenTTD
@@ -1018,7 +1018,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permesu
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permesu forigon de pli da urbaj vojoj, pontoj ktp: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permesu konstrui tre longajn trajnojn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Permesu realecan rapidigon por trajnoj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Malpermesu trajnojn kaj ŝipojn ort-turniĝi: {ORANGE}{STRING} {LTBLUE} (bezonas NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Trajnoj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING} {LTBLUE} (bezonas NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Ligu stacidomojn konstruatajn unu apud la alia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Ĉe 'plene ŝarĝu' ekiru se ajna ŝarĝo estas plena: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Uzu plibonigitan ŝarĝalgoritmon: {ORANGE}{STRING}
@@ -1051,7 +1051,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :de ĉiuj veturi
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avertu se trajno negative enspezas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Veturiloj neniam eluziĝas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Aŭtomate anstataŭu veturilon se malnoviĝas
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Anstataŭu {ORANGE}{STRING}{LTBLUE} monatojn antaŭ/post maksimuma aĝo de veturilo
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Anstataŭu {ORANGE}{STRING}{LTBLUE} monatojn antaŭ/post pleja veturilaĝo
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimuma mono por anstataŭado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Daŭro de erar-mesaĝo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Montru enloĝantaron en urbnomindikilo: {ORANGE}{STRING}
@@ -1078,9 +1078,9 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Kiom al
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksimuma stacivasteco: {ORANGE}{STRING} {RED}Atentu: Pli alte, malpli rapide
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Aŭtomate prizorgu helikopterojn sur helikopterejoj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligu landaspekta breto al rela, voja, akva kaj flughavena bretoj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligu landaspektan breton al konstruadaj bretoj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inversigu skroldirekton: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Montru mezuran konsilbalonon ĉe uzo de konstruaj iloj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Montru mezuran konsilbalonon ĉe uzo de konstruiloj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Montru kompaniajn liverojn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Neniuj
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propra kompanio
@@ -1098,7 +1098,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Malebli
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Malebligu ŝipojn por la komputilo: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Aktivigu novan AI (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permesu komputilludantojn ĉe pluraj ludantoj (eksperimente): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Komputilludantoj ĉe pluraj ludantoj (eksperimente): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}{STRING} tagoj/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}malaktiva
@@ -2540,7 +2540,7 @@ STR_8823_SKIP                                                   :{BLACK}Plusaltu
 STR_8824_DELETE                                                 :{BLACK}Forviŝu
 STR_8825_NON_STOP                                               :{BLACK}Senhalte
 STR_8826_GO_TO                                                  :{BLACK}Iru al
-STR_8827_FULL_LOAD                                              :{BLACK}Plene ŝarĝu
+STR_8827_FULL_LOAD                                              :{BLACK}Plenigu
 STR_8828_UNLOAD                                                 :{BLACK}Deŝarĝu
 STR_REFIT                                                       :{BLACK}Transformu
 STR_REFIT_TIP                                                   :{BLACK}Elektu ŝarĝtipon por transformo en ĉi tiu ordeno. CTRL+klako por forigi instrukcion
@@ -2915,6 +2915,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne povas
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Ne trovis apartenan dosieron
 STR_NEWGRF_DISABLED                                             :{RED}Malaktiva
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ne troviĝis apartena dosiero (ŝarĝis taŭgan GRF)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Taŭga(j) GRF(oj) ŝarĝiĝis por mankaj dosieroj
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manka(j) GRF-dosiero(j) malŝaltiĝis
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mankas GRF-dosiero(j) por povi ŝarĝi la ludon
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Alia monunuo
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Interŝanĝa valoro: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3055,10 +3060,10 @@ STR_RANDOM_SEED                                                 :{BLACK}Hazarda 
 STR_RANDOM_SEED_HELP                                            :{BLACK}Klaku por enigi hazardan enigon
 STR_LAND_GENERATOR                                              :{BLACK}Landgenerilo:
 STR_TREE_PLACER                                                 :{BLACK}Arba algoritmo:
-STR_HEIGHTMAP_ROTATION                                          :{BLACK}Altecmapa turniĝo:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Mapa turniĝo:
 STR_TERRAIN_TYPE                                                :{BLACK}Terentipo:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Marnivelo:
-STR_SMOOTHNESS                                                  :{BLACK}Ebeneco:
+STR_SMOOTHNESS                                                  :{BLACK}Reguleco:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Neĝlinia alteco:
 STR_DATE                                                        :{BLACK}Dato:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Kiom da urboj:
@@ -3071,7 +3076,7 @@ STR_START_DATE_QUERY_CAPT                                       :{WHITE}Ŝanĝu 
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skala averto
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ne rekomendindas tro ŝanĝi la grandecon de la mapo. Ĉu daŭrigi la generadon?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
-STR_HEIGHTMAP_NAME                                              :{BLACK}Altecmapa nomo:
+STR_HEIGHTMAP_NAME                                              :{BLACK}Mapa nomo:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Grandeco: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generante mondon...
 STR_GENERATION_ABORT                                            :{BLACK}Ĉesu
@@ -3101,9 +3106,9 @@ STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrigu la mapeton al la nuna loko
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Malgranda
-STR_CITY_AIRPORT                                                :{BLACK}Urbo
-STR_METRO_AIRPORT                                               :{BLACK}Ĉefurba Flughaveno
+STR_SMALL_AIRPORT                                               :{BLACK}Malgranda flughaveno
+STR_CITY_AIRPORT                                                :{BLACK}Urba flughaveno
+STR_METRO_AIRPORT                                               :{BLACK}Ĉefurba flughaveno
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internacia flughaveno
 STR_COMMUTER_AIRPORT                                            :{BLACK}Urbeta flughaveno
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinenta

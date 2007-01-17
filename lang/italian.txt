@@ -27,10 +27,10 @@ STR_0013_LIVESTOCK                                              :Bestiame
 STR_0014_GOODS                                                  :Beni
 STR_0015_GRAIN                                                  :Grano
 STR_0016_WOOD                                                   :Legname
-STR_0017_IRON_ORE                                               :Minerale Ferroso
+STR_0017_IRON_ORE                                               :Minerali Ferrosi
 STR_0018_STEEL                                                  :Acciaio
 STR_0019_VALUABLES                                              :Valori
-STR_001A_COPPER_ORE                                             :Minerale di Rame
+STR_001A_COPPER_ORE                                             :Minerali di Rame
 STR_001B_MAIZE                                                  :Mais
 STR_001C_FRUIT                                                  :Frutta
 STR_001D_DIAMONDS                                               :Diamanti
@@ -159,7 +159,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Non puoi
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Non puoi ripulire l'area....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Originale{COPYRIGHT} 1995 Chris Sawyer, Tutti i diritti riservati
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versione {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 Il OpenTTD team
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 Il team OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Traduttore/i - Sidew e altri, senza nome,  che mi hanno preceduto.
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -2914,6 +2914,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Non poss
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}File simile non trovato
 STR_NEWGRF_DISABLED                                             :{RED}Disabilitato
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}File corrispondente non trovato (file GRF compatibile caricato)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}File GRF compatibili caricati per i file mancanti
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}File GRF mancanti sono stati disabilitati
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}File GRF mancanti per poter caricare il gioco
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta personalizzata
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cambio: {ORANGE}{CURRENCY} = £ {COMMA}

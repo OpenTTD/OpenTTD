@@ -2914,6 +2914,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No es po
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}No s'ha trobat cap arxiu coincident
 STR_NEWGRF_DISABLED                                             :{RED}Desactivat
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}No s'ha trobat un arxiu coincident (els GRF compatibles s'han carregat)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}S'han carregat els GRF(s) compatibles pels arxius faltants
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Els arxius GRF(s) faltants han estat desactivats
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Arxius GRF(s) faltants per poder carregar el joc
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalitzada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Canvi de moneda: {ORANGE}{CURRENCY} = £ {COMMA}
