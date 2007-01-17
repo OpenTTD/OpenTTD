@@ -1476,7 +1476,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 			feeder_profit_share = ge->feeder_profit * cargoshare / 10000;
 			v->cargo_count += cap;
 			ge->waiting_acceptance -= cap;
-			v->profit_this_year -= feeder_profit_share;
+			u->profit_this_year -= feeder_profit_share;
 			ge->feeder_profit -= feeder_profit_share;
 			unloading_time += cap;
 			st->time_since_load = 0;
