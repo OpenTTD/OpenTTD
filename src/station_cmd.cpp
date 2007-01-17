@@ -1361,7 +1361,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	//give us a road stop in the list, and check if something went wrong
-	road_stop = new RoadStop(tile, INVALID_STATION);
+	road_stop = new RoadStop(tile);
 	if (road_stop == NULL) {
 		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
 	}
@@ -1412,7 +1412,6 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		//initialize an empty station
 		road_stop->prev = prev;
-		road_stop->station = st->index;
 		if (!st->facilities) st->xy = tile;
 		st->facilities |= (type) ? FACIL_TRUCK_STOP : FACIL_BUS_STOP;
 		st->owner = _current_player;
@@ -2852,7 +2851,7 @@ static const SaveLoad _roadstop_desc[] = {
 	SLE_VAR(RoadStop,status,       SLE_UINT8),
 	/* Index was saved in some versions, but this is not needed */
 	SLE_CONDNULL(4, 0, 8),
-	SLE_VAR(RoadStop,station,      SLE_UINT16),
+	SLE_CONDNULL(2, 0, 44),
 	SLE_CONDNULL(1, 0, 25),
 
 	SLE_REF(RoadStop,next,         REF_ROADSTOPS),
@@ -3007,13 +3006,13 @@ static void Load_STNS(void)
 		 *  convert, if needed */
 		if (CheckSavegameVersion(6)) {
 			if (st->bus_tile_obsolete != 0) {
-				st->bus_stops = new RoadStop(st->bus_tile_obsolete, st->index);
+				st->bus_stops = new RoadStop(st->bus_tile_obsolete);
 				if (st->bus_stops == NULL)
 					error("Station: too many busstations in savegame");
 
 			}
 			if (st->lorry_tile_obsolete != 0) {
-				st->truck_stops = new RoadStop(st->lorry_tile_obsolete, st->index);
+				st->truck_stops = new RoadStop(st->lorry_tile_obsolete);
 				if (st->truck_stops == NULL)
 					error("Station: too many truckstations in savegame");
 
@@ -3040,7 +3039,7 @@ static void Load_ROADSTOP(void)
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
-		RoadStop *rs = new (index) RoadStop(INVALID_TILE, INVALID_STATION);
+		RoadStop *rs = new (index) RoadStop(INVALID_TILE);
 
 		SlObject(rs, _roadstop_desc);
 	}

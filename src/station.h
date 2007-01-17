@@ -50,13 +50,12 @@ typedef struct RoadStop {
 	byte status;
 	RoadStopID index;
 	byte num_vehicles;
-	StationID station;
 	struct RoadStop *next;
 	struct RoadStop *prev;
 
 	static const int cDebugCtorLevel = 3;
 
-	RoadStop(TileIndex tile, StationID index);
+	RoadStop(TileIndex tile);
 	~RoadStop();
 
 	void *operator new (size_t size);

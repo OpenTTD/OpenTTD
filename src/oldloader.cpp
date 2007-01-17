@@ -314,10 +314,8 @@ static void FixOldStations(void)
 		}
 
 		/* Check if there is a bus or truck station, and convert to new format */
-		if (st->bus_tile_obsolete != 0) st->bus_stops = new RoadStop(st->bus_tile_obsolete, st->index);
-
-		if (st->lorry_tile_obsolete != 0) st->truck_stops = new RoadStop(st->lorry_tile_obsolete, st->index);
-
+		if (st->bus_tile_obsolete != 0)   st->bus_stops   = new RoadStop(st->bus_tile_obsolete);
+		if (st->lorry_tile_obsolete != 0) st->truck_stops = new RoadStop(st->lorry_tile_obsolete);
 	}
 }
 
