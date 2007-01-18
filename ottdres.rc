@@ -84,7 +84,7 @@ BEGIN
             VALUE "Comments", "This program is licensed under the GNU General Public License.\0"
             VALUE "CompanyName", "OpenTTD Development Team\0"
             VALUE "FileDescription", "OpenTTD\0"
-            VALUE "FileVersion", "Development Version\0"
+            VALUE "FileVersion", "0.5.0-RC4 (r8229)\0"
             VALUE "InternalName", "openttd\0"
             VALUE "LegalCopyright", "Copyright © OpenTTD Developers 2002-2007. All Rights Reserved.\0"
             VALUE "LegalTrademarks", "\0"
