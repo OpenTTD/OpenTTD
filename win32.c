@@ -23,8 +23,6 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <DbgHelp.h>
-#pragma comment ( lib, "dbghelp.lib" )
 
 static bool _has_console;
 
@@ -586,21 +584,6 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		}
 	}
 
-#if !defined(_DEBUG)
-	{
-		HANDLE file  = CreateFile(_T("crash.dmp"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0);
-		HANDLE proc  = GetCurrentProcess();
-		DWORD procid = GetCurrentProcessId();
-		MINIDUMP_EXCEPTION_INFORMATION mdei;
-
-		mdei.ThreadId = GetCurrentThreadId();
-		mdei.ExceptionPointers  = ep;
-		mdei.ClientPointers     = false;
-
-		MiniDumpWriteDump(proc, procid, file, MiniDumpWithDataSegs|MiniDumpWithFullMemory, &mdei, NULL, NULL);
-		CloseHandle(file);
-	}
-#endif
 	/* Close any possible log files */
 	CloseConsoleLogIfActive();
 
