@@ -770,7 +770,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Налаштування гри
 STR_02C5_DIFFICULTY_SETTINGS                                    :Налаштування складності
-STR_02C7_CONFIG_PATCHES                                         :Розширені налаштування4
+STR_02C7_CONFIG_PATCHES                                         :Розширені налаштування
 STR_NEWGRF_SETTINGS                                             :Нова графіка
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Показ назви міст
@@ -967,7 +967,7 @@ STR_TONS                                                        :тонИ
 STR_LITERS                                                      :літрів
 STR_ITEMS                                                       :штуК
 STR_CRATES                                                      :ЯщикИ
-STR_RES_OTHER                                                   :іншЕ
+STR_RES_OTHER                                                   :інше
 STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
@@ -1006,9 +1006,9 @@ STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Поми
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Помилка автооновлення літака {COMMA} (бракує коштів)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Поїзд {COMMA} дуже довгий після оновлення
 
-STR_CONFIG_PATCHES                                              :{BLACK}Розширені налаштування1
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Розширені налаштування2
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Розширені налаштування3
+STR_CONFIG_PATCHES                                              :{BLACK}Розширені налаштування
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Розширені налаштування
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Розширені налаштування
 
 STR_CONFIG_PATCHES_OFF                                          :Ні
 STR_CONFIG_PATCHES_ON                                           :Так
@@ -2609,7 +2609,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_S} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Макс. T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
-STR_8861_STOPPED                                                :{RED}Зупинено
+STR_8861_STOPPED                                                :{RED}Зупинений
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Неможливо проїхати сигнал - небезпечно...
 STR_8863_CRASHED                                                :{RED}Аварія!
 

@@ -1,6 +1,5 @@
 ##name Russian
-##ownname Русский
-##isocode ru_RU.UTF-8
+##ownname Russian
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -893,32 +892,32 @@ STR_TOWNNAME_ITALIAN                                            :Итальян�
 STR_TOWNNAME_CATALAN                                            :Каталанские
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Фунт (£)
-STR_CURR_USD                                                    :Доллар ($)
+STR_CURR_GBP                                                    :Английский фунт (£)
+STR_CURR_USD                                                    :Доллар США ($)
 STR_CURR_EUR                                                    :Евро (€)
-STR_CURR_YEN                                                    :Йена (¥)
+STR_CURR_YEN                                                    :Японская иена (¥)
 STR_CURR_ATS                                                    :Австрийский шиллинг (ATS)
-STR_CURR_BEF                                                    :Бельгийский Франк (BEF)
-STR_CURR_CHF                                                    :Швейцарский Форинт (CHF)
-STR_CURR_CZK                                                    :Чешская Крона (CZK)
-STR_CURR_DEM                                                    :Немецкая Марка (DEM)
-STR_CURR_DKK                                                    :Датская Крона (DKK)
-STR_CURR_ESP                                                    :Песета (ESP)
-STR_CURR_FIM                                                    :Финская Марка (FIM)
-STR_CURR_FRF                                                    :Франк (FRF)
-STR_CURR_GRD                                                    :Греческая Драхма (GRD)
-STR_CURR_HUF                                                    :Венгерский Форинт (HUF)
-STR_CURR_ISK                                                    :Исландская Крона (ISK)
-STR_CURR_ITL                                                    :Итальянская Лира (ITL)
-STR_CURR_NLG                                                    :Немецкий гульден (NLG)
-STR_CURR_NOK                                                    :Норвежская Крона (NOK)
-STR_CURR_PLN                                                    :Польская Зелота (PLN)
-STR_CURR_ROL                                                    :Римская Лея (ROL)
-STR_CURR_RUR                                                    :Российский Рубль (RUR)
-STR_CURR_SIT                                                    :Словенский талер (SIT)
-STR_CURR_SEK                                                    :Шведская Крона (SEK)
+STR_CURR_BEF                                                    :Бельгийский франк (BEF)
+STR_CURR_CHF                                                    :Швейцарский франк (CHF)
+STR_CURR_CZK                                                    :Чешская крона (CZK)
+STR_CURR_DEM                                                    :Немецкая марка (DEM)
+STR_CURR_DKK                                                    :Датская крона (DKK)
+STR_CURR_ESP                                                    :Испанская песета (ESP)
+STR_CURR_FIM                                                    :Финская марка (FIM)
+STR_CURR_FRF                                                    :Французский франк (FRF)
+STR_CURR_GRD                                                    :Греческая драхма (GRD)
+STR_CURR_HUF                                                    :Венгерский форинт (HUF)
+STR_CURR_ISK                                                    :Исландская крона (ISK)
+STR_CURR_ITL                                                    :Итальянская лира (ITL)
+STR_CURR_NLG                                                    :Нидерландский гульден (NLG)
+STR_CURR_NOK                                                    :Норвежская крона (NOK)
+STR_CURR_PLN                                                    :Польский злотый (PLN)
+STR_CURR_ROL                                                    :Римский лей (ROL)
+STR_CURR_RUR                                                    :Российский рубль (RUR)
+STR_CURR_SIT                                                    :Словенский толар (SIT)
+STR_CURR_SEK                                                    :Шведская крона (SEK)
 STR_CURR_YTL                                                    :Турецкая лира (YTL)
-STR_CURR_SKK                                                    :Словацкая коруна (SKK)
+STR_CURR_SKK                                                    :Словацкая крона (SKK)
 STR_CURR_BRR                                                    :Бразильский реал (BRL)
 
 STR_CURR_CUSTOM                                                 :Своя...
@@ -1116,7 +1115,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Год 
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (более мелкие изменения)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Разрешить покупать акции других компаний
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При перетаскивании ставить сигналы каждые : {ORANGE}{STRING} клетки
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Автоматически строить семафоры перед: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Автоматически строить семафоры до: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Лево
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Центр
@@ -2922,11 +2921,11 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Отсу
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Не найдены GRF файлы, необходимые для загрузки игры
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Валюта
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{CURRENCY} = £{COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс:
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Переход на Евро: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Переход на евро: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Переход на евро: {ORANGE}никогда
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Образец: {ORANGE}{CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Изменить параметр валюты
