@@ -159,6 +159,7 @@ struct Station {
 	void* operator new (size_t size, int st_idx);
 	void operator delete(void *p, int st_idx);
 
+	void AddFacility(byte new_facility_bit, TileIndex facil_xy);
 	void MarkDirty() const;
 	void MarkTilesDirty() const;
 	bool TileBelongsToRailStation(TileIndex tile) const;

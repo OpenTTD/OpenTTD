@@ -1000,14 +1000,10 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		if (CmdFailed(ret)) return ret;
 
 		st->train_tile = finalvalues[0];
-		if (!st->facilities) st->xy = finalvalues[0];
-		st->facilities |= FACIL_TRAIN;
-		st->owner = _current_player;
+		st->AddFacility(FACIL_TRAIN, finalvalues[0]);
 
 		st->trainst_w = finalvalues[1];
 		st->trainst_h = finalvalues[2];
-
-		st->build_date = _date;
 
 		st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TRY);
 
@@ -1415,11 +1411,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		//initialize an empty station
 		road_stop->prev = prev;
-		if (!st->facilities) st->xy = tile;
-		st->facilities |= (type) ? FACIL_TRUCK_STOP : FACIL_BUS_STOP;
-		st->owner = _current_player;
-
-		st->build_date = _date;
+		st->AddFacility((type) ? FACIL_TRUCK_STOP : FACIL_BUS_STOP, tile);
 
 		st->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
 
@@ -1674,14 +1666,10 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	cost += _price.build_airport * w * h;
 
 	if (flags & DC_EXEC) {
-		st->owner = _current_player;
 		st->airport_tile = tile;
-		if (!st->facilities) st->xy = tile;
-		st->facilities |= FACIL_AIRPORT;
+		st->AddFacility(FACIL_AIRPORT, tile);
 		st->airport_type = (byte)p1;
 		st->airport_flags = 0;
-
-		st->build_date = _date;
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
@@ -1953,11 +1941,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		st->dock_tile = tile;
-		if (!st->facilities) st->xy = tile;
-		st->facilities |= FACIL_DOCK;
-		st->owner = _current_player;
-
-		st->build_date = _date;
+		st->AddFacility(FACIL_DOCK, tile);
 
 		st->rect.BeforeAddRect(tile, _dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TRY);
 

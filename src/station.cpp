@@ -50,7 +50,7 @@ Station::Station(TileIndex tile)
 
 	last_vehicle_type = VEH_Invalid;
 
-	random_bits = Random();
+	random_bits = 0; // Random() must be called when station is really built (DC_EXEC)
 	waiting_triggers = 0;
 }
 
@@ -103,6 +103,19 @@ void Station::operator delete(void *p)
 
 void Station::operator delete(void *p, int st_idx)
 {
+}
+
+/** Called when new facility is built on the station. If it is the first facility
+	* it initializes also 'xy' and 'random_bits' members */
+void Station::AddFacility(byte new_facility_bit, TileIndex facil_xy)
+{
+	if (facilities == 0) {
+		xy = facil_xy;
+		random_bits = Random();
+	}
+	facilities |= new_facility_bit;
+	owner = _current_player;
+	build_date = _date;
 }
 
 void Station::MarkDirty() const
