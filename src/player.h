@@ -230,7 +230,7 @@ static inline byte ActivePlayerCount(void)
 
 static inline Player* GetPlayer(PlayerID i)
 {
-	assert(i < (PlayerID)lengthof(_players));
+	assert(IS_INSIDE_1D(i, PLAYER_FIRST, lengthof(_players)));
 	return &_players[i];
 }
 
@@ -241,7 +241,7 @@ static inline bool IsLocalPlayer(void)
 
 static inline bool IsValidPlayer(PlayerID pi)
 {
-	return pi < MAX_PLAYERS;
+	return IS_INSIDE_1D(pi, PLAYER_FIRST, MAX_PLAYERS);
 }
 
 byte GetPlayerRailtypes(PlayerID p);
