@@ -19,34 +19,32 @@ Bugs for 0.5.0
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+-559	Front-/Rear-facing engines don't line up with each other	2007-01-17	Unconfirmed	Smoovious
+-553	Autorenew doesn't warn when replacement isn't available	2007-01-14	Unconfirmed	Smoovious	Bjarni
+-546	[0.5.0 RC3] Inflation overflow	2007-01-14	Unconfirmed	zlavick
+-542	Assertion with Vehicle list	2007-01-12	Assigned	Johannes E. Krause	Bjarni
+-540	Planes vanished when offered exclusive	2007-01-12	Waiting for user	Tony
+-539	Trains can cash the same cargo multiple times	2007-01-11	Unconfirmed	Hans
+-529	newairport's sprite issue
 -524	OSX sometimes (not always) fails to find free disk space
--523	Aircraft too cheap
 -522	overflow on vehicle costs
--521	Mythical train
 -519	Bridge building results in 'missing' pieces
--518	Vehicle at final leg of transfer chain gets negative profit on load
--513	Client Crash - Server running saved game
 -508	Destroying trees and replanting => raised rating
--503	Load game failed: inflate() failed.
 -502	OSX can incorrectly print "dbg: [sl] Cannot open savegame 'data/opntitle.dat' for saving/loading."
 -501	Mouse pointer gets hidden, when draging out of window and back again. Only affects Wacom etc.
+-494	Get free money abusing a stock bug
 -489	[0.5.0rc1] Sound choppy on Vista
--483	!invalid string id 0 in GetString when trying to host a game after upgrade to 0.5.0-RC1 - workaround
 -474	Overtaking car doesn't hit the against-riding car.
--465	Crash in Linux (Debian)
--460	vehicles not avaible - unable to build
 -459	Merging is buggy
 -458	Crash when changing Resolution on Mac OS X (x86)
 -450	GUI selecting disabled numbers (newstations)
--444	Compile issues (networking) on Sun and SGI platforms
 -442	Alt-tab behaviour flawed whilst full screen (win32)
 -441	Transparent stuff
 -435	Assertion window doesn't show when in fullscreen on Mac OS X
--432	Assertion failed: AircraftController in aircraft_cmd.c (line 771)
+-431	failure to autorenew (core/GUI desync)
 -423	Improved loading causes high CPU use with long trains
 -410	Openttd in dedicated mode don't run without data files
 -404	Cargo never delivered to station after bribe and before first pickup
--379	Integer overflow with huge cities
 -365	Blimp Stuck at airport
 -362	Changing signal type affects whole square
 -357	CPU spikes in game
@@ -64,7 +62,6 @@ URL: http://bugs.openttd.org
 -193	Inconsistent directory usage on Mac OS X
 -165	vehicle length not taken into account
 -163	Cargo: Station destroyed / High payment
--158	Crash with !v->type == VEH_Ship error
 -153	Language crash with app renaming OSX
 -119	Clipping problems with vehicles on slopes
 -115	inactive logins do not get auto kicked
@@ -84,7 +81,6 @@ URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 -1244842	Multiplayer interface bug (0.4.0.1)
 -1212267	station visited twice when servicing
 -1208170	Duplicate station names can be created
--1197116	Some stations are cargo-less
 -1116638	"More, but smaller changes" deficiency
 -1106356	re-offered prototypes
 
@@ -92,7 +88,6 @@ Minor Bugs for 0.5.0
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 
--1488896	enable higher resolutions
 -1461629	[r4180]Subsidy calculated wrong
 -1412031	fast forward scrolling is also fast forward :)
 -1387424	overtake insolvent company is to cheap
@@ -112,4 +107,3 @@ URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 - 987883	Aircraft landing/taking off
 - 987880	company league table updating
 - 985924	aircraft taxi speed
-- 941694	Clipping problems stations/vehicles on slopes
