@@ -1885,7 +1885,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 
 				/* Increase or decrease the value and clamp it to extremes */
 				value += (x >= 30) ? step : -step;
-				clamp(value, ce->min, ce->max);
+				value = clamp(value, ce->min, ce->max);
 
 				// take whatever the function returns
 				value = ce->proc(value, (x >= 30) ? 1 : -1);
