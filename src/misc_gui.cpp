@@ -213,7 +213,7 @@ static const char *credits[] = {
 	"  Jaroslav Mazanec (KUDr) - YAPG (Yet Another Pathfinder God) ;)",
 	"  Attila Bán (MiHaMiX) - WebTranslator, Nightlies, Wiki and bugtracker host",
 	"  Peter Nelson (peter1138) - Spiritual descendant from newgrf gods",
-	"  Remko Bijker (Rubidium) - Belugas code scrutinizer",
+	"  Remko Bijker (Rubidium) - THE desync hunter",
 	"  Christoph Mallon (Tron) - Programmer, code correctness police",
 	"  Patric Stout (TrueLight) - Coder, network guru, SVN- and website host",
 	"",

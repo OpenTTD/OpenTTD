@@ -1,3 +1,23 @@
+0.5.0-RC4 (2007-01-18)
+------------------------------------------------------------------------
+- Feature: Increase spritecache size to 2MB, will increase performance in games using newgrf files (r8218)
+- Feature: OS/2 support with GCC (Watcom is dropped) (r8042)
+- Codechange: Add Japanese, Slovenian language as an official translation and split Norwegian into Bokmal and Nynorsk (r7987, r8084, r8069)
+- Codechange: Show error messages about our own data files as a popup, or to stderr if console is available (and not to stdout) (r8013, r8134)
+- Codechange: Change the ordering of the network list, compatible servers just missing grf files are below fully compatible servers, not on the bottom (r8118)
+- Fix: Return proper error value when unthreaded save fails, prevents server sending 0-sized files (r8171)
+- Fix: Network client crashes when a server sends a 0-sized savegame [FS#556] (r8167)
+- Fix: Several desync fixes (incorrect roadstop update of old games, autoreplace bugs) [FS#551] (r8137, r8147, r8157)
+- Fix: Some disaster-events fixed: combat chopper shoots from right position, submarine once again moves around (r8140, r8158)
+- Fix: "out of sprite memory" warning messages due to incorrect assumption of requested memory for sprites (r8133)
+- Fix: Bouys are now built and numbered 1..9 not 9..1 [FS#538] (r8123)
+- Fix: Clicking for more news properly cycles through the news history backwards, and doesn't show the first item doubly if it's already open (r8049)
+- Fix: Crash when removing a town in the scenario editor while the query window is open for one of the town's tiles (r8030)
+- Fix: Overflow of system-ticks was not handled properly, resulting in a possibly unresponsive server/client (r8028)
+- Fix: Automatic pause interfering with 'pause_on_join setting' in MP when <shift> is pressed [FS#486] (r8027)
+- Fix: Picking up en-route cargo will also have virtual profit deducted for trains aswell (r8026)
+- Fix: Out-of-bounds read access on _clients array (harmless) (r7984)
+
 0.5.0-RC3 (2007-01-07)
 ------------------------------------------------------------------------
 - Codechange: Add Lithuanian language as an official translation (r7806)

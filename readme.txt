@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2007-01-07
-Release version: 0.5.0-RC3
+Last updated:    2007-01-18
+Release version: 0.5.0-RC4
 ------------------------------------------------------------------------
 
 
@@ -281,7 +281,7 @@ The OpenTTD team (in alphabetical order):
   Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
 
   Peter Nelson (peter1138)       - Spiritual descendant from newgrf gods
-  Remko Bijker (Rubidium)        - Programmer
+  Remko Bijker (Rubidium)        - THE desync hunter
   Christoph Mallon (Tron)        - Programmer, code correctness police
   Patric Stout (TrueLight)       - Programmer, network guru, SVN-repository and website host
 
