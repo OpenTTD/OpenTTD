@@ -1,5 +1,6 @@
 ##name Russian
-##ownname Russian
+##ownname Русский
+##isocode ru_RU.UTF-8
 
 ##id 0x0000
 STR_NULL                                                        :
