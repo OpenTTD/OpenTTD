@@ -182,10 +182,9 @@ static void GenericPlaceSignals(TileIndex tile)
 	}
 
 	if (!_remove_button_clicked) {
-		uint32 p1 = 0;
-		SB(p1, 0, 1, _ctrl_pressed);
-		SB(p1, 1, 1, _ctrl_pressed ^ (_cur_year < _patches.semaphore_build_before));
-		SB(p1, 2, 3, i);
+		uint32 p1 = GB(i, 0, 3);
+		SB(p1, 3, 1, _ctrl_pressed);
+		SB(p1, 4, 1, _cur_year < _patches.semaphore_build_before);
 
 		DoCommandP(tile, p1, 0, CcPlaySound1E,
 			CMD_BUILD_SIGNALS | CMD_AUTO | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE));
@@ -365,17 +364,15 @@ static void HandleAutodirPlacement(void)
 static void HandleAutoSignalPlacement(void)
 {
 	TileHighlightData *thd = &_thd;
-	byte trackstat = thd->drawstyle & 0xF; // 0..5
+	uint32 p2 = GB(thd->drawstyle, 0, 3); // 0..5
 
 	if (thd->drawstyle == HT_RECT) { // one tile case
 		GenericPlaceSignals(TileVirtXY(thd->selend.x, thd->selend.y));
 		return;
 	}
 
-	int p2 = 0;
-	SB(p2,  0, 1, _ctrl_pressed);
-	SB(p2,  1, 1, _ctrl_pressed ^ (_cur_year < _patches.semaphore_build_before));
-	SB(p2,  2, 3, trackstat);
+	SB(p2,  3, 1, _ctrl_pressed);
+	SB(p2,  4, 1, _cur_year < _patches.semaphore_build_before);
 	SB(p2, 24, 8, _patches.drag_signals_density);
 
 	/* _patches.drag_signals_density is given as a parameter such that each user

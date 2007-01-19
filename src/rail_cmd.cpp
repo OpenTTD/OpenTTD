@@ -605,17 +605,17 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * have any signals, bit 4 (cycle signal-type) is ignored
  * @param tile tile where to build the signals
  * @param p1 various bitstuffed elements
- * - p1 = (bit 0)   - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
- * - p1 = (bit 1)   - 0 = signals, 1 = semaphores
- * - p1 = (bit 2-4) - track-orientation, valid values: 0-5 (Track enum)
+ * - p1 = (bit 0-2) - track-orientation, valid values: 0-5 (Track enum)
+ * - p1 = (bit 3)   - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ * - p1 = (bit 4)   - 0 = signals, 1 = semaphores
  * @param p2 used for CmdBuildManySignals() to copy direction of first signal
  * TODO: p2 should be replaced by two bits for "along" and "against" the track.
  */
 int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	bool pre_signal = HASBIT(p1, 0);
-	SignalVariant sigvar = HASBIT(p1, 1) ? SIG_SEMAPHORE : SIG_ELECTRIC;
-	Track track = (Track)GB(p1, 2, 3);
+	Track track = (Track)GB(p1, 0, 3);
+	bool pre_signal = HASBIT(p1, 3);
+	SignalVariant sigvar = (pre_signal ^ HASBIT(p1, 4)) ? SIG_SEMAPHORE : SIG_ELECTRIC;
 	int32 cost;
 
 	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoVehicle(tile))
@@ -700,9 +700,9 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param tile start tile of drag
  * @param p1  end tile of drag
  * @param p2 various bitstuffed elements
- * - p2 = (bit  0)    - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
- * - p2 = (bit  1)    - 0 = signals, 1 = semaphores
- * - p2 = (bit  2- 4) - track-orientation, valid values: 0-5 (Track enum)
+ * - p2 = (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
+ * - p2 = (bit  3)    - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
  * - p2 = (bit  5)    - 0 = build, 1 = remove signals
  * - p2 = (bit 24-31) - user defined signals_density
  */
@@ -713,9 +713,9 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	bool error = true;
 	TileIndex end_tile;
 
-	bool mode = HASBIT(p2, 0);
-	bool semaphores = HASBIT(p2, 1);
-	Track track = (Track)GB(p2, 2, 3);
+	Track track = (Track)GB(p2, 0, 3);
+	bool mode = HASBIT(p2, 3);
+	bool semaphores = HASBIT(p2, 4);
 	bool remove = HASBIT(p2, 5);
 	Trackdir trackdir = TrackToTrackdir(track);
 	byte signal_density = GB(p2, 24, 8);
@@ -759,10 +759,9 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	for (;;) {
 		// only build/remove signals with the specified density
 		if (signal_ctr % signal_density == 0) {
-			int p1 = 0;
-			SB(p1, 0, 1, mode);
-			SB(p1, 1, 1, semaphores);
-			SB(p1, 2, 3, TrackdirToTrack(trackdir));
+			uint32 p1 = GB(TrackdirToTrack(trackdir), 0, 3);
+			SB(p1, 3, 1, mode);
+			SB(p1, 4, 1, semaphores);
 			ret = DoCommand(tile, p1, signals, flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
 			/* Be user-friendly and try placing signals as much as possible */
@@ -796,13 +795,13 @@ int32 CmdBuildSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /** Remove signals
  * @param tile coordinates where signal is being deleted from
  * @param various bitstuffed elements, only track information is used
- * - p1 = (bit  0)    - override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
- * - p1 = (bit  1)    - 0 = signals, 1 = semaphores
- * - p1 = (bit  2- 4) - track-orientation, valid values: 0-5 (Track enum)
+ * - p1 = (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
+ * - p1 = (bit  3)    - override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ * - p1 = (bit  4)    - 0 = signals, 1 = semaphores
  */
 int32 CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Track track = (Track)GB(p1, 2, 3);
+	Track track = (Track)GB(p1, 0, 3);
 
 	if (!ValParamTrackOrientation(track) ||
 			!IsTileType(tile, MP_RAILWAY) ||
