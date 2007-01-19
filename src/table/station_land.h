@@ -2,6 +2,10 @@
 
 #define TILE_SEQ_END()	{ (byte)0x80, 0, 0, 0, 0, 0, 0, 0 }
 
+static const DrawTileSeqStruct _station_display_nothing[] = {
+	TILE_SEQ_END()
+};
+
 static const DrawTileSeqStruct _station_display_datas_0[] = {
 	{  0,  0,  0, 16,  5,  2, SPR_RAIL_PLATFORM_X_REAR  | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
 	{  0, 11,  0, 16,  5,  2, SPR_RAIL_PLATFORM_X_FRONT | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
@@ -58,10 +62,6 @@ static const DrawTileSeqStruct _station_display_datas_7[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _station_display_datas_8[] = {
-	TILE_SEQ_END()
-};
-
 static const DrawTileSeqStruct _station_display_datas_9[] = {
 	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE }, // fences north
 	TILE_SEQ_END()
@@ -69,46 +69,6 @@ static const DrawTileSeqStruct _station_display_datas_9[] = {
 
 static const DrawTileSeqStruct _station_display_datas_10[] = {
 	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE }, // fences west
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_11[] = {
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_12[] = {
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_13[] = {
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_14[] = {
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_15[] = {
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_16[] = {
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_17[] = {
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_18[] = {
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_19[] = {
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_20[] = {
 	TILE_SEQ_END()
 };
 
@@ -195,10 +155,6 @@ static const DrawTileSeqStruct _station_display_datas_36[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _station_display_datas_37[] = {
-	TILE_SEQ_END()
-};
-
 static const DrawTileSeqStruct _station_display_datas_38[] = {
 	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
 	TILE_SEQ_END()
@@ -282,14 +238,6 @@ static const DrawTileSeqStruct _station_display_datas_51[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _station_display_datas_52[] = {
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_53[] = {
-	TILE_SEQ_END()
-};
-
 static const DrawTileSeqStruct _station_display_datas_54[] = {
 	{  0,  0,  0, 15, 15, 30, SPR_AIRFIELD_TERM_C_BUILD | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
 	TILE_SEQ_END()
@@ -297,14 +245,6 @@ static const DrawTileSeqStruct _station_display_datas_54[] = {
 
 static const DrawTileSeqStruct _station_display_datas_55[] = {
 	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_56[] = {
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_57[] = {
 	TILE_SEQ_END()
 };
 
@@ -414,10 +354,6 @@ static const DrawTileSeqStruct _station_display_datas_74[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _station_display_datas_75[] = {
-	TILE_SEQ_END()
-};
-
 static const DrawTileSeqStruct _station_display_datas_76[] = {
 	{  0,  4,  0, 16,  8,  8, SPR_DOCK_SLOPE_NE, PAL_NONE },
 	TILE_SEQ_END()
@@ -445,20 +381,6 @@ static const DrawTileSeqStruct _station_display_datas_80[] = {
 
 static const DrawTileSeqStruct _station_display_datas_81[] = {
 	{  4,  0,  0,  8, 16,  8, SPR_DOCK_FLAT_Y, PAL_NONE },
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_datas_82[] = {
-	TILE_SEQ_END()
-};
-
-// end of runway
-static const DrawTileSeqStruct _station_display_datas_083[] = {
-	TILE_SEQ_END()
-};
-
-// runway tiles
-static const DrawTileSeqStruct _station_display_datas_084[] = {
 	TILE_SEQ_END()
 };
 
@@ -1040,19 +962,19 @@ static const DrawTileSprites _station_display_datas[] = {
 	{ SPR_RAIL_TRACK_Y,               PAL_NONE, _station_display_datas_5 },
 	{ SPR_RAIL_TRACK_X,               PAL_NONE, _station_display_datas_6 },
 	{ SPR_RAIL_TRACK_Y,               PAL_NONE, _station_display_datas_7 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_8 },
+	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_nothing },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_9 },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_10 },
-	{ SPR_AIRPORT_AIRCRAFT_STAND,     PAL_NONE, _station_display_datas_11 },
-	{ SPR_AIRPORT_TAXIWAY_NS_WEST,    PAL_NONE, _station_display_datas_12 },
-	{ SPR_AIRPORT_TAXIWAY_EW_SOUTH,   PAL_NONE, _station_display_datas_13 },
-	{ SPR_AIRPORT_TAXIWAY_XING_SOUTH, PAL_NONE, _station_display_datas_14 },
-	{ SPR_AIRPORT_TAXIWAY_XING_WEST,  PAL_NONE, _station_display_datas_15 },
-	{ SPR_AIRPORT_TAXIWAY_NS_CTR,     PAL_NONE, _station_display_datas_16 },
-	{ SPR_AIRPORT_TAXIWAY_XING_EAST,  PAL_NONE, _station_display_datas_17 },
-	{ SPR_AIRPORT_TAXIWAY_NS_EAST,    PAL_NONE, _station_display_datas_18 },
-	{ SPR_AIRPORT_TAXIWAY_EW_NORTH,   PAL_NONE, _station_display_datas_19 },
-	{ SPR_AIRPORT_TAXIWAY_EW_CTR,     PAL_NONE, _station_display_datas_20 },
+	{ SPR_AIRPORT_AIRCRAFT_STAND,     PAL_NONE, _station_display_nothing },
+	{ SPR_AIRPORT_TAXIWAY_NS_WEST,    PAL_NONE, _station_display_nothing },
+	{ SPR_AIRPORT_TAXIWAY_EW_SOUTH,   PAL_NONE, _station_display_nothing },
+	{ SPR_AIRPORT_TAXIWAY_XING_SOUTH, PAL_NONE, _station_display_nothing },
+	{ SPR_AIRPORT_TAXIWAY_XING_WEST,  PAL_NONE, _station_display_nothing },
+	{ SPR_AIRPORT_TAXIWAY_NS_CTR,     PAL_NONE, _station_display_nothing },
+	{ SPR_AIRPORT_TAXIWAY_XING_EAST,  PAL_NONE, _station_display_nothing },
+	{ SPR_AIRPORT_TAXIWAY_NS_EAST,    PAL_NONE, _station_display_nothing },
+	{ SPR_AIRPORT_TAXIWAY_EW_NORTH,   PAL_NONE, _station_display_nothing },
+	{ SPR_AIRPORT_TAXIWAY_EW_CTR,     PAL_NONE, _station_display_nothing },
 	{ SPR_AIRPORT_TAXIWAY_EW_NORTH,   PAL_NONE, _station_display_datas_21 },
 	{ SPR_AIRPORT_RUNWAY_EXIT_A,      PAL_NONE, _station_display_datas_22 },
 	{ SPR_AIRPORT_RUNWAY_EXIT_B,      PAL_NONE, _station_display_datas_23 },
@@ -1069,7 +991,7 @@ static const DrawTileSprites _station_display_datas[] = {
 	{ SPR_AIRPORT_AIRCRAFT_STAND,     PAL_NONE, _station_display_datas_34 },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_35 },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_36 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_37 },
+	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_nothing },
 	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_38 },
 	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_39 },
 	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_40 },
@@ -1084,12 +1006,12 @@ static const DrawTileSprites _station_display_datas[] = {
 	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_49 },
 	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_50 },
 	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_51 },
-	{ SPR_AIRFIELD_TERM_A,            PAL_NONE, _station_display_datas_52 },
-	{ SPR_AIRFIELD_TERM_B,            PAL_NONE, _station_display_datas_53 },
+	{ SPR_AIRFIELD_TERM_A,            PAL_NONE, _station_display_nothing },
+	{ SPR_AIRFIELD_TERM_B,            PAL_NONE, _station_display_nothing },
 	{ SPR_AIRFIELD_TERM_C_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_54 },
 	{ SPR_AIRFIELD_APRON_A,           PAL_NONE, _station_display_datas_55 },
-	{ SPR_AIRFIELD_APRON_B,           PAL_NONE, _station_display_datas_56 },
-	{ SPR_AIRFIELD_APRON_C,           PAL_NONE, _station_display_datas_57 },
+	{ SPR_AIRFIELD_APRON_B,           PAL_NONE, _station_display_nothing },
+	{ SPR_AIRFIELD_APRON_C,           PAL_NONE, _station_display_nothing },
 	{ SPR_AIRFIELD_APRON_D,           PAL_NONE, _station_display_datas_58 },
 	{ SPR_AIRFIELD_APRON_D,           PAL_NONE, _station_display_datas_59 },
 	{ SPR_AIRFIELD_APRON_D,           PAL_NONE, _station_display_datas_60 },
@@ -1107,16 +1029,16 @@ static const DrawTileSprites _station_display_datas[] = {
 	{ SPR_BUS_STOP_SE_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_72 },
 	{ SPR_BUS_STOP_SW_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_73 },
 	{ SPR_BUS_STOP_NW_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_74 },
-	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_75 },
+	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_nothing },
 	{ SPR_SHORE_TILEH_3,              PAL_NONE, _station_display_datas_76 },
 	{ SPR_SHORE_TILEH_9,              PAL_NONE, _station_display_datas_77 },
 	{ SPR_SHORE_TILEH_12,             PAL_NONE, _station_display_datas_78 },
 	{ SPR_SHORE_TILEH_6,              PAL_NONE, _station_display_datas_79 },
 	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_80 },
 	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_81 },
-	{ SPR_BUOY,                       PAL_NONE, _station_display_datas_82 },
-	{ SPR_AIRPORT_RUNWAY_END,         PAL_NONE, _station_display_datas_083 },
-	{ SPR_AIRPORT_RUNWAY_EXIT_B,      PAL_NONE, _station_display_datas_084 },
+	{ SPR_BUOY,                       PAL_NONE, _station_display_nothing },
+	{ SPR_AIRPORT_RUNWAY_END,         PAL_NONE, _station_display_nothing },
+	{ SPR_AIRPORT_RUNWAY_EXIT_B,      PAL_NONE, _station_display_nothing },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_085 },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_086 },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_087 },
