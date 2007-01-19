@@ -1594,19 +1594,17 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 			a->vehstatus = tmp;
 		}
 
-		/* swap variables */
-		SwapT(&a->u.rail.track, &b->u.rail.track);
-		SwapT(&a->direction, &b->direction);
+		Swap(a->u.rail.track, b->u.rail.track);
+		Swap(a->direction,    b->direction);
 
 		/* toggle direction */
 		if (!(a->u.rail.track & 0x80)) a->direction = ReverseDir(a->direction);
 		if (!(b->u.rail.track & 0x80)) b->direction = ReverseDir(b->direction);
 
-		/* swap more variables */
-		SwapT(&a->x_pos, &b->x_pos);
-		SwapT(&a->y_pos, &b->y_pos);
-		SwapT(&a->tile, &b->tile);
-		SwapT(&a->z_pos, &b->z_pos);
+		Swap(a->x_pos, b->x_pos);
+		Swap(a->y_pos, b->y_pos);
+		Swap(a->tile,  b->tile);
+		Swap(a->z_pos, b->z_pos);
 
 		SwapTrainFlags(&a->u.rail.flags, &b->u.rail.flags);
 

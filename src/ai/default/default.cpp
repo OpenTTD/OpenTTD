@@ -2291,10 +2291,10 @@ static void AiStateBuildRail(Player *p)
 		AiBuildRail(p);
 
 		// Alternate between edges
-		SwapT(&p->ai.start_tile_a, &p->ai.start_tile_b);
-		SwapT(&p->ai.cur_tile_a, &p->ai.cur_tile_b);
-		SwapT(&p->ai.start_dir_a, &p->ai.start_dir_b);
-		SwapT(&p->ai.cur_dir_a, &p->ai.cur_dir_b);
+		Swap(p->ai.start_tile_a, p->ai.start_tile_b);
+		Swap(p->ai.cur_tile_a,   p->ai.cur_tile_b);
+		Swap(p->ai.start_dir_a,  p->ai.start_dir_b);
+		Swap(p->ai.cur_dir_a,    p->ai.cur_dir_b);
 		return;
 	}
 
@@ -3112,10 +3112,10 @@ static void AiStateBuildRoad(Player *p)
 		AiBuildRoad(p);
 
 		// Alternate between edges
-		SwapT(&p->ai.start_tile_a, &p->ai.start_tile_b);
-		SwapT(&p->ai.cur_tile_a, &p->ai.cur_tile_b);
-		SwapT(&p->ai.start_dir_a, &p->ai.start_dir_b);
-		SwapT(&p->ai.cur_dir_a, &p->ai.cur_dir_b);
+		Swap(p->ai.start_tile_a, p->ai.start_tile_b);
+		Swap(p->ai.cur_tile_a,   p->ai.cur_tile_b);
+		Swap(p->ai.start_dir_a,  p->ai.start_dir_b);
+		Swap(p->ai.cur_dir_a,    p->ai.cur_dir_b);
 
 		return;
 	}

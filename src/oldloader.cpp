@@ -310,7 +310,7 @@ static void FixOldStations(void)
 	FOR_ALL_STATIONS(st) {
 		/* Check if we need to swap width and height for the station */
 		if (st->train_tile != 0 && GetRailStationAxis(st->train_tile) != AXIS_X) {
-			SwapT(&st->trainst_w, &st->trainst_h);
+			Swap(st->trainst_w, st->trainst_h);
 		}
 
 		/* Check if there is a bus or truck station, and convert to new format */

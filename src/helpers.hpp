@@ -30,14 +30,13 @@ template <typename T> FORCEINLINE T* ReallocT(T* t_ptr, size_t num_elements)
 	return t_ptr;
 }
 
-/** type safe swap operation */
-template <typename T> void SwapT(T *a, T *b);
 
-template <typename T> FORCEINLINE void SwapT(T *a, T *b)
+/** type safe swap operation */
+template<typename T> void Swap(T& a, T& b)
 {
-	T t = *a;
-	*a = *b;
-	*b = t;
+	T t = a;
+	a = b;
+	b = t;
 }
 
 
@@ -140,11 +139,6 @@ template <typename Tenum_t> struct TinyEnumT
 		return *this;
 	}
 };
-
-template <typename Tenum_t> FORCEINLINE void SwapT(TinyEnumT<Tenum_t> *a, TinyEnumT<Tenum_t> *b)
-{
-	SwapT(&a->m_val, &b->m_val);
-}
 
 template <typename T> FORCEINLINE T ClrBitT(T t, int bit_index)
 {

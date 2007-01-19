@@ -932,11 +932,11 @@ start_at:
 			assert(tpf->nstack == 1 || tpf->nstack == 2 || tpf->nstack == 3);
 			if (tpf->nstack != 1) {
 				uint32 r = Random();
-				if (r&1) SwapT(&tpf->stack[0].track, &tpf->stack[1].track);
+				if (r & 1) Swap(tpf->stack[0].track, tpf->stack[1].track);
 				if (tpf->nstack != 2) {
 					TrackdirByte t = tpf->stack[2].track;
-					if (r&2) SwapT(&tpf->stack[0].track, &t);
-					if (r&4) SwapT(&tpf->stack[1].track, &t);
+					if (r & 2) Swap(tpf->stack[0].track, t);
+					if (r & 4) Swap(tpf->stack[1].track, t);
 					tpf->stack[2].first_track = tpf->stack[2].track = t;
 				}
 				tpf->stack[0].first_track = tpf->stack[0].track;
