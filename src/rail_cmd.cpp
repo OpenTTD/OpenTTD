@@ -601,24 +601,22 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Build signals, alternate between double/single, signal/semaphore,
- * pre/exit/combo-signals, and what-else not
+ * pre/exit/combo-signals, and what-else not. If the rail piece does not
+ * have any signals, bit 4 (cycle signal-type) is ignored
  * @param tile tile where to build the signals
  * @param p1 various bitstuffed elements
- * - p1 = (bit 0-2) - track-orientation, valid values: 0-5 (Track enum)
- * - p1 = (bit 3)   - choose semaphores/signals or cycle normal/pre/exit/combo depending on context
+ * - p1 = (bit 0)   - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ * - p1 = (bit 1)   - 0 = signals, 1 = semaphores
+ * - p1 = (bit 2-4) - track-orientation, valid values: 0-5 (Track enum)
  * @param p2 used for CmdBuildManySignals() to copy direction of first signal
  * TODO: p2 should be replaced by two bits for "along" and "against" the track.
  */
 int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	SignalVariant sigvar;
-	bool pre_signal;
-	Track track = (Track)(p1 & 0x7);
+	bool pre_signal = HASBIT(p1, 0);
+	SignalVariant sigvar = HASBIT(p1, 1) ? SIG_SEMAPHORE : SIG_ELECTRIC;
+	Track track = (Track)GB(p1, 2, 3);
 	int32 cost;
-
-	// Same bit, used in different contexts
-	sigvar = HASBIT(p1, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC;
-	pre_signal = HASBIT(p1, 3);
 
 	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoVehicle(tile))
 		return CMD_ERROR;
@@ -702,9 +700,10 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param tile start tile of drag
  * @param p1  end tile of drag
  * @param p2 various bitstuffed elements
- * - p2 = (bit  0)    - 0 = build, 1 = remove signals
- * - p2 = (bit  3)    - 0 = signals, 1 = semaphores
- * - p2 = (bit  4- 6) - track-orientation, valid values: 0-5 (Track enum)
+ * - p2 = (bit  0)    - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ * - p2 = (bit  1)    - 0 = signals, 1 = semaphores
+ * - p2 = (bit  2- 4) - track-orientation, valid values: 0-5 (Track enum)
+ * - p2 = (bit  5)    - 0 = build, 1 = remove signals
  * - p2 = (bit 24-31) - user defined signals_density
  */
 static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -714,11 +713,12 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	bool error = true;
 	TileIndex end_tile;
 
-	int mode = p2 & 0x1;
-	Track track = (Track)GB(p2, 4, 3);
+	bool mode = HASBIT(p2, 0);
+	bool semaphores = HASBIT(p2, 1);
+	Track track = (Track)GB(p2, 2, 3);
+	bool remove = HASBIT(p2, 5);
 	Trackdir trackdir = TrackToTrackdir(track);
-	byte semaphores = (HASBIT(p2, 3) ? 8 : 0);
-	byte signal_density = (p2 >> 24);
+	byte signal_density = GB(p2, 24, 8);
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 	end_tile = p1;
@@ -742,7 +742,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 		if (signals == 0) signals = SignalOnTrack(track); /* Can this actually occur? */
 
 		// copy signal/semaphores style (independent of CTRL)
-		semaphores = (GetSignalVariant(tile) == SIG_ELECTRIC ? 0 : 8);
+		semaphores = GetSignalVariant(tile) != SIG_ELECTRIC;
 	} else { // no signals exist, drag a two-way signal stretch
 		signals = SignalOnTrack(track);
 	}
@@ -754,12 +754,16 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	 * semaphores - semaphores or signals
 	 * signals    - is there a signal/semaphore on the first tile, copy its style (two-way/single-way)
 	 *              and convert all others to semaphore/signal
-	 * mode       - 1 remove signals, 0 build signals */
+	 * remove     - 1 remove signals, 0 build signals */
 	signal_ctr = total_cost = 0;
 	for (;;) {
 		// only build/remove signals with the specified density
 		if (signal_ctr % signal_density == 0) {
-			ret = DoCommand(tile, TrackdirToTrack(trackdir) | semaphores, signals, flags, (mode == 1) ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
+			int p1 = 0;
+			SB(p1, 0, 1, mode);
+			SB(p1, 1, 1, semaphores);
+			SB(p1, 2, 3, TrackdirToTrack(trackdir));
+			ret = DoCommand(tile, p1, signals, flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
 			/* Be user-friendly and try placing signals as much as possible */
 			if (!CmdFailed(ret)) {
@@ -791,11 +795,14 @@ int32 CmdBuildSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Remove signals
  * @param tile coordinates where signal is being deleted from
- * @param p1 track to remove signal from (Track enum)
+ * @param various bitstuffed elements, only track information is used
+ * - p1 = (bit  0)    - override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ * - p1 = (bit  1)    - 0 = signals, 1 = semaphores
+ * - p1 = (bit  2- 4) - track-orientation, valid values: 0-5 (Track enum)
  */
 int32 CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Track track = (Track)(p1 & 0x7);
+	Track track = (Track)GB(p1, 2, 3);
 
 	if (!ValParamTrackOrientation(track) ||
 			!IsTileType(tile, MP_RAILWAY) ||
@@ -835,7 +842,7 @@ int32 CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdRemoveSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	return CmdSignalTrackHelper(tile, flags, p1, SETBIT(p2, 0));
+	return CmdSignalTrackHelper(tile, flags, p1, SETBIT(p2, 5)); // bit 5 is remove bit
 }
 
 typedef int32 DoConvertRailProc(TileIndex tile, RailType totype, bool exec);

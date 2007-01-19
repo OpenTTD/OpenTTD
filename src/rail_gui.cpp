@@ -164,16 +164,16 @@ static void PlaceRail_Station(TileIndex tile)
 
 static void GenericPlaceSignals(TileIndex tile)
 {
-	uint trackstat;
+	byte trackstat;
 	uint i;
 
 	trackstat = (byte)GetTileTrackStatus(tile, TRANSPORT_RAIL);
 
-	if ((trackstat & 0x30)) // N-S direction
-		trackstat = (_tile_fract_coords.x <= _tile_fract_coords.y) ? 0x20 : 0x10;
+	if (trackstat & TRACK_BIT_VERT) // N-S direction
+		trackstat = (_tile_fract_coords.x <= _tile_fract_coords.y) ? TRACK_BIT_RIGHT : TRACK_BIT_LEFT;
 
-	if ((trackstat & 0x0C)) // E-W direction
-		trackstat = (_tile_fract_coords.x + _tile_fract_coords.y <= 15) ? 4 : 8;
+	if (trackstat & TRACK_BIT_HORZ) // E-W direction
+		trackstat = (_tile_fract_coords.x + _tile_fract_coords.y <= 15) ? TRACK_BIT_UPPER : TRACK_BIT_LOWER;
 
 	// Lookup the bit index
 	i = 0;
@@ -182,13 +182,12 @@ static void GenericPlaceSignals(TileIndex tile)
 	}
 
 	if (!_remove_button_clicked) {
-		uint32 p1 = _ctrl_pressed ? 8 : 0;
-		if (IsTileType(tile, MP_RAILWAY) && !HasSignals(tile) && _cur_year < _patches.semaphore_build_before) {
-			/* Reverse the logic, so semaphores are normally built, and light
-			 * signals can be built with ctrl held down. */
-			p1 = _ctrl_pressed ? 0 : 8;
-		}
-		DoCommandP(tile, i + p1, 0, CcPlaySound1E,
+		uint32 p1 = 0;
+		SB(p1, 0, 1, _ctrl_pressed);
+		SB(p1, 1, 1, _ctrl_pressed ^ (_cur_year < _patches.semaphore_build_before));
+		SB(p1, 2, 3, i);
+
+		DoCommandP(tile, p1, 0, CcPlaySound1E,
 			CMD_BUILD_SIGNALS | CMD_AUTO | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE));
 	} else {
 		DoCommandP(tile, i, 0, CcPlaySound1E,
@@ -367,26 +366,24 @@ static void HandleAutoSignalPlacement(void)
 {
 	TileHighlightData *thd = &_thd;
 	byte trackstat = thd->drawstyle & 0xF; // 0..5
-	byte semaphore = _ctrl_pressed ? 1 : 0;
 
 	if (thd->drawstyle == HT_RECT) { // one tile case
 		GenericPlaceSignals(TileVirtXY(thd->selend.x, thd->selend.y));
 		return;
 	}
 
-	TileIndex start_tile = TileVirtXY(thd->selstart.x, thd->selstart.y);
-	if (IsTileType(start_tile, MP_RAILWAY) && !HasSignals(start_tile) && _cur_year < _patches.semaphore_build_before) {
-		/* Reverse the logic, so semaphores are normally built, and light
-		 * signals can be built with ctrl held down. */
-		semaphore = _ctrl_pressed ? 0 : 1;
-	}
+	int p2 = 0;
+	SB(p2,  0, 1, _ctrl_pressed);
+	SB(p2,  1, 1, _ctrl_pressed ^ (_cur_year < _patches.semaphore_build_before));
+	SB(p2,  2, 3, trackstat);
+	SB(p2, 24, 8, _patches.drag_signals_density);
 
-	// _patches.drag_signals_density is given as a parameter such that each user in a network
-	// game can specify his/her own signal density
+	/* _patches.drag_signals_density is given as a parameter such that each user
+	 * in a network game can specify his/her own signal density */
 	DoCommandP(
-		start_tile,
+		TileVirtXY(thd->selstart.x, thd->selstart.y),
 		TileVirtXY(thd->selend.x, thd->selend.y),
-		(semaphore << 3) | (trackstat << 4) | (_patches.drag_signals_density << 24),
+		p2,
 		CcPlaySound1E,
 		_remove_button_clicked ?
 			CMD_REMOVE_SIGNAL_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
