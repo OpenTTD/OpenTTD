@@ -353,7 +353,11 @@ int32 CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 Station *ComposeWaypointStation(TileIndex tile)
 {
 	Waypoint *wp = GetWaypointByTile(tile);
-	static Station stat;
+
+	/* instead of 'static Station stat' use byte array to avoid Station's destructor call upon exit. As
+	 * a side effect, the station is not constructed now. */
+	static byte stat_raw[sizeof Station];
+	static Station &stat = *(Station*)stat_raw;
 
 	stat.train_tile = stat.xy = wp->xy;
 	stat.town = GetTown(wp->town_index);
