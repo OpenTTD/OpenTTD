@@ -2,8 +2,8 @@
 ##ownname Português (BR)
 ##isocode pt_BR.UTF-8
 ##plural 2
-##case m f n
-##gender m f n
+##case m f
+##gender m f
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -474,10 +474,10 @@ STR_AGE                                                         :{COMMA} ano{P "
 STR_AGE_RED                                                     :{RED}{COMMA} ano{P "" s} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Automóvel
-STR_019D_AIRCRAFT                                               :Aeronave
-STR_019E_SHIP                                                   :Barco
-STR_019F_TRAIN                                                  :Trem
+STR_019C_ROAD_VEHICLE                                           :{G=m}Automóvel
+STR_019D_AIRCRAFT                                               :{G=f}Aeronave
+STR_019E_SHIP                                                   :{G=m}Barco
+STR_019F_TRAIN                                                  :{G=m}Trem
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} está ficando velho
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} está ficando muito velho
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} está ficando muito velho e precisa ser substituído urgentemente
@@ -1111,7 +1111,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}desactivado
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desativar manutenção quando as quebras estão desativadas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Ativar limite de velocidade dos vagões: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Disativar ferrovias elétricas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Desativar ferrovias elétricas: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Noticias coloridas aparecem em: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Data de início: {ORANGE}{STRING}
@@ -1202,7 +1202,7 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Nivelar 
 
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
-STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Colocar árvores de tipo aleatório
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plantar árvores de tipo aleatório
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Não é possível construir canais aqui...
 STR_BUILD_CANALS_TIP                                            :{BLACK}Construir canais
@@ -1683,6 +1683,8 @@ STR_205C_PIGGY_BANK                                             :Mealheiro
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{1:STRING} de {0:TOWN}
+STR_INDUSTRY_FORMAT.m                                           :{G=m}{1:STRING} de {0:TOWN}
+STR_INDUSTRY_FORMAT.f                                           :{G=f}{1:STRING} de {0:TOWN}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
@@ -1820,43 +1822,43 @@ STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Carregar
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} no caminho
 STR_4801                                                        :{WHITE}{INDUSTRY}
-STR_4802_COAL_MINE                                              :Mina de Carvão
-STR_4803_POWER_STATION                                          :Usina de Energia
-STR_4804_SAWMILL                                                :Serraria
-STR_4805_FOREST                                                 :Floresta
-STR_4806_OIL_REFINERY                                           :Refinaria de Petróleo
-STR_4807_OIL_RIG                                                :Plataforma Petrolífera
-STR_4808_FACTORY                                                :Fábrica
-STR_4809_PRINTING_WORKS                                         :Gráfica
-STR_480A_STEEL_MILL                                             :Siderurgica
-STR_480B_FARM                                                   :Fazenda
-STR_480C_COPPER_ORE_MINE                                        :Mina de Cobre
-STR_480D_OIL_WELLS                                              :Poços de Petróleo
-STR_480E_BANK                                                   :Banco
-STR_480F_FOOD_PROCESSING_PLANT                                  :Indústria Alimentícia
-STR_4810_PAPER_MILL                                             :Fábrica de Papel
-STR_4811_GOLD_MINE                                              :Mina de Ouro
-STR_4812_BANK                                                   :Banco
-STR_4813_DIAMOND_MINE                                           :Mina de Diamante
-STR_4814_IRON_ORE_MINE                                          :Mina de Ferro
-STR_4815_FRUIT_PLANTATION                                       :Pomar
-STR_4816_RUBBER_PLANTATION                                      :Plantação de Seringueiras
-STR_4817_WATER_SUPPLY                                           :Poço Artesiano
-STR_4818_WATER_TOWER                                            :Reservatório de Água
-STR_4819_FACTORY                                                :Fábrica
-STR_481A_FARM                                                   :Fazenda
-STR_481B_LUMBER_MILL                                            :Serraria
-STR_481C_COTTON_CANDY_FOREST                                    :Floresta de Algodão Doce
-STR_481D_CANDY_FACTORY                                          :Fábrica de Doces
-STR_481E_BATTERY_FARM                                           :Campo de Pilhas
-STR_481F_COLA_WELLS                                             :Poços de Cola
-STR_4820_TOY_SHOP                                               :Loja de Brinquedos
-STR_4821_TOY_FACTORY                                            :Fábrica de Brinquedos
-STR_4822_PLASTIC_FOUNTAINS                                      :Fontes de Plástico
-STR_4823_FIZZY_DRINK_FACTORY                                    :Fábrica de Refrigerante
-STR_4824_BUBBLE_GENERATOR                                       :Gerador de Bolhas
-STR_4825_TOFFEE_QUARRY                                          :Extração de Caramelo
-STR_4826_SUGAR_MINE                                             :Mina de Açúcar
+STR_4802_COAL_MINE                                              :{G=f}Mina de Carvão
+STR_4803_POWER_STATION                                          :{G=f}Usina de Energia
+STR_4804_SAWMILL                                                :{G=f}Serraria
+STR_4805_FOREST                                                 :{G=f}Floresta
+STR_4806_OIL_REFINERY                                           :{G=f}Refinaria de Petróleo
+STR_4807_OIL_RIG                                                :{G=f}Plataforma Petrolífera
+STR_4808_FACTORY                                                :{G=f}Fábrica
+STR_4809_PRINTING_WORKS                                         :{G=f}Gráfica
+STR_480A_STEEL_MILL                                             :{G=f}Siderurgica
+STR_480B_FARM                                                   :{G=f}Fazenda
+STR_480C_COPPER_ORE_MINE                                        :{G=f}Mina de Cobre
+STR_480D_OIL_WELLS                                              :{G=m}Poços de Petróleo
+STR_480E_BANK                                                   :{G=f}Banco
+STR_480F_FOOD_PROCESSING_PLANT                                  :{G=f}Indústria Alimentícia
+STR_4810_PAPER_MILL                                             :{G=f}Fábrica de Papel
+STR_4811_GOLD_MINE                                              :{G=f}Mina de Ouro
+STR_4812_BANK                                                   :{G=m}Banco
+STR_4813_DIAMOND_MINE                                           :{G=f}Mina de Diamante
+STR_4814_IRON_ORE_MINE                                          :{G=f}Mina de Ferro
+STR_4815_FRUIT_PLANTATION                                       :{G=m}Pomar
+STR_4816_RUBBER_PLANTATION                                      :{G=f}Plantação de Seringueiras
+STR_4817_WATER_SUPPLY                                           :{G=m}Poço Artesiano
+STR_4818_WATER_TOWER                                            :{G=m}Reservatório de Água
+STR_4819_FACTORY                                                :{G=f}Fábrica
+STR_481A_FARM                                                   :{G=f}Fazenda
+STR_481B_LUMBER_MILL                                            :{G=f}Serraria
+STR_481C_COTTON_CANDY_FOREST                                    :{G=f}Floresta de Algodão Doce
+STR_481D_CANDY_FACTORY                                          :{G=f}Fábrica de Doces
+STR_481E_BATTERY_FARM                                           :{G=m}Campo de Pilhas
+STR_481F_COLA_WELLS                                             :{G=m}Poços de Cola
+STR_4820_TOY_SHOP                                               :{G=f}Loja de Brinquedos
+STR_4821_TOY_FACTORY                                            :{G=f}Fábrica de Brinquedos
+STR_4822_PLASTIC_FOUNTAINS                                      :{G=f}Fontes de Plástico
+STR_4823_FIZZY_DRINK_FACTORY                                    :{G=f}Fábrica de Refrigerante
+STR_4824_BUBBLE_GENERATOR                                       :{G=m}Gerador de Bolhas
+STR_4825_TOFFEE_QUARRY                                          :{G=f}Extração de Caramelo
+STR_4826_SUGAR_MINE                                             :{G=f}Mina de Açúcar
 
 ############ range for requires	starts
 STR_4827_REQUIRES                                               :{BLACK}Necessário: {YELLOW}{STRING}
@@ -2358,7 +2360,7 @@ STR_8089_FOSTER_LIVESTOCK_VAN                                   :Caminhão de Ga
 STR_808A_BALOGH_GOODS_TRUCK                                     :Caminhão de Bens Balogh
 STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Caminhão de Bens Craighead
 STR_808C_GOSS_GOODS_TRUCK                                       :Caminhão de Bens Goss
-STR_808D_HEREFORD_GRAIN_TRUCK                                   :Caminhão de Grãoa Hereford
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Caminhão de Grãos Hereford
 STR_808E_THOMAS_GRAIN_TRUCK                                     :Caminhão de Grãos Thomas
 STR_808F_GOSS_GRAIN_TRUCK                                       :Caminhão de Grãos Goss
 STR_8090_WITCOMBE_WOOD_TRUCK                                    :Caminhão de Madeira Witcombe
@@ -2601,7 +2603,7 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Inserir 
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem selecionada fará com que o veículo espere carregar completamente
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem selecionada forçará o veículo a descarregar
 STR_SERVICE_HINT                                                :{BLACK}Saltar esta ordem a menos que seja necessário manutenção
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Novo {STRING} agora disponível!
+STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nov{G o a} {STRING} agora disponível!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Custo: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potência: {POWER}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Quebrado
@@ -2670,7 +2672,7 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arraste 
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrar visualização na localização da garagem
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista de veículos - clique num veículo para informações
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construir o veículo selecionado
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Novo veículo disponível!
+STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Novo automóvel agora disponível!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Custo: {CURRENCY}{}Velocidade: {VELOCITY}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
 
@@ -2900,9 +2902,9 @@ STR_NEWGRF_ADD                                                  :{BLACK}Adiciona
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adiciona um NewGRF à lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Remover
 STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Remove o NewGRF selecionado da lista
-STR_NEWGRF_MOVEUP                                               :{BLACK}Mover para cima
+STR_NEWGRF_MOVEUP                                               :{BLACK}Mover cima
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Move o NewGRF selecionado para cima
-STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mover para baixo
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mover baixo
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Move o NewGRF selecionado para baixo
 STR_NEWGRF_FILE_TIP                                             :{BLACK}Lista dos NewGRF instalados. Clique em um deles para mudar seus parâmetros
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parâmetros: {SILVER}{STRING}
@@ -2912,7 +2914,7 @@ STR_NEWGRF_NO_INFO                                              :{BLACK}Sem info
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}NewGRF disponíveis
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Adicionar à seleção
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Adiciona o NewGRF selecionado à sua configuração
-STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Reescanear arquivos NewGRF
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Procurar arquivos NewGRF
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Atualiza a lista de NewGRF disponíveis
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar: registro de GRF já existe
 
