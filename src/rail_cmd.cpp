@@ -1324,8 +1324,7 @@ static void DrawTile_Track(TileInfo *ti)
 					relocation = GetCustomStationRelocation(statspec, st, ti->tile);
 
 					image = dts->ground_sprite;
-					if (HASBIT(image, 31)) {
-						CLRBIT(image, 31);
+					if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
 						image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
 						image += rti->custom_ground_offset;
 					} else {
@@ -1349,8 +1348,17 @@ default_waypoint:
 		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 		foreach_draw_tile_seq(dtss, dts->seq) {
-			SpriteID image = dtss->image + relocation;
+			SpriteID image = dtss->image;
 			SpriteID pal;
+
+			/* Unlike stations, our default waypoint has no variation for
+			 * different railtype, so don't use the railtype offset if
+			 * no relocation is set */
+			if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
+				image += rti->total_offset;
+			} else {
+				image += relocation;
+			}
 
 			if (_display_opt & DO_TRANS_BUILDINGS) {
 				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
@@ -1361,12 +1369,16 @@ default_waypoint:
 				pal = dtss->pal;
 			}
 
-			AddSortableSpriteToDraw(
-				image, pal,
-				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
-				dtss->size_x, dtss->size_y,
-				dtss->size_z, ti->z + dtss->delta_z
-			);
+			if ((byte)dtss->delta_z != 0x80) {
+				AddSortableSpriteToDraw(
+					image, pal,
+					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+					dtss->size_x, dtss->size_y,
+					dtss->size_z, ti->z + dtss->delta_z
+				);
+			} else {
+				AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y);
+			}
 		}
 	}
 	DrawBridgeMiddle(ti);
