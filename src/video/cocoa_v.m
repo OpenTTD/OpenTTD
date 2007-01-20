@@ -57,6 +57,8 @@ extern void HideMenuBar(void);
 #undef Point
 #undef Rect
 
+/* Taken from ../gfx.h */
+extern bool _dbg_screen_rect;
 
 
 /* Subclass of NSWindow to fix genie effect and support resize events  */
