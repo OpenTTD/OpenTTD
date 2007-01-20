@@ -21,60 +21,60 @@ STR_000B                                                        :{YELLOW}{STATIO
 STR_000C_ACCEPTS                                                :{BLACK}Aceita: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Aceita: {GOLD}
 STR_000E                                                        :
-STR_000F_PASSENGERS                                             :Passageiros
-STR_0010_COAL                                                   :Carvão
-STR_0011_MAIL                                                   :Cartas
-STR_0012_OIL                                                    :Petróleo
-STR_0013_LIVESTOCK                                              :Gado
-STR_0014_GOODS                                                  :Bens
-STR_0015_GRAIN                                                  :Grãos
-STR_0016_WOOD                                                   :Madeira
-STR_0017_IRON_ORE                                               :Minério de Ferro
-STR_0018_STEEL                                                  :Aço
-STR_0019_VALUABLES                                              :Dinheiro
-STR_001A_COPPER_ORE                                             :Minério de Cobre
-STR_001B_MAIZE                                                  :Milho
-STR_001C_FRUIT                                                  :Fruta
-STR_001D_DIAMONDS                                               :Diamante
-STR_001E_FOOD                                                   :Alimento
-STR_001F_PAPER                                                  :Papel
-STR_0020_GOLD                                                   :Ouro
-STR_0021_WATER                                                  :Água
-STR_0022_WHEAT                                                  :Trigo
-STR_0023_RUBBER                                                 :Borracha
-STR_0024_SUGAR                                                  :Açúcar
-STR_0025_TOYS                                                   :Brinquedos
-STR_0026_CANDY                                                  :Doces
-STR_0027_COLA                                                   :Cola
-STR_0028_COTTON_CANDY                                           :Algodão Doce
-STR_0029_BUBBLES                                                :Bolhas
-STR_002A_TOFFEE                                                 :Caramelo
-STR_002B_BATTERIES                                              :Pilhas
-STR_002C_PLASTIC                                                :Plástico
-STR_002D_FIZZY_DRINKS                                           :Refrigerantes
+STR_000F_PASSENGERS                                             :{G=m}Passageiros
+STR_0010_COAL                                                   :{G=m}Carvão
+STR_0011_MAIL                                                   :{G=f}Cartas
+STR_0012_OIL                                                    :{G=m}Petróleo
+STR_0013_LIVESTOCK                                              :{G=m}Gado
+STR_0014_GOODS                                                  :{G=m}Bens
+STR_0015_GRAIN                                                  :{G=m}Grãos
+STR_0016_WOOD                                                   :{G=f}Madeira
+STR_0017_IRON_ORE                                               :{G=m}Minério de Ferro
+STR_0018_STEEL                                                  :{G=m}Aço
+STR_0019_VALUABLES                                              :{G=m}Dinheiro
+STR_001A_COPPER_ORE                                             :{G=m}Minério de Cobre
+STR_001B_MAIZE                                                  :{G=m}Milho
+STR_001C_FRUIT                                                  :{G=f}Fruta
+STR_001D_DIAMONDS                                               :{G=m}Diamante
+STR_001E_FOOD                                                   :{G=m}Alimento
+STR_001F_PAPER                                                  :{G=m}Papel
+STR_0020_GOLD                                                   :{G=m}Ouro
+STR_0021_WATER                                                  :{G=f}Água
+STR_0022_WHEAT                                                  :{G=m}Trigo
+STR_0023_RUBBER                                                 :{G=f}Borracha
+STR_0024_SUGAR                                                  :{G=m}Açúcar
+STR_0025_TOYS                                                   :{G=m}Brinquedos
+STR_0026_CANDY                                                  :{G=m}Doces
+STR_0027_COLA                                                   :{G=f}Cola
+STR_0028_COTTON_CANDY                                           :{G=m}Algodão Doce
+STR_0029_BUBBLES                                                :{G=f}Bolhas
+STR_002A_TOFFEE                                                 :{G=m}Caramelo
+STR_002B_BATTERIES                                              :{G=f}Pilhas
+STR_002C_PLASTIC                                                :{G=m}Plástico
+STR_002D_FIZZY_DRINKS                                           :{G=m}Refrigerantes
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Passageiro
-STR_0030_COAL                                                   :Carvão
-STR_0031_MAIL                                                   :Cartas
-STR_0032_OIL                                                    :Petróleo
-STR_0033_LIVESTOCK                                              :Gado
-STR_0034_GOODS                                                  :Bens
-STR_0035_GRAIN                                                  :Grãos
-STR_0036_WOOD                                                   :Madeira
-STR_0037_IRON_ORE                                               :Minério de Ferro
-STR_0038_STEEL                                                  :Aço
-STR_0039_VALUABLES                                              :Dinheiro
-STR_003A_COPPER_ORE                                             :Minério de Cobre
-STR_003B_MAIZE                                                  :Milho
-STR_003C_FRUIT                                                  :Fruta
-STR_003D_DIAMOND                                                :Diamante
-STR_003E_FOOD                                                   :Alimento
-STR_003F_PAPER                                                  :Papel
-STR_0040_GOLD                                                   :Ouro
-STR_0041_WATER                                                  :Água
-STR_0042_WHEAT                                                  :Trigo
-STR_0043_RUBBER                                                 :Borracha
-STR_0044_SUGAR                                                  :Açúcar
+STR_002F_PASSENGER                                              :{G=m}passageiros
+STR_0030_COAL                                                   :{G=m}carvão
+STR_0031_MAIL                                                   :{G=f}cartas
+STR_0032_OIL                                                    :{G=m}petróleo
+STR_0033_LIVESTOCK                                              :{G=m}gado
+STR_0034_GOODS                                                  :{G=m}bens
+STR_0035_GRAIN                                                  :{G=m}grãos
+STR_0036_WOOD                                                   :{G=f}madeira
+STR_0037_IRON_ORE                                               :{G=m}minério de ferro
+STR_0038_STEEL                                                  :{G=m}aço
+STR_0039_VALUABLES                                              :{G=m}dinheiro
+STR_003A_COPPER_ORE                                             :{G=m}minério de cobre
+STR_003B_MAIZE                                                  :{G=m}milho
+STR_003C_FRUIT                                                  :{G=f}fruta
+STR_003D_DIAMOND                                                :{G=m}diamante
+STR_003E_FOOD                                                   :{G=m}alimento
+STR_003F_PAPER                                                  :{G=m}papel
+STR_0040_GOLD                                                   :{G=m}ouro
+STR_0041_WATER                                                  :{G=f}água
+STR_0042_WHEAT                                                  :{G=m}trigo
+STR_0043_RUBBER                                                 :{G=f}borracha
+STR_0044_SUGAR                                                  :{G=m}açúcar
 STR_0045_TOY                                                    :Brinquedo
 STR_0046_CANDY                                                  :Doce
 STR_0047_COLA                                                   :Cola
@@ -422,7 +422,7 @@ STR_016D_DEC                                                    :Dez
 ############ range for months ends
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
-STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{} {NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Pausar o jogo
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Salvar jogo, abandonar jogo, sair
@@ -596,7 +596,7 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informa
 STR_MESSAGES_ALL                                                :{YELLOW}Configurações para todos os tipos de mensagem(on/off/resumo)
 STR_MESSAGE_SOUND                                               :{YELLOW}Tocar som para notícias resumidas
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...muito distante do destino anterior
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top de empresas que chegaram a {NUM}{}({STRING} Nível)
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top de empresas que chegaram a {NUM}{} ({STRING} Nível)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabela da Liga de Empresas em {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Negociante
@@ -725,8 +725,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plantar 
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar rochas no terreno
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar farol
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmissor
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desértica.{}Pressione e segure CTRL para removê-la
-STR_CREATE_LAKE                                                 :{BLACK}Define área de água.{}Ela irá inundar quando no nível do mar
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desértica.{} Pressione e segure CTRL para removê-la
+STR_CREATE_LAKE                                                 :{BLACK}Define área de água.{} Ela irá inundar quando no nível do mar
 STR_0290_DELETE                                                 :{BLACK}Apagar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Apagar completamente esta cidade
 STR_0292_SAVE_SCENARIO                                          :Salvar cenário
@@ -979,7 +979,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fi
 
 STR_TRAIN_IS_LOST                                               :{WHITE}O trem {COMMA} está perdido.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}O lucro do trem {COMMA} no último ano foi de {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}União Monetária Europeia!{}{}O Euro é introduzido como moeda única para todas as transações no seu país!
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}União Monetária Europeia!{}{} O Euro é introduzido como moeda única para todas as transações no seu país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1624,20 +1624,20 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}autorida
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Avaliações das empresas
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsídios
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta de subsídios para o serviço:
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ofertas de transporte subsidiados
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} para {STRING}
-STR_2028_BY                                                     :{YELLOW} (por {DATE_SHORT})
+STR_2028_BY                                                     :{YELLOW} (em {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nenhum
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Serviço já subsidiado:
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Transporte subsidiados:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} de {STATION} para {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, até {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} já não é subsidiado.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsídio retirado:{}{}serviço de transporte de {STRING} de {STATION} para {STATION} não é mais subsidiado.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsídio de transporte oferecido:{}{}Primeiro serviço de {STRING} de {STRING} para {STRING} atrairá o subsídio de um ano da autoridade local!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio de transporte concedido a {COMPANY}!{}{}{STRING} ligação de {STATION} para {STATION} pagará 50% extra durante o próximo ano!
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio de transporte concedido a {COMPANY}!{}{}{STRING} ligação de {STATION} para {STATION} pagará em dobro durante o próximo ano!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio de transporte concedido a {COMPANY}!{}{}{STRING} ligação de {STATION} para {STATION} pagará o triplo durante o próximo ano!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio de transporte concedido a {COMPANY}!{}{}{STRING} ligação de {STATION} para {STATION} pagará o quadruplo durante o próximo ano!
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} não será mais subsidiado.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsídio removido:{}{} Transporte de {STRING} de {STATION} para {STATION} não será mais subsidiado.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Oferta de transporte subsidiado:{}{} Primeiro transporte de {STRING} de {STRING} para {STRING} receberá o subsídio de um ano da autoridade local!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá 50% extra durante um ano!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá em dobro durante um ano!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá o triplo durante um ano!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{}Transporte de {STRING} de {STATION} para {STATION} receberá o quadruplo durante um ano!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}a autoridade local de {TOWN} não permite que outro aeroporto seja construído nesta cidade
 STR_2036_COTTAGES                                               :Casas de campo
 STR_2037_HOUSES                                                 :Casas
@@ -1683,8 +1683,8 @@ STR_205C_PIGGY_BANK                                             :Mealheiro
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{1:STRING} de {0:TOWN}
-STR_INDUSTRY_FORMAT.m                                           :{G=m}{1:STRING} de {0:TOWN}
 STR_INDUSTRY_FORMAT.f                                           :{G=f}{1:STRING} de {0:TOWN}
+STR_INDUSTRY_FORMAT.m                                           :{G=m}{1:STRING} de {0:TOWN}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
@@ -2887,7 +2887,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Dinheiro
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tem um empréstimo muito elevado?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de pontos sobre o máximo de pontos
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Configurações de NewGRF
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definições Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar alterações
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Definir parâmetros

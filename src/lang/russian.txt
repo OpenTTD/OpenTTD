@@ -302,7 +302,7 @@ STR_512                                                         :512
 STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Размер карты:
-STR_BY                                                          :{BLACK}*
+STR_BY                                                          :{BLACK}x
 STR_0148_GAME_OPTIONS                                           :{BLACK}Настройки игры
 
 STR_0150_SOMEONE                                                :кто-нибудь{SKIP}{SKIP}
@@ -310,8 +310,8 @@ STR_0151_MAP_OF_WORLD                                           :Карта
 STR_0152_TOWN_DIRECTORY                                         :Список городов
 STR_0153_SUBSIDIES                                              :Субсидии
 
-STR_UNITS_IMPERIAL                                              :Британская
-STR_UNITS_METRIC                                                :Метрическая
+STR_UNITS_IMPERIAL                                              :Британские
+STR_UNITS_METRIC                                                :Метрические
 STR_UNITS_SI                                                    :СИ
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} миль/ч
@@ -756,19 +756,19 @@ STR_SUMMARY                                                     :Кратко
 STR_FULL                                                        :Полно
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Список городов
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Названия транспорта
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Названия транспортных средств
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :По умолчанию
-STR_02BF_CUSTOM                                                 :Пользовательские
+STR_02BF_CUSTOM                                                 :Свои
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Сохранить названия транспорта
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Выбор названий транспортных средств
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Сохранить пользовательские названия транспорта
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Выберите названия транспортных средств
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Сохранить свои названия транспортных средств
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
-STR_02C3_GAME_OPTIONS                                           :Опции игры
-STR_02C5_DIFFICULTY_SETTINGS                                    :Опции сложности
-STR_02C7_CONFIG_PATCHES                                         :Конфигурация патчей
+STR_02C3_GAME_OPTIONS                                           :Настройки игры
+STR_02C5_DIFFICULTY_SETTINGS                                    :Настройки сложности
+STR_02C7_CONFIG_PATCHES                                         :Настройки патчей
 STR_NEWGRF_SETTINGS                                             :Настройки NewGRF
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Показ названий городов
@@ -807,23 +807,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Вста
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Валюта
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
-STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Выбор валюты
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Выберите валюту
 STR_MEASURING_UNITS                                             :{BLACK}Единицы измерения
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Выбор единиц измерения
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Выберите систему единиц измерения
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Направление движения
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Выберите тип движения
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Выберите направление движения
 STR_02E9_DRIVE_ON_LEFT                                          :Левостороннее
 STR_02EA_DRIVE_ON_RIGHT                                         :Правостороннее
 STR_02EB_TOWN_NAMES                                             :{BLACK}Названия городов
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Выбор языка названий городов
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Выберите язык названий городов
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Автосохранение
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Выбор интервала автоматического сохранения игры
-STR_02F7_OFF                                                    :Не сохранять
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Выберите интервал автосохранения игры
+STR_02F7_OFF                                                    :Отключено
 STR_02F8_EVERY_3_MONTHS                                         :Каждые 3 месяца
 STR_02F9_EVERY_6_MONTHS                                         :Каждые 6 месяцев
 STR_02FA_EVERY_12_MONTHS                                        :Каждый год
@@ -870,12 +870,12 @@ STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Английские (Ориг.)
-STR_TOWNNAME_FRENCH                                             :Французкие
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Английские (оригинальные)
+STR_TOWNNAME_FRENCH                                             :Французские
 STR_TOWNNAME_GERMAN                                             :Немецкие
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Английские (Доп.)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Латино-Американские
-STR_TOWNNAME_SILLY                                              :Шуточные
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Английские (дополнительные)
+STR_TOWNNAME_LATIN_AMERICAN                                     :Латино-американские
+STR_TOWNNAME_SILLY                                              :Английские (шуточные)
 STR_TOWNNAME_SWEDISH                                            :Шведские
 STR_TOWNNAME_DUTCH                                              :Нидерландские
 STR_TOWNNAME_FINNISH                                            :Финские
@@ -925,18 +925,18 @@ STR_CURR_CUSTOM                                                 :Своя...
 
 STR_OPTIONS_LANG                                                :{BLACK}Язык
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Выбор языка интерфейса
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Выберите язык интерфейса
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Полноэкранный
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Выберите для игры в полноэкранном режиме (проверьте параметр display_hz в конфиге для установки частоты экрана в этом режиме)
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Полноэкранный режим
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Включить/выключить полноэкранный режим
 
 STR_OPTIONS_RES                                                 :{BLACK}Разрешение экрана
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Выбор разрешения экрана
+STR_OPTIONS_RES_TIP                                             :{BLACK}Выберите разрешение экрана
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Формат скриншота
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Формат скриншотов
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Выбор формата скриншота
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Выберите формат скриншотов
 
 STR_AUTOSAVE_1_MONTH                                            :Каждый месяц
 STR_AUTOSAVE_FAILED                                             :{WHITE}Ошибка автосохранения
@@ -1979,18 +1979,18 @@ STR_SV_STNAME_FOREST                                            :{STRING} Лес
 ############ end of	savegame specific region!
 
 ##id 0x6800
-STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Уровень сложности
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Сложность
 STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Сохранить
 
 ############ range for difficulty levels starts
-STR_6801_EASY                                                   :{BLACK}Легко
-STR_6802_MEDIUM                                                 :{BLACK}Средне
-STR_6803_HARD                                                   :{BLACK}Тяжело
-STR_6804_CUSTOM                                                 :{BLACK}Пользоват.
+STR_6801_EASY                                                   :{BLACK}легкая
+STR_6802_MEDIUM                                                 :{BLACK}средняя
+STR_6803_HARD                                                   :{BLACK}тяжелая
+STR_6804_CUSTOM                                                 :{BLACK}своя
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Максимальное число противников: {ORANGE}{COMMA}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Максимальное количество противников: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Противники начинают игру: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Количество городов: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Количество предприятий: {ORANGE}{STRING}
@@ -2001,7 +2001,7 @@ STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Ско�
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Интеллект конкурентов: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Интенсивность поломок транспорта: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Множитель дохода от субсидий: {ORANGE}{STRING}
-STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Затраты на строительство: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Уровень затрат на строительство: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Тип местности: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Процент покрытия территории водой: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Экономика: {ORANGE}{STRING}
@@ -2012,7 +2012,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Отн�
 
 STR_26816_NONE                                                  :нет
 STR_6816_LOW                                                    :мало
-STR_6817_NORMAL                                                 :нормально
+STR_6817_NORMAL                                                 :средне
 STR_6818_HIGH                                                   :много
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
@@ -2026,8 +2026,8 @@ STR_6820_LOW                                                    :низкий
 STR_6821_MEDIUM                                                 :средний
 STR_6822_HIGH                                                   :высокий
 STR_6823_NONE                                                   :нет
-STR_6824_REDUCED                                                :уменьшенное
-STR_6825_NORMAL                                                 :нормальное
+STR_6824_REDUCED                                                :уменьшенная
+STR_6825_NORMAL                                                 :нормальная
 STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
@@ -2039,14 +2039,14 @@ STR_682D_MOUNTAINOUS                                            :гористы�
 STR_682E_STEADY                                                 :стабильная
 STR_682F_FLUCTUATING                                            :неустойчивая
 STR_6830_IMMEDIATE                                              :немедленно
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :через 3 месяца
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :через полгода
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :через 9 месяцев
+STR_6831_3_MONTHS_AFTER_PLAYER                                  :через 3 месяца после игрока
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :через 6 месяцев после игрока
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :через 9 месяцев после игрока
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :в конце линий и на станциях
 STR_6835_AT_END_OF_LINE_ONLY                                    :только в конце линий
 STR_6836_OFF                                                    :выключены
 STR_6837_ON                                                     :включены
-STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}показать таблицу рекордов
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Показать таблицу рекордов
 STR_6839_PERMISSIVE                                             :снисходительное
 STR_683A_TOLERANT                                               :терпимое
 STR_683B_HOSTILE                                                :отрицательное
@@ -2886,47 +2886,47 @@ STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Наст
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Настройки NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Применить изменения
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Параметры
-STR_NEWGRF_TIP                                                  :{BLACK}Список всех NewGRF сэтов, которые у вас установлены. Выбрать для изменения настроек
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}В настоящее время нет никаких установленных NEWGRF файлов! Пожалуйста обратитесь к описанию для инструкций для установки Новой Графики
+STR_NEWGRF_TIP                                                  :{BLACK}Список всех файлов NewGRF, которые у вас установлены. Выбрать для изменения настроек
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}В настоящее время нет никаких установленных файлов NewGRF! Пожалуйста обратитесь к описанию для инструкций для установки Новой Графики
 STR_NEWGRF_FILENAME                                             :{BLACK}Имя файла: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}Сумма MD5: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы хотите сделать изменения в уже запущенной игре - это может привести к ошибке игры, и ее вылету.{}Вы абсолютно уверены в том, что хотите сделать?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Добавить
-STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавить NewGRF файл в список
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавить файл NewGRF в список
 STR_NEWGRF_REMOVE                                               :{BLACK}Удалить
-STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Удалить выбранный NewGRF файл из списка
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Удалить выбранный файл NewGRF из списка
 STR_NEWGRF_MOVEUP                                               :{BLACK}Вверх
-STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Переместить выбранный NewGRF файл выше
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Переместить выбранный файл NewGRF выше
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Вниз
-STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Переместить выбранный NewGRF файл ниже
-STR_NEWGRF_FILE_TIP                                             :{BLACK}Список установленных NewGRF файлов. Выберите файл для изменения его параметров.
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Переместить выбранный файл NewGRF ниже
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Список установленных файлов NewGRF. Выберите файл для просмотра информации о нем
 STR_NEWGRF_PARAMETER                                            :{BLACK}Параметры: {SILVER}{STRING}
-STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Введите параметры NewGRF
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Введите параметры файла NewGRF
 STR_NEWGRF_NO_INFO                                              :{BLACK}Нет доступной информации
 
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Доступные NewGRF файлы
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Доступные файлы NewGRF
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Добавить выбранное
-STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Добавить выбранный NewGRF файл в вашу конфигурацию.
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Добавить выбранный файл NewGRF в вашу конфигурацию
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Обновить
-STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Обновить список доступных NewGRF файлов
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Обновить список доступных файлов NewGRF
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Невозможно добавить файл - дублируются GRF ID
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Файл не найден
 STR_NEWGRF_DISABLED                                             :{RED}Отключено
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Соответствующий файл не найден (загружен совместимый GRF)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Вместо отсутствующих загружены совместимые GRF
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Отсутствующие GRF файлы были отключены
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Не найдены GRF файлы, необходимые для загрузки игры
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Вместо отсутствующих загружены совместимые файлы NewGRF
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Отсутствующие файлы NewGRF были отключены
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Не найдены файлы NewGRF, необходимые для загрузки игры
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Валюта
+STR_CURRENCY_WINDOW                                             :{WHITE}Своя валюта
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{CURRENCY} = £{COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс:
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Переход на евро: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Переход на евро: {ORANGE}с {NUM} года
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Переход на евро: {ORANGE}никогда
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Образец: {ORANGE}{CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Изменить параметр валюты

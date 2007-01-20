@@ -1043,14 +1043,62 @@ STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stasj
 ##id 0x3800
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...moat bout wurde op it wetter
 STR_3804_WATER                                                  :Wetter
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kin net op it wetter bouwe
 
 ##id 0x4000
+STR_4000_SAVE_GAME                                              :{WHITE}Spul Opslaan
+STR_4001_LOAD_GAME                                              :{WHITE}Spul Lade
+STR_4002_SAVE                                                   :{BLACK}Opslaan
+STR_4003_DELETE                                                 :{BLACK}Fuortsmite
+STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Koe net fan 'e skiif lêze
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Opslaan Mislearre
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kin triem net fuortsmite
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Laden Mislearre
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}List fan skiven, mappen en triemen
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Laad Hichtemap
 
 ##id 0x4800
+STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} yn it paad
+STR_4801                                                        :{WHITE}{INDUSTRY}
+STR_4802_COAL_MINE                                              :Stienkoalmyn
+STR_4803_POWER_STATION                                          :Enerzjysintrale
+STR_4805_FOREST                                                 :Bosk
+STR_4807_OIL_RIG                                                :Boarplatform
+STR_4808_FACTORY                                                :Fabryk
+STR_4809_PRINTING_WORKS                                         :Drukkerij
+STR_480B_FARM                                                   :Buorkerij
+STR_480C_COPPER_ORE_MINE                                        :Koperertsmyn
+STR_480D_OIL_WELLS                                              :Oaljebron
+STR_480E_BANK                                                   :Bank
+STR_4810_PAPER_MILL                                             :Papierfabryk
+STR_4811_GOLD_MINE                                              :Goudmyn
+STR_4812_BANK                                                   :Bank
+STR_4813_DIAMOND_MINE                                           :Diamantmyn
+STR_4814_IRON_ORE_MINE                                          :IIzerertsmyn
+STR_4817_WATER_SUPPLY                                           :Wetterbron
+STR_4818_WATER_TOWER                                            :Wettertoer
+STR_4819_FACTORY                                                :Fabryk
+STR_481A_FARM                                                   :Buorkerij
+STR_481C_COTTON_CANDY_FOREST                                    :Sûkerspinnebosk
+STR_481D_CANDY_FACTORY                                          :Snobbersguodfabryk
+STR_481E_BATTERY_FARM                                           :Batterijebuorkerij
+STR_481F_COLA_WELLS                                             :Colabron
+STR_4820_TOY_SHOP                                               :Boartersguodwinkel
+STR_4821_TOY_FACTORY                                            :Boartersguodfabryk
+STR_4822_PLASTIC_FOUNTAINS                                      :Plestikfontein
+STR_4824_BUBBLE_GENERATOR                                       :Bubbelgenerator
+STR_4826_SUGAR_MINE                                             :Sûkermyn
 
 ############ range for requires	starts
+STR_4827_REQUIRES                                               :{BLACK}Nedich: {YELLOW}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Nedich: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES                                               :{BLACK}Nedich: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksje lêste moanne:
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportearre)
+STR_482F_COST                                                   :{BLACK}Kostet: {YELLOW}{CURRENCY}
 
 ##id 0x5000
 
@@ -1107,6 +1155,7 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Underhâld yn {
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 

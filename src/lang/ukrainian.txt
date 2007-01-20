@@ -883,7 +883,7 @@ STR_TOWNNAME_DUTCH                                              :Голланд�
 STR_TOWNNAME_FINNISH                                            :Фінські
 STR_TOWNNAME_POLISH                                             :Польські
 STR_TOWNNAME_SLOVAKISH                                          :Словацькі
-STR_TOWNNAME_NORWEGIAN                                          :Норвежські
+STR_TOWNNAME_NORWEGIAN                                          :Норвезькі
 STR_TOWNNAME_HUNGARIAN                                          :Угорські
 STR_TOWNNAME_AUSTRIAN                                           :Австрійські
 STR_TOWNNAME_ROMANIAN                                           :Румунські
@@ -913,7 +913,7 @@ STR_CURR_HUF                                                    :Угорськ�
 STR_CURR_ISK                                                    :Ісландська крона
 STR_CURR_ITL                                                    :Італійська ліра
 STR_CURR_NLG                                                    :Голландський гульден
-STR_CURR_NOK                                                    :Норвежська крона
+STR_CURR_NOK                                                    :Норвезька крона
 STR_CURR_PLN                                                    :Польський злотий
 STR_CURR_ROL                                                    :Румунський лей
 STR_CURR_RUR                                                    :Російський рубль
@@ -923,7 +923,7 @@ STR_CURR_YTL                                                    :Турецьк�
 STR_CURR_SKK                                                    :Словацька крона (SKK)
 STR_CURR_BRR                                                    :Бразильський реал (BRL)
 
-STR_CURR_CUSTOM                                                 :Вибрана...
+STR_CURR_CUSTOM                                                 :Власна...
 
 STR_OPTIONS_LANG                                                :{BLACK}Мова
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -3048,9 +3048,9 @@ STR_GENERATE                                                    :{WHITE}Гене
 STR_RANDOM                                                      :{BLACK}Випадково
 STR_RANDOM_HELP                                                 :{BLACK}Змінити початкове значення для генератора
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Створеня світу
-STR_RANDOM_SEED                                                 :{BLACK}Початкове значення:
+STR_RANDOM_SEED                                                 :{BLACK}Випадкове число:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Клік для вводу значення
-STR_LAND_GENERATOR                                              :{BLACK}Генерація ландшафту:
+STR_LAND_GENERATOR                                              :{BLACK}Ландшафт:
 STR_TREE_PLACER                                                 :{BLACK}Насадження дерев:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Поворот рельєфу
 STR_TERRAIN_TYPE                                                :{BLACK}Тип ландшафту:
