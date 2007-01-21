@@ -20,6 +20,32 @@
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 
+void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
+{
+	SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+	DrawSprite(GetAircraftImage(v, DIR_W), pal, x + 25, y + 10);
+	if (v->subtype == 0) {
+		SpriteID rotor_sprite = GetCustomRotorSprite(v, true);
+		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
+		DrawSprite(rotor_sprite, PAL_NONE, x + 25, y + 5);
+	}
+	if (v->index == selection) {
+		DrawFrameRect(x - 1, y - 1, x + 58, y + 21, 0xF, FR_BORDERONLY);
+	}
+}
+
+void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
+{
+	if (success) {
+		const Vehicle *v = GetVehicle(_new_vehicle_id);
+
+		if (v->tile == _backup_orders_tile) {
+			_backup_orders_tile = 0;
+			RestoreVehicleOrders(v, _backup_orders_data);
+		}
+		ShowAircraftViewWindow(v);
+	}
+}
 
 void CcCloneAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
