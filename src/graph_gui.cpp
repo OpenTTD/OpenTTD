@@ -40,10 +40,10 @@ typedef struct GraphDrawer {
 	StringID format_str_y_axis;
 	byte color_3, color_2, bg_line_color;
 	byte colors[GRAPH_NUM];
-	uint64 cost[GRAPH_NUM][24]; // last 2 years
+	int64 cost[GRAPH_NUM][24]; // last 2 years
 } GraphDrawer;
 
-#define INVALID_VALUE 0x80000000
+static const int64 INVALID_VALUE = 0x80000000;
 
 static void DrawGraph(const GraphDrawer *gw)
 {
@@ -53,7 +53,7 @@ static void DrawGraph(const GraphDrawer *gw)
 	int color;
 	int right, bottom;
 	int num_x, num_dataset;
-	const uint64 *row_ptr, *col_ptr;
+	const int64 *row_ptr, *col_ptr;
 	int64 mx;
 	int adj_height;
 	uint64 y_scaling, tmp;
@@ -116,7 +116,7 @@ static void DrawGraph(const GraphDrawer *gw)
 			col_ptr = row_ptr;
 			do {
 				if (*col_ptr != INVALID_VALUE) {
-					mx = max((uint64)mx, *col_ptr);
+					mx = max(mx, *col_ptr);
 				}
 			} while (col_ptr++, --num_x);
 		}
@@ -352,7 +352,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 			if (p->is_active) {
 				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)(p->old_economy[j].income + p->old_economy[j].expenses);
+					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (p->old_economy[j].income + p->old_economy[j].expenses);
 					i++;
 				}
 			}
@@ -425,7 +425,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 			if (p->is_active) {
 				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].income;
+					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : p->old_economy[j].income;
 					i++;
 				}
 			}
@@ -498,7 +498,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 			if (p->is_active) {
 				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].delivered_cargo;
+					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : p->old_economy[j].delivered_cargo;
 					i++;
 				}
 			}
@@ -571,7 +571,7 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 			if (p->is_active) {
 				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].performance_history;
+					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : p->old_economy[j].performance_history;
 					i++;
 				}
 			}
@@ -647,7 +647,7 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 			if (p->is_active) {
 				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].company_value;
+					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : p->old_economy[j].company_value;
 					i++;
 				}
 			}
@@ -745,7 +745,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 			y += 8;
 			gd.colors[i] = _cargo_colours[i];
 			for (j = 0; j != 20; j++) {
-				gd.cost[i][j] = (uint64)GetTransportedGoodsIncome(10, 20, j * 6 + 6, i);
+				gd.cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 6 + 6, i);
 			}
 		}
 
