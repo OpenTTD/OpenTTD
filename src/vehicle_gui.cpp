@@ -1045,20 +1045,15 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 	}
 }
 
-static void DrawVehiclePurchaseInfo(const int x, const int y, uint w, const EngineID engine_number)
+static void DrawVehiclePurchaseInfoLocal(const int x, const int y, uint w, const EngineID engine_number)
 {
 	switch (GetEngine(engine_number)->type) {
-		case VEH_Train:
-			if ((RailVehInfo(engine_number)->flags & RVI_WAGON) == 0) {
-				DrawTrainEnginePurchaseInfo(x, y, w, engine_number);
-			} else {
-				DrawTrainWagonPurchaseInfo(x, y, w, engine_number);
-			}
-			break;
-
 		case VEH_Road: DrawRoadVehPurchaseInfo(x, y, w, engine_number);      break;
 		case VEH_Ship: DrawShipPurchaseInfo(x, y, w, engine_number);         break;
-		case VEH_Aircraft: DrawAircraftPurchaseInfo(x, y, w, engine_number); break;
+		case VEH_Train:
+		case VEH_Aircraft:
+			DrawVehiclePurchaseInfo(x, y, w, engine_number);
+			break;
 		default: NOT_REACHED();
 	}
 }
@@ -1146,7 +1141,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				for (i = 0 ; i < 2 ; i++) {
 					if (selected_id[i] != INVALID_ENGINE) {
 						const Widget *wi = &w->widget[i == 0 ? 3 : 11];
-						DrawVehiclePurchaseInfo(wi->left + 2 , wi->top + 1, wi->right - wi->left - 2, selected_id[i]);
+						DrawVehiclePurchaseInfoLocal(wi->left + 2 , wi->top + 1, wi->right - wi->left - 2, selected_id[i]);
 					}
 				}
 			} break;   // end of paint
@@ -1743,9 +1738,9 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 				case VLW_WIDGET_NEW_VEHICLES:
 					switch (vl->vehicle_type) {
-						case VEH_Train: ShowBuildTrainWindow(0); break;
 						case VEH_Road:  ShowBuildRoadVehWindow(0); break;
 						case VEH_Ship:  ShowBuildShipWindow(0); break;
+						case VEH_Train:
 						case VEH_Aircraft: ShowBuildVehicleWindow(0, vl->vehicle_type); break;
 					}
 					break;

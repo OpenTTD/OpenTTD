@@ -736,9 +736,9 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 				case DEPOT_WIDGET_BUILD: // Build vehicle
 					ResetObjectToPlace();
 					switch (WP(w, depot_d).type) {
-						case VEH_Train:    ShowBuildTrainWindow(w->window_number);    break;
 						case VEH_Road:     ShowBuildRoadVehWindow(w->window_number);  break;
 						case VEH_Ship:     ShowBuildShipWindow(w->window_number);     break;
+						case VEH_Train:
 						case VEH_Aircraft:
 							ShowBuildVehicleWindow(w->window_number, WP(w, depot_d).type);
 							break;
