@@ -23,7 +23,11 @@ static uint _legend_cargobits;
 /* GENERIC GRAPH DRAWER */
 /************************/
 
-enum {GRAPH_NUM = 16};
+enum {
+	GRAPH_MAX_DATASETS = 16,
+	GRAPH_AXIS_LABEL_COLOUR = 16,
+	GRAPH_AXIS_LINE_COLOUR  = 215,
+};
 
 typedef struct GraphDrawer {
 	uint sel; // bitmask of the players *excluded* (e.g. 11111111 means that no players are shown)
@@ -38,9 +42,8 @@ typedef struct GraphDrawer {
 	int left, top;
 	uint height;
 	StringID format_str_y_axis;
-	byte color_3, color_2;
-	byte colors[GRAPH_NUM];
-	int64 cost[GRAPH_NUM][24]; // last 2 years
+	byte colors[GRAPH_MAX_DATASETS];
+	int64 cost[GRAPH_MAX_DATASETS][24]; // last 2 years
 } GraphDrawer;
 
 static const int64 INVALID_VALUE = 0x80000000;
@@ -62,7 +65,7 @@ static void DrawGraph(const GraphDrawer *gw)
 
 	/* the colors and cost array of GraphDrawer must accomodate
 	 * both values for cargo and players. So if any are higher, quit */
-	assert(GRAPH_NUM >= (int)NUM_CARGO && GRAPH_NUM >= (int)MAX_PLAYERS);
+	assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_PLAYERS);
 
 	byte grid_colour = _colour_gradient[14][4];
 
@@ -87,14 +90,14 @@ static void DrawGraph(const GraphDrawer *gw)
 	} while (--i);
 
 	/* draw vertical edge line */
-	GfxFillRect(x, gw->top, x, bottom, gw->color_2);
+	GfxFillRect(x, gw->top, x, bottom, GRAPH_AXIS_LINE_COLOUR);
 
 	adj_height = gw->height;
 	if (gw->include_neg) adj_height >>= 1;
 
 	/* draw horiz edge line */
 	y = adj_height + gw->top;
-	GfxFillRect(x, y, right, y, gw->color_2);
+	GfxFillRect(x, y, right, y, GRAPH_AXIS_LINE_COLOUR);
 
 	/* find the max element */
 	if (gw->num_on_x_axis == 0)
@@ -141,7 +144,7 @@ static void DrawGraph(const GraphDrawer *gw)
 		SetDParam(0, gw->format_str_y_axis);
 		SetDParam64(1, (int64)tmp);
 		tmp -= (value >> 3);
-		DrawStringRightAligned(x, y, STR_0170, gw->color_3);
+		DrawStringRightAligned(x, y, STR_0170, GRAPH_AXIS_LABEL_COLOUR);
 		y += gw->height >> 3;
 	} while (--i);
 
@@ -156,7 +159,7 @@ static void DrawGraph(const GraphDrawer *gw)
 			SetDParam(2, k);
 			SetDParam(0, j + STR_0162_JAN);
 			SetDParam(1, j + STR_0162_JAN + 2);
-			DrawString(x, y, j == 0 ? STR_016F : STR_016E, gw->color_3);
+			DrawString(x, y, j == 0 ? STR_016F : STR_016E, GRAPH_AXIS_LABEL_COLOUR);
 
 			j += 3;
 			if (j >= 12) {
@@ -172,7 +175,7 @@ static void DrawGraph(const GraphDrawer *gw)
 		i = gw->num_on_x_axis;assert(i>0);
 		do {
 			SetDParam(0, j);
-			DrawString(x, y, STR_01CB, gw->color_3);
+			DrawString(x, y, STR_01CB, GRAPH_AXIS_LABEL_COLOUR);
 			j += gw->unk61C;
 			x += 22;
 		} while (--i);
@@ -340,8 +343,6 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 		gd.height = 136;
 		gd.include_neg = true;
 		gd.format_str_y_axis = STR_CURRCOMPACT;
-		gd.color_3 = 0x10;
-		gd.color_2 = 0xD7;
 
 		SetupGraphDrawerForPlayers(&gd);
 
@@ -413,8 +414,6 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 		gd.height = 104;
 		gd.include_neg = false;
 		gd.format_str_y_axis = STR_CURRCOMPACT;
-		gd.color_3 = 0x10;
-		gd.color_2 = 0xD7;
 		SetupGraphDrawerForPlayers(&gd);
 
 		numd = 0;
@@ -485,8 +484,6 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 		gd.height = 104;
 		gd.include_neg = false;
 		gd.format_str_y_axis = STR_7024;
-		gd.color_3 = 0x10;
-		gd.color_2 = 0xD7;
 		SetupGraphDrawerForPlayers(&gd);
 
 		numd = 0;
@@ -557,8 +554,6 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 		gd.height = 200;
 		gd.include_neg = false;
 		gd.format_str_y_axis = STR_7024;
-		gd.color_3 = 0x10;
-		gd.color_2 = 0xD7;
 		SetupGraphDrawerForPlayers(&gd);
 
 		numd = 0;
@@ -632,8 +627,6 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 		gd.height = 200;
 		gd.include_neg = false;
 		gd.format_str_y_axis = STR_CURRCOMPACT;
-		gd.color_3 = 0x10;
-		gd.color_2 = 0xD7;
 		SetupGraphDrawerForPlayers(&gd);
 
 		numd = 0;
@@ -715,8 +708,6 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		gd.height = 104;
 		gd.include_neg = false;
 		gd.format_str_y_axis = STR_CURRCOMPACT;
-		gd.color_3 = 16;
-		gd.color_2 = 215;
 		gd.num_dataset = NUM_CARGO;
 		gd.num_on_x_axis = 20;
 		gd.num_vert_lines = 20;
