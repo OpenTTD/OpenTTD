@@ -351,15 +351,22 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			// this is the rewritten ascii input function
 			// it disables windows deadkey handling --> more linux like :D
 			wchar_t w = 0;
+#if !defined(WINCE)
 			byte ks[256];
+#endif
 			uint scancode;
 			uint32 pressed_key;
 
+#if defined(WINCE)
+			/* On WinCE GetKeyboardState isn't supported */
+			w = wParam;
+#else
 			GetKeyboardState(ks);
 			if (ToUnicode(wParam, 0, ks, &w, 1, 0) != 1) {
 				/* On win9x ToUnicode always fails, so fall back to ToAscii */
 				if (ToAscii(wParam, 0, ks, (LPWORD)&w, 0) != 1) w = 0; // no translation was possible
 			}
+#endif
 
 			pressed_key = w | MapWindowsKey(wParam) << 16;
 
@@ -409,6 +416,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			}
 			return 0;
 
+#if !defined(WINCE)
 		case WM_SIZING: {
 			RECT* r = (RECT*)lParam;
 			RECT r2;
@@ -472,6 +480,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 					r->right = r->left + w;
 					break;
 			}
+#endif
 			return TRUE;
 		}
 
@@ -538,6 +547,9 @@ static void MakeWindow(bool full_screen)
 		_wnd.main_wnd = 0;
 	}
 
+#if defined(WINCE)
+	/* WinCE is always fullscreen */
+#else
 	if (full_screen) {
 		DEVMODE settings;
 
@@ -561,6 +573,7 @@ static void MakeWindow(bool full_screen)
 		// restore display?
 		ChangeDisplaySettings(NULL, 0);
 	}
+#endif
 
 	{
 		RECT r;
@@ -579,7 +592,9 @@ static void MakeWindow(bool full_screen)
 			SetRect(&r, 0, 0, _wnd.width, _wnd.height);
 		}
 
+#if !defined(WINCE)
 		AdjustWindowRect(&r, style, FALSE);
+#endif
 		w = r.right - r.left;
 		h = r.bottom - r.top;
 		x = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
@@ -669,6 +684,10 @@ static const uint16 default_resolutions[][2] = {
 static void FindResolutions(void)
 {
 	uint n = 0;
+#if defined(WINCE)
+	/* EnumDisplaySettingsW is only supported in CE 4.2+ */
+	/* XXX -- One might argue that we assume 4.2+ on every system. Then we can use this function safely */
+#else
 	uint i;
 	DEVMODEA dm;
 
@@ -695,6 +714,7 @@ static void FindResolutions(void)
 			}
 		}
 	}
+#endif
 
 	/* We have found no resolutions, show the default list */
 	if (n == 0) {
@@ -735,7 +755,9 @@ static void Win32GdiStop(void)
 	DeleteObject(_wnd.dib_sect);
 	DestroyWindow(_wnd.main_wnd);
 
+#if !defined(WINCE)
 	if (_wnd.fullscreen) ChangeDisplaySettings(NULL, 0);
+#endif
 	if (_double_size) {
 		_cur_resolution[0] *= 2;
 		_cur_resolution[1] *= 2;
@@ -837,13 +859,17 @@ static void Win32GdiMainLoop(void)
 
 			if (_force_full_redraw) MarkWholeScreenDirty();
 
+#if !defined(WINCE)
 			GdiFlush();
+#endif
 			_screen.dst_ptr = _wnd.buffer_bits;
 			UpdateWindows();
 			CheckPaletteAnim();
 		} else {
 			Sleep(1);
+#if !defined(WINCE)
 			GdiFlush();
+#endif
 			_screen.dst_ptr = _wnd.buffer_bits;
 			DrawTextMessage();
 			DrawMouseCursor();

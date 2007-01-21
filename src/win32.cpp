@@ -60,7 +60,7 @@ bool LoadLibraryList(Function proc[], const char *dll)
 			while (*dll++ != '\0');
 			if (*dll == '\0') break;
 #if defined(WINCE)
-			p = GetProcAddress(lib, MB_TO_WIDE(dll);
+			p = GetProcAddress(lib, MB_TO_WIDE(dll));
 #else
 			p = GetProcAddress(lib, dll);
 #endif
@@ -866,7 +866,12 @@ void ShowInfo(const char *str)
 	int _set_error_mode(int);
 #endif
 
-int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+#if defined(WINCE)
+int APIENTRY WinMain
+#else
+int APIENTRY _tWinMain
+#endif
+        (HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPTSTR lpCmdLine, int nCmdShow)
 {
 	int argc;
@@ -911,6 +916,22 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	return 0;
 }
+
+#if defined(WINCE)
+void GetCurrentDirectoryW(int length, wchar_t *path)
+{
+	wchar_t *pDest = NULL;
+	/* Get the name of this module */
+	GetModuleFileName(NULL, path, length);
+
+	/* Remove the executable name, this we call CurrentDir */
+	pDest = wcsrchr(path, '\\');
+	if (pDest != NULL) {
+		int result = pDest - path + 1;
+		path[result] = '\0';
+	}
+}
+#endif
 
 void DeterminePaths(void)
 {
