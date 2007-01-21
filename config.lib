@@ -657,7 +657,7 @@ make_cflags_and_ldflags() {
 		LIBS="$LIBS -lc"
 	fi
 	if [ "$os" = "WINCE" ]; then
-		LIBS="$LIBS -lcoredll -lcorelibc -laygshell -e WinMainCRTStartup"
+		LIBS="$LIBS -lcoredll -lcorelibc -laygshell -lws2 -e WinMainCRTStartup"
 	fi
 
 	if [ "$os" = "MORPHOS" ]; then
