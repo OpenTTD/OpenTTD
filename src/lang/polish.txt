@@ -1204,6 +1204,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Data za
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Pozwól na łagodną ekonomię (więcej małych zmian)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Pozwól kupować odziały w innych firmach
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} kratk{P e i ek}
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatycznie buduj semafory przed: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozycja głównego paska narzędzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Z lewej strony
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Wyśrodkowane
@@ -3044,6 +3045,11 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie moż
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Nie znaleziono pasującego pliku
 STR_NEWGRF_DISABLED                                             :{RED}Niedostępny
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nie znaleziono pasującego pliku (wczytano kompatybilny GRF)
+
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Wczytano kompatybilne GRF dla brakujących plików
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Brakujące pliki GRF zostały wyłączone
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Brak plików GRF potrzebnych do wczytania gry
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Własna waluta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Współczynnik wymiany: {ORANGE}{CURRENCY} = £ {COMMA}

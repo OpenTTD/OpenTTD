@@ -1003,7 +1003,7 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Letalo {
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Avtomatska zamenjava je spodletela na vlaku {COMMA} (denarni problemi)
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autoobnova ni uspela na cestnem vozilu {COMMA} (denarni limit)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autoobnova ni uspela na ladji {COMMA} (denarni limit)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Samoprenova neuspela na letalu {COMMA} (omejitev z denarjem)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Samoprenova na letalu {COMMA} (omejitev z denarjem) neuspela
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je predolg po zamenjavi
 
 STR_CONFIG_PATCHES                                              :{BLACK}Nastavitve popravkov

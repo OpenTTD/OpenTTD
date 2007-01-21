@@ -16,7 +16,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Precisa de terreno plano
 STR_0008_WAITING                                                :{BLACK}Aguardando: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (em rota de
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW} (em rota de
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Aceita: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Aceita: {GOLD}
@@ -75,15 +75,15 @@ STR_0041_WATER                                                  :{G=f}água
 STR_0042_WHEAT                                                  :{G=m}trigo
 STR_0043_RUBBER                                                 :{G=f}borracha
 STR_0044_SUGAR                                                  :{G=m}açúcar
-STR_0045_TOY                                                    :Brinquedo
-STR_0046_CANDY                                                  :Doce
-STR_0047_COLA                                                   :Cola
-STR_0048_COTTON_CANDY                                           :Algodão Doce
-STR_0049_BUBBLE                                                 :Bolha
-STR_004A_TOFFEE                                                 :Caramelo
-STR_004B_BATTERY                                                :Pilha
-STR_004C_PLASTIC                                                :Plástico
-STR_004D_FIZZY_DRINK                                            :Refrigerante
+STR_0045_TOY                                                    :{G=m}brinquedos
+STR_0046_CANDY                                                  :{G=m}doces
+STR_0047_COLA                                                   :{G=f}cola
+STR_0048_COTTON_CANDY                                           :{G=m}algodão doce
+STR_0049_BUBBLE                                                 :{G=f}bolhas
+STR_004A_TOFFEE                                                 :{G=m}caramelo
+STR_004B_BATTERY                                                :{G=f}pilhas
+STR_004C_PLASTIC                                                :{G=m}plástico
+STR_004D_FIZZY_DRINK                                            :{G=m}refrigerantes
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passageiro{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} de carvão
