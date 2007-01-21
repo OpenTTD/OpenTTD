@@ -208,6 +208,7 @@ road_gui.cpp
 roadveh_gui.cpp
 settings_gui.cpp
 ship_gui.cpp
+signs_gui.cpp
 smallmap_gui.cpp
 station_gui.cpp
 subsidy_gui.cpp

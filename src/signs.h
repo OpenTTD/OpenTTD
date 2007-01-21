@@ -65,4 +65,6 @@ void PlaceProc_Sign(TileIndex tile);
 /* misc.c */
 void ShowRenameSignWindow(const Sign *si);
 
+void ShowSignList(void);
+
 #endif /* SIGNS_H */

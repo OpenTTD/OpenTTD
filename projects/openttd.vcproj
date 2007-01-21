@@ -742,6 +742,9 @@
 				RelativePath=".\..\src\ship_gui.cpp">
 			</File>
 			<File
+				RelativePath=".\..\src\signs_gui.cpp">
+			</File>
+			<File
 				RelativePath=".\..\src\smallmap_gui.cpp">
 			</File>
 			<File
