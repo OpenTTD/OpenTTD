@@ -13,6 +13,7 @@ typedef struct RailVehicleInfo {
 	byte image_index;
 	byte flags; /* 1=multihead engine, 2=wagon */
 	byte base_cost;
+	byte railtype;
 	uint16 max_speed;
 	uint16 power;
 	uint16 weight;
@@ -81,8 +82,7 @@ typedef struct EngineInfo {
 	Year lifelength;
 	Year base_life;
 	byte load_amount;
-	byte railtype:4;
-	byte climates:4;
+	byte climates;
 	uint32 refit_mask;
 	byte refit_cost;
 	byte misc_flags;

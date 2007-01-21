@@ -12,42 +12,30 @@
 /** Writes the properties of a train or road vehicle into the EngineInfo struct.
  * @see EngineInfo
  * @param a Introduction date
- * @param e Rail Type of the vehicle
- * @param f Bitmask of the climates
+ * @param e Bitmask of the climates
  * @note the 5 between d and e is the load amount
  */
-#define MK(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b, c, d, 5, e, f, 0, 8, 0, 0 }
+#define MK(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b, c, d, 5, e, 0, 8, 0, 0 }
+
 /** Writes the properties of a train carriage into the EngineInfo struct.
- * @see EngineInfo
- * @param a Introduction date
- * @param e Rail Type of the vehicle
- * @param f Bitmask of the climates
+ * @see MK
  * @note the 0x80 in parameter b sets the "is carriage bit"
  * @note the 5 between d and e is the load amount
  */
-#define MW(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b | 0x80, c, d, 5, e, f, 0, 8, 0, 0 }
+#define MW(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b | 0x80, c, d, 5, e, 0, 8, 0, 0 }
 
 /** Writes the properties of a ship into the EngineInfo struct.
  * @see MK
  * @note the 10 between d and e is the load amount
  */
-#define MS(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b, c, d, 10, e, f, 0, 8, 0, 0 }
+#define MS(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b, c, d, 10, e, 0, 8, 0, 0 }
 
 /** Writes the properties of an aeroplane into the EngineInfo struct.
  * @see MK
  * @note the 20 between d and e is the load amount
  */
-#define MA(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b, c, d, 20, e, f, 0, 8, 0, 0 }
+#define MA(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b, c, d, 20, e, 0, 8, 0, 0 }
 
-// Rail types
-// R = Conventional railway
-// E = Electrified railway
-// M = Monorail
-// L = MagLev
-#define R 0
-#define E 1
-#define M 2
-#define L 3
 // Climates
 // T = Temperate
 // A = Arctic
@@ -58,271 +46,267 @@
 #define S 4
 #define Y 8
 const EngineInfo orig_engine_info[] = {
-	MK(  1827,  20,  15,  30, R, T      ), /*   0 Kirby Paul Tank (Steam) */
-	MK( 12784,  20,  22,  30, R,   A|S  ), /*   1 MJS 250 (Diesel) */
-	MK(  9497,  20,  20,  50, R,       Y), /*   2 Ploddyphut Choo-Choo */
-	MK( 11688,  20,  20,  30, R,       Y), /*   3 Powernaut Choo-Choo */
-	MK( 16802,  20,  20,  30, R,       Y), /*   4 Mightymover Choo-Choo */
-	MK( 18993,  20,  20,  30, R,       Y), /*   5 Ploddyphut Diesel */
-	MK( 20820,  20,  20,  30, R,       Y), /*   6 Powernaut Diesel */
-	MK(  8766,  20,  20,  30, R,   A|S  ), /*   7 Wills 2-8-0 (Steam) */
-	MK(  5114,  20,  21,  30, R, T      ), /*   8 Chaney 'Jubilee' (Steam) */
-	MK(  5479,  20,  20,  30, R, T      ), /*   9 Ginzu 'A4' (Steam) */
-	MK( 12419,  20,  23,  25, R, T      ), /*  10 SH '8P' (Steam) */
-	MK( 13149,  20,  12,  30, R, T      ), /*  11 Manley-Morel DMU (Diesel) */
-	MK( 23376,  20,  15,  35, R, T      ), /*  12 'Dash' (Diesel) */
-	MK( 14976,  20,  18,  28, R, T      ), /*  13 SH/Hendry '25' (Diesel) */
-	MK( 14245,  20,  20,  30, R, T      ), /*  14 UU '37' (Diesel) */
-	MK( 15341,  20,  22,  33, R, T      ), /*  15 Floss '47' (Diesel) */
-	MK( 14976,  20,  20,  25, R,   A|S  ), /*  16 CS 4000 (Diesel) */
-	MK( 16437,  20,  20,  30, R,   A|S  ), /*  17 CS 2400 (Diesel) */
-	MK( 18993,  20,  22,  30, R,   A|S  ), /*  18 Centennial (Diesel) */
-	MK( 13880,  20,  22,  30, R,   A|S  ), /*  19 Kelling 3100 (Diesel) */
-	MK( 20454,  20,  22,  30, R,   A|S  ), /*  20 Turner Turbo (Diesel) */
-	MK( 16071,  20,  22,  30, R,   A|S  ), /*  21 MJS 1000 (Diesel) */
-	MK( 20820,  20,  20,  25, R, T      ), /*  22 SH '125' (Diesel) */
-	MK( 16437,  20,  23,  30, E, T      ), /*  23 SH '30' (Electric) */
-	MK( 19359,  20,  23,  80, E, T      ), /*  24 SH '40' (Electric) */
-	MK( 23376,  20,  25,  30, E, T      ), /*  25 'T.I.M.' (Electric) */
-	MK( 26298,  20,  25,  50, E, T      ), /*  26 'AsiaStar' (Electric) */
-	MW(  1827,  20,  20,  50, R, T|A|S|Y), /*  27 Passenger Carriage */
-	MW(  1827,  20,  20,  50, R, T|A|S|Y), /*  28 Mail Van */
-	MW(  1827,  20,  20,  50, R, T|A    ), /*  29 Coal Truck */
-	MW(  1827,  20,  20,  50, R, T|A|S  ), /*  30 Oil Tanker */
-	MW(  1827,  20,  20,  50, R, T|A    ), /*  31 Livestock Van */
-	MW(  1827,  20,  20,  50, R, T|A|S  ), /*  32 Goods Van */
-	MW(  1827,  20,  20,  50, R, T|A|S  ), /*  33 Grain Hopper */
-	MW(  1827,  20,  20,  50, R, T|A|S  ), /*  34 Wood Truck */
-	MW(  1827,  20,  20,  50, R, T      ), /*  35 Iron Ore Hopper */
-	MW(  1827,  20,  20,  50, R, T      ), /*  36 Steel Truck */
-	MW(  1827,  20,  20,  50, R, T|A|S  ), /*  37 Armoured Van */
-	MW(  1827,  20,  20,  50, R,   A|S  ), /*  38 Food Van */
-	MW(  1827,  20,  20,  50, R,   A    ), /*  39 Paper Truck */
-	MW(  1827,  20,  20,  50, R,     S  ), /*  40 Copper Ore Hopper */
-	MW(  1827,  20,  20,  50, R,     S  ), /*  41 Water Tanker */
-	MW(  1827,  20,  20,  50, R,     S  ), /*  42 Fruit Truck */
-	MW(  1827,  20,  20,  50, R,     S  ), /*  43 Rubber Truck */
-	MW(  1827,  20,  20,  50, R,       Y), /*  44 Sugar Truck */
-	MW(  1827,  20,  20,  50, R,       Y), /*  45 Candyfloss Hopper */
-	MW(  1827,  20,  20,  50, R,       Y), /*  46 Toffee Hopper */
-	MW(  1827,  20,  20,  50, R,       Y), /*  47 Bubble Van */
-	MW(  1827,  20,  20,  50, R,       Y), /*  48 Cola Tanker */
-	MW(  1827,  20,  20,  50, R,       Y), /*  49 Sweet Van */
-	MW(  1827,  20,  20,  50, R,       Y), /*  50 Toy Van */
-	MW(  1827,  20,  20,  50, R,       Y), /*  51 Battery Truck */
-	MW(  1827,  20,  20,  50, R,       Y), /*  52 Fizzy Drink Truck */
-	MW(  1827,  20,  20,  50, R,       Y), /*  53 Plastic Truck */
-	MK( 28490,  20,  20,  50, M, T|A|S  ), /*  54 'X2001' (Electric) */
-	MK( 31047,  20,  20,  50, M, T|A|S  ), /*  55 'Millennium Z1' (Electric) */
-	MK( 28855,  20,  20,  50, M,       Y), /*  56 Wizzowow Z99 */
-	MW(  1827,  20,  20,  50, M, T|A|S|Y), /*  57 Passenger Carriage */
-	MW(  1827,  20,  20,  50, M, T|A|S|Y), /*  58 Mail Van */
-	MW(  1827,  20,  20,  50, M, T|A    ), /*  59 Coal Truck */
-	MW(  1827,  20,  20,  50, M, T|A|S  ), /*  60 Oil Tanker */
-	MW(  1827,  20,  20,  50, M, T|A    ), /*  61 Livestock Van */
-	MW(  1827,  20,  20,  50, M, T|A|S  ), /*  62 Goods Van */
-	MW(  1827,  20,  20,  50, M, T|A|S  ), /*  63 Grain Hopper */
-	MW(  1827,  20,  20,  50, M, T|A|S  ), /*  64 Wood Truck */
-	MW(  1827,  20,  20,  50, M, T      ), /*  65 Iron Ore Hopper */
-	MW(  1827,  20,  20,  50, M, T      ), /*  66 Steel Truck */
-	MW(  1827,  20,  20,  50, M, T|A|S  ), /*  67 Armoured Van */
-	MW(  1827,  20,  20,  50, M,   A|S  ), /*  68 Food Van */
-	MW(  1827,  20,  20,  50, M,   A    ), /*  69 Paper Truck */
-	MW(  1827,  20,  20,  50, M,     S  ), /*  70 Copper Ore Hopper */
-	MW(  1827,  20,  20,  50, M,     S  ), /*  71 Water Tanker */
-	MW(  1827,  20,  20,  50, M,     S  ), /*  72 Fruit Truck */
-	MW(  1827,  20,  20,  50, M,     S  ), /*  73 Rubber Truck */
-	MW(  1827,  20,  20,  50, M,       Y), /*  74 Sugar Truck */
-	MW(  1827,  20,  20,  50, M,       Y), /*  75 Candyfloss Hopper */
-	MW(  1827,  20,  20,  50, M,       Y), /*  76 Toffee Hopper */
-	MW(  1827,  20,  20,  50, M,       Y), /*  77 Bubble Van */
-	MW(  1827,  20,  20,  50, M,       Y), /*  78 Cola Tanker */
-	MW(  1827,  20,  20,  50, M,       Y), /*  79 Sweet Van */
-	MW(  1827,  20,  20,  50, M,       Y), /*  80 Toy Van */
-	MW(  1827,  20,  20,  50, M,       Y), /*  81 Battery Truck */
-	MW(  1827,  20,  20,  50, M,       Y), /*  82 Fizzy Drink Truck */
-	MW(  1827,  20,  20,  50, M,       Y), /*  83 Plastic Truck */
-	MK( 36525,  20,  20,  50, L, T|A|S  ), /*  84 Lev1 'Leviathan' (Electric) */
-	MK( 39447,  20,  20,  50, L, T|A|S  ), /*  85 Lev2 'Cyclops' (Electric) */
-	MK( 42004,  20,  20,  50, L, T|A|S  ), /*  86 Lev3 'Pegasus' (Electric) */
-	MK( 42735,  20,  20,  50, L, T|A|S  ), /*  87 Lev4 'Chimaera' (Electric) */
-	MK( 36891,  20,  20,  60, L,       Y), /*  88 Wizzowow Rocketeer */
-	MW(  1827,  20,  20,  50, L, T|A|S|Y), /*  89 Passenger Carriage */
-	MW(  1827,  20,  20,  50, L, T|A|S|Y), /*  90 Mail Van */
-	MW(  1827,  20,  20,  50, L, T|A    ), /*  91 Coal Truck */
-	MW(  1827,  20,  20,  50, L, T|A|S  ), /*  92 Oil Tanker */
-	MW(  1827,  20,  20,  50, L, T|A    ), /*  93 Livestock Van */
-	MW(  1827,  20,  20,  50, L, T|A|S  ), /*  94 Goods Van */
-	MW(  1827,  20,  20,  50, L, T|A|S  ), /*  95 Grain Hopper */
-	MW(  1827,  20,  20,  50, L, T|A|S  ), /*  96 Wood Truck */
-	MW(  1827,  20,  20,  50, L, T      ), /*  97 Iron Ore Hopper */
-	MW(  1827,  20,  20,  50, L, T      ), /*  98 Steel Truck */
-	MW(  1827,  20,  20,  50, L, T|A|S  ), /*  99 Armoured Van */
-	MW(  1827,  20,  20,  50, L,   A|S  ), /* 100 Food Van */
-	MW(  1827,  20,  20,  50, L,   A    ), /* 101 Paper Truck */
-	MW(  1827,  20,  20,  50, L,     S  ), /* 102 Copper Ore Hopper */
-	MW(  1827,  20,  20,  50, L,     S  ), /* 103 Water Tanker */
-	MW(  1827,  20,  20,  50, L,     S  ), /* 104 Fruit Truck */
-	MW(  1827,  20,  20,  50, L,     S  ), /* 105 Rubber Truck */
-	MW(  1827,  20,  20,  50, L,       Y), /* 106 Sugar Truck */
-	MW(  1827,  20,  20,  50, L,       Y), /* 107 Candyfloss Hopper */
-	MW(  1827,  20,  20,  50, L,       Y), /* 108 Toffee Hopper */
-	MW(  1827,  20,  20,  50, L,       Y), /* 109 Bubble Van */
-	MW(  1827,  20,  20,  50, L,       Y), /* 110 Cola Tanker */
-	MW(  1827,  20,  20,  50, L,       Y), /* 111 Sweet Van */
-	MW(  1827,  20,  20,  50, L,       Y), /* 112 Toy Van */
-	MW(  1827,  20,  20,  50, L,       Y), /* 113 Battery Truck */
-	MW(  1827,  20,  20,  50, L,       Y), /* 114 Fizzy Drink Truck */
-	MW(  1827,  20,  20,  50, L,       Y), /* 115 Plastic Truck */
-	MK(  3378,  20,  12,  40, 0, T|A|S  ), /* 116 MPS Regal Bus */
-	MK( 16071,  20,  15,  30, 0, T|A|S  ), /* 117 Hereford Leopard Bus */
-	MK( 24107,  20,  15,  40, 0, T|A|S  ), /* 118 Foster Bus */
-	MK( 32142,  20,  15,  80, 0, T|A|S  ), /* 119 Foster MkII Superbus */
-	MK(  9132,  20,  15,  40, 0,       Y), /* 120 Ploddyphut MkI Bus */
-	MK( 18993,  20,  15,  40, 0,       Y), /* 121 Ploddyphut MkII Bus */
-	MK( 32873,  20,  15,  80, 0,       Y), /* 122 Ploddyphut MkIII Bus */
-	MK(  5479,  20,  15,  55, 0, T|A    ), /* 123 Balogh Coal Truck */
-	MK( 20089,  20,  15,  55, 0, T|A    ), /* 124 Uhl Coal Truck */
-	MK( 33969,  20,  15,  85, 0, T|A    ), /* 125 DW Coal Truck */
-	MK(  5479,  20,  15,  55, 0, T|A|S  ), /* 126 MPS Mail Truck */
-	MK( 21550,  20,  15,  55, 0, T|A|S  ), /* 127 Reynard Mail Truck */
-	MK( 35795,  20,  15,  85, 0, T|A|S  ), /* 128 Perry Mail Truck */
-	MK(  5479,  20,  15,  55, 0,       Y), /* 129 MightyMover Mail Truck */
-	MK( 21550,  20,  15,  55, 0,       Y), /* 130 Powernaught Mail Truck */
-	MK( 35795,  20,  15,  85, 0,       Y), /* 131 Wizzowow Mail Truck */
-	MK(  5479,  20,  15,  55, 0, T|A|S  ), /* 132 Witcombe Oil Tanker */
-	MK( 19359,  20,  15,  55, 0, T|A|S  ), /* 133 Foster Oil Tanker */
-	MK( 31047,  20,  15,  85, 0, T|A|S  ), /* 134 Perry Oil Tanker */
-	MK(  5479,  20,  15,  55, 0, T|A    ), /* 135 Talbott Livestock Van */
-	MK( 21915,  20,  15,  55, 0, T|A    ), /* 136 Uhl Livestock Van */
-	MK( 37256,  20,  15,  85, 0, T|A    ), /* 137 Foster Livestock Van */
-	MK(  5479,  20,  15,  55, 0, T|A|S  ), /* 138 Balogh Goods Truck */
-	MK( 19724,  20,  15,  55, 0, T|A|S  ), /* 139 Craighead Goods Truck */
-	MK( 31047,  20,  15,  85, 0, T|A|S  ), /* 140 Goss Goods Truck */
-	MK(  5479,  20,  15,  55, 0, T|A|S  ), /* 141 Hereford Grain Truck */
-	MK( 21185,  20,  15,  55, 0, T|A|S  ), /* 142 Thomas Grain Truck */
-	MK( 32873,  20,  15,  85, 0, T|A|S  ), /* 143 Goss Grain Truck */
-	MK(  5479,  20,  15,  55, 0, T|A|S  ), /* 144 Witcombe Wood Truck */
-	MK( 19724,  20,  15,  55, 0, T|A|S  ), /* 145 Foster Wood Truck */
-	MK( 35430,  20,  15,  85, 0, T|A|S  ), /* 146 Moreland Wood Truck */
-	MK(  5479,  20,  15,  55, 0, T      ), /* 147 MPS Iron Ore Truck */
-	MK( 20820,  20,  15,  55, 0, T      ), /* 148 Uhl Iron Ore Truck */
-	MK( 33238,  20,  15,  85, 0, T      ), /* 149 Chippy Iron Ore Truck */
-	MK(  5479,  20,  15,  55, 0, T      ), /* 150 Balogh Steel Truck */
-	MK( 21185,  20,  15,  55, 0, T      ), /* 151 Uhl Steel Truck */
-	MK( 31777,  20,  15,  85, 0, T      ), /* 152 Kelling Steel Truck */
-	MK(  5479,  20,  15,  55, 0, T|A|S  ), /* 153 Balogh Armoured Truck */
-	MK( 22281,  20,  15,  55, 0, T|A|S  ), /* 154 Uhl Armoured Truck */
-	MK( 33603,  20,  15,  85, 0, T|A|S  ), /* 155 Foster Armoured Truck */
-	MK(  5479,  20,  15,  55, 0,   A|S  ), /* 156 Foster Food Van */
-	MK( 18628,  20,  15,  55, 0,   A|S  ), /* 157 Perry Food Van */
-	MK( 30681,  20,  15,  85, 0,   A|S  ), /* 158 Chippy Food Van */
-	MK(  5479,  20,  15,  55, 0,   A    ), /* 159 Uhl Paper Truck */
-	MK( 21185,  20,  15,  55, 0,   A    ), /* 160 Balogh Paper Truck */
-	MK( 31777,  20,  15,  85, 0,   A    ), /* 161 MPS Paper Truck */
-	MK(  5479,  20,  15,  55, 0,     S  ), /* 162 MPS Copper Ore Truck */
-	MK( 20820,  20,  15,  55, 0,     S  ), /* 163 Uhl Copper Ore Truck */
-	MK( 33238,  20,  15,  85, 0,     S  ), /* 164 Goss Copper Ore Truck */
-	MK(  5479,  20,  15,  55, 0,     S  ), /* 165 Uhl Water Tanker */
-	MK( 20970,  20,  15,  55, 0,     S  ), /* 166 Balogh Water Tanker */
-	MK( 33388,  20,  15,  85, 0,     S  ), /* 167 MPS Water Tanker */
-	MK(  5479,  20,  15,  55, 0,     S  ), /* 168 Balogh Fruit Truck */
-	MK( 21335,  20,  15,  55, 0,     S  ), /* 169 Uhl Fruit Truck */
-	MK( 33753,  20,  15,  85, 0,     S  ), /* 170 Kelling Fruit Truck */
-	MK(  5479,  20,  15,  55, 0,     S  ), /* 171 Balogh Rubber Truck */
-	MK( 20604,  20,  15,  55, 0,     S  ), /* 172 Uhl Rubber Truck */
-	MK( 33023,  20,  15,  85, 0,     S  ), /* 173 RMT Rubber Truck */
-	MK(  5479,  20,  15,  55, 0,       Y), /* 174 MightyMover Sugar Truck */
-	MK( 19724,  20,  15,  55, 0,       Y), /* 175 Powernaught Sugar Truck */
-	MK( 33238,  20,  15,  85, 0,       Y), /* 176 Wizzowow Sugar Truck */
-	MK(  5479,  20,  15,  55, 0,       Y), /* 177 MightyMover Cola Truck */
-	MK( 20089,  20,  15,  55, 0,       Y), /* 178 Powernaught Cola Truck */
-	MK( 33603,  20,  15,  85, 0,       Y), /* 179 Wizzowow Cola Truck */
-	MK(  5479,  20,  15,  55, 0,       Y), /* 180 MightyMover Candyfloss Truck */
-	MK( 20454,  20,  15,  55, 0,       Y), /* 181 Powernaught Candyfloss Truck */
-	MK( 33969,  20,  15,  85, 0,       Y), /* 182 Wizzowow Candyfloss Truck */
-	MK(  5479,  20,  15,  55, 0,       Y), /* 183 MightyMover Toffee Truck */
-	MK( 20820,  20,  15,  55, 0,       Y), /* 184 Powernaught Toffee Truck */
-	MK( 34334,  20,  15,  85, 0,       Y), /* 185 Wizzowow Toffee Truck */
-	MK(  5479,  20,  15,  55, 0,       Y), /* 186 MightyMover Toy Van */
-	MK( 21185,  20,  15,  55, 0,       Y), /* 187 Powernaught Toy Van */
-	MK( 34699,  20,  15,  85, 0,       Y), /* 188 Wizzowow Toy Van */
-	MK(  5479,  20,  15,  55, 0,       Y), /* 189 MightyMover Sweet Truck */
-	MK( 21550,  20,  15,  55, 0,       Y), /* 190 Powernaught Sweet Truck */
-	MK( 35064,  20,  15,  85, 0,       Y), /* 191 Wizzowow Sweet Truck */
-	MK(  5479,  20,  15,  55, 0,       Y), /* 192 MightyMover Battery Truck */
-	MK( 19874,  20,  15,  55, 0,       Y), /* 193 Powernaught Battery Truck */
-	MK( 35430,  20,  15,  85, 0,       Y), /* 194 Wizzowow Battery Truck */
-	MK(  5479,  20,  15,  55, 0,       Y), /* 195 MightyMover Fizzy Drink Truck */
-	MK( 20239,  20,  15,  55, 0,       Y), /* 196 Powernaught Fizzy Drink Truck */
-	MK( 35795,  20,  15,  85, 0,       Y), /* 197 Wizzowow Fizzy Drink Truck */
-	MK(  5479,  20,  15,  55, 0,       Y), /* 198 MightyMover Plastic Truck */
-	MK( 20604,  20,  15,  55, 0,       Y), /* 199 Powernaught Plastic Truck */
-	MK( 32873,  20,  15,  85, 0,       Y), /* 200 Wizzowow Plastic Truck */
-	MK(  5479,  20,  15,  55, 0,       Y), /* 201 MightyMover Bubble Truck */
-	MK( 20970,  20,  15,  55, 0,       Y), /* 202 Powernaught Bubble Truck */
-	MK( 33023,  20,  15,  85, 0,       Y), /* 203 Wizzowow Bubble Truck */
-	MS(  2922,   5,  30,  50, 0, T|A|S  ), /* 204 MPS Oil Tanker */
-	MS( 17167,   5,  30,  90, 0, T|A|S  ), /* 205 CS-Inc. Oil Tanker */
-	MS(  2192,   5,  30,  55, 0, T|A|S  ), /* 206 MPS Passenger Ferry */
-	MS( 18628,   5,  30,  90, 0, T|A|S  ), /* 207 FFP Passenger Ferry */
-	MS( 17257,  10,  25,  90, 0, T|A|S  ), /* 208 Bakewell 300 Hovercraft */
-	MS(  9587,   5,  30,  40, 0,       Y), /* 209 Chugger-Chug Passenger Ferry */
-	MS( 20544,   5,  30,  90, 0,       Y), /* 210 Shivershake Passenger Ferry */
-	MS(  2557,   5,  30,  55, 0, T|A|S  ), /* 211 Yate Cargo ship */
-	MS( 19724,   5,  30,  98, 0, T|A|S  ), /* 212 Bakewell Cargo ship */
-	MS(  9587,   5,  30,  45, 0,       Y), /* 213 Mightymover Cargo ship */
-	MS( 22371,   5,  30,  90, 0,       Y), /* 214 Powernaut Cargo ship */
-	MA(  2922,  20,  20,  20, 0, T|A|S  ), /* 215 Sampson U52 */
-	MA(  9922,  20,  24,  20, 0, T|A|S  ), /* 216 Coleman Count */
-	MA( 12659,  20,  18,  20, 0, T|A|S  ), /* 217 FFP Dart */
-	MA( 17652,  20,  25,  35, 0, T|A|S  ), /* 218 Yate Haugan */
-	MA(  4929,  20,  30,  30, 0, T|A|S  ), /* 219 Bakewell Cotswald LB-3 */
-	MA( 13695,  20,  23,  25, 0, T|A|S  ), /* 220 Bakewell Luckett LB-8 */
-	MA( 16341,  20,  26,  30, 0, T|A|S  ), /* 221 Bakewell Luckett LB-9 */
-	MA( 21395,  20,  25,  30, 0, T|A|S  ), /* 222 Bakewell Luckett LB80 */
-	MA( 18263,  20,  20,  30, 0, T|A|S  ), /* 223 Bakewell Luckett LB-10 */
-	MA( 25233,  20,  25,  30, 0, T|A|S  ), /* 224 Bakewell Luckett LB-11 */
-	MA( 15371,  20,  22,  25, 0, T|A|S  ), /* 225 Yate Aerospace YAC 1-11 */
-	MA( 15461,  20,  25,  25, 0, T|A|S  ), /* 226 Darwin 100 */
-	MA( 16952,  20,  22,  25, 0, T|A|S  ), /* 227 Darwin 200 */
-	MA( 17227,  20,  25,  30, 0, T|A|S  ), /* 228 Darwin 300 */
-	MA( 22371,  20,  25,  35, 0, T|A|S  ), /* 229 Darwin 400 */
-	MA( 22341,  20,  25,  30, 0, T|A|S  ), /* 230 Darwin 500 */
-	MA( 27209,  20,  25,  30, 0, T|A|S  ), /* 231 Darwin 600 */
-	MA( 17988,  20,  20,  30, 0, T|A|S  ), /* 232 Guru Galaxy */
-	MA( 18993,  20,  24,  35, 0, T|A|S  ), /* 233 Airtaxi A21 */
-	MA( 22401,  20,  24,  30, 0, T|A|S  ), /* 234 Airtaxi A31 */
-	MA( 24472,  20,  24,  30, 0, T|A|S  ), /* 235 Airtaxi A32 */
-	MA( 26724,  20,  24,  30, 0, T|A|S  ), /* 236 Airtaxi A33 */
-	MA( 22005,  20,  25,  30, 0, T|A|S  ), /* 237 Yate Aerospace YAe46 */
-	MA( 24107,  20,  20,  35, 0, T|A|S  ), /* 238 Dinger 100 */
-	MA( 29310,  20,  25,  60, 0, T|A|S  ), /* 239 AirTaxi A34-1000 */
-	MA( 35520,  20,  22,  30, 0, T|A|S  ), /* 240 Yate Z-Shuttle */
-	MA( 36981,  20,  22,  30, 0, T|A|S  ), /* 241 Kelling K1 */
-	MA( 38807,  20,  22,  50, 0, T|A|S  ), /* 242 Kelling K6 */
-	MA( 42094,  20,  25,  30, 0, T|A|S  ), /* 243 Kelling K7 */
-	MA( 44651,  20,  23,  30, 0, T|A|S  ), /* 244 Darwin 700 */
-	MA( 40268,  20,  25,  30, 0, T|A|S  ), /* 245 FFP Hyperdart 2 */
-	MA( 33693,  20,  25,  50, 0, T|A|S  ), /* 246 Dinger 200 */
-	MA( 32963,  20,  20,  60, 0, T|A|S  ), /* 247 Dinger 1000 */
-	MA(  9222,  20,  20,  35, 0,       Y), /* 248 Ploddyphut 100 */
-	MA( 12874,  20,  20,  35, 0,       Y), /* 249 Ploddyphut 500 */
-	MA( 16892,  20,  20,  35, 0,       Y), /* 250 Flashbang X1 */
-	MA( 21275,  20,  20,  99, 0,       Y), /* 251 Juggerplane M1 */
-	MA( 23832,  20,  20,  99, 0,       Y), /* 252 Flashbang Wizzer */
-	MA( 13575,  20,  20,  40, 0, T|A|S  ), /* 253 Tricario Helicopter */
-	MA( 28215,  20,  20,  30, 0, T|A|S  ), /* 254 Guru X2 Helicopter */
-	MK( 13575,  20,  20,  99, 0,       Y), /* 255  */
+	MK(  1827,  20,  15,  30, T      ), /*   0 Kirby Paul Tank (Steam) */
+	MK( 12784,  20,  22,  30,   A|S  ), /*   1 MJS 250 (Diesel) */
+	MK(  9497,  20,  20,  50,       Y), /*   2 Ploddyphut Choo-Choo */
+	MK( 11688,  20,  20,  30,       Y), /*   3 Powernaut Choo-Choo */
+	MK( 16802,  20,  20,  30,       Y), /*   4 Mightymover Choo-Choo */
+	MK( 18993,  20,  20,  30,       Y), /*   5 Ploddyphut Diesel */
+	MK( 20820,  20,  20,  30,       Y), /*   6 Powernaut Diesel */
+	MK(  8766,  20,  20,  30,   A|S  ), /*   7 Wills 2-8-0 (Steam) */
+	MK(  5114,  20,  21,  30, T      ), /*   8 Chaney 'Jubilee' (Steam) */
+	MK(  5479,  20,  20,  30, T      ), /*   9 Ginzu 'A4' (Steam) */
+	MK( 12419,  20,  23,  25, T      ), /*  10 SH '8P' (Steam) */
+	MK( 13149,  20,  12,  30, T      ), /*  11 Manley-Morel DMU (Diesel) */
+	MK( 23376,  20,  15,  35, T      ), /*  12 'Dash' (Diesel) */
+	MK( 14976,  20,  18,  28, T      ), /*  13 SH/Hendry '25' (Diesel) */
+	MK( 14245,  20,  20,  30, T      ), /*  14 UU '37' (Diesel) */
+	MK( 15341,  20,  22,  33, T      ), /*  15 Floss '47' (Diesel) */
+	MK( 14976,  20,  20,  25,   A|S  ), /*  16 CS 4000 (Diesel) */
+	MK( 16437,  20,  20,  30,   A|S  ), /*  17 CS 2400 (Diesel) */
+	MK( 18993,  20,  22,  30,   A|S  ), /*  18 Centennial (Diesel) */
+	MK( 13880,  20,  22,  30,   A|S  ), /*  19 Kelling 3100 (Diesel) */
+	MK( 20454,  20,  22,  30,   A|S  ), /*  20 Turner Turbo (Diesel) */
+	MK( 16071,  20,  22,  30,   A|S  ), /*  21 MJS 1000 (Diesel) */
+	MK( 20820,  20,  20,  25, T      ), /*  22 SH '125' (Diesel) */
+	MK( 16437,  20,  23,  30, T      ), /*  23 SH '30' (Electric) */
+	MK( 19359,  20,  23,  80, T      ), /*  24 SH '40' (Electric) */
+	MK( 23376,  20,  25,  30, T      ), /*  25 'T.I.M.' (Electric) */
+	MK( 26298,  20,  25,  50, T      ), /*  26 'AsiaStar' (Electric) */
+	MW(  1827,  20,  20,  50, T|A|S|Y), /*  27 Passenger Carriage */
+	MW(  1827,  20,  20,  50, T|A|S|Y), /*  28 Mail Van */
+	MW(  1827,  20,  20,  50, T|A    ), /*  29 Coal Truck */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  30 Oil Tanker */
+	MW(  1827,  20,  20,  50, T|A    ), /*  31 Livestock Van */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  32 Goods Van */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  33 Grain Hopper */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  34 Wood Truck */
+	MW(  1827,  20,  20,  50, T      ), /*  35 Iron Ore Hopper */
+	MW(  1827,  20,  20,  50, T      ), /*  36 Steel Truck */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  37 Armoured Van */
+	MW(  1827,  20,  20,  50,   A|S  ), /*  38 Food Van */
+	MW(  1827,  20,  20,  50,   A    ), /*  39 Paper Truck */
+	MW(  1827,  20,  20,  50,     S  ), /*  40 Copper Ore Hopper */
+	MW(  1827,  20,  20,  50,     S  ), /*  41 Water Tanker */
+	MW(  1827,  20,  20,  50,     S  ), /*  42 Fruit Truck */
+	MW(  1827,  20,  20,  50,     S  ), /*  43 Rubber Truck */
+	MW(  1827,  20,  20,  50,       Y), /*  44 Sugar Truck */
+	MW(  1827,  20,  20,  50,       Y), /*  45 Candyfloss Hopper */
+	MW(  1827,  20,  20,  50,       Y), /*  46 Toffee Hopper */
+	MW(  1827,  20,  20,  50,       Y), /*  47 Bubble Van */
+	MW(  1827,  20,  20,  50,       Y), /*  48 Cola Tanker */
+	MW(  1827,  20,  20,  50,       Y), /*  49 Sweet Van */
+	MW(  1827,  20,  20,  50,       Y), /*  50 Toy Van */
+	MW(  1827,  20,  20,  50,       Y), /*  51 Battery Truck */
+	MW(  1827,  20,  20,  50,       Y), /*  52 Fizzy Drink Truck */
+	MW(  1827,  20,  20,  50,       Y), /*  53 Plastic Truck */
+	MK( 28490,  20,  20,  50, T|A|S  ), /*  54 'X2001' (Electric) */
+	MK( 31047,  20,  20,  50, T|A|S  ), /*  55 'Millennium Z1' (Electric) */
+	MK( 28855,  20,  20,  50,       Y), /*  56 Wizzowow Z99 */
+	MW(  1827,  20,  20,  50, T|A|S|Y), /*  57 Passenger Carriage */
+	MW(  1827,  20,  20,  50, T|A|S|Y), /*  58 Mail Van */
+	MW(  1827,  20,  20,  50, T|A    ), /*  59 Coal Truck */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  60 Oil Tanker */
+	MW(  1827,  20,  20,  50, T|A    ), /*  61 Livestock Van */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  62 Goods Van */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  63 Grain Hopper */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  64 Wood Truck */
+	MW(  1827,  20,  20,  50, T      ), /*  65 Iron Ore Hopper */
+	MW(  1827,  20,  20,  50, T      ), /*  66 Steel Truck */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  67 Armoured Van */
+	MW(  1827,  20,  20,  50,   A|S  ), /*  68 Food Van */
+	MW(  1827,  20,  20,  50,   A    ), /*  69 Paper Truck */
+	MW(  1827,  20,  20,  50,     S  ), /*  70 Copper Ore Hopper */
+	MW(  1827,  20,  20,  50,     S  ), /*  71 Water Tanker */
+	MW(  1827,  20,  20,  50,     S  ), /*  72 Fruit Truck */
+	MW(  1827,  20,  20,  50,     S  ), /*  73 Rubber Truck */
+	MW(  1827,  20,  20,  50,       Y), /*  74 Sugar Truck */
+	MW(  1827,  20,  20,  50,       Y), /*  75 Candyfloss Hopper */
+	MW(  1827,  20,  20,  50,       Y), /*  76 Toffee Hopper */
+	MW(  1827,  20,  20,  50,       Y), /*  77 Bubble Van */
+	MW(  1827,  20,  20,  50,       Y), /*  78 Cola Tanker */
+	MW(  1827,  20,  20,  50,       Y), /*  79 Sweet Van */
+	MW(  1827,  20,  20,  50,       Y), /*  80 Toy Van */
+	MW(  1827,  20,  20,  50,       Y), /*  81 Battery Truck */
+	MW(  1827,  20,  20,  50,       Y), /*  82 Fizzy Drink Truck */
+	MW(  1827,  20,  20,  50,       Y), /*  83 Plastic Truck */
+	MK( 36525,  20,  20,  50, T|A|S  ), /*  84 Lev1 'Leviathan' (Electric) */
+	MK( 39447,  20,  20,  50, T|A|S  ), /*  85 Lev2 'Cyclops' (Electric) */
+	MK( 42004,  20,  20,  50, T|A|S  ), /*  86 Lev3 'Pegasus' (Electric) */
+	MK( 42735,  20,  20,  50, T|A|S  ), /*  87 Lev4 'Chimaera' (Electric) */
+	MK( 36891,  20,  20,  60,       Y), /*  88 Wizzowow Rocketeer */
+	MW(  1827,  20,  20,  50, T|A|S|Y), /*  89 Passenger Carriage */
+	MW(  1827,  20,  20,  50, T|A|S|Y), /*  90 Mail Van */
+	MW(  1827,  20,  20,  50, T|A    ), /*  91 Coal Truck */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  92 Oil Tanker */
+	MW(  1827,  20,  20,  50, T|A    ), /*  93 Livestock Van */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  94 Goods Van */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  95 Grain Hopper */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  96 Wood Truck */
+	MW(  1827,  20,  20,  50, T      ), /*  97 Iron Ore Hopper */
+	MW(  1827,  20,  20,  50, T      ), /*  98 Steel Truck */
+	MW(  1827,  20,  20,  50, T|A|S  ), /*  99 Armoured Van */
+	MW(  1827,  20,  20,  50,   A|S  ), /* 100 Food Van */
+	MW(  1827,  20,  20,  50,   A    ), /* 101 Paper Truck */
+	MW(  1827,  20,  20,  50,     S  ), /* 102 Copper Ore Hopper */
+	MW(  1827,  20,  20,  50,     S  ), /* 103 Water Tanker */
+	MW(  1827,  20,  20,  50,     S  ), /* 104 Fruit Truck */
+	MW(  1827,  20,  20,  50,     S  ), /* 105 Rubber Truck */
+	MW(  1827,  20,  20,  50,       Y), /* 106 Sugar Truck */
+	MW(  1827,  20,  20,  50,       Y), /* 107 Candyfloss Hopper */
+	MW(  1827,  20,  20,  50,       Y), /* 108 Toffee Hopper */
+	MW(  1827,  20,  20,  50,       Y), /* 109 Bubble Van */
+	MW(  1827,  20,  20,  50,       Y), /* 110 Cola Tanker */
+	MW(  1827,  20,  20,  50,       Y), /* 111 Sweet Van */
+	MW(  1827,  20,  20,  50,       Y), /* 112 Toy Van */
+	MW(  1827,  20,  20,  50,       Y), /* 113 Battery Truck */
+	MW(  1827,  20,  20,  50,       Y), /* 114 Fizzy Drink Truck */
+	MW(  1827,  20,  20,  50,       Y), /* 115 Plastic Truck */
+	MK(  3378,  20,  12,  40, T|A|S  ), /* 116 MPS Regal Bus */
+	MK( 16071,  20,  15,  30, T|A|S  ), /* 117 Hereford Leopard Bus */
+	MK( 24107,  20,  15,  40, T|A|S  ), /* 118 Foster Bus */
+	MK( 32142,  20,  15,  80, T|A|S  ), /* 119 Foster MkII Superbus */
+	MK(  9132,  20,  15,  40,       Y), /* 120 Ploddyphut MkI Bus */
+	MK( 18993,  20,  15,  40,       Y), /* 121 Ploddyphut MkII Bus */
+	MK( 32873,  20,  15,  80,       Y), /* 122 Ploddyphut MkIII Bus */
+	MK(  5479,  20,  15,  55, T|A    ), /* 123 Balogh Coal Truck */
+	MK( 20089,  20,  15,  55, T|A    ), /* 124 Uhl Coal Truck */
+	MK( 33969,  20,  15,  85, T|A    ), /* 125 DW Coal Truck */
+	MK(  5479,  20,  15,  55, T|A|S  ), /* 126 MPS Mail Truck */
+	MK( 21550,  20,  15,  55, T|A|S  ), /* 127 Reynard Mail Truck */
+	MK( 35795,  20,  15,  85, T|A|S  ), /* 128 Perry Mail Truck */
+	MK(  5479,  20,  15,  55,       Y), /* 129 MightyMover Mail Truck */
+	MK( 21550,  20,  15,  55,       Y), /* 130 Powernaught Mail Truck */
+	MK( 35795,  20,  15,  85,       Y), /* 131 Wizzowow Mail Truck */
+	MK(  5479,  20,  15,  55, T|A|S  ), /* 132 Witcombe Oil Tanker */
+	MK( 19359,  20,  15,  55, T|A|S  ), /* 133 Foster Oil Tanker */
+	MK( 31047,  20,  15,  85, T|A|S  ), /* 134 Perry Oil Tanker */
+	MK(  5479,  20,  15,  55, T|A    ), /* 135 Talbott Livestock Van */
+	MK( 21915,  20,  15,  55, T|A    ), /* 136 Uhl Livestock Van */
+	MK( 37256,  20,  15,  85, T|A    ), /* 137 Foster Livestock Van */
+	MK(  5479,  20,  15,  55, T|A|S  ), /* 138 Balogh Goods Truck */
+	MK( 19724,  20,  15,  55, T|A|S  ), /* 139 Craighead Goods Truck */
+	MK( 31047,  20,  15,  85, T|A|S  ), /* 140 Goss Goods Truck */
+	MK(  5479,  20,  15,  55, T|A|S  ), /* 141 Hereford Grain Truck */
+	MK( 21185,  20,  15,  55, T|A|S  ), /* 142 Thomas Grain Truck */
+	MK( 32873,  20,  15,  85, T|A|S  ), /* 143 Goss Grain Truck */
+	MK(  5479,  20,  15,  55, T|A|S  ), /* 144 Witcombe Wood Truck */
+	MK( 19724,  20,  15,  55, T|A|S  ), /* 145 Foster Wood Truck */
+	MK( 35430,  20,  15,  85, T|A|S  ), /* 146 Moreland Wood Truck */
+	MK(  5479,  20,  15,  55, T      ), /* 147 MPS Iron Ore Truck */
+	MK( 20820,  20,  15,  55, T      ), /* 148 Uhl Iron Ore Truck */
+	MK( 33238,  20,  15,  85, T      ), /* 149 Chippy Iron Ore Truck */
+	MK(  5479,  20,  15,  55, T      ), /* 150 Balogh Steel Truck */
+	MK( 21185,  20,  15,  55, T      ), /* 151 Uhl Steel Truck */
+	MK( 31777,  20,  15,  85, T      ), /* 152 Kelling Steel Truck */
+	MK(  5479,  20,  15,  55, T|A|S  ), /* 153 Balogh Armoured Truck */
+	MK( 22281,  20,  15,  55, T|A|S  ), /* 154 Uhl Armoured Truck */
+	MK( 33603,  20,  15,  85, T|A|S  ), /* 155 Foster Armoured Truck */
+	MK(  5479,  20,  15,  55,   A|S  ), /* 156 Foster Food Van */
+	MK( 18628,  20,  15,  55,   A|S  ), /* 157 Perry Food Van */
+	MK( 30681,  20,  15,  85,   A|S  ), /* 158 Chippy Food Van */
+	MK(  5479,  20,  15,  55,   A    ), /* 159 Uhl Paper Truck */
+	MK( 21185,  20,  15,  55,   A    ), /* 160 Balogh Paper Truck */
+	MK( 31777,  20,  15,  85,   A    ), /* 161 MPS Paper Truck */
+	MK(  5479,  20,  15,  55,     S  ), /* 162 MPS Copper Ore Truck */
+	MK( 20820,  20,  15,  55,     S  ), /* 163 Uhl Copper Ore Truck */
+	MK( 33238,  20,  15,  85,     S  ), /* 164 Goss Copper Ore Truck */
+	MK(  5479,  20,  15,  55,     S  ), /* 165 Uhl Water Tanker */
+	MK( 20970,  20,  15,  55,     S  ), /* 166 Balogh Water Tanker */
+	MK( 33388,  20,  15,  85,     S  ), /* 167 MPS Water Tanker */
+	MK(  5479,  20,  15,  55,     S  ), /* 168 Balogh Fruit Truck */
+	MK( 21335,  20,  15,  55,     S  ), /* 169 Uhl Fruit Truck */
+	MK( 33753,  20,  15,  85,     S  ), /* 170 Kelling Fruit Truck */
+	MK(  5479,  20,  15,  55,     S  ), /* 171 Balogh Rubber Truck */
+	MK( 20604,  20,  15,  55,     S  ), /* 172 Uhl Rubber Truck */
+	MK( 33023,  20,  15,  85,     S  ), /* 173 RMT Rubber Truck */
+	MK(  5479,  20,  15,  55,       Y), /* 174 MightyMover Sugar Truck */
+	MK( 19724,  20,  15,  55,       Y), /* 175 Powernaught Sugar Truck */
+	MK( 33238,  20,  15,  85,       Y), /* 176 Wizzowow Sugar Truck */
+	MK(  5479,  20,  15,  55,       Y), /* 177 MightyMover Cola Truck */
+	MK( 20089,  20,  15,  55,       Y), /* 178 Powernaught Cola Truck */
+	MK( 33603,  20,  15,  85,       Y), /* 179 Wizzowow Cola Truck */
+	MK(  5479,  20,  15,  55,       Y), /* 180 MightyMover Candyfloss Truck */
+	MK( 20454,  20,  15,  55,       Y), /* 181 Powernaught Candyfloss Truck */
+	MK( 33969,  20,  15,  85,       Y), /* 182 Wizzowow Candyfloss Truck */
+	MK(  5479,  20,  15,  55,       Y), /* 183 MightyMover Toffee Truck */
+	MK( 20820,  20,  15,  55,       Y), /* 184 Powernaught Toffee Truck */
+	MK( 34334,  20,  15,  85,       Y), /* 185 Wizzowow Toffee Truck */
+	MK(  5479,  20,  15,  55,       Y), /* 186 MightyMover Toy Van */
+	MK( 21185,  20,  15,  55,       Y), /* 187 Powernaught Toy Van */
+	MK( 34699,  20,  15,  85,       Y), /* 188 Wizzowow Toy Van */
+	MK(  5479,  20,  15,  55,       Y), /* 189 MightyMover Sweet Truck */
+	MK( 21550,  20,  15,  55,       Y), /* 190 Powernaught Sweet Truck */
+	MK( 35064,  20,  15,  85,       Y), /* 191 Wizzowow Sweet Truck */
+	MK(  5479,  20,  15,  55,       Y), /* 192 MightyMover Battery Truck */
+	MK( 19874,  20,  15,  55,       Y), /* 193 Powernaught Battery Truck */
+	MK( 35430,  20,  15,  85,       Y), /* 194 Wizzowow Battery Truck */
+	MK(  5479,  20,  15,  55,       Y), /* 195 MightyMover Fizzy Drink Truck */
+	MK( 20239,  20,  15,  55,       Y), /* 196 Powernaught Fizzy Drink Truck */
+	MK( 35795,  20,  15,  85,       Y), /* 197 Wizzowow Fizzy Drink Truck */
+	MK(  5479,  20,  15,  55,       Y), /* 198 MightyMover Plastic Truck */
+	MK( 20604,  20,  15,  55,       Y), /* 199 Powernaught Plastic Truck */
+	MK( 32873,  20,  15,  85,       Y), /* 200 Wizzowow Plastic Truck */
+	MK(  5479,  20,  15,  55,       Y), /* 201 MightyMover Bubble Truck */
+	MK( 20970,  20,  15,  55,       Y), /* 202 Powernaught Bubble Truck */
+	MK( 33023,  20,  15,  85,       Y), /* 203 Wizzowow Bubble Truck */
+	MS(  2922,   5,  30,  50, T|A|S  ), /* 204 MPS Oil Tanker */
+	MS( 17167,   5,  30,  90, T|A|S  ), /* 205 CS-Inc. Oil Tanker */
+	MS(  2192,   5,  30,  55, T|A|S  ), /* 206 MPS Passenger Ferry */
+	MS( 18628,   5,  30,  90, T|A|S  ), /* 207 FFP Passenger Ferry */
+	MS( 17257,  10,  25,  90, T|A|S  ), /* 208 Bakewell 300 Hovercraft */
+	MS(  9587,   5,  30,  40,       Y), /* 209 Chugger-Chug Passenger Ferry */
+	MS( 20544,   5,  30,  90,       Y), /* 210 Shivershake Passenger Ferry */
+	MS(  2557,   5,  30,  55, T|A|S  ), /* 211 Yate Cargo ship */
+	MS( 19724,   5,  30,  98, T|A|S  ), /* 212 Bakewell Cargo ship */
+	MS(  9587,   5,  30,  45,       Y), /* 213 Mightymover Cargo ship */
+	MS( 22371,   5,  30,  90,       Y), /* 214 Powernaut Cargo ship */
+	MA(  2922,  20,  20,  20, T|A|S  ), /* 215 Sampson U52 */
+	MA(  9922,  20,  24,  20, T|A|S  ), /* 216 Coleman Count */
+	MA( 12659,  20,  18,  20, T|A|S  ), /* 217 FFP Dart */
+	MA( 17652,  20,  25,  35, T|A|S  ), /* 218 Yate Haugan */
+	MA(  4929,  20,  30,  30, T|A|S  ), /* 219 Bakewell Cotswald LB-3 */
+	MA( 13695,  20,  23,  25, T|A|S  ), /* 220 Bakewell Luckett LB-8 */
+	MA( 16341,  20,  26,  30, T|A|S  ), /* 221 Bakewell Luckett LB-9 */
+	MA( 21395,  20,  25,  30, T|A|S  ), /* 222 Bakewell Luckett LB80 */
+	MA( 18263,  20,  20,  30, T|A|S  ), /* 223 Bakewell Luckett LB-10 */
+	MA( 25233,  20,  25,  30, T|A|S  ), /* 224 Bakewell Luckett LB-11 */
+	MA( 15371,  20,  22,  25, T|A|S  ), /* 225 Yate Aerospace YAC 1-11 */
+	MA( 15461,  20,  25,  25, T|A|S  ), /* 226 Darwin 100 */
+	MA( 16952,  20,  22,  25, T|A|S  ), /* 227 Darwin 200 */
+	MA( 17227,  20,  25,  30, T|A|S  ), /* 228 Darwin 300 */
+	MA( 22371,  20,  25,  35, T|A|S  ), /* 229 Darwin 400 */
+	MA( 22341,  20,  25,  30, T|A|S  ), /* 230 Darwin 500 */
+	MA( 27209,  20,  25,  30, T|A|S  ), /* 231 Darwin 600 */
+	MA( 17988,  20,  20,  30, T|A|S  ), /* 232 Guru Galaxy */
+	MA( 18993,  20,  24,  35, T|A|S  ), /* 233 Airtaxi A21 */
+	MA( 22401,  20,  24,  30, T|A|S  ), /* 234 Airtaxi A31 */
+	MA( 24472,  20,  24,  30, T|A|S  ), /* 235 Airtaxi A32 */
+	MA( 26724,  20,  24,  30, T|A|S  ), /* 236 Airtaxi A33 */
+	MA( 22005,  20,  25,  30, T|A|S  ), /* 237 Yate Aerospace YAe46 */
+	MA( 24107,  20,  20,  35, T|A|S  ), /* 238 Dinger 100 */
+	MA( 29310,  20,  25,  60, T|A|S  ), /* 239 AirTaxi A34-1000 */
+	MA( 35520,  20,  22,  30, T|A|S  ), /* 240 Yate Z-Shuttle */
+	MA( 36981,  20,  22,  30, T|A|S  ), /* 241 Kelling K1 */
+	MA( 38807,  20,  22,  50, T|A|S  ), /* 242 Kelling K6 */
+	MA( 42094,  20,  25,  30, T|A|S  ), /* 243 Kelling K7 */
+	MA( 44651,  20,  23,  30, T|A|S  ), /* 244 Darwin 700 */
+	MA( 40268,  20,  25,  30, T|A|S  ), /* 245 FFP Hyperdart 2 */
+	MA( 33693,  20,  25,  50, T|A|S  ), /* 246 Dinger 200 */
+	MA( 32963,  20,  20,  60, T|A|S  ), /* 247 Dinger 1000 */
+	MA(  9222,  20,  20,  35,       Y), /* 248 Ploddyphut 100 */
+	MA( 12874,  20,  20,  35,       Y), /* 249 Ploddyphut 500 */
+	MA( 16892,  20,  20,  35,       Y), /* 250 Flashbang X1 */
+	MA( 21275,  20,  20,  99,       Y), /* 251 Juggerplane M1 */
+	MA( 23832,  20,  20,  99,       Y), /* 252 Flashbang Wizzer */
+	MA( 13575,  20,  20,  40, T|A|S  ), /* 253 Tricario Helicopter */
+	MA( 28215,  20,  20,  30, T|A|S  ), /* 254 Guru X2 Helicopter */
+	MK( 13575,  20,  20,  99,       Y), /* 255  */
 };
 #undef Y
 #undef S
 #undef A
 #undef T
-#undef L
-#undef M
-#undef R
-#undef E
 #undef MK
 #undef MW
 #undef MS
@@ -341,137 +325,149 @@ const EngineInfo orig_engine_info[] = {
  * @param i capacity
  * @param j cargo_type
  * @param k ai_rank
+ * @param l railtype
  * Tractive effort coefficient by default is the same as TTDPatch, 0.30*256=76
  */
-#define RVI(a, b, c, d, e, f, g, h, i, j, k) { a, b, c, d, e, f, g, h, h, i, j, k, 0, 0, 0, 0, 76, 0 }
+#define RVI(a, b, c, d, e, f, g, h, i, j, k, l) { a, b, c, l, d, e, f, g, h, h, i, j, k, 0, 0, 0, 0, 76, 0 }
 #define M RVI_MULTIHEAD
 #define W RVI_WAGON
 #define S 0
 #define D 1
 #define E 2
+
+// Rail types
+#define R 0 // Conventional railway
+#define C 1 // Electrified railway
+#define O 2 // Monorail
+#define L 3 // MagLev
+
 const RailVehicleInfo orig_rail_vehicle_info[NUM_TRAIN_ENGINES] = {
-	//    image_index  max_speed (kph)      running_cost_base
-	//    |  flags     |        power (hp)  |  running_cost_class & engclass
-	//    |  |    base_cost     |    weight |  |   capacity
-	//    |  |    |    |        |    |      |  |   |  cargo_type
-	//    |  |    |    |        |    |      |  |   |  |
-	RVI(  2, 0,   7,  64,     300,  47,    50, S,  0, 0              ,  1 ), /*   0 */
-	RVI( 19, 0,   8,  80,     600,  65,    65, D,  0, 0              ,  4 ), /*   1 */
-	RVI(  2, 0,  10,  72,     400,  85,    90, S,  0, 0              ,  7 ), /*   2 */
-	RVI(  0, 0,  15,  96,     900, 130,   130, S,  0, 0              , 19 ), /*   3 */
-	RVI(  1, 0,  19, 112,    1000, 140,   145, S,  0, 0              , 20 ), /*   4 */
-	RVI( 12, 0,  16, 120,    1400,  95,   125, D,  0, 0              , 30 ), /*   5 */
-	RVI( 14, 0,  20, 152,    2000, 120,   135, D,  0, 0              , 31 ), /*   6 */
-	RVI(  3, 0,  14,  88,    1100, 145,   130, S,  0, 0              , 19 ), /*   7 */
-	RVI(  0, 0,  13, 112,    1000, 131,   120, S,  0, 0              , 20 ), /*   8 */
-	RVI(  1, 0,  19, 128,    1200, 162,   140, S,  0, 0              , 21 ), /*   9 */
-	RVI(  0, 0,  22, 144,    1600, 170,   130, S,  0, 0              , 22 ), /*  10 */
-	RVI(  8, M,  11, 112,   600/2,32/2,  85/2, D, 38, CT_PASSENGERS  , 10 ), /*  11 */
-	RVI( 10, M,  14, 120,   700/2,38/2,  70/2, D, 40, CT_PASSENGERS  , 11 ), /*  12 */
-	RVI(  4, 0,  15, 128,    1250,  72,    95, D,  0, 0              , 30 ), /*  13 */
-	RVI(  5, 0,  17, 144,    1750, 101,   120, D,  0, 0              , 31 ), /*  14 */
-	RVI(  4, 0,  18, 160,    2580, 112,   140, D,  0, 0              , 32 ), /*  15 */
-	RVI( 14, 0,  23,  96,    4000, 150,   135, D,  0, 0              , 33 ), /*  16 */
-	RVI( 12, 0,  16, 112,    2400, 120,   105, D,  0, 0              , 34 ), /*  17 */
-	RVI( 13, 0,  30, 112,    6600, 207,   155, D,  0, 0              , 35 ), /*  18 */
-	RVI( 15, 0,  18, 104,    1500, 110,   105, D,  0, 0              , 29 ), /*  19 */
-	RVI( 16, M,  35, 160,  3500/2,95/2, 205/2, D,  0, 0              , 45 ), /*  20 */
-	RVI( 18, 0,  21, 104,    2200, 120,   145, D,  0, 0              , 32 ), /*  21 */
-	RVI(  6, M,  20, 200,  4500/2,70/2, 190/2, D,  4, CT_MAIL        , 50 ), /*  22 */
-	RVI( 20, 0,  26, 160,    3600,  84,   180, E,  0, 0              , 40 ), /*  23 */
-	RVI( 20, 0,  30, 176,    5000,  82,   205, E,  0, 0              , 41 ), /*  24 */
-	RVI( 21, M,  40, 240,  7000/2,90/2, 240/2, E,  0, 0              , 51 ), /*  25 */
-	RVI( 23, M,  43, 264,  8000/2,95/2, 250/2, E,  0, 0              , 52 ), /*  26 */
-	RVI( 33, W, 247,   0,       0,  25,     0, 0, 40, CT_PASSENGERS  ,  0 ), /*  27 */
-	RVI( 35, W, 228,   0,       0,  21,     0, 0, 30, CT_MAIL        ,  0 ), /*  28 */
-	RVI( 34, W, 176,   0,       0,  18,     0, 0, 30, CT_COAL        ,  0 ), /*  29 */
-	RVI( 36, W, 200,   0,       0,  24,     0, 0, 30, CT_OIL         ,  0 ), /*  30 */
-	RVI( 37, W, 192,   0,       0,  20,     0, 0, 25, CT_LIVESTOCK   ,  0 ), /*  31 */
-	RVI( 38, W, 190,   0,       0,  21,     0, 0, 25, CT_GOODS       ,  0 ), /*  32 */
-	RVI( 39, W, 182,   0,       0,  19,     0, 0, 30, CT_GRAIN       ,  0 ), /*  33 */
-	RVI( 40, W, 181,   0,       0,  16,     0, 0, 30, CT_WOOD        ,  0 ), /*  34 */
-	RVI( 41, W, 179,   0,       0,  19,     0, 0, 30, CT_IRON_ORE    ,  0 ), /*  35 */
-	RVI( 42, W, 196,   0,       0,  18,     0, 0, 20, CT_STEEL       ,  0 ), /*  36 */
-	RVI( 43, W, 255,   0,       0,  30,     0, 0, 20, CT_VALUABLES   ,  0 ), /*  37 */
-	RVI( 44, W, 191,   0,       0,  22,     0, 0, 25, CT_FOOD        ,  0 ), /*  38 */
-	RVI( 45, W, 196,   0,       0,  18,     0, 0, 20, CT_PAPER       ,  0 ), /*  39 */
-	RVI( 46, W, 179,   0,       0,  19,     0, 0, 30, CT_COPPER_ORE  ,  0 ), /*  40 */
-	RVI( 47, W, 199,   0,       0,  25,     0, 0, 25, CT_WATER       ,  0 ), /*  41 */
-	RVI( 48, W, 182,   0,       0,  18,     0, 0, 25, CT_FRUIT       ,  0 ), /*  42 */
-	RVI( 49, W, 185,   0,       0,  19,     0, 0, 21, CT_RUBBER      ,  0 ), /*  43 */
-	RVI( 50, W, 176,   0,       0,  19,     0, 0, 30, CT_SUGAR       ,  0 ), /*  44 */
-	RVI( 51, W, 178,   0,       0,  20,     0, 0, 30, CT_COTTON_CANDY,  0 ), /*  45 */
-	RVI( 52, W, 192,   0,       0,  20,     0, 0, 30, CT_TOFFEE      ,  0 ), /*  46 */
-	RVI( 53, W, 190,   0,       0,  21,     0, 0, 20, CT_BUBBLES     ,  0 ), /*  47 */
-	RVI( 54, W, 182,   0,       0,  24,     0, 0, 25, CT_COLA        ,  0 ), /*  48 */
-	RVI( 55, W, 181,   0,       0,  21,     0, 0, 25, CT_CANDY       ,  0 ), /*  49 */
-	RVI( 56, W, 183,   0,       0,  21,     0, 0, 20, CT_TOYS        ,  0 ), /*  50 */
-	RVI( 57, W, 196,   0,       0,  18,     0, 0, 22, CT_BATTERIES   ,  0 ), /*  51 */
-	RVI( 58, W, 193,   0,       0,  18,     0, 0, 25, CT_FIZZY_DRINKS,  0 ), /*  52 */
-	RVI( 59, W, 191,   0,       0,  18,     0, 0, 30, CT_PLASTIC     ,  0 ), /*  53 */
-	RVI( 25, 0,  52, 304,    9000,  95,   230, E,  0, 0              , 60 ), /*  54 */
-	RVI( 26, M,  60, 336, 10000/2,85/2, 240/2, E, 25, CT_PASSENGERS  , 62 ), /*  55 */
-	RVI( 26, 0,  53, 320,    5000,  95,   230, E,  0, 0              , 63 ), /*  56 */
-	RVI( 60, W, 247,   0,       0,  25,     0, 0, 45, CT_PASSENGERS  ,  0 ), /*  57 */
-	RVI( 62, W, 228,   0,       0,  21,     0, 0, 35, CT_MAIL        ,  0 ), /*  58 */
-	RVI( 61, W, 176,   0,       0,  18,     0, 0, 35, CT_COAL        ,  0 ), /*  59 */
-	RVI( 63, W, 200,   0,       0,  24,     0, 0, 35, CT_OIL         ,  0 ), /*  60 */
-	RVI( 64, W, 192,   0,       0,  20,     0, 0, 30, CT_LIVESTOCK   ,  0 ), /*  61 */
-	RVI( 65, W, 190,   0,       0,  21,     0, 0, 30, CT_GOODS       ,  0 ), /*  62 */
-	RVI( 66, W, 182,   0,       0,  19,     0, 0, 35, CT_GRAIN       ,  0 ), /*  63 */
-	RVI( 67, W, 181,   0,       0,  16,     0, 0, 35, CT_WOOD        ,  0 ), /*  64 */
-	RVI( 68, W, 179,   0,       0,  19,     0, 0, 35, CT_IRON_ORE    ,  0 ), /*  65 */
-	RVI( 69, W, 196,   0,       0,  18,     0, 0, 25, CT_STEEL       ,  0 ), /*  66 */
-	RVI( 70, W, 255,   0,       0,  30,     0, 0, 25, CT_VALUABLES   ,  0 ), /*  67 */
-	RVI( 71, W, 191,   0,       0,  22,     0, 0, 30, CT_FOOD        ,  0 ), /*  68 */
-	RVI( 72, W, 196,   0,       0,  18,     0, 0, 25, CT_PAPER       ,  0 ), /*  69 */
-	RVI( 73, W, 179,   0,       0,  19,     0, 0, 35, CT_COPPER_ORE  ,  0 ), /*  70 */
-	RVI( 47, W, 199,   0,       0,  25,     0, 0, 30, CT_WATER       ,  0 ), /*  71 */
-	RVI( 48, W, 182,   0,       0,  18,     0, 0, 30, CT_FRUIT       ,  0 ), /*  72 */
-	RVI( 49, W, 185,   0,       0,  19,     0, 0, 26, CT_RUBBER      ,  0 ), /*  73 */
-	RVI( 50, W, 176,   0,       0,  19,     0, 0, 35, CT_SUGAR       ,  0 ), /*  74 */
-	RVI( 51, W, 178,   0,       0,  20,     0, 0, 35, CT_COTTON_CANDY,  0 ), /*  75 */
-	RVI( 52, W, 192,   0,       0,  20,     0, 0, 35, CT_TOFFEE      ,  0 ), /*  76 */
-	RVI( 53, W, 190,   0,       0,  21,     0, 0, 25, CT_BUBBLES     ,  0 ), /*  77 */
-	RVI( 54, W, 182,   0,       0,  24,     0, 0, 30, CT_COLA        ,  0 ), /*  78 */
-	RVI( 55, W, 181,   0,       0,  21,     0, 0, 30, CT_CANDY       ,  0 ), /*  79 */
-	RVI( 56, W, 183,   0,       0,  21,     0, 0, 25, CT_TOYS        ,  0 ), /*  80 */
-	RVI( 57, W, 196,   0,       0,  18,     0, 0, 27, CT_BATTERIES   ,  0 ), /*  81 */
-	RVI( 58, W, 193,   0,       0,  18,     0, 0, 30, CT_FIZZY_DRINKS,  0 ), /*  82 */
-	RVI( 59, W, 191,   0,       0,  18,     0, 0, 35, CT_PLASTIC     ,  0 ), /*  83 */
-	RVI( 28, 0,  70, 400,   10000, 105,   250, E,  0, 0              , 70 ), /*  84 */
-	RVI( 29, 0,  74, 448,   12000, 120,   253, E,  0, 0              , 71 ), /*  85 */
-	RVI( 30, 0,  82, 480,   15000, 130,   254, E,  0, 0              , 72 ), /*  86 */
-	RVI( 31, M,  95, 640, 20000/2,150/2,255/2, E,  0, 0              , 73 ), /*  87 */
-	RVI( 28, 0,  70, 480,   10000, 120,   250, E,  0, 0              , 74 ), /*  88 */
-	RVI( 60, W, 247,   0,       0,  25,     0, 0, 47, CT_PASSENGERS  ,  0 ), /*  89 */
-	RVI( 62, W, 228,   0,       0,  21,     0, 0, 37, CT_MAIL        ,  0 ), /*  90 */
-	RVI( 61, W, 176,   0,       0,  18,     0, 0, 37, CT_COAL        ,  0 ), /*  91 */
-	RVI( 63, W, 200,   0,       0,  24,     0, 0, 37, CT_OIL         ,  0 ), /*  92 */
-	RVI( 64, W, 192,   0,       0,  20,     0, 0, 32, CT_LIVESTOCK   ,  0 ), /*  93 */
-	RVI( 65, W, 190,   0,       0,  21,     0, 0, 32, CT_GOODS       ,  0 ), /*  94 */
-	RVI( 66, W, 182,   0,       0,  19,     0, 0, 37, CT_GRAIN       ,  0 ), /*  95 */
-	RVI( 67, W, 181,   0,       0,  16,     0, 0, 37, CT_WOOD        ,  0 ), /*  96 */
-	RVI( 68, W, 179,   0,       0,  19,     0, 0, 37, CT_IRON_ORE    ,  0 ), /*  97 */
-	RVI( 69, W, 196,   0,       0,  18,     0, 0, 27, CT_STEEL       ,  0 ), /*  98 */
-	RVI( 70, W, 255,   0,       0,  30,     0, 0, 27, CT_VALUABLES   ,  0 ), /*  99 */
-	RVI( 71, W, 191,   0,       0,  22,     0, 0, 32, CT_FOOD        ,  0 ), /* 100 */
-	RVI( 72, W, 196,   0,       0,  18,     0, 0, 27, CT_PAPER       ,  0 ), /* 101 */
-	RVI( 73, W, 179,   0,       0,  19,     0, 0, 37, CT_COPPER_ORE  ,  0 ), /* 102 */
-	RVI( 47, W, 199,   0,       0,  25,     0, 0, 32, CT_WATER       ,  0 ), /* 103 */
-	RVI( 48, W, 182,   0,       0,  18,     0, 0, 32, CT_FRUIT       ,  0 ), /* 104 */
-	RVI( 49, W, 185,   0,       0,  19,     0, 0, 28, CT_RUBBER      ,  0 ), /* 105 */
-	RVI( 50, W, 176,   0,       0,  19,     0, 0, 37, CT_SUGAR       ,  0 ), /* 106 */
-	RVI( 51, W, 178,   0,       0,  20,     0, 0, 37, CT_COTTON_CANDY,  0 ), /* 107 */
-	RVI( 52, W, 192,   0,       0,  20,     0, 0, 37, CT_TOFFEE      ,  0 ), /* 108 */
-	RVI( 53, W, 190,   0,       0,  21,     0, 0, 27, CT_BUBBLES     ,  0 ), /* 109 */
-	RVI( 54, W, 182,   0,       0,  24,     0, 0, 32, CT_COLA        ,  0 ), /* 110 */
-	RVI( 55, W, 181,   0,       0,  21,     0, 0, 32, CT_CANDY       ,  0 ), /* 111 */
-	RVI( 56, W, 183,   0,       0,  21,     0, 0, 27, CT_TOYS        ,  0 ), /* 112 */
-	RVI( 57, W, 196,   0,       0,  18,     0, 0, 29, CT_BATTERIES   ,  0 ), /* 113 */
-	RVI( 58, W, 193,   0,       0,  18,     0, 0, 32, CT_FIZZY_DRINKS,  0 ), /* 114 */
-	RVI( 59, W, 191,   0,       0,  18,     0, 0, 37, CT_PLASTIC     ,  0 ), /* 115 */
+	//   image_index  max_speed (kph)      running_cost_base
+	//   |  flags     |        power (hp)  |  running_cost_class & engclass
+	//   |  |    base_cost     |    weight |  |   capacity
+	//   |  |    |    |        |    |      |  |   |  cargo_type
+	//   |  |    |    |        |    |      |  |   |  |
+	RVI( 2, 0,   7,  64,     300,  47,    50, S,  0, 0              ,  1, R), //   0
+	RVI(19, 0,   8,  80,     600,  65,    65, D,  0, 0              ,  4, R), //   1
+	RVI( 2, 0,  10,  72,     400,  85,    90, S,  0, 0              ,  7, R), //   2
+	RVI( 0, 0,  15,  96,     900, 130,   130, S,  0, 0              , 19, R), //   3
+	RVI( 1, 0,  19, 112,    1000, 140,   145, S,  0, 0              , 20, R), //   4
+	RVI(12, 0,  16, 120,    1400,  95,   125, D,  0, 0              , 30, R), //   5
+	RVI(14, 0,  20, 152,    2000, 120,   135, D,  0, 0              , 31, R), //   6
+	RVI( 3, 0,  14,  88,    1100, 145,   130, S,  0, 0              , 19, R), //   7
+	RVI( 0, 0,  13, 112,    1000, 131,   120, S,  0, 0              , 20, R), //   8
+	RVI( 1, 0,  19, 128,    1200, 162,   140, S,  0, 0              , 21, R), //   9
+	RVI( 0, 0,  22, 144,    1600, 170,   130, S,  0, 0              , 22, R), //  10
+	RVI( 8, M,  11, 112,   600/2,32/2,  85/2, D, 38, CT_PASSENGERS  , 10, R), //  11
+	RVI(10, M,  14, 120,   700/2,38/2,  70/2, D, 40, CT_PASSENGERS  , 11, R), //  12
+	RVI( 4, 0,  15, 128,    1250,  72,    95, D,  0, 0              , 30, R), //  13
+	RVI( 5, 0,  17, 144,    1750, 101,   120, D,  0, 0              , 31, R), //  14
+	RVI( 4, 0,  18, 160,    2580, 112,   140, D,  0, 0              , 32, R), //  15
+	RVI(14, 0,  23,  96,    4000, 150,   135, D,  0, 0              , 33, R), //  16
+	RVI(12, 0,  16, 112,    2400, 120,   105, D,  0, 0              , 34, R), //  17
+	RVI(13, 0,  30, 112,    6600, 207,   155, D,  0, 0              , 35, R), //  18
+	RVI(15, 0,  18, 104,    1500, 110,   105, D,  0, 0              , 29, R), //  19
+	RVI(16, M,  35, 160,  3500/2,95/2, 205/2, D,  0, 0              , 45, R), //  20
+	RVI(18, 0,  21, 104,    2200, 120,   145, D,  0, 0              , 32, R), //  21
+	RVI( 6, M,  20, 200,  4500/2,70/2, 190/2, D,  4, CT_MAIL        , 50, R), //  22
+	RVI(20, 0,  26, 160,    3600,  84,   180, E,  0, 0              , 40, E), //  23
+	RVI(20, 0,  30, 176,    5000,  82,   205, E,  0, 0              , 41, E), //  24
+	RVI(21, M,  40, 240,  7000/2,90/2, 240/2, E,  0, 0              , 51, E), //  25
+	RVI(23, M,  43, 264,  8000/2,95/2, 250/2, E,  0, 0              , 52, E), //  26
+	RVI(33, W, 247,   0,       0,  25,     0, 0, 40, CT_PASSENGERS  ,  0, R), //  27
+	RVI(35, W, 228,   0,       0,  21,     0, 0, 30, CT_MAIL        ,  0, R), //  28
+	RVI(34, W, 176,   0,       0,  18,     0, 0, 30, CT_COAL        ,  0, R), //  29
+	RVI(36, W, 200,   0,       0,  24,     0, 0, 30, CT_OIL         ,  0, R), //  30
+	RVI(37, W, 192,   0,       0,  20,     0, 0, 25, CT_LIVESTOCK   ,  0, R), //  31
+	RVI(38, W, 190,   0,       0,  21,     0, 0, 25, CT_GOODS       ,  0, R), //  32
+	RVI(39, W, 182,   0,       0,  19,     0, 0, 30, CT_GRAIN       ,  0, R), //  33
+	RVI(40, W, 181,   0,       0,  16,     0, 0, 30, CT_WOOD        ,  0, R), //  34
+	RVI(41, W, 179,   0,       0,  19,     0, 0, 30, CT_IRON_ORE    ,  0, R), //  35
+	RVI(42, W, 196,   0,       0,  18,     0, 0, 20, CT_STEEL       ,  0, R), //  36
+	RVI(43, W, 255,   0,       0,  30,     0, 0, 20, CT_VALUABLES   ,  0, R), //  37
+	RVI(44, W, 191,   0,       0,  22,     0, 0, 25, CT_FOOD        ,  0, R), //  38
+	RVI(45, W, 196,   0,       0,  18,     0, 0, 20, CT_PAPER       ,  0, R), //  39
+	RVI(46, W, 179,   0,       0,  19,     0, 0, 30, CT_COPPER_ORE  ,  0, R), //  40
+	RVI(47, W, 199,   0,       0,  25,     0, 0, 25, CT_WATER       ,  0, R), //  41
+	RVI(48, W, 182,   0,       0,  18,     0, 0, 25, CT_FRUIT       ,  0, R), //  42
+	RVI(49, W, 185,   0,       0,  19,     0, 0, 21, CT_RUBBER      ,  0, R), //  43
+	RVI(50, W, 176,   0,       0,  19,     0, 0, 30, CT_SUGAR       ,  0, R), //  44
+	RVI(51, W, 178,   0,       0,  20,     0, 0, 30, CT_COTTON_CANDY,  0, R), //  45
+	RVI(52, W, 192,   0,       0,  20,     0, 0, 30, CT_TOFFEE      ,  0, R), //  46
+	RVI(53, W, 190,   0,       0,  21,     0, 0, 20, CT_BUBBLES     ,  0, R), //  47
+	RVI(54, W, 182,   0,       0,  24,     0, 0, 25, CT_COLA        ,  0, R), //  48
+	RVI(55, W, 181,   0,       0,  21,     0, 0, 25, CT_CANDY       ,  0, R), //  49
+	RVI(56, W, 183,   0,       0,  21,     0, 0, 20, CT_TOYS        ,  0, R), //  50
+	RVI(57, W, 196,   0,       0,  18,     0, 0, 22, CT_BATTERIES   ,  0, R), //  51
+	RVI(58, W, 193,   0,       0,  18,     0, 0, 25, CT_FIZZY_DRINKS,  0, R), //  52
+	RVI(59, W, 191,   0,       0,  18,     0, 0, 30, CT_PLASTIC     ,  0, R), //  53
+	RVI(25, 0,  52, 304,    9000,  95,   230, E,  0, 0              , 60, O), //  54
+	RVI(26, M,  60, 336, 10000/2,85/2, 240/2, E, 25, CT_PASSENGERS  , 62, O), //  55
+	RVI(26, 0,  53, 320,    5000,  95,   230, E,  0, 0              , 63, O), //  56
+	RVI(60, W, 247,   0,       0,  25,     0, 0, 45, CT_PASSENGERS  ,  0, O), //  57
+	RVI(62, W, 228,   0,       0,  21,     0, 0, 35, CT_MAIL        ,  0, O), //  58
+	RVI(61, W, 176,   0,       0,  18,     0, 0, 35, CT_COAL        ,  0, O), //  59
+	RVI(63, W, 200,   0,       0,  24,     0, 0, 35, CT_OIL         ,  0, O), //  60
+	RVI(64, W, 192,   0,       0,  20,     0, 0, 30, CT_LIVESTOCK   ,  0, O), //  61
+	RVI(65, W, 190,   0,       0,  21,     0, 0, 30, CT_GOODS       ,  0, O), //  62
+	RVI(66, W, 182,   0,       0,  19,     0, 0, 35, CT_GRAIN       ,  0, O), //  63
+	RVI(67, W, 181,   0,       0,  16,     0, 0, 35, CT_WOOD        ,  0, O), //  64
+	RVI(68, W, 179,   0,       0,  19,     0, 0, 35, CT_IRON_ORE    ,  0, O), //  65
+	RVI(69, W, 196,   0,       0,  18,     0, 0, 25, CT_STEEL       ,  0, O), //  66
+	RVI(70, W, 255,   0,       0,  30,     0, 0, 25, CT_VALUABLES   ,  0, O), //  67
+	RVI(71, W, 191,   0,       0,  22,     0, 0, 30, CT_FOOD        ,  0, O), //  68
+	RVI(72, W, 196,   0,       0,  18,     0, 0, 25, CT_PAPER       ,  0, O), //  69
+	RVI(73, W, 179,   0,       0,  19,     0, 0, 35, CT_COPPER_ORE  ,  0, O), //  70
+	RVI(47, W, 199,   0,       0,  25,     0, 0, 30, CT_WATER       ,  0, O), //  71
+	RVI(48, W, 182,   0,       0,  18,     0, 0, 30, CT_FRUIT       ,  0, O), //  72
+	RVI(49, W, 185,   0,       0,  19,     0, 0, 26, CT_RUBBER      ,  0, O), //  73
+	RVI(50, W, 176,   0,       0,  19,     0, 0, 35, CT_SUGAR       ,  0, O), //  74
+	RVI(51, W, 178,   0,       0,  20,     0, 0, 35, CT_COTTON_CANDY,  0, O), //  75
+	RVI(52, W, 192,   0,       0,  20,     0, 0, 35, CT_TOFFEE      ,  0, O), //  76
+	RVI(53, W, 190,   0,       0,  21,     0, 0, 25, CT_BUBBLES     ,  0, O), //  77
+	RVI(54, W, 182,   0,       0,  24,     0, 0, 30, CT_COLA        ,  0, O), //  78
+	RVI(55, W, 181,   0,       0,  21,     0, 0, 30, CT_CANDY       ,  0, O), //  79
+	RVI(56, W, 183,   0,       0,  21,     0, 0, 25, CT_TOYS        ,  0, O), //  80
+	RVI(57, W, 196,   0,       0,  18,     0, 0, 27, CT_BATTERIES   ,  0, O), //  81
+	RVI(58, W, 193,   0,       0,  18,     0, 0, 30, CT_FIZZY_DRINKS,  0, O), //  82
+	RVI(59, W, 191,   0,       0,  18,     0, 0, 35, CT_PLASTIC     ,  0, O), //  83
+	RVI(28, 0,  70, 400,   10000, 105,   250, E,  0, 0              , 70, L), //  84
+	RVI(29, 0,  74, 448,   12000, 120,   253, E,  0, 0              , 71, L), //  85
+	RVI(30, 0,  82, 480,   15000, 130,   254, E,  0, 0              , 72, L), //  86
+	RVI(31, M,  95, 640, 20000/2,150/2,255/2, E,  0, 0              , 73, L), //  87
+	RVI(28, 0,  70, 480,   10000, 120,   250, E,  0, 0              , 74, L), //  88
+	RVI(60, W, 247,   0,       0,  25,     0, 0, 47, CT_PASSENGERS  ,  0, L), //  89
+	RVI(62, W, 228,   0,       0,  21,     0, 0, 37, CT_MAIL        ,  0, L), //  90
+	RVI(61, W, 176,   0,       0,  18,     0, 0, 37, CT_COAL        ,  0, L), //  91
+	RVI(63, W, 200,   0,       0,  24,     0, 0, 37, CT_OIL         ,  0, L), //  92
+	RVI(64, W, 192,   0,       0,  20,     0, 0, 32, CT_LIVESTOCK   ,  0, L), //  93
+	RVI(65, W, 190,   0,       0,  21,     0, 0, 32, CT_GOODS       ,  0, L), //  94
+	RVI(66, W, 182,   0,       0,  19,     0, 0, 37, CT_GRAIN       ,  0, L), //  95
+	RVI(67, W, 181,   0,       0,  16,     0, 0, 37, CT_WOOD        ,  0, L), //  96
+	RVI(68, W, 179,   0,       0,  19,     0, 0, 37, CT_IRON_ORE    ,  0, L), //  97
+	RVI(69, W, 196,   0,       0,  18,     0, 0, 27, CT_STEEL       ,  0, L), //  98
+	RVI(70, W, 255,   0,       0,  30,     0, 0, 27, CT_VALUABLES   ,  0, L), //  99
+	RVI(71, W, 191,   0,       0,  22,     0, 0, 32, CT_FOOD        ,  0, L), // 100
+	RVI(72, W, 196,   0,       0,  18,     0, 0, 27, CT_PAPER       ,  0, L), // 101
+	RVI(73, W, 179,   0,       0,  19,     0, 0, 37, CT_COPPER_ORE  ,  0, L), // 102
+	RVI(47, W, 199,   0,       0,  25,     0, 0, 32, CT_WATER       ,  0, L), // 103
+	RVI(48, W, 182,   0,       0,  18,     0, 0, 32, CT_FRUIT       ,  0, L), // 104
+	RVI(49, W, 185,   0,       0,  19,     0, 0, 28, CT_RUBBER      ,  0, L), // 105
+	RVI(50, W, 176,   0,       0,  19,     0, 0, 37, CT_SUGAR       ,  0, L), // 106
+	RVI(51, W, 178,   0,       0,  20,     0, 0, 37, CT_COTTON_CANDY,  0, L), // 107
+	RVI(52, W, 192,   0,       0,  20,     0, 0, 37, CT_TOFFEE      ,  0, L), // 108
+	RVI(53, W, 190,   0,       0,  21,     0, 0, 27, CT_BUBBLES     ,  0, L), // 109
+	RVI(54, W, 182,   0,       0,  24,     0, 0, 32, CT_COLA        ,  0, L), // 110
+	RVI(55, W, 181,   0,       0,  21,     0, 0, 32, CT_CANDY       ,  0, L), // 111
+	RVI(56, W, 183,   0,       0,  21,     0, 0, 27, CT_TOYS        ,  0, L), // 112
+	RVI(57, W, 196,   0,       0,  18,     0, 0, 29, CT_BATTERIES   ,  0, L), // 113
+	RVI(58, W, 193,   0,       0,  18,     0, 0, 32, CT_FIZZY_DRINKS,  0, L), // 114
+	RVI(59, W, 191,   0,       0,  18,     0, 0, 37, CT_PLASTIC     ,  0, L), // 115
 };
+#undef L
+#undef O
+#undef C
+#undef R
 #undef E
 #undef D
 #undef S

@@ -129,7 +129,6 @@ void StartupEngines(void)
 		uint32 r;
 
 		e->age = 0;
-		e->railtype = (RailType)ei->railtype;
 		e->flags = 0;
 		e->player_avail = 0;
 

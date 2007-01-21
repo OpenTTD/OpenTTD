@@ -2843,12 +2843,12 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 		/* Determine the livery scheme to use */
 		switch (GetEngine(engine_type)->type) {
 			case VEH_Train: {
-				switch (_engine_info[engine_type].railtype) {
+				const RailVehicleInfo *rvi = RailVehInfo(engine_type);
+
+				switch (rvi->railtype) {
 					case RAILTYPE_RAIL:
 					case RAILTYPE_ELECTRIC:
 					{
-						const RailVehicleInfo *rvi = RailVehInfo(engine_type);
-
 						if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
 						if (rvi->flags & RVI_WAGON) {
 							if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL || cargo_type == CT_VALUABLES) {

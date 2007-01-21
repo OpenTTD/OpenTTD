@@ -236,9 +236,9 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				uint8 tracktype = grf_load_byte(&buf);
 
 				switch (tracktype) {
-					case 0: ei[i].railtype = rvi[i].engclass == 2 ? RAILTYPE_ELECTRIC : RAILTYPE_RAIL; break;
-					case 1: ei[i].railtype = RAILTYPE_MONO; break;
-					case 2: ei[i].railtype = RAILTYPE_MAGLEV; break;
+					case 0: rvi[i].railtype = rvi[i].engclass == 2 ? RAILTYPE_ELECTRIC : RAILTYPE_RAIL; break;
+					case 1: rvi[i].railtype = RAILTYPE_MONO; break;
+					case 2: rvi[i].railtype = RAILTYPE_MAGLEV; break;
 					default:
 						grfmsg(1, "RailVehicleChangeInfo: Invalid track type %d specified, ignoring", tracktype);
 						break;
@@ -383,8 +383,8 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				} else {
 					break;
 				}
-				if (ei[i].railtype == RAILTYPE_RAIL     && engclass == 2) ei[i].railtype = RAILTYPE_ELECTRIC;
-				if (ei[i].railtype == RAILTYPE_ELECTRIC && engclass != 2) ei[i].railtype = RAILTYPE_RAIL;
+				if (rvi[i].railtype == RAILTYPE_RAIL     && engclass == 2) rvi[i].railtype = RAILTYPE_ELECTRIC;
+				if (rvi[i].railtype == RAILTYPE_ELECTRIC && engclass != 2) rvi[i].railtype = RAILTYPE_RAIL;
 
 				rvi[i].engclass = engclass;
 			}
