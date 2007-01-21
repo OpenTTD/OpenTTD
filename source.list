@@ -50,6 +50,9 @@ os_timer.cpp
 #if WIN32
 	ottdres.rc
 #end
+#if WINCE
+	ottdres.rc
+#end
 pathfind.cpp
 players.cpp
 queue.cpp
@@ -71,20 +74,22 @@ tgp.cpp
 thread.cpp
 tile.cpp
 #if WIN32
+	win32.cpp
 #else
-	#if OS2
-		os2.cpp
+	#if WINCE
+		win32.cpp
 	#else
-		unix.cpp
+		#if OS2
+			os2.cpp
+		#else
+			unix.cpp
+		#end
 	#end
 #end
 vehicle.cpp
 viewport.cpp
 waypoint.cpp
 widget.cpp
-#if WIN32
-	win32.cpp
-#end
 window.cpp
 
 # Header Files
@@ -342,6 +347,9 @@ video/null_v.cpp
 #if WIN32
 	video/win32_v.cpp
 #end
+#if WINCE
+	video/win32_v.cpp
+#end
 
 # Music
 #if DIRECTMUSIC
@@ -351,7 +359,10 @@ music/null_m.cpp
 #if WIN32
 	music/win32_m.cpp
 #else
-	music/extmidi.cpp
+	#if WINCE
+	#else
+		music/extmidi.cpp
+	#end
 #end
 #if BEOS
  	music/bemidi.cpp
