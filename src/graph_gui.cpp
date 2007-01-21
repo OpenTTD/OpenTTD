@@ -33,12 +33,19 @@ typedef struct GraphDrawer {
 	uint sel; // bitmask of the players *excluded* (e.g. 11111111 means that no players are shown)
 	byte num_dataset;
 	byte num_on_x_axis;
-	byte month;
-	Year year;
 	bool include_neg;
 	byte num_vert_lines;
-	uint16 unk61A;
-	uint16 unk61C;
+
+	/* The starting month and year that values are plotted against. If month is
+	 * 0xFF, use x_values_start and x_values_increment below instead. */
+	byte month;
+	Year year;
+
+	/* These values are used if the graph is being plotted against values
+	 * rather than the dates specified by month and year. */
+	uint16 x_values_start;
+	uint16 x_values_increment;
+
 	int left, top;
 	uint height;
 	StringID format_str_y_axis;
@@ -171,14 +178,14 @@ static void DrawGraph(const GraphDrawer *gw)
 	} else {
 		x = gw->left + 52;
 		y = gw->top + gw->height + 1;
-		j = gw->unk61A;
-		i = gw->num_on_x_axis;assert(i>0);
-		do {
-			SetDParam(0, j);
+		uint16 label = gw->x_values_start;
+
+		for (int i = 0; i < gw->num_on_x_axis; i++) {
+			SetDParam(0, label);
 			DrawString(x, y, STR_01CB, GRAPH_AXIS_LABEL_COLOUR);
-			j += gw->unk61C;
+			label += gw->x_values_increment;
 			x += 22;
-		} while (--i);
+		}
 	}
 
 	/* draw lines and dots */
@@ -712,8 +719,8 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		gd.num_on_x_axis = 20;
 		gd.num_vert_lines = 20;
 		gd.month = 0xFF;
-		gd.unk61A = 10;
-		gd.unk61C = 10;
+		gd.x_values_start     = 10;
+		gd.x_values_increment = 10;
 
 		for (i = 0; i != NUM_CARGO; i++) {
 			/* Since the buttons have no text, no images,
