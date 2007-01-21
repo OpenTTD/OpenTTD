@@ -407,9 +407,9 @@ static inline void DeleteVehicle(Vehicle *v)
 	v->type = 0;
 }
 
-static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
+static inline bool IsPlayerBuildableVehicleType(byte type)
 {
-	switch (v->type) {
+	switch (type) {
 		case VEH_Train:
 		case VEH_Road:
 		case VEH_Ship:
@@ -417,6 +417,11 @@ static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
 			return true;
 	}
 	return false;
+}
+
+static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
+{
+	return IsPlayerBuildableVehicleType(v->type);
 }
 
 #define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (IsValidVehicle(v))
