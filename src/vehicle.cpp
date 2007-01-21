@@ -1621,7 +1621,7 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	}
 
 	if (vehicle_list_window) {
-		uint16 id = GB(p1, 0, 16);
+		uint32 id = p1;
 		uint16 window_type = p2 & VLW_MASK;
 
 		engine_count = GenerateVehicleSortList((const Vehicle***)&vl, &engine_list_length, vehicle_type, _current_player, id, window_type);
@@ -2369,7 +2369,7 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 * @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
 * @return the number of vehicles added to the list
 */
-uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, byte type, PlayerID owner, uint16 index, uint16 window_type)
+uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, byte type, PlayerID owner, uint32 index, uint16 window_type)
 {
 	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
 	uint n = 0;
