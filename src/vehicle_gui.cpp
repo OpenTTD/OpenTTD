@@ -138,13 +138,13 @@ void ResortVehicleLists(void)
 	}
 }
 
-static void BuildVehicleList(vehiclelist_d* vl, PlayerID owner, StationID station, OrderID order, uint16 depot_airport_index, uint16 window_type)
+static void BuildVehicleList(vehiclelist_d* vl, PlayerID owner, uint16 index, uint16 window_type)
 {
 	if (!(vl->l.flags & VL_REBUILD)) return;
 
-	DEBUG(misc, 3, "Building vehicle list for player %d at station %d", owner, station);
+	DEBUG(misc, 3, "Building vehicle list for player %d at station %d", owner, index);
 
-	vl->l.list_length = GenerateVehicleSortList(&vl->sort_list, &vl->length_of_sort_list, vl->vehicle_type, owner, station, order, depot_airport_index, window_type);
+	vl->l.list_length = GenerateVehicleSortList(&vl->sort_list, &vl->length_of_sort_list, vl->vehicle_type, owner, index, window_type);
 
 	vl->l.flags &= ~VL_REBUILD;
 	vl->l.flags |= VL_RESORT;
@@ -1590,11 +1590,9 @@ static void DrawVehicleListWindow(Window *w)
 	const PlayerID owner = (PlayerID)w->caption_color;
 	const Player *p = GetPlayer(owner);
 	const uint16 window_type = w->window_number & VLW_MASK;
-	const StationID station          = (window_type == VLW_STATION_LIST)  ? GB(w->window_number, 16, 16) : INVALID_STATION;
-	const OrderID order              = (window_type == VLW_SHARED_ORDERS) ? GB(w->window_number, 16, 16) : INVALID_ORDER;
-	const uint16 depot_airport_index = (window_type == VLW_DEPOT_LIST)    ? GB(w->window_number, 16, 16) : INVALID_STATION;
+	const uint16 index = GB(w->window_number, 16, 16);
 
-	BuildVehicleList(vl, owner, station, order, depot_airport_index, window_type);
+	BuildVehicleList(vl, owner, index, window_type);
 	SortVehicleList(vl);
 	SetVScrollCount(w, vl->l.list_length);
 
@@ -1616,7 +1614,7 @@ static void DrawVehicleListWindow(Window *w)
 			break;
 
 		case VLW_STATION_LIST: /* Station Name */
-			SetDParam(0, station);
+			SetDParam(0, index);
 			SetDParam(1, w->vscroll.count);
 			break;
 
@@ -1629,9 +1627,9 @@ static void DrawVehicleListWindow(Window *w)
 				default: NOT_REACHED(); break;
 			}
 			if (vl->vehicle_type == VEH_Aircraft) {
-				SetDParam(1, depot_airport_index); // Airport name
+				SetDParam(1, index); // Airport name
 			} else {
-				SetDParam(1, GetDepot(depot_airport_index)->town_index);
+				SetDParam(1, GetDepot(index)->town_index);
 			}
 			SetDParam(2, w->vscroll.count);
 			break;
