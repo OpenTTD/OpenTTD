@@ -67,7 +67,6 @@ static void DrawGraph(const GraphDrawer *gw)
 {
 	uint x,y,old_x,old_y;
 	int right;
-	int num_x, num_dataset;
 	const int64 *row_ptr, *col_ptr;
 	int64 mx;
 	int adj_height;
@@ -122,27 +121,26 @@ static void DrawGraph(const GraphDrawer *gw)
 		return;
 
 	assert(gw->num_on_x_axis > 0);
-
-	num_dataset = gw->num_dataset;
-	assert(num_dataset > 0);
+	assert(gw->num_dataset > 0);
 
 	row_ptr = gw->cost[0];
 	mx = 0;
 		/* bit selection for the showing of various players, base max element
 		 * on to-be shown player-information. This way the graph can scale */
 	sel = gw->sel;
-	do {
+	for (int i = 0; i < gw->num_dataset; i++) {
 		if (!(sel&1)) {
-			num_x = gw->num_on_x_axis;
-			assert(num_x > 0);
 			col_ptr = row_ptr;
-			do {
+			for (int i = 0; i < gw->num_on_x_axis; i++) {
 				if (*col_ptr != INVALID_VALUE) {
 					mx = max(mx, *col_ptr);
 				}
-			} while (col_ptr++, --num_x);
+				col_ptr++;
+			}
 		}
-	} while (sel>>=1, row_ptr+=24, --num_dataset);
+		sel >>= 1;
+		row_ptr += 24;
+	}
 
 	/* setup scaling */
 	y_scaling = INVALID_VALUE;
