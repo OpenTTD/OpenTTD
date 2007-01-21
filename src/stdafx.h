@@ -157,11 +157,19 @@
 # include <stddef.h>
 #endif /* defined(_MSC_VER) */
 
+#if defined(WINCE)
+# define strdup _strdup
+#endif /* WINCE */
+
 /* NOTE: the string returned by these functions is only valid until the next
  * call to the same function and is not thread- or reentrancy-safe */
 #if !defined(STRGEN)
 # if defined(WIN32) || defined(WIN64)
-#  define fopen(file, mode) _wfopen(OTTD2FS(file), L ## mode)
+#  if defined(WINCE)
+/* XXX - WinCE without MSVCRT doesn't support wfopen, so it seems */
+#  else
+#   define fopen(file, mode) _wfopen(OTTD2FS(file), L ## mode)
+#  endif
    const char *FS2OTTD(const wchar_t *name);
    const wchar_t *OTTD2FS(const char *name);
 # else
