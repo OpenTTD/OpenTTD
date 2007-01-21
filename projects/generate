@@ -58,6 +58,7 @@ load_main_data() {
 			if ($0 == "BEOS"        && "'$os'" != "BEOS")              { next; }
 			if ($0 == "WIN32"       && "'$os'" != "MINGW" &&
 											"'$os'" != "CYGWIN" && "'$os'" != "MSVC" ) { next; }
+			if ($0 == "WINCE"       && "'$os'" != "WINCE")             { next; }
 			if ($0 == "MSVC"        && "'$os'" != "MSVC")              { next; }
 			if ($0 == "DIRECTMUSIC" && "'$enable_directmusic'" != "1") { next; }
 

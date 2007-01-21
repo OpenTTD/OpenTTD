@@ -74,7 +74,6 @@ tgp.cpp
 thread.cpp
 tile.cpp
 #if WIN32
-	win32.cpp
 #else
 	#if WINCE
 		win32.cpp
@@ -90,6 +89,9 @@ vehicle.cpp
 viewport.cpp
 waypoint.cpp
 widget.cpp
+#if WIN32
+	win32.cpp
+#end
 window.cpp
 
 # Header Files
