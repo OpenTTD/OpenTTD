@@ -1885,6 +1885,7 @@ static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, byte ve
 	 * to be changed which happens in the WE_CREATE event and resizing
 	 * some of the windows to the correct size */
 	switch (vehicle_type) {
+		default: NOT_REACHED();
 		case VEH_Train:
 			w = AllocateWindowDescFront(&_player_vehicle_list_train_desc, num);
 			if (w != NULL) ResizeWindow(w, 65, 38);
@@ -1899,7 +1900,6 @@ static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, byte ve
 		case VEH_Aircraft:
 			w = AllocateWindowDescFront(&_player_vehicle_list_aircraft_desc, num);
 			break;
-		default: NOT_REACHED(); return;
 	}
 
 	if (w != NULL) {
