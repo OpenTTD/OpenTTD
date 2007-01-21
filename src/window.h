@@ -326,6 +326,7 @@ typedef struct {
 	byte sel_index;  // deprecated value, used for 'unified' ship and road
 	bool descending_sort_order;
 	byte sort_criteria;
+	bool regenerate_list;
 	EngineID sel_engine;
 	EngineID rename_engine;
 	EngineList eng_list;

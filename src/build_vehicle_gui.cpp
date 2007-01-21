@@ -654,7 +654,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 				case VEH_Train:    _last_sort_order_train    = bv->descending_sort_order; break;
 				case VEH_Aircraft: _last_sort_order_aircraft = bv->descending_sort_order; break;
 			}
-			GenerateBuildList(w);
+			bv->regenerate_list = true;
 			SetWindowDirty(w);
 			break;
 
@@ -716,7 +716,8 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 		case WE_INVALIDATE_DATA:
-			GenerateBuildList(w);
+			bv->regenerate_list = true;
+			SetWindowDirty(w);
 			break;
 
 		case WE_DESTROY:
@@ -724,6 +725,10 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_PAINT:
+			if (bv->regenerate_list) {
+				bv->regenerate_list = false;
+				GenerateBuildList(w);
+			}
 			DrawBuildVehicleWindow(w);
 			break;
 
@@ -751,7 +756,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 					case VEH_Train:    _last_sort_criteria_train    = bv->sort_criteria; break;
 					case VEH_Aircraft: _last_sort_criteria_aircraft = bv->sort_criteria; break;
 				}
-				GenerateBuildList(w);
+				bv->regenerate_list = true;
 			}
 			SetWindowDirty(w);
 			break;
@@ -793,9 +798,10 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 
 	bv = &WP(w, buildvehicle_d);
 	EngList_Create(&bv->eng_list);
-	bv->sel_engine            = INVALID_ENGINE;
+	bv->sel_engine      = INVALID_ENGINE;
 
-	bv->vehicle_type = type;
+	bv->vehicle_type    = type;
+	bv->regenerate_list = false;
 
 	switch (type) {
 		case VEH_Train:
@@ -818,7 +824,7 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 	w->resize.width  = w->width;
 	w->resize.height = w->height;
 
-	GenerateBuildList(w);
+	GenerateBuildList(w); // generate the list, since we need it in the next line
 	/* Select the first engine in the list as default when opening the window */
 	if (EngList_Count(&bv->eng_list) > 0) bv->sel_engine = bv->eng_list[0];
 }
