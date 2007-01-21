@@ -572,7 +572,7 @@ void DestroyVehicle(Vehicle *v)
 
 	UpdateVehiclePosHash(v, INVALID_COORD, 0);
 	v->next_hash = NULL;
-	if (v->orders != NULL) DeleteVehicleOrders(v);
+	if (IsPlayerBuildableVehicleType(v)) DeleteVehicleOrders(v);
 
 	/* Now remove any artic part. This will trigger an other
 	 *  destroy vehicle, which on his turn can remove any

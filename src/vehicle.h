@@ -407,6 +407,18 @@ static inline void DeleteVehicle(Vehicle *v)
 	v->type = 0;
 }
 
+static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
+{
+	switch (v->type) {
+		case VEH_Train:
+		case VEH_Road:
+		case VEH_Ship:
+		case VEH_Aircraft:
+			return true;
+	}
+	return false;
+}
+
 #define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (IsValidVehicle(v))
 #define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
 
