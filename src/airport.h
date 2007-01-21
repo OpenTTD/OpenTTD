@@ -75,11 +75,6 @@ enum {
 	HELIPAD4       = 22
 };
 
-// this maps the terminal to its corresponding state and block flag
-// currently set for 10 terms, 4 helipads
-static const byte _airport_terminal_state[] = {2, 3, 4, 5, 6, 7, 19, 20, 0, 0, 8, 9, 21, 22};
-static const byte _airport_terminal_flag[] =  {0, 1, 2, 3, 4, 5, 22, 23, 0, 0, 6, 7, 24, 25};
-
 /* Movement Blocks on Airports */
 // blocks (eg_airport_flags)
 enum {
