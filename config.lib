@@ -372,13 +372,13 @@ check_params() {
 			sleep 5
 		fi
 	else
-		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
+		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
 			log 1 "checking GDI video driver... found"
 		else
 			log 1 "checking GDI video driver... not Windows, skipping"
 		fi
 
-		if [ -z "$sdl_config" ] && [ "$with_cocoa" = 0 ] && [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
+		if [ -z "$sdl_config" ] && [ "$with_cocoa" = 0 ] && [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "WINCE" ]; then
 			log 1 "WARNING: no video driver found, building dedicated only"
 			enable_dedicated="1"
 			sleep 1
