@@ -332,8 +332,6 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			NOT_REACHED();
 			return 0;
 	}
-
-	return 0; // useless but silences warning
 }
 
 // return true if a tile is a water tile.
