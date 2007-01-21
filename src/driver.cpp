@@ -51,7 +51,7 @@ static const DriverDesc _music_driver_descs[] = {
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
 	M("dmusic",  "DirectMusic MIDI Driver", &_dmusic_midi_driver),
 #endif
-#ifdef WIN32
+#if defined(WIN32) && !defined(WINCE)
 	M("win32",   "Win32 MIDI Driver",       &_win32_music_driver),
 #endif
 #if defined(__APPLE__) && !defined(DEDICATED)
@@ -67,7 +67,7 @@ static const DriverDesc _music_driver_descs[] = {
 };
 
 static const DriverDesc _sound_driver_descs[] = {
-#ifdef WIN32
+#if defined(WIN32) && !defined(WINCE)
 	M("win32", "Win32 WaveOut Driver", &_win32_sound_driver),
 #endif
 #ifdef WITH_SDL
