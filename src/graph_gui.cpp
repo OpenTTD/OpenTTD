@@ -27,6 +27,14 @@ enum {
 	GRAPH_MAX_DATASETS = 16,
 	GRAPH_AXIS_LABEL_COLOUR = 16,
 	GRAPH_AXIS_LINE_COLOUR  = 215,
+
+	GRAPH_X_POSITION_BEGINNING  = 44,  // Start the graph 44 pixels from gw->left
+	GRAPH_X_POSITION_SEPARATION = 22,  // There are 22 pixels between each X value
+
+	/* How many horizontal lines to draw. 9 is convenient as that means the
+	 * distance between them is the height of the graph / 8, which is the same
+	 * as height >> 3. */
+	GRAPH_NUM_LINES_Y = 9,
 };
 
 typedef struct GraphDrawer {
@@ -60,12 +68,12 @@ static void DrawGraph(const GraphDrawer *gw)
 
 	int i,j,k;
 	uint x,y,old_x,old_y;
-	int right, bottom;
+	int right;
 	int num_x, num_dataset;
 	const int64 *row_ptr, *col_ptr;
 	int64 mx;
 	int adj_height;
-	uint64 y_scaling, tmp;
+	uint64 y_scaling;
 	int64 value;
 	int64 cur_val;
 	uint sel;
@@ -74,27 +82,32 @@ static void DrawGraph(const GraphDrawer *gw)
 	 * both values for cargo and players. So if any are higher, quit */
 	assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_PLAYERS);
 
+	assert(gw->num_vert_lines > 0);
+
 	byte grid_colour = _colour_gradient[14][4];
 
+	/* Position of the bottom of the graph. */
+	int bottom = gw->top + gw->height - 1;
+
 	/* draw the vertical lines */
-	i = gw->num_vert_lines; assert(i > 0);
-	x = gw->left + 66;
-	bottom = gw->top + gw->height - 1;
-	do {
+
+	/* Don't draw the first line, as that's where the axis will be. */
+	x = gw->left + GRAPH_X_POSITION_BEGINNING + GRAPH_X_POSITION_SEPARATION;
+
+	for (int i = 0; i < gw->num_vert_lines; i++) {
 		GfxFillRect(x, gw->top, x, bottom, grid_colour);
-		x += 22;
-	} while (--i);
+		x += GRAPH_X_POSITION_SEPARATION;
+	}
 
 	/* draw the horizontal lines */
-	i = 9;
-	x = gw->left + 44;
+	x = gw->left + GRAPH_X_POSITION_BEGINNING;
 	y = gw->height + gw->top;
-	right = gw->left + 44 + gw->num_vert_lines*22-1;
+	right = gw->left + GRAPH_X_POSITION_BEGINNING + gw->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1;
 
-	do {
+	for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
 		GfxFillRect(x, y, right, y, grid_colour);
-		y -= gw->height >> 3;
-	} while (--i);
+		y -= (gw->height / (GRAPH_NUM_LINES_Y - 1));
+	}
 
 	/* draw vertical edge line */
 	GfxFillRect(x, gw->top, x, bottom, GRAPH_AXIS_LINE_COLOUR);
@@ -109,6 +122,8 @@ static void DrawGraph(const GraphDrawer *gw)
 	/* find the max element */
 	if (gw->num_on_x_axis == 0)
 		return;
+
+	assert(gw->num_on_x_axis > 0);
 
 	num_dataset = gw->num_dataset;
 	assert(num_dataset > 0);
@@ -142,22 +157,22 @@ static void DrawGraph(const GraphDrawer *gw)
 	}
 
 	/* draw text strings on the y axis */
-	tmp = value;
-	if (gw->include_neg) tmp >>= 1;
-	x = gw->left + 45;
+	int64 y_label = value;
+	if (gw->include_neg) y_label /= 2;
+	x = gw->left + GRAPH_X_POSITION_BEGINNING + 1;
 	y = gw->top - 3;
-	i = 9;
-	do {
+
+	for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
 		SetDParam(0, gw->format_str_y_axis);
-		SetDParam64(1, (int64)tmp);
-		tmp -= (value >> 3);
+		SetDParam64(1, y_label);
 		DrawStringRightAligned(x, y, STR_0170, GRAPH_AXIS_LABEL_COLOUR);
-		y += gw->height >> 3;
-	} while (--i);
+		y_label -= (value / (GRAPH_NUM_LINES_Y - 1));
+		y += (gw->height / (GRAPH_NUM_LINES_Y - 1));
+	}
 
 	/* draw strings on the x axis */
 	if (gw->month != 0xFF) {
-		x = gw->left + 44;
+		x = gw->left + GRAPH_X_POSITION_BEGINNING;
 		y = gw->top + gw->height + 1;
 		j = gw->month;
 		k = gw->year;
@@ -173,10 +188,11 @@ static void DrawGraph(const GraphDrawer *gw)
 				j = 0;
 				k++;
 			}
-			x += 22;
+			x += GRAPH_X_POSITION_SEPARATION;
 		} while (--i);
 	} else {
-		x = gw->left + 52;
+		/* Add 8 to make the string appear centred between the lines. */
+		x = gw->left + GRAPH_X_POSITION_BEGINNING + 8;
 		y = gw->top + gw->height + 1;
 		uint16 label = gw->x_values_start;
 
@@ -184,7 +200,7 @@ static void DrawGraph(const GraphDrawer *gw)
 			SetDParam(0, label);
 			DrawString(x, y, STR_01CB, GRAPH_AXIS_LABEL_COLOUR);
 			label += gw->x_values_increment;
-			x += 22;
+			x += GRAPH_X_POSITION_SEPARATION;
 		}
 	}
 
@@ -194,12 +210,13 @@ static void DrawGraph(const GraphDrawer *gw)
 	sel = gw->sel; // show only selected lines. GraphDrawer qw->sel set in Graph-Legend (_legend_excludebits)
 	do {
 		if (!(sel & 1)) {
-			x = gw->left + 55;
-			j = gw->num_on_x_axis;assert(j>0);
+			/* Centre the dot between the grid lines. */
+			x = gw->left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
 			col_ptr = row_ptr;
 			byte color = gw->colors[i];
 			old_y = old_x = INVALID_VALUE;
-			do {
+
+			for (int i = 0; i < gw->num_on_x_axis; i++) {
 				cur_val = *col_ptr++;
 				if (cur_val != INVALID_VALUE) {
 					y = adj_height - BIGMULSS64(cur_val, y_scaling >> 1, 31) + gw->top;
@@ -213,7 +230,8 @@ static void DrawGraph(const GraphDrawer *gw)
 				} else {
 					old_x = INVALID_VALUE;
 				}
-			} while (x+=22,--j);
+				x += GRAPH_X_POSITION_SEPARATION;
+			}
 		}
 	} while (sel>>=1,row_ptr+=24, ++i < gw->num_dataset);
 }
