@@ -38,7 +38,7 @@ typedef struct GraphDrawer {
 	int left, top;
 	uint height;
 	StringID format_str_y_axis;
-	byte color_3, color_2, bg_line_color;
+	byte color_3, color_2;
 	byte colors[GRAPH_NUM];
 	int64 cost[GRAPH_NUM][24]; // last 2 years
 } GraphDrawer;
@@ -50,7 +50,6 @@ static void DrawGraph(const GraphDrawer *gw)
 
 	int i,j,k;
 	uint x,y,old_x,old_y;
-	int color;
 	int right, bottom;
 	int num_x, num_dataset;
 	const int64 *row_ptr, *col_ptr;
@@ -65,14 +64,14 @@ static void DrawGraph(const GraphDrawer *gw)
 	 * both values for cargo and players. So if any are higher, quit */
 	assert(GRAPH_NUM >= (int)NUM_CARGO && GRAPH_NUM >= (int)MAX_PLAYERS);
 
-	color = _colour_gradient[gw->bg_line_color][4];
+	byte grid_colour = _colour_gradient[14][4];
 
 	/* draw the vertical lines */
 	i = gw->num_vert_lines; assert(i > 0);
 	x = gw->left + 66;
 	bottom = gw->top + gw->height - 1;
 	do {
-		GfxFillRect(x, gw->top, x, bottom, color);
+		GfxFillRect(x, gw->top, x, bottom, grid_colour);
 		x += 22;
 	} while (--i);
 
@@ -83,7 +82,7 @@ static void DrawGraph(const GraphDrawer *gw)
 	right = gw->left + 44 + gw->num_vert_lines*22-1;
 
 	do {
-		GfxFillRect(x, y, right, y, color);
+		GfxFillRect(x, y, right, y, grid_colour);
 		y -= gw->height >> 3;
 	} while (--i);
 
@@ -188,7 +187,7 @@ static void DrawGraph(const GraphDrawer *gw)
 			x = gw->left + 55;
 			j = gw->num_on_x_axis;assert(j>0);
 			col_ptr = row_ptr;
-			color = gw->colors[i];
+			byte color = gw->colors[i];
 			old_y = old_x = INVALID_VALUE;
 			do {
 				cur_val = *col_ptr++;
@@ -343,7 +342,6 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 		gd.format_str_y_axis = STR_CURRCOMPACT;
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
-		gd.bg_line_color = 0xE;
 
 		SetupGraphDrawerForPlayers(&gd);
 
@@ -417,7 +415,6 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 		gd.format_str_y_axis = STR_CURRCOMPACT;
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
-		gd.bg_line_color = 0xE;
 		SetupGraphDrawerForPlayers(&gd);
 
 		numd = 0;
@@ -490,7 +487,6 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 		gd.format_str_y_axis = STR_7024;
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
-		gd.bg_line_color = 0xE;
 		SetupGraphDrawerForPlayers(&gd);
 
 		numd = 0;
@@ -563,7 +559,6 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 		gd.format_str_y_axis = STR_7024;
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
-		gd.bg_line_color = 0xE;
 		SetupGraphDrawerForPlayers(&gd);
 
 		numd = 0;
@@ -639,7 +634,6 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 		gd.format_str_y_axis = STR_CURRCOMPACT;
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
-		gd.bg_line_color = 0xE;
 		SetupGraphDrawerForPlayers(&gd);
 
 		numd = 0;
@@ -723,7 +717,6 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		gd.format_str_y_axis = STR_CURRCOMPACT;
 		gd.color_3 = 16;
 		gd.color_2 = 215;
-		gd.bg_line_color = 14;
 		gd.num_dataset = NUM_CARGO;
 		gd.num_on_x_axis = 20;
 		gd.num_vert_lines = 20;
