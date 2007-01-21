@@ -65,22 +65,14 @@ void TrainPowerChanged(Vehicle* v)
 	uint32 max_te = 0;
 
 	for (u = v; u != NULL; u = u->next) {
-		const RailVehicleInfo *rvi_u;
-		bool engine_has_power = true;
-		bool wagon_has_power = true;
-
 		/* Power is not added for articulated parts */
 		if (IsArticulatedPart(u)) continue;
 
-		if (IsLevelCrossingTile(u->tile)) {
-			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeCrossing(u->tile))) engine_has_power = false;
-			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeCrossing(u->tile))) wagon_has_power = false;
-		} else {
-			if (!HasPowerOnRail(u->u.rail.railtype, GetRailType(u->tile))) engine_has_power = false;
-			if (!HasPowerOnRail(v->u.rail.railtype, GetRailType(u->tile))) wagon_has_power = false;
-		}
+		RailType railtype = (IsLevelCrossingTile(u->tile) ? GetRailTypeCrossing(u->tile) : GetRailType(u->tile));
+		bool engine_has_power = HasPowerOnRail(u->u.rail.railtype, railtype);
+		bool wagon_has_power  = HasPowerOnRail(v->u.rail.railtype, railtype);
 
-		rvi_u = RailVehInfo(u->engine_type);
+		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
 
 		if (engine_has_power && rvi_u->power != 0) {
 			power += rvi_u->power;
