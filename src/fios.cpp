@@ -185,7 +185,17 @@ bool FiosDelete(const char *name)
 
 bool FileExists(const char *filename)
 {
+#if defined(WINCE)
+	/* There is always one platform that doesn't support basic commands... */
+	HANDLE hand;
+
+	hand = CreateFile(OTTD2FS(filename), 0, 0, NULL, OPEN_EXISTING, 0, NULL);
+	if (hand == INVALID_HANDLE_VALUE) return 1;
+	CloseHandle(hand);
+	return 0;
+#else
 	return access(filename, 0) == 0;
+#endif
 }
 
 typedef byte fios_getlist_callback_proc(int mode, const char *filename, const char *ext, char *title);
