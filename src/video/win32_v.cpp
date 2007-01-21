@@ -480,9 +480,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 					r->right = r->left + w;
 					break;
 			}
-#endif
 			return TRUE;
 		}
+#endif
 
 // needed for wheel
 #if !defined(WM_MOUSEWHEEL)
