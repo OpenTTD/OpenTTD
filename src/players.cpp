@@ -60,6 +60,11 @@ uint16 GetDrawStringPlayerColor(PlayerID player)
 	return (_colour_gradient[_player_colors[player]][4]) | IS_PALETTE_COLOR;
 }
 
+void DrawPlayerIcon(PlayerID p, int x, int y)
+{
+	DrawSprite(SPR_PLAYER_ICON, PLAYER_SPRITE_COLOR(p), x, y);
+}
+
 
 static const SpriteID cheeks_table[4] = {
 	0x325, 0x326,

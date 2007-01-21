@@ -216,11 +216,6 @@ static void DrawGraph(const GraphDrawer *gw)
 /* GRAPH LEGEND */
 /****************/
 
-void DrawPlayerIcon(PlayerID p, int x, int y)
-{
-	DrawSprite(0x2EB, PLAYER_SPRITE_COLOR(p), x, y);
-}
-
 static void GraphLegendWndProc(Window *w, WindowEvent *e)
 {
 	const Player* p;

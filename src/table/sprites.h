@@ -120,6 +120,9 @@ enum Sprites {
 	/* Manager face sprites */
 	SPR_GRADIENT = 874, // background gradient behind manager face
 
+	/* Icon showing player colour. */
+	SPR_PLAYER_ICON = 747,
+
 	/* is itself no foundation sprite, because tileh 0 has no foundation */
 	SPR_FOUNDATION_BASE = 989,
 

@@ -538,8 +538,6 @@ static void UpdatePlayerMenuHeight(Window *w)
 	}
 }
 
-extern void DrawPlayerIcon(PlayerID pid, int x, int y);
-
 static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {

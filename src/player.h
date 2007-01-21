@@ -262,6 +262,8 @@ static inline bool IsInteractivePlayer(PlayerID pi)
 	return pi == _local_player;
 }
 
+void DrawPlayerIcon(PlayerID p, int x, int y);
+
 /* Validate functions for rail building */
 static inline bool ValParamRailtype(uint32 rail) { return HASBIT(GetPlayer(_current_player)->avail_railtypes, rail);}
 
