@@ -54,6 +54,14 @@ static const Widget _build_vehicle_widgets[] = {
 	{   WIDGETS_END},
 };
 
+static void ResizeButtons(Window *w)
+{
+	/* Make the buttons in the bottom equal in size */
+	w->widget[BUILD_VEHICLE_WIDGET_RENAME].right = w->widget[BUILD_VEHICLE_WIDGET_RESIZE].left - 1;
+	w->widget[BUILD_VEHICLE_WIDGET_RENAME].left  = w->widget[BUILD_VEHICLE_WIDGET_RENAME].right / 2;
+	w->widget[BUILD_VEHICLE_WIDGET_BUILD].right  = w->widget[BUILD_VEHICLE_WIDGET_RENAME].left - 1;
+}
+
 /* Setup widget strings to fit the different types of vehicles */
 static void SetupWindowStrings(const Window *w, byte type)
 {
@@ -762,6 +770,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_RESIZE:
+			if (e->we.sizing.diff.x != 0) ResizeButtons(w);
 			if (e->we.sizing.diff.y == 0) break;
 
 			w->vscroll.cap += e->we.sizing.diff.y / GetVehicleListHeight(bv->vehicle_type);
@@ -820,6 +829,7 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 		}
 	}
 	SetupWindowStrings(w, type);
+	ResizeButtons(w);
 
 	w->resize.width  = w->width;
 	w->resize.height = w->height;
