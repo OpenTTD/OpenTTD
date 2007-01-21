@@ -149,29 +149,29 @@ void NetworkUDPSocketHandler::ReceivePackets()
 
 /**
  * Serializes the GRFIdentifier (GRF ID and MD5 checksum) to the packet
- * @param p the packet to write the data to
- * @param c the configuration to write the GRF ID and MD5 checksum from
+ * @param p   the packet to write the data to
+ * @param grf the GRFIdentifier to serialize
  */
-void NetworkUDPSocketHandler::Send_GRFIdentifier(Packet *p, const GRFConfig *c)
+void NetworkUDPSocketHandler::Send_GRFIdentifier(Packet *p, const GRFIdentifier *grf)
 {
 	uint j;
-	NetworkSend_uint32(p, c->grfid);
-	for (j = 0; j < sizeof(c->md5sum); j++) {
-		NetworkSend_uint8 (p, c->md5sum[j]);
+	NetworkSend_uint32(p, grf->grfid);
+	for (j = 0; j < sizeof(grf->md5sum); j++) {
+		NetworkSend_uint8 (p, grf->md5sum[j]);
 	}
 }
 
 /**
  * Deserializes the GRFIdentifier (GRF ID and MD5 checksum) from the packet
- * @param p  the packet to read the data from
- * @param c  the configuration to write the GRF ID and MD5 checksum to
+ * @param p   the packet to read the data from
+ * @param grf the GRFIdentifier to deserialize
  */
-void NetworkUDPSocketHandler::Recv_GRFIdentifier(Packet *p, GRFConfig *c)
+void NetworkUDPSocketHandler::Recv_GRFIdentifier(Packet *p, GRFIdentifier *grf)
 {
 	uint j;
-	c->grfid = NetworkRecv_uint32(this, p);
-	for (j = 0; j < sizeof(c->md5sum); j++) {
-		c->md5sum[j] = NetworkRecv_uint8(this, p);
+	grf->grfid = NetworkRecv_uint32(this, p);
+	for (j = 0; j < sizeof(grf->md5sum); j++) {
+		grf->md5sum[j] = NetworkRecv_uint8(this, p);
 	}
 }
 

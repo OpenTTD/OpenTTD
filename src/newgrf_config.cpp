@@ -352,10 +352,8 @@ const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum)
 
 /** Structure for UnknownGRFs; this is a lightweight variant of GRFConfig */
 typedef struct UnknownGRF UnknownGRF;
-struct UnknownGRF {
+struct UnknownGRF : public GRFIdentifier {
 	UnknownGRF *next;
-	uint32 grfid;
-	uint8  md5sum[16];
 	char   name[NETWORK_GRF_NAME_LENGTH];
 };
 

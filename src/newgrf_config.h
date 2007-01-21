@@ -15,14 +15,17 @@ typedef enum {
 	GCF_COPY,      ///< The data is copied from a grf in _all_grfs
 } GCF_Flags;
 
-typedef struct GRFConfig {
+typedef struct GRFIdentifier {
+	uint32 grfid;
+	uint8 md5sum[16];
+} GRF;
+
+typedef struct GRFConfig : public GRFIdentifier {
 	char *filename;
 	char *name;
 	char *info;
-	uint32 grfid;
 
 	uint8 flags;
-	uint8 md5sum[16];
 	uint32 param[0x80];
 	uint8 num_params;
 
