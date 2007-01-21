@@ -263,22 +263,22 @@ static void MenuClickIndustry(int index)
 
 static void MenuClickShowTrains(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, INVALID_STATION, VEH_Train);
+	ShowVehicleListWindow((PlayerID)index, VEH_Train);
 }
 
 static void MenuClickShowRoad(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, INVALID_STATION, VEH_Road);
+	ShowVehicleListWindow((PlayerID)index, VEH_Road);
 }
 
 static void MenuClickShowShips(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, INVALID_STATION, VEH_Ship);
+	ShowVehicleListWindow((PlayerID)index, VEH_Ship);
 }
 
 static void MenuClickShowAir(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, INVALID_STATION, VEH_Aircraft);
+	ShowVehicleListWindow((PlayerID)index, VEH_Aircraft);
 }
 
 static void MenuClickBuildRail(int index)
@@ -1802,10 +1802,10 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_F10:ShowOperatingProfitGraph(); break;
 		case WKC_F11: ShowCompanyLeagueTable(); break;
 		case WKC_F12: ShowBuildIndustryWindow(); break;
-		case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(_local_player, INVALID_STATION, VEH_Train); break;
-		case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(_local_player, INVALID_STATION, VEH_Road); break;
-		case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(_local_player, INVALID_STATION, VEH_Ship); break;
-		case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(_local_player, INVALID_STATION, VEH_Aircraft); break;
+		case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(_local_player, VEH_Train); break;
+		case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(_local_player, VEH_Road); break;
+		case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(_local_player, VEH_Ship); break;
+		case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(_local_player, VEH_Aircraft); break;
 		case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
 		case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
 		case WKC_SHIFT | WKC_F7: ShowBuildRailToolbar(_last_built_railtype, -1); break;

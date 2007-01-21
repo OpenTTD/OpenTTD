@@ -482,7 +482,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			OrderClick_Transfer(w, v);
 			break;
 		case 11: /* Vehicle with same shared Orders button */
-			ShowVehWithSharedOrders(v, v->type);
+			ShowVehicleListWindow(v);
 			break;
 		case 12:
 			OrderClick_Refit(w, v);

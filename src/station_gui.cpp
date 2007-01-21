@@ -762,13 +762,13 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 		case 10: { /* Show a list of scheduled trains to this station */
 			const Station *st = GetStation(w->window_number);
-			ShowVehicleListWindow(st->owner, w->window_number, VEH_Train);
+			ShowVehicleListWindow(st->owner, VEH_Train, (StationID)w->window_number);
 			break;
 		}
 
 		case 11: { /* Show a list of scheduled road-vehicles to this station */
 			const Station *st = GetStation(w->window_number);
-			ShowVehicleListWindow(st->owner, w->window_number, VEH_Road);
+			ShowVehicleListWindow(st->owner, VEH_Road, (StationID)w->window_number);
 			break;
 		}
 
@@ -776,7 +776,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			const Station *st = GetStation(w->window_number);
 			/* Since oilrigs have no owners, show the scheduled aircraft of current player */
 			PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
-			ShowVehicleListWindow(owner, w->window_number, VEH_Aircraft);
+			ShowVehicleListWindow(owner, VEH_Aircraft, (StationID)w->window_number);
 			break;
 		}
 
@@ -784,7 +784,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			const Station *st = GetStation(w->window_number);
 			/* Since oilrigs/bouys have no owners, show the scheduled ships of current player */
 			PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
-			ShowVehicleListWindow(owner, w->window_number, VEH_Ship);
+			ShowVehicleListWindow(owner, VEH_Ship, (StationID)w->window_number);
 			break;
 		}
 		}

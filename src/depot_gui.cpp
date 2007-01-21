@@ -793,7 +793,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case DEPOT_WIDGET_VEHICLE_LIST:
-					ShowVehDepotOrders(GetTileOwner(w->window_number), WP(w, depot_d).type, w->window_number);
+					ShowVehicleListWindow(GetTileOwner(w->window_number), WP(w, depot_d).type, (TileIndex)w->window_number);
 					break;
 
 				case DEPOT_WIDGET_AUTOREPLACE:

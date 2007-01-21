@@ -1874,29 +1874,19 @@ static const WindowDesc _player_vehicle_list_aircraft_desc = {
 	PlayerVehWndProc
 };
 
-static void ShowVehicleListWindowLocal(PlayerID player, byte vehicle_type, StationID station, OrderID order, uint16 depot_airport_index)
+static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, byte vehicle_type, uint16 unique_number)
 {
 	Window *w;
 	WindowNumber num;
 
 	if (!IsValidPlayer(player)) return;
 
-	num = (vehicle_type << 11) | player;
-	if (order != INVALID_ORDER) {
-		num |= (order << 16) | VLW_SHARED_ORDERS;
-	} else if (depot_airport_index != INVALID_STATION) {
-		num |= (depot_airport_index << 16) | VLW_DEPOT_LIST;
-	} else if (station == INVALID_STATION) {
-		num |= VLW_STANDARD;
-	} else {
-		num |= (station << 16) | VLW_STATION_LIST;
-	}
+	num = (unique_number << 16) | (vehicle_type << 11) | VLW_flag | player;
 
 	/* The vehicle list windows have been unified. Just some strings need
 	 * to be changed which happens in the WE_CREATE event and resizing
 	 * some of the windows to the correct size */
 	switch (vehicle_type) {
-		default: NOT_REACHED();
 		case VEH_Train:
 			w = AllocateWindowDescFront(&_player_vehicle_list_train_desc, num);
 			if (w != NULL) ResizeWindow(w, 65, 38);
@@ -1911,6 +1901,7 @@ static void ShowVehicleListWindowLocal(PlayerID player, byte vehicle_type, Stati
 		case VEH_Aircraft:
 			w = AllocateWindowDescFront(&_player_vehicle_list_aircraft_desc, num);
 			break;
+		default: NOT_REACHED(); return;
 	}
 
 	if (w != NULL) {
@@ -1920,18 +1911,23 @@ static void ShowVehicleListWindowLocal(PlayerID player, byte vehicle_type, Stati
 	}
 }
 
-void ShowVehicleListWindow(PlayerID player, StationID station, byte vehicle_type)
+void ShowVehicleListWindow(PlayerID player, byte vehicle_type)
 {
-	ShowVehicleListWindowLocal(player, vehicle_type, station, INVALID_ORDER, INVALID_STATION);
+	ShowVehicleListWindowLocal(player, VLW_STANDARD, vehicle_type, 0);
 }
 
-void ShowVehWithSharedOrders(Vehicle *v, byte vehicle_type)
+void ShowVehicleListWindow(const Vehicle *v)
 {
 	if (v->orders == NULL) return; // no shared list to show
-	ShowVehicleListWindowLocal(v->owner, vehicle_type, INVALID_STATION, v->orders->index, INVALID_STATION);
+	ShowVehicleListWindowLocal(v->owner, VLW_SHARED_ORDERS, v->type, v->orders->index);
 }
 
-void ShowVehDepotOrders(PlayerID player, byte vehicle_type, TileIndex depot_tile)
+void ShowVehicleListWindow(PlayerID player, byte vehicle_type, StationID station)
+{
+	ShowVehicleListWindowLocal(player, VLW_STATION_LIST, vehicle_type, station);
+}
+
+void ShowVehicleListWindow(PlayerID player, byte vehicle_type, TileIndex depot_tile)
 {
 	uint16 depot_airport_index;
 
@@ -1942,5 +1938,5 @@ void ShowVehDepotOrders(PlayerID player, byte vehicle_type, TileIndex depot_tile
 		if (depot == NULL) return; // no depot to show
 		depot_airport_index = depot->index;
 	}
-	ShowVehicleListWindowLocal(player, vehicle_type, INVALID_STATION, INVALID_ORDER, depot_airport_index);
+	ShowVehicleListWindowLocal(player, VLW_DEPOT_LIST, vehicle_type, depot_airport_index);
 }
