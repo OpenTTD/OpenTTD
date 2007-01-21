@@ -65,8 +65,6 @@ static const int64 INVALID_VALUE = 0x80000000;
 
 static void DrawGraph(const GraphDrawer *gw)
 {
-
-	int i,j,k;
 	uint x,y,old_x,old_y;
 	int right;
 	int num_x, num_dataset;
@@ -174,22 +172,21 @@ static void DrawGraph(const GraphDrawer *gw)
 	if (gw->month != 0xFF) {
 		x = gw->left + GRAPH_X_POSITION_BEGINNING;
 		y = gw->top + gw->height + 1;
-		j = gw->month;
-		k = gw->year;
-		i = gw->num_on_x_axis;assert(i>0);
-		do {
-			SetDParam(2, k);
-			SetDParam(0, j + STR_0162_JAN);
-			SetDParam(1, j + STR_0162_JAN + 2);
-			DrawString(x, y, j == 0 ? STR_016F : STR_016E, GRAPH_AXIS_LABEL_COLOUR);
+		byte month = gw->month;
+		Year year  = gw->year;
+		for (int i = 0; i < gw->num_on_x_axis; i++) {
+			SetDParam(0, month + STR_0162_JAN);
+			SetDParam(1, month + STR_0162_JAN + 2);
+			SetDParam(2, year);
+			DrawString(x, y, month == 0 ? STR_016F : STR_016E, GRAPH_AXIS_LABEL_COLOUR);
 
-			j += 3;
-			if (j >= 12) {
-				j = 0;
-				k++;
+			month += 3;
+			if (month >= 12) {
+				month = 0;
+				year++;
 			}
 			x += GRAPH_X_POSITION_SEPARATION;
-		} while (--i);
+		}
 	} else {
 		/* Add 8 to make the string appear centred between the lines. */
 		x = gw->left + GRAPH_X_POSITION_BEGINNING + 8;
@@ -205,10 +202,10 @@ static void DrawGraph(const GraphDrawer *gw)
 	}
 
 	/* draw lines and dots */
-	i = 0;
 	row_ptr = gw->cost[0];
 	sel = gw->sel; // show only selected lines. GraphDrawer qw->sel set in Graph-Legend (_legend_excludebits)
-	do {
+
+	for (int i = 0; i < gw->num_dataset; i++) {
 		if (!(sel & 1)) {
 			/* Centre the dot between the grid lines. */
 			x = gw->left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
@@ -233,7 +230,9 @@ static void DrawGraph(const GraphDrawer *gw)
 				x += GRAPH_X_POSITION_SEPARATION;
 			}
 		}
-	} while (sel>>=1,row_ptr+=24, ++i < gw->num_dataset);
+		sel >>= 1;
+		row_ptr += 24;
+	}
 }
 
 /****************/
