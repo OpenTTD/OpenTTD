@@ -392,9 +392,6 @@ STR_ENGINE_SORT_RUNNING_COST                                    :运行费用
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :功率/运行费用
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :装载能力
 STR_NO_WAITING_CARGO                                            :{BLACK}没有任何类型的货物正在等待
-STR_SELECT_ALL_FACILITIES                                       :{BLACK}Select all facilities
-STR_SELECT_ALL_TYPES                                            :{BLACK}Select all cargo types (including no waiting cargo)
-STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}See a list of available engine designs for this vehicle type.
 STR_MANAGE_LIST                                                 :{BLACK}管理列表
 STR_MANAGE_LIST_TIP                                             :{BLACK}向所有在此列表中的成员发出命令
 STR_REPLACE_VEHICLES                                            :替换车辆/飞机/船只
@@ -1221,8 +1218,6 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}将车�
 
 STR_DRAG_DROP                                                   :{BLACK}拖动模式
 STR_STATION_DRAG_DROP                                           :{BLACK}使用拖动模式建设车站
-STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Select a station class to display
-STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Select the station type to build
 
 STR_FAST_FORWARD                                                :{BLACK}快速游戏模式
 STR_MESSAGE_HISTORY                                             :{WHITE}消息历史
@@ -1671,7 +1666,6 @@ STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}的交通陷入混乱！{}{}由 {COMPANY} 资助的市政道路重建导致市内交通瘫痪 6 个月！
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (under construction)
 STR_2059_IGLOO                                                  :圆顶屋
 STR_205A_TEPEES                                                 :帐篷
 STR_205B_TEAPOT_HOUSE                                           :茶杯小屋
@@ -2542,7 +2536,6 @@ STR_8826_GO_TO                                                  :{BLACK}前往
 STR_8827_FULL_LOAD                                              :{BLACK}装货
 STR_8828_UNLOAD                                                 :{BLACK}卸货
 STR_REFIT                                                       :{BLACK}改装
-STR_REFIT_TIP                                                   :{BLACK}Select what cargo type to refit to in this order. Control click to remove refit instruction
 STR_REFIT_ORDER                                                 :(改装为 {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (调度计划)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}-- 调度计划结束 --
@@ -3008,9 +3001,8 @@ STR_MASS_STOP_LIST_TIP                                          :{BLACK}点击�
 STR_MASS_START_LIST_TIP                                         :{BLACK}点击这里可以启动列表中的所有车辆/船只/飞机
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} Sign{P "" s}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} Sign
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Order refit failure stopped {STRING} {COMMA}
 
 ############ Lists rail types
 
@@ -3112,10 +3104,3 @@ STR_HUB_AIRPORTS                                                :{BLACK}空运�
 STR_HELIPORTS                                                   :{BLACK}直升机机场
 
 ############ Tooltip measurment
-
-STR_MEASURE_LENGTH                                              :{BLACK}Length: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Length: {NUM}{}Height difference: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Height difference: {NUM} m
-
-########
