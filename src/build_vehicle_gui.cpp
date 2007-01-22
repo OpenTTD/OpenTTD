@@ -95,14 +95,9 @@ static void SetupWindowStrings(const Window *w, byte type)
 }
 
 static bool _internal_sort_order; // descending/ascending
-static byte _last_sort_criteria_train    = 0;
-static bool _last_sort_order_train       = false;
 
-static byte _last_sort_criteria_ship     = 0;
-static bool _last_sort_order_ship        = false;
-
-static byte _last_sort_criteria_aircraft = 0;
-static bool _last_sort_order_aircraft    = false;
+static byte _last_sort_criteria[]    = {0, 0, 0, 0};
+static bool _last_sort_order[]       = {false, false, false, false};
 
 static int CDECL EngineNumberSorter(const void *a, const void *b)
 {
@@ -749,10 +744,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 	switch (e->we.click.widget) {
 		case BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING:
 			bv->descending_sort_order ^= true;
-			switch (bv->vehicle_type) {
-				case VEH_Train:    _last_sort_order_train    = bv->descending_sort_order; break;
-				case VEH_Aircraft: _last_sort_order_aircraft = bv->descending_sort_order; break;
-			}
+			_last_sort_order[VehTypeToIndex(bv->vehicle_type)] = bv->descending_sort_order;
 			bv->regenerate_list = true;
 			SetWindowDirty(w);
 			break;
@@ -859,11 +851,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 			if (bv->sort_criteria != e->we.dropdown.index) {
 				bv->sort_criteria = e->we.dropdown.index;
-				switch (bv->vehicle_type) {
-					case VEH_Train:    _last_sort_criteria_train    = bv->sort_criteria; break;
-					case VEH_Ship:     _last_sort_criteria_ship     = bv->sort_criteria; break;
-					case VEH_Aircraft: _last_sort_criteria_aircraft = bv->sort_criteria; break;
-				}
+				_last_sort_criteria[VehTypeToIndex(bv->vehicle_type)] = bv->sort_criteria;
 				bv->regenerate_list = true;
 			}
 			SetWindowDirty(w);
@@ -912,24 +900,21 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 	bv->vehicle_type    = type;
 	bv->regenerate_list = false;
 
+	bv->sort_criteria         = _last_sort_criteria[VehTypeToIndex(type)];
+	bv->descending_sort_order = _last_sort_order[VehTypeToIndex(type)];
+
 	switch (type) {
 		case VEH_Train:
 			WP(w,buildvehicle_d).filter.railtype = (tile == 0) ? RAILTYPE_END : GetRailType(tile);
 			ResizeWindow(w, 0, 16);
-			bv->sort_criteria         = _last_sort_criteria_train;
-			bv->descending_sort_order = _last_sort_order_train;
 			break;
 		case VEH_Ship:
 			ResizeWindow(w, 27, 0);
-			bv->sort_criteria         = _last_sort_criteria_ship;
-			bv->descending_sort_order = _last_sort_order_ship;
 			break;
 		case VEH_Aircraft:
 			AcceptPlanes acc_planes = (tile == 0) ? ALL : GetAirport(GetStationByTile(tile)->airport_type)->acc_planes;
 			bv->filter.acc_planes = acc_planes;
 			ResizeWindow(w, 12, 0);
-			bv->sort_criteria         = _last_sort_criteria_aircraft;
-			bv->descending_sort_order = _last_sort_order_aircraft;
 			break;
 	}
 	SetupWindowStrings(w, type);

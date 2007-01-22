@@ -424,6 +424,19 @@ static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
 	return IsPlayerBuildableVehicleType(v->type);
 }
 
+/** Function to give index of a vehicle type
+ *  Since the return value is 0 for VEH_train, it's perfect for index to arrays
+ */
+static inline byte VehTypeToIndex(byte type)
+{
+	return type - VEH_Train;
+}
+
+static inline byte VehTypeToIndex(const Vehicle *v)
+{
+	return VehTypeToIndex(v->type);
+}
+
 #define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (IsValidVehicle(v))
 #define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
 
