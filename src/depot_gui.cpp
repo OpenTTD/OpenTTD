@@ -735,15 +735,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 
 				case DEPOT_WIDGET_BUILD: // Build vehicle
 					ResetObjectToPlace();
-					switch (WP(w, depot_d).type) {
-						case VEH_Road:     ShowBuildRoadVehWindow(w->window_number);  break;
-						case VEH_Ship:
-						case VEH_Train:
-						case VEH_Aircraft:
-							ShowBuildVehicleWindow(w->window_number, WP(w, depot_d).type);
-							break;
-					default: NOT_REACHED();
-					}
+					ShowBuildVehicleWindow(w->window_number, WP(w, depot_d).type);
 					break;
 
 				case DEPOT_WIDGET_CLONE: // Clone button
