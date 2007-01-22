@@ -7,67 +7,13 @@
 #include "ship.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "map.h"
-#include "window.h"
 #include "gui.h"
-#include "gfx.h"
 #include "vehicle.h"
 #include "viewport.h"
-#include "station.h"
 #include "command.h"
-#include "player.h"
-#include "engine.h"
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
-#include "date.h"
-
-/**
- * Draw the purchase info details of a ship at a given location.
- * @param x,y location where to draw the info
- * @param engine_number the engine of which to draw the info of
- */
-void DrawShipPurchaseInfo(int x, int y, uint w, EngineID engine_number)
-{
-	YearMonthDay ymd;
-	const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
-	const Engine *e;
-
-	/* Purchase cost - Max speed */
-	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
-	SetDParam(1, svi->max_speed / 2);
-	DrawString(x,y, STR_PURCHASE_INFO_COST_SPEED, 0);
-	y += 10;
-
-	/* Cargo type + capacity */
-	SetDParam(0, svi->cargo_type);
-	SetDParam(1, svi->capacity);
-	SetDParam(2, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
-	DrawString(x,y, STR_PURCHASE_INFO_CAPACITY, 0);
-	y += 10;
-
-	/* Running cost */
-	SetDParam(0, svi->running_cost * _price.ship_running >> 8);
-	DrawString(x,y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
-	y += 10;
-
-	/* Design date - Life length */
-	e = GetEngine(engine_number);
-	ConvertDateToYMD(e->intro_date, &ymd);
-	SetDParam(0, ymd.year);
-	SetDParam(1, e->lifelength);
-	DrawString(x,y, STR_PURCHASE_INFO_DESIGNED_LIFE, 0);
-	y += 10;
-
-	/* Reliability */
-	SetDParam(0, e->reliability * 100 >> 16);
-	DrawString(x,y, STR_PURCHASE_INFO_RELIABILITY, 0);
-	y += 10;
-
-	/* Additional text from NewGRF */
-	y += ShowAdditionalText(x, y, w, engine_number);
-	if (svi->refittable) y += ShowRefitOptionsList(x, y, w, engine_number);
-}
 
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
@@ -238,134 +184,6 @@ void CcCloneShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) ShowShipViewWindow(GetVehicle(_new_vehicle_id));
 }
-
-static void NewShipWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			EngineID selected_id;
-			EngineID eid;
-			int count;
-			int pos;
-			int sel;
-			int y;
-
-			SetWindowWidgetDisabledState(w, 5, w->window_number == 0);
-
-			count = 0;
-			for (eid = SHIP_ENGINES_INDEX; eid < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; eid++) {
-				if (HASBIT(GetEngine(eid)->player_avail, _local_player)) count++;
-			}
-			SetVScrollCount(w, count);
-
-			DrawWindowWidgets(w);
-
-			y = 15;
-			sel = WP(w,buildvehicle_d).sel_index;
-			pos = w->vscroll.pos;
-			selected_id = INVALID_ENGINE;
-			for (eid = SHIP_ENGINES_INDEX; eid < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; eid++) {
-				if (!HASBIT(GetEngine(eid)->player_avail, _local_player)) continue;
-				if (sel == 0) selected_id = eid;
-				if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-					DrawString(77, y + 7, GetCustomEngineName(eid), sel == 0 ? 0xC : 0x10);
-					DrawShipEngine(37, y + 10, eid, GetEnginePalette(eid, _local_player));
-					y += 24;
-				}
-				sel--;
-			}
-
-			WP(w,buildvehicle_d).sel_engine = selected_id;
-
-			if (selected_id != INVALID_ENGINE) {
-				const Widget *wi = &w->widget[4];
-				DrawShipPurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, selected_id);
-			}
-			break;
-		}
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 2: { /* listbox */
-			uint i = (e->we.click.pt.y - 14) / 24;
-			if (i < w->vscroll.cap) {
-				WP(w,buildvehicle_d).sel_index = i + w->vscroll.pos;
-				SetWindowDirty(w);
-			}
-		} break;
-		case 5: { /* build */
-			EngineID sel_eng = WP(w,buildvehicle_d).sel_engine;
-			if (sel_eng != INVALID_ENGINE)
-				DoCommandP(w->window_number, sel_eng, 0, CcBuildShip, CMD_BUILD_SHIP | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP));
-		} break;
-
-		case 6: { /* rename */
-			EngineID sel_eng = WP(w,buildvehicle_d).sel_engine;
-			if (sel_eng != INVALID_ENGINE) {
-				WP(w, buildvehicle_d).rename_engine = sel_eng;
-				ShowQueryString(GetCustomEngineName(sel_eng), STR_9838_RENAME_SHIP_TYPE, 31, 160, w, CS_ALPHANUMERAL);
-			}
-		}	break;
-		}
-		break;
-
-	case WE_ON_EDIT_TEXT:
-		if (e->we.edittext.str[0] != '\0') {
-			_cmd_text = e->we.edittext.str;
-			DoCommandP(0, WP(w, buildvehicle_d).rename_engine, 0, NULL,
-				CMD_RENAME_ENGINE | CMD_MSG(STR_9839_CAN_T_RENAME_SHIP_TYPE));
-		}
-		break;
-
-	case WE_RESIZE:
-		w->vscroll.cap += e->we.sizing.diff.y / 24;
-		w->widget[2].data = (w->vscroll.cap << 8) + 1;
-		break;
-
-	}
-}
-
-static const Widget _new_ship_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   254,     0,    13, STR_9808_NEW_SHIPS,  STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   242,    14,   109, 0x401,               STR_9825_SHIP_SELECTION_LIST_CLICK},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   243,   254,    14,   109, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,     RESIZE_TB,    14,     0,   254,   110,   201, 0x0,                 STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   121,   202,   213, STR_9809_BUILD_SHIP, STR_9826_BUILD_THE_HIGHLIGHTED_SHIP},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   122,   242,   202,   213, STR_9836_RENAME,     STR_9837_RENAME_SHIP_TYPE},
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   243,   254,   202,   213, 0x0,                 STR_RESIZE_BUTTON},
-{   WIDGETS_END},
-};
-
-static const WindowDesc _new_ship_desc = {
-	WDP_AUTO, WDP_AUTO, 255, 214,
-	WC_BUILD_VEHICLE,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	_new_ship_widgets,
-	NewShipWndProc
-};
-
-
-void ShowBuildShipWindow(TileIndex tile)
-{
-	Window *w;
-
-	DeleteWindowById(WC_BUILD_VEHICLE, tile);
-
-	w = AllocateWindowDescFront(&_new_ship_desc, tile);
-	w->vscroll.cap = 4;
-	w->widget[2].data = (w->vscroll.cap << 8) + 1;
-
-	w->resize.step_height = 24;
-
-	if (tile != 0) {
-		w->caption_color = GetTileOwner(tile);
-	} else {
-		w->caption_color = _local_player;
-	}
-
-}
-
 
 static void ShipViewWndProc(Window *w, WindowEvent *e)
 {

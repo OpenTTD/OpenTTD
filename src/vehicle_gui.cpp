@@ -1049,7 +1049,7 @@ static void DrawVehiclePurchaseInfoLocal(const int x, const int y, uint w, const
 {
 	switch (GetEngine(engine_number)->type) {
 		case VEH_Road: DrawRoadVehPurchaseInfo(x, y, w, engine_number);      break;
-		case VEH_Ship: DrawShipPurchaseInfo(x, y, w, engine_number);         break;
+		case VEH_Ship:
 		case VEH_Train:
 		case VEH_Aircraft:
 			DrawVehiclePurchaseInfo(x, y, w, engine_number);
@@ -1739,7 +1739,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 				case VLW_WIDGET_NEW_VEHICLES:
 					switch (vl->vehicle_type) {
 						case VEH_Road:  ShowBuildRoadVehWindow(0); break;
-						case VEH_Ship:  ShowBuildShipWindow(0); break;
+						case VEH_Ship:
 						case VEH_Train:
 						case VEH_Aircraft: ShowBuildVehicleWindow(0, vl->vehicle_type); break;
 					}

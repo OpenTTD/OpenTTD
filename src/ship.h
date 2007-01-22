@@ -5,6 +5,7 @@
 
 #include "vehicle.h"
 
+void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcCloneShip(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void RecalcShipStuff(Vehicle *v);
 

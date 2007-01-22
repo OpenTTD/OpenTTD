@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "train.h"
+#include "ship.h"
 #include "aircraft.h"
 #include "debug.h"
 #include "functions.h"
@@ -74,6 +75,14 @@ static void SetupWindowStrings(const Window *w, byte type)
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_8820_RENAME;
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_8845_RENAME_TRAIN_VEHICLE_TYPE;
 			break;
+		case VEH_Ship:
+			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_9808_NEW_SHIPS;
+			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9825_SHIP_SELECTION_LIST_CLICK;
+			w->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9809_BUILD_SHIP;
+			w->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_9826_BUILD_THE_HIGHLIGHTED_SHIP;
+			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_9836_RENAME;
+			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_9837_RENAME_SHIP_TYPE;
+			break;
 		case VEH_Aircraft:
 			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_A005_NEW_AIRCRAFT;
 			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_A025_AIRCRAFT_SELECTION_LIST;
@@ -88,6 +97,9 @@ static void SetupWindowStrings(const Window *w, byte type)
 static bool _internal_sort_order; // descending/ascending
 static byte _last_sort_criteria_train    = 0;
 static bool _last_sort_order_train       = false;
+
+static byte _last_sort_criteria_ship     = 0;
+static bool _last_sort_order_ship        = false;
 
 static byte _last_sort_criteria_aircraft = 0;
 static bool _last_sort_order_aircraft    = false;
@@ -305,6 +317,21 @@ static const StringID _train_sort_listing[] = {
 	INVALID_STRING_ID
 };
 
+static EngList_SortTypeFunction * const _ship_sorter[] = {
+	&EngineNumberSorter,
+	&EngineIntroDateSorter,
+	&EngineNameSorter,
+	&EngineReliabilitySorter,
+};
+
+static const StringID _ship_sort_listing[] = {
+	STR_ENGINE_SORT_ENGINE_ID,
+	STR_ENGINE_SORT_INTRO_DATE,
+	STR_SORT_BY_DROPDOWN_NAME,
+	STR_SORT_BY_RELIABILITY,
+	INVALID_STRING_ID
+};
+
 static EngList_SortTypeFunction * const _aircraft_sorter[] = {
 	&EngineNumberSorter,
 	&AircraftEngineCostSorter,
@@ -392,6 +419,30 @@ static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const R
 	return y;
 }
 
+/* Draw ship specific details */
+static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const ShipVehicleInfo *svi)
+{
+	/* Purchase cost - Max speed */
+	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
+	SetDParam(1, svi->max_speed / 2);
+	DrawString(x,y, STR_PURCHASE_INFO_COST_SPEED, 0);
+	y += 10;
+
+	/* Cargo type + capacity */
+	SetDParam(0, svi->cargo_type);
+	SetDParam(1, svi->capacity);
+	SetDParam(2, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+	DrawString(x,y, STR_PURCHASE_INFO_CAPACITY, 0);
+	y += 10;
+
+	/* Running cost */
+	SetDParam(0, svi->running_cost * _price.ship_running >> 8);
+	DrawString(x,y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
+	y += 10;
+
+	return y;
+}
+
 /* Draw aircraft specific details */
 static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const AircraftVehicleInfo *avi)
 {
@@ -463,6 +514,9 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 			y += 10;
 		}
 			break;
+		case VEH_Ship:
+			y = DrawVehiclePurchaseInfo(x, y, engine_number, ShipVehInfo(engine_number));
+			break;
 		case VEH_Aircraft:
 			y = DrawVehiclePurchaseInfo(x, y, engine_number, AircraftVehInfo(engine_number));
 			break;
@@ -489,6 +543,10 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 		case VEH_Train: {
 			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
 			if (rvi->capacity > 0) y += ShowRefitOptionsList(x, y, w, engine_number);
+		} break;
+		case VEH_Ship: {
+			const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
+			if (svi->refittable) y += ShowRefitOptionsList(x, y, w, engine_number);
 		} break;
 		case VEH_Aircraft:
 			y += ShowRefitOptionsList(x, y, w, engine_number);
@@ -544,6 +602,25 @@ static void GenerateBuildTrainList(Window *w)
 }
 
 /* Figure out what aircraft EngineIDs to put in the list */
+static void GenerateBuildShipList(Window *w)
+{
+	EngineID eid, sel_id;
+	buildvehicle_d *bv = &WP(w, buildvehicle_d);
+
+	EngList_RemoveAll(&bv->eng_list);
+
+	sel_id = INVALID_ENGINE;
+
+	for (eid = SHIP_ENGINES_INDEX; eid < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; eid++) {
+		if (!IsEngineBuildable(eid, VEH_Ship, _local_player)) continue;
+		EngList_Add(&bv->eng_list, eid);
+
+		if (eid == bv->sel_engine) sel_id = eid;
+	}
+	bv->sel_engine = sel_id;
+}
+
+/* Figure out what aircraft EngineIDs to put in the list */
 static void GenerateBuildAircraftList(Window *w)
 {
 	EngineID eid, sel_id;
@@ -590,6 +667,11 @@ static void GenerateBuildList(Window *w)
 		case VEH_Train:
 			GenerateBuildTrainList(w);
 			break;
+		case VEH_Ship:
+			GenerateBuildShipList(w);
+			_internal_sort_order = bv->descending_sort_order;
+			EngList_Sort(&bv->eng_list, _ship_sorter[bv->sort_criteria]);
+			break;
 		case VEH_Aircraft:
 			GenerateBuildAircraftList(w);
 			_internal_sort_order = bv->descending_sort_order;
@@ -624,6 +706,14 @@ static void DrawBuildVehicleWindow(Window *w)
 					DrawTrainEngine(x + 29, y + 6, engine, GetEnginePalette(engine, _local_player));
 				}
 				break;
+			case VEH_Ship:
+				for (; position < max; position++, y += 24) {
+					const EngineID engine = bv->eng_list[position];
+
+					DrawString(x + 75, y + 7, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
+					DrawShipEngine(x + 35, y + 10, engine, GetEnginePalette(engine, _local_player));
+				}
+				break;
 			case VEH_Aircraft:
 				for (; position < max; position++, y += 24) {
 					const EngineID engine = bv->eng_list[position];
@@ -643,6 +733,7 @@ static void DrawBuildVehicleWindow(Window *w)
 		StringID str = STR_NULL;
 		switch (bv->vehicle_type) {
 			case VEH_Train:    str = _train_sort_listing[bv->sort_criteria];    break;
+			case VEH_Ship:     str = _ship_sort_listing[bv->sort_criteria];     break;
 			case VEH_Aircraft: str = _aircraft_sort_listing[bv->sort_criteria]; break;
 		}
 
@@ -679,6 +770,9 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 				case VEH_Train:
 					ShowDropDownMenu(w, _train_sort_listing, bv->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
 					break;
+				case VEH_Ship:
+					ShowDropDownMenu(w, _ship_sort_listing, bv->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
+					break;
 				case VEH_Aircraft:
 					ShowDropDownMenu(w, _aircraft_sort_listing, bv->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
 					break;
@@ -692,6 +786,9 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 					case VEH_Train:
 						DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->flags & RVI_WAGON) ? CcBuildWagon : CcBuildLoco,
 								   CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+						break;
+					case VEH_Ship:
+						DoCommandP(w->window_number, sel_eng, 0, CcBuildShip, CMD_BUILD_SHIP | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP));
 						break;
 					case VEH_Aircraft:
 						DoCommandP(w->window_number, sel_eng, 0, CcBuildAircraft, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
@@ -709,6 +806,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 				bv->rename_engine = sel_eng;
 				switch (bv->vehicle_type) {
 					case VEH_Train:    str = STR_886A_RENAME_TRAIN_VEHICLE_TYPE; break;
+					case VEH_Ship:     str = STR_9838_RENAME_SHIP_TYPE;          break;
 					case VEH_Aircraft: str = STR_A039_RENAME_AIRCRAFT_TYPE;      break;
 				}
 				ShowQueryString(GetCustomEngineName(sel_eng), str, 31, 160, w, CS_ALPHANUMERAL);
@@ -750,6 +848,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 				_cmd_text = e->we.edittext.str;
 				switch (bv->vehicle_type) {
 					case VEH_Train:    str = STR_886B_CAN_T_RENAME_TRAIN_VEHICLE; break;
+					case VEH_Ship:     str = STR_9839_CAN_T_RENAME_SHIP_TYPE;     break;
 					case VEH_Aircraft: str = STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE; break;
 				}
 				DoCommandP(0, bv->rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(str));
@@ -762,6 +861,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 				bv->sort_criteria = e->we.dropdown.index;
 				switch (bv->vehicle_type) {
 					case VEH_Train:    _last_sort_criteria_train    = bv->sort_criteria; break;
+					case VEH_Ship:     _last_sort_criteria_ship     = bv->sort_criteria; break;
 					case VEH_Aircraft: _last_sort_criteria_aircraft = bv->sort_criteria; break;
 				}
 				bv->regenerate_list = true;
@@ -819,14 +919,18 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 			bv->sort_criteria         = _last_sort_criteria_train;
 			bv->descending_sort_order = _last_sort_order_train;
 			break;
-		case VEH_Aircraft: {
+		case VEH_Ship:
+			ResizeWindow(w, 27, 0);
+			bv->sort_criteria         = _last_sort_criteria_ship;
+			bv->descending_sort_order = _last_sort_order_ship;
+			break;
+		case VEH_Aircraft:
 			AcceptPlanes acc_planes = (tile == 0) ? ALL : GetAirport(GetStationByTile(tile)->airport_type)->acc_planes;
 			bv->filter.acc_planes = acc_planes;
 			ResizeWindow(w, 12, 0);
 			bv->sort_criteria         = _last_sort_criteria_aircraft;
 			bv->descending_sort_order = _last_sort_order_aircraft;
 			break;
-		}
 	}
 	SetupWindowStrings(w, type);
 	ResizeButtons(w);
