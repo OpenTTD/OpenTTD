@@ -558,7 +558,7 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 	}
 
 	/* Draw details, that applies to all types except rail wagons */
-	if (e->type != VEH_Train || (RailVehInfo(engine_number)->flags & RVI_WAGON == 0)) {
+	if (e->type != VEH_Train || !(RailVehInfo(engine_number)->flags & RVI_WAGON)) {
 		/* Design date - Life length */
 		SetDParam(0, ymd.year);
 		SetDParam(1, e->lifelength);
