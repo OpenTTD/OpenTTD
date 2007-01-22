@@ -65,7 +65,7 @@ static void ResizeButtons(Window *w)
 }
 
 /* Setup widget strings to fit the different types of vehicles */
-static void SetupWindowStrings(const Window *w, byte type)
+static void SetupWindowStrings(Window *w, byte type)
 {
 	switch (type) {
 		case VEH_Train:
@@ -297,6 +297,7 @@ static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
 }
 
 static EngList_SortTypeFunction * const _sorter[][9] = {{
+	/* Trains */
 	&EngineNumberSorter,
 	&TrainEngineCostSorter,
 	&TrainEngineSpeedSorter,
@@ -307,16 +308,19 @@ static EngList_SortTypeFunction * const _sorter[][9] = {{
 	&TrainEnginePowerVsRunningCostSorter,
 	&EngineReliabilitySorter,
 },{
+	/* Road vehicles */
 	&EngineNumberSorter,
 	&EngineIntroDateSorter,
 	&EngineNameSorter,
 	&EngineReliabilitySorter,
 },{
+	/* Ships */
 	&EngineNumberSorter,
 	&EngineIntroDateSorter,
 	&EngineNameSorter,
 	&EngineReliabilitySorter,
 },{
+	/* Aircraft */
 	&EngineNumberSorter,
 	&AircraftEngineCostSorter,
 	&AircraftEngineSpeedSorter,
@@ -328,6 +332,7 @@ static EngList_SortTypeFunction * const _sorter[][9] = {{
 }};
 
 static const StringID _sort_listing[][10] = {{
+	/* Trains */
 	STR_ENGINE_SORT_ENGINE_ID,
 	STR_ENGINE_SORT_COST,
 	STR_SORT_BY_MAX_SPEED,
@@ -339,18 +344,21 @@ static const StringID _sort_listing[][10] = {{
 	STR_SORT_BY_RELIABILITY,
 	INVALID_STRING_ID
 },{
+	/* Road vehicles */
 	STR_ENGINE_SORT_ENGINE_ID,
 	STR_ENGINE_SORT_INTRO_DATE,
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_RELIABILITY,
 	INVALID_STRING_ID
 },{
+	/* Ships */
 	STR_ENGINE_SORT_ENGINE_ID,
 	STR_ENGINE_SORT_INTRO_DATE,
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_RELIABILITY,
 	INVALID_STRING_ID
 },{
+	/* Aircraft */
 	STR_ENGINE_SORT_ENGINE_ID,
 	STR_ENGINE_SORT_COST,
 	STR_SORT_BY_MAX_SPEED,
@@ -521,6 +529,7 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 	const Engine *e = GetEngine(engine_number);
 	YearMonthDay ymd;
 	ConvertDateToYMD(e->intro_date, &ymd);
+	bool refitable = false;
 
 	switch (e->type) {
 		case VEH_Train: {
@@ -528,8 +537,10 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 
 			if (rvi->flags & RVI_WAGON) {
 				y = DrawVehiclePurchaseInfo(x, y, engine_number, rvi);
+				refitable = true;
 			} else {
 				y = DrawVehiclePurchaseInfo(x, y, engine_number, rvi, e);
+				refitable = (rvi->capacity > 0);
 			}
 
 			/* Cargo type + capacity, or N/A */
@@ -548,12 +559,16 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 			break;
 		case VEH_Road:
 			y = DrawVehiclePurchaseInfo(x, y, engine_number, RoadVehInfo(engine_number));
+			refitable = true;
 			break;
-		case VEH_Ship:
-			y = DrawVehiclePurchaseInfo(x, y, engine_number, ShipVehInfo(engine_number));
-			break;
+		case VEH_Ship: {
+			const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
+			y = DrawVehiclePurchaseInfo(x, y, engine_number, svi);
+			refitable = svi->refittable;
+		} break;
 		case VEH_Aircraft:
 			y = DrawVehiclePurchaseInfo(x, y, engine_number, AircraftVehInfo(engine_number));
+			refitable = true;
 			break;
 	}
 
@@ -573,19 +588,7 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 
 	/* Additional text from NewGRF */
 	y += ShowAdditionalText(x, y, w, engine_number);
-	switch (e->type) {
-		case VEH_Train: {
-			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
-			if (rvi->capacity > 0) y += ShowRefitOptionsList(x, y, w, engine_number);
-		} break;
-		case VEH_Ship: {
-			const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
-			if (svi->refittable) y += ShowRefitOptionsList(x, y, w, engine_number);
-		} break;
-		case VEH_Aircraft:
-			y += ShowRefitOptionsList(x, y, w, engine_number);
-			break;
-	}
+	if (refitable) y += ShowRefitOptionsList(x, y, w, engine_number);
 }
 
 /* Figure out what train EngineIDs to put in the list */
@@ -688,20 +691,6 @@ static void GenerateBuildAircraftList(Window *w)
 	sel_id = INVALID_ENGINE;
 	for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
 		if (IsEngineBuildable(eid, VEH_Aircraft, _local_player)) {
-			const AircraftVehicleInfo *avi = AircraftVehInfo(eid);
-			switch (bv->filter.acc_planes) {
-				case HELICOPTERS_ONLY:
-					if (avi->subtype != 0) continue; // if not helicopter
-					break;
-
-				case AIRCRAFT_ONLY:
-					if (avi->subtype == 0) continue; // if helicopter
-					break;
-
-				case ALL: break;
-				default:
-					NOT_REACHED();
-			}
 			EngList_Add(&bv->eng_list, eid);
 
 			if (eid == bv->sel_engine) sel_id = eid;
