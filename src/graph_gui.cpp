@@ -67,7 +67,7 @@ static void DrawGraph(const GraphDrawer *gw)
 {
 	uint x,y,old_x,old_y;
 	int right;
-	int64 mx;
+	int64 highest_value;
 	int adj_height;
 	uint64 y_scaling;
 	int64 value;
@@ -121,9 +121,10 @@ static void DrawGraph(const GraphDrawer *gw)
 	assert(gw->num_on_x_axis > 0);
 	assert(gw->num_dataset > 0);
 
-	mx = 0;
-		/* bit selection for the showing of various players, base max element
-		 * on to-be shown player-information. This way the graph can scale */
+	highest_value = 0;
+
+	/* bit selection for the showing of various players, base max element
+	 * on to-be shown player-information. This way the graph can scale */
 	sel = gw->sel;
 	for (int i = 0; i < gw->num_dataset; i++) {
 		if (!(sel&1)) {
@@ -131,7 +132,10 @@ static void DrawGraph(const GraphDrawer *gw)
 				int64 datapoint = gw->cost[i][j];
 
 				if (datapoint != INVALID_VALUE) {
-					mx = max(mx, datapoint);
+					/* For now, if the graph has negative values the scaling is
+					 * symmetrical about the x axis, so take the absolute value
+					 * of each data point. */
+					highest_value = max(highest_value, myabs(datapoint));
 				}
 			}
 		}
@@ -142,10 +146,10 @@ static void DrawGraph(const GraphDrawer *gw)
 	y_scaling = INVALID_VALUE;
 	value = adj_height * 2;
 
-	if (mx > value) {
-		mx = (mx + 7) & ~7;
-		y_scaling = (((uint64) (value>>1) << 32) / mx);
-		value = mx;
+	if (highest_value > value) {
+		highest_value = ALIGN(highest_value, 8);
+		y_scaling = (((uint64) (value>>1) << 32) / highest_value);
+		value = highest_value;
 	}
 
 	/* draw text strings on the y axis */
