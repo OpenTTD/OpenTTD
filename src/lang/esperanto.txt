@@ -17,8 +17,8 @@ STR_0008_WAITING                                                :{BLACK}Atendas:
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (survoje de
 STR_000B                                                        :{YELLOW}{STATION})
-STR_000C_ACCEPTS                                                :{BLACK}Akceptas: {WHITE}
-STR_000D_ACCEPTS                                                :{BLACK}Akceptas: {GOLD}
+STR_000C_ACCEPTS                                                :{BLACK}Akceptiĝas: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Akceptiĝas: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Pasaĝeroj
 STR_0010_COAL                                                   :Karbo
@@ -1532,7 +1532,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Ne povas
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Ne povas konstrui relojn ĉi tie...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Ne povas forigi relojn de ĉi tie...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Ne povas forigi signalojn de ĉi tie...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Trajndeponeja Orientado
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Trajndeponeja Direkto
 STR_1015_RAILROAD_CONSTRUCTION                                  :Fervoja Konstruado
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrofervoja konstruado
 STR_1016_MONORAIL_CONSTRUCTION                                  :Unurelfervoja konstruado
@@ -1563,7 +1563,7 @@ STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vojkonst
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Elektu Vojan Ponton
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Ne povas konstrui vojon ĉi tie...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Ne povas forigi vojon de ĉi tie...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Deponeja Orientado
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Vojveturildeponeja Direkto
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ne povas konstrui vojveturilan deponejon ĉi tie...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Ne povas konstrui bushaltejon...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Ne povas konstrui ŝarĝstacion...

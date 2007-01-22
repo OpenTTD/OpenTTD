@@ -772,7 +772,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C3_GAME_OPTIONS                                           :Opções do Jogo
 STR_02C5_DIFFICULTY_SETTINGS                                    :Configurações de dificuldade
 STR_02C7_CONFIG_PATCHES                                         :Configurar correções
-STR_NEWGRF_SETTINGS                                             :Definições Newgrf
+STR_NEWGRF_SETTINGS                                             :Configurar NewGRF
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Exibir nomes de cidades
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Exibir nomes de estações
@@ -2887,16 +2887,16 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Dinheiro
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tem um empréstimo muito elevado?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de pontos sobre o máximo de pontos
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definições Newgrf
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Configurar NewGRF
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configurar NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar alterações
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Definir parâmetros
 STR_NEWGRF_TIP                                                  :{BLACK}Lista de todos os conjuntos Newgrf que instalou. Clique num conjunto para alterar as definições.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não existem arquivos newgrf atualmente instalados! Consulte o manual de instruções sobre instalar novos gráficos.
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não existem arquivos NewGRF atualmente instalados! Consulte o manual de instruções sobre instalar novos gráficos.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome do arquivo: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual; isto pode danificar o OpenTTD.{}Tem absoluta certeza que deseja fazer isto?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual; isto pode danificar o OpenTTD. {}Tem absoluta certeza que deseja fazer isto?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adiciona um NewGRF à lista

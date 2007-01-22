@@ -1,5 +1,4 @@
 ##name Korean
-##ownname 한국어
 ##isocode ko_KR.UTF-8
 ##plural 1
 
@@ -153,7 +152,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}지도 - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}게임 설정
 STR_00B2_MESSAGE                                                :{YELLOW}알림
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}{STRING1}로부터의 메시지
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}{STRING}로부터의 메시지
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}경고!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}그렇게 할 수 없습니다....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}이 지역을 지울 수 없습니다....
@@ -281,7 +280,7 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_013B_OWNED_BY                                               :{WHITE}... {STRING2}의 소유입니다.
+STR_013B_OWNED_BY                                               :{WHITE}... {STRING}의 소유입니다.
 STR_013C_CARGO                                                  :{BLACK}화물
 STR_013D_INFORMATION                                            :{BLACK}정보
 STR_013E_CAPACITIES                                             :{BLACK}수용량
@@ -359,6 +358,7 @@ STR_015C_SAVE_GAME                                              :게임 저장�
 STR_015D_LOAD_GAME                                              :불러오기
 STR_015E_QUIT_GAME                                              :그만하기
 STR_015F_QUIT                                                   :종료
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}정말 이 게임을 종료하고 메인으로 이동하시겠습니까?
 STR_0161_QUIT_GAME                                              :{WHITE}게임 그만두기
 STR_SORT_ORDER_TIP                                              :{BLACK}정렬 방법을 선택하십시오 (내림차순/오름차순)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}정렬 기준 선택
@@ -420,7 +420,7 @@ STR_016D_DEC                                                    :12월
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_0170                                                        :{TINYFONT}{STRING2}-
+STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}게임 일시정지
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}게임 저장, 중지, 게임 종료
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 역 목록을 보여주기
@@ -454,7 +454,7 @@ STR_RESIZE_BUTTON                                               :{BLACK}이 창�
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}기본 저장/로드 디렉토리로 이동하려면 여기를 클릭하세요
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}사각형 모양으로 건물과 땅 등을 부숩니다.
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}땅의 모퉁이를 낮춥니다.
-STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}땅의 모퉁이를 올립니다.
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}땅의 모퉁이를 높입니다.
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}스크롤바 - 목록을 상/하로 스크롤하세요
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}스크롤바 - 목록을 좌/우로 스크롤하세요
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}맵에 등고선 표시
@@ -482,8 +482,8 @@ STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}이 지�
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}초기화 가격: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}초기화 가격: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
-STR_01A7_OWNER                                                  :{BLACK}소유자: {LTBLUE}{STRING1}
-STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}지역 당국: {LTBLUE}{STRING1}
+STR_01A7_OWNER                                                  :{BLACK}소유자: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}지역 당국: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :없음
 STR_01AA_NAME                                                   :{BLACK}이름
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
@@ -548,13 +548,13 @@ STR_01E3                                                        :{DKGREEN}{TINYF
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
-STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING1}"
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}트랙{SETX 88}제목
 STR_01E9_SHUFFLE                                                :{TINYFONT}무작위
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}프로그램
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}음악 프로그램 선택
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING1}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING1}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}트랙 인덱스
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}프로그램 - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}초기화
@@ -737,6 +737,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}시나�
 STR_029A_PLAY_SCENARIO                                          :{BLACK}시나리오 플레이
 STR_PLAY_HEIGHTMAP                                              :{BLACK}DEM지형 플레이
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}DEM지형을 풍경으로 하여 게임을 시작합니다.
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}정말 이 시나리오를 종료하시겠습니까?
 STR_029C_QUIT_EDITOR                                            :{WHITE}에디터 종료
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...1200명 이상의 도시에만 건설할 수 있습니다!
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}시작년도를 1년 앞당깁니다.
@@ -748,7 +749,7 @@ STR_02A3_LARGE                                                  :{BLACK}대형
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}도시 크기 선택
 STR_02A5_TOWN_SIZE                                              :{YELLOW}도시 크기:
 
-STR_02B6                                                        :{STRING}  -  {STRING5}
+STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}마지막 메시지/뉴스 보기
 STR_OFF                                                         :끄기
 STR_SUMMARY                                                     :요약
@@ -1009,117 +1010,118 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}패치 �
 
 STR_CONFIG_PATCHES_OFF                                          :Off
 STR_CONFIG_PATCHES_ON                                           :On
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}상태바에 차량 속도를 표시 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}경사/해안가 건설을 허용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}드래그로 철도역 크기 설정 허용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}매우 긴 열차 허용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}사실감있는 열차 가속 사용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING1} {LTBLUE} (requires NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}바로 옆에 역이 있으면 그 역의 이름으로 건설 (새로운 이름X) : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}'전체 싣기'인 경우, 단 하나의 화물이라도 차면 역을 떠남 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}향상된 수송 알고리즘 사용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}점차적으로 차량 싣기 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}인플레이션 (화폐가치하락) : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}매우 긴 교각 건설 허용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}차량기지(차고/격납고)를 경로에 지정하는 것을 허용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}원료 생산 산업시설의 건설을 허용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}한 도시당 같은 종류의 산업시설의 중복 건설을 허용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}같은 종류의 산업 시설이 가까이에 지어지는 것을 허용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 표시 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호등을 통행 방식에 따라 달리 위치함. (좌측통행시 좌측에, 우측통행시 우측에) : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTD패치에 적합한 급행(논스톱) 처리 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면을 움직이게 하기 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}이미 지어진 역에 추가로 역을 증축하는 것을 허용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}향상된 글로벌 경로탐색 (NPF, NTP 우선) : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}무거운 열차를 운행하기 위해 화물에 무게를 가함 : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}상태바에 차량 속도를 표시 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}경사/해안가 건설을 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}드래그로 철도역 크기 설정 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}매우 긴 열차 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}사실감있는 열차 가속 사용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING} {LTBLUE} (requires NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}바로 옆에 역이 있으면 그 역의 이름으로 건설 (새로운 이름X) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}'전체 싣기'인 경우, 단 하나의 화물이라도 차면 역을 떠남 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}향상된 수송 알고리즘 사용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}점차적으로 차량 싣기 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}인플레이션 (화폐가치하락) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}매우 긴 교각 건설 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}차량기지(차고/격납고)를 경로에 지정하는 것을 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}원료 생산 산업시설의 건설을 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}한 도시당 같은 종류의 산업시설의 중복 건설을 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}같은 종류의 산업 시설이 가까이에 지어지는 것을 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 상세하게 표시 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호등을 통행 방식에 따라 달리 위치함. (좌측통행시 좌측에, 우측통행시 우측에) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTD패치에 적합한 급행(논스톱) 처리 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면을 움직이게 하기 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}이미 지어진 역에 추가로 역을 증축하는 것을 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}향상된 글로벌 경로탐색 (NPF, NTP 우선) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}무거운 열차를 운행하기 위해 화물에 무게를 가함 : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}소형 공항의 건설을 허용 : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}소형 공항의 건설을 허용 : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}열차가 길을 잃으면 경고 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}차량의 경로 검사 : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}열차가 길을 잃으면 경고 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}차량의 경로 검사 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :아니요
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :예 (정지된 차량 제외)
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :예 (모든 차량)
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}열차 수입이 적자일 때 경고 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}옛날 차량이 사라지지 않고 계속 만들 수 있게 함 : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}열차 수입이 적자일 때 경고 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}옛날 차량이 사라지지 않고 계속 만들 수 있게 함 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}차량이 오래되면 자동 교체
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}차량이 최고수명의 {ORANGE}{STRING1}{LTBLUE}개월 전/후이면 자동 교체
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}교체를 위한 자동 교체 최소 요구 자금 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}오류 메시지를 {ORANGE}{STRING1}초간 표시함
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}도시명 옆에 인구를 표시함 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}나무 안보이게 하기 (건물 투명하게 하면서) : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}차량이 최고수명의 {ORANGE}{STRING}{LTBLUE}개월 전/후이면 자동 교체
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}교체를 위한 자동 교체 최소 요구 자금 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}오류 메시지 표시 : {ORANGE}{STRING}초 동안
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}도시명 옆에 인구를 표시함 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}나무 안보이게 하기 (건물 투명하게 하면서) : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}지형 생성: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}지형 생성: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :오리지널
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :천지창조
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}석유 정제소는 맵 가장자리에서 {ORANGE}{STRING1}칸 떨어진 곳까지 건설 가능
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}만년설 높이: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}지형의 거친 정도 ('천지창조' 전용) : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}석유 정제소는 맵 가장자리에서 {ORANGE}{STRING}칸 떨어진 곳까지 건설 가능
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}만년설의 높이: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}지형의 거친 정도 ('천지창조' 전용) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :매우 부드럽게
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :부드럽게
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :거칠게
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :매우 거칠게
-STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}나무 배치 알고리즘: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}나무 배치 알고리즘: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :없음
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :오리지널
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :향상됨
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}DEM 회전: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}DEM 회전: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
-STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}평지 시나리오 맵이 받는 높이: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}평지 시나리오 맵이 받는 높이: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}역의 최대 크기: {ORANGE}{STRING1} {RED}경고! 높은 값은 게임을 느리게함!
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 정보 링크 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}스크롤 방향 뒤집기 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}다양한 건설도구를 사용시에 거리측정 툴팁 표시 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}회사 조합원 표시 : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}역의 최대 크기: {ORANGE}{STRING} {RED}경고! 높은 값은 게임을 느리게함!
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 정보 링크 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}스크롤 방향 뒤집기 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}다양한 건설도구를 사용시에 거리측정 툴팁 표시 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}회사 조합원 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :없음
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :내 회사
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :모든 회사
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER>키로 우리 팀원끼리 채팅 : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER>키로 우리 팀원끼리 채팅 : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}최대 열차 수: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}최대 자동차 수: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}최대 항공기 수: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}최대 선박 수: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}최대 열차 수: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}최대 자동차 수: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}최대 항공기 수: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}최대 선박 수: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}컴퓨터의 철도 사용을 허가하지 않음 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}컴퓨터의 자동차 사용을 허가하지 않음 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}컴퓨터의 항공기 사용을 허가하지 않음 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨터의 선박 사용을 허가하지 않음 : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}컴퓨터의 철도 사용을 허가하지 않음 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}컴퓨터의 자동차 사용을 허가하지 않음 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}컴퓨터의 항공기 사용을 허가하지 않음 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨터의 선박 사용을 허가하지 않음 : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}새로운 인공지능(AI) 사용 (알파 버전) : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}멀티 플레이어에서의 AI 허가 (실험적) : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}새로운 인공지능(AI) 사용 (알파 버전) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}멀티 플레이어에서의 AI 허가 (실험적) : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}열차 기본 점검 간격: {ORANGE}{STRING1} 일/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}열차 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}열차 기본 점검 간격: {ORANGE}사용불가
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}자동차 기본 점검 간격: {ORANGE}{STRING1} 일/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}자동차 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}자동차 기본 점검 간격: {ORANGE}사용불가
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}항공기 기본 점검 간격: {ORANGE}{STRING1} 일/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}항공기 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}항공기 기본 점검 간격: {ORANGE}사용불가
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}선박 기본 점검 간격: {ORANGE}{STRING1} 일/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}선박 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}선박 기본 점검 간격: {ORANGE}사용불가
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}고장이 나지 않게 설정되어있으면 점검 간격을 설정하지 않음 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}화물차 속도 제한 사용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}일렉트릭(전기) 철도를 사용하지 않음 : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}고장이 나지 않게 설정되어있으면 점검 간격을 설정하지 않음 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}화물차 속도 제한 사용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}일렉트릭(전기) 철도를 사용하지 않음 : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}{ORANGE}{STRING1}년에 컬러 뉴스가 뜸
-STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}시작 년도: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}종료 년도: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{ORANGE}{STRING}{LTBLUE}년부터 컬러 뉴스가 뜸
+STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}시작 년도: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}종료 년도: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}부드러운 경제 설정 사용 (좀더 적은 변화)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}다른 회사가 주식을 사는 것을 허용
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}드래그 할때 신호등을 매 {ORANGE}{STRING1}타일마다 설치
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}주메뉴의 위치 : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}자동으로 신호기 설치 : {ORANGE}{STRING} 이전에
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}주메뉴의 위치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :왼쪽
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :가운데
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :오른쪽
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}윈도우 자동 결합(가까이 옮기면 자석처럼 붙는 기능) : {ORANGE}{STRING1} px
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}윈도우 자동 결합(가까이 옮기면 자석처럼 붙는 기능) : {ORANGE}{STRING} 픽셀
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}윈도우 자동 결합 : {ORANGE}사용불가
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}인터페이스
@@ -1135,9 +1137,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}설정값 변경
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}아래 기본 점검간격의 일부 혹은 전체가 선택된 설정과 맞지 않습니다. 5-90%와 30-800일이 사용 가능합니다.
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}선박에 YAPF 사용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}자동차에 YAPF 사용 : {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}열차에 YAPF 사용 : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}선박에 YAPF 사용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}자동차에 YAPF 사용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}열차에 YAPF 사용 : {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :온대 기후
 STR_SUB_ARCTIC_LANDSCAPE                                        :냉대 기후
@@ -1149,13 +1151,13 @@ STR_CHEATS_TIP                                                  :{BLACK}체크�
 STR_CHEATS_WARNING                                              :{BLACK}경고! 당신은 경쟁자를 속이고 있습니다. 그러한 창피는 영원히 지워지지 않으리란 것을 명심하십시오.
 STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY64} 만큼 증가
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}플레이어 {ORANGE}{COMMA} (으)로 플레이
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 것들 제거) : {ORANGE}{STRING1}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차를 허용 : {ORANGE}{STRING1}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}일시정지 상태에서의 건설 허용 : {ORANGE}{STRING1}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}제트항공기가 소형 공항에서 (자주) 폭발하지 않게 함 : {ORANGE}{STRING1}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 것들 제거) : {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차를 허용 : {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}일시정지 상태에서의 건설 허용 : {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}제트항공기가 소형 공항에서 (자주) 폭발하지 않게 함 : {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}기후 변경: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}날짜 변경: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업시설의 생산량 조절 허가 : {ORANGE}{STRING1}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업시설의 생산량 조절 허가 : {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}{WAYPOINT}(으)로 향하는 중
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}{WAYPOINT}, {VELOCITY}(으)로 향하는 중
@@ -1168,7 +1170,7 @@ STR_WAYPOINTNAME_CITY_SERIAL                                    :웨이포인트
 STR_LANDINFO_WAYPOINT                                           :웨이포인트
 
 STR_WAYPOINT                                                    :{WHITE}웨이포인트
-STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}웨이포인트 타입 설정
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}웨이포인트 종류 설정
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
@@ -1260,7 +1262,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}열차 �
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}열차가 수송할 화물의 종류를 선택하세요
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}선택된 화물을 수송하도록 열차를 개조
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}열차를 개조할 수 없습니다...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}백분율에 의한 점검 주기: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}백분율에 의한 점검 주기: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}생산량 변경
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}새로운 인공지능(AI) 개발에 오신 것을 환영합니다. 문제가 발생하면 스크린샷을 찍어 TTD포럼에 올려주십시오.
@@ -1475,8 +1477,8 @@ STR_NETWORK_SEND                                                :{BLACK}보내�
 ############ end network gui strings
 
 
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}맵의 가로 크기: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}맵의 세로 크기: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}맵의 가로 크기: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}맵의 세로 크기: {ORANGE}{STRING}
 
 
 ##### PNG-MAP-Loader
@@ -1584,7 +1586,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING1}
+STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}건물을 먼저 제거하십시오!
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}인구: {ORANGE}{COMMA}{BLACK}  가구수: {ORANGE}{COMMA}
@@ -1620,19 +1622,19 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}회사 �
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}보조금
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}제공되는 보조금:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING2}에서 {STRING2}까지 {STRING} 수송
+STR_2027_FROM_TO                                                :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송
 STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT}까지)
 STR_202A_NONE                                                   :{ORANGE}없음
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}이미 지급된 보조금:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING}에서 {STATION}까지 {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, {DATE_SHORT}까지)
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}보조금 제공 계약 파기:{}{}{0:STRING2}에서 {1:STRING2}까지의 {2:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}보조금 제공 철회:{}{}{1:STATION}에서 {2:STATION}까지의 {0:STRING2} 수송은 더이상 보조금을 지급하지 않습니다.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}보조금 제공 안내:{}{}처음으로 {1:STRING2}에서 {2:STRING2}까지의 {0:STRING}을/를 수송하는 회사는 지역 당국으로부터 보조금을 받게 될 것입니다!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING2} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING2} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING2} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING2} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}보조금 제공 계약 파기:{}{}{0:STRING}에서 {1:STRING}까지의 {2:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}보조금 제공 철회:{}{}{1:STATION}에서 {2:STATION}까지의 {0:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지의 {0:STRING}을/를 수송하는 회사는 지역 당국으로부터 보조금을 받게 될 것입니다!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} 지역당국은 이 도시에 다른 공항이 들어서는 것을 거부합니다!
 STR_2036_COTTAGES                                               :아담한 집
 STR_2037_HOUSES                                                 :집
@@ -1776,7 +1778,7 @@ STR_3069_BUOY                                                   :부이
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...도중에 부이가 있습니다.
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...역이 너무 큽니다.
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...역을 결합할 수 없습니다! (패치 구성 참고)
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}1개 이상의 아이템을 선택하려면 CTRL키를 누르고 계십시오
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}1개 이상의 아이템을 선택하려면 CTRL키를 누르고 계십시오.
 
 STR_UNDEFINED                                                   :(정의되지 않은 문자열)
 STR_STAT_CLASS_DFLT                                             :기본 역사
@@ -1930,8 +1932,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}이 지�
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...이미 소유중입니다!
 
 
-############ WARNING, using range 0x6000 for strings that are stored in	the savegame
-############ These strings may never get a new id, or savegames will break!
+############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
+############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :이름 없음
@@ -1940,39 +1942,39 @@ STR_SV_ROADVEH_NAME                                             :자동차 {COMM
 STR_SV_SHIP_NAME                                                :선박 {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :항공기 {COMMA}
 
-STR_SV_STNAME                                                   :{STRING1}
-STR_SV_STNAME_NORTH                                             :북{STRING1}
-STR_SV_STNAME_SOUTH                                             :남{STRING1}
-STR_SV_STNAME_EAST                                              :동{STRING1}
-STR_SV_STNAME_WEST                                              :서{STRING1}
-STR_SV_STNAME_CENTRAL                                           :{STRING1}중앙
-STR_SV_STNAME_TRANSFER                                          :{STRING1} 환승
-STR_SV_STNAME_HALT                                              :{STRING1} 정류장
-STR_SV_STNAME_VALLEY                                            :{STRING1} 계곡
-STR_SV_STNAME_HEIGHTS                                           :{STRING1} 언덕
-STR_SV_STNAME_WOODS                                             :{STRING1} 숲
-STR_SV_STNAME_LAKESIDE                                          :{STRING1} 호숫가
-STR_SV_STNAME_EXCHANGE                                          :{STRING1} 교환
-STR_SV_STNAME_AIRPORT                                           :{STRING1}공항
-STR_SV_STNAME_OILFIELD                                          :{STRING1} 유전
-STR_SV_STNAME_MINES                                             :{STRING1} 광산
-STR_SV_STNAME_DOCKS                                             :{STRING1}항
-STR_SV_STNAME_BUOY_1                                            :{STRING1} 부이 1
-STR_SV_STNAME_BUOY_2                                            :{STRING1} 부이 2
-STR_SV_STNAME_BUOY_3                                            :{STRING1} 부이 3
-STR_SV_STNAME_BUOY_4                                            :{STRING1} 부이 4
-STR_SV_STNAME_BUOY_5                                            :{STRING1} 부이 5
-STR_SV_STNAME_BUOY_6                                            :{STRING1} 부이 6
-STR_SV_STNAME_BUOY_7                                            :{STRING1} 부이 7
-STR_SV_STNAME_BUOY_8                                            :{STRING1} 부이 8
-STR_SV_STNAME_BUOY_9                                            :{STRING1} 부이 9
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :북{STRING}
+STR_SV_STNAME_SOUTH                                             :남{STRING}
+STR_SV_STNAME_EAST                                              :동{STRING}
+STR_SV_STNAME_WEST                                              :서{STRING}
+STR_SV_STNAME_CENTRAL                                           :{STRING}중앙
+STR_SV_STNAME_TRANSFER                                          :{STRING} 환승
+STR_SV_STNAME_HALT                                              :{STRING} 정류장
+STR_SV_STNAME_VALLEY                                            :{STRING} 계곡
+STR_SV_STNAME_HEIGHTS                                           :{STRING} 언덕
+STR_SV_STNAME_WOODS                                             :{STRING} 숲
+STR_SV_STNAME_LAKESIDE                                          :{STRING} 호숫가
+STR_SV_STNAME_EXCHANGE                                          :{STRING} 교환
+STR_SV_STNAME_AIRPORT                                           :{STRING}공항
+STR_SV_STNAME_OILFIELD                                          :{STRING} 유전
+STR_SV_STNAME_MINES                                             :{STRING} 광산
+STR_SV_STNAME_DOCKS                                             :{STRING}항
+STR_SV_STNAME_BUOY_1                                            :{STRING} 부이 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} 부이 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} 부이 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} 부이 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} 부이 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} 부이 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} 부이 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} 부이 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} 부이 9
 STR_SV_STNAME_ANNEXE                                            :{STRING1} 별관
-STR_SV_STNAME_SIDINGS                                           :{STRING1} 측선
-STR_SV_STNAME_BRANCH                                            :{STRING1} 지선
-STR_SV_STNAME_UPPER                                             :상부 {STRING1}
-STR_SV_STNAME_LOWER                                             :하부 {STRING1}
-STR_SV_STNAME_HELIPORT                                          :{STRING1} 헬리포트
-STR_SV_STNAME_FOREST                                            :{STRING1} 숲
+STR_SV_STNAME_SIDINGS                                           :{STRING} 측선
+STR_SV_STNAME_BRANCH                                            :{STRING} 지선
+STR_SV_STNAME_UPPER                                             :상부 {STRING}
+STR_SV_STNAME_LOWER                                             :하부 {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} 헬리포트
+STR_SV_STNAME_FOREST                                            :{STRING} 삼림
 
 ############ end of	savegame specific region!
 
@@ -2480,10 +2482,10 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :자기부상열
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} 차량기지
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}{STATION}에 처음으로 기차가 도착했습니다!{}사람들이 환호성을 지릅니다!
-STR_8802_DETAILS                                                :{WHITE}{STRING1} (상세정보)
+STR_8802_DETAILS                                                :{WHITE}{STRING} (상세정보)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}중간에 기차가 있습니다
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING1} {STRING1}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING1} {STRING1}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :{STATION} 행
 STR_8807_GO_TO_TRANSFER                                         :{STATION} 행 (환승시키고 화물 싣기)
 STR_8808_GO_TO_UNLOAD                                           :{STATION} 행 (모두 내림)
@@ -2600,8 +2602,9 @@ STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}가격: {CURRENCY} 무게: {WEIGHT_S}{}속도: {VELOCITY}  힘: {POWER}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}고장
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING2}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_S}  {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}중량: {LTBLUE}{WEIGHT_S} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속도: {LTBLUE}{VELOCITY} {BLACK}최고 틸팅속력: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}정지함
@@ -2634,7 +2637,7 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}새 자�
 STR_9007_BUILD_VEHICLE                                          :{BLACK}차량 만들기
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}자동차를 만들 수 없습니다...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING2}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
 STR_900E_MAX_SPEED                                              :{BLACK}최고속력: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
@@ -2708,7 +2711,7 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}선박�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}중간에 선박이 있습니다
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING2}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
 STR_9813_MAX_SPEED                                              :{BLACK}최고속력: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
@@ -2778,7 +2781,7 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (경로)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING2}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
 STR_A00E_MAX_SPEED                                              :{BLACK}최고속력: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
@@ -2832,7 +2835,7 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}항공�
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}이 항공기가 수송할 화물의 종류를 선택하십시오
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}선택한 화물을 싣도록 항공기를 개조합니다
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}수송할 화물 종류 선택:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}새 수송량: {GOLD}{STRING1}{}{BLACK}개조 가격: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}새 수송량: {GOLD}{STRING}{}{BLACK}개조 가격: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}항공기를 개조할 수 없습니다...
 STR_GO_TO_AIRPORT_HANGAR                                        :{STATION}공항 격납고로 가는 중
 SERVICE_AT_AIRPORT_HANGAR                                       :{STATION}공항 격납고로 점검하러 가는 중
@@ -2948,6 +2951,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}이 스케쥴을 공유한 모든 차량을 표시합니다.
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}이 안에 있는 모든 차량을 판매하려고 합니다. 정말 판매하시겠습니까?
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}이 차량기지에 있는 모든 열차를 팝니다.
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}이 차량기지에 있는 모든 자동차를 팝니다.
@@ -2964,10 +2968,10 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}이 차�
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}이 정박소에 있는 모든 선박을 자동으로 교체합니다.
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}이 격납고에 있는 모든 항공기를 자동으로 교체합니다.
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING1} - 열차 {COMMA}대
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING1} - 자동차 {COMMA}대
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING1} - 선박 {COMMA}대
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING1} - 항공기 {COMMA}대
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - 열차 {COMMA}대
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - 자동차 {COMMA}대
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - 선박 {COMMA}대
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - 항공기 {COMMA}대
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} 교체
 STR_REPLACE_VEHICLES_START                                      :{BLACK}차량 교체 시작
@@ -3034,6 +3038,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 �
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류의 화물
 STR_PURCHASE_INFO_ALL_BUT                                       :모든 화물 / 제외: {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인 효과: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 
@@ -3082,7 +3087,7 @@ STR_SE_FLAT_WORLD_TIP                                           :{BLACK}평평�
 STR_SE_RANDOM_LAND                                              :{WHITE}무작위 땅
 STR_SE_NEW_WORLD                                                :{BLACK}새 시나리오 생성
 STR_SE_CAPTION                                                  :{WHITE}시나리오 종류
-STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}평지의 높이를 1칸 올립니다
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}평지의 높이를 1칸 높입니다.
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}평지의 높이를 1칸 낮춥니다
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}평지의 높이 변경
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}평지의 높이:

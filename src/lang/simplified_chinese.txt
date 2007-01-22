@@ -392,6 +392,9 @@ STR_ENGINE_SORT_RUNNING_COST                                    :运行费用
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :功率/运行费用
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :装载能力
 STR_NO_WAITING_CARGO                                            :{BLACK}没有任何类型的货物正在等待
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}选择全部设施
+STR_SELECT_ALL_TYPES                                            :{BLACK}选择所有货物类型 (包括不在等待列表中的)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}察看适用于当前车辆类型的全部引擎列表
 STR_MANAGE_LIST                                                 :{BLACK}管理列表
 STR_MANAGE_LIST_TIP                                             :{BLACK}向所有在此列表中的成员发出命令
 STR_REPLACE_VEHICLES                                            :替换车辆/飞机/船只
@@ -735,6 +738,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}保存�
 STR_029A_PLAY_SCENARIO                                          :{BLACK}以场景开始游戏
 STR_PLAY_HEIGHTMAP                                              :{BLACK}以高度图开始游戏
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}以高度图决定的地形开始一个新游戏。
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}你确定要退出当前场景吗？
 STR_029C_QUIT_EDITOR                                            :{WHITE}推出编辑器
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}只能在人口超过 1200 的城镇建造……
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}将开始年份向前调整 1 年
@@ -1010,7 +1014,7 @@ STR_CONFIG_PATCHES_ON                                           :打开
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}在状态栏中显示车辆速度：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}允许在斜坡和河岸上建设：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}允许更真实的水洼地：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁等：{ORANGE}{STRING1}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁等：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}允许购买超长列车：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}打开仿真的列车加速模式：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}禁止列车和轮船 90 度转弯：{ORANGE}{STRING} {LTBLUE} (需要 NPF)
@@ -1046,7 +1050,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :检查，所有
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}当列车收入为负时警告：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}车辆永不报废：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}当车辆报废时自动更新：
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}当车辆在报废前/后 {ORANGE}{STRING1}{LTBLUE} 个月时自动更新
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}当车辆在报废前/后 {ORANGE}{STRING}{LTBLUE} 个月时自动更新
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}启动自动更新需要的最少现金：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}错误信息显示时间：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}在城镇名称的标签中同时显示人口：{ORANGE}{STRING}
@@ -1218,6 +1222,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}将车�
 
 STR_DRAG_DROP                                                   :{BLACK}拖动模式
 STR_STATION_DRAG_DROP                                           :{BLACK}使用拖动模式建设车站
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}选择一个要显示车站类型
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}选择要建造的车站类型
 
 STR_FAST_FORWARD                                                :{BLACK}快速游戏模式
 STR_MESSAGE_HISTORY                                             :{WHITE}消息历史
@@ -1666,6 +1672,7 @@ STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}的交通陷入混乱！{}{}由 {COMPANY} 资助的市政道路重建导致市内交通瘫痪 6 个月！
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (建设中)
 STR_2059_IGLOO                                                  :圆顶屋
 STR_205A_TEPEES                                                 :帐篷
 STR_205B_TEAPOT_HOUSE                                           :茶杯小屋
@@ -2536,6 +2543,7 @@ STR_8826_GO_TO                                                  :{BLACK}前往
 STR_8827_FULL_LOAD                                              :{BLACK}装货
 STR_8828_UNLOAD                                                 :{BLACK}卸货
 STR_REFIT                                                       :{BLACK}改装
+STR_REFIT_TIP                                                   :
 STR_REFIT_ORDER                                                 :(改装为 {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (调度计划)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}-- 调度计划结束 --
@@ -3003,6 +3011,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}点击�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} Sign
 
+STR_ORDER_REFIT_FAILED                                          :
 
 ############ Lists rail types
 
@@ -3104,3 +3113,10 @@ STR_HUB_AIRPORTS                                                :{BLACK}空运�
 STR_HELIPORTS                                                   :{BLACK}直升机机场
 
 ############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :
+STR_MEASURE_AREA                                                :
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :
+STR_MEASURE_AREA_HEIGHTDIFF                                     :
+
+########
