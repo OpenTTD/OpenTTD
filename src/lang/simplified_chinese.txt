@@ -3112,11 +3112,3 @@ STR_LARGE_AIRPORTS                                              :{BLACK}大型�
 STR_HUB_AIRPORTS                                                :{BLACK}空运枢纽
 STR_HELIPORTS                                                   :{BLACK}直升机机场
 
-############ Tooltip measurment
-
-STR_MEASURE_LENGTH                                              :
-STR_MEASURE_AREA                                                :
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :
-STR_MEASURE_AREA_HEIGHTDIFF                                     :
-
-########
