@@ -182,14 +182,15 @@ static void DrawGraph(const GraphDrawer *gw)
 			x += GRAPH_X_POSITION_SEPARATION;
 		}
 	} else {
-		/* Add 8 to make the string appear centred between the lines. */
-		x = gw->left + GRAPH_X_POSITION_BEGINNING + 8;
+		/* Draw the label under the data point rather than on the grid line. */
+		x = gw->left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2) + 1;
 		y = gw->top + gw->height + 1;
 		uint16 label = gw->x_values_start;
 
 		for (int i = 0; i < gw->num_on_x_axis; i++) {
 			SetDParam(0, label);
-			DrawString(x, y, STR_01CB, GRAPH_AXIS_LABEL_COLOUR);
+			DrawStringCentered(x, y, STR_01CB, GRAPH_AXIS_LABEL_COLOUR);
+
 			label += gw->x_values_increment;
 			x += GRAPH_X_POSITION_SEPARATION;
 		}
