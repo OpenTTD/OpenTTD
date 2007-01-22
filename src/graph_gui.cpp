@@ -67,12 +67,10 @@ static void DrawGraph(const GraphDrawer *gw)
 {
 	uint x,y,old_x,old_y;
 	int right;
-	const int64 *row_ptr, *col_ptr;
 	int64 mx;
 	int adj_height;
 	uint64 y_scaling;
 	int64 value;
-	int64 cur_val;
 	uint sel;
 
 	/* the colors and cost array of GraphDrawer must accomodate
@@ -123,23 +121,21 @@ static void DrawGraph(const GraphDrawer *gw)
 	assert(gw->num_on_x_axis > 0);
 	assert(gw->num_dataset > 0);
 
-	row_ptr = gw->cost[0];
 	mx = 0;
 		/* bit selection for the showing of various players, base max element
 		 * on to-be shown player-information. This way the graph can scale */
 	sel = gw->sel;
 	for (int i = 0; i < gw->num_dataset; i++) {
 		if (!(sel&1)) {
-			col_ptr = row_ptr;
-			for (int i = 0; i < gw->num_on_x_axis; i++) {
-				if (*col_ptr != INVALID_VALUE) {
-					mx = max(mx, *col_ptr);
+			for (int j = 0; j < gw->num_on_x_axis; j++) {
+				int64 datapoint = gw->cost[i][j];
+
+				if (datapoint != INVALID_VALUE) {
+					mx = max(mx, datapoint);
 				}
-				col_ptr++;
 			}
 		}
 		sel >>= 1;
-		row_ptr += 24;
 	}
 
 	/* setup scaling */
@@ -200,21 +196,21 @@ static void DrawGraph(const GraphDrawer *gw)
 	}
 
 	/* draw lines and dots */
-	row_ptr = gw->cost[0];
 	sel = gw->sel; // show only selected lines. GraphDrawer qw->sel set in Graph-Legend (_legend_excludebits)
 
 	for (int i = 0; i < gw->num_dataset; i++) {
 		if (!(sel & 1)) {
 			/* Centre the dot between the grid lines. */
 			x = gw->left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
-			col_ptr = row_ptr;
+
 			byte color = gw->colors[i];
 			old_y = old_x = INVALID_VALUE;
 
-			for (int i = 0; i < gw->num_on_x_axis; i++) {
-				cur_val = *col_ptr++;
-				if (cur_val != INVALID_VALUE) {
-					y = adj_height - BIGMULSS64(cur_val, y_scaling >> 1, 31) + gw->top;
+			for (int j = 0; j < gw->num_on_x_axis; j++) {
+				int64 datapoint = gw->cost[i][j];
+
+				if (datapoint != INVALID_VALUE) {
+					y = adj_height - BIGMULSS64(datapoint, y_scaling >> 1, 31) + gw->top;
 
 					GfxFillRect(x-1, y-1, x+1, y+1, color);
 					if (old_x != INVALID_VALUE)
@@ -229,7 +225,6 @@ static void DrawGraph(const GraphDrawer *gw)
 			}
 		}
 		sel >>= 1;
-		row_ptr += 24;
 	}
 }
 
