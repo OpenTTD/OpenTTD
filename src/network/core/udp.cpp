@@ -245,6 +245,8 @@ void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameI
  */
 void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *info)
 {
+	static const Date MAX_DATE = ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
+
 	info->game_info_version = NetworkRecv_uint8(this, p);
 
 	/*
@@ -272,8 +274,8 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 			}
 		} /* Fallthrough */
 		case 3:
-			info->game_date      = NetworkRecv_uint32(this, p);
-			info->start_date     = NetworkRecv_uint32(this, p);
+			info->game_date      = clamp(NetworkRecv_uint32(this, p), 0, MAX_DATE);
+			info->start_date     = clamp(NetworkRecv_uint32(this, p), 0, MAX_DATE);
 			/* Fallthrough */
 		case 2:
 			info->companies_max  = NetworkRecv_uint8 (this, p);
@@ -284,7 +286,7 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 			NetworkRecv_string(this, p, info->server_name,     sizeof(info->server_name));
 			NetworkRecv_string(this, p, info->server_revision, sizeof(info->server_revision));
 			info->server_lang    = NetworkRecv_uint8 (this, p);
-			info->use_password   = NetworkRecv_uint8 (this, p);
+			info->use_password   = (NetworkRecv_uint8 (this, p) != 0);
 			info->clients_max    = NetworkRecv_uint8 (this, p);
 			info->clients_on     = NetworkRecv_uint8 (this, p);
 			info->spectators_on  = NetworkRecv_uint8 (this, p);
@@ -297,6 +299,9 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 			info->map_height     = NetworkRecv_uint16(this, p);
 			info->map_set        = NetworkRecv_uint8 (this, p);
 			info->dedicated      = (NetworkRecv_uint8(this, p) != 0);
+
+			if (info->server_lang >= NETWORK_NUM_LANGUAGES) info->server_lang = 0;
+			if (info->map_set     >= NUM_LANDSCAPE)         info->map_set     = 0;
 	}
 }
 

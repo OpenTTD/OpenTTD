@@ -330,9 +330,6 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 		}
 	}
 
-	if (item->info.server_lang >= NETWORK_NUM_LANGUAGES) item->info.server_lang = 0;
-	if (item->info.map_set >= NUM_LANDSCAPE ) item->info.map_set = 0;
-
 	if (item->info.hostname[0] == '\0')
 		snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
 

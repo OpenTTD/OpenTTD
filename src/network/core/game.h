@@ -27,7 +27,7 @@ typedef struct NetworkGameInfo {
 	bool version_compatible;                        ///< Can we connect to this server or not? (based on server_revision)
 	bool compatible;                                ///< Can we connect to this server or not? (based on server_revision _and_ grf_match
 	byte server_lang;                               ///< Language of the server (we should make a nice table for this)
-	byte use_password;                              ///< Is set to != 0 if it uses a password
+	bool use_password;                              ///< Is this server passworded?
 	char server_password[NETWORK_PASSWORD_LENGTH];  ///< On the server: the game password, on the client: != "" if server has password
 	byte clients_max;                               ///< Max clients allowed on server
 	byte clients_on;                                ///< Current count of clients on server
