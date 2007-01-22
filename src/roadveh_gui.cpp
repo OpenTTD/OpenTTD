@@ -7,20 +7,14 @@
 #include "roadveh.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "map.h"
 #include "window.h"
 #include "gui.h"
-#include "gfx.h"
 #include "vehicle.h"
 #include "viewport.h"
-#include "station.h"
 #include "command.h"
-#include "player.h"
-#include "engine.h"
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
-#include "date.h"
 
 void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
