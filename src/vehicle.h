@@ -429,6 +429,7 @@ static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
  */
 static inline byte VehTypeToIndex(byte type)
 {
+	assert(IsPlayerBuildableVehicleType(type));
 	return type - VEH_Train;
 }
 
