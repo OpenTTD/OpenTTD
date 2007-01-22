@@ -723,9 +723,68 @@ static void GenerateBuildList(Window *w)
 	EngList_Sort(&bv->eng_list, _sorter[VehTypeToIndex(bv->vehicle_type)][bv->sort_criteria]);
 }
 
+static void DrawVehicleEngine(byte type, int x, int y, EngineID engine, SpriteID pal)
+{
+	switch (type) {
+		case VEH_Train:    DrawTrainEngine(   x, y, engine, pal); break;
+		case VEH_Road:     DrawRoadVehEngine( x, y, engine, pal); break;
+		case VEH_Ship:     DrawShipEngine(    x, y, engine, pal); break;
+		case VEH_Aircraft: DrawAircraftEngine(x, y, engine, pal); break;
+		default: NOT_REACHED();
+	}
+}
+
+/** Engine drawing loop
+ * @param type Type of vehicle (VEH_*)
+ * @param x,y Where should the list start
+ * @param eng_list What engines to draw
+ * @param min where to start in the list
+ * @param max where in the list to end. MAKE SURE THAT THIS IS NOT LONGER THAN THE ENGINE LIST ITSELF!
+ * @param selected_id what engine to highlight as selected, if any
+ */
+static void DrawEngineList(byte type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id)
+{
+	byte step_size = GetVehicleListHeight(type);
+	byte x_offset = 0;
+	byte y_offset = 0;
+
+	switch (type) {
+		case VEH_Train:
+			x++; // train and road vehicles use the same offset, except trains are one more pixel to the right
+			/* Fallthough */
+		case VEH_Road:
+			x += 26;
+			x_offset = 30;
+			y += 2;
+			y_offset = 4;
+			break;
+		case VEH_Ship:
+			x += 35;
+			x_offset = 40;
+			y += 7;
+			y_offset = 3;
+			break;
+		case VEH_Aircraft:
+			x += 27;
+			x_offset = 33;
+			y += 7;
+			y_offset = 3;
+			break;
+		default: NOT_REACHED();
+	}
+
+	for (; min < max; min++, y += step_size) {
+		const EngineID engine = eng_list[min];
+
+		DrawString(x + x_offset, y, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
+		DrawVehicleEngine(type, x, y + y_offset, engine, GetEnginePalette(engine, _local_player));
+	}
+}
+
 static void DrawBuildVehicleWindow(Window *w)
 {
 	const buildvehicle_d *bv = &WP(w, buildvehicle_d);
+	uint max = min(w->vscroll.pos + w->vscroll.cap, EngList_Count(&bv->eng_list));
 
 	SetWindowWidgetDisabledState(w, BUILD_VEHICLE_WIDGET_BUILD, w->window_number == 0);
 
@@ -733,53 +792,13 @@ static void DrawBuildVehicleWindow(Window *w)
 	SetDParam(0, bv->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles
 	DrawWindowWidgets(w);
 
-	{
-		int x = 2;
-		int y = 27;
-		EngineID selected_id = bv->sel_engine;
-		uint16 position = w->vscroll.pos;
-		uint16 max = min(w->vscroll.pos + w->vscroll.cap, EngList_Count(&bv->eng_list));
+	DrawEngineList(bv->vehicle_type, 2, 27, bv->eng_list, w->vscroll.pos, max, bv->sel_engine);
 
-		switch (bv->vehicle_type) {
-			case VEH_Train:
-				for (; position < max; position++, y += 14) {
-					const EngineID engine = bv->eng_list[position];
-
-					DrawString(x + 59, y + 2, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
-					DrawTrainEngine(x + 29, y + 6, engine, GetEnginePalette(engine, _local_player));
-				}
-				break;
-			case VEH_Road:
-				for (; position < max; position++, y += 14) {
-					const EngineID engine = bv->eng_list[position];
-
-					DrawString(x + 58, y + 2, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
-					DrawRoadVehEngine(x + 28, y + 6, engine, GetEnginePalette(engine, _local_player));
-				}
-				break;
-			case VEH_Ship:
-				for (; position < max; position++, y += 24) {
-					const EngineID engine = bv->eng_list[position];
-
-					DrawString(x + 75, y + 7, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
-					DrawShipEngine(x + 35, y + 10, engine, GetEnginePalette(engine, _local_player));
-				}
-				break;
-			case VEH_Aircraft:
-				for (; position < max; position++, y += 24) {
-					const EngineID engine = bv->eng_list[position];
-
-					DrawString(x + 62, y + 7, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
-					DrawAircraftEngine(x + 29, y + 10, engine, GetEnginePalette(engine, _local_player));
-				}
-				break;
-		}
-
-		if (selected_id != INVALID_ENGINE) {
-			const Widget *wi = &w->widget[BUILD_VEHICLE_WIDGET_PANEL];
-			DrawVehiclePurchaseInfo(x, wi->top + 1, wi->right - wi->left - 2, selected_id);
-		}
+	if (bv->sel_engine != INVALID_ENGINE) {
+		const Widget *wi = &w->widget[BUILD_VEHICLE_WIDGET_PANEL];
+		DrawVehiclePurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, bv->sel_engine);
 	}
+
 	DrawString(85, 15, _sort_listing[VehTypeToIndex(bv->vehicle_type)][bv->sort_criteria], 0x10);
 	DoDrawString(bv->descending_sort_order ? DOWNARROW : UPARROW, 69, 15, 0x10);
 }
