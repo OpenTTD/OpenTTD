@@ -1,6 +1,6 @@
 ##name Czech
 ##ownname Česky
-##isocode cs_CS.UTF-8
+##isocode cs_CS
 ##plural 6
 ##case nom gen acc dat voc loc ins big news subs
 ##gender m m_a m_i f n

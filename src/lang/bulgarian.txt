@@ -1,6 +1,6 @@
 ##name Bulgarian
 ##ownname Български
-##isocode bg_BG.UTF-8
+##isocode bg_BG
 ##plural 0
 ##case accusative dative vocative nominative instrumental locative genitive
 ##gender мъжки женски среден

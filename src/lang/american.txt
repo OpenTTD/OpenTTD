@@ -1,6 +1,6 @@
 ##name American
 ##ownname English (US)
-##isocode en_US.UTF-8
+##isocode en_US
 ##plural 0
 
 ##id 0x0000

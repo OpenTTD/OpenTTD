@@ -1,2 +1,2 @@
 ##name Chinese (Simplified)
-##isocode zh_TW.UTF-8
+##isocode zh_TW

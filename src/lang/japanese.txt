@@ -1,6 +1,6 @@
 ##name Japanese
 ##ownname 日本語
-##isocode ja_JP.UTF-8
+##isocode ja_JP
 ##plural 1
 
 ##id 0x0000

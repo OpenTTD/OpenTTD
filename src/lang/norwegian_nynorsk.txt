@@ -1,6 +1,6 @@
 ##name Norwegian new
 ##ownname Norsk, Nynorsk
-##isocode nn_NO.UTF-8
+##isocode nn_NO
 ##plural 0
 ##gender masculine feminine neuter
 

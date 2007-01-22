@@ -1,6 +1,6 @@
 ##name Greek
 ##ownname Ελληνικά
-##isocode el_GR.UTF-8
+##isocode el_GR
 ##plural 0
 ##gender m f n
 

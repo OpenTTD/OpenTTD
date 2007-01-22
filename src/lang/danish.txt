@@ -1,6 +1,6 @@
 ##name Danish
 ##ownname Dansk
-##isocode da_DA.UTF-8
+##isocode da_DA
 ##plural 0
 
 ##id 0x0000

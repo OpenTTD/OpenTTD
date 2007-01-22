@@ -1,6 +1,6 @@
 ##name Croatian
 ##ownname Hrvatski
-##isocode hr_HR.UTF-8
+##isocode hr_HR
 ##plural 6
 ##gender male female middle
 

@@ -1,6 +1,6 @@
 ##name Slovenian
 ##ownname Slovenscina
-##isocode sl_SL.UTF-8
+##isocode sl_SL
 ##plural 8
 ##case 2_skl
 

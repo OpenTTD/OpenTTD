@@ -1,6 +1,6 @@
 ##name Turkish
 ##ownname Türkçe
-##isocode tr_TR.UTF-8
+##isocode tr_TR
 ##plural 1
 
 ##id 0x0000

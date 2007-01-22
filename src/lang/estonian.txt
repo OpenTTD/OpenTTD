@@ -1,6 +1,6 @@
 ##name Estonian
 ##ownname Eesti keel
-##isocode et_ET.UTF-8
+##isocode et_ET
 ##plural 0
 ##case g genitiiv
 

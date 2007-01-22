@@ -1,6 +1,6 @@
 ##name Romanian
 ##ownname Românã
-##isocode ro_RO.UTF-8
+##isocode ro_RO
 ##plural 0
 
 ##id 0x0000

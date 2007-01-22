@@ -1,6 +1,6 @@
 ##name Italian
 ##ownname Italian (IT)
-##isocode it_IT.UTF-8
+##isocode it_IT
 ##plural 0
 
 ##id 0x0000

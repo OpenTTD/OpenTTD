@@ -1,6 +1,6 @@
 ##name Swedish
 ##ownname Svenska
-##isocode sv_SE.UTF-8
+##isocode sv_SE
 ##plural 0
 
 ##id 0x0000

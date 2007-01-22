@@ -1,6 +1,6 @@
 ##name Esperanto
 ##ownname Esperanto
-##isocode eo_EO.UTF-8
+##isocode eo_EO
 ##plural 0
 ##case n
 

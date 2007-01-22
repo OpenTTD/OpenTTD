@@ -1,6 +1,6 @@
 ##name Brazilian_Portuguese
 ##ownname Português (BR)
-##isocode pt_BR.UTF-8
+##isocode pt_BR
 ##plural 2
 ##case m f
 ##gender m f

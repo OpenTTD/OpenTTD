@@ -1,6 +1,6 @@
 ##name Lithuanian
 ##ownname Lietuvių
-##isocode lt_LT.UTF-8
+##isocode lt_LT
 ##plural 5
 ##case kas ko kam ka kuo kur kreip
 ##gender vyr mot

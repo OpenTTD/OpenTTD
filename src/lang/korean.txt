@@ -1,5 +1,5 @@
 ##name Korean
-##isocode ko_KR.UTF-8
+##isocode ko_KR
 ##plural 1
 
 ##id 0x0000

@@ -1,6 +1,6 @@
 ##name Chinese (Simplified)
 ##ownname 简体中文
-##isocode zh_CN.UTF-8
+##isocode zh_CN
 ##plural 1
 
 ##id 0x0000

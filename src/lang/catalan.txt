@@ -1,6 +1,6 @@
 ##name Catalan
 ##ownname Català
-##isocode ca_ES.UTF-8
+##isocode ca_ES
 ##plural 0
 
 ##id 0x0000

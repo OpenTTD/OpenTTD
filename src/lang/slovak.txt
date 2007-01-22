@@ -1,6 +1,6 @@
 ##name Slovak
 ##ownname Slovensky
-##isocode sk_SK.UTF-8
+##isocode sk_SK
 ##plural 6
 ##case g
 ##gender m z s

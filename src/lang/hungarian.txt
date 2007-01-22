@@ -1,6 +1,6 @@
 ##name Hungarian
 ##ownname Magyar
-##isocode hu_HU.UTF-8
+##isocode hu_HU
 ##plural 1
 ##case t ba
 

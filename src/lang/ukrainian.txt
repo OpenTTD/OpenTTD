@@ -1,6 +1,6 @@
 ##name Ukrainian
 ##ownname Українська
-##isocode uk_UA.UTF-8
+##isocode uk_UA
 ##plural 6
 ##gender m f s
 

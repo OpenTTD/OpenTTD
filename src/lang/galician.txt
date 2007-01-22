@@ -1,6 +1,6 @@
 ##name Galician
 ##ownname Galego
-##isocode gl_ES.UTF-8
+##isocode gl_ES
 ##plural 0
 
 ##id 0x0000

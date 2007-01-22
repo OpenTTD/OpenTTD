@@ -1,6 +1,6 @@
 ##name Latvian
 ##ownname Latviešu valoda
-##isocode lv_LV.UTF-8
+##isocode lv_LV
 ##plural 3
 
 ##id 0x0000

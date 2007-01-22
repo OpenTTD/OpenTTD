@@ -1,6 +1,6 @@
 ##name Afrikaans
 ##ownname Afrikaans
-##isocode af_ZA.UTF-8
+##isocode af_ZA
 ##plural 0
 
 ##id 0x0000

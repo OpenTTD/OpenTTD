@@ -1,6 +1,6 @@
 ##name Spanish
 ##ownname Español (ES)
-##isocode es_ES.UTF-8
+##isocode es_ES
 ##plural 0
 ##gender masculino femenino
 

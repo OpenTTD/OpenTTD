@@ -1,6 +1,6 @@
 ##name Polish
 ##ownname Polski
-##isocode pl_PL.UTF-8
+##isocode pl_PL
 ##plural 7
 ##case d c b n m w
 ##gender m f n
