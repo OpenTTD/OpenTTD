@@ -287,7 +287,7 @@ static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static EngList_SortTypeFunction * const _train_sorter[] = {
+static EngList_SortTypeFunction * const _sorter[][9] = {{
 	&EngineNumberSorter,
 	&TrainEngineCostSorter,
 	&TrainEngineSpeedSorter,
@@ -297,9 +297,28 @@ static EngList_SortTypeFunction * const _train_sorter[] = {
 	&TrainEngineRunningCostSorter,
 	&TrainEnginePowerVsRunningCostSorter,
 	&EngineReliabilitySorter,
-};
+},{
+	&EngineNumberSorter,
+	&EngineIntroDateSorter,
+	&EngineNameSorter,
+	&EngineReliabilitySorter,
+},{
+	&EngineNumberSorter,
+	&EngineIntroDateSorter,
+	&EngineNameSorter,
+	&EngineReliabilitySorter,
+},{
+	&EngineNumberSorter,
+	&AircraftEngineCostSorter,
+	&AircraftEngineSpeedSorter,
+	&EngineIntroDateSorter,
+	&EngineNameSorter,
+	&AircraftEngineRunningCostSorter,
+	&EngineReliabilitySorter,
+	&AircraftEngineCargoSorter,
+}};
 
-static const StringID _train_sort_listing[] = {
+static const StringID _sort_listing[][10] = {{
 	STR_ENGINE_SORT_ENGINE_ID,
 	STR_ENGINE_SORT_COST,
 	STR_SORT_BY_MAX_SPEED,
@@ -310,35 +329,19 @@ static const StringID _train_sort_listing[] = {
 	STR_ENGINE_SORT_POWER_VS_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
 	INVALID_STRING_ID
-};
-
-static EngList_SortTypeFunction * const _ship_sorter[] = {
-	&EngineNumberSorter,
-	&EngineIntroDateSorter,
-	&EngineNameSorter,
-	&EngineReliabilitySorter,
-};
-
-static const StringID _ship_sort_listing[] = {
+},{
 	STR_ENGINE_SORT_ENGINE_ID,
 	STR_ENGINE_SORT_INTRO_DATE,
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_RELIABILITY,
 	INVALID_STRING_ID
-};
-
-static EngList_SortTypeFunction * const _aircraft_sorter[] = {
-	&EngineNumberSorter,
-	&AircraftEngineCostSorter,
-	&AircraftEngineSpeedSorter,
-	&EngineIntroDateSorter,
-	&EngineNameSorter,
-	&AircraftEngineRunningCostSorter,
-	&EngineReliabilitySorter,
-	&AircraftEngineCargoSorter,
-};
-
-static const StringID _aircraft_sort_listing[] = {
+},{
+	STR_ENGINE_SORT_ENGINE_ID,
+	STR_ENGINE_SORT_INTRO_DATE,
+	STR_SORT_BY_DROPDOWN_NAME,
+	STR_SORT_BY_RELIABILITY,
+	INVALID_STRING_ID
+},{
 	STR_ENGINE_SORT_ENGINE_ID,
 	STR_ENGINE_SORT_COST,
 	STR_SORT_BY_MAX_SPEED,
@@ -348,8 +351,7 @@ static const StringID _aircraft_sort_listing[] = {
 	STR_SORT_BY_RELIABILITY,
 	STR_ENGINE_SORT_CARGO_CAPACITY,
 	INVALID_STRING_ID
-};
-
+}};
 
 /* Draw rail wagon specific details */
 static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi)
@@ -590,10 +592,10 @@ static void GenerateBuildTrainList(Window *w)
 
 	// and then sort engines
 	_internal_sort_order = bv->descending_sort_order;
-	EngList_SortPartial(&bv->eng_list, _train_sorter[bv->sort_criteria], 0, num_engines);
+	EngList_SortPartial(&bv->eng_list, _sorter[0][bv->sort_criteria], 0, num_engines);
 
 	// and finally sort wagons
-	EngList_SortPartial(&bv->eng_list, _train_sorter[bv->sort_criteria], num_engines, num_wagons);
+	EngList_SortPartial(&bv->eng_list, _sorter[0][bv->sort_criteria], num_engines, num_wagons);
 }
 
 /* Figure out what aircraft EngineIDs to put in the list */
@@ -661,18 +663,16 @@ static void GenerateBuildList(Window *w)
 	switch (bv->vehicle_type) {
 		case VEH_Train:
 			GenerateBuildTrainList(w);
-			break;
+			return; // trains should not reach the last sorting
 		case VEH_Ship:
 			GenerateBuildShipList(w);
-			_internal_sort_order = bv->descending_sort_order;
-			EngList_Sort(&bv->eng_list, _ship_sorter[bv->sort_criteria]);
 			break;
 		case VEH_Aircraft:
 			GenerateBuildAircraftList(w);
-			_internal_sort_order = bv->descending_sort_order;
-			EngList_Sort(&bv->eng_list, _aircraft_sorter[bv->sort_criteria]);
 			break;
 	}
+	_internal_sort_order = bv->descending_sort_order;
+	EngList_Sort(&bv->eng_list, _sorter[VehTypeToIndex(bv->vehicle_type)][bv->sort_criteria]);
 }
 
 static void DrawBuildVehicleWindow(Window *w)
@@ -724,17 +724,8 @@ static void DrawBuildVehicleWindow(Window *w)
 			DrawVehiclePurchaseInfo(x, wi->top + 1, wi->right - wi->left - 2, selected_id);
 		}
 	}
-	{
-		StringID str = STR_NULL;
-		switch (bv->vehicle_type) {
-			case VEH_Train:    str = _train_sort_listing[bv->sort_criteria];    break;
-			case VEH_Ship:     str = _ship_sort_listing[bv->sort_criteria];     break;
-			case VEH_Aircraft: str = _aircraft_sort_listing[bv->sort_criteria]; break;
-		}
-
-		DrawString(85, 15, str, 0x10);
-		DoDrawString(bv->descending_sort_order ? DOWNARROW : UPARROW, 69, 15, 0x10);
-	}
+	DrawString(85, 15, _sort_listing[VehTypeToIndex(bv->vehicle_type)][bv->sort_criteria], 0x10);
+	DoDrawString(bv->descending_sort_order ? DOWNARROW : UPARROW, 69, 15, 0x10);
 }
 
 static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
@@ -758,18 +749,8 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 		}
 
 		case BUILD_VEHICLE_WIDGET_SORT_TEXT: case BUILD_VEHICLE_WIDGET_SORT_DROPDOWN: // Select sorting criteria dropdown menu
-			switch (bv->vehicle_type) {
-				case VEH_Train:
-					ShowDropDownMenu(w, _train_sort_listing, bv->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
-					break;
-				case VEH_Ship:
-					ShowDropDownMenu(w, _ship_sort_listing, bv->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
-					break;
-				case VEH_Aircraft:
-					ShowDropDownMenu(w, _aircraft_sort_listing, bv->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
-					break;
-			}
-			return;
+			ShowDropDownMenu(w, _sort_listing[VehTypeToIndex(bv->vehicle_type)], bv->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
+			break;
 
 		case BUILD_VEHICLE_WIDGET_BUILD: {
 			EngineID sel_eng = bv->sel_engine;
