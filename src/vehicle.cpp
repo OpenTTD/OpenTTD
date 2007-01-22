@@ -41,31 +41,22 @@
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
 
-/*
- * These command macros are used to call vehicle type specific commands with non type specific commands
- * it should be used like: DoCommandP(x, y, p1, p2, flags, CMD_STARTSTOP_VEH(v->type))
- * that line will start/stop a vehicle nomatter what type it is
- * VEH_Train is used as an offset because the vehicle type values doesn't start with 0
- */
 
-#define CMD_BUILD_VEH(x) _veh_build_proc_table[ x - VEH_Train]
-#define CMD_SELL_VEH(x)  _veh_sell_proc_table [ x - VEH_Train]
-#define CMD_REFIT_VEH(x) _veh_refit_proc_table[ x - VEH_Train]
-
-static const uint32 _veh_build_proc_table[] = {
+/* Tables used in vehicle.h to find the right command for a certain vehicle type */
+const uint32 _veh_build_proc_table[] = {
 	CMD_BUILD_RAIL_VEHICLE,
 	CMD_BUILD_ROAD_VEH,
 	CMD_BUILD_SHIP,
 	CMD_BUILD_AIRCRAFT,
 };
-static const uint32 _veh_sell_proc_table[] = {
+const uint32 _veh_sell_proc_table[] = {
 	CMD_SELL_RAIL_WAGON,
 	CMD_SELL_ROAD_VEH,
 	CMD_SELL_SHIP,
 	CMD_SELL_AIRCRAFT,
 };
 
-static const uint32 _veh_refit_proc_table[] = {
+const uint32 _veh_refit_proc_table[] = {
 	CMD_REFIT_RAIL_VEHICLE,
 	CMD_REFIT_ROAD_VEH,
 	CMD_REFIT_SHIP,
@@ -1829,7 +1820,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			continue;
 		}
 
-		cost = DoCommand(tile, v->engine_type, build_argument, flags, CMD_BUILD_VEH(v->type));
+		cost = DoCommand(tile, v->engine_type, build_argument, flags, GetCmdBuildVeh(v));
 		build_argument = 3; // ensure that we only assign a number to the first engine
 
 		if (CmdFailed(cost)) return cost;
@@ -1842,7 +1833,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (v->cargo_type != w->cargo_type || v->cargo_subtype != w->cargo_subtype) {
 				// we can't pay for refitting because we can't estimate refitting costs for a vehicle before it's build
 				// if we pay for it anyway, the cost and the estimated cost will not be the same and we will have an assert
-				DoCommand(0, w->index, v->cargo_type | (v->cargo_subtype << 8), flags, CMD_REFIT_VEH(v->type));
+				DoCommand(0, w->index, v->cargo_type | (v->cargo_subtype << 8), flags, GetCmdRefitVeh(v));
 			}
 			if (v->type == VEH_Train && HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
 				SETBIT(w->u.rail.flags, VRF_REVERSE_DIRECTION);
@@ -2024,7 +2015,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 	/* check if we can't refit to the needed type, so no replace takes place to prevent the vehicle from altering cargo type */
 	if (replacement_cargo_type == CT_INVALID) return 0;
 
-	sell_value = DoCommand(0, old_v->index, 0, DC_QUERY_COST, CMD_SELL_VEH(old_v->type));
+	sell_value = DoCommand(0, old_v->index, 0, DC_QUERY_COST, GetCmdSellVeh(old_v));
 
 	/* We give the player a loan of the same amount as the sell value.
 	 * This is needed in case he needs the income from the sale to build the new vehicle.
@@ -2032,7 +2023,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 	SubtractMoneyFromPlayer(sell_value);
 
-	cost = DoCommand(old_v->tile, new_engine_type, 3, flags, CMD_BUILD_VEH(old_v->type));
+	cost = DoCommand(old_v->tile, new_engine_type, 3, flags, GetCmdBuildVeh(old_v));
 	if (CmdFailed(cost)) {
 		SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 		SubtractMoneyFromPlayer(-sell_value); // Take back the money we just gave the player
@@ -2047,7 +2038,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 
 		/* refit if needed */
 		if (replacement_cargo_type != CT_NO_REFIT) {
-			if (CmdFailed(DoCommand(0, new_v->index, replacement_cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type)))) {
+			if (CmdFailed(DoCommand(0, new_v->index, replacement_cargo_type, DC_EXEC, GetCmdRefitVeh(new_v)))) {
 				/* Being here shows a failure, which most likely is in GetNewCargoTypeForReplace() or incorrect estimation costs */
 				error("Autoreplace failed to refit. Replace engine %d to %d and refit to cargo %d", old_v->engine_type, new_v->engine_type, replacement_cargo_type);
 			}
@@ -2117,7 +2108,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 	SubtractMoneyFromPlayer(-sell_value);
 
 	/* sell the engine/ find out how much you get for the old engine (income is returned as negative cost) */
-	cost += DoCommand(0, old_v->index, 0, flags, CMD_SELL_VEH(old_v->type));
+	cost += DoCommand(0, old_v->index, 0, flags, GetCmdSellVeh(old_v));
 
 	if (new_front) {
 		/* now we assign the old unitnumber to the new vehicle */
@@ -2477,7 +2468,7 @@ int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID own
 	/* Send all the vehicles to a depot */
 	for (i = 0; i < n; i++) {
 		const Vehicle *v = sort_list[i];
-		int32 ret = DoCommand(v->tile, v->index, (service ? 1 : 0) | DEPOT_DONT_CANCEL, flags, CMD_SEND_TO_DEPOT(type));
+		int32 ret = DoCommand(v->tile, v->index, (service ? 1 : 0) | DEPOT_DONT_CANCEL, flags, GetCmdSendToDepot(type));
 
 		/* Return 0 if DC_EXEC is not set this is a valid goto depot command)
 			* In this case we know that at least one vehicle can be sent to a depot
@@ -2560,7 +2551,7 @@ void VehicleEnterDepot(Vehicle *v)
 			int32 cost;
 
 			_current_player = v->owner;
-			cost = DoCommand(v->tile, v->index, t.refit_cargo | t.refit_subtype << 8, DC_EXEC, CMD_REFIT_VEH(v->type));
+			cost = DoCommand(v->tile, v->index, t.refit_cargo | t.refit_subtype << 8, DC_EXEC, GetCmdRefitVeh(v));
 
 			if (CmdFailed(cost)) {
 				v->leave_depot_instantly = false; // We ensure that the vehicle stays in the depot

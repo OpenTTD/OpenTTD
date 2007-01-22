@@ -1777,13 +1777,13 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 							DoCommandP(0, GB(w->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
 								(w->window_number & VLW_MASK) | DEPOT_MASS_SEND | DEPOT_SERVICE,
 								NULL,
-								CMD_SEND_TO_DEPOT(vl->vehicle_type));
+								GetCmdSendToDepot(vl->vehicle_type));
 							break;
 						case 2: /* Send to Depots */
 							DoCommandP(0, GB(w->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
 								(w->window_number & VLW_MASK) | DEPOT_MASS_SEND,
 								NULL,
-								CMD_SEND_TO_DEPOT(vl->vehicle_type));
+								GetCmdSendToDepot(vl->vehicle_type));
 							break;
 
 						default: NOT_REACHED();

@@ -511,7 +511,50 @@ SpriteID GetVehiclePalette(const Vehicle *v);
  * Best is to have a virtual value for it when it needs to change again */
 #define STATUS_BAR 5
 
+extern const uint32 _veh_build_proc_table[];
+extern const uint32 _veh_sell_proc_table[];
+extern const uint32 _veh_refit_proc_table[];
 extern const uint32 _send_to_depot_proc_table[];
-#define CMD_SEND_TO_DEPOT(x) _send_to_depot_proc_table[ x - VEH_Train]
+
+/* Functions to find the right command for certain vehicle type */
+static inline uint32 GetCmdBuildVeh(byte type)
+{
+	return _veh_build_proc_table[VehTypeToIndex(type)];
+}
+
+static inline uint32 GetCmdBuildVeh(const Vehicle *v)
+{
+	return GetCmdBuildVeh(v->type);
+}
+
+static inline uint32 GetCmdSellVeh(byte type)
+{
+	return _veh_sell_proc_table[VehTypeToIndex(type)];
+}
+
+static inline uint32 GetCmdSellVeh(const Vehicle *v)
+{
+	return GetCmdSellVeh(v->type);
+}
+
+static inline uint32 GetCmdRefitVeh(byte type)
+{
+	return _veh_refit_proc_table[VehTypeToIndex(type)];
+}
+
+static inline uint32 GetCmdRefitVeh(const Vehicle *v)
+{
+	return GetCmdRefitVeh(v->type);
+}
+
+static inline uint32 GetCmdSendToDepot(byte type)
+{
+	return _send_to_depot_proc_table[VehTypeToIndex(type)];
+}
+
+static inline uint32 GetCmdSendToDepot(const Vehicle *v)
+{
+	return GetCmdSendToDepot(v->type);
+}
 
 #endif /* VEHICLE_H */
