@@ -2152,7 +2152,7 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 
 	_current_player = v->owner;
 
-	assert(v->type == VEH_Train || v->type == VEH_Road || v->type == VEH_Ship || v->type == VEH_Aircraft);
+	assert(IsPlayerBuildableVehicleType(v));
 
 	assert(v->vehstatus & VS_STOPPED); // the vehicle should have been stopped in VehicleEnteredDepotThisTick() if needed
 
