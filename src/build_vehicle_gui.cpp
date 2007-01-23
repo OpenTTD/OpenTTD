@@ -535,12 +535,12 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 		case VEH_Train: {
 			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
 
+			refitable = (EngInfo(engine_number)->refit_mask != 0) && (rvi->capacity > 0);
+
 			if (rvi->flags & RVI_WAGON) {
 				y = DrawRailWagonPurchaseInfo(x, y, engine_number, rvi);
-				refitable = true;
 			} else {
 				y = DrawRailEnginePurchaseInfo(x, y, engine_number, rvi, e);
-				refitable = (rvi->capacity > 0);
 			}
 
 			/* Cargo type + capacity, or N/A */
@@ -549,11 +549,10 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 				SetDParam(2, STR_EMPTY);
 			} else {
 				int multihead = (rvi->flags & RVI_MULTIHEAD ? 1 : 0);
-				bool refittable = (EngInfo(engine_number)->refit_mask != 0);
 
 				SetDParam(0, rvi->cargo_type);
 				SetDParam(1, (rvi->capacity * (CountArticulatedParts(engine_number) + 1)) << multihead);
-				SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+				SetDParam(2, refitable ? STR_9842_REFITTABLE : STR_EMPTY);
 			}
 			DrawString(x,y, STR_PURCHASE_INFO_CAPACITY, 0);
 			y += 10;
