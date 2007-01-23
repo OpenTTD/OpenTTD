@@ -37,6 +37,10 @@ enum {
 	GRAPH_NUM_LINES_Y = 9,
 };
 
+/* Apparently these don't play well with enums. */
+static const int64 INVALID_DATAPOINT     = LLONG_MAX; // Value used for a datapoint that shouldn't be drawn.
+static const uint  INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
+
 typedef struct GraphDrawer {
 	uint sel; // bitmask of the players *excluded* (e.g. 11111111 means that no players are shown)
 	byte num_dataset;
@@ -61,11 +65,9 @@ typedef struct GraphDrawer {
 	int64 cost[GRAPH_MAX_DATASETS][24]; // last 2 years
 } GraphDrawer;
 
-static const int64 INVALID_VALUE = 0x80000000;
-
 static void DrawGraph(const GraphDrawer *gw)
 {
-	uint x,y,old_x,old_y;
+	uint x, y;  // Reused whenever x and y coordinates are needed.
 	int right;
 	int64 highest_value;
 	int adj_height;
@@ -133,7 +135,7 @@ static void DrawGraph(const GraphDrawer *gw)
 			for (int j = 0; j < gw->num_on_x_axis; j++) {
 				int64 datapoint = gw->cost[i][j];
 
-				if (datapoint != INVALID_VALUE) {
+				if (datapoint != INVALID_DATAPOINT) {
 					/* For now, if the graph has negative values the scaling is
 					 * symmetrical about the x axis, so take the absolute value
 					 * of each data point. */
@@ -211,26 +213,31 @@ static void DrawGraph(const GraphDrawer *gw)
 			/* Centre the dot between the grid lines. */
 			x = gw->left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
 
-			byte color = gw->colors[i];
-			old_y = old_x = INVALID_VALUE;
+			byte color  = gw->colors[i];
+			uint prev_x = INVALID_DATAPOINT_POS;
+			uint prev_y = INVALID_DATAPOINT_POS;
 
 			for (int j = 0; j < gw->num_on_x_axis; j++) {
 				int64 datapoint = gw->cost[i][j];
 
-				if (datapoint != INVALID_VALUE) {
+				if (datapoint != INVALID_DATAPOINT) {
 					/* XXX: This can overflow if adj_height * datapoint is too
 					 * big to fit in an int64. */
 					y = gw->top + adj_height - (adj_height * datapoint) / highest_value;
 
+					/* Draw the point. */
 					GfxFillRect(x-1, y-1, x+1, y+1, color);
-					if (old_x != INVALID_VALUE)
-						GfxDrawLine(old_x, old_y, x, y, color);
 
-					old_x = x;
-					old_y = y;
+					/* Draw the line connected to the previous point. */
+					if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, color);
+
+					prev_x = x;
+					prev_y = y;
 				} else {
-					old_x = INVALID_VALUE;
+					prev_x = INVALID_DATAPOINT_POS;
+					prev_y = INVALID_DATAPOINT_POS;
 				}
+
 				x += GRAPH_X_POSITION_SEPARATION;
 			}
 		}
@@ -378,7 +385,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 			if (p->is_active) {
 				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (p->old_economy[j].income + p->old_economy[j].expenses);
+					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : (p->old_economy[j].income + p->old_economy[j].expenses);
 					i++;
 				}
 			}
@@ -448,7 +455,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 			if (p->is_active) {
 				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : p->old_economy[j].income;
+					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].income;
 					i++;
 				}
 			}
@@ -518,7 +525,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 			if (p->is_active) {
 				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : p->old_economy[j].delivered_cargo;
+					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].delivered_cargo;
 					i++;
 				}
 			}
@@ -588,7 +595,7 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 			if (p->is_active) {
 				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : p->old_economy[j].performance_history;
+					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].performance_history;
 					i++;
 				}
 			}
@@ -661,7 +668,7 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 			if (p->is_active) {
 				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : p->old_economy[j].company_value;
+					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].company_value;
 					i++;
 				}
 			}
