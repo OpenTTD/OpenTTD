@@ -69,8 +69,6 @@ static void DrawGraph(const GraphDrawer *gw)
 	int right;
 	int64 highest_value;
 	int adj_height;
-	uint64 y_scaling;
-	int64 value;
 	uint sel;
 
 	/* the colors and cost array of GraphDrawer must accomodate
@@ -121,7 +119,11 @@ static void DrawGraph(const GraphDrawer *gw)
 	assert(gw->num_on_x_axis > 0);
 	assert(gw->num_dataset > 0);
 
-	highest_value = 0;
+	/* Start of with a value of twice the height of the graph in pixels. It's a
+	 * bit arbitrary, but it makes the cargo payment graph look a little nicer,
+	 * and prevents division by zero when calculating where the datapoint
+	 * should be drawn. */
+	highest_value = adj_height * 2;
 
 	/* bit selection for the showing of various players, base max element
 	 * on to-be shown player-information. This way the graph can scale */
@@ -142,19 +144,19 @@ static void DrawGraph(const GraphDrawer *gw)
 		sel >>= 1;
 	}
 
-	/* setup scaling */
-	y_scaling = INVALID_VALUE;
-	value = adj_height * 2;
-
-	if (highest_value > value) {
-		highest_value = ALIGN(highest_value, 8);
-		y_scaling = (((uint64) (value>>1) << 32) / highest_value);
-		value = highest_value;
-	}
+	/* Round up highest_value so that it will divide cleanly into the number of
+	 * axis labels used. */
+	int round_val = highest_value % (GRAPH_NUM_LINES_Y - 1);
+	if (round_val != 0) highest_value += (GRAPH_NUM_LINES_Y - 1 - round_val);
 
 	/* draw text strings on the y axis */
-	int64 y_label = value;
-	if (gw->include_neg) y_label /= 2;
+	int64 y_label = highest_value;
+	int64 y_label_separation = highest_value / (GRAPH_NUM_LINES_Y - 1);
+
+	/* If there are negative values, the graph goes from highest_value to
+	 * -highest_value, not highest_value to 0. */
+	if (gw->include_neg) y_label_separation *= 2;
+
 	x = gw->left + GRAPH_X_POSITION_BEGINNING + 1;
 	y = gw->top - 3;
 
@@ -162,7 +164,8 @@ static void DrawGraph(const GraphDrawer *gw)
 		SetDParam(0, gw->format_str_y_axis);
 		SetDParam64(1, y_label);
 		DrawStringRightAligned(x, y, STR_0170, GRAPH_AXIS_LABEL_COLOUR);
-		y_label -= (value / (GRAPH_NUM_LINES_Y - 1));
+
+		y_label -= y_label_separation;
 		y += (gw->height / (GRAPH_NUM_LINES_Y - 1));
 	}
 
@@ -215,7 +218,9 @@ static void DrawGraph(const GraphDrawer *gw)
 				int64 datapoint = gw->cost[i][j];
 
 				if (datapoint != INVALID_VALUE) {
-					y = adj_height - BIGMULSS64(datapoint, y_scaling >> 1, 31) + gw->top;
+					/* XXX: This can overflow if adj_height * datapoint is too
+					 * big to fit in an int64. */
+					y = gw->top + adj_height - (adj_height * datapoint) / highest_value;
 
 					GfxFillRect(x-1, y-1, x+1, y+1, color);
 					if (old_x != INVALID_VALUE)
