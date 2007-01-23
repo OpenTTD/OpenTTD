@@ -16,8 +16,9 @@
 
 const byte _cargo_colours[NUM_CARGO] = {152, 32, 15, 174, 208, 194, 191, 84, 184, 10, 202, 48};
 
-static uint _legend_excludebits;
-static uint _legend_cargobits;
+/* Bitmasks of player and cargo indices that shouldn't be drawn. */
+static uint _legend_excluded_players;
+static uint _legend_excluded_cargo;
 
 /************************/
 /* GENERIC GRAPH DRAWER */
@@ -42,7 +43,7 @@ static const int64 INVALID_DATAPOINT     = LLONG_MAX; // Value used for a datapo
 static const uint  INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
 
 typedef struct GraphDrawer {
-	uint sel; // bitmask of the players *excluded* (e.g. 11111111 means that no players are shown)
+	uint excluded_data; // bitmask of the datasets that shouldn't be displayed.
 	byte num_dataset;
 	byte num_on_x_axis;
 	bool include_neg;
@@ -71,7 +72,6 @@ static void DrawGraph(const GraphDrawer *gw)
 	int right;
 	int64 highest_value;
 	int adj_height;
-	uint sel;
 
 	/* the colors and cost array of GraphDrawer must accomodate
 	 * both values for cargo and players. So if any are higher, quit */
@@ -127,11 +127,8 @@ static void DrawGraph(const GraphDrawer *gw)
 	 * should be drawn. */
 	highest_value = adj_height * 2;
 
-	/* bit selection for the showing of various players, base max element
-	 * on to-be shown player-information. This way the graph can scale */
-	sel = gw->sel;
 	for (int i = 0; i < gw->num_dataset; i++) {
-		if (!(sel&1)) {
+		if (!HASBIT(gw->excluded_data, i)) {
 			for (int j = 0; j < gw->num_on_x_axis; j++) {
 				int64 datapoint = gw->cost[i][j];
 
@@ -143,7 +140,6 @@ static void DrawGraph(const GraphDrawer *gw)
 				}
 			}
 		}
-		sel >>= 1;
 	}
 
 	/* Round up highest_value so that it will divide cleanly into the number of
@@ -206,10 +202,8 @@ static void DrawGraph(const GraphDrawer *gw)
 	}
 
 	/* draw lines and dots */
-	sel = gw->sel; // show only selected lines. GraphDrawer qw->sel set in Graph-Legend (_legend_excludebits)
-
 	for (int i = 0; i < gw->num_dataset; i++) {
-		if (!(sel & 1)) {
+		if (!HASBIT(gw->excluded_data, i)) {
 			/* Centre the dot between the grid lines. */
 			x = gw->left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
 
@@ -241,7 +235,6 @@ static void DrawGraph(const GraphDrawer *gw)
 				x += GRAPH_X_POSITION_SEPARATION;
 			}
 		}
-		sel >>= 1;
 	}
 }
 
@@ -257,7 +250,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 	case WE_CREATE: {
 		uint i;
 		for (i = 3; i < w->widget_count; i++) {
-			if (!HASBIT(_legend_excludebits, i - 3)) LowerWindowWidget(w, i);
+			if (!HASBIT(_legend_excluded_players, i - 3)) LowerWindowWidget(w, i);
 		}
 		break;
 	}
@@ -265,7 +258,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		FOR_ALL_PLAYERS(p) {
 			if (!p->is_active) {
-				SETBIT(_legend_excludebits, p->index);
+				SETBIT(_legend_excluded_players, p->index);
 				RaiseWindowWidget(w, p->index + 3);
 			}
 		}
@@ -279,13 +272,13 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
 			SetDParam(2, GetPlayerNameString(p->index, 3));
-			DrawString(21,17+p->index*12,STR_7021,HASBIT(_legend_excludebits, p->index) ? 0x10 : 0xC);
+			DrawString(21, 17 + p->index * 12, STR_7021, HASBIT(_legend_excluded_players, p->index) ? 0x10 : 0xC);
 		}
 		break;
 
 	case WE_CLICK:
 		if (IS_INT_INSIDE(e->we.click.widget, 3, 11)) {
-			_legend_excludebits ^= (1 << (e->we.click.widget - 3));
+			TOGGLEBIT(_legend_excluded_players, e->we.click.widget - 3);
 			ToggleWidgetLoweredState(w, e->we.click.widget);
 			SetWindowDirty(w);
 			InvalidateWindow(WC_INCOME_GRAPH, 0);
@@ -333,15 +326,15 @@ static void ShowGraphLegend(void)
 static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
 {
 	const Player* p;
-	uint excludebits = _legend_excludebits;
+	uint excluded_players = _legend_excluded_players;
 	byte nums;
 	int mo,yr;
 
 	// Exclude the players which aren't valid
 	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active) SETBIT(excludebits,p->index);
+		if (!p->is_active) SETBIT(excluded_players, p->index);
 	}
-	gd->sel = excludebits;
+	gd->excluded_data = excluded_players;
 	gd->num_vert_lines = 24;
 
 	nums = 0;
@@ -721,7 +714,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 	case WE_CREATE: {
 		uint i;
 		for (i = 3; i < w->widget_count; i++) {
-			if (!HASBIT(_legend_cargobits, i - 3)) LowerWindowWidget(w, i);
+			if (!HASBIT(_legend_excluded_cargo, i - 3)) LowerWindowWidget(w, i);
 		}
 		break;
 	}
@@ -736,7 +729,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		x = 495;
 		y = 24;
 
-		gd.sel = _legend_cargobits;
+		gd.excluded_data = _legend_excluded_cargo;
 		gd.left = 2;
 		gd.top = 24;
 		gd.height = 104;
@@ -778,7 +771,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		case 3: case 4: case 5: case 6:
 		case 7: case 8: case 9: case 10:
 		case 11: case 12: case 13: case 14:
-			TOGGLEBIT(_legend_cargobits, e->we.click.widget - 3);
+			TOGGLEBIT(_legend_excluded_cargo, e->we.click.widget - 3);
 			ToggleWidgetLoweredState(w, e->we.click.widget);
 			SetWindowDirty(w);
 			break;
