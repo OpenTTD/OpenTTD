@@ -193,7 +193,6 @@ window.h
 # GUI Source Code
 aircraft_gui.cpp
 airport_gui.cpp
-autoreplace_gui.cpp
 bridge_gui.cpp
 build_vehicle_gui.cpp
 depot_gui.cpp
