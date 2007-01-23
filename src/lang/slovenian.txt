@@ -963,7 +963,7 @@ STR_NO_ORDERS_VEL                                               :{LTBLUE}Brez uk
 
 STR_PASSENGERS                                                  :potniki
 STR_BAGS                                                        :vreč
-STR_TONS                                                        :ton{P a i e ""}
+STR_TONS                                                        :ton
 STR_LITERS                                                      :litrov
 STR_ITEMS                                                       :glav
 STR_CRATES                                                      :palet
