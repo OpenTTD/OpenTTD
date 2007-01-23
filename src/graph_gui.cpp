@@ -46,7 +46,7 @@ typedef struct GraphDrawer {
 	uint excluded_data; // bitmask of the datasets that shouldn't be displayed.
 	byte num_dataset;
 	byte num_on_x_axis;
-	bool include_neg;
+	bool has_negative_values;
 	byte num_vert_lines;
 
 	/* The starting month and year that values are plotted against. If month is
@@ -59,8 +59,8 @@ typedef struct GraphDrawer {
 	uint16 x_values_start;
 	uint16 x_values_increment;
 
-	int left, top;
-	uint height;
+	int left, top;  // Where to start drawing the graph, in pixels.
+	uint height;    // The height of the graph in pixels.
 	StringID format_str_y_axis;
 	byte colors[GRAPH_MAX_DATASETS];
 	int64 cost[GRAPH_MAX_DATASETS][24]; // last 2 years
@@ -68,23 +68,22 @@ typedef struct GraphDrawer {
 
 static void DrawGraph(const GraphDrawer *gw)
 {
-	uint x, y;  // Reused whenever x and y coordinates are needed.
-	int right;
-	int64 highest_value;
-	int adj_height;
+	uint x, y;            // Reused whenever x and y coordinates are needed.
+	int64 highest_value;  // Highest value to be drawn.
+	int x_axis_offset;    // Distance from the top of the graph to the x axis.
 
 	/* the colors and cost array of GraphDrawer must accomodate
 	 * both values for cargo and players. So if any are higher, quit */
 	assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_PLAYERS);
-
 	assert(gw->num_vert_lines > 0);
 
 	byte grid_colour = _colour_gradient[14][4];
 
-	/* Position of the bottom of the graph. */
+	/* The coordinates of the opposite edges of the graph. */
 	int bottom = gw->top + gw->height - 1;
+	int right  = gw->left + GRAPH_X_POSITION_BEGINNING + gw->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1;
 
-	/* draw the vertical lines */
+	/* Draw the vertical grid lines. */
 
 	/* Don't draw the first line, as that's where the axis will be. */
 	x = gw->left + GRAPH_X_POSITION_BEGINNING + GRAPH_X_POSITION_SEPARATION;
@@ -94,27 +93,29 @@ static void DrawGraph(const GraphDrawer *gw)
 		x += GRAPH_X_POSITION_SEPARATION;
 	}
 
-	/* draw the horizontal lines */
+	/* Draw the horizontal grid lines. */
 	x = gw->left + GRAPH_X_POSITION_BEGINNING;
 	y = gw->height + gw->top;
-	right = gw->left + GRAPH_X_POSITION_BEGINNING + gw->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1;
 
 	for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
 		GfxFillRect(x, y, right, y, grid_colour);
 		y -= (gw->height / (GRAPH_NUM_LINES_Y - 1));
 	}
 
-	/* draw vertical edge line */
+	/* Draw the y axis. */
 	GfxFillRect(x, gw->top, x, bottom, GRAPH_AXIS_LINE_COLOUR);
 
-	adj_height = gw->height;
-	if (gw->include_neg) adj_height >>= 1;
+	/* Find the distance from the top of the graph to the x axis. */
+	x_axis_offset = gw->height;
 
-	/* draw horiz edge line */
-	y = adj_height + gw->top;
+	/* The graph is currently symmetrical about the x axis. */
+	if (gw->has_negative_values) x_axis_offset /= 2;
+
+	/* Draw the x axis. */
+	y = x_axis_offset + gw->top;
 	GfxFillRect(x, y, right, y, GRAPH_AXIS_LINE_COLOUR);
 
-	/* find the max element */
+	/* Find the largest value that will be drawn. */
 	if (gw->num_on_x_axis == 0)
 		return;
 
@@ -125,7 +126,7 @@ static void DrawGraph(const GraphDrawer *gw)
 	 * bit arbitrary, but it makes the cargo payment graph look a little nicer,
 	 * and prevents division by zero when calculating where the datapoint
 	 * should be drawn. */
-	highest_value = adj_height * 2;
+	highest_value = x_axis_offset * 2;
 
 	for (int i = 0; i < gw->num_dataset; i++) {
 		if (!HASBIT(gw->excluded_data, i)) {
@@ -153,7 +154,7 @@ static void DrawGraph(const GraphDrawer *gw)
 
 	/* If there are negative values, the graph goes from highest_value to
 	 * -highest_value, not highest_value to 0. */
-	if (gw->include_neg) y_label_separation *= 2;
+	if (gw->has_negative_values) y_label_separation *= 2;
 
 	x = gw->left + GRAPH_X_POSITION_BEGINNING + 1;
 	y = gw->top - 3;
@@ -215,9 +216,9 @@ static void DrawGraph(const GraphDrawer *gw)
 				int64 datapoint = gw->cost[i][j];
 
 				if (datapoint != INVALID_DATAPOINT) {
-					/* XXX: This can overflow if adj_height * datapoint is too
-					 * big to fit in an int64. */
-					y = gw->top + adj_height - (adj_height * datapoint) / highest_value;
+					/* XXX: This can overflow if x_axis_offset * datapoint is
+					 * too big to fit in an int64. */
+					y = gw->top + x_axis_offset - (x_axis_offset * datapoint) / highest_value;
 
 					/* Draw the point. */
 					GfxFillRect(x-1, y-1, x+1, y+1, color);
@@ -368,7 +369,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 		gd.left = 2;
 		gd.top = 18;
 		gd.height = 136;
-		gd.include_neg = true;
+		gd.has_negative_values = true;
 		gd.format_str_y_axis = STR_CURRCOMPACT;
 
 		SetupGraphDrawerForPlayers(&gd);
@@ -439,7 +440,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 		gd.left = 2;
 		gd.top = 18;
 		gd.height = 104;
-		gd.include_neg = false;
+		gd.has_negative_values = false;
 		gd.format_str_y_axis = STR_CURRCOMPACT;
 		SetupGraphDrawerForPlayers(&gd);
 
@@ -509,7 +510,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 		gd.left = 2;
 		gd.top = 18;
 		gd.height = 104;
-		gd.include_neg = false;
+		gd.has_negative_values = false;
 		gd.format_str_y_axis = STR_7024;
 		SetupGraphDrawerForPlayers(&gd);
 
@@ -579,7 +580,7 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 		gd.left = 2;
 		gd.top = 18;
 		gd.height = 200;
-		gd.include_neg = false;
+		gd.has_negative_values = false;
 		gd.format_str_y_axis = STR_7024;
 		SetupGraphDrawerForPlayers(&gd);
 
@@ -652,7 +653,7 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 		gd.left = 2;
 		gd.top = 18;
 		gd.height = 200;
-		gd.include_neg = false;
+		gd.has_negative_values = false;
 		gd.format_str_y_axis = STR_CURRCOMPACT;
 		SetupGraphDrawerForPlayers(&gd);
 
@@ -733,7 +734,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		gd.left = 2;
 		gd.top = 24;
 		gd.height = 104;
-		gd.include_neg = false;
+		gd.has_negative_values = false;
 		gd.format_str_y_axis = STR_CURRCOMPACT;
 		gd.num_dataset = NUM_CARGO;
 		gd.num_on_x_axis = 20;
