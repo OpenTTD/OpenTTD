@@ -57,68 +57,6 @@ static LanguagePack *_langpack;
 static uint _langtab_num[32]; // Offset into langpack offs
 static uint _langtab_start[32]; // Offset into langpack offs
 
-static const StringID _cargo_string_list[NUM_LANDSCAPE][NUM_CARGO] = {
-	{ /* LT_NORMAL */
-		STR_PASSENGERS,
-		STR_TONS,
-		STR_BAGS,
-		STR_LITERS,
-		STR_ITEMS,
-		STR_CRATES,
-		STR_TONS,
-		STR_TONS,
-		STR_TONS,
-		STR_TONS,
-		STR_BAGS,
-		STR_RES_OTHER
-	},
-
-	{ /* LT_HILLY */
-		STR_PASSENGERS,
-		STR_TONS,
-		STR_BAGS,
-		STR_LITERS,
-		STR_ITEMS,
-		STR_CRATES,
-		STR_TONS,
-		STR_TONS,
-		STR_RES_OTHER,
-		STR_TONS,
-		STR_BAGS,
-		STR_TONS
-	},
-
-	{ /* LT_DESERT */
-		STR_PASSENGERS,
-		STR_LITERS,
-		STR_BAGS,
-		STR_LITERS,
-		STR_TONS,
-		STR_CRATES,
-		STR_TONS,
-		STR_TONS,
-		STR_TONS,
-		STR_LITERS,
-		STR_BAGS,
-		STR_TONS
-	},
-
-	{ /* LT_CANDY */
-		STR_PASSENGERS,
-		STR_TONS,
-		STR_BAGS,
-		STR_NOTHING,
-		STR_NOTHING,
-		STR_TONS,
-		STR_TONS,
-		STR_LITERS,
-		STR_TONS,
-		STR_NOTHING,
-		STR_LITERS,
-		STR_NOTHING
-	}
-};
-
 
 // Read an int64 from the argv array.
 static inline int64 GetInt64(const int32 **argv)
