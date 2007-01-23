@@ -134,14 +134,6 @@
    typedef _W64 unsigned int UINT_PTR, *PUINT_PTR;
 # endif /* WIN32 && !_WIN64 && !WIN64 */
 
-# if _MSC_VER < 1300 // VC6 and lower
-#  ifdef  _WIN64
-    typedef __int64 intptr_t;
-#  else
-    typedef _W64 int intptr_t;
-#  endif
-# endif /* _MSC_VER < 1300 */
-
 # define GCC_PACK
 
 // This is needed to zlib uses the stdcall calling convention on visual studio, also used with libpng (VS6 warning)
