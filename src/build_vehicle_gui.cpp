@@ -739,7 +739,7 @@ static void DrawVehicleEngine(byte type, int x, int y, EngineID engine, SpriteID
  * @param x,y Where should the list start
  * @param eng_list What engines to draw
  * @param min where to start in the list
- * @param max where in the list to end. MAKE SURE THAT THIS IS NOT LONGER THAN THE ENGINE LIST ITSELF!
+ * @param max where in the list to end
  * @param selected_id what engine to highlight as selected, if any
  */
 static void DrawEngineList(byte type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id)
@@ -747,6 +747,8 @@ static void DrawEngineList(byte type, int x, int y, const EngineList eng_list, u
 	byte step_size = GetVehicleListHeight(type);
 	byte x_offset = 0;
 	byte y_offset = 0;
+
+	assert(max <= EngList_Count(&eng_list));
 
 	switch (type) {
 		case VEH_Train:
