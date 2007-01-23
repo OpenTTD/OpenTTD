@@ -371,7 +371,7 @@ static const StringID _sort_listing[][10] = {{
 }};
 
 /* Draw rail wagon specific details */
-static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi)
+static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi)
 {
 	/* Purchase cost */
 	SetDParam(0, (rvi->base_cost * _price.build_railwagon) >> 8);
@@ -394,7 +394,7 @@ static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const R
 }
 
 /* Draw locomotive specific details */
-static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi, const Engine *e)
+static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi, const Engine *e)
 {
 	int multihead = (rvi->flags&RVI_MULTIHEAD?1:0);
 
@@ -434,7 +434,7 @@ static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const R
 }
 
 /* Draw road vehicle specific details */
-static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const RoadVehicleInfo *rvi)
+static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const RoadVehicleInfo *rvi)
 {
 	bool refittable = (_engine_info[engine_number].refit_mask != 0);
 
@@ -460,7 +460,7 @@ static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const R
 }
 
 /* Draw ship specific details */
-static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const ShipVehicleInfo *svi)
+static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const ShipVehicleInfo *svi)
 {
 	/* Purchase cost - Max speed */
 	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
@@ -484,7 +484,7 @@ static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const S
 }
 
 /* Draw aircraft specific details */
-static int DrawVehiclePurchaseInfo(int x, int y, EngineID engine_number, const AircraftVehicleInfo *avi)
+static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const AircraftVehicleInfo *avi)
 {
 	CargoID cargo;
 
@@ -536,10 +536,10 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
 
 			if (rvi->flags & RVI_WAGON) {
-				y = DrawVehiclePurchaseInfo(x, y, engine_number, rvi);
+				y = DrawRailWagonPurchaseInfo(x, y, engine_number, rvi);
 				refitable = true;
 			} else {
-				y = DrawVehiclePurchaseInfo(x, y, engine_number, rvi, e);
+				y = DrawRailEnginePurchaseInfo(x, y, engine_number, rvi, e);
 				refitable = (rvi->capacity > 0);
 			}
 
@@ -560,16 +560,16 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 		}
 			break;
 		case VEH_Road:
-			y = DrawVehiclePurchaseInfo(x, y, engine_number, RoadVehInfo(engine_number));
+			y = DrawRoadVehPurchaseInfo(x, y, engine_number, RoadVehInfo(engine_number));
 			refitable = true;
 			break;
 		case VEH_Ship: {
 			const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
-			y = DrawVehiclePurchaseInfo(x, y, engine_number, svi);
+			y = DrawShipPurchaseInfo(x, y, engine_number, svi);
 			refitable = svi->refittable;
 		} break;
 		case VEH_Aircraft:
-			y = DrawVehiclePurchaseInfo(x, y, engine_number, AircraftVehInfo(engine_number));
+			y = DrawAircraftPurchaseInfo(x, y, engine_number, AircraftVehInfo(engine_number));
 			refitable = true;
 			break;
 	}
