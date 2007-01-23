@@ -51,6 +51,7 @@ void ShowVehicleListWindow(PlayerID player, byte vehicle_type);
 void ShowVehicleListWindow(PlayerID player, byte vehicle_type, StationID station);
 void ShowVehicleListWindow(PlayerID player, byte vehicle_type, TileIndex depot_tile);
 
+void ShowReplaceVehicleWindow(byte vehicletype);
 
 static inline void DrawVehicleImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
 {
