@@ -549,9 +549,11 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 				SetDParam(2, STR_EMPTY);
 			} else {
 				int multihead = (rvi->flags & RVI_MULTIHEAD ? 1 : 0);
+				bool refittable = (EngInfo(engine_number)->refit_mask != 0);
+
 				SetDParam(0, rvi->cargo_type);
 				SetDParam(1, (rvi->capacity * (CountArticulatedParts(engine_number) + 1)) << multihead);
-				SetDParam(2, STR_9842_REFITTABLE);
+				SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 			}
 			DrawString(x,y, STR_PURCHASE_INFO_CAPACITY, 0);
 			y += 10;
