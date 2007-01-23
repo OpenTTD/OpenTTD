@@ -48,11 +48,11 @@ static const Widget _build_vehicle_widgets[] = {
 	{    WWT_TEXTBTN,     RESIZE_LR,    14,   216,   227,    14,    25, STR_0225,                STR_SORT_CRITERIA_TIP},
 	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   215,    26,   121, 0x0,                     STR_NULL },
 	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   216,   227,    26,   121, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
-	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   227,   122,   213, 0x0,                     STR_NULL },
+	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   227,   122,   223, 0x0,                     STR_NULL },
 
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   214,   225, 0x0,                     STR_NULL },
-	{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   115,   215,   214,   225, 0x0,                     STR_NULL },
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   216,   227,   214,   225, 0x0,                     STR_RESIZE_BUTTON },
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   224,   235, 0x0,                     STR_NULL },
+	{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   115,   215,   224,   235, 0x0,                     STR_NULL },
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   216,   227,   224,   235, 0x0,                     STR_RESIZE_BUTTON },
 	{   WIDGETS_END},
 };
 
@@ -933,7 +933,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _build_vehicle_desc = {
-	WDP_AUTO, WDP_AUTO, 228, 226,
+	WDP_AUTO, WDP_AUTO, 228, 236,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_build_vehicle_widgets,
