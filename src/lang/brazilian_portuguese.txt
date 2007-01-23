@@ -289,7 +289,7 @@ STR_013D_INFORMATION                                            :{BLACK}Informa�
 STR_013E_CAPACITIES                                             :{BLACK}Capacidades
 STR_013E_TOTAL_CARGO                                            :{BLACK}Carga Total
 STR_013F_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}Capacidade {LTBLUE}{CARGO} (x{NUM})
+STR_CAPACITY_MULT                                               :{BLACK}Capacidade: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Capacidade total deste trem:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -304,7 +304,7 @@ STR_256                                                         :256
 STR_512                                                         :512
 STR_1024                                                        :1024
 STR_2048                                                        :2048
-STR_MAPSIZE                                                     :{BLACK}Tamanho do mapa:
+STR_MAPSIZE                                                     :{BLACK}DimensÃµes do mapa:
 STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Opções do Jogo
 

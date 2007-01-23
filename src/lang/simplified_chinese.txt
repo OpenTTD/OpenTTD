@@ -1953,16 +1953,16 @@ STR_SV_STNAME_TRANSFER                                          :{STRING} 广场
 STR_SV_STNAME_HALT                                              :{STRING} 店
 STR_SV_STNAME_VALLEY                                            :{STRING} 谷
 STR_SV_STNAME_HEIGHTS                                           :{STRING} 台
-STR_SV_STNAME_WOODS                                             :{STRING1}林
-STR_SV_STNAME_LAKESIDE                                          :{STRING1}滨
-STR_SV_STNAME_EXCHANGE                                          :{STRING1}庄
-STR_SV_STNAME_AIRPORT                                           :{STRING1}机场
-STR_SV_STNAME_OILFIELD                                          :{STRING1}油田
-STR_SV_STNAME_MINES                                             :{STRING1}矿
-STR_SV_STNAME_DOCKS                                             :{STRING1}码头
-STR_SV_STNAME_BUOY_1                                            :{STRING1}浮标 1
-STR_SV_STNAME_BUOY_2                                            :{STRING1}浮标 2
-STR_SV_STNAME_BUOY_3                                            :{STRING1}浮标 3
+STR_SV_STNAME_WOODS                                             :{STRING} 林
+STR_SV_STNAME_LAKESIDE                                          :{STRING} 滨
+STR_SV_STNAME_EXCHANGE                                          :{STRING} 庄
+STR_SV_STNAME_AIRPORT                                           :{STRING} 机场
+STR_SV_STNAME_OILFIELD                                          :{STRING} 油田
+STR_SV_STNAME_MINES                                             :{STRING} 矿
+STR_SV_STNAME_DOCKS                                             :{STRING} 码头
+STR_SV_STNAME_BUOY_1                                            :{STRING} 浮标 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} 浮标 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} 浮标 3
 STR_SV_STNAME_BUOY_4                                            :{STRING} 浮标 4
 STR_SV_STNAME_BUOY_5                                            :{STRING} 浮标 5
 STR_SV_STNAME_BUOY_6                                            :{STRING} 浮标 6
@@ -2543,7 +2543,7 @@ STR_8826_GO_TO                                                  :{BLACK}前往
 STR_8827_FULL_LOAD                                              :{BLACK}装货
 STR_8828_UNLOAD                                                 :{BLACK}卸货
 STR_REFIT                                                       :{BLACK}改装
-STR_REFIT_TIP                                                   :
+STR_REFIT_TIP                                                   :{BLACK}选择要在调度计划中改装的货物类型。CTRL+单击可以去掉说明。
 STR_REFIT_ORDER                                                 :(改装为 {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (调度计划)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}-- 调度计划结束 --
@@ -3011,7 +3011,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}点击�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} Sign
 
-STR_ORDER_REFIT_FAILED                                          :
+STR_ORDER_REFIT_FAILED                                          :{WHITE}调度计划改装失败 {STRING} {COMMA}
 
 ############ Lists rail types
 
@@ -3112,3 +3112,11 @@ STR_LARGE_AIRPORTS                                              :{BLACK}大型�
 STR_HUB_AIRPORTS                                                :{BLACK}空运枢纽
 STR_HELIPORTS                                                   :{BLACK}直升机机场
 
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}长度：{NUM}
+STR_MEASURE_AREA                                                :{BLACK}面积：{NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}长度：{NUM}{}高度差：{NUM} 米
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}面积：{NUM} x {NUM}{}高度差：{NUM}米
+
+########

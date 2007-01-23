@@ -443,7 +443,7 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Konstruu
 STR_0182_BUILD_ROADS                                            :{BLACK}Konstruu vojojn
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Konstruu havenojn
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Konstruu flughavenojn
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plantu arbojn, metu signojn ktp.
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plantu arbojn, metu afiŝojn ktp.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Landregionaj informoj
 STR_0187_OPTIONS                                                :{BLACK}Opcioj
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -718,7 +718,7 @@ STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Ne povas
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...antaŭe konstruu urbon
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...nur unu permesiĝas en ĉiu urbo
 STR_0288_PLANT_TREES                                            :{BLACK}Plantu arbojn
-STR_0289_PLACE_SIGN                                             :{BLACK}Metu signon
+STR_0289_PLACE_SIGN                                             :{BLACK}Metu afiŝon
 STR_028A_RANDOM_TREES                                           :{BLACK}Hazardaj Arboj
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Hazarde plantu arbojn en la tuta lando
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Metu rokecajn lokojn en la lando
@@ -775,12 +775,12 @@ STR_NEWGRF_SETTINGS                                             :Agordoj de NewG
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Urbonomoj montriĝas
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Staciaj nomoj montriĝas
-STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Signoj montriĝas
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Afiŝoj montriĝas
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Trairejoj montriĝas
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Plena animado
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Plenaj detaloj
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Travideblaj konstruaĵoj
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}Travideblaj staciaj signoj
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Travideblaj staciaj afiŝoj
 ############ range ends	here
 
 ############ range for menu	starts
@@ -798,7 +798,7 @@ STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Montru s
 STR_02DD_SUBSIDIES                                              :Subvencioj
 STR_02DE_MAP_OF_WORLD                                           :Mondomapo
 STR_EXTRA_VIEW_PORT                                             :Plia videjo
-STR_SIGN_LIST                                                   :Signolisto
+STR_SIGN_LIST                                                   :Afiŝa listo
 STR_02DF_TOWN_DIRECTORY                                         :Urbaro
 STR_TOWN_POPULATION                                             :{BLACK}Monda enloĝantaro: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Videjo {COMMA}
@@ -1532,7 +1532,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Ne povas
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Ne povas konstrui relojn ĉi tie...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Ne povas forigi relojn de ĉi tie...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Ne povas forigi signalojn de ĉi tie...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Trajndeponeja Direkto
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Deponeja Direkto
 STR_1015_RAILROAD_CONSTRUCTION                                  :Fervoja Konstruado
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrofervoja konstruado
 STR_1016_MONORAIL_CONSTRUCTION                                  :Unurelfervoja konstruado
@@ -1563,7 +1563,7 @@ STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vojkonst
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Elektu Vojan Ponton
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Ne povas konstrui vojon ĉi tie...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Ne povas forigi vojon de ĉi tie...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Vojveturildeponeja Direkto
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Deponeja Direkto
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ne povas konstrui vojveturilan deponejon ĉi tie...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Ne povas konstrui bushaltejon...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Ne povas konstrui ŝarĝstacion...
@@ -1687,17 +1687,17 @@ STR_STATION                                                     :{STATION}
 ##id 0x2800
 STR_LANDSCAPING                                                 :Landaspektigi
 STR_2800_PLANT_TREES                                            :Plantu arbojn
-STR_2801_PLACE_SIGN                                             :Metu signon
+STR_2801_PLACE_SIGN                                             :Metu afiŝon
 STR_2802_TREES                                                  :{WHITE}Arboj
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...jam estas arbo
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...loko ne uzeblas
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Ne povas planti arbon ĉi tie...
 STR_2806                                                        :{WHITE}{STRING}
-STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...tro da signoj
-STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Ne povas meti signon ĉi tie...
-STR_280A_SIGN                                                   :Signo
-STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Ŝanĝu signo-tekston
-STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Ne povas ŝanĝi signan nomon...
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...tro da afiŝoj
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Ne povas meti afiŝon ĉi tie...
+STR_280A_SIGN                                                   :Afiŝo
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Ŝanĝu afiŝan tekston
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Ne povas ŝanĝi afiŝan nomon...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Elektu arbo-tipon por plant
 STR_280E_TREES                                                  :Arboj
 STR_280F_RAINFOREST                                             :Praarbaro
@@ -3010,7 +3010,7 @@ STR_MASS_STOP_LIST_TIP                                          :{BLACK}Alklaku 
 STR_MASS_START_LIST_TIP                                         :{BLACK}Alklaku por starti ĉiujn veturilojn en la listo
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Signolisto - {COMMA} Signo{P "" j}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Afiŝa listo - {COMMA} Afiŝo{P "" j}
 
 STR_ORDER_REFIT_FAILED                                          :{WHITE}Fiasko de ordeno transformi haltigis {STRING.n} {COMMA}
 
