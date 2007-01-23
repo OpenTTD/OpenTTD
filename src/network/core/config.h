@@ -42,6 +42,15 @@ enum {
 	NETWORK_MAX_GRF_COUNT         =   55,
 
 	NETWORK_NUM_LANGUAGES         =    4, ///< Number of known languages (to the network protocol) + 1 for 'any'.
+	/**
+	 * The number of landscapes in OpenTTD.
+	 * This number must be equal to NUM_LANDSCAPE, but as this number is used
+	 * within the network code and that the network code is shared with the
+	 * masterserver/updater, it has to be declared in here too. In network.cpp
+	 * there is a compile assertion to check that this NUM_LANDSCAPE is equal
+	 * to NETWORK_NUM_LANDSCAPES.
+	 */
+	NETWORK_NUM_LANDSCAPES        =    4,
 };
 
 #endif /* ENABLE_NETWORK */

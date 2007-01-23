@@ -38,6 +38,9 @@
 #include <stdarg.h> /* va_list */
 #include "../md5.h"
 
+/* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
+assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);
+
 // global variables (declared in network_data.h)
 CommandPacket *_local_command_queue;
 

@@ -300,8 +300,8 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 			info->map_set        = NetworkRecv_uint8 (this, p);
 			info->dedicated      = (NetworkRecv_uint8(this, p) != 0);
 
-			if (info->server_lang >= NETWORK_NUM_LANGUAGES) info->server_lang = 0;
-			if (info->map_set     >= NUM_LANDSCAPE)         info->map_set     = 0;
+			if (info->server_lang >= NETWORK_NUM_LANGUAGES)  info->server_lang = 0;
+			if (info->map_set     >= NETWORK_NUM_LANDSCAPES) info->map_set     = 0;
 	}
 }
 
