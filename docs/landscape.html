@@ -10,22 +10,28 @@
 <body>
 
 <h3><a name="Landscape">Landscape</a></h3>
-<p>
-Five attributes hold the information about a tile.
-These attributes are referred to as
-  "<span style="font-weight: bold;">type_height</span>",
-  "<span style="font-weight: bold;">m1</span>",
-  "<span style="font-weight: bold;">m2</span>",
-  "<span style="font-weight: bold;">m3</span>",
-  "<span style="font-weight: bold;">m4</span>" and
-  "<span style="font-weight: bold;">m5</span>".
-The most important value is the class of a tile, stored in the upper 4 bits of the type_height array.
-The lower 4 bits are used to encode the height and slope data.
-For a graphical represenation of the tile-layout have a look at <a href="landscape_grid.html">Landscape grid</a> page.
-</p>
-<p>
-OTTD's class-specific periodic tile processing routine is called once every +256 ticks for each tile.
-</p>
+<p> Seven attributes (counting &quot;type_height&quot;) hold the informations
+  about a tile. These attributes are referred to as "<span style="font-weight: bold;">type_height</span>",
+  "<span style="font-weight: bold;">m1</span>", "<span style="font-weight: bold;">m2</span>",
+  "<span style="font-weight: bold;">m3</span>", "<span style="font-weight: bold;">m4</span>",
+  "<span style="font-weight: bold;">m5</span>" and "<span style="font-weight: bold;">m6</span>".
+  The most important value is the class of a tile, stored in the upper 4 bits
+  of the type_height array. The lower 4 bits are used to encode the height and
+  slope data. For a graphical representation of the tile-layout have a look at
+  <a href="landscape_grid.html">Landscape grid</a> page. </p>
+
+<p><a name="OwnershipInfo">The owner of a tile</a>, as frequently associated with attribute m1, can be either players (human or AI) or "Game entities".
+They are identified using:
+<ul>
+  <li>00 = current player</li>
+  <li>01..08 = AI or network players</li>
+  <li>0F = a town owns the tile</li>
+  <li>10 = nobody owns the tile</li>
+  <li>11 = "water" owns the tile</li>
+  <li>FF = spectator in MP or in scenario editor</li>
+</ul>
+
+<p>OTTD's class-specific periodic tile processing routine is called once every +256 ticks for each tile.</p>
 
 <table border=1 cellpadding=3>
 <tr><th align=left>Class</th><th align=left>Meaning & details of encoding</th></tr>
@@ -188,7 +194,7 @@ Town building
 <ul>
 <li>m2: Index into the array of towns</li>
 <li>m4: <a name="HouseTypes">town building type</a>:
-<p><small>Note: In the climate list, 'sub-arctic' means below the <a href="#_snowline">snow line</a>, and 'snow' means above the snow line in the sub-arctic climate.</small></p>
+<p><small>Note: In the climate list, 'sub-arctic' means below the snow line, and 'snow' means above the snow line in the sub-arctic climate.</small></p>
 <table>
 <tr><th align=left>Type&nbsp;</th><th align=left>Size&nbsp;</th><th align=left>Climates&nbsp;</th><th align=left>Description</th></tr>
 <tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>tall office block</td></tr>
@@ -381,7 +387,7 @@ exit towards: <tt>47</tt> - NE, <tt>48</tt> - SE, <tt>49</tt> - SW, <tt>4A</tt> 
 </table>
 </li>
 <li>m1: <a href="#OwnershipInfo">owner</a> of the station</li>
-<li>m2: index into the <a href="#_StationArray">array of stations</a></li>
+<li>m2: index into the array of stations</li>
 <li>m3 bits 0..3: <a href="#TrackType">track type</a> for railway stations, must be 0 for all the other stations</li>
 <li>m3 bits 4..7: persistent random data for newstations</li>
 <li>m4 = custom station id; 0 means standard graphics</li>
@@ -436,7 +442,7 @@ Tiles of this class form an invisible, one tile wide border at the south (bottom
 Industry tile
 <ul>
 <li>m5: type:
-<br><small>(note: this is not the same as the <a href="#industry.type">industry type</a> stored in the <a href="#_IndustryArray">array of industries</a>)</small>
+<br><small>(note: this is not the same as the industry type, which is stored in the array of industries)</small>
 <table>
 <tr><td nowrap valign=top><tt>00</tt>..<tt>06</tt>&nbsp; </td><td align=left>coal mine
 <table>
@@ -508,9 +514,13 @@ Industry tile
 <tr><td nowrap valign=top><tt>8A</tt>..<tt>8D</tt>&nbsp; </td><td align=left>toy shop</td></tr>
 <tr><td nowrap valign=top><tt>8E</tt>..<tt>93</tt>&nbsp; </td><td align=left>toy factory
 <table>
-<tr><td nowrap valign=top><tt>8F</tt>&nbsp; </td><td align=left>animated part; animation state in m3 (valid range <tt>00</tt>..<tt>31</tt>)<br>
-tile animation is started (m4 zeroed) on the periodic processing if <a href="#industry.didtransform">field <tt>2C</tt></a> in the corresponding industry array entry is nonzero<br>
-while the animation is in progress (see the <a href="#_AnimatedTilesList">array at <tt>04328</tt></a>) m4 holds the number of animation cycles that have already taken place; when this number reaches 8 the animation is stopped</td></tr>
+<tr><td nowrap valign=top><tt>8F</tt>&nbsp; </td>
+                    <td align=left>Animated part; animation state in m3 (valid range <tt>00</tt>..<tt>31</tt>)<br>
+                      Tile animation is started (m4 zeroed) on the periodic processing.<br>
+                      While the animation is in progress, m4 holds the number
+                      of animation cycles that have already taken place; when
+                      this number reaches 8 the animation is stopped</td>
+                  </tr>
 </table>
 </td></tr>
 <tr><td nowrap valign=top><tt>94</tt>..<tt>9B</tt>&nbsp; </td><td align=left>plastic fountains (various stages of cyclic animation)</td></tr>
@@ -533,7 +543,7 @@ while the animation is in progress (see the <a href="#_AnimatedTilesList">array 
 </td></tr>
 <tr><td colspan=2></td></tr> <!-- spacer -->
 </table></li>
-<li>m2: index into the <a href="#_IndustryArray">array of industries</a>
+<li>m2: index into the array of industries
 </li>
 <li>m1 bit 7: clear = under construction
 <ul>
