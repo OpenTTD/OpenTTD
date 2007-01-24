@@ -172,7 +172,7 @@ protected:
 		// rail transport is possible only on compatible rail types
 		if (IsRailTT()) {
 			RailType rail_type = GetTileRailType(m_new_tile, TrackdirToTrack(DiagdirToDiagTrackdir(m_exitdir)));
-			if (((1 << rail_type) & m_veh->u.rail.compatible_railtypes) == 0) {
+			if (!HASBIT(m_veh->u.rail.compatible_railtypes, rail_type)) {
 				// incompatible rail type
 				return false;
 			}
