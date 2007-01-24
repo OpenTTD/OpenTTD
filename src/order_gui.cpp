@@ -34,9 +34,9 @@ enum OrderWindowWidgets {
 	ORDER_WIDGET_GOTO,
 	ORDER_WIDGET_FULL_LOAD,
 	ORDER_WIDGET_UNLOAD,
+	ORDER_WIDGET_REFIT,
 	ORDER_WIDGET_TRANSFER,
 	ORDER_WIDGET_SHARED_ORDER_LIST,
-	ORDER_WIDGET_REFIT,
 	ORDER_WIDGET_RESIZE_BAR,
 	ORDER_WIDGET_RESIZE,
 };
@@ -496,14 +496,15 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		case ORDER_WIDGET_UNLOAD:
 			OrderClick_Unload(w, v);
 			break;
+		case ORDER_WIDGET_REFIT:
+			OrderClick_Refit(w, v);
+			break;
+
 		case ORDER_WIDGET_TRANSFER:
 			OrderClick_Transfer(w, v);
 			break;
 		case ORDER_WIDGET_SHARED_ORDER_LIST:
 			ShowVehicleListWindow(v);
-			break;
-		case ORDER_WIDGET_REFIT:
-			OrderClick_Refit(w, v);
 			break;
 		}
 	} break;
@@ -592,9 +593,9 @@ static const Widget _orders_train_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_TB,      14,   159,   211,    76,    87, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   212,   264,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   265,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER},
+{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   372,    76,    87, STR_REFIT,               STR_REFIT_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   372,    76,    87, STR_886F_TRANSFER,       STR_886D_MAKE_THE_HIGHLIGHTED_ORDER},
 { WWT_PUSHIMGBTN,   RESIZE_TB,      14,   373,   386,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   372,    76,    87, STR_REFIT,               STR_REFIT_TIP},
 {      WWT_PANEL,   RESIZE_RTB,     14,   387,   386,    76,    87, 0x0,                     STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   387,   398,    76,    87, 0x0,                     STR_RESIZE_BUTTON},
 {   WIDGETS_END},
@@ -619,9 +620,9 @@ static const Widget _orders_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_TB,      14,   129,   192,    76,    87, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   193,   256,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   257,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER},
+{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   383,    76,    87, STR_REFIT,               STR_REFIT_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   383,    76,    87, STR_886F_TRANSFER,       STR_886D_MAKE_THE_HIGHLIGHTED_ORDER},
 { WWT_PUSHIMGBTN,   RESIZE_TB,      14,   384,   397,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   383,    76,    87, STR_REFIT,               STR_REFIT_TIP},
 {      WWT_PANEL,   RESIZE_RTB,     14,   397,   396,    76,    87, 0x0,                     STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   398,   409,    76,    87, 0x0,                     STR_RESIZE_BUTTON},
 {   WIDGETS_END},
