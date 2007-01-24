@@ -2,6 +2,7 @@
 ##ownname Українська
 ##isocode uk_UA
 ##plural 6
+##case r z
 ##gender m f s
 
 ##id 0x0000
@@ -21,36 +22,67 @@ STR_000C_ACCEPTS                                                :{BLACK}Прий
 STR_000D_ACCEPTS                                                :{BLACK}Приймає: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :пасажирів
+STR_000F_PASSENGERS.r                                           :пасажирів
 STR_0010_COAL                                                   :вугілля
+STR_0010_COAL.r                                                 :вугілля
 STR_0011_MAIL                                                   :пошту
+STR_0011_MAIL.r                                                 :пошти
 STR_0012_OIL                                                    :нафту
+STR_0012_OIL.r                                                  :нафти
 STR_0013_LIVESTOCK                                              :тварин
+STR_0013_LIVESTOCK.r                                            :тварин
 STR_0014_GOODS                                                  :товари
+STR_0014_GOODS.r                                                :товарів
 STR_0015_GRAIN                                                  :зерно
+STR_0015_GRAIN.r                                                :зерна
 STR_0016_WOOD                                                   :деревину
+STR_0016_WOOD.r                                                 :деревини
 STR_0017_IRON_ORE                                               :залізну руду
+STR_0017_IRON_ORE.r                                             :залізної руди
 STR_0018_STEEL                                                  :сталь
+STR_0018_STEEL.r                                                :сталі
 STR_0019_VALUABLES                                              :коштовності
+STR_0019_VALUABLES.r                                            :коштовностей
 STR_001A_COPPER_ORE                                             :мідну руду
+STR_001A_COPPER_ORE.r                                           :мідної руди
 STR_001B_MAIZE                                                  :кукурудзу
+STR_001B_MAIZE.r                                                :кукурудзи
 STR_001C_FRUIT                                                  :фрукти
+STR_001C_FRUIT.r                                                :фруктів
 STR_001D_DIAMONDS                                               :діаманти
+STR_001D_DIAMONDS.r                                             :діамантів
 STR_001E_FOOD                                                   :продукти
+STR_001E_FOOD.r                                                 :продуктів
 STR_001F_PAPER                                                  :папір
+STR_001F_PAPER.r                                                :паперу
 STR_0020_GOLD                                                   :золото
+STR_0020_GOLD.r                                                 :золота
 STR_0021_WATER                                                  :воду
+STR_0021_WATER.r                                                :води
 STR_0022_WHEAT                                                  :пшеницю
+STR_0022_WHEAT.r                                                :пшениці
 STR_0023_RUBBER                                                 :каучук
+STR_0023_RUBBER.r                                               :каучука
 STR_0024_SUGAR                                                  :цукор
+STR_0024_SUGAR.r                                                :цукру
 STR_0025_TOYS                                                   :іграшки
+STR_0025_TOYS.r                                                 :іграшок
 STR_0026_CANDY                                                  :солодощі
+STR_0026_CANDY.r                                                :солодощів
 STR_0027_COLA                                                   :Колу
+STR_0027_COLA.r                                                 :Коли
 STR_0028_COTTON_CANDY                                           :солодку вату
+STR_0028_COTTON_CANDY.r                                         :солодкої вати
 STR_0029_BUBBLES                                                :бульбашки
-STR_002A_TOFFEE                                                 :ірис
+STR_0029_BUBBLES.r                                              :бульбашок
+STR_002A_TOFFEE                                                 :іриски
+STR_002A_TOFFEE.r                                               :ірисок
 STR_002B_BATTERIES                                              :батарейки
+STR_002B_BATTERIES.r                                            :батарейок
 STR_002C_PLASTIC                                                :пластик
+STR_002C_PLASTIC.r                                              :пластику
 STR_002D_FIZZY_DRINKS                                           :газовану воду
+STR_002D_FIZZY_DRINKS.r                                         :газованої води
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :пасажирів
 STR_0030_COAL                                                   :вугілля
@@ -270,7 +302,7 @@ STR_012C_MESSAGE                                                :{WHITE}Пові
 STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Відміна
 STR_012F_OK                                                     :{BLACK}Так
-STR_0130_RENAME                                                 :{BLACK}Перейменувати
+STR_0130_RENAME                                                 :{BLACK}Ім'я
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Дуже багато імен
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Таке ім'я вже є
 
@@ -392,7 +424,7 @@ STR_ENGINE_SORT_INTRO_DATE                                      :Дата вип
 STR_ENGINE_SORT_RUNNING_COST                                    :Вартість експлуатації
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Потужність/Вартість експлуатації
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Місткість
-STR_NO_WAITING_CARGO                                            :{BLACK}Звідси поки-що нічого перевозити
+STR_NO_WAITING_CARGO                                            :{BLACK}Звідси поки що нічого перевозити
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Вибрати весь транспорт
 STR_SELECT_ALL_TYPES                                            :{BLACK}Вибрати всі типи вантажів
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Перелік доступного транспорту
@@ -659,7 +691,7 @@ STR_024A_OIL_WELLS                                              :{BLACK}Нафт
 STR_024B_BANK                                                   :{BLACK}Банк
 STR_024C_PAPER_MILL                                             :{BLACK}Паперова фабрика
 STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Продуктовий завод
-STR_024E_PRINTING_WORKS                                         :{BLACK}Друкарня
+STR_024E_PRINTING_WORKS                                         :{BLACK}{G=f}Друкарня
 STR_024F_GOLD_MINE                                              :{BLACK}Золоторудна шахта
 STR_0250_LUMBER_MILL                                            :{BLACK}Лісопилка
 STR_0251_FRUIT_PLANTATION                                       :{BLACK}Фруктовий сад
@@ -1386,7 +1418,7 @@ STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Пот�
 STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Прибуток минулого року:  {WHITE}{CURRENCY64}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Продуктивність:  {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Транспорту:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_VEHICLES                                            :{SILVER}Транспорт:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_STATIONS                                            :{SILVER}Станцій:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_PLAYERS                                             :{SILVER}Гравців:  {WHITE}{STRING}
 
@@ -1490,7 +1522,7 @@ STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...фа�
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...неможливо конвертувати. треба 8 чи 24-bit PNG формат.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...Помилка. (можливо зіпсований файл)
 
-STR_BMPMAP_ERROR                                                :{WHITE}Неможу завантажити лашдшафт з BMP...
+STR_BMPMAP_ERROR                                                :{WHITE}Не можу завантажити лашдшафт з BMP...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...неможливо перетворити тип зображення
 
 ##id 0x0800
@@ -1624,19 +1656,19 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Рейт
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Субсидії
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Пропонуються субсидії:-
-STR_2027_FROM_TO                                                :{ORANGE}Перевезення {STRING} з {STRING} до {STRING}
+STR_2027_FROM_TO                                                :{ORANGE}Перевезення {STRING.r} з {STRING} до {STRING}
 STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}немає
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Призначені субсидії:-
-STR_202C_FROM_TO                                                :{ORANGE}Перевезення {STRING} з {STATION} до {STATION}{YELLOW} ({COMPANY}
+STR_202C_FROM_TO                                                :{ORANGE}Перевезення {STRING.r} з {STATION} до {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, по {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Субсидію відмінено:{}{}Перевезення {STRING} з {STRING} до {STRING}.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Субсидія вже не надається:{}{}Перевезення {STRING} з {STATION} до {STATION}.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Субсидію відмінено:{}{}Перевезення {STRING.r} з {STRING} до {STRING}.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Субсидія вже не надається:{}{}Перевезення {STRING.r} з {STATION} до {STATION}.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Пропонується річна субсидія {}{}першій компанії, яка привезе {STRING} з {STRING} до {STRING}!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING} з {STATION} до {STATION} принесе додатково 50% протягом наступного року!
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING} з {STATION} до {STATION} принесе вдвічі більше прибутків наступного року!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING} з {STATION} до {STATION} принесе втричі більше прибутків наступного року!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING} з {STATION} до {STATION} принесе вчетверо більше прибутків наступного року!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе додатково 50% протягом наступного року!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе вдвічі більше прибутків наступного року!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе втричі більше прибутків наступного року!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе вчетверо більше прибутків наступного року!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE} Влада міста {TOWN} відмовляє у будівництві ще одного аеропорту.
 STR_2036_COTTAGES                                               :Котеджі
 STR_2037_HOUSES                                                 :Будинки
@@ -1929,7 +1961,7 @@ STR_5801_TRANSMITTER                                            :Ретранс�
 STR_5802_LIGHTHOUSE                                             :Маяк
 STR_5803_COMPANY_HEADQUARTERS                                   :Головний офіс компанії
 STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...на шляху Головний офіс
-STR_5805_COMPANY_OWNED_LAND                                     :Ця ділянка власніть компанії
+STR_5805_COMPANY_OWNED_LAND                                     :Ця ділянка - власніcть компанії
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Неможливо купити цю ділянку ...
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...це вже ваша власність!
 
@@ -2536,8 +2568,8 @@ STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Буду
 STR_CLONE_TRAIN                                                 :{BLACK}Клонувати
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Будувати копію поїзда з усіма вагонами. Утримуйте CTRL для спільного завдання
 STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Будувати копію поїзда з усіма вагонами. Натисніть на цю кнопку і потім на поїзд в депо або ззовні. Утримуйте CTRL для спільного завдання
-STR_8820_RENAME                                                 :{BLACK}Перейменувати
-STR_8823_SKIP                                                   :{BLACK}Пропустити
+STR_8820_RENAME                                                 :{BLACK}Ім'я
+STR_8823_SKIP                                                   :{BLACK}Пропуск
 STR_8824_DELETE                                                 :{BLACK}Видалити
 STR_8825_NON_STOP                                               :{BLACK}Беззупн
 STR_8826_GO_TO                                                  :{BLACK}Прямувати
@@ -2642,7 +2674,7 @@ STR_900C_DETAILS                                                :{WHITE}{VEHICLE
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Транспортні витрати: {LTBLUE}{CURRENCY}/рік
 STR_900E_MAX_SPEED                                              :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток цього року: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійнітсь: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...авто повинно стояти в депо
@@ -2744,7 +2776,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Напр
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Показати корабель детально
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Доступний новий корабель!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ціна: {CURRENCY} Макс. Швидкітсь: {VELOCITY}{}Місткість: {CARGO}{}Транспортні витрати: {CURRENCY}/рік
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ціна: {CURRENCY} Макс. швидкість: {VELOCITY}{}Місткість: {CARGO}{}Транспортні витрати: {CURRENCY}/рік
 STR_982F_NAME_SHIP                                              :{BLACK}Назвати корабель
 
 STR_9831_NAME_SHIP                                              :{WHITE}Назвати корабель
@@ -2825,7 +2857,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Немо
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Назвати літак
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший літак з'явився на {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}{}{COMMA} загиблих в авіакатастрофі! Літак розбився біля {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Авіакатастрофа!{}В літака закінчилось пальне, {COMMA} загинуло!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Авіакатастрофа!{}В літака закінчилось пальне, {COMMA} людей загинуло!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Зміна назви
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Перейменувати тип літака
@@ -2882,7 +2914,7 @@ STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Кіль
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Кількість видів вантажу, доствлених за останній квартал
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Сума коштів на рахунку компанії
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Сума кредиту, що надано компанії
-STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Загальна кількісь балів
+STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Загальна кількість балів
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Налаштування
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Налаштування нової графіки
@@ -2896,7 +2928,7 @@ STR_NEWGRF_MD5SUM                                               :{BLACK}MD5су�
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Ви хочете зробити зміни у вже запущеній грі; це може привести до зависання OpenTTD.{}Ви впевнені що хочете зробити це?
 
 STR_NEWGRF_ADD                                                  :{BLACK}Додати
-STR_NEWGRF_ADD_TIP                                              :{BLACK}Додатифайли NewGRF до списку
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Додати файли NewGRF до списку
 STR_NEWGRF_REMOVE                                               :{BLACK}Видалити
 STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Видалити обрані файли NewGRF зі списку
 STR_NEWGRF_MOVEUP                                               :{BLACK}Перемістити вверх
@@ -2913,7 +2945,7 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}Дода
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Додати вибраний NewGRF файл до Вашої конфігурації
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Переглянути файли
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Оновити список доступних NewGRF файлів
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Неможу додати файл: дублювання GRF ID
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Не можу додати файл: дублювання GRF ID
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Таких файлів не знайдено
 STR_NEWGRF_DISABLED                                             :{RED}Вимкнено
@@ -3030,7 +3062,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швид
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Транспортні витрати: {GOLD}{CURRENCY}/рік
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Місткість: {GOLD}{CARGO} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Рік випуску: {GOLD}{NUM}{BLACK}   Вік: {GOLD}{COMMA} р {P ік оки оків}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Рік випуску: {GOLD}{NUM}{BLACK}   Вік: {GOLD}{COMMA} р{P ік оки оків}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Надійність: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ціна: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага: {GOLD}{WEIGHT_S}  ({WEIGHT_S})

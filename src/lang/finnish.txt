@@ -1117,6 +1117,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Lopetus
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Tasainen talous (enemmän pieniä muutoksia)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Salli osakkeiden ostaminen muista yhtiöistä
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vedettäessä aseta opastimien väleiksi: {ORANGE}{STRING} ruutu(a)
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Rakenna opasteet automaattisesti ennen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Päätyökalupalkin sijainti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :vasen
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :keskellä

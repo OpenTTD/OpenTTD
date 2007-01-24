@@ -1117,6 +1117,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Spillet
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Jevn økonomi (flere mindre endringer)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillat kjøping av aksjer i andre selskaper
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking plasser signal hver: {ORANGE}{STRING} rute(r)
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg signalsystem med mast automatisk før: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovedverktøylinje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Venstre
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Midtstilt
