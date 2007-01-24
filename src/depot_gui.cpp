@@ -497,13 +497,7 @@ static void ClonePlaceObj(const Window *w)
 
 static void ResizeDepotButtons(Window *w)
 {
-	/* We got the widget moved around. Now we will make some widgets to fill the gap between some widgets in equal sizes */
-
-	/* Make the buttons in the bottom equal in size */
-	w->widget[DEPOT_WIDGET_BUILD].right    = w->widget[DEPOT_WIDGET_LOCATION].right / 3;
-	w->widget[DEPOT_WIDGET_LOCATION].left  = w->widget[DEPOT_WIDGET_BUILD].right * 2;
-	w->widget[DEPOT_WIDGET_CLONE].left     = w->widget[DEPOT_WIDGET_BUILD].right + 1;
-	w->widget[DEPOT_WIDGET_CLONE].right    = w->widget[DEPOT_WIDGET_LOCATION].left - 1;
+	ResizeButtons(w, DEPOT_WIDGET_BUILD, DEPOT_WIDGET_VEHICLE_LIST);
 
 	if (WP(w, depot_d).type == VEH_Train) {
 		/* Divide the size of DEPOT_WIDGET_SELL into two equally big buttons so DEPOT_WIDGET_SELL and DEPOT_WIDGET_SELL_CHAIN will get the same size.

@@ -506,19 +506,6 @@ static void DrawTrainDetailsWindow(Window *w)
 	}
 }
 
-static void TrainDetailButtonResize(Window *w)
-{
-	/* Make the buttons in the bottom equal in size */
-	w->widget[12].right = w->widget[13].left - 1; // right point of the buttons (4/4)
-	w->widget[10].right = w->widget[12].right / 2; // the middle of the buttons (2/4)
-	w->widget[ 9].right = w->widget[10].right / 2; // 1/4 of the buttons
-	w->widget[11].right = w->widget[10].right + w->widget[ 9].right; // (2+1)/4 = 3/4 of the buttons
-	/* Now the right side of the buttons are set. We will now set the left sides next to them */
-	w->widget[10].left  = w->widget[ 9].right + 1;
-	w->widget[11].left  = w->widget[10].right + 1;
-	w->widget[12].left  = w->widget[11].right + 1;
-}
-
 static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -573,7 +560,7 @@ do_change_service_int:
 		break;
 
 	case WE_RESIZE:
-		if (e->we.sizing.diff.x != 0) TrainDetailButtonResize(w);
+		if (e->we.sizing.diff.x != 0) ResizeButtons(w, 9, 13);
 		if (e->we.sizing.diff.y == 0) break;
 
 		w->vscroll.cap += e->we.sizing.diff.y / 14;

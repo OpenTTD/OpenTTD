@@ -698,3 +698,50 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	WP(w2,dropdown_d).click_delay = 0;
 	WP(w2,dropdown_d).drag_mode = true;
 }
+
+/* Make the buttons in the bottom equal in size */
+void ResizeButtons(Window *w, byte a, byte b, byte c, byte d, byte right)
+{
+	w->widget[d].right = w->widget[right].left - 1; // now we set the right of the widgets
+
+	/* Now we will find the middle, then the middle of each of the two blocks on each side of the middle.
+	 * This way, if we got leftover pixels from the division, they will be somewhat evenly distributed */
+	w->widget[b].right = w->widget[d].right / 2;
+	w->widget[a].right = w->widget[b].right / 2;
+	w->widget[c].right = (w->widget[b].right + w->widget[d].right)/2;
+	/* Now the right side of the buttons are set. We will now set the left sides next to them */
+	w->widget[b].left  = w->widget[a].right + 1;
+	w->widget[c].left  = w->widget[b].right + 1;
+	w->widget[d].left  = w->widget[c].right + 1;
+}
+
+void ResizeButtons(Window *w, byte a, byte b, byte c, byte right)
+{
+	w->widget[c].right = w->widget[right].left - 1; // now we set the right of the widgets
+
+	w->widget[a].right = w->widget[c].right / 3;
+	w->widget[b].right = w->widget[a].right * 2;
+
+	/* Now the right side of the buttons are set. We will now set the left sides next to them */
+	w->widget[b].left  = w->widget[a].right + 1;
+	w->widget[c].left  = w->widget[b].right + 1;
+}
+
+void ResizeButtons(Window *w, byte a, byte b, byte right)
+{
+	w->widget[b].right = w->widget[right].left - 1; // now we set the right of the widgets
+
+	w->widget[a].right  = w->widget[b].right / 2;
+
+	w->widget[b].left  = w->widget[a].right + 1;
+}
+
+void ResizeButtons(Window *w, byte left, byte right)
+{
+	switch (right - left) {
+		case 2: ResizeButtons(w, left, left + 1, left + 2); break;
+		case 3: ResizeButtons(w, left, left + 1, left + 2, left + 3); break;
+		case 4: ResizeButtons(w, left, left + 1, left + 2, left + 3, left + 4); break;
+		default: NOT_REACHED();
+	}
+}
