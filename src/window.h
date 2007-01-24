@@ -768,19 +768,10 @@ enum SpecialMouseMode {
 void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);
 
 /** Evenly distribute some widgets when resizing horizontally (often a button row)
- * @param w widow to modify
- * @param a,b,c,d the widgets to resize (left to right, order matters)
- * @param right the widget right of the buttons, that needs resizing
- */
-void ResizeButtons(Window *w, byte a, byte b, byte right);
-void ResizeButtons(Window *w, byte a, byte b, byte c, byte right);
-void ResizeButtons(Window *w, byte a, byte b, byte c, byte d, byte right);
-
-/** Evenly distribute some widgets when resizing horizontally (often a button row)
- *  When only two arguments are given, the widgets are presumed to be on a line and only the ends are given
+ *  The widgets are presumed to be in a line and numberef from left to right (without gaps)
  * @param w widow to modify
  * @param left The leftmost widget to resize
- * @param right The widget just right of the widgets to resize
+ * @param right The rightmost widget to resize. Since right side of it is used, remember to set it to RESIZE_RIGHT
  */
 void ResizeButtons(Window *w, byte left, byte right);
 

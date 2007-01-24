@@ -497,7 +497,7 @@ static void ClonePlaceObj(const Window *w)
 
 static void ResizeDepotButtons(Window *w)
 {
-	ResizeButtons(w, DEPOT_WIDGET_BUILD, DEPOT_WIDGET_VEHICLE_LIST);
+	ResizeButtons(w, DEPOT_WIDGET_BUILD, DEPOT_WIDGET_LOCATION);
 
 	if (WP(w, depot_d).type == VEH_Train) {
 		/* Divide the size of DEPOT_WIDGET_SELL into two equally big buttons so DEPOT_WIDGET_SELL and DEPOT_WIDGET_SELL_CHAIN will get the same size.

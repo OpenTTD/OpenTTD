@@ -913,7 +913,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_RESIZE:
-			if (e->we.sizing.diff.x != 0) ResizeButtons(w, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RESIZE);
+			if (e->we.sizing.diff.x != 0) ResizeButtons(w, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
 			if (e->we.sizing.diff.y == 0) break;
 
 			w->vscroll.cap += e->we.sizing.diff.y / GetVehicleListHeight(bv->vehicle_type);
@@ -975,7 +975,7 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 			break;
 	}
 	SetupWindowStrings(w, type);
-	ResizeButtons(w, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RESIZE);
+	ResizeButtons(w, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
 
 	w->resize.width  = w->width;
 	w->resize.height = w->height;

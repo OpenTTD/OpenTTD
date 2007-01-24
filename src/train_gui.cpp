@@ -560,7 +560,7 @@ do_change_service_int:
 		break;
 
 	case WE_RESIZE:
-		if (e->we.sizing.diff.x != 0) ResizeButtons(w, 9, 13);
+		if (e->we.sizing.diff.x != 0) ResizeButtons(w, 9, 12);
 		if (e->we.sizing.diff.y == 0) break;
 
 		w->vscroll.cap += e->we.sizing.diff.y / 14;
@@ -582,7 +582,7 @@ static const Widget _train_details_widgets[] = {
 { WWT_PUSHTXTBTN, RESIZE_TB,     14,   0,  89, 152, 163, STR_013C_CARGO,       STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED},
 { WWT_PUSHTXTBTN, RESIZE_TB,     14,  90, 178, 152, 163, STR_013D_INFORMATION, STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES},
 { WWT_PUSHTXTBTN, RESIZE_TB,     14, 179, 268, 152, 163, STR_013E_CAPACITIES,  STR_8851_SHOW_CAPACITIES_OF_EACH},
-{ WWT_PUSHTXTBTN, RESIZE_TB,     14, 269, 357, 152, 163, STR_013E_TOTAL_CARGO, STR_8852_SHOW_TOTAL_CARGO},
+{ WWT_PUSHTXTBTN, RESIZE_RTB,    14, 269, 357, 152, 163, STR_013E_TOTAL_CARGO, STR_8852_SHOW_TOTAL_CARGO},
 {  WWT_RESIZEBOX, RESIZE_LRTB,   14, 358, 369, 152, 163, 0x0,                  STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };

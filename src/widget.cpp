@@ -699,49 +699,75 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	WP(w2,dropdown_d).drag_mode = true;
 }
 
-/* Make the buttons in the bottom equal in size */
-void ResizeButtons(Window *w, byte a, byte b, byte c, byte d, byte right)
-{
-	w->widget[d].right = w->widget[right].left - 1; // now we set the right of the widgets
 
-	/* Now we will find the middle, then the middle of each of the two blocks on each side of the middle.
-	 * This way, if we got leftover pixels from the division, they will be somewhat evenly distributed */
-	w->widget[b].right = w->widget[d].right / 2;
-	w->widget[a].right = w->widget[b].right / 2;
-	w->widget[c].right = (w->widget[b].right + w->widget[d].right)/2;
-	/* Now the right side of the buttons are set. We will now set the left sides next to them */
+static void ResizeWidgets(Window *w, byte a, byte b)
+{
+	int16 offset = w->widget[a].left;
+	int16 length = w->widget[b].right - offset;
+
+	w->widget[a].right  = (length / 2) + offset;
+
 	w->widget[b].left  = w->widget[a].right + 1;
-	w->widget[c].left  = w->widget[b].right + 1;
-	w->widget[d].left  = w->widget[c].right + 1;
 }
 
-void ResizeButtons(Window *w, byte a, byte b, byte c, byte right)
+static void ResizeWidgets(Window *w, byte a, byte b, byte c)
 {
-	w->widget[c].right = w->widget[right].left - 1; // now we set the right of the widgets
+	int16 offset = w->widget[a].left;
+	int16 length = w->widget[c].right - offset;
 
-	w->widget[a].right = w->widget[c].right / 3;
+	w->widget[a].right = length / 3;
 	w->widget[b].right = w->widget[a].right * 2;
 
+	w->widget[a].right += offset;
+	w->widget[b].right += offset;
+
 	/* Now the right side of the buttons are set. We will now set the left sides next to them */
 	w->widget[b].left  = w->widget[a].right + 1;
 	w->widget[c].left  = w->widget[b].right + 1;
 }
 
-void ResizeButtons(Window *w, byte a, byte b, byte right)
-{
-	w->widget[b].right = w->widget[right].left - 1; // now we set the right of the widgets
-
-	w->widget[a].right  = w->widget[b].right / 2;
-
-	w->widget[b].left  = w->widget[a].right + 1;
-}
-
+/** Evenly distribute some widgets when resizing horizontally (often a button row)
+ *  When only two arguments are given, the widgets are presumed to be on a line and only the ends are given
+ * @param w widow to modify
+ * @param left The leftmost widget to resize
+ * @param right The rightmost widget to resize. Since right side of it is used, remember to set it to RESIZE_RIGHT
+ */
 void ResizeButtons(Window *w, byte left, byte right)
 {
-	switch (right - left) {
-		case 2: ResizeButtons(w, left, left + 1, left + 2); break;
-		case 3: ResizeButtons(w, left, left + 1, left + 2, left + 3); break;
-		case 4: ResizeButtons(w, left, left + 1, left + 2, left + 3, left + 4); break;
-		default: NOT_REACHED();
+	int16 num_widgets = right - left + 1;
+
+	if (num_widgets < 2) NOT_REACHED();
+
+	switch (num_widgets) {
+		case 2: ResizeWidgets(w, left, right); break;
+		case 3: ResizeWidgets(w, left, left + 1, right); break;
+		default: {
+			/* Looks like we got more than 3 widgets to resize
+			 * Now we will find the middle of the space desinated for the widgets
+			 * and place half of the widgets on each side of it and call recursively.
+			 * Eventually we will get down to blocks of 2-3 widgets and we got code to handle those cases */
+			int16 offset = w->widget[left].left;
+			int16 length = w->widget[right].right - offset;
+			byte widget = ((num_widgets - 1)/ 2) + left; // rightmost widget of the left side
+
+			/* Now we need to find the middle of the widgets.
+			 * It will not always be the middle because if we got an uneven number of widgets,
+			 *   we will need it to be 2/5, 3/7 and so on
+			 * To get this, we multiply with num_widgets/num_widgets. Since we calculate in int, we will get:
+			 *
+			 *    num_widgets/2 (rounding down)
+			 *   ---------------
+			 *     num_widgets
+			 *
+			 * as multiplier to length. We just multiply before divide to that we stay in the int area though */
+			int16 middle = ((length * num_widgets) / (2 * num_widgets)) + offset;
+
+			/* Set left and right on the widgets, that's next to our "middle" */
+			w->widget[widget].right = middle;
+			w->widget[widget + 1].left = w->widget[widget].right + 1;
+			/* Now resize the left and right of the middle */
+			ResizeButtons(w, left, widget);
+			ResizeButtons(w, widget + 1, right);
+		}
 	}
 }
