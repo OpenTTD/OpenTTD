@@ -2804,29 +2804,13 @@ static int GetDirectionToVehicle(const Vehicle *v, int x, int y)
 /* Check if the vehicle is compatible with the specified tile */
 static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 {
-	switch (GetTileType(tile)) {
-		case MP_TUNNELBRIDGE:
-		case MP_RAILWAY:
-		case MP_STATION:
-			// normal tracks, jump to owner check
-			break;
-
-		case MP_STREET:
-			// tracks over roads, do owner check of tracks
-			return
-				IsTileOwner(tile, v->owner) && (
-					!IsFrontEngine(v) ||
-					IsCompatibleRail(v->u.rail.railtype, GetRailTypeCrossing(tile))
-				);
-
-		default:
-			return true;
-	}
-
 	return
 		IsTileOwner(tile, v->owner) && (
 			!IsFrontEngine(v) ||
-			HASBIT(v->u.rail.compatible_railtypes, GetRailType(tile))
+			HASBIT(
+				v->u.rail.compatible_railtypes,
+				IsTileType(tile, MP_STREET) ? GetRailTypeCrossing(tile) : GetRailType(tile)
+			)
 		);
 }
 
