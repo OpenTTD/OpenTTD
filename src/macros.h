@@ -3,8 +3,6 @@
 #ifndef MACROS_H
 #define MACROS_H
 
-#include "map.h"
-
 /// Fetch n bits starting at bit s from x
 #define GB(x, s, n) (((x) >> (s)) & ((1U << (n)) - 1))
 /// Set n bits starting at bit s in x to d

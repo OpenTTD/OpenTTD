@@ -27,14 +27,6 @@
 #define stderr stdout
 #endif /* __MORPHOS__ */
 
-#ifdef __WATCOMC__
-	uint _map_log_x;     // an unpleasant hack required because Watcom is insisting on
-	uint _map_size_x;    // these variables being valid references in map.h
-	uint _map_size_y;
-	uint _map_tile_mask;
-	uint _map_size;
-#endif /* __WATCOMC__ */
-
 /* Compiles a list of strings into a compiled string list */
 
 typedef void (*ParseCmdProc)(char *buf, int value);
