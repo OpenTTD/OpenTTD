@@ -653,10 +653,13 @@ byte GetPlayerRailtypes(PlayerID p)
 		const EngineInfo *ei = EngInfo(i);
 
 		if (e->type == VEH_Train && HASBIT(ei->climates, _opt.landscape) &&
-				(HASBIT(e->player_avail, p) || _date >= (e->intro_date + 365)) &&
-				!(RailVehInfo(i)->flags & RVI_WAGON)) {
-			assert(e->railtype < RAILTYPE_END);
-			SETBIT(rt, e->railtype);
+				(HASBIT(e->player_avail, p) || _date >= e->intro_date + 365)) {
+			const RailVehicleInfo *rvi = RailVehInfo(i);
+
+			if (!(rvi->flags & RVI_WAGON)) {
+				assert(rvi->railtype < RAILTYPE_END);
+				SETBIT(rt, rvi->railtype);
+			}
 		}
 	}
 

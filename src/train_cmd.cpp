@@ -164,7 +164,7 @@ void TrainConsistChanged(Vehicle* v)
 
 		// update the 'first engine'
 		u->u.rail.first_engine = (v == u) ? (EngineID)INVALID_ENGINE : first_engine;
-		u->u.rail.railtype = GetEngine(u->engine_type)->railtype;
+		u->u.rail.railtype = rvi_u->railtype;
 
 		if (IsTrainEngine(u)) first_engine = u->engine_type;
 
@@ -658,7 +658,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->value = value;
 //			v->day_counter = 0;
 
-			v->u.rail.railtype = GetEngine(engine)->railtype;
+			v->u.rail.railtype = rvi->railtype;
 
 			v->build_year = _cur_year;
 			v->type = VEH_Train;
@@ -745,7 +745,6 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int value;
 	Vehicle *v;
 	UnitID unit_num;
-	Engine *e;
 	uint num_vehicles;
 
 	/* Check if the engine-type is valid (for the player) */
@@ -761,11 +760,10 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	rvi = RailVehInfo(p1);
-	e = GetEngine(p1);
 
 	/* Check if depot and new engine uses the same kind of tracks */
 	/* We need to see if the engine got power on the tile to avoid eletric engines in non-electric depots */
-	if (!HasPowerOnRail(e->railtype, GetRailType(tile))) return CMD_ERROR;
+	if (!HasPowerOnRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
 
 	if (rvi->flags & RVI_WAGON) return CmdBuildRailWagon(p1, tile, flags);
 
@@ -814,12 +812,13 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			v->engine_type = p1;
 
+			const Engine *e = GetEngine(p1);
 			v->reliability = e->reliability;
 			v->reliability_spd_dec = e->reliability_spd_dec;
 			v->max_age = e->lifelength * 366;
 
 			v->string_id = STR_SV_TRAIN_NAME;
-			v->u.rail.railtype = e->railtype;
+			v->u.rail.railtype = rvi->railtype;
 			_new_vehicle_id = v->index;
 
 			v->service_interval = _patches.servint_trains;
@@ -2084,16 +2083,16 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 	u = v;
 
 	do {
-		EngineID engtype = v->engine_type;
+		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 		int effect_offset = GB(v->u.rail.cached_vis_effect, 0, 4) - 8;
 		byte effect_type = GB(v->u.rail.cached_vis_effect, 4, 2);
 		bool disable_effect = HASBIT(v->u.rail.cached_vis_effect, 6);
 		int x, y;
 
 		// no smoke?
-		if ((RailVehInfo(engtype)->flags & RVI_WAGON && effect_type == 0) ||
+		if ((rvi->flags & RVI_WAGON && effect_type == 0) ||
 				disable_effect ||
-				GetEngine(engtype)->railtype > RAILTYPE_ELECTRIC ||
+				rvi->railtype > RAILTYPE_ELECTRIC ||
 				v->vehstatus & VS_HIDDEN) {
 			continue;
 		}
@@ -2106,7 +2105,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 
 		if (effect_type == 0) {
 			// Use default effect type for engine class.
-			effect_type = RailVehInfo(engtype)->engclass;
+			effect_type = rvi->engclass;
 		} else {
 			effect_type--;
 		}
@@ -2161,7 +2160,7 @@ static void TrainPlayLeaveStationSound(const Vehicle* v)
 
 	if (PlayVehicleSound(v, VSE_START)) return;
 
-	switch (GetEngine(engtype)->railtype) {
+	switch (RailVehInfo(engtype)->railtype) {
 		case RAILTYPE_RAIL:
 		case RAILTYPE_ELECTRIC:
 			SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], v);

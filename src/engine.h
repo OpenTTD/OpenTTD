@@ -13,7 +13,7 @@ typedef struct RailVehicleInfo {
 	byte image_index;
 	byte flags; /* 1=multihead engine, 2=wagon */
 	byte base_cost;
-	byte railtype;
+	RailTypeByte railtype;
 	uint16 max_speed;
 	uint16 power;
 	uint16 weight;
@@ -100,7 +100,6 @@ typedef struct Engine {
 	byte flags;
 	PlayerByte preview_player;
 	byte preview_wait;
-	RailTypeByte railtype;
 	byte player_avail;
 	byte type; // type, ie VEH_Road, VEH_Train, etc. Same as in vehicle.h
 } Engine;

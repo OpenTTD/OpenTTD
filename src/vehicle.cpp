@@ -2837,6 +2837,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 				const RailVehicleInfo *rvi = RailVehInfo(engine_type);
 
 				switch (rvi->railtype) {
+					default: NOT_REACHED();
 					case RAILTYPE_RAIL:
 					case RAILTYPE_ELECTRIC:
 					{

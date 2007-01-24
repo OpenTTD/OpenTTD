@@ -1413,20 +1413,11 @@ bool AfterLoadGame(void)
 	/* Elrails got added in rev 24 */
 	if (CheckSavegameVersion(24)) {
 		Vehicle *v;
-		uint i;
 		RailType min_rail = RAILTYPE_ELECTRIC;
-
-		for (i = 0; i < lengthof(_engines); i++) {
-			Engine *e = GetEngine(i);
-			if (e->type == VEH_Train &&
-					(e->railtype != RAILTYPE_RAIL || RailVehInfo(i)->engclass == 2)) {
-				e->railtype++;
-			}
-		}
 
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == VEH_Train) {
-				RailType rt = GetEngine(v->engine_type)->railtype;
+				RailType rt = RailVehInfo(v->engine_type)->railtype;
 
 				v->u.rail.railtype = rt;
 				if (rt == RAILTYPE_ELECTRIC) min_rail = RAILTYPE_RAIL;

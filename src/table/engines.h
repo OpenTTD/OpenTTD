@@ -328,18 +328,17 @@ const EngineInfo orig_engine_info[] = {
  * @param l railtype
  * Tractive effort coefficient by default is the same as TTDPatch, 0.30*256=76
  */
-#define RVI(a, b, c, d, e, f, g, h, i, j, k, l) { a, b, c, l, d, e, f, g, h, h, i, j, k, 0, 0, 0, 0, 76, 0 }
+#define RVI(a, b, c, d, e, f, g, h, i, j, k, l) { a, b, c, {l}, d, e, f, g, h, h, i, j, k, 0, 0, 0, 0, 76, 0 }
 #define M RVI_MULTIHEAD
 #define W RVI_WAGON
 #define S 0
 #define D 1
 #define E 2
 
-// Rail types
-#define R 0 // Conventional railway
-#define C 1 // Electrified railway
-#define O 2 // Monorail
-#define L 3 // MagLev
+#define R RAILTYPE_RAIL
+#define C RAILTYPE_ELECTRIC
+#define O RAILTYPE_MONO
+#define L RAILTYPE_MAGLEV
 
 const RailVehicleInfo orig_rail_vehicle_info[NUM_TRAIN_ENGINES] = {
 	//   image_index  max_speed (kph)      running_cost_base
@@ -370,10 +369,10 @@ const RailVehicleInfo orig_rail_vehicle_info[NUM_TRAIN_ENGINES] = {
 	RVI(16, M,  35, 160,  3500/2,95/2, 205/2, D,  0, 0              , 45, R), //  20
 	RVI(18, 0,  21, 104,    2200, 120,   145, D,  0, 0              , 32, R), //  21
 	RVI( 6, M,  20, 200,  4500/2,70/2, 190/2, D,  4, CT_MAIL        , 50, R), //  22
-	RVI(20, 0,  26, 160,    3600,  84,   180, E,  0, 0              , 40, E), //  23
-	RVI(20, 0,  30, 176,    5000,  82,   205, E,  0, 0              , 41, E), //  24
-	RVI(21, M,  40, 240,  7000/2,90/2, 240/2, E,  0, 0              , 51, E), //  25
-	RVI(23, M,  43, 264,  8000/2,95/2, 250/2, E,  0, 0              , 52, E), //  26
+	RVI(20, 0,  26, 160,    3600,  84,   180, E,  0, 0              , 40, C), //  23
+	RVI(20, 0,  30, 176,    5000,  82,   205, E,  0, 0              , 41, C), //  24
+	RVI(21, M,  40, 240,  7000/2,90/2, 240/2, E,  0, 0              , 51, C), //  25
+	RVI(23, M,  43, 264,  8000/2,95/2, 250/2, E,  0, 0              , 52, C), //  26
 	RVI(33, W, 247,   0,       0,  25,     0, 0, 40, CT_PASSENGERS  ,  0, R), //  27
 	RVI(35, W, 228,   0,       0,  21,     0, 0, 30, CT_MAIL        ,  0, R), //  28
 	RVI(34, W, 176,   0,       0,  18,     0, 0, 30, CT_COAL        ,  0, R), //  29

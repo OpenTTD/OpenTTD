@@ -60,9 +60,9 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 
 
 		colour = *sel == 0 ? 0xC : 0x10;
-		if (!(ENGINE_AVAILABLE && show_outdated && RailVehInfo(i)->power && IsCompatibleRail(e->railtype, railtype))) {
-			if ((!IsCompatibleRail(e->railtype, railtype) && show_compatible)
-				|| (e->railtype != railtype && !show_compatible)
+		if (!(ENGINE_AVAILABLE && show_outdated && RailVehInfo(i)->power && IsCompatibleRail(rvi->railtype, railtype))) {
+			if ((!IsCompatibleRail(rvi->railtype, railtype) && show_compatible)
+				|| (rvi->railtype != railtype && !show_compatible)
 				|| !(rvi->flags & RVI_WAGON) != is_engine ||
 				!HASBIT(e->player_avail, _local_player))
 				continue;
@@ -113,16 +113,17 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 				EngineID eid = GetRailVehAtPosition(i);
 				const Engine* e = GetEngine(eid);
+				const RailVehicleInfo *rvi = RailVehInfo(eid);
 				const EngineInfo* info = EngInfo(eid);
 
 				// left window contains compatible engines while right window only contains engines of the selected type
 				if (ENGINE_AVAILABLE &&
-						(RailVehInfo(eid)->power != 0) == (WP(w, replaceveh_d).wagon_btnstate != 0)) {
-					if (IsCompatibleRail(e->railtype, railtype) && (p->num_engines[eid] > 0 || EngineHasReplacementForPlayer(p, eid))) {
+						(rvi->power != 0) == (WP(w, replaceveh_d).wagon_btnstate != 0)) {
+					if (IsCompatibleRail(rvi->railtype, railtype) && (p->num_engines[eid] > 0 || EngineHasReplacementForPlayer(p, eid))) {
 						if (sel[0] == count) selected_id[0] = eid;
 						count++;
 					}
-					if (e->railtype == railtype && HASBIT(e->player_avail, _local_player)) {
+					if (rvi->railtype == railtype && HASBIT(e->player_avail, _local_player)) {
 						if (sel[1] == count2) selected_id[1] = eid;
 						count2++;
 					}

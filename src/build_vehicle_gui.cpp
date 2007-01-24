@@ -386,7 +386,7 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 }
 
 /* Draw locomotive specific details */
-static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi, const Engine *e)
+static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi)
 {
 	int multihead = (rvi->flags&RVI_MULTIHEAD?1:0);
 
@@ -403,7 +403,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 	y += 10;
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
-	if (_patches.realistic_acceleration && e->railtype != RAILTYPE_MAGLEV) {
+	if (_patches.realistic_acceleration && rvi->railtype != RAILTYPE_MAGLEV) {
 		SetDParam(0, ((rvi->weight << multihead) * 10 * rvi->tractive_effort) / 256);
 		DrawString(x, y, STR_PURCHASE_INFO_MAX_TE, 0);
 		y += 10;
@@ -532,7 +532,7 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 			if (rvi->flags & RVI_WAGON) {
 				y = DrawRailWagonPurchaseInfo(x, y, engine_number, rvi);
 			} else {
-				y = DrawRailEnginePurchaseInfo(x, y, engine_number, rvi, e);
+				y = DrawRailEnginePurchaseInfo(x, y, engine_number, rvi);
 			}
 
 			/* Cargo type + capacity, or N/A */
@@ -601,10 +601,9 @@ static void GenerateBuildTrainList(Window *w)
 		* and if not, reset selection to INVALID_ENGINE. This could be the case
 	* when engines become obsolete and are removed */
 	for (sel_id = INVALID_ENGINE, eid = 0; eid < NUM_TRAIN_ENGINES; eid++) {
-		const Engine *e = GetEngine(eid);
 		const RailVehicleInfo *rvi = RailVehInfo(eid);
 
-		if (bv->filter.railtype != RAILTYPE_END && !HasPowerOnRail(e->railtype, bv->filter.railtype)) continue;
+		if (bv->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, bv->filter.railtype)) continue;
 		if (!IsEngineBuildable(eid, VEH_Train, _local_player)) continue;
 
 		EngList_Add(&bv->eng_list, eid);

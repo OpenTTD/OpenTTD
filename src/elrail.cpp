@@ -406,12 +406,11 @@ int32 SettingsDisableElrail(int32 p1)
 
 	/* walk through all train engines */
 	for (e_id = 0; e_id < NUM_TRAIN_ENGINES; e_id++) {
-		const RailVehicleInfo *rv_info = RailVehInfo(e_id);
-		Engine *e = GetEngine(e_id);
+		RailVehicleInfo *rv_info = &_rail_vehicle_info[e_id];
 		/* if it is an electric rail engine and its railtype is the wrong one */
-		if (rv_info->engclass == 2 && e->railtype == old_railtype) {
+		if (rv_info->engclass == 2 && rv_info->railtype == old_railtype) {
 			/* change it to the proper one */
-			e->railtype = new_railtype;
+			rv_info->railtype = new_railtype;
 		}
 	}
 

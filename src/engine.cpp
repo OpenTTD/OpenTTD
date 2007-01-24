@@ -180,13 +180,18 @@ void StartupEngines(void)
 	AdjustAvailAircraft();
 }
 
-static void AcceptEnginePreview(Engine *e, PlayerID player)
+static void AcceptEnginePreview(EngineID eid, PlayerID player)
 {
-	Player *p = GetPlayer(player);
+	Engine *e = GetEngine(eid);
 
-	assert(e->railtype < RAILTYPE_END);
 	SETBIT(e->player_avail, player);
-	SETBIT(p->avail_railtypes, e->railtype);
+	if (e->type == VEH_Train) {
+		const RailVehicleInfo *rvi = RailVehInfo(eid);
+		Player *p = GetPlayer(player);
+
+		assert(rvi->railtype < RAILTYPE_END);
+		SETBIT(p->avail_railtypes, rvi->railtype);
+	}
 
 	e->preview_player = INVALID_PLAYER;
 	if (player == _local_player) {
@@ -247,7 +252,7 @@ void EnginesDailyLoop(void)
 
 				if (!IsHumanPlayer(best_player)) {
 					/* XXX - TTDBUG: TTD has a bug here ???? */
-					AcceptEnginePreview(e, best_player);
+					AcceptEnginePreview(i, best_player);
 				} else {
 					e->flags |= ENGINE_PREVIEWING;
 					e->preview_wait = 20;
@@ -272,7 +277,7 @@ int32 CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	e = GetEngine(p1);
 	if (GetBestPlayer(e->preview_player) != _current_player) return CMD_ERROR;
 
-	if (flags & DC_EXEC) AcceptEnginePreview(e, _current_player);
+	if (flags & DC_EXEC) AcceptEnginePreview(p1, _current_player);
 
 	return 0;
 }
@@ -323,15 +328,14 @@ static void NewVehicleAvailable(Engine *e)
 	// Do not introduce new rail wagons
 	if (IsWagon(index)) return;
 
-	// make maglev / monorail available
-	FOR_ALL_PLAYERS(p) {
-		if (p->is_active) {
-			assert(e->railtype < RAILTYPE_END);
-			SETBIT(p->avail_railtypes, e->railtype);
-		}
-	}
-
 	if (index < NUM_TRAIN_ENGINES) {
+		// maybe make another rail type available
+		RailType railtype = RailVehInfo(index)->railtype;
+		assert(railtype < RAILTYPE_END);
+		FOR_ALL_PLAYERS(p) {
+			if (p->is_active) SETBIT(p->avail_railtypes, railtype);
+		}
+
 		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_TRAINAVAIL), 0, 0);
 	} else if (index < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES) {
 		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_ROADAVAIL), 0, 0);
@@ -603,7 +607,7 @@ static const SaveLoad _engine_desc[] = {
 	    SLE_VAR(Engine, flags,               SLE_UINT8),
 	    SLE_VAR(Engine, preview_player,      SLE_UINT8),
 	    SLE_VAR(Engine, preview_wait,        SLE_UINT8),
-	    SLE_VAR(Engine, railtype,            SLE_UINT8),
+	SLE_CONDNULL(1, 0, 44),
 	    SLE_VAR(Engine, player_avail,        SLE_UINT8),
 
 	// reserve extra space in savegame here. (currently 16 bytes)

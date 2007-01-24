@@ -1249,9 +1249,8 @@ static const OldChunks engine_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Engine, flags ),
 	OCL_SVAR(  OC_UINT8, Engine, preview_player ),
 	OCL_SVAR(  OC_UINT8, Engine, preview_wait ),
-	OCL_SVAR(  OC_UINT8, Engine, railtype ),
 
-	OCL_NULL( 1 ),         // Junk
+	OCL_NULL( 2 ), // Junk
 
 	OCL_END()
 };
