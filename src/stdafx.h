@@ -3,6 +3,17 @@
 #ifndef STDAFX_H
 #define STDAFX_H
 
+/* It seems that we need to include stdint.h before anything else
+ * We need INT64_MAX, which for most systems comes from stdint.h. However, MSVC
+ * does not have stdint.h and apparently neither does MorphOS, so define
+ * INT64_MAX for them ourselves. */
+#if !defined(_MSC_VER) && !defined( __MORPHOS__)
+# define __STDC_LIMIT_MACROS
+# include <stdint.h>
+#else
+# define INT64_MAX 9223372036854775807LL
+#endif
+
 #include <stdio.h>
 #include <stddef.h>
 #include <string.h>
@@ -314,16 +325,6 @@ assert_compile(sizeof(uint8)  == 1);
 #ifdef __AMIGA__
 // it seems AmigaOS already have a Point declared
 # define Point OTTD_AMIGA_POINT
-#endif
-
-// We need INT64_MAX, which for most systems comes from stdint.h. However, MSVC
-// does not have stdint.h and apparently neither does MorphOS, so define
-// INT64_MAX for them ourselves.
-#if !defined(_MSC_VER) && !defined( __MORPHOS__)
-# define __STDC_LIMIT_MACROS
-# include <stdint.h>
-#else
-# define INT64_MAX 9223372036854775807LL
 #endif
 
 #endif /* STDAFX_H */
