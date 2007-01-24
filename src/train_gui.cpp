@@ -506,6 +506,19 @@ static void DrawTrainDetailsWindow(Window *w)
 	}
 }
 
+static void TrainDetailButtonResize(Window *w)
+{
+	/* Make the buttons in the bottom equal in size */
+	w->widget[12].right = w->widget[13].left - 1; // right point of the buttons (4/4)
+	w->widget[10].right = w->widget[12].right / 2; // the middle of the buttons (2/4)
+	w->widget[ 9].right = w->widget[10].right / 2; // 1/4 of the buttons
+	w->widget[11].right = w->widget[10].right + w->widget[ 9].right; // (2+1)/4 = 3/4 of the buttons
+	/* Now the right side of the buttons are set. We will now set the left sides next to them */
+	w->widget[10].left  = w->widget[ 9].right + 1;
+	w->widget[11].left  = w->widget[10].right + 1;
+	w->widget[12].left  = w->widget[11].right + 1;
+}
+
 static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -560,6 +573,7 @@ do_change_service_int:
 		break;
 
 	case WE_RESIZE:
+		if (e->we.sizing.diff.x != 0) TrainDetailButtonResize(w);
 		if (e->we.sizing.diff.y == 0) break;
 
 		w->vscroll.cap += e->we.sizing.diff.y / 14;
@@ -570,19 +584,19 @@ do_change_service_int:
 
 static const Widget _train_details_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE,   14,   0,  10,   0,  13, STR_00C5,             STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION, RESIZE_NONE,   14,  11, 329,   0,  13, STR_8802_DETAILS,     STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN, RESIZE_NONE,   14, 330, 369,   0,  13, STR_01AA_NAME,        STR_8867_NAME_TRAIN},
-{      WWT_PANEL, RESIZE_NONE,   14,   0, 369,  14,  55, 0x0,                  STR_NULL},
-{     WWT_MATRIX, RESIZE_BOTTOM, 14,   0, 357,  56, 139, 0x601,                STR_NULL},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM, 14, 358, 369,  56, 139, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{    WWT_CAPTION, RESIZE_RIGHT,  14,  11, 329,   0,  13, STR_8802_DETAILS,     STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN, RESIZE_LR,     14, 330, 369,   0,  13, STR_01AA_NAME,        STR_8867_NAME_TRAIN},
+{      WWT_PANEL, RESIZE_RIGHT,  14,   0, 369,  14,  55, 0x0,                  STR_NULL},
+{     WWT_MATRIX, RESIZE_RB,     14,   0, 357,  56, 139, 0x601,                STR_NULL},
+{  WWT_SCROLLBAR, RESIZE_LRB,    14, 358, 369,  56, 139, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN, RESIZE_TB,     14,   0,  10, 140, 145, STR_0188,             STR_884D_INCREASE_SERVICING_INTERVAL},
 { WWT_PUSHTXTBTN, RESIZE_TB,     14,   0,  10, 146, 151, STR_0189,             STR_884E_DECREASE_SERVICING_INTERVAL},
-{      WWT_PANEL, RESIZE_TB,     14,  11, 369, 140, 151, 0x0,                  STR_NULL},
+{      WWT_PANEL, RESIZE_RTB,    14,  11, 369, 140, 151, 0x0,                  STR_NULL},
 { WWT_PUSHTXTBTN, RESIZE_TB,     14,   0,  89, 152, 163, STR_013C_CARGO,       STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED},
 { WWT_PUSHTXTBTN, RESIZE_TB,     14,  90, 178, 152, 163, STR_013D_INFORMATION, STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES},
 { WWT_PUSHTXTBTN, RESIZE_TB,     14, 179, 268, 152, 163, STR_013E_CAPACITIES,  STR_8851_SHOW_CAPACITIES_OF_EACH},
 { WWT_PUSHTXTBTN, RESIZE_TB,     14, 269, 357, 152, 163, STR_013E_TOTAL_CARGO, STR_8852_SHOW_TOTAL_CARGO},
-{  WWT_RESIZEBOX, RESIZE_TB,     14, 358, 369, 152, 163, 0x0,                  STR_RESIZE_BUTTON},
+{  WWT_RESIZEBOX, RESIZE_LRTB,   14, 358, 369, 152, 163, 0x0,                  STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
