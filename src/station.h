@@ -64,6 +64,8 @@ typedef struct RoadStop {
 	void *operator new (size_t size, int index);
 	void operator delete(void *rs, int index);
 
+	bool IsValid() const;
+protected:
 	static RoadStop *AllocateRaw(void);
 } RoadStop;
 
@@ -253,15 +255,7 @@ static inline bool IsValidStationID(StationID index)
 
 DECLARE_OLD_POOL(RoadStop, RoadStop, 5, 2000)
 
-/**
- * Check if a RaodStop really exists.
- */
-static inline bool IsValidRoadStop(const RoadStop *rs)
-{
-	return rs->xy != INVALID_TILE;
-}
-
-#define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) if (IsValidRoadStop(rs))
+#define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) if (rs->IsValid())
 #define FOR_ALL_ROADSTOPS(rs) FOR_ALL_ROADSTOPS_FROM(rs, 0)
 
 /* End of stuff for ROADSTOPS */

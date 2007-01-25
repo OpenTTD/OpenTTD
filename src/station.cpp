@@ -403,7 +403,7 @@ RoadStop *RoadStop::AllocateRaw( void )
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
 	for (rs = GetRoadStop(0); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) {
-		if (!IsValidRoadStop(rs)) {
+		if (!rs->IsValid()) {
 			RoadStopID index = rs->index;
 
 			memset(rs, 0, sizeof(*rs));
@@ -417,4 +417,10 @@ RoadStop *RoadStop::AllocateRaw( void )
 	if (AddBlockToPool(&_RoadStop_pool)) return AllocateRaw();
 
 	return NULL;
+}
+
+/** Determines whether a RoadStop is a valid (i.e. existing) one */
+bool RoadStop::IsValid() const
+{
+	return xy != INVALID_TILE;
 }
