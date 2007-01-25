@@ -695,7 +695,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 
 			rs = GetPrimaryRoadStop(
 				GetStation(order->dest),
-				v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK
+				v->cargo_type == CT_PASSENGERS ? RoadStop::BUS : RoadStop::TRUCK
 			);
 
 			if (rs != NULL) {
@@ -1077,7 +1077,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 			bitmask = 0;
 		} else {
 			/* Our station */
-			RoadStopType rstype = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
+			RoadStop::Type rstype = (v->cargo_type == CT_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK;
 
 			if (GetRoadStopType(tile) != rstype) {
 				// wrong station type
@@ -1663,7 +1663,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot == NULL && !(v->vehstatus & VS_CRASHED)) {
 		Station* st = GetStation(v->current_order.dest);
-		RoadStop* rs = GetPrimaryRoadStop(st, v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK);
+		RoadStop* rs = GetPrimaryRoadStop(st, v->cargo_type == CT_PASSENGERS ? RoadStop::BUS : RoadStop::TRUCK);
 		RoadStop* best = NULL;
 
 		if (rs != NULL) {

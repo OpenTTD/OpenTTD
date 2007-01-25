@@ -75,10 +75,10 @@ typedef enum StationType {
 
 StationType GetStationType(TileIndex);
 
-static inline RoadStopType GetRoadStopType(TileIndex t)
+static inline RoadStop::Type GetRoadStopType(TileIndex t)
 {
 	assert(GetStationType(t) == STATION_TRUCK || GetStationType(t) == STATION_BUS);
-	return GetStationType(t) == STATION_TRUCK ? RS_TRUCK : RS_BUS;
+	return GetStationType(t) == STATION_TRUCK ? RoadStop::TRUCK : RoadStop::BUS;
 }
 
 static inline StationGfx GetStationGfx(TileIndex t)
@@ -275,9 +275,9 @@ static inline void MakeRailStation(TileIndex t, Owner o, StationID sid, Axis a, 
 	SetRailType(t, rt);
 }
 
-static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStopType rst, DiagDirection d)
+static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, DiagDirection d)
 {
-	MakeStation(t, o, sid, (rst == RS_BUS ? GFX_BUS_BASE : GFX_TRUCK_BASE) + d);
+	MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE : GFX_TRUCK_BASE) + d);
 }
 
 static inline void MakeAirport(TileIndex t, Owner o, StationID sid, byte section)

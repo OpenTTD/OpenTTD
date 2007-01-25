@@ -2591,10 +2591,10 @@ static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData 
 		} else if (p->mode == 1) {
 			if (_want_road_truck_station) {
 				// Truck station
-				ret = DoCommand(c, p->attr, RS_TRUCK, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
+				ret = DoCommand(c, p->attr, RoadStop::TRUCK, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
 			} else {
 				// Bus station
-				ret = DoCommand(c, p->attr, RS_BUS, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
+				ret = DoCommand(c, p->attr, RoadStop::BUS, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
 			}
 clear_town_stuff:;
 

@@ -42,9 +42,9 @@ int AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte length, byte 
 		return AI_DoCommand(tile, direction + (numtracks << 8) + (length << 16), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_RAILROAD_STATION);
 
 	if (type == AI_BUS)
-		return AI_DoCommand(tile, direction, RS_BUS, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
+		return AI_DoCommand(tile, direction, RoadStop::BUS, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
 
-	return AI_DoCommand(tile, direction, RS_TRUCK, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
+	return AI_DoCommand(tile, direction, RoadStop::TRUCK, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
 }
 
 

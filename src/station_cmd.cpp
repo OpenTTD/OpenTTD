@@ -81,18 +81,18 @@ DEFINE_OLD_POOL(RoadStop, RoadStop, RoadStopPoolNewBlock, NULL)
 extern void UpdateAirplanesOnNewStation(Station *st);
 
 
-RoadStop* GetPrimaryRoadStop(const Station* st, RoadStopType type)
+RoadStop* GetPrimaryRoadStop(const Station* st, RoadStop::Type type)
 {
 	switch (type) {
-		case RS_BUS:   return st->bus_stops;
-		case RS_TRUCK: return st->truck_stops;
+		case RoadStop::BUS:   return st->bus_stops;
+		case RoadStop::TRUCK: return st->truck_stops;
 		default: NOT_REACHED();
 	}
 
 	return NULL;
 }
 
-RoadStop* GetRoadStopByTile(TileIndex tile, RoadStopType type)
+RoadStop* GetRoadStopByTile(TileIndex tile, RoadStop::Type type)
 {
 	const Station* st = GetStationByTile(tile);
 	RoadStop* rs;
@@ -104,7 +104,7 @@ RoadStop* GetRoadStopByTile(TileIndex tile, RoadStopType type)
 	return rs;
 }
 
-uint GetNumRoadStopsInStation(const Station* st, RoadStopType type)
+uint GetNumRoadStopsInStation(const Station* st, RoadStop::Type type)
 {
 	uint num = 0;
 	const RoadStop *rs;
@@ -1299,7 +1299,7 @@ int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
  * then point into the global roadstop array. *prev (in CmdBuildRoadStop)
  * is the pointer tino the global roadstop array which has *currstop in
  * its ->next element.
- * @param[in] truck_station Determines whether a stop is RS_BUS or RS_TRUCK
+ * @param[in] truck_station Determines whether a stop is RoadStop::BUS or RoadStop::TRUCK
  * @param[in] station The station to do the whole procedure for
  * @param[out] currstop See the detailed function description
  * @param prev See the detailed function description
@@ -1369,7 +1369,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	std::auto_ptr<RoadStop> rs_auto_delete(road_stop);
 
 	if (st != NULL &&
-			GetNumRoadStopsInStation(st, RS_BUS) + GetNumRoadStopsInStation(st, RS_TRUCK) >= ROAD_STOP_LIMIT) {
+			GetNumRoadStopsInStation(st, RoadStop::BUS) + GetNumRoadStopsInStation(st, RoadStop::TRUCK) >= ROAD_STOP_LIMIT) {
 		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
 	}
 
@@ -1418,7 +1418,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
 
-		MakeRoadStop(tile, st->owner, st->index, type ? RS_TRUCK : RS_BUS, (DiagDirection)p1);
+		MakeRoadStop(tile, st->owner, st->index, type ? RoadStop::TRUCK : RoadStop::BUS, (DiagDirection)p1);
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
@@ -1444,10 +1444,10 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 
 	if (is_truck) { // truck stop
 		primary_stop = &st->truck_stops;
-		cur_stop = GetRoadStopByTile(tile, RS_TRUCK);
+		cur_stop = GetRoadStopByTile(tile, RoadStop::TRUCK);
 	} else {
 		primary_stop = &st->bus_stops;
-		cur_stop = GetRoadStopByTile(tile, RS_BUS);
+		cur_stop = GetRoadStopByTile(tile, RoadStop::BUS);
 	}
 
 	assert(cur_stop != NULL);

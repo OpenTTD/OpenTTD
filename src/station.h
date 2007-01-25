@@ -35,24 +35,27 @@ typedef struct GoodsEntry {
 	int32 feeder_profit;
 } GoodsEntry;
 
-typedef enum RoadStopType {
-	RS_BUS,
-	RS_TRUCK
-} RoadStopType;
-
 enum {
 	ROAD_STOP_LIMIT = 16,
 };
 
-typedef struct RoadStop {
-	TileIndex xy;
-	RoadStopID index;
-	byte status;
-	byte num_vehicles;
-	struct RoadStop *next;
-	struct RoadStop *prev;
+/** A Stop for a Road Vehicle */
+struct RoadStop {
+	/** Types of RoadStops */
+	enum Type {
+		BUS,                                ///< A standard stop for buses
+		TRUCK                               ///< A standard stop for trucks
+	};
 
-	static const int cDebugCtorLevel = 3;
+	static const int cDebugCtorLevel =  3;  ///< Debug level on which Contructor / Destructor messages are printed
+	static const int LIMIT           = 16;  ///< The maximum amount of roadstops that are allowed at a single station
+
+	TileIndex        xy;                    ///< Position on the map
+	RoadStopID       index;                 ///< Global (i.e. pool-wide) index
+	byte             status;                ///< Current status of the Stop. Like which spot is taken. TODO - enumify this
+	byte             num_vehicles;          ///< Number of vehicles currently slotted to this stop
+	struct RoadStop  *next;                 ///< Next stop of the given type at this station
+	struct RoadStop  *prev;                 ///< Previous stop of the given type at this station
 
 	RoadStop(TileIndex tile);
 	~RoadStop();
@@ -67,7 +70,7 @@ typedef struct RoadStop {
 	bool IsValid() const;
 protected:
 	static RoadStop *AllocateRaw(void);
-} RoadStop;
+};
 
 typedef struct StationSpecList {
 	const StationSpec *spec;
@@ -271,9 +274,9 @@ uint GetPlatformLength(TileIndex tile, DiagDirection dir);
 const DrawTileSprites *GetStationTileLayout(byte gfx);
 void StationPickerDrawSprite(int x, int y, RailType railtype, int image);
 
-RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
-RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type);
-uint GetNumRoadStops(const Station* st, RoadStopType type);
+RoadStop * GetRoadStopByTile(TileIndex tile, RoadStop::Type type);
+RoadStop * GetPrimaryRoadStop(const Station *st, RoadStop::Type type);
+uint GetNumRoadStops(const Station* st, RoadStop::Type type);
 RoadStop * AllocateRoadStop( void );
 void ClearSlot(Vehicle *v);
 
