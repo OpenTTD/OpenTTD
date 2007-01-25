@@ -35,10 +35,6 @@ typedef struct GoodsEntry {
 	int32 feeder_profit;
 } GoodsEntry;
 
-enum {
-	ROAD_STOP_LIMIT = 16,
-};
-
 /** A Stop for a Road Vehicle */
 struct RoadStop {
 	/** Types of RoadStops */
@@ -47,8 +43,8 @@ struct RoadStop {
 		TRUCK                               ///< A standard stop for trucks
 	};
 
-	static const int cDebugCtorLevel =  3;  ///< Debug level on which Contructor / Destructor messages are printed
-	static const int LIMIT           = 16;  ///< The maximum amount of roadstops that are allowed at a single station
+	static const int  cDebugCtorLevel =  3;  ///< Debug level on which Contructor / Destructor messages are printed
+	static const uint LIMIT           = 16;  ///< The maximum amount of roadstops that are allowed at a single station
 
 	TileIndex        xy;                    ///< Position on the map
 	RoadStopID       index;                 ///< Global (i.e. pool-wide) index
