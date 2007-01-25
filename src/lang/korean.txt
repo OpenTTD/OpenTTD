@@ -1,5 +1,5 @@
 ##name Korean
-##ownname Korean
+##ownname 한국어
 ##isocode ko_KR
 ##plural 1
 
@@ -1116,7 +1116,7 @@ STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}시작 
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}종료 년도: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}부드러운 경제 설정 사용 (좀더 적은 변화)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}다른 회사가 주식을 사는 것을 허용
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}드래그 할때 신호등을 매 {ORANGE}{STRING1}타일마다 설치
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}드래그 할때 신호등을 매 {ORANGE}{STRING}타일마다 설치
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}자동으로 신호기 설치 : {ORANGE}{STRING} 이전에
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}주메뉴의 위치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :왼쪽
@@ -1969,7 +1969,7 @@ STR_SV_STNAME_BUOY_6                                            :{STRING} 부이
 STR_SV_STNAME_BUOY_7                                            :{STRING} 부이 7
 STR_SV_STNAME_BUOY_8                                            :{STRING} 부이 8
 STR_SV_STNAME_BUOY_9                                            :{STRING} 부이 9
-STR_SV_STNAME_ANNEXE                                            :{STRING1} 별관
+STR_SV_STNAME_ANNEXE                                            :{STRING} 별관
 STR_SV_STNAME_SIDINGS                                           :{STRING} 측선
 STR_SV_STNAME_BRANCH                                            :{STRING} 지선
 STR_SV_STNAME_UPPER                                             :상부 {STRING}

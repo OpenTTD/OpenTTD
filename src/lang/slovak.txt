@@ -1613,7 +1613,7 @@ STR_1021_RAILROAD_TRACK                                         :Zeleznicne kola
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Zeleznicne depo
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}... oblast vlastni ina spolocnost
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicne kolaje so standartnym semaforom
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje s pre-signami
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje s pre-signalmi
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicne kolaje s exit-signalmi
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicne kolaje s combo-signalmi
 

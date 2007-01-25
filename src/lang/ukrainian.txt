@@ -2,8 +2,8 @@
 ##ownname Українська
 ##isocode uk_UA
 ##plural 6
-##case r z
-##gender m f s
+##case r d z
+##gender m f s mn
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -21,7 +21,7 @@ STR_000B                                                        :{YELLOW}{STATIO
 STR_000C_ACCEPTS                                                :{BLACK}Приймає: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Приймає: {GOLD}
 STR_000E                                                        :
-STR_000F_PASSENGERS                                             :пасажирів
+STR_000F_PASSENGERS                                             :пасажири
 STR_000F_PASSENGERS.r                                           :пасажирів
 STR_0010_COAL                                                   :вугілля
 STR_0010_COAL.r                                                 :вугілля
@@ -69,8 +69,8 @@ STR_0025_TOYS                                                   :іграшки
 STR_0025_TOYS.r                                                 :іграшок
 STR_0026_CANDY                                                  :солодощі
 STR_0026_CANDY.r                                                :солодощів
-STR_0027_COLA                                                   :Колу
-STR_0027_COLA.r                                                 :Коли
+STR_0027_COLA                                                   :кола
+STR_0027_COLA.r                                                 :коли
 STR_0028_COTTON_CANDY                                           :солодку вату
 STR_0028_COTTON_CANDY.r                                         :солодкої вати
 STR_0029_BUBBLES                                                :бульбашки
@@ -84,7 +84,8 @@ STR_002C_PLASTIC.r                                              :пластик�
 STR_002D_FIZZY_DRINKS                                           :газовану воду
 STR_002D_FIZZY_DRINKS.r                                         :газованої води
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :пасажирів
+STR_002F_PASSENGER                                              :пасажир
+STR_002F_PASSENGER.r                                            :пасажира
 STR_0030_COAL                                                   :вугілля
 STR_0031_MAIL                                                   :пошти
 STR_0032_OIL                                                    :нафти
@@ -677,32 +678,32 @@ STR_023C_EXPAND                                                 :{BLACK}Розш
 STR_023D_RANDOM_TOWN                                            :{BLACK}Випадкове місто
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Будувати місто у випадковому місці
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Створення виробництва
-STR_0240_COAL_MINE                                              :{BLACK}Вугільна шахта
-STR_0241_POWER_STATION                                          :{BLACK}Електростанція
-STR_0242_SAWMILL                                                :{BLACK}Лісопилка
-STR_0243_FOREST                                                 :{BLACK}Ліс
-STR_0244_OIL_REFINERY                                           :{BLACK}Нафтопереробний завод
-STR_0245_OIL_RIG                                                :{BLACK}Нафтова платформа
-STR_0246_FACTORY                                                :{BLACK}Фабрика
-STR_0247_STEEL_MILL                                             :{BLACK}Сталеварний завод
-STR_0248_FARM                                                   :{BLACK}Ферма
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Залізорудна шахта
-STR_024A_OIL_WELLS                                              :{BLACK}Нафтова свердловина
-STR_024B_BANK                                                   :{BLACK}Банк
-STR_024C_PAPER_MILL                                             :{BLACK}Паперова фабрика
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Продуктовий завод
+STR_0240_COAL_MINE                                              :{BLACK}{G=f}Вугільна шахта
+STR_0241_POWER_STATION                                          :{BLACK}{G=f}}Електростанція
+STR_0242_SAWMILL                                                :{BLACK}{G=f}Лісопилка
+STR_0243_FOREST                                                 :{BLACK}{G=m}Ліс
+STR_0244_OIL_REFINERY                                           :{BLACK}{G=m}Нафтопереробний завод
+STR_0245_OIL_RIG                                                :{BLACK}{G=f}Нафтова платформа
+STR_0246_FACTORY                                                :{BLACK}{G=f}Фабрика
+STR_0247_STEEL_MILL                                             :{BLACK}{G=m}Сталеварний завод
+STR_0248_FARM                                                   :{BLACK}{G=f}Ферма
+STR_0249_IRON_ORE_MINE                                          :{BLACK}{G=f}Залізорудна шахта
+STR_024A_OIL_WELLS                                              :{BLACK}{G=f}Нафтова свердловина
+STR_024B_BANK                                                   :{BLACK}{G=m}Банк
+STR_024C_PAPER_MILL                                             :{BLACK}{G=f}Паперова фабрика
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}{G=m}Продуктовий завод
 STR_024E_PRINTING_WORKS                                         :{BLACK}{G=f}Друкарня
-STR_024F_GOLD_MINE                                              :{BLACK}Золоторудна шахта
-STR_0250_LUMBER_MILL                                            :{BLACK}Лісопилка
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Фруктовий сад
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Каучуковий сад
-STR_0253_WATER_SUPPLY                                           :{BLACK}Водопостачання
-STR_0254_WATER_TOWER                                            :{BLACK}Водонапірна башта
-STR_0255_DIAMOND_MINE                                           :{BLACK}Діамантова шахта
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Міднорудна шахта
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Ліс солодкої вати
-STR_0258_CANDY_FACTORY                                          :{BLACK}Цукеркова фабрика
-STR_0259_BATTERY_FARM                                           :{BLACK}Батарейкове поле
+STR_024F_GOLD_MINE                                              :{BLACK}{G=f}Золоторудна шахта
+STR_0250_LUMBER_MILL                                            :{BLACK}{G=f}Лісопилка
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}{G=m}Фруктовий сад
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}{G=m}Каучуковий сад
+STR_0253_WATER_SUPPLY                                           :{BLACK}{G=s}Джерело
+STR_0254_WATER_TOWER                                            :{BLACK}{G=f}Водонапірна башта
+STR_0255_DIAMOND_MINE                                           :{BLACK}{G=f}Діамантова шахта
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}{G=f}Міднорудна шахта
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}{G=m}Ліс солодкої вати
+STR_0258_CANDY_FACTORY                                          :{BLACK}{G=f}Цукеркова фабрика
+STR_0259_BATTERY_FARM                                           :{BLACK}{G=s}Батарейкове поле
 STR_025A_COLA_WELLS                                             :{BLACK}Джерело Кока-коли
 STR_025B_TOY_SHOP                                               :{BLACK}Іграшковий магазин
 STR_025C_TOY_FACTORY                                            :{BLACK}Іграшкова фабрика
@@ -911,7 +912,7 @@ STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Англійс�
 STR_TOWNNAME_LATIN_AMERICAN                                     :Латино-Американські
 STR_TOWNNAME_SILLY                                              :Кумедні
 STR_TOWNNAME_SWEDISH                                            :Шведські
-STR_TOWNNAME_DUTCH                                              :Голландські
+STR_TOWNNAME_DUTCH                                              :Голандські
 STR_TOWNNAME_FINNISH                                            :Фінські
 STR_TOWNNAME_POLISH                                             :Польські
 STR_TOWNNAME_SLOVAKISH                                          :Словацькі
@@ -928,9 +929,9 @@ STR_TOWNNAME_CATALAN                                            :Каталан�
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Фунт (£)
-STR_CURR_USD                                                    :Долар
+STR_CURR_USD                                                    :Долар ($)
 STR_CURR_EUR                                                    :Євро (€)
-STR_CURR_YEN                                                    :Йєна
+STR_CURR_YEN                                                    :Ієна (¥)
 STR_CURR_ATS                                                    :Австрійський шилінг (ATS)
 STR_CURR_BEF                                                    :Бельгійський франк (BEF)
 STR_CURR_CHF                                                    :Швейцарський франк (CHF)
@@ -949,8 +950,8 @@ STR_CURR_NOK                                                    :Норвезь�
 STR_CURR_PLN                                                    :Польський злотий (PLN)
 STR_CURR_ROL                                                    :Румунський лей (ROL)
 STR_CURR_RUR                                                    :Російський рубль (RUR)
-STR_CURR_SIT                                                    :Словенський Талер (SIT)
-STR_CURR_SEK                                                    :Шведська крона
+STR_CURR_SIT                                                    :Словенський талер (SIT)
+STR_CURR_SEK                                                    :Шведська крона (SEK)
 STR_CURR_YTL                                                    :Турецька ліра (YTL)
 STR_CURR_SKK                                                    :Словацька крона (SKK)
 STR_CURR_BRR                                                    :Бразильський реал (BRL)
@@ -999,7 +1000,7 @@ STR_TONS                                                        :тонИ
 STR_LITERS                                                      :літрів
 STR_ITEMS                                                       :штук
 STR_CRATES                                                      :ЯщикИ
-STR_RES_OTHER                                                   :інше
+STR_RES_OTHER                                                   :інша
 STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
@@ -1664,7 +1665,7 @@ STR_202C_FROM_TO                                                :{ORANGE}Пер�
 STR_202D_UNTIL                                                  :{YELLOW}, по {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Субсидію відмінено:{}{}Перевезення {STRING.r} з {STRING} до {STRING}.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Субсидія вже не надається:{}{}Перевезення {STRING.r} з {STATION} до {STATION}.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Пропонується річна субсидія {}{}першій компанії, яка привезе {STRING} з {STRING} до {STRING}!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Пропонується річна субсидія {}{}першій компанії, яка привезе {STRING.r} з {STRING} до {STRING}!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе додатково 50% протягом наступного року!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе вдвічі більше прибутків наступного року!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе втричі більше прибутків наступного року!
@@ -1851,24 +1852,24 @@ STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Зава
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} на шляху
 STR_4801                                                        :{WHITE}{INDUSTRY}
-STR_4802_COAL_MINE                                              :Вугільна шахта
-STR_4803_POWER_STATION                                          :Електростанція
-STR_4804_SAWMILL                                                :Лісопилка
-STR_4805_FOREST                                                 :Ліс
-STR_4806_OIL_REFINERY                                           :Нафтопереробний завод
-STR_4807_OIL_RIG                                                :Нафтова платформа
-STR_4808_FACTORY                                                :Фабрика
-STR_4809_PRINTING_WORKS                                         :Друкарня
-STR_480A_STEEL_MILL                                             :Сталеварний завод
-STR_480B_FARM                                                   :Ферма
-STR_480C_COPPER_ORE_MINE                                        :Міднорудна шахта
-STR_480D_OIL_WELLS                                              :Нафтова свердловина
-STR_480E_BANK                                                   :Банк
-STR_480F_FOOD_PROCESSING_PLANT                                  :Продуктовий завод
-STR_4810_PAPER_MILL                                             :Паперова фабрика
-STR_4811_GOLD_MINE                                              :Золоторудна шахта
-STR_4812_BANK                                                   :Банк
-STR_4813_DIAMOND_MINE                                           :Діамантова шахта
+STR_4802_COAL_MINE                                              :{G=f}Вугільна шахта
+STR_4803_POWER_STATION                                          :{G=f}Електростанція
+STR_4804_SAWMILL                                                :{G=f}Лісопилка
+STR_4805_FOREST                                                 :{G=m}Ліс
+STR_4806_OIL_REFINERY                                           :{G=m}Нафтопереробний завод
+STR_4807_OIL_RIG                                                :{G=f}Нафтова платформа
+STR_4808_FACTORY                                                :{G=f}Фабрика
+STR_4809_PRINTING_WORKS                                         :{G=f}Друкарня
+STR_480A_STEEL_MILL                                             :{G=m}Сталеварний завод
+STR_480B_FARM                                                   :{G=f}Ферма
+STR_480C_COPPER_ORE_MINE                                        :{G=f}Міднорудна шахта
+STR_480D_OIL_WELLS                                              :{G=f}Нафтова свердловина
+STR_480E_BANK                                                   :{G=m}Банк
+STR_480F_FOOD_PROCESSING_PLANT                                  :{G=m}Продуктовий завод
+STR_4810_PAPER_MILL                                             :{G=f}Паперова фабрика
+STR_4811_GOLD_MINE                                              :{G=f}Золоторудна шахта
+STR_4812_BANK                                                   :{G=m}Банк
+STR_4813_DIAMOND_MINE                                           :{G=f}Діамантова шахта
 STR_4814_IRON_ORE_MINE                                          :Залізорудна шахта
 STR_4815_FRUIT_PLANTATION                                       :Фруктовий сад
 STR_4816_RUBBER_PLANTATION                                      :Каучуковий сад
@@ -2880,7 +2881,7 @@ STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Вибухнув нафтопереробний завод біля міста {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}За невідомих обставин зруйновано фабрику біля міста {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'НЛО' приземлилось біля міста {TOWN}!
-STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Обвал на вугільній шахті призвів до просіву грунту біля міста {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Обвал на вугільній шахті призвів до зсуву грунту біля міста {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Повінь!{}Щонайменше {COMMA} зникло безвісти та загинуло!
 
 STR_BRIBE_FAILED                                                :{WHITE}Ваша спроба дати хабаря була
