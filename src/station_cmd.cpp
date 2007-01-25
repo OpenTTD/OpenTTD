@@ -1359,11 +1359,18 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (st != NULL && st->facilities != 0) st = NULL;
 	}
 
+	/* If DC_EXEC is NOT set we still need to create the road stop to test if everything is OK.
+	* In this case we need to delete it before return. */
+	std::auto_ptr<RoadStop> rs_auto_delete;
+
 	//give us a road stop in the list, and check if something went wrong
 	road_stop = new RoadStop(tile);
 	if (road_stop == NULL) {
 		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
 	}
+
+	/* ensure that in case of error (or no DC_EXEC) the new road stop gets deleted upon return */
+	rs_auto_delete = std::auto_ptr<RoadStop>(road_stop);
 
 	if (st != NULL &&
 			GetNumRoadStopsInStation(st, RS_BUS) + GetNumRoadStopsInStation(st, RS_TRUCK) >= ROAD_STOP_LIMIT) {
@@ -1421,8 +1428,9 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
-		/* success, so don't delete the new station */
+		/* success, so don't delete the new station and the new road stop */
 		st_auto_delete.release();
+		rs_auto_delete.release();
 	}
 	return cost;
 }
