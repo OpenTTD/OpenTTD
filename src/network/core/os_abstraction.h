@@ -124,6 +124,9 @@ typedef unsigned long in_addr_t;
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 #	include <exec/types.h>
 #	include <proto/exec.h>   // required for Open/CloseLibrary()
+	/* MorphOS defines his network functions with UBYTE arrays while we
+	 *  use char arrays. This gives tons of unneeded warnings */
+#	define UBYTE char
 #	if defined(__MORPHOS__)
 #		include <sys/filio.h>  // FIO* defines
 #		include <sys/sockio.h> // SIO* defines
