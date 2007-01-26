@@ -501,7 +501,6 @@ static void ClearCrashedStation(Vehicle *v)
 static void RoadVehDelete(Vehicle *v)
 {
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 	RebuildVehicleLists();
 	InvalidateWindow(WC_COMPANY, v->owner);
