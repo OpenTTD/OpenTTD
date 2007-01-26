@@ -1662,11 +1662,9 @@ bool AfterLoadGame(void)
 
 	/* from version 38 we have optional elrails, since we cannot know the
 	 * preference of a user, let elrails enabled; it can be disabled manually */
-	if (CheckSavegameVersion(38)) {
-		_patches.disable_elrails = false; // enable elrails
-		/* do the same as when elrails were enabled/disabled manually just now */
-		SettingsDisableElrail(_patches.disable_elrails);
-	}
+	if (CheckSavegameVersion(38)) _patches.disable_elrails = false;
+	/* do the same as when elrails were enabled/disabled manually just now */
+	SettingsDisableElrail(_patches.disable_elrails);
 
 	if (CheckSavegameVersion(43)) {
 		for (TileIndex t = 0; t < map_size; t++) {
