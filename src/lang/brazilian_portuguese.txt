@@ -2424,7 +2424,7 @@ STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :Caminhão de Bo
 STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Caminhão de Bolhas Powernaught
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Caminhão de Bolhas Wizzowow
 STR_80CC_MPS_OIL_TANKER                                         :Caminhão de Petróleo MPS
-STR_80CD_CS_INC_OIL_TANKER                                      :Caminhão de Petróleo CS-Inc.
+STR_80CD_CS_INC_OIL_TANKER                                      :Petroleiro CS-Inc.
 STR_80CE_MPS_PASSENGER_FERRY                                    :Barco de Passageiros MPS
 STR_80CF_FFP_PASSENGER_FERRY                                    :Barco de Passageiros FFP
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Hovercraft Bakewell 300
