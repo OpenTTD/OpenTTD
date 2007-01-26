@@ -113,7 +113,6 @@ void AddTypeToEngines(void)
 	do e->type = VEH_Road;     while (++e < &_engines[SHIP_ENGINES_INDEX]);
 	do e->type = VEH_Ship;     while (++e < &_engines[AIRCRAFT_ENGINES_INDEX]);
 	do e->type = VEH_Aircraft; while (++e < &_engines[TOTAL_NUM_ENGINES]);
-	do e->type = VEH_Special;  while (++e < endof(_engines));
 }
 
 void StartupEngines(void)
