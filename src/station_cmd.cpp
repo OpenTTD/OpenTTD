@@ -34,8 +34,7 @@
 #include "yapf/yapf.h"
 #include "date.h"
 #include "helpers.hpp"
-
-#include <memory>     // for auto_ptr
+#include "misc/autoptr.hpp"
 
 /**
  * Called if a new block is added to the station-pool
@@ -932,7 +931,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 
 	/* In case of new station if DC_EXEC is NOT set we still need to create the station
 	 * to test if everything is OK. In this case we need to delete it before return. */
-	std::auto_ptr<Station> st_auto_delete;
+	AutoPtrT<Station> st_auto_delete;
 
 	if (st != NULL) {
 		// Reuse an existing station.
@@ -955,7 +954,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		if (st == NULL) return CMD_ERROR;
 
 		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
-		st_auto_delete = std::auto_ptr<Station>(st);
+		st_auto_delete = st;
 
 		st->town = ClosestTownFromTile(tile_org, (uint)-1);
 		if (!GenerateStationName(st, tile_org, 0)) return CMD_ERROR;
@@ -1044,7 +1043,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		/* success, so don't delete the new station */
-		st_auto_delete.release();
+		st_auto_delete.Release();
 	}
 
 	return cost;
@@ -1366,7 +1365,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	/* ensure that in case of error (or no DC_EXEC) the new road stop gets deleted upon return */
-	std::auto_ptr<RoadStop> rs_auto_delete(road_stop);
+	AutoPtrT<RoadStop> rs_auto_delete(road_stop);
 
 	if (st != NULL &&
 			GetNumRoadStopsInStation(st, RoadStop::BUS) + GetNumRoadStopsInStation(st, RoadStop::TRUCK) >= RoadStop::LIMIT) {
@@ -1375,7 +1374,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* In case of new station if DC_EXEC is NOT set we still need to create the station
 	* to test if everything is OK. In this case we need to delete it before return. */
-	std::auto_ptr<Station> st_auto_delete;
+	AutoPtrT<Station> st_auto_delete;
 
 	if (st != NULL) {
 		if (st->owner != OWNER_NONE && st->owner != _current_player) {
@@ -1391,7 +1390,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (st == NULL) return CMD_ERROR;
 
 		/* ensure that in case of error (or no DC_EXEC) the new station gets deleted upon return */
-		st_auto_delete = std::auto_ptr<Station>(st);
+		st_auto_delete = st;
 
 
 		Town *t = st->town = ClosestTownFromTile(tile, (uint)-1);
@@ -1425,8 +1424,8 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		/* success, so don't delete the new station and the new road stop */
-		st_auto_delete.release();
-		rs_auto_delete.release();
+		st_auto_delete.Release();
+		rs_auto_delete.Release();
 	}
 	return cost;
 }
@@ -1633,7 +1632,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* In case of new station if DC_EXEC is NOT set we still need to create the station
 	 * to test if everything is OK. In this case we need to delete it before return. */
-	std::auto_ptr<Station> st_auto_delete;
+	AutoPtrT<Station> st_auto_delete;
 
 	if (st != NULL) {
 		if (st->owner != OWNER_NONE && st->owner != _current_player)
@@ -1651,7 +1650,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (st == NULL) return CMD_ERROR;
 
 		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
-		st_auto_delete = std::auto_ptr<Station>(st);
+		st_auto_delete = st;
 
 		st->town = t;
 
@@ -1699,7 +1698,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		/* success, so don't delete the new station */
-		st_auto_delete.release();
+		st_auto_delete.Release();
 	}
 
 	return cost;
@@ -1771,7 +1770,7 @@ int32 CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (st == NULL) return CMD_ERROR;
 
 	/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
-	std::auto_ptr<Station> st_auto_delete(st);
+	AutoPtrT<Station> st_auto_delete(st);
 
 	st->town = ClosestTownFromTile(tile, (uint)-1);
 	st->sign.width_1 = 0;
@@ -1795,7 +1794,7 @@ int32 CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		/* success, so don't delete the new station */
-		st_auto_delete.release();
+		st_auto_delete.Release();
 	}
 
 	return _price.build_dock;
@@ -1915,7 +1914,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* In case of new station if DC_EXEC is NOT set we still need to create the station
 	* to test if everything is OK. In this case we need to delete it before return. */
-	std::auto_ptr<Station> st_auto_delete;
+	AutoPtrT<Station> st_auto_delete;
 
 	if (st != NULL) {
 		if (st->owner != OWNER_NONE && st->owner != _current_player)
@@ -1930,7 +1929,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (st == NULL) return CMD_ERROR;
 
 		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
-		st_auto_delete = std::auto_ptr<Station>(st);
+		st_auto_delete = st;
 
 		Town *t = st->town = ClosestTownFromTile(tile, (uint)-1);
 
@@ -1956,7 +1955,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		/* success, so don't delete the new station */
-		st_auto_delete.release();
+		st_auto_delete.Release();
 	}
 	return _price.build_dock;
 }
