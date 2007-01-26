@@ -1330,7 +1330,7 @@ enum SpriteMasks {
 
 assert_compile( (1 << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
 assert_compile( (1 << RECOLOR_BIT & SPRITE_MASK) == 0 );
-assert_compile( TRANSPARENT_BIT != RECOLOR_BIT );
+assert_compile( !(TRANSPARENT_BIT == RECOLOR_BIT) );
 assert_compile( (1 << TRANSPARENT_BIT & PALETTE_MASK) == 0);
 assert_compile( (1 << RECOLOR_BIT & PALETTE_MASK) == 0 );
 
