@@ -836,7 +836,7 @@ static void CreateVehicleListWindow(Window *w)
 
 		case VEH_Road:
 			w->widget[VLW_WIDGET_LIST].tooltips          = STR_901A_ROAD_VEHICLES_CLICK_ON;
-			w->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_VEHICLES;
+			w->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_ROAD_VEHICLES;
 			break;
 
 		case VEH_Ship:

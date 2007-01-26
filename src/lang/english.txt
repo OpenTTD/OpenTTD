@@ -395,7 +395,7 @@ STR_NO_WAITING_CARGO                                            :{BLACK}No cargo
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Select all facilities
 STR_SELECT_ALL_TYPES                                            :{BLACK}Select all cargo types (including no waiting cargo)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Available Trains
-STR_AVAILABLE_VEHICLES                                          :{BLACK}Available Vehicles
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Available Vehicles
 STR_AVAILABLE_SHIPS                                             :{BLACK}Available Ships
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Available Aircraft
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}See a list of available engine designs for this vehicle type.
