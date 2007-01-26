@@ -559,7 +559,7 @@ void ShowLastNewsMessage(void)
 		/* Not forced any news yet, show the current one, unless a news window is
 		 * open (which can only be the current one), then show the previous item */
 		const Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
-		ShowNewsMessage((w == NULL) ? _current_news : decreaseIndex(_current_news));
+		ShowNewsMessage((w == NULL || (_current_news == _oldest_news)) ? _current_news : decreaseIndex(_current_news));
 	} else if (_forced_news == _oldest_news) {
 		/* We have reached the oldest news, start anew with the latest */
 		ShowNewsMessage(_latest_news);
@@ -918,9 +918,11 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 				for (NewsID i = n;; i = decreaseIndex(i)) {
 					_news_items[i] = _news_items[decreaseIndex(i)];
 
-					if (i == _current_news) _current_news = increaseIndex(_current_news);
-					if (i == _forced_news) _forced_news = increaseIndex(_forced_news);
-					if (i == visible_news) WP(w, news_d).ni = &_news_items[increaseIndex(visible_news)];
+					if (i != _latest_news) {
+						if (i == _current_news) _current_news = increaseIndex(_current_news);
+						if (i == _forced_news) _forced_news = increaseIndex(_forced_news);
+						if (i == visible_news) WP(w, news_d).ni = &_news_items[increaseIndex(visible_news)];
+					}
 
 					if (i == _oldest_news) break;
 				}
