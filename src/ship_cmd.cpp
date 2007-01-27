@@ -274,7 +274,7 @@ static void ProcessShipOrder(Vehicle *v)
 static void HandleShipLoading(Vehicle *v)
 {
 	switch (v->current_order.type) {
-		case OT_LOADING:
+		case OT_LOADING: {
 			if (--v->load_unload_time_rem) return;
 
 			if (CanFillVehicle(v) && (
@@ -294,6 +294,7 @@ static void HandleShipLoading(Vehicle *v)
 			v->LeaveStation();
 			if (!(b.flags & OF_NON_STOP)) return;
 			break;
+		}
 
 		case OT_DUMMY: break;
 

@@ -1258,7 +1258,7 @@ static void MarkAircraftDirty(Vehicle *v)
 static void HandleAircraftLoading(Vehicle *v, int mode)
 {
 	switch (v->current_order.type) {
-		case OT_LOADING:
+		case OT_LOADING: {
 			if (mode != 0) return;
 			if (--v->load_unload_time_rem != 0) return;
 
@@ -1280,6 +1280,7 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 			MarkAircraftDirty(v);
 			if (!(b.flags & OF_NON_STOP)) return;
 			break;
+		}
 
 		case OT_DUMMY: break;
 

@@ -2606,7 +2606,7 @@ static void MarkTrainDirty(Vehicle *v)
 static void HandleTrainLoading(Vehicle *v, bool mode)
 {
 	switch (v->current_order.type) {
-		case OT_LOADING:
+		case OT_LOADING: {
 			if (mode) return;
 
 			// don't mark the train as lost if we're loading on the final station.
@@ -2641,6 +2641,7 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 			// If this was not the final order, don't remove it from the list.
 			if (!(b.flags & OF_NON_STOP)) return;
 			break;
+		}
 
 		case OT_DUMMY: break;
 
