@@ -1257,31 +1257,35 @@ static void MarkAircraftDirty(Vehicle *v)
 
 static void HandleAircraftLoading(Vehicle *v, int mode)
 {
-	if (v->current_order.type == OT_NOTHING) return;
+	switch (v->current_order.type) {
+		case OT_LOADING:
+			if (mode != 0) return;
+			if (--v->load_unload_time_rem != 0) return;
 
-	if (v->current_order.type != OT_DUMMY) {
-		if (v->current_order.type != OT_LOADING) return;
-		if (mode != 0) return;
-		if (--v->load_unload_time_rem != 0) return;
-
-		if (CanFillVehicle(v) && (v->current_order.flags & OF_FULL_LOAD ||
-				(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED)))) {
-			SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
-			if (LoadUnloadVehicle(v, false)) {
-				InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
-				MarkAircraftDirty(v);
+			if (CanFillVehicle(v) && (
+						v->current_order.flags & OF_FULL_LOAD ||
+						(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED))
+					)) {
+				SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
+				if (LoadUnloadVehicle(v, false)) {
+					InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
+					MarkAircraftDirty(v);
+				}
+				return;
 			}
-			return;
-		}
 
-		{
 			Order b = v->current_order;
 			v->current_order.type = OT_NOTHING;
 			v->current_order.flags = 0;
 			MarkAircraftDirty(v);
 			if (!(b.flags & OF_NON_STOP)) return;
-		}
+			break;
+
+		case OT_DUMMY: break;
+
+		default: return;
 	}
+
 	v->cur_order_index++;
 	InvalidateVehicleOrder(v);
 }

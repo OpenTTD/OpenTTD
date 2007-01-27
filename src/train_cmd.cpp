@@ -2605,42 +2605,46 @@ static void MarkTrainDirty(Vehicle *v)
 
 static void HandleTrainLoading(Vehicle *v, bool mode)
 {
-	if (v->current_order.type == OT_NOTHING) return;
+	switch (v->current_order.type) {
+		case OT_LOADING:
+			if (mode) return;
 
-	if (v->current_order.type != OT_DUMMY) {
-		if (v->current_order.type != OT_LOADING) return;
-		if (mode) return;
-
-		// don't mark the train as lost if we're loading on the final station.
-		if (v->current_order.flags & OF_NON_STOP)
-			v->u.rail.days_since_order_progr = 0;
-
-		if (--v->load_unload_time_rem) return;
-
-		if (CanFillVehicle(v) && (v->current_order.flags & OF_FULL_LOAD ||
-				(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED)))) {
-			v->u.rail.days_since_order_progr = 0; /* Prevent a train lost message for full loading trains */
-			SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
-			if (LoadUnloadVehicle(v, false)) {
-				InvalidateWindow(WC_TRAINS_LIST, v->owner);
-				MarkTrainDirty(v);
-
-				// need to update acceleration and cached values since the goods on the train changed.
-				TrainCargoChanged(v);
-				UpdateTrainAcceleration(v);
+			// don't mark the train as lost if we're loading on the final station.
+			if (v->current_order.flags & OF_NON_STOP) {
+				v->u.rail.days_since_order_progr = 0;
 			}
-			return;
-		}
 
-		TrainPlayLeaveStationSound(v);
+			if (--v->load_unload_time_rem) return;
 
-		{
+			if (CanFillVehicle(v) && (
+						v->current_order.flags & OF_FULL_LOAD ||
+						(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED))
+					)) {
+				v->u.rail.days_since_order_progr = 0; /* Prevent a train lost message for full loading trains */
+				SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
+				if (LoadUnloadVehicle(v, false)) {
+					InvalidateWindow(WC_TRAINS_LIST, v->owner);
+					MarkTrainDirty(v);
+
+					// need to update acceleration and cached values since the goods on the train changed.
+					TrainCargoChanged(v);
+					UpdateTrainAcceleration(v);
+				}
+				return;
+			}
+
+			TrainPlayLeaveStationSound(v);
+
 			Order b = v->current_order;
 			v->LeaveStation();
 
 			// If this was not the final order, don't remove it from the list.
 			if (!(b.flags & OF_NON_STOP)) return;
-		}
+			break;
+
+		case OT_DUMMY: break;
+
+		default: return;
 	}
 
 	v->u.rail.days_since_order_progr = 0;

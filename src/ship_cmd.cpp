@@ -273,28 +273,31 @@ static void ProcessShipOrder(Vehicle *v)
 
 static void HandleShipLoading(Vehicle *v)
 {
-	if (v->current_order.type == OT_NOTHING) return;
+	switch (v->current_order.type) {
+		case OT_LOADING:
+			if (--v->load_unload_time_rem) return;
 
-	if (v->current_order.type != OT_DUMMY) {
-		if (v->current_order.type != OT_LOADING) return;
-		if (--v->load_unload_time_rem) return;
-
-		if (CanFillVehicle(v) && (v->current_order.flags & OF_FULL_LOAD ||
-				(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED)))) {
-			SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);
-			if (LoadUnloadVehicle(v, false)) {
-				InvalidateWindow(WC_SHIPS_LIST, v->owner);
-				MarkShipDirty(v);
+			if (CanFillVehicle(v) && (
+						v->current_order.flags & OF_FULL_LOAD ||
+						(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED))
+					)) {
+				SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);
+				if (LoadUnloadVehicle(v, false)) {
+					InvalidateWindow(WC_SHIPS_LIST, v->owner);
+					MarkShipDirty(v);
+				}
+				return;
 			}
-			return;
-		}
-		PlayShipSound(v);
+			PlayShipSound(v);
 
-		{
 			Order b = v->current_order;
 			v->LeaveStation();
 			if (!(b.flags & OF_NON_STOP)) return;
-		}
+			break;
+
+		case OT_DUMMY: break;
+
+		default: return;
 	}
 
 	v->cur_order_index++;
