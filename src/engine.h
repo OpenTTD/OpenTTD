@@ -45,8 +45,11 @@ typedef struct ShipVehicleInfo {
 	bool refittable;
 } ShipVehicleInfo;
 
-/* AircraftVehicleInfo subtypes */
+/* AircraftVehicleInfo subtypes, bitmask type.
+ * If bit 0 is 0 then it is a helicopter, otherwise it is a plane
+ * in which case bit 1 tells us whether it's a big(fast) plane or not */
 enum {
+	AIR_HELI = 0,
 	AIR_CTOL = 1, // Conventional Take Off and Landing, i.e. planes
 	AIR_FAST = 2
 };

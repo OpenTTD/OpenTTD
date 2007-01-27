@@ -745,15 +745,15 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 		case 0x09: /* Helicopter */
 			FOR_EACH_OBJECT {
 				if (grf_load_byte(&buf) == 0) {
-					avi[i].subtype = 0;
+					avi[i].subtype = AIR_HELI;
 				} else {
-					SB(avi[i].subtype, 0, 1, 1);
+					SB(avi[i].subtype, 0, 1, 1); // AIR_CTOL
 				}
 			}
 			break;
 
 		case 0x0A: /* Large */
-			FOR_EACH_OBJECT SB(avi[i].subtype, 1, 1, (grf_load_byte(&buf) != 0 ? 1 : 0));
+			FOR_EACH_OBJECT SB(avi[i].subtype, 1, 1, (grf_load_byte(&buf) != 0 ? 1 : 0)); // AIR_FAST
 			break;
 
 		case 0x0B: /* Cost factor */

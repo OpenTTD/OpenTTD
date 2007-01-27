@@ -518,7 +518,7 @@ const ShipVehicleInfo orig_ship_vehicle_info[NUM_SHIP_ENGINES] = {
  * @param i passenger_capacity
  */
 #define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, {e}, f, g, h, i }
-#define H 0
+#define H AIR_HELI
 #define P AIR_CTOL
 #define J AIR_CTOL | AIR_FAST
 const AircraftVehicleInfo orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {

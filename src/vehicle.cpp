@@ -2891,9 +2891,9 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 				const AircraftVehicleInfo *avi = AircraftVehInfo(engine_type);
 				if (cargo_type == CT_INVALID) cargo_type = CT_PASSENGERS;
 				switch (avi->subtype) {
-					case 0: scheme = LS_HELICOPTER; break;
-					case 1: scheme = LS_SMALL_PLANE; break;
-					case 3: scheme = LS_LARGE_PLANE; break;
+					case AIR_HELI: scheme = LS_HELICOPTER; break;
+					case AIR_CTOL: scheme = LS_SMALL_PLANE; break;
+					case AIR_CTOL | AIR_FAST: scheme = LS_LARGE_PLANE; break;
 				}
 				break;
 			}
