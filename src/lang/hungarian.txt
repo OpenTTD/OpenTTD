@@ -460,6 +460,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Teherkapacitás
 STR_NO_WAITING_CARGO                                            :{BLACK}Semmilyen áru nem várakozik
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Minden szállítóegység kiválasztása
 STR_SELECT_ALL_TYPES                                            :{BLACK}Minden rakománytípus mutatása (beleértve ha nincs várakozó rakomány)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Elérhető vonatok
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Elérhető közúti járművek
+STR_AVAILABLE_SHIPS                                             :{BLACK}Elérhető hajók
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Elérhető repülők
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Tekintsd meg az ehhez a járműtípushoz választható mozdonyok listáját
 STR_MANAGE_LIST                                                 :{BLACK}Lista kezelése
 STR_MANAGE_LIST_TIP                                             :{BLACK}A listán szereplő járműveknek utasítás küldése

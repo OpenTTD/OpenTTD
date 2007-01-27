@@ -395,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Frachtkapazitä
 STR_NO_WAITING_CARGO                                            :{BLACK}Keine Fracht wartet
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Wähle alle Anlagen
 STR_SELECT_ALL_TYPES                                            :{BLACK}Wähle alle Frachtarten (einschließlich ohne wartender Fracht)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Verfügbare Züge
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Verfügbare Fahrzeuge
+STR_AVAILABLE_SHIPS                                             :{BLACK}Verfügbare Schiffe
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Verfügbare Flugzeuge
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zeige eine Liste von verfügbaren Fahrzeugen für diesen Fahrzeugtyp
 STR_MANAGE_LIST                                                 :{BLACK}Verwalte die Liste
 STR_MANAGE_LIST_TIP                                             :{BLACK}Aufträge an alle Fahrzeuge in der Liste verschicken

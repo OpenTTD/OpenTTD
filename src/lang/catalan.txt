@@ -394,6 +394,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacitat de c�
 STR_NO_WAITING_CARGO                                            :{BLACK}No hi ha càrrega d'aquest tipus esperant
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal·lacions
 STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (inloent carga sense espera)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Trens Disponibles
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Vehicles Disponibles
+STR_AVAILABLE_SHIPS                                             :{BLACK}Vaixells Disponibles
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Avions Disponibles
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Veure una llista dels motors disponibles per aquest tipus de vehicle
 STR_MANAGE_LIST                                                 :{BLACK}Administra llista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Envia instruccions a tots els vehicles de la llista

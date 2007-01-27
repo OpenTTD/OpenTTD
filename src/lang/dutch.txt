@@ -394,6 +394,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Vracht capacite
 STR_NO_WAITING_CARGO                                            :{BLACK}Er wacht geen vracht van enig type
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Kies alle faciliteiten
 STR_SELECT_ALL_TYPES                                            :{BLACK}Kies alle vracht typen (inclusief niet wachtende vracht)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Beschikbare Treinen
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Beschikbare Voertuigen
+STR_AVAILABLE_SHIPS                                             :{BLACK}Beschikbare Schepen
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Beschikbare Vliegtuigen
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Bekijk een lijst van beschikbare ontwerpen voor dit type voertuig.
 STR_MANAGE_LIST                                                 :{BLACK}Beheer lijst
 STR_MANAGE_LIST_TIP                                             :{BLACK}Stuur instructies naar alle voertuigen in de lijst

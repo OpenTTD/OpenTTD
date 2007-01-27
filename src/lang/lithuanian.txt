@@ -418,7 +418,7 @@ STR_SORT_BY_VALUE                                               :Verte
 STR_SORT_BY_FACILITY                                            :Stoties tipas
 STR_SORT_BY_WAITING                                             :Laukiančio krovinio vertė
 STR_SORT_BY_RATING_MAX                                          :Kroviniu reitingavimas
-STR_ENGINE_SORT_ENGINE_ID                                       :VariklioID (klasikinis rūšiavimas)
+STR_ENGINE_SORT_ENGINE_ID                                       :VariklioID (numatytasis)
 STR_ENGINE_SORT_COST                                            :Kaina
 STR_ENGINE_SORT_POWER                                           :Galia
 STR_ENGINE_SORT_INTRO_DATE                                      :Atsiradimo data
@@ -1066,7 +1066,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Leisti 
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Rodyti pilna data busenos eiluteje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Sviesoforus rodyti vairuotojo puseje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Rodyti finansine ataskaita metu pabaigoje: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch suderinta nuolatine prieziura?: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch leidžia pravažiuoti nesustojant: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Automobiliu vilkstine (su kvantavimo efektu): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Slinkti vaizdą pelei esant prie krašto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Leisti papirkinėti miesto valdžią: {ORANGE}{STRING}

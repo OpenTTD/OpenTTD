@@ -447,6 +447,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Pojemność
 STR_NO_WAITING_CARGO                                            :{BLACK}Nie ma żadnego czekającego towaru
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Zaznacz wszystkie typy stacji
 STR_SELECT_ALL_TYPES                                            :{BLACK}Zaznacz wszystkie typy towaru (oraz brak czekającego towaru)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Dostępne Lokomotywy
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostępne Samochody
+STR_AVAILABLE_SHIPS                                             :{BLACK}Dostępne Statki
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostępne Samoloty
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zobacz listę dostępnych wyglądów lokomotywy dla tego typu pojazdu
 STR_MANAGE_LIST                                                 :{BLACK}Zarządzaj listą
 STR_MANAGE_LIST_TIP                                             :{BLACK}Wyślij instrukcje wszystkim pojazdom na tej liĹ›cie

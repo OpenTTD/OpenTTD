@@ -394,6 +394,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :装载能力
 STR_NO_WAITING_CARGO                                            :{BLACK}没有任何类型的货物正在等待
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}选择全部设施
 STR_SELECT_ALL_TYPES                                            :{BLACK}选择所有货物类型 (包括不在等待列表中的)
+STR_AVAILABLE_TRAINS                                            :{BLACK}可用的列车
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}可用的汽车
+STR_AVAILABLE_SHIPS                                             :{BLACK}可用的船只
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}可用的飞机
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}察看适用于当前车辆类型的全部引擎列表
 STR_MANAGE_LIST                                                 :{BLACK}管理列表
 STR_MANAGE_LIST_TIP                                             :{BLACK}向所有在此列表中的成员发出命令

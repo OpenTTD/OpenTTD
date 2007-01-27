@@ -394,6 +394,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lasteevne
 STR_NO_WAITING_CARGO                                            :{BLACK}Der er ingen fragt af nogen type, der venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg alle faciliteter
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle lasttyper (inklusiv fragttyper, der ikke venter)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Tilgængelige tog
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Tilgængelige vejkøretøjer
+STR_AVAILABLE_SHIPS                                             :{BLACK}Tilgængelige skibe
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Tilgængelige fly
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Se liste over tilgængelige designs for denne køretøjstype.
 STR_MANAGE_LIST                                                 :{BLACK}Administrer liste
 STR_MANAGE_LIST_TIP                                             :{BLACK}Send instruktioner til alle køretøjer i denne liste
@@ -996,7 +1000,7 @@ STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skib {CO
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Fly {COMMA} har for få ordrer i sin ordreliste
 STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Fly {COMMA} har en ugyldig ordre
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COMMA} har dobbelt ordrer
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig lufthavn i sin flyveplan
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig lufthavn i sin ordreliste
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornyelse af tog mislykkedes {COMMA} (ikke penge nok)
@@ -1636,7 +1640,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give dobbelt udbytte i de næste 12 måneder!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give tredobbelt udbytte i de næste 12 måneder!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give firedobbelt udbytte i de næste 12 måneder!
-STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} de lokale myndigheder tillader ikke, at der bliver bygget en lufthavn mere i byen
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} lokale myndigheder nægter at tillade, at endnu en lufthavn bygges i byen
 STR_2036_COTTAGES                                               :Hytter
 STR_2037_HOUSES                                                 :Huse
 STR_2038_FLATS                                                  :Lejligheder

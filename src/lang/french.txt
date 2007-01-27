@@ -395,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacité
 STR_NO_WAITING_CARGO                                            :{BLACK}Pas de marchandises en attente
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tous les types de station
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tous les types de marchandise (y compris pas en attente)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Trains disponibles
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Véhicules disponibles
+STR_AVAILABLE_SHIPS                                             :{BLACK}Navires disponibles
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aéronefs disponibles
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Voir la liste des modèles disponibles pour ce type de véhicules.
 STR_MANAGE_LIST                                                 :{BLACK}Gérer la liste
 STR_MANAGE_LIST_TIP                                             :{BLACK}Envoyer les instructions à tous les véhicules de cette liste
