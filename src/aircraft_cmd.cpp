@@ -17,6 +17,7 @@
 #include "news.h"
 #include "sound.h"
 #include "player.h"
+#include "aircraft.h"
 #include "airport.h"
 #include "vehicle_gui.h"
 #include "table/sprites.h"
@@ -129,7 +130,7 @@ SpriteID GetRotorImage(const Vehicle *v)
 {
 	const Vehicle *w;
 
-	assert((v->subtype & 1) == 0);
+	assert(v->subtype == AIR_HELICOPTER);
 
 	w = v->next->next;
 	if (is_custom_sprite(v->spritenum)) {
@@ -206,11 +207,10 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, EngineID engine_type)
 int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 value;
-	Vehicle *vl[3], *v, *u, *w;
+	Vehicle *vl[3];
 	UnitID unit_num;
 	const AircraftVehicleInfo *avi;
 	const AirportFTAClass* ap;
-	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_Aircraft, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
@@ -231,7 +231,8 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
-	// allocate 2 or 3 vehicle structs, depending on type
+	/* Allocate 2 or 3 vehicle structs, depending on type
+	 * vl[0] = aircraft, vl[1] = shadow, [vl[2] = rotor] */
 	if (!AllocateVehicles(vl, avi->subtype & AIR_CTOL ? 2 : 3) ||
 			IsOrderPoolFull()) {
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
@@ -246,8 +247,8 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		uint x;
 		uint y;
 
-		v = vl[0];
-		u = vl[1];
+		Vehicle *v = vl[0]; // aircraft
+		Vehicle *u = vl[1]; // shadow
 
 		v->unitnumber = unit_num;
 		v->type = u->type = VEH_Aircraft;
@@ -302,10 +303,10 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->acceleration = avi->acceleration;
 		v->engine_type = p1;
 
-		v->subtype = (avi->subtype & AIR_CTOL ? 2 : 0);
+		v->subtype = (avi->subtype & AIR_CTOL ? AIR_AIRCRAFT : AIR_HELICOPTER);
 		v->value = value;
 
-		u->subtype = 4;
+		u->subtype = AIR_SHADOW;
 
 		/* Danger, Will Robinson!
 		 * If the aircraft is refittable, but cannot be refitted to
@@ -333,7 +334,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			u->cargo_cap = 0;
 		}
 
-		e = GetEngine(p1);
+		const Engine *e = GetEngine(p1);
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->lifelength * 366;
@@ -381,8 +382,8 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		VehiclePositionChanged(u);
 
 		// Aircraft with 3 vehicles (chopper)?
-		if (v->subtype == 0) {
-			w = vl[2];
+		if (v->subtype == AIR_HELICOPTER) {
+			Vehicle *w = vl[2];
 
 			u->next = w;
 
@@ -397,7 +398,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			w->z_height = 1;
 			w->vehstatus = VS_HIDDEN | VS_UNCLICKABLE;
 			w->spritenum = 0xFF;
-			w->subtype = 6;
+			w->subtype = AIR_ROTOR;
 			w->cur_image = SPR_ROTOR_STOPPED;
 			w->random_bits = VehicleRandomBits();
 			/* Use rotor's air.state to store the rotor animation frame */
@@ -700,7 +701,7 @@ void OnNewDay_Aircraft(Vehicle *v)
 {
 	int32 cost;
 
-	if (v->subtype > 2) return;
+	if (!IsNormalAircraft(v)) return;
 
 	if ((++v->day_counter & 7) == 0) DecreaseVehicleValue(v);
 
@@ -728,7 +729,7 @@ void AircraftYearlyLoop(void)
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Aircraft && v->subtype <= 2) {
+		if (v->type == VEH_Aircraft && IsNormalAircraft(v)) {
 			v->profit_last_year = v->profit_this_year;
 			v->profit_this_year = 0;
 			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
@@ -807,7 +808,7 @@ static void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 	v->z_pos = z;
 
 	v->cur_image = GetAircraftImage(v, v->direction);
-	if (v->subtype == 0) v->next->next->cur_image = GetRotorImage(v);
+	if (v->subtype == AIR_HELICOPTER) v->next->next->cur_image = GetRotorImage(v);
 
 	BeginVehicleMove(v);
 	VehiclePositionChanged(v);
@@ -1250,9 +1251,7 @@ static void ProcessAircraftOrder(Vehicle *v)
 static void MarkAircraftDirty(Vehicle *v)
 {
 		v->cur_image = GetAircraftImage(v, v->direction);
-		if (v->subtype == 0) {
-			v->next->next->cur_image = GetRotorImage(v);
-		}
+		if (v->subtype == AIR_HELICOPTER) v->next->next->cur_image = GetRotorImage(v);
 		MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
 }
 
@@ -1488,14 +1487,14 @@ static void AircraftEventHandler_InHangar(Vehicle *v, const AirportFTAClass *apc
 	if (v->current_order.dest == v->u.air.targetairport) {
 		// FindFreeTerminal:
 		// 1. Find a free terminal, 2. Occupy it, 3. Set the vehicle's state to that terminal
-		if (v->subtype != 0) {
-			if (!AirportFindFreeTerminal(v, apc)) return; // airplane
-		} else {
+		if (v->subtype == AIR_HELICOPTER) {
 			if (!AirportFindFreeHelipad(v, apc)) return; // helicopter
+		} else {
+			if (!AirportFindFreeTerminal(v, apc)) return; // airplane
 		}
 	} else { // Else prepare for launch.
 		// airplane goto state takeoff, helicopter to helitakeoff
-		v->u.air.state = (v->subtype != 0) ? TAKEOFF : HELITAKEOFF;
+		v->u.air.state = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : TAKEOFF;
 	}
 	AircraftLeaveHangar(v);
 	AirportMove(v, apc);
@@ -1510,7 +1509,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 		// on an airport with helipads, a helicopter will always land there
 		// and get serviced at the same time - patch setting
 		if (_patches.serviceathelipad) {
-			if (v->subtype == 0 && apc->helipads != NULL) {
+			if (v->subtype == AIR_HELICOPTER && apc->helipads != NULL) {
 				// an exerpt of ServiceAircraft, without the invisibility stuff
 				v->date_of_last_service = _date;
 				v->breakdowns_since_last_service = 0;
@@ -1532,13 +1531,13 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 	switch (v->current_order.type) {
 		case OT_GOTO_STATION: // ready to fly to another airport
 			// airplane goto state takeoff, helicopter to helitakeoff
-			v->u.air.state = (v->subtype != 0) ? TAKEOFF : HELITAKEOFF;
+			v->u.air.state = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : TAKEOFF;
 			break;
 		case OT_GOTO_DEPOT:   // visit hangar for serivicing, sale, etc.
 			if (v->current_order.dest == v->u.air.targetairport) {
 				v->u.air.state = HANGAR;
 			} else {
-				v->u.air.state = (v->subtype != 0) ? TAKEOFF : HELITAKEOFF;
+				v->u.air.state = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : TAKEOFF;
 			}
 			break;
 		default:  // orders have been deleted (no orders), goto depot and don't bother us
@@ -1612,7 +1611,7 @@ static void AircraftEventHandler_Flying(Vehicle *v, const AirportFTAClass *apc)
 		// {32,FLYING,NOTHING_block,37}, {32,LANDING,N,33}, {32,HELILANDING,N,41},
 		// if it is an airplane, look for LANDING, for helicopter HELILANDING
 		// it is possible to choose from multiple landing runways, so loop until a free one is found
-		landingtype = (v->subtype != 0) ? LANDING : HELILANDING;
+		landingtype = (v->subtype == AIR_HELICOPTER) ? HELILANDING : LANDING;
 		current = apc->layout[v->u.air.pos].next;
 		while (current != NULL) {
 			if (current->heading == landingtype) {
@@ -2024,9 +2023,9 @@ void Aircraft_Tick(Vehicle *v)
 {
 	int i;
 
-	if (v->subtype > 2) return;
+	if (!IsNormalAircraft(v)) return;
 
-	if (v->subtype == 0) HelicopterTickHandler(v);
+	if (v->subtype == AIR_HELICOPTER) HelicopterTickHandler(v);
 
 	AgeAircraftCargo(v);
 
@@ -2063,7 +2062,7 @@ void UpdateOldAircraft(void)
 	FOR_ALL_VEHICLES(v_oldstyle) {
 	// airplane has another vehicle with subtype 4 (shadow), helicopter also has 3 (rotor)
 	// skip those
-		if (v_oldstyle->type == VEH_Aircraft && v_oldstyle->subtype <= 2) {
+		if (v_oldstyle->type == VEH_Aircraft && IsNormalAircraft(v_oldstyle)) {
 			// airplane in terminal stopped doesn't hurt anyone, so goto next
 			if (v_oldstyle->vehstatus & VS_STOPPED && v_oldstyle->u.air.state == 0) {
 				v_oldstyle->u.air.state = HANGAR;
@@ -2078,7 +2077,7 @@ void UpdateOldAircraft(void)
 			v_oldstyle->tile = 0; // aircraft in air is tile=0
 
 			// correct speed of helicopter-rotors
-			if (v_oldstyle->subtype == 0) v_oldstyle->next->next->cur_speed = 32;
+			if (v_oldstyle->subtype == AIR_HELICOPTER) v_oldstyle->next->next->cur_speed = 32;
 
 			// set new position x,y,z
 			SetAircraftPosition(v_oldstyle, gp.x, gp.y, GetAircraftFlyingAltitude(v_oldstyle));
@@ -2095,7 +2094,7 @@ void UpdateAirplanesOnNewStation(Station *st)
 	// only 1 station is updated per function call, so it is enough to get entry_point once
 	const AirportFTAClass *ap = GetAirport(st->airport_type);
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Aircraft && v->subtype <= 2) {
+		if (v->type == VEH_Aircraft && IsNormalAircraft(v)) {
 			if (v->u.air.targetairport == st->index) { // if heading to this airport
 				/* update position of airplane. If plane is not flying, landing, or taking off
 				 *you cannot delete airport, so it doesn't matter
@@ -2110,7 +2109,7 @@ void UpdateAirplanesOnNewStation(Station *st)
 					SetAircraftPosition(v, gp.x, gp.y, GetAircraftFlyingAltitude(v));
 				} else {
 					assert(v->u.air.state == ENDTAKEOFF || v->u.air.state == HELITAKEOFF);
-					takeofftype = (v->subtype == 0) ? HELITAKEOFF : ENDTAKEOFF;
+					takeofftype = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : ENDTAKEOFF;
 					// search in airportdata for that heading
 					// easiest to do, since this doesn't happen a lot
 					for (cnt = 0; cnt < ap->nofelements; cnt++) {

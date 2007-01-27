@@ -24,7 +24,7 @@ void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
 	SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 	DrawSprite(GetAircraftImage(v, DIR_W), pal, x + 25, y + 10);
-	if (v->subtype == 0) {
+	if (v->subtype == AIR_HELICOPTER) {
 		SpriteID rotor_sprite = GetCustomRotorSprite(v, true);
 		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
 		DrawSprite(rotor_sprite, PAL_NONE, x + 25, y + 5);
@@ -114,7 +114,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 			int y = 57;
 
 			do {
-				if (v->subtype <= 2) {
+				if (IsNormalAircraft(v)) {
 					SetDParam(0, GetCustomEngineName(v->engine_type));
 					SetDParam(1, v->build_year);
 					SetDParam(2, v->value);

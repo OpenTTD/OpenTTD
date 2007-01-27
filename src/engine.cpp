@@ -14,6 +14,7 @@
 #include "saveload.h"
 #include "variables.h"
 #include "train.h"
+#include "aircraft.h"
 #include "newgrf_cargo.h"
 #include "date.h"
 #include "table/engines.h"
@@ -306,7 +307,7 @@ static void NewVehicleAvailable(Engine *e)
 
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == VEH_Train || v->type == VEH_Road || v->type == VEH_Ship ||
-						(v->type == VEH_Aircraft && v->subtype <= 2)) {
+						(v->type == VEH_Aircraft && IsNormalAircraft(v))) {
 					if (v->owner == p->index && v->engine_type == index) {
 						/* The user did prove me wrong, so restore old value */
 						p->block_preview = block_preview;

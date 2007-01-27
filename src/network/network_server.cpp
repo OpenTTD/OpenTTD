@@ -10,6 +10,7 @@
 #include "network_data.h"
 #include "core/tcp.h"
 #include "../train.h"
+#include "../aircraft.h"
 #include "../date.h"
 #include "table/strings.h"
 #include "../functions.h"
@@ -1255,7 +1256,7 @@ void NetworkPopulateCompanyInfo(void)
 				break;
 
 			case VEH_Aircraft:
-				if (v->subtype <= 2) _network_player_info[v->owner].num_vehicle[3]++;
+				if (IsNormalAircraft(v)) _network_player_info[v->owner].num_vehicle[3]++;
 				break;
 
 			case VEH_Ship:

@@ -16,6 +16,7 @@
 #include "network/network.h"
 #include "variables.h"
 #include "train.h"
+#include "aircraft.h"
 #include "date.h"
 #include "newgrf.h"
 #include "network/network_data.h"
@@ -607,7 +608,7 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 			switch (v->type) {
 				case VEH_Train:    if (IsFrontEngine(v)) train++; break;
 				case VEH_Road:     road++; break;
-				case VEH_Aircraft: if (v->subtype <= 2) air++; break;
+				case VEH_Aircraft: if (IsNormalAircraft(v)) air++; break;
 				case VEH_Ship:     ship++; break;
 				default: break;
 			}

@@ -95,7 +95,7 @@ static void AiStateVehLoop(Player *p)
 
 		if ((v->type == VEH_Train && v->subtype == 0) ||
 				v->type == VEH_Road ||
-				(v->type == VEH_Aircraft && v->subtype <= 2) ||
+				(v->type == VEH_Aircraft && IsNormalAircraft(v)) ||
 				v->type == VEH_Ship) {
 			/* replace engine? */
 			if (v->type == VEH_Train && v->engine_type < 3 &&

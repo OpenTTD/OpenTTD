@@ -144,7 +144,7 @@ typedef struct VehicleShip {
 
 struct Vehicle {
 	byte type;               // type, ie roadven,train,ship,aircraft,special
-	byte subtype;            // subtype (Filled with values from EffectVehicles or TrainSubTypes)
+	byte subtype;            // subtype (Filled with values from EffectVehicles/TrainSubTypes/AircraftSubTypes)
 
 	VehicleID index;         // NOSAVE: Index in vehicle array
 

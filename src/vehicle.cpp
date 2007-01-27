@@ -232,7 +232,7 @@ void AfterLoadVehicles(void)
 			case VEH_Road: v->cur_image = GetRoadVehImage(v, v->direction); break;
 			case VEH_Ship: v->cur_image = GetShipImage(v, v->direction); break;
 			case VEH_Aircraft:
-				if (v->subtype == 0 || v->subtype == 2) {
+				if (IsNormalAircraft(v)) {
 					v->cur_image = GetAircraftImage(v, v->direction);
 					if (v->next != NULL) v->next->cur_image = v->cur_image;
 				}
@@ -537,7 +537,7 @@ uint CountVehiclesInChain(const Vehicle* v)
 bool IsEngineCountable(const Vehicle *v)
 {
 	switch (v->type) {
-		case VEH_Aircraft: return (v->subtype <= 2); // don't count plane shadows and helicopter rotors
+		case VEH_Aircraft: return IsNormalAircraft(v); // don't count plane shadows and helicopter rotors
 		case VEH_Train:
 			return !IsArticulatedPart(v) && // tenders and other articulated parts
 			(!IsMultiheaded(v) || IsTrainEngine(v)); // rear parts of multiheaded engines
@@ -651,7 +651,7 @@ void CallVehicleTicks(void)
 			case VEH_Aircraft:
 			case VEH_Ship:
 				if (v->type == VEH_Train && IsTrainWagon(v)) continue;
-				if (v->type == VEH_Aircraft && v->subtype > 0) continue;
+				if (v->type == VEH_Aircraft && v->subtype != AIR_HELICOPTER) continue;
 
 				v->motion_counter += (v->direction & 1) ? (v->cur_speed * 3) / 4 : v->cur_speed;
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
@@ -2334,8 +2334,7 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 		case VEH_Aircraft:
 			FOR_ALL_VEHICLES(v) {
 				if (v->tile == tile &&
-						v->type == VEH_Aircraft &&
-						v->subtype <= 2 &&
+						v->type == VEH_Aircraft && IsNormalAircraft(v) &&
 						v->vehstatus & VS_HIDDEN) {
 					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 					(*engine_list)[(*engine_count)++] = v;
@@ -2362,7 +2361,7 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 */
 uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, byte type, PlayerID owner, uint32 index, uint16 window_type)
 {
-	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
+	const byte subtype = (type != VEH_Aircraft) ? (byte)Train_Front : (byte)AIR_AIRCRAFT;
 	uint n = 0;
 	const Vehicle *v;
 

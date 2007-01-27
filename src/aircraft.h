@@ -6,6 +6,28 @@
 #include "station_map.h"
 #include "vehicle.h"
 
+typedef enum AircraftSubTypes {
+	AIR_HELICOPTER = 0,
+	AIR_AIRCRAFT   = 2,
+	AIR_SHADOW     = 4,
+	AIR_ROTOR      = 6
+} AircraftSubType;
+
+
+/** Check if the aircraft type is a normal flying device; eg
+ * not a rotor or a shadow
+ * @param v vehicle to check
+ * @return Returns true if the aircraft is a helicopter/airplane and
+ * false if it is a shadow or a rotor) */
+static inline bool IsNormalAircraft(const Vehicle *v)
+{
+	assert(v->type == VEH_Aircraft);
+	/* To be fully correct the commented out functionality is the proper one,
+	 * but since value can only be 0 or 2, it is sufficient to only check <= 2
+	 * return (v->subtype == AIR_HELICOPTER) || (v->subtype == AIR_AIRCRAFT); */
+	return v->subtype <= AIR_AIRCRAFT;
+}
+
 
 static inline bool IsAircraftInHangar(const Vehicle* v)
 {

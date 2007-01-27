@@ -45,7 +45,7 @@ typedef struct ShipVehicleInfo {
 	bool refittable;
 } ShipVehicleInfo;
 
-// Aircraft subtypes
+/* AircraftVehicleInfo subtypes */
 enum {
 	AIR_CTOL = 1, // Conventional Take Off and Landing, i.e. planes
 	AIR_FAST = 2

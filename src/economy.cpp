@@ -27,6 +27,7 @@
 #include "vehicle_gui.h"
 #include "ai/ai.h"
 #include "train.h"
+#include "aircraft.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "newgrf_callbacks.h"
@@ -76,7 +77,7 @@ int64 CalculateCompanyValue(const Player* p)
 
 			if (v->type == VEH_Train ||
 					v->type == VEH_Road ||
-					(v->type == VEH_Aircraft && v->subtype<=2) ||
+					(v->type == VEH_Aircraft && IsNormalAircraft(v)) ||
 					v->type == VEH_Ship) {
 				value += v->value * 3 >> 1;
 			}
@@ -108,7 +109,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 			if (v->owner != owner) continue;
 			if ((v->type == VEH_Train && IsFrontEngine(v)) ||
 					 v->type == VEH_Road ||
-					(v->type == VEH_Aircraft && v->subtype <= 2) ||
+					(v->type == VEH_Aircraft && IsNormalAircraft(v)) ||
 					 v->type == VEH_Ship) {
 				num++;
 				if (v->age > 730) {
@@ -299,7 +300,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					case VEH_Train:    if (IsFrontEngine(v)) num_train++; break;
 					case VEH_Road:     num_road++; break;
 					case VEH_Ship:     num_ship++; break;
-					case VEH_Aircraft: if (v->subtype <= 2) num_aircraft++; break;
+					case VEH_Aircraft: if (IsNormalAircraft(v)) num_aircraft++; break;
 					default: break;
 				}
 			}
@@ -319,7 +320,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 						case VEH_Train:    if (IsFrontEngine(v)) v->unitnumber = ++num_train; break;
 						case VEH_Road:     v->unitnumber = ++num_road; break;
 						case VEH_Ship:     v->unitnumber = ++num_ship; break;
-						case VEH_Aircraft: if (v->subtype <= 2) v->unitnumber = ++num_aircraft; break;
+						case VEH_Aircraft: if (IsNormalAircraft(v)) v->unitnumber = ++num_aircraft; break;
 					}
 				}
 			}
