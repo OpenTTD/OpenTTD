@@ -174,7 +174,6 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
 int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int bridge_type;
-	TransportType transport;
 	RailType railtype;
 	uint x;
 	uint y;
@@ -202,12 +201,10 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 	// type of bridge
 	if (HASBIT(p2, 15)) {
-		railtype = RAILTYPE_BEGIN; // ??
-		transport = TRANSPORT_ROAD;
+		railtype = INVALID_RAILTYPE; // road bridge
 	} else {
 		if (!ValParamRailtype(GB(p2, 8, 8))) return CMD_ERROR;
 		railtype = (RailType)GB(p2, 8, 8);
-		transport = TRANSPORT_RAIL;
 	}
 
 	x = TileX(end_tile);
@@ -305,7 +302,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		DiagDirection dir = AxisToDiagDir(direction);
 
-		if (transport == TRANSPORT_RAIL) {
+		if (railtype != INVALID_RAILTYPE) {
 			MakeRailBridgeRamp(tile_start, _current_player, bridge_type, dir, railtype);
 			MakeRailBridgeRamp(tile_end,   _current_player, bridge_type, ReverseDiagDir(dir), railtype);
 		} else {
