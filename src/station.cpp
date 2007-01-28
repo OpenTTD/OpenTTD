@@ -365,8 +365,7 @@ RoadStop::RoadStop(TileIndex tile) :
 	xy(tile),
 	status(3), // stop is free
 	num_vehicles(0),
-	next(NULL),
-	prev(NULL)
+	next(NULL)
 {
 	DEBUG(ms, cDebugCtorLevel,  "I+ at %d[0x%x]", tile, tile);
 }
@@ -385,9 +384,6 @@ RoadStop::~RoadStop()
 		}
 	}
 	assert(num_vehicles == 0);
-
-	if (prev != NULL) prev->next = next;
-	if (next != NULL) next->prev = prev;
 
 	DEBUG(ms, cDebugCtorLevel , "I- at %d[0x%x]", xy, xy);
 

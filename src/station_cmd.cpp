@@ -1287,7 +1287,7 @@ int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 
 /** Heavy wizardry used to add a roadstop to a station.
  * To understand the function, lets first look at what is passed around,
- * especially the last two parameters. CmdBuildRoadStop allocates a road
+ * especially the last parameter. CmdBuildRoadStop allocates a road
  * stop and needs to put that stop into the linked list of road stops.
  * It (CmdBuildRoadStop) has a **currstop pointer which points to element
  * in the linked list of stops (each element in this list being a pointer
@@ -1295,28 +1295,23 @@ int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
  * modify this pointer (**currstop) thus we need to pass by reference,
  * obtaining a triple pointer (***currstop). When finished, **currstop
  * in CmdBuildRoadStop will contain the address of the pointer which will
- * then point into the global roadstop array. *prev (in CmdBuildRoadStop)
- * is the pointer tino the global roadstop array which has *currstop in
- * its ->next element.
+ * then point into the global roadstop array.
  * @param[in] truck_station Determines whether a stop is RoadStop::BUS or RoadStop::TRUCK
  * @param[in] station The station to do the whole procedure for
  * @param[out] currstop See the detailed function description
  * @param prev See the detailed function description
  */
-static void FindRoadStopSpot(bool truck_station, Station* st, RoadStop*** currstop, RoadStop** prev)
+static void FindRoadStopSpot(bool truck_station, Station* st, RoadStop*** currstop)
 {
 	RoadStop **primary_stop = (truck_station) ? &st->truck_stops : &st->bus_stops;
-	assert(*prev == NULL);
 
 	if (*primary_stop == NULL) {
 		//we have no roadstop of the type yet, so write a "primary stop"
 		*currstop = primary_stop;
 	} else {
 		//there are stops already, so append to the end of the list
-		*prev = *primary_stop;
 		*currstop = &(*primary_stop)->next;
 		while (**currstop != NULL) {
-			*prev = (*prev)->next;
 			*currstop = &(**currstop)->next;
 		}
 	}
@@ -1332,7 +1327,6 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Station *st;
 	RoadStop *road_stop;
 	RoadStop **currstop;
-	RoadStop *prev = NULL;
 	int32 cost;
 	int32 ret;
 	bool type = !!p2;
@@ -1383,7 +1377,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (!st->rect.BeforeAddTile(tile, StationRect::ADD_TEST)) return CMD_ERROR;
 
-		FindRoadStopSpot(type, st, &currstop, &prev);
+		FindRoadStopSpot(type, st, &currstop);
 	} else {
 		/* allocate and initialize new station */
 		st = new Station(tile);
@@ -1396,7 +1390,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Town *t = st->town = ClosestTownFromTile(tile, (uint)-1);
 		if (!GenerateStationName(st, tile, 0)) return CMD_ERROR;
 
-		FindRoadStopSpot(type, st, &currstop, &prev);
+		FindRoadStopSpot(type, st, &currstop);
 
 		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
 			SETBIT(t->have_ratings, _current_player);
@@ -1412,7 +1406,6 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		*currstop = road_stop;
 
 		//initialize an empty station
-		road_stop->prev = prev;
 		st->AddFacility((type) ? FACIL_TRUCK_STOP : FACIL_BUS_STOP, tile);
 
 		st->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
@@ -1454,15 +1447,18 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		//we only had one stop left
-		if (cur_stop->next == NULL && cur_stop->prev == NULL) {
-			//so we remove ALL stops
-			*primary_stop = NULL;
-			st->facilities &= (is_truck) ? ~FACIL_TRUCK_STOP : ~FACIL_BUS_STOP;
-		} else if (cur_stop == *primary_stop) {
-			//removed the first stop in the list
-			//need to set the primary element to the next stop
-			*primary_stop = (*primary_stop)->next;
+		if (*primary_stop == cur_stop) {
+			// removed the first stop in the list
+			*primary_stop = cur_stop->next;
+			// removed the only stop?
+			if (*primary_stop == NULL) {
+				st->facilities &= (is_truck ? ~FACIL_TRUCK_STOP : ~FACIL_BUS_STOP);
+			}
+		} else {
+			// tell the predecessor in the list to skip this stop
+			RoadStop *pred = *primary_stop;
+			while (pred->next != cur_stop) pred = pred->next;
+			pred->next = cur_stop->next;
 		}
 
 		delete cur_stop;
@@ -2845,7 +2841,7 @@ static const SaveLoad _roadstop_desc[] = {
 	SLE_CONDNULL(1, 0, 25),
 
 	SLE_REF(RoadStop,next,         REF_ROADSTOPS),
-	SLE_REF(RoadStop,prev,         REF_ROADSTOPS),
+	SLE_CONDNULL(2, 0, 44),
 
 	SLE_CONDNULL(4, 0, 24),
 	SLE_CONDNULL(1, 25, 25),

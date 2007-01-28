@@ -51,7 +51,6 @@ struct RoadStop {
 	byte             status;                ///< Current status of the Stop. Like which spot is taken. TODO - enumify this
 	byte             num_vehicles;          ///< Number of vehicles currently slotted to this stop
 	struct RoadStop  *next;                 ///< Next stop of the given type at this station
-	struct RoadStop  *prev;                 ///< Previous stop of the given type at this station
 
 	RoadStop(TileIndex tile);
 	~RoadStop();
