@@ -55,18 +55,20 @@ enum {
 	PACKET_END                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
+/** Packet that wraps a command */
 typedef struct CommandPacket {
-	struct CommandPacket *next;
+	struct CommandPacket *next; ///< the next command packet (if in queue)
 	PlayerByte player; ///< player that is executing the command
 	uint32 cmd;        ///< command being executed
 	uint32 p1;         ///< parameter p1
 	uint32 p2;         ///< parameter p2
 	TileIndex tile;    ///< tile command being executed on
-	char text[80];
+	char text[80];     ///< possible text sent for name changes etc
 	uint32 frame;      ///< the frame in which this packet is executed
 	byte callback;     ///< any callback function executed upon successful completion of the command
 } CommandPacket;
 
+/** Status of a client */
 typedef enum {
 	STATUS_INACTIVE,   ///< The client is not connected nor active
 	STATUS_AUTH,       ///< The client is authorized
@@ -81,18 +83,18 @@ typedef enum {
 class NetworkTCPSocketHandler : public NetworkSocketHandler {
 /* TODO: rewrite into a proper class */
 public:
-	uint16 index;
-	uint32 last_frame;
-	uint32 last_frame_server;
-	byte lag_test; // This byte is used for lag-testing the client
+	uint16 index;             ///< Client index
+	uint32 last_frame;        ///< Last frame we have executed
+	uint32 last_frame_server; ///< Last frame the server has executed
+	byte lag_test;            ///< Byte used for lag-testing the client
 
-	ClientStatus status;
-	bool writable; // is client ready to write to?
+	ClientStatus status;      ///< Status of this client
+	bool writable;            ///< Can we write to this socket?
 
-	Packet *packet_queue; // Packets that are awaiting delivery
-	Packet *packet_recv; // Partially received packet
+	Packet *packet_queue;     ///< Packets that are awaiting delivery
+	Packet *packet_recv;      ///< Partially received packet
 
-	CommandPacket *command_queue; // The command-queue awaiting delivery
+	CommandPacket *command_queue; ///< The command-queue awaiting delivery
 
 	NetworkRecvStatus CloseConnection();
 	void Initialize();

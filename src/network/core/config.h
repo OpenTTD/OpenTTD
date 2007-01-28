@@ -5,6 +5,10 @@
 
 #ifdef ENABLE_NETWORK
 
+/**
+ * @file config.h Configuration options of the network stuff
+ */
+
 /** DNS hostname of the masterserver */
 #define NETWORK_MASTER_SERVER_HOST "master.openttd.org"
 /** Message sent to the masterserver to 'identify' this client as OpenTTD */

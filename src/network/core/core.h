@@ -7,9 +7,14 @@
 
 #include "os_abstraction.h"
 
+/**
+ * @file core.h Base for all network types (UDP and TCP)
+ */
+
 bool NetworkCoreInitialize(void);
 void NetworkCoreShutdown(void);
 
+/** Status of a network client; reasons why a client has quit */
 typedef enum {
 	NETWORK_RECV_STATUS_OKAY,             ///< Everything is okay
 	NETWORK_RECV_STATUS_DESYNC,           ///< A desync did occur
@@ -32,7 +37,10 @@ public:
 	bool has_quit; ///< Whether the current client has quit/send a bad packet
 	SOCKET sock;   ///< The socket currently connected to
 public:
+	/** Create a new unbound socket */
 	NetworkSocketHandler() { this->sock = INVALID_SOCKET; this->has_quit = false; }
+
+	/** Close the socket when distructing the socket handler */
 	virtual ~NetworkSocketHandler() { this->Close(); }
 
 	/** Really close the socket */

@@ -6,6 +6,10 @@
 #include "../../debug.h"
 #include "os_abstraction.h"
 
+/**
+ * @file core.cpp Functions used to initialize/shut down the core network
+ */
+
 #ifdef __MORPHOS__
 /* the library base is required here */
 struct Library *SocketBase = NULL;
@@ -13,6 +17,7 @@ struct Library *SocketBase = NULL;
 
 /**
  * Initializes the network core (as that is needed for some platforms
+ * @return true if the core has been initialized, false otherwise
  */
 bool NetworkCoreInitialize(void)
 {

@@ -10,12 +10,11 @@
 #include "udp.h"
 
 /**
- * @file udp.c Basic functions to receive and send UDP packets.
+ * @file core/udp.cpp Basic functions to receive and send UDP packets.
  */
 
 /**
  * Start listening on the given host and port.
- * @param udp       the place where the (references to the) UDP are stored
  * @param host      the host (ip) to listen on
  * @param port      the port to listen on
  * @param broadcast whether to allow broadcast sending/receiving
@@ -69,7 +68,6 @@ bool NetworkUDPSocketHandler::Listen(const uint32 host, const uint16 port, const
 
 /**
  * Close the given UDP socket
- * @param udp the socket to close
  */
 void NetworkUDPSocketHandler::Close()
 {
@@ -87,7 +85,6 @@ NetworkRecvStatus NetworkUDPSocketHandler::CloseConnection()
 
 /**
  * Send a packet over UDP
- * @param udp  the socket to send over
  * @param p    the packet to send
  * @param recv the receiver (target) of the packet
  */
@@ -106,7 +103,6 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, const struct sockaddr_in *re
 
 /**
  * Receive a packet at UDP level
- * @param udp the socket to receive the packet on
  */
 void NetworkUDPSocketHandler::ReceivePackets()
 {
@@ -305,7 +301,10 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 	}
 }
 
-/* Defines a simple (switch) case for each network packet */
+/**
+ * Defines a simple (switch) case for each network packet
+ * @param type the packet type to create the case for
+ */
 #define UDP_COMMAND(type) case type: this->NetworkPacketReceive_ ## type ## _command(p, client_addr); break;
 
 /**
@@ -345,12 +344,12 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, const struct sockaddr_i
 	}
 }
 
-/*
+/**
  * Create stub implementations for all receive commands that only
  * show a warning that the given command is not available for the
  * socket where the packet came from.
+ * @param type the packet type to create the stub for
  */
-
 #define DEFINE_UNAVAILABLE_UDP_RECEIVE_COMMAND(type) \
 void NetworkUDPSocketHandler::NetworkPacketReceive_## type ##_command(\
 		Packet *p, const struct sockaddr_in *client_addr) { \

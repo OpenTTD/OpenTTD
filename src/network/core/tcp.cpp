@@ -15,7 +15,7 @@
 #include "../../helpers.hpp"
 
 /**
- * @file tcp.c Basic functions to receive and send TCP packets.
+ * @file tcp.cpp Basic functions to receive and send TCP packets.
  */
 
 /** Very ugly temporary hack !!! */
@@ -43,7 +43,6 @@ void NetworkTCPSocketHandler::Initialize()
  *  A socket can make errors. When that happens this handles what to do.
  * For clients: close connection and drop back to main-menu
  * For servers: close connection and that is it
- * @param cs the client to close the connection of
  * @return the new status
  * TODO: needs to be splitted when using client and server socket packets
  */

@@ -10,7 +10,7 @@
 #include "packet.h"
 
 /**
- * @file packet.h Basic functions to create, fill and read packets.
+ * @file packet.cpp Basic functions to create, fill and read packets.
  */
 
 
@@ -94,6 +94,8 @@ void NetworkSend_uint64(Packet *packet, uint64 data)
 /**
  *  Sends a string over the network. It sends out
  *  the string + '\0'. No size-byte or something.
+ * @param packet packet to send the string in
+ * @param data   the string to send
  */
 void NetworkSend_string(Packet *packet, const char* data)
 {
