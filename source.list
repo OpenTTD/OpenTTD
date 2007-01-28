@@ -95,6 +95,7 @@ widget.cpp
 window.cpp
 
 # Header Files
+aircraft.h
 airport.h
 airport_movement.h
 aystar.h
