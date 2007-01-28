@@ -1414,7 +1414,7 @@ STR_NETWORK_DISCONNECT                                          :{BLACK}Afbryd f
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv det beløb, som du ønsker at give
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveren er beskyttet. Skriv kodeordet
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Selskabet er beskyttet. Indtast kodeord
-STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient Liste
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient liste
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ingen netværksheder fundet eller kompilet uden ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kunne ikke finde nogen netværksspil

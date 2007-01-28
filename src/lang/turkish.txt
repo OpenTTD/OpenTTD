@@ -394,6 +394,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapasite
 STR_NO_WAITING_CARGO                                            :{BLACK}Hiç kargo yok
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm türleri seç
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Kullanılabilir Trenler
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Kullanılabilir Arabalar
+STR_AVAILABLE_SHIPS                                             :{BLACK}Kullanılabilir Gemiler
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Kullanılabilir Uçaklar
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Bu araç türü için mümkün olan lokomotif tasarimlari
 STR_MANAGE_LIST                                                 :{BLACK}Listeyi yönet
 STR_MANAGE_LIST_TIP                                             :{BLACK}Listedeki tüm araçlara talimat ver

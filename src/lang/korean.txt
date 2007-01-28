@@ -8,15 +8,15 @@
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}맵 가장자리에서 너무 멉니다!
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}맵 가장자리와 너무 가깝습니다!
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}재정이 {CURRENCY} 부족합니다
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}재정이 부족합니다 - {CURRENCY} 이(가) 필요합니다
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}평지가 필요합니다!
 STR_0008_WAITING                                                :{BLACK}대기: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (수송오류:
-STR_000B                                                        :{YELLOW}{STATION}(으)로부터 옴)
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (이것은
+STR_000B                                                        :{YELLOW}{STATION}에서 옴)
 STR_000C_ACCEPTS                                                :{BLACK}받음: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}받음: {GOLD}
 STR_000E                                                        :

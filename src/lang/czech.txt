@@ -2,8 +2,8 @@
 ##ownname Česky
 ##isocode cs_CS
 ##plural 6
-##case nom gen acc dat voc loc ins big news subs
 ##gender m m_a m_i f n
+##case nom gen acc dat voc loc ins big news subs
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -508,6 +508,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Přepravní kap
 STR_NO_WAITING_CARGO                                            :{BLACK}Nečeká žádná komodita jakéhokoli druhu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Označit všechny druhy stanic
 STR_SELECT_ALL_TYPES                                            :{BLACK}Označit všechny druhy komodit (včetne žádného čekajícího nákladu)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Dostupné vlaky
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostupná vozidla
+STR_AVAILABLE_SHIPS                                             :{BLACK}Dostupné lodě
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostupná letadla
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Ukázat seznam dostupných variant pro tento typ vozidla.
 STR_MANAGE_LIST                                                 :{BLACK}Upravit seznam
 STR_MANAGE_LIST_TIP                                             :{BLACK}Poslat příkazy všem vozidlům v tomto seznamu
