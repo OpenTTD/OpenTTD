@@ -278,8 +278,15 @@ static const WindowDesc _terraform_desc = {
 	TerraformToolbWndProc
 };
 
-void ShowTerraformToolbar(void)
+void ShowTerraformToolbar(Window *link)
 {
 	if (!IsValidPlayer(_current_player)) return;
-	AllocateWindowDescFront(&_terraform_desc, 0);
+	Window *w = AllocateWindowDescFront(&_terraform_desc, 0);
+	if (w != NULL && link != NULL) {
+		/* Align the terraform toolbar under the main toolbar and put the linked
+		 * toolbar to left of it
+		 */
+		w->top = 22;
+		link->left = w->left - link->width;
+	}
 }

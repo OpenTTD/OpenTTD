@@ -624,7 +624,7 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 		_build_railroad_button_proc[button](w);
 		UpdateRemoveWidgetStatus(w, button + 4);
 	}
-	if (_patches.link_terraform_toolbar) ShowTerraformToolbar();
+	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 
 /* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!

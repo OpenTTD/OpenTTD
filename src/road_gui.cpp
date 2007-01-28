@@ -329,8 +329,8 @@ void ShowBuildRoadToolbar(void)
 	if (!IsValidPlayer(_current_player)) return;
 
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
-	AllocateWindowDesc(&_build_road_desc);
-	if (_patches.link_terraform_toolbar) ShowTerraformToolbar();
+	Window *w = AllocateWindowDesc(&_build_road_desc);
+	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 
 static const Widget _build_road_scen_widgets[] = {

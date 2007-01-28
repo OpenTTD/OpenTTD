@@ -135,8 +135,8 @@ void ShowBuildAirToolbar(void)
 	if (!IsValidPlayer(_current_player)) return;
 
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
-	AllocateWindowDescFront(&_air_toolbar_desc, 0);
-	if (_patches.link_terraform_toolbar) ShowTerraformToolbar();
+	Window *w = AllocateWindowDescFront(&_air_toolbar_desc, 0);
+	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 
 static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)

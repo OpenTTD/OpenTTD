@@ -57,7 +57,7 @@ void ShowShipViewWindow(const Vehicle *v);
 void ShowBuildAirToolbar(void);
 
 /* terraform_gui.c */
-void ShowTerraformToolbar(void);
+void ShowTerraformToolbar(Window *link = NULL);
 
 /* tgp_gui.c */
 void ShowGenerateLandscape(void);
