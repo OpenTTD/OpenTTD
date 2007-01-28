@@ -234,7 +234,16 @@ void AfterLoadVehicles(void)
 			case VEH_Aircraft:
 				if (IsNormalAircraft(v)) {
 					v->cur_image = GetAircraftImage(v, v->direction);
-					if (v->next != NULL) v->next->cur_image = v->cur_image;
+
+					/* The plane's shadow will have the same image as the plane */
+					Vehicle *shadow = v->next;
+					shadow->cur_image = v->cur_image;
+
+					/* In the case of a helicopter we will update the rotor sprites */
+					if (v->subtype == AIR_HELICOPTER) {
+						Vehicle *rotor = shadow->next;
+						rotor->cur_image = GetRotorImage(v);
+					}
 				}
 				break;
 			default: break;

@@ -296,6 +296,7 @@ int GetTrainImage(const Vehicle* v, Direction direction);
 int GetAircraftImage(const Vehicle* v, Direction direction);
 int GetRoadVehImage(const Vehicle* v, Direction direction);
 int GetShipImage(const Vehicle* v, Direction direction);
+SpriteID GetRotorImage(const Vehicle *v);
 
 Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type);
 Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicle type);
