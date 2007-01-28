@@ -90,6 +90,7 @@ enum PacketUDPType {
 };
 
 #define DECLARE_UDP_RECEIVE_COMMAND(type) virtual void NetworkPacketReceive_## type ##_command(Packet *p, const struct sockaddr_in *)
+#define DEF_UDP_RECEIVE_COMMAND(cls, type) void cls ##NetworkUDPSocketHandler::NetworkPacketReceive_ ## type ## _command(Packet *p, const struct sockaddr_in *client_addr)
 
 /** Base socket handler for all UDP sockets */
 class NetworkUDPSocketHandler : public NetworkSocketHandler {

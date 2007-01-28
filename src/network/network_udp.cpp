@@ -32,8 +32,6 @@ NetworkUDPSocketHandler *_udp_client_socket; ///< udp client socket
 NetworkUDPSocketHandler *_udp_server_socket; ///< udp server socket
 NetworkUDPSocketHandler *_udp_master_socket; ///< udp master socket
 
-#define DEF_UDP_RECEIVE_COMMAND(cls, type) void cls ##NetworkUDPSocketHandler::NetworkPacketReceive_ ## type ## _command(Packet *p, const struct sockaddr_in *client_addr)
-
 ///*** Communication with the masterserver ***/
 
 class MasterNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
