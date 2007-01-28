@@ -120,7 +120,7 @@ protected:
 	 * the grfconfig list of the NetworkGameInfo.
 	 * @param config the GRF to handle
 	 */
-	virtual void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config) = 0;
+	virtual void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config) { NOT_REACHED(); }
 public:
 	/** On destructing of this class, the socket needs to be closed */
 	virtual ~NetworkUDPSocketHandler() { this->Close(); }
