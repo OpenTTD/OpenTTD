@@ -19,6 +19,7 @@ void NetworkCoreShutdown(void);
 typedef enum {
 	NETWORK_RECV_STATUS_OKAY,             ///< Everything is okay
 	NETWORK_RECV_STATUS_DESYNC,           ///< A desync did occur
+	NETWORK_RECV_STATUS_NEWGRF_MISMATCH,  ///< We did not have the required NewGRFs
 	NETWORK_RECV_STATUS_SAVEGAME,         ///< Something went wrong (down)loading the savegame
 	NETWORK_RECV_STATUS_CONN_LOST,        ///< The conection is 'just' lost
 	NETWORK_RECV_STATUS_MALFORMED_PACKET, ///< We apparently send a malformed packet

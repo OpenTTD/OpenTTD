@@ -1419,6 +1419,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Client L
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} No network devices found or compiled without ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Could not find any network games
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} The server didn't answer the request
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Could not connect due to NewGRF mismatch
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Network-Game synchronisation failed
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Network-Game connection lost
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Could not load savegame
@@ -1440,6 +1441,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :desync error
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :could not load map
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :connection lost
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protocol error
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF mismatch
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :not authorized
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :received strange packet
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :wrong revision

@@ -183,6 +183,32 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, 
 	NetworkCloseClient(cs);
 }
 
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkTCPSocketHandler *cs)
+{
+	//
+	// Packet: PACKET_SERVER_CHECK_NEWGRFS
+	// Function: Sends info about the used GRFs to the client
+	// Data:
+	//      uint8:  Amount of GRFs
+	//    And then for each GRF:
+	//      uint32: GRF ID
+	// 16 * uint8:  MD5 checksum of the GRF
+	//
+
+	Packet *p = NetworkSend_Init(PACKET_SERVER_CHECK_NEWGRFS);
+	const GRFConfig *c;
+	uint grf_count = 0;
+
+	for (c = _grfconfig; c != NULL; c = c->next) grf_count++;
+
+	NetworkSend_uint8 (p, grf_count);
+	for (c = _grfconfig; c != NULL; c = c->next) {
+		cs->Send_GRFIdentifier(p, c);
+	}
+
+	NetworkSend_Packet(p, cs);
+}
+
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkTCPSocketHandler *cs, NetworkPasswordType type)
 {
 	//
@@ -570,6 +596,22 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 	SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)(cs);
 }
 
+DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
+{
+	NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+
+	/* We now want a password from the client else we do not allow him in! */
+	if (_network_game_info.use_password) {
+		SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_GAME_PASSWORD);
+	} else {
+		if (IsValidPlayer(ci->client_playas) && _network_player_info[ci->client_playas].password[0] != '\0') {
+			SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
+		} else {
+			SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
+		}
+	}
+}
+
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 {
 	char name[NETWORK_CLIENT_NAME_LENGTH];
@@ -636,20 +678,14 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	ci->client_playas = playas;
 	ci->client_lang = client_lang;
 
-	// We now want a password from the client
-	//  else we do not allow him in!
-	if (_network_game_info.use_password) {
-		SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_GAME_PASSWORD);
-	} else {
-		if (IsValidPlayer(ci->client_playas) && _network_player_info[ci->client_playas].password[0] != '\0') {
-			SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
-		} else {
-			SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
-		}
-	}
-
 	/* Make sure companies to which people try to join are not autocleaned */
 	if (IsValidPlayer(playas)) _network_player_info[playas].months_empty = 0;
+
+	if (_grfconfig == NULL) {
+		RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)(cs, NULL);
+	} else {
+		SEND_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)(cs);
+	}
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
@@ -1184,6 +1220,8 @@ static NetworkServerPacket* const _network_server_packet[] = {
 	NULL, /*PACKET_SERVER_NEWGAME,*/
 	NULL, /*PACKET_SERVER_RCON,*/
 	RECEIVE_COMMAND(PACKET_CLIENT_RCON),
+	NULL, /*PACKET_CLIENT_CHECK_NEWGRFS,*/
+	RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED),
 };
 
 // If this fails, check the array above with network_data.h

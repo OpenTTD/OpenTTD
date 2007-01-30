@@ -52,6 +52,8 @@ enum {
 	PACKET_SERVER_NEWGAME,
 	PACKET_SERVER_RCON,
 	PACKET_CLIENT_RCON,
+	PACKET_SERVER_CHECK_NEWGRFS,
+	PACKET_CLIENT_NEWGRFS_CHECKED,
 	PACKET_END                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
