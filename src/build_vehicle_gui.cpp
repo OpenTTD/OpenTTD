@@ -228,8 +228,8 @@ static int CDECL TrainEnginesThenWagonsSorter(const void *a, const void *b)
 {
 	EngineID va = *(const EngineID*)a;
 	EngineID vb = *(const EngineID*)b;
-	int val_a = (RailVehInfo(va)->railveh_type != RAILVEH_WAGON ? 1 : 0);
-	int val_b = (RailVehInfo(vb)->railveh_type != RAILVEH_WAGON ? 1 : 0);
+	int val_a = (RailVehInfo(va)->railveh_type == RAILVEH_WAGON ? 1 : 0);
+	int val_b = (RailVehInfo(vb)->railveh_type == RAILVEH_WAGON ? 1 : 0);
 	int r = val_a - val_b;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
