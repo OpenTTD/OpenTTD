@@ -6,6 +6,7 @@
 #ifdef ENABLE_NETWORK
 
 #include "os_abstraction.h"
+#include "../../newgrf_config.h"
 
 /**
  * @file core.h Base for all network types (UDP and TCP)
@@ -26,6 +27,9 @@ typedef enum {
 	NETWORK_RECV_STATUS_SERVER_BANNED,    ///< The server has banned us
 	NETWORK_RECV_STATUS_CLOSE_QUERY,      ///< Done quering the server
 } NetworkRecvStatus;
+
+/** Forward declaration due to circular dependencies */
+class Packet;
 
 /**
  * SocketHandler for all network sockets in OpenTTD.
@@ -66,6 +70,9 @@ public:
 	 * @return true when the current client has quit, false otherwise
 	 */
 	bool HasClientQuit() { return this->has_quit; }
+
+	void Send_GRFIdentifier(Packet *p, const GRFIdentifier *grf);
+	void Recv_GRFIdentifier(Packet *p, GRFIdentifier *grf);
 };
 
 #endif /* ENABLE_NETWORK */

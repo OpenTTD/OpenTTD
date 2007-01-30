@@ -9,7 +9,6 @@
 #include "core.h"
 #include "game.h"
 #include "packet.h"
-#include "../../newgrf_config.h"
 #include "../../debug.h"
 
 /**
@@ -131,10 +130,7 @@ public:
 	void SendPacket(Packet *p, const struct sockaddr_in *recv);
 	void ReceivePackets();
 
-	void Send_GRFIdentifier(Packet *p, const GRFIdentifier *grf);
 	void Send_NetworkGameInfo(Packet *p, const NetworkGameInfo *info);
-
-	void Recv_GRFIdentifier(Packet *p, GRFIdentifier *grf);
 	void Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *info);
 };
 

@@ -144,35 +144,6 @@ void NetworkUDPSocketHandler::ReceivePackets()
 
 
 /**
- * Serializes the GRFIdentifier (GRF ID and MD5 checksum) to the packet
- * @param p   the packet to write the data to
- * @param grf the GRFIdentifier to serialize
- */
-void NetworkUDPSocketHandler::Send_GRFIdentifier(Packet *p, const GRFIdentifier *grf)
-{
-	uint j;
-	NetworkSend_uint32(p, grf->grfid);
-	for (j = 0; j < sizeof(grf->md5sum); j++) {
-		NetworkSend_uint8 (p, grf->md5sum[j]);
-	}
-}
-
-/**
- * Deserializes the GRFIdentifier (GRF ID and MD5 checksum) from the packet
- * @param p   the packet to read the data from
- * @param grf the GRFIdentifier to deserialize
- */
-void NetworkUDPSocketHandler::Recv_GRFIdentifier(Packet *p, GRFIdentifier *grf)
-{
-	uint j;
-	grf->grfid = NetworkRecv_uint32(this, p);
-	for (j = 0; j < sizeof(grf->md5sum); j++) {
-		grf->md5sum[j] = NetworkRecv_uint8(this, p);
-	}
-}
-
-
-/**
  * Serializes the NetworkGameInfo struct to the packet
  * @param p    the packet to write the data to
  * @param info the NetworkGameInfo struct to serialize

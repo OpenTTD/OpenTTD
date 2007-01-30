@@ -5,6 +5,8 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "os_abstraction.h"
+#include "core.h"
+#include "packet.h"
 
 /**
  * @file core.cpp Functions used to initialize/shut down the core network
@@ -86,6 +88,35 @@ void NetworkCoreShutdown(void)
 #if defined(WIN32)
 	WSACleanup();
 #endif
+}
+
+
+/**
+ * Serializes the GRFIdentifier (GRF ID and MD5 checksum) to the packet
+ * @param p   the packet to write the data to
+ * @param grf the GRFIdentifier to serialize
+ */
+void NetworkSocketHandler::Send_GRFIdentifier(Packet *p, const GRFIdentifier *grf)
+{
+	uint j;
+	NetworkSend_uint32(p, grf->grfid);
+	for (j = 0; j < sizeof(grf->md5sum); j++) {
+		NetworkSend_uint8 (p, grf->md5sum[j]);
+	}
+}
+
+/**
+ * Deserializes the GRFIdentifier (GRF ID and MD5 checksum) from the packet
+ * @param p   the packet to read the data from
+ * @param grf the GRFIdentifier to deserialize
+ */
+void NetworkSocketHandler::Recv_GRFIdentifier(Packet *p, GRFIdentifier *grf)
+{
+	uint j;
+	grf->grfid = NetworkRecv_uint32(this, p);
+	for (j = 0; j < sizeof(grf->md5sum); j++) {
+		grf->md5sum[j] = NetworkRecv_uint8(this, p);
+	}
 }
 
 #endif /* ENABLE_NETWORK */
