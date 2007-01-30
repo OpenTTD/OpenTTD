@@ -1420,6 +1420,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste de
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Aucun périphérique réseau trouvé ou programme compilé sans ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Aucune partie réseau n'a été trouvée
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Le serveur n'a pas répondu à la requête
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Echec de la connexion à cause de NewGRF différents
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} La synchronisation de la partie réseau a échouée.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} La connection de la partie réseau a été perdue.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} La sauvegarde serveur n'a pas pu être chargée.
@@ -1441,6 +1442,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :erreur de désy
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :chargement de la carte impossible
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :connection perdue
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :erreur de protocole
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF différents
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :non autorisé
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :paquet étrange reçu
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :révision incorrecte

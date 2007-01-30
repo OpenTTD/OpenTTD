@@ -1506,6 +1506,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista kl
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Brak interface'u sieciowego lub skompilowane bez opcji ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nie można znaleźć żadnej gry w sieci
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Serwer nie odpowiada
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}  Nie można było połączyć z powodu niezgodności NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Błąd synchronizacji gry sieciowej.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Połączenie utracone w grze sieciowej.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nie można wczytać zapisanej gry z serwera.
@@ -1527,6 +1528,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :błąd synchron
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :nie można załadować mapy
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :połączenie utracone
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :błąd protokołu
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Niezgodność NewGRF
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nie autoryzowane
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :odebrany nieznany pakiet
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :zła wersja

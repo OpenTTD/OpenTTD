@@ -99,15 +99,19 @@ STR_002D_FIZZY_DRINKS.r                                         :газован�
 STR_002D_FIZZY_DRINKS.z                                         :газовану воду
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :пасажирів
+STR_002F_PASSENGER.r                                            :пасажирів
 STR_002F_PASSENGER.z                                            :пасажирів
 STR_0030_COAL                                                   :вугілля
 STR_0030_COAL.r                                                 :вугілля
 STR_0030_COAL.z                                                 :вугілля
 STR_0031_MAIL                                                   :пошта
+STR_0031_MAIL.r                                                 :пошти
 STR_0031_MAIL.z                                                 :пошту
 STR_0032_OIL                                                    :нафта
+STR_0032_OIL.r                                                  :нафти
 STR_0032_OIL.z                                                  :нафту
 STR_0033_LIVESTOCK                                              :тварини
+STR_0033_LIVESTOCK.r                                            :тварин
 STR_0033_LIVESTOCK.z                                            :тварин
 STR_0034_GOODS                                                  :товари
 STR_0034_GOODS.r                                                :товарів
@@ -116,8 +120,10 @@ STR_0035_GRAIN                                                  :зерно
 STR_0035_GRAIN.r                                                :зерна
 STR_0035_GRAIN.z                                                :зерно
 STR_0036_WOOD                                                   :деревина
+STR_0036_WOOD.r                                                 :деревини
 STR_0036_WOOD.z                                                 :деревину
 STR_0037_IRON_ORE                                               :залізна руда
+STR_0037_IRON_ORE.r                                             :залізної руди
 STR_0037_IRON_ORE.z                                             :залізну руду
 STR_0038_STEEL                                                  :сталь
 STR_0038_STEEL.r                                                :сталі
@@ -126,6 +132,7 @@ STR_0039_VALUABLES                                              :коштовн�
 STR_0039_VALUABLES.r                                            :коштовностей
 STR_0039_VALUABLES.z                                            :коштовності
 STR_003A_COPPER_ORE                                             :мідна руда
+STR_003A_COPPER_ORE.r                                           :мідної руди
 STR_003A_COPPER_ORE.z                                           :мідну руду
 STR_003B_MAIZE                                                  :кукурудза
 STR_003B_MAIZE.r                                                :кукурудзи
@@ -751,7 +758,7 @@ STR_023D_RANDOM_TOWN                                            :{BLACK}Випа
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Будувати місто у випадковому місці
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Створення виробництва
 STR_0240_COAL_MINE                                              :{BLACK}{G=f}Вугільна шахта
-STR_0241_POWER_STATION                                          :{BLACK}{G=f}}Електростанція
+STR_0241_POWER_STATION                                          :{BLACK}{G=f}Електростанція
 STR_0242_SAWMILL                                                :{BLACK}{G=f}Лісопилка
 STR_0243_FOREST                                                 :{BLACK}{G=m}Ліс
 STR_0244_OIL_REFINERY                                           :{BLACK}{G=m}Нафтопереробний завод
@@ -819,7 +826,7 @@ STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Буду
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Будувати бульбашкову фабрику
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Будувати ірисковий кар'єр
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Будувати цукрову копальню
-STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Неможливо будувати {STRING} тут...
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Неможливо будувати {STRING.z} тут...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...спочатку збудуйте місто
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...дозволяється тільки 1 у місті
 STR_0288_PLANT_TREES                                            :{BLACK}Насадження дерев
@@ -1197,10 +1204,10 @@ STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Мак�
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Макс. літаків у гравця: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Макс. кораблів у гравця: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Комп'ютер не будує потяги: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Комп'ютер не будує авто: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Комп'ютер не будує літаки: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Комп'ютер не будує кораблі: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Заборонити комп'ютеру будувати потяги: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Заборонити комп'ютеру будувати авто: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Заборонити комп'ютеру будувати літаки: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Заборонити комп'ютеру будувати кораблі: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Новий тип інтелекту (альфа): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Включити інтелект при грі в мережі(тестовий): {ORANGE}{STRING}
@@ -1253,8 +1260,8 @@ STR_SUB_ARCTIC_LANDSCAPE                                        :Субаркт�
 STR_SUB_TROPICAL_LANDSCAPE                                      :Субтропічний ландшафт
 STR_TOYLAND_LANDSCAPE                                           :Іграшковий ландшафт
 
-STR_CHEATS                                                      :{WHITE}Гратиму не чесно
-STR_CHEATS_TIP                                                  :{BLACK}Галка показує, що Ви стали грати не чесно
+STR_CHEATS                                                      :{WHITE}Гратиму нечесно
+STR_CHEATS_TIP                                                  :{BLACK}Галка показує, що Ви стали грати нечесно
 STR_CHEATS_WARNING                                              :{BLACK}Попередження! Ви збираєтеся обманювати конкурентів. Зауважте, подібне безчестя запам'ятається назавжди.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Збільшити кошти на {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Грати за гравця: {ORANGE}{COMMA}
@@ -1521,6 +1528,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Спис
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Не знайдено мережевого пристрою або закомпільовано без ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Не знайдено жодної мережної гри
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Сервер не відповідає на запит
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Не можна з'єднатись внаслідок неспівпадання NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Помилка синхронізації з мережною грою
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} З'єднання втрачено
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Неможливо завантажити гру
@@ -1542,6 +1550,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :помилка 
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :неможливо завантажити карту
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :з'єднання втрачено
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :помилка протоколу
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Неспівпадання NewGRF
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :відмова авторизації
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :отримано несумісний пакет даних
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :невірна версія гри
@@ -1623,7 +1632,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Немо
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Роботи пошкодять тунель
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Вже понижено до рівня моря
 STR_1004_TOO_HIGH                                               :{WHITE}Дуже високо
-STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Не відповідний тип колії
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Невідповідний тип колії
 STR_1007_ALREADY_BUILT                                          :{WHITE}...вже побудовано
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Спочатку приберіть колію
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Будівництво залізниці
@@ -2894,7 +2903,7 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Приб
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Неможливо направити літак до ангару...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Литить до {STATION} ангару
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Летить до {STATION} ангару
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Летить до {STATION} ангару, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Техогляд в {STATION} депо
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Техогляд в {STATION} ангарі, {VELOCITY}
