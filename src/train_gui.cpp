@@ -183,7 +183,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 					str = STR_8861_STOPPED;
 				}
 			} else {
-				SetDParam(0, v->u.rail.last_speed);
+				SetDParam(0, v->u.rail.last_speed * 10 / 16);
 				str = STR_TRAIN_STOPPING + _patches.vehicle_speed;
 			}
 		} else {
@@ -191,7 +191,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			case OT_GOTO_STATION: {
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 				SetDParam(0, v->current_order.dest);
-				SetDParam(1, v->u.rail.last_speed);
+				SetDParam(1, v->u.rail.last_speed * 10 / 16);
 			} break;
 
 			case OT_GOTO_DEPOT: {
@@ -202,7 +202,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 				} else {
 					str = STR_HEADING_FOR_TRAIN_DEPOT_SERVICE + _patches.vehicle_speed;
 				}
-				SetDParam(1, v->u.rail.last_speed);
+				SetDParam(1, v->u.rail.last_speed * 10 / 16);
 			} break;
 
 			case OT_LOADING:
@@ -213,14 +213,14 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			case OT_GOTO_WAYPOINT: {
 				SetDParam(0, v->current_order.dest);
 				str = STR_HEADING_FOR_WAYPOINT + _patches.vehicle_speed;
-				SetDParam(1, v->u.rail.last_speed);
+				SetDParam(1, v->u.rail.last_speed * 10 / 16);
 				break;
 			}
 
 			default:
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SetDParam(0, v->u.rail.last_speed);
+					SetDParam(0, v->u.rail.last_speed * 10 / 16);
 				} else {
 					str = STR_EMPTY;
 				}
@@ -425,7 +425,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	SetDParam(3, GetTrainRunningCost(v) >> 8);
 	DrawString(x, 15, STR_885D_AGE_RUNNING_COST_YR, 0);
 
-	SetDParam(2, v->u.rail.cached_max_speed);
+	SetDParam(2, v->u.rail.cached_max_speed * 10 / 16);
 	SetDParam(1, v->u.rail.cached_power);
 	SetDParam(0, v->u.rail.cached_weight);
 	SetDParam(3, v->u.rail.cached_max_te / 1000);

@@ -378,7 +378,7 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 
 	/* Wagon speed limit, displayed if above zero */
 	if (rvi->max_speed > 0 && _patches.wagon_speed_limits) {
-		SetDParam(0, rvi->max_speed);
+		SetDParam(0, rvi->max_speed * 10 / 16);
 		DrawString(x,y, STR_PURCHASE_INFO_SPEED, 0);
 		y += 10;
 	}
@@ -397,7 +397,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 	y += 10;
 
 	/* Max speed - Engine power */
-	SetDParam(0, rvi->max_speed);
+	SetDParam(0, rvi->max_speed * 10 / 16);
 	SetDParam(1, rvi->power << multihead);
 	DrawString(x,y, STR_PURCHASE_INFO_SPEED_POWER, 0);
 	y += 10;
@@ -432,7 +432,7 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const R
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, rvi->base_cost * (_price.roadveh_base>>3)>>5);
-	SetDParam(1, rvi->max_speed / 2);
+	SetDParam(1, rvi->max_speed * 10 / 32);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
 
@@ -456,7 +456,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 {
 	/* Purchase cost - Max speed */
 	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
-	SetDParam(1, svi->max_speed / 2);
+	SetDParam(1, svi->max_speed * 10 / 32);
 	DrawString(x,y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
 
@@ -482,7 +482,7 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, avi->base_cost * (_price.aircraft_base>>3)>>5);
-	SetDParam(1, avi->max_speed * 128 / 10);
+	SetDParam(1, avi->max_speed * 8);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
 

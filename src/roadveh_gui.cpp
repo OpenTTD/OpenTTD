@@ -206,14 +206,14 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {
 				SetDParam(0, v->current_order.dest);
-				SetDParam(1, v->cur_speed / 2);
+				SetDParam(1, v->cur_speed * 10 / 32);
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
 				Depot *depot = GetDepot(v->current_order.dest);
 				SetDParam(0, depot->town_index);
-				SetDParam(1, v->cur_speed / 2);
+				SetDParam(1, v->cur_speed * 10 / 32);
 				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
 					str = STR_HEADING_FOR_ROAD_DEPOT + _patches.vehicle_speed;
 				} else {
@@ -229,7 +229,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			default:
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SetDParam(0, v->cur_speed / 2);
+					SetDParam(0, v->cur_speed * 10 / 32);
 				} else {
 					str = STR_EMPTY;
 				}
