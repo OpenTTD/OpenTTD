@@ -327,7 +327,8 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 						rvi[i].power *= 2;
 						rvi[i].running_cost_base *= 2;
 					}
-					rvi[i].railveh_type = RAILVEH_SINGLEHEAD;
+					rvi[i].railveh_type = rvi[i].power == 0 ?
+						RAILVEH_WAGON : RAILVEH_SINGLEHEAD;
 				}
 			}
 			break;
