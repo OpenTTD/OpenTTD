@@ -458,6 +458,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapacita nákla
 STR_NO_WAITING_CARGO                                            :{BLACK}Necaka ziadny typ nakladu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit vsetky moznosti
 STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Dostupné vlaky
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostupné vozidlá
+STR_AVAILABLE_SHIPS                                             :{BLACK}Dostupné lode
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostupné lietadlá
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zobrazit zoznam dostupných dizajnov rušňov pre tento typ.
 STR_MANAGE_LIST                                                 :{BLACK}Možnosti
 STR_MANAGE_LIST_TIP                                             :{BLACK}Zadat príkazy všetkým vozidlám v zozname

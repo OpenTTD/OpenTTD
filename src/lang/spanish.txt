@@ -395,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidad de ca
 STR_NO_WAITING_CARGO                                            :{BLACK}Ningún tipo de carga está esperando
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar todas las facilidades
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccionar todos los tipos de carga (incluidas las que no están en espera)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Trenes disponibles
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Vehículos disponibles
+STR_AVAILABLE_SHIPS                                             :{BLACK}Barcos disponibles
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aviones disponibles
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Ver la lista de los motores disponibles para este tipo de vehículo.
 STR_MANAGE_LIST                                                 :{BLACK}Administrar lista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Enviar instrucciones a todos los vehículos de la lista

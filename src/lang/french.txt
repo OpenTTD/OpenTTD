@@ -647,7 +647,7 @@ STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...Il n'
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Augmenter la taille de la ville
 STR_023C_EXPAND                                                 :{BLACK}Agrandir
 STR_023D_RANDOM_TOWN                                            :{BLACK}Générer une ville
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construire une ville dans un emplacement aléatoire
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construire une ville à un emplacement aléatoire
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Créer les industries
 STR_0240_COAL_MINE                                              :{BLACK}Mine de Charbon
 STR_0241_POWER_STATION                                          :{BLACK}Centrale Électrique
@@ -683,41 +683,41 @@ STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Usine de
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Générateur de Bulles
 STR_0260_TOFFEE_QUARRY                                          :{BLACK}Carrière de Caramel
 STR_0261_SUGAR_MINE                                             :{BLACK}Mine de Sucre
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construire Mine de Charbon
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construire Centrale Électrique
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construire Scierie
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construire une mine de charbon
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construire une centrale électrique
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construire une scierie
 STR_0265_PLANT_FOREST                                           :{BLACK}Planter une Forêt
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construire une raffinerie pétrolière
 STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}La construire d'une plate-forme pétrolière ne peut se faire qu'aux bords de la carte
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construire Usine
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construire Aciérie
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construire Ferme
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construire Mine de Fer
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construire puits de pétrole
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construire Banque (Peut seulement être construite dans les villes ayant plus de 1200 habitants)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construire Usine papetière
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construire Usine Agroalimentaire
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construire Imprimerie
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construire Mine d'Or
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construire Banque (Peut seulement être construite en ville)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construire Scierie (pour la coupe de forêt tropicale et la production de Bois)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construire une usine
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construire une aciérie
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construire une ferme
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construire une mine de fer
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construire un puit de pétrole
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construire une banque (Peut seulement être construite dans les villes ayant plus de 1200 habitants)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construire une usine papetière
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construire une usine agroalimentaire
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construire une imprimerie
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construire une mine d'or
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construire une banque (Peut seulement être construite en ville)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construire une scierie (pour la coupe de forêt tropicale et la production de Bois)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Semer une Plantation de Fruits
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Semer une Plantation de Caoutchouc
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construire Source d'eau
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construire Château d'eau (Peut seulement être construite en ville)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construire Mine de Diamant
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construire Mine de Cuivre
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construire une source d'eau
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construire un château d'eau (Peut seulement être construite en ville)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construire une mine de diamants
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construire une mine de cuivre
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Semer une Forêt de Barbe à Papa
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construire Usine de Sucreries
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construire Ferme de Batteries
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construire Puits de Cola
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construire Boutique de Jouets
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construire Usine de Jouets
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construire Fontaines de Plastique
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construire Usine de Boissons Gazeuses
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construire Générateur de Bulles
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construire Carrière de Caramel
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construire Mine de Sucre
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construire une usine de sucreries
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construire une ferme de batteries
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construire un puit de cola
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construire une boutique de jouets
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construire une usine de jouets
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construire une fontaine de plastique
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construire une usine de boissons gazeuses
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construire un générateur de bulles
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construire une carrière de caramel
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construire une mine de sucre
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Impossible de construire {STRING} ici...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...doit d'abord construire une ville
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...Droit à un par ville seulement
@@ -1247,7 +1247,7 @@ STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Construi
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Construire une mine de fer
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Financer une plantation de fruits
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Financer une plantation de caoutchouc
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financer la construction d'une Source d'eau
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financer la construction d'une source d'eau
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Planter une forêt de barbe à papa
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Financer une ferme de piles
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Forer pour trouver du cola
@@ -1844,7 +1844,7 @@ STR_4813_DIAMOND_MINE                                           :{G=f}Mine de di
 STR_4814_IRON_ORE_MINE                                          :{G=f}Mine de fer
 STR_4815_FRUIT_PLANTATION                                       :{G=f}Plantation de fruits
 STR_4816_RUBBER_PLANTATION                                      :{G=f}Plantation de caoutchouc
-STR_4817_WATER_SUPPLY                                           :{G=m}Réservoir d'eau
+STR_4817_WATER_SUPPLY                                           :{G=f}Source d'eau
 STR_4818_WATER_TOWER                                            :{G=m}Château d'eau
 STR_4819_FACTORY                                                :{G=f}Usine
 STR_481A_FARM                                                   :{G=f}Ferme

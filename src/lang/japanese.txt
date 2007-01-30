@@ -317,7 +317,7 @@ STR_UNITS_SI                                                    :国際単位法
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/秒
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}馬力
 STR_UNITS_POWER_METRIC                                          :{COMMA}馬力
@@ -341,7 +341,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA}重量トン
-STR_UNITS_FORCE_SI                                              :{COMMA}kN
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :営業利益
@@ -394,6 +394,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :貨物容量
 STR_NO_WAITING_CARGO                                            :{BLACK}到着待ちの貨物がありません
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}すべての駅を選択
 STR_SELECT_ALL_TYPES                                            :{BLACK}すべての貨物種類を選択（到着待たぬ貨物も含む）
+STR_AVAILABLE_TRAINS                                            :{BLACK}購入可能な列車
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}購入可能な道路車両
+STR_AVAILABLE_SHIPS                                             :{BLACK}購入可能な船舶
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}購入可能な飛行機
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}この車両種類のデザインのリストを表示します
 STR_MANAGE_LIST                                                 :{BLACK}リストを管理
 STR_MANAGE_LIST_TIP                                             :{BLACK}リスト内のすべての車両へこの指令を送信

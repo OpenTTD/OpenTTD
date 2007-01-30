@@ -57,95 +57,133 @@ STR_001F_PAPER                                                  :папір
 STR_001F_PAPER.r                                                :паперу
 STR_0020_GOLD                                                   :золото
 STR_0020_GOLD.r                                                 :золота
-STR_0021_WATER                                                  :воду
+STR_0020_GOLD.z                                                 :золото
+STR_0021_WATER                                                  :вода
 STR_0021_WATER.r                                                :води
-STR_0022_WHEAT                                                  :пшеницю
+STR_0021_WATER.z                                                :воду
+STR_0022_WHEAT                                                  :пшениця
 STR_0022_WHEAT.r                                                :пшениці
+STR_0022_WHEAT.z                                                :пшеницю
 STR_0023_RUBBER                                                 :каучук
 STR_0023_RUBBER.r                                               :каучука
+STR_0023_RUBBER.z                                               :каучук
 STR_0024_SUGAR                                                  :цукор
 STR_0024_SUGAR.r                                                :цукру
+STR_0024_SUGAR.z                                                :цукор
 STR_0025_TOYS                                                   :іграшки
 STR_0025_TOYS.r                                                 :іграшок
+STR_0025_TOYS.z                                                 :іграшки
 STR_0026_CANDY                                                  :солодощі
 STR_0026_CANDY.r                                                :солодощів
+STR_0026_CANDY.z                                                :солодощі
 STR_0027_COLA                                                   :кола
 STR_0027_COLA.r                                                 :коли
+STR_0027_COLA.z                                                 :колу
 STR_0028_COTTON_CANDY                                           :солодку вату
 STR_0028_COTTON_CANDY.r                                         :солодкої вати
+STR_0028_COTTON_CANDY.z                                         :солодку вату
 STR_0029_BUBBLES                                                :бульбашки
 STR_0029_BUBBLES.r                                              :бульбашок
+STR_0029_BUBBLES.z                                              :бульбашки
 STR_002A_TOFFEE                                                 :іриски
 STR_002A_TOFFEE.r                                               :ірисок
+STR_002A_TOFFEE.z                                               :іриски
 STR_002B_BATTERIES                                              :батарейки
 STR_002B_BATTERIES.r                                            :батарейок
+STR_002B_BATTERIES.z                                            :батарейки
 STR_002C_PLASTIC                                                :пластик
 STR_002C_PLASTIC.r                                              :пластику
+STR_002C_PLASTIC.z                                              :ластик
 STR_002D_FIZZY_DRINKS                                           :газовану воду
 STR_002D_FIZZY_DRINKS.r                                         :газованої води
+STR_002D_FIZZY_DRINKS.z                                         :газовану воду
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :пасажири
-STR_002F_PASSENGER.r                                            :пасажирів
+STR_002F_PASSENGER                                              :пасажирів
+STR_002F_PASSENGER.z                                            :пасажирів
 STR_0030_COAL                                                   :вугілля
 STR_0030_COAL.r                                                 :вугілля
-STR_0031_MAIL                                                   :пошту
-STR_0031_MAIL.r                                                 :пошти
-STR_0032_OIL                                                    :нафту
-STR_0032_OIL.r                                                  :нафти
-STR_0033_LIVESTOCK                                              :тварин
-STR_0033_LIVESTOCK.r                                            :тварин
+STR_0030_COAL.z                                                 :вугілля
+STR_0031_MAIL                                                   :пошта
+STR_0031_MAIL.z                                                 :пошту
+STR_0032_OIL                                                    :нафта
+STR_0032_OIL.z                                                  :нафту
+STR_0033_LIVESTOCK                                              :тварини
+STR_0033_LIVESTOCK.z                                            :тварин
 STR_0034_GOODS                                                  :товари
 STR_0034_GOODS.r                                                :товарів
+STR_0034_GOODS.z                                                :товари
 STR_0035_GRAIN                                                  :зерно
 STR_0035_GRAIN.r                                                :зерна
-STR_0036_WOOD                                                   :деревину
-STR_0036_WOOD.r                                                 :деревини
-STR_0037_IRON_ORE                                               :залізну руду
-STR_0037_IRON_ORE.r                                             :залізної руди
+STR_0035_GRAIN.z                                                :зерно
+STR_0036_WOOD                                                   :деревина
+STR_0036_WOOD.z                                                 :деревину
+STR_0037_IRON_ORE                                               :залізна руда
+STR_0037_IRON_ORE.z                                             :залізну руду
 STR_0038_STEEL                                                  :сталь
 STR_0038_STEEL.r                                                :сталі
+STR_0038_STEEL.z                                                :сталь
 STR_0039_VALUABLES                                              :коштовності
 STR_0039_VALUABLES.r                                            :коштовностей
-STR_003A_COPPER_ORE                                             :мідну руду
-STR_003A_COPPER_ORE.r                                           :мідної руди
-STR_003B_MAIZE                                                  :кукурудзу
+STR_0039_VALUABLES.z                                            :коштовності
+STR_003A_COPPER_ORE                                             :мідна руда
+STR_003A_COPPER_ORE.z                                           :мідну руду
+STR_003B_MAIZE                                                  :кукурудза
 STR_003B_MAIZE.r                                                :кукурудзи
+STR_003B_MAIZE.z                                                :кукурудзу
 STR_003C_FRUIT                                                  :фрукти
 STR_003C_FRUIT.r                                                :фруктів
+STR_003C_FRUIT.z                                                :фрукти
 STR_003D_DIAMOND                                                :діаманти
-STR_003D_DIAMOND.r                                              :діамантів
+STR_003D_DIAMOND.r                                              :діаманти
+STR_003D_DIAMOND.z                                              :діаманти
 STR_003E_FOOD                                                   :продукти
 STR_003E_FOOD.r                                                 :продуктів
+STR_003E_FOOD.z                                                 :продукти
 STR_003F_PAPER                                                  :папір
 STR_003F_PAPER.r                                                :паперу
+STR_003F_PAPER.z                                                :папір
 STR_0040_GOLD                                                   :золото
 STR_0040_GOLD.r                                                 :золота
-STR_0041_WATER                                                  :воду
+STR_0040_GOLD.z                                                 :золото
+STR_0041_WATER                                                  :вода
 STR_0041_WATER.r                                                :води
-STR_0042_WHEAT                                                  :пшеницю
+STR_0041_WATER.z                                                :воду
+STR_0042_WHEAT                                                  :пшениця
 STR_0042_WHEAT.r                                                :пшениці
+STR_0042_WHEAT.z                                                :пшеницю
 STR_0043_RUBBER                                                 :каучук
 STR_0043_RUBBER.r                                               :каучуку
+STR_0043_RUBBER.z                                               :каучук
 STR_0044_SUGAR                                                  :цукор
 STR_0044_SUGAR.r                                                :цукру
+STR_0044_SUGAR.z                                                :цукор
 STR_0045_TOY                                                    :іграшки
 STR_0045_TOY.r                                                  :іграшок
+STR_0045_TOY.z                                                  :іграшки
 STR_0046_CANDY                                                  :цукерки
 STR_0046_CANDY.r                                                :цукерок
-STR_0047_COLA                                                   :Колу
-STR_0047_COLA.r                                                 :Коли
-STR_0048_COTTON_CANDY                                           :солодку вату
+STR_0046_CANDY.z                                                :цукерки
+STR_0047_COLA                                                   :кола
+STR_0047_COLA.r                                                 :коли
+STR_0047_COLA.z                                                 :колу
+STR_0048_COTTON_CANDY                                           :солодка вата
 STR_0048_COTTON_CANDY.r                                         :солодкої вати
+STR_0048_COTTON_CANDY.z                                         :солодку вату
 STR_0049_BUBBLE                                                 :бульбашки
 STR_0049_BUBBLE.r                                               :бульбашок
+STR_0049_BUBBLE.z                                               :бульбашки
 STR_004A_TOFFEE                                                 :іриски
 STR_004A_TOFFEE.r                                               :ірисок
+STR_004A_TOFFEE.z                                               :іриски
 STR_004B_BATTERY                                                :батарейки
 STR_004B_BATTERY.r                                              :батарейок
+STR_004B_BATTERY.z                                              :батарейки
 STR_004C_PLASTIC                                                :пластик
 STR_004C_PLASTIC.r                                              :пластику
-STR_004D_FIZZY_DRINK                                            :газовану воду
+STR_004C_PLASTIC.z                                              :пластик
+STR_004D_FIZZY_DRINK                                            :газована вода
 STR_004D_FIZZY_DRINK.r                                          :газованої води
+STR_004D_FIZZY_DRINK.z                                          :газовану воду
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} пасажир{P "" и iв}
 STR_QUANTITY_COAL                                               :{WEIGHT} вугілля
@@ -1699,7 +1737,7 @@ STR_202C_FROM_TO                                                :{ORANGE}Пер�
 STR_202D_UNTIL                                                  :{YELLOW}, по {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Субсидію відмінено:{}{}Перевезення {STRING.r} з {STRING} до {STRING}.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Субсидія вже не надається:{}{}Перевезення {STRING.r} з {STATION} до {STATION}.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Пропонується річна субсидія {}{}компанії, яка першою привезе {STRING} з {STRING} до {STRING}!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Пропонується річна субсидія {}{}компанії, яка першою привезе {STRING.z} з {STRING} до {STRING}!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе додатково 50% протягом наступного року!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе вдвічі більше прибутків наступного року!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе втричі більше прибутків наступного року!

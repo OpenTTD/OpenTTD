@@ -394,6 +394,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Cargo Capacity
 STR_NO_WAITING_CARGO                                            :{BLACK}Nu este în asteptare nici un fel de încãrcãturã
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege toate facilitãtile
 STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Trenuri disponibile
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Vehicule disponibile
+STR_AVAILABLE_SHIPS                                             :{BLACK}Nave disponibile
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aeronave disponibile
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Vezi o lista de proiecte disponibile de motoare pentru acest tip de vehicul.
 STR_MANAGE_LIST                                                 :{BLACK}Gestioneaza lista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Trimite instructiunile tuturor vehiculelor din aceasta lista

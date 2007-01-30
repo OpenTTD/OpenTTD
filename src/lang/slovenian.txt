@@ -2,7 +2,7 @@
 ##ownname Slovenščina
 ##isocode sl_SL
 ##plural 8
-##case 2_skl
+##case r d t
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -21,36 +21,77 @@ STR_000C_ACCEPTS                                                :{BLACK}Sprejema
 STR_000D_ACCEPTS                                                :{BLACK}Sprejema: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Potniki
+STR_000F_PASSENGERS.t                                           :Potnike
 STR_0010_COAL                                                   :Premog
+STR_0010_COAL.r                                                 :Premoga
 STR_0011_MAIL                                                   :Pošta
+STR_0011_MAIL.r                                                 :Pošte
+STR_0011_MAIL.t                                                 :Pošto
 STR_0012_OIL                                                    :Nafta
+STR_0012_OIL.r                                                  :Nafte
+STR_0012_OIL.t                                                  :Nafto
 STR_0013_LIVESTOCK                                              :Živina
+STR_0013_LIVESTOCK.r                                            :Živine
+STR_0013_LIVESTOCK.t                                            :Živino
 STR_0014_GOODS                                                  :Izdelki
+STR_0014_GOODS.r                                                :Izdelkov
+STR_0014_GOODS.t                                                :Izdelke
 STR_0015_GRAIN                                                  :Žito
+STR_0015_GRAIN.r                                                :Žita
 STR_0016_WOOD                                                   :Les
+STR_0016_WOOD.r                                                 :Lesa
 STR_0017_IRON_ORE                                               :Železova ruda
+STR_0017_IRON_ORE.r                                             :Železove rude
+STR_0017_IRON_ORE.t                                             :Železovo rudo
 STR_0018_STEEL                                                  :Jeklo
+STR_0018_STEEL.r                                                :Jekla
 STR_0019_VALUABLES                                              :Vrednosti
 STR_001A_COPPER_ORE                                             :Bakrova ruda
+STR_001A_COPPER_ORE.r                                           :Bakrove rude
+STR_001A_COPPER_ORE.t                                           :Bakrovo rudo
 STR_001B_MAIZE                                                  :Koruza
+STR_001B_MAIZE.r                                                :Koruze
+STR_001B_MAIZE.t                                                :Koruzo
 STR_001C_FRUIT                                                  :Sadje
+STR_001C_FRUIT.r                                                :Sadja
 STR_001D_DIAMONDS                                               :Diamanti
+STR_001D_DIAMONDS.r                                             :Diamantov
+STR_001D_DIAMONDS.t                                             :Diamante
 STR_001E_FOOD                                                   :Hrana
+STR_001E_FOOD.r                                                 :Hrane
+STR_001E_FOOD.t                                                 :Hrano
 STR_001F_PAPER                                                  :Papir
+STR_001F_PAPER.r                                                :Papirja
 STR_0020_GOLD                                                   :Zlato
+STR_0020_GOLD.r                                                 :Zlata
 STR_0021_WATER                                                  :Voda
+STR_0021_WATER.r                                                :Vode
+STR_0021_WATER.t                                                :Vodo
 STR_0022_WHEAT                                                  :Pšenica
+STR_0022_WHEAT.r                                                :Pšenice
+STR_0022_WHEAT.t                                                :Pšenico
 STR_0023_RUBBER                                                 :Kavčuk
+STR_0023_RUBBER.r                                               :Kavčuka
 STR_0024_SUGAR                                                  :Sladkor
+STR_0024_SUGAR.r                                                :Sladkorja
 STR_0025_TOYS                                                   :Igrače
+STR_0025_TOYS.r                                                 :Igrač
 STR_0026_CANDY                                                  :Sladkarije
+STR_0026_CANDY.r                                                :Sladkarij
 STR_0027_COLA                                                   :Cockta
+STR_0027_COLA.r                                                 :Cockte
 STR_0028_COTTON_CANDY                                           :Sladkorna pena
+STR_0028_COTTON_CANDY.r                                         :Sladkorne pene
 STR_0029_BUBBLES                                                :Mehurčki
+STR_0029_BUBBLES.r                                              :Mehurčkov
 STR_002A_TOFFEE                                                 :Karamela
+STR_002A_TOFFEE.r                                               :Karamele
 STR_002B_BATTERIES                                              :Baterije
+STR_002B_BATTERIES.r                                            :Baterij
 STR_002C_PLASTIC                                                :Plastika
+STR_002C_PLASTIC.r                                              :Plastike
 STR_002D_FIZZY_DRINKS                                           :Gazirane pijače
+STR_002D_FIZZY_DRINKS.r                                         :Gaziranih pijač
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Potnik
 STR_0030_COAL                                                   :Premog
@@ -612,7 +653,7 @@ STR_0219_TYCOON_OF_THE_CENTURY                                  :Velekapitalist 
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} dosega naslov '{STRING}'!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} iz podjetja {COMPANY} je prejema naslov '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} iz podjetja {COMPANY} prejema naslov '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Ustvari Scenarij
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -658,19 +699,19 @@ STR_0245_OIL_RIG                                                :{BLACK}Naftna p
 STR_0246_FACTORY                                                :{BLACK}Tovarna
 STR_0247_STEEL_MILL                                             :{BLACK}Jeklarna
 STR_0248_FARM                                                   :{BLACK}Kmetija
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Rudnik železa
-STR_024A_OIL_WELLS                                              :{BLACK}Naftni Vrelci
+STR_0249_IRON_ORE_MINE                                          :{BLACK}Rudnik železove rude
+STR_024A_OIL_WELLS                                              :{BLACK}Naftni vrelci
 STR_024B_BANK                                                   :{BLACK}Banka
 STR_024C_PAPER_MILL                                             :{BLACK}Papirnica
 STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Prehrambeni obrat
 STR_024E_PRINTING_WORKS                                         :{BLACK}Tiskarna
-STR_024F_GOLD_MINE                                              :{BLACK}Rudnik Zlata
+STR_024F_GOLD_MINE                                              :{BLACK}Rudnik zlata
 STR_0250_LUMBER_MILL                                            :{BLACK}Žaga
 STR_0251_FRUIT_PLANTATION                                       :{BLACK}Sadovnjak
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}Plantaža kavčuka
 STR_0253_WATER_SUPPLY                                           :{BLACK}Vodni izvir
-STR_0254_WATER_TOWER                                            :{BLACK}Vodovodni Stolp
-STR_0255_DIAMOND_MINE                                           :{BLACK}Rudnik Diamantov
+STR_0254_WATER_TOWER                                            :{BLACK}Vodovodni stolp
+STR_0255_DIAMOND_MINE                                           :{BLACK}Rudnik diamantov
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Rudnik bakra
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Gozd sladkorne pene
 STR_0258_CANDY_FACTORY                                          :{BLACK}Tovarna slaščic
@@ -1628,19 +1669,19 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ocene pr
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencije
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponudba subvencije za storitev:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} iz {STRING} v {STRING}
+STR_2027_FROM_TO                                                :{ORANGE}Prevoz {STRING.r} iz {STRING} v {STRING}
 STR_2028_BY                                                     :{YELLOW} (do {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Brez
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Že subvencionirane storitve:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} od {STATION} do {STATION}{YELLOW} ({COMPANY}
+STR_202C_FROM_TO                                                :{ORANGE}Prevoz {STRING.r} od {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ponudba subvencije potekla: {}{}Prevoz {STRING} od {STRING} do {STRING} ni več subvencioniran.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvencija je potekla:{}{}Prevoz {STRING} od {STATION} do {STATION} ni več subvencioniran.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nova ponujena subvencija:{}{}Prvi prevoz {STRING} od {STRING} do {STRING} bo{}subvencioniran s strani mestnega sveta!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija podeljena podjetju {COMPANY}!{}{}Prevoz {STRING} od {STATION} do {STATION} bo prinesel 50% večji prihodek{}za naslednje leto!
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Podjetje {COMPANY} je prejelo subvencijo!{}{}Prevoz {STRING} od {STATION} do {STATION} bo prinesel dvakratni prihodek{}za naslednje leto!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija odobrena podjetju {COMPANY}!{}{}Prevoz {STRING} od {STATION} do {STATION} bo prinesel trikratni prihodek{}za naslednje leto!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija podeljena podjetju{COMPANY}!{}{}Prevoz {STRING} od {STATION} do {STATION} bo prinesel štirikratni prihodek{}za naslednje leto!
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ponudba subvencije potekla: {}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvencija zaključena:{}{}Prevoz {STRING.r} od {STATION} do {STATION} ni več subvencioniran.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nova ponujena subvencija:{}{}Prvi prevoz {STRING.r} od {STRING} do {STRING} bo{}subvencioniran s strani mestnega sveta!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija podeljena podjetju {COMPANY}!{}{}Prevoz {STRING.r} od {STATION} do {STATION} bo prinesel 50% večji prihodek{}za naslednje leto!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Podjetje {COMPANY} je prejelo subvencijo!{}{}Prevoz {STRING.r} od {STATION} do {STATION} bo prinesel dvakratni prihodek{}za naslednje leto!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija odobrena podjetju {COMPANY}!{}{}Prevoz {STRING.r} od {STATION} do {STATION} bo prinesel trikratni prihodek{}za naslednje leto!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija podeljena podjetju{COMPANY}!{}{}Prevoz {STRING.r} od {STATION} do {STATION} bo prinesel štirikratni prihodek{}za naslednje leto!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} mestni svet prepoveduje gradnjo še enega letališča v tem mestu
 STR_2036_COTTAGES                                               :Koče
 STR_2037_HOUSES                                                 :Hiše
@@ -1682,6 +1723,7 @@ STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Tipiji
 STR_205B_TEAPOT_HOUSE                                           :Čajnik-hiša
 STR_205C_PIGGY_BANK                                             :Prašičkova banka
+STR_205C_PIGGY_BANK.r                                           :Prašičkove banke
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
@@ -1732,28 +1774,28 @@ STR_3033_ACCEPTS                                                :{BLACK}Sprejema
 STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Lokalne ocene transportnih storitev:
 
 ############ range for rating starts
-STR_3035_APPALLING                                              :Nizkoten
-STR_3036_VERY_POOR                                              :Zelo slab
-STR_3037_POOR                                                   :Slab
-STR_3038_MEDIOCRE                                               :Srednji
-STR_3039_GOOD                                                   :Dober
-STR_303A_VERY_GOOD                                              :Zelo dober
-STR_303B_EXCELLENT                                              :Izvrsten
-STR_303C_OUTSTANDING                                            :Sijajen
+STR_3035_APPALLING                                              :Nizkotno
+STR_3036_VERY_POOR                                              :Zelo slabo
+STR_3037_POOR                                                   :Slabo
+STR_3038_MEDIOCRE                                               :Srednje
+STR_3039_GOOD                                                   :Dobro
+STR_303A_VERY_GOOD                                              :Zelo dobro
+STR_303B_EXCELLENT                                              :Izvrstno
+STR_303C_OUTSTANDING                                            :Sijajno
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} ne sprejema več {STRING}
-STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} ne sprejema več {STRING} in {STRING}
-STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} sedaj sprejema {STRING}
-STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} sedaj sprejema {STRING} in {STRING}
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} ne sprejema več {STRING.r}
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} ne sprejema več {STRING.r} in {STRING.r}
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} sedaj sprejema {STRING.t}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} sedaj sprejema {STRING.t} in {STRING.t}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientacija avtobusne postaje
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientacija tovorne postaje
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Najprej moraš porušiti avtobusno postajo
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Najprej moraš porušiti tovorno postajo
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Postaj{P a i e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
-STR_304A_NONE                                                   :{YELLOW}- Nobeno -
+STR_304A_NONE                                                   :{YELLOW}- Brez -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE} ... neprimerna lokacija
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Preblizu drugemu pristanišču
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Najprej moraš porušiti pristanišče
@@ -1825,6 +1867,7 @@ STR_4800_IN_THE_WAY                                             :{WHITE}{STRING}
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Premogovnik
 STR_4803_POWER_STATION                                          :Termo elektrarna
+STR_4803_POWER_STATION.3sk                                      :Termo elektrarni
 STR_4804_SAWMILL                                                :Žaga
 STR_4805_FOREST                                                 :Gozd
 STR_4806_OIL_REFINERY                                           :Naftna rafinerija
@@ -1876,8 +1919,8 @@ STR_482F_COST                                                   :{BLACK}Cena: {Y
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Nemogoča gradnja tega tipa industrije tukaj...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE} ... gozd je mogoče posaditi samo nad nivojem snežne odeje
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} napoveduje preteče zapiranje!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zaradi težav z dobavo zalog {INDUSTRY} napoveduje preteč stečaj!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Zaradi pomanjkanja bližnjih dreves {INDUSTRY} napoveduje stečajni postopek!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zaradi težav z dobavo zalog, {INDUSTRY} napoveduje preteč stečaj!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Zaradi pomanjkanja bližnjih dreves, {INDUSTRY} napoveduje stečajni postopek!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} povečuje proizvodnjo!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nova žila premoga odkrita v {INDUSTRY}!{}Pričakuje se podvojitev proizvodnje!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nove rezerve nafte odkrite v {INDUSTRY}!{}Predvidena podvojitev proizvodnje!
@@ -1996,20 +2039,20 @@ STR_6804_CUSTOM                                                 :{BLACK}Po meri
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Največje število nasprotnikov: {ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Nasprotnikov začetni čas: {ORANGE}{STRING}
-STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Št. mest: {ORANGE}{STRING}
-STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Št. industrij: {ORANGE}{STRING}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Največje število tekmecev: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Tekmečev začetni čas: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Število mest: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Število industrij: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Najvišje možno posojilo: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Začetna obrestna mera: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Cena vzdrževanja vozil: {ORANGE}{STRING}
-STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Nasprotnikova hitrost gradnje: {ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Inteligenca nasprotnikov: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Tekmečeva hitrost gradnje: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Inteligenca tekmecev: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Okvare vozil: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Večkratnik subvencij: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Cena gradnje: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Tip terena: {ORANGE}{STRING}
-STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Velikost in št. morij/jezer: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Količina morij/jezer: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomija: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Obračanje vlakov: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Katastrofe: {ORANGE}{STRING}
@@ -2017,7 +2060,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Odnos m
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Brez
-STR_6816_LOW                                                    :Nizko
+STR_6816_LOW                                                    :Malo
 STR_6817_NORMAL                                                 :Normalno
 STR_6818_HIGH                                                   :Veliko
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}

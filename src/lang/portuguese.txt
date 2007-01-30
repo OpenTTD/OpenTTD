@@ -147,7 +147,7 @@ STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}NÃO
-STR_ABBREV_ALL                                                  :{TINYFONT}TODOS
+STR_ABBREV_ALL                                                  :{TINYFONT}TUDO
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
@@ -2868,8 +2868,8 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estações:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. lucros:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. rendimentos:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Máx. rendimentos:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. rendim.:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Máx. rendim.:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Entregue:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Carga:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dinheiro:
@@ -2979,8 +2979,8 @@ STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronave{P "" s}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar Substituição de Veículos
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar Substituição de Veículos
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar Subst. de Veículos
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar Subst. de Veículos
 STR_NOT_REPLACING                                               :{BLACK}Não substituindo
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Nenhum veículo seleccionado
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Seleccione o tipo de motor a substituir
@@ -3020,7 +3020,7 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}Erro na 
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Comboios
-STR_ELRAIL_VEHICLES                                             :Combóios para carris electrificados
+STR_ELRAIL_VEHICLES                                             :Comboios eléctricos
 STR_MONORAIL_VEHICLES                                           :Monocarris
 STR_MAGLEV_VEHICLES                                             :Maglevs
 

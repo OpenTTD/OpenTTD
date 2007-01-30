@@ -394,6 +394,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lastkapacitet
 STR_NO_WAITING_CARGO                                            :{BLACK}Ingen sorts last väntar
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Markera alla inrättningar
 STR_SELECT_ALL_TYPES                                            :{BLACK}Välj alla last-typer (inklusive icke väntande last)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Tillgängliga tåg
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Tillgängliga fordon
+STR_AVAILABLE_SHIPS                                             :{BLACK}Tillgängliga skepp
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Tillgängliga flyplan
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Se lista med tillgängliga motordesigner för denna fordonstyp
 STR_MANAGE_LIST                                                 :{BLACK}Behandlingslista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Skicka instruktioner till alla fordon på denna lista

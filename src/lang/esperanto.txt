@@ -395,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Ŝarĝkapablo
 STR_NO_WAITING_CARGO                                            :{BLACK}Nenia ŝarĝo atendas
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Elektu ĉiujn konstruaĵojn
 STR_SELECT_ALL_TYPES                                            :{BLACK}Elektu ĉiujn ŝarĝotipojn (inkluzive de ne atendanta ŝarĝo)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Haveblaj Trajnoj
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Haveblaj Vojveturiloj
+STR_AVAILABLE_SHIPS                                             :{BLACK}Haveblaj Ŝipoj
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Haveblaj Aviadiloj
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Vidu liston da ĉiuj haveblaj maŝinoj por ĉi tiu veturilspeco.
 STR_MANAGE_LIST                                                 :{BLACK}Manaĝu liston
 STR_MANAGE_LIST_TIP                                             :{BLACK}Sendu instrukciojn al ĉiuj veturiloj en la listo

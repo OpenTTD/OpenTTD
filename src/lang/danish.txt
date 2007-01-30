@@ -151,7 +151,7 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ALT
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kort - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Spilindstillinger
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Spilvalg
 STR_00B2_MESSAGE                                                :{YELLOW}Besked
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Besked fra {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Advarsel!
@@ -304,7 +304,7 @@ STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Kortstørrelse:
 STR_BY                                                          :{BLACK}*
-STR_0148_GAME_OPTIONS                                           :{BLACK}Spilindstillinger
+STR_0148_GAME_OPTIONS                                           :{BLACK}Spilvalg
 
 STR_0150_SOMEONE                                                :en eller anden{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Kort over verden
@@ -448,7 +448,7 @@ STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Byg havn
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Byg lufthavne
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plant træer, placér skilte osv.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Landområde information
-STR_0187_OPTIONS                                                :{BLACK}Indstillinger
+STR_0187_OPTIONS                                                :{BLACK}Valg
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Kan ikke ændre serviceinterval...
@@ -582,8 +582,8 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Seneste besked/nyhedsrapport
 STR_0201_MESSAGE_SETTINGS                                       :Beskedindstillinger
 STR_MESSAGE_HISTORY_MENU                                        :Tidligere beskeder
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vis sidste besked/nyhedsrapport, vis beskedindstillinger
-STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Beskedindstillinger
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vis sidste besked/nyhedsrapport, vis beskedvalg
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Beskedvalg
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Beskedtyper:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst af første køretøj til spillerens station
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst af første køretøj til modstanderens station
@@ -771,7 +771,7 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Gem brug
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
-STR_02C3_GAME_OPTIONS                                           :Spilindstillinger
+STR_02C3_GAME_OPTIONS                                           :Spilvalg
 STR_02C5_DIFFICULTY_SETTINGS                                    :Sværhedsgrad
 STR_02C7_CONFIG_PATCHES                                         :Indstil programrettelser
 STR_NEWGRF_SETTINGS                                             :NewGRF indstillinger
@@ -837,8 +837,8 @@ STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Hent et 
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Lav en brugerdefineret verden/scenarie
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vælg enkeltspiller spil
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vælg netværksspil med 2-8 spillere
-STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Vis spilindstillinger
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vis sværhedsgrad-indstillinger
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Vis spilvalg
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vis valg for sværhedsgrad
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start et nyt spil med et brugerdefineret scenarie
 STR_0304_QUIT                                                   :{BLACK}Afslut
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Afslut 'OpenTTD'
@@ -988,15 +988,15 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA} har for få ordrer i sin odreliste
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tog {COMMA} har en ugyldig ordre
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har dobbelt ordrer
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har en ugyldig station i sin køreplan
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Køretøj {COMMA} har for få ordrer i sin køreplan
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har en ugyldig station i sin ordreliste
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Køretøj {COMMA} har for få ordrer i sin ruteplan
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Køretøj {COMMA} har en ugyldig ordre
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Køretøj {COMMA} har dobbelt ordrer
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Køretøj {COMMA} har en ugyldig station i sin køreplan
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Køretøj {COMMA} har en ugyldig station i sin ordreliste
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skib {COMMA} har for få ordrer i sin ordreliste
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skib {COMMA} har en ugyldig ordre
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skib {COMMA} har dobbelt ordrer
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skib {COMMA} har en ugyldig havn i sin sejlplan
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skib {COMMA} har en ugyldig havn i sin ordreliste
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Fly {COMMA} har for få ordrer i sin ordreliste
 STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Fly {COMMA} har en ugyldig ordre
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COMMA} har dobbelt ordrer
@@ -1748,7 +1748,7 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} accepterer nu {STRING} og {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Retning af rutebilstation
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Retning af fragtcentral
-STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Det er nødvendigt at rive rutebilstationen ned først
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Det er nødvendigt at nedrive rutebilstationen først
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Det er nødvendigt at rive fragtcentralen ned først
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stationer
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2947,13 +2947,13 @@ STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Fly
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Skib{P "" e}
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Vis alle tog, som har denne station i deres køreplan
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle køretøjer, som har denne station i deres køreplan
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Vis alle tog, som har denne station i deres ruteplan
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle køretøjer, som har denne station i deres ruteplan
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Vis alle fly, som har denne lufthavn i deres ruteplan
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle skibe, som har denne station i deres ruteplan
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordrer af {COMMA} transportmid{P del ler}
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, som har den samme rute
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, der deler denne ruteplan
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er ved at sælge alle køretøjer i depotet. Er du sikker?

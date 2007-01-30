@@ -395,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lastekapasitet
 STR_NO_WAITING_CARGO                                            :{BLACK}Inga last ventar
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vel alle anlegga
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vel alle lasttypar (inkludert last som ikkje ventar)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Tilgjengelege tog
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Tilgjengelege køyretøy
+STR_AVAILABLE_SHIPS                                             :{BLACK}Tilgjengelege skip
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Tilgjengelege fly
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Sjå ei liste over mogelege maskindesign for dette køyretøyet.
 STR_MANAGE_LIST                                                 :{BLACK}Behandle liste
 STR_MANAGE_LIST_TIP                                             :{BLACK}Send instruksjonar til alle køyretøy i denne lista
