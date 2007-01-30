@@ -158,7 +158,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			/* See if any vehicle can be refitted */
 			for (u = v; u != NULL; u = u->next) {
 				if (EngInfo(u->engine_type)->refit_mask != 0 ||
-						(!(RailVehInfo(v->engine_type)->flags & RVI_WAGON) && v->cargo_cap != 0)) {
+						(RailVehInfo(v->engine_type)->railveh_type != RAILVEH_WAGON && v->cargo_cap != 0)) {
 					EnableWindowWidget(w, 12);
 					/* We have a refittable carriage, bail out */
 					break;
@@ -341,7 +341,7 @@ static void TrainDetailsCargoTab(const Vehicle *v, int x, int y)
 
 static void TrainDetailsInfoTab(const Vehicle *v, int x, int y)
 {
-	if (RailVehInfo(v->engine_type)->flags & RVI_WAGON) {
+	if (RailVehInfo(v->engine_type)->railveh_type == RAILVEH_WAGON) {
 		SetDParam(0, GetCustomEngineName(v->engine_type));
 		SetDParam(1, v->value);
 		DrawString(x, y, STR_882D_VALUE, 0x10);

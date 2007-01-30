@@ -187,8 +187,8 @@ static int CDECL TrainEnginePowerSorter(const void *a, const void *b)
 	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
 	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
 
-	int va = rvi_a->power << (rvi_a->flags & RVI_MULTIHEAD ? 1 : 0);
-	int vb = rvi_b->power << (rvi_b->flags & RVI_MULTIHEAD ? 1 : 0);
+	int va = rvi_a->power << (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
+	int vb = rvi_b->power << (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
 	int r = va - vb;
 
 	return _internal_sort_order ? -r : r;
@@ -199,8 +199,8 @@ static int CDECL TrainEngineRunningCostSorter(const void *a, const void *b)
 	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
 	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
 
-	int va = rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class] * (rvi_a->flags & RVI_MULTIHEAD ? 2 : 1);
-	int vb = rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class] * (rvi_b->flags & RVI_MULTIHEAD ? 2 : 1);
+	int va = rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class] * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	int vb = rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class] * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
 	int r = va - vb;
 
 	return _internal_sort_order ? -r : r;
@@ -228,8 +228,8 @@ static int CDECL TrainEnginesThenWagonsSorter(const void *a, const void *b)
 {
 	EngineID va = *(const EngineID*)a;
 	EngineID vb = *(const EngineID*)b;
-	int val_a = ((RailVehInfo(va)->flags & RVI_WAGON) != 0) ? 1 : 0;
-	int val_b = ((RailVehInfo(vb)->flags & RVI_WAGON) != 0) ? 1 : 0;
+	int val_a = (RailVehInfo(va)->railveh_type != RAILVEH_WAGON ? 1 : 0);
+	int val_b = (RailVehInfo(vb)->railveh_type != RAILVEH_WAGON ? 1 : 0);
 	int r = val_a - val_b;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -388,7 +388,7 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 /* Draw locomotive specific details */
 static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi)
 {
-	int multihead = (rvi->flags&RVI_MULTIHEAD?1:0);
+	int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
 
 	/* Purchase Cost - Engine weight */
 	SetDParam(0, rvi->base_cost * (_price.build_railvehicle >> 3) >> 5);
@@ -529,7 +529,7 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 
 			refitable = (EngInfo(engine_number)->refit_mask != 0) && (rvi->capacity > 0);
 
-			if (rvi->flags & RVI_WAGON) {
+			if (rvi->railveh_type == RAILVEH_WAGON) {
 				y = DrawRailWagonPurchaseInfo(x, y, engine_number, rvi);
 			} else {
 				y = DrawRailEnginePurchaseInfo(x, y, engine_number, rvi);
@@ -540,7 +540,7 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 				SetDParam(0, CT_INVALID);
 				SetDParam(2, STR_EMPTY);
 			} else {
-				int multihead = (rvi->flags & RVI_MULTIHEAD ? 1 : 0);
+				int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
 
 				SetDParam(0, rvi->cargo_type);
 				SetDParam(1, (rvi->capacity * (CountArticulatedParts(engine_number) + 1)) << multihead);
@@ -566,7 +566,7 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 	}
 
 	/* Draw details, that applies to all types except rail wagons */
-	if (e->type != VEH_Train || !(RailVehInfo(engine_number)->flags & RVI_WAGON)) {
+	if (e->type != VEH_Train || RailVehInfo(engine_number)->railveh_type != RAILVEH_WAGON) {
 		/* Design date - Life length */
 		SetDParam(0, ymd.year);
 		SetDParam(1, e->lifelength);
@@ -607,7 +607,7 @@ static void GenerateBuildTrainList(Window *w)
 		if (!IsEngineBuildable(eid, VEH_Train, _local_player)) continue;
 
 		EngList_Add(&bv->eng_list, eid);
-		if ((rvi->flags & RVI_WAGON) == 0) {
+		if (rvi->railveh_type != RAILVEH_WAGON) {
 			num_engines++;
 		} else {
 			num_wagons++;
@@ -826,7 +826,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 			if (sel_eng != INVALID_ENGINE) {
 				switch (bv->vehicle_type) {
 					case VEH_Train:
-						DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->flags & RVI_WAGON) ? CcBuildWagon : CcBuildLoco,
+						DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildLoco,
 								   CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
 						break;
 					case VEH_Road:

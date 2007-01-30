@@ -285,7 +285,7 @@ int32 CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 // Determine if an engine type is a wagon (and not a loco)
 static bool IsWagon(EngineID index)
 {
-	return index < NUM_TRAIN_ENGINES && RailVehInfo(index)->flags & RVI_WAGON;
+	return index < NUM_TRAIN_ENGINES && RailVehInfo(index)->railveh_type == RAILVEH_WAGON;
 }
 
 static void NewVehicleAvailable(Engine *e)

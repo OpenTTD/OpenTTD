@@ -143,8 +143,8 @@ static EngineID AiChooseTrainToBuild(RailType railtype, int32 money, byte flag, 
 		const Engine* e = GetEngine(i);
 
 		if (!IsCompatibleRail(rvi->railtype, railtype) ||
-				rvi->flags & RVI_WAGON ||
-				(rvi->flags & RVI_MULTIHEAD && flag & 1) ||
+				rvi->railveh_type == RAILVEH_WAGON ||
+				(rvi->railveh_type == RAILVEH_MULTIHEAD && flag & 1) ||
 				!HASBIT(e->player_avail, _current_player) ||
 				e->reliability < 0x8A3D) {
 			continue;
@@ -2366,7 +2366,7 @@ static EngineID AiFindBestWagon(CargoID cargo, RailType railtype)
 		const Engine* e = GetEngine(i);
 
 		if (!IsCompatibleRail(rvi->railtype, railtype) ||
-				!(rvi->flags & RVI_WAGON) ||
+				rvi->railveh_type != RAILVEH_WAGON ||
 				!HASBIT(e->player_avail, _current_player)) {
 			continue;
 		}

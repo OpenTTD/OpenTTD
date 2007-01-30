@@ -656,7 +656,7 @@ byte GetPlayerRailtypes(PlayerID p)
 				(HASBIT(e->player_avail, p) || _date >= e->intro_date + 365)) {
 			const RailVehicleInfo *rvi = RailVehInfo(i);
 
-			if (!(rvi->flags & RVI_WAGON)) {
+			if (rvi->railveh_type != RAILVEH_WAGON) {
 				assert(rvi->railtype < RAILTYPE_END);
 				SETBIT(rt, rvi->railtype);
 			}

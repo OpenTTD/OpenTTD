@@ -787,7 +787,7 @@ int32 GetRefitCost(EngineID engine_type)
 		case VEH_Road: base_cost = _price.roadveh_base; break;
 		case VEH_Aircraft: base_cost = _price.aircraft_base; break;
 		case VEH_Train:
-			base_cost = 2 * ((RailVehInfo(engine_type)->flags & RVI_WAGON) ?
+			base_cost = 2 * ((RailVehInfo(engine_type)->railveh_type == RAILVEH_WAGON) ?
 							 _price.build_railwagon : _price.build_railvehicle);
 			break;
 		default: NOT_REACHED(); break;
@@ -2243,7 +2243,7 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 
 		while (v->u.rail.cached_total_length > old_total_length) {
 			// the train is too long. We will remove cars one by one from the start of the train until it's short enough
-			while (w != NULL && !(RailVehInfo(w->engine_type)->flags&RVI_WAGON) ) {
+			while (w != NULL && RailVehInfo(w->engine_type)->railveh_type != RAILVEH_WAGON) {
 				w = GetNextVehicle(w);
 			}
 			if (w == NULL) {
@@ -2850,7 +2850,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 					case RAILTYPE_ELECTRIC:
 					{
 						if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
-						if (rvi->flags & RVI_WAGON) {
+						if (rvi->railveh_type == RAILVEH_WAGON) {
 							if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL || cargo_type == CT_VALUABLES) {
 								if (parent_engine_type == INVALID_ENGINE) {
 									scheme = LS_PASSENGER_WAGON_STEAM;

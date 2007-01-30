@@ -215,10 +215,10 @@ static void dewagonize(int condition, int engine)
 
 	if (condition != 0) {
 		ei->unk2 &= ~0x80;
-		rvi->flags &= ~2;
+		rvi->railveh_type = RAILVEH_SINGLEHEAD;
 	} else {
 		ei->unk2 |= 0x80;
-		rvi->flags |= 2;
+		rvi->railveh_type = RAILVEH_WAGON;
 	}
 }
 
@@ -265,7 +265,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint16 power = grf_load_word(&buf);
 
-				if (rvi[i].flags & RVI_MULTIHEAD) power /= 2;
+				if (rvi[i].railveh_type == RAILVEH_MULTIHEAD) power /= 2;
 
 				rvi[i].power = power;
 				dewagonize(power, engine + i);
@@ -276,7 +276,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 runcostfact = grf_load_byte(&buf);
 
-				if (rvi[i].flags & RVI_MULTIHEAD) runcostfact /= 2;
+				if (rvi[i].railveh_type == RAILVEH_MULTIHEAD) runcostfact /= 2;
 
 				rvi[i].running_cost_base = runcostfact;
 			}
@@ -315,19 +315,19 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				uint8 dual = grf_load_byte(&buf);
 
 				if (dual != 0) {
-					if (!(rvi[i].flags & RVI_MULTIHEAD)) {
+					if (rvi[i].railveh_type != RAILVEH_MULTIHEAD) {
 						// adjust power and running cost if needed
 						rvi[i].power /= 2;
 						rvi[i].running_cost_base /= 2;
 					}
-					rvi[i].flags |= RVI_MULTIHEAD;
+					rvi[i].railveh_type = RAILVEH_MULTIHEAD;
 				} else {
-					if (rvi[i].flags & RVI_MULTIHEAD) {
+					if (rvi[i].railveh_type == RAILVEH_MULTIHEAD) {
 						// adjust power and running cost if needed
 						rvi[i].power *= 2;
 						rvi[i].running_cost_base *= 2;
 					}
-					rvi[i].flags &= ~RVI_MULTIHEAD;
+					rvi[i].railveh_type = RAILVEH_SINGLEHEAD;
 				}
 			}
 			break;
@@ -3588,7 +3588,7 @@ static void CalculateRefitMasks(void)
 			if (xor_mask == 0 && (
 						GetEngine(engine)->type != VEH_Train || (
 							RailVehInfo(engine)->capacity != 0 &&
-							!(RailVehInfo(engine)->flags & RVI_WAGON)
+							RailVehInfo(engine)->railveh_type != RAILVEH_WAGON
 						)
 					)) {
 				xor_mask = _default_refitmasks[GetEngine(engine)->type - VEH_Train];
@@ -3797,6 +3797,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 	// Pre-calculate all refit masks after loading GRF files
 	CalculateRefitMasks();
 }
+
 
 
 

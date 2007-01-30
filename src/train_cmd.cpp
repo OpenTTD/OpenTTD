@@ -194,11 +194,10 @@ void TrainConsistChanged(Vehicle* v)
 				if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = callback;
 			}
 
-			if ((rvi_v->pow_wag_power != 0) && (rvi_u->flags & RVI_WAGON) && UsesWagonOverride(u)) {
-				if (u->u.rail.cached_vis_effect < 0x40) {
-					/* wagon is powered */
-					SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
-				}
+			if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
+				UsesWagonOverride(u) && (u->u.rail.cached_vis_effect < 0x40)) {
+				/* wagon is powered */
+				SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
 			}
 
 			/* Do not count powered wagons for the compatible railtypes, as wagons always
@@ -215,9 +214,9 @@ void TrainConsistChanged(Vehicle* v)
 			}
 
 			// max speed is the minimum of the speed limits of all vehicles in the consist
-			if (!(rvi_u->flags & RVI_WAGON) || _patches.wagon_speed_limits)
-				if (rvi_u->max_speed != 0 && !UsesWagonOverride(u))
-					max_speed = min(rvi_u->max_speed, max_speed);
+			if ((rvi_u->railveh_type != RAILVEH_WAGON || _patches.wagon_speed_limits) &&
+				rvi_u->max_speed != 0 && !UsesWagonOverride(u))
+				max_speed = min(rvi_u->max_speed, max_speed);
 		}
 
 		// check the vehicle length (callback)
@@ -490,7 +489,7 @@ void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
 		image = (6 & _engine_sprite_and[img]) + _engine_sprite_base[img];
 	}
 
-	if (rvi->flags & RVI_MULTIHEAD) {
+	if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
 		DrawSprite(image, pal, x - 14, y);
 		x += 15;
 		image = 0;
@@ -765,11 +764,11 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* We need to see if the engine got power on the tile to avoid eletric engines in non-electric depots */
 	if (!HasPowerOnRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
 
-	if (rvi->flags & RVI_WAGON) return CmdBuildRailWagon(p1, tile, flags);
+	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(p1, tile, flags);
 
 	value = EstimateTrainCost(rvi);
 
-	num_vehicles = (rvi->flags & RVI_MULTIHEAD) ? 2 : 1;
+	num_vehicles = (rvi->railveh_type == RAILVEH_MULTIHEAD) ? 2 : 1;
 	num_vehicles += CountArticulatedParts(p1);
 
 	if (!(flags & DC_QUERY_COST)) {
@@ -834,7 +833,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			VehiclePositionChanged(v);
 
-			if (rvi->flags & RVI_MULTIHEAD) {
+			if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
 				SetMultiheaded(v);
 				AddRearEngineToMultiheadedTrain(vl[0], vl[1], true);
 				/* Now we need to link the front and rear engines together
@@ -1357,7 +1356,7 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (v == first && IsFrontEngine(first)) {
 			DeleteWindowById(WC_VEHICLE_VIEW, first->index);
 		}
-		if (IsLocalPlayer() && (p1 == 1 || !(RailVehInfo(v->engine_type)->flags & RVI_WAGON))) {
+		if (IsLocalPlayer() && (p1 == 1 || RailVehInfo(v->engine_type)->railveh_type != RAILVEH_WAGON)) {
 			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
 		}
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
@@ -2090,7 +2089,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 		int x, y;
 
 		// no smoke?
-		if ((rvi->flags & RVI_WAGON && effect_type == 0) ||
+		if ((rvi->railveh_type == RAILVEH_WAGON && effect_type == 0) ||
 				disable_effect ||
 				rvi->railtype > RAILTYPE_ELECTRIC ||
 				v->vehstatus & VS_HIDDEN) {
@@ -3752,7 +3751,7 @@ void ConvertOldMultiheadToNew(void)
 					CLRBIT(u->subtype, 7);
 					switch (u->subtype) {
 						case 0: /* TS_Front_Engine */
-							if (rvi->flags & RVI_MULTIHEAD) SetMultiheaded(u);
+							if (rvi->railveh_type == RAILVEH_MULTIHEAD) SetMultiheaded(u);
 							SetFrontEngine(u);
 							SetTrainEngine(u);
 							break;
@@ -3764,17 +3763,17 @@ void ConvertOldMultiheadToNew(void)
 
 						case 2: /* TS_Not_First */
 							u->subtype = 0;
-							if (rvi->flags & RVI_WAGON) {
+							if (rvi->railveh_type == RAILVEH_WAGON) {
 								// normal wagon
 								SetTrainWagon(u);
 								break;
 							}
-							if (rvi->flags & RVI_MULTIHEAD && rvi->image_index == u->spritenum - 1) {
+							if (rvi->railveh_type == RAILVEH_MULTIHEAD && rvi->image_index == u->spritenum - 1) {
 								// rear end of a multiheaded engine
 								SetMultiheaded(u);
 								break;
 							}
-							if (rvi->flags & RVI_MULTIHEAD) SetMultiheaded(u);
+							if (rvi->railveh_type == RAILVEH_MULTIHEAD) SetMultiheaded(u);
 							SetTrainEngine(u);
 							break;
 

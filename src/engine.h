@@ -9,9 +9,15 @@
 #include "rail.h"
 #include "sound.h"
 
+enum RailVehicleTypes {
+	RAILVEH_SINGLEHEAD,
+	RAILVEH_MULTIHEAD,
+	RAILVEH_WAGON,
+};
+
 typedef struct RailVehicleInfo {
 	byte image_index;
-	byte flags; /* 1=multihead engine, 2=wagon */
+	RailVehicleTypes railveh_type;
 	byte base_cost;
 	RailTypeByte railtype;
 	uint16 max_speed;
@@ -115,11 +121,6 @@ enum {
 	EF_ROAD_TRAM  = 0, ///< Road vehicle is a tram/light rail vehicle (unsup)
 	EF_USES_2CC   = 1, ///< Vehicle uses two company colours
 	EF_RAIL_IS_MU = 2, ///< Rail vehicle is a multiple-unit (DMU/EMU)
-};
-
-enum {
-	RVI_MULTIHEAD = 1,
-	RVI_WAGON = 2,
 };
 
 enum {
