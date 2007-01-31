@@ -2,7 +2,7 @@
 ##ownname Slovenščina
 ##isocode sl_SL
 ##plural 8
-##case r d t 3sk
+##case r d t
 
 ##id 0x0000
 STR_NULL                                                        :
