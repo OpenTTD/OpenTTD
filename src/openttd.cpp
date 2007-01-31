@@ -1285,16 +1285,28 @@ bool AfterLoadGame(void)
 	/* From this version on there can be multiple road stops of the same type per
 	 * station. Convert the existing stops to the new internal data structure.
 	 */
-	if (CheckSavegameVersion(6)) {
-		for (TileIndex t = 0; t < map_size; t++) {
-			if (IsRoadStopTile(t)) {
-				RoadStop *rs = new RoadStop(t);
-				if (rs == NULL) error("Too many road stops in savegame");
+	for (TileIndex t = 0; t < map_size; t++) {
+		switch (GetTileType(t)) {
+			case MP_STATION:
+				switch (GetStationType(t)) {
+					case STATION_TRUCK:
+					case STATION_BUS:
+						if (CheckSavegameVersion(6)) {
+							RoadStop *rs = new RoadStop(t);
+							if (rs == NULL) error("Too many road stops in savegame");
 
-				Station *st = GetStationByTile(t);
-				RoadStop **head = IsTruckStop(t) ? &st->truck_stops : &st->bus_stops;
-				*head = rs;
-			}
+							Station *st = GetStationByTile(t);
+							RoadStop **head =
+								IsTruckStop(t) ? &st->truck_stops : &st->bus_stops;
+							*head = rs;
+						}
+						break;
+
+					default: break;
+				}
+				break;
+
+			default: break;
 		}
 	}
 
