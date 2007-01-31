@@ -2707,7 +2707,7 @@ void DeleteOilRig(TileIndex tile)
 {
 	Station* st = GetStationByTile(tile);
 
-	DoClearSquare(tile);
+	MakeWater(tile);
 
 	st->dock_tile = 0;
 	st->airport_tile = 0;
