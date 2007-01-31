@@ -235,9 +235,10 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientState* cs)
 	}
 
 	switch (res) {
-		case NETWORK_RECV_STATUS_DESYNC:   errorno = NETWORK_ERROR_DESYNC; break;
-		case NETWORK_RECV_STATUS_SAVEGAME: errorno = NETWORK_ERROR_SAVEGAME_FAILED; break;
-		default:                           errorno = NETWORK_ERROR_GENERAL; break;
+		case NETWORK_RECV_STATUS_DESYNC:          errorno = NETWORK_ERROR_DESYNC; break;
+		case NETWORK_RECV_STATUS_SAVEGAME:        errorno = NETWORK_ERROR_SAVEGAME_FAILED; break;
+		case NETWORK_RECV_STATUS_NEWGRF_MISMATCH: errorno = NETWORK_ERROR_NEWGRF_MISMATCH; break;
+		default:                                  errorno = NETWORK_ERROR_GENERAL; break;
 	}
 	// This means we fucked up and the server closed the connection
 	if (res != NETWORK_RECV_STATUS_SERVER_ERROR && res != NETWORK_RECV_STATUS_SERVER_FULL &&
@@ -267,6 +268,7 @@ char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last)
 		STR_NETWORK_ERR_CLIENT_SAVEGAME,
 		STR_NETWORK_ERR_CLIENT_CONNECTION_LOST,
 		STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR,
+		STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH,
 		STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED,
 		STR_NETWORK_ERR_CLIENT_NOT_EXPECTED,
 		STR_NETWORK_ERR_CLIENT_WRONG_REVISION,

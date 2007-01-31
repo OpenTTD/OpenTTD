@@ -77,6 +77,18 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
+DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
+{
+	//
+	// Packet: CLIENT_NEWGRFS_CHECKED
+	// Function: Tell the server that we have the required GRFs
+	// Data:
+	//
+
+	Packet *p = NetworkSend_Init(PACKET_CLIENT_NEWGRFS_CHECKED);
+	NetworkSend_Packet(p, MY_CLIENT);
+}
+
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_PASSWORD)(NetworkPasswordType type, const char *password)
 {
 	//
@@ -405,6 +417,39 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
+}
+
+DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)
+{
+	uint grf_count = NetworkRecv_uint8(MY_CLIENT, p);
+	NetworkRecvStatus ret = NETWORK_RECV_STATUS_OKAY;
+
+	/* Check all GRFs */
+	for (; grf_count > 0; grf_count--) {
+		GRFConfig c;
+		const GRFConfig *f;
+
+		NetworkRecv_GRFIdentifier(MY_CLIENT, p, &c);
+
+		/* Check whether we know this GRF */
+		f = FindGRFConfig(c.grfid, c.md5sum);
+		if (f == NULL) {
+			/* We do not know this GRF, bail out of initialization */
+			char buf[sizeof(c.md5sum) * 2 + 1];
+			md5sumToString(buf, lastof(buf), c.md5sum);
+			DEBUG(grf, 0)("NewGRF %08X not found; checksum %s", BSWAP32(c.grfid), buf);
+			ret = NETWORK_RECV_STATUS_NEWGRF_MISMATCH;
+		}
+	}
+
+	if (ret == NETWORK_RECV_STATUS_OKAY) {
+		/* Start receiving the map */
+		SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)();
+	} else {
+		/* NewGRF mismatch, bail out */
+		_switch_mode_errorstr = STR_NETWORK_ERR_NEWGRF_MISMATCH;
+	}
+	return ret;
 }
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
@@ -788,6 +833,8 @@ static NetworkClientPacket* const _network_client_packet[] = {
 	RECEIVE_COMMAND(PACKET_SERVER_NEWGAME),
 	RECEIVE_COMMAND(PACKET_SERVER_RCON),
 	NULL, /*PACKET_CLIENT_RCON,*/
+	RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS),
+	NULL, /*PACKET_CLIENT_NEWGRFS_CHECKED,*/
 };
 
 // If this fails, check the array above with network_data.h

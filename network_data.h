@@ -10,6 +10,8 @@
 // Is the network enabled?
 #ifdef ENABLE_NETWORK
 
+#include "newgrf_config.h"
+
 #define SEND_MTU 1460
 #define MAX_TEXT_MSG_LEN 1024 /* long long long long sentences :-) */
 
@@ -64,6 +66,7 @@ typedef enum {
 typedef enum {
 	NETWORK_RECV_STATUS_OKAY,
 	NETWORK_RECV_STATUS_DESYNC,
+	NETWORK_RECV_STATUS_NEWGRF_MISMATCH,  ///< We did not have the required NewGRFs
 	NETWORK_RECV_STATUS_SAVEGAME,
 	NETWORK_RECV_STATUS_CONN_LOST,
 	NETWORK_RECV_STATUS_MALFORMED_PACKET,
@@ -81,6 +84,7 @@ typedef enum {
 	NETWORK_ERROR_SAVEGAME_FAILED,
 	NETWORK_ERROR_CONNECTION_LOST,
 	NETWORK_ERROR_ILLEGAL_PACKET,
+	NETWORK_ERROR_NEWGRF_MISMATCH,
 
 	// Signals from servers
 	NETWORK_ERROR_NOT_AUTHORIZED,
@@ -166,6 +170,8 @@ typedef enum {
 	PACKET_SERVER_NEWGAME,
 	PACKET_SERVER_RCON,
 	PACKET_CLIENT_RCON,
+	PACKET_SERVER_CHECK_NEWGRFS,
+	PACKET_CLIENT_NEWGRFS_CHECKED,
 	PACKET_END // Should ALWAYS be on the end of this list!! (period)
 } PacketType;
 
@@ -216,6 +222,9 @@ uint32 NetworkRecv_uint32(NetworkClientState *cs, Packet *packet);
 uint64 NetworkRecv_uint64(NetworkClientState *cs, Packet *packet);
 void NetworkRecv_string(NetworkClientState *cs, Packet *packet, char* buffer, size_t size);
 Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status);
+
+void NetworkSend_GRFIdentifier(Packet *p, const GRFConfig *c);
+void NetworkRecv_GRFIdentifier(NetworkClientState *cs, Packet *p, GRFConfig *c);
 
 bool NetworkSend_Packets(NetworkClientState *cs);
 void NetworkExecuteCommand(CommandPacket *cp);

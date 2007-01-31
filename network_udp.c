@@ -45,34 +45,6 @@ static void NetworkSendUDP_Packet(SOCKET udp, Packet* p, struct sockaddr_in* rec
 
 static NetworkClientState _udp_cs;
 
-/**
- * Serializes the GRFIdentifier (GRF ID and MD5 checksum) to the packet
- * @param p the packet to write the data to
- * @param c the configuration to write the GRF ID and MD5 checksum from
- */
-static void NetworkSend_GRFIdentifier(Packet *p, const GRFConfig *c)
-{
-	uint j;
-	NetworkSend_uint32(p, c->grfid);
-	for (j = 0; j < sizeof(c->md5sum); j++) {
-		NetworkSend_uint8 (p, c->md5sum[j]);
-	}
-}
-
-/**
- * Deserializes the GRFIdentifier (GRF ID and MD5 checksum) from the packet
- * @param p the packet to read the data from
- * @param c the configuration to write the GRF ID and MD5 checksum to
- */
-static void NetworkRecv_GRFIdentifier(Packet *p, GRFConfig *c)
-{
-	uint j;
-	c->grfid = NetworkRecv_uint32(&_udp_cs, p);
-	for (j = 0; j < sizeof(c->md5sum); j++) {
-		c->md5sum[j] = NetworkRecv_uint8(&_udp_cs, p);
-	}
-}
-
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 {
 	Packet *packet;
@@ -173,7 +145,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 
 			for (i = 0; i < num_grfs; i++) {
 				c = calloc(1, sizeof(*c));
-				NetworkRecv_GRFIdentifier(p, c);
+				NetworkRecv_GRFIdentifier(&_udp_cs, p, c);
 
 				/* Find the matching GRF file */
 				f = FindGRFConfig(c->grfid, c->md5sum);
@@ -457,7 +429,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS)
 		GRFConfig c;
 		const GRFConfig *f;
 
-		NetworkRecv_GRFIdentifier(p, &c);
+		NetworkRecv_GRFIdentifier(&_udp_cs, p, &c);
 
 		/* Find the matching GRF file */
 		f = FindGRFConfig(c.grfid, c.md5sum);
@@ -512,7 +484,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS)
 		char name[NETWORK_GRF_NAME_LENGTH];
 		GRFConfig c;
 
-		NetworkRecv_GRFIdentifier(p, &c);
+		NetworkRecv_GRFIdentifier(&_udp_cs, p, &c);
 		NetworkRecv_string(&_udp_cs, p, name, sizeof(name));
 
 		/* An empty name is not possible under normal circumstances

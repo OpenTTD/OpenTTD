@@ -293,6 +293,36 @@ void NetworkRecv_string(NetworkClientState *cs, Packet *p, char *buffer, size_t 
 // (the line: 'p->size = (uint16)p->buffer[0];' and below)
 assert_compile(sizeof(PacketSize) == 2);
 
+
+/**
+ * Serializes the GRFIdentifier (GRF ID and MD5 checksum) to the packet
+ * @param p the packet to write the data to
+ * @param c the configuration to write the GRF ID and MD5 checksum from
+ */
+void NetworkSend_GRFIdentifier(Packet *p, const GRFConfig *c)
+{
+	uint j;
+	NetworkSend_uint32(p, c->grfid);
+	for (j = 0; j < sizeof(c->md5sum); j++) {
+		NetworkSend_uint8 (p, c->md5sum[j]);
+	}
+}
+
+/**
+ * Deserializes the GRFIdentifier (GRF ID and MD5 checksum) from the packet
+ * @param p the packet to read the data from
+ * @param c the configuration to write the GRF ID and MD5 checksum to
+ */
+void NetworkRecv_GRFIdentifier(NetworkClientState *cs, Packet *p, GRFConfig *c)
+{
+	uint j;
+	c->grfid = NetworkRecv_uint32(cs, p);
+	for (j = 0; j < sizeof(c->md5sum); j++) {
+		c->md5sum[j] = NetworkRecv_uint8(cs, p);
+	}
+}
+
+
 Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 {
 	ssize_t res;
