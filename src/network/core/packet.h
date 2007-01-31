@@ -24,9 +24,9 @@ typedef uint8  PacketType; ///< Identifier for the packet
  * packet. Reading past the size of the packet when receiving
  * will return all 0 values and "" in case of the string.
  */
-typedef struct Packet {
+struct Packet {
 	/** The next packet. Used for queueing packets before sending. */
-	struct Packet *next;
+	Packet *next;
 	/** The size of the whole packet for received packets. For packets
 	 * that will be sent, the value is filled in just before the
 	 * actual transmission. */
@@ -35,7 +35,7 @@ typedef struct Packet {
 	PacketSize pos;
 	/** The buffer of this packet */
 	byte buffer[SEND_MTU];
-} Packet;
+};
 
 
 Packet *NetworkSend_Init(const PacketType type);

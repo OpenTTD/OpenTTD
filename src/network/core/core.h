@@ -30,7 +30,7 @@ typedef enum {
 } NetworkRecvStatus;
 
 /** Forward declaration due to circular dependencies */
-class Packet;
+struct Packet;
 
 /**
  * SocketHandler for all network sockets in OpenTTD.
