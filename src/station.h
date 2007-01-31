@@ -277,4 +277,6 @@ static inline bool IsBuoy(const Station* st)
 	return (st->had_vehicle_of_type & HVOT_BUOY) != 0; /* XXX: We should really ditch this ugly coding and switch to something sane... */
 }
 
+void DeleteOilRig(TileIndex t);
+
 #endif /* STATION_H */

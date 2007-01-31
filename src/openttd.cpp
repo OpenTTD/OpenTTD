@@ -1302,6 +1302,19 @@ bool AfterLoadGame(void)
 						}
 						break;
 
+					case STATION_OILRIG: {
+						/* Very old savegames sometimes have phantom oil rigs, i.e.
+						 * an oil rig which got shut down, but not completly removed from
+						 * the map
+						 */
+						TileIndex t1 = TILE_ADDXY(t, 1, 0);
+						if (!IsTileType(t1, MP_INDUSTRY) ||
+								GetIndustryGfx(t1) != GFX_OILRIG_3) {
+							DeleteOilRig(t);
+						}
+						break;
+					}
+
 					default: break;
 				}
 				break;

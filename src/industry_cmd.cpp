@@ -28,7 +28,6 @@
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
-void DeleteOilRig(TileIndex tile);
 
 static byte _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
