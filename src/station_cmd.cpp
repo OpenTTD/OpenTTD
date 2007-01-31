@@ -2866,10 +2866,7 @@ static const SaveLoad _station_desc[] = {
 	    SLE_VAR(Station, facilities,                 SLE_UINT8),
 	    SLE_VAR(Station, airport_type,               SLE_UINT8),
 
-	// truck/bus_stop_status was stored here in savegame format 0 - 6
-	SLE_CONDVAR(Station, truck_stop_status_obsolete, SLE_UINT8, 0, 5),
-	SLE_CONDVAR(Station, bus_stop_status_obsolete,   SLE_UINT8, 0, 5),
-
+	SLE_CONDNULL(2, 0, 5), // Truck/bus stop status
 	SLE_CONDNULL(1, 0, 4), // Blocked months
 
 	SLE_CONDVAR(Station, airport_flags,              SLE_VAR_U32 | SLE_FILE_U16,  0,  2),

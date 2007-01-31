@@ -146,9 +146,6 @@ struct Station {
 	TileIndex bus_tile_obsolete;
 	TileIndex lorry_tile_obsolete;
 
-	byte truck_stop_status_obsolete;
-	byte bus_stop_status_obsolete;
-
 	StationRect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
 
 	static const int cDebugCtorLevel = 3;
