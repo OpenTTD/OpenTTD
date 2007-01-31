@@ -538,9 +538,11 @@ static void NetworkHandleUDPPacket(Packet* p, struct sockaddr_in* client_addr)
 		_network_udp_packet[type](p, client_addr);
 	} else {
 		if (!_udp_cs.has_quit) {
-			DEBUG(net, 0)("[NET][UDP] Received invalid packet type %d", type);
+			DEBUG(net, 0)("[NET][UDP] Received invalid packet type %d from %s:%d",
+					type, inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 		} else {
-			DEBUG(net, 0)("[NET][UDP] Received illegal packet");
+			DEBUG(net, 0)("[NET][UDP] Received illegal packet from %s:%d",
+					inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 		}
 	}
 }
