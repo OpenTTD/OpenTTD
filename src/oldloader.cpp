@@ -603,9 +603,11 @@ static const OldChunks station_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Station, owner ),
 	OCL_SVAR(  OC_UINT8, Station, facilities ),
 	OCL_SVAR(  OC_UINT8, Station, airport_type ),
-	OCL_NULL( 2 ),         // Bus/truck status, no longer in use
-	OCL_SVAR(  OC_UINT8, Station, blocked_months_obsolete ),
-	OCL_NULL( 1 ),         // Unknown
+	/* Bus/truck status, no longer in use
+	 * Blocked months
+	 * Unknown
+	 */
+	OCL_NULL( 4 ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Station, airport_flags ),
 	OCL_NULL( 2 ),         // last_vehicle. now last_vehicle_type
 

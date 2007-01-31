@@ -148,7 +148,6 @@ struct Station {
 
 	byte truck_stop_status_obsolete;
 	byte bus_stop_status_obsolete;
-	byte blocked_months_obsolete;
 
 	StationRect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
 
