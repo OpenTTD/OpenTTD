@@ -2041,14 +2041,6 @@ void Aircraft_Tick(Vehicle *v)
 	}
 }
 
-void UpdateOilRig(void)
-{
-	Station* st;
-
-	FOR_ALL_STATIONS(st) {
-		if (st->airport_type == 5) st->airport_type = AT_OILRIG;
-	}
-}
 
 // need to be called to load aircraft from old version
 void UpdateOldAircraft(void)
@@ -2060,8 +2052,6 @@ void UpdateOldAircraft(void)
 	// set airport_flags to 0 for all airports just to be sure
 	FOR_ALL_STATIONS(st) {
 		st->airport_flags = 0; // reset airport
-		// type of oilrig has been moved, update it (3-5)
-		if (st->airport_type == 3) st->airport_type = AT_OILRIG;
 	}
 
 	FOR_ALL_VEHICLES(v_oldstyle) {

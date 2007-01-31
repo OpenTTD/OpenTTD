@@ -1154,7 +1154,6 @@ static void UpdateSignOwner(void)
 }
 
 extern void UpdateOldAircraft( void );
-extern void UpdateOilRig( void );
 
 
 static inline RailType UpdateRailType(RailType rt, RailType min)
@@ -1278,9 +1277,6 @@ bool AfterLoadGame(void)
 	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
 	MarkWholeScreenDirty();
 
-	// In 5.1, Oilrigs have been moved (again)
-	if (CheckSavegameVersionOldStyle(5, 1)) UpdateOilRig();
-
 	/* From this version on there can be multiple road stops of the same type per
 	 * station. Convert the existing stops to the new internal data structure.
 	 */
@@ -1307,8 +1303,14 @@ bool AfterLoadGame(void)
 						 * the map
 						 */
 						TileIndex t1 = TILE_ADDXY(t, 1, 0);
-						if (!IsTileType(t1, MP_INDUSTRY) ||
-								GetIndustryGfx(t1) != GFX_OILRIG_3) {
+						if (IsTileType(t1, MP_INDUSTRY) &&
+								GetIndustryGfx(t1) == GFX_OILRIG_3) {
+							/* The internal encoding of oil rigs was changed twice.
+							 * It was 3 (till 2.2) and later 5 (till 5.1).
+							 * Setting it unconditionally does not hurt.
+							 */
+							GetStationByTile(t)->airport_type = AT_OILRIG;
+						} else {
 							DeleteOilRig(t);
 						}
 						break;
