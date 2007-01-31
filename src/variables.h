@@ -312,7 +312,7 @@ VARDEF SmallFiosItem _file_to_saveload;
 
 VARDEF Vehicle *_place_clicked_vehicle;
 
-VARDEF char _ini_videodriver[16], _ini_musicdriver[16], _ini_sounddriver[16];
+VARDEF char _ini_videodriver[32], _ini_musicdriver[32], _ini_sounddriver[32];
 
 // Used for dynamic language support
 typedef struct {
