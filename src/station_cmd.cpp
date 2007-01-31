@@ -80,23 +80,12 @@ DEFINE_OLD_POOL(RoadStop, RoadStop, RoadStopPoolNewBlock, NULL)
 extern void UpdateAirplanesOnNewStation(Station *st);
 
 
-RoadStop* GetPrimaryRoadStop(const Station* st, RoadStop::Type type)
-{
-	switch (type) {
-		case RoadStop::BUS:   return st->bus_stops;
-		case RoadStop::TRUCK: return st->truck_stops;
-		default: NOT_REACHED();
-	}
-
-	return NULL;
-}
-
 RoadStop* GetRoadStopByTile(TileIndex tile, RoadStop::Type type)
 {
 	const Station* st = GetStationByTile(tile);
 	RoadStop* rs;
 
-	for (rs = GetPrimaryRoadStop(st, type); rs->xy != tile; rs = rs->next) {
+	for (rs = st->GetPrimaryRoadStop(type); rs->xy != tile; rs = rs->next) {
 		assert(rs->next != NULL);
 	}
 
@@ -109,7 +98,7 @@ uint GetNumRoadStopsInStation(const Station* st, RoadStop::Type type)
 	const RoadStop *rs;
 
 	assert(st != NULL);
-	for (rs = GetPrimaryRoadStop(st, type); rs != NULL; rs = rs->next) num++;
+	for (rs = st->GetPrimaryRoadStop(type); rs != NULL; rs = rs->next) num++;
 
 	return num;
 }

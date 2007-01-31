@@ -97,6 +97,12 @@ struct StationRect : public Rect {
 };
 
 struct Station {
+	public:
+		RoadStop *GetPrimaryRoadStop(RoadStop::Type type) const
+		{
+			return type == RoadStop::BUS ? bus_stops : truck_stops;
+		}
+
 	TileIndex xy;
 	RoadStop *bus_stops;
 	RoadStop *truck_stops;
@@ -270,7 +276,6 @@ const DrawTileSprites *GetStationTileLayout(byte gfx);
 void StationPickerDrawSprite(int x, int y, RailType railtype, int image);
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStop::Type type);
-RoadStop * GetPrimaryRoadStop(const Station *st, RoadStop::Type type);
 uint GetNumRoadStops(const Station* st, RoadStop::Type type);
 RoadStop * AllocateRoadStop( void );
 void ClearSlot(Vehicle *v);

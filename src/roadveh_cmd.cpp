@@ -690,8 +690,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 				v->last_station_visited = INVALID_STATION;
 			}
 
-			rs = GetPrimaryRoadStop(
-				GetStation(order->dest),
+			rs = GetStation(order->dest)->GetPrimaryRoadStop(
 				v->cargo_type == CT_PASSENGERS ? RoadStop::BUS : RoadStop::TRUCK
 			);
 
@@ -1660,7 +1659,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot == NULL && !(v->vehstatus & VS_CRASHED)) {
 		Station* st = GetStation(v->current_order.dest);
-		RoadStop* rs = GetPrimaryRoadStop(st, v->cargo_type == CT_PASSENGERS ? RoadStop::BUS : RoadStop::TRUCK);
+		RoadStop* rs = st->GetPrimaryRoadStop(v->cargo_type == CT_PASSENGERS ? RoadStop::BUS : RoadStop::TRUCK);
 		RoadStop* best = NULL;
 
 		if (rs != NULL) {
