@@ -2841,8 +2841,7 @@ static const SaveLoad _roadstop_desc[] = {
 static const SaveLoad _station_desc[] = {
 	SLE_CONDVAR(Station, xy,                         SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
 	SLE_CONDVAR(Station, xy,                         SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(Station, bus_tile_obsolete,          SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
-	SLE_CONDVAR(Station, lorry_tile_obsolete,        SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLE_CONDNULL(4, 0, 5), // bus/lorry tile
 	SLE_CONDVAR(Station, train_tile,                 SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
 	SLE_CONDVAR(Station, train_tile,                 SLE_UINT32,                  6, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, airport_tile,               SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
@@ -2971,23 +2970,6 @@ static void Load_STNS(void)
 			if (GetRailStationAxis(st->train_tile) == AXIS_Y) uintswap(w, h);
 			st->trainst_w = w;
 			st->trainst_h = h;
-		}
-
-		/* In older versions, we had just 1 tile for a bus/lorry, now we have more..
-		 *  convert, if needed */
-		if (CheckSavegameVersion(6)) {
-			if (st->bus_tile_obsolete != 0) {
-				st->bus_stops = new RoadStop(st->bus_tile_obsolete);
-				if (st->bus_stops == NULL)
-					error("Station: too many busstations in savegame");
-
-			}
-			if (st->lorry_tile_obsolete != 0) {
-				st->truck_stops = new RoadStop(st->lorry_tile_obsolete);
-				if (st->truck_stops == NULL)
-					error("Station: too many truckstations in savegame");
-
-			}
 		}
 	}
 

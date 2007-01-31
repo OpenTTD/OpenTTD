@@ -1282,6 +1282,22 @@ bool AfterLoadGame(void)
 	// In 5.1, Oilrigs have been moved (again)
 	if (CheckSavegameVersionOldStyle(5, 1)) UpdateOilRig();
 
+	/* From this version on there can be multiple road stops of the same type per
+	 * station. Convert the existing stops to the new internal data structure.
+	 */
+	if (CheckSavegameVersion(6)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsRoadStopTile(t)) {
+				RoadStop *rs = new RoadStop(t);
+				if (rs == NULL) error("Too many road stops in savegame");
+
+				Station *st = GetStationByTile(t);
+				RoadStop **head = IsTruckStop(t) ? &st->truck_stops : &st->bus_stops;
+				*head = rs;
+			}
+		}
+	}
+
 	/* In version 6.1 we put the town index in the map-array. To do this, we need
 	 *  to use m2 (16bit big), so we need to clean m2, and that is where this is
 	 *  all about ;) */

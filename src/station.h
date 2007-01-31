@@ -142,10 +142,6 @@ struct Station {
 	uint16 random_bits;
 	byte waiting_triggers;
 
-	/* Stuff that is no longer used, but needed for conversion */
-	TileIndex bus_tile_obsolete;
-	TileIndex lorry_tile_obsolete;
-
 	StationRect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
 
 	static const int cDebugCtorLevel = 3;

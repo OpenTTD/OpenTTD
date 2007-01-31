@@ -312,10 +312,6 @@ static void FixOldStations(void)
 		if (st->train_tile != 0 && GetRailStationAxis(st->train_tile) != AXIS_X) {
 			Swap(st->trainst_w, st->trainst_h);
 		}
-
-		/* Check if there is a bus or truck station, and convert to new format */
-		if (st->bus_tile_obsolete != 0)   st->bus_stops   = new RoadStop(st->bus_tile_obsolete);
-		if (st->lorry_tile_obsolete != 0) st->truck_stops = new RoadStop(st->lorry_tile_obsolete);
 	}
 }
 
@@ -578,8 +574,7 @@ static const OldChunks station_chunk[] = {
 	OCL_SVAR(   OC_TILE, Station, xy ),
 	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
 
-	OCL_SVAR(   OC_TILE, Station, bus_tile_obsolete ),
-	OCL_SVAR(   OC_TILE, Station, lorry_tile_obsolete ),
+	OCL_NULL( 4 ), // bus/lorry tile
 	OCL_SVAR(   OC_TILE, Station, train_tile ),
 	OCL_SVAR(   OC_TILE, Station, airport_tile ),
 	OCL_SVAR(   OC_TILE, Station, dock_tile ),
