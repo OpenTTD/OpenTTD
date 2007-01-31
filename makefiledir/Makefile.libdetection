@@ -67,7 +67,9 @@ SDL_CONFIG:=sdl-config
 LIBPNG_CONFIG :=libpng-config
 
 # set freetype-config to the default value
+ifndef FREETYPE_CONFIG
 FREETYPE_CONFIG:=freetype-config
+endif
 
 # set pkg-config to the default value
 FONTCONFIG_CONFIG:=pkg-config fontconfig
@@ -131,6 +133,11 @@ endif
 endif
 
 ifdef OSX
+# OSX always has freetype, even though it can fail to be detected with our previous test
+# fontconfig is also present by default, but the default one is too old for OpenTTD
+# if the user installed a newer one, he/she can modify Makefile.config to enable it
+WITH_FREETYPE:=1
+WITH_FONTCONFIG:=
 # we prefer to use cocoa drivers rather than SDL drivers
 # if you really want SDL drivers, you can always modify Makefile.config
 ifndef DEDICATED
