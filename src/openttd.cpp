@@ -1748,6 +1748,23 @@ bool AfterLoadGame(void)
 		}
 	}
 
+	if (CheckSavegameVersion(45)) {
+		Vehicle *v;
+		/* Originally just the fact that some cargo had been paid for was
+		 * stored to stop people cheating and cashing in several times. This
+		 * wasn't enough though as it was cleared when the vehicle started
+		 * loading again, even if it didn't actually load anything, so now the
+		 * amount of cargo that has been paid for is stored. */
+		FOR_ALL_VEHICLES(v) {
+			if (HASBIT(v->load_status, 2)) {
+				v->cargo_paid_for = v->cargo_count;
+				CLRBIT(v->load_status, 2);
+			} else {
+				v->cargo_paid_for = 0;
+			}
+		}
+	}
+
 	return true;
 }
 

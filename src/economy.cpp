@@ -1376,25 +1376,26 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 				st->time_since_unload = 0;
 
 				unloading_time += v->cargo_count; /* TTDBUG: bug in original TTD */
-				if (just_arrived && !HASBIT(v->load_status, LS_CARGO_PAID_FOR)) {
-					profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_source_xy, v->cargo_days);
-					SETBIT(v->load_status, LS_CARGO_PAID_FOR);
+				if (just_arrived && v->cargo_paid_for < v->cargo_count) {
+					profit += DeliverGoods(v->cargo_count - v->cargo_paid_for, v->cargo_type, v->cargo_source, last_visited, v->cargo_source_xy, v->cargo_days);
+					v->cargo_paid_for = v->cargo_count;
 				}
 				result |= 1;
 				v->cargo_count -= amount_unloaded;
+				v->cargo_paid_for -= min(amount_unloaded, v->cargo_paid_for);
 				if (_patches.gradual_loading) continue;
 			} else if (u->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
 				/* unload goods and let it wait at the station */
 				st->time_since_unload = 0;
-				if (just_arrived && (u->current_order.flags & OF_TRANSFER) && !HASBIT(v->load_status, LS_CARGO_PAID_FOR)) {
+				if (just_arrived && (u->current_order.flags & OF_TRANSFER) && v->cargo_paid_for < v->cargo_count) {
 					v_profit = GetTransportedGoodsIncome(
-						v->cargo_count,
+						v->cargo_count - v->cargo_paid_for,
 						DistanceManhattan(v->cargo_source_xy, GetStation(last_visited)->xy),
 						v->cargo_days,
 						v->cargo_type) * 3 / 2;
 
 					v_profit_total += v_profit;
-					SETBIT(v->load_status, LS_CARGO_PAID_FOR);
+					v->cargo_paid_for = v->cargo_count;
 				}
 
 				unloading_time += v->cargo_count;
@@ -1422,6 +1423,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 				}
 				result |= 2;
 				v->cargo_count -= amount_unloaded;
+				v->cargo_paid_for -= min(amount_unloaded, v->cargo_paid_for);
 				if (_patches.gradual_loading) continue;
 			}
 
@@ -1431,7 +1433,9 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 		/* The vehicle must have been unloaded because it is either empty, or
 		 * the UNLOADING bit is already clear in v->load_status. */
 		CLRBIT(v->load_status, LS_CARGO_UNLOADING);
-		CLRBIT(v->load_status, LS_CARGO_PAID_FOR);
+
+		/* We cannot have paid for more cargo than there is on board. */
+		assert(v->cargo_paid_for <= v->cargo_count);
 
 		/* don't pick up goods that we unloaded */
 		if (u->current_order.flags & OF_UNLOAD) continue;

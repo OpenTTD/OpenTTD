@@ -31,7 +31,7 @@ enum VehStatus {
 enum LoadStatus {
 	LS_LOADING_FINISHED,
 	LS_CARGO_UNLOADING,
-	LS_CARGO_PAID_FOR,
+	/* LS_CARGO_PAID_FOR was here until savegame version 45. */
 };
 
 /* Effect vehicle types */
@@ -238,6 +238,7 @@ struct Vehicle {
 	bool leave_depot_instantly; // NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
 
 	uint16 load_unload_time_rem;
+	uint16 cargo_paid_for;      // How much of the cargo currently on board has been paid for.
 	byte load_status;
 
 	int32 profit_this_year;
