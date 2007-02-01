@@ -536,24 +536,43 @@ void StartNewGameWithoutGUI(uint seed)
 	StartGeneratingLandscape(GLWP_GENERATE);
 }
 
+enum CreateScenarioWindowWidgets {
+	CSCEN_TEMPERATE = 3,
+	CSCEN_ARCTIC,
+	CSCEN_TROPICAL,
+	CSCEN_TOYLAND,
+	CSCEN_MAPSIZE_X_TEXT,
+	CSCEN_MAPSIZE_X_PULLDOWN,
+	CSCEN_MAPSIZE_Y_TEXT,
+	CSCEN_MAPSIZE_Y_PULLDOWN,
+	CSCEN_EMPTY_WORLD,
+	CSCEN_RANDOM_WORLD,
+	CSCEN_HEIGHTMAP,
+	CSCEN_START_DATE_DOWN,
+	CSCEN_START_DATE_TEXT,
+	CSCEN_START_DATE_UP,
+	CSCEN_FLAT_LAND_HEIGHT_DOWN,
+	CSCEN_FLAT_LAND_HEIGHT_TEXT,
+	CSCEN_FLAT_LAND_HEIGHT_UP
+};
 
 void CreateScenarioWndProc(Window *w, WindowEvent *e)
 {
 	static const StringID mapsizes[] = {STR_64, STR_128, STR_256, STR_512, STR_1024, STR_2048, INVALID_STRING_ID};
 
 	switch (e->event) {
-	case WE_CREATE: LowerWindowWidget(w, _opt_newgame.landscape + 3); break;
+	case WE_CREATE: LowerWindowWidget(w, _opt_newgame.landscape + CSCEN_TEMPERATE); break;
 
 	case WE_PAINT:
-		SetWindowWidgetDisabledState(w, 14, _patches_newgame.starting_year <= MIN_YEAR);
-		SetWindowWidgetDisabledState(w, 16, _patches_newgame.starting_year >= MAX_YEAR);
-		SetWindowWidgetDisabledState(w, 17, _patches_newgame.se_flat_world_height <= 0);
-		SetWindowWidgetDisabledState(w, 19, _patches_newgame.se_flat_world_height >= 15);
+		SetWindowWidgetDisabledState(w, CSCEN_START_DATE_DOWN,       _patches_newgame.starting_year <= MIN_YEAR);
+		SetWindowWidgetDisabledState(w, CSCEN_START_DATE_UP,         _patches_newgame.starting_year >= MAX_YEAR);
+		SetWindowWidgetDisabledState(w, CSCEN_FLAT_LAND_HEIGHT_DOWN, _patches_newgame.se_flat_world_height <= 0);
+		SetWindowWidgetDisabledState(w, CSCEN_FLAT_LAND_HEIGHT_UP,   _patches_newgame.se_flat_world_height >= 15);
 
-		SetWindowWidgetLoweredState(w, 3, _opt_newgame.landscape == LT_NORMAL);
-		SetWindowWidgetLoweredState(w, 4, _opt_newgame.landscape == LT_HILLY);
-		SetWindowWidgetLoweredState(w, 5, _opt_newgame.landscape == LT_DESERT);
-		SetWindowWidgetLoweredState(w, 6, _opt_newgame.landscape == LT_CANDY);
+		SetWindowWidgetLoweredState(w, CSCEN_TEMPERATE, _opt_newgame.landscape == LT_NORMAL);
+		SetWindowWidgetLoweredState(w, CSCEN_ARCTIC,    _opt_newgame.landscape == LT_HILLY);
+		SetWindowWidgetLoweredState(w, CSCEN_TROPICAL,  _opt_newgame.landscape == LT_DESERT);
+		SetWindowWidgetLoweredState(w, CSCEN_TOYLAND,   _opt_newgame.landscape == LT_CANDY);
 		DrawWindowWidgets(w);
 
 		DrawString( 12,  96, STR_MAPSIZE, 0);
@@ -573,53 +592,53 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 		case 0: DeleteWindow(w); break;
-		case 3: case 4: case 5: case 6:
-			RaiseWindowWidget(w, _opt_newgame.landscape + 3);
-			SetNewLandscapeType(e->we.click.widget - 3);
+		case CSCEN_TEMPERATE: case CSCEN_ARCTIC: case CSCEN_TROPICAL: case CSCEN_TOYLAND:
+			RaiseWindowWidget(w, _opt_newgame.landscape + CSCEN_TEMPERATE);
+			SetNewLandscapeType(e->we.click.widget - CSCEN_TEMPERATE);
 			break;
-		case 7: case 8: // Mapsize X
-			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, 8, 0, 0);
+		case CSCEN_MAPSIZE_X_TEXT: case CSCEN_MAPSIZE_X_PULLDOWN: // Mapsize X
+			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, CSCEN_MAPSIZE_X_PULLDOWN, 0, 0);
 			break;
-		case 9: case 10: // Mapsize Y
-			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_y - 6, 10, 0, 0);
+		case CSCEN_MAPSIZE_Y_TEXT: case CSCEN_MAPSIZE_Y_PULLDOWN: // Mapsize Y
+			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_y - 6, CSCEN_MAPSIZE_Y_PULLDOWN, 0, 0);
 			break;
-		case 11: // Empty world / flat world
+		case CSCEN_EMPTY_WORLD: // Empty world / flat world
 			StartGeneratingLandscape(GLWP_SCENARIO);
 			break;
-		case 12: // Generate
+		case CSCEN_RANDOM_WORLD: // Generate
 			_goto_editor = true;
 			ShowGenerateLandscape();
 			break;
-		case 13: // Heightmap
+		case CSCEN_HEIGHTMAP: // Heightmap
 			_goto_editor = true;
 			ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP);
 			break;
-		case 14: case 16: // Year buttons
+		case CSCEN_START_DATE_DOWN: case CSCEN_START_DATE_UP: // Year buttons
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.starting_year = clamp(_patches_newgame.starting_year + e->we.click.widget - 15, MIN_YEAR, MAX_YEAR);
+				_patches_newgame.starting_year = clamp(_patches_newgame.starting_year + e->we.click.widget - CSCEN_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
 			}
 			_left_button_clicked = false;
 			break;
-		case 15: // Year text
+		case CSCEN_START_DATE_TEXT: // Year text
 			WP(w, def_d).data_3 = START_DATE_QUERY;
 			SetDParam(0, _patches_newgame.starting_year);
 			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, w, CS_NUMERAL);
 			break;
-		case 17: case 19: // Height level buttons
+		case CSCEN_FLAT_LAND_HEIGHT_DOWN: case CSCEN_FLAT_LAND_HEIGHT_UP: // Height level buttons
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.se_flat_world_height = clamp(_patches_newgame.se_flat_world_height + e->we.click.widget - 18, 0, 15);
+				_patches_newgame.se_flat_world_height = clamp(_patches_newgame.se_flat_world_height + e->we.click.widget - CSCEN_FLAT_LAND_HEIGHT_TEXT, 0, 15);
 			}
 			_left_button_clicked = false;
 			break;
-		case 18: // Height level text
+		case CSCEN_FLAT_LAND_HEIGHT_TEXT: // Height level text
 			WP(w, def_d).data_3 = FLAT_WORLD_HEIGHT_QUERY;
 			SetDParam(0, _patches_newgame.se_flat_world_height);
 			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, w, CS_NUMERAL);
@@ -629,8 +648,8 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 
 	case WE_DROPDOWN_SELECT:
 		switch (e->we.dropdown.button) {
-			case 8:  _patches_newgame.map_x = e->we.dropdown.index + 6; break;
-			case 10: _patches_newgame.map_y = e->we.dropdown.index + 6; break;
+			case CSCEN_MAPSIZE_X_PULLDOWN:  _patches_newgame.map_x = e->we.dropdown.index + 6; break;
+			case CSCEN_MAPSIZE_Y_PULLDOWN: _patches_newgame.map_y = e->we.dropdown.index + 6; break;
 		}
 		SetWindowDirty(w);
 		break;
@@ -645,11 +664,11 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 
 			switch (WP(w, def_d).data_3) {
 			case START_DATE_QUERY:
-				InvalidateWidget(w, 15);
+				InvalidateWidget(w, CSCEN_START_DATE_TEXT);
 				_patches_newgame.starting_year = clamp(value, MIN_YEAR, MAX_YEAR);
 				break;
 			case FLAT_WORLD_HEIGHT_QUERY:
-				InvalidateWidget(w, 18);
+				InvalidateWidget(w, CSCEN_FLAT_LAND_HEIGHT_TEXT);
 				_patches_newgame.se_flat_world_height = clamp(value, 0, 15);
 				break;
 			}
