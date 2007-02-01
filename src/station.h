@@ -161,6 +161,7 @@ struct Station {
 	void MarkDirty() const;
 	void MarkTilesDirty() const;
 	bool TileBelongsToRailStation(TileIndex tile) const;
+	bool IsBuoy() const;
 
 protected:
 	static Station *AllocateRaw(void);
@@ -271,11 +272,6 @@ RoadStop * GetRoadStopByTile(TileIndex tile, RoadStop::Type type);
 uint GetNumRoadStops(const Station* st, RoadStop::Type type);
 RoadStop * AllocateRoadStop( void );
 void ClearSlot(Vehicle *v);
-
-static inline bool IsBuoy(const Station* st)
-{
-	return (st->had_vehicle_of_type & HVOT_BUOY) != 0; /* XXX: We should really ditch this ugly coding and switch to something sane... */
-}
 
 void DeleteOilRig(TileIndex t);
 

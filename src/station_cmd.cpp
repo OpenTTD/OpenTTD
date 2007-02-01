@@ -541,7 +541,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	rect.min_y = MapSizeY();
 	rect.max_x = rect.max_y = 0;
 	// Don't update acceptance for a buoy
-	if (IsBuoy(st)) return;
+	if (st->IsBuoy()) return;
 
 	/* old accepted goods types */
 	old_acc = GetAcceptanceMask(st);
@@ -2545,7 +2545,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 
 		for (i = 0; i != lengthof(around); i++) {
 			if (around[i] == NULL) {
-				if (!IsBuoy(st) &&
+				if (!st->IsBuoy() &&
 						(st->town->exclusive_counter == 0 || st->town->exclusivity == st->owner) && // check exclusive transport rights
 						st->goods[type].rating != 0 &&
 						(!_patches.selectgoods || st->goods[type].last_speed > 0) && // if last_speed is 0, no vehicle has been there.

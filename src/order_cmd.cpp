@@ -198,7 +198,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (!IsValidStationID(new_order.dest)) return CMD_ERROR;
 			st = GetStation(new_order.dest);
 
-			if (st->airport_type != AT_OILRIG && !IsBuoy(st) && !CheckOwnership(st->owner)) {
+			if (st->airport_type != AT_OILRIG && !st->IsBuoy() && !CheckOwnership(st->owner)) {
 				return CMD_ERROR;
 			}
 

@@ -179,6 +179,14 @@ bool Station::TileBelongsToRailStation(TileIndex tile) const
 }
 
 
+/** Determines whether a station is a buoy only.
+ * @todo Ditch this encoding of buoys
+ */
+bool Station::IsBuoy() const
+{
+	return (this->had_vehicle_of_type & HVOT_BUOY) != 0;
+}
+
 
 /************************************************************************/
 /*                     StationRect implementation                       */
