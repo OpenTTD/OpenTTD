@@ -67,7 +67,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		case 3: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
 		case 4: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
 		case 5: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
-		case 6: _switch_mode = SM_EDITOR; break;
+		case 6: StartScenarioEditor(); break;
 		case 7:
 			if (!_network_available) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);

@@ -144,24 +144,21 @@ static const Widget _heightmap_load_widgets[] = {
 {   WIDGETS_END},
 };
 
-static void StartGeneratingLandscape(glwp_modes mode)
+void StartGeneratingLandscape(glwp_modes mode)
 {
-	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
-	DeleteWindowByClass(WC_INDUSTRY_VIEW);
-	DeleteWindowByClass(WC_TOWN_VIEW);
-	DeleteWindowByClass(WC_LAND_INFO);
+	DeleteAllNonVitalWindows();
 
-	/* Copy all XXX_newgame to XXX */
+	/* Copy all XXX_newgame to XXX when coming from outside the editor */
 	UpdatePatches();
+	_opt = _opt_newgame;
 	_opt_ptr = &_opt;
-	*_opt_ptr = _opt_newgame;
 	ResetGRFConfig(true);
 
 	SndPlayFx(SND_15_BEEP);
 	switch (mode) {
 		case GLWP_GENERATE:  _switch_mode = (_game_mode == GM_EDITOR) ? SM_GENRANDLAND    : SM_NEWGAME;         break;
 		case GLWP_HEIGHTMAP: _switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP; break;
-		case GLWP_SCENARIO: break;
+		case GLWP_SCENARIO:  _switch_mode = SM_EDITOR; break;
 		default: NOT_REACHED();
 	}
 }
@@ -511,6 +508,11 @@ void ShowGenerateLandscape(void)
 void ShowHeightmapLoad(void)
 {
 	_ShowGenerateLandscape(GLWP_HEIGHTMAP);
+}
+
+void StartScenarioEditor(void)
+{
+	StartGeneratingLandscape(GLWP_SCENARIO);
 }
 
 void StartNewGameWithoutGUI(uint seed)

@@ -90,5 +90,6 @@ void PrepareGenerateWorldProgress(void);
 void ShowGenerateWorldProgress(void);
 void StartNewGameWithoutGUI(uint seed);
 void ShowCreateScenario(void);
+void StartScenarioEditor(void);
 
 #endif /* GENWORLD_H */
