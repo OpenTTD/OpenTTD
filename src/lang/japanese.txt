@@ -613,21 +613,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} は「{STRING}」に当たった！
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME}（{COMPANY}）は「{STRING}」に当たった！
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}シナリオを作成
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}シナリオエディタ
 STR_0223_LAND_GENERATION                                        :{WHITE}地形の作成
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}ランダムな地形
-STR_0227_RESET_LAND                                             :{BLACK}地形をリセット
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}上げる／下げる地域のサイズを拡大します
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}上げる／下げる地域のサイズを縮小します
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}ランダムな地形を作成します
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}地形をリセットします
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}地形のリセット
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}ハイトマップを使用
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}ハイトマップを使用
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}地形の作成
 STR_022F_TOWN_GENERATION                                        :{BLACK}市町村の建設
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}産業の建設

@@ -722,21 +722,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} досягла статусу '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}Гравець {PLAYERNAME} з {COMPANY} досяг статусу '{STRING}'
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Створити сценарій
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Редактор сценарію
 STR_0223_LAND_GENERATION                                        :{WHITE}Створити ландшафт
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Випадковий ландшафт
-STR_0227_RESET_LAND                                             :{BLACK}Очистити ділянку
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Збільшити область ділянки для підняття/опускання
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Зменшити область ділянки для підняття/опускання
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Створити випадкову ділянку
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Очистити ландшафт
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Очистити ландшафт
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Використовувати рельєф
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Взяти з карти висот
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Створення ландшафту
 STR_022F_TOWN_GENERATION                                        :{BLACK}Створення міст
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Створення виробництва

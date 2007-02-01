@@ -666,21 +666,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} osiąga status: '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} z {COMPANY} osiągnęło status '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Tworzenie Scenariusza
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Edytor Scenariuszy
 STR_0223_LAND_GENERATION                                        :{WHITE}Tworzenie terenu
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Przypadkowy ląd
-STR_0227_RESET_LAND                                             :{BLACK}Kasowanie lądu
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zwiększ powierzchnie do podwyższenia/obniżenia
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zmniejsz powierzchnie do podwyższenia/obniżenia
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Tworzenie przypadkowego lądu
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Resetuj krajobraz
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetuj krajobraz
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Użyj mapy wysokości
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Użyj mapy wysokości
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Tworzenie krajobrazu
 STR_022F_TOWN_GENERATION                                        :{BLACK}Tworzenie miast
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Tworzenie przedsiębiorstw

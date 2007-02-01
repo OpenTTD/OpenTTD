@@ -613,21 +613,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} achieves '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} of {COMPANY} achieves '{STRING}' status!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Create Scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenario Editor
 STR_0223_LAND_GENERATION                                        :{WHITE}Land Generation
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Random Land
-STR_0227_RESET_LAND                                             :{BLACK}Reset Land
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Increase area of land to lower/raise
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Decrease area of land to lower/raise
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generate random land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reset landscape
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reset Landscape
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Use Heightmap
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Use Heightmap
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landscape generation
 STR_022F_TOWN_GENERATION                                        :{BLACK}Town generation
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industry generation

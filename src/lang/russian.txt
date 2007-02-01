@@ -609,21 +609,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} достиг статуса '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} из {COMPANY} достиг статуса '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Создать сценарий
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Редактор сценариев
 STR_0223_LAND_GENERATION                                        :{WHITE}Генератор карты
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Случайная карта
-STR_0227_RESET_LAND                                             :{BLACK}Сбросить карту
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Увеличить площадь изменения рельефа
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Уменьшить площадь изменения рельефа
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Создать случайную карту
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Сбросить карту
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Сбросить карту
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Исп. РЕЛЬЕФ
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Исп. РЕЛЬЕФ
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Создание ландшафта
 STR_022F_TOWN_GENERATION                                        :{BLACK}Создание города
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Создание промышленности

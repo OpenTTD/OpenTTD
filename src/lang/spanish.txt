@@ -614,21 +614,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} logra el estado '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} de {COMPANY} logra el estado '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Crear Escenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor de escenarios
 STR_0223_LAND_GENERATION                                        :{WHITE}Generación de terrenos
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Terreno al azar
-STR_0227_RESET_LAND                                             :{BLACK}Reponer terreno
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Aumentar el tamaño del bloque de terreno a bajar/subir
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Reducir tamaño del bloque de terreno a bajar/subir
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generar terreno al azar
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Hacer reset del paisaje
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Hacer reset del paisaje
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usar Mapa de alturas
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usar Mapa de alturas
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generación de paisaje
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generación de poblaciones
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generación de industria

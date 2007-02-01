@@ -643,21 +643,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} pasiekė „{STRING}“ statusą!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} iš {COMPANY} pasiekė „{STRING}“ statusą!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Sukurti scenarijų
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarijaus redaktorius
 STR_0223_LAND_GENERATION                                        :{WHITE}Kraštovaidžio kūrimas
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Atsitiktinis reljefas
-STR_0227_RESET_LAND                                             :{BLACK}Anuliuoti reljefą
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Padidinkite sausumos plotą norėdami paaukštinti/pažeminti
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Sumažinkite sausumos plotą norėdami paaukštinti/pažeminti
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Kurti atsitiktinę sausumą
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Anuliuoti kraštovaizdį
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Anuliuoti kraštovaizdį
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Naudoti Papildoma Zemelapi
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Naudoti Papildoma Zemelapi
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Kraštovaizdžio kūrimas
 STR_022F_TOWN_GENERATION                                        :{BLACK}Miesto įkūrimas
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Pramonės kūrimas

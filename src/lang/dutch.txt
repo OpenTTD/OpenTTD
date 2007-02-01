@@ -613,21 +613,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} bereikt '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} van {COMPANY} bereikt '{STRING}' status!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Maak scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenario editor
 STR_0223_LAND_GENERATION                                        :{WHITE}Landontwikkeling
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Willekeurig land
-STR_0227_RESET_LAND                                             :{BLACK}Verwijder land
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Vergroot het stuk land om te verhogen/verlagen
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Verklein het stuk land om te verhogen/verlagen
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genereer willekeurig land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Verwijder landschap
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Verwijder landschap
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Gebruik hoogtekaart
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Gebruik hoogtekaart
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landschapproductie
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadproductie
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrieproductie

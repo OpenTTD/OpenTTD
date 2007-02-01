@@ -614,21 +614,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} erreicht '{STRING}' Status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} von {COMPANY} erreicht '{STRING}' Status!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Szenario erstellen
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Szenario bearbeiten
 STR_0223_LAND_GENERATION                                        :{WHITE}Land erstellen
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Zufälliges Land
-STR_0227_RESET_LAND                                             :{BLACK}Land wiederherstellen
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Landfläche zum Anheben / Absenken vergrößern
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Landfläche zum Anheben / Absenken verkleinern
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Erzeuge Land durch Zufall
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Landfläche wiederherstellen
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Landfläche wiederherstellen
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Reliefkarte nutzen
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Reliefkarte nutzen
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landfläche erzeugen
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt errichten
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrie errichten

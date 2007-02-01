@@ -609,21 +609,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} oppnår '{STRING}'-status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} fra {COMPANY} oppnår '{STRING}'-status!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Lag scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarioredigerer
 STR_0223_LAND_GENERATION                                        :{WHITE}Landgenerering
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Tilfeldig landforming
-STR_0227_RESET_LAND                                             :{BLACK}Tilbakestill land
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Øk størrelse av landareal å heve/senke
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Mink størrelse av landareal å heve/senke
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generer tilfeldig landskap
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Tilbakestill landskap
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Tilbakestill landskap
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Bruk høydekart
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Bruk høydekart
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskapsgenerering
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrigenerering

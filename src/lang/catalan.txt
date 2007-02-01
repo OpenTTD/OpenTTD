@@ -613,21 +613,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} asoleix l'estat '{STRING}' !
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} de {COMPANY} asoleix l'estat '{STRING}' !
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Crea un Escenari
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor d'Escenaris
 STR_0223_LAND_GENERATION                                        :{WHITE}Generador de Terreny
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Terreny Aleatori
-STR_0227_RESET_LAND                                             :{BLACK}Restableix Terreny
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Augmenta la mida de l'àrea de terreny a rebaixar/elevar
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Disminueix la mida de l'àrea de terreny a rebaixar/elevar
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genera un terreny aleatori
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Restableix paisatge
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Restablir Paisatge
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Utilitza un mapa d'alçades
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Utilitza un mapa d'alçades
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generació de Paisatges
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generació de Poblacions
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generació d'indústries

@@ -615,21 +615,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} conquista o status de '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} de {COMPANY} conquista o status de '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Criar Cenário
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor de Cenário
 STR_0223_LAND_GENERATION                                        :{WHITE}Gerar Terreno
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Terreno Aleatório
-STR_0227_RESET_LAND                                             :{BLACK}Limpar Terreno
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Aumentar área de terreno a baixar/levantar
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Diminuir área de terreno a baixar/levantar
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Gerar terreno aleatório
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Resetar terreno
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Limpar Terreno
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usar mapa de altitudes
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usar mapa de altitudes
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Gerar terreno
 STR_022F_TOWN_GENERATION                                        :{BLACK}Gerar cidades
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Gerar indústrias

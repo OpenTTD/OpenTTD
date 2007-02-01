@@ -614,21 +614,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY}가 '{STRING}'를(을) 달성했습니다!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME}의 {COMPANY}, 드디어 {STRING}를(을) 달성했습니다!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}시나리오 생성
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}시나리오 에디터
 STR_0223_LAND_GENERATION                                        :{WHITE}지형 생성기
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}무작위 지형
-STR_0227_RESET_LAND                                             :{BLACK}지형 초기화
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}지형 편집툴의 크기를 키움
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}지형 편집툴의 크기를 줄임
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}무작위 지형을 생성
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}풍경 초기화
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}풍경 리셋
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}DEM지형 사용
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}DEM지형 사용
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}지형 생성기
 STR_022F_TOWN_GENERATION                                        :{BLACK}마을 생성
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}산업 시설 생성

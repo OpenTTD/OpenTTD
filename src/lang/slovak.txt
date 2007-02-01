@@ -677,21 +677,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} ziskal oznacenie '{STRING}' !
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} z {COMPANY} ziskal oznacenie '{STRING}' !
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Vytvorit scenar
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor scenarov
 STR_0223_LAND_GENERATION                                        :{WHITE}Generovanie uzemia
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Nahodne uzemie
-STR_0227_RESET_LAND                                             :{BLACK}Zresetovat uzemie
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Pre zvysenie/znizenie oblasti je potrebne zvacsit uzemie
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Pre zvysenie/znizenie oblasti je potrebne zmensit uzemie
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Vygenerovat nahodne uzemie
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Zresetovat uzemie
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Zresetovat Uzemie
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Pouzit vyskovu mapu
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Pouzit vyskovu mapu
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Vytvorenie uzemia
 STR_022F_TOWN_GENERATION                                        :{BLACK}Vytvorenie mesta
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Vytvorenie priemyslu
