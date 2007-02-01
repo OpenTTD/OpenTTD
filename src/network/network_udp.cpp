@@ -100,8 +100,8 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 	Packet packet(PACKET_UDP_SERVER_DETAIL_INFO);
 
 	/* Send the amount of active companies */
-	NetworkSend_uint8 (&packet, NETWORK_COMPANY_INFO_VERSION);
-	NetworkSend_uint8 (&packet, ActivePlayerCount());
+	packet.Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
+	packet.Send_uint8 (ActivePlayerCount());
 
 	/* Fetch the latest version of everything */
 	NetworkPopulateCompanyInfo();
@@ -114,51 +114,47 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 		current++;
 
 		/* Send the information */
-		NetworkSend_uint8 (&packet, current);
+		packet.Send_uint8 (current);
 
-		NetworkSend_string(&packet, _network_player_info[player->index].company_name);
-		NetworkSend_uint32(&packet, _network_player_info[player->index].inaugurated_year);
-		NetworkSend_uint64(&packet, _network_player_info[player->index].company_value);
-		NetworkSend_uint64(&packet, _network_player_info[player->index].money);
-		NetworkSend_uint64(&packet, _network_player_info[player->index].income);
-		NetworkSend_uint16(&packet, _network_player_info[player->index].performance);
+		packet.Send_string(_network_player_info[player->index].company_name);
+		packet.Send_uint32(_network_player_info[player->index].inaugurated_year);
+		packet.Send_uint64(_network_player_info[player->index].company_value);
+		packet.Send_uint64(_network_player_info[player->index].money);
+		packet.Send_uint64(_network_player_info[player->index].income);
+		packet.Send_uint16(_network_player_info[player->index].performance);
 
 		/* Send 1 if there is a passord for the company else send 0 */
-		if (_network_player_info[player->index].password[0] != '\0') {
-			NetworkSend_uint8(&packet, 1);
-		} else {
-			NetworkSend_uint8(&packet, 0);
-		}
+		packet.Send_uint8 (StrEmpty(_network_player_info[player->index].password) ? 0 : 1);
 
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
-			NetworkSend_uint16(&packet, _network_player_info[player->index].num_vehicle[i]);
+			packet.Send_uint16(_network_player_info[player->index].num_vehicle[i]);
 
 		for (i = 0; i < NETWORK_STATION_TYPES; i++)
-			NetworkSend_uint16(&packet, _network_player_info[player->index].num_station[i]);
+			packet.Send_uint16(_network_player_info[player->index].num_station[i]);
 
 		/* Find the clients that are connected to this player */
 		FOR_ALL_CLIENTS(cs) {
 			ci = DEREF_CLIENT_INFO(cs);
 			if (ci->client_playas == player->index) {
 				/* The uint8 == 1 indicates that a client is following */
-				NetworkSend_uint8 (&packet, 1);
-				NetworkSend_string(&packet, ci->client_name);
-				NetworkSend_string(&packet, ci->unique_id);
-				NetworkSend_uint32(&packet, ci->join_date);
+				packet.Send_uint8 (1);
+				packet.Send_string(ci->client_name);
+				packet.Send_string(ci->unique_id);
+				packet.Send_uint32(ci->join_date);
 			}
 		}
 		/* Also check for the server itself */
 		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 		if (ci->client_playas == player->index) {
 			/* The uint8 == 1 indicates that a client is following */
-			NetworkSend_uint8 (&packet, 1);
-			NetworkSend_string(&packet, ci->client_name);
-			NetworkSend_string(&packet, ci->unique_id);
-			NetworkSend_uint32(&packet, ci->join_date);
+			packet.Send_uint8 (1);
+			packet.Send_string(ci->client_name);
+			packet.Send_string(ci->unique_id);
+			packet.Send_uint32(ci->join_date);
 		}
 
 		/* Indicates end of client list */
-		NetworkSend_uint8(&packet, 0);
+		packet.Send_uint8(0);
 	}
 
 	/* And check if we have any spectators */
@@ -166,10 +162,10 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 		ci = DEREF_CLIENT_INFO(cs);
 		if (!IsValidPlayer(ci->client_playas)) {
 			/* The uint8 == 1 indicates that a client is following */
-			NetworkSend_uint8 (&packet, 1);
-			NetworkSend_string(&packet, ci->client_name);
-			NetworkSend_string(&packet, ci->unique_id);
-			NetworkSend_uint32(&packet, ci->join_date);
+			packet.Send_uint8 (1);
+			packet.Send_string(ci->client_name);
+			packet.Send_string(ci->unique_id);
+			packet.Send_uint32(ci->join_date);
 		}
 	}
 
@@ -177,14 +173,14 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 	if (!IsValidPlayer(ci->client_playas)) {
 		/* The uint8 == 1 indicates that a client is following */
-		NetworkSend_uint8 (&packet, 1);
-		NetworkSend_string(&packet, ci->client_name);
-		NetworkSend_string(&packet, ci->unique_id);
-		NetworkSend_uint32(&packet, ci->join_date);
+		packet.Send_uint8 (1);
+		packet.Send_string(ci->client_name);
+		packet.Send_string(ci->unique_id);
+		packet.Send_uint32(ci->join_date);
 	}
 
 	/* Indicates end of client list */
-	NetworkSend_uint8(&packet, 0);
+	packet.Send_uint8(0);
 
 	this->SendPacket(&packet, client_addr);
 }
@@ -213,7 +209,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 
 	DEBUG(net, 6, "[udp] newgrf data request from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 
-	num_grfs = NetworkRecv_uint8 (this, p);
+	num_grfs = p->Recv_uint8 ();
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
 
 	for (i = 0; i < num_grfs; i++) {
@@ -241,7 +237,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 	if (in_reply_count == 0) return;
 
 	Packet packet(PACKET_UDP_SERVER_NEWGRFS);
-	NetworkSend_uint8 (&packet, in_reply_count);
+	packet.Send_uint8(in_reply_count);
 	for (i = 0; i < in_reply_count; i++) {
 		char name[NETWORK_GRF_NAME_LENGTH];
 
@@ -249,7 +245,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 		ttd_strlcpy(name, (in_reply[i]->name != NULL && !StrEmpty(in_reply[i]->name)) ?
 				in_reply[i]->name : in_reply[i]->filename, sizeof(name));
 	 	this->Send_GRFIdentifier(&packet, in_reply[i]);
-		NetworkSend_string(&packet, name);
+		packet.Send_string(name);
 	}
 
 	this->SendPacket(&packet, client_addr);
@@ -308,7 +304,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 			uint i;
 			Packet packet(PACKET_UDP_CLIENT_GET_NEWGRFS);
 
-			NetworkSend_uint8 (&packet, in_request_count);
+			packet.Send_uint8(in_request_count);
 			for (i = 0; i < in_request_count; i++) {
 				this->Send_GRFIdentifier(&packet, in_request[i]);
 			}
@@ -347,12 +343,12 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_MASTER_RESPONSE_LIST)
 	 * an uint32 (ip) and an uint16 (port) for each pair
 	 */
 
-	ver = NetworkRecv_uint8(this, p);
+	ver = p->Recv_uint8();
 
 	if (ver == 1) {
-		for (i = NetworkRecv_uint16(this, p); i != 0 ; i--) {
-			ip.s_addr = TO_LE32(NetworkRecv_uint32(this, p));
-			port = NetworkRecv_uint16(this, p);
+		for (i = p->Recv_uint16(); i != 0 ; i--) {
+			ip.s_addr = TO_LE32(p->Recv_uint32());
+			port = p->Recv_uint16();
 
 			/* Somehow we reached the end of the packet */
 			if (this->HasClientQuit()) return;
@@ -369,7 +365,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 
 	DEBUG(net, 6, "[udp] newgrf data reply from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 
-	num_grfs = NetworkRecv_uint8 (this, p);
+	num_grfs = p->Recv_uint8 ();
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
 
 	for (i = 0; i < num_grfs; i++) {
@@ -378,7 +374,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 		GRFConfig c;
 
 		this->Recv_GRFIdentifier(p, &c);
-		NetworkRecv_string(this, p, name, sizeof(name));
+		p->Recv_string(name, sizeof(name));
 
 		/* An empty name is not possible under normal circumstances
 		 * and causes problems when showing the NewGRF list. */
@@ -461,7 +457,7 @@ void NetworkUDPQueryMasterServer(void)
 	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
 
 	// packet only contains protocol version
-	NetworkSend_uint8(&p, NETWORK_MASTER_SERVER_VERSION);
+	p.Send_uint8(NETWORK_MASTER_SERVER_VERSION);
 
 	_udp_client_socket->SendPacket(&p, &out_addr);
 
@@ -537,8 +533,8 @@ void NetworkUDPRemoveAdvertise(void)
 	/* Send the packet */
 	Packet p(PACKET_UDP_SERVER_UNREGISTER);
 	/* Packet is: Version, server_port */
-	NetworkSend_uint8 (&p, NETWORK_MASTER_SERVER_VERSION);
-	NetworkSend_uint16(&p, _network_server_port);
+	p.Send_uint8 (NETWORK_MASTER_SERVER_VERSION);
+	p.Send_uint16(_network_server_port);
 	_udp_master_socket->SendPacket(&p, &out_addr);
 }
 
@@ -585,9 +581,9 @@ void NetworkUDPAdvertise(void)
 	/* Send the packet */
 	Packet p(PACKET_UDP_SERVER_REGISTER);
 	/* Packet is: WELCOME_MESSAGE, Version, server_port */
-	NetworkSend_string(&p, NETWORK_MASTER_SERVER_WELCOME_MESSAGE);
-	NetworkSend_uint8 (&p, NETWORK_MASTER_SERVER_VERSION);
-	NetworkSend_uint16(&p, _network_server_port);
+	p.Send_string(NETWORK_MASTER_SERVER_WELCOME_MESSAGE);
+	p.Send_uint8 (NETWORK_MASTER_SERVER_VERSION);
+	p.Send_uint16(_network_server_port);
 	_udp_master_socket->SendPacket(&p, &out_addr);
 }
 

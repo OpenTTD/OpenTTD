@@ -63,7 +63,7 @@ Packet *NetworkSend_Init(PacketType type)
 /**
  * Writes the packet size from the raw packet from packet->size
  */
-void Packet::PrepareToSend()
+void Packet::PrepareToSend(void)
 {
 	assert(this->cs == NULL && this->next == NULL);
 
@@ -82,52 +82,51 @@ void Packet::PrepareToSend()
  *  So 0x01234567 would be sent as 67 45 23 01.
  */
 
-void NetworkSend_uint8(Packet *packet, uint8 data)
+void Packet::Send_uint8(uint8 data)
 {
-	assert(packet->size < sizeof(packet->buffer) - sizeof(data));
-	packet->buffer[packet->size++] = data;
+	assert(this->size < sizeof(this->buffer) - sizeof(data));
+	this->buffer[this->size++] = data;
 }
 
-void NetworkSend_uint16(Packet *packet, uint16 data)
+void Packet::Send_uint16(uint16 data)
 {
-	assert(packet->size < sizeof(packet->buffer) - sizeof(data));
-	packet->buffer[packet->size++] = GB(data, 0, 8);
-	packet->buffer[packet->size++] = GB(data, 8, 8);
+	assert(this->size < sizeof(this->buffer) - sizeof(data));
+	this->buffer[this->size++] = GB(data, 0, 8);
+	this->buffer[this->size++] = GB(data, 8, 8);
 }
 
-void NetworkSend_uint32(Packet *packet, uint32 data)
+void Packet::Send_uint32(uint32 data)
 {
-	assert(packet->size < sizeof(packet->buffer) - sizeof(data));
-	packet->buffer[packet->size++] = GB(data,  0, 8);
-	packet->buffer[packet->size++] = GB(data,  8, 8);
-	packet->buffer[packet->size++] = GB(data, 16, 8);
-	packet->buffer[packet->size++] = GB(data, 24, 8);
+	assert(this->size < sizeof(this->buffer) - sizeof(data));
+	this->buffer[this->size++] = GB(data,  0, 8);
+	this->buffer[this->size++] = GB(data,  8, 8);
+	this->buffer[this->size++] = GB(data, 16, 8);
+	this->buffer[this->size++] = GB(data, 24, 8);
 }
 
-void NetworkSend_uint64(Packet *packet, uint64 data)
+void Packet::Send_uint64(uint64 data)
 {
-	assert(packet->size < sizeof(packet->buffer) - sizeof(data));
-	packet->buffer[packet->size++] = GB(data,  0, 8);
-	packet->buffer[packet->size++] = GB(data,  8, 8);
-	packet->buffer[packet->size++] = GB(data, 16, 8);
-	packet->buffer[packet->size++] = GB(data, 24, 8);
-	packet->buffer[packet->size++] = GB(data, 32, 8);
-	packet->buffer[packet->size++] = GB(data, 40, 8);
-	packet->buffer[packet->size++] = GB(data, 48, 8);
-	packet->buffer[packet->size++] = GB(data, 56, 8);
+	assert(this->size < sizeof(this->buffer) - sizeof(data));
+	this->buffer[this->size++] = GB(data,  0, 8);
+	this->buffer[this->size++] = GB(data,  8, 8);
+	this->buffer[this->size++] = GB(data, 16, 8);
+	this->buffer[this->size++] = GB(data, 24, 8);
+	this->buffer[this->size++] = GB(data, 32, 8);
+	this->buffer[this->size++] = GB(data, 40, 8);
+	this->buffer[this->size++] = GB(data, 48, 8);
+	this->buffer[this->size++] = GB(data, 56, 8);
 }
 
 /**
  *  Sends a string over the network. It sends out
  *  the string + '\0'. No size-byte or something.
- * @param packet packet to send the string in
  * @param data   the string to send
  */
-void NetworkSend_string(Packet *packet, const char* data)
+void Packet::Send_string(const char* data)
 {
 	assert(data != NULL);
-	assert(packet->size < sizeof(packet->buffer) - strlen(data) - 1);
-	while ((packet->buffer[packet->size++] = *data++) != '\0') {}
+	assert(this->size < sizeof(this->buffer) - strlen(data) - 1);
+	while ((this->buffer[this->size++] = *data++) != '\0') {}
 }
 
 
@@ -139,14 +138,14 @@ void NetworkSend_string(Packet *packet, const char* data)
 
 
 /** Is it safe to read from the packet, i.e. didn't we run over the buffer ? */
-static inline bool CanReadFromPacket(NetworkSocketHandler *cs, const Packet *packet, const uint bytes_to_read)
+bool Packet::CanReadFromPacket(uint bytes_to_read)
 {
 	/* Don't allow reading from a quit client/client who send bad data */
-	if (cs->HasClientQuit()) return false;
+	if (this->cs->HasClientQuit()) return false;
 
 	/* Check if variable is within packet-size */
-	if (packet->pos + bytes_to_read > packet->size) {
-		cs->CloseConnection();
+	if (this->pos + bytes_to_read > this->size) {
+		this->cs->CloseConnection();
 		return false;
 	}
 
@@ -156,7 +155,7 @@ static inline bool CanReadFromPacket(NetworkSocketHandler *cs, const Packet *pac
 /**
  * Reads the packet size from the raw packet and stores it in the packet->size
  */
-void Packet::ReadRawPacketSize()
+void Packet::ReadRawPacketSize(void)
 {
 	assert(this->cs != NULL && this->next == NULL);
 	this->size  = (PacketSize)this->buffer[0];
@@ -166,7 +165,7 @@ void Packet::ReadRawPacketSize()
 /**
  * Prepares the packet so it can be read
  */
-void Packet::PrepareToRead()
+void Packet::PrepareToRead(void)
 {
 	this->ReadRawPacketSize();
 
@@ -174,59 +173,59 @@ void Packet::PrepareToRead()
 	this->pos = sizeof(PacketSize);
 }
 
-uint8 NetworkRecv_uint8(NetworkSocketHandler *cs, Packet *packet)
+uint8 Packet::Recv_uint8(void)
 {
 	uint8 n;
 
-	if (!CanReadFromPacket(cs, packet, sizeof(n))) return 0;
+	if (!this->CanReadFromPacket(sizeof(n))) return 0;
 
-	n = packet->buffer[packet->pos++];
+	n = this->buffer[this->pos++];
 	return n;
 }
 
-uint16 NetworkRecv_uint16(NetworkSocketHandler *cs, Packet *packet)
+uint16 Packet::Recv_uint16(void)
 {
 	uint16 n;
 
-	if (!CanReadFromPacket(cs, packet, sizeof(n))) return 0;
+	if (!this->CanReadFromPacket(sizeof(n))) return 0;
 
-	n  = (uint16)packet->buffer[packet->pos++];
-	n += (uint16)packet->buffer[packet->pos++] << 8;
+	n  = (uint16)this->buffer[this->pos++];
+	n += (uint16)this->buffer[this->pos++] << 8;
 	return n;
 }
 
-uint32 NetworkRecv_uint32(NetworkSocketHandler *cs, Packet *packet)
+uint32 Packet::Recv_uint32(void)
 {
 	uint32 n;
 
-	if (!CanReadFromPacket(cs, packet, sizeof(n))) return 0;
+	if (!this->CanReadFromPacket(sizeof(n))) return 0;
 
-	n  = (uint32)packet->buffer[packet->pos++];
-	n += (uint32)packet->buffer[packet->pos++] << 8;
-	n += (uint32)packet->buffer[packet->pos++] << 16;
-	n += (uint32)packet->buffer[packet->pos++] << 24;
+	n  = (uint32)this->buffer[this->pos++];
+	n += (uint32)this->buffer[this->pos++] << 8;
+	n += (uint32)this->buffer[this->pos++] << 16;
+	n += (uint32)this->buffer[this->pos++] << 24;
 	return n;
 }
 
-uint64 NetworkRecv_uint64(NetworkSocketHandler *cs, Packet *packet)
+uint64 Packet::Recv_uint64(void)
 {
 	uint64 n;
 
-	if (!CanReadFromPacket(cs, packet, sizeof(n))) return 0;
+	if (!this->CanReadFromPacket(sizeof(n))) return 0;
 
-	n  = (uint64)packet->buffer[packet->pos++];
-	n += (uint64)packet->buffer[packet->pos++] << 8;
-	n += (uint64)packet->buffer[packet->pos++] << 16;
-	n += (uint64)packet->buffer[packet->pos++] << 24;
-	n += (uint64)packet->buffer[packet->pos++] << 32;
-	n += (uint64)packet->buffer[packet->pos++] << 40;
-	n += (uint64)packet->buffer[packet->pos++] << 48;
-	n += (uint64)packet->buffer[packet->pos++] << 56;
+	n  = (uint64)this->buffer[this->pos++];
+	n += (uint64)this->buffer[this->pos++] << 8;
+	n += (uint64)this->buffer[this->pos++] << 16;
+	n += (uint64)this->buffer[this->pos++] << 24;
+	n += (uint64)this->buffer[this->pos++] << 32;
+	n += (uint64)this->buffer[this->pos++] << 40;
+	n += (uint64)this->buffer[this->pos++] << 48;
+	n += (uint64)this->buffer[this->pos++] << 56;
 	return n;
 }
 
 /** Reads a string till it finds a '\0' in the stream */
-void NetworkRecv_string(NetworkSocketHandler *cs, Packet *p, char *buffer, size_t size)
+void Packet::Recv_string(char *buffer, size_t size)
 {
 	PacketSize pos;
 	char *bufp = buffer;
@@ -234,17 +233,17 @@ void NetworkRecv_string(NetworkSocketHandler *cs, Packet *p, char *buffer, size_
 	/* Don't allow reading from a closed socket */
 	if (cs->HasClientQuit()) return;
 
-	pos = p->pos;
-	while (--size > 0 && pos < p->size && (*buffer++ = p->buffer[pos++]) != '\0') {}
+	pos = this->pos;
+	while (--size > 0 && pos < this->size && (*buffer++ = this->buffer[pos++]) != '\0') {}
 
-	if (size == 0 || pos == p->size) {
+	if (size == 0 || pos == this->size) {
 		*buffer = '\0';
 		/* If size was sooner to zero then the string in the stream
 		 *  skip till the \0, so than packet can be read out correctly for the rest */
-		while (pos < p->size && p->buffer[pos] != '\0') pos++;
+		while (pos < this->size && this->buffer[pos] != '\0') pos++;
 		pos++;
 	}
-	p->pos = pos;
+	this->pos = pos;
 
 	str_validate(bufp);
 }

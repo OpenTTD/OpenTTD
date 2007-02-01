@@ -70,11 +70,11 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
 	p = NetworkSend_Init(PACKET_CLIENT_JOIN);
-	NetworkSend_string(p, _openttd_revision);
-	NetworkSend_string(p, _network_player_name); // Player name
-	NetworkSend_uint8(p, _network_playas); // PlayAs
-	NetworkSend_uint8(p, NETLANG_ANY); // Language
-	NetworkSend_string(p, _network_unique_id);
+	p->Send_string(_openttd_revision);
+	p->Send_string(_network_player_name); // Player name
+	p->Send_uint8 (_network_playas);      // PlayAs
+	p->Send_uint8 (NETLANG_ANY);          // Language
+	p->Send_string(_network_unique_id);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
@@ -100,8 +100,8 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_PASSWORD)(NetworkPasswordType type, 
 	//    String: Password
 	//
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_PASSWORD);
-	NetworkSend_uint8(p, type);
-	NetworkSend_string(p, password);
+	p->Send_uint8 (type);
+	p->Send_string(password);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
@@ -142,7 +142,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK)
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_ACK);
 
-	NetworkSend_uint32(p, _frame_counter);
+	p->Send_uint32(_frame_counter);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
@@ -164,13 +164,13 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(CommandPacket *cp)
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_COMMAND);
 
-	NetworkSend_uint8(p, cp->player);
-	NetworkSend_uint32(p, cp->cmd);
-	NetworkSend_uint32(p, cp->p1);
-	NetworkSend_uint32(p, cp->p2);
-	NetworkSend_uint32(p, (uint32)cp->tile);
-	NetworkSend_string(p, cp->text);
-	NetworkSend_uint8(p, cp->callback);
+	p->Send_uint8 (cp->player);
+	p->Send_uint32(cp->cmd);
+	p->Send_uint32(cp->p1);
+	p->Send_uint32(cp->p2);
+	p->Send_uint32((uint32)cp->tile);
+	p->Send_string(cp->text);
+	p->Send_uint8 (cp->callback);
 
 	NetworkSend_Packet(p, MY_CLIENT);
 }
@@ -190,10 +190,10 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_CHAT);
 
-	NetworkSend_uint8(p, action);
-	NetworkSend_uint8(p, type);
-	NetworkSend_uint8(p, dest);
-	NetworkSend_string(p, msg);
+	p->Send_uint8 (action);
+	p->Send_uint8 (type);
+	p->Send_uint8 (dest);
+	p->Send_string(msg);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
@@ -208,7 +208,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_ERROR)(NetworkErrorCode errorno)
 	//
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_ERROR);
 
-	NetworkSend_uint8(p, errorno);
+	p->Send_uint8(errorno);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
@@ -222,7 +222,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password)
 	//
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_SET_PASSWORD);
 
-	NetworkSend_string(p, password);
+	p->Send_string(password);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
@@ -236,7 +236,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name)
 	//
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_SET_NAME);
 
-	NetworkSend_string(p, name);
+	p->Send_string(name);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
@@ -251,15 +251,15 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_QUIT)(const char *leavemsg)
 	//
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_QUIT);
 
-	NetworkSend_string(p, leavemsg);
+	p->Send_string(leavemsg);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *command)
 {
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_RCON);
-	NetworkSend_string(p, pass);
-	NetworkSend_string(p, command);
+	p->Send_string(pass);
+	p->Send_string(command);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
@@ -294,33 +294,33 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	byte company_info_version;
 	int i;
 
-	company_info_version = NetworkRecv_uint8(MY_CLIENT, p);
+	company_info_version = p->Recv_uint8();
 
 	if (!MY_CLIENT->has_quit && company_info_version == NETWORK_COMPANY_INFO_VERSION) {
 		byte total;
 		PlayerID current;
 
-		total = NetworkRecv_uint8(MY_CLIENT, p);
+		total = p->Recv_uint8();
 
 		// There is no data at all..
 		if (total == 0) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
-		current = (Owner)NetworkRecv_uint8(MY_CLIENT, p);
+		current = (Owner)p->Recv_uint8();
 		if (!IsValidPlayer(current)) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
-		NetworkRecv_string(MY_CLIENT, p, _network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
-		_network_player_info[current].inaugurated_year = NetworkRecv_uint32(MY_CLIENT, p);
-		_network_player_info[current].company_value = NetworkRecv_uint64(MY_CLIENT, p);
-		_network_player_info[current].money = NetworkRecv_uint64(MY_CLIENT, p);
-		_network_player_info[current].income = NetworkRecv_uint64(MY_CLIENT, p);
-		_network_player_info[current].performance = NetworkRecv_uint16(MY_CLIENT, p);
-		_network_player_info[current].use_password = NetworkRecv_uint8(MY_CLIENT, p);
+		p->Recv_string(_network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
+		_network_player_info[current].inaugurated_year = p->Recv_uint32();
+		_network_player_info[current].company_value    = p->Recv_uint64();
+		_network_player_info[current].money            = p->Recv_uint64();
+		_network_player_info[current].income           = p->Recv_uint64();
+		_network_player_info[current].performance      = p->Recv_uint16();
+		_network_player_info[current].use_password     = p->Recv_uint8();
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
-			_network_player_info[current].num_vehicle[i] = NetworkRecv_uint16(MY_CLIENT, p);
+			_network_player_info[current].num_vehicle[i] = p->Recv_uint16();
 		for (i = 0; i < NETWORK_STATION_TYPES; i++)
-			_network_player_info[current].num_station[i] = NetworkRecv_uint16(MY_CLIENT, p);
+			_network_player_info[current].num_station[i] = p->Recv_uint16();
 
-		NetworkRecv_string(MY_CLIENT, p, _network_player_info[current].players, sizeof(_network_player_info[current].players));
+		p->Recv_string(_network_player_info[current].players, sizeof(_network_player_info[current].players));
 
 		InvalidateWindow(WC_NETWORK_WINDOW, 0);
 
@@ -336,13 +336,13 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 {
 	NetworkClientInfo *ci;
-	uint16 index = NetworkRecv_uint16(MY_CLIENT, p);
-	PlayerID playas = (Owner)NetworkRecv_uint8(MY_CLIENT, p);
+	uint16 index = p->Recv_uint16();
+	PlayerID playas = (Owner)p->Recv_uint8();
 	char name[NETWORK_NAME_LENGTH];
 	char unique_id[NETWORK_NAME_LENGTH];
 
-	NetworkRecv_string(MY_CLIENT, p, name, sizeof(name));
-	NetworkRecv_string(MY_CLIENT, p, unique_id, sizeof(unique_id));
+	p->Recv_string(name, sizeof(name));
+	p->Recv_string(unique_id, sizeof(unique_id));
 
 	if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_CONN_LOST;
 
@@ -387,7 +387,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 {
-	NetworkErrorCode error = (NetworkErrorCode)NetworkRecv_uint8(MY_CLIENT, p);
+	NetworkErrorCode error = (NetworkErrorCode)p->Recv_uint8();
 
 	switch (error) {
 		/* We made an error in the protocol, and our connection is closed.... */
@@ -422,7 +422,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)
 {
-	uint grf_count = NetworkRecv_uint8(MY_CLIENT, p);
+	uint grf_count = p->Recv_uint8();
 	NetworkRecvStatus ret = NETWORK_RECV_STATUS_OKAY;
 
 	/* Check all GRFs */
@@ -453,7 +453,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 {
-	NetworkPasswordType type = (NetworkPasswordType)NetworkRecv_uint8(MY_CLIENT, p);
+	NetworkPasswordType type = (NetworkPasswordType)p->Recv_uint8();
 
 	switch (type) {
 		case NETWORK_GAME_PASSWORD:
@@ -467,7 +467,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)
 {
-	_network_own_client_index = NetworkRecv_uint16(MY_CLIENT, p);
+	_network_own_client_index = p->Recv_uint16();
 
 	// Start receiving the map
 	SEND_COMMAND(PACKET_CLIENT_GETMAP)();
@@ -477,7 +477,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WAIT)
 {
 	_network_join_status = NETWORK_JOIN_STATUS_WAITING;
-	_network_join_waiting = NetworkRecv_uint8(MY_CLIENT, p);
+	_network_join_waiting = p->Recv_uint8();
 	InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
 	// We are put on hold for receiving the map.. we need GUI for this ;)
@@ -494,7 +494,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 	byte maptype;
 
-	maptype = NetworkRecv_uint8(MY_CLIENT, p);
+	maptype = p->Recv_uint8();
 
 	if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_CONN_LOST;
 
@@ -509,10 +509,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
 
-		_frame_counter = _frame_counter_server = _frame_counter_max = NetworkRecv_uint32(MY_CLIENT, p);
+		_frame_counter = _frame_counter_server = _frame_counter_max = p->Recv_uint32();
 
 		_network_join_kbytes = 0;
-		_network_join_kbytes_total = NetworkRecv_uint32(MY_CLIENT, p) / 1024;
+		_network_join_kbytes_total = p->Recv_uint32() / 1024;
 
 		/* If the network connection has been closed due to loss of connection
 		 * or when _network_join_kbytes_total is 0, the join status window will
@@ -583,16 +583,16 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FRAME)
 {
-	_frame_counter_server = NetworkRecv_uint32(MY_CLIENT, p);
-	_frame_counter_max = NetworkRecv_uint32(MY_CLIENT, p);
+	_frame_counter_server = p->Recv_uint32();
+	_frame_counter_max = p->Recv_uint32();
 #ifdef ENABLE_NETWORK_SYNC_EVERY_FRAME
 	// Test if the server supports this option
 	//  and if we are at the frame the server is
 	if (p->pos < p->size) {
 		_sync_frame = _frame_counter_server;
-		_sync_seed_1 = NetworkRecv_uint32(MY_CLIENT, p);
+		_sync_seed_1 = p->Recv_uint32();
 #ifdef NETWORK_SEND_DOUBLE_SEED
-		_sync_seed_2 = NetworkRecv_uint32(MY_CLIENT, p);
+		_sync_seed_2 = p->Recv_uint32();
 #endif
 	}
 #endif
@@ -611,10 +611,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FRAME)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SYNC)
 {
-	_sync_frame = NetworkRecv_uint32(MY_CLIENT, p);
-	_sync_seed_1 = NetworkRecv_uint32(MY_CLIENT, p);
+	_sync_frame = p->Recv_uint32();
+	_sync_seed_1 = p->Recv_uint32();
 #ifdef NETWORK_SEND_DOUBLE_SEED
-	_sync_seed_2 = NetworkRecv_uint32(MY_CLIENT, p);
+	_sync_seed_2 = p->Recv_uint32();
 #endif
 
 	return NETWORK_RECV_STATUS_OKAY;
@@ -623,15 +623,15 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SYNC)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 {
 	CommandPacket *cp = MallocT<CommandPacket>(1);
-	cp->player = (PlayerID)NetworkRecv_uint8(MY_CLIENT, p);
-	cp->cmd = NetworkRecv_uint32(MY_CLIENT, p);
-	cp->p1 = NetworkRecv_uint32(MY_CLIENT, p);
-	cp->p2 = NetworkRecv_uint32(MY_CLIENT, p);
-	cp->tile = NetworkRecv_uint32(MY_CLIENT, p);
-	NetworkRecv_string(MY_CLIENT, p, cp->text, sizeof(cp->text));
-	cp->callback = NetworkRecv_uint8(MY_CLIENT, p);
-	cp->frame = NetworkRecv_uint32(MY_CLIENT, p);
-	cp->next = NULL;
+	cp->player   = (PlayerID)p->Recv_uint8();
+	cp->cmd      = p->Recv_uint32();
+	cp->p1       = p->Recv_uint32();
+	cp->p2       = p->Recv_uint32();
+	cp->tile     = p->Recv_uint32();
+	p->Recv_string(cp->text, sizeof(cp->text));
+	cp->callback = p->Recv_uint8();
+	cp->frame    = p->Recv_uint32();
+	cp->next     = NULL;
 
 	// The server did send us this command..
 	//  queue it in our own queue, so we can handle it in the upcoming frame!
@@ -653,10 +653,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	char name[NETWORK_NAME_LENGTH], msg[MAX_TEXT_MSG_LEN];
 	const NetworkClientInfo *ci = NULL, *ci_to;
 
-	NetworkAction action = (NetworkAction)NetworkRecv_uint8(MY_CLIENT, p);
-	uint16 index = NetworkRecv_uint16(MY_CLIENT, p);
-	bool self_send = (NetworkRecv_uint8(MY_CLIENT, p) != 0);
-	NetworkRecv_string(MY_CLIENT, p, msg, MAX_TEXT_MSG_LEN);
+	NetworkAction action = (NetworkAction)p->Recv_uint8();
+	uint16 index = p->Recv_uint16();
+	bool self_send = (p->Recv_uint8() != 0);
+	p->Recv_string(msg, MAX_TEXT_MSG_LEN);
 
 	ci_to = NetworkFindClientInfoFromIndex(index);
 	if (ci_to == NULL) return NETWORK_RECV_STATUS_OKAY;
@@ -700,8 +700,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 	uint16 index;
 	NetworkClientInfo *ci;
 
-	index = NetworkRecv_uint16(MY_CLIENT, p);
-	GetNetworkErrorMsg(str, (NetworkErrorCode)NetworkRecv_uint8(MY_CLIENT, p), lastof(str));
+	index = p->Recv_uint16();
+	GetNetworkErrorMsg(str, (NetworkErrorCode)p->Recv_uint8(), lastof(str));
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
@@ -722,8 +722,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 	uint16 index;
 	NetworkClientInfo *ci;
 
-	index = NetworkRecv_uint16(MY_CLIENT, p);
-	NetworkRecv_string(MY_CLIENT, p, str, lengthof(str));
+	index = p->Recv_uint16();
+	p->Recv_string(str, lengthof(str));
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
@@ -746,7 +746,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_JOIN)
 	uint16 index;
 	NetworkClientInfo *ci;
 
-	index = NetworkRecv_uint16(MY_CLIENT, p);
+	index = p->Recv_uint16();
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL)
@@ -781,8 +781,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_RCON)
 	char rcon_out[NETWORK_RCONCOMMAND_LENGTH];
 	uint16 color_code;
 
-	color_code = NetworkRecv_uint16(MY_CLIENT, p);
-	NetworkRecv_string(MY_CLIENT, p, rcon_out, sizeof(rcon_out));
+	color_code = p->Recv_uint16();
+	p->Recv_string(rcon_out, sizeof(rcon_out));
 
 	IConsolePrint(color_code, rcon_out);
 
@@ -856,7 +856,7 @@ NetworkRecvStatus NetworkClient_ReadPackets(NetworkTCPSocketHandler *cs)
 	NetworkRecvStatus res = NETWORK_RECV_STATUS_OKAY;
 
 	while (res == NETWORK_RECV_STATUS_OKAY && (p = NetworkRecv_Packet(cs, &res)) != NULL) {
-		byte type = NetworkRecv_uint8(MY_CLIENT, p);
+		byte type = p->Recv_uint8();
 		if (type < PACKET_END && _network_client_packet[type] != NULL && !MY_CLIENT->has_quit) {
 			res = _network_client_packet[type](p);
 		} else {

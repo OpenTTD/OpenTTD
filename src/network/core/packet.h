@@ -42,25 +42,28 @@ public:
 	Packet(NetworkSocketHandler *cs);
 	Packet(PacketType type);
 
-	void PrepareToSend();
+	/* Sending/writing of packets */
+	void PrepareToSend(void);
 
-	void ReadRawPacketSize();
-	void PrepareToRead();
+	void Send_uint8 (uint8  data);
+	void Send_uint16(uint16 data);
+	void Send_uint32(uint32 data);
+	void Send_uint64(uint64 data);
+	void Send_string(const char* data);
+
+	/* Reading/receiving of packets */
+	void ReadRawPacketSize(void);
+	void PrepareToRead(void);
+
+	bool   CanReadFromPacket (uint bytes_to_read);
+	uint8  Recv_uint8 (void);
+	uint16 Recv_uint16(void);
+	uint32 Recv_uint32(void);
+	uint64 Recv_uint64(void);
+	void   Recv_string(char* buffer, size_t size);
 };
 
-
 Packet *NetworkSend_Init(PacketType type);
-void NetworkSend_uint8 (Packet *packet, uint8 data);
-void NetworkSend_uint16(Packet *packet, uint16 data);
-void NetworkSend_uint32(Packet *packet, uint32 data);
-void NetworkSend_uint64(Packet *packet, uint64 data);
-void NetworkSend_string(Packet *packet, const char* data);
-
-uint8  NetworkRecv_uint8 (NetworkSocketHandler *cs, Packet *packet);
-uint16 NetworkRecv_uint16(NetworkSocketHandler *cs, Packet *packet);
-uint32 NetworkRecv_uint32(NetworkSocketHandler *cs, Packet *packet);
-uint64 NetworkRecv_uint64(NetworkSocketHandler *cs, Packet *packet);
-void   NetworkRecv_string(NetworkSocketHandler *cs, Packet *packet, char* buffer, size_t size);
 
 #endif /* ENABLE_NETWORK */
 

@@ -146,7 +146,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
  */
 void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameInfo *info)
 {
-	NetworkSend_uint8 (p, NETWORK_GAME_INFO_VERSION);
+	p->Send_uint8 (NETWORK_GAME_INFO_VERSION);
 
 	/*
 	 *              Please observe the order.
@@ -169,7 +169,7 @@ void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameI
 		for (c = info->grfconfig; c != NULL; c = c->next) {
 			if (!HASBIT(c->flags, GCF_STATIC)) count++;
 		}
-		NetworkSend_uint8 (p, count); // Send number of GRFs
+		p->Send_uint8 (count); // Send number of GRFs
 
 		/* Send actual GRF Identifications */
 		for (c = info->grfconfig; c != NULL; c = c->next) {
@@ -178,27 +178,27 @@ void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameI
 	}
 
 	/* NETWORK_GAME_INFO_VERSION = 3 */
-	NetworkSend_uint32(p, info->game_date);
-	NetworkSend_uint32(p, info->start_date);
+	p->Send_uint32(info->game_date);
+	p->Send_uint32(info->start_date);
 
 	/* NETWORK_GAME_INFO_VERSION = 2 */
-	NetworkSend_uint8 (p, info->companies_max);
-	NetworkSend_uint8 (p, info->companies_on);
-	NetworkSend_uint8 (p, info->spectators_max);
+	p->Send_uint8 (info->companies_max);
+	p->Send_uint8 (info->companies_on);
+	p->Send_uint8 (info->spectators_max);
 
 	/* NETWORK_GAME_INFO_VERSION = 1 */
-	NetworkSend_string(p, info->server_name);
-	NetworkSend_string(p, info->server_revision);
-	NetworkSend_uint8 (p, info->server_lang);
-	NetworkSend_uint8 (p, info->use_password);
-	NetworkSend_uint8 (p, info->clients_max);
-	NetworkSend_uint8 (p, info->clients_on);
-	NetworkSend_uint8 (p, info->spectators_on);
-	NetworkSend_string(p, info->map_name);
-	NetworkSend_uint16(p, info->map_width);
-	NetworkSend_uint16(p, info->map_height);
-	NetworkSend_uint8 (p, info->map_set);
-	NetworkSend_uint8 (p, info->dedicated);
+	p->Send_string(info->server_name);
+	p->Send_string(info->server_revision);
+	p->Send_uint8 (info->server_lang);
+	p->Send_uint8 (info->use_password);
+	p->Send_uint8 (info->clients_max);
+	p->Send_uint8 (info->clients_on);
+	p->Send_uint8 (info->spectators_on);
+	p->Send_string(info->map_name);
+	p->Send_uint16(info->map_width);
+	p->Send_uint16(info->map_height);
+	p->Send_uint8 (info->map_set);
+	p->Send_uint8 (info->dedicated);
 }
 
 /**
@@ -210,7 +210,7 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 {
 	static const Date MAX_DATE = ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
 
-	info->game_info_version = NetworkRecv_uint8(this, p);
+	info->game_info_version = p->Recv_uint8();
 
 	/*
 	 *              Please observe the order.
@@ -224,7 +224,7 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 		case 4: {
 			GRFConfig **dst = &info->grfconfig;
 			uint i;
-			uint num_grfs = NetworkRecv_uint8(this, p);
+			uint num_grfs = p->Recv_uint8();
 
 			for (i = 0; i < num_grfs; i++) {
 				GRFConfig *c = CallocT<GRFConfig>(1);
@@ -237,31 +237,31 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 			}
 		} /* Fallthrough */
 		case 3:
-			info->game_date      = clamp(NetworkRecv_uint32(this, p), 0, MAX_DATE);
-			info->start_date     = clamp(NetworkRecv_uint32(this, p), 0, MAX_DATE);
+			info->game_date      = clamp(p->Recv_uint32(), 0, MAX_DATE);
+			info->start_date     = clamp(p->Recv_uint32(), 0, MAX_DATE);
 			/* Fallthrough */
 		case 2:
-			info->companies_max  = NetworkRecv_uint8 (this, p);
-			info->companies_on   = NetworkRecv_uint8 (this, p);
-			info->spectators_max = NetworkRecv_uint8 (this, p);
+			info->companies_max  = p->Recv_uint8 ();
+			info->companies_on   = p->Recv_uint8 ();
+			info->spectators_max = p->Recv_uint8 ();
 			/* Fallthrough */
 		case 1:
-			NetworkRecv_string(this, p, info->server_name,     sizeof(info->server_name));
-			NetworkRecv_string(this, p, info->server_revision, sizeof(info->server_revision));
-			info->server_lang    = NetworkRecv_uint8 (this, p);
-			info->use_password   = (NetworkRecv_uint8 (this, p) != 0);
-			info->clients_max    = NetworkRecv_uint8 (this, p);
-			info->clients_on     = NetworkRecv_uint8 (this, p);
-			info->spectators_on  = NetworkRecv_uint8 (this, p);
+			p->Recv_string(info->server_name,     sizeof(info->server_name));
+			p->Recv_string(info->server_revision, sizeof(info->server_revision));
+			info->server_lang    = p->Recv_uint8 ();
+			info->use_password   = (p->Recv_uint8 () != 0);
+			info->clients_max    = p->Recv_uint8 ();
+			info->clients_on     = p->Recv_uint8 ();
+			info->spectators_on  = p->Recv_uint8 ();
 			if (info->game_info_version < 3) { // 16 bits dates got scrapped and are read earlier
-				info->game_date    = NetworkRecv_uint16(this, p) + DAYS_TILL_ORIGINAL_BASE_YEAR;
-				info->start_date   = NetworkRecv_uint16(this, p) + DAYS_TILL_ORIGINAL_BASE_YEAR;
+				info->game_date    = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
+				info->start_date   = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
 			}
-			NetworkRecv_string(this, p, info->map_name, sizeof(info->map_name));
-			info->map_width      = NetworkRecv_uint16(this, p);
-			info->map_height     = NetworkRecv_uint16(this, p);
-			info->map_set        = NetworkRecv_uint8 (this, p);
-			info->dedicated      = (NetworkRecv_uint8(this, p) != 0);
+			p->Recv_string(info->map_name, sizeof(info->map_name));
+			info->map_width      = p->Recv_uint16();
+			info->map_height     = p->Recv_uint16();
+			info->map_set        = p->Recv_uint8 ();
+			info->dedicated      = (p->Recv_uint8() != 0);
 
 			if (info->server_lang >= NETWORK_NUM_LANGUAGES)  info->server_lang = 0;
 			if (info->map_set     >= NETWORK_NUM_LANDSCAPES) info->map_set     = 0;
@@ -286,7 +286,7 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, const struct sockaddr_i
 	/* New packet == new client, which has not quit yet */
 	this->has_quit = false;
 
-	type = (PacketUDPType)NetworkRecv_uint8(this, p);
+	type = (PacketUDPType)p->Recv_uint8();
 
 	switch (this->HasClientQuit() ? PACKET_UDP_END : type) {
 		UDP_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER);

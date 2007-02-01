@@ -48,10 +48,10 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkTCPSocketHandler
 
 	if (ci->client_index != NETWORK_EMPTY_INDEX) {
 		Packet *p = NetworkSend_Init(PACKET_SERVER_CLIENT_INFO);
-		NetworkSend_uint16(p, ci->client_index);
-		NetworkSend_uint8 (p, ci->client_playas);
-		NetworkSend_string(p, ci->client_name);
-		NetworkSend_string(p, ci->unique_id);
+		p->Send_uint16(ci->client_index);
+		p->Send_uint8 (ci->client_playas);
+		p->Send_string(ci->client_name);
+		p->Send_string(ci->unique_id);
 
 		NetworkSend_Packet(p, cs);
 	}
@@ -75,8 +75,8 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	if (active == 0) {
 		p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
 
-		NetworkSend_uint8 (p, NETWORK_COMPANY_INFO_VERSION);
-		NetworkSend_uint8 (p, active);
+		p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
+		p->Send_uint8 (active);
 
 		NetworkSend_Packet(p, cs);
 		return;
@@ -89,36 +89,32 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 		p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
 
-		NetworkSend_uint8 (p, NETWORK_COMPANY_INFO_VERSION);
-		NetworkSend_uint8 (p, active);
-		NetworkSend_uint8 (p, player->index);
+		p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
+		p->Send_uint8 (active);
+		p->Send_uint8 (player->index);
 
-		NetworkSend_string(p, _network_player_info[player->index].company_name);
-		NetworkSend_uint32(p, _network_player_info[player->index].inaugurated_year);
-		NetworkSend_uint64(p, _network_player_info[player->index].company_value);
-		NetworkSend_uint64(p, _network_player_info[player->index].money);
-		NetworkSend_uint64(p, _network_player_info[player->index].income);
-		NetworkSend_uint16(p, _network_player_info[player->index].performance);
+		p->Send_string(_network_player_info[player->index].company_name);
+		p->Send_uint32(_network_player_info[player->index].inaugurated_year);
+		p->Send_uint64(_network_player_info[player->index].company_value);
+		p->Send_uint64(_network_player_info[player->index].money);
+		p->Send_uint64(_network_player_info[player->index].income);
+		p->Send_uint16(_network_player_info[player->index].performance);
 
 		/* Send 1 if there is a passord for the company else send 0 */
-		if (_network_player_info[player->index].password[0] != '\0') {
-			NetworkSend_uint8(p, 1);
-		} else {
-			NetworkSend_uint8(p, 0);
-		}
+		p->Send_uint8(StrEmpty(_network_player_info[player->index].password) ? 0 : 1);
 
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
-			NetworkSend_uint16(p, _network_player_info[player->index].num_vehicle[i]);
+			p->Send_uint16(_network_player_info[player->index].num_vehicle[i]);
 		}
 
 		for (i = 0; i < NETWORK_STATION_TYPES; i++) {
-			NetworkSend_uint16(p, _network_player_info[player->index].num_station[i]);
+			p->Send_uint16(_network_player_info[player->index].num_station[i]);
 		}
 
 		if (_network_player_info[player->index].players[0] == '\0') {
-			NetworkSend_string(p, "<none>");
+			p->Send_string("<none>");
 		} else {
-			NetworkSend_string(p, _network_player_info[player->index].players);
+			p->Send_string(_network_player_info[player->index].players);
 		}
 
 		NetworkSend_Packet(p, cs);
@@ -126,8 +122,8 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 	p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
 
-	NetworkSend_uint8 (p, NETWORK_COMPANY_INFO_VERSION);
-	NetworkSend_uint8 (p, 0);
+	p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
+	p->Send_uint8 (0);
 
 	NetworkSend_Packet(p, cs);
 }
@@ -144,7 +140,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, 
 	char str[100];
 	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR);
 
-	NetworkSend_uint8(p, error);
+	p->Send_uint8(error);
 	NetworkSend_Packet(p, cs);
 
 	GetNetworkErrorMsg(str, error, lastof(str));
@@ -201,7 +197,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkTCPSocketHandl
 
 	for (c = _grfconfig; c != NULL; c = c->next) grf_count++;
 
-	NetworkSend_uint8 (p, grf_count);
+	p->Send_uint8 (grf_count);
 	for (c = _grfconfig; c != NULL; c = c->next) {
 		cs->Send_GRFIdentifier(p, c);
 	}
@@ -219,7 +215,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkTCPSocketHandl
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_NEED_PASSWORD);
-	NetworkSend_uint8(p, type);
+	p->Send_uint8(type);
 	NetworkSend_Packet(p, cs);
 }
 
@@ -242,7 +238,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	_network_game_info.clients_on++;
 
 	p = NetworkSend_Init(PACKET_SERVER_WELCOME);
-	NetworkSend_uint16(p, cs->index);
+	p->Send_uint16(cs->index);
 	NetworkSend_Packet(p, cs);
 
 		// Transmit info about all the active clients
@@ -273,7 +269,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
 	}
 
 	p = NetworkSend_Init(PACKET_SERVER_WAIT);
-	NetworkSend_uint8(p, waiting);
+	p->Send_uint8(waiting);
 	NetworkSend_Packet(p, cs);
 }
 
@@ -320,9 +316,9 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 
 		// Now send the _frame_counter and how many packets are coming
 		p = NetworkSend_Init(PACKET_SERVER_MAP);
-		NetworkSend_uint8(p, MAP_PACKET_START);
-		NetworkSend_uint32(p, _frame_counter);
-		NetworkSend_uint32(p, ftell(file_pointer));
+		p->Send_uint8 (MAP_PACKET_START);
+		p->Send_uint32(_frame_counter);
+		p->Send_uint32(ftell(file_pointer));
 		NetworkSend_Packet(p, cs);
 
 		fseek(file_pointer, 0, SEEK_SET);
@@ -340,7 +336,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		int res;
 		for (i = 0; i < sent_packets; i++) {
 			Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
-			NetworkSend_uint8(p, MAP_PACKET_NORMAL);
+			p->Send_uint8(MAP_PACKET_NORMAL);
 			res = (int)fread(p->buffer + p->size, 1, SEND_MTU - p->size, file_pointer);
 
 			if (ferror(file_pointer)) error("Error reading temporary network savegame!");
@@ -350,7 +346,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 			if (feof(file_pointer)) {
 				// Done reading!
 				Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
-				NetworkSend_uint8(p, MAP_PACKET_END);
+				p->Send_uint8(MAP_PACKET_END);
 				NetworkSend_Packet(p, cs);
 
 				// Set the status to DONE_MAP, no we will wait for the client
@@ -409,7 +405,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkTCPSocketHandler *cs, u
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_JOIN);
 
-	NetworkSend_uint16(p, client_index);
+	p->Send_uint16(client_index);
 
 	NetworkSend_Packet(p, cs);
 }
@@ -429,12 +425,12 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_FRAME)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_FRAME);
-	NetworkSend_uint32(p, _frame_counter);
-	NetworkSend_uint32(p, _frame_counter_max);
+	p->Send_uint32(_frame_counter);
+	p->Send_uint32(_frame_counter_max);
 #ifdef ENABLE_NETWORK_SYNC_EVERY_FRAME
-	NetworkSend_uint32(p, _sync_seed_1);
+	p->Send_uint32(_sync_seed_1);
 #ifdef NETWORK_SEND_DOUBLE_SEED
-	NetworkSend_uint32(p, _sync_seed_2);
+	p->Send_uint32(_sync_seed_2);
 #endif
 #endif
 	NetworkSend_Packet(p, cs);
@@ -453,11 +449,11 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SYNC)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_SYNC);
-	NetworkSend_uint32(p, _frame_counter);
-	NetworkSend_uint32(p, _sync_seed_1);
+	p->Send_uint32(_frame_counter);
+	p->Send_uint32(_sync_seed_1);
 
 #ifdef NETWORK_SEND_DOUBLE_SEED
-	NetworkSend_uint32(p, _sync_seed_2);
+	p->Send_uint32(_sync_seed_2);
 #endif
 	NetworkSend_Packet(p, cs);
 }
@@ -480,14 +476,14 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkTCPSocketHandler *cs
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_COMMAND);
 
-	NetworkSend_uint8(p, cp->player);
-	NetworkSend_uint32(p, cp->cmd);
-	NetworkSend_uint32(p, cp->p1);
-	NetworkSend_uint32(p, cp->p2);
-	NetworkSend_uint32(p, cp->tile);
-	NetworkSend_string(p, cp->text);
-	NetworkSend_uint8(p, cp->callback);
-	NetworkSend_uint32(p, cp->frame);
+	p->Send_uint8 (cp->player);
+	p->Send_uint32(cp->cmd);
+	p->Send_uint32(cp->p1);
+	p->Send_uint32(cp->p2);
+	p->Send_uint32(cp->tile);
+	p->Send_string(cp->text);
+	p->Send_uint8 (cp->callback);
+	p->Send_uint32(cp->frame);
 
 	NetworkSend_Packet(p, cs);
 }
@@ -505,10 +501,10 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkTCPSocketHandler *cs, N
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_CHAT);
 
-	NetworkSend_uint8(p, action);
-	NetworkSend_uint16(p, client_index);
-	NetworkSend_uint8(p, self_send);
-	NetworkSend_string(p, msg);
+	p->Send_uint8 (action);
+	p->Send_uint16(client_index);
+	p->Send_uint8 (self_send);
+	p->Send_string(msg);
 
 	NetworkSend_Packet(p, cs);
 }
@@ -526,8 +522,8 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkTCPSocketHandler 
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR_QUIT);
 
-	NetworkSend_uint16(p, client_index);
-	NetworkSend_uint8(p, errorno);
+	p->Send_uint16(client_index);
+	p->Send_uint8 (errorno);
 
 	NetworkSend_Packet(p, cs);
 }
@@ -545,8 +541,8 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkTCPSocketHandler *cs, u
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_QUIT);
 
-	NetworkSend_uint16(p, client_index);
-	NetworkSend_string(p, leavemsg);
+	p->Send_uint16(client_index);
+	p->Send_string(leavemsg);
 
 	NetworkSend_Packet(p, cs);
 }
@@ -581,8 +577,8 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkTCPSocketHandler *cs, u
 {
 	Packet *p = NetworkSend_Init(PACKET_SERVER_RCON);
 
-	NetworkSend_uint16(p, color);
-	NetworkSend_string(p, command);
+	p->Send_uint16(color);
+	p->Send_string(command);
 	NetworkSend_Packet(p, cs);
 }
 
@@ -621,7 +617,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	NetworkLanguage client_lang;
 	char client_revision[NETWORK_REVISION_LENGTH];
 
-	NetworkRecv_string(cs, p, client_revision, sizeof(client_revision));
+	p->Recv_string(client_revision, sizeof(client_revision));
 
 #if defined(WITH_REV) || defined(WITH_REV_HACK)
 	// Check if the client has revision control enabled
@@ -633,10 +629,10 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	}
 #endif
 
-	NetworkRecv_string(cs, p, name, sizeof(name));
-	playas = (Owner)NetworkRecv_uint8(cs, p);
-	client_lang = (NetworkLanguage)NetworkRecv_uint8(cs, p);
-	NetworkRecv_string(cs, p, unique_id, sizeof(unique_id));
+	p->Recv_string(name, sizeof(name));
+	playas = (Owner)p->Recv_uint8();
+	client_lang = (NetworkLanguage)p->Recv_uint8();
+	p->Recv_string(unique_id, sizeof(unique_id));
 
 	if (cs->has_quit) return;
 
@@ -694,8 +690,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 	char password[NETWORK_PASSWORD_LENGTH];
 	const NetworkClientInfo *ci;
 
-	type = (NetworkPasswordType)NetworkRecv_uint8(cs, p);
-	NetworkRecv_string(cs, p, password, sizeof(password));
+	type = (NetworkPasswordType)p->Recv_uint8();
+	p->Recv_string(password, sizeof(password));
 
 	if (cs->status == STATUS_INACTIVE && type == NETWORK_GAME_PASSWORD) {
 		// Check game-password
@@ -841,14 +837,14 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return;
 	}
 
-	cp->player = (Owner)NetworkRecv_uint8(cs, p);
-	cp->cmd    = NetworkRecv_uint32(cs, p);
-	cp->p1     = NetworkRecv_uint32(cs, p);
-	cp->p2     = NetworkRecv_uint32(cs, p);
-	cp->tile   = NetworkRecv_uint32(cs, p);
-	NetworkRecv_string(cs, p, cp->text, lengthof(cp->text));
+	cp->player = (Owner)p->Recv_uint8();
+	cp->cmd    = p->Recv_uint32();
+	cp->p1     = p->Recv_uint32();
+	cp->p2     = p->Recv_uint32();
+	cp->tile   = p->Recv_uint32();
+	p->Recv_string(cp->text, lengthof(cp->text));
 
-	callback = NetworkRecv_uint8(cs, p);
+	callback = p->Recv_uint8();
 
 	if (cs->has_quit) return;
 
@@ -930,7 +926,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 	NetworkTCPSocketHandler *new_cs;
 	char str[100];
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
-	NetworkErrorCode errorno = (NetworkErrorCode)NetworkRecv_uint8(cs, p);
+	NetworkErrorCode errorno = (NetworkErrorCode)p->Recv_uint8();
 
 	// The client was never joined.. thank the client for the packet, but ignore it
 	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
@@ -969,7 +965,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 		return;
 	}
 
-	NetworkRecv_string(cs, p, str, lengthof(str));
+	p->Recv_string(str, lengthof(str));
 
 	NetworkGetClientName(client_name, sizeof(client_name), cs);
 
@@ -986,7 +982,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 {
-	uint32 frame = NetworkRecv_uint32(cs, p);
+	uint32 frame = p->Recv_uint32();
 
 	/* The client is trying to catch up with the server */
 	if (cs->status == STATUS_PRE_ACTIVE) {
@@ -1113,12 +1109,12 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 {
-	NetworkAction action = (NetworkAction)NetworkRecv_uint8(cs, p);
-	DestType desttype = (DestType)NetworkRecv_uint8(cs, p);
-	int dest = NetworkRecv_uint8(cs, p);
+	NetworkAction action = (NetworkAction)p->Recv_uint8();
+	DestType desttype = (DestType)p->Recv_uint8();
+	int dest = p->Recv_uint8();
 	char msg[MAX_TEXT_MSG_LEN];
 
-	NetworkRecv_string(cs, p, msg, MAX_TEXT_MSG_LEN);
+	p->Recv_string(msg, MAX_TEXT_MSG_LEN);
 
 	NetworkServer_HandleChat(action, desttype, dest, msg, cs->index);
 }
@@ -1128,7 +1124,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 	char password[NETWORK_PASSWORD_LENGTH];
 	const NetworkClientInfo *ci;
 
-	NetworkRecv_string(cs, p, password, sizeof(password));
+	p->Recv_string(password, sizeof(password));
 	ci = DEREF_CLIENT_INFO(cs);
 
 	if (IsValidPlayer(ci->client_playas)) {
@@ -1141,7 +1137,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 	NetworkClientInfo *ci;
 
-	NetworkRecv_string(cs, p, client_name, sizeof(client_name));
+	p->Recv_string(client_name, sizeof(client_name));
 	ci = DEREF_CLIENT_INFO(cs);
 
 	if (cs->has_quit) return;
@@ -1163,8 +1159,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
 
 	if (_network_game_info.rcon_password[0] == '\0') return;
 
-	NetworkRecv_string(cs, p, pass, sizeof(pass));
-	NetworkRecv_string(cs, p, command, sizeof(command));
+	p->Recv_string(pass, sizeof(pass));
+	p->Recv_string(command, sizeof(command));
 
 	if (strcmp(pass, _network_game_info.rcon_password) != 0) {
 		DEBUG(net, 0, "[rcon] wrong password from client-id %d", cs->index);
@@ -1468,7 +1464,7 @@ bool NetworkServer_ReadPackets(NetworkTCPSocketHandler *cs)
 	Packet *p;
 	NetworkRecvStatus res;
 	while ((p = NetworkRecv_Packet(cs, &res)) != NULL) {
-		byte type = NetworkRecv_uint8(cs, p);
+		byte type = p->Recv_uint8();
 		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->has_quit) {
 			_network_server_packet[type](cs, p);
 		} else {

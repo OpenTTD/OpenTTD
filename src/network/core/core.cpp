@@ -99,9 +99,9 @@ void NetworkCoreShutdown(void)
 void NetworkSocketHandler::Send_GRFIdentifier(Packet *p, const GRFIdentifier *grf)
 {
 	uint j;
-	NetworkSend_uint32(p, grf->grfid);
+	p->Send_uint32(grf->grfid);
 	for (j = 0; j < sizeof(grf->md5sum); j++) {
-		NetworkSend_uint8 (p, grf->md5sum[j]);
+		p->Send_uint8 (grf->md5sum[j]);
 	}
 }
 
@@ -113,9 +113,9 @@ void NetworkSocketHandler::Send_GRFIdentifier(Packet *p, const GRFIdentifier *gr
 void NetworkSocketHandler::Recv_GRFIdentifier(Packet *p, GRFIdentifier *grf)
 {
 	uint j;
-	grf->grfid = NetworkRecv_uint32(this, p);
+	grf->grfid = p->Recv_uint32();
 	for (j = 0; j < sizeof(grf->md5sum); j++) {
-		grf->md5sum[j] = NetworkRecv_uint8(this, p);
+		grf->md5sum[j] = p->Recv_uint8();
 	}
 }
 
