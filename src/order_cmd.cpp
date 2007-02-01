@@ -1131,16 +1131,16 @@ void DeleteVehicleOrders(Vehicle *v)
 
 	if (cur != NULL) {
 		/* Delete the vehicle list of shared orders, if any */
-		int window_type = 0;
+		WindowClass window_class = WC_NONE;
 
 		switch (v->type) {
-			case VEH_Train:    window_type = WC_TRAINS_LIST;   break;
-			case VEH_Road:     window_type = WC_ROADVEH_LIST;  break;
-			case VEH_Ship:     window_type = WC_SHIPS_LIST;    break;
-			case VEH_Aircraft: window_type = WC_AIRCRAFT_LIST; break;
 			default: NOT_REACHED();
+			case VEH_Train:    window_class = WC_TRAINS_LIST;   break;
+			case VEH_Road:     window_class = WC_ROADVEH_LIST;  break;
+			case VEH_Ship:     window_class = WC_SHIPS_LIST;    break;
+			case VEH_Aircraft: window_class = WC_AIRCRAFT_LIST; break;
 		}
-		DeleteWindowById(window_type, (cur->index << 16) | (v->type << 11) | VLW_SHARED_ORDERS | v->owner);
+		DeleteWindowById(window_class, (cur->index << 16) | (v->type << 11) | VLW_SHARED_ORDERS | v->owner);
 	}
 
 	while (cur != NULL) {

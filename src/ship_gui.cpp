@@ -328,7 +328,7 @@ static const Widget _ship_view_widgets[] = {
 
 static const WindowDesc _ship_view_desc = {
 	WDP_AUTO, WDP_AUTO, 250, 116,
-	WC_VEHICLE_VIEW,0,
+	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_ship_view_widgets,
 	ShipViewWndProc

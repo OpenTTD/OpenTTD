@@ -924,7 +924,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 
 static const WindowDesc _build_vehicle_desc = {
 	WDP_AUTO, WDP_AUTO, 228, 236,
-	WC_BUILD_VEHICLE,0,
+	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_build_vehicle_widgets,
 	NewVehicleWndProc

@@ -208,7 +208,7 @@ static const Widget _build_docks_toolb_widgets[] = {
 
 static const WindowDesc _build_docks_toolbar_desc = {
 	WDP_ALIGN_TBR, 22, 136, 36,
-	WC_BUILD_TOOLBAR, 0,
+	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_docks_toolb_widgets,
 	BuildDocksToolbWndProc

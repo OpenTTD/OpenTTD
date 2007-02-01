@@ -575,7 +575,7 @@ static const Widget _replace_ship_aircraft_vehicle_widgets[] = {
 
 static const WindowDesc _replace_rail_vehicle_desc = {
 	WDP_AUTO, WDP_AUTO, 456, 252,
-	WC_REPLACE_VEHICLE,0,
+	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_rail_vehicle_widgets,
 	ReplaceVehicleWndProc
@@ -583,7 +583,7 @@ static const WindowDesc _replace_rail_vehicle_desc = {
 
 static const WindowDesc _replace_road_vehicle_desc = {
 	WDP_AUTO, WDP_AUTO, 456, 230,
-	WC_REPLACE_VEHICLE,0,
+	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_road_vehicle_widgets,
 	ReplaceVehicleWndProc
@@ -591,7 +591,7 @@ static const WindowDesc _replace_road_vehicle_desc = {
 
 static const WindowDesc _replace_ship_aircraft_vehicle_desc = {
 	WDP_AUTO, WDP_AUTO, 456, 214,
-	WC_REPLACE_VEHICLE,0,
+	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_ship_aircraft_vehicle_widgets,
 	ReplaceVehicleWndProc

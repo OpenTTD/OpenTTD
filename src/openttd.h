@@ -74,7 +74,6 @@ assert_compile(sizeof(DestinationID) == sizeof(WaypointID));
 assert_compile(sizeof(DestinationID) == sizeof(StationID));
 
 typedef int32 WindowNumber;
-typedef byte WindowClass;
 
 enum {
 	INVALID_YEAR = -1,
@@ -386,8 +385,9 @@ typedef struct {
 } TileTypeProcs;
 
 
-enum {
-	WC_MAIN_WINDOW,
+enum WindowClass {
+	WC_NONE,
+	WC_MAIN_WINDOW = WC_NONE,
 	WC_MAIN_TOOLBAR,
 	WC_STATUS_BAR,
 	WC_BUILD_TOOLBAR,

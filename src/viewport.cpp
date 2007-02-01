@@ -2478,5 +2478,5 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, byte mode, WindowClass window
 
 void ResetObjectToPlace(void)
 {
-	SetObjectToPlace(SPR_CURSOR_MOUSE, PAL_NONE, VHM_NONE, 0, 0);
+	SetObjectToPlace(SPR_CURSOR_MOUSE, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 }

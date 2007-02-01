@@ -327,7 +327,7 @@ static const Widget _roadveh_view_widgets[] = {
 
 static const WindowDesc _roadveh_view_desc = {
 	WDP_AUTO, WDP_AUTO, 250, 116,
-	WC_VEHICLE_VIEW,0,
+	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_roadveh_view_widgets,
 	RoadVehViewWndProc,

@@ -73,7 +73,7 @@ static const Widget _land_info_widgets[] = {
 
 static const WindowDesc _land_info_desc = {
 	WDP_AUTO, WDP_AUTO, 280, 93,
-	WC_LAND_INFO,0,
+	WC_LAND_INFO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_land_info_widgets,
 	LandInfoWndProc
@@ -193,7 +193,7 @@ void PlaceLandBlockInfo(void)
 		ResetObjectToPlace();
 	} else {
 		_place_proc = Place_LandInfo;
-		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, 1, 1, 0);
+		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, 1, WC_MAIN_TOOLBAR, 0);
 	}
 }
 
@@ -293,7 +293,7 @@ static const Widget _about_widgets[] = {
 
 static const WindowDesc _about_desc = {
 	WDP_CENTER, WDP_CENTER, 420, 272,
-	WC_GAME_OPTIONS,0,
+	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_about_widgets,
 	AboutWindowProc
@@ -454,7 +454,7 @@ static const Widget _build_trees_scen_widgets[] = {
 
 static const WindowDesc _build_trees_scen_desc = {
 	WDP_AUTO, WDP_AUTO, 143, 184,
-	WC_BUILD_TREES,0,
+	WC_BUILD_TREES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_trees_scen_widgets,
 	BuildTreesWndProc
@@ -1134,7 +1134,7 @@ static const Widget _query_string_widgets[] = {
 
 static const WindowDesc _query_string_desc = {
 	190, 219, 260, 42,
-	WC_QUERY_STRING,0,
+	WC_QUERY_STRING, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_query_string_widgets,
 	QueryStringWndProc
@@ -1258,7 +1258,7 @@ static const Widget _query_widgets[] = {
 
 static const WindowDesc _query_desc = {
 	WDP_CENTER, WDP_CENTER, 210, 82,
-	WC_CONFIRM_POPUP_QUERY, 0,
+	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_DEF_WIDGET | WDF_MODAL,
 	_query_widgets,
 	QueryWndProc
@@ -1597,7 +1597,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 
 static const WindowDesc _load_dialog_desc = {
 	WDP_CENTER, WDP_CENTER, 257, 294,
-	WC_SAVELOAD,0,
+	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_load_dialog_widgets,
 	SaveLoadDlgWndProc,
@@ -1605,7 +1605,7 @@ static const WindowDesc _load_dialog_desc = {
 
 static const WindowDesc _save_dialog_desc = {
 	WDP_CENTER, WDP_CENTER, 257, 320,
-	WC_SAVELOAD,0,
+	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_save_dialog_widgets,
 	SaveLoadDlgWndProc,
@@ -1625,7 +1625,7 @@ void ShowSaveLoadDialog(int mode)
 	const WindowDesc *sld = &_save_dialog_desc;
 
 
-	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, 0, 0, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, 0, WC_MAIN_WINDOW, 0);
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
@@ -1913,7 +1913,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 
 static const WindowDesc _cheats_desc = {
 	240, 22, 400, 170,
-	WC_CHEATS,0,
+	WC_CHEATS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_cheat_widgets,
 	CheatsWndProc

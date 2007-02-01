@@ -282,7 +282,7 @@ static const Widget _game_options_widgets[] = {
 
 static const WindowDesc _game_options_desc = {
 	WDP_CENTER, WDP_CENTER, 370, 239,
-	WC_GAME_OPTIONS,0,
+	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_game_options_widgets,
 	GameOptionsWndProc
@@ -545,7 +545,7 @@ static const Widget _game_difficulty_widgets[] = {
 
 static const WindowDesc _game_difficulty_desc = {
 	WDP_CENTER, WDP_CENTER, 370, 279,
-	WC_GAME_OPTIONS,0,
+	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_game_difficulty_widgets,
 	GameDifficultyWndProc
@@ -907,7 +907,7 @@ static const Widget _patches_selection_widgets[] = {
 
 static const WindowDesc _patches_selection_desc = {
 	WDP_CENTER, WDP_CENTER, 370, 371,
-	WC_GAME_OPTIONS,0,
+	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_patches_selection_widgets,
 	PatchesSelectionWndProc,
@@ -1127,7 +1127,7 @@ static const Widget _cust_currency_widgets[] = {
 
 static const WindowDesc _cust_currency_desc = {
 	WDP_CENTER, WDP_CENTER, 230, 120,
-	WC_CUSTOM_CURRENCY, 0,
+	WC_CUSTOM_CURRENCY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_cust_currency_widgets,
 	CustCurrencyWndProc,

@@ -328,7 +328,7 @@ static const Widget _news_type13_widgets[] = {
 
 static WindowDesc _news_type13_desc = {
 	WDP_CENTER, 476, 430, 170,
-	WC_NEWS_WINDOW, 0,
+	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
 	_news_type13_widgets,
 	NewsWindowProc
@@ -342,7 +342,7 @@ static const Widget _news_type2_widgets[] = {
 
 static WindowDesc _news_type2_desc = {
 	WDP_CENTER, 476, 430, 130,
-	WC_NEWS_WINDOW, 0,
+	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
 	_news_type2_widgets,
 	NewsWindowProc
@@ -358,7 +358,7 @@ static const Widget _news_type0_widgets[] = {
 
 static WindowDesc _news_type0_desc = {
 	WDP_CENTER, 476, 280, 87,
-	WC_NEWS_WINDOW, 0,
+	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
 	_news_type0_widgets,
 	NewsWindowProc
@@ -687,7 +687,7 @@ static const Widget _message_history_widgets[] = {
 
 static const WindowDesc _message_history_desc = {
 	240, 22, 400, 140,
-	WC_MESSAGE_HISTORY, 0,
+	WC_MESSAGE_HISTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_message_history_widgets,
 	MessageHistoryWndProc
@@ -865,7 +865,7 @@ static const Widget _message_options_widgets[] = {
 
 static const WindowDesc _message_options_desc = {
 	270, 22, 410, 185,
-	WC_GAME_OPTIONS, 0,
+	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_message_options_widgets,
 	MessageOptionsWndProc

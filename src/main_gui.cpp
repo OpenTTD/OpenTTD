@@ -340,7 +340,7 @@ static void SelectSignTool(void)
 	if (_cursor.sprite == SPR_CURSOR_SIGN) {
 		ResetObjectToPlace();
 	} else {
-		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, 1, 1, 0);
+		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, 1, WC_MAIN_TOOLBAR, 0);
 		_place_proc = PlaceProc_Sign;
 	}
 }
@@ -1369,7 +1369,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 
 static const WindowDesc _scen_edit_land_gen_desc = {
 	WDP_AUTO, WDP_AUTO, 182, 103,
-	WC_SCEN_LAND_GEN,0,
+	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_land_gen_widgets,
 	ScenEditLandGenWndProc,
@@ -1485,7 +1485,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 
 static const WindowDesc _scen_edit_town_gen_desc = {
 	WDP_AUTO, WDP_AUTO, 160, 82,
-	WC_SCEN_TOWN_GEN,0,
+	WC_SCEN_TOWN_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_town_gen_widgets,
 	ScenEditTownGenWndProc,
@@ -1696,7 +1696,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 
 static const WindowDesc _scenedit_industry_normal_desc = {
 	WDP_AUTO, WDP_AUTO, 170, 225,
-	WC_SCEN_INDUSTRY,0,
+	WC_SCEN_INDUSTRY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_scenedit_industry_normal_widgets,
 	ScenEditIndustryWndProc,
@@ -1704,7 +1704,7 @@ static const WindowDesc _scenedit_industry_normal_desc = {
 
 static const WindowDesc _scenedit_industry_hilly_desc = {
 	WDP_AUTO, WDP_AUTO, 170, 225,
-	WC_SCEN_INDUSTRY,0,
+	WC_SCEN_INDUSTRY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_scenedit_industry_hilly_widgets,
 	ScenEditIndustryWndProc,
@@ -1712,7 +1712,7 @@ static const WindowDesc _scenedit_industry_hilly_desc = {
 
 static const WindowDesc _scenedit_industry_desert_desc = {
 	WDP_AUTO, WDP_AUTO, 170, 225,
-	WC_SCEN_INDUSTRY,0,
+	WC_SCEN_INDUSTRY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_scenedit_industry_desert_widgets,
 	ScenEditIndustryWndProc,
@@ -1720,7 +1720,7 @@ static const WindowDesc _scenedit_industry_desert_desc = {
 
 static const WindowDesc _scenedit_industry_candy_desc = {
 	WDP_AUTO, WDP_AUTO, 170, 225,
-	WC_SCEN_INDUSTRY,0,
+	WC_SCEN_INDUSTRY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_scenedit_industry_candy_widgets,
 	ScenEditIndustryWndProc,
@@ -1935,7 +1935,7 @@ static const Widget _toolb_normal_widgets[] = {
 
 static const WindowDesc _toolb_normal_desc = {
 	0, 0, 640, 22,
-	WC_MAIN_TOOLBAR,0,
+	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
 	_toolb_normal_widgets,
 	MainToolbarWndProc
@@ -2086,7 +2086,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 
 static const WindowDesc _toolb_scen_desc = {
 	0, 0, 640, 22,
-	WC_MAIN_TOOLBAR,0,
+	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_toolb_scen_widgets,
 	ScenEditToolbarWndProc
@@ -2224,7 +2224,7 @@ static const Widget _main_status_widgets[] = {
 
 static WindowDesc _main_status_desc = {
 	WDP_CENTER, 0, 640, 12,
-	WC_STATUS_BAR,0,
+	WC_STATUS_BAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_main_status_widgets,
 	StatusBarWndProc

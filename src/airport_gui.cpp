@@ -124,7 +124,7 @@ static const Widget _air_toolbar_widgets[] = {
 
 static const WindowDesc _air_toolbar_desc = {
 	WDP_ALIGN_TBR, 22, 64, 36,
-	WC_BUILD_TOOLBAR, 0,
+	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_air_toolbar_widgets,
 	BuildAirToolbWndProc

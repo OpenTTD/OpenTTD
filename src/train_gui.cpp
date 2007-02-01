@@ -306,7 +306,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 static const WindowDesc _train_view_desc = {
 	WDP_AUTO, WDP_AUTO, 250, 134,
-	WC_VEHICLE_VIEW,0,
+	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_train_view_widgets,
 	TrainViewWndProc

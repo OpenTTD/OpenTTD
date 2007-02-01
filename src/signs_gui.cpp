@@ -130,7 +130,7 @@ static const Widget _sign_list_widget[] = {
 
 static const WindowDesc _sign_list_desc = {
 	WDP_AUTO, WDP_AUTO, 358, 138,
-	WC_SIGN_LIST,0,
+	WC_SIGN_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_sign_list_widget,
 	SignListWndProc

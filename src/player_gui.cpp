@@ -190,7 +190,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 
 static const WindowDesc _player_finances_desc = {
 	WDP_AUTO, WDP_AUTO, 407, 216,
-	WC_FINANCES,0,
+	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_finances_widgets,
 	PlayerFinancesWndProc
@@ -198,7 +198,7 @@ static const WindowDesc _player_finances_desc = {
 
 static const WindowDesc _player_finances_small_desc = {
 	WDP_AUTO, WDP_AUTO, 280, 60,
-	WC_FINANCES,0,
+	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_finances_small_widgets,
 	PlayerFinancesWndProc
@@ -206,7 +206,7 @@ static const WindowDesc _player_finances_small_desc = {
 
 static const WindowDesc _other_player_finances_desc = {
 	WDP_AUTO, WDP_AUTO, 407, 204,
-	WC_FINANCES,0,
+	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_other_player_finances_widgets,
 	PlayerFinancesWndProc
@@ -214,7 +214,7 @@ static const WindowDesc _other_player_finances_desc = {
 
 static const WindowDesc _other_player_finances_small_desc = {
 	WDP_AUTO, WDP_AUTO, 280, 48,
-	WC_FINANCES,0,
+	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_other_player_finances_small_widgets,
 	PlayerFinancesWndProc
@@ -472,7 +472,7 @@ static const Widget _select_player_livery_2cc_widgets[] = {
 
 static const WindowDesc _select_player_livery_2cc_desc = {
 	WDP_AUTO, WDP_AUTO, 400, 49 + 1 * 14,
-	WC_PLAYER_COLOR, 0,
+	WC_PLAYER_COLOR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_select_player_livery_2cc_widgets,
 	SelectPlayerLiveryWndProc
@@ -499,7 +499,7 @@ static const Widget _select_player_livery_widgets[] = {
 
 static const WindowDesc _select_player_livery_desc = {
 	WDP_AUTO, WDP_AUTO, 275, 49 + 1 * 14,
-	WC_PLAYER_COLOR, 0,
+	WC_PLAYER_COLOR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_select_player_livery_widgets,
 	SelectPlayerLiveryWndProc
@@ -553,7 +553,7 @@ static const Widget _select_player_face_widgets[] = {
 
 static const WindowDesc _select_player_face_desc = {
 	WDP_AUTO, WDP_AUTO, 190, 149,
-	WC_PLAYER_FACE,0,
+	WC_PLAYER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_player_face_widgets,
 	SelectPlayerFaceWndProc
@@ -869,7 +869,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 static const WindowDesc _player_company_desc = {
 	WDP_AUTO, WDP_AUTO, 360, 170,
-	WC_COMPANY, 0,
+	WC_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_player_company_widgets,
 	PlayerCompanyWndProc
@@ -930,7 +930,7 @@ static const Widget _buy_company_widgets[] = {
 
 static const WindowDesc _buy_company_desc = {
 	153, 171, 334, 137,
-	WC_BUY_COMPANY,0,
+	WC_BUY_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_buy_company_widgets,
 	BuyCompanyWndProc
@@ -1053,7 +1053,7 @@ static const Widget _highscore_widgets[] = {
 
 static const WindowDesc _highscore_desc = {
 	0, 0, 641, 481,
-	WC_HIGHSCORE,0,
+	WC_HIGHSCORE, WC_NONE,
 	0,
 	_highscore_widgets,
 	HighScoreWndProc
@@ -1061,7 +1061,7 @@ static const WindowDesc _highscore_desc = {
 
 static const WindowDesc _endgame_desc = {
 	0, 0, 641, 481,
-	WC_ENDSCREEN,0,
+	WC_ENDSCREEN, WC_NONE,
 	0,
 	_highscore_widgets,
 	EndGameWndProc

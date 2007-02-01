@@ -104,6 +104,8 @@ void RebuildVehicleLists(void)
 				WP(w, vehiclelist_d).l.flags |= VL_REBUILD;
 				SetWindowDirty(w);
 				break;
+
+			default: break;
 		}
 	}
 }
@@ -123,6 +125,8 @@ void ResortVehicleLists(void)
 				WP(w, vehiclelist_d).l.flags |= VL_RESORT;
 				SetWindowDirty(w);
 				break;
+
+			default: break;
 		}
 	}
 }
@@ -1203,7 +1207,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 static const WindowDesc _player_vehicle_list_train_desc = {
 	WDP_AUTO, WDP_AUTO, 260, 182,
-	WC_TRAINS_LIST, 0,
+	WC_TRAINS_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
 	PlayerVehWndProc
@@ -1211,7 +1215,7 @@ static const WindowDesc _player_vehicle_list_train_desc = {
 
 static const WindowDesc _player_vehicle_list_road_veh_desc = {
 	WDP_AUTO, WDP_AUTO, 260, 182,
-	WC_ROADVEH_LIST,0,
+	WC_ROADVEH_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
 	PlayerVehWndProc
@@ -1219,7 +1223,7 @@ static const WindowDesc _player_vehicle_list_road_veh_desc = {
 
 static const WindowDesc _player_vehicle_list_ship_desc = {
 	WDP_AUTO, WDP_AUTO, 260, 182,
-	WC_SHIPS_LIST,0,
+	WC_SHIPS_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
 	PlayerVehWndProc
@@ -1227,7 +1231,7 @@ static const WindowDesc _player_vehicle_list_ship_desc = {
 
 static const WindowDesc _player_vehicle_list_aircraft_desc = {
 	WDP_AUTO, WDP_AUTO, 260, 182,
-	WC_AIRCRAFT_LIST,0,
+	WC_AIRCRAFT_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
 	PlayerVehWndProc

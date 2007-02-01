@@ -208,7 +208,7 @@ static const Widget _newgrf_add_dlg_widgets[] = {
 
 static const WindowDesc _newgrf_add_dlg_desc = {
 	WDP_CENTER, WDP_CENTER, 307, 337,
-	WC_SAVELOAD, 0,
+	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_add_dlg_widgets,
 	NewGRFAddDlgWndProc,
@@ -506,7 +506,7 @@ static const Widget _newgrf_widgets[] = {
 
 static const WindowDesc _newgrf_desc = {
 	WDP_CENTER, WDP_CENTER, 300, 225,
-	WC_GAME_OPTIONS, 0,
+	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_widgets,
 	NewGRFWndProc,
