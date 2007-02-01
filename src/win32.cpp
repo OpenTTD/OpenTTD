@@ -625,20 +625,19 @@ static void Win32InitializeExceptions(void)
 
 /* suballocator - satisfies most requests with a reusable static instance.
  * this avoids hundreds of alloc/free which would fragment the heap.
- * To guarantee reentrancy, we fall back to malloc if the instance is
+ * To guarantee concurrency, we fall back to malloc if the instance is
  * already in use (it's important to avoid suprises since this is such a
  * low-level routine). */
 static DIR _global_dir;
-static bool _global_dir_is_in_use = false;
+static LONG _global_dir_is_in_use = false;
 
 static inline DIR *dir_calloc(void)
 {
 	DIR *d;
 
-	if (_global_dir_is_in_use) {
+	if (InterlockedExchange(&_global_dir_is_in_use, true) == (LONG)true) {
 		d = CallocT<DIR>(1);
 	} else {
-		_global_dir_is_in_use = true;
 		d = &_global_dir;
 		memset(d, 0, sizeof(*d));
 	}
@@ -648,7 +647,7 @@ static inline DIR *dir_calloc(void)
 static inline void dir_free(DIR *d)
 {
 	if (d == &_global_dir) {
-		_global_dir_is_in_use = false;
+		_global_dir_is_in_use = (LONG)false;
 	} else {
 		free(d);
 	}
