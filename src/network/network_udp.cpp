@@ -63,12 +63,11 @@ public:
 
 DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 {
-	Packet *packet;
 	// Just a fail-safe.. should never happen
 	if (!_network_udp_server)
 		return;
 
-	packet = NetworkSend_Init(PACKET_UDP_SERVER_RESPONSE);
+	Packet packet(PACKET_UDP_SERVER_RESPONSE);
 
 	// Update some game_info
 	_network_game_info.game_date     = _date;
@@ -79,12 +78,10 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 	_network_game_info.spectators_on = NetworkSpectatorCount();
 	_network_game_info.grfconfig     = _grfconfig;
 
-	this->Send_NetworkGameInfo(packet, &_network_game_info);
+	this->Send_NetworkGameInfo(&packet, &_network_game_info);
 
 	// Let the client know that we are here
-	this->SendPacket(packet, client_addr);
-
-	free(packet);
+	this->SendPacket(&packet, client_addr);
 
 	DEBUG(net, 2, "[udp] queried from '%s'", inet_ntoa(client_addr->sin_addr));
 }
@@ -93,7 +90,6 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 {
 	NetworkTCPSocketHandler *cs;
 	NetworkClientInfo *ci;
-	Packet *packet;
 	Player *player;
 	byte current = 0;
 	int i;
@@ -101,11 +97,11 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 	// Just a fail-safe.. should never happen
 	if (!_network_udp_server) return;
 
-	packet = NetworkSend_Init(PACKET_UDP_SERVER_DETAIL_INFO);
+	Packet packet(PACKET_UDP_SERVER_DETAIL_INFO);
 
 	/* Send the amount of active companies */
-	NetworkSend_uint8 (packet, NETWORK_COMPANY_INFO_VERSION);
-	NetworkSend_uint8 (packet, ActivePlayerCount());
+	NetworkSend_uint8 (&packet, NETWORK_COMPANY_INFO_VERSION);
+	NetworkSend_uint8 (&packet, ActivePlayerCount());
 
 	/* Fetch the latest version of everything */
 	NetworkPopulateCompanyInfo();
@@ -118,51 +114,51 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 		current++;
 
 		/* Send the information */
-		NetworkSend_uint8(packet, current);
+		NetworkSend_uint8 (&packet, current);
 
-		NetworkSend_string(packet, _network_player_info[player->index].company_name);
-		NetworkSend_uint32(packet, _network_player_info[player->index].inaugurated_year);
-		NetworkSend_uint64(packet, _network_player_info[player->index].company_value);
-		NetworkSend_uint64(packet, _network_player_info[player->index].money);
-		NetworkSend_uint64(packet, _network_player_info[player->index].income);
-		NetworkSend_uint16(packet, _network_player_info[player->index].performance);
+		NetworkSend_string(&packet, _network_player_info[player->index].company_name);
+		NetworkSend_uint32(&packet, _network_player_info[player->index].inaugurated_year);
+		NetworkSend_uint64(&packet, _network_player_info[player->index].company_value);
+		NetworkSend_uint64(&packet, _network_player_info[player->index].money);
+		NetworkSend_uint64(&packet, _network_player_info[player->index].income);
+		NetworkSend_uint16(&packet, _network_player_info[player->index].performance);
 
 		/* Send 1 if there is a passord for the company else send 0 */
 		if (_network_player_info[player->index].password[0] != '\0') {
-			NetworkSend_uint8(packet, 1);
+			NetworkSend_uint8(&packet, 1);
 		} else {
-			NetworkSend_uint8(packet, 0);
+			NetworkSend_uint8(&packet, 0);
 		}
 
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
-			NetworkSend_uint16(packet, _network_player_info[player->index].num_vehicle[i]);
+			NetworkSend_uint16(&packet, _network_player_info[player->index].num_vehicle[i]);
 
 		for (i = 0; i < NETWORK_STATION_TYPES; i++)
-			NetworkSend_uint16(packet, _network_player_info[player->index].num_station[i]);
+			NetworkSend_uint16(&packet, _network_player_info[player->index].num_station[i]);
 
 		/* Find the clients that are connected to this player */
 		FOR_ALL_CLIENTS(cs) {
 			ci = DEREF_CLIENT_INFO(cs);
 			if (ci->client_playas == player->index) {
 				/* The uint8 == 1 indicates that a client is following */
-				NetworkSend_uint8(packet, 1);
-				NetworkSend_string(packet, ci->client_name);
-				NetworkSend_string(packet, ci->unique_id);
-				NetworkSend_uint32(packet, ci->join_date);
+				NetworkSend_uint8 (&packet, 1);
+				NetworkSend_string(&packet, ci->client_name);
+				NetworkSend_string(&packet, ci->unique_id);
+				NetworkSend_uint32(&packet, ci->join_date);
 			}
 		}
 		/* Also check for the server itself */
 		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 		if (ci->client_playas == player->index) {
 			/* The uint8 == 1 indicates that a client is following */
-			NetworkSend_uint8(packet, 1);
-			NetworkSend_string(packet, ci->client_name);
-			NetworkSend_string(packet, ci->unique_id);
-			NetworkSend_uint32(packet, ci->join_date);
+			NetworkSend_uint8 (&packet, 1);
+			NetworkSend_string(&packet, ci->client_name);
+			NetworkSend_string(&packet, ci->unique_id);
+			NetworkSend_uint32(&packet, ci->join_date);
 		}
 
 		/* Indicates end of client list */
-		NetworkSend_uint8(packet, 0);
+		NetworkSend_uint8(&packet, 0);
 	}
 
 	/* And check if we have any spectators */
@@ -170,10 +166,10 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 		ci = DEREF_CLIENT_INFO(cs);
 		if (!IsValidPlayer(ci->client_playas)) {
 			/* The uint8 == 1 indicates that a client is following */
-			NetworkSend_uint8(packet, 1);
-			NetworkSend_string(packet, ci->client_name);
-			NetworkSend_string(packet, ci->unique_id);
-			NetworkSend_uint32(packet, ci->join_date);
+			NetworkSend_uint8 (&packet, 1);
+			NetworkSend_string(&packet, ci->client_name);
+			NetworkSend_string(&packet, ci->unique_id);
+			NetworkSend_uint32(&packet, ci->join_date);
 		}
 	}
 
@@ -181,17 +177,16 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 	if (!IsValidPlayer(ci->client_playas)) {
 		/* The uint8 == 1 indicates that a client is following */
-		NetworkSend_uint8(packet, 1);
-		NetworkSend_string(packet, ci->client_name);
-		NetworkSend_string(packet, ci->unique_id);
-		NetworkSend_uint32(packet, ci->join_date);
+		NetworkSend_uint8 (&packet, 1);
+		NetworkSend_string(&packet, ci->client_name);
+		NetworkSend_string(&packet, ci->unique_id);
+		NetworkSend_uint32(&packet, ci->join_date);
 	}
 
 	/* Indicates end of client list */
-	NetworkSend_uint8(packet, 0);
+	NetworkSend_uint8(&packet, 0);
 
-	this->SendPacket(packet, client_addr);
-	free(packet);
+	this->SendPacket(&packet, client_addr);
 }
 
 /**
@@ -213,7 +208,6 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 	uint i;
 
 	const GRFConfig *in_reply[NETWORK_MAX_GRF_COUNT];
-	Packet *packet;
 	uint8 in_reply_count = 0;
 	uint packet_len = 0;
 
@@ -246,20 +240,19 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 
 	if (in_reply_count == 0) return;
 
-	packet = NetworkSend_Init(PACKET_UDP_SERVER_NEWGRFS);
-	NetworkSend_uint8 (packet, in_reply_count);
+	Packet packet(PACKET_UDP_SERVER_NEWGRFS);
+	NetworkSend_uint8 (&packet, in_reply_count);
 	for (i = 0; i < in_reply_count; i++) {
 		char name[NETWORK_GRF_NAME_LENGTH];
 
 		/* The name could be an empty string, if so take the filename */
 		ttd_strlcpy(name, (in_reply[i]->name != NULL && !StrEmpty(in_reply[i]->name)) ?
 				in_reply[i]->name : in_reply[i]->filename, sizeof(name));
-	 	this->Send_GRFIdentifier(packet, in_reply[i]);
-		NetworkSend_string(packet, name);
+	 	this->Send_GRFIdentifier(&packet, in_reply[i]);
+		NetworkSend_string(&packet, name);
 	}
 
-	this->SendPacket(packet, client_addr);
-	free(packet);
+	this->SendPacket(&packet, client_addr);
 }
 
 ///*** Communication with servers (we are client) ***/
@@ -313,18 +306,17 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 		if (in_request_count > 0) {
 			/* There are 'unknown' GRFs, now send a request for them */
 			uint i;
-			Packet *packet = NetworkSend_Init(PACKET_UDP_CLIENT_GET_NEWGRFS);
+			Packet packet(PACKET_UDP_CLIENT_GET_NEWGRFS);
 
-			NetworkSend_uint8 (packet, in_request_count);
+			NetworkSend_uint8 (&packet, in_request_count);
 			for (i = 0; i < in_request_count; i++) {
-				this->Send_GRFIdentifier(packet, in_request[i]);
+				this->Send_GRFIdentifier(&packet, in_request[i]);
 			}
 
 			out_addr.sin_family      = AF_INET;
 			out_addr.sin_port        = htons(item->port);
 			out_addr.sin_addr.s_addr = item->ip;
-			this->SendPacket(packet, &out_addr);
-			free(packet);
+			this->SendPacket(&packet, &out_addr);
 		}
 	}
 
@@ -436,10 +428,10 @@ void NetworkUDPCloseAll(void)
 // Broadcast to all ips
 static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 {
-	Packet* p = NetworkSend_Init(PACKET_UDP_CLIENT_FIND_SERVER);
 	uint i;
 
 	for (i = 0; _broadcast_list[i] != 0; i++) {
+		Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
 		struct sockaddr_in out_addr;
 
 		out_addr.sin_family = AF_INET;
@@ -448,10 +440,8 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 
 		DEBUG(net, 4, "[udp] broadcasting to %s", inet_ntoa(out_addr.sin_addr));
 
-		socket->SendPacket(p, &out_addr);
+		socket->SendPacket(&p, &out_addr);
 	}
-
-	free(p);
 }
 
 
@@ -459,26 +449,23 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 void NetworkUDPQueryMasterServer(void)
 {
 	struct sockaddr_in out_addr;
-	Packet *p;
 
 	if (!_udp_client_socket->IsConnected()) {
 		if (!_udp_client_socket->Listen(0, 0, true)) return;
 	}
 
-	p = NetworkSend_Init(PACKET_UDP_CLIENT_GET_LIST);
+	Packet p(PACKET_UDP_CLIENT_GET_LIST);
 
 	out_addr.sin_family = AF_INET;
 	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
 	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
 
 	// packet only contains protocol version
-	NetworkSend_uint8(p, NETWORK_MASTER_SERVER_VERSION);
+	NetworkSend_uint8(&p, NETWORK_MASTER_SERVER_VERSION);
 
-	_udp_client_socket->SendPacket(p, &out_addr);
+	_udp_client_socket->SendPacket(&p, &out_addr);
 
-	DEBUG(net, 2, "[udp] master server queried at %s:%d", inet_ntoa(out_addr.sin_addr),ntohs(out_addr.sin_port));
-
-	free(p);
+	DEBUG(net, 2, "[udp] master server queried at %s:%d", inet_ntoa(out_addr.sin_addr), ntohs(out_addr.sin_port));
 }
 
 // Find all servers
@@ -501,7 +488,6 @@ void NetworkUDPSearchGame(void)
 NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port)
 {
 	struct sockaddr_in out_addr;
-	Packet *p;
 	NetworkGameList *item;
 
 	// No UDP-socket yet..
@@ -521,11 +507,8 @@ NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port)
 	item->online = false;
 
 	// Init the packet
-	p = NetworkSend_Init(PACKET_UDP_CLIENT_FIND_SERVER);
-
-	_udp_client_socket->SendPacket(p, &out_addr);
-
-	free(p);
+	Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
+	_udp_client_socket->SendPacket(&p, &out_addr);
 
 	UpdateNetworkGameWindow(false);
 	return item;
@@ -535,7 +518,6 @@ NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port)
 void NetworkUDPRemoveAdvertise(void)
 {
 	struct sockaddr_in out_addr;
-	Packet *p;
 
 	/* Check if we are advertising */
 	if (!_networking || !_network_server || !_network_udp_server) return;
@@ -553,13 +535,11 @@ void NetworkUDPRemoveAdvertise(void)
 	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
 
 	/* Send the packet */
-	p = NetworkSend_Init(PACKET_UDP_SERVER_UNREGISTER);
+	Packet p(PACKET_UDP_SERVER_UNREGISTER);
 	/* Packet is: Version, server_port */
-	NetworkSend_uint8(p, NETWORK_MASTER_SERVER_VERSION);
-	NetworkSend_uint16(p, _network_server_port);
-	_udp_master_socket->SendPacket(p, &out_addr);
-
-	free(p);
+	NetworkSend_uint8 (&p, NETWORK_MASTER_SERVER_VERSION);
+	NetworkSend_uint16(&p, _network_server_port);
+	_udp_master_socket->SendPacket(&p, &out_addr);
 }
 
 /* Register us to the master server
@@ -567,7 +547,6 @@ void NetworkUDPRemoveAdvertise(void)
 void NetworkUDPAdvertise(void)
 {
 	struct sockaddr_in out_addr;
-	Packet *p;
 
 	/* Check if we should send an advertise */
 	if (!_networking || !_network_server || !_network_udp_server || !_network_advertise)
@@ -604,14 +583,12 @@ void NetworkUDPAdvertise(void)
 	DEBUG(net, 1, "[udp] advertising to master server");
 
 	/* Send the packet */
-	p = NetworkSend_Init(PACKET_UDP_SERVER_REGISTER);
+	Packet p(PACKET_UDP_SERVER_REGISTER);
 	/* Packet is: WELCOME_MESSAGE, Version, server_port */
-	NetworkSend_string(p, NETWORK_MASTER_SERVER_WELCOME_MESSAGE);
-	NetworkSend_uint8(p, NETWORK_MASTER_SERVER_VERSION);
-	NetworkSend_uint16(p, _network_server_port);
-	_udp_master_socket->SendPacket(p, &out_addr);
-
-	free(p);
+	NetworkSend_string(&p, NETWORK_MASTER_SERVER_WELCOME_MESSAGE);
+	NetworkSend_uint8 (&p, NETWORK_MASTER_SERVER_VERSION);
+	NetworkSend_uint16(&p, _network_server_port);
+	_udp_master_socket->SendPacket(&p, &out_addr);
 }
 
 void NetworkUDPInitialize(void)

@@ -74,10 +74,7 @@ void NetworkSend_Packet(Packet *packet, NetworkTCPSocketHandler *cs)
 	Packet *p;
 	assert(packet != NULL);
 
-	packet->pos = 0;
-	packet->next = NULL;
-
-	NetworkSend_FillPacketSize(packet);
+	packet->PrepareToSend();
 
 	/* Locate last packet buffered for the client */
 	p = cs->packet_queue;
@@ -133,7 +130,7 @@ bool NetworkSend_Packets(NetworkTCPSocketHandler *cs)
 		if (p->pos == p->size) {
 			/* Go to the next packet */
 			cs->packet_queue = p->next;
-			free(p);
+			delete p;
 			p = cs->packet_queue;
 		} else {
 			return true;
@@ -159,11 +156,8 @@ Packet *NetworkRecv_Packet(NetworkTCPSocketHandler *cs, NetworkRecvStatus *statu
 	if (!cs->IsConnected()) return NULL;
 
 	if (cs->packet_recv == NULL) {
-		cs->packet_recv = MallocT<Packet>(1);
+		cs->packet_recv = new Packet(cs);
 		if (cs->packet_recv == NULL) error("Failed to allocate packet");
-		/* Set pos to zero! */
-		cs->packet_recv->pos = 0;
-		cs->packet_recv->size = 0; // Can be ommited, just for safety reasons
 	}
 
 	p = cs->packet_recv;
@@ -192,7 +186,8 @@ Packet *NetworkRecv_Packet(NetworkTCPSocketHandler *cs, NetworkRecvStatus *statu
 			p->pos += res;
 		}
 
-		NetworkRecv_ReadPacketSize(p);
+		/* Read the packet size from the received packet */
+		p->ReadRawPacketSize();
 
 		if (p->size > SEND_MTU) {
 			*status = cs->CloseConnection();
@@ -223,13 +218,10 @@ Packet *NetworkRecv_Packet(NetworkTCPSocketHandler *cs, NetworkRecvStatus *statu
 		p->pos += res;
 	}
 
-	/* We have a complete packet, return it! */
-	p->pos = 2;
-	p->next = NULL; // Should not be needed, but who knows...
-
 	/* Prepare for receiving a new packet */
 	cs->packet_recv = NULL;
 
+	p->PrepareToRead();
 	return p;
 }
 

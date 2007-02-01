@@ -17,34 +17,60 @@
 /* Do not want to include functions.h and all required headers */
 extern void NORETURN CDECL error(const char *str, ...);
 
+/**
+ * Create a packet that is used to read from a network socket
+ * @param cs the socket handler associated with the socket we are reading from
+ */
+Packet::Packet(NetworkSocketHandler *cs)
+{
+	assert(cs != NULL);
+
+	this->cs   = cs;
+	this->next = NULL;
+	this->pos  = 0; // We start reading from here
+	this->size = 0;
+}
+
+/**
+ * Creates a packet to send
+ * @param type of the packet to send
+ */
+Packet::Packet(PacketType type)
+{
+	this->cs                   = NULL;
+	this->next                 = NULL;
+
+	/* Skip the size so we can write that in before sending the packet */
+	this->pos                  = 0;
+	this->size                 = sizeof(PacketSize);
+	this->buffer[this->size++] = type;
+}
 
 /**
  * Create a packet for sending
  * @param type the of packet
  * @return the newly created packet
  */
-Packet *NetworkSend_Init(const PacketType type)
+Packet *NetworkSend_Init(PacketType type)
 {
-	Packet *packet = MallocT<Packet>(1);
+	Packet *packet = new Packet(type);
 	/* An error is inplace here, because it simply means we ran out of memory. */
 	if (packet == NULL) error("Failed to allocate Packet");
-
-	/* Skip the size so we can write that in before sending the packet */
-	packet->size = sizeof(packet->size);
-	packet->buffer[packet->size++] = type;
-	packet->pos = 0;
 
 	return packet;
 }
 
 /**
  * Writes the packet size from the raw packet from packet->size
- * @param packet the packet to write the size of
  */
-void NetworkSend_FillPacketSize(Packet *packet)
+void Packet::PrepareToSend()
 {
-	packet->buffer[0] = GB(packet->size, 0, 8);
-	packet->buffer[1] = GB(packet->size, 8, 8);
+	assert(this->cs == NULL && this->next == NULL);
+
+	this->buffer[0] = GB(this->size, 0, 8);
+	this->buffer[1] = GB(this->size, 8, 8);
+
+	this->pos  = 0; // We start reading from here
 }
 
 /**
@@ -129,12 +155,23 @@ static inline bool CanReadFromPacket(NetworkSocketHandler *cs, const Packet *pac
 
 /**
  * Reads the packet size from the raw packet and stores it in the packet->size
- * @param packet the packet to read the size of
  */
-void NetworkRecv_ReadPacketSize(Packet *packet)
+void Packet::ReadRawPacketSize()
 {
-	packet->size  = (uint16)packet->buffer[0];
-	packet->size += (uint16)packet->buffer[1] << 8;
+	assert(this->cs != NULL && this->next == NULL);
+	this->size  = (PacketSize)this->buffer[0];
+	this->size += (PacketSize)this->buffer[1] << 8;
+}
+
+/**
+ * Prepares the packet so it can be read
+ */
+void Packet::PrepareToRead()
+{
+	this->ReadRawPacketSize();
+
+	/* Put the position on the right place */
+	this->pos = sizeof(PacketSize);
 }
 
 uint8 NetworkRecv_uint8(NetworkSocketHandler *cs, Packet *packet)

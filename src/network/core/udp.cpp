@@ -92,7 +92,7 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, const struct sockaddr_in *re
 {
 	int res;
 
-	NetworkSend_FillPacketSize(p);
+	p->PrepareToSend();
 
 	/* Send the buffer */
 	res = sendto(this->sock, (const char*)p->buffer, p->size, 0, (struct sockaddr *)recv, sizeof(*recv));
@@ -109,7 +109,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
 	struct sockaddr_in client_addr;
 	socklen_t client_len;
 	int nbytes;
-	Packet p;
+	Packet p(this);
 	int packet_len;
 
 	if (!this->IsConnected()) return;
@@ -122,7 +122,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
 
 	/* We got some bytes for the base header of the packet. */
 	if (nbytes > 2) {
-		NetworkRecv_ReadPacketSize(&p);
+		p.PrepareToRead();
 
 		/* If the size does not match the packet must be corrupted.
 		 * Otherwise it will be marked as corrupted later on. */
@@ -132,10 +132,6 @@ void NetworkUDPSocketHandler::ReceivePackets()
 
 			return;
 		}
-
-		/* Put the position on the right place */
-		p.pos = 2;
-		p.next = NULL;
 
 		/* Handle the packet */
 		this->HandleUDPPacket(&p, &client_addr);

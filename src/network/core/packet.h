@@ -35,18 +35,27 @@ struct Packet {
 	PacketSize pos;
 	/** The buffer of this packet */
 	byte buffer[SEND_MTU];
+private:
+	NetworkSocketHandler *cs;
+
+public:
+	Packet(NetworkSocketHandler *cs);
+	Packet(PacketType type);
+
+	void PrepareToSend();
+
+	void ReadRawPacketSize();
+	void PrepareToRead();
 };
 
 
-Packet *NetworkSend_Init(const PacketType type);
-void NetworkSend_FillPacketSize(Packet *packet);
+Packet *NetworkSend_Init(PacketType type);
 void NetworkSend_uint8 (Packet *packet, uint8 data);
 void NetworkSend_uint16(Packet *packet, uint16 data);
 void NetworkSend_uint32(Packet *packet, uint32 data);
 void NetworkSend_uint64(Packet *packet, uint64 data);
 void NetworkSend_string(Packet *packet, const char* data);
 
-void NetworkRecv_ReadPacketSize(Packet *packet);
 uint8  NetworkRecv_uint8 (NetworkSocketHandler *cs, Packet *packet);
 uint16 NetworkRecv_uint16(NetworkSocketHandler *cs, Packet *packet);
 uint32 NetworkRecv_uint32(NetworkSocketHandler *cs, Packet *packet);

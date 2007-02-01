@@ -738,17 +738,13 @@ static void NetworkAcceptClients(void)
 			if (_network_ban_list[i] == NULL) continue;
 
 			if (sin.sin_addr.s_addr == inet_addr(_network_ban_list[i])) {
-				Packet *p = NetworkSend_Init(PACKET_SERVER_BANNED);
+				Packet p(PACKET_SERVER_BANNED);
+				p.PrepareToSend();
 
 				DEBUG(net, 1, "Banned ip tried to join (%s), refused", _network_ban_list[i]);
 
-				p->buffer[0] = p->size & 0xFF;
-				p->buffer[1] = p->size >> 8;
-
-				send(s, (const char*)p->buffer, p->size, 0);
+				send(s, (const char*)p.buffer, p.size, 0);
 				closesocket(s);
-
-				free(p);
 
 				banned = true;
 				break;
@@ -761,15 +757,11 @@ static void NetworkAcceptClients(void)
 		if (cs == NULL) {
 			// no more clients allowed?
 			// Send to the client that we are full!
-			Packet *p = NetworkSend_Init(PACKET_SERVER_FULL);
+			Packet p(PACKET_SERVER_FULL);
+			p.PrepareToSend();
 
-			p->buffer[0] = p->size & 0xFF;
-			p->buffer[1] = p->size >> 8;
-
-			send(s, (const char*)p->buffer, p->size, 0);
+			send(s, (const char*)p.buffer, p.size, 0);
 			closesocket(s);
-
-			free(p);
 
 			continue;
 		}

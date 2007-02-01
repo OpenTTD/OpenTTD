@@ -864,7 +864,7 @@ NetworkRecvStatus NetworkClient_ReadPackets(NetworkTCPSocketHandler *cs)
 			DEBUG(net, 0, "[client] received invalid packet type %d", type);
 		}
 
-		free(p);
+		delete p;
 	}
 
 	return res;

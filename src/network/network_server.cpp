@@ -1474,7 +1474,7 @@ bool NetworkServer_ReadPackets(NetworkTCPSocketHandler *cs)
 		} else {
 			DEBUG(net, 0, "[server] received invalid packet type %d", type);
 		}
-		free(p);
+		delete p;
 	}
 
 	return true;
