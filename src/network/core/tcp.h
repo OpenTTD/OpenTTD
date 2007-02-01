@@ -84,6 +84,9 @@ typedef enum {
 /** Base socket handler for all TCP sockets */
 class NetworkTCPSocketHandler : public NetworkSocketHandler {
 /* TODO: rewrite into a proper class */
+private:
+	Packet *packet_queue;     ///< Packets that are awaiting delivery
+	Packet *packet_recv;      ///< Partially received packet
 public:
 	uint16 index;             ///< Client index
 	uint32 last_frame;        ///< Last frame we have executed
@@ -93,20 +96,18 @@ public:
 	ClientStatus status;      ///< Status of this client
 	bool writable;            ///< Can we write to this socket?
 
-	Packet *packet_queue;     ///< Packets that are awaiting delivery
-	Packet *packet_recv;      ///< Partially received packet
-
 	CommandPacket *command_queue; ///< The command-queue awaiting delivery
 
 	NetworkRecvStatus CloseConnection();
 	void Initialize();
+	void Destroy();
+
+	void Send_Packet(Packet *packet);
+	bool Send_Packets();
+	bool IsPacketQueueEmpty();
+
+	Packet *Recv_Packet(NetworkRecvStatus *status);
 };
-
-
-
-void NetworkSend_Packet(Packet *packet, NetworkTCPSocketHandler *cs);
-Packet *NetworkRecv_Packet(NetworkTCPSocketHandler *cs, NetworkRecvStatus *status);
-bool NetworkSend_Packets(NetworkTCPSocketHandler *cs);
 
 #endif /* ENABLE_NETWORK */
 

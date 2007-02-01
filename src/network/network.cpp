@@ -261,7 +261,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkTCPSocketHandler* c
 		SEND_COMMAND(PACKET_CLIENT_ERROR)(errorno);
 
 		// Dequeue all commands before closing the socket
-		NetworkSend_Packets(DEREF_CLIENT(0));
+		DEREF_CLIENT(0)->Send_Packets();
 	}
 
 	_switch_mode = SM_MENU;
@@ -629,24 +629,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 		NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused", NETWORK_SERVER_INDEX);
 	}
 
-	closesocket(cs->sock);
-	cs->writable = false;
-	cs->has_quit = true;
-
-	// Free all pending and partially received packets
-	while (cs->packet_queue != NULL) {
-		Packet *p = cs->packet_queue->next;
-		free(cs->packet_queue);
-		cs->packet_queue = p;
-	}
-	free(cs->packet_recv);
-	cs->packet_recv = NULL;
-
-	while (cs->command_queue != NULL) {
-		CommandPacket *p = cs->command_queue->next;
-		free(cs->command_queue);
-		cs->command_queue = p;
-	}
+	cs->Destroy();
 
 	// Close the gap in the client-list
 	ci = DEREF_CLIENT_INFO(cs);
@@ -827,7 +810,7 @@ static void NetworkClose(void)
 	FOR_ALL_CLIENTS(cs) {
 		if (!_network_server) {
 			SEND_COMMAND(PACKET_CLIENT_QUIT)("leaving");
-			NetworkSend_Packets(cs);
+			cs->Send_Packets();
 		}
 		NetworkCloseClient(cs);
 	}
@@ -1066,7 +1049,7 @@ void NetworkReboot(void)
 		NetworkTCPSocketHandler *cs;
 		FOR_ALL_CLIENTS(cs) {
 			SEND_COMMAND(PACKET_SERVER_NEWGAME)(cs);
-			NetworkSend_Packets(cs);
+			cs->Send_Packets();
 		}
 	}
 
@@ -1090,7 +1073,7 @@ void NetworkDisconnect(void)
 		NetworkTCPSocketHandler *cs;
 		FOR_ALL_CLIENTS(cs) {
 			SEND_COMMAND(PACKET_SERVER_SHUTDOWN)(cs);
-			NetworkSend_Packets(cs);
+			cs->Send_Packets();
 		}
 	}
 
@@ -1172,7 +1155,7 @@ static void NetworkSend(void)
 	NetworkTCPSocketHandler *cs;
 	FOR_ALL_CLIENTS(cs) {
 		if (cs->writable) {
-			NetworkSend_Packets(cs);
+			cs->Send_Packets();
 
 			if (cs->status == STATUS_MAP) {
 				// This client is in the middle of a map-send, call the function for that

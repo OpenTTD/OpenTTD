@@ -53,7 +53,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkTCPSocketHandler
 		p->Send_string(ci->client_name);
 		p->Send_string(ci->unique_id);
 
-		NetworkSend_Packet(p, cs);
+		cs->Send_Packet(p);
 	}
 }
 
@@ -78,7 +78,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
 		p->Send_uint8 (active);
 
-		NetworkSend_Packet(p, cs);
+		cs->Send_Packet(p);
 		return;
 	}
 
@@ -117,7 +117,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 			p->Send_string(_network_player_info[player->index].players);
 		}
 
-		NetworkSend_Packet(p, cs);
+		cs->Send_Packet(p);
 	}
 
 	p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
@@ -125,7 +125,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
 	p->Send_uint8 (0);
 
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, NetworkErrorCode error)
@@ -141,7 +141,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR);
 
 	p->Send_uint8(error);
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 
 	GetNetworkErrorMsg(str, error, lastof(str));
 
@@ -173,7 +173,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, 
 	cs->has_quit = true;
 
 	// Make sure the data get's there before we close the connection
-	NetworkSend_Packets(cs);
+	cs->Send_Packets();
 
 	// The client made a mistake, so drop his connection now!
 	NetworkCloseClient(cs);
@@ -202,7 +202,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkTCPSocketHandl
 		cs->Send_GRFIdentifier(p, c);
 	}
 
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkTCPSocketHandler *cs, NetworkPasswordType type)
@@ -216,7 +216,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkTCPSocketHandl
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_NEED_PASSWORD);
 	p->Send_uint8(type);
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
@@ -239,7 +239,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 
 	p = NetworkSend_Init(PACKET_SERVER_WELCOME);
 	p->Send_uint16(cs->index);
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 
 		// Transmit info about all the active clients
 	FOR_ALL_CLIENTS(new_cs) {
@@ -270,7 +270,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
 
 	p = NetworkSend_Init(PACKET_SERVER_WAIT);
 	p->Send_uint8(waiting);
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 // This sends the map to the client
@@ -319,7 +319,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		p->Send_uint8 (MAP_PACKET_START);
 		p->Send_uint32(_frame_counter);
 		p->Send_uint32(ftell(file_pointer));
-		NetworkSend_Packet(p, cs);
+		cs->Send_Packet(p);
 
 		fseek(file_pointer, 0, SEEK_SET);
 
@@ -342,12 +342,12 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 			if (ferror(file_pointer)) error("Error reading temporary network savegame!");
 
 			p->size += res;
-			NetworkSend_Packet(p, cs);
+			cs->Send_Packet(p);
 			if (feof(file_pointer)) {
 				// Done reading!
 				Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
 				p->Send_uint8(MAP_PACKET_END);
-				NetworkSend_Packet(p, cs);
+				cs->Send_Packet(p);
 
 				// Set the status to DONE_MAP, no we will wait for the client
 				//  to send it is ready (maybe that happens like never ;))
@@ -381,8 +381,8 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		}
 
 		// Send all packets (forced) and check if we have send it all
-		NetworkSend_Packets(cs);
-		if (cs->packet_queue == NULL) {
+		cs->Send_Packets();
+		if (cs->IsPacketQueueEmpty()) {
 			// All are sent, increase the sent_packets
 			sent_packets *= 2;
 		} else {
@@ -407,7 +407,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkTCPSocketHandler *cs, u
 
 	p->Send_uint16(client_index);
 
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 
@@ -433,7 +433,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_FRAME)
 	p->Send_uint32(_sync_seed_2);
 #endif
 #endif
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SYNC)
@@ -455,7 +455,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SYNC)
 #ifdef NETWORK_SEND_DOUBLE_SEED
 	p->Send_uint32(_sync_seed_2);
 #endif
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkTCPSocketHandler *cs, CommandPacket *cp)
@@ -485,7 +485,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkTCPSocketHandler *cs
 	p->Send_uint8 (cp->callback);
 	p->Send_uint32(cp->frame);
 
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkTCPSocketHandler *cs, NetworkAction action, uint16 client_index, bool self_send, const char *msg)
@@ -506,7 +506,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkTCPSocketHandler *cs, N
 	p->Send_uint8 (self_send);
 	p->Send_string(msg);
 
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkTCPSocketHandler *cs, uint16 client_index, NetworkErrorCode errorno)
@@ -525,7 +525,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkTCPSocketHandler 
 	p->Send_uint16(client_index);
 	p->Send_uint8 (errorno);
 
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkTCPSocketHandler *cs, uint16 client_index, const char *leavemsg)
@@ -544,7 +544,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkTCPSocketHandler *cs, u
 	p->Send_uint16(client_index);
 	p->Send_string(leavemsg);
 
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SHUTDOWN)
@@ -557,7 +557,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SHUTDOWN)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_SHUTDOWN);
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME)
@@ -570,7 +570,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_NEWGAME);
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkTCPSocketHandler *cs, uint16 color, const char *command)
@@ -579,7 +579,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkTCPSocketHandler *cs, u
 
 	p->Send_uint16(color);
 	p->Send_string(command);
-	NetworkSend_Packet(p, cs);
+	cs->Send_Packet(p);
 }
 
 // **********
@@ -1463,7 +1463,7 @@ bool NetworkServer_ReadPackets(NetworkTCPSocketHandler *cs)
 {
 	Packet *p;
 	NetworkRecvStatus res;
-	while ((p = NetworkRecv_Packet(cs, &res)) != NULL) {
+	while ((p = cs->Recv_Packet(&res)) != NULL) {
 		byte type = p->Recv_uint8();
 		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->has_quit) {
 			_network_server_packet[type](cs, p);

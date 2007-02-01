@@ -48,7 +48,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 	InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
 	p = NetworkSend_Init(PACKET_CLIENT_COMPANY_INFO);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
@@ -75,7 +75,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	p->Send_uint8 (_network_playas);      // PlayAs
 	p->Send_uint8 (NETLANG_ANY);          // Language
 	p->Send_string(_network_unique_id);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
@@ -87,7 +87,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_NEWGRFS_CHECKED);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_PASSWORD)(NetworkPasswordType type, const char *password)
@@ -102,7 +102,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_PASSWORD)(NetworkPasswordType type, 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_PASSWORD);
 	p->Send_uint8 (type);
 	p->Send_string(password);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GETMAP)
@@ -115,7 +115,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GETMAP)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_GETMAP);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_MAP_OK)
@@ -128,7 +128,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_MAP_OK)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_MAP_OK);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK)
@@ -143,7 +143,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK)
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_ACK);
 
 	p->Send_uint32(_frame_counter);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 // Send a command packet to the server
@@ -172,7 +172,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(CommandPacket *cp)
 	p->Send_string(cp->text);
 	p->Send_uint8 (cp->callback);
 
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 // Send a chat-packet over the network
@@ -194,7 +194,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	p->Send_uint8 (type);
 	p->Send_uint8 (dest);
 	p->Send_string(msg);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 // Send an error-packet over the network
@@ -209,7 +209,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_ERROR)(NetworkErrorCode errorno)
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_ERROR);
 
 	p->Send_uint8(errorno);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password)
@@ -223,7 +223,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password)
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_SET_PASSWORD);
 
 	p->Send_string(password);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name)
@@ -237,7 +237,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name)
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_SET_NAME);
 
 	p->Send_string(name);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 // Send an quit-packet over the network
@@ -252,7 +252,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_QUIT)(const char *leavemsg)
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_QUIT);
 
 	p->Send_string(leavemsg);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *command)
@@ -260,7 +260,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_RCON);
 	p->Send_string(pass);
 	p->Send_string(command);
-	NetworkSend_Packet(p, MY_CLIENT);
+	MY_CLIENT->Send_Packet(p);
 }
 
 
@@ -855,7 +855,7 @@ NetworkRecvStatus NetworkClient_ReadPackets(NetworkTCPSocketHandler *cs)
 	Packet *p;
 	NetworkRecvStatus res = NETWORK_RECV_STATUS_OKAY;
 
-	while (res == NETWORK_RECV_STATUS_OKAY && (p = NetworkRecv_Packet(cs, &res)) != NULL) {
+	while (res == NETWORK_RECV_STATUS_OKAY && (p = cs->Recv_Packet(&res)) != NULL) {
 		byte type = p->Recv_uint8();
 		if (type < PACKET_END && _network_client_packet[type] != NULL && !MY_CLIENT->has_quit) {
 			res = _network_client_packet[type](p);
