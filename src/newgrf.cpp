@@ -2826,6 +2826,16 @@ static void ParamSet(byte *buf, int len)
 						case 0x08: /* General sprites */
 							switch (op) {
 								case 0:
+									/* Check if the allocated sprites will fit below the original sprite limit */
+									if (_cur_spriteid + count >= 16384) {
+										grfmsg(0, "GRM: Unable to allocate %d sprites; try changing NewGRF order", count);
+										SETBIT(_cur_grfconfig->flags, GCF_DISABLED);
+										CLRBIT(_cur_grfconfig->flags, GCF_ACTIVATED);
+
+										_skip_sprites = -1;
+										return;
+									}
+
 									/* 'Reserve' space at the current sprite ID */
 									src1 = _cur_spriteid;
 									_cur_spriteid += count;
