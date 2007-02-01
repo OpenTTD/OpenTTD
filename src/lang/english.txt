@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}New Game
 STR_0141_LOAD_GAME                                              :{BLACK}Load Game
 STR_SINGLE_PLAYER                                               :{BLACK}Single player
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenario Editor
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -613,7 +614,6 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} achieves '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} of {COMPANY} achieves '{STRING}' status!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Create Scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenario Editor
 STR_0223_LAND_GENERATION                                        :{WHITE}Land Generation
@@ -627,8 +627,6 @@ STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generate
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reset landscape
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reset Landscape
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Remove all player-owned property from the map
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Use Heightmap
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Use Heightmap
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Are you sure you want to remove all player-owned property?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landscape generation
 STR_022F_TOWN_GENERATION                                        :{BLACK}Town generation
@@ -734,6 +732,7 @@ STR_0290_DELETE                                                 :{BLACK}Delete
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely
 STR_0292_SAVE_SCENARIO                                          :Save scenario
 STR_0293_LOAD_SCENARIO                                          :Load scenario
+STR_LOAD_HEIGHTMAP                                              :Load heightmap
 STR_0294_QUIT_EDITOR                                            :Quit editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Quit

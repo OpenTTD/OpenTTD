@@ -46,7 +46,6 @@ typedef enum glwp_modes {
 static uint _heightmap_x = 0;
 static uint _heightmap_y = 0;
 static StringID _heightmap_str = STR_NULL;
-static bool _goto_editor = false;
 
 extern void SwitchMode(int new_mode);
 
@@ -57,8 +56,7 @@ static inline void SetNewLandscapeType(byte landscape)
 	InvalidateWindowClasses(WC_GENERATE_LANDSCAPE);
 }
 
-// no longer static to allow calling from outside module
-const Widget _generate_landscape_widgets[] = {
+static const Widget _generate_landscape_widgets[] = {
 {  WWT_CLOSEBOX,  RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION, RESIZE_NONE, 13,  11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION, STR_NULL},
 {      WWT_PANEL, RESIZE_NONE, 13,   0, 337,  14, 267, 0x0,                          STR_NULL},
@@ -105,7 +103,7 @@ const Widget _generate_landscape_widgets[] = {
 {   WIDGETS_END},
 };
 
-const Widget _heightmap_load_widgets[] = {
+static const Widget _heightmap_load_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION, RESIZE_NONE, 13,  11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION, STR_NULL},
 {      WWT_PANEL, RESIZE_NONE, 13,   0, 337,  14, 235, 0x0,                          STR_NULL},
@@ -148,13 +146,6 @@ const Widget _heightmap_load_widgets[] = {
 
 static void StartGeneratingLandscape(glwp_modes mode)
 {
-	/* If we want to go to the editor, and aren't yet, we need to delay
-	 *  it as long as possible, else it gives nasty side-effects (aborting
-	 *  results in ending up in the SE, which you don't want. Therefor we
-	 *  use this switch to do it at the very end.
-	 */
-	if (_goto_editor) _game_mode = GM_EDITOR;
-
 	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
 	DeleteWindowByClass(WC_INDUSTRY_VIEW);
 	DeleteWindowByClass(WC_TOWN_VIEW);
@@ -168,10 +159,10 @@ static void StartGeneratingLandscape(glwp_modes mode)
 
 	SndPlayFx(SND_15_BEEP);
 	switch (mode) {
-	case GLWP_GENERATE:  _switch_mode = (_game_mode == GM_EDITOR) ? SM_GENRANDLAND    : SM_NEWGAME;         break;
-	case GLWP_HEIGHTMAP: _switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP; break;
-	case GLWP_SCENARIO:  _switch_mode = SM_EDITOR; break;
-	default: NOT_REACHED(); return;
+		case GLWP_GENERATE:  _switch_mode = (_game_mode == GM_EDITOR) ? SM_GENRANDLAND    : SM_NEWGAME;         break;
+		case GLWP_HEIGHTMAP: _switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP; break;
+		case GLWP_SCENARIO: break;
+		default: NOT_REACHED();
 	}
 }
 
@@ -180,7 +171,7 @@ static void HeightmapScaledTooMuchCallback(Window *w, bool confirmed)
 	if (confirmed) StartGeneratingLandscape((glwp_modes)w->window_number);
 }
 
-void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
+static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 {
 	static const StringID mapsizes[]    = {STR_64, STR_128, STR_256, STR_512, STR_1024, STR_2048, INVALID_STRING_ID};
 	static const StringID elevations[]  = {STR_682A_VERY_FLAT, STR_682B_FLAT, STR_682C_HILLY, STR_682D_MOUNTAINOUS, INVALID_STRING_ID};
@@ -471,7 +462,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-const WindowDesc _generate_landscape_desc = {
+static const WindowDesc _generate_landscape_desc = {
 	WDP_CENTER, WDP_CENTER, 338, 268,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
@@ -479,22 +470,19 @@ const WindowDesc _generate_landscape_desc = {
 	GenerateLandscapeWndProc,
 };
 
-const WindowDesc _heightmap_load_desc = {
+static const WindowDesc _heightmap_load_desc = {
 	WDP_CENTER, WDP_CENTER, 338, 236,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
 	_heightmap_load_widgets,
 	GenerateLandscapeWndProc,
 };
 
 static void _ShowGenerateLandscape(glwp_modes mode)
 {
-	Window *w;
-
-	/* Don't kill WC_GENERATE_LANDSCAPE:GLWP_SCENARIO, because it resets
-	 *  _goto_editor, which we maybe need later on. */
 	DeleteWindowById(WC_GENERATE_LANDSCAPE, GLWP_GENERATE);
 	DeleteWindowById(WC_GENERATE_LANDSCAPE, GLWP_HEIGHTMAP);
+	DeleteWindowById(WC_GENERATE_LANDSCAPE, GLWP_SCENARIO);
 
 	/* Always give a new seed if not editor */
 	if (_game_mode != GM_EDITOR) _patches_newgame.generation_seed = InteractiveRandom();
@@ -510,12 +498,9 @@ static void _ShowGenerateLandscape(glwp_modes mode)
 			return;
 	}
 
-	w = AllocateWindowDescFront((mode == GLWP_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc, mode);
+	Window *w = AllocateWindowDescFront((mode == GLWP_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc, mode);
 
-	if (w != NULL) {
-
-		InvalidateWindow(WC_GENERATE_LANDSCAPE, mode);
-	}
+	if (w != NULL) InvalidateWindow(WC_GENERATE_LANDSCAPE, mode);
 }
 
 void ShowGenerateLandscape(void)
@@ -541,13 +526,12 @@ enum CreateScenarioWindowWidgets {
 	CSCEN_ARCTIC,
 	CSCEN_TROPICAL,
 	CSCEN_TOYLAND,
+	CSCEN_EMPTY_WORLD,
+	CSCEN_RANDOM_WORLD,
 	CSCEN_MAPSIZE_X_TEXT,
 	CSCEN_MAPSIZE_X_PULLDOWN,
 	CSCEN_MAPSIZE_Y_TEXT,
 	CSCEN_MAPSIZE_Y_PULLDOWN,
-	CSCEN_EMPTY_WORLD,
-	CSCEN_RANDOM_WORLD,
-	CSCEN_HEIGHTMAP,
 	CSCEN_START_DATE_DOWN,
 	CSCEN_START_DATE_TEXT,
 	CSCEN_START_DATE_UP,
@@ -556,7 +540,8 @@ enum CreateScenarioWindowWidgets {
 	CSCEN_FLAT_LAND_HEIGHT_UP
 };
 
-void CreateScenarioWndProc(Window *w, WindowEvent *e)
+
+static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 {
 	static const StringID mapsizes[] = {STR_64, STR_128, STR_256, STR_512, STR_1024, STR_2048, INVALID_STRING_ID};
 
@@ -575,23 +560,22 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetLoweredState(w, CSCEN_TOYLAND,   _opt_newgame.landscape == LT_CANDY);
 		DrawWindowWidgets(w);
 
-		DrawString( 12,  96, STR_MAPSIZE, 0);
-		DrawString(167,  96, mapsizes[_patches_newgame.map_x - 6], 0x10);
-		DrawString(216,  96, STR_BY, 0);
-		DrawString(230,  96, mapsizes[_patches_newgame.map_y - 6], 0x10);
+		DrawStringRightAligned(211, 97, STR_MAPSIZE, 0);
+		DrawString(            221, 97, mapsizes[_patches_newgame.map_x - 6], 0x10);
+		DrawStringCentered(    272, 97, STR_BY, 0);
+		DrawString(            284, 97, mapsizes[_patches_newgame.map_y - 6], 0x10);
 
-		DrawString(162, 118, STR_DATE, 0);
+		DrawStringRightAligned(211, 115, STR_DATE, 0);
 		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
-		DrawStringCentered(271, 118, STR_GENERATE_DATE, 0);
+		DrawStringCentered(271, 115, STR_GENERATE_DATE, 0);
 
-		DrawString(162, 136, STR_FLAT_WORLD_HEIGHT, 0);
+		DrawStringRightAligned(278, 133, STR_FLAT_WORLD_HEIGHT, 0);
 		SetDParam(0, _patches_newgame.se_flat_world_height);
-		DrawStringCentered(303, 136, STR_FLAT_WORLD_HEIGHT_NUM, 0x10);
+		DrawStringCentered(303, 133, STR_FLAT_WORLD_HEIGHT_NUM, 0x10);
 
 		break;
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 0: DeleteWindow(w); break;
 		case CSCEN_TEMPERATE: case CSCEN_ARCTIC: case CSCEN_TROPICAL: case CSCEN_TOYLAND:
 			RaiseWindowWidget(w, _opt_newgame.landscape + CSCEN_TEMPERATE);
 			SetNewLandscapeType(e->we.click.widget - CSCEN_TEMPERATE);
@@ -606,12 +590,7 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 			StartGeneratingLandscape(GLWP_SCENARIO);
 			break;
 		case CSCEN_RANDOM_WORLD: // Generate
-			_goto_editor = true;
 			ShowGenerateLandscape();
-			break;
-		case CSCEN_HEIGHTMAP: // Heightmap
-			_goto_editor = true;
-			ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP);
 			break;
 		case CSCEN_START_DATE_DOWN: case CSCEN_START_DATE_UP: // Year buttons
 			/* Don't allow too fast scrolling */
@@ -648,14 +627,10 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 
 	case WE_DROPDOWN_SELECT:
 		switch (e->we.dropdown.button) {
-			case CSCEN_MAPSIZE_X_PULLDOWN:  _patches_newgame.map_x = e->we.dropdown.index + 6; break;
+			case CSCEN_MAPSIZE_X_PULLDOWN: _patches_newgame.map_x = e->we.dropdown.index + 6; break;
 			case CSCEN_MAPSIZE_Y_PULLDOWN: _patches_newgame.map_y = e->we.dropdown.index + 6; break;
 		}
 		SetWindowDirty(w);
-		break;
-
-	case WE_DESTROY:
-		_goto_editor = false;
 		break;
 
 	case WE_ON_EDIT_TEXT: {
@@ -680,39 +655,38 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-const Widget _create_scenario_widgets[] = {
+static const Widget _create_scenario_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION, RESIZE_NONE, 13,  11, 337,   0,  13, STR_SE_CAPTION,          STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 13,   0, 337,  14, 179, 0x0,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 13,   0, 337,  14, 169, 0x0,                     STR_NULL},
 
 {   WWT_IMGBTN_2, RESIZE_NONE, 12,  10,  86,  24,  78, SPR_SELECT_TEMPERATE,    STR_030E_SELECT_TEMPERATE_LANDSCAPE},
 {   WWT_IMGBTN_2, RESIZE_NONE, 12,  90, 166,  24,  78, SPR_SELECT_SUB_ARCTIC,   STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
 {   WWT_IMGBTN_2, RESIZE_NONE, 12, 170, 246,  24,  78, SPR_SELECT_SUB_TROPICAL, STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
 {   WWT_IMGBTN_2, RESIZE_NONE, 12, 250, 326,  24,  78, SPR_SELECT_TOYLAND,      STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 162, 197,  95, 106, 0x0,                     STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 198, 209,  95, 106, STR_0225,                STR_NULL}, // Mapsize X
-{      WWT_PANEL, RESIZE_NONE, 12, 228, 263,  95, 106, 0x0,                     STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 264, 275,  95, 106, STR_0225,                STR_NULL}, // Mapsize Y
+{    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 115,  95, 124, STR_SE_FLAT_WORLD,       STR_SE_FLAT_WORLD_TIP},         // Empty (sea-level) map
+{    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 115, 131, 160, STR_SE_RANDOM_LAND,      STR_022A_GENERATE_RANDOM_LAND}, // Generate
 
-{    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 145, 117, 128, STR_SE_FLAT_WORLD,       STR_SE_FLAT_WORLD_TIP},                      // Empty (sea-level) map
-{    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 145, 135, 146, STR_SE_RANDOM_LAND,      STR_022A_GENERATE_RANDOM_LAND}, // Generate
-{    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 145, 153, 164, STR_LOAD_GAME_HEIGHTMAP, STR_LOAD_SCEN_HEIGHTMAP},       // Heightmap
+{      WWT_PANEL, RESIZE_NONE, 12, 216, 251,  95, 106, 0x0,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 252, 263,  95, 106, STR_0225,                STR_NULL}, // Mapsize X
+{      WWT_PANEL, RESIZE_NONE, 12, 279, 314,  95, 106, 0x0,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 315, 326,  95, 106, STR_0225,                STR_NULL}, // Mapsize Y
 
-{     WWT_IMGBTN, RESIZE_NONE, 12, 216, 227, 117, 128, SPR_ARROW_DOWN,          STR_029E_MOVE_THE_STARTING_DATE},
-{      WWT_PANEL, RESIZE_NONE, 12, 228, 314, 117, 128, 0x0,                     STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 117, 128, SPR_ARROW_UP,            STR_029F_MOVE_THE_STARTING_DATE},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 216, 227, 113, 124, SPR_ARROW_DOWN,          STR_029E_MOVE_THE_STARTING_DATE},
+{      WWT_PANEL, RESIZE_NONE, 12, 228, 314, 113, 124, 0x0,                     STR_NULL},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 113, 124, SPR_ARROW_UP,            STR_029F_MOVE_THE_STARTING_DATE},
 
-{     WWT_IMGBTN, RESIZE_NONE, 12, 282, 293, 135, 146, SPR_ARROW_DOWN,          STR_FLAT_WORLD_HEIGHT_DOWN},
-{      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 135, 146, 0x0,                     STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 135, 146, SPR_ARROW_UP,            STR_FLAT_WORLD_HEIGHT_UP},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 282, 293, 131, 142, SPR_ARROW_DOWN,          STR_FLAT_WORLD_HEIGHT_DOWN},
+{      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 131, 142, 0x0,                     STR_NULL},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 131, 142, SPR_ARROW_UP,            STR_FLAT_WORLD_HEIGHT_UP},
 {   WIDGETS_END},
 };
 
-const WindowDesc _create_scenario_desc = {
-	WDP_CENTER, WDP_CENTER, 338, 180,
+static const WindowDesc _create_scenario_desc = {
+	WDP_CENTER, WDP_CENTER, 338, 170,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
 	_create_scenario_widgets,
 	CreateScenarioWndProc,
 };

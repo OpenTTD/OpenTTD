@@ -169,10 +169,11 @@ static void MenuClickSaveLoad(int index)
 {
 	if (_game_mode == GM_EDITOR) {
 		switch (index) {
-			case 0: ShowSaveLoadDialog(SLD_SAVE_SCENARIO); break;
-			case 1: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
-			case 2: AskExitToGameMenu();                   break;
-			case 4: HandleExitGameRequest();               break;
+			case 0: ShowSaveLoadDialog(SLD_SAVE_SCENARIO);  break;
+			case 1: ShowSaveLoadDialog(SLD_LOAD_SCENARIO);  break;
+			case 2: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
+			case 3: AskExitToGameMenu();                    break;
+			case 5: HandleExitGameRequest();                break;
 		}
 	} else {
 		switch (index) {
@@ -967,7 +968,7 @@ static void ToolbarOptionsClick(Window *w)
 
 static void ToolbarScenSaveOrLoad(Window *w)
 {
-	PopupMainToolbMenu(w, 3, STR_0292_SAVE_SCENARIO, 5, 0);
+	PopupMainToolbMenu(w, 3, STR_0292_SAVE_SCENARIO, 6, 0);
 }
 
 static void ToolbarScenDateBackward(Window *w)
@@ -1157,8 +1158,8 @@ static const Widget _scen_edit_land_gen_widgets[] = {
 {    WWT_IMGBTN,   RESIZE_NONE,    14,   158,   179,    16,    37, SPR_IMG_TRANSMITTER,       STR_028E_PLACE_TRANSMITTER},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,   139,   150,    45,    56, SPR_ARROW_UP,              STR_0228_INCREASE_SIZE_OF_LAND_AREA},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,   139,   150,    58,    69, SPR_ARROW_DOWN,            STR_0229_DECREASE_SIZE_OF_LAND_AREA},
-{   WWT_TEXTBTN,   RESIZE_NONE,    14,    34,   145,    76,    87, STR_SE_NEW_WORLD,          STR_022A_GENERATE_RANDOM_LAND},
-{   WWT_TEXTBTN,   RESIZE_NONE,    14,    34,   145,    89,   100, STR_022B_RESET_LANDSCAPE,  STR_RESET_LANDSCAPE_TOOLTIP},
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   157,    76,    87, STR_SE_NEW_WORLD,          STR_022A_GENERATE_RANDOM_LAND},
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   157,    89,   100, STR_022B_RESET_LANDSCAPE,  STR_RESET_LANDSCAPE_TOOLTIP},
 {   WIDGETS_END},
 };
 
