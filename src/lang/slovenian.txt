@@ -670,7 +670,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Zbriši 
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Zbriši pokrajino
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Uporabi višinsko karto
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Uporabi višinsko karto
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Zagotovo želiš uničiti pokrajino?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generator pokrajine
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generator mest
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generator industrije

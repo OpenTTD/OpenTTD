@@ -628,7 +628,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Azzerra 
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Azzerra Paesaggio
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usa Heightmap
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usa Heightmap
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Sei sicuro di voler azzerrare il paesaggio?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generazione paesaggio
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generazione città
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generazione industrie

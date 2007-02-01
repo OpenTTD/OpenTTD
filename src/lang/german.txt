@@ -629,7 +629,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Landflä
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Landfläche wiederherstellen
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Reliefkarte nutzen
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Reliefkarte nutzen
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Bist du sicher, dass die Landschaft zurückgesetzt werden soll?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landfläche erzeugen
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt errichten
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrie errichten

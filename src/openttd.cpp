@@ -70,8 +70,6 @@ void IncreaseDate(void);
 void DoPaletteAnimations(void);
 void MusicLoop(void);
 void ResetMusic(void);
-void InitializeStations(void);
-void DeleteAllPlayerStations(void);
 
 extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern Player* DoStartupNewPlayer(bool is_ai);
@@ -840,23 +838,10 @@ void SwitchMode(int new_mode)
 
 	case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
 		if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR)) {
-			Player *p;
-
 			_opt_ptr = &_opt;
 
 			SetLocalPlayer(OWNER_NONE);
-			_generating_world = true;
-			/* Delete all players */
-			FOR_ALL_PLAYERS(p) {
-				if (p->is_active) {
-					ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
-					p->is_active = false;
-				}
-			}
-			_generating_world = false;
 			_patches_newgame.starting_year = _cur_year;
-			// delete all stations owned by a player
-			DeleteAllPlayerStations();
 		} else {
 			ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 		}

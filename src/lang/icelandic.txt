@@ -605,7 +605,6 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Minnka s
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Mynda til land af handahófi
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Eyða landi
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Eyða landi
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Ertu viss um að þú viljir eyða landinu?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landslagsgerð
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bæjargerð
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Iðnaðargerð

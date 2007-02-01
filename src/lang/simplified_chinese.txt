@@ -628,7 +628,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}重置�
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}重置景观
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}使用高度图
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}使用高度图
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}你确定要重置景观吗？
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}生成景观
 STR_022F_TOWN_GENERATION                                        :{BLACK}生成城镇
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}生成工业

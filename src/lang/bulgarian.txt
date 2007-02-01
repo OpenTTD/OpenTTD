@@ -626,7 +626,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Изчи
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Изчисти терена
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Ползвай топо-карта
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Ползвай топо-карта
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Желаете ли да изчистите терена?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Създаване на терен
 STR_022F_TOWN_GENERATION                                        :{BLACK}Създаване на град
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Създаване на индустрия

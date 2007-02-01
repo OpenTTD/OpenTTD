@@ -629,7 +629,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Réiniti
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Réinitialiser le terrain
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Carte d'altitude
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Utiliser une carte d'altitude
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Voulez-vous vraiment réinitialiser le terrain?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Créer le terrain
 STR_022F_TOWN_GENERATION                                        :{BLACK}Créer les villes
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Créer les industries

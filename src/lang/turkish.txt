@@ -628,7 +628,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Haritay�
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Haritayı Sıfırla
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Yükseklik Haritasi Kullan
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Yükseklik Haritasi Kullan
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Her taraf su olsun mu?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Harita yapımı
 STR_022F_TOWN_GENERATION                                        :{BLACK}Şehir yapımı
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Fabrika yapımı

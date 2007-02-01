@@ -624,7 +624,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Сбро
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Сбросить карту
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Исп. РЕЛЬЕФ
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Исп. РЕЛЬЕФ
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Вы уверены что хотите сбросить землю?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Создание ландшафта
 STR_022F_TOWN_GENERATION                                        :{BLACK}Создание города
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Создание промышленности

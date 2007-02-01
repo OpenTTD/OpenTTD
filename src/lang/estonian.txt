@@ -724,7 +724,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nulli ma
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nulli maastik
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Kasuta Kõrguskaarti
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Kasuta Kõrguskaarti
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Oled sa kindel, et sa tahad maastikku nullida?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Maastiku loomine
 STR_022F_TOWN_GENERATION                                        :{BLACK}Linnade loomine
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Tööstuste loomine

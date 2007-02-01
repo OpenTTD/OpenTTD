@@ -629,7 +629,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Hacer re
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Hacer reset del paisaje
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usar Mapa de alturas
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usar Mapa de alturas
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}¿Está seguro que desea realizar un reset al paisaje?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generación de paisaje
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generación de poblaciones
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generación de industria

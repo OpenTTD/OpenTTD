@@ -681,7 +681,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Resetuj 
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetuj krajobraz
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Użyj mapy wysokości
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Użyj mapy wysokości
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Jesteś pewien że chcesz zrestartować krajobraz?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Tworzenie krajobrazu
 STR_022F_TOWN_GENERATION                                        :{BLACK}Tworzenie miast
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Tworzenie przedsiębiorstw

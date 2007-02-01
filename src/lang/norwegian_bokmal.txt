@@ -624,7 +624,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Tilbakes
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Tilbakestill landskap
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Bruk høydekart
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Bruk høydekart
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Er du sikkert på du vil tilbakestille landskapet?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskapsgenerering
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrigenerering

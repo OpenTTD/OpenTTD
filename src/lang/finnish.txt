@@ -624,7 +624,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nollaa m
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nollaa maasto
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Käytä korkeuskarttaa
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Käytä korkeuskarttaa
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Nollataanko maasto?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Luo maasto
 STR_022F_TOWN_GENERATION                                        :{BLACK}Luo kaupunkeja
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Luo teollisuutta

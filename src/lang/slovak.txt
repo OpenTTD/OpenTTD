@@ -692,7 +692,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Zresetov
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Zresetovat Uzemie
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Pouzit vyskovu mapu
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Pouzit vyskovu mapu
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Si si isty ze chces zresetovat uzemie ?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Vytvorenie uzemia
 STR_022F_TOWN_GENERATION                                        :{BLACK}Vytvorenie mesta
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Vytvorenie priemyslu

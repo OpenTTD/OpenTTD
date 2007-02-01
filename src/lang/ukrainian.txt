@@ -737,7 +737,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Очис
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Очистити ландшафт
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Використовувати рельєф
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Взяти з карти висот
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Ви дійсно бажаєте очистити ландшафт?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Створення ландшафту
 STR_022F_TOWN_GENERATION                                        :{BLACK}Створення міст
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Створення виробництва

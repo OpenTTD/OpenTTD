@@ -628,7 +628,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nulstil 
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nulstil landskab
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Brug højdekort
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Brug højdekort
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Er du sikker på, at du vil nulstille landskabet?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskabsgenerering
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrigenerering

@@ -628,7 +628,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Verwijde
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Verwijder landschap
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Gebruik hoogtekaart
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Gebruik hoogtekaart
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Weet je zeker dat je het land wilt verwijderen?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landschapproductie
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadproductie
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrieproductie

@@ -658,7 +658,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Anuliuot
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Anuliuoti kraštovaizdį
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Naudoti Papildoma Zemelapi
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Naudoti Papildoma Zemelapi
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Ar tikrai norite anuliuoti kraštovaiždį?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Kraštovaizdžio kūrimas
 STR_022F_TOWN_GENERATION                                        :{BLACK}Miesto įkūrimas
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Pramonės kūrimas

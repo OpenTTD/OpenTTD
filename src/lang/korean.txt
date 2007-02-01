@@ -629,7 +629,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}풍경 �
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}풍경 리셋
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}DEM지형 사용
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}DEM지형 사용
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}정말로 지형을 초기화하시겠습니까?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}지형 생성기
 STR_022F_TOWN_GENERATION                                        :{BLACK}마을 생성
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}산업 시설 생성

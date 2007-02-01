@@ -628,7 +628,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reseteaz
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetare peisaj
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Foloseste harta de inaltimi
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Foloseste harta inaltimi
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Esti sigur cã vrei sa resetezi peisajul?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generare peisaj
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generare oras
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generare industrii

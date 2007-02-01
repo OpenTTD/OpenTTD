@@ -630,7 +630,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Resetar 
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Limpar Terreno
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usar mapa de altitudes
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usar mapa de altitudes
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Tem a certeza que deseja limpar o terreno?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Gerar terreno
 STR_022F_TOWN_GENERATION                                        :{BLACK}Gerar cidades
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Gerar indústrias

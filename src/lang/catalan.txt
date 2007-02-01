@@ -628,7 +628,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Restable
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Restablir Paisatge
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Utilitza un mapa d'alçades
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Utilitza un mapa d'alçades
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Estàs segur que vols restablir el paisatge?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generació de Paisatges
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generació de Poblacions
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generació d'indústries

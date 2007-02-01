@@ -628,7 +628,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reset la
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reset Landscape
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Use Heightmap
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Use Heightmap
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Are you sure you want to reset the landscape?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landscape generation
 STR_022F_TOWN_GENERATION                                        :{BLACK}Town generation
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industry generation

@@ -628,7 +628,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Återst�
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Återställ landskapet
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Använd höjdkarta
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Använd höjdkarta
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Vill du verkligen återställa landskapet?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Skapa landskap
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygg städer
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Bygg industrier

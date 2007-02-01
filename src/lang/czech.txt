@@ -742,7 +742,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Smazat k
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Smazat krajinu
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Použít výškovou mapu
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Použít výškovou mapu
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Urcite chceš smazat krajinu?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generování krajiny
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generování měst
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generování průmyslu

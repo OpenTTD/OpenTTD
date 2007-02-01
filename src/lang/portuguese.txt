@@ -628,7 +628,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}Repor te
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Repor Terreno
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usar mapa de alturas
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usar mapa de alturas
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Tem a certeza que deseja repor o terreno?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}A gerar terreno
 STR_022F_TOWN_GENERATION                                        :{BLACK}A gerar cidades
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}A gerar indústrias

@@ -610,7 +610,6 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Disminu�
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Xerar terreo aleatorio
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reiniciar paisaxe
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reiniciar paisaxe
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}¿Está seguro de querer reinicia-la paisaxe?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Xeración de paisaxe
 STR_022F_TOWN_GENERATION                                        :{BLACK}Xeración de cidades
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Xeración de industrias

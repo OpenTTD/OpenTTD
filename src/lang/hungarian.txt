@@ -694,7 +694,6 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}A táj t
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Táj törlése
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Magasságtérkép használata
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Magasságtérkép használata
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Biztosan le akarod törölni az egész tájat?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Táj szerkesztése
 STR_022F_TOWN_GENERATION                                        :{BLACK}Városkészítés
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Gazdasági épület készítése

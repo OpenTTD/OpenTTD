@@ -2299,16 +2299,6 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 	return 0;
 }
 
-
-void DeleteAllPlayerStations(void)
-{
-	Station *st;
-
-	FOR_ALL_STATIONS(st) {
-		if (IsValidPlayer(st->owner)) delete st;
-	}
-}
-
 /* this function is called for one station each tick */
 static void StationHandleBigTick(Station *st)
 {
