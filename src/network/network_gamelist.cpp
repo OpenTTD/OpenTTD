@@ -7,6 +7,10 @@
 #include "network_data.h"
 #include "../newgrf_config.h"
 #include "../helpers.hpp"
+#include "network_udp.h"
+
+/** Should we stop/contiue requerying of offline servers? */
+static bool _stop_requerying = false;
 
 // This file handles the GameList
 // Also, it handles the request to a server for data about the server
@@ -40,6 +44,7 @@ NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 	DEBUG(net, 4, "[gamelist] added server to list");
 
 	UpdateNetworkGameWindow(false);
+	_stop_requerying = false;
 
 	return item;
 }
@@ -70,6 +75,39 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 		}
 		prev_item = item;
 	}
+}
+
+enum {
+	MAX_GAME_LIST_REQUERY_COUNT =  5,
+	REQUERY_EVERY_X_GAMELOOPS   = 30,
+};
+
+/** Requeries the (game) servers we have not gotten a reply from */
+void NetworkGameListRequery(void)
+{
+	static uint8 requery_cnt = 0;
+
+	if (_stop_requerying || ++requery_cnt < REQUERY_EVERY_X_GAMELOOPS) return;
+
+	requery_cnt = 0;
+	_stop_requerying = true;
+
+	struct in_addr ip;
+	NetworkGameList *item;
+
+	for (item = _network_game_list; item != NULL; item = item->next) {
+		if (item->online || item->retries >= MAX_GAME_LIST_REQUERY_COUNT) continue;
+
+		ip.s_addr = item->ip;
+
+		/* item gets mostly zeroed by NetworkUDPQueryServer */
+		uint8 retries = item->retries;
+		NetworkUDPQueryServer(inet_ntoa(ip), item->port);
+		item->retries = retries + 1;
+
+		_stop_requerying = false;
+	}
+
 }
 
 #endif /* ENABLE_NETWORK */
