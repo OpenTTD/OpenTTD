@@ -1080,8 +1080,8 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 				bitmask = 0;
 			} else {
 				// proper station type, check if there is free loading bay
-				const RoadStop *rs = GetRoadStopByTile(tile, rstype);
-				if (rs == NULL || (!_patches.roadveh_queue && GB(rs->status, 0, 2) == 0)) {
+				if (!_patches.roadveh_queue &&
+						GB(GetRoadStopByTile(tile, rstype)->status, 0, 2) == 0) {
 					// station is full and RV queuing is off
 					bitmask = 0;
 				}
