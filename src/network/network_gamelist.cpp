@@ -4,16 +4,22 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "network_data.h"
 #include "../newgrf_config.h"
 #include "../helpers.hpp"
+#include "core/game.h"
 #include "network_udp.h"
+#include "network_gamelist.h"
+#include "network_gui.h"
+
+/**
+ * @file network_gamelist.cpp This file handles the GameList
+ * Also, it handles the request to a server for data about the server
+ */
+
+NetworkGameList *_network_game_list = NULL;
 
 /** Should we stop/contiue requerying of offline servers? */
 static bool _stop_requerying = false;
-
-// This file handles the GameList
-// Also, it handles the request to a server for data about the server
 
 /** Add a new item to the linked gamelist. If the IP and Port match
  * return the existing item instead of adding it again

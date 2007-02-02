@@ -65,16 +65,6 @@ typedef struct NetworkClientInfo {
 	char unique_id[NETWORK_NAME_LENGTH];            // Every play sends an unique id so we can indentify him
 } NetworkClientInfo;
 
-typedef struct NetworkGameList {
-	NetworkGameInfo info;
-	uint32 ip;
-	uint16 port;
-	bool online;                                    // False if the server did not respond (default status)
-	bool manually;                                  // True if the server was added manually
-	uint8 retries;
-	struct NetworkGameList *next;
-} NetworkGameList;
-
 typedef enum {
 	NETWORK_JOIN_STATUS_CONNECTING,
 	NETWORK_JOIN_STATUS_AUTHORIZING,
@@ -93,8 +83,6 @@ typedef enum {
 	NETLANG_GERMAN  = 2,
 	NETLANG_FRENCH  = 3,
 } NetworkLanguage;
-
-VARDEF NetworkGameList *_network_game_list;
 
 VARDEF NetworkGameInfo _network_game_info;
 VARDEF NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
