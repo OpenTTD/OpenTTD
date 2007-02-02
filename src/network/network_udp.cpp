@@ -481,14 +481,14 @@ void NetworkUDPSearchGame(void)
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
 }
 
-NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port)
+void NetworkUDPQueryServer(const char* host, unsigned short port, bool manually)
 {
 	struct sockaddr_in out_addr;
 	NetworkGameList *item;
 
 	// No UDP-socket yet..
 	if (!_udp_client_socket->IsConnected()) {
-		if (!_udp_client_socket->Listen(0, 0, true)) return NULL;
+		if (!_udp_client_socket->Listen(0, 0, true)) return;
 	}
 
 	out_addr.sin_family = AF_INET;
@@ -500,14 +500,14 @@ NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port)
 	memset(&item->info, 0, sizeof(item->info));
 	ttd_strlcpy(item->info.server_name, host, lengthof(item->info.server_name));
 	ttd_strlcpy(item->info.hostname, host, lengthof(item->info.hostname));
-	item->online = false;
+	item->online   = false;
+	item->manually = manually;
 
 	// Init the packet
 	Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
 	_udp_client_socket->SendPacket(&p, &out_addr);
 
 	UpdateNetworkGameWindow(false);
-	return item;
 }
 
 /* Remove our advertise from the master-server */

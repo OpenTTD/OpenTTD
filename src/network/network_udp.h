@@ -8,7 +8,7 @@
 void NetworkUDPInitialize(void);
 void NetworkUDPSearchGame(void);
 void NetworkUDPQueryMasterServer(void);
-NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port);
+void NetworkUDPQueryServer(const char* host, unsigned short port, bool manually = false);
 void NetworkUDPAdvertise(void);
 void NetworkUDPRemoveAdvertise(void);
 void NetworkUDPShutdown(void);

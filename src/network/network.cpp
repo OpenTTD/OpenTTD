@@ -851,13 +851,11 @@ static void NetworkInitialize(void)
 // Query a server to fetch his game-info
 //  If game_info is true, only the gameinfo is fetched,
 //   else only the client_info is fetched
-NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool game_info)
+void NetworkTCPQueryServer(const char* host, unsigned short port)
 {
-	if (!_network_available) return NULL;
+	if (!_network_available) return;
 
 	NetworkDisconnect();
-
-	if (game_info) return NetworkUDPQueryServer(host, port);
 
 	NetworkInitialize();
 
@@ -872,8 +870,6 @@ NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool 
 	} else { // No networking, close everything down again
 		NetworkDisconnect();
 	}
-
-	return NULL;
 }
 
 /* Validates an address entered as a string and adds the server to
@@ -882,7 +878,6 @@ NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool 
 void NetworkAddServer(const char *b)
 {
 	if (*b != '\0') {
-		NetworkGameList *item;
 		const char *port = NULL;
 		const char *player = NULL;
 		char host[NETWORK_HOSTNAME_LENGTH];
@@ -896,8 +891,7 @@ void NetworkAddServer(const char *b)
 		ParseConnectionString(&player, &port, host);
 		if (port != NULL) rport = atoi(port);
 
-		item = NetworkQueryServer(host, rport, true);
-		item->manually = true;
+		NetworkUDPQueryServer(host, rport, true);
 	}
 }
 

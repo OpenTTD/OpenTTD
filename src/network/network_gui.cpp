@@ -446,7 +446,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		case 17: // Refresh
 			if (nd->server != NULL)
-				NetworkQueryServer(nd->server->info.hostname, nd->server->port, true);
+				NetworkUDPQueryServer(nd->server->info.hostname, nd->server->port);
 			break;
 		case 18: // NewGRF Settings
 			if (nd->server != NULL) ShowNewGRFSettings(false, false, false, &nd->server->info.grfconfig);
@@ -945,8 +945,8 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			NetworkClientConnectGame(_network_last_host, _network_last_port);
 			break;
 		case 10: /* Refresh */
-			NetworkQueryServer(_network_last_host, _network_last_port, false); // company info
-			NetworkUDPQueryServer(_network_last_host, _network_last_port);     // general data
+			NetworkTCPQueryServer(_network_last_host, _network_last_port); // company info
+			NetworkUDPQueryServer(_network_last_host, _network_last_port); // general data
 			break;
 		}	break;
 
@@ -994,8 +994,8 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 	Window *w;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
-	NetworkQueryServer(_network_last_host, _network_last_port, false); // company info
-	NetworkUDPQueryServer(_network_last_host, _network_last_port);     // general data
+	NetworkTCPQueryServer(_network_last_host, _network_last_port); // company info
+	NetworkUDPQueryServer(_network_last_host, _network_last_port); // general data
 
 	w = AllocateWindowDesc(&_network_lobby_window_desc);
 	if (w != NULL) {
