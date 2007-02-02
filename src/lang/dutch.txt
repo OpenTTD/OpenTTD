@@ -1413,6 +1413,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Spelers 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Geen netwerkapparaten gevonden of gecompileerd zonder ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kon geen enkel netwerkspel vinden
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} De server beantwoorde het verzoek niet
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kan geen verbinding maken vanwege niet gelijke NewGRF instelling
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netwerkspel synchronisatie mislukt.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Netwerkspel verbinding kwijt.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kon server-opgeslagen spel niet laden
@@ -1434,6 +1435,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :desynchronisati
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :kan kaart niet laden
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :verbinding verbroken
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protocol fout
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Niet gelijke NewGRF instelling
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :niet toegelaten
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :raar pakket ontvangen
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :foute revisie

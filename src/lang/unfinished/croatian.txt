@@ -393,6 +393,7 @@ STR_SELECT_ALL_FACILITIES                                       :{BLACK}Izaberi 
 STR_SELECT_ALL_TYPES                                            :{BLACK}Izaberi sve vrste tereta (uključujući i teret koji ne čeka)
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Pogledaj popis dostupnih dizajna motora za ovu vrstu vozila.
 STR_MANAGE_LIST                                                 :{BLACK}Uredi popis
+STR_MANAGE_LIST_TIP                                             :{BLACK}Pošalji upute svim vozilima na ovoj listi
 STR_REPLACE_VEHICLES                                            :Zamjeni vozila
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Pošalji u hangar
 STR_SEND_FOR_SERVICING                                          :Pošalji na servis
@@ -568,6 +569,7 @@ STR_01FE_DIFFICULTY                                             :{BLACK}Težina 
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Poslijednja poruka/vijest
 STR_0201_MESSAGE_SETTINGS                                       :Postavke poruka
+STR_MESSAGE_HISTORY_MENU                                        :Povijest poruka
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Prikaži zadnju poruku/vijest, prikaži postavke poruka
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Mogućnosti poruka
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Vrste poruka:
@@ -581,6 +583,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Nova vo
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Promjene u prihvaćanju tereta
 STR_020E_SUBSIDIES                                              :{YELLOW}Subvencije
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Opće informacije
+STR_MESSAGES_ALL                                                :{YELLOW}Postavi sve tipove poruka na: Isključeno/Ukratko/Potpuno
+STR_MESSAGE_SOUND                                               :{YELLOW} Pusti zvuk za sve skraćene novinske poruke
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...predaleko od prethodnog odredišta
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Najbolje tvrtke koje su dosigle razinu {NUM}{}({STRING})
 STR_0212                                                        :{BIGFONT}{COMMA}.
@@ -596,20 +600,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} postigao je status '{STRING}' !
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} iz {COMPANY} postigao je status '{STRING}' !
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Izrada scenarija
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Uređivanje scenarija
 STR_0223_LAND_GENERATION                                        :{WHITE}Stvaranje zemljišta
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Nasimično zemljište
-STR_0227_RESET_LAND                                             :{BLACK}Poništi zemljište
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Povećaj područje koje će biti povišeno/sniženo
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Smanji podrčje koje će biti povišeno/sniženo
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Napravi nasumično zemljište
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Poništi krajolik
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Poništi krajolik
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Jeste li sigurni da želite poništiti krajolik?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Stvaranje krajolika
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stvaranje gradova
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Stvaranje industrija
@@ -1129,7 +1129,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...u ovo
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Jeste li sigurni da želite napraviti nasumični krajolik?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Mnogo nasumičnih gradova
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Popuni kartu nasumce smještenim gradovima
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Nmogo nasumične industrije
+STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Mnoge nasumične industrije
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Popuni kartu nasumce smještenim industrijama
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Ne možeš generirati gospodarstva...
 
@@ -1280,6 +1280,7 @@ STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks tvr
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ograniči poslužitelj na određeni broj tvrtki
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maks promatrača:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Ograniči poslužitelj na određeni broj gledatelja
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Jezik kojim se govori:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Drugi igrači znati će kojim se jezikom govori na poslužitelju
@@ -1287,17 +1288,19 @@ STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{S
 STR_NETWORK_START_GAME                                          :{BLACK}Započni igru
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Započni novu igru u mreži na nasumičnoj mapi ili iz scenarija
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Učitaj igru
-STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Nastavi snimljenu igru za više igrača (pazite da se spajojite pod svojim imenom)
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Nastavi snimljenu igru za više igrača (pazite da se spojite pod svojim imenom)
 
 ############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :
+STR_NETWORK_LANG_ANY                                            :Bilo koji
 STR_NETWORK_LANG_ENGLISH                                        :Engleski
 STR_NETWORK_LANG_GERMAN                                         :Njemački
 STR_NETWORK_LANG_FRENCH                                         :Francuski
 ############ End of leave-in-this-order
 
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Predvorje multiplayer igre
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Pripremanje za pridruživanje:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Popis svih kompanija trenutno u igri. Možete se pridružiti jednoj ili osnovati novu ako postoji slobodno mjesto
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nova tvrtka
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Otvori novu tvrtku
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Gledaj igru
@@ -1314,6 +1317,7 @@ STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Preuzim
 STR_NETWORK_VALUE                                               :{SILVER}Vrijednost tvrtke:  {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Trenutno stanje:  {WHITE}{CURRENCY64}
 STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Prošlogodišnji prihod:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Izvršavanje: {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Vozila:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_STATIONS                                            :{SILVER}Stanice:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -1342,8 +1346,10 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Posluži
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tvrtka je zaštićena. Unesite zaporku
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Popis klijenata
 
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nisu pronađeni mrežni uređaji ili je kompajlirano bez ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Niti jedna mrežna igra nije pronađena
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Poslužitelj nije odgovorio na zahtjev
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Ne mogu se spojiti zbog neslaganja u NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Neuspješno usklađivanje mrežne igre
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Izgubljena veza sa mrežnom igrom
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nemoguće je učitati snimljenu igru
@@ -1351,6 +1357,7 @@ STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Nemogu�
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Nije se moguće spojiti
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Istekla je veza #{NUM}
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Napravljena je greška u protokolu te se veza prekinula
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Revizija ovog klijenta ne slaže se sa revizijom servera
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Pogrešna zaporka
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Poslužitelj je pun
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Zabranjen vam je pristup ovom poslužitelju
@@ -1360,13 +1367,17 @@ STR_NETWORK_ERR_CHEATER                                         :{WHITE} Na ovom
 STR_NETWORK_ERR_LEFT                                            :je napustio igru
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :opća greška
+STR_NETWORK_ERR_CLIENT_DESYNC                                   :greška u sinkronizaciji
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :nije moguće učitati kartu
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :veza je izgubljena
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :greška u protokolu
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF nepodudaranje
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nije ovlašten
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :primljen je nepoznat paket
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :pogrešna revizija
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :ime se već koristi
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :pogrešna zaporka
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :pogrešan igrač-id u DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :izbačen{G "" a o) od strane poslužitelja
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :je pokuša{G o la lo} varati
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :poslužitelj je pun
@@ -2115,7 +2126,7 @@ STR_LIVERY_PASSENGER_SHIP                                       :Trajekt
 STR_LIVERY_FREIGHT_SHIP                                         :Teretni brod
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Mali zrakoplov
-STR_LIVERY_LARGE_PLANE                                          :Veliko zrakoplov
+STR_LIVERY_LARGE_PLANE                                          :Veliki zrakoplov
 
 
 ##id 0x8000
@@ -2577,11 +2588,39 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
+STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdi promjene
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nema novih newgrf datoteka instaliranih! Molimo pogledajte manual za upute o tome kako instalirati novu grafiku
+STR_NEWGRF_FILENAME                                             :{BLACK}Datoteka: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5 suma: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Spremate se napraviti izmjene na pokrenutoj igri; to može srušiti OpenTTD.{}Jeste li potpuno sigurni u to?
 
+STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj NewGRF datoteku u listu
+STR_NEWGRF_REMOVE                                               :{BLACK}Obriši
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Obriši odabranu NewGRF datoteku sa liste
+STR_NEWGRF_MOVEUP                                               :{BLACK}Pomakni gore
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Pomakni odabranu NewGRF datoteku gore na listi
+STR_NEWGRF_MOVEDOWN                                             :{BLACK} Pomakni dolje
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Pomakni odabranu NewGRF datoteku dolje na listi
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Popis instaliranih NewGRF datoteka. Kliknite na datoteku da bi promijenili njene parametre
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parametri: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Unesite NewGRF  parametre
+STR_NEWGRF_NO_INFO                                              :{BLACK}Nema dostupnih informacija
 
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupne NewGRF datoteke
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Dodaj u selekciju
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Dodaj odabrane NewGRF datoteke u svoju konfiguraciju
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Ponovno skeniraj datoteke
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Osvježi listu dostupnih NewGRF datoteka
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne mogu dodati datoteku: dupli GRF ID
 
+STR_NEWGRF_NOT_FOUND                                            :{RED}Odgovarajuća datoteka nije pronađena
 STR_NEWGRF_DISABLED                                             :{RED}Onemogućeno
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odgovarajuća datoteka nije pronađena (kompatibilni GRF podignut)
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilni GRF(ovi) učitani umjesto nepronađenih datoteka
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Nepronađene GRF datoteke su isključene
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Proizvoljna valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni tečaj: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -2637,12 +2676,16 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izaberi 
 
 
 
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klikni za pokretanje svih aviona u hangaru
 
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klikni za zaustavljanje svih vozila na listi
+STR_MASS_START_LIST_TIP                                         :{BLACK}Klikni za pokretanje svih vozila na listi
 
 
 
 ############ Lists rail types
 
+STR_MONORAIL_VEHICLES                                           :Jednotračna vozila
 
 ############ End of list of rail types
 
@@ -2655,10 +2698,16 @@ STR_CLEARING_TILES                                              :{BLACK}Generira
 
 ########### String for new airports
 STR_CITY_AIRPORT                                                :{BLACK}Grad
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Međunarodni aerodrom
 STR_COMMUTER_AIRPORT                                            :{BLACK}Redoviti putnik
 
+STR_LARGE_AIRPORTS                                              :{BLACK}Veliki aerodromi
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK}Dužina:{NUM}
+STR_MEASURE_AREA                                                :{BLACK}Područje:{NUM}x{NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dužina:{NUM}{}Visinska razlika:{NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područje:{NUM}x{NUM}Visinska razlika:{NUM} m
 
 ########

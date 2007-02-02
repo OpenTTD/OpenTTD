@@ -296,6 +296,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Neues Sp
 STR_0141_LOAD_GAME                                              :{BLACK}Spiel laden
 STR_SINGLE_PLAYER                                               :{BLACK}Einzelspieler
 STR_MULTIPLAYER                                                 :{BLACK}Mehrspieler
+STR_SCENARIO_EDITOR                                             :{BLACK}Szenario Editor
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -624,6 +625,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Landflä
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Erzeuge Land durch Zufall
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Landfläche wiederherstellen
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Landfläche wiederherstellen
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Entferne das gesamte Spielereigentum von der Karte
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Bist du sicher, daß du das gesamte Spielereigentum entfernen willst?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landfläche erzeugen
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt errichten
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrie errichten
@@ -728,6 +731,7 @@ STR_0290_DELETE                                                 :{BLACK}Löschen
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Diese Stadt vollständig löschen
 STR_0292_SAVE_SCENARIO                                          :Szenario speichern
 STR_0293_LOAD_SCENARIO                                          :Szenario laden
+STR_LOAD_HEIGHTMAP                                              :Reliefkarte laden
 STR_0294_QUIT_EDITOR                                            :Editor verlassen
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Beenden
@@ -1414,6 +1418,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Teilnehm
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Keine Netzwerkschnittstellen gefunden oder ohne ENABLE_NETWORK kompiliert
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Keine Netzwerkspiele gefunden
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Der Server antwortete nicht auf die Anfrage
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Konnte Verbindung nicht herstellen, da die NewGRF Versionen nicht übereinstimmen.
 STR_NETWORK_ERR_DESYNC                                          :{WHITE}Synchronisation des Netzwerkspiels fehlgeschlagen
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Verbindung zum Netzwerkspiel verloren
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Spielstand konnte nicht vom Server geladen werden
@@ -1435,6 +1440,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :Synchronisation
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :Karte konnte nicht geladen werden.
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :Verbindung verloren
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :Protokollfehler
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF Versionen stimmen nicht überein
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nicht authorisiert
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :Unerwartetes Paket empfangen
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :Falsche Version
@@ -2770,11 +2776,11 @@ SERVICE_AT_SHIP_DEPOT                                           :Wartung in der 
 STR_A000_AIRPORTS                                               :{WHITE}Flughäfen
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Flughafen kann hier nicht gebaut werden...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Flugzeughangar
-STR_A003_NEW_AIRCRAFT                                           :{BLACK}Neues Flugzeug
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}Neue Flugzeuge
 STR_CLONE_AIRCRAFT                                              :{BLACK}Flugzeug duplizieren
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Baut eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_A005_NEW_AIRCRAFT                                           :{WHITE}Neues Flugzeug
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}Neue Flugzeuge
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Flugzeug bauen
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kann das Flugzeug nicht bauen...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Flugzeug{P "" e}

@@ -141,7 +141,6 @@ STR_003C_FRUIT                                                  :фрукти
 STR_003C_FRUIT.r                                                :фруктів
 STR_003C_FRUIT.z                                                :фрукти
 STR_003D_DIAMOND                                                :діаманти
-STR_003D_DIAMOND.r                                              :діаманти
 STR_003D_DIAMOND.z                                              :діаманти
 STR_003E_FOOD                                                   :продукти
 STR_003E_FOOD.r                                                 :продуктів
@@ -404,6 +403,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Нова
 STR_0141_LOAD_GAME                                              :{BLACK}Завантажити гру
 STR_SINGLE_PLAYER                                               :{BLACK}Один гравець
 STR_MULTIPLAYER                                                 :{BLACK}Мережна гра
+STR_SCENARIO_EDITOR                                             :{BLACK}Редактор сценарію
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -693,13 +693,13 @@ STR_0201_MESSAGE_SETTINGS                                       :Налашту�
 STR_MESSAGE_HISTORY_MENU                                        :Історія повідомлень
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Показати останнє повідомлення. Налаштування повідомлень
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Налаштування повідомлень
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Типи повідомлень:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Типи повідомлень:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Прибуття першого транспорту на станцію гравця
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Прибуття першого транспорту на станцію конкурента
-STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Нещасні випадки/Стихійні лиха
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Нещасні випадки/стихійні лиха
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Інформація компанії
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Зміни в економіці
-STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Поради/рекомендації щодо транспорту гравця
+STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Поради/інформація про транспорт гравця
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Новий транспорт
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Зміни в попиті на перевезення
 STR_020E_SUBSIDIES                                              :{YELLOW}Субсидії
@@ -707,7 +707,7 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Заг�
 STR_MESSAGES_ALL                                                :{YELLOW}Відображати повідомлення /Коротко/Повно/Викл
 STR_MESSAGE_SOUND                                               :{YELLOW}Звукове сповіщення для підсумкових новин
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...дуже далеко від попереднього пункту призначення
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Кращі компанії що досягли {NUM}{}({STRING} рівня)
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Кращі компанії, що досягли {NUM}{}(рівень {STRING})
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Таблиця компаній з {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Бізнесмен
@@ -732,6 +732,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Змен
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Створити випадкову ділянку
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Очистити ландшафт
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Очистити ландшафт
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Видалити всю власність гравця з карти
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ви впевнені, що хочете видалити всю власність гравця?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Створення ландшафту
 STR_022F_TOWN_GENERATION                                        :{BLACK}Створення міст
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Створення виробництва
@@ -741,7 +743,7 @@ STR_0234_NEW_TOWN                                               :{BLACK}Нове
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Будувати нове місто
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Тут не можна будувати місто...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...близько до краю карти
-STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...близько до іншого міста
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...надто близько до іншого міста
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...невідповідне місце
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...забагато міст
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Не можна створити місто
@@ -836,6 +838,7 @@ STR_0290_DELETE                                                 :{BLACK}Вида
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Видалити місто повністю
 STR_0292_SAVE_SCENARIO                                          :Зберегти сценарій
 STR_0293_LOAD_SCENARIO                                          :Завантажити сценарій
+STR_LOAD_HEIGHTMAP                                              :Завантажити карту висот
 STR_0294_QUIT_EDITOR                                            :Вийти з редактору
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Вихід
@@ -1928,42 +1931,79 @@ STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Зава
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} на шляху
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :{G=f}Вугільна шахта
+STR_4802_COAL_MINE.z                                            :{G=f}вугільну шахту
 STR_4803_POWER_STATION                                          :{G=f}Електростанція
+STR_4803_POWER_STATION.z                                        :{G=f}електростанцію
 STR_4804_SAWMILL                                                :{G=f}Лісопилка
+STR_4804_SAWMILL.z                                              :{G=f}лісопилку
 STR_4805_FOREST                                                 :{G=m}Ліс
+STR_4805_FOREST.z                                               :{G=m}ліс
 STR_4806_OIL_REFINERY                                           :{G=m}Нафтопереробний завод
+STR_4806_OIL_REFINERY.z                                         :{G=m}нафтопереробний завод
 STR_4807_OIL_RIG                                                :{G=f}Нафтова платформа
+STR_4807_OIL_RIG.z                                              :{G=f}нафтову платформу
 STR_4808_FACTORY                                                :{G=f}Фабрика
+STR_4808_FACTORY.z                                              :{G=f}фабрику
 STR_4809_PRINTING_WORKS                                         :{G=f}Друкарня
+STR_4809_PRINTING_WORKS.z                                       :{G=f}друкарню
 STR_480A_STEEL_MILL                                             :{G=m}Сталеварний завод
+STR_480A_STEEL_MILL.z                                           :{G=m}сталеварний завод
 STR_480B_FARM                                                   :{G=f}Ферма
+STR_480B_FARM.z                                                 :{G=f}ферму
 STR_480C_COPPER_ORE_MINE                                        :{G=f}Міднорудна шахта
+STR_480C_COPPER_ORE_MINE.z                                      :{G=f}міднорудну шахту
 STR_480D_OIL_WELLS                                              :{G=f}Нафтова свердловина
+STR_480D_OIL_WELLS.z                                            :{G=f}нафтову свердловину
 STR_480E_BANK                                                   :{G=m}Банк
+STR_480E_BANK.z                                                 :{G=m}банк
 STR_480F_FOOD_PROCESSING_PLANT                                  :{G=m}Продуктовий завод
+STR_480F_FOOD_PROCESSING_PLANT.z                                :{G=m}продуктовий завод
 STR_4810_PAPER_MILL                                             :{G=f}Паперова фабрика
+STR_4810_PAPER_MILL.z                                           :{G=f}паперову фабрику
 STR_4811_GOLD_MINE                                              :{G=f}Золоторудна шахта
+STR_4811_GOLD_MINE.z                                            :{G=f}золоторудну шахту
 STR_4812_BANK                                                   :{G=m}Банк
+STR_4812_BANK.z                                                 :{G=m}банк
 STR_4813_DIAMOND_MINE                                           :{G=f}Діамантова шахта
-STR_4814_IRON_ORE_MINE                                          :Залізорудна шахта
-STR_4815_FRUIT_PLANTATION                                       :Фруктовий сад
-STR_4816_RUBBER_PLANTATION                                      :Каучуковий сад
+STR_4813_DIAMOND_MINE.z                                         :{G=f}діамантову шахту
+STR_4814_IRON_ORE_MINE                                          :{G=f}Залізорудна шахта
+STR_4814_IRON_ORE_MINE.z                                        :{G=f}залізорудну шахту
+STR_4815_FRUIT_PLANTATION                                       :{G=m}Фруктовий сад
+STR_4815_FRUIT_PLANTATION.z                                     :{G=m}фруктовий сад
+STR_4816_RUBBER_PLANTATION                                      :{G=m}Каучуковий сад
+STR_4816_RUBBER_PLANTATION.z                                    :{G=m}каучуковий сад
 STR_4817_WATER_SUPPLY                                           :Водопостачання
-STR_4818_WATER_TOWER                                            :Водонапірна башта
-STR_4819_FACTORY                                                :Фабрика
-STR_481A_FARM                                                   :Ферма
-STR_481B_LUMBER_MILL                                            :Лісопилка
-STR_481C_COTTON_CANDY_FOREST                                    :Ліс солодкої вати
-STR_481D_CANDY_FACTORY                                          :Цукеркова фабрика
+STR_4817_WATER_SUPPLY.z                                         :водопостачання
+STR_4818_WATER_TOWER                                            :{G=f}Водонапірна башта
+STR_4818_WATER_TOWER.z                                          :{G=f}водонапірну башту
+STR_4819_FACTORY                                                :{G=f}Фабрика
+STR_4819_FACTORY.z                                              :{G=f}фабрику
+STR_481A_FARM                                                   :{G=f}Ферма
+STR_481A_FARM.z                                                 :{G=f}ферму
+STR_481B_LUMBER_MILL                                            :{G=f}Лісопилка
+STR_481B_LUMBER_MILL.z                                          :{G=f}лісопилку
+STR_481C_COTTON_CANDY_FOREST                                    :{G=m}Ліс солодкої вати
+STR_481C_COTTON_CANDY_FOREST.z                                  :{G=m}ліс солодкої вати
+STR_481D_CANDY_FACTORY                                          :{G=f}Цукеркова фабрика
+STR_481D_CANDY_FACTORY.z                                        :{G=f}цукеркову фабрику
 STR_481E_BATTERY_FARM                                           :Батарейкове поле
+STR_481E_BATTERY_FARM.z                                         :батарейкове поле
 STR_481F_COLA_WELLS                                             :Джерело Кока-коли
+STR_481F_COLA_WELLS.z                                           :джерело Кока-коли
 STR_4820_TOY_SHOP                                               :Іграшковий магазин
+STR_4820_TOY_SHOP.z                                             :іграшковий магазин
 STR_4821_TOY_FACTORY                                            :Іграшкова фабрика
+STR_4821_TOY_FACTORY.z                                          :іграшкову фабрику
 STR_4822_PLASTIC_FOUNTAINS                                      :Пластиковий фонтан
+STR_4822_PLASTIC_FOUNTAINS.z                                    :пластиковий фонтан
 STR_4823_FIZZY_DRINK_FACTORY                                    :Завод газованої води
+STR_4823_FIZZY_DRINK_FACTORY.z                                  :завод газованої води
 STR_4824_BUBBLE_GENERATOR                                       :Бульбашкова фабрика
+STR_4824_BUBBLE_GENERATOR.z                                     :бульбашкову фабрику
 STR_4825_TOFFEE_QUARRY                                          :Ірисковий кар'єр
+STR_4825_TOFFEE_QUARRY.z                                        :ірисковий кар'єр
 STR_4826_SUGAR_MINE                                             :Цукрова копальня
+STR_4826_SUGAR_MINE.z                                           :цукрову копальню
 
 ############ range for requires	starts
 STR_4827_REQUIRES                                               :{BLACK}Потребує: {YELLOW}{STRING}
@@ -2185,10 +2225,10 @@ STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Авто:
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Літаки:  витрати
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Кораблі: витрати
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Утримання власності
-STR_7018_TRAIN_INCOME                                           :{GOLD}Поїзди:  прибуток
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Авто:    прибуток
-STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Літаки:  прибуток
-STR_701B_SHIP_INCOME                                            :{GOLD}Кораблі: прибуток
+STR_7018_TRAIN_INCOME                                           :{GOLD}Поїзди: дохід
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Авто: дохід
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Літаки: дохід
+STR_701B_SHIP_INCOME                                            :{GOLD}Кораблі: дохід
 STR_701C_LOAN_INTEREST                                          :{GOLD}Відсотки за кредит
 STR_701D_OTHER                                                  :{GOLD}Інше
 STR_701E                                                        :{BLACK}-{CURRENCY64}
@@ -2208,7 +2248,7 @@ STR_702A_REPAY                                                  :{BLACK}Пове
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...найбільший дозволений розмір кредиту {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Неможливо взяти кредит...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...кредит вже оплачено
-STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} потрібно
+STR_702E_REQUIRED                                               :{WHITE}...потрібно {CURRENCY}
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Неможливо виплатити кредит...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Неможливо передати гроші, які взяли в кредит з банку...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Вибір нового лиця керівника
@@ -2699,8 +2739,8 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Змен
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Показати інформацію про вантаж
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Показати інформацію про вагони
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Показати місткість кожного вагону
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Паказати загальну місткість поїзда, розділену за типом вантажу
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Маршрутний лист - клікніть на заданні для його вибору. CTRL + клік показати станцію
+STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Показати загальну місткість поїзда, розділену за типом вантажу
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Маршрутний лист - клікніть на завданні для його вибору. CTRL + клік показати станцію
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Пропустити це завдання, перейти до наступного
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Видалити виділене завдання
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Не зупинятися на відміченій станції
@@ -2992,7 +3032,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Сума
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Сума кредиту, що надано компанії
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Загальна кількість балів
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Налаштування
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Налаштування NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Налаштування нової графіки
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Застосувати зміни
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Встановлення параметрів

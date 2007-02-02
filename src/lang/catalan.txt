@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Joc Nou
 STR_0141_LOAD_GAME                                              :{BLACK}Carrega un Joc
 STR_SINGLE_PLAYER                                               :{BLACK}Jugador individual
 STR_MULTIPLAYER                                                 :{BLACK}Multijugador
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor d'Escenaris
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -623,6 +624,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Disminue
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genera un terreny aleatori
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Restableix paisatge
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Restablir Paisatge
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Treure totes les propietats pertanyents a jugadors del mapa
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Estàs segur que vols treure totes les propietats pertanyents a jugadors?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generació de Paisatges
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generació de Poblacions
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generació d'indústries
@@ -727,6 +730,7 @@ STR_0290_DELETE                                                 :{BLACK}Esborra
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Esborra totalment aquesta població
 STR_0292_SAVE_SCENARIO                                          :Desa l'escenari
 STR_0293_LOAD_SCENARIO                                          :Carrega un escenari
+STR_LOAD_HEIGHTMAP                                              :Carrega Mapa d'alçades
 STR_0294_QUIT_EDITOR                                            :Sortir de l'editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Sortir
@@ -1413,6 +1417,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Llista d
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} No s'han trobat dispositius de xarxa o s'ha compilat sense l'opció ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} No es pot trobar cap joc a la xarxa
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} El servidor no ha respós al requeriment
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} No s'ha pogut connectar degut a una diferència de NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Ha fallat la sincronització del joc de xarxa.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} S'ha perdut la connexió al joc de xarxa.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} No es pot carregar un joc desat al servidor.
@@ -1434,6 +1439,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :error de desinc
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :no es pot carregar el mapa
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :connexió perduda
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :error de protocol
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Diferència NewGRF
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :no autoritzat
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :s'ha rebut un paquet de dades extrany
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :revisió incorrecta

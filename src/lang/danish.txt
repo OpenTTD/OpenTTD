@@ -1308,7 +1308,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Beskytt
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVEREN ER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVEREN ER FULD
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}Din og serverens version passer ikke sammen
-STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF MATCHER IKKE
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF ULIGHED
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Tilslut dig et spil
 
@@ -1413,6 +1413,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient l
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ingen netværksheder fundet eller kompilet uden ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kunne ikke finde nogen netværksspil
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Serveren besvarede ikke denne forspørgsel
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kunne ikke tilslutte grundet NewGRF ulighed
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netværks synkroniseringsfejl
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Netværksforbindelse mistet
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kunne ikke hente gemt spil
@@ -1434,6 +1435,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :synkroniserings
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :kunne ikke hente kortet
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :forbindelsen blev afbrudt
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokol fejl
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF ulighed
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ikke autoriseret
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :modtog en underlig pakke
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :forkert revision

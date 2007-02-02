@@ -296,6 +296,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nouvelle
 STR_0141_LOAD_GAME                                              :{BLACK}Charger une Partie
 STR_SINGLE_PLAYER                                               :{BLACK}Un joueur
 STR_MULTIPLAYER                                                 :{BLACK}Multijoueurs
+STR_SCENARIO_EDITOR                                             :{BLACK}Éditeur de Scénario
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -624,6 +625,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Diminuer
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Générer une terre aléatoire
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Réinitialiser le terrain
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Réinitialiser le terrain
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Ôter toutes les propriétés des joueurs de la carte
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Êtes-vous sûr de vouloir ôter toutes les propriétés des joueurs?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Créer le terrain
 STR_022F_TOWN_GENERATION                                        :{BLACK}Créer les villes
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Créer les industries
@@ -728,6 +731,7 @@ STR_0290_DELETE                                                 :{BLACK}Supprime
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Supprimer complètement cette ville
 STR_0292_SAVE_SCENARIO                                          :Sauvegarder scénario
 STR_0293_LOAD_SCENARIO                                          :Charger scénario
+STR_LOAD_HEIGHTMAP                                              :Charger une carte d'altitude
 STR_0294_QUIT_EDITOR                                            :Quitter éditeur
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Quitter

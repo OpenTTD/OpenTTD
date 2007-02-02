@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}新し�
 STR_0141_LOAD_GAME                                              :{BLACK}ゲームを開く
 STR_SINGLE_PLAYER                                               :{BLACK}一人でプレイ
 STR_MULTIPLAYER                                                 :{BLACK}多人数プレイ
+STR_SCENARIO_EDITOR                                             :{BLACK}シナリオエディタ
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -623,6 +624,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}上げ�
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}ランダムな地形を作成します
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}地形をリセットします
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}地形のリセット
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}地図上のすべてのプレヤーが所有している不動産を破壊します
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}地図上のすべてのプレヤーが所有している不動産を破壊してもよろしいですか？
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}地形の作成
 STR_022F_TOWN_GENERATION                                        :{BLACK}市町村の建設
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}産業の建設
@@ -727,6 +730,7 @@ STR_0290_DELETE                                                 :{BLACK}破壊
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}この町を完全に破壊します
 STR_0292_SAVE_SCENARIO                                          :シナリオを保存
 STR_0293_LOAD_SCENARIO                                          :シナリオを開く
+STR_LOAD_HEIGHTMAP                                              :ハイトマップを開く
 STR_0294_QUIT_EDITOR                                            :エディタを終了
 STR_0295                                                        :
 STR_0296_QUIT                                                   :終了
@@ -1413,6 +1417,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}クラ�
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}ネットワークデバイスが見つかりませんでした。ENABLE_NETWORK を切にしてコンパイルされた可能性もあります。
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE}ネットワークゲームが見つかりませんでした
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}サーバが応答しませんでした
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}NewGRF 不一致によって接続できませんでした
 STR_NETWORK_ERR_DESYNC                                          :{WHITE}ネットワークゲームの同期が失敗しました
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}ネットワークゲームへの接続が解除されました
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}保存したゲームが開けませんでした
@@ -1434,6 +1439,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :同期エラー
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :保存したゲームが開けなかった
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :接続解除
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :プロトコルエラー
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF 不一致
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :認証していない
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :不明なパケットを受信した
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :対応していないバージョン

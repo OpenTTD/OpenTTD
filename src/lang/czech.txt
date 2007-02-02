@@ -409,6 +409,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nová hr
 STR_0141_LOAD_GAME                                              :{BLACK}Nahrát hru
 STR_SINGLE_PLAYER                                               :{BLACK}1 hráč
 STR_MULTIPLAYER                                                 :{BLACK}Více hráčů
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor scénáře
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -737,6 +738,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zmenšit
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generovat náhodnou zemi
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Smazat krajinu
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Smazat krajinu
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Odstranit z mapy všechny objekty vlastněné hráči
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Opravdu chceš odstranit všechny objekty vlastněné hráči?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generování krajiny
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generování měst
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generování průmyslu
@@ -841,6 +844,7 @@ STR_0290_DELETE                                                 :{BLACK}Smaž
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Smazat celé toto město
 STR_0292_SAVE_SCENARIO                                          :Uložit mapu
 STR_0293_LOAD_SCENARIO                                          :Otevřit mapu
+STR_LOAD_HEIGHTMAP                                              :Použít výškovou mapu
 STR_0294_QUIT_EDITOR                                            :Ukončit editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Ukončit
@@ -1527,6 +1531,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Seznam h
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Žádná síťová zařízení nebyla nalezena (nebo je hra zkompilována bez ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nenalezena žádná síťová hra
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Server neodpověděl na požadavek
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Nelze se připojit kvůli rozdílným GRF souborům
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Síť - synchronizace hry selhala
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Síť - spojení ztraceno
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nemohu nahrát uloženou hru ze serveru
@@ -1548,6 +1553,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :chyba v synchro
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :nemohu nahrát hru
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :spojení ztraceno
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :chyba v protokolu
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Nesouhlasí grafiky
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nevydáno povolení
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :přišel neplatný paket
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :špatná revize hry

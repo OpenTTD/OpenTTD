@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Yeni Oyu
 STR_0141_LOAD_GAME                                              :{BLACK}Oyun Yükle
 STR_SINGLE_PLAYER                                               :{BLACK}Tek Oyunculu
 STR_MULTIPLAYER                                                 :{BLACK}Çok Oyunculu
+STR_SCENARIO_EDITOR                                             :{BLACK}Senaryo Düzenleyici
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -623,6 +624,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}yükselt
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Rastgele harita yap
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Haritayı sıfırla
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Haritayı Sıfırla
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Haritada oyuncuya ait olan herşeyi sil
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Oyuncuya ait olan herşeyi silmek istediğinize emin misiniz?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Harita yapımı
 STR_022F_TOWN_GENERATION                                        :{BLACK}Şehir yapımı
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Fabrika yapımı
@@ -727,6 +730,7 @@ STR_0290_DELETE                                                 :{BLACK}Sil
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Sehri tamamen sil
 STR_0292_SAVE_SCENARIO                                          :Kaydet
 STR_0293_LOAD_SCENARIO                                          :Yükle
+STR_LOAD_HEIGHTMAP                                              :Yükseklik haritası yükle
 STR_0294_QUIT_EDITOR                                            :Editörden Çık
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Oyundan Çık
@@ -1413,6 +1417,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Oyuncu l
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Network aygıtı bulunamadı veya ENABLE_NETWORK olmadan derlendi
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Network oyunu bulunamadı
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Sunucu isteğe cevap vermedi
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} NewGRF uyuşmazlığı yüzünden bağlanılamadı
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Network-Oyunu senkronizasyonu başarısız
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Network-Oyunu bağlatısı düştü
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kayıtlı oyun yüklenemedi
@@ -1434,6 +1439,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :desync hatası
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :harita yüklenemiyor
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :bağlantı kaybedildi
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokol hatası
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF uyuşmazlığı
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :izin Verilmedi
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ilginç paket alındı
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :yanlış düzeltme

@@ -1479,6 +1479,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Kliens l
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nem található a hálózati csatoló, vagy nincs hálózati támogatás (ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nem található semmilyen hálózati játék
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} A szerver nem reagált a kérésre
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} NewGRF eltérés(ek) miatt nem sikerült kapcsolódni
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Hálózat - Játék szinkronizáció sikertelen.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Hálózat - Játék kapcsolat elveszett.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nem sikerült a szerver játékmentés betöltése.
@@ -1500,6 +1501,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :szinkronizálá
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :térkép betöltési hiba
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :elveszett a kapcsolat
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokoll hiba
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF eltérés(ek)
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nem engedélyezett
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ismeretlen csomag érkezett
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :rossz verzió

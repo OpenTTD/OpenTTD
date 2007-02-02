@@ -494,6 +494,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Laadungi mahuta
 STR_NO_WAITING_CARGO                                            :{BLACK}Kaupa pole ootamas
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vali kõik tööstused
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vali kõik kaubatüüpid (ka mitteoodatav kaup)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Saada olevad rongid
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Saada olevad maanteesõidukid
+STR_AVAILABLE_SHIPS                                             :{BLACK}Saada olevad laevad
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Saada olevad õhusõidukid
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Vaata nimekirja seda tüüpi veovahenditest
 STR_MANAGE_LIST                                                 :{BLACK}Halda nimekirja
 STR_MANAGE_LIST_TIP                                             :{BLACK}Saada juhised kõikidele selles nimekirjas olevatele veovahenditele
@@ -1509,6 +1513,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klientid
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Võrgukaarti ei leitud või kompileeritud ilma võtmeta ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Ei leidnud ühtegi võrgumängu
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Server ei vastanud päringule
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Ühendus ebaõnnestus NewGRF-i kokkusobimatuse tõttu
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Võrgumäng läks sünkroonist välja
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Võrgumängu ühendus katkes
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Mängu laadimine ebaõnnestus
@@ -1530,6 +1535,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :sünkroniseerim
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :ei saa kaarti laadida
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :ühendus katkes
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokolli viga
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF-i kokkusobimatus
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :Keelatud
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :kahtlane pakett vastu võetud
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :vale versioon

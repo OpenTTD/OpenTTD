@@ -396,6 +396,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Товарен 
 STR_NO_WAITING_CARGO                                            :{BLACK}Няма чакащ товар
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Избор на всички съоръжения
 STR_SELECT_ALL_TYPES                                            :{BLACK}Избор на всички товари (включително нечакащите)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Налични влакове
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Налични коли
+STR_AVAILABLE_SHIPS                                             :{BLACK}Налични кораби
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Налични самолети
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Виж списъкът с наличните видове машини за този тип превозно средство.
 STR_MANAGE_LIST                                                 :{BLACK}Направи списък
 STR_MANAGE_LIST_TIP                                             :{BLACK}Прати инструкциите до всички машини в този лист
@@ -1411,6 +1415,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Спис
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Не са открити мрежови устройства или е компилирано без ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Не може да открия мрежови игри
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Сървърът не отговори на заявката
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Не може да се свърже поради различие в NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Network-Game synchronisation failed
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Network-Game connection lost
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Не може да зареди играта
@@ -1432,6 +1437,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :загуба н
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :не може да зареди картата
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :връзката прекъсна
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :грешка в протокола
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF се различават
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :не оторизиран
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :получен странен пакет
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :грешна ревизия

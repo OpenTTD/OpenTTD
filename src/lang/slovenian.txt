@@ -2,7 +2,7 @@
 ##ownname Slovenščina
 ##isocode sl_SL
 ##plural 8
-##case r d t
+##case r d t 3sk
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -1455,6 +1455,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Seznam g
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ni najdenih mrežnih naprav ali ni aktiviran ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Ni mogoče najti mrežnih iger
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Strežnik ni odgovoril zahtevi
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Nemogoča povezava zaradi neskladja datotek NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Sinhronizacija mrežne igre ni uspela
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Povezava mrežne igre je padla
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Ni mogoče naložiti shranjene igre
@@ -1476,6 +1477,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :desinhronizacij
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :nemogoče nalaganje zemljevida
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :povezava prekinjena
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :napaka protokola
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF neskladje
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nepooblaščen
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :sprejet je bil čuden paket
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :napačna različica
@@ -1860,55 +1862,91 @@ STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Naloži 
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} na poti
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Premogovnik
+STR_4802_COAL_MINE.r                                            :Premogovnika
 STR_4803_POWER_STATION                                          :Termo elektrarna
-STR_4803_POWER_STATION.3sk                                      :Termo elektrarni
+STR_4803_POWER_STATION.r                                        :Termo elektrarne
 STR_4804_SAWMILL                                                :Žaga
+STR_4804_SAWMILL.r                                              :Žage
 STR_4805_FOREST                                                 :Gozd
+STR_4805_FOREST.r                                               :Gozda
 STR_4806_OIL_REFINERY                                           :Naftna rafinerija
+STR_4806_OIL_REFINERY.r                                         :Naftne rafinerije
 STR_4807_OIL_RIG                                                :Naftna ploščad
+STR_4807_OIL_RIG.r                                              :Naftne ploščadi
 STR_4808_FACTORY                                                :Tovarna
+STR_4808_FACTORY.r                                              :Tovarne
 STR_4809_PRINTING_WORKS                                         :Tiskarna
+STR_4809_PRINTING_WORKS.r                                       :Tiskarne
 STR_480A_STEEL_MILL                                             :Jeklarna
+STR_480A_STEEL_MILL.r                                           :Jeklarne
 STR_480B_FARM                                                   :Kmetija
+STR_480B_FARM.r                                                 :Kmetije
 STR_480C_COPPER_ORE_MINE                                        :Rudnik bakra
+STR_480C_COPPER_ORE_MINE.r                                      :Rudnika bakra
 STR_480D_OIL_WELLS                                              :Naftni vrelci
+STR_480D_OIL_WELLS.r                                            :Naftnih vrelcev
 STR_480E_BANK                                                   :Banka
+STR_480E_BANK.r                                                 :Banke
 STR_480F_FOOD_PROCESSING_PLANT                                  :Prehrambeni obrat
+STR_480F_FOOD_PROCESSING_PLANT.r                                :Prehrambenega obrata
 STR_4810_PAPER_MILL                                             :Papirnica
+STR_4810_PAPER_MILL.r                                           :Papirnice
 STR_4811_GOLD_MINE                                              :Rudnik zlata
+STR_4811_GOLD_MINE.r                                            :Rudnika zlata
 STR_4812_BANK                                                   :Banka
+STR_4812_BANK.r                                                 :Banke
 STR_4813_DIAMOND_MINE                                           :Rudnik diamantov
+STR_4813_DIAMOND_MINE.r                                         :Rudnika diamantov
 STR_4814_IRON_ORE_MINE                                          :Rudnik železove rude
+STR_4814_IRON_ORE_MINE.r                                        :Rudnika železove rude
 STR_4815_FRUIT_PLANTATION                                       :Sadovnjak
+STR_4815_FRUIT_PLANTATION.r                                     :Sadovnjaka
 STR_4816_RUBBER_PLANTATION                                      :Plantaža kavčuka
+STR_4816_RUBBER_PLANTATION.r                                    :Plantaže kavčuka
 STR_4817_WATER_SUPPLY                                           :Vodno zajetje
+STR_4817_WATER_SUPPLY.r                                         :Vodnega zajetja
 STR_4818_WATER_TOWER                                            :Vodni stolp
+STR_4818_WATER_TOWER.r                                          :Vodnega stolpa
 STR_4819_FACTORY                                                :Tovarna
+STR_4819_FACTORY.r                                              :Tovarne
 STR_481A_FARM                                                   :Kmetija
+STR_481A_FARM.r                                                 :Kmetije
 STR_481B_LUMBER_MILL                                            :Gozdarski obrat
+STR_481B_LUMBER_MILL.r                                          :Gozdarskega obrata
 STR_481C_COTTON_CANDY_FOREST                                    :Gozd sladkorne pene
+STR_481C_COTTON_CANDY_FOREST.r                                  :Gozda sladkorne pene
 STR_481D_CANDY_FACTORY                                          :Tovarna slaščic
+STR_481D_CANDY_FACTORY.r                                        :Tovarne slaščic
 STR_481E_BATTERY_FARM                                           :Farma baterij
+STR_481E_BATTERY_FARM.r                                         :Farme baterij
 STR_481F_COLA_WELLS                                             :Izvir cockte
+STR_481F_COLA_WELLS.r                                           :Izvira cockte
 STR_4820_TOY_SHOP                                               :Trgovina z igračami
+STR_4820_TOY_SHOP.r                                             :Trgovine z igračami
 STR_4821_TOY_FACTORY                                            :Tovarna igrač
+STR_4821_TOY_FACTORY.r                                          :Tovarne igrač
 STR_4822_PLASTIC_FOUNTAINS                                      :Vrelci plastike
+STR_4822_PLASTIC_FOUNTAINS.r                                    :Vrelcev plastike
 STR_4823_FIZZY_DRINK_FACTORY                                    :Tovarna gaziranih pijač
+STR_4823_FIZZY_DRINK_FACTORY.r                                  :Tovarne gaziranih pijač
 STR_4824_BUBBLE_GENERATOR                                       :Generator mehurčkov
+STR_4824_BUBBLE_GENERATOR.r                                     :Generatorja mehurčkov
 STR_4825_TOFFEE_QUARRY                                          :Jama karamele
+STR_4825_TOFFEE_QUARRY.r                                        :Jame karamele
 STR_4826_SUGAR_MINE                                             :Rudnik sladkorja
+STR_4826_SUGAR_MINE.r                                           :Rudnika sladkorja
 
 ############ range for requires	starts
 STR_4827_REQUIRES                                               :{BLACK}Potrebuje: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Potrebuje: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}Potrebuje:: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4829_REQUIRES                                               :{BLACK}Potrebuje: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Proizvodnja prejšnjega meseca:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% prepeljano)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Pogled na industrijo
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Na novo se gradi {STRING} blizu mesta {TOWN}!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nova {STRING} v izgradnji blizu mesta {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Postavlja se {STRING} blizu mesta {TOWN}!
 STR_482F_COST                                                   :{BLACK}Cena: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Nemogoča gradnja tega tipa industrije tukaj...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE} ... gozd je mogoče posaditi samo nad nivojem snežne odeje
