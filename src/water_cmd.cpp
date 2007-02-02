@@ -352,7 +352,7 @@ static bool IsWateredTile(TileIndex tile)
 					return false;
 			}
 
-		case MP_STATION: return IsOilRig(tile) || IsDock(tile) || IsBuoy_(tile);
+		case MP_STATION: return IsOilRig(tile) || IsDock(tile) || IsBuoy(tile);
 		default:         return false;
 	}
 }

@@ -2149,7 +2149,7 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
 
 		case TRANSPORT_WATER:
 			// buoy is coded as a station, it is always on open water
-			if (IsBuoy_(tile)) return TRACK_BIT_ALL * 0x101;
+			if (IsBuoy(tile)) return TRACK_BIT_ALL * 0x101;
 			break;
 
 		case TRANSPORT_ROAD:

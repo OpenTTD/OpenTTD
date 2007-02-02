@@ -162,14 +162,14 @@ static inline bool IsDock(TileIndex t)
 	return IS_BYTE_INSIDE(GetStationGfx(t), GFX_DOCK_BASE, GFX_DOCK_BASE + DOCK_SIZE_TOTAL);
 }
 
-static inline bool IsBuoy_(TileIndex t) // XXX _ due to naming conflict
+static inline bool IsBuoy(TileIndex t)
 {
 	return GetStationGfx(t) == GFX_BUOY_BASE;
 }
 
 static inline bool IsBuoyTile(TileIndex t)
 {
-	return IsTileType(t, MP_STATION) && IsBuoy_(t);
+	return IsTileType(t, MP_STATION) && IsBuoy(t);
 }
 
 
@@ -221,7 +221,7 @@ static inline TileIndexDiffC GetDockOffset(TileIndex t)
 	};
 	assert(IsTileType(t, MP_STATION));
 
-	if (IsBuoy_(t)) return buoy_offset;
+	if (IsBuoy(t)) return buoy_offset;
 	if (IsOilRig(t)) return oilrig_offset;
 
 	assert(IsDock(t));

@@ -14,6 +14,6 @@ StationType GetStationType(TileIndex t)
 	if (IsBusStop(t)) return STATION_BUS;
 	if (IsOilRig(t)) return STATION_OILRIG;
 	if (IsDock(t)) return STATION_DOCK;
-	assert(IsBuoy_(t));
+	assert(IsBuoy(t));
 	return STATION_BUOY;
 }
