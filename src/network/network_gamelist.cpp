@@ -79,7 +79,7 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 
 enum {
 	MAX_GAME_LIST_REQUERY_COUNT =  5,
-	REQUERY_EVERY_X_GAMELOOPS   = 30,
+	REQUERY_EVERY_X_GAMELOOPS   = 60,
 };
 
 /** Requeries the (game) servers we have not gotten a reply from */
