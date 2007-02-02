@@ -202,9 +202,18 @@ void StationRect::MakeEmpty()
 	left = top = right = bottom = 0;
 }
 
-bool StationRect::PtInRectXY(int x, int y) const
+/**
+ * Determines whether a given point (x, y) is within a certain distance of
+ * the station rectangle.
+ * @note x and y are in Tile coordinates
+ * @param x X coordinate
+ * @param y Y coordinate
+ * @param distance The maxmium distance a point may have (L1 norm)
+ * @return true if the point is within distance tiles of the station rectangle
+ */
+bool StationRect::PtInExtendedRect(int x, int y, int distance) const
 {
-	return (left <= x && x <= right && top <= y && y <= bottom);
+	return (left - distance <= x && x <= right + distance && top - distance <= y && y <= bottom + distance);
 }
 
 bool StationRect::IsEmpty() const
@@ -221,7 +230,7 @@ bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 		left = right = x;
 		top = bottom = y;
 
-	} else if (!PtInRectXY(x, y)) {
+	} else if (!PtInExtendedRect(x, y)) {
 		/* current rect is not empty and new point is outside this rect */
 		/* make new spread-out rectangle */
 		Rect new_rect = {min(x, left), min(y, top), max(x, right), max(y, bottom)};
@@ -316,8 +325,8 @@ bool StationRect::AfterRemoveTile(Station *st, TileIndex tile)
 
 bool StationRect::AfterRemoveRect(Station *st, TileIndex tile, int w, int h)
 {
-	assert(PtInRectXY(TileX(tile), TileY(tile)));
-	assert(PtInRectXY(TileX(tile) + w - 1, TileY(tile) + h - 1));
+	assert(PtInExtendedRect(TileX(tile), TileY(tile)));
+	assert(PtInExtendedRect(TileX(tile) + w - 1, TileY(tile) + h - 1));
 
 	bool empty = AfterRemoveTile(st, tile);
 	if (w != 1 || h != 1) empty = empty || AfterRemoveTile(st, TILE_ADDXY(tile, w - 1, h - 1));

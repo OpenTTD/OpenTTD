@@ -1663,7 +1663,13 @@ void OnNewDay_RoadVeh(Vehicle *v)
 		RoadStop* best = NULL;
 
 		if (rs != NULL) {
-			if (DistanceManhattan(v->tile, st->xy) < 16) {
+			/* We try to obtain a slot if:
+			 * 1) we're reasonably close to the primary road stop
+			 * or
+			 * 2) we're somewhere close to the station rectangle (to make sure we do assign
+			 *    slots even if the station and its road stops are incredibly spread out)
+			 */
+			if (DistanceManhattan(v->tile, rs->xy) < 16 || st->rect.PtInExtendedRect(TileX(v->tile), TileY(v->tile), 2)) {
 				uint dist, badness;
 				uint minbadness = UINT_MAX;
 
