@@ -1915,6 +1915,7 @@ restart_search:
 /* Delete all always on-top windows to get an empty screen */
 void HideVitalWindows(void)
 {
+	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 	DeleteWindowById(WC_MAIN_TOOLBAR, 0);
 	DeleteWindowById(WC_STATUS_BAR, 0);
 }
