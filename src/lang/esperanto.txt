@@ -296,6 +296,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nova Lud
 STR_0141_LOAD_GAME                                              :{BLACK}Ŝarĝu ludon
 STR_SINGLE_PLAYER                                               :{BLACK}Unu Ludanto
 STR_MULTIPLAYER                                                 :{BLACK}Pluraj Ludantoj
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenarkreilo
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -396,7 +397,7 @@ STR_NO_WAITING_CARGO                                            :{BLACK}Nenia ŝ
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Elektu ĉiujn konstruaĵojn
 STR_SELECT_ALL_TYPES                                            :{BLACK}Elektu ĉiujn ŝarĝotipojn (inkluzive de ne atendanta ŝarĝo)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Haveblaj Trajnoj
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Haveblaj Vojveturiloj
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Haveblaj Veturiloj
 STR_AVAILABLE_SHIPS                                             :{BLACK}Haveblaj Ŝipoj
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Haveblaj Aviadiloj
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Vidu liston da ĉiuj haveblaj maŝinoj por ĉi tiu veturilspeco.
@@ -624,6 +625,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Malgrand
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Kreu landon hazarde
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reigu landaspekton
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reigu Landaspekton
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Forviŝu ĉiujn posedaĵojn de la ludanto el la mapo
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ĉu vi certas ke vi volas forviŝi ĉiujn posedaĵojn de la ludanto?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landaspekta generado
 STR_022F_TOWN_GENERATION                                        :{BLACK}Urba generado
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industria generado
@@ -728,6 +731,7 @@ STR_0290_DELETE                                                 :{BLACK}Forigu
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Plene forigu ĉi tiun urbon
 STR_0292_SAVE_SCENARIO                                          :Konservu scenaron
 STR_0293_LOAD_SCENARIO                                          :Ŝarĝu scenaron
+STR_LOAD_HEIGHTMAP                                              :Ŝarĝu altecmapon
 STR_0294_QUIT_EDITOR                                            :Fermu kreilon
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Fermu
@@ -1414,6 +1418,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klientli
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ne trovis retstirilojn aŭ kompiliĝis sen ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Ne troveblas ajna reta ludo
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} La servilo ne respondis al la peto
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Ne povis konekti pro miso pri NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Retluda sinkronigado fiaskis
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Perdis konekton al Retludo
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Ne povis ŝarĝi konservitan ludon
@@ -1435,6 +1440,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :sensinkroneca e
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :ne povis ŝarĝi mapon
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :konekto perdiĝis
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokola eraro
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Miso pri NewGRF
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ne rajtigite
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ricevis strangan pakaĵon
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :malĝusta revidaĵo

@@ -364,8 +364,8 @@ STR_015E_QUIT_GAME                                              :Abandonar jogo
 STR_015F_QUIT                                                   :Sair
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Tem certeza que deseja abandonar este jogo?
 STR_0161_QUIT_GAME                                              :{WHITE}Abandonar jogo
-STR_SORT_ORDER_TIP                                              :{BLACK}Selecione forma de ordenação (descendente/ascendente)
-STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecione um critério de classificação
+STR_SORT_ORDER_TIP                                              :{BLACK}Selecionar forma de ordenação (descendente/ascendente)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecionar um critério de classificação
 STR_SORT_BY                                                     :{BLACK}Ordenar por
 
 STR_SORT_BY_POPULATION                                          :{BLACK}População
@@ -441,7 +441,7 @@ STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Exibir g
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Exibir tabela de classificação das empresas
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Exibir lista de trens da empresa
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Exibir lista de automóveis da empresa
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Exibir lista de barcos da empresa
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Exibir lista de embarcações da empresa
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Exibir lista de aeronaves da empresa
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Ampliar
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Reduzir
@@ -751,7 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...os ex
 STR_02A1_SMALL                                                  :{BLACK}Pequena
 STR_02A2_MEDIUM                                                 :{BLACK}Média
 STR_02A3_LARGE                                                  :{BLACK}Grande
-STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecione o tamanho da cidade
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecionar tamanho da cidade
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamanho da cidade:
 
 STR_02B6                                                        :{STRING}  -  {STRING}
@@ -818,7 +818,7 @@ STR_02E4                                                        :{BLACK}{SKIP}{S
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Seleção da unidade de medida
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Automóveis
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Escolha o lado da rodovia por onde os automóveis deverão dirigir
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Selecionar lado da rodovia por onde os automóveis deverão dirigir
 STR_02E9_DRIVE_ON_LEFT                                          :Andam pela esquerda
 STR_02EA_DRIVE_ON_RIGHT                                         :Andam pela direita
 STR_02EB_TOWN_NAMES                                             :{BLACK}Nomes das cidades
@@ -1005,7 +1005,7 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aeronave
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}A auto-renovação do trem {COMMA} falhou (limite de dinheiro)
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}A auto-renovação do automóvel {COMMA} falhou (falta de dinheiro)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}A auto-renovação do barco {COMMA} falhou (limite de dinheiro)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}A auto-renovação da embarcação {COMMA} falhou (limite de dinheiro)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}A auto-renovação da aeronave {COMMA} falhou (limite de dinheiro)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}O trem {COMMA} ficará muito longo após a substituição
 
@@ -1021,7 +1021,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permitir a remoção de mais rodovias, pontes, etc. das cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permitir a construção de trens muito longos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Ativar aceleração realista para trens: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Proibir trens e barcos de virar em angulos de 90 graus: {ORANGE}{STRING} {LTBLUE} (requer NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Proibir trens e embarcações girar em angulos de 90 graus: {ORANGE}{STRING} {LTBLUE} (requer NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unir estações ferroviárias construídas juntas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Deixar a estação quando uma das cargas estiver completa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}
@@ -1226,8 +1226,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Arraste 
 
 STR_DRAG_DROP                                                   :{BLACK}Arrastar
 STR_STATION_DRAG_DROP                                           :{BLACK}Construir estação arrastando
-STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Selecione a classe de estação a ser exibida
-STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Selecione o tipo de estação a construir
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Selecionar a classe de estação a ser exibida
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Selecionar o tipo de estação a construir
 
 STR_FAST_FORWARD                                                :{BLACK}Aumentar velocidade do jogo
 STR_MESSAGE_HISTORY                                             :{WHITE}Histórico de Mensagens
@@ -1264,7 +1264,7 @@ STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...muito
 
 STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Adaptar trem para um tipo de carga diferente
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Adaptar trem
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecione o tipo de carga do trem
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecionar tipo de carga para o trem
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Adaptar trem para transportar a carga selecionada
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Impossível adaptar o trem...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
@@ -1325,8 +1325,8 @@ STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nome do 
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}O nome do jogo será exibido aos outros jogadores no menu de seleção de jogos multi-jogador
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Definir senha
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Proteja o jogo com uma senha se não desejar que seja publicamente acessível
-STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecione um mapa:
-STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Em que mapa deseja jogar?
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecionar um mapa:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Em qual mapa deseja jogar?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não precisam estar todos preenchidos
 STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1530,7 +1530,7 @@ STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construi
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construir ferrovias (elétricas)
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construir ferrovias (monotrilho)
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construir ferrovias (trem-bala)
-STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Selecione Ponte Ferroviária
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Selecionar Ponte Ferroviária
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Impossível construir depósito aqui...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Impossível construir estação ferroviária aqui...
 STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Impossível construir sinais aqui...
@@ -1705,7 +1705,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Impossí
 STR_280A_SIGN                                                   :Placa
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editar texto da placa
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Impossível alterar nome da placa...
-STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Escolha um tipo de árvore para plantar
+STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Selecionar um tipo de árvore para plantar
 STR_280E_TREES                                                  :Árvores
 STR_280F_RAINFOREST                                             :Floresta Tropical
 STR_2810_CACTUS_PLANTS                                          :Cactos
@@ -1718,8 +1718,8 @@ STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Número 
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Tamanho da plataforma
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Muito perto de outra estação ferroviária
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Muito perto de uma estação/local de carga já existente
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Muitas estações/locais de carga nesta cidade
-STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Muitas estações/locais de carga
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Muitas estações/áreas de carga nesta cidade
+STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Muitas estações/áreas de carga
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Muitos pontos de ônibus
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Muitos locais de carga
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Muito perto de outra estação/local de carga
@@ -1728,7 +1728,7 @@ STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Precisa 
 STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Muito perto de outro aeroporto
 STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Precisa demolir o aeroporto primeiro
 
-STR_3030_RENAME_STATION_LOADING                                 :Renomear estação/local de carga
+STR_3030_RENAME_STATION_LOADING                                 :Renomear estação/área de carga
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Impossível renomear a estação...
 STR_3032_RATINGS                                                :{BLACK}Avaliações
 STR_3033_ACCEPTS                                                :{BLACK}Aceita
@@ -1763,8 +1763,8 @@ STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Precisa 
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Selecionar a orientação da estação ferroviária
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Selecionar o número de linhas da estação ferroviária
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Selecionar o tamanho da estação ferroviária
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Selecionar a orientação do ponto de ônibus
-STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Selecionar a orientação do local de carga
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Selecionar orientação do ponto de ônibus
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Selecionar orientação da área de carga
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centralizar visualização no local estação
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Exibir avaliações da estação
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Alterar o nome da estação
@@ -1797,7 +1797,7 @@ STR_STAT_CLASS_WAYP                                             :Pontos de contr
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientação do Depósito Naval
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...precisa ser construído na água
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Impossível construir depósito naval aqui...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Selecione a orientação do depósito naval
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Selecionar orientação do depósito naval
 STR_3804_WATER                                                  :Água
 STR_3805_COAST_OR_RIVERBANK                                     :Costa ou margem
 STR_3806_SHIP_DEPOT                                             :Depósito naval
@@ -1815,7 +1815,7 @@ STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Falha ao
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Incapaz de remover o arquivo
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Falha ao Abrir Jogo
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista de unidades, diretórios e arquivos de jogos gravados
-STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome escolhido para salvar o jogo
+STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome selecionado para salvar o jogo
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Remover o jogo selecionado
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Salvar o jogo atual, usando o nome escolhido
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selecionar Novo Tipo de Jogo
@@ -1948,7 +1948,7 @@ STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sem nome
 STR_SV_TRAIN_NAME                                               :Trem {COMMA}
 STR_SV_ROADVEH_NAME                                             :Automóvel {COMMA}
-STR_SV_SHIP_NAME                                                :Barco {COMMA}
+STR_SV_SHIP_NAME                                                :Embarcação {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
@@ -2110,7 +2110,7 @@ STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...não 
 STR_702E_REQUIRED                                               :{WHITE}...necessário {CURRENCY}
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Impossível pagar empréstimo...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Impossível dar o dinheiro emprestado do banco
-STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Selecione um novo rosto para o presidente
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Selecionar novo rosto para o presidente
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Alterar cores dos veículos
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Alterar nome do presidente
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Alterar nome da empresa
@@ -2123,14 +2123,14 @@ STR_7039_VEHICLES                                               :{GOLD}Veículos
 STR_TRAINS                                                      :{WHITE}{COMMA} tre{P m ns}
 STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} automóve{P l is}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} aeronave{P "" s}
-STR_SHIPS                                                       :{WHITE}{COMMA} barco{P "" s}
+STR_SHIPS                                                       :{WHITE}{COMMA} embarcaç{P ão ões}
 STR_7042_NONE                                                   :{WHITE}Nenhum
 STR_7043_FACE_SELECTION                                         :{WHITE}Seleção de Rosto
 STR_7044_MALE                                                   :{BLACK}Masculino
 STR_7045_FEMALE                                                 :{BLACK}Feminino
 STR_7046_NEW_FACE                                               :{BLACK}Novo Rosto
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Cancelar seleção da novo rosto
-STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Aceitar seleção da novo rosto
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Aceitar seleção do novo rosto
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Rostos masculinos
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Rostos femininos
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Gerar novo rosto aleatoriamente
@@ -2583,7 +2583,7 @@ STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - 
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construir novo veículo ferroviário
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arraste o veículo aqui para vendê-lo
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar visualização na localização de um depósito ferroviário
-STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de trens - clique num trem para informações
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir o veículo ferroviário selecionado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renomear tipo de veículo ferroviário
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tarefa atual do trem - clique aqui para iniciar/parar o trem
@@ -2674,7 +2674,7 @@ STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Veículo
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Construir novo automóvel
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arraste o automóvel aqui para vendê-lo
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrar visualização na localização da garagem
-STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Listagem de automóveis- clique num veículo para informações
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista de automóveis - clique num automóvel para informações
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construir o veículo selecionado
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Novo automóvel agora disponível!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2700,7 +2700,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reacondi
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reacondicionar automóvel
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reacondicionar automóvel para carregar o tipo de carga selecionado
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Impossível reacondicionar automóvel...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecione o tipo de carga para o veículo
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecionar tipo de carga para o automóvel
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construir doca
@@ -2756,7 +2756,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}Renomear
 
 STR_9831_NAME_SHIP                                              :{WHITE}Renomear embarcação
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Impossível renomear embarcação...
-STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro barco chega a {STATION}!
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{} Primeira embarcação chega a {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Bóia de posição, que pode ser usada para marcar pontos de rota adicionais
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Impossível posicionar bóia aqui...
 STR_9836_RENAME                                                 :{BLACK}Renomear
@@ -2766,7 +2766,7 @@ STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Impossí
 STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Adaptar a carga da embarcação para transportar uma carga diferente
 STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Adaptar)
 STR_983C_REFIT_SHIP                                             :{BLACK}Adaptar embarcação
-STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecionar tipo de carga do barco
+STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecionar tipo de carga para a embarcação
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Adaptar embarcação para transportar a carga selecionada
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecionar tipo de carga:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacidade: {GOLD}{CARGO}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY}
@@ -2816,7 +2816,7 @@ STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir nova aeronave
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arraste a aeronave aqui para vendê-la
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrar visualização na localização do hangar
-STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lista de aeronaves - clique na aeronave para informações
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lista de aeronaves - clique numa aeronave para informações
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construir a aeronave selecionada
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Tarefa atual da aeronave - clique aqui para iniciar/parar a aeronave
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Exibir ordens da aeronave
@@ -2841,7 +2841,7 @@ STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Impossí
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Adaptar aeronave para transportar uma carga diferente
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Adaptar)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Adaptar aeronave
-STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecionar tipo de carga da aeronave
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecionar tipo de carga para a aeronave
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Adaptar aeronave para transportar a carga selecionada
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecionar tipo de carga:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacidade: {GOLD}{STRING}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY}
@@ -2997,7 +2997,7 @@ STR_REPLACE_HELP                                                :{BLACK}Permite 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoção de vagões: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Faz autosubstituição manter o tamanho do trem removendo vagões (começando pela frente), se ao substituir a locomotiva o trem ficar maior.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituindo: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL {}Troca entre substituir máquinas e substituir vagões.{}Só haverá a substituição se puder haver o reacondicionamento para carregar o mesmo tipo de carga. Essa checagem ocorre para cada vagão enquanto a substituição ocorre.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL {}Troca entre substituir máquinas e substituir vagões.{} Só haverá a substituição se puder haver o reacondicionamento para carregar o mesmo tipo de carga. Essa checagem ocorre para cada vagão enquanto a substituição ocorre.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A locomotiva não pode ser construída
 
 STR_ENGINES                                                     :Motores
