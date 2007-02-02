@@ -25,6 +25,7 @@
 #include "genworld.h"
 #include "date.h"
 #include "water_map.h"
+#include "tree_map.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
@@ -865,7 +866,7 @@ static void MaybePlantFarmField(const Industry *i)
  */
 static bool SearchLumberMillTrees(TileIndex tile, uint32 data)
 {
-	if (IsTileType(tile, MP_TREES)) {
+	if (IsTileType(tile, MP_TREES) && GetTreeGrowth(tile) > 2) { ///< 3 and up means all fully grown trees
 		PlayerID old_player = _current_player;
 		/* found a tree */
 
@@ -875,7 +876,6 @@ static bool SearchLumberMillTrees(TileIndex tile, uint32 data)
 		SndPlayTileFx(SND_38_CHAINSAW, tile);
 
 		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-		SetTropicZone(tile, TROPICZONE_INVALID);
 
 		_current_player = old_player;
 		return true;
