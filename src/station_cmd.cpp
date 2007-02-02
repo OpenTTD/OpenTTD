@@ -1274,35 +1274,23 @@ int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 	return _price.build_rail >> 1;
 }
 
-/** Heavy wizardry used to add a roadstop to a station.
- * To understand the function, lets first look at what is passed around,
- * especially the last parameter. CmdBuildRoadStop allocates a road
- * stop and needs to put that stop into the linked list of road stops.
- * It (CmdBuildRoadStop) has a **currstop pointer which points to element
- * in the linked list of stops (each element in this list being a pointer
- * in itself, hence the double pointer). We (FindRoadStopSpot) need to
- * modify this pointer (**currstop) thus we need to pass by reference,
- * obtaining a triple pointer (***currstop). When finished, **currstop
- * in CmdBuildRoadStop will contain the address of the pointer which will
- * then point into the global roadstop array.
+/**
  * @param[in] truck_station Determines whether a stop is RoadStop::BUS or RoadStop::TRUCK
  * @param[in] station The station to do the whole procedure for
- * @param[out] currstop See the detailed function description
- * @param prev See the detailed function description
+ * @return a pointer to where to link a new RoadStop*
  */
-static void FindRoadStopSpot(bool truck_station, Station* st, RoadStop*** currstop)
+static RoadStop **FindRoadStopSpot(bool truck_station, Station* st)
 {
 	RoadStop **primary_stop = (truck_station) ? &st->truck_stops : &st->bus_stops;
 
 	if (*primary_stop == NULL) {
 		//we have no roadstop of the type yet, so write a "primary stop"
-		*currstop = primary_stop;
+		return primary_stop;
 	} else {
 		//there are stops already, so append to the end of the list
-		*currstop = &(*primary_stop)->next;
-		while (**currstop != NULL) {
-			*currstop = &(**currstop)->next;
-		}
+		RoadStop *stop = *primary_stop;
+		while (stop->next != NULL) stop = stop->next;
+		return &stop->next;
 	}
 }
 
@@ -1315,7 +1303,6 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Station *st;
 	RoadStop *road_stop;
-	RoadStop **currstop;
 	int32 cost;
 	int32 ret;
 	bool type = !!p2;
@@ -1365,8 +1352,6 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		if (!st->rect.BeforeAddTile(tile, StationRect::ADD_TEST)) return CMD_ERROR;
-
-		FindRoadStopSpot(type, st, &currstop);
 	} else {
 		/* allocate and initialize new station */
 		st = new Station(tile);
@@ -1379,8 +1364,6 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Town *t = st->town = ClosestTownFromTile(tile, (uint)-1);
 		if (!GenerateStationName(st, tile, 0)) return CMD_ERROR;
 
-		FindRoadStopSpot(type, st, &currstop);
-
 		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
 			SETBIT(t->have_ratings, _current_player);
 		}
@@ -1391,7 +1374,8 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	cost += (type) ? _price.build_truck_station : _price.build_bus_station;
 
 	if (flags & DC_EXEC) {
-		//point to the correct item in the _busstops or _truckstops array
+		// Insert into linked list of RoadStops
+		RoadStop **currstop = FindRoadStopSpot(type, st);
 		*currstop = road_stop;
 
 		//initialize an empty station
