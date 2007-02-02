@@ -80,7 +80,15 @@ void Packet::PrepareToSend(void)
  *  sent first.
  *
  *  So 0x01234567 would be sent as 67 45 23 01.
+ *
+ * A bool is sent as a uint8 where zero means false
+ *  and non-zero means true.
  */
+
+void Packet::Send_bool(bool data)
+{
+	this->Send_uint8(data ? 1 : 0);
+}
 
 void Packet::Send_uint8(uint8 data)
 {
@@ -133,7 +141,7 @@ void Packet::Send_string(const char* data)
 /**
  * Receiving commands
  * Again, the next couple of functions are endian-safe
- *  see the comment before NetworkSend_uint8 for more info.
+ *  see the comment before Send_bool for more info.
  */
 
 
@@ -171,6 +179,11 @@ void Packet::PrepareToRead(void)
 
 	/* Put the position on the right place */
 	this->pos = sizeof(PacketSize);
+}
+
+bool Packet::Recv_bool(void)
+{
+	return this->Recv_uint8() != 0;
 }
 
 uint8 Packet::Recv_uint8(void)

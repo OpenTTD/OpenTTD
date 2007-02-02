@@ -45,6 +45,7 @@ public:
 	/* Sending/writing of packets */
 	void PrepareToSend(void);
 
+	void Send_bool  (bool   data);
 	void Send_uint8 (uint8  data);
 	void Send_uint16(uint16 data);
 	void Send_uint32(uint32 data);
@@ -56,6 +57,7 @@ public:
 	void PrepareToRead(void);
 
 	bool   CanReadFromPacket (uint bytes_to_read);
+	bool   Recv_bool  (void);
 	uint8  Recv_uint8 (void);
 	uint16 Recv_uint16(void);
 	uint32 Recv_uint32(void);

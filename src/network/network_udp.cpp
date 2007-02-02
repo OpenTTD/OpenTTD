@@ -124,7 +124,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 		packet.Send_uint16(_network_player_info[player->index].performance);
 
 		/* Send 1 if there is a passord for the company else send 0 */
-		packet.Send_uint8 (StrEmpty(_network_player_info[player->index].password) ? 0 : 1);
+		packet.Send_bool  (StrEmpty(_network_player_info[player->index].password));
 
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
 			packet.Send_uint16(_network_player_info[player->index].num_vehicle[i]);
@@ -136,8 +136,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 		FOR_ALL_CLIENTS(cs) {
 			ci = DEREF_CLIENT_INFO(cs);
 			if (ci->client_playas == player->index) {
-				/* The uint8 == 1 indicates that a client is following */
-				packet.Send_uint8 (1);
+				packet.Send_bool  (true);
 				packet.Send_string(ci->client_name);
 				packet.Send_string(ci->unique_id);
 				packet.Send_uint32(ci->join_date);
@@ -146,23 +145,21 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 		/* Also check for the server itself */
 		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 		if (ci->client_playas == player->index) {
-			/* The uint8 == 1 indicates that a client is following */
-			packet.Send_uint8 (1);
+			packet.Send_bool  (true);
 			packet.Send_string(ci->client_name);
 			packet.Send_string(ci->unique_id);
 			packet.Send_uint32(ci->join_date);
 		}
 
 		/* Indicates end of client list */
-		packet.Send_uint8(0);
+		packet.Send_bool(false);
 	}
 
 	/* And check if we have any spectators */
 	FOR_ALL_CLIENTS(cs) {
 		ci = DEREF_CLIENT_INFO(cs);
 		if (!IsValidPlayer(ci->client_playas)) {
-			/* The uint8 == 1 indicates that a client is following */
-			packet.Send_uint8 (1);
+			packet.Send_bool  (true);
 			packet.Send_string(ci->client_name);
 			packet.Send_string(ci->unique_id);
 			packet.Send_uint32(ci->join_date);
@@ -172,15 +169,14 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 	/* Also check for the server itself */
 	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 	if (!IsValidPlayer(ci->client_playas)) {
-		/* The uint8 == 1 indicates that a client is following */
-		packet.Send_uint8 (1);
+		packet.Send_bool  (true);
 		packet.Send_string(ci->client_name);
 		packet.Send_string(ci->unique_id);
 		packet.Send_uint32(ci->join_date);
 	}
 
 	/* Indicates end of client list */
-	packet.Send_uint8(0);
+	packet.Send_bool(false);
 
 	this->SendPacket(&packet, client_addr);
 }

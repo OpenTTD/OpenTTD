@@ -314,7 +314,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		_network_player_info[current].money            = p->Recv_uint64();
 		_network_player_info[current].income           = p->Recv_uint64();
 		_network_player_info[current].performance      = p->Recv_uint16();
-		_network_player_info[current].use_password     = p->Recv_uint8();
+		_network_player_info[current].use_password     = p->Recv_bool();
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
 			_network_player_info[current].num_vehicle[i] = p->Recv_uint16();
 		for (i = 0; i < NETWORK_STATION_TYPES; i++)
@@ -655,7 +655,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
 	uint16 index = p->Recv_uint16();
-	bool self_send = (p->Recv_uint8() != 0);
+	bool self_send = p->Recv_bool();
 	p->Recv_string(msg, MAX_TEXT_MSG_LEN);
 
 	ci_to = NetworkFindClientInfoFromIndex(index);

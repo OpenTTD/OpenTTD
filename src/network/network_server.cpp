@@ -101,7 +101,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		p->Send_uint16(_network_player_info[player->index].performance);
 
 		/* Send 1 if there is a passord for the company else send 0 */
-		p->Send_uint8(StrEmpty(_network_player_info[player->index].password) ? 0 : 1);
+		p->Send_bool(StrEmpty(_network_player_info[player->index].password));
 
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
 			p->Send_uint16(_network_player_info[player->index].num_vehicle[i]);
@@ -503,7 +503,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkTCPSocketHandler *cs, N
 
 	p->Send_uint8 (action);
 	p->Send_uint16(client_index);
-	p->Send_uint8 (self_send);
+	p->Send_bool  (self_send);
 	p->Send_string(msg);
 
 	cs->Send_Packet(p);

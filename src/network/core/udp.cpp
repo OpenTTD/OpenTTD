@@ -190,7 +190,7 @@ void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameI
 	p->Send_string(info->server_name);
 	p->Send_string(info->server_revision);
 	p->Send_uint8 (info->server_lang);
-	p->Send_uint8 (info->use_password);
+	p->Send_bool  (info->use_password);
 	p->Send_uint8 (info->clients_max);
 	p->Send_uint8 (info->clients_on);
 	p->Send_uint8 (info->spectators_on);
@@ -198,7 +198,7 @@ void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameI
 	p->Send_uint16(info->map_width);
 	p->Send_uint16(info->map_height);
 	p->Send_uint8 (info->map_set);
-	p->Send_uint8 (info->dedicated);
+	p->Send_bool  (info->dedicated);
 }
 
 /**
@@ -249,7 +249,7 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 			p->Recv_string(info->server_name,     sizeof(info->server_name));
 			p->Recv_string(info->server_revision, sizeof(info->server_revision));
 			info->server_lang    = p->Recv_uint8 ();
-			info->use_password   = (p->Recv_uint8 () != 0);
+			info->use_password   = p->Recv_bool  ();
 			info->clients_max    = p->Recv_uint8 ();
 			info->clients_on     = p->Recv_uint8 ();
 			info->spectators_on  = p->Recv_uint8 ();
@@ -261,7 +261,7 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 			info->map_width      = p->Recv_uint16();
 			info->map_height     = p->Recv_uint16();
 			info->map_set        = p->Recv_uint8 ();
-			info->dedicated      = (p->Recv_uint8() != 0);
+			info->dedicated      = p->Recv_bool  ();
 
 			if (info->server_lang >= NETWORK_NUM_LANGUAGES)  info->server_lang = 0;
 			if (info->map_set     >= NETWORK_NUM_LANDSCAPES) info->map_set     = 0;
