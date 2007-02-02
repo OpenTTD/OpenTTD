@@ -898,14 +898,32 @@ static bool UpdateAircraftSpeed(Vehicle *v)
 	return t < v->progress;
 }
 
-// get Aircraft running altitude
+/**
+ * Gets the cruise altitude of an aircraft.
+ * The cruise altitude is determined by the velocity of the vehicle
+ * and the direction it is moving
+ * @param v The vehicle. Should be an aircraft
+ * @returns Altitude in pixel units
+ */
 static byte GetAircraftFlyingAltitude(const Vehicle *v)
 {
-	switch (v->max_speed) {
-		case 37: return 162;
-		case 74: return 171;
-		default: return 180;
+	/* Make sure Aircraft fly no lower so that they don't conduct
+	 * CFITs (controlled flight into terrain)
+	 */
+	byte base_altitude = 150;
+
+	/* Make sure eastbound and westbound planes do not "crash" into each
+	 * other by providing them with vertical seperation
+	 */
+	switch (v->direction) {
+		case DIR_N: case DIR_NE: case DIR_E: case DIR_SE: base_altitude += 15; break;
+		default: break;
 	}
+
+	/* Make faster planes fly higher so that they can overtake slower ones */
+	base_altitude += min(30 * (v->max_speed / 37), 90);
+
+	return base_altitude;
 }
 
 static bool AircraftController(Vehicle *v)
