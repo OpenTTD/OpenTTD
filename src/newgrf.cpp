@@ -1044,6 +1044,21 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			FOR_EACH_OBJECT statspec[i]->blocked = grf_load_byte(&buf);
 			break;
 
+		case 0x16: /* TODO Animation info */
+			FOR_EACH_OBJECT grf_load_word(&buf);
+			ret = true;
+			break;
+
+		case 0x17: /* TODO Animation speed */
+			FOR_EACH_OBJECT grf_load_byte(&buf);
+			ret = true;
+			break;
+
+		case 0x18: /* TODO Animation triggers */
+			FOR_EACH_OBJECT grf_load_word(&buf);
+			ret = true;
+			break;
+
 		default:
 			ret = true;
 			break;
