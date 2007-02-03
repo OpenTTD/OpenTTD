@@ -173,7 +173,7 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
  */
 int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int bridge_type;
+	uint bridge_type;
 	RailType railtype;
 	uint x;
 	uint y;
@@ -191,6 +191,8 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	Axis direction;
 	int32 cost, terraformcost, ret;
 	bool allow_on_slopes;
+	bool replace_bridge = false;
+	uint replaced_bridge_type;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -256,30 +258,70 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	allow_on_slopes = (!_is_old_ai_player
 	                   && _current_player != OWNER_TOWN && _patches.build_on_slopes);
 
-	/* Try and clear the start landscape */
+	TransportType transport_type = railtype == INVALID_RAILTYPE ? TRANSPORT_ROAD : TRANSPORT_RAIL;
 
-	ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(ret)) return ret;
-	cost = ret;
+	if (IsBridgeTile(tile_start) && IsBridgeTile(tile_end) &&
+			GetOtherBridgeEnd(tile_start) == tile_end &&
+			GetBridgeTransportType(tile_start) == transport_type) {
+		/* Replace a current bridge. */
 
-	terraformcost = CheckBridgeSlopeNorth(direction, tileh_start);
-	if (CmdFailed(terraformcost) || (terraformcost != 0 && !allow_on_slopes))
-		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-	cost += terraformcost;
+		/* If this is a railway bridge, make sure the railtypes match. */
+		if (transport_type == TRANSPORT_RAIL && GetRailType(tile_start) != railtype) {
+			return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+		}
 
-	/* Try and clear the end landscape */
+		/* Do not replace town bridges with lower speed bridges. */
+		if (!(flags & DC_QUERY_COST) && IsTileOwner(tile_start, OWNER_TOWN) &&
+				_bridge[bridge_type].speed < _bridge[GetBridgeType(tile_start)].speed) {
+			Town *t = ClosestTownFromTile(tile_start, UINT_MAX);
 
-	ret = DoCommand(tile_end, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(ret)) return ret;
-	cost += ret;
+			if (t == NULL) {
+				return CMD_ERROR;
+			} else {
+				SetDParam(0, t->index);
+				return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
+			}
+		}
 
-	// false - end tile slope check
-	terraformcost = CheckBridgeSlopeSouth(direction, tileh_end);
-	if (CmdFailed(terraformcost) || (terraformcost != 0 && !allow_on_slopes))
-		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-	cost += terraformcost;
+		/* Do not replace the bridge with the same bridge type. */
+		if (!(flags & DC_QUERY_COST) && bridge_type == GetBridgeType(tile_start)) {
+			return_cmd_error(STR_1007_ALREADY_BUILT);
+		}
 
-	{
+		/* Do not allow replacing another player's bridges. */
+		if (!IsTileOwner(tile_start, _current_player) && !IsTileOwner(tile_start, OWNER_TOWN)) {
+			return_cmd_error(STR_1024_AREA_IS_OWNED_BY_ANOTHER);
+		}
+
+		cost = (bridge_len + 1) * _price.clear_bridge; // The cost of clearing the current bridge.
+		replace_bridge = true;
+		replaced_bridge_type = GetBridgeType(tile_start);
+	} else {
+		/* Build a new bridge. */
+
+		/* Try and clear the start landscape */
+		ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+		if (CmdFailed(ret)) return ret;
+		cost = ret;
+
+		terraformcost = CheckBridgeSlopeNorth(direction, tileh_start);
+		if (CmdFailed(terraformcost) || (terraformcost != 0 && !allow_on_slopes))
+			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		cost += terraformcost;
+
+		/* Try and clear the end landscape */
+		ret = DoCommand(tile_end, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+		if (CmdFailed(ret)) return ret;
+		cost += ret;
+
+		// false - end tile slope check
+		terraformcost = CheckBridgeSlopeSouth(direction, tileh_end);
+		if (CmdFailed(terraformcost) || (terraformcost != 0 && !allow_on_slopes))
+			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		cost += terraformcost;
+	}
+
+	if (!replace_bridge) {
 		TileIndex Heads[] = {tile_start, tile_end};
 		int i;
 
@@ -301,13 +343,14 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	/* do the drill? */
 	if (flags & DC_EXEC) {
 		DiagDirection dir = AxisToDiagDir(direction);
+		Owner owner = (replace_bridge && IsTileOwner(tile_start, OWNER_TOWN)) ? OWNER_TOWN : _current_player;
 
 		if (railtype != INVALID_RAILTYPE) {
-			MakeRailBridgeRamp(tile_start, _current_player, bridge_type, dir, railtype);
-			MakeRailBridgeRamp(tile_end,   _current_player, bridge_type, ReverseDiagDir(dir), railtype);
+			MakeRailBridgeRamp(tile_start, owner, bridge_type, dir, railtype);
+			MakeRailBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), railtype);
 		} else {
-			MakeRoadBridgeRamp(tile_start, _current_player, bridge_type, dir);
-			MakeRoadBridgeRamp(tile_end,   _current_player, bridge_type, ReverseDiagDir(dir));
+			MakeRoadBridgeRamp(tile_start, owner, bridge_type, dir);
+			MakeRoadBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir));
 		}
 		MarkTileDirtyByTile(tile_start);
 		MarkTileDirtyByTile(tile_end);
@@ -319,7 +362,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (GetTileSlope(tile, &z) != SLOPE_FLAT && z >= z_start) return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
 
-		if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) {
+		if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) && !replace_bridge) {
 			/* Disallow crossing bridges for the time being */
 			return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
@@ -340,6 +383,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 			case MP_TUNNELBRIDGE:
 				if (IsTunnel(tile)) break;
+				if (replace_bridge) break;
 				if (direction == DiagDirToAxis(GetBridgeRampDirection(tile))) goto not_valid_below;
 				if (z_start < GetBridgeHeight(tile)) goto not_valid_below;
 				break;
@@ -349,7 +393,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 				break;
 
 			case MP_CLEAR:
-				if (IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+				if (!replace_bridge && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 				break;
 
 			default:
