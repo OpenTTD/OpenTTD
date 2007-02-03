@@ -512,12 +512,12 @@ check_params() {
 		OSXAPP="OpenTTD.app"
 
 # TODO: remove next few lines of code when the search path patch has been applied
-		if [ -n "$custom_lang_dir" ] && [ "$custom_lang_dir" != "$(OSXAPP)/Contents/Lang/" ]; then
+		if [ -n "$custom_lang_dir" ] && [ "$custom_lang_dir" != "${OSXAPP}/Contents/Lang/" ]; then
 			log 1 "configure: error: --custom-lang-dir and --with-application-bundle are not compatible
 			exit 1
 		fi
 
-		if [ -n "$custom_lang_dir" ] && [ "$second_data_dir" != "$(OSXAPP)/Contents/Data/" ]; then
+		if [ -n "$custom_lang_dir" ] && [ "$second_data_dir" != "${OSXAPP}/Contents/Data/" ]; then
 			log 1 "configure: error: --second-data-dir and --with-application-bundle are not compatible
 			exit 1
 		fi
