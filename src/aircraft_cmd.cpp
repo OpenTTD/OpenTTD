@@ -165,9 +165,9 @@ void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal)
 	}
 }
 
-static int32 EstimateAircraftCost(EngineID engine_type)
+static int32 EstimateAircraftCost(const AircraftVehicleInfo *avi)
 {
-	return AircraftVehInfo(engine_type)->base_cost * (_price.aircraft_base>>3)>>5;
+	return avi->base_cost * (_price.aircraft_base >> 3) >> 5;
 }
 
 
@@ -206,14 +206,13 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, EngineID engine_type)
  */
 int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int32 value;
 	Vehicle *vl[3];
 	UnitID unit_num;
-	const AircraftVehicleInfo *avi;
 
 	if (!IsEngineBuildable(p1, VEH_Aircraft, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
-	value = EstimateAircraftCost(p1);
+	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
+	int32 value = EstimateAircraftCost(avi);
 
 	// to just query the cost, it is not neccessary to have a valid tile (automation/AI)
 	if (flags & DC_QUERY_COST) return value;
@@ -221,8 +220,6 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsHangarTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-
-	avi = AircraftVehInfo(p1);
 
 	// Prevent building aircraft types at places which can't handle them
 	const Station* st = GetStationByTile(tile);
