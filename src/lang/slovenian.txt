@@ -337,6 +337,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nova igr
 STR_0141_LOAD_GAME                                              :{BLACK}Naloži igro
 STR_SINGLE_PLAYER                                               :{BLACK}En igralec
 STR_MULTIPLAYER                                                 :{BLACK}Več igralcev
+STR_SCENARIO_EDITOR                                             :{BLACK}Urejevalnik ozemlja
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -665,6 +666,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zmanjša
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Ustvari naključni teren
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Zbriši pokrajino
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Zbriši pokrajino
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Odstrani vso igralčevo lastnino z ozemlja
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Zagotovo želiš odstraniti vso igralčevo lastnino?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generator pokrajine
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generator mest
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generator industrije
@@ -769,6 +772,7 @@ STR_0290_DELETE                                                 :{BLACK}Izbriši
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Popolnoma izbriši mesto
 STR_0292_SAVE_SCENARIO                                          :Shrani scenarij
 STR_0293_LOAD_SCENARIO                                          :Naloži scenarij
+STR_LOAD_HEIGHTMAP                                              :Naloži višinsko karto
 STR_0294_QUIT_EDITOR                                            :Izhod iz urejevalnika
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Izhod
@@ -1864,6 +1868,7 @@ STR_4801                                                        :{WHITE}{INDUSTR
 STR_4802_COAL_MINE                                              :Premogovnik
 STR_4802_COAL_MINE.r                                            :Premogovnika
 STR_4803_POWER_STATION                                          :Termo elektrarna
+STR_4803_POWER_STATION.3sk                                      :Termo elektrarni
 STR_4803_POWER_STATION.r                                        :Termo elektrarne
 STR_4804_SAWMILL                                                :Žaga
 STR_4804_SAWMILL.r                                              :Žage

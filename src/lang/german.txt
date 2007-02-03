@@ -897,33 +897,33 @@ STR_TOWNNAME_ITALIAN                                            :italienisch
 STR_TOWNNAME_CATALAN                                            :Katalanisch
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Pfund (£)
-STR_CURR_USD                                                    :Dollar ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Yen (¥)
+STR_CURR_GBP                                                    :Engl. Pfund (GBP)
+STR_CURR_USD                                                    :US-Dollar (USD)
+STR_CURR_EUR                                                    :Euro (EUR)
+STR_CURR_YEN                                                    :Jap. Yen (JPY)
 STR_CURR_ATS                                                    :Österreich. Schilling (ATS)
-STR_CURR_BEF                                                    :Belgische Franc (BEF)
+STR_CURR_BEF                                                    :Belgische Francs (BEF)
 STR_CURR_CHF                                                    :Schweizer Franken (CHF)
 STR_CURR_CZK                                                    :Tschechische Kronen (CZK)
 STR_CURR_DEM                                                    :Deutsche Mark (DEM)
 STR_CURR_DKK                                                    :Dänische Kronen (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Finnmark (FIM)
-STR_CURR_FRF                                                    :Franc (FRF)
+STR_CURR_ESP                                                    :Span. Peseten (ESP)
+STR_CURR_FIM                                                    :Finnische Mark(FIM)
+STR_CURR_FRF                                                    :Frz. Francs (FRF)
 STR_CURR_GRD                                                    :Griech. Drachmen (GRD)
 STR_CURR_HUF                                                    :Ungarische Forint (HUF)
-STR_CURR_ISK                                                    :Isländische Krona (ISK)
-STR_CURR_ITL                                                    :Italienische Lira (ITL)
+STR_CURR_ISK                                                    :Isländische Kronen (ISK)
+STR_CURR_ITL                                                    :Italienische Lire (ITL)
 STR_CURR_NLG                                                    :Niederländ. Gulden (NLG)
 STR_CURR_NOK                                                    :Norwegische Kronen (NOK)
 STR_CURR_PLN                                                    :Polnische Zloty (PLN)
-STR_CURR_ROL                                                    :RumÃ€nische Lei (ROL)
+STR_CURR_ROL                                                    :Rumänische Lei (ROL)
 STR_CURR_RUR                                                    :Russische Rubel (RUR)
-STR_CURR_SIT                                                    :Slovenischer Tolar (SIT)
+STR_CURR_SIT                                                    :Slovenische Taler (SIT)
 STR_CURR_SEK                                                    :Schwedische Kronen (SEK)
-STR_CURR_YTL                                                    :türkische Lira (YTL)
-STR_CURR_SKK                                                    :Slowakische Krone
-STR_CURR_BRR                                                    :Brasilianischer Real
+STR_CURR_YTL                                                    :Türkische Lire (YTL)
+STR_CURR_SKK                                                    :Slowakische Kronen (SKK)
+STR_CURR_BRR                                                    :Brasilianische Reais (BRL)
 
 STR_CURR_CUSTOM                                                 :Eigene...
 

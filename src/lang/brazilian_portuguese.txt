@@ -2080,7 +2080,7 @@ STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Construção
 STR_7012_NEW_VEHICLES                                           :{GOLD}Novos Veículos
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Circulação de Trens
-STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Circulação de Veículos
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Circulação de Automóveis
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Circulação de Aeronaves
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Circulação de Embarcações
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Manutenção de Propriedades

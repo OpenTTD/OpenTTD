@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Novo Jog
 STR_0141_LOAD_GAME                                              :{BLACK}Abrir Jogo
 STR_SINGLE_PLAYER                                               :{BLACK}1 jogador
 STR_MULTIPLAYER                                                 :{BLACK}Multi-jogador
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor de Cenário
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -727,6 +728,7 @@ STR_0290_DELETE                                                 :{BLACK}Apagar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Apagar completamente esta cidade
 STR_0292_SAVE_SCENARIO                                          :Guardar cenário
 STR_0293_LOAD_SCENARIO                                          :Abrir cenário
+STR_LOAD_HEIGHTMAP                                              :Carregar mapa de alturas
 STR_0294_QUIT_EDITOR                                            :Sair do editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Sair
@@ -1413,6 +1415,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Não foram encontradas interfaces de rede ou o jogo foi compilado sem ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Não foram encontrados jogos de rede
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} O servidor não respondeu ao pedido
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Impossível ligar devido a incompatibilidade de NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} A sincronização do jogo de rede falhou.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} A conexão do jogo de rede perdeu-se.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Não foi possível abrir o jogo.
@@ -1434,6 +1437,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :erro de dessinc
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :não foi possível carregar o mapa
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :ligação perdida
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :erro de protocolo
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF incompatível
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :Não autorizado
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recebido um pacote estranho
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :revisão incorrecta
