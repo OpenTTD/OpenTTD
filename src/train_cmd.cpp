@@ -776,7 +776,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		memset(&vl, 0, sizeof(vl));
 
-		if (!AllocateVehicles(vl, num_vehicles) || IsOrderPoolFull())
+		if (!AllocateVehicles(vl, num_vehicles))
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 		v = vl[0];

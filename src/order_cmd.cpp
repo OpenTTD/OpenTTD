@@ -337,7 +337,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (sel_ord > v->num_orders) return CMD_ERROR;
 
-	if (IsOrderPoolFull()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
+	if (!HasOrderPoolFree(1)) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
 	/* XXX - This limit is only here because the backuppedorders can't
 	 * handle any more then this.. */

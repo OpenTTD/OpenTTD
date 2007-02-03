@@ -167,10 +167,6 @@ static inline bool HasOrderPoolFree(uint amount)
 	return false;
 }
 
-static inline bool IsOrderPoolFull(void)
-{
-	return !HasOrderPoolFree(1);
-}
 
 /* Pack and unpack routines */
 
