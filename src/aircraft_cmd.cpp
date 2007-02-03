@@ -210,7 +210,6 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *vl[3];
 	UnitID unit_num;
 	const AircraftVehicleInfo *avi;
-	const AirportFTAClass* ap;
 
 	if (!IsEngineBuildable(p1, VEH_Aircraft, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
@@ -226,8 +225,9 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	avi = AircraftVehInfo(p1);
 
 	// Prevent building aircraft types at places which can't handle them
-	ap = GetAirport(GetStationByTile(tile)->airport_type);
-	if ((avi->subtype & AIR_CTOL ? HELICOPTERS_ONLY : AIRCRAFT_ONLY) == ap->acc_planes) {
+	const Station* st = GetStationByTile(tile);
+	const AirportFTAClass* apc = GetAirport(st->airport_type);
+	if ((avi->subtype & AIR_CTOL ? HELICOPTERS_ONLY : AIRCRAFT_ONLY) == apc->acc_planes) {
 		return CMD_ERROR;
 	}
 
@@ -348,8 +348,6 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		 * layout for #th position of depot. Since layout must start with a listing
 		 * of all depots, it is simple */
 		{
-			const Station* st = GetStationByTile(tile);
-			const AirportFTAClass* apc = GetAirport(st->airport_type);
 			uint i;
 
 			for (i = 0; i < apc->nof_depots; i++) {
