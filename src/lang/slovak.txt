@@ -2576,7 +2576,6 @@ STR_INVALID_ORDER                                               :{RED} (Neplatny
 STR_UNKNOWN_DESTINATION                                         :neznamy ciel
 STR_8812_EMPTY                                                  :{LTBLUE}Prazdny
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
-STR_FROM_MULT                                                   :{LTBLUE}{CARGO} from {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} caka v depe
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nove vozidla
 STR_8816                                                        :{BLACK}-

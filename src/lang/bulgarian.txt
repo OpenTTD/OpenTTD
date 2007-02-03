@@ -1416,8 +1416,6 @@ STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Не с
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Не може да открия мрежови игри
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Сървърът не отговори на заявката
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Не може да се свърже поради различие в NewGRF
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Network-Game synchronisation failed
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Network-Game connection lost
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Не може да зареди играта
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Сървъра не може да бъде стартиран
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Не може да се свърже

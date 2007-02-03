@@ -1693,7 +1693,6 @@ STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}No se pu
 STR_2806                                                        :{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...demasiadas señales
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}No se puede colocar una señal aquí...
-STR_280A_SIGN                                                   :Sign
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editar texto de la señal
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}No se puede cambiar el nombre de la señal...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Seleccione el tipo de árboles a plantar
@@ -3078,7 +3077,6 @@ STR_WORLD_GENERATION                                            :{BLACK}Generaci
 STR_TREE_GENERATION                                             :{BLACK}Generación de árboles
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Generación inamovible
 STR_CLEARING_TILES                                              :{BLACK}Generación de area áspera y rocosa
-STR_SETTINGUP_GAME                                              :{BLACK}Setting up game
 STR_PREPARING_TILELOOP                                          :{BLACK}Ejecutar tile-loop
 STR_PREPARING_GAME                                              :{BLACK}Preparando juego
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acción cambia el nivel de dificultad a personalizado

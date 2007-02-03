@@ -2915,7 +2915,6 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}파일 �
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}일치하는 파일을 찾을 수 없습니다
 STR_NEWGRF_DISABLED                                             :{RED}사용안함
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matching file not found (compatible GRF loaded)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}사라진 파일의 자리에 알맞은 GRF가 로드되었습니다
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}사라진 GRF 파일은 사용불가능합니다
@@ -3010,7 +3009,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}이 목�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Order refit failure stopped {STRING} {COMMA}
 
 ############ Lists rail types
 

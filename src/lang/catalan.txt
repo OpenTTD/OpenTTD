@@ -3048,7 +3048,6 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Esf
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Genera
-STR_RANDOM                                                      :{BLACK}Randomise
 STR_RANDOM_HELP                                                 :{BLACK}Canvia el nombre aleatori utilitzat pel Generador de Terrenys
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generació del món
 STR_RANDOM_SEED                                                 :{BLACK}Nombre aleatori:
