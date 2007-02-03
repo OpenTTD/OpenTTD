@@ -345,7 +345,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} ton-force
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Profit d'opération
 STR_0155_INCOME_GRAPH                                           :Revenu
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Cargaison livrée
@@ -354,7 +354,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Valeur de la co
 STR_0159_CARGO_PAYMENT_RATES                                    :Valeur des marchandises
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Classement des compagnies
 STR_PERFORMANCE_DETAIL_MENU                                     :Détail des performances
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD
 STR_015C_SAVE_GAME                                              :Sauvegarder la partie
@@ -495,7 +495,7 @@ STR_01A9_NONE                                                   :Aucun
 STR_01AA_NAME                                                   :{BLACK}Nom
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1er
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -527,7 +527,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -769,7 +769,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Sélecti
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sauvegarder noms personnalisés de conception de véhicule
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Options du Jeu
 STR_02C5_DIFFICULTY_SETTINGS                                    :Niveau de Difficulté
 STR_02C7_CONFIG_PATCHES                                         :Configuration Avancée
@@ -783,16 +783,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animat
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Détails maximums
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Édifices transparents
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nom de station transparent
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Outil d'Inspection
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Inverser Console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Copie d'écran (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Copie géante d'écran (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :À Propos de 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Inactif
 STR_02DA_ON                                                     :{BLACK}Actif
@@ -849,7 +849,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Sélecti
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Sélectionner l'environnement 'Jouets'
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financer la construction de nouvelles industries
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Annuaire des industries
 STR_0313_FUND_NEW_INDUSTRY                                      :Financer une nouvelle industrie
 ############ range ends here
@@ -895,7 +895,7 @@ STR_TOWNNAME_DANISH                                             :Danois
 STR_TOWNNAME_TURKISH                                            :Turques
 STR_TOWNNAME_ITALIAN                                            :Italien
 STR_TOWNNAME_CATALAN                                            :Catalan
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Livre (£)
 STR_CURR_USD                                                    :Dollar ($)
@@ -1861,11 +1861,11 @@ STR_4824_BUBBLE_GENERATOR                                       :{G=m}Générate
 STR_4825_TOFFEE_QUARRY                                          :{G=f}Carrière de caramel
 STR_4826_SUGAR_MINE                                             :{G=f}Mine de sucre
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Nécessite: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Nécessite: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Nécessite: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Production le mois dernier:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporté)
@@ -1938,8 +1938,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Impossib
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...il vous appartient déjà!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Non nommé
@@ -1982,7 +1982,7 @@ STR_SV_STNAME_LOWER                                             :Bas {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Héliport
 STR_SV_STNAME_FOREST                                            :{STRING} Forêt
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Niveau de difficulté

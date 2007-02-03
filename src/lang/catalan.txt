@@ -344,7 +344,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} força per tona
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Gràfic de benefici operatiu
 STR_0155_INCOME_GRAPH                                           :Gràfic d'ingressos
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Gràfic d'entrega de càrrega
@@ -353,7 +353,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Gràfic de valo
 STR_0159_CARGO_PAYMENT_RATES                                    :Tarifes de pagament per càrrega
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Taula de la Lliga d'Empreses
 STR_PERFORMANCE_DETAIL_MENU                                     :Detall de ratis de rendiment
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Quant a OpenTTD
 STR_015C_SAVE_GAME                                              :Desa el joc
@@ -494,7 +494,7 @@ STR_01A9_NONE                                                   :Ningú
 STR_01AA_NAME                                                   :{BLACK}Nom
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -526,7 +526,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -768,7 +768,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selecci�
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Desa els noms de disseny de vehicles personalitzats al disc
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Opcions del Joc
 STR_02C5_DIFFICULTY_SETTINGS                                    :Paràmetres de dificultat
 STR_02C7_CONFIG_PATCHES                                         :Configura pedaços
@@ -782,16 +782,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animac
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detall complet
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edificis Transparents
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Signes d'estació transparents
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informació de l'àrea de terreny
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Canvia a cònsola
 STR_02D7_SCREENSHOT_CTRL_S                                      :Còpia de Pantalla (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Còpia de Pantalla Gran (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Quant a 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Inactiu
 STR_02DA_ON                                                     :{BLACK}Actiu
@@ -848,7 +848,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Seleccio
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Selecciona l'estil de paisatge 'toyland'
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Patrocina la construcció d'una nova indústria
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Directori d'indústries
 STR_0313_FUND_NEW_INDUSTRY                                      :Patrocina una nova indústria
 ############ range ends here
@@ -894,7 +894,7 @@ STR_TOWNNAME_DANISH                                             :Danès
 STR_TOWNNAME_TURKISH                                            :Turc
 STR_TOWNNAME_ITALIAN                                            :Italià
 STR_TOWNNAME_CATALAN                                            :Català
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Lliures (£)
 STR_CURR_USD                                                    :Dòlars ($)
@@ -1860,11 +1860,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Generador de Bo
 STR_4825_TOFFEE_QUARRY                                          :Cantera de Caramel
 STR_4826_SUGAR_MINE                                             :Mina de Sucre
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Necessita: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Necessita: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Necessita: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Producció del darrer mes:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportat)
@@ -1937,8 +1937,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}No pots 
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...ja és propietat teva!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sense Nom
@@ -1981,7 +1981,7 @@ STR_SV_STNAME_LOWER                                             :Baix {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Bosc
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Nivell de Dificultat

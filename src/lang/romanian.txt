@@ -343,7 +343,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tone fortã
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Profitul operational
 STR_0155_INCOME_GRAPH                                           :Cifra de afaceri
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Numãr încãrcãturi livrate
@@ -352,7 +352,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Valoarea compan
 STR_0159_CARGO_PAYMENT_RATES                                    :Valorile plãtilor pe încãrcãturi
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Clasamentul companiilor
 STR_PERFORMANCE_DETAIL_MENU                                     :Rating de performantã detaliat
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Despre OpenTTD
 STR_015C_SAVE_GAME                                              :Salveazã jocul (F3)
@@ -493,7 +493,7 @@ STR_01A9_NONE                                                   :nici una
 STR_01AA_NAME                                                   :{BLACK}Nume
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -525,7 +525,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -764,7 +764,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selectea
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salveazã pe disc numele personalizate de mãrci si modele
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Optiunile jocului (F2)
 STR_02C5_DIFFICULTY_SETTINGS                                    :Setãri dificultate
 STR_02C7_CONFIG_PATCHES                                         :Configurare patch
@@ -778,16 +778,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animat
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detalii grafice complete
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Peisaj transparent (X)
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Numele statiilor transparente
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informatii despre teren
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Consola On/Off
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Screenshot gigant(Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Despre 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}inactiv
 STR_02DA_ON                                                     :{BLACK}activ
@@ -844,7 +844,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Alege pe
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Alege peisajul 'tara jucãriilor'
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finanteazã constructia de industrii noi
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Lista industriilor
 STR_0313_FUND_NEW_INDUSTRY                                      :Obiectiv industrial nou
 ############ range ends here
@@ -890,7 +890,7 @@ STR_TOWNNAME_DANISH                                             :Danezã
 STR_TOWNNAME_TURKISH                                            :Turcã
 STR_TOWNNAME_ITALIAN                                            :Italian
 STR_TOWNNAME_CATALAN                                            :Catalan
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Lira sterlina (£)
 STR_CURR_USD                                                    :Dolar ($)
@@ -1854,11 +1854,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Generator de ba
 STR_4825_TOFFEE_QUARRY                                          :Carierã de caramel
 STR_4826_SUGAR_MINE                                             :Minã de zahãr
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Are nevoie de: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Are nevoie de: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Are nevoie de: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Productia luna trecutã:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportat)
@@ -1931,8 +1931,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Nu poti 
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...este deja in posesia ta!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :NoName
@@ -1975,7 +1975,7 @@ STR_SV_STNAME_LOWER                                             :{STRING} de Jos
 STR_SV_STNAME_HELIPORT                                          :Heliportul {STRING}
 STR_SV_STNAME_FOREST                                            :Pãdurea {STRING}
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Nivel de dificultate

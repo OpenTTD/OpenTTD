@@ -345,7 +345,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} тонн силы
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Текущий график доходов
 STR_0155_INCOME_GRAPH                                           :График дохода
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Доставленные грузы
@@ -354,7 +354,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Стоимос�
 STR_0159_CARGO_PAYMENT_RATES                                    :Оплата перевозок
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Порядковая таблица компаний
 STR_PERFORMANCE_DETAIL_MENU                                     :Подробные данные
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Об OpenTTD
 STR_015C_SAVE_GAME                                              :Сохранить игру
@@ -495,7 +495,7 @@ STR_01A9_NONE                                                   :Нет
 STR_01AA_NAME                                                   :{BLACK}Имя
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1ое
 STR_01AD_2ND                                                    :2ое
 STR_01AE_3RD                                                    :3е
@@ -527,7 +527,7 @@ STR_01C7_28TH                                                   :28ое
 STR_01C8_29TH                                                   :29ое
 STR_01C9_30TH                                                   :30ое
 STR_01CA_31ST                                                   :31ое
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -769,7 +769,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Выбе
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Сохранить свои названия транспортных средств
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Настройки игры
 STR_02C5_DIFFICULTY_SETTINGS                                    :Настройки сложности
 STR_02C7_CONFIG_PATCHES                                         :Настройки патчей
@@ -783,16 +783,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Пол
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Полная детализация
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Прозрачные здания
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Прозрачный фон названий станций
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Информация о земле
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Переключатель Консоли
 STR_02D7_SCREENSHOT_CTRL_S                                      :Снимок экрана (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Полный снимок экрана (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Об игре
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Выкл
 STR_02DA_ON                                                     :{BLACK}Вкл
@@ -849,7 +849,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Выбр
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Выбрать игрушечный климат
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Профинансировать создание нового предприятия
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Список предприятий
 STR_0313_FUND_NEW_INDUSTRY                                      :Создать новое предприятие
 ############ range ends here
@@ -895,7 +895,7 @@ STR_TOWNNAME_DANISH                                             :Датские
 STR_TOWNNAME_TURKISH                                            :Турецкие
 STR_TOWNNAME_ITALIAN                                            :Итальянские
 STR_TOWNNAME_CATALAN                                            :Каталанские
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Английский фунт (£)
 STR_CURR_USD                                                    :Доллар США ($)
@@ -1861,11 +1861,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Генерат�
 STR_4825_TOFFEE_QUARRY                                          :Карьер ирисок
 STR_4826_SUGAR_MINE                                             :Сахарная шахта
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Требуется: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Требуется: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Требуется: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Произведено за прошлый месяц:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% перевезено)
@@ -1938,8 +1938,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Нево
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...вы и так уже владеете этим!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Без имени
@@ -1982,7 +1982,7 @@ STR_SV_STNAME_LOWER                                             :{STRING} Ниж
 STR_SV_STNAME_HELIPORT                                          :Площадка {STRING}
 STR_SV_STNAME_FOREST                                            :{STRING} Лес
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Сложность

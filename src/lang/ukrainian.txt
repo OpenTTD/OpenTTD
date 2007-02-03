@@ -452,7 +452,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} ton force
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Прибуток виробництва
 STR_0155_INCOME_GRAPH                                           :Графік доходів
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Доставлення вантажів
@@ -461,7 +461,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Вартіст�
 STR_0159_CARGO_PAYMENT_RATES                                    :Вартість перевезень
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Таблиця компаній
 STR_PERFORMANCE_DETAIL_MENU                                     :Продуктивність
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Про OpenTTD
 STR_015C_SAVE_GAME                                              :Зберегти гру
@@ -602,7 +602,7 @@ STR_01A9_NONE                                                   :немає
 STR_01AA_NAME                                                   :{BLACK}Назва
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -634,7 +634,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -876,7 +876,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Зада
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Зберегти задані назви транспортних засобів
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Налаштування гри
 STR_02C5_DIFFICULTY_SETTINGS                                    :Налаштування складності
 STR_02C7_CONFIG_PATCHES                                         :Розширені налаштування
@@ -890,16 +890,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Пов
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Повна деталізація
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Прозорі будівлі
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Прозорі назви станцій
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Інформація про ділянку
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Вкл/викл консоль
 STR_02D7_SCREENSHOT_CTRL_S                                      :Копія екрану (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Копія всієї карти (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Про гру 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Ні
 STR_02DA_ON                                                     :{BLACK}Вкл
@@ -956,7 +956,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Вибр
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Вибрати 'іграшковий' варіант
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Фінансувати будівництво нової промисловості
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Каталог промисловості
 STR_0313_FUND_NEW_INDUSTRY                                      :Нова промисловість
 ############ range ends here
@@ -1002,7 +1002,7 @@ STR_TOWNNAME_DANISH                                             :Датські
 STR_TOWNNAME_TURKISH                                            :Турецькі
 STR_TOWNNAME_ITALIAN                                            :Італійські
 STR_TOWNNAME_CATALAN                                            :Каталанські
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Фунт (£)
 STR_CURR_USD                                                    :Долар ($)
@@ -2005,11 +2005,11 @@ STR_4825_TOFFEE_QUARRY.z                                        :ірисков�
 STR_4826_SUGAR_MINE                                             :Цукрова копальня
 STR_4826_SUGAR_MINE.z                                           :цукрову копальню
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Потребує: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Потребує: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Потребує: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Вироблено за місяць:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% перевезено)
@@ -2082,8 +2082,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Немо
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...це вже ваша власність!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Без назви
@@ -2126,7 +2126,7 @@ STR_SV_STNAME_LOWER                                             :Нижній {S
 STR_SV_STNAME_HELIPORT                                          :{STRING} ГелМайданчик
 STR_SV_STNAME_FOREST                                            :{STRING} Ліс
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Рівень складності

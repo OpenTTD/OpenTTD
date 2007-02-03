@@ -251,7 +251,7 @@ STR_0153_SUBSIDIES                                              :Subsydzjes
 
 
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Fertsjinst grafyk
 STR_0155_INCOME_GRAPH                                           :Ynkomsten grafyk
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Ôflevere fracht grafyk
@@ -259,7 +259,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Prestaasje skie
 STR_0158_COMPANY_VALUE_GRAPH                                    :Bedriuwswearde grafyk
 STR_0159_CARGO_PAYMENT_RATES                                    :Fracht ôfbetelling grafyk
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Bedriuwskompetysje tabel
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Oer OpenTTD
 STR_015C_SAVE_GAME                                              :Spul opslaan
@@ -348,7 +348,7 @@ STR_01A9_NONE                                                   :Neat
 STR_01AA_NAME                                                   :{BLACK}Namme
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -380,7 +380,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -606,7 +606,7 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Sla eige
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Reau ûntwerp nammen seleksje
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sla eigen reau ûntwerp nammen op
 
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Spul Opsjes
 STR_02C5_DIFFICULTY_SETTINGS                                    :Swierrichheid ynstellings
 STR_02C7_CONFIG_PATCHES                                         :Patches Ynstellings
@@ -616,15 +616,15 @@ STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Buords
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Folle animaasje
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Folle detail
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Trochsichtige gebouwen
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Gebiet Ynformaasje
 STR_02D6                                                        :
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skermfoto (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Grutte Skermfoto (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Oer 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Ut
 STR_02DA_ON                                                     :{BLACK}Oan
@@ -671,7 +671,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Selektea
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Selektear 'boartersguodlân' lânskip
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Betelje de bou fan in nije yndustry
 
-############ range for menu	starts
+############ range for menu starts
 STR_0313_FUND_NEW_INDUSTRY                                      :Betelje nije yndustry
 ############ range ends here
 
@@ -692,7 +692,7 @@ STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
-############ end of	townname region
+############ end of townname region
 
 
 
@@ -1090,11 +1090,11 @@ STR_4822_PLASTIC_FOUNTAINS                                      :Plestikfontein
 STR_4824_BUBBLE_GENERATOR                                       :Bubbelgenerator
 STR_4826_SUGAR_MINE                                             :Sûkermyn
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Nedich: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Nedich: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Nedich: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksje lêste moanne:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportearre)
@@ -1105,12 +1105,12 @@ STR_482F_COST                                                   :{BLACK}Kostet: 
 ##id 0x5800
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 

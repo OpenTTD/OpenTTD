@@ -344,7 +344,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} ton kraft
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf over afkast
 STR_0155_INCOME_GRAPH                                           :Graf over indkomster
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf over leveret last
@@ -353,7 +353,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Graf over selsk
 STR_0159_CARGO_PAYMENT_RATES                                    :Graf over lastudbetalingsrater
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Selskabsoversigt
 STR_PERFORMANCE_DETAIL_MENU                                     :Præstations oversigt
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Om OpenTTD
 STR_015C_SAVE_GAME                                              :Gem spil
@@ -494,7 +494,7 @@ STR_01A9_NONE                                                   :Ingen
 STR_01AA_NAME                                                   :{BLACK}Navn
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
 STR_01AE_3RD                                                    :3.
@@ -526,7 +526,7 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -766,7 +766,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Valg af 
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Gem brugerdefinerede køretøjsdesignnavne
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Spilvalg
 STR_02C5_DIFFICULTY_SETTINGS                                    :Sværhedsgrad
 STR_02C7_CONFIG_PATCHES                                         :Indstil programrettelser
@@ -780,16 +780,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Fuld a
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Fuld detalje
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Gennemsigtige bygninger
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gennemsigtige stationsskilte
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Landområde information
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Tænd/Sluk konsol
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skærmbillede (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Kæmpe skærmbillede (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Fra
 STR_02DA_ON                                                     :{BLACK}Til
@@ -846,7 +846,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Vælg 's
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Vælg 'legetøjsland' landskab
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financiér opførelse af ny industri
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Industrioversigt
 STR_0313_FUND_NEW_INDUSTRY                                      :Opfør ny industri
 ############ range ends here
@@ -892,7 +892,7 @@ STR_TOWNNAME_DANISH                                             :Danske
 STR_TOWNNAME_TURKISH                                            :Tyrkiske
 STR_TOWNNAME_ITALIAN                                            :Italienske
 STR_TOWNNAME_CATALAN                                            :Catalanske
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Pund (£)
 STR_CURR_USD                                                    :Dollar ($)
@@ -1858,11 +1858,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Boblegenerator
 STR_4825_TOFFEE_QUARRY                                          :Karamelbrud
 STR_4826_SUGAR_MINE                                             :Sukkermine
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Kræver: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Kræver: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Kræver: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion sidste måned:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporteret)
@@ -1935,8 +1935,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Kan ikke
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...du ejer det allerede!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Ikke navngivet
@@ -1979,7 +1979,7 @@ STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterplads
 STR_SV_STNAME_FOREST                                            :{STRING} Skov
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Sværhedsgrad

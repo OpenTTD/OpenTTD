@@ -344,7 +344,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} 톤중
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :경영 수익 그래프
 STR_0155_INCOME_GRAPH                                           :수입 그래프
 STR_0156_DELIVERED_CARGO_GRAPH                                  :수송 화물량 그래프
@@ -353,7 +353,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :회사가치 �
 STR_0159_CARGO_PAYMENT_RATES                                    :화물 지불량 그래프
 STR_015A_COMPANY_LEAGUE_TABLE                                   :회사 리그 순위
 STR_PERFORMANCE_DETAIL_MENU                                     :상세 성취도
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD에 대해서
 STR_015C_SAVE_GAME                                              :게임 저장하기
@@ -494,7 +494,7 @@ STR_01A9_NONE                                                   :없음
 STR_01AA_NAME                                                   :{BLACK}이름
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -526,7 +526,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -765,7 +765,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}차량 �
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}사용자 차량 디자인명 저장
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :게임 옵션
 STR_02C5_DIFFICULTY_SETTINGS                                    :난이도 설정
 STR_02C7_CONFIG_PATCHES                                         :패치 구성
@@ -779,16 +779,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}완전
 STR_02D2_FULL_DETAIL                                            :{SETX 12}아주 상세하게
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}건물 안보이기
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}역이름 팻말 안보이기
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :지형 정보
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :콘솔 켜기/끄기
 STR_02D7_SCREENSHOT_CTRL_S                                      :스크린 샷 (Ctrl+S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :거대 스크린샷 (Ctrl+G)
 STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD'에 대해서
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}끄기
 STR_02DA_ON                                                     :{BLACK}켜기
@@ -845,7 +845,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}열대 �
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}장난감나라 선택
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}새로운 산업시설에 투자
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :산업시설 목록
 STR_0313_FUND_NEW_INDUSTRY                                      :새로운 산업시설 건설
 ############ range ends here
@@ -891,7 +891,7 @@ STR_TOWNNAME_DANISH                                             :덴마크어
 STR_TOWNNAME_TURKISH                                            :터키어
 STR_TOWNNAME_ITALIAN                                            :이탈리아어
 STR_TOWNNAME_CATALAN                                            :카탈로니아어
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :파운드 (￡)
 STR_CURR_USD                                                    :달러 ($)
@@ -1855,11 +1855,11 @@ STR_4824_BUBBLE_GENERATOR                                       :풍선껌 제�
 STR_4825_TOFFEE_QUARRY                                          :태피 채취장
 STR_4826_SUGAR_MINE                                             :설탕 광산
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}필요함: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}필요함: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}필요함: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}지난달 생산량:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% 수송됨)
@@ -1932,8 +1932,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}이 지�
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...이미 소유중입니다!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :이름 없음
@@ -1976,7 +1976,7 @@ STR_SV_STNAME_LOWER                                             :하부 {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} 헬리포트
 STR_SV_STNAME_FOREST                                            :{STRING} 삼림
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}난이도

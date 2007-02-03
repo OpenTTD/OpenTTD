@@ -458,7 +458,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} megapond{P "" y ů}
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf provozního zisku
 STR_0155_INCOME_GRAPH                                           :Graf příjmů
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf doručeného zboží
@@ -467,7 +467,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Graf hodnoty sp
 STR_0159_CARGO_PAYMENT_RATES                                    :Graf přepravních sazeb
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Tabulka společností
 STR_PERFORMANCE_DETAIL_MENU                                     :Podrobné hodnocení výkonu
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}O OpenTTD
 STR_015C_SAVE_GAME                                              :Uložit hru
@@ -608,7 +608,7 @@ STR_01A9_NONE                                                   :Nic
 STR_01AA_NAME                                                   :{BLACK}Jméno
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
 STR_01AE_3RD                                                    :3.
@@ -640,7 +640,7 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -882,7 +882,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Výběr 
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Uložit uživatelské názvy dopravních prostředků na disk
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Možnosti hry
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nastavení obtížnosti
 STR_02C7_CONFIG_PATCHES                                         :Nastavení patchů
@@ -896,16 +896,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Plné 
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Plné detaily
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Průhledné budovy
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Průhledná jména stanic
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informace o zemi
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Zobrazit / skrýt konzoli
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Obrovský screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Vypnuto
 STR_02DA_ON                                                     :{BLACK}Zapnuto
@@ -962,7 +962,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Subtropi
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Země hraček
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Průmysl
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Seznam průmyslu
 STR_0313_FUND_NEW_INDUSTRY                                      :Investovat do průmyslu
 ############ range ends here
@@ -1008,7 +1008,7 @@ STR_TOWNNAME_DANISH                                             :Dánská
 STR_TOWNNAME_TURKISH                                            :Turecká
 STR_TOWNNAME_ITALIAN                                            :Italská
 STR_TOWNNAME_CATALAN                                            :Katalánská
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Libra (£)
 STR_CURR_USD                                                    :Dolar ($)
@@ -1974,11 +1974,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Generátor bubl
 STR_4825_TOFFEE_QUARRY                                          :Karamelolom
 STR_4826_SUGAR_MINE                                             :Cukerný důl
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkce minulý měsíc:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA} % přepraveno)
@@ -2051,8 +2051,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Nelze za
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}... již ji vlastníš!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Beze jména
@@ -2095,7 +2095,7 @@ STR_SV_STNAME_LOWER                                             :dolní {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} heliport
 STR_SV_STNAME_FOREST                                            :{STRING} les
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Obtížnost

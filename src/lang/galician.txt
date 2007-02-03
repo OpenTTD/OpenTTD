@@ -341,7 +341,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :G. beneficios operativos
 STR_0155_INCOME_GRAPH                                           :Gráfica de ingresos
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Gráfica de carga entregada
@@ -350,7 +350,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Gráfica do Val
 STR_0159_CARGO_PAYMENT_RATES                                    :Taxas de pago polas cargas
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Táboa da Liga de compañías
 STR_PERFORMANCE_DETAIL_MENU                                     :Puntuación de rendemento detallado
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Acerca de OpenTTD
 STR_015C_SAVE_GAME                                              :Grabar Partida
@@ -478,7 +478,7 @@ STR_01A9_NONE                                                   :Ningún
 STR_01AA_NAME                                                   :{BLACK}Nome
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1º
 STR_01AD_2ND                                                    :2º
 STR_01AE_3RD                                                    :3º
@@ -510,7 +510,7 @@ STR_01C7_28TH                                                   :28º
 STR_01C8_29TH                                                   :29º
 STR_01C9_30TH                                                   :30º
 STR_01CA_31ST                                                   :31º
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -746,7 +746,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selecci�
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Graba-los nomes dos deseños dos vehículos persoalizados no disco
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Opcións da Partida
 STR_02C5_DIFFICULTY_SETTINGS                                    :Configuración de Dificultade
 STR_02C7_CONFIG_PATCHES                                         :Configuración dos Parches
@@ -760,16 +760,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animac
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detalle completo
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edificios transparentes
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Sinais de estación transparentes
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Información de área de terreo
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Des/Activar Consola
 STR_02D7_SCREENSHOT_CTRL_S                                      :Captura de Pantalla (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Capt.Pant. Xigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Acerca de 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Off
 STR_02DA_ON                                                     :{BLACK}On
@@ -825,7 +825,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Seleccio
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Selecciona-lo estilo da paisaxe 'Xoguetelandia'
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Fundar unha nova industria
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Directorio de Industrias
 STR_0313_FUND_NEW_INDUSTRY                                      :Fundar unha nova industria
 ############ range ends here
@@ -871,7 +871,7 @@ STR_TOWNNAME_DANISH                                             :Danés
 STR_TOWNNAME_TURKISH                                            :Turco
 STR_TOWNNAME_ITALIAN                                            :Italiano
 STR_TOWNNAME_CATALAN                                            :Catalán
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Libras (£)
 STR_CURR_USD                                                    :Dólares ($)
@@ -1801,11 +1801,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Xerador de Burb
 STR_4825_TOFFEE_QUARRY                                          :Canteira de Toffee
 STR_4826_SUGAR_MINE                                             :Mina de Azucre
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Require: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Require: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Require: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Producción no último mes:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportado)
@@ -1878,8 +1878,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Non se p
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...¡xa é da túa propiedade!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sen Nome
@@ -1922,7 +1922,7 @@ STR_SV_STNAME_LOWER                                             :Inferior {STRIN
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliporto
 STR_SV_STNAME_FOREST                                            :{STRING} Bosque
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Nivel de Dificultade

@@ -344,7 +344,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA}重量トン
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :営業利益
 STR_0155_INCOME_GRAPH                                           :収入グラフ
 STR_0156_DELIVERED_CARGO_GRAPH                                  :運送済み貨物のグラフ
@@ -353,7 +353,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :会社価値グ
 STR_0159_CARGO_PAYMENT_RATES                                    :貨物運送料
 STR_015A_COMPANY_LEAGUE_TABLE                                   :会社の成績表
 STR_PERFORMANCE_DETAIL_MENU                                     :詳しい成績表
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD について
 STR_015C_SAVE_GAME                                              :ゲームを保存
@@ -494,7 +494,7 @@ STR_01A9_NONE                                                   :なし
 STR_01AA_NAME                                                   :{BLACK}名称
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1日
 STR_01AD_2ND                                                    :2日
 STR_01AE_3RD                                                    :3日
@@ -526,7 +526,7 @@ STR_01C7_28TH                                                   :28日
 STR_01C8_29TH                                                   :29日
 STR_01C9_30TH                                                   :30日
 STR_01CA_31ST                                                   :31日
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -768,7 +768,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}車両�
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}カスタマイズした車両の名称を保存します
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :ゲームの設定
 STR_02C5_DIFFICULTY_SETTINGS                                    :難易度の設定
 STR_02C7_CONFIG_PATCHES                                         :パッチの設定
@@ -782,16 +782,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}高級
 STR_02D2_FULL_DETAIL                                            :{SETX 12}高級の画像
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}建物を半透明で表示
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}標示を半透明で表示
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :地域情報
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :コンソールの切り替え
 STR_02D7_SCREENSHOT_CTRL_S                                      :スクリーンショット（Ctrl-S）
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :大型スクリーンショット（Ctrl-G）
 STR_02D9_ABOUT_OPENTTD                                          :OpenTTDについて
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}切
 STR_02DA_ON                                                     :{BLACK}入
@@ -848,7 +848,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}亜熱�
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}玩具国を選択します
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}新規産業の建設を出資
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :産業リスト
 STR_0313_FUND_NEW_INDUSTRY                                      :新規産業の建設を出資
 ############ range ends here
@@ -894,7 +894,7 @@ STR_TOWNNAME_DANISH                                             :デンマーク
 STR_TOWNNAME_TURKISH                                            :トルコ
 STR_TOWNNAME_ITALIAN                                            :イタリア
 STR_TOWNNAME_CATALAN                                            :カタラン
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :英ポンド（£）
 STR_CURR_USD                                                    :米ドラー（$）
@@ -1860,11 +1860,11 @@ STR_4824_BUBBLE_GENERATOR                                       :発泡所
 STR_4825_TOFFEE_QUARRY                                          :タフィー鉱山
 STR_4826_SUGAR_MINE                                             :砂糖鉱山
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}と{STRING}
 STR_4829_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}、{STRING}、{STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}先月の生産量：
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK}（{COMMA}％運送済み）
@@ -1937,8 +1937,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}この�
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...すでに所有しています！
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :名前無し
@@ -1981,7 +1981,7 @@ STR_SV_STNAME_LOWER                                             :下{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING}ヘリポート
 STR_SV_STNAME_FOREST                                            :{STRING}森林
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}難易度

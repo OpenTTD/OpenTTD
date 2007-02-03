@@ -443,7 +443,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnine jõud
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Opereerimiskasumi graafik
 STR_0155_INCOME_GRAPH                                           :Sissetulekute graafik
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Transporditud kauba graafik
@@ -452,7 +452,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Ettevõtte vä�
 STR_0159_CARGO_PAYMENT_RATES                                    :Veotasude määrad
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Ettevõtete edetabel
 STR_PERFORMANCE_DETAIL_MENU                                     :Üksikasjalik tulemusreiting
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD lisainfo
 STR_015C_SAVE_GAME                                              :Salvesta mäng
@@ -593,7 +593,7 @@ STR_01A9_NONE                                                   :Mitte keegi
 STR_01AA_NAME                                                   :{BLACK}Nimi
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
 STR_01AE_3RD                                                    :3.
@@ -625,7 +625,7 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -864,7 +864,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Sõiduki
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salvesta omatehtud disaininimed
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Mängu seaded
 STR_02C5_DIFFICULTY_SETTINGS                                    :Raskusastme seaded
 STR_02C7_CONFIG_PATCHES                                         :Paranduste seaded
@@ -878,16 +878,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Täiel
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Kõik üksikasjad
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Läbipaistvad hooned
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Läbinähtavad jaama nimesildid
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Maapinna informatsioon
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Lülita konsool sisse/välja
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ekraanitõmmis (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Hiiglaslik ekraanitõmmis (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' kohta
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Väljas
 STR_02DA_ON                                                     :{BLACK}Sees
@@ -944,7 +944,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Vali 'l�
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Vali 'mänguasjamaa' maastik
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Rahasta uute ehitiste konstrueerimist
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Tööstuste nimistu
 STR_0313_FUND_NEW_INDUSTRY                                      :Rahasta uue tööstuse ehitamist
 ############ range ends here
@@ -990,7 +990,7 @@ STR_TOWNNAME_DANISH                                             :Taani
 STR_TOWNNAME_TURKISH                                            :Türgi
 STR_TOWNNAME_ITALIAN                                            :Itaalia
 STR_TOWNNAME_CATALAN                                            :Katalaani
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Naelad (£)
 STR_CURR_USD                                                    :Dollarid ($)
@@ -1956,11 +1956,11 @@ STR_4824_BUBBLE_GENERATOR                                       :mulligeneraator
 STR_4825_TOFFEE_QUARRY                                          :iirisekaevandus
 STR_4826_SUGAR_MINE                                             :suhkrukaevandus
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Vajab: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Vajab: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Vajab: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Eelmise kuu toodang:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% veetud)
@@ -2033,8 +2033,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Seda maa
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...see on juba sinu oma!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Nimetu
@@ -2077,7 +2077,7 @@ STR_SV_STNAME_LOWER                                             :Alumine {STRING
 STR_SV_STNAME_HELIPORT                                          :{STRING} helikopteri maandumisplats
 STR_SV_STNAME_FOREST                                            :{STRING} mets
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Raskusaste
