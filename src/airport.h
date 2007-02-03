@@ -130,6 +130,14 @@ typedef struct AirportMovingData {
 
 // Finite sTate mAchine --> FTA
 typedef struct AirportFTAClass {
+	public:
+		const AirportMovingData *MovingData(byte position) const
+		{
+			assert(position < nofelements);
+			return &moving_data[position];
+		}
+
+	const AirportMovingData *moving_data;
 	byte nofelements;                     // number of positions the airport consists of
 	const byte *terminals;
 	const byte *helipads;
@@ -154,7 +162,6 @@ typedef struct AirportFTA {
 void InitializeAirports(void);
 void UnInitializeAirports(void);
 const AirportFTAClass *GetAirport(const byte airport_type);
-const AirportMovingData *GetAirportMovingData(byte airport_type, byte position);
 
 /** Get buildable airport bitmask.
  * @return get all buildable airports at this given time, bitmasked.

@@ -30,6 +30,7 @@ static AirportFTAClass *IntercontinentalAirport;
 static AirportFTAClass *HeliStation;
 
 static void AirportFTAClass_Constructor(AirportFTAClass *apc,
+	const AirportMovingData *moving_data,
 	const byte *terminals, const byte *helipads,
 	const byte entry_point,  const AcceptPlanes acc_planes,
 	const AirportFTAbuildup *apFA,
@@ -54,6 +55,7 @@ void InitializeAirports(void)
 
 	AirportFTAClass_Constructor(
 		CountryAirport,
+		_airport_moving_data_country,
 		_airport_terminal_country,
 		NULL,
 		16,
@@ -69,6 +71,7 @@ void InitializeAirports(void)
 
 	AirportFTAClass_Constructor(
 		CityAirport,
+		_airport_moving_data_town,
 		_airport_terminal_city,
 		NULL,
 		19,
@@ -84,6 +87,7 @@ void InitializeAirports(void)
 
 	AirportFTAClass_Constructor(
 		MetropolitanAirport,
+		_airport_moving_data_metropolitan,
 		_airport_terminal_metropolitan,
 		NULL,
 		20,
@@ -99,6 +103,7 @@ void InitializeAirports(void)
 
 	AirportFTAClass_Constructor(
 		InternationalAirport,
+		_airport_moving_data_international,
 		_airport_terminal_international,
 		_airport_helipad_international,
 		37,
@@ -114,6 +119,7 @@ void InitializeAirports(void)
 
 	AirportFTAClass_Constructor(
 		IntercontinentalAirport,
+		_airport_moving_data_intercontinental,
 		_airport_terminal_intercontinental,
 		_airport_helipad_intercontinental,
 		43,
@@ -124,11 +130,11 @@ void InitializeAirports(void)
 		9,11
 	);
 
-	// heliport, oilrig
 	Heliport = MallocT<AirportFTAClass>(1);
 
 	AirportFTAClass_Constructor(
 		Heliport,
+		_airport_moving_data_heliport,
 		NULL,
 		_airport_helipad_heliport_oilrig,
 		7,
@@ -139,13 +145,26 @@ void InitializeAirports(void)
 		1, 1
 	);
 
-	Oilrig = Heliport;  // exactly the same structure for heliport/oilrig, so share state machine
+	Oilrig = MallocT<AirportFTAClass>(1);
+	AirportFTAClass_Constructor(
+		Oilrig,
+		_airport_moving_data_oilrig,
+		NULL,
+		_airport_helipad_heliport_oilrig,
+		7,
+		HELICOPTERS_ONLY,
+		_airport_fta_heliport_oilrig,
+		NULL,
+		0,
+		1, 1
+	);
 
 	// commuter airport
 	CommuterAirport = MallocT<AirportFTAClass>(1);
 
 	AirportFTAClass_Constructor(
 		CommuterAirport,
+		_airport_moving_data_commuter,
 		_airport_terminal_commuter,
 		_airport_helipad_commuter,
 		22,
@@ -161,6 +180,7 @@ void InitializeAirports(void)
 
 	AirportFTAClass_Constructor(
 		HeliDepot,
+		_airport_moving_data_helidepot,
 		NULL,
 		_airport_helipad_helidepot,
 		4,
@@ -176,6 +196,7 @@ void InitializeAirports(void)
 
 	AirportFTAClass_Constructor(
 		HeliStation,
+		_airport_moving_data_helistation,
 		NULL,
 		_airport_helipad_helistation,
 		25,
@@ -202,6 +223,7 @@ void UnInitializeAirports(void)
 }
 
 static void AirportFTAClass_Constructor(AirportFTAClass *apc,
+	const AirportMovingData *moving_data,
 	const byte *terminals, const byte *helipads,
 	const byte entry_point, const AcceptPlanes acc_planes,
 	const AirportFTAbuildup *apFA,
@@ -212,6 +234,7 @@ static void AirportFTAClass_Constructor(AirportFTAClass *apc,
 	byte nofterminals, nofhelipads;
 	byte nofterminalgroups, nofhelipadgroups;
 
+	apc->moving_data = moving_data;
 	apc->size_x = size_x;
 	apc->size_y = size_y;
 
@@ -469,12 +492,6 @@ const AirportFTAClass *GetAirport(const byte airport_type)
 	}
 }
 
-const AirportMovingData *GetAirportMovingData(byte airport_type, byte position)
-{
-	assert(airport_type < lengthof(_airport_moving_datas));
-	assert(position < GetAirport(airport_type)->nofelements);
-	return &_airport_moving_datas[airport_type][position];
-}
 
 uint32 GetValidAirports(void)
 {

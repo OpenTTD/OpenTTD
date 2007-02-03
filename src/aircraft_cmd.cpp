@@ -916,7 +916,6 @@ static byte GetAircraftFlyingAltitude(const Vehicle *v)
 static bool AircraftController(Vehicle *v)
 {
 	Station *st;
-	const AirportMovingData *amd;
 	Vehicle *u;
 	byte z, maxz, curz;
 	Direction newdir;
@@ -937,7 +936,7 @@ static bool AircraftController(Vehicle *v)
 	}
 
 	// get airport moving data
-	amd = GetAirportMovingData(st->airport_type, v->u.air.pos);
+	const AirportMovingData *amd = GetAirport(st->airport_type)->MovingData(v->u.air.pos);
 
 	// Helicopter raise
 	if (amd->flag & AMED_HELI_RAISE) {

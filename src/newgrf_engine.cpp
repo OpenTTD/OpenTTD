@@ -288,7 +288,7 @@ enum {
 static byte MapAircraftMovementState(const Vehicle *v)
 {
 	const Station *st = GetStation(v->u.air.targetairport);
-	byte amdflag = GetAirportMovingData(st->airport_type, v->u.air.pos)->flag;
+	byte amdflag = GetAirport(st->airport_type)->MovingData(v->u.air.pos)->flag;
 
 	switch (v->u.air.state) {
 		case HANGAR:

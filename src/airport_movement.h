@@ -771,24 +771,4 @@ static const AirportFTAbuildup _airport_fta_helistation[] = {
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
 
-
-static const AirportMovingData * const _airport_moving_datas[] = {
-	_airport_moving_data_country,           // Country Airfield (small) 4x3
-	_airport_moving_data_town,              // City Airport (large) 6x6
-	_airport_moving_data_heliport,          // Heliport
-	_airport_moving_data_metropolitan,      // Metropolitain Airport (large) - 2 runways
-	_airport_moving_data_international,     // International Airport (xlarge) - 2 runways
-	_airport_moving_data_commuter,          // Commuter Airfield (small) 5x4
-	_airport_moving_data_helidepot,         // Helidepot
-	_airport_moving_data_intercontinental,  // Intercontinental Airport (xxlarge) - 4 runways
-	_airport_moving_data_helistation,       // Helistation
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	_airport_moving_data_oilrig             // Oilrig
-};
-
 #endif /* AIRPORT_MOVEMENT_H */
