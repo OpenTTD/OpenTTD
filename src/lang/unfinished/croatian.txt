@@ -396,8 +396,6 @@ STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Pogledaj
 STR_MANAGE_LIST                                                 :{BLACK}Uredi popis
 STR_MANAGE_LIST_TIP                                             :{BLACK}Pošalji upute svim vozilima na ovoj listi
 STR_REPLACE_VEHICLES                                            :Zamjeni vozila
-STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :
-STR_SEND_SHIP_TO_DEPOT                                          :
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Pošalji u hangar
 STR_SEND_FOR_SERVICING                                          :Pošalji na servis
 
