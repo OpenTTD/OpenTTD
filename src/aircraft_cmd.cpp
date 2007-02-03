@@ -338,24 +338,17 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		_new_vehicle_id = v->index;
 
-		v->u.air.pos = MAX_ELEMENTS;
-
 		/* When we click on hangar we know the tile it is on. By that we know
 		 * its position in the array of depots the airport has.....we can search
 		 * layout for #th position of depot. Since layout must start with a listing
 		 * of all depots, it is simple */
-		{
-			uint i;
-
-			for (i = 0; i < apc->nof_depots; i++) {
-				if (st->airport_tile + ToTileIndexDiff(apc->airport_depots[i]) == tile) {
-					assert(apc->layout[i].heading == HANGAR);
-					v->u.air.pos = apc->layout[i].position;
-					break;
-				}
+		for (uint i = 0;; i++) {
+			assert(i != apc->nof_depots);
+			if (st->airport_tile + ToTileIndexDiff(apc->airport_depots[i]) == tile) {
+				assert(apc->layout[i].heading == HANGAR);
+				v->u.air.pos = apc->layout[i].position;
+				break;
 			}
-			// to ensure v->u.air.pos has been given a value
-			assert(v->u.air.pos != MAX_ELEMENTS);
 		}
 
 		v->u.air.state = HANGAR;
