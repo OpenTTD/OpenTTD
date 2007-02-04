@@ -14,16 +14,16 @@
 # define INT64_MAX 9223372036854775807LL
 #endif
 
-#include <stdio.h>
-#include <stddef.h>
-#include <string.h>
-#include <stdlib.h>
-#include <limits.h>
+#include <cstdio>
+#include <cstddef>
+#include <cstring>
+#include <cstdlib>
+#include <climits>
 
 // MacOS X will use an NSAlert to display failed assertaions since they're lost unless running from a terminal
 // strgen always runs from terminal and don't need a window for asserts
 #if !defined(__APPLE__) || defined(STRGEN)
-# include <assert.h>
+# include <cassert>
 #else
 # include "os/macosx/macos.h"
 #endif
@@ -157,7 +157,6 @@
 # define strcasecmp stricmp
 # define strncasecmp strnicmp
 // suppress: warning C4005: 'offsetof' : macro redefinition (VC8)
-# include <stddef.h>
 #endif /* defined(_MSC_VER) */
 
 #if defined(WINCE)
