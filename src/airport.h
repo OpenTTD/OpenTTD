@@ -123,7 +123,8 @@ enum {
 };
 
 typedef struct AirportMovingData {
-	int x,y;
+	int16 x;
+	int16 y;
 	byte flag;
 	DirectionByte direction;
 } AirportMovingData;
@@ -155,25 +156,25 @@ typedef struct AirportFTAClass {
 		}
 
 	const AirportMovingData *moving_data;
-	byte nofelements;                     // number of positions the airport consists of
+	struct AirportFTA *layout;            // state machine for airport
 	const byte *terminals;
 	const byte *helipads;
-	byte entry_point;                     // when an airplane arrives at this airport, enter it at position entry_point
-	AcceptPlanesByte acc_planes;                      // accept airplanes or helicopters or both
 	const TileIndexDiffC *airport_depots; // gives the position of the depots on the airports
 	byte nof_depots;                      // number of depots this airport has
-	struct AirportFTA *layout;            // state machine for airport
+	byte nofelements;                     // number of positions the airport consists of
+	byte entry_point;                     // when an airplane arrives at this airport, enter it at position entry_point
+	AcceptPlanesByte acc_planes;          // accept airplanes or helicopters or both
 	byte size_x;
 	byte size_y;
 } AirportFTAClass;
 
 // internal structure used in openttd - Finite sTate mAchine --> FTA
 typedef struct AirportFTA {
+	struct AirportFTA *next; // possible extra movement choices from this position
+	uint32 block;            // 32 bit blocks (st->airport_flags), should be enough for the most complex airports
 	byte position;           // the position that an airplane is at
 	byte next_position;      // next position from this position
-	uint32 block;            // 32 bit blocks (st->airport_flags), should be enough for the most complex airports
 	byte heading;            // heading (current orders), guiding an airplane to its target on an airport
-	struct AirportFTA *next; // possible extra movement choices from this position
 } AirportFTA;
 
 void InitializeAirports(void);

@@ -89,11 +89,11 @@ enum {
  * - REF_SHEDULE (all REFs are currently limited to 16 bits!!)
  */
 typedef struct Order {
+	struct Order *next;   ///< Pointer to next order. If NULL, end of list
+
 	OrderTypeByte type;
 	uint8  flags;
 	DestinationID dest;   ///< The destionation of the order.
-
-	struct Order *next;   ///< Pointer to next order. If NULL, end of list
 
 	OrderID index;         ///< Index of the order, is not saved or anything, just for reference
 

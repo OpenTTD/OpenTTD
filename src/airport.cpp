@@ -190,12 +190,12 @@ AirportFTAClass::AirportFTAClass(
 	uint size_y_
 ) :
 	moving_data(moving_data_),
-	nofelements(AirportGetNofElements(apFA)),
 	terminals(terminals_),
 	helipads(helipads_),
-	entry_point(entry_point_),
 	airport_depots(depots_),
 	nof_depots(nof_depots_),
+	nofelements(AirportGetNofElements(apFA)),
+	entry_point(entry_point_),
 	size_x(size_x_),
 	size_y(size_y_)
 {
