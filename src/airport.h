@@ -128,9 +128,26 @@ typedef struct AirportMovingData {
 	DirectionByte direction;
 } AirportMovingData;
 
+struct AirportFTAbuildup;
+
 // Finite sTate mAchine --> FTA
 typedef struct AirportFTAClass {
 	public:
+		AirportFTAClass(
+			const AirportMovingData *moving_data,
+			const byte *terminals,
+			const byte *helipads,
+			byte entry_point,
+			AcceptPlanes acc_planes,
+			const AirportFTAbuildup *apFA,
+			const TileIndexDiffC *depots,
+			byte nof_depots,
+			uint size_x,
+			uint size_y
+		);
+
+		~AirportFTAClass();
+
 		const AirportMovingData *MovingData(byte position) const
 		{
 			assert(position < nofelements);

@@ -29,32 +29,10 @@ static AirportFTAClass *HeliDepot;
 static AirportFTAClass *IntercontinentalAirport;
 static AirportFTAClass *HeliStation;
 
-static void AirportFTAClass_Constructor(AirportFTAClass *apc,
-	const AirportMovingData *moving_data,
-	const byte *terminals, const byte *helipads,
-	const byte entry_point,  const AcceptPlanes acc_planes,
-	const AirportFTAbuildup *apFA,
-	const TileIndexDiffC *depots, const byte nof_depots,
-	uint size_x, uint size_y
-);
-static void AirportFTAClass_Destructor(AirportFTAClass *apc);
-
-static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA);
-static void AirportBuildAutomata(AirportFTAClass *apc, const AirportFTAbuildup *apFA);
-static byte AirportGetTerminalCount(const byte *terminals, byte *groups);
-static byte AirportTestFTA(const AirportFTAClass *apc);
-
-#ifdef DEBUG_AIRPORT
-static void AirportPrintOut(const AirportFTAClass *apc, bool full_report);
-#endif /* DEBUG_AIRPORT */
 
 void InitializeAirports(void)
 {
-	// country airport
-	CountryAirport = MallocT<AirportFTAClass>(1);
-
-	AirportFTAClass_Constructor(
-		CountryAirport,
+	CountryAirport = new AirportFTAClass(
 		_airport_moving_data_country,
 		_airport_terminal_country,
 		NULL,
@@ -66,11 +44,7 @@ void InitializeAirports(void)
 		4, 3
 	);
 
-	// city airport
-	CityAirport = MallocT<AirportFTAClass>(1);
-
-	AirportFTAClass_Constructor(
-		CityAirport,
+	CityAirport = new AirportFTAClass(
 		_airport_moving_data_town,
 		_airport_terminal_city,
 		NULL,
@@ -82,11 +56,7 @@ void InitializeAirports(void)
 		6, 6
 	);
 
-	// metropolitan airport
-	MetropolitanAirport = MallocT<AirportFTAClass>(1);
-
-	AirportFTAClass_Constructor(
-		MetropolitanAirport,
+	MetropolitanAirport = new AirportFTAClass(
 		_airport_moving_data_metropolitan,
 		_airport_terminal_metropolitan,
 		NULL,
@@ -98,11 +68,7 @@ void InitializeAirports(void)
 		6, 6
 	);
 
-	// international airport
-	InternationalAirport = MallocT<AirportFTAClass>(1);
-
-	AirportFTAClass_Constructor(
-		InternationalAirport,
+	InternationalAirport = new AirportFTAClass(
 		_airport_moving_data_international,
 		_airport_terminal_international,
 		_airport_helipad_international,
@@ -114,11 +80,7 @@ void InitializeAirports(void)
 		7, 7
 	);
 
-	// intercontintental airport
-	IntercontinentalAirport = MallocT<AirportFTAClass>(1);
-
-	AirportFTAClass_Constructor(
-		IntercontinentalAirport,
+	IntercontinentalAirport = new AirportFTAClass(
 		_airport_moving_data_intercontinental,
 		_airport_terminal_intercontinental,
 		_airport_helipad_intercontinental,
@@ -130,10 +92,7 @@ void InitializeAirports(void)
 		9,11
 	);
 
-	Heliport = MallocT<AirportFTAClass>(1);
-
-	AirportFTAClass_Constructor(
-		Heliport,
+	Heliport = new AirportFTAClass(
 		_airport_moving_data_heliport,
 		NULL,
 		_airport_helipad_heliport_oilrig,
@@ -145,9 +104,7 @@ void InitializeAirports(void)
 		1, 1
 	);
 
-	Oilrig = MallocT<AirportFTAClass>(1);
-	AirportFTAClass_Constructor(
-		Oilrig,
+	Oilrig = new AirportFTAClass(
 		_airport_moving_data_oilrig,
 		NULL,
 		_airport_helipad_heliport_oilrig,
@@ -159,11 +116,7 @@ void InitializeAirports(void)
 		1, 1
 	);
 
-	// commuter airport
-	CommuterAirport = MallocT<AirportFTAClass>(1);
-
-	AirportFTAClass_Constructor(
-		CommuterAirport,
+	CommuterAirport = new AirportFTAClass(
 		_airport_moving_data_commuter,
 		_airport_terminal_commuter,
 		_airport_helipad_commuter,
@@ -175,11 +128,7 @@ void InitializeAirports(void)
 		5,4
 	);
 
-	// helidepot airport
-	HeliDepot = MallocT<AirportFTAClass>(1);
-
-	AirportFTAClass_Constructor(
-		HeliDepot,
+	HeliDepot = new AirportFTAClass(
 		_airport_moving_data_helidepot,
 		NULL,
 		_airport_helipad_helidepot,
@@ -191,11 +140,7 @@ void InitializeAirports(void)
 		2,2
 	);
 
-	// helistation airport
-	HeliStation = MallocT<AirportFTAClass>(1);
-
-	AirportFTAClass_Constructor(
-		HeliStation,
+	HeliStation = new AirportFTAClass(
 		_airport_moving_data_helistation,
 		NULL,
 		_airport_helipad_helistation,
@@ -206,102 +151,110 @@ void InitializeAirports(void)
 		lengthof(_airport_depots_helistation),
 		4,2
 	);
-
 }
 
 void UnInitializeAirports(void)
 {
-	AirportFTAClass_Destructor(CountryAirport);
-	AirportFTAClass_Destructor(CityAirport);
-	AirportFTAClass_Destructor(Heliport);
-	AirportFTAClass_Destructor(MetropolitanAirport);
-	AirportFTAClass_Destructor(InternationalAirport);
-	AirportFTAClass_Destructor(CommuterAirport);
-	AirportFTAClass_Destructor(HeliDepot);
-	AirportFTAClass_Destructor(IntercontinentalAirport);
-	AirportFTAClass_Destructor(HeliStation);
+	delete CountryAirport;
+	delete CityAirport;
+	delete Heliport;
+	delete MetropolitanAirport;
+	delete InternationalAirport;
+	delete CommuterAirport;
+	delete HeliDepot;
+	delete IntercontinentalAirport;
+	delete HeliStation;
 }
 
-static void AirportFTAClass_Constructor(AirportFTAClass *apc,
-	const AirportMovingData *moving_data,
-	const byte *terminals, const byte *helipads,
-	const byte entry_point, const AcceptPlanes acc_planes,
+
+static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA);
+static AirportFTA* AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA);
+static byte AirportGetTerminalCount(const byte *terminals, byte *groups);
+static byte AirportTestFTA(uint nofelements, const AirportFTA *layout, const byte *terminals);
+
+#ifdef DEBUG_AIRPORT
+static void AirportPrintOut(uint nofelements, const AirportFTA *layout, bool full_report);
+#endif
+
+
+AirportFTAClass::AirportFTAClass(
+	const AirportMovingData *moving_data_,
+	const byte *terminals_,
+	const byte *helipads_,
+	const byte entry_point_,
+	const AcceptPlanes acc_planes_,
 	const AirportFTAbuildup *apFA,
-	const TileIndexDiffC *depots, const byte nof_depots,
-	uint size_x, uint size_y
-)
+	const TileIndexDiffC *depots_,
+	const byte nof_depots_,
+	uint size_x_,
+	uint size_y_
+) :
+	moving_data(moving_data_),
+	nofelements(AirportGetNofElements(apFA)),
+	terminals(terminals_),
+	helipads(helipads_),
+	entry_point(entry_point_),
+	airport_depots(depots_),
+	nof_depots(nof_depots_),
+	size_x(size_x_),
+	size_y(size_y_)
 {
-	byte nofterminals, nofhelipads;
 	byte nofterminalgroups, nofhelipadgroups;
 
-	apc->moving_data = moving_data;
-	apc->size_x = size_x;
-	apc->size_y = size_y;
+	acc_planes = acc_planes_; // XXX TinyEnumT has no initialisation, only assignment
 
 	/* Set up the terminal and helipad count for an airport.
 	 * TODO: If there are more than 10 terminals or 4 helipads, internal variables
 	 * need to be changed, so don't allow that for now */
-	nofterminals = AirportGetTerminalCount(terminals, &nofterminalgroups);
+	uint nofterminals = AirportGetTerminalCount(terminals, &nofterminalgroups);
 	if (nofterminals > MAX_TERMINALS) {
 		DEBUG(misc, 0, "[Ap] only a maximum of %d terminals are supported (requested %d)", MAX_TERMINALS, nofterminals);
 		assert(nofterminals <= MAX_TERMINALS);
 	}
-	apc->terminals = terminals;
 
-	nofhelipads = AirportGetTerminalCount(helipads, &nofhelipadgroups);
+	uint nofhelipads = AirportGetTerminalCount(helipads, &nofhelipadgroups);
 	if (nofhelipads > MAX_HELIPADS) {
 		DEBUG(misc, 0, "[Ap] only a maximum of %d helipads are supported (requested %d)", MAX_HELIPADS, nofhelipads);
 		assert(nofhelipads <= MAX_HELIPADS);
 	}
-	apc->helipads = helipads;
 
 	/* Get the number of elements from the source table. We also double check this
 	 * with the entry point which must be within bounds and use this information
 	 * later on to build and validate the state machine */
-	apc->nofelements = AirportGetNofElements(apFA);
-	if (entry_point >= apc->nofelements) {
-		DEBUG(misc, 0, "[Ap] entry (%d) must be within the airport (maximum %d)", entry_point, apc->nofelements);
-		assert(entry_point < apc->nofelements);
+	if (entry_point >= nofelements) {
+		DEBUG(misc, 0, "[Ap] entry (%d) must be within the airport (maximum %d)", entry_point, nofelements);
+		assert(entry_point < nofelements);
 	}
 
-	apc->acc_planes     = acc_planes;
-	apc->entry_point    = entry_point;
-	apc->airport_depots = depots;
-	apc->nof_depots     = nof_depots;
-
 	/* Build the state machine itself */
-	AirportBuildAutomata(apc, apFA);
+	layout = AirportBuildAutomata(nofelements, apFA);
 	DEBUG(misc, 2, "[Ap] #count %3d; #term %2d (%dgrp); #helipad %2d (%dgrp); entry %3d",
-		apc->nofelements, nofterminals, nofterminalgroups, nofhelipads, nofhelipadgroups, apc->entry_point);
+		nofelements, nofterminals, nofterminalgroups, nofhelipads, nofhelipadgroups, entry_point);
 
 	/* Test if everything went allright. This is only a rude static test checking
 	 * the symantic correctness. By no means does passing the test mean that the
 	 * airport is working correctly or will not deadlock for example */
-	{ byte ret = AirportTestFTA(apc);
-		if (ret != MAX_ELEMENTS) DEBUG(misc, 0, "[Ap] problem with element: %d", ret - 1);
-		assert(ret == MAX_ELEMENTS);
-	}
+	uint ret = AirportTestFTA(nofelements, layout, terminals);
+	if (ret != MAX_ELEMENTS) DEBUG(misc, 0, "[Ap] problem with element: %d", ret - 1);
+	assert(ret == MAX_ELEMENTS);
 
 #ifdef DEBUG_AIRPORT
-	AirportPrintOut(apc, DEBUG_AIRPORT);
+	AirportPrintOut(nofelements, layout, DEBUG_AIRPORT);
 #endif
 }
 
-static void AirportFTAClass_Destructor(AirportFTAClass *apc)
-{
-	int i;
-	AirportFTA *current, *next;
 
-	for (i = 0; i < apc->nofelements; i++) {
-		current = apc->layout[i].next;
+AirportFTAClass::~AirportFTAClass()
+{
+	for (uint i = 0; i < nofelements; i++) {
+		AirportFTA *current = layout[i].next;
 		while (current != NULL) {
-			next = current->next;
+			AirportFTA *next = current->next;
 			free(current);
 			current = next;
 		};
 	}
-	free(apc->layout);
-	free(apc);
+	free(layout);
 }
 
 /** Get the number of elements of a source Airport state automata
@@ -344,16 +297,15 @@ static byte AirportGetTerminalCount(const byte *terminals, byte *groups)
 	return nof_terminals;
 }
 
-static void AirportBuildAutomata(AirportFTAClass *apc, const AirportFTAbuildup *apFA)
+
+static AirportFTA* AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA)
 {
 	AirportFTA *current;
-	AirportFTA *FAutomata = MallocT<AirportFTA>(apc->nofelements);
+	AirportFTA *FAutomata = MallocT<AirportFTA>(nofelements);
 	uint16 internalcounter = 0;
-	uint16 i;
 
-	apc->layout = FAutomata;
-	for (i = 0; i < apc->nofelements; i++) {
-		current = &apc->layout[i];
+	for (uint i = 0; i < nofelements; i++) {
+		current = &FAutomata[i];
 		current->position      = apFA[internalcounter].position;
 		current->heading       = apFA[internalcounter].heading;
 		current->block         = apFA[internalcounter].block;
@@ -375,18 +327,19 @@ static void AirportBuildAutomata(AirportFTAClass *apc, const AirportFTAbuildup *
 		current->next = NULL;
 		internalcounter++;
 	}
+	return FAutomata;
 }
 
-static byte AirportTestFTA(const AirportFTAClass *apc)
-{
-	byte position, i, next_position;
-	AirportFTA *current, *first;
-	next_position = 0;
 
-	for (i = 0; i < apc->nofelements; i++) {
-		position = apc->layout[i].position;
+static byte AirportTestFTA(uint nofelements, const AirportFTA *layout, const byte *terminals)
+{
+	uint next_position = 0;
+
+	for (uint i = 0; i < nofelements; i++) {
+		uint position = layout[i].position;
 		if (position != next_position) return i;
-		current = first = &apc->layout[i];
+		const AirportFTA *first = &layout[i];
+		const AirportFTA *current = first;
 
 		for (; current != NULL; current = current->next) {
 			/* A heading must always be valid. The only exceptions are
@@ -395,7 +348,7 @@ static byte AirportTestFTA(const AirportFTAClass *apc)
 			if (current->heading > MAX_HEADINGS) {
 				if (current->heading != 255) return i;
 				if (current == first && current->next == NULL) return i;
-				if (current != first && current->next_position > apc->terminals[0]) return i;
+				if (current != first && current->next_position > terminals[0]) return i;
 			}
 
 			/* If there is only one choice, it must be at the end */
@@ -403,7 +356,7 @@ static byte AirportTestFTA(const AirportFTAClass *apc)
 			/* Obviously the elements of the linked list must have the same identifier */
 			if (position != current->position) return i;
 			/* A next position must be within bounds */
-			if (current->next_position >= apc->nofelements) return i;
+			if (current->next_position >= nofelements) return i;
 		}
 		next_position++;
 	}
@@ -449,14 +402,13 @@ static uint AirportBlockToString(uint32 block)
 	return i;
 }
 
-static void AirportPrintOut(const AirportFTAClass *apc, bool full_report)
-{
-	uint16 i;
 
+static void AirportPrintOut(uint nofelements, const AirportFTA *layout, bool full_report)
+{
 	if (!full_report) printf("(P = Current Position; NP = Next Position)\n");
 
-	for (i = 0; i < apc->nofelements; i++) {
-		AirportFTA *current = &apc->layout[i];
+	for (uint i = 0; i < nofelements; i++) {
+		const AirportFTA *current = &layout[i];
 
 		for (; current != NULL; current = current->next) {
 			if (full_report) {
