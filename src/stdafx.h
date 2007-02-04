@@ -20,8 +20,8 @@
 #include <cstdlib>
 #include <climits>
 
-// MacOS X will use an NSAlert to display failed assertaions since they're lost unless running from a terminal
-// strgen always runs from terminal and don't need a window for asserts
+/* MacOS X will use an NSAlert to display failed assertaions since they're lost unless running from a terminal
+ * strgen always runs from terminal and don't need a window for asserts */
 #if !defined(__APPLE__) || defined(STRGEN)
 # include <cassert>
 #else
@@ -46,9 +46,9 @@
 #endif
 
 #ifdef __MORPHOS__
-// morphos defines certain amiga defines per default, we undefine them
-// here to make the rest of source less messy and more clear what is
-// required for morphos and what for amigaos
+/* MorphOS defines certain Amiga defines per default, we undefine them
+ * here to make the rest of source less messy and more clear what is
+ * required for morphos and what for AmigaOS */
 # ifdef amigaos
 #  undef amigaos
 # endif
@@ -68,7 +68,7 @@
 
 #ifdef __APPLE__
 # include "os/macosx/osx_stdafx.h"
-/* make endian swapping use Apple's macros to increase speed (since it will use hardware swapping if available)
+/* Make endian swapping use Apple's macros to increase speed (since it will use hardware swapping if available)
  * Even though they should return uint16 and uint32, we get warnings if we don't cast those (why?) */
 # define BSWAP32(x) ((uint32)Endian32_Swap(x))
 # define BSWAP16(x) ((uint16)Endian16_Swap(x))
@@ -77,11 +77,11 @@
 # define BSWAP16(x) ((x) >> 8 | (x) << 8)
 #endif /* __APPLE__ */
 
-// by default we use [] var arrays
+/* by default we use [] var arrays */
 #define VARARRAY_SIZE
 
 
-// Stuff for GCC
+/* Stuff for GCC */
 #if defined(__GNUC__)
 # define NORETURN __attribute__ ((noreturn))
 # define FORCEINLINE inline
@@ -109,7 +109,7 @@
 # include <malloc.h> // alloca()
 #endif
 
-// Stuff for MSVC
+/* Stuff for MSVC */
 #if defined(_MSC_VER)
 # pragma once
 # define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
@@ -147,7 +147,7 @@
 
 # define GCC_PACK
 
-// This is needed to zlib uses the stdcall calling convention on visual studio, also used with libpng (VS6 warning)
+/* This is needed to zlib uses the stdcall calling convention on visual studio */
 # if defined(WITH_ZLIB) || defined(WITH_PNG)
 #  ifndef ZLIB_WINAPI
 #   define ZLIB_WINAPI
@@ -156,7 +156,7 @@
 
 # define strcasecmp stricmp
 # define strncasecmp strnicmp
-// suppress: warning C4005: 'offsetof' : macro redefinition (VC8)
+/* suppress: warning C4005: 'offsetof' : macro redefinition (VC8) */
 #endif /* defined(_MSC_VER) */
 
 #if defined(WINCE)
@@ -181,11 +181,11 @@
 # endif /* WIN32 */
 #endif /* STRGEN */
 
-// Windows has always LITTLE_ENDIAN
+/* Windows has always LITTLE_ENDIAN */
 #if defined(WIN32) || defined(__OS2__) || defined(WIN64)
 # define TTD_LITTLE_ENDIAN
 #else
-// Else include endian[target/host].h, which has the endian-type, autodetected by the Makefile
+/* Else include endian[target/host].h, which has the endian-type, autodetected by the Makefile */
 # if defined(STRGEN)
 #  include "endian_host.h"
 # else
@@ -202,25 +202,25 @@
 #endif
 
 typedef unsigned char byte;
-#ifndef __BEOS__ // already defined
+#ifndef __BEOS__ /* already defined */
   typedef unsigned char uint8;
   typedef unsigned short uint16;
   typedef unsigned int uint32;
 #endif
 
-// This is already defined in unix
+/* This is already defined in unix */
 #if !defined(UNIX) && !defined(__CYGWIN__) && !defined(__BEOS__) && !defined(__MORPHOS__)
   typedef unsigned int uint;
 #endif
-// Not defined in QNX Neutrino (6.x)
+/* Not defined in QNX Neutrino (6.x) */
 #if defined(__QNXNTO__)
   typedef unsigned int uint;
 #endif
 
 #ifndef __BEOS__
 
-// some platforms use 4 bytes bool in C++
-// C bool has to be the same
+/* some platforms use 4 bytes bool in C++
+ * C bool has to be the same */
 #	ifndef __cplusplus
 #		ifdef FOUR_BYTE_BOOL
 			typedef unsigned long bool;
@@ -240,7 +240,7 @@ typedef unsigned char byte;
 # define OTTD_ALIGNMENT
 #endif
 
-// Setup alignment and conversion macros
+/* Setup alignment and conversion macros */
 #if defined(TTD_BIG_ENDIAN)
   static inline uint32 TO_LE32(uint32 x) { return BSWAP32(x); }
   static inline uint16 TO_LE16(uint16 x) { return BSWAP16(x); }
@@ -282,7 +282,7 @@ typedef unsigned char byte;
 # endif
 #endif /* __cplusplus */
 
-// Compile time assertions
+/* Compile time assertions */
 #ifdef __OS2__
 # define assert_compile(expr)
 #else
@@ -315,7 +315,7 @@ assert_compile(sizeof(uint8)  == 1);
 #endif /* __cplusplus */
 
 
-// take care of some name clashes on macos
+/* take care of some name clashes on MacOS */
 #if defined(__APPLE__)
 # define GetString OTTD_GetString
 # define DrawString OTTD_DrawString
@@ -324,7 +324,7 @@ assert_compile(sizeof(uint8)  == 1);
 #endif /* __APPLE */
 
 #ifdef __AMIGA__
-// it seems AmigaOS already have a Point declared
+/* it seems AmigaOS already have a Point declared */
 # define Point OTTD_AMIGA_POINT
 #endif
 
