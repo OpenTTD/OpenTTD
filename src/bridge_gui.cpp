@@ -50,7 +50,7 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 			const Bridge *b = &_bridge[_bridgedata.indexes[i + w->vscroll.pos]];
 
 			SetDParam(2, _bridgedata.costs[i + w->vscroll.pos]);
-			SetDParam(1, b->speed);
+			SetDParam(1, b->speed * 10 / 16);
 			SetDParam(0, b->material);
 			DrawSprite(b->sprite, b->pal, 3, 15 + i * 22);
 

@@ -125,7 +125,7 @@ static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 	uint multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD) ? 1 : 0;
 
 	SetDParam(0, (_price.build_railvehicle >> 3) * rvi->base_cost >> 5);
-	SetDParam(2, rvi->max_speed);
+	SetDParam(2, rvi->max_speed * 10 / 16);
 	SetDParam(3, rvi->power << multihead);
 	SetDParam(1, rvi->weight << multihead);
 
@@ -173,7 +173,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
 	SetDParam(0, (_price.aircraft_base >> 3) * avi->base_cost >> 5);
-	SetDParam(1, avi->max_speed * 128 / 10);
+	SetDParam(1, avi->max_speed * 8);
 	SetDParam(2, avi->passenger_capacity);
 	SetDParam(3, avi->mail_capacity);
 	SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
@@ -213,7 +213,7 @@ static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw)
 	const RoadVehicleInfo *rvi = RoadVehInfo(engine);
 
 	SetDParam(0, (_price.roadveh_base >> 3) * rvi->base_cost >> 5);
-	SetDParam(1, rvi->max_speed / 2);
+	SetDParam(1, rvi->max_speed * 10 / 32);
 	SetDParam(2, rvi->running_cost * _price.roadveh_running >> 8);
 	SetDParam(3, rvi->cargo_type);
 	SetDParam(4, rvi->capacity);
@@ -251,7 +251,7 @@ static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const ShipVehicleInfo *svi = ShipVehInfo(engine);
 	SetDParam(0, svi->base_cost * (_price.ship_base >> 3) >> 5);
-	SetDParam(1, svi->max_speed / 2);
+	SetDParam(1, svi->max_speed * 10 / 32);
 	SetDParam(2, svi->cargo_type);
 	SetDParam(3, svi->capacity);
 	SetDParam(4, svi->running_cost * _price.ship_running >> 8);
