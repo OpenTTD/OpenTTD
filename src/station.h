@@ -3,7 +3,6 @@
 #ifndef STATION_H
 #define STATION_H
 
-#include <deque>
 #include "player.h"
 #include "oldpool.h"
 #include "sprite.h"
