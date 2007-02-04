@@ -303,7 +303,7 @@ STR_256                                                         :256
 STR_512                                                         :512
 STR_1024                                                        :1024
 STR_2048                                                        :2048
-STR_MAPSIZE                                                     :{BLACK}Dimensões do mapa:
+STR_MAPSIZE                                                     :{BLACK}Dim. do mapa:
 STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Opções do Jogo
 
@@ -624,6 +624,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Diminuir
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Gerar terreno aleatório
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Repor terreno
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Repor Terreno
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Apagar todas as propriedades de jogadores do mapa
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Tem a certeza que quer apagar todas as propriedades de jogadores?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}A gerar terreno
 STR_022F_TOWN_GENERATION                                        :{BLACK}A gerar cidades
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}A gerar indústrias
@@ -801,7 +803,7 @@ STR_SIGN_LIST                                                   :Lista de sinais
 STR_02DF_TOWN_DIRECTORY                                         :Lista de cidades
 STR_TOWN_POPULATION                                             :{BLACK}População Mundial: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Visualizador {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar para o visualizador
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar p/ o visualizador
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar a localização do visualizador global para este visualizador
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Colar do visualizador
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a localização deste visualizador para o visualizador global

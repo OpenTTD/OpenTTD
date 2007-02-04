@@ -296,6 +296,7 @@ STR_0140_NEW_GAME                                               :{BLACK}새로�
 STR_0141_LOAD_GAME                                              :{BLACK}불러오기
 STR_SINGLE_PLAYER                                               :{BLACK}싱글 플레이
 STR_MULTIPLAYER                                                 :{BLACK}멀티 플레이
+STR_SCENARIO_EDITOR                                             :{BLACK}시나리오 에디터
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -624,6 +625,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}지형 �
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}무작위 지형을 생성
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}풍경 초기화
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}풍경 리셋
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}맵에서 모든 플레이어 소유의 자산을 제거
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}정말로 모든 플레이어 소유의 자산을 제거하시겠습니까?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}지형 생성기
 STR_022F_TOWN_GENERATION                                        :{BLACK}마을 생성
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}산업 시설 생성
@@ -728,6 +731,7 @@ STR_0290_DELETE                                                 :{BLACK}삭제
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}이 도시를 완전히 삭제
 STR_0292_SAVE_SCENARIO                                          :시나리오 저장
 STR_0293_LOAD_SCENARIO                                          :시나리오 불러오기
+STR_LOAD_HEIGHTMAP                                              :DEM지형 불러오기
 STR_0294_QUIT_EDITOR                                            :에디터 종료
 STR_0295                                                        :
 STR_0296_QUIT                                                   :게임 종료
@@ -1414,6 +1418,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}접속�
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} 네트워크 장치를 찾을수 없거나 컴파일되지 않았습니다.
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} 네트워크 게임이 존재하지 않습니다.
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} 서버가 요청을 받지 않습니다.
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}NewGRF이 맞지 않아서 연결할 수 없습니다
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} 네트워크 게임 동기화 실패
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} 네트워크 게임 연결 손실
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} 세이브 게임을 불러올 수 없습니다
@@ -1435,6 +1440,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :비동기화 �
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :맵 로드 실패
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :연결 손실
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :프로토콜 오류
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF 안맞음
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :권한 없음
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :이상 패킷 수신
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :잘못된 교정
@@ -2915,6 +2921,7 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}파일 �
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}일치하는 파일을 찾을 수 없습니다
 STR_NEWGRF_DISABLED                                             :{RED}사용안함
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}매치되는 파일을 찾을 수 없음 (그래픽 로드 충돌)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}사라진 파일의 자리에 알맞은 GRF가 로드되었습니다
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}사라진 GRF 파일은 사용불가능합니다
@@ -3009,6 +3016,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}이 목�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}경로 수정 실패로 인한 정지 {STRING} {COMMA} ??
 
 ############ Lists rail types
 

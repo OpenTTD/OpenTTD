@@ -1504,6 +1504,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Enspezo: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transigo: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Transigo: {CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}Atendata Kosto: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Atendata enspezo: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Ne povas altigi landon ĉi tie...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Ne povas malaltigi landon ĉi tie...
@@ -2901,6 +2902,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vi ĉi 
 STR_NEWGRF_ADD                                                  :{BLACK}Aldonu
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Aldonu NewGRF-dosieron al la listo
 STR_NEWGRF_REMOVE                                               :{BLACK}Forviŝu
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Forviŝu la elektitan dosieron de NewGRF el la listo
 STR_NEWGRF_MOVEUP                                               :{BLACK}Supren
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Movu la elektitan NewGRF-dosieron supren en la listo
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Malsupren

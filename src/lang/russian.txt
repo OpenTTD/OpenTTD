@@ -2,7 +2,8 @@
 ##ownname Русский
 ##isocode ru_RU
 ##plural 6
-##gender m f n
+##case m f n p
+##gender m f n p
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -579,7 +580,7 @@ STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Выбе
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Вкл./Выкл. случайный выбор программы
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Показать окно выбора музыкальных треков
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Нажмите на маршрут для отображения предприятия/города
-STR_01FE_DIFFICULTY                                             :{BLACK}Сложность ({STRING})
+STR_01FE_DIFFICULTY                                             :{BLACK}Сложность ({STRING.f})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Последняя новость
 STR_0201_MESSAGE_SETTINGS                                       :Настройки сообщений
@@ -1985,31 +1986,31 @@ STR_SV_STNAME_FOREST                                            :{STRING} Лес
 ############ end of savegame specific region!
 
 ##id 0x6800
-STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Сложность
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Уровень сложности
 STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Сохранить
 
 ############ range for difficulty levels starts
-STR_6801_EASY                                                   :{BLACK}легкая
-STR_6802_MEDIUM                                                 :{BLACK}средняя
-STR_6803_HARD                                                   :{BLACK}тяжелая
-STR_6804_CUSTOM                                                 :{BLACK}своя
+STR_6801_EASY                                                   :{BLACK}Лёгкий
+STR_6802_MEDIUM                                                 :{BLACK}Средний
+STR_6803_HARD                                                   :{BLACK}Тяжёлый
+STR_6804_CUSTOM                                                 :{BLACK}Свой
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Максимальное число противников: {ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Начало игры противников: {ORANGE}{STRING}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Максимальное количество конкурентов: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Конкуренты начинают игру: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Количество городов: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Количество предприятий: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Максимальная начальная ссуда: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Начальная процентная ставка: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Уровень затрат на содержание транспорта: {ORANGE}{STRING}
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Затраты на содержание транспорта: {ORANGE}{STRING.p}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Скорость строительства конкурентов: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Интеллект конкурентов: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Интенсивность поломок транспорта: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Множитель дохода от субсидий: {ORANGE}{STRING}
-STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Уровень затрат на строительство: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Затраты на строительство: {ORANGE}{STRING.p}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Тип местности: {ORANGE}{STRING}
-STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Процент покрытия территории водой: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Количество морей/озёр: {ORANGE}{STRING.n}
 STR_6813_ECONOMY                                                :{LTBLUE}Экономика: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Разворот поездов: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Катастрофы: {ORANGE}{STRING}
@@ -2017,9 +2018,9 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Отн�
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :нет
-STR_6816_LOW                                                    :мало
-STR_6817_NORMAL                                                 :средне
-STR_6818_HIGH                                                   :много
+STR_6816_LOW                                                    :низкое
+STR_6817_NORMAL                                                 :среднее
+STR_6818_HIGH                                                   :большое
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :очень медленная
@@ -2028,9 +2029,16 @@ STR_681D_MEDIUM                                                 :средняя
 STR_681E_FAST                                                   :быстрая
 STR_681F_VERY_FAST                                              :очень быстрая
 STR_VERY_LOW                                                    :очень низкий
+STR_VERY_LOW.n                                                  :очень низкое
 STR_6820_LOW                                                    :низкий
+STR_6820_LOW.n                                                  :низкое
+STR_6820_LOW.p                                                  :низкие
 STR_6821_MEDIUM                                                 :средний
+STR_6821_MEDIUM.n                                               :среднее
+STR_6821_MEDIUM.p                                               :средние
 STR_6822_HIGH                                                   :высокий
+STR_6822_HIGH.n                                                 :высокое
+STR_6822_HIGH.p                                                 :высокие
 STR_6823_NONE                                                   :нет
 STR_6824_REDUCED                                                :уменьшенная
 STR_6825_NORMAL                                                 :нормальная

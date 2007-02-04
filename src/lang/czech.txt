@@ -2,8 +2,8 @@
 ##ownname Česky
 ##isocode cs_CS
 ##plural 6
-##gender m m_a m_i f n
 ##case nom gen acc dat voc loc ins big news subs
+##gender m f n
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -803,7 +803,7 @@ STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Postavit
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Postavit ocelárnu
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Založit farmu
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Postavit důl na železnou rudu
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Postavit ropné vrty
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Postavit ropný vrt
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Postavit banku (lze vybudovat jen ve městech s populací vetší než 1200)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Postavit papírnu
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Postavit továrnu na zpracování potravin
@@ -1747,9 +1747,9 @@ STR_202A_NONE                                                   :{ORANGE}Nic
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Již přiznané dotace:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING.big} z {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z {STRING} do {STRING} nebude dále nabízena.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z {STATION} do {STATION} již nebude dále poskytována.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z {STRING} do {STRING} bude jeden rok dotována místní správou!
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z{NBSP}{STRING} do {STRING} nebude dále nabízena.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z{NBSP}{STATION} do {STATION} již nebude dále poskytována.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z{NBSP}{STRING} do {STRING} bude jeden rok dotována místní správou!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet 150 % normální ceny.
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet dvojnásobek normální ceny!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet trojnásobek normální ceny!
@@ -1947,7 +1947,7 @@ STR_4809_PRINTING_WORKS                                         :Tiskárna
 STR_480A_STEEL_MILL                                             :Ocelárna
 STR_480B_FARM                                                   :Farma
 STR_480C_COPPER_ORE_MINE                                        :Důl na měděnou rudu
-STR_480D_OIL_WELLS                                              :Ropné vrty
+STR_480D_OIL_WELLS                                              :Ropný vrt
 STR_480E_BANK                                                   :Banka
 STR_480F_FOOD_PROCESSING_PLANT                                  :Továrna na zpracování jídla
 STR_4810_PAPER_MILL                                             :Papírna
@@ -2590,13 +2590,16 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Vrtulník Trica
 STR_80FE_GURU_X2_HELICOPTER                                     :Vrtulník Guru X2
 STR_80FF_POWERNAUT_HELICOPTER                                   :Vrtulník Powernaut
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Zpráva od výrobce dopravních prostředků
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Právě jsme vyvinuli nový dopravní prostředek - {STRING}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
-STR_8102_RAILROAD_LOCOMOTIVE                                    :lokomotivu
-STR_8103_ROAD_VEHICLE                                           :silniční vozidlo
-STR_8104_AIRCRAFT                                               :letadlo
-STR_8105_SHIP                                                   :loď
-STR_8106_MONORAIL_LOCOMOTIVE                                    :lokomotivu pro monorail
-STR_8107_MAGLEV_LOCOMOTIVE                                      :lokomotivu Maglev
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Právě jsme vyvinuli nov{G ý ou é} {STRING.dat}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
+STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=f}lokomotiva
+STR_8102_RAILROAD_LOCOMOTIVE.dat                                :{G=f}lokomotivu
+STR_8103_ROAD_VEHICLE                                           :{G=n}silniční vozidlo
+STR_8104_AIRCRAFT                                               :{G=n}letadlo
+STR_8105_SHIP                                                   :{G=f}loď
+STR_8106_MONORAIL_LOCOMOTIVE                                    :{G=f}lokomotiva pro monorail
+STR_8106_MONORAIL_LOCOMOTIVE.dat                                :{G=f}lokomotivu pro monorail
+STR_8107_MAGLEV_LOCOMOTIVE                                      :{G=f}lokomotiva Maglev
+STR_8107_MAGLEV_LOCOMOTIVE.dat                                  :{G=f}lokomotivu Maglev
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Železniční depo {TOWN}

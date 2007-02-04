@@ -361,6 +361,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Új ját
 STR_0141_LOAD_GAME                                              :{BLACK}Játék betöltése
 STR_SINGLE_PLAYER                                               :{BLACK}Egyjátékos
 STR_MULTIPLAYER                                                 :{BLACK}Hálózati játék
+STR_SCENARIO_EDITOR                                             :{BLACK}Pályaszerkesztő
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -689,6 +690,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Az emele
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Véletlenszerű táj készítése
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}A táj törlése
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Táj törlése
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Eltávolít minden, játékos által birtokolt elemet a térképről
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Biztos vagy benne, hogy el akarod távolítani a játékosokat?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Táj szerkesztése
 STR_022F_TOWN_GENERATION                                        :{BLACK}Városkészítés
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Gazdasági épület készítése
@@ -793,6 +796,7 @@ STR_0290_DELETE                                                 :{BLACK}Töröl
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}A város teljes eltüntetése
 STR_0292_SAVE_SCENARIO                                          :Pálya mentése
 STR_0293_LOAD_SCENARIO                                          :Pálya betöltése
+STR_LOAD_HEIGHTMAP                                              :Magasságtérkép betöltése
 STR_0294_QUIT_EDITOR                                            :Kilépés a szerkesztőből
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Kilépés
