@@ -78,7 +78,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	 * normal char to match the data returned by RegEnumValue,
 	 * otherwise just use parameter */
 #if defined(UNICODE)
-	font_namep = MallocT<char>(MAX_PATH);
+	font_namep = MallocT<TCHAR>(MAX_PATH);
 	MB_TO_WIDE_BUFFER(font_name, font_namep, MAX_PATH * sizeof(TCHAR));
 #else
 	font_namep = (char*)font_name; // only cast because in unicode pointer is not const
