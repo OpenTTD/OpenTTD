@@ -3,10 +3,6 @@
 #ifndef DEBUG_H
 #define DEBUG_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif //__cplusplus
-
 /* Debugging messages policy:
  * These should be the severities used for direct DEBUG() calls
  * maximum debugging level should be 10 if really deep, deep
@@ -110,9 +106,5 @@ const char *GetDebugString(void);
 		__sum__ = 0;\
 	}\
 }
-
-#ifdef __cplusplus
-}
-#endif //__cplusplus
 
 #endif /* DEBUG_H */

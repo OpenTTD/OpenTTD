@@ -1639,7 +1639,7 @@ make_sed() {
 		s#!!LANG_SUPPRESS!!#$lang_suppress#g;
 		s#!!OBJS_C!!#$OBJS_C#g;
 		s#!!OBJS_CPP!!#$OBJS_CPP#g;
-		s#!!OBJS_M!!#$OBJS_M#g;
+		s#!!OBJS_MM!!#$OBJS_MM#g;
 		s#!!OBJS_RC!!#$OBJS_RC#g;
 		s#!!SRCS!!#$SRCS#g;
 		s#!!OS!!#$os#g;

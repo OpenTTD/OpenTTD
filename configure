@@ -100,7 +100,7 @@ SRCS="`< $ROOT_DIR/source.list tr '\r' '\n' | awk '
 
 OBJS_C="`  echo \"$SRCS\" | awk ' { ORS = " " } /\.c$/   { gsub(".c$",   ".o", $0); print $0; }'`"
 OBJS_CPP="`echo \"$SRCS\" | awk ' { ORS = " " } /\.cpp$/ { gsub(".cpp$", ".o", $0); print $0; }'`"
-OBJS_M="`  echo \"$SRCS\" | awk ' { ORS = " " } /\.m$/   { gsub(".m$",   ".o", $0); print $0; }'`"
+OBJS_MM="` echo \"$SRCS\" | awk ' { ORS = " " } /\.mm$/  { gsub(".mm$",  ".o", $0); print $0; }'`"
 OBJS_RC="` echo \"$SRCS\" | awk ' { ORS = " " } /\.rc$/  { gsub(".rc$",  ".o", $0); print $0; }'`"
 SRCS="`    echo \"$SRCS\" | awk ' { ORS = " " } { print $0; }'`"
 

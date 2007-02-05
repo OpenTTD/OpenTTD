@@ -384,7 +384,7 @@ sound/null_s.cpp
 
 #if OSX
 # OSX Files
-	os/macosx/macos.m
+	os/macosx/macos.mm
 
 	#if DEDICATED
 	#else
@@ -392,7 +392,7 @@ sound/null_s.cpp
 	#end
 
 	#if COCOA
-		video/cocoa_v.m
+		video/cocoa_v.mm
 		sound/cocoa_s.cpp
 		os/macosx/splash.cpp
 	#end

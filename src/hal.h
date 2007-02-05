@@ -3,10 +3,6 @@
 #ifndef HAL_H
 #define HAL_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif //__cplusplus
-
 typedef struct {
 	const char *(*start)(const char * const *parm);
 	void (*stop)(void);
@@ -45,9 +41,5 @@ enum DriverType {
 	SOUND_DRIVER = 1,
 	MUSIC_DRIVER = 2,
 };
-
-#ifdef __cplusplus
-} // extern "C"
-#endif //__cplusplus
 
 #endif /* HAL_H */

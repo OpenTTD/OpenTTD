@@ -3,11 +3,6 @@
 #ifndef GFX_H
 #define GFX_H
 
-/* !!! Note that the first part of this file if enclosed in extern "C" due to cocoa/obj-C !!! */
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
 
 enum WindowKeyCodes {
 	WKC_SHIFT = 0x8000,
@@ -175,10 +170,6 @@ void HandleExitGameRequest(void);
 void GameSizeChanged(void);
 void UndrawMouseCursor(void);
 
-#ifdef __cplusplus
-}; //extern "C"
-/* Following part is only for C++ */
-
 #include "helpers.hpp"
 
 typedef enum FontSizes {
@@ -245,7 +236,7 @@ void ScreenSizeChanged(void);
 void UndrawMouseCursor(void);
 bool ChangeResInGame(int w, int h);
 void SortResolutions(int count);
-extern "C" void ToggleFullScreen(bool fs);
+void ToggleFullScreen(bool fs);
 
 /* gfx.c */
 #define ASCII_LETTERSTART 32
@@ -300,7 +291,5 @@ typedef enum StringColorFlags {
 #ifdef _DEBUG
 extern bool _dbg_screen_rect;
 #endif
-
-#endif /* __cplusplus */
 
 #endif /* GFX_H */

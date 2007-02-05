@@ -13,19 +13,28 @@
 #import <sys/param.h> /* for MAXPATHLEN */
 #import <unistd.h>
 
+/**
+ * Important notice regarding all modifications!!!!!!!
+ * There are certain limitations because the file is objective C++.
+ * gdb has limitations.
+ * C++ and objective C code can't be joined in all cases (classes stuff).
+ * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
+ */
+
+
 /* Portions of CPS.h */
 typedef struct CPSProcessSerNum {
 	UInt32 lo;
 	UInt32 hi;
 } CPSProcessSerNum;
 
-extern OSErr CPSGetCurrentProcess(CPSProcessSerNum* psn);
-extern OSErr CPSEnableForegroundOperation(CPSProcessSerNum* psn, UInt32 _arg2, UInt32 _arg3, UInt32 _arg4, UInt32 _arg5);
-extern OSErr CPSSetFrontProcess(CPSProcessSerNum* psn);
+extern "C" OSErr CPSGetCurrentProcess(CPSProcessSerNum* psn);
+extern "C" OSErr CPSEnableForegroundOperation(CPSProcessSerNum* psn, UInt32 _arg2, UInt32 _arg3, UInt32 _arg4, UInt32 _arg5);
+extern "C" OSErr CPSSetFrontProcess(CPSProcessSerNum* psn);
 
 /* From Menus.h (according to Xcode Developer Documentation) */
-extern void ShowMenuBar(void);
-extern void HideMenuBar(void);
+extern "C" void ShowMenuBar(void);
+extern "C" void HideMenuBar(void);
 
 /* Disables a warning. This is needed since the method exists but has been dropped from the header, supposedly as of 10.4. */
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
@@ -353,7 +362,7 @@ static void QZ_DoUnsidedModifiers(unsigned int newMods)
 	const int mapping[] = { QZ_CAPSLOCK, QZ_LSHIFT, QZ_LCTRL, QZ_LALT, QZ_LMETA };
 
 	int i;
-	int bit;
+	unsigned int bit;
 
 	if (_cocoa_video_data.current_mods == newMods) return;
 
@@ -817,7 +826,7 @@ static void QZ_SetPortAlphaOpaque(void)
 	newViewFrame = [ _cocoa_video_data.qdview frame ];
 
 	/* Update the pixels and pitch */
-	thePort = [ _cocoa_video_data.qdview qdPort ];
+	thePort = (OpaqueGrafPtr*) [ _cocoa_video_data.qdview qdPort ];
 	LockPortBits(thePort);
 
 	_cocoa_video_data.realpixels = GetPixBaseAddr(GetPortPixMap(thePort));
@@ -1083,7 +1092,7 @@ static void QZ_DrawWindow(void)
 	QZ_DrawResizeIcon();
 
 	/* Flush the dirty region */
-	QDFlushPortBuffer([ _cocoa_video_data.qdview qdPort ], dirty);
+	QDFlushPortBuffer( (OpaqueGrafPtr*) [ _cocoa_video_data.qdview qdPort ], dirty);
 	DisposeRgn(dirty);
 	DisposeRgn(temp);
 
@@ -1163,10 +1172,12 @@ static const char* QZ_SetVideoWindowed(uint width, uint height)
 		[ _cocoa_video_data.window makeKeyAndOrderFront:nil ];
 	}
 
-	LockPortBits([ _cocoa_video_data.qdview qdPort ]);
-	_cocoa_video_data.realpixels = GetPixBaseAddr(GetPortPixMap([ _cocoa_video_data.qdview qdPort ]));
-	_cocoa_video_data.pitch = GetPixRowBytes(GetPortPixMap([ _cocoa_video_data.qdview qdPort ]));
-	UnlockPortBits([ _cocoa_video_data.qdview qdPort ]);
+	CGrafPtr thePort = (OpaqueGrafPtr*) [ _cocoa_video_data.qdview qdPort ];
+
+	LockPortBits(thePort);
+	_cocoa_video_data.realpixels = GetPixBaseAddr(GetPortPixMap(thePort));
+	_cocoa_video_data.pitch = GetPixRowBytes(GetPortPixMap(thePort));
+	UnlockPortBits(thePort);
 
 	/* _cocoa_video_data.realpixels now points to the window's pixels
 	 * We want it to point to the *view's* pixels
@@ -1294,17 +1305,17 @@ static const char* QZ_SetVideoFullScreen(int width, int height)
 
 	/* If the mode wasn't an exact match, check if it has the right bpp, and update width and height */
 	if (!exact_match) {
-		number = CFDictionaryGetValue (_cocoa_video_data.mode, kCGDisplayBitsPerPixel);
+		number = (const __CFNumber*) CFDictionaryGetValue(_cocoa_video_data.mode, kCGDisplayBitsPerPixel);
 		CFNumberGetValue(number, kCFNumberSInt32Type, &bpp);
 		if (bpp != 8) {
 			errstr = "Failed to find display resolution";
 			goto ERR_NO_MATCH;
 		}
 
-		number = CFDictionaryGetValue(_cocoa_video_data.mode, kCGDisplayWidth);
+		number = (const __CFNumber*)CFDictionaryGetValue(_cocoa_video_data.mode, kCGDisplayWidth);
 		CFNumberGetValue(number, kCFNumberSInt32Type, &width);
 
-		number = CFDictionaryGetValue(_cocoa_video_data.mode, kCGDisplayHeight);
+		number = (const __CFNumber*)CFDictionaryGetValue(_cocoa_video_data.mode, kCGDisplayHeight);
 		CFNumberGetValue(number, kCFNumberSInt32Type, &height);
 	}
 
@@ -1412,7 +1423,7 @@ static void QZ_WaitForVerticalBlank(void)
 	double adjustment;
 	CFNumberRef refreshRateCFNumber;
 
-	refreshRateCFNumber = CFDictionaryGetValue(_cocoa_video_data.mode, kCGDisplayRefreshRate);
+	refreshRateCFNumber = (const __CFNumber*)CFDictionaryGetValue(_cocoa_video_data.mode, kCGDisplayRefreshRate);
 	if (refreshRateCFNumber == NULL) return;
 
 	if (CFNumberGetValue(refreshRateCFNumber, kCFNumberDoubleType, &refreshRate) == 0)
@@ -1487,17 +1498,17 @@ static int QZ_ListFullscreenModes(OTTDPoint* mode_list, int max_modes)
 		bool hasMode;
 		uint16 width, height;
 
-		onemode = CFArrayGetValueAtIndex(_cocoa_video_data.mode_list, i);
-		number = CFDictionaryGetValue(onemode, kCGDisplayBitsPerPixel);
+		onemode = (const __CFDictionary*)CFArrayGetValueAtIndex(_cocoa_video_data.mode_list, i);
+		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayBitsPerPixel);
 		CFNumberGetValue (number, kCFNumberSInt32Type, &bpp);
 
 		if (bpp != 8) continue;
 
-		number = CFDictionaryGetValue(onemode, kCGDisplayWidth);
+		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayWidth);
 		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
 		width = (uint16)intvalue;
 
-		number = CFDictionaryGetValue(onemode, kCGDisplayHeight);
+		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayHeight);
 		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
 		height = (uint16)intvalue;
 
@@ -1713,17 +1724,17 @@ static void QZ_VideoInit(void)
 	/* Gather some information that is useful to know about the display */
 	/* Maybe this should be moved to QZ_SetVideoMode, in case this is changed after startup */
 	CFNumberGetValue(
-		CFDictionaryGetValue(_cocoa_video_data.save_mode, kCGDisplayBitsPerPixel),
+		(const __CFNumber*)CFDictionaryGetValue(_cocoa_video_data.save_mode, kCGDisplayBitsPerPixel),
 		kCFNumberSInt32Type, &_cocoa_video_data.device_bpp
 	);
 
 	CFNumberGetValue(
-		CFDictionaryGetValue(_cocoa_video_data.save_mode, kCGDisplayWidth),
+		(const __CFNumber*)CFDictionaryGetValue(_cocoa_video_data.save_mode, kCGDisplayWidth),
 		kCFNumberSInt32Type, &_cocoa_video_data.device_width
 	);
 
 	CFNumberGetValue(
-		CFDictionaryGetValue(_cocoa_video_data.save_mode, kCGDisplayHeight),
+		(const __CFNumber*)CFDictionaryGetValue(_cocoa_video_data.save_mode, kCGDisplayHeight),
 		kCFNumberSInt32Type, &_cocoa_video_data.device_height
 	);
 

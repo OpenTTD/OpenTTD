@@ -127,9 +127,9 @@ void ShowOSErrorBox(const char *buf)
 }
 
 #ifdef WITH_COCOA
-extern "C" void cocoaSetWorkingDirectory(void);
-extern "C" void cocoaSetupAutoreleasePool(void);
-extern "C" void cocoaReleaseAutoreleasePool(void);
+void cocoaSetWorkingDirectory(void);
+void cocoaSetupAutoreleasePool(void);
+void cocoaReleaseAutoreleasePool(void);
 #endif
 
 int CDECL main(int argc, char* argv[])

@@ -35,9 +35,9 @@ CONFIG_CACHE_VERSION  = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_VERSION!!
 
 OBJS_C   := !!OBJS_C!!
 OBJS_CPP := !!OBJS_CPP!!
-OBJS_M   := !!OBJS_M!!
+OBJS_MM  := !!OBJS_MM!!
 OBJS_RC  := !!OBJS_RC!!
-OBJS     := $(OBJS_C) $(OBJS_CPP) $(OBJS_M) $(OBJS_RC)
+OBJS     := $(OBJS_C) $(OBJS_CPP) $(OBJS_MM) $(OBJS_RC)
 SRCS     := !!SRCS!!
 
 # All C-files depend on those 3 files
@@ -126,12 +126,12 @@ $(OBJS_CPP:%.o=%.d): %.d: $(SRC_DIR)/%.cpp $(FILE_DEP)
 	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_HOST) $(CFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:%.d=%.o):#' > $@
 
-$(OBJS_M:%.o=%.d): %.d: $(SRC_DIR)/%.m $(FILE_DEP)
-	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.m=%.m)'
-	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:%.d=%.o):#' > $@
+$(OBJS_MM:%.o=%.d): %.d: $(SRC_DIR)/%.mm $(FILE_DEP)
+	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.mm=%.mm)'
+	$(Q)$(CC_HOST) $(CFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:%.d=%.o):#' > $@
 
 $(OBJS_RC:%.o=%.d): %.d: $(SRC_DIR)/%.rc $(FILE_DEP)
-	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.m=%.m)'
+	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.mm=%.mm)'
 	$(Q)touch $@
 
 else
@@ -211,9 +211,9 @@ $(OBJS_CPP): %.o: $(SRC_DIR)/%.cpp $(DEP_MASK) $(FILE_DEP)
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_HOST) $(CFLAGS) -c -o $@ $<
 
-$(OBJS_M): %.o: $(SRC_DIR)/%.m $(DEP_MASK) $(FILE_DEP)
-	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.m=%.m)'
-	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -c -o $@ $<
+$(OBJS_MM): %.o: $(SRC_DIR)/%.mm $(DEP_MASK) $(FILE_DEP)
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.mm=%.mm)'
+	$(Q)$(CC_HOST) $(CFLAGS) -c -o $@ $<
 
 $(OBJS_RC): %.o: $(SRC_DIR)/%.rc $(FILE_DEP)
 	$(E) '$(STAGE) Compiling resource $(<:$(SRC_DIR)/%.rc=%.rc)'
