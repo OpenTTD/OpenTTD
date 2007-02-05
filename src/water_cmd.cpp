@@ -40,6 +40,7 @@ static const SpriteID _water_shore_sprites[] = {
 };
 
 
+static Vehicle *FindFloodableVehicleOnTile(TileIndex tile);
 static void FloodVehicle(Vehicle *v);
 
 /** Build a ship depot.
@@ -564,16 +565,42 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 		}
 	} else {
 		_current_player = OWNER_WATER;
-		{
-			Vehicle *v = FindVehicleOnTileZ(target, 0);
-			if (v != NULL) FloodVehicle(v);
-		}
+
+		Vehicle *v = FindFloodableVehicleOnTile(target);
+		if (v != NULL) FloodVehicle(v);
 
 		if (!CmdFailed(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
 			MakeWater(target);
 			MarkTileDirtyByTile(target);
 		}
 	}
+}
+
+/**
+ * Finds a vehicle to flood.
+ * It does not find vehicles that are already crashed on bridges, i.e. flooded.
+ * @param tile the tile where to find a vehicle to flood
+ * @return a vehicle too flood or NULL when there is no vehicle too flood.
+ */
+static Vehicle *FindFloodableVehicleOnTile(TileIndex tile)
+{
+	if (!IsBridgeTile(tile)) return FindVehicleOnTileZ(tile, 0);
+
+	TileIndex end = GetOtherBridgeEnd(tile);
+	byte z = GetBridgeHeight(tile);
+	Vehicle *v;
+
+	/* check the start tile first since as this is closest to the water */
+	v = FindVehicleOnTileZ(tile, z);
+	if (v != NULL && (v->vehstatus & VS_CRASHED) == 0) return v;
+
+	/* check a vehicle in between both bridge heads */
+	v = FindVehicleBetween(tile, end, z, true);
+	if (v != NULL) return v;
+
+	/* check the end tile last to give fleeing vehicles a chance to escape */
+	v = FindVehicleOnTileZ(end, z);
+	return (v != NULL && (v->vehstatus & VS_CRASHED) == 0) ? v : NULL;
 }
 
 static void FloodVehicle(Vehicle *v)
@@ -600,6 +627,7 @@ static void FloodVehicle(Vehicle *v)
 			BEGIN_ENUM_WAGONS(v)
 				if (v->cargo_type == CT_PASSENGERS) pass += v->cargo_count;
 				v->vehstatus |= VS_CRASHED;
+				MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
 			END_ENUM_WAGONS(v)
 
 			v = u;
