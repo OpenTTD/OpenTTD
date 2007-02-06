@@ -311,9 +311,7 @@ assert_compile(sizeof(uint8)  == 1);
 # define offsetof(s,m)   (size_t)&(((s *)0)->m)
 #else /* __cplusplus */
 # define cpp_offsetof(s,m)   (((size_t)&reinterpret_cast<const volatile char&>((((s*)(char*)8)->m))) - 8)
-# ifndef __MORPHOS__
-#  define offsetof(s,m)       cpp_offsetof(s, m)
-# endif /* !__MORPHOS__ */
+# define offsetof(s,m)       cpp_offsetof(s, m)
 #endif /* __cplusplus */
 
 
