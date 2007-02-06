@@ -123,6 +123,20 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath="..\src\lang\debug.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating debug language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					AdditionalDependencies=""
+					Outputs="..\bin\lang\debug.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath="..\src\lang\dutch.txt"
 			>
 			<FileConfiguration
@@ -483,6 +497,20 @@
 					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					AdditionalDependencies=""
 					Outputs="..\bin\lang\swedish.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath="..\src\lang\traditional_chinese.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating traditional_chinese language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					AdditionalDependencies=""
+					Outputs="..\bin\lang\traditional_chinese.lng"
 				/>
 			</FileConfiguration>
 		</File>
