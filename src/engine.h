@@ -8,6 +8,7 @@
 #include "oldpool.h"
 #include "rail.h"
 #include "sound.h"
+#include "vehicle.h"
 
 enum RailVehicleTypes {
 	RAILVEH_SINGLEHEAD,
@@ -157,8 +158,29 @@ enum {
 	SHIP_ENGINES_INDEX      = NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES,
 	ROAD_ENGINES_INDEX      = NUM_TRAIN_ENGINES,
 };
+
+static inline EngineID GetFirstEngineOfType(byte type)
+{
+	const EngineID start[] = {0, ROAD_ENGINES_INDEX, SHIP_ENGINES_INDEX, AIRCRAFT_ENGINES_INDEX};
+
+	return start[VehTypeToIndex(type)];
+}
+
+static inline EngineID GetLastEngineOfType(byte type)
+{
+	const EngineID end[] = {
+		NUM_TRAIN_ENGINES,
+		ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES,
+		SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES,
+		AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES};
+
+	return end[VehTypeToIndex(type)];
+}
+
 VARDEF Engine _engines[TOTAL_NUM_ENGINES];
 #define FOR_ALL_ENGINES(e) for (e = _engines; e != endof(_engines); e++)
+#define FOR_ALL_ENGINEIDS_OF_TYPE(e, type) for (e = GetFirstEngineOfType(type); e != GetLastEngineOfType(type); e++)
+
 
 static inline Engine* GetEngine(EngineID i)
 {
@@ -298,6 +320,11 @@ int32 AddEngineReplacement(EngineRenewList* erl, EngineID old_engine, EngineID n
  * @return 0 on success, CMD_ERROR on failure.
  */
 int32 RemoveEngineReplacement(EngineRenewList* erl, EngineID engine, uint32 flags);
+
+/** When an engine is made buildable or is removed from being buildable, add/remove it from the build/autoreplace lists
+ * @param type The type of engine
+ */
+void AddRemoveEngineFromAutoreplaceAndBuildWindows(byte type);
 
 /* Engine list manipulators - current implementation is only C wrapper of CBlobT<EngineID> class (helpers.cpp) */
 void EngList_Create(EngineList *el);            ///< Creates engine list

@@ -392,13 +392,14 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			w->u.air.state = HRS_ROTOR_STOPPED;
 			VehiclePositionChanged(w);
 		}
-		GetPlayer(_current_player)->num_engines[p1]++;
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
-			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); //updates the replace Aircraft window
+			InvalidateAutoreplaceWindow(VEH_Aircraft); //updates the replace Aircraft window
+
+		GetPlayer(_current_player)->num_engines[p1]++;
 	}
 
 	return value;
@@ -437,8 +438,6 @@ int32 CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		// Invalidate depot
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		DoDeleteAircraft(v);
-		if (IsLocalPlayer())
-			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); // updates the replace Aircraft window
 	}
 
 	return -(int32)v->value;

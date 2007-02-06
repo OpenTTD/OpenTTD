@@ -341,6 +341,8 @@ int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID own
 bool IsVehicleInDepot(const Vehicle *v);
 void VehicleEnterDepot(Vehicle *v);
 
+void InvalidateAutoreplaceWindow(EngineID e);
+
 /* Flags to add to p2 for goto depot commands */
 /* Note: bits 8-10 are used for VLW flags */
 enum {

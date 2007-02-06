@@ -670,12 +670,12 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 
 			VehiclePositionChanged(v);
 			TrainConsistChanged(GetFirstVehicleInChain(v));
-			GetPlayer(_current_player)->num_engines[engine]++;
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 			if (IsLocalPlayer()) {
-				InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train); // updates the replace Train window
+				InvalidateAutoreplaceWindow(VEH_Train); // updates the replace Train window
 			}
+			GetPlayer(_current_player)->num_engines[engine]++;
 		}
 	}
 
@@ -853,13 +853,13 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				NormalizeTrainVehInDepot(v);
 			}
 
-			GetPlayer(_current_player)->num_engines[p1]++;
 			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 			RebuildVehicleLists();
 			InvalidateWindow(WC_COMPANY, v->owner);
-			if (IsLocalPlayer()) {
-				InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train); // updates the replace Train window
-			}
+			if (IsLocalPlayer())
+				InvalidateAutoreplaceWindow(VEH_Train); // updates the replace Train window
+
+			GetPlayer(_current_player)->num_engines[p1]++;
 		}
 	}
 
@@ -1355,9 +1355,6 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		if (v == first && IsFrontEngine(first)) {
 			DeleteWindowById(WC_VEHICLE_VIEW, first->index);
-		}
-		if (IsLocalPlayer() && (p1 == 1 || RailVehInfo(v->engine_type)->railveh_type != RAILVEH_WAGON)) {
-			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
 		}
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
 		RebuildVehicleLists();
@@ -3322,7 +3319,6 @@ static void HandleCrashedTrain(Vehicle *v)
 
 	if (state >= 4440 && !(v->tick_counter&0x1F)) {
 		DeleteLastWagon(v);
-		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
 	}
 }
 

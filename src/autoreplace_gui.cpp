@@ -16,6 +16,9 @@
 
 static RailType _railtype_selected_in_replace_gui;
 
+static bool _rebuild_left_list;
+static bool _rebuild_right_list;
+
 static const StringID _rail_types_list[] = {
 	STR_RAIL_VEHICLES,
 	STR_ELRAIL_VEHICLES,
@@ -30,332 +33,178 @@ void InitializeVehiclesGuiList(void)
 	_railtype_selected_in_replace_gui = RAILTYPE_RAIL;
 }
 
-// this define is to match engine.c, but engine.c keeps it to itself
-// ENGINE_AVAILABLE is used in ReplaceVehicleWndProc
-#define ENGINE_AVAILABLE ((e->flags & 1 && HASBIT(info->climates, _opt.landscape)) || HASBIT(e->player_avail, _local_player))
-
-/*  if show_outdated is selected, it do not sort psudo engines properly but it draws all engines
- * if used compined with show_cars set to false, it will work as intended. Replace window do it like that
- *  this was a big hack even before show_outdated was added. Stupid newgrf :p
+/** Rebuild the left autoreplace list if an engine is removed or added
+ * @param e Engine to check if it is removed or added
+ *  Note: this function only works if it is called either
+ *   - when a new vehicle is build, but before it's counted in num_engines
+ *   - when a vehicle is deleted and after it's substracted from num_engines
+ *   - when not changing the count (used when changing replace orders)
  */
-static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, EngineID *selected_id, RailType railtype,
-	uint8 lines_drawn, bool is_engine, bool show_cars, bool show_outdated, bool show_compatible)
+void InvalidateAutoreplaceWindow(EngineID e)
 {
-	EngineID j;
-	byte colour;
-	const Player *p = GetPlayer(_local_player);
+	Player *p = GetPlayer(_local_player);
+	byte type = GetEngine(e)->type;
 
-	for (j = 0; j < NUM_TRAIN_ENGINES; j++) {
-		EngineID i = GetRailVehAtPosition(j);
-		const Engine *e = GetEngine(i);
-		const RailVehicleInfo *rvi = RailVehInfo(i);
-		const EngineInfo *info = EngInfo(i);
+	if (p->num_engines[e] == 0) {
+		/* We don't have any of this engine type.
+		 * Either we just sold the last one, we build a new one or we stopped replacing it.
+		 * In all cases, we need to update the left list */
+		_rebuild_left_list = true;
+	} else {
+		_rebuild_left_list = false;
+	}
+	_rebuild_right_list = false;
+	InvalidateWindowData(WC_REPLACE_VEHICLE, type);
+}
 
-		if (!EngineHasReplacementForPlayer(p, i) && p->num_engines[i] == 0 && show_outdated) continue;
+/** When an engine is made buildable or is removed from being buildable, add/remove it from the build/autoreplace lists
+ * @param type The type of engine
+ */
+void AddRemoveEngineFromAutoreplaceAndBuildWindows(byte type)
+{
+	_rebuild_left_list = false; // left list is only for the vehicles the player owns and is not related to being buildable
+	_rebuild_right_list = true;
+	InvalidateWindowData(WC_REPLACE_VEHICLE, type); // Update the autoreplace window
+	InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
+}
 
-		if ((rvi->power == 0 && !show_cars) || (rvi->power != 0 && show_cars))  // show wagons or engines (works since wagons do not have power)
-			continue;
+/** Get the default cargo type for an engine
+ * @param engine the EngineID to get the cargo for
+ * @return the cargo type carried by the engine (CT_INVALID if engine got no cargo capacity)
+ */
+static CargoID EngineCargo(EngineID engine)
+{
+	if (engine == INVALID_ENGINE) return CT_INVALID; // surely INVALID_ENGINE can't carry anything but CT_INVALID
 
-		if (*sel == 0) *selected_id = j;
+	switch (GetEngine(engine)->type) {
+		default: NOT_REACHED();
+		case VEH_Train:
+			if (RailVehInfo(engine)->capacity == 0) return CT_INVALID; // no capacity -> can't carry cargo
+			return RailVehInfo(engine)->cargo_type;
+		case VEH_Road:       return RoadVehInfo(engine)->cargo_type;
+		case VEH_Ship:       return ShipVehInfo(engine)->cargo_type;
+		case VEH_Aircraft:   return CT_PASSENGERS; // all planes are build with passengers by default
+	}
+}
 
+/** Figure out if an engine should be added to a list
+ * @param e The EngineID
+ * @param draw_left If true, then the left list is drawn (the engines specific to the railtype you selected)
+ * @param show_engines if truem then locomotives are drawn, else wagons (never both)
+ * @return true if the engine should be in the list (based on this check)
+ */
+static bool GenerateReplaceRailList(EngineID e, bool draw_left, bool show_engines)
+{
+	const RailVehicleInfo *rvi = RailVehInfo(e);
 
-		colour = *sel == 0 ? 0xC : 0x10;
-		if (!(ENGINE_AVAILABLE && show_outdated && RailVehInfo(i)->power && IsCompatibleRail(rvi->railtype, railtype))) {
-			if ((!IsCompatibleRail(rvi->railtype, railtype) && show_compatible)
-				|| (rvi->railtype != railtype && !show_compatible)
-				|| (rvi->railveh_type != RAILVEH_WAGON) != is_engine ||
-				!HASBIT(e->player_avail, _local_player))
-				continue;
-#if 0
+	/* Ensure that the wagon/engine selection fits the engine. */
+	if ((rvi->railveh_type == RAILVEH_WAGON) == show_engines) return false;
+
+	if (draw_left && show_engines) {
+		/* Ensure that the railtype is specific to the selected one */
+		if (rvi->railtype != _railtype_selected_in_replace_gui) return false;
+	} else {
+		/* Ensure that it's a compatible railtype to the selected one (like electric <-> diesel)
+		 * The vehicle do not have to have power on the railtype in question, only able to drive (pulled if needed) */
+		if (!IsCompatibleRail(rvi->railtype, _railtype_selected_in_replace_gui)) return false;
+	}
+	return true;
+}
+
+/** Figure out if two engines got at least one type of cargo in common (refitting if needed)
+ * @param engine_a one of the EngineIDs
+ * @param engine_b the other EngineID
+ * @return true if they can both carry the same type of cargo (or at least one of them got no capacity at all)
+ */
+static bool EnginesGotCargoInCommon(EngineID engine_a, EngineID engine_b)
+{
+	CargoID a = EngineCargo(engine_a);
+	CargoID b = EngineCargo(engine_b);
+
+	 /* we should always be able to refit to/from locomotives without capacity
+	  * Because of that, CT_INVALID shoudl always return true */
+	if (a == CT_INVALID || b == CT_INVALID || a == b) return true; // they carry no ro the same type by default
+	if (EngInfo(engine_a)->refit_mask & EngInfo(engine_b)->refit_mask) return true; // both can refit to the same
+	if (CanRefitTo(engine_a, b) || CanRefitTo(engine_b, a)) return true; // one can refit to what the other one carries
+	return false;
+}
+
+/** Generate a list
+ * @param w Window, that contains the list
+ * @param draw_left true if generating the left list, otherwise false
+ */
+static void GenerateReplaceVehList(Window *w, bool draw_left)
+{
+	Player *p = GetPlayer(_local_player);
+	EngineID e;
+	EngineID selected_engine = INVALID_ENGINE;
+	byte type = w->window_number;
+	byte i = draw_left ? 0 : 1;
+
+	EngineList *list = &WP(w, replaceveh_d).list[i];
+	EngList_RemoveAll(list);
+
+	FOR_ALL_ENGINEIDS_OF_TYPE(e, type) {
+		if (type == VEH_Train && !GenerateReplaceRailList(e, draw_left, WP(w, replaceveh_d).wagon_btnstate)) continue; // special rules for trains
+
+		if (draw_left) {
+			/* Skip drawing the engines we don't have any of and haven't set for replacement */
+			if (p->num_engines[e] == 0 && EngineReplacementForPlayer(GetPlayer(_local_player), e) == INVALID_ENGINE) continue;
 		} else {
-			// TODO find a nice red colour for vehicles being replaced
-			if ( _autoreplace_array[i] != i )
-				colour = *sel == 0 ? 0x44 : 0x45;
-#endif
+			/* This is for engines we can replace to and they should depend on what we selected to replace from */
+			if (!IsEngineBuildable(e, type, _local_player)) continue; // we need to be able to build the engine
+			if (!EnginesGotCargoInCommon(e, WP(w, replaceveh_d).sel_engine[0])) continue; // the engines needs to be able to carry the same cargo
+			if (e == WP(w, replaceveh_d).sel_engine[0]) continue; // we can't replace an engine into itself (that would be autorenew)
 		}
 
-		if (IS_INT_INSIDE(--*pos, -lines_drawn, 0)) {
-			DrawString(*x + 59, *y + 2, GetCustomEngineName(i),
-				colour);
-			// show_outdated is true only for left side, which is where we show old replacements
-			DrawTrainEngine(*x + 29, *y + 6, i, (p->num_engines[i] == 0 && show_outdated) ?
-				PALETTE_CRASH : GetEnginePalette(i, _local_player));
-			if ( show_outdated ) {
-				SetDParam(0, p->num_engines[i]);
-				DrawStringRightAligned(213, *y+5, STR_TINY_BLACK, 0);
-			}
-			*y += 14;
-		}
-		--*sel;
+		EngList_Add(list, e);
+		if (e == WP(w, replaceveh_d).sel_engine[i]) selected_engine = e; // The selected engine is still in the list
 	}
+	WP(w, replaceveh_d).sel_engine[i] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
 }
 
-
-static void SetupScrollStuffForReplaceWindow(Window *w)
+/** Generate the lists
+ * @param w Window containing the lists
+ */
+static void GenerateLists(Window *w)
 {
-	EngineID selected_id[2] = { INVALID_ENGINE, INVALID_ENGINE };
-	const Player* p = GetPlayer(_local_player);
-	uint sel[2];
-	uint count = 0;
-	uint count2 = 0;
-	EngineID i;
+	EngineID e = WP(w, replaceveh_d).sel_engine[0];
 
-	sel[0] = WP(w,replaceveh_d).sel_index[0];
-	sel[1] = WP(w,replaceveh_d).sel_index[1];
-
-	switch (WP(w,replaceveh_d).vehicletype) {
-		case VEH_Train: {
-			RailType railtype = _railtype_selected_in_replace_gui;
-
-			w->widget[13].color = _player_colors[_local_player]; // sets the colour of that art thing
-			w->widget[16].color = _player_colors[_local_player]; // sets the colour of that art thing
-
-			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
-				EngineID eid = GetRailVehAtPosition(i);
-				const Engine* e = GetEngine(eid);
-				const RailVehicleInfo *rvi = RailVehInfo(eid);
-				const EngineInfo* info = EngInfo(eid);
-
-				// left window contains compatible engines while right window only contains engines of the selected type
-				if (ENGINE_AVAILABLE &&
-						(rvi->power != 0) == (WP(w, replaceveh_d).wagon_btnstate != 0)) {
-					if (IsCompatibleRail(rvi->railtype, railtype) && (p->num_engines[eid] > 0 || EngineHasReplacementForPlayer(p, eid))) {
-						if (sel[0] == count) selected_id[0] = eid;
-						count++;
-					}
-					if (rvi->railtype == railtype && HASBIT(e->player_avail, _local_player)) {
-						if (sel[1] == count2) selected_id[1] = eid;
-						count2++;
-					}
-				}
-			}
-			break;
-		}
-
-		case VEH_Road: {
-			for (i = ROAD_ENGINES_INDEX; i < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; i++) {
-				if (p->num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
-					if (sel[0] == count) selected_id[0] = i;
-					count++;
-				}
-			}
-
-			if (selected_id[0] != INVALID_ENGINE) { // only draw right array if we have anything in the left one
-				CargoID cargo = RoadVehInfo(selected_id[0])->cargo_type;
-
-				for (i = ROAD_ENGINES_INDEX; i < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; i++) {
-					if (cargo == RoadVehInfo(i)->cargo_type &&
-							HASBIT(GetEngine(i)->player_avail, _local_player)) {
-						if (sel[1] == count2) selected_id[1] = i;
-						count2++;
-					}
-				}
-			}
-			break;
-		}
-
-		case VEH_Ship: {
-			for (i = SHIP_ENGINES_INDEX; i < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; i++) {
-				if (p->num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
-					if (sel[0] == count) selected_id[0] = i;
-					count++;
-				}
-			}
-
-			if (selected_id[0] != INVALID_ENGINE) {
-				const ShipVehicleInfo* svi = ShipVehInfo(selected_id[0]);
-				CargoID cargo = svi->cargo_type;
-				bool refittable = svi->refittable;
-
-				for (i = SHIP_ENGINES_INDEX; i < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; i++) {
-					if (HASBIT(GetEngine(i)->player_avail, _local_player) && (
-								ShipVehInfo(i)->cargo_type == cargo ||
-								ShipVehInfo(i)->refittable && refittable
-							)) {
-						if (sel[1] == count2) selected_id[1] = i;
-						count2++;
-					}
-				}
-			}
-			break;
-		}
-
-		case VEH_Aircraft: {
-			for (i = AIRCRAFT_ENGINES_INDEX; i < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; i++) {
-				if (p->num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
-					if (sel[0] == count) selected_id[0] = i;
-					count++;
-				}
-			}
-
-			if (selected_id[0] != INVALID_ENGINE) {
-				byte subtype = AircraftVehInfo(selected_id[0])->subtype;
-
-				for (i = AIRCRAFT_ENGINES_INDEX; i < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; i++) {
-					if (HASBIT(GetEngine(i)->player_avail, _local_player) &&
-							(subtype & AIR_CTOL) == (AircraftVehInfo(i)->subtype & AIR_CTOL)) {
-						if (sel[1] == count2) selected_id[1] = i;
-						count2++;
-					}
-				}
-			}
-			break;
+	if (WP(w, replaceveh_d).update_left == true) {
+		/* We need to rebuild the left list */
+		GenerateReplaceVehList(w, true);
+		SetVScrollCount(w, EngList_Count(&WP(w, replaceveh_d).list[0]));
+		if (WP(w, replaceveh_d).init_lists && WP(w, replaceveh_d).sel_engine[0] == INVALID_ENGINE && EngList_Count(&WP(w, replaceveh_d).list[0]) != 0) {
+			WP(w, replaceveh_d).sel_engine[0] = WP(w, replaceveh_d).list[0][0];
 		}
 	}
-	// sets up the number of items in each list
-	SetVScrollCount(w, count);
-	SetVScroll2Count(w, count2);
-	WP(w,replaceveh_d).sel_engine[0] = selected_id[0];
-	WP(w,replaceveh_d).sel_engine[1] = selected_id[1];
 
-	WP(w,replaceveh_d).count[0] = count;
-	WP(w,replaceveh_d).count[1] = count2;
-	return;
+	if (WP(w, replaceveh_d).update_right || e != WP(w, replaceveh_d).sel_engine[0]) {
+		/* Either we got a request to rebuild the right list or the left list selected a different engine */
+		if (WP(w, replaceveh_d).sel_engine[0] == INVALID_ENGINE) {
+			/* Always empty the right list when nothing is selected in the left list */
+			EngList_RemoveAll(&WP(w, replaceveh_d).list[1]);
+			WP(w, replaceveh_d).sel_engine[1] = INVALID_ENGINE;
+		} else {
+			GenerateReplaceVehList(w, false);
+			SetVScroll2Count(w, EngList_Count(&WP(w, replaceveh_d).list[1]));
+			if (WP(w, replaceveh_d).init_lists && WP(w, replaceveh_d).sel_engine[1] == INVALID_ENGINE && EngList_Count(&WP(w, replaceveh_d).list[1]) != 0) {
+				WP(w, replaceveh_d).sel_engine[1] = WP(w, replaceveh_d).list[1][0];
+			}
+		}
+	}
+	/* Reset the flags about needed updates */
+	WP(w, replaceveh_d).update_left  = false;
+	WP(w, replaceveh_d).update_right = false;
+	WP(w, replaceveh_d).init_lists   = false;
 }
 
 
-static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int y2, int pos, int pos2,
-	int sel1, int sel2, EngineID selected_id1, EngineID selected_id2)
-{
-	int sel[2];
-	EngineID selected_id[2];
-	const Player *p = GetPlayer(_local_player);
-
-	sel[0] = sel1;
-	sel[1] = sel2;
-
-	selected_id[0] = selected_id1;
-	selected_id[1] = selected_id2;
-
-	switch (WP(w,replaceveh_d).vehicletype) {
-		case VEH_Train: {
-			RailType railtype = _railtype_selected_in_replace_gui;
-			DrawString(157, w->widget[14].top + 1, _rail_types_list[railtype], 0x10);
-			/* draw sorting criteria string */
-
-			/* Ensure that custom engines which substituted wagons
-			 * are sorted correctly.
-			 * XXX - DO NOT EVER DO THIS EVER AGAIN! GRRR hacking in wagons as
-			 * engines to get more types.. Stays here until we have our own format
-			 * then it is exit!!! */
-			if (WP(w,replaceveh_d).wagon_btnstate) {
-				train_engine_drawing_loop(&x, &y, &pos, &sel[0], &selected_id[0], railtype, w->vscroll.cap, true, false, true, true); // True engines
-				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, true, false, false, false); // True engines
-				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, false, false, false, false); // Feeble wagons
-			} else {
-				train_engine_drawing_loop(&x, &y, &pos, &sel[0], &selected_id[0], railtype, w->vscroll.cap, false, true, true, true);
-				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, false, true, false, true);
-			}
-			break;
-		}
-
-		case VEH_Road: {
-			int num = NUM_ROAD_ENGINES;
-			const Engine* e = GetEngine(ROAD_ENGINES_INDEX);
-			EngineID engine_id = ROAD_ENGINES_INDEX;
-
-			do {
-				if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
-					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-						DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-						DrawRoadVehEngine(x+29, y+6, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
-						SetDParam(0, p->num_engines[engine_id]);
-						DrawStringRightAligned(213, y+5, STR_TINY_BLACK, 0);
-						y += 14;
-					}
-				sel[0]--;
-				}
-
-				if (selected_id[0] != INVALID_ENGINE) {
-					byte cargo = RoadVehInfo(selected_id[0])->cargo_type;
-
-					if (RoadVehInfo(engine_id)->cargo_type == cargo && HASBIT(e->player_avail, _local_player)) {
-						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0) && RoadVehInfo(engine_id)->cargo_type == cargo) {
-							DrawString(x2+59, y2+2, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-							DrawRoadVehEngine(x2+29, y2+6, engine_id, GetEnginePalette(engine_id, _local_player));
-							y2 += 14;
-						}
-						sel[1]--;
-					}
-				}
-			} while (++engine_id, ++e,--num);
-			break;
-		}
-
-		case VEH_Ship: {
-			int num = NUM_SHIP_ENGINES;
-			const Engine* e = GetEngine(SHIP_ENGINES_INDEX);
-			EngineID engine_id = SHIP_ENGINES_INDEX;
-
-			do {
-				if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
-					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-						DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-						DrawShipEngine(x+35, y+10, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
-						SetDParam(0, p->num_engines[engine_id]);
-						DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
-						y += 24;
-					}
-					sel[0]--;
-				}
-
-				if (selected_id[0] != INVALID_ENGINE) {
-					CargoID cargo = ShipVehInfo(selected_id[0])->cargo_type;
-					bool refittable = ShipVehInfo(selected_id[0])->refittable;
-
-					if (HASBIT(e->player_avail, _local_player) && ( cargo == ShipVehInfo(engine_id)->cargo_type || refittable & ShipVehInfo(engine_id)->refittable)) {
-						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
-							DrawString(x2+75, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-							DrawShipEngine(x2+35, y2+10, engine_id, GetEnginePalette(engine_id, _local_player));
-							y2 += 24;
-						}
-						sel[1]--;
-					}
-				}
-			} while (++engine_id, ++e, --num);
-			break;
-		}   //end of ship
-
-		case VEH_Aircraft: {
-			int num = NUM_AIRCRAFT_ENGINES;
-			const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
-			EngineID engine_id = AIRCRAFT_ENGINES_INDEX;
-
-			do {
-				if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
-					if (sel[0] == 0) selected_id[0] = engine_id;
-					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-						DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-						DrawAircraftEngine(x+29, y+10, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
-						SetDParam(0, p->num_engines[engine_id]);
-						DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
-						y += 24;
-					}
-					sel[0]--;
-				}
-
-				if (selected_id[0] != INVALID_ENGINE) {
-					byte subtype = AircraftVehInfo(selected_id[0])->subtype;
-
-					if ((subtype & AIR_CTOL) == (AircraftVehInfo(engine_id)->subtype & AIR_CTOL) &&
-							HASBIT(e->player_avail, _local_player)) {
-						if (sel[1] == 0) selected_id[1] = engine_id;
-						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
-							DrawString(x2+62, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-							DrawAircraftEngine(x2+29, y2+10, engine_id, GetEnginePalette(engine_id, _local_player));
-							y2 += 24;
-						}
-						sel[1]--;
-					}
-				}
-			} while (++engine_id, ++e,--num);
-			break;
-		}   // end of aircraft
-	}
-}
+void DrawEngineList(byte type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count);
 
 static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 {
+	/* Strings for the pulldown menu */
 	static const StringID _vehicle_type_names[] = {
 		STR_019F_TRAIN,
 		STR_019C_ROAD_VEHICLE,
@@ -364,93 +213,104 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 	};
 
 	switch (e->event) {
+		case WE_CREATE:
+			WP(w, replaceveh_d).wagon_btnstate = true; // start with locomotives (all other vehicles will not read this bool)
+			EngList_Create(&WP(w, replaceveh_d).list[0]);
+			EngList_Create(&WP(w, replaceveh_d).list[1]);
+			WP(w, replaceveh_d).update_left   = true;
+			WP(w, replaceveh_d).update_right  = true;
+			WP(w, replaceveh_d).init_lists    = true;
+			WP(w, replaceveh_d).sel_engine[0] = INVALID_ENGINE;
+			WP(w, replaceveh_d).sel_engine[1] = INVALID_ENGINE;
+			break;
+
 		case WE_PAINT: {
-				Player *p = GetPlayer(_local_player);
-				int pos = w->vscroll.pos;
-				EngineID selected_id[2] = { INVALID_ENGINE, INVALID_ENGINE };
-				int x = 1;
-				int y = 15;
-				int pos2 = w->vscroll2.pos;
-				int x2 = 1 + 228;
-				int y2 = 15;
-				int sel[2];
-				byte i;
-				sel[0] = WP(w,replaceveh_d).sel_index[0];
-				sel[1] = WP(w,replaceveh_d).sel_index[1];
+			if (WP(w, replaceveh_d).update_left || WP(w, replaceveh_d).update_right) GenerateLists(w);
 
-				SetupScrollStuffForReplaceWindow(w);
+			Player *p = GetPlayer(_local_player);
+			EngineID selected_id[2];
 
-				selected_id[0] = WP(w,replaceveh_d).sel_engine[0];
-				selected_id[1] = WP(w,replaceveh_d).sel_engine[1];
+			selected_id[0] = WP(w, replaceveh_d).sel_engine[0];
+			selected_id[1] = WP(w, replaceveh_d).sel_engine[1];
 
-				// Disable the "Start Replacing" button if:
-				//    Either list is empty
-				// or Both lists have the same vehicle selected
-				// or The selected replacement engine has a replacement (to prevent loops)
-				// or The right list (new replacement) has the existing replacement vehicle selected
-				SetWindowWidgetDisabledState(w, 4,
-						selected_id[0] == INVALID_ENGINE ||
-						selected_id[1] == INVALID_ENGINE ||
-						selected_id[0] == selected_id[1] ||
-						EngineReplacementForPlayer(p, selected_id[1]) != INVALID_ENGINE ||
-						EngineReplacementForPlayer(p, selected_id[0]) == selected_id[1]);
+			/* Disable the "Start Replacing" button if:
+			 *    Either list is empty
+			 * or The selected replacement engine has a replacement (to prevent loops)
+			 * or The right list (new replacement) has the existing replacement vehicle selected */
+			SetWindowWidgetDisabledState(w, 4,
+										 selected_id[0] == INVALID_ENGINE ||
+										 selected_id[1] == INVALID_ENGINE ||
+										 EngineReplacementForPlayer(p, selected_id[1]) != INVALID_ENGINE ||
+										 EngineReplacementForPlayer(p, selected_id[0]) == selected_id[1]);
 
-				// Disable the "Stop Replacing" button if:
-				//    The left list (existing vehicle) is empty
-				// or The selected vehicle has no replacement set up
-				SetWindowWidgetDisabledState(w, 6,
-						selected_id[0] == INVALID_ENGINE ||
-						!EngineHasReplacementForPlayer(p, selected_id[0]));
+			/* Disable the "Stop Replacing" button if:
+			 *   The left list (existing vehicle) is empty
+			 *   or The selected vehicle has no replacement set up */
+			SetWindowWidgetDisabledState(w, 6,
+										 selected_id[0] == INVALID_ENGINE ||
+										 !EngineHasReplacementForPlayer(p, selected_id[0]));
 
-				// now the actual drawing of the window itself takes place
-				SetDParam(0, _vehicle_type_names[WP(w, replaceveh_d).vehicletype - VEH_Train]);
+			/* now the actual drawing of the window itself takes place */
+			SetDParam(0, _vehicle_type_names[VehTypeToIndex(w->window_number)]);
 
-				if (WP(w, replaceveh_d).vehicletype == VEH_Train) {
-					// set on/off for renew_keep_length
-					SetDParam(1, p->renew_keep_length ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+			if (w->window_number == VEH_Train) {
+				/* set on/off for renew_keep_length */
+				SetDParam(1, p->renew_keep_length ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 
-					// set wagon/engine button
-					SetDParam(2, WP(w, replaceveh_d).wagon_btnstate ? STR_ENGINES : STR_WAGONS);
-				}
+				/* set wagon/engine button */
+				SetDParam(2, WP(w, replaceveh_d).wagon_btnstate ? STR_ENGINES : STR_WAGONS);
+			}
 
-				DrawWindowWidgets(w);
+			w->widget[13].color = _player_colors[_local_player]; // sets the colour of that art thing
+			w->widget[16].color = _player_colors[_local_player]; // sets the colour of that art thing
 
-				// sets up the string for the vehicle that is being replaced to
-				if (selected_id[0] != INVALID_ENGINE) {
-					if (!EngineHasReplacementForPlayer(p, selected_id[0])) {
-						SetDParam(0, STR_NOT_REPLACING);
-					} else {
-						SetDParam(0, GetCustomEngineName(EngineReplacementForPlayer(p, selected_id[0])));
-					}
+			DrawWindowWidgets(w);
+
+
+			if (w->window_number == VEH_Train) {
+				/* Draw the selected railtype in the pulldown menu */
+				RailType railtype = _railtype_selected_in_replace_gui;
+				DrawString(157, w->widget[14].top + 1, _rail_types_list[railtype], 0x10);
+			}
+
+			/* sets up the string for the vehicle that is being replaced to */
+			if (selected_id[0] != INVALID_ENGINE) {
+				if (!EngineHasReplacementForPlayer(p, selected_id[0])) {
+					SetDParam(0, STR_NOT_REPLACING);
 				} else {
-					SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
+					SetDParam(0, GetCustomEngineName(EngineReplacementForPlayer(p, selected_id[0])));
 				}
+			} else {
+				SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
+			}
 
-				DrawString(145, w->widget[5].top + 1, STR_02BD, 0x10);
+			DrawString(145, w->widget[5].top + 1, STR_02BD, 0x10);
 
-				/* now we draw the two arrays according to what we just counted */
-				DrawEngineArrayInReplaceWindow(w, x, y, x2, y2, pos, pos2, sel[0], sel[1], selected_id[0], selected_id[1]);
+			/* Draw the lists */
+			for(byte i = 0; i < 2; i++) {
+				uint16 x        = i == 0 ? 2 : 230; // at what X offset
+				EngineList list = WP(w, replaceveh_d).list[i]; // which list to draw
+				EngineID start  = i == 0 ? w->vscroll.pos : w->vscroll2.pos; // what is the offset for the start (scrolling)
+				EngineID end    = min((i == 0 ? w->vscroll.cap : w->vscroll2.cap) + start, EngList_Count(&list));
 
-				WP(w,replaceveh_d).sel_engine[0] = selected_id[0];
-				WP(w,replaceveh_d).sel_engine[1] = selected_id[1];
-				/* now we draw the info about the vehicles we selected */
-				for (i = 0 ; i < 2 ; i++) {
-					if (selected_id[i] != INVALID_ENGINE) {
-						const Widget *wi = &w->widget[i == 0 ? 3 : 11];
-						DrawVehiclePurchaseInfo(wi->left + 2 , wi->top + 1, wi->right - wi->left - 2, selected_id[i]);
-					}
+				/* Do the actual drawing */
+				DrawEngineList(w->window_number, x, 15, list, start, end, WP(w, replaceveh_d).sel_engine[i], i == 0);
+
+				/* Also draw the details if an engine is selected */
+				if (WP(w, replaceveh_d).sel_engine[i] != INVALID_ENGINE) {
+					const Widget *wi = &w->widget[i == 0 ? 3 : 11];
+					DrawVehiclePurchaseInfo(wi->left + 2, wi->top + 1, wi->right - wi->left - 2, WP(w, replaceveh_d).sel_engine[i]);
 				}
-			} break;   // end of paint
+			}
+
+		} break;   // end of paint
 
 		case WE_CLICK: {
-			// these 3 variables is used if any of the lists is clicked
-			uint16 click_scroll_pos = w->vscroll2.pos;
-			uint16 click_scroll_cap = w->vscroll2.cap;
-			byte click_side = 1;
-
 			switch (e->we.click.widget) {
 				case 12:
 					WP(w, replaceveh_d).wagon_btnstate = !(WP(w, replaceveh_d).wagon_btnstate);
+					WP(w, replaceveh_d).update_left = true;
+					WP(w, replaceveh_d).init_lists  = true;
 					SetWindowDirty(w);
 					break;
 
@@ -467,42 +327,51 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
 					EngineID veh_to = WP(w, replaceveh_d).sel_engine[1];
 					DoCommandP(0, 3, veh_from + (veh_to << 16), NULL, CMD_SET_AUTOREPLACE);
-					break;
-				}
+				} break;
 
 				case 6: { /* Stop replacing */
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
 					DoCommandP(0, 3, veh_from + (INVALID_ENGINE << 16), NULL, CMD_SET_AUTOREPLACE);
-					break;
-				}
+				} break;
 
 				case 7:
-					// sets up that the left one was clicked. The default values are for the right one (9)
-					// this way, the code for 9 handles both sides
-					click_scroll_pos = w->vscroll.pos;
-					click_scroll_cap = w->vscroll.cap;
-					click_side = 0;
-					/* FALL THROUGH */
-
 				case 9: {
 					uint i = (e->we.click.pt.y - 14) / w->resize.step_height;
+					uint16 click_scroll_pos = e->we.click.widget == 7 ? w->vscroll.pos : w->vscroll2.pos;
+					uint16 click_scroll_cap = e->we.click.widget == 7 ? w->vscroll.cap : w->vscroll2.cap;
+					byte click_side         = e->we.click.widget == 7 ? 0 : 1;
+					uint16 engine_count     = EngList_Count(&WP(w, replaceveh_d).list[click_side]);
+
 					if (i < click_scroll_cap) {
-						WP(w,replaceveh_d).sel_index[click_side] = i + click_scroll_pos;
+						i += click_scroll_pos;
+						EngineID e = engine_count > i ? WP(w, replaceveh_d).list[click_side][i] : INVALID_ENGINE;
+						if (e == WP(w, replaceveh_d).sel_engine[click_side]) break; // we clicked the one we already selected
+						WP(w, replaceveh_d).sel_engine[click_side] = e;
+						if (click_side == 0) {
+							WP(w, replaceveh_d).update_right = true;
+							WP(w, replaceveh_d).init_lists   = true;
+						}
 						SetWindowDirty(w);
-					}
+						}
 					break;
-				}
+					}
 			}
 			break;
 		}
 
-		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-			_railtype_selected_in_replace_gui = (RailType)e->we.dropdown.index;
+		case WE_DROPDOWN_SELECT: { /* we have selected a dropdown item in the list */
+			RailType temp = (RailType)e->we.dropdown.index;
+			if (temp == _railtype_selected_in_replace_gui) break; // we didn't select a new one. No need to change anything
+			_railtype_selected_in_replace_gui = temp;
 			/* Reset scrollbar positions */
 			w->vscroll.pos  = 0;
 			w->vscroll2.pos = 0;
+			/* Rebuild the lists */
+			WP(w, replaceveh_d).update_left  = true;
+			WP(w, replaceveh_d).update_right = true;
+			WP(w, replaceveh_d).init_lists   = true;
 			SetWindowDirty(w);
-			break;
+		} break;
 
 		case WE_RESIZE:
 			w->vscroll.cap  += e->we.sizing.diff.y / (int)w->resize.step_height;
@@ -511,6 +380,17 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			w->widget[7].data = (w->vscroll.cap  << 8) + 1;
 			w->widget[9].data = (w->vscroll2.cap << 8) + 1;
 			break;
+
+		case WE_INVALIDATE_DATA:
+			if (_rebuild_left_list) WP(w, replaceveh_d).update_left = true;
+			if (_rebuild_right_list) WP(w, replaceveh_d).update_right = true;
+			SetWindowDirty(w);
+			break;
+
+		case WE_DESTROY:
+			EngList_RemoveAll(&WP(w, replaceveh_d).list[0]);
+			EngList_RemoveAll(&WP(w, replaceveh_d).list[1]);
+		break;
 	}
 }
 
@@ -626,6 +506,5 @@ void ShowReplaceVehicleWindow(byte vehicletype)
 	}
 
 	w->caption_color = _local_player;
-	WP(w, replaceveh_d).vehicletype = vehicletype;
 	w->vscroll2.cap = w->vscroll.cap;   // these two are always the same
 }

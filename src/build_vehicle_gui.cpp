@@ -733,12 +733,14 @@ static void DrawVehicleEngine(byte type, int x, int y, EngineID engine, SpriteID
  * @param min where to start in the list
  * @param max where in the list to end
  * @param selected_id what engine to highlight as selected, if any
+ * @param show_count Display the number of vehicles (used by autoreplace)
  */
-static void DrawEngineList(byte type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id)
+void DrawEngineList(byte type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count)
 {
 	byte step_size = GetVehicleListHeight(type);
 	byte x_offset = 0;
 	byte y_offset = 0;
+	Player *p = GetPlayer(_local_player);
 
 	assert(max <= EngList_Count(&eng_list));
 
@@ -771,7 +773,11 @@ static void DrawEngineList(byte type, int x, int y, const EngineList eng_list, u
 		const EngineID engine = eng_list[min];
 
 		DrawString(x + x_offset, y, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
-		DrawVehicleEngine(type, x, y + y_offset, engine, GetEnginePalette(engine, _local_player));
+		DrawVehicleEngine(type, x, y + y_offset, engine, (show_count && p->num_engines[engine] == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_player));
+		if (show_count) {
+			SetDParam(0, p->num_engines[engine]);
+			DrawStringRightAligned(213, y + (GetVehicleListHeight(type) == 14 ? 3 : 8), STR_TINY_BLACK, 0);
+		}
 	}
 }
 
@@ -786,7 +792,7 @@ static void DrawBuildVehicleWindow(Window *w)
 	SetDParam(0, bv->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles
 	DrawWindowWidgets(w);
 
-	DrawEngineList(bv->vehicle_type, 2, 27, bv->eng_list, w->vscroll.pos, max, bv->sel_engine);
+	DrawEngineList(bv->vehicle_type, 2, 27, bv->eng_list, w->vscroll.pos, max, bv->sel_engine, false);
 
 	if (bv->sel_engine != INVALID_ENGINE) {
 		const Widget *wi = &w->widget[BUILD_VEHICLE_WIDGET_PANEL];

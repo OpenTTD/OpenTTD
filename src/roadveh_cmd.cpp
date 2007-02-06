@@ -192,13 +192,14 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->random_bits = VehicleRandomBits();
 
 		VehiclePositionChanged(v);
-		GetPlayer(_current_player)->num_engines[p1]++;
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
-			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road); // updates the replace Road window
+			InvalidateAutoreplaceWindow(VEH_Road); // updates the replace Road window
+
+		GetPlayer(_current_player)->num_engines[p1]++;
 	}
 
 	return cost;
@@ -284,7 +285,6 @@ int32 CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 		DeleteDepotHighlightOfVehicle(v);
 		DeleteVehicle(v);
-		if (IsLocalPlayer()) InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road);
 	}
 
 	return -(int32)v->value;

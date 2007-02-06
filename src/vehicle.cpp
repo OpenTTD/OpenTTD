@@ -560,7 +560,10 @@ bool IsEngineCountable(const Vehicle *v)
 
 void DestroyVehicle(Vehicle *v)
 {
-	if (IsEngineCountable(v)) GetPlayer(v->owner)->num_engines[v->engine_type]--;
+	if (IsEngineCountable(v)) {
+		GetPlayer(v->owner)->num_engines[v->engine_type]--;
+		if (v->owner == _local_player) InvalidateAutoreplaceWindow(v->engine_type);
+	}
 
 	DeleteVehicleNews(v->index, INVALID_STRING_ID);
 

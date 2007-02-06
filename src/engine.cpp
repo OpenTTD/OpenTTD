@@ -101,9 +101,11 @@ static void CalcEngineReliability(Engine *e)
 		 * We will now completely retire this design */
 		e->player_avail = 0;
 		e->reliability = e->reliability_final;
-		InvalidateWindowClassesData(WC_BUILD_VEHICLE); // Kick this engine out of the lists
+		/* Kick this engine out of the lists */
+		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
 	InvalidateWindowClasses(WC_BUILD_VEHICLE); // Update to show the new reliability
+	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
 }
 
 void AddTypeToEngines(void)
@@ -195,8 +197,7 @@ static void AcceptEnginePreview(EngineID eid, PlayerID player)
 
 	e->preview_player = INVALID_PLAYER;
 	if (player == _local_player) {
-		InvalidateWindowClassesData(WC_BUILD_VEHICLE);
-		InvalidateWindowClasses(WC_REPLACE_VEHICLE);
+		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
 }
 
@@ -319,8 +320,7 @@ static void NewVehicleAvailable(Engine *e)
 	}
 
 	e->flags = (e->flags & ~ENGINE_INTRODUCING) | ENGINE_AVAILABLE;
-	InvalidateWindowClassesData(WC_BUILD_VEHICLE);
-	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
+	AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 
 	// Now available for all players
 	e->player_avail = (byte)-1;
