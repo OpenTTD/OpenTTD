@@ -855,16 +855,25 @@ static void PlayAircraftSound(const Vehicle* v)
 	}
 }
 
-static bool UpdateAircraftSpeed(Vehicle *v)
+/** Special velocities for aircraft
+ */
+enum AircraftSpeedLimits {
+	SPEED_LIMIT_NONE   =  0,  ///< No environmental speed limit. Speed limit is type dependent
+	SPEED_LIMIT_TAXI   = 12,  ///< Maximum speed of an aircraft while taxiing
+	SPEED_LIMIT_BROKEN = 27,  ///< Maximum speed of an aircraft that is broken
+};
+
+static bool UpdateAircraftSpeed(Vehicle *v, uint speed_limit)
 {
 	uint spd = v->acceleration * 2;
 	byte t;
 
 	v->subspeed = (t=v->subspeed) + (byte)spd;
-	spd = min(v->cur_speed + (spd >> 8) + (v->subspeed < t), v->max_speed);
+	if (speed_limit == SPEED_LIMIT_NONE) speed_limit = v->max_speed;
+	spd = min(v->cur_speed + (spd >> 8) + (v->subspeed < t), speed_limit);
 
 	// adjust speed for broken vehicles
-	if (v->vehstatus & VS_AIRCRAFT_BROKEN) spd = min(spd, 27);
+	if (v->vehstatus & VS_AIRCRAFT_BROKEN) spd = min(spd, SPEED_LIMIT_BROKEN);
 
 	//updates statusbar only if speed have changed to save CPU time
 	if (spd != v->cur_speed) {
@@ -947,7 +956,7 @@ static bool AircraftController(Vehicle *v)
 			if (--u->cur_speed == 32) SndPlayVehicleFx(SND_18_HELICOPTER, v);
 		} else {
 			u->cur_speed = 32;
-			if (UpdateAircraftSpeed(v)) {
+			if (UpdateAircraftSpeed(v, SPEED_LIMIT_NONE)) {
 				v->tile = 0;
 
 				// Reached altitude?
@@ -963,7 +972,7 @@ static bool AircraftController(Vehicle *v)
 
 	// Helicopter landing.
 	if (amd->flag & AMED_HELI_LOWER) {
-		if (UpdateAircraftSpeed(v)) {
+		if (UpdateAircraftSpeed(v, SPEED_LIMIT_NONE)) {
 			if (st->airport_tile == 0) {
 				// FIXME - AircraftController -> if station no longer exists, do not land
 				// helicopter will circle until sign disappears, then go to next order
@@ -1007,8 +1016,6 @@ static bool AircraftController(Vehicle *v)
 	if (dist == 0) {
 		DirDiff dirdiff;
 
-		if (v->cur_speed > 12) v->cur_speed = 12;
-
 		// Change direction smoothly to final direction.
 		dirdiff = DirDifference(amd->direction, v->direction);
 		// if distance is 0, and plane points in right direction, no point in calling
@@ -1018,7 +1025,7 @@ static bool AircraftController(Vehicle *v)
 			return true;
 		}
 
-		if (!UpdateAircraftSpeed(v)) return false;
+		if (!UpdateAircraftSpeed(v, SPEED_LIMIT_TAXI)) return false;
 
 		v->direction = ChangeDir(v->direction, dirdiff > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
 		v->cur_speed >>= 1;
@@ -1027,9 +1034,7 @@ static bool AircraftController(Vehicle *v)
 		return false;
 	}
 
-	if (!(amd->flag & AMED_NOSPDCLAMP) && v->cur_speed > 12) v->cur_speed = 12;
-
-	if (!UpdateAircraftSpeed(v)) return false;
+	if (!UpdateAircraftSpeed(v, ((amd->flag & AMED_NOSPDCLAMP) == 0) ? SPEED_LIMIT_TAXI : SPEED_LIMIT_NONE)) return false;
 
 	if (v->load_unload_time_rem != 0) v->load_unload_time_rem--;
 
