@@ -1330,8 +1330,9 @@ static void RoadVehController(Vehicle *v)
 
 		GetNewVehiclePos(v, &gp);
 
-		if (RoadVehFindCloseTo(v, gp.x, gp.y, v->direction) != NULL) {
-			v->cur_speed = 0;
+		const Vehicle *u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
+		if (u != NULL && u->cur_speed < v->cur_speed) {
+			v->cur_speed = u->cur_speed;
 			return;
 		}
 
