@@ -359,6 +359,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nová hr
 STR_0141_LOAD_GAME                                              :{BLACK}Nahrat hru
 STR_SINGLE_PLAYER                                               :{BLACK}Jeden hrac
 STR_MULTIPLAYER                                                 :{BLACK}Viacero hrácov
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor scenárov
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -687,6 +688,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Pre zvys
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Vygenerovat nahodne uzemie
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Zresetovat uzemie
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Zresetovat Uzemie
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Odstránit všetok majetok vlastnený hrácom z mapy
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Naozaj odstránit všetok majetok vlastnený hrácom z mapy?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Vytvorenie uzemia
 STR_022F_TOWN_GENERATION                                        :{BLACK}Vytvorenie mesta
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Vytvorenie priemyslu
@@ -791,6 +794,7 @@ STR_0290_DELETE                                                 :{BLACK}Vymazat
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Kompletne vymazat toto mesto
 STR_0292_SAVE_SCENARIO                                          :Ulozit scenar
 STR_0293_LOAD_SCENARIO                                          :Nahrat scenár
+STR_LOAD_HEIGHTMAP                                              :Nahrat výškovú mapu
 STR_0294_QUIT_EDITOR                                            :Ukoncit editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Ukoncit program
@@ -1477,6 +1481,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Zoznam k
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nie su ziadne sietove zariadenie alebo hra je kompilovana bez ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nebola najdena ziadna sietova hra
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Server neodpoveda na ziadost
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Pripojenie zlyhalo kvoli nespravnemu NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Siet - Chyba synchronizacie hry
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Siet - Stratene spojenie
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nedokazem nahrat hru zo servera
@@ -1498,6 +1503,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :chyba synchroni
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :neviem nahrat mapu
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :spojenie prerusene
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :chyba protokolu
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Nespravne NewGRF
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :overenie odmietnute
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :neplatny packet prijaty
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :chybna revizia hry
@@ -2576,6 +2582,7 @@ STR_INVALID_ORDER                                               :{RED} (Neplatny
 STR_UNKNOWN_DESTINATION                                         :neznamy ciel
 STR_8812_EMPTY                                                  :{LTBLUE}Prazdny
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} caka v depe
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nove vozidla
 STR_8816                                                        :{BLACK}-

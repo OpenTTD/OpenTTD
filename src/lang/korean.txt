@@ -157,7 +157,7 @@ STR_00B2_MESSAGE                                                :{YELLOW}알림
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}{STRING}이(가) 보낸 메시지
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}경고!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}그렇게 할 수 없습니다....
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}이 지역을 지울 수 없습니다....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}이 지역을 파괴할 수 없습니다....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION                                                :{BLACK}OpenTTD 버전 {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 The OpenTTD team
@@ -191,7 +191,7 @@ STR_00DD_ORANGE                                                 :주황색
 STR_00DE_BROWN                                                  :갈색
 STR_00DF_GREY                                                   :회색
 STR_00E0_WHITE                                                  :흰색
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}차량이 너무 많습니다!
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}이 게임에 차량이 너무 많습니다!
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}위치
@@ -226,7 +226,7 @@ STR_0100_FACTORY                                                :{BLACK}{TINYFON
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}인쇄소
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}유정
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}철광산
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}철 공장
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}제철소
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}은행
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}제지소
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}금 광산
@@ -434,14 +434,14 @@ STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사�
 STR_0174_DISPLAY_MAP                                            :{BLACK}맵 보여주기
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}맵, 마을 목록 보여주기
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}마을 목록 보여주기
-STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}내 회사의 재정 정보 보여주기
-STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}내 회사의 기본 정보 보여주기
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}회사 재정 정보 보여주기
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}회사 기본 정보 보여주기
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}그래프 표시
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}내 회사의 리그 순위 표시
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}내 회사의 열차 목록 표시
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}내 회사의 자동차 목록 표시
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}내 회사의 선박 목록 표시
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}내 회사의 항공기 목록 표시
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}회사의 리그 순위 표시
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 열차 목록 표시
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 자동차 목록 표시
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 선박 목록 표시
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 항공기 목록 표시
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}풍경 확대
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}풍경 축소
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}철도 건설
@@ -459,7 +459,7 @@ STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}창 제�
 STR_STICKY_BUTTON                                               :{BLACK}이 창을 '모든 창 닫기' 키로 닫을 수 없게 하기
 STR_RESIZE_BUTTON                                               :{BLACK}이 창의 크기를 조절하려면 여기를 클릭하고 드래그하세요.
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}기본 저장/로드 디렉토리로 이동하려면 여기를 클릭하세요
-STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}사각형 모양으로 건물과 땅 등을 부숩니다.
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}사각형 모양의 땅에 있는 건물과 땅 등을 부숩니다.
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}땅의 모퉁이를 낮춥니다.
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}땅의 모퉁이를 높입니다.
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}스크롤바 - 목록을 상/하로 스크롤하세요
@@ -599,7 +599,7 @@ STR_020E_SUBSIDIES                                              :{YELLOW}보조�
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}일반 정보
 STR_MESSAGES_ALL                                                :{YELLOW}모든 메시지 종류 : 끄기 / 요약 / 전체
 STR_MESSAGE_SOUND                                               :{YELLOW}요약된 메시지와 함께 소리를 들려줍니다
-STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}... 목적지가 이전과 너무 멉니다
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...이전의 목적지로부터 너무 멉니다
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}{NUM}에 달성한 최고의 회사 ({STRING} 난이도)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}{NUM}의 회사 리그 목록
 STR_0212                                                        :{BIGFONT}{COMMA}.
@@ -634,7 +634,7 @@ STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}도로 �
 STR_0233_TOWN_GENERATION                                        :{WHITE}마을 생성
 STR_0234_NEW_TOWN                                               :{BLACK}새 도시
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}새 도시 건설
-STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}여기에 도시를을 건설할 수 없습니다...
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}여기에 도시를 건설할 수 없습니다...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...맵 가장자리에 너무 가깝습니다!
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...다른 도시와 너무 가깝습니다!
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...알맞지 않은 장소입니다!
@@ -653,7 +653,7 @@ STR_0243_FOREST                                                 :{BLACK}숲
 STR_0244_OIL_REFINERY                                           :{BLACK}석유 정제소
 STR_0245_OIL_RIG                                                :{BLACK}유전
 STR_0246_FACTORY                                                :{BLACK}공장
-STR_0247_STEEL_MILL                                             :{BLACK}철 공장
+STR_0247_STEEL_MILL                                             :{BLACK}제철소
 STR_0248_FARM                                                   :{BLACK}농장
 STR_0249_IRON_ORE_MINE                                          :{BLACK}철 광산
 STR_024A_OIL_WELLS                                              :{BLACK}유정
@@ -687,7 +687,7 @@ STR_0265_PLANT_FOREST                                           :{BLACK}숲 심�
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}석유 정제소 건설
 STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}유전 건설 (맵 가장자리 근처에만 건설 가능)
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}공장 건설
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}철 공장 건설
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}제철소 건설
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}농장 건설
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}철 광산 건설
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}유정 건설
@@ -1166,8 +1166,8 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업�
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}{WAYPOINT}(으)로 향하는 중
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}{WAYPOINT}, {VELOCITY}(으)로 향하는 중
 
-STR_GO_TO_WAYPOINT                                              :{WAYPOINT}을/를 거쳐 가는 중
-STR_GO_NON_STOP_TO_WAYPOINT                                     :{WAYPOINT}을/를 거쳐 직통으로 가는 중
+STR_GO_TO_WAYPOINT                                              :{WAYPOINT}을/를 경유
+STR_GO_NON_STOP_TO_WAYPOINT                                     :{WAYPOINT}을/를 직통 경유
 
 STR_WAYPOINTNAME_CITY                                           :웨이포인트 {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :웨이포인트 {TOWN} #{COMMA}
@@ -1831,7 +1831,7 @@ STR_4806_OIL_REFINERY                                           :석유 정제�
 STR_4807_OIL_RIG                                                :유전
 STR_4808_FACTORY                                                :공장
 STR_4809_PRINTING_WORKS                                         :인쇄소
-STR_480A_STEEL_MILL                                             :철 공장
+STR_480A_STEEL_MILL                                             :제철소
 STR_480B_FARM                                                   :농장
 STR_480C_COPPER_ORE_MINE                                        :구리 광산
 STR_480D_OIL_WELLS                                              :유정

@@ -833,7 +833,7 @@ STR_02F8_EVERY_3_MONTHS                                         :Каждые 3 
 STR_02F9_EVERY_6_MONTHS                                         :Каждые 6 месяцев
 STR_02FA_EVERY_12_MONTHS                                        :Каждый год
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Начать новую игру
-STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Загрузить сохраненную игру
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Загрузить сохранённую игру
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Создать собственный сценарий
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Выбрать одиночную игру
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Выбрать сетевую игру на 2-8 игроков
@@ -1013,9 +1013,9 @@ STR_CONFIG_PATCHES                                              :{BLACK}Наст
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Открыть настройки патчей
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Настройки патчей
 
-STR_CONFIG_PATCHES_OFF                                          :Выкл
-STR_CONFIG_PATCHES_ON                                           :Вкл
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Скорость транспорта в строке статуса: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_OFF                                          :выключено
+STR_CONFIG_PATCHES_ON                                           :включено
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Показывать скорость в панели статуса транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и берегу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Разрешить более реалистичные зоны покрытия: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Разрешить удалять больше дорог, мостов, т.п.: {ORANGE}{STRING}
@@ -1033,12 +1033,12 @@ STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Доб�
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Разрешить строительство сырьевых предприятий: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Строить неск. предприятий 1 типа в одном городе: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Одинаковые предприятия можно строить рядом: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Всегда отобр. длинную дату в строке состояния: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Всегда показывать длинную дату в панели состояния: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Сигналы на стороне движения: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Отображать фин. информацию в конце года: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Показывать финансовую статистику в конце года: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Приказ без остановки в стиле TTDPatch: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Разрешить ожидание въезда на автостанцию: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Автоскроллинг: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Смещать обзор, когда курсор находится у края экрана: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Разрешить взятку местной администрации: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Станции могут быть разной формы: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Новый поиск пути (NPF, без NTP): {ORANGE}{STRING}
@@ -1055,10 +1055,10 @@ STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Пре�
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт никогда не устаревает: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Автоматически обновлять устаревший транспорт
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Обновить транспорт за (через) {ORANGE}{STRING}{LTBLUE} мес. после устаревания
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Минимум денег для автообновления: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Длительность сообщения об ошибке: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Показ. кол-во населения вместе с названием города: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Невидимые деревья (с прозрачными зданиями): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Минимальная сумма для автообновления: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Длительность сообщений об ошибке: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей города после названия: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Убирать деревья при включении прозрачности зданий: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Генератор земли: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Оригинальный
@@ -1081,27 +1081,27 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Уро�
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. площадь станции : {ORANGE}{STRING} {RED}Большие значения замедляют игру
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Автоматически обслуживать вертолеты в вертопортах: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}"Прилепить" ландшафтную панель к трансп. панелям: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Обратить направление скроллинга: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Показывать размеры строительства в подсказке: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Показывать цвета компаний: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES_NONE                                :Нет
-STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Своя компания
-STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Все компании
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Командный чат по <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Связать ландшафтную панель с транспортными: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Обратить направление перетаскивания обзора: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Показывать замеры при строительстве: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Показывать окраску транспорта: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :нет
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :только для своей компании
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :для всех компаний
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Предпочитать командный чат при нажатии Enter: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. кол-во поездов у игрока: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. кол-во автотранспорта у игрока: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Макс. кол-во авиатранспорта у игрока: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Макс. кол-во кораблей у игрока: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Отключить поезда для компьютера: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Отключить машины для компьютера: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Отключить самолеты для компьютера: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Отключить корабли для компьютера: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Не допускать постройки поездов конкурентами: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Не допускать постройки автомобилей конкурентами: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Не допускать постройки самолётов конкурентами: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Не допускать постройки кораблей конкурентами: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Включить новый ИИ (ИИ альфа): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Разрешить ИИ в сетевой игре (тест): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Включить новый AI (альфа-версия): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Разрешить появление AI-конкурентов в сетевой игре: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Интервал обслуживания поездов: {ORANGE}{STRING} дней/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Интервал обслуживания поездов: {ORANGE}отключено
@@ -1119,14 +1119,14 @@ STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}"Цве
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Год начала игры: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Год окончания игры: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (более мелкие изменения)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Разрешить покупать акции других компаний
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Разрешить покупку акций других компаний
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При перетаскивании ставить сигналы каждые : {ORANGE}{STRING} клетки
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Автоматически строить семафоры до: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Лево
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Центр
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Право
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Радиус прилипания окон: {ORANGE}{STRING} пикселей
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :слева
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :в центре
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :справа
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Радиус прилипания окон: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Радиус прилипания окон: {ORANGE}отключено
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Интерфейс
@@ -1134,7 +1134,7 @@ STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Стро
 STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Транспорт
 STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Станции
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Экономика
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Противники
+STR_CONFIG_PATCHES_AI                                           :{BLACK}Конкуренты
 
 STR_CONFIG_PATCHES_DISABLED                                     :отключено
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

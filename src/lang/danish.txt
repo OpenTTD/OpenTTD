@@ -624,6 +624,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Forminds
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generer tilfældigt land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nulstil landskab
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nulstil landskab
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Fjern alle spiller-ejede ejendomme fra kortet
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Er du sikker på, at du vil fjerne alle spiller-ejede ejendomme?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskabsgenerering
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrigenerering

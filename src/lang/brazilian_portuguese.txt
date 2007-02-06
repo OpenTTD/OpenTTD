@@ -1214,7 +1214,7 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossí
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Construir eclusas
 STR_LANDINFO_LOCK                                               :Eclusa
 
-STR_BUOY_IS_IN_USE                                              :{WHITE}...boia está em uso!
+STR_BUOY_IS_IN_USE                                              :{WHITE}...bóia está em uso!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Coordenadas: {LTBLUE}{NUM}x{NUM} ({STRING})
 
@@ -1968,15 +1968,15 @@ STR_SV_STNAME_AIRPORT                                           :Aeroporto de {S
 STR_SV_STNAME_OILFIELD                                          :Petrolífera de {STRING}
 STR_SV_STNAME_MINES                                             :Minas de {STRING}
 STR_SV_STNAME_DOCKS                                             :Docas de {STRING}
-STR_SV_STNAME_BUOY_1                                            :{STRING} Bóia 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Bóia 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Bóia 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Bóia 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Bóia 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Bóia 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Bóia 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Bóia 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Bóia 9
+STR_SV_STNAME_BUOY_1                                            :Bóia 1 de {STRING}
+STR_SV_STNAME_BUOY_2                                            :Bóia 2 de {STRING}
+STR_SV_STNAME_BUOY_3                                            :Bóia 3 de {STRING}
+STR_SV_STNAME_BUOY_4                                            :Bóia 4 de {STRING}
+STR_SV_STNAME_BUOY_5                                            :Bóia 5 de {STRING}
+STR_SV_STNAME_BUOY_6                                            :Bóia 6 de {STRING}
+STR_SV_STNAME_BUOY_7                                            :Bóia 7 de {STRING}
+STR_SV_STNAME_BUOY_8                                            :Bóia 8 de {STRING}
+STR_SV_STNAME_BUOY_9                                            :Bóia 9 de {STRING}
 STR_SV_STNAME_ANNEXE                                            :Anexo de {STRING}
 STR_SV_STNAME_SIDINGS                                           :Desvio de {STRING}
 STR_SV_STNAME_BRANCH                                            :Ramal de {STRING}
@@ -2757,7 +2757,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}Renomear
 STR_9831_NAME_SHIP                                              :{WHITE}Renomear embarcação
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Impossível renomear embarcação...
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{} Primeira embarcação chega a {STATION}!
-STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Bóia de posição, que pode ser usada para marcar pontos de rota adicionais
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Posicione a bóia, que pode ser usada para marcar pontos de rota adicionais
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Impossível posicionar bóia aqui...
 STR_9836_RENAME                                                 :{BLACK}Renomear
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Renomear tipo de embarcação

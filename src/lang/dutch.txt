@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nieuw sp
 STR_0141_LOAD_GAME                                              :{BLACK}Laad spel
 STR_SINGLE_PLAYER                                               :{BLACK}Een speler
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenario Bewerken
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -623,6 +624,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Verklein
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genereer willekeurig land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Verwijder landschap
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Verwijder landschap
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Verwijderd alle eigendommen van een speler van de kaart
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Weet je zeker dat je alle eigendommen van een speler van de kaart wilt verwijderen?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landschapproductie
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadproductie
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrieproductie
@@ -727,6 +730,7 @@ STR_0290_DELETE                                                 :{BLACK}Verwijde
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Verwijder deze hele stad
 STR_0292_SAVE_SCENARIO                                          :Scenario opslaan
 STR_0293_LOAD_SCENARIO                                          :Scenario openen
+STR_LOAD_HEIGHTMAP                                              :Laad hoogtekaart
 STR_0294_QUIT_EDITOR                                            :Sluit editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Afsluiten

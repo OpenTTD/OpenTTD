@@ -489,9 +489,9 @@ STR_SORT_BY_RELIABILITY                                         :за надій
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :за місткістю
 STR_SORT_BY_MAX_SPEED                                           :за швидкістю
 STR_SORT_BY_MODEL                                               :Модель
-STR_SORT_BY_VALUE                                               :
+STR_SORT_BY_VALUE                                               :за ціною
 STR_SORT_BY_FACILITY                                            :Вид станцій
-STR_SORT_BY_WAITING                                             :
+STR_SORT_BY_WAITING                                             :за ціною вантажу
 STR_SORT_BY_RATING_MAX                                          :Рейтинг вантажів
 STR_ENGINE_SORT_ENGINE_ID                                       :ID (класичне)
 STR_ENGINE_SORT_COST                                            :Ціна
@@ -850,7 +850,7 @@ STR_PLAY_HEIGHTMAP                                              :{BLACK}Грат
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Почати нову гру, використавши карту висот за ландшафт
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ви дійсно бажаєти вийти зі сценарію?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Вихід з редактору
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можливо будувати лише у містах з населення не менш 1200
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можливо будувати лише у містах з населенням не менш 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Перенести початкову дату на 1 рік назад
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Перенести початкову дату на 1 рік вперед
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...кінці мосту мають бути на землі
@@ -1071,7 +1071,7 @@ STR_NO_ORDERS                                                   :{LTBLUE}Без 
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Без завдань, {VELOCITY}
 
 STR_PASSENGERS                                                  :пасАжир
-STR_BAGS                                                        :
+STR_BAGS                                                        :мішків
 STR_TONS                                                        :тонИ
 STR_LITERS                                                      :літрів
 STR_ITEMS                                                       :штук
@@ -1293,7 +1293,7 @@ STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Вста
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Тут не можна встановити точку маршруту..
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Тут не можна прибрати точку маршруту..
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Будувати колію використовуючи авторежим
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Будувати колію, використовуючи авторежим
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...у цьому сценарію немає міст
 
@@ -1531,7 +1531,7 @@ STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} З'єд
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Неможливо завантажити гру
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Неможливо створити сервер
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Неможливо з'єднатися
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} З'єднання #{NUM} timed out
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Таймаут з'єднання #{NUM}
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Помилка протоколу - з'єднання розірвано
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Версія кліента не співпадає з версією сервера
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Пароль невірний
@@ -2051,7 +2051,7 @@ STR_5011_SUSPENSION_CONCRETE                                    :Підвісн�
 STR_5012_WOODEN                                                 :Дерев'яний
 STR_5013_CONCRETE                                               :Бетонний
 STR_5014_TUBULAR_STEEL                                          :Трубчастий сталевий
-STR_BRIDGE_TUBULAR_SILICON                                      :
+STR_BRIDGE_TUBULAR_SILICON                                      :Трубчастий кремнієвий
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Неможливо збудувати міст...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Неможливо збудувати тунель...
 STR_5017_RAILROAD_TUNNEL                                        :Залізничний тунель

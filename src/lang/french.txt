@@ -882,6 +882,7 @@ STR_TOWNNAME_LATIN_AMERICAN                                     :Latino-Americai
 STR_TOWNNAME_SILLY                                              :Drôles
 STR_TOWNNAME_SWEDISH                                            :Suédois
 STR_TOWNNAME_DUTCH                                              :Hollandais
+STR_TOWNNAME_FINNISH                                            :Finlandais
 STR_TOWNNAME_POLISH                                             :Polonais
 STR_TOWNNAME_SLOVAKISH                                          :Slovaques
 STR_TOWNNAME_NORWEGIAN                                          :Norvégiens
