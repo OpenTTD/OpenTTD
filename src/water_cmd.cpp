@@ -661,8 +661,8 @@ void TileLoop_Water(TileIndex tile)
 		{{ 0, -1}, {0, 0}, {1, 0}, { 0, -1}, { 1, -1}}
 	};
 
-	/* Ensure sea-level canals do not flood */
-	if (IsTileType(tile, MP_WATER) && !IsTileOwner(tile, OWNER_WATER)) return;
+	/* Ensure sea-level canals and buoys on canal borders do not flood */
+	if ((IsTileType(tile, MP_WATER) || IsBuoyTile(tile)) && !IsTileOwner(tile, OWNER_WATER)) return;
 
 	if (IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1) &&
 			IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) {
