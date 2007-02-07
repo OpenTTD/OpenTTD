@@ -1317,7 +1317,7 @@ static void CrashAirplane(Vehicle *v)
 	SetDParam(0, amt);
 
 	v->cargo_count = 0;
-	v->next->cargo_count = 0,
+	v->next->cargo_count = 0;
 	st = GetStation(v->u.air.targetairport);
 	if (st->airport_tile == 0) {
 		newsitem = STR_PLANE_CRASH_OUT_OF_FUEL;
