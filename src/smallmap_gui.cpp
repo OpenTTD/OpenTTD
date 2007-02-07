@@ -724,7 +724,7 @@ skip_column:
 
 				// Calculate pointer to pixel and the color
 				ptr = dpi->dst_ptr + y * dpi->pitch + x;
-				color = (type == 1) ? _vehicle_type_colors[v->type-0x10] : 0xF;
+				color = (type == 1) ? _vehicle_type_colors[v->type] : 0xF;
 
 				// And draw either one or two pixels depending on clipping
 				ptr[0] = color;

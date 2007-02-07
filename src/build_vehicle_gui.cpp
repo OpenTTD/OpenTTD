@@ -712,7 +712,7 @@ static void GenerateBuildList(Window *w)
 			break;
 	}
 	_internal_sort_order = bv->descending_sort_order;
-	EngList_Sort(&bv->eng_list, _sorter[VehTypeToIndex(bv->vehicle_type)][bv->sort_criteria]);
+	EngList_Sort(&bv->eng_list, _sorter[bv->vehicle_type][bv->sort_criteria]);
 }
 
 static void DrawVehicleEngine(byte type, int x, int y, EngineID engine, SpriteID pal)
@@ -799,7 +799,7 @@ static void DrawBuildVehicleWindow(Window *w)
 		DrawVehiclePurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, bv->sel_engine);
 	}
 
-	DrawString(85, 15, _sort_listing[VehTypeToIndex(bv->vehicle_type)][bv->sort_criteria], 0x10);
+	DrawString(85, 15, _sort_listing[bv->vehicle_type][bv->sort_criteria], 0x10);
 	DoDrawString(bv->descending_sort_order ? DOWNARROW : UPARROW, 69, 15, 0x10);
 }
 
@@ -810,7 +810,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 	switch (e->we.click.widget) {
 		case BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING:
 			bv->descending_sort_order ^= true;
-			_last_sort_order[VehTypeToIndex(bv->vehicle_type)] = bv->descending_sort_order;
+			_last_sort_order[bv->vehicle_type] = bv->descending_sort_order;
 			bv->regenerate_list = true;
 			SetWindowDirty(w);
 			break;
@@ -824,7 +824,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 		}
 
 		case BUILD_VEHICLE_WIDGET_SORT_TEXT: case BUILD_VEHICLE_WIDGET_SORT_DROPDOWN: // Select sorting criteria dropdown menu
-			ShowDropDownMenu(w, _sort_listing[VehTypeToIndex(bv->vehicle_type)], bv->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
+			ShowDropDownMenu(w, _sort_listing[bv->vehicle_type], bv->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
 			break;
 
 		case BUILD_VEHICLE_WIDGET_BUILD: {
@@ -912,7 +912,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 			if (bv->sort_criteria != e->we.dropdown.index) {
 				bv->sort_criteria = e->we.dropdown.index;
-				_last_sort_criteria[VehTypeToIndex(bv->vehicle_type)] = bv->sort_criteria;
+				_last_sort_criteria[bv->vehicle_type] = bv->sort_criteria;
 				bv->regenerate_list = true;
 			}
 			SetWindowDirty(w);
@@ -961,8 +961,8 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 	bv->vehicle_type    = type;
 	bv->regenerate_list = false;
 
-	bv->sort_criteria         = _last_sort_criteria[VehTypeToIndex(type)];
-	bv->descending_sort_order = _last_sort_order[VehTypeToIndex(type)];
+	bv->sort_criteria         = _last_sort_criteria[type];
+	bv->descending_sort_order = _last_sort_order[type];
 
 	switch (type) {
 		case VEH_Train:

@@ -1503,7 +1503,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 		 * on the vehicle type - the values here are those found in TTDPatch */
 		uint gradual_loading_wait_time[] = { 40, 20, 10, 20 };
 
-		unloading_time = gradual_loading_wait_time[v->type - VEH_Train];
+		unloading_time = gradual_loading_wait_time[v->type];
 		if (HASBIT(v->load_status, LS_LOADING_FINISHED)) {
 			if (anything_loaded) {
 				unloading_time += 20;

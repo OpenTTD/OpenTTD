@@ -251,7 +251,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 										 !EngineHasReplacementForPlayer(p, selected_id[0]));
 
 			/* now the actual drawing of the window itself takes place */
-			SetDParam(0, _vehicle_type_names[VehTypeToIndex(w->window_number)]);
+			SetDParam(0, _vehicle_type_names[w->window_number]);
 
 			if (w->window_number == VEH_Train) {
 				/* set on/off for renew_keep_length */

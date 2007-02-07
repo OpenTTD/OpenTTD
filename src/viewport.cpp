@@ -1738,7 +1738,7 @@ void HandleViewportClicked(const ViewPort *vp, int x, int y)
 	v = CheckClickOnVehicle(vp, x, y);
 	if (v != NULL) {
 		DEBUG(misc, 2, "Vehicle %d (index %d) at %p", v->unitnumber, v->index, v);
-		_on_vehicle_click_proc[v->type - 0x10](v);
+		_on_vehicle_click_proc[v->type](v);
 	}
 }
 

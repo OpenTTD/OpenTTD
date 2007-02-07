@@ -84,7 +84,10 @@ static void VehiclePoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (v = GetVehicle(start_item); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) v->index = start_item++;
+	for (v = GetVehicle(start_item); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
+		v->index = start_item++;
+		v->type  = VEH_Invalid;
+	}
 }
 
 /* Initialize the vehicle-pool */
@@ -263,6 +266,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 
 	assert(v->orders == NULL);
 
+	v->type = VEH_Invalid;
 	v->left_coord = INVALID_COORD;
 	v->first = NULL;
 	v->next = NULL;
@@ -656,7 +660,7 @@ void CallVehicleTicks(void)
 	_first_veh_in_depot_list = NULL; // now we are sure it's initialized at the start of each tick
 
 	FOR_ALL_VEHICLES(v) {
-		_vehicle_tick_procs[v->type - 0x10](v);
+		_vehicle_tick_procs[v->type](v);
 
 		switch (v->type) {
 			case VEH_Train:
@@ -1568,7 +1572,7 @@ static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 	// Do not show getting-old message if autorenew is active
 	if (GetPlayer(v->owner)->engine_renew) return;
 
-	SetDParam(0, _vehicle_type_names[v->type - 0x10]);
+	SetDParam(0, _vehicle_type_names[v->type]);
 	SetDParam(1, v->unitnumber);
 	AddNewsItem(msg, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
 }
@@ -2569,7 +2573,7 @@ void VehicleEnterDepot(Vehicle *v)
 				v->leave_depot_instantly = false; // We ensure that the vehicle stays in the depot
 				if (v->owner == _local_player) {
 					/* Notify the user that we stopped the vehicle */
-					SetDParam(0, _vehicle_type_names[v->type - 0x10]);
+					SetDParam(0, _vehicle_type_names[v->type]);
 					SetDParam(1, v->unitnumber);
 					AddNewsItem(STR_ORDER_REFIT_FAILED, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
 				}
@@ -3212,7 +3216,7 @@ static void Save_VEHS(void)
 	// Write the vehicles
 	FOR_ALL_VEHICLES(v) {
 		SlSetArrayIndex(v->index);
-		SlObject(v, (SaveLoad*)_veh_descs[v->type - 0x10]);
+		SlObject(v, (SaveLoad*)_veh_descs[v->type]);
 	}
 }
 

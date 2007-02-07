@@ -3617,7 +3617,7 @@ static void CalculateRefitMasks(void)
 							RailVehInfo(engine)->railveh_type != RAILVEH_WAGON
 						)
 					)) {
-				xor_mask = _default_refitmasks[GetEngine(engine)->type - VEH_Train];
+				xor_mask = _default_refitmasks[GetEngine(engine)->type];
 			}
 		}
 		_engine_info[engine].refit_mask = ((mask & ~not_mask) ^ xor_mask) & _landscape_global_cargo_mask[_opt.landscape];

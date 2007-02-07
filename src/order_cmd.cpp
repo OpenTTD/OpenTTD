@@ -160,10 +160,10 @@ void AssignOrder(Order *order, Order data)
  */
 static void DeleteOrderWarnings(const Vehicle* v)
 {
-	DeleteVehicleNews(v->index, STR_TRAIN_HAS_TOO_FEW_ORDERS  + (v->type - VEH_Train) * 4);
-	DeleteVehicleNews(v->index, STR_TRAIN_HAS_VOID_ORDER      + (v->type - VEH_Train) * 4);
-	DeleteVehicleNews(v->index, STR_TRAIN_HAS_DUPLICATE_ENTRY + (v->type - VEH_Train) * 4);
-	DeleteVehicleNews(v->index, STR_TRAIN_HAS_INVALID_ENTRY   + (v->type - VEH_Train) * 4);
+	DeleteVehicleNews(v->index, STR_TRAIN_HAS_TOO_FEW_ORDERS  + v->type * 4);
+	DeleteVehicleNews(v->index, STR_TRAIN_HAS_VOID_ORDER      + v->type * 4);
+	DeleteVehicleNews(v->index, STR_TRAIN_HAS_DUPLICATE_ENTRY + v->type * 4);
+	DeleteVehicleNews(v->index, STR_TRAIN_HAS_INVALID_ENTRY   + v->type * 4);
 }
 
 
@@ -1005,7 +1005,7 @@ void CheckOrders(const Vehicle* v)
 		/* We don't have a problem */
 		if (problem_type < 0) return;
 
-		message = STR_TRAIN_HAS_TOO_FEW_ORDERS + ((v->type - VEH_Train) << 2) + problem_type;
+		message = STR_TRAIN_HAS_TOO_FEW_ORDERS + (v->type << 2) + problem_type;
 		//DEBUG(misc, 3, "Triggered News Item for vehicle %d", v->index);
 
 		SetDParam(0, v->unitnumber);

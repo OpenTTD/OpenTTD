@@ -8,13 +8,13 @@
 #include "rail.h"
 
 enum {
-	VEH_Invalid  = 0x00,
-	VEH_Train    = 0x10,
-	VEH_Road     = 0x11,
-	VEH_Ship     = 0x12,
-	VEH_Aircraft = 0x13,
-	VEH_Special  = 0x14,
-	VEH_Disaster = 0x15,
+	VEH_Train,
+	VEH_Road,
+	VEH_Ship,
+	VEH_Aircraft,
+	VEH_Special,
+	VEH_Disaster,
+	VEH_Invalid = 0xFF,
 } ;
 
 enum VehStatus {
@@ -400,7 +400,7 @@ static inline uint GetNumVehicles(void)
  */
 static inline bool IsValidVehicle(const Vehicle *v)
 {
-	return v->type != 0;
+	return v->type != VEH_Invalid;
 }
 
 void DestroyVehicle(Vehicle *v);
@@ -408,7 +408,7 @@ void DestroyVehicle(Vehicle *v);
 static inline void DeleteVehicle(Vehicle *v)
 {
 	DestroyVehicle(v);
-	v->type = 0;
+	v->type = VEH_Invalid;
 }
 
 static inline bool IsPlayerBuildableVehicleType(byte type)
@@ -426,20 +426,6 @@ static inline bool IsPlayerBuildableVehicleType(byte type)
 static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
 {
 	return IsPlayerBuildableVehicleType(v->type);
-}
-
-/** Function to give index of a vehicle type
- *  Since the return value is 0 for VEH_train, it's perfect for index to arrays
- */
-static inline byte VehTypeToIndex(byte type)
-{
-	assert(IsPlayerBuildableVehicleType(type));
-	return type - VEH_Train;
-}
-
-static inline byte VehTypeToIndex(const Vehicle *v)
-{
-	return VehTypeToIndex(v->type);
 }
 
 #define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (IsValidVehicle(v))
@@ -523,7 +509,7 @@ extern const uint32 _send_to_depot_proc_table[];
 /* Functions to find the right command for certain vehicle type */
 static inline uint32 GetCmdBuildVeh(byte type)
 {
-	return _veh_build_proc_table[VehTypeToIndex(type)];
+	return _veh_build_proc_table[type];
 }
 
 static inline uint32 GetCmdBuildVeh(const Vehicle *v)
@@ -533,7 +519,7 @@ static inline uint32 GetCmdBuildVeh(const Vehicle *v)
 
 static inline uint32 GetCmdSellVeh(byte type)
 {
-	return _veh_sell_proc_table[VehTypeToIndex(type)];
+	return _veh_sell_proc_table[type];
 }
 
 static inline uint32 GetCmdSellVeh(const Vehicle *v)
@@ -543,7 +529,7 @@ static inline uint32 GetCmdSellVeh(const Vehicle *v)
 
 static inline uint32 GetCmdRefitVeh(byte type)
 {
-	return _veh_refit_proc_table[VehTypeToIndex(type)];
+	return _veh_refit_proc_table[type];
 }
 
 static inline uint32 GetCmdRefitVeh(const Vehicle *v)
@@ -553,7 +539,7 @@ static inline uint32 GetCmdRefitVeh(const Vehicle *v)
 
 static inline uint32 GetCmdSendToDepot(byte type)
 {
-	return _send_to_depot_proc_table[VehTypeToIndex(type)];
+	return _send_to_depot_proc_table[type];
 }
 
 static inline uint32 GetCmdSendToDepot(const Vehicle *v)

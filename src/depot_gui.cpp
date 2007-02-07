@@ -743,7 +743,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 						};
 
 						_place_clicked_vehicle = NULL;
-						SetObjectToPlaceWnd(clone_icons[WP(w, depot_d).type - VEH_Train], PAL_NONE, VHM_RECT, w);
+						SetObjectToPlaceWnd(clone_icons[WP(w, depot_d).type], PAL_NONE, VHM_RECT, w);
 					} else {
 						ResetObjectToPlace();
 					}
@@ -770,7 +770,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 
 						SetDParam(0, (vehtype == VEH_Aircraft) ? GetStationIndex(tile) : GetDepotByTile(tile)->town_index);
 						ShowQuery(
-							confirm_captions[vehtype - VEH_Train],
+							confirm_captions[vehtype],
 							STR_DEPOT_SELL_CONFIRMATION_TEXT,
 							w,
 							DepotSellAllConfirmationCallback

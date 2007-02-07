@@ -1132,7 +1132,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					};
 
 					/* XXX - Substite string since the dropdown cannot handle dynamic strings */
-					action_str[2] = depot_name[vl->vehicle_type - VEH_Train];
+					action_str[2] = depot_name[vl->vehicle_type];
 					ShowDropDownMenu(w, action_str, 0, VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN, 0, 0);
 					break;
 				}

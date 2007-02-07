@@ -163,7 +163,7 @@ static inline EngineID GetFirstEngineOfType(byte type)
 {
 	const EngineID start[] = {0, ROAD_ENGINES_INDEX, SHIP_ENGINES_INDEX, AIRCRAFT_ENGINES_INDEX};
 
-	return start[VehTypeToIndex(type)];
+	return start[type];
 }
 
 static inline EngineID GetLastEngineOfType(byte type)
@@ -174,7 +174,7 @@ static inline EngineID GetLastEngineOfType(byte type)
 		SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES,
 		AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES};
 
-	return end[VehTypeToIndex(type)];
+	return end[type];
 }
 
 VARDEF Engine _engines[TOTAL_NUM_ENGINES];
