@@ -1806,7 +1806,15 @@ static int32 RemoveBuoy(Station *st, uint32 flags)
 		st->facilities &= ~FACIL_DOCK;
 		st->had_vehicle_of_type &= ~HVOT_BUOY;
 
-		MakeWater(tile);
+		/* We have to set the water tile's state to the same state as before the
+		 * buoy was placed. Otherwise one could plant a buoy on a canal edge,
+		 * remove it and flood the land (if the canal edge is at level 0) */
+		Owner o = GetTileOwner(tile);
+		if (o == OWNER_WATER) {
+			MakeWater(tile);
+		} else {
+			MakeCanal(tile, o);
+		}
 		MarkTileDirtyByTile(tile);
 
 		UpdateStationVirtCoordDirty(st);
