@@ -296,6 +296,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nuevo Ju
 STR_0141_LOAD_GAME                                              :{BLACK}Cargar Juego
 STR_SINGLE_PLAYER                                               :{BLACK}Un jugador
 STR_MULTIPLAYER                                                 :{BLACK}Multijugador
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor de Escenario
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -624,6 +625,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Reducir 
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generar terreno al azar
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Hacer reset del paisaje
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Hacer reset del paisaje
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Quitar todas las propiedades del jugador del mapa
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Estás seguro de quitar todas las propiedades del jugador?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generación de paisaje
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generación de poblaciones
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generación de industria
@@ -728,6 +731,7 @@ STR_0290_DELETE                                                 :{BLACK}Borrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Borrar esta población completamente
 STR_0292_SAVE_SCENARIO                                          :Guardar escenario
 STR_0293_LOAD_SCENARIO                                          :Cargar escenario
+STR_LOAD_HEIGHTMAP                                              :Cargar mapa de alturas
 STR_0294_QUIT_EDITOR                                            :Salir del editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Salir
@@ -1414,6 +1418,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} No se han encontrado dispositivos de red o juego compilado sin ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} No se puede encontrar ningún juego en red
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} El servidor no responde a la petición
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} No se puede conectar debido a un problema con los NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} La sincronización del juego ha fallado.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} La conexión con el juego en red se ha perdido.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} No es posible cargar el juego multijugador.
@@ -1435,6 +1440,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :error de desync
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :no se puede cargar el mapa
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :conexión perdida
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :error protocolo
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF erroneo
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :no autorizado
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recibido paquete extraño
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :versión incorrecta
@@ -1693,6 +1699,7 @@ STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}No se pu
 STR_2806                                                        :{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...demasiadas señales
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}No se puede colocar una señal aquí...
+STR_280A_SIGN                                                   :
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editar texto de la señal
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}No se puede cambiar el nombre de la señal...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Seleccione el tipo de árboles a plantar
@@ -3077,6 +3084,7 @@ STR_WORLD_GENERATION                                            :{BLACK}Generaci
 STR_TREE_GENERATION                                             :{BLACK}Generación de árboles
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Generación inamovible
 STR_CLEARING_TILES                                              :{BLACK}Generación de area áspera y rocosa
+STR_SETTINGUP_GAME                                              :{BLACK}Configurar juego
 STR_PREPARING_TILELOOP                                          :{BLACK}Ejecutar tile-loop
 STR_PREPARING_GAME                                              :{BLACK}Preparando juego
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acción cambia el nivel de dificultad a personalizado

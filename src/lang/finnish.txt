@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Uusi pel
 STR_0141_LOAD_GAME                                              :{BLACK}Lataa peli
 STR_SINGLE_PLAYER                                               :{BLACK}Yksinpeli
 STR_MULTIPLAYER                                                 :{BLACK}Moninpeli
+STR_SCENARIO_EDITOR                                             :{BLACK}Maisemaeditori
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -394,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Rahtikapasiteet
 STR_NO_WAITING_CARGO                                            :{BLACK}Minkäänlaista lastia ei ole odottamassa
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Valitse kaikki laitteet
 STR_SELECT_ALL_TYPES                                            :{BLACK}Valitse kaikki lastityypit (myös odottava lasti)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Käytettävissä olevat junat
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Käytettävissä olevat ajoneuvot
+STR_AVAILABLE_SHIPS                                             :{BLACK}Käytettävissä olevat laivat
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Käytettävissä olevat ilma-alukset
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Näytä lista mahdollisista moottorimalleista tälle kulkuneuvolle.
 STR_MANAGE_LIST                                                 :{BLACK}Muokkaa listaa
 STR_MANAGE_LIST_TIP                                             :{BLACK}Ohjaa kaikkia listan ajoneuvoja
@@ -619,6 +624,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Pienenn�
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Luo satunnainen maa
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nollaa maasto
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nollaa maasto
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Poista kaikki pelaaja-omisteiset tontit kartalta
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Haluatko varmasti poistaa kaikki pelaaja-omisteiset tontit?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Luo maasto
 STR_022F_TOWN_GENERATION                                        :{BLACK}Luo kaupunkeja
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Luo teollisuutta
@@ -723,6 +730,7 @@ STR_0290_DELETE                                                 :{BLACK}Poista
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Poista tämä kaupunki kokonaan.
 STR_0292_SAVE_SCENARIO                                          :Tallenna skenaario
 STR_0293_LOAD_SCENARIO                                          :Lataa skenaario
+STR_LOAD_HEIGHTMAP                                              :Lataa korkeuskartta
 STR_0294_QUIT_EDITOR                                            :Sulje muokkain
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Sulje

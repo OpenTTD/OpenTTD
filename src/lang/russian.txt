@@ -1013,8 +1013,8 @@ STR_CONFIG_PATCHES                                              :{BLACK}Наст
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Открыть настройки патчей
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Настройки патчей
 
-STR_CONFIG_PATCHES_OFF                                          :выключено
-STR_CONFIG_PATCHES_ON                                           :включено
+STR_CONFIG_PATCHES_OFF                                          :нет
+STR_CONFIG_PATCHES_ON                                           :да
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Показывать скорость в панели статуса транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и берегу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Разрешить более реалистичные зоны покрытия: {ORANGE}{STRING}
@@ -1991,9 +1991,13 @@ STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Сохр
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Лёгкий
+STR_6801_EASY.f                                                 :{BLACK}лёгкая
 STR_6802_MEDIUM                                                 :{BLACK}Средний
+STR_6802_MEDIUM.f                                               :{BLACK}средняя
 STR_6803_HARD                                                   :{BLACK}Тяжёлый
+STR_6803_HARD.f                                                 :{BLACK}тяжёлая
 STR_6804_CUSTOM                                                 :{BLACK}Свой
+STR_6804_CUSTOM.f                                               :{BLACK}своя
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts

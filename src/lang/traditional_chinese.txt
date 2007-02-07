@@ -82,6 +82,7 @@ STR_004A_TOFFEE                                                 :乳脂糖
 STR_004B_BATTERY                                                :電池
 STR_004C_PLASTIC                                                :塑膠
 STR_004D_FIZZY_DRINK                                            :汽水
+STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}名乘客
 STR_QUANTITY_COAL                                               :{WEIGHT}煤碳
 STR_QUANTITY_MAIL                                               :{COMMA}包郵件
@@ -315,29 +316,29 @@ STR_UNITS_IMPERIAL                                              :英制
 STR_UNITS_METRIC                                                :公制
 STR_UNITS_SI                                                    :國際公制
 
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} 英里/小時
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} 公里/小時
-STR_UNITS_VELOCITY_SI                                           :{COMMA} 米/秒
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}匹
-STR_UNITS_POWER_METRIC                                          :{COMMA}匹
-STR_UNITS_POWER_SI                                              :{COMMA}千瓦
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}噸
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}公噸
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}公斤
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}噸
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}公噸
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}公斤
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}加侖
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}升
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}立方米
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}加侖
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}升
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}立方米
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ 磅力
 STR_UNITS_FORCE_METRIC                                          :{COMMA} 噸力
@@ -534,7 +535,7 @@ STR_01CE_CARGO_ACCEPTED                                         :{BLACK}接收�
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}爵士樂唱盤
 STR_01D3_SOUND_MUSIC                                            :音效/背景音樂
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}顯視「音效/背景音樂」窗口
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}顯示「音效/背景音樂」視窗
 STR_01D5_ALL                                                    :{TINYFONT}全部
 STR_01D6_OLD_STYLE                                              :{TINYFONT}舊格調
 STR_01D7_NEW_STYLE                                              :{TINYFONT}新格調
@@ -543,7 +544,7 @@ STR_01D9_CUSTOM_1                                               :{TINYFONT}自�
 STR_01DA_CUSTOM_2                                               :{TINYFONT}自定二
 STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}背景音樂音量
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}音效音量
-STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}最少  '  '  ' '  '  '  最大
+STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}最小  '  '  ' '  '  '  最大
 STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}跳至選集上的上一首樂軌
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}跳至選集上的下一首樂軌
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}停止播放音樂
@@ -608,6 +609,7 @@ STR_0216_CAPITALIST                                             :資本家
 STR_0217_MAGNATE                                                :巨子
 STR_0218_MOGUL                                                  :龍頭
 STR_0219_TYCOON_OF_THE_CENTURY                                  :世紀大亨
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY}達成'{STRING}的地位'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} 的 {COMPANY} 達成 '{STRING}' 地位!
@@ -771,6 +773,7 @@ STR_02C3_GAME_OPTIONS                                           :遊戲選項
 STR_02C5_DIFFICULTY_SETTINGS                                    :難易設定
 STR_02C7_CONFIG_PATCHES                                         :設定補綴
 STR_NEWGRF_SETTINGS                                             :NewGRF 設定
+STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}顯示市鎮名稱
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}顯示車站/機場/碼頭名稱
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}顯示標誌
@@ -870,25 +873,56 @@ STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :英文 (原版)
-STR_TOWNNAME_FRENCH                                             :法文
-STR_TOWNNAME_GERMAN                                             :德文
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :英文 (增訂版)
-STR_TOWNNAME_POLISH                                             :波蘭文
-STR_TOWNNAME_NORWEGIAN                                          :挪威文
-STR_TOWNNAME_HUNGARIAN                                          :匈牙利文
-STR_TOWNNAME_AUSTRIAN                                           :奧地利文
-STR_TOWNNAME_ROMANIAN                                           :羅馬尼亞文
-STR_TOWNNAME_CZECH                                              :捷克文
-STR_TOWNNAME_ITALIAN                                            :意大利文
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :英國 (原版)
+STR_TOWNNAME_FRENCH                                             :法國
+STR_TOWNNAME_GERMAN                                             :德國
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :英國 (增訂版)
+STR_TOWNNAME_LATIN_AMERICAN                                     :拉丁美洲
+STR_TOWNNAME_SILLY                                              :荒唐名字
+STR_TOWNNAME_SWEDISH                                            :瑞典
+STR_TOWNNAME_DUTCH                                              :荷蘭
+STR_TOWNNAME_FINNISH                                            :芬蘭
+STR_TOWNNAME_POLISH                                             :波蘭
+STR_TOWNNAME_SLOVAKISH                                          :斯洛伐克
+STR_TOWNNAME_NORWEGIAN                                          :挪威
+STR_TOWNNAME_HUNGARIAN                                          :匈牙利
+STR_TOWNNAME_AUSTRIAN                                           :奧地利
+STR_TOWNNAME_ROMANIAN                                           :羅馬尼亞
+STR_TOWNNAME_CZECH                                              :捷克
+STR_TOWNNAME_SWISS                                              :瑞士
+STR_TOWNNAME_DANISH                                             :丹麥
+STR_TOWNNAME_TURKISH                                            :土耳其
+STR_TOWNNAME_ITALIAN                                            :意大利
+STR_TOWNNAME_CATALAN                                            :加泰羅尼亞
 ############ end of townname region
 
 STR_CURR_GBP                                                    :英鎊 (£)
 STR_CURR_USD                                                    :元 ($)
 STR_CURR_EUR                                                    :歐元 (€)
 STR_CURR_YEN                                                    :日圓 (¥)
+STR_CURR_ATS                                                    :奧地利先令 (ATS)
+STR_CURR_BEF                                                    :比利時法郎 (BEF)
+STR_CURR_CHF                                                    :瑞士法郎 (CHF)
+STR_CURR_CZK                                                    :捷克克朗 (CZK)
 STR_CURR_DEM                                                    :德國馬克 (DEM)
+STR_CURR_DKK                                                    :捷克克朗 (DKK)
+STR_CURR_ESP                                                    :西班牙比塞塔 (ESP)
+STR_CURR_FIM                                                    :芬蘭馬克 (FIM)
+STR_CURR_FRF                                                    :法國法朗 (FRF)
+STR_CURR_GRD                                                    :希臘德拉克馬 (GRD)
+STR_CURR_HUF                                                    :匈牙利福林 (HUF)
+STR_CURR_ISK                                                    :冰島克朗 (ISK)
+STR_CURR_ITL                                                    :意大利里拉 (ITL)
+STR_CURR_NLG                                                    :荷蘭盾 (NLG)
+STR_CURR_NOK                                                    :挪威克朗 (NOK)
+STR_CURR_PLN                                                    :波蘭茲羅提 (PLN)
+STR_CURR_ROL                                                    :羅馬尼亞羅依 (ROL)
 STR_CURR_RUR                                                    :俄羅斯盧布 (RUR)
+STR_CURR_SIT                                                    :斯洛文尼亞托拉 (SIT)
+STR_CURR_SEK                                                    :瑞典克朗 (SEK)
+STR_CURR_YTL                                                    :土耳其里拉 (YTL)
+STR_CURR_SKK                                                    :斯洛伐克克郎 (SKK)
+STR_CURR_BRR                                                    :巴西雷亞爾 (BRL)
 
 STR_CURR_CUSTOM                                                 :自訂...
 
@@ -1648,6 +1682,7 @@ STR_205A_TEPEES                                                 :帳篷小屋
 STR_205B_TEAPOT_HOUSE                                           :茶壺房
 STR_205C_PIGGY_BANK                                             :撲滿
 
+STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
 STR_STATION                                                     :{STATION}
@@ -1905,6 +1940,7 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...您�
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :未命名
 STR_SV_TRAIN_NAME                                               :列車 {COMMA}
 STR_SV_ROADVEH_NAME                                             :汽車 {COMMA}
@@ -2021,6 +2057,7 @@ STR_683A_TOLERANT                                               :能忍受
 STR_683B_HOSTILE                                                :抱敵意
 
 ##id 0x7000
+STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(玩家 {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}新臉孔
@@ -2514,6 +2551,7 @@ STR_REFIT_TIP                                                   :{BLACK}選擇�
 STR_REFIT_ORDER                                                 :(改裝成 {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (指令)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 指令結束 - -
+STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}維護
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}無法購買鐵道車輛...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   購於: {LTBLUE}{NUM}{BLACK} 價值: {LTBLUE}{CURRENCY}
