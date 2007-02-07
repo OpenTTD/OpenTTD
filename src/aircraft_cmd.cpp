@@ -555,7 +555,6 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			if (v->u.air.state == FLYING && !next_airport_has_hangar) {
 				/* The aircraft is now heading for a different hangar than the next in the orders */
 				AircraftNextAirportPos_and_Order(v);
-				v->u.air.targetairport = next_airport_index;
 			}
 		}
 	}
@@ -1245,7 +1244,6 @@ static void ProcessAircraftOrder(Vehicle *v)
 	// orders are changed in flight, ensure going to the right station
 	if (order->type == OT_GOTO_STATION && v->u.air.state == FLYING) {
 		AircraftNextAirportPos_and_Order(v);
-		v->u.air.targetairport = order->dest;
 	}
 
 	InvalidateVehicleOrder(v);
