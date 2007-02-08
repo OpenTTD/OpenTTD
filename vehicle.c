@@ -174,7 +174,7 @@ Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z)
 	return VehicleFromPos(tile, &ti, EnsureNoVehicleProcZ);
 }
 
-Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z)
+Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_crashed)
 {
 	int x1 = TileX(from);
 	int y1 = TileY(from);
@@ -188,6 +188,7 @@ Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z)
 		intswap(y1,y2);
 	}
 	FOR_ALL_VEHICLES(veh) {
+		if (without_crashed && (veh->vehstatus & VS_CRASHED) != 0) continue;
 		if ((veh->type == VEH_Train || veh->type == VEH_Road) && (z==0xFF || veh->z_pos == z)) {
 			if ((veh->x_pos>>4) >= x1 && (veh->x_pos>>4) <= x2 &&
 					(veh->y_pos>>4) >= y1 && (veh->y_pos>>4) <= y2) {

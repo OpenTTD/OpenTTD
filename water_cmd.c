@@ -40,6 +40,7 @@ const SpriteID _water_shore_sprites[15] = {
 };
 
 
+static Vehicle *FindFloodableVehicleOnTile(TileIndex tile);
 static void FloodVehicle(Vehicle *v);
 
 /** Build a ship depot.
@@ -593,7 +594,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 
 		_current_player = OWNER_WATER;
 		{
-			Vehicle *v = FindVehicleOnTileZ(target, 0);
+			Vehicle *v = FindFloodableVehicleOnTile(target);
 			if (v != NULL) FloodVehicle(v);
 		}
 
@@ -602,6 +603,36 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			MarkTileDirtyByTile(target);
 		}
 	}
+}
+
+/**
+ * Finds a vehicle to flood.
+ * It does not find vehicles that are already crashed on bridges, i.e. flooded.
+ * @param tile the tile where to find a vehicle to flood
+ * @return a vehicle too flood or NULL when there is no vehicle too flood.
+ */
+static Vehicle *FindFloodableVehicleOnTile(TileIndex tile)
+{
+	TileIndex end;
+	byte z;
+	Vehicle *v;
+
+	if (!IsBridgeTile(tile)) return FindVehicleOnTileZ(tile, 0);
+
+	end = GetOtherBridgeEnd(tile);
+	z = GetBridgeHeight(tile);
+
+	/* check the start tile first since as this is closest to the water */
+	v = FindVehicleOnTileZ(tile, z);
+	if (v != NULL && (v->vehstatus & VS_CRASHED) == 0) return v;
+
+	/* check a vehicle in between both bridge heads */
+	v = FindVehicleBetween(tile, end, z, true);
+	if (v != NULL) return v;
+
+	/* check the end tile last to give fleeing vehicles a chance to escape */
+	v = FindVehicleOnTileZ(end, z);
+	return (v != NULL && (v->vehstatus & VS_CRASHED) == 0) ? v : NULL;
 }
 
 static void FloodVehicle(Vehicle *v)
@@ -628,6 +659,7 @@ static void FloodVehicle(Vehicle *v)
 			BEGIN_ENUM_WAGONS(v)
 				if (v->cargo_type == CT_PASSENGERS) pass += v->cargo_count;
 				v->vehstatus |= VS_CRASHED;
+				MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
 			END_ENUM_WAGONS(v)
 
 			v = u;
@@ -661,9 +693,8 @@ void TileLoop_Water(TileIndex tile)
 		{{ 0, -1}, {0, 0}, {1, 0}, { 0, -1}, { 1, -1}}
 	};
 
-	/* Ensure sea-level canals do not flood */
-	if ((IsTileType(tile, MP_WATER) || IsTileType(tile, MP_TUNNELBRIDGE)) &&
-			!IsTileOwner(tile, OWNER_WATER)) return;
+	/* Ensure sea-level canals and buoys on canal borders do not flood */
+	if ((IsTileType(tile, MP_WATER) || IsTileType(tile, MP_TUNNELBRIDGE) || IsBuoyTile(tile)) && !IsTileOwner(tile, OWNER_WATER)) return;
 
 	if (IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1) &&
 			IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) {

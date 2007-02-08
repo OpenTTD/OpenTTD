@@ -293,7 +293,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
 	 * if a non-player is building the road */
-	if ((p1 >> 4) || (IsValidPlayer(_current_player) && p2 != 0) || !IsValidTownID(p2)) return CMD_ERROR;
+	if ((p1 >> 4) || (IsValidPlayer(_current_player) && p2 != 0) || (_current_player == OWNER_TOWN && !IsValidTownID(p2))) return CMD_ERROR;
 	pieces = p1;
 
 	tileh = GetTileSlope(tile, NULL);

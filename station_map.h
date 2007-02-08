@@ -287,7 +287,10 @@ static inline void MakeAirport(TileIndex t, Owner o, StationID sid, byte section
 
 static inline void MakeBuoy(TileIndex t, StationID sid)
 {
-	MakeStation(t, OWNER_NONE, sid, GFX_BUOY_BASE);
+	/* Make the owner of the buoy tile the same as the current owner of the
+	 * water tile. In this way, we can reset the owner of the water to its
+	 * original state when the buoy gets removed. */
+	MakeStation(t, GetTileOwner(t), sid, GFX_BUOY_BASE);
 }
 
 static inline void MakeDock(TileIndex t, Owner o, StationID sid, DiagDirection d)

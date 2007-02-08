@@ -541,7 +541,7 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 		GetTileZ(tile) != z
 	);
 
-	v = FindVehicleBetween(starttile, tile, z);
+	v = FindVehicleBetween(starttile, tile, z, false);
 	if (v != NULL) {
 		_error_message = v->type == VEH_Train ?
 			STR_5000_TRAIN_IN_TUNNEL : STR_5001_ROAD_VEHICLE_IN_TUNNEL;
@@ -688,7 +688,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	v = FindVehicleBetween(
 		tile    + delta,
 		endtile - delta,
-		GetBridgeHeightRamp(tile)
+		GetBridgeHeightRamp(tile), false
 	);
 	if (v != NULL) return_cmd_error(VehicleInTheWayErrMsg(v));
 
@@ -820,7 +820,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 
 		if (!EnsureNoVehicle(tile) ||
 				!EnsureNoVehicle(endtile) ||
-				FindVehicleBetween(tile, endtile, GetBridgeHeightRamp(tile)) != NULL) {
+				FindVehicleBetween(tile, endtile, GetBridgeHeightRamp(tile), false) != NULL) {
 			return_cmd_error(STR_8803_TRAIN_IN_THE_WAY);
 		}
 

@@ -299,7 +299,7 @@ Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVeh
 uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 
 StringID VehicleInTheWayErrMsg(const Vehicle* v);
-Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z);
+Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_crashed);
 TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v);
 
 bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection direction);
