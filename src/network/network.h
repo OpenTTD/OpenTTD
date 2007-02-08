@@ -166,6 +166,7 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
 void NetworkPopulateCompanyInfo(void);
 void UpdateNetworkGameWindow(bool unselect);
 void CheckMinPlayers(void);
+void NetworkStartDebugLog(const char *hostname, uint16 port);
 
 void NetworkStartUp(void);
 void NetworkUDPCloseAll();

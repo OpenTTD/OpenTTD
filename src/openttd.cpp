@@ -159,6 +159,7 @@ static void showhelp(void)
 #if defined(ENABLE_NETWORK)
 		"  -n [ip:port#player] = Start networkgame\n"
 		"  -D [ip][:port]      = Start dedicated server\n"
+		"  -l ip[:port]        = Redirect DEBUG()\n"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"  -f                  = Fork into the background (dedicated only)\n"
 #endif
@@ -344,6 +345,7 @@ int ttd_main(int argc, char *argv[])
 	bool dedicated = false;
 	bool network   = false;
 	char *network_conn = NULL;
+	char *debuglog_conn = NULL;
 	char *dedicated_host = NULL;
 	uint16 dedicated_port = 0;
 #endif /* ENABLE_NETWORK */
@@ -360,7 +362,7 @@ int ttd_main(int argc, char *argv[])
 	//   a letter means: it accepts that param (e.g.: -h)
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
-	optformat = "m:s:v:hD::n::eit:d::r:g::G:c:x"
+	optformat = "m:s:v:hD::n::eit:d::r:g::G:c:xl:"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"f"
 #endif
@@ -393,6 +395,9 @@ int ttd_main(int argc, char *argv[])
 		case 'n':
 			network = true;
 			network_conn = mgo.opt; // optional IP parameter, NULL if unset
+			break;
+		case 'l':
+			debuglog_conn = mgo.opt;
 			break;
 #endif /* ENABLE_NETWORK */
 		case 'r': ParseResolution(resolution, mgo.opt); break;
@@ -489,6 +494,21 @@ int ttd_main(int argc, char *argv[])
 	_music_driver->set_volume(msf.music_vol);
 
 	NetworkStartUp(); // initialize network-core
+
+#if defined(ENABLE_NETWORK)
+	if (debuglog_conn != NULL && _network_available) {
+		const char *not_used = NULL;
+		const char *port = NULL;
+		uint16 rport;
+
+		rport = NETWORK_DEFAULT_DEBUGLOG_PORT;
+
+		ParseConnectionString(&not_used, &port, debuglog_conn);
+		if (port != NULL) rport = atoi(port);
+
+		NetworkStartDebugLog(debuglog_conn, rport);
+	}
+#endif /* ENABLE_NETWORK */
 
 	ScanNewGRFFiles();
 

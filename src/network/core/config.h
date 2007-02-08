@@ -17,6 +17,7 @@
 enum {
 	NETWORK_MASTER_SERVER_PORT    = 3978, ///< The default port of the master server (UDP)
 	NETWORK_DEFAULT_PORT          = 3979, ///< The default port of the game server (TCP & UDP)
+	NETWORK_DEFAULT_DEBUGLOG_PORT = 3982, ///< The default port debug-log is sent too (TCP)
 
 	SEND_MTU                      = 1460, ///< Number of bytes we can pack in a single packet
 

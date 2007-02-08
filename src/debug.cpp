@@ -8,6 +8,11 @@
 #include "debug.h"
 #include "functions.h"
 #include "string.h"
+#include "network/core/core.h"
+
+#if defined(ENABLE_NETWORK)
+SOCKET _debug_socket = INVALID_SOCKET;
+#endif /* ENABLE_NETWORK */
 
 int _debug_ai_level;
 int _debug_driver_level;
@@ -78,8 +83,18 @@ void CDECL debug(const char *dbg, ...)
 		s = va_arg(va, const char*);
 		vsnprintf(buf, lengthof(buf), s, va);
 		va_end(va);
-		fprintf(stderr, "dbg: [%s] %s\n", dbg, buf);
-		IConsoleDebug(dbg, buf);
+#if defined(ENABLE_NETWORK)
+		if (_debug_socket != INVALID_SOCKET) {
+			char buf2[lengthof(buf) + 32];
+
+			snprintf(buf2, lengthof(buf2), "dbg: [%s] %s\n", dbg, buf);
+			send(_debug_socket, buf2, strlen(buf2), 0);
+		} else
+#endif /* ENABLE_NETWORK */
+		{
+			fprintf(stderr, "dbg: [%s] %s\n", dbg, buf);
+			IConsoleDebug(dbg, buf);
+		}
 	}
 }
 #endif /* NO_DEBUG_MESSAGES */

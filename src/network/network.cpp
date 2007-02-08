@@ -1317,6 +1317,37 @@ static void NetworkGenerateUniqueId(void)
 	snprintf(_network_unique_id, sizeof(_network_unique_id), "%s", hex_output);
 }
 
+void NetworkStartDebugLog(const char *hostname, uint16 port)
+{
+	extern SOCKET _debug_socket;  // Comes from debug.c
+	SOCKET s;
+	struct sockaddr_in sin;
+
+	DEBUG(net, 0, "Redirecting DEBUG() to %s:%d", hostname, port);
+
+	s = socket(AF_INET, SOCK_STREAM, 0);
+	if (s == INVALID_SOCKET) {
+		DEBUG(net, 0, "Failed to open socket for redirection DEBUG()");
+		return;
+	}
+
+	if (!SetNoDelay(s)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
+
+	sin.sin_family = AF_INET;
+	sin.sin_addr.s_addr = NetworkResolveHost(hostname);
+	sin.sin_port = htons(port);
+
+	if (connect(s, (struct sockaddr *)&sin, sizeof(sin)) != 0) {
+		DEBUG(net, 0, "Failed to redirection DEBUG() to %s:%d", hostname, port);
+		return;
+	}
+
+	if (!SetNonBlocking(s)) DEBUG(net, 0, "Setting non-blocking mode failed");
+	_debug_socket = s;
+
+	DEBUG(net, 0, "DEBUG() is now redirected");
+}
+
 /** This tries to launch the network for a given OS */
 void NetworkStartUp(void)
 {
