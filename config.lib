@@ -286,10 +286,10 @@ check_params() {
 		echo " Available options are: --endian=[AUTO|LE|BE]"
 		exit 1
 	fi
-	# OS only allows DETECT, UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, and WINCE
-	if ! echo $os | grep -Eq "^(DETECT|UNIX|OSX|FREEBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE)$"; then
+	# OS only allows DETECT, UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP
+	if ! echo $os | grep -Eq "^(DETECT|UNIX|OSX|FREEBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE|PSP)$"; then
 		echo "configure: error: invalid option --os=$os"
-		echo " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE]"
+		echo " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE|PSP]"
 		exit 1
 	fi
 	# enable_debug should be between 0 and 4
@@ -1104,7 +1104,7 @@ check_makedepend() {
 
 detect_os() {
 	if [ $os = "DETECT" ]; then
-		# Detect UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, and WINCE
+		# Detect UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP
 
 		# Try first via dumpmachine, then via uname
 		os=`echo "$host" | tr [:upper:] [:lower:] | awk '
@@ -1118,6 +1118,7 @@ detect_os() {
 					/mingw/        { print "MINGW";   exit}
 					/os2/          { print "OS2";     exit}
 					/wince/        { print "WINCE";   exit}
+					/psp/          { print "PSP";     exit}
 		'`
 
 		if [ -z "$os" ]; then
@@ -1137,7 +1138,7 @@ detect_os() {
 		if [ -z "$os" ]; then
 			log 1 "detecting OS... none detected"
 			log 1 "I couldn't detect your OS. Please use --with-os=OS to force one"
-			log 1 "Allowed values are: UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2 and WINCE"
+			log 1 "Allowed values are: UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP"
 			exit 1
 		fi
 
@@ -1744,7 +1745,7 @@ showhelp() {
 	echo "  --lipo=LIPO                    the lipo to use (OSX ONLY) [HOST-lipo]"
 	echo "  --os=OS                        the OS we are compiling for [DETECT]"
 	echo "                                 DETECT/UNIX/OSX/FREEBSD/MORPHOS/BEOS/"
-	echo "                                 SUNOS/CYGWIN/MINGW/OS2/WINCE"
+	echo "                                 SUNOS/CYGWIN/MINGW/OS2/WINCE/PSP"
 	echo "  --endian=ENDIAN                set the endian of the HOST (AUTO/LE/BE)"
 	echo "  --revision=rXXXX               overwrite the revision detection."
 	echo "                                 Use with care!"
