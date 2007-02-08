@@ -513,6 +513,14 @@ ifdef WITH_FREETYPE
 CDEFS += -DWITH_FREETYPE
 CCFLAGS_FREETYPE := $(shell $(FREETYPE_CONFIG) --cflags)
 LDFLAGS_FREETYPE := $(shell $(FREETYPE_CONFIG) --libs)
+
+ifdef STATIC
+ifdef OSX
+# OSX needs a special lib setting when linking statically
+LDFLAGS_FREETYPE := $(shell $(FREETYPE_CONFIG) --prefix)/lib/libfreetype.a
+endif
+endif
+
 CFLAGS += $(CCFLAGS_FREETYPE)
 LIBS += $(LDFLAGS_FREETYPE)
 endif
