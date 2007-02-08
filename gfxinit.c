@@ -145,7 +145,7 @@ static bool FileMD5(const MD5File file, bool warn)
 		while ((len = fread(buffer, 1, sizeof(buffer), f)) != 0)
 			md5_append(&filemd5state, buffer, len);
 
-		if (ferror(f) && warn) fprintf(stderr, "Error Reading from %s \n", buf);
+		if (ferror(f) && warn) ShowInfoF("Error Reading from %s \n", buf);
 		fclose(f);
 
 		md5_finish(&filemd5state, digest);

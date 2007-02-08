@@ -369,7 +369,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM l
 		case WM_INITDIALOG: {
 #if defined(UNICODE)
 			/* We need to put the crash-log in a seperate buffer because the default
-			 * buffer in MB_TO_WIDE is not large enough (256 chars) */
+			 * buffer in MB_TO_WIDE is not large enough (512 chars) */
 			wchar_t crash_msgW[8096];
 #endif
 			SetDlgItemText(wnd, 10, _crash_desc);
@@ -839,12 +839,16 @@ void ShowInfo(const char *str)
 		fprintf(stderr, "%s\n", str);
 	} else {
 		bool old;
-
+#if defined(UNICODE)
+			/* We need to put the text in a seperate buffer because the default
+			 * buffer in MB_TO_WIDE might not be large enough (512 chars) */
+			wchar_t help_msgW[4096];
+#endif
 		ReleaseCapture();
 		_left_button_clicked =_left_button_down = false;
 
 		old = MyShowCursor(true);
-		if (MessageBox(GetActiveWindow(), MB_TO_WIDE(str), _T("OpenTTD"), MB_ICONINFORMATION | MB_OKCANCEL) == IDCANCEL) {
+		if (MessageBox(GetActiveWindow(), MB_TO_WIDE_BUFFER(str, help_msgW, lengthof(help_msgW)), _T("OpenTTD"), MB_ICONINFORMATION | MB_OKCANCEL) == IDCANCEL) {
 			CreateConsole();
 		}
 		MyShowCursor(old);

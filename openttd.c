@@ -163,7 +163,13 @@ static void showhelp(void)
 
 	p = GetDriverList(p, lastof(buf));
 
+	/* ShowInfo put output to stderr, but version information should go
+	 * to stdout; this is the only exception */
+#if !defined(WIN32) && !defined(WIN64)
+	printf("%s\n", buf);
+#else
 	ShowInfo(buf);
+#endif
 }
 
 
