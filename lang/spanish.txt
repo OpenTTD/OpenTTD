@@ -1,6 +1,6 @@
 ##name Spanish
 ##ownname Español (ES)
-##isocode es_ES.UTF-8
+##isocode es_ES
 ##plural 0
 ##gender masculino femenino
 
@@ -296,6 +296,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nuevo Ju
 STR_0141_LOAD_GAME                                              :{BLACK}Cargar Juego
 STR_SINGLE_PLAYER                                               :{BLACK}Un jugador
 STR_MULTIPLAYER                                                 :{BLACK}Multijugador
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor de Escenario
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -344,7 +345,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} ton. fuerza
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Gráfico de benefício operativo
 STR_0155_INCOME_GRAPH                                           :Gráfico de ingresos
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Gráfico de carga entregada
@@ -353,7 +354,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Gráfico del va
 STR_0159_CARGO_PAYMENT_RATES                                    :Tarifas de pagos por carga
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Tabla de ranking de empresas
 STR_PERFORMANCE_DETAIL_MENU                                     :Detalles del rendimiento
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Acerca de OpenTTD
 STR_015C_SAVE_GAME                                              :Guardar juego
@@ -395,6 +396,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidad de ca
 STR_NO_WAITING_CARGO                                            :{BLACK}Ningún tipo de carga está esperando
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar todas las facilidades
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccionar todos los tipos de carga (incluidas las que no están en espera)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Trenes disponibles
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Vehículos disponibles
+STR_AVAILABLE_SHIPS                                             :{BLACK}Barcos disponibles
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aviones disponibles
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Ver la lista de los motores disponibles para este tipo de vehículo.
 STR_MANAGE_LIST                                                 :{BLACK}Administrar lista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Enviar instrucciones a todos los vehículos de la lista
@@ -490,7 +495,7 @@ STR_01A9_NONE                                                   :Ninguna
 STR_01AA_NAME                                                   :{BLACK}Nombre
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -522,7 +527,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -610,22 +615,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} logra el estado '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} de {COMPANY} logra el estado '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Crear Escenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor de escenarios
 STR_0223_LAND_GENERATION                                        :{WHITE}Generación de terrenos
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Terreno al azar
-STR_0227_RESET_LAND                                             :{BLACK}Reponer terreno
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Aumentar el tamaño del bloque de terreno a bajar/subir
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Reducir tamaño del bloque de terreno a bajar/subir
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generar terreno al azar
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Hacer reset del paisaje
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Hacer reset del paisaje
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usar Mapa de alturas
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usar Mapa de alturas
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}¿Está seguro que desea realizar un reset al paisaje?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generación de paisaje
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generación de poblaciones
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generación de industria
@@ -767,7 +766,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selecci�
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Guardar nombres personalizados en disco
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Opciones de juego
 STR_02C5_DIFFICULTY_SETTINGS                                    :Configuración de dificultad
 STR_02C7_CONFIG_PATCHES                                         :Configurar parches
@@ -781,16 +780,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animac
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detalle completo
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edificios transparentes
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Señales transparentes
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Información sobre terreno
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Activar consola
 STR_02D7_SCREENSHOT_CTRL_S                                      :Captura de pantalla (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Captura Gigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Acerca de 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Apagado
 STR_02DA_ON                                                     :{BLACK}Encendido
@@ -847,7 +846,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Elegir e
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Elegir estilo de escenario 'fantasía'
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Aportar fondos para construir una nueva industria
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Directorio de Industrias
 STR_0313_FUND_NEW_INDUSTRY                                      :Fundar nueva industria
 ############ range ends here
@@ -893,7 +892,7 @@ STR_TOWNNAME_DANISH                                             :Danes
 STR_TOWNNAME_TURKISH                                            :Turco
 STR_TOWNNAME_ITALIAN                                            :Italiano
 STR_TOWNNAME_CATALAN                                            :Catalán
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Libras (£)
 STR_CURR_USD                                                    :Dólares ($)
@@ -1415,6 +1414,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} No se han encontrado dispositivos de red o juego compilado sin ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} No se puede encontrar ningún juego en red
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} El servidor no responde a la petición
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} No se puede conectar debido a un problema con los NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} La sincronización del juego ha fallado.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} La conexión con el juego en red se ha perdido.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} No es posible cargar el juego multijugador.
@@ -1436,6 +1436,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :error de desync
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :no se puede cargar el mapa
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :conexión perdida
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :error protocolo
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF erroneo
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :no autorizado
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recibido paquete extraño
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :versión incorrecta
@@ -1694,7 +1695,7 @@ STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}No se pu
 STR_2806                                                        :{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...demasiadas señales
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}No se puede colocar una señal aquí...
-STR_280A_SIGN                                                   :Sign
+STR_280A_SIGN                                                   :
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editar texto de la señal
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}No se puede cambiar el nombre de la señal...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Seleccione el tipo de árboles a plantar
@@ -1856,11 +1857,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Generador de Bu
 STR_4825_TOFFEE_QUARRY                                          :Cantera de caramelos
 STR_4826_SUGAR_MINE                                             :Mina de Azúcar
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Requiere: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Requiere: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Requiere: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Producción mes anterior:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportado)
@@ -1933,8 +1934,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}No es po
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...ya es de su propiedad!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sin nombre
@@ -1977,7 +1978,7 @@ STR_SV_STNAME_LOWER                                             :{STRING} Bajo
 STR_SV_STNAME_HELIPORT                                          :Helipuerto de {STRING}
 STR_SV_STNAME_FOREST                                            :Bosque de {STRING}
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Nivel de dificultad
@@ -3089,7 +3090,7 @@ STR_WORLD_GENERATION                                            :{BLACK}Generaci
 STR_TREE_GENERATION                                             :{BLACK}Generación de árboles
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Generación inamovible
 STR_CLEARING_TILES                                              :{BLACK}Generación de area áspera y rocosa
-STR_SETTINGUP_GAME                                              :{BLACK}Setting up game
+STR_SETTINGUP_GAME                                              :{BLACK}Configurar juego
 STR_PREPARING_TILELOOP                                          :{BLACK}Ejecutar tile-loop
 STR_PREPARING_GAME                                              :{BLACK}Preparando juego
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acción cambia el nivel de dificultad a personalizado

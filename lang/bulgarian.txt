@@ -1,6 +1,6 @@
 ##name Bulgarian
 ##ownname Български
-##isocode bg_BG.UTF-8
+##isocode bg_BG
 ##plural 0
 ##case accusative dative vocative nominative instrumental locative genitive
 ##gender мъжки женски среден
@@ -345,7 +345,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ ф
 STR_UNITS_FORCE_METRIC                                          :{COMMA} тон{P "" а}
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Графика на капитала
 STR_0155_INCOME_GRAPH                                           :Графика на приходите
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Графика на доставките
@@ -354,7 +354,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Стойнос�
 STR_0159_CARGO_PAYMENT_RATES                                    :Тарифи за доставка на стоки
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Класиране на компаниите
 STR_PERFORMANCE_DETAIL_MENU                                     :Рейтинг на представянето в детайли
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Относно OpenTTD
 STR_015C_SAVE_GAME                                              :Запази игра
@@ -396,6 +396,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Товарен 
 STR_NO_WAITING_CARGO                                            :{BLACK}Няма чакащ товар
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Избор на всички съоръжения
 STR_SELECT_ALL_TYPES                                            :{BLACK}Избор на всички товари (включително нечакащите)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Налични влакове
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Налични коли
+STR_AVAILABLE_SHIPS                                             :{BLACK}Налични кораби
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Налични самолети
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Виж списъкът с наличните видове машини за този тип превозно средство.
 STR_MANAGE_LIST                                                 :{BLACK}Направи списък
 STR_MANAGE_LIST_TIP                                             :{BLACK}Прати инструкциите до всички машини в този лист
@@ -491,7 +495,7 @@ STR_01A9_NONE                                                   :Нищо
 STR_01AA_NAME                                                   :{BLACK}Име
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1-ви
 STR_01AD_2ND                                                    :2-ри
 STR_01AE_3RD                                                    :3-ти
@@ -523,7 +527,7 @@ STR_01C7_28TH                                                   :28-и
 STR_01C8_29TH                                                   :29-и
 STR_01C9_30TH                                                   :30-ти
 STR_01CA_31ST                                                   :31-ви
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -611,22 +615,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} достигна статус '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} от {COMPANY} достигна статус '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Създай сценарий
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Редактор на сценарии
 STR_0223_LAND_GENERATION                                        :{WHITE}Генератор на терен
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Случаен терен
-STR_0227_RESET_LAND                                             :{BLACK}Изчисти терена
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Увеличи площа на терена, за да го понижиш/повишиш
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Намали площа на терена, за да го понижиш/повишиш
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Генерирай случаен терен
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Изчисти терена
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Изчисти терена
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Ползвай топо-карта
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Ползвай топо-карта
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Желаете ли да изчистите терена?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Създаване на терен
 STR_022F_TOWN_GENERATION                                        :{BLACK}Създаване на град
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Създаване на индустрия
@@ -768,7 +766,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Избо
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Запис на имена на превозни средства
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Игрови опции
 STR_02C5_DIFFICULTY_SETTINGS                                    :Опции за трудност
 STR_02C7_CONFIG_PATCHES                                         :Конфигурирай патчове
@@ -782,16 +780,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Пъл
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Пълни подробности
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Прозрачни сгради
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Прозрачни табели на станциите
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Информация за терена
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Показване/скриване на конзола
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Огромен Screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :За 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Изключен
 STR_02DA_ON                                                     :{BLACK}Включен
@@ -848,7 +846,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Избе
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Избери "играчков" тип на картата
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Инвестирай в нова индустрия
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Списък на индустриите
 STR_0313_FUND_NEW_INDUSTRY                                      :Инвестирай в нова индустрия
 ############ range ends here
@@ -894,7 +892,7 @@ STR_TOWNNAME_DANISH                                             :датски
 STR_TOWNNAME_TURKISH                                            :турски
 STR_TOWNNAME_ITALIAN                                            :италиански
 STR_TOWNNAME_CATALAN                                            :каталонски
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :британска лира (£)
 STR_CURR_USD                                                    :долар ($)
@@ -1416,8 +1414,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Спис
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Не са открити мрежови устройства или е компилирано без ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Не може да открия мрежови игри
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Сървърът не отговори на заявката
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Network-Game synchronisation failed
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Network-Game connection lost
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Не може да се свърже поради различие в NewGRF
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Не може да зареди играта
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Сървъра не може да бъде стартиран
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Не може да се свърже
@@ -1437,6 +1434,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :загуба н
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :не може да зареди картата
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :връзката прекъсна
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :грешка в протокола
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF се различават
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :не оторизиран
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :получен странен пакет
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :грешна ревизия
@@ -1857,11 +1855,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Генерат�
 STR_4825_TOFFEE_QUARRY                                          :Карамелоломна
 STR_4826_SUGAR_MINE                                             :Захарна мина
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Нуждае се от: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Нуждае се от: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Нуждае се от: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Произведено миналия месец:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% превозено)
@@ -1934,8 +1932,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Земя
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...вие вече притежавате това!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Неименован
@@ -1978,7 +1976,7 @@ STR_SV_STNAME_LOWER                                             :Долно {STR
 STR_SV_STNAME_HELIPORT                                          :{STRING} Хелипорт
 STR_SV_STNAME_FOREST                                            :{STRING} Дървета
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Ниво на трудност

@@ -1,9 +1,9 @@
 ##name Czech
 ##ownname Česky
-##isocode cs_CS.UTF-8
+##isocode cs_CS
 ##plural 6
 ##case nom gen acc dat voc loc ins big news subs
-##gender m m_a m_i f n
+##gender m f n
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -409,6 +409,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nová hr
 STR_0141_LOAD_GAME                                              :{BLACK}Nahrát hru
 STR_SINGLE_PLAYER                                               :{BLACK}1 hráč
 STR_MULTIPLAYER                                                 :{BLACK}Více hráčů
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor scénáře
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -457,7 +458,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} megapond{P "" y ů}
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf provozního zisku
 STR_0155_INCOME_GRAPH                                           :Graf příjmů
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf doručeného zboží
@@ -466,7 +467,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Graf hodnoty sp
 STR_0159_CARGO_PAYMENT_RATES                                    :Graf přepravních sazeb
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Tabulka společností
 STR_PERFORMANCE_DETAIL_MENU                                     :Podrobné hodnocení výkonu
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}O OpenTTD
 STR_015C_SAVE_GAME                                              :Uložit hru
@@ -508,6 +509,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Přepravní kap
 STR_NO_WAITING_CARGO                                            :{BLACK}Nečeká žádná komodita jakéhokoli druhu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Označit všechny druhy stanic
 STR_SELECT_ALL_TYPES                                            :{BLACK}Označit všechny druhy komodit (včetne žádného čekajícího nákladu)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Dostupné vlaky
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostupná vozidla
+STR_AVAILABLE_SHIPS                                             :{BLACK}Dostupné lodě
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostupná letadla
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Ukázat seznam dostupných variant pro tento typ vozidla.
 STR_MANAGE_LIST                                                 :{BLACK}Upravit seznam
 STR_MANAGE_LIST_TIP                                             :{BLACK}Poslat příkazy všem vozidlům v tomto seznamu
@@ -603,7 +608,7 @@ STR_01A9_NONE                                                   :Nic
 STR_01AA_NAME                                                   :{BLACK}Jméno
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
 STR_01AE_3RD                                                    :3.
@@ -635,7 +640,7 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -723,22 +728,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} získal titul '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} z {COMPANY} získal titul '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Vytvořit mapu
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor mapy
 STR_0223_LAND_GENERATION                                        :{WHITE}Generovat zemi
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Náhodná země
-STR_0227_RESET_LAND                                             :{BLACK}Vymaž zemi
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zvětšit oblast země pro snížení/zvýšení
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zmenšit oblast země pro snížení/zvýšení
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generovat náhodnou zemi
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Smazat krajinu
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Smazat krajinu
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Použít výškovou mapu
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Použít výškovou mapu
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Urcite chceš smazat krajinu?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generování krajiny
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generování měst
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generování průmyslu
@@ -802,7 +801,7 @@ STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Postavit
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Postavit ocelárnu
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Založit farmu
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Postavit důl na železnou rudu
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Postavit ropné vrty
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Postavit ropný vrt
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Postavit banku (lze vybudovat jen ve městech s populací vetší než 1200)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Postavit papírnu
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Postavit továrnu na zpracování potravin
@@ -880,7 +879,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Výběr 
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Uložit uživatelské názvy dopravních prostředků na disk
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Možnosti hry
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nastavení obtížnosti
 STR_02C7_CONFIG_PATCHES                                         :Nastavení patchů
@@ -894,16 +893,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Plné 
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Plné detaily
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Průhledné budovy
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Průhledná jména stanic
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informace o zemi
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Zobrazit / skrýt konzoli
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Obrovský screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Vypnuto
 STR_02DA_ON                                                     :{BLACK}Zapnuto
@@ -960,7 +959,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Subtropi
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Země hraček
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Průmysl
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Seznam průmyslu
 STR_0313_FUND_NEW_INDUSTRY                                      :Investovat do průmyslu
 ############ range ends here
@@ -1006,7 +1005,7 @@ STR_TOWNNAME_DANISH                                             :Dánská
 STR_TOWNNAME_TURKISH                                            :Turecká
 STR_TOWNNAME_ITALIAN                                            :Italská
 STR_TOWNNAME_CATALAN                                            :Katalánská
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Libra (£)
 STR_CURR_USD                                                    :Dolar ($)
@@ -1528,6 +1527,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Seznam h
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Žádná síťová zařízení nebyla nalezena (nebo je hra zkompilována bez ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nenalezena žádná síťová hra
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Server neodpověděl na požadavek
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Nelze se připojit kvůli rozdílným GRF souborům
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Síť - synchronizace hry selhala
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Síť - spojení ztraceno
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nemohu nahrát uloženou hru ze serveru
@@ -1549,6 +1549,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :chyba v synchro
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :nemohu nahrát hru
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :spojení ztraceno
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :chyba v protokolu
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Nesouhlasí grafiky
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nevydáno povolení
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :přišel neplatný paket
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :špatná revize hry
@@ -1742,9 +1743,9 @@ STR_202A_NONE                                                   :{ORANGE}Nic
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Již přiznané dotace:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING.big} z {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z {STRING} do {STRING} nebude dále nabízena.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z {STATION} do {STATION} již nebude dále poskytována.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z {STRING} do {STRING} bude jeden rok dotována místní správou!
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z{NBSP}{STRING} do {STRING} nebude dále nabízena.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z{NBSP}{STATION} do {STATION} již nebude dále poskytována.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z{NBSP}{STRING} do {STRING} bude jeden rok dotována místní správou!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet 150 % normální ceny.
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet dvojnásobek normální ceny!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet trojnásobek normální ceny!
@@ -1942,7 +1943,7 @@ STR_4809_PRINTING_WORKS                                         :Tiskárna
 STR_480A_STEEL_MILL                                             :Ocelárna
 STR_480B_FARM                                                   :Farma
 STR_480C_COPPER_ORE_MINE                                        :Důl na měděnou rudu
-STR_480D_OIL_WELLS                                              :Ropné vrty
+STR_480D_OIL_WELLS                                              :Ropný vrt
 STR_480E_BANK                                                   :Banka
 STR_480F_FOOD_PROCESSING_PLANT                                  :Továrna na zpracování jídla
 STR_4810_PAPER_MILL                                             :Papírna
@@ -1969,11 +1970,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Generátor bubl
 STR_4825_TOFFEE_QUARRY                                          :Karamelolom
 STR_4826_SUGAR_MINE                                             :Cukerný důl
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkce minulý měsíc:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA} % přepraveno)
@@ -2046,8 +2047,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Nelze za
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}... již ji vlastníš!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Beze jména
@@ -2090,7 +2091,7 @@ STR_SV_STNAME_LOWER                                             :dolní {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} heliport
 STR_SV_STNAME_FOREST                                            :{STRING} les
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Obtížnost
@@ -2585,13 +2586,16 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Vrtulník Trica
 STR_80FE_GURU_X2_HELICOPTER                                     :Vrtulník Guru X2
 STR_80FF_POWERNAUT_HELICOPTER                                   :Vrtulník Powernaut
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Zpráva od výrobce dopravních prostředků
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Právě jsme vyvinuli nový dopravní prostředek - {STRING}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
-STR_8102_RAILROAD_LOCOMOTIVE                                    :lokomotivu
-STR_8103_ROAD_VEHICLE                                           :silniční vozidlo
-STR_8104_AIRCRAFT                                               :letadlo
-STR_8105_SHIP                                                   :loď
-STR_8106_MONORAIL_LOCOMOTIVE                                    :lokomotivu pro monorail
-STR_8107_MAGLEV_LOCOMOTIVE                                      :lokomotivu Maglev
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Právě jsme vyvinuli nov{G ý ou é} {STRING.dat}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
+STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=f}lokomotiva
+STR_8102_RAILROAD_LOCOMOTIVE.dat                                :{G=f}lokomotivu
+STR_8103_ROAD_VEHICLE                                           :{G=n}silniční vozidlo
+STR_8104_AIRCRAFT                                               :{G=n}letadlo
+STR_8105_SHIP                                                   :{G=f}loď
+STR_8106_MONORAIL_LOCOMOTIVE                                    :{G=f}lokomotiva pro monorail
+STR_8106_MONORAIL_LOCOMOTIVE.dat                                :{G=f}lokomotivu pro monorail
+STR_8107_MAGLEV_LOCOMOTIVE                                      :{G=f}lokomotiva Maglev
+STR_8107_MAGLEV_LOCOMOTIVE.dat                                  :{G=f}lokomotivu Maglev
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Železniční depo {TOWN}
@@ -3197,7 +3201,7 @@ STR_GENERATION_WORLD                                            :{WHITE}Vytvář
 STR_GENERATION_ABORT                                            :{BLACK}Přerušit
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Přerušit generování krajiny
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Opravdu chceš přerušit tento proces?
-STR_PROGRESS                                                    :Z {WHITE}{NUM} % hotovo
+STR_PROGRESS                                                    :{WHITE}Z {NUM} % hotovo
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Tvorba krajiny
 STR_TREE_GENERATION                                             :{BLACK}Výsadba stromů

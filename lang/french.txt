@@ -1,6 +1,6 @@
 ##name French
 ##ownname Français
-##isocode fr_FR.UTF-8
+##isocode fr_FR
 ##plural 2
 ##gender m m2 f
 
@@ -296,6 +296,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nouvelle
 STR_0141_LOAD_GAME                                              :{BLACK}Charger une Partie
 STR_SINGLE_PLAYER                                               :{BLACK}Un joueur
 STR_MULTIPLAYER                                                 :{BLACK}Multijoueurs
+STR_SCENARIO_EDITOR                                             :{BLACK}Éditeur de Scénario
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -344,7 +345,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} ton-force
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Profit d'opération
 STR_0155_INCOME_GRAPH                                           :Revenu
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Cargaison livrée
@@ -353,7 +354,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Valeur de la co
 STR_0159_CARGO_PAYMENT_RATES                                    :Valeur des marchandises
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Classement des compagnies
 STR_PERFORMANCE_DETAIL_MENU                                     :Détail des performances
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD
 STR_015C_SAVE_GAME                                              :Sauvegarder la partie
@@ -395,6 +396,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacité
 STR_NO_WAITING_CARGO                                            :{BLACK}Pas de marchandises en attente
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tous les types de station
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tous les types de marchandise (y compris pas en attente)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Trains disponibles
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Véhicules disponibles
+STR_AVAILABLE_SHIPS                                             :{BLACK}Navires disponibles
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aéronefs disponibles
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Voir la liste des modèles disponibles pour ce type de véhicules.
 STR_MANAGE_LIST                                                 :{BLACK}Gérer la liste
 STR_MANAGE_LIST_TIP                                             :{BLACK}Envoyer les instructions à tous les véhicules de cette liste
@@ -490,7 +495,7 @@ STR_01A9_NONE                                                   :Aucun
 STR_01AA_NAME                                                   :{BLACK}Nom
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1er
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -522,7 +527,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -610,22 +615,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} atteint le niveau de '{STRING}' !
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} de {COMPANY} atteint le niveau de '{STRING}' !
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Créer Scénario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Éditeur de Scénario
 STR_0223_LAND_GENERATION                                        :{WHITE}Génération de terrain
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Générer un terrain
-STR_0227_RESET_LAND                                             :{BLACK}RAZ du terrain
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Augmenter la quantité de terre à modifier
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Diminuer la quantité de terre à modifier
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Générer une terre aléatoire
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Réinitialiser le terrain
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Réinitialiser le terrain
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Carte d'altitude
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Utiliser une carte d'altitude
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Voulez-vous vraiment réinitialiser le terrain?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Créer le terrain
 STR_022F_TOWN_GENERATION                                        :{BLACK}Créer les villes
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Créer les industries
@@ -643,7 +642,7 @@ STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...Il n'
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Augmenter la taille de la ville
 STR_023C_EXPAND                                                 :{BLACK}Agrandir
 STR_023D_RANDOM_TOWN                                            :{BLACK}Générer une ville
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construire une ville dans un emplacement aléatoire
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construire une ville à un emplacement aléatoire
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Créer les industries
 STR_0240_COAL_MINE                                              :{BLACK}Mine de Charbon
 STR_0241_POWER_STATION                                          :{BLACK}Centrale Électrique
@@ -679,41 +678,41 @@ STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Usine de
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Générateur de Bulles
 STR_0260_TOFFEE_QUARRY                                          :{BLACK}Carrière de Caramel
 STR_0261_SUGAR_MINE                                             :{BLACK}Mine de Sucre
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construire Mine de Charbon
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construire Centrale Électrique
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construire Scierie
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construire une mine de charbon
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construire une centrale électrique
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construire une scierie
 STR_0265_PLANT_FOREST                                           :{BLACK}Planter une Forêt
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construire une raffinerie pétrolière
 STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}La construire d'une plate-forme pétrolière ne peut se faire qu'aux bords de la carte
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construire Usine
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construire Aciérie
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construire Ferme
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construire Mine de Fer
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construire puits de pétrole
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construire Banque (Peut seulement être construite dans les villes ayant plus de 1200 habitants)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construire Usine papetière
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construire Usine Agroalimentaire
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construire Imprimerie
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construire Mine d'Or
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construire Banque (Peut seulement être construite en ville)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construire Scierie (pour la coupe de forêt tropicale et la production de Bois)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construire une usine
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construire une aciérie
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construire une ferme
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construire une mine de fer
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construire un puit de pétrole
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construire une banque (Peut seulement être construite dans les villes ayant plus de 1200 habitants)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construire une usine papetière
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construire une usine agroalimentaire
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construire une imprimerie
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construire une mine d'or
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construire une banque (Peut seulement être construite en ville)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construire une scierie (pour la coupe de forêt tropicale et la production de Bois)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Semer une Plantation de Fruits
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Semer une Plantation de Caoutchouc
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construire Source d'eau
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construire Château d'eau (Peut seulement être construite en ville)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construire Mine de Diamant
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construire Mine de Cuivre
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construire une source d'eau
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construire un château d'eau (Peut seulement être construite en ville)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construire une mine de diamants
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construire une mine de cuivre
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Semer une Forêt de Barbe à Papa
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construire Usine de Sucreries
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construire Ferme de Batteries
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construire Puits de Cola
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construire Boutique de Jouets
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construire Usine de Jouets
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construire Fontaines de Plastique
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construire Usine de Boissons Gazeuses
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construire Générateur de Bulles
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construire Carrière de Caramel
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construire Mine de Sucre
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construire une usine de sucreries
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construire une ferme de batteries
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construire un puit de cola
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construire une boutique de jouets
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construire une usine de jouets
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construire une fontaine de plastique
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construire une usine de boissons gazeuses
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construire un générateur de bulles
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construire une carrière de caramel
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construire une mine de sucre
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Impossible de construire {STRING} ici...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...doit d'abord construire une ville
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...Droit à un par ville seulement
@@ -767,7 +766,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Sélecti
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sauvegarder noms personnalisés de conception de véhicule
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Options du Jeu
 STR_02C5_DIFFICULTY_SETTINGS                                    :Niveau de Difficulté
 STR_02C7_CONFIG_PATCHES                                         :Configuration Avancée
@@ -781,16 +780,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animat
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Détails maximums
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Édifices transparents
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nom de station transparent
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Outil d'Inspection
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Inverser Console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Copie d'écran (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Copie géante d'écran (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :À Propos de 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Inactif
 STR_02DA_ON                                                     :{BLACK}Actif
@@ -847,7 +846,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Sélecti
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Sélectionner l'environnement 'Jouets'
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financer la construction de nouvelles industries
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Annuaire des industries
 STR_0313_FUND_NEW_INDUSTRY                                      :Financer une nouvelle industrie
 ############ range ends here
@@ -880,7 +879,7 @@ STR_TOWNNAME_LATIN_AMERICAN                                     :Latino-Americai
 STR_TOWNNAME_SILLY                                              :Drôles
 STR_TOWNNAME_SWEDISH                                            :Suédois
 STR_TOWNNAME_DUTCH                                              :Hollandais
-STR_TOWNNAME_FINNISH                                            :Finnish
+STR_TOWNNAME_FINNISH                                            :Finlandais
 STR_TOWNNAME_POLISH                                             :Polonais
 STR_TOWNNAME_SLOVAKISH                                          :Slovaques
 STR_TOWNNAME_NORWEGIAN                                          :Norvégiens
@@ -893,7 +892,7 @@ STR_TOWNNAME_DANISH                                             :Danois
 STR_TOWNNAME_TURKISH                                            :Turques
 STR_TOWNNAME_ITALIAN                                            :Italien
 STR_TOWNNAME_CATALAN                                            :Catalan
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Livre (£)
 STR_CURR_USD                                                    :Dollar ($)
@@ -1242,7 +1241,7 @@ STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Construi
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Construire une mine de fer
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Financer une plantation de fruits
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Financer une plantation de caoutchouc
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financer la construction d'une Source d'eau
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financer la construction d'une source d'eau
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Planter une forêt de barbe à papa
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Financer une ferme de piles
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Forer pour trouver du cola
@@ -1415,6 +1414,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste de
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Aucun périphérique réseau trouvé ou programme compilé sans ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Aucune partie réseau n'a été trouvée
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Le serveur n'a pas répondu à la requête
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Echec de la connexion à cause de NewGRF différents
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} La synchronisation de la partie réseau a échouée.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} La connection de la partie réseau a été perdue.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} La sauvegarde serveur n'a pas pu être chargée.
@@ -1436,6 +1436,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :erreur de désy
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :chargement de la carte impossible
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :connection perdue
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :erreur de protocole
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF différents
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :non autorisé
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :paquet étrange reçu
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :révision incorrecte
@@ -1839,7 +1840,7 @@ STR_4813_DIAMOND_MINE                                           :{G=f}Mine de di
 STR_4814_IRON_ORE_MINE                                          :{G=f}Mine de fer
 STR_4815_FRUIT_PLANTATION                                       :{G=f}Plantation de fruits
 STR_4816_RUBBER_PLANTATION                                      :{G=f}Plantation de caoutchouc
-STR_4817_WATER_SUPPLY                                           :{G=m}Réservoir d'eau
+STR_4817_WATER_SUPPLY                                           :{G=f}Source d'eau
 STR_4818_WATER_TOWER                                            :{G=m}Château d'eau
 STR_4819_FACTORY                                                :{G=f}Usine
 STR_481A_FARM                                                   :{G=f}Ferme
@@ -1856,11 +1857,11 @@ STR_4824_BUBBLE_GENERATOR                                       :{G=m}Générate
 STR_4825_TOFFEE_QUARRY                                          :{G=f}Carrière de caramel
 STR_4826_SUGAR_MINE                                             :{G=f}Mine de sucre
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Nécessite: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Nécessite: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Nécessite: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Production le mois dernier:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporté)
@@ -1933,8 +1934,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Impossib
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...il vous appartient déjà!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Non nommé
@@ -1977,7 +1978,7 @@ STR_SV_STNAME_LOWER                                             :Bas {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Héliport
 STR_SV_STNAME_FOREST                                            :{STRING} Forêt
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Niveau de difficulté

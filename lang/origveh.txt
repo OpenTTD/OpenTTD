@@ -1,261 +1,261 @@
 ##name Original vehicle names (ENG)
 ##ownname Original vehicle names (ENG)
-##isocode xx.UTF-8
+##isocode xx
 
 ##id 0x8000
-STR_8000_KIRBY_PAUL_TANK_STEAM			:Collett Pannier Tank (Steam)
-STR_8001_MJS_250_DIESEL					:MJS 250 (Diesel)
-STR_8002_PLODDYPHUT_CHOO_CHOO			:Ploddyphut Choo-Choo
-STR_8003_POWERNAUT_CHOO_CHOO			:Powernaut Choo-Choo
-STR_8004_MIGHTYMOVER_CHOO_CHOO			:Mightymover Choo-Choo
-STR_8005_PLODDYPHUT_DIESEL				:Ploddyphut Diesel
-STR_8006_POWERNAUT_DIESEL				:Powernaut Diesel
-STR_8007_WILLS_2_8_0_STEAM				:Wills 2-8-0 (Steam)
-STR_8008_CHANEY_JUBILEE_STEAM			:Stanier 'Jubilee' (Steam)
-STR_8009_GINZU_A4_STEAM					:Gresley 'A4' (Steam)
-STR_800A_SH_8P_STEAM					:BR '8P' (Steam)
-STR_800B_MANLEY_MOREL_DMU_DIESEL		:Metro Cammell DMU (Diesel)
-STR_800C_DASH_DIESEL					:'Sprinter' (Diesel)
-STR_800D_SH_HENDRY_25_DIESEL			:BR/Sulzer '25' (Diesel)
-STR_800E_UU_37_DIESEL					:EE '37'
-STR_800F_FLOSS_47_DIESEL				:Brush '47' (Diesel)
-STR_8010_CS_4000_DIESEL					:CS 4000 (Diesel)
-STR_8011_CS_2400_DIESEL					:CS 2400 (Diesel)
-STR_8012_CENTENNIAL_DIESEL				:Centennial (Diesel)
-STR_8013_KELLING_3100_DIESEL			:Kelling 3100 (Diesel)
-STR_8014_TURNER_TURBO_DIESEL			:Turner Turbo (Diesel)
-STR_8015_MJS_1000_DIESEL				:MJS 1000 (Diesel)
-STR_8016_SH_125_DIESEL					:BR 'IC125' (Diesel)
-STR_8017_SH_30_ELECTRIC					:BR '86' (Electric)
-STR_8018_SH_40_ELECTRIC					:BR '87' (Electric)
-STR_8019_T_I_M_ELECTRIC					:'T.G.V.' (Electric)
-STR_801A_ASIASTAR_ELECTRIC				:'Eurostar' (Electric)
-STR_801B_PASSENGER_CAR					:Passenger Carriage
-STR_801C_MAIL_VAN						:Mail Van
-STR_801D_COAL_CAR						:Coal Truck
-STR_801E_OIL_TANKER						:Oil Tanker
-STR_801F_LIVESTOCK_VAN					:Livestock Van
-STR_8020_GOODS_VAN						:Goods Van
-STR_8021_GRAIN_HOPPER					:Grain Hopper
-STR_8022_WOOD_TRUCK						:Wood Truck
-STR_8023_IRON_ORE_HOPPER				:Iron Ore Hopper
-STR_8024_STEEL_TRUCK					:Steel Truck
-STR_8025_ARMORED_VAN					:Armoured Van
-STR_8026_FOOD_VAN						:Food Van
-STR_8027_PAPER_TRUCK					:Paper Truck
-STR_8028_COPPER_ORE_HOPPER				:Copper Ore Hopper
-STR_8029_WATER_TANKER					:Water Tanker
-STR_802A_FRUIT_TRUCK					:Fruit Truck
-STR_802B_RUBBER_TRUCK					:Rubber Truck
-STR_802C_SUGAR_TRUCK					:Sugar Truck
-STR_802D_COTTON_CANDY_HOPPER			:Candyfloss Hopper
-STR_802E_TOFFEE_HOPPER					:Toffee Hopper
-STR_802F_BUBBLE_VAN						:Bubble Van
-STR_8030_COLA_TANKER					:Cola Tanker
-STR_8031_CANDY_VAN						:Sweets Van
-STR_8032_TOY_VAN						:Toy Van
-STR_8033_BATTERY_TRUCK					:Battery Truck
-STR_8034_FIZZY_DRINK_TRUCK				:Fizzy Drink Truck
-STR_8035_PLASTIC_TRUCK					:Plastic Truck
-STR_8036_X2001_ELECTRIC					:'X2001' (Electric)
-STR_8037_MILLENNIUM_Z1_ELECTRIC			:'Millennium Z1' (Electric)
-STR_8038_WIZZOWOW_Z99					:Wizzowow Z99
-STR_8039_PASSENGER_CAR					:Passenger Carriage
-STR_803A_MAIL_VAN						:Mail Van
-STR_803B_COAL_CAR						:Coal Truck
-STR_803C_OIL_TANKER						:Oil Tanker
-STR_803D_LIVESTOCK_VAN					:Livestock Van
-STR_803E_GOODS_VAN						:Goods Van
-STR_803F_GRAIN_HOPPER					:Grain Hopper
-STR_8040_WOOD_TRUCK						:Wood Truck
-STR_8041_IRON_ORE_HOPPER				:Iron Ore Hopper
-STR_8042_STEEL_TRUCK					:Steel Truck
-STR_8043_ARMORED_VAN					:Armoured Van
-STR_8044_FOOD_VAN						:Food Van
-STR_8045_PAPER_TRUCK					:Paper Truck
-STR_8046_COPPER_ORE_HOPPER				:Copper Ore Hopper
-STR_8047_WATER_TANKER					:Water Tanker
-STR_8048_FRUIT_TRUCK					:Fruit Truck
-STR_8049_RUBBER_TRUCK					:Rubber Truck
-STR_804A_SUGAR_TRUCK					:Sugar Truck
-STR_804B_COTTON_CANDY_HOPPER			:Candyfloss Hopper
-STR_804C_TOFFEE_HOPPER					:Toffee Hopper
-STR_804D_BUBBLE_VAN						:Bubble Van
-STR_804E_COLA_TANKER					:Cola Tanker
-STR_804F_CANDY_VAN						:Sweets Van
-STR_8050_TOY_VAN						:Toy Van
-STR_8051_BATTERY_TRUCK					:Battery Truck
-STR_8052_FIZZY_DRINK_TRUCK				:Fizzy Drink Truck
-STR_8053_PLASTIC_TRUCK					:Plastic Truck
-STR_8054_LEV1_LEVIATHAN_ELECTRIC		:Lev1 'Leviathan' (Electric)
-STR_8055_LEV2_CYCLOPS_ELECTRIC			:Lev2 'Cyclops' (Electric)
-STR_8056_LEV3_PEGASUS_ELECTRIC			:Lev3 'Pegasus' (Electric)
-STR_8057_LEV4_CHIMAERA_ELECTRIC			:Lev4 'Chimaera' (Electric)
-STR_8058_WIZZOWOW_ROCKETEER				:Wizzowow Rocketeer
-STR_8059_PASSENGER_CAR					:Passenger Car
-STR_805A_MAIL_VAN						:Mail Van
-STR_805B_COAL_CAR						:Coal Car
-STR_805C_OIL_TANKER						:Oil Tanker
-STR_805D_LIVESTOCK_VAN					:Livestock Van
-STR_805E_GOODS_VAN						:Goods Van
-STR_805F_GRAIN_HOPPER					:Grain Hopper
-STR_8060_WOOD_TRUCK						:Wood Truck
-STR_8061_IRON_ORE_HOPPER				:Iron Ore Hopper
-STR_8062_STEEL_TRUCK					:Steel Truck
-STR_8063_ARMORED_VAN					:Armored Van
-STR_8064_FOOD_VAN						:Food Van
-STR_8065_PAPER_TRUCK					:Paper Truck
-STR_8066_COPPER_ORE_HOPPER				:Copper Ore Hopper
-STR_8067_WATER_TANKER					:Water Tanker
-STR_8068_FRUIT_TRUCK					:Fruit Truck
-STR_8069_RUBBER_TRUCK					:Rubber Truck
-STR_806A_SUGAR_TRUCK					:Sugar Truck
-STR_806B_COTTON_CANDY_HOPPER			:Candyfloss Hopper
-STR_806C_TOFFEE_HOPPER					:Toffee Hopper
-STR_806D_BUBBLE_VAN						:Bubble Van
-STR_806E_COLA_TANKER					:Cola Tanker
-STR_806F_CANDY_VAN						:Sweets Van
-STR_8070_TOY_VAN						:Toy Van
-STR_8071_BATTERY_TRUCK					:Battery Truck
-STR_8072_FIZZY_DRINK_TRUCK				:Fizzy Drink Truck
-STR_8073_PLASTIC_TRUCK					:Plastic Truck
-STR_8074_MPS_REGAL_BUS					:AEC Regal Bus
-STR_8075_HEREFORD_LEOPARD_BUS			:Leyland Leopard Bus
-STR_8076_FOSTER_BUS						:Volvo Bus
-STR_8077_FOSTER_MKII_SUPERBUS			:Volvo MkII Superbus
-STR_8078_PLODDYPHUT_MKI_BUS				:Ploddyphut MkI Bus
-STR_8079_PLODDYPHUT_MKII_BUS			:Ploddyphut MkII Bus
-STR_807A_PLODDYPHUT_MKIII_BUS			:Ploddyphut MkIII Bus
-STR_807B_BALOGH_COAL_TRUCK				:Bedford Coal Lorry
-STR_807C_UHL_COAL_TRUCK					:Ford Coal Lorry
-STR_807D_DW_COAL_TRUCK					:DW Coal Lorry
-STR_807E_MPS_MAIL_TRUCK					:AEC Mail Truck
-STR_807F_REYNARD_MAIL_TRUCK				:Renault Mail Truck
-STR_8080_PERRY_MAIL_TRUCK				:Perry Mail Truck
-STR_8081_MIGHTYMOVER_MAIL_TRUCK			:MightyMover Mail Truck
-STR_8082_POWERNAUGHT_MAIL_TRUCK			:Powernaught Mail Truck
-STR_8083_WIZZOWOW_MAIL_TRUCK			:Wizzowow Mail Truck
-STR_8084_WITCOMBE_OIL_TANKER			:Scammell Oil Tanker
-STR_8085_FOSTER_OIL_TANKER				:Volvo Oil Tanker
-STR_8086_PERRY_OIL_TANKER				:Perry Oil Tanker
-STR_8087_TALBOTT_LIVESTOCK_VAN			:Dennis Livestock Van
-STR_8088_UHL_LIVESTOCK_VAN				:Ford Livestock Van
-STR_8089_FOSTER_LIVESTOCK_VAN			:Foster Livestock Van
-STR_808A_BALOGH_GOODS_TRUCK				:Bedford Goods Lorry
-STR_808B_CRAIGHEAD_GOODS_TRUCK			:Fiat Goods Lorry
-STR_808C_GOSS_GOODS_TRUCK				:Goss Goods Lorry
-STR_808D_HEREFORD_GRAIN_TRUCK			:Leyland Grain Truck
-STR_808E_THOMAS_GRAIN_TRUCK				:Peugeot Grain Truck
-STR_808F_GOSS_GRAIN_TRUCK				:Goss Grain Truck
-STR_8090_WITCOMBE_WOOD_TRUCK			:Scammell Wood Truck
-STR_8091_FOSTER_WOOD_TRUCK				:Volvo Wood Truck
-STR_8092_MORELAND_WOOD_TRUCK			:Moreland Wood Truck
-STR_8093_MPS_IRON_ORE_TRUCK				:AEC Iron Ore Truck
-STR_8094_UHL_IRON_ORE_TRUCK				:Ford Iron Ore Truck
-STR_8095_CHIPPY_IRON_ORE_TRUCK			:Chippy Iron Ore Truck
-STR_8096_BALOGH_STEEL_TRUCK				:Bedford Steel Truck
-STR_8097_UHL_STEEL_TRUCK				:Ford Steel Truck
-STR_8098_KELLING_STEEL_TRUCK			:Kelling Steel Truck
-STR_8099_BALOGH_ARMORED_TRUCK			:Bedford Armoured Truck
-STR_809A_UHL_ARMORED_TRUCK				:Ford Armoured Truck
-STR_809B_FOSTER_ARMORED_TRUCK			:Foster Armored Truck
-STR_809C_FOSTER_FOOD_VAN				:Foster Food Van
-STR_809D_PERRY_FOOD_VAN					:Perry Food Van
-STR_809E_CHIPPY_FOOD_VAN				:Chippy Food Van
-STR_809F_UHL_PAPER_TRUCK				:Uhl Paper Truck
-STR_80A0_BALOGH_PAPER_TRUCK				:Balogh Paper Truck
-STR_80A1_MPS_PAPER_TRUCK				:MPS Paper Truck
-STR_80A2_MPS_COPPER_ORE_TRUCK			:MPS Copper Ore Truck
-STR_80A3_UHL_COPPER_ORE_TRUCK			:Uhl Copper Ore Truck
-STR_80A4_GOSS_COPPER_ORE_TRUCK			:Goss Copper Ore Truck
-STR_80A5_UHL_WATER_TANKER				:Uhl Water Tanker
-STR_80A6_BALOGH_WATER_TANKER			:Balogh Water Tanker
-STR_80A7_MPS_WATER_TANKER				:MPS Water Tanker
-STR_80A8_BALOGH_FRUIT_TRUCK				:Balogh Fruit Truck
-STR_80A9_UHL_FRUIT_TRUCK				:Uhl Fruit Truck
-STR_80AA_KELLING_FRUIT_TRUCK			:Kelling Fruit Truck
-STR_80AB_BALOGH_RUBBER_TRUCK			:Balogh Rubber Truck
-STR_80AC_UHL_RUBBER_TRUCK				:Uhl Rubber Truck
-STR_80AD_RMT_RUBBER_TRUCK				:RMT Rubber Truck
-STR_80AE_MIGHTYMOVER_SUGAR_TRUCK		:MightyMover Sugar Truck
-STR_80AF_POWERNAUGHT_SUGAR_TRUCK		:Powernaught Sugar Truck
-STR_80B0_WIZZOWOW_SUGAR_TRUCK			:Wizzowow Sugar Truck
-STR_80B1_MIGHTYMOVER_COLA_TRUCK			:MightyMover Cola Truck
-STR_80B2_POWERNAUGHT_COLA_TRUCK			:Powernaught Cola Truck
-STR_80B3_WIZZOWOW_COLA_TRUCK			:Wizzowow Cola Truck
-STR_80B4_MIGHTYMOVER_COTTON_CANDY		:MightyMover Candyfloss Truck
-STR_80B5_POWERNAUGHT_COTTON_CANDY		:Powernaught Candyfloss Truck
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK	:Wizzowow Candyfloss Truck
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK		:MightyMover Toffee Truck
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK		:Powernaught Toffee Truck
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK			:Wizzowow Toffee Truck
-STR_80BA_MIGHTYMOVER_TOY_VAN			:MightyMover Toy Van
-STR_80BB_POWERNAUGHT_TOY_VAN			:Powernaught Toy Van
-STR_80BC_WIZZOWOW_TOY_VAN				:Wizzowow Toy Van
-STR_80BD_MIGHTYMOVER_CANDY_TRUCK		:MightyMover Sweet Lorry
-STR_80BE_POWERNAUGHT_CANDY_TRUCK		:Powernaught Sweet Lorry
-STR_80BF_WIZZOWOW_CANDY_TRUCK			:Wizzowow Sweet Lorry
-STR_80C0_MIGHTYMOVER_BATTERY_TRUCK		:MightyMover Battery Truck
-STR_80C1_POWERNAUGHT_BATTERY_TRUCK		:Powernaught Battery Truck
-STR_80C2_WIZZOWOW_BATTERY_TRUCK			:Wizzowow Battery Truck
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK		:MightyMover Fizzy Drink Truck
-STR_80C4_POWERNAUGHT_FIZZY_DRINK		:Powernaught Fizzy Drink Truck
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK		:Wizzowow Fizzy Drink Truck
-STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK		:MightyMover Plastic Truck
-STR_80C7_POWERNAUGHT_PLASTIC_TRUCK		:Powernaught Plastic Truck
-STR_80C8_WIZZOWOW_PLASTIC_TRUCK			:Wizzowow Plastic Truck
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK		:MightyMover Bubble Truck
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK		:Powernaught Bubble Truck
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK			:Wizzowow Bubble Truck
-STR_80CC_MPS_OIL_TANKER					:MPS Oil Tanker
-STR_80CD_CS_INC_OIL_TANKER				:CS-Inc. Oil Tanker
-STR_80CE_MPS_PASSENGER_FERRY			:MPS Passenger Ferry
-STR_80CF_FFP_PASSENGER_FERRY			:FFP Passenger Ferry
-STR_80D0_BAKEWELL_300_HOVERCRAFT		:Bakewell 300 Hovercraft
-STR_80D1_CHUGGER_CHUG_PASSENGER			:Chugger-Chug Passenger Ferry
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY	:Shivershake Passenger Ferry
-STR_80D3_YATE_CARGO_SHIP				:Yate Cargo ship
-STR_80D4_BAKEWELL_CARGO_SHIP			:Bakewell Cargo ship
-STR_80D5_MIGHTYMOVER_CARGO_SHIP			:Mightymover Cargo ship
-STR_80D6_POWERNAUT_CARGO_SHIP			:Powernaut Cargo ship
-STR_80D7_SAMPSON_U52					:Junkers JU52
-STR_80D8_COLEMAN_COUNT					:Vickers Viscount
-STR_80D9_FFP_DART						:Aërospatiale SE-310 Caravelle
-STR_80DA_YATE_HAUGAN					:BAC-Aërospatiale Concorde
-STR_80DB_BAKEWELL_COTSWALD_LB_3			:Douglas DC-3 Dakota
-STR_80DC_BAKEWELL_LUCKETT_LB_8			:McDonnell Douglas DC-8
-STR_80DD_BAKEWELL_LUCKETT_LB_9			:McDonnell Douglas DC-9
-STR_80DE_BAKEWELL_LUCKETT_LB80			:McDonnell Douglas MD80
-STR_80DF_BAKEWELL_LUCKETT_LB_10			:McDonnell Douglas DC-10
-STR_80E0_BAKEWELL_LUCKETT_LB_11			:McDonnell Douglas MD-11
-STR_80E1_YATE_AEROSPACE_YAC_1_11		:British Aerospace BAC 1-11
-STR_80E2_DARWIN_100						:Boeing 727
-STR_80E3_DARWIN_200						:Boeing 737
-STR_80E4_DARWIN_300						:Boeing 747
-STR_80E5_DARWIN_400						:Boeing 757
-STR_80E6_DARWIN_500						:Boeing 767
-STR_80E7_DARWIN_600						:Boeing 777
-STR_80E8_GURU_GALAXY					:Lockheed Tristar
-STR_80E9_AIRTAXI_A21					:Airbus A300
-STR_80EA_AIRTAXI_A31					:Airbus A310
-STR_80EB_AIRTAXI_A32					:Airbus A320
-STR_80EC_AIRTAXI_A33					:Airbus A330
-STR_80ED_YATE_AEROSPACE_YAE46			:British Aerospace BAe46
-STR_80EE_DINGER_100						:Fokker 100
-STR_80EF_AIRTAXI_A34_1000				:AirTaxi A34-1000
-STR_80F0_YATE_Z_SHUTTLE					:Yate Z-Shuttle
-STR_80F1_KELLING_K1						:Kelling K1
-STR_80F2_KELLING_K6						:Kelling K6
-STR_80F3_KELLING_K7						:Kelling K7
-STR_80F4_DARWIN_700						:Darwin 700
-STR_80F5_FFP_HYPERDART_2				:FFP Hyperdart 2
-STR_80F6_DINGER_200						:Dinger 200
-STR_80F7_DINGER_1000					:Dinger 1000
-STR_80F8_PLODDYPHUT_100					:Ploddyphut 100
-STR_80F9_PLODDYPHUT_500					:Ploddyphut 500
-STR_80FA_FLASHBANG_X1					:Flashbang X1
-STR_80FB_JUGGERPLANE_M1					:Juggerplane M1
-STR_80FC_FLASHBANG_WIZZER				:Flashbang Wizzer
-STR_80FD_TRICARIO_HELICOPTER			:Sikorsky Helicopter
-STR_80FE_GURU_X2_HELICOPTER				:Guru X2 Helicopter
-STR_80FF_POWERNAUT_HELICOPTER			:Powernaut Helicopter
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Collett Pannier Tank (Steam)
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
+STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Diesel
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diesel
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (Steam)
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Stanier 'Jubilee' (Steam)
+STR_8009_GINZU_A4_STEAM                                         :Gresley 'A4' (Steam)
+STR_800A_SH_8P_STEAM                                            :BR '8P' (Steam)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Metro Cammell DMU (Diesel)
+STR_800C_DASH_DIESEL                                            :'Sprinter' (Diesel)
+STR_800D_SH_HENDRY_25_DIESEL                                    :BR/Sulzer '25' (Diesel)
+STR_800E_UU_37_DIESEL                                           :EE '37'
+STR_800F_FLOSS_47_DIESEL                                        :Brush '47' (Diesel)
+STR_8010_CS_4000_DIESEL                                         :CS 4000 (Diesel)
+STR_8011_CS_2400_DIESEL                                         :CS 2400 (Diesel)
+STR_8012_CENTENNIAL_DIESEL                                      :Centennial (Diesel)
+STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (Diesel)
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (Diesel)
+STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (Diesel)
+STR_8016_SH_125_DIESEL                                          :BR 'IC125' (Diesel)
+STR_8017_SH_30_ELECTRIC                                         :BR '86' (Electric)
+STR_8018_SH_40_ELECTRIC                                         :BR '87' (Electric)
+STR_8019_T_I_M_ELECTRIC                                         :'T.G.V.' (Electric)
+STR_801A_ASIASTAR_ELECTRIC                                      :'Eurostar' (Electric)
+STR_801B_PASSENGER_CAR                                          :Passenger Carriage
+STR_801C_MAIL_VAN                                               :Mail Van
+STR_801D_COAL_CAR                                               :Coal Truck
+STR_801E_OIL_TANKER                                             :Oil Tanker
+STR_801F_LIVESTOCK_VAN                                          :Livestock Van
+STR_8020_GOODS_VAN                                              :Goods Van
+STR_8021_GRAIN_HOPPER                                           :Grain Hopper
+STR_8022_WOOD_TRUCK                                             :Wood Truck
+STR_8023_IRON_ORE_HOPPER                                        :Iron Ore Hopper
+STR_8024_STEEL_TRUCK                                            :Steel Truck
+STR_8025_ARMORED_VAN                                            :Armoured Van
+STR_8026_FOOD_VAN                                               :Food Van
+STR_8027_PAPER_TRUCK                                            :Paper Truck
+STR_8028_COPPER_ORE_HOPPER                                      :Copper Ore Hopper
+STR_8029_WATER_TANKER                                           :Water Tanker
+STR_802A_FRUIT_TRUCK                                            :Fruit Truck
+STR_802B_RUBBER_TRUCK                                           :Rubber Truck
+STR_802C_SUGAR_TRUCK                                            :Sugar Truck
+STR_802D_COTTON_CANDY_HOPPER                                    :Candyfloss Hopper
+STR_802E_TOFFEE_HOPPER                                          :Toffee Hopper
+STR_802F_BUBBLE_VAN                                             :Bubble Van
+STR_8030_COLA_TANKER                                            :Cola Tanker
+STR_8031_CANDY_VAN                                              :Sweets Van
+STR_8032_TOY_VAN                                                :Toy Van
+STR_8033_BATTERY_TRUCK                                          :Battery Truck
+STR_8034_FIZZY_DRINK_TRUCK                                      :Fizzy Drink Truck
+STR_8035_PLASTIC_TRUCK                                          :Plastic Truck
+STR_8036_X2001_ELECTRIC                                         :'X2001' (Electric)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Electric)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8039_PASSENGER_CAR                                          :Passenger Carriage
+STR_803A_MAIL_VAN                                               :Mail Van
+STR_803B_COAL_CAR                                               :Coal Truck
+STR_803C_OIL_TANKER                                             :Oil Tanker
+STR_803D_LIVESTOCK_VAN                                          :Livestock Van
+STR_803E_GOODS_VAN                                              :Goods Van
+STR_803F_GRAIN_HOPPER                                           :Grain Hopper
+STR_8040_WOOD_TRUCK                                             :Wood Truck
+STR_8041_IRON_ORE_HOPPER                                        :Iron Ore Hopper
+STR_8042_STEEL_TRUCK                                            :Steel Truck
+STR_8043_ARMORED_VAN                                            :Armoured Van
+STR_8044_FOOD_VAN                                               :Food Van
+STR_8045_PAPER_TRUCK                                            :Paper Truck
+STR_8046_COPPER_ORE_HOPPER                                      :Copper Ore Hopper
+STR_8047_WATER_TANKER                                           :Water Tanker
+STR_8048_FRUIT_TRUCK                                            :Fruit Truck
+STR_8049_RUBBER_TRUCK                                           :Rubber Truck
+STR_804A_SUGAR_TRUCK                                            :Sugar Truck
+STR_804B_COTTON_CANDY_HOPPER                                    :Candyfloss Hopper
+STR_804C_TOFFEE_HOPPER                                          :Toffee Hopper
+STR_804D_BUBBLE_VAN                                             :Bubble Van
+STR_804E_COLA_TANKER                                            :Cola Tanker
+STR_804F_CANDY_VAN                                              :Sweets Van
+STR_8050_TOY_VAN                                                :Toy Van
+STR_8051_BATTERY_TRUCK                                          :Battery Truck
+STR_8052_FIZZY_DRINK_TRUCK                                      :Fizzy Drink Truck
+STR_8053_PLASTIC_TRUCK                                          :Plastic Truck
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Electric)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (Electric)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Electric)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Electric)
+STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
+STR_8059_PASSENGER_CAR                                          :Passenger Car
+STR_805A_MAIL_VAN                                               :Mail Van
+STR_805B_COAL_CAR                                               :Coal Car
+STR_805C_OIL_TANKER                                             :Oil Tanker
+STR_805D_LIVESTOCK_VAN                                          :Livestock Van
+STR_805E_GOODS_VAN                                              :Goods Van
+STR_805F_GRAIN_HOPPER                                           :Grain Hopper
+STR_8060_WOOD_TRUCK                                             :Wood Truck
+STR_8061_IRON_ORE_HOPPER                                        :Iron Ore Hopper
+STR_8062_STEEL_TRUCK                                            :Steel Truck
+STR_8063_ARMORED_VAN                                            :Armored Van
+STR_8064_FOOD_VAN                                               :Food Van
+STR_8065_PAPER_TRUCK                                            :Paper Truck
+STR_8066_COPPER_ORE_HOPPER                                      :Copper Ore Hopper
+STR_8067_WATER_TANKER                                           :Water Tanker
+STR_8068_FRUIT_TRUCK                                            :Fruit Truck
+STR_8069_RUBBER_TRUCK                                           :Rubber Truck
+STR_806A_SUGAR_TRUCK                                            :Sugar Truck
+STR_806B_COTTON_CANDY_HOPPER                                    :Candyfloss Hopper
+STR_806C_TOFFEE_HOPPER                                          :Toffee Hopper
+STR_806D_BUBBLE_VAN                                             :Bubble Van
+STR_806E_COLA_TANKER                                            :Cola Tanker
+STR_806F_CANDY_VAN                                              :Sweets Van
+STR_8070_TOY_VAN                                                :Toy Van
+STR_8071_BATTERY_TRUCK                                          :Battery Truck
+STR_8072_FIZZY_DRINK_TRUCK                                      :Fizzy Drink Truck
+STR_8073_PLASTIC_TRUCK                                          :Plastic Truck
+STR_8074_MPS_REGAL_BUS                                          :AEC Regal Bus
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Leyland Leopard Bus
+STR_8076_FOSTER_BUS                                             :Volvo Bus
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Volvo MkII Superbus
+STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI Bus
+STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII Bus
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII Bus
+STR_807B_BALOGH_COAL_TRUCK                                      :Bedford Coal Lorry
+STR_807C_UHL_COAL_TRUCK                                         :Ford Coal Lorry
+STR_807D_DW_COAL_TRUCK                                          :DW Coal Lorry
+STR_807E_MPS_MAIL_TRUCK                                         :AEC Mail Truck
+STR_807F_REYNARD_MAIL_TRUCK                                     :Renault Mail Truck
+STR_8080_PERRY_MAIL_TRUCK                                       :Perry Mail Truck
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover Mail Truck
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught Mail Truck
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow Mail Truck
+STR_8084_WITCOMBE_OIL_TANKER                                    :Scammell Oil Tanker
+STR_8085_FOSTER_OIL_TANKER                                      :Volvo Oil Tanker
+STR_8086_PERRY_OIL_TANKER                                       :Perry Oil Tanker
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Dennis Livestock Van
+STR_8088_UHL_LIVESTOCK_VAN                                      :Ford Livestock Van
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster Livestock Van
+STR_808A_BALOGH_GOODS_TRUCK                                     :Bedford Goods Lorry
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Fiat Goods Lorry
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss Goods Lorry
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Leyland Grain Truck
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Peugeot Grain Truck
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss Grain Truck
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Scammell Wood Truck
+STR_8091_FOSTER_WOOD_TRUCK                                      :Volvo Wood Truck
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland Wood Truck
+STR_8093_MPS_IRON_ORE_TRUCK                                     :AEC Iron Ore Truck
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Ford Iron Ore Truck
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy Iron Ore Truck
+STR_8096_BALOGH_STEEL_TRUCK                                     :Bedford Steel Truck
+STR_8097_UHL_STEEL_TRUCK                                        :Ford Steel Truck
+STR_8098_KELLING_STEEL_TRUCK                                    :Kelling Steel Truck
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Bedford Armoured Truck
+STR_809A_UHL_ARMORED_TRUCK                                      :Ford Armoured Truck
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster Armored Truck
+STR_809C_FOSTER_FOOD_VAN                                        :Foster Food Van
+STR_809D_PERRY_FOOD_VAN                                         :Perry Food Van
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy Food Van
+STR_809F_UHL_PAPER_TRUCK                                        :Uhl Paper Truck
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh Paper Truck
+STR_80A1_MPS_PAPER_TRUCK                                        :MPS Paper Truck
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS Copper Ore Truck
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Copper Ore Truck
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Copper Ore Truck
+STR_80A5_UHL_WATER_TANKER                                       :Uhl Water Tanker
+STR_80A6_BALOGH_WATER_TANKER                                    :Balogh Water Tanker
+STR_80A7_MPS_WATER_TANKER                                       :MPS Water Tanker
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Fruit Truck
+STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Fruit Truck
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Fruit Truck
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh Rubber Truck
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl Rubber Truck
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT Rubber Truck
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover Sugar Truck
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught Sugar Truck
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Sugar Truck
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover Cola Truck
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught Cola Truck
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow Cola Truck
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover Candyfloss Truck
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught Candyfloss Truck
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow Candyfloss Truck
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover Toffee Truck
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught Toffee Truck
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow Toffee Truck
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover Toy Van
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught Toy Van
+STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow Toy Van
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover Sweet Lorry
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught Sweet Lorry
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow Sweet Lorry
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover Battery Truck
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught Battery Truck
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow Battery Truck
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover Fizzy Drink Truck
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught Fizzy Drink Truck
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow Fizzy Drink Truck
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover Plastic Truck
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught Plastic Truck
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow Plastic Truck
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover Bubble Truck
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught Bubble Truck
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow Bubble Truck
+STR_80CC_MPS_OIL_TANKER                                         :MPS Oil Tanker
+STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. Oil Tanker
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Passenger Ferry
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Passenger Ferry
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Hovercraft
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Passenger Ferry
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Passenger Ferry
+STR_80D3_YATE_CARGO_SHIP                                        :Yate Cargo ship
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell Cargo ship
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover Cargo ship
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Powernaut Cargo ship
+STR_80D7_SAMPSON_U52                                            :Junkers JU52
+STR_80D8_COLEMAN_COUNT                                          :Vickers Viscount
+STR_80D9_FFP_DART                                               :Aërospatiale SE-310 Caravelle
+STR_80DA_YATE_HAUGAN                                            :BAC-Aërospatiale Concorde
+STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :Douglas DC-3 Dakota
+STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :McDonnell Douglas DC-8
+STR_80DD_BAKEWELL_LUCKETT_LB_9                                  :McDonnell Douglas DC-9
+STR_80DE_BAKEWELL_LUCKETT_LB80                                  :McDonnell Douglas MD80
+STR_80DF_BAKEWELL_LUCKETT_LB_10                                 :McDonnell Douglas DC-10
+STR_80E0_BAKEWELL_LUCKETT_LB_11                                 :McDonnell Douglas MD-11
+STR_80E1_YATE_AEROSPACE_YAC_1_11                                :British Aerospace BAC 1-11
+STR_80E2_DARWIN_100                                             :Boeing 727
+STR_80E3_DARWIN_200                                             :Boeing 737
+STR_80E4_DARWIN_300                                             :Boeing 747
+STR_80E5_DARWIN_400                                             :Boeing 757
+STR_80E6_DARWIN_500                                             :Boeing 767
+STR_80E7_DARWIN_600                                             :Boeing 777
+STR_80E8_GURU_GALAXY                                            :Lockheed Tristar
+STR_80E9_AIRTAXI_A21                                            :Airbus A300
+STR_80EA_AIRTAXI_A31                                            :Airbus A310
+STR_80EB_AIRTAXI_A32                                            :Airbus A320
+STR_80EC_AIRTAXI_A33                                            :Airbus A330
+STR_80ED_YATE_AEROSPACE_YAE46                                   :British Aerospace BAe46
+STR_80EE_DINGER_100                                             :Fokker 100
+STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
+STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttle
+STR_80F1_KELLING_K1                                             :Kelling K1
+STR_80F2_KELLING_K6                                             :Kelling K6
+STR_80F3_KELLING_K7                                             :Kelling K7
+STR_80F4_DARWIN_700                                             :Darwin 700
+STR_80F5_FFP_HYPERDART_2                                        :FFP Hyperdart 2
+STR_80F6_DINGER_200                                             :Dinger 200
+STR_80F7_DINGER_1000                                            :Dinger 1000
+STR_80F8_PLODDYPHUT_100                                         :Ploddyphut 100
+STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
+STR_80FA_FLASHBANG_X1                                           :Flashbang X1
+STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
+STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
+STR_80FD_TRICARIO_HELICOPTER                                    :Sikorsky Helicopter
+STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
+STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helicopter

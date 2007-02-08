@@ -1,6 +1,6 @@
 ##name Italian
 ##ownname Italian (IT)
-##isocode it_IT.UTF-8
+##isocode it_IT
 ##plural 0
 
 ##id 0x0000
@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nuovo Gi
 STR_0141_LOAD_GAME                                              :{BLACK}Carica Gioco
 STR_SINGLE_PLAYER                                               :{BLACK}Giocatore singolo
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
+STR_SCENARIO_EDITOR                                             :{BLACK}Editore di Scenari
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -343,7 +344,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} ton. forza
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Grafico profitto operativo
 STR_0155_INCOME_GRAPH                                           :Grafico incassi
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Grafico merce consegnata
@@ -352,7 +353,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Grafico valore 
 STR_0159_CARGO_PAYMENT_RATES                                    :Grafico % pagamento merce
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Classifica società
 STR_PERFORMANCE_DETAIL_MENU                                     :Dettagli prestazionali
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Informazioni su OpenTTD
 STR_015C_SAVE_GAME                                              :Salva partita
@@ -394,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacità Cargo
 STR_NO_WAITING_CARGO                                            :{BLACK}Non c'è nessun tipo di merce in attesa
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleziona tuti i fabbricati
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleziona tutti i tipi di merce (comprese le merci non in attesa)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Treni Disponibili
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Veicoli Disponibili
+STR_AVAILABLE_SHIPS                                             :{BLACK}Navi Disponibili
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aeromobili Disponibili
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Mostra una lista di motrici disponibili per quel tipo di veicolo
 STR_MANAGE_LIST                                                 :{BLACK}Gestisci lista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Manda istruzioni a tutti i veicoli in questa lista
@@ -489,7 +494,7 @@ STR_01A9_NONE                                                   :Nessuno
 STR_01AA_NAME                                                   :{BLACK}Nome
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -521,7 +526,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -609,22 +614,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} raggiunge lo status di '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} di {COMPANY} raggiunge lo status di '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Crea Scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor Scenario
 STR_0223_LAND_GENERATION                                        :{WHITE}Genera Terreno
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Terreno Casuale
-STR_0227_RESET_LAND                                             :{BLACK}Azzerra Terreno
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Aumenta ampiezza del terreno da abbassare/alzare
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Decrementa ampiezza del terreno da abbassare/alzare
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genera terreno casuale
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Azzerra paesaggio
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Azzerra Paesaggio
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usa Heightmap
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usa Heightmap
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Sei sicuro di voler azzerrare il paesaggio?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generazione paesaggio
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generazione città
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generazione industrie
@@ -766,7 +765,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selezion
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salva nomi personalizzati dei veicoli
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Opzioni gioco
 STR_02C5_DIFFICULTY_SETTINGS                                    :Impostazioni difficoltà
 STR_02C7_CONFIG_PATCHES                                         :Configura patch
@@ -780,16 +779,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animaz
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Massimo dettaglio
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edifici trasparenti
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nomi stazioni trasparenti
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informazioni sull'area
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Linea di comando
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Screenshot Gigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Info su 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Off
 STR_02DA_ON                                                     :{BLACK}On
@@ -846,7 +845,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Selezion
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Seleziona paesaggio 'Città dei giocattoli'
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finanzia la costruzione di nuove industrie
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Elenco Industrie
 STR_0313_FUND_NEW_INDUSTRY                                      :Finanzia nuove industrie
 ############ range ends here
@@ -892,7 +891,7 @@ STR_TOWNNAME_DANISH                                             :Danese
 STR_TOWNNAME_TURKISH                                            :Turco
 STR_TOWNNAME_ITALIAN                                            :Italiano
 STR_TOWNNAME_CATALAN                                            :Catalano
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Sterlina (£)
 STR_CURR_USD                                                    :Dollaro USA ($)
@@ -1414,6 +1413,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nessun dispositivo di rete trovato o compilato senza ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Impossibile trovare partite in rete
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Il server non ha risposto alla richiesta
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Impossibile collegarsi causa file NewGRF non corrispondenti
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Sincronizzazione alla partita in rete fallita.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Connessione alla partita in rete persa.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Impossibile caricare il savegame dal server.
@@ -1435,6 +1435,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :errore di sincr
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :Impossibile caricare la mappa
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :Connessione perduta
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :errore di protocollo
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :File NewGRF non corrispondenti
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :Non Autorizzato
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ricevuto uno strano pacchetto
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :revisione differente
@@ -1855,11 +1856,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Generatore di B
 STR_4825_TOFFEE_QUARRY                                          :Estrattore di Toffee
 STR_4826_SUGAR_MINE                                             :Miniera di Zucchero
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Richiede: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Richiede: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Richiede: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produzione ultimo mese:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% trasportato)
@@ -1932,8 +1933,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Non puoi
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...lo possiedi già!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Senza nome
@@ -1976,7 +1977,7 @@ STR_SV_STNAME_LOWER                                             :Bassa {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Eliporto
 STR_SV_STNAME_FOREST                                            :{STRING} Foresta
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Livello di difficoltà

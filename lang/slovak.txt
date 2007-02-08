@@ -1,6 +1,6 @@
 ##name Slovak
 ##ownname Slovensky
-##isocode sk_SK.UTF-8
+##isocode sk_SK
 ##plural 6
 ##case g
 ##gender m z s
@@ -359,6 +359,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nová hr
 STR_0141_LOAD_GAME                                              :{BLACK}Nahrat hru
 STR_SINGLE_PLAYER                                               :{BLACK}Jeden hrac
 STR_MULTIPLAYER                                                 :{BLACK}Viacero hrácov
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor scenárov
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -407,7 +408,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} megapond{P "" y ov}
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf prevadzkoveho zisku
 STR_0155_INCOME_GRAPH                                           :Graf trzieb
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf prepraveneho nakladu
@@ -416,7 +417,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Graf hodnoty sp
 STR_0159_CARGO_PAYMENT_RATES                                    :Ceny prepravy
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Hodnotenie spolocnosti
 STR_PERFORMANCE_DETAIL_MENU                                     :Detailny rating vykonu
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD
 STR_015C_SAVE_GAME                                              :Ulozit hru
@@ -458,6 +459,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapacita nákla
 STR_NO_WAITING_CARGO                                            :{BLACK}Necaka ziadny typ nakladu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit vsetky moznosti
 STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Dostupné vlaky
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostupné vozidlá
+STR_AVAILABLE_SHIPS                                             :{BLACK}Dostupné lode
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostupné lietadlá
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zobrazit zoznam dostupných dizajnov rušňov pre tento typ.
 STR_MANAGE_LIST                                                 :{BLACK}Možnosti
 STR_MANAGE_LIST_TIP                                             :{BLACK}Zadat príkazy všetkým vozidlám v zozname
@@ -553,7 +558,7 @@ STR_01A9_NONE                                                   :Nezname
 STR_01AA_NAME                                                   :{BLACK}Meno
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -585,7 +590,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -673,22 +678,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} ziskal oznacenie '{STRING}' !
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} z {COMPANY} ziskal oznacenie '{STRING}' !
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Vytvorit scenar
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor scenarov
 STR_0223_LAND_GENERATION                                        :{WHITE}Generovanie uzemia
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Nahodne uzemie
-STR_0227_RESET_LAND                                             :{BLACK}Zresetovat uzemie
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Pre zvysenie/znizenie oblasti je potrebne zvacsit uzemie
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Pre zvysenie/znizenie oblasti je potrebne zmensit uzemie
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Vygenerovat nahodne uzemie
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Zresetovat uzemie
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Zresetovat Uzemie
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Pouzit vyskovu mapu
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Pouzit vyskovu mapu
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Si si isty ze chces zresetovat uzemie ?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Vytvorenie uzemia
 STR_022F_TOWN_GENERATION                                        :{BLACK}Vytvorenie mesta
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Vytvorenie priemyslu
@@ -830,7 +829,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Vyber na
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Ulozit vlastne nazvy vozidiel na disk
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Nastavenia hry
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nastavenia obtiaznosti
 STR_02C7_CONFIG_PATCHES                                         :Nastavenia patchov
@@ -844,16 +843,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Plna a
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Plne detaily
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Priesvitne budovy
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparentne nazvy stanic
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informacie o pozemku
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Zobrazit / skryt konzolu
 STR_02D7_SCREENSHOT_CTRL_S                                      :ScreenShot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Velky ScreenShot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :O hre 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Vyp.
 STR_02DA_ON                                                     :{BLACK}Zap.
@@ -910,7 +909,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Subtropi
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Detska krajina
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financovat vystavbu noveho priemyslu
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Zoznam priemyslu
 STR_0313_FUND_NEW_INDUSTRY                                      :Financovat novy priemysel
 ############ range ends here
@@ -956,7 +955,7 @@ STR_TOWNNAME_DANISH                                             :Danske
 STR_TOWNNAME_TURKISH                                            :Turecké
 STR_TOWNNAME_ITALIAN                                            :Talianske
 STR_TOWNNAME_CATALAN                                            :Katalanske
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Libry (£)
 STR_CURR_USD                                                    :Dolare ($)
@@ -1478,6 +1477,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Zoznam k
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nie su ziadne sietove zariadenie alebo hra je kompilovana bez ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nebola najdena ziadna sietova hra
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Server neodpoveda na ziadost
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Pripojenie zlyhalo kvoli nespravnemu NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Siet - Chyba synchronizacie hry
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Siet - Stratene spojenie
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nedokazem nahrat hru zo servera
@@ -1499,6 +1499,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :chyba synchroni
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :neviem nahrat mapu
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :spojenie prerusene
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :chyba protokolu
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Nespravne NewGRF
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :overenie odmietnute
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :neplatny packet prijaty
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :chybna revizia hry
@@ -1612,7 +1613,7 @@ STR_1021_RAILROAD_TRACK                                         :Zeleznicne kola
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Zeleznicne depo
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}... oblast vlastni ina spolocnost
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicne kolaje so standartnym semaforom
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje s pre-signami
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje s pre-signalmi
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicne kolaje s exit-signalmi
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicne kolaje s combo-signalmi
 
@@ -1919,11 +1920,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Bublifuk
 STR_4825_TOFFEE_QUARRY                                          :Karamelovy lom
 STR_4826_SUGAR_MINE                                             :Cukrova bana
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Potrebuje: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Potrebuje: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Potrebuje: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkcia za posledny mesiac:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% prepravenych)
@@ -1996,8 +1997,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Tento po
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}... uz to vlastnis!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Bez mena
@@ -2040,7 +2041,7 @@ STR_SV_STNAME_LOWER                                             :Dolny {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Les
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Uroven obtiaznosti
@@ -2577,7 +2578,7 @@ STR_INVALID_ORDER                                               :{RED} (Neplatny
 STR_UNKNOWN_DESTINATION                                         :neznamy ciel
 STR_8812_EMPTY                                                  :{LTBLUE}Prazdny
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
-STR_FROM_MULT                                                   :{LTBLUE}{CARGO} from {STATION} (x{NUM})
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} caka v depe
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nove vozidla
 STR_8816                                                        :{BLACK}-
@@ -2664,10 +2665,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznac
 STR_SERVICE_HINT                                                :{BLACK}Vynechat tento prikaz pokial nie je potrebna oprava
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nove {STRING} je uz dostupne!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Nosnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Vykon: {POWER}{}Naklady na prevadzku: {CURRENCY}/rok{}Kapacita: {CARGO}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rýchlost: {VELOCITY}  Výkon: {POWER}{}Náklady na prevádzku: {CURRENCY}/rok{}Kapacita: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Pokazene
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Naklady na prevadzku: {LTBLUE}{CURRENCY}/rok
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Nosnost: {LTBLUE}{WEIGHT_S}  {BLACK}Vykon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S}  {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rýchlost: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk tento rok: {LTBLUE}{CURRENCY}  (predchadzajuci rok: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pocet poruch od posledneho servisu: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Zastavene

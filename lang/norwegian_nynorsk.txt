@@ -1,6 +1,6 @@
 ##name Norwegian new
 ##ownname Norsk, Nynorsk
-##isocode nn_NO.UTF-8
+##isocode nn_NO
 ##plural 0
 ##gender masculine feminine neuter
 
@@ -344,7 +344,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tonn kraft
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Fortenestegraf
 STR_0155_INCOME_GRAPH                                           :Inntektsgraf
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf over leverte varer
@@ -353,7 +353,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Graf over firma
 STR_0159_CARGO_PAYMENT_RATES                                    :Prisliste for varer
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Firmarangeringstabell
 STR_PERFORMANCE_DETAIL_MENU                                     :Detaljert prestasjonsnivå
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Om OpenTTD
 STR_015C_SAVE_GAME                                              :Lagre spel
@@ -395,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lastekapasitet
 STR_NO_WAITING_CARGO                                            :{BLACK}Inga last ventar
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vel alle anlegga
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vel alle lasttypar (inkludert last som ikkje ventar)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Tilgjengelege tog
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Tilgjengelege køyretøy
+STR_AVAILABLE_SHIPS                                             :{BLACK}Tilgjengelege skip
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Tilgjengelege fly
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Sjå ei liste over mogelege maskindesign for dette køyretøyet.
 STR_MANAGE_LIST                                                 :{BLACK}Behandle liste
 STR_MANAGE_LIST_TIP                                             :{BLACK}Send instruksjonar til alle køyretøy i denne lista
@@ -490,7 +494,7 @@ STR_01A9_NONE                                                   :Ingen
 STR_01AA_NAME                                                   :{BLACK}Namn
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
 STR_01AE_3RD                                                    :3.
@@ -522,7 +526,7 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -610,22 +614,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} oppnår status som '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} frå {COMPANY} oppnår status som '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Lag scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarioredigering
 STR_0223_LAND_GENERATION                                        :{WHITE}Landgenerering
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Tilfeldig landforming
-STR_0227_RESET_LAND                                             :{BLACK}Nullstill land
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Øk storleiken på landarealet som skal hevast/senkast
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Mink storleiken på landarealet som skal hevast/senkast
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generer tilfeldig landskap
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nullstill landskap
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nullstill landskap
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Bruk høgdekart
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Bruk høgdekart
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Er du sikker på at du vil nullstille landskapet?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskapsgenerering
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrigenerering
@@ -767,7 +765,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Vel namn
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Lagre eigendefinerte namn på kjøretøy
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Spelinstillingar
 STR_02C5_DIFFICULTY_SETTINGS                                    :Vanskegrad
 STR_02C7_CONFIG_PATCHES                                         :Konfigurer patcher
@@ -781,16 +779,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Full a
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Maksimalt med detaljar
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Gjennomsiktige bygningar
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gjennomsiktige stasjonsnamn
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informasjon om felt
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Vis/gjøym konsoll
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skjermfoto (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Stort skjermfoto (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Av
 STR_02DA_ON                                                     :{BLACK}På
@@ -847,7 +845,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Vel subt
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Vel leiketøyland-miljø
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finansier bygging av ny industri
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Oversikt over industriar
 STR_0313_FUND_NEW_INDUSTRY                                      :Finansier ny industri
 ############ range ends here
@@ -893,7 +891,7 @@ STR_TOWNNAME_DANISH                                             :Dansk
 STR_TOWNNAME_TURKISH                                            :Tyrkisk
 STR_TOWNNAME_ITALIAN                                            :Italiensk
 STR_TOWNNAME_CATALAN                                            :Katalansk
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Pund (£)
 STR_CURR_USD                                                    :Dollar ($)
@@ -1856,11 +1854,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Boblegenerator
 STR_4825_TOFFEE_QUARRY                                          :Karamellbrudd
 STR_4826_SUGAR_MINE                                             :Sukkergruve
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Treng: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Treng: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Treng: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksjon førre månad:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA} % transportert)
@@ -1933,8 +1931,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Kan ikkj
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...du eig det alt!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Utan namn
@@ -1977,7 +1975,7 @@ STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} helikopterstasjon
 STR_SV_STNAME_FOREST                                            :{STRING}skogen
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Vanskegrad

@@ -1,6 +1,6 @@
 ##name Danish
 ##ownname Dansk
-##isocode da_DA.UTF-8
+##isocode da_DA
 ##plural 0
 
 ##id 0x0000
@@ -151,7 +151,7 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ALT
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kort - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Spilindstillinger
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Spilvalg
 STR_00B2_MESSAGE                                                :{YELLOW}Besked
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Besked fra {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Advarsel!
@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nyt spil
 STR_0141_LOAD_GAME                                              :{BLACK}Hent spil
 STR_SINGLE_PLAYER                                               :{BLACK}En spiller
 STR_MULTIPLAYER                                                 :{BLACK}Netværksspil
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenarieeditor
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -304,7 +305,7 @@ STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Kortstørrelse:
 STR_BY                                                          :{BLACK}*
-STR_0148_GAME_OPTIONS                                           :{BLACK}Spilindstillinger
+STR_0148_GAME_OPTIONS                                           :{BLACK}Spilvalg
 
 STR_0150_SOMEONE                                                :en eller anden{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Kort over verden
@@ -343,7 +344,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} ton kraft
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf over afkast
 STR_0155_INCOME_GRAPH                                           :Graf over indkomster
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf over leveret last
@@ -352,7 +353,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Graf over selsk
 STR_0159_CARGO_PAYMENT_RATES                                    :Graf over lastudbetalingsrater
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Selskabsoversigt
 STR_PERFORMANCE_DETAIL_MENU                                     :Præstations oversigt
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Om OpenTTD
 STR_015C_SAVE_GAME                                              :Gem spil
@@ -394,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lasteevne
 STR_NO_WAITING_CARGO                                            :{BLACK}Der er ingen fragt af nogen type, der venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg alle faciliteter
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle lasttyper (inklusiv fragttyper, der ikke venter)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Tilgængelige tog
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Tilgængelige vejkøretøjer
+STR_AVAILABLE_SHIPS                                             :{BLACK}Tilgængelige skibe
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Tilgængelige fly
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Se liste over tilgængelige designs for denne køretøjstype.
 STR_MANAGE_LIST                                                 :{BLACK}Administrer liste
 STR_MANAGE_LIST_TIP                                             :{BLACK}Send instruktioner til alle køretøjer i denne liste
@@ -444,7 +449,7 @@ STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Byg havn
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Byg lufthavne
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plant træer, placér skilte osv.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Landområde information
-STR_0187_OPTIONS                                                :{BLACK}Indstillinger
+STR_0187_OPTIONS                                                :{BLACK}Valg
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Kan ikke ændre serviceinterval...
@@ -489,7 +494,7 @@ STR_01A9_NONE                                                   :Ingen
 STR_01AA_NAME                                                   :{BLACK}Navn
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
 STR_01AE_3RD                                                    :3.
@@ -521,7 +526,7 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -578,8 +583,8 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Seneste besked/nyhedsrapport
 STR_0201_MESSAGE_SETTINGS                                       :Beskedindstillinger
 STR_MESSAGE_HISTORY_MENU                                        :Tidligere beskeder
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vis sidste besked/nyhedsrapport, vis beskedindstillinger
-STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Beskedindstillinger
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vis sidste besked/nyhedsrapport, vis beskedvalg
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Beskedvalg
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Beskedtyper:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst af første køretøj til spillerens station
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst af første køretøj til modstanderens station
@@ -609,22 +614,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} får '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} fra {COMPANY} får '{STRING}' status!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Lav et scenarie
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarieeditor
 STR_0223_LAND_GENERATION                                        :{WHITE}Land generering
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Tilfældigt land
-STR_0227_RESET_LAND                                             :{BLACK}Nulstil land
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Forstør landområdet der skal sænkes/hæves
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Formindsk landområdet der skal sænkes/hæves
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generer tilfældigt land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nulstil landskab
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nulstil landskab
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Brug højdekort
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Brug højdekort
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Er du sikker på, at du vil nulstille landskabet?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskabsgenerering
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrigenerering
@@ -766,8 +765,8 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Valg af 
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Gem brugerdefinerede køretøjsdesignnavne
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
-STR_02C3_GAME_OPTIONS                                           :Spilindstillinger
+############ range for menu starts
+STR_02C3_GAME_OPTIONS                                           :Spilvalg
 STR_02C5_DIFFICULTY_SETTINGS                                    :Sværhedsgrad
 STR_02C7_CONFIG_PATCHES                                         :Indstil programrettelser
 STR_NEWGRF_SETTINGS                                             :NewGRF indstillinger
@@ -780,16 +779,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Fuld a
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Fuld detalje
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Gennemsigtige bygninger
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gennemsigtige stationsskilte
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Landområde information
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Tænd/Sluk konsol
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skærmbillede (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Kæmpe skærmbillede (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Fra
 STR_02DA_ON                                                     :{BLACK}Til
@@ -833,8 +832,8 @@ STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Hent et 
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Lav en brugerdefineret verden/scenarie
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vælg enkeltspiller spil
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vælg netværksspil med 2-8 spillere
-STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Vis spilindstillinger
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vis sværhedsgrad-indstillinger
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Vis spilvalg
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vis valg for sværhedsgrad
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start et nyt spil med et brugerdefineret scenarie
 STR_0304_QUIT                                                   :{BLACK}Afslut
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Afslut 'OpenTTD'
@@ -846,7 +845,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Vælg 's
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Vælg 'legetøjsland' landskab
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financiér opførelse af ny industri
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Industrioversigt
 STR_0313_FUND_NEW_INDUSTRY                                      :Opfør ny industri
 ############ range ends here
@@ -892,7 +891,7 @@ STR_TOWNNAME_DANISH                                             :Danske
 STR_TOWNNAME_TURKISH                                            :Tyrkiske
 STR_TOWNNAME_ITALIAN                                            :Italienske
 STR_TOWNNAME_CATALAN                                            :Catalanske
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Pund (£)
 STR_CURR_USD                                                    :Dollar ($)
@@ -984,19 +983,19 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA} har for få ordrer i sin odreliste
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tog {COMMA} har en ugyldig ordre
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har dobbelt ordrer
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har en ugyldig station i sin køreplan
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Køretøj {COMMA} har for få ordrer i sin køreplan
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har en ugyldig station i sin ordreliste
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Køretøj {COMMA} har for få ordrer i sin ruteplan
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Køretøj {COMMA} har en ugyldig ordre
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Køretøj {COMMA} har dobbelt ordrer
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Køretøj {COMMA} har en ugyldig station i sin køreplan
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Køretøj {COMMA} har en ugyldig station i sin ordreliste
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skib {COMMA} har for få ordrer i sin ordreliste
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skib {COMMA} har en ugyldig ordre
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skib {COMMA} har dobbelt ordrer
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skib {COMMA} har en ugyldig havn i sin sejlplan
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skib {COMMA} har en ugyldig havn i sin ordreliste
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Fly {COMMA} har for få ordrer i sin ordreliste
 STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Fly {COMMA} har en ugyldig ordre
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COMMA} har dobbelt ordrer
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig lufthavn i sin flyveplan
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig lufthavn i sin ordreliste
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornyelse af tog mislykkedes {COMMA} (ikke penge nok)
@@ -1309,7 +1308,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Beskytt
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVEREN ER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVEREN ER FULD
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}Din og serverens version passer ikke sammen
-STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF MATCHER IKKE
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF ULIGHED
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Tilslut dig et spil
 
@@ -1409,11 +1408,12 @@ STR_NETWORK_DISCONNECT                                          :{BLACK}Afbryd f
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv det beløb, som du ønsker at give
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveren er beskyttet. Skriv kodeordet
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Selskabet er beskyttet. Indtast kodeord
-STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient Liste
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient liste
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ingen netværksheder fundet eller kompilet uden ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kunne ikke finde nogen netværksspil
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Serveren besvarede ikke denne forspørgsel
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kunne ikke tilslutte grundet NewGRF ulighed
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netværks synkroniseringsfejl
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Netværksforbindelse mistet
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kunne ikke hente gemt spil
@@ -1435,6 +1435,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :synkroniserings
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :kunne ikke hente kortet
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :forbindelsen blev afbrudt
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokol fejl
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF ulighed
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ikke autoriseret
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :modtog en underlig pakke
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :forkert revision
@@ -1635,7 +1636,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give dobbelt udbytte i de næste 12 måneder!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give tredobbelt udbytte i de næste 12 måneder!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tilskudsordning tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give firedobbelt udbytte i de næste 12 måneder!
-STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} de lokale myndigheder tillader ikke, at der bliver bygget en lufthavn mere i byen
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} lokale myndigheder nægter at tillade, at endnu en lufthavn bygges i byen
 STR_2036_COTTAGES                                               :Hytter
 STR_2037_HOUSES                                                 :Huse
 STR_2038_FLATS                                                  :Lejligheder
@@ -1743,7 +1744,7 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} accepterer nu {STRING} og {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Retning af rutebilstation
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Retning af fragtcentral
-STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Det er nødvendigt at rive rutebilstationen ned først
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Det er nødvendigt at nedrive rutebilstationen først
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Det er nødvendigt at rive fragtcentralen ned først
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stationer
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
@@ -1855,11 +1856,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Boblegenerator
 STR_4825_TOFFEE_QUARRY                                          :Karamelbrud
 STR_4826_SUGAR_MINE                                             :Sukkermine
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Kræver: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Kræver: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Kræver: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion sidste måned:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporteret)
@@ -1932,8 +1933,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Kan ikke
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...du ejer det allerede!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Ikke navngivet
@@ -1976,7 +1977,7 @@ STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterplads
 STR_SV_STNAME_FOREST                                            :{STRING} Skov
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Sværhedsgrad
@@ -2941,13 +2942,13 @@ STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Fly
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Skib{P "" e}
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Vis alle tog, som har denne station i deres køreplan
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle køretøjer, som har denne station i deres køreplan
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Vis alle tog, som har denne station i deres ruteplan
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle køretøjer, som har denne station i deres ruteplan
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Vis alle fly, som har denne lufthavn i deres ruteplan
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle skibe, som har denne station i deres ruteplan
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordrer af {COMMA} transportmid{P del ler}
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, som har den samme rute
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, der deler denne ruteplan
 
 ### depot strings
 

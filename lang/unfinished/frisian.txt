@@ -1,6 +1,6 @@
 ##name Frisian
 ##ownname Frysk
-##isocode fy.UTF-8
+##isocode fy
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -251,7 +251,7 @@ STR_0153_SUBSIDIES                                              :Subsydzjes
 
 
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Fertsjinst grafyk
 STR_0155_INCOME_GRAPH                                           :Ynkomsten grafyk
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Ôflevere fracht grafyk
@@ -259,7 +259,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Prestaasje skie
 STR_0158_COMPANY_VALUE_GRAPH                                    :Bedriuwswearde grafyk
 STR_0159_CARGO_PAYMENT_RATES                                    :Fracht ôfbetelling grafyk
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Bedriuwskompetysje tabel
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Oer OpenTTD
 STR_015C_SAVE_GAME                                              :Spul opslaan
@@ -348,7 +348,7 @@ STR_01A9_NONE                                                   :Neat
 STR_01AA_NAME                                                   :{BLACK}Namme
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -380,7 +380,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -606,7 +606,7 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Sla eige
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Reau ûntwerp nammen seleksje
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sla eigen reau ûntwerp nammen op
 
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Spul Opsjes
 STR_02C5_DIFFICULTY_SETTINGS                                    :Swierrichheid ynstellings
 STR_02C7_CONFIG_PATCHES                                         :Patches Ynstellings
@@ -616,15 +616,15 @@ STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Buords
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Folle animaasje
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Folle detail
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Trochsichtige gebouwen
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Gebiet Ynformaasje
 STR_02D6                                                        :
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skermfoto (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Grutte Skermfoto (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Oer 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Ut
 STR_02DA_ON                                                     :{BLACK}Oan
@@ -671,7 +671,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Selektea
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Selektear 'boartersguodlân' lânskip
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Betelje de bou fan in nije yndustry
 
-############ range for menu	starts
+############ range for menu starts
 STR_0313_FUND_NEW_INDUSTRY                                      :Betelje nije yndustry
 ############ range ends here
 
@@ -692,7 +692,7 @@ STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
-############ end of	townname region
+############ end of townname region
 
 
 
@@ -1043,26 +1043,74 @@ STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stasj
 ##id 0x3800
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...moat bout wurde op it wetter
 STR_3804_WATER                                                  :Wetter
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kin net op it wetter bouwe
 
 ##id 0x4000
+STR_4000_SAVE_GAME                                              :{WHITE}Spul Opslaan
+STR_4001_LOAD_GAME                                              :{WHITE}Spul Lade
+STR_4002_SAVE                                                   :{BLACK}Opslaan
+STR_4003_DELETE                                                 :{BLACK}Fuortsmite
+STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Koe net fan 'e skiif lêze
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Opslaan Mislearre
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kin triem net fuortsmite
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Laden Mislearre
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}List fan skiven, mappen en triemen
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Laad Hichtemap
 
 ##id 0x4800
+STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} yn it paad
+STR_4801                                                        :{WHITE}{INDUSTRY}
+STR_4802_COAL_MINE                                              :Stienkoalmyn
+STR_4803_POWER_STATION                                          :Enerzjysintrale
+STR_4805_FOREST                                                 :Bosk
+STR_4807_OIL_RIG                                                :Boarplatform
+STR_4808_FACTORY                                                :Fabryk
+STR_4809_PRINTING_WORKS                                         :Drukkerij
+STR_480B_FARM                                                   :Buorkerij
+STR_480C_COPPER_ORE_MINE                                        :Koperertsmyn
+STR_480D_OIL_WELLS                                              :Oaljebron
+STR_480E_BANK                                                   :Bank
+STR_4810_PAPER_MILL                                             :Papierfabryk
+STR_4811_GOLD_MINE                                              :Goudmyn
+STR_4812_BANK                                                   :Bank
+STR_4813_DIAMOND_MINE                                           :Diamantmyn
+STR_4814_IRON_ORE_MINE                                          :IIzerertsmyn
+STR_4817_WATER_SUPPLY                                           :Wetterbron
+STR_4818_WATER_TOWER                                            :Wettertoer
+STR_4819_FACTORY                                                :Fabryk
+STR_481A_FARM                                                   :Buorkerij
+STR_481C_COTTON_CANDY_FOREST                                    :Sûkerspinnebosk
+STR_481D_CANDY_FACTORY                                          :Snobbersguodfabryk
+STR_481E_BATTERY_FARM                                           :Batterijebuorkerij
+STR_481F_COLA_WELLS                                             :Colabron
+STR_4820_TOY_SHOP                                               :Boartersguodwinkel
+STR_4821_TOY_FACTORY                                            :Boartersguodfabryk
+STR_4822_PLASTIC_FOUNTAINS                                      :Plestikfontein
+STR_4824_BUBBLE_GENERATOR                                       :Bubbelgenerator
+STR_4826_SUGAR_MINE                                             :Sûkermyn
 
-############ range for requires	starts
-############ range for requires	ends
+############ range for requires starts
+STR_4827_REQUIRES                                               :{BLACK}Nedich: {YELLOW}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Nedich: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES                                               :{BLACK}Nedich: {YELLOW}{STRING}, {STRING}, {STRING}
+############ range for requires ends
 
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksje lêste moanne:
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportearre)
+STR_482F_COST                                                   :{BLACK}Kostet: {YELLOW}{CURRENCY}
 
 ##id 0x5000
 
 ##id 0x5800
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 
@@ -1107,6 +1155,7 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Underhâld yn {
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 

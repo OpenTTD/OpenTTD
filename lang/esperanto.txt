@@ -1,6 +1,6 @@
 ##name Esperanto
 ##ownname Esperanto
-##isocode eo_EO.UTF-8
+##isocode eo_EO
 ##plural 0
 ##case n
 
@@ -17,8 +17,8 @@ STR_0008_WAITING                                                :{BLACK}Atendas:
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (survoje de
 STR_000B                                                        :{YELLOW}{STATION})
-STR_000C_ACCEPTS                                                :{BLACK}Akceptas: {WHITE}
-STR_000D_ACCEPTS                                                :{BLACK}Akceptas: {GOLD}
+STR_000C_ACCEPTS                                                :{BLACK}Akceptiĝas: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Akceptiĝas: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Pasaĝeroj
 STR_0010_COAL                                                   :Karbo
@@ -296,6 +296,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nova Lud
 STR_0141_LOAD_GAME                                              :{BLACK}Ŝarĝu ludon
 STR_SINGLE_PLAYER                                               :{BLACK}Unu Ludanto
 STR_MULTIPLAYER                                                 :{BLACK}Pluraj Ludantoj
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenarkreilo
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -344,7 +345,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tuna forto
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Gajna grafiko
 STR_0155_INCOME_GRAPH                                           :Enspeza grafiko
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Liveriteca grafiko
@@ -353,7 +354,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Kompanivalora g
 STR_0159_CARGO_PAYMENT_RATES                                    :Ŝarĝpaga grafiko
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Kompaniara tabelo
 STR_PERFORMANCE_DETAIL_MENU                                     :Detala rendimento
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Pri OpenTTD
 STR_015C_SAVE_GAME                                              :Konservu ludon
@@ -395,6 +396,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Ŝarĝkapablo
 STR_NO_WAITING_CARGO                                            :{BLACK}Nenia ŝarĝo atendas
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Elektu ĉiujn konstruaĵojn
 STR_SELECT_ALL_TYPES                                            :{BLACK}Elektu ĉiujn ŝarĝotipojn (inkluzive de ne atendanta ŝarĝo)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Haveblaj Trajnoj
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Haveblaj Veturiloj
+STR_AVAILABLE_SHIPS                                             :{BLACK}Haveblaj Ŝipoj
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Haveblaj Aviadiloj
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Vidu liston da ĉiuj haveblaj maŝinoj por ĉi tiu veturilspeco.
 STR_MANAGE_LIST                                                 :{BLACK}Manaĝu liston
 STR_MANAGE_LIST_TIP                                             :{BLACK}Sendu instrukciojn al ĉiuj veturiloj en la listo
@@ -443,7 +448,7 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Konstruu
 STR_0182_BUILD_ROADS                                            :{BLACK}Konstruu vojojn
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Konstruu havenojn
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Konstruu flughavenojn
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plantu arbojn, metu signojn ktp.
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plantu arbojn, metu afiŝojn ktp.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Landregionaj informoj
 STR_0187_OPTIONS                                                :{BLACK}Opcioj
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -490,7 +495,7 @@ STR_01A9_NONE                                                   :Neniu
 STR_01AA_NAME                                                   :{BLACK}Nomo
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1a de
 STR_01AD_2ND                                                    :2a de
 STR_01AE_3RD                                                    :3a de
@@ -522,7 +527,7 @@ STR_01C7_28TH                                                   :28a de
 STR_01C8_29TH                                                   :29a de
 STR_01C9_30TH                                                   :30a de
 STR_01CA_31ST                                                   :31a de
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -610,22 +615,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} atingis staton de '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} de {COMPANY} atingis staton de '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Kreu Scenaron
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarkreilon
 STR_0223_LAND_GENERATION                                        :{WHITE}Landa Generado
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Hazarda Lando
-STR_0227_RESET_LAND                                             :{BLACK}Reigu Landon
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Grandigu landparton por (mal)altigi
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Malgrandigu landparton por (mal)altigi
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Kreu landon hazarde
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reigu landaspekton
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reigu Landaspekton
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Uzu Altecmapon
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Uzu Altecmapon
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Ĉu vi certas ke vi volas reigi la landaspekton?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landaspekta generado
 STR_022F_TOWN_GENERATION                                        :{BLACK}Urba generado
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industria generado
@@ -718,7 +717,7 @@ STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Ne povas
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...antaŭe konstruu urbon
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...nur unu permesiĝas en ĉiu urbo
 STR_0288_PLANT_TREES                                            :{BLACK}Plantu arbojn
-STR_0289_PLACE_SIGN                                             :{BLACK}Metu signon
+STR_0289_PLACE_SIGN                                             :{BLACK}Metu afiŝon
 STR_028A_RANDOM_TREES                                           :{BLACK}Hazardaj Arboj
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Hazarde plantu arbojn en la tuta lando
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Metu rokecajn lokojn en la lando
@@ -767,7 +766,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Elekto d
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Konservu ŝanĝitajn veturilajn nomojn
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Ludaj opcioj
 STR_02C5_DIFFICULTY_SETTINGS                                    :Malfacilec-agordoj
 STR_02C7_CONFIG_PATCHES                                         :Agordu flikojn
@@ -775,22 +774,22 @@ STR_NEWGRF_SETTINGS                                             :Agordoj de NewG
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Urbonomoj montriĝas
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Staciaj nomoj montriĝas
-STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Signoj montriĝas
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Afiŝoj montriĝas
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Trairejoj montriĝas
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Plena animado
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Plenaj detaloj
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Travideblaj konstruaĵoj
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}Travideblaj staciaj signoj
-############ range ends	here
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Travideblaj staciaj afiŝoj
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Landkvadrataj informoj
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Ŝaltu Tekstmodon
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ekranfoto (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giganta Ekranfoto (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Pri 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Malaktiva
 STR_02DA_ON                                                     :{BLACK}Aktiva
@@ -798,7 +797,7 @@ STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Montru s
 STR_02DD_SUBSIDIES                                              :Subvencioj
 STR_02DE_MAP_OF_WORLD                                           :Mondomapo
 STR_EXTRA_VIEW_PORT                                             :Plia videjo
-STR_SIGN_LIST                                                   :Signolisto
+STR_SIGN_LIST                                                   :Afiŝa listo
 STR_02DF_TOWN_DIRECTORY                                         :Urbaro
 STR_TOWN_POPULATION                                             :{BLACK}Monda enloĝantaro: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Videjo {COMMA}
@@ -847,7 +846,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Elektu '
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Elektu 'ludlandan' landstilon
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Fondu konstruadon de nova industrio
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Industriaro
 STR_0313_FUND_NEW_INDUSTRY                                      :Fondu novan industrion
 ############ range ends here
@@ -893,7 +892,7 @@ STR_TOWNNAME_DANISH                                             :Dane
 STR_TOWNNAME_TURKISH                                            :Turke
 STR_TOWNNAME_ITALIAN                                            :Itale
 STR_TOWNNAME_CATALAN                                            :Katalune
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Pundoj (£)
 STR_CURR_USD                                                    :Dolaroj ($)
@@ -1415,6 +1414,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klientli
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ne trovis retstirilojn aŭ kompiliĝis sen ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Ne troveblas ajna reta ludo
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} La servilo ne respondis al la peto
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Ne povis konekti pro miso pri NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Retluda sinkronigado fiaskis
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Perdis konekton al Retludo
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Ne povis ŝarĝi konservitan ludon
@@ -1436,6 +1436,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :sensinkroneca e
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :ne povis ŝarĝi mapon
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :konekto perdiĝis
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokola eraro
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Miso pri NewGRF
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ne rajtigite
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ricevis strangan pakaĵon
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :malĝusta revidaĵo
@@ -1499,7 +1500,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Enspezo: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transigo: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Transigo: {CURRENCY}
-STR_0805_ESTIMATED_COST                                         :{WHITE}Estimated Cost: {CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}Atendata Kosto: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Atendata enspezo: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Ne povas altigi landon ĉi tie...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Ne povas malaltigi landon ĉi tie...
@@ -1531,7 +1532,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Ne povas
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Ne povas konstrui relojn ĉi tie...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Ne povas forigi relojn de ĉi tie...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Ne povas forigi signalojn de ĉi tie...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Trajndeponeja Orientado
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Deponeja Direkto
 STR_1015_RAILROAD_CONSTRUCTION                                  :Fervoja Konstruado
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrofervoja konstruado
 STR_1016_MONORAIL_CONSTRUCTION                                  :Unurelfervoja konstruado
@@ -1562,7 +1563,7 @@ STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vojkonst
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Elektu Vojan Ponton
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Ne povas konstrui vojon ĉi tie...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Ne povas forigi vojon de ĉi tie...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Deponeja Orientado
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Deponeja Direkto
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ne povas konstrui vojveturilan deponejon ĉi tie...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Ne povas konstrui bushaltejon...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Ne povas konstrui ŝarĝstacion...
@@ -1686,17 +1687,17 @@ STR_STATION                                                     :{STATION}
 ##id 0x2800
 STR_LANDSCAPING                                                 :Landaspektigi
 STR_2800_PLANT_TREES                                            :Plantu arbojn
-STR_2801_PLACE_SIGN                                             :Metu signon
+STR_2801_PLACE_SIGN                                             :Metu afiŝon
 STR_2802_TREES                                                  :{WHITE}Arboj
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...jam estas arbo
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...loko ne uzeblas
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Ne povas planti arbon ĉi tie...
 STR_2806                                                        :{WHITE}{STRING}
-STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...tro da signoj
-STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Ne povas meti signon ĉi tie...
-STR_280A_SIGN                                                   :Signo
-STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Ŝanĝu signo-tekston
-STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Ne povas ŝanĝi signan nomon...
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...tro da afiŝoj
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Ne povas meti afiŝon ĉi tie...
+STR_280A_SIGN                                                   :Afiŝo
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Ŝanĝu afiŝan tekston
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Ne povas ŝanĝi afiŝan nomon...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Elektu arbo-tipon por plant
 STR_280E_TREES                                                  :Arboj
 STR_280F_RAINFOREST                                             :Praarbaro
@@ -1856,11 +1857,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Vezikgenerilo
 STR_4825_TOFFEE_QUARRY                                          :Tofeminejo
 STR_4826_SUGAR_MINE                                             :Sukerminejo
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Bezonas: {YELLOW}{STRING.n}
 STR_4828_REQUIRES                                               :{BLACK}Bezonas: {YELLOW}{STRING.n}, {STRING.n}
 STR_4829_REQUIRES                                               :{BLACK}Bezonas: {YELLOW}{STRING.n}, {STRING.n}, {STRING.n}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Lastmonata produktado:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportiĝis)
@@ -1933,8 +1934,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Ne povas
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...vi jam posedas ĝin!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sennoma
@@ -1977,7 +1978,7 @@ STR_SV_STNAME_LOWER                                             :Malsupra {STRIN
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterejo
 STR_SV_STNAME_FOREST                                            :Arbaro de {STRING}
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Malfacilec-nivelo
@@ -2896,7 +2897,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vi ĉi 
 STR_NEWGRF_ADD                                                  :{BLACK}Aldonu
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Aldonu NewGRF-dosieron al la listo
 STR_NEWGRF_REMOVE                                               :{BLACK}Forviŝu
-STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Remove the selected NewGRF file from the list
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Forviŝu la elektitan dosieron de NewGRF el la listo
 STR_NEWGRF_MOVEUP                                               :{BLACK}Supren
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Movu la elektitan NewGRF-dosieron supren en la listo
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Malsupren
@@ -3020,7 +3021,7 @@ STR_MASS_STOP_LIST_TIP                                          :{BLACK}Alklaku 
 STR_MASS_START_LIST_TIP                                         :{BLACK}Alklaku por starti ĉiujn veturilojn en la listo
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Signolisto - {COMMA} Signo{P "" j}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Afiŝa listo - {COMMA} Afiŝo{P "" j}
 
 STR_ORDER_REFIT_FAILED                                          :{WHITE}Fiasko de ordeno transformi haltigis {STRING.n} {COMMA}
 

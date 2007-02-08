@@ -1,6 +1,6 @@
 ##name Icelandic
 ##ownname Íslenska
-##isocode is_IS.UTF-8
+##isocode is_IS
 ##plural 0
 ##gender karlkyn kvenkyn hvorugkyn
 
@@ -341,7 +341,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ pu
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnkraftur
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Línurit: Rekstrarhagnaður
 STR_0155_INCOME_GRAPH                                           :Línurit: Tekjur
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Línurit: Fluttur farmur
@@ -350,7 +350,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Línurit: Verð
 STR_0159_CARGO_PAYMENT_RATES                                    :Línurit: Flutningsgróði
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Stigatafla fyrirtækja
 STR_PERFORMANCE_DETAIL_MENU                                     :Nákvæm frammistöðumæling
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Um OpenTTD
 STR_015C_SAVE_GAME                                              :Vista leik
@@ -472,7 +472,7 @@ STR_01A9_NONE                                                   :Enginn
 STR_01AA_NAME                                                   :{BLACK}Nafn
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
 STR_01AE_3RD                                                    :3
@@ -504,7 +504,7 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -592,20 +592,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} öðlast '{STRING}' titil!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} úr {COMPANY} öðlast '{STRING}' titil!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Búa til kort
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Kortagerð
 STR_0223_LAND_GENERATION                                        :{WHITE}Landslagsgerð
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Handahófskennt land
-STR_0227_RESET_LAND                                             :{BLACK}Eyða landi
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Stækka svæði til að lækka/hækka
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Minnka svæði til að lækka/hækka
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Mynda til land af handahófi
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Eyða landi
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Eyða landi
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Ertu viss um að þú viljir eyða landinu?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landslagsgerð
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bæjargerð
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Iðnaðargerð
@@ -745,7 +741,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Nöfn fa
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Vista breytt tegundanöfn farartækja
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Stillingar
 STR_02C5_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
 STR_02C7_CONFIG_PATCHES                                         :Viðbætur
@@ -759,16 +755,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Fullar
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Full nákvæmni
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Gegnsæjar byggingar
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gegnsæ stöðvanöfn
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Landssvæðisupplýsingar
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Kveikja á stjórnborði
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skjámynd (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Risa skjámynd (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Um 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Fela
 STR_02DA_ON                                                     :{BLACK}Sýna
@@ -825,7 +821,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Velja ey
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Leikfangalandslag
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Fjármagna byggingu nýs iðnaðars
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Iðnaðalisti
 STR_0313_FUND_NEW_INDUSTRY                                      :Fjármagna nýjan iðnað
 ############ range ends here
@@ -870,7 +866,7 @@ STR_TOWNNAME_SWISS                                              :Svissnesk
 STR_TOWNNAME_DANISH                                             :Dönsk
 STR_TOWNNAME_TURKISH                                            :Tyrknesk
 STR_TOWNNAME_ITALIAN                                            :Ítölsk
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Pund (£)
 STR_CURR_USD                                                    :Bandaríkjadalur ($)
@@ -1802,11 +1798,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Kúluframleiðs
 STR_4825_TOFFEE_QUARRY                                          :Karamellunáma
 STR_4826_SUGAR_MINE                                             :Sykurnáma
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Tekur við: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Tekur við: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Tekur við: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Framleiðsla síðasta mánaðar:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% flutt)
@@ -1879,8 +1875,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Þú get
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...þú átt það nú þegar!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Ónefnt
@@ -1923,7 +1919,7 @@ STR_SV_STNAME_LOWER                                             :Neðri {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Þyrlupallur
 STR_SV_STNAME_FOREST                                            :{STRING} Skógur
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Erfiðleikastig

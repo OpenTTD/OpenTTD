@@ -1,6 +1,6 @@
 ##name Japanese
 ##ownname 日本語
-##isocode ja_JP.UTF-8
+##isocode ja_JP
 ##plural 1
 
 ##id 0x0000
@@ -85,7 +85,7 @@ STR_004D_FIZZY_DRINK                                            :ソーダ
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :乗客{COMMA}人
 STR_QUANTITY_COAL                                               :石炭{WEIGHT}
-STR_QUANTITY_MAIL                                               :郵便袋{COMMA}包
+STR_QUANTITY_MAIL                                               :郵便袋{COMMA}袋
 STR_QUANTITY_OIL                                                :石油{VOLUME}
 STR_QUANTITY_LIVESTOCK                                          :家畜{COMMA}頭
 STR_QUANTITY_GOODS                                              :商品{COMMA}箱
@@ -93,20 +93,20 @@ STR_QUANTITY_GRAIN                                              :穀物{WEIGHT}
 STR_QUANTITY_WOOD                                               :木材{WEIGHT}
 STR_QUANTITY_IRON_ORE                                           :鉄鉱{WEIGHT}
 STR_QUANTITY_STEEL                                              :鋼鉄{WEIGHT}
-STR_QUANTITY_VALUABLES                                          :貴重品{COMMA}包
+STR_QUANTITY_VALUABLES                                          :貴重品{COMMA}袋
 STR_QUANTITY_COPPER_ORE                                         :銅鉱{WEIGHT}
 STR_QUANTITY_MAIZE                                              :トウモロコシ{WEIGHT}
 STR_QUANTITY_FRUIT                                              :果物{WEIGHT}
-STR_QUANTITY_DIAMONDS                                           :ダイヤモンド{COMMA}包
+STR_QUANTITY_DIAMONDS                                           :ダイヤモンド{COMMA}袋
 STR_QUANTITY_FOOD                                               :食品{WEIGHT}
 STR_QUANTITY_PAPER                                              :紙{WEIGHT}
-STR_QUANTITY_GOLD                                               :黄金{COMMA}包
+STR_QUANTITY_GOLD                                               :黄金{COMMA}袋
 STR_QUANTITY_WATER                                              :水{VOLUME}
 STR_QUANTITY_WHEAT                                              :小麦{WEIGHT}
 STR_QUANTITY_RUBBER                                             :ゴム{VOLUME}
 STR_QUANTITY_SUGAR                                              :砂糖{WEIGHT}
 STR_QUANTITY_TOYS                                               :玩具{COMMA}個
-STR_QUANTITY_SWEETS                                             :菓子{COMMA}包
+STR_QUANTITY_SWEETS                                             :菓子{COMMA}袋
 STR_QUANTITY_COLA                                               :コーラ{VOLUME}
 STR_QUANTITY_CANDYFLOSS                                         :綿菓子{WEIGHT}
 STR_QUANTITY_BUBBLES                                            :泡{COMMA}つ
@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}新し�
 STR_0141_LOAD_GAME                                              :{BLACK}ゲームを開く
 STR_SINGLE_PLAYER                                               :{BLACK}一人でプレイ
 STR_MULTIPLAYER                                                 :{BLACK}多人数プレイ
+STR_SCENARIO_EDITOR                                             :{BLACK}シナリオエディタ
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -317,7 +318,7 @@ STR_UNITS_SI                                                    :国際単位法
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/秒
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}馬力
 STR_UNITS_POWER_METRIC                                          :{COMMA}馬力
@@ -341,18 +342,18 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA}重量トン
-STR_UNITS_FORCE_SI                                              :{COMMA}kN
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :営業利益
-STR_0155_INCOME_GRAPH                                           :所得グラフ
+STR_0155_INCOME_GRAPH                                           :収入グラフ
 STR_0156_DELIVERED_CARGO_GRAPH                                  :運送済み貨物のグラフ
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :成績グラフ
 STR_0158_COMPANY_VALUE_GRAPH                                    :会社価値グラフ
 STR_0159_CARGO_PAYMENT_RATES                                    :貨物運送料
 STR_015A_COMPANY_LEAGUE_TABLE                                   :会社の成績表
 STR_PERFORMANCE_DETAIL_MENU                                     :詳しい成績表
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD について
 STR_015C_SAVE_GAME                                              :ゲームを保存
@@ -393,7 +394,11 @@ STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :出力／運転
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :貨物容量
 STR_NO_WAITING_CARGO                                            :{BLACK}到着待ちの貨物がありません
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}すべての駅を選択
-STR_SELECT_ALL_TYPES                                            :{BLACK}すべての貨物種類を選択（include no waiting cargo）
+STR_SELECT_ALL_TYPES                                            :{BLACK}すべての貨物種類を選択（到着待たぬ貨物も含む）
+STR_AVAILABLE_TRAINS                                            :{BLACK}購入可能な列車
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}購入可能な道路車両
+STR_AVAILABLE_SHIPS                                             :{BLACK}購入可能な船舶
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}購入可能な飛行機
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}この車両種類のデザインのリストを表示します
 STR_MANAGE_LIST                                                 :{BLACK}リストを管理
 STR_MANAGE_LIST_TIP                                             :{BLACK}リスト内のすべての車両へこの指令を送信
@@ -477,8 +482,8 @@ STR_019D_AIRCRAFT                                               :飛行機
 STR_019E_SHIP                                                   :船舶
 STR_019F_TRAIN                                                  :列車
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}{COMMA}は古くなっています
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}{COMMA}はかねて古くなっています
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}{COMMA}はかねて古くなっていて、緊急に交換しなければなりません
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}{COMMA}はとても古くなっています
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}{COMMA}はとても古くなっていて、緊急に交換しなければなりません
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}地域情報
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}破壊の価格：{LTBLUE}破壊不可
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}破壊の価格：{LTBLUE}{CURRENCY}
@@ -489,7 +494,7 @@ STR_01A9_NONE                                                   :なし
 STR_01AA_NAME                                                   :{BLACK}名称
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1日
 STR_01AD_2ND                                                    :2日
 STR_01AE_3RD                                                    :3日
@@ -521,11 +526,11 @@ STR_01C7_28TH                                                   :28日
 STR_01C8_29TH                                                   :29日
 STR_01C9_30TH                                                   :30日
 STR_01CA_31ST                                                   :31日
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
-STR_01CE_CARGO_ACCEPTED                                         :{BLACK}受け取る貨物：{LTBLUE}
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}受入れる貨物：{LTBLUE}
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}ジャズジュークボックス
@@ -588,7 +593,7 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}会社�
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}経済の変化
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}プレヤーの車両についての情報
 STR_020C_NEW_VEHICLES                                           :{YELLOW}車両の新登場
-STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}貨物の受け取りの変化
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}貨物の受入れの変化
 STR_020E_SUBSIDIES                                              :{YELLOW}助成金
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}一般情報
 STR_MESSAGES_ALL                                                :{YELLOW}すべてのメッセージ種類を：切／概要／完全
@@ -609,22 +614,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} は「{STRING}」に当たった！
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME}（{COMPANY}）は「{STRING}」に当たった！
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}シナリオを作成
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}シナリオエディタ
 STR_0223_LAND_GENERATION                                        :{WHITE}地形の作成
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}ランダムな地形
-STR_0227_RESET_LAND                                             :{BLACK}地形をリセット
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}上げる／下げる地域のサイズを拡大します
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}上げる／下げる地域のサイズを縮小します
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}ランダムな地形を作成します
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}地形をリセットします
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}地形のリセット
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}ハイトマップを使用
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}ハイトマップを使用
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}地形をリセットしてもよろしいですか？
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}地形の作成
 STR_022F_TOWN_GENERATION                                        :{BLACK}市町村の建設
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}産業の建設
@@ -766,7 +765,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}車両�
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}カスタマイズした車両の名称を保存します
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :ゲームの設定
 STR_02C5_DIFFICULTY_SETTINGS                                    :難易度の設定
 STR_02C7_CONFIG_PATCHES                                         :パッチの設定
@@ -780,16 +779,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}高級
 STR_02D2_FULL_DETAIL                                            :{SETX 12}高級の画像
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}建物を半透明で表示
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}標示を半透明で表示
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :地域情報
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :コンソールの切り替え
 STR_02D7_SCREENSHOT_CTRL_S                                      :スクリーンショット（Ctrl-S）
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :大型スクリーンショット（Ctrl-G）
-STR_02D9_ABOUT_OPENTTD                                          :OpenTTD について
-############ range ends	here
+STR_02D9_ABOUT_OPENTTD                                          :OpenTTDについて
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}切
 STR_02DA_ON                                                     :{BLACK}入
@@ -799,7 +798,7 @@ STR_02DE_MAP_OF_WORLD                                           :世界の地図
 STR_EXTRA_VIEW_PORT                                             :特別ビューア
 STR_SIGN_LIST                                                   :標示のリスト
 STR_02DF_TOWN_DIRECTORY                                         :市町村のリスト
-STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}人
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビューア {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}ビューアへコピー
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}主の画面の場所をこのビューアにコピーします
@@ -844,26 +843,26 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}温帯�
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}亜寒帯国を選択します
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}亜熱帯国を選択します
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}玩具国を選択します
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}新規産業の建設に資金を供給します
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}新規産業の建設を出資
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :産業リスト
-STR_0313_FUND_NEW_INDUSTRY                                      :新規産業の建設に資金を出す
+STR_0313_FUND_NEW_INDUSTRY                                      :新規産業の建設を出資
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}新規産業の建設に資金の供給
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}新規産業の建設を出資
 STR_JUST_STRING                                                 :{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...町内のみに建設できます
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...雨林地域のみに建設できます
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...砂漠地域のみに建設できます
 STR_0319_PAUSED                                                 :{YELLOW}＊＊ポーズ＊＊
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}スクリーンショットを '{STRING}' に正常に保存しました
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}スクリーンショットを'{STRING}'に正常に保存しました
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}スクリーンショットが失敗しました！
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}将来用に土地を購入
 STR_032F_AUTOSAVE                                               :{RED}自動保存
-STR_SAVING_GAME                                                 :{RED}* * ゲームを保存中 * *
+STR_SAVING_GAME                                                 :{RED}＊＊ゲームを保存中＊＊
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}ゲームを保存しています{}完了してからしばらくお待ちください！
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}'Ezy Street 式の音楽'のプレイリストを選択します
 
@@ -892,12 +891,12 @@ STR_TOWNNAME_DANISH                                             :デンマーク
 STR_TOWNNAME_TURKISH                                            :トルコ
 STR_TOWNNAME_ITALIAN                                            :イタリア
 STR_TOWNNAME_CATALAN                                            :カタラン
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :英ポンド（£）
 STR_CURR_USD                                                    :米ドラー（$）
 STR_CURR_EUR                                                    :ユーロ（€）
-STR_CURR_YEN                                                    :日本の円（￥）
+STR_CURR_YEN                                                    :日本円（￥）
 STR_CURR_ATS                                                    :オーストリアシリング（ATS）
 STR_CURR_BEF                                                    :ベルギーフランク（BEF）
 STR_CURR_CHF                                                    :スイスフランク（CHF）
@@ -906,7 +905,7 @@ STR_CURR_DEM                                                    :ドイッチマ
 STR_CURR_DKK                                                    :デンマーククローネ（DKK）
 STR_CURR_ESP                                                    :スペインペセタ（ESP）
 STR_CURR_FIM                                                    :フィンランドマーカ（FIM）
-STR_CURR_FRF                                                    :仏フランク（FRF）
+STR_CURR_FRF                                                    :フランスフランク（FRF）
 STR_CURR_GRD                                                    :ギリシアドラクマ（GRD）
 STR_CURR_HUF                                                    :ハンガリーフォリント（HUF）
 STR_CURR_ISK                                                    :アイスランドクローナ（ISK）
@@ -961,7 +960,7 @@ STR_NO_ORDERS                                                   :{LTBLUE}指令�
 STR_NO_ORDERS_VEL                                               :{LTBLUE}指令なし、{VELOCITY}
 
 STR_PASSENGERS                                                  :人の乗客
-STR_BAGS                                                        :包
+STR_BAGS                                                        :袋
 STR_TONS                                                        :トン
 STR_LITERS                                                      :リットル
 STR_ITEMS                                                       :件
@@ -973,10 +972,10 @@ STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGH
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}指令リストが共有できません...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}指令リストがコピーできません...
-STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共有指令の終わり - -
+STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共有指令の終了- -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}列車{COMMA}は行方不明
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}昨年、列車{COMMA}の損益は{CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}列車{COMMA}が行方不明です
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}昨年、列車{COMMA}の損益が{CURRENCY}でした
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}欧州通貨統合！{}{}我が国はここからユーロを通貨として使用！
 
 # Start of order review system.
@@ -1251,8 +1250,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}タフ�
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}砂糖鉱山を建設します
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}産業
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}）{YELLOW}（{COMMA}％が運送された）
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}／{CARGO}）{YELLOW}（{COMMA}％／{COMMA}％が運送された）
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}）{YELLOW}（{COMMA}％が運送済み）
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}／{CARGO}）{YELLOW}（{COMMA}％／{COMMA}％が運送済み）
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...他の産業に近すぎます。
@@ -1265,9 +1264,9 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}列車�
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}修理間隔をパーセントで表示：{ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}生産量を変更
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}いらっしゃいませ！このAIは発展中です。問題があったら、スクリーンショットを取って、フォーラムに送ってください
-TEMP_AI_ACTIVATED                                               :{WHITE}注意：AIはまだアルファです！今、貨物自動車とバスだけ疲われます！
-TEMP_AI_MULTIPLAYER                                             :{WHITE}注意：AIはまだ実験段階です！問題があったら、英語でtruelight@openttd.orgをメールしてください。
+TEMP_AI_IN_PROGRESS                                             :{WHITE}開発中のAIへようこそ。問題があった場合は、スクリーンショットを取って、フォーラムに送ってください。
+TEMP_AI_ACTIVATED                                               :{WHITE}注意：AIはまだ実験中です！現在道路車両のみに対応しています。
+TEMP_AI_MULTIPLAYER                                             :{WHITE}注意：AIはまだ実験中です！問題があった場合は、（英語で）truelight@openttd.orgまでご一報ください。
 
 ############ network gui strings
 
@@ -1353,7 +1352,7 @@ STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{S
 STR_NETWORK_START_GAME                                          :{BLACK}ゲームを開始
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}ランダムな地図もしくはシナリオを用いて新規ネットワークゲームを開始します
 STR_NETWORK_LOAD_GAME                                           :{BLACK}ゲームを開く
-STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}以前に保存した多人数ゲームを再会します（注：以前と同様のプレヤーとして接続しなければなりません）
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}以前に保存した多人数ゲームを再会します（注意：以前と同様のプレヤーとして接続しなければなりません）
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :何でも
@@ -1414,6 +1413,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}クラ�
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}ネットワークデバイスが見つかりませんでした。ENABLE_NETWORK を切にしてコンパイルされた可能性もあります。
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE}ネットワークゲームが見つかりませんでした
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}サーバが応答しませんでした
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}NewGRF 不一致によって接続できませんでした
 STR_NETWORK_ERR_DESYNC                                          :{WHITE}ネットワークゲームの同期が失敗しました
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}ネットワークゲームへの接続が解除されました
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}保存したゲームが開けませんでした
@@ -1435,6 +1435,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :同期エラー
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :保存したゲームが開けなかった
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :接続解除
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :プロトコルエラー
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF 不一致
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :認証していない
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :不明なパケットを受信した
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :対応していないバージョン
@@ -1494,12 +1495,12 @@ STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...イ�
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}価値：{CURRENCY}
 STR_0801_COST                                                   :{RED}価値：{CURRENCY}
-STR_0802_INCOME                                                 :{TINYFONT}{GREEN}所得：{CURRENCY}
-STR_0803_INCOME                                                 :{GREEN}所得：{CURRENCY}
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}収入：{CURRENCY}
+STR_0803_INCOME                                                 :{GREEN}収入：{CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}送金：{CURRENCY}
 STR_FEEDER                                                      :{YELLOW}送金：{CURRENCY}
-STR_0805_ESTIMATED_COST                                         :{WHITE}評価の価値：{CURRENCY}
-STR_0807_ESTIMATED_INCOME                                       :{WHITE}評価の所得：{CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}推定の価値：{CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}推定の収入：{CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}ここに土地が上げられません
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}ここに土地が下げられません
 STR_080A_ROCKS                                                  :岩石
@@ -1597,7 +1598,7 @@ STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}町名 -
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}画面を町に集中します
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}町名を変更します
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}先月の乗客：{ORANGE}{COMMA}人{BLACK}　最大：{ORANGE}{COMMA}人
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}先月の郵便物：{ORANGE}{COMMA}個{BLACK}　最大：{ORANGE}{COMMA}個
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}先月の郵便袋：{ORANGE}{COMMA}袋{BLACK}　最大：{ORANGE}{COMMA}袋
 STR_200F_TALL_OFFICE_BLOCK                                      :超高層ビル
 STR_2010_OFFICE_BLOCK                                           :オフィスビル
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :アパート
@@ -1628,13 +1629,13 @@ STR_202A_NONE                                                   :{ORANGE}なし
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}すでに助成金を受けている運送経路：
 STR_202C_FROM_TO                                                :{ORANGE}{STRING}を{STATION}から{STATION}へ{YELLOW}（{COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}、{DATE_SHORT}まで）
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}助成金提案の有効期限が切られた：{}{}{STRING}の{STRING}から{STRING}への{}運送経路は今後助成金を受けず
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}助成金の終止{}{}{STRING}の{STATION}から{STATION}への{}運送は今後助成金を受けず
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}助成金提案の報告{}{}最初の{STRING}の{STRING}から{STRING}への運送は一年間助成金を受ける！
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の{STATION}から{STATION}への運送は一年間に５０％の助成金を受ける！
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の{STATION}から{STATION}への運送は一年間に１００％の助成金を受ける！
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の{STATION}から{STATION}への運送は一年間に２００％の助成金を受ける！
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}{}{STRING}の{STATION}から{STATION}への運送は一年間に３００％の助成金を受ける！
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}助成金提案の有効期限が切られた：{}{STRING}を運ぶ{STRING}から{STRING}行き一便は{}今後助成金を受けず
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}助成金の終止{}{STRING}を運ぶ{STATION}から{STATION}行き一便は{}今後助成金を受けず
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}助成金提案の報告{}{STRING}を運ぶ{STRING}から{STRING}行き{}先駆の一便は一年間助成金を受ける！
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}５０％の助成金を受ける！
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}１００％の助成金を受ける！
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}２００％の助成金を受ける！
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}３００％の助成金を受ける！
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}町議会は町内に他の空港の建設を許可しません
 STR_2036_COTTAGES                                               :小屋
 STR_2037_HOUSES                                                 :家屋
@@ -1666,8 +1667,8 @@ STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}町内の道路の再建を出資します。{}最高6ヶ月間まで、道路交通に途絶を与えます。{}  価格：{CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}会社を推進するに彫像を建設{}価格：{CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}町内の市街地の開発を出資{}　価格：{CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}一年間独占的運送権利を買収します。町議会は乗客や貨物があなたの交通会社の運送経路の使用のみを制御します。{}価格：{CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}町議会間の評価を高めるに買収する。注：露見された場合は処罰が厳しい！{}価格：{CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}一年間独占的運送権利を買収します。{}町議会は乗客や貨物があなたの交通会社の運送経路の使用のみを制御します。{}価格：{CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}町議会間の評価を高めるに買収する。注意：露見された場合は処罰が厳しいです！{}価格：{CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}で渋滞！{}{}{COMPANY}が出資した道路工事は６ヶ月間続く！
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK}（{COMMA}）
@@ -1737,10 +1738,10 @@ STR_303C_OUTSTANDING                                            :最高
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}：{YELLOW}{STRING}（{COMMA}％）
-STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION}はもう{STRING}が受け取れません
-STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION}はもう{STRING}と{STRING}が受け取れません
-STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION}はこれから{STRING}が受け取れます
-STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION}はこれから{STRING}と{STRING}が受け取れます
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION}は今後{STRING}が受入れません
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION}は今後{STRING}と{STRING}が受入れません
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION}は今後{STRING}が受入れます
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION}は今後{STRING}と{STRING}が受入れます
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}バス停の配置
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}荷役所の配置
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}先にバス停を破壊しなければなりません
@@ -1855,11 +1856,11 @@ STR_4824_BUBBLE_GENERATOR                                       :発泡所
 STR_4825_TOFFEE_QUARRY                                          :タフィー鉱山
 STR_4826_SUGAR_MINE                                             :砂糖鉱山
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}と{STRING}
 STR_4829_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}、{STRING}、{STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}先月の生産量：
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK}（{COMMA}％運送済み）
@@ -1932,8 +1933,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}この�
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...すでに所有しています！
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :名前無し
@@ -1976,7 +1977,7 @@ STR_SV_STNAME_LOWER                                             :下{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING}ヘリポート
 STR_SV_STNAME_FOREST                                            :{STRING}森林
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}難易度
@@ -2000,7 +2001,7 @@ STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}車両�
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}競争者の建設速度：{ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}競争者の能力レベル：{ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}車両の機能停止：{ORANGE}{STRING}
-STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}助成金の乗数：{ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}助成金のレベル：{ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}建設の価値：{ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}地形の種類：{ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}海／湖の数量：{ORANGE}{STRING}
@@ -2028,10 +2029,10 @@ STR_6822_HIGH                                                   :高い
 STR_6823_NONE                                                   :なし
 STR_6824_REDUCED                                                :軽減
 STR_6825_NORMAL                                                 :通常
-STR_6826_X1_5                                                   :1.5 倍
-STR_6827_X2                                                     :2 倍
-STR_6828_X3                                                     :3 倍
-STR_6829_X4                                                     :4 倍
+STR_6826_X1_5                                                   :50％
+STR_6827_X2                                                     :100％
+STR_6828_X3                                                     :200％
+STR_6829_X4                                                     :300％
 STR_682A_VERY_FLAT                                              :特に平地
 STR_682B_FLAT                                                   :平地
 STR_682C_HILLY                                                  :丘陵地
@@ -2471,7 +2472,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario社ヘ�
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru社X2型ヘリコプター
 STR_80FF_POWERNAUT_HELICOPTER                                   :パワーノート社ヘリコプター
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}製造社からのメッセージ
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}新しい{STRING}を設計いたしてきました。パフォーマンスなどを検査するには登場前に一年間の独占的利用を貴社に提供いたしてもよろしいですか？
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}新しい{STRING}をご設計いたしてきました。{}パフォーマンスなどを検査するには登場前に一年間の独占的利用を貴社にご提供いたしてもよろしいですか？
 STR_8102_RAILROAD_LOCOMOTIVE                                    :鉄道車両
 STR_8103_ROAD_VEHICLE                                           :道路車両
 STR_8104_AIRCRAFT                                               :飛行機
@@ -2481,23 +2482,23 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :磁気浮上式
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}電車庫
-STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀{}初列車が{STATION}に到着！
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀{}初列車が{STATION}駅に到着！
 STR_8802_DETAILS                                                :{WHITE}{STRING}（詳細）
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}列車があります
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :{STATION}へ行く
-STR_8807_GO_TO_TRANSFER                                         :{STATION}へ行く（Transfer and take cargo）
+STR_8807_GO_TO_TRANSFER                                         :{STATION}へ行く（運搬して貨物を積む）
 STR_8808_GO_TO_UNLOAD                                           :{STATION}へ行く（貨物を降ろす）
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :{STATION}へ行く（Transfer and leave empty）
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :{STATION}へ行く（運搬して空そのまま次へ行く）
 STR_880A_GO_TO_LOAD                                             :{STATION}へ行く（全負荷）
-STR_880B_GO_TO_TRANSFER_LOAD                                    :{STATION}へ行く（Transfer and wait for full load）
+STR_880B_GO_TO_TRANSFER_LOAD                                    :{STATION}へ行く（運搬して全負荷まで待つ）
 STR_880C_GO_NON_STOP_TO                                         :{STATION}へ直行で行く
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :{STATION}へ直行で行く（Transfer and take cargo）
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :{STATION}へ直行で行く（運搬して貨物を積む）
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :{STATION}へ直行で行く（貨物を降ろす）
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :{STATION}へ直行で行く（Transfer and leave empty）
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :{STATION}へ直行で行く（運搬して空そのまま次へ行く）
 STR_8810_GO_NON_STOP_TO_LOAD                                    :{STATION}へ直行で行く（全負荷）
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :{STATION}へ直行で行く（Transfer and wait for a full load）
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :{STATION}へ直行で行く（運搬して全負荷まで待つ）
 STR_GO_TO_TRAIN_DEPOT                                           :{TOWN}電車庫へ回送
 STR_SERVICE_AT_TRAIN_DEPOT                                      :{TOWN}電車庫で修理
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :{TOWN}電車庫へ直行で回送
@@ -2673,8 +2674,8 @@ STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}価格�
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}道路車両を名付ける
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}道路車両が名付けません...
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}道路車両を名付ける
-STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀！{}初バスが{STATION}に到着！
-STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀！{}初トラックが{STATION}に到着！
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀！{}初バスが{STATION}バス停に到着！
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀！{}初トラックが{STATION}荷役所に到着！
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}交通事故！{}列車に衝突、運転者が死亡
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}交通事故！{}列車に衝突、{COMMA}人が死亡
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}車両が逆転させられません...
@@ -2815,7 +2816,7 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}飛行�
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}飛行機の情報を表示
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}新しい飛行機が新登場！
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}価格：{CURRENCY}　最大速度：{VELOCITY}{}容量：{COMMA}人の乗客、{COMMA}包の郵便袋{}運転費：一年間{CURRENCY}
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}価格：{CURRENCY}　最大速度：{VELOCITY}{}容量：{COMMA}人の乗客、{COMMA}袋の郵便袋{}運転費：一年間{CURRENCY}
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}飛行機を名付ける
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}飛行機が名付けられません...
@@ -2862,8 +2863,8 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}車両数：
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}駅数：
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}最小収益：
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}最小所得：
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}最大所得：
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}最小収入：
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}最大収入：
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}運送済み：
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}貨物：
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}資金：
@@ -2881,8 +2882,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}この�
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}この会社が借入している残額を表示します
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}最大ポイントから合計ポイント
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF設定
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF設定
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRFの設定
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRFの設定
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}変更を適用
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}パラメータの設定
 STR_NEWGRF_TIP                                                  :{BLACK}インストールしたNewGRFセットのリストです。設定を変更するにはセットをクリックします
@@ -3034,7 +3035,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最高�
 STR_PURCHASE_INFO_COST                                          :{BLACK}価格：{GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_S}（{WEIGHT_S}）
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}価格：{GOLD}{CURRENCY}{BLACK}　最大速度：{GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}容量：{GOLD}{COMMA}人の乗客、{COMMA}包の郵便袋
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}容量：{GOLD}{COMMA}人の乗客、{COMMA}袋の郵便袋
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}動力貨車：{GOLD}+{POWER}{BLACK}　重量：{GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}再装備の貨物種類：{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :すべて
@@ -3045,11 +3046,11 @@ STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}を除い
 STR_GENERATE                                                    :{WHITE}作成
 STR_RANDOM                                                      :{BLACK}ランダム化
 STR_RANDOM_HELP                                                 :{BLACK}地形作成のランダムシードを変更します
-STR_WORLD_GENERATION_CAPTION                                    :{WHITE}世界作成中
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}世界作成
 STR_RANDOM_SEED                                                 :{BLACK}ランダムシード：
 STR_RANDOM_SEED_HELP                                            :{BLACK}ランダムシードを入力するにはクリックします
 STR_LAND_GENERATOR                                              :{BLACK}地形作成：
-STR_TREE_PLACER                                                 :{BLACK}木アルゴリズム：
+STR_TREE_PLACER                                                 :{BLACK}植林アルゴリズム：
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}ハイトマップの回転：
 STR_TERRAIN_TYPE                                                :{BLACK}地形種類：
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}海水位：

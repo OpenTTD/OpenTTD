@@ -1,6 +1,6 @@
 ##name Turkish
 ##ownname Türkçe
-##isocode tr_TR.UTF-8
+##isocode tr_TR
 ##plural 1
 
 ##id 0x0000
@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Yeni Oyu
 STR_0141_LOAD_GAME                                              :{BLACK}Oyun Yükle
 STR_SINGLE_PLAYER                                               :{BLACK}Tek Oyunculu
 STR_MULTIPLAYER                                                 :{BLACK}Çok Oyunculu
+STR_SCENARIO_EDITOR                                             :{BLACK}Senaryo Düzenleyici
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -343,7 +344,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} ton
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Kar grafiği
 STR_0155_INCOME_GRAPH                                           :Gelir grafiği
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Taşınan kargo grafiği
@@ -352,7 +353,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Şirket değeri
 STR_0159_CARGO_PAYMENT_RATES                                    :Kargo ödeme tablosu
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Şirketler ligi
 STR_PERFORMANCE_DETAIL_MENU                                     :Ayrıntılı Performans
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD Hakkinda
 STR_015C_SAVE_GAME                                              :Kaydet
@@ -394,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapasite
 STR_NO_WAITING_CARGO                                            :{BLACK}Hiç kargo yok
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm türleri seç
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Kullanılabilir Trenler
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Kullanılabilir Arabalar
+STR_AVAILABLE_SHIPS                                             :{BLACK}Kullanılabilir Gemiler
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Kullanılabilir Uçaklar
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Bu araç türü için mümkün olan lokomotif tasarimlari
 STR_MANAGE_LIST                                                 :{BLACK}Listeyi yönet
 STR_MANAGE_LIST_TIP                                             :{BLACK}Listedeki tüm araçlara talimat ver
@@ -489,7 +494,7 @@ STR_01A9_NONE                                                   :Hiçbiri
 STR_01AA_NAME                                                   :{BLACK}İsim
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1
 STR_01AD_2ND                                                    :2
 STR_01AE_3RD                                                    :3
@@ -521,7 +526,7 @@ STR_01C7_28TH                                                   :28
 STR_01C8_29TH                                                   :29
 STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -609,22 +614,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} '{STRING}' ünvanını kazandı!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} - {COMPANY} '{STRING}' unvanını kazandı!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Senaryo Yap
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Senaryo Editörü
 STR_0223_LAND_GENERATION                                        :{WHITE}Yer Yapımı
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Rastgele Yerler
-STR_0227_RESET_LAND                                             :{BLACK}Yerleri Sıfırla
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}yükseltme/alçaltma alanını arttır
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}yükseltme/alçaltma alanını arttır
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Rastgele harita yap
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Haritayı sıfırla
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Haritayı Sıfırla
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Yükseklik Haritasi Kullan
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Yükseklik Haritasi Kullan
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Her taraf su olsun mu?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Harita yapımı
 STR_022F_TOWN_GENERATION                                        :{BLACK}Şehir yapımı
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Fabrika yapımı
@@ -766,7 +765,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Araç is
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Özelleştirilmiş araç isimlerini kaydet
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Seçenekler
 STR_02C5_DIFFICULTY_SETTINGS                                    :Zorluk Ayarları
 STR_02C7_CONFIG_PATCHES                                         :Yamaları Düzenle
@@ -780,16 +779,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Tam ha
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Tam detay
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparan binalar
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparan istasyon tabelaları
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Arazi bilgisi
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Konsol Aç/Kapa
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ekran Görüntüsü (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Dev Ekran Görüntüsü (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' Hakkında
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Kapalı
 STR_02DA_ON                                                     :{BLACK}Açık
@@ -846,7 +845,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}'tropik'
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}'oyuncak' yer stilini seç
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Yeni bir fabrika aç
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Fabrika Listesi
 STR_0313_FUND_NEW_INDUSTRY                                      :Yeni fabrika aç
 ############ range ends here
@@ -892,7 +891,7 @@ STR_TOWNNAME_DANISH                                             :Danimarkaca
 STR_TOWNNAME_TURKISH                                            :Türkçe
 STR_TOWNNAME_ITALIAN                                            :Italyanca
 STR_TOWNNAME_CATALAN                                            :Katalanca
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Sterlin (£)
 STR_CURR_USD                                                    :Dolar ($)
@@ -1414,6 +1413,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Oyuncu l
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Network aygıtı bulunamadı veya ENABLE_NETWORK olmadan derlendi
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Network oyunu bulunamadı
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Sunucu isteğe cevap vermedi
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} NewGRF uyuşmazlığı yüzünden bağlanılamadı
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Network-Oyunu senkronizasyonu başarısız
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Network-Oyunu bağlatısı düştü
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kayıtlı oyun yüklenemedi
@@ -1435,6 +1435,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :desync hatası
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :harita yüklenemiyor
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :bağlantı kaybedildi
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokol hatası
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF uyuşmazlığı
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :izin Verilmedi
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ilginç paket alındı
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :yanlış düzeltme
@@ -1855,11 +1856,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Balon Yapıcıs
 STR_4825_TOFFEE_QUARRY                                          :Bonbon Madeni
 STR_4826_SUGAR_MINE                                             :Şeker Madeni
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}İstenen: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}İstenenler: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}İstenenler: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Geçen ayki üretim:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} (%{COMMA} tasindi)
@@ -1932,8 +1933,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Burası 
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...zaten senin!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :İsimsiz
@@ -1976,7 +1977,7 @@ STR_SV_STNAME_LOWER                                             :Asağı {STRING
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Ormanı
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Zorluk seviyesi

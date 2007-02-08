@@ -1,6 +1,6 @@
 ##name Finnish
 ##ownname Suomi
-##isocode fi_FI.UTF-8
+##isocode fi_FI
 ##plural 0
 
 ##id 0x0000
@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Uusi pel
 STR_0141_LOAD_GAME                                              :{BLACK}Lataa peli
 STR_SINGLE_PLAYER                                               :{BLACK}Yksinpeli
 STR_MULTIPLAYER                                                 :{BLACK}Moninpeli
+STR_SCENARIO_EDITOR                                             :{BLACK}Maisemaeditori
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -343,7 +344,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Liikevoitto
 STR_0155_INCOME_GRAPH                                           :Tulot
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Kuljetettu rahti
@@ -352,7 +353,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Yhtiön arvo
 STR_0159_CARGO_PAYMENT_RATES                                    :Rahtimaksutaksat
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Yhtiökilpataulukko
 STR_PERFORMANCE_DETAIL_MENU                                     :Suoritearviointi
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Tietoa OpenTTD:stä
 STR_015C_SAVE_GAME                                              :Tallenna peli
@@ -394,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Rahtikapasiteet
 STR_NO_WAITING_CARGO                                            :{BLACK}Minkäänlaista lastia ei ole odottamassa
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Valitse kaikki laitteet
 STR_SELECT_ALL_TYPES                                            :{BLACK}Valitse kaikki lastityypit (myös odottava lasti)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Käytettävissä olevat junat
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Käytettävissä olevat ajoneuvot
+STR_AVAILABLE_SHIPS                                             :{BLACK}Käytettävissä olevat laivat
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Käytettävissä olevat ilma-alukset
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Näytä lista mahdollisista moottorimalleista tälle kulkuneuvolle.
 STR_MANAGE_LIST                                                 :{BLACK}Muokkaa listaa
 STR_MANAGE_LIST_TIP                                             :{BLACK}Ohjaa kaikkia listan ajoneuvoja
@@ -489,7 +494,7 @@ STR_01A9_NONE                                                   :Ei mitään
 STR_01AA_NAME                                                   :{BLACK}Nimi
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
 STR_01AE_3RD                                                    :3.
@@ -521,7 +526,7 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -609,22 +614,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} saavuttaa arvon '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} yhtiöstä {COMPANY} saavuttaa arvon '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Luo skenaario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Skenaariomuokkain
 STR_0223_LAND_GENERATION                                        :{WHITE}Maanrakennus
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Satunnainen maa
-STR_0227_RESET_LAND                                             :{BLACK}Nollaa maa
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Suurenna madallettavan/korotettavan maa-alueen kokoa.
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Pienennä madallettavan/korotettavan maa-alueen kokoa.
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Luo satunnainen maa
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nollaa maasto
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nollaa maasto
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Käytä korkeuskarttaa
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Käytä korkeuskarttaa
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Nollataanko maasto?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Luo maasto
 STR_022F_TOWN_GENERATION                                        :{BLACK}Luo kaupunkeja
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Luo teollisuutta
@@ -766,7 +765,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Liikenne
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Tallenna omat liikennevälineiden mallien nimet levylle.
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Pelin asetukset
 STR_02C5_DIFFICULTY_SETTINGS                                    :Vaikeusasetukset
 STR_02C7_CONFIG_PATCHES                                         :Muokkaa paikkauksia
@@ -780,16 +779,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Täysi
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Kaikki yksityiskohdat
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Läpinäkyvät rakennukset
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Läpinäkyvät asemakyltit
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Maa-alueen tiedot
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Konsoli
 STR_02D7_SCREENSHOT_CTRL_S                                      :Kuvakaappaus (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Valtava kuvakaapp. (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Tietoja "OpenTTD":stä
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}pois
 STR_02DA_ON                                                     :{BLACK}päällä
@@ -846,7 +845,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Valitse 
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Valitse 'lelumaan' ilmasto.
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Rahoita uuden teollisuuden rakentamista.
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Teollisuushakemisto
 STR_0313_FUND_NEW_INDUSTRY                                      :Rakenna uutta teollisuutta
 ############ range ends here
@@ -892,7 +891,7 @@ STR_TOWNNAME_DANISH                                             :Tanskalainen
 STR_TOWNNAME_TURKISH                                            :turkkilainen
 STR_TOWNNAME_ITALIAN                                            :Italialainen
 STR_TOWNNAME_CATALAN                                            :Katalonialainen
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Punta (£)
 STR_CURR_USD                                                    :Dollari ($)
@@ -1855,11 +1854,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Kuplageneraatto
 STR_4825_TOFFEE_QUARRY                                          :Toffeelouhos
 STR_4826_SUGAR_MINE                                             :Sokerikaivos
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Tarvitsee: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Tarvitsee: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Tarvitsee: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Tuotto viime kuussa:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}{NBSP}% kuljetettu)
@@ -1932,8 +1931,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Maa-alue
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...omistat sen jo!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Nimetön
@@ -1976,7 +1975,7 @@ STR_SV_STNAME_LOWER                                             :Ala-{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING}, helikopterikenttä
 STR_SV_STNAME_FOREST                                            :{STRING}, metsä
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Vaikeusaste

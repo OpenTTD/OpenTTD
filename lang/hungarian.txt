@@ -1,6 +1,6 @@
 ##name Hungarian
 ##ownname Magyar
-##isocode hu_HU.UTF-8
+##isocode hu_HU
 ##plural 1
 ##case t ba
 
@@ -361,6 +361,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Új ját
 STR_0141_LOAD_GAME                                              :{BLACK}Játék betöltése
 STR_SINGLE_PLAYER                                               :{BLACK}Egyjátékos
 STR_MULTIPLAYER                                                 :{BLACK}Hálózati játék
+STR_SCENARIO_EDITOR                                             :{BLACK}Pályaszerkesztő
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -409,7 +410,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} 9.81*10³ N
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Működési nyereség grafikon
 STR_0155_INCOME_GRAPH                                           :Jövedelem grafikon
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Elszállított rakomány grafikon
@@ -418,7 +419,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Vállalat ért�
 STR_0159_CARGO_PAYMENT_RATES                                    :Rakományok szállítási díja
 STR_015A_COMPANY_LEAGUE_TABLE                                   :A cégek helyezése
 STR_PERFORMANCE_DETAIL_MENU                                     :Teljesítményértékelések részletezése
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD
 STR_015C_SAVE_GAME                                              :Játék mentése
@@ -460,6 +461,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Teherkapacitás
 STR_NO_WAITING_CARGO                                            :{BLACK}Semmilyen áru nem várakozik
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Minden szállítóegység kiválasztása
 STR_SELECT_ALL_TYPES                                            :{BLACK}Minden rakománytípus mutatása (beleértve ha nincs várakozó rakomány)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Elérhető vonatok
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Elérhető közúti járművek
+STR_AVAILABLE_SHIPS                                             :{BLACK}Elérhető hajók
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Elérhető repülők
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Tekintsd meg az ehhez a járműtípushoz választható mozdonyok listáját
 STR_MANAGE_LIST                                                 :{BLACK}Lista kezelése
 STR_MANAGE_LIST_TIP                                             :{BLACK}A listán szereplő járműveknek utasítás küldése
@@ -555,7 +560,7 @@ STR_01A9_NONE                                                   :Nincs
 STR_01AA_NAME                                                   :{BLACK}Név
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
 STR_01AE_3RD                                                    :3.
@@ -587,7 +592,7 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -675,22 +680,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} elérte a '{STRING}' rangot!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} - {COMPANY} elérte a '{STRING}' rangot!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Saját pálya készítése
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}pályaszerkesztő
 STR_0223_LAND_GENERATION                                        :{WHITE}Táj szerkesztése
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Véletlenszerű táj
-STR_0227_RESET_LAND                                             :{BLACK}Táj törlése
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Az emelendő/süllyesztendő földterület növelése
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Az emelendő/süllyesztendő földterület csökkentése
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Véletlenszerű táj készítése
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}A táj törlése
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Táj törlése
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Magasságtérkép használata
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Magasságtérkép használata
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Biztosan le akarod törölni az egész tájat?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Táj szerkesztése
 STR_022F_TOWN_GENERATION                                        :{BLACK}Városkészítés
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Gazdasági épület készítése
@@ -832,7 +831,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}A járm�
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}A saját jármű-márkanevek elmentése lemezre
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Beállítások
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nehézségi beállítások
 STR_02C7_CONFIG_PATCHES                                         :Foltok beállítása
@@ -846,16 +845,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Teljes
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Minden részlet
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Átlátszó épületek
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Állomásnevek keret nélkül
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Terület-információ
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Átváltás Konzolra
 STR_02D7_SCREENSHOT_CTRL_S                                      :Képmentés (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Óriás képmentés (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Az  'OpenTTD'-ről
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Ki
 STR_02DA_ON                                                     :{BLACK}Be
@@ -912,7 +911,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Szubtró
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Játékvilág táj kiválasztása
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Gazdasági épület építése
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Gazdasági épületek listája
 STR_0313_FUND_NEW_INDUSTRY                                      :Új gazdasági épület építése
 ############ range ends here
@@ -958,7 +957,7 @@ STR_TOWNNAME_DANISH                                             :Dán
 STR_TOWNNAME_TURKISH                                            :Török
 STR_TOWNNAME_ITALIAN                                            :Olasz
 STR_TOWNNAME_CATALAN                                            :Katalán
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Font (£)
 STR_CURR_USD                                                    :Dollár ($)
@@ -1480,6 +1479,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Kliens l
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nem található a hálózati csatoló, vagy nincs hálózati támogatás (ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nem található semmilyen hálózati játék
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} A szerver nem reagált a kérésre
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} NewGRF eltérés(ek) miatt nem sikerült kapcsolódni
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Hálózat - Játék szinkronizáció sikertelen.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Hálózat - Játék kapcsolat elveszett.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nem sikerült a szerver játékmentés betöltése.
@@ -1501,6 +1501,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :szinkronizálá
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :térkép betöltési hiba
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :elveszett a kapcsolat
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokoll hiba
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF eltérés(ek)
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nem engedélyezett
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ismeretlen csomag érkezett
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :rossz verzió
@@ -1958,11 +1959,11 @@ STR_4825_TOFFEE_QUARRY.t                                        :tejkaramella fe
 STR_4826_SUGAR_MINE                                             :cukorbánya
 STR_4826_SUGAR_MINE.t                                           :cukorbányát
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Felhasznál: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Felhasznál: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Felhasznál: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Múlt havi termelés:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% elszállítva)
@@ -2035,8 +2036,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Nem vehe
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...már a tiéd!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Névtelen
@@ -2079,7 +2080,7 @@ STR_SV_STNAME_LOWER                                             :{STRING}-alsó
 STR_SV_STNAME_HELIPORT                                          :{STRING}i helikopter-leszálló
 STR_SV_STNAME_FOREST                                            :{STRING}i erdőség
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Nehézségi szint

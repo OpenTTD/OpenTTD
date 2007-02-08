@@ -1,6 +1,6 @@
 ##name German
 ##ownname Deutsch
-##isocode de_DE.UTF-8
+##isocode de_DE
 ##plural 0
 ##gender m w n
 
@@ -296,6 +296,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Neues Sp
 STR_0141_LOAD_GAME                                              :{BLACK}Spiel laden
 STR_SINGLE_PLAYER                                               :{BLACK}Einzelspieler
 STR_MULTIPLAYER                                                 :{BLACK}Mehrspieler
+STR_SCENARIO_EDITOR                                             :{BLACK}Szenario Editor
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -344,7 +345,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA} t Zugkraft
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Betriebsgewinndiagramm
 STR_0155_INCOME_GRAPH                                           :Einkommensdiagramm
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Frachtlieferungsdiagramm
@@ -353,7 +354,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Firmenwertdiagr
 STR_0159_CARGO_PAYMENT_RATES                                    :Frachtratendiagramm
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Firmentabelle
 STR_PERFORMANCE_DETAIL_MENU                                     :Leistungsaufschlüsselung
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD
 STR_015C_SAVE_GAME                                              :Spiel speichern
@@ -395,6 +396,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Frachtkapazitä
 STR_NO_WAITING_CARGO                                            :{BLACK}Keine Fracht wartet
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Wähle alle Anlagen
 STR_SELECT_ALL_TYPES                                            :{BLACK}Wähle alle Frachtarten (einschließlich ohne wartender Fracht)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Verfügbare Züge
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Verfügbare Fahrzeuge
+STR_AVAILABLE_SHIPS                                             :{BLACK}Verfügbare Schiffe
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Verfügbare Flugzeuge
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zeige eine Liste von verfügbaren Fahrzeugen für diesen Fahrzeugtyp
 STR_MANAGE_LIST                                                 :{BLACK}Verwalte die Liste
 STR_MANAGE_LIST_TIP                                             :{BLACK}Aufträge an alle Fahrzeuge in der Liste verschicken
@@ -490,7 +495,7 @@ STR_01A9_NONE                                                   :Keine
 STR_01AA_NAME                                                   :{BLACK}Name
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
 STR_01AE_3RD                                                    :3.
@@ -522,7 +527,7 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -610,22 +615,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} erreicht '{STRING}' Status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} von {COMPANY} erreicht '{STRING}' Status!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Szenario erstellen
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Szenario bearbeiten
 STR_0223_LAND_GENERATION                                        :{WHITE}Land erstellen
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Zufälliges Land
-STR_0227_RESET_LAND                                             :{BLACK}Land wiederherstellen
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Landfläche zum Anheben / Absenken vergrößern
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Landfläche zum Anheben / Absenken verkleinern
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Erzeuge Land durch Zufall
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Landfläche wiederherstellen
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Landfläche wiederherstellen
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Reliefkarte nutzen
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Reliefkarte nutzen
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Bist du sicher, dass die Landschaft zurückgesetzt werden soll?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landfläche erzeugen
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt errichten
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrie errichten
@@ -767,7 +766,7 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Auswahl 
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Eigene Namen abspeichern
 
 STR_CHECKMARK                                                   :{CHECKMARK}
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Spieleinstellungen
 STR_02C5_DIFFICULTY_SETTINGS                                    :Schwierigkeitsgrad
 STR_02C7_CONFIG_PATCHES                                         :Einstellungen der Patches
@@ -781,16 +780,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Vollst
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Vollständige Detailansicht
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Durchsichtige Gebäude
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Durchsichtige Stationsnamen
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Gebietsinformation
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Konsole öffnen/schließen
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Strg-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Riesiger Screenshot (Strg-G)
 STR_02D9_ABOUT_OPENTTD                                          :Über 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}aus
 STR_02DA_ON                                                     :{BLACK}an
@@ -847,7 +846,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}'subtrop
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}'fantastische' Landschaft auswählen
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Errichtung und Finanzierung einer neuen Industrie
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Industrieverzeichnis
 STR_0313_FUND_NEW_INDUSTRY                                      :Neue Industrie finanzieren
 ############ range ends here
@@ -893,35 +892,35 @@ STR_TOWNNAME_DANISH                                             :Dänisch
 STR_TOWNNAME_TURKISH                                            :Türkisch
 STR_TOWNNAME_ITALIAN                                            :italienisch
 STR_TOWNNAME_CATALAN                                            :Katalanisch
-############ end of	townname region
+############ end of townname region
 
-STR_CURR_GBP                                                    :Pfund (£)
-STR_CURR_USD                                                    :Dollar ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Yen (¥)
+STR_CURR_GBP                                                    :Engl. Pfund (GBP)
+STR_CURR_USD                                                    :US-Dollar (USD)
+STR_CURR_EUR                                                    :Euro (EUR)
+STR_CURR_YEN                                                    :Jap. Yen (JPY)
 STR_CURR_ATS                                                    :Österreich. Schilling (ATS)
-STR_CURR_BEF                                                    :Belgische Franc (BEF)
+STR_CURR_BEF                                                    :Belgische Francs (BEF)
 STR_CURR_CHF                                                    :Schweizer Franken (CHF)
 STR_CURR_CZK                                                    :Tschechische Kronen (CZK)
 STR_CURR_DEM                                                    :Deutsche Mark (DEM)
 STR_CURR_DKK                                                    :Dänische Kronen (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Finnmark (FIM)
-STR_CURR_FRF                                                    :Franc (FRF)
+STR_CURR_ESP                                                    :Span. Peseten (ESP)
+STR_CURR_FIM                                                    :Finnische Mark(FIM)
+STR_CURR_FRF                                                    :Frz. Francs (FRF)
 STR_CURR_GRD                                                    :Griech. Drachmen (GRD)
 STR_CURR_HUF                                                    :Ungarische Forint (HUF)
-STR_CURR_ISK                                                    :Isländische Krona (ISK)
-STR_CURR_ITL                                                    :Italienische Lira (ITL)
+STR_CURR_ISK                                                    :Isländische Kronen (ISK)
+STR_CURR_ITL                                                    :Italienische Lire (ITL)
 STR_CURR_NLG                                                    :Niederländ. Gulden (NLG)
 STR_CURR_NOK                                                    :Norwegische Kronen (NOK)
 STR_CURR_PLN                                                    :Polnische Zloty (PLN)
-STR_CURR_ROL                                                    :RumÃ€nische Lei (ROL)
+STR_CURR_ROL                                                    :Rumänische Lei (ROL)
 STR_CURR_RUR                                                    :Russische Rubel (RUR)
-STR_CURR_SIT                                                    :Slovenischer Tolar (SIT)
+STR_CURR_SIT                                                    :Slovenische Taler (SIT)
 STR_CURR_SEK                                                    :Schwedische Kronen (SEK)
-STR_CURR_YTL                                                    :türkische Lira (YTL)
-STR_CURR_SKK                                                    :Slowakische Krone
-STR_CURR_BRR                                                    :Brasilianischer Real
+STR_CURR_YTL                                                    :Türkische Lire (YTL)
+STR_CURR_SKK                                                    :Slowakische Kronen (SKK)
+STR_CURR_BRR                                                    :Brasilianische Reais (BRL)
 
 STR_CURR_CUSTOM                                                 :Eigene...
 
@@ -1415,6 +1414,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Teilnehm
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Keine Netzwerkschnittstellen gefunden oder ohne ENABLE_NETWORK kompiliert
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Keine Netzwerkspiele gefunden
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Der Server antwortete nicht auf die Anfrage
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Konnte Verbindung nicht herstellen, da die NewGRF Versionen nicht übereinstimmen.
 STR_NETWORK_ERR_DESYNC                                          :{WHITE}Synchronisation des Netzwerkspiels fehlgeschlagen
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Verbindung zum Netzwerkspiel verloren
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Spielstand konnte nicht vom Server geladen werden
@@ -1436,6 +1436,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :Synchronisation
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :Karte konnte nicht geladen werden.
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :Verbindung verloren
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :Protokollfehler
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF Versionen stimmen nicht überein
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nicht authorisiert
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :Unerwartetes Paket empfangen
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :Falsche Version
@@ -1856,11 +1857,11 @@ STR_4824_BUBBLE_GENERATOR                                       :{G=m}Luftblasen
 STR_4825_TOFFEE_QUARRY                                          :{G=w}Karamellgrube
 STR_4826_SUGAR_MINE                                             :{G=w}Zuckermine
 
-############ range for requires	starts
+############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Benötigt: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Benötigt: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Benötigt: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
+############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion im letzten Monat:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% befördert)
@@ -1933,8 +1934,8 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Das Land
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...Sie besitzen es bereits!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Unbenannt
@@ -1977,7 +1978,7 @@ STR_SV_STNAME_LOWER                                             :Unter-{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Wald
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Schwierigkeitsgrad
@@ -2770,11 +2771,11 @@ SERVICE_AT_SHIP_DEPOT                                           :Wartung in der 
 STR_A000_AIRPORTS                                               :{WHITE}Flughäfen
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Flughafen kann hier nicht gebaut werden...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Flugzeughangar
-STR_A003_NEW_AIRCRAFT                                           :{BLACK}Neues Flugzeug
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}Neue Flugzeuge
 STR_CLONE_AIRCRAFT                                              :{BLACK}Flugzeug duplizieren
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Baut eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_A005_NEW_AIRCRAFT                                           :{WHITE}Neues Flugzeug
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}Neue Flugzeuge
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Flugzeug bauen
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kann das Flugzeug nicht bauen...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Flugzeug{P "" e}

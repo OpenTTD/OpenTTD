@@ -1,6 +1,6 @@
 ##name Latvian
 ##ownname Latviešu valoda
-##isocode lv_LV.UTF-8
+##isocode lv_LV
 ##plural 3
 
 ##id 0x0000
@@ -306,7 +306,7 @@ STR_0151_MAP_OF_WORLD                                           :Pasaules karte
 STR_0152_TOWN_DIRECTORY                                         :Pilse'tu saraksts
 STR_0153_SUBSIDIES                                              :Subsi'dijas
 
-############ range for menu	starts
+############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Pana'kumu grafiks
 STR_0155_INCOME_GRAPH                                           :Iena'kumu grafiks
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Transporte'ta's kravas grafiks
@@ -315,7 +315,7 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Kompa'nijas ve'
 STR_0159_CARGO_PAYMENT_RATES                                    :Kravas apmaksas cenas
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Kompa'nijas li'gu tabula
 STR_PERFORMANCE_DETAIL_MENU                                     :Detalize'ti uzn'e'me'jdarbi'bas rezulta'ti
-############ range for menu	ends
+############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Par OpenTTD
 STR_015C_SAVE_GAME                                              :Saglaba't spe'li
@@ -428,7 +428,7 @@ STR_01A9_NONE                                                   :Neviens/neviena
 STR_01AA_NAME                                                   :{BLACK}Va'rds
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
+############ range for days starts
 STR_01AC_1ST                                                    :Pirmais
 STR_01AD_2ND                                                    :Otrais
 STR_01AE_3RD                                                    :Tres'ais
@@ -460,7 +460,7 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
+############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -699,7 +699,7 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Saglaba'
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Transporta li'dzekl'u dizaina nosaukumu izve'le
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Saglaba't specia'los transporta li'dzekl'a dizaina nosaukumus
 
-############ range for menu	starts
+############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Spe'les rez'i'mi
 STR_02C5_DIFFICULTY_SETTINGS                                    :Gru'ti'bas paka'pes
 STR_02C7_CONFIG_PATCHES                                         :Konfigure't labojumus (pac'us)
@@ -713,16 +713,16 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Pilna 
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Pilnas detal'as
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Caurspi'di'gas e'kas
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Caurspidi'gas staciju zi'mes
-############ range ends	here
+############ range ends here
 
-############ range for menu	starts
+############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Zemes apgabala informa'cija
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Pa'rsle'gt konsoli
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ekra'na kopija (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Liela ekra'na kopija (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Par 'OpenTTD'
-############ range ends	here
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Nav
 STR_02DA_ON                                                     :{BLACK}Ir
@@ -777,7 +777,7 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Izve'le'
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Izve'le'ties ' rotal'u ' zemes stilu
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finanse't jaunas industrijas bu'vnieci'bu
 
-############ range for menu	starts
+############ range for menu starts
 STR_INDUSTRY_DIR                                                :Industriju saraksts
 STR_0313_FUND_NEW_INDUSTRY                                      :Finanse't jaunu industriju
 ############ range ends here
@@ -820,7 +820,7 @@ STR_TOWNNAME_ROMANIAN                                           :Ruma'nijas
 STR_TOWNNAME_CZECH                                              :C'ehijas
 STR_TOWNNAME_SWISS                                              :S'veices
 STR_TOWNNAME_DANISH                                             :Da'n'u
-############ end of	townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Ma'rcin'as (£)
 STR_CURR_USD                                                    :Dola'ri ($)
@@ -1190,8 +1190,8 @@ STR_480B_FARM                                                   :Ferma
 STR_4812_BANK                                                   :Banka
 STR_4819_FACTORY                                                :Rûpnîca
 
-############ range for requires	starts
-############ range for requires	ends
+############ range for requires starts
+############ range for requires ends
 
 
 ##id 0x5000
@@ -1203,8 +1203,8 @@ STR_500E_SUSPENSION_STEEL                                       :Vanšu, Terauda
 STR_5803_COMPANY_HEADQUARTERS                                   :Firmas Ofiss
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_TRAIN_NAME                                               :Vilciens {COMMA}
@@ -1212,7 +1212,7 @@ STR_SV_TRAIN_NAME                                               :Vilciens {COMMA
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_FOREST                                            :{STRING} Mežs
 
-############ end of	savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Saglabât
