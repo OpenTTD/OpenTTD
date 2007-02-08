@@ -19,6 +19,18 @@ Bugs for 0.5.0
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+-601	airports can't get flooded when they have planes in them
+-599	reloaded game lost company passwords
+-596	Cloning Maglev in UKRS forgets Mail refit
+-595	Sort by max cargo rating does not sort correctly
+-594	terraforming wipes out canals
+-591	Autorenew fails under certain conditions
+-585	Huge losses with transfer
+-583	Fatal fault or crash during startup
+-578	No loading at my industrial centre
+-574	Open TTD overiding Power Warnings
+-571	Problems with vehicle purchase lists with NewGRFs
+-569	'Game Load Failed' when trying to open scenarios
 -559	Front-/Rear-facing engines don't line up with each other
 -553	Autorenew doesn't warn when replacement isn't available
 -546	[0.5.0 RC3] Inflation overflow
