@@ -19,12 +19,24 @@ Bugs for 0.5.0
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
--559	Front-/Rear-facing engines don't line up with each other	2007-01-17	Unconfirmed	Smoovious
--553	Autorenew doesn't warn when replacement isn't available	2007-01-14	Unconfirmed	Smoovious	Bjarni
--546	[0.5.0 RC3] Inflation overflow	2007-01-14	Unconfirmed	zlavick
--542	Assertion with Vehicle list	2007-01-12	Assigned	Johannes E. Krause	Bjarni
--540	Planes vanished when offered exclusive	2007-01-12	Waiting for user	Tony
--539	Trains can cash the same cargo multiple times	2007-01-11	Unconfirmed	Hans
+-601	airports can't get flooded when they have planes in them
+-599	reloaded game lost company passwords
+-596	Cloning Maglev in UKRS forgets Mail refit
+-595	Sort by max cargo rating does not sort correctly
+-594	terraforming wipes out canals
+-591	Autorenew fails under certain conditions
+-585	Huge losses with transfer
+-583	Fatal fault or crash during startup
+-578	No loading at my industrial centre
+-574	Open TTD overiding Power Warnings
+-571	Problems with vehicle purchase lists with NewGRFs
+-569	'Game Load Failed' when trying to open scenarios
+-559	Front-/Rear-facing engines don't line up with each other
+-553	Autorenew doesn't warn when replacement isn't available
+-546	[0.5.0 RC3] Inflation overflow
+-542	Assertion with Vehicle list
+-540	Planes vanished when offered exclusive
+-539	Trains can cash the same cargo multiple times
 -529	newairport's sprite issue
 -524	OSX sometimes (not always) fails to find free disk space
 -522	overflow on vehicle costs
