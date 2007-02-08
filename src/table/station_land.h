@@ -384,6 +384,12 @@ static const DrawTileSeqStruct _station_display_datas_81[] = {
 	TILE_SEQ_END()
 };
 
+/* Buoy, which will _always_ drown under the ship */
+static const DrawTileSeqStruct _station_display_datas_82[] = {
+	{  4,  -1,  0,  0,  0,  0, SPR_IMG_BOUY, PAL_NONE },
+	TILE_SEQ_END()
+};
+
 // control tower with concrete underground and no fence
 // concrete underground
 static const DrawTileSeqStruct _station_display_datas_085[] = {
@@ -1036,7 +1042,7 @@ static const DrawTileSprites _station_display_datas[] = {
 	{ SPR_SHORE_TILEH_6,              PAL_NONE, _station_display_datas_79 },
 	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_80 },
 	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_81 },
-	{ SPR_BUOY,                       PAL_NONE, _station_display_nothing },
+	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_82 },
 	{ SPR_AIRPORT_RUNWAY_END,         PAL_NONE, _station_display_nothing },
 	{ SPR_AIRPORT_RUNWAY_EXIT_B,      PAL_NONE, _station_display_nothing },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_085 },

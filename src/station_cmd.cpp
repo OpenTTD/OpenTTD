@@ -1977,6 +1977,9 @@ const DrawTileSprites *GetStationTileLayout(byte gfx)
 	return &_station_display_datas[gfx];
 }
 
+/* For drawing canal edges on buoys */
+extern void DrawCanalWater(TileIndex tile);
+
 static void DrawTile_Station(TileInfo *ti)
 {
 	const DrawTileSeqStruct *dtss;
@@ -2040,6 +2043,8 @@ static void DrawTile_Station(TileInfo *ti)
 	DrawGroundSprite(image, HASBIT(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
 
 	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
+
+	if (IsBuoyTile(ti->tile) && (ti->z != 0 || !IsTileOwner(ti->tile, OWNER_WATER))) DrawCanalWater(ti->tile);
 
 	foreach_draw_tile_seq(dtss, t->seq) {
 		SpriteID pal;
