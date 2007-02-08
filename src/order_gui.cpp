@@ -464,7 +464,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 				switch (ord->type) {
 					case OT_GOTO_STATION:  xy = GetStation(ord->dest)->xy ; break;
-					case OT_GOTO_DEPOT:    xy = GetDepot(ord->dest)->xy;    break;
+					case OT_GOTO_DEPOT:    xy = (v->type == VEH_Aircraft) ?  GetStation(ord->dest)->xy : GetDepot(ord->dest)->xy;    break;
 					case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->dest)->xy; break;
 					default:               xy = 0; break;
 				}
