@@ -910,11 +910,11 @@ static void ParseFile(const char *file, bool english)
 
 	_file = file;
 
-	// For each new file we parse, reset the genders.
+	/* For each new file we parse, reset the genders, and language codes */
 	_numgenders = 0;
+	_lang_name[0] = _lang_ownname[0] = _lang_isocode[0] = '\0';
 	// TODO:!! We can't reset the cases. In case the translated strings
 	// derive some strings from english....
-
 
 	in = fopen(file, "r");
 	if (in == NULL) fatal("Cannot open file");
@@ -925,6 +925,10 @@ static void ParseFile(const char *file, bool english)
 		_cur_line++;
 	}
 	fclose(in);
+
+	if (_lang_name[0] == '\0' || _lang_ownname[0] == '\0' || _lang_isocode[0] == '\0') {
+		fatal("Language must include ##name, ##ownname and ##isocode");
+	}
 }
 
 

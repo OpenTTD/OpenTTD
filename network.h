@@ -130,6 +130,7 @@ typedef struct NetworkGameList {
 	uint16 port;
 	bool online;                                    // False if the server did not respond (default status)
 	bool manually;                                  // True if the server was added manually
+	uint8 retries;
 	struct NetworkGameList *next;
 } NetworkGameList;
 

@@ -141,7 +141,7 @@ static void showhelp(void)
 		"\n"
 		"Command line options:\n"
 		"  -v drv              = Set video driver (see below)\n"
-		"  -s drv              = Set sound driver (see below)\n"
+		"  -s drv              = Set sound driver (see below) (param bufsize,hz)\n"
 		"  -m drv              = Set music driver (see below)\n"
 		"  -r res              = Set resolution (for instance 800x600)\n"
 		"  -h                  = Display this help text\n"
@@ -326,7 +326,7 @@ int ttd_main(int argc, char *argv[])
 	MyGetOptData mgo;
 	int i;
 	const char *optformat;
-	char musicdriver[16], sounddriver[16], videodriver[16];
+	char musicdriver[32], sounddriver[32], videodriver[32];
 	int resolution[2] = {0,0};
 	Year startyear = INVALID_YEAR;
 	uint generation_seed = GENERATE_NEW_SEED;
@@ -334,7 +334,7 @@ int ttd_main(int argc, char *argv[])
 	bool network   = false;
 	char *network_conn = NULL;
 
-	musicdriver[0] = sounddriver[0] = videodriver[0] = 0;
+	musicdriver[0] = sounddriver[0] = videodriver[0] = '\0';
 
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
@@ -410,10 +410,10 @@ int ttd_main(int argc, char *argv[])
 	LoadFromHighScore();
 
 	// override config?
-	if (musicdriver[0]) ttd_strlcpy(_ini_musicdriver, musicdriver, sizeof(_ini_musicdriver));
-	if (sounddriver[0]) ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
-	if (videodriver[0]) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
-	if (resolution[0]) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
+	if (musicdriver[0] != '\0') ttd_strlcpy(_ini_musicdriver, musicdriver, sizeof(_ini_musicdriver));
+	if (sounddriver[0] != '\0') ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
+	if (videodriver[0] != '\0') ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
+	if (resolution[0] != 0) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
 	if (startyear != INVALID_YEAR) _patches_newgame.starting_year = startyear;
 	if (generation_seed != GENERATE_NEW_SEED) _patches_newgame.generation_seed = generation_seed;
 
