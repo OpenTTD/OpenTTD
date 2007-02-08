@@ -123,11 +123,11 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id)
 	DEBUG(sprite, 9, "Load sprite %d", id);
 
 	if (!SpriteExists(id)) {
-		error(
-			"Tried to load non-existing sprite #%d.\n"
-			"Probable cause: Wrong/missing NewGRFs",
-			id
-		);
+		DEBUG(sprite, 1, "Tried to load non-existing sprite #%d. Probable cause: Wrong/missing NewGRFs", id);
+
+		/* SPR_IMG_QUERY is a BIG FAT RED ? */
+		id = SPR_IMG_QUERY;
+		sc = GetSpriteCache(SPR_IMG_QUERY);
 	}
 
 	FioSeekToFile(sc->file_pos);
