@@ -2234,7 +2234,14 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
 
 		case TRANSPORT_WATER:
 			// buoy is coded as a station, it is always on open water
-			if (IsBuoy_(tile)) return TRACK_BIT_ALL * 0x101;
+			if (IsBuoy_(tile)) {
+				TrackBits ts = TRACK_BIT_ALL;
+				// remove tracks that connect NE map edge
+				if (TileX(tile) == 0) ts &= ~(TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT);
+				// remove tracks that connect NW map edge
+				if (TileY(tile) == 0) ts &= ~(TRACK_BIT_Y | TRACK_BIT_LEFT | TRACK_BIT_UPPER);
+				return ts * 0x101;
+			}
 			break;
 
 		case TRANSPORT_ROAD:
@@ -3160,9 +3167,9 @@ const ChunkHandler _station_chunk_handlers[] = {
 };
 
 
-static inline bool PtInRectXY(Rect *r, int x, int y)
+bool PtInExtendedRect(Rect *r, int x, int y, int distance)
 {
-	return (r->left <= x && x <= r->right && r->top <= y && y <= r->bottom);
+	return (r->left - distance <= x && x <= r->right + distance && r->top - distance <= y && y <= r->bottom + distance);
 }
 
 static void StationRect_Init(Station *st)
@@ -3185,7 +3192,7 @@ static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, StationRectMo
 		// we are adding the first station tile
 		r->left = r->right = x;
 		r->top = r->bottom = y;
-	} else if (!PtInRectXY(r, x, y)) {
+	} else if (!PtInExtendedRect(r, x, y, 0)) {
 		// current rect is not empty and new point is outside this rect
 		// make new spread-out rectangle
 		Rect new_rect = {min(x, r->left), min(y, r->top), max(x, r->right), max(y, r->bottom)};
@@ -3276,8 +3283,8 @@ static bool StationRect_AfterRemoveTile(Station *st, TileIndex tile)
 static bool StationRect_AfterRemoveRect(Station *st, TileIndex tile, int w, int h)
 {
 	bool empty;
-	assert(PtInRectXY(&st->rect, TileX(tile), TileY(tile)));
-	assert(PtInRectXY(&st->rect, TileX(tile) + w - 1, TileY(tile) + h - 1));
+	assert(PtInExtendedRect(&st->rect, TileX(tile), TileY(tile), 0));
+	assert(PtInExtendedRect(&st->rect, TileX(tile) + w - 1, TileY(tile) + h - 1, 0));
 	empty = StationRect_AfterRemoveTile(st, tile);
 	if (w != 1 || h != 1) empty = empty || StationRect_AfterRemoveTile(st, TILE_ADDXY(tile, w - 1, h - 1));
 	return empty;

@@ -228,6 +228,7 @@ RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type);
 uint GetNumRoadStops(const Station* st, RoadStopType type);
 RoadStop * AllocateRoadStop( void );
 void ClearSlot(Vehicle *v);
+bool PtInExtendedRect(Rect *r, int x, int y, int distance);
 
 static inline bool IsBuoy(const Station* st)
 {

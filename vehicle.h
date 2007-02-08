@@ -329,7 +329,7 @@ int CheckTrainStoppedInDepot(const Vehicle *v);
 
 bool VehicleNeedsService(const Vehicle *v);
 
-uint GenerateVehicleSortList(const Vehicle*** sort_list, uint16 *length_of_array, byte type, PlayerID owner, StationID station, OrderID order, uint16 depot_airport_index, uint16 window_type);
+uint GenerateVehicleSortList(const Vehicle*** sort_list, uint16 *length_of_array, byte type, PlayerID owner, StationID station, OrderID order, uint32 depot_airport_index, uint16 window_type);
 void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count);
 int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
 bool IsVehicleInDepot(const Vehicle *v);
@@ -401,6 +401,18 @@ static inline void DeleteVehicle(Vehicle *v)
 {
 	DestroyVehicle(v);
 	v->type = 0;
+}
+
+static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
+{
+	switch (v->type) {
+		case VEH_Train:
+		case VEH_Road:
+		case VEH_Ship:
+		case VEH_Aircraft:
+			return true;
+	}
+	return false;
 }
 
 #define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (IsValidVehicle(v))

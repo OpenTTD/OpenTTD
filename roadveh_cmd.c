@@ -1330,12 +1330,14 @@ static void RoadVehController(Vehicle *v)
 	BeginVehicleMove(v);
 
 	if (v->u.road.state == 255) {
+		const Vehicle *u;
 		GetNewVehiclePosResult gp;
 
 		GetNewVehiclePos(v, &gp);
 
-		if (RoadVehFindCloseTo(v, gp.x, gp.y, v->direction) != NULL) {
-			v->cur_speed = 0;
+		u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
+		if (u != NULL && u->cur_speed < v->cur_speed) {
+			v->cur_speed = u->cur_speed;
 			return;
 		}
 
@@ -1666,7 +1668,12 @@ void OnNewDay_RoadVeh(Vehicle *v)
 		RoadStop* best = NULL;
 
 		if (rs != NULL) {
-			if (DistanceManhattan(v->tile, st->xy) < 16) {
+			/* We try to obtain a slot if:
+			 * 1) we're reasonably close to the primary road stop
+			 * or
+			 * 2) we're somewhere close to the station rectangle
+			 */
+			if (DistanceManhattan(v->tile, rs->xy) < 16 || PtInExtendedRect(&st->rect, TileX(v->tile), TileY(v->tile), 2)) {
 				uint dist, badness;
 				uint minbadness = UINT_MAX;
 
