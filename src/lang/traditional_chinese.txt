@@ -46,7 +46,7 @@ STR_0026_CANDY                                                  :糖果
 STR_0027_COLA                                                   :可樂
 STR_0028_COTTON_CANDY                                           :棉花糖
 STR_0029_BUBBLES                                                :泡泡
-STR_002A_TOFFEE                                                 :乳脂糖
+STR_002A_TOFFEE                                                 :太妃糖
 STR_002B_BATTERIES                                              :電池
 STR_002C_PLASTIC                                                :塑膠
 STR_002D_FIZZY_DRINKS                                           :汽水
@@ -210,12 +210,12 @@ STR_00F1_200M                                                   :{BLACK}{TINYFON
 STR_00F2_300M                                                   :{BLACK}{TINYFONT}300米
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400米
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500米
-STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}路軌列車
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}列車
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}公車/貨車
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}輪船
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}飛機
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}運輸路線
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}煤礦
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}煤礦場
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}發電廠
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}森林
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}鋸木廠
@@ -246,11 +246,11 @@ STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFON
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}塑膠噴泉
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}汽水工廠
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}泡泡生產器
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}奶糖採礦場
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}砂糖礦
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}太妃糖採礦場
+STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}砂糖礦場
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}列車站
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}貨車裝卸站
-STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}巴士站
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}公車站
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}機場/直昇機場
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}碼頭
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}泥地
@@ -270,7 +270,7 @@ STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}取消
 STR_012F_OK                                                     :{BLACK}確定
 STR_0130_RENAME                                                 :{BLACK}更名
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}已定議過多名稱
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}已定義過多名稱
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}所選名稱已被使用
 
 STR_0133_WINDOWS                                                :視窗
@@ -282,10 +282,10 @@ STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
 STR_013B_OWNED_BY                                               :{WHITE}...已被{STRING}擁有
-STR_013C_CARGO                                                  :{BLACK}貨櫃
+STR_013C_CARGO                                                  :{BLACK}貨物
 STR_013D_INFORMATION                                            :{BLACK}資訊
 STR_013E_CAPACITIES                                             :{BLACK}載量
-STR_013E_TOTAL_CARGO                                            :{BLACK}總貨櫃數
+STR_013E_TOTAL_CARGO                                            :{BLACK}總貨物數
 STR_013F_CAPACITY                                               :{BLACK}總載量: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}載量: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}此列車的總載量:
@@ -309,7 +309,7 @@ STR_0148_GAME_OPTIONS                                           :{BLACK}遊戲�
 
 STR_0150_SOMEONE                                                :某人{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :世界地圖
-STR_0152_TOWN_DIRECTORY                                         :市鎮指南
+STR_0152_TOWN_DIRECTORY                                         :市鎮目錄
 STR_0153_SUBSIDIES                                              :補貼
 
 STR_UNITS_IMPERIAL                                              :英制
@@ -345,12 +345,12 @@ STR_UNITS_FORCE_METRIC                                          :{COMMA} 噸力
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :營運利益報表
-STR_0155_INCOME_GRAPH                                           :收入報表
-STR_0156_DELIVERED_CARGO_GRAPH                                  :已運載量報表
-STR_0157_PERFORMANCE_HISTORY_GRAPH                              :業績歷史報表
-STR_0158_COMPANY_VALUE_GRAPH                                    :公司市值報表
-STR_0159_CARGO_PAYMENT_RATES                                    :貨物收費報表
+STR_0154_OPERATING_PROFIT_GRAPH                                 :營運利益圖表
+STR_0155_INCOME_GRAPH                                           :收入圖表
+STR_0156_DELIVERED_CARGO_GRAPH                                  :已運載量圖表
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :業績歷史圖表
+STR_0158_COMPANY_VALUE_GRAPH                                    :公司市值圖表
+STR_0159_CARGO_PAYMENT_RATES                                    :貨物收費圖表
 STR_015A_COMPANY_LEAGUE_TABLE                                   :公司排行榜
 STR_PERFORMANCE_DETAIL_MENU                                     :詳細營運數據
 ############ range for menu ends
@@ -429,22 +429,22 @@ STR_016F                                                        :{TINYFONT}{STRI
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}暫停遊戲
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}儲存遊戲, 於棄遊戲, 離開
-STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}展示公司各車站列表
-STR_0174_DISPLAY_MAP                                            :{BLACK}展示地圖
-STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}展示地圖和市鎮指南
-STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}展示市鎮指南
-STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}展示公司財務資訊
-STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}展示公司一般資訊
-STR_0179_DISPLAY_GRAPHS                                         :{BLACK}展示圖表
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}展示公司排行榜
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}展示公司擁有的列車
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}展示公司擁有的巴士與貨車
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}展示公司擁有的輪船
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}展示公司擁有的飛機
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司各車站列表
+STR_0174_DISPLAY_MAP                                            :{BLACK}顯示地圖
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}顯示地圖和市鎮目錄
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}顯示市鎮目錄
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}顯示公司財務資訊
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}顯示公司一般資訊
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}顯示圖表
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}顯示公司排行榜
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的列車
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的巴士與貨車
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的輪船
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的飛機
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}拉近視域
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}拉遠視域
-STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}建造路軌
-STR_0182_BUILD_ROADS                                            :{BLACK}建造道路
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}鋪設路軌
+STR_0182_BUILD_ROADS                                            :{BLACK}鋪設道路
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}興建碼頭設施
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}興建機場設施
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}植樹
@@ -479,7 +479,7 @@ STR_AGE_RED                                                     :{RED}{COMMA} �
 
 STR_019C_ROAD_VEHICLE                                           :巴士/貨車
 STR_019D_AIRCRAFT                                               :飛機
-STR_019E_SHIP                                                   :輪船
+STR_019E_SHIP                                                   :船舶
 STR_019F_TRAIN                                                  :列車
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA}已變得殘舊
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA}已變得非常殘舊
@@ -583,7 +583,7 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :上一次訊息或新聞報告
 STR_0201_MESSAGE_SETTINGS                                       :訊息設定
 STR_MESSAGE_HISTORY_MENU                                        :訊息紀錄
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}展示「上一次訊息或新聞報告」、「展示訊息」選項
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}展示「上一次訊息或新聞報告」、「顯示訊息」選項
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}訊息選項
 STR_0205_MESSAGE_TYPES                                          :{BLACK}訊息種類:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}首個交通工具已到達玩家的車站
@@ -591,8 +591,8 @@ STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}首個�
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}意外 / 災難
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}公司資訊
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}經濟氣候變化
-STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}給玩家的運載工具的建議或資訊
-STR_020C_NEW_VEHICLES                                           :{YELLOW}新運載工具
+STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}給玩家的載具的建議或資訊
+STR_020C_NEW_VEHICLES                                           :{YELLOW}新載具
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}接收貨物的改動
 STR_020E_SUBSIDIES                                              :{YELLOW}資助
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}一般資訊
@@ -645,7 +645,7 @@ STR_023C_EXPAND                                                 :{BLACK}擴展
 STR_023D_RANDOM_TOWN                                            :{BLACK}隨機市鎮
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}隨機選址建立市鎮
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}產生工業
-STR_0240_COAL_MINE                                              :{BLACK}煤礦
+STR_0240_COAL_MINE                                              :{BLACK}煤礦場
 STR_0241_POWER_STATION                                          :{BLACK}發電廠
 STR_0242_SAWMILL                                                :{BLACK}鋸木場
 STR_0243_FOREST                                                 :{BLACK}森林
@@ -654,20 +654,20 @@ STR_0245_OIL_RIG                                                :{BLACK}鑽油�
 STR_0246_FACTORY                                                :{BLACK}工廠
 STR_0247_STEEL_MILL                                             :{BLACK}鋼廠
 STR_0248_FARM                                                   :{BLACK}農場
-STR_0249_IRON_ORE_MINE                                          :{BLACK}鐵礦
+STR_0249_IRON_ORE_MINE                                          :{BLACK}鐵礦場
 STR_024A_OIL_WELLS                                              :{BLACK}油井
 STR_024B_BANK                                                   :{BLACK}銀行
 STR_024C_PAPER_MILL                                             :{BLACK}造紙廠
 STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}食物加工廠
 STR_024E_PRINTING_WORKS                                         :{BLACK}印刷廠
-STR_024F_GOLD_MINE                                              :{BLACK}金礦
-STR_0250_LUMBER_MILL                                            :{BLACK}Lumber Mill
+STR_024F_GOLD_MINE                                              :{BLACK}金礦場
+STR_0250_LUMBER_MILL                                            :{BLACK}伐木場
 STR_0251_FRUIT_PLANTATION                                       :{BLACK}水果莊園
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}橡膠莊園
 STR_0253_WATER_SUPPLY                                           :{BLACK}供水站
 STR_0254_WATER_TOWER                                            :{BLACK}水塔
-STR_0255_DIAMOND_MINE                                           :{BLACK}鑽石礦
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}銅礦
+STR_0255_DIAMOND_MINE                                           :{BLACK}鑽石礦場
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}銅礦場
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}棉花糖森林
 STR_0258_CANDY_FACTORY                                          :{BLACK}糖果工廠
 STR_0259_BATTERY_FARM                                           :{BLACK}電池農場
@@ -677,9 +677,9 @@ STR_025C_TOY_FACTORY                                            :{BLACK}玩具�
 STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}塑膠噴泉
 STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}汽水廠
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}泡泡工場
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}奶糖礦場
-STR_0261_SUGAR_MINE                                             :{BLACK}砂糖礦
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}興建煤碳礦場
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}太妃糖礦場
+STR_0261_SUGAR_MINE                                             :{BLACK}砂糖礦場
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}興建煤礦場
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}興建發電廠
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}興建鋸木廠
 STR_0265_PLANT_FOREST                                           :{BLACK}植林
@@ -694,7 +694,7 @@ STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}開設�
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}興建造紙廠
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}興建食物加工廠
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}興建印刷廠
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}興建黃金礦場
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}興建金礦場
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}開設銀行 (只能在市鎮內開設)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}興建鋸木廠 (砍伐雨林出產木材)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}種植蔬果園
@@ -712,10 +712,10 @@ STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}興建�
 STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}興建塑膠噴泉
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}興建汽水工廠
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}興建泡泡產生器
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}興建太妃糖礦
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}興建太妃糖礦場
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}興建砂糖礦場
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}不能在這裡建造 {STRING} ...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...市鎮應該要先被建造
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...先要建造市鎮
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...每個市鎮僅允許一個
 STR_0288_PLANT_TREES                                            :{BLACK}植樹
 STR_0289_PLACE_SIGN                                             :{BLACK}設置標誌
@@ -810,7 +810,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}將主�
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}貨幣單位
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
-STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}貨幣單位
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}選擇貨幣單位
 STR_MEASURING_UNITS                                             :{BLACK}量度單位
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}量度單位
@@ -1524,10 +1524,10 @@ STR_1004_TOO_HIGH                                               :{WHITE}太高
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}沒有適合的鐵路軌道
 STR_1007_ALREADY_BUILT                                          :{WHITE}...已經建了
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}必須先移除鐵道
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}建造鐵道
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}鋪設鐵道
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}建造電氣化鐵道
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}建造單軌
-STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}建造磁浮軌
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}鋪設單軌
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}鋪設磁浮軌
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}選擇鐵道橋樑
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}不能在這邊建築鐵道機廠...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}不能在這邊建築鐵道車站...
@@ -1536,11 +1536,11 @@ STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}不能�
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}不能從這邊移除鐵道...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}不能從這邊移除號誌...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}鐵道機廠方向
-STR_1015_RAILROAD_CONSTRUCTION                                  :建築鐵道
+STR_1015_RAILROAD_CONSTRUCTION                                  :鋪設鐵道
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :建造電氣化鐵道
-STR_1016_MONORAIL_CONSTRUCTION                                  :建築單軌
-STR_1017_MAGLEV_CONSTRUCTION                                    :建築磁浮軌
-STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}建築鐵軌
+STR_1016_MONORAIL_CONSTRUCTION                                  :鋪設單軌
+STR_1017_MAGLEV_CONSTRUCTION                                    :鋪設磁浮軌
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}鋪設鐵軌
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}建築鐵路機廠 (用來建造、維修列車)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}建築鐵道車站
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}建築鐵道號誌
@@ -1562,16 +1562,16 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :有綜合號誌
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}必須先移除道路
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}道路施工中
-STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}建築道路
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}鋪設道路
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}選擇道路橋樑
-STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}不能在此建築道路...
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}不能在此鋪設道路...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}不能從此移除道路...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}車庫方向
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}不能在此建築車庫...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}無法建築公車站...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}無法建築貨運站...
-STR_180A_ROAD_CONSTRUCTION                                      :建築道路
-STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}建築一段公路
+STR_180A_ROAD_CONSTRUCTION                                      :鋪設道路
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}鋪設一段公路
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}建築車庫 (用來製造與維護公路車輛)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}建築公車站
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}建築貨運站
@@ -1607,22 +1607,22 @@ STR_200F_TALL_OFFICE_BLOCK                                      :摩天辦公大
 STR_2010_OFFICE_BLOCK                                           :辦公大樓
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :平房
 STR_2012_CHURCH                                                 :教堂
-STR_2013_LARGE_OFFICE_BLOCK                                     :大辦公區
+STR_2013_LARGE_OFFICE_BLOCK                                     :大型辦公大樓
 STR_2014_TOWN_HOUSES                                            :住宅
 STR_2015_HOTEL                                                  :旅館
 STR_2016_STATUE                                                 :雕像
 STR_2017_FOUNTAIN                                               :噴泉
 STR_2018_PARK                                                   :公園
-STR_2019_OFFICE_BLOCK                                           :辦公區
+STR_2019_OFFICE_BLOCK                                           :辦公大樓
 STR_201A_SHOPS_AND_OFFICES                                      :店舖與公司
 STR_201B_MODERN_OFFICE_BUILDING                                 :現代辦公建築
 STR_201C_WAREHOUSE                                              :倉庫
 STR_201D_OFFICE_BLOCK                                           :辦公區
 STR_201E_STADIUM                                                :體育館
 STR_201F_OLD_HOUSES                                             :老舊房屋
-STR_2020_LOCAL_AUTHORITY                                        :{BLACK}區域當局
-STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}顯示區域當局資訊
-STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} 區域當局
+STR_2020_LOCAL_AUTHORITY                                        :{BLACK}地方政府
+STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}顯示地方政府資訊
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} 地方政府
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}運輸公司評比:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}補助
@@ -1640,7 +1640,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 獲得補補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到雙倍運費！
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 獲得補補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到三倍運費！
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 獲得補補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到四倍運費！
-STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} 區域當局拒絕在城內建造另一座機場
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} 地方政府拒絕在城內建造另一座機場
 STR_2036_COTTAGES                                               :農舍
 STR_2037_HOUSES                                                 :住宅
 STR_2038_FLATS                                                  :平房
