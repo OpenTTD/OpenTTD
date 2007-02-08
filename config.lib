@@ -54,8 +54,9 @@ set_default() {
 	with_midi_arg=""
 	with_freetype="1"
 	with_fontconfig="1"
+	with_pspconfig="1"
 
-	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_osx_sysroot enable_universal enable_osx_g5 with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_freetype with_fontconfig CC CXX CFLAGS LDFLAGS"
+	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_osx_sysroot enable_universal enable_osx_g5 with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_freetype with_fontconfig with_pspconfig CC CXX CFLAGS LDFLAGS"
 }
 
 detect_params() {
@@ -196,6 +197,10 @@ detect_params() {
 			--with-libfontconfig)         with_fontconfig="2";;
 			--without-libfontconfig)      with_fontconfig="0";;
 			--with-libfontconfig=*)       with_fontconfig="$optarg";;
+
+			--with-psp-config)            with_pspconfig="2";;
+			--without-psp-config)         with_pspconfig="0";;
+			--with-psp-config=*)          with_pspconfig="$optarg";;
 
 			--with-makedepend)            with_makedepend="2";;
 			--without-makedepend)         with_makedepend="0";;
@@ -415,6 +420,7 @@ check_params() {
 	detect_freetype
 	detect_fontconfig
 	detect_iconv
+	detect_pspconfig
 
 	if [ "$with_direct_music" = "1" ] || [ "$with_direct_music" = "2" ]; then
 		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
@@ -1454,6 +1460,55 @@ detect_fontconfig() {
 	log 1 "checking libfontconfig... found"
 }
 
+detect_pspconfig() {
+	# 0 means no, 1 is auto-detect, 2 is force
+	if [ "$with_pspconfig" = "0" ]; then
+		log 1 "checking psp-config... disabled"
+
+		psp_config=""
+		return 0
+	fi
+
+	if [ "$with_pspconfig" = "1" ] && [ "$os" != "PSP" ]; then
+		log 1 "checking psp-config... not PSP, skipping"
+
+		psp_config="";
+		return 0
+	fi
+
+	if [ "$os" != "PSP" ]; then
+		log 1 "checking psp-config... not PSP"
+
+		log 1 "configure: error: psp-config is only supported for PSP"
+		exit 1
+	fi
+
+	if [ "$with_pspconfig" = "1" ] || [ "$with_pspconfig" = "" ] || [ "$with_pspconfig" = "2" ]; then
+		psp_config="psp-config"
+	else
+		psp_config="$with_pspconfig"
+	fi
+
+	version=`$psp_config -p 2>/dev/null`
+	ret=$?
+	log 2 "executing $psp_config -p"
+	log 2 "  returned $version"
+	log 2 "  exit code $ret"
+
+	if [ -z "$version" ] || [ "$ret" != "0" ]; then
+		log 1 "checking psp-config... not found"
+		log 1 "configure: error: psp-config couldn't be found"
+
+		# It was forced, so it should be found.
+		if [ "$with_pspconfig" != "1" ]; then
+			log 1 "configure: error: you supplied '$with_pspconfig', but it seems invalid"
+		fi
+		exit 1
+	fi
+
+	log 1 "checking psp-config... found"
+}
+
 detect_iconv() {
 	# 0 means no, 1 is auto-detect, 2 is force
 	if [ "$with_iconv" = "0" ]; then
@@ -1802,6 +1857,7 @@ showhelp() {
 	echo "  --with-fontconfig[=pkg-config fontconfig]"
 	echo "                                 enables fontconfig support"
 	echo "  --with-iconv[=iconv-path]      enables iconv support"
+	echo "  --with-psp-config[=psp-config] enables psp-config support (PSP ONLY)"
 	echo "  --with-makedepend[=makedepend] enables makedepend support"
 	echo ""
 	echo "Some influential environment variables:"
