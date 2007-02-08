@@ -77,6 +77,13 @@
 # define BSWAP16(x) ((x) >> 8 | (x) << 8)
 #endif /* __APPLE__ */
 
+#if defined(PSP)
+/* PSP can only have 10 file-descriptors open at any given time, but this
+ *  switch only limits reads via the Fio system. So keep 2 fds free for things
+ *  like saving a game. */
+#define LIMITED_FDS 8
+#endif /* PSP */
+
 /* by default we use [] var arrays */
 #define VARARRAY_SIZE
 
