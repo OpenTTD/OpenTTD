@@ -83,6 +83,9 @@ typedef byte WindowClass;
 enum {
 	INVALID_YEAR = -1,
 	INVALID_DATE = -1,
+
+	PLAYER_FIRST    = 0x00,
+	INVALID_PLAYER  = 0xFF,
 };
 
 typedef int32 Year;

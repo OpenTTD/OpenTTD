@@ -1400,7 +1400,7 @@ enum VehicleListWindowWidgets {
 	VLW_WIDGET_LIST,
 	VLW_WIDGET_SCROLLBAR,
 	VLW_WIDGET_OTHER_PLAYER_FILLER,
-	VLW_WIDGET_NEW_VEHICLES,
+	VLW_WIDGET_AVAILABLE_VEHICLES,
 	VLW_WIDGET_MANAGE_VEHICLES,
 	VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 	VLW_WIDGET_STOP_ALL,
@@ -1448,10 +1448,10 @@ static void CreateVehicleListWindow(Window *w)
 	 * Some windows contains actions only fit for the owner */
 	if (player == _local_player) {
 		HideWindowWidget(w, VLW_WIDGET_OTHER_PLAYER_FILLER);
-		SetWindowWidgetDisabledState(w, VLW_WIDGET_NEW_VEHICLES, window_type != VLW_STANDARD);
+		SetWindowWidgetDisabledState(w, VLW_WIDGET_AVAILABLE_VEHICLES, window_type != VLW_STANDARD);
 	} else {
 		SetWindowWidgetsHiddenState(w, true,
-			VLW_WIDGET_NEW_VEHICLES,
+			VLW_WIDGET_AVAILABLE_VEHICLES,
 			VLW_WIDGET_MANAGE_VEHICLES,
 			VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 			VLW_WIDGET_STOP_ALL,
@@ -1464,22 +1464,22 @@ static void CreateVehicleListWindow(Window *w)
 	switch (vl->vehicle_type) {
 		case VEH_Train:
 			w->widget[VLW_WIDGET_LIST].tooltips          = STR_883D_TRAINS_CLICK_ON_TRAIN_FOR;
-			w->widget[VLW_WIDGET_NEW_VEHICLES].data = STR_8815_NEW_VEHICLES;
+			w->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_TRAINS;
 			break;
 
 		case VEH_Road:
 			w->widget[VLW_WIDGET_LIST].tooltips          = STR_901A_ROAD_VEHICLES_CLICK_ON;
-			w->widget[VLW_WIDGET_NEW_VEHICLES].data = STR_9004_NEW_VEHICLES;
+			w->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_ROAD_VEHICLES;
 			break;
 
 		case VEH_Ship:
 			w->widget[VLW_WIDGET_LIST].tooltips          = STR_9823_SHIPS_CLICK_ON_SHIP_FOR;
-			w->widget[VLW_WIDGET_NEW_VEHICLES].data = STR_9804_NEW_SHIPS;
+			w->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_SHIPS;
 			break;
 
 		case VEH_Aircraft:
 			w->widget[VLW_WIDGET_LIST].tooltips          = STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT;
-			w->widget[VLW_WIDGET_NEW_VEHICLES].data = STR_A003_NEW_AIRCRAFT;
+			w->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_AIRCRAFT;
 			break;
 
 		default: NOT_REACHED();
@@ -1742,7 +1742,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					}
 				} break;
 
-				case VLW_WIDGET_NEW_VEHICLES:
+				case VLW_WIDGET_AVAILABLE_VEHICLES:
 					switch (vl->vehicle_type) {
 						case VEH_Train: ShowBuildTrainWindow(0); break;
 						case VEH_Road:  ShowBuildRoadVehWindow(0); break;

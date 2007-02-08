@@ -906,7 +906,7 @@ void ShowCompanyLeagueTable(void)
 
 static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 {
-	static PlayerID _performance_rating_detail_player = 0;
+	static PlayerID _performance_rating_detail_player = INVALID_PLAYER;
 
 	switch (e->event) {
 		case WE_PAINT: {
@@ -919,6 +919,32 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			// Draw standard stuff
 			DrawWindowWidgets(w);
 
+			/* Check if the currently selected player is still active. */
+			if (_performance_rating_detail_player == INVALID_PLAYER || !GetPlayer(_performance_rating_detail_player)->is_active) {
+				if (_performance_rating_detail_player != INVALID_PLAYER) {
+					/* Raise and disable the widget for the previous selection. */
+					RaiseWindowWidget(w, _performance_rating_detail_player + 13);
+					DisableWindowWidget(w, _performance_rating_detail_player + 13);
+					SetWindowDirty(w);
+
+					_performance_rating_detail_player = INVALID_PLAYER;
+				}
+
+				for (i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
+					if (GetPlayer(i)->is_active) {
+						/* Lower the widget corresponding to this player. */
+						LowerWindowWidget(w, i + 13);
+						SetWindowDirty(w);
+
+						_performance_rating_detail_player = i;
+						break;
+					}
+				}
+			}
+
+			/* If there are no active players, don't display anything else. */
+			if (_performance_rating_detail_player == INVALID_PLAYER) break;
+
 			// Paint the player icons
 			for (i = 0; i < MAX_PLAYERS; i++) {
 				if (!GetPlayer(i)->is_active) {
@@ -926,16 +952,11 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 					if (!IsWindowWidgetDisabled(w, i + 13)) {
 						// Bah, player gone :(
 						DisableWindowWidget(w, i + 13);
-						// Is this player selected? If so, select first player (always save? :s)
-						if (IsWindowWidgetLowered(w, i + 13)) {
-							RaiseWindowWidget(w, i + 13);
-							LowerWindowWidget(w, 13);
-							_performance_rating_detail_player = 0;
-						}
+
 						// We need a repaint
 						SetWindowDirty(w);
 					}
-				continue;
+					continue;
 				}
 
 				// Check if we have the player marked as inactive
@@ -1054,8 +1075,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			w->custom[0] = DAY_TICKS;
 			w->custom[1] = 5;
 
-			_performance_rating_detail_player = 0;
-			LowerWindowWidget(w, _performance_rating_detail_player + 13);
+			if (_performance_rating_detail_player != INVALID_PLAYER) LowerWindowWidget(w, _performance_rating_detail_player + 13);
 			SetWindowDirty(w);
 
 			break;
