@@ -612,16 +612,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} a dobandit titlul de '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} al {COMPANY} dobandeste titlul de '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Creeazã scenariu
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor scenarii
 STR_0223_LAND_GENERATION                                        :{WHITE}Generator suprafatã uscat
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Uscat aleatoriu
+STR_0227_RESET_LAND                                             :{BLACK}Reseteazã terenul
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Mãreste aria de editare a terenului
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Micsoreazã aria de editare a terenului
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genereazã teren aleator
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reseteazã peisajul
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetare peisaj
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Foloseste harta de inaltimi
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Foloseste harta inaltimi
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Esti sigur cã vrei sa resetezi peisajul?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generare peisaj
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generare oras
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generare industrii

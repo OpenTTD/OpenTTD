@@ -713,16 +713,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} saavutas '{STRING}' staatuse!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} {COMPANY}'st saavutas '{STRING}' staatuse!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Loo stsenaarium
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Kaardiredaktor
 STR_0223_LAND_GENERATION                                        :{WHITE}Maastiku loomine
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Juhuslik kaart
+STR_0227_RESET_LAND                                             :{BLACK}Nulli kaart
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Suurenda kõrgendatava/madaldatava maa-ala pindala
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Vähenda kõrgendatava/madaldatava maa-ala pindala
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Juhusliku kaardi loomine
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nulli maastik
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nulli maastik
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Kasuta Kõrguskaarti
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Kasuta Kõrguskaarti
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Oled sa kindel, et sa tahad maastikku nullida?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Maastiku loomine
 STR_022F_TOWN_GENERATION                                        :{BLACK}Linnade loomine
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Tööstuste loomine

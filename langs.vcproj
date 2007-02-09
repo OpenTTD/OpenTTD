@@ -257,6 +257,19 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath="lang\korean.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating korean language file"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;
+"
+					Outputs="lang\korean.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath="lang\lithuanian.txt"
 			>
 			<FileConfiguration
@@ -354,6 +367,18 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath=".\lang\simplified_chinese.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating simplified chinese language file"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;
+"
+					Outputs="lang\simplified_chinese.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath=".\lang\slovak.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
@@ -403,6 +428,18 @@
 					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;
 "
 					Outputs="lang\swedish.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\lang\traditional_chinese.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating traditional chinese language file"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;
+"
+					Outputs="lang\traditional_chinese.lng"/>
 			</FileConfiguration>
 		</File>
 		<File

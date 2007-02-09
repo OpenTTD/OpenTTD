@@ -728,16 +728,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} získal titul '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} z {COMPANY} získal titul '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Vytvořit mapu
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor mapy
 STR_0223_LAND_GENERATION                                        :{WHITE}Generovat zemi
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Náhodná země
+STR_0227_RESET_LAND                                             :{BLACK}Vymaž zemi
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zvětšit oblast země pro snížení/zvýšení
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zmenšit oblast země pro snížení/zvýšení
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generovat náhodnou zemi
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Smazat krajinu
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Smazat krajinu
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Použít výškovou mapu
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Použít výškovou mapu
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Urcite chceš smazat krajinu?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generování krajiny
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generování měst
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generování průmyslu

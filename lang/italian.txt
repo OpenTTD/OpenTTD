@@ -614,16 +614,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} raggiunge lo status di '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} di {COMPANY} raggiunge lo status di '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Crea Scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor Scenario
 STR_0223_LAND_GENERATION                                        :{WHITE}Genera Terreno
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Terreno Casuale
+STR_0227_RESET_LAND                                             :{BLACK}Azzerra Terreno
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Aumenta ampiezza del terreno da abbassare/alzare
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Decrementa ampiezza del terreno da abbassare/alzare
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genera terreno casuale
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Azzerra paesaggio
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Azzerra Paesaggio
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usa Heightmap
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usa Heightmap
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Sei sicuro di voler azzerrare il paesaggio?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generazione paesaggio
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generazione città
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generazione industrie

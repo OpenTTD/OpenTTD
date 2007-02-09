@@ -614,16 +614,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} '{STRING}' ünvanını kazandı!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} - {COMPANY} '{STRING}' unvanını kazandı!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Senaryo Yap
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Senaryo Editörü
 STR_0223_LAND_GENERATION                                        :{WHITE}Yer Yapımı
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Rastgele Yerler
+STR_0227_RESET_LAND                                             :{BLACK}Yerleri Sıfırla
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}yükseltme/alçaltma alanını arttır
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}yükseltme/alçaltma alanını arttır
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Rastgele harita yap
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Haritayı sıfırla
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Haritayı Sıfırla
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Yükseklik Haritasi Kullan
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Yükseklik Haritasi Kullan
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Her taraf su olsun mu?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Harita yapımı
 STR_022F_TOWN_GENERATION                                        :{BLACK}Şehir yapımı
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Fabrika yapımı

@@ -614,16 +614,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} får '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} fra {COMPANY} får '{STRING}' status!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Lav et scenarie
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarieeditor
 STR_0223_LAND_GENERATION                                        :{WHITE}Land generering
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Tilfældigt land
+STR_0227_RESET_LAND                                             :{BLACK}Nulstil land
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Forstør landområdet der skal sænkes/hæves
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Formindsk landområdet der skal sænkes/hæves
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generer tilfældigt land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nulstil landskab
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nulstil landskab
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Brug højdekort
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Brug højdekort
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Er du sikker på, at du vil nulstille landskabet?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskabsgenerering
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrigenerering

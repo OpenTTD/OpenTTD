@@ -614,16 +614,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} saavuttaa arvon '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} yhtiöstä {COMPANY} saavuttaa arvon '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Luo skenaario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Skenaariomuokkain
 STR_0223_LAND_GENERATION                                        :{WHITE}Maanrakennus
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Satunnainen maa
+STR_0227_RESET_LAND                                             :{BLACK}Nollaa maa
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Suurenna madallettavan/korotettavan maa-alueen kokoa.
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Pienennä madallettavan/korotettavan maa-alueen kokoa.
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Luo satunnainen maa
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nollaa maasto
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nollaa maasto
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Käytä korkeuskarttaa
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Käytä korkeuskarttaa
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Nollataanko maasto?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Luo maasto
 STR_022F_TOWN_GENERATION                                        :{BLACK}Luo kaupunkeja
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Luo teollisuutta

@@ -597,16 +597,20 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}¡{COMPANY} logra o status de '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}¡{PLAYERNAME} de {COMPANY} logra o status '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Crear Escenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor de Escenario
 STR_0223_LAND_GENERATION                                        :{WHITE}Xeración de Terreo
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Terreo Aleatorio
+STR_0227_RESET_LAND                                             :{BLACK}Reiniciar Terreo
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Aumenta-lo tamaño de terreo a baixar/subir
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Disminuí-lo tamaño de terreo a baixar/subir
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Xerar terreo aleatorio
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reiniciar paisaxe
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reiniciar paisaxe
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}¿Está seguro de querer reinicia-la paisaxe?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Xeración de paisaxe
 STR_022F_TOWN_GENERATION                                        :{BLACK}Xeración de cidades
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Xeración de industrias

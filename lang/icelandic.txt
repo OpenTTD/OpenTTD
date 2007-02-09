@@ -592,16 +592,20 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} öðlast '{STRING}' titil!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} úr {COMPANY} öðlast '{STRING}' titil!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Búa til kort
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Kortagerð
 STR_0223_LAND_GENERATION                                        :{WHITE}Landslagsgerð
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Handahófskennt land
+STR_0227_RESET_LAND                                             :{BLACK}Eyða landi
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Stækka svæði til að lækka/hækka
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Minnka svæði til að lækka/hækka
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Mynda til land af handahófi
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Eyða landi
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Eyða landi
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Ertu viss um að þú viljir eyða landinu?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landslagsgerð
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bæjargerð
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Iðnaðargerð

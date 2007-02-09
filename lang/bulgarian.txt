@@ -615,16 +615,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} достигна статус '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} от {COMPANY} достигна статус '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Създай сценарий
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Редактор на сценарии
 STR_0223_LAND_GENERATION                                        :{WHITE}Генератор на терен
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Случаен терен
+STR_0227_RESET_LAND                                             :{BLACK}Изчисти терена
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Увеличи площа на терена, за да го понижиш/повишиш
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Намали площа на терена, за да го понижиш/повишиш
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Генерирай случаен терен
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Изчисти терена
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Изчисти терена
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Ползвай топо-карта
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Ползвай топо-карта
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Желаете ли да изчистите терена?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Създаване на терен
 STR_022F_TOWN_GENERATION                                        :{BLACK}Създаване на град
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Създаване на индустрия

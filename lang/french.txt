@@ -615,16 +615,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} atteint le niveau de '{STRING}' !
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} de {COMPANY} atteint le niveau de '{STRING}' !
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Créer Scénario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Éditeur de Scénario
 STR_0223_LAND_GENERATION                                        :{WHITE}Génération de terrain
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Générer un terrain
+STR_0227_RESET_LAND                                             :{BLACK}RAZ du terrain
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Augmenter la quantité de terre à modifier
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Diminuer la quantité de terre à modifier
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Générer une terre aléatoire
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Réinitialiser le terrain
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Réinitialiser le terrain
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Carte d'altitude
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Utiliser une carte d'altitude
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Voulez-vous vraiment réinitialiser le terrain?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Créer le terrain
 STR_022F_TOWN_GENERATION                                        :{BLACK}Créer les villes
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Créer les industries

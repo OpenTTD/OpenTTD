@@ -613,16 +613,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} uppnår '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} från {COMPANY} uppnår '{STRING}' status!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Nytt scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenario-editor
 STR_0223_LAND_GENERATION                                        :{WHITE}Skapa mark
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Slumpmässig mark
+STR_0227_RESET_LAND                                             :{BLACK}Återställ mark
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Öka storlek av yta att höja/sänka
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Minska storlek av yta att höja/sänka
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generera slumpmässig mark
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Återställ landskapet
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Återställ landskapet
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Använd höjdkarta
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Använd höjdkarta
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Vill du verkligen återställa landskapet?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Skapa landskap
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygg städer
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Bygg industrier

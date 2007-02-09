@@ -615,16 +615,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} atingis staton de '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} de {COMPANY} atingis staton de '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Kreu Scenaron
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarkreilon
 STR_0223_LAND_GENERATION                                        :{WHITE}Landa Generado
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Hazarda Lando
+STR_0227_RESET_LAND                                             :{BLACK}Reigu Landon
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Grandigu landparton por (mal)altigi
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Malgrandigu landparton por (mal)altigi
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Kreu landon hazarde
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reigu landaspekton
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reigu Landaspekton
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Uzu Altecmapon
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Uzu Altecmapon
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Ĉu vi certas ke vi volas reigi la landaspekton?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landaspekta generado
 STR_022F_TOWN_GENERATION                                        :{BLACK}Urba generado
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industria generado
