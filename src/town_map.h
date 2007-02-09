@@ -7,12 +7,6 @@
 
 #include "town.h"
 
-static inline int GetHouseType(TileIndex t)
-{
-	assert(IsTileType(t, MP_HOUSE));
-	return _m[t].m4;
-}
-
 static inline TownID GetTownIndex(TileIndex t)
 {
 	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_STREET)); // XXX incomplete
@@ -23,11 +17,29 @@ static inline TownID GetTownIndex(TileIndex t)
  * Set the town index for a road or house tile.
  * @param tile the tile
  * @param index the index of the town
+ * @pre IsTileType(t, MP_STREET) || IsTileType(t, MP_HOUSE)
  */
 static inline void SetTownIndex(TileIndex t, TownID index)
 {
 	assert(IsTileType(t, MP_STREET) || IsTileType(t, MP_HOUSE));
 	_m[t].m2 = index;
+}
+
+/**
+ * Gets the town associated with the house or road tile
+ * @param t the tile to get the town of
+ * @return the town
+ */
+static inline Town* GetTownByTile(TileIndex t)
+{
+	return GetTown(GetTownIndex(t));
+}
+
+
+static inline int GetHouseType(TileIndex t)
+{
+	assert(IsTileType(t, MP_HOUSE));
+	return _m[t].m4;
 }
 
 static inline bool LiftHasDestination(TileIndex t)
@@ -74,15 +86,6 @@ static inline void SetLiftPosition(TileIndex t, byte pos)
 {
 	SB(_m[t].m1, 0, 7, pos);
 }
-
-static inline Town* GetTownByTile(TileIndex t)
-{
-	return GetTown(GetTownIndex(t));
-}
-
-
-Town* CalcClosestTownFromTile(TileIndex tile, uint threshold);
-
 
 static inline void MakeHouseTile(TileIndex t, TownID tid, byte counter, byte stage, byte type)
 {

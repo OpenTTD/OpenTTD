@@ -218,6 +218,8 @@ static inline void DeleteTown(Town *t)
 	t->xy = 0;
 }
 
+Town* CalcClosestTownFromTile(TileIndex tile, uint threshold);
+
 #define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) if (IsValidTown(t))
 #define FOR_ALL_TOWNS(t) FOR_ALL_TOWNS_FROM(t, 0)
 
