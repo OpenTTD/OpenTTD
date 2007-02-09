@@ -736,7 +736,7 @@ void NetworkUDPSearchGame(void)
 		if (!NetworkUDPListen(&_udp_client_socket, 0, 0, true))
 			return;
 
-	DEBUG(net, 0)("[NET][UDP] Searching server");
+	DEBUG(net, 2)("[NET][UDP] Searching server");
 
 	NetworkUDPBroadCast(_udp_client_socket);
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
