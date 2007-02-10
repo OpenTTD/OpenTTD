@@ -64,7 +64,7 @@ static inline void DrawVehicleImage(const Vehicle *v, int x, int y, int count, i
 	}
 }
 
-static inline byte GetVehicleListHeight(byte type)
+static inline uint GetVehicleListHeight(byte type)
 {
 	return (type == VEH_Train || type == VEH_Road) ? 14 : 24;
 }

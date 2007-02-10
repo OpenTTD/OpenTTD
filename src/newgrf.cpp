@@ -3787,6 +3787,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 	}
 }
 
+void InitDepotWindowBlockSizes(void);
 
 void LoadNewGRF(uint load_index, uint file_index)
 {
@@ -3822,6 +3823,9 @@ void LoadNewGRF(uint load_index, uint file_index)
 
 	// Pre-calculate all refit masks after loading GRF files
 	CalculateRefitMasks();
+
+	/* Set the block size in the depot windows based on vehicle sprite sizes */
+	InitDepotWindowBlockSizes();
 }
 
 

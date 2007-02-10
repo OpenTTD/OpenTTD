@@ -26,6 +26,7 @@
 #include "newgrf_text.h"
 #include "newgrf_sound.h"
 #include "date.h"
+#include "spritecache.h"
 
 // this maps the terminal to its corresponding state and block flag
 // currently set for 10 terms, 4 helipads
@@ -163,6 +164,31 @@ void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal)
 		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
 		DrawSprite(rotor_sprite, PAL_NONE, x, y - 5);
 	}
+}
+
+/** Get the size of the sprite of an aircraft sprite heading west (used for lists)
+ * @param engine The engine to get the sprite from
+ * @param &width The width of the sprite
+ * @param &height The height of the sprite
+ */
+void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
+{
+	const AircraftVehicleInfo* avi = AircraftVehInfo(engine);
+	int spritenum = avi->image_index;
+	SpriteID sprite = (6 + _aircraft_sprite[spritenum]);
+
+	if (is_custom_sprite(spritenum)) {
+		sprite = GetCustomVehicleIcon(engine, DIR_W);
+		if (sprite == 0) {
+			spritenum = orig_aircraft_vehicle_info[engine - AIRCRAFT_ENGINES_INDEX].image_index;
+			sprite = (6 + _aircraft_sprite[spritenum]);
+		}
+	}
+
+	const Sprite *spr = GetSprite(sprite);
+
+	width  = spr->width ;
+	height = spr->height;
 }
 
 static int32 EstimateAircraftCost(const AircraftVehicleInfo *avi)

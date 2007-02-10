@@ -27,6 +27,7 @@
 #include "newgrf_text.h"
 #include "newgrf_sound.h"
 #include "date.h"
+#include "spritecache.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 
@@ -57,6 +58,32 @@ void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal)
 		spritenum = orig_ship_vehicle_info[engine - SHIP_ENGINES_INDEX].image_index;
 	}
 	DrawSprite(6 + _ship_sprites[spritenum], pal, x, y);
+}
+
+/** Get the size of the sprite of a ship sprite heading west (used for lists)
+ * @param engine The engine to get the sprite from
+ * @param &width The width of the sprite
+ * @param &height The height of the sprite
+ */
+void GetShipSpriteSize(EngineID engine, uint &width, uint &height)
+{
+	SpriteID spritenum = ShipVehInfo(engine)->image_index;
+	SpriteID custom_sprite = 0;
+
+	if (is_custom_sprite(spritenum)) {
+		custom_sprite = GetCustomVehicleIcon(engine, DIR_W);
+		spritenum = orig_ship_vehicle_info[engine - SHIP_ENGINES_INDEX].image_index;
+	}
+	if (custom_sprite == 0) {
+		spritenum = 6 + _ship_sprites[spritenum];
+	} else {
+		spritenum = custom_sprite;
+	}
+
+	const Sprite *spr = GetSprite(spritenum);
+
+	width  = spr->width;
+	height = spr->height;
 }
 
 int GetShipImage(const Vehicle* v, Direction direction)

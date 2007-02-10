@@ -45,5 +45,6 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, EngineID engine_type);
 void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcCloneAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void HandleAircraftEnterHangar(Vehicle *v);
+void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height);
 
 #endif /* AIRCRAFT_H */

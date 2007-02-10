@@ -18,6 +18,7 @@
 #include "vehicle_gui.h"
 #include "station_map.h"
 #include "newgrf_engine.h"
+#include "spritecache.h"
 
 /*
  * Since all depot window sizes aren't the same, we need to modify sizes a little.
@@ -56,38 +57,44 @@ enum DepotWindowWidgets {
  * NOTE: the train only widgets are moved/resized in ShowDepotWindow() so they follow certain other widgets if they are moved to ensure that they stick together.
  *    Changing the size of those here will not have an effect at all. It should be done in ShowDepotWindow()
  */
+
+/*
+ * Some of the widgets are placed outside the window (negative coordinates).
+ * The reason is that they are placed relatively to the matrix and the matrix is just one pixel (in 0, 14).
+ * The matrix and the rest of the window will be resized when the size of the boxes is set and then all the widgets will be inside the window.
+ */
 static const Widget _depot_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},            // DEPOT_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   292,     0,    13, 0x0,                 STR_018C_WINDOW_TITLE_DRAG_THIS},  // DEPOT_WIDGET_CAPTION
-	{  WWT_STICKYBOX,     RESIZE_LR,    14,   293,   304,     0,    13, 0x0,                 STR_STICKY_BUTTON},                // DEPOT_WIDGET_STICKY
+	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,    23,     0,    13, 0x0,                 STR_018C_WINDOW_TITLE_DRAG_THIS},  // DEPOT_WIDGET_CAPTION
+	{  WWT_STICKYBOX,     RESIZE_LR,    14,    24,    35,     0,    13, 0x0,                 STR_STICKY_BUTTON},                // DEPOT_WIDGET_STICKY
 
 	/* Widgets are set up run-time */
-	{     WWT_IMGBTN,    RESIZE_LRB,    14,   270,   292,    14,    37, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL
-	{     WWT_IMGBTN,   RESIZE_LRTB,    14,   270,   292,    14,    37, SPR_SELL_CHAIN_TRAIN,STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    38,    60, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL_ALL
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    61,    83, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_AUTOREPLACE
+	{     WWT_IMGBTN,    RESIZE_LRB,    14,     1,    23,    14,   -32, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL
+	{     WWT_IMGBTN,   RESIZE_LRTB,    14,     1,    23,   -55,   -32, SPR_SELL_CHAIN_TRAIN,STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,     1,    23,   -31,    -9, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL_ALL
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,     1,    23,    -8,    14, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_AUTOREPLACE
 
-	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    83, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_MATRIX
-	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   293,   304,    14,    83, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST}, // DEPOT_WIDGET_V_SCROLL
+	{     WWT_MATRIX,     RESIZE_RB,    14,     0,     0,    14,    14, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_MATRIX
+	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,    24,    35,    14,    14, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST}, // DEPOT_WIDGET_V_SCROLL
 
-	{ WWT_HSCROLLBAR,    RESIZE_RTB,    14,     0,   269,    72,    83, 0x0,                 STR_HSCROLL_BAR_SCROLLS_LIST},     // DEPOT_WIDGET_H_SCROLL, trains only
+	{ WWT_HSCROLLBAR,    RESIZE_RTB,    14,     0,     0,     3,    14, 0x0,                 STR_HSCROLL_BAR_SCROLLS_LIST},     // DEPOT_WIDGET_H_SCROLL, trains only
 
 	/* The buttons in the bottom of the window. left and right is not important as they are later resized to be equal in size
 	 * This calculation is based on right in DEPOT_WIDGET_LOCATION and it presumes left of DEPOT_WIDGET_BUILD is 0            */
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    85,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_BUILD
-	{    WWT_TEXTBTN,     RESIZE_TB,    14,    86,   170,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_CLONE
-	{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   171,   257,    84,    95, STR_00E4_LOCATION,   STR_NULL},                         // DEPOT_WIDGET_LOCATION
-	{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   258,   269,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_VEHICLE_LIST
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   280,    84,    95, SPR_FLAG_VEH_STOPPED,STR_NULL},                         // DEPOT_WIDGET_STOP_ALL
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   281,   292,    84,    95, SPR_FLAG_VEH_RUNNING,STR_NULL},                         // DEPOT_WIDGET_START_ALL
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   293,   304,    84,    95, 0x0,                 STR_RESIZE_BUTTON},                // DEPOT_WIDGET_RESIZE
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,     0,    15,    26, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_BUILD
+	{    WWT_TEXTBTN,     RESIZE_TB,    14,     0,     0,    15,    26, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_CLONE
+	{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,     0,   -12,    15,    26, STR_00E4_LOCATION,   STR_NULL},                         // DEPOT_WIDGET_LOCATION
+	{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   -11,     0,    15,    26, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_VEHICLE_LIST
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,     1,    11,    15,    26, SPR_FLAG_VEH_STOPPED,STR_NULL},                         // DEPOT_WIDGET_STOP_ALL
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,    12,    23,    15,    26, SPR_FLAG_VEH_RUNNING,STR_NULL},                         // DEPOT_WIDGET_START_ALL
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,    24,    35,    15,    26, 0x0,                 STR_RESIZE_BUTTON},                // DEPOT_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
 static void DepotWndProc(Window *w, WindowEvent *e);
 
 static const WindowDesc _train_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 305, 96,
+	WDP_AUTO, WDP_AUTO, 36, 27,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -95,7 +102,7 @@ static const WindowDesc _train_depot_desc = {
 };
 
 static const WindowDesc _road_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 305, 96,
+	WDP_AUTO, WDP_AUTO, 36, 27,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -103,7 +110,7 @@ static const WindowDesc _road_depot_desc = {
 };
 
 static const WindowDesc _ship_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 305, 96,
+	WDP_AUTO, WDP_AUTO, 36, 27,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -111,7 +118,7 @@ static const WindowDesc _ship_depot_desc = {
 };
 
 static const WindowDesc _aircraft_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 305, 96,
+	WDP_AUTO, WDP_AUTO, 36, 27,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -151,6 +158,8 @@ static void DepotSellAllConfirmationCallback(Window *w, bool confirmed)
 	}
 }
 
+const Sprite *GetAircraftSprite(EngineID engine);
+
 /** Draw a vehicle in the depot window in the box with the top left corner at x,y
  * @param *w Window to draw in
  * @param *v Vehicle to draw
@@ -161,18 +170,24 @@ static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 {
 	byte diff_x = 0, diff_y = 0;
 
+	int sprite_y = y + w->resize.step_height - GetVehicleListHeight(v->type);
+
 	switch (v->type) {
 		case VEH_Train:
-			DrawTrainImage(v, x + 21, y, w->hscroll.cap + 4, w->hscroll.pos, WP(w,depot_d).sel);
+			DrawTrainImage(v, x + 21, sprite_y, w->widget[DEPOT_WIDGET_MATRIX].right - 32, w->hscroll.pos, WP(w,depot_d).sel);
 
 			/* Number of wagons relative to a standard length wagon (rounded up) */
 			SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
 			DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
 			break;
 
-		case VEH_Road:     DrawRoadVehImage( v, x + 24, y, WP(w, depot_d).sel); break;
-		case VEH_Ship:     DrawShipImage(    v, x + 19, y, WP(w, depot_d).sel); break;
-		case VEH_Aircraft: DrawAircraftImage(v, x + 12, y, WP(w, depot_d).sel); break;
+		case VEH_Road:     DrawRoadVehImage( v, x + 24, sprite_y, WP(w, depot_d).sel); break;
+		case VEH_Ship:     DrawShipImage(    v, x + 19, sprite_y - 1, WP(w, depot_d).sel); break;
+		case VEH_Aircraft: {
+			const Sprite *spr = GetSprite(GetAircraftImage(v, DIR_W));
+			int diff_y = spr->y_offs + spr->height - 12;
+			DrawAircraftImage(v, x + 12, y + diff_y, WP(w, depot_d).sel);
+		} break;
 		default: NOT_REACHED();
 	}
 
@@ -612,47 +627,104 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 	}
 }
 
+
+/* Array to hold the block sizes
+ * First part is the vehicle type, while the last is 0 = x, 1 = y */
+uint _block_sizes[4][2];
+
+/* Array to hold the default resize capacities
+* First part is the vehicle type, while the last is 0 = x, 1 = y */
+const uint _resize_cap[][2] = {
+/* VEH_Train */    {6, 10 * 29 + 36}, // flags, unitnumber and unit count uses a total of 36 pixels and we set default to 10 units
+/* VEH_Road */     {5, 5},
+/* VEH_Ship */     {3, 3},
+/* VEH_Aircraft */ {3, 4},
+};
+
+static void ResizeDefaultWindowSizeForTrains()
+{
+	_block_sizes[VEH_Train][0] = 1;
+	_block_sizes[VEH_Train][1] = GetVehicleListHeight(VEH_Train);
+}
+
+static void ResizeDefaultWindowSizeForRoadVehicles()
+{
+	_block_sizes[VEH_Road][0] = 56;
+	_block_sizes[VEH_Road][1] = GetVehicleListHeight(VEH_Road);
+}
+
+static void ResizeDefaultWindowSize(byte type)
+{
+	EngineID engine;
+	uint max_width  = 0;
+	uint max_height = 0;
+
+	FOR_ALL_ENGINEIDS_OF_TYPE(engine, type) {
+		uint x, y;
+
+		switch (type) {
+			default: NOT_REACHED();
+			case VEH_Ship:     GetShipSpriteSize(    engine, x, y); break;
+			case VEH_Aircraft: GetAircraftSpriteSize(engine, x, y); break;
+		}
+		if (x > max_width)  max_width  = x;
+		if (y > max_height) max_height = y;
+	}
+
+	switch (type) {
+		default: NOT_REACHED();
+		case VEH_Ship:
+			_block_sizes[VEH_Ship][0] = max(90U, max_width + 20); // we need 20 pixels from the right edge to the sprite
+			break;
+		case VEH_Aircraft:
+			_block_sizes[VEH_Aircraft][0] = max(74U, max_width);
+			break;
+	}
+	_block_sizes[type][1] = max(GetVehicleListHeight(type), max_height);
+}
+
+/* Set the size of the blocks in the window so we can be sure that they are big enough for the vehicle sprites in the current game
+ * We will only need to call this once for each game */
+void InitDepotWindowBlockSizes()
+{
+	ResizeDefaultWindowSizeForTrains();
+	ResizeDefaultWindowSizeForRoadVehicles();
+	ResizeDefaultWindowSize(VEH_Ship);
+	ResizeDefaultWindowSize(VEH_Aircraft);
+}
+
 static void CreateDepotListWindow(Window *w, byte type)
 {
 	WP(w, depot_d).type = type;
 	_backup_orders_tile = 0;
 
+	assert(IsPlayerBuildableVehicleType(type)); // ensure that we make the call with a valid type
+
 	/* Resize the window according to the vehicle type */
-	switch (type) {
-		default: NOT_REACHED();
-		case VEH_Train:
-			w->vscroll.cap = 6;
-			w->hscroll.cap = 10 * 29;
-			w->resize.step_width = 1;
-			ResizeWindow(w, 56, 26);
-			break;
 
-		case VEH_Road:
-			w->vscroll.cap = 5;
-			w->hscroll.cap = 5;
-			w->resize.step_width = 56;
-			ResizeWindow(w, 10, 0);
-			break;
+	/* Set the number of blocks in each direction */
+	w->vscroll.cap = _resize_cap[type][0];
+	w->hscroll.cap = _resize_cap[type][1];
 
-		case VEH_Ship:
-			w->vscroll.cap = 3;
-			w->hscroll.cap = 3;
-			w->resize.step_width = 90;
-			ResizeWindow(w, 0, 2);
-			break;
+	/* Set the block size */
+	w->resize.step_width  = _block_sizes[type][0];
+	w->resize.step_height = _block_sizes[type][1];
 
-		case VEH_Aircraft:
-			w->vscroll.cap = 3;
-			w->hscroll.cap = 4;
-			w->resize.step_width = 74;
-			ResizeWindow(w, 26, 2);
-			break;
+	/* Enlarge the window to fit with the selected number of blocks of the selected size */
+	ResizeWindow(w,
+				 _block_sizes[type][0] * w->hscroll.cap,
+				 _block_sizes[type][1] * w->vscroll.cap);
+
+	if (type == VEH_Train) {
+		/* The train depot has a horizontal scroller so we should make room for it */
+		ResizeWindow(w, 0, 12);
+		/* substract the newly added space from the matrix since it was meant for the scrollbar */
+		w->widget[DEPOT_WIDGET_MATRIX].bottom -= 12;
 	}
 
 	/* Set the minimum window size to the current window size */
-	w->resize.width = w->width;
+	w->resize.width  = w->width;
 	w->resize.height = w->height;
-	w->resize.step_height = GetVehicleListHeight(type);
 
 	SetupStringsForDepotWindow(w, type);
 
@@ -666,8 +738,6 @@ static void CreateDepotListWindow(Window *w, byte type)
 		DEPOT_WIDGET_SELL_CHAIN,
 		WIDGET_LIST_END);
 
-	/* The train depot has a horizontal scroller, make the matrix that much shorter to fit */
-	if (type == VEH_Train) w->widget[DEPOT_WIDGET_MATRIX].bottom -= 12;
 	ResizeDepotButtons(w);
 }
 
