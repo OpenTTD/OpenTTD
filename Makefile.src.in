@@ -267,6 +267,6 @@ mrproper: clean
 	$(Q)rm -f rev.cpp
 
 %.o:
-	@echo '$(STAGE) No such source-file: $(@:%.o=%).[c|cpp|m|rc]'
+	@echo '$(STAGE) No such source-file: $(@:%.o=%).[c|cpp|mm|rc]'
 
 .PHONY: all mrproper depend clean FORCE
