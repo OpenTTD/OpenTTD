@@ -73,7 +73,7 @@ typedef struct Widget {
 	byte type;                        ///< Widget type, see @WindowWidgetTypes
 	byte display_flags;               ///< Resize direction, alignment, etc. during resizing, see @ResizeFlags
 	byte color;                       ///< Widget colour, see docs/ottd-colourtext-palette.png
-	uint16 left, right, top, bottom;  ///< The position offsets inside the window
+	int16 left, right, top, bottom;   ///< The position offsets inside the window
 	uint16 data;                      ///< The String/Image or special code (list-matrixes) of a widget
 	StringID tooltips;                ///< Tooltips that are shown when rightclicking on a widget
 } Widget;
