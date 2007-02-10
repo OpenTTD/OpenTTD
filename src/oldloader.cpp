@@ -1431,7 +1431,7 @@ static const OldChunks main_chunk[] = {
 	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount ),
 	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount_pr ),
 	OCL_VAR (  OC_UINT8,    1, &_economy.interest_rate ),
-	OCL_VAR (  OC_UINT8,    1, &_avail_aircraft ),
+	OCL_NULL( 1 ), // available airports
 	OCL_VAR (  OC_UINT8,    1, &_opt.road_side ),
 	OCL_VAR (  OC_UINT8,    1, &_opt.town_name ),
 

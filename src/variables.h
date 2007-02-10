@@ -50,9 +50,6 @@ VARDEF VehicleID _vehicle_id_ctr_day;
 // Skip aging of cargo?
 VARDEF byte _age_cargo_skip_counter;
 
-// Available aircraft types
-VARDEF byte _avail_aircraft;
-
 // Position in tile loop
 VARDEF TileIndex _cur_tileloop_tile;
 

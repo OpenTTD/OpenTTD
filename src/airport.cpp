@@ -447,13 +447,16 @@ const AirportFTAClass *GetAirport(const byte airport_type)
 
 uint32 GetValidAirports(void)
 {
-	uint32 bytemask = _avail_aircraft; /// sets the first 3 bytes, 0 - 2, @see AdjustAvailAircraft()
+	uint32 mask = 0;
 
-	if (_cur_year >= 1980) SETBIT(bytemask, 3); // metropolitan airport
-	if (_cur_year >= 1990) SETBIT(bytemask, 4); // international airport
-	if (_cur_year >= 1983) SETBIT(bytemask, 5); // commuter airport
-	if (_cur_year >= 1976) SETBIT(bytemask, 6); // helidepot
-	if (_cur_year >= 2002) SETBIT(bytemask, 7); // intercontinental airport
-	if (_cur_year >= 1980) SETBIT(bytemask, 8); // helistation
-	return bytemask;
+	if (_cur_year <  1960 || _patches.always_small_airport) SETBIT(mask, 0);  // small airport
+	if (_cur_year >= 1955) SETBIT(mask, 1); // city airport
+	if (_cur_year >= 1963) SETBIT(mask, 2); // heliport
+	if (_cur_year >= 1980) SETBIT(mask, 3); // metropolitan airport
+	if (_cur_year >= 1990) SETBIT(mask, 4); // international airport
+	if (_cur_year >= 1983) SETBIT(mask, 5); // commuter airport
+	if (_cur_year >= 1976) SETBIT(mask, 6); // helidepot
+	if (_cur_year >= 2002) SETBIT(mask, 7); // intercontinental airport
+	if (_cur_year >= 1980) SETBIT(mask, 8); // helistation
+	return mask;
 }

@@ -69,18 +69,6 @@ static void SetupEngineNames(void)
 	LoadCustomEngineNames();
 }
 
-static void AdjustAvailAircraft(void)
-{
-	byte avail = 0;
-	if (_cur_year >= 1955) avail |= 2; // big airport
-	if (_cur_year <  1960 || _patches.always_small_airport) avail |= 1;  // small airport
-	if (_cur_year >= 1963) avail |= 4; // enable heliport
-
-	if (avail != _avail_aircraft) {
-		_avail_aircraft = avail;
-		InvalidateWindow(WC_BUILD_STATION, 0);
-	}
-}
 
 static void CalcEngineReliability(Engine *e)
 {
@@ -178,8 +166,6 @@ void StartupEngines(void)
 		 * but using this, you can ask what type an engine number is
 		 * even if it is not a vehicle (yet)*/
 	}
-
-	AdjustAvailAircraft();
 }
 
 static void AcceptEnginePreview(EngineID eid, PlayerID player)
@@ -371,7 +357,6 @@ void EnginesMonthlyLoop(void)
 			}
 		}
 	}
-	AdjustAvailAircraft();
 }
 
 /** Rename an engine.

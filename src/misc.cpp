@@ -310,7 +310,7 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	    SLEG_VAR(_tick_counter,           SLE_UINT16),
 	    SLEG_VAR(_vehicle_id_ctr_day,     SLE_UINT16),
 	    SLEG_VAR(_age_cargo_skip_counter, SLE_UINT8),
-	    SLEG_VAR(_avail_aircraft,         SLE_UINT8),
+	SLE_CONDNULL(1, 0, 45),
 	SLEG_CONDVAR(_cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
 	SLEG_CONDVAR(_cur_tileloop_tile,      SLE_UINT32,                  6, SL_MAX_VERSION),
 	    SLEG_VAR(_disaster_delay,         SLE_UINT16),

@@ -3323,10 +3323,11 @@ static void AiStateAirportStuff(Player *p)
 
 static int32 AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
 {
+	uint32 avail_airports = GetValidAirports();
 	int32 total_cost = 0, ret;
 
 	for (; p->mode == 0; p++) {
-		if (!HASBIT(_avail_aircraft, p->attr)) return CMD_ERROR;
+		if (!HASBIT(avail_airports, p->attr)) return CMD_ERROR;
 		ret = DoCommand(TILE_MASK(tile + ToTileIndexDiff(p->tileoffs)), p->attr,0,flag | DC_AUTO | DC_NO_WATER,CMD_BUILD_AIRPORT);
 		if (CmdFailed(ret)) return CMD_ERROR;
 		total_cost += ret;
