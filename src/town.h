@@ -200,7 +200,7 @@ static inline Town *GetRandomTown(void)
 		num--;
 
 		index++;
-		/* Make sure we have a valid industry */
+		/* Make sure we have a valid town */
 		while (!IsValidTownID(index)) {
 			index++;
 			assert(index <= GetMaxTownIndex());
