@@ -325,8 +325,8 @@ check_params() {
 	fi
 
 	# Already detected by check_build
-	log 1 "checking for build gcc... $cc_build"
-	log 1 "checking for host gcc... $cc_host"
+	log 1 "checking build cc... $cc_build"
+	log 1 "checking host cc... $cc_host"
 
 	check_cxx_build
 	check_cxx_host
@@ -344,7 +344,7 @@ check_params() {
 	fi
 
 	if [ "$enable_static" != "0" ]; then
-		log 1 "checking for static... yes"
+		log 1 "checking static... yes"
 
 		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "OSX" ] && [ "$os" != "MORPHOS" ]; then
 			log 1 "WARNING: static is only known to work on Windows, MacOSX and MorphOS"
@@ -353,7 +353,7 @@ check_params() {
 			sleep 5
 		fi
 	else
-		log 1 "checking for static... no"
+		log 1 "checking static... no"
 	fi
 
 	# Show what we configured
@@ -1005,13 +1005,13 @@ check_host() {
 }
 
 check_cxx_build() {
-	check_compiler "build g++" "cxx_build" "$build" "$cxx_build" "$CXX" "g++" "c++" 1 "-dumpmachine"
+	check_compiler "build c++" "cxx_build" "$build" "$cxx_build" "$CXX" "g++" "c++" 1 "-dumpmachine"
 }
 
 check_cxx_host() {
 	# By default the host is the build
 	if [ -z "$host" ]; then host="$build"; fi
-	check_compiler "host g++" "cxx_host" "$host" "$cxx_host" "$CXX" "g++" "c++" 1 "-dumpmachine"
+	check_compiler "host c++" "cxx_host" "$host" "$cxx_host" "$CXX" "g++" "c++" 1 "-dumpmachine"
 }
 
 check_windres() {
@@ -1023,7 +1023,7 @@ check_windres() {
 check_strip() {
 	if [ "$os" = "OS2" ]; then
 		# OS2 via gcc is a bit weird.. stripping HAS to be done via emxbind, which is via gcc directly
-		echo "checking for host strip... using gcc -s option"
+		echo "checking host strip... using gcc -s option"
 	elif [ "$os" = "OSX" ]; then
 		# Most targets have -V in strip, to see if they exists... OSX doesn't.. so execute something
 		echo "int main(int argc, char *argv[]) { }" > strip.test.c
