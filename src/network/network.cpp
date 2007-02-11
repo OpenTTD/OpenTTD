@@ -339,6 +339,7 @@ void CheckMinPlayers(void)
 // Find all IP-aliases for this host
 static void NetworkFindIPs(void)
 {
+#if !defined(PSP)
 	int i;
 
 #if defined(BEOS_NET_SERVER) /* doesn't have neither getifaddrs or net/if.h */
@@ -506,6 +507,7 @@ static void NetworkFindIPs(void)
 	for (i = 0; _broadcast_list[i] != 0; i++) {
 		DEBUG(net, 3, "%d) %s", i, inet_ntoa(*(struct in_addr *)&_broadcast_list[i]));//inet_ntoa(inaddr));
 	}
+#endif /* PSP */
 }
 
 // Resolve a hostname to a inet_addr
@@ -518,14 +520,35 @@ unsigned long NetworkResolveHost(const char *hostname)
 
 	// If not try to resolve the name
 	if (ip == INADDR_NONE) {
+		struct in_addr addr;
+#if !defined(PSP)
 		struct hostent *he = gethostbyname(hostname);
 		if (he == NULL) {
 			DEBUG(net, 0, "Cannot resolve '%s'", hostname);
-		} else {
-			struct in_addr addr = *(struct in_addr *)he->h_addr_list[0];
-			DEBUG(net, 1, "Resolved '%s' to %s", hostname, inet_ntoa(addr));
-			ip = addr.s_addr;
+			return ip;
 		}
+		addr = *(struct in_addr *)he->h_addr_list[0];
+#else
+		int rid = -1;
+		char buf[1024];
+
+		/* Create a resolver */
+		if (sceNetResolverCreate(&rid, buf, sizeof(buf)) < 0) {
+			DEBUG(net, 0, "[NET] Error connecting resolver");
+			return ip;
+		}
+
+		/* Try to resolve the name */
+		if (sceNetResolverStartNtoA(rid, hostname, &addr, 2, 3) < 0) {
+			DEBUG(net, 0, "[NET] Cannot resolve %s", hostname);
+			sceNetResolverDelete(rid);
+			return ip;
+		}
+		sceNetResolverDelete(rid);
+#endif /* PSP */
+
+		DEBUG(net, 1, "[NET] Resolved %s to %s", hostname, inet_ntoa(addr));
+		ip = addr.s_addr;
 	}
 	return ip;
 }

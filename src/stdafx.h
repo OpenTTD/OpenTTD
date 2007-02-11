@@ -37,6 +37,12 @@
 # define strcasecmp stricmp
 #endif
 
+#if defined(PSP)
+# include <psptypes.h>
+# include <pspdebug.h>
+# include <pspthreadman.h>
+#endif /* PSP */
+
 #ifdef __BEOS__
 # include <SupportDefs.h>
 #endif
@@ -81,7 +87,8 @@
 /* PSP can only have 10 file-descriptors open at any given time, but this
  *  switch only limits reads via the Fio system. So keep 2 fds free for things
  *  like saving a game. */
-#define LIMITED_FDS 8
+# define LIMITED_FDS 8
+# define printf pspDebugScreenPrintf
 #endif /* PSP */
 
 /* by default we use [] var arrays */
