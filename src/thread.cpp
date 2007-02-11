@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "helpers.hpp"
 
-#if defined(__AMIGA__) || defined(__MORPHOS__) || defined(NO_THREADS)
+#if defined(__AMIGA__) || defined(__MORPHOS__) || defined(PSP) || defined(NO_THREADS)
 OTTDThread *OTTDCreateThread(OTTDThreadFunc function, void *arg) { return NULL; }
 void *OTTDJoinThread(OTTDThread *t) { return NULL; }
 void OTTDExitThread(void) { NOT_REACHED(); };

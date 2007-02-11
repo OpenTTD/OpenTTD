@@ -606,6 +606,9 @@ make_cflags_and_ldflags() {
 		# Each debug level reduces the optimalization by a bit
 		if [ $enable_debug -ge 1 ]; then
 			CFLAGS="$CFLAGS -g -D_DEBUG"
+			if [ "$os" = "PSP" ]; then
+				CFLAGS="$CFLAGS -G0"
+			fi
 		fi
 		if [ $enable_debug -ge 2 ]; then
 			CFLAGS="$CFLAGS -fno-inline"
@@ -668,6 +671,9 @@ make_cflags_and_ldflags() {
 	if [ "$os" = "PSP" ]; then
 		CFLAGS="$CFLAGS -I`$psp_config -p`/include"
 		LDFLAGS="$LDFLAGS -L`$psp_config -p`/lib"
+
+		CFLAGS="$CFLAGS -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150"
+		LIBS="$LIBS -D_PSP_FW_VERSION=150 -lpspdebug -lpspdisplay -lpspge -lpspctrl -lpspsdk -lpspnet -lpspnet_inet -lpspnet_apctl -lpspnet_resolver -lpsputility -lpspuser -lpspkernel -lm"
 	fi
 
 	if [ "$os" = "MORPHOS" ]; then

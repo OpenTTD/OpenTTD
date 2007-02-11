@@ -224,7 +224,11 @@ $(BIN_DIR)/$(TTD): $(TTD)
 
 $(TTD): rev.o $(OBJS) $(CONFIG_CACHE_LINKER)
 	$(E) '$(STAGE) Linking $@'
+ifeq ($(OS), PSP)
+	$(Q)$(CC_HOST) $(LDFLAGS) rev.o $(OBJS) $(LIBS) -o $@
+else
 	$(Q)$(CXX_HOST) $(LDFLAGS) rev.o $(OBJS) $(LIBS) -o $@
+endif
 ifdef STRIP
 	$(Q)$(STRIP) $@
 endif
