@@ -33,15 +33,7 @@ bool NetworkUDPSocketHandler::Listen(const uint32 host, const uint16 port, const
 		return false;
 	}
 
-	/* set nonblocking mode for socket */
-	{
-		unsigned long blocking = 1;
-#ifndef BEOS_NET_SERVER
-		ioctlsocket(this->sock, FIONBIO, &blocking);
-#else
-		setsockopt(this->sock, SOL_SOCKET, SO_NONBLOCK, &blocking, NULL);
-#endif
-	}
+	SetNonBlocking(this->sock);
 
 	sin.sin_family = AF_INET;
 	/* Listen on all IPs */
