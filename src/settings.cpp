@@ -960,7 +960,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 	SDTG_CONDVAR(name, type, flags, guiflags, var, def, min, max, interval, str, proc, 0, SL_MAX_VERSION)
 
 #define SDTG_CONDBOOL(name, flags, guiflags, var, def, str, proc, from, to)\
-	SDTG_GENERAL(name, SDT_BOOLX, SL_VAR, SLE_UINT8, flags, guiflags, var, 0, def, 0, 1, 0, NULL, str, proc, from, to)
+	SDTG_GENERAL(name, SDT_BOOLX, SL_VAR, SLE_BOOL, flags, guiflags, var, 0, def, 0, 1, 0, NULL, str, proc, from, to)
 #define SDTG_BOOL(name, flags, guiflags, var, def, str, proc)\
 	SDTG_CONDBOOL(name, flags, guiflags, var, def, str, proc, 0, SL_MAX_VERSION)
 
