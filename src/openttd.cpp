@@ -934,6 +934,12 @@ static void DoAutosave(void)
 {
 	char buf[200];
 
+#if defined(PSP)
+	/* Autosaving in networking is too time expensive for the PSP */
+	if (_networking)
+		return;
+#endif /* PSP */
+
 	if (_patches.keep_all_autosave && _local_player != PLAYER_SPECTATOR) {
 		const Player *p = GetPlayer(_local_player);
 		char* s = buf;
