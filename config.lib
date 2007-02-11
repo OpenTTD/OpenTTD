@@ -899,16 +899,21 @@ check_compiler() {
 
 	if [ -n "$3" ]; then
 		# Check for system
-		machine=`$3-$6 $9 2>/dev/null`
+		if [ -z "$6" ]; then
+			compiler="$3"
+		else
+			compiler="$3-$6"
+		fi
+		machine=`eval $compiler $9 2>/dev/null`
 		ret=$?
-		eval "$2=$3-$6"
+		eval "$2=$compiler"
 
-		log 2 "executing $3-$6 $9"
+		log 2 "executing $compiler $9"
 		log 2 "  returned $machine"
 		log 2 "  exit code $ret"
 
 		if ( [ -z "$machine" ] && [ "$8" != "3" ] ) || [ "$ret" != "0" ]; then
-			log 1 "checking $1... $3-$6 not found"
+			log 1 "checking $1... $compiler not found"
 			log 1 "I couldn't detect any $6 binary for $3"
 			exit 1
 		fi
