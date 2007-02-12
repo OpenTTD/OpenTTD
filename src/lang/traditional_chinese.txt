@@ -78,7 +78,7 @@ STR_0046_CANDY                                                  :糖果
 STR_0047_COLA                                                   :可樂
 STR_0048_COTTON_CANDY                                           :棉花糖
 STR_0049_BUBBLE                                                 :泡泡
-STR_004A_TOFFEE                                                 :乳脂糖
+STR_004A_TOFFEE                                                 :太妃糖
 STR_004B_BATTERY                                                :電池
 STR_004C_PLASTIC                                                :塑膠
 STR_004D_FIZZY_DRINK                                            :汽水
@@ -110,7 +110,7 @@ STR_QUANTITY_SWEETS                                             :{COMMA}包糖�
 STR_QUANTITY_COLA                                               :{VOLUME}可樂
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT}棉花糖
 STR_QUANTITY_BUBBLES                                            :{COMMA}泡泡
-STR_QUANTITY_TOFFEE                                             :{WEIGHT}乳脂糖
+STR_QUANTITY_TOFFEE                                             :{WEIGHT}太妃糖
 STR_QUANTITY_BATTERIES                                          :{COMMA}顆電池
 STR_QUANTITY_PLASTIC                                            :{VOLUME}塑膠
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA}杯汽水
@@ -142,7 +142,7 @@ STR_ABBREV_SWEETS                                               :{TINYFONT}糖
 STR_ABBREV_COLA                                                 :{TINYFONT}可
 STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}棉
 STR_ABBREV_BUBBLES                                              :{TINYFONT}泡
-STR_ABBREV_TOFFEE                                               :{TINYFONT}乳
+STR_ABBREV_TOFFEE                                               :{TINYFONT}太
 STR_ABBREV_BATTERIES                                            :{TINYFONT}電
 STR_ABBREV_PLASTIC                                              :{TINYFONT}膠
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}汽
@@ -155,7 +155,7 @@ STR_00B1_GAME_OPTIONS                                           :{WHITE}遊戲�
 STR_00B2_MESSAGE                                                :{YELLOW}訊息
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}來自{STRING}的訊息
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}注意！
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}不能執行以下命令....
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}不能執行以下動作....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}不能清除這個地段....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}原著作權為{COPYRIGHT} 1995 Chris Sawyer, 版權所有
 STR_00B7_VERSION                                                :{BLACK}OpenTTD 版本 {REV}
@@ -273,7 +273,7 @@ STR_0130_RENAME                                                 :{BLACK}更名
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}已定義過多名稱
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}所選名稱已被使用
 
-STR_0133_WINDOWS                                                :視窗
+STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
 STR_0135_OSX                                                    :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -370,8 +370,8 @@ STR_SORT_BY_POPULATION                                          :{BLACK}人口
 STR_SORT_BY_PRODUCTION                                          :{BLACK}產量
 STR_SORT_BY_TYPE                                                :{BLACK}種類
 STR_SORT_BY_TRANSPORTED                                         :{BLACK}輸出量
-STR_SORT_BY_NAME                                                :{BLACK}名字
-STR_SORT_BY_DROPDOWN_NAME                                       :名字
+STR_SORT_BY_NAME                                                :{BLACK}名稱
+STR_SORT_BY_DROPDOWN_NAME                                       :名稱
 STR_SORT_BY_DATE                                                :{BLACK}日期
 STR_SORT_BY_NUMBER                                              :編號
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :上年盈利
@@ -421,7 +421,7 @@ STR_0169_AUG                                                    :八月
 STR_016A_SEP                                                    :九月
 STR_016B_OCT                                                    :十月
 STR_016C_NOV                                                    :十一月
-STR_016D_DEC                                                    :十一月
+STR_016D_DEC                                                    :十二月
 ############ range for months ends
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
@@ -461,7 +461,7 @@ STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}跳到�
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}於一格土地上拆卸建築物等
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}下降土地上的一角
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}上昇土地上的一角
-STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}捲動棒 - 上下捲動清單
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}捲軸 - 上下捲動清單
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}捲動棒 - 左右捲動清單
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}於地圖上顯示土地輪廓
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}於地圖上顯示交通公具
@@ -481,9 +481,9 @@ STR_019C_ROAD_VEHICLE                                           :巴士/貨車
 STR_019D_AIRCRAFT                                               :飛機
 STR_019E_SHIP                                                   :船舶
 STR_019F_TRAIN                                                  :列車
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA}已變得殘舊
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA}已變得非常殘舊
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA}已變得非常殘舊以及必須即時作出替換
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA}使用年限將近
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA}使用年限已過
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA}使用年限已過必須替換
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}土地資訊
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}清拆成本: {LTBLUE}不適用
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}清拆成本: {LTBLUE}{CURRENCY}
@@ -771,7 +771,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :遊戲選項
 STR_02C5_DIFFICULTY_SETTINGS                                    :難易設定
-STR_02C7_CONFIG_PATCHES                                         :設定補綴
+STR_02C7_CONFIG_PATCHES                                         :設置修正
 STR_NEWGRF_SETTINGS                                             :NewGRF 設定
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}顯示市鎮名稱
@@ -878,7 +878,7 @@ STR_TOWNNAME_FRENCH                                             :法國
 STR_TOWNNAME_GERMAN                                             :德國
 STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :英國 (增訂版)
 STR_TOWNNAME_LATIN_AMERICAN                                     :拉丁美洲
-STR_TOWNNAME_SILLY                                              :荒唐名字
+STR_TOWNNAME_SILLY                                              :荒唐名稱
 STR_TOWNNAME_SWEDISH                                            :瑞典
 STR_TOWNNAME_DUTCH                                              :荷蘭
 STR_TOWNNAME_FINNISH                                            :芬蘭
@@ -1178,9 +1178,9 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}選擇�
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}更改路標名字
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}更改路標名稱
 
-STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}不能更改路標名字
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}不能更改路標名稱
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}將路軌變為路標
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}不能建立鐵路路標
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}不能移除鐵路路標
@@ -1461,7 +1461,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[私人] {STRIN
 STR_NETWORK_CHAT_TO_CLIENT                                      :[私人] 給 {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[全員] :
 STR_NETWORK_CHAT_ALL                                            :[全員] {STRING}: {GRAY}{STRING}
-STR_NETWORK_NAME_CHANGE                                         :將自己的名字改為
+STR_NETWORK_NAME_CHANGE                                         :將自己的名稱改為
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} 伺服器關閉連線
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} 伺服器正在重新啟動...{}請稍候...
 
@@ -1636,10 +1636,10 @@ STR_202D_UNTIL                                                  :{YELLOW}, 補�
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}補助過期:{}{}將 {STRING} 從 {STRING} 運到 {STRING} 從此不再提供補助。
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}補助結束:{}{}將 {STRING} 從 {STATION} 運到 {STATION} 不再提供補助。
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}提供補助:{}{}首先將 {STRING} 從 {STRING} 運到 {STRING} 的公司將得到區域當局補助一年！
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 獲得補補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年得到額外 50% 的運費補助！
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 獲得補補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到雙倍運費！
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 獲得補補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到三倍運費！
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 獲得補補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到四倍運費！
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年得到額外 50% 的運費補助！
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到雙倍運費！
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到三倍運費！
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 獲得補助！{}{}將 {STRING} 從 {STATION} 運到 {STATION} 的服務可在往後一年收到四倍運費！
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} 地方政府拒絕在城內建造另一座機場
 STR_2036_COTTAGES                                               :農舍
 STR_2037_HOUSES                                                 :住宅
@@ -2476,7 +2476,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Sikorsky 直升
 STR_80FE_GURU_X2_HELICOPTER                                     :Lockheed X2 直升機
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut 直升機
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}運具製造商的訊息
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}我們剛設計了一種新 {STRING} - 您有興趣獨家使用它一年，讓我們在正式發佈之前觀察它的表現嗎？
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}我們剛設計了一種新{STRING} - 您有興趣獨家使用它一年，讓我們在正式發佈之前觀察它的表現嗎？
 STR_8102_RAILROAD_LOCOMOTIVE                                    :鐵道機車頭
 STR_8103_ROAD_VEHICLE                                           :汽車
 STR_8104_AIRCRAFT                                               :飛機

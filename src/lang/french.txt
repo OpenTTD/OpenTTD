@@ -617,12 +617,12 @@ STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Éditeur de Scénario
-STR_0223_LAND_GENERATION                                        :{WHITE}Génération de terrain
+STR_0223_LAND_GENERATION                                        :{WHITE}Création du terrain
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Augmenter la quantité de terre à modifier
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Diminuer la quantité de terre à modifier
-STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Générer une terre aléatoire
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Créer un monde aléatoire
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Réinitialiser le terrain
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Réinitialiser le terrain
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Ôter toutes les propriétés des joueurs de la carte
@@ -643,7 +643,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Ne peut 
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...Il n'y a plus d'emplacement sur la carte
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Augmenter la taille de la ville
 STR_023C_EXPAND                                                 :{BLACK}Agrandir
-STR_023D_RANDOM_TOWN                                            :{BLACK}Générer une ville
+STR_023D_RANDOM_TOWN                                            :{BLACK}Créer une ville
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construire une ville à un emplacement aléatoire
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Créer les industries
 STR_0240_COAL_MINE                                              :{BLACK}Mine de Charbon
@@ -720,7 +720,7 @@ STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...doit 
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...Droit à un par ville seulement
 STR_0288_PLANT_TREES                                            :{BLACK}Semer des arbres
 STR_0289_PLACE_SIGN                                             :{BLACK}Placer un panneau
-STR_028A_RANDOM_TREES                                           :{BLACK}Générer des arbres
+STR_028A_RANDOM_TREES                                           :{BLACK}Ajouter des arbres aléatoires
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Semer des arbres sur l'ensemble du terrain de façon aléatoire
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placer des endroits rocheux sur le terrain
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placer un Phare
@@ -788,7 +788,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nom de
 ############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Outil d'Inspection
 STR_02D6                                                        :
-STR_CONSOLE_SETTING                                             :Inverser Console
+STR_CONSOLE_SETTING                                             :Afficher la console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Copie d'écran (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Copie géante d'écran (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :À Propos de 'OpenTTD'
@@ -809,7 +809,7 @@ STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copie l'
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Coller depuis la vue
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colle l'emplacement de cette vue vers la vue globale
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unité monétaire
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Devise monétaire
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Sélectionner l'unité monétaire
 STR_MEASURING_UNITS                                             :{BLACK}Unité de mesure
@@ -1005,7 +1005,7 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aéronef
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Le renouvellement automatique a échoué sur Train {COMMA} (limite d'argent)
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Le renouvellement automatique a échoué sur Véhicule {COMMA} (limite d'argent)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Le renouvellement automatique a échoué sur Navire {COMMA} (limite d'argent)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Le renouvellement automatique a échoué sur Aéronef {COMMA} (limite d'argent)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Le renouvellement automatique d'Aéronef {COMMA} a échoué (limite d'argent)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Train {COMMA} est trop long après remplacement
 
 STR_CONFIG_PATCHES                                              :{BLACK}Options Avancées
@@ -1026,7 +1026,7 @@ STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Pleine 
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Utiliser l'algorithme amélioré de chargement : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Charger les véhicules graduellement: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Livrer cargaison seulement sur demande: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Livrer la cargaison seulement sur demande: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permettre la construction de longs ponts: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permettre l'ordre d'aller au dépôt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Permettre la construction de ressources primaires: {ORANGE}{STRING}
@@ -1299,7 +1299,7 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Saisir l
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients en ligne / clients max
-STR_NETWORK_GAME_INFO                                           :{SILVER}INFO DE LA PARTIE
+STR_NETWORK_GAME_INFO                                           :{SILVER}INFOS SUR LE SERVEUR
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Langue:  {WHITE}{STRING}
@@ -1351,7 +1351,7 @@ STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{S
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max spectateurs:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limiter le serveur à un certain nombre de spectateurs
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Langue parlée :
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Langue utilisée :
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur.
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Démarrer la partie
@@ -1360,13 +1360,13 @@ STR_NETWORK_LOAD_GAME                                           :{BLACK}Charger 
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Continuer une partie multijoueur sauvée précédemment (attention à reprendre le même joueur)
 
 ############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Peu importe
+STR_NETWORK_LANG_ANY                                            :Aucune
 STR_NETWORK_LANG_ENGLISH                                        :Anglais
 STR_NETWORK_LANG_GERMAN                                         :Allemand
 STR_NETWORK_LANG_FRENCH                                         :Français
 ############ End of leave-in-this-order
 
-STR_NETWORK_GAME_LOBBY                                          :{WHITE}Chat d'avant jeu
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Préparation de la partie
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Se prépare à rejoindre :   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Liste des compagnies présentes dans le jeu.  Vous pouvez soit en rejoindre une, soit en créer une.
@@ -1376,10 +1376,10 @@ STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Observer
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Permet d'observer une partie en tant que spectateur
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Rejoindre la compagnie
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Aider à gérer cette compagnie
-STR_NETWORK_REFRESH                                             :{BLACK}Rafraîchir
-STR_NETWORK_REFRESH_TIP                                         :{BLACK}Rafraîchir les infos à propos du serveur
+STR_NETWORK_REFRESH                                             :{BLACK}Actualiser
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Actualiser les infos sur le serveur
 
-STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO DE LA COMPAGNIE
+STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFOS SUR LA COMPAGNIE
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nom de la compagnie :  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguration :  {WHITE}{NUM}
@@ -1806,7 +1806,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Charger 
 STR_4002_SAVE                                                   :{BLACK}Sauvegarder
 STR_4003_DELETE                                                 :{BLACK}Supprimer
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Mo libres
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Mo libre{P "" s}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossible d'accéder au disque
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}La sauvegarde à échoué
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Impossible de supprimer le fichier
@@ -1817,7 +1817,7 @@ STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Supprime
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Sauvegarde la partie avec le nom choisi
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Choix du type de partie
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Choisir un scénario (vert), une partie préparée (bleu), ou une partie aléatoire
-STR_4010_GENERATE_RANDOM_NEW_GAME                               :Générer une partie aléatoirement
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :Créer une partie aléatoirement
 STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Charger une carte d'altitude
 
 ##id 0x4800
@@ -1996,15 +1996,15 @@ STR_6804_CUSTOM                                                 :{BLACK}Personna
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Nombre maximum de compétiteurs: {ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Arrivée des compétiteurs: {ORANGE}{STRING}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Nombre maximal de concurents: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Arrivée des concurents: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Nombre de villes: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Nombre d'industries: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Prêt initial maximum: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Taux d'interêt initial: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Coûts d'entretien: {ORANGE}{STRING}
-STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Vitesse de développement des compétiteurs: {ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intelligence des compétiteurs: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Vitesse de développement des concurents: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intelligence des concurents: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Pannes des véhicules: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Multiplicateur de subvention: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Coût des constructions: {ORANGE}{STRING}
@@ -2013,7 +2013,7 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Quantit
 STR_6813_ECONOMY                                                :{LTBLUE}Economie: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Demi-tour des trains: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Désastres: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Attitude de l'hotel de ville face au repaysagement : {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL                                         :{LTBLUE}Attitude de la municipalité face au repaysagement : {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Aucune
@@ -2620,7 +2620,7 @@ STR_8863_CRASHED                                                :{RED}Crashé!
 STR_8865_NAME_TRAIN                                             :{WHITE}Renommer le train
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Impossible de renommer le train...
 STR_8867_NAME_TRAIN                                             :{BLACK}Renommer le train
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Tragédie ferroviaire!{}{COMMA} mort{P "" s} brûlé{P "" s} vif{P "" s} dans la collision
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Accident ferroviaire!{}{COMMA} mort{P "" s} brûlé{P "" s} vif{P "" s} dans la collision
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Impossible de faire faire demi-tour...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renommer le type de train
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Impossible de renommer le type de train...
@@ -2682,8 +2682,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Impossib
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Renommer le véhicule
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Le premier bus arrive à {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Le premier camion arrive à {STATION}!
-STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Tragédie routière!{}Un automobiliste meurt brûlé vif lors d'une collision avec un train
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Tragédie routière!{}{COMMA} morts, brûlés vifs lors d'une collision avec un train
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident routier!{}Un automobiliste meurt brûlé vif lors d'une collision avec un train
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accident routier!{}{COMMA} mort{P "" s} lors d'une collision avec un train
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Impossible de faire faire demi-tour au véhicule...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Impossible de faire faire demi-tour aux unités multiples
 STR_9034_RENAME                                                 :{BLACK}Renommer
@@ -2790,7 +2790,7 @@ STR_A00C_DETAILS                                                :{WHITE}{VEHICLE
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Âge: {LTBLUE}{STRING}{BLACK}   Coût d'entretien: {LTBLUE}{CURRENCY}/an
 STR_A00E_MAX_SPEED                                              :{BLACK}Vitesse max.: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profits cette année: {LTBLUE}{CURRENCY} (l'an dernier: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilité: {LTBLUE}{COMMA}%   {BLACK}Cafouillages depuis le dernier service: {LTBLUE}{COMMA}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilité: {LTBLUE}{COMMA}%   {BLACK}Pannes depuis le dernier service: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valeur: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Impossible d'envoyer l'aéronef au hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}En route pour le hangar de {STATION}
@@ -2828,8 +2828,8 @@ STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nommer l
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Impossible de nommer l'aéronef...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nommer l'aéronef
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Arrivée du premier aéronef à {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Tragédie aérienne!{}{COMMA} morts brûlés vifs à {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Tragédie aérienne !{}L'aéronef n'avait plus de carburant, {COMMA} passagers meurent dans l'incendie!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Accident d'avion!{}{COMMA} mort{P "" s} dans un crash à {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Accident d'avion!{}L'aéronef n'avait plus de carburant, {COMMA} passager{P "" s} meurent dans le crash!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Renommer
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Renommer type d'aéronef
@@ -2853,7 +2853,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Usine détruite dans des circonstances suspectes près de {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}Un 'OVNI' attérit près de {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Affaissement d'une veine de charbon entraîne la desctruction de la mine de {TOWN}!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Inondations!{}Au moins {COMMA} présumés manquants ou morts après des inondations meurtrières!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Inondations!{}Au moins {COMMA} présumé{P "" s} manquant{P "" s} ou mort{P "" s} après des inondations meurtrières!
 
 STR_BRIBE_FAILED                                                :{WHITE}Votre tentative de corruption à été
 STR_BRIBE_FAILED_2                                              :{WHITE}révélée à la presse par un journaliste régional.
@@ -2912,10 +2912,10 @@ STR_NEWGRF_PARAMETER                                            :{BLACK}Paramèt
 STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Entrer les paramètres NewGRF
 STR_NEWGRF_NO_INFO                                              :{BLACK}Pas d'informations disponibles
 
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Fichier NewGRF disponibles
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Fichiers NewGRF disponibles
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Ajouter à la sélection
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Ajouter le fichier NewGRF sélectionné à votre configuration
-STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Re-scanner les fichiers
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Actualiser la liste
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Mettre à jour la liste des fichiers NewGRF disponibles
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ajout impossible: GRF ID en double
 
@@ -3048,22 +3048,22 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Effort d
 
 ########### String for New Landscape Generator
 
-STR_GENERATE                                                    :{WHITE}Générer
+STR_GENERATE                                                    :{WHITE}Créer
 STR_RANDOM                                                      :{BLACK}Nouvelle Amorce
-STR_RANDOM_HELP                                                 :{BLACK}Modifer l'amorce utilisée pour la Génération du Terrain
+STR_RANDOM_HELP                                                 :{BLACK}Modifier l'amorce utilisée pour la Création du Terrain
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Création du monde
 STR_RANDOM_SEED                                                 :{BLACK}Amorce :
 STR_RANDOM_SEED_HELP                                            :{BLACK}Cliquer pour saisir une amorce
 STR_LAND_GENERATOR                                              :{BLACK}Générateur :
-STR_TREE_PLACER                                                 :{BLACK}Placement arbres :
+STR_TREE_PLACER                                                 :{BLACK}Ajout des arbres :
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotation de la carte d'altitude :
 STR_TERRAIN_TYPE                                                :{BLACK}Type de terrain :
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Niveau de la mer :
 STR_SMOOTHNESS                                                  :{BLACK}Lissage :
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Alt. d'enneigement :
 STR_DATE                                                        :{BLACK}Date:
-STR_NUMBER_OF_TOWNS                                             :{BLACK}No. de villes :
-STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}No. d'industries :
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Nb. de villes :
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Nb. d'industries :
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_SNOW_LINE_UP                                                :{BLACK}Augmenter l'altitude d'enneigement
 STR_SNOW_LINE_DOWN                                              :{BLACK}Baisser l'altitude d'enneigement
@@ -3081,15 +3081,15 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Voulez-
 STR_PROGRESS                                                    :{WHITE}{NUM}% terminé
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Création du monde
-STR_TREE_GENERATION                                             :{BLACK}Génération des arbres
-STR_UNMOVABLE_GENERATION                                        :{BLACK}Génération des non-déplacables
-STR_CLEARING_TILES                                              :{BLACK}Génération des zones rugueuses et pierreuses
+STR_TREE_GENERATION                                             :{BLACK}Création des arbres
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Création des non-déplacables
+STR_CLEARING_TILES                                              :{BLACK}Création des zones rugueuses et rocheuses
 STR_SETTINGUP_GAME                                              :{BLACK}Configuration du jeu
 STR_PREPARING_TILELOOP                                          :{BLACK}Rafraîchissement du terrain
 STR_PREPARING_GAME                                              :{BLACK}Préparation du jeu
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Cette action a modifié le niveau de difficulté en personnalisé
 STR_SE_FLAT_WORLD                                               :{WHITE}Terrain plat
-STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Générer un terrain plat
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Créer un monde plat
 STR_SE_RANDOM_LAND                                              :{WHITE}Terrain aléatoire
 STR_SE_NEW_WORLD                                                :{BLACK}Nouveau scénario
 STR_SE_CAPTION                                                  :{WHITE}Type de scénario
