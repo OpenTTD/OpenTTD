@@ -27,5 +27,6 @@ extern const Bridge orig_bridge[MAX_BRIDGES];
 extern Bridge _bridge[MAX_BRIDGES];
 
 uint GetBridgeFoundation(Slope tileh, Axis axis);
+uint GetBridgeHeightRamp(TileIndex t);
 
 #endif /* BRIDGE_H */

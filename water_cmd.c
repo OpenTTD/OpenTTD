@@ -20,6 +20,7 @@
 #include "train.h"
 #include "water_map.h"
 #include "newgrf.h"
+#include "bridge.h"
 
 const SpriteID _water_shore_sprites[15] = {
 	0,
@@ -617,10 +618,10 @@ static Vehicle *FindFloodableVehicleOnTile(TileIndex tile)
 	byte z;
 	Vehicle *v;
 
-	if (!IsBridgeTile(tile)) return FindVehicleOnTileZ(tile, 0);
+	if (!IsBridgeTile(tile) || !IsBridgeRamp(tile)) return FindVehicleOnTileZ(tile, 0);
 
 	end = GetOtherBridgeEnd(tile);
-	z = GetBridgeHeight(tile);
+	z = GetBridgeHeightRamp(tile);
 
 	/* check the start tile first since as this is closest to the water */
 	v = FindVehicleOnTileZ(tile, z);

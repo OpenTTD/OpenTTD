@@ -611,7 +611,7 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 }
 
 
-static uint GetBridgeHeightRamp(TileIndex t)
+uint GetBridgeHeightRamp(TileIndex t)
 {
 	uint h;
 	uint tileh = GetTileSlope(t, &h);
