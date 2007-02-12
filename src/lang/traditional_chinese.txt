@@ -167,7 +167,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}離開
 STR_00C8_YES                                                    :{BLACK}是
 STR_00C9_NO                                                     :{BLACK}否
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}你是否確認放棄進行中的遊戲並回到{STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}你要放棄遊戲並回到 {STRING} 嗎?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -194,7 +194,7 @@ STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}遊戲�
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}位置
-STR_00E5_CONTOURS                                               :輪廓
+STR_00E5_CONTOURS                                               :地形
 STR_00E6_VEHICLES                                               :交通工具
 STR_00E7_INDUSTRIES                                             :工業
 STR_00E8_ROUTES                                                 :路線
@@ -463,7 +463,7 @@ STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}下降�
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}上昇土地上的一角
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}捲軸 - 上下捲動清單
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}捲動棒 - 左右捲動清單
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}於地圖上顯示土地輪廓
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}於地圖上顯示地形
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}於地圖上顯示交通公具
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}於地圖上顯示各種工業
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}於地圖上顯示運輸路線
@@ -634,7 +634,7 @@ STR_0233_TOWN_GENERATION                                        :{WHITE}產生�
 STR_0234_NEW_TOWN                                               :{BLACK}新的市鎮
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}建造新的市鎮
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}不能建造市鎮...
-STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...太接近地圖邊帶
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...太接近地圖邊緣
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...太接近另一個市鎮
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...地點不適合
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...已有太多市鎮
@@ -1754,8 +1754,8 @@ STR_3048_STATIONS                                               :{WHITE}{COMPANY
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- 無 -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...地點不適合
-STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}太靠近另一個船塢
-STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}必須先摧毀船塢
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}太靠近另一個碼頭
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}必須先摧毀碼頭
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}選擇鐵道車站方向
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}選擇鐵道車站的月台數量
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}選擇鐵道車站的長度
@@ -1884,8 +1884,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} 產量減半
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}{INDUSTRY} 遇到蟲害！{}產量減半
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...只能位於地圖邊緣
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} 在 {INDUSTRY} 的產量上升 {COMMA}%！
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} 在 {INDUSTRY} 的產量減少 {COMMA}%！
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{1:INDUSTRY}的{0:STRING}產量上升 {2:COMMA}%！
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY}的{0:STRING}產量減少 {2:COMMA}%！
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}隧道內有列車

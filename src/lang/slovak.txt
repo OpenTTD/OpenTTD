@@ -8,24 +8,24 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Za okrajom mapy
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Prilis blizko okraja mapy
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Mala hotovost - potrebna {CURRENCY}
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Príliš blízko okraja mapy
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Malá hotovost - potrebných {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebny rovny teren
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebný rovný terén
 STR_0008_WAITING                                                :{BLACK}Caka: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (na ceste z
 STR_000B                                                        :{YELLOW}{STATION})
-STR_000C_ACCEPTS                                                :{BLACK}Prijima: {WHITE}
-STR_000D_ACCEPTS                                                :{BLACK}Prijima: {GOLD}
+STR_000C_ACCEPTS                                                :{BLACK}Prijíma: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Prijíma: {GOLD}
 STR_000E                                                        :
-STR_000F_PASSENGERS                                             :Cestujucich
+STR_000F_PASSENGERS                                             :Cestujúcich
 STR_000F_PASSENGERS.g                                           :cestujucich
 STR_0010_COAL                                                   :Uhlie
 STR_0010_COAL.g                                                 :uhlia
-STR_0011_MAIL                                                   :Postu
+STR_0011_MAIL                                                   :Poštu
 STR_0011_MAIL.g                                                 :posty
 STR_0012_OIL                                                    :Ropu
 STR_0012_OIL.g                                                  :ropy
@@ -37,13 +37,13 @@ STR_0015_GRAIN                                                  :Obilie
 STR_0015_GRAIN.g                                                :obilia
 STR_0016_WOOD                                                   :Drevo
 STR_0016_WOOD.g                                                 :dreva
-STR_0017_IRON_ORE                                               :Zeleznu rudu
+STR_0017_IRON_ORE                                               :Železnú rudu
 STR_0017_IRON_ORE.g                                             :zeleznej rudy
 STR_0018_STEEL                                                  :Ocel
 STR_0018_STEEL.g                                                :ocele
 STR_0019_VALUABLES                                              :Cennosti
 STR_0019_VALUABLES.g                                            :cennosti
-STR_001A_COPPER_ORE                                             :Medenna ruda
+STR_001A_COPPER_ORE                                             :Medenná ruda
 STR_001A_COPPER_ORE.g                                           :medennej rudy
 STR_001B_MAIZE                                                  :Kukuricu
 STR_001B_MAIZE.g                                                :kukurice
@@ -84,7 +84,7 @@ STR_002C_PLASTIC.g                                              :zuvaciek
 STR_002D_FIZZY_DRINKS                                           :Sumienku
 STR_002D_FIZZY_DRINKS.g                                         :sumienky
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Cestujuci
+STR_002F_PASSENGER                                              :Cestujúci
 STR_002F_PASSENGER.g                                            :cestujucich
 STR_0030_COAL                                                   :Uhlie
 STR_0030_COAL.g                                                 :uhlia
@@ -100,13 +100,13 @@ STR_0035_GRAIN                                                  :Obilie
 STR_0035_GRAIN.g                                                :obilia
 STR_0036_WOOD                                                   :Drevo
 STR_0036_WOOD.g                                                 :dreva
-STR_0037_IRON_ORE                                               :Zelezna ruda
+STR_0037_IRON_ORE                                               :Železná ruda
 STR_0037_IRON_ORE.g                                             :zeleznej rudy
 STR_0038_STEEL                                                  :Ocel
 STR_0038_STEEL.g                                                :ocele
 STR_0039_VALUABLES                                              :Cennosti
 STR_0039_VALUABLES.g                                            :cennosti
-STR_003A_COPPER_ORE                                             :Medenna ruda
+STR_003A_COPPER_ORE                                             :Medenná ruda
 STR_003A_COPPER_ORE.g                                           :medennej rudy
 STR_003B_MAIZE                                                  :Kukurica
 STR_003B_MAIZE.g                                                :kukurice
@@ -165,7 +165,7 @@ STR_QUANTITY_DIAMONDS                                           :{COMMA} deb{P n
 STR_QUANTITY_FOOD                                               :{WEIGHT} jedla
 STR_QUANTITY_PAPER                                              :{WEIGHT} papiera
 STR_QUANTITY_GOLD                                               :{COMMA} deb{P na ny ien} zlata
-STR_QUANTITY_WATER                                              :{VOLUME} voda
+STR_QUANTITY_WATER                                              :{VOLUME} vody
 STR_QUANTITY_WHEAT                                              :{WEIGHT} psenice
 STR_QUANTITY_RUBBER                                             :{VOLUME} kaucuk
 STR_QUANTITY_SUGAR                                              :{WEIGHT} cukru
@@ -216,12 +216,12 @@ STR_00AE                                                        :{WHITE}{DATE_SH
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Nastavenia hry
-STR_00B2_MESSAGE                                                :{YELLOW}Sprava
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sprava od {STRING}
+STR_00B2_MESSAGE                                                :{YELLOW}Správa
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Správa od {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Upozornenie!
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nie je mozne vykonat ...
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast nie je mozne vycistit ...
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Povodny copyright: {COPYRIGHT} 1995 Chris Sawyer, vsetky prava vyhradene
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nie je možné vykonat ...
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast nie je možné vycistit ...
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Povodný copyright: {COPYRIGHT} 1995 Chris Sawyer, vsetky prava vyhradene
 STR_00B7_VERSION                                                :{BLACK}OpenTTD verzia {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 team OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK} Preklad - Lukas Lengyel & gpsoft
@@ -229,73 +229,73 @@ STR_TRANSLATED_BY                                               :{BLACK} Preklad
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Koniec
-STR_00C8_YES                                                    :{BLACK}Ano
+STR_00C8_YES                                                    :{BLACK}Áno
 STR_00C9_NO                                                     :{BLACK}Nie
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Si si isty ze chces ukoncit hru a vratit sa do {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Si si istý že chces ukoncit hru a vrátit sa do {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
 STR_00CE_4                                                      :{BLACK}4
 STR_00CF_5                                                      :{BLACK}5
 STR_00D0_NOTHING                                                :Nic
-STR_00D1_DARK_BLUE                                              :Tmavomodra
-STR_00D2_PALE_GREEN                                             :Svetlozelena
-STR_00D3_PINK                                                   :Ruzova
-STR_00D4_YELLOW                                                 :Zlta
-STR_00D5_RED                                                    :Cervena
-STR_00D6_LIGHT_BLUE                                             :Svetlomodra
-STR_00D7_GREEN                                                  :Zelena
-STR_00D8_DARK_GREEN                                             :Tmavozelena
-STR_00D9_BLUE                                                   :Modra
-STR_00DA_CREAM                                                  :Kremova
-STR_00DB_MAUVE                                                  :Ruzova
-STR_00DC_PURPLE                                                 :Fialova
-STR_00DD_ORANGE                                                 :Oranzova
-STR_00DE_BROWN                                                  :Hneda
-STR_00DF_GREY                                                   :Seda
+STR_00D1_DARK_BLUE                                              :Tmavomodrá
+STR_00D2_PALE_GREEN                                             :Svetlozelená
+STR_00D3_PINK                                                   :Ružová
+STR_00D4_YELLOW                                                 :Žltá
+STR_00D5_RED                                                    :Cervená
+STR_00D6_LIGHT_BLUE                                             :Svetlomodrá
+STR_00D7_GREEN                                                  :Zelená
+STR_00D8_DARK_GREEN                                             :Tmavozelená
+STR_00D9_BLUE                                                   :Modrá
+STR_00DA_CREAM                                                  :Krémová
+STR_00DB_MAUVE                                                  :Ružová
+STR_00DC_PURPLE                                                 :Fialová
+STR_00DD_ORANGE                                                 :Oranžová
+STR_00DE_BROWN                                                  :Hnedá
+STR_00DF_GREY                                                   :Sedá
 STR_00E0_WHITE                                                  :Biela
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}V hre je prilis vela dopravnych prostriedkov
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}V hre je prílis vela dopravných prostriedkov
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
-STR_00E4_LOCATION                                               :{BLACK}Pozicia
+STR_00E4_LOCATION                                               :{BLACK}Pozícia
 STR_00E5_CONTOURS                                               :Vrstevnice
-STR_00E6_VEHICLES                                               :Dopravne Prostriedky
+STR_00E6_VEHICLES                                               :Dopravné prostriedky
 STR_00E7_INDUSTRIES                                             :Priemysel
 STR_00E8_ROUTES                                                 :Trasy
-STR_00E9_VEGETATION                                             :Vegetacia
-STR_00EA_OWNERS                                                 :Vlastnici
+STR_00E9_VEGETATION                                             :Vegetácia
+STR_00EA_OWNERS                                                 :Vlastníci
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Cesty
-STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Zeleznicne drahy
-STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stanice/Letiska/Pristavy
-STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Budovy/Tovarne
-STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Dopravne Prostriedky
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Železnicné trate
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stanice/Letiská/Prístavy
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Budovy/Priemysel
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Dopravné prostriedky
 STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
 STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
 STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Vlaky
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Auta
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Cestné vozidlá
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Lode
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lietadla
-STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Dopravne Trasy
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Uholna bana
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Elektraren
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lietadlá
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Dopravné trasy
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Uholná bana
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Elektráren
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Les
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Pila
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Ropna rafineria
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Píla
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Ropná rafinéria
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Farma
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Tovaren
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Továren
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Tlaciaren
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Ropny vrt
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Zelezorudna bana
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Ropné vrty
+STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Železorudná bana
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Oceliaren
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banka
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Vyroba papiera
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Zlata bana
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Vyroba potravin
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamantova bana
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Medenna bana
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Výroba papiera
+STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Zlatá bana
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Výroba potravín
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamantová bana
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Medenná bana
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Ovocny sad
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kaucukova plantaz
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vodny zdroj
@@ -1740,7 +1740,7 @@ STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}V meste {TOWN} zavladol dopravny chaos!{}{}Rekonstrukcia ciest financovana {COMPANY} prinesie 6 mesiacov utrpenia pre motoristov!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (v rekonstrukcii)
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (vo výstavbe)
 STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Vigvam
 STR_205B_TEAPOT_HOUSE                                           :Kaviaren
@@ -1959,7 +1959,7 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nemozno 
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Tunel musi byt najskor zburany
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Most musi byt najskor zburany
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nemozno zacat a skoncit na tom istom mieste
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Pod mostom je potrebna voda alebo udolie
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Pod mostom je potrebná voda alebo údolie
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Zaciatok a koniec musi byt v rovine
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}To miesto je nepouzitelne ako vstup do tunela
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2833,7 +2833,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nová ka
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nemozno prestavat lod...
 STR_9842_REFITTABLE                                             :(mozna prestavba)
 STR_GO_TO_SHIP_DEPOT                                            :Chod do {TOWN} Lodenice
-SERVICE_AT_SHIP_DEPOT                                           :Opravit v {TOWN} Lodenici
+SERVICE_AT_SHIP_DEPOT                                           :Opravit v {TOWN} lodenici
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Letiska
@@ -2907,7 +2907,7 @@ STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vybrat ty
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nová kapacita: {GOLD}{STRING}{}{BLACK}Náklady na prestavbu: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie je mozne prestavat na novy typ nakladu ...
 STR_GO_TO_AIRPORT_HANGAR                                        :Chod do {STATION} Hangaru
-SERVICE_AT_AIRPORT_HANGAR                                       :Opravit v {STATION} Hangare
+SERVICE_AT_AIRPORT_HANGAR                                       :Opravit v {STATION} hangári
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelin zniceny pri nehode na {STATION}!

@@ -141,6 +141,7 @@ STR_003C_FRUIT                                                  :фрукти
 STR_003C_FRUIT.r                                                :фруктів
 STR_003C_FRUIT.z                                                :фрукти
 STR_003D_DIAMOND                                                :діаманти
+STR_003D_DIAMOND.r                                              :діамантів
 STR_003D_DIAMOND.z                                              :діаманти
 STR_003E_FOOD                                                   :продукти
 STR_003E_FOOD.r                                                 :продуктів
