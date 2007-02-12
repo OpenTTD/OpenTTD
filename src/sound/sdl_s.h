@@ -7,4 +7,4 @@
 
 extern const HalSoundDriver _sdl_sound_driver;
 
-#endif
+#endif /* SOUND_SDL_H */

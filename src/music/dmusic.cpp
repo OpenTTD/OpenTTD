@@ -4,7 +4,6 @@
 
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
 
-#include "../openttd.h"
 #include "../debug.h"
 #include "../win32.h"
 #include "dmusic.h"
@@ -218,7 +217,7 @@ static void DMusicMidiSetVolume(byte vol)
 }
 
 
-extern "C" const HalMusicDriver _dmusic_midi_driver = {
+const HalMusicDriver _dmusic_midi_driver = {
 	DMusicMidiStart,
 	DMusicMidiStop,
 	DMusicMidiPlaySong,
@@ -227,4 +226,4 @@ extern "C" const HalMusicDriver _dmusic_midi_driver = {
 	DMusicMidiSetVolume,
 };
 
-#endif
+#endif /* WIN32_ENABLE_DIRECTMUSIC_SUPPORT */

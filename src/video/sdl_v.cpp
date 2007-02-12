@@ -510,4 +510,4 @@ const HalVideoDriver _sdl_video_driver = {
 	SdlVideoFullScreen,
 };
 
-#endif
+#endif /* WITH_SDL */

@@ -42,29 +42,27 @@ static void CALLBACK waveOutProc(HWAVEOUT hwo, UINT uMsg, DWORD_PTR dwInstance,
 {
 	switch (uMsg) {
 		case WOM_DONE:
-			if (_waveout) FillHeaders();
+			if (_waveout != NULL) FillHeaders();
 			break;
-
-		default:
-			break;
+		default: break;
 	}
 }
 
 static const char *Win32SoundStart(const char* const* parm)
 {
 	WAVEFORMATEX wfex;
-	int hz;
-
-	_bufsize = GetDriverParamInt(parm, "bufsize", 1024);
-	hz = GetDriverParamInt(parm, "hz", 11025);
 	wfex.wFormatTag = WAVE_FORMAT_PCM;
 	wfex.nChannels = 2;
-	wfex.nSamplesPerSec = hz;
-	wfex.nAvgBytesPerSec = hz * 2 * 2;
-	wfex.nBlockAlign = 4;
 	wfex.wBitsPerSample = 16;
+	wfex.nSamplesPerSec = GetDriverParamInt(parm, "hz", 11025);
+	wfex.nBlockAlign = (wfex.nChannels * wfex.wBitsPerSample) / 8;
+	wfex.nAvgBytesPerSec = wfex.nSamplesPerSec * wfex.nBlockAlign;
+
+	_bufsize = GetDriverParamInt(parm, "bufsize", 1024);
+
 	if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)&waveOutProc, 0, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
 		return "waveOutOpen failed";
+
 	PrepareHeader(&_wave_hdr[0]);
 	PrepareHeader(&_wave_hdr[1]);
 	FillHeaders();

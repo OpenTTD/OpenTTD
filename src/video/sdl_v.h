@@ -7,4 +7,4 @@
 
 extern const HalVideoDriver _sdl_video_driver;
 
-#endif
+#endif /* VIDEO_SDL_H */

@@ -44,4 +44,4 @@ const HalSoundDriver _sdl_sound_driver = {
 	SdlSoundStop,
 };
 
-#endif
+#endif /* WITH_SDL */

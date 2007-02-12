@@ -7,4 +7,4 @@
 
 extern const HalVideoDriver _dedicated_video_driver;
 
-#endif
+#endif /* VIDEO_DEDICATED_H */

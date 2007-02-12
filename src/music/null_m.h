@@ -7,4 +7,4 @@
 
 extern const HalMusicDriver _null_music_driver;
 
-#endif
+#endif /* MUSIC_NULL_H */

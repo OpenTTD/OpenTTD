@@ -7,4 +7,4 @@
 
 extern const HalVideoDriver _win32_video_driver;
 
-#endif
+#endif /* VIDEO_WIN32_H */
