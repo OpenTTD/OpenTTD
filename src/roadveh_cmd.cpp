@@ -1273,6 +1273,7 @@ static void RoadVehController(Vehicle *v)
 	if (v->current_order.type == OT_LOADING) return;
 
 	if (IsRoadVehInDepot(v)) {
+		/* Vehicle is about to leave a depot */
 		DiagDirection dir;
 		const RoadDriveEntry* rdp;
 		byte rd2;
@@ -1308,6 +1309,7 @@ static void RoadVehController(Vehicle *v)
 		return;
 	}
 
+	/* Check if vehicle needs to proceed, return if it doesn't */
 	if (!RoadVehAccelerate(v)) return;
 
 	if (v->u.road.overtaking != 0)  {
@@ -1323,9 +1325,11 @@ static void RoadVehController(Vehicle *v)
 			}
 	}
 
+	/* Save old vehicle position to use at end of move to set viewport area dirty */
 	BeginVehicleMove(v);
 
 	if (v->u.road.state == 255) {
+		/* Vehicle is on a bridge or in a tunnel */
 		GetNewVehiclePosResult gp;
 
 		GetNewVehiclePos(v, &gp);
@@ -1337,7 +1341,7 @@ static void RoadVehController(Vehicle *v)
 		}
 
 		if ((IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) && VehicleEnterTile(v, gp.new_tile, gp.x, gp.y) & 4) {
-			//new_dir = RoadGetNewDirection(v, gp.x, gp.y)
+			/* Vehicle has just entered a bridge or tunnel */
 			v->cur_image = GetRoadVehImage(v, v->direction);
 			UpdateRoadVehDeltaXY(v);
 			SetRoadVehPosition(v,gp.x,gp.y);
@@ -1351,10 +1355,11 @@ static void RoadVehController(Vehicle *v)
 		return;
 	}
 
+	/* Get move position data for next frame */
 	rd = _road_drive_data[(v->u.road.state + (_opt.road_side << 4)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
-// switch to another tile
 	if (rd.x & 0x80) {
+		/* Vehicle is moving to the next tile */
 		TileIndex tile = v->tile + TileOffsByDiagDir(rd.x & 3);
 		int dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3));
 		uint32 r;
@@ -1362,6 +1367,7 @@ static void RoadVehController(Vehicle *v)
 		const RoadDriveEntry *rdp;
 
 		if (dir == -1) {
+			/* No path was found to destination */
 			v->cur_speed = 0;
 			return;
 		}
@@ -1372,6 +1378,7 @@ again:
 			tile = v->tile;
 		}
 
+		/* Get position data for first frame on the new tile */
 		rdp = _road_drive_data[(dir + (_opt.road_side << 4)) ^ v->u.road.overtaking];
 
 		x = TileX(tile) * TILE_SIZE + rdp[0].x;
@@ -1382,29 +1389,35 @@ again:
 
 		r = VehicleEnterTile(v, tile, x, y);
 		if (r & 8) {
+			/* Vehicle cannot enter the tile */
 			if (!IsTileType(tile, MP_TUNNELBRIDGE)) {
 				v->cur_speed = 0;
 				return;
 			}
+			/* Try an about turn to re-enter the previous tile */
 			dir = _road_reverse_table[rd.x&3];
 			goto again;
 		}
 
 		if (IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && IsTileType(v->tile, MP_STATION)) {
 			if ((dir & 7) >= 6) {
+				/* New direction is trying to turn vehicle around.
+				 * We can't turn at the exit of a road stop so wait.*/
 				v->cur_speed = 0;
 				return;
 			}
 			if (IsRoadStop(v->tile)) {
+				/* The tile that the vehicle is leaving is a road stop */
 				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 
-				// reached a loading bay, mark it as used and clear the usage bit
-				SETBIT(rs->status, v->u.road.state & 2 ? 1 : 0); // occupied bay
+				/* Vehicle is leaving a road stop tile, mark bay as free and clear the usage bit */
+				SETBIT(rs->status, v->u.road.state & 2 ? 1 : 0); // set bay as free
 				CLRBIT(rs->status, 7); // usage bit
 			}
 		}
 
 		if (!(r & 4)) {
+			/* Set vehicle to first frame on new tile */
 			v->tile = tile;
 			v->u.road.state = (byte)dir;
 			v->u.road.frame = 0;
@@ -1421,6 +1434,7 @@ again:
 	}
 
 	if (rd.x & 0x40) {
+		/* Vehicle has finished turning around, it will now head back onto the same tile */
 		int dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3));
 		uint32 r;
 		int tmp;
@@ -1428,6 +1442,7 @@ again:
 		const RoadDriveEntry *rdp;
 
 		if (dir == -1) {
+			/* No path was found to destination */
 			v->cur_speed = 0;
 			return;
 		}
@@ -1443,10 +1458,12 @@ again:
 
 		r = VehicleEnterTile(v, v->tile, x, y);
 		if (r & 8) {
+			/* Vehicle cannot enter the tile */
 			v->cur_speed = 0;
 			return;
 		}
 
+		/* Set vehicle to second frame on the tile */
 		v->u.road.state = tmp & ~16;
 		v->u.road.frame = 1;
 
@@ -1461,15 +1478,19 @@ again:
 		return;
 	}
 
+	/* Calculate new position for the vehicle */
 	x = (v->x_pos & ~15) + (rd.x & 15);
 	y = (v->y_pos & ~15) + (rd.y & 15);
 
 	new_dir = RoadVehGetSlidingDirection(v, x, y);
 
 	if (!IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30)) {
+		/* Vehicle is not in a road stop.
+		 * Check for another vehicle to overtake */
 		Vehicle* u = RoadVehFindCloseTo(v, x, y, new_dir);
 
 		if (u != NULL) {
+			/* There is a vehicle in front overtake it if possible */
 			if (v->u.road.overtaking == 0) RoadVehCheckOvertake(v, u);
 			return;
 		}
@@ -1477,12 +1498,17 @@ again:
 
 	old_dir = v->direction;
 	if (new_dir != old_dir) {
+		/* The vehicle's direction has changed. */
 		v->direction = new_dir;
 		v->cur_speed -= (v->cur_speed >> 2);
 		if (old_dir != v->u.road.state) {
+			/* The vehicle is in a road stop */
 			v->cur_image = GetRoadVehImage(v, new_dir);
 			UpdateRoadVehDeltaXY(v);
 			SetRoadVehPosition(v, v->x_pos, v->y_pos);
+			/* Note, return here means that the frame counter is not incremented
+			 * for vehicles changing direction in a road stop. This causes frames to
+			 * be repeated. Is this intended? */
 			return;
 		}
 	}
@@ -1492,10 +1518,15 @@ again:
 		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 		Station* st = GetStationByTile(v->tile);
 
+		/* Vehicle is at the stop position (at a bay) in a road stop.
+		 * Note, if vehicle is loading/unloading it has already been handled,
+		 * so if we get here the vehicle has just arrived or is just ready to leave. */
 		if (v->current_order.type != OT_LEAVESTATION &&
 				v->current_order.type != OT_GOTO_DEPOT) {
+			/* Vehicle has arrived at a bay in a road stop */
 			Order old_order;
 
+			/* Clear road stop busy bit to allow another vehicle to enter or leave */
 			CLRBIT(rs->status, 7);
 
 			v->last_station_visited = GetStationIndex(v->tile);
@@ -1521,8 +1552,10 @@ again:
 			return;
 		}
 
+		/* Vehicle is ready to leave a bay in a road stop */
 		if (v->current_order.type != OT_GOTO_DEPOT) {
 			if (HASBIT(rs->status, 7)) {
+				/* Road stop is busy, so wait */
 				v->cur_speed = 0;
 				return;
 			}
@@ -1530,13 +1563,14 @@ again:
 			v->current_order.flags = 0;
 			ClearSlot(v);
 		}
+		/* Set road stop busy bit to prevent another vehicle trying to enter or leave */
 		SETBIT(rs->status, 7);
 
 		if (rs == v->u.road.slot) {
-			//we have arrived at the correct station
+			/* We are leaving the correct station */
 			ClearSlot(v);
 		} else if (v->u.road.slot != NULL) {
-			//we have arrived at the wrong station
+			/* We are leaving the wrong station */
 			//XXX The question is .. what to do? Actually we shouldn't be here
 			//but I guess we need to clear the slot
 			DEBUG(ms, 0, "Vehicle %d (index %d) arrived at wrong stop", v->unitnumber, v->index);
@@ -1562,12 +1596,17 @@ again:
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
+	/* Check tile position conditions - i.e. stop position in depot,
+	 * entry onto bridge or into tunnel */
 	r = VehicleEnterTile(v, v->tile, x, y);
 	if (r & 8) {
+		/* Vehicle cannot continue */
 		v->cur_speed = 0;
 		return;
 	}
 
+	/* Move to next frame unless vehicle arrived at a stop position
+	 * in a depot or entered a tunnel/bridge */
 	if ((r & 4) == 0) v->u.road.frame++;
 
 	v->cur_image = GetRoadVehImage(v, v->direction);
