@@ -139,8 +139,7 @@ struct Station {
 
 	Date build_date;
 
-	//uint16 airport_flags;
-	uint32 airport_flags;
+	uint64 airport_flags;   /// stores which blocks on the airport are taken. was 16 bit earlier on, then 32
 	StationID index;
 
 	byte last_vehicle_type;

@@ -2855,8 +2855,9 @@ static const SaveLoad _station_desc[] = {
 	SLE_CONDNULL(2, 0, 5), // Truck/bus stop status
 	SLE_CONDNULL(1, 0, 4), // Blocked months
 
-	SLE_CONDVAR(Station, airport_flags,              SLE_VAR_U32 | SLE_FILE_U16,  0,  2),
-	SLE_CONDVAR(Station, airport_flags,              SLE_UINT32,                  3, SL_MAX_VERSION),
+	SLE_CONDVAR(Station, airport_flags,              SLE_VAR_U64 | SLE_FILE_U16,  0,  2),
+	SLE_CONDVAR(Station, airport_flags,              SLE_VAR_U64 | SLE_FILE_U32,  3, 45),
+	SLE_CONDVAR(Station, airport_flags,              SLE_UINT64,                 46, SL_MAX_VERSION),
 
 	SLE_CONDNULL(2, 0, 25), /* Ex last-vehicle */
 	SLE_CONDVAR(Station, last_vehicle_type,          SLE_UINT8,                  26, SL_MAX_VERSION),

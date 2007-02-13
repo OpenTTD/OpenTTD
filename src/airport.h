@@ -77,7 +77,7 @@ enum {
 
 /* Movement Blocks on Airports */
 // blocks (eg_airport_flags)
-enum {
+static const uint64
 	TERM1_block              = 1 <<  0,
 	TERM2_block              = 1 <<  1,
 	TERM3_block              = 1 <<  2,
@@ -119,8 +119,7 @@ enum {
 	OUT_WAY_block2           = 1 << 31,
 // end of new blocks
 
-	NOTHING_block            = 1 << 30
-};
+	NOTHING_block            = 1 << 30;
 
 typedef struct AirportMovingData {
 	int16 x;
