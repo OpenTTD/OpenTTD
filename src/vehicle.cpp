@@ -2524,7 +2524,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		case VEH_Road:
 			InvalidateWindowClasses(WC_ROADVEH_LIST);
-			v->u.road.state = 254;
+			v->u.road.state = RVSB_IN_DEPOT;
 			break;
 
 		case VEH_Ship:

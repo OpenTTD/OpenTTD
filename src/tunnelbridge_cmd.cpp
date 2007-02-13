@@ -1250,7 +1250,10 @@ static const byte _tunnel_fractcoord_2[4]    = {0x81, 0x98, 0x87, 0x38};
 static const byte _tunnel_fractcoord_3[4]    = {0x82, 0x88, 0x86, 0x48};
 static const byte _exit_tunnel_track[4]      = {1, 2, 1, 2};
 
-static const byte _road_exit_tunnel_state[4] = {8, 9, 0, 1};
+/** Get the trackdir of the exit of a tunnel */
+static const Trackdir _road_exit_tunnel_state[DIAGDIR_END] = {
+	TRACKDIR_X_SW, TRACKDIR_Y_NW, TRACKDIR_X_NE, TRACKDIR_Y_SE
+};
 static const byte _road_exit_tunnel_frame[4] = {2, 7, 9, 4};
 
 static const byte _tunnel_fractcoord_4[4]    = {0x52, 0x85, 0x98, 0x29};
@@ -1304,11 +1307,11 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			vdir = DirToDiagDir(v->direction);
 
 			// Enter tunnel?
-			if (v->u.road.state != 0xFF && dir == vdir) {
+			if (v->u.road.state != RVSB_WORMHOLE && dir == vdir) {
 				if (fc == _tunnel_fractcoord_4[dir] ||
 						fc == _tunnel_fractcoord_5[dir]) {
 					v->tile = tile;
-					v->u.road.state = 0xFF;
+					v->u.road.state = RVSB_WORMHOLE;
 					v->vehstatus |= VS_HIDDEN;
 					return VETSB_ENTERED_WORMHOLE;
 				} else {
@@ -1354,7 +1357,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				CLRBIT(v->u.rail.flags, VRF_GOINGUP);
 				CLRBIT(v->u.rail.flags, VRF_GOINGDOWN);
 			} else {
-				v->u.road.state = 0xFF;
+				v->u.road.state = RVSB_WORMHOLE;
 			}
 			return VETSB_ENTERED_WORMHOLE;
 		} else if (DirToDiagDir(v->direction) == ReverseDiagDir(dir)) {
@@ -1365,7 +1368,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 					return VETSB_ENTERED_WORMHOLE;
 				}
 			} else {
-				if (v->u.road.state == 0xFF) {
+				if (v->u.road.state == RVSB_WORMHOLE) {
 					v->u.road.state = _road_exit_tunnel_state[dir];
 					v->u.road.frame = 0;
 					return VETSB_ENTERED_WORMHOLE;

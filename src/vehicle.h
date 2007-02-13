@@ -27,6 +27,37 @@ enum VehicleEnterTileStatus {
 	VETSB_CANNOT_ENTER     = 1 << VETS_CANNOT_ENTER,     ///< The vehicle cannot enter the tile
 };
 
+/** Road vehicle states */
+enum RoadVehicleStates {
+	/*
+	 * Lower 4 bits are used for vehicle track direction. (Trackdirs)
+	 * When in a road stop (bit 5 set) these bits give the
+	 * track direction of the entry to the road stop.
+	 * As the entry direction will always be a diagonal
+	 * direction (X_NE, Y_SE, X_SW or Y_NW) only bits 0 and 3
+	 * are needed to hold this direction. Bit 1 is then used to show
+	 * that the vehicle is using the second road stop bay.
+	 */
+
+	/* Numeric values */
+	RVSB_IN_DEPOT                = 0xFE,                      ///< The vehicle is in a depot
+	RVSB_WORMHOLE                = 0xFF,                      ///< The vehicle is in a tunnel and/or bridge
+
+	/* Bit numbers */
+	RVS_USING_SECOND_BAY         =    1,                      ///< Only used while in a road stop
+	RVS_DRIVE_SIDE               =    4,                      ///< Only used when retrieving move data and for turning vehicles
+	RVS_IN_ROAD_STOP             =    5,                      ///< The vehicle is in a road stop
+
+	/* Bit sets of the above specified bits */
+	RVSB_USING_SECOND_BAY        = 1 << RVS_USING_SECOND_BAY, ///< Only used while in a road stop
+	RVSB_DRIVE_SIDE              = 1 << RVS_DRIVE_SIDE,       ///< Only used when retrieving move data and for turning vehicles
+	RVSB_IN_ROAD_STOP            = 1 << RVS_IN_ROAD_STOP,     ///< The vehicle is in a road stop
+	RVSB_IN_ROAD_STOP_END        = RVSB_IN_ROAD_STOP + TRACKDIR_END,
+
+	RVSB_TRACKDIR_MASK           = 0x0F,                      ///< The mask used to extract track dirs
+	RVSB_ROAD_STOP_TRACKDIR_MASK = 0x09                       ///< Only bits 0 and 3 are used to encode the trackdir for road stops
+};
+
 enum {
 	VEH_Train,
 	VEH_Road,
@@ -136,7 +167,7 @@ typedef struct VehicleAir {
 } VehicleAir;
 
 typedef struct VehicleRoad {
-	byte state;
+	byte state;             /// @see RoadVehicleStates
 	byte frame;
 	uint16 blocked_ctr;
 	byte overtaking;

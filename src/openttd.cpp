@@ -1458,7 +1458,7 @@ bool AfterLoadGame(void)
 			if (v->type == VEH_Train) {
 				v->u.rail.track = TRACK_BIT_WORMHOLE;
 			} else {
-				v->u.road.state = 0xFF;
+				v->u.road.state = RVSB_WORMHOLE;
 			}
 		}
 	}

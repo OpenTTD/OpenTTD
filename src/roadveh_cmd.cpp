@@ -74,6 +74,23 @@ static const TrackdirBits _road_exit_dir_to_incoming_trackdirs[DIAGDIR_END] = {
 	TRACKDIR_BIT_RIGHT_S | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_Y_SE
 };
 
+/** Converts the exit direction of a depot to trackdir the vehicle is going to drive to */
+static const Trackdir _roadveh_depot_exit_trackdir[DIAGDIR_END] = {
+	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW
+};
+
+/** Checks whether the trackdir means that we are reversing */
+static bool IsReversingRoadTrackdir(Trackdir dir)
+{
+	return (dir & 0x07) >= 6;
+}
+
+/** Checks whether the given trackdir is a straight road */
+static bool IsStraightRoadTrackdir(Trackdir dir)
+{
+	return (dir & 0x06) == 0;
+}
+
 int GetRoadVehImage(const Vehicle* v, Direction direction)
 {
 	int img = v->spritenum;
@@ -161,7 +178,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->z_pos = GetSlopeZ(x,y);
 		v->z_height = 6;
 
-		v->u.road.state = 254;
+		v->u.road.state = RVSB_IN_DEPOT;
 		v->vehstatus = VS_HIDDEN|VS_STOPPED|VS_DEFPAL;
 
 		v->spritenum = rvi->image_index;
@@ -452,7 +469,7 @@ int32 CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->u.road.crashed_ctr != 0 ||
 			v->breakdown_ctr != 0 ||
 			v->u.road.overtaking != 0 ||
-			v->u.road.state == 255 ||
+			v->u.road.state == RVSB_WORMHOLE ||
 			IsRoadVehInDepot(v) ||
 			v->cur_speed < 5) {
 		return CMD_ERROR;
@@ -502,7 +519,7 @@ static void ClearCrashedStation(Vehicle *v)
 	rs->SetEntranceBusy(false);
 
 	/* Free the parking bay */
-	rs->FreeBay(HASBIT(v->u.road.state, 1) ? 1 : 0);
+	rs->FreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY) ? 1 : 0);
 }
 
 static void RoadVehDelete(Vehicle *v)
@@ -607,7 +624,7 @@ static void RoadVehCheckTrainCrash(Vehicle *v)
 {
 	TileIndex tile;
 
-	if (v->u.road.state == 255) return;
+	if (v->u.road.state == RVSB_WORMHOLE) return;
 
 	tile = v->tile;
 
@@ -875,7 +892,7 @@ static bool RoadVehAccelerate(Vehicle *v)
 
 	// Clamp
 	spd = min(spd, v->max_speed);
-	if (v->u.road.state == 255) spd = min(spd, SetSpeedLimitOnBridge(v));
+	if (v->u.road.state == RVSB_WORMHOLE) spd = min(spd, SetSpeedLimitOnBridge(v));
 
 	//updates statusbar only if speed have changed to save CPU time
 	if (spd != v->cur_speed) {
@@ -966,7 +983,8 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 
 	if (v->direction != u->direction || !(v->direction & 1)) return;
 
-	if (v->u.road.state >= 32 || (v->u.road.state & 7) > 1) return;
+	/* Check if vehicle is in a road stop, depot, tunnel or bridge or not on a straight road */
+	if (v->u.road.state >= RVS_IN_ROAD_STOP || !IsStraightRoadTrackdir((Trackdir)(v->u.road.state & RVSB_TRACKDIR_MASK))) return;
 
 	tt = GetTileTrackStatus(v->tile, TRANSPORT_ROAD) & 0x3F;
 	if ((tt & 3) == 0) return;
@@ -1242,11 +1260,6 @@ static const byte _road_veh_data_1[] = {
 	15, 15, 11, 11
 };
 
-/** Converts the exit direction of a depot to trackdir the vehicle is going to drive to */
-static const Trackdir _roadveh_depot_exit_trackdir[DIAGDIR_END] = {
-	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW
-};
-
 static void RoadVehController(Vehicle *v)
 {
 	Direction new_dir;
@@ -1327,11 +1340,8 @@ static void RoadVehController(Vehicle *v)
 		if (++v->u.road.overtaking_ctr >= 35)
 			/* If overtaking just aborts at a random moment, we can have a out-of-bound problem,
 			 *  if the vehicle started a corner. To protect that, only allow an abort of
-			 *  overtake if we are on straight road, which are the 8 states below */
-			if (v->u.road.state == 0  || v->u.road.state == 1  ||
-					v->u.road.state == 8  || v->u.road.state == 9  ||
-					v->u.road.state == 16 || v->u.road.state == 17 ||
-					v->u.road.state == 24 || v->u.road.state == 25) {
+			 *  overtake if we are on straight roads */
+			if (v->u.road.state < RVSB_IN_ROAD_STOP && IsStraightRoadTrackdir((Trackdir)v->u.road.state)) {
 				v->u.road.overtaking = 0;
 			}
 	}
@@ -1339,7 +1349,7 @@ static void RoadVehController(Vehicle *v)
 	/* Save old vehicle position to use at end of move to set viewport area dirty */
 	BeginVehicleMove(v);
 
-	if (v->u.road.state == 255) {
+	if (v->u.road.state == RVSB_WORMHOLE) {
 		/* Vehicle is on a bridge or in a tunnel */
 		GetNewVehiclePosResult gp;
 
@@ -1367,7 +1377,7 @@ static void RoadVehController(Vehicle *v)
 	}
 
 	/* Get move position data for next frame */
-	rd = _road_drive_data[(v->u.road.state + (_opt.road_side << 4)) ^ v->u.road.overtaking][v->u.road.frame + 1];
+	rd = _road_drive_data[(v->u.road.state + (_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
 	if (rd.x & 0x80) {
 		/* Vehicle is moving to the next tile */
@@ -1384,7 +1394,7 @@ static void RoadVehController(Vehicle *v)
 		}
 
 again:
-		if ((dir & 7) >= 6) {
+		if (IsReversingRoadTrackdir(dir)) {
 			/* Turning around */
 			tile = v->tile;
 		}
@@ -1406,12 +1416,12 @@ again:
 				return;
 			}
 			/* Try an about turn to re-enter the previous tile */
-			dir = _road_reverse_table[rd.x&3];
+			dir = _road_reverse_table[rd.x & 3];
 			goto again;
 		}
 
-		if (IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && IsTileType(v->tile, MP_STATION)) {
-			if ((dir & 7) >= 6) {
+		if (IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END) && IsTileType(v->tile, MP_STATION)) {
+			if (IsReversingRoadTrackdir(dir)) {
 				/* New direction is trying to turn vehicle around.
 				 * We can't turn at the exit of a road stop so wait.*/
 				v->cur_speed = 0;
@@ -1422,7 +1432,7 @@ again:
 				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 
 				/* Vehicle is leaving a road stop tile, mark bay as free and clear the usage bit */
-				rs->FreeBay(HASBIT(v->u.road.state, 1) ? 1 : 0);
+				rs->FreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY) ? 1 : 0);
 				rs->SetEntranceBusy(false);
 			}
 		}
@@ -1475,7 +1485,7 @@ again:
 		}
 
 		/* Set vehicle to second frame on the tile */
-		v->u.road.state = tmp & ~16;
+		CLRBIT(v->u.road.state, RVS_DRIVE_SIDE);
 		v->u.road.frame = 1;
 
 		if (newdir != v->direction) {
@@ -1495,7 +1505,7 @@ again:
 
 	new_dir = RoadVehGetSlidingDirection(v, x, y);
 
-	if (!IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30)) {
+	if (!IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END)) {
 		/* Vehicle is not in a road stop.
 		 * Check for another vehicle to overtake */
 		Vehicle* u = RoadVehFindCloseTo(v, x, y, new_dir);
@@ -1524,8 +1534,8 @@ again:
 		}
 	}
 
-	if (v->u.road.state >= 0x20 &&
-			_road_veh_data_1[v->u.road.state - 0x20 + (_opt.road_side<<4)] == v->u.road.frame) {
+	if (v->u.road.state >= RVSB_IN_ROAD_STOP &&
+			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_opt.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) {
 		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 		Station* st = GetStationByTile(v->tile);
 

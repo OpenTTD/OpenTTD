@@ -2222,7 +2222,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 			}
 		}
 	} else if (v->type == VEH_Road) {
-		if (v->u.road.state < 16 && !HASBIT(v->u.road.state, 2) && v->u.road.frame == 0) {
+		if (v->u.road.state < RVSB_IN_ROAD_STOP && v->u.road.frame == 0) {
 			if (IsRoadStop(tile)) {
 				/* Attempt to allocate a parking bay in a road stop */
 				RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
@@ -2230,11 +2230,11 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 				/* Check if station is busy or if there are no free bays. */
 				if (rs->IsEntranceBusy() || !rs->HasFreeBay()) return VETSB_CANNOT_ENTER;
 
-				v->u.road.state += 32;
+				SETBIT(v->u.road.state, RVS_IN_ROAD_STOP);
 
 				/* Allocate a bay and update the road state */
 				uint bay_nr = rs->AllocateBay();
-				SB(v->u.road.state, 1, 1, bay_nr);
+				SB(v->u.road.state, RVS_USING_SECOND_BAY, 1, bay_nr);
 
 				/* Mark the station entrace as busy */
 				rs->SetEntranceBusy(true);
