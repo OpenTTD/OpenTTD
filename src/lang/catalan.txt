@@ -1469,7 +1469,6 @@ STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Espectadors
 
-STR_NETWORK_CLIENTLIST_NONE                                     :
 STR_NETWORK_CLIENTLIST_KICK                                     :Breu
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Entrega diners
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parla a tothom

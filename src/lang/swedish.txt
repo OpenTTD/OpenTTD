@@ -2630,7 +2630,6 @@ STR_TRAIN_STOPPING                                              :{RED}Stannar
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stannar, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Fel järnvägstyp
 STR_TRAIN_NO_POWER                                              :{RED}Ingen Kraft
-STR_TRAIN_START_NO_CATENARY                                     :
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vägfordon i vägen
