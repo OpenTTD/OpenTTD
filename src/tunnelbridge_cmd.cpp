@@ -1275,7 +1275,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			dir = GetTunnelDirection(tile);
 			vdir = DirToDiagDir(v->direction);
 
-			if (v->u.rail.track != 0x40 && dir == vdir) {
+			if (v->u.rail.track != TRACK_BIT_WORMHOLE && dir == vdir) {
 				if (IsFrontEngine(v) && fc == _tunnel_fractcoord_1[dir]) {
 					if (!PlayVehicleSound(v, VSE_TUNNEL) && v->spritenum < 4) {
 						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
@@ -1360,7 +1360,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 		} else if (DirToDiagDir(v->direction) == ReverseDiagDir(dir)) {
 			v->tile = tile;
 			if (v->type == VEH_Train) {
-				if (v->u.rail.track == 0x40) {
+				if (v->u.rail.track == TRACK_BIT_WORMHOLE) {
 					v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 					return VETSB_ENTERED_WORMHOLE;
 				}

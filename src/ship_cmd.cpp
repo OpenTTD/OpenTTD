@@ -905,7 +905,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		_new_vehicle_id = v->index;
 
 		v->string_id = STR_SV_SHIP_NAME;
-		v->u.ship.state = TRACK_BIT_SPECIAL;
+		v->u.ship.state = TRACK_BIT_DEPOT;
 
 		v->service_interval = _patches.servint_ships;
 		v->date_of_last_service = _date;

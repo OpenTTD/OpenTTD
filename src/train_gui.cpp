@@ -27,7 +27,7 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train && IsFrontEngine(v) &&
 				v->tile == tile &&
-				v->u.rail.track == 0x80) {
+				v->u.rail.track == TRACK_BIT_DEPOT) {
 			if (found != NULL) return; // must be exactly one.
 			found = v;
 		}

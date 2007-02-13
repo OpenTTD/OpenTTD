@@ -2316,7 +2316,7 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 	switch (type) {
 		case VEH_Train:
 			FOR_ALL_VEHICLES(v) {
-				if (v->tile == tile && v->type == VEH_Train && v->u.rail.track == 0x80) {
+				if (v->tile == tile && v->type == VEH_Train && v->u.rail.track == TRACK_BIT_DEPOT) {
 					if (IsFrontEngine(v)) {
 						if (engine_list == NULL) continue;
 						if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
@@ -2529,7 +2529,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		case VEH_Ship:
 			InvalidateWindowClasses(WC_SHIPS_LIST);
-			v->u.ship.state = TRACK_BIT_SPECIAL;
+			v->u.ship.state = TRACK_BIT_DEPOT;
 			RecalcShipStuff(v);
 			break;
 
@@ -2737,10 +2737,10 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 
 	switch (v->type) {
 		case VEH_Train:
-			if (v->u.rail.track == 0x80) /* We'll assume the train is facing outwards */
+			if (v->u.rail.track == TRACK_BIT_DEPOT) /* We'll assume the train is facing outwards */
 				return DiagdirToDiagTrackdir(GetRailDepotDirection(v->tile)); /* Train in depot */
 
-			if (v->u.rail.track == 0x40) /* train in tunnel, so just use his direction and assume a diagonal track */
+			if (v->u.rail.track == TRACK_BIT_WORMHOLE) /* train in tunnel, so just use his direction and assume a diagonal track */
 				return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 
 			return TrackDirectionToTrackdir(FindFirstTrack(v->u.rail.track), v->direction);

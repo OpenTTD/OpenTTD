@@ -39,7 +39,7 @@ static void TrainController(Vehicle *v, bool update_image);
 
 static const byte _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
 static const byte _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
-static const byte _state_dir_table[4] = { 0x20, 8, 0x10, 4 };
+static const TrackBits _state_dir_table[4] = { TRACK_BIT_RIGHT, TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER };
 
 
 /** Return the cargo weight multiplier to use for a rail vehicle
@@ -377,7 +377,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		num++;
 		drag_coeff += 3;
 
-		if (u->u.rail.track == 0x80) max_speed = min(max_speed, 61);
+		if (u->u.rail.track == TRACK_BIT_DEPOT) max_speed = min(max_speed, 61);
 
 		if (HASBIT(u->u.rail.flags, VRF_GOINGUP)) {
 			incl += u->u.rail.cached_veh_weight * 60; //3% slope, quite a bit actually
@@ -639,7 +639,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->z_pos = GetSlopeZ(x,y);
 			v->owner = _current_player;
 			v->z_height = 6;
-			v->u.rail.track = TRACK_BIT_SPECIAL;
+			v->u.rail.track = TRACK_BIT_DEPOT;
 			v->vehstatus = VS_HIDDEN | VS_DEFPAL;
 
 			v->subtype = 0;
@@ -690,7 +690,7 @@ static void NormalizeTrainVehInDepot(const Vehicle* u)
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train && IsFreeWagon(v) &&
 				v->tile == u->tile &&
-				v->u.rail.track == 0x80) {
+				v->u.rail.track == TRACK_BIT_DEPOT) {
 			if (CmdFailed(DoCommand(0, v->index | (u->index << 16), 1, DC_EXEC,
 					CMD_MOVE_RAIL_VEHICLE)))
 				break;
@@ -712,7 +712,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 	u->y_pos = v->y_pos;
 	u->z_pos = v->z_pos;
 	u->z_height = 6;
-	u->u.rail.track = TRACK_BIT_SPECIAL;
+	u->u.rail.track = TRACK_BIT_DEPOT;
 	u->vehstatus = v->vehstatus & ~VS_STOPPED;
 	u->subtype = 0;
 	SetMultiheaded(u);
@@ -798,7 +798,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->y_pos = y;
 			v->z_pos = GetSlopeZ(x,y);
 			v->z_height = 6;
-			v->u.rail.track = TRACK_BIT_SPECIAL;
+			v->u.rail.track = TRACK_BIT_DEPOT;
 			v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 			v->spritenum = rvi->image_index;
 			v->cargo_type = rvi->cargo_type;
@@ -885,7 +885,7 @@ int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped)
 		 *
 		 * Also skip counting rear ends of multiheaded engines */
 		if (!IsArticulatedPart(v) && !(!IsTrainEngine(v) && IsMultiheaded(v))) count++;
-		if (v->u.rail.track != 0x80 || v->tile != tile ||
+		if (v->u.rail.track != TRACK_BIT_DEPOT || v->tile != tile ||
 				(IsFrontEngine(v) && needs_to_be_stopped && !(v->vehstatus & VS_STOPPED))) {
 			return -1;
 		}
@@ -1306,7 +1306,7 @@ int32 CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->vehstatus & VS_STOPPED && v->u.rail.cached_power == 0) return_cmd_error(STR_TRAIN_START_NO_CATENARY);
 
 	if (flags & DC_EXEC) {
-		if (v->vehstatus & VS_STOPPED && v->u.rail.track == 0x80) {
+		if (v->vehstatus & VS_STOPPED && v->u.rail.track == TRACK_BIT_DEPOT) {
 			DeleteVehicleNews(p1, STR_8814_TRAIN_IS_WAITING_IN_DEPOT);
 		}
 
@@ -1585,8 +1585,8 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 		Swap(a->direction,    b->direction);
 
 		/* toggle direction */
-		if (!(a->u.rail.track & 0x80)) a->direction = ReverseDir(a->direction);
-		if (!(b->u.rail.track & 0x80)) b->direction = ReverseDir(b->direction);
+		if (a->u.rail.track != TRACK_BIT_DEPOT) a->direction = ReverseDir(a->direction);
+		if (b->u.rail.track != TRACK_BIT_DEPOT) b->direction = ReverseDir(b->direction);
 
 		Swap(a->x_pos, b->x_pos);
 		Swap(a->y_pos, b->y_pos);
@@ -1600,13 +1600,13 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 		UpdateVarsAfterSwap(b);
 
 		/* call the proper EnterTile function unless we are in a wormhole */
-		if (!(a->u.rail.track & 0x40)) VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
-		if (!(b->u.rail.track & 0x40)) VehicleEnterTile(b, b->tile, b->x_pos, b->y_pos);
+		if (a->u.rail.track != TRACK_BIT_WORMHOLE) VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
+		if (b->u.rail.track != TRACK_BIT_WORMHOLE) VehicleEnterTile(b, b->tile, b->x_pos, b->y_pos);
 	} else {
-		if (!(a->u.rail.track & 0x80)) a->direction = ReverseDir(a->direction);
+		if (a->u.rail.track != TRACK_BIT_DEPOT) a->direction = ReverseDir(a->direction);
 		UpdateVarsAfterSwap(a);
 
-		if (!(a->u.rail.track & 0x40)) VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
+		if (a->u.rail.track != TRACK_BIT_WORMHOLE) VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
 	}
 
 	/* Update train's power incase tiles were different rail type */
@@ -2174,7 +2174,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 
 	// bail out if not all wagons are in the same depot or not in a depot at all
 	for (u = v; u != NULL; u = u->next) {
-		if (u->u.rail.track != 0x80 || u->tile != v->tile) return false;
+		if (u->u.rail.track != TRACK_BIT_DEPOT || u->tile != v->tile) return false;
 	}
 
 	// if the train got no power, then keep it in the depot
@@ -2420,7 +2420,7 @@ static bool CheckReverseTrain(Vehicle *v)
 	uint reverse, reverse_best;
 
 	if (_opt.diff.line_reverse_mode != 0 ||
-			v->u.rail.track & 0xC0 ||
+			v->u.rail.track == TRACK_BIT_DEPOT || v->u.rail.track == TRACK_BIT_WORMHOLE ||
 			!(v->direction & 1))
 		return false;
 
@@ -2887,7 +2887,7 @@ static void *FindTrainCollideEnum(Vehicle *v, void *data)
 	if (v != tcc->v &&
 			v != tcc->v_skip &&
 			v->type == VEH_Train &&
-			v->u.rail.track != 0x80 &&
+			v->u.rail.track != TRACK_BIT_DEPOT &&
 			myabs(v->z_pos - tcc->v->z_pos) <= 6 &&
 			myabs(v->x_pos - tcc->v->x_pos) < 6 &&
 			myabs(v->y_pos - tcc->v->y_pos) < 6) {
@@ -2936,9 +2936,9 @@ static void CheckTrainCollision(Vehicle *v)
 	uint num;
 
 	/* can't collide in depot */
-	if (v->u.rail.track == 0x80) return;
+	if (v->u.rail.track == TRACK_BIT_DEPOT) return;
 
-	assert(v->u.rail.track == 0x40 || TileVirtXY(v->x_pos, v->y_pos) == v->tile);
+	assert(v->u.rail.track == TRACK_BIT_WORMHOLE || TileVirtXY(v->x_pos, v->y_pos) == v->tile);
 
 	tcc.v = v;
 	tcc.v_skip = v->next;
@@ -2951,7 +2951,7 @@ static void CheckTrainCollision(Vehicle *v)
 
 	/* it can't collide with its own wagons */
 	if (v == coll ||
-			(v->u.rail.track & 0x40 && (v->direction & 2) != (realcoll->direction & 2)))
+			(v->u.rail.track == TRACK_BIT_WORMHOLE && (v->direction & 2) != (realcoll->direction & 2)))
 		return;
 
 	//two drivers + passangers killed in train v
@@ -3008,11 +3008,11 @@ static void TrainController(Vehicle *v, bool update_image)
 	for (prev = GetPrevVehicleInChain(v); v != NULL; prev = v, v = v->next) {
 		BeginVehicleMove(v);
 
-		if (v->u.rail.track != 0x40) {
+		if (v->u.rail.track != TRACK_BIT_WORMHOLE) {
 			/* Not inside tunnel */
 			if (GetNewVehiclePos(v, &gp)) {
 				/* Staying in the old tile */
-				if (v->u.rail.track == 0x80) {
+				if (v->u.rail.track == TRACK_BIT_DEPOT) {
 					/* inside depot */
 					gp.x = v->x_pos;
 					gp.y = v->y_pos;
@@ -3233,14 +3233,14 @@ static void DeleteLastWagon(Vehicle *v)
 	EndVehicleMove(v);
 	DeleteVehicle(v);
 
-	if (!(v->u.rail.track & 0xC0))
+	if (v->u.rail.track != TRACK_BIT_DEPOT && v->u.rail.track != TRACK_BIT_WORMHOLE)
 		SetSignalsOnBothDir(v->tile, FIND_FIRST_BIT(v->u.rail.track));
 
 	/* Check if the wagon was on a road/rail-crossing and disable it if no
 	 * others are on it */
 	DisableTrainCrossing(v->tile);
 
-	if ( (v->u.rail.track == 0x40 && v->vehstatus & VS_HIDDEN) ) { // inside a tunnel
+	if ((v->u.rail.track == TRACK_BIT_WORMHOLE && v->vehstatus & VS_HIDDEN)) { // inside a tunnel
 		TileIndex endtile = CheckTunnelBusy(v->tile, NULL);
 
 		if (endtile == INVALID_TILE) return; // tunnel is busy (error returned)
@@ -3280,7 +3280,7 @@ static void ChangeTrainDirRandomly(Vehicle *v)
 			/* Refrain from updating the z position of the vehicle when on
 			   a bridge, because AfterSetTrainPos will put the vehicle under
 			   the bridge in that case */
-			if (!(v->u.rail.track & 0x40)) AfterSetTrainPos(v, false);
+			if (v->u.rail.track != TRACK_BIT_WORMHOLE) AfterSetTrainPos(v, false);
 		}
 	} while ((v = v->next) != NULL);
 }
@@ -3291,7 +3291,7 @@ static void HandleCrashedTrain(Vehicle *v)
 	uint32 r;
 	Vehicle *u;
 
-	if (state == 4 && !(v->u.rail.track & VS_HIDDEN)) {
+	if (state == 4 && !(v->vehstatus & VS_HIDDEN)) {
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 	}
 
@@ -3374,8 +3374,8 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		v->vehstatus &= ~VS_TRAIN_SLOWING;
 	}
 
-	if (v->u.rail.track & 0x40) return true; // exit if inside a tunnel
-	if (v->u.rail.track & 0x80) return true; // exit if inside a depot
+	if (v->u.rail.track == TRACK_BIT_WORMHOLE) return true; // exit if inside a tunnel
+	if (v->u.rail.track == TRACK_BIT_DEPOT) return true; // exit if inside a depot
 
 	tile = v->tile;
 

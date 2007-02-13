@@ -1969,7 +1969,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	} else if (_fractcoords_enter[dir] == fract_coord) {
 		if (DiagDirToDir(ReverseDiagDir(dir)) == v->direction) {
 			/* enter the depot */
-			v->u.rail.track = TRACK_BIT_SPECIAL,
+			v->u.rail.track = TRACK_BIT_DEPOT,
 			v->vehstatus |= VS_HIDDEN; /* hide it */
 			v->direction = ReverseDir(v->direction);
 			if (v->next == NULL) VehicleEnterDepot(v);
