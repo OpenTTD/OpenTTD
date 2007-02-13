@@ -623,7 +623,7 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, st, station_chunk))
 		return false;
 
-	if (IsValidStation(st)) {
+	if (st->IsValid()) {
 		if (st->train_tile) {
 			/* Calculate the trainst_w and trainst_h */
 			uint w = GB(_old_platforms, 3, 3);

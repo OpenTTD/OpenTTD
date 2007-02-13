@@ -54,7 +54,7 @@ static void StationPoolCleanBlock(uint start_item, uint end_item)
 
 	for (i = start_item; i <= end_item; i++) {
 		Station *st = GetStation(i);
-		if (IsValidStation(st)) st->~Station();
+		if (st->IsValid()) st->~Station();
 	}
 }
 
@@ -167,7 +167,7 @@ static Station *AllocateStation(void)
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
 	for (st = GetStation(0); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) {
-		if (!IsValidStation(st)) {
+		if (!st->IsValid()) {
 			StationID index = st->index;
 
 			memset(st, 0, sizeof(Station));

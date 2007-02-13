@@ -558,7 +558,7 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		StationID next_airport_index = v->u.air.targetairport;
 		const Station *st = GetStation(next_airport_index);
 		/* If the station is not a valid airport or if it has no hangars */
-		if (!IsValidStation(st) || st->airport_tile == 0 || GetAirport(st->airport_type)->nof_depots == 0) {
+		if (!st->IsValid() || st->airport_tile == 0 || GetAirport(st->airport_type)->nof_depots == 0) {
 			StationID station;
 
 			// the aircraft has to search for a hangar on its own
@@ -695,7 +695,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 
 	st = GetStation(v->current_order.dest);
 	// only goto depot if the target airport has terminals (eg. it is airport)
-	if (IsValidStation(st) && st->airport_tile != 0 && GetAirport(st->airport_type)->terminals != NULL) {
+	if (st->IsValid() && st->airport_tile != 0 && GetAirport(st->airport_type)->terminals != NULL) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
 //		v->u.air.targetairport = st->index;
 		v->current_order.type = OT_GOTO_DEPOT;

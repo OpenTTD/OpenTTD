@@ -802,7 +802,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			case SCC_STATION_NAME: { // {STATION}
 				const Station* st = GetStation(GetInt32(&argv));
 
-				if (!IsValidStation(st)) { // station doesn't exist anymore
+				if (!st->IsValid()) { // station doesn't exist anymore
 					buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL, last);
 				} else {
 					int32 temp[2];

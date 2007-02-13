@@ -162,7 +162,7 @@ bool Station::TileBelongsToRailStation(TileIndex tile) const
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
 	for (st = GetStation(0); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) {
-		if (!IsValidStation(st)) {
+		if (!st->IsValid()) {
 			StationID index = st->index;
 
 			memset(st, 0, sizeof(Station));
@@ -185,6 +185,14 @@ bool Station::TileBelongsToRailStation(TileIndex tile) const
 bool Station::IsBuoy() const
 {
 	return (this->had_vehicle_of_type & HVOT_BUOY) != 0;
+}
+
+/** Determines whether a station exists
+ * @todo replace 0 by INVALID_TILE
+ */
+bool Station::IsValid() const
+{
+	return xy != 0;
 }
 
 

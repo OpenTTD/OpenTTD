@@ -168,6 +168,7 @@ struct Station {
 	void MarkTilesDirty() const;
 	bool TileBelongsToRailStation(TileIndex tile) const;
 	bool IsBuoy() const;
+	bool IsValid() const;
 
 protected:
 	static Station *AllocateRaw(void);
@@ -237,20 +238,12 @@ static inline uint GetNumStations(void)
 	return GetStationPoolSize();
 }
 
-/**
- * Check if a station really exists.
- */
-static inline bool IsValidStation(const Station *st)
-{
-	return st->xy != 0;
-}
-
 static inline bool IsValidStationID(StationID index)
 {
-	return index < GetStationPoolSize() && IsValidStation(GetStation(index));
+	return index < GetStationPoolSize() && GetStation(index)->IsValid();
 }
 
-#define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) if (IsValidStation(st))
+#define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) if (st->IsValid())
 #define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
 
 
