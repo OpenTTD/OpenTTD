@@ -53,17 +53,25 @@ static const uint16 _roadveh_full_adder[63] = {
 	 0,   0,   0,   8,   8,   8,   8
 };
 
-
-static const uint16 _road_veh_fp_ax_and[4] = {
-	0x1009, 0x16, 0x520, 0x2A00
+/** 'Convert' the DiagDirection where a road vehicle enters to the trackdirs it can drive onto */
+static const TrackdirBits _road_enter_dir_to_reachable_trackdirs[DIAGDIR_END] = {
+	TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_X_NE,    // Enter from north east
+	TRACKDIR_BIT_LEFT_S  | TRACKDIR_BIT_UPPER_E | TRACKDIR_BIT_Y_SE,    // Enter from south east
+	TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_X_SW    | TRACKDIR_BIT_RIGHT_S, // Enter from south west
+	TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_Y_NW     // Enter from north west
 };
 
-static const byte _road_reverse_table[4] = {
-	6, 7, 14, 15
+static const Trackdir _road_reverse_table[DIAGDIR_END] = {
+	TRACKDIR_RVREV_NE, TRACKDIR_RVREV_SE, TRACKDIR_RVREV_SW, TRACKDIR_RVREV_NW
 };
 
-static const uint16 _road_pf_table_3[4] = {
-	0x910, 0x1600, 0x2005, 0x2A
+/** 'Convert' the DiagDirection where a road vehicle should exit to
+ * the trackdirs it can use to drive to the exit direction*/
+static const TrackdirBits _road_exit_dir_to_incoming_trackdirs[DIAGDIR_END] = {
+	TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_X_SW    | TRACKDIR_BIT_LEFT_S,
+	TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_Y_NW,
+	TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_UPPER_E | TRACKDIR_BIT_X_NE,
+	TRACKDIR_BIT_RIGHT_S | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_Y_SE
 };
 
 int GetRoadVehImage(const Vehicle* v, Direction direction)
@@ -1041,48 +1049,48 @@ static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Tra
 	return ret;
 }
 
-// Returns direction to choose
-// or -1 if the direction is currently blocked
-static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir)
+/**
+ * Returns direction to for a road vehicle to take or
+ * INVALID_TRACKDIR if the direction is currently blocked
+ * @param v        the vehicle to do the pathfinding for
+ * @param tile     the where to start the pathfinding
+ * @param enterdir the direction the vehicle enters the tile from
+ * @return the trackdir to take
+ */
+static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir)
 {
-#define return_track(x) {best_track = x; goto found_best_track; }
+#define return_track(x) { best_track = (Trackdir)x; goto found_best_track; }
 
-	uint16 signal;
-	uint bitmask;
 	TileIndex desttile;
 	FindRoadToChooseData frd;
-	int best_track;
-	uint best_dist, best_maxlen;
-	uint i;
+	Trackdir best_track;
 
-	{
-		uint32 r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
-		signal  = GB(r, 16, 16);
-		bitmask = GB(r,  0, 16);
-	}
+	uint32 r  = GetTileTrackStatus(tile, TRANSPORT_ROAD);
+	TrackdirBits signal    = (TrackdirBits)GB(r, 16, 16);
+	TrackdirBits trackdirs = (TrackdirBits)GB(r,  0, 16);
 
 	if (IsTileType(tile, MP_STREET)) {
 		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir)) {
 			/* Road depot owned by another player or with the wrong orientation */
-			bitmask = 0;
+			trackdirs = TRACKDIR_BIT_NONE;
 		}
 	} else if (IsTileType(tile, MP_STATION) && IsRoadStopTile(tile)) {
 		if (!IsTileOwner(tile, v->owner) || GetRoadStopDir(tile) == enterdir) {
 			/* different station owner or wrong orientation */
-			bitmask = 0;
+			trackdirs = TRACKDIR_BIT_NONE;
 		} else {
 			/* Our station */
 			RoadStop::Type rstype = (v->cargo_type == CT_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK;
 
 			if (GetRoadStopType(tile) != rstype) {
-				// wrong station type
-				bitmask = 0;
+				/* Wrong station type */
+				trackdirs = TRACKDIR_BIT_NONE;
 			} else {
-				// proper station type, check if there is free loading bay
+				/* Proper station type, check if there is free loading bay */
 				if (!_patches.roadveh_queue &&
 						!GetRoadStopByTile(tile, rstype)->HasFreeBay()) {
-					// station is full and RV queuing is off
-					bitmask = 0;
+					/* Station is full and RV queuing is off */
+					trackdirs = TRACKDIR_BIT_NONE;
 				}
 			}
 		}
@@ -1092,9 +1100,9 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	 * stuff, probably even more arguments to GTTS.
 	 */
 
-	/* remove unreachable tracks */
-	bitmask &= _road_veh_fp_ax_and[enterdir];
-	if (bitmask == 0) {
+	/* Remove tracks unreachable from the enter dir */
+	trackdirs &= _road_enter_dir_to_reachable_trackdirs[enterdir];
+	if (trackdirs == TRACKDIR_BIT_NONE) {
 		/* No reachable tracks, so we'll reverse */
 		return_track(_road_reverse_table[enterdir]);
 	}
@@ -1109,19 +1117,19 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 
 	desttile = v->dest_tile;
 	if (desttile == 0) {
-		// Pick a random track
-		return_track(PickRandomBit(bitmask));
+		/* We've got no destination, pick a random track */
+		return_track(PickRandomBit(trackdirs));
 	}
 
-	// Only one track to choose between?
-	if (!(KillFirstBit2x64(bitmask))) {
-		return_track(FindFirstBit2x64(bitmask));
+	/* Only one track to choose between? */
+	if (!(KillFirstBit2x64(trackdirs))) {
+		return_track(FindFirstBit2x64(trackdirs));
 	}
 
 	if (_patches.yapf.road_use_yapf) {
 		Trackdir trackdir = YapfChooseRoadTrack(v, tile, enterdir);
 		if (trackdir != INVALID_TRACKDIR) return_track(trackdir);
-		return_track(PickRandomBit(bitmask));
+		return_track(PickRandomBit(trackdirs));
 	} else if (_patches.new_pathfinding_all) {
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
@@ -1132,11 +1140,11 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
 
 		ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE);
-		if (ftd.best_trackdir == 0xff) {
+		if (ftd.best_trackdir == INVALID_TRACKDIR) {
 			/* We are already at our target. Just do something */
 			//TODO: maybe display error?
 			//TODO: go straight ahead if possible?
-			return_track(FindFirstBit2x64(bitmask));
+			return_track(FindFirstBit2x64(trackdirs));
 		} else {
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
 			the direction we need to take to get there, if ftd.best_bird_dist is not 0,
@@ -1160,40 +1168,40 @@ do_it:;
 				 * pretend we are heading for the tile in front, we'll
 				 * see from there */
 				desttile += TileOffsByDiagDir(dir);
-				if (desttile == tile && bitmask & _road_pf_table_3[dir]) {
+				if (desttile == tile && trackdirs & _road_exit_dir_to_incoming_trackdirs[dir]) {
 					/* If we are already in front of the
 					 * station/depot and we can get in from here,
 					 * we enter */
-					return_track(FindFirstBit2x64(bitmask & _road_pf_table_3[dir]));
+					return_track(FindFirstBit2x64(trackdirs & _road_exit_dir_to_incoming_trackdirs[dir]));
 				}
 			}
 		}
-		// do pathfind
+		/* Do some pathfinding */
 		frd.dest = desttile;
 
-		best_track = -1;
-		best_dist = (uint)-1;
-		best_maxlen = (uint)-1;
-		i = 0;
-		do {
-			if (bitmask & 1) {
-				if (best_track == -1) best_track = i; // in case we don't find the path, just pick a track
+		best_track = INVALID_TRACKDIR;
+		uint best_dist = (uint)-1;
+		uint best_maxlen = (uint)-1;
+		uint bitmask = (uint)trackdirs;
+		for (int i = 0; bitmask != 0; bitmask >>= 1, i++) {
+			if (HASBIT(bitmask, i)) {
+				if (best_track == INVALID_TRACKDIR) best_track = (Trackdir)i; // in case we don't find the path, just pick a track
 				frd.maxtracklen = (uint)-1;
 				frd.mindist = (uint)-1;
 				FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, _road_pf_directions[i], EnumRoadTrackFindDist, NULL, &frd);
 
-				if (frd.mindist < best_dist || (frd.mindist==best_dist && frd.maxtracklen < best_maxlen)) {
+				if (frd.mindist < best_dist || (frd.mindist == best_dist && frd.maxtracklen < best_maxlen)) {
 					best_dist = frd.mindist;
 					best_maxlen = frd.maxtracklen;
-					best_track = i;
+					best_track = (Trackdir)i;
 				}
 			}
-		} while (++i,(bitmask>>=1) != 0);
+		}
 	}
 
 found_best_track:;
 
-	if (HASBIT(signal, best_track)) return -1;
+	if (HASBIT(signal, best_track)) return INVALID_TRACKDIR;
 
 	return best_track;
 }
@@ -1208,7 +1216,7 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 		// use NPF
 		NPFFindStationOrTileData fstd;
 		Trackdir trackdir = GetVehicleTrackdir(v);
-		assert(trackdir != 0xFF);
+		assert(trackdir != INVALID_TRACKDIR);
 
 		fstd.dest_coords = tile;
 		fstd.station_index = INVALID_STATION; // indicates that the destination is a tile, not a station
@@ -1234,7 +1242,10 @@ static const byte _road_veh_data_1[] = {
 	15, 15, 11, 11
 };
 
-static const byte _roadveh_data_2[4] = { 0, 1, 8, 9 };
+/** Converts the exit direction of a depot to trackdir the vehicle is going to drive to */
+static const Trackdir _roadveh_depot_exit_trackdir[DIAGDIR_END] = {
+	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW
+};
 
 static void RoadVehController(Vehicle *v)
 {
@@ -1276,15 +1287,15 @@ static void RoadVehController(Vehicle *v)
 		/* Vehicle is about to leave a depot */
 		DiagDirection dir;
 		const RoadDriveEntry* rdp;
-		byte rd2;
+		Trackdir tdir;
 
 		v->cur_speed = 0;
 
 		dir = GetRoadDepotDirection(v->tile);
 		v->direction = DiagDirToDir(dir);
 
-		rd2 = _roadveh_data_2[dir];
-		rdp = _road_drive_data[(_opt.road_side << 4) + rd2];
+		tdir = _roadveh_depot_exit_trackdir[dir];
+		rdp = _road_drive_data[(_opt.road_side << 4) + tdir];
 
 		x = TileX(v->tile) * TILE_SIZE + (rdp[6].x & 0xF);
 		y = TileY(v->tile) * TILE_SIZE + (rdp[6].y & 0xF);
@@ -1298,7 +1309,7 @@ static void RoadVehController(Vehicle *v)
 		BeginVehicleMove(v);
 
 		v->vehstatus &= ~VS_HIDDEN;
-		v->u.road.state = rd2;
+		v->u.road.state = tdir;
 		v->u.road.frame = 6;
 
 		v->cur_image = GetRoadVehImage(v, v->direction);
@@ -1361,12 +1372,12 @@ static void RoadVehController(Vehicle *v)
 	if (rd.x & 0x80) {
 		/* Vehicle is moving to the next tile */
 		TileIndex tile = v->tile + TileOffsByDiagDir(rd.x & 3);
-		int dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3));
+		Trackdir dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3));
 		uint32 r;
 		Direction newdir;
 		const RoadDriveEntry *rdp;
 
-		if (dir == -1) {
+		if (dir == INVALID_TRACKDIR) {
 			/* No path was found to destination */
 			v->cur_speed = 0;
 			return;
@@ -1435,13 +1446,13 @@ again:
 
 	if (rd.x & 0x40) {
 		/* Vehicle has finished turning around, it will now head back onto the same tile */
-		int dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3));
+		Trackdir dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3));
 		uint32 r;
 		int tmp;
 		Direction newdir;
 		const RoadDriveEntry *rdp;
 
-		if (dir == -1) {
+		if (dir == INVALID_TRACKDIR) {
 			/* No path was found to destination */
 			v->cur_speed = 0;
 			return;

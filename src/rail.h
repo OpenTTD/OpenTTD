@@ -106,7 +106,11 @@ static inline TrackBits AxisToTrackBits(Axis a)
 
 
 /** These are a combination of tracks and directions. Values are 0-5 in one
- * direction (corresponding to the Track enum) and 8-13 in the other direction. */
+ * direction (corresponding to the Track enum) and 8-13 in the other direction.
+ * 6, 7, 14 and 15 are used to encode the reversing of road vehicles. Those
+ * reversing track dirs are not considered to be 'valid' except in a small
+ * corner in the road vehicle controller.
+ */
 typedef enum Trackdirs {
 	TRACKDIR_BEGIN    =  0,
 	TRACKDIR_X_NE     =  0,
@@ -115,14 +119,16 @@ typedef enum Trackdirs {
 	TRACKDIR_LOWER_E  =  3,
 	TRACKDIR_LEFT_S   =  4,
 	TRACKDIR_RIGHT_S  =  5,
-	/* Note the two missing values here. This enables trackdir -> track
-	 * conversion by doing (trackdir & 7) */
+	TRACKDIR_RVREV_NE =  6,
+	TRACKDIR_RVREV_SE =  7,
 	TRACKDIR_X_SW     =  8,
 	TRACKDIR_Y_NW     =  9,
 	TRACKDIR_UPPER_W  = 10,
 	TRACKDIR_LOWER_W  = 11,
 	TRACKDIR_LEFT_N   = 12,
 	TRACKDIR_RIGHT_N  = 13,
+	TRACKDIR_RVREV_SW = 14,
+	TRACKDIR_RVREV_NW = 15,
 	TRACKDIR_END,
 	INVALID_TRACKDIR  = 0xFF,
 } Trackdir;
