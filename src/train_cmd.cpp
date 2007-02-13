@@ -3022,7 +3022,7 @@ static void TrainController(Vehicle *v, bool update_image)
 					if (IsFrontEngine(v) && !TrainCheckIfLineEnds(v)) return;
 
 					r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-					if (HASBIT(r, VETS_ENTERED_WORMHOLE)) {
+					if (HASBIT(r, VETS_CANNOT_ENTER)) {
 						goto invalid_rail;
 					}
 					if (HASBIT(r, VETS_ENTERED_STATION)) {
