@@ -184,7 +184,7 @@ bool Station::TileBelongsToRailStation(TileIndex tile) const
  */
 bool Station::IsBuoy() const
 {
-	return (this->had_vehicle_of_type & HVOT_BUOY) != 0;
+	return (had_vehicle_of_type & HVOT_BUOY) != 0;
 }
 
 /** Determines whether a station exists
