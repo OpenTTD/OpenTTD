@@ -700,7 +700,7 @@ static void ShipController(Vehicle *v)
 		} else {
 			/* isnot inside depot */
 			r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-			if (r & 0x8) goto reverse_direction;
+			if (HASBIT(r, VETS_CANNOT_ENTER)) goto reverse_direction;
 
 			/* A leave station order only needs one tick to get processed, so we can
 			 * always skip ahead. */
@@ -780,9 +780,9 @@ static void ShipController(Vehicle *v)
 
 		/* Call the landscape function and tell it that the vehicle entered the tile */
 		r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-		if (r&0x8) goto reverse_direction;
+		if (HASBIT(r, VETS_CANNOT_ENTER)) goto reverse_direction;
 
-		if (!(r&0x4)) {
+		if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) {
 			v->tile = gp.new_tile;
 			v->u.ship.state = TrackToTrackBits(track);
 		}

@@ -1262,7 +1262,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 {
 	int z = GetSlopeZ(x, y) - v->z_pos;
 
-	if (myabs(z) > 2) return 8;
+	if (myabs(z) > 2) return VETSB_CANNOT_ENTER;
 
 	if (IsTunnel(tile)) {
 		byte fc;
@@ -1280,13 +1280,13 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 					if (!PlayVehicleSound(v, VSE_TUNNEL) && v->spritenum < 4) {
 						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
 					}
-					return 0;
+					return VETSB_CONTINUE;
 				}
 				if (fc == _tunnel_fractcoord_2[dir]) {
 					v->tile = tile;
 					v->u.rail.track = TRACK_BIT_WORMHOLE;
 					v->vehstatus |= VS_HIDDEN;
-					return 4;
+					return VETSB_ENTERED_WORMHOLE;
 				}
 			}
 
@@ -1296,7 +1296,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				v->u.rail.track = (TrackBits)_exit_tunnel_track[dir];
 				assert(v->u.rail.track);
 				v->vehstatus &= ~VS_HIDDEN;
-				return 4;
+				return VETSB_ENTERED_WORMHOLE;
 			}
 		} else if (v->type == VEH_Road) {
 			fc = (x & 0xF) + (y << 4);
@@ -1310,9 +1310,9 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 					v->tile = tile;
 					v->u.road.state = 0xFF;
 					v->vehstatus |= VS_HIDDEN;
-					return 4;
+					return VETSB_ENTERED_WORMHOLE;
 				} else {
-					return 0;
+					return VETSB_CONTINUE;
 				}
 			}
 
@@ -1326,7 +1326,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				v->u.road.state = _road_exit_tunnel_state[dir];
 				v->u.road.frame = _road_exit_tunnel_frame[dir];
 				v->vehstatus &= ~VS_HIDDEN;
-				return 4;
+				return VETSB_ENTERED_WORMHOLE;
 			}
 		}
 	} else if (IsBridge(tile)) { // XXX is this necessary?
@@ -1344,10 +1344,10 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 		if (DirToDiagDir(v->direction) == dir) {
 			switch (dir) {
 				default: NOT_REACHED();
-				case DIAGDIR_NE: if ((x & 0xF) != 0)             return 0; break;
-				case DIAGDIR_SE: if ((y & 0xF) != TILE_SIZE - 1) return 0; break;
-				case DIAGDIR_SW: if ((x & 0xF) != TILE_SIZE - 1) return 0; break;
-				case DIAGDIR_NW: if ((y & 0xF) != 0)             return 0; break;
+				case DIAGDIR_NE: if ((x & 0xF) != 0)             return VETSB_CONTINUE; break;
+				case DIAGDIR_SE: if ((y & 0xF) != TILE_SIZE - 1) return VETSB_CONTINUE; break;
+				case DIAGDIR_SW: if ((x & 0xF) != TILE_SIZE - 1) return VETSB_CONTINUE; break;
+				case DIAGDIR_NW: if ((y & 0xF) != 0)             return VETSB_CONTINUE; break;
 			}
 			if (v->type == VEH_Train) {
 				v->u.rail.track = TRACK_BIT_WORMHOLE;
@@ -1356,25 +1356,25 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			} else {
 				v->u.road.state = 0xFF;
 			}
-			return 4;
+			return VETSB_ENTERED_WORMHOLE;
 		} else if (DirToDiagDir(v->direction) == ReverseDiagDir(dir)) {
 			v->tile = tile;
 			if (v->type == VEH_Train) {
 				if (v->u.rail.track == 0x40) {
 					v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
-					return 4;
+					return VETSB_ENTERED_WORMHOLE;
 				}
 			} else {
 				if (v->u.road.state == 0xFF) {
 					v->u.road.state = _road_exit_tunnel_state[dir];
 					v->u.road.frame = 0;
-					return 4;
+					return VETSB_ENTERED_WORMHOLE;
 				}
 			}
-			return 0;
+			return VETSB_CONTINUE;
 		}
 	}
-	return 0;
+	return VETSB_CONTINUE;
 }
 
 extern const TileTypeProcs _tile_type_tunnelbridge_procs = {

@@ -2769,10 +2769,11 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 		default: return INVALID_TRACKDIR;
 	}
 }
-/* Return value has bit 0x2 set, when the vehicle enters a station. Then,
- * result << 8 contains the id of the station entered. If the return value has
- * bit 0x8 set, the vehicle could not and did not enter the tile. Are there
- * other bits that can be set? */
+
+/**
+ * Returns some meta-data over the to be entered tile.
+ * @see VehicleEnterTileStatus to see what the bits in the return value mean.
+ */
 uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y)
 {
 	return _tile_type_procs[GetTileType(tile)]->vehicle_enter_tile_proc(v, tile, x, y);

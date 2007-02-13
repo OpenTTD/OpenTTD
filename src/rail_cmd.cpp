@@ -1946,7 +1946,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	int length;
 
 	// this routine applies only to trains in depot tiles
-	if (v->type != VEH_Train || !IsTileDepotType(tile, TRANSPORT_RAIL)) return 0;
+	if (v->type != VEH_Train || !IsTileDepotType(tile, TRANSPORT_RAIL)) return VETSB_CONTINUE;
 
 	/* depot direction */
 	dir = GetRailDepotDirection(tile);
@@ -1965,7 +1965,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 
 	if (_fractcoords_behind[dir] == fract_coord) {
 		/* make sure a train is not entering the tile from behind */
-		return 8;
+		return VETSB_CANNOT_ENTER;
 	} else if (_fractcoords_enter[dir] == fract_coord) {
 		if (DiagDirToDir(ReverseDiagDir(dir)) == v->direction) {
 			/* enter the depot */
@@ -1976,7 +1976,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 			v->tile = tile;
 
 			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-			return 4;
+			return VETSB_ENTERED_WORMHOLE;
 		}
 	} else if (fract_coord_leave == fract_coord) {
 		if (DiagDirToDir(dir) == v->direction) {
@@ -1988,7 +1988,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 		}
 	}
 
-	return 0;
+	return VETSB_CONTINUE;
 }
 
 

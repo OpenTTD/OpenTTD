@@ -2260,7 +2260,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 					if (DiagDirToAxis(dir) != AXIS_X) intswap(x, y);
 					if (y == TILE_SIZE / 2) {
 						if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
-						if (x == 12) return 2 | (station_id << 8); /* enter station */
+						if (x == 12) return VETSB_ENTERED_STATION | (station_id << VETS_STATION_ID_OFFSET); /* enter station */
 						if (x < 12) {
 							uint16 spd;
 
@@ -2279,7 +2279,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 				RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
 
 				/* Check if station is busy or if there are no free bays. */
-				if (rs->IsEntranceBusy() || !rs->HasFreeBay()) return 8;
+				if (rs->IsEntranceBusy() || !rs->HasFreeBay()) return VETSB_CANNOT_ENTER;
 
 				v->u.road.state += 32;
 
@@ -2293,7 +2293,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 		}
 	}
 
-	return 0;
+	return VETSB_CONTINUE;
 }
 
 /* this function is called for one station each tick */

@@ -3022,12 +3022,11 @@ static void TrainController(Vehicle *v, bool update_image)
 					if (IsFrontEngine(v) && !TrainCheckIfLineEnds(v)) return;
 
 					r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-					if (r & 0x8) {
-						//debug("%x & 0x8", r);
+					if (HASBIT(r, VETS_ENTERED_WORMHOLE)) {
 						goto invalid_rail;
 					}
-					if (r & 0x2) {
-						TrainEnterStation(v, r >> 8);
+					if (HASBIT(r, VETS_ENTERED_STATION)) {
+						TrainEnterStation(v, r >> VETS_STATION_ID_OFFSET);
 						return;
 					}
 
@@ -3101,8 +3100,7 @@ static void TrainController(Vehicle *v, bool update_image)
 
 				/* Call the landscape function and tell it that the vehicle entered the tile */
 				r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-				if (r & 0x8) {
-					//debug("%x & 0x8", r);
+				if (HASBIT(r, VETS_CANNOT_ENTER)) {
 					goto invalid_rail;
 				}
 
@@ -3113,7 +3111,7 @@ static void TrainController(Vehicle *v, bool update_image)
 
 				if (IsFrontEngine(v)) v->load_unload_time_rem = 0;
 
-				if (!(r&0x4)) {
+				if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) {
 					v->tile = gp.new_tile;
 
 					if (GetTileRailType(gp.new_tile, FindFirstTrack(chosen_track)) != GetTileRailType(gp.old_tile, FindFirstTrack(v->u.rail.track))) {
@@ -3141,7 +3139,7 @@ static void TrainController(Vehicle *v, bool update_image)
 
 			SetSpeedLimitOnBridge(v);
 
-			if (!(IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) || !(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y) & 0x4)) {
+			if (!(IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) || !HASBIT(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				VehiclePositionChanged(v);

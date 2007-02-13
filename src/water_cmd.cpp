@@ -742,7 +742,7 @@ static void ChangeTileOwner_Water(TileIndex tile, PlayerID old_player, PlayerID 
 
 static uint32 VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)
 {
-	return 0;
+	return VETSB_CONTINUE;
 }
 
 

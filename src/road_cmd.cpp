@@ -1016,13 +1016,13 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 					v->u.road.frame == 11 &&
 					_roadveh_enter_depot_unk0[GetRoadDepotDirection(tile)] == v->u.road.state) {
 				VehicleEnterDepot(v);
-				return 4;
+				return VETSB_ENTERED_WORMHOLE;
 			}
 			break;
 
 		default: break;
 	}
-	return 0;
+	return VETSB_CONTINUE;
 }
 
 

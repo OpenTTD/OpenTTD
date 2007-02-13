@@ -1340,7 +1340,7 @@ static void RoadVehController(Vehicle *v)
 			return;
 		}
 
-		if ((IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) && VehicleEnterTile(v, gp.new_tile, gp.x, gp.y) & 4) {
+		if ((IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) && HASBIT(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 			/* Vehicle has just entered a bridge or tunnel */
 			v->cur_image = GetRoadVehImage(v, v->direction);
 			UpdateRoadVehDeltaXY(v);
@@ -1388,7 +1388,7 @@ again:
 		if (RoadVehFindCloseTo(v, x, y, newdir) != NULL) return;
 
 		r = VehicleEnterTile(v, tile, x, y);
-		if (r & 8) {
+		if (HASBIT(r, VETS_CANNOT_ENTER)) {
 			/* Vehicle cannot enter the tile */
 			if (!IsTileType(tile, MP_TUNNELBRIDGE)) {
 				v->cur_speed = 0;
@@ -1416,7 +1416,7 @@ again:
 			}
 		}
 
-		if (!(r & 4)) {
+		if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) {
 			/* Set vehicle to first frame on new tile */
 			v->tile = tile;
 			v->u.road.state = (byte)dir;
@@ -1457,7 +1457,7 @@ again:
 		if (RoadVehFindCloseTo(v, x, y, newdir) != NULL) return;
 
 		r = VehicleEnterTile(v, v->tile, x, y);
-		if (r & 8) {
+		if (HASBIT(r, VETS_CANNOT_ENTER)) {
 			/* Vehicle cannot enter the tile */
 			v->cur_speed = 0;
 			return;
@@ -1599,7 +1599,7 @@ again:
 	/* Check tile position conditions - i.e. stop position in depot,
 	 * entry onto bridge or into tunnel */
 	r = VehicleEnterTile(v, v->tile, x, y);
-	if (r & 8) {
+	if (HASBIT(r, VETS_CANNOT_ENTER)) {
 		/* Vehicle cannot continue */
 		v->cur_speed = 0;
 		return;
@@ -1607,7 +1607,7 @@ again:
 
 	/* Move to next frame unless vehicle arrived at a stop position
 	 * in a depot or entered a tunnel/bridge */
-	if ((r & 4) == 0) v->u.road.frame++;
+	if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) v->u.road.frame++;
 
 	v->cur_image = GetRoadVehImage(v, v->direction);
 	UpdateRoadVehDeltaXY(v);
