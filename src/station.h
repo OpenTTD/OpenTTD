@@ -44,10 +44,11 @@ struct RoadStop {
 
 	static const int  cDebugCtorLevel =  3;  ///< Debug level on which Contructor / Destructor messages are printed
 	static const uint LIMIT           = 16;  ///< The maximum amount of roadstops that are allowed at a single station
+	static const uint MAX_BAY_COUNT   =  2;  ///< The maximum number of loading bays
 
 	TileIndex        xy;                    ///< Position on the map
 	RoadStopID       index;                 ///< Global (i.e. pool-wide) index
-	byte             status;                ///< Current status of the Stop. Like which spot is taken. TODO - enumify this
+	byte             status;                ///< Current status of the Stop. Like which spot is taken. Access using *Bay and *Busy functions.
 	byte             num_vehicles;          ///< Number of vehicles currently slotted to this stop
 	struct RoadStop  *next;                 ///< Next stop of the given type at this station
 
@@ -62,6 +63,13 @@ struct RoadStop {
 	void operator delete(void *rs, int index);
 
 	bool IsValid() const;
+
+	/* For accessing status */
+	bool HasFreeBay() const;
+	uint AllocateBay();
+	void FreeBay(uint nr);
+	bool IsEntranceBusy() const;
+	void SetEntranceBusy(bool busy);
 protected:
 	static RoadStop *AllocateRaw(void);
 };

@@ -490,11 +490,11 @@ static void ClearCrashedStation(Vehicle *v)
 {
 	RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 
-	// mark station as not busy
-	CLRBIT(rs->status, 7);
+	/* Mark the station entrance as not busy */
+	rs->SetEntranceBusy(false);
 
-	// free parking bay
-	SETBIT(rs->status, HASBIT(v->u.road.state, 1) ? 1 : 0);
+	/* Free the parking bay */
+	rs->FreeBay(HASBIT(v->u.road.state, 1) ? 1 : 0);
 }
 
 static void RoadVehDelete(Vehicle *v)
@@ -1080,7 +1080,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 			} else {
 				// proper station type, check if there is free loading bay
 				if (!_patches.roadveh_queue &&
-						GB(GetRoadStopByTile(tile, rstype)->status, 0, 2) == 0) {
+						!GetRoadStopByTile(tile, rstype)->HasFreeBay()) {
 					// station is full and RV queuing is off
 					bitmask = 0;
 				}
@@ -1411,8 +1411,8 @@ again:
 				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 
 				/* Vehicle is leaving a road stop tile, mark bay as free and clear the usage bit */
-				SETBIT(rs->status, v->u.road.state & 2 ? 1 : 0); // set bay as free
-				CLRBIT(rs->status, 7); // usage bit
+				rs->FreeBay(HASBIT(v->u.road.state, 1) ? 1 : 0);
+				rs->SetEntranceBusy(false);
 			}
 		}
 
@@ -1527,7 +1527,7 @@ again:
 			Order old_order;
 
 			/* Clear road stop busy bit to allow another vehicle to enter or leave */
-			CLRBIT(rs->status, 7);
+			rs->SetEntranceBusy(false);
 
 			v->last_station_visited = GetStationIndex(v->tile);
 
@@ -1554,8 +1554,8 @@ again:
 
 		/* Vehicle is ready to leave a bay in a road stop */
 		if (v->current_order.type != OT_GOTO_DEPOT) {
-			if (HASBIT(rs->status, 7)) {
-				/* Road stop is busy, so wait */
+			if (rs->IsEntranceBusy()) {
+				/* Road stop entrance is busy, so wait */
 				v->cur_speed = 0;
 				return;
 			}
@@ -1564,7 +1564,7 @@ again:
 			ClearSlot(v);
 		}
 		/* Set road stop busy bit to prevent another vehicle trying to enter or leave */
-		SETBIT(rs->status, 7);
+		rs->SetEntranceBusy(true);
 
 		if (rs == v->u.road.slot) {
 			/* We are leaving the correct station */

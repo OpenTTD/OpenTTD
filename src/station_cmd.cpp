@@ -2278,25 +2278,17 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 				/* Attempt to allocate a parking bay in a road stop */
 				RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
 
-				/* rs->status bits 0 and 1 describe current the two parking spots.
-				 * 0 means occupied, 1 means free. */
-
-				// Check if station is busy or if there are no free bays.
-				if (HASBIT(rs->status, 7) || GB(rs->status, 0, 2) == 0)
-					return 8;
+				/* Check if station is busy or if there are no free bays. */
+				if (rs->IsEntranceBusy() || !rs->HasFreeBay()) return 8;
 
 				v->u.road.state += 32;
 
-				// if the first bay is free, allocate that, else the second bay must be free.
-				if (HASBIT(rs->status, 0)) {
-					CLRBIT(rs->status, 0);
-				} else {
-					CLRBIT(rs->status, 1);
-					v->u.road.state += 2;
-				}
+				/* Allocate a bay and update the road state */
+				uint bay_nr = rs->AllocateBay();
+				SB(v->u.road.state, 1, 1, bay_nr);
 
-				// mark the station as busy
-				SETBIT(rs->status, 7);
+				/* Mark the station entrace as busy */
+				rs->SetEntranceBusy(true);
 			}
 		}
 	}

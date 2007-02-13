@@ -437,3 +437,52 @@ bool RoadStop::IsValid() const
 {
 	return xy != INVALID_TILE;
 }
+
+/** Checks whether there is a free bay in this road stop */
+bool RoadStop::HasFreeBay() const
+{
+	return GB(status, 0, MAX_BAY_COUNT) != 0;
+}
+
+/**
+ * Allocates a bay
+ * @return the allocated bay number
+ * @pre this->HasFreeBay()
+ */
+uint RoadStop::AllocateBay()
+{
+	/* Find the first free bay. If the bit is set, the bay is free. */
+	for (uint bay_nr = 0; bay_nr < MAX_BAY_COUNT; bay_nr++) {
+		if (HASBIT(status, bay_nr)) {
+			CLRBIT(status, bay_nr);
+			return bay_nr;
+		}
+	}
+
+	/* There has to be a free bay (precondition) */
+	NOT_REACHED();
+	return 0;
+}
+
+/**
+ * Frees the given bay
+ * @param nr the number of the bay to free
+ */
+void RoadStop::FreeBay(uint nr)
+{
+	assert(nr < MAX_BAY_COUNT);
+	SETBIT(status, nr);
+}
+
+
+/** Checks whether the entrance of the road stop is occupied by a vehicle */
+bool RoadStop::IsEntranceBusy() const
+{
+	return HASBIT(status, 7);
+}
+
+/** Makes an entrance occupied or free */
+void RoadStop::SetEntranceBusy(bool busy)
+{
+	SB(status, 7, 1, !!busy);
+}
