@@ -2995,7 +2995,7 @@ static void TrainController(Vehicle *v, bool update_image)
 {
 	Vehicle *prev;
 	GetNewVehiclePosResult gp;
-	uint32 r, tracks,ts;
+	uint32 r, tracks, ts;
 	Trackdir i;
 	DiagDirection enterdir;
 	Direction dir;
@@ -3013,11 +3013,11 @@ static void TrainController(Vehicle *v, bool update_image)
 			if (GetNewVehiclePos(v, &gp)) {
 				/* Staying in the old tile */
 				if (v->u.rail.track == TRACK_BIT_DEPOT) {
-					/* inside depot */
+					/* Inside depot */
 					gp.x = v->x_pos;
 					gp.y = v->y_pos;
 				} else {
-					/* is not inside depot */
+					/* Not inside depot */
 
 					if (IsFrontEngine(v) && !TrainCheckIfLineEnds(v)) return;
 
@@ -3043,7 +3043,7 @@ static void TrainController(Vehicle *v, bool update_image)
 				/* Determine what direction we're entering the new tile from */
 				dir = GetNewVehicleDirectionByTile(gp.new_tile, gp.old_tile);
 				enterdir = DirToDiagDir(dir);
-				assert(enterdir==0 || enterdir==1 || enterdir==2 || enterdir==3);
+				assert(IsValidDiagDirection(enterdir));
 
 				/* Get the status of the tracks in the new tile and mask
 				 * away the bits that aren't reachable. */
@@ -3060,17 +3060,11 @@ static void TrainController(Vehicle *v, bool update_image)
 					bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
 				}
 
-				if (bits == TRACK_BIT_NONE) {
-					//debug("%x == 0", bits);
-					goto invalid_rail;
-				}
+				if (bits == TRACK_BIT_NONE) goto invalid_rail;
 
 				/* Check if the new tile contrains tracks that are compatible
 				 * with the current train, if not, bail out. */
-				if (!CheckCompatibleRail(v, gp.new_tile)) {
-					//debug("!CheckCompatibleRail(%p, %x)", v, gp.new_tile);
-					goto invalid_rail;
-				}
+				if (!CheckCompatibleRail(v, gp.new_tile)) goto invalid_rail;
 
 				if (prev == NULL) {
 					/* Currently the locomotive is active. Determine which one of the
@@ -3079,16 +3073,24 @@ static void TrainController(Vehicle *v, bool update_image)
 					assert(chosen_track & tracks);
 
 					/* Check if it's a red signal and that force proceed is not clicked. */
-					if ( (tracks>>16)&chosen_track && v->u.rail.force_proceed == 0) goto red_light;
+					if ((tracks >> 16) & chosen_track && v->u.rail.force_proceed == 0) goto red_light;
 				} else {
-					static byte _matching_tracks[8] = {0x30, 1, 0xC, 2, 0x30, 1, 0xC, 2};
+					static const TrackBits _matching_tracks[8] = {
+							TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, TRACK_BIT_X,
+							TRACK_BIT_UPPER | TRACK_BIT_LOWER, TRACK_BIT_Y,
+							TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, TRACK_BIT_X,
+							TRACK_BIT_UPPER | TRACK_BIT_LOWER, TRACK_BIT_Y
+					};
 
 					/* The wagon is active, simply follow the prev vehicle. */
 					chosen_track = (TrackBits)(byte)(_matching_tracks[GetDirectionToVehicle(prev, gp.x, gp.y)] & bits);
 				}
 
-				/* make sure chosen track is a valid track */
-				assert(chosen_track==1 || chosen_track==2 || chosen_track==4 || chosen_track==8 || chosen_track==16 || chosen_track==32);
+				/* Make sure chosen track is a valid track */
+				assert(
+						chosen_track == TRACK_BIT_X     || chosen_track == TRACK_BIT_Y ||
+						chosen_track == TRACK_BIT_UPPER || chosen_track == TRACK_BIT_LOWER ||
+						chosen_track == TRACK_BIT_LEFT  || chosen_track == TRACK_BIT_RIGHT);
 
 				/* Update XY to reflect the entrance to the new tile, and select the direction to use */
 				{
@@ -3126,15 +3128,14 @@ static void TrainController(Vehicle *v, bool update_image)
 
 				/* Signals can only change when the first
 				 * (above) or the last vehicle moves. */
-				if (v->next == NULL)
-					TrainMovedChangeSignals(gp.old_tile, ReverseDiagDir(enterdir));
+				if (v->next == NULL) TrainMovedChangeSignals(gp.old_tile, ReverseDiagDir(enterdir));
 
 				if (prev == NULL) AffectSpeedByDirChange(v, chosen_dir);
 
 				v->direction = chosen_dir;
 			}
 		} else {
-			/* in tunnel on on a bridge */
+			/* In tunnel or on a bridge */
 			GetNewVehiclePos(v, &gp);
 
 			SetSpeedLimitOnBridge(v);

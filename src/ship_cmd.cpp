@@ -693,12 +693,12 @@ static void ShipController(Vehicle *v)
 	BeginVehicleMove(v);
 
 	if (GetNewVehiclePos(v, &gp)) {
-		// staying in tile
+		/* Staying in tile */
 		if (IsShipInDepot(v)) {
 			gp.x = v->x_pos;
 			gp.y = v->y_pos;
 		} else {
-			/* isnot inside depot */
+			/* Not inside depot */
 			r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
 			if (HASBIT(r, VETS_CANNOT_ENTER)) goto reverse_direction;
 
@@ -722,7 +722,7 @@ static void ShipController(Vehicle *v)
 					/* Non-buoy orders really need to reach the tile */
 					if (v->dest_tile == gp.new_tile) {
 						if (v->current_order.type == OT_GOTO_DEPOT) {
-							if ((gp.x&0xF)==8 && (gp.y&0xF)==8) {
+							if ((gp.x & 0xF) == 8 && (gp.y & 0xF) == 8) {
 								VehicleEnterDepot(v);
 								return;
 							}
@@ -757,26 +757,25 @@ static void ShipController(Vehicle *v)
 		}
 	} else {
 		DiagDirection diagdir;
-		// new tile
-		if (TileX(gp.new_tile) >= MapMaxX() || TileY(gp.new_tile) >= MapMaxY())
+		/* New tile */
+		if (TileX(gp.new_tile) >= MapMaxX() || TileY(gp.new_tile) >= MapMaxY()) {
 			goto reverse_direction;
+		}
 
 		dir = ShipGetNewDirectionFromTiles(gp.new_tile, gp.old_tile);
 		assert(dir == DIR_NE || dir == DIR_SE || dir == DIR_SW || dir == DIR_NW);
 		diagdir = DirToDiagDir(dir);
 		tracks = GetAvailShipTracks(gp.new_tile, diagdir);
-		if (tracks == 0)
-			goto reverse_direction;
+		if (tracks == TRACK_BIT_NONE) goto reverse_direction;
 
-		// Choose a direction, and continue if we find one
+		/* Choose a direction, and continue if we find one */
 		track = ChooseShipTrack(v, gp.new_tile, diagdir, tracks);
-		if (track == INVALID_TRACK)
-			goto reverse_direction;
+		if (track == INVALID_TRACK) goto reverse_direction;
 
 		b = _ship_subcoord[diagdir][track];
 
-		gp.x = (gp.x&~0xF) | b[0];
-		gp.y = (gp.y&~0xF) | b[1];
+		gp.x = (gp.x & ~0xF) | b[0];
+		gp.y = (gp.y & ~0xF) | b[1];
 
 		/* Call the landscape function and tell it that the vehicle entered the tile */
 		r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
