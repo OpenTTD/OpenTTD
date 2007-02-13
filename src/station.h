@@ -167,6 +167,8 @@ struct Station {
 	void MarkDirty() const;
 	void MarkTilesDirty() const;
 	bool TileBelongsToRailStation(TileIndex tile) const;
+	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const;
+	uint GetPlatformLength(TileIndex tile) const;
 	bool IsBuoy() const;
 	bool IsValid() const;
 
@@ -260,8 +262,6 @@ DECLARE_OLD_POOL(RoadStop, RoadStop, 5, 2000)
 void AfterLoadStations(void);
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile, int w, int h, int rad);
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int h, int rad);
-uint GetStationPlatforms(const Station *st, TileIndex tile);
-uint GetPlatformLength(TileIndex tile, DiagDirection dir);
 
 
 const DrawTileSprites *GetStationTileLayout(byte gfx);

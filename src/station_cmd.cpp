@@ -1140,57 +1140,6 @@ int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint
 	return _price.remove_rail_station;
 }
 
-// determine the number of platforms for the station
-uint GetStationPlatforms(const Station *st, TileIndex tile)
-{
-	TileIndex t;
-	TileIndexDiff delta;
-	Axis axis;
-	uint len;
-	assert(st->TileBelongsToRailStation(tile));
-
-	len = 0;
-	axis = GetRailStationAxis(tile);
-	delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
-
-	// find starting tile..
-	t = tile;
-	do {
-		t -= delta;
-		len++;
-	} while (st->TileBelongsToRailStation(t) && GetRailStationAxis(t) == axis);
-
-	// find ending tile
-	t = tile;
-	do {
-		t += delta;
-		len++;
-	} while (st->TileBelongsToRailStation(t) && GetRailStationAxis(t) == axis);
-
-	return len - 1;
-}
-
-/** Determines the REMAINING length of a platform, starting at (and including)
- * the given tile.
- * @param tile the tile from which to start searching. Must be a railway station tile
- * @param dir The direction in which to search.
- * @return The platform length
- */
-uint GetPlatformLength(TileIndex tile, DiagDirection dir)
-{
-	TileIndex start_tile = tile;
-	uint length = 0;
-	assert(IsRailwayStationTile(tile));
-	assert(dir < DIAGDIR_END);
-
-	do {
-		length ++;
-		tile += TileOffsByDiagDir(dir);
-	} while (IsCompatibleTrainStationTile(tile, start_tile));
-
-	return length;
-}
-
 
 static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 {

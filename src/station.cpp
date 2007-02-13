@@ -179,6 +179,56 @@ bool Station::TileBelongsToRailStation(TileIndex tile) const
 }
 
 
+/** Obtain the length of a platform
+ * @pre tile must be a railway station tile
+ * @param tile A tile that contains the platform in question
+ * @returns The length of the platform
+ */
+uint Station::GetPlatformLength(TileIndex tile) const
+{
+	TileIndex t;
+	TileIndexDiff delta;
+	uint len = 0;
+	assert(TileBelongsToRailStation(tile));
+
+	delta = (GetRailStationAxis(tile) == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+
+	t = tile;
+	do {
+		t -= delta;
+		len++;
+	} while (IsCompatibleTrainStationTile(t, tile));
+
+	t = tile;
+	do {
+		t += delta;
+		len++;
+	} while (IsCompatibleTrainStationTile(t, tile));
+
+	return len - 1;
+}
+
+/** Determines the REMAINING length of a platform, starting at (and including)
+ * the given tile.
+ * @param tile the tile from which to start searching. Must be a railway station tile
+ * @param dir The direction in which to search.
+ * @return The platform length
+ */
+uint Station::GetPlatformLength(TileIndex tile, DiagDirection dir) const
+{
+	TileIndex start_tile = tile;
+	uint length = 0;
+	assert(IsRailwayStationTile(tile));
+	assert(dir < DIAGDIR_END);
+
+	do {
+		length ++;
+		tile += TileOffsByDiagDir(dir);
+	} while (IsCompatibleTrainStationTile(tile, start_tile));
+
+	return length;
+}
+
 /** Determines whether a station is a buoy only.
  * @todo Ditch this encoding of buoys
  */

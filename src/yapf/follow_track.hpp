@@ -197,7 +197,7 @@ protected:
 		if (IsRailTT() && m_is_station) {
 			// entered railway station
 			// get platform length
-			uint length = GetPlatformLength(m_new_tile, TrackdirToExitdir(m_old_td));
+			uint length = GetStationByTile(m_new_tile)->GetPlatformLength(m_new_tile, TrackdirToExitdir(m_old_td));
 			// how big step we must do to get to the last platform tile;
 			m_tiles_skipped = length - 1;
 			// move to the platform end
