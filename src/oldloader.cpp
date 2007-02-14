@@ -1502,7 +1502,7 @@ static bool LoadOldMain(LoadgameState *ls)
 				 * clear it for ourselves and let OTTD's rebuild PBS itself */
 				_m[i].m4 &= 0xF; /* Only keep the lower four bits; upper four is PBS */
 				break;
-			case MP_WATER:
+			case MP_WATER: {
 				/* TTDPatch has all tiles touching water as coast (water)-type, we don't.
 				 * This is only true from a certain TTDP version, but there is no harm
 				 * in checking all the time */
@@ -1511,7 +1511,8 @@ static bool LoadOldMain(LoadgameState *ls)
 					SetTileType(i, MP_CLEAR);
 					SetTileOwner(i, OWNER_NONE);
 				}
-				break;
+			} break;
+			default: break;
 		}
 	}
 
