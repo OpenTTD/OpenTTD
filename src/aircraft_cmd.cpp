@@ -1838,7 +1838,7 @@ static bool AirportHasBlock(Vehicle *v, const AirportFTA *current_pos, const Air
 	// same block, then of course we can move
 	if (apc->layout[current_pos->position].block != next->block) {
 		const Station *st = GetStation(v->u.air.targetairport);
-		uint32 airport_flags = next->block;
+		uint64 airport_flags = next->block;
 
 		// check additional possible extra blocks
 		if (current_pos != reference && current_pos->block != NOTHING_block) {
@@ -1862,7 +1862,7 @@ static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportF
 
 	// if the next position is in another block, check it and wait until it is free
 	if ((apc->layout[current_pos->position].block & next->block) != next->block) {
-		uint32 airport_flags = next->block;
+		uint64 airport_flags = next->block;
 		Station* st = GetStation(v->u.air.targetairport);
 		//search for all all elements in the list with the same state, and blocks != N
 		// this means more blocks should be checked/set
