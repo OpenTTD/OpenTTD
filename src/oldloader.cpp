@@ -1061,14 +1061,17 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 	uint temp = ls->total_read;
 	bool res;
 
+	/* We changed the offset of the vehicle types, so fix it
+	 * Basically v->type -= 0x10; would suffice, but play safely */
 	switch (v->type) {
-		case VEH_Train:    res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
-		case VEH_Road:     res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
-		case VEH_Ship:     res = LoadChunk(ls, &v->u.ship,     vehicle_ship_chunk);     break;
-		case VEH_Aircraft: res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
-		case VEH_Special:  res = LoadChunk(ls, &v->u.special,  vehicle_special_chunk);  break;
-		case VEH_Disaster: res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
-		default:           res = LoadChunk(ls, NULL,           vehicle_empty_chunk);    break;
+		default: NOT_REACHED();
+		case 0x00 /*VEH_Invalid */: v->type = VEH_Invalid;  res = LoadChunk(ls, NULL,           vehicle_empty_chunk);    break;
+		case 0x10 /*VEH_Train   */: v->type = VEH_Train;    res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
+		case 0x11 /*VEH_Road    */: v->type = VEH_Road;     res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
+		case 0x12 /*VEH_Ship    */: v->type = VEH_Ship;     res = LoadChunk(ls, &v->u.ship,     vehicle_ship_chunk);     break;
+		case 0x13 /*VEH_Aircraft*/: v->type = VEH_Aircraft; res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
+		case 0x14 /*VEH_Special */: v->type = VEH_Special;  res = LoadChunk(ls, &v->u.special,  vehicle_special_chunk);  break;
+		case 0x15 /*VEH_Disaster*/: v->type = VEH_Disaster; res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
 	}
 
 	/* This chunk size should always be 10 bytes */
