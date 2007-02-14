@@ -28,4 +28,16 @@ static inline RoadBits DiagDirToRoadBits(DiagDirection d)
 	return (RoadBits)(1U << (3 ^ d));
 }
 
+/** Checks whether the trackdir means that we are reversing */
+static inline bool IsReversingRoadTrackdir(Trackdir dir)
+{
+	return (dir & 0x07) >= 6;
+}
+
+/** Checks whether the given trackdir is a straight road */
+static inline bool IsStraightRoadTrackdir(Trackdir dir)
+{
+	return (dir & 0x06) == 0;
+}
+
 #endif /* ROAD_H */

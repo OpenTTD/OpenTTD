@@ -79,18 +79,6 @@ static const Trackdir _roadveh_depot_exit_trackdir[DIAGDIR_END] = {
 	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW
 };
 
-/** Checks whether the trackdir means that we are reversing */
-static bool IsReversingRoadTrackdir(Trackdir dir)
-{
-	return (dir & 0x07) >= 6;
-}
-
-/** Checks whether the given trackdir is a straight road */
-static bool IsStraightRoadTrackdir(Trackdir dir)
-{
-	return (dir & 0x06) == 0;
-}
-
 int GetRoadVehImage(const Vehicle* v, Direction direction)
 {
 	int img = v->spritenum;
@@ -1250,6 +1238,13 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 enum {
 	RDE_NEXT_TILE = 0x80,
 	RDE_TURNED    = 0x40,
+
+	/* Start frames for when a vehicle enters a tile/changes its state.
+	 * The start frame is different for vehicles that turned around or
+	 * are leaving the depot as the do not start at the edge of the tile */
+	RVC_DEFAULT_START_FRAME     = 0,
+	RVC_TURN_AROUND_START_FRAME = 1,
+	RVC_DEPOT_START_FRAME       = 6
 };
 
 typedef struct RoadDriveEntry {
@@ -1313,10 +1308,10 @@ static void RoadVehController(Vehicle *v)
 		v->direction = DiagDirToDir(dir);
 
 		tdir = _roadveh_depot_exit_trackdir[dir];
-		rdp = _road_drive_data[(_opt.road_side << 4) + tdir];
+		rdp = _road_drive_data[(_opt.road_side << RVS_DRIVE_SIDE) + tdir];
 
-		x = TileX(v->tile) * TILE_SIZE + (rdp[6].x & 0xF);
-		y = TileY(v->tile) * TILE_SIZE + (rdp[6].y & 0xF);
+		x = TileX(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].x & 0xF);
+		y = TileY(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].y & 0xF);
 
 		if (RoadVehFindCloseTo(v, x, y, v->direction) != NULL) return;
 
@@ -1328,7 +1323,7 @@ static void RoadVehController(Vehicle *v)
 
 		v->vehstatus &= ~VS_HIDDEN;
 		v->u.road.state = tdir;
-		v->u.road.frame = 6;
+		v->u.road.frame = RVC_DEPOT_START_FRAME;
 
 		v->cur_image = GetRoadVehImage(v, v->direction);
 		UpdateRoadVehDeltaXY(v);
@@ -1355,7 +1350,7 @@ static void RoadVehController(Vehicle *v)
 	BeginVehicleMove(v);
 
 	if (v->u.road.state == RVSB_WORMHOLE) {
-		/* Vehicle is on a bridge or in a tunnel */
+		/* Vehicle is entering a depot or is on a bridge or in a tunnel */
 		GetNewVehiclePosResult gp;
 
 		GetNewVehiclePos(v, &gp);
@@ -1385,7 +1380,6 @@ static void RoadVehController(Vehicle *v)
 	rd = _road_drive_data[(v->u.road.state + (_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
 	if (rd.x & RDE_NEXT_TILE) {
-		/* Vehicle is moving to the next tile */
 		TileIndex tile = v->tile + TileOffsByDiagDir(rd.x & 3);
 		Trackdir dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3));
 		uint32 r;
@@ -1393,7 +1387,6 @@ static void RoadVehController(Vehicle *v)
 		const RoadDriveEntry *rdp;
 
 		if (dir == INVALID_TRACKDIR) {
-			/* No path was found to destination */
 			v->cur_speed = 0;
 			return;
 		}
@@ -1405,17 +1398,16 @@ again:
 		}
 
 		/* Get position data for first frame on the new tile */
-		rdp = _road_drive_data[(dir + (_opt.road_side << 4)) ^ v->u.road.overtaking];
+		rdp = _road_drive_data[(dir + (_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking];
 
-		x = TileX(tile) * TILE_SIZE + rdp[0].x;
-		y = TileY(tile) * TILE_SIZE + rdp[0].y;
+		x = TileX(tile) * TILE_SIZE + rdp[RVC_DEFAULT_START_FRAME].x;
+		y = TileY(tile) * TILE_SIZE + rdp[RVC_DEFAULT_START_FRAME].y;
 
 		newdir = RoadVehGetSlidingDirection(v, x, y);
 		if (RoadVehFindCloseTo(v, x, y, newdir) != NULL) return;
 
 		r = VehicleEnterTile(v, tile, x, y);
 		if (HASBIT(r, VETS_CANNOT_ENTER)) {
-			/* Vehicle cannot enter the tile */
 			if (!IsTileType(tile, MP_TUNNELBRIDGE)) {
 				v->cur_speed = 0;
 				return;
@@ -1433,20 +1425,18 @@ again:
 				return;
 			}
 			if (IsRoadStop(v->tile)) {
-				/* The tile that the vehicle is leaving is a road stop */
 				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 
-				/* Vehicle is leaving a road stop tile, mark bay as free and clear the usage bit */
+				/* Vehicle is leaving a road stop tile, mark bay as free */
 				rs->FreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY));
 				rs->SetEntranceBusy(false);
 			}
 		}
 
 		if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) {
-			/* Set vehicle to first frame on new tile */
 			v->tile = tile;
 			v->u.road.state = (byte)dir;
-			v->u.road.frame = 0;
+			v->u.road.frame = RVC_DEFAULT_START_FRAME;
 		}
 		if (newdir != v->direction) {
 			v->direction = newdir;
@@ -1463,35 +1453,30 @@ again:
 		/* Vehicle has finished turning around, it will now head back onto the same tile */
 		Trackdir dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3));
 		uint32 r;
-		int tmp;
 		Direction newdir;
 		const RoadDriveEntry *rdp;
 
 		if (dir == INVALID_TRACKDIR) {
-			/* No path was found to destination */
 			v->cur_speed = 0;
 			return;
 		}
 
-		tmp = (_opt.road_side << 4) + dir;
-		rdp = _road_drive_data[tmp];
+		rdp = _road_drive_data[(_opt.road_side << RVS_DRIVE_SIDE) + dir];
 
-		x = TileX(v->tile) * TILE_SIZE + rdp[1].x;
-		y = TileY(v->tile) * TILE_SIZE + rdp[1].y;
+		x = TileX(v->tile) * TILE_SIZE + rdp[RVC_TURN_AROUND_START_FRAME].x;
+		y = TileY(v->tile) * TILE_SIZE + rdp[RVC_TURN_AROUND_START_FRAME].y;
 
 		newdir = RoadVehGetSlidingDirection(v, x, y);
 		if (RoadVehFindCloseTo(v, x, y, newdir) != NULL) return;
 
 		r = VehicleEnterTile(v, v->tile, x, y);
 		if (HASBIT(r, VETS_CANNOT_ENTER)) {
-			/* Vehicle cannot enter the tile */
 			v->cur_speed = 0;
 			return;
 		}
 
-		/* Set vehicle to second frame on the tile */
-		v->u.road.state = tmp & ~(1 << RVS_DRIVE_SIDE);
-		v->u.road.frame = 1;
+		v->u.road.state = dir;
+		v->u.road.frame = RVC_TURN_AROUND_START_FRAME;
 
 		if (newdir != v->direction) {
 			v->direction = newdir;
@@ -1524,7 +1509,6 @@ again:
 
 	old_dir = v->direction;
 	if (new_dir != old_dir) {
-		/* The vehicle's direction has changed. */
 		v->direction = new_dir;
 		v->cur_speed -= (v->cur_speed >> 2);
 		if (old_dir != v->u.road.state) {
@@ -1534,7 +1518,7 @@ again:
 			SetRoadVehPosition(v, v->x_pos, v->y_pos);
 			/* Note, return here means that the frame counter is not incremented
 			 * for vehicles changing direction in a road stop. This causes frames to
-			 * be repeated. Is this intended? */
+			 * be repeated. (XXX) Is this intended? */
 			return;
 		}
 	}
@@ -1552,7 +1536,6 @@ again:
 			/* Vehicle has arrived at a bay in a road stop */
 			Order old_order;
 
-			/* Clear road stop busy bit to allow another vehicle to enter or leave */
 			rs->SetEntranceBusy(false);
 
 			v->last_station_visited = GetStationIndex(v->tile);
@@ -1581,7 +1564,7 @@ again:
 		/* Vehicle is ready to leave a bay in a road stop */
 		if (v->current_order.type != OT_GOTO_DEPOT) {
 			if (rs->IsEntranceBusy()) {
-				/* Road stop entrance is busy, so wait */
+				/* Road stop entrance is busy, so wait as there is nowhere else to go */
 				v->cur_speed = 0;
 				return;
 			}
@@ -1589,7 +1572,7 @@ again:
 			v->current_order.flags = 0;
 			ClearSlot(v);
 		}
-		/* Set road stop busy bit to prevent another vehicle trying to enter or leave */
+
 		rs->SetEntranceBusy(true);
 
 		if (rs == v->u.road.slot) {
@@ -1626,7 +1609,6 @@ again:
 	 * entry onto bridge or into tunnel */
 	r = VehicleEnterTile(v, v->tile, x, y);
 	if (HASBIT(r, VETS_CANNOT_ENTER)) {
-		/* Vehicle cannot continue */
 		v->cur_speed = 0;
 		return;
 	}

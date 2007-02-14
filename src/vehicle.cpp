@@ -2760,7 +2760,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 				return DiagdirToDiagTrackdir(GetRoadStopDir(v->tile)); /* Road vehicle in a station */
 
 			/* If vehicle's state is a valid track direction (vehicle is not turning around) return it */
-			if ((v->u.road.state & 7) < 6) return (Trackdir)v->u.road.state;
+			if (!IsReversingRoadTrackdir((Trackdir)v->u.road.state)) return (Trackdir)v->u.road.state;
 
 			/* Vehicle is turning around, get the direction from vehicle's direction */
 			return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
