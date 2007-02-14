@@ -45,14 +45,18 @@ enum RoadVehicleStates {
 
 	/* Bit numbers */
 	RVS_USING_SECOND_BAY         =    1,                      ///< Only used while in a road stop
+	RVS_IS_STOPPING              =    2,                      ///< Only used for drive-through stops. Vehicle will stop here
 	RVS_DRIVE_SIDE               =    4,                      ///< Only used when retrieving move data and for turning vehicles
 	RVS_IN_ROAD_STOP             =    5,                      ///< The vehicle is in a road stop
+	RVS_IN_DT_ROAD_STOP          =    6,                      ///< The vehicle is in a drive-through road stop
 
 	/* Bit sets of the above specified bits */
 	RVSB_USING_SECOND_BAY        = 1 << RVS_USING_SECOND_BAY, ///< Only used while in a road stop
 	RVSB_DRIVE_SIDE              = 1 << RVS_DRIVE_SIDE,       ///< Only used when retrieving move data and for turning vehicles
 	RVSB_IN_ROAD_STOP            = 1 << RVS_IN_ROAD_STOP,     ///< The vehicle is in a road stop
 	RVSB_IN_ROAD_STOP_END        = RVSB_IN_ROAD_STOP + TRACKDIR_END,
+	RVSB_IN_DT_ROAD_STOP         = 1 << RVS_IN_DT_ROAD_STOP,  ///< The vehicle is in a drive-through road stop
+	RVSB_IN_DT_ROAD_STOP_END     = RVSB_IN_DT_ROAD_STOP + TRACKDIR_END,
 
 	RVSB_TRACKDIR_MASK           = 0x0F,                      ///< The mask used to extract track dirs
 	RVSB_ROAD_STOP_TRACKDIR_MASK = 0x09                       ///< Only bits 0 and 3 are used to encode the trackdir for road stops

@@ -42,7 +42,9 @@ enum {
 	GFX_RADAR_DISTRICTWE_LAST     = 156,
 	GFX_WINDSACK_INTERCON_FIRST   = 164,
 	GFX_WINDSACK_INTERCON_LAST    = 167,
-	GFX_BASE_END                  = 168
+	GFX_TRUCK_BASE_EXT            = 168,
+	GFX_BUS_BASE_EXT              = 170,
+	GFX_BASE_END                  = 172
 };
 
 enum {
@@ -51,7 +53,9 @@ enum {
 	TRUCK_SIZE = GFX_BUS_BASE - GFX_TRUCK_BASE,
 	BUS_SIZE = GFX_OILRIG_BASE - GFX_BUS_BASE,
 	DOCK_SIZE_TOTAL = GFX_BUOY_BASE - GFX_DOCK_BASE,
-	AIRPORT_SIZE_EXTENDED = GFX_BASE_END - GFX_AIRPORT_BASE_EXTENDED
+	AIRPORT_SIZE_EXTENDED = GFX_TRUCK_BASE_EXT - GFX_AIRPORT_BASE_EXTENDED,
+	TRUCK_SIZE_EXT = GFX_BUS_BASE_EXT - GFX_TRUCK_BASE_EXT,
+	BUS_SIZE_EXT = GFX_BASE_END - GFX_BUS_BASE_EXT,
 };
 
 typedef enum HangarTiles {
@@ -125,12 +129,14 @@ static inline bool IsAirport(TileIndex t)
 
 static inline bool IsTruckStop(TileIndex t)
 {
-	return IS_BYTE_INSIDE(GetStationGfx(t), GFX_TRUCK_BASE, GFX_TRUCK_BASE + TRUCK_SIZE);
+	return (IS_BYTE_INSIDE(GetStationGfx(t), GFX_TRUCK_BASE, GFX_TRUCK_BASE + TRUCK_SIZE)) ||
+		(IS_BYTE_INSIDE(GetStationGfx(t), GFX_TRUCK_BASE_EXT, GFX_TRUCK_BASE_EXT + TRUCK_SIZE_EXT));
 }
 
 static inline bool IsBusStop(TileIndex t)
 {
-	return IS_BYTE_INSIDE(GetStationGfx(t), GFX_BUS_BASE, GFX_BUS_BASE + BUS_SIZE);
+	return (IS_BYTE_INSIDE(GetStationGfx(t), GFX_BUS_BASE, GFX_BUS_BASE + BUS_SIZE)) ||
+		(IS_BYTE_INSIDE(GetStationGfx(t), GFX_BUS_BASE_EXT, GFX_BUS_BASE_EXT + BUS_SIZE_EXT));
 }
 
 static inline bool IsRoadStop(TileIndex t)
@@ -143,13 +149,44 @@ static inline bool IsRoadStopTile(TileIndex t)
 	return IsTileType(t, MP_STATION) && IsRoadStop(t);
 }
 
+static inline bool IsStandardRoadStopTile(TileIndex t)
+{
+	return IsTileType(t, MP_STATION) &&
+		(IS_BYTE_INSIDE(GetStationGfx(t), GFX_TRUCK_BASE, GFX_TRUCK_BASE + TRUCK_SIZE) ||
+		IS_BYTE_INSIDE(GetStationGfx(t), GFX_BUS_BASE, GFX_BUS_BASE + BUS_SIZE));
+}
+
+static inline bool IsDriveThroughStopTile(TileIndex t)
+{
+	return IsTileType(t, MP_STATION) &&
+		(IS_BYTE_INSIDE(GetStationGfx(t), GFX_TRUCK_BASE_EXT, GFX_TRUCK_BASE_EXT + TRUCK_SIZE_EXT) ||
+		IS_BYTE_INSIDE(GetStationGfx(t), GFX_BUS_BASE_EXT, GFX_BUS_BASE_EXT + BUS_SIZE_EXT));
+}
+
+static inline bool GetStopBuiltOnTownRoad(TileIndex t)
+{
+	assert(IsDriveThroughStopTile(t));
+	return HASBIT(_m[t].m6, 3);
+}
+
+static inline void SetStopBuiltOnTownRoad(TileIndex t)
+{
+	assert(IsDriveThroughStopTile(t));
+	SETBIT(_m[t].m6, 3);
+}
+
 /**
  * Gets the direction the road stop entrance points towards.
  */
 static inline DiagDirection GetRoadStopDir(TileIndex t)
 {
+	StationGfx gfx = GetStationGfx(t);
 	assert(IsRoadStopTile(t));
-	return (DiagDirection)((GetStationGfx(t) - GFX_TRUCK_BASE) & 3);
+	if (gfx < GFX_TRUCK_BASE_EXT) {
+		return (DiagDirection)((gfx - GFX_TRUCK_BASE) & 3);
+	} else {
+		return (DiagDirection)((gfx - GFX_TRUCK_BASE_EXT) & 1);
+	}
 }
 
 static inline bool IsOilRig(TileIndex t)
@@ -275,9 +312,13 @@ static inline void MakeRailStation(TileIndex t, Owner o, StationID sid, Axis a, 
 	SetRailType(t, rt);
 }
 
-static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, DiagDirection d)
+static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, bool is_drive_through, DiagDirection d)
 {
-	MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE : GFX_TRUCK_BASE) + d);
+	if (is_drive_through) {
+		MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE_EXT : GFX_TRUCK_BASE_EXT) + d);
+	} else {
+		MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE : GFX_TRUCK_BASE) + d);
+	}
 }
 
 static inline void MakeAirport(TileIndex t, Owner o, StationID sid, byte section)

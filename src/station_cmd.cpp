@@ -35,6 +35,7 @@
 #include "date.h"
 #include "helpers.hpp"
 #include "misc/autoptr.hpp"
+#include "road.h"
 
 /**
  * Called if a new block is added to the station-pool
@@ -1247,7 +1248,10 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station* st)
 /** Build a bus or truck stop
  * @param tile tile to build the stop at
  * @param p1 entrance direction (DiagDirection)
- * @param p2 0 for Bus stops, 1 for truck stops
+ * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
+ *           bit 1: 0 for normal, 1 for drive-through
+ *           bit 2: 0 for normal, 1 for build over road
+ *           bit 3: 0 for player owned road, 1 for town owned road
  */
 int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1255,19 +1259,29 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	RoadStop *road_stop;
 	int32 cost;
 	int32 ret;
-	bool type = !!p2;
+	bool type = HASBIT(p2, 0);
+	bool is_drive_through = HASBIT(p2, 1);
+	Owner cur_owner = _current_player;
 
 	/* Saveguard the parameters */
 	if (!IsValidDiagDirection((DiagDirection)p1)) return CMD_ERROR;
+	/* If it is a drive-through stop check for valid axis */
+	if (is_drive_through && !IsValidAxis((Axis)p1)) return CMD_ERROR;
+	/* If overbuilding a road check tile is a valid road tile */
+	if (HASBIT(p2, 2) && !(IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL)) return CMD_ERROR;
+	/* If overbuilding a town road,check tile is town owned and patch setting is enabled */
+	if (HASBIT(p2, 3) && !(_patches.road_stop_on_town_road && IsTileOwner(tile, OWNER_TOWN))) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
 		return CMD_ERROR;
 
-	ret = CheckFlatLandBelow(tile, 1, 1, flags, 1 << p1, NULL);
+	if (is_drive_through & HASBIT(p2, 3)) _current_player = OWNER_TOWN;
+	ret = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL);
+	_current_player = cur_owner;
 	if (CmdFailed(ret)) return ret;
-	cost = ret;
+	cost = HASBIT(p2, 2) ? 0 : ret; // Don't add cost of clearing road when overbuilding
 
 	st = GetStationAround(tile, 1, 1, INVALID_STATION);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
@@ -1333,7 +1347,8 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
 
-		MakeRoadStop(tile, st->owner, st->index, type ? RoadStop::TRUCK : RoadStop::BUS, (DiagDirection)p1);
+		MakeRoadStop(tile, st->owner, st->index, type ? RoadStop::TRUCK : RoadStop::BUS, is_drive_through, (DiagDirection)p1);
+		if (is_drive_through & HASBIT(p2, 3)) SetStopBuiltOnTownRoad(tile);
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
@@ -1395,7 +1410,44 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 	return (is_truck) ? _price.remove_truck_station : _price.remove_bus_station;
 }
 
+/** Remove a bus or truck stop
+ * @param tile tile to remove the stop from
+ * @param p1 not used
+ * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
+ */
+int32 CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	Station* st;
+	bool is_drive_through;
+	bool is_towns_road = false;
+	RoadBits road_bits;
+	int32 ret;
 
+	/* Make sure the specified tile is a road stop of the correct type */
+	if (!IsTileType(tile, MP_STATION) || !IsRoadStop(tile) || (uint32)GetRoadStopType(tile) != p2) return CMD_ERROR;
+	st = GetStationByTile(tile);
+	/* Save the stop info before it is removed */
+	is_drive_through = IsDriveThroughStopTile(tile);
+	road_bits = GetAnyRoadBits(tile);
+	if (is_drive_through) is_towns_road = GetStopBuiltOnTownRoad(tile);
+
+	ret = RemoveRoadStop(st, flags, tile);
+
+	/* If the stop was a drive-through stop replace the road */
+	if ((flags & DC_EXEC) && !CmdFailed(ret) && is_drive_through) {
+		uint index = 0;
+		Owner cur_owner = _current_player;
+
+		if (is_towns_road) {
+			index = ClosestTownFromTile(tile, _patches.dist_local_authority)->index;
+			_current_player = OWNER_TOWN;
+		}
+		DoCommand(tile, road_bits, index, DC_EXEC, CMD_BUILD_ROAD);
+		_current_player = cur_owner;
+	}
+
+	return ret;
+}
 
 // FIXME -- need to move to its corresponding Airport variable
 // Country Airfield (small)
@@ -2227,6 +2279,27 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 				/* Attempt to allocate a parking bay in a road stop */
 				RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
 
+				if (IsDriveThroughStopTile(tile)) {
+					/* Vehicles entering a drive-through stop from the 'normal' side use first bay (bay 0). */
+					byte side = ((DirToDiagDir(v->direction) == ReverseDiagDir(GetRoadStopDir(tile))) == (v->u.road.overtaking == 0)) ? 0 : 1;
+
+					if (!rs->IsFreeBay(side)) return VETSB_CANNOT_ENTER;
+
+					/* Check if the vehicle is stopping at this road stop */
+					if (GetRoadStopType(tile) == ((v->cargo_type == CT_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK) &&
+							v->current_order.dest == GetStationIndex(tile)) {
+						SETBIT(v->u.road.state, RVS_IS_STOPPING);
+						rs->AllocateDriveThroughBay(side);
+					}
+
+					/* Indicate if vehicle is using second bay. */
+					if (side == 1) SETBIT(v->u.road.state, RVS_USING_SECOND_BAY);
+					/* Indicate a drive-through stop */
+					SETBIT(v->u.road.state, RVS_IN_DT_ROAD_STOP);
+					return VETSB_CONTINUE;
+				}
+
+				/* For normal (non drive-through) road stops */
 				/* Check if station is busy or if there are no free bays. */
 				if (rs->IsEntranceBusy() || !rs->HasFreeBay()) return VETSB_CANNOT_ENTER;
 
@@ -2693,7 +2766,13 @@ static int32 ClearTile_Station(TileIndex tile, byte flags)
 		case STATION_RAIL:    return RemoveRailroadStation(st, tile, flags);
 		case STATION_AIRPORT: return RemoveAirport(st, flags);
 		case STATION_TRUCK:
-		case STATION_BUS:     return RemoveRoadStop(st, flags, tile);
+			if (IsDriveThroughStopTile(tile) && GetStopBuiltOnTownRoad(tile))
+				return_cmd_error(STR_3047_MUST_DEMOLISH_TRUCK_STATION);
+			return RemoveRoadStop(st, flags, tile);
+		case STATION_BUS:
+			if (IsDriveThroughStopTile(tile) && GetStopBuiltOnTownRoad(tile))
+				return_cmd_error(STR_3046_MUST_DEMOLISH_BUS_STATION);
+			return RemoveRoadStop(st, flags, tile);
 		case STATION_BUOY:    return RemoveBuoy(st, flags);
 		case STATION_DOCK:    return RemoveDock(st, flags);
 		default: break;

@@ -121,8 +121,8 @@ protected:
 	/** return true if we can leave m_old_tile in m_exitdir */
 	FORCEINLINE bool CanExitOldTile()
 	{
-		// road stop can be left at one direction only
-		if (IsRoadTT() && IsRoadStopTile(m_old_tile)) {
+		// road stop can be left at one direction only unless it's a drive-through stop
+		if (IsRoadTT() && IsStandardRoadStopTile(m_old_tile)) {
 			DiagDirection exitdir = GetRoadStopDir(m_old_tile);
 			if (exitdir != m_exitdir)
 				return false;
@@ -140,8 +140,8 @@ protected:
 	/** return true if we can enter m_new_tile from m_exitdir */
 	FORCEINLINE bool CanEnterNewTile()
 	{
-		if (IsRoadTT() && IsRoadStopTile(m_new_tile)) {
-			// road stop can be entered from one direction only
+		if (IsRoadTT() && IsStandardRoadStopTile(m_new_tile)) {
+			// road stop can be entered from one direction only unless it's a drive-through stop
 			DiagDirection exitdir = GetRoadStopDir(m_new_tile);
 			if (ReverseDiagDir(exitdir) != m_exitdir)
 				return false;

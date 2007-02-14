@@ -296,7 +296,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	if (tpf->tracktype == TRANSPORT_ROAD) {
 		// road stops and depots now have a track (r4419)
 		// don't enter road stop from the back
-		if (IsRoadStopTile(tile) && ReverseDiagDir(GetRoadStopDir(tile)) != direction) return;
+		if (IsStandardRoadStopTile(tile) && ReverseDiagDir(GetRoadStopDir(tile)) != direction) return;
 		// don't enter road depot from the back
 		if (IsTileDepotType(tile, TRANSPORT_ROAD) && ReverseDiagDir(GetRoadDepotDirection(tile)) != direction) return;
 	}

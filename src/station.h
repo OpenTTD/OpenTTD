@@ -66,7 +66,9 @@ struct RoadStop {
 
 	/* For accessing status */
 	bool HasFreeBay() const;
+	bool IsFreeBay(uint nr) const;
 	uint AllocateBay();
+	void AllocateDriveThroughBay(uint nr);
 	void FreeBay(uint nr);
 	bool IsEntranceBusy() const;
 	void SetEntranceBusy(bool busy);

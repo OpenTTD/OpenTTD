@@ -1107,6 +1107,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Önkorm
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Különböző vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Új útvonalkereső (NPF, felülbírálja az NTP-t): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak (szimulációs célból): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtható állomások engedélyezése városi utakra: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Mindig engedélyezze a kis repülőtereket: {ORANGE}{STRING}
 
@@ -1650,6 +1651,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Út lámpákkal
 STR_1816_TREE_LINED_ROAD                                        :Fával szegélyezett út
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garázs
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Út/vasút kereszteződés
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nem távolíthatod el ezt a buszmegállót...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nem távolíthatod el ezt a teherautó megállót...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Városok

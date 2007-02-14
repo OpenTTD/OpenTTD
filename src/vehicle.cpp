@@ -2756,8 +2756,10 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 			if (IsRoadVehInDepot(v)) /* We'll assume the road vehicle is facing outwards */
 				return DiagdirToDiagTrackdir(GetRoadDepotDirection(v->tile));
 
-			if (IsRoadStopTile(v->tile)) /* We'll assume the road vehicle is facing outwards */
+			if (IsStandardRoadStopTile(v->tile)) /* We'll assume the road vehicle is facing outwards */
 				return DiagdirToDiagTrackdir(GetRoadStopDir(v->tile)); /* Road vehicle in a station */
+
+			if (IsDriveThroughStopTile(v->tile)) return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 
 			/* If vehicle's state is a valid track direction (vehicle is not turning around) return it */
 			if (!IsReversingRoadTrackdir((Trackdir)v->u.road.state)) return (Trackdir)v->u.road.state;

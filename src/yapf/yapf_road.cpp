@@ -51,6 +51,10 @@ protected:
 					if (IsLevelCrossing(tile))
 						cost += Yapf().PfGetSettings().road_crossing_penalty;
 					break;
+				case MP_STATION:
+					if (IsDriveThroughStopTile(tile))
+						cost += Yapf().PfGetSettings().road_stop_penalty;
+					break;
 
 				default:
 					break;
@@ -75,6 +79,10 @@ public:
 		while (true) {
 			// base tile cost depending on distance between edges
 			segment_cost += Yapf().OneTileCost(tile, trackdir);
+
+			const Vehicle* v = Yapf().GetVehicle();
+			// we have reached the vehicle's destination - segment should end here to avoid target skipping
+			if (v->current_order.type == OT_GOTO_STATION && tile == v->dest_tile) break;
 
 			// stop if we have just entered the depot
 			if (IsTileDepotType(tile, TRANSPORT_ROAD) && trackdir == DiagdirToDiagTrackdir(ReverseDiagDir(GetRoadDepotDirection(tile)))) {
@@ -103,7 +111,6 @@ public:
 			// add min/max speed penalties
 			int min_speed = 0;
 			int max_speed = F.GetSpeedLimit(&min_speed);
-			const Vehicle* v = Yapf().GetVehicle();
 			if (max_speed < v->max_speed) segment_cost += 1 * (v->max_speed - max_speed);
 			if (min_speed > v->max_speed) segment_cost += 10 * (min_speed - v->max_speed);
 

@@ -1340,6 +1340,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, serviceathelipad,        0, 0,  true,        STR_CONFIG_PATCHES_SERVICEATHELIPAD,   NULL),
 	SDT_BOOL(Patches, modified_catchment,      0, 0,  true,        STR_CONFIG_PATCHES_CATCHMENT,          NULL),
 	SDT_CONDBOOL(Patches, gradual_loading, 40, SL_MAX_VERSION, 0, 0,  true, STR_CONFIG_PATCHES_GRADUAL_LOADING,    NULL),
+	SDT_CONDBOOL(Patches, road_stop_on_town_road, 47, SL_MAX_VERSION, 0, 0, false, STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD, NULL),
 
 	/***************************************************************************/
 	/* Economy section of the GUI-configure patches window */
@@ -1431,6 +1432,8 @@ const SettingDesc _patch_settings[] = {
 	SDT_VAR(Patches, npf_road_curve_penalty,        SLE_UINT, 0, 0, 1,                      0, 100000, 0, STR_NULL, NULL),
 	/* This is the penalty for level crossings, for both road and rail vehicles */
 	SDT_VAR(Patches, npf_crossing_penalty,          SLE_UINT, 0, 0, (3 * NPF_TILE_LENGTH),  0, 100000, 0, STR_NULL, NULL),
+	/* This is the penalty for drive-through road, stops. */
+	SDT_CONDVAR (Patches, npf_road_drive_through_penalty, SLE_UINT, 47, SL_MAX_VERSION, 0, 0,  8 * NPF_TILE_LENGTH, 0, 1000000, 0, STR_NULL, NULL),
 
 
 	// The maximum number of nodes to search
@@ -1464,6 +1467,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDVAR (Patches, yapf.road_slope_penalty                    , SLE_UINT, 33, SL_MAX_VERSION, 0, 0,  2 * YAPF_TILE_LENGTH, 0, 1000000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.road_curve_penalty                    , SLE_UINT, 33, SL_MAX_VERSION, 0, 0,  1 * YAPF_TILE_LENGTH, 0, 1000000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.road_crossing_penalty                 , SLE_UINT, 33, SL_MAX_VERSION, 0, 0,  3 * YAPF_TILE_LENGTH, 0, 1000000, 0, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.road_stop_penalty                     , SLE_UINT, 47, SL_MAX_VERSION, 0, 0,  8 * YAPF_TILE_LENGTH, 0, 1000000, 0, STR_NULL, NULL),
 
 	/***************************************************************************/
 	/* Terrain genation related patch options */

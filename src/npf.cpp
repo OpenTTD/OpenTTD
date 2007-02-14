@@ -279,6 +279,12 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 			if (IsLevelCrossing(tile)) cost += _patches.npf_crossing_penalty;
 			break;
 
+		case MP_STATION:
+			cost = NPF_TILE_LENGTH;
+			/* Increase the cost for drive-through road stops */
+			if (IsDriveThroughStopTile(tile)) cost += _patches.npf_road_drive_through_penalty;
+			break;
+
 		default:
 			break;
 	}
@@ -453,7 +459,7 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 	if (IsTileType(tile, MP_RAILWAY) ||           /* Rail tile (also rail depot) */
 			IsRailwayStationTile(tile) ||               /* Rail station tile */
 			IsTileDepotType(tile, TRANSPORT_ROAD) ||  /* Road depot tile */
-			IsRoadStopTile(tile) ||                /* Road station tile */
+			IsStandardRoadStopTile(tile) || /* Road station tile (but not drive-through stops) */
 			IsTileDepotType(tile, TRANSPORT_WATER)) { /* Water depot tile */
 		return IsTileOwner(tile, owner); /* You need to own these tiles entirely to use them */
 	}
@@ -529,8 +535,8 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	} else if (IsBridgeTile(src_tile) && GetBridgeRampDirection(src_tile) == src_exitdir) {
 		dst_tile = GetOtherBridgeEnd(src_tile);
 		override_dst_check = true;
-	} else if (type != TRANSPORT_WATER && (IsRoadStopTile(src_tile) || IsTileDepotType(src_tile, type))) {
-		/* This is a road station or a train or road depot. We can enter and exit
+	} else if (type != TRANSPORT_WATER && (IsStandardRoadStopTile(src_tile) || IsTileDepotType(src_tile, type))) {
+		/* This is a road station (non drive-through) or a train or road depot. We can enter and exit
 		 * those from one side only. Trackdirs don't support that (yet), so we'll
 		 * do this here. */
 
@@ -599,7 +605,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	}
 
 	/* Determine available tracks */
-	if (type != TRANSPORT_WATER && (IsRoadStopTile(dst_tile) || IsTileDepotType(dst_tile, type))){
+	if (type != TRANSPORT_WATER && (IsStandardRoadStopTile(dst_tile) || IsTileDepotType(dst_tile, type))){
 		/* Road stations and road and train depots return 0 on GTTS, so we have to do this by hand... */
 		DiagDirection exitdir;
 		if (IsRoadStopTile(dst_tile)) {

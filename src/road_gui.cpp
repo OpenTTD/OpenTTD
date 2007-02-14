@@ -16,6 +16,7 @@
 #include "sound.h"
 #include "command.h"
 #include "variables.h"
+#include "station_map.h"
 //needed for catchments
 #include "station.h"
 
@@ -83,7 +84,7 @@ void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 		ResetObjectToPlace();
-		BuildRoadOutsideStation(tile, (DiagDirection)p1);
+		if (!HASBIT(p2, 1)) BuildRoadOutsideStation(tile, (DiagDirection)p1);
 	}
 }
 
@@ -92,14 +93,45 @@ static void PlaceRoad_Depot(TileIndex tile)
 	DoCommandP(tile, _road_depot_orientation, 0, CcRoadDepot, CMD_BUILD_ROAD_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1807_CAN_T_BUILD_ROAD_VEHICLE));
 }
 
+static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
+{
+	uint32 p1 = _road_station_picker_orientation;
+
+	if (p1 >= DIAGDIR_END) {
+		SETBIT(p2, 1); // It's a drive-through stop
+		p1 -= DIAGDIR_END; // Adjust picker result to actual direction
+
+		/* Only allow building over a road if its a straight road,
+		 * facing the right direction and it belongs to the player */
+		if ((IsTileType(tile, MP_STREET) &&
+				GetRoadTileType(tile) == ROAD_TILE_NORMAL &&
+				(IsTileOwner(tile, _current_player) || (_patches.road_stop_on_town_road && IsTileOwner(tile, OWNER_TOWN))) &&
+				!(GetRoadBits(tile) & ((DiagDirection)p1 == DIAGDIR_NE ? ROAD_Y : ROAD_X)))) {
+
+			cmd ^= CMD_AUTO;
+			SETBIT(p2, 2); // We're building over an existing road
+			if (IsTileOwner(tile, OWNER_TOWN)) SETBIT(p2, 3); // It's a town owned road
+		}
+	}
+	DoCommandP(tile, p1, p2, CcRoadDepot, cmd);
+}
+
 static void PlaceRoad_BusStation(TileIndex tile)
 {
-	DoCommandP(tile, _road_station_picker_orientation, RoadStop::BUS, CcRoadDepot, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
+	if (_remove_button_clicked) {
+		DoCommandP(tile, 0, RoadStop::BUS, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(STR_CAN_T_REMOVE_BUS_STATION));
+	} else {
+		PlaceRoadStop(tile, RoadStop::BUS, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
+	}
 }
 
 static void PlaceRoad_TruckStation(TileIndex tile)
 {
-	DoCommandP(tile, _road_station_picker_orientation, RoadStop::TRUCK, CcRoadDepot, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
+	if (_remove_button_clicked) {
+		DoCommandP(tile, 0, RoadStop::TRUCK, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(STR_CAN_T_REMOVE_TRUCK_STATION));
+	} else {
+		PlaceRoadStop(tile, RoadStop::TRUCK, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
+	}
 }
 
 static void PlaceRoad_DemolishArea(TileIndex tile)
@@ -195,7 +227,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 	case WE_CREATE: DisableWindowWidget(w, RTW_REMOVE); break;
 
 	case WE_PAINT:
-		if (IsWindowWidgetLowered(w, RTW_ROAD_X) || IsWindowWidgetLowered(w, RTW_ROAD_Y)) {
+		if (IsWindowWidgetLowered(w, RTW_ROAD_X) || IsWindowWidgetLowered(w, RTW_ROAD_Y) || IsWindowWidgetLowered(w, RTW_BUS_STATION) || IsWindowWidgetLowered(w, RTW_TRUCK_STATION)) {
 			EnableWindowWidget(w, RTW_REMOVE);
 		}
 		DrawWindowWidgets(w);
@@ -428,7 +460,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_CREATE:
 		LowerWindowWidget(w, _road_station_picker_orientation + 3);
-		LowerWindowWidget(w, _station_show_coverage + 7);
+		LowerWindowWidget(w, _station_show_coverage + 9);
 		break;
 
 	case WE_PAINT: {
@@ -445,12 +477,17 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 			SetTileSelectSize(1, 1);
 		}
 
-		image = (w->window_class == WC_BUS_STATION) ? 0x47 : 0x43;
+		image = (w->window_class == WC_BUS_STATION) ? GFX_BUS_BASE : GFX_TRUCK_BASE;
 
 		StationPickerDrawSprite(103, 35, RAILTYPE_BEGIN, image);
 		StationPickerDrawSprite(103, 85, RAILTYPE_BEGIN, image+1);
 		StationPickerDrawSprite(35, 85, RAILTYPE_BEGIN, image+2);
 		StationPickerDrawSprite(35, 35, RAILTYPE_BEGIN, image+3);
+
+		image = (w->window_class == WC_BUS_STATION) ? GFX_BUS_BASE_EXT : GFX_TRUCK_BASE_EXT;
+
+		StationPickerDrawSprite(171, 35, RAILTYPE_BEGIN, image);
+		StationPickerDrawSprite(171, 85, RAILTYPE_BEGIN, image + 1);
 
 		DrawStationCoverageAreaText(2, 146,
 			((w->window_class == WC_BUS_STATION) ? (1<<CT_PASSENGERS) : ~(1<<CT_PASSENGERS)),
@@ -460,17 +497,17 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch (e->we.click.widget) {
-		case 3: case 4: case 5: case 6:
+		case 3: case 4: case 5: case 6: case 7: case 8:
 			RaiseWindowWidget(w, _road_station_picker_orientation + 3);
 			_road_station_picker_orientation = (DiagDirection)(e->we.click.widget - 3);
 			LowerWindowWidget(w, _road_station_picker_orientation + 3);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
-		case 7: case 8:
-			RaiseWindowWidget(w, _station_show_coverage + 7);
-			_station_show_coverage = (e->we.click.widget != 7);
-			LowerWindowWidget(w, _station_show_coverage + 7);
+		case 9: case 10:
+			RaiseWindowWidget(w, _station_show_coverage + 9);
+			_station_show_coverage = (e->we.click.widget != 9);
+			LowerWindowWidget(w, _station_show_coverage + 9);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -494,12 +531,14 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 
 static const Widget _bus_station_picker_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_3042_BUS_STATION_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   176, 0x0,                              STR_NULL},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   206,     0,    13, STR_3042_BUS_STATION_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   206,    14,   176, 0x0,                              STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,                              STR_3051_SELECT_BUS_STATION_ORIENTATION},
 {      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,                              STR_3051_SELECT_BUS_STATION_ORIENTATION},
 {      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,                              STR_3051_SELECT_BUS_STATION_ORIENTATION},
 {      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                              STR_3051_SELECT_BUS_STATION_ORIENTATION},
+{      WWT_PANEL,   RESIZE_NONE,    14,   139,   204,    17,    66, 0x0,                              STR_3051_SELECT_BUS_STATION_ORIENTATION},
+{      WWT_PANEL,   RESIZE_NONE,    14,   139,   204,    69,   118, 0x0,                              STR_3051_SELECT_BUS_STATION_ORIENTATION},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,    10,    69,   133,   144, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,    70,   129,   133,   144, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},
 {      WWT_LABEL,   RESIZE_NONE,     7,     0,   139,   120,   133, STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL},
@@ -507,7 +546,7 @@ static const Widget _bus_station_picker_widgets[] = {
 };
 
 static const WindowDesc _bus_station_picker_desc = {
-	WDP_AUTO, WDP_AUTO, 140, 177,
+	WDP_AUTO, WDP_AUTO, 207, 177,
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_bus_station_picker_widgets,
@@ -521,12 +560,14 @@ static void ShowBusStationPicker(void)
 
 static const Widget _truck_station_picker_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_3043_TRUCK_STATION_ORIENT,    STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   176, 0x0,                              STR_NULL},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   206,     0,    13, STR_3043_TRUCK_STATION_ORIENT,    STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   206,    14,   176, 0x0,                              STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,                              STR_3052_SELECT_TRUCK_LOADING_BAY},
 {      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,                              STR_3052_SELECT_TRUCK_LOADING_BAY},
 {      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,                              STR_3052_SELECT_TRUCK_LOADING_BAY},
 {      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                              STR_3052_SELECT_TRUCK_LOADING_BAY},
+{      WWT_PANEL,   RESIZE_NONE,    14,   139,   204,    17,    66, 0x0,                              STR_3052_SELECT_TRUCK_LOADING_BAY},
+{      WWT_PANEL,   RESIZE_NONE,    14,   139,   204,    69,   118, 0x0,                              STR_3052_SELECT_TRUCK_LOADING_BAY},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,    10,    69,   133,   144, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,    70,   129,   133,   144, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},
 {      WWT_LABEL,   RESIZE_NONE,     7,     0,   139,   120,   133, STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL},
@@ -534,7 +575,7 @@ static const Widget _truck_station_picker_widgets[] = {
 };
 
 static const WindowDesc _truck_station_picker_desc = {
-	WDP_AUTO, WDP_AUTO, 140, 177,
+	WDP_AUTO, WDP_AUTO, 207, 177,
 	WC_TRUCK_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_truck_station_picker_widgets,

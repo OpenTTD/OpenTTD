@@ -45,6 +45,7 @@ DEF_COMMAND(CmdRenameWaypoint);
 DEF_COMMAND(CmdRemoveTrainWaypoint);
 
 DEF_COMMAND(CmdBuildRoadStop);
+DEF_COMMAND(CmdRemoveRoadStop);
 
 DEF_COMMAND(CmdBuildLongRoad);
 DEF_COMMAND(CmdRemoveLongRoad);
@@ -188,7 +189,7 @@ static const Command _command_proc_table[] = {
 	{NULL,                                   0}, /*  19 */
 	{NULL,                                   0}, /*  20 */
 	{CmdBuildRoadStop,                       0}, /*  21 */
-	{NULL,                                   0}, /*  22 */
+	{CmdRemoveRoadStop,                      0}, /*  22 */
 	{CmdBuildLongRoad,                       0}, /*  23 */
 	{CmdRemoveLongRoad,                      0}, /*  24 */
 	{CmdBuildRoad,                           0}, /*  25 */

@@ -24,6 +24,7 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 
 		case MP_STATION:
 			if (!IsRoadStopTile(tile)) return ROAD_NONE;
+			if (IsDriveThroughStopTile(tile)) return (GetRoadStopDir(tile) == DIAGDIR_NE) ? ROAD_X : ROAD_Y;
 			return DiagDirToRoadBits(GetRoadStopDir(tile));
 
 		case MP_TUNNELBRIDGE:
@@ -45,7 +46,7 @@ TrackBits GetAnyRoadTrackBits(TileIndex tile)
 	uint32 r;
 
 	// Don't allow local authorities to build roads through road depots or road stops.
-	if ((IsTileType(tile, MP_STREET) && IsTileDepotType(tile, TRANSPORT_ROAD)) || IsTileType(tile, MP_STATION)) {
+	if ((IsTileType(tile, MP_STREET) && IsTileDepotType(tile, TRANSPORT_ROAD)) || (IsTileType(tile, MP_STATION) && !IsDriveThroughStopTile(tile))) {
 		return TRACK_BIT_NONE;
 	}
 

@@ -166,6 +166,7 @@ typedef struct Patches {
 	bool autosave_on_exit;              // save an autosave when you quit the game, but do not ask "Do you really want to quit?"
 	byte max_num_autosaves;             // controls how many autosavegames are made before the game starts to overwrite (names them 0 to max_num_autosaves - 1)
 	bool extra_dynamite;                // extra dynamite
+	bool road_stop_on_town_road;        // allow building of drive-through road stops on town owned roads
 
 	bool never_expire_vehicles;         // never expire vehicles
 	byte extend_vehicle_life;           // extend vehicle life by this many years
@@ -211,6 +212,7 @@ typedef struct Patches {
 	uint32 npf_water_curve_penalty;        /* The penalty for curves */
 	uint32 npf_road_curve_penalty;         /* The penalty for curves */
 	uint32 npf_crossing_penalty;           /* The penalty for level crossings */
+	uint32 npf_road_drive_through_penalty; /* The penalty for going through a drive-through road stop */
 
 	bool population_in_label; // Show the population of a town in his label?
 

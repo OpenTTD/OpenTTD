@@ -387,6 +387,9 @@ static void LoadSpriteTables(void)
 	assert(load_index == SPR_AIRPORTX_BASE);
 	load_index += LoadGrfFile("airports.grf", load_index, i++);
 
+	assert(load_index == SPR_ROADSTOP_BASE);
+	load_index += LoadGrfFile("roadstops.grf", load_index, i++);
+
 	/* Initialize the unicode to sprite mapping table */
 	InitializeUnicodeGlyphMap();
 

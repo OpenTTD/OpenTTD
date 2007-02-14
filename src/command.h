@@ -27,6 +27,7 @@ enum {
 	CMD_REMOVE_TRAIN_WAYPOINT        =  18,
 
 	CMD_BUILD_ROAD_STOP              =  21,
+	CMD_REMOVE_ROAD_STOP             =  22,
 	CMD_BUILD_LONG_ROAD              =  23,
 	CMD_REMOVE_LONG_ROAD             =  24,
 	CMD_BUILD_ROAD                   =  25,

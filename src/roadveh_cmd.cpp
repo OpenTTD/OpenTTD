@@ -1080,7 +1080,8 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 			/* Road depot owned by another player or with the wrong orientation */
 			trackdirs = TRACKDIR_BIT_NONE;
 		}
-	} else if (IsTileType(tile, MP_STATION) && IsRoadStopTile(tile)) {
+	} else if (IsTileType(tile, MP_STATION) && IsStandardRoadStopTile(tile)) {
+		/* Standard road stop (drive-through stops are treated as normal road) */
 		if (!IsTileOwner(tile, v->owner) || GetRoadStopDir(tile) == enterdir) {
 			/* different station owner or wrong orientation */
 			trackdirs = TRACKDIR_BIT_NONE;
@@ -1093,7 +1094,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 				trackdirs = TRACKDIR_BIT_NONE;
 			} else {
 				/* Proper station type, check if there is free loading bay */
-				if (!_patches.roadveh_queue &&
+				if (!_patches.roadveh_queue &&  IsStandardRoadStopTile(tile) &&
 						!GetRoadStopByTile(tile, rstype)->HasFreeBay()) {
 					/* Station is full and RV queuing is off */
 					trackdirs = TRACKDIR_BIT_NONE;
@@ -1167,7 +1168,8 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 				goto do_it;
 			}
 		} else if (IsTileType(desttile, MP_STATION)) {
-			if (IsRoadStop(desttile)) {
+			/* For drive-through stops we can head for the actual station tile */
+			if (IsStandardRoadStopTile(desttile)) {
 				dir = GetRoadStopDir(desttile);
 do_it:;
 				/* When we are heading for a depot or station, we just
@@ -1242,9 +1244,11 @@ enum {
 	/* Start frames for when a vehicle enters a tile/changes its state.
 	 * The start frame is different for vehicles that turned around or
 	 * are leaving the depot as the do not start at the edge of the tile */
-	RVC_DEFAULT_START_FRAME     = 0,
-	RVC_TURN_AROUND_START_FRAME = 1,
-	RVC_DEPOT_START_FRAME       = 6
+	RVC_DEFAULT_START_FRAME      = 0,
+	RVC_TURN_AROUND_START_FRAME  = 1,
+	RVC_DEPOT_START_FRAME        = 6,
+	/* Stop frame for a vehicle in a drive-through stop */
+	RVC_DRIVE_THROUGH_STOP_FRAME = 7
 };
 
 typedef struct RoadDriveEntry {
@@ -1376,8 +1380,12 @@ static void RoadVehController(Vehicle *v)
 		return;
 	}
 
-	/* Get move position data for next frame */
-	rd = _road_drive_data[(v->u.road.state + (_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
+	/* Get move position data for next frame.
+	 * For a drive-through road stop use 'straight road' move data.
+	 * In this case v->u.road.state is masked to give the road stop entry direction. */
+	rd = _road_drive_data[(
+		(HASBIT(v->u.road.state, RVS_IN_DT_ROAD_STOP) ? v->u.road.state & RVSB_ROAD_STOP_TRACKDIR_MASK : v->u.road.state) +
+		(_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
 	if (rd.x & RDE_NEXT_TILE) {
 		TileIndex tile = v->tile + TileOffsByDiagDir(rd.x & 3);
@@ -1417,8 +1425,8 @@ again:
 			goto again;
 		}
 
-		if (IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END) && IsTileType(v->tile, MP_STATION)) {
-			if (IsReversingRoadTrackdir(dir)) {
+		if (IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) && IsTileType(v->tile, MP_STATION)) {
+			if (IsReversingRoadTrackdir(dir) && IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END)) {
 				/* New direction is trying to turn vehicle around.
 				 * We can't turn at the exit of a road stop so wait.*/
 				v->cur_speed = 0;
@@ -1427,9 +1435,13 @@ again:
 			if (IsRoadStop(v->tile)) {
 				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 
-				/* Vehicle is leaving a road stop tile, mark bay as free */
-				rs->FreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY));
-				rs->SetEntranceBusy(false);
+				/* Vehicle is leaving a road stop tile, mark bay as free
+				 * For drive-through stops, only do it if the vehicle stopped here */
+				if (IsStandardRoadStopTile(v->tile) || HASBIT(v->u.road.state, RVS_IS_STOPPING)) {
+					rs->FreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY));
+					CLRBIT(v->u.road.state, RVS_IS_STOPPING);
+				}
+				if (IsStandardRoadStopTile(v->tile)) rs->SetEntranceBusy(false);
 			}
 		}
 
@@ -1523,8 +1535,18 @@ again:
 		}
 	}
 
-	if (v->u.road.state >= RVSB_IN_ROAD_STOP &&
-			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_opt.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) {
+	/* If the vehicle is in a normal road stop and the frame equals the stop frame OR
+	 * if the vehicle is in a drive-through road stop and this is the destination station
+	 * and it's the correct type of stop (bus or truck) and the frame equals the stop frame...
+	 * (the station test and stop type test ensure that other vehicles, using the road stop as
+	 * a through route, do not stop) */
+	if ((IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END) &&
+			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_opt.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) ||
+			(IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
+			v->current_order.dest == GetStationIndex(v->tile) &&
+			GetRoadStopType(v->tile) == ((v->cargo_type == CT_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK) &&
+			v->u.road.frame == RVC_DRIVE_THROUGH_STOP_FRAME)) {
+
 		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 		Station* st = GetStationByTile(v->tile);
 
@@ -1535,6 +1557,31 @@ again:
 				v->current_order.type != OT_GOTO_DEPOT) {
 			/* Vehicle has arrived at a bay in a road stop */
 			Order old_order;
+
+			if (IsDriveThroughStopTile(v->tile)) {
+				TileIndex next_tile = TILE_ADD(v->tile, TileOffsByDir(v->direction));
+				RoadStop::Type type = (v->cargo_type == CT_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK;
+
+				assert(HASBIT(v->u.road.state, RVS_IS_STOPPING));
+
+				/* Check if next inline bay is free */
+				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type)) {
+					RoadStop *rs_n = GetRoadStopByTile(next_tile, type);
+
+					if (rs_n->IsFreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY))) {
+						/* Bay in next stop along is free - use it */
+						ClearSlot(v);
+						rs_n->num_vehicles++;
+						v->u.road.slot = rs_n;
+						v->dest_tile = rs_n->xy;
+						v->u.road.slot_age = 14;
+
+						v->u.road.frame++;
+						RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
+						return;
+					}
+				}
+			}
 
 			rs->SetEntranceBusy(false);
 
@@ -1573,7 +1620,7 @@ again:
 			ClearSlot(v);
 		}
 
-		rs->SetEntranceBusy(true);
+		if (IsStandardRoadStopTile(v->tile)) rs->SetEntranceBusy(true);
 
 		if (rs == v->u.road.slot) {
 			/* We are leaving the correct station */

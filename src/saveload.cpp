@@ -30,7 +30,7 @@
 #include "variables.h"
 #include <setjmp.h>
 
-extern const uint16 SAVEGAME_VERSION = 46;
+extern const uint16 SAVEGAME_VERSION = 47;
 uint16 _sl_version;       /// the major savegame version identifier
 byte   _sl_minor_version; /// the minor savegame version, DO NOT USE!
 

@@ -502,6 +502,13 @@ bool RoadStop::HasFreeBay() const
 	return GB(status, 0, MAX_BAY_COUNT) != 0;
 }
 
+/** Checks whether the given bay is free in this road stop */
+bool RoadStop::IsFreeBay(uint nr) const
+{
+	assert(nr < MAX_BAY_COUNT);
+	return HASBIT(status, nr);
+}
+
 /**
  * Allocates a bay
  * @return the allocated bay number
@@ -517,6 +524,16 @@ uint RoadStop::AllocateBay()
 
 	CLRBIT(status, bay_nr);
 	return bay_nr;
+}
+
+/**
+ * Allocates a bay in a drive-through road stop
+ * @param nr the number of the bay to allocate
+ */
+void RoadStop::AllocateDriveThroughBay(uint nr)
+{
+	assert(nr < MAX_BAY_COUNT);
+	CLRBIT(status, nr);
 }
 
 /**

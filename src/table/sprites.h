@@ -117,6 +117,16 @@ enum Sprites {
 	SPR_GRASS_RIGHT = SPR_AIRPORTX_BASE + 13,
 	SPR_GRASS_LEFT = SPR_AIRPORTX_BASE + 14,
 
+	SPR_ROADSTOP_BASE = SPR_AIRPORTX_BASE + 15, // The sprites used for drive-through road stops
+	SPR_BUS_STOP_DT_Y_W = SPR_ROADSTOP_BASE,
+	SPR_BUS_STOP_DT_Y_E = SPR_ROADSTOP_BASE + 1,
+	SPR_BUS_STOP_DT_X_W = SPR_ROADSTOP_BASE + 2,
+	SPR_BUS_STOP_DT_X_E = SPR_ROADSTOP_BASE + 3,
+	SPR_TRUCK_STOP_DT_Y_W = SPR_ROADSTOP_BASE + 4,
+	SPR_TRUCK_STOP_DT_Y_E = SPR_ROADSTOP_BASE + 5,
+	SPR_TRUCK_STOP_DT_X_W = SPR_ROADSTOP_BASE + 6,
+	SPR_TRUCK_STOP_DT_X_E = SPR_ROADSTOP_BASE + 7,
+
 	/* Manager face sprites */
 	SPR_GRADIENT = 874, // background gradient behind manager face
 
@@ -294,6 +304,10 @@ enum Sprites {
 	SPR_PYLON_EW_S = SPR_ELRAIL_BASE + 36,
 	SPR_PYLON_NS_W = SPR_ELRAIL_BASE + 37,
 	SPR_PYLON_NS_E = SPR_ELRAIL_BASE + 38,
+
+	/* sprites for roads */
+	SPR_ROAD_PAVED_STRAIGHT_Y       = 1313,
+	SPR_ROAD_PAVED_STRAIGHT_X       = 1314,
 
 	/* sprites for airports and airfields*/
 	/* Small airports are AIRFIELD, everything else is AIRPORT */

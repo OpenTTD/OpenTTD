@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allow b
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nonuniform stations: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}New global pathfinding (NPF, overrides NTP): {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Weight multiplier for freight to simulate heavy trains: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allow drive-through road stops on town owned roads: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Always allow small airports: {ORANGE}{STRING1}
 
@@ -1584,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Road with stree
 STR_1816_TREE_LINED_ROAD                                        :Tree-lined road
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Road vehicle depot
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Road/rail level crossing
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Can't remove bus station...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Can't remove lorry station...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Towns
