@@ -1202,7 +1202,7 @@ do_it:;
 		uint best_maxlen = (uint)-1;
 		uint bitmask = (uint)trackdirs;
 		for (int i = 0; bitmask != 0; bitmask >>= 1, i++) {
-			if (HASBIT(bitmask, i)) {
+			if (HASBIT(bitmask, 0)) {
 				if (best_track == INVALID_TRACKDIR) best_track = (Trackdir)i; // in case we don't find the path, just pick a track
 				frd.maxtracklen = (uint)-1;
 				frd.mindist = (uint)-1;
