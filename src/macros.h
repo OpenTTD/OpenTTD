@@ -50,10 +50,6 @@ static inline int32 BIGMULSS(int32 a, int32 b, int shift) {
 	return (int32)(((int64)(a) * (int64)(b)) >> (shift));
 }
 
-static inline int64 BIGMULSS64(int64 a, int64 b, int shift) {
-	return ((a) * (b)) >> (shift);
-}
-
 static inline uint32 BIGMULUS(uint32 a, uint32 b, int shift) {
 	return (uint32)(((uint64)(a) * (uint64)(b)) >> (shift));
 }
