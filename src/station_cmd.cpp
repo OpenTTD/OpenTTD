@@ -1250,8 +1250,6 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station* st)
  * @param p1 entrance direction (DiagDirection)
  * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
  *           bit 1: 0 for normal, 1 for drive-through
- *           bit 2: 0 for normal, 1 for build over road
- *           bit 3: 0 for player owned road, 1 for town owned road
  */
 int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1261,27 +1259,28 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 ret;
 	bool type = HASBIT(p2, 0);
 	bool is_drive_through = HASBIT(p2, 1);
+	bool build_over_road  = is_drive_through && IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL;
 	Owner cur_owner = _current_player;
 
 	/* Saveguard the parameters */
 	if (!IsValidDiagDirection((DiagDirection)p1)) return CMD_ERROR;
 	/* If it is a drive-through stop check for valid axis */
 	if (is_drive_through && !IsValidAxis((Axis)p1)) return CMD_ERROR;
-	/* If overbuilding a road check tile is a valid road tile */
-	if (HASBIT(p2, 2) && !(IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL)) return CMD_ERROR;
-	/* If overbuilding a town road,check tile is town owned and patch setting is enabled */
-	if (HASBIT(p2, 3) && !(_patches.road_stop_on_town_road && IsTileOwner(tile, OWNER_TOWN))) return CMD_ERROR;
+	/* Road bits in the wrong direction */
+	if (build_over_road && (GetRoadBits(tile) & ((Axis)p1 == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return CMD_ERROR;
+	/* Not allowed to build over this road */
+	if (build_over_road && !IsTileOwner(tile, _current_player) && !(IsTileOwner(tile, OWNER_TOWN) && _patches.road_stop_on_town_road)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
 		return CMD_ERROR;
 
-	if (is_drive_through & HASBIT(p2, 3)) _current_player = OWNER_TOWN;
+	if (build_over_road && IsTileOwner(tile, OWNER_TOWN)) _current_player = OWNER_TOWN;
 	ret = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL);
 	_current_player = cur_owner;
 	if (CmdFailed(ret)) return ret;
-	cost = HASBIT(p2, 2) ? 0 : ret; // Don't add cost of clearing road when overbuilding
+	cost = build_over_road ? 0 : ret; // Don't add cost of clearing road when overbuilding
 
 	st = GetStationAround(tile, 1, 1, INVALID_STATION);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;

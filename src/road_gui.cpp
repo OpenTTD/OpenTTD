@@ -109,8 +109,6 @@ static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
 				!(GetRoadBits(tile) & ((DiagDirection)p1 == DIAGDIR_NE ? ROAD_Y : ROAD_X)))) {
 
 			cmd ^= CMD_AUTO;
-			SETBIT(p2, 2); // We're building over an existing road
-			if (IsTileOwner(tile, OWNER_TOWN)) SETBIT(p2, 3); // It's a town owned road
 		}
 	}
 	DoCommandP(tile, p1, p2, CcRoadDepot, cmd);
