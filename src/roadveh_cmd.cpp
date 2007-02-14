@@ -1247,6 +1247,11 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 	return dist;
 }
 
+enum {
+	RDE_NEXT_TILE = 0x80,
+	RDE_TURNED    = 0x40,
+};
+
 typedef struct RoadDriveEntry {
 	byte x,y;
 } RoadDriveEntry;
@@ -1379,7 +1384,7 @@ static void RoadVehController(Vehicle *v)
 	/* Get move position data for next frame */
 	rd = _road_drive_data[(v->u.road.state + (_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
-	if (rd.x & 0x80) {
+	if (rd.x & RDE_NEXT_TILE) {
 		/* Vehicle is moving to the next tile */
 		TileIndex tile = v->tile + TileOffsByDiagDir(rd.x & 3);
 		Trackdir dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3));
@@ -1454,7 +1459,7 @@ again:
 		return;
 	}
 
-	if (rd.x & 0x40) {
+	if (rd.x & RDE_TURNED) {
 		/* Vehicle has finished turning around, it will now head back onto the same tile */
 		Trackdir dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3));
 		uint32 r;
