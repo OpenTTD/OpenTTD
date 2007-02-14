@@ -1778,7 +1778,7 @@ STR_3063_SHIP_DOCK                                              :船塢
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}顯示建築地點的運輸涵蓋範圍
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}不顯示建築地點的運輸涵蓋範圍
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}顯示運輸涵蓋範圍
-STR_3068_DOCK                                                   :{WHITE}船塢
+STR_3068_DOCK                                                   :{WHITE}碼頭
 STR_3069_BUOY                                                   :浮標
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...被浮標擋住
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...車站範圍太大
@@ -1848,7 +1848,7 @@ STR_4818_WATER_TOWER                                            :水塔
 STR_4819_FACTORY                                                :工廠
 STR_481A_FARM                                                   :農場
 STR_481B_LUMBER_MILL                                            :伐木場
-STR_481C_COTTON_CANDY_FOREST                                    :太妃糖森林
+STR_481C_COTTON_CANDY_FOREST                                    :綿花糖森林
 STR_481D_CANDY_FACTORY                                          :甜點工廠
 STR_481E_BATTERY_FARM                                           :電池農場
 STR_481F_COLA_WELLS                                             :可樂井
@@ -1963,7 +1963,7 @@ STR_SV_STNAME_EXCHANGE                                          :{STRING} 轉運
 STR_SV_STNAME_AIRPORT                                           :{STRING} 機場
 STR_SV_STNAME_OILFIELD                                          :{STRING} 油田
 STR_SV_STNAME_MINES                                             :{STRING} 礦場
-STR_SV_STNAME_DOCKS                                             :{STRING} 船塢
+STR_SV_STNAME_DOCKS                                             :{STRING} 碼頭
 STR_SV_STNAME_BUOY_1                                            :{STRING} 一號浮標
 STR_SV_STNAME_BUOY_2                                            :{STRING} 二號浮標
 STR_SV_STNAME_BUOY_3                                            :{STRING} 三號浮標
@@ -2699,9 +2699,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}無法�
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}選擇汽車要運送的酬載種類
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :建造船塢
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}建造船塢
-STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}無法在此建造船塢...
+STR_9800_DOCK_CONSTRUCTION                                      :建造碼頭
+STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}建造碼頭
+STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}無法在此建造碼頭...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} 船塢
 STR_9804_NEW_SHIPS                                              :{BLACK}購買船舶
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - 船舶 {COMMA} 艘
@@ -2730,7 +2730,7 @@ STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}正前�
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 船塢維護中
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}正在 {TOWN} 船塢維護中, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}船舶 {COMMA} 已在船塢待命
-STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}建造船塢
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}建造碼頭
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}建造船塢 (用以購買/維護船舶)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}船舶 - 點選船舶可看到詳細資訊
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}購買新船舶
@@ -2769,7 +2769,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}新容�
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}無法改裝船舶...
 STR_9842_REFITTABLE                                             :(可改裝)
 STR_GO_TO_SHIP_DEPOT                                            :前往 {TOWN} 船塢
-SERVICE_AT_SHIP_DEPOT                                           :在{TOWN}船廠進行維修
+SERVICE_AT_SHIP_DEPOT                                           :在{TOWN}船塢進行維修
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}機場

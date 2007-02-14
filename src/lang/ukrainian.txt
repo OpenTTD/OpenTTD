@@ -863,7 +863,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Роз�
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Показує останнє повідомлення або новини
-STR_OFF                                                         :Викл
+STR_OFF                                                         :Відкл.
 STR_SUMMARY                                                     :Коротко
 STR_FULL                                                        :Повністю
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
@@ -946,7 +946,7 @@ STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Грат
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Грати з 2-8 гравцями
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Показати налашування гри
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Показати налашування складності
-STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Почати нову використовуючи сценарій
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Почати нову гру, використовуючи сценарій
 STR_0304_QUIT                                                   :{BLACK}Вихід
 STR_0305_QUIT_OPENTTD                                           :{BLACK}покинути 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
@@ -1865,16 +1865,16 @@ STR_304A_NONE                                                   :{YELLOW}- не�
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...ділянка не підходить для цього
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Дуже близько до іншого порту
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Спочатку зруйнуйте порт
-STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Виберіть направлення залізничної станції
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Виберіть орієнтацію залізничної станції
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Виберіть кількість колій залізничної станції
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Виберіть довжину залізничної станції
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Виберіть направлення зупинки
-STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Виберіть направлення вантажної станції
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Виберіть орієнтацію зупинки
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Виберіть орієнтацію вантажної станції
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Показати станцію в центрі екрану
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Показати рейтинг станції
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Перейменувати станцію
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Показати список приймання вантажів
-STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Назва станції - натисніть на назву щоб показати в центрі екрану
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Назва станції - натисніть на назву, щоб показати в центрі екрану
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Виберіть розмір/тип аеропорту
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
@@ -1890,8 +1890,8 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Підс
 STR_3068_DOCK                                                   :{WHITE}Порт
 STR_3069_BUOY                                                   :Бакен
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...бакен на шляху
-STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...станції дуже розкидані
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...неоднорідні станції відмінено
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...станція занадто велика
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...неоднорідні станції відключені
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Утримуйте CTRL для вибору більш ніж одного пункту
 
 STR_UNDEFINED                                                   :(невизначено)
@@ -1902,7 +1902,7 @@ STR_STAT_CLASS_WAYP                                             :Пункт
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Орієнтація депо
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...має бути збудовано на воді
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Неможливо будувати корабельне депо тут...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Виберіть направлення корабельного депо
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Виберіть орієнтацію корабельного депо
 STR_3804_WATER                                                  :Вода
 STR_3805_COAST_OR_RIVERBANK                                     :Берег
 STR_3806_SHIP_DEPOT                                             :Корабельне депо
@@ -2341,6 +2341,8 @@ STR_LIVERY_DIESEL                                               :Дизельн�
 STR_LIVERY_ELECTRIC                                             :Електричні потяги
 STR_LIVERY_MONORAIL                                             :Монорельс
 STR_LIVERY_MAGLEV                                               :Потяги на магнітній подушці
+STR_LIVERY_DMU                                                  :
+STR_LIVERY_EMU                                                  :
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (пар)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (дизель)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажирський вагон (електричка)

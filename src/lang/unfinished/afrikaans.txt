@@ -300,8 +300,12 @@ STR_015F_QUIT                                                   :Uitgang
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Is jy seker jy wil die spel verlaat?
 STR_0161_QUIT_GAME                                              :{WHITE}Verlaat Spel
 
+STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (klassieke sorteer)
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Vrag Kapasiteit
 STR_NO_WAITING_CARGO                                            :{BLACK}Geen vrag van enige tipe is op wag
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Wys 'n lys van beskikbaare enjin tipes vir die voertiug tipe.
+STR_MANAGE_LIST                                                 :{BLACK}Bestuur lys
+STR_MANAGE_LIST_TIP                                             :{BLACK}Stuur instruksies na alle voertuie in die lys
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -501,20 +505,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} behaal '{STRING}' stand!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} van {COMPANY} behaal '{STRING}' stand!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Skep Draaiboek
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Draaiboek Redakteur
 STR_0223_LAND_GENERATION                                        :{WHITE}Land Ontwikkeling
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Lukraak Land
-STR_0227_RESET_LAND                                             :{BLACK}Herstel Land
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Vergroot land area om te verlaag/verhoog
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Verminder land area om te verlaag/verhoog
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Ontwikkel lukraak land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Herstel landerye
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Herstel landerye
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Is jy seker jy wil die landerye herstel?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landerye ontwikkeling
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stad ontwikkeling
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Nyweheid ontwikkeling
@@ -619,6 +619,7 @@ STR_0290_DELETE                                                 :{BLACK}Uitwis
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Uitwis hele stad
 STR_0292_SAVE_SCENARIO                                          :Bewaar draaiboek
 STR_0293_LOAD_SCENARIO                                          :Laai draaiboek
+STR_LOAD_HEIGHTMAP                                              :Laai Hoogtekaart
 STR_0294_QUIT_EDITOR                                            :Verlaat redakteur
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Verlaat
@@ -683,6 +684,7 @@ STR_EXTRA_VIEW_PORT                                             :Ekstra gesigswe
 STR_02DF_TOWN_DIRECTORY                                         :Stad indeks
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Gesigswerf {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Afskryf na gesigswerf
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Afskryf die lokasie van die wereldwerf na die gesigswerf
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Deeg van gesigswerf
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Koers eenheide
@@ -752,8 +754,8 @@ STR_0336_7                                                      :{BLACK}7
 
 STR_CURR_GBP                                                    :Pounds ()
 STR_CURR_USD                                                    :Dollars ($)
-STR_CURR_EUR                                                    :Euro ()
-STR_CURR_YEN                                                    :Yen ()
+STR_CURR_EUR                                                    :Euro (€)
+STR_CURR_YEN                                                    :Yen (¥)
 STR_CURR_ATS                                                    :Austrian Shilling (ATS)
 STR_CURR_BEF                                                    :Belgian Franc (BEF)
 STR_CURR_CHF                                                    :Swiss Franc (CHF)
@@ -772,7 +774,11 @@ STR_CURR_NOK                                                    :Norwegian Krone
 STR_CURR_PLN                                                    :Polish Zloty (PLN)
 STR_CURR_ROL                                                    :Romanian Leu (ROL)
 STR_CURR_RUR                                                    :Russian Rubles (RUR)
+STR_CURR_SIT                                                    :Slovenian Tolar (SIT)
 STR_CURR_SEK                                                    :Swedish Krona (SEK)
+STR_CURR_YTL                                                    :Turkish Lira (YTL)
+STR_CURR_SKK                                                    :Slovak Koruna (SKK)
+STR_CURR_BRR                                                    :Brazilian Real (BRL)
 
 STR_CURR_CUSTOM                                                 :Gewoonte...
 
@@ -861,6 +867,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ongelyk
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Klein lughawe is altyd toegelaat: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Waarsku as trein verloor is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Bespreek voertuig se opdrae: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, maar uitsluit gestopde voertuie
@@ -877,8 +884,19 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Onsigba
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Land ontwikkelaar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Oorspronklik
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max afstand van kant vir Olie Raffineerderye {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sneeu lyn hoogte: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Ruheid van terrein (slegs TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Baie Glad
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glad
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ru
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Baie Ru
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Boom plaas algoritme: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Geen
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Oorspronklik
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Verbeterde
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Hoogtekaart rotasie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Die hoogtevlak 'n platte landerye kaart kry: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max stasie omvang: {ORANGE}{STRING} {RED}Waarskuwing: Ho�stelling vertraag spel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Versien helikopters by helihawes outomaties: {ORANGE}{STRING}
@@ -888,6 +906,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Wys maa
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Geen
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eie maatskappy
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle maatskappye
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Verkies span gesels met <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treine per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max pad voertuie per speler: {ORANGE}{STRING}
@@ -920,6 +939,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Eindig 
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Stel vloeiende ekonomie in staak (meer, kleiner veranderings)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Toelaat deele aankoop van ander maatskappye
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Wanneer sleeping, plaas seine elke: {ORANGE}{STRING} teel(e)
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Outomaties bou semaphores voor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posisie van hoof werktuigbaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Links
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Senter
@@ -1223,10 +1243,13 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :bediender vol
 STR_NETWORK_CLIENT_JOINED                                       :het die spel verbind
 STR_NETWORK_GIVE_MONEY                                          :het vir u maatskappy geld gegee ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :u het vir {STRING} geld ({CURRENCY}) gegee
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Span] :
 STR_NETWORK_CHAT_COMPANY                                        :[Span] {STRING}:
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Span] Na {STRING}:
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privaat] :
 STR_NETWORK_CHAT_CLIENT                                         :[Privaat] {STRING}:
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privaat] Na {STRING}:
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
 STR_NETWORK_NAME_CHANGE                                         :het hy/sy naam verander na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Die bediender het die sessie toegemaak
@@ -1884,7 +1907,34 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} is deur {COMPANY}! oorgevat!
 STR_7080_PROTECTED                                              :{WHITE}Die maatskappy is nie oud genoeg om aandeele te handel nie...
 
+STR_LIVERY_DEFAULT                                              :Standaard Lewery
+STR_LIVERY_STEAM                                                :Stoom Enjin
+STR_LIVERY_DIESEL                                               :Diesel Enjin
+STR_LIVERY_ELECTRIC                                             :Elektriese Enjin
+STR_LIVERY_MONORAIL                                             :Eenspoor Enjin
+STR_LIVERY_MAGLEV                                               :Maglev Enjin
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passasier Rytuig (Stoom)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passasier Rytuig (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passasier Rytuig (Elektries)
+STR_LIVERY_FREIGHT_WAGON                                        :Vraag Wa
+STR_LIVERY_BUS                                                  :Bus
+STR_LIVERY_TRUCK                                                :Vraagmotor
+STR_LIVERY_PASSENGER_SHIP                                       :Passasier Veer
+STR_LIVERY_FREIGHT_SHIP                                         :Vraag Skip
+STR_LIVERY_HELICOPTER                                           :Helikopter
+STR_LIVERY_SMALL_PLANE                                          :Klein Vliegtuig
+STR_LIVERY_LARGE_PLANE                                          :Groot Vliegtuig
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Wys generaal kleur skemas
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Wys trein kleur skemas
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Wys pad voertuig kleur skemas
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Wys skip kleur skemas
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Wys vliegtuig kleurskemas
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Kies die premere kleur vir die verkieste skema
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Kies die sekondere kleur vir die verkieste skema
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Kies 'n kleur skema te verander, of veelvoud skemas met CTRL+kliek. Kliek op die boks te skakel gebruik van skema
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Stoom)
@@ -2176,11 +2226,14 @@ STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gaan deurgaande
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Op pad na {TOWN} Trein Depot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Op pad na {TOWN} Trein Depot, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Diens by {TOWN} Trein Depot
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Diens by {TOWN} Trein Depot, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Swak Opdrag)
 
 STR_8812_EMPTY                                                  :{LTBLUE}Leeg
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} vanaf {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} van {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trein {COMMA} wag in depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nuwe Voertuie
 STR_8816                                                        :{BLACK}-
@@ -2301,6 +2354,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kani nie
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Pad voertuig {COMMA} wag in depot
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Op pad na {TOWN} Pad Depot
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Op pad na {TOWN} Pad Depot, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Diens by {TOWN} Pad Depot
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Diens by {TOWN} Pad Depot, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan nie voertuig na depot stuur nie...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan nie plaaslike depot vind nie
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Pad voertuie - kliek op voertuig vir inligting
@@ -2366,6 +2421,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan nie 
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan nie plaaslike depot vind nie
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Op pad na {TOWN} Skip Depot
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Op pad na {TOWN} Skip Depot, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Diens by {TOWN} Skip Depot
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Diens by {TOWN} Skip Depot, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skip {COMMA} wag in depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bou skip werf
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bou skip depot (vir opbou en diens van skepe)
@@ -2431,6 +2488,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan nie vlietuig na hangar stuur nie...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Op pad na {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Op pad na {STATION} Hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Diens by {STATION} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Diens by {STATION} Hangar, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Vliegtuig {COMMA} wag in die vliegtuig hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Vliegtuig in die pad
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan nie vliegtuig stop/aanvang nie...
@@ -2544,9 +2603,22 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Is jy seker jy wil al die voertuie in die depot nou verkoop?
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Verkoop allep treine in die depot
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Verkoop alle pad voertuie in die depot
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Verkoop alle skepe in die depot
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Verkoop alle vliegtuie in die hangar
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Kry 'n lys van alle treine met die huidige depot in sy opdrae
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Kry 'n lys van alle pad voertuie met die huidige depot in sy opdrae
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Kry 'n lys van alle skepe met die huidige depot in sy opdrae
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Kry 'n lys van alle vliegtuie wat enige hangar by die lughawe in sy opdrae het
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Outovervang alle treine in die depot
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Outovervang alle pad voertuie in die depot
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Outovervang alle skepe in die depot
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Outovervang alle vlietuie in die hangar
 
 
 STR_NOT_REPLACING                                               :{BLACK}Word nie vervang nie
@@ -2555,8 +2627,18 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Enjin is
 
 STR_ENGINES                                                     :Enjine
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Kliek om alle treine in die depot te stop
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Kliek om alle pad voertuie in die depot te stop
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Kliek om alle skepe in die depot te stop
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Kliek om alle vlietuie in die hangar te stop
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Kliek om alle treine in die depot te laat ry
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Kliek om alle pad voertuie in die depot te laayt ry
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Kliek om alle skepe in die depot te laat ry
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Kliek om alle vliegtuie in die hangar te laat ry
 
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kliek om alle voertuie in die lys te stop
+STR_MASS_START_LIST_TIP                                         :{BLACK}Kliek om aller voertuie in die lys te laat ry
 
 
 
@@ -2564,7 +2646,7 @@ STR_ENGINES                                                     :Enjine
 
 STR_ELRAIL_VEHICLES                                             :Elektrifiseerde Spoor Voertuie
 STR_MONORAIL_VEHICLES                                           :Eenspoor Voertuie
-STR_MAGLEV_VEHICLES                                             :Maglev voertuie
+STR_MAGLEV_VEHICLES                                             :Maglev Voertuie
 
 ############ End of list of rail types
 
@@ -2572,11 +2654,32 @@ STR_MAGLEV_VEHICLES                                             :Maglev voertuie
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}Ontwikkel
+STR_LAND_GENERATOR                                              :{BLACK}Land ontwikkelaar:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Hoogtekaart rotasie:
+STR_DATE                                                        :{BLACK}Date:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skaal waaskuwing
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Te veel afskaaling van oorpsrong kaart is nie goedgekeur nie. Gaan aan met ontwikkeling?
+STR_HEIGHTMAP_NAME                                              :{BLACK}Hoogtekaart name:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Groote: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Wereld Ontwikkeling...
+STR_GENERATION_ABORT                                            :{BLACK}Verlaat
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Verlaat Wereld Ontwikkeling
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Wil jy rerig die ontwikkeling verlaat?
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_CLEARING_TILES                                              :{BLACK}Ru en rotserig area ontwikkeling
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Die aksie het die moeilikheids vlak na gewoonte verander
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Beweeg die hoogte van platte land een af
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Beweeg die hoogte van platte land bo een
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Verander die hoogte van platte land
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Hoogte van platte land:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 
 ########### String for new airports
 STR_CITY_AIRPORT                                                :{BLACK}Stad
+STR_METRO_AIRPORT                                               :{BLACK}Metropolitaans lughawe
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internasionaale lughawe
 STR_COMMUTER_AIRPORT                                            :{BLACK}Pendelaar
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Tussenkontinentaal
@@ -2585,9 +2688,14 @@ STR_HELIDEPOT                                                   :{BLACK}Helidepo
 STR_HELISTATION                                                 :{BLACK}Helistasie
 
 STR_LARGE_AIRPORTS                                              :{BLACK}Groot Lughawe
+STR_HUB_AIRPORTS                                                :{BLACK}Naaf lughawe
 STR_HELIPORTS                                                   :{BLACK}Helikopter lughawe
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK}Lengte: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengte: {NUM}{}Hoogte verskil: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Hoogte verskil: {NUM} m
 
 ########
