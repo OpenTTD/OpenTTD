@@ -387,7 +387,7 @@ static void ReadTTDPatchFlags(void)
 	and 1 becomes 2. The rest of the values are okay */
 	if (_old_vehicle_multiplier < 2) _old_vehicle_multiplier++;
 
-	/* TTDPatch incraeses the Vehicle-part in the middle of the game,
+	/* TTDPatch increases the Vehicle-part in the middle of the game,
 	so if the multipler is anything else but 1, the assert fails..
 	bump the assert value so it doesn't!
 	(1 multipler == 850 vehicles
@@ -401,9 +401,9 @@ static void ReadTTDPatchFlags(void)
 	for (i = 0;       i < 17;      i++) _old_map3[i] = 0;
 	for (i = 0x1FE00; i < 0x20000; i++) _old_map3[i] = 0;
 
-	if (_new_ttdpatch_format) DEBUG(oldloader, 1, "Found TTDPatch game");
+	if (_new_ttdpatch_format) DEBUG(oldloader, 2, "Found TTDPatch game");
 
-	DEBUG(oldloader, 1, "Vehicle-multiplier is set to %d (%d vehicles)", _old_vehicle_multiplier, _old_vehicle_multiplier * 850);
+	DEBUG(oldloader, 3, "Vehicle-multiplier is set to %d (%d vehicles)", _old_vehicle_multiplier, _old_vehicle_multiplier * 850);
 }
 
 static const OldChunks town_chunk[] = {
@@ -1076,7 +1076,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 
 	/* This chunk size should always be 10 bytes */
 	if (ls->total_read - temp != 10) {
-		DEBUG(oldloader, 4, "Assert failed in Vehicle");
+		DEBUG(oldloader, 0, "Assert failed in VehicleUnion: invalid chunk size");
 		return false;
 	}
 
@@ -1201,8 +1201,7 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 			default:   v->spritenum >>= 1; break;
 		}
 
-		if (_old_next_ptr != 0xFFFF)
-			v->next = GetVehicle(_old_next_ptr);
+		if (_old_next_ptr != 0xFFFF) v->next = GetVehicle(_old_next_ptr);
 
 		v->string_id = RemapOldStringID(_old_string_id);
 
@@ -1470,13 +1469,13 @@ static bool LoadOldMain(LoadgameState *ls)
 	/* The first 49 is the name of the game + checksum, skip it */
 	fseek(ls->file, HEADER_SIZE, SEEK_SET);
 
-	DEBUG(oldloader, 4, "Reading main chunk...");
+	DEBUG(oldloader, 3, "Reading main chunk...");
 	/* Load the biggest chunk */
 	if (!LoadChunk(ls, NULL, main_chunk)) {
 		DEBUG(oldloader, 0, "Loading failed");
 		return false;
 	}
-	DEBUG(oldloader, 4, "Done, converting game data...");
+	DEBUG(oldloader, 3, "Done, converting game data...");
 
 	/* Fix some general stuff */
 	_opt.landscape = _opt.landscape & 0xF;
@@ -1526,7 +1525,7 @@ static bool LoadOldMain(LoadgameState *ls)
 	/* We have a new difficulty setting */
 	_opt.diff.town_council_tolerance = clamp(_opt.diff_level, 0, 2);
 
-	DEBUG(oldloader, 4, "Finished converting game data");
+	DEBUG(oldloader, 3, "Finished converting game data");
 	DEBUG(oldloader, 1, "TTD(Patch) savegame successfully converted");
 
 	return true;
@@ -1536,7 +1535,7 @@ bool LoadOldSaveGame(const char *file)
 {
 	LoadgameState ls;
 
-	DEBUG(oldloader, 4, "Trying to load a TTD(Patch) savegame");
+	DEBUG(oldloader, 3, "Trying to load a TTD(Patch) savegame");
 
 	InitLoading(&ls);
 
