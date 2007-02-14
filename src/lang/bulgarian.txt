@@ -625,6 +625,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Нама
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Генерирай случаен терен
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Изчисти терена
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Изчисти терена
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Премахни всичко, принадлежащо на играча, от картата
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Сигурен ли си, че искаш да премахнеш всичко, принадлежашо на играча?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Създаване на терен
 STR_022F_TOWN_GENERATION                                        :{BLACK}Създаване на град
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Създаване на индустрия
@@ -729,6 +731,7 @@ STR_0290_DELETE                                                 :{BLACK}Изтр
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Премахни напълно града
 STR_0292_SAVE_SCENARIO                                          :Запис на сценарий
 STR_0293_LOAD_SCENARIO                                          :Зареждане на сценарий
+STR_LOAD_HEIGHTMAP                                              :Отвори височинна карта
 STR_0294_QUIT_EDITOR                                            :Изход от редактора
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Изход
@@ -1416,6 +1419,8 @@ STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Не с
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Не може да открия мрежови игри
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Сървърът не отговори на заявката
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Не може да се свърже поради различие в NewGRF
+STR_NETWORK_ERR_DESYNC                                          :{WHITE} Синхронизацията на мрежовата игра се провали
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Връзката с мрежовата игра се загуби
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Не може да зареди играта
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Сървъра не може да бъде стартиран
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Не може да се свърже
@@ -1819,6 +1824,7 @@ STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Заре
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} пречи
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Мина за въглища
+STR_4803_POWER_STATION                                          :
 STR_4804_SAWMILL                                                :Дъскорезница
 STR_4805_FOREST                                                 :Гора
 STR_4806_OIL_REFINERY                                           :Нефтена рафинерия

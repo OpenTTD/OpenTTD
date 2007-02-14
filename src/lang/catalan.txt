@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permet 
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estacions no uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova cerca de rutes global (NPF, anul·la NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de pes per contenidor per simular trens pesats: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permet situar parades en carreteres que són propietat del poble: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permet sempre aeroports petits: {ORANGE}{STRING}
 
@@ -1584,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Carretera amb f
 STR_1816_TREE_LINED_ROAD                                        :Carretera de tres carrils
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Cotxeres
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Pas a nivell
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}No es pot treure l'estació d'autobusos...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}No es pot treure l'estació de camions...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Poblacions

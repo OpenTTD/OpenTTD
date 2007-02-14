@@ -1043,6 +1043,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Раз�
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Станции могут быть разной формы: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Новый поиск пути (NPF, без NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Коэф. увеличения веса груза: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Позволять строить сквозные остановки на городских дорогах: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Всегда разрешать малые аэропорты: {ORANGE}{STRING}
 
@@ -1586,6 +1587,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Дорога с
 STR_1816_TREE_LINED_ROAD                                        :Шоссе
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Гараж
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Железнодорожный переезд
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Невозможно удалить автобусную остановку...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Невозможно удалить грузовой терминал...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Города

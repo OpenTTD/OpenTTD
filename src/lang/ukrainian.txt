@@ -79,7 +79,7 @@ STR_0026_CANDY.z                                                :солодощ�
 STR_0027_COLA                                                   :кола
 STR_0027_COLA.r                                                 :коли
 STR_0027_COLA.z                                                 :колу
-STR_0028_COTTON_CANDY                                           :солодку вату
+STR_0028_COTTON_CANDY                                           :солодка вата
 STR_0028_COTTON_CANDY.r                                         :солодкої вати
 STR_0028_COTTON_CANDY.z                                         :солодку вату
 STR_0029_BUBBLES                                                :бульбашки
@@ -92,13 +92,12 @@ STR_002B_BATTERIES                                              :батарей�
 STR_002B_BATTERIES.r                                            :батарейок
 STR_002B_BATTERIES.z                                            :батарейки
 STR_002C_PLASTIC                                                :пластик
-STR_002C_PLASTIC.r                                              :пластику
-STR_002C_PLASTIC.z                                              :ластик
-STR_002D_FIZZY_DRINKS                                           :газовану воду
+STR_002C_PLASTIC.z                                              :пластик
+STR_002D_FIZZY_DRINKS                                           :газована водф
 STR_002D_FIZZY_DRINKS.r                                         :газованої води
 STR_002D_FIZZY_DRINKS.z                                         :газовану воду
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :пасажирів
+STR_002F_PASSENGER                                              :пасажири
 STR_002F_PASSENGER.r                                            :пасажирів
 STR_002F_PASSENGER.z                                            :пасажирів
 STR_0030_COAL                                                   :вугілля
@@ -590,9 +589,9 @@ STR_019C_ROAD_VEHICLE                                           :Авто
 STR_019D_AIRCRAFT                                               :Літак
 STR_019E_SHIP                                                   :Корабель
 STR_019F_TRAIN                                                  :Поїзд
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} зістарився
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} дуже зістарився
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} зістарився і терміново потребує заміни
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} старіє
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} вже дуже старий
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} вже дуже старий і терміново потребує заміни
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Інформація про ділянку
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Вартість очистки: {LTBLUE}неможливо
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Вартість очистки: {LTBLUE}{CURRENCY}
@@ -923,11 +922,11 @@ STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Вибе
 STR_MEASURING_UNITS                                             :{BLACK}Система одиниць виміру
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Вибір системи одиниць виміру
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Напрямок руху
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Транспорт
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Виберіть по якій стороні їхатиме транспорт
-STR_02E9_DRIVE_ON_LEFT                                          :Лівосторонній
-STR_02EA_DRIVE_ON_RIGHT                                         :Правосторонній
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Виберіть, по якій стороні їхатиме транспорт
+STR_02E9_DRIVE_ON_LEFT                                          :Їде по лівій стороні
+STR_02EA_DRIVE_ON_RIGHT                                         :Їде по правій стороні
 STR_02EB_TOWN_NAMES                                             :{BLACK}Назви міст
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Виберіть стиль назв міст
@@ -1145,11 +1144,12 @@ STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Пок�
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Показувати вікно фінансів в кінці року: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch сумісна команда "без зупинки": {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ставати транспорту в чергу: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Прокручувати вікно коли курсор з краю: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Прокручувати вікно, коли курсор з краю: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Дозволити підкупляти місцеву владу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Неоднорідні станції: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Новий глобальний пошук шляху(NPF, замість NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Множник ваги для імітації важких потягів: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Дозволити безпересадкові зупинки на муніципальних дорогах: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Будувати малі аеропорти можна завжди: {ORANGE}{STRING}
 
@@ -1693,6 +1693,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Дорога з
 STR_1816_TREE_LINED_ROAD                                        :Дорога з насадженнями
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Автомобільне депо
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Залізничний переїзд
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Не можна знести автобусну станцію...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Не можна знести грузову станцію...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Міста

@@ -382,6 +382,9 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capaciteit per 
 STR_SORT_BY_MAX_SPEED                                           :Maximale snelheid
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Waarde
+STR_SORT_BY_FACILITY                                            :Station type
+STR_SORT_BY_WAITING                                             :Waarde van wachtende vracht
+STR_SORT_BY_RATING_MAX                                          :Vracht waardering
 STR_ENGINE_SORT_ENGINE_ID                                       :Motor ID (klassieke soort)
 STR_ENGINE_SORT_COST                                            :Kosten
 STR_ENGINE_SORT_POWER                                           :Kracht
