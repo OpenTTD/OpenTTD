@@ -509,17 +509,14 @@ bool RoadStop::HasFreeBay() const
  */
 uint RoadStop::AllocateBay()
 {
-	/* Find the first free bay. If the bit is set, the bay is free. */
-	for (uint bay_nr = 0; bay_nr < MAX_BAY_COUNT; bay_nr++) {
-		if (HASBIT(status, bay_nr)) {
-			CLRBIT(status, bay_nr);
-			return bay_nr;
-		}
-	}
+	assert(HasFreeBay());
 
-	/* There has to be a free bay (precondition) */
-	NOT_REACHED();
-	return 0;
+	/* Find the first free bay. If the bit is set, the bay is free. */
+	uint bay_nr = 0;
+	while (!HASBIT(status, bay_nr)) bay_nr++;
+
+	CLRBIT(status, bay_nr);
+	return bay_nr;
 }
 
 /**
@@ -542,5 +539,5 @@ bool RoadStop::IsEntranceBusy() const
 /** Makes an entrance occupied or free */
 void RoadStop::SetEntranceBusy(bool busy)
 {
-	SB(status, 7, 1, !!busy);
+	SB(status, 7, 1, busy);
 }

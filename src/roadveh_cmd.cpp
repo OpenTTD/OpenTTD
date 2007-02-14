@@ -519,7 +519,7 @@ static void ClearCrashedStation(Vehicle *v)
 	rs->SetEntranceBusy(false);
 
 	/* Free the parking bay */
-	rs->FreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY) ? 1 : 0);
+	rs->FreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY));
 }
 
 static void RoadVehDelete(Vehicle *v)
@@ -1437,7 +1437,7 @@ again:
 				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 
 				/* Vehicle is leaving a road stop tile, mark bay as free and clear the usage bit */
-				rs->FreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY) ? 1 : 0);
+				rs->FreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY));
 				rs->SetEntranceBusy(false);
 			}
 		}
