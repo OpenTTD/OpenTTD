@@ -1485,7 +1485,7 @@ again:
 		}
 
 		/* Set vehicle to second frame on the tile */
-		CLRBIT(v->u.road.state, RVS_DRIVE_SIDE);
+		v->u.road.state = tmp & ~(1 << RVS_DRIVE_SIDE);
 		v->u.road.frame = 1;
 
 		if (newdir != v->direction) {
