@@ -62,11 +62,30 @@ static inline int64 BIGMULS(int32 a, int32 b) {
 //#define IS_INSIDE_1D(x, base, size) ((x) >= (base) && (x) < (base) + (size))
 #define IS_INSIDE_1D(x, base, size) ( (uint)((x) - (base)) < ((uint)(size)) )
 
+template <typename T>
+static inline bool HASBIT(T x, int y)
+{
+	return (x & (((T)1) << y)) != 0;
+}
 
-#define HASBIT(x,y)    (((x) & (1 << (y))) != 0)
-#define SETBIT(x,y)    ((x) |=  (1 << (y)))
-#define CLRBIT(x,y)    ((x) &= ~(1 << (y)))
-#define TOGGLEBIT(x,y) ((x) ^=  (1 << (y)))
+template <typename T>
+static inline T SETBIT(T& x, int y)
+{
+	return x |= (((T)1) << y);
+}
+
+template <typename T>
+static inline T CLRBIT(T& x, int y)
+{
+	return x &= ~(((T)1) << y);
+}
+
+template <typename T>
+static inline T TOGGLEBIT(T& x, int y)
+{
+	return x ^= (((T)1) << y);
+}
+
 
 // checking more bits. Maybe unneccessary, but easy to use
 #define HASBITS(x,y) ((x) & (y))

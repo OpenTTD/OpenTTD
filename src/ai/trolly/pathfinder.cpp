@@ -372,9 +372,9 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 extern uint GetRailFoundation(Slope tileh, TrackBits bits); // XXX function declaration in .c
 extern uint GetRoadFoundation(Slope tileh, RoadBits bits); // XXX function declaration in .c
 extern uint GetBridgeFoundation(Slope tileh, Axis); // XXX function declaration in .c
-enum {
+typedef enum BridgeFoundations{
 	BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
-};
+} BridgeFoundation;
 
 // The most important function: it calculates the g-value
 static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
