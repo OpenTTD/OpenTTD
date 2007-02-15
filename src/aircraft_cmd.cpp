@@ -969,7 +969,8 @@ static bool AircraftController(Vehicle *v)
 	}
 
 	// get airport moving data
-	const AirportMovingData *amd = GetAirport(st->airport_type)->MovingData(v->u.air.pos);
+	const AirportFTAClass *afc = GetAirport(st->airport_type);
+	const AirportMovingData *amd = afc->MovingData(v->u.air.pos);
 
 	// Helicopter raise
 	if (amd->flag & AMED_HELI_RAISE) {
@@ -1011,9 +1012,7 @@ static bool AircraftController(Vehicle *v)
 			v->tile = st->airport_tile;
 
 			// Find altitude of landing position.
-			z = GetSlopeZ(x, y) + 1;
-			if (st->airport_type == AT_OILRIG) z += 54;
-			if (st->airport_type == AT_HELIPORT) z += 60;
+			z = GetSlopeZ(x, y) + 1 + afc->delta_z;
 
 			if (z == v->z_pos) {
 				u = v->next->next;

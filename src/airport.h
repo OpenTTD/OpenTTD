@@ -143,7 +143,8 @@ typedef struct AirportFTAClass {
 			const TileIndexDiffC *depots,
 			byte nof_depots,
 			uint size_x,
-			uint size_y
+			uint size_y,
+			byte delta_z
 		);
 
 		~AirportFTAClass();
@@ -165,6 +166,7 @@ typedef struct AirportFTAClass {
 	AcceptPlanesByte acc_planes;          // accept airplanes or helicopters or both
 	byte size_x;
 	byte size_y;
+	byte delta_z;                         // Z adjustment for helicopter pads
 } AirportFTAClass;
 
 // internal structure used in openttd - Finite sTate mAchine --> FTA

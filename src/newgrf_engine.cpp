@@ -288,7 +288,8 @@ enum {
 static byte MapAircraftMovementState(const Vehicle *v)
 {
 	const Station *st = GetStation(v->u.air.targetairport);
-	byte amdflag = GetAirport(st->airport_type)->MovingData(v->u.air.pos)->flag;
+	const AirportFTAClass *afc = GetAirport(st->airport_type);
+	byte amdflag = afc->MovingData(v->u.air.pos)->flag;
 
 	switch (v->u.air.state) {
 		case HANGAR:
@@ -347,26 +348,11 @@ static byte MapAircraftMovementState(const Vehicle *v)
 			return AMS_TTDP_CLIMBING;
 
 		case HELITAKEOFF: // Helicopter is moving to take off position.
-			switch (st->airport_type) {
-				case AT_SMALL:
-				case AT_LARGE:
-				case AT_METROPOLITAN:
-				case AT_INTERNATIONAL:
-				case AT_COMMUTER:
-				case AT_INTERCON:
-				/* Note, Helidepot and Helistation are treated as airports as
-				 * helicopters are taking off from ground level. */
-				case AT_HELIDEPOT:
-				case AT_HELISTATION:
-					if (amdflag & AMED_HELI_RAISE) return AMS_TTDP_HELI_TAKEOFF_AIRPORT;
-					return AMS_TTDP_TO_JUNCTION;
-
-				case AT_HELIPORT:
-				case AT_OILRIG:
-					return AMS_TTDP_HELI_TAKEOFF_HELIPORT;
-
-				default:
-					return AMS_TTDP_HELI_TAKEOFF_AIRPORT;
+			if (afc->delta_z == 0) {
+				return amdflag & AMED_HELI_RAISE ?
+					AMS_TTDP_HELI_TAKEOFF_AIRPORT : AMS_TTDP_TO_JUNCTION;
+			} else {
+				return AMS_TTDP_HELI_TAKEOFF_HELIPORT;
 			}
 
 		case FLYING:
@@ -383,18 +369,11 @@ static byte MapAircraftMovementState(const Vehicle *v)
 		case HELILANDING:
 		case HELIENDLANDING: // Helicoptor is decending.
 			if (amdflag & AMED_HELI_LOWER) {
-				switch (st->airport_type) {
-					case AT_HELIPORT:
-					case AT_OILRIG:
-						return AMS_TTDP_HELI_LAND_HELIPORT;
-
-					default:
-						/* Note, Helidepot and Helistation are treated as airports as
-						 * helicopters are landing at ground level. */
-						return AMS_TTDP_HELI_LAND_AIRPORT;
-				}
+				return afc->delta_z == 0 ?
+					AMS_TTDP_HELI_LAND_AIRPORT : AMS_TTDP_HELI_LAND_HELIPORT;
+			} else {
+				return AMS_TTDP_FLIGHT_TO_TOWER;
 			}
-			return AMS_TTDP_FLIGHT_TO_TOWER;
 
 		default:
 			return AMS_TTDP_HANGAR;

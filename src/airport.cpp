@@ -41,7 +41,8 @@ void InitializeAirports(void)
 		_airport_fta_country,
 		_airport_depots_country,
 		lengthof(_airport_depots_country),
-		4, 3
+		4, 3,
+		0
 	);
 
 	CityAirport = new AirportFTAClass(
@@ -53,7 +54,8 @@ void InitializeAirports(void)
 		_airport_fta_city,
 		_airport_depots_city,
 		lengthof(_airport_depots_city),
-		6, 6
+		6, 6,
+		0
 	);
 
 	MetropolitanAirport = new AirportFTAClass(
@@ -65,7 +67,8 @@ void InitializeAirports(void)
 		_airport_fta_metropolitan,
 		_airport_depots_metropolitan,
 		lengthof(_airport_depots_metropolitan),
-		6, 6
+		6, 6,
+		0
 	);
 
 	InternationalAirport = new AirportFTAClass(
@@ -77,7 +80,8 @@ void InitializeAirports(void)
 		_airport_fta_international,
 		_airport_depots_international,
 		lengthof(_airport_depots_international),
-		7, 7
+		7, 7,
+		0
 	);
 
 	IntercontinentalAirport = new AirportFTAClass(
@@ -89,7 +93,8 @@ void InitializeAirports(void)
 		_airport_fta_intercontinental,
 		_airport_depots_intercontinental,
 		lengthof(_airport_depots_intercontinental),
-		9,11
+		9, 11,
+		0
 	);
 
 	Heliport = new AirportFTAClass(
@@ -101,7 +106,8 @@ void InitializeAirports(void)
 		_airport_fta_heliport_oilrig,
 		NULL,
 		0,
-		1, 1
+		1, 1,
+		60
 	);
 
 	Oilrig = new AirportFTAClass(
@@ -113,7 +119,8 @@ void InitializeAirports(void)
 		_airport_fta_heliport_oilrig,
 		NULL,
 		0,
-		1, 1
+		1, 1,
+		54
 	);
 
 	CommuterAirport = new AirportFTAClass(
@@ -125,7 +132,8 @@ void InitializeAirports(void)
 		_airport_fta_commuter,
 		_airport_depots_commuter,
 		lengthof(_airport_depots_commuter),
-		5,4
+		5, 4,
+		0
 	);
 
 	HeliDepot = new AirportFTAClass(
@@ -137,7 +145,8 @@ void InitializeAirports(void)
 		_airport_fta_helidepot,
 		_airport_depots_helidepot,
 		lengthof(_airport_depots_helidepot),
-		2,2
+		2, 2,
+		0
 	);
 
 	HeliStation = new AirportFTAClass(
@@ -149,7 +158,8 @@ void InitializeAirports(void)
 		_airport_fta_helistation,
 		_airport_depots_helistation,
 		lengthof(_airport_depots_helistation),
-		4,2
+		4, 2,
+		0
 	);
 }
 
@@ -187,7 +197,8 @@ AirportFTAClass::AirportFTAClass(
 	const TileIndexDiffC *depots_,
 	const byte nof_depots_,
 	uint size_x_,
-	uint size_y_
+	uint size_y_,
+	byte delta_z_
 ) :
 	moving_data(moving_data_),
 	terminals(terminals_),
@@ -197,7 +208,8 @@ AirportFTAClass::AirportFTAClass(
 	nofelements(AirportGetNofElements(apFA)),
 	entry_point(entry_point_),
 	size_x(size_x_),
-	size_y(size_y_)
+	size_y(size_y_),
+	delta_z(delta_z_)
 {
 	byte nofterminalgroups, nofhelipadgroups;
 
