@@ -1010,7 +1010,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 			 * i.e.), so we give them all the NEW_CARGO triggered
 			 * vehicle's portion of random bits. */
 			assert(first);
-			DoTriggerVehicle(GetFirstVehicleInChain(v), VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
+			DoTriggerVehicle((v->type == VEH_Train) ? GetFirstVehicleInChain(v) : v, VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
 			break;
 
 		case VEHICLE_TRIGGER_DEPOT:
