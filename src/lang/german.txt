@@ -1042,6 +1042,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Bestech
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ungleichmäßige Bahnhöfe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Neue globale Wegfindung für alle Fahrzeuge: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Frachtgewicht erhöhen um schwere Züge zu simulieren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Erlaube Bushaltestellen an städtischen Straßen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Kleine Flughäfen immer erlauben: {ORANGE}{STRING}
 
@@ -1585,6 +1586,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Straße mit Lat
 STR_1816_TREE_LINED_ROAD                                        :Straße mit Bäumen
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Fahrzeugdepot
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Bahnübergang
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kann Bushaltestelle nicht entfernen...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kann LKW-Ladestelle nicht entfernen...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Städte

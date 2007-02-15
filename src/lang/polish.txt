@@ -1128,6 +1128,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Pozwól
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Niejednolite stacje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nowe szukanie drogi (NPF, zastępuje NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Pozwól na budowę przystanków typu ro-ro na drogach miejskich: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Zawsze zezwalaj budować małe lotniska: {ORANGE}{STRING}
 
@@ -1671,6 +1672,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Droga z oświet
 STR_1816_TREE_LINED_ROAD                                        :Droga z drzewami
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Zajezdnia samochodowa
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Przejazd kolejowy
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nie można usunąć przystanku...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nie można usunąć stacji załadunkowej...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Miasta

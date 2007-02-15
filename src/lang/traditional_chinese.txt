@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}可以�
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}不規則形狀車站: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}新路徑搜尋演算法 (NPF, 覆蓋 NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}貨物重量系數，以模擬較重列車: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}可在鎮內興建路邊車站: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}永遠可以興建小型機場: {ORANGE}{STRING}
 
@@ -1584,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :有路燈的公
 STR_1816_TREE_LINED_ROAD                                        :有行道樹的公路
 STR_1817_ROAD_VEHICLE_DEPOT                                     :車庫
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :公路/鐵道平交道
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}不能從這邊移除公車站...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}不能從這邊移除貨運站...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}城鎮

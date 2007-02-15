@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}允许�
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}允许异形站台：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}新的全局路径搜索 (NPF，替换 NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}根据装载货物的数量模拟超重列车：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}允许在城镇所有的道路上穿过禁行标志 {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}总允许建设小型机场：{ORANGE}{STRING}
 
@@ -1584,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :带路灯的公
 STR_1816_TREE_LINED_ROAD                                        :林荫公路
 STR_1817_ROAD_VEHICLE_DEPOT                                     :汽车车库
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :公路铁路平交路口
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}不能移除公共汽车站……
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}不能移除汽车货场
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}城镇

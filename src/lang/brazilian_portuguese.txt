@@ -1571,7 +1571,7 @@ STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Impossí
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientação da Garagem
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Impossível construir garagem aqui...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Impossível construir estação de ônibus...
-STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Impossível construir carga de caminhões...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Impossível construir parada de caminhão
 STR_180A_ROAD_CONSTRUCTION                                      :Construir rodovias
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construir trecho rodoviário
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir garagem (para construção e manutenção de automóveis)
@@ -1586,6 +1586,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Rodovia ilumina
 STR_1816_TREE_LINED_ROAD                                        :Rodovia arborizada
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garagem
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passagem de nível
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Impossível remover estação de ônibus
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Impossível remover parada de caminhões
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Cidades
@@ -1750,10 +1752,10 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} não aceita mais {STRING} ou {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} agora aceita {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} agora aceita {STRING} e {STRING}
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientação do ponto de ônibus
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientação do local de carga
-STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Precisa demolir o ponto de ônibus primeiro
-STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Precisa demolir a área de carga primeiro
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientação do estação de ônibus
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientação da parada de caminhão
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Precisa demolir o estação de ônibus primeiro
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Precisa demolir a parada de caminhão primeiro
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Estações
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nenhuma -
@@ -1763,7 +1765,7 @@ STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Precisa 
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Selecionar a orientação da estação ferroviária
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Selecionar o número de linhas da estação ferroviária
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Selecionar o tamanho da estação ferroviária
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Selecionar orientação do ponto de ônibus
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Selecionar orientação do estação de ônibus
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Selecionar orientação da área de carga
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centralizar visualização no local estação
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Exibir avaliações da estação
@@ -1777,7 +1779,7 @@ STR_305E_RAILROAD_STATION                                       :Estação ferro
 STR_305F_AIRCRAFT_HANGAR                                        :Hangar
 STR_3060_AIRPORT                                                :Aeroporto
 STR_3061_TRUCK_LOADING_AREA                                     :Área de carga de caminhões
-STR_3062_BUS_STATION                                            :Ponto de ônibus
+STR_3062_BUS_STATION                                            :Estação de ônibus
 STR_3063_SHIP_DOCK                                              :Doca
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Destacar área de cobertura da construção proposta
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Não destacar área de cobertura da construção proposto

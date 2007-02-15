@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova procura de caminho global (NPF, overrides NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para simular comboios pesados: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações de passagem em estradas das cidades: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1584,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Estrada com ilu
 STR_1816_TREE_LINED_ROAD                                        :Estrada com árvores
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Depósito de veículos de estrada
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passagem de nível
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Impossível remover estação...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Impossível remover estação...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Cidades

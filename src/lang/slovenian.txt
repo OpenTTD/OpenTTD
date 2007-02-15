@@ -1083,6 +1083,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Dovoli 
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Neenake postaje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo skupno iskanje poti (NPF, prevlada NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Koeficient teže tovora za simulacijo težkih vlakov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dovoli prehodne postaje na cestah v lasti mest: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vedno dovoli majhna letališča: {ORANGE}{STRING}
 
@@ -1626,6 +1627,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Cesta z razsvet
 STR_1816_TREE_LINED_ROAD                                        :Drevored
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garaža
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Cestno/železniško križišče
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Ni mogoča odstranitev avtobusne postaje...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Ni mogoča odstranitev tovorne postaje...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Mesta
@@ -1869,7 +1872,6 @@ STR_4802_COAL_MINE                                              :Premogovnik
 STR_4802_COAL_MINE.r                                            :Premogovnika
 STR_4803_POWER_STATION                                          :Termo elektrarna
 STR_4803_POWER_STATION.3sk                                      :Termo elektrarni
-STR_4803_POWER_STATION.r                                        :Termo elektrarne
 STR_4804_SAWMILL                                                :Žaga
 STR_4804_SAWMILL.r                                              :Žage
 STR_4805_FOREST                                                 :Gozd

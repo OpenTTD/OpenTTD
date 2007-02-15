@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillåt
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Icke-rektangulära stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny globalt sätt att hitta rutt (NPF, åsidosätter NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Godsfaktor för att simulera tunga tåg: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillåt genomfarts-stop på stadsägda vägar: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
@@ -1584,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Väg med gatube
 STR_1816_TREE_LINED_ROAD                                        :Väg med träd
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Bussgarage
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Väg-/Järnvägskorsning
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kan inte ta bort busstation...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kan inte ta bort lastbilsstation...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Städer
@@ -2630,6 +2633,7 @@ STR_TRAIN_STOPPING                                              :{RED}Stannar
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stannar, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Fel järnvägstyp
 STR_TRAIN_NO_POWER                                              :{RED}Ingen Kraft
+STR_TRAIN_START_NO_CATENARY                                     :Detta spår saknar kedjekurva, så tåget kan inte starta
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vägfordon i vägen

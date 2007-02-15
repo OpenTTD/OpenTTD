@@ -26,7 +26,7 @@ STR_0011_MAIL                                                   :Courrier
 STR_0012_OIL                                                    :Pétrole
 STR_0013_LIVESTOCK                                              :Bétail
 STR_0014_GOODS                                                  :Marchandise
-STR_0015_GRAIN                                                  :Grain
+STR_0015_GRAIN                                                  :Céréales
 STR_0016_WOOD                                                   :Bois
 STR_0017_IRON_ORE                                               :Fer
 STR_0018_STEEL                                                  :Acier
@@ -58,7 +58,7 @@ STR_0031_MAIL                                                   :Courrier
 STR_0032_OIL                                                    :Pétrole
 STR_0033_LIVESTOCK                                              :Bétail
 STR_0034_GOODS                                                  :Marchandise
-STR_0035_GRAIN                                                  :Grain
+STR_0035_GRAIN                                                  :Céréales
 STR_0036_WOOD                                                   :Bois
 STR_0037_IRON_ORE                                               :Fer
 STR_0038_STEEL                                                  :Acier
@@ -597,7 +597,7 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Nouveau
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changements d'acceptation de marchandises
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventions
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Information génerale
-STR_MESSAGES_ALL                                                :{YELLOW}Pour tout types de messages (aucun/sommaire/complet)
+STR_MESSAGES_ALL                                                :{YELLOW}Paramétrer tous les types de messages: Aucun / Sommaire / Complet
 STR_MESSAGE_SOUND                                               :{YELLOW}Émettre son pour les bulletins sommaires
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...trop loin de la destination précédente
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Meilleures compagnies, qui ont atteint {NUM}{}(Niveau {STRING})
@@ -1042,6 +1042,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permett
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Gares non uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nouvelle recherche de chemin globale (NPF, écrase NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplier le poid pour les trains fret (simule des trains lourds): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Autoriser les arrêts de bus sur les routes des municipalités: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Toujours permettre les petits aéroports: {ORANGE}{STRING}
 
@@ -1231,8 +1232,8 @@ STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Choisir 
 STR_FAST_FORWARD                                                :{BLACK}Avance rapide du jeu
 STR_MESSAGE_HISTORY                                             :{WHITE}Historique des Messages
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Liste des messages récents
-STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Tous en sommaire
-STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Tous en complet
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Tous sommaires
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Tous complets
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Construire une mine de charbon
 STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Planter une forêt
@@ -1585,6 +1586,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Route avec lamp
 STR_1816_TREE_LINED_ROAD                                        :Route avec lignée d'arbustres
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Dépôt de véhicules routiers
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Route/rail Croisement à niveau
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Impossible de supprimer la station de bus...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Impossible de supprimer la station de camions...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Villes
@@ -1624,7 +1627,7 @@ STR_201F_OLD_HOUSES                                             :Vieilles maison
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Municipalité
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Afficher des informations sur la municipalité
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Municipalité de {TOWN}
-STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Notation de la compagnie de transport:
+STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Qualité de service des compagnies:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventions
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Offres de subvention pour le transport de:
@@ -1727,9 +1730,9 @@ STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Vous dev
 
 STR_3030_RENAME_STATION_LOADING                                 :Renommer la gare
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Impossible de renommer la gare...
-STR_3032_RATINGS                                                :{BLACK}Notations
+STR_3032_RATINGS                                                :{BLACK}Qualité
 STR_3033_ACCEPTS                                                :{BLACK}Accepte
-STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Notation du service de transport:
+STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Qualité du service de transport:
 
 ############ range for rating starts
 STR_3035_APPALLING                                              :Épouvantable
@@ -2149,7 +2152,7 @@ STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Nous sommes à la recherche d'un acheteur pour notre compagnie{}{}Voulez vous acheter {COMPANY} pour {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Banqueroute!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} à été fermée par ses créanciers et tous ses actifs vendus!
-STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Fondation d'une nouvelle compagnie de transport!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nouvelle compagnie de transport!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} commence à construire près de {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Impossible d'acheter la compagnie...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Valeur des marchandises
@@ -2487,7 +2490,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :{G=f}locomotive
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Dépôt ferroviaire
-STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Arrivée du premier train à {STATION}!
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent{}l'arrivée du premier train à {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Détails)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train présent
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2753,7 +2756,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}Nommer n
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nommer navire
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Impossible de nommer le navire...
-STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Arrivée du premier navire à {STATION}!
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent {}l'arrivée du premier navire à {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Placer une bouée, peut servir de guide aux navires
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Impossible de placer une bouée ici...
 STR_9836_RENAME                                                 :{BLACK}Renommer
@@ -2827,7 +2830,7 @@ STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Prix: {C
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nommer l'aéronef
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Impossible de nommer l'aéronef...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nommer l'aéronef
-STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Arrivée du premier aéronef à {STATION}!
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent{}l'arrivée du premier aéronef à {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Accident d'avion!{}{COMMA} mort{P "" s} dans un crash à {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Accident d'avion!{}L'aéronef n'avait plus de carburant, {COMMA} passager{P "" s} meurent dans le crash!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
@@ -3114,7 +3117,7 @@ STR_HELISTATION                                                 :{BLACK}Hélista
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Petits aéroports
 STR_LARGE_AIRPORTS                                              :{BLACK}Grands aéroports
-STR_HUB_AIRPORTS                                                :{BLACK}Aéroports Internodaux
+STR_HUB_AIRPORTS                                                :{BLACK}Aéroports Internationaux
 STR_HELIPORTS                                                   :{BLACK}Héliports
 
 ############ Tooltip measurment

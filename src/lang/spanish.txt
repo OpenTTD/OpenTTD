@@ -1042,6 +1042,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estaciones no uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nuevo sistema de busq. de rutas global (NPF, anula a NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Carga el multiplicador de peso para simular trenes pesados: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite conducir en paradas de carretera propiedad de ciudades: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir siempre aeropuertos pequeños: {ORANGE}{STRING}
 
@@ -1585,6 +1586,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Carretera con f
 STR_1816_TREE_LINED_ROAD                                        :Carretera arbolada
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Depósito de carretera
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Paso a nivel
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}No se puede quitar la estación de bus...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}No se puede quitar la estación de camiones...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Poblaciones
@@ -1699,6 +1702,7 @@ STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}No se pu
 STR_2806                                                        :{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...demasiadas señales
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}No se puede colocar una señal aquí...
+STR_280A_SIGN                                                   :Señal
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editar texto de la señal
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}No se puede cambiar el nombre de la señal...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Seleccione el tipo de árboles a plantar

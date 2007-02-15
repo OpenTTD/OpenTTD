@@ -395,6 +395,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Alusta m
 STR_0141_LOAD_GAME                                              :{BLACK}Laadi mängu
 STR_SINGLE_PLAYER                                               :{BLACK}Üksikmängija
 STR_MULTIPLAYER                                                 :{BLACK}Võrgumäng
+STR_SCENARIO_EDITOR                                             :{BLACK}Stsenaariumi Muutmine
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -827,6 +828,7 @@ STR_0290_DELETE                                                 :{BLACK}Kustuta
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Hävita see linn täielikult
 STR_0292_SAVE_SCENARIO                                          :Salvesta kaart
 STR_0293_LOAD_SCENARIO                                          :Laadi kaart
+STR_LOAD_HEIGHTMAP                                              :Lae kõrguskaart
 STR_0294_QUIT_EDITOR                                            :Lahku redaktorist
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Välju
@@ -1680,6 +1682,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Valgustatud maa
 STR_1816_TREE_LINED_ROAD                                        :Kolmerajaline tee
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Depoo
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Raudtee ülesõit
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Bussijaama ei saa eemaldada...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Linnad
