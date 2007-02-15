@@ -1,351 +1,426 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<head>
-<meta name="Author" content="Marcin Grzegorczyk">
-<meta name="Description" content="Structure of OpenTTD (OTTD) landscape arrays">
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>OpenTTD Landscape Internals</title>
 
+<head>
+ <meta name="Author" content="Marcin Grzegorczyk">
+ <meta name="Description" content="Structure of OpenTTD (OTTD) landscape arrays">
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <title>OpenTTD Landscape Internals</title>
 </head>
+
 <body>
 
-<h3><a name="Landscape">Landscape</a></h3>
-<p> Seven attributes (counting &quot;type_height&quot;) hold the informations
-  about a tile. These attributes are referred to as "<span style="font-weight: bold;">type_height</span>",
+ <h3><a name="Landscape">Landscape</a></h3>
+ <p>Seven attributes (counting &quot;type_height&quot;) hold the informations about a tile.<BR>
+  These attributes are referred to as
+  "<span style="font-weight: bold;">type_height</span>",
   "<span style="font-weight: bold;">m1</span>", "<span style="font-weight: bold;">m2</span>",
   "<span style="font-weight: bold;">m3</span>", "<span style="font-weight: bold;">m4</span>",
-  "<span style="font-weight: bold;">m5</span>" and "<span style="font-weight: bold;">m6</span>".
+  "<span style="font-weight: bold;">m5</span>" and "<span style="font-weight: bold;">m6</span>".<BR>
   The most important value is the class of a tile, stored in the upper 4 bits
   of the type_height array. The lower 4 bits are used to encode the height and
-  slope data. For a graphical representation of the tile-layout have a look at
-  <a href="landscape_grid.html">Landscape grid</a> page. </p>
+  slope data.<BR>
+  For a graphical representation of the tile-layout have a look at
+  <a href="landscape_grid.html">Landscape grid</a> page.
+ </p>
 
-<p><a name="OwnershipInfo">The owner of a tile</a>, as frequently associated with attribute m1, can be either players (human or AI) or "Game entities".
-They are identified using:
-<ul>
-  <li>00 = current player</li>
-  <li>01..08 = AI or network players</li>
-  <li>0F = a town owns the tile</li>
-  <li>10 = nobody owns the tile</li>
-  <li>11 = "water" owns the tile</li>
-  <li>FF = spectator in MP or in scenario editor</li>
-</ul>
+ <p>The <a name="OwnershipInfo">owner of a tile</a>, as frequently associated with attribute m1,
+  can be either players (human or AI) or "Game entities".
+  They are identified using:
+  <table>
+   <tr><td><tt>00</tt>&nbsp; </td><td align=left>current player</td></tr>
+   <tr><td><tt>01..08</tt>&nbsp; </td><td align=left>AI or network players</td></tr>
+   <tr><td><tt>0F</tt>&nbsp; </td><td align=left>a town owns the tile</td></tr>
+   <tr><td><tt>10</tt>&nbsp; </td><td align=left>nobody owns the tile</td></tr>
+   <tr><td><tt>11</tt>&nbsp; </td><td align=left>"water" owns the tile</td></tr>
+   <tr><td><tt>FF</tt>&nbsp; </td><td align=left>spectator in MP or in scenario editor</td></tr>
+  </table></p>
 
-<p>OTTD's class-specific periodic tile processing routine is called once every +256 ticks for each tile.</p>
+ <p>OTTD's class-specific periodic tile processing routine is called once every +256 ticks for each tile.</p>
 
-<table border=1 cellpadding=3>
-<tr><th align=left>Class</th><th align=left>Meaning & details of encoding</th></tr>
+ <table border=1 cellpadding=3>
+  <tr><th align=left>Class</th><th align=left>Meaning & details of encoding</th></tr>
 
-<tr><td valign=top nowrap><a name="Class0"><tt> 0 </tt></a></td><td>
-<ul>
-<li>m5 bits 4..0: tile type:
-<table>
-<tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td align=left>bare land</td></tr>
-<tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td align=left>1/3 grass</td></tr>
-<tr><td nowrap valign=top><tt>02</tt>&nbsp; </td><td align=left>2/3 grass</td></tr>
-<tr><td nowrap valign=top><tt>03</tt>&nbsp; </td><td align=left>full grass</td></tr>
-<tr><td nowrap valign=top><tt>07</tt>&nbsp; </td><td align=left>rough land</td></tr>
-<tr><td nowrap valign=top><tt>0B</tt>&nbsp; </td><td align=left>rocks</td></tr>
-<tr><td nowrap valign=top><tt>0F</tt>&nbsp; </td><td align=left>fields; type of fields in m3 bits 3..0 (legal values: 0 through 9)<br>
-  m2: Index into the array of industries (farms), INVALID_INDUSTRY (0xFFFF) if farm has been removed </td>
-</tr>
-<tr><td nowrap valign=top><tt>10</tt>&nbsp; </td><td align=left>1/4 snow</td></tr>
-<tr><td nowrap valign=top><tt>11</tt>&nbsp; </td><td align=left>2/4 snow</td></tr>
-<tr><td nowrap valign=top><tt>12</tt>&nbsp; </td><td align=left>3/4 snow</td></tr>
-<tr><td nowrap valign=top><tt>13</tt>&nbsp; </td><td align=left>full snow</td></tr>
-<tr><td nowrap valign=top><tt>15</tt>&nbsp; </td><td align=left>partial desert</td></tr>
-<tr><td nowrap valign=top><tt>17</tt>&nbsp; </td><td align=left>full desert</td></tr>
-</table>
-</li>
-<li>m5 bits 7..5: update counter, incremented on every periodic processing for tile types other than <tt>03</tt>, <tt>07</tt>, <tt>0B</tt> and <tt>10</tt> and above, on wraparound the tile is updated (for fields, the type of fields in m3 is increased, for other types the tile type in m5 is increased)
-<br>(for snow and desert, these bits are not used, tile is updated on every periodic processing)
-</li>
-<li>m1: <a href="#OwnershipInfo">owner</a> of the tile (normally <tt>10</tt>)
-</li>
-<li>m4 bits 7..5: type of hedge on the SW border of the tile (1 through 6, or 0=none); bits 4..2: same for the SE border
-</li>
-</ul>
-</td></tr>
+  <tr>
+   <td valign=top nowrap><a name="Class0"><tt> 0 </tt></a></td>
+   <td>
+    <ul>
+     <li>m5 bits 4..0: tile type:
+      <table>
+       <tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td align=left>bare land</td></tr>
+       <tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td align=left>1/3 grass</td></tr>
+       <tr><td nowrap valign=top><tt>02</tt>&nbsp; </td><td align=left>2/3 grass</td></tr>
+       <tr><td nowrap valign=top><tt>03</tt>&nbsp; </td><td align=left>full grass</td></tr>
+       <tr><td nowrap valign=top><tt>07</tt>&nbsp; </td><td align=left>rough land</td></tr>
+       <tr><td nowrap valign=top><tt>0B</tt>&nbsp; </td><td align=left>rocks</td></tr>
+       <tr><td nowrap valign=top><tt>0F</tt>&nbsp; </td><td align=left>fields; type of fields in m3 bits 3..0 (legal values: 0 through 9)<br>
+            m2: Index into the array of industries (farms), INVALID_INDUSTRY (0xFFFF) if farm has been removed</td></tr>
+       <tr><td nowrap valign=top><tt>10</tt>&nbsp; </td><td align=left>1/4 snow</td></tr>
+       <tr><td nowrap valign=top><tt>11</tt>&nbsp; </td><td align=left>2/4 snow</td></tr>
+       <tr><td nowrap valign=top><tt>12</tt>&nbsp; </td><td align=left>3/4 snow</td></tr>
+       <tr><td nowrap valign=top><tt>13</tt>&nbsp; </td><td align=left>full snow</td></tr>
+       <tr><td nowrap valign=top><tt>15</tt>&nbsp; </td><td align=left>partial desert</td></tr>
+       <tr><td nowrap valign=top><tt>17</tt>&nbsp; </td><td align=left>full desert</td></tr>
+      </table>
+     </li>
+     <li>m5 bits 7..5: update counter, incremented on every periodic processing for tile types,
+         other than <tt>03</tt>, <tt>07</tt>, <tt>0B</tt>, <tt>10</tt> and above.<BR>
+         on wraparound, the tile is updated (for fields, the type of fields in m3 is increased, for other types the tile type in m5 is increased).<BR>
+         For snow and desert, these bits are not used, tile is updated on every periodic processing.
+     </li>
+     <li>m1: <a href="#OwnershipInfo">owner</a> of the tile (normally <tt>10</tt>)</li>
+     <li>m4 bits 7..5: type of hedge on the SW border of the tile (1 through 6, or 0=none); bits 4..2: same for the SE border</li>
+    </ul>
+   </td>
+  </tr>
 
-<tr><td valign=top nowrap><a name="Class1"><tt> 1 </tt></a></td><td>
-m5 bit 7 clear: railway track
-<ul>
-<li>m5 bits 0..5: track layout: bit set = track present:
-<table>
-<tr><td nowrap valign=top>bit 0: </td><td align=left>in the X direction</td></tr>
-<tr><td nowrap valign=top>bit 1: </td><td align=left>in the Y direction</td></tr>
-<tr><td nowrap valign=top>bit 2: </td><td align=left>in the north corner (direction W-E)</td></tr>
-<tr><td nowrap valign=top>bit 3: </td><td align=left>in the south corner (direction W-E)</td></tr>
-<tr><td nowrap valign=top>bit 4: </td><td align=left>in the west corner (direction N-S)</td></tr>
-<tr><td nowrap valign=top>bit 5: </td><td align=left>in the east corner (direction N-S)</td></tr>
-</table></li>
-<li>m5 bit 6 set = with signals:
-<ul>
-<li>m3 bits 7..4: bit set = signal present:
-<ul>
-<li>For track in the X direction:
-<table>
-<tr><td nowrap valign=top>bit 6: </td><td align=left>signal in the SW direction</td></tr>
-<tr><td nowrap valign=top>bit 7: </td><td align=left>signal in the NE direction</td></tr>
-</table></li>
-<li>For track in the Y direction:
-<table>
-<tr><td nowrap valign=top>bit 6: </td><td align=left>signal in the NW direction</td></tr>
-<tr><td nowrap valign=top>bit 7: </td><td align=left>signal in the SE direction</td></tr>
-</table></li>
-<li>For tracks in the W-E direction:
-<table>
-<tr><td nowrap valign=top>bit 4: </td><td align=left>signal in the W direction on the track in the S corner</td></tr>
-<tr><td nowrap valign=top>bit 5: </td><td align=left>signal in the E direction on the track in the S corner</td></tr>
-<tr><td nowrap valign=top>bit 6: </td><td align=left>signal in the W direction on the track in the N corner</td></tr>
-<tr><td nowrap valign=top>bit 7: </td><td align=left>signal in the E direction on the track in the N corner</td></tr>
-</table></li>
-<li>For tracks in the N-S direction:
-<table>
-<tr><td nowrap valign=top>bit 4: </td><td align=left>signal in the S direction on the track in the E corner</td></tr>
-<tr><td nowrap valign=top>bit 5: </td><td align=left>signal in the N direction on the track in the E corner</td></tr>
-<tr><td nowrap valign=top>bit 6: </td><td align=left>signal in the S direction on the track in the W corner</td></tr>
-<tr><td nowrap valign=top>bit 7: </td><td align=left>signal in the N direction on the track in the W corner</td></tr>
-</table></li>
-</ul></li>
-<li>m2 bits 7..4: bit clear = signal shows red; same bits as in m3</li>
-<li>OpenTTD bits in m4:
-<table>
-<tr><td nowrap valign=top>bits 1..0: </td><td align=left>type of signal:</td></tr>
-<tr><td nowrap valign=top><tt>00</tt>: </td><td align=left>normal signals</td></tr>
-<tr><td nowrap valign=top><tt>01</tt>: </td><td align=left>pre-signals</td></tr>
-<tr><td nowrap valign=top><tt>10</tt>: </td><td align=left>exit-signals</td></tr>
-<tr><td nowrap valign=top><tt>11</tt>: </td><td align=left>combo-signals</td></tr>
-<tr><td nowrap valign=top>bit 2: </td><td align=left>set = semaphore signals, clear = light signals</td></tr>
-</table></li>
-</ul></li>
-<li>m1: <a href="#OwnershipInfo">owner</a> of the track
-</li>
-<li>m2 bits 0..3:
-<table>
-<tr><td nowrap valign=top><tt>0</tt>&nbsp; </td><td align=left>on bare land</td></tr>
-<tr><td nowrap valign=top><tt>1</tt>&nbsp; </td><td align=left>on grass, no fences</td></tr>
-<tr><td nowrap valign=top><tt>2</tt>&nbsp; </td><td align=left>fence on the NW side</td></tr>
-<tr><td nowrap valign=top><tt>3</tt>&nbsp; </td><td align=left>fence on the SE side</td></tr>
-<tr><td nowrap valign=top><tt>4</tt>&nbsp; </td><td align=left>fences on the NW and SE sides</td></tr>
-<tr><td nowrap valign=top><tt>5</tt>&nbsp; </td><td align=left>fence on the NE side</td></tr>
-<tr><td nowrap valign=top><tt>6</tt>&nbsp; </td><td align=left>fence on the SW side</td></tr>
-<tr><td nowrap valign=top><tt>7</tt>&nbsp; </td><td align=left>fences on the NE and SW sides</td></tr>
-<tr><td nowrap valign=top><tt>8</tt>&nbsp; </td><td align=left>fence on the E side (track in the W corner)</td></tr>
-<tr><td nowrap valign=top><tt>9</tt>&nbsp; </td><td align=left>fence on the W side (track in the E corner)</td></tr>
-<tr><td nowrap valign=top><tt>A</tt>&nbsp; </td><td align=left>fence on the S side (track in the N corner)</td></tr>
-<tr><td nowrap valign=top><tt>B</tt>&nbsp; </td><td align=left>fence on the N side (track in the S corner)</td></tr>
-<tr><td nowrap valign=top><tt>C</tt>&nbsp; </td><td align=left>on snow or desert</td></tr>
-</table></li>
-<li>m3 bits 0..3 = <a name="TrackType">track type</a>: <tt>0</tt> - conventional railway, <tt>1</tt> - electrified railway, <tt>2</tt> - monorail, <tt>3</tt> - maglev
-</ul>
-m5 bits 7 and 6 set: railway depot / checkpoints
-<ul>
-<li>m5 value C0..C3: railway depot
-<br>m5 bits 1..0 - direction: exit towards: <tt>00</tt> = NE, <tt>01</tt> = SE, <tt>02</tt> = SW, <tt>03</tt> = NW</li>
-<li>m5 value C4..C5: checkpoint
-<br>bit 0: clear = in X direction, set = in Y direction
-<br>
-<br>
-<li>m1: <a href="#OwnershipInfo">owner</a> of the depot / checkpoint</li>
-<li>m2: For waypoints, index into the array of waypoints.</li>
-<li>m3 bits 0..3 = <a href="#TrackType">track type</a></li>
-<li>m4 bits 0..3 = ground type, as per m2 bits 0..3 for railway tiles.</li>
-</ul>
-</td></tr>
+  <tr>
+   <td valign=top nowrap><a name="Class1"><tt> 1 </tt></a></td>
+   <td>
+    <ul>
+     <li>m5 bit 7 clear: railway track
+      <ul>
+       <li>m5 bits 0..5: track layout: bit set = track present:
+        <table>
+         <tr><td nowrap valign=top>bit 0: </td><td align=left>in the X direction</td></tr>
+         <tr><td nowrap valign=top>bit 1: </td><td align=left>in the Y direction</td></tr>
+         <tr><td nowrap valign=top>bit 2: </td><td align=left>in the north corner (direction W-E)</td></tr>
+         <tr><td nowrap valign=top>bit 3: </td><td align=left>in the south corner (direction W-E)</td></tr>
+         <tr><td nowrap valign=top>bit 4: </td><td align=left>in the west corner (direction N-S)</td></tr>
+         <tr><td nowrap valign=top>bit 5: </td><td align=left>in the east corner (direction N-S)</td></tr>
+        </table>
+       </li>
+       <li>m5 bit 6 set = with signals:
+        <ul>
+         <li>m3 bits 7..4: bit set = signal present:
+          <ul>
+           <li>For track in the X direction:
+            <table>
+             <tr><td nowrap valign=top>bit 6: </td><td align=left>signal in the SW direction</td></tr>
+             <tr><td nowrap valign=top>bit 7: </td><td align=left>signal in the NE direction</td></tr>
+            </table>
+           </li>
+           <li>For track in the Y direction:
+            <table>
+             <tr><td nowrap valign=top>bit 6: </td><td align=left>signal in the NW direction</td></tr>
+             <tr><td nowrap valign=top>bit 7: </td><td align=left>signal in the SE direction</td></tr>
+            </table>
+           </li>
+           <li>For tracks in the W-E direction:
+            <table>
+             <tr><td nowrap valign=top>bit 4: </td><td align=left>signal in the W direction on the track in the S corner</td></tr>
+             <tr><td nowrap valign=top>bit 5: </td><td align=left>signal in the E direction on the track in the S corner</td></tr>
+             <tr><td nowrap valign=top>bit 6: </td><td align=left>signal in the W direction on the track in the N corner</td></tr>
+             <tr><td nowrap valign=top>bit 7: </td><td align=left>signal in the E direction on the track in the N corner</td></tr>
+            </table>
+           </li>
+           <li>For tracks in the N-S direction:
+            <table>
+             <tr><td nowrap valign=top>bit 4: </td><td align=left>signal in the S direction on the track in the E corner</td></tr>
+             <tr><td nowrap valign=top>bit 5: </td><td align=left>signal in the N direction on the track in the E corner</td></tr>
+             <tr><td nowrap valign=top>bit 6: </td><td align=left>signal in the S direction on the track in the W corner</td></tr>
+             <tr><td nowrap valign=top>bit 7: </td><td align=left>signal in the N direction on the track in the W corner</td></tr>
+            </table>
+           </li>
+          </ul>
+         </li>
+         <li>m2 bits 7..4: bit clear = signal shows red; same bits as in m3</li>
+         <li>OpenTTD bits in m4:
+          <table>
+           <tr><td nowrap valign=top>bits 1..0: </td><td align=left>type of signal:</td></tr>
+           <tr><td nowrap valign=top><tt>00</tt>: </td><td align=left>normal signals</td></tr>
+           <tr><td nowrap valign=top><tt>01</tt>: </td><td align=left>pre-signals</td></tr>
+           <tr><td nowrap valign=top><tt>10</tt>: </td><td align=left>exit-signals</td></tr>
+           <tr><td nowrap valign=top><tt>11</tt>: </td><td align=left>combo-signals</td></tr>
+           <tr><td nowrap valign=top>bit 2: </td><td align=left>set = semaphore signals, clear = light signals</td></tr>
+          </table>
+         </li>
+        </ul>
+       </li>
+       <li>m1: <a href="#OwnershipInfo">owner</a> of the track</li>
+       <li>m2 bits 0..3:
+        <table>
+         <tr><td nowrap valign=top><tt>0</tt>&nbsp; </td><td align=left>on bare land</td></tr>
+         <tr><td nowrap valign=top><tt>1</tt>&nbsp; </td><td align=left>on grass, no fences</td></tr>
+         <tr><td nowrap valign=top><tt>2</tt>&nbsp; </td><td align=left>fence on the NW side</td></tr>
+         <tr><td nowrap valign=top><tt>3</tt>&nbsp; </td><td align=left>fence on the SE side</td></tr>
+         <tr><td nowrap valign=top><tt>4</tt>&nbsp; </td><td align=left>fences on the NW and SE sides</td></tr>
+         <tr><td nowrap valign=top><tt>5</tt>&nbsp; </td><td align=left>fence on the NE side</td></tr>
+         <tr><td nowrap valign=top><tt>6</tt>&nbsp; </td><td align=left>fence on the SW side</td></tr>
+         <tr><td nowrap valign=top><tt>7</tt>&nbsp; </td><td align=left>fences on the NE and SW sides</td></tr>
+         <tr><td nowrap valign=top><tt>8</tt>&nbsp; </td><td align=left>fence on the E side (track in the W corner)</td></tr>
+         <tr><td nowrap valign=top><tt>9</tt>&nbsp; </td><td align=left>fence on the W side (track in the E corner)</td></tr>
+         <tr><td nowrap valign=top><tt>A</tt>&nbsp; </td><td align=left>fence on the S side (track in the N corner)</td></tr>
+         <tr><td nowrap valign=top><tt>B</tt>&nbsp; </td><td align=left>fence on the N side (track in the S corner)</td></tr>
+         <tr><td nowrap valign=top><tt>C</tt>&nbsp; </td><td align=left>on snow or desert</td></tr>
+        </table>
+       </li>
+       <li>m3 bits 0..3 = <a name="TrackType">track type</a>:
+        <table>
+         <tr><td><tt>0</tt>&nbsp; </td><td>conventional railway</td></tr>
+         <tr><td><tt>1</tt>&nbsp; </td><td>electrified railway</td></tr>
+         <tr><td><tt>2</tt>&nbsp; </td><td>monorail</td></tr>
+         <tr><td><tt>3</tt>&nbsp; </td><td>maglev</td></tr>
+        </table>
+       </li>
+      </ul>
+     </li>
+     <li>m5 bits 7 and 6 set: railway depot / checkpoints
+      <ul>
+       <li>m5 value C0..C3: railway depot
+        <table>
+         <tr><td colspan=2>m5 bits 1..0</td></tr>
+         <tr><td colspan=2>direction: exit towards:</td></tr>
+         <tr><td><tt>00</tt>&nbsp; </td><td>NE</td></tr>
+         <tr><td><tt>01</tt>&nbsp; </td><td>SE</td></tr>
+         <tr><td><tt>02</tt>&nbsp; </td><td>SW</td></tr>
+         <tr><td><tt>03</tt>&nbsp; </td><td>NW</td></tr>
+        </table>
+       </li>
+       <li>m5 value C4..C5: checkpoint
+        <table>
+         <tr><td colspan=2>bit 0</td></tr>
+         <tr><td>clear</td><td>in X direction</td></tr>
+         <tr><td>set</td><td>in Y direction</td></tr>
+        </table>
+       </li>
+       <li>m1: <a href="#OwnershipInfo">owner</a> of the depot / checkpoint</li>
+       <li>m2: For waypoints, index into the array of waypoints.</li>
+       <li>m3 bits 0..3 = <a href="#TrackType">track type</a></li>
+       <li>m4 bits 0..3 = ground type, as per m2 bits 0..3 for railway tiles.</li>
+      </ul>
+     </li>
+    </ul>
+   </td>
+  </tr>
 
-<tr><td valign=top nowrap><a name="Class2"><tt> 2 </tt></a></td><td>
-m5 bits 7..4 clear: road
-<ul>
-<li>m5 bits 3..0: road layout: bit set = road piece present:
-<table>
-<tr><td nowrap valign=top>bit 0: </td><td align=left>NW piece</td></tr>
-<tr><td nowrap valign=top>bit 1: </td><td align=left>SW piece</td></tr>
-<tr><td nowrap valign=top>bit 2: </td><td align=left>SE piece</td></tr>
-<tr><td nowrap valign=top>bit 3: </td><td align=left>NE piece</td></tr>
-</table></li>
-<li>m1: <a href="#OwnershipInfo">owner</a> of the road</li>
-<li>m2: Index into the array of towns, 0 for non-town roads</li>
-<li>m4 bits 0..3: counter for the roadworks</li>
-<li>m4 bits 4..6: <tt>0</tt> - on bare land, <tt>1</tt> - on grass, <tt>2</tt> - paved, <tt>3</tt> - with streetlights, <tt>5</tt> - tree-lined, <tt>6</tt> - on grass with road works, <tt>7</tt> - paved with road works</li>
-<li>m4 bit 7 set = on snow or desert</li>
-</ul>
-m5 bit 4 set, bits 7..5 clear: level crossing
-<ul>
-<li>m5 bit 3: clear - road in the X direction, set - road in the Y direction (railway track always perpendicular)</li>
-<li>m5 bit 2: set if crossing lights are on</li>
-<li>m1: <a href="#OwnershipInfo">owner</a> of the railway track</li>
-<li>m2: Index into the array of towns, 0 for non-town roads</li>
-<li>m3 bits 0..7: <a href="#OwnershipInfo">owner</a> of the road</li>
-<li>m4 bits 3..0: <a href="#TrackType">track type</a></li>
-<li>m4 bits 4..6: <tt>0</tt> - on bare land, <tt>1</tt> - on grass, <tt>2</tt> or higher - paved</li>
-<li>m4 bit 7 set = on snow or desert</li>
-</ul>
-m5 bit 5 set: road depot
-<ul>
-<li>m5 bits 3..0 - direction: exit towards: <tt>0</tt> = NE, <tt>1</tt> = SE, <tt>2</tt> = SW, <tt>3</tt> = NW</li>
-<li>m1: <a href="#OwnershipInfo">owner</a> of the depot</li>
-<li>m4 bit 7 set = on snow or desert (not displayed, but set internally)</li>
-</ul>
-</td></tr>
+  <tr>
+   <td valign=top nowrap><a name="Class2"><tt> 2 </tt></a></td>
+   <td>
+   <ul>
+    <li>m5 bits 7..4 clear: road
+     <ul>
+      <li>m5 bits 3..0: road layout: bit set = road piece present:
+       <table>
+        <tr><td nowrap valign=top>bit 0: </td><td align=left>NW piece</td></tr>
+        <tr><td nowrap valign=top>bit 1: </td><td align=left>SW piece</td></tr>
+        <tr><td nowrap valign=top>bit 2: </td><td align=left>SE piece</td></tr>
+        <tr><td nowrap valign=top>bit 3: </td><td align=left>NE piece</td></tr>
+       </table>
+      </li>
+      <li>m1: <a href="#OwnershipInfo">owner</a> of the road</li>
+      <li>m2: Index into the array of towns, 0 for non-town roads</li>
+      <li>m4 bits 0..3: counter for the roadworks</li>
+      <li>m4 bits 4..6:
+       <table>
+        <tr><td><tt>0</tt>&nbsp; </td><td>on bare land</td></tr>
+        <tr><td><tt>1</tt>&nbsp; </td><td>on grass</td></tr>
+        <tr><td><tt>2</tt>&nbsp; </td><td>paved</td></tr>
+        <tr><td><tt>3</tt>&nbsp; </td><td>with streetlights</td></tr>
+        <tr><td><tt>5</tt>&nbsp; </td><td>tree-lined</td></tr>
+        <tr><td><tt>6</tt>&nbsp; </td><td>on grass with road works</td></tr>
+        <tr><td><tt>7</tt>&nbsp; </td><td>paved with road works</td></tr>
+       </table>
+      </li>
+      <li>m4 bit 7 set = on snow or desert</li>
+     </ul>
+    </li>
+    <li>m5 bit 4 set, bits 7..5 clear: level crossing
+     <ul>
+      <li>m5 bit 3: clear - road in the X direction, set - road in the Y direction (railway track always perpendicular)</li>
+      <li>m5 bit 2: set if crossing lights are on</li>
+      <li>m1: <a href="#OwnershipInfo">owner</a> of the railway track</li>
+      <li>m2: Index into the array of towns, 0 for non-town roads</li>
+      <li>m3 bits 0..7: <a href="#OwnershipInfo">owner</a> of the road</li>
+      <li>m4 bits 3..0: <a href="#TrackType">track type</a></li>
+      <li>m4 bits 4..6: <tt>0</tt> - on bare land, <tt>1</tt> - on grass, <tt>2</tt> or higher - paved</li>
+      <li>m4 bit 7 set = on snow or desert</li>
+     </ul>
+    </li>
+    <li>m5 bit 5 set: road depot
+      <ul>
+       <li>m5 bits 3..0 - direction: exit towards: <tt>0</tt> = NE, <tt>1</tt> = SE, <tt>2</tt> = SW, <tt>3</tt> = NW</li>
+       <li>m1: <a href="#OwnershipInfo">owner</a> of the depot</li>
+       <li>m4 bit 7 set = on snow or desert (not displayed, but set internally)</li>
+      </ul>
+     </li>
+    </ul>
+   </td>
+  </tr>
 
-<tr><td valign=top nowrap><a name="Class3"><tt> 3 </tt></a></td><td>
-Town building
-<ul>
-<li>m2: Index into the array of towns</li>
-<li>m4: <a name="HouseTypes">town building type</a>:
-<p><small>Note: In the climate list, 'sub-arctic' means below the snow line, and 'snow' means above the snow line in the sub-arctic climate.</small></p>
-<table>
-<tr><th align=left>Type&nbsp;</th><th align=left>Size&nbsp;</th><th align=left>Climates&nbsp;</th><th align=left>Description</th></tr>
-<tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>office block</td></tr>
-<tr><td nowrap valign=top><tt>02</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>small block of flats</td></tr>
-<tr><td nowrap valign=top><tt>03</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>church</td></tr>
-<tr><td nowrap valign=top><tt>04</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-arctic, sub-tropical</td><td align=left>large office block</td></tr>
-<tr><td nowrap valign=top><tt>05</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>large office block</td></tr>
-<tr><td nowrap valign=top><tt>06</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>town houses</td></tr>
-<tr><td nowrap valign=top><tt>07</tt>..<tt>08</tt>&nbsp; </td><td>1&times;2</td><td>temperate</td><td align=left>hotel</td></tr>
-<tr><td nowrap valign=top><tt>09</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-arctic, sub-tropical&nbsp;&nbsp;</td><td align=left>statue</td></tr>
-<tr><td nowrap valign=top><tt>0A</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-arctic, sub-tropical</td><td align=left>fountain</td></tr>
-<tr><td nowrap valign=top><tt>0B</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>park (with a pond)</td></tr>
-<tr><td nowrap valign=top><tt>0C</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>park (with an alley)</td></tr>
-<tr><td nowrap valign=top><tt>0D</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>office block</td></tr>
-<tr><td nowrap valign=top><tt>0E</tt>..<tt>10</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>various types of shops and offices</td></tr>
-<tr><td nowrap valign=top><tt>11</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-arctic, sub-tropical</td><td align=left>modern office building</td></tr>
-<tr><td nowrap valign=top><tt>12</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>warehouse</td></tr>
-<tr><td nowrap valign=top><tt>13</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>office block (with spiral stairway on the side)</td></tr>
-<tr><td nowrap valign=top><tt>14</tt>..<tt>17</tt>&nbsp; </td><td>2&times;2</td><td>temperate</td><td align=left>stadium</td></tr>
-<tr><td nowrap valign=top><tt>18</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>old houses</td></tr>
-<tr><td nowrap valign=top><tt>19</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>cottages</td></tr>
-<tr><td nowrap valign=top><tt>1A</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>1B</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>flats</td></tr>
-<tr><td nowrap valign=top><tt>1C</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>1D</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>shops and offices</td></tr>
-<tr><td nowrap valign=top><tt>1E</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-tropical</td><td align=left>shops and offices</td></tr>
-<tr><td nowrap valign=top><tt>1F</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>theatre</td></tr>
-<tr><td nowrap valign=top><tt>20</tt>..<tt>23</tt>&nbsp; </td><td>2&times;2</td><td>temperate, sub-arctic, sub-tropical</td><td align=left>stadium (modern style)</td></tr>
-<tr><td nowrap valign=top><tt>24</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-arctic, sub-tropical</td><td align=left>offices (the modern 'vertical tube' style)</td></tr>
-<tr><td nowrap valign=top><tt>25</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>26</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>27</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>cinema</td></tr>
-<tr><td nowrap valign=top><tt>28</tt>..<tt>2B</tt>&nbsp; </td><td>2&times;2</td><td>temperate</td><td align=left>shopping mall</td></tr>
-<tr><td nowrap valign=top><tt>2C</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>flats</td></tr>
-<tr><td nowrap valign=top><tt>2D</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>flats</td></tr>
-<tr><td nowrap valign=top><tt>2E</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>2F</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>30</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>31</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>32</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic, sub-tropical</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>33</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>34</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>35</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>36</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic, sub-tropical</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>37</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>38</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>39</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>3A</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>shops and offices</td></tr>
-<tr><td nowrap valign=top><tt>3B</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>shops and offices</td></tr>
-<tr><td nowrap valign=top><tt>3C</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>church</td></tr>
-<tr><td nowrap valign=top><tt>3D</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>church</td></tr>
-<tr><td nowrap valign=top><tt>3E</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>3F</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>40</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>shops and offices</td></tr>
-<tr><td nowrap valign=top><tt>41</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>shops and offices</td></tr>
-<tr><td nowrap valign=top><tt>42</tt>..<tt>43</tt>&nbsp; </td><td>1&times;2</td><td>sub-arctic</td><td align=left>hotel</td></tr>
-<tr><td nowrap valign=top><tt>44</tt>..<tt>45</tt>&nbsp; </td><td>1&times;2</td><td>snow</td><td align=left>hotel</td></tr>
-<tr><td nowrap valign=top><tt>46</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic, sub-tropical</td><td align=left>shops and offices</td></tr>
-<tr><td nowrap valign=top><tt>47</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>shops and offices</td></tr>
-<tr><td nowrap valign=top><tt>48</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>49</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>4A</tt>..<tt>4B</tt>&nbsp; </td><td>2&times;1</td><td>sub-arctic</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>4C</tt>..<tt>4D</tt>&nbsp; </td><td>2&times;1</td><td>snow</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>4E</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>houses (with a tree in a corner)</td></tr>
-<tr><td nowrap valign=top><tt>4F</tt>, <tt>50</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>houses</td></tr>
-<tr><td nowrap valign=top><tt>51</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>houses (suburb-type)</td></tr>
-<tr><td nowrap valign=top><tt>52</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>flats</td></tr>
-<tr><td nowrap valign=top><tt>53</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>church</td></tr>
-<tr><td nowrap valign=top><tt>54</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>houses (with two trees in front)</td></tr>
-<tr><td nowrap valign=top><tt>55</tt>, <tt>56</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>flats</td></tr>
-<tr><td nowrap valign=top><tt>57</tt>..<tt>58</tt>&nbsp; </td><td>2&times;1</td><td>sub-tropical</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>59</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>flats</td></tr>
-<tr><td nowrap valign=top><tt>5A</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>5B</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>church</td></tr>
-<tr><td nowrap valign=top><tt>5C</tt>..<tt>61</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>various types of toyland houses</td></tr>
-<tr><td nowrap valign=top><tt>62</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>63</tt>..<tt>64</tt>&nbsp; </td><td>1&times;2</td><td>toyland</td><td align=left>houses ('shoe' style)</td></tr>
-<tr><td nowrap valign=top><tt>65</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>66</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>igloo</td></tr>
-<tr><td nowrap valign=top><tt>67</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>tepees</td></tr>
-<tr><td nowrap valign=top><tt>68</tt>, <tt>69</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>shops and offices</td></tr>
-<tr><td nowrap valign=top><tt>6A</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>tall office block</td></tr>
-<tr><td nowrap valign=top><tt>6B</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>statue</td></tr>
-<tr><td nowrap valign=top><tt>6C</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>teapot-house</td></tr>
-<tr><td nowrap valign=top><tt>6D</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>piggy-bank</td></tr>
-<tr><td colspan=2></td></tr> <!-- spacer -- -- (and I don't mean a walk) -->
-</table></li>
-<li>m3 bits 7..6: stage of construction (<tt>3</tt> = completed)</li>
-<li>m5 bits 2..0: construction counter, for buildings under construction incremented on every periodic tile processing, on wraparound the stage of construction in m3 is increased</li>
-<li>for large office blocks (types <tt>04</tt> and <tt>05</tt>):
-<ul>
-<li>m1 bits 6..0: position of the lift</li>
-<li>m1 bit 7: if set the lift is moving</li>
-<li>m5 bit 7: if set then m5 bits 5..0 hold the destination floor of the lift, which could be 0..6, except 1, so the building has 6 effective floors. This due to the fact that the first floor is 2 'normal' floors high. One 'normal' floor has a height of 6 lift positions.</li>
-</ul></li>
-</ul>
-</td></tr>
+  <tr>
+   <td valign=top nowrap><a name="Class3"><tt> 3 </tt></a></td>
+   <td>Town building
+    <ul>
+     <li>m2: Index into the array of towns</li>
+     <li>m4: <a name="HouseTypes">town building type</a>:<br>
+      <small>Note: In the climate list, 'sub-arctic' means below the snow line, and 'snow' means above the snow line in the sub-arctic climate.</small>
+      <table>
+       <tr><th align=left>Type&nbsp;</th><th align=left>Size&nbsp;</th><th align=left>Climates&nbsp;</th><th align=left>Description</th></tr>
+       <tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>office block</td></tr>
+       <tr><td nowrap valign=top><tt>02</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>small block of flats</td></tr>
+       <tr><td nowrap valign=top><tt>03</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>church</td></tr>
+       <tr><td nowrap valign=top><tt>04</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-arctic, sub-tropical</td><td align=left>large office block</td></tr>
+       <tr><td nowrap valign=top><tt>05</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>large office block</td></tr>
+       <tr><td nowrap valign=top><tt>06</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>town houses</td></tr>
+       <tr><td nowrap valign=top><tt>07</tt>..<tt>08</tt>&nbsp; </td><td>1&times;2</td><td>temperate</td><td align=left>hotel</td></tr>
+       <tr><td nowrap valign=top><tt>09</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-arctic, sub-tropical&nbsp;&nbsp;</td><td align=left>statue</td></tr>
+       <tr><td nowrap valign=top><tt>0A</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-arctic, sub-tropical</td><td align=left>fountain</td></tr>
+       <tr><td nowrap valign=top><tt>0B</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>park (with a pond)</td></tr>
+       <tr><td nowrap valign=top><tt>0C</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>park (with an alley)</td></tr>
+       <tr><td nowrap valign=top><tt>0D</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>office block</td></tr>
+       <tr><td nowrap valign=top><tt>0E</tt>..<tt>10</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>various types of shops and offices</td></tr>
+       <tr><td nowrap valign=top><tt>11</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-arctic, sub-tropical</td><td align=left>modern office building</td></tr>
+       <tr><td nowrap valign=top><tt>12</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>warehouse</td></tr>
+       <tr><td nowrap valign=top><tt>13</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>office block (with spiral stairway on the side)</td></tr>
+       <tr><td nowrap valign=top><tt>14</tt>..<tt>17</tt>&nbsp; </td><td>2&times;2</td><td>temperate</td><td align=left>stadium</td></tr>
+       <tr><td nowrap valign=top><tt>18</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>old houses</td></tr>
+       <tr><td nowrap valign=top><tt>19</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>cottages</td></tr>
+       <tr><td nowrap valign=top><tt>1A</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>1B</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>flats</td></tr>
+       <tr><td nowrap valign=top><tt>1C</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>1D</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>shops and offices</td></tr>
+       <tr><td nowrap valign=top><tt>1E</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-tropical</td><td align=left>shops and offices</td></tr>
+       <tr><td nowrap valign=top><tt>1F</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>theatre</td></tr>
+       <tr><td nowrap valign=top><tt>20</tt>..<tt>23</tt>&nbsp; </td><td>2&times;2</td><td>temperate, sub-arctic, sub-tropical</td><td align=left>stadium (modern style)</td></tr>
+       <tr><td nowrap valign=top><tt>24</tt>&nbsp; </td><td>1&times;1</td><td>temperate, sub-arctic, sub-tropical</td><td align=left>offices (the modern 'vertical tube' style)</td></tr>
+       <tr><td nowrap valign=top><tt>25</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>26</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>27</tt>&nbsp; </td><td>1&times;1</td><td>temperate</td><td align=left>cinema</td></tr>
+       <tr><td nowrap valign=top><tt>28</tt>..<tt>2B</tt>&nbsp; </td><td>2&times;2</td><td>temperate</td><td align=left>shopping mall</td></tr>
+       <tr><td nowrap valign=top><tt>2C</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>flats</td></tr>
+       <tr><td nowrap valign=top><tt>2D</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>flats</td></tr>
+       <tr><td nowrap valign=top><tt>2E</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>2F</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>30</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>31</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>32</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic, sub-tropical</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>33</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>34</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>35</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>36</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic, sub-tropical</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>37</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>38</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>39</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>3A</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>shops and offices</td></tr>
+       <tr><td nowrap valign=top><tt>3B</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>shops and offices</td></tr>
+       <tr><td nowrap valign=top><tt>3C</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>church</td></tr>
+       <tr><td nowrap valign=top><tt>3D</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>church</td></tr>
+       <tr><td nowrap valign=top><tt>3E</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>3F</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>40</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>shops and offices</td></tr>
+       <tr><td nowrap valign=top><tt>41</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>shops and offices</td></tr>
+       <tr><td nowrap valign=top><tt>42</tt>..<tt>43</tt>&nbsp; </td><td>1&times;2</td><td>sub-arctic</td><td align=left>hotel</td></tr>
+       <tr><td nowrap valign=top><tt>44</tt>..<tt>45</tt>&nbsp; </td><td>1&times;2</td><td>snow</td><td align=left>hotel</td></tr>
+       <tr><td nowrap valign=top><tt>46</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic, sub-tropical</td><td align=left>shops and offices</td></tr>
+       <tr><td nowrap valign=top><tt>47</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>shops and offices</td></tr>
+       <tr><td nowrap valign=top><tt>48</tt>&nbsp; </td><td>1&times;1</td><td>sub-arctic</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>49</tt>&nbsp; </td><td>1&times;1</td><td>snow</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>4A</tt>..<tt>4B</tt>&nbsp; </td><td>2&times;1</td><td>sub-arctic</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>4C</tt>..<tt>4D</tt>&nbsp; </td><td>2&times;1</td><td>snow</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>4E</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>houses (with a tree in a corner)</td></tr>
+       <tr><td nowrap valign=top><tt>4F</tt>, <tt>50</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>houses</td></tr>
+       <tr><td nowrap valign=top><tt>51</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>houses (suburb-type)</td></tr>
+       <tr><td nowrap valign=top><tt>52</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>flats</td></tr>
+       <tr><td nowrap valign=top><tt>53</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>church</td></tr>
+       <tr><td nowrap valign=top><tt>54</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>houses (with two trees in front)</td></tr>
+       <tr><td nowrap valign=top><tt>55</tt>, <tt>56</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>flats</td></tr>
+       <tr><td nowrap valign=top><tt>57</tt>..<tt>58</tt>&nbsp; </td><td>2&times;1</td><td>sub-tropical</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>59</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>flats</td></tr>
+       <tr><td nowrap valign=top><tt>5A</tt>&nbsp; </td><td>1&times;1</td><td>sub-tropical</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>5B</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>church</td></tr>
+       <tr><td nowrap valign=top><tt>5C</tt>..<tt>61</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>various types of toyland houses</td></tr>
+       <tr><td nowrap valign=top><tt>62</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>63</tt>..<tt>64</tt>&nbsp; </td><td>1&times;2</td><td>toyland</td><td align=left>houses ('shoe' style)</td></tr>
+       <tr><td nowrap valign=top><tt>65</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>66</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>igloo</td></tr>
+       <tr><td nowrap valign=top><tt>67</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>tepees</td></tr>
+       <tr><td nowrap valign=top><tt>68</tt>, <tt>69</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>shops and offices</td></tr>
+       <tr><td nowrap valign=top><tt>6A</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>tall office block</td></tr>
+       <tr><td nowrap valign=top><tt>6B</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>statue</td></tr>
+       <tr><td nowrap valign=top><tt>6C</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>teapot-house</td></tr>
+       <tr><td nowrap valign=top><tt>6D</tt>&nbsp; </td><td>1&times;1</td><td>toyland</td><td align=left>piggy-bank</td></tr>
+      </table>
+     </li>
+     <li>m3 bits 7..6: stage of construction (<tt>3</tt> = completed)</li>
+     <li>m5 bits 2..0: construction counter, for buildings under construction incremented on every periodic tile processing<br>
+         On wraparound the stage of construction in m3 is increased
+     </li>
+     <li>for large office blocks (types <tt>04</tt> and <tt>05</tt>):
+      <ul>
+       <li>m1 bits 6..0: position of the lift</li>
+       <li>m1 bit 7: if set the lift is moving</li>
+       <li>m5 bit 7: if set then m5 bits 5..0 hold the destination floor of the lift, which could be 0..6, except 1.<br>
+           So the building has 6 effective floors. This is due to the fact that the first floor is 2 'normal' floors high.<br>
+           One 'normal' floor has a height of 6 lift positions.</li>
+      </ul>
+     </li>
+    </ul>
+   </td>
+  </tr>
 
-<tr><td valign=top nowrap><a name="Class4"><tt> 4 </tt></a></td><td>
-Trees
-<ul>
-<li>m5 bits 7..6: number of trees minus one</li>
-<li>m5 bits 2..0: growth status: <tt>0</tt>..<tt>2</tt> - one of trees is growing, <tt>3</tt> - all trees are fully grown, <tt>4</tt>..<tt>6</tt> - one of trees is withering</li>
-<li>m3 bits 7..0: type of trees:
-<table>
-<tr><td nowrap valign=top><tt>00</tt>..<tt>0B</tt>&nbsp; </td><td align=left>temperate climate trees</td></tr>
-<tr><td nowrap valign=top><tt>0C</tt>..<tt>13</tt>&nbsp; </td><td align=left>sub-arctic climate trees</td></tr>
-<tr><td nowrap valign=top><tt>14</tt>..<tt>1A</tt>&nbsp; </td><td align=left>rainforest trees</td></tr>
-<tr><td nowrap valign=top><tt>1B</tt> </td><td align=left>cactus plants</td></tr>
-<tr><td nowrap valign=top><tt>1C</tt>..<tt>1F</tt>&nbsp; </td><td align=left>sub-tropical climate, non-rainforest, non-desert trees</td></tr>
-<tr><td nowrap valign=top><tt>20</tt>..<tt>28</tt>&nbsp; </td><td align=left>toyland trees</td></tr>
-</table>
-(note: the actually displayed set of trees depends on both type and number of trees)
-</li>
-<li>m4 bits 7..5: type of hedge on the SW border of the tile (1 through 6, or 0=none)</li>
-<li>m4 bits 4..2: type of hedge on the SE border of the tile (1 through 6, or 0=none)</li>
-<li>m2 bits 5..4:
-<table>
-<tr><td nowrap valign=top><tt>0</tt>&nbsp; </td><td align=left>on grass</td></tr>
-<tr><td nowrap valign=top><tt>1</tt>&nbsp; </td><td align=left>on rough land</td></tr>
-<tr><td nowrap valign=top><tt>2</tt>&nbsp; </td><td align=left>on snow or desert; m2 bits 7..6 - amount of snow or desert (for desert always set to 3 in TTD)
-</td></tr>
-</table></li>
-<li>m2 bits 3..0: update counter, incremented on every periodic processing, on wraparound the growth status is updated (or, if it's <tt>3</tt>, a random action is taken)</li>
-<li>m1: <a href="#OwnershipInfo">owner</a> (normally <tt>10</tt>)</li>
-</ul>
-</td></tr>
+  <tr>
+   <td valign=top nowrap><a name="Class4"><tt> 4 </tt></a></td>
+   <td>Trees
+    <ul>
+     <li>m5 bits 7..6: number of trees minus one</li>
+     <li>m5 bits 2..0: growth status: <tt>0</tt>..<tt>2</tt> - one of trees is growing, <tt>3</tt> - all trees are fully grown, <tt>4</tt>..<tt>6</tt> - one of trees is withering</li>
+     <li>m3 bits 7..0: type of trees:
+      <table>
+       <tr><td nowrap valign=top><tt>00</tt>..<tt>0B</tt>&nbsp; </td><td align=left>temperate climate trees</td></tr>
+       <tr><td nowrap valign=top><tt>0C</tt>..<tt>13</tt>&nbsp; </td><td align=left>sub-arctic climate trees</td></tr>
+       <tr><td nowrap valign=top><tt>14</tt>..<tt>1A</tt>&nbsp; </td><td align=left>rainforest trees</td></tr>
+       <tr><td nowrap valign=top><tt>1B</tt> </td><td align=left>cactus plants</td></tr>
+       <tr><td nowrap valign=top><tt>1C</tt>..<tt>1F</tt>&nbsp; </td><td align=left>sub-tropical climate, non-rainforest, non-desert trees</td></tr>
+       <tr><td nowrap valign=top><tt>20</tt>..<tt>28</tt>&nbsp; </td><td align=left>toyland trees</td></tr>
+      </table>
+      <small>Note: the actually displayed set of trees depends on both type and number of trees</small>
+     </li>
+     <li>m4 bits 7..5: type of hedge on the SW border of the tile (1 through 6, or 0=none)</li>
+     <li>m4 bits 4..2: type of hedge on the SE border of the tile (1 through 6, or 0=none)</li>
+     <li>m2 bits 5..4:
+      <table>
+       <tr><td nowrap valign=top><tt>0</tt>&nbsp; </td><td align=left>on grass</td></tr>
+       <tr><td nowrap valign=top><tt>1</tt>&nbsp; </td><td align=left>on rough land</td></tr>
+       <tr><td nowrap valign=top><tt>2</tt>&nbsp; </td><td align=left>on snow or desert; m2 bits 7..6 - amount of snow or desert (for desert always set to 3 in TTD)</td></tr>
+      </table>
+     </li>
+     <li>m2 bits 3..0: update counter, incremented on every periodic processing.<br>
+         on wraparound the growth status is updated (or, if it's <tt>3</tt>, a random action is taken)</li>
+     <li>m1: <a href="#OwnershipInfo">owner</a> (normally <tt>10</tt>)</li>
+    </ul>
+   </td>
+  </tr>
 
-<tr><td valign=top nowrap><a name="Class5"><tt> 5 </tt></a></td><td>
-Station tile
-<ul>
-<li>m5: tile type:
-<table>
-<tr><td nowrap valign=top><tt>00</tt>..<tt>07</tt>&nbsp; </td><td align=left>railway station
-<br><tt>00</tt>..<tt>01</tt> - open platform, <tt>02</tt>..<tt>03</tt> - open platform with station building, <tt>04</tt>....<tt>07</tt> - roofed platform
-<br>bit 0: clear = in X direction, set = in Y direction
-</td></tr>
-<tr><td nowrap valign=top><tt>08</tt>..<tt>33</tt>&nbsp; </td><td align=left>large airport
-<table>
-<tr><td nowrap valign=top><tt>0B</tt>&nbsp; </td><td align=left>pad 1</td></tr>
-<tr><td nowrap valign=top><tt>16</tt>..<tt>19</tt>&nbsp; </td><td align=left>runway middle</td></tr>
-<tr><td nowrap valign=top><tt>1A</tt>&nbsp; </td><td align=left>runway ending</td></tr>
-<tr><td nowrap valign=top><tt>1C</tt>&nbsp; </td><td align=left>control tower</td></tr>
-<tr><td nowrap valign=top><tt>20</tt>&nbsp; </td><td align=left>hangar</td></tr>
-<tr><td nowrap valign=top><tt>21</tt>&nbsp; </td><td align=left>pad 3</td></tr>
-<tr><td nowrap valign=top><tt>22</tt>&nbsp; </td><td align=left>pad 2</td></tr>
-<tr><td nowrap valign=top><tt>27</tt>..<tt>32</tt>&nbsp; </td><td align=left>radar (animated)</td></tr>
-<tr><td nowrap valign=top><tt>33</tt>&nbsp; </td><td align=left>transmitter</td></tr>
-</table>
-The initial layout of a large airport is (rows in Y direction, columns in X direction):
+ <tr>
+  <td valign=top nowrap><a name="Class5"><tt> 5 </tt></a></td>
+  <td>Station tile
+   <ul>
+    <li>m5: tile type:
+     <table>
+      <tr>
+       <td nowrap valign=top><tt>00</tt>..<tt>07</tt>&nbsp; </td><td align=left>railway station
+        <table>
+         <tr><td><tt>00</tt>..<tt>01</tt>&nbsp; </td><td align=left>open platform</td></tr>
+         <tr><td><tt>02</tt>..<tt>03</tt>&nbsp; </td><td align=left>open platform with station building</td></tr>
+         <tr><td><tt>04</tt>....<tt>07</tt>&nbsp; </td><td align=left>roofed platform</td></tr>
+         <tr><td colspan=2>bit 0: clear = in X direction, set = in Y direction</td></tr>
+        </table>
+       </td>
+      </tr>
+      <tr><td nowrap valign=top><tt>08</tt>..<tt>33</tt>&nbsp; </td><td align=left>large airport
+       <table>
+        <tr><td nowrap valign=top><tt>0B</tt>&nbsp; </td><td align=left>pad 1</td></tr>
+        <tr><td nowrap valign=top><tt>16</tt>..<tt>19</tt>&nbsp; </td><td align=left>runway middle</td></tr>
+        <tr><td nowrap valign=top><tt>1A</tt>&nbsp; </td><td align=left>runway ending</td></tr>
+        <tr><td nowrap valign=top><tt>1C</tt>&nbsp; </td><td align=left>control tower</td></tr>
+        <tr><td nowrap valign=top><tt>20</tt>&nbsp; </td><td align=left>hangar</td></tr>
+        <tr><td nowrap valign=top><tt>21</tt>&nbsp; </td><td align=left>pad 3</td></tr>
+        <tr><td nowrap valign=top><tt>22</tt>&nbsp; </td><td align=left>pad 2</td></tr>
+        <tr><td nowrap valign=top><tt>27</tt>..<tt>32</tt>&nbsp; </td><td align=left>radar (animated)</td></tr>
+        <tr><td nowrap valign=top><tt>33</tt>&nbsp; </td><td align=left>transmitter</td></tr>
+        <tr><td colspan=2>The initial layout of a large airport is (rows in Y direction, columns in X direction):
 <pre>
 1F 1B 1E 33 26 1A
 09 24 0B 0C 0D 16
@@ -354,266 +429,303 @@ The initial layout of a large airport is (rows in Y direction, columns in X dire
 09 08 14 13 12 19
 20 0A 15 1C 27 1A
 </pre>
-</td></tr>
-<tr><td nowrap valign=top><tt>34</tt>..<tt>41</tt>&nbsp; </td><td align=left>small airport
-<table>
-<tr><td nowrap valign=top><tt>3A</tt>..<tt>3D</tt>&nbsp; </td><td align=left>field with the wind meter (animated)</td></tr>
-<tr><td nowrap valign=top><tt>3E</tt>&nbsp; </td><td align=left>runway south ending</td></tr>
-<tr><td nowrap valign=top><tt>3F</tt>&nbsp; </td><td align=left>runway middle</td></tr>
-<tr><td nowrap valign=top><tt>40</tt>&nbsp; </td><td align=left>runway north ending</td></tr>
-<tr><td nowrap valign=top><tt>41</tt>&nbsp; </td><td align=left>hangar</td></tr>
-</table>
-The initial layout of a small airport is (rows in Y direction, columns in X direction):
+       </table>
+      </td></tr>
+
+      <tr><td nowrap valign=top><tt>34</tt>..<tt>41</tt>&nbsp; </td><td align=left>small airport
+       <table>
+        <tr><td nowrap valign=top><tt>3A</tt>..<tt>3D</tt>&nbsp; </td><td align=left>field with the wind meter (animated)</td></tr>
+        <tr><td nowrap valign=top><tt>3E</tt>&nbsp; </td><td align=left>runway south ending</td></tr>
+        <tr><td nowrap valign=top><tt>3F</tt>&nbsp; </td><td align=left>runway middle</td></tr>
+        <tr><td nowrap valign=top><tt>40</tt>&nbsp; </td><td align=left>runway north ending</td></tr>
+        <tr><td nowrap valign=top><tt>41</tt>&nbsp; </td><td align=left>hangar</td></tr>
+        <tr><td colspan=2>The initial layout of a small airport is (rows in Y direction, columns in X direction):
 <pre>
 36 3A 40
 35 39 3F
 34 38 3F
 41 37 3E
 </pre>
-</td></tr>
-<tr><td nowrap valign=top><tt>42</tt> </td><td align=left>heliport</td></tr>
-<tr><td nowrap valign=top><tt>43</tt>..<tt>46</tt>&nbsp; </td><td align=left>lorry loading area;
-exit towards: <tt>43</tt> - NE, <tt>44</tt> - SE, <tt>45</tt> - SW, <tt>46</tt> - NW
-</td></tr>
-<tr><td nowrap valign=top><tt>47</tt>..<tt>4A</tt>&nbsp; </td><td align=left>bus station;
-exit towards: <tt>47</tt> - NE, <tt>48</tt> - SE, <tt>49</tt> - SW, <tt>4A</tt> - NW
-<tr><td nowrap valign=top><tt>4B</tt> </td><td align=left>oilfield</td></tr>
-<tr><td nowrap valign=top><tt>4C</tt>..<tt>51</tt>&nbsp; </td><td align=left>ship dock;
-<tt>4C</tt> - SW coast part, <tt>4D</tt> - NW coast part, <tt>4E</tt> - NE coast part, <tt>4F</tt> - SE coast part, <tt>50</tt> - X direction water part, <tt>51</tt> - Y direction water part
-<tr><td nowrap valign=top><tt>52</tt> </td><td align=left>buoy</td></tr>
-<tr><td nowrap valign=top><tt>53</tt>..<tt>A7</tt>&nbsp; </td><td align=left>used by RichK's larger airports
-</td></tr>
-<tr><td colspan=2></td></tr> <!-- spacer -->
-</table>
-</li>
-<li>m1: <a href="#OwnershipInfo">owner</a> of the station</li>
-<li>m2: index into the array of stations</li>
-<li>m3 bits 0..3: <a href="#TrackType">track type</a> for railway stations, must be 0 for all the other stations</li>
-<li>m3 bits 4..7: persistent random data for newstations</li>
-<li>m4 = custom station id; 0 means standard graphics</li>
-</ul>
-</td></tr>
+       </table>
+      </td></tr>
 
-<tr><td valign=top nowrap><a name="Class6"><tt> 6 </tt></a></td><td>
-<ul>
-<li>m5: tile type:
-<table>
-<tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td align=left>water</td></tr>
-<tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td align=left>coast or riverbank</td></tr>
-<tr><td nowrap valign=top><tt>10</tt>..<tt>1B</tt>&nbsp; </td><td align=left>canal locks
-<table>
-<tr><td nowrap valign=top><tt>10</tt>&nbsp; </td><td align=left>middle part, (SW-NE direction)
-<tr><td nowrap valign=top><tt>11</tt>&nbsp; </td><td align=left>middle part, (NW-SE direction)
-<tr><td nowrap valign=top><tt>12</tt>&nbsp; </td><td align=left>middle part, (NE-SW direction)
-<tr><td nowrap valign=top><tt>13</tt>&nbsp; </td><td align=left>middle part, (SE-NW direction)
-<tr><td nowrap valign=top><tt>14</tt>&nbsp; </td><td align=left>lower part, (SW-NE direction)
-<tr><td nowrap valign=top><tt>15</tt>&nbsp; </td><td align=left>lower part, (NW-SE direction)
-<tr><td nowrap valign=top><tt>16</tt>&nbsp; </td><td align=left>lower part, (NE-SW direction)
-<tr><td nowrap valign=top><tt>17</tt>&nbsp; </td><td align=left>lower part, (SE-NW direction)
-<tr><td nowrap valign=top><tt>18</tt>&nbsp; </td><td align=left>upper part, (SW-NE direction)
-<tr><td nowrap valign=top><tt>19</tt>&nbsp; </td><td align=left>upper part, (NW-SE direction)
-<tr><td nowrap valign=top><tt>1A</tt>&nbsp; </td><td align=left>upper part, (NE-SW direction)
-<tr><td nowrap valign=top><tt>1B</tt>&nbsp; </td><td align=left>upper part, (SE-NW direction)
-</table>
-<tr><td nowrap valign=top><tt>80</tt>..<tt>83</tt>&nbsp; </td><td align=left>ship depots
-<table>
-<tr><td nowrap valign=top><tt>80</tt>&nbsp; </td><td align=left>ship depot, NE part (X direction)
-<tr><td nowrap valign=top><tt>81</tt>&nbsp; </td><td align=left>ship depot, SW part (X direction)
-<tr><td nowrap valign=top><tt>82</tt>&nbsp; </td><td align=left>ship depot, NW part (Y direction)
-<tr><td nowrap valign=top><tt>83</tt>&nbsp; </td><td align=left>ship depot, SE part (Y direction)
+      <tr><td nowrap valign=top><tt>42</tt> </td><td align=left>heliport</td></tr>
+      <tr><td nowrap valign=top><tt>43</tt>..<tt>46</tt>&nbsp; </td><td align=left>
+       lorry loading area : exit towards:
+       <table>
+        <tr><td><tt>43</tt>&nbsp; </td><td align=left>NE</td></tr>
+        <tr><td><tt>44</tt>&nbsp; </td><td align=left>SE</td></tr>
+        <tr><td><tt>45</tt>&nbsp; </td><td align=left>SW</td></tr>
+        <tr><td><tt>46</tt>&nbsp; </td><td align=left>NW</td></tr>
+       </table>
+      </td></tr>
+      <tr><td nowrap valign=top><tt>47</tt>..<tt>4A</tt>&nbsp; </td><td align=left>
+       bus station : exit towards:
+       <table>
+        <tr><td><tt>47</tt>&nbsp; </td><td align=left>NE</td></tr>
+        <tr><td><tt>48</tt>&nbsp; </td><td align=left>SE</td></tr>
+        <tr><td><tt>49</tt>&nbsp; </td><td align=left>SW</td></tr>
+        <tr><td><tt>4A</tt>&nbsp; </td><td align=left>NW</td></tr>
+       </table>
+      </td></tr>
+      <tr><td nowrap valign=top><tt>4B</tt> </td><td align=left>oilfield</td></tr>
+      <tr><td nowrap valign=top><tt>4C</tt>..<tt>51</tt>&nbsp; </td><td align=left>ship dock
+       <table>
+        <tr><td><tt>4C</tt>&nbsp; </td><td align=left>SW coast part</td></tr>
+        <tr><td><tt>4D</tt>&nbsp; </td><td align=left>NW coast part</td></tr>
+        <tr><td><tt>4E</tt>&nbsp; </td><td align=left>NE coast part</td></tr>
+        <tr><td><tt>4F</tt>&nbsp; </td><td align=left>SE coast part</td></tr>
+        <tr><td><tt>50</tt>&nbsp; </td><td align=left>X direction water part</td></tr>
+        <tr><td><tt>51</tt>&nbsp; </td><td align=left>Y direction water part</td></tr>
+       </table>
+      </td></tr>
+      <tr><td nowrap valign=top><tt>52</tt> </td><td align=left>buoy</td></tr>
+      <tr><td nowrap valign=top><tt>53</tt>..<tt>A7</tt>&nbsp; </td><td align=left>used by RichK's larger airports</td></tr>
+     </table>
+    </li>
+    <li>m1: <a href="#OwnershipInfo">owner</a> of the station</li>
+    <li>m2: index into the array of stations</li>
+    <li>m3 bits 0..3: <a href="#TrackType">track type</a> for railway stations, must be 0 for all the other stations</li>
+    <li>m3 bits 4..7: persistent random data for newstations</li>
+    <li>m4: custom station id; 0 means standard graphics</li>
+   </ul>
+   </td>
+  </tr>
 
-</td></tr>
+  <tr>
+   <td valign=top nowrap><a name="Class6"><tt> 6 </tt></a></td>
+   <td>
+    <ul>
+     <li>m5: tile type:
+      <table>
+       <tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td align=left>water</td></tr>
+       <tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td align=left>coast or riverbank</td></tr>
+       <tr><td nowrap valign=top><tt>10</tt>..<tt>1B</tt>&nbsp; </td><td align=left>canal locks
+        <table>
+         <tr><td nowrap valign=top><tt>10</tt>&nbsp; </td><td align=left>middle part, (SW-NE direction)</td></tr>
+         <tr><td nowrap valign=top><tt>11</tt>&nbsp; </td><td align=left>middle part, (NW-SE direction)</td></tr>
+         <tr><td nowrap valign=top><tt>12</tt>&nbsp; </td><td align=left>middle part, (NE-SW direction)</td></tr>
+         <tr><td nowrap valign=top><tt>13</tt>&nbsp; </td><td align=left>middle part, (SE-NW direction)</td></tr>
+         <tr><td nowrap valign=top><tt>14</tt>&nbsp; </td><td align=left>lower part, (SW-NE direction)</td></tr>
+         <tr><td nowrap valign=top><tt>15</tt>&nbsp; </td><td align=left>lower part, (NW-SE direction)</td></tr>
+         <tr><td nowrap valign=top><tt>16</tt>&nbsp; </td><td align=left>lower part, (NE-SW direction)</td></tr>
+         <tr><td nowrap valign=top><tt>17</tt>&nbsp; </td><td align=left>lower part, (SE-NW direction)</td></tr>
+         <tr><td nowrap valign=top><tt>18</tt>&nbsp; </td><td align=left>upper part, (SW-NE direction)</td></tr>
+         <tr><td nowrap valign=top><tt>19</tt>&nbsp; </td><td align=left>upper part, (NW-SE direction)</td></tr>
+         <tr><td nowrap valign=top><tt>1A</tt>&nbsp; </td><td align=left>upper part, (NE-SW direction)</td></tr>
+         <tr><td nowrap valign=top><tt>1B</tt>&nbsp; </td><td align=left>upper part, (SE-NW direction)</td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>80</tt>..<tt>83</tt>&nbsp; </td><td align=left>ship depots
+        <table>
+         <tr><td nowrap valign=top><tt>80</tt>&nbsp; </td><td align=left>ship depot, NE part (X direction)</td></tr>
+          <tr><td nowrap valign=top><tt>81</tt>&nbsp; </td><td align=left>ship depot, SW part (X direction)</td></tr>
+          <tr><td nowrap valign=top><tt>82</tt>&nbsp; </td><td align=left>ship depot, NW part (Y direction)</td></tr>
+         <tr><td nowrap valign=top><tt>83</tt>&nbsp; </td><td align=left>ship depot, SE part (Y direction)</td></tr>
+        </table>
+       </td></tr>
+      </table>
+     </li>
+     <li>m1: <a href="#OwnershipInfo">owner</a> (for water and coasts normally <tt>11</tt>)</li>
+    </ul>
+   </td>
+  </tr>
 
-</table>
-</td></tr>
-</table></li>
-<li>m1: <a href="#OwnershipInfo">owner</a> (for water and coasts normally <tt>11</tt>)</li>
-</ul>
-</td></tr>
+  <tr>
+   <td valign=top nowrap><a name="Class7"><tt> 7 </tt></a></td>
+   <td>Void
+    <p>Tiles of this class form an invisible, one tile wide border at the south (bottom) edges of the map,<br>
+       so as to protect several algorithms from the consequences of a wraparound at the edges.
+    </p>
+   </td>
+  </tr>
 
-<tr><td valign=top nowrap><a name="Class7"><tt> 7 </tt></a></td><td>
-Void
-<p>
-Tiles of this class form an invisible, one tile wide border at the south (bottom) edges of the map, so as to protect several algorithms from the consequences of a wraparound at the edges.
-</p>
-</td></tr>
+  <tr>
+   <td valign=top nowrap><a name="Class8"><tt> 8 </tt></a></td>
+   <td>Industry tile
+    <ul>
+     <li>m5: type:<br>
+      <small>(note: this is not the same as the industry type, which is stored in the array of industries)</small>
+      <table>
+       <tr><td nowrap valign=top><tt>00</tt>..<tt>06</tt>&nbsp; </td><td align=left>coal mine
+        <table>
+         <tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td align=left>wheel tower when not animated</td></tr>
+         <tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td align=left>wheel tower when animated<br>animation state in m3 bits 5..0; m3 bit 6 set = sound already generated</td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>07</tt>..<tt>0A</tt>&nbsp; </td><td align=left>power station
+        <table>
+         <tr><td nowrap valign=top><tt>08</tt>&nbsp; </td><td align=left>chimney</td></tr>
+         <tr><td nowrap valign=top><tt>0A</tt>&nbsp; </td><td align=left>transformer; animation progress in m3(valid range <tt>0</tt>..<tt>7</tt>)</td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>0B</tt>..<tt>0F</tt>&nbsp; </td><td align=left>sawmill</td></tr>
+       <tr><td nowrap valign=top><tt>10</tt>..<tt>11</tt>&nbsp; </td><td align=left>forest
+        <table>
+         <tr><td nowrap valign=top><tt>11</tt>&nbsp; </td><td align=left>trees cut down</td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>12</tt>..<tt>17</tt>&nbsp; </td><td align=left>oil refinery</td></tr>
+       <tr><td nowrap valign=top><tt>18</tt>..<tt>1C</tt>&nbsp; </td><td align=left>oil rig</td></tr>
+       <tr><td nowrap valign=top><tt>1D</tt>..<tt>20</tt>&nbsp; </td><td align=left>oil wells
+        <table>
+         <tr><td nowrap valign=top><tt>1D</tt>&nbsp; </td><td align=left>not animated</td></tr>
+         <tr><td nowrap valign=top><tt>1E</tt>..<tt>20</tt>&nbsp; </td><td align=left>various stages of animation; progress of animation in m3</td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>21</tt>..<tt>26</tt>&nbsp; </td><td align=left>farm</td></tr>
+       <tr><td nowrap valign=top><tt>27</tt>..<tt>2A</tt>&nbsp; </td><td align=left>factory (temperate climate)</td></tr>
+       <tr><td nowrap valign=top><tt>2B</tt>..<tt>2E</tt>&nbsp; </td><td align=left>printing works</td></tr>
+       <tr><td nowrap valign=top><tt>2F</tt>..<tt>33</tt>&nbsp; </td><td align=left>copper ore mine
+        <table>
+         <tr><td nowrap valign=top><tt>2F</tt>&nbsp; </td><td align=left>wheel tower when not animated</td></tr>
+         <tr><td nowrap valign=top><tt>30</tt>&nbsp; </td><td align=left>wheel tower when animated; animation state in m3 bits 5..0; m3 bit 6 set = sound already generated</td></tr>
+         <tr><td nowrap valign=top><tt>31</tt>&nbsp; </td><td align=left>chimney</td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>34</tt>..<tt>39</tt>&nbsp; </td><td align=left>steel mill</td></tr>
+       <tr><td nowrap valign=top><tt>3A</tt>..<tt>3B</tt>&nbsp; </td><td align=left>bank (temperate climate)</td></tr>
+       <tr><td nowrap valign=top><tt>3C</tt>..<tt>3F</tt>&nbsp; </td><td align=left>food processing plant</td></tr>
+       <tr><td nowrap valign=top><tt>40</tt>..<tt>47</tt>&nbsp; </td><td align=left>paper mill</td></tr>
+       <tr><td nowrap valign=top><tt>48</tt>..<tt>58</tt>&nbsp; </td><td align=left>gold mine
+        <table>
+         <tr><td nowrap valign=top><tt>4F</tt>&nbsp; </td><td align=left>wheel tower when not animated</td></tr>
+         <tr><td nowrap valign=top><tt>58</tt>&nbsp; </td><td align=left>wheel tower when animated; animation state in m3 bits 5..0; m3 bit 6 set = sound already generated</td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>59</tt>..<tt>5A</tt>&nbsp; </td><td align=left>bank (sub-arctic or sub-tropical climate)</td></tr>
+       <tr><td nowrap valign=top><tt>5B</tt>..<tt>63</tt>&nbsp; </td><td align=left>diamond mine</td></tr>
+       <tr><td nowrap valign=top><tt>64</tt>..<tt>73</tt>&nbsp; </td><td align=left>iron ore mine</td></tr>
+       <tr><td nowrap valign=top><tt>74</tt></td><td align=left>fruit plantation</td></tr>
+       <tr><td nowrap valign=top><tt>75</tt></td><td align=left>rubber plantation</td></tr>
+       <tr><td nowrap valign=top><tt>76</tt>..<tt>77</tt>&nbsp; </td><td align=left>water supply</td></tr>
+       <tr><td nowrap valign=top><tt>78</tt></td><td align=left>water tower</td></tr>
+       <tr><td nowrap valign=top><tt>79</tt>..<tt>7C</tt>&nbsp; </td><td align=left>factory (sub-tropical climate)</td></tr>
+       <tr><td nowrap valign=top><tt>7D</tt>..<tt>80</tt>&nbsp; </td><td align=left>lumber mill</td></tr>
+       <tr><td nowrap valign=top><tt>81</tt>..<tt>82</tt>&nbsp; </td><td align=left>candyfloss forest
+        <table>
+         <tr><td nowrap valign=top><tt>82</tt>&nbsp; </td><td align=left>candyfloss 'trees' cut down</td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>83</tt>..<tt>86</tt>&nbsp; </td><td align=left>sweet factory</td></tr>
+       <tr><td nowrap valign=top><tt>87</tt>..<tt>88</tt>&nbsp; </td><td align=left>battery farm
+        <table>
+         <tr><td nowrap valign=top><tt>88</tt>&nbsp; </td><td align=left>batteries 'reaped'</td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>89</tt></td><td align=left>cola wells</td></tr>
+       <tr><td nowrap valign=top><tt>8A</tt>..<tt>8D</tt>&nbsp; </td><td align=left>toy shop</td></tr>
+       <tr><td nowrap valign=top><tt>8E</tt>..<tt>93</tt>&nbsp; </td><td align=left>toy factory
+        <table>
+         <tr><td nowrap valign=top><tt>8F</tt>&nbsp; </td>
+         <td align=left>Animated part; animation state in m3 (valid range <tt>00</tt>..<tt>31</tt>)<br>
+                        Tile animation is started (m4 zeroed) on the periodic processing.<br>
+                        While the animation is in progress, m4 holds the number
+                        of animation cycles that have already taken place.<br>
+                        when this number reaches 8 the animation is stopped.
+         </td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>94</tt>..<tt>9B</tt>&nbsp; </td><td align=left>plastic fountains (various stages of cyclic animation)</td></tr>
+       <tr><td nowrap valign=top><tt>9C</tt>..<tt>9F</tt>&nbsp; </td><td align=left>fizzy drink factory</td></tr>
+       <tr><td nowrap valign=top><tt>A0</tt>..<tt>A3</tt>&nbsp; </td><td align=left>bubble generator
+        <table>
+         <tr><td nowrap valign=top><tt>A1</tt>&nbsp; </td><td align=left>generators</td></tr>
+         <tr><td nowrap valign=top><tt>A2</tt>&nbsp; </td><td align=left>bubble capture facility; animation state in m3 (valid range <tt>00</tt>..<tt>27</tt>)</td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>A4</tt>..<tt>A6</tt>&nbsp; </td><td align=left>toffee quarry
+        <table>
+         <tr><td nowrap valign=top><tt>A5</tt>&nbsp; </td><td align=left>animated part; animation state in m3 (valid range <tt>00</tt>..<tt>45</tt>)</td></tr>
+        </table>
+       </td></tr>
+       <tr><td nowrap valign=top><tt>A7</tt>..<tt>AE</tt>&nbsp; </td><td align=left>sugar mine
+        <table>
+         <tr><td nowrap valign=top><tt>AE</tt>&nbsp; </td><td align=left>animated part; animation state in m3 (valid range <tt>00</tt>..<tt>5F</tt>)</td></tr>
+        </table>
+       </td></tr>
+       <tr><td colspan=2>&nbsp;</td></tr> <!-- spacer -->
+      </table></li>
+     <li>m2: index into the array of industries</li>
+     <li>m1 bit 7: clear = under construction
+      <ul>
+       <li>m1 bits 4..2: construction counter, for buildings under construction incremented on every periodic tile processing</li>
+       <li>m1 bits 1..0: stage of construction (<tt>3</tt> = completed), incremented when the construction counter wraps around<br>
+           the meaning is different for some animated tiles which are never under construction (types <tt>01</tt>, <tt>1E</tt>..<tt>20</tt>, <tt>30</tt>, <tt>58</tt>; see above)</li>
+      </ul>
+     </li>
+    </ul>
+   </td>
+  </tr>
 
-<tr><td valign=top nowrap><a name="Class8"><tt> 8 </tt></a></td><td>
-Industry tile
-<ul>
-<li>m5: type:
-<br><small>(note: this is not the same as the industry type, which is stored in the array of industries)</small>
-<table>
-<tr><td nowrap valign=top><tt>00</tt>..<tt>06</tt>&nbsp; </td><td align=left>coal mine
-<table>
-<tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td align=left>wheel tower when not animated</td></tr>
-<tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td align=left>wheel tower when animated; animation state in m3 bits 5..0; m3 bit 6 set = sound already generated</td></tr>
-</table>
-</td></tr>
-<tr><td nowrap valign=top><tt>07</tt>..<tt>0A</tt>&nbsp; </td><td align=left>power station
-<table>
-<tr><td nowrap valign=top><tt>08</tt>&nbsp; </td><td align=left>chimney</td></tr>
-<tr><td nowrap valign=top><tt>0A</tt>&nbsp; </td><td align=left>transformer; animation progress in m3(valid range <tt>0</tt>..<tt>7</tt>)</td></tr>
-</table>
-</td></tr>
-<tr><td nowrap valign=top><tt>0B</tt>..<tt>0F</tt>&nbsp; </td><td align=left>sawmill</td></tr>
-<tr><td nowrap valign=top><tt>10</tt>..<tt>11</tt>&nbsp; </td><td align=left>forest
-<table>
-<tr><td nowrap valign=top><tt>11</tt>&nbsp; </td><td align=left>trees cut down</td></tr>
-</table>
-</td></tr>
-<tr><td nowrap valign=top><tt>12</tt>..<tt>17</tt>&nbsp; </td><td align=left>oil refinery</td></tr>
-<tr><td nowrap valign=top><tt>18</tt>..<tt>1C</tt>&nbsp; </td><td align=left>oil rig</td></tr>
-<tr><td nowrap valign=top><tt>1D</tt>..<tt>20</tt>&nbsp; </td><td align=left>oil wells
-<table>
-<tr><td nowrap valign=top><tt>1D</tt>&nbsp; </td><td align=left>not animated</td></tr>
-<tr><td nowrap valign=top><tt>1E</tt>..<tt>20</tt>&nbsp; </td><td align=left>various stages of animation; progress of animation in m3</td></tr>
-</table>
-</td></tr>
-<tr><td nowrap valign=top><tt>21</tt>..<tt>26</tt>&nbsp; </td><td align=left>farm</td></tr>
-<tr><td nowrap valign=top><tt>27</tt>..<tt>2A</tt>&nbsp; </td><td align=left>factory (temperate climate)</td></tr>
-<tr><td nowrap valign=top><tt>2B</tt>..<tt>2E</tt>&nbsp; </td><td align=left>printing works</td></tr>
-<tr><td nowrap valign=top><tt>2F</tt>..<tt>33</tt>&nbsp; </td><td align=left>copper ore mine
-<table>
-<tr><td nowrap valign=top><tt>2F</tt>&nbsp; </td><td align=left>wheel tower when not animated</td></tr>
-<tr><td nowrap valign=top><tt>30</tt>&nbsp; </td><td align=left>wheel tower when animated; animation state in m3 bits 5..0; m3 bit 6 set = sound already generated</td></tr>
-<tr><td nowrap valign=top><tt>31</tt>&nbsp; </td><td align=left>chimney</td></tr>
-</table>
-</td></tr>
-<tr><td nowrap valign=top><tt>34</tt>..<tt>39</tt>&nbsp; </td><td align=left>steel mill</td></tr>
-<tr><td nowrap valign=top><tt>3A</tt>..<tt>3B</tt>&nbsp; </td><td align=left>bank (temperate climate)</td></tr>
-<tr><td nowrap valign=top><tt>3C</tt>..<tt>3F</tt>&nbsp; </td><td align=left>food processing plant</td></tr>
-<tr><td nowrap valign=top><tt>40</tt>..<tt>47</tt>&nbsp; </td><td align=left>paper mill</td></tr>
-<tr><td nowrap valign=top><tt>48</tt>..<tt>58</tt>&nbsp; </td><td align=left>gold mine
-<table>
-<tr><td nowrap valign=top><tt>4F</tt>&nbsp; </td><td align=left>wheel tower when not animated</td></tr>
-<tr><td nowrap valign=top><tt>58</tt>&nbsp; </td><td align=left>wheel tower when animated; animation state in m3 bits 5..0; m3 bit 6 set = sound already generated</td></tr>
-</table>
-</td></tr>
-<tr><td nowrap valign=top><tt>59</tt>..<tt>5A</tt>&nbsp; </td><td align=left>bank (sub-arctic or sub-tropical climate)</td></tr>
-<tr><td nowrap valign=top><tt>5B</tt>..<tt>63</tt>&nbsp; </td><td align=left>diamond mine</td></tr>
-<tr><td nowrap valign=top><tt>64</tt>..<tt>73</tt>&nbsp; </td><td align=left>iron ore mine</td></tr>
-<tr><td nowrap valign=top><tt>74</tt></td><td align=left>fruit plantation</td></tr>
-<tr><td nowrap valign=top><tt>75</tt></td><td align=left>rubber plantation</td></tr>
-<tr><td nowrap valign=top><tt>76</tt>..<tt>77</tt>&nbsp; </td><td align=left>water supply</td></tr>
-<tr><td nowrap valign=top><tt>78</tt></td><td align=left>water tower</td></tr>
-<tr><td nowrap valign=top><tt>79</tt>..<tt>7C</tt>&nbsp; </td><td align=left>factory (sub-tropical climate)</td></tr>
-<tr><td nowrap valign=top><tt>7D</tt>..<tt>80</tt>&nbsp; </td><td align=left>lumber mill</td></tr>
-<tr><td nowrap valign=top><tt>81</tt>..<tt>82</tt>&nbsp; </td><td align=left>candyfloss forest
-<table>
-<tr><td nowrap valign=top><tt>82</tt>&nbsp; </td><td align=left>candyfloss 'trees' cut down</td></tr>
-</table>
-</td></tr>
-<tr><td nowrap valign=top><tt>83</tt>..<tt>86</tt>&nbsp; </td><td align=left>sweet factory</td></tr>
-<tr><td nowrap valign=top><tt>87</tt>..<tt>88</tt>&nbsp; </td><td align=left>battery farm
-<table>
-<tr><td nowrap valign=top><tt>88</tt>&nbsp; </td><td align=left>batteries 'reaped'</td></tr>
-</table>
-</td></tr>
-<tr><td nowrap valign=top><tt>89</tt></td><td align=left>cola wells</td></tr>
-<tr><td nowrap valign=top><tt>8A</tt>..<tt>8D</tt>&nbsp; </td><td align=left>toy shop</td></tr>
-<tr><td nowrap valign=top><tt>8E</tt>..<tt>93</tt>&nbsp; </td><td align=left>toy factory
-<table>
-<tr><td nowrap valign=top><tt>8F</tt>&nbsp; </td>
-                    <td align=left>Animated part; animation state in m3 (valid range <tt>00</tt>..<tt>31</tt>)<br>
-                      Tile animation is started (m4 zeroed) on the periodic processing.<br>
-                      While the animation is in progress, m4 holds the number
-                      of animation cycles that have already taken place; when
-                      this number reaches 8 the animation is stopped</td>
-                  </tr>
-</table>
-</td></tr>
-<tr><td nowrap valign=top><tt>94</tt>..<tt>9B</tt>&nbsp; </td><td align=left>plastic fountains (various stages of cyclic animation)</td></tr>
-<tr><td nowrap valign=top><tt>9C</tt>..<tt>9F</tt>&nbsp; </td><td align=left>fizzy drink factory</td></tr>
-<tr><td nowrap valign=top><tt>A0</tt>..<tt>A3</tt>&nbsp; </td><td align=left>bubble generator
-<table>
-<tr><td nowrap valign=top><tt>A1</tt>&nbsp; </td><td align=left>generators</td></tr>
-<tr><td nowrap valign=top><tt>A2</tt>&nbsp; </td><td align=left>bubble capture facility; animation state in m3 (valid range <tt>00</tt>..<tt>27</tt>)</td></tr>
-</table>
-</td></tr>
-<tr><td nowrap valign=top><tt>A4</tt>..<tt>A6</tt>&nbsp; </td><td align=left>toffee quarry
-<table>
-<tr><td nowrap valign=top><tt>A5</tt>&nbsp; </td><td align=left>animated part; animation state in m3 (valid range <tt>00</tt>..<tt>45</tt>)</td></tr>
-</table>
-</td></tr>
-<tr><td nowrap valign=top><tt>A7</tt>..<tt>AE</tt>&nbsp; </td><td align=left>sugar mine
-<table>
-<tr><td nowrap valign=top><tt>AE</tt>&nbsp; </td><td align=left>animated part; animation state in m3 (valid range <tt>00</tt>..<tt>5F</tt>)</td></tr>
-</table>
-</td></tr>
-<tr><td colspan=2></td></tr> <!-- spacer -->
-</table></li>
-<li>m2: index into the array of industries
-</li>
-<li>m1 bit 7: clear = under construction
-<ul>
-<li>m1 bits 4..2: construction counter, for buildings under construction incremented on every periodic tile processing
-</li>
-<li>m1 bits 1..0: stage of construction (<tt>3</tt> = completed), incremented when the construction counter wraps around
-<br>the meaning is different for some animated tiles which are never under construction (types <tt>01</tt>, <tt>1E</tt>..<tt>20</tt>, <tt>30</tt>, <tt>58</tt>; see above)
-</li>
-</ul></li>
-</ul>
-</td></tr>
+  <tr>
+   <td valign=top nowrap><a name="Class9"><tt> 9 </tt></a></td>
+   <td>
+    <ul>
+     <li>m5 bits 7..4 clear: tunnel entrance/exit
+      <ul>
+       <li>m5 bits 3..2: <tt>0</tt> - railway tunnel, <tt>1</tt> - road tunnel</li>
+       <li>m5 bits 1..0 - direction: entrance towards: <tt>0</tt> = NE, <tt>1</tt> = SE, <tt>2</tt> = SW, <tt>3</tt> = NW</li>
+       <li>m1: <a href="#OwnershipInfo">owner</a> of the tunnel</li>
+       <li>m3 bits 3..0 = <a href="#TrackType">track type</a> for railway tunnel, must be 0 for road tunnel</li>
+       <li>m4 bit 7 set = on snow or desert</li>
+      </ul>
+     </li>
+     <li>m5 bit 7 set: bridge ramp
+      <ul>
+       <li>m1: <a href="#OwnershipInfo">owner</a> of the bridge</li>
+       <li>m3 bits 3..0 = <a href="#TrackType">type of track</a> on the bridge, must be 0 for road bridge</li>
+       <li>m5 bits 3..2: <tt>0</tt> - railway bridge, <tt>1</tt> - road bridge</li>
+       <li>m5 bit 0..1: DiagDirection onto the bridge</li>
+       <li>m2 bits 7..4: <a name="BridgeType">bridge type</a>:
+        <table>
+         <tr><th align=left>Type&nbsp;</th><th align=left>Max. speed (mph)&nbsp;</th><th align=left>Description</th></tr>
+         <tr><td nowrap valign=top><tt>0</tt>&nbsp; </td><td align=center>20</td><td align=left>wooden</td></tr>
+         <tr><td nowrap valign=top><tt>1</tt>&nbsp; </td><td align=center>30</td><td align=left>concrete</td></tr>
+         <tr><td nowrap valign=top><tt>2</tt>&nbsp; </td><td align=center>40</td><td align=left>girder, steel</td></tr>
+         <tr><td nowrap valign=top><tt>3</tt>&nbsp; </td><td align=center>50</td><td align=left>suspension, concrete</td></tr>
+         <tr><td nowrap valign=top><tt>4</tt>&nbsp; </td><td align=center>60</td><td align=left>suspension, steel</td></tr>
+         <tr><td nowrap valign=top><tt>5</tt>&nbsp; </td><td align=center>70</td><td align=left>suspension, steel</td></tr>
+         <tr><td nowrap valign=top><tt>6</tt>&nbsp; </td><td align=center>100</td><td align=left>cantilever, steel</td></tr>
+         <tr><td nowrap valign=top><tt>7</tt>&nbsp; </td><td align=center>130</td><td align=left>cantilever, steel</td></tr>
+         <tr><td nowrap valign=top><tt>8</tt>&nbsp; </td><td align=center>150</td><td align=left>cantilever, steel</td></tr>
+         <tr><td nowrap valign=top><tt>9</tt>&nbsp; </td><td align=center>160</td><td align=left>girder, steel</td></tr>
+         <tr><td nowrap valign=top><tt>A</tt>&nbsp; </td><td align=center>200</td><td align=left>tubular, steel</td></tr>
+        </table>
+       </li>
+       <li>m4 bit 7 set = on snow or desert</li>
+      </ul>
+     <li>
+    </ul>
+   </td>
+  </tr>
 
-<tr><td valign=top nowrap><a name="Class9"><tt> 9 </tt></a></td><td>
-m5 bits 7..4 clear: tunnel entrance/exit
-<ul>
-<li>m5 bits 3..2: <tt>0</tt> - railway tunnel, <tt>1</tt> - road tunnel</li>
-<li>m5 bits 1..0 - direction: entrance towards: <tt>0</tt> = NE, <tt>1</tt> = SE, <tt>2</tt> = SW, <tt>3</tt> = NW</li>
-<li>m1: <a href="#OwnershipInfo">owner</a> of the tunnel</li>
-<li>m3 bits 3..0 = <a href="#TrackType">track type</a> for railway tunnel, must be 0 for road tunnel</li>
-<li>m4 bit 7 set = on snow or desert</li>
-</ul>
-m5 bit 7 set: bridge ramp
-<ul>
-<li>m1: <a href="#OwnershipInfo">owner</a> of the bridge</li>
-<li>m3 bits 3..0 = <a href="#TrackType">type of track</a> on the bridge, must be 0 for road bridge</li>
-<li>m5 bits 3..2: <tt>0</tt> - railway bridge, <tt>1</tt> - road bridge</li>
-<li>m5 bit 0..1: DiagDirection onto the bridge</li>
-<li>m2 bits 7..4: <a name="BridgeType">bridge type</a>:
-<table>
-<tr><th align=left>Type&nbsp;</th><th align=left>Max. speed (mph)&nbsp;</th><th align=left>Description</th></tr>
-<tr><td nowrap valign=top><tt>0</tt>&nbsp; </td><td align=center>20</td><td align=left>wooden</td></tr>
-<tr><td nowrap valign=top><tt>1</tt>&nbsp; </td><td align=center>30</td><td align=left>concrete</td></tr>
-<tr><td nowrap valign=top><tt>2</tt>&nbsp; </td><td align=center>40</td><td align=left>girder, steel</td></tr>
-<tr><td nowrap valign=top><tt>3</tt>&nbsp; </td><td align=center>50</td><td align=left>suspension, concrete</td></tr>
-<tr><td nowrap valign=top><tt>4</tt>&nbsp; </td><td align=center>60</td><td align=left>suspension, steel</td></tr>
-<tr><td nowrap valign=top><tt>5</tt>&nbsp; </td><td align=center>70</td><td align=left>suspension, steel</td></tr>
-<tr><td nowrap valign=top><tt>6</tt>&nbsp; </td><td align=center>100</td><td align=left>cantilever, steel</td></tr>
-<tr><td nowrap valign=top><tt>7</tt>&nbsp; </td><td align=center>130</td><td align=left>cantilever, steel</td></tr>
-<tr><td nowrap valign=top><tt>8</tt>&nbsp; </td><td align=center>150</td><td align=left>cantilever, steel</td></tr>
-<tr><td nowrap valign=top><tt>9</tt>&nbsp; </td><td align=center>160</td><td align=left>girder, steel</td></tr>
-<tr><td nowrap valign=top><tt>A</tt>&nbsp; </td><td align=center>200</td><td align=left>tubular, steel</td></tr>
-</table></li>
-<li>m4 bit 7 set = on snow or desert</li>
-</ul>
-</td></tr>
+  <tr>
+   <td valign=top nowrap><a name="ClassA"><tt> A </tt></a></td>
+   <td>
+    <ul>
+     <li>m5: tile type:
+      <table>
+       <tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td align=left>transmitter</td></tr>
+       <tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td align=left>lighthouse</td></tr>
+       <tr><td nowrap valign=top><tt>02</tt>&nbsp; </td><td align=left>company statue</td></tr>
+       <tr><td nowrap valign=top><tt>03</tt>&nbsp; </td><td align=left>company-owned land</td></tr>
+       <tr><td nowrap valign=top><tt>80</tt>..<tt>93</tt>&nbsp; </td><td align=left>company headquarters (5 sets of 4 tiles each, updated quarterly depending on the company performance)</td></tr>
+      </table>
+     </li>
+     <li>m1: <a href="#OwnershipInfo">owner</a> of the object (for lighthouses and transmitters normally <tt>10</tt>)</li>
+    </ul>
+   </td>
+  </tr>
 
-<tr><td valign=top nowrap><a name="ClassA"><tt> A </tt></a></td><td>
-<ul>
-<li>m5: tile type:
-<table>
-<tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td align=left>transmitter</td></tr>
-<tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td align=left>lighthouse</td></tr>
-<tr><td nowrap valign=top><tt>02</tt>&nbsp; </td><td align=left>company statue</td></tr>
-<tr><td nowrap valign=top><tt>03</tt>&nbsp; </td><td align=left>company-owned land</td></tr>
-<tr><td nowrap valign=top><tt>80</tt>..<tt>93</tt>&nbsp; </td><td align=left>company headquarters (5 sets of 4 tiles each, updated quarterly depending on the company performance)</td></tr>
-</table>
-</li>
-<li>m1: <a href="#OwnershipInfo">owner</a> of the object (for lighthouses and transmitters normally <tt>10</tt>)</li>
-</ul>
-</td></tr>
-
-<tr><td colspan=2>
-Classes <tt>B</tt> through <tt>F</tt> are reserved. The presence of a tile in one of the reserved classes will crash OTTD.
-</td></tr>
-</table>
+  <tr><td colspan=2>Classes <tt>B</tt> through <tt>F</tt> are reserved. The presence of a tile in one of the reserved classes will crash OTTD.</td></tr>
+ </table>
 
 
-<hr>
-Original Copyright &copy; 2003 by Marcin Grzegorczyk for TTDLX.<br>
-Transport Tycoon and Transport Tycoon Deluxe are Copyright &copy; by Chris Sawyer. All the other trademarks are the property of their respective owners.<br>
-
+ <hr>
+ Original Copyright &copy; 2003 by Marcin Grzegorczyk for TTDLX.<br>
+ Transport Tycoon and Transport Tycoon Deluxe are Copyright &copy; by Chris Sawyer.<br>
+ All the other trademarks are the property of their respective owners.<br>
 </body>
+
 </html>
