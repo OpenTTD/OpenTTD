@@ -260,13 +260,11 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 
 void CSleep(int milliseconds)
 {
-	#if !defined(__BEOS__) && !defined(__AMIGA__)
-		usleep(milliseconds * 1000);
-	#endif
-	#ifdef __BEOS__
+	#if defined(PSP)
+		sceKernelDelayThread(milliseconds * 1000);
+	#elif defined(__BEOS__)
 		snooze(milliseconds * 1000);
-	#endif
-	#if defined(__AMIGA__)
+	#elif defined(__AMIGA__)
 	{
 		ULONG signals;
 		ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
@@ -282,7 +280,9 @@ void CSleep(int milliseconds)
 		}
 		WaitIO((struct IORequest *)TimerRequest);
 	}
-	#endif // __AMIGA__
+	#else
+		usleep(milliseconds * 1000);
+	#endif
 }
 
 #ifdef WITH_ICONV
