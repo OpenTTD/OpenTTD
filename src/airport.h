@@ -24,18 +24,6 @@ enum {
 	AT_OILRIG        = 15
 };
 
-// do not change unless you change v->subtype too. This aligns perfectly with its current setting
-enum AcceptPlanes {
-	ACC_BEGIN        = 0,
-	AIRCRAFT_ONLY    = 0,
-	ALL              = 1,
-	HELICOPTERS_ONLY = 2,
-	ACC_END
-};
-
-/** Define basic enum properties */
-template <> struct EnumPropsT<AcceptPlanes> : MakeEnumPropsT<AcceptPlanes, byte, ACC_BEGIN, ACC_END, ACC_END> {};
-typedef TinyEnumT<AcceptPlanes> AcceptPlanesByte;
 
 enum {
 	AMED_NOSPDCLAMP = 1 << 0,
@@ -133,12 +121,18 @@ struct AirportFTAbuildup;
 // Finite sTate mAchine --> FTA
 typedef struct AirportFTAClass {
 	public:
+		enum Flags {
+			PLANES      = 0x1,
+			HELICOPTERS = 0x2,
+			ALL         = PLANES | HELICOPTERS,
+		};
+
 		AirportFTAClass(
 			const AirportMovingData *moving_data,
 			const byte *terminals,
 			const byte *helipads,
 			byte entry_point,
-			AcceptPlanes acc_planes,
+			Flags flags,
 			const AirportFTAbuildup *apFA,
 			const TileIndexDiffC *depots,
 			byte nof_depots,
@@ -160,10 +154,10 @@ typedef struct AirportFTAClass {
 	const byte *terminals;
 	const byte *helipads;
 	const TileIndexDiffC *airport_depots; // gives the position of the depots on the airports
+	Flags flags;
 	byte nof_depots;                      // number of depots this airport has
 	byte nofelements;                     // number of positions the airport consists of
 	byte entry_point;                     // when an airplane arrives at this airport, enter it at position entry_point
-	AcceptPlanesByte acc_planes;          // accept airplanes or helicopters or both
 	byte size_x;
 	byte size_y;
 	byte delta_z;                         // Z adjustment for helicopter pads

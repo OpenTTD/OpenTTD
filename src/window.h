@@ -321,7 +321,7 @@ typedef struct {
 	byte vehicle_type;
 	union {
 		RailTypeByte railtype;
-		AcceptPlanesByte acc_planes; // AIRCRAFT_ONLY, ALL, HELICOPTERS_ONLY
+		AirportFTAClass::Flags flags;
 	} filter;
 	byte sel_index;  // deprecated value, used for 'unified' ship and road
 	bool descending_sort_order;

@@ -3244,7 +3244,6 @@ static void AiStateDeleteRoadBlocks(Player *p)
 static void AiStateAirportStuff(Player *p)
 {
 	const Station* st;
-	byte acc_planes;
 	int i;
 	AiBuildRec *aib;
 	byte rule;
@@ -3268,16 +3267,11 @@ static void AiStateAirportStuff(Player *p)
 			// Do we own the airport? (Oilrigs aren't owned, though.)
 			if (st->owner != OWNER_NONE && st->owner != _current_player) continue;
 
-			acc_planes = GetAirport(st->airport_type)->acc_planes;
+			AirportFTAClass::Flags flags = GetAirport(st->airport_type)->flags;
 
-			// Dismiss heliports, unless we are checking an oilrig.
-			if (acc_planes == HELICOPTERS_ONLY && (p->ai.build_kind != 1 || i != 1))
+			if (!(flags & (p->ai.build_kind == 1 && i == 0 ? AirportFTAClass::HELICOPTERS : AirportFTAClass::PLANES))) {
 				continue;
-
-			// Dismiss country airports if we are doing the other
-			// endpoint of an oilrig route.
-			if (acc_planes == AIRCRAFT_ONLY && (p->ai.build_kind == 1 && i == 0))
-				continue;
+			}
 
 			// Dismiss airports too far away.
 			if (DistanceMax(st->airport_tile, aib->spec_tile) > aib->rand_rng)
@@ -3298,7 +3292,7 @@ static void AiStateAirportStuff(Player *p)
 			 * broken because they will probably need different
 			 * tileoff values etc), no matter that
 			 * IsHangarTile() makes no sense. --pasky */
-			if (acc_planes == HELICOPTERS_ONLY) {
+			if (!(flags & AirportFTAClass::PLANES)) {
 				/* Heliports should have maybe own rulesets but
 				 * OTOH we don't want AI to pick them up when
 				 * looking for a suitable airport type to build.
@@ -3372,7 +3366,7 @@ static int AiFindBestDefaultAirportBlock(TileIndex tile, byte cargo, byte heli, 
 	for (i = 0; (p = _airport_default_block_data[i]) != NULL; i++) {
 		// If we are doing a helicopter service, avoid building
 		// airports where they can't land.
-		if (heli && GetAirport(p->attr)->acc_planes == AIRCRAFT_ONLY) continue;
+		if (heli && !(GetAirport(p->attr)->flags & AirportFTAClass::HELICOPTERS)) continue;
 
 		*cost = AiDoBuildDefaultAirportBlock(tile, p, 0);
 		if (!CmdFailed(*cost) && AiCheckAirportResources(tile, p, cargo))

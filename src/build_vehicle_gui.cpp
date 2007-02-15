@@ -984,8 +984,8 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 			ResizeWindow(w, 27, 0);
 			break;
 		case VEH_Aircraft:
-			AcceptPlanes acc_planes = (tile == 0) ? ALL : GetAirport(GetStationByTile(tile)->airport_type)->acc_planes;
-			bv->filter.acc_planes = acc_planes;
+			bv->filter.flags =
+				tile == 0 ? AirportFTAClass::ALL : GetAirport(GetStationByTile(tile)->airport_type)->flags;
 			ResizeWindow(w, 12, 0);
 			break;
 	}
