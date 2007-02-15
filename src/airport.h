@@ -122,9 +122,9 @@ struct AirportFTAbuildup;
 typedef struct AirportFTAClass {
 	public:
 		enum Flags {
-			PLANES      = 0x1,
+			AIRPLANES   = 0x1,
 			HELICOPTERS = 0x2,
-			ALL         = PLANES | HELICOPTERS,
+			ALL         = AIRPLANES | HELICOPTERS,
 			SHORT_STRIP = 0x4
 		};
 

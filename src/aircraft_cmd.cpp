@@ -251,7 +251,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	// Prevent building aircraft types at places which can't handle them
 	const Station* st = GetStationByTile(tile);
 	const AirportFTAClass* apc = GetAirport(st->airport_type);
-	if (!(apc->flags & (avi->subtype & AIR_CTOL ? AirportFTAClass::PLANES : AirportFTAClass::HELICOPTERS))) {
+	if (!(apc->flags & (avi->subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS))) {
 		return CMD_ERROR;
 	}
 
@@ -1640,7 +1640,7 @@ static void AircraftEventHandler_Flying(Vehicle *v, const AirportFTAClass *apc)
 
 	st = GetStation(v->u.air.targetairport);
 	// runway busy or not allowed to use this airstation, circle
-	if (apc->flags & (v->subtype == AIR_HELICOPTER ? AirportFTAClass::HELICOPTERS : AirportFTAClass::PLANES) &&
+	if (apc->flags & (v->subtype == AIR_HELICOPTER ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES) &&
 			st->airport_tile != 0 &&
 			(st->owner == OWNER_NONE || st->owner == v->owner)) {
 		// {32,FLYING,NOTHING_block,37}, {32,LANDING,N,33}, {32,HELILANDING,N,41},

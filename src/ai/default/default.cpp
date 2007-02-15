@@ -3269,7 +3269,7 @@ static void AiStateAirportStuff(Player *p)
 
 			AirportFTAClass::Flags flags = GetAirport(st->airport_type)->flags;
 
-			if (!(flags & (p->ai.build_kind == 1 && i == 0 ? AirportFTAClass::HELICOPTERS : AirportFTAClass::PLANES))) {
+			if (!(flags & (p->ai.build_kind == 1 && i == 0 ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES))) {
 				continue;
 			}
 
@@ -3292,7 +3292,7 @@ static void AiStateAirportStuff(Player *p)
 			 * broken because they will probably need different
 			 * tileoff values etc), no matter that
 			 * IsHangarTile() makes no sense. --pasky */
-			if (!(flags & AirportFTAClass::PLANES)) {
+			if (!(flags & AirportFTAClass::AIRPLANES)) {
 				/* Heliports should have maybe own rulesets but
 				 * OTOH we don't want AI to pick them up when
 				 * looking for a suitable airport type to build.
