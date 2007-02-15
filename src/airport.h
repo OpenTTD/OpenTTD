@@ -125,6 +125,7 @@ typedef struct AirportFTAClass {
 			PLANES      = 0x1,
 			HELICOPTERS = 0x2,
 			ALL         = PLANES | HELICOPTERS,
+			SHORT_STRIP = 0x4
 		};
 
 		AirportFTAClass(
@@ -162,6 +163,9 @@ typedef struct AirportFTAClass {
 	byte size_y;
 	byte delta_z;                         // Z adjustment for helicopter pads
 } AirportFTAClass;
+
+DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)
+
 
 // internal structure used in openttd - Finite sTate mAchine --> FTA
 typedef struct AirportFTA {

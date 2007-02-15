@@ -74,22 +74,23 @@ static StationID FindNearestHangar(const Vehicle *v)
 	TileIndex vtile = TileVirtXY(v->x_pos, v->y_pos);
 
 	FOR_ALL_STATIONS(st) {
-		if (st->owner == v->owner && st->facilities & FACIL_AIRPORT &&
-				GetAirport(st->airport_type)->nof_depots > 0) {
-			uint distance;
+		if (st->owner != v->owner || !(st->facilities & FACIL_AIRPORT)) continue;
 
-			// don't crash the plane if we know it can't land at the airport
-			if ((AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
-					(st->airport_type == AT_SMALL || st->airport_type == AT_COMMUTER) &&
-					!_cheats.no_jetcrash.value)
-				continue;
+		const AirportFTAClass *afc = GetAirport(st->airport_type);
+		if (afc->nof_depots == 0 || (
+					/* don't crash the plane if we know it can't land at the airport */
+					afc->flags & AirportFTAClass::SHORT_STRIP &&
+					AircraftVehInfo(v->engine_type)->subtype & AIR_FAST &&
+					!_cheats.no_jetcrash.value
+				)) {
+			continue;
+		}
 
-			// v->tile can't be used here, when aircraft is flying v->tile is set to 0
-			distance = DistanceSquare(vtile, st->airport_tile);
-			if (distance < best || index == INVALID_STATION) {
-				best = distance;
-				index = st->index;
-			}
+		// v->tile can't be used here, when aircraft is flying v->tile is set to 0
+		uint distance = DistanceSquare(vtile, st->airport_tile);
+		if (distance < best || index == INVALID_STATION) {
+			best = distance;
+			index = st->index;
 		}
 	}
 	return index;
@@ -1368,7 +1369,9 @@ static void MaybeCrashAirplane(Vehicle *v)
 
 	//FIXME -- MaybeCrashAirplane -> increase crashing chances of very modern airplanes on smaller than AT_METROPOLITAN airports
 	prob = 0x10000 / 1500;
-	if (((st->airport_type == AT_SMALL) || (st->airport_type == AT_COMMUTER)) && (AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) && !_cheats.no_jetcrash.value) {
+	if (GetAirport(st->airport_type)->flags & AirportFTAClass::SHORT_STRIP &&
+			AircraftVehInfo(v->engine_type)->subtype & AIR_FAST &&
+			!_cheats.no_jetcrash.value) {
 		prob = 0x10000 / 20;
 	}
 
