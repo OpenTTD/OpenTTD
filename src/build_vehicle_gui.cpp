@@ -931,7 +931,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 			if (e->we.sizing.diff.x != 0) ResizeButtons(w, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
 			if (e->we.sizing.diff.y == 0) break;
 
-			w->vscroll.cap += e->we.sizing.diff.y / GetVehicleListHeight(bv->vehicle_type);
+			w->vscroll.cap += e->we.sizing.diff.y / (int)GetVehicleListHeight(bv->vehicle_type);
 			w->widget[BUILD_VEHICLE_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
 			break;
 	}
