@@ -224,6 +224,15 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *
 	return _internal_sort_order ? -r : r;
 }
 
+static int CDECL TrainEngineNumberSorter(const void *a, const void *b)
+{
+	const EngineID va = *(const EngineID*)a;
+	const EngineID vb = *(const EngineID*)b;
+	int r = ListPositionOfEngine(va) - ListPositionOfEngine(vb);
+
+	return _internal_sort_order ? -r : r;
+}
+
 static int CDECL TrainEnginesThenWagonsSorter(const void *a, const void *b)
 {
 	EngineID va = *(const EngineID*)a;
@@ -290,7 +299,7 @@ static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
 
 static EngList_SortTypeFunction * const _sorter[][9] = {{
 	/* Trains */
-	&EngineNumberSorter,
+	&TrainEngineNumberSorter,
 	&TrainEngineCostSorter,
 	&TrainEngineSpeedSorter,
 	&TrainEnginePowerSorter,
