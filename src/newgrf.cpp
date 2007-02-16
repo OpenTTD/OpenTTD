@@ -215,7 +215,8 @@ static void dewagonize(int condition, int engine)
 
 	if (condition != 0) {
 		ei->unk2 &= ~0x80;
-		rvi->railveh_type = RAILVEH_SINGLEHEAD;
+		if (rvi->railveh_type == RAILVEH_WAGON)
+			rvi->railveh_type = RAILVEH_SINGLEHEAD;
 	} else {
 		ei->unk2 |= 0x80;
 		rvi->railveh_type = RAILVEH_WAGON;
