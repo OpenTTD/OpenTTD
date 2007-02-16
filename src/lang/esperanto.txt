@@ -1042,6 +1042,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permesu
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nekonformaj stacioj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova ĝenerala vojtrovado (NPF, superas NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permesu trairaj bushaltejoj sur vojoj urboposedataj: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Ĉiam permesu malgrandajn flughavenojn: {ORANGE}{STRING}
 
@@ -1585,6 +1586,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Vojo kun lanter
 STR_1816_TREE_LINED_ROAD                                        :Vojo kun arboj apude
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Vojveturila deponejo
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Kruciĝo inter vojo kaj relo
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Ne povas forigi bushaltejon...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Ne povas forigi ŝarĝstacion...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Urboj

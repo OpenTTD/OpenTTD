@@ -1043,6 +1043,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo busca de caminho global (NPF, sobrepõe NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para trens simulando trens pesados: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite dirigir em pontos de parada nas estradas particulares de cidade: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1754,7 +1755,7 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} agora aceita {STRING} e {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientação do estação de ônibus
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientação da parada de caminhão
-STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Precisa demolir o estação de ônibus primeiro
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Precisa demolir a estação de ônibus primeiro
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Precisa demolir a parada de caminhão primeiro
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Estações
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}

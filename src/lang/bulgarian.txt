@@ -297,6 +297,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Нова
 STR_0141_LOAD_GAME                                              :{BLACK}Отвори игра
 STR_SINGLE_PLAYER                                               :{BLACK}Сам играч
 STR_MULTIPLAYER                                                 :{BLACK}Много играчи
+STR_SCENARIO_EDITOR                                             :{BLACK}Редактор сценарии
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -1042,6 +1043,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Под�
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Нестандартни станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Нов глобален навигатор (NPF, отменя NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Теглови множител към товарите за симулация на тежки влакове: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Преминаване през спирки на градски пътища: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Малки летища са винаги разрешени: {ORANGE}{STRING}
 
@@ -1585,6 +1587,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Асфалто�
 STR_1816_TREE_LINED_ROAD                                        :Асфалтов път с дървета
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Авто депо
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :ЖП прелез
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Не може да премахне автогарата...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Не може да премахне товарната гара...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Градове

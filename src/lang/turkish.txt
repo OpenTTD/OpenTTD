@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Belediy
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Özel istasyonlar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Yeni evrensel yol bulma (NPF, NTP üzerinde): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Ağır yük trenleri için ağırlık çarpanı: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Şehiriçi yollara durak yapmak izinli: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Küçük havalimanı her zaman etkin: {ORANGE}{STRING}
 
@@ -1584,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Lambali yol
 STR_1816_TREE_LINED_ROAD                                        :Ağaçli yol
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Araba garı
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Hemzemin geçit
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Otobüs durağı kaldırılamaz...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kamyon durağı kaldırılamaz...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Şehirler

@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Salli v
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Epäyhtenäiset asemat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uusi globaali tienhakualgor. (NPF, korvaa NTP:n): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Kerroin rahdin painolle raskaiden junien simuilointiin: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Salli pysähdyspaikkojen läpiajo kylien omistamilla teillä: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Salli aina pienet lentokentät: {ORANGE}{STRING}
 
@@ -1417,6 +1418,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Asiakasl
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Verkkolaitteita ei löytynyt tai käännetty ilman ENABLE_NETWORK-valintaa.
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Verkkopelejä ei löytynyt.
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Palvelin ei vastannut pyyntöön.
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Yhteyden muodostaminen epäonnistui NewGRF-virheen vuoksi
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Verkkopelin tahdistus epäonnistui.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Verkkopeliyhteys katkesi.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Palvelimen pelitallennetta ei voi ladata.
@@ -1438,6 +1440,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :tahdistusvirhe
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :karttaa ei voitu ladata
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :yhteys katkesi
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokollavirhe
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF-virhe
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ei valtuutettu
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :vastaanotettiin omituinen paketti
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :väärä revisio
@@ -1582,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Tie katuvaloill
 STR_1816_TREE_LINED_ROAD                                        :Puilla reunustettu tie
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Huoltoasema
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Tasoristeys
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Linja-autoasemaa ei voida poistaa...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kuorma-auto asemaa ei voida poistaa...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Kaupungit
@@ -2187,6 +2192,7 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Yhtiön {COMPANY} on ottanut haltuun {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Tällä yhtiöllä ei ole vielä osakkeita...
 
+STR_LIVERY_DEFAULT                                              :
 STR_LIVERY_STEAM                                                :Höyryveturi
 STR_LIVERY_DIESEL                                               :Dieselveturi
 STR_LIVERY_ELECTRIC                                             :Sähköveturi

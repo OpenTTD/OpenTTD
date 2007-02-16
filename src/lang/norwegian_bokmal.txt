@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nytt spi
 STR_0141_LOAD_GAME                                              :{BLACK}Last inn spill
 STR_SINGLE_PLAYER                                               :{BLACK}Énspiller
 STR_MULTIPLAYER                                                 :{BLACK}Flerspiller
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenario Editor
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -394,6 +395,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lastkapasitet
 STR_NO_WAITING_CARGO                                            :{BLACK}Ingen last venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velg alle anlegg
 STR_SELECT_ALL_TYPES                                            :{BLACK}Velg alle lasttyper (inkludert last som ikke venter)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Tilgjengelige tog
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Tilgjengelige kjøretøy
+STR_AVAILABLE_SHIPS                                             :{BLACK}Tilgjengelige skip
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Tilgjengelige luftfartøy
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Se en liste over tilgjengelige maskindesigner for dette kjøretøyet.
 STR_MANAGE_LIST                                                 :{BLACK}Behandl liste
 STR_MANAGE_LIST_TIP                                             :{BLACK}Send instruksjoner til alle kjøretøyer i denne listen
@@ -619,6 +624,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Mink st�
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generer tilfeldig landskap
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Tilbakestill landskap
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Tilbakestill landskap
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Fjern all eiendom som er eid av spilleren(e) fra kartet
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Er du sikker på at du vil fjerne all eiendommen som er eid av spilleren(e)?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskapsgenerering
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrigenerering
@@ -723,6 +730,7 @@ STR_0290_DELETE                                                 :{BLACK}Slett
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett denne byen fullstendig
 STR_0292_SAVE_SCENARIO                                          :Lagre scenario
 STR_0293_LOAD_SCENARIO                                          :Last inn scenario
+STR_LOAD_HEIGHTMAP                                              :Last høydekart
 STR_0294_QUIT_EDITOR                                            :Avslutt redigeringsprogram
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Avslutt
@@ -1033,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillat 
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke-ensartede stasjoner: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global rutesøking (NGR, overstyrer NTK): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat gjennomkjøring av stoppesteder på veier som er eid av byene: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Alltid tillat bygging av små flyplasser: {ORANGE}{STRING}
 
@@ -1409,6 +1418,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste ov
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ingen nettverksadapter funnet eller kompilert uten ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kunne ikke finne noen nettverksspill
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Tjeneren svarte ikke på forespørselen
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kunne ikke koble til på grunn av en NewGRF som ikke stemmer
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Nettverksspill synkronisering feilet.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Nettverksspill tilkobling mistet
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kunne ikke laste server-lagret spill
@@ -1430,6 +1440,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :synkroniserings
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :klarte ikke å åpne kartet
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :forbindelsen ble brutt
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokollfeil
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF stemmer ikke
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ikke autorisert
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :mottok merkelig pakke
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :feil versjon
@@ -1574,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Vei med gatelyk
 STR_1816_TREE_LINED_ROAD                                        :Aveny
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garasje
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Jernbaneovergang
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kan ikke fjerne busstasjonen...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kan ikke fjerne godsstasjonen...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Byer

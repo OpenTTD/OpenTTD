@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Consent
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Stazioni non uniformi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nuovo pathfinding globale (NPF, sovrascrive NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Moltiplicatore di peso per simulare treni pesanti: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permetti fermate passanti sulle strade pubbliche: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Consenti la costruzione di piccoli aeroporti: {ORANGE}{STRING}
 
@@ -1584,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Strada con lamp
 STR_1816_TREE_LINED_ROAD                                        :Strada alberata
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Deposito veicoli
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passaggio a livello
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Non posso togliere la fermata bus...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Non posso togliere la stazione camion...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Città

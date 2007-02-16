@@ -1186,7 +1186,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Veelspel
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Speler naam:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Die is die naam waarmee ander spelers sal jou aanwys
 STR_NETWORK_CONNECTION                                          :{BLACK}Verbinding:
-STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Kies tueen internet spel of 'n Plaaslike Area Netwerk (LAN) spel
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Kies teen internet spel of 'n Plaaslike Area Netwerk (LAN) spel
 
 STR_NETWORK_START_SERVER                                        :{BLACK}Begin bediender
 STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Begin u eie bediender

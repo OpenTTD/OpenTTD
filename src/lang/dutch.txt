@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Omkopen
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Vrij gevormde stations: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nieuwe globale routeplanner (NPF, voorkeur over NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Gewichtsverhouding voor vracht om zware treinen te simuleren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Laat toe dat doorrij wegstops worden geplaatst op door stad beheerde wegen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Altijd kleine vliegvelden toestaan: {ORANGE}{STRING}
 
@@ -1584,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Weg met straatl
 STR_1816_TREE_LINED_ROAD                                        :Weg met bomenrij
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Wegvoertuigdepot
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Gelijke weg/spoorweg kruising
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kan busstation niet verwijderen...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kan vrachtwagenstation niet verwijderen...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Steden
