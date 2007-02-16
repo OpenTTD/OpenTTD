@@ -76,7 +76,7 @@ static StationID FindNearestHangar(const Vehicle *v)
 	FOR_ALL_STATIONS(st) {
 		if (st->owner != v->owner || !(st->facilities & FACIL_AIRPORT)) continue;
 
-		const AirportFTAClass *afc = GetAirport(st->airport_type);
+		const AirportFTAClass *afc = st->Airport();
 		if (afc->nof_depots == 0 || (
 					/* don't crash the plane if we know it can't land at the airport */
 					afc->flags & AirportFTAClass::SHORT_STRIP &&
@@ -106,7 +106,7 @@ static bool HaveHangarInOrderList(Vehicle *v)
 		const Station *st = GetStation(order->station);
 		if (st->owner == v->owner && st->facilities & FACIL_AIRPORT) {
 			// If an airport doesn't have a hangar, skip it
-			if (GetAirport(st->airport_type)->nof_depots != 0)
+			if (st->Airport()->nof_depots != 0)
 				return true;
 		}
 	}
@@ -250,7 +250,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	// Prevent building aircraft types at places which can't handle them
 	const Station* st = GetStationByTile(tile);
-	const AirportFTAClass* apc = GetAirport(st->airport_type);
+	const AirportFTAClass* apc = st->Airport();
 	if (!(apc->flags & (avi->subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS))) {
 		return CMD_ERROR;
 	}
@@ -559,7 +559,7 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		StationID next_airport_index = v->u.air.targetairport;
 		const Station *st = GetStation(next_airport_index);
 		/* If the station is not a valid airport or if it has no hangars */
-		if (!st->IsValid() || st->airport_tile == 0 || GetAirport(st->airport_type)->nof_depots == 0) {
+		if (!st->IsValid() || st->airport_tile == 0 || st->Airport()->nof_depots == 0) {
 			StationID station;
 
 			// the aircraft has to search for a hangar on its own
@@ -696,7 +696,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 
 	st = GetStation(v->current_order.dest);
 	// only goto depot if the target airport has terminals (eg. it is airport)
-	if (st->IsValid() && st->airport_tile != 0 && GetAirport(st->airport_type)->terminals != NULL) {
+	if (st->IsValid() && st->airport_tile != 0 && st->Airport()->terminals != NULL) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
 //		v->u.air.targetairport = st->index;
 		v->current_order.type = OT_GOTO_DEPOT;
@@ -970,7 +970,7 @@ static bool AircraftController(Vehicle *v)
 	}
 
 	// get airport moving data
-	const AirportFTAClass *afc = GetAirport(st->airport_type);
+	const AirportFTAClass *afc = st->Airport();
 	const AirportMovingData *amd = afc->MovingData(v->u.air.pos);
 
 	// Helicopter raise
@@ -1369,7 +1369,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 
 	//FIXME -- MaybeCrashAirplane -> increase crashing chances of very modern airplanes on smaller than AT_METROPOLITAN airports
 	prob = 0x10000 / 1500;
-	if (GetAirport(st->airport_type)->flags & AirportFTAClass::SHORT_STRIP &&
+	if (st->Airport()->flags & AirportFTAClass::SHORT_STRIP &&
 			AircraftVehInfo(v->engine_type)->subtype & AIR_FAST &&
 			!_cheats.no_jetcrash.value) {
 		prob = 0x10000 / 20;
@@ -1446,15 +1446,11 @@ static void AircraftLandAirplane(Vehicle *v)
 // set the right pos when heading to other airports after takeoff
 static void AircraftNextAirportPos_and_Order(Vehicle *v)
 {
-	const Station* st;
-	const AirportFTAClass *apc;
-
 	if (v->current_order.type == OT_GOTO_STATION ||
 			v->current_order.type == OT_GOTO_DEPOT)
 		v->u.air.targetairport = v->current_order.dest;
 
-	st = GetStation(v->u.air.targetairport);
-	apc = GetAirport(st->airport_type);
+	const AirportFTAClass *apc = GetStation(v->u.air.targetairport)->Airport();
 	v->u.air.pos = v->u.air.previous_pos = apc->entry_point;
 }
 
@@ -2048,10 +2044,7 @@ static void AircraftEventHandler(Vehicle *v, int loop)
 
 	if (v->current_order.type >= OT_LOADING) return;
 
-	// pass the right airport structure to the functions
-	// DEREF_STATION gets target airport (Station *st), its type is passed to GetAirport
-	// that returns the correct layout depending on type
-	AirportGoToNextPosition(v, GetAirport(GetStation(v->u.air.targetairport)->airport_type));
+	AirportGoToNextPosition(v, GetStation(v->u.air.targetairport)->Airport());
 }
 
 void Aircraft_Tick(Vehicle *v)
@@ -2117,7 +2110,7 @@ void UpdateAirplanesOnNewStation(Station *st)
 	byte takeofftype;
 	uint16 cnt;
 	// only 1 station is updated per function call, so it is enough to get entry_point once
-	const AirportFTAClass *ap = GetAirport(st->airport_type);
+	const AirportFTAClass *ap = st->Airport();
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Aircraft && IsNormalAircraft(v)) {
 			if (v->u.air.targetairport == st->index) { // if heading to this airport

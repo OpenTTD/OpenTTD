@@ -261,7 +261,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				if (!CheckOwnership(st->owner) ||
 						!(st->facilities & FACIL_AIRPORT) ||
-						GetAirport(st->airport_type)->nof_depots == 0) {
+						st->Airport()->nof_depots == 0) {
 					return CMD_ERROR;
 				}
 			} else {

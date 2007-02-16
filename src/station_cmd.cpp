@@ -557,7 +557,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	if (st->airport_tile != 0) {
-		const AirportFTAClass* afc = GetAirport(st->airport_type);
+		const AirportFTAClass* afc = st->Airport();
 
 		MergePoint(&rect, st->airport_tile);
 		MergePoint(&rect,
@@ -1679,14 +1679,13 @@ static int32 RemoveAirport(Station *st, uint32 flags)
 	TileIndex tile;
 	int w,h;
 	int32 cost;
-	const AirportFTAClass* afc;
 
 	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner))
 		return CMD_ERROR;
 
 	tile = st->airport_tile;
 
-	afc = GetAirport(st->airport_type);
+	const AirportFTAClass *afc = st->Airport();
 	w = afc->size_x;
 	h = afc->size_y;
 

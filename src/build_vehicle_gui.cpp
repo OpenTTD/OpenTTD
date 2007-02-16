@@ -985,7 +985,7 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 			break;
 		case VEH_Aircraft:
 			bv->filter.flags =
-				tile == 0 ? AirportFTAClass::ALL : GetAirport(GetStationByTile(tile)->airport_type)->flags;
+				tile == 0 ? AirportFTAClass::ALL : GetStationByTile(tile)->Airport()->flags;
 			ResizeWindow(w, 12, 0);
 			break;
 	}

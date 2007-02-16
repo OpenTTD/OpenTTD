@@ -3,6 +3,7 @@
 #ifndef STATION_H
 #define STATION_H
 
+#include "airport.h"
 #include "player.h"
 #include "oldpool.h"
 #include "sprite.h"
@@ -110,6 +111,12 @@ struct Station {
 		RoadStop *GetPrimaryRoadStop(RoadStop::Type type) const
 		{
 			return type == RoadStop::BUS ? bus_stops : truck_stops;
+		}
+
+		const AirportFTAClass *Airport() const
+		{
+			assert(airport_tile != 0);
+			return GetAirport(airport_type);
 		}
 
 	TileIndex xy;

@@ -3267,7 +3267,7 @@ static void AiStateAirportStuff(Player *p)
 			// Do we own the airport? (Oilrigs aren't owned, though.)
 			if (st->owner != OWNER_NONE && st->owner != _current_player) continue;
 
-			AirportFTAClass::Flags flags = GetAirport(st->airport_type)->flags;
+			AirportFTAClass::Flags flags = st->Airport()->flags;
 
 			if (!(flags & (p->ai.build_kind == 1 && i == 0 ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES))) {
 				continue;
@@ -3469,7 +3469,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 
 	/* XXX - Have the AI pick the hangar terminal in an airport. Eg get airport-type
 	 * and offset to the FIRST depot because the AI picks the st->xy tile */
-	tile += ToTileIndexDiff(GetAirport(GetStationByTile(tile)->airport_type)->airport_depots[0]);
+	tile += ToTileIndexDiff(GetStationByTile(tile)->Airport()->airport_depots[0]);
 	if (CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT))) return;
 	loco_id = _new_vehicle_id;
 
