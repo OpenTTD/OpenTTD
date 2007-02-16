@@ -45,12 +45,16 @@ static void OS2_SwitchToConsoleMode(void)
 }
 #endif
 
-#ifdef UNIX
+#if defined(UNIX) || defined(PSP)
 #	include <sys/time.h> /* gettimeofday */
 #	include <sys/types.h>
 #	include <unistd.h>
 #	include <signal.h>
 #	define STDIN 0  /* file descriptor for standard input */
+#	if defined(PSP)
+#		include <sys/fd_set.h>
+#		include <sys/select.h>
+#	endif /* PSP */
 
 /* Signal handlers */
 static void DedicatedSignalHandler(int sig)
@@ -148,7 +152,7 @@ static void DedicatedVideoMakeDirty(int left, int top, int width, int height) {}
 static bool DedicatedVideoChangeRes(int w, int h) { return false; }
 static void DedicatedVideoFullScreen(bool fs) {}
 
-#if defined(UNIX) || defined(__OS2__)
+#if defined(UNIX) || defined(__OS2__) || defined(PSP)
 static bool InputWaiting(void)
 {
 	struct timeval tv;
@@ -194,7 +198,7 @@ static void DedicatedHandleKeyInput(void)
 
 	if (_exit_game) return;
 
-#if defined(UNIX) || defined(__OS2__)
+#if defined(UNIX) || defined(__OS2__) || defined(PSP)
 	if (fgets(input_line, lengthof(input_line), stdin) == NULL) return;
 #else
 	/* Handle console input, and singal console thread, it can accept input again */
@@ -227,7 +231,7 @@ static void DedicatedVideoMainLoop(void)
 	uint32 next_tick = cur_ticks + 30;
 
 	/* Signal handlers */
-#ifdef UNIX
+#if defined(UNIX) || defined(PSP)
 	signal(SIGTERM, DedicatedSignalHandler);
 	signal(SIGINT, DedicatedSignalHandler);
 	signal(SIGQUIT, DedicatedSignalHandler);
