@@ -1458,32 +1458,25 @@ static void AircraftLandAirplane(Vehicle *v)
  */
 static byte AircraftGetEntryPoint(const Vehicle *v, const AirportFTAClass *apc)
 {
-	const Station *st     = NULL;
-	int           delta_x = 0;
-	int           delta_y = 0;
-	TileIndex     tile    = INVALID_TILE;
-
 	assert(v != NULL);
 	assert(apc != NULL);
 
-	st = GetStation(v->u.air.targetairport);
+	const Station *st = GetStation(v->u.air.targetairport);
 	/* Make sure we don't go to 0,0 if the airport has been removed. */
-	tile = (st->airport_tile != 0) ? st->airport_tile : st->xy;
+	TileIndex tile = (st->airport_tile != 0) ? st->airport_tile : st->xy;
 
-	delta_x = v->x_pos - TileX(tile) * TILE_SIZE;
-	delta_y = v->y_pos - TileY(tile) * TILE_SIZE;
+	int delta_x = v->x_pos - TileX(tile) * TILE_SIZE;
+	int delta_y = v->y_pos - TileY(tile) * TILE_SIZE;
 
+	DiagDirection dir;
 	if (abs(delta_y) < abs(delta_x)) {
 		/* We are northeast or southwest of the airport */
-		if (delta_x < 0) return apc->entry_points[DIAGDIR_NE];
-
-		return apc->entry_points[DIAGDIR_SW];
+		dir = delta_x < 0 ? DIAGDIR_NE : DIAGDIR_SW;
+	} else {
+		/* We are northwest or southeast of the airport */
+		dir = delta_y < 0 ? DIAGDIR_NW : DIAGDIR_SE;
 	}
-
-	/* We're either northwest or southeast of the airport */
-	if (delta_y < 0) return apc->entry_points[DIAGDIR_NW];
-
-	return apc->entry_points[DIAGDIR_SE];
+	return apc->entry_points[dir];
 }
 
 
