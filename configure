@@ -82,7 +82,7 @@ SRCS="`< $ROOT_DIR/source.list tr '\r' '\n' | awk '
 		if ($0 == "WINCE"       && "'$os'" != "WINCE")             { next; }
 		if ($0 == "MSVC"        && "'$os'" != "MSVC")              { next; }
 		if ($0 == "DIRECTMUSIC" && "'$with_direct_music'" == "0")  { next; }
-		if ($0 == "LIBTIMIDITY" && "'$with_libtimidity'" == "0")   { next; }
+		if ($0 == "LIBTIMIDITY" && "'$libtimidity'" == "" )        { next; }
 
 		skip += 1;
 
