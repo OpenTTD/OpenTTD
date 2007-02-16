@@ -1276,6 +1276,8 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
 		return CMD_ERROR;
 
+	if (build_over_road) flags ^= DC_AUTO;
+
 	if (build_over_road && IsTileOwner(tile, OWNER_TOWN)) _current_player = OWNER_TOWN;
 	ret = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL);
 	_current_player = cur_owner;

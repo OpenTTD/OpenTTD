@@ -100,16 +100,6 @@ static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
 	if (p1 >= DIAGDIR_END) {
 		SETBIT(p2, 1); // It's a drive-through stop
 		p1 -= DIAGDIR_END; // Adjust picker result to actual direction
-
-		/* Only allow building over a road if its a straight road,
-		 * facing the right direction and it belongs to the player */
-		if ((IsTileType(tile, MP_STREET) &&
-				GetRoadTileType(tile) == ROAD_TILE_NORMAL &&
-				(IsTileOwner(tile, _current_player) || (_patches.road_stop_on_town_road && IsTileOwner(tile, OWNER_TOWN))) &&
-				!(GetRoadBits(tile) & ((DiagDirection)p1 == DIAGDIR_NE ? ROAD_Y : ROAD_X)))) {
-
-			cmd ^= CMD_AUTO;
-		}
 	}
 	DoCommandP(tile, p1, p2, CcRoadDepot, cmd);
 }
