@@ -366,11 +366,17 @@ music/null_m.cpp
 #else
 	#if WINCE
 	#else
-		music/extmidi.cpp
+		#if PSP
+		#else
+			music/extmidi.cpp
+		#end
 	#end
 #end
 #if BEOS
  	music/bemidi.cpp
+#end
+#if LIBTIMIDITY
+	music/libtimidity.cpp
 #end
 
 # Sound

@@ -15,6 +15,7 @@
 #include "music/os2_m.h"
 #include "music/win32_m.h"
 #include "music/qtmidi.h"
+#include "music/libtimidity.h"
 
 #include "sound/null_s.h"
 #include "sound/sdl_s.h"
@@ -58,7 +59,10 @@ static const DriverDesc _music_driver_descs[] = {
 	M("qt",      "QuickTime MIDI Driver",   &_qtime_music_driver),
 #endif
 #ifdef UNIX
-#if !defined(__MORPHOS__) && !defined(__AMIGA__)
+#if defined(LIBTIMIDITY)
+	M("libtimidity", "LibTimidity MIDI Driver", &_libtimidity_music_driver),
+#endif /* LIBTIMIDITY */
+#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(PSP)
 	M("extmidi", "External MIDI Driver",    &_extmidi_music_driver),
 #endif
 #endif
