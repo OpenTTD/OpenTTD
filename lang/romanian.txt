@@ -390,6 +390,7 @@ STR_ENGINE_SORT_POWER                                           :Putere
 STR_ENGINE_SORT_INTRO_DATE                                      :Data lansarii
 STR_ENGINE_SORT_RUNNING_COST                                    :Cost exploatare
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Cost exploatare/putere
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacitate incarcatura
 STR_NO_WAITING_CARGO                                            :{BLACK}Nu este în asteptare nici un fel de încãrcãturã
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege toate facilitãtile
 STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
@@ -2667,6 +2668,7 @@ STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Autovehi
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Cumpãrã un autovehicul
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Mutã un autovehicul aici pentru a-l vinde
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centreazã imaginea pe locatia acestei autobaze
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista de selectie vehicule rutiere - apasa pe vehicul pentru informatii
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Cumpãrã autovehiculul selectat
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Un nou autovehicul disponibil!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}

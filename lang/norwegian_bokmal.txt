@@ -394,6 +394,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lastkapasitet
 STR_NO_WAITING_CARGO                                            :{BLACK}Ingen last venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velg alle anlegg
 STR_SELECT_ALL_TYPES                                            :{BLACK}Velg alle lasttyper (inkludert last som ikke venter)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Tilgjengelige tog
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Tilgjengelige kjøretøy
+STR_AVAILABLE_SHIPS                                             :{BLACK}Tilgjengelige båter
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Tilgjengelige luftfartøy
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Se en liste over tilgjengelige maskindesigner for dette kjøretøyet.
 STR_MANAGE_LIST                                                 :{BLACK}Behandl liste
 STR_MANAGE_LIST_TIP                                             :{BLACK}Send instruksjoner til alle kjøretøyer i denne listen
@@ -2951,8 +2955,19 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle
 
 ### depot strings
 
+STR_SELL                                                        :{BLACK}Selg
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du er nå i ferd med å selge alle kjøretøyene i depoet.
 STR_ARE_YOU_SURE                                                :{BLACK}Er du sikker på at du vil dette?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bekreft at du vil selge alle togene i depotet
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bekreft at du vil selge alle bilene i depotet
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bekreft at du vil selge alle skipene i depotet
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bekreft at du vil slge all flyene i hangaren
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ikke selg alle skip i depodet
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ikke selg alle bilene i garasjen
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ikke selg alle skip i depodet
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ikke selg alle flyene i hangaren
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Selg alle tog i depodet
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Selg alle kjøretøy i garasjen

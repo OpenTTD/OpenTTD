@@ -2959,6 +2959,8 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Montru �
 
 ### depot strings
 
+STR_SELL                                                        :{BLACK}Vendu
+
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Vi intencas vendi ĉiujn veturilojn en la deponejo.
 STR_ARE_YOU_SURE                                                :{BLACK}Ĉu vi certas?
 

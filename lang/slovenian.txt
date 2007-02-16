@@ -3039,8 +3039,19 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Prikaz v
 
 ### depot strings
 
+STR_SELL                                                        :{BLACK}Prodaj
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Pripravljas se na prodajo vseh vozil v garazi.
 STR_ARE_YOU_SURE                                                :{BLACK}Zagotovo?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Potrditev prodaje vseh vlakov v garazi
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Potrditev prodaje vseh cestnih vozil v garazi
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Potrditev prodaje vseh ladij v garazi
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Potrditev prodaje vseh letal v hangarju
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Preklic prodaje vseh vlakov v garazi
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Preklic prodaje vseh cestnih vozil v garazi
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Preklic prodaje vseh ladij v garazi
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Preklic prodaje vseh letal v hangarju
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Prodaj vse vlake v garaži
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Prodaj vsa vestna vozila v garaži

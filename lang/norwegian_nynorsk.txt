@@ -2956,8 +2956,19 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle
 
 ### depot strings
 
+STR_SELL                                                        :{BLACK}Sel
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du er i ferd med å selje alle køyretøya i depotet.
 STR_ARE_YOU_SURE                                                :{BLACK}Er du sikker?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Stadfest at du vil selje alle toga i togstallen.
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Stadfest at du vil selje alle køyretøya i depotet.
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Stadfest at du vil selje alle skipa i depotet.
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Stadfest at du vil selje alle flya i hangaren.
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ikkje sel alle toga i togstallen
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ikkje sel alle køyretøya i depotet
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ikkje sel alle skipa i depotet
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ikkje sel alle flya i hangaren
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sel alle toga i togstallen
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sel alle køyretøya i garasjen

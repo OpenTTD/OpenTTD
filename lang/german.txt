@@ -2959,6 +2959,20 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zeige al
 
 ### depot strings
 
+STR_SELL                                                        :{BLACK}Verkaufen
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du bist dabei alle Fahrzeuge im Depot zu verkaufen
+STR_ARE_YOU_SURE                                                :{BLACK}Bist du sicher?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bestätige bitte dass du alle Züge im Depot verkaufen möchtest
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bestätige bitte dass du alle Fahrzeuge im Depot verkaufen möchtest
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bestätige bitte dass du alle Schiffe in der Werft verkaufen möchtest
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bestätige bitte dass du alle Flugzeuge im Hangar verkaufen möchtest
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Verkaufe nicht alle Züge im Depot
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Verkaufe nicht alle Fahrzeuge im Depot
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Verkaufe nicht alle Schiffe in der Werft
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Verkaufe nicht alle Flugzeuge im Hangar
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Verkaufe alle Züge im Depot
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Verkaufe alle Fahrzeuge im Depot
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Verkaufe alle Schiffe in der Werft

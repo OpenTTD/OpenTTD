@@ -360,6 +360,7 @@ STR_015C_SAVE_GAME                                              :儲存遊戲
 STR_015D_LOAD_GAME                                              :載入遊戲
 STR_015E_QUIT_GAME                                              :放棄遊戲
 STR_015F_QUIT                                                   :離開
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}你是否確認放棄進行中的遊戲?
 STR_0161_QUIT_GAME                                              :{WHITE}放棄遊戲
 STR_SORT_ORDER_TIP                                              :{BLACK}選擇排序 (逆序/順序)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}選擇排序項目
@@ -613,16 +614,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY}達成'{STRING}的地位'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} 的 {COMPANY} 達成 '{STRING}' 地位!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}建立新場景
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}場景編輯器
 STR_0223_LAND_GENERATION                                        :{WHITE}產生地形
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}隨機地形
+STR_0227_RESET_LAND                                             :{BLACK}重設地形
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}增加地形升降的範圍
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}減少地形升降的範圍
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}產生隨機地形
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}重設地形
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}重設地形
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}使用高度圖
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}使用高度圖
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}你是否確認放棄要重設地形?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}產生地形
 STR_022F_TOWN_GENERATION                                        :{BLACK}產生市鎮
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}產生工業
@@ -736,6 +743,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}儲存�
 STR_029A_PLAY_SCENARIO                                          :{BLACK}以此場景開始
 STR_PLAY_HEIGHTMAP                                              :{BLACK}玩高度圖
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}以高度圖為地形開始新遊戲
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}你是否確認放棄要編輯中的場景?
 STR_029C_QUIT_EDITOR                                            :{WHITE}離開編輯器
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...只能在市鎮人口超過 1200 人的地方建造
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}將開始時間提早一年
@@ -2949,6 +2957,20 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}顯示所有共用這份指令的運具
 
 ### depot strings
+
+STR_SELL                                                        :{BLACK}出售
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}你將要出售所有停泊地維修廠內的運具
+STR_ARE_YOU_SURE                                                :{BLACK}你是否確定要這樣做?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}確定出售所有停泊在機廠內的列車
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}確定出售所有停泊在車庫內的車輛
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}確定出售所有停靠在船塢內的船舶
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}確定出售所有停泊在飛機棚內的飛機
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}取消出售所有停泊在機廠內的列車
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}取消出售所有停泊在車庫內的車輛
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}取消出售所有停靠在船塢內的船舶
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}取消出售所有停泊在飛機棚內的飛機
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}出售機廠内所有列車
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}出售車庫内所有汽車

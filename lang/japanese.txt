@@ -2958,8 +2958,19 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}この�
 
 ### depot strings
 
+STR_SELL                                                        :{BLACK}売却
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}車庫／格納庫／造船所内のすべての車両を販売します。
 STR_ARE_YOU_SURE                                                :{BLACK}続けてもよろしいですか？
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}電車庫内のすべての列車の売却を確認
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}車庫内のすべての道路車両の売却を確認
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}造船所内のすべての船舶の売却を確認
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}格納庫内のすべての飛行機の売却を確認
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}電車庫内のすべての列車を売却しない
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}車庫内のすべての道路車両を売却しない
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}造船所内のすべての船舶を売却しない
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}格納庫内のすべての飛行機を売却しない
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}電車庫内のすべての列車を販売します
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}車庫内のすべての道路車両を販売します

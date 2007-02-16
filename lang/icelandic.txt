@@ -605,6 +605,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Minnka s
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Mynda til land af handahófi
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Eyða landi
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Eyða landi
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Nota hæðarkort
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Nota hæðarkort
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Ertu viss um að þú viljir eyða landinu?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landslagsgerð
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bæjargerð
@@ -2823,12 +2825,19 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Sýna ö
 
 ### depot strings
 
+STR_SELL                                                        :{BLACK}Selja
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Þú ert í þann mund að selja öll farartækin.
+STR_ARE_YOU_SURE                                                :{BLACK}Ertu viss?
 
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Staðfestu að þú viljir selja allar lestirnar í skýlinu
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Staðfestu að þú viljir selja allar bifreiðarnar í skýlinu
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Staðfestu að þú viljir selja öll skipin í slippnum
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Staðfestu að þú viljir selja allar flugvélarnar í skýlinu
 
-
-
-
-
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ekki selja allar lestirnar í skýlinu
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ekki selja allar bifreiðarnar í skýlinu
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ekki selja öll skipin í slippnum
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ekki selja allar flugvélarnar í skýlinu
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Hefja skipti
