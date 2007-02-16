@@ -36,7 +36,7 @@ void InitializeAirports(void)
 		_airport_moving_data_country,
 		_airport_terminal_country,
 		NULL,
-		16,
+		_airport_entries_country,
 		AirportFTAClass::ALL | AirportFTAClass::SHORT_STRIP,
 		_airport_fta_country,
 		_airport_depots_country,
@@ -49,7 +49,7 @@ void InitializeAirports(void)
 		_airport_moving_data_town,
 		_airport_terminal_city,
 		NULL,
-		19,
+		_airport_entries_city,
 		AirportFTAClass::ALL,
 		_airport_fta_city,
 		_airport_depots_city,
@@ -62,7 +62,7 @@ void InitializeAirports(void)
 		_airport_moving_data_metropolitan,
 		_airport_terminal_metropolitan,
 		NULL,
-		20,
+		_airport_entries_metropolitan,
 		AirportFTAClass::ALL,
 		_airport_fta_metropolitan,
 		_airport_depots_metropolitan,
@@ -75,7 +75,7 @@ void InitializeAirports(void)
 		_airport_moving_data_international,
 		_airport_terminal_international,
 		_airport_helipad_international,
-		37,
+		_airport_entries_international,
 		AirportFTAClass::ALL,
 		_airport_fta_international,
 		_airport_depots_international,
@@ -88,7 +88,7 @@ void InitializeAirports(void)
 		_airport_moving_data_intercontinental,
 		_airport_terminal_intercontinental,
 		_airport_helipad_intercontinental,
-		43,
+		_airport_entries_intercontinental,
 		AirportFTAClass::ALL,
 		_airport_fta_intercontinental,
 		_airport_depots_intercontinental,
@@ -101,7 +101,7 @@ void InitializeAirports(void)
 		_airport_moving_data_heliport,
 		NULL,
 		_airport_helipad_heliport_oilrig,
-		7,
+		_airport_entries_heliport_oilrig,
 		AirportFTAClass::HELICOPTERS,
 		_airport_fta_heliport_oilrig,
 		NULL,
@@ -114,7 +114,7 @@ void InitializeAirports(void)
 		_airport_moving_data_oilrig,
 		NULL,
 		_airport_helipad_heliport_oilrig,
-		7,
+		_airport_entries_heliport_oilrig,
 		AirportFTAClass::HELICOPTERS,
 		_airport_fta_heliport_oilrig,
 		NULL,
@@ -127,7 +127,7 @@ void InitializeAirports(void)
 		_airport_moving_data_commuter,
 		_airport_terminal_commuter,
 		_airport_helipad_commuter,
-		22,
+		_airport_entries_commuter,
 		AirportFTAClass::ALL | AirportFTAClass::SHORT_STRIP,
 		_airport_fta_commuter,
 		_airport_depots_commuter,
@@ -140,7 +140,7 @@ void InitializeAirports(void)
 		_airport_moving_data_helidepot,
 		NULL,
 		_airport_helipad_helidepot,
-		4,
+		_airport_entries_helidepot,
 		AirportFTAClass::HELICOPTERS,
 		_airport_fta_helidepot,
 		_airport_depots_helidepot,
@@ -153,7 +153,7 @@ void InitializeAirports(void)
 		_airport_moving_data_helistation,
 		NULL,
 		_airport_helipad_helistation,
-		25,
+		_airport_entries_helistation,
 		AirportFTAClass::HELICOPTERS,
 		_airport_fta_helistation,
 		_airport_depots_helistation,
@@ -191,7 +191,7 @@ AirportFTAClass::AirportFTAClass(
 	const AirportMovingData *moving_data_,
 	const byte *terminals_,
 	const byte *helipads_,
-	const byte entry_point_,
+	const byte *entry_points_,
 	Flags flags_,
 	const AirportFTAbuildup *apFA,
 	const TileIndexDiffC *depots_,
@@ -207,7 +207,7 @@ AirportFTAClass::AirportFTAClass(
 	flags(flags_),
 	nof_depots(nof_depots_),
 	nofelements(AirportGetNofElements(apFA)),
-	entry_point(entry_point_),
+	entry_points(entry_points_),
 	size_x(size_x_),
 	size_y(size_y_),
 	delta_z(delta_z_)
@@ -232,15 +232,18 @@ AirportFTAClass::AirportFTAClass(
 	/* Get the number of elements from the source table. We also double check this
 	 * with the entry point which must be within bounds and use this information
 	 * later on to build and validate the state machine */
-	if (entry_point >= nofelements) {
-		DEBUG(misc, 0, "[Ap] entry (%d) must be within the airport (maximum %d)", entry_point, nofelements);
-		assert(entry_point < nofelements);
+	for (DiagDirection i = DIAGDIR_BEGIN; i < DIAGDIR_END; i++) {
+		if (entry_points[i] >= nofelements) {
+			DEBUG(misc, 0, "[Ap] entry (%d) must be within the airport (maximum %d)", entry_points[i], nofelements);
+			assert(entry_points[i] < nofelements);
+		}
 	}
 
 	/* Build the state machine itself */
 	layout = AirportBuildAutomata(nofelements, apFA);
-	DEBUG(misc, 2, "[Ap] #count %3d; #term %2d (%dgrp); #helipad %2d (%dgrp); entry %3d",
-		nofelements, nofterminals, nofterminalgroups, nofhelipads, nofhelipadgroups, entry_point);
+	DEBUG(misc, 2, "[Ap] #count %3d; #term %2d (%dgrp); #helipad %2d (%dgrp); entries %3d, %3d, %3d, %3d",
+		nofelements, nofterminals, nofterminalgroups, nofhelipads, nofhelipadgroups,
+		entry_points[DIAGDIR_NE], entry_points[DIAGDIR_SE], entry_points[DIAGDIR_SW], entry_points[DIAGDIR_NW]);
 
 	/* Test if everything went allright. This is only a rude static test checking
 	 * the symantic correctness. By no means does passing the test mean that the

@@ -1443,6 +1443,50 @@ static void AircraftLandAirplane(Vehicle *v)
 	MaybeCrashAirplane(v);
 }
 
+/**
+ * Find the entry point to an airport depending on direction which
+ * the airport is being approached from. Each airport can have up to
+ * four entry points for its approach system so that approaching
+ * aircraft do not fly through each other or are forced to do 180
+ * degree turns during the approach. The arrivals are grouped into
+ * four sectors dependent on the DiagDirection from which the airport
+ * is approached.
+ *
+ * @param v   The vehicle that is approaching the airport
+ * @param apc The Airport Class being approached.
+ * @returns   The index of the entry point
+ */
+static byte AircraftGetEntryPoint(const Vehicle *v, const AirportFTAClass *apc)
+{
+	const Station *st     = NULL;
+	int           delta_x = 0;
+	int           delta_y = 0;
+	TileIndex     tile    = INVALID_TILE;
+
+	assert(v != NULL);
+	assert(apc != NULL);
+
+	st = GetStation(v->u.air.targetairport);
+	/* Make sure we don't go to 0,0 if the airport has been removed. */
+	tile = (st->airport_tile != 0) ? st->airport_tile : st->xy;
+
+	delta_x = v->x_pos - TileX(tile) * TILE_SIZE;
+	delta_y = v->y_pos - TileY(tile) * TILE_SIZE;
+
+	if (abs(delta_y) < abs(delta_x)) {
+		/* We are northeast or southwest of the airport */
+		if (delta_x < 0) return apc->entry_points[DIAGDIR_NE];
+
+		return apc->entry_points[DIAGDIR_SW];
+	}
+
+	/* We're either northwest or southeast of the airport */
+	if (delta_y < 0) return apc->entry_points[DIAGDIR_NW];
+
+	return apc->entry_points[DIAGDIR_SE];
+}
+
+
 // set the right pos when heading to other airports after takeoff
 static void AircraftNextAirportPos_and_Order(Vehicle *v)
 {
@@ -1451,7 +1495,7 @@ static void AircraftNextAirportPos_and_Order(Vehicle *v)
 		v->u.air.targetairport = v->current_order.dest;
 
 	const AirportFTAClass *apc = GetStation(v->u.air.targetairport)->Airport();
-	v->u.air.pos = v->u.air.previous_pos = apc->entry_point;
+	v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, apc);
 }
 
 static void AircraftLeaveHangar(Vehicle *v)
@@ -1817,8 +1861,7 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *apc)
 		current = current->next;
 	} while (current != NULL);
 
-	DEBUG(misc, 0, "[Ap] cannot move further on Airport! (pos %d state %d)", v->u.air.pos, v->u.air.state);
-	DEBUG(misc, 0, "[Ap] airport entry point: %d, Vehicle: %d", apc->entry_point, v->index);
+	DEBUG(misc, 0, "[Ap] cannot move further on Airport! (pos %d state %d) for vehicle %d", v->u.air.pos, v->u.air.state, v->index);
 	assert(0);
 	return false;
 }
@@ -2118,7 +2161,7 @@ void UpdateAirplanesOnNewStation(Station *st)
 				 *you cannot delete airport, so it doesn't matter
 				 */
 				if (v->u.air.state >= FLYING) { // circle around
-					v->u.air.pos = v->u.air.previous_pos = ap->entry_point;
+					v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, ap);
 					v->u.air.state = FLYING;
 					// landing plane needs to be reset to flying height (only if in pause mode upgrade,
 					// in normal mode, plane is reset in AircraftController. It doesn't hurt for FLYING

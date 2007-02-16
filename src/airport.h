@@ -132,7 +132,7 @@ typedef struct AirportFTAClass {
 			const AirportMovingData *moving_data,
 			const byte *terminals,
 			const byte *helipads,
-			byte entry_point,
+			const byte *entry_points,
 			Flags flags,
 			const AirportFTAbuildup *apFA,
 			const TileIndexDiffC *depots,
@@ -158,7 +158,7 @@ typedef struct AirportFTAClass {
 	Flags flags;
 	byte nof_depots;                      // number of depots this airport has
 	byte nofelements;                     // number of positions the airport consists of
-	byte entry_point;                     // when an airplane arrives at this airport, enter it at position entry_point
+	const byte *entry_points;             ///< when an airplane arrives at this airport, enter it at position entry_point, index depends on direction
 	byte size_x;
 	byte size_y;
 	byte delta_z;                         // Z adjustment for helicopter pads
