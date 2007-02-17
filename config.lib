@@ -602,6 +602,7 @@ make_cflags_and_ldflags() {
 			if [ "$os" = "MORPHOS" ]; then
 				CFLAGS="$CFLAGS -I/gg/os-include -noixemul -fstrict-aliasing -fexpensive-optimizations"
 				CFLAGS="$CFLAGS -mcpu=604 -fno-inline -mstring -mmultiple"
+				LDFLAGS="$LDFLAGS -noixemul"
 			fi
 
 			CFLAGS="$CFLAGS -O2 -fomit-frame-pointer"
