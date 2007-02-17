@@ -2,7 +2,7 @@
 ##ownname Slovenščina
 ##isocode sl_SL
 ##plural 8
-##case r d t 3sk
+##case r d t
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -1871,7 +1871,6 @@ STR_4801                                                        :{WHITE}{INDUSTR
 STR_4802_COAL_MINE                                              :Premogovnik
 STR_4802_COAL_MINE.r                                            :Premogovnika
 STR_4803_POWER_STATION                                          :Termo elektrarna
-STR_4803_POWER_STATION.3sk                                      :Termo elektrarni
 STR_4804_SAWMILL                                                :Žaga
 STR_4804_SAWMILL.r                                              :Žage
 STR_4805_FOREST                                                 :Gozd
