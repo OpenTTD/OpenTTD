@@ -185,8 +185,9 @@ static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 		case VEH_Ship:     DrawShipImage(    v, x + 19, sprite_y - 1, WP(w, depot_d).sel); break;
 		case VEH_Aircraft: {
 			const Sprite *spr = GetSprite(GetAircraftImage(v, DIR_W));
-			int diff_y = spr->y_offs + spr->height - 12;
-			DrawAircraftImage(v, x + 12, y + diff_y, WP(w, depot_d).sel);
+			DrawAircraftImage(v, x + 12,
+							  y + max(spr->height + spr->y_offs - 14, 0), // tall sprites needs an y offset
+							  WP(w, depot_d).sel);
 		} break;
 		default: NOT_REACHED();
 	}
