@@ -346,15 +346,11 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 			WP(w,refit_d).cargo = DrawVehicleRefitWindow(WP(w, refit_d).list, WP(w, refit_d).sel, w->vscroll.pos, w->vscroll.cap, w->resize.step_height);
 
 			if (WP(w,refit_d).cargo != NULL) {
-				int32 cost = 0;
-				switch (GetVehicle(w->window_number)->type) {
-					case VEH_Train:    cost = CMD_REFIT_RAIL_VEHICLE; break;
-					case VEH_Road:     cost = CMD_REFIT_ROAD_VEH;     break;
-					case VEH_Ship:     cost = CMD_REFIT_SHIP;         break;
-					case VEH_Aircraft: cost = CMD_REFIT_AIRCRAFT;     break;
-				}
+				int32 cost;
 
-				cost = DoCommand(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8, DC_QUERY_COST, cost);
+				cost = DoCommand(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8,
+								 DC_QUERY_COST, GetCmdRefitVeh(GetVehicle(w->window_number)->type));
+
 				if (!CmdFailed(cost)) {
 					SetDParam(0, WP(w,refit_d).cargo->cargo);
 					SetDParam(1, _returned_refit_capacity);
