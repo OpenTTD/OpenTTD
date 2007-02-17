@@ -174,7 +174,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		airport = GetAirport(_selected_airport_type);
 		SetTileSelectSize(airport->size_x, airport->size_y);
 
-		uint rad = _patches.modified_catchment ? airport->catchment : 4;
+		int rad = _patches.modified_catchment ? airport->catchment : 4;
 
 		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
