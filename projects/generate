@@ -53,6 +53,8 @@ load_main_data() {
 
 			if ($0 == "SDL"         && "'$sdl_config'" == "")          { next; }
 			if ($0 == "OSX"         && "'$os'" != "OSX")               { next; }
+			if ($0 == "OS2"         && "'$os'" != "OS2")               { next; }
+			if ($0 == "PSP"         && "'$os'" != "PSP")               { next; }
 			if ($0 == "DEDICATED"   && "'$enable_dedicated'" != "1")   { next; }
 			if ($0 == "COCOA"       && "'$with_cocoa'" == "0")         { next; }
 			if ($0 == "BEOS"        && "'$os'" != "BEOS")              { next; }
@@ -61,6 +63,7 @@ load_main_data() {
 			if ($0 == "WINCE"       && "'$os'" != "WINCE")             { next; }
 			if ($0 == "MSVC"        && "'$os'" != "MSVC")              { next; }
 			if ($0 == "DIRECTMUSIC" && "'$enable_directmusic'" != "1") { next; }
+			if ($0 == "LIBTIMIDITY" && "'$libtimidity'" == "" )        { next; }
 
 			skip += 1;
 
