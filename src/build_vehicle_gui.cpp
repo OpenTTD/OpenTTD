@@ -707,9 +707,6 @@ static void GenerateBuildAircraftList(Window *w)
 					NOT_REACHED();
 			}
 
-			if (bv->filter.flags & AirportFTAClass::SHORT_STRIP &&
-				avi->subtype & AIR_FAST && !_cheats.no_jetcrash.value) continue; // don't build large aircraft in small airports
-
 			EngList_Add(&bv->eng_list, eid);
 
 			if (eid == bv->sel_engine) sel_id = eid;
