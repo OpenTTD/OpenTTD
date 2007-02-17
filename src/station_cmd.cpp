@@ -338,7 +338,7 @@ static Station* GetClosestStationFromTile(TileIndex tile, uint threshold, Player
 	Station* st;
 
 	FOR_ALL_STATIONS(st) {
-		if ((owner == PLAYER_SPECTATOR || st->owner == owner)) {
+		if (st->owner == owner) {
 			uint cur_dist = DistanceManhattan(tile, st->xy);
 
 			if (cur_dist < threshold) {
