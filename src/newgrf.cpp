@@ -2074,7 +2074,11 @@ static void FeatureNewName(byte *buf, int len)
 	for (; id < endid && len > 0; id++) {
 		size_t ofs = strlen(name) + 1;
 
-		if (ofs < 128) {
+		if (ofs == 1) {
+			grfmsg(7, "FeatureNewName: Can't add empty name");
+		} else if (ofs > 127) {
+			grfmsg(7, "FeatureNewName: Too long a name (%d)", ofs);
+		} else {
 			grfmsg(8, "FeatureNewName: %d <- %s", id, name);
 
 			switch (feature) {
@@ -2142,14 +2146,6 @@ static void FeatureNewName(byte *buf, int len)
 					grfmsg(7, "FeatureNewName: Unsupported feature (0x%02X)", feature);
 					break;
 #endif
-			}
-		} else {
-			/* ofs is the string length + 1, so if the string is empty, ofs
-			 * is 1 */
-			if (ofs == 1) {
-				grfmsg(7, "FeatureNewName: Can't add empty name");
-			} else {
-				grfmsg(7, "FeatureNewName: Too long a name (%d)", ofs);
 			}
 		}
 		name += ofs;
