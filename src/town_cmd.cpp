@@ -1088,12 +1088,12 @@ Town *CreateRandomTown(uint attempts, uint size_mode)
 	return NULL;
 }
 
-static const byte _num_initial_towns[3] = {11, 23, 46};
+static const byte _num_initial_towns[3] = {4, 17, 29};
 
 bool GenerateTowns(void)
 {
 	uint num = 0;
-	uint n = ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
+	uint n = ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 3));
 
 	SetGeneratingWorldProgress(GWP_TOWN, n);
 

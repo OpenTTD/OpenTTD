@@ -2429,8 +2429,8 @@ static const char *name_hungarian_2[] = {
 	"Torna",
 	"Vas",
 	"Vámos",
-	"Vásáros"
-	"Zala",
+	"Vásáros",
+	"Zala"
 };
 
 static const char *name_hungarian_3[] = {
