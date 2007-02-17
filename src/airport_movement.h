@@ -406,7 +406,7 @@ static const AirportFTAbuildup _airport_fta_country[] = {
 static const TileIndexDiffC _airport_depots_commuter[] = { { 4, 0 } };
 static const byte _airport_terminal_commuter[] = { 1, 3 };
 static const byte _airport_helipad_commuter[] = { 1, 2 };
-static const byte _airport_entries_commuter[] = {7, 7, 7, 7};
+static const byte _airport_entries_commuter[] = {21, 21, 21, 21};
 static const AirportFTAbuildup _airport_fta_commuter[] = {
 	{  0, HANGAR, NOTHING_block, 1 }, { 0, HELITAKEOFF, HELIPAD2_block, 1 }, { 0, 0, 0, 1 },
 	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TAKEOFF, 0, 11 }, { 1, TERM1, TAXIWAY_BUSY_block, 10 }, { 1, TERM2, TAXIWAY_BUSY_block, 10 }, { 1, TERM3, TAXIWAY_BUSY_block, 10 }, { 1, HELIPAD1, TAXIWAY_BUSY_block, 10 }, { 1, HELIPAD2, TAXIWAY_BUSY_block, 10 }, { 1, HELITAKEOFF, TAXIWAY_BUSY_block, 10 }, { 1, 0, 0, 0 },
