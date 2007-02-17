@@ -139,7 +139,8 @@ typedef struct AirportFTAClass {
 			byte nof_depots,
 			uint size_x,
 			uint size_y,
-			byte delta_z
+			byte delta_z,
+			byte catchment
 		);
 
 		~AirportFTAClass();
@@ -162,6 +163,7 @@ typedef struct AirportFTAClass {
 	byte size_x;
 	byte size_y;
 	byte delta_z;                         // Z adjustment for helicopter pads
+	byte catchment;
 } AirportFTAClass;
 
 DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)

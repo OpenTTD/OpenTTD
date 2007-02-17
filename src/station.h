@@ -209,18 +209,8 @@ typedef enum CatchmentAeras {
 	CA_NONE            =  0,
 	CA_BUS             =  3,
 	CA_TRUCK           =  3,
-	CA_AIR_OILPAD      =  3,
 	CA_TRAIN           =  4,
-	CA_AIR_HELIPORT    =  4,
-	CA_AIR_SMALL       =  4,
-	CA_AIR_LARGE       =  5,
-	CA_DOCK            =  5,
-	CA_AIR_METRO       =  6,
-	CA_AIR_INTER       =  8,
-	CA_AIR_COMMUTER    =  4,
-	CA_AIR_HELIDEPOT   =  4,
-	CA_AIR_INTERCON    = 10,
-	CA_AIR_HELISTATION =  4,
+	CA_DOCK            =  5
 } CatchmentAera;
 
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);

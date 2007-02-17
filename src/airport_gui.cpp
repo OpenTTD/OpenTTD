@@ -150,7 +150,6 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 
 	case WE_PAINT: {
 		int i; // airport enabling loop
-		int rad = 4; // default catchment radious
 		uint32 avail_airports;
 		const AirportFTAClass *airport;
 
@@ -175,20 +174,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		airport = GetAirport(_selected_airport_type);
 		SetTileSelectSize(airport->size_x, airport->size_y);
 
-		if (_patches.modified_catchment) {
-			switch (_selected_airport_type) {
-				case AT_OILRIG:        rad = CA_AIR_OILPAD;   break;
-				case AT_HELIPORT:      rad = CA_AIR_HELIPORT; break;
-				case AT_SMALL:         rad = CA_AIR_SMALL;    break;
-				case AT_LARGE:         rad = CA_AIR_LARGE;    break;
-				case AT_METROPOLITAN:  rad = CA_AIR_METRO;    break;
-				case AT_INTERNATIONAL: rad = CA_AIR_INTER;    break;
-				case AT_COMMUTER:      rad = CA_AIR_COMMUTER; break;
-				case AT_HELIDEPOT:     rad = CA_AIR_HELIDEPOT; break;
-				case AT_INTERCON:      rad = CA_AIR_INTERCON; break;
-				case AT_HELISTATION:   rad = CA_AIR_HELISTATION; break;
-			}
-		}
+		uint rad = _patches.modified_catchment ? airport->catchment : 4;
 
 		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 

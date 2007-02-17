@@ -42,7 +42,8 @@ void InitializeAirports(void)
 		_airport_depots_country,
 		lengthof(_airport_depots_country),
 		4, 3,
-		0
+		0,
+		4
 	);
 
 	CityAirport = new AirportFTAClass(
@@ -55,7 +56,8 @@ void InitializeAirports(void)
 		_airport_depots_city,
 		lengthof(_airport_depots_city),
 		6, 6,
-		0
+		0,
+		5
 	);
 
 	MetropolitanAirport = new AirportFTAClass(
@@ -68,7 +70,8 @@ void InitializeAirports(void)
 		_airport_depots_metropolitan,
 		lengthof(_airport_depots_metropolitan),
 		6, 6,
-		0
+		0,
+		6
 	);
 
 	InternationalAirport = new AirportFTAClass(
@@ -81,7 +84,8 @@ void InitializeAirports(void)
 		_airport_depots_international,
 		lengthof(_airport_depots_international),
 		7, 7,
-		0
+		0,
+		8
 	);
 
 	IntercontinentalAirport = new AirportFTAClass(
@@ -94,7 +98,8 @@ void InitializeAirports(void)
 		_airport_depots_intercontinental,
 		lengthof(_airport_depots_intercontinental),
 		9, 11,
-		0
+		0,
+		10
 	);
 
 	Heliport = new AirportFTAClass(
@@ -107,7 +112,8 @@ void InitializeAirports(void)
 		NULL,
 		0,
 		1, 1,
-		60
+		60,
+		4
 	);
 
 	Oilrig = new AirportFTAClass(
@@ -120,7 +126,8 @@ void InitializeAirports(void)
 		NULL,
 		0,
 		1, 1,
-		54
+		54,
+		3
 	);
 
 	CommuterAirport = new AirportFTAClass(
@@ -133,7 +140,8 @@ void InitializeAirports(void)
 		_airport_depots_commuter,
 		lengthof(_airport_depots_commuter),
 		5, 4,
-		0
+		0,
+		4
 	);
 
 	HeliDepot = new AirportFTAClass(
@@ -146,7 +154,8 @@ void InitializeAirports(void)
 		_airport_depots_helidepot,
 		lengthof(_airport_depots_helidepot),
 		2, 2,
-		0
+		0,
+		4
 	);
 
 	HeliStation = new AirportFTAClass(
@@ -159,7 +168,8 @@ void InitializeAirports(void)
 		_airport_depots_helistation,
 		lengthof(_airport_depots_helistation),
 		4, 2,
-		0
+		0,
+		4
 	);
 }
 
@@ -198,7 +208,8 @@ AirportFTAClass::AirportFTAClass(
 	const byte nof_depots_,
 	uint size_x_,
 	uint size_y_,
-	byte delta_z_
+	byte delta_z_,
+	byte catchment_
 ) :
 	moving_data(moving_data_),
 	terminals(terminals_),
@@ -210,7 +221,8 @@ AirportFTAClass::AirportFTAClass(
 	entry_points(entry_points_),
 	size_x(size_x_),
 	size_y(size_y_),
-	delta_z(delta_z_)
+	delta_z(delta_z_),
+	catchment(catchment_)
 {
 	byte nofterminalgroups, nofhelipadgroups;
 

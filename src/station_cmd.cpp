@@ -110,27 +110,13 @@ static uint GetNumRoadStopsInStation(const Station* st, RoadStop::Type type)
  *  radius that is available within the station */
 static uint FindCatchmentRadius(const Station* st)
 {
-	CatchmentAera ret = CA_NONE;
+	uint ret = CA_NONE;
 
-	if (st->bus_stops != NULL)   ret = max(ret, CA_BUS);
-	if (st->truck_stops != NULL) ret = max(ret, CA_TRUCK);
-	if (st->train_tile) ret = max(ret, CA_TRAIN);
-	if (st->dock_tile)  ret = max(ret, CA_DOCK);
-
-	if (st->airport_tile) {
-		switch (st->airport_type) {
-			case AT_OILRIG:        ret = max(ret, CA_AIR_OILPAD);   break;
-			case AT_SMALL:         ret = max(ret, CA_AIR_SMALL);    break;
-			case AT_HELIPORT:      ret = max(ret, CA_AIR_HELIPORT); break;
-			case AT_LARGE:         ret = max(ret, CA_AIR_LARGE);    break;
-			case AT_METROPOLITAN:  ret = max(ret, CA_AIR_METRO);    break;
-			case AT_INTERNATIONAL: ret = max(ret, CA_AIR_INTER);    break;
-			case AT_COMMUTER:      ret = max(ret, CA_AIR_COMMUTER); break;
-			case AT_HELIDEPOT:     ret = max(ret, CA_AIR_HELIDEPOT); break;
-			case AT_INTERCON:      ret = max(ret, CA_AIR_INTERCON); break;
-			case AT_HELISTATION:   ret = max(ret, CA_AIR_HELISTATION); break;
-		}
-	}
+	if (st->bus_stops   != NULL) ret = max<uint>(ret, CA_BUS);
+	if (st->truck_stops != NULL) ret = max<uint>(ret, CA_TRUCK);
+	if (st->train_tile  != 0)    ret = max<uint>(ret, CA_TRAIN);
+	if (st->dock_tile   != 0)    ret = max<uint>(ret, CA_DOCK);
+	if (st->airport_tile)        ret = max<uint>(ret, st->Airport()->catchment);
 
 	return ret;
 }
