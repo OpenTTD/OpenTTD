@@ -205,13 +205,13 @@ enum {
 	HVOT_BUOY     = 1 << 6
 };
 
-typedef enum CatchmentAeras {
+typedef enum CatchmentAreas {
 	CA_NONE            =  0,
 	CA_BUS             =  3,
 	CA_TRUCK           =  3,
 	CA_TRAIN           =  4,
 	CA_DOCK            =  5
-} CatchmentAera;
+} CatchmentArea;
 
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);
 
