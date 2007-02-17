@@ -1618,10 +1618,11 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->sign.width_1 = 0;
 
-		// if airport type equals Heliport then generate
-		// type 5 name, which is heliport, otherwise airport names (1)
-		if (!GenerateStationName(st, tile, (p1 == AT_HELIPORT)||(p1 == AT_HELIDEPOT)||(p1 == AT_HELISTATION) ? 5 : 1))
+		/* If only helicopters may use the airport generate a helicopter related (5)
+		 * station name, otherwise generate a normal airport name (1) */
+		if (!GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? 5 : 1)) {
 			return CMD_ERROR;
+		}
 	}
 
 	cost += _price.build_airport * w * h;
