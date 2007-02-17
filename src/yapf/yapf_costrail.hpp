@@ -282,13 +282,13 @@ public:
 			// add penalty for skipped station tiles
 			if (F.m_is_station)
 			{
+				uint platform_length = F.m_tiles_skipped + 1;
 				if (target_seen) {
 					// it is our destination station
-					uint platform_length = F.m_tiles_skipped + 1;
 					segment_cost += PlatformLengthPenalty(platform_length);
 				} else {
 					// station is not our destination station, apply penalty for skipped platform tiles
-					segment_cost += Yapf().PfGetSettings().rail_station_penalty * F.m_tiles_skipped;
+					segment_cost += Yapf().PfGetSettings().rail_station_penalty * platform_length;
 				}
 			}
 
