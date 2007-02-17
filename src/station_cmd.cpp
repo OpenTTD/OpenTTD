@@ -332,13 +332,14 @@ done:
 }
 #undef M
 
-static Station* GetClosestStationFromTile(TileIndex tile, uint threshold, PlayerID owner)
+static Station* GetClosestStationFromTile(TileIndex tile)
 {
+	uint threshold = 8;
 	Station* best_station = NULL;
 	Station* st;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->owner == owner) {
+		if (st->facilities == 0 && st->owner == _current_player) {
 			uint cur_dist = DistanceManhattan(tile, st->xy);
 
 			if (cur_dist < threshold) {
@@ -901,10 +902,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	// See if there is a deleted station close to us.
-	if (st == NULL) {
-		st = GetClosestStationFromTile(tile_org, 8, _current_player);
-		if (st != NULL && st->facilities) st = NULL;
-	}
+	if (st == NULL) st = GetClosestStationFromTile(tile_org);
 
 	/* In case of new station if DC_EXEC is NOT set we still need to create the station
 	 * to test if everything is OK. In this case we need to delete it before return. */
@@ -1274,10 +1272,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	/* Find a station close to us */
-	if (st == NULL) {
-		st = GetClosestStationFromTile(tile, 8, _current_player);
-		if (st != NULL && st->facilities != 0) st = NULL;
-	}
+	if (st == NULL) st = GetClosestStationFromTile(tile);
 
 	//give us a road stop in the list, and check if something went wrong
 	road_stop = new RoadStop(tile);
@@ -1578,10 +1573,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	/* Find a station close to us */
-	if (st == NULL) {
-		st = GetClosestStationFromTile(tile, 8, _current_player);
-		if (st != NULL && st->facilities) st = NULL;
-	}
+	if (st == NULL) st = GetClosestStationFromTile(tile);
 
 	if (w > _patches.station_spread || h > _patches.station_spread) {
 		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
@@ -1873,10 +1865,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	/* Find a station close to us */
-	if (st == NULL) {
-		st = GetClosestStationFromTile(tile, 8, _current_player);
-		if (st!=NULL && st->facilities) st = NULL;
-	}
+	if (st == NULL) st = GetClosestStationFromTile(tile);
 
 	/* In case of new station if DC_EXEC is NOT set we still need to create the station
 	* to test if everything is OK. In this case we need to delete it before return. */
