@@ -695,11 +695,11 @@ static void GenerateBuildAircraftList(Window *w)
 			const AircraftVehicleInfo *avi = AircraftVehInfo(eid);
 			switch (bv->filter.flags & ~AirportFTAClass::SHORT_STRIP /* we don't care about the length of the runway here */) {
 				case AirportFTAClass::HELICOPTERS:
-					if (avi->subtype != AIR_HELICOPTER) continue;
+					if (avi->subtype != AIR_HELI) continue;
 					break;
 
 				case AirportFTAClass::AIRPLANES:
-					if (avi->subtype != AIR_AIRCRAFT) continue;
+					if (!(avi->subtype & AIR_CTOL)) continue;
 					break;
 
 				case AirportFTAClass::ALL: break;
