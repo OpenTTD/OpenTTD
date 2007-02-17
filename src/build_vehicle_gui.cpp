@@ -692,6 +692,24 @@ static void GenerateBuildAircraftList(Window *w)
 	sel_id = INVALID_ENGINE;
 	for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
 		if (IsEngineBuildable(eid, VEH_Aircraft, _local_player)) {
+			const AircraftVehicleInfo *avi = AircraftVehInfo(eid);
+			switch (bv->filter.flags & ~AirportFTAClass::SHORT_STRIP /* we don't care about the length of the runway here */) {
+				case AirportFTAClass::HELICOPTERS:
+					if (avi->subtype != AIR_HELICOPTER) continue;
+					break;
+
+				case AirportFTAClass::AIRPLANES:
+					if (avi->subtype != AIR_AIRCRAFT) continue;
+					break;
+
+				case AirportFTAClass::ALL: break;
+				default:
+					NOT_REACHED();
+			}
+
+			if (bv->filter.flags & AirportFTAClass::SHORT_STRIP &&
+				avi->subtype & AIR_FAST && !_cheats.no_jetcrash.value) continue; // don't build large aircraft in small airports
+
 			EngList_Add(&bv->eng_list, eid);
 
 			if (eid == bv->sel_engine) sel_id = eid;
