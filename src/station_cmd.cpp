@@ -141,29 +141,6 @@ static Station* GetStationAround(TileIndex tile, int w, int h, StationID closest
 	return (closest_station == INVALID_STATION) ? NULL : GetStation(closest_station);
 }
 
-static Station *AllocateStation(void)
-{
-	Station *st = NULL;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (st = GetStation(0); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) {
-		if (!st->IsValid()) {
-			StationID index = st->index;
-
-			memset(st, 0, sizeof(Station));
-			st->index = index;
-			return st;
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_Station_pool)) return AllocateStation();
-
-	_error_message = STR_3008_TOO_MANY_STATIONS_LOADING;
-	return NULL;
-}
-
 
 /**
  * Counts the numbers of tiles matching a specific type in the area around
