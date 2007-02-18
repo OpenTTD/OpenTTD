@@ -1,4 +1,4 @@
-/* $Id: extmidi.h 2704 2005-07-25 07:16:10Z tron $ */
+/* $Id$ */
 
 #ifndef MUSIC_LIBTIMIDITY_H
 #define MUSIC_LIBTIMIDITY_H

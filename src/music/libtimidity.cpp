@@ -1,4 +1,4 @@
-/* $Id: extmidi.c 4692 2006-05-02 19:09:49Z peter1138 $ */
+/* $Id$ */
 
 #include "../stdafx.h"
 #include "../openttd.h"
