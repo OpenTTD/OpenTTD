@@ -372,6 +372,7 @@ static bool   _new_ttdpatch_format;
 static uint32 _old_town_index;
 static uint16 _old_string_id;
 static uint16 _old_string_id_2;
+static uint16 _old_extra_chunk_nums;
 
 static void ReadTTDPatchFlags(void)
 {
@@ -396,6 +397,8 @@ static void ReadTTDPatchFlags(void)
 
 	/* Check if we have a modern TTDPatch savegame (has extra data all around) */
 	_new_ttdpatch_format = (memcmp(&_old_map3[0x1FFFA], "TTDp", 4) == 0);
+
+	_old_extra_chunk_nums = _old_map3[_new_ttdpatch_format ? 0x1FFFE : 0x2];
 
 	/* Clean the misused places */
 	for (i = 0;       i < 17;      i++) _old_map3[i] = 0;
@@ -1345,6 +1348,59 @@ static bool LoadOldMapPart2(LoadgameState *ls, int num)
 	return !ls->failed;
 }
 
+static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
+{
+	ReadTTDPatchFlags();
+
+	DEBUG(oldloader, 2, "Found %d extra chunk(s)", _old_extra_chunk_nums);
+
+	for (int i = 0; i != _old_extra_chunk_nums; i++) {
+		uint16 id = ReadUint16(ls);
+		uint32 len = ReadUint32(ls);
+
+		switch (id) {
+			/* List of GRFIDs, used in the savegame
+			 * They are saved in a 'GRFID:4 active:1' format, 5 bytes for each entry */
+			case 0x2:
+			case 0x8004: {
+				/* Skip the first element: TTDP hack for the Action D special variables FFFF0000 01 */
+				ReadUint32(ls); ReadByte(ls); len -= 5;
+
+				ClearGRFConfigList(&_grfconfig);
+				GRFConfig *c = CallocT<GRFConfig>(1);
+				while (len != 0) {
+					uint32 grfid = ReadUint32(ls);
+
+					if (ReadByte(ls) == 1) {
+						c->grfid = grfid;
+						c->filename = "TTDP game, no information";
+
+						AppendToGRFConfigList(&_grfconfig, c);
+						DEBUG(oldloader, 3, "TTDPatch game using GRF file with GRFID %0X", BSWAP32(c->grfid));
+					}
+					len -= 5;
+				};
+				free(c);
+
+				/* Append static NewGRF configuration */
+				AppendStaticGRFConfigs(&_grfconfig);
+			} break;
+			case 0x3: { /* TTDPatch version and configuration */
+				uint32 ttdpv = ReadUint32(ls);
+				DEBUG(oldloader, 3, "Game saved with TTDPatch version %d.%d.%d r%d", GB(ttdpv, 24, 8), GB(ttdpv, 20, 4), GB(ttdpv, 16, 4), GB(ttdpv, 0, 16));
+				len -= 4;
+				while (len-- != 0) ReadByte(ls); // skip the configuration
+			} break;
+			default:
+				DEBUG(oldloader, 4, "Skipping unknown extra chunk %X", id);
+				while (len-- != 0) ReadByte(ls);
+				break;
+		}
+	}
+
+	return !ls->failed;
+}
+
 static uint32 _old_cur_town_ctr;
 static const OldChunks main_chunk[] = {
 	OCL_ASSERT( 0 ),
@@ -1458,6 +1514,7 @@ static const OldChunks main_chunk[] = {
 	OCL_ASSERT( 0x97179 ),
 
 	/* Below any (if available) extra chunks from TTDPatch can follow */
+	OCL_CHUNK(1, LoadTTDPatchExtraChunks),
 
 	OCL_END()
 };
