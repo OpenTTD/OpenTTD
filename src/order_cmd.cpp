@@ -198,7 +198,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (!IsValidStationID(new_order.dest)) return CMD_ERROR;
 			st = GetStation(new_order.dest);
 
-			if (st->owner != OWNER_NONE && !st->IsBuoy() && !CheckOwnership(st->owner)) {
+			if (st->owner != OWNER_NONE && !CheckOwnership(st->owner)) {
 				return CMD_ERROR;
 			}
 
