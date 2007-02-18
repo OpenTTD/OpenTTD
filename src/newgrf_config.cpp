@@ -115,7 +115,7 @@ void ClearGRFConfigList(GRFConfig **config)
 
 /** Copy a GRF Config list
  * @param dst pointer to destination list
- * @param srt pointer to source list values
+ * @param src pointer to source list values
  * @return pointer to the last value added to the destination list */
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 {
@@ -176,6 +176,17 @@ void AppendStaticGRFConfigs(GRFConfig **dst)
 	while (*tail != NULL) tail = &(*tail)->next;
 
 	CopyGRFConfigList(tail, _grfconfig_static);
+	RemoveDuplicatesFromGRFConfigList(*dst);
+}
+
+/** Appends an element to a list of GRFs
+ * @param dst the head of the list to add to
+ * @param el the element that is being added (as a copy) */
+void AppendToGRFConfigList(GRFConfig **dst, const GRFConfig *el)
+{
+	GRFConfig **tail = dst;
+	while (*tail != NULL) tail = &(*tail)->next;
+	CopyGRFConfigList(tail, el);
 	RemoveDuplicatesFromGRFConfigList(*dst);
 }
 
@@ -454,23 +465,14 @@ static void Save_NGRF(void)
 
 static void Load_NGRF(void)
 {
-	GRFConfig *first = NULL;
-	GRFConfig **last = &first;
-
+	GRFConfig *c = CallocT<GRFConfig>(1);
 	while (SlIterateArray() != -1) {
-		GRFConfig *c = CallocT<GRFConfig>(1);
 		SlObject(c, _grfconfig_desc);
-
-		/* Append our configuration to the list */
-		*last = c;
-		last = &c->next;
+		AppendToGRFConfigList(&_grfconfig, c);
 	}
+	free(c);
 
 	/* Append static NewGRF configuration */
-	CopyGRFConfigList(last, _grfconfig_static);
-
-	ClearGRFConfigList(&_grfconfig);
-	_grfconfig = first;
 	AppendStaticGRFConfigs(&_grfconfig);
 }
 
