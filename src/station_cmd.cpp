@@ -42,18 +42,14 @@
  */
 static void StationPoolNewBlock(uint start_item)
 {
-	Station *st;
-
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 *  TODO - This is just a temporary stage, this will be removed. */
-	for (st = GetStation(start_item); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) st->index = start_item++;
+	for (Station *st = GetStation(start_item); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) st->index = start_item++;
 }
 
 static void StationPoolCleanBlock(uint start_item, uint end_item)
 {
-	uint i;
-
-	for (i = start_item; i <= end_item; i++) {
+	for (uint i = start_item; i <= end_item; i++) {
 		Station *st = GetStation(i);
 		if (st->IsValid()) st->~Station();
 	}
@@ -64,11 +60,9 @@ static void StationPoolCleanBlock(uint start_item, uint end_item)
  */
 static void RoadStopPoolNewBlock(uint start_item)
 {
-	RoadStop *rs;
-
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (rs = GetRoadStop(start_item); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) {
+	for (RoadStop *rs = GetRoadStop(start_item); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) {
 		rs->xy    = INVALID_TILE;
 		rs->index = start_item++;
 	}
@@ -84,23 +78,22 @@ extern void UpdateAirplanesOnNewStation(Station *st);
 RoadStop* GetRoadStopByTile(TileIndex tile, RoadStop::Type type)
 {
 	const Station* st = GetStationByTile(tile);
-	RoadStop* rs;
 
-	for (rs = st->GetPrimaryRoadStop(type); rs->xy != tile; rs = rs->next) {
+	for (RoadStop *rs = st->GetPrimaryRoadStop(type);; rs = rs->next) {
+		if (rs->xy == tile) return rs;
 		assert(rs->next != NULL);
 	}
-
-	return rs;
 }
 
 
 static uint GetNumRoadStopsInStation(const Station* st, RoadStop::Type type)
 {
 	uint num = 0;
-	const RoadStop *rs;
 
 	assert(st != NULL);
-	for (rs = st->GetPrimaryRoadStop(type); rs != NULL; rs = rs->next) num++;
+	for (const RoadStop *rs = st->GetPrimaryRoadStop(type); rs != NULL; rs = rs->next) {
+		num++;
+	}
 
 	return num;
 }
@@ -152,13 +145,11 @@ static Station* GetStationAround(TileIndex tile, int w, int h, StationID closest
  */
 static int CountMapSquareAround(TileIndex tile, TileType type, IndustryType industry)
 {
-	TileIndex cur_tile;
-	int dx, dy;
 	int num = 0;
 
-	for (dx = -3; dx <= 3; dx++) {
-		for (dy = -3; dy <= 3; dy++) {
-			cur_tile = TILE_MASK(tile + TileDiffXY(dx, dy));
+	for (int dx = -3; dx <= 3; dx++) {
+		for (int dy = -3; dy <= 3; dy++) {
+			TileIndex cur_tile = TILE_MASK(tile + TileDiffXY(dx, dy));
 
 			if (IsTileType(cur_tile, type)) {
 				switch (type) {
@@ -201,7 +192,6 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 	Town *t = st->town;
 	uint32 free_names = (uint32)-1;
 	int found;
-	uint z,z2;
 	unsigned long tmp;
 
 	{
@@ -266,14 +256,16 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 	}
 
 	/* check elevation compared to town */
-	z = GetTileZ(tile);
-	z2 = GetTileZ(t->xy);
-	if (z < z2) {
-		found = M(STR_SV_STNAME_VALLEY);
-		if (HASBIT(free_names, M(STR_SV_STNAME_VALLEY))) goto done;
-	} else if (z > z2) {
-		found = M(STR_SV_STNAME_HEIGHTS);
-		if (HASBIT(free_names, M(STR_SV_STNAME_HEIGHTS))) goto done;
+	{
+		uint z = GetTileZ(tile);
+		uint z2 = GetTileZ(t->xy);
+		if (z < z2) {
+			found = M(STR_SV_STNAME_VALLEY);
+			if (HASBIT(free_names, M(STR_SV_STNAME_VALLEY))) goto done;
+		} else if (z > z2) {
+			found = M(STR_SV_STNAME_HEIGHTS);
+			if (HASBIT(free_names, M(STR_SV_STNAME_HEIGHTS))) goto done;
+		}
 	}
 
 	/* check direction compared to town */
@@ -359,9 +351,8 @@ static void UpdateStationVirtCoordDirty(Station *st)
 static uint GetAcceptanceMask(const Station *st)
 {
 	uint mask = 0;
-	uint i;
 
-	for (i = 0; i != NUM_CARGO; i++) {
+	for (uint i = 0; i != NUM_CARGO; i++) {
 		if (st->goods[i].waiting_acceptance & 0x8000) mask |= 1 << i;
 	}
 	return mask;
@@ -383,35 +374,30 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	int w, int h, int rad)
 {
-	int x,y;
-	int x1,y1,x2,y2;
-	int xc,yc;
-
 	memset(produced, 0, sizeof(AcceptedCargo));
 
-	x = TileX(tile);
-	y = TileY(tile);
+	int x = TileX(tile);
+	int y = TileY(tile);
 
 	// expand the region by rad tiles on each side
 	// while making sure that we remain inside the board.
-	x2 = min(x + w + rad, MapSizeX());
-	x1 = max(x - rad, 0);
+	int x2 = min(x + w + rad, MapSizeX());
+	int x1 = max(x - rad, 0);
 
-	y2 = min(y + h + rad, MapSizeY());
-	y1 = max(y - rad, 0);
+	int y2 = min(y + h + rad, MapSizeY());
+	int y1 = max(y - rad, 0);
 
 	assert(x1 < x2);
 	assert(y1 < y2);
 	assert(w > 0);
 	assert(h > 0);
 
-	for (yc = y1; yc != y2; yc++) {
-		for (xc = x1; xc != x2; xc++) {
+	for (int yc = y1; yc != y2; yc++) {
+		for (int xc = x1; xc != x2; xc++) {
 			if (!(IS_INSIDE_1D(xc, x, w) && IS_INSIDE_1D(yc, y, h))) {
-				GetProducedCargoProc *gpc;
 				TileIndex tile = TileXY(xc, yc);
 
-				gpc = _tile_type_procs[GetTileType(tile)]->get_produced_cargo_proc;
+				GetProducedCargoProc *gpc = _tile_type_procs[GetTileType(tile)]->get_produced_cargo_proc;
 				if (gpc != NULL) {
 					CargoID cargos[2] = { CT_INVALID, CT_INVALID };
 
@@ -432,37 +418,32 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	int w, int h, int rad)
 {
-	int x,y;
-	int x1,y1,x2,y2;
-	int xc,yc;
-
 	memset(accepts, 0, sizeof(AcceptedCargo));
 
-	x = TileX(tile);
-	y = TileY(tile);
+	int x = TileX(tile);
+	int y = TileY(tile);
 
 	// expand the region by rad tiles on each side
 	// while making sure that we remain inside the board.
-	x2 = min(x + w + rad, MapSizeX());
-	y2 = min(y + h + rad, MapSizeY());
-	x1 = max(x - rad, 0);
-	y1 = max(y - rad, 0);
+	int x2 = min(x + w + rad, MapSizeX());
+	int y2 = min(y + h + rad, MapSizeY());
+	int x1 = max(x - rad, 0);
+	int y1 = max(y - rad, 0);
 
 	assert(x1 < x2);
 	assert(y1 < y2);
 	assert(w > 0);
 	assert(h > 0);
 
-	for (yc = y1; yc != y2; yc++) {
-		for (xc = x1; xc != x2; xc++) {
+	for (int yc = y1; yc != y2; yc++) {
+		for (int xc = x1; xc != x2; xc++) {
 			TileIndex tile = TileXY(xc, yc);
 
 			if (!IsTileType(tile, MP_STATION)) {
 				AcceptedCargo ac;
-				uint i;
 
 				GetAcceptedCargo(tile, ac);
-				for (i = 0; i < lengthof(ac); ++i) accepts[i] += ac[i];
+				for (uint i = 0; i < lengthof(ac); ++i) accepts[i] += ac[i];
 			}
 		}
 	}
@@ -490,21 +471,17 @@ static inline void MergePoint(ottd_Rectangle* rect, TileIndex tile)
 // show_msg controls whether to display a message that acceptance was changed.
 static void UpdateStationAcceptance(Station *st, bool show_msg)
 {
-	uint old_acc, new_acc;
-	const RoadStop *cur_rs;
-	int i;
-	ottd_Rectangle rect;
-	int rad;
-	AcceptedCargo accepts;
-
-	rect.min_x = MapSizeX();
-	rect.min_y = MapSizeY();
-	rect.max_x = rect.max_y = 0;
 	// Don't update acceptance for a buoy
 	if (st->IsBuoy()) return;
 
+	ottd_Rectangle rect;
+	rect.min_x = MapSizeX();
+	rect.min_y = MapSizeY();
+	rect.max_x = 0;
+	rect.max_y = 0;
+
 	/* old accepted goods types */
-	old_acc = GetAcceptanceMask(st);
+	uint old_acc = GetAcceptanceMask(st);
 
 	// Put all the tiles that span an area in the table.
 	if (st->train_tile != 0) {
@@ -525,31 +502,30 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 
 	if (st->dock_tile != 0) MergePoint(&rect, st->dock_tile);
 
-	for (cur_rs = st->bus_stops; cur_rs != NULL; cur_rs = cur_rs->next) {
-		MergePoint(&rect, cur_rs->xy);
+	for (const RoadStop *rs = st->bus_stops; rs != NULL; rs = rs->next) {
+		MergePoint(&rect, rs->xy);
 	}
 
-	for (cur_rs = st->truck_stops; cur_rs != NULL; cur_rs = cur_rs->next) {
-		MergePoint(&rect, cur_rs->xy);
+	for (const RoadStop *rs = st->truck_stops; rs != NULL; rs = rs->next) {
+		MergePoint(&rect, rs->xy);
 	}
-
-	rad = (_patches.modified_catchment) ? FindCatchmentRadius(st) : 4;
 
 	// And retrieve the acceptance.
+	AcceptedCargo accepts;
 	if (rect.max_x >= rect.min_x) {
 		GetAcceptanceAroundTiles(
 			accepts,
 			TileXY(rect.min_x, rect.min_y),
 			rect.max_x - rect.min_x + 1,
 			rect.max_y - rect.min_y + 1,
-			rad
+			_patches.modified_catchment ? FindCatchmentRadius(st) : 4
 		);
 	} else {
 		memset(accepts, 0, sizeof(accepts));
 	}
 
 	// Adjust in case our station only accepts fewer kinds of goods
-	for (i = 0; i != NUM_CARGO; i++) {
+	for (uint i = 0; i != NUM_CARGO; i++) {
 		uint amt = min(accepts[i], 15);
 
 		// Make sure the station can accept the goods type.
@@ -561,7 +537,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	// Only show a message in case the acceptance was actually changed.
-	new_acc = GetAcceptanceMask(st);
+	uint new_acc = GetAcceptanceMask(st);
 	if (old_acc == new_acc)
 		return;
 
@@ -610,7 +586,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 
 static void UpdateStationSignCoord(Station *st)
 {
-	StationRect *r = &st->rect;
+	const StationRect *r = &st->rect;
 
 	if (r->IsEmpty()) return; // no tiles belong to this station
 
@@ -639,21 +615,18 @@ static int32 ClearTile_Station(TileIndex tile, byte flags);
 // Or an error code if it failed.
 int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station)
 {
-	int32 cost = 0, ret;
-
-	Slope tileh;
-	uint z;
+	int32 cost = 0;
 	int allowed_z = -1;
-	int flat_z;
 
-	BEGIN_TILE_LOOP(tile_cur, w, h, tile)
+	BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
 		if (MayHaveBridgeAbove(tile_cur) && IsBridgeAbove(tile_cur)) {
 			return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
 
 		if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
 
-		tileh = GetTileSlope(tile_cur, &z);
+		uint z;
+		Slope tileh = GetTileSlope(tile_cur, &z);
 
 		/* Prohibit building if
 		 *   1) The tile is "steep" (i.e. stretches two height levels)
@@ -668,7 +641,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
 
-		flat_z = z;
+		int flat_z = z;
 		if (tileh != SLOPE_FLAT) {
 			// need to check so the entrance to the station is not pointing at a slope.
 			if ((invalid_dirs&1 && !(tileh & SLOPE_NE) && (uint)w_cur == w) ||
@@ -704,18 +677,19 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 				}
 			}
 		} else {
-			ret = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			int32 ret = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) return ret;
 			cost += ret;
 		}
-	END_TILE_LOOP(tile_cur, w, h, tile)
+	} END_TILE_LOOP(tile_cur, w, h, tile)
 
 	return cost;
 }
 
-static bool CanExpandRailroadStation(Station* st, uint* fin, Axis axis)
+static bool CanExpandRailroadStation(const Station* st, uint* fin, Axis axis)
 {
-	uint curw = st->trainst_w, curh = st->trainst_h;
+	uint curw = st->trainst_w;
+	uint curh = st->trainst_h;
 	TileIndex tile = fin[0];
 	uint w = fin[1];
 	uint h = fin[2];
@@ -824,15 +798,8 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
  */
 int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint32 p2)
 {
-	Station *st;
 	int w_org, h_org;
-	int32 cost, ret;
-	StationID est;
-	int plat_len, numtracks;
-	Axis axis;
-	uint finalvalues[3];
-	const StationSpec *statspec;
-	int specindex;
+	int32 ret;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -841,10 +808,9 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	if (!ValParamRailtype(p2 & 0xF)) return CMD_ERROR;
 
 	/* unpack parameters */
-	axis = (Axis)(p1 & 1);
-	numtracks = GB(p1,  8, 8);
-	plat_len  = GB(p1, 16, 8);
-	/* w = length, h = num_tracks */
+	Axis axis = (Axis)GB(p1, 0, 1);
+	uint numtracks = GB(p1,  8, 8);
+	uint plat_len  = GB(p1, 16, 8);
 	if (axis == AXIS_X) {
 		w_org = plat_len;
 		h_org = numtracks;
@@ -856,20 +822,21 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	if (h_org > _patches.station_spread || w_org > _patches.station_spread) return CMD_ERROR;
 
 	// these values are those that will be stored in train_tile and station_platforms
+	uint finalvalues[3];
 	finalvalues[0] = tile_org;
 	finalvalues[1] = w_org;
 	finalvalues[2] = h_org;
 
 	// Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station)
-	est = INVALID_STATION;
+	StationID est = INVALID_STATION;
 	// If DC_EXEC is in flag, do not want to pass it to CheckFlatLandBelow, because of a nice bug
 	//  for detail info, see: https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365
 	ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags & ~DC_EXEC, 5 << axis, _patches.nonuniform_stations ? &est : NULL);
 	if (CmdFailed(ret)) return ret;
-	cost = ret + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len;
+	int32 cost = ret + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len;
 
 	// Make sure there are no similar stations around us.
-	st = GetStationAround(tile_org, w_org, h_org, est);
+	Station *st = GetStationAround(tile_org, w_org, h_org, est);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	// See if there is a deleted station close to us.
@@ -914,8 +881,8 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	if (GB(p2, 8, 8) >= STAT_CLASS_MAX) return CMD_ERROR;
 
 	/* Check if we can allocate a custom stationspec to this station */
-	statspec = GetCustomStationSpec((StationClassID)GB(p2, 8, 8), GB(p2, 16, 8));
-	specindex = AllocateSpecToStation(statspec, st, flags & DC_EXEC);
+	const StationSpec *statspec = GetCustomStationSpec((StationClassID)GB(p2, 8, 8), GB(p2, 16, 8));
+	int specindex = AllocateSpecToStation(statspec, st, flags & DC_EXEC);
 	if (specindex == -1) return CMD_ERROR;
 
 	if (statspec != NULL) {
@@ -1000,14 +967,13 @@ static void MakeRailwayStationAreaSmaller(Station *st)
 	uint w = st->trainst_w;
 	uint h = st->trainst_h;
 	TileIndex tile = st->train_tile;
-	uint i;
 
 restart:
 
 	// too small?
 	if (w != 0 && h != 0) {
 		// check the left side, x = constant, y changes
-		for (i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(0, i));) {
+		for (uint i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(0, i));) {
 			// the left side is unused?
 			if (++i == h) {
 				tile += TileDiffXY(1, 0);
@@ -1017,7 +983,7 @@ restart:
 		}
 
 		// check the right side, x = constant, y changes
-		for (i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(w - 1, i));) {
+		for (uint i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(w - 1, i));) {
 			// the right side is unused?
 			if (++i == h) {
 				w--;
@@ -1026,7 +992,7 @@ restart:
 		}
 
 		// check the upper side, y = constant, x changes
-		for (i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(i, 0));) {
+		for (uint i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(i, 0));) {
 			// the left side is unused?
 			if (++i == w) {
 				tile += TileDiffXY(0, 1);
@@ -1036,7 +1002,7 @@ restart:
 		}
 
 		// check the lower side, y = constant, x changes
-		for (i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(i, h - 1));) {
+		for (uint i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(i, h - 1));) {
 			// the left side is unused?
 			if (++i == w) {
 				h--;
@@ -1060,13 +1026,11 @@ restart:
  */
 int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Station *st;
-
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// make sure the specified tile belongs to the current player, and that it is a railroad station.
 	if (!IsTileType(tile, MP_STATION) || !IsRailwayStation(tile) || !_patches.nonuniform_stations) return CMD_ERROR;
-	st = GetStationByTile(tile);
+	Station *st = GetStationByTile(tile);
 	if (_current_player != OWNER_WATER && (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile))) return CMD_ERROR;
 
 	// if we reached here, it means we can actually delete it. do that.
@@ -1099,9 +1063,6 @@ int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint
 
 static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 {
-	int w,h;
-	int32 cost = 0;
-
 	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
 	if (_current_player == OWNER_WATER && _patches.nonuniform_stations)
 		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAILROAD_STATION);
@@ -1112,11 +1073,12 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 
 	/* determine width and height of platforms */
 	tile = st->train_tile;
-	w = st->trainst_w;
-	h = st->trainst_h;
+	int w = st->trainst_w;
+	int h = st->trainst_h;
 
 	assert(w != 0 && h != 0);
 
+	int32 cost = 0;
 	/* clear all areas of the station */
 	do {
 		int w_bak = w;
@@ -1208,10 +1170,6 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station* st)
  */
 int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Station *st;
-	RoadStop *road_stop;
-	int32 cost;
-	int32 ret;
 	bool type = HASBIT(p2, 0);
 	bool is_drive_through = HASBIT(p2, 1);
 	bool build_over_road  = is_drive_through && IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL;
@@ -1235,19 +1193,19 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (build_over_road) flags ^= DC_AUTO;
 
 	if (town_owned_road) _current_player = OWNER_TOWN;
-	ret = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL);
+	int32 ret = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL);
 	_current_player = cur_owner;
 	if (CmdFailed(ret)) return ret;
-	cost = build_over_road ? 0 : ret; // Don't add cost of clearing road when overbuilding
+	int32 cost = build_over_road ? 0 : ret; // Don't add cost of clearing road when overbuilding
 
-	st = GetStationAround(tile, 1, 1, INVALID_STATION);
+	Station *st = GetStationAround(tile, 1, 1, INVALID_STATION);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	/* Find a station close to us */
 	if (st == NULL) st = GetClosestStationFromTile(tile);
 
 	//give us a road stop in the list, and check if something went wrong
-	road_stop = new RoadStop(tile);
+	RoadStop *road_stop = new RoadStop(tile);
 	if (road_stop == NULL) {
 		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
 	}
@@ -1318,14 +1276,14 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 // Remove a bus station
 static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 {
-	RoadStop **primary_stop;
-	RoadStop *cur_stop;
-	bool is_truck = IsTruckStop(tile);
-
 	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner)) {
 		return CMD_ERROR;
 	}
 
+	bool is_truck = IsTruckStop(tile);
+
+	RoadStop **primary_stop;
+	RoadStop *cur_stop;
 	if (is_truck) { // truck stop
 		primary_stop = &st->truck_stops;
 		cur_stop = GetRoadStopByTile(tile, RoadStop::TRUCK);
@@ -1371,21 +1329,15 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
  */
 int32 CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Station* st;
-	bool is_drive_through;
-	bool is_towns_road = false;
-	RoadBits road_bits;
-	int32 ret;
-
 	/* Make sure the specified tile is a road stop of the correct type */
 	if (!IsTileType(tile, MP_STATION) || !IsRoadStop(tile) || (uint32)GetRoadStopType(tile) != p2) return CMD_ERROR;
-	st = GetStationByTile(tile);
+	Station *st = GetStationByTile(tile);
 	/* Save the stop info before it is removed */
-	is_drive_through = IsDriveThroughStopTile(tile);
-	road_bits = GetAnyRoadBits(tile);
-	if (is_drive_through) is_towns_road = GetStopBuiltOnTownRoad(tile);
+	bool is_drive_through = IsDriveThroughStopTile(tile);
+	RoadBits road_bits = GetAnyRoadBits(tile);
+	bool is_towns_road = is_drive_through && GetStopBuiltOnTownRoad(tile);
 
-	ret = RemoveRoadStop(st, flags, tile);
+	int32 ret = RemoveRoadStop(st, flags, tile);
 
 	/* If the stop was a drive-through stop replace the road */
 	if ((flags & DC_EXEC) && !CmdFailed(ret) && is_drive_through) {
@@ -1502,13 +1454,7 @@ static const byte * const _airport_sections[] = {
  */
 int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Town *t;
-	Station *st;
-	int32 cost;
-	int32 ret;
-	int w, h;
 	bool airport_upgrade = true;
-	const AirportFTAClass* afc;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -1518,11 +1464,12 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
 		return CMD_ERROR;
 
-	t = ClosestTownFromTile(tile, (uint)-1);
+	Town *t = ClosestTownFromTile(tile, (uint)-1);
 
 	/* Check if local auth refuses a new airport */
 	{
 		uint num = 0;
+		const Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (st->town == t && st->facilities&FACIL_AIRPORT && st->airport_type != AT_OILRIG)
 				num++;
@@ -1533,15 +1480,15 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	afc = GetAirport(p1);
-	w = afc->size_x;
-	h = afc->size_y;
+	const AirportFTAClass *afc = GetAirport(p1);
+	int w = afc->size_x;
+	int h = afc->size_y;
 
-	ret = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
+	int32 ret = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
 	if (CmdFailed(ret)) return ret;
-	cost = ret;
+	int32 cost = ret;
 
-	st = GetStationAround(tile, w, h, INVALID_STATION);
+	Station *st = GetStationAround(tile, w, h, INVALID_STATION);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	/* Find a station close to us */
@@ -1629,20 +1576,16 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 static int32 RemoveAirport(Station *st, uint32 flags)
 {
-	TileIndex tile;
-	int w,h;
-	int32 cost;
-
 	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner))
 		return CMD_ERROR;
 
-	tile = st->airport_tile;
+	TileIndex tile = st->airport_tile;
 
 	const AirportFTAClass *afc = st->Airport();
-	w = afc->size_x;
-	h = afc->size_y;
+	int w = afc->size_x;
+	int h = afc->size_y;
 
-	cost = w * h * _price.remove_airport;
+	int32 cost = w * h * _price.remove_airport;
 
 	BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
 		if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
@@ -1654,9 +1597,7 @@ static int32 RemoveAirport(Station *st, uint32 flags)
 	} END_TILE_LOOP(tile_cur, w,h,tile)
 
 	if (flags & DC_EXEC) {
-		uint i;
-
-		for (i = 0; i < afc->nof_depots; ++i) {
+		for (uint i = 0; i < afc->nof_depots; ++i) {
 			DeleteWindowById(
 				WC_VEHICLE_DEPOT, tile + ToTileIndexDiff(afc->airport_depots[i])
 			);
@@ -1681,14 +1622,12 @@ static int32 RemoveAirport(Station *st, uint32 flags)
  */
 int32 CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Station *st;
-
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (!IsClearWaterTile(tile) || tile == 0) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 
 	/* allocate and initialize new station */
-	st = new Station(tile);
+	Station *st = new Station(tile);
 	if (st == NULL) return CMD_ERROR;
 
 	/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
@@ -1741,12 +1680,10 @@ static bool CheckShipsOnBuoy(Station *st)
 
 static int32 RemoveBuoy(Station *st, uint32 flags)
 {
-	TileIndex tile;
-
 	/* XXX: strange stuff */
 	if (!IsValidPlayer(_current_player))  return_cmd_error(INVALID_STRING_ID);
 
-	tile = st->dock_tile;
+	TileIndex tile = st->dock_tile;
 
 	if (CheckShipsOnBuoy(st))   return_cmd_error(STR_BUOY_IS_IN_USE);
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
@@ -1792,13 +1729,11 @@ static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
  */
 int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile_cur;
-	DiagDirection direction;
 	int32 cost;
-	Station *st;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
+	DiagDirection direction;
 	switch (GetTileSlope(tile, NULL)) {
 		case SLOPE_SW: direction = DIAGDIR_NE; break;
 		case SLOPE_SE: direction = DIAGDIR_NW; break;
@@ -1814,7 +1749,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
-	tile_cur = tile + TileOffsByDiagDir(direction);
+	TileIndex tile_cur = tile + TileOffsByDiagDir(direction);
 
 	if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
 
@@ -1831,7 +1766,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	/* middle */
-	st = GetStationAround(
+	Station *st = GetStationAround(
 		tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 		_dock_w_chk[direction], _dock_h_chk[direction], INVALID_STATION);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
@@ -1889,13 +1824,10 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 static int32 RemoveDock(Station *st, uint32 flags)
 {
-	TileIndex tile1;
-	TileIndex tile2;
-
 	if (!CheckOwnership(st->owner)) return CMD_ERROR;
 
-	tile1 = st->dock_tile;
-	tile2 = tile1 + TileOffsByDiagDir(GetDockDirection(tile1));
+	TileIndex tile1 = st->dock_tile;
+	TileIndex tile2 = tile1 + TileOffsByDiagDir(GetDockDirection(tile1));
 
 	if (!EnsureNoVehicle(tile1)) return CMD_ERROR;
 	if (!EnsureNoVehicle(tile2)) return CMD_ERROR;
@@ -1931,7 +1863,6 @@ extern void DrawCanalWater(TileIndex tile);
 
 static void DrawTile_Station(TileInfo *ti)
 {
-	const DrawTileSeqStruct *dtss;
 	const DrawTileSprites *t = NULL;
 	RailType railtype = GetRailType(ti->tile);
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
@@ -1939,9 +1870,8 @@ static void DrawTile_Station(TileInfo *ti)
 	const Station *st = NULL;
 	const StationSpec *statspec = NULL;
 	PlayerID owner = GetTileOwner(ti->tile);
-	SpriteID image;
-	SpriteID palette;
 
+	SpriteID palette;
 	if (IsValidPlayer(owner)) {
 		palette = PLAYER_SPRITE_COLOR(owner);
 	} else {
@@ -1979,7 +1909,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationGfx(ti->tile)];
 
-	image = t->ground_sprite;
+	SpriteID image = t->ground_sprite;
 	if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
 		image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
 		image += rti->custom_ground_offset;
@@ -1995,9 +1925,8 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (IsBuoyTile(ti->tile) && (ti->z != 0 || !IsTileOwner(ti->tile, OWNER_WATER))) DrawCanalWater(ti->tile);
 
+	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, t->seq) {
-		SpriteID pal;
-
 		image = dtss->image;
 		if (relocation == 0 || HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += rti->total_offset;
@@ -2005,6 +1934,7 @@ static void DrawTile_Station(TileInfo *ti)
 			image += relocation;
 		}
 
+		SpriteID pal;
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 			pal = PALETTE_TO_TRANSPARENT;
@@ -2029,18 +1959,14 @@ static void DrawTile_Station(TileInfo *ti)
 
 void StationPickerDrawSprite(int x, int y, RailType railtype, int image)
 {
-	SpriteID pal, img;
-	const DrawTileSeqStruct *dtss;
-	const DrawTileSprites *t;
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
+	SpriteID pal = PLAYER_SPRITE_COLOR(_local_player);
+	const DrawTileSprites *t = &_station_display_datas[image];
 
-	pal = PLAYER_SPRITE_COLOR(_local_player);
-
-	t = &_station_display_datas[image];
-
-	img = t->ground_sprite;
+	SpriteID img = t->ground_sprite;
 	DrawSprite(img + rti->total_offset, HASBIT(img, PALETTE_MODIFIER_COLOR) ? pal : PAL_NONE, x, y);
 
+	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, t->seq) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
 		DrawSprite(dtss->image + rti->total_offset, pal, x + pt.x, y + pt.y);
@@ -2064,11 +1990,10 @@ static void GetAcceptedCargo_Station(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 {
-	StringID str;
-
 	td->owner = GetTileOwner(tile);
 	td->build_date = GetStationByTile(tile)->build_date;
 
+	StringID str;
 	switch (GetStationType(tile)) {
 		default: NOT_REACHED();
 		case STATION_RAIL:    str = STR_305E_RAILROAD_STATION; break;
@@ -2162,9 +2087,8 @@ static void AnimateTile_Station(TileIndex tile)
 	};
 
 	StationGfx gfx = GetStationGfx(tile);
-	const AnimData* i;
 
-	for (i = data; i != endof(data); i++) {
+	for (const AnimData *i = data; i != endof(data); i++) {
 		if (i->from <= gfx && gfx <= i->to) {
 			if ((_tick_counter & i->delay) == 0) {
 				SetStationGfx(tile, gfx < i->to ? gfx + 1 : i->from);
@@ -2279,22 +2203,18 @@ static inline void byte_inc_sat(byte *p) { byte b = *p + 1; if (b != 0) *p = b; 
 
 static void UpdateStationRating(Station *st)
 {
-	GoodsEntry *ge;
-	int rating;
-	StationID index;
-	int waiting;
 	bool waiting_changed = false;
 
 	byte_inc_sat(&st->time_since_load);
 	byte_inc_sat(&st->time_since_unload);
 
-	ge = st->goods;
+	GoodsEntry *ge = st->goods;
 	do {
 		if (ge->enroute_from != INVALID_STATION) {
 			byte_inc_sat(&ge->enroute_time);
 			byte_inc_sat(&ge->days_since_pickup);
 
-			rating = 0;
+			int rating = 0;
 
 			{
 				int b = ge->last_speed;
@@ -2323,15 +2243,13 @@ static void UpdateStationRating(Station *st)
 				(rating += 35, true);
 			}
 
-			{
-				waiting = GB(ge->waiting_acceptance, 0, 12);
-				(rating -= 90, waiting > 1500) ||
-				(rating += 55, waiting > 1000) ||
-				(rating += 35, waiting > 600) ||
-				(rating += 10, waiting > 300) ||
-				(rating += 20, waiting > 100) ||
-				(rating += 10, true);
-			}
+			int waiting = GB(ge->waiting_acceptance, 0, 12);
+			(rating -= 90, waiting > 1500) ||
+			(rating += 55, waiting > 1000) ||
+			(rating += 35, waiting > 600) ||
+			(rating += 10, waiting > 300) ||
+			(rating += 20, waiting > 100) ||
+			(rating += 10, true);
 
 			{
 				int or_ = ge->rating; // old rating
@@ -2361,8 +2279,7 @@ static void UpdateStationRating(Station *st)
 		}
 	} while (++ge != endof(st->goods));
 
-	index = st->index;
-
+	StationID index = st->index;
 	if (waiting_changed) {
 		InvalidateWindow(WC_STATION_VIEW, index);
 	} else {
@@ -2373,11 +2290,9 @@ static void UpdateStationRating(Station *st)
 /* called for every station each tick */
 static void StationHandleSmallTick(Station *st)
 {
-	byte b;
-
 	if (st->facilities == 0) return;
 
-	b = st->delete_ctr + 1;
+	byte b = st->delete_ctr + 1;
 	if (b >= 185) b = 0;
 	st->delete_ctr = b;
 
@@ -2386,19 +2301,15 @@ static void StationHandleSmallTick(Station *st)
 
 void OnTick_Station(void)
 {
-	uint i;
-	Station *st;
-
 	if (_game_mode == GM_EDITOR) return;
 
-	i = _station_tick_ctr;
+	uint i = _station_tick_ctr;
 	if (++_station_tick_ctr > GetMaxStationIndex()) _station_tick_ctr = 0;
 
 	if (IsValidStationID(i)) StationHandleBigTick(GetStation(i));
 
-	FOR_ALL_STATIONS(st) {
-		StationHandleSmallTick(st);
-	}
+	Station *st;
+	FOR_ALL_STATIONS(st) StationHandleSmallTick(st);
 }
 
 void StationMonthlyLoop(void)
@@ -2413,9 +2324,7 @@ void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint 
 	FOR_ALL_STATIONS(st) {
 		if (st->owner == owner &&
 				DistanceManhattan(tile, st->xy) <= radius) {
-			uint i;
-
-			for (i = 0; i != NUM_CARGO; i++) {
+			for (uint i = 0; i != NUM_CARGO; i++) {
 				GoodsEntry* ge = &st->goods[i];
 
 				if (ge->enroute_from != INVALID_STATION) {
@@ -2446,15 +2355,12 @@ static void UpdateStationWaiting(Station *st, int type, uint amount)
  */
 int32 CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	StringID str;
-	Station *st;
-
 	if (!IsValidStationID(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
-	st = GetStation(p1);
+	Station *st = GetStation(p1);
 
 	if (!CheckOwnership(st->owner)) return CMD_ERROR;
 
-	str = AllocateNameUnique(_cmd_text, 6);
+	StringID str = AllocateNameUnique(_cmd_text, 6);
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -2476,18 +2382,13 @@ int32 CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 {
 	Station* around[8];
-	uint i;
-	uint moved;
-	uint best_rating, best_rating2;
-	Station *st1, *st2;
-	uint t;
 	int rad = 0;
+
+	for (uint i = 0; i < lengthof(around); i++) around[i] = NULL;
+
 	int w_prod; //width and height of the "producer" of the cargo
 	int h_prod;
 	int max_rad;
-
-	for (i = 0; i < lengthof(around); i++) around[i] = NULL;
-
 	if (_patches.modified_catchment) {
 		w_prod = w;
 		h_prod = h;
@@ -2503,14 +2404,12 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 	}
 
 	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
-		Station* st;
-
 		cur_tile = TILE_MASK(cur_tile);
 		if (!IsTileType(cur_tile, MP_STATION)) continue;
 
-		st = GetStationByTile(cur_tile);
+		Station *st = GetStationByTile(cur_tile);
 
-		for (i = 0; i != lengthof(around); i++) {
+		for (uint i = 0; i != lengthof(around); i++) {
 			if (around[i] == NULL) {
 				if (!st->IsBuoy() &&
 						(st->town->exclusive_counter == 0 || st->town->exclusivity == st->owner) && // check exclusive transport rights
@@ -2562,16 +2461,18 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 
 	if (around[1] == NULL) {
 		/* only one station around */
-		moved = (amount * around[0]->goods[type].rating >> 8) + 1;
+		uint moved = (amount * around[0]->goods[type].rating >> 8) + 1;
 		UpdateStationWaiting(around[0], type, moved);
 		return moved;
 	}
 
 	/* several stations around, find the two with the highest rating */
-	st2 = st1 = NULL;
-	best_rating = best_rating2 = 0;
+	Station *st1 = NULL;
+	Station *st2 = NULL;
+	uint best_rating  = 0;
+	uint best_rating2 = 0;
 
-	for (i = 0; i != lengthof(around) && around[i] != NULL; i++) {
+	for (uint i = 0; i != lengthof(around) && around[i] != NULL; i++) {
 		if (around[i]->goods[type].rating >= best_rating) {
 			best_rating2 = best_rating;
 			st2 = st1;
@@ -2592,9 +2493,9 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 	best_rating2 >>= 1;
 
 	/* amount given to station 1 */
-	t = (best_rating * (amount + 1)) / (best_rating + best_rating2);
+	uint t = (best_rating * (amount + 1)) / (best_rating + best_rating2);
 
-	moved = 0;
+	uint moved = 0;
 	if (t != 0) {
 		moved = t * best_rating / 256 + 1;
 		amount -= t;
@@ -2612,7 +2513,6 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 
 void BuildOilRig(TileIndex tile)
 {
-	uint j;
 	Station *st = new Station();
 
 	if (st == NULL) {
@@ -2646,7 +2546,7 @@ void BuildOilRig(TileIndex tile)
 	st->facilities = FACIL_AIRPORT | FACIL_DOCK;
 	st->build_date = _date;
 
-	for (j = 0; j != NUM_CARGO; j++) {
+	for (uint j = 0; j != NUM_CARGO; j++) {
 		st->goods[j].waiting_acceptance = 0;
 		st->goods[j].days_since_pickup = 0;
 		st->goods[j].enroute_from = INVALID_STATION;
@@ -2692,8 +2592,6 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 
 static int32 ClearTile_Station(TileIndex tile, byte flags)
 {
-	Station *st;
-
 	if (flags & DC_AUTO) {
 		switch (GetStationType(tile)) {
 			case STATION_RAIL:    return_cmd_error(STR_300B_MUST_DEMOLISH_RAILROAD);
@@ -2708,7 +2606,7 @@ static int32 ClearTile_Station(TileIndex tile, byte flags)
 		}
 	}
 
-	st = GetStationByTile(tile);
+	Station *st = GetStationByTile(tile);
 
 	switch (GetStationType(tile)) {
 		case STATION_RAIL:    return RemoveRailroadStation(st, tile, flags);
@@ -2746,23 +2644,19 @@ void InitializeStations(void)
 
 void AfterLoadStations(void)
 {
-	Station *st;
-	uint i;
-	TileIndex tile;
-
 	/* Update the speclists of all stations to point to the currently loaded custom stations. */
+	Station *st;
 	FOR_ALL_STATIONS(st) {
-		for (i = 0; i < st->num_specs; i++) {
+		for (uint i = 0; i < st->num_specs; i++) {
 			if (st->speclist[i].grfid == 0) continue;
 
 			st->speclist[i].spec = GetCustomStationSpecByGrf(st->speclist[i].grfid, st->speclist[i].localidx);
 		}
 	}
 
-	for (tile = 0; tile < MapSize(); tile++) {
+	for (TileIndex tile = 0; tile < MapSize(); tile++) {
 		if (GetTileType(tile) != MP_STATION) continue;
-		st = GetStationByTile(tile);
-		st->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
+		GetStationByTile(tile)->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
 	}
 }
 
@@ -2882,10 +2776,8 @@ static const SaveLoad _station_speclist_desc[] = {
 
 static void SaveLoad_STNS(Station *st)
 {
-	uint i;
-
 	SlObject(st, _station_desc);
-	for (i = 0; i != NUM_CARGO; i++) {
+	for (uint i = 0; i != NUM_CARGO; i++) {
 		SlObject(&st->goods[i], _goods_desc);
 
 		/* In older versions, enroute_from had 0xFF as INVALID_STATION, is now 0xFFFF */
@@ -2904,7 +2796,9 @@ static void SaveLoad_STNS(Station *st)
 	if (st->num_specs != 0) {
 		/* Allocate speclist memory when loading a game */
 		if (st->speclist == NULL) st->speclist = CallocT<StationSpecList>(st->num_specs);
-		for (i = 0; i < st->num_specs; i++) SlObject(&st->speclist[i], _station_speclist_desc);
+		for (uint i = 0; i < st->num_specs; i++) {
+			SlObject(&st->speclist[i], _station_speclist_desc);
+		}
 	}
 }
 
@@ -2966,5 +2860,3 @@ extern const ChunkHandler _station_chunk_handlers[] = {
 	{ 'STNS', Save_STNS,      Load_STNS,      CH_ARRAY },
 	{ 'ROAD', Save_ROADSTOP,  Load_ROADSTOP,  CH_ARRAY | CH_LAST},
 };
-
-
