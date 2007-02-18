@@ -1215,6 +1215,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	bool type = HASBIT(p2, 0);
 	bool is_drive_through = HASBIT(p2, 1);
 	bool build_over_road  = is_drive_through && IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL;
+	bool town_owned_road  = build_over_road && IsTileOwner(tile, OWNER_TOWN);
 	Owner cur_owner = _current_player;
 
 	/* Saveguard the parameters */
@@ -1233,7 +1234,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (build_over_road) flags ^= DC_AUTO;
 
-	if (build_over_road && IsTileOwner(tile, OWNER_TOWN)) _current_player = OWNER_TOWN;
+	if (town_owned_road) _current_player = OWNER_TOWN;
 	ret = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL);
 	_current_player = cur_owner;
 	if (CmdFailed(ret)) return ret;
@@ -1301,7 +1302,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		st->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
 
 		MakeRoadStop(tile, st->owner, st->index, type ? RoadStop::TRUCK : RoadStop::BUS, is_drive_through, (DiagDirection)p1);
-		if (is_drive_through & HASBIT(p2, 3)) SetStopBuiltOnTownRoad(tile);
+		if (town_owned_road) SetStopBuiltOnTownRoad(tile);
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
