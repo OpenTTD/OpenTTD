@@ -1140,7 +1140,7 @@ check_makedepend() {
 }
 
 detect_os() {
-	if [ $os = "DETECT" ]; then
+	if [ "$os" = "DETECT" ]; then
 		# Detect UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP
 
 		# Try first via dumpmachine, then via uname
