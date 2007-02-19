@@ -6,8 +6,6 @@
 /** @file helpers.hpp */
 #include "macros.h"
 
-#ifdef __cplusplus
-
 /** When allocating using malloc/calloc in C++ it is usually needed to cast the return value
 *  from void* to the proper pointer type. Another alternative would be MallocT<> as follows */
 template <typename T> FORCEINLINE T* MallocT(size_t num_elements)
@@ -160,13 +158,5 @@ template <typename T> FORCEINLINE T ToggleBitT(T t, int bit_index)
 	TOGGLEBIT(val, bit_index);
 	return (T)val;
 }
-
-#else // __cplusplus
-
-#define DECLARE_POSTFIX_INCREMENT(E)
-#define DECLARE_ENUM_AS_BIT_SET(E)
-#define DECLARE_ENUM_AS_BIT_INDEX(E1,E2)
-
-#endif  // __cplusplus
 
 #endif /* HELPERS_HPP */

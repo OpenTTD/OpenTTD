@@ -234,23 +234,12 @@ typedef unsigned char byte;
 #endif
 
 #ifndef __BEOS__
-
-/* some platforms use 4 bytes bool in C++
- * C bool has to be the same */
-#	ifndef __cplusplus
-#		ifdef FOUR_BYTE_BOOL
-			typedef unsigned long bool;
-#		else /* FOUR_BYTE_BOOL */
-			typedef unsigned char bool;
-#		endif /* FOUR_BYTE_BOOL */
-#	endif /* __cplusplus */
-
 	typedef signed char int8;
 	typedef signed short int16;
 	typedef signed int int32;
 	typedef signed __int64 int64;
 	typedef unsigned __int64 uint64;
-#endif /* __BEOS__ */
+#endif /* !__BEOS__ */
 
 #if defined(ARM) || defined(__arm__) || defined(__alpha__)
 # define OTTD_ALIGNMENT
@@ -289,24 +278,11 @@ typedef unsigned char byte;
 # define PERSONAL_DIR ""
 #endif
 
-#ifndef __cplusplus
-# ifndef __BEOS__
-   enum {
-    false = 0,
-    true = 1,
-   };
-# endif
-#endif /* __cplusplus */
-
 /* Compile time assertions */
 #ifdef __OS2__
 # define assert_compile(expr)
 #else
-# ifdef __cplusplus
-#  define assert_compile(expr) extern "C" void __ct_assert__(int a[1 - 2 * !(expr)])
-# else /* __cplusplus */
-#  define assert_compile(expr) void __ct_assert__(int a[1 - 2 * !(expr)])
-# endif /* !__cplusplus */
+# define assert_compile(expr) extern "C" void __ct_assert__(int a[1 - 2 * !(expr)])
 #endif /* __OS2__ */
 
 assert_compile(sizeof(uint32) == 4);
@@ -317,16 +293,10 @@ assert_compile(sizeof(uint8)  == 1);
 #define endof(x) (&x[lengthof(x)])
 #define lastof(x) (&x[lengthof(x) - 1])
 
-#ifdef offsetof
-# undef offsetof
-#endif
-
-#ifndef __cplusplus
-# define offsetof(s,m)   (size_t)&(((s *)0)->m)
-#else /* __cplusplus */
-# define cpp_offsetof(s,m)   (((size_t)&reinterpret_cast<const volatile char&>((((s*)(char*)8)->m))) - 8)
+#define cpp_offsetof(s,m)   (((size_t)&reinterpret_cast<const volatile char&>((((s*)(char*)8)->m))) - 8)
+#ifndef offsetof
 # define offsetof(s,m)       cpp_offsetof(s, m)
-#endif /* __cplusplus */
+#endif /* offsetof */
 
 
 /* take care of some name clashes on MacOS */
