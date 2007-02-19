@@ -2146,7 +2146,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 			}
 		}
 	} else if (v->type == VEH_Road) {
-		if (v->u.road.state < RVSB_IN_ROAD_STOP && v->u.road.frame == 0) {
+		if (v->u.road.state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir((Trackdir)v->u.road.state) && v->u.road.frame == 0) {
 			if (IsRoadStop(tile)) {
 				/* Attempt to allocate a parking bay in a road stop */
 				RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
