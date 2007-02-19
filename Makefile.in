@@ -30,6 +30,7 @@ TTDS = $(SRC_DIRS:%=%/$(TTD))
 OS = !!OS!!
 OSXAPP = !!OSXAPP!!
 REVISION = !!REVISION!!
+AWK = !!AWK!!
 
 RES := $(shell if ! [ -f $(CONFIG_CACHE_SOURCE_LIST) ] || [ -n "`cmp $(CONFIG_CACHE_SOURCE_LIST) $(SOURCE_LIST)`" ]; then cp $(SOURCE_LIST) $(CONFIG_CACHE_SOURCE_LIST); fi )
 
@@ -118,7 +119,7 @@ ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
 # Find if the local source if modified
 REV_MODIFIED := $(shell svnversion $(SRC_DIR) | sed -n 's/.*\(M\).*/\1/p' )
 # Find the revision like: rXXXX-branch
-REV := $(shell LC_ALL=C svn info $(SRC_DIR) | awk '/^URL:.*branches/ { split($$2, a, "/"); BRANCH="-"a[5] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
+REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branches/ { split($$2, a, "/"); BRANCH="-"a[5] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
 endif
 endif
 # Make sure we have something in REV

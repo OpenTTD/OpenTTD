@@ -58,7 +58,7 @@ if ! [ -f "$LANG_DIR/english.txt" ]; then
 fi
 
 # Read the source.list and process it
-SRCS="`< $ROOT_DIR/source.list tr '\r' '\n' | awk '
+SRCS="`< $ROOT_DIR/source.list tr '\r' '\n' | $awk '
 	{  }
 	/^(	*)#end/  { if (deep == skip) { skip -= 1; } deep -= 1; next; }
 	/^(	*)#else/ { if (deep == skip) { skip -= 1; } else if (deep - 1 == skip) { skip += 1; } next; }
@@ -100,11 +100,11 @@ SRCS="`< $ROOT_DIR/source.list tr '\r' '\n' | awk '
 	}
 ' | $PIPE_SORT`"
 
-OBJS_C="`  echo \"$SRCS\" | awk ' { ORS = " " } /\.c$/   { gsub(".c$",   ".o", $0); print $0; }'`"
-OBJS_CPP="`echo \"$SRCS\" | awk ' { ORS = " " } /\.cpp$/ { gsub(".cpp$", ".o", $0); print $0; }'`"
-OBJS_MM="` echo \"$SRCS\" | awk ' { ORS = " " } /\.mm$/  { gsub(".mm$",  ".o", $0); print $0; }'`"
-OBJS_RC="` echo \"$SRCS\" | awk ' { ORS = " " } /\.rc$/  { gsub(".rc$",  ".o", $0); print $0; }'`"
-SRCS="`    echo \"$SRCS\" | awk ' { ORS = " " } { print $0; }'`"
+OBJS_C="`  echo \"$SRCS\" | $awk ' { ORS = " " } /\.c$/   { gsub(".c$",   ".o", $0); print $0; }'`"
+OBJS_CPP="`echo \"$SRCS\" | $awk ' { ORS = " " } /\.cpp$/ { gsub(".cpp$", ".o", $0); print $0; }'`"
+OBJS_MM="` echo \"$SRCS\" | $awk ' { ORS = " " } /\.mm$/  { gsub(".mm$",  ".o", $0); print $0; }'`"
+OBJS_RC="` echo \"$SRCS\" | $awk ' { ORS = " " } /\.rc$/  { gsub(".rc$",  ".o", $0); print $0; }'`"
+SRCS="`    echo \"$SRCS\" | $awk ' { ORS = " " } { print $0; }'`"
 
 # In makefiles, we always use -u for sort
 if [ -z "$sort" ]; then

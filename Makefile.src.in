@@ -27,6 +27,7 @@ MAKEDEPEND   = !!MAKEDEPEND!!
 CFLAGS_MAKEDEP= !!CFLAGS_MAKEDEP!!
 SORT         = !!SORT!!
 REVISION     = !!REVISION!!
+AWK          = !!AWK!!
 CONFIG_CACHE_COMPILER = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_COMPILER!!
 CONFIG_CACHE_LINKER   = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_LINKER!!
 CONFIG_CACHE_ENDIAN   = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_ENDIAN!!
@@ -82,7 +83,7 @@ ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
 # Find if the local source if modified
 REV_MODIFIED := $(shell svnversion $(SRC_DIR) | sed -n 's/.*\(M\).*/\1/p' )
 # Find the revision like: rXXXX-branch
-REV := $(shell LC_ALL=C svn info $(SRC_DIR) | awk '/^URL:.*branch/ { split($$2, a, "/"); BRANCH="-"a[5] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
+REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branch/ { split($$2, a, "/"); BRANCH="-"a[5] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
 endif
 endif
 # Make sure we have something in REV
@@ -166,7 +167,7 @@ endif
 
 # Remove all comments and includes that don't start with $(SRC_DIR)
 # Remove $(SRC_DIR) from object-file-name
-	@awk '                              \
+	@$(AWK) '                           \
 	/^# DO NOT/ { print $$0 ; next}     \
 	/^#/ {next}                         \
 	/:/ {                               \

@@ -17,6 +17,7 @@ set_default() {
 	windres=""
 	strip=""
 	lipo=""
+	awk="awk"
 	os="DETECT"
 	endian="AUTO"
 	revision=""
@@ -57,7 +58,7 @@ set_default() {
 	with_fontconfig="1"
 	with_psp_config="1"
 
-	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_osx_sysroot enable_universal enable_osx_g5 with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config CC CXX CFLAGS LDFLAGS"
+	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_osx_sysroot enable_universal enable_osx_g5 with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config CC CXX CFLAGS LDFLAGS"
 }
 
 detect_params() {
@@ -99,6 +100,8 @@ detect_params() {
 			--cxx-host=*)                 cxx_host="$optarg";;
 			--windres)                    prevp_p="windres";;
 			--windres=*)                  windres="$optarg";;
+			--awk)                        prevp_p="awk";;
+			--awk=*)                      awk="$optarg";;
 			--strip)                      prevp_p="strip";;
 			--strip=*)                    strip="$optarg";;
 			--lipo)                       prevp_p="lipo";;
@@ -308,6 +311,8 @@ check_params() {
 		echo " Available options are: --enable-debug[=0123]"
 		exit 1
 	fi
+
+	detect_awk
 
 	check_build
 	check_host
@@ -1139,12 +1144,51 @@ check_makedepend() {
 	log 1 "checking makedepend... $makedepend"
 }
 
+detect_awk() {
+	# Not all awks allow gsub(), so we test for that here! It is in fact all we need...
+
+	# These awks are known to work. Test for them explicit
+	awks="gawk mawk nawk"
+
+	awk_prefix="echo \"a.c b.c c.c\" | tr ' ' \\\\n | "
+	awk_param="' { ORS = \" \" } /\.c$/   { gsub(\".c$\",   \".o\", \$0); print \$0; }' 2>/dev/null"
+	awk_result="a.o b.o c.o "
+	log 2 "Detecing awk..."
+
+	log 2 "Trying: $awk_prefix $awk $awk_param"
+	res=`eval $awk_prefix $awk $awk_param`
+	log 2 "Result: '$res'"
+	if [ "$res" != "$awk_result" ] && [ "$awk" = "awk" ]; then
+		# User didn't supply his own awk, so try to detect some other known working names for an awk
+		for awk in $awks; do
+			log 2 "Trying: $awk_prefix $awk $awk_param"
+			res=`eval $awk_prefix $awk $awk_param`
+			log 2 "Result: '$res'"
+			if [ "$res" = "$awk_result" ]; then break; fi
+		done
+
+		if [ "$res" != "$awk_result" ]; then
+			log 1 "checking awk... not found"
+			log 1 "configure: error: no awk found"
+			log 1 "configure: error: please install one of the following: $awks"
+			exit 1
+		fi
+	fi
+	if [ "$res" != "$awk_result" ]; then
+		log 1 "checking awk... not found"
+		log 1 "configure: error: you supplied '$awk' but it doesn't seem a valid gawk or mawk"
+		exit 1
+	fi
+
+	log 1 "checking awk... $awk"
+}
+
 detect_os() {
 	if [ "$os" = "DETECT" ]; then
 		# Detect UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP
 
 		# Try first via dumpmachine, then via uname
-		os=`echo "$host" | tr '[A-Z]' '[a-z]' | awk '
+		os=`echo "$host" | tr '[A-Z]' '[a-z]' | $awk '
 					/linux/        { print "UNIX";    exit}
 					/darwin/       { print "OSX";     exit}
 					/freebsd/      { print "FREEBSD"; exit}
@@ -1159,7 +1203,7 @@ detect_os() {
 		'`
 
 		if [ -z "$os" ]; then
-			os=`LC_ALL=C uname | tr '[A-Z]' '[a-z]' | awk '
+			os=`LC_ALL=C uname | tr '[A-Z]' '[a-z]' | $awk '
 					/linux/        { print "UNIX";    exit}
 					/darwin/       { print "OSX";     exit}
 					/freebsd/      { print "FREEBSD"; exit}
@@ -1754,6 +1798,7 @@ make_sed() {
 		s#!!OS!!#$os#g;
 		s#!!CONFIGURE_FILES!!#$CONFIGURE_FILES#g;
 		s#!!REVISION!!#$revision#g;
+		s#!!AWK!!#$awk#g;
 		s#!!ENABLE_INSTALL!!#$enable_install#g;
 	"
 }
@@ -1850,6 +1895,7 @@ showhelp() {
 	echo "                                 on HOST [BUILD]"
 	echo "  --windres=WINDRES              the windres to use [HOST-windres]"
 	echo "  --strip=STRIP                  the strip to use [HOST-strip]"
+	echo "  --awk=AWK                      the awk to use in configure [awk]"
 	echo "  --lipo=LIPO                    the lipo to use (OSX ONLY) [HOST-lipo]"
 	echo "  --os=OS                        the OS we are compiling for [DETECT]"
 	echo "                                 DETECT/UNIX/OSX/FREEBSD/MORPHOS/BEOS/"
