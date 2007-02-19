@@ -285,8 +285,8 @@ check_params() {
 	# Some params want to be in full uppercase, else they might not work as
 	# expected.. fix that here
 
-	endian=`echo $endian | tr [:lower:] [:upper:]`
-	os=`echo $os | tr [:lower:] [:upper:]`
+	endian=`echo $endian | tr '[a-z]' '[A-Z]'`
+	os=`echo $os | tr '[a-z]' '[A-Z]'`
 
 	# Check if all params have valid values
 
@@ -548,7 +548,7 @@ check_params() {
 			log 1 "detecting G5... yes (forced)"
 		else
 			# First, are we a real OSX system, else we can't detect it
-			native=`LC_ALL=C uname | tr [:upper:] [:lower:] | grep darwin`
+			native=`LC_ALL=C uname | tr '[A-Z]' '[a-z]' | grep darwin`
 			# If $host doesn't match $build , we are cross-compiling
 			if [ -n "$native" ] && [ "$build" != "$host" ]; then
 				$cc_build $SRC_DIR/os/macosx/G5_detector.cpp -o G5_detector
@@ -1144,7 +1144,7 @@ detect_os() {
 		# Detect UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP
 
 		# Try first via dumpmachine, then via uname
-		os=`echo "$host" | tr [:upper:] [:lower:] | awk '
+		os=`echo "$host" | tr '[A-Z]' '[a-z]' | awk '
 					/linux/        { print "UNIX";    exit}
 					/darwin/       { print "OSX";     exit}
 					/freebsd/      { print "FREEBSD"; exit}
@@ -1159,7 +1159,7 @@ detect_os() {
 		'`
 
 		if [ -z "$os" ]; then
-			os=`LC_ALL=C uname | tr [:upper:] [:lower:] | awk '
+			os=`LC_ALL=C uname | tr '[A-Z]' '[a-z]' | awk '
 					/linux/        { print "UNIX";    exit}
 					/darwin/       { print "OSX";     exit}
 					/freebsd/      { print "FREEBSD"; exit}
