@@ -226,6 +226,9 @@ $(BIN_DIR)/$(TTD): $(TTD)
 $(TTD): rev.o $(OBJS) $(CONFIG_CACHE_LINKER)
 	$(E) '$(STAGE) Linking $@'
 ifeq ($(OS), PSP)
+	# Because of a bug in the PSP GCC tools, linking via CXX results
+	#  in total chaos and more problems then you can handle. So we need
+	#  CC to link OpenTTD for PSP
 	$(Q)$(CC_HOST) $(LDFLAGS) rev.o $(OBJS) $(LIBS) -o $@
 else
 	$(Q)$(CXX_HOST) $(LDFLAGS) rev.o $(OBJS) $(LIBS) -o $@
