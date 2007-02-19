@@ -291,19 +291,19 @@ check_params() {
 	# Check if all params have valid values
 
 	# Endian only allows AUTO, LE and, BE
-	if ! echo $endian | grep -Eq "^(AUTO|LE|BE)$"; then
+	if [ -z "`echo $endian | grep '^AUTO$\|^LE$\|^BE$'`" ]; then
 		echo "configure: error: invalid option --endian=$endian"
 		echo " Available options are: --endian=[AUTO|LE|BE]"
 		exit 1
 	fi
 	# OS only allows DETECT, UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP
-	if ! echo $os | grep -Eq "^(DETECT|UNIX|OSX|FREEBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE|PSP)$"; then
+	if [ -z "`echo $os | grep '^DETECT$\|^UNIX$\|^OSX$\|^FREEBSD$\|^MORPHOS$\|^BEOS$\|^SUNOS$\|^CYGWIN$\|^MINGW$\|^OS2$\|^WINCE$\|^PSP$'`" ]; then
 		echo "configure: error: invalid option --os=$os"
 		echo " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE|PSP]"
 		exit 1
 	fi
 	# enable_debug should be between 0 and 4
-	if ! echo $enable_debug | grep -q "^[0123]$"; then
+	if [ -z "`echo $enable_debug | grep '^[0123]$'`" ]; then
 		echo "configure: error: invalid option --enable-debug=$enable_debug"
 		echo " Available options are: --enable-debug[=0123]"
 		exit 1
