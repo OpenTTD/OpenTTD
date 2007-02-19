@@ -341,7 +341,11 @@ check_params() {
 	check_cxx_build
 	check_cxx_host
 	check_windres
-	check_strip
+	if [ "$enable_strip" != "0" ]; then
+		check_strip
+	else
+		log 1 "checking strip... disabled"
+	fi
 	check_lipo
 	check_makedepend
 
