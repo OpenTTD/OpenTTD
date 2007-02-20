@@ -40,11 +40,13 @@ static inline bool IsAircraftInHangarStopped(const Vehicle* v)
 	return IsAircraftInHangar(v) && v->vehstatus & VS_STOPPED;
 }
 
-uint16 AircraftDefaultCargoCapacity(CargoID cid, EngineID engine_type);
+uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo*);
 
 void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcCloneAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void HandleAircraftEnterHangar(Vehicle *v);
 void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height);
+
+void UpdateAirplanesOnNewStation(const Station *st);
 
 #endif /* AIRCRAFT_H */

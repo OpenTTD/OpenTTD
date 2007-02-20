@@ -288,11 +288,10 @@ AirportFTAClass::~AirportFTAClass()
  * know one element from the other by differing 'position' identifiers */
 static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA)
 {
-	int i;
 	uint16 nofelements = 0;
 	int temp = apFA[0].position;
 
-	for (i = 0; i < MAX_ELEMENTS; i++) {
+	for (uint i = 0; i < MAX_ELEMENTS; i++) {
 		if (temp != apFA[i].position) {
 			nofelements++;
 			temp = apFA[i].position;
@@ -307,12 +306,11 @@ static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA)
  * groups there are, and then the number of terminals for each group */
 static byte AirportGetTerminalCount(const byte *terminals, byte *groups)
 {
-	byte i;
 	byte nof_terminals = 0;
 	*groups = 0;
 
 	if (terminals != NULL) {
-		i = terminals[0];
+		uint i = terminals[0];
 		*groups = i;
 		while (i-- > 0) {
 			terminals++;
@@ -326,12 +324,11 @@ static byte AirportGetTerminalCount(const byte *terminals, byte *groups)
 
 static AirportFTA* AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA)
 {
-	AirportFTA *current;
 	AirportFTA *FAutomata = MallocT<AirportFTA>(nofelements);
 	uint16 internalcounter = 0;
 
 	for (uint i = 0; i < nofelements; i++) {
-		current = &FAutomata[i];
+		AirportFTA *current = &FAutomata[i];
 		current->position      = apFA[internalcounter].position;
 		current->heading       = apFA[internalcounter].heading;
 		current->block         = apFA[internalcounter].block;
@@ -349,7 +346,7 @@ static AirportFTA* AirportBuildAutomata(uint nofelements, const AirportFTAbuildu
 			current->next = newNode;
 			current = current->next;
 			internalcounter++;
-		} // while
+		}
 		current->next = NULL;
 		internalcounter++;
 	}
@@ -365,9 +362,8 @@ static byte AirportTestFTA(uint nofelements, const AirportFTA *layout, const byt
 		uint position = layout[i].position;
 		if (position != next_position) return i;
 		const AirportFTA *first = &layout[i];
-		const AirportFTA *current = first;
 
-		for (; current != NULL; current = current->next) {
+		for (const AirportFTA *current = first; current != NULL; current = current->next) {
 			/* A heading must always be valid. The only exceptions are
 			 * - multiple choices as start, identified by a special value of 255
 			 * - terminal group which is identified by a special value of 255 */
@@ -434,9 +430,7 @@ static void AirportPrintOut(uint nofelements, const AirportFTA *layout, bool ful
 	if (!full_report) printf("(P = Current Position; NP = Next Position)\n");
 
 	for (uint i = 0; i < nofelements; i++) {
-		const AirportFTA *current = &layout[i];
-
-		for (; current != NULL; current = current->next) {
+		for (const AirportFTA *current = &layout[i]; current != NULL; current = current->next) {
 			if (full_report) {
 				byte heading = (current->heading == 255) ? MAX_HEADINGS + 1 : current->heading;
 				printf("\tPos:%2d NPos:%2d Heading:%15s Block:%2d\n", current->position,

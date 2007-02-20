@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "aircraft.h"
 #include "bridge_map.h"
 #include "debug.h"
 #include "functions.h"
@@ -70,9 +71,6 @@ static void RoadStopPoolNewBlock(uint start_item)
 
 DEFINE_OLD_POOL(Station, Station, StationPoolNewBlock, StationPoolCleanBlock)
 DEFINE_OLD_POOL(RoadStop, RoadStop, RoadStopPoolNewBlock, NULL)
-
-
-extern void UpdateAirplanesOnNewStation(Station *st);
 
 
 RoadStop* GetRoadStopByTile(TileIndex tile, RoadStop::Type type)
