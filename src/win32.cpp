@@ -664,7 +664,8 @@ DIR *opendir(const wchar_t *path)
 		if (d != NULL) {
 			wchar_t search_path[MAX_PATH];
 			/* build search path for FindFirstFile */
-			_snwprintf_s(search_path, lengthof(search_path), L"%s\\*", path);
+			_snwprintf(search_path, lengthof(search_path), L"%s\\*", path);
+			*lastof(search_path) = '\0';
 			d->hFind = FindFirstFileW(search_path, &d->fd);
 
 			if (d->hFind != INVALID_HANDLE_VALUE ||
