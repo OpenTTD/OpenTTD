@@ -21,7 +21,6 @@
 # include <io.h>
 #else
 # include <unistd.h>
-# include <dirent.h>
 #endif /* WIN32 */
 
 /* Variables to display file lists */

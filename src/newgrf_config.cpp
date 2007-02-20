@@ -16,14 +16,10 @@
 
 #include "fileio.h"
 #include "fios.h"
-#include <sys/types.h>
 #include <sys/stat.h>
 
 #ifdef WIN32
 # include <io.h>
-#else
-# include <unistd.h>
-# include <dirent.h>
 #endif /* WIN32 */
 
 

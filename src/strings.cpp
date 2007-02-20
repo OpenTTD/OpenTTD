@@ -24,13 +24,8 @@
 #include "industry.h"
 #include "helpers.hpp"
 
-#ifdef WIN32
 /* for opendir/readdir/closedir */
 # include "fios.h"
-#else
-# include <sys/types.h>
-# include <dirent.h>
-#endif /* WIN32 */
 
 char _userstring[128];
 

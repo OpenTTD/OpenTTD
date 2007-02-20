@@ -80,6 +80,10 @@ struct DIR {
 DIR *opendir(const wchar_t *path);
 struct dirent *readdir(DIR *d);
 int closedir(DIR *d);
+#else
+/* Use system-supplied opendir/readdir/closedir functions */
+# include <sys/types.h>
+# include <dirent.h>
 #endif /* defined(WIN32) */
 
 /**
