@@ -183,6 +183,24 @@ static uint32 grf_load_var(byte size, byte **buf)
 	}
 }
 
+static const char *grf_load_string(byte **buf, size_t max_len)
+{
+	const char *string   = *(const char **)buf;
+	size_t string_length = ttd_strnlen(string, max_len);
+
+	if (string_length == max_len) {
+		/* String was not NUL terminated, so make sure it is now. */
+		(*buf)[string_length - 1] = '\0';
+		grfmsg(7, "String was not terminated with a zero byte.");
+	} else {
+		/* Increase the string length to include the NUL byte. */
+		string_length++;
+	}
+	*buf += string_length;
+
+	return string;
+}
+
 static GRFFile *GetFileByGRFID(uint32 grfid)
 {
 	GRFFile *file;
@@ -2046,7 +2064,6 @@ static void FeatureNewName(byte *buf, int len)
 	uint8 num;
 	uint16 id;
 	uint16 endid;
-	const char* name;
 	bool new_scheme = _cur_grffile->grf_version >= 7;
 	bool generic;
 
@@ -2068,16 +2085,18 @@ static void FeatureNewName(byte *buf, int len)
 	grfmsg(6, "FeatureNewName: About to rename engines %d..%d (feature %d) in language 0x%02X",
 	               id, endid, feature, lang);
 
-	name = (const char*)buf; /*transfer read value*/
 	len -= generic ? 6 : 5;
 
 	for (; id < endid && len > 0; id++) {
-		size_t ofs = strlen(name) + 1;
+		const char *name   = grf_load_string(&buf, len);
+		size_t name_length = strlen(name) + 1;
 
-		if (ofs == 1) {
+		len -= (int)name_length;
+
+		if (name_length == 1) {
 			grfmsg(7, "FeatureNewName: Can't add empty name");
-		} else if (ofs > 127) {
-			grfmsg(7, "FeatureNewName: Too long a name (%d)", ofs);
+		} else if (name_length > 127) {
+			grfmsg(7, "FeatureNewName: Too long a name (%d)", name_length);
 		} else {
 			grfmsg(8, "FeatureNewName: %d <- %s", id, name);
 
@@ -2148,8 +2167,6 @@ static void FeatureNewName(byte *buf, int len)
 #endif
 			}
 		}
-		name += ofs;
-		len -= (int)ofs;
 	}
 }
 
@@ -2575,7 +2592,7 @@ static void GRFInfo(byte *buf, int len)
 	if (!check_length(len, 8, "GRFInfo")) return; buf++;
 	version = grf_load_byte(&buf);
 	grfid = grf_load_dword(&buf);
-	name = (const char*)buf;
+	name = grf_load_string(&buf, len - 6);
 
 	_cur_grffile->grfid = grfid;
 	_cur_grffile->grf_version = version;
@@ -2652,12 +2669,15 @@ static void GRFError(byte *buf, int len)
 		"Error: ",
 		"Fatal: ",
 	};
-	uint8 sevid;
-	uint8 msgid;
 
 	if (!check_length(len, 6, "GRFError")) return;
-	sevid = buf[1];
-	msgid = buf[3];
+
+	buf++; /* Skip the action byte. */
+	byte sevid = grf_load_byte(&buf);
+	buf++; /* TODO: Language id. */
+	byte msgid = grf_load_byte(&buf);
+
+	const char *data = grf_load_string(&buf, len - 4);
 
 	// Undocumented TTDPatch feature.
 	if (!HASBIT(sevid, 7) && _cur_stage < GLS_ACTIVATION) {
@@ -2666,7 +2686,7 @@ static void GRFError(byte *buf, int len)
 	}
 
 	sevid = GB(sevid, 0, 2);
-	grfmsg(0,  msgstr[(msgid == 0xFF) ? lengthof(msgstr) - 1 : msgid], sevstr[sevid], &buf[4]);
+	grfmsg(0,  msgstr[(msgid == 0xFF) ? lengthof(msgstr) - 1 : msgid], sevstr[sevid], data);
 }
 
 /* Action 0x0C */
