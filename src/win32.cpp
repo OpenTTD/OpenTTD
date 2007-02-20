@@ -653,19 +653,19 @@ static inline void dir_free(DIR *d)
 	}
 }
 
-DIR *opendir(const char *path)
+DIR *opendir(const wchar_t *path)
 {
 	DIR *d;
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
-	DWORD fa = GetFileAttributesW(OTTD2FS(path));
+	DWORD fa = GetFileAttributesW(path);
 
 	if ((fa != INVALID_FILE_ATTRIBUTES) && (fa & FILE_ATTRIBUTE_DIRECTORY)) {
 		d = dir_calloc();
 		if (d != NULL) {
-			char search_path[MAX_PATH];
+			wchar_t search_path[MAX_PATH];
 			/* build search path for FindFirstFile */
-			snprintf(search_path, lengthof(search_path), "%s" PATHSEP "*", path);
-			d->hFind = FindFirstFileW(OTTD2FS(search_path), &d->fd);
+			_snwprintf_s(search_path, lengthof(search_path), L"%s\\*", path);
+			d->hFind = FindFirstFileW(search_path, &d->fd);
 
 			if (d->hFind != INVALID_HANDLE_VALUE ||
 					GetLastError() == ERROR_NO_MORE_FILES) { // the directory is empty

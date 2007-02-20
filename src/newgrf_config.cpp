@@ -274,7 +274,7 @@ static uint ScanPath(const char *path)
 	struct dirent *dirent;
 	DIR *dir;
 
-	if ((dir = opendir(path)) == NULL) return 0;
+	if ((dir = ttd_opendir(path)) == NULL) return 0;
 
 	while ((dirent = readdir(dir)) != NULL) {
 		const char *d_name = FS2OTTD(dirent->d_name);

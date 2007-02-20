@@ -224,7 +224,7 @@ static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_
 	}
 
 	/* Show subdirectories */
-	if (mode != SLD_NEW_GAME && (dir = opendir(_fios_path)) != NULL) {
+	if (mode != SLD_NEW_GAME && (dir = ttd_opendir(_fios_path)) != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			ttd_strlcpy(d_name, FS2OTTD(dirent->d_name), sizeof(d_name));
 
@@ -254,7 +254,7 @@ static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_
 	sort_start = _fios_count;
 
 	/* Show files */
-	dir = opendir(_fios_path);
+	dir = ttd_opendir(_fios_path);
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			char fios_title[64];

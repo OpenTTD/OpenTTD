@@ -1164,7 +1164,7 @@ static int GetLanguageList(char **languages, int max)
 	struct dirent *dirent;
 	int num = 0;
 
-	dir = opendir(_paths.lang_dir);
+	dir = ttd_opendir(_paths.lang_dir);
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			const char *d_name = FS2OTTD(dirent->d_name);
