@@ -33,6 +33,7 @@
 #include "direction.h"
 #include "yapf/yapf.h"
 #include "date.h"
+#include "cargotype.h"
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v, bool update_image);
@@ -106,7 +107,7 @@ static void TrainCargoChanged(Vehicle* v)
 
 	for (u = v; u != NULL; u = u->next) {
 		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
-		uint32 vweight = (_cargoc.weights[u->cargo_type] * u->cargo_count * FreightWagonMult(u->cargo_type)) / 16;
+		uint32 vweight = (GetCargo(u->cargo_type)->weight * u->cargo_count * FreightWagonMult(u->cargo_type)) / 16;
 
 		// Vehicle weight is not added for articulated parts.
 		if (!IsArticulatedPart(u)) {

@@ -22,6 +22,7 @@
 #include "train.h"
 #include "water_map.h"
 #include "vehicle_gui.h"
+#include "cargotype.h"
 
 enum OrderWindowWidgets {
 	ORDER_WIDGET_CLOSEBOX = 0,
@@ -180,7 +181,7 @@ static void DrawOrdersWindow(Window *w)
 					SetDParam(1, s);
 					if (order->refit_cargo < NUM_CARGO) {
 						SetDParam(3, STR_REFIT_ORDER);
-						SetDParam(4, _cargoc.names_s[order->refit_cargo]);
+						SetDParam(4, GetCargo(order->refit_cargo)->name);
 					} else {
 						SetDParam(3, STR_EMPTY);
 					}

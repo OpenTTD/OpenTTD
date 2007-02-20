@@ -20,6 +20,7 @@
 #include "vehicle.h"
 #include "table/sprites.h"
 #include "helpers.hpp"
+#include "cargotype.h"
 
 enum StationListWidgets {
 	STATIONLIST_WIDGET_CLOSEBOX = 0,
@@ -57,7 +58,10 @@ static StationSortListingTypeFunction StationRatingMaxSorter;
  * @param rating ratings data for that particular cargo */
 static void StationsWndShowStationRating(int x, int y, CargoID type, uint amount, byte rating)
 {
-	int colour = _cargo_colours[type];
+	const CargoSpec *cs = GetCargo(type);
+	if (cs->bitnum == 0xFF) return;
+
+	int colour = cs->rating_colour;
 	uint w = (minu(amount, 576) + 5) / 36;
 
 	/* Draw total cargo (limited) on station (fits into 16 pixels) */
@@ -73,7 +77,7 @@ static void StationsWndShowStationRating(int x, int y, CargoID type, uint amount
 		}
 	}
 
-	DrawString(x + 1, y, _cargoc.names_short[type], 0x10);
+	DrawString(x + 1, y, cs->abbrev, 0x10);
 
 	/* Draw green/red ratings bar (fits into 14 pixels) */
 	y += 8;
@@ -323,8 +327,11 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			for (i = 0; i < NUM_CARGO; i++) {
 				cg_ofst = IsWindowWidgetLowered(w, i + STATIONLIST_WIDGET_CARGOSTART) ? 2 : 1;
 
-				GfxFillRect(x + cg_ofst, y + cg_ofst, x + cg_ofst + 10 , y + cg_ofst + 7, _cargo_colours[i]);
-				DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, _cargoc.names_short[i], 0x10);
+				const CargoSpec *cs = GetCargo(i);
+				if (cs->bitnum != 0xFF) {
+					GfxFillRect(x + cg_ofst, y + cg_ofst, x + cg_ofst + 10 , y + cg_ofst + 7, cs->rating_colour);
+					DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, cs->abbrev, 0x10);
+				}
 				x += 14;
 			}
 
@@ -656,7 +663,7 @@ static void DrawStationViewWindow(Window *w)
 			int cur_x = x;
 			num = min(num, 23);
 			do {
-				DrawSprite(_cargoc.sprites[i], PAL_NONE, cur_x, y);
+				DrawSprite(GetCargo(i)->sprite, PAL_NONE, cur_x, y);
 				cur_x += 10;
 			} while (--num);
 		}
@@ -701,7 +708,7 @@ static void DrawStationViewWindow(Window *w)
 					*b++ = ',';
 					*b++ = ' ';
 				}
-				b = InlineString(b, _cargoc.names_s[i]);
+				b = InlineString(b, GetCargo(i)->name);
 			}
 		}
 
@@ -716,7 +723,7 @@ static void DrawStationViewWindow(Window *w)
 		y = 77;
 		for (i = 0; i != NUM_CARGO; i++) {
 			if (st->goods[i].enroute_from != INVALID_STATION) {
-				SetDParam(0, _cargoc.names_s[i]);
+				SetDParam(0, GetCargo(i)->name);
 				SetDParam(2, st->goods[i].rating * 101 >> 8);
 				SetDParam(1, STR_3035_APPALLING + (st->goods[i].rating >> 5));
 				DrawString(8, y, STR_303D, 0);

@@ -26,6 +26,7 @@
 #include "date.h"
 #include "water_map.h"
 #include "tree_map.h"
+#include "cargotype.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
@@ -1624,7 +1625,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 				mag = abs(percent);
 				if (mag >= 10) {
 					SetDParam(2, mag);
-					SetDParam(0, _cargoc.names_s[i->produced_cargo[j]]);
+					SetDParam(0, GetCargo(i->produced_cargo[j])->name);
 					SetDParam(1, i->index);
 					AddNewsItem(
 						percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,

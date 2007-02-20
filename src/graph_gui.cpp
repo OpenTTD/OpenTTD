@@ -13,8 +13,7 @@
 #include "variables.h"
 #include "date.h"
 #include "helpers.hpp"
-
-const byte _cargo_colours[NUM_CARGO] = {152, 32, 15, 174, 208, 194, 191, 84, 184, 10, 202, 48};
+#include "cargotype.h"
 
 /* Bitmasks of player and cargo indices that shouldn't be drawn. */
 static uint _legend_excluded_players;
@@ -749,13 +748,14 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 			 * clk_dif will move one pixel down and one pixel to the right
 			 * when the button is clicked */
 			byte clk_dif = IsWindowWidgetLowered(w, i + 3) ? 1 : 0;
+			const CargoSpec *cs = GetCargo(i);
 
 			GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
-			GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, _cargo_colours[i]);
-			SetDParam(0, _cargoc.names_s[i]);
+			GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
+			SetDParam(0, cs->name != 0 ? cs->name : (StringID)STR_EMPTY);
 			DrawString(x + 14 + clk_dif, y + clk_dif, STR_7065, 0);
 			y += 8;
-			gd.colors[i] = _cargo_colours[i];
+			gd.colors[i] = cs->legend_colour;
 			for (j = 0; j != 20; j++) {
 				gd.cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 6 + 6, i);
 			}

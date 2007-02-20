@@ -33,6 +33,7 @@
 #include "newgrf_callbacks.h"
 #include "unmovable.h"
 #include "date.h"
+#include "cargotype.h"
 
 // Score info
 const ScoreInfo _score_info[] = {
@@ -807,7 +808,8 @@ Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode)
 	Pair tp;
 
 	/* if mode is false, use the singular form */
-	SetDParam(0, _cargoc.names_s[s->cargo_type] + (mode ? 0 : 32));
+	const CargoSpec *cs = GetCargo(s->cargo_type);
+	SetDParam(0, mode ? cs->name_plural : cs->name);
 
 	if (s->age < 12) {
 		if (s->cargo_type != CT_PASSENGERS && s->cargo_type != CT_MAIL) {
@@ -1087,6 +1089,7 @@ static void Load_SUBS(void)
 int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type)
 {
 	CargoID cargo = cargo_type;
+	const CargoSpec *cs = GetCargo(cargo_type);
 	byte f;
 
 	/* zero the distance if it's the bank and very short transport. */
@@ -1094,12 +1097,12 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 		dist = 0;
 
 	f = 255;
-	if (transit_days > _cargoc.transit_days_1[cargo]) {
-		transit_days -= _cargoc.transit_days_1[cargo];
+	if (transit_days > cs->transit_days[0]) {
+		transit_days -= cs->transit_days[0];
 		f -= transit_days;
 
-		if (transit_days > _cargoc.transit_days_2[cargo]) {
-			transit_days -= _cargoc.transit_days_2[cargo];
+		if (transit_days > cs->transit_days[1]) {
+			transit_days -= cs->transit_days[1];
 
 			if (f < transit_days) {
 				f = 0;

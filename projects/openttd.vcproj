@@ -173,6 +173,9 @@
 				RelativePath=".\..\src\callback_table.cpp">
 			</File>
 			<File
+				RelativePath=".\..\src\cargotype.cpp">
+			</File>
+			<File
 				RelativePath=".\..\src\command.cpp">
 			</File>
 			<File
@@ -397,6 +400,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\bmp.h">
+			</File>
+			<File
+				RelativePath=".\..\src\cargotype.h">
 			</File>
 			<File
 				RelativePath=".\..\src\command.h">
@@ -849,6 +855,9 @@
 				RelativePath=".\..\src\table\build_industry.h">
 			</File>
 			<File
+				RelativePath=".\..\src\table\cargo_const.h">
+			</File>
+			<File
 				RelativePath=".\..\src\table\clear_land.h">
 			</File>
 			<File
@@ -862,9 +871,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\table\industry_land.h">
-			</File>
-			<File
-				RelativePath=".\..\src\table\landscape_const.h">
 			</File>
 			<File
 				RelativePath=".\..\src\table\landscape_sprite.h">

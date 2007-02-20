@@ -31,6 +31,7 @@
 #include "newgrf_sound.h"
 #include "newgrf_spritegroup.h"
 #include "helpers.hpp"
+#include "cargotype.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -3518,6 +3519,9 @@ static void ResetNewGRFData(void)
 
 	// Add engine type to engine data. This is needed for the refit precalculation.
 	AddTypeToEngines();
+
+	/* Set up the default cargo types */
+	SetupCargoForClimate(_opt.landscape);
 
 	/* Reset misc GRF features and train list display variables */
 	_misc_grf_features = 0;

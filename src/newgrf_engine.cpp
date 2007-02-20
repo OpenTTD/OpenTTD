@@ -18,43 +18,8 @@
 #include "newgrf_cargo.h"
 #include "date.h"
 #include "helpers.hpp"
+#include "cargotype.h"
 
-
-
-/* Default cargo classes */
-static const uint16 _cargo_classes[NUM_GLOBAL_CID] = {
-	CC_PASSENGERS,
-	CC_BULK,
-	CC_MAIL,
-	CC_LIQUID,
-	CC_PIECE_GOODS,
-	CC_EXPRESS,
-	CC_BULK,
-	CC_PIECE_GOODS,
-	CC_BULK,
-	CC_PIECE_GOODS,
-	CC_ARMOURED,
-	CC_PIECE_GOODS,
-	CC_REFRIGERATED | CC_EXPRESS,
-	CC_REFRIGERATED | CC_EXPRESS,
-	CC_BULK,
-	CC_LIQUID,
-	CC_LIQUID,
-	CC_BULK,
-	CC_PIECE_GOODS,
-	CC_PIECE_GOODS,
-	CC_EXPRESS,
-	CC_BULK,
-	CC_LIQUID,
-	CC_BULK,
-	CC_PIECE_GOODS,
-	CC_LIQUID,
-	CC_PIECE_GOODS,
-	CC_PIECE_GOODS,
-	CC_NOAVAILABLE,
-	CC_NOAVAILABLE,
-	CC_NOAVAILABLE,
-};
 
 int _traininfo_vehicle_pitch = 0;
 int _traininfo_vehicle_width = 29;
@@ -587,7 +552,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				if (u->cargo_cap == 0) continue;
 				/* Map from climate to global cargo ID */
 				cargo = _global_cargo_id[_opt.landscape][u->cargo_type];
-				cargo_classes |= _cargo_classes[cargo];
+				cargo_classes |= GetCargo(cargo)->classes;
 				common_cargos[cargo]++;
 				user_def_data |= RailVehInfo(u->engine_type)->user_def_data;
 			}
@@ -644,8 +609,9 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			 * cccc - the cargo class value of the cargo transported by the vehicle.
 			 */
 			CargoID cid = _global_cargo_id[_opt.landscape][v->cargo_type];
+			const CargoSpec *cs = GetCargo(v->cargo_type);
 
-			return (_cargo_classes[cid] << 16) | (_cargoc.weights[v->cargo_type] << 8) | cid;
+			return (cs->classes << 16) | (cs->weight << 8) | cid;
 		}
 
 		case 0x48: return GetVehicleTypeInfo(v->engine_type); /* Vehicle Type Info */

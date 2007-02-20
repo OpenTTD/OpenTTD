@@ -17,12 +17,12 @@
 #include "industry.h"
 #include "variables.h"
 #include "newgrf_text.h"
-#include "table/landscape_const.h"
 #include "table/control_codes.h"
 #include "music.h"
 #include "date.h"
 #include "industry.h"
 #include "helpers.hpp"
+#include "cargotype.h"
 
 /* for opendir/readdir/closedir */
 # include "fios.h"
@@ -561,7 +561,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				// Short description of cargotypes. Layout:
 				// 8-bit = cargo type
 				// 16-bit = cargo count
-				StringID cargo_str = _cargo_types_base_values[_opt_ptr->landscape].units_volume[GetInt32(&argv)];
+				StringID cargo_str = GetCargo(GetInt32(&argv))->units_volume;
 				switch (cargo_str) {
 					case STR_TONS: {
 						int32 args[1];
@@ -685,7 +685,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				//   8bit   - cargo type
 				//   16-bit - cargo count
 				CargoID cargo = GetInt32(&argv);
-				StringID cargo_str = (cargo == CT_INVALID) ? (StringID)STR_8838_N_A : _cargoc.names_long[cargo];
+				StringID cargo_str = (cargo == CT_INVALID) ? (StringID)STR_8838_N_A : GetCargo(cargo)->quantifier;
 				buff = GetStringWithArgs(buff, cargo_str, argv++, last);
 				break;
 			}

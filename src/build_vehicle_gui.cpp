@@ -24,6 +24,7 @@
 #include "newgrf_engine.h"
 #include "date.h"
 #include "strings.h"
+#include "cargotype.h"
 
 
 enum BuildVehicleWidgets {
@@ -381,7 +382,7 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 
 	/* Wagon weight - (including cargo) */
 	SetDParam(0, rvi->weight);
-	SetDParam(1, (_cargoc.weights[rvi->cargo_type] * rvi->capacity >> 4) + rvi->weight);
+	SetDParam(1, (GetCargo(rvi->cargo_type)->weight * rvi->capacity >> 4) + rvi->weight);
 	DrawString(x, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT, 0);
 	y += 10;
 

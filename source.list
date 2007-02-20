@@ -3,6 +3,7 @@ airport.cpp
 aystar.cpp
 bmp.cpp
 callback_table.cpp
+cargotype.cpp
 command.cpp
 console.cpp
 console_cmds.cpp
@@ -100,6 +101,7 @@ airport.h
 airport_movement.h
 aystar.h
 bmp.h
+cargotype.h
 command.h
 console.h
 currency.h
@@ -252,12 +254,12 @@ table/allstrings.h
 table/animcursors.h
 table/autorail.h
 table/build_industry.h
+table/cargo_const.h
 table/clear_land.h
 table/elrail_data.h
 table/engines.h
 table/genland.h
 table/industry_land.h
-table/landscape_const.h
 table/landscape_sprite.h
 table/namegen.h
 table/palettes.h

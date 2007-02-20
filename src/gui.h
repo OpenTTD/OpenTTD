@@ -20,7 +20,6 @@ void ShowPatchesSelection(void);
 void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, bool clickable_right);
 
 /* graph_gui.c */
-extern const byte _cargo_colours[NUM_CARGO];
 void ShowOperatingProfitGraph(void);
 void ShowIncomeGraph(void);
 void ShowDeliveredCargoGraph(void);

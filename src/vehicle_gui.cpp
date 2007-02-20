@@ -28,6 +28,7 @@
 #include "roadveh.h"
 #include "depot.h"
 #include "helpers.hpp"
+#include "cargotype.h"
 
 typedef struct Sorting {
 	Listing aircraft;
@@ -304,7 +305,7 @@ static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint 
 
 		if (i >= pos && i < pos + rows) {
 			/* Draw the cargo name */
-			int last_x = DrawString(2, y, _cargoc.names_s[refit[i].cargo], colour);
+			int last_x = DrawString(2, y, GetCargo(refit[i].cargo)->name, colour);
 
 			/* If the callback succeeded, draw the cargo suffix */
 			if (refit[i].value != CALLBACK_FAILED) {
@@ -521,7 +522,7 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 		for (cid = 0; cmask != 0; cmask >>= 1, cid++) {
 			if (!HASBIT(cmask, 0)) continue;
 
-			b = InlineString(b, _cargoc.names_s[_local_cargo_id_ctype[cid]]);
+			b = InlineString(b, GetCargo(_local_cargo_id_ctype[cid])->name);
 			if (cmask > 1) b = strecpy(b, ", ", lastof(_userstring));
 		}
 	}

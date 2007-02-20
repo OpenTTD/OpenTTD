@@ -16,8 +16,8 @@
 #include "vehicle_gui.h"
 #include "variables.h"
 #include "ai/ai.h"
-#include "table/landscape_const.h"
 #include "date.h"
+#include "cargotype.h"
 
 char _name_array[512][32];
 
@@ -237,28 +237,11 @@ void ConvertNameArray(void)
 // Calculate constants that depend on the landscape type.
 void InitializeLandscapeVariables(bool only_constants)
 {
-	const CargoTypesValues *lpd;
-	uint i;
-	StringID str;
+	if (only_constants) return;
 
-	lpd = &_cargo_types_base_values[_opt.landscape];
-
-	for (i = 0; i != NUM_CARGO; i++) {
-		_cargoc.sprites[i] = lpd->sprites[i];
-
-		str = lpd->names[i];
-		_cargoc.names_s[i] = str;
-		_cargoc.names_long[i] = (str += 0x40);
-		_cargoc.names_short[i] = (str += 0x20);
-		_cargoc.weights[i] = lpd->weights[i];
-
-		if (!only_constants) {
-			_cargo_payment_rates[i] = lpd->initial_cargo_payment[i];
-			_cargo_payment_rates_frac[i] = 0;
-		}
-
-		_cargoc.transit_days_1[i] = lpd->transit_days_table_1[i];
-		_cargoc.transit_days_2[i] = lpd->transit_days_table_2[i];
+	for (CargoID i = 0; i != NUM_CARGO; i++) {
+		_cargo_payment_rates[i] = GetCargo(i)->initial_payment;
+		_cargo_payment_rates_frac[i] = 0;
 	}
 }
 

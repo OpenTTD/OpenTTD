@@ -337,19 +337,6 @@ VARDEF char *_config_file;
 VARDEF char *_highscore_file;
 VARDEF char *_log_file;
 
-// NOSAVE: These can be recalculated from InitializeLandscapeVariables
-typedef struct {
-	StringID names_s[NUM_CARGO];
-	StringID names_long[NUM_CARGO];
-	StringID names_short[NUM_CARGO];
-	byte weights[NUM_CARGO];
-	SpriteID sprites[NUM_CARGO];
-	byte transit_days_1[NUM_CARGO];
-	byte transit_days_2[NUM_CARGO];
-} CargoConst;
-
-VARDEF CargoConst _cargoc;
-
 
 static inline void SetDParamX(uint32 *s, uint n, uint32 v)
 {

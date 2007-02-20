@@ -17,6 +17,7 @@
 #include "town.h"
 #include "variables.h"
 #include "helpers.hpp"
+#include "cargotype.h"
 
 const byte _build_industry_types[4][12] = {
 	{  1,  2,  4,  6,  8,  0,  3,  5,  9, 11, 18 },
@@ -303,13 +304,13 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		if (i->accepts_cargo[0] != CT_INVALID) {
 			StringID str;
 
-			SetDParam(0, _cargoc.names_s[i->accepts_cargo[0]]);
+			SetDParam(0, GetCargo(i->accepts_cargo[0])->name);
 			str = STR_4827_REQUIRES;
 			if (i->accepts_cargo[1] != CT_INVALID) {
-				SetDParam(1, _cargoc.names_s[i->accepts_cargo[1]]);
+				SetDParam(1, GetCargo(i->accepts_cargo[1])->name);
 				str = STR_4828_REQUIRES;
 				if (i->accepts_cargo[2] != CT_INVALID) {
-					SetDParam(2, _cargoc.names_s[i->accepts_cargo[2]]);
+					SetDParam(2, GetCargo(i->accepts_cargo[2])->name);
 					str = STR_4829_REQUIRES;
 				}
 			}

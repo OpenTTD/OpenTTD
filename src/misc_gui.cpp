@@ -30,6 +30,7 @@
 #include "tgp.h"
 #include "settings.h"
 #include "date.h"
+#include "cargotype.h"
 
 #include "fios.h"
 /* Variables to display file lists */
@@ -153,10 +154,10 @@ static void Place_LandInfo(TileIndex tile)
 				/* If the accepted value is less than 8, show it in 1/8:ths */
 				if (ac[i] < 8) {
 					SetDParam(0, ac[i]);
-					SetDParam(1, _cargoc.names_s[i]);
+					SetDParam(1, GetCargo(i)->name);
 					p = GetString(p, STR_01D1_8, lastof(_landinfo_data[5]));
 				} else {
-					p = GetString(p, _cargoc.names_s[i], lastof(_landinfo_data[5]));
+					p = GetString(p, GetCargo(i)->name, lastof(_landinfo_data[5]));
 				}
 			}
 		}
@@ -740,7 +741,7 @@ static void DrawStationCoverageText(const AcceptedCargo accepts,
 				*b++ = ',';
 				*b++ = ' ';
 			}
-			b = InlineString(b, _cargoc.names_s[i]);
+			b = InlineString(b, GetCargo(i)->name);
 		}
 	}
 
