@@ -1359,38 +1359,41 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 		uint32 len = ReadUint32(ls);
 
 		switch (id) {
-			/* List of GRFIDs, used in the savegame
+			/* List of GRFIDs, used in the savegame. 0x8004 is the new ID
 			 * They are saved in a 'GRFID:4 active:1' format, 5 bytes for each entry */
 			case 0x2:
 			case 0x8004: {
-				/* Skip the first element: TTDP hack for the Action D special variables FFFF0000 01 */
+				/* Skip the first element: TTDP hack for the Action D special variables (FFFF0000 01) */
 				ReadUint32(ls); ReadByte(ls); len -= 5;
 
 				ClearGRFConfigList(&_grfconfig);
-				GRFConfig *c = CallocT<GRFConfig>(1);
+				GRFConfig c;
+				memset(&c, 0, sizeof(GRFConfig));
+
 				while (len != 0) {
 					uint32 grfid = ReadUint32(ls);
 
 					if (ReadByte(ls) == 1) {
-						c->grfid = grfid;
-						c->filename = "TTDP game, no information";
+						c.grfid = grfid;
+						c.filename = "TTDP game, no information";
 
-						AppendToGRFConfigList(&_grfconfig, c);
-						DEBUG(oldloader, 3, "TTDPatch game using GRF file with GRFID %0X", BSWAP32(c->grfid));
+						AppendToGRFConfigList(&_grfconfig, &c);
+						DEBUG(oldloader, 3, "TTDPatch game using GRF file with GRFID %0X", BSWAP32(c.grfid));
 					}
 					len -= 5;
 				};
-				free(c);
 
 				/* Append static NewGRF configuration */
 				AppendStaticGRFConfigs(&_grfconfig);
 			} break;
+
 			case 0x3: { /* TTDPatch version and configuration */
 				uint32 ttdpv = ReadUint32(ls);
 				DEBUG(oldloader, 3, "Game saved with TTDPatch version %d.%d.%d r%d", GB(ttdpv, 24, 8), GB(ttdpv, 20, 4), GB(ttdpv, 16, 4), GB(ttdpv, 0, 16));
 				len -= 4;
 				while (len-- != 0) ReadByte(ls); // skip the configuration
 			} break;
+
 			default:
 				DEBUG(oldloader, 4, "Skipping unknown extra chunk %X", id);
 				while (len-- != 0) ReadByte(ls);

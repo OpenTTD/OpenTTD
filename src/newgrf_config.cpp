@@ -465,12 +465,13 @@ static void Save_NGRF(void)
 
 static void Load_NGRF(void)
 {
-	GRFConfig *c = CallocT<GRFConfig>(1);
+	GRFConfig c;
+	memset(&c, 0, sizeof(GRFConfig));
+
 	while (SlIterateArray() != -1) {
-		SlObject(c, _grfconfig_desc);
-		AppendToGRFConfigList(&_grfconfig, c);
+		SlObject(&c, _grfconfig_desc);
+		AppendToGRFConfigList(&_grfconfig, &c);
 	}
-	free(c);
 
 	/* Append static NewGRF configuration */
 	AppendStaticGRFConfigs(&_grfconfig);
