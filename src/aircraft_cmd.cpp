@@ -547,7 +547,6 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 			next_airport_has_hangar = false;
 			if (station == INVALID_STATION) return CMD_ERROR;
-			st = GetStation(station);
 			next_airport_index = station;
 		}
 
