@@ -91,6 +91,7 @@ void ClearGRFConfig(GRFConfig **config)
 		free((*config)->filename);
 		free((*config)->name);
 		free((*config)->info);
+		free((*config)->error);
 	}
 	free(*config);
 	*config = NULL;
@@ -123,6 +124,7 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 		if (src->filename != NULL) c->filename = strdup(src->filename);
 		if (src->name     != NULL) c->name     = strdup(src->name);
 		if (src->info     != NULL) c->info     = strdup(src->info);
+		if (src->error    != NULL) c->error    = strdup(src->error);
 
 		*dst = c;
 		dst = &c->next;
@@ -252,6 +254,7 @@ compatible_grf:
 				memcpy(c->md5sum, f->md5sum, sizeof(c->md5sum));
 				if (c->name == NULL) c->name = strdup(f->name);
 				if (c->info == NULL) c->info = strdup(f->info);
+				c->error = NULL;
 			}
 		}
 	}

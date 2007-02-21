@@ -48,7 +48,7 @@ enum Sprites {
 	SPR_ASCII_SPACE_BIG   = 450,
 
 	/* Extra graphic spritenumbers */
-	OPENTTD_SPRITES_COUNT = 116, // number of gfx-sprites in openttd.grf
+	OPENTTD_SPRITES_COUNT = 117, // number of gfx-sprites in openttd.grf
 	SPR_SIGNALS_BASE  = 4896,
 	SPR_CANALS_BASE   = SPR_SIGNALS_BASE + 486,
 	SPR_SLOPES_BASE   = SPR_CANALS_BASE + 70,
@@ -94,6 +94,8 @@ enum Sprites {
 	SPR_SELL_CHAIN_TRAIN  = SPR_OPENTTD_BASE + 108,
 
 	SPR_SHARED_ORDERS_ICON = SPR_OPENTTD_BASE + 115,
+
+	SPR_WARNING_SIGN      = SPR_OPENTTD_BASE + 116, // warning sign (shown if there are any newgrf errors)
 
 	/* Network GUI sprites */
 	SPR_SQUARE = SPR_OPENTTD_BASE + 20,     // colored square (used for newgrf compatibility)

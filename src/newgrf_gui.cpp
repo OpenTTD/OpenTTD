@@ -43,6 +43,11 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 {
 	char buff[256];
 
+	if (c->error != NULL) {
+		SetDParamStr(0, c->error);
+		y += DrawStringMultiLine(x, y, STR_NEWGRF_ERROR_MSG, w);
+	}
+
 	/* Draw filename or not if it is not known (GRF sent over internet) */
 	if (c->filename != NULL) {
 		SetDParamStr(0, c->filename);
@@ -328,7 +333,8 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					}
 
 					DrawSprite(SPR_SQUARE, pal, 5, y + 2);
-					DoDrawString(text, 25, y + 3, WP(w, newgrf_d).sel == c ? 0xC : 0x10);
+					if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, 20, y + 2);
+					DoDrawString(text, c->error != NULL ? 35 : 25, y + 3, WP(w, newgrf_d).sel == c ? 0xC : 0x10);
 					y += 14;
 				}
 			}

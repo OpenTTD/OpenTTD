@@ -24,6 +24,7 @@ typedef struct GRFConfig : public GRFIdentifier {
 	char *filename;
 	char *name;
 	char *info;
+	char *error;
 
 	uint8 flags;
 	uint32 param[0x80];

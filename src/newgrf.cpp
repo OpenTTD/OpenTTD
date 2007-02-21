@@ -2712,7 +2712,14 @@ static void GRFError(byte *buf, int len)
 		return;
 	}
 
-	grfmsg(0,  msgstr[(message_id == 0xFF) ? lengthof(msgstr) - 1 : message_id], sevstr[severity], grf_load_string(&buf, len));
+	char message[512];
+	snprintf(message, lengthof(message), msgstr[(message_id == 0xFF) ? lengthof(msgstr) - 1 : message_id], sevstr[severity], grf_load_string(&buf, len));
+
+	if (_cur_grfconfig->error == NULL) {
+		_cur_grfconfig->error = strdup(message);
+	}
+
+	grfmsg(0, message);
 }
 
 /* Action 0x0C */
