@@ -84,7 +84,9 @@ void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 		ResetObjectToPlace();
-		if (!HASBIT(p2, 1)) BuildRoadOutsideStation(tile, (DiagDirection)p1);
+		BuildRoadOutsideStation(tile, (DiagDirection)p1);
+		/* For a drive-through road stop build connecting road for other entrance */
+		if (HASBIT(p2, 1)) BuildRoadOutsideStation(tile, ReverseDiagDir((DiagDirection)p1));
 	}
 }
 
