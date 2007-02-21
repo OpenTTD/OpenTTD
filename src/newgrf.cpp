@@ -2535,6 +2535,9 @@ static void SkipIf(byte *buf, int len)
 		 * we use -1 to indicate that all further
 		 * sprites should be skipped. */
 		_skip_sprites = -1;
+
+		/* If an action 8 hasn't been encountered yet, disable the grf. */
+		if (!HASBIT(_cur_grfconfig->flags, GCF_ACTIVATED)) SETBIT(_cur_grfconfig->flags, GCF_DISABLED);
 	}
 }
 
@@ -3767,6 +3770,8 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 		if (_cur_grffile == NULL) error("File '%s' lost in cache.\n", filename);
 		if (stage == GLS_ACTIVATION && !HASBIT(config->flags, GCF_ACTIVATED)) return;
 	}
+
+	if (stage == GLS_ACTIVATION) CLRBIT(config->flags, GCF_ACTIVATED);
 
 	FioOpenFile(file_index, filename);
 	_file_index = file_index; // XXX
