@@ -134,7 +134,7 @@ public:
 			}
 		}
 
-		bool bDestFound = (m_pBestDestNode != NULL);
+		bool bDestFound = (m_pBestDestNode != NULL) && (m_pBestDestNode != m_pBestIntermediateNode);
 
 #ifndef NO_DEBUG_MESSAGES
 		perf.Stop();
