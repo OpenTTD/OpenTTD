@@ -87,6 +87,12 @@ const IndustrySpec *GetIndustrySpec(IndustryType thistype)
 	return &_industry_specs[thistype];
 }
 
+const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx)
+{
+	assert(gfx < NUM_INDUSTRY_GFXES);
+	return &_industry_tile_specs[gfx];
+}
+
 void DestroyIndustry(Industry *i)
 {
 	BEGIN_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
@@ -277,16 +283,16 @@ static Slope GetSlopeTileh_Industry(TileIndex tile, Slope tileh)
 
 static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 {
-	IndustryGfx gfx = GetIndustryGfx(tile);
+	const IndustryTileSpec *itspec = GetIndustryTileSpec(GetIndustryGfx(tile));
 	CargoID a;
 
-	a = _industry_section_accepts_1[gfx];
-	if (a != CT_INVALID) ac[a] = (a == 0) ? 1 : 8;
+	a = itspec->accepts_cargo[0];
+	if (a != CT_INVALID) ac[a] = (a == CT_PASSENGERS) ? 1 : 8;
 
-	a = _industry_section_accepts_2[gfx];
+	a = itspec->accepts_cargo[1];
 	if (a != CT_INVALID) ac[a] = 8;
 
-	a = _industry_section_accepts_3[gfx];
+	a = itspec->accepts_cargo[2];
 	if (a != CT_INVALID) ac[a] = 8;
 }
 
@@ -1155,7 +1161,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 					 *  CheckIfCanLevelIndustryPlatform(). */
 					if (tileh != SLOPE_FLAT) {
 						Slope t;
-						byte bits = _industry_section_bits[it->gfx];
+						byte bits = GetIndustryTileSpec(it->gfx)->slopes_refused;
 
 						if (bits & 0x10) return false;
 

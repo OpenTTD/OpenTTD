@@ -78,7 +78,13 @@ typedef struct IndustrySpec {
 	StringID production_down_text;
 } IndustrySpec;
 
+typedef struct IndustryTileSpec {
+	CargoID accepts_cargo[3];
+	Slope slopes_refused;
+} IndustryTileSpec;
+
 const IndustrySpec *GetIndustrySpec(IndustryType thistype);
+const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);
 
 DECLARE_OLD_POOL(Industry, Industry, 3, 8000)
 
