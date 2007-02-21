@@ -169,11 +169,6 @@ static inline bool GetStopBuiltOnTownRoad(TileIndex t)
 	return HASBIT(_m[t].m6, 3);
 }
 
-static inline void SetStopBuiltOnTownRoad(TileIndex t)
-{
-	assert(IsDriveThroughStopTile(t));
-	SETBIT(_m[t].m6, 3);
-}
 
 /**
  * Gets the direction the road stop entrance points towards.
@@ -312,13 +307,15 @@ static inline void MakeRailStation(TileIndex t, Owner o, StationID sid, Axis a, 
 	SetRailType(t, rt);
 }
 
-static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, bool is_drive_through, DiagDirection d)
+static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, DiagDirection d)
 {
-	if (is_drive_through) {
-		MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE_EXT : GFX_TRUCK_BASE_EXT) + d);
-	} else {
-		MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE : GFX_TRUCK_BASE) + d);
-	}
+	MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE : GFX_TRUCK_BASE) + d);
+}
+
+static inline void MakeDriveThroughRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, Axis a, bool on_town_road)
+{
+	MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE_EXT : GFX_TRUCK_BASE_EXT) + a);
+	SB(_m[t].m6, 3, 1, on_town_road);
 }
 
 static inline void MakeAirport(TileIndex t, Owner o, StationID sid, byte section)

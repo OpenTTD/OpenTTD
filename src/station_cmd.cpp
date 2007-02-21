@@ -1258,8 +1258,12 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
 
-		MakeRoadStop(tile, st->owner, st->index, type ? RoadStop::TRUCK : RoadStop::BUS, is_drive_through, (DiagDirection)p1);
-		if (town_owned_road) SetStopBuiltOnTownRoad(tile);
+		RoadStop::Type rs_type = type ? RoadStop::TRUCK : RoadStop::BUS;
+		if (is_drive_through) {
+			MakeDriveThroughRoadStop(tile, st->owner, st->index, rs_type, (Axis)p1, town_owned_road);
+		} else {
+			MakeRoadStop(tile, st->owner, st->index, rs_type, (DiagDirection)p1);
+		}
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
