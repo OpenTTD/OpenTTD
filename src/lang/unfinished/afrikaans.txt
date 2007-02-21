@@ -298,7 +298,6 @@ STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spel Opsies
 
 STR_0150_SOMEONE                                                :iemand{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD                                           :
 STR_0152_TOWN_DIRECTORY                                         :Stad index
 STR_0153_SUBSIDIES                                              :Subsidiëe
 

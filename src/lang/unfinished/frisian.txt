@@ -1010,8 +1010,6 @@ STR_3036_VERY_POOR                                              :Hiel Min
 STR_3037_POOR                                                   :Min
 STR_3039_GOOD                                                   :Goed
 STR_303A_VERY_GOOD                                              :Hiel Goed
-STR_303B_EXCELLENT                                              :
-STR_303C_OUTSTANDING                                            :
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
