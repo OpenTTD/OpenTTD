@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="openttd"
-	RootNameSpace="openttd"
+	RootNamespace="openttd"
 	SccProjectName=""
 	SccLocalPath="">
 	<Platforms>

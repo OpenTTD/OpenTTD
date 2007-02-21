@@ -33,10 +33,6 @@ misc.cpp
 mixer.cpp
 music.cpp
 namegen.cpp
-network/core/core.cpp
-network/core/packet.cpp
-network/core/tcp.cpp
-network/core/udp.cpp
 network/network.cpp
 network/network_client.cpp
 network/network_data.cpp
@@ -113,9 +109,9 @@ music/dmusic.h
 driver.h
 economy.h
 engine.h
-fontcache.h
 fileio.h
 fios.h
+fontcache.h
 functions.h
 genworld.h
 gfx.h
@@ -131,13 +127,6 @@ map.h
 md5.h
 mixer.h
 music.h
-network/core/config.h
-network/core/core.h
-network/core/game.h
-network/core/os_abstraction.h
-network/core/packet.h
-network/core/tcp.h
-network/core/udp.h
 network/network.h
 network/network_client.h
 network/network_data.h
@@ -278,8 +267,8 @@ table/water_land.h
 
 # AI Files
 ai/ai.cpp
-ai/default/default.cpp
 ai/trolly/build.cpp
+ai/default/default.cpp
 ai/trolly/pathfinder.cpp
 ai/trolly/shared.cpp
 ai/trolly/trolly.cpp
@@ -322,6 +311,19 @@ misc/countedptr.hpp
 misc/crc32.hpp
 misc/fixedsizearray.hpp
 misc/hashtable.hpp
+
+# Network Core
+network/core/config.h
+network/core/core.cpp
+network/core/core.h
+network/core/game.h
+network/core/os_abstraction.h
+network/core/packet.cpp
+network/core/packet.h
+network/core/tcp.cpp
+network/core/tcp.h
+network/core/udp.cpp
+network/core/udp.h
 
 # YAPF
 yapf/follow_track.cpp

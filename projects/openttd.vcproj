@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="openttd"
-	RootNameSpace="openttd"
+	RootNamespace="openttd"
 	SccProjectName=""
 	SccLocalPath="">
 	<Platforms>
@@ -263,18 +263,6 @@
 				RelativePath=".\..\src\namegen.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\network\core\core.cpp">
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\packet.cpp">
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\tcp.cpp">
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\udp.cpp">
-			</File>
-			<File
 				RelativePath=".\..\src\network\network.cpp">
 			</File>
 			<File
@@ -438,13 +426,13 @@
 				RelativePath=".\..\src\engine.h">
 			</File>
 			<File
-				RelativePath=".\..\src\fontcache.h">
-			</File>
-			<File
 				RelativePath=".\..\src\fileio.h">
 			</File>
 			<File
 				RelativePath=".\..\src\fios.h">
+			</File>
+			<File
+				RelativePath=".\..\src\fontcache.h">
 			</File>
 			<File
 				RelativePath=".\..\src\functions.h">
@@ -490,27 +478,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\music.h">
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\config.h">
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\core.h">
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\game.h">
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\os_abstraction.h">
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\packet.h">
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\tcp.h">
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\udp.h">
 			</File>
 			<File
 				RelativePath=".\..\src\network\network.h">
@@ -925,10 +892,10 @@
 				RelativePath=".\..\src\ai\ai.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\ai\default\default.cpp">
+				RelativePath=".\..\src\ai\trolly\build.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\ai\trolly\build.cpp">
+				RelativePath=".\..\src\ai\default\default.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\ai\trolly\pathfinder.cpp">
@@ -1049,6 +1016,43 @@
 			</File>
 			<File
 				RelativePath=".\..\src\misc\hashtable.hpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="Network Core"
+			Filter="">
+			<File
+				RelativePath=".\..\src\network\core\config.h">
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\core.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\core.h">
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\game.h">
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\os_abstraction.h">
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\packet.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\packet.h">
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\tcp.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\tcp.h">
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\udp.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\udp.h">
 			</File>
 		</Filter>
 		<Filter

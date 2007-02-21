@@ -25,6 +25,11 @@
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			>
 			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Generating strings.h"
+				CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\objs\langs\table"
+			/>
+			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
@@ -34,11 +39,6 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-			/>
-			<Tool
-				Name="VCPreBuildEventTool"
-				Description="Generating strings.h"
-				CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\objs\langs\table"
 			/>
 		</Configuration>
 	</Configurations>
@@ -50,7 +50,8 @@
 			RelativePath="..\src\lang\american.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating american language file"
@@ -64,7 +65,8 @@
 			RelativePath="..\src\lang\brazilian_portuguese.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating brazilian_portuguese language file"
@@ -78,7 +80,8 @@
 			RelativePath="..\src\lang\bulgarian.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating bulgarian language file"
@@ -92,7 +95,8 @@
 			RelativePath="..\src\lang\catalan.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating catalan language file"
@@ -106,7 +110,8 @@
 			RelativePath="..\src\lang\czech.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating czech language file"
@@ -120,7 +125,8 @@
 			RelativePath="..\src\lang\danish.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating danish language file"
@@ -134,7 +140,8 @@
 			RelativePath="..\src\lang\dutch.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating dutch language file"
@@ -148,7 +155,8 @@
 			RelativePath="..\src\lang\english.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating english language file"
@@ -162,7 +170,8 @@
 			RelativePath="..\src\lang\esperanto.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating esperanto language file"
@@ -176,7 +185,8 @@
 			RelativePath="..\src\lang\estonian.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating estonian language file"
@@ -190,7 +200,8 @@
 			RelativePath="..\src\lang\finnish.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating finnish language file"
@@ -204,7 +215,8 @@
 			RelativePath="..\src\lang\french.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating french language file"
@@ -218,7 +230,8 @@
 			RelativePath="..\src\lang\galician.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating galician language file"
@@ -232,7 +245,8 @@
 			RelativePath="..\src\lang\german.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating german language file"
@@ -246,7 +260,8 @@
 			RelativePath="..\src\lang\hungarian.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating hungarian language file"
@@ -260,7 +275,8 @@
 			RelativePath="..\src\lang\icelandic.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating icelandic language file"
@@ -274,7 +290,8 @@
 			RelativePath="..\src\lang\italian.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating italian language file"
@@ -288,7 +305,8 @@
 			RelativePath="..\src\lang\japanese.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating japanese language file"
@@ -302,7 +320,8 @@
 			RelativePath="..\src\lang\korean.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating korean language file"
@@ -316,7 +335,8 @@
 			RelativePath="..\src\lang\lithuanian.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating lithuanian language file"
@@ -330,7 +350,8 @@
 			RelativePath="..\src\lang\norwegian_bokmal.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating norwegian_bokmal language file"
@@ -344,7 +365,8 @@
 			RelativePath="..\src\lang\norwegian_nynorsk.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating norwegian_nynorsk language file"
@@ -358,7 +380,8 @@
 			RelativePath="..\src\lang\origveh.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating origveh language file"
@@ -372,7 +395,8 @@
 			RelativePath="..\src\lang\polish.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating polish language file"
@@ -386,7 +410,8 @@
 			RelativePath="..\src\lang\portuguese.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating portuguese language file"
@@ -400,7 +425,8 @@
 			RelativePath="..\src\lang\romanian.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating romanian language file"
@@ -414,7 +440,8 @@
 			RelativePath="..\src\lang\russian.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating russian language file"
@@ -428,7 +455,8 @@
 			RelativePath="..\src\lang\simplified_chinese.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating simplified_chinese language file"
@@ -442,7 +470,8 @@
 			RelativePath="..\src\lang\slovak.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating slovak language file"
@@ -456,7 +485,8 @@
 			RelativePath="..\src\lang\slovenian.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating slovenian language file"
@@ -470,7 +500,8 @@
 			RelativePath="..\src\lang\spanish.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating spanish language file"
@@ -484,7 +515,8 @@
 			RelativePath="..\src\lang\swedish.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating swedish language file"
@@ -498,7 +530,8 @@
 			RelativePath="..\src\lang\traditional_chinese.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating traditional_chinese language file"
@@ -512,7 +545,8 @@
 			RelativePath="..\src\lang\turkish.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating turkish language file"
@@ -526,7 +560,8 @@
 			RelativePath="..\src\lang\ukrainian.txt"
 			>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating ukrainian language file"

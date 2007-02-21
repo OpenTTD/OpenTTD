@@ -25,6 +25,11 @@
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			>
 			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Generating strings.h"
+				CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\objs\langs\table"
+			/>
+			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
@@ -34,11 +39,6 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-			/>
-			<Tool
-				Name="VCPreBuildEventTool"
-				Description="Generating strings.h"
-				CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\objs\langs\table"
 			/>
 		</Configuration>
 	</Configurations>

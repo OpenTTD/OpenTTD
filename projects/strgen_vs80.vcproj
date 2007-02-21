@@ -44,7 +44,6 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="1"
-				GlobalOptimizations="TRUE"
 				FavorSizeOrSpeed="2"
 				PreprocessorDefinitions="STRGEN;WIN32;_DEBUG;_CONSOLE"
 				BasicRuntimeChecks="0"
@@ -121,12 +120,14 @@
 				RelativePath="..\src\string.cpp"
 				>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)/$(InputName)1.obj"/>
-					</FileConfiguration>
-				</File>
+						ObjectFile="$(IntDir)/$(InputName)1.obj"
+					/>
+				</FileConfiguration>
+			</File>
 		</Filter>
 		<File
 			RelativePath="..\src\macros.h"

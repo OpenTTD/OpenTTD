@@ -111,8 +111,7 @@ load_lang_data() {
 		i=`basename $i | sed s/.txt$//g`
 		RES="$RES
 		<File
-			RelativePath=\"..\\src\\lang\\"$i".txt\"
-			>
+			RelativePath=\"..\\src\\lang\\"$i".txt\">
 			<FileConfiguration
 				Name=\"Debug|Win32\">
 				<Tool
@@ -120,8 +119,7 @@ load_lang_data() {
 					Description=\"Generating "$i" language file\"
 					CommandLine=\"..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang &quot;\$(InputPath)&quot;&#x0D;&#x0A;\"
 					AdditionalDependencies=\"\"
-					Outputs=\"..\\bin\\lang\\"$i".lng\"
-				/>
+					Outputs=\"..\\bin\\lang\\"$i".lng\"/>
 			</FileConfiguration>
 		</File>"
 	done
@@ -141,7 +139,15 @@ generate() {
 	' > \"$ROOT_DIR/projects/$2\"`"
 
 	# The files-list
-	echo "$1" >> "$ROOT_DIR/projects/$2"
+	if [ "$3" = "msvc2003" ]; then
+		echo "$1" | sed 's@\&#x0D;\&#x0A;@\n@' >> "$ROOT_DIR/projects/$2"
+	else
+		echo "$1" | sed '
+			s@Filter="">@>@;
+			s@^\([	]*\)\([^	<].*[^/]\)>$@\1\2\n\1>@g;
+			s@^	\([	]*\)\([^	<].*\)/>$@	\1\2\n\1/>@g;
+		' >> "$ROOT_DIR/projects/$2"
+	fi
 
 	# Everything below the !!FILES!! marker
 	RES="`cat \"$ROOT_DIR/projects/$2\".in | tr '\r' '\n' | awk '
@@ -158,7 +164,7 @@ generate() {
 load_main_data "$ROOT_DIR/source.list" openttd
 load_lang_data "$ROOT_DIR/src/lang/*.txt" lang
 
-generate "$openttd" "openttd.vcproj"
-generate "$openttd" "openttd_vs80.vcproj"
-generate "$lang" "langs_vs80.vcproj"
-generate "$lang" "langs.vcproj"
+generate "$openttd" "openttd.vcproj"      "msvc2003"
+generate "$openttd" "openttd_vs80.vcproj" "msvc2005"
+generate "$lang" "langs.vcproj"           "msvc2003"
+generate "$lang" "langs_vs80.vcproj"      "msvc2005"

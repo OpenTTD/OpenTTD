@@ -485,13 +485,16 @@
 			</File>
 		</Filter>
 		<File
-			RelativePath=".\..\media\mainicon.ico">
+			RelativePath=".\..\media\mainicon.ico"
+			>
 		</File>
 		<File
-			RelativePath=".\..\media\openttd.ico">
+			RelativePath=".\..\media\openttd.ico"
+			>
 		</File>
 		<File
-			RelativePath=".\..\readme.txt">
+			RelativePath=".\..\readme.txt"
+			>
 		</File>
 	</Files>
 	<Globals>
