@@ -2655,12 +2655,12 @@ static void GRFError(byte *buf, int len)
 	/* TODO: For now we just show the message, sometimes incomplete and never translated. */
 
 	static const char *const msgstr[] = {
-		"%sRequires at least pseudo-TTDPatch version %s",
-		"%sThis file is for %s version of TTD",
+		"%sRequires at least pseudo-TTDPatch version %s.",
+		"%sThis file is for %s version of TTD.",
 		"%sDesigned to be used with %s",
-		"%sInvalid parameter %s",
-		"%sMust be loaded before %s",
-		"%sMust be loaded after %s",
+		"%sInvalid parameter %s.",
+		"%sMust be loaded before %s.",
+		"%sMust be loaded after %s.",
 		"%s%s"
 	};
 
@@ -2674,20 +2674,42 @@ static void GRFError(byte *buf, int len)
 	if (!check_length(len, 6, "GRFError")) return;
 
 	buf++; /* Skip the action byte. */
-	byte sevid = grf_load_byte(&buf);
+	byte severity   = grf_load_byte(&buf);
 	buf++; /* TODO: Language id. */
-	byte msgid = grf_load_byte(&buf);
+	byte message_id = grf_load_byte(&buf);
+	len -= 4;
 
-	const char *data = grf_load_string(&buf, len - 4);
-
-	// Undocumented TTDPatch feature.
-	if (!HASBIT(sevid, 7) && _cur_stage < GLS_ACTIVATION) {
+	/* Skip the error until the activation stage unless bit 7 of the severity
+	 * is set. */
+	if (!HASBIT(severity, 7) && _cur_stage < GLS_ACTIVATION) {
 		grfmsg(7, "Skipping non-fatal GRFError in stage 1");
 		return;
 	}
+	CLRBIT(severity, 7);
 
-	sevid = GB(sevid, 0, 2);
-	grfmsg(0,  msgstr[(msgid == 0xFF) ? lengthof(msgstr) - 1 : msgid], sevstr[sevid], data);
+	if (severity >= lengthof(sevstr)) {
+		grfmsg(7, "GRFError: Invalid severity id %d. Setting to 2 (non-fatal error).", severity);
+		severity = 2;
+	} else if (severity == 3) {
+		/* This is a fatal error, so make sure the GRF is deactivated and no
+		 * more of it gets loaded. */
+		SETBIT(_cur_grfconfig->flags, GCF_DISABLED);
+		CLRBIT(_cur_grfconfig->flags, GCF_ACTIVATED);
+
+		_skip_sprites = -1;
+	}
+
+	if (message_id >= lengthof(msgstr) && message_id != 0xFF) {
+		grfmsg(7, "GRFError: Invalid message id.");
+		return;
+	}
+
+	if (len <= 1) {
+		grfmsg(7, "GRFError: No message data supplied.");
+		return;
+	}
+
+	grfmsg(0,  msgstr[(message_id == 0xFF) ? lengthof(msgstr) - 1 : message_id], sevstr[severity], grf_load_string(&buf, len));
 }
 
 /* Action 0x0C */
