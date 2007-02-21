@@ -38,7 +38,6 @@ static bool AirportSetBlocks(Vehicle *v, const AirportFTA *current_pos, const Ai
 static bool AirportHasBlock(Vehicle *v, const AirportFTA *current_pos, const AirportFTAClass *apc);
 static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *apc);
 static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *apc);
-static void AirportGoToNextPosition(Vehicle *v, const AirportFTAClass *apc);
 static void CrashAirplane(Vehicle *v);
 
 static void AircraftNextAirportPos_and_Order(Vehicle *v);
@@ -1738,10 +1737,12 @@ static void AirportClearBlock(const Vehicle *v, const AirportFTAClass *apc)
 	}
 }
 
-static void AirportGoToNextPosition(Vehicle *v, const AirportFTAClass *apc)
+static void AirportGoToNextPosition(Vehicle *v)
 {
 	// if aircraft is not in position, wait until it is
 	if (!AircraftController(v)) return;
+
+	const AirportFTAClass *apc = GetStation(v->u.air.targetairport)->Airport();
 
 	AirportClearBlock(v, apc);
 	AirportMove(v, apc); // move aircraft to next position
@@ -2006,7 +2007,7 @@ static void AircraftEventHandler(Vehicle *v, int loop)
 
 	if (v->current_order.type >= OT_LOADING) return;
 
-	AirportGoToNextPosition(v, GetStation(v->u.air.targetairport)->Airport());
+	AirportGoToNextPosition(v);
 }
 
 void Aircraft_Tick(Vehicle *v)
