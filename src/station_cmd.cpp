@@ -2647,11 +2647,6 @@ void AfterLoadStations(void)
 			st->speclist[i].spec = GetCustomStationSpecByGrf(st->speclist[i].grfid, st->speclist[i].localidx);
 		}
 	}
-
-	for (TileIndex tile = 0; tile < MapSize(); tile++) {
-		if (GetTileType(tile) != MP_STATION) continue;
-		GetStationByTile(tile)->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
-	}
 }
 
 

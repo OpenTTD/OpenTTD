@@ -1288,20 +1288,23 @@ bool AfterLoadGame(void)
 	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
 	MarkWholeScreenDirty();
 
-	/* From this version on there can be multiple road stops of the same type per
-	 * station. Convert the existing stops to the new internal data structure.
-	 */
 	for (TileIndex t = 0; t < map_size; t++) {
 		switch (GetTileType(t)) {
-			case MP_STATION:
+			case MP_STATION: {
+				Station *st = GetStationByTile(t);
+
+				st->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
+
 				switch (GetStationType(t)) {
 					case STATION_TRUCK:
 					case STATION_BUS:
 						if (CheckSavegameVersion(6)) {
+							/* From this version on there can be multiple road stops of the
+							 * same type per station. Convert the existing stops to the new
+							 * internal data structure. */
 							RoadStop *rs = new RoadStop(t);
 							if (rs == NULL) error("Too many road stops in savegame");
 
-							Station *st = GetStationByTile(t);
 							RoadStop **head =
 								IsTruckStop(t) ? &st->truck_stops : &st->bus_stops;
 							*head = rs;
@@ -1330,6 +1333,7 @@ bool AfterLoadGame(void)
 					default: break;
 				}
 				break;
+			}
 
 			default: break;
 		}
