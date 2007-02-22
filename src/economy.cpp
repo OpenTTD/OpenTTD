@@ -613,9 +613,8 @@ static void PlayersGenStatistics(void)
 
 static void AddSingleInflation(int32 *value, uint16 *frac, int32 amt)
 {
-	int64 tmp;
+	int64 tmp = (int64)*value * amt;
 	int32 low;
-	tmp = BIGMULS(*value, amt);
 	*frac = (uint16)(low = (uint16)tmp + *frac);
 	*value += (int32)(tmp >> 16) + (low >> 16);
 }
