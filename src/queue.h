@@ -61,17 +61,6 @@ struct Queue{
 
 	union {
 		struct {
-			uint max_size;
-			uint size;
-			void** elements;
-		} stack;
-		struct {
-			uint max_size;
-			uint head; /* The index where the last element should be inserted */
-			uint tail; /* The index where the next element should be read */
-			void** elements;
-		} fifo;
-		struct {
 			InsSortNode* first;
 		} inssort;
 		struct {
@@ -81,32 +70,8 @@ struct Queue{
 			BinaryHeapNode** elements;
 		} binaryheap;
 	} data;
-
-	/* If true, this struct will be free'd when the
-	 * Queue is deleted. */
-	bool freeq;
 };
 
-/* Initializes a stack and allocates internal memory. */
-void init_Stack(Queue* q, uint max_size);
-
-/* Allocate a new stack with a maximum of max_size elements. */
-Queue* new_Stack(uint max_size);
-
-/*
- * Fifo
- */
-
-/* Initializes a fifo and allocates internal memory for maximum of max_size
- * elements */
-void init_Fifo(Queue* q, uint max_size);
-
-/* Allocate a new fifo and initializes it with a maximum of max_size elements. */
-Queue* new_Fifo(uint max_size);
-
-Queue* new_Fifo_in_buffer(uint max_size, void* buffer);
-
-int build_Fifo(void* buffer, uint size);
 
 /*
  * Insertion Sorter
@@ -116,8 +81,6 @@ int build_Fifo(void* buffer, uint size);
  * size */
 void init_InsSort(Queue* q);
 
-/* Allocate a new fifo and initializes it. There is no maximum size */
-Queue* new_InsSort(void);
 
 /*
  *  Binary Heap
@@ -132,9 +95,6 @@ Queue* new_InsSort(void);
  * max_size elements */
 void init_BinaryHeap(Queue* q, uint max_size);
 
-/* Allocate a new binary heap and initializes it with a maximum of max_size
- * elements. */
-Queue* new_BinaryHeap(uint max_size);
 
 /*
  * Hash
@@ -163,10 +123,6 @@ typedef struct Hash {
 	/* A pointer to an array of numbuckets booleans, which will be true if
 	 * there are any Nodes in the bucket */
 	bool* buckets_in_use;
-	/* If true, buckets will be freed in delete_hash */
-	bool freeb;
-	/* If true, the pointer to this struct will be freed in delete_hash */
-	bool freeh;
 } Hash;
 
 /* Call these function to manipulate a hash */
@@ -184,9 +140,6 @@ void* Hash_Get(const Hash* h, uint key1, uint key2);
 
 /* Call these function to create/destroy a hash */
 
-/* Builds a new hash, with num_buckets buckets. Make sure that hash() always
- * returns a hash less than num_buckets! Call delete_hash after use */
-Hash* new_Hash(Hash_HashProc* hash, int num_buckets);
 /* Builds a new hash in an existing struct. Make sure that hash() always
  * returns a hash less than num_buckets! Call delete_hash after use */
 void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets);

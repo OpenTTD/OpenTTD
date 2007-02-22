@@ -5,140 +5,6 @@
 #include "queue.h"
 #include "helpers.hpp"
 
-static void Stack_Clear(Queue* q, bool free_values)
-{
-	if (free_values) {
-		uint i;
-
-		for (i = 0; i < q->data.stack.size; i++) free(q->data.stack.elements[i]);
-	}
-	q->data.stack.size = 0;
-}
-
-static void Stack_Free(Queue* q, bool free_values)
-{
-	q->clear(q, free_values);
-	free(q->data.stack.elements);
-	if (q->freeq) free(q);
-}
-
-static bool Stack_Push(Queue* q, void* item, int priority)
-{
-	if (q->data.stack.size == q->data.stack.max_size) return false;
-	q->data.stack.elements[q->data.stack.size++] = item;
-	return true;
-}
-
-static void* Stack_Pop(Queue* q)
-{
-	if (q->data.stack.size == 0) return NULL;
-	return q->data.stack.elements[--q->data.stack.size];
-}
-
-static bool Stack_Delete(Queue* q, void* item, int priority)
-{
-	return false;
-}
-
-static Queue* init_stack(Queue* q, uint max_size)
-{
-	q->push = Stack_Push;
-	q->pop = Stack_Pop;
-	q->del = Stack_Delete;
-	q->clear = Stack_Clear;
-	q->free = Stack_Free;
-	q->data.stack.max_size = max_size;
-	q->data.stack.size = 0;
-	q->data.stack.elements = MallocT<void*>(max_size);
-	q->freeq = false;
-	return q;
-}
-
-Queue* new_Stack(uint max_size)
-{
-	Queue* q = MallocT<Queue>(1);
-
-	init_stack(q, max_size);
-	q->freeq = true;
-	return q;
-}
-
-/*
- * Fifo
- */
-
-static void Fifo_Clear(Queue* q, bool free_values)
-{
-	if (free_values) {
-		uint head = q->data.fifo.head;
-		uint tail = q->data.fifo.tail; /* cache for speed */
-
-		while (head != tail) {
-			free(q->data.fifo.elements[tail]);
-			tail = (tail + 1) % q->data.fifo.max_size;
-		}
-	}
-	q->data.fifo.head = 0;
-	q->data.fifo.tail = 0;
-}
-
-static void Fifo_Free(Queue* q, bool free_values)
-{
-	q->clear(q, free_values);
-	free(q->data.fifo.elements);
-	if (q->freeq) free(q);
-}
-
-static bool Fifo_Push(Queue* q, void* item, int priority)
-{
-	uint next = (q->data.fifo.head + 1) % q->data.fifo.max_size;
-
-	if (next == q->data.fifo.tail) return false;
-	q->data.fifo.elements[q->data.fifo.head] = item;
-
-	q->data.fifo.head = next;
-	return true;
-}
-
-static void* Fifo_Pop(Queue* q)
-{
-	void* result;
-
-	if (q->data.fifo.head == q->data.fifo.tail) return NULL;
-	result = q->data.fifo.elements[q->data.fifo.tail];
-
-	q->data.fifo.tail = (q->data.fifo.tail + 1) % q->data.fifo.max_size;
-	return result;
-}
-
-static bool Fifo_Delete(Queue* q, void* item, int priority)
-{
-	return false;
-}
-
-static Queue* init_fifo(Queue* q, uint max_size)
-{
-	q->push = Fifo_Push;
-	q->pop = Fifo_Pop;
-	q->del = Fifo_Delete;
-	q->clear = Fifo_Clear;
-	q->free = Fifo_Free;
-	q->data.fifo.max_size = max_size;
-	q->data.fifo.head = 0;
-	q->data.fifo.tail = 0;
-	q->data.fifo.elements = MallocT<void*>(max_size);
-	q->freeq = false;
-	return q;
-}
-
-Queue* new_Fifo(uint max_size)
-{
-	Queue* q = MallocT<Queue>(1);
-	init_fifo(q, max_size);
-	q->freeq = true;
-	return q;
-}
-
 
 /*
  * Insertion Sorter
@@ -161,7 +27,6 @@ static void InsSort_Clear(Queue* q, bool free_values)
 static void InsSort_Free(Queue* q, bool free_values)
 {
 	q->clear(q, free_values);
-	if (q->freeq) free(q);
 }
 
 static bool InsSort_Push(Queue* q, void* item, int priority)
@@ -215,16 +80,6 @@ void init_InsSort(Queue* q)
 	q->clear = InsSort_Clear;
 	q->free = InsSort_Free;
 	q->data.inssort.first = NULL;
-	q->freeq = false;
-}
-
-Queue* new_InsSort(void)
-{
-	Queue* q = MallocT<Queue>(1);
-
-	init_InsSort(q);
-	q->freeq = true;
-	return q;
 }
 
 
@@ -284,7 +139,6 @@ static void BinaryHeap_Free(Queue* q, bool free_values)
 		free(q->data.binaryheap.elements[i]);
 	}
 	free(q->data.binaryheap.elements);
-	if (q->freeq) free(q);
 }
 
 static bool BinaryHeap_Push(Queue* q, void* item, int priority)
@@ -430,19 +284,9 @@ void init_BinaryHeap(Queue* q, uint max_size)
 	q->data.binaryheap.elements = CallocT<BinaryHeapNode*>((max_size - 1) / BINARY_HEAP_BLOCKSIZE + 1);
 	q->data.binaryheap.elements[0] = MallocT<BinaryHeapNode>(BINARY_HEAP_BLOCKSIZE);
 	q->data.binaryheap.blocks = 1;
-	q->freeq = false;
 #ifdef QUEUE_DEBUG
 	printf("[BinaryHeap] Initial size of elements is %d nodes\n", BINARY_HEAP_BLOCKSIZE);
 #endif
-}
-
-Queue* new_BinaryHeap(uint max_size)
-{
-	Queue* q = MallocT<Queue>(1);
-
-	init_BinaryHeap(q, max_size);
-	q->freeq = true;
-	return q;
 }
 
 // Because we don't want anyone else to bother with our defines
@@ -469,18 +313,9 @@ void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets)
 	debug("Buckets = %p", h->buckets);
 #endif
 	h->buckets_in_use = (bool*)(h->buckets + num_buckets);
-	h->freeh = false;
 	for (i = 0; i < num_buckets; i++) h->buckets_in_use[i] = false;
 }
 
-Hash* new_Hash(Hash_HashProc* hash, int num_buckets)
-{
-	Hash* h = MallocT<Hash>(1);
-
-	init_Hash(h, hash, num_buckets);
-	h->freeh = true;
-	return h;
-}
 
 void delete_Hash(Hash* h, bool free_values)
 {
@@ -511,7 +346,6 @@ void delete_Hash(Hash* h, bool free_values)
 #ifdef HASH_DEBUG
 	debug("Freeing Hash: %p", h);
 #endif
-	if (h->freeh) free(h);
 }
 
 #ifdef HASH_STATS
