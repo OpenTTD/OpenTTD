@@ -49,8 +49,7 @@ static const TrackBits _state_dir_table[4] = { TRACK_BIT_RIGHT, TRACK_BIT_LOWER,
  */
 byte FreightWagonMult(CargoID cargo)
 {
-	// XXX NewCargos introduces a specific "is freight" flag for this test.
-	if (cargo == CT_PASSENGERS || cargo == CT_MAIL) return 1;
+	if (!GetCargo(cargo)->is_freight) return 1;
 	return _patches.freight_trains;
 }
 
