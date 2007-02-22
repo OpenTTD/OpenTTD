@@ -50,7 +50,7 @@ const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum = NULL);
 GRFConfig *GetGRFConfig(uint32 grfid);
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src);
 void AppendStaticGRFConfigs(GRFConfig **dst);
-void AppendToGRFConfigList(GRFConfig **dst, const GRFConfig *el);
+void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el);
 void ClearGRFConfig(GRFConfig **config);
 void ClearGRFConfigList(GRFConfig **config);
 void ResetGRFConfig(bool defaults);

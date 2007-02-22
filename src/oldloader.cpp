@@ -1367,18 +1367,16 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 				ReadUint32(ls); ReadByte(ls); len -= 5;
 
 				ClearGRFConfigList(&_grfconfig);
-				GRFConfig c;
-				memset(&c, 0, sizeof(GRFConfig));
-
 				while (len != 0) {
 					uint32 grfid = ReadUint32(ls);
 
 					if (ReadByte(ls) == 1) {
-						c.grfid = grfid;
-						c.filename = "TTDP game, no information";
+						GRFConfig *c = CallocT<GRFConfig>(1);
+						c->grfid = grfid;
+						c->filename = strdup("TTDP game, no information");
 
-						AppendToGRFConfigList(&_grfconfig, &c);
-						DEBUG(oldloader, 3, "TTDPatch game using GRF file with GRFID %0X", BSWAP32(c.grfid));
+						AppendToGRFConfigList(&_grfconfig, c);
+						DEBUG(oldloader, 3, "TTDPatch game using GRF file with GRFID %0X", BSWAP32(c->grfid));
 					}
 					len -= 5;
 				};
