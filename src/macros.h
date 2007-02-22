@@ -43,44 +43,43 @@ static inline uint clampu(uint a, uint min, uint max)
 	return a;
 }
 
-static inline int32 BIGMULSS(int32 a, int32 b, int shift) {
-	return (int32)(((int64)(a) * (int64)(b)) >> (shift));
+static inline int32 BIGMULSS(int32 a, int32 b, int shift)
+{
+	return (int32)((int64)a * (int64)b >> shift);
 }
 
-static inline uint32 BIGMULUS(uint32 a, uint32 b, int shift) {
-	return (uint32)(((uint64)(a) * (uint64)(b)) >> (shift));
+static inline uint32 BIGMULUS(uint32 a, uint32 b, int shift)
+{
+	return (uint32)((uint64)a * (uint64)b >> shift);
 }
 
-static inline int64 BIGMULS(int32 a, int32 b) {
-	return (int64)(a) * (int64)(b);
+static inline int64 BIGMULS(int32 a, int32 b)
+{
+	return (int64)a * (int64)b;
 }
 
 /* OPT: optimized into an unsigned comparison */
 //#define IS_INSIDE_1D(x, base, size) ((x) >= (base) && (x) < (base) + (size))
 #define IS_INSIDE_1D(x, base, size) ( (uint)((x) - (base)) < ((uint)(size)) )
 
-template <typename T>
-static inline bool HASBIT(T x, int y)
+template<typename T> static inline bool HASBIT(T x, int y)
 {
-	return (x & (((T)1) << y)) != 0;
+	return (x & ((T)1 << y)) != 0;
 }
 
-template <typename T>
-static inline T SETBIT(T& x, int y)
+template<typename T> static inline T SETBIT(T& x, int y)
 {
-	return x |= (((T)1) << y);
+	return x |= (T)1 << y;
 }
 
-template <typename T>
-static inline T CLRBIT(T& x, int y)
+template<typename T> static inline T CLRBIT(T& x, int y)
 {
-	return x &= ~(((T)1) << y);
+	return x &= ~((T)1 << y);
 }
 
-template <typename T>
-static inline T TOGGLEBIT(T& x, int y)
+template<typename T> static inline T TOGGLEBIT(T& x, int y)
 {
-	return x ^= (((T)1) << y);
+	return x ^= (T)1 << y;
 }
 
 
