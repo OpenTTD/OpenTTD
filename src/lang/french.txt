@@ -1314,7 +1314,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Protég
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVEUR HORS-LIGNE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVEUR PLEIN
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSION NON CORRESPONDANTE
-STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF DIFFERENTS
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF REQUIS
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Rejoindre la partie
 
@@ -2897,6 +2897,7 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Applique
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Changer les paramètres
 STR_NEWGRF_TIP                                                  :{BLACK}Une liste de tous les sets Newgrf installés. Cliquer un set pour changer les paramètres.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Il n'y a actuellement aucun fichier Newgrf installé ! Veuillez vous référer au manuel pour des instructions sur l'installation de nouveaux graphiques.
+STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}Nom de fichier: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}

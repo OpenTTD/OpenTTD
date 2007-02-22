@@ -606,9 +606,9 @@ STR_0213_BUSINESSMAN                                            :Negociante
 STR_0214_ENTREPRENEUR                                           :Empresário
 STR_0215_INDUSTRIALIST                                          :Industrial
 STR_0216_CAPITALIST                                             :Capitalista
-STR_0217_MAGNATE                                                :Magnate
-STR_0218_MOGUL                                                  :Grande magnate
-STR_0219_TYCOON_OF_THE_CENTURY                                  :Magnate do século
+STR_0217_MAGNATE                                                :Magnata
+STR_0218_MOGUL                                                  :Grande magnata
+STR_0219_TYCOON_OF_THE_CENTURY                                  :Magnata do século
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} conquista '{STRING}' desempenho!
@@ -1039,7 +1039,7 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Fila de
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o rato está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova procura de caminho global (NPF, overrides NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova procura de caminho global (NPF, substitui NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para simular comboios pesados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações de passagem em estradas das cidades: {ORANGE}{STRING}
 

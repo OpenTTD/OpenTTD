@@ -1042,6 +1042,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}이미 지어진 역에 추가로 역을 증축하는 것을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}향상된 글로벌 경로탐색 (NPF, NTP 우선) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}무거운 열차를 운행하기 위해 화물에 무게를 가함 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}마을이 소유중인 도로를 통과하는 버스 정류장 건설 허용: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}소형 공항의 건설을 허용 : {ORANGE}{STRING}
 
@@ -1585,6 +1586,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :신호등이 �
 STR_1816_TREE_LINED_ROAD                                        :가로수가 있는 도로
 STR_1817_ROAD_VEHICLE_DEPOT                                     :차고
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :철도 건널목
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}버스정류장을 제거할 수 없습니다...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}트럭 터미널을 제거할 수 없습니다...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}도시
@@ -2894,6 +2897,7 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}변경�
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}파라미터 설정
 STR_NEWGRF_TIP                                                  :{BLACK}당신이 설치한 NewGRF의 모든 목록입니다. 설정을 변경하려면 클릭하세요
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}없는 NewGRF 파일이 있습니다! NewGRF 설치 방법에 대한 매뉴얼을 참고해주십시오
+STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}파일명: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}

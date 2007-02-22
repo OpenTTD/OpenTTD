@@ -1828,6 +1828,7 @@ STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Заре
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} пречи
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Мина за въглища
+STR_4803_POWER_STATION                                          :Електроцентрала
 STR_4804_SAWMILL                                                :Дъскорезница
 STR_4805_FOREST                                                 :Гора
 STR_4806_OIL_REFINERY                                           :Нефтена рафинерия
@@ -2897,6 +2898,7 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Прил
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Настройване на параметрите
 STR_NEWGRF_TIP                                                  :{BLACK}Списък с всички инсталирани Newgrf пакети. Натисни на пакет за промяна на настройките
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}В момента няма инсталирани newgrf файлове! Моля обърнете се към наръчника за инструкции по инсталирането на нова графика
+STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}Име на файл: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5 сума: {SILVER}{STRING}

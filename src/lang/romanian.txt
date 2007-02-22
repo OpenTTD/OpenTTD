@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Joc nou
 STR_0141_LOAD_GAME                                              :{BLACK}Încarcã joc
 STR_SINGLE_PLAYER                                               :{BLACK}Un singur jucãtor
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor harta
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -390,6 +391,7 @@ STR_ENGINE_SORT_POWER                                           :Putere
 STR_ENGINE_SORT_INTRO_DATE                                      :Data lansarii
 STR_ENGINE_SORT_RUNNING_COST                                    :Cost exploatare
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Cost exploatare/putere
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :
 STR_NO_WAITING_CARGO                                            :{BLACK}Nu este în asteptare nici un fel de încãrcãturã
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege toate facilitãtile
 STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
@@ -622,6 +624,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Micsorea
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genereazã teren aleator
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reseteazã peisajul
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetare peisaj
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Elimina de pe harta toate proprietatile detinute de jucatori
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Esti sigur ca vrei sa elimini toate proprietatile detinute de jucatori?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generare peisaj
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generare oras
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generare industrii
@@ -726,6 +730,7 @@ STR_0290_DELETE                                                 :{BLACK}Sterge
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Sterge acest oras
 STR_0292_SAVE_SCENARIO                                          :Salveazã scenariul
 STR_0293_LOAD_SCENARIO                                          :Încarcã scenariu
+STR_LOAD_HEIGHTMAP                                              :Incarca harta de inaltimi
 STR_0294_QUIT_EDITOR                                            :Iesire din editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Iesire din joc
@@ -1036,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permite
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Statii neuniforme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nou pathfinding global(NPF, dezactiveaza NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicator greutate pt marfar pt simularea trenurilor grele: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite semafoare in intersectiile drumurilor din proprietatea orasului: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permite întotdeauna aeroporturi mici: {ORANGE}{STRING}
 
@@ -1412,6 +1418,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nu a fost detectatã o placã de retea valabilã
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Nu a fost gãsit nici un joc în retea
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Serverul nu a rãspuns cererii
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Nu m-am putut conecta din cauza unei nepotriviri NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Sincronizarea jocului in retea a esuat.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Conexiunea jocului in reatea a fost intrerupta.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nu am reusit sa incarc jocul-server salvat.
@@ -1433,6 +1440,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :eroare de desin
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :nu pot incarca harta
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :conexiune pierduta
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :eroare de protocol
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Nepotrivire NewGRF
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :neautorizat
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :primit pachet ciudat
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :versiune incorecta
@@ -1577,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Stradã ilumina
 STR_1816_TREE_LINED_ROAD                                        :Stradã cu copaci pe margine
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Autobazã
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Traversare la nivel cu calea feratã
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nu pot elimina statia de autobus...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nu pot elimina statia de camioane...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Orase
@@ -2663,6 +2673,7 @@ STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Autovehi
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Cumpãrã un autovehicul
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Mutã un autovehicul aici pentru a-l vinde
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centreazã imaginea pe locatia acestei autobaze
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista selectie vehicule rutiere - apasa pe vehicul pentru informatii
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Cumpãrã autovehiculul selectat
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Un nou autovehicul disponibil!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}

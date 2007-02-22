@@ -23,38 +23,55 @@ STR_000D_ACCEPTS                                                :{BLACK}Прий
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :пасажири
 STR_000F_PASSENGERS.r                                           :пасажирів
+STR_000F_PASSENGERS.z                                           :пасажирів
 STR_0010_COAL                                                   :вугілля
 STR_0010_COAL.r                                                 :вугілля
-STR_0011_MAIL                                                   :пошту
+STR_0010_COAL.z                                                 :вугілля
+STR_0011_MAIL                                                   :пошта
 STR_0011_MAIL.r                                                 :пошти
-STR_0012_OIL                                                    :нафту
+STR_0011_MAIL.z                                                 :пошту
+STR_0012_OIL                                                    :нафта
 STR_0012_OIL.r                                                  :нафти
-STR_0013_LIVESTOCK                                              :тварин
+STR_0012_OIL.z                                                  :нафту
+STR_0013_LIVESTOCK                                              :тварини
 STR_0013_LIVESTOCK.r                                            :тварин
+STR_0013_LIVESTOCK.z                                            :тварин
 STR_0014_GOODS                                                  :товари
 STR_0014_GOODS.r                                                :товарів
+STR_0014_GOODS.z                                                :товари
 STR_0015_GRAIN                                                  :зерно
 STR_0015_GRAIN.r                                                :зерна
-STR_0016_WOOD                                                   :деревину
+STR_0015_GRAIN.z                                                :зерно
+STR_0016_WOOD                                                   :деревина
 STR_0016_WOOD.r                                                 :деревини
-STR_0017_IRON_ORE                                               :залізну руду
+STR_0016_WOOD.z                                                 :деревину
+STR_0017_IRON_ORE                                               :залізна руда
 STR_0017_IRON_ORE.r                                             :залізної руди
+STR_0017_IRON_ORE.z                                             :залізну руду
 STR_0018_STEEL                                                  :сталь
 STR_0018_STEEL.r                                                :сталі
+STR_0018_STEEL.z                                                :сталь
 STR_0019_VALUABLES                                              :коштовності
 STR_0019_VALUABLES.r                                            :коштовностей
-STR_001A_COPPER_ORE                                             :мідну руду
+STR_0019_VALUABLES.z                                            :коштовності
+STR_001A_COPPER_ORE                                             :мідна руда
 STR_001A_COPPER_ORE.r                                           :мідної руди
-STR_001B_MAIZE                                                  :кукурудзу
+STR_001A_COPPER_ORE.z                                           :мідну руду
+STR_001B_MAIZE                                                  :кукурудза
 STR_001B_MAIZE.r                                                :кукурудзи
+STR_001B_MAIZE.z                                                :кукурудзу
 STR_001C_FRUIT                                                  :фрукти
 STR_001C_FRUIT.r                                                :фруктів
+STR_001C_FRUIT.z                                                :фрукти
 STR_001D_DIAMONDS                                               :діаманти
 STR_001D_DIAMONDS.r                                             :діамантів
+STR_001D_DIAMONDS.z                                             :діаманти
 STR_001E_FOOD                                                   :продукти
 STR_001E_FOOD.r                                                 :продуктів
+STR_001E_FOOD.z                                                 :продукти
 STR_001F_PAPER                                                  :папір
 STR_001F_PAPER.r                                                :паперу
+STR_001F_PAPER.z                                                :папір
 STR_0020_GOLD                                                   :золото
 STR_0020_GOLD.r                                                 :золота
 STR_0020_GOLD.z                                                 :золото
@@ -91,8 +108,8 @@ STR_002A_TOFFEE.z                                               :іриски
 STR_002B_BATTERIES                                              :батарейки
 STR_002B_BATTERIES.r                                            :батарейок
 STR_002B_BATTERIES.z                                            :батарейки
-STR_002C_PLASTIC                                                :пластик
-STR_002C_PLASTIC.z                                              :пластик
+STR_002C_PLASTIC                                                :пластилін
+STR_002C_PLASTIC.z                                              :пластилін
 STR_002D_FIZZY_DRINKS                                           :газована водф
 STR_002D_FIZZY_DRINKS.r                                         :газованої води
 STR_002D_FIZZY_DRINKS.z                                         :газовану воду
@@ -184,9 +201,8 @@ STR_004A_TOFFEE.z                                               :іриски
 STR_004B_BATTERY                                                :батарейки
 STR_004B_BATTERY.r                                              :батарейок
 STR_004B_BATTERY.z                                              :батарейки
-STR_004C_PLASTIC                                                :пластик
-STR_004C_PLASTIC.r                                              :пластику
-STR_004C_PLASTIC.z                                              :пластик
+STR_004C_PLASTIC                                                :пластилін
+STR_004C_PLASTIC.z                                              :пластилін
 STR_004D_FIZZY_DRINK                                            :газована вода
 STR_004D_FIZZY_DRINK.r                                          :газованої води
 STR_004D_FIZZY_DRINK.z                                          :газовану воду
@@ -267,7 +283,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Немо
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Неможливо очистити цю ділянку...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Авторське право {COPYRIGHT} 1995 Кріс Сойєр, Всі права захищені
 STR_00B7_VERSION                                                :{BLACK}OpenTTD версія {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD-група
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 команда OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK} Перекладач(і) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -3039,6 +3055,7 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Заст
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Встановлення параметрів
 STR_NEWGRF_TIP                                                  :{BLACK}Список усіх ваших установок нової графіки. Виберіть для налаштування
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Відсутні файли нової графіки! Прочитайте інструкцію по встановленню нової графіки
+STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}Ім'я файлу: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID графіки: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5сума: {SILVER}{STRING}

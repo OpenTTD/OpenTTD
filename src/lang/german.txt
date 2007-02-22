@@ -2897,6 +2897,7 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Änderun
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parameter setzen
 STR_NEWGRF_TIP                                                  :{BLACK}Eine Liste aller Newgrf-Sets, die installiert sind. Per Klick auswählen.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Keine Newgrf-Dateien installiert. Bitte Installationsanleitung im Handbuch nachschlagen.
+STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}Dateiname: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5-Summe: {SILVER}{STRING}

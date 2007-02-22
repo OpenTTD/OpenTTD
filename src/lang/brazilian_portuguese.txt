@@ -36,7 +36,7 @@ STR_001A_COPPER_ORE                                             :{G=m}Minério d
 STR_001B_MAIZE                                                  :{G=m}Milho
 STR_001C_FRUIT                                                  :{G=f}Fruta
 STR_001D_DIAMONDS                                               :{G=m}Diamante
-STR_001E_FOOD                                                   :{G=m}Alimento
+STR_001E_FOOD                                                   :{G=f}Comida
 STR_001F_PAPER                                                  :{G=m}Papel
 STR_0020_GOLD                                                   :{G=m}Ouro
 STR_0021_WATER                                                  :{G=f}Água
@@ -53,37 +53,37 @@ STR_002B_BATTERIES                                              :{G=f}Pilhas
 STR_002C_PLASTIC                                                :{G=m}Plástico
 STR_002D_FIZZY_DRINKS                                           :{G=m}Refrigerantes
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :{G=m}passageiros
-STR_0030_COAL                                                   :{G=m}carvão
-STR_0031_MAIL                                                   :{G=f}cartas
-STR_0032_OIL                                                    :{G=m}petróleo
-STR_0033_LIVESTOCK                                              :{G=m}gado
-STR_0034_GOODS                                                  :{G=m}bens
-STR_0035_GRAIN                                                  :{G=m}grãos
-STR_0036_WOOD                                                   :{G=f}madeira
-STR_0037_IRON_ORE                                               :{G=m}minério de ferro
-STR_0038_STEEL                                                  :{G=m}aço
-STR_0039_VALUABLES                                              :{G=m}dinheiro
-STR_003A_COPPER_ORE                                             :{G=m}minério de cobre
-STR_003B_MAIZE                                                  :{G=m}milho
-STR_003C_FRUIT                                                  :{G=f}fruta
-STR_003D_DIAMOND                                                :{G=m}diamante
-STR_003E_FOOD                                                   :{G=m}alimento
-STR_003F_PAPER                                                  :{G=m}papel
-STR_0040_GOLD                                                   :{G=m}ouro
-STR_0041_WATER                                                  :{G=f}água
-STR_0042_WHEAT                                                  :{G=m}trigo
-STR_0043_RUBBER                                                 :{G=f}borracha
-STR_0044_SUGAR                                                  :{G=m}açúcar
-STR_0045_TOY                                                    :{G=m}brinquedos
-STR_0046_CANDY                                                  :{G=m}doces
-STR_0047_COLA                                                   :{G=f}cola
-STR_0048_COTTON_CANDY                                           :{G=m}algodão doce
-STR_0049_BUBBLE                                                 :{G=f}bolhas
-STR_004A_TOFFEE                                                 :{G=m}caramelo
-STR_004B_BATTERY                                                :{G=f}pilhas
-STR_004C_PLASTIC                                                :{G=m}plástico
-STR_004D_FIZZY_DRINK                                            :{G=m}refrigerantes
+STR_002F_PASSENGER                                              :{G=m}Passageiros
+STR_0030_COAL                                                   :{G=m}Carvão
+STR_0031_MAIL                                                   :{G=f}Cartas
+STR_0032_OIL                                                    :{G=m}Petróleo
+STR_0033_LIVESTOCK                                              :{G=m}Gado
+STR_0034_GOODS                                                  :{G=m}Bens
+STR_0035_GRAIN                                                  :{G=m}Grãos
+STR_0036_WOOD                                                   :{G=f}Madeira
+STR_0037_IRON_ORE                                               :{G=m}Minério de ferro
+STR_0038_STEEL                                                  :{G=m}Aço
+STR_0039_VALUABLES                                              :{G=m}Dinheiro
+STR_003A_COPPER_ORE                                             :{G=m}Minério de cobre
+STR_003B_MAIZE                                                  :{G=m}Milho
+STR_003C_FRUIT                                                  :{G=f}Fruta
+STR_003D_DIAMOND                                                :{G=m}Diamante
+STR_003E_FOOD                                                   :{G=f}Comida
+STR_003F_PAPER                                                  :{G=m}Papel
+STR_0040_GOLD                                                   :{G=m}Ouro
+STR_0041_WATER                                                  :{G=f}Água
+STR_0042_WHEAT                                                  :{G=m}Trigo
+STR_0043_RUBBER                                                 :{G=f}Borracha
+STR_0044_SUGAR                                                  :{G=m}Açúcar
+STR_0045_TOY                                                    :{G=m}Brinquedos
+STR_0046_CANDY                                                  :{G=m}Doces
+STR_0047_COLA                                                   :{G=f}Cola
+STR_0048_COTTON_CANDY                                           :{G=m}Algodão doce
+STR_0049_BUBBLE                                                 :{G=f}Bolhas
+STR_004A_TOFFEE                                                 :{G=m}Caramelo
+STR_004B_BATTERY                                                :{G=f}Pilhas
+STR_004C_PLASTIC                                                :{G=m}Plástico
+STR_004D_FIZZY_DRINK                                            :{G=m}Refrigerantes
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passageiro{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} de carvão
@@ -186,7 +186,7 @@ STR_00D7_GREEN                                                  :Verde
 STR_00D8_DARK_GREEN                                             :Verde Escuro
 STR_00D9_BLUE                                                   :Azul
 STR_00DA_CREAM                                                  :Creme
-STR_00DB_MAUVE                                                  :Preto
+STR_00DB_MAUVE                                                  :Malva
 STR_00DC_PURPLE                                                 :Roxo
 STR_00DD_ORANGE                                                 :Laranja
 STR_00DE_BROWN                                                  :Marrom
@@ -214,7 +214,7 @@ STR_00F3_400M                                                   :{BLACK}{TINYFON
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Trens
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Automóveis
-STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Embarcações
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Navios
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeronaves
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Rotas de Transporte
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Mina de Carvão
@@ -234,10 +234,10 @@ STR_0107_GOLD_MINE                                              :{BLACK}{TINYFON
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Indústria Alimentícia
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Mina de Diamante
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Mina de Cobre
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Pomar
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Plantação de Frutas
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Plantação de Seringueiras
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Poço Artesiano
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Reservatório de Água
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Poço de Água
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Reservatório
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Serraria
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Floresta de Algodão Doce
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Fábrica de Doces
@@ -316,7 +316,7 @@ STR_0153_SUBSIDIES                                              :Subsídios
 
 STR_UNITS_IMPERIAL                                              :Imperial
 STR_UNITS_METRIC                                                :Métrico
-STR_UNITS_SI                                                    :SI
+STR_UNITS_SI                                                    :Sistema Internacional
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -1043,7 +1043,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo busca de caminho global (NPF, sobrepõe NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para trens simulando trens pesados: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite dirigir em pontos de parada nas estradas particulares de cidade: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações drive-through em ruas locais: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1160,7 +1160,7 @@ STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Jogar c
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (destrói indústrias, etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis poderão cruzar-se: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Permitir construção quando em pausa: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aeronaves a jato não irão acidentar (frequentemente) em aeroportos pequenos: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aeronaves a jato não irão se acidentar (frequentemente) em aeroportos pequenos: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Mudar de clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Alterar data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ativar modificação de valores de produção: {ORANGE}{STRING}
@@ -1272,7 +1272,7 @@ STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Os inte
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modificar produção
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Bem-vindo à nova IA, ainda em desenvolvimento. Se você encontrar problemas tire um printscreen e poste no fórum.
-TEMP_AI_ACTIVATED                                               :{WHITE}Atenção: esta nova IA está ainda em versão alpha! Atualmente, só funcionam caminhões e ônibus!
+TEMP_AI_ACTIVATED                                               :{WHITE}Atenção: esta nova IA está ainda em versão alfa! Atualmente, só funcionam caminhões e ônibus!
 TEMP_AI_MULTIPLAYER                                             :{WHITE}Atenção: esta função ainda é experimental (usando a nova IA). Por favor reporte quaisquer problemas para truelight@openttd.org.
 
 ############ network gui strings
@@ -1530,7 +1530,7 @@ STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Precisa 
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construir ferrovias
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construir ferrovias (elétricas)
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construir ferrovias (monotrilho)
-STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construir ferrovias (trem-bala)
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construir ferrovias MagLev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Selecionar Ponte Ferroviária
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Impossível construir depósito aqui...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Impossível construir estação ferroviária aqui...
@@ -1542,7 +1542,7 @@ STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orienta�
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construir ferrovias
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construir ferrovias (elétricas)
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construir ferrovias (monotrilho)
-STR_1017_MAGLEV_CONSTRUCTION                                    :Construir ferrovias (trem-bala)
+STR_1017_MAGLEV_CONSTRUCTION                                    :Construir ferrovias MagLev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir ferrovias
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Construir depósito (para construção e manutenção de trens)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Construir estação ferroviária
@@ -1572,7 +1572,7 @@ STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Impossí
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientação da Garagem
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Impossível construir garagem aqui...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Impossível construir estação de ônibus...
-STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Impossível construir parada de caminhão
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Impossível construir estação de caminhão
 STR_180A_ROAD_CONSTRUCTION                                      :Construir rodovias
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construir trecho rodoviário
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir garagem (para construção e manutenção de automóveis)
@@ -1723,7 +1723,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Muito pe
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Muito perto de uma estação/local de carga já existente
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Muitas estações/áreas de carga nesta cidade
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Muitas estações/áreas de carga
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Muitos pontos de ônibus
+STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Muitas estações de ônibus
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Muitos locais de carga
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Muito perto de outra estação/local de carga
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
@@ -1754,9 +1754,9 @@ STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} agora aceita {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} agora aceita {STRING} e {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientação do estação de ônibus
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientação da parada de caminhão
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientação da estação de caminhão
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Precisa demolir a estação de ônibus primeiro
-STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Precisa demolir a parada de caminhão primeiro
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Precisa demolir a estação de caminhão
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Estações
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nenhuma -
@@ -1892,7 +1892,7 @@ STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Infestação de insetos causa destruição em {INDUSTRY}!{}Produção diminui em 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...só pode ser colocado perto das bordas do mapa
 STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}A produção de {STRING} em {INDUSTRY} aumentou em {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}A produção de {STRING} em {INDUSTRY} diminuiu em {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}A produção de {STRING} na {INDUSTRY} diminuiu em {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Há um trem no túnel
@@ -2884,7 +2884,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprést
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Número de veículos: Incluindo automóveis, trens, embarcações e aeronaves.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Número de segmentos de estação. Cada parte de uma estação (ex. estação ferroviária, ponto de ônibus, aeroporto) é contado, mesmo se eles estiverem ligados a uma estação.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Número de segmentos de estação. Cada parte de uma estação (ex. estação ferroviária, estação de ônibus, aeroporto) é contado, mesmo se eles estiverem ligados a uma estação.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}O lucro do veículo com o rendimento menor (de todos os veículos com mais de 2 anos)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Dinheiro conseguido no mês com os lucros mais baixos dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Dinheiro conseguido no mês com os lucros mais altos dos últimos 12 trimestres
@@ -2900,6 +2900,7 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar 
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Definir parâmetros
 STR_NEWGRF_TIP                                                  :{BLACK}Lista de todos os conjuntos Newgrf que instalou. Clique num conjunto para alterar as definições.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não existem arquivos NewGRF atualmente instalados! Consulte o manual de instruções sobre instalar novos gráficos.
+STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome do arquivo: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}

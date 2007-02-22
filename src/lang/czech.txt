@@ -2540,13 +2540,16 @@ STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Zpráva 
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Právě jsme vyvinuli nov{G ý ou é} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=f}lokomotiva
 STR_8102_RAILROAD_LOCOMOTIVE.acc                                :{G=f}lokomotivu
+STR_8102_RAILROAD_LOCOMOTIVE.dat                                :{G=f}lokomotivu
 STR_8103_ROAD_VEHICLE                                           :{G=n}silniční vozidlo
 STR_8104_AIRCRAFT                                               :{G=n}letadlo
 STR_8105_SHIP                                                   :{G=f}loď
 STR_8106_MONORAIL_LOCOMOTIVE                                    :{G=f}lokomotiva pro monorail
 STR_8106_MONORAIL_LOCOMOTIVE.acc                                :{G=f}lokomotivu pro monorail
+STR_8106_MONORAIL_LOCOMOTIVE.dat                                :{G=f}lokomotivu pro monorail
 STR_8107_MAGLEV_LOCOMOTIVE                                      :{G=f}lokomotiva Maglev
 STR_8107_MAGLEV_LOCOMOTIVE.acc                                  :{G=f}lokomotivu Maglev
+STR_8107_MAGLEV_LOCOMOTIVE.dat                                  :{G=f}lokomotivu Maglev
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Železniční depo {TOWN}
@@ -2957,6 +2960,7 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdit
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Nastavit parametry
 STR_NEWGRF_TIP                                                  :{BLACK}Tady je seznam všech nainstalovaných grafických setů. Nastavení změníš kliknutím na set.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Žádné soubory s grafikou nejsou nainstalovány! Pro instrukce, jak nainstalovat grafické soubory, se podívej do manuálu.
+STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}Jméno souboru: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
