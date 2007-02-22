@@ -3658,9 +3658,10 @@ static void CalculateRefitMasks(void)
 
 		if (cargo_allowed[engine] != 0) {
 			// Build up the list of cargo types from the set cargo classes.
-			for (i = 0; i < lengthof(cargo_classes); i++) {
-				if (HASBIT(cargo_allowed[engine], i)) mask |= cargo_classes[i];
-				if (HASBIT(cargo_disallowed[engine], i)) not_mask |= cargo_classes[i];
+			for (i = 0; i < NUM_CARGO; i++) {
+				const CargoSpec *cs = GetCargo(i);
+				if (cargo_allowed[engine]    & cs->classes) SETBIT(mask,     cs->bitnum);
+				if (cargo_disallowed[engine] & cs->classes) SETBIT(not_mask, cs->bitnum);
 			}
 		} else {
 			// Don't apply default refit mask to wagons or engines with no capacity
@@ -3673,7 +3674,7 @@ static void CalculateRefitMasks(void)
 				xor_mask = _default_refitmasks[GetEngine(engine)->type];
 			}
 		}
-		_engine_info[engine].refit_mask = ((mask & ~not_mask) ^ xor_mask) & _landscape_global_cargo_mask[_opt.landscape];
+		_engine_info[engine].refit_mask = ((mask & ~not_mask) ^ xor_mask) & _cargo_mask;
 	}
 }
 

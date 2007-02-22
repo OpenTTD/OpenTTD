@@ -18,6 +18,7 @@
 #include "newgrf_spritegroup.h"
 #include "date.h"
 #include "helpers.hpp"
+#include "cargotype.h"
 
 static StationClass station_classes[STAT_CLASS_MAX];
 
@@ -459,7 +460,7 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 			break;
 
 		default:
-			cargo = GB(st->goods[_local_cargo_id_ctype[cargo_type]].waiting_acceptance, 0, 12);
+			cargo = GB(st->goods[GetCargoIDByBitnum(cargo_type)].waiting_acceptance, 0, 12);
 			break;
 	}
 
@@ -511,15 +512,12 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 		/* No station, so we are in a purchase list */
 		ctype = GC_PURCHASE;
 	} else {
-		CargoID cargo;
-
 		/* Pick the first cargo that we have waiting */
-		for (cargo = 0; cargo < NUM_GLOBAL_CID; cargo++) {
-			CargoID lcid = _local_cargo_id_ctype[cargo];
-			if (lcid != CT_INVALID &&
-					object->u.station.statspec->spritegroup[cargo] != NULL &&
-					GB(object->u.station.st->goods[lcid].waiting_acceptance, 0, 12) != 0) {
-				ctype = cargo;
+		for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
+			const CargoSpec *cs = GetCargo(cargo);
+			if (cs->bitnum != 0xFF && object->u.station.statspec->spritegroup[cs->bitnum] != NULL &&
+					GB(object->u.station.st->goods[cargo].waiting_acceptance, 0, 12) != 0) {
+				ctype = cs->bitnum;
 				break;
 			}
 		}

@@ -539,10 +539,9 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			const Vehicle *u;
 			byte cargo_classes = 0;
 			uint common_cargo_best = 0;
-			uint common_cargos[NUM_GLOBAL_CID];
+			uint common_cargos[NUM_CARGO];
 			byte user_def_data = 0;
-			CargoID cargo;
-			CargoID common_cargo_type = GC_PASSENGERS;
+			CargoID common_cargo_type = CT_PASSENGERS;
 
 			/* Reset our arrays */
 			memset(common_cargos, 0, sizeof(common_cargos));
@@ -550,18 +549,17 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			for (u = v; u != NULL; u = u->next) {
 				/* Skip empty engines */
 				if (u->cargo_cap == 0) continue;
-				/* Map from climate to global cargo ID */
-				cargo = _global_cargo_id[_opt.landscape][u->cargo_type];
-				cargo_classes |= GetCargo(cargo)->classes;
-				common_cargos[cargo]++;
+
+				cargo_classes |= GetCargo(u->cargo_type)->classes;
+				common_cargos[u->cargo_type]++;
 				user_def_data |= RailVehInfo(u->engine_type)->user_def_data;
 			}
 
 			/* Pick the most common cargo type */
-			for (cargo = 0; cargo < NUM_GLOBAL_CID; cargo++) {
+			for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
 				if (common_cargos[cargo] > common_cargo_best) {
 					common_cargo_best = common_cargos[cargo];
-					common_cargo_type = cargo;
+					common_cargo_type = GetCargo(cargo)->bitnum;
 				}
 			}
 
@@ -608,10 +606,9 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			 * ww - cargo unit weight in 1/16 tons, same as cargo prop. 0F.
 			 * cccc - the cargo class value of the cargo transported by the vehicle.
 			 */
-			CargoID cid = _global_cargo_id[_opt.landscape][v->cargo_type];
 			const CargoSpec *cs = GetCargo(v->cargo_type);
 
-			return (cs->classes << 16) | (cs->weight << 8) | cid;
+			return (cs->classes << 16) | (cs->weight << 8) | cs->bitnum;
 		}
 
 		case 0x48: return GetVehicleTypeInfo(v->engine_type); /* Vehicle Type Info */
@@ -823,7 +820,7 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 	if (v == NULL) {
 		cargo = GC_PURCHASE;
 	} else {
-		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
+		cargo = GetCargo(v->cargo_type)->bitnum;
 		assert(cargo != GC_INVALID);
 
 		if (v->type == VEH_Train) {
@@ -889,7 +886,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_vie
 bool UsesWagonOverride(const Vehicle* v)
 {
 	assert(v->type == VEH_Train);
-	return GetWagonOverrideSpriteSet(v->engine_type, _global_cargo_id[_opt.landscape][v->cargo_type], v->u.rail.first_engine) != NULL;
+	return GetWagonOverrideSpriteSet(v->engine_type, GetCargo(v->cargo_type)->bitnum, v->u.rail.first_engine) != NULL;
 }
 
 /**

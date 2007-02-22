@@ -202,7 +202,6 @@ static RefitList *BuildRefitList(const Vehicle *v)
 	uint i;
 
 	do {
-		CargoID cid;
 		uint32 cmask = EngInfo(u->engine_type)->refit_mask;
 		byte callbackmask = EngInfo(u->engine_type)->callbackmask;
 
@@ -210,14 +209,11 @@ static RefitList *BuildRefitList(const Vehicle *v)
 		if (u->cargo_cap == 0) continue;
 
 		/* Loop through all cargos in the refit mask */
-		for (cid = 0; cmask != 0 && num_lines < max_lines; cmask >>= 1, cid++) {
-			CargoID lcid;
+		for (CargoID cid = 0; cid != NUM_CARGO && num_lines < max_lines; cid++) {
+			const CargoSpec *cs = GetCargo(cid);
 
 			/* Skip cargo type if it's not listed */
-			if (!HASBIT(cmask, 0)) continue;
-
-			lcid = _local_cargo_id_ctype[cid];
-			if (lcid == CT_INVALID) continue;
+			if (!HASBIT(cmask, cs->bitnum)) continue;
 
 			/* Check the vehicle's callback mask for cargo suffixes */
 			if (HASBIT(callbackmask, CBM_CARGO_SUFFIX)) {
@@ -227,7 +223,7 @@ static RefitList *BuildRefitList(const Vehicle *v)
 				byte temp_subtype  = u->cargo_subtype;
 				byte refit_cyc;
 
-				u->cargo_type = lcid;
+				u->cargo_type = cid;
 
 				for (refit_cyc = 0; refit_cyc < 16 && num_lines < max_lines; refit_cyc++) {
 					bool duplicate = false;
@@ -241,12 +237,12 @@ static RefitList *BuildRefitList(const Vehicle *v)
 
 					/* Check if this cargo and subtype combination are listed */
 					for (i = 0; i < num_lines && !duplicate; i++) {
-						if (refit[i].cargo == lcid && refit[i].value == callback) duplicate = true;
+						if (refit[i].cargo == cid && refit[i].value == callback) duplicate = true;
 					}
 
 					if (duplicate) continue;
 
-					refit[num_lines].cargo   = lcid;
+					refit[num_lines].cargo   = cid;
 					refit[num_lines].subtype = refit_cyc;
 					refit[num_lines].value   = callback;
 					refit[num_lines].engine  = u->engine_type;
@@ -261,11 +257,11 @@ static RefitList *BuildRefitList(const Vehicle *v)
 				bool duplicate = false;
 
 				for (i = 0; i < num_lines && !duplicate; i++) {
-					if (refit[i].cargo == lcid && refit[i].value == CALLBACK_FAILED) duplicate = true;
+					if (refit[i].cargo == cid && refit[i].value == CALLBACK_FAILED) duplicate = true;
 				}
 
 				if (!duplicate) {
-					refit[num_lines].cargo   = lcid;
+					refit[num_lines].cargo   = cid;
 					refit[num_lines].subtype = 0;
 					refit[num_lines].value   = CALLBACK_FAILED;
 					refit[num_lines].engine  = INVALID_ENGINE;
@@ -497,7 +493,7 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 	/* List of cargo types of this engine */
 	uint32 cmask = EngInfo(engine)->refit_mask;
 	/* List of cargo types available in this climate */
-	uint32 lmask = _landscape_global_cargo_mask[_opt.landscape];
+	uint32 lmask = _cargo_mask;
 	char *b = _userstring;
 
 	/* Draw nothing if the engine is not refittable */
@@ -509,8 +505,6 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 		/* Engine can be refitted to all types in this climate */
 		b = InlineString(b, STR_PURCHASE_INFO_ALL_TYPES);
 	} else {
-		CargoID cid;
-
 		/* Check if we are able to refit to more cargo types and unable to. If
 		 * so, invert the cargo types to list those that we can't refit to. */
 		if (CountBits(cmask ^ lmask) < CountBits(cmask)) {
@@ -518,12 +512,18 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 			b = InlineString(b, STR_PURCHASE_INFO_ALL_BUT);
 		}
 
-		/* Add each cargo type to the list */
-		for (cid = 0; cmask != 0; cmask >>= 1, cid++) {
-			if (!HASBIT(cmask, 0)) continue;
+		bool first = true;
 
-			b = InlineString(b, GetCargo(_local_cargo_id_ctype[cid])->name);
-			if (cmask > 1) b = strecpy(b, ", ", lastof(_userstring));
+		/* Add each cargo type to the list */
+		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
+			const CargoSpec *cs = GetCargo(cid);
+
+			if (!HASBIT(cmask, cs->bitnum)) continue;
+
+			if (!first) b = strecpy(b, ", ", lastof(_userstring));
+			first = false;
+
+			b = InlineString(b, GetCargo(cid)->name);
 		}
 	}
 

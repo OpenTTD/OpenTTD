@@ -275,7 +275,6 @@ ai/trolly/trolly.cpp
 
 # NewGRF
 newgrf.cpp
-newgrf_cargo.cpp
 newgrf_config.cpp
 newgrf_engine.cpp
 newgrf_sound.cpp

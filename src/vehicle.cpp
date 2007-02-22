@@ -37,6 +37,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "helpers.hpp"
+#include "cargotype.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
@@ -761,7 +762,7 @@ bool CanFillVehicle(Vehicle *v)
  */
 bool CanRefitTo(EngineID engine_type, CargoID cid_to)
 {
-	CargoID cid = _global_cargo_id[_opt_ptr->landscape][cid_to];
+	CargoID cid = GetCargo(cid_to)->bitnum;
 	return HASBIT(EngInfo(engine_type)->refit_mask, cid);
 }
 
@@ -771,12 +772,11 @@ bool CanRefitTo(EngineID engine_type, CargoID cid_to)
  */
 CargoID FindFirstRefittableCargo(EngineID engine_type)
 {
-	CargoID cid;
 	uint32 refit_mask = EngInfo(engine_type)->refit_mask;
 
 	if (refit_mask != 0) {
-		for (cid = CT_PASSENGERS; cid < NUM_CARGO; cid++) {
-			if (HASBIT(refit_mask, _global_cargo_id[_opt_ptr->landscape][cid])) return cid;
+		for (CargoID cid = CT_PASSENGERS; cid < NUM_CARGO; cid++) {
+			if (HASBIT(refit_mask, GetCargo(cid)->bitnum)) return cid;
 		}
 	}
 

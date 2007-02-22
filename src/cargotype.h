@@ -34,9 +34,15 @@ typedef struct CargoSpec {
 } CargoSpec;
 
 
+extern uint32 _cargo_mask;
+
+
 /* Set up the default cargo types for the given landscape type */
 void SetupCargoForClimate(LandscapeID l);
 /* Retrieve cargo details for the given cargo ID */
 const CargoSpec *GetCargo(CargoID c);
+/* Get the cargo ID of a cargo bitnum */
+CargoID GetCargoIDByBitnum(byte bitnum);
+
 
 #endif /* CARGOTYPE_H */

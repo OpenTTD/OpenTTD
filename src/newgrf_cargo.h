@@ -52,9 +52,4 @@ enum GlobalCargo {
 	NUM_GLOBAL_CID  =  32
 };
 
-extern const CargoID _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO];
-extern const uint32 _landscape_global_cargo_mask[NUM_LANDSCAPE];
-extern const CargoID _local_cargo_id_ctype[NUM_GLOBAL_CID];
-extern const uint32 cargo_classes[16];
-
 #endif /* NEWGRF_CARGO_H */

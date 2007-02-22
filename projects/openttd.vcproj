@@ -914,9 +914,6 @@
 				RelativePath=".\..\src\newgrf.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\newgrf_cargo.cpp">
-			</File>
-			<File
 				RelativePath=".\..\src\newgrf_config.cpp">
 			</File>
 			<File
