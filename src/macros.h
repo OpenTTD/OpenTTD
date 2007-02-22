@@ -181,8 +181,6 @@ static inline uint16 ReadLE16Unaligned(const void* x)
 #define ALIGN(x, n) (((x) + (n) - 1) & ~((n) - 1))
 
 /** return the largest value that can be entered in a variable.
- *  known to work for uint32.
- *  used by TGP to set the max value of the _patches.generation_seed in its definition
  */
 #define MAX_UVALUE(type) ((type)~(type)0)
 
