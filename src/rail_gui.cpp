@@ -638,11 +638,11 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	uint ey = TileY(end);
 	uint w,h;
 
-	if (sx > ex) uintswap(sx,ex);
-	if (sy > ey) uintswap(sy,ey);
+	if (sx > ex) Swap(sx, ex);
+	if (sy > ey) Swap(sy, ey);
 	w = ex - sx + 1;
 	h = ey - sy + 1;
-	if (!_railstation.orientation) uintswap(w,h);
+	if (!_railstation.orientation) Swap(w, h);
 
 	DoCommandP(TileXY(sx, sy),
 			_railstation.orientation | (w << 8) | (h << 16),
@@ -704,7 +704,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		} else {
 			int x = _railstation.numtracks;
 			int y = _railstation.platlength;
-			if (_railstation.orientation == 0) intswap(x,y);
+			if (_railstation.orientation == 0) Swap(x, y);
 			if (!_remove_button_clicked)
 				SetTileSelectSize(x, y);
 		}

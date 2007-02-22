@@ -914,8 +914,8 @@ int32 CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	ey = TileY(tile);
 	sx = TileX(p1);
 	sy = TileY(p1);
-	if (ex < sx) intswap(ex, sx);
-	if (ey < sy) intswap(ey, sy);
+	if (ex < sx) Swap(ex, sx);
+	if (ey < sy) Swap(ey, sy);
 
 	money = GetAvailableMoneyForCommand();
 	cost = 0;

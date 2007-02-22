@@ -218,10 +218,10 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	if (x == sx) {
 		if (y == sy) return_cmd_error(STR_5008_CANNOT_START_AND_END_ON);
 		direction = AXIS_Y;
-		if (y > sy) uintswap(y,sy);
+		if (y > sy) Swap(y, sy);
 	} else if (y == sy) {
 		direction = AXIS_X;
-		if (x > sx) uintswap(x,sx);
+		if (x > sx) Swap(x, sx);
 	} else {
 		return_cmd_error(STR_500A_START_AND_END_MUST_BE_IN);
 	}

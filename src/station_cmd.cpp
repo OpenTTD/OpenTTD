@@ -2133,7 +2133,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 					x &= 0xF;
 					y &= 0xF;
 
-					if (DiagDirToAxis(dir) != AXIS_X) intswap(x, y);
+					if (DiagDirToAxis(dir) != AXIS_X) Swap(x, y);
 					if (y == TILE_SIZE / 2) {
 						if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
 						if (x == 12) return VETSB_ENTERED_STATION | (station_id << VETS_STATION_ID_OFFSET); /* enter station */
@@ -2818,7 +2818,7 @@ static void Load_STNS(void)
 			uint w = GB(st->trainst_w, 4, 4);
 			uint h = GB(st->trainst_w, 0, 4);
 
-			if (GetRailStationAxis(st->train_tile) == AXIS_Y) uintswap(w, h);
+			if (GetRailStationAxis(st->train_tile) != AXIS_X) Swap(w, h);
 			st->trainst_w = w;
 			st->trainst_h = h;
 		}

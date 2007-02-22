@@ -151,11 +151,6 @@ static inline int KillFirstBit2x64(int value)
 
 #define abs myabs
 
-static inline int intxchg_(int *a, int b) { int t = *a; *a = b; return t; }
-#define intswap(a,b) ((b) = intxchg_(&(a), (b)))
-static inline int uintxchg_(uint *a, uint b) { uint t = *a; *a = b; return t; }
-#define uintswap(a,b) ((b) = uintxchg_(&(a), (b)))
-
 
 static inline uint16 ReadLE16Aligned(const void* x)
 {

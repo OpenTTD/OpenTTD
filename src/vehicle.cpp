@@ -180,8 +180,8 @@ Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_c
 
 	/* Make sure x1 < x2 or y1 < y2 */
 	if (x1 > x2 || y1 > y2) {
-		intswap(x1,x2);
-		intswap(y1,y2);
+		Swap(x1, x2);
+		Swap(y1, y2);
 	}
 	FOR_ALL_VEHICLES(veh) {
 		if (without_crashed && (veh->vehstatus & VS_CRASHED) != 0) continue;

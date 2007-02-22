@@ -228,8 +228,8 @@ int32 CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	ey = TileY(tile);
 	sx = TileX(p2);
 	sy = TileY(p2);
-	if (ex < sx) intswap(ex, sx);
-	if (ey < sy) intswap(ey, sy);
+	if (ex < sx) Swap(ex, sx);
+	if (ey < sy) Swap(ey, sy);
 
 	cost = 0; // total cost
 

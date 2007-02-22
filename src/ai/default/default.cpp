@@ -1546,7 +1546,7 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 		w = GB(p->attr, 1, 3);
 		h = GB(p->attr, 4, 3);
 
-		if (p->attr & 1) uintswap(w, h);
+		if (p->attr & 1) Swap(w, h);
 
 		if (cargo & 0x80) {
 			GetProductionAroundTiles(values, tile2, w, h, rad);

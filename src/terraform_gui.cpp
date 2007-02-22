@@ -40,8 +40,8 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 
 	if (_game_mode != GM_EDITOR) return;
 
-	if (ex < sx) intswap(ex, sx);
-	if (ey < sy) intswap(ey, sy);
+	if (ex < sx) Swap(ex, sx);
+	if (ey < sy) Swap(ey, sy);
 	size_x = (ex - sx) + 1;
 	size_y = (ey - sy) + 1;
 
@@ -68,8 +68,8 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 
 	if (_game_mode != GM_EDITOR) return;
 
-	if (ex < sx) intswap(ex, sx);
-	if (ey < sy) intswap(ey, sy);
+	if (ex < sx) Swap(ex, sx);
+	if (ey < sy) Swap(ey, sy);
 	size_x = (ex - sx) + 1;
 	size_y = (ey - sy) + 1;
 

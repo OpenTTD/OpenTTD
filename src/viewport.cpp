@@ -1881,8 +1881,8 @@ void UpdateTileSelection(void)
 			x1 &= ~0xF;
 			y1 &= ~0xF;
 
-			if (x1 >= x2) intswap(x1,x2);
-			if (y1 >= y2) intswap(y1,y2);
+			if (x1 >= x2) Swap(x1, x2);
+			if (y1 >= y2) Swap(y1, y2);
 			_thd.new_pos.x = x1;
 			_thd.new_pos.y = y1;
 			_thd.new_size.x = x2 - x1 + TILE_SIZE;

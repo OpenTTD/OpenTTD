@@ -229,8 +229,8 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (x < sx) intswap(x, sx);
-	if (y < sy) intswap(y, sy);
+	if (x < sx) Swap(x, sx);
+	if (y < sy) Swap(y, sy);
 	size_x = (x - sx) + 1;
 	size_y = (y - sy) + 1;
 

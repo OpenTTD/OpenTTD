@@ -200,8 +200,8 @@ uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, i
 	uint32 retval = 0;
 
 	if (axis == AXIS_X) {
-		intswap(platforms, length);
-		intswap(x, y);
+		Swap(platforms, length);
+		Swap(x, y);
 	}
 
 	/* Limit our sizes to 4 bits */
