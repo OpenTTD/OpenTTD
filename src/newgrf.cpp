@@ -2729,11 +2729,11 @@ static void GRFComment(byte *buf, int len)
 	 *
 	 * V ignored       Anything following the 0C is ignored */
 
-	static char comment[256];
 	if (len == 1) return;
 
-	ttd_strlcpy(comment, (char*)(buf + 1), minu(sizeof(comment), len));
-	grfmsg(2, "GRFComment: %s", comment);
+	int text_len = len - 1;
+	const char *text = (const char*)(buf + 1);
+	grfmsg(2, "GRFComment: %.*s", text_len, text);
 }
 
 /* Action 0x0D (GLS_SAFETYSCAN) */
