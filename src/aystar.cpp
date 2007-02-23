@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file aystar.cpp
+/** @file aystar.cpp */
 
 /*
  * This file has the core function for AyStar
