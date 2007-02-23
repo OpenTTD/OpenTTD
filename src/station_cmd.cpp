@@ -1348,7 +1348,7 @@ int32 CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Owner cur_owner = _current_player;
 
 		if (is_towns_road) {
-			index = ClosestTownFromTile(tile, _patches.dist_local_authority)->index;
+			index = ClosestTownFromTile(tile, (uint)-1)->index;
 			_current_player = OWNER_TOWN;
 		}
 		DoCommand(tile, road_bits, index, DC_EXEC, CMD_BUILD_ROAD);
