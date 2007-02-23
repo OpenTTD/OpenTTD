@@ -35,19 +35,16 @@ static uint CountRoadBits(RoadBits r)
 }
 
 
-static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool* edge_road)
+bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *edge_road)
 {
 	RoadBits present;
 	RoadBits n;
-	Owner owner;
 	*edge_road = true;
 
 	if (_game_mode == GM_EDITOR) return true;
 
 	// Only do the special processing for actual players.
 	if (!IsValidPlayer(_current_player)) return true;
-
-	owner = IsLevelCrossingTile(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile);
 
 	// Only do the special processing if the road is owned
 	// by a town
@@ -81,6 +78,10 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool* edge_roa
 	return true;
 }
 
+static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool *edge_road)
+{
+	return CheckAllowRemoveRoad(tile, remove, IsLevelCrossingTile(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile), edge_road);
+}
 
 /** Delete a piece of road.
  * @param tile tile where to remove road from

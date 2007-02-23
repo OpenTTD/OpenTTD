@@ -40,4 +40,14 @@ static inline bool IsStraightRoadTrackdir(Trackdir dir)
 	return (dir & 0x06) == 0;
 }
 
+/**
+ * Is it allowed to remove the given road bits from the given tile?
+ * @param tile      the tile to remove the road from
+ * @param remove    the roadbits that are going to be removed
+ * @param owner     the actual owner of the roadbits of the tile
+ * @param edge_road are the removed bits from a town?
+ * @return true when it is allowed to remove the road bits
+ */
+bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *edge_road);
+
 #endif /* ROAD_H */

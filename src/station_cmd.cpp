@@ -2584,8 +2584,29 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 		RebuildStationLists();
 		InvalidateWindowClasses(WC_STATION_LIST);
 	} else {
-		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		if (IsDriveThroughStopTile(tile) && GetStopBuiltOnTownRoad(tile)) {
+			/* For a drive-through stop on a town-owned road remove the stop and replace the road */
+			DoCommand(tile, 0, (GetStationType(tile) == STATION_TRUCK) ? RoadStop::TRUCK : RoadStop::BUS, DC_EXEC, CMD_REMOVE_ROAD_STOP);
+		} else {
+			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		}
 	}
+}
+
+/**
+ * Check if a drive-through road stop tile can be cleared.
+ * Road stops built on town-owned roads check the conditions
+ * that would allow clearing of the original road.
+ * @param tile road stop tile to check
+ * @return true if the road can be cleared
+ */
+static bool CanRemoveRoadWithStop(TileIndex tile)
+{
+	/* The road can always be cleared if it was not a town-owned road */
+	if (!GetStopBuiltOnTownRoad(tile)) return true;
+
+	bool edge_road;
+	return CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile), OWNER_TOWN, &edge_road);
 }
 
 static int32 ClearTile_Station(TileIndex tile, byte flags)
@@ -2610,11 +2631,11 @@ static int32 ClearTile_Station(TileIndex tile, byte flags)
 		case STATION_RAIL:    return RemoveRailroadStation(st, tile, flags);
 		case STATION_AIRPORT: return RemoveAirport(st, flags);
 		case STATION_TRUCK:
-			if (IsDriveThroughStopTile(tile) && GetStopBuiltOnTownRoad(tile))
+			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile))
 				return_cmd_error(STR_3047_MUST_DEMOLISH_TRUCK_STATION);
 			return RemoveRoadStop(st, flags, tile);
 		case STATION_BUS:
-			if (IsDriveThroughStopTile(tile) && GetStopBuiltOnTownRoad(tile))
+			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile))
 				return_cmd_error(STR_3046_MUST_DEMOLISH_BUS_STATION);
 			return RemoveRoadStop(st, flags, tile);
 		case STATION_BUOY:    return RemoveBuoy(st, flags);
