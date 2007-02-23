@@ -1218,7 +1218,7 @@ static const ChunkHandler * const _chunk_handlers[] = {
 	NULL,
 };
 
-/* used to include a vehicle desc in another desc. */s
+/* used to include a vehicle desc in another desc. */
 extern const SaveLoad _common_veh_desc[];
 static const SaveLoad* const _desc_includes[] = {
 	_common_veh_desc
