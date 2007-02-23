@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file nodelist.hpp */
+
 #ifndef  NODELIST_HPP
 #define  NODELIST_HPP
 

@@ -1,5 +1,9 @@
 /* $Id$ */
 
+/**
+ * @file packet.cpp Basic functions to create, fill and read packets.
+ */
+
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
@@ -8,10 +12,6 @@
 #include "../../helpers.hpp"
 
 #include "packet.h"
-
-/**
- * @file packet.cpp Basic functions to create, fill and read packets.
- */
 
 
 /* Do not want to include functions.h and all required headers */

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file yapf_common.hpp */
+
 #ifndef  YAPF_COMMON_HPP
 #define  YAPF_COMMON_HPP
 

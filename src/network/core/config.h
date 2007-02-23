@@ -1,13 +1,13 @@
 /* $Id$ */
 
+/**
+ * @file config.h Configuration options of the network stuff
+ */
+
 #ifndef NETWORK_CORE_CONFIG_H
 #define NETWORK_CORE_CONFIG_H
 
 #ifdef ENABLE_NETWORK
-
-/**
- * @file config.h Configuration options of the network stuff
- */
 
 /** DNS hostname of the masterserver */
 #define NETWORK_MASTER_SERVER_HOST "master.openttd.org"

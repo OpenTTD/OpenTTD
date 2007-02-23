@@ -1,5 +1,9 @@
 /* $Id$ */
 
+/**
+ * @file core.h Base for all network types (UDP and TCP)
+ */
+
 #ifndef NETWORK_CORE_H
 #define NETWORK_CORE_H
 
@@ -7,10 +11,6 @@
 
 #include "os_abstraction.h"
 #include "../../newgrf_config.h"
-
-/**
- * @file core.h Base for all network types (UDP and TCP)
- */
 
 bool NetworkCoreInitialize(void);
 void NetworkCoreShutdown(void);

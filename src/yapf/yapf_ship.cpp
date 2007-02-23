@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file yapf_ship.cpp */
+
 #include "../stdafx.h"
 
 #include "yapf.hpp"

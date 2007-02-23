@@ -1,5 +1,9 @@
 /* $Id$ */
 
+/**
+ * @file core.cpp Functions used to initialize/shut down the core network
+ */
+
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
@@ -7,10 +11,6 @@
 #include "os_abstraction.h"
 #include "core.h"
 #include "packet.h"
-
-/**
- * @file core.cpp Functions used to initialize/shut down the core network
- */
 
 #ifdef __MORPHOS__
 /* the library base is required here */

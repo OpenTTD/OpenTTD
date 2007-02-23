@@ -1,5 +1,10 @@
 /* $Id$ */
 
+/**
+ * @file game.h Information about a game that is sent between a
+ *              game server, game client and masterserver.
+ */
+
 #ifndef NETWORK_CORE_GAME_H
 #define NETWORK_CORE_GAME_H
 
@@ -8,11 +13,6 @@
 #include "config.h"
 #include "../../date.h"
 #include "../../newgrf_config.h"
-
-/**
- * @file game.h Information about a game that is sent between a
- *              game server, game client and masterserver.
- */
 
 /**
  * This is the struct used by both client and server

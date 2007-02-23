@@ -1,5 +1,9 @@
 /* $Id$ */
 
+/**
+ * @file core/udp.cpp Basic functions to receive and send UDP packets.
+ */
+
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
@@ -8,10 +12,6 @@
 #include "../../helpers.hpp"
 #include "packet.h"
 #include "udp.h"
-
-/**
- * @file core/udp.cpp Basic functions to receive and send UDP packets.
- */
 
 /**
  * Start listening on the given host and port.

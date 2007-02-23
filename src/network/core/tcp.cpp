@@ -1,5 +1,9 @@
 /* $Id$ */
 
+/**
+ * @file tcp.cpp Basic functions to receive and send TCP packets.
+ */
+
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
@@ -13,10 +17,6 @@
 #include "packet.h"
 #include "tcp.h"
 #include "../../helpers.hpp"
-
-/**
- * @file tcp.cpp Basic functions to receive and send TCP packets.
- */
 
 /** Very ugly temporary hack !!! */
 void NetworkTCPSocketHandler::Initialize()

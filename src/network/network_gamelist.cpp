@@ -1,5 +1,10 @@
 /* $Id$ */
 
+/**
+ * @file network_gamelist.cpp This file handles the GameList
+ * Also, it handles the request to a server for data about the server
+ */
+
 #ifdef ENABLE_NETWORK
 
 #include "../stdafx.h"
@@ -10,11 +15,6 @@
 #include "network_udp.h"
 #include "network_gamelist.h"
 #include "network_gui.h"
-
-/**
- * @file network_gamelist.cpp This file handles the GameList
- * Also, it handles the request to a server for data about the server
- */
 
 NetworkGameList *_network_game_list = NULL;
 

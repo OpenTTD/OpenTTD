@@ -1,13 +1,13 @@
 /* $Id$ */
 
-#ifndef NETWORK_CORE_OS_ABSTRACTION_H
-#define NETWORK_CORE_OS_ABSTRACTION_H
-
 /**
  * @file os_abstraction.h Network stuff has many things that needs to be
  *                        included and/or implemented by default.
  *                        All those things are in this file.
  */
+
+#ifndef NETWORK_CORE_OS_ABSTRACTION_H
+#define NETWORK_CORE_OS_ABSTRACTION_H
 
 /* Include standard stuff per OS */
 

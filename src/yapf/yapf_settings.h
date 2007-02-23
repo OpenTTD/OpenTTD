@@ -1,4 +1,7 @@
 /* $Id$ */
+
+/** @file yapf_settings.h */
+
 #if !defined(YAPF_SETTINGS_H) || defined(YS_DEF)
 
 # ifndef  YAPF_SETTINGS_H

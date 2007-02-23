@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file yapf_costrail.hpp */
+
 #ifndef  YAPF_COSTRAIL_HPP
 #define  YAPF_COSTRAIL_HPP
 

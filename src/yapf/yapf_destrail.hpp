@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file yapf_destrail.hpp */
+
 #ifndef  YAPF_DESTRAIL_HPP
 #define  YAPF_DESTRAIL_HPP
 

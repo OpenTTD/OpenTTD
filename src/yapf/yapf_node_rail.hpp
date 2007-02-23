@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file yapf_node_rail.hpp */
+
 #ifndef  YAPF_NODE_RAIL_HPP
 #define  YAPF_NODE_RAIL_HPP
 

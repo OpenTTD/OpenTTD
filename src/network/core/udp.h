@@ -1,16 +1,5 @@
 /* $Id$ */
 
-#ifndef NETWORK_CORE_UDP_H
-#define NETWORK_CORE_UDP_H
-
-#ifdef ENABLE_NETWORK
-
-#include "os_abstraction.h"
-#include "core.h"
-#include "game.h"
-#include "packet.h"
-#include "../../debug.h"
-
 /**
  * @file udp.h Basic functions to receive and send UDP packets.
  *
@@ -71,6 +60,17 @@
  *                    (0 = temperate, 1 = arctic, 2 = desert, 3 = toyland)
  *   1+       1       whether the server is dedicated (0 = no, 1 = yes)
  */
+
+#ifndef NETWORK_CORE_UDP_H
+#define NETWORK_CORE_UDP_H
+
+#ifdef ENABLE_NETWORK
+
+#include "os_abstraction.h"
+#include "core.h"
+#include "game.h"
+#include "packet.h"
+#include "../../debug.h"
 
 /** Enum with all types of UDP packets. The order MUST not be changed **/
 enum PacketUDPType {

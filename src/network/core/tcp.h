@@ -1,5 +1,9 @@
 /* $Id$ */
 
+/**
+ * @file tcp.h Basic functions to receive and send TCP packets.
+ */
+
 #ifndef NETWORK_CORE_TCP_H
 #define NETWORK_CORE_TCP_H
 
@@ -8,10 +12,6 @@
 #include "os_abstraction.h"
 #include "core.h"
 #include "packet.h"
-
-/**
- * @file tcp.h Basic functions to receive and send TCP packets.
- */
 
 /**
  * Enum with all types of UDP packets.

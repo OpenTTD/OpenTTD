@@ -1,5 +1,12 @@
 /* $Id$ */
 
+/**
+ * @file network_udp.cpp This file handles the UDP related communication.
+ *
+ * This is the GameServer <-> MasterServer and GameServer <-> GameClient
+ * communication before the game is being joined.
+ */
+
 #ifdef ENABLE_NETWORK
 
 #include "../stdafx.h"
@@ -14,13 +21,6 @@
 #include "../newgrf_config.h"
 
 #include "core/udp.h"
-
-/**
- * @file network_udp.c This file handles the UDP related communication.
- *
- * This is the GameServer <-> MasterServer and GameServer <-> GameClient
- * communication before the game is being joined.
- */
 
 enum {
 	ADVERTISE_NORMAL_INTERVAL = 30000, // interval between advertising in ticks (15 minutes)

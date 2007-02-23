@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file follow_track.hpp Template function for track followers */
+
 #ifndef  FOLLOW_TRACK_HPP
 #define  FOLLOW_TRACK_HPP
 

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file yapf_rail.cpp */
+
 #include "../stdafx.h"
 
 #include "yapf.hpp"

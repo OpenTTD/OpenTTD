@@ -1,4 +1,7 @@
 /* $Id$ */
+
+/** @file yapf_costcache.hpp */
+
 #ifndef  YAPF_COSTCACHE_HPP
 #define  YAPF_COSTCACHE_HPP
 
