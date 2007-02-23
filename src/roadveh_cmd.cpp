@@ -972,7 +972,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	if (v->direction != u->direction || !(v->direction & 1)) return;
 
 	/* Check if vehicle is in a road stop, depot, tunnel or bridge or not on a straight road */
-	if (v->u.road.state >= RVS_IN_ROAD_STOP || !IsStraightRoadTrackdir((Trackdir)(v->u.road.state & RVSB_TRACKDIR_MASK))) return;
+	if (v->u.road.state >= RVSB_IN_ROAD_STOP || !IsStraightRoadTrackdir((Trackdir)(v->u.road.state & RVSB_TRACKDIR_MASK))) return;
 
 	tt = GetTileTrackStatus(v->tile, TRANSPORT_ROAD) & 0x3F;
 	if ((tt & 3) == 0) return;
