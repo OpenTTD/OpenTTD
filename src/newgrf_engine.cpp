@@ -109,7 +109,7 @@ void UnloadWagonOverrides(void)
 // (It isn't and shouldn't be like this in the GRF files since new cargo types
 // may appear in future - however it's more convenient to store it like this in
 // memory. --pasky)
-static const SpriteGroup *engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
+static const SpriteGroup *_engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
 static const GRFFile *_engine_grf[TOTAL_NUM_ENGINES];
 
 void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *group)
@@ -117,10 +117,10 @@ void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *grou
 	assert(engine < TOTAL_NUM_ENGINES);
 	assert(cargo < NUM_GLOBAL_CID);
 
-	if (engine_custom_sprites[engine][cargo] != NULL) {
+	if (_engine_custom_sprites[engine][cargo] != NULL) {
 		grfmsg(6, "SetCustomEngineSprites: engine %d cargo %d already has group -- replacing", engine, cargo);
 	}
-	engine_custom_sprites[engine][cargo] = group;
+	_engine_custom_sprites[engine][cargo] = group;
 }
 
 /**
@@ -133,7 +133,7 @@ void UnloadCustomEngineSprites(void)
 
 	for (engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
 		for (cargo = 0; cargo < NUM_GLOBAL_CID; cargo++) {
-			engine_custom_sprites[engine][cargo] = NULL;
+			_engine_custom_sprites[engine][cargo] = NULL;
 		}
 		_engine_grf[engine] = 0;
 	}
@@ -832,11 +832,11 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 		}
 	}
 
-	group = engine_custom_sprites[engine][cargo];
+	group = _engine_custom_sprites[engine][cargo];
 	if (group != NULL) return group;
 
 	/* Fall back to the default set if the selected cargo type is not defined */
-	return engine_custom_sprites[engine][GC_DEFAULT];
+	return _engine_custom_sprites[engine][GC_DEFAULT];
 }
 
 
