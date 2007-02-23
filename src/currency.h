@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file currency.h */
+
 #ifndef CURRENCY_H
 #define CURRENCY_H
 

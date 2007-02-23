@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file console.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
@@ -26,23 +28,23 @@
 #define ICON_MAX_ALIAS_LINES 40
 #define ICON_TOKEN_COUNT 20
 
-// ** main console ** //
+/* ** main console ** */
 static char *_iconsole_buffer[ICON_BUFFER + 1];
 static uint16 _iconsole_cbuffer[ICON_BUFFER + 1];
 static Textbuf _iconsole_cmdline;
 
-// ** stdlib ** //
+/* ** stdlib ** */
 byte _stdlib_developer = 1;
 bool _stdlib_con_developer = false;
 FILE *_iconsole_output_file;
 
-// ** main console cmd buffer
+/* ** main console cmd buffer ** */
 static char *_iconsole_history[ICON_HISTORY_SIZE];
 static byte _iconsole_historypos;
 
-/* *************** */
-/*  end of header  */
-/* *************** */
+/* *************** *
+ *  end of header  *
+ * *************** */
 
 static void IConsoleClearCommand(void)
 {
@@ -60,7 +62,7 @@ static inline void IConsoleResetHistoryPos(void) {_iconsole_historypos = ICON_HI
 static void IConsoleHistoryAdd(const char *cmd);
 static void IConsoleHistoryNavigate(int direction);
 
-// ** console window ** //
+/* ** console window ** */
 static void IConsoleWndProc(Window *w, WindowEvent *e)
 {
 	static byte iconsole_scroll = ICON_BUFFER;
@@ -254,7 +256,7 @@ static void IConsoleClear(void)
 static void IConsoleWriteToLogFile(const char *string)
 {
 	if (_iconsole_output_file != NULL) {
-		// if there is an console output file ... also print it there
+		/* if there is an console output file ... also print it there */
 		fwrite(string, strlen(string), 1, _iconsole_output_file);
 		fwrite("\n", 1, 1, _iconsole_output_file);
 	}
@@ -340,7 +342,7 @@ static void IConsoleHistoryNavigate(int direction)
 {
 	int i = _iconsole_historypos + direction;
 
-	// watch out for overflows, just wrap around
+	/* watch out for overflows, just wrap around */
 	if (i < 0) i = ICON_HISTORY_SIZE - 1;
 	if (i >= ICON_HISTORY_SIZE) i = 0;
 
@@ -353,7 +355,7 @@ static void IConsoleHistoryNavigate(int direction)
 
 	_iconsole_historypos = i;
 	IConsoleClearCommand();
-	// copy history to 'command prompt / bash'
+	/* copy history to 'command prompt / bash' */
 	assert(_iconsole_history[i] != NULL && IS_INT_INSIDE(i, 0, ICON_HISTORY_SIZE));
 	ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_history[i], _iconsole_cmdline.maxlength);
 	UpdateTextBufferSize(&_iconsole_cmdline);
@@ -481,9 +483,10 @@ bool GetArgumentInteger(uint32 *value, const char *arg)
 	return arg != endptr;
 }
 
-// * ************************* * //
-// * hooking code              * //
-// * ************************* * //
+/*  * *************************
+    * hooking code            *
+    * *************************/
+
 /**
  * General internal hooking code that is the same for both commands and variables
  * @param hooks @IConsoleHooks structure that will be set according to
@@ -709,18 +712,18 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 		if (a_index >= lengthof(aliases) || astream_i >= lengthof(aliasstream)) break;
 
 		switch (*cmdptr) {
-		case '\'': /* ' will double for "" */
+		case '\'': // ' will double for ""
 			aliasstream[astream_i++] = '"';
 			break;
-		case ';': /* Cmd seperator, start new command */
+		case ';': // Cmd seperator, start new command
 			aliasstream[astream_i] = '\0';
 			aliases[++a_index] = &aliasstream[++astream_i];
 			cmdptr++;
 			break;
-		case '%': /* Some or all parameters */
+		case '%': // Some or all parameters
 			cmdptr++;
 			switch (*cmdptr) {
-			case '+': { /* All parameters seperated: "[param 1]" "[param 2]" */
+			case '+': { // All parameters seperated: "[param 1]" "[param 2]"
 				for (i = 0; i != tokencount; i++) {
 					aliasstream[astream_i++] = '"';
 					astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[i], astream_i);
@@ -728,7 +731,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 					aliasstream[astream_i++] = ' ';
 				}
 			} break;
-			case '!': { /* Merge the parameters to one: "[param 1] [param 2] [param 3...]" */
+			case '!': { // Merge the parameters to one: "[param 1] [param 2] [param 3...]"
 				aliasstream[astream_i++] = '"';
 				for (i = 0; i != tokencount; i++) {
 					astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[i], astream_i);
@@ -737,7 +740,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 				aliasstream[astream_i++] = '"';
 
 			} break;
-				default: { /* One specific parameter: %A = [param 1] %B = [param 2] ... */
+				default: { // One specific parameter: %A = [param 1] %B = [param 2] ...
 				int param = *cmdptr - 'A';
 
 				if (param < 0 || param >= tokencount) {
@@ -1086,16 +1089,16 @@ void IConsoleCmdExec(const char *cmdstr)
 
 			tstream_i++;
 			break;
-		case '"': /* Tokens enclosed in "" are one token */
+		case '"': // Tokens enclosed in "" are one token
 			longtoken = !longtoken;
 			break;
-		case '\\': /* Escape character for "" */
+		case '\\': // Escape character for ""
 			if (cmdptr[1] == '"' && tstream_i + 1 < lengthof(tokenstream)) {
 				tokenstream[tstream_i++] = *++cmdptr;
 				break;
 			}
 			/* fallthrough */
-		default: /* Normal character */
+		default: // Normal character
 			tokenstream[tstream_i++] = *cmdptr;
 
 			if (!foundtoken) {

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file command.h */
+
 #ifndef COMMAND_H
 #define COMMAND_H
 
@@ -122,8 +124,8 @@ enum {
 	CMD_MONEY_CHEAT                  = 102,
 	CMD_BUILD_CANAL                  = 103,
 
-	CMD_PLAYER_CTRL                  = 104, // used in multiplayer to create a new player etc.
-	CMD_LEVEL_LAND                   = 105, // level land
+	CMD_PLAYER_CTRL                  = 104, ///< used in multiplayer to create a new player etc.
+	CMD_LEVEL_LAND                   = 105, ///< level land
 
 	CMD_REFIT_RAIL_VEHICLE           = 106,
 	CMD_RESTORE_ORDER_INDEX          = 107,
@@ -145,13 +147,13 @@ enum {
 
 enum {
 	DC_EXEC            = 0x01,
-	DC_AUTO            = 0x02, // don't allow building on structures
-	DC_QUERY_COST      = 0x04, // query cost only,  don't build.
-	DC_NO_WATER        = 0x08, // don't allow building on water
-	DC_NO_RAIL_OVERLAP = 0x10, // don't allow overlap of rails (used in buildrail)
-	DC_AI_BUILDING     = 0x20, // special building rules for AI
-	DC_NO_TOWN_RATING  = 0x40, // town rating does not disallow you from building
-	DC_FORCETEST       = 0x80, // force test too.
+	DC_AUTO            = 0x02, ///< don't allow building on structures
+	DC_QUERY_COST      = 0x04, ///< query cost only,  don't build.
+	DC_NO_WATER        = 0x08, ///< don't allow building on water
+	DC_NO_RAIL_OVERLAP = 0x10, ///< don't allow overlap of rails (used in buildrail)
+	DC_AI_BUILDING     = 0x20, ///< special building rules for AI
+	DC_NO_TOWN_RATING  = 0x40, ///< town rating does not disallow you from building
+	DC_FORCETEST       = 0x80, ///< force test too.
 
 	CMD_ERROR = ((int32)0x80000000),
 };
@@ -161,17 +163,15 @@ enum {
 enum {
 	CMD_AUTO                  = 0x0200,
 	CMD_NO_WATER              = 0x0400,
-	CMD_NETWORK_COMMAND       = 0x0800, // execute the command without sending it on the network
-	CMD_NO_TEST_IF_IN_NETWORK = 0x1000, // When enabled, the command will bypass the no-DC_EXEC round if in network
+	CMD_NETWORK_COMMAND       = 0x0800, ///< execute the command without sending it on the network
+	CMD_NO_TEST_IF_IN_NETWORK = 0x1000, ///< When enabled, the command will bypass the no-DC_EXEC round if in network
 	CMD_SHOW_NO_ERROR         = 0x2000,
 };
 
-/** Command flags for the command table
- * @see _command_proc_table
- */
+/** Command flags for the command table _command_proc_table */
 enum {
-	CMD_SERVER  = 0x1, /// the command can only be initiated by the server
-	CMD_OFFLINE = 0x2, /// the command cannot be executed in a multiplayer game; single-player only
+	CMD_SERVER  = 0x1, ///< the command can only be initiated by the server
+	CMD_OFFLINE = 0x2, ///< the command cannot be executed in a multiplayer game; single-player only
 };
 
 typedef int32 CommandProc(TileIndex tile, uint32 flags, uint32 p1, uint32 p2);
@@ -191,11 +191,11 @@ typedef struct Command {
  */
 static inline bool CmdFailed(int32 res)
 {
-	// lower 16bits are the StringID of the possible error
+	/* lower 16bits are the StringID of the possible error */
 	return res <= (CMD_ERROR | INVALID_STRING_ID);
 }
 
-/* command.c */
+/* command.cpp */
 typedef void CommandCallback(bool success, TileIndex tile, uint32 p1, uint32 p2);
 int32 DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd);
@@ -205,7 +205,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
 #endif /* ENABLE_NETWORK */
 
-extern const char* _cmd_text; // Text, which gets sent with a command
+extern const char* _cmd_text; ///< Text, which gets sent with a command
 
 bool IsValidCommand(uint cmd);
 byte GetCommandFlags(uint cmd);

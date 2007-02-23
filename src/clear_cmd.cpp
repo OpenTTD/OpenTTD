@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file clear_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "clear_map.h"
@@ -107,9 +109,9 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 		Slope tileh;
 		uint z;
 
-		// Nothing could be built at the steep slope - this avoids a bug
-		// when you have a single diagonal track in one corner on a
-		// basement and then you raise/lower the other corner.
+		/* Nothing could be built at the steep slope - this avoids a bug
+		 * when you have a single diagonal track in one corner on a
+		 * basement and then you raise/lower the other corner. */
 		tileh = GetTileSlope(tile, &z);
 		if (tileh == unsafe_slope[mode] ||
 				tileh == ComplementSlope(unsafe_slope[mode])) {
@@ -118,8 +120,8 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 			return -1;
 		}
 
-		// If we have a single diagonal track there, the other side of
-		// tile can be terraformed.
+		/* If we have a single diagonal track there, the other side of
+		 * tile can be terraformed. */
 		if (IsPlainRailTile(tile) && GetTrackBits(tile) == safe_track[mode]) {
 			/* If terraforming downwards prevent damaging a potential tunnel below.
 			 * This check is only necessary for flat tiles, because if the tile is
@@ -223,8 +225,10 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 
 /** Terraform land
  * @param tile tile to terraform
+ * @param flags for this command type
  * @param p1 corners to terraform.
  * @param p2 direction; eg up or down
+ * @return error or cost of terraforming
  */
 int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -346,8 +350,10 @@ int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Levels a selected (rectangle) area of land
  * @param tile end tile of area-drag
+ * @param flags for this command type
  * @param p1 start tile of area drag
  * @param p2 unused
+ * @return  error or cost of terraforming
  */
 int32 CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -362,10 +368,10 @@ int32 CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	// remember level height
+	/* remember level height */
 	h = TileHeight(p1);
 
-	// make sure sx,sy are smaller than ex,ey
+	/* make sure sx,sy are smaller than ex,ey */
 	ex = TileX(tile);
 	ey = TileY(tile);
 	sx = TileX(p1);
@@ -405,8 +411,10 @@ int32 CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /** Purchase a land area. Actually you only purchase one tile, so
  * the name is a bit confusing ;p
  * @param tile the tile the player is purchasing
+ * @param flags for this command type
  * @param p1 unused
  * @param p2 unused
+ * @return error of cost of operation
  */
 int32 CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -459,8 +467,10 @@ static int32 ClearTile_Clear(TileIndex tile, byte flags)
 /** Sell a land area. Actually you only sell one tile, so
  * the name is a bit confusing ;p
  * @param tile the tile the player is selling
+ * @param flags for this command type
  * @param p1 unused
  * @param p2 unused
+ * @return error or cost of operation
  */
 int32 CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -787,17 +797,17 @@ void InitializeClearLand(void)
 }
 
 extern const TileTypeProcs _tile_type_clear_procs = {
-	DrawTile_Clear,           /* draw_tile_proc */
-	GetSlopeZ_Clear,          /* get_slope_z_proc */
-	ClearTile_Clear,          /* clear_tile_proc */
-	GetAcceptedCargo_Clear,   /* get_accepted_cargo_proc */
-	GetTileDesc_Clear,        /* get_tile_desc_proc */
-	GetTileTrackStatus_Clear, /* get_tile_track_status_proc */
-	ClickTile_Clear,          /* click_tile_proc */
-	AnimateTile_Clear,        /* animate_tile_proc */
-	TileLoop_Clear,           /* tile_loop_clear */
-	ChangeTileOwner_Clear,    /* change_tile_owner_clear */
-	NULL,                     /* get_produced_cargo_proc */
-	NULL,                     /* vehicle_enter_tile_proc */
-	GetSlopeTileh_Clear,      /* get_slope_tileh_proc */
+	DrawTile_Clear,           ///< draw_tile_proc
+	GetSlopeZ_Clear,          ///< get_slope_z_proc
+	ClearTile_Clear,          ///< clear_tile_proc
+	GetAcceptedCargo_Clear,   ///< get_accepted_cargo_proc
+	GetTileDesc_Clear,        ///< get_tile_desc_proc
+	GetTileTrackStatus_Clear, ///< get_tile_track_status_proc
+	ClickTile_Clear,          ///< click_tile_proc
+	AnimateTile_Clear,        ///< animate_tile_proc
+	TileLoop_Clear,           ///< tile_loop_clear
+	ChangeTileOwner_Clear,    ///< change_tile_owner_clear
+	NULL,                     ///< get_produced_cargo_proc
+	NULL,                     ///< vehicle_enter_tile_proc
+	GetSlopeTileh_Clear,      ///< get_slope_tileh_proc
 };

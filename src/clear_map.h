@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file clear_map.h */
+
 #ifndef CLEAR_MAP_H
 #define CLEAR_MAP_H
 
@@ -11,12 +13,12 @@
  * valid densities (bits 0...1) in comments after the enum
  */
 typedef enum ClearGround {
-	CLEAR_GRASS  = 0, // 0-3
-	CLEAR_ROUGH  = 1, // 3
-	CLEAR_ROCKS  = 2, // 3
-	CLEAR_FIELDS = 3, // 3
-	CLEAR_SNOW   = 4, // 0-3
-	CLEAR_DESERT = 5  // 1,3
+	CLEAR_GRASS  = 0, ///< 0-3
+	CLEAR_ROUGH  = 1, ///< 3
+	CLEAR_ROCKS  = 2, ///< 3
+	CLEAR_FIELDS = 3, ///< 3
+	CLEAR_SNOW   = 4, ///< 0-3
+	CLEAR_DESERT = 5  ///< 1,3
 } ClearGround;
 
 
@@ -134,7 +136,7 @@ static inline void MakeClear(TileIndex t, ClearGround g, uint density)
 	_m[t].m3 = 0;
 	_m[t].m4 = 0 << 5 | 0 << 2;
 	SetClearGroundDensity(t, g, density);
-	SB(_m[t].m6, 2, 4, 0); ///< Clear the rest of m6, bits 2 to 5
+	SB(_m[t].m6, 2, 4, 0); // Clear the rest of m6, bits 2 to 5
 }
 
 

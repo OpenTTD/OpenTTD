@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file console_cmds.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "console.h"
@@ -226,7 +228,7 @@ static const FiosItem* GetFiosItem(const char* file)
 		if (strcmp(file, _fios_list[i].title) == 0) break;
 	}
 
-	if (i == _fios_num) { /* If no name matches, try to parse it as number */
+	if (i == _fios_num) { // If no name matches, try to parse it as number
 		char* endptr;
 
 		i = strtol(file, &endptr, 10);
@@ -614,7 +616,7 @@ DEF_CONSOLE_HOOK(ConHookValidateMaxCompaniesCount)
 
 DEF_CONSOLE_HOOK(ConHookValidateMaxSpectatorsCount)
 {
-	/* XXX @see ConHookValidateMaxClientsCount */
+	/* XXX see ConHookValidateMaxClientsCount */
 	if (_network_game_info.spectators_max > 10) {
 		_network_game_info.spectators_max = 10;
 		IConsoleError("Maximum spectators out of bounds, truncating to limit.");
@@ -1342,7 +1344,7 @@ DEF_CONSOLE_HOOK(ConProcPlayerName)
 
 	if (ci == NULL) return false;
 
-	// Don't change the name if it is the same as the old name
+	/* Don't change the name if it is the same as the old name */
 	if (strcmp(ci->client_name, _network_player_name) != 0) {
 		if (!_network_server) {
 			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(_network_player_name);
@@ -1441,8 +1443,8 @@ DEF_CONSOLE_CMD(ConListDumpVariables)
 
 static void IConsoleDebugLibRegister(void)
 {
-	// debugging variables and functions
-	extern bool _stdlib_con_developer; /* XXX extern in .c */
+	/* debugging variables and functions */
+	extern bool _stdlib_con_developer; // XXX extern in .cpp
 
 	IConsoleVarRegister("con_developer",    &_stdlib_con_developer, ICONSOLE_VAR_BOOLEAN, "Enable/disable console debugging information (internal)");
 	IConsoleCmdRegister("resettile",        ConResetTile);
@@ -1458,10 +1460,10 @@ static void IConsoleDebugLibRegister(void)
 
 void IConsoleStdLibRegister(void)
 {
-	// stdlib
-	extern byte _stdlib_developer; /* XXX extern in .c */
+	/* stdlib */
+	extern byte _stdlib_developer; // XXX extern in .cpp
 
-	// default variables and functions
+	/* default variables and functions */
 	IConsoleCmdRegister("debug_level",  ConDebugLevel);
 	IConsoleCmdRegister("dump_vars",    ConListDumpVariables);
 	IConsoleCmdRegister("echo",         ConEcho);

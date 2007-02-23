@@ -1,57 +1,59 @@
 /* $Id$ */
 
+/** @file callback_table.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "callback_table.h"
 #include "functions.h"
 
-// If you add a callback for DoCommandP, also add the callback in here
-//   see below for the full list!
-// If you don't do it, it won't work across the network!!
+/* If you add a callback for DoCommandP, also add the callback in here
+ *   see below for the full list!
+ * If you don't do it, it won't work across the network!! */
 
-/* aircraft_gui.c */
+/* aircraft_gui.cpp */
 CommandCallback CcBuildAircraft;
 CommandCallback CcCloneAircraft;
 
-/* airport_gui.c */
+/* airport_gui.cpp */
 CommandCallback CcBuildAirport;
 
-/* bridge_gui.c */
+/* bridge_gui.cpp */
 CommandCallback CcBuildBridge;
 
-/* dock_gui.c */
+/* dock_gui.cpp */
 CommandCallback CcBuildDocks;
 CommandCallback CcBuildCanal;
 
-/* depot_gui.c */
+/* depot_gui.cpp */
 CommandCallback CcCloneVehicle;
 
-/* main_gui.c */
+/* main_gui.cpp */
 CommandCallback CcPlaySound10;
 CommandCallback CcPlaceSign;
 CommandCallback CcTerraform;
 CommandCallback CcBuildTown;
 
-/* rail_gui.c */
+/* rail_gui.cpp */
 CommandCallback CcPlaySound1E;
 CommandCallback CcRailDepot;
 CommandCallback CcStation;
 CommandCallback CcBuildRailTunnel;
 
-/* road_gui.c */
+/* road_gui.cpp */
 CommandCallback CcPlaySound1D;
 CommandCallback CcBuildRoadTunnel;
 CommandCallback CcRoadDepot;
 
-/* roadveh_gui.c */
+/* roadveh_gui.cpp */
 CommandCallback CcBuildRoadVeh;
 CommandCallback CcCloneRoadVeh;
 
-/* ship_gui.c */
+/* ship_gui.cpp */
 CommandCallback CcBuildShip;
 CommandCallback CcCloneShip;
 
-/* train_gui.c */
+/* train_gui.cpp */
 CommandCallback CcBuildWagon;
 CommandCallback CcBuildLoco;
 CommandCallback CcCloneTrain;

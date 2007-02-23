@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file command.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
@@ -347,7 +349,7 @@ int32 DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 
 	_docommand_recursive++;
 
-	// only execute the test call if it's toplevel, or we're not execing.
+	/* only execute the test call if it's toplevel, or we're not execing. */
 	if (_docommand_recursive == 1 || !(flags & DC_EXEC) || (flags & DC_FORCETEST) ) {
 		res = proc(tile, flags & ~DC_EXEC, p1, p2);
 		if (CmdFailed(res)) {
@@ -380,10 +382,10 @@ error:
 		return CMD_ERROR;
 	}
 
-	// if toplevel, subtract the money.
+	/* if toplevel, subtract the money. */
 	if (--_docommand_recursive == 0) {
 		SubtractMoneyFromPlayer(res);
-		// XXX - Old AI hack which doesn't use DoCommandDP; update last build coord of player
+		/* XXX - Old AI hack which doesn't use DoCommandDP; update last build coord of player */
 		if (tile != 0 && IsValidPlayer(_current_player)) {
 			GetPlayer(_current_player)->last_build_coordinate = tile;
 		}
@@ -400,8 +402,8 @@ int32 GetAvailableMoneyForCommand(void)
 	return GetPlayer(pid)->player_money;
 }
 
-// toplevel network safe docommand function for the current player. must not be called recursively.
-// the callback is called when the command succeeded or failed.
+/* toplevel network safe docommand function for the current player. must not be called recursively.
+ * the callback is called when the command succeeded or failed. */
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd)
 {
 	int32 res = 0,res2;
@@ -437,7 +439,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	if (cmd & CMD_AUTO) flags |= DC_AUTO;
 	if (cmd & CMD_NO_WATER) flags |= DC_NO_WATER;
 
-	// get pointer to command handler
+	/* get pointer to command handler */
 	assert((cmd & 0xFF) < lengthof(_command_proc_table));
 	proc = _command_proc_table[cmd & 0xFF].proc;
 	if (proc == NULL) {
@@ -445,15 +447,15 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		return false;
 	}
 
-	// Some commands have a different output in dryrun than the realrun
-	//  e.g.: if you demolish a whole town, the dryrun would say okay.
-	//  but by really destroying, your rating drops and at a certain point
-	//  it will fail. so res and res2 are different
-	// CMD_REMOVE_ROAD: This command has special local authority
-	// restrictions which may cause the test run to fail (the previous
-	// road fragments still stay there and the town won't let you
-	// disconnect the road system), but the exec will succeed and this
-	// fact will trigger an assertion failure. --pasky
+	/* Some commands have a different output in dryrun than the realrun
+	 *  e.g.: if you demolish a whole town, the dryrun would say okay.
+	 *  but by really destroying, your rating drops and at a certain point
+	 *  it will fail. so res and res2 are different
+	 * CMD_REMOVE_ROAD: This command has special local authority
+	 * restrictions which may cause the test run to fail (the previous
+	 * road fragments still stay there and the town won't let you
+	 * disconnect the road system), but the exec will succeed and this
+	 * fact will trigger an assertion failure. --pasky */
 	notest =
 		(cmd & 0xFF) == CMD_CLEAR_AREA ||
 		(cmd & 0xFF) == CMD_CONVERT_RAIL ||
@@ -463,13 +465,13 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	_docommand_recursive = 1;
 
-	// cost estimation only?
+	/* cost estimation only? */
 	if (!IsGeneratingWorld() &&
 			_shift_pressed &&
 			IsLocalPlayer() &&
 			!(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR)) &&
 			(cmd & 0xFF) != CMD_PAUSE) {
-		// estimate the cost.
+		/* estimate the cost. */
 		res = proc(tile, flags, p1, p2);
 		if (CmdFailed(res)) {
 			if (res & 0xFFFF) _error_message = res & 0xFFFF;
@@ -485,13 +487,13 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 
 	if (!((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
-		// first test if the command can be executed.
+		/* first test if the command can be executed. */
 		res = proc(tile, flags, p1, p2);
 		if (CmdFailed(res)) {
 			if (res & 0xFFFF) _error_message = res & 0xFFFF;
 			goto show_error;
 		}
-		// no money? Only check if notest is off
+		/* no money? Only check if notest is off */
 		if (!notest && res != 0 && !CheckPlayerHasMoney(res)) goto show_error;
 	}
 
@@ -514,7 +516,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	}
 #endif /* ENABLE_NETWORK */
 
-	// update last build coordinate of player.
+	/* update last build coordinate of player. */
 	if (tile != 0 && IsValidPlayer(_current_player)) {
 		GetPlayer(_current_player)->last_build_coordinate = tile;
 	}
@@ -524,8 +526,8 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	_yearly_expenses_type = EXPENSES_CONSTRUCTION;
 	res2 = proc(tile, flags | DC_EXEC, p1, p2);
 
-	// If notest is on, it means the result of the test can be different than
-	//   the real command.. so ignore the test
+	/* If notest is on, it means the result of the test can be different than
+	 *  the real command.. so ignore the test */
 	if (!notest && !((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
 		assert(res == res2); // sanity check
 	} else {
@@ -553,7 +555,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	return true;
 
 show_error:
-	// show error message if the command fails?
+	/* show error message if the command fails? */
 	if (IsLocalPlayer() && error_part1 != 0) {
 		ShowErrorMessage(_error_message, error_part1, x,y);
 	}

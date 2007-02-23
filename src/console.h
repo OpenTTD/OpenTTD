@@ -1,11 +1,13 @@
 /* $Id$ */
 
+/** @file console.h */
+
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
-// maximum length of a typed in command
+/* maximum length of a typed in command */
 #define ICON_CMDLN_SIZE 255
-// maximum length of a totally expanded command
+/* maximum length of a totally expanded command */
 #define ICON_MAX_STREAMSIZE 1024
 
 typedef enum IConsoleVarTypes {
@@ -37,9 +39,9 @@ typedef enum IConsoleHookTypes {
  */
 typedef bool IConsoleHook(void);
 typedef struct IConsoleHooks{
-	IConsoleHook *access; // trigger when accessing the variable/command
-	IConsoleHook *pre;    // trigger before the variable/command is changed/executed
-	IConsoleHook *post;   // trigger after the variable/command is changed/executed
+	IConsoleHook *access; ///< trigger when accessing the variable/command
+	IConsoleHook *pre;    ///< trigger before the variable/command is changed/executed
+	IConsoleHook *post;   ///< trigger after the variable/command is changed/executed
 } IConsoleHooks;
 
 /** --Commands--
@@ -53,11 +55,11 @@ typedef bool (IConsoleCmdProc)(byte argc, char *argv[]);
 
 struct IConsoleCmd;
 typedef struct IConsoleCmd {
-	char *name;               // name of command
-	struct IConsoleCmd *next; // next command in list
+	char *name;               ///< name of command
+	struct IConsoleCmd *next; ///< next command in list
 
-	IConsoleCmdProc *proc;    // process executed when command is typed
-	IConsoleHooks hook;       // any special trigger action that needs executing
+	IConsoleCmdProc *proc;    ///< process executed when command is typed
+	IConsoleHooks hook;       ///< any special trigger action that needs executing
 } IConsoleCmd;
 
 /** --Variables--
@@ -71,15 +73,15 @@ typedef struct IConsoleCmd {
  */
 struct IConsoleVar;
 typedef struct IConsoleVar {
-	char *name;               // name of the variable
-	struct IConsoleVar *next; // next variable in list
+	char *name;               ///< name of the variable
+	struct IConsoleVar *next; ///< next variable in list
 
-	void *addr;               // the address where the variable is pointing at
-	uint32 size;              // size of the variable, used for strings
-	char *help;               // the optional help string shown when requesting information
-	IConsoleVarTypes type;    // type of variable (for correct assignment/output)
-	IConsoleCmdProc *proc;    // some variables need really special handling, use a callback function for that
-	IConsoleHooks hook;       // any special trigger action that needs executing
+	void *addr;               ///< the address where the variable is pointing at
+	uint32 size;              ///< size of the variable, used for strings
+	char *help;               ///< the optional help string shown when requesting information
+	IConsoleVarTypes type;    ///< type of variable (for correct assignment/output)
+	IConsoleCmdProc *proc;    ///< some variables need really special handling, use a callback function for that
+	IConsoleHooks hook;       ///< any special trigger action that needs executing
 } IConsoleVar;
 
 /** --Aliases--
@@ -95,16 +97,16 @@ typedef struct IConsoleVar {
  */
 struct IConsoleAlias;
 typedef struct IConsoleAlias {
-	char *name;                 // name of the alias
-	struct IConsoleAlias *next; // next alias in list
+	char *name;                 ///< name of the alias
+	struct IConsoleAlias *next; ///< next alias in list
 
-	char *cmdline;              // command(s) that is/are being aliased
+	char *cmdline;              ///< command(s) that is/are being aliased
 } IConsoleAlias;
 
 /* console parser */
-VARDEF IConsoleCmd   *_iconsole_cmds;    // list of registred commands
-VARDEF IConsoleVar   *_iconsole_vars;    // list of registred vars
-VARDEF IConsoleAlias *_iconsole_aliases; // list of registred aliases
+VARDEF IConsoleCmd   *_iconsole_cmds;    ///< list of registred commands
+VARDEF IConsoleVar   *_iconsole_vars;    ///< list of registred vars
+VARDEF IConsoleAlias *_iconsole_aliases; ///< list of registred aliases
 
 /* console colors/modes */
 VARDEF byte _icolour_def;

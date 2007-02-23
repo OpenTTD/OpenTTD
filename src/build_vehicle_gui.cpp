@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file build_vehicle_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "train.h"
@@ -607,9 +609,9 @@ static void GenerateBuildTrainList(Window *w)
 	EngList_RemoveAll(&bv->eng_list);
 
 	/* Make list of all available train engines and wagons.
-		* Also check to see if the previously selected engine is still available,
-		* and if not, reset selection to INVALID_ENGINE. This could be the case
-	* when engines become obsolete and are removed */
+	 * Also check to see if the previously selected engine is still available,
+	 * and if not, reset selection to INVALID_ENGINE. This could be the case
+	 * when engines become obsolete and are removed */
 	for (sel_id = INVALID_ENGINE, eid = 0; eid < NUM_TRAIN_ENGINES; eid++) {
 		const RailVehicleInfo *rvi = RailVehInfo(eid);
 
@@ -628,15 +630,15 @@ static void GenerateBuildTrainList(Window *w)
 
 	bv->sel_engine = sel_id;
 
-	// make engines first, and then wagons, sorted by ListPositionOfEngine()
+	/* make engines first, and then wagons, sorted by ListPositionOfEngine() */
 	_internal_sort_order = false;
 	EngList_Sort(&bv->eng_list, TrainEnginesThenWagonsSorter);
 
-	// and then sort engines
+	/* and then sort engines */
 	_internal_sort_order = bv->descending_sort_order;
 	EngList_SortPartial(&bv->eng_list, _sorter[0][bv->sort_criteria], 0, num_engines);
 
-	// and finally sort wagons
+	/* and finally sort wagons */
 	EngList_SortPartial(&bv->eng_list, _sorter[0][bv->sort_criteria], num_engines, num_wagons);
 }
 
@@ -694,7 +696,7 @@ static void GenerateBuildAircraftList(Window *w)
 	for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
 		if (IsEngineBuildable(eid, VEH_Aircraft, _local_player)) {
 			const AircraftVehicleInfo *avi = AircraftVehInfo(eid);
-			switch (bv->filter.flags & ~AirportFTAClass::SHORT_STRIP /* we don't care about the length of the runway here */) {
+			switch (bv->filter.flags & ~AirportFTAClass::SHORT_STRIP) { // we don't care about the length of the runway here
 				case AirportFTAClass::HELICOPTERS:
 					if (avi->subtype != AIR_HELI) continue;
 					break;
@@ -934,7 +936,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
-		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
+		case WE_DROPDOWN_SELECT: // we have selected a dropdown item in the list
 			if (bv->sort_criteria != e->we.dropdown.index) {
 				bv->sort_criteria = e->we.dropdown.index;
 				_last_sort_criteria[bv->vehicle_type] = bv->sort_criteria;

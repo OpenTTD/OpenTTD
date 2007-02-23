@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file cargotype.h */
+
 #ifndef CARGOTYPE_H
 #define CARGOTYPE_H
 

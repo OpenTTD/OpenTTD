@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file bridge_map.h */
+
 #ifndef BRIDGE_MAP_H
 #define BRIDGE_MAP_H
 
@@ -59,6 +61,8 @@ static inline uint GetBridgeType(TileIndex t)
 
 /**
  * Get the direction pointing onto the bridge
+ * @param tile The tile to analyze
+ * @return the above mentionned direction
  */
 static inline DiagDirection GetBridgeRampDirection(TileIndex t)
 {

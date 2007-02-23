@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file bridge_map.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
@@ -43,7 +45,7 @@ uint GetBridgeHeight(TileIndex t)
 	Slope tileh = GetTileSlope(t, &h);
 	uint f = GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(t)));
 
-	// one height level extra if the ramp is on a flat foundation
+	/* one height level extra if the ramp is on a flat foundation */
 	return
 		h + TILE_HEIGHT +
 		(IS_INT_INSIDE(f, 1, 15) ? TILE_HEIGHT : 0) +

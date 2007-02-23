@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file callback_table.h  */
+
 #ifndef CALLBACK_TABLE_H
 #define CALLBACK_TABLE_H
 
