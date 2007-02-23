@@ -450,7 +450,7 @@ static int32 ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileIndex end
 		(trdy >= 0 && dy < 0)
 	) {
 		if (!HASBIT(*trackdir, 3)) { // first direction is invalid, try the other
-			*trackdir = SetBitT(*trackdir, 3); // reverse the direction
+			SetBitT(*trackdir, 3); // reverse the direction
 			trdx = -trdx;
 			trdy = -trdy;
 		} else { // other direction is invalid too, invalid drag
@@ -513,7 +513,7 @@ static int32 CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		tile += ToTileIndexDiff(_trackdelta[trackdir]);
 
 		// toggle railbit for the non-diagonal tracks
-		if (!IsDiagonalTrackdir(trackdir)) trackdir = ToggleBitT(trackdir, 0);
+		if (!IsDiagonalTrackdir(trackdir)) ToggleBitT(trackdir, 0);
 	}
 
 	return (total_cost == 0) ? CMD_ERROR : total_cost;
@@ -777,7 +777,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 		signal_ctr++;
 
 		// toggle railbit for the non-diagonal tracks (|, -- tracks)
-		if (!IsDiagonalTrackdir(trackdir)) trackdir = ToggleBitT(trackdir, 0);
+		if (!IsDiagonalTrackdir(trackdir)) ToggleBitT(trackdir, 0);
 	}
 
 	return error ? CMD_ERROR : total_cost;

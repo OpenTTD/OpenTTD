@@ -138,25 +138,19 @@ template <typename Tenum_t> struct TinyEnumT
 	}
 };
 
-template <typename T> FORCEINLINE T ClrBitT(T t, int bit_index)
+template <typename T> void ClrBitT(T &t, int bit_index)
 {
-	int val = t;
-	CLRBIT(val, bit_index);
-	return (T)val;
+	t = (T)(t & ~((T)1 << bit_index));
 }
 
-template <typename T> FORCEINLINE T SetBitT(T t, int bit_index)
+template <typename T> void SetBitT(T &t, int bit_index)
 {
-	int val = t;
-	SETBIT(val, bit_index);
-	return (T)val;
+	t = (T)(t | ((T)1 << bit_index));
 }
 
-template <typename T> FORCEINLINE T ToggleBitT(T t, int bit_index)
+template <typename T> void ToggleBitT(T &t, int bit_index)
 {
-	int val = t;
-	TOGGLEBIT(val, bit_index);
-	return (T)val;
+	t = (T)(t ^ ((T)1 << bit_index));
 }
 
 #endif /* HELPERS_HPP */

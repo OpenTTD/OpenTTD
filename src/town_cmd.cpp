@@ -730,7 +730,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 
 		// Exclude the source position from the bitmask
 		// and return if no more road blocks available
-		mask = ClrBitT(mask, (block ^ 2));
+		ClrBitT(mask, (block ^ 2));
 		if (mask == 0)
 			return _grow_town_result;
 

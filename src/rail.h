@@ -261,7 +261,7 @@ static inline Track RemoveFirstTrack(TrackBits *tracks)
 {
 	if (*tracks != TRACK_BIT_NONE && *tracks != INVALID_TRACK_BIT) {
 		Track first = (Track)FIND_FIRST_BIT(*tracks);
-		*tracks = ClrBitT(*tracks, first);
+		ClrBitT(*tracks, first);
 		return first;
 	}
 	return INVALID_TRACK;
@@ -274,7 +274,7 @@ static inline Trackdir RemoveFirstTrackdir(TrackdirBits *trackdirs)
 {
 	if (*trackdirs != TRACKDIR_BIT_NONE && *trackdirs != INVALID_TRACKDIR_BIT) {
 		Trackdir first = (Trackdir)FindFirstBit2x64(*trackdirs);
-		*trackdirs = ClrBitT(*trackdirs, first);
+		ClrBitT(*trackdirs, first);
 		return first;
 	}
 	return INVALID_TRACKDIR;
