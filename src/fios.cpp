@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file fios.c
+/** @file fios.cpp
  * This file contains functions for building file lists for the save/load dialogs.
  */
 

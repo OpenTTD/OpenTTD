@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file station_cmd.c */
+/** @file station_cmd.cpp */
 
 #include "stdafx.h"
 #include "openttd.h"

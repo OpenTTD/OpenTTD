@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file bridge_gui.c Graphical user interface for bridge construction*/
+/** @file bridge_gui.cpp Graphical user interface for bridge construction */
 
 #include "stdafx.h"
 #include "openttd.h"

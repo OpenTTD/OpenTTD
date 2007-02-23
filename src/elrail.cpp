@@ -1,5 +1,5 @@
 /* $Id$ */
-/** @file elrail.c
+/** @file elrail.cpp
  * This file deals with displaying wires and pylons for electric railways.
  * <h2>Basics</h2>
  *

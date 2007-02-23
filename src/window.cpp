@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file window.cpp windowing system, widgets and events */
+
 #include "stdafx.h"
 #include <stdarg.h>
 #include "openttd.h"

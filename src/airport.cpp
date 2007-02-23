@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file airport.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"

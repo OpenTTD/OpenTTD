@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file
+/** @file disaster_cmd.cpp
  * All disaster/easter egg vehicles are handled here.
  * The general flow of control for the disaster vehicles is as follows:
  * <ol>

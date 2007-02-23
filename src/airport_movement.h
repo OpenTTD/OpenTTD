@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file airport_movement.h Heart of the airports and their finite state machines */
+
 #ifndef AIRPORT_MOVEMENT_H
 #define AIRPORT_MOVEMENT_H
 

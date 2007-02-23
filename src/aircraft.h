@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file aircraft_cmd.h */
+
 #ifndef AIRCRAFT_H
 #define AIRCRAFT_H
 

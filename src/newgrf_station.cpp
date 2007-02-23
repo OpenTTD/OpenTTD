@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_station.c Functions for dealing with station classes and custom stations. */
+/** @file newgrf_station.cpp Functions for dealing with station classes and custom stations. */
 
 #include "stdafx.h"
 #include "openttd.h"

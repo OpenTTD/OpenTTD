@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file aircraft_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "aircraft.h"

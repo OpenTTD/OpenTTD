@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file airport_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/sprites.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file
+/** @file saveload.cpp
  * All actions handling saving and loading goes on in this file. The general actions
  * are as follows for saving a game (loading is analogous):
  * <ol>
@@ -12,8 +12,6 @@
  * <li>when the buffer is full; flush it to the output (eg save to file) (_sl.buf, _sl.bufp, _sl.bufe)
  * <li>repeat this until everything is done, and flush any remaining output to file
  * </ol>
- * @see ChunkHandler
- * @see SaveLoad
  */
 #include "stdafx.h"
 #include "openttd.h"
@@ -31,43 +29,43 @@
 #include <setjmp.h>
 
 extern const uint16 SAVEGAME_VERSION = 47;
-uint16 _sl_version;       /// the major savegame version identifier
-byte   _sl_minor_version; /// the minor savegame version, DO NOT USE!
+uint16 _sl_version;       ///< the major savegame version identifier
+byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 
 typedef void WriterProc(uint len);
 typedef uint ReaderProc(void);
 
 /** The saveload struct, containing reader-writer functions, bufffer, version, etc. */
 static struct {
-	bool save;                           /// are we doing a save or a load atm. True when saving
-	byte need_length;                    /// ???
-	byte block_mode;                     /// ???
-	bool error;                          /// did an error occur or not
+	bool save;                           ///< are we doing a save or a load atm. True when saving
+	byte need_length;                    ///< ???
+	byte block_mode;                     ///< ???
+	bool error;                          ///< did an error occur or not
 
-	int obj_len;                         /// the length of the current object we are busy with
-	int array_index, last_array_index;   /// in the case of an array, the current and last positions
+	int obj_len;                         ///< the length of the current object we are busy with
+	int array_index, last_array_index;   ///< in the case of an array, the current and last positions
 
-	uint32 offs_base;                    /// the offset in number of bytes since we started writing data (eg uncompressed savegame size)
+	uint32 offs_base;                    ///< the offset in number of bytes since we started writing data (eg uncompressed savegame size)
 
-	WriterProc *write_bytes;             /// savegame writer function
-	ReaderProc *read_bytes;              /// savegame loader function
+	WriterProc *write_bytes;             ///< savegame writer function
+	ReaderProc *read_bytes;              ///< savegame loader function
 
-	const ChunkHandler* const *chs;      /// the chunk of data that is being processed atm (vehicles, signs, etc.)
-	const SaveLoad* const *includes;     /// the internal layouf of the given chunk
+	const ChunkHandler* const *chs;      ///< the chunk of data that is being processed atm (vehicles, signs, etc.)
+	const SaveLoad* const *includes;     ///< the internal layouf of the given chunk
 
-	/** When saving/loading savegames, they are always saved to a temporary memory-place
+	/* When saving/loading savegames, they are always saved to a temporary memory-place
 	 * to be flushed to file (save) or to final place (load) when full. */
-	byte *bufp, *bufe;                   /// bufp(ointer) gives the current position in the buffer bufe(nd) gives the end of the buffer
+	byte *bufp, *bufe;                   ///< bufp(ointer) gives the current position in the buffer bufe(nd) gives the end of the buffer
 
-	// these 3 may be used by compressor/decompressors.
-	byte *buf;                           /// pointer to temporary memory to read/write, initialized by SaveLoadFormat->initread/write
-	byte *buf_ori;                       /// pointer to the original memory location of buf, used to free it afterwards
-	uint bufsize;                        /// the size of the temporary memory *buf
-	FILE *fh;                            /// the file from which is read or written to
+	/* these 3 may be used by compressor/decompressors. */
+	byte *buf;                           ///< pointer to temporary memory to read/write, initialized by SaveLoadFormat->initread/write
+	byte *buf_ori;                       ///< pointer to the original memory location of buf, used to free it afterwards
+	uint bufsize;                        ///< the size of the temporary memory *buf
+	FILE *fh;                            ///< the file from which is read or written to
 
-	void (*excpt_uninit)(void);          /// the function to execute on any encountered error
-	const char *excpt_msg;               /// the error message
-	jmp_buf excpt;                       /// @todo used to jump to "exception handler";  really ugly
+	void (*excpt_uninit)(void);          ///< the function to execute on any encountered error
+	const char *excpt_msg;               ///< the error message
+	jmp_buf excpt;                       ///< @todo used to jump to "exception handler";  really ugly
 } _sl;
 
 
@@ -89,8 +87,8 @@ static void SlReadFill(void)
 static inline uint32 SlGetOffs(void) {return _sl.offs_base - (_sl.bufe - _sl.bufp);}
 
 /** Return the size in bytes of a certain type of normal/atomic variable
- * as it appears in memory. @see VarTypes
- * @param conv @VarType type of variable that is used for calculating the size
+ * as it appears in memory. See VarTypes
+ * @param conv VarType type of variable that is used for calculating the size
  * @return Return the size of this type in bytes */
 static inline byte SlCalcConvMemLen(VarType conv)
 {
@@ -101,8 +99,8 @@ static inline byte SlCalcConvMemLen(VarType conv)
 }
 
 /** Return the size in bytes of a certain type of normal/atomic variable
- * as it appears in a saved game. @see VarTypes
- * @param conv @VarType type of variable that is used for calculating the size
+ * as it appears in a saved game. See VarTypes
+ * @param conv VarType type of variable that is used for calculating the size
  * @return Return the size of this type in bytes */
 static inline byte SlCalcConvFileLen(VarType conv)
 {
@@ -112,7 +110,7 @@ static inline byte SlCalcConvFileLen(VarType conv)
 	return conv_file_size[length];
 }
 
-/* Return the size in bytes of a reference (pointer) */
+/** Return the size in bytes of a reference (pointer) */
 static inline size_t SlCalcRefLen(void) {return 2;}
 
 /** Flush the output buffer by writing to disk with the given reader.
@@ -121,7 +119,7 @@ static inline size_t SlCalcRefLen(void) {return 2;}
  */
 static void SlWriteFill(void)
 {
-	// flush the buffer to disk (the writer)
+	/* flush the buffer to disk (the writer) */
 	if (_sl.bufp != NULL) {
 		uint len = _sl.bufp - _sl.buf;
 		_sl.offs_base += len;
@@ -129,7 +127,7 @@ static void SlWriteFill(void)
 	}
 
 	/* All the data from the buffer has been written away, rewind to the beginning
-	* to start reading in more data */
+	 * to start reading in more data */
 	_sl.bufp = _sl.buf;
 	_sl.bufe = _sl.buf + _sl.bufsize;
 }
@@ -333,9 +331,9 @@ void SlSetLength(size_t length)
 		_sl.need_length = NL_NONE;
 		switch (_sl.block_mode) {
 		case CH_RIFF:
-			// Ugly encoding of >16M RIFF chunks
-			// The lower 24 bits are normal
-			// The uppermost 4 bits are bits 24:27
+			/* Ugly encoding of >16M RIFF chunks
+			 * The lower 24 bits are normal
+			 * The uppermost 4 bits are bits 24:27 */
 			assert(length < (1<<28));
 			SlWriteUint32((length & 0xFFFFFF) | ((length >> 24) << 28));
 			break;
@@ -439,13 +437,13 @@ void WriteValue(void *ptr, VarType conv, int64 val)
  * and then write them to file, endian safely. Loading a value
  * goes exactly the opposite way
  * @param ptr The object being filled/read
- * @param conv @VarType type of the current element of the struct
+ * @param conv VarType type of the current element of the struct
  */
 static void SlSaveLoadConv(void *ptr, VarType conv)
 {
 	int64 x = 0;
 
-	if (_sl.save) { /* SAVE values */
+	if (_sl.save) { // SAVE values
 		/* Read a value from the struct. These ARE endian safe. */
 		x = ReadValue(ptr, conv);
 
@@ -462,7 +460,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 		case SLE_FILE_U64:                                   SlWriteUint64(x);break;
 		default: NOT_REACHED();
 		}
-	} else { /* LOAD values */
+	} else { // LOAD values
 
 		/* Read a value from the file */
 		switch (GetVarFileType(conv)) {
@@ -533,7 +531,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 {
 	size_t len;
 
-	if (_sl.save) { /* SAVE string */
+	if (_sl.save) { // SAVE string
 		switch (GetVarMemType(conv)) {
 			default: NOT_REACHED();
 			case SLE_VAR_STRB:
@@ -549,7 +547,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 
 		SlWriteArrayLength(len);
 		SlCopyBytes(ptr, len);
-	} else { /* LOAD string */
+	} else { // LOAD string
 		len = SlReadArrayLength();
 
 		switch (GetVarMemType(conv)) {
@@ -566,7 +564,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 				}
 				break;
 			case SLE_VAR_STR:
-			case SLE_VAR_STRQ: /* Malloc'd string, free previous incarnation, and allocate */
+			case SLE_VAR_STRQ: // Malloc'd string, free previous incarnation, and allocate
 				free(*(char**)ptr);
 				*(char**)ptr = (char*)malloc(len + 1); // terminating '\0'
 				ptr = *(char**)ptr;
@@ -581,7 +579,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 /**
  * Return the size in bytes of a certain type of atomic array
  * @param length The length of the array counted in elements
- * @param conv @VarType type of the variable that is used in calculating the size
+ * @param conv VarType type of the variable that is used in calculating the size
  */
 static inline size_t SlCalcArrayLen(uint length, VarType conv)
 {
@@ -592,14 +590,14 @@ static inline size_t SlCalcArrayLen(uint length, VarType conv)
  * Save/Load an array.
  * @param array The array being manipulated
  * @param length The length of the array in elements
- * @param conv @VarType type of the atomic array (int, byte, uint64, etc.)
+ * @param conv VarType type of the atomic array (int, byte, uint64, etc.)
  */
 void SlArray(void *array, uint length, VarType conv)
 {
-	// Automatically calculate the length?
+	/* Automatically calculate the length? */
 	if (_sl.need_length != NL_NONE) {
 		SlSetLength(SlCalcArrayLen(length, conv));
-		// Determine length only?
+		/* Determine length only? */
 		if (_sl.need_length == NL_CALCLENGTH) return;
 	}
 
@@ -628,7 +626,7 @@ void SlArray(void *array, uint length, VarType conv)
 	}
 }
 
-/* Are we going to save this object or not? */
+/** Are we going to save this object or not? */
 static inline bool SlIsObjectValidInSavegame(const SaveLoad *sld)
 {
 	if (_sl_version < sld->version_from || _sl_version > sld->version_to) return false;
@@ -652,13 +650,13 @@ static inline bool SlSkipVariableOnLoad(const SaveLoad *sld)
 
 /**
  * Calculate the size of an object.
- * @param sld The @SaveLoad description of the object so we know how to manipulate it
+ * @param sld The SaveLoad description of the object so we know how to manipulate it
  */
 static size_t SlCalcObjLength(const void *object, const SaveLoad *sld)
 {
 	size_t length = 0;
 
-	// Need to determine the length and write a length tag.
+	/* Need to determine the length and write a length tag. */
 	for (; sld->cmd != SL_END; sld++) {
 		length += SlCalcObjMemberLength(object, sld);
 	}
@@ -711,8 +709,8 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 
 		switch (sld->cmd) {
 		case SL_VAR: SlSaveLoadConv(ptr, conv); break;
-		case SL_REF: /* Reference variable, translate */
-			/// @todo XXX - another artificial limitof 65K elements of pointers?
+		case SL_REF: // Reference variable, translate
+			/* @todo XXX - another artificial limitof 65K elements of pointers? */
 			if (_sl.save) { // XXX - read/write pointer as uint16? What is with higher indeces?
 				SlWriteUint16(ReferenceToInt(*(void**)ptr, (SLRefType)conv));
 			} else {
@@ -726,10 +724,10 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 		break;
 
 	/* SL_WRITEBYTE translates a value of a variable to another one upon
-   * saving or loading.
-   * XXX - variable renaming abuse
-   * game_value: the value of the variable ingame is abused by sld->version_from
-   * file_value: the value of the variable in the savegame is abused by sld->version_to */
+	 * saving or loading.
+	 * XXX - variable renaming abuse
+	 * game_value: the value of the variable ingame is abused by sld->version_from
+	 * file_value: the value of the variable in the savegame is abused by sld->version_to */
 	case SL_WRITEBYTE:
 		if (_sl.save) {
 			SlWriteByte(sld->version_to);
@@ -752,11 +750,11 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 /**
  * Main SaveLoad function.
  * @param object The object that is being saved or loaded
- * @param sld The @SaveLoad description of the object so we know how to manipulate it
+ * @param sld The SaveLoad description of the object so we know how to manipulate it
  */
 void SlObject(void *object, const SaveLoad *sld)
 {
-	// Automatically calculate the length?
+	/* Automatically calculate the length? */
 	if (_sl.need_length != NL_NONE) {
 		SlSetLength(SlCalcObjLength(object, sld));
 		if (_sl.need_length == NL_CALCLENGTH) return;
@@ -795,18 +793,18 @@ void SlAutolength(AutolengthProc *proc, void *arg)
 
 	assert(_sl.save);
 
-	// Tell it to calculate the length
+	/* Tell it to calculate the length */
 	_sl.need_length = NL_CALCLENGTH;
 	_sl.obj_len = 0;
 	proc(arg);
 
-	// Setup length
+	/* Setup length */
 	_sl.need_length = NL_WANTLENGTH;
 	SlSetLength(_sl.obj_len);
 
 	offs = SlGetOffs() + _sl.obj_len;
 
-	// And write the stuff
+	/* And write the stuff */
 	proc(arg);
 
 	assert(offs == SlGetOffs());
@@ -835,7 +833,7 @@ static void SlLoadChunk(const ChunkHandler *ch)
 		break;
 	default:
 		if ((m & 0xF) == CH_RIFF) {
-			// Read length
+			/* Read length */
 			len = (SlReadByte() << 16) | ((m >> 4) << 24);
 			len += SlReadUint16();
 			_sl.obj_len = len;
@@ -866,7 +864,7 @@ static void SlSaveChunk(const ChunkHandler *ch)
 	DEBUG(sl, 2, "Saving chunk %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);
 
 	if (ch->flags & CH_AUTO_LENGTH) {
-		// Need to calculate the length. Solve that by calling SlAutoLength in the save_proc.
+		/* Need to calculate the length. Solve that by calling SlAutoLength in the save_proc. */
 		_tmp_proc_1 = proc;
 		proc = SlStubSaveProc;
 	}
@@ -911,7 +909,7 @@ static void SlSaveChunks(void)
 		}
 	}
 
-	// Terminator
+	/* Terminator */
 	SlWriteUint32(0);
 }
 
@@ -949,9 +947,9 @@ static void SlLoadChunks(void)
 	}
 }
 
-//*******************************************
-//********** START OF LZO CODE **************
-//*******************************************
+/*******************************************
+ ********** START OF LZO CODE **************
+ *******************************************/
 #define LZO_SIZE 8192
 
 #include "minilzo.h"
@@ -963,10 +961,10 @@ static uint ReadLZO(void)
 	uint32 size;
 	uint len;
 
-	// Read header
+	/* Read header*/
 	if (fread(tmp, sizeof(tmp), 1, _sl.fh) != 1) SlError("file read failed");
 
-	// Check if size is bad
+	/* Check if size is bad */
 	((uint32*)out)[0] = size = tmp[1];
 
 	if (_sl_version != 0) {
@@ -976,19 +974,19 @@ static uint ReadLZO(void)
 
 	if (size >= sizeof(out)) SlError("inconsistent size");
 
-	// Read block
+	/* Read block */
 	if (fread(out + sizeof(uint32), size, 1, _sl.fh) != 1) SlError("file read failed");
 
-	// Verify checksum
+	/* Verify checksum */
 	if (tmp[0] != lzo_adler32(0, out, size + sizeof(uint32))) SlError("bad checksum");
 
-	// Decompress
+	/* Decompress */
 	lzo1x_decompress(out + sizeof(uint32)*1, size, _sl.buf, &len, NULL);
 	return len;
 }
 
-// p contains the pointer to the buffer, len contains the pointer to the length.
-// len bytes will be written, p and l will be updated to reflect the next buffer.
+/* p contains the pointer to the buffer, len contains the pointer to the length.
+ * len bytes will be written, p and l will be updated to reflect the next buffer. */
 static void WriteLZO(uint size)
 {
 	byte out[LZO_SIZE + LZO_SIZE / 64 + 16 + 3 + 8];
@@ -1013,9 +1011,9 @@ static void UninitLZO(void)
 	free(_sl.buf_ori);
 }
 
-//*********************************************
-//******** START OF NOCOMP CODE (uncompressed)*
-//*********************************************
+/*********************************************
+ ******** START OF NOCOMP CODE (uncompressed)*
+ *********************************************/
 static uint ReadNoComp(void)
 {
 	return fread(_sl.buf, 1, LZO_SIZE, _sl.fh);
@@ -1038,9 +1036,9 @@ static void UninitNoComp(void)
 	free(_sl.buf_ori);
 }
 
-//********************************************
-//********** START OF MEMORY CODE (in ram)****
-//********************************************
+/********************************************
+ ********** START OF MEMORY CODE (in ram)****
+ ********************************************/
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -1084,9 +1082,9 @@ static void WriteMem(uint size)
 	_sl.buf = GetSavegame(_ts.count);
 }
 
-//********************************************
-//********** START OF ZLIB CODE **************
-//********************************************
+/********************************************
+ ********** START OF ZLIB CODE **************
+ ********************************************/
 
 #if defined(WITH_ZLIB)
 #include <zlib.h>
@@ -1111,12 +1109,12 @@ static uint ReadZlib(void)
 	_z.avail_out = 4096;
 
 	do {
-		// read more bytes from the file?
+		/* read more bytes from the file?*/
 		if (_z.avail_in == 0) {
 			_z.avail_in = fread(_z.next_in = _sl.buf + 4096, 1, 4096, _sl.fh);
 		}
 
-		// inflate the data
+		/* inflate the data */
 		r = inflate(&_z, 0);
 		if (r == Z_STREAM_END)
 			break;
@@ -1155,7 +1153,7 @@ static void WriteZlibLoop(z_streamp z, byte *p, uint len, int mode)
 		z->next_out = buf;
 		z->avail_out = sizeof(buf);
 		r = deflate(z, mode);
-			// bytes were emitted?
+			/* bytes were emitted? */
 		if ((n=sizeof(buf) - z->avail_out) != 0) {
 			if (fwrite(buf, n, 1, _sl.fh) != 1) SlError("file write error");
 		}
@@ -1172,7 +1170,7 @@ static void WriteZlib(uint len)
 
 static void UninitWriteZlib(void)
 {
-	// flush any pending output.
+	/* flush any pending output. */
 	if (_sl.fh) WriteZlibLoop(&_z, NULL, 0, Z_FINISH);
 	deflateEnd(&_z);
 	free(_sl.buf_ori);
@@ -1180,11 +1178,11 @@ static void UninitWriteZlib(void)
 
 #endif /* WITH_ZLIB */
 
-//*******************************************
-//************* END OF CODE *****************
-//*******************************************
+/*******************************************
+ ************* END OF CODE *****************
+ *******************************************/
 
-// these define the chunks
+/* these define the chunks */
 extern const ChunkHandler _misc_chunk_handlers[];
 extern const ChunkHandler _setting_chunk_handlers[];
 extern const ChunkHandler _player_chunk_handlers[];
@@ -1220,7 +1218,7 @@ static const ChunkHandler * const _chunk_handlers[] = {
 	NULL,
 };
 
-// used to include a vehicle desc in another desc.
+/* used to include a vehicle desc in another desc. */s
 extern const SaveLoad _common_veh_desc[];
 static const SaveLoad* const _desc_includes[] = {
 	_common_veh_desc
@@ -1233,7 +1231,7 @@ static const SaveLoad* const _desc_includes[] = {
  * Remember that a NULL item has value 0, and all
  * indeces have +1, so vehicle 0 is saved as index 1.
  * @param obj The object that we want to get the index of
- * @param rt @SLRefType type of the object the index is being sought of
+ * @param rt SLRefType type of the object the index is being sought of
  * @return Return the pointer converted to an index of the type pointed to
  */
 static uint ReferenceToInt(const void *obj, SLRefType rt)
@@ -1261,7 +1259,7 @@ static uint ReferenceToInt(const void *obj, SLRefType rt)
  * Remember that an index of 0 is a NULL pointer so all indeces
  * are +1 so vehicle 0 is saved as 1.
  * @param index The index that is being converted to a pointer
- * @param rt @SLRefType type of the object the pointer is sought of
+ * @param rt SLRefType type of the object the pointer is sought of
  * @return Return the index converted to a pointer of any type
  */
 static void *IntToReference(uint index, SLRefType rt)
@@ -1329,16 +1327,16 @@ static void *IntToReference(uint index, SLRefType rt)
 
 /** The format for a reader/writer type of a savegame */
 typedef struct {
-	const char *name;           /// name of the compressor/decompressor (debug-only)
-	uint32 tag;                 /// the 4-letter tag by which it is identified in the savegame
+	const char *name;           ///< name of the compressor/decompressor (debug-only)
+	uint32 tag;                 ///< the 4-letter tag by which it is identified in the savegame
 
-	bool (*init_read)(void);    /// function executed upon initalization of the loader
-	ReaderProc *reader;         /// function that loads the data from the file
-	void (*uninit_read)(void);  /// function executed when reading is finished
+	bool (*init_read)(void);    ///< function executed upon initalization of the loader
+	ReaderProc *reader;         ///< function that loads the data from the file
+	void (*uninit_read)(void);  ///< function executed when reading is finished
 
-	bool (*init_write)(void);   /// function executed upon intialization of the saver
-	WriterProc *writer;         /// function that saves the data to the file
-	void (*uninit_write)(void); /// function executed when writing is done
+	bool (*init_write)(void);   ///< function executed upon intialization of the saver
+	WriterProc *writer;         ///< function that saves the data to the file
+	void (*uninit_write)(void); ///< function executed when writing is done
 } SaveLoadFormat;
 
 static const SaveLoadFormat _saveload_formats[] = {
@@ -1356,13 +1354,13 @@ static const SaveLoadFormat _saveload_formats[] = {
  * Return the savegameformat of the game. Whether it was create with ZLIB compression
  * uncompressed, or another type
  * @param s Name of the savegame format. If NULL it picks the first available one
- * @return Pointer to @SaveLoadFormat struct giving all characteristics of this type of savegame
+ * @return Pointer to SaveLoadFormat struct giving all characteristics of this type of savegame
  */
 static const SaveLoadFormat *GetSavegameFormat(const char *s)
 {
 	const SaveLoadFormat *def = endof(_saveload_formats) - 1;
 
-	// find default savegame format, the highest one with which files can be written
+	/* find default savegame format, the highest one with which files can be written */
 	while (!def->init_write) def--;
 
 	if (s != NULL && s[0] != '\0') {
@@ -1377,7 +1375,7 @@ static const SaveLoadFormat *GetSavegameFormat(const char *s)
 	return def;
 }
 
-// actual loader/saver function
+/* actual loader/saver function */
 void InitializeGame(int mode, uint size_x, uint size_y);
 extern bool AfterLoadGame(void);
 extern void BeforeSaveGame(void);
@@ -1509,7 +1507,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 
 	/* An instance of saving is already active, so don't go saving again */
 	if (_ts.saveinprogress && mode == SL_SAVE) {
-		// if not an autosave, but a user action, show error message
+		/* if not an autosave, but a user action, show error message */
 		if (!_do_autosave) ShowErrorMessage(INVALID_STRING_ID, STR_SAVE_STILL_IN_PROGRESS, 0, 0);
 		return SL_OK;
 	}
@@ -1541,7 +1539,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 	if (setjmp(_sl.excpt)) {
 		AbortSaveLoad();
 
-		// deinitialize compressor.
+		/* deinitialize compressor. */
 		_sl.excpt_uninit();
 
 		/* A saver/loader exception!! reinitialize all variables to prevent crash! */
@@ -1590,7 +1588,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 			return AbortSaveLoad();
 		}
 
-		// see if we have any loader for this type.
+		/* see if we have any loader for this type. */
 		for (fmt = _saveload_formats; ; fmt++) {
 			/* No loader found, treat as version 0 and use LZO format */
 			if (fmt == endof(_saveload_formats)) {
@@ -1609,12 +1607,12 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 			}
 
 			if (fmt->tag == hdr[0]) {
-				// check version number
+				/* check version number */
 				_sl_version = TO_BE32(hdr[1]) >> 16;
 				/* Minor is not used anymore from version 18.0, but it is still needed
-				 *  in versions before that (4 cases) which can't be removed easy.
-				 *  Therefor it is loaded, but never saved (or, it saves a 0 in any scenario).
-				 *  So never EVER use this minor version again. -- TrueLight -- 22-11-2005 */
+				 * in versions before that (4 cases) which can't be removed easy.
+				 * Therefor it is loaded, but never saved (or, it saves a 0 in any scenario).
+				 * So never EVER use this minor version again. -- TrueLight -- 22-11-2005 */
 				_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
 
 				DEBUG(sl, 1, "Loading savegame version %d", _sl_version);
@@ -1631,7 +1629,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		_sl.read_bytes = fmt->reader;
 		_sl.excpt_uninit = fmt->uninit_read;
 
-		// loader for this savegame type is not implemented?
+		/* loader for this savegame type is not implemented? */
 		if (fmt->init_read == NULL) {
 			ShowInfoF("Loader for '%s' is not available.", fmt->name);
 			return AbortSaveLoad();
@@ -1686,7 +1684,7 @@ int GetSavegameType(char *file)
 		DEBUG(sl, 0, "Savegame is obsolete or invalid format");
 		mode = SL_LOAD; // don't try to get filename, just show name as it is written
 	} else {
-		// see if we have any loader for this type.
+		/* see if we have any loader for this type. */
 		for (fmt = _saveload_formats; fmt != endof(_saveload_formats); fmt++) {
 			if (fmt->tag == hdr) {
 				mode = SL_LOAD; // new type of savegame

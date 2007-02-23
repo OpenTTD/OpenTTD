@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file airport.h Various declarations for airports */
+
 #ifndef AIRPORT_H
 #define AIRPORT_H
 

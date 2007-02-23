@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file viewport.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -23,7 +25,6 @@
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 
-/* viewport.c */
 // XXX - maximum viewports is maximum windows - 2 (main toolbar + status bar)
 static ViewPort _viewports[25 - 2];
 static uint32 _active_viewports;    ///< bitmasked variable where each bit signifies if a viewport is in use or not

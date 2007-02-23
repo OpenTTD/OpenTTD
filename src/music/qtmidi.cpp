@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file qtmidi.c
+ * @file qtmidi.cpp
  * @brief MIDI music player for MacOS X using QuickTime.
  *
  * This music player should work in all MacOS X releases starting from 10.0,

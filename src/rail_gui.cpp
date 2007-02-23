@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file rail_gui.c File for dealing with rail construction user interface */
+/** @file rail_gui.cpp File for dealing with rail construction user interface */
 
 #include "stdafx.h"
 #include "openttd.h"

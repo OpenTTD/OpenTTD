@@ -1,5 +1,8 @@
 /* $Id$ */
 
+/** @file aircraft_cmd.cpp
+ * This file deals with aircraft and airport movements functionalities */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "aircraft.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file players.c
+/** @file players.cpp
  * @todo Cleanup the messy DrawPlayerFace function asap
  */
 #include "stdafx.h"

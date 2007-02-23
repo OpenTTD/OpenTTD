@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file tunnelbridge_cmd.c
+/** @file tunnelbridge_cmd.cpp
  * This file deals with tunnels and bridges (non-gui stuff)
  * @todo seperate this file into two
  */

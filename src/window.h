@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file window.h regroups declarations for all windowing system, as well as a few helper functions */
+
 #ifndef WINDOW_H
 #define WINDOW_H
 
@@ -59,9 +61,9 @@ typedef enum ResizeFlags {
 	 * They are used in the same place as the above RESIZE_x flags, Widget visual_flags.
 	 * These states are used in exceptions. If nothing is specified, they will indicate
 	 * Enabled, visible or unclicked widgets*/
-	WIDG_DISABLED = 4,  // widget is greyed out, not available
-	WIDG_HIDDEN   = 5,  // widget is made invisible
-	WIDG_LOWERED  = 6,  // widget is paint lowered, a pressed button in fact
+	WIDG_DISABLED = 4,  ///< widget is greyed out, not available
+	WIDG_HIDDEN   = 5,  ///< widget is made invisible
+	WIDG_LOWERED  = 6,  ///< widget is paint lowered, a pressed button in fact
 } ResizeFlag;
 
 /* used to indicate the end of widgets' list for vararg functions */
@@ -70,8 +72,8 @@ enum {
 };
 
 typedef struct Widget {
-	byte type;                        ///< Widget type, see @WindowWidgetTypes
-	byte display_flags;               ///< Resize direction, alignment, etc. during resizing, see @ResizeFlags
+	byte type;                        ///< Widget type, see WindowWidgetTypes
+	byte display_flags;               ///< Resize direction, alignment, etc. during resizing, see ResizeFlags
 	byte color;                       ///< Widget colour, see docs/ottd-colourtext-palette.png
 	int16 left, right, top, bottom;   ///< The position offsets inside the window
 	uint16 data;                      ///< The String/Image or special code (list-matrixes) of a widget
@@ -164,23 +166,23 @@ struct WindowEvent {
 		} mouseover;
 
 		struct {
-			bool cont;     // continue the search? (default true)
-			uint16 key;    // 16-bit Unicode value of the key
-			uint16 keycode;// untranslated key (including shift-state)
+			bool cont;      ///< continue the search? (default true)
+			uint16 key;     ///< 16-bit Unicode value of the key
+			uint16 keycode; ///< untranslated key (including shift-state)
 		} keypress;
 
 		struct {
-			int msg;      // message to be sent
-			int wparam;   // additional message-specific information
-			int lparam;   // additional message-specific information
+			int msg;      ///< message to be sent
+			int wparam;   ///< additional message-specific information
+			int lparam;   ///< additional message-specific information
 		} message;
 
 		struct {
-			Point delta;   // delta position against position of last call
+			Point delta;   ///< delta position against position of last call
 		} scroll;
 
 		struct {
-			int wheel;     // how much was 'wheel'd'
+			int wheel;     ///< how much was 'wheel'd'
 		} wheel;
 	} we;
 };
@@ -195,14 +197,14 @@ typedef struct WindowDesc {
 } WindowDesc;
 
 enum WindowDefaultFlag {
-	WDF_STD_TOOLTIPS    =   1, /* use standard routine when displaying tooltips */
-	WDF_DEF_WIDGET      =   2, /* default widget control for some widgets in the on click event */
-	WDF_STD_BTN         =   4, /* default handling for close and drag widgets (widget no 0 and 1) */
+	WDF_STD_TOOLTIPS    =   1, ///< use standard routine when displaying tooltips
+	WDF_DEF_WIDGET      =   2, ///< default widget control for some widgets in the on click event
+	WDF_STD_BTN         =   4, ///< default handling for close and drag widgets (widget no 0 and 1)
 
-	WDF_UNCLICK_BUTTONS =  16, /* Unclick buttons when the window event times out */
-	WDF_STICKY_BUTTON   =  32, /* Set window to sticky mode; they are not closed unless closed with 'X' (widget 2) */
-	WDF_RESIZABLE       =  64, /* A window can be resized */
-	WDF_MODAL           = 128, /* The window is a modal child of some other window, meaning the parent is 'inactive' */
+	WDF_UNCLICK_BUTTONS =  16, ///< Unclick buttons when the window event times out */
+	WDF_STICKY_BUTTON   =  32, ///< Set window to sticky mode; they are not closed unless closed with 'X' (widget 2)
+	WDF_RESIZABLE       =  64, ///< A window can be resized
+	WDF_MODAL           = 128, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
 };
 
 /* can be used as x or y coordinates to cause a specific placement */
@@ -214,12 +216,12 @@ enum WindowDefaultPosition {
 };
 
 typedef struct Textbuf {
-	char *buf;                  /* buffer in which text is saved */
-	uint16 maxlength, maxwidth; /* the maximum size of the buffer. Maxwidth specifies screensize in pixels, maxlength is in bytes */
-	uint16 length, width;       /* the current size of the string. Width specifies screensize in pixels, length is in bytes */
-	bool caret;                 /* is the caret ("_") visible or not */
-	uint16 caretpos;            /* the current position of the caret in the buffer, in bytes */
-	uint16 caretxoffs;          /* the current position of the caret in pixels */
+	char *buf;                  ///< buffer in which text is saved
+	uint16 maxlength, maxwidth; ///< the maximum size of the buffer. Maxwidth specifies screensize in pixels, maxlength is in bytes
+	uint16 length, width;       ///< the current size of the string. Width specifies screensize in pixels, length is in bytes
+	bool caret;                 ///< is the caret ("_") visible or not
+	uint16 caretpos;            ///< the current position of the caret in the buffer, in bytes
+	uint16 caretxoffs;          ///< the current position of the caret in pixels
 } Textbuf;
 
 #define WP(ptr,str) (*(str*)(ptr)->custom)
@@ -233,10 +235,10 @@ typedef struct Scrollbar {
 } Scrollbar;
 
 typedef struct ResizeInfo {
-	uint width; /* Minimum width and height */
+	uint width; ///< Minimum width and height
 	uint height;
 
-	uint step_width; /* In how big steps the width and height go */
+	uint step_width; ///< In how big steps the width and height go
 	uint step_height;
 } ResizeInfo;
 
@@ -281,12 +283,12 @@ typedef struct querystr_d {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(querystr_d));
 
 typedef struct {
-	byte item_count;      /* follow_vehicle */
-	byte sel_index;       /* scrollpos_x */
-	byte main_button;     /* scrollpos_y */
+	byte item_count;      ///< follow_vehicle
+	byte sel_index;       ///< scrollpos_x
+	byte main_button;     ///< scrollpos_y
 	byte action_id;
-	StringID string_id;   /* unk30 */
-	uint16 checked_items; /* unk32 */
+	StringID string_id;   ///< unk30
+	uint16 checked_items; ///< unk32
 	byte disabled_items;
 } menu_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(menu_d));
@@ -323,7 +325,7 @@ typedef struct {
 		RailTypeByte railtype;
 		AirportFTAClass::Flags flags;
 	} filter;
-	byte sel_index;  // deprecated value, used for 'unified' ship and road
+	byte sel_index;  ///< deprecated value, used for 'unified' ship and road
 	bool descending_sort_order;
 	byte sort_criteria;
 	bool regenerate_list;
@@ -337,7 +339,7 @@ typedef struct {
 	byte sel_index[2];
 	EngineID sel_engine[2];
 	uint16 count[2];
-	bool wagon_btnstate; // true means engine is selected
+	bool wagon_btnstate; ///< true means engine is selected
 	EngineList list[2];
 	bool update_left;
 	bool update_right;
@@ -397,7 +399,7 @@ typedef struct {
 } vp_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp_d));
 
-// vp2_d is the same as vp_d, except for the data_# values..
+/* vp2_d is the same as vp_d, except for the data_# values.. */
 typedef struct {
 	VehicleID follow_vehicle;
 	int32 scrollpos_x;
@@ -430,24 +432,24 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(scroller_d));
 
 typedef enum SortListFlags {
 	VL_NONE    = 0x00,
-	VL_DESC    = 0x01,  // sort descending or ascending
-	VL_RESORT  = 0x02,  // instruct the code to resort the list in the next loop
-	VL_REBUILD = 0x04,  // create sort-listing to use for qsort and friends
+	VL_DESC    = 0x01,  ///< sort descending or ascending
+	VL_RESORT  = 0x02,  ///< instruct the code to resort the list in the next loop
+	VL_REBUILD = 0x04,  ///< create sort-listing to use for qsort and friends
 	VL_END     = 0x08
 } SortListFlags;
 
 DECLARE_ENUM_AS_BIT_SET(SortListFlags);
 
 typedef struct Listing {
-	bool order;    // Ascending/descending
-	byte criteria; // Sorting criteria
+	bool order;    ///< Ascending/descending
+	byte criteria; ///< Sorting criteria
 } Listing;
 
 typedef struct list_d {
-	uint16 list_length;  // length of the list being sorted
-	byte sort_type;      // what criteria to sort on
-	SortListFlags flags; // used to control sorting/resorting/etc.
-	uint16 resort_timer; // resort list after a given amount of ticks if set
+	uint16 list_length;  ///< length of the list being sorted
+	byte sort_type;      ///< what criteria to sort on
+	SortListFlags flags; ///< used to control sorting/resorting/etc.
+	uint16 resort_timer; ///< resort list after a given amount of ticks if set
 } list_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(list_d));
 
@@ -484,25 +486,25 @@ enum WindowWidgetBehaviours {
 enum WindowWidgetTypes {
 	WWT_EMPTY,
 
-	WWT_PANEL,      /* simple depressed panel */
-	WWT_INSET,      /* pressed (inset) panel, most commonly used as combo box _text_ area */
-	WWT_IMGBTN,     /* button with image */
-	WWT_IMGBTN_2,   /* button with diff image when clicked */
+	WWT_PANEL,      ///< simple depressed panel
+	WWT_INSET,      ///< pressed (inset) panel, most commonly used as combo box _text_ area
+	WWT_IMGBTN,     ///< button with image
+	WWT_IMGBTN_2,   ///< button with diff image when clicked
 
-	WWT_TEXTBTN,    /* button with text */
-	WWT_TEXTBTN_2,  /* button with diff text when clicked */
-	WWT_LABEL,      /* centered label */
+	WWT_TEXTBTN,    ///< button with text
+	WWT_TEXTBTN_2,  ///< button with diff text when clicked
+	WWT_LABEL,      ///< centered label
 	WWT_MATRIX,
 	WWT_SCROLLBAR,
-	WWT_FRAME,      /* frame */
+	WWT_FRAME,      ///< frame
 	WWT_CAPTION,
 
 	WWT_HSCROLLBAR,
 	WWT_STICKYBOX,
-	WWT_SCROLL2BAR, /* 2nd vertical scrollbar*/
+	WWT_SCROLL2BAR, ///< 2nd vertical scrollbar
 	WWT_RESIZEBOX,
 	WWT_CLOSEBOX,
-	WWT_LAST,       /* Last Item. use WIDGETS_END to fill up padding!! */
+	WWT_LAST,       ///< Last Item. use WIDGETS_END to fill up padding!!
 
 	WWT_MASK = 0x1F,
 
@@ -531,7 +533,7 @@ enum WindowFlags {
 	WF_SCROLL2           = 1 << 13,
 };
 
-/* window.c */
+/* window.cpp */
 void CallWindowEventNP(Window *w, int event);
 void CallWindowTickEvent(void);
 void SetWindowDirty(const Window *w);
@@ -724,14 +726,14 @@ void CDECL SetWindowWidgetsDisabledState(Window *w, bool disab_stat, int widgets
 void CDECL SetWindowWidgetsHiddenState(Window *w, bool hidden_stat, int widgets, ...);
 void CDECL SetWindowWidgetsLoweredState(Window *w, bool lowered_stat, int widgets, ...);
 
-/* misc_gui.c*/
+/* misc_gui.cpp */
 void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint params[]);
 static inline void GuiShowTooltips(StringID str)
 {
 	GuiShowTooltipsWithArgs(str, 0, NULL);
 }
 
-/* widget.c */
+/* widget.cpp */
 int GetWidgetFromPos(const Window *w, int x, int y);
 void DrawWindowWidgets(const Window *w);
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask);
@@ -745,7 +747,7 @@ void HideVitalWindows(void);
 void ShowVitalWindows(void);
 Window **FindWindowZPosition(const Window *w);
 
-/* window.c */
+/* window.cpp */
 extern Window *_z_windows[];
 extern Window **_last_z_window;
 #define FOR_ALL_WINDOWS(wz) for (wz = _z_windows; wz != _last_z_window; wz++)

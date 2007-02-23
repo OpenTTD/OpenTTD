@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file autoreplace_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file win32.h declarations of functions for MS windows systems */
+
 #ifndef WIN32_H
 #define WIN32_H
 

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file aystar.cpp
+
 /*
  * This file has the core function for AyStar
  *  AyStar is a fast pathfinding routine and is used for things like
