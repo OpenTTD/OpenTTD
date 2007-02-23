@@ -31,6 +31,8 @@ typedef struct CargoSpec {
 	SpriteID sprite;
 
 	uint16 classes;
+
+	bool IsValid() const;
 } CargoSpec;
 
 

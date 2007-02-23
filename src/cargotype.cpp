@@ -67,3 +67,9 @@ CargoID GetCargoIDByBitnum(byte bitnum)
 	assert(_cargo_bitnum_map[bitnum] != CT_INVALID);
 	return _cargo_bitnum_map[bitnum];
 }
+
+
+bool CargoSpec::IsValid() const
+{
+	return bitnum != INVALID_CARGO;
+}

@@ -820,8 +820,10 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 	if (v == NULL) {
 		cargo = GC_PURCHASE;
 	} else {
-		cargo = GetCargo(v->cargo_type)->bitnum;
-		assert(cargo != GC_INVALID);
+		const CargoSpec *cs = GetCargo(v->cargo_type);
+		assert(cs->IsValid());
+
+		cargo = cs->bitnum;
 
 		if (v->type == VEH_Train) {
 			group = GetWagonOverrideSpriteSet(engine, cargo, v->u.rail.first_engine);

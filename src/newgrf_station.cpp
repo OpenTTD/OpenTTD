@@ -515,7 +515,7 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 		/* Pick the first cargo that we have waiting */
 		for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
 			const CargoSpec *cs = GetCargo(cargo);
-			if (cs->bitnum != 0xFF && object->u.station.statspec->spritegroup[cs->bitnum] != NULL &&
+			if (cs->IsValid() && object->u.station.statspec->spritegroup[cs->bitnum] != NULL &&
 					GB(object->u.station.st->goods[cargo].waiting_acceptance, 0, 12) != 0) {
 				ctype = cs->bitnum;
 				break;

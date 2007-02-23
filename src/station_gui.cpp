@@ -59,7 +59,7 @@ static StationSortListingTypeFunction StationRatingMaxSorter;
 static void StationsWndShowStationRating(int x, int y, CargoID type, uint amount, byte rating)
 {
 	const CargoSpec *cs = GetCargo(type);
-	if (cs->bitnum == 0xFF) return;
+	if (!cs->IsValid()) return;
 
 	int colour = cs->rating_colour;
 	uint w = (minu(amount, 576) + 5) / 36;
@@ -328,7 +328,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				cg_ofst = IsWindowWidgetLowered(w, i + STATIONLIST_WIDGET_CARGOSTART) ? 2 : 1;
 
 				const CargoSpec *cs = GetCargo(i);
-				if (cs->bitnum != 0xFF) {
+				if (cs->IsValid()) {
 					GfxFillRect(x + cg_ofst, y + cg_ofst, x + cg_ofst + 10 , y + cg_ofst + 7, cs->rating_colour);
 					DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, cs->abbrev, 0x10);
 				}
