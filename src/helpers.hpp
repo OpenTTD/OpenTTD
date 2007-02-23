@@ -80,12 +80,23 @@ template <typename T> static inline T delta(T a, T b) { return a < b ? b - a : a
 
 /** Informative template class exposing basic enumeration properties used by several
  *  other templates below. Here we have only forward declaration. For each enum type
- *  we will create specialization derived from MakeEnumPropsT<>. */
+ *  we will create specialization derived from MakeEnumPropsT<>.
+ *  i.e.:
+ *    template <> struct EnumPropsT<Track> : MakeEnumPropsT<Track, byte, TRACK_BEGIN, TRACK_END, INVALID_TRACK> {};
+ *  followed by:
+ *    typedef TinyEnumT<Track> TrackByte;
+ */
 template <typename Tenum_t> struct EnumPropsT;
 
 /** Helper template class that makes basic properties of given enumeration type visible
  *  from outsize. It is used as base class of several EnumPropsT specializations each
- *  dedicated to one of commonly used enumeration types. */
+ *  dedicated to one of commonly used enumeration types.
+ *  @param Tenum_t enumeration type that you want to describe
+ *  @param Tstorage_t what storage type would be sufficient (i.e. byte)
+ *  @param Tbegin first valid value from the contiguous range (i.e. TRACK_BEGIN)
+ *  @param Tend one past the last valid value from the contiguous range (i.e. TRACK_END)
+ *  @param Tinvalid value used as invalid value marker (i.e. INVALID_TRACK)
+ */
 template <typename Tenum_t, typename Tstorage_t, Tenum_t Tbegin, Tenum_t Tend, Tenum_t Tinvalid>
 struct MakeEnumPropsT {
 	typedef Tenum_t type;                     ///< enum type (i.e. Trackdir)
