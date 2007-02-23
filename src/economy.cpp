@@ -613,18 +613,21 @@ static void PlayersGenStatistics(void)
 
 static void AddSingleInflation(int32 *value, uint16 *frac, int32 amt)
 {
-	int64 tmp = (int64)*value * amt;
-	int32 low;
-	*frac = (uint16)(low = (uint16)tmp + *frac);
-	*value += (int32)(tmp >> 16) + (low >> 16);
+	int64 tmp = (int64)*value * amt + *frac;
+	*frac   = GB(tmp, 0, 16);
+	*value += tmp >> 16;
 }
 
 static void AddInflation(void)
 {
-	int i;
+	/* Approximation for (100 + infl_amount)% ** (1 / 12) - 100%
+	 * scaled by 65536
+	 * 12 -> months per year
+	 * This is only a good approxiamtion for small values
+	 */
 	int32 inf = _economy.infl_amount * 54;
 
-	for (i = 0; i != NUM_PRICES; i++) {
+	for (uint i = 0; i != NUM_PRICES; i++) {
 		AddSingleInflation((int32*)&_price + i, _price_frac + i, inf);
 	}
 
@@ -634,7 +637,7 @@ static void AddInflation(void)
 		_economy.max_loan += 50000;
 
 	inf = _economy.infl_amount_pr * 54;
-	for (i = 0; i != NUM_CARGO; i++) {
+	for (uint i = 0; i != NUM_CARGO; i++) {
 		AddSingleInflation(
 			(int32*)_cargo_payment_rates + i,
 			_cargo_payment_rates_frac + i,
