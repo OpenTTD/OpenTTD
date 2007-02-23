@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file economy.h */
+
 #ifndef ECONOMY_H
 #define ECONOMY_H
 
@@ -7,15 +9,12 @@ void ResetPriceBaseMultipliers(void);
 void SetPriceBaseMultiplier(uint price, byte factor);
 
 typedef struct {
-	// Maximum possible loan
-	int32 max_loan;
-	int32 max_loan_unround;
-	// Economy fluctuation status
+	int32 max_loan;         ///< Maximum possible loan
+	int32 max_loan_unround; ///< Economy fluctuation status
 	int fluct;
-	// Interest
-	byte interest_rate;
-	byte infl_amount;
-	byte infl_amount_pr;
+	byte interest_rate;     ///< Interest
+	byte infl_amount;       ///< inflation amount
+	byte infl_amount_pr;    ///< "floating" portion of inflation
 } Economy;
 
 VARDEF Economy _economy;
@@ -40,19 +39,19 @@ enum ScoreID {
 	SCORE_CARGO      = 6,
 	SCORE_MONEY      = 7,
 	SCORE_LOAN       = 8,
-	SCORE_TOTAL      = 9, // This must always be the last entry
-	SCORE_END        = 10, // How many scores are there..
+	SCORE_TOTAL      = 9,  ///< This must always be the last entry
+	SCORE_END        = 10, ///< How many scores are there..
 
-	SCORE_MAX = 1000 // The max score that can be in the performance history
-	//  the scores together of score_info is allowed to be more!
+	SCORE_MAX = 1000       ///< The max score that can be in the performance history
+	/* the scores together of score_info is allowed to be more! */
 };
 
 DECLARE_POSTFIX_INCREMENT(ScoreID);
 
 typedef struct ScoreInfo {
-	byte id;    // Unique ID of the score
-	int needed; // How much you need to get the perfect score
-	int score;  // How much score it will give
+	byte id;    ///< Unique ID of the score
+	int needed; ///< How much you need to get the perfect score
+	int score;  ///< How much score it will give
 } ScoreInfo;
 
 extern const ScoreInfo _score_info[];

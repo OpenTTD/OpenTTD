@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file direction.h */
+
 #ifndef DIRECTION_H
 #define DIRECTION_H
 
@@ -9,7 +11,7 @@
 typedef enum Direction {
 	DIR_BEGIN = 0,
 	DIR_N   = 0,
-	DIR_NE  = 1,      /* Northeast, upper right on your monitor */
+	DIR_NE  = 1,      ///< Northeast, upper right on your monitor
 	DIR_E   = 2,
 	DIR_SE  = 3,
 	DIR_S   = 4,
@@ -59,7 +61,7 @@ static inline Direction ChangeDir(Direction d, DirDiff delta)
 /* Direction commonly used as the direction of entering and leaving tiles, 4-way */
 typedef enum DiagDirection {
 	DIAGDIR_BEGIN = 0,
-	DIAGDIR_NE  = 0,      /* Northeast, upper right on your monitor */
+	DIAGDIR_NE  = 0,      ///< Northeast, upper right on your monitor
 	DIAGDIR_SE  = 1,
 	DIAGDIR_SW  = 2,
 	DIAGDIR_NW  = 3,

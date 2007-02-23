@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file debug.cpp */
+
 #include "stdafx.h"
 #include <stdio.h>
 #include <stdarg.h>
@@ -105,7 +107,7 @@ void SetDebugString(const char *s)
 	char *end;
 	const char *t;
 
-	// global debugging level?
+	/* global debugging level? */
 	if (*s >= '0' && *s <= '9') {
 		const DebugLevel *i;
 
@@ -115,19 +117,19 @@ void SetDebugString(const char *s)
 		for (i = debug_level; i != endof(debug_level); ++i) *i->level = v;
 	}
 
-	// individual levels
+	/* individual levels */
 	for (;;) {
 		const DebugLevel *i;
 		int *p;
 
-		// skip delimiters
+		/* skip delimiters */
 		while (*s == ' ' || *s == ',' || *s == '\t') s++;
 		if (*s == '\0') break;
 
 		t = s;
 		while (*s >= 'a' && *s <= 'z') s++;
 
-		// check debugging levels
+		/* check debugging levels */
 		p = NULL;
 		for (i = debug_level; i != endof(debug_level); ++i)
 			if (s == t + strlen(i->name) && strncmp(t, i->name, s - t) == 0) {

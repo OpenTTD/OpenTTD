@@ -1,10 +1,9 @@
 /* $Id$ */
 
+/** @file depot.h Header files for depots (not hangars) */
+
 #ifndef DEPOT_H
 #define DEPOT_H
-
-/** @file depot.h Header files for depots (not hangars)
- *  @see depot.c */
 
 #include "direction.h"
 #include "oldpool.h"
@@ -55,6 +54,7 @@ void ShowDepotWindow(TileIndex tile, byte type);
  * Get the new proposed service interval for the vehicle is indeed, clamped
  * within the given bounds. @see MIN_SERVINT_PERCENT ,etc.
  * @param index proposed service interval
+ * @return service interval
  */
 static inline Date GetServiceIntervalClamped(uint index)
 {

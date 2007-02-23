@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file dedicated.cpp */
+
 #include "stdafx.h"
 
 #ifdef ENABLE_NETWORK
@@ -43,7 +45,7 @@ void DedicatedFork(void)
 		}
 
 		default:
-			// We're the parent
+			/* We're the parent */
 			printf("Loading dedicated server...\n");
 			printf("  - Forked to background with pid %d\n", pid);
 			exit(0);

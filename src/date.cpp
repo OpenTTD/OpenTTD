@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file date.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "date.h"
@@ -197,11 +199,11 @@ extern void ShowEndGameChart(void);
 
 
 static const Month _autosave_months[] = {
-	 0, // never
-	 1, // every month
-	 3, // every 3 months
-	 6, // every 6 months
-	12, // every 12 months
+	 0, ///< never
+	 1, ///< every month
+	 3, ///< every 3 months
+	 6, ///< every 6 months
+	12, ///< every 12 months
 };
 
 /**

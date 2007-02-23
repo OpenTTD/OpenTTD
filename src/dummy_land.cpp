@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file dummy_land.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"

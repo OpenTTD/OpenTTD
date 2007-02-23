@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file date.h */
+
 #ifndef DATE_H
 #define DATE_H
 

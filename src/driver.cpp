@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file driver.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -143,13 +145,13 @@ void LoadDriver(int driver, const char *name)
 		char buffer[256];
 		const char* parms[32];
 
-		// Extract the driver name and put parameter list in parm
+		/* Extract the driver name and put parameter list in parm */
 		ttd_strlcpy(buffer, name, sizeof(buffer));
 		parm = strchr(buffer, ':');
 		parms[0] = NULL;
 		if (parm != NULL) {
 			uint np = 0;
-			// Tokenize the parm.
+			/* Tokenize the parm. */
 			do {
 				*parm++ = '\0';
 				if (np < lengthof(parms) - 1)

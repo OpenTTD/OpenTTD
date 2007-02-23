@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file engine.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -122,9 +124,9 @@ void StartupEngines(void)
 		e->flags = 0;
 		e->player_avail = 0;
 
-		// The magic value of 729 days below comes from the NewGRF spec. If the
-		// base intro date is before 1922 then the random number of days is not
-		// added.
+		/* The magic value of 729 days below comes from the NewGRF spec. If the
+		 * base intro date is before 1922 then the random number of days is not
+		 * added. */
 		r = Random();
 		e->intro_date = ei->base_intro <= ConvertYMDToDate(1922, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
 		if (e->intro_date <= _date) {
@@ -154,7 +156,7 @@ void StartupEngines(void)
 
 		e->lifelength = ei->lifelength + _patches.extend_vehicle_life;
 
-		// prevent certain engines from ever appearing.
+		/* prevent certain engines from ever appearing. */
 		if (!HASBIT(ei->climates, _opt.landscape)) {
 			e->flags |= ENGINE_AVAILABLE;
 			e->player_avail = 0;
@@ -269,7 +271,7 @@ int32 CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-// Determine if an engine type is a wagon (and not a loco)
+/* Determine if an engine type is a wagon (and not a loco) */
 static bool IsWagon(EngineID index)
 {
 	return index < NUM_TRAIN_ENGINES && RailVehInfo(index)->railveh_type == RAILVEH_WAGON;
@@ -281,8 +283,8 @@ static void NewVehicleAvailable(Engine *e)
 	Player *p;
 	EngineID index = e - _engines;
 
-	// In case the player didn't build the vehicle during the intro period,
-	// prevent that player from getting future intro periods for a while.
+	/* In case the player didn't build the vehicle during the intro period,
+	 * prevent that player from getting future intro periods for a while. */
 	if (e->flags & ENGINE_INTRODUCING) {
 		FOR_ALL_PLAYERS(p) {
 			uint block_preview = p->block_preview;
@@ -308,14 +310,14 @@ static void NewVehicleAvailable(Engine *e)
 	e->flags = (e->flags & ~ENGINE_INTRODUCING) | ENGINE_AVAILABLE;
 	AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 
-	// Now available for all players
+	/* Now available for all players */
 	e->player_avail = (byte)-1;
 
-	// Do not introduce new rail wagons
+	/* Do not introduce new rail wagons */
 	if (IsWagon(index)) return;
 
 	if (index < NUM_TRAIN_ENGINES) {
-		// maybe make another rail type available
+		/* maybe make another rail type available */
 		RailType railtype = RailVehInfo(index)->railtype;
 		assert(railtype < RAILTYPE_END);
 		FOR_ALL_PLAYERS(p) {
@@ -338,20 +340,20 @@ void EnginesMonthlyLoop(void)
 
 	if (_cur_year < YEAR_ENGINE_AGING_STOPS) {
 		for (e = _engines; e != endof(_engines); e++) {
-			// Age the vehicle
+			/* Age the vehicle */
 			if (e->flags & ENGINE_AVAILABLE && e->age != 0xFFFF) {
 				e->age++;
 				CalcEngineReliability(e);
 			}
 
 			if (!(e->flags & ENGINE_AVAILABLE) && _date >= (e->intro_date + 365)) {
-				// Introduce it to all players
+				/* Introduce it to all players */
 				NewVehicleAvailable(e);
 			} else if (!(e->flags & (ENGINE_AVAILABLE|ENGINE_INTRODUCING)) && _date >= e->intro_date) {
-				// Introduction date has passed.. show introducing dialog to one player.
+				/* Introduction date has passed.. show introducing dialog to one player. */
 				e->flags |= ENGINE_INTRODUCING;
 
-				// Do not introduce new rail wagons
+				/* Do not introduce new rail wagons */
 				if (!IsWagon(e - _engines))
 					e->preview_player = (PlayerID)1; // Give to the player with the highest rating.
 			}
@@ -399,15 +401,15 @@ bool IsEngineBuildable(EngineID engine, byte type, PlayerID player)
 {
 	const Engine *e;
 
-	// check if it's an engine that is in the engine array
+	/* check if it's an engine that is in the engine array */
 	if (!IsEngineIndex(engine)) return false;
 
 	e = GetEngine(engine);
 
-	// check if it's an engine of specified type
+	/* check if it's an engine of specified type */
 	if (e->type != type) return false;
 
-	// check if it's available
+	/* check if it's available */
 	if (!HASBIT(e->player_avail, player)) return false;
 
 	return true;
@@ -595,7 +597,7 @@ static const SaveLoad _engine_desc[] = {
 	SLE_CONDNULL(1, 0, 44),
 	    SLE_VAR(Engine, player_avail,        SLE_UINT8),
 
-	// reserve extra space in savegame here. (currently 16 bytes)
+	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
 
 	SLE_END()

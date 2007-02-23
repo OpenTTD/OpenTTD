@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file economy.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
@@ -35,7 +37,7 @@
 #include "date.h"
 #include "cargotype.h"
 
-// Score info
+/* Score info */
 const ScoreInfo _score_info[] = {
 	{ SCORE_VEHICLES,        120, 100 },
 	{ SCORE_STATIONS,         80, 100 },
@@ -90,8 +92,12 @@ int64 CalculateCompanyValue(const Player* p)
 	return max(value, 1LL);
 }
 
-// if update is set to true, the economy is updated with this score
-//  (also the house is updated, should only be true in the on-tick event)
+/** if update is set to true, the economy is updated with this score
+ *  (also the house is updated, should only be true in the on-tick event)
+ * @param update the economy with calculated score
+ * @param p player been evaluated
+ * @return actual score of this player
+ * */
 int UpdateCompanyRatingAndValue(Player *p, bool update)
 {
 	byte owner = p->index;
@@ -209,15 +215,15 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		_score_part[owner][SCORE_LOAN] = _score_info[SCORE_LOAN].needed - p->current_loan;
 	}
 
-	// Now we calculate the score for each item..
+	/* Now we calculate the score for each item.. */
 	{
 		int total_score = 0;
 		int s;
 		score = 0;
 		for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) {
-			// Skip the total
+			/* Skip the total */
 			if (i == SCORE_TOTAL) continue;
-			// Check the score
+			/*  Check the score */
 			s = (_score_part[owner][i] >= _score_info[i].needed) ?
 				_score_info[i].score :
 				_score_part[owner][i] * _score_info[i].score / _score_info[i].needed;
@@ -228,7 +234,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 		_score_part[owner][SCORE_TOTAL] = score;
 
-		// We always want the score scaled to SCORE_MAX (1000)
+		/*  We always want the score scaled to SCORE_MAX (1000) */
 		if (total_score != SCORE_MAX) score = score * SCORE_MAX / total_score;
 	}
 
@@ -242,7 +248,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 	return score;
 }
 
-// use PLAYER_SPECTATOR as new_player to delete the player.
+/*  use PLAYER_SPECTATOR as new_player to delete the player. */
 void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 {
 	Town *t;
@@ -294,7 +300,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		int num_aircraft = 0;
 		Vehicle *v;
 
-		// Determine Ids for the new vehicles
+		/*  Determine Ids for the new vehicles */
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == new_player) {
 				switch (v->type) {
@@ -328,7 +334,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		}
 	}
 
-	// Change ownership of tiles
+	/*  Change ownership of tiles */
 	{
 		TileIndex tile = 0;
 		do {
@@ -368,7 +374,7 @@ static void PlayersCheckBankrupt(Player *p)
 	PlayerID owner;
 	int64 val;
 
-	// If the player has money again, it does not go bankrupt
+	/*  If the player has money again, it does not go bankrupt */
 	if (p->player_money >= 0) {
 		p->quarters_of_bankrupcy = 0;
 		return;
@@ -392,8 +398,8 @@ static void PlayersCheckBankrupt(Player *p)
 				break;
 			}
 
-			// Check if the company has any value.. if not, declare it bankrupt
-			//  right now
+			/* Check if the company has any value.. if not, declare it bankrupt
+			 *  right now */
 			val = CalculateCompanyValue(p);
 			if (val > 0) {
 				p->bankrupt_value = val;
@@ -401,13 +407,13 @@ static void PlayersCheckBankrupt(Player *p)
 				p->bankrupt_timeout = 0;
 				break;
 			}
-			// Else, falltrue to case 4...
+			/* Else, falltrue to case 4... */
 		}
 		case 4: {
-			// Close everything the owner has open
+			/* Close everything the owner has open */
 			DeletePlayerWindows(owner);
 
-//		Show bankrupt news
+			/* Show bankrupt news */
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
 			AddNewsItem( (StringID)(owner | NB_BBANKRUPT), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
@@ -693,55 +699,55 @@ static byte _price_category[NUM_PRICES] = {
 };
 
 static const int32 _price_base[NUM_PRICES] = {
-	    100, // station_value
-	    100, // build_rail
-	     95, // build_road
-	     65, // build_signals
-	    275, // build_bridge
-	    600, // build_train_depot
-	    500, // build_road_depot
-	    700, // build_ship_depot
-	    450, // build_tunnel
-	    200, // train_station_track
-	    180, // train_station_length
-	    600, // build_airport
-	    200, // build_bus_station
-	    200, // build_truck_station
-	    350, // build_dock
-	 400000, // build_railvehicle
-	   2000, // build_railwagon
-	 700000, // aircraft_base
-	  14000, // roadveh_base
-	  65000, // ship_base
-	     20, // build_trees
-	    250, // terraform
-	     20, // clear_1
-	     40, // purchase_land
-	    200, // clear_2
-	    500, // clear_3
-	     20, // remove_trees
-	    -70, // remove_rail
-	     10, // remove_signals
-	     50, // clear_bridge
-	     80, // remove_train_depot
-	     80, // remove_road_depot
-	     90, // remove_ship_depot
-	     30, // clear_tunnel
-	  10000, // clear_water
-	     50, // remove_rail_station
-	     30, // remove_airport
-	     50, // remove_bus_station
-	     50, // remove_truck_station
-	     55, // remove_dock
-	   1600, // remove_house
-	     40, // remove_road
-	   5600, // running_rail[0] railroad
-	   5200, // running_rail[1] monorail
-	   4800, // running_rail[2] maglev
-	   9600, // aircraft_running
-	   1600, // roadveh_running
-	   5600, // ship_running
-	1000000, // build_industry
+	    100, ///< station_value
+	    100, ///< build_rail
+	     95, ///< build_road
+	     65, ///< build_signals
+	    275, ///< build_bridge
+	    600, ///< build_train_depot
+	    500, ///< build_road_depot
+	    700, ///< build_ship_depot
+	    450, ///< build_tunnel
+	    200, ///< train_station_track
+	    180, ///< train_station_length
+	    600, ///< build_airport
+	    200, ///< build_bus_station
+	    200, ///< build_truck_station
+	    350, ///< build_dock
+	 400000, ///< build_railvehicle
+	   2000, ///< build_railwagon
+	 700000, ///< aircraft_base
+	  14000, ///< roadveh_base
+	  65000, ///< ship_base
+	     20, ///< build_trees
+	    250, ///< terraform
+	     20, ///< clear_1
+	     40, ///< purchase_land
+	    200, ///< clear_2
+	    500, ///< clear_3
+	     20, ///< remove_trees
+	    -70, ///< remove_rail
+	     10, ///< remove_signals
+	     50, ///< clear_bridge
+	     80, ///< remove_train_depot
+	     80, ///< remove_road_depot
+	     90, ///< remove_ship_depot
+	     30, ///< clear_tunnel
+	  10000, ///< clear_water
+	     50, ///< remove_rail_station
+	     30, ///< remove_airport
+	     50, ///< remove_bus_station
+	     50, ///< remove_truck_station
+	     55, ///< remove_dock
+	   1600, ///< remove_house
+	     40, ///< remove_road
+	   5600, ///< running_rail[0] railroad
+	   5200, ///< running_rail[1] monorail
+	   4800, ///< running_rail[2] maglev
+	   9600, ///< aircraft_running
+	   1600, ///< roadveh_running
+	   5600, ///< ship_running
+	1000000, ///< build_industry
 };
 
 static byte price_base_multiplier[NUM_PRICES];
@@ -753,7 +759,7 @@ void ResetPriceBaseMultipliers(void)
 {
 	uint i;
 
-	// 8 means no multiplier.
+	/* 8 means no multiplier. */
 	for (i = 0; i < NUM_PRICES; i++)
 		price_base_multiplier[i] = 8;
 }
@@ -928,7 +934,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	fr->from = i = GetRandomIndustry();
 	if (i == NULL) return;
 
-	// Randomize cargo type
+	/* Randomize cargo type */
 	if (Random()&1 && i->produced_cargo[1] != CT_INVALID) {
 		cargo = i->produced_cargo[1];
 		trans = i->pct_transported[1];
@@ -939,28 +945,28 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 		total = i->total_production[0];
 	}
 
-	// Quit if no production in this industry
-	//  or if the cargo type is passengers
-	//  or if the pct transported is already large enough
+	/* Quit if no production in this industry
+	 * or if the cargo type is passengers
+	 * or if the pct transported is already large enough */
 	if (total == 0 || trans > 42 || cargo == CT_INVALID || cargo == CT_PASSENGERS)
 		return;
 
 	fr->cargo = cargo;
 
 	if (cargo == CT_GOODS || cargo == CT_FOOD) {
-		// The destination is a town
+		/*  The destination is a town */
 		Town *t = GetRandomTown();
 
-		// Only want big towns
+		/* Only want big towns */
 		if (t == NULL || t->population < 900) return;
 
 		fr->distance = DistanceManhattan(i->xy, t->xy);
 		fr->to = t;
 	} else {
-		// The destination is an industry
+		/* The destination is an industry */
 		Industry *i2 = GetRandomIndustry();
 
-		// The industry must accept the cargo
+		/* The industry must accept the cargo */
 		if (i == i2 || i == NULL ||
 				(cargo != i2->accepts_cargo[0] &&
 				cargo != i2->accepts_cargo[1] &&
@@ -1018,9 +1024,9 @@ static void SubsidyMonthlyHandler(void)
 		}
 	}
 
-	// 25% chance to go on
+	/* 25% chance to go on */
 	if (CHANCE16(1,4)) {
-		// Find a free slot
+		/*  Find a free slot*/
 		s = _subsidies;
 		while (s->cargo_type != CT_INVALID) {
 			if (++s == endof(_subsidies))
@@ -1124,10 +1130,10 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 	Industry* ind;
 	uint u;
 
-	// Check if there's an industry close to the station that accepts the cargo
-	// XXX - Think of something better to
-	//       1) Only deliver to industries which are withing the catchment radius
-	//       2) Distribute between industries if more then one is present
+	/* Check if there's an industry close to the station that accepts the cargo
+	 * XXX - Think of something better to
+	 *       1) Only deliver to industries which are withing the catchment radius
+	 *       2) Distribute between industries if more then one is present */
 	u = (_patches.station_spread + 8) * 2;
 	FOR_ALL_INDUSTRIES(ind) {
 		uint t;
@@ -1158,7 +1164,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 	Pair pair;
 	Player *p;
 
-	// check if there is an already existing subsidy that applies to us
+	/* check if there is an already existing subsidy that applies to us */
 	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type == cargo_type &&
 				s->age >= 12 &&
@@ -1227,31 +1233,31 @@ static int32 DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 
 	assert(num_pieces > 0);
 
-	// Update player statistics
+	/* Update player statistics */
 	{
 		Player *p = GetPlayer(_current_player);
 		p->cur_economy.delivered_cargo += num_pieces;
 		SETBIT(p->cargo_types, cargo_type);
 	}
 
-	// Get station pointers.
+	/* Get station pointers. */
 	s_from = GetStation(source);
 	s_to = GetStation(dest);
 
-	// Check if a subsidy applies.
+	/* Check if a subsidy applies. */
 	subsidised = CheckSubsidised(s_from, s_to, cargo_type);
 
-	// Increase town's counter for some special goods types
+	/* Increase town's counter for some special goods types */
 	if (cargo_type == CT_FOOD) s_to->town->new_act_food += num_pieces;
 	if (cargo_type == CT_WATER)  s_to->town->new_act_water += num_pieces;
 
-	// Give the goods to the industry.
+	/* Give the goods to the industry. */
 	DeliverGoodsToIndustry(s_to->xy, cargo_type, num_pieces);
 
-	// Determine profit
+	/* Determine profit */
 	profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(source_tile, s_to->xy), days_in_transit, cargo_type);
 
-	// Modify profit if a subsidy is in effect
+	/* Modify profit if a subsidy is in effect */
 	if (subsidised) {
 		switch (_opt.diff.subsidy_multiplier) {
 			case 0:  profit += profit >> 1; break;
@@ -1377,10 +1383,10 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 			CLRBIT(u->load_status, LS_LOADING_FINISHED);
 
 			if (v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000 && !(u->current_order.flags & OF_TRANSFER)) {
-				// deliver goods to the station
+				/* deliver goods to the station */
 				st->time_since_unload = 0;
 
-				unloading_time += v->cargo_count; /* TTDBUG: bug in original TTD */
+				unloading_time += v->cargo_count; // TTDBUG: bug in original TTD
 				if (just_arrived && v->cargo_paid_for < v->cargo_count) {
 					profit += DeliverGoods(v->cargo_count - v->cargo_paid_for, v->cargo_type, v->cargo_source, last_visited, v->cargo_source_xy, v->cargo_days);
 					v->cargo_paid_for = v->cargo_count;
@@ -1406,12 +1412,12 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 				unloading_time += v->cargo_count;
 				t = GB(ge->waiting_acceptance, 0, 12);
 				if (t == 0) {
-					// No goods waiting at station
+					/* No goods waiting at station */
 					ge->enroute_time = v->cargo_days;
 					ge->enroute_from = v->cargo_source;
 					ge->enroute_from_xy = v->cargo_source_xy;
 				} else {
-					// Goods already waiting at station. Set counters to the worst value.
+					/* Goods already waiting at station. Set counters to the worst value. */
 					if (v->cargo_days >= ge->enroute_time) ge->enroute_time = v->cargo_days;
 
 					if (last_visited != ge->enroute_from) {
@@ -1419,7 +1425,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 						ge->enroute_from_xy = v->cargo_source_xy;
 					}
 				}
-				// Update amount of waiting cargo
+				/* Update amount of waiting cargo */
 				SB(ge->waiting_acceptance, 0, 12, min(amount_unloaded + t, 0xFFF));
 
 				if (u->current_order.flags & OF_TRANSFER) {
@@ -1453,12 +1459,12 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 			default:        t = u->max_speed;               break;
 		}
 
-		// if last speed is 0, we treat that as if no vehicle has ever visited the station.
+		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
 		ge->last_speed = min(t, 255);
 		ge->last_age = _cur_year - v->build_year;
 
-		// If there's goods waiting at the station, and the vehicle
-		//  has capacity for it, load it on the vehicle.
+		/* If there's goods waiting at the station, and the vehicle
+		 * has capacity for it, load it on the vehicle. */
 		if (count != 0 &&
 				(cap = v->cargo_cap - v->cargo_count) != 0) {
 			int cargoshare;
@@ -1475,7 +1481,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 			 * loading them. Since this will cause
 			 * VEHICLE_TRIGGER_EMPTY to be called at the time when
 			 * the whole vehicle chain is really totally empty, the
-			 * @completely_empty assignment can then be safely
+			 * completely_empty assignment can then be safely
 			 * removed; that's how TTDPatch behaves too. --pasky */
 			completely_empty = false;
 			anything_loaded = true;
@@ -1492,7 +1498,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 			unloading_time += cap;
 			st->time_since_load = 0;
 
-			// And record the source of the cargo, and the days in travel.
+			/* And record the source of the cargo, and the days in travel. */
 			v->cargo_source = ge->enroute_from;
 			v->cargo_source_xy = ge->enroute_from_xy;
 			v->cargo_days = ge->enroute_time;
@@ -1523,7 +1529,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 	}
 
 	if (v->type == VEH_Train) {
-		// Each platform tile is worth 2 rail vehicles.
+		/* Each platform tile is worth 2 rail vehicles. */
 		int overhang = v->u.rail.cached_total_length - st->GetPlatformLength(v->tile) * TILE_SIZE;
 		if (overhang > 0) {
 			unloading_time <<= 1;
@@ -1565,7 +1571,7 @@ void PlayersMonthlyLoop(void)
 	if (_patches.inflation && _cur_year < MAX_YEAR)
 		AddInflation();
 	PlayersPayInterest();
-	// Reset the _current_player flag
+	/* Reset the _current_player flag */
 	_current_player = OWNER_NONE;
 	HandleEconomyFluctuations();
 	SubsidyMonthlyHandler();
@@ -1582,7 +1588,7 @@ static void DoAcquireCompany(Player *p)
 	SetDParam(2, p->bankrupt_value);
 	AddNewsItem( (StringID)(_current_player | NB_BMERGER), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
-	// original code does this a little bit differently
+	/* original code does this a little bit differently */
 	PlayerID pi = p->index;
 	ChangeOwnershipOfPlayerItems(pi, _current_player);
 
@@ -1679,7 +1685,7 @@ int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		PlayerByte* b = p->share_owners;
-		while (*b != _current_player) b++; /* share owners is guaranteed to contain player */
+		while (*b != _current_player) b++; // share owners is guaranteed to contain player
 		*b = PLAYER_SPECTATOR;
 		InvalidateWindow(WC_COMPANY, p1);
 	}
@@ -1712,14 +1718,14 @@ int32 CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return p->bankrupt_value;
 }
 
-// Prices
+/** Prices */
 static void SaveLoad_PRIC(void)
 {
 	SlArray(&_price,      NUM_PRICES, SLE_INT32);
 	SlArray(&_price_frac, NUM_PRICES, SLE_UINT16);
 }
 
-// Cargo payment rates
+/** Cargo payment rates */
 static void SaveLoad_CAPR(void)
 {
 	SlArray(&_cargo_payment_rates,      NUM_CARGO, SLE_INT32);
@@ -1736,7 +1742,7 @@ static const SaveLoad _economy_desc[] = {
 	SLE_END()
 };
 
-// Economy variables
+/** Economy variables */
 static void SaveLoad_ECMY(void)
 {
 	SlObject(&_economy, _economy_desc);

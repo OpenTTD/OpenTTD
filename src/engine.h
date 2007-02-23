@@ -1,9 +1,9 @@
 /* $Id$ */
 
+/** @file engine.h */
+
 #ifndef ENGINE_H
 #define ENGINE_H
-
-/** @file engine.h */
 
 #include "oldpool.h"
 #include "rail.h"
@@ -11,9 +11,9 @@
 #include "vehicle.h"
 
 enum RailVehicleTypes {
-	RAILVEH_SINGLEHEAD,
-	RAILVEH_MULTIHEAD,
-	RAILVEH_WAGON,
+	RAILVEH_SINGLEHEAD,  ///< indicates a "standalone" locomotive
+	RAILVEH_MULTIHEAD,   ///< indicates a combination of two locomotives
+	RAILVEH_WAGON,       ///< simple wagon, not motorized
 };
 
 typedef struct RailVehicleInfo {
@@ -26,7 +26,7 @@ typedef struct RailVehicleInfo {
 	uint16 weight;
 	byte running_cost_base;
 	byte running_cost_class;
-	byte engclass; // 0: steam, 1: diesel, 2: electric
+	byte engclass;         ///< 0: steam, 1: diesel, 2: electric
 	byte capacity;
 	CargoID cargo_type;
 	byte ai_rank;
@@ -36,9 +36,9 @@ typedef struct RailVehicleInfo {
 	                    //       for when the 'powered wagon' callback fails. But it should really also determine what
 	                    //       kind of visual effect to generate for a vehicle (default, steam, diesel, electric).
 	                    //       Same goes for the callback result, which atm is only used to check if a wagon is powered.
-	byte shorten_factor; // length on main map for this type is 8 - shorten_factor
+	byte shorten_factor;   ///< length on main map for this type is 8 - shorten_factor
 	byte tractive_effort; ///< Tractive effort coefficient
-	byte user_def_data; ///! Property 0x25: "User-defined bit mask" Used only for (very few) NewGRF vehicles
+	byte user_def_data;    ///< Property 0x25: "User-defined bit mask" Used only for (very few) NewGRF vehicles
 } RailVehicleInfo;
 
 typedef struct ShipVehicleInfo {
@@ -57,7 +57,7 @@ typedef struct ShipVehicleInfo {
  * in which case bit 1 tells us whether it's a big(fast) plane or not */
 enum {
 	AIR_HELI = 0,
-	AIR_CTOL = 1, // Conventional Take Off and Landing, i.e. planes
+	AIR_CTOL = 1, ///< Conventional Take Off and Landing, i.e. planes
 	AIR_FAST = 2
 };
 
@@ -111,7 +111,7 @@ typedef struct Engine {
 	PlayerByte preview_player;
 	byte preview_wait;
 	byte player_avail;
-	byte type; // type, ie VEH_Road, VEH_Train, etc. Same as in vehicle.h
+	byte type; ///< type, ie VEH_Road, VEH_Train, etc. Same as in vehicle.h
 } Engine;
 
 /**

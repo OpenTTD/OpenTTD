@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file depot.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "depot.h"

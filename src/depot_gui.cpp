@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** depot_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -36,8 +38,8 @@ enum DepotWindowWidgets {
 	DEPOT_WIDGET_SELL_ALL,
 	DEPOT_WIDGET_AUTOREPLACE,
 	DEPOT_WIDGET_MATRIX,
-	DEPOT_WIDGET_V_SCROLL, // Vertical scrollbar
-	DEPOT_WIDGET_H_SCROLL, // Horizontal scrollbar
+	DEPOT_WIDGET_V_SCROLL, ///< Vertical scrollbar
+	DEPOT_WIDGET_H_SCROLL, ///< Horizontal scrollbar
 	DEPOT_WIDGET_BUILD,
 	DEPOT_WIDGET_CLONE,
 	DEPOT_WIDGET_LOCATION,
@@ -636,7 +638,7 @@ uint _block_sizes[4][2];
 /* Array to hold the default resize capacities
 * First part is the vehicle type, while the last is 0 = x, 1 = y */
 const uint _resize_cap[][2] = {
-/* VEH_Train */    {6, 10 * 29 + 36}, // flags, unitnumber and unit count uses a total of 36 pixels and we set default to 10 units
+/* VEH_Train */    {6, 10 * 29 + 36}, ///< flags, unitnumber and unit count uses a total of 36 pixels and we set default to 10 units
 /* VEH_Road */     {5, 5},
 /* VEH_Ship */     {3, 3},
 /* VEH_Aircraft */ {3, 4},
