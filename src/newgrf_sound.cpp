@@ -37,7 +37,7 @@ void InitializeSoundPool(void)
 
 FileEntry *GetSound(uint index)
 {
-	if (index >= _sound_count) return NULL;
+	if (index >= GetNumSounds()) return NULL;
 	return GetSoundInternal(index);
 }
 

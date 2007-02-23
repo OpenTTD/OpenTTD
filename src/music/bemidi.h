@@ -7,4 +7,4 @@
 
 extern const HalMusicDriver _bemidi_music_driver;
 
-#endif
+#endif /* MUSIC_BEMIDI_H */

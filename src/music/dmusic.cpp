@@ -1,9 +1,8 @@
 /* $Id$ */
 
-#include "../stdafx.h"
-
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
 
+#include "../stdafx.h"
 #include "../debug.h"
 #include "../win32.h"
 #include "dmusic.h"

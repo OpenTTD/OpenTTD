@@ -868,12 +868,12 @@ void ShowInfo(const char *str)
 	int _set_error_mode(int);
 #endif
 
-#if defined(WINCE)
-int APIENTRY WinMain
-#else
-int APIENTRY _tWinMain
-#endif
-        (HINSTANCE hInstance, HINSTANCE hPrevInstance,
+#if defined(WINCE) && !defined(_tWinMain)
+/* GCC crosscompiler for WINCE doesn't support wide version */
+# define _tWinMain WinMain
+#endif /* WINCE */
+
+int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPTSTR lpCmdLine, int nCmdShow)
 {
 	int argc;
@@ -922,12 +922,11 @@ int APIENTRY _tWinMain
 #if defined(WINCE)
 void GetCurrentDirectoryW(int length, wchar_t *path)
 {
-	wchar_t *pDest = NULL;
 	/* Get the name of this module */
 	GetModuleFileName(NULL, path, length);
 
 	/* Remove the executable name, this we call CurrentDir */
-	pDest = wcsrchr(path, '\\');
+	wchar_t *pDest = wcsrchr(path, '\\');
 	if (pDest != NULL) {
 		int result = pDest - path + 1;
 		path[result] = '\0';

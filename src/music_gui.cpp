@@ -422,12 +422,11 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 		case 5: // start playing
 			msf.playing = true;
 			break;
-		case 6:{ // volume sliders
-			byte *vol,new_vol;
+		case 6: { // volume sliders
+			byte *vol, new_vol;
 			int x = e->we.click.pt.x - 88;
 
-			if (x < 0)
-				return;
+			if (x < 0) return;
 
 			vol = &msf.music_vol;
 			if (x >= 106) {
@@ -435,7 +434,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 				x -= 106;
 			}
 
-			new_vol = min(max(x-21,0)*2,127);
+			new_vol = min(max(x - 21, 0) * 2, 127);
 			if (new_vol != *vol) {
 				*vol = new_vol;
 				if (vol == &msf.music_vol)

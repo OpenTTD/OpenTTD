@@ -1,7 +1,6 @@
 /* $Id$ */
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "win32_m.h"
 #include <windows.h>
 #include <mmsystem.h>
@@ -50,7 +49,7 @@ static MCIERROR CDECL MidiSendCommand(const char* cmd, ...)
 	char buf[512];
 
 	va_start(va, cmd);
-	vsprintf(buf, cmd, va);
+	vsnprintf(buf, lengthof(buf), cmd, va);
 	va_end(va);
 	return mciSendStringA(buf, NULL, 0, 0);
 }
@@ -58,12 +57,9 @@ static MCIERROR CDECL MidiSendCommand(const char* cmd, ...)
 static bool MidiIntPlaySong(const char *filename)
 {
 	MidiSendCommand("close all");
-	if (MidiSendCommand("open \"%s\" type sequencer alias song", filename) != 0)
-		return false;
+	if (MidiSendCommand("open \"%s\" type sequencer alias song", filename) != 0) return false;
 
-	if (MidiSendCommand("play song from 0") != 0)
-		return false;
-	return true;
+	return MidiSendCommand("play song from 0") == 0;
 }
 
 static void MidiIntStopSong(void)
@@ -104,9 +100,7 @@ static DWORD WINAPI MidiThread(LPVOID arg)
 			s[0] = '\0';
 
 			// Delay somewhat in case we don't manage to play.
-			if (!_midi.playing) {
-				Sleep(5000);
-			}
+			if (!_midi.playing) Sleep(5000);
 		}
 
 		if (_midi.stop_song && _midi.playing) {
@@ -115,8 +109,7 @@ static DWORD WINAPI MidiThread(LPVOID arg)
 			MidiIntStopSong();
 		}
 
-		if (_midi.playing && !MidiIntIsSongPlaying())
-			_midi.playing = false;
+		if (_midi.playing && !MidiIntIsSongPlaying()) _midi.playing = false;
 
 		WaitForMultipleObjects(1, &_midi.wait_obj, FALSE, 1000);
 	} while (!_midi.terminate);
@@ -148,8 +141,7 @@ static const char *Win32MidiStart(const char * const *parm)
 		}
 	}
 
-	if (CreateThread(NULL, 8192, MidiThread, 0, 0, &threadId) == NULL)
-		return "Failed to create thread";
+	if (CreateThread(NULL, 8192, MidiThread, 0, 0, &threadId) == NULL) return "Failed to create thread";
 
 	return NULL;
 }

@@ -7,4 +7,4 @@
 
 extern const HalSoundDriver _win32_sound_driver;
 
-#endif
+#endif /* SOUND_WIN32_H */

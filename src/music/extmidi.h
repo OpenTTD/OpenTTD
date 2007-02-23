@@ -7,4 +7,4 @@
 
 extern const HalMusicDriver _extmidi_music_driver;
 
-#endif
+#endif /* MUSIC_EXTERNAL_H */

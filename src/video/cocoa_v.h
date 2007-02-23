@@ -10,4 +10,4 @@
 
 extern const HalVideoDriver _cocoa_video_driver;
 
-#endif
+#endif /* VIDEO_COCOA_H */

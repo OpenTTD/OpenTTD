@@ -1,7 +1,6 @@
 /* $Id$ */
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "null_m.h"
 
 static const char* NullMidiStart(const char* const* parm) { return NULL; }
