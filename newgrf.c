@@ -209,6 +209,24 @@ static uint32 grf_load_var(byte size, byte **buf)
 	}
 }
 
+static const char *grf_load_string(byte **buf, size_t max_len)
+{
+	const char *string   = *(const char **)buf;
+	size_t string_length = ttd_strnlen(string, max_len);
+
+	if (string_length == max_len) {
+		/* String was not NUL terminated, so make sure it is now. */
+		(*buf)[string_length - 1] = '\0';
+		DEBUG(grf, 7) ("String was not terminated with a zero byte.");
+	} else {
+		/* Increase the string length to include the NUL byte. */
+		string_length++;
+	}
+	*buf += string_length;
+
+	return string;
+}
+
 static GRFFile *GetFileByGRFID(uint32 grfid)
 {
 	GRFFile *file;
@@ -1054,6 +1072,21 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 		case 0x15: /* Blocked tiles */
 			FOR_EACH_OBJECT statspec[i]->blocked = grf_load_byte(&buf);
+			break;
+
+		case 0x16: /* TODO Animation info */
+			FOR_EACH_OBJECT grf_load_word(&buf);
+			ret = true;
+			break;
+
+		case 0x17: /* TODO Animation speed */
+			FOR_EACH_OBJECT grf_load_byte(&buf);
+			ret = true;
+			break;
+
+		case 0x18: /* TODO Animation triggers */
+			FOR_EACH_OBJECT grf_load_word(&buf);
+			ret = true;
 			break;
 
 		default:
@@ -2029,7 +2062,6 @@ static void FeatureNewName(byte *buf, int len)
 	uint8 num;
 	uint16 id;
 	uint16 endid;
-	const char* name;
 	bool new_scheme = _cur_grffile->grf_version >= 7;
 	bool generic;
 
@@ -2051,13 +2083,19 @@ static void FeatureNewName(byte *buf, int len)
 	DEBUG(grf, 6) ("FeatureNewName: About to rename engines %d..%d (feature %d) in language 0x%02X.",
 	               id, endid, feature, lang);
 
-	name = (const char*)buf; /*transfer read value*/
 	len -= generic ? 6 : 5;
 
 	for (; id < endid && len > 0; id++) {
-		size_t ofs = strlen(name) + 1;
+		const char *name   = grf_load_string(&buf, len);
+		size_t name_length = strlen(name) + 1;
 
-		if (ofs < 128) {
+		len -= (int)name_length;
+
+		if (name_length == 1) {
+			DEBUG(grf, 7) ("FeatureNewName: Can't add empty name");
+		} else if (name_length > 127) {
+			DEBUG(grf, 7) ("FeatureNewName: Too long a name (%d)", name_length);
+		} else {
 			DEBUG(grf, 8) ("FeatureNewName: %d <- %s", id, name);
 
 			switch (feature) {
@@ -2126,17 +2164,7 @@ static void FeatureNewName(byte *buf, int len)
 					break;
 #endif
 			}
-		} else {
-			/* ofs is the string length + 1, so if the string is empty, ofs
-			 * is 1 */
-			if (ofs == 1) {
-				DEBUG(grf, 7) ("FeatureNewName: Can't add empty name");
-			} else {
-				DEBUG(grf, 7) ("FeatureNewName: Too long a name (%d)", ofs);
-			}
 		}
-		name += ofs;
-		len -= (int)ofs;
 	}
 }
 
@@ -2565,7 +2593,7 @@ static void GRFInfo(byte *buf, int len)
 	check_length(len, 8, "GRFInfo"); buf++;
 	version = grf_load_byte(&buf);
 	grfid = grf_load_dword(&buf);
-	name = (const char*)buf;
+	name = grf_load_string(&buf, len - 6);
 	info = name + strlen(name) + 1;
 
 	_cur_grffile->grfid = grfid;
@@ -2637,10 +2665,16 @@ static void GRFError(byte *buf, int len)
 	};
 	uint8 severity;
 	uint8 msgid;
+	const char *data;
 
 	check_length(len, 6, "GRFError");
-	severity = buf[1];
-	msgid = buf[3];
+
+	buf++; /* Skip the action byte. */
+	severity = grf_load_byte(&buf);
+	buf++; /* TODO: Language id. */
+	msgid = grf_load_byte(&buf);
+
+	data = grf_load_string(&buf, len - 4);
 
 	// Undocumented TTDPatch feature.
 	if ((severity & 0x80) == 0 && _cur_stage < GLS_ACTIVATION) {
@@ -2650,9 +2684,9 @@ static void GRFError(byte *buf, int len)
 	severity &= 0x7F;
 
 	if (msgid == 0xFF) {
-		grfmsg(severity, "%s", buf+4);
+		grfmsg(severity, "%s", data);
 	} else {
-		grfmsg(severity, msgstr[msgid], buf+4);
+		grfmsg(severity, msgstr[msgid], data);
 	}
 }
 
@@ -2663,11 +2697,9 @@ static void GRFComment(byte *buf, int len)
 	 *
 	 * V ignored       Anything following the 0C is ignored */
 
-	static char comment[256];
 	if (len == 1) return;
 
-	ttd_strlcpy(comment, (char*)(buf + 1), minu(sizeof(comment), len));
-	grfmsg(GMS_NOTICE, "GRFComment: %s", comment);
+	grfmsg(GMS_NOTICE, "GRFComment: %.*s", len - 1, (const char*)(buf + 1));
 }
 
 /* Action 0x0D (GLS_SAFETYSCAN) */
