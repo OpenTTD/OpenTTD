@@ -1480,6 +1480,11 @@ static void SafeChangeInfo(byte *buf, int len)
 	uint8 numinfo;
 	uint8 index;
 
+	if (len == 1) {
+		grfmsg(8, "Silently ignoring one-byte special sprite 0x00");
+		return;
+	}
+
 	if (!check_length(len, 6, "SafeChangeInfo")) return;
 	buf++;
 	feature  = grf_load_byte(&buf);
