@@ -66,7 +66,7 @@ public:
 	}
 
 	/** return one tile cost. If tile is a tunnel entry, it is moved to the end of tunnel */
-	FORCEINLINE int OneTileCost(TileIndex prev_tile, TileIndex& tile, Trackdir trackdir)
+	FORCEINLINE int OneTileCost(TileIndex& tile, Trackdir trackdir)
 	{
 		int cost = 0;
 		// set base cost
@@ -81,7 +81,7 @@ public:
 
 				case MP_STATION:
 					// penalty for passing station tiles
-					cost += Yapf().PfGetSettings().rail_station_penalty * DistanceManhattan(prev_tile, tile);
+					cost += Yapf().PfGetSettings().rail_station_penalty;
 					break;
 
 				default:
@@ -202,7 +202,7 @@ public:
 		bool target_seen = Yapf().PfDetectDestination(tile, trackdir);
 
 		while (true) {
-			segment_cost += Yapf().OneTileCost(prev_tile, tile, trackdir);
+			segment_cost += Yapf().OneTileCost(tile, trackdir);
 			segment_cost += Yapf().CurveCost(prev_trackdir, trackdir);
 			segment_cost += Yapf().SlopeCost(tile, trackdir);
 			segment_cost += Yapf().SignalCost(n, tile, trackdir);
