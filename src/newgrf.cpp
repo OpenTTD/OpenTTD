@@ -3707,6 +3707,29 @@ static void ClearTemporaryNewGRFData(void)
 	_cur_grffile->spritegroups_count = 0;
 }
 
+static void BuildCargoTranslationMap()
+{
+	memset(_cur_grffile->cargo_map, 0xFF, sizeof(_cur_grffile->cargo_map));
+
+	for (CargoID c = 0; c < NUM_CARGO; c++) {
+		const CargoSpec *cs = GetCargo(c);
+		if (!cs->IsValid()) continue;
+
+		if (_cur_grffile->cargo_max == 0) {
+			/* Default translation table, so just a straight mapping to bitnum */
+			_cur_grffile->cargo_map[c] = cs->bitnum;
+		} else {
+			/* Check the translation table for this cargo's label */
+			for (uint i = 0; i < _cur_grffile->cargo_max; i++) {
+				if (cs->label == _cur_grffile->cargo_list[i]) {
+					_cur_grffile->cargo_map[c] = i;
+					break;
+				}
+			}
+		}
+	}
+}
+
 static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 {
 	GRFFile *newfile;
@@ -4032,6 +4055,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 			LoadNewGRFFile(c, slot++, stage);
 			if (stage == GLS_ACTIVATION) {
 				ClearTemporaryNewGRFData();
+				BuildCargoTranslationMap();
 				DEBUG(sprite, 2, "Currently %i sprites are loaded", _cur_spriteid);
 			}
 		}

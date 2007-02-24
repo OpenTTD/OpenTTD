@@ -64,6 +64,7 @@ typedef struct GRFFile {
 
 	uint8 cargo_max;
 	CargoLabel *cargo_list;
+	uint8 cargo_map[NUM_CARGO];
 } GRFFile;
 
 extern GRFFile *_first_grffile;

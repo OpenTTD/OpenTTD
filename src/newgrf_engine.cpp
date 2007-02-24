@@ -608,7 +608,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			 */
 			const CargoSpec *cs = GetCargo(v->cargo_type);
 
-			return (cs->classes << 16) | (cs->weight << 8) | cs->bitnum;
+			return (cs->classes << 16) | (cs->weight << 8) | GetEngineGRF(v->engine_type)->cargo_map[v->cargo_type];
 		}
 
 		case 0x48: return GetVehicleTypeInfo(v->engine_type); /* Vehicle Type Info */
