@@ -167,6 +167,16 @@ static void DeleteOrderWarnings(const Vehicle* v)
 }
 
 
+static TileIndex GetOrderLocation(const Order *o)
+{
+	switch (o->type) {
+		default: NOT_REACHED();
+		case OT_GOTO_STATION: return GetStation(o->dest)->xy;
+		case OT_GOTO_DEPOT:   return GetDepot(o->dest)->xy;
+	}
+}
+
+
 /** Add an order to the orderlist of a vehicle.
  * @param tile unused
  * @param p1 various bitstuffed elements
@@ -343,18 +353,30 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	 * handle any more then this.. */
 	if (v->num_orders >= MAX_BACKUP_ORDER_COUNT) return_cmd_error(STR_8832_TOO_MANY_ORDERS);
 
-	/* For ships, make sure that the station is not too far away from the
-	 * previous destination, for human players with new pathfinding disabled */
-	if (v->type == VEH_Ship && IsHumanPlayer(v->owner) &&
-		sel_ord != 0 && GetVehicleOrder(v, sel_ord - 1)->type == OT_GOTO_STATION
-		&& !_patches.new_pathfinding_all) {
+	if (v->type == VEH_Ship &&
+			IsHumanPlayer(v->owner) &&
+			!_patches.new_pathfinding_all) {
+		// Make sure the new destination is not too far away from the previous
+		const Order *prev = NULL;
+		const Order *o;
+		uint n = 0;
 
-		int dist = DistanceManhattan(
-			GetStation(GetVehicleOrder(v, sel_ord - 1)->dest)->xy,
-			GetStation(new_order.dest)->xy // XXX type != OT_GOTO_STATION?
-		);
-		if (dist >= 130)
-			return_cmd_error(STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO);
+		/* Find the last goto station or depot order before the insert location.
+		 * If the order is to be inserted at the beginning of the order list this
+		 * finds the last order in the list. */
+		for (o = v->orders; o != NULL; o = o->next) {
+			if (o->type == OT_GOTO_STATION || o->type == OT_GOTO_DEPOT) prev = o;
+			if (++n == sel_ord && prev != NULL) break;
+		}
+		if (prev != NULL) {
+			uint dist = DistanceManhattan(
+				GetOrderLocation(prev),
+				GetOrderLocation(&new_order)
+			);
+			if (dist >= 130) {
+				return_cmd_error(STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO);
+			}
+		}
 	}
 
 	if (flags & DC_EXEC) {

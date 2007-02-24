@@ -231,12 +231,6 @@ static Station* GetStationAround(TileIndex tile, int w, int h, StationID closest
 	BEGIN_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1))
 		if (IsTileType(tile_cur, MP_STATION)) {
 			StationID t = GetStationIndex(tile_cur);
-			{
-				Station *st = GetStation(t);
-				// you cannot take control of an oilrig!!
-				if (st->airport_type == AT_OILRIG && st->facilities == (FACIL_AIRPORT|FACIL_DOCK))
-					continue;
-			}
 
 			if (closest_station == INVALID_STATION) {
 				closest_station = t;
@@ -1016,7 +1010,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 
 	if (st != NULL) {
 		// Reuse an existing station.
-		if (st->owner != OWNER_NONE && st->owner != _current_player)
+		if (st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
 		if (st->train_tile != 0) {
@@ -1451,7 +1445,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (st != NULL) {
-		if (st->owner != OWNER_NONE && st->owner != _current_player) {
+		if (st->owner != _current_player) {
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
@@ -1706,7 +1700,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (st != NULL) {
-		if (st->owner != OWNER_NONE && st->owner != _current_player)
+		if (st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
 		if (!StationRect_BeforeAddRect(st, tile, w, h, RECT_MODE_TEST)) return CMD_ERROR;
@@ -1987,7 +1981,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (st != NULL) {
-		if (st->owner != OWNER_NONE && st->owner != _current_player)
+		if (st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
 		if (!StationRect_BeforeAddRect(st, tile, _dock_w_chk[direction], _dock_h_chk[direction], RECT_MODE_TEST)) return CMD_ERROR;

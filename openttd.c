@@ -1585,6 +1585,15 @@ bool AfterLoadGame(void)
 		SettingsDisableElrail(_patches.disable_elrails);
 	}
 
+	/* Buoys do now store the owner of the previous water tile, which can never
+	 * be OWNER_NONE. So replace OWNER_NONE with OWNER_WATER. */
+	if (CheckSavegameVersion(46)) {
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			if (IsBuoy(st) && IsTileOwner(st->xy, OWNER_NONE)) SetTileOwner(st->xy, OWNER_WATER);
+		}
+	}
+
 	return true;
 }
 

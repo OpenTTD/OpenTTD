@@ -1617,7 +1617,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 {
 	const Sign *si;
 
-	if (!(_display_opt & DO_SHOW_SIGNS)) return false;
+	if (!(_display_opt & DO_SHOW_SIGNS) || _current_player == PLAYER_SPECTATOR) return false;
 
 	switch (vp->zoom) {
 		case 0:
