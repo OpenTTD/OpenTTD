@@ -13,15 +13,15 @@
  *  @param Sprite The Sprite to be displayed
  *  @param display_time The Number of ticks to display the sprite
  */
-#define ANIM_CURSOR_LINE(Sprite, display_time) Sprite, display_time,
+#define ANIM_CURSOR_LINE(Sprite, display_time) { Sprite, display_time },
 
 /** This indicates the termination of the cursor list
  */
-#define ANIM_CURSOR_END() 0xFFFF
+#define ANIM_CURSOR_END() ANIM_CURSOR_LINE(AnimCursor::LAST, 0)
 
 /** Animated cursor elements for demolishion
  */
-static const CursorID _demolish_animcursor[] = {
+static const AnimCursor _demolish_animcursor[] = {
 	ANIM_CURSOR_LINE(0x2C0, 8)
 	ANIM_CURSOR_LINE(0x2C1, 8)
 	ANIM_CURSOR_LINE(0x2C2, 8)
@@ -31,7 +31,7 @@ static const CursorID _demolish_animcursor[] = {
 
 /** Animated cursor elements for lower land
  */
-static const CursorID _lower_land_animcursor[] = {
+static const AnimCursor _lower_land_animcursor[] = {
 	ANIM_CURSOR_LINE(0x2BB, 10)
 	ANIM_CURSOR_LINE(0x2BC, 10)
 	ANIM_CURSOR_LINE(0x2BD, 29)
@@ -40,7 +40,7 @@ static const CursorID _lower_land_animcursor[] = {
 
 /** Animated cursor elements for raise land
  */
-static const CursorID _raise_land_animcursor[] = {
+static const AnimCursor _raise_land_animcursor[] = {
 	ANIM_CURSOR_LINE(0x2B8, 10)
 	ANIM_CURSOR_LINE(0x2B9, 10)
 	ANIM_CURSOR_LINE(0x2BA, 29)
@@ -49,7 +49,7 @@ static const CursorID _raise_land_animcursor[] = {
 
 /** Animated cursor elements for the goto icon
  */
-static const CursorID _order_goto_animcursor[] = {
+static const AnimCursor _order_goto_animcursor[] = {
 	ANIM_CURSOR_LINE(0x2CC, 10)
 	ANIM_CURSOR_LINE(0x2CD, 10)
 	ANIM_CURSOR_LINE(0x2CE, 29)
@@ -58,7 +58,7 @@ static const CursorID _order_goto_animcursor[] = {
 
 /** Animated cursor elements for the build signal icon
  */
-static const CursorID _build_signals_animcursor[] = {
+static const AnimCursor _build_signals_animcursor[] = {
 	ANIM_CURSOR_LINE(0x50C, 20)
 	ANIM_CURSOR_LINE(0x50D, 20)
 	ANIM_CURSOR_END()
@@ -68,7 +68,7 @@ static const CursorID _build_signals_animcursor[] = {
  *  definitions we have above. This is the only thing that is
  *  accessed directly from other files
  */
-static const CursorID * const _animcursors[] = {
+static const AnimCursor * const _animcursors[] = {
 	_demolish_animcursor,
 	_lower_land_animcursor,
 	_raise_land_animcursor,

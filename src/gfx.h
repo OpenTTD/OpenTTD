@@ -99,6 +99,12 @@ typedef struct Rect {
 	int left,top,right,bottom;
 } Rect;
 
+/** A single sprite of a list of animated cursors */
+struct AnimCursor {
+	static const SpriteID LAST = MAX_UVALUE(CursorID);
+	CursorID sprite;   ///< Must be set to LAST_ANIM when it is the last sprite of the loop
+	byte display_time; ///< Amount of ticks this sprite will be shown
+};
 
 typedef struct CursorVars {
 	Point pos, size, offs, delta; ///< position, size, offset from top-left, and movement
@@ -107,8 +113,9 @@ typedef struct CursorVars {
 	SpriteID pal;
 
 	int wheel;       ///< mouse wheel movement
-	const CursorID *animate_list, *animate_cur; ///< in case of animated cursor, list of frames
-	uint animate_timeout;                       ///< current frame in list of animated cursor
+	const AnimCursor *animate_list; ///< in case of animated cursor, list of frames
+	const AnimCursor *animate_cur;  ///< in case of animated cursor, current frame
+	uint animate_timeout;           ///< in case of animated cursor, number of ticks to show the current cursor
 
 	bool visible;    ///< cursor is visible
 	bool dirty;      ///< the rect occupied by the mouse is dirty (redraw)
@@ -229,7 +236,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 
 void SetMouseCursor(CursorID cursor);
 void SetMouseCursor(SpriteID sprite, SpriteID pal);
-void SetAnimatedMouseCursor(const CursorID *table);
+void SetAnimatedMouseCursor(const AnimCursor *table);
 void CursorTick(void);
 void DrawMouseCursor(void);
 void ScreenSizeChanged(void);

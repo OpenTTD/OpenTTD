@@ -1987,18 +1987,14 @@ static void SetCursorSprite(SpriteID cursor, SpriteID pal)
 
 static void SwitchAnimatedCursor(void)
 {
-	CursorVars *cv = &_cursor;
-	const CursorID *cur = cv->animate_cur;
-	CursorID sprite;
+	const AnimCursor *cur = _cursor.animate_cur;
 
-	// ANIM_CURSOR_END is 0xFFFF in table/animcursors.h
-	if (cur == NULL || *cur == 0xFFFF) cur = cv->animate_list;
+	if (cur == NULL || cur->sprite == AnimCursor::LAST) cur = _cursor.animate_list;
 
-	sprite = cur[0];
-	cv->animate_timeout = cur[1];
-	cv->animate_cur = cur + 2;
+	SetCursorSprite(cur->sprite, _cursor.pal);
 
-	SetCursorSprite(sprite, cv->pal);
+	_cursor.animate_timeout = cur->display_time;
+	_cursor.animate_cur     = cur + 1;
 }
 
 void CursorTick(void)
@@ -2015,7 +2011,7 @@ void SetMouseCursor(SpriteID sprite, SpriteID pal)
 	SetCursorSprite(sprite, pal);
 }
 
-void SetAnimatedMouseCursor(const CursorID *table)
+void SetAnimatedMouseCursor(const AnimCursor *table)
 {
 	_cursor.animate_list = table;
 	_cursor.animate_cur = NULL;
