@@ -101,7 +101,7 @@ typedef struct Rect {
 
 /** A single sprite of a list of animated cursors */
 struct AnimCursor {
-	static const SpriteID LAST = MAX_UVALUE(CursorID);
+	static const CursorID LAST = MAX_UVALUE(CursorID);
 	CursorID sprite;   ///< Must be set to LAST_ANIM when it is the last sprite of the loop
 	byte display_time; ///< Amount of ticks this sprite will be shown
 };
