@@ -1007,13 +1007,15 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	src = GetVehicle(s);
 
-	if (src->type != VEH_Train) return CMD_ERROR;
+	if (src->type != VEH_Train || !CheckOwnership(src->owner)) return CMD_ERROR;
 
 	// if nothing is selected as destination, try and find a matching vehicle to drag to.
 	if (d == INVALID_VEHICLE) {
 		dst = IsTrainEngine(src) ? NULL : FindGoodVehiclePos(src);
 	} else {
+		if (!IsValidVehicleID(d)) return CMD_ERROR;
 		dst = GetVehicle(d);
+		if (dst->type != VEH_Train || !CheckOwnership(dst->owner)) return CMD_ERROR;
 	}
 
 	// if an articulated part is being handled, deal with its parent vehicle
@@ -1025,17 +1027,15 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	// don't move the same vehicle..
 	if (src == dst) return 0;
 
-	/* the player must be the owner */
-	if (!CheckOwnership(src->owner) || (dst != NULL && !CheckOwnership(dst->owner)))
-		return CMD_ERROR;
-
 	/* locate the head of the two chains */
 	src_head = GetFirstVehicleInChain(src);
-	dst_head = NULL;
 	if (dst != NULL) {
 		dst_head = GetFirstVehicleInChain(dst);
+		if (dst_head->tile != src_head->tile) return CMD_ERROR;
 		// Now deal with articulated part of destination wagon
 		dst = GetLastEnginePart(dst);
+	} else {
+		dst_head = NULL;
 	}
 
 	if (dst != NULL && IsMultiheaded(dst) && !IsTrainEngine(dst) && IsTrainWagon(src)) {
@@ -1092,8 +1092,6 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				// check if all vehicles in the dest train are stopped.
 				dst_len = CheckTrainStoppedInDepot(dst_head);
 				if (dst_len < 0) return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
-
-				assert(dst_head->tile == src_head->tile);
 			}
 
 			// We are moving between rows, so only count the wagons from the source
