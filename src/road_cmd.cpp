@@ -518,8 +518,6 @@ int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p1 > 3) return CMD_ERROR; // check direction
 
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
-
 	tileh = GetTileSlope(tile, NULL);
 	if (tileh != SLOPE_FLAT && (
 				!_patches.build_on_slopes ||

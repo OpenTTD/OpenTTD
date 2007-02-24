@@ -350,8 +350,6 @@ static int32 ClearTile_Town(TileIndex tile, byte flags)
 	int32 cost;
 	Town *t;
 
-	// safety checks
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 	if (flags&DC_AUTO && !(flags&DC_AI_BUILDING)) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 
 	house = GetHouseType(tile);
@@ -1303,8 +1301,6 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 {
 	int32 r;
 
-	// make sure it's possible
-	if (!EnsureNoVehicle(tile)) return false;
 	if (IsSteepSlope(GetTileSlope(tile, NULL))) return false;
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
 

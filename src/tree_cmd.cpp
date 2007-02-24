@@ -237,8 +237,6 @@ int32 CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		for (y = sy; y <= ey; y++) {
 			TileIndex tile = TileXY(x, y);
 
-			if (!EnsureNoVehicle(tile)) continue;
-
 			switch (GetTileType(tile)) {
 				case MP_TREES:
 					// no more space for trees?

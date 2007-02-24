@@ -553,7 +553,6 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 	/* check railtype and valid direction for depot (0 through 3), 4 in total */
 	if (!ValParamRailtype(p1) || p2 > 3) return CMD_ERROR;
 
