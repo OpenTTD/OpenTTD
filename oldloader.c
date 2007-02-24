@@ -1531,6 +1531,7 @@ static bool LoadOldMain(LoadgameState *ls)
 					SetTileType(i, MP_CLEAR);
 					SetTileOwner(i, OWNER_NONE);
 				}
+			default: break;
 			} break;
 		}
 	}
