@@ -514,6 +514,7 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	Vehicle* u;
 
 	assert(v != NULL);
+	assert(v->type == VEH_Train);
 
 	if (v->first != NULL) {
 		if (IsFrontEngine(v->first) || IsFreeWagon(v->first)) return v->first;

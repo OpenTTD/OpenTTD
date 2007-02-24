@@ -76,7 +76,7 @@ static void DrawOrdersWindow(Window *w)
 
 		/* delete */
 		SetWindowWidgetDisabledState(w,  5,
-				(uint)v->num_orders + (shared_orders ? 1 : 0) <= (uint)WP(w, order_d).sel);
+				(uint)v->num_orders + ((shared_orders || v->num_orders != 0) ? 1 : 0) <= (uint)WP(w, order_d).sel);
 
 		/* non-stop only for trains */
 		SetWindowWidgetDisabledState(w,  6, v->type != VEH_Train || order == NULL);
