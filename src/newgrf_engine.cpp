@@ -44,7 +44,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 	WagonOverride *wo;
 
 	assert(engine < TOTAL_NUM_ENGINES);
-	assert(cargo < NUM_GLOBAL_CID);
+	assert(cargo < NUM_CARGO + 1); // Include CT_DEFAULT pseudo cargo. CT_PURCHASE does not apply to overrides.
 
 	wos = &_engine_wagon_overrides[engine];
 	wos->overrides_count++;
@@ -76,7 +76,7 @@ static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID car
 		int j;
 
 		for (j = 0; j < wo->trains; j++) {
-			if (wo->train_id[j] == overriding_engine && (wo->cargo == cargo || wo->cargo == GC_DEFAULT)) return wo->group;
+			if (wo->train_id[j] == overriding_engine && (wo->cargo == cargo || wo->cargo == CT_DEFAULT)) return wo->group;
 		}
 	}
 	return NULL;
@@ -105,17 +105,14 @@ void UnloadWagonOverrides(void)
 	}
 }
 
-// 0 - 28 are cargos, 29 is default, 30 is the advert (purchase list)
-// (It isn't and shouldn't be like this in the GRF files since new cargo types
-// may appear in future - however it's more convenient to store it like this in
-// memory. --pasky)
-static const SpriteGroup *_engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
+/* Space for NUM_CARGO real cargos and 2 pseudo cargos, CT_DEFAULT and CT_PURCHASE */
+static const SpriteGroup *_engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_CARGO + 2];
 static const GRFFile *_engine_grf[TOTAL_NUM_ENGINES];
 
 void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *group)
 {
-	assert(engine < TOTAL_NUM_ENGINES);
-	assert(cargo < NUM_GLOBAL_CID);
+	assert(engine < lengthof(_engine_custom_sprites));
+	assert(cargo < lengthof(*_engine_custom_sprites));
 
 	if (_engine_custom_sprites[engine][cargo] != NULL) {
 		grfmsg(6, "SetCustomEngineSprites: engine %d cargo %d already has group -- replacing", engine, cargo);
@@ -128,15 +125,8 @@ void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *grou
  */
 void UnloadCustomEngineSprites(void)
 {
-	EngineID engine;
-	CargoID cargo;
-
-	for (engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
-		for (cargo = 0; cargo < NUM_GLOBAL_CID; cargo++) {
-			_engine_custom_sprites[engine][cargo] = NULL;
-		}
-		_engine_grf[engine] = 0;
-	}
+	memset(_engine_custom_sprites, 0, sizeof(_engine_custom_sprites));
+	memset(_engine_grf, 0, sizeof(_engine_grf));
 }
 
 static const SpriteGroup *heli_rotor_custom_sprites[NUM_AIRCRAFT_ENGINES];
@@ -818,12 +808,9 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 	CargoID cargo;
 
 	if (v == NULL) {
-		cargo = GC_PURCHASE;
+		cargo = CT_PURCHASE;
 	} else {
-		const CargoSpec *cs = GetCargo(v->cargo_type);
-		assert(cs->IsValid());
-
-		cargo = cs->bitnum;
+		cargo = v->cargo_type;
 
 		if (v->type == VEH_Train) {
 			group = GetWagonOverrideSpriteSet(engine, cargo, v->u.rail.first_engine);
@@ -836,7 +823,7 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 	if (group != NULL) return group;
 
 	/* Fall back to the default set if the selected cargo type is not defined */
-	return _engine_custom_sprites[engine][GC_DEFAULT];
+	return _engine_custom_sprites[engine][CT_DEFAULT];
 }
 
 
@@ -888,7 +875,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_vie
 bool UsesWagonOverride(const Vehicle* v)
 {
 	assert(v->type == VEH_Train);
-	return GetWagonOverrideSpriteSet(v->engine_type, GetCargo(v->cargo_type)->bitnum, v->u.rail.first_engine) != NULL;
+	return GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, v->u.rail.first_engine) != NULL;
 }
 
 /**

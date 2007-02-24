@@ -762,8 +762,7 @@ bool CanFillVehicle(Vehicle *v)
  */
 bool CanRefitTo(EngineID engine_type, CargoID cid_to)
 {
-	CargoID cid = GetCargo(cid_to)->bitnum;
-	return HASBIT(EngInfo(engine_type)->refit_mask, cid);
+	return HASBIT(EngInfo(engine_type)->refit_mask, cid_to);
 }
 
 /** Find the first cargo type that an engine can be refitted to.
@@ -776,7 +775,7 @@ CargoID FindFirstRefittableCargo(EngineID engine_type)
 
 	if (refit_mask != 0) {
 		for (CargoID cid = CT_PASSENGERS; cid < NUM_CARGO; cid++) {
-			if (HASBIT(refit_mask, GetCargo(cid)->bitnum)) return cid;
+			if (HASBIT(refit_mask, cid)) return cid;
 		}
 	}
 

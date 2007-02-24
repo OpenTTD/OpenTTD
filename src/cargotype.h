@@ -45,8 +45,6 @@ extern uint32 _cargo_mask;
 void SetupCargoForClimate(LandscapeID l);
 /* Retrieve cargo details for the given cargo ID */
 const CargoSpec *GetCargo(CargoID c);
-/* Get the cargo ID of a cargo bitnum */
-CargoID GetCargoIDByBitnum(byte bitnum);
 /* Get the cargo ID with the cargo label */
 CargoID GetCargoIDByLabel(CargoLabel cl);
 

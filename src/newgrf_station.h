@@ -79,11 +79,11 @@ typedef struct StationSpec {
 	bool copied_layouts;
 
 	/**
-	 * NUM_GLOBAL_CID sprite groups.
+	 * NUM_CARGO real cargo plus three pseudo cargo sprite groups.
 	 * Used for obtaining the sprite offset of custom sprites, and for
 	 * evaluating callbacks.
 	 */
-	const struct SpriteGroup *spritegroup[NUM_GLOBAL_CID];
+	const struct SpriteGroup *spritegroup[NUM_CARGO + 3];
 } StationSpec;
 
 /**

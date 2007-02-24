@@ -210,10 +210,8 @@ static RefitList *BuildRefitList(const Vehicle *v)
 
 		/* Loop through all cargos in the refit mask */
 		for (CargoID cid = 0; cid != NUM_CARGO && num_lines < max_lines; cid++) {
-			const CargoSpec *cs = GetCargo(cid);
-
 			/* Skip cargo type if it's not listed */
-			if (!HASBIT(cmask, cs->bitnum)) continue;
+			if (!HASBIT(cmask, cid)) continue;
 
 			/* Check the vehicle's callback mask for cargo suffixes */
 			if (HASBIT(callbackmask, CBM_CARGO_SUFFIX)) {
@@ -516,9 +514,7 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 
 		/* Add each cargo type to the list */
 		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-			const CargoSpec *cs = GetCargo(cid);
-
-			if (!HASBIT(cmask, cs->bitnum)) continue;
+			if (!HASBIT(cmask, cid)) continue;
 
 			if (!first) b = strecpy(b, ", ", lastof(_userstring));
 			first = false;

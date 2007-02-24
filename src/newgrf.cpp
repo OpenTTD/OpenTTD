@@ -1895,8 +1895,8 @@ static void NewSpriteGroup(byte *buf, int len)
 static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 {
 	/* Special cargo types for purchase list and stations */
-	if (feature == GSF_STATION && ctype == 0xFE) return GC_DEFAULT_NA;
-	if (ctype == 0xFF) return GC_PURCHASE;
+	if (feature == GSF_STATION && ctype == 0xFE) return CT_DEFAULT_NA;
+	if (ctype == 0xFF) return CT_PURCHASE;
 
 	/* Check if the cargo type is out of bounds of the cargo translation table */
 	if (ctype >= (_cur_grffile->cargo_max == 0 ? _default_cargo_max : _cur_grffile->cargo_max)) {
@@ -1916,9 +1916,6 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 		grfmsg(5, "FeatureMapSpriteGroup: Cargo '%c%c%c%c' unsupported, skipping.", GB(cl, 24, 8), GB(cl, 16, 8), GB(cl, 8, 8), GB(cl, 0, 8));
 		return CT_INVALID;
 	}
-
-	/* Remap back to global cargo */
-	ctype = GetCargo(ctype)->bitnum;
 
 	grfmsg(6, "FeatureMapSpriteGroup: Cargo '%c%c%c%c' mapped to cargo type %d.", GB(cl, 24, 8), GB(cl, 16, 8), GB(cl, 8, 8), GB(cl, 0, 8), ctype);
 	return ctype;
@@ -2016,7 +2013,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 				uint8 stid = buf[3 + i];
 				StationSpec *statspec = _cur_grffile->stations[stid];
 
-				statspec->spritegroup[GC_DEFAULT] = _cur_grffile->spritegroups[groupid];
+				statspec->spritegroup[CT_DEFAULT] = _cur_grffile->spritegroups[groupid];
 				statspec->grfid = _cur_grffile->grfid;
 				statspec->localidx = stid;
 				SetCustomStationSpec(statspec);
@@ -2106,10 +2103,10 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 					SetRotorOverrideSprites(engine, _cur_grffile->spritegroups[groupid]);
 				} else {
 					// TODO: No multiple cargo types per vehicle yet. --pasky
-					SetWagonOverrideSprites(engine, GC_DEFAULT, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
+					SetWagonOverrideSprites(engine, CT_DEFAULT, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
 				}
 			} else {
-				SetCustomEngineSprites(engine, GC_DEFAULT, _cur_grffile->spritegroups[groupid]);
+				SetCustomEngineSprites(engine, CT_DEFAULT, _cur_grffile->spritegroups[groupid]);
 				SetEngineGRF(engine, _cur_grffile);
 				last_engines[i] = engine;
 			}
@@ -3813,8 +3810,8 @@ static void CalculateRefitMasks(void)
 			// Build up the list of cargo types from the set cargo classes.
 			for (i = 0; i < NUM_CARGO; i++) {
 				const CargoSpec *cs = GetCargo(i);
-				if (cargo_allowed[engine]    & cs->classes) SETBIT(mask,     cs->bitnum);
-				if (cargo_disallowed[engine] & cs->classes) SETBIT(not_mask, cs->bitnum);
+				if (cargo_allowed[engine]    & cs->classes) SETBIT(mask,     i);
+				if (cargo_disallowed[engine] & cs->classes) SETBIT(not_mask, i);
 			}
 		} else {
 			// Don't apply default refit mask to wagons or engines with no capacity
@@ -3831,7 +3828,7 @@ static void CalculateRefitMasks(void)
 					CargoID cargo = GetCargoIDByLabel(cl[i]);
 					if (cargo == CT_INVALID) continue;
 
-					SETBIT(xor_mask, GetCargo(cargo)->bitnum);
+					SETBIT(xor_mask, cargo);
 				}
 			}
 		}

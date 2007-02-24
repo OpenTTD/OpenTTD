@@ -447,20 +447,20 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 	}
 
 	switch (cargo_type) {
-		case GC_INVALID:
-		case GC_DEFAULT_NA:
-		case GC_PURCHASE:
+		case CT_INVALID:
+		case CT_DEFAULT_NA:
+		case CT_PURCHASE:
 			cargo = 0;
 			break;
 
-		case GC_DEFAULT:
+		case CT_DEFAULT:
 			for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
 				cargo += GB(st->goods[cargo_type].waiting_acceptance, 0, 12);
 			}
 			break;
 
 		default:
-			cargo = GB(st->goods[GetCargoIDByBitnum(cargo_type)].waiting_acceptance, 0, 12);
+			cargo = GB(st->goods[cargo_type].waiting_acceptance, 0, 12);
 			break;
 	}
 
@@ -506,18 +506,18 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 static const SpriteGroup *ResolveStation(ResolverObject *object)
 {
 	const SpriteGroup *group;
-	CargoID ctype = GC_DEFAULT_NA;
+	CargoID ctype = CT_DEFAULT_NA;
 
 	if (object->u.station.st == NULL) {
 		/* No station, so we are in a purchase list */
-		ctype = GC_PURCHASE;
+		ctype = CT_PURCHASE;
 	} else {
 		/* Pick the first cargo that we have waiting */
 		for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
 			const CargoSpec *cs = GetCargo(cargo);
-			if (cs->IsValid() && object->u.station.statspec->spritegroup[cs->bitnum] != NULL &&
+			if (cs->IsValid() && object->u.station.statspec->spritegroup[cargo] != NULL &&
 					GB(object->u.station.st->goods[cargo].waiting_acceptance, 0, 12) != 0) {
-				ctype = cs->bitnum;
+				ctype = cargo;
 				break;
 			}
 		}
@@ -525,7 +525,7 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 
 	group = object->u.station.statspec->spritegroup[ctype];
 	if (group == NULL) {
-		ctype = GC_DEFAULT;
+		ctype = CT_DEFAULT;
 		group = object->u.station.statspec->spritegroup[ctype];
 	}
 
