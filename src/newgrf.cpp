@@ -68,6 +68,10 @@ static byte *_preload_sprite = NULL;
 /* Set if any vehicle is loaded which uses 2cc (two company colours) */
 bool _have_2cc = false;
 
+/* Default cargo translation table. By default there are 27 possible cargo types */
+static const uint _default_cargo_max = 27;
+static CargoLabel _default_cargo_list[_default_cargo_max];
+
 
 typedef enum GrfDataType {
 	GDT_SOUND,
@@ -1189,6 +1193,12 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 			}
 			break;
 
+		case 0x09: /* Cargo translation table */
+			/* This is loaded during the initialisation stage, so just skip it here. */
+			/* Each entry is 4 bytes. */
+			buf += numinfo * 4;
+			break;
+
 		case 0x0A: // Currency display names
 			FOR_EACH_OBJECT {
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
@@ -1273,7 +1283,6 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 			}
 			break;
 
-		case 0x09: // Cargo translation table
 		case 0x10: // 12 * 32 * B Snow line height table
 		default:
 			ret = true;
@@ -1499,6 +1508,55 @@ static void SafeChangeInfo(byte *buf, int len)
 
 	/* Skip remainder of GRF */
 	_skip_sprites = -1;
+}
+
+/* Action 0x00 (GLS_INIT) */
+static void InitChangeInfo(byte *buf, int len)
+{
+	byte *bufend = buf + len;
+	uint8 feature;
+	uint8 numprops;
+	uint8 numinfo;
+	uint8 index;
+
+	if (len == 1) {
+		grfmsg(8, "Silently ignoring one-byte special sprite 0x00");
+		return;
+	}
+
+	if (!check_length(len, 6, "InitChangeInfo")) return;
+	buf++;
+	feature  = grf_load_byte(&buf);
+	numprops = grf_load_byte(&buf);
+	numinfo  = grf_load_byte(&buf);
+	index    = grf_load_byte(&buf);
+
+	while (numprops-- && buf < bufend) {
+		uint8 prop = grf_load_byte(&buf);
+
+		switch (feature) {
+			case GSF_GLOBALVAR:
+				switch (prop) {
+					case 0x09: /* Cargo Translation Table */
+						if (index != 0) {
+							grfmsg(1, "InitChangeInfo: Cargo translation table must start at zero");
+							return;
+						}
+
+						free(_cur_grffile->cargo_list);
+						_cur_grffile->cargo_max = numinfo;
+						_cur_grffile->cargo_list = MallocT<CargoLabel>(numinfo);
+
+						int i;
+						FOR_EACH_OBJECT {
+							CargoLabel cl = grf_load_dword(&buf);
+							_cur_grffile->cargo_list[i] = BSWAP32(cl);
+						}
+						break;
+				}
+				break;
+		}
+	}
 }
 
 #undef FOR_EACH_OBJECT
@@ -1834,6 +1892,38 @@ static void NewSpriteGroup(byte *buf, int len)
 	_cur_grffile->spritegroups[setid] = group;
 }
 
+static CargoID TranslateCargo(uint8 feature, uint8 ctype)
+{
+	/* Special cargo types for purchase list and stations */
+	if (feature == GSF_STATION && ctype == 0xFE) return GC_DEFAULT_NA;
+	if (ctype == 0xFF) return GC_PURCHASE;
+
+	/* Check if the cargo type is out of bounds of the cargo translation table */
+	if (ctype >= (_cur_grffile->cargo_max == 0 ? _default_cargo_max : _cur_grffile->cargo_max)) {
+		grfmsg(1, "FeatureMapSpriteGroup: Cargo type %d out of range (max %d), skipping.", ctype, (_cur_grffile->cargo_max == 0 ? _default_cargo_max : _cur_grffile->cargo_max) - 1);
+		return CT_INVALID;
+	}
+
+	/* Look up the cargo label from the translation table */
+	CargoLabel cl = _cur_grffile->cargo_max == 0 ? _default_cargo_list[ctype] : _cur_grffile->cargo_list[ctype];
+	if (cl == 0) {
+		grfmsg(5, "FeatureMapSpriteGroup: Cargo type %d not available in this climate, skipping.", ctype);
+		return CT_INVALID;
+	}
+
+	ctype = GetCargoIDByLabel(cl);
+	if (ctype == CT_INVALID) {
+		grfmsg(5, "FeatureMapSpriteGroup: Cargo '%c%c%c%c' unsupported, skipping.", GB(cl, 24, 8), GB(cl, 16, 8), GB(cl, 8, 8), GB(cl, 0, 8));
+		return CT_INVALID;
+	}
+
+	/* Remap back to global cargo */
+	ctype = GetCargo(ctype)->bitnum;
+
+	grfmsg(6, "FeatureMapSpriteGroup: Cargo '%c%c%c%c' mapped to cargo type %d.", GB(cl, 24, 8), GB(cl, 16, 8), GB(cl, 8, 8), GB(cl, 0, 8), ctype);
+	return ctype;
+}
+
 /* Action 0x03 */
 static void FeatureMapSpriteGroup(byte *buf, int len)
 {
@@ -1905,13 +1995,8 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 					return;
 				}
 
-				if (ctype == 0xFE) ctype = GC_DEFAULT_NA;
-				if (ctype == 0xFF) ctype = GC_PURCHASE;
-
-				if (ctype >= NUM_GLOBAL_CID) {
-					grfmsg(1, "FeatureMapSpriteGroup: Cargo type %d out of range, skipping.", ctype);
-					continue;
-				}
+				ctype = TranslateCargo(feature, ctype);
+				if (ctype == CT_INVALID) continue;
 
 				statspec->spritegroup[ctype] = _cur_grffile->spritegroups[groupid];
 			}
@@ -1987,12 +2072,8 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 				return;
 			}
 
-			if (ctype == GC_INVALID) ctype = GC_PURCHASE;
-
-			if (ctype >= NUM_GLOBAL_CID) {
-				grfmsg(1, "FeatureMapSpriteGroup: Cargo type %d out of range, skipping.", ctype);
-				continue;
-			}
+			ctype = TranslateCargo(feature, ctype);
+			if (ctype == CT_INVALID) continue;
 
 			if (wagover) {
 				SetWagonOverrideSprites(engine, ctype, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
@@ -3589,6 +3670,13 @@ static void ResetNewGRFData(void)
 	/* Set up the default cargo types */
 	SetupCargoForClimate(_opt.landscape);
 
+	/* Generate default cargo translation table */
+	memset(_default_cargo_list, 0, sizeof(_default_cargo_list));
+	for (CargoID c = 0; c != NUM_CARGO; c++) {
+		const CargoSpec *cs = GetCargo(c);
+		if (cs->IsValid()) _default_cargo_list[cs->bitnum] = cs->label;
+	}
+
 	/* Reset misc GRF features and train list display variables */
 	_misc_grf_features = 0;
 	_traininfo_vehicle_pitch = 0;
@@ -3755,7 +3843,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 	 * is not in memory and scanning the file every time would be too expensive.
 	 * In other stages we skip action 0x10 since it's already dealt with. */
 	static const SpecialSpriteHandler handlers[][GLS_END] = {
-		/* 0x00 */ { NULL,     SafeChangeInfo, NULL,       NULL,       FeatureChangeInfo, },
+		/* 0x00 */ { NULL,     SafeChangeInfo, NULL,       InitChangeInfo, FeatureChangeInfo, },
 		/* 0x01 */ { NULL,     GRFUnsafe, NULL,            NULL,       NewSpriteSet, },
 		/* 0x02 */ { NULL,     GRFUnsafe, NULL,            NULL,       NewSpriteGroup, },
 		/* 0x03 */ { NULL,     GRFUnsafe, NULL,            NULL,       FeatureMapSpriteGroup, },

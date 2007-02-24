@@ -47,6 +47,8 @@ void SetupCargoForClimate(LandscapeID l);
 const CargoSpec *GetCargo(CargoID c);
 /* Get the cargo ID of a cargo bitnum */
 CargoID GetCargoIDByBitnum(byte bitnum);
+/* Get the cargo ID with the cargo label */
+CargoID GetCargoIDByLabel(CargoLabel cl);
 
 
 #endif /* CARGOTYPE_H */

@@ -6,6 +6,7 @@
 #include "station.h"
 #include "newgrf_config.h"
 #include "helpers.hpp"
+#include "cargotype.h"
 
 typedef enum GrfLoadingStage {
 	GLS_FILESCAN,
@@ -60,6 +61,9 @@ typedef struct GRFFile {
 	uint param_end; /// one more than the highest set parameter
 
 	GRFLabel *label; ///< Pointer to the first label. This is a linked list, not an array.
+
+	uint8 cargo_max;
+	CargoLabel *cargo_list;
 } GRFFile;
 
 extern GRFFile *_first_grffile;

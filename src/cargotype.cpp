@@ -75,3 +75,14 @@ bool CargoSpec::IsValid() const
 {
 	return bitnum != INVALID_CARGO;
 }
+
+
+CargoID GetCargoIDByLabel(CargoLabel cl)
+{
+	for (CargoID c = 0; c < lengthof(_cargo); c++) {
+		if (_cargo[c].label == cl) return c;
+	}
+
+	/* No matching label was found, so it is invalid */
+	return CT_INVALID;
+}
