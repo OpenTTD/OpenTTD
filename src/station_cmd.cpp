@@ -6,6 +6,7 @@
 #include "openttd.h"
 #include "aircraft.h"
 #include "bridge_map.h"
+#include "cmd_helper.h"
 #include "debug.h"
 #include "functions.h"
 #include "station_map.h"
@@ -787,7 +788,7 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
 /** Build railroad station
  * @param tile_org starting position of station dragging/placement
  * @param p1 various bitstuffed elements
- * - p1 = (bit  0)    - orientation (p1 & 1)
+ * - p1 = (bit  0)    - orientation (Axis)
  * - p1 = (bit  8-15) - number of tracks
  * - p1 = (bit 16-23) - platform length
  * @param p2 various bitstuffed elements
@@ -807,7 +808,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	if (!ValParamRailtype(p2 & 0xF)) return CMD_ERROR;
 
 	/* unpack parameters */
-	Axis axis = (Axis)GB(p1, 0, 1);
+	Axis axis = Extract<Axis, 0>(p1);
 	uint numtracks = GB(p1,  8, 8);
 	uint plat_len  = GB(p1, 16, 8);
 	if (axis == AXIS_X) {

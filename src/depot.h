@@ -85,7 +85,7 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 
 /**
  * Find out if the slope of the tile is suitable to build a depot of given direction
- * @param direction The direction in which the depot's exit points. Starts with 0 as NE and goes Clockwise
+ * @param direction The direction in which the depot's exit points
  * @param tileh The slope of the tile in question
  * @return true if the construction is possible
 
@@ -98,7 +98,7 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
  * 03 (exit towards NW) we need either bit 0 or 4 set in tileh: 0x4C >> 3 = 1001<p>
  * So ((0x4C >> direction) & tileh) determines whether the depot can be built on the current tileh
  */
-static inline bool CanBuildDepotByTileh(uint32 direction, Slope tileh)
+static inline bool CanBuildDepotByTileh(DiagDirection direction, Slope tileh)
 {
 	return ((0x4C >> direction) & tileh) != 0;
 }

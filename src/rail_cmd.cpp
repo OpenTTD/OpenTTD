@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
+#include "cmd_helper.h"
 #include "debug.h"
 #include "functions.h"
 #include "rail_map.h"
@@ -540,7 +541,7 @@ int32 CmdRemoveRailroadTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /** Build a train depot
  * @param tile position of the train depot
  * @param p1 rail type
- * @param p2 entrance direction (DiagDirection)
+ * @param p2 bit 0..1 entrance direction (DiagDirection)
  *
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"
@@ -554,9 +555,11 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* check railtype and valid direction for depot (0 through 3), 4 in total */
-	if (!ValParamRailtype(p1) || p2 > 3) return CMD_ERROR;
+	if (!ValParamRailtype(p1)) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
+
+	DiagDirection dir = Extract<DiagDirection, 0>(p2);
 
 	/* Prohibit construction if
 	 * The tile is non-flat AND
@@ -570,7 +573,7 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				_is_old_ai_player ||
 				!_patches.build_on_slopes ||
 				IsSteepSlope(tileh) ||
-				!CanBuildDepotByTileh(p2, tileh)
+				!CanBuildDepotByTileh(dir, tileh)
 			)) {
 		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
@@ -585,7 +588,6 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (d == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		DiagDirection dir = (DiagDirection)p2;
 		MakeRailDepot(tile, _current_player, dir, (RailType)p1);
 		MarkTileDirtyByTile(tile);
 

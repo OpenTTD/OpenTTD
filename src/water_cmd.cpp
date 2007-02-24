@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
+#include "cmd_helper.h"
 #include "station_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -45,7 +46,7 @@ static void FloodVehicle(Vehicle *v);
 
 /** Build a ship depot.
  * @param tile tile where ship depot is built
- * @param p1 depot direction (0 == X or 1 == Y)
+ * @param p1 bit 0 depot orientation (Axis)
  * @param p2 unused
  */
 int32 CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -57,11 +58,11 @@ int32 CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (p1 > 1) return CMD_ERROR;
-
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	tile2 = tile + (p1 ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
+	Axis axis = Extract<Axis, 0>(p1);
+
+	tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 	if (!EnsureNoVehicle(tile2)) return CMD_ERROR;
 
 	if (!IsClearWaterTile(tile) || !IsClearWaterTile(tile2))
@@ -84,8 +85,8 @@ int32 CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		depot->xy = tile;
 		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		MakeShipDepot(tile, _current_player, DEPOT_NORTH, (Axis)p1);
-		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, (Axis)p1);
+		MakeShipDepot(tile,  _current_player, DEPOT_NORTH, axis);
+		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, axis);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 	}

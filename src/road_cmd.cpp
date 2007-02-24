@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
+#include "cmd_helper.h"
 #include "rail_map.h"
 #include "road_map.h"
 #include "sprite.h"
@@ -85,7 +86,7 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool *edge_roa
 
 /** Delete a piece of road.
  * @param tile tile where to remove road from
- * @param p1 road piece flags
+ * @param p1 bit 0..3 road pieces to remove (RoadBits)
  * @param p2 unused
  */
 int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -98,13 +99,8 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* true if the roadpiece was always removeable,
 	 * false if it was a center piece. Affects town ratings drop */
 	bool edge_road;
-	RoadBits pieces;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
-	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) */
-	if (p1 >> 4) return CMD_ERROR;
-	pieces = (RoadBits)p1;
 
 	if (!IsTileType(tile, MP_STREET)) return CMD_ERROR;
 
@@ -115,6 +111,8 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} else {
 		t = NULL;
 	}
+
+	RoadBits pieces = Extract<RoadBits, 0>(p1);
 
 	if (!CheckAllowRemoveRoad(tile, pieces, &edge_road)) return CMD_ERROR;
 
@@ -249,7 +247,7 @@ static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 
 /** Build a piece of road.
  * @param tile tile where to build road
- * @param p1 road piece flags
+ * @param p1 bit 0..3 road pieces to build (RoadBits)
  * @param p2 the town that is building the road (0 if not applicable)
  */
 int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -257,15 +255,15 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost = 0;
 	int32 ret;
 	RoadBits existing = ROAD_NONE;
-	RoadBits pieces;
 	Slope tileh;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
 	 * if a non-player is building the road */
-	if ((p1 >> 4) || (IsValidPlayer(_current_player) && p2 != 0) || (_current_player == OWNER_TOWN && !IsValidTownID(p2))) return CMD_ERROR;
-	pieces = (RoadBits)p1;
+	if ((IsValidPlayer(_current_player) && p2 != 0) || (_current_player == OWNER_TOWN && !IsValidTownID(p2))) return CMD_ERROR;
+
+	RoadBits pieces = Extract<RoadBits, 0>(p1);
 
 	tileh = GetTileSlope(tile, NULL);
 
@@ -502,7 +500,7 @@ int32 CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Build a road depot.
  * @param tile tile where to build the depot
- * @param p1 entrance direction (DiagDirection)
+ * @param p1 bit 0..1 entrance direction (DiagDirection)
  * @param p2 unused
  *
  * @todo When checking for the tile slope,
@@ -516,13 +514,13 @@ int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (p1 > 3) return CMD_ERROR; // check direction
+	DiagDirection dir = Extract<DiagDirection, 0>(p1);
 
 	tileh = GetTileSlope(tile, NULL);
 	if (tileh != SLOPE_FLAT && (
 				!_patches.build_on_slopes ||
 				IsSteepSlope(tileh) ||
-				!CanBuildDepotByTileh(p1, tileh)
+				!CanBuildDepotByTileh(dir, tileh)
 			)) {
 		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
@@ -539,7 +537,7 @@ int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		dep->xy = tile;
 		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		MakeRoadDepot(tile, _current_player, (DiagDirection)p1);
+		MakeRoadDepot(tile, _current_player, dir);
 		MarkTileDirtyByTile(tile);
 	}
 	return cost + _price.build_road_depot;
