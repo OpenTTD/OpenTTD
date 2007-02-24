@@ -15,14 +15,10 @@
 
 #include "fileio.h"
 #include "fios.h"
-#include <sys/types.h>
 #include <sys/stat.h>
 
 #ifdef WIN32
 # include <io.h>
-#else
-# include <unistd.h>
-# include <dirent.h>
 #endif /* WIN32 */
 
 
@@ -266,7 +262,7 @@ static uint ScanPath(const char *path)
 	DIR *dir;
 	GRFConfig *c;
 
-	if ((dir = opendir(path)) == NULL) return 0;
+	if ((dir = ttd_opendir(path)) == NULL) return 0;
 
 	while ((dirent = readdir(dir)) != NULL) {
 		const char *d_name = FS2OTTD(dirent->d_name);

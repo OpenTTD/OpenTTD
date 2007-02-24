@@ -20,7 +20,6 @@
 # include <io.h>
 #else
 # include <unistd.h>
-# include <dirent.h>
 #endif /* WIN32 */
 
 /* Variables to display file lists */
@@ -201,6 +200,7 @@ static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_
 	DIR *dir;
 	FiosItem *fios;
 	int sort_start;
+	char d_name[sizeof(fios->name)];
 
 	/* A parent directory link exists if we are not in the root directory */
 	if (!FiosIsRoot(_fios_path) && mode != SLD_NEW_GAME) {
@@ -212,9 +212,9 @@ static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_
 	}
 
 	/* Show subdirectories */
-	if (mode != SLD_NEW_GAME && (dir = opendir(_fios_path)) != NULL) {
+	if (mode != SLD_NEW_GAME && (dir = ttd_opendir(_fios_path)) != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
-			const char *d_name = FS2OTTD(dirent->d_name);
+			ttd_strlcpy(d_name, FS2OTTD(dirent->d_name), sizeof(d_name));
 
 			/* found file must be directory, but not '.' or '..' */
 			if (FiosIsValidFile(_fios_path, dirent, &sb) && (sb.st_mode & S_IFDIR) &&
@@ -242,13 +242,13 @@ static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_
 	sort_start = _fios_count;
 
 	/* Show files */
-	dir = opendir(_fios_path);
+	dir = ttd_opendir(_fios_path);
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			char fios_title[64];
 			char *t;
-			char *d_name = (char*)FS2OTTD(dirent->d_name);
 			byte type;
+			ttd_strlcpy(d_name, FS2OTTD(dirent->d_name), sizeof(d_name));
 
 			if (!FiosIsValidFile(_fios_path, dirent, &sb) || !(sb.st_mode & S_IFREG)) continue;
 

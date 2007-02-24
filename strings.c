@@ -23,13 +23,8 @@
 #include "date.h"
 #include "industry.h"
 
-#ifdef WIN32
 /* for opendir/readdir/closedir */
 # include "fios.h"
-#else
-# include <sys/types.h>
-# include <dirent.h>
-#endif /* WIN32 */
 
 char _userstring[128];
 
@@ -1225,7 +1220,7 @@ static int GetLanguageList(char **languages, int max)
 	struct dirent *dirent;
 	int num = 0;
 
-	dir = opendir(_paths.lang_dir);
+	dir = ttd_opendir(_paths.lang_dir);
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			const char *d_name = FS2OTTD(dirent->d_name);

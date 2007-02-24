@@ -77,10 +77,25 @@ struct DIR {
 	bool at_first_entry;
 };
 
-DIR *opendir(const char *path);
+DIR *opendir(const wchar_t *path);
 struct dirent *readdir(DIR *d);
 int closedir(DIR *d);
-
+#else
+/* Use system-supplied opendir/readdir/closedir functions */
+# include <sys/types.h>
+# include <dirent.h>
 #endif /* defined(WIN32) */
+
+/**
+ * A wrapper around opendir() which will convert the string from
+ * OPENTTD encoding to that of the filesystem. For all purposes this
+ * function behaves the same as the original opendir function
+ * @param path string to open directory of
+ * @return DIR pointer
+ */
+static inline DIR *ttd_opendir(const char *path)
+{
+	return opendir(OTTD2FS(path));
+}
 
 #endif /* FIOS_H */
