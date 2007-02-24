@@ -3136,7 +3136,10 @@ static void TrainController(Vehicle *v, bool update_image)
 			/* In tunnel or on a bridge */
 			GetNewVehiclePos(v, &gp);
 
-			SetSpeedLimitOnBridge(v);
+			if (!(v->vehstatus & VS_HIDDEN)) {
+				v->cur_speed =
+					min(v->cur_speed, GetBridge(GetBridgeType(v->tile))->speed);
+			}
 
 			if (!(IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) || !HASBIT(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 				v->x_pos = gp.x;

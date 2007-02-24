@@ -1051,21 +1051,6 @@ void DrawBridgeMiddle(const TileInfo* ti)
 }
 
 
-uint SetSpeedLimitOnBridge(Vehicle *v)
-{
-	uint bridge_speed;
-	if (v->vehstatus & VS_HIDDEN) return v->max_speed; /* in tunnel */
-
-	bridge_speed = _bridge[GetBridgeType(v->tile)].speed;
-
-	if (v->type == VEH_Road) bridge_speed *= 2; /* XXX give vehicles proper speeds */
-
-	if (v->cur_speed > bridge_speed) v->cur_speed = bridge_speed;
-	return bridge_speed;
-}
-
-
-
 static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 {
 	uint z;

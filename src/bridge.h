@@ -28,6 +28,11 @@ extern const Bridge orig_bridge[MAX_BRIDGES];
 extern Bridge _bridge[MAX_BRIDGES];
 
 uint GetBridgeFoundation(Slope tileh, Axis axis);
-uint SetSpeedLimitOnBridge(Vehicle *);
+
+static inline const Bridge *GetBridge(uint i)
+{
+	assert(i < lengthof(_bridge));
+	return &_bridge[i];
+}
 
 #endif /* BRIDGE_H */
