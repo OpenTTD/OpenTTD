@@ -82,10 +82,10 @@ typedef CPerfStartFake CPerfStart;
 #include "hashtable.hpp"
 #include "binaryheap.hpp"
 #include "nodelist.hpp"
+#include "follow_track.hpp"
 #include "yapf_base.hpp"
 #include "yapf_node.hpp"
 #include "yapf_common.hpp"
-#include "follow_track.hpp"
 #include "yapf_costbase.hpp"
 #include "yapf_costcache.hpp"
 

@@ -26,7 +26,7 @@ public:
 	{
 		TrackFollower F;
 		if (F.Follow(old_node.m_key.m_tile, old_node.m_key.m_td))
-			Yapf().AddMultipleNodes(&old_node, F.m_new_tile, F.m_new_td_bits);
+			Yapf().AddMultipleNodes(&old_node, F);
 	}
 
 	/// return debug report character to identify the transportation type
@@ -86,6 +86,7 @@ class CYapfCostShipT
 {
 public:
 	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
+	typedef typename Types::TrackFollower TrackFollower;
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
 	typedef typename Node::Key Key;               ///< key to hash tables
 
@@ -97,7 +98,7 @@ public:
 	/** Called by YAPF to calculate the cost from the origin to the given node.
 	 *  Calculates only the cost of given node, adds it to the parent node cost
 	 *  and stores the result into Node::m_cost member */
-	FORCEINLINE bool PfCalcCost(Node& n)
+	FORCEINLINE bool PfCalcCost(Node& n, const TrackFollower &tf)
 	{
 		// base tile cost depending on distance
 		int c = IsDiagonalTrackdir(n.GetTrackdir()) ? 10 : 7;

@@ -7,10 +7,6 @@ EXTERN_C_BEGIN
 #include "../debug.h"
 EXTERN_C_END
 
-#include "fixedsizearray.hpp"
-#include "blob.hpp"
-#include "nodelist.hpp"
-
 extern int _total_pf_time_us;
 
 /** CYapfBaseT - A-star type path finder base class.
@@ -46,6 +42,7 @@ template <class Types>
 class CYapfBaseT {
 public:
 	typedef typename Types::Tpf Tpf;           ///< the pathfinder class (derived from THIS class)
+	typedef typename Types::TrackFollower TrackFollower;
 	typedef typename Types::NodeList NodeList; ///< our node list
 	typedef typename NodeList::Titem Node;     ///< this will be our node type
 	typedef typename Node::Key Key;            ///< key to hash tables
@@ -135,7 +132,7 @@ public:
 				break;
 			}
 		}
-		bool bDestFound = (m_pBestDestNode != NULL);
+		bool bDestFound = (m_pBestDestNode != NULL) && (m_pBestDestNode != m_pBestIntermediateNode);
 
 #ifndef NO_DEBUG_MESSAGES
 		perf.Stop();
@@ -191,20 +188,20 @@ public:
 	}
 
 	/** add multiple nodes - direct children of the given node */
-	FORCEINLINE void AddMultipleNodes(Node* parent, TileIndex tile, TrackdirBits td_bits)
+	FORCEINLINE void AddMultipleNodes(Node* parent, const TrackFollower &tf)
 	{
-		bool is_choice = (KillFirstBit2x64(td_bits) != 0);
-		for (TrackdirBits rtds = td_bits; rtds != TRACKDIR_BIT_NONE; rtds = (TrackdirBits)KillFirstBit2x64(rtds)) {
+		bool is_choice = (KillFirstBit2x64(tf.m_new_td_bits) != 0);
+		for (TrackdirBits rtds = tf.m_new_td_bits; rtds != TRACKDIR_BIT_NONE; rtds = (TrackdirBits)KillFirstBit2x64(rtds)) {
 			Trackdir td = (Trackdir)FindFirstBit2x64(rtds);
 			Node& n = Yapf().CreateNewNode();
-			n.Set(parent, tile, td, is_choice);
-			Yapf().AddNewNode(n);
+			n.Set(parent, tf.m_new_tile, td, is_choice);
+			Yapf().AddNewNode(n, tf);
 		}
 	}
 
 	/** AddNewNode() - called by Tderived::PfFollowNode() for each child node.
 	 *  Nodes are evaluated here and added into open list */
-	void AddNewNode(Node& n)
+	void AddNewNode(Node &n, const TrackFollower &tf)
 	{
 		// evaluate the node
 		bool bCached = Yapf().PfNodeCacheFetch(n);
@@ -214,7 +211,7 @@ public:
 			m_stats_cache_hits++;
 		}
 
-		bool bValid = Yapf().PfCalcCost(n);
+		bool bValid = Yapf().PfCalcCost(n, tf);
 
 		if (bCached) {
 			Yapf().PfNodeCacheFlush(n);

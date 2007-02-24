@@ -34,7 +34,7 @@ public:
 	{
 		TrackFollower F(Yapf().GetVehicle());
 		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir()))
-			Yapf().AddMultipleNodes(&old_node, F.m_new_tile, F.m_new_td_bits);
+			Yapf().AddMultipleNodes(&old_node, F);
 	}
 
 	/// return debug report character to identify the transportation type
@@ -97,7 +97,7 @@ public:
 	{
 		TrackFollower F(Yapf().GetVehicle());
 		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir()))
-			Yapf().AddMultipleNodes(&old_node, F.m_new_tile, F.m_new_td_bits);
+			Yapf().AddMultipleNodes(&old_node, F);
 	}
 
 	/// return debug report character to identify the transportation type

@@ -64,7 +64,7 @@ public:
 	}
 
 	/** return one tile cost. If tile is a tunnel entry, it is moved to the end of tunnel */
-	FORCEINLINE int OneTileCost(TileIndex& tile, Trackdir trackdir)
+	FORCEINLINE int OneTileCost(TileIndex prev_tile, TileIndex& tile, Trackdir trackdir)
 	{
 		int cost = 0;
 		// set base cost
@@ -75,11 +75,6 @@ public:
 					/* Increase the cost for level crossings */
 					if (IsLevelCrossing(tile))
 						cost += Yapf().PfGetSettings().rail_crossing_penalty;
-					break;
-
-				case MP_STATION:
-					// penalty for passing station tiles
-					cost += Yapf().PfGetSettings().rail_station_penalty;
 					break;
 
 				default:
@@ -176,7 +171,7 @@ public:
 	/** Called by YAPF to calculate the cost from the origin to the given node.
 	 *  Calculates only the cost of given node, adds it to the parent node cost
 	 *  and stores the result into Node::m_cost member */
-	FORCEINLINE bool PfCalcCost(Node& n)
+	FORCEINLINE bool PfCalcCost(Node &n, const TrackFollower &tf)
 	{
 		assert(!n.flags_u.flags_s.m_targed_seen);
 		CPerfStart perf_cost(Yapf().m_perf_cost);
@@ -199,8 +194,13 @@ public:
 
 		bool target_seen = Yapf().PfDetectDestination(tile, trackdir);
 
+		if (tf.m_is_station) {
+			// station tiles have an extra penalty
+			segment_cost += Yapf().PfGetSettings().rail_station_penalty * (tf.m_tiles_skipped + 1);
+		}
+
 		while (true) {
-			segment_cost += Yapf().OneTileCost(tile, trackdir);
+			segment_cost += Yapf().OneTileCost(prev_tile, tile, trackdir);
 			segment_cost += Yapf().CurveCost(prev_trackdir, trackdir);
 			segment_cost += Yapf().SlopeCost(tile, trackdir);
 			segment_cost += Yapf().SignalCost(n, tile, trackdir);
@@ -282,13 +282,13 @@ public:
 			// add penalty for skipped station tiles
 			if (F.m_is_station)
 			{
+				uint platform_length = F.m_tiles_skipped + 1;
 				if (target_seen) {
 					// it is our destination station
-					uint platform_length = F.m_tiles_skipped + 1;
 					segment_cost += PlatformLengthPenalty(platform_length);
 				} else {
 					// station is not our destination station, apply penalty for skipped platform tiles
-					segment_cost += Yapf().PfGetSettings().rail_station_penalty * F.m_tiles_skipped;
+					segment_cost += Yapf().PfGetSettings().rail_station_penalty * platform_length;
 				}
 			}
 
