@@ -5,9 +5,7 @@
  * Animated cursors consist of the number of sprites that are
  * displayed in a round-robin manner. Each sprite also has a time
  * associated that indicates how many ticks the corresponding sprite
- * is to be displayed. Currently all this information is recorded in a single
- * array. @todo This should be converted into an array of structs on the long run
- * All these arrays end up in an array of pointers called _animcursors.
+ * is to be displayed.
  */
 
 /** Creates two array entries that define one
