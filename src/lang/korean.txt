@@ -2897,7 +2897,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}변경�
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}파라미터 설정
 STR_NEWGRF_TIP                                                  :{BLACK}당신이 설치한 NewGRF의 모든 목록입니다. 설정을 변경하려면 클릭하세요
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}없는 NewGRF 파일이 있습니다! NewGRF 설치 방법에 대한 매뉴얼을 참고해주십시오
-STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}파일명: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}

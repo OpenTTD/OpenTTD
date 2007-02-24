@@ -2896,7 +2896,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Wijzigin
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Stel parameters in
 STR_NEWGRF_TIP                                                  :{BLACK}Een lijst van alle geïnstalleerde Newgrf sets. Klik op een set om de instellingen te wijzigen.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Er zijn op dit moment geen newgrf bestanden geïnstalleerd! Raadpleeg het handboek voor instructies voor het installeren van nieuwe graphics.
-STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}Bestandsnaam: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}

@@ -2900,7 +2900,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar 
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Definir parâmetros
 STR_NEWGRF_TIP                                                  :{BLACK}Lista de todos os conjuntos Newgrf que instalou. Clique num conjunto para alterar as definições.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não existem arquivos NewGRF atualmente instalados! Consulte o manual de instruções sobre instalar novos gráficos.
-STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome do arquivo: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}

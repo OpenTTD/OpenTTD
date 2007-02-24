@@ -2909,7 +2909,6 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Прим
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Параметры
 STR_NEWGRF_TIP                                                  :{BLACK}Список всех файлов NewGRF, которые у вас установлены. Выбрать для изменения настроек
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}В настоящее время нет никаких установленных файлов NewGRF! Пожалуйста, обратитесь к описанию для инструкций для установки Новой Графики
-STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}Имя файла: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}Сумма MD5: {SILVER}{STRING}
