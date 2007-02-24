@@ -1119,7 +1119,7 @@ static void UpdateSignOwner(void)
 
 extern void UpdateOldAircraft( void );
 extern void UpdateOilRig( void );
-
+extern bool StationRect_BeforeAddTile(Station *st, TileIndex tile, int mode);
 
 static inline RailType UpdateRailType(RailType rt, RailType min)
 {
@@ -1489,6 +1489,13 @@ bool AfterLoadGame(void)
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
 
 	if (!CheckSavegameVersion(27)) AfterLoadStations();
+
+	BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
+		if (GetTileType(tile) == MP_STATION) {
+			Station *st = GetStationByTile(tile);
+			StationRect_BeforeAddTile(st, tile, 2 /* RECT_MODE_FORCE */);
+		}
+	} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
 
 	{
 		/* Set up the engine count for all players */

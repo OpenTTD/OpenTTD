@@ -42,7 +42,7 @@ typedef enum StationRectModes
 
 static void StationRect_Init(Station *st);
 static bool StationRect_IsEmpty(Station *st);
-static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, StationRectMode mode);
+bool StationRect_BeforeAddTile(Station *st, TileIndex tile, StationRectMode mode);
 static bool StationRect_BeforeAddRect(Station *st, TileIndex tile, int w, int h, StationRectMode mode);
 static bool StationRect_AfterRemoveTile(Station *st, TileIndex tile);
 static bool StationRect_AfterRemoveRect(Station *st, TileIndex tile, int w, int h);
@@ -1249,14 +1249,14 @@ uint GetStationPlatforms(const Station *st, TileIndex tile)
 	do {
 		t -= delta;
 		len++;
-	} while (TileBelongsToRailStation(st, t) && GetRailStationAxis(t) == axis);
+	} while (IsCompatibleTrainStationTile(t, tile));
 
 	// find ending tile
 	t = tile;
 	do {
 		t += delta;
 		len++;
-	} while (TileBelongsToRailStation(st, t) && GetRailStationAxis(t) == axis);
+	} while (IsCompatibleTrainStationTile(t, tile));
 
 	return len - 1;
 }
@@ -2929,7 +2929,6 @@ void AfterLoadStations(void)
 {
 	Station *st;
 	uint i;
-	TileIndex tile;
 
 	/* Update the speclists of all stations to point to the currently loaded custom stations. */
 	FOR_ALL_STATIONS(st) {
@@ -2938,12 +2937,6 @@ void AfterLoadStations(void)
 
 			st->speclist[i].spec = GetCustomStationSpecByGrf(st->speclist[i].grfid, st->speclist[i].localidx);
 		}
-	}
-
-	for (tile = 0; tile < MapSize(); tile++) {
-		if (GetTileType(tile) != MP_STATION) continue;
-		st = GetStationByTile(tile);
-		StationRect_BeforeAddTile(st, tile, RECT_MODE_FORCE);
 	}
 }
 
@@ -3188,7 +3181,7 @@ static bool StationRect_IsEmpty(Station *st)
 	return (st->rect.left == 0 || st->rect.left > st->rect.right || st->rect.top > st->rect.bottom);
 }
 
-static bool StationRect_BeforeAddTile(Station *st, TileIndex tile, StationRectMode mode)
+bool StationRect_BeforeAddTile(Station *st, TileIndex tile, StationRectMode mode)
 {
 	Rect *r = &st->rect;
 	int x = TileX(tile);
