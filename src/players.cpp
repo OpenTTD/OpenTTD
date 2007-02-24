@@ -1,7 +1,6 @@
 /* $Id$ */
 
 /** @file players.cpp
- * @todo Cleanup the messy DrawPlayerFace function asap
  */
 #include "stdafx.h"
 #include "openttd.h"
@@ -65,161 +64,149 @@ void DrawPlayerIcon(PlayerID p, int x, int y)
 	DrawSprite(SPR_PLAYER_ICON, PLAYER_SPRITE_COLOR(p), x, y);
 }
 
+/** The gender/race combinations that we have faces for */
+enum GenderRace {
+	GENDER_FEMALE = 0,                                    ///< This bit set means a female, otherwise male
+	RACE_BLACK    = 1,                                    ///< This bit set means black, otherwise white
 
-static const SpriteID cheeks_table[4] = {
-	0x325, 0x326,
-	0x390, 0x3B0,
+	WHITE_MALE    = 0,                                    ///< A male of Caucasian origin
+	WHITE_FEMALE  = 1 << GENDER_FEMALE,                   ///< A female of Caucasian origin
+	BLACK_MALE    = 1 << RACE_BLACK,                      ///< A male of African origin
+	BLACK_FEMALE  = 1 << RACE_BLACK | 1 << GENDER_FEMALE, ///< A female of African origin
 };
+DECLARE_ENUM_AS_BIT_SET(GenderRace); ///< See GenderRace as a bitset
 
-static const SpriteID mouth_table[3] = {
-	0x34C, 0x34D, 0x34F
-};
-
+/**
+ * Draws the face of a player.
+ *
+ * Meaning of the bits in face (some bits are used in several times):
+ * - 4 and 5: chin
+ * - 6 to 9: eye colour
+ * - 10 to 13: nose
+ * - 13 to 15: lips (also moustache for males)
+ * - 16 to 19: hair
+ * - 20 to 22: eyebrows
+ * - 20 to 27: tie, ear rings etc.
+ * - 28 to 30: glasses
+ * - 19, 26 and 27: race (bit 27 set and bit 19 equal to bit 26 = black, otherwise white)
+ * - 31: gender (0 = male, 1 = female)
+ *
+ * @param face  the bit-encoded representation of the face
+ * @param color the (background) color of the gradient
+ * @param x     x-position to draw the face
+ * @param y     y-position to draw the face
+ *
+ * @note all magic hexadecimal numbers in this function as sprite IDs.
+ * @todo replace magic hexadecimal numbers with enums
+ */
 void DrawPlayerFace(uint32 face, int color, int x, int y)
 {
-	byte flag = 0;
+	GenderRace gen_race = WHITE_MALE;
 
-	if ( (int32)face < 0)
-		flag |= 1;
-	if ((((((face >> 7) ^ face) >> 7) ^ face) & 0x8080000) == 0x8000000)
-		flag |= 2;
+	if (HASBIT(face, 31)) SetBitT(gen_race, GENDER_FEMALE);
+	if (HASBIT(face, 27) && (HASBIT(face, 26) == HASBIT(face, 19))) SetBitT(gen_race, RACE_BLACK);
 
-	/* draw the gradient */
+	/* Draw the gradient (background) */
 	DrawSprite(SPR_GRADIENT, GENERAL_SPRITE_COLOR(color), x, y);
 
-	/* draw the cheeks */
-	DrawSprite(cheeks_table[flag&3], PAL_NONE, x, y);
+	/* Draw the cheeks */
+	static const SpriteID cheeks_table[] = { 0x325, 0x326, 0x390, 0x3B0 };
+	DrawSprite(cheeks_table[gen_race], PAL_NONE, x, y);
 
-	/* draw the chin */
-	/* FIXME: real code uses -2 in zoomlevel 1 */
-	{
-		uint val = GB(face, 4, 2);
-		if (!(flag & 2)) {
-			DrawSprite(0x327 + (flag&1?0:val), PAL_NONE, x, y);
-		} else {
-			DrawSprite((flag&1?0x3B1:0x391) + (val>>1), PAL_NONE, x, y);
-		}
-	}
-	/* draw the eyes */
-	{
-		uint val1 = GB(face,  6, 4);
-		uint val2 = GB(face, 20, 3);
-		SpriteID pal;
-
-		if (val2 < 6) {
-			pal = PALETTE_TO_BROWN;
-		} else if (val2 == 6) {
-			pal = PALETTE_TO_BLUE;
-		} else {
-			pal = PALETTE_TO_GREEN;
-		}
-
-		if (!(flag & 2)) {
-			if (!(flag & 1)) {
-				DrawSprite(0x32B + (val1 * 12 >> 4), pal, x, y);
-			} else {
-				DrawSprite(0x337 + val1, pal, x, y);
-			}
-		} else {
-			if (!(flag & 1)) {
-				DrawSprite(0x39A + (val1 * 11 >> 4), pal, x, y);
-			} else {
-				DrawSprite(0x3B8 + val1, pal, x, y);
-			}
-		}
+	/* Draw the chin */
+	uint chin = GB(face, 4, 2);
+	if (HASBIT(gen_race, RACE_BLACK)) {
+		DrawSprite((HASBIT(gen_race, GENDER_FEMALE) ? 0x3B1 : 0x391) + (chin >> 1), PAL_NONE, x, y);
+	} else {
+		DrawSprite(0x327 + (HASBIT(gen_race, GENDER_FEMALE) ? 0 : chin), PAL_NONE, x, y);
 	}
 
-	/* draw the mouth */
-	{
-		uint val = GB(face, 10, 6);
-		uint val2;
+	/* Draw the eyes */
+	uint eye_colour = GB(face,  6, 4);
+	uint eyebrows   = GB(face, 20, 3);
+	SpriteID pal;
 
-		if (!(flag&1)) {
-			val2 = ((val&0xF) * 15 >> 4);
-
-			if (val2 < 3) {
-				DrawSprite((flag&2 ? 0x397 : 0x367) + val2, PAL_NONE, x, y);
-				/* skip the rest */
-				goto skip_mouth;
-			}
-
-			val2 -= 3;
-			if (flag & 2) {
-				if (val2 > 8) val2 = 0;
-				val2 += 0x3A5 - 0x35B;
-			}
-			DrawSprite(val2 + 0x35B, PAL_NONE, x, y);
-		} else if (!(flag&2)) {
-			DrawSprite(((val&0xF) * 10 >> 4) + 0x351, PAL_NONE, x, y);
-		} else {
-			DrawSprite(((val&0xF) * 9 >> 4) + 0x3C8, PAL_NONE, x, y);
-		}
-
-		val >>= 3;
-
-		if (!(flag&2)) {
-			if (!(flag&1)) {
-				DrawSprite(0x349 + val, PAL_NONE, x, y);
-			} else {
-				DrawSprite( mouth_table[(val*3>>3)], PAL_NONE, x, y);
-			}
-		} else {
-			if (!(flag&1)) {
-				DrawSprite(0x393 + (val&3), PAL_NONE, x, y);
-			} else {
-				DrawSprite(0x3B3 + (val*5>>3), PAL_NONE, x, y);
-			}
-		}
-
-		skip_mouth:;
+	if (eye_colour < 6) {
+		pal = PALETTE_TO_BROWN;
+	} else if (eye_colour == 6) {
+		pal = PALETTE_TO_BLUE;
+	} else {
+		pal = PALETTE_TO_GREEN;
 	}
 
-
-	/* draw the hair */
-	{
-		uint val = GB(face, 16, 4);
-		if (flag & 2) {
-			if (flag & 1) {
-				DrawSprite(0x3D9 + (val * 5 >> 4), PAL_NONE, x, y);
-			} else {
-				DrawSprite(0x3D4 + (val * 5 >> 4), PAL_NONE, x, y);
-			}
-		} else {
-			if (flag & 1) {
-				DrawSprite(0x38B + (val * 5 >> 4), PAL_NONE, x, y);
-			} else {
-				DrawSprite(0x382 + (val * 9 >> 4), PAL_NONE, x, y);
-			}
-		}
+	switch (gen_race) {
+		case WHITE_MALE:   DrawSprite(0x32B + (eyebrows * 12 >> 4), pal, x, y); break;
+		case WHITE_FEMALE: DrawSprite(0x337 + eyebrows,             pal, x, y); break;
+		case BLACK_MALE:   DrawSprite(0x39A + (eyebrows * 11 >> 4), pal, x, y); break;
+		case BLACK_FEMALE: DrawSprite(0x3B8 + eyebrows,             pal, x, y); break;
 	}
 
-	/* draw the tie */
-	{
-		uint val = GB(face, 20, 8);
+	/* Draw the mouth */
+	uint nose = GB(face, 13, 3);
+	uint lips = GB(face, 10, 4);
 
-		if (!(flag&1)) {
-			DrawSprite(0x36B + (GB(val, 0, 2) * 3 >> 2), PAL_NONE, x, y);
-			DrawSprite(0x36E + (GB(val, 2, 2) * 4 >> 2), PAL_NONE, x, y);
-			DrawSprite(0x372 + (GB(val, 4, 4) * 6 >> 4), PAL_NONE, x, y);
-		} else {
-			DrawSprite(0x378 + (GB(val, 0, 2) * 3 >> 2), PAL_NONE, x, y);
-			DrawSprite(0x37B + (GB(val, 2, 2) * 4 >> 2), PAL_NONE, x, y);
+	if (!HASBIT(gen_race, GENDER_FEMALE)) {
+		lips = (lips * 15 >> 4);
 
-			val >>= 4;
-			if (val < 3) DrawSprite((flag & 2 ? 0x3D1 : 0x37F) + val, PAL_NONE, x, y);
+		if (lips < 3) {
+			/* Moustache, including nose and lips */
+			DrawSprite((HASBIT(gen_race, RACE_BLACK) ? 0x397 : 0x367) + lips, PAL_NONE, x, y);
+
+			/* Skip the rest */
+			goto skip_mouth;
 		}
+
+		/* Lips */
+		lips -= 3;
+		if (HASBIT(gen_race, RACE_BLACK)) {
+			if (lips > 8) lips = 0;
+			lips += 0x3A5 - 0x35B;
+		}
+		DrawSprite(lips + 0x35B, PAL_NONE, x, y);
+	} else if (HASBIT(gen_race, RACE_BLACK)) {
+		/* Female lips with make up */
+		DrawSprite((lips * 9 >> 4) + 0x3C8, PAL_NONE, x, y);
+	} else {
+		/* Female lips */
+		DrawSprite((lips * 10 >> 4) + 0x351, PAL_NONE, x, y);
+	}
+
+	/* Nose */
+	static const SpriteID mouth_table[] = { 0x34C, 0x34D, 0x34F };
+	switch (gen_race) {
+		case WHITE_MALE:   DrawSprite(0x349 + nose,                 PAL_NONE, x, y); break;
+		case WHITE_FEMALE: DrawSprite(mouth_table[(nose * 3 >> 3)], PAL_NONE, x, y); break;
+		case BLACK_MALE:   DrawSprite(0x393 + (nose & 3),           PAL_NONE, x, y); break;
+		case BLACK_FEMALE: DrawSprite(0x3B3 + (nose * 5 >> 3),      PAL_NONE, x, y); break;
+	}
+skip_mouth:
+
+	/* Draw the hair */
+	uint hair = GB(face, 16, 4);
+	switch (gen_race) {
+		case WHITE_MALE:   DrawSprite(0x382 + (hair * 9 >> 4), PAL_NONE, x, y); break;
+		case WHITE_FEMALE: DrawSprite(0x38B + (hair * 5 >> 4), PAL_NONE, x, y); break;
+		case BLACK_MALE:   DrawSprite(0x3D4 + (hair * 5 >> 4), PAL_NONE, x, y); break;
+		case BLACK_FEMALE: DrawSprite(0x3D9 + (hair * 5 >> 4), PAL_NONE, x, y); break;
+	}
+
+	/* Draw the tie, ear rings etc. */
+	uint tie = GB(face, 20, 8);
+	if (HASBIT(gen_race, GENDER_FEMALE)) {
+		DrawSprite(0x378 + (GB(tie, 0, 2) * 3 >> 2), PAL_NONE, x, y);
+		DrawSprite(0x37B + (GB(tie, 2, 2) * 4 >> 2), PAL_NONE, x, y);
+
+		tie >>= 4;
+		if (tie < 3) DrawSprite((HASBIT(gen_race, RACE_BLACK) ? 0x3D1 : 0x37F) + tie, PAL_NONE, x, y);
+	} else {
+		DrawSprite(0x36B + (GB(tie, 0, 2) * 3 >> 2), PAL_NONE, x, y);
+		DrawSprite(0x36E + (GB(tie, 2, 2) * 4 >> 2), PAL_NONE, x, y);
+		DrawSprite(0x372 + (GB(tie, 4, 4) * 6 >> 4), PAL_NONE, x, y);
 	}
 
 	/* draw the glasses */
-	{
-		uint val = GB(face, 28, 3);
-
-		if (flag & 2) {
-			if (val <= 1) DrawSprite(0x3AE + val, PAL_NONE, x, y);
-		} else {
-			if (val <= 1) DrawSprite(0x347 + val, PAL_NONE, x, y);
-		}
-	}
+	uint glasses = GB(face, 28, 3);
+	if (glasses <= 1) DrawSprite((HASBIT(gen_race, RACE_BLACK) ? 0x3AE : 0x347) + glasses, PAL_NONE, x, y);
 }
 
 void InvalidatePlayerWindows(const Player *p)
