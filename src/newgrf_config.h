@@ -3,6 +3,8 @@
 #ifndef NEWGRF_CONFIG_H
 #define NEWGRF_CONFIG_H
 
+#include "openttd.h"
+
 /* GRF config bit flags */
 typedef enum {
 	GCF_DISABLED,  ///< GRF file is disabled
@@ -20,11 +22,19 @@ typedef struct GRFIdentifier {
 	uint8 md5sum[16];
 } GRF;
 
+typedef struct GRFError {
+	StringID message;
+	StringID data;
+	StringID severity;
+	uint8 num_params;
+	uint8 param_number[2];
+} GRFError;
+
 typedef struct GRFConfig : public GRFIdentifier {
 	char *filename;
 	char *name;
 	char *info;
-	char *error;
+	GRFError *error;
 
 	uint8 flags;
 	uint32 param[0x80];

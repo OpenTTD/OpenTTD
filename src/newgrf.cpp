@@ -2644,7 +2644,7 @@ static void SpriteReplace(byte *buf, int len)
 }
 
 /* Action 0x0B */
-static void GRFError(byte *buf, int len)
+static void GRFLoadError(byte *buf, int len)
 {
 	/* <0B> <severity> <language-id> <message-id> [<message...> 00] [<data...>] 00 [<parnum>]
 	 *
@@ -2659,44 +2659,54 @@ static void GRFError(byte *buf, int len)
 	 * S message       for custom messages (message-id FF), text of the message
 	 *                 not present for built-in messages.
 	 * V data          additional data for built-in (or custom) messages
-	 * B parnum        see action 6, only used with built-in message 03 */
-	/* TODO: For now we just show the message, sometimes incomplete and never translated. */
+	 * B parnum        parameter numbers to be shown in the message (maximum of 2) */
 
-	static const char *const msgstr[] = {
-		"%sRequires at least pseudo-TTDPatch version %s.",
-		"%sThis file is for %s version of TTD.",
-		"%sDesigned to be used with %s",
-		"%sInvalid parameter %s.",
-		"%sMust be loaded before %s.",
-		"%sMust be loaded after %s.",
-		"%s%s"
+	static const StringID msgstr[] = {
+		STR_NEWGRF_ERROR_VERSION_NUMBER,
+		STR_NEWGRF_ERROR_DOS_OR_WINDOWS,
+		STR_NEWGRF_ERROR_UNSET_SWITCH,
+		STR_NEWGRF_ERROR_INVALID_PARAMETER,
+		STR_NEWGRF_ERROR_LOAD_BEFORE,
+		STR_NEWGRF_ERROR_LOAD_AFTER
 	};
 
-	static const char *const sevstr[] = {
-		"",
-		"Warning: ",
-		"Error: ",
-		"Fatal: ",
+	static const StringID sevstr[] = {
+		STR_NEWGRF_ERROR_MSG_INFO,
+		STR_NEWGRF_ERROR_MSG_WARNING,
+		STR_NEWGRF_ERROR_MSG_ERROR,
+		STR_NEWGRF_ERROR_MSG_FATAL
 	};
 
-	if (!check_length(len, 6, "GRFError")) return;
+	/* AddGRFString expects the string to be referred to by an id in the newgrf
+	 * file. Errors messages are never referred to however, so invent ids that
+	 * are unlikely to be reached in a newgrf file so they don't overwrite
+	 * anything else. */
+	enum {
+		MESSAGE_STRING_ID = MAX_UVALUE(StringID) - 1,
+		MESSAGE_DATA_ID   = MAX_UVALUE(StringID)
+	};
+
+	if (!check_length(len, 6, "GRFLoadError")) return;
+
+	/* For now we can only show one message per newgrf file. */
+	if (_cur_grfconfig->error != NULL) return;
 
 	buf++; /* Skip the action byte. */
 	byte severity   = grf_load_byte(&buf);
-	buf++; /* TODO: Language id. */
+	byte lang       = grf_load_byte(&buf);
 	byte message_id = grf_load_byte(&buf);
 	len -= 4;
 
 	/* Skip the error until the activation stage unless bit 7 of the severity
 	 * is set. */
 	if (!HASBIT(severity, 7) && _cur_stage < GLS_ACTIVATION) {
-		grfmsg(7, "Skipping non-fatal GRFError in stage 1");
+		grfmsg(7, "Skipping non-fatal GRFLoadError in stage 1");
 		return;
 	}
 	CLRBIT(severity, 7);
 
 	if (severity >= lengthof(sevstr)) {
-		grfmsg(7, "GRFError: Invalid severity id %d. Setting to 2 (non-fatal error).", severity);
+		grfmsg(7, "GRFLoadError: Invalid severity id %d. Setting to 2 (non-fatal error).", severity);
 		severity = 2;
 	} else if (severity == 3) {
 		/* This is a fatal error, so make sure the GRF is deactivated and no
@@ -2708,23 +2718,46 @@ static void GRFError(byte *buf, int len)
 	}
 
 	if (message_id >= lengthof(msgstr) && message_id != 0xFF) {
-		grfmsg(7, "GRFError: Invalid message id.");
+		grfmsg(7, "GRFLoadError: Invalid message id.");
 		return;
 	}
 
 	if (len <= 1) {
-		grfmsg(7, "GRFError: No message data supplied.");
+		grfmsg(7, "GRFLoadError: No message data supplied.");
 		return;
 	}
 
-	char message[512];
-	snprintf(message, lengthof(message), msgstr[(message_id == 0xFF) ? lengthof(msgstr) - 1 : message_id], sevstr[severity], grf_load_string(&buf, len));
+	bool new_scheme = _cur_grffile->grf_version >= 7;
+	GRFError *error = CallocT<GRFError>(1);
 
-	if (_cur_grfconfig->error == NULL) {
-		_cur_grfconfig->error = strdup(message);
+	error->severity = sevstr[severity];
+
+	if (message_id == 0xFF) {
+		/* This is a custom error message. */
+		const char *message = grf_load_string(&buf, len);
+		len -= (strlen(message) + 1);
+
+		error->message = AddGRFString(_cur_grffile->grfid, MESSAGE_STRING_ID, lang, new_scheme, message, STR_UNDEFINED);
+	} else {
+		error->message = msgstr[message_id];
 	}
 
-	grfmsg(0, message);
+	if (len > 0) {
+		const char *data = grf_load_string(&buf, len);
+		len -= (strlen(data) + 1);
+
+		error->data = AddGRFString(_cur_grffile->grfid, MESSAGE_DATA_ID, lang, new_scheme, data, STR_UNDEFINED);
+	}
+
+	/* Only two parameter numbers can be used in the string. */
+	uint i = 0;
+	for (; i < 2 && len > 0; i++) {
+		error->param_number[i] = grf_load_byte(&buf);
+		len--;
+	}
+	error->num_params = i;
+
+	_cur_grfconfig->error = error;
 }
 
 /* Action 0x0C */
@@ -3715,7 +3748,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x08 */ { ScanInfo, NULL,      NULL,            GRFInfo,    GRFInfo, },
 		/* 0x09 */ { NULL,     NULL,      NULL,            SkipIf,     SkipIf, },
 		/* 0x0A */ { NULL,     NULL,      NULL,            NULL,       SpriteReplace, },
-		/* 0x0B */ { NULL,     NULL,      NULL,            GRFError,   GRFError, },
+		/* 0x0B */ { NULL,     NULL,      NULL,            GRFLoadError, GRFLoadError, },
 		/* 0x0C */ { NULL,     NULL,      NULL,            GRFComment, GRFComment, },
 		/* 0x0D */ { NULL,     SafeParamSet, NULL,         ParamSet,   ParamSet, },
 		/* 0x0E */ { NULL,     SafeGRFInhibit, NULL,       GRFInhibit, GRFInhibit, },

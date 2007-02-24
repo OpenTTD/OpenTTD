@@ -2896,11 +2896,21 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apply ch
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Set parameters
 STR_NEWGRF_TIP                                                  :{BLACK}A list of all the Newgrf sets that you have installed. Click a set to change the settings
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}There are currently no newgrf files installed! Please refer to the manual for instructions on installing new graphics
-STR_NEWGRF_ERROR_MSG                                            :{RED}{STRING}
 STR_NEWGRF_FILENAME                                             :{BLACK}Filename: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}You are about to make changes to a running game; this can crash OpenTTD.{}Are you absolutely sure about this?
+
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warning: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} will not work with the TTDPatch version reported by OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} is for the {STRING} version of TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} is designed to be used with {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invalid parameter for {STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} must be loaded before {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} must be loaded after {STRING}.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Add
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Add a NewGRF file to the list

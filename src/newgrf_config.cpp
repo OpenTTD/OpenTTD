@@ -124,7 +124,10 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 		if (src->filename != NULL) c->filename = strdup(src->filename);
 		if (src->name     != NULL) c->name     = strdup(src->name);
 		if (src->info     != NULL) c->info     = strdup(src->info);
-		if (src->error    != NULL) c->error    = strdup(src->error);
+		if (src->error    != NULL) {
+			c->error = CallocT<GRFError>(1);
+			memcpy(c->error, src->error, sizeof(GRFError));
+		}
 
 		*dst = c;
 		dst = &c->next;

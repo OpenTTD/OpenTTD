@@ -11,6 +11,7 @@
 #include "table/sprites.h"
 #include "newgrf.h"
 #include "newgrf_config.h"
+#include "strings.h"
 #include "helpers.hpp"
 
 
@@ -44,8 +45,22 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 	char buff[256];
 
 	if (c->error != NULL) {
-		SetDParamStr(0, c->error);
-		y += DrawStringMultiLine(x, y, STR_NEWGRF_ERROR_MSG, w);
+		SetDParamStr(0, c->filename);
+		SetDParam(1, c->error->data);
+		for (uint i = 0; i < c->error->num_params; i++) {
+			uint32 param = 0;
+			byte param_number = c->error->param_number[i];
+
+			if (param_number < c->num_params) param = c->param[param_number];
+
+			SetDParam(2 + i, param);
+		}
+
+		char message[512];
+		GetString(message, c->error->message, lastof(message));
+
+		SetDParamStr(0, message);
+		y += DrawStringMultiLine(x, y, c->error->severity, w);
 	}
 
 	/* Draw filename or not if it is not known (GRF sent over internet) */
