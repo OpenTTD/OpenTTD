@@ -3741,28 +3741,36 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 }
 
 
-/** Bitmasked values of what type of cargo is refittable for the given vehicle-type.
- * This coupled with the landscape information (_landscape_global_cargo_mask) gives
- * us exactly what is refittable and what is not */
-#define MC(cargo) (1 << cargo)
-static const uint32 _default_refitmasks[NUM_VEHICLE_TYPES] = {
-	/* Trains */
-	MC(GC_PASSENGERS) | MC(GC_COAL)      | MC(GC_MAIL)   | MC(GC_LIVESTOCK) | MC(GC_GOODS)        | MC(GC_GRAIN)      | MC(GC_WOOD)    | MC(GC_IRON_ORE)    |
-	MC(GC_STEEL)      | MC(GC_VALUABLES) | MC(GC_PAPER)  | MC(GC_FOOD)      | MC(GC_FRUIT)        | MC(GC_COPPER_ORE) | MC(GC_WATER)   | MC(GC_SUGAR)       |
-	MC(GC_TOYS)       | MC(GC_CANDY)     | MC(GC_TOFFEE) | MC(GC_COLA)      | MC(GC_COTTON_CANDY) | MC(GC_BUBBLES)    | MC(GC_PLASTIC) | MC(GC_FIZZY_DRINKS),
-	/* Road vehicles (not refittable by default) */
-	0,
-	/* Ships */
-	MC(GC_COAL)  | MC(GC_MAIL)   | MC(GC_LIVESTOCK) | MC(GC_GOODS)        | MC(GC_GRAIN)   | MC(GC_WOOD)    | MC(GC_IRON_ORE) | MC(GC_STEEL) | MC(GC_VALUABLES) |
-	MC(GC_PAPER) | MC(GC_FOOD)   | MC(GC_FRUIT)     | MC(GC_COPPER_ORE)   | MC(GC_WATER)   | MC(GC_RUBBER)  | MC(GC_SUGAR)    | MC(GC_TOYS)  | MC(GC_BATTERIES) |
-	MC(GC_CANDY) | MC(GC_TOFFEE) | MC(GC_COLA)      | MC(GC_COTTON_CANDY) | MC(GC_BUBBLES) | MC(GC_PLASTIC) | MC(GC_FIZZY_DRINKS),
-	/* Aircraft */
-	MC(GC_PASSENGERS) | MC(GC_MAIL)  | MC(GC_GOODS)  | MC(GC_VALUABLES) | MC(GC_FOOD)         | MC(GC_FRUIT)   | MC(GC_SUGAR)   | MC(GC_TOYS) |
-	MC(GC_BATTERIES)  | MC(GC_CANDY) | MC(GC_TOFFEE) | MC(GC_COLA)      | MC(GC_COTTON_CANDY) | MC(GC_BUBBLES) | MC(GC_PLASTIC) | MC(GC_FIZZY_DRINKS),
-	/* Special/Disaster */
-	0,0
+/** List of what cargo labels are refittable for the given the vehicle-type.
+ * Only currently active labels are applied. */
+static const CargoLabel _default_refitmasks_rail[] = {
+	'PASS', 'COAL', 'MAIL', 'LVST', 'GOOD', 'GRAI', 'WHEA', 'MAIZ', 'WOOD',
+	'IORE', 'STEL', 'VALU', 'GOLD', 'DIAM', 'PAPR', 'FOOD', 'FRUT', 'CORE',
+	'WATR', 'SUGR', 'TOYS', 'BATT', 'SWET', 'TOFF', 'COLA', 'CTCD', 'BUBL',
+	'PLST', 'FZDR',
+	0 };
+
+static const CargoLabel _default_refitmasks_road[] = {
+	0 };
+
+static const CargoLabel _default_refitmasks_ships[] = {
+	'COAL', 'MAIL', 'LVST', 'GOOD', 'GRAI', 'WHEA', 'MAIZ', 'WOOD', 'IORE',
+	'STEL', 'VALU', 'GOLD', 'DIAM', 'PAPR', 'FOOD', 'FRUT', 'CORE', 'WATR',
+	'RUBR', 'SUGR', 'TOYS', 'BATT', 'SWET', 'TOFF', 'COLA', 'CTCD', 'BUBL',
+	'PLST', 'FZDR',
+	0 };
+
+static const CargoLabel _default_refitmasks_aircraft[] = {
+	'PASS', 'MAIL', 'GOOD', 'VALU', 'GOLD', 'DIAM', 'FOOD', 'FRUT', 'SUGR',
+	'TOYS', 'BATT', 'SWET', 'TOFF', 'COLA', 'CTCD', 'BUBL', 'PLST', 'FZDR',
+	0 };
+
+static const CargoLabel *_default_refitmasks[] = {
+	_default_refitmasks_rail,
+	_default_refitmasks_road,
+	_default_refitmasks_ships,
+	_default_refitmasks_aircraft,
 };
-#undef MC
 
 
 /**
@@ -3793,7 +3801,15 @@ static void CalculateRefitMasks(void)
 							RailVehInfo(engine)->railveh_type != RAILVEH_WAGON
 						)
 					)) {
-				xor_mask = _default_refitmasks[GetEngine(engine)->type];
+				const CargoLabel *cl = _default_refitmasks[GetEngine(engine)->type];
+				for (uint i = 0;; i++) {
+					if (cl[i] == 0) break;
+
+					CargoID cargo = GetCargoIDByLabel(cl[i]);
+					if (cargo == CT_INVALID) continue;
+
+					SETBIT(xor_mask, GetCargo(cargo)->bitnum);
+				}
 			}
 		}
 		_engine_info[engine].refit_mask = ((mask & ~not_mask) ^ xor_mask) & _cargo_mask;
