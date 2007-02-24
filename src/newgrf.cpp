@@ -364,7 +364,8 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				if (ctype < NUM_CARGO) {
 					rvi[i].cargo_type = ctype;
 				} else {
-					grfmsg(2, "RailVehicleChangeInfo: Invalid cargo type %d, ignoring", ctype);
+					rvi[i].cargo_type = CT_INVALID;
+					grfmsg(2, "RailVehicleChangeInfo: Invalid cargo type %d, using first refittable", ctype);
 				}
 			}
 			break;
@@ -555,7 +556,8 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				if (cargo < NUM_CARGO) {
 					rvi[i].cargo_type = cargo;
 				} else {
-					grfmsg(2, "RoadVehicleChangeInfo: Invalid cargo type %d, ignoring", cargo);
+					rvi[i].cargo_type = CT_INVALID;
+					grfmsg(2, "RoadVehicleChangeInfo: Invalid cargo type %d, using first refittable", cargo);
 				}
 			}
 			break;
@@ -665,17 +667,11 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 cargo = grf_load_byte(&buf);
 
-				// XXX: Need to consult this with patchman yet.
-#if 0
-				// Documentation claims this is already the
-				// per-landscape cargo type id, but newships.grf
-				// assume otherwise.
-				cargo = local_cargo_id_ctype[cargo];
-#endif
 				if (cargo < NUM_CARGO) {
 					svi[i].cargo_type = cargo;
 				} else {
-					grfmsg(2, "ShipVehicleChangeInfo: Invalid cargo type %d, ignoring", cargo);
+					svi[i].cargo_type = CT_INVALID;
+					grfmsg(2, "ShipVehicleChangeInfo: Invalid cargo type %d, using first refittable", cargo);
 				}
 			}
 			break;
@@ -3713,6 +3709,28 @@ static void CalculateRefitMasks(void)
 			}
 		}
 		_engine_info[engine].refit_mask = ((mask & ~not_mask) ^ xor_mask) & _cargo_mask;
+
+		if (_engine_info[engine].refit_mask == 0) continue;
+
+		/* Check if this engine's cargo type is valid. If not, set to the first refittable
+		 * cargo type. Apparently cargo_type isn't a common property... */
+		switch (GetEngine(engine)->type) {
+			case VEH_Train: {
+				RailVehicleInfo *rvi = &_rail_vehicle_info[engine];
+				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
+				break;
+			}
+			case VEH_Road: {
+				RoadVehicleInfo *rvi = &_road_vehicle_info[engine - ROAD_ENGINES_INDEX];
+				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
+				break;
+			}
+			case VEH_Ship: {
+				ShipVehicleInfo *svi = &_ship_vehicle_info[engine - SHIP_ENGINES_INDEX];
+				if (svi->cargo_type == CT_INVALID) svi->cargo_type = FindFirstRefittableCargo(engine);
+				break;
+			}
+		}
 	}
 }
 
