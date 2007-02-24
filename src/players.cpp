@@ -171,13 +171,15 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 		DrawSprite((lips * 10 >> 4) + 0x351, PAL_NONE, x, y);
 	}
 
-	/* Nose */
-	static const SpriteID mouth_table[] = { 0x34C, 0x34D, 0x34F };
-	switch (gen_race) {
-		case WHITE_MALE:   DrawSprite(0x349 + nose,                 PAL_NONE, x, y); break;
-		case WHITE_FEMALE: DrawSprite(mouth_table[(nose * 3 >> 3)], PAL_NONE, x, y); break;
-		case BLACK_MALE:   DrawSprite(0x393 + (nose & 3),           PAL_NONE, x, y); break;
-		case BLACK_FEMALE: DrawSprite(0x3B3 + (nose * 5 >> 3),      PAL_NONE, x, y); break;
+	{
+		/* Nose */
+		static const SpriteID mouth_table[] = { 0x34C, 0x34D, 0x34F };
+		switch (gen_race) {
+			case WHITE_MALE:   DrawSprite(0x349 + nose,                 PAL_NONE, x, y); break;
+			case WHITE_FEMALE: DrawSprite(mouth_table[(nose * 3 >> 3)], PAL_NONE, x, y); break;
+			case BLACK_MALE:   DrawSprite(0x393 + (nose & 3),           PAL_NONE, x, y); break;
+			case BLACK_FEMALE: DrawSprite(0x3B3 + (nose * 5 >> 3),      PAL_NONE, x, y); break;
+		}
 	}
 skip_mouth:
 
