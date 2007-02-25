@@ -161,7 +161,6 @@ typedef enum TrackdirBits {
 template <> struct EnumPropsT<TrackdirBits> : MakeEnumPropsT<TrackdirBits, uint16, TRACKDIR_BIT_NONE, TRACKDIR_BIT_MASK, INVALID_TRACKDIR_BIT> {};
 typedef TinyEnumT<TrackdirBits> TrackdirBitsShort;
 DECLARE_ENUM_AS_BIT_SET(TrackdirBits);
-DECLARE_ENUM_AS_BIT_INDEX(Trackdir, TrackdirBits);
 
 /** This struct contains all the info that is needed to draw and construct tracks.
  */
