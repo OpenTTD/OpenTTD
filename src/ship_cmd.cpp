@@ -692,7 +692,8 @@ static void ShipController(Vehicle *v)
 
 	BeginVehicleMove(v);
 
-	if (GetNewVehiclePos(v, &gp)) {
+	GetNewVehiclePos(v, &gp);
+	if (gp.old_tile == gp.new_tile) {
 		/* Staying in tile */
 		if (IsShipInDepot(v)) {
 			gp.x = v->x_pos;

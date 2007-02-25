@@ -2887,9 +2887,10 @@ static void TrainController(Vehicle *v, bool update_image)
 		BeginVehicleMove(v);
 
 		GetNewVehiclePosResult gp;
+		GetNewVehiclePos(v, &gp);
 		if (v->u.rail.track != TRACK_BIT_WORMHOLE) {
 			/* Not inside tunnel */
-			if (GetNewVehiclePos(v, &gp)) {
+			if (gp.old_tile == gp.new_tile) {
 				/* Staying in the old tile */
 				if (v->u.rail.track == TRACK_BIT_DEPOT) {
 					/* Inside depot */
@@ -3039,8 +3040,6 @@ static void TrainController(Vehicle *v, bool update_image)
 			}
 		} else {
 			/* In tunnel or on a bridge */
-			GetNewVehiclePos(v, &gp);
-
 			if (!(v->vehstatus & VS_HIDDEN)) {
 				v->cur_speed =
 					min(v->cur_speed, GetBridge(GetBridgeType(v->tile))->speed);

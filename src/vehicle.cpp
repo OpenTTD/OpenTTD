@@ -2692,7 +2692,7 @@ void EndVehicleMove(Vehicle *v)
 }
 
 /* returns true if staying in the same tile */
-bool GetNewVehiclePos(const Vehicle *v, GetNewVehiclePosResult *gp)
+void GetNewVehiclePos(const Vehicle *v, GetNewVehiclePosResult *gp)
 {
 	static const int8 _delta_coord[16] = {
 		-1,-1,-1, 0, 1, 1, 1, 0, /* x */
@@ -2706,7 +2706,6 @@ bool GetNewVehiclePos(const Vehicle *v, GetNewVehiclePosResult *gp)
 	gp->y = y;
 	gp->old_tile = v->tile;
 	gp->new_tile = TileVirtXY(x, y);
-	return gp->old_tile == gp->new_tile;
 }
 
 static const Direction _new_direction_table[] = {
