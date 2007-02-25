@@ -2948,7 +2948,7 @@ static void TrainController(Vehicle *v, bool update_image)
 				if (prev == NULL) {
 					/* Currently the locomotive is active. Determine which one of the
 					 * available tracks to choose */
-					chosen_track = 1 << ChooseTrainTrack(v, gp.new_tile, enterdir, bits);
+					chosen_track = TrackToTrackBits(ChooseTrainTrack(v, gp.new_tile, enterdir, bits));
 					assert(chosen_track & tracks);
 
 					/* Check if it's a red signal and that force proceed is not clicked. */

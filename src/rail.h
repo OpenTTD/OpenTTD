@@ -88,7 +88,6 @@ template <> struct EnumPropsT<TrackBits> : MakeEnumPropsT<TrackBits, byte, TRACK
 typedef TinyEnumT<TrackBits> TrackBitsByte;
 
 DECLARE_ENUM_AS_BIT_SET(TrackBits);
-DECLARE_ENUM_AS_BIT_INDEX(Track, TrackBits);
 
 /**
  * Maps a Track to the corresponding TrackBits value
