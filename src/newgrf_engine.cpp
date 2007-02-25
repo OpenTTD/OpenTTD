@@ -44,7 +44,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 	WagonOverride *wo;
 
 	assert(engine < TOTAL_NUM_ENGINES);
-	assert(cargo < NUM_CARGO + 1); // Include CT_DEFAULT pseudo cargo. CT_PURCHASE does not apply to overrides.
+	assert(cargo < NUM_CARGO + 2); // Include CT_DEFAULT and CT_PURCHASE pseudo cargos.
 
 	wos = &_engine_wagon_overrides[engine];
 	wos->overrides_count++;
