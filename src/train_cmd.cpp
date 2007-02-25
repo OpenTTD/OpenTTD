@@ -2881,15 +2881,12 @@ static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 static void TrainController(Vehicle *v, bool update_image)
 {
 	Vehicle *prev;
-	GetNewVehiclePosResult gp;
-	uint32 ts;
-	DiagDirection enterdir;
-	Direction dir;
 
 	/* For every vehicle after and including the given vehicle */
 	for (prev = GetPrevVehicleInChain(v); v != NULL; prev = v, v = v->next) {
 		BeginVehicleMove(v);
 
+		GetNewVehiclePosResult gp;
 		if (v->u.rail.track != TRACK_BIT_WORMHOLE) {
 			/* Not inside tunnel */
 			if (GetNewVehiclePos(v, &gp)) {
@@ -2921,21 +2918,20 @@ static void TrainController(Vehicle *v, bool update_image)
 			} else {
 				/* A new tile is about to be entered. */
 
-				TrackBits bits;
 				/* Determine what direction we're entering the new tile from */
-				dir = GetNewVehicleDirectionByTile(gp.new_tile, gp.old_tile);
-				enterdir = DirToDiagDir(dir);
+				Direction dir = GetNewVehicleDirectionByTile(gp.new_tile, gp.old_tile);
+				DiagDirection enterdir = DirToDiagDir(dir);
 				assert(IsValidDiagDirection(enterdir));
 
 				/* Get the status of the tracks in the new tile and mask
 				 * away the bits that aren't reachable. */
-				ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL) & _reachable_tracks[enterdir];
+				uint32 ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL) & _reachable_tracks[enterdir];
 
 				/* Combine the from & to directions.
 				 * Now, the lower byte contains the track status, and the byte at bit 16 contains
 				 * the signal status. */
 				uint32 tracks = ts | (ts >> 8);
-				bits = (TrackBits)(tracks & TRACK_BIT_MASK);
+				TrackBits bits = (TrackBits)(tracks & TRACK_BIT_MASK);
 				if ((_patches.new_pathfinding_all || _patches.yapf.rail_use_yapf) && _patches.forbid_90_deg && prev == NULL) {
 					/* We allow wagons to make 90 deg turns, because forbid_90_deg
 					 * can be switched on halfway a turn */
@@ -2956,7 +2952,33 @@ static void TrainController(Vehicle *v, bool update_image)
 					assert(chosen_track & tracks);
 
 					/* Check if it's a red signal and that force proceed is not clicked. */
-					if ((tracks >> 16) & chosen_track && v->u.rail.force_proceed == 0) goto red_light;
+					if ((tracks >> 16) & chosen_track && v->u.rail.force_proceed == 0) {
+						// In front of a red signal
+						/* find the first set bit in ts. need to do it in 2 steps, since
+						 * FIND_FIRST_BIT only handles 6 bits at a time. */
+						Trackdir i = FindFirstTrackdir((TrackdirBits)(uint16)ts);
+
+						if (!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(i))) {
+							v->cur_speed = 0;
+							v->subspeed = 0;
+							v->progress = 255 - 100;
+							if (++v->load_unload_time_rem < _patches.wait_oneway_signal * 20) return;
+						} else if (HasSignalOnTrackdir(gp.new_tile, i)) {
+							v->cur_speed = 0;
+							v->subspeed = 0;
+							v->progress = 255-10;
+							if (++v->load_unload_time_rem < _patches.wait_twoway_signal * 73) {
+								TileIndex o_tile = gp.new_tile + TileOffsByDiagDir(enterdir);
+								VehicleAtSignalData vasd;
+								vasd.tile = o_tile;
+								vasd.direction = ReverseDir(dir);
+
+								/* check if a train is waiting on the other side */
+								if (VehicleFromPos(o_tile, &vasd, CheckVehicleAtSignal) == NULL) return;
+							}
+						}
+						goto reverse_train_direction;
+					}
 				} else {
 					static const TrackBits _matching_tracks[8] = {
 							TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, TRACK_BIT_X,
@@ -3054,34 +3076,6 @@ static void TrainController(Vehicle *v, bool update_image)
 invalid_rail:
 	/* We've reached end of line?? */
 	if (prev != NULL) error("!Disconnecting train");
-	goto reverse_train_direction;
-
-red_light: {
-	/* We're in front of a red signal ?? */
-		/* find the first set bit in ts. need to do it in 2 steps, since
-		 * FIND_FIRST_BIT only handles 6 bits at a time. */
-		Trackdir i = FindFirstTrackdir((TrackdirBits)(uint16)ts);
-
-		if (!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(i))) {
-			v->cur_speed = 0;
-			v->subspeed = 0;
-			v->progress = 255 - 100;
-			if (++v->load_unload_time_rem < _patches.wait_oneway_signal * 20) return;
-		} else if (HasSignalOnTrackdir(gp.new_tile, i)){
-			v->cur_speed = 0;
-			v->subspeed = 0;
-			v->progress = 255-10;
-			if (++v->load_unload_time_rem < _patches.wait_twoway_signal * 73) {
-				TileIndex o_tile = gp.new_tile + TileOffsByDiagDir(enterdir);
-				VehicleAtSignalData vasd;
-				vasd.tile = o_tile;
-				vasd.direction = ReverseDir(dir);
-
-				/* check if a train is waiting on the other side */
-				if (VehicleFromPos(o_tile, &vasd, CheckVehicleAtSignal) == NULL) return;
-			}
-		}
-	}
 
 reverse_train_direction:
 	v->load_unload_time_rem = 0;
