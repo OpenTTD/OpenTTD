@@ -192,7 +192,7 @@ public:
 		Trackdir trackdir = n.m_key.m_td;
 		TileType tile_type = GetTileType(tile);
 
-		RailType rail_type = GetTileRailType(tile, TrackdirToTrack(trackdir));
+		RailType rail_type = GetTileRailType(tile);
 
 		bool target_seen = Yapf().PfDetectDestination(tile, trackdir);
 
@@ -254,7 +254,7 @@ public:
 
 			// if tail type changes, finish segment (cached segment can't contain more rail types)
 			{
-				RailType new_rail_type = GetTileRailType(F.m_new_tile, TrackdirToTrack(FindFirstTrackdir(F.m_new_td_bits)));
+				RailType new_rail_type = GetTileRailType(F.m_new_tile);
 				if (new_rail_type != rail_type) {
 					break;
 				}

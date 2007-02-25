@@ -2012,7 +2012,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 		if (IsTileDepotType(v->tile, TRANSPORT_RAIL) || IsTunnelTile(v->tile)) continue;
 
 		// No sparks for electric vehicles on nonelectrified tracks
-		if (!HasPowerOnRail(v->u.rail.railtype, GetTileRailType(v->tile, TrackdirToTrack(GetVehicleTrackdir(v))))) continue;
+		if (!HasPowerOnRail(v->u.rail.railtype, GetTileRailType(v->tile))) continue;
 
 		if (effect_type == 0) {
 			// Use default effect type for engine class.
@@ -3019,7 +3019,7 @@ static void TrainController(Vehicle *v, bool update_image)
 				if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) {
 					v->tile = gp.new_tile;
 
-					if (GetTileRailType(gp.new_tile, FindFirstTrack(chosen_track)) != GetTileRailType(gp.old_tile, FindFirstTrack(v->u.rail.track))) {
+					if (GetTileRailType(gp.new_tile) != GetTileRailType(gp.old_tile)) {
 						TrainPowerChanged(GetFirstVehicleInChain(v));
 					}
 

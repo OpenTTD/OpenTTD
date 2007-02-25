@@ -102,7 +102,7 @@ extern const Trackdir _dir_to_diag_trackdir[] = {
 };
 
 
-RailType GetTileRailType(TileIndex tile, Track track)
+RailType GetTileRailType(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:

@@ -261,12 +261,8 @@ static inline SignalState GetSignalStateByTrackdir(TileIndex tile, Trackdir trac
 
 /**
  * Return the rail type of tile, or INVALID_RAILTYPE if this is no rail tile.
- * Note that there is no check if the given trackdir is actually present on
- * the tile!
- * The given trackdir is used when there are (could be) multiple rail types on
- * one tile.
  */
-RailType GetTileRailType(TileIndex tile, Track track);
+RailType GetTileRailType(TileIndex tile);
 
 
 typedef enum RailGroundType {

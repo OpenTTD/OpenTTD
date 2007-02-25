@@ -594,7 +594,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 
 	/* check correct rail type (mono, maglev, etc) */
 	if (type == TRANSPORT_RAIL) {
-		RailType dst_type = GetTileRailType(dst_tile, TrackdirToTrack(src_trackdir));
+		RailType dst_type = GetTileRailType(dst_tile);
 		if (!HASBIT(aystar->user_data[NPF_RAILTYPES], dst_type))
 			return;
 	}
