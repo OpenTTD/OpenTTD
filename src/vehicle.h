@@ -427,7 +427,7 @@ typedef struct GetNewVehiclePosResult {
 Trackdir GetVehicleTrackdir(const Vehicle* v);
 
 /* returns true if staying in the same tile */
-void GetNewVehiclePos(const Vehicle *v, GetNewVehiclePosResult *gp);
+GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v);
 Direction GetDirectionTowards(const Vehicle* v, int x, int y);
 
 #define BEGIN_ENUM_WAGONS(v) do {

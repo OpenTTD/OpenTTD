@@ -1357,9 +1357,7 @@ static void RoadVehController(Vehicle *v)
 
 	if (v->u.road.state == RVSB_WORMHOLE) {
 		/* Vehicle is entering a depot or is on a bridge or in a tunnel */
-		GetNewVehiclePosResult gp;
-
-		GetNewVehiclePos(v, &gp);
+		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
 		const Vehicle *u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
 		if (u != NULL && u->cur_speed < v->cur_speed) {

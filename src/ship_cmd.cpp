@@ -662,7 +662,6 @@ static const byte _ship_subcoord[4][6][3] = {
 
 static void ShipController(Vehicle *v)
 {
-	GetNewVehiclePosResult gp;
 	uint32 r;
 	const byte *b;
 	Direction dir;
@@ -692,7 +691,7 @@ static void ShipController(Vehicle *v)
 
 	BeginVehicleMove(v);
 
-	GetNewVehiclePos(v, &gp);
+	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	if (gp.old_tile == gp.new_tile) {
 		/* Staying in tile */
 		if (IsShipInDepot(v)) {

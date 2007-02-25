@@ -200,7 +200,6 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
  */
 static void DisasterTick_Zeppeliner(Vehicle *v)
 {
-	GetNewVehiclePosResult gp;
 	Station *st;
 	int x, y;
 	byte z;
@@ -211,7 +210,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	if (v->current_order.dest < 2) {
 		if (HASBIT(v->tick_counter, 0)) return;
 
-		GetNewVehiclePos(v, &gp);
+		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
 		SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
@@ -308,7 +307,6 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
  */
 static void DisasterTick_Ufo(Vehicle *v)
 {
-	GetNewVehiclePosResult gp;
 	Vehicle *u;
 	uint dist;
 	byte z;
@@ -321,7 +319,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 		int y = TileY(v->dest_tile) * TILE_SIZE;
 		if (delta(x, v->x_pos) + delta(y, v->y_pos) >= TILE_SIZE) {
 			v->direction = GetDirectionTowards(v, x, y);
-			GetNewVehiclePos(v, &gp);
+			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 			return;
 		}
@@ -356,7 +354,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 		}
 
 		v->direction = GetDirectionTowards(v, u->x_pos, u->y_pos);
-		GetNewVehiclePos(v, &gp);
+		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
 		z = v->z_pos;
 		if (dist <= TILE_SIZE && z > u->z_pos) z--;
@@ -406,13 +404,11 @@ static void DestructIndustry(Industry *i)
  */
 static void DisasterTick_Airplane(Vehicle *v)
 {
-	GetNewVehiclePosResult gp;
-
 	v->tick_counter++;
 	v->u.disaster.image_override =
 		(v->current_order.dest == 1 && HASBIT(v->tick_counter, 2)) ? SPR_F_15_FIRING : 0;
 
-	GetNewVehiclePos(v, &gp);
+	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
 	if (gp.x < (-10 * TILE_SIZE)) {
@@ -481,13 +477,11 @@ static void DisasterTick_Airplane(Vehicle *v)
  */
 static void DisasterTick_Helicopter(Vehicle *v)
 {
-	GetNewVehiclePosResult gp;
-
 	v->tick_counter++;
 	v->u.disaster.image_override =
 		(v->current_order.dest == 1 && HASBIT(v->tick_counter, 2)) ? SPR_AH_64A_FIRING : 0;
 
-	GetNewVehiclePos(v, &gp);
+	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
 	if (gp.x > (int)MapSizeX() * TILE_SIZE + 9 * TILE_SIZE - 1) {
@@ -568,7 +562,6 @@ static void DisasterTick_Helicopter_Rotors(Vehicle *v)
  */
 static void DisasterTick_Big_Ufo(Vehicle *v)
 {
-	GetNewVehiclePosResult gp;
 	byte z;
 	Vehicle *u, *w;
 	Town *t;
@@ -583,7 +576,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		if (delta(v->x_pos, x) + delta(v->y_pos, y) >= 8) {
 			v->direction = GetDirectionTowards(v, x, y);
 
-			GetNewVehiclePos(v, &gp);
+			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 			return;
 		}
@@ -632,7 +625,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		int y = TileY(v->dest_tile) * TILE_SIZE;
 		if (delta(x, v->x_pos) + delta(y, v->y_pos) >= TILE_SIZE) {
 			v->direction = GetDirectionTowards(v, x, y);
-			GetNewVehiclePos(v, &gp);
+			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 			return;
 		}
@@ -665,13 +658,12 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
  */
 static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 {
-	GetNewVehiclePosResult gp;
 	Vehicle *u;
 	int i;
 
 	v->tick_counter++;
 
-	GetNewVehiclePos(v, &gp);
+	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
 	if (gp.x > (int)MapSizeX() * TILE_SIZE + 9 * TILE_SIZE - 1) {
@@ -711,7 +703,6 @@ static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
  */
 static void DisasterTick_Submarine(Vehicle *v)
 {
-	GetNewVehiclePosResult gp;
 	TileIndex tile;
 
 	v->tick_counter++;
@@ -731,7 +722,7 @@ static void DisasterTick_Submarine(Vehicle *v)
 		TrackdirBits r = (TrackdirBits)GetTileTrackStatus(tile, TRANSPORT_WATER);
 
 		if (TrackdirBitsToTrackBits(r) == TRACK_BIT_ALL && !CHANCE16(1, 90)) {
-			GetNewVehiclePos(v, &gp);
+			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 			return;
 		}

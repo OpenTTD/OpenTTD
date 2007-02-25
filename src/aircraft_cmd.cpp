@@ -1046,8 +1046,7 @@ static bool AircraftController(Vehicle *v)
 	}
 
 	/* Move vehicle. */
-	GetNewVehiclePosResult gp;
-	GetNewVehiclePos(v, &gp);
+	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	v->tile = gp.new_tile;
 
 	/* If vehicle is in the air, use tile coordinate 0. */
@@ -2072,8 +2071,7 @@ void UpdateOldAircraft(void)
 			v_oldstyle->vehstatus &= ~VS_STOPPED; // make airplane moving
 			v_oldstyle->u.air.state = FLYING;
 			AircraftNextAirportPos_and_Order(v_oldstyle); // move it to the entry point of the airport
-			GetNewVehiclePosResult gp;
-			GetNewVehiclePos(v_oldstyle, &gp); // get the position of the plane (to be used for setting)
+			GetNewVehiclePosResult gp = GetNewVehiclePos(v_oldstyle);
 			v_oldstyle->tile = 0; // aircraft in air is tile=0
 
 			/* correct speed of helicopter-rotors */
@@ -2101,8 +2099,7 @@ void UpdateAirplanesOnNewStation(const Station *st)
 					v->u.air.state = FLYING;
 					/* landing plane needs to be reset to flying height (only if in pause mode upgrade,
 					 * in normal mode, plane is reset in AircraftController. It doesn't hurt for FLYING */
-					GetNewVehiclePosResult gp;
-					GetNewVehiclePos(v, &gp);
+					GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 					/* set new position x,y,z */
 					SetAircraftPosition(v, gp.x, gp.y, GetAircraftFlyingAltitude(v));
 				} else {

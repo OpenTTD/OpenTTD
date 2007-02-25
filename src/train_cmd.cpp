@@ -2886,8 +2886,7 @@ static void TrainController(Vehicle *v, bool update_image)
 	for (prev = GetPrevVehicleInChain(v); v != NULL; prev = v, v = v->next) {
 		BeginVehicleMove(v);
 
-		GetNewVehiclePosResult gp;
-		GetNewVehiclePos(v, &gp);
+		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 		if (v->u.rail.track != TRACK_BIT_WORMHOLE) {
 			/* Not inside tunnel */
 			if (gp.old_tile == gp.new_tile) {
