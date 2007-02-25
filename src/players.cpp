@@ -81,11 +81,11 @@ DECLARE_ENUM_AS_BIT_SET(GenderRace); ///< See GenderRace as a bitset
  *
  * Meaning of the bits in face (some bits are used in several times):
  * - 4 and 5: chin
- * - 6 to 9: eye colour
+ * - 6 to 9: eyebrows
  * - 10 to 13: nose
  * - 13 to 15: lips (also moustache for males)
  * - 16 to 19: hair
- * - 20 to 22: eyebrows
+ * - 20 to 22: eye color
  * - 20 to 27: tie, ear rings etc.
  * - 28 to 30: glasses
  * - 19, 26 and 27: race (bit 27 set and bit 19 equal to bit 26 = black, otherwise white)
@@ -122,8 +122,8 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 	}
 
 	/* Draw the eyes */
-	uint eye_colour = GB(face,  6, 4);
-	uint eyebrows   = GB(face, 20, 3);
+	uint eye_colour = GB(face, 20, 3);
+	uint eyebrows   = GB(face,  6, 4);
 	SpriteID pal;
 
 	if (eye_colour < 6) {
