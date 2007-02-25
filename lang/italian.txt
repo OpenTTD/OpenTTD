@@ -398,7 +398,7 @@ STR_SELECT_ALL_TYPES                                            :{BLACK}Selezion
 STR_AVAILABLE_TRAINS                                            :{BLACK}Treni Disponibili
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Veicoli Disponibili
 STR_AVAILABLE_SHIPS                                             :{BLACK}Navi Disponibili
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aeromobili Disponibili
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aerei Disponibili
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Mostra una lista di motrici disponibili per quel tipo di veicolo
 STR_MANAGE_LIST                                                 :{BLACK}Gestisci lista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Manda istruzioni a tutti i veicoli in questa lista
@@ -1630,7 +1630,7 @@ STR_2024                                                        :{YELLOW}{COMPAN
 STR_2025_SUBSIDIES                                              :{WHITE}Sussidi
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Sussidi offerti per il servizio:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} da {STRING} a {STRING}
-STR_2028_BY                                                     :{YELLOW} (dal {DATE_SHORT})
+STR_2028_BY                                                     :{YELLOW} (entro {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nessuno
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Servizi già sussidiati:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} da {STATION} a {STATION}{YELLOW} ({COMPANY}
@@ -2427,7 +2427,7 @@ STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Camion Bolle Po
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Camion Bolle Wizzowow
 STR_80CC_MPS_OIL_TANKER                                         :Petroliera MPS
 STR_80CD_CS_INC_OIL_TANKER                                      :Petroliera CS-Inc.
-STR_80CE_MPS_PASSENGER_FERRY                                    :Traghetto FFP
+STR_80CE_MPS_PASSENGER_FERRY                                    :Traghetto MPS
 STR_80CF_FFP_PASSENGER_FERRY                                    :Traghetto FFP
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Hovercraft Bakewell 300
 STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Traghetto Chugger-Chug

@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nytt spi
 STR_0141_LOAD_GAME                                              :{BLACK}Last inn spill
 STR_SINGLE_PLAYER                                               :{BLACK}Énspiller
 STR_MULTIPLAYER                                                 :{BLACK}Flerspiller
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenario Editor
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -396,7 +397,7 @@ STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velg all
 STR_SELECT_ALL_TYPES                                            :{BLACK}Velg alle lasttyper (inkludert last som ikke venter)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Tilgjengelige tog
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Tilgjengelige kjøretøy
-STR_AVAILABLE_SHIPS                                             :{BLACK}Tilgjengelige båter
+STR_AVAILABLE_SHIPS                                             :{BLACK}Tilgjengelige skip
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Tilgjengelige luftfartøy
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Se en liste over tilgjengelige maskindesigner for dette kjøretøyet.
 STR_MANAGE_LIST                                                 :{BLACK}Behandl liste
@@ -1418,6 +1419,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste ov
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ingen nettverksadapter funnet eller kompilert uten ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kunne ikke finne noen nettverksspill
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Tjeneren svarte ikke på forespørselen
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kunne ikke koble til på grunn av en NewGRF som ikke stemmer
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Nettverksspill synkronisering feilet.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Nettverksspill tilkobling mistet
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kunne ikke laste server-lagret spill
@@ -1439,6 +1441,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :synkroniserings
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :klarte ikke å åpne kartet
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :forbindelsen ble brutt
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokollfeil
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF stemmer ikke
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ikke autorisert
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :mottok merkelig pakke
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :feil versjon

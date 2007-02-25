@@ -295,6 +295,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nytt spe
 STR_0141_LOAD_GAME                                              :{BLACK}Ladda spel
 STR_SINGLE_PLAYER                                               :{BLACK}En spelare
 STR_MULTIPLAYER                                                 :{BLACK}Flera spelare
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenario editor
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -1418,6 +1419,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klientli
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Inget nätverkskort funnet eller så är spelet kompilerat utan ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Kunde inte hitta några nätverksspel
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Servern svarade inte på förfrågan
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kunde inte ansluta på grund av att NewGRF är omaka
 STR_NETWORK_ERR_DESYNC                                          :{WHITE}Nätverk, Spelsynkronisering misslyckades
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Nätverk, koppling förlorad
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Kunde inte ladda det sparade spelet från servern
@@ -1439,6 +1441,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :synkroniserings
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :kunde inte ladda kartan
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :anslutning förlorad
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokollfel
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF är omaka
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :inte godkänd
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :mottog konstigt paket
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :fel revision

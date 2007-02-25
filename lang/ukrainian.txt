@@ -23,38 +23,55 @@ STR_000D_ACCEPTS                                                :{BLACK}Прий
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :пасажири
 STR_000F_PASSENGERS.r                                           :пасажирів
+STR_000F_PASSENGERS.z                                           :пасажирів
 STR_0010_COAL                                                   :вугілля
 STR_0010_COAL.r                                                 :вугілля
-STR_0011_MAIL                                                   :пошту
+STR_0010_COAL.z                                                 :вугілля
+STR_0011_MAIL                                                   :пошта
 STR_0011_MAIL.r                                                 :пошти
-STR_0012_OIL                                                    :нафту
+STR_0011_MAIL.z                                                 :пошту
+STR_0012_OIL                                                    :нафта
 STR_0012_OIL.r                                                  :нафти
-STR_0013_LIVESTOCK                                              :тварин
+STR_0012_OIL.z                                                  :нафту
+STR_0013_LIVESTOCK                                              :тварини
 STR_0013_LIVESTOCK.r                                            :тварин
+STR_0013_LIVESTOCK.z                                            :тварин
 STR_0014_GOODS                                                  :товари
 STR_0014_GOODS.r                                                :товарів
+STR_0014_GOODS.z                                                :товари
 STR_0015_GRAIN                                                  :зерно
 STR_0015_GRAIN.r                                                :зерна
-STR_0016_WOOD                                                   :деревину
+STR_0015_GRAIN.z                                                :зерно
+STR_0016_WOOD                                                   :деревина
 STR_0016_WOOD.r                                                 :деревини
-STR_0017_IRON_ORE                                               :залізну руду
+STR_0016_WOOD.z                                                 :деревину
+STR_0017_IRON_ORE                                               :залізна руда
 STR_0017_IRON_ORE.r                                             :залізної руди
+STR_0017_IRON_ORE.z                                             :залізну руду
 STR_0018_STEEL                                                  :сталь
 STR_0018_STEEL.r                                                :сталі
+STR_0018_STEEL.z                                                :сталь
 STR_0019_VALUABLES                                              :коштовності
 STR_0019_VALUABLES.r                                            :коштовностей
-STR_001A_COPPER_ORE                                             :мідну руду
+STR_0019_VALUABLES.z                                            :коштовності
+STR_001A_COPPER_ORE                                             :мідна руда
 STR_001A_COPPER_ORE.r                                           :мідної руди
-STR_001B_MAIZE                                                  :кукурудзу
+STR_001A_COPPER_ORE.z                                           :мідну руду
+STR_001B_MAIZE                                                  :кукурудза
 STR_001B_MAIZE.r                                                :кукурудзи
+STR_001B_MAIZE.z                                                :кукурудзу
 STR_001C_FRUIT                                                  :фрукти
 STR_001C_FRUIT.r                                                :фруктів
+STR_001C_FRUIT.z                                                :фрукти
 STR_001D_DIAMONDS                                               :діаманти
 STR_001D_DIAMONDS.r                                             :діамантів
+STR_001D_DIAMONDS.z                                             :діаманти
 STR_001E_FOOD                                                   :продукти
 STR_001E_FOOD.r                                                 :продуктів
+STR_001E_FOOD.z                                                 :продукти
 STR_001F_PAPER                                                  :папір
 STR_001F_PAPER.r                                                :паперу
+STR_001F_PAPER.z                                                :папір
 STR_0020_GOLD                                                   :золото
 STR_0020_GOLD.r                                                 :золота
 STR_0020_GOLD.z                                                 :золото
@@ -79,7 +96,7 @@ STR_0026_CANDY.z                                                :солодощ�
 STR_0027_COLA                                                   :кола
 STR_0027_COLA.r                                                 :коли
 STR_0027_COLA.z                                                 :колу
-STR_0028_COTTON_CANDY                                           :солодку вату
+STR_0028_COTTON_CANDY                                           :солодка вата
 STR_0028_COTTON_CANDY.r                                         :солодкої вати
 STR_0028_COTTON_CANDY.z                                         :солодку вату
 STR_0029_BUBBLES                                                :бульбашки
@@ -91,14 +108,13 @@ STR_002A_TOFFEE.z                                               :іриски
 STR_002B_BATTERIES                                              :батарейки
 STR_002B_BATTERIES.r                                            :батарейок
 STR_002B_BATTERIES.z                                            :батарейки
-STR_002C_PLASTIC                                                :пластик
-STR_002C_PLASTIC.r                                              :пластику
-STR_002C_PLASTIC.z                                              :ластик
-STR_002D_FIZZY_DRINKS                                           :газовану воду
+STR_002C_PLASTIC                                                :пластилін
+STR_002C_PLASTIC.z                                              :пластилін
+STR_002D_FIZZY_DRINKS                                           :газована водф
 STR_002D_FIZZY_DRINKS.r                                         :газованої води
 STR_002D_FIZZY_DRINKS.z                                         :газовану воду
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :пасажирів
+STR_002F_PASSENGER                                              :пасажири
 STR_002F_PASSENGER.r                                            :пасажирів
 STR_002F_PASSENGER.z                                            :пасажирів
 STR_0030_COAL                                                   :вугілля
@@ -141,6 +157,7 @@ STR_003C_FRUIT                                                  :фрукти
 STR_003C_FRUIT.r                                                :фруктів
 STR_003C_FRUIT.z                                                :фрукти
 STR_003D_DIAMOND                                                :діаманти
+STR_003D_DIAMOND.r                                              :діамантів
 STR_003D_DIAMOND.z                                              :діаманти
 STR_003E_FOOD                                                   :продукти
 STR_003E_FOOD.r                                                 :продуктів
@@ -184,9 +201,8 @@ STR_004A_TOFFEE.z                                               :іриски
 STR_004B_BATTERY                                                :батарейки
 STR_004B_BATTERY.r                                              :батарейок
 STR_004B_BATTERY.z                                              :батарейки
-STR_004C_PLASTIC                                                :пластик
-STR_004C_PLASTIC.r                                              :пластику
-STR_004C_PLASTIC.z                                              :пластик
+STR_004C_PLASTIC                                                :пластилін
+STR_004C_PLASTIC.z                                              :пластилін
 STR_004D_FIZZY_DRINK                                            :газована вода
 STR_004D_FIZZY_DRINK.r                                          :газованої води
 STR_004D_FIZZY_DRINK.z                                          :газовану воду
@@ -267,7 +283,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Немо
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Неможливо очистити цю ділянку...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Авторське право {COPYRIGHT} 1995 Кріс Сойєр, Всі права захищені
 STR_00B7_VERSION                                                :{BLACK}OpenTTD версія {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD-група
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 команда OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK} Перекладач(і) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -589,9 +605,9 @@ STR_019C_ROAD_VEHICLE                                           :Авто
 STR_019D_AIRCRAFT                                               :Літак
 STR_019E_SHIP                                                   :Корабель
 STR_019F_TRAIN                                                  :Поїзд
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} зістарився
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} дуже зістарився
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} зістарився і терміново потребує заміни
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} старіє
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} вже дуже старий
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} вже дуже старий і терміново потребує заміни
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Інформація про ділянку
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Вартість очистки: {LTBLUE}неможливо
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Вартість очистки: {LTBLUE}{CURRENCY}
@@ -865,7 +881,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Роз�
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Показує останнє повідомлення або новини
-STR_OFF                                                         :Викл
+STR_OFF                                                         :Відкл.
 STR_SUMMARY                                                     :Коротко
 STR_FULL                                                        :Повністю
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
@@ -925,11 +941,11 @@ STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Вибе
 STR_MEASURING_UNITS                                             :{BLACK}Система одиниць виміру
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Вибір системи одиниць виміру
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Напрямок руху
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Транспорт
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Виберіть по якій стороні їхатиме транспорт
-STR_02E9_DRIVE_ON_LEFT                                          :Лівосторонній
-STR_02EA_DRIVE_ON_RIGHT                                         :Правосторонній
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Виберіть, по якій стороні їхатиме транспорт
+STR_02E9_DRIVE_ON_LEFT                                          :Їде по лівій стороні
+STR_02EA_DRIVE_ON_RIGHT                                         :Їде по правій стороні
 STR_02EB_TOWN_NAMES                                             :{BLACK}Назви міст
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Виберіть стиль назв міст
@@ -948,7 +964,7 @@ STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Грат
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Грати з 2-8 гравцями
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Показати налашування гри
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Показати налашування складності
-STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Почати нову використовуючи сценарій
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Почати нову гру, використовуючи сценарій
 STR_0304_QUIT                                                   :{BLACK}Вихід
 STR_0305_QUIT_OPENTTD                                           :{BLACK}покинути 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
@@ -1147,7 +1163,7 @@ STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Пок�
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Показувати вікно фінансів в кінці року: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch сумісна команда "без зупинки": {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ставати транспорту в чергу: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Прокручувати вікно коли курсор з краю: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Прокручувати вікно, коли курсор з краю: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Дозволити підкупляти місцеву владу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Неоднорідні станції: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Новий глобальний пошук шляху(NPF, замість NTP): {ORANGE}{STRING}
@@ -1866,16 +1882,16 @@ STR_304A_NONE                                                   :{YELLOW}- не�
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...ділянка не підходить для цього
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Дуже близько до іншого порту
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Спочатку зруйнуйте порт
-STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Виберіть направлення залізничної станції
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Виберіть орієнтацію залізничної станції
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Виберіть кількість колій залізничної станції
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Виберіть довжину залізничної станції
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Виберіть направлення зупинки
-STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Виберіть направлення вантажної станції
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Виберіть орієнтацію зупинки
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Виберіть орієнтацію вантажної станції
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Показати станцію в центрі екрану
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Показати рейтинг станції
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Перейменувати станцію
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Показати список приймання вантажів
-STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Назва станції - натисніть на назву щоб показати в центрі екрану
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Назва станції - натисніть на назву, щоб показати в центрі екрану
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Виберіть розмір/тип аеропорту
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
@@ -1891,8 +1907,8 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Підс
 STR_3068_DOCK                                                   :{WHITE}Порт
 STR_3069_BUOY                                                   :Бакен
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...бакен на шляху
-STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...станції дуже розкидані
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...неоднорідні станції відмінено
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...станція занадто велика
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...неоднорідні станції відключені
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Утримуйте CTRL для вибору більш ніж одного пункту
 
 STR_UNDEFINED                                                   :(невизначено)
@@ -1903,7 +1919,7 @@ STR_STAT_CLASS_WAYP                                             :Пункт
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Орієнтація депо
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...має бути збудовано на воді
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Неможливо будувати корабельне депо тут...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Виберіть направлення корабельного депо
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Виберіть орієнтацію корабельного депо
 STR_3804_WATER                                                  :Вода
 STR_3805_COAST_OR_RIVERBANK                                     :Берег
 STR_3806_SHIP_DEPOT                                             :Корабельне депо
@@ -2342,8 +2358,6 @@ STR_LIVERY_DIESEL                                               :Дизельн�
 STR_LIVERY_ELECTRIC                                             :Електричні потяги
 STR_LIVERY_MONORAIL                                             :Монорельс
 STR_LIVERY_MAGLEV                                               :Потяги на магнітній подушці
-STR_LIVERY_DMU                                                  :
-STR_LIVERY_EMU                                                  :
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (пар)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (дизель)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажирський вагон (електричка)

@@ -329,6 +329,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Naujas �
 STR_0141_LOAD_GAME                                              :{BLACK}Atverti žaidimą
 STR_SINGLE_PLAYER                                               :{BLACK}Vienas zaidejas
 STR_MULTIPLAYER                                                 :{BLACK}Žaidimas tinkle
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenarijaus redaktorius
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -428,6 +429,10 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Vagono talpa
 STR_NO_WAITING_CARGO                                            :{BLACK}Jokiu kroviniu nera pakrovimui
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Pazymeti visus pastatus
 STR_SELECT_ALL_TYPES                                            :{BLACK}Pazymeti visus krovinio tipus (iskaitant nelaukiancius kroviniu)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Galimi traukiniai
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Galimi automobiliai
+STR_AVAILABLE_SHIPS                                             :{BLACK}Galimi laivai
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Galimi lėktuvai
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Peržiūrėti galimų variklių sąrašą tinkamų šiai transporto priemonei.
 STR_MANAGE_LIST                                                 :{BLACK}Tvarkyti sąrašą
 STR_MANAGE_LIST_TIP                                             :{BLACK}Siųsti nurodymus visoms šio sąrašo tr. priemonėms
@@ -1442,6 +1447,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Zaideju 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nerastas tinklo irenginys arba sukompiliuota be ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nerado nei vieno zidimo tinkle
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Serveris neatsake i uzklausa
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Nepavyko prisijungti dėl Papild. grafikos neatitikimo
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Zaidimo tinkle sinchronizacija nepavyko
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Nutruko rysys
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Negali atverti issaugoto zaidimo
@@ -1463,6 +1469,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :sinchronizacijo
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :negali uzkrauti zemelapio
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :prarastas rysys
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokolo klaida
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Papild. grafikos neatitikimas
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :Ne autorizuota
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :gautas neteisingas paketas
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :bloga versija
@@ -1679,7 +1686,7 @@ STR_2041_SHOPPING_MALL                                          :Parduotuvių ra
 STR_2042_DO_IT                                                  :{BLACK}Pirmyn!
 STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Sąrašas veiksmų, kuriuos galima atlikti šiame mieste - spragtelėjus pavadinimą, pateikiama daugiau informacijos
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Atlikti aukščiau pasirinktą veiksmą
-STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Galimos akcijos:
+STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Galimi veiksmai:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Maža reklamos kompanija
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Vidutinė reklamos kompanija
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Didelė reklamos kompanija

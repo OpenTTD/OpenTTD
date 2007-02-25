@@ -986,10 +986,10 @@ STR_TOWNNAME_ITALIAN                                            :Włoskie
 STR_TOWNNAME_CATALAN                                            :Katalońskie
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Funty (ÂŁ)
+STR_CURR_GBP                                                    :Funty (£)
 STR_CURR_USD                                                    :Dolar ($)
-STR_CURR_EUR                                                    :Euro (â‚¬)
-STR_CURR_YEN                                                    :Jeny (ÂĄ)
+STR_CURR_EUR                                                    :Euro (€)
+STR_CURR_YEN                                                    :Jeny (¥)
 STR_CURR_ATS                                                    :Szyling austriacki (ATS)
 STR_CURR_BEF                                                    :Frank belgijski (BEF)
 STR_CURR_CHF                                                    :Frank szwajcarski (CHF)

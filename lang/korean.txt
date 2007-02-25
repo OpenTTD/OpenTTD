@@ -361,6 +361,7 @@ STR_015C_SAVE_GAME                                              :게임 저장�
 STR_015D_LOAD_GAME                                              :불러오기
 STR_015E_QUIT_GAME                                              :그만하기
 STR_015F_QUIT                                                   :종료
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}정말로 이 게임을 중단하시겠습니까?
 STR_0161_QUIT_GAME                                              :{WHITE}게임 그만두기
 STR_SORT_ORDER_TIP                                              :{BLACK}정렬 방법을 선택하십시오 (내림차순/오름차순)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}정렬 기준 선택
@@ -614,16 +615,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY}가 '{STRING}'를(을) 달성했습니다!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME}의 {COMPANY}, 드디어 {STRING}를(을) 달성했습니다!
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}시나리오 생성
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}시나리오 에디터
 STR_0223_LAND_GENERATION                                        :{WHITE}지형 생성기
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}무작위 지형
+STR_0227_RESET_LAND                                             :{BLACK}지형 초기화
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}지형 편집툴의 크기를 키움
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}지형 편집툴의 크기를 줄임
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}무작위 지형을 생성
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}풍경 초기화
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}풍경 리셋
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}DEM지형 사용
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}DEM지형 사용
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}정말로 지형을 초기화하시겠습니까?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}지형 생성기
 STR_022F_TOWN_GENERATION                                        :{BLACK}마을 생성
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}산업 시설 생성
@@ -737,6 +744,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}시나�
 STR_029A_PLAY_SCENARIO                                          :{BLACK}시나리오 플레이
 STR_PLAY_HEIGHTMAP                                              :{BLACK}DEM지형 플레이
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}DEM지형을 풍경으로 하여 게임을 시작합
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}이 시나리오를 종료하시겠습니까?
 STR_029C_QUIT_EDITOR                                            :{WHITE}에디터 종료
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...1200명 이상의 도시에만 건설할 수 있습니다!
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}시작년도를 1년 앞당깁니다.
@@ -2950,6 +2958,20 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}이 스케쥴을 공유한 모든 차량을 표시합니다.
 
 ### depot strings
+
+STR_SELL                                                        :{BLACK}팔기
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}이 차고에 있는 모든 차량을 팔 것입니다.
+STR_ARE_YOU_SURE                                                :{BLACK}정말로 파시겠습니까?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}이 차량기지에 있는 모든 열차를 팔 것인지 확인합니다.
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}이 차고에 있는 모든 자동차를 팔 것인지 확인합니다.
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}이 정박소에 있는 모든 선박을 팔 것인지 확인합니다.
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}이 격납고에 있는 모든 선박을 팔 것인지 확인합니다.
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}이 차량기지에 있는 모든 열차를 팔지 않습니다.
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}이 차량기지에 있는 모든 자동차를 팔지 않습니다.
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}이 차량기지에 있는 모든 선박을 팔지 않습니다.
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}이 차량기지에 있는 모든 항공기를 팔지 않습니다.
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}이 차량기지에 있는 모든 열차를 팝니다.
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}이 차량기지에 있는 모든 자동차를 팝니다.

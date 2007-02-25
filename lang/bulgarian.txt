@@ -297,6 +297,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Нова
 STR_0141_LOAD_GAME                                              :{BLACK}Отвори игра
 STR_SINGLE_PLAYER                                               :{BLACK}Сам играч
 STR_MULTIPLAYER                                                 :{BLACK}Много играчи
+STR_SCENARIO_EDITOR                                             :{BLACK}Редактор сценарии
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -1421,6 +1422,8 @@ STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Не с
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Не може да открия мрежови игри
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Сървърът не отговори на заявката
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Не може да се свърже поради различие в NewGRF
+STR_NETWORK_ERR_DESYNC                                          :{WHITE} Синхронизацията на мрежовата игра се провали
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Връзката с мрежовата игра се загуби
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Не може да зареди играта
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Сървъра не може да бъде стартиран
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Не може да се свърже

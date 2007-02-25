@@ -395,6 +395,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Alusta m
 STR_0141_LOAD_GAME                                              :{BLACK}Laadi mängu
 STR_SINGLE_PLAYER                                               :{BLACK}Üksikmängija
 STR_MULTIPLAYER                                                 :{BLACK}Võrgumäng
+STR_SCENARIO_EDITOR                                             :{BLACK}Stsenaariumi Muutmine
 
 STR_64                                                          :64
 STR_128                                                         :128

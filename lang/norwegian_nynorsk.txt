@@ -296,6 +296,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nytt spe
 STR_0141_LOAD_GAME                                              :{BLACK}Last inn spel
 STR_SINGLE_PLAYER                                               :{BLACK}Einspelar
 STR_MULTIPLAYER                                                 :{BLACK}Fleirspelar
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenarioredigering
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -1419,6 +1420,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste ov
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Finn inkje nettverksadapter eller kompilert utan ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kunne ikkje finne noko nettverksspel
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Tenaren svarte ikkje på spørringa
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kunne ikkje koble til grunna NewGRF-filer som ikkje passar saman
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Synkronisering i nettverksspelet feila
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Mista tilkoblinga til nettverksspelet
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kunne ikkje laste spel som var lagra på tenaren
@@ -1440,6 +1442,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :synkroniserings
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :klarte ikkje å opne kartet
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :sambandet vart brote
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokollfeil
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF-filer passar ikkje saman
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ikkje autorisert
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :mottok merkeleg pakke
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :feil versjon

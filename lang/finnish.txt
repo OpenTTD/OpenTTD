@@ -1419,6 +1419,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Asiakasl
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Verkkolaitteita ei löytynyt tai käännetty ilman ENABLE_NETWORK-valintaa.
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Verkkopelejä ei löytynyt.
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Palvelin ei vastannut pyyntöön.
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Yhteyden muodostaminen epäonnistui NewGRF-virheen vuoksi
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Verkkopelin tahdistus epäonnistui.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Verkkopeliyhteys katkesi.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Palvelimen pelitallennetta ei voi ladata.
@@ -1440,6 +1441,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :tahdistusvirhe
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :karttaa ei voitu ladata
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :yhteys katkesi
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokollavirhe
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF-virhe
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ei valtuutettu
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :vastaanotettiin omituinen paketti
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :väärä revisio
@@ -2189,7 +2191,6 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Yhtiön {COMPANY} on ottanut haltuun {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Tällä yhtiöllä ei ole vielä osakkeita...
 
-STR_LIVERY_DEFAULT                                              :
 STR_LIVERY_STEAM                                                :Höyryveturi
 STR_LIVERY_DIESEL                                               :Dieselveturi
 STR_LIVERY_ELECTRIC                                             :Sähköveturi

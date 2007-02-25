@@ -1021,44 +1021,44 @@ STR_CONFIG_PATCHES_ON                                           :да
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Показывать скорость в панели статуса транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и берегу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Разрешить более реалистичные зоны покрытия: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Разрешить удалять больше дорог, мостов, т.п.: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Использовать очень длинные поезда: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Разрешить реалистичное ускорение: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Запретить повороты на 90 град.: {ORANGE}{STRING} {LTBLUE} (требуется NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Объединять станции: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}При вкл. полной загрузке отправляться, когда заполнен один тип вагонов: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Улучшенный алгоритм загрузки: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Разрешить удаление всех принадлежащих городу объектов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Включить строительство очень длинных поездов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Включить реалистичное ускорение для поездов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Запретить резкие повороты поездам и кораблям: {ORANGE}{STRING} {LTBLUE}(NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Объединять построенные рядом станции: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Покидать станцию, когда любой груз полностью загружен: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Использовать улучшенный алгоритм загрузки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Постепенная загрузка транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Инфляция: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Доставлять груз на станцию, только если она его принимает: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Строить очень длинные мосты: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Добавлять депо в расписание: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Разрешить строительство очень длинных мостов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Разрешить добавлять депо в маршрут: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Разрешить строительство сырьевых предприятий: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Строить неск. предприятий 1 типа в одном городе: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Одинаковые предприятия можно строить рядом: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Всегда показывать длинную дату в панели состояния: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Сигналы на стороне движения: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Показывать светофоры на стороне движения: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Показывать финансовую статистику в конце года: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Приказ без остановки в стиле TTDPatch: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Разрешить ожидание въезда на автостанцию: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Использовать поведение TTDP для приказа "без остановок": {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Разрешить автомобилям ожидать въезда на станцию: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Смещать обзор, когда курсор находится у края экрана: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Разрешить взятку местной администрации: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Станции могут быть разной формы: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Новый поиск пути (NPF, без NTP): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Коэф. увеличения веса груза: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Станции могут быть произвольной формы: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Включить новый алгоритм навигации (NPF, заменяет NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Множитель увеличения веса груза для товарных поездов: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Всегда разрешать малые аэропорты: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Всегда разрешать строительство малых аэропортов: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Предупреждать, если поезд не находит дороги: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Пересмотреть расписания: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Предупреждать, если поезд заблудился: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Проверять маршруты транспортных средств на правильность: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :нет
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :да, кроме остановленных трансп. средств
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :всего транспорта
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждать, что трансп. средство приносит убыток: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждать, если поезд приносит убыток: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт никогда не устаревает: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Автоматически обновлять устаревший транспорт
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Обновить транспорт за (через) {ORANGE}{STRING}{LTBLUE} мес. после устаревания
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Минимальная сумма для автообновления: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Автоматически обновлять изношенный транспорт
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Обновлять через {ORANGE}{STRING}{LTBLUE} месяцев после истечения срока службы
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Минимальная сумма, необходимая для автообновления: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Длительность сообщений об ошибке: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей города после названия: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Убирать деревья при включении прозрачности зданий: {ORANGE}{STRING}
@@ -1066,7 +1066,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Уби�
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Генератор земли: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Оригинальный
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. дистанция от края карты до Нефтепер. завода {ORANGE}{STRING}
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. расстояние от края карты до нефтепер. заводов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Высота "снежной" линии: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Неровность земли (только для TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Очень гладкий
@@ -1093,37 +1093,37 @@ STR_CONFIG_PATCHES_LIVERIES_OWN                                 :только д
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :для всех компаний
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Предпочитать командный чат при нажатии Enter: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. кол-во поездов у игрока: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. кол-во автотранспорта у игрока: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Макс. кол-во авиатранспорта у игрока: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Макс. кол-во кораблей у игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов у игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Максимальное количество кол-во автомобилей у игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Максимальное количество авиатранспорта у игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Максимальное количество кораблей у игрока: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Не допускать постройки поездов конкурентами: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Не допускать постройки автомобилей конкурентами: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Не допускать постройки самолётов конкурентами: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Не допускать постройки авиатранспорта конкурентами: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Не допускать постройки кораблей конкурентами: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Включить новый AI (альфа-версия): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Разрешить появление AI-конкурентов в сетевой игре: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Интервал обслуживания поездов: {ORANGE}{STRING} дней/%
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Интервал обслуживания поездов: {ORANGE}отключено
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Интервал обслуживания автотранспорта: {ORANGE}{STRING} дней/%
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Интервал обслуживания автотранспорта: {ORANGE}отключено
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Интервал обслуживания самолетов: {ORANGE}{STRING} дней/%
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Интервал обслуживания самолетов: {ORANGE}отключено
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Интервал обслуживания поездов: {ORANGE}не обслуживаются
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Интервал обслуживания автомобилей: {ORANGE}{STRING} дней/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Интервал обслуживания автомобилей: {ORANGE}не обслуживаются
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Интервал обслуживания авиатранспорта: {ORANGE}{STRING} дней/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Интервал обслуживания авиатранспорта: {ORANGE}не обслуживается
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Интервал обслуживания кораблей: {ORANGE}{STRING} дней/%
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Интервал обслуживания кораблей: {ORANGE}отключено
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Не обслуживать, если поломки выкл. : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Интервал обслуживания кораблей: {ORANGE}не обслуживаются
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Отключить обслуживание, если поломки выключены: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Включить ограничение скорости вагонов: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Откл. электрофицир. ЖД: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Отключить электрофицированную железную дорогу: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}"Цветные" новости появл. в : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Год начала игры: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Год окончания игры: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (более мелкие изменения)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Разрешить покупку акций других компаний
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При перетаскивании ставить сигналы каждые : {ORANGE}{STRING} клетки
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При перетаскивании ставить светофоры каждые: {ORANGE}{STRING} клетки
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :слева
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :в центре
@@ -1144,9 +1144,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Изменить значение
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Некоторые из выбранных интервалов обслуживания не совместимы с выбранной установкой. Допускаются значения 5-90% или 30-800 дней.
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Исп. YAPF для кораблей: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Исп. YAPF для авто: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Исп. YAPF для поездов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Использовать YAPF для кораблей: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Использовать YAPF для автомобилей: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Использовать YAPF для поездов: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Умеренный ландшафт
 STR_SUB_ARCTIC_LANDSCAPE                                        :Субарктический ландшафт
@@ -1269,7 +1269,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Пере
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Выбор типа груза для перевозки
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Переоборудование поезда для выделенного типа груза
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Не могу переоборуд. поезд...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Интервал обслуживания в процентах: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Интервалы обслуживания в процентах от срока службы: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Изменить производительность
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Добро пожаловать в новый ИИ, он совершенствуется. Вы должны быть готовы к проблемам. Когда это случится, сделайте снимок и отправьте на форум. Наслаждайтесь!

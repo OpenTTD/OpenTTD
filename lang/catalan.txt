@@ -1236,7 +1236,7 @@ STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Desactiv
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activa tots
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Construeix Mina de Carbó
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Planta Bosc
+STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Planta un Bosc
 STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Construeix una Plataforma Petrolífera
 STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Funda Granja
 STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Construeix una Mina de Coure
@@ -1247,7 +1247,7 @@ STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Construe
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Funda Plantació de Fruita
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Funda Plantació de Cautxú
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Funda Surtidor d'Aigua
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Planta Bosc de Cotó de Sucre
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Planta un Bosc de Cotó de Sucre
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Funda Granja de Piles
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Perfora per buscar Cola
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Funda Fonts de Plàstic
@@ -1471,7 +1471,7 @@ STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Espectadors
 
-STR_NETWORK_CLIENTLIST_NONE                                     :
+STR_NETWORK_CLIENTLIST_NONE                                     :(cap)
 STR_NETWORK_CLIENTLIST_KICK                                     :Breu
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Entrega diners
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parla a tothom

@@ -2878,7 +2878,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Antal af køretøjer; dette inkludere vejkøretøjer, tog, skibe og fly
-STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Antallet af stationer. Alle dele af en station (f.eks. tog station, bus station, lufthavn) tæller med, også selvom de er sat sammen til en station
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Antallet af stationer. Alle dele af en station (f.eks. banegård, rutebilstation, lufthavn) tæller med, selvom de er sammensat som én station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Afkast for køretøjet med laveste indkomst (af alle køretøjer ældre end 2 år)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Indtægt i måneden med den laveste indtægt i de sidste 12 kvartaler
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Indkomst i måneden med det højeste afkast i de sidste 12 kvartaler
