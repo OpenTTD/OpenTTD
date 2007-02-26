@@ -179,9 +179,17 @@ char *InlineString(char *buf, StringID string)
 }
 
 
-// This function takes a C-string and allocates a temporary string ID.
-// The duration of the bound string is valid only until the next GetString,
-// so be careful.
+/**
+ * This function takes a C-string and allocates a temporary string ID.
+ * The StringID of the bound string is valid until BindCString is called
+ * another NUM_BOUND_STRINGS times. So be careful when using it.
+ *
+ * @note formatting a DATE_TINY calls BindCString twice, thus reduces the
+ *       amount of 'user' bound strings by 2.
+ * @todo rewrite the BindCString system to make the limit flexible and
+ *       non-round-robin. For example by using smart pointers that free
+ *       the allocated StringID when they go out-of-scope/are freed.
+ */
 StringID BindCString(const char *str)
 {
 	int idx = (++_bind_index) & (NUM_BOUND_STRINGS - 1);
@@ -285,40 +293,34 @@ static char *FormatNoCommaNumber(char *buff, int32 number, const char* last)
 static char *FormatYmdString(char *buff, Date date, const char* last)
 {
 	YearMonthDay ymd;
-
 	ConvertDateToYMD(date, &ymd);
 
-	buff = strecpy(buff, GetStringPtr(ymd.day + STR_01AC_1ST - 1), last);
-	buff = strecpy(buff, " ", last);
-	buff = strecpy(buff, GetStringPtr(STR_0162_JAN + ymd.month), last);
-	buff = strecpy(buff, " ", last);
-
-	return FormatNoCommaNumber(buff, ymd.year, last);
+	int32 args[3] = { ymd.day + STR_01AC_1ST - 1, STR_0162_JAN + ymd.month, ymd.year };
+	return FormatString(buff, GetStringPtr(STR_DATE_LONG), args, 0, last);
 }
 
 static char *FormatMonthAndYear(char *buff, Date date, const char* last)
 {
 	YearMonthDay ymd;
-
 	ConvertDateToYMD(date, &ymd);
 
-	buff = strecpy(buff, GetStringPtr(STR_MONTH_JAN + ymd.month), last);
-	buff = strecpy(buff, " ", last);
-
-	return FormatNoCommaNumber(buff, ymd.year, last);
+	int32 args[2] = { STR_MONTH_JAN + ymd.month, ymd.year };
+	return FormatString(buff, GetStringPtr(STR_DATE_SHORT), args, 0, last);
 }
 
 static char *FormatTinyDate(char *buff, Date date, const char* last)
 {
 	YearMonthDay ymd;
-
 	ConvertDateToYMD(date, &ymd);
-	buff += snprintf(
-		buff, last - buff + 1,
-		" %02i-%02i-%04i", ymd.day, ymd.month + 1, ymd.year
-	);
 
-	return buff;
+	char day[3];
+	char month[3];
+	/* We want to zero-pad the days and months */
+	snprintf(day,   lengthof(day),   "%02i", ymd.day);
+	snprintf(month, lengthof(month), "%02i", ymd.month + 1);
+
+	int32 args[3] = { BindCString(day), BindCString(month), ymd.year };
+	return FormatString(buff, GetStringPtr(STR_DATE_TINY), args, 0, last);
 }
 
 static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 number, bool compact, const char* last)
