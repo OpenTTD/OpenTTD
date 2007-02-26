@@ -2,7 +2,7 @@
 !define APPNAME "OpenTTD"
 !define APPNAMEANDVERSION "OpenTTD 0.5.0.0"
 !define APPVERSION "0.5.0.0"
-!define INSTALLERVERSION 27 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
+!define INSTALLERVERSION 28 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
 !define MUI_ICON "..\..\..\openttd.ico"
 !define MUI_UNICON "..\..\..\openttd.ico"
 !define MUI_WELCOMEFINISHPAGE_BITMAP "welcome.bmp"
@@ -162,6 +162,7 @@ Section "Copy Game Graphics" Section2
 	CopyFiles "$CDDRIVE\gm\*.gm" "$INSTDIR\gm\"
 	SetOutPath "$INSTDIR\data\"
 	CopyFiles "$CDDRIVE\sample.cat" "$INSTDIR\data\sample.cat" 1566
+	; Copy Windows files
 	CopyFiles "$CDDRIVE\trg1r.grf" "$INSTDIR\data\trg1r.grf" 2365
 	CopyFiles "$CDDRIVE\trgcr.grf" "$INSTDIR\data\trgcr.grf" 260
 	CopyFiles "$CDDRIVE\trghr.grf" "$INSTDIR\data\trghr.grf" 400
@@ -184,7 +185,7 @@ SectionEnd
 ; Modern install component descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
 	!insertmacro MUI_DESCRIPTION_TEXT ${Section1} "OpenTTD is a fully functional clone of TTD and is very playable."
-	!insertmacro MUI_DESCRIPTION_TEXT ${Section2} "Copies the game graphics. Requires TTD for Windows."
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section2} "Copies the game graphics. Requires TTD (for Windows)."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;!undef SHORTCUTS
@@ -245,6 +246,7 @@ Section Uninstall
 	Delete "$INSTDIR\data\autorail.grf"
 	Delete "$INSTDIR\data\dosdummy.grf"
 	Delete "$INSTDIR\data\sample.cat"
+	; Windows Data files
 	Delete "$INSTDIR\data\trg1r.grf"
 	Delete "$INSTDIR\data\trghr.grf"
 	Delete "$INSTDIR\data\trgtr.grf"
@@ -307,9 +309,9 @@ FunctionEnd
 ; Exit from page function
 Function SelectCD2
 	ReadINIStr $CDDRIVE $R0 "Field 2" "State"
-	IfFileExists $CDDRIVE\trg1r.grf "" NoCD
-	IfFileExists $CDDRIVE\sample.cat "" NoCD
 	IfFileExists $CDDRIVE\trgir.grf hasCD ""
+	IfFileExists $CDDRIVE\TRGI.GRF hasCD ""
+	IfFileExists $CDDRIVE\sample.cat "" NoCD
 NoCD:
   MessageBox MB_OK "Setup cannot continue without the Transport Tycoon Deluxe Location!"
   Abort
@@ -325,22 +327,7 @@ Function .onInit
 
 	SectionSetFlags 0 17
 
-	;Want to have a splash BMP?  Uncomment these lines - CAREFUL WITH FILE SIZE
-
-;	        # the plugins dir is automatically deleted when the installer exits
-;        InitPluginsDir
-;				File /oname=$PLUGINSDIR\splash.bmp "C:\Documents and Settings\Administrator\My Documents\My Pictures\OpenTTD Splash.bmp"
-;        #optional
-;        #File /oname=$PLUGINSDIR\splash.wav "C:\myprog\sound.wav"
-;
-;        ;MessageBox MB_OK "Fading"
-;
-;       advsplash::show 3000 600 400 -1 $PLUGINSDIR\splash
-;
-;      Pop $0          ; $0 has '1' if the user closed the splash screen early,
-;                        ; '0' if everything closed normal, and '-1' if some error occured.
-;End Splash Area
-		;Starts Setup - let's look for an older version of OpenTTD
+	;Starts Setup - let's look for an older version of OpenTTD
 	ReadRegDWORD $R8 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Version"
 
 	IfErrors ShowWelcomeMessage ShowUpgradeMessage

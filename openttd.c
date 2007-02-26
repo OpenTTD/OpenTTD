@@ -1170,7 +1170,7 @@ bool AfterLoadGame(void)
 
 		switch (gcf_res) {
 			case GCF_COMPATIBLE: _switch_mode_errorstr = STR_NEWGRF_COMPATIBLE_LOAD_WARNING; break;
-			case GCF_NOT_FOUND: return false; /*_switch_mode_errorstr = STR_NEWGRF_DISABLED_WARNING; break; */
+			case GCF_NOT_FOUND: _switch_mode_errorstr = STR_NEWGRF_DISABLED_WARNING; break;
 			default: break;
 		}
 	}
