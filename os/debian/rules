@@ -21,9 +21,8 @@ build-stamp:
 	dh_testdir
 
 	# Add here commands to compile the package.
-	
 	rm Makefile.config || true
-	$(MAKE) PREFIX=/usr MIDI=/usr/bin/timidity INSTALL=1 BINARY_DIR=games DATA_DIR=share/games/openttd ICON_DIR=share/pixmaps PERSONAL_DIR=.openttd USE_HOMEDIR=1
+	$(MAKE) PREFIX=/usr MIDI=/usr/bin/timidity INSTALL=1 BINARY_DIR=games DATA_DIR=share/games/openttd ICON_DIR=share/pixmaps PERSONAL_DIR=.openttd USE_HOMEDIR=1 WITH_FREETYPE=1 WITH_FONTCONFIG=1
 
 	#/usr/bin/docbook-to-man debian/openttd.sgml > openttd.1
 

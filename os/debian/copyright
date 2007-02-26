@@ -1,9 +1,9 @@
-This package was debianized by Matthijs Kooijman <m.kooijman@student.utwente.nl> on
-Wed, 15 Sep 2004 00:24:01 +0200.
+This package was debianized by Matthijs Kooijman <m.kooijman@student.utwente.nl>
+on Wed, 15 Sep 2004 00:24:01 +0200.
 
 It was downloaded from http://sourceforge.net/projects/openttd
 
-Upstream Author: Ludvig Strigeus (ludde) and many others
+Upstream author: Ludvig Strigeus (ludde) and many others.
 
 License:
 
@@ -19,7 +19,7 @@ License:
 
    You should have received a copy of the GNU General Public License
    along with this package; if not, write to the Free Software
-	 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
 On Debian systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL'.

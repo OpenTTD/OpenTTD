@@ -23,10 +23,10 @@ You should copy the data files from the original TTD into the data directory
 	mixing. My VIA AC97 device cannot do hardware mixing, for example.
 
 -Scenarios
-	There are a few scenarios included in this release. When you start openttd
-	it will look for scenarios in ~/.openttd/scenario, while the premade
-	scenarios are in /usr/share/games/openttd/data/scenario. You have two
-	options to use the scenarios.
+	There are a few scenarios included in this release. When you start
+	openttd it will look for scenarios in ~/.openttd/scenario, while the
+	premade scenarios are in /usr/share/games/openttd/data/scenario. You
+	have two options to use the scenarios.
 	* Navigate to /usr/share/games/openttd/data/scenario within openttd.
 	* Copy scenarios from /usr/share/games/openttd/data/scenario to
 	  ~/.openttd/scenario. We are looking into a better solution for this.
