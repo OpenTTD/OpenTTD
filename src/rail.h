@@ -239,7 +239,6 @@ typedef struct RailtypeInfo {
 	byte custom_ground_offset;
 } RailtypeInfo;
 
-extern RailtypeInfo _railtypes[RAILTYPE_END];
 
 // these are the maximums used for updating signal blocks, and checking if a depot is in a pbs block
 enum {
@@ -291,7 +290,7 @@ static inline Track FindFirstTrack(TrackBits tracks)
 */
 static inline Track TrackBitsToTrack(TrackBits tracks)
 {
-	assert (tracks == INVALID_TRACK_BIT || (tracks != TRACK_BIT_NONE && KILL_FIRST_BIT(tracks) == 0));
+	assert(tracks == INVALID_TRACK_BIT || (tracks != TRACK_BIT_NONE && KILL_FIRST_BIT(tracks) == 0));
 	return tracks != INVALID_TRACK_BIT ? (Track)FIND_FIRST_BIT(tracks) : INVALID_TRACK;
 }
 
@@ -321,14 +320,18 @@ static inline bool IsValidTrackdir(Trackdir trackdir) { return (TrackdirToTrackd
  * Maps a trackdir to the bit that stores its status in the map arrays, in the
  * direction along with the trackdir.
  */
-extern const byte _signal_along_trackdir[TRACKDIR_END];
-static inline byte SignalAlongTrackdir(Trackdir trackdir) {return _signal_along_trackdir[trackdir];}
+static inline byte SignalAlongTrackdir(Trackdir trackdir)
+{
+	extern const byte _signal_along_trackdir[TRACKDIR_END];
+	return _signal_along_trackdir[trackdir];
+}
 
 /**
  * Maps a trackdir to the bit that stores its status in the map arrays, in the
  * direction against the trackdir.
  */
-static inline byte SignalAgainstTrackdir(Trackdir trackdir) {
+static inline byte SignalAgainstTrackdir(Trackdir trackdir)
+{
 	extern const byte _signal_against_trackdir[TRACKDIR_END];
 	return _signal_against_trackdir[trackdir];
 }
@@ -337,7 +340,8 @@ static inline byte SignalAgainstTrackdir(Trackdir trackdir) {
  * Maps a Track to the bits that store the status of the two signals that can
  * be present on the given track.
  */
-static inline byte SignalOnTrack(Track track) {
+static inline byte SignalOnTrack(Track track)
+{
 	extern const byte _signal_on_track[TRACK_END];
 	return _signal_on_track[track];
 }
@@ -346,9 +350,6 @@ static inline byte SignalOnTrack(Track track) {
 /*
  * Functions describing logical relations between Tracks, TrackBits, Trackdirs
  * TrackdirBits, Direction and DiagDirections.
- *
- * TODO: Add #unndefs or something similar to remove the arrays used below
- * from the global scope and expose direct uses of them.
  */
 
 /**
@@ -462,13 +463,15 @@ static inline Trackdir DiagdirToDiagTrackdir(DiagDirection diagdir)
 	return _dir_to_diag_trackdir[diagdir];
 }
 
-extern const TrackdirBits _exitdir_reaches_trackdirs[DIAGDIR_END];
-
 /**
  * Returns all trackdirs that can be reached when entering a tile from a given
  * (diagonal) direction. This will obviously include 90 degree turns, since no
  * information is available about the exact angle of entering */
-static inline TrackdirBits DiagdirReachesTrackdirs(DiagDirection diagdir) { return _exitdir_reaches_trackdirs[diagdir]; }
+static inline TrackdirBits DiagdirReachesTrackdirs(DiagDirection diagdir)
+{
+	extern const TrackdirBits _exitdir_reaches_trackdirs[DIAGDIR_END];
+	return _exitdir_reaches_trackdirs[diagdir];
+}
 
 /**
  * Returns all tracks that can be reached when entering a tile from a given
@@ -480,7 +483,12 @@ static inline TrackBits DiagdirReachesTracks(DiagDirection diagdir) { return Tra
  * Maps a trackdir to the trackdirs that can be reached from it (ie, when
  * entering the next tile. This will include 90 degree turns!
  */
-static inline TrackdirBits TrackdirReachesTrackdirs(Trackdir trackdir) { return _exitdir_reaches_trackdirs[TrackdirToExitdir(trackdir)]; }
+static inline TrackdirBits TrackdirReachesTrackdirs(Trackdir trackdir)
+{
+	extern const TrackdirBits _exitdir_reaches_trackdirs[DIAGDIR_END];
+	return _exitdir_reaches_trackdirs[TrackdirToExitdir(trackdir)];
+}
+
 /* Note that there is no direct table for this function (there used to be),
  * but it uses two simpeler tables to achieve the result */
 
@@ -488,7 +496,8 @@ static inline TrackdirBits TrackdirReachesTrackdirs(Trackdir trackdir) { return 
 /**
  * Maps a trackdir to all trackdirs that make 90 deg turns with it.
  */
-static inline TrackdirBits TrackdirCrossesTrackdirs(Trackdir trackdir) {
+static inline TrackdirBits TrackdirCrossesTrackdirs(Trackdir trackdir)
+{
 	extern const TrackdirBits _track_crosses_trackdirs[TRACKDIR_END];
 	return _track_crosses_trackdirs[TrackdirToTrack(trackdir)];
 }
@@ -508,6 +517,7 @@ static inline bool IsDiagonalTrackdir(Trackdir trackdir) { return IsDiagonalTrac
  */
 static inline const RailtypeInfo *GetRailTypeInfo(RailType railtype)
 {
+	extern RailtypeInfo _railtypes[RAILTYPE_END];
 	assert(railtype < RAILTYPE_END);
 	return &_railtypes[railtype];
 }
