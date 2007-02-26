@@ -2,7 +2,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "bridge_map.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "functions.h"
@@ -20,6 +19,7 @@
 #include "variables.h"
 #include "table/unmovable_land.h"
 #include "genworld.h"
+#include "bridge.h"
 
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are

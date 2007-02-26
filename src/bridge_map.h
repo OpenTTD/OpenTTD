@@ -13,9 +13,6 @@
 #include "tile.h"
 
 
-void DrawBridgeMiddle(const TileInfo* ti); // XXX
-
-
 static inline bool IsBridge(TileIndex t)
 {
 	assert(IsTileType(t, MP_TUNNELBRIDGE));

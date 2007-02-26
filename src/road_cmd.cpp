@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
+#include "bridge.h"
 #include "cmd_helper.h"
 #include "rail_map.h"
 #include "road_map.h"

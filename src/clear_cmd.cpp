@@ -15,6 +15,7 @@
 #include "command.h"
 #include "tunnel_map.h"
 #include "bridge_map.h"
+#include "bridge.h"
 #include "variables.h"
 #include "table/sprites.h"
 #include "unmovable_map.h"
