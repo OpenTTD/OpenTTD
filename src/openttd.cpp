@@ -1467,6 +1467,34 @@ bool AfterLoadGame(void)
 		}
 	}
 
+	if (CheckSavegameVersion(48)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			switch (GetTileType(t)) {
+				case MP_RAILWAY:
+					if (IsPlainRailTile(t)) {
+						/* Swap ground type and signal type for plain rail tiles, so the
+						 * ground type uses the same bits as for depots and waypoints. */
+						uint tmp = GB(_m[t].m4, 0, 4);
+						SB(_m[t].m4, 0, 4, GB(_m[t].m2, 0, 4));
+						SB(_m[t].m2, 0, 4, tmp);
+					} else if (HASBIT(_m[t].m5, 2)) {
+						/* Split waypoint and depot rail type and remove the subtype. */
+						CLRBIT(_m[t].m5, 2);
+						CLRBIT(_m[t].m5, 6);
+					}
+					break;
+
+				case MP_STREET:
+					/* Swap m3 and m4, so the track type for rail crossings is the
+					 * same as for normal rail. */
+					Swap(_m[t].m3, _m[t].m4);
+					break;
+
+				default: break;
+			}
+		}
+	}
+
 	/* Elrails got added in rev 24 */
 	if (CheckSavegameVersion(24)) {
 		Vehicle *v;
@@ -1490,7 +1518,7 @@ bool AfterLoadGame(void)
 
 				case MP_STREET:
 					if (IsLevelCrossing(t)) {
-						SetRailTypeCrossing(t, UpdateRailType(GetRailTypeCrossing(t), min_rail));
+						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 					}
 					break;
 
@@ -1575,11 +1603,11 @@ bool AfterLoadGame(void)
 				case MP_RAILWAY:
 					if (HasSignals(t)) {
 						// convert PBS signals to combo-signals
-						if (HASBIT(_m[t].m4, 2)) SetSignalType(t, SIGTYPE_COMBO);
+						if (HASBIT(_m[t].m2, 2)) SetSignalType(t, SIGTYPE_COMBO);
 
 						// move the signal variant back
-						SetSignalVariant(t, HASBIT(_m[t].m4, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
-						CLRBIT(_m[t].m4, 3);
+						SetSignalVariant(t, HASBIT(_m[t].m2, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
+						CLRBIT(_m[t].m2, 3);
 					}
 
 					// Clear PBS reservation on track

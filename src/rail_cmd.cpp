@@ -661,7 +661,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		if (!HasSignals(tile)) {
 			// there are no signals at all on this tile yet
-			_m[tile].m5 |= RAIL_TILE_SIGNALS; // change into signals
+			SetHasSignals(tile, true);
 			_m[tile].m2 |= 0xF0;              // all signals are on
 			_m[tile].m3 &= ~0xF0;          // no signals built by default
 			SetSignalType(tile, SIGTYPE_NORMAL);
@@ -824,7 +824,7 @@ int32 CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* removed last signal from tile? */
 		if (GB(_m[tile].m3, 4, 4) == 0) {
 			SB(_m[tile].m2, 4, 4, 0);
-			SB(_m[tile].m5, 6, 2, RAIL_TILE_NORMAL >> 6); // XXX >> because the constant is meant for direct application, not use with SB
+			SetHasSignals(tile, false);
 			SetSignalVariant(tile, SIG_ELECTRIC); // remove any possible semaphores
 		}
 
@@ -1004,12 +1004,11 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 			return cost;
 		}
 
-		case RAIL_TILE_DEPOT_WAYPOINT:
-			if (GetRailTileSubtype(tile) == RAIL_SUBTYPE_DEPOT) {
-				return RemoveTrainDepot(tile, flags);
-			} else {
-				return RemoveTrainWaypoint(tile, flags, false);
-			}
+		case RAIL_TILE_DEPOT:
+			return RemoveTrainDepot(tile, flags);
+
+		case RAIL_TILE_WAYPOINT:
+			return RemoveTrainWaypoint(tile, flags, false);
 
 		default:
 			return CMD_ERROR;
@@ -1284,7 +1283,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
-		if (GetRailTileSubtype(ti->tile) == RAIL_SUBTYPE_DEPOT) {
+		if (IsRailDepot(ti->tile)) {
 			dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
 
 			relocation = rti->total_offset;
@@ -1877,7 +1876,7 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 		}
 		return ret;
 	} else {
-		if (GetRailTileSubtype(tile) == RAIL_SUBTYPE_DEPOT) {
+		if (IsRailDepot(tile)) {
 			return AxisToTrackBits(DiagDirToAxis(GetRailDepotDirection(tile))) * 0x101;
 		} else {
 			return GetRailWaypointBits(tile) * 0x101;
@@ -1914,10 +1913,13 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 			break;
 		}
 
-		case RAIL_TILE_DEPOT_WAYPOINT:
+		case RAIL_TILE_DEPOT:
+			td->str = STR_1023_RAILROAD_TRAIN_DEPOT;
+			break;
+
+		case RAIL_TILE_WAYPOINT:
 		default:
-			td->str = (GetRailTileSubtype(tile) == RAIL_SUBTYPE_DEPOT) ?
-				STR_1023_RAILROAD_TRAIN_DEPOT : STR_LANDINFO_WAYPOINT;
+			td->str = STR_LANDINFO_WAYPOINT;
 			break;
 	}
 }

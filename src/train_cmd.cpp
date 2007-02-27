@@ -67,7 +67,7 @@ void TrainPowerChanged(Vehicle* v)
 		/* Power is not added for articulated parts */
 		if (IsArticulatedPart(u)) continue;
 
-		RailType railtype = (IsLevelCrossingTile(u->tile) ? GetRailTypeCrossing(u->tile) : GetRailType(u->tile));
+		RailType railtype = GetRailType(u->tile);
 		bool engine_has_power = HasPowerOnRail(u->u.rail.railtype, railtype);
 		bool wagon_has_power  = HasPowerOnRail(v->u.rail.railtype, railtype);
 
@@ -2705,10 +2705,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 	return
 		IsTileOwner(tile, v->owner) && (
 			!IsFrontEngine(v) ||
-			HASBIT(
-				v->u.rail.compatible_railtypes,
-				IsTileType(tile, MP_STREET) ? GetRailTypeCrossing(tile) : GetRailType(tile)
-			)
+			HASBIT(v->u.rail.compatible_railtypes, GetRailType(tile))
 		);
 }
 

@@ -9,17 +9,16 @@
 
 
 typedef enum RailTileType {
-	RAIL_TILE_NORMAL         = 0x0,
-	RAIL_TILE_SIGNALS        = 0x40,
-	RAIL_TILE_UNUSED         = 0x80, /* XXX: Maybe this could become waypoints? */
-	RAIL_TILE_DEPOT_WAYPOINT = 0xC0, /* Is really depots and waypoints... */
-	RAIL_TILE_TYPE_MASK      = 0xC0
+	RAIL_TILE_NORMAL   = 0,
+	RAIL_TILE_SIGNALS  = 1,
+	RAIL_TILE_WAYPOINT = 2,
+	RAIL_TILE_DEPOT    = 3,
 } RailTileType;
 
 static inline RailTileType GetRailTileType(TileIndex t)
 {
 	assert(IsTileType(t, MP_RAILWAY));
-	return (RailTileType)(_m[t].m5 & RAIL_TILE_TYPE_MASK);
+	return (RailTileType)GB(_m[t].m5, 6, 2);
 }
 
 /**
@@ -40,39 +39,25 @@ static inline bool HasSignals(TileIndex tile)
 	return GetRailTileType(tile) == RAIL_TILE_SIGNALS;
 }
 
-
-/** These specify the subtype when the main rail type is
- * RAIL_TILE_DEPOT_WAYPOINT */
-typedef enum RailTileSubtypes {
-	RAIL_SUBTYPE_DEPOT    = 0x00,
-	RAIL_SUBTYPE_WAYPOINT = 0x04,
-	RAIL_SUBTYPE_MASK     = 0x3C
-} RailTileSubtype;
-
 /**
- * Returns the RailTileSubtype of a given rail tile with type
- * RAIL_TILE_DEPOT_WAYPOINT
+ * Add/remove the 'has signal' bit from the RailTileType
  */
-static inline RailTileSubtype GetRailTileSubtype(TileIndex tile)
+static inline void SetHasSignals(TileIndex tile, bool signals)
 {
-	assert(GetRailTileType(tile) == RAIL_TILE_DEPOT_WAYPOINT);
-	return (RailTileSubtype)(_m[tile].m5 & RAIL_SUBTYPE_MASK);
+	assert(IsPlainRailTile(tile));
+	SB(_m[tile].m5, 6, 1, signals);
 }
 
 
 static inline bool IsRailDepot(TileIndex t)
 {
-	return
-		GetRailTileType(t) == RAIL_TILE_DEPOT_WAYPOINT &&
-		GetRailTileSubtype(t) == RAIL_SUBTYPE_DEPOT;
+	return GetRailTileType(t) == RAIL_TILE_DEPOT;
 }
 
 
 static inline bool IsRailWaypoint(TileIndex t)
 {
-	return
-		GetRailTileType(t) == RAIL_TILE_DEPOT_WAYPOINT &&
-		GetRailTileSubtype(t) == RAIL_SUBTYPE_WAYPOINT;
+	return GetRailTileType(t) == RAIL_TILE_WAYPOINT;
 }
 
 
@@ -81,21 +66,9 @@ static inline RailType GetRailType(TileIndex t)
 	return (RailType)GB(_m[t].m3, 0, 4);
 }
 
-// TODO remove this by moving to the same bits as GetRailType()
-static inline RailType GetRailTypeCrossing(TileIndex t)
-{
-	return (RailType)GB(_m[t].m4, 0, 4);
-}
-
 static inline void SetRailType(TileIndex t, RailType r)
 {
 	SB(_m[t].m3, 0, 4, r);
-}
-
-// TODO remove this by moving to the same bits as SetRailType()
-static inline void SetRailTypeCrossing(TileIndex t, RailType r)
-{
-	SB(_m[t].m4, 0, 4, r);
 }
 
 
@@ -151,13 +124,13 @@ typedef enum SignalType {
 static inline SignalType GetSignalType(TileIndex t)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
-	return (SignalType)GB(_m[t].m4, 0, 2);
+	return (SignalType)GB(_m[t].m2, 0, 2);
 }
 
 static inline void SetSignalType(TileIndex t, SignalType s)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
-	SB(_m[t].m4, 0, 2, s);
+	SB(_m[t].m2, 0, 2, s);
 }
 
 static inline bool IsPresignalEntry(TileIndex t)
@@ -189,12 +162,12 @@ typedef enum SignalVariant {
 
 static inline SignalVariant GetSignalVariant(TileIndex t)
 {
-	return (SignalVariant)GB(_m[t].m4, 2, 1);
+	return (SignalVariant)GB(_m[t].m2, 2, 1);
 }
 
 static inline void SetSignalVariant(TileIndex t, SignalVariant v)
 {
-	SB(_m[t].m4, 2, 1, v);
+	SB(_m[t].m2, 2, 1, v);
 }
 
 static inline bool IsSignalPresent(TileIndex t, byte signalbit)
@@ -283,18 +256,12 @@ typedef enum RailGroundType {
 
 static inline void SetRailGroundType(TileIndex t, RailGroundType rgt)
 {
-	if (GetRailTileType(t) == RAIL_TILE_DEPOT_WAYPOINT) {
-		SB(_m[t].m4, 0, 4, rgt);
-		return;
-	}
-	SB(_m[t].m2, 0, 4, rgt);
+	SB(_m[t].m4, 0, 4, rgt);
 }
 
 static inline RailGroundType GetRailGroundType(TileIndex t)
 {
-	/* TODO Unify this */
-	if (GetRailTileType(t) == RAIL_TILE_DEPOT_WAYPOINT) return (RailGroundType)GB(_m[t].m4, 0, 4);
-	return (RailGroundType)GB(_m[t].m2, 0, 4);
+	return (RailGroundType)GB(_m[t].m4, 0, 4);
 }
 
 static inline bool IsSnowRailGround(TileIndex t)
@@ -310,7 +277,7 @@ static inline void MakeRailNormal(TileIndex t, Owner o, TrackBits b, RailType r)
 	_m[t].m2 = 0;
 	_m[t].m3 = r;
 	_m[t].m4 = 0;
-	_m[t].m5 = RAIL_TILE_NORMAL | b;
+	_m[t].m5 = RAIL_TILE_NORMAL << 6 | b;
 }
 
 
@@ -321,7 +288,7 @@ static inline void MakeRailDepot(TileIndex t, Owner o, DiagDirection d, RailType
 	_m[t].m2 = 0;
 	_m[t].m3 = r;
 	_m[t].m4 = 0;
-	_m[t].m5 = RAIL_TILE_DEPOT_WAYPOINT | RAIL_SUBTYPE_DEPOT | d;
+	_m[t].m5 = RAIL_TILE_DEPOT << 6 | d;
 }
 
 
@@ -332,7 +299,7 @@ static inline void MakeRailWaypoint(TileIndex t, Owner o, Axis a, RailType r, ui
 	_m[t].m2 = index;
 	_m[t].m3 = r;
 	_m[t].m4 = 0;
-	_m[t].m5 = RAIL_TILE_DEPOT_WAYPOINT | RAIL_SUBTYPE_WAYPOINT | a;
+	_m[t].m5 = RAIL_TILE_WAYPOINT << 6 | a;
 }
 
 #endif /* RAIL_MAP_H */

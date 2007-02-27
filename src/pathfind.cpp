@@ -786,7 +786,7 @@ start_at:
 				// Check that the tile contains exactly one track
 				if (bits == 0 || KILL_FIRST_BIT(bits) != 0) break;
 
-				if (!HASBIT(tpf->railtypes, IsTileType(tile, MP_STREET) ? GetRailTypeCrossing(tile) : GetRailType(tile))) {
+				if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
 					bits = TRACK_BIT_NONE;
 					break;
 				}

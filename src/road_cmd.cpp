@@ -162,7 +162,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (flags & DC_EXEC) {
 				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
-				MakeRailNormal(tile, GetTileOwner(tile), GetCrossingRailBits(tile), GetRailTypeCrossing(tile));
+				MakeRailNormal(tile, GetTileOwner(tile), GetCrossingRailBits(tile), GetRailType(tile));
 				MarkTileDirtyByTile(tile);
 				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
 			}
@@ -374,13 +374,13 @@ int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 	// not owned by me?
 	if (!CheckTileOwnership(tile) || !EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if (GetRailTypeCrossing(tile) == totype) return CMD_ERROR;
+	if (GetRailType(tile) == totype) return CMD_ERROR;
 
 	// 'hidden' elrails can't be downgraded to normal rail when elrails are disabled
-	if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailTypeCrossing(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
+	if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailType(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
 
 	if (exec) {
-		SetRailTypeCrossing(tile, totype);
+		SetRailType(tile, totype);
 		MarkTileDirtyByTile(tile);
 		YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetCrossingRailBits(tile)));
 	}
@@ -717,7 +717,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
-			image = GetRailTypeInfo(GetRailTypeCrossing(ti->tile))->base_sprites.crossing;
+			image = GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.crossing;
 
 			if (GetCrossingRoadAxis(ti->tile) == AXIS_X) image++;
 			if (IsCrossingBarred(ti->tile)) image += 2;
@@ -733,7 +733,7 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawGroundSprite(image, pal);
-			if (GetRailTypeCrossing(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+			if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 			break;
 		}
 

@@ -81,8 +81,8 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 			switch (GetRailTileType(t)) {
 				case RAIL_TILE_NORMAL: case RAIL_TILE_SIGNALS:
 					return GetTrackBits(t);
-				case RAIL_TILE_DEPOT_WAYPOINT:
-					if (GetRailTileSubtype(t) == RAIL_SUBTYPE_WAYPOINT) return GetRailWaypointBits(t);
+				case RAIL_TILE_WAYPOINT:
+					return GetRailWaypointBits(t);
 				default:
 					return TRACK_BIT_NONE;
 			}
@@ -103,7 +103,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 
 		case MP_STREET:
 			if (GetRoadTileType(t) != ROAD_TILE_CROSSING) return TRACK_BIT_NONE;
-			if (GetRailTypeCrossing(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
+			if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
 			return GetCrossingRailBits(t);
 
 		case MP_STATION:

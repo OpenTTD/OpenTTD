@@ -65,13 +65,13 @@ static inline TrackBits GetCrossingRailBits(TileIndex tile)
 static inline Owner GetCrossingRoadOwner(TileIndex t)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	return (Owner)_m[t].m3;
+	return (Owner)_m[t].m4;
 }
 
 static inline void SetCrossingRoadOwner(TileIndex t, Owner o)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	_m[t].m3 = o;
+	_m[t].m4 = o;
 }
 
 static inline void UnbarCrossing(TileIndex t)
@@ -95,13 +95,13 @@ static inline bool IsCrossingBarred(TileIndex t)
 #define IsOnDesert IsOnSnow
 static inline bool IsOnSnow(TileIndex t)
 {
-	return HASBIT(_m[t].m4, 7);
+	return HASBIT(_m[t].m3, 7);
 }
 
 #define ToggleDesert ToggleSnow
 static inline void ToggleSnow(TileIndex t)
 {
-	TOGGLEBIT(_m[t].m4, 7);
+	TOGGLEBIT(_m[t].m3, 7);
 }
 
 
@@ -117,12 +117,12 @@ typedef enum Roadside {
 
 static inline Roadside GetRoadside(TileIndex tile)
 {
-	return (Roadside)GB(_m[tile].m4, 4, 3);
+	return (Roadside)GB(_m[tile].m3, 4, 3);
 }
 
 static inline void SetRoadside(TileIndex tile, Roadside s)
 {
-	SB(_m[tile].m4, 4, 3, s);
+	SB(_m[tile].m3, 4, 3, s);
 }
 
 static inline bool HasRoadWorks(TileIndex t)
@@ -132,9 +132,9 @@ static inline bool HasRoadWorks(TileIndex t)
 
 static inline bool IncreaseRoadWorksCounter(TileIndex t)
 {
-	AB(_m[t].m4, 0, 4, 1);
+	AB(_m[t].m3, 0, 4, 1);
 
-	return GB(_m[t].m4, 0, 4) == 15;
+	return GB(_m[t].m3, 0, 4) == 15;
 }
 
 static inline void StartRoadWorks(TileIndex t)
@@ -153,7 +153,7 @@ static inline void TerminateRoadWorks(TileIndex t)
 	assert(HasRoadWorks(t));
 	SetRoadside(t, (Roadside)(GetRoadside(t) - ROADSIDE_GRASS_ROAD_WORKS + ROADSIDE_GRASS));
 	/* Stop the counter */
-	SB(_m[t].m4, 0, 4, 0);
+	SB(_m[t].m3, 0, 4, 0);
 }
 
 
@@ -183,8 +183,8 @@ static inline void MakeRoadNormal(TileIndex t, Owner owner, RoadBits bits, TownI
 	SetTileType(t, MP_STREET);
 	SetTileOwner(t, owner);
 	_m[t].m2 = town;
-	_m[t].m3 = 0;
-	_m[t].m4 = 0 << 7 | 0 << 4 | 0;
+	_m[t].m3 = 0 << 7 | 0 << 4 | 0;
+	_m[t].m4 = 0;
 	_m[t].m5 = ROAD_TILE_NORMAL << 4 | bits;
 }
 
@@ -194,8 +194,8 @@ static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner rail, Axis ro
 	SetTileType(t, MP_STREET);
 	SetTileOwner(t, rail);
 	_m[t].m2 = town;
-	_m[t].m3 = road;
-	_m[t].m4 = 0 << 7 | 0 << 4 | rt;
+	_m[t].m3 = 0 << 7 | 0 << 4 | rt;
+	_m[t].m4 = road;
 	_m[t].m5 = ROAD_TILE_CROSSING << 4 | roaddir << 3 | 0 << 2;
 }
 
