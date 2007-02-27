@@ -1,8 +1,9 @@
-0.5.0 (2007-02-25)
+0.5.0 (2007-02-27)
 ------------------------------------------------------------------------
 - Feature: Add the ability to load newer TTDP games (the tile information for coasts has changed) (r8738)
 - Feature: Selecting "end of orders" and deleting will delete all the vehicle's orders (shared mode unchanged) (r8685)
 - Codechange: Call GetFirstVehicleInChain only for trains thus increasing performance in large games (r8744)
+- Fix: Possible crashes, problems with aircraft and airport removal (r8921)
 - Fix: Do not show the 'edit sign' window for spectators (r8808)
 - Fix: Adhere order types for ship order insertion to determine destination type (r8802)
 - Fix: It was possible to take over buoys by building a station next to them (r8794)
