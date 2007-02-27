@@ -6,8 +6,8 @@
 !define APPNAMEANDVERSION "${APPNAME} ${APPVERSION}"
 !define APPVERSIONINTERNAL "${APPVERSION}.0" ; Needs to be of the format X.X.X.X
 
-!define MUI_ICON "..\..\..\openttd.ico"
-!define MUI_UNICON "..\..\..\openttd.ico"
+!define MUI_ICON "..\..\..\media\openttd.ico"
+!define MUI_UNICON "..\..\..\media\openttd.ico"
 !define MUI_WELCOMEFINISHPAGE_BITMAP "welcome.bmp"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_BITMAP "top.bmp"
@@ -103,16 +103,16 @@ Section "!OpenTTD" Section1
 
 	; Copy language files
 	SetOutPath "$INSTDIR\lang\"
-	File ${PATH_ROOT}lang\*.lng
-	File ${PATH_ROOT}lang\english.txt
+	File ${PATH_ROOT}bin\lang\*.lng
+	File ${PATH_ROOT}src\lang\english.txt
 
 	; Copy data files
 	SetOutPath "$INSTDIR\data\"
-	File ${PATH_ROOT}data\*.grf
-	File ${PATH_ROOT}data\opntitle.dat
+	File ${PATH_ROOT}bin\data\*.grf
+	File ${PATH_ROOT}bin\data\opntitle.dat
 	; Copy scenario files (don't choke if they don't exist)
 	SetOutPath "$INSTDIR\scenario\"
-	File /nonfatal ${PATH_ROOT}scenario\*.scn
+	File /nonfatal ${PATH_ROOT}bin\scenario\*.scn
 
 	; Copy the rest of the stuff
 	SetOutPath "$INSTDIR\"
@@ -124,8 +124,8 @@ Section "!OpenTTD" Section1
 	File ${PATH_ROOT}known-bugs.txt
 
 	; Copy executable
-	File /oname=openttd.exe ${PATH_ROOT}Release\openttd.exe
-	File ${PATH_ROOT}strgen\Debug\strgen.exe
+	File /oname=openttd.exe ${PATH_ROOT}objs\Win32\Release\openttd.exe
+	File ${PATH_ROOT}objs\strgen\strgen.exe
 
 
 	; Delete old files from the main dir. they are now placed in data/ and lang/
@@ -260,6 +260,7 @@ Section "Uninstall"
 	Delete "$INSTDIR\data\elrailsw.grf"
 	Delete "$INSTDIR\data\nsignalsw.grf"
 	Delete "$INSTDIR\data\openttd.grf"
+	Delete "$INSTDIR\data\roadstops.grf"
 	Delete "$INSTDIR\data\trkfoundw.grf"
 
 	Delete "$INSTDIR\data\sample.cat"
