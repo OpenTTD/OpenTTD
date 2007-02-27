@@ -503,12 +503,12 @@ static bool QZ_PollEvent(void)
 			break;
 
 		case NSLeftMouseDown:
+			pt = QZ_GetMouseLocation(event);
 			if (!([ event modifierFlags ] & NSCommandKeyMask) ||
 					!QZ_MouseIsInsideView(&pt)) {
 				[NSApp sendEvent:event];
 			}
 
-			pt = QZ_GetMouseLocation(event);
 			if (!QZ_MouseIsInsideView(&pt)) {
 				QZ_ShowMouse();
 				break;

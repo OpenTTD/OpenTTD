@@ -1212,13 +1212,38 @@ static void ProcessAircraftOrder(Vehicle *v)
 
 	order = GetVehicleOrder(v, v->cur_order_index);
 
-	if (order == NULL) {
-		v->current_order.type = OT_NOTHING;
-		v->current_order.flags = 0;
+	if (order == NULL|| (order->type == OT_DUMMY && !CheckForValidOrders(v))) {
+		/*
+		 * We do not have an order. This can be divided into two cases:
+		 * 1) we are heading to an invalid station. In this case we must
+		 *    find another airport to go to. If there is nowhere to go,
+		 *    we will destroy the aircraft as it otherwise will enter
+		 *    the holding pattern for the first airport, which can cause
+		 *    the plane to go into an undefined state when building an
+		 *    airport with the same StationID.
+		 * 2) we are (still) heading to a (still) valid airport, then we
+		 *    can continue going there. This can happen when you are
+		 *    changing the aircraft's orders while in-flight or in for
+		 *    example a depot. However, when we have a current order to
+		 *    go to a depot, we have to keep that order so the aircraft
+		 *    actually stops.
+		 */
+		const Station *st = GetStation(v->u.air.targetairport);
+		if (!IsValidStation(st) || st->airport_tile == 0) {
+			int32 ret;
+			PlayerID old_player = _current_player;
+
+			_current_player = v->owner;
+			ret = DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
+			_current_player = old_player;
+
+			if (CmdFailed(ret)) CrashAirplane(v);
+		} else if (v->current_order.type != OT_GOTO_DEPOT) {
+			v->current_order.type = OT_NOTHING;
+			v->current_order.flags = 0;
+		}
 		return;
 	}
-
-	if (order->type == OT_DUMMY && !CheckForValidOrders(v)) CrashAirplane(v);
 
 	if (order->type  == v->current_order.type  &&
 			order->flags == v->current_order.flags &&
