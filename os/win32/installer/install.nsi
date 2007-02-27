@@ -76,7 +76,7 @@ Page custom SelectCDEnter SelectCDExit ": TTD folder"
 Page custom ShowWarningsPage
 
 !define MUI_FINISHPAGE_RUN "$INSTDIR\openttd.exe"
-!define MUI_FINISHPAGE_LINK "Visit OpenTTD's homepage"
+!define MUI_FINISHPAGE_LINK "Visit the OpenTTD site for latest news, FAQs and downloads"
 !define MUI_FINISHPAGE_LINK_LOCATION "${APPURLLINK}"
 !define MUI_FINISHPAGE_NOREBOOTSUPPORT
 !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\readme.txt"
@@ -113,6 +113,10 @@ Section "!OpenTTD" Section1
 	; Copy scenario files (don't choke if they don't exist)
 	SetOutPath "$INSTDIR\scenario\"
 	File /nonfatal ${PATH_ROOT}bin\scenario\*.scn
+
+	; Copy heightmap files (don't choke if they don't exist)
+	SetOutPath "$INSTDIR\scenario\heightmap\"
+	File /nonfatal ${PATH_ROOT}bin\scenario\heightmap\*.*
 
 	; Copy the rest of the stuff
 	SetOutPath "$INSTDIR\"
@@ -214,6 +218,8 @@ Section "Uninstall"
 		If you choose Yes, your scenarios will be deleted." \
 		IDYES RemoveScen IDNO NoRemoveScen
 	RemoveScen:
+		Delete "$INSTDIR\scenario\heightmap*"
+		RMDir "$INSTDIR\scenario\heightmap"
 		Delete "$INSTDIR\scenario\*"
 		RMDir "$INSTDIR\scenario"
 	NoRemoveScen:
