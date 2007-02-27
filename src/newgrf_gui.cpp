@@ -485,9 +485,6 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_DESTROY:
-			if (!WP(w, newgrf_d).execute) {
-				CopyGRFConfigList(WP(w, newgrf_d).orig_list, *WP(w, newgrf_d).list);
-			}
 			/* Remove the temporary copy of grf-list used in window */
 			ClearGRFConfigList(WP(w, newgrf_d).list);
 			break;
