@@ -665,8 +665,11 @@ DIR *opendir(const wchar_t *path)
 		d = dir_calloc();
 		if (d != NULL) {
 			wchar_t search_path[MAX_PATH];
-			/* build search path for FindFirstFile */
-			_snwprintf(search_path, lengthof(search_path), L"%s\\*", path);
+			bool slash = path[wcslen(path) - 1] == L'\\';
+
+			/* build search path for FindFirstFile, try not to append additional slashes
+			 * as it throws Win9x off its groove for root directories */
+			_snwprintf(search_path, lengthof(search_path), L"%s%s*", path, slash ? L"" : L"\\");
 			*lastof(search_path) = '\0';
 			d->hFind = FindFirstFileW(search_path, &d->fd);
 
