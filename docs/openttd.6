@@ -1,6 +1,6 @@
 .\"                                      Hey, EMACS: -*- nroff -*-
 .\" Please adjust this date whenever revising the manpage.
-.Dd February 8, 2007
+.Dd February 27, 2007
 .Dt OPENTTD 6
 .Sh NAME
 .Nm openttd
@@ -11,14 +11,14 @@
 .Op Fl G Ar seed
 .Op Fl d Ar [level | cat=lvl[, ...]]
 .Op Fl g Ar [savegame]
-.Op Fl n Ar [host[#player][:port]]
+.Op Fl n Ar host[:port][#player]
 .Op Fl r Ar widthxheight
 .Op Fl t Ar date
 .Op Fl m Ar driver
 .Op Fl s Ar driver
 .Op Fl v Ar driver
 .Sh OPTIONS
-.Bl -tag -width ".Fl n Ar host[#player][:port]"
+.Bl -tag -width ".Fl n Ar host[:port][#player]"
 .It Fl D
 Start a dedicated server
 .It Fl G Ar seed
@@ -45,9 +45,7 @@ Force to use the DOS palette (use this if you see a lot of magenta)
 .It Fl m Ar driver
 Set the music driver, see
 .Fl h
-.It Fl n
-Start a network server
-.It Fl n Ar host[#player][:port]
+.It Fl n Ar host[:port][#player]
 Join a network game, optionally specify player to play as and port to connect to
 .It Fl r Ar widthxheight
 Set the resolution

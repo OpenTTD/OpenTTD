@@ -1,0 +1,35 @@
+# Catalan translation of openttd's Debconf templates.
+# Copyright © 2007 Software in the Public Interest
+# This file is distributed under the same license as the openttd package.
+# Jordi Mallach <jordi@debian.org>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openttd 0.5.0-1\n"
+"Report-Msgid-Bugs-To: m.kooijman@student.utwente.nl\n"
+"POT-Creation-Date: 2007-02-01 12:25+0100\n"
+"PO-Revision-Date: 2007-02-01 12:16+0100\n"
+"Last-Translator: Jordi Mallach <jordi@debian.org>\n"
+"Language-Team: Catalan <debian-l10n-catalan@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: note
+#. Description
+#: ../templates:1001
+msgid "You need to install data files"
+msgstr "Heu d'instal·lar els fitxers de dades"
+
+#. Type: note
+#. Description
+#: ../templates:1001
+msgid ""
+"OpenTTD needs the data files from the original TTD game to run. You should "
+"install these data files before you can play the game. See README.Debian for "
+"more details on which files need to be copied where."
+msgstr ""
+"OpenTTD necessita els fitxers de dades del joc TTD original per a funcionar. "
+"Haureu d'instal·lar aquests fitxers de dades abans de poder jugar al joc. "
+"Llegiu el document README.Debian per a obtindre més detalls sobre quins "
+"fitxers s'han de copiar i a quina ubicació."

@@ -1,6 +1,6 @@
 Template: openttd/datafiles
 Type: note
-Description: You need to install data files
- OpenTTD needs the datafiles from the original TTD game to run. You should
- install these datafiles before you can play the game. See README.Debian for
- more details on which files need to be copied where.
+_Description: You need to install data files
+ OpenTTD needs the data files from the original TTD game to run. You should
+ install these data files before you can play the game. See README.Debian
+ for more details on which files need to be copied where.
