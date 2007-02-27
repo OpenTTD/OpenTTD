@@ -311,15 +311,18 @@ NoAbort:
 
 	ClearErrors
 	; Now, let's populate $CDDRIVE
-	ReadRegStr $CDDRIVE HKLM "SOFTWARE\Fish Technology Group\Transport Tycoon Deluxe" "HDPath"
+	ReadRegStr $R0 HKLM "SOFTWARE\Fish Technology Group\Transport Tycoon Deluxe" "HDPath"
 	IfErrors NoTTD
+	StrCmp $CDDRIVE "" 0 Populated
+	StrCpy $CDDRIVE $R0
+Populated:
 	StrCpy $AddWinPrePopulate "Setup has detected your TTD folder. Don't change the folder. Simply press Next."
-	!insertmacro MUI_INSTALLOPTIONS_WRITE "CDFinder" "Field 2" "State" $CDDRIVE          ; TTDLX path
 	Goto TruFinish
 NoTTD:
 	StrCpy $AddWinPrePopulate "Setup couldn't find TTD. Please enter the path where the graphics files from TTD are stored and press Next to continue."
 TruFinish:
 	ClearErrors
+	!insertmacro MUI_INSTALLOPTIONS_WRITE "CDFinder" "Field 2" "State" $CDDRIVE          ; TTDLX path
 	!insertmacro MUI_INSTALLOPTIONS_WRITE "CDFinder" "Field 3" "Text" $AddWinPrePopulate ; Caption
 DoneCD:
 	; Initialize the dialog *AFTER* we've changed the text otherwise we won't see the changes
