@@ -7,8 +7,12 @@
 /* rdtsc for MSC_VER, uses simple inline assembly, or _rdtsc
  * from external win64.asm because VS2005 does not support inline assembly */
 #if defined(_MSC_VER) && !defined(RDTSC_AVAILABLE)
-# if defined (_M_AMD64)
-extern uint64 _rdtsc(void);
+# if _MSC_VER >= 1400
+#include <intrin.h>
+uint64 _rdtsc(void)
+{
+	return __rdtsc();
+}
 #	else
 uint64 _declspec(naked) _rdtsc(void)
 {

@@ -606,10 +606,13 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	return EXCEPTION_EXECUTE_HANDLER;
 }
 
+#ifdef _M_AMD64
+extern "C" void *_get_save_esp(void);
+#endif
+
 static void Win32InitializeExceptions(void)
 {
 #ifdef _M_AMD64
-	extern void *_get_save_esp(void);
 	_safe_esp = _get_save_esp();
 #else
 	_asm {
