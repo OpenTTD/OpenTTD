@@ -1352,7 +1352,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 	 * there is nothing left to load. It's easier to clear this if the
 	 * conditions haven't been met than attempting to check them all before
 	 * enabling though. */
-	SETBIT(v->load_status, LS_LOADING_FINISHED);
+	SETBIT(v->vehicle_flags, VF_LOADING_FINISHED);
 
 	old_player = _current_player;
 	_current_player = v->owner;
@@ -1371,16 +1371,16 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 		if (v->cargo_cap == 0) continue;
 
 		/* If the vehicle has just arrived, set it to unload. */
-		if (just_arrived) SETBIT(v->load_status, LS_CARGO_UNLOADING);
+		if (just_arrived) SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
 
 		ge = &st->goods[v->cargo_type];
 		count = GB(ge->waiting_acceptance, 0, 12);
 
 		/* unload? */
-		if (v->cargo_count != 0 && HASBIT(v->load_status, LS_CARGO_UNLOADING)) {
+		if (v->cargo_count != 0 && HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING)) {
 			uint16 amount_unloaded = _patches.gradual_loading ? min(v->cargo_count, load_amount) : v->cargo_count;
 
-			CLRBIT(u->load_status, LS_LOADING_FINISHED);
+			CLRBIT(u->vehicle_flags, VF_LOADING_FINISHED);
 
 			if (v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000 && !(u->current_order.flags & OF_TRANSFER)) {
 				/* deliver goods to the station */
@@ -1442,8 +1442,8 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 		}
 
 		/* The vehicle must have been unloaded because it is either empty, or
-		 * the UNLOADING bit is already clear in v->load_status. */
-		CLRBIT(v->load_status, LS_CARGO_UNLOADING);
+		 * the UNLOADING bit is already clear in v->vehicle_flags. */
+		CLRBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
 
 		/* We cannot have paid for more cargo than there is on board. */
 		assert(v->cargo_paid_for <= v->cargo_count);
@@ -1488,7 +1488,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 
 			if (cap > count) cap = count;
 			if (_patches.gradual_loading) cap = min(cap, load_amount);
-			if (cap < count) CLRBIT(u->load_status, LS_LOADING_FINISHED);
+			if (cap < count) CLRBIT(u->vehicle_flags, VF_LOADING_FINISHED);
 			cargoshare = cap * 10000 / ge->waiting_acceptance;
 			feeder_profit_share = ge->feeder_profit * cargoshare / 10000;
 			v->cargo_count += cap;
@@ -1515,7 +1515,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 		uint gradual_loading_wait_time[] = { 40, 20, 10, 20 };
 
 		unloading_time = gradual_loading_wait_time[v->type];
-		if (HASBIT(v->load_status, LS_LOADING_FINISHED)) {
+		if (HASBIT(v->vehicle_flags, VF_LOADING_FINISHED)) {
 			if (anything_loaded) {
 				unloading_time += 20;
 			} else {

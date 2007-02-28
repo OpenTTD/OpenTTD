@@ -1284,7 +1284,7 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 
 			if (CanFillVehicle(v) && (
 						v->current_order.flags & OF_FULL_LOAD ||
-						(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED))
+						(_patches.gradual_loading && !HASBIT(v->vehicle_flags, VF_LOADING_FINISHED))
 					)) {
 				SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
 				if (LoadUnloadVehicle(v, false)) {

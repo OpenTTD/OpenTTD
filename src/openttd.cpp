@@ -1799,9 +1799,9 @@ bool AfterLoadGame(void)
 		 * loading again, even if it didn't actually load anything, so now the
 		 * amount of cargo that has been paid for is stored. */
 		FOR_ALL_VEHICLES(v) {
-			if (HASBIT(v->load_status, 2)) {
+			if (HASBIT(v->vehicle_flags, 2)) {
 				v->cargo_paid_for = v->cargo_count;
-				CLRBIT(v->load_status, 2);
+				CLRBIT(v->vehicle_flags, 2);
 			} else {
 				v->cargo_paid_for = 0;
 			}

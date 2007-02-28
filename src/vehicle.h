@@ -83,10 +83,9 @@ enum VehStatus {
 	VS_CRASHED         = 0x80,
 };
 
-enum LoadStatus {
-	LS_LOADING_FINISHED,
-	LS_CARGO_UNLOADING,
-	/* LS_CARGO_PAID_FOR was here until savegame version 45. */
+enum VehicleFlags {
+	VF_LOADING_FINISHED,
+	VF_CARGO_UNLOADING,
 };
 
 /* Effect vehicle types */
@@ -294,7 +293,7 @@ struct Vehicle {
 
 	uint16 load_unload_time_rem;
 	uint16 cargo_paid_for;      // How much of the cargo currently on board has been paid for.
-	byte load_status;
+	byte vehicle_flags;         // Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
 	int32 profit_this_year;
 	int32 profit_last_year;

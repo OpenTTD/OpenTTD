@@ -2515,7 +2515,7 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 
 			if (CanFillVehicle(v) && (
 						v->current_order.flags & OF_FULL_LOAD ||
-						(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED))
+						(_patches.gradual_loading && !HASBIT(v->vehicle_flags, VF_LOADING_FINISHED))
 					)) {
 				v->u.rail.days_since_order_progr = 0; /* Prevent a train lost message for full loading trains */
 				SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);

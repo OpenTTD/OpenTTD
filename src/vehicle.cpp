@@ -718,7 +718,7 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 			if (v->cargo_cap == v->cargo_count) {
 				full |= mask;
 			} else if (GB(ge[v->cargo_type].waiting_acceptance, 0, 12) > 0 ||
-					(HASBIT(v->load_status, LS_CARGO_UNLOADING) && (ge[v->cargo_type].waiting_acceptance & 0x8000))) {
+					(HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING) && (ge[v->cargo_type].waiting_acceptance & 0x8000))) {
 				/* If there is any cargo waiting, or this vehicle is still unloading
 				 * and the station accepts the cargo, don't leave the station. */
 				keep_loading = true;
@@ -3049,7 +3049,7 @@ extern const SaveLoad _common_veh_desc[] = {
 
 	    SLE_VAR(Vehicle, load_unload_time_rem, SLE_UINT16),
 	SLE_CONDVAR(Vehicle, cargo_paid_for,       SLE_UINT16,                45, SL_MAX_VERSION),
-	SLE_CONDVAR(Vehicle, load_status,          SLE_UINT8,                 40, SL_MAX_VERSION),
+	SLE_CONDVAR(Vehicle, vehicle_flags,        SLE_UINT8,                 40, SL_MAX_VERSION),
 
 	    SLE_VAR(Vehicle, profit_this_year,     SLE_INT32),
 	    SLE_VAR(Vehicle, profit_last_year,     SLE_INT32),
