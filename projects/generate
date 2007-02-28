@@ -130,27 +130,33 @@ load_lang_data() {
 generate() {
 	echo "Generating $2..."
 	# Everything above the !!FILES!! marker
-	RES="`cat \"$ROOT_DIR/projects/$2\".in | tr '\r' '\n' | awk '
+	cat "$ROOT_DIR/projects/$2".in | tr '\r' '\n' | awk '
 		/^$/ { next }
 		/!!FILES!!/ { stop = 1; }
 		{
 			if (stop == 0) { print $0 }
 		}
-	' > \"$ROOT_DIR/projects/$2\"`"
+	' > "$ROOT_DIR/projects/$2"
 
 	# The files-list
-	if [ "$3" = "msvc2003" ]; then
-		echo "$1" | sed 's@\&#x0D;\&#x0A;@\n@' >> "$ROOT_DIR/projects/$2"
-	else
-		echo "$1" | sed '
-			s@Filter="">@>@;
-			s@^\([	]*\)\([^	<].*[^/]\)>$@\1\2\n\1>@g;
-			s@^	\([	]*\)\([^	<].*\)/>$@	\1\2\n\1/>@g;
-		' >> "$ROOT_DIR/projects/$2"
-	fi
+	echo "$1" | awk -v type="$3" '
+		/&#x0D;&#x0A;/ {
+			if (type == "msvc2003") gsub("&#x0D;&#x0A;", "\n", $0);
+		}
+		/Filter="">/ {
+			if (type == "msvc2005") gsub("Filter=\"\">", ">", $0);
+		}
+		/"\/>/ {
+			if (type == "msvc2005") gsub("/>", "\n" substr($0, 1, index($0, $1) - 2) "/>", $0);
+		}
+		/">/ {
+			if (type == "msvc2005") gsub(">", "\n" substr($0, 1, index($0, $1) - 1) ">", $0);
+		}
+		{ print $0 }
+	' >> "$ROOT_DIR/projects/$2"
 
 	# Everything below the !!FILES!! marker
-	RES="`cat \"$ROOT_DIR/projects/$2\".in | tr '\r' '\n' | awk '
+	cat "$ROOT_DIR/projects/$2".in | tr '\r' '\n' | awk '
 		BEGIN { stop = 1; }
 		/^$/ { next }
 		/!!FILES!!/ { stop = 2; }
@@ -158,7 +164,7 @@ generate() {
 			if (stop == 0) { print $0 }
 			if (stop == 2) { stop = 0 }
 		}
-	' >> \"$ROOT_DIR/projects/$2\"`"
+	' >> "$ROOT_DIR/projects/$2"
 }
 
 load_main_data "$ROOT_DIR/source.list" openttd
