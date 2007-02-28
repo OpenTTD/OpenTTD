@@ -124,6 +124,15 @@ enum {
 	EF_RAIL_IS_MU = 2, ///< Rail vehicle is a multiple-unit (DMU/EMU)
 };
 
+/**
+ * Engine.flags is a bitmask, with the following values.
+ */
+enum {
+	ENGINE_AVAILABLE         = 1, ///< This vehicle is available to everyone.
+	ENGINE_EXCLUSIVE_PREVIEW = 2, ///< This vehicle is in the exclusive preview stage, either being used or being offered to a player.
+	ENGINE_OFFER_WINDOW_OPEN = 4, ///< The exclusive offer window is currently open for a player.
+};
+
 enum {
 	NUM_VEHICLE_TYPES = 6
 };

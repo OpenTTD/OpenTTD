@@ -28,12 +28,6 @@ AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
 RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
 
 enum {
-	ENGINE_AVAILABLE   = 1,
-	ENGINE_INTRODUCING = 2,
-	ENGINE_PREVIEWING  = 4,
-};
-
-enum {
 	YEAR_ENGINE_AGING_STOPS = 2050,
 };
 
@@ -224,10 +218,10 @@ void EnginesDailyLoop(void)
 	for (i = 0; i != lengthof(_engines); i++) {
 		Engine *e = &_engines[i];
 
-		if (e->flags & ENGINE_INTRODUCING) {
-			if (e->flags & ENGINE_PREVIEWING) {
+		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
+			if (e->flags & ENGINE_OFFER_WINDOW_OPEN) {
 				if (e->preview_player != 0xFF && !--e->preview_wait) {
-					e->flags &= ~ENGINE_PREVIEWING;
+					e->flags &= ~ENGINE_OFFER_WINDOW_OPEN;
 					DeleteWindowById(WC_ENGINE_PREVIEW, i);
 					e->preview_player++;
 				}
@@ -243,7 +237,7 @@ void EnginesDailyLoop(void)
 					/* XXX - TTDBUG: TTD has a bug here ???? */
 					AcceptEnginePreview(i, best_player);
 				} else {
-					e->flags |= ENGINE_PREVIEWING;
+					e->flags |= ENGINE_OFFER_WINDOW_OPEN;
 					e->preview_wait = 20;
 					if (IsInteractivePlayer(best_player)) ShowEnginePreviewWindow(i);
 				}
@@ -285,7 +279,7 @@ static void NewVehicleAvailable(Engine *e)
 
 	/* In case the player didn't build the vehicle during the intro period,
 	 * prevent that player from getting future intro periods for a while. */
-	if (e->flags & ENGINE_INTRODUCING) {
+	if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
 		FOR_ALL_PLAYERS(p) {
 			uint block_preview = p->block_preview;
 
@@ -307,7 +301,7 @@ static void NewVehicleAvailable(Engine *e)
 		}
 	}
 
-	e->flags = (e->flags & ~ENGINE_INTRODUCING) | ENGINE_AVAILABLE;
+	e->flags = (e->flags & ~ENGINE_EXCLUSIVE_PREVIEW) | ENGINE_AVAILABLE;
 	AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 
 	/* Now available for all players */
@@ -349,9 +343,9 @@ void EnginesMonthlyLoop(void)
 			if (!(e->flags & ENGINE_AVAILABLE) && _date >= (e->intro_date + 365)) {
 				/* Introduce it to all players */
 				NewVehicleAvailable(e);
-			} else if (!(e->flags & (ENGINE_AVAILABLE|ENGINE_INTRODUCING)) && _date >= e->intro_date) {
+			} else if (!(e->flags & (ENGINE_AVAILABLE|ENGINE_EXCLUSIVE_PREVIEW)) && _date >= e->intro_date) {
 				/* Introduction date has passed.. show introducing dialog to one player. */
-				e->flags |= ENGINE_INTRODUCING;
+				e->flags |= ENGINE_EXCLUSIVE_PREVIEW;
 
 				/* Do not introduce new rail wagons */
 				if (!IsWagon(e - _engines))
