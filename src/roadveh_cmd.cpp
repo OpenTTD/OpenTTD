@@ -204,6 +204,9 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->cur_image = 0xC15;
 		v->random_bits = VehicleRandomBits();
 
+		v->vehicle_flags = 0;
+		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SETBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
+
 		VehiclePositionChanged(v);
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);

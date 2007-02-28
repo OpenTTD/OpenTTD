@@ -785,6 +785,9 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->cur_image = 0xAC2;
 			v->random_bits = VehicleRandomBits();
 
+			v->vehicle_flags = 0;
+			if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SETBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
+
 			v->subtype = 0;
 			SetFrontEngine(v);
 			SetTrainEngine(v);

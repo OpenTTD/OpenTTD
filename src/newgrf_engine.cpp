@@ -601,6 +601,21 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			}
 
 		case 0x7F: return GetGRFParameter(v->engine_type, parameter); /* Read GRF parameter */
+
+		case 0xFE:
+		case 0xFF: {
+			uint16 modflags = 0;
+
+			/* TODO: There are some other bits that should be implemented:
+			 *   bit 5: Whether the rail vehicle is powered or not (mostly useful for wagons).
+			 *   bit 6: This is an electrically powered rail vehicle which is running on normal rail.
+			 *   bit 8: (Maybe?) Toggled whenever the train reverses.
+			 */
+
+			if (HASBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE)) SETBIT(modflags, 10);
+
+			return variable == 0xFE ? modflags : GB(modflags, 8, 8);
+		}
 	}
 
 	/* General vehicle properties */

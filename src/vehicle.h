@@ -86,6 +86,7 @@ enum VehStatus {
 enum VehicleFlags {
 	VF_LOADING_FINISHED,
 	VF_CARGO_UNLOADING,
+	VF_BUILT_AS_PROTOTYPE,
 };
 
 /* Effect vehicle types */
