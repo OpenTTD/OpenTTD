@@ -4,10 +4,10 @@
 #define WATER_MAP_H
 
 typedef enum WaterTileType {
-	WATER_CLEAR,
-	WATER_COAST,
-	WATER_LOCK,
-	WATER_DEPOT,
+	WATER_TILE_CLEAR,
+	WATER_TILE_COAST,
+	WATER_TILE_LOCK,
+	WATER_TILE_DEPOT,
 } WaterTileType;
 
 typedef enum DepotPart {
@@ -25,22 +25,22 @@ typedef enum LockPart {
 
 static inline WaterTileType GetWaterTileType(TileIndex t)
 {
-	if (_m[t].m5 == 0) return WATER_CLEAR;
-	if (_m[t].m5 == 1) return WATER_COAST;
-	if (IS_INT_INSIDE(_m[t].m5, LOCK_MIDDLE, LOCK_END)) return WATER_LOCK;
+	if (_m[t].m5 == 0) return WATER_TILE_CLEAR;
+	if (_m[t].m5 == 1) return WATER_TILE_COAST;
+	if (IS_INT_INSIDE(_m[t].m5, LOCK_MIDDLE, LOCK_END)) return WATER_TILE_LOCK;
 
 	assert(IS_INT_INSIDE(_m[t].m5, DEPOT_NORTH, DEPOT_END));
-	return WATER_DEPOT;
+	return WATER_TILE_DEPOT;
 }
 
 static inline bool IsWater(TileIndex t)
 {
-	return GetWaterTileType(t) == WATER_CLEAR;
+	return GetWaterTileType(t) == WATER_TILE_CLEAR;
 }
 
 static inline bool IsCoast(TileIndex t)
 {
-	return GetWaterTileType(t) == WATER_COAST;
+	return GetWaterTileType(t) == WATER_TILE_COAST;
 }
 
 static inline bool IsClearWaterTile(TileIndex t)
@@ -75,7 +75,7 @@ static inline DiagDirection GetLockDirection(TileIndex t)
 
 static inline byte GetSection(TileIndex t)
 {
-	assert(GetWaterTileType(t) == WATER_LOCK || GetWaterTileType(t) == WATER_DEPOT);
+	assert(GetWaterTileType(t) == WATER_TILE_LOCK || GetWaterTileType(t) == WATER_TILE_DEPOT);
 	return GB(_m[t].m5, 0, 4);
 }
 

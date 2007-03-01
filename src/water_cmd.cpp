@@ -277,7 +277,7 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 static int32 ClearTile_Water(TileIndex tile, byte flags)
 {
 	switch (GetWaterTileType(tile)) {
-		case WATER_CLEAR:
+		case WATER_TILE_CLEAR:
 			if (flags & DC_NO_WATER) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 
 			// Make sure no vehicle is on the tile
@@ -294,7 +294,7 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			if (flags & DC_EXEC) DoClearSquare(tile);
 			return _price.clear_water;
 
-		case WATER_COAST: {
+		case WATER_TILE_COAST: {
 			Slope slope = GetTileSlope(tile, NULL);
 
 			// Make sure no vehicle is on the tile
@@ -314,7 +314,7 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			}
 		}
 
-		case WATER_LOCK: {
+		case WATER_TILE_LOCK: {
 			static const TileIndexDiffC _shiplift_tomiddle_offs[] = {
 				{ 0,  0}, {0,  0}, { 0, 0}, {0,  0}, // middle
 				{-1,  0}, {0,  1}, { 1, 0}, {0, -1}, // lower
@@ -327,7 +327,7 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			return RemoveShiplift(tile + ToTileIndexDiff(_shiplift_tomiddle_offs[GetSection(tile)]), flags);
 		}
 
-		case WATER_DEPOT:
+		case WATER_TILE_DEPOT:
 			if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 			return RemoveShipDepot(tile, flags);
 
@@ -436,13 +436,13 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 static void DrawTile_Water(TileInfo *ti)
 {
 	switch (GetWaterTileType(ti->tile)) {
-		case WATER_CLEAR:
+		case WATER_TILE_CLEAR:
 			DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
 			if (ti->z != 0 || !IsTileOwner(ti->tile, OWNER_WATER)) DrawCanalWater(ti->tile);
 			DrawBridgeMiddle(ti);
 			break;
 
-		case WATER_COAST:
+		case WATER_TILE_COAST:
 			assert(!IsSteepSlope(ti->tileh));
 			if (_coast_base != 0) {
 				DrawGroundSprite(_coast_base + ti->tileh, PAL_NONE);
@@ -452,12 +452,12 @@ static void DrawTile_Water(TileInfo *ti)
 			DrawBridgeMiddle(ti);
 			break;
 
-		case WATER_LOCK: {
+		case WATER_TILE_LOCK: {
 			const WaterDrawTileStruct *t = _shiplift_display_seq[GetSection(ti->tile)];
 			DrawWaterStuff(ti, t, 0, ti->z > t[3].delta_y ? 24 : 0);
 		} break;
 
-		case WATER_DEPOT:
+		case WATER_TILE_DEPOT:
 			DrawWaterStuff(ti, _shipdepot_display_seq[GetSection(ti->tile)], PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), 0);
 			break;
 	}
@@ -497,16 +497,16 @@ static void GetAcceptedCargo_Water(TileIndex tile, AcceptedCargo ac)
 static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 {
 	switch (GetWaterTileType(tile)) {
-		case WATER_CLEAR:
+		case WATER_TILE_CLEAR:
 			if (TilePixelHeight(tile) == 0 || IsTileOwner(tile, OWNER_WATER)) {
 				td->str = STR_3804_WATER;
 			} else {
 				td->str = STR_LANDINFO_CANAL;
 			}
 			break;
-		case WATER_COAST: td->str = STR_3805_COAST_OR_RIVERBANK; break;
-		case WATER_LOCK : td->str = STR_LANDINFO_LOCK; break;
-		case WATER_DEPOT: td->str = STR_3806_SHIP_DEPOT; break;
+		case WATER_TILE_COAST: td->str = STR_3805_COAST_OR_RIVERBANK; break;
+		case WATER_TILE_LOCK : td->str = STR_LANDINFO_LOCK; break;
+		case WATER_TILE_DEPOT: td->str = STR_3806_SHIP_DEPOT; break;
 		default: assert(0); break;
 	}
 
@@ -705,10 +705,10 @@ static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
 	if (mode != TRANSPORT_WATER) return 0;
 
 	switch (GetWaterTileType(tile)) {
-		case WATER_CLEAR: ts = TRACK_BIT_ALL; break;
-		case WATER_COAST: ts = (TrackBits)coast_tracks[GetTileSlope(tile, NULL) & 0xF]; break;
-		case WATER_LOCK:  ts = AxisToTrackBits(DiagDirToAxis(GetLockDirection(tile))); break;
-		case WATER_DEPOT: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;
+		case WATER_TILE_CLEAR: ts = TRACK_BIT_ALL; break;
+		case WATER_TILE_COAST: ts = (TrackBits)coast_tracks[GetTileSlope(tile, NULL) & 0xF]; break;
+		case WATER_TILE_LOCK:  ts = AxisToTrackBits(DiagDirToAxis(GetLockDirection(tile))); break;
+		case WATER_TILE_DEPOT: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;
 		default: return 0;
 	}
 	if (TileX(tile) == 0) {
@@ -724,7 +724,7 @@ static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
 
 static void ClickTile_Water(TileIndex tile)
 {
-	if (GetWaterTileType(tile) == WATER_DEPOT) {
+	if (GetWaterTileType(tile) == WATER_TILE_DEPOT) {
 		TileIndex tile2 = GetOtherShipDepotTile(tile);
 
 		ShowDepotWindow(tile < tile2 ? tile : tile2, VEH_Ship);
