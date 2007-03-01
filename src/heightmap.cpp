@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file heightmap.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
@@ -226,7 +228,7 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 	BmpData data;
 	BmpBuffer buffer;
 
-	// Init BmpData
+	/* Init BmpData */
 	memset(&data, 0, sizeof(data));
 
 	f = fopen(filename, "rb");

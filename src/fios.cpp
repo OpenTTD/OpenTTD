@@ -404,7 +404,7 @@ static byte FiosGetHeightmapListCallback(int mode, const char *file, const char 
 	return FIOS_TYPE_INVALID;
 }
 
-// Get a list of Heightmaps
+/* Get a list of Heightmaps */
 FiosItem *FiosGetHeightmapList(int mode)
 {
 	static char *_fios_hmap_path = NULL;

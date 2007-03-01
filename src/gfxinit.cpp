@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file gfxinit.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -17,13 +19,13 @@
 #include <string.h>
 
 typedef struct MD5File {
-	const char * filename;     // filename
-	md5_byte_t hash[16]; // md5 sum of the file
+	const char * filename;     ///< filename
+	md5_byte_t hash[16];       ///< md5 sum of the file
 } MD5File;
 
 typedef struct FileList {
-	MD5File basic[4];     // grf files that always have to be loaded
-	MD5File landscape[3]; // landscape specific grf files
+	MD5File basic[4];          ///< grf files that always have to be loaded
+	MD5File landscape[3];      ///< landscape specific grf files
 } FileList;
 
 enum {
@@ -110,7 +112,7 @@ static bool FileMD5(const MD5File file, bool warn)
 	FILE *f;
 	char buf[MAX_PATH];
 
-	// open file
+	/* open file */
 	snprintf(buf, lengthof(buf), "%s%s", _paths.data_dir, file.filename);
 	f = fopen(buf, "rb");
 
@@ -163,7 +165,7 @@ static bool FileMD5(const MD5File file, bool warn)
 void CheckExternalFiles(void)
 {
 	uint i;
-	// count of files from this version
+	/* count of files from this version */
 	uint dos = 0;
 	uint win = 0;
 
@@ -202,58 +204,58 @@ void CheckExternalFiles(void)
 
 
 static const SpriteID trg1idx[] = {
-	   0,    1, // Mouse cursor, ZZZ
+	   0,    1, ///< Mouse cursor, ZZZ
 /* Medium font */
-	   2,   92, // ' ' till 'z'
+	   2,   92, ///< ' ' till 'z'
 	SKIP,   36,
-	 160,  160, // Move ¾ to the correct position
-	  98,   98, // Up arrow
+	 160,  160, ///< Move ¾ to the correct position
+	  98,   98, ///< Up arrow
 	 131,  133,
-	SKIP,    1, // skip currency sign
+	SKIP,    1, ///< skip currency sign
 	 135,  135,
 	SKIP,    1,
 	 137,  137,
 	SKIP,    1,
 	 139,  139,
-	 140,  140, // TODO Down arrow
+	 140,  140, ///< @todo Down arrow
 	 141,  141,
-	 142,  142, // TODO Check mark
-	 143,  143, // TODO Cross
+	 142,  142, ///< @todo Check mark
+	 143,  143, ///< @todo Cross
 	 144,  144,
-	 145,  145, // TODO Right arrow
+	 145,  145, ///< @todo Right arrow
 	 146,  149,
-	 118,  122, // Transport markers
+	 118,  122, ///< Transport markers
 	SKIP,    2,
 	 157,  157,
-	 114,  115, // Small up/down arrows
+	 114,  115, ///< Small up/down arrows
 	SKIP,    1,
 	 161,  225,
 /* Small font */
-	 226,  316, // ' ' till 'z'
+	 226,  316, ///< ' ' till 'z'
 	SKIP,   36,
-	 384,  384, // Move ¾ to the correct position
-	 322,  322, // Up arrow
+	 384,  384, ///< Move ¾ to the correct position
+	 322,  322, ///< Up arrow
 	 355,  357,
-	SKIP,    1, // skip currency sign
+	SKIP,    1, ///< skip currency sign
 	 359,  359,
 	SKIP,    1,
 	 361,  361,
 	SKIP,    1,
 	 363,  363,
-	 364,  364, // TODO Down arrow
+	 364,  364, ////< @todo Down arrow
 	 365,  366,
 	SKIP,    1,
 	 368,  368,
-	 369,  369, // TODO Right arrow
+	 369,  369, ///< @todo Right arrow
 	 370,  373,
 	SKIP,    7,
 	 381,  381,
 	SKIP,    3,
 	 385,  449,
 /* Big font */
-	 450,  540, // ' ' till 'z'
+	 450,  540, ///< ' ' till 'z'
 	SKIP,   36,
-	 608,  608, // Move ¾ to the correct position
+	 608,  608, ///< Move ¾ to the correct position
 	SKIP,    1,
 	 579,  581,
 	SKIP,    1,
@@ -288,51 +290,51 @@ static const SpriteID trg1idx[] = {
  * a maximum use of sprite slots. */
 static const SpriteID _openttd_grf_indexes[] = {
 	SPR_IMG_AUTORAIL, SPR_CURSOR_WAYPOINT, // icons etc
-	134, 134,  // euro symbol medium size
-	582, 582,  // euro symbol large size
-	358, 358,  // euro symbol tiny
+	134, 134,  ///< euro symbol medium size
+	582, 582,  ///<  euro symbol large size
+	358, 358,  ///<  euro symbol tiny
 	SPR_CURSOR_CANAL, SPR_IMG_FASTFORWARD, // more icons
-	648, 648, // nordic char: æ
-	616, 616, // nordic char: Æ
-	666, 666, // nordic char: ø
-	634, 634, // nordic char: Ø
+	648, 648, ///<  nordic char: æ
+	616, 616, ///<  nordic char: Æ
+	666, 666, ///<  nordic char: ø
+	634, 634, ///<  nordic char: Ø
 	SPR_PIN_UP, SPR_CURSOR_CLONE_TRAIN, // more icons
-	382, 383, // ¼ ½ tiny
-	158, 159, // ¼ ½ medium
-	606, 607, // ¼ ½ large
-	360, 360, // ¦ tiny
-	362, 362, // ¨ tiny
-	136, 136, // ¦ medium
-	138, 138, // ¨ medium
-	584, 584, // ¦ large
-	586, 586, // ¨ large
-	626, 626, // Ð large
-	658, 658, // ð large
-	374, 374, // ´ tiny
-	378, 378, // ¸ tiny
-	150, 150, // ´ medium
-	154, 154, // ¸ medium
-	598, 598, // ´ large
-	602, 602, // ¸ large
-	640, 640, // Þ large
-	672, 672, // þ large
-	380, 380, // º tiny
-	156, 156, // º medium
-	604, 604, // º large
-	317, 320, // { | } ~ tiny
-	 93,  96, // { | } ~ medium
-	541, 544, // { | } ~ large
+	382, 383, ///<  ¼ ½ tiny
+	158, 159, ///<  ¼ ½ medium
+	606, 607, ///<  ¼ ½ large
+	360, 360, ///<  ¦ tiny
+	362, 362, ///<  ¨ tiny
+	136, 136, ///<  ¦ medium
+	138, 138, ///<  ¨ medium
+	584, 584, ///<  ¦ large
+	586, 586, ///<  ¨ large
+	626, 626, ///<  Ð large
+	658, 658, ///<  ð large
+	374, 374, ///<  ´ tiny
+	378, 378, ///<  ¸ tiny
+	150, 150, ///<  ´ medium
+	154, 154, ///<  ¸ medium
+	598, 598, ///<  ´ large
+	602, 602, ///<  ¸ large
+	640, 640, ///<  Þ large
+	672, 672, ///<  þ large
+	380, 380, ///<  º tiny
+	156, 156, ///<  º medium
+	604, 604, ///<  º large
+	317, 320, ///<  { | } ~ tiny
+	 93,  96, ///<  { | } ~ medium
+	541, 544, ///<  { | } ~ large
 	SPR_HOUSE_ICON, SPR_HOUSE_ICON,
-	585, 585, // § large
-	587, 587, // © large
-	592, 592, // ® large
-	594, 597, // ° ± ² ³ large
-	633, 633, // × large
-	665, 665, // ÷ large
+	585, 585, ///<  § large
+	587, 587, ///<  © large
+	592, 592, ///<  ® large
+	594, 597, ///<  ° ± ² ³ large
+	633, 633, ///<  × large
+	665, 665, ///<  ÷ large
 	SPR_SELL_TRAIN, SPR_SHARED_ORDERS_ICON,
-	377, 377, // · small
-	153, 153, // · medium
-	601, 601, // · large
+	377, 377, ///<  · small
+	153, 153, ///<  · medium
+	601, 601, ///<  · large
 	SPR_WARNING_SIGN, SPR_WARNING_SIGN,
 	END
 };

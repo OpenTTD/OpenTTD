@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file fileio.cpp Standard In/Out file operations*/
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "fileio.h"
@@ -31,7 +33,7 @@ typedef struct {
 
 static Fio _fio;
 
-// Get current position in file
+/* Get current position in file */
 uint32 FioGetPos(void)
 {
 	return _fio.pos + (_fio.buffer - _fio.buffer_start) - FIO_BUFFER_SIZE;
@@ -57,7 +59,7 @@ static void FioRestoreFile(int slot)
 }
 #endif /* LIMITED_FDS */
 
-// Seek to a file and a position
+/* Seek to a file and a position */
 void FioSeekToFile(uint32 pos)
 {
 	FILE *f;
@@ -177,7 +179,7 @@ FILE *FioFOpenFile(const char *filename)
 		f = fopen(buf, "rb");
 
 #if defined SECOND_DATA_DIR
-		// tries in the 2nd data directory
+		/* tries in the 2nd data directory */
 		if (f == NULL) {
 			snprintf(buf, lengthof(buf), "%s%s", _paths.second_data_dir, filename);
 			strtolower(buf + strlen(_paths.second_data_dir) - 1);

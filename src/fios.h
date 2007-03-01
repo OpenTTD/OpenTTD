@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file fios.h Declarations for savegames operations */
+
 #ifndef FIOS_H
 #define FIOS_H
 
@@ -26,27 +28,27 @@ enum {
 };
 
 /* Variables to display file lists */
-extern FiosItem *_fios_list; // defined in misc_gui.c
-extern int _fios_num;        // defined in fios.c, read_only version of _fios_count
-extern int _saveload_mode;   // defined in misc_gui.c
+extern FiosItem *_fios_list; ///< defined in misc_gui.cpp
+extern int _fios_num;        ///< defined in fios.cpp, read_only version of _fios_count
+extern int _saveload_mode;   ///< defined in misc_gui.cpp
 
-// Get a list of savegames
+/* Get a list of savegames */
 FiosItem *FiosGetSavegameList(int mode);
-// Get a list of scenarios
+/* Get a list of scenarios */
 FiosItem *FiosGetScenarioList(int mode);
-// Get a list of Heightmaps
+/* Get a list of Heightmaps */
 FiosItem *FiosGetHeightmapList(int mode);
-// Free the list of savegames
+/* Free the list of savegames */
 void FiosFreeSavegameList(void);
-// Browse to. Returns a filename w/path if we reached a file.
+/* Browse to. Returns a filename w/path if we reached a file. */
 char *FiosBrowseTo(const FiosItem *item);
-// Return path, free space and stringID
+/* Return path, free space and stringID */
 StringID FiosGetDescText(const char **path, uint32 *total_free);
-// Delete a name
+/* Delete a name */
 bool FiosDelete(const char *name);
-// Make a filename from a name
+/* Make a filename from a name */
 void FiosMakeSavegameName(char *buf, const char *name, size_t size);
-// Allocate a new FiosItem
+/* Allocate a new FiosItem */
 FiosItem *FiosAlloc(void);
 
 int CDECL compare_FiosItems(const void *a, const void *b);
@@ -57,10 +59,10 @@ int CDECL compare_FiosItems(const void *a, const void *b);
 typedef struct DIR DIR;
 
 typedef struct dirent { // XXX - only d_name implemented
-	wchar_t *d_name; /* name of found file */
+	wchar_t *d_name; // name of found file
 	/* little hack which will point to parent DIR struct which will
 	 * save us a call to GetFileAttributes if we want information
-	 * about the file (for example in function fio_bla */
+	 * about the file (for example in function fio_bla) */
 	DIR *dir;
 } dirent;
 

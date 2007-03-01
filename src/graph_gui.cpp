@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file graph_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
@@ -28,13 +30,13 @@ enum {
 	GRAPH_AXIS_LABEL_COLOUR = 16,
 	GRAPH_AXIS_LINE_COLOUR  = 215,
 
-	GRAPH_X_POSITION_BEGINNING  = 44,  // Start the graph 44 pixels from gw->left
-	GRAPH_X_POSITION_SEPARATION = 22,  // There are 22 pixels between each X value
+	GRAPH_X_POSITION_BEGINNING  = 44,  ///< Start the graph 44 pixels from gw->left
+	GRAPH_X_POSITION_SEPARATION = 22,  ///< There are 22 pixels between each X value
 
-	/* How many horizontal lines to draw. 9 is convenient as that means the
-	 * distance between them is the height of the graph / 8, which is the same
+	GRAPH_NUM_LINES_Y = 9, ///< How many horizontal lines to draw.
+	/* 9 is convenient as that means the distance between them is the height of the graph / 8,
+	 * which is the same
 	 * as height >> 3. */
-	GRAPH_NUM_LINES_Y = 9,
 };
 
 /* Apparently these don't play well with enums. */
@@ -42,7 +44,7 @@ static const int64 INVALID_DATAPOINT     = INT64_MAX; // Value used for a datapo
 static const uint  INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
 
 typedef struct GraphDrawer {
-	uint excluded_data; // bitmask of the datasets that shouldn't be displayed.
+	uint excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
 	byte num_dataset;
 	byte num_on_x_axis;
 	bool has_negative_values;
@@ -58,18 +60,18 @@ typedef struct GraphDrawer {
 	uint16 x_values_start;
 	uint16 x_values_increment;
 
-	int left, top;  // Where to start drawing the graph, in pixels.
-	uint height;    // The height of the graph in pixels.
+	int left, top;  ///< Where to start drawing the graph, in pixels.
+	uint height;    ///< The height of the graph in pixels.
 	StringID format_str_y_axis;
 	byte colors[GRAPH_MAX_DATASETS];
-	int64 cost[GRAPH_MAX_DATASETS][24]; // last 2 years
+	int64 cost[GRAPH_MAX_DATASETS][24]; ///< last 2 years
 } GraphDrawer;
 
 static void DrawGraph(const GraphDrawer *gw)
 {
-	uint x, y;            // Reused whenever x and y coordinates are needed.
-	int64 highest_value;  // Highest value to be drawn.
-	int x_axis_offset;    // Distance from the top of the graph to the x axis.
+	uint x, y;            ///< Reused whenever x and y coordinates are needed.
+	int64 highest_value;  ///< Highest value to be drawn.
+	int x_axis_offset;    ///< Distance from the top of the graph to the x axis.
 
 	/* the colors and cost array of GraphDrawer must accomodate
 	 * both values for cargo and players. So if any are higher, quit */
@@ -330,7 +332,7 @@ static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
 	byte nums;
 	int mo,yr;
 
-	// Exclude the players which aren't valid
+	/* Exclude the players which aren't valid */
 	FOR_ALL_PLAYERS(p) {
 		if (!p->is_active) SETBIT(excluded_players, p->index);
 	}
@@ -920,7 +922,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			int total_score = 0;
 			int color_done, color_notdone;
 
-			// Draw standard stuff
+			/* Draw standard stuff */
 			DrawWindowWidgets(w);
 
 			/* Check if the currently selected player is still active. */
@@ -949,25 +951,25 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			/* If there are no active players, don't display anything else. */
 			if (_performance_rating_detail_player == INVALID_PLAYER) break;
 
-			// Paint the player icons
+			/* Paint the player icons */
 			for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
 				if (!GetPlayer(i)->is_active) {
-					// Check if we have the player as an active player
+					/* Check if we have the player as an active player */
 					if (!IsWindowWidgetDisabled(w, i + 13)) {
-						// Bah, player gone :(
+						/* Bah, player gone :( */
 						DisableWindowWidget(w, i + 13);
 
-						// We need a repaint
+						/* We need a repaint */
 						SetWindowDirty(w);
 					}
 					continue;
 				}
 
-				// Check if we have the player marked as inactive
+				/* Check if we have the player marked as inactive */
 				if (IsWindowWidgetDisabled(w, i + 13)) {
-					// New player! Yippie :p
+					/* New player! Yippie :p */
 					EnableWindowWidget(w, i + 13);
-					// We need a repaint
+					/* We need a repaint */
 					SetWindowDirty(w);
 				}
 
@@ -975,18 +977,18 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 				DrawPlayerIcon(i, i * 37 + 13 + x, 16 + x);
 			}
 
-			// The colors used to show how the progress is going
+			/* The colors used to show how the progress is going */
 			color_done = _colour_gradient[COLOUR_GREEN][4];
 			color_notdone = _colour_gradient[COLOUR_RED][4];
 
-			// Draw all the score parts
+			/* Draw all the score parts */
 			for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) {
 				int val    = _score_part[_performance_rating_detail_player][i];
 				int needed = _score_info[i].needed;
 				int score  = _score_info[i].score;
 
 				y += 20;
-				// SCORE_TOTAL has his own rulez ;)
+				/* SCORE_TOTAL has his own rulez ;) */
 				if (i == SCORE_TOTAL) {
 					needed = total_score;
 					score = SCORE_MAX;
@@ -996,11 +998,11 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 
 				DrawString(7, y, STR_PERFORMANCE_DETAIL_VEHICLES + i, 0);
 
-				// Draw the score
+				/* Draw the score */
 				SetDParam(0, score);
 				DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, 0);
 
-				// Calculate the %-bar
+				/* Calculate the %-bar */
 				if (val > needed) {
 					x = 50;
 				} else if (val == 0) {
@@ -1009,28 +1011,28 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 					x = val * 50 / needed;
 				}
 
-				// SCORE_LOAN is inversed
+				/* SCORE_LOAN is inversed */
 				if (val < 0 && i == SCORE_LOAN) x = 0;
 
-				// Draw the bar
+				/* Draw the bar */
 				if (x !=  0) GfxFillRect(112,     y - 2, 112 + x,  y + 10, color_done);
 				if (x != 50) GfxFillRect(112 + x, y - 2, 112 + 50, y + 10, color_notdone);
 
-				// Calculate the %
+				/* Calculate the % */
 				x = (val <= needed) ? val * 100 / needed : 100;
 
-				// SCORE_LOAN is inversed
+				/* SCORE_LOAN is inversed */
 				if (val < 0 && i == SCORE_LOAN) x = 0;
 
-				// Draw it
+				/* Draw it */
 				SetDParam(0, x);
 				DrawStringCentered(137, y, STR_PERFORMANCE_DETAIL_PERCENT, 0);
 
-				// SCORE_LOAN is inversed
+				/* SCORE_LOAN is inversed */
 				if (i == SCORE_LOAN) val = needed - val;
 
-				// Draw the amount we have against what is needed
-				//  For some of them it is in currency format
+				/* Draw the amount we have against what is needed
+				 * For some of them it is in currency format */
 				SetDParam(0, val);
 				SetDParam(1, needed);
 				switch (i) {
@@ -1050,9 +1052,9 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_CLICK:
-			// Check which button is clicked
+			/* Check which button is clicked */
 			if (IS_INT_INSIDE(e->we.click.widget, 13, 21)) {
-				// Is it no on disable?
+				/* Is it no on disable? */
 				if (!IsWindowWidgetDisabled(w, e->we.click.widget)) {
 					RaiseWindowWidget(w, _performance_rating_detail_player + 13);
 					_performance_rating_detail_player = (PlayerID)(e->we.click.widget - 13);
@@ -1086,7 +1088,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_TICK: {
-			// Update the player score every 5 days
+			/* Update the player score every 5 days */
 			if (--w->custom[0] == 0) {
 				w->custom[0] = DAY_TICKS;
 				if (--w->custom[1] == 0) {
@@ -1094,7 +1096,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 
 					w->custom[1] = 5;
 					FOR_ALL_PLAYERS(p2) {
-						// Skip if player is not active
+						/* Skip if player is not active */
 						if (p2->is_active) UpdateCompanyRatingAndValue(p2, false);
 					}
 					SetWindowDirty(w);

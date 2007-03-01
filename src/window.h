@@ -43,19 +43,19 @@ typedef void WindowProc(Window *w, WindowEvent *e);
    That was all.. good luck, and enjoy :) -- TrueLight */
 
 typedef enum ResizeFlags {
-	RESIZE_NONE   = 0,
+	RESIZE_NONE   = 0,  ///< no resize required
 
-	RESIZE_LEFT   = 1,
-	RESIZE_RIGHT  = 2,
-	RESIZE_TOP    = 4,
-	RESIZE_BOTTOM = 8,
+	RESIZE_LEFT   = 1,  ///< left resize flag
+	RESIZE_RIGHT  = 2,  ///< rigth resize flag
+	RESIZE_TOP    = 4,  ///< top resize flag
+	RESIZE_BOTTOM = 8,  ///< bottom resize flag
 
-	RESIZE_LR     = RESIZE_LEFT  | RESIZE_RIGHT,
-	RESIZE_RB     = RESIZE_RIGHT | RESIZE_BOTTOM,
-	RESIZE_TB     = RESIZE_TOP   | RESIZE_BOTTOM,
-	RESIZE_LRB    = RESIZE_LEFT  | RESIZE_RIGHT  | RESIZE_BOTTOM,
-	RESIZE_LRTB   = RESIZE_LEFT  | RESIZE_RIGHT  | RESIZE_TOP | RESIZE_BOTTOM,
-	RESIZE_RTB    = RESIZE_RIGHT | RESIZE_TOP    | RESIZE_BOTTOM,
+	RESIZE_LR     = RESIZE_LEFT  | RESIZE_RIGHT,   ///<  combination of left and right resize flags
+	RESIZE_RB     = RESIZE_RIGHT | RESIZE_BOTTOM,  ///<  combination of right and bottom resize flags
+	RESIZE_TB     = RESIZE_TOP   | RESIZE_BOTTOM,  ///<  combination of top and bottom resize flags
+	RESIZE_LRB    = RESIZE_LEFT  | RESIZE_RIGHT  | RESIZE_BOTTOM, ///< combination of left, right and bottom resize flags
+	RESIZE_LRTB   = RESIZE_LEFT  | RESIZE_RIGHT  | RESIZE_TOP | RESIZE_BOTTOM,  ///<  combination of all resize flags
+	RESIZE_RTB    = RESIZE_RIGHT | RESIZE_TOP    | RESIZE_BOTTOM, ///<  combination of right, top and bottom resize flag
 
 	/* The following flags are used by the system to specify what is disabled, hidden, or clicked
 	 * They are used in the same place as the above RESIZE_x flags, Widget visual_flags.
@@ -66,9 +66,8 @@ typedef enum ResizeFlags {
 	WIDG_LOWERED  = 6,  ///< widget is paint lowered, a pressed button in fact
 } ResizeFlag;
 
-/* used to indicate the end of widgets' list for vararg functions */
 enum {
-	WIDGET_LIST_END = -1,
+	WIDGET_LIST_END = -1, ///< indicate the end of widgets' list for vararg functions
 };
 
 typedef struct Widget {
@@ -237,7 +236,6 @@ typedef struct Scrollbar {
 typedef struct ResizeInfo {
 	uint width; ///< Minimum width and height
 	uint height;
-
 	uint step_width; ///< In how big steps the width and height go
 	uint step_height;
 } ResizeInfo;
@@ -431,7 +429,7 @@ typedef struct {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(scroller_d));
 
 typedef enum SortListFlags {
-	VL_NONE    = 0x00,
+	VL_NONE    = 0x00,  ///< no sort
 	VL_DESC    = 0x01,  ///< sort descending or ascending
 	VL_RESORT  = 0x02,  ///< instruct the code to resort the list in the next loop
 	VL_REBUILD = 0x04,  ///< create sort-listing to use for qsort and friends

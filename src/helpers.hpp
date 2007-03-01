@@ -1,9 +1,10 @@
 /* $Id$ */
 
+/** @file helpers.hpp */
+
 #ifndef HELPERS_HPP
 #define HELPERS_HPP
 
-/** @file helpers.hpp */
 #include "macros.h"
 
 /** When allocating using malloc/calloc in C++ it is usually needed to cast the return value

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file fontcache.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"

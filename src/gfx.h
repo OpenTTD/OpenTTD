@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file gfx.h */
+
 #ifndef GFX_H
 #define GFX_H
 
@@ -10,7 +12,7 @@ enum WindowKeyCodes {
 	WKC_ALT   = 0x2000,
 	WKC_META  = 0x1000,
 
-	// Special ones
+	/* Special ones */
 	WKC_NONE        =  0,
 	WKC_ESC         =  1,
 	WKC_BACKSPACE   =  2,
@@ -22,17 +24,17 @@ enum WindowKeyCodes {
 	WKC_END         =  7,
 	WKC_HOME        =  8,
 
-	// Arrow keys
+	/* Arrow keys */
 	WKC_LEFT        =  9,
 	WKC_UP          = 10,
 	WKC_RIGHT       = 11,
 	WKC_DOWN        = 12,
 
-	// Return & tab
+	/* Return & tab */
 	WKC_RETURN      = 13,
 	WKC_TAB         = 14,
 
-	// Numerical keyboard
+	/* Numerical keyboard */
 	WKC_NUM_0       = 16,
 	WKC_NUM_1       = 17,
 	WKC_NUM_2       = 18,
@@ -50,10 +52,10 @@ enum WindowKeyCodes {
 	WKC_NUM_ENTER   = 30,
 	WKC_NUM_DECIMAL = 31,
 
-	// Space
+	/* Space */
 	WKC_SPACE       = 32,
 
-	// Function keys
+	/* Function keys */
 	WKC_F1          = 33,
 	WKC_F2          = 34,
 	WKC_F3          = 35,
@@ -67,15 +69,15 @@ enum WindowKeyCodes {
 	WKC_F11         = 43,
 	WKC_F12         = 44,
 
-	// backquote is the key left of "1"
-	// we only store this key here, no matter what character is really mapped to it
-	// on a particular keyboard. (US keyboard: ` and ~ ; German keyboard: ^ and °)
+	/* backquote is the key left of "1"
+	 * we only store this key here, no matter what character is really mapped to it
+	 * on a particular keyboard. (US keyboard: ` and ~ ; German keyboard: ^ and °) */
 	WKC_BACKQUOTE   = 45,
 	WKC_PAUSE       = 46,
 
-	// 0-9 are mapped to 48-57
-	// A-Z are mapped to 65-90
-	// a-z are mapped to 97-122
+	/* 0-9 are mapped to 48-57
+	 * A-Z are mapped to 65-90
+	 * a-z are mapped to 97-122 */
 };
 
 enum GameModes {
@@ -138,11 +140,11 @@ typedef struct Colour {
 
 
 
-extern byte _dirkeys;        // 1 = left, 2 = up, 4 = right, 8 = down
+extern byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 extern bool _fullscreen;
 extern CursorVars _cursor;
-extern bool _ctrl_pressed;   // Is Ctrl pressed?
-extern bool _shift_pressed;  // Is Shift pressed?
+extern bool _ctrl_pressed;   ///< Is Ctrl pressed?
+extern bool _shift_pressed;  ///< Is Shift pressed?
 extern byte _fast_forward;
 
 extern bool _left_button_down;
@@ -168,7 +170,7 @@ void HandleMouseEvents(void);
 void CSleep(int milliseconds);
 void UpdateWindows(void);
 
-uint32 InteractiveRandom(void); /* Used for random sequences that are not the same on the other end of the multiplayer link */
+uint32 InteractiveRandom(void); //< Used for random sequences that are not the same on the other end of the multiplayer link
 uint InteractiveRandomRange(uint max);
 void DrawTextMessage(void);
 void DrawMouseCursor(void);
@@ -192,8 +194,8 @@ void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
 
-// XXX doesn't really belong here, but the only
-// consumers always use it in conjunction with DoDrawString()
+/* XXX doesn't really belong here, but the only
+ * consumers always use it in conjunction with DoDrawString() */
 #define UPARROW   "\xEE\x8A\x80"
 #define DOWNARROW "\xEE\x8A\xAA"
 
@@ -231,7 +233,7 @@ void GfxInitPalettes(void);
 
 bool FillDrawPixelInfo(DrawPixelInfo* n, int left, int top, int width, int height);
 
-/* window.c */
+/* window.cpp */
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 
 void SetMouseCursor(CursorID cursor);
@@ -245,7 +247,7 @@ bool ChangeResInGame(int w, int h);
 void SortResolutions(int count);
 void ToggleFullScreen(bool fs);
 
-/* gfx.c */
+/* gfx.cpp */
 #define ASCII_LETTERSTART 32
 extern FontSize _cur_fontsize;
 
@@ -291,7 +293,7 @@ VARDEF byte _colour_gradient[16][8];
 VARDEF bool _use_dos_palette;
 
 typedef enum StringColorFlags {
-	IS_PALETTE_COLOR = 0x100, // color value is already a real palette color index, not an index of a StringColor
+	IS_PALETTE_COLOR = 0x100, ///< color value is already a real palette color index, not an index of a StringColor
 } StringColorFlags;
 
 

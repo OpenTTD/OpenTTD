@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file gfx.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -21,11 +23,11 @@
 bool _dbg_screen_rect;
 #endif
 
-byte _dirkeys;        // 1 = left, 2 = up, 4 = right, 8 = down
+byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 bool _fullscreen;
 CursorVars _cursor;
-bool _ctrl_pressed;   // Is Ctrl pressed?
-bool _shift_pressed;  // Is Shift pressed?
+bool _ctrl_pressed;   ///< Is Ctrl pressed?
+bool _shift_pressed;  ///< Is Shift pressed?
 byte _fast_forward;
 bool _left_button_down;
 bool _left_button_clicked;
@@ -88,16 +90,16 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 	p = _screen.pitch;
 
 	if (yo > 0) {
-		// Calculate pointers
+		/*Calculate pointers */
 		dst = _screen.dst_ptr + (top + height - 1) * p + left;
 		src = dst - yo * p;
 
-		// Decrease height and increase top
+		/* Decrease height and increase top */
 		top += yo;
 		height -= yo;
 		assert(height > 0);
 
-		// Adjust left & width
+		/* Adjust left & width */
 		if (xo >= 0) {
 			dst += xo;
 			left += xo;
@@ -113,15 +115,15 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 			dst -= p;
 		}
 	} else {
-		// Calculate pointers
+		/* Calculate pointers */
 		dst = _screen.dst_ptr + top * p + left;
 		src = dst - yo * p;
 
-		// Decrese height. (yo is <=0).
+		/* Decrese height. (yo is <=0). */
 		height += yo;
 		assert(height > 0);
 
-		// Adjust left & width
+		/* Adjust left & width */
 		if (xo >= 0) {
 			dst += xo;
 			left += xo;
@@ -131,15 +133,15 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 			width += xo;
 		}
 
-		// the y-displacement may be 0 therefore we have to use memmove,
-		// because source and destination may overlap
+		/* the y-displacement may be 0 therefore we have to use memmove,
+		 * because source and destination may overlap */
 		for (ht = height; ht > 0; --ht) {
 			memmove(dst, src, width);
 			src += p;
 			dst += p;
 		}
 	}
-	// This part of the screen is now dirty.
+	/* This part of the screen is now dirty. */
 	_video_driver->make_dirty(left, top, width, height);
 }
 
@@ -212,7 +214,7 @@ void GfxDrawLine(int x, int y, int x2, int y2, int color)
 	int stepy;
 	int frac;
 
-	// Check clipping first
+	/* Check clipping first */
 	{
 		DrawPixelInfo *dpi = _cur_dpi;
 		int t;
@@ -292,7 +294,7 @@ static int TruncateString(char *str, int maxw)
 			w += GetCharacterWidth(size, c);
 
 			if (w >= maxw) {
-				// string got too big... insert dotdotdot
+				/* string got too big... insert dotdotdot */
 				ddd_pos[0] = ddd_pos[1] = ddd_pos[2] = '.';
 				ddd_pos[3] = 0;
 				return ddd_w;
@@ -309,7 +311,7 @@ static int TruncateString(char *str, int maxw)
 			}
 		}
 
-		// Remember the last position where three dots fit.
+		/* Remember the last position where three dots fit. */
 		if (w + ddd < maxw) {
 			ddd_w = w + ddd;
 			ddd_pos = str;
@@ -1544,7 +1546,7 @@ void DoPaletteAnimations(void)
 	d = &_cur_palette[217];
 	memcpy(old_val, d, c * sizeof(*old_val));
 
-	// Dark blue water
+	/* Dark blue water */
 	s = (_opt.landscape == LT_CANDY) ? ev->ac : ev->a;
 	j = EXTR(320, 5);
 	for (i = 0; i != 5; i++) {
@@ -1553,7 +1555,7 @@ void DoPaletteAnimations(void)
 		if (j == 5) j = 0;
 	}
 
-	// Glittery water
+	/* Glittery water */
 	s = (_opt.landscape == LT_CANDY) ? ev->bc : ev->b;
 	j = EXTR(128, 15);
 	for (i = 0; i != 5; i++) {
@@ -1570,7 +1572,7 @@ void DoPaletteAnimations(void)
 		if (j == 5) j = 0;
 	}
 
-	// Oil refinery fire animation
+	/* Oil refinery fire animation */
 	s = ev->oil_ref;
 	j = EXTR2(512, 7);
 	for (i = 0; i != 7; i++) {
@@ -1579,7 +1581,7 @@ void DoPaletteAnimations(void)
 		if (j == 7) j = 0;
 	}
 
-	// Radio tower blinking
+	/* Radio tower blinking */
 	{
 		byte i = (_timer_counter >> 1) & 0x7F;
 		byte v;
@@ -1602,7 +1604,7 @@ void DoPaletteAnimations(void)
 		d++;
 	}
 
-	// Handle lighthouse and stadium animation
+	/* Handle lighthouse and stadium animation */
 	s = ev->lighthouse;
 	j = EXTR(256, 4);
 	for (i = 0; i != 4; i++) {
@@ -1611,9 +1613,9 @@ void DoPaletteAnimations(void)
 		if (j == 4) j = 0;
 	}
 
-	// Animate water for old DOS graphics
+	/* Animate water for old DOS graphics */
 	if (_use_dos_palette) {
-		// Dark blue water DOS
+		/* Dark blue water DOS */
 		s = (_opt.landscape == LT_CANDY) ? ev->ac : ev->a;
 		j = EXTR(320, 5);
 		for (i = 0; i != 5; i++) {
@@ -1622,7 +1624,7 @@ void DoPaletteAnimations(void)
 			if (j == 5) j = 0;
 		}
 
-		// Glittery water DOS
+		/* Glittery water DOS */
 		s = (_opt.landscape == LT_CANDY) ? ev->bc : ev->b;
 		j = EXTR(128, 15);
 		for (i = 0; i != 5; i++) {
@@ -1670,11 +1672,11 @@ byte GetCharacterWidth(FontSize size, WChar key)
 
 void ScreenSizeChanged(void)
 {
-	// check the dirty rect
+	/* check the dirty rect */
 	if (_invalid_rect.right >= _screen.width) _invalid_rect.right = _screen.width;
 	if (_invalid_rect.bottom >= _screen.height) _invalid_rect.bottom = _screen.height;
 
-	// screen size changed and the old bitmap is invalid now, so we don't want to undraw it
+	/* screen size changed and the old bitmap is invalid now, so we don't want to undraw it */
 	_cursor.visible = false;
 }
 
@@ -1701,7 +1703,7 @@ void DrawMouseCursor(void)
 	/* Redraw mouse cursor but only when it's inside the window */
 	if (!_cursor.in_window) return;
 
-	// Don't draw the mouse cursor if it's already drawn
+	/* Don't draw the mouse cursor if it's already drawn */
 	if (_cursor.visible) {
 		if (!_cursor.dirty) return;
 		UndrawMouseCursor();
@@ -1731,13 +1733,13 @@ void DrawMouseCursor(void)
 
 	assert(w * h < (int)sizeof(_cursor_backup));
 
-	// Make backup of stuff below cursor
+	/* Make backup of stuff below cursor */
 	memcpy_pitch(
 		_cursor_backup,
 		_screen.dst_ptr + _cursor.draw_pos.x + _cursor.draw_pos.y * _screen.pitch,
 		_cursor.draw_size.x, _cursor.draw_size.y, _screen.pitch, _cursor.draw_size.x);
 
-	// Draw cursor on screen
+	/* Draw cursor on screen */
 	_cur_dpi = &_screen;
 	DrawSprite(_cursor.sprite, _cursor.pal, _cursor.pos.x, _cursor.pos.y);
 
@@ -1806,14 +1808,14 @@ void DrawDirtyBlocks(void)
 				byte *p = b;
 				int h2;
 
-				// First try coalescing downwards
+				/* First try coalescing downwards */
 				do {
 					*p = 0;
 					p += DIRTY_BYTES_PER_LINE;
 					bottom += 8;
 				} while (bottom != h && *p != 0);
 
-				// Try coalescing to the right too.
+				/* Try coalescing to the right too. */
 				h2 = (bottom - y) >> 3;
 				assert(h2 > 0);
 				p = b;
@@ -1821,14 +1823,14 @@ void DrawDirtyBlocks(void)
 				while (right != w) {
 					byte *p2 = ++p;
 					int h = h2;
-					// Check if a full line of dirty flags is set.
+					/* Check if a full line of dirty flags is set. */
 					do {
 						if (!*p2) goto no_more_coalesc;
 						p2 += DIRTY_BYTES_PER_LINE;
 					} while (--h != 0);
 
-					// Wohoo, can combine it one step to the right!
-					// Do that, and clear the bits.
+					/* Wohoo, can combine it one step to the right!
+					 * Do that, and clear the bits. */
 					right += 64;
 
 					h = h2;
@@ -2005,9 +2007,9 @@ void CursorTick(void)
 
 void SetMouseCursor(SpriteID sprite, SpriteID pal)
 {
-	// Turn off animation
+	/* Turn off animation */
 	_cursor.animate_timeout = 0;
-	// Set cursor
+	/* Set cursor */
 	SetCursorSprite(sprite, pal);
 }
 

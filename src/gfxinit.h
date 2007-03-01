@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file gfxinit.h */
+
 #ifndef GFXINIT_H
 #define GFXINIT_H
 

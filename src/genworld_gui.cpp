@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file genworld_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "heightmap.h"
@@ -398,7 +400,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, tree_placer, _patches_newgame.tree_placer, GLAND_TREE_PULLDOWN, 0, 0);
 			break;
 		case GLAND_LANDSCAPE_TEXT: case GLAND_LANDSCAPE_PULLDOWN: // Landscape generator OR Heightmap rotation
-		/*case GLAND_HEIGHTMAP_ROTATION_TEXT: case GLAND_HEIGHTMAP_ROTATION_PULLDOWN:*/
+		/* case GLAND_HEIGHTMAP_ROTATION_TEXT: case GLAND_HEIGHTMAP_ROTATION_PULLDOWN:*/
 			if (mode == GLWP_HEIGHTMAP) {
 				ShowDropDownMenu(w, rotation, _patches_newgame.heightmap_rotation, GLAND_HEIGHTMAP_ROTATION_PULLDOWN, 0, 0);
 			} else {
@@ -449,7 +451,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 				DoCommandP(0, 3, _opt_newgame.diff.number_industries, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 				break;
 			case GLAND_LANDSCAPE_PULLDOWN:
-			/*case GLAND_HEIGHTMAP_PULLDOWN: */
+			/* case GLAND_HEIGHTMAP_PULLDOWN: */
 				if (mode == GLWP_HEIGHTMAP) {
 					_patches_newgame.heightmap_rotation = e->we.dropdown.index;
 				} else {

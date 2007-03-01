@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file functions.h */
+
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
@@ -34,17 +36,17 @@ static inline Point RemapCoords2(int x, int y)
 }
 
 
-/* clear_land.c */
+/* clear_land.cpp */
 void DrawHillyLandTile(const TileInfo *ti);
 void DrawClearLandTile(const TileInfo *ti, byte set);
 void DrawClearLandFence(const TileInfo *ti);
 void TileLoopClearHelper(TileIndex tile);
 
-/* water_land.c */
+/* water_land.cpp */
 void DrawShipDepotSprite(int x, int y, int image);
 void TileLoop_Water(TileIndex tile);
 
-/* players.c */
+/* players.cpp */
 bool CheckPlayerHasMoney(int32 cost);
 void SubtractMoneyFromPlayer(int32 cost);
 void SubtractMoneyFromPlayerFract(PlayerID player, int32 cost);
@@ -57,7 +59,7 @@ void ShowInfo(const char *str);
 void CDECL ShowInfoF(const char *str, ...);
 void NORETURN CDECL error(const char *str, ...);
 
-/* openttd.c */
+/* openttd.cpp */
 
 /**************
  * Warning: DO NOT enable this unless you understand what it does
@@ -101,13 +103,13 @@ static inline TileIndex RandomTileSeed(uint32 r) { return TILE_MASK(r); }
 static inline TileIndex RandomTile(void) { return TILE_MASK(Random()); }
 
 
-uint32 InteractiveRandom(void); /* Used for random sequences that are not the same on the other end of the multiplayer link */
+uint32 InteractiveRandom(void); // Used for random sequences that are not the same on the other end of the multiplayer link
 uint InteractiveRandomRange(uint max);
 
-/* facedraw.c */
+/* facedraw.cpp */
 void DrawPlayerFace(uint32 face, int color, int x, int y);
 
-/* texteff.c */
+/* texteff.cpp */
 void MoveAllTextEffects(void);
 void AddTextEffect(StringID msg, int x, int y, uint16 duration);
 void InitTextEffects(void);
@@ -123,23 +125,23 @@ void DeleteAnimatedTile(TileIndex tile);
 void AnimateAnimatedTiles(void);
 void InitializeAnimatedTiles(void);
 
-/* tunnelbridge_cmd.c */
+/* tunnelbridge_cmd.cpp */
 bool CheckBridge_Stuff(byte bridge_type, uint bridge_len);
 uint32 GetBridgeLength(TileIndex begin, TileIndex end);
 int CalcBridgeLenCostFactor(int x);
 
-/* misc_cmd.c */
+/* misc_cmd.cpp */
 void PlaceTreesRandomly(void);
 
 void InitializeLandscapeVariables(bool only_constants);
 
-/* misc.c */
+/* misc.cpp */
 bool IsCustomName(StringID id);
 void DeleteName(StringID id);
 char *GetName(char *buff, StringID id, const char* last);
 
-// AllocateNameUnique also tests if the name used is not used anywere else
-//  and if it is used, it returns an error.
+/* AllocateNameUnique also tests if the name used is not used anywere else
+ * and if it is used, it returns an error. */
 #define AllocateNameUnique(name, skip) RealAllocateName(name, skip, true)
 #define AllocateName(name, skip) RealAllocateName(name, skip, false)
 StringID RealAllocateName(const char *name, byte skip, bool check_double);
@@ -203,7 +205,7 @@ enum {
 };
 void ShowSaveLoadDialog(int mode);
 
-// callback from drivers that is called if the game size changes dynamically
+/* callback from drivers that is called if the game size changes dynamically */
 void GameSizeChanged(void);
 bool FileExists(const char *filename);
 bool ReadLanguagePack(int index);

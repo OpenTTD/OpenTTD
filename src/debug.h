@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file debug.h */
+
 #ifndef DEBUG_H
 #define DEBUG_H
 
@@ -91,7 +93,7 @@ const char *GetDebugString(void);
 	#define OTTD_PRINTF64 "ll"
 #endif
 
-// Used for profiling
+/* Used for profiling */
 #define TIC() {\
 	extern uint64 _rdtsc(void);\
 	uint64 _xxx_ = _rdtsc();\

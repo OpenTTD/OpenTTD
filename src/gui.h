@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file gui.h */
+
 #ifndef GUI_H
 #define GUI_H
 
@@ -7,19 +9,19 @@
 #include "window.h"
 #include "string.h"
 
-/* main_gui.c */
+/* main_gui.cpp */
 void SetupColorsAndInitialWindow(void);
 void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
-/* settings_gui.c */
+/* settings_gui.cpp */
 void ShowGameOptions(void);
 void ShowGameDifficulty(void);
 void ShowPatchesSelection(void);
 void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, bool clickable_right);
 
-/* graph_gui.c */
+/* graph_gui.cpp */
 void ShowOperatingProfitGraph(void);
 void ShowIncomeGraph(void);
 void ShowDeliveredCargoGraph(void);
@@ -29,36 +31,36 @@ void ShowCargoPaymentRates(void);
 void ShowCompanyLeagueTable(void);
 void ShowPerformanceRatingDetail(void);
 
-/* news_gui.c */
+/* news_gui.cpp */
 void ShowLastNewsMessage(void);
 void ShowMessageOptions(void);
 void ShowMessageHistory(void);
 
-/* rail_gui.c */
+/* rail_gui.cpp */
 void ShowBuildRailToolbar(RailType railtype, int button);
 void PlaceProc_BuyLand(TileIndex tile);
 void ReinitGuiAfterToggleElrail(bool disable);
 
-/* train_gui.c */
+/* train_gui.cpp */
 void ShowTrainViewWindow(const Vehicle *v);
 void ShowOrdersWindow(const Vehicle *v);
 
-/* road_gui.c */
+/* road_gui.cpp */
 void ShowBuildRoadToolbar(void);
 void ShowBuildRoadScenToolbar(void);
 void ShowRoadVehViewWindow(const Vehicle *v);
 
-/* dock_gui.c */
+/* dock_gui.cpp */
 void ShowBuildDocksToolbar(void);
 void ShowShipViewWindow(const Vehicle *v);
 
-/* aircraft_gui.c */
+/* aircraft_gui.cpp */
 void ShowBuildAirToolbar(void);
 
-/* terraform_gui.c */
+/* terraform_gui.cpp */
 void ShowTerraformToolbar(Window *link = NULL);
 
-/* tgp_gui.c */
+/* tgp_gui.cpp */
 void ShowGenerateLandscape(void);
 void ShowHeightmapLoad(void);
 
@@ -75,7 +77,7 @@ enum { // max 32 - 4 = 28 types
 	GUI_PlaceProc_RockyArea       = 5 << 4,
 };
 
-/* misc_gui.c */
+/* misc_gui.cpp */
 void PlaceLandBlockInfo(void);
 void ShowAboutWindow(void);
 void ShowBuildTreesToolbar(void);
@@ -120,7 +122,7 @@ void SetFiosType(const byte fiostype);
 /* FIOS_TYPE_FILE, FIOS_TYPE_OLDFILE etc. different colours */
 extern const byte _fios_colors[];
 
-/* bridge_gui.c */
+/* bridge_gui.cpp */
 void ShowBuildBridgeWindow(uint start, uint end, byte type);
 
 void ShowBuildIndustryWindow(void);
@@ -128,12 +130,12 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 void ShowQuery(StringID caption, StringID message, Window *w, void (*callback)(Window*, bool));
 void ShowMusicWindow(void);
 
-/* main_gui.c */
+/* main_gui.cpp */
 void HandleOnEditText(const char *str);
 VARDEF bool _station_show_coverage;
 VARDEF PlaceProc *_place_proc;
 
-/* vehicle_gui.c */
+/* vehicle_gui.cpp */
 void InitializeGUI(void);
 
 #endif /* GUI_H */

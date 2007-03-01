@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file genworld.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -87,10 +89,10 @@ static void *_GenerateWorld(void *arg)
 	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, 0, WC_MAIN_WINDOW, 0);
 
 	IncreaseGeneratingWorldProgress(GWP_MAP_INIT);
-	// Must start economy early because of the costs.
+	/* Must start economy early because of the costs. */
 	StartupEconomy();
 
-	// Don't generate landscape items when in the scenario editor.
+	/* Don't generate landscape items when in the scenario editor. */
 	if (_gw.mode == GW_EMPTY) {
 		SetGeneratingWorldProgress(GWP_UNMOVABLE, 1);
 
@@ -103,7 +105,7 @@ static void *_GenerateWorld(void *arg)
 		GenerateLandscape(_gw.mode);
 		GenerateClearTile();
 
-		// only generate towns, tree and industries in newgame mode.
+		/* only generate towns, tree and industries in newgame mode. */
 		if (_game_mode != GM_EDITOR) {
 			GenerateTowns();
 			GenerateIndustries();
@@ -112,7 +114,7 @@ static void *_GenerateWorld(void *arg)
 		}
 	}
 
-	// These are probably pointless when inside the scenario editor.
+	/* These are probably pointless when inside the scenario editor. */
 	SetGeneratingWorldProgress(GWP_GAME_INIT, 3);
 	StartupPlayers();
 	IncreaseGeneratingWorldProgress(GWP_GAME_INIT);
@@ -121,7 +123,7 @@ static void *_GenerateWorld(void *arg)
 	StartupDisasters();
 	_generating_world = false;
 
-	// No need to run the tile loop in the scenario editor.
+	/* No need to run the tile loop in the scenario editor. */
 	if (_gw.mode != GW_EMPTY) {
 		uint i;
 
@@ -230,7 +232,7 @@ void HandleGeneratingWorldAbortion(void)
 
 /**
  * Generate a world.
- * @param mode The mode of world generation (@see GenerateWorldModes).
+ * @param mode The mode of world generation (see GenerateWorldModes).
  * @param size_x The X-size of the map.
  * @param size_y The Y-size of the map.
  */
