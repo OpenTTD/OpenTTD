@@ -261,7 +261,6 @@ public:
 
 DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 {
-	extern const char _openttd_revision[];
 	NetworkGameList *item;
 
 	// Just a fail-safe.. should never happen
@@ -316,9 +315,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 		snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
 
 	/* Check if we are allowed on this server based on the revision-match */
-	item->info.version_compatible =
-		strcmp(item->info.server_revision, _openttd_revision) == 0 ||
-		strcmp(item->info.server_revision, NOREV_STRING) == 0;
+	item->info.version_compatible = IsNetworkCompatibleVersion(item->info.server_revision);
 	item->info.compatible &= item->info.version_compatible; // Already contains match for GRFs
 
 	item->online = true;

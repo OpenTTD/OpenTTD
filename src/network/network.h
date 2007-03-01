@@ -178,6 +178,8 @@ bool NetworkClientConnectGame(const char *host, uint16 port);
 void NetworkReboot(void);
 void NetworkDisconnect(void);
 
+bool IsNetworkCompatibleVersion(const char *version);
+
 VARDEF bool _network_server;     ///< network-server is active
 VARDEF bool _network_available;  ///< is network mode available?
 VARDEF bool _network_dedicated;  ///< are we a dedicated server?

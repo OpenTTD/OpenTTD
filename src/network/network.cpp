@@ -1421,4 +1421,17 @@ void NetworkShutDown(void)
 	NetworkCoreShutdown();
 }
 
+/**
+ * Checks whether the given version string is compatible with our version.
+ * It'll check the first NETWORK_REVISION_LENGTH - 1 characters (-1 for '\0')
+ * against the current version and the NOREV_STRING.
+ * @param other the version string to compare to
+ */
+bool IsNetworkCompatibleVersion(const char *other)
+{
+	extern const char _openttd_revision[];
+	return strncmp(NOREV_STRING, other, NETWORK_REVISION_LENGTH - 1) == 0 ||
+			strncmp(_openttd_revision, other, NETWORK_REVISION_LENGTH - 1) == 0;
+}
+
 #endif /* ENABLE_NETWORK */
