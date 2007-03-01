@@ -11,15 +11,42 @@
 <body>
 
  <h3><a name="Landscape">Landscape</a></h3>
- <p>Seven attributes (counting &quot;type_height&quot;) hold the informations about a tile.<BR>
+ <p>Seven attributes (counting &quot;<span style="font-weight: bold;">type_height</span>&quot;) hold the informations about a tile.<BR>
   These attributes are referred to as
   "<span style="font-weight: bold;">type_height</span>",
   "<span style="font-weight: bold;">m1</span>", "<span style="font-weight: bold;">m2</span>",
   "<span style="font-weight: bold;">m3</span>", "<span style="font-weight: bold;">m4</span>",
   "<span style="font-weight: bold;">m5</span>" and "<span style="font-weight: bold;">m6</span>".<BR>
   The most important value is the class of a tile, stored in the upper 4 bits
-  of the type_height array. The lower 4 bits are used to encode the height and
-  slope data.<BR>
+  of the <span style="font-weight: bold;">type_height</span> attribute. The lower 4 bits are used to encode the height and
+  slope data.
+ </p>
+
+ Special Attribute : <span style="font-weight: bold;">m6</span>. There are 4 bits of it that are used accross multiple tile classes<br>
+ <ul>
+  <li>
+   <a name = "bridge_direction">
+   Bits 7..6 :
+   <table border="1">
+    <tr bgcolor="#CCCCCC"><td colspan="2">Presence and direction of bridge above,<br>for tiles that support this.</td></tr>
+    <tr><td><tt>00</tt>&nbsp; </td><td>no bridge</td></tr>
+    <tr><td><tt>01</tt>&nbsp; </td><td>Axis X (North-East)</td></tr>
+    <tr><td><tt>02</tt>&nbsp; </td><td>Axis Y (South-West)</td></tr>
+   </table>
+  </li>
+  <li>
+   <a name = "tropic_zone">
+   Bits 1..0 :
+   <table border="1">
+    <tr bgcolor="#CCCCCC"><td colspan="2">Only meaningfull in tropic climate.<br>It contains the definition of the two available zones</td></tr>
+    <tr><td><tt>00</tt>&nbsp; </td><td>invalid zone</td></tr>
+    <tr><td><tt>01</tt>&nbsp; </td><td>desert</td></tr>
+    <tr><td><tt>02</tt>&nbsp; </td><td>rain forest</td></tr>
+   </table>
+   In any other climate, those 2 bits are free of use.
+  </li>
+ </ul>
+ <p>
   For a graphical representation of the tile-layout have a look at
   <a href="landscape_grid.html">Landscape grid</a> page.
  </p>
@@ -27,7 +54,7 @@
   The <a name="OwnershipInfo">owner of a tile</a>, as frequently associated with attribute m1,
   can be either players (human or AI) or "Game entities".
   They are identified using:
-  <table>
+  <table border="1">
    <tr><td><tt>00</tt>&nbsp; </td><td align=left>current player</td></tr>
    <tr><td><tt>01..08</tt>&nbsp; </td><td align=left>AI or network players</td></tr>
    <tr><td><tt>0F</tt>&nbsp; </td><td align=left>a town owns the tile</td></tr>
@@ -45,7 +72,7 @@
   </tr>
   <tr bgcolor="#CCCCCC">
    <td align=left><strong><a name="Class0"><tt> 0 </tt></a></strong></td>
-   <td align=left>&nbsp;<strong>Ground </strong><td>
+   <td align=left>&nbsp;<strong>Ground </strong></td>
   </tr>
   <tr>
    <td valign=top nowrap>&nbsp;</td>
@@ -127,6 +154,8 @@
        </tr>
       </table>
      </li>
+     <li>m6 bits 7..6 : Possibility of a bridge above, in the <a href="#bridge_direction">direction specified</a></li>
+     <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>
   </tr>
@@ -432,6 +461,8 @@
        </li>
       </ul>
      </li>
+     <li>m6 bits 7..6 : Possibility of a bridge above, in the <a href="#bridge_direction">direction specified</a></li>
+     <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>
   </tr>
@@ -523,6 +554,8 @@
        <li>m5 bit 2: set if crossing lights are on</li>
       </ul>
      </li>
+     <li>m6 bits 7..6 : Possibility of a bridge above, in the <a href="#bridge_direction">direction specified</a></li>
+     <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>
   </tr>
@@ -1148,6 +1181,7 @@
            One 'normal' floor has a height of 6 lift positions.</li>
       </ul>
      </li>
+     <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>
   </tr>
@@ -1160,80 +1194,82 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
-    <li>m1: <a href="#OwnershipInfo">owner</a> (normally <tt>10</tt>)</li>
-    <li>m2 bits 5..4:
-     <table>
+     <li>m1: <a href="#OwnershipInfo">owner</a> (normally <tt>10</tt>)</li>
+     <li>m2 bits 5..4:
+      <table>
 
-      <tr>
-       <td nowrap valign=top><tt>0</tt>&nbsp; </td>
-       <td align=left>on grass</td>
-      </tr>
+       <tr>
+        <td nowrap valign=top><tt>0</tt>&nbsp; </td>
+        <td align=left>on grass</td>
+       </tr>
 
-      <tr>
-       <td nowrap valign=top><tt>1</tt>&nbsp; </td>
-       <td align=left>on rough land</td>
-      </tr>
+       <tr>
+        <td nowrap valign=top><tt>1</tt>&nbsp; </td>
+        <td align=left>on rough land</td>
+       </tr>
 
-      <tr>
-       <td nowrap valign=top><tt>2</tt>&nbsp; </td>
-       <td align=left>on snow or desert; m2 bits 7..6 - amount of snow or desert (for desert always set to 3 in TTD)</td>
-      </tr>
-     </table>
-    </li>
-    <li>m2 bits 3..0: update counter, incremented on every periodic processing.<br>
-         on wraparound the growth status is updated (or, if it's <tt>3</tt>, a random action is taken)</li>
-    <li>m3 bits 7..0: type of trees:
-     <table>
-      <tr>
-       <td nowrap valign=top><tt>00</tt>..<tt>0B</tt>&nbsp; </td>
-       <td align=left>temperate climate trees</td>
-      </tr>
+       <tr>
+        <td nowrap valign=top><tt>2</tt>&nbsp; </td>
+        <td align=left>on snow or desert; m2 bits 7..6 - amount of snow or desert (for desert always set to 3 in TTD)</td>
+       </tr>
+      </table>
+     </li>
+     <li>m2 bits 3..0: update counter, incremented on every periodic processing.<br>
+          on wraparound the growth status is updated (or, if it's <tt>3</tt>, a random action is taken)</li>
+     <li>m3 bits 7..0: type of trees:
+      <table>
+       <tr>
+        <td nowrap valign=top><tt>00</tt>..<tt>0B</tt>&nbsp; </td>
+        <td align=left>temperate climate trees</td>
+       </tr>
 
-      <tr>
-       <td nowrap valign=top><tt>0C</tt>..<tt>13</tt>&nbsp; </td>
-       <td align=left>sub-arctic climate trees</td>
-      </tr>
+       <tr>
+        <td nowrap valign=top><tt>0C</tt>..<tt>13</tt>&nbsp; </td>
+        <td align=left>sub-arctic climate trees</td>
+       </tr>
 
-      <tr>
-       <td nowrap valign=top><tt>14</tt>..<tt>1A</tt>&nbsp; </td>
-       <td align=left>rainforest trees</td>
-      </tr>
+       <tr>
+        <td nowrap valign=top><tt>14</tt>..<tt>1A</tt>&nbsp; </td>
+        <td align=left>rainforest trees</td>
+       </tr>
 
-      <tr>
-       <td nowrap valign=top><tt>1B</tt> </td>
-       <td align=left>cactus plants</td>
-      </tr>
+       <tr>
+        <td nowrap valign=top><tt>1B</tt> </td>
+        <td align=left>cactus plants</td>
+       </tr>
 
-      <tr>
-       <td nowrap valign=top><tt>1C</tt>..<tt>1F</tt>&nbsp; </td>
-       <td align=left>sub-tropical climate, non-rainforest, non-desert trees</td>
-      </tr>
+       <tr>
+        <td nowrap valign=top><tt>1C</tt>..<tt>1F</tt>&nbsp; </td>
+        <td align=left>sub-tropical climate, non-rainforest, non-desert trees</td>
+       </tr>
 
-      <tr>
-       <td nowrap valign=top><tt>20</tt>..<tt>28</tt>&nbsp; </td>
-       <td align=left>toyland trees</td>
-      </tr>
-     </table>
-     <small>Note: the actually displayed set of trees depends on both type and number of trees</small>
-    </li>
-    <li>m4 bits 7..5: type of hedge on the SW border of the tile (1 through 6, or 0=none)</li>
-    <li>m4 bits 4..2: type of hedge on the SE border of the tile (1 through 6, or 0=none)</li>
-    <li>m5 bits 7..6: number of trees minus one</li>
-    <li>m5 bits 2..0: growth status:
-     <table border="0">
-      <tr>
-       <td><tt>0</tt>..<tt>2</tt>&nbsp;</td>
-       <td>one of trees is growing&nbsp;</td>
-      </tr>
-      <tr>
-       <td><tt>3</tt>&nbsp;</td>
-       <td>all trees are fully grown&nbsp;</td>
-      </tr>
-      <tr>
-       <td><tt>4</tt>..<tt>6</tt>&nbsp;</td>
-       <td>one of trees is withering&nbsp;</td>
-      </tr>
-     </table>
+       <tr>
+        <td nowrap valign=top><tt>20</tt>..<tt>28</tt>&nbsp; </td>
+        <td align=left>toyland trees</td>
+       </tr>
+      </table>
+      <small>Note: the actually displayed set of trees depends on both type and number of trees</small>
+     </li>
+     <li>m4 bits 7..5: type of hedge on the SW border of the tile (1 through 6, or 0=none)</li>
+     <li>m4 bits 4..2: type of hedge on the SE border of the tile (1 through 6, or 0=none)</li>
+     <li>m5 bits 7..6: number of trees minus one</li>
+     <li>m5 bits 2..0: growth status:
+      <table border="0">
+       <tr>
+        <td><tt>0</tt>..<tt>2</tt>&nbsp;</td>
+        <td>one of trees is growing&nbsp;</td>
+       </tr>
+       <tr>
+        <td><tt>3</tt>&nbsp;</td>
+        <td>all trees are fully grown&nbsp;</td>
+       </tr>
+       <tr>
+        <td><tt>4</tt>..<tt>6</tt>&nbsp;</td>
+        <td>one of trees is withering&nbsp;</td>
+       </tr>
+      </table>
+     </li>
+     <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>
   </tr>
@@ -1469,6 +1505,7 @@
       </table>
      </li>
      <li>m6 bit 3: 1 when a drive through road stop is built over a town owned road, otherwise 0</li>
+     <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>
   </tr>
@@ -1575,6 +1612,8 @@
        </tr>
       </table>
      </li>
+     <li>m6 bits 7..6 : Possibility of a bridge above, in the <a href="#bridge_direction">direction specified</a></li>
+     <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>
   </tr>
@@ -1907,6 +1946,7 @@
        </tr>
       </table>
      </li>
+     <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>
   </tr>
@@ -1916,102 +1956,104 @@
    <td><strong>Tunnel / bridge</strong></td>
   </tr>
   <tr>
-    <td valign=top nowrap>&nbsp;</td>
-  <td>
-   <ul>
-    <li>m5 bits 7..4 clear: tunnel entrance/exit
-     <ul>
-      <li>m1: <a href="#OwnershipInfo">owner</a> of the tunnel</li>
-      <li>m3 bits 3..0 = <a href="#TrackType">track type</a> for railway tunnel, must be 0 for road tunnel</li>
-      <li>m4 bit 7 set = on snow or desert</li>
-      <li>m5 bits 3..2: <tt>0</tt> - railway tunnel, <tt>1</tt> - road tunnel</li>
-      <li>m5 bits 1..0 - direction: entrance towards: <tt>0</tt> = NE, <tt>1</tt> = SE, <tt>2</tt> = SW, <tt>3</tt> = NW</li>
-     </ul>
-    </li>
-    <li>m5 bit 7 set: bridge ramp
-     <ul>
-      <li>m1: <a href="#OwnershipInfo">owner</a> of the bridge</li>
-      <li>m2 bits 7..4: <a name="BridgeType">bridge type</a>:
-       <table>
-        <tr>
-         <th align=left>Type&nbsp;</th>
-         <th align=left>Max. speed (mph)&nbsp;</th>
-         <th align=left>Description</th>
-        </tr>
+   <td valign=top nowrap>&nbsp;</td>
+   <td>
+    <ul>
+     <li>m5 bits 7..4 clear: tunnel entrance/exit
+      <ul>
+       <li>m1: <a href="#OwnershipInfo">owner</a> of the tunnel</li>
+       <li>m3 bits 3..0 = <a href="#TrackType">track type</a> for railway tunnel, must be 0 for road tunnel</li>
+       <li>m4 bit 7 set = on snow or desert</li>
+       <li>m5 bits 3..2: <tt>0</tt> - railway tunnel, <tt>1</tt> - road tunnel</li>
+       <li>m5 bits 1..0 - direction: entrance towards: <tt>0</tt> = NE, <tt>1</tt> = SE, <tt>2</tt> = SW, <tt>3</tt> = NW</li>
+      </ul>
+     </li>
+     <li>m5 bit 7 set: bridge ramp
+      <ul>
+       <li>m1: <a href="#OwnershipInfo">owner</a> of the bridge</li>
+       <li>m2 bits 7..4: <a name="BridgeType">bridge type</a>:
+        <table>
+         <tr>
+          <th align=left>Type&nbsp;</th>
+          <th align=left>Max. speed (mph)&nbsp;</th>
+          <th align=left>Description</th>
+         </tr>
 
-        <tr>
-         <td nowrap valign=top><tt>0</tt>&nbsp; </td>
-         <td align=center>20</td>
-         <td align=left>wooden</td>
-        </tr>
+         <tr>
+          <td nowrap valign=top><tt>0</tt>&nbsp; </td>
+          <td align=center>20</td>
+          <td align=left>wooden</td>
+         </tr>
 
-        <tr>
-         <td nowrap valign=top><tt>1</tt>&nbsp; </td>
-         <td align=center>30</td>
-         <td align=left>concrete</td>
-        </tr>
+         <tr>
+          <td nowrap valign=top><tt>1</tt>&nbsp; </td>
+          <td align=center>30</td>
+          <td align=left>concrete</td>
+         </tr>
 
-        <tr>
-         <td nowrap valign=top><tt>2</tt>&nbsp; </td>
-         <td align=center>40</td>
-         <td align=left>girder, steel</td>
-        </tr>
+         <tr>
+          <td nowrap valign=top><tt>2</tt>&nbsp; </td>
+          <td align=center>40</td>
+          <td align=left>girder, steel</td>
+         </tr>
 
-        <tr>
-         <td nowrap valign=top><tt>3</tt>&nbsp; </td>
-         <td align=center>50</td>
-         <td align=left>suspension, concrete</td>
-        </tr>
+         <tr>
+          <td nowrap valign=top><tt>3</tt>&nbsp; </td>
+          <td align=center>50</td>
+          <td align=left>suspension, concrete</td>
+         </tr>
 
-        <tr>
-         <td nowrap valign=top><tt>4</tt>&nbsp; </td>
-         <td align=center>60</td>
-         <td align=left>suspension, steel</td>
-        </tr>
+         <tr>
+          <td nowrap valign=top><tt>4</tt>&nbsp; </td>
+          <td align=center>60</td>
+          <td align=left>suspension, steel</td>
+         </tr>
 
-        <tr>
-         <td nowrap valign=top><tt>5</tt>&nbsp; </td>
-         <td align=center>70</td>
-         <td align=left>suspension, steel</td>
-        </tr>
+         <tr>
+          <td nowrap valign=top><tt>5</tt>&nbsp; </td>
+          <td align=center>70</td>
+          <td align=left>suspension, steel</td>
+         </tr>
 
-        <tr>
-         <td nowrap valign=top><tt>6</tt>&nbsp; </td>
-         <td align=center>100</td>
-         <td align=left>cantilever, steel</td>
-        </tr>
+         <tr>
+          <td nowrap valign=top><tt>6</tt>&nbsp; </td>
+          <td align=center>100</td>
+          <td align=left>cantilever, steel</td>
+         </tr>
 
-        <tr>
-         <td nowrap valign=top><tt>7</tt>&nbsp; </td>
-         <td align=center>130</td>
-         <td align=left>cantilever, steel</td>
-        </tr>
+         <tr>
+          <td nowrap valign=top><tt>7</tt>&nbsp; </td>
+          <td align=center>130</td>
+          <td align=left>cantilever, steel</td>
+         </tr>
 
-        <tr>
-         <td nowrap valign=top><tt>8</tt>&nbsp; </td>
-         <td align=center>150</td>
-         <td align=left>cantilever, steel</td>
-        </tr>
+         <tr>
+          <td nowrap valign=top><tt>8</tt>&nbsp; </td>
+          <td align=center>150</td>
+          <td align=left>cantilever, steel</td>
+         </tr>
 
-        <tr>
-         <td nowrap valign=top><tt>9</tt>&nbsp; </td>
-         <td align=center>160</td>
-         <td align=left>girder, steel</td>
-        </tr>
+         <tr>
+          <td nowrap valign=top><tt>9</tt>&nbsp; </td>
+          <td align=center>160</td>
+          <td align=left>girder, steel</td>
+         </tr>
 
-        <tr>
-         <td nowrap valign=top><tt>A</tt>&nbsp; </td>
-         <td align=center>200</td>
-         <td align=left>tubular, steel</td>
-        </tr>
-       </table>
-      </li>
-      <li>m3 bits 3..0 = <a href="#TrackType">type of track</a> on the bridge, must be 0 for road bridge</li>
-      <li>m4 bit 7 set = on snow or desert</li>
-      <li>m5 bits 3..2: <tt>0</tt> - railway bridge, <tt>1</tt> - road bridge</li>
-      <li>m5 bits 1..0: DiagDirection onto the bridge</li>
-     </ul>
-    </li>
+         <tr>
+          <td nowrap valign=top><tt>A</tt>&nbsp; </td>
+          <td align=center>200</td>
+          <td align=left>tubular, steel</td>
+         </tr>
+        </table>
+       </li>
+       <li>m3 bits 3..0 = <a href="#TrackType">type of track</a> on the bridge, must be 0 for road bridge</li>
+       <li>m4 bit 7 set = on snow or desert</li>
+       <li>m5 bits 3..2: <tt>0</tt> - railway bridge, <tt>1</tt> - road bridge</li>
+       <li>m5 bits 1..0: DiagDirection onto the bridge</li>
+      </ul>
+     </li>
+     <li>m6 bits 7..6 : Possibility of a bridge above, in the <a href="#bridge_direction">direction specified</a></li>
+     <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>
   </tr>
@@ -2053,6 +2095,8 @@
        </tr>
       </table>
      </li>
+     <li>m6 bits 7..6 : Possibility of a bridge above, in the <a href="#bridge_direction">direction specified</a></li>
+     <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>
   </tr>
