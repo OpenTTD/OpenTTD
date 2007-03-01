@@ -2628,8 +2628,6 @@ static void ScanInfo(byte *buf, int len)
 	uint32 grfid;
 	const char *name;
 	const char *info;
-	int name_len;
-	int info_len;
 
 	if (!check_length(len, 8, "Info")) return; buf++;
 	version = grf_load_byte(&buf);
@@ -2641,17 +2639,13 @@ static void ScanInfo(byte *buf, int len)
 	if (GB(grfid, 24, 8) == 0xFF) SETBIT(_cur_grfconfig->flags, GCF_SYSTEM);
 
 	len -= 6;
-	name = (const char*)buf;
-	name_len = ttd_strnlen(name, len);
+	name = grf_load_string(&buf, len);
+	_cur_grfconfig->name = TranslateTTDPatchCodes(name);
 
-	if (name_len < len) {
-		_cur_grfconfig->name = TranslateTTDPatchCodes(name);
-
-		len -= name_len + 1;
-		info = name + name_len + 1;
-		info_len = ttd_strnlen(info, len);
-
-		if (info_len < len) _cur_grfconfig->info  = TranslateTTDPatchCodes(info);
+	len -= strlen(name) + 1;
+	if (len > 0) {
+		info = grf_load_string(&buf, len);
+		_cur_grfconfig->info = TranslateTTDPatchCodes(info);
 	}
 
 	/* GLS_INFOSCAN only looks for the action 8, so we can skip the rest of the file */
