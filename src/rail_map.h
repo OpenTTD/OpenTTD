@@ -113,6 +113,10 @@ static inline TrackBits GetRailWaypointBits(TileIndex t)
 	return TrackToTrackBits(GetRailWaypointTrack(t));
 }
 
+static inline WaypointID GetWaypointIndex(TileIndex t)
+{
+	return (WaypointID)_m[t].m2;
+}
 
 typedef enum SignalType {
 	SIGTYPE_NORMAL  = 0, // normal signal

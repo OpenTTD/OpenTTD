@@ -9,6 +9,9 @@
 #include "oldpool.h"
 #include "tile.h"
 #include "variables.h"
+#include "road_map.h"
+#include "rail_map.h"
+#include "water_map.h"
 
 struct Depot {
 	TileIndex xy;
@@ -68,16 +71,16 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 {
 	switch (type) {
 		case TRANSPORT_RAIL:
-			return IsTileType(tile, MP_RAILWAY) && (_m[tile].m5 & 0xFC) == 0xC0;
+			return IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile)  == RAIL_TILE_DEPOT;
 
 		case TRANSPORT_ROAD:
-			return IsTileType(tile, MP_STREET) && (_m[tile].m5 & 0xF0) == 0x20;
+			return IsTileType(tile, MP_STREET)  && GetRoadTileType(tile)  == ROAD_TILE_DEPOT;
 
 		case TRANSPORT_WATER:
-			return IsTileType(tile, MP_WATER) && (_m[tile].m5 & ~3) == 0x80;
+			return IsTileType(tile, MP_WATER)   && GetWaterTileType(tile) == WATER_TILE_DEPOT;
 
 		default:
-			assert(0);
+			NOT_REACHED();
 			return false;
 	}
 }

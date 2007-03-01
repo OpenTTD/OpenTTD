@@ -59,7 +59,7 @@ static inline void DeleteWaypoint(Waypoint *wp)
 static inline Waypoint *GetWaypointByTile(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_RAILWAY) && IsRailWaypoint(tile));
-	return GetWaypoint(_m[tile].m2);
+	return GetWaypoint(GetWaypointIndex(tile));
 }
 
 int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove);
