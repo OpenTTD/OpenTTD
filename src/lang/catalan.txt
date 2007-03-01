@@ -2901,6 +2901,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}Id de GR
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Estàs a punt de fer canvis en un joc actiu; això pot fer que OpenTTD es pengi.{}Estàs completament segur que vols fer-los?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Alerta: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} no funcionarà amb la versió de TTDPatch informada per OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} és per la versió {STRING} de TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} està dissenyat per ser utilitzat amb {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paràmetre invàlid per {STRING}: paràmetre {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} ha de ser carregat abans de {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} ha de ser carregat després de {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Afegeix
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Afegeix un arxiu NewGRF a la llista
 STR_NEWGRF_REMOVE                                               :{BLACK}Treu
@@ -3125,5 +3136,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Llargada
 STR_MEASURE_AREA                                                :{BLACK}Àrea: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Llargada: {NUM}{}Diferència d'alçada: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Àrea: {NUM} x {NUM}{}Diferència d'alçada: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

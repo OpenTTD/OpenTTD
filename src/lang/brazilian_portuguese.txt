@@ -937,11 +937,11 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Selecion
 
 STR_OPTIONS_RES                                                 :{BLACK}Resolução da tela
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Selecione a resolução de tela que deseja utilizar
+STR_OPTIONS_RES_TIP                                             :{BLACK}Selecionar a resolução da tela que deseja utilizar
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato da foto
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecione o formato de foto que deseja utilizar
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecionar o formato de foto que deseja utilizar
 
 STR_AUTOSAVE_1_MONTH                                            :A cada mês
 STR_AUTOSAVE_FAILED                                             :{WHITE}Falha ao salvar automaticamente
@@ -2221,9 +2221,9 @@ STR_LIVERY_TRAIN_TIP                                            :{BLACK}Exibir e
 STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Exibir os esquemas de cor de automóveis
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Exibir esquemas de cor de embarcação
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Exibir esquemas de cor de aviões
-STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Seleciona a cor principal para o esquema selecionado
-STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Seleciona a cor secundária para o esquema selecionado
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Selecione um esquema a mudar, ou múltiplos esquemas com CTRL+clique. Marque a opção para utilizar o esquema
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Escolha a cor principal para o esquema selecionado
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Escolha a cor secundária para o esquema selecionado
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Selecionar um esquema de cores para mudar, ou múltiplos esquemas com CTRL+clique. Marque a opção para utilizar o esquema
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
@@ -2554,7 +2554,7 @@ STR_8826_GO_TO                                                  :{BLACK}Ir Para
 STR_8827_FULL_LOAD                                              :{BLACK}Carga
 STR_8828_UNLOAD                                                 :{BLACK}Descarga
 STR_REFIT                                                       :{BLACK}Readaptar
-STR_REFIT_TIP                                                   :{BLACK}Selecione a adaptação na ordem atual. CTRL + Clique para remover a instrução
+STR_REFIT_TIP                                                   :{BLACK}Selecionar a adaptação na ordem atual. CTRL + Clique para remover a instrução
 STR_REFIT_ORDER                                                 :(Readaptar para {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordens)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fim de Ordens - -
@@ -2905,6 +2905,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual; isto pode danificar o OpenTTD. {}Tem absoluta certeza que deseja fazer isto?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atenção: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Erro Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} não irá funcionar com a versão do TTDPatch encontrada pelo OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} funciona na versão {STRING} de TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} é projetado para ser usado com {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :parâmetro inválido para {STRING}: parâmetro {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} deve ser carregado antes de {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} deve ser carregado depois de {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adiciona um NewGRF à lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Remover
@@ -2990,11 +3001,11 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar Substituição
 STR_NOT_REPLACING                                               :{BLACK}Não substituindo
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Nenhum veículo selecionado
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecione o tipo de motor para substituir
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecione o novo tipo de motor para substituir o que selecionou à esquerda
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecionar o tipo de motor para substituir
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecionar o novo tipo de motor para substituir o que selecionou à esquerda
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pressione para parar a subsituição do tipo de motor que selecionou à esquerda
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pressione para iniciar a substituição do tipo de motor que selecionou à esquerda, com o tipo de motor selecionado à direita
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecione o tipo de carga para o qual deseja efetuar a substituição dos motores
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Escolha o tipo de carga para o qual deseja efetuar a substituição dos motores
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está selecionado à esquerda, se algum
 STR_REPLACE_HELP                                                :{BLACK}Permite substituir um tipo de motor por outro tipo, quando trens do tipo original entram num depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoção de vagões: {ORANGE}{SKIP}{STRING}
@@ -3129,5 +3140,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Comprime
 STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Comprimento: {NUM}{}Diferença de Altura: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Diferença de altura: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

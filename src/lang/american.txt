@@ -2901,6 +2901,7 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}You are about to make changes to a running game; this can crash OpenTTD.{}Are you absolutely sure about this?
 
+
 STR_NEWGRF_ADD                                                  :{BLACK}Add
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Add a NewGRF file to the list
 STR_NEWGRF_REMOVE                                               :{BLACK}Remove
@@ -3125,5 +3126,7 @@ STR_MEASURE_LENGTH                                              :{BLACK}Length: 
 STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Length: {NUM}{}Height difference: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Height difference: {NUM} m
+
+############ Date formatting
 
 ########

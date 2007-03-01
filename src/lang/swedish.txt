@@ -2901,6 +2901,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du håller på att göra ändringar i ett spel som används; detta kan krascha OpenTTD.{}Är du helt säker på detta?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varning: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fel: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalt: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} kommer inte att fungera med den TTDPatchversion som rapporterades av OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} är för {STRING}versionen av TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} är designat för att användas med {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Felaktig parameter för {STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} måste laddas innan {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} måste laddas efter {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Lägg till
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lägg till en ny NewGRF-fil till listan
 STR_NEWGRF_REMOVE                                               :{BLACK}Ta bort
@@ -3125,5 +3136,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Längd: 
 STR_MEASURE_AREA                                                :{BLACK}Yta: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Längd: {NUM}{}Höjdskillnad: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Yta: {NUM} x {NUM}{}Höjdskillnad: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

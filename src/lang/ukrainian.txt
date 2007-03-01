@@ -109,8 +109,9 @@ STR_002B_BATTERIES                                              :батарей�
 STR_002B_BATTERIES.r                                            :батарейок
 STR_002B_BATTERIES.z                                            :батарейки
 STR_002C_PLASTIC                                                :пластилін
+STR_002C_PLASTIC.r                                              :пластиліну
 STR_002C_PLASTIC.z                                              :пластилін
-STR_002D_FIZZY_DRINKS                                           :газована водф
+STR_002D_FIZZY_DRINKS                                           :газована вода
 STR_002D_FIZZY_DRINKS.r                                         :газованої води
 STR_002D_FIZZY_DRINKS.z                                         :газовану воду
 STR_002E                                                        :
@@ -202,6 +203,7 @@ STR_004B_BATTERY                                                :батарей�
 STR_004B_BATTERY.r                                              :батарейок
 STR_004B_BATTERY.z                                              :батарейки
 STR_004C_PLASTIC                                                :пластилін
+STR_004C_PLASTIC.r                                              :пластиліну
 STR_004C_PLASTIC.z                                              :пластилін
 STR_004D_FIZZY_DRINK                                            :газована вода
 STR_004D_FIZZY_DRINK.r                                          :газованої води
@@ -237,7 +239,7 @@ STR_QUANTITY_BUBBLES                                            :{COMMA} бул�
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} ірисок
 STR_QUANTITY_BATTERIES                                          :{COMMA} батарей{P ка ки ок}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} пластику
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} газованої вод{P а "" и}!!!
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} пляш{P ка ки ок} газованої води
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}ПС
 STR_ABBREV_COAL                                                 :{TINYFONT}ВГ
@@ -275,11 +277,11 @@ STR_ABBREV_ALL                                                  :{TINYFONT}Вс�
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Карта - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Опції ігри
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Опції гри
 STR_00B2_MESSAGE                                                :{YELLOW}Повідомлення
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Повідомлення від {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Обережно!
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Неможливо це зробити...
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Неможливо зробити це...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Неможливо очистити цю ділянку...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Авторське право {COPYRIGHT} 1995 Кріс Сойєр, Всі права захищені
 STR_00B7_VERSION                                                :{BLACK}OpenTTD версія {REV}
@@ -367,7 +369,7 @@ STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFON
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Джерело Кока-Коли
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Іграшковий магазин
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Іграшкова фабрика
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Пластикові фонтани
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Пластилінові фонтани
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Завод газованої води
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Бульбашкова фабрика
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Ірисковий кар'єр
@@ -469,7 +471,7 @@ STR_UNITS_FORCE_METRIC                                          :{COMMA} ton for
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Прибуток виробництва
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Операційний прибуток
 STR_0155_INCOME_GRAPH                                           :Графік доходів
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Доставлення вантажів
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Графік продуктивності
@@ -571,7 +573,7 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Буду
 STR_0182_BUILD_ROADS                                            :{BLACK}Будувати дороги
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Будувати порти
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Будувати аеропорти
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Садити дерева, позначити місце, тощо
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Посадити дерева, позначити місце, тощо
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Інформація про земельну ділянку
 STR_0187_OPTIONS                                                :{BLACK}Опції
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -758,7 +760,7 @@ STR_0233_TOWN_GENERATION                                        :{WHITE}Ство
 STR_0234_NEW_TOWN                                               :{BLACK}Нове місто
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Будувати нове місто
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Тут не можна будувати місто...
-STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...близько до краю карти
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...надто близько до краю карти
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...надто близько до іншого міста
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...невідповідне місце
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...забагато міст
@@ -798,7 +800,7 @@ STR_0259_BATTERY_FARM                                           :{BLACK}{G=s}Б�
 STR_025A_COLA_WELLS                                             :{BLACK}Джерело Кока-коли
 STR_025B_TOY_SHOP                                               :{BLACK}Іграшковий магазин
 STR_025C_TOY_FACTORY                                            :{BLACK}Іграшкова фабрика
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Пластикові фонтани
+STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Пластилінові фонтани
 STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Фабрика газованої води
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Бульбашкова фабрика
 STR_0260_TOFFEE_QUARRY                                          :{BLACK}Ірисковий кар'єр
@@ -824,7 +826,7 @@ STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Буду
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Посадити фруктовий сад
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Посадити каучуковий сад
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Будувати водопостачання
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Будувати водонапірна башту (тільки у містах)
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Будувати водонапірну башту (тільки у містах)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Будувати діамантову шахту
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Будувати міднорудну шахту
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Посадити ліс солодкої вати
@@ -833,7 +835,7 @@ STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Поса
 STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Будувати джерело Кока-коли
 STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Будувати іграшковий магазин
 STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Будувати іграшкову фабрику
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Будувати пластикові фонтани
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Будувати пластилінові фонтани
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Будувати завод газованої води
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Будувати бульбашкову фабрику
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Будувати ірисковий кар'єр
@@ -941,8 +943,8 @@ STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Вибі
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Транспорт
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Виберіть, по якій стороні їхатиме транспорт
-STR_02E9_DRIVE_ON_LEFT                                          :Їде по лівій стороні
-STR_02EA_DRIVE_ON_RIGHT                                         :Їде по правій стороні
+STR_02E9_DRIVE_ON_LEFT                                          :їде по лівій стороні
+STR_02EA_DRIVE_ON_RIGHT                                         :їде по правій стороні
 STR_02EB_TOWN_NAMES                                             :{BLACK}Назви міст
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Виберіть стиль назв міст
@@ -965,7 +967,7 @@ STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Поча
 STR_0304_QUIT                                                   :{BLACK}Вихід
 STR_0305_QUIT_OPENTTD                                           :{BLACK}покинути 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
-STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можна збудувати лише в містах
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можна будувати лише у містах
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Вибрати 'помірний' клімат
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Вибрати 'субарктичний' клімат
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Вибрати 'тропічний' клімат
@@ -1373,7 +1375,7 @@ STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Збуд
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Посадити ліс солодкої вати
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Посадити батарейкове поле
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Будувати джерело кока-коли
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Будувати пластикові фонтани
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Будувати пластилінові фонтани
 STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Збудувати бульбашкову фабрику
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Будувати ірисковий кар'єр
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Збудувати цукрову копальню
@@ -1932,14 +1934,14 @@ STR_4001_LOAD_GAME                                              :{WHITE}Зава
 STR_4002_SAVE                                                   :{BLACK}Зберегти
 STR_4003_DELETE                                                 :{BLACK}Видалити
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} мегабайт вільно
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} мегабайт{P "" и ""}  вільно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Неможливо прочитати пристрій
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Помилка запису гри
-STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Неможлтво видалити файл
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Неможливо стерти файл
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Помилка завантаження гри
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Список пристроїв, каталогів і збережених файлів гри
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Поточне вибране ім'я файлу для збереження гри
-STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Видалити поточну вибрану збережену гру
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Стерти вибрану збережену гру
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Зберегти поточну гру, використовуючи вибране ім'я файлу
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Виберіть новий тип гри
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Виберіть сценарій (зелений), встановлена гра (синій), або випадкова нова гра
@@ -2013,8 +2015,8 @@ STR_4820_TOY_SHOP                                               :Іграшко�
 STR_4820_TOY_SHOP.z                                             :іграшковий магазин
 STR_4821_TOY_FACTORY                                            :Іграшкова фабрика
 STR_4821_TOY_FACTORY.z                                          :іграшкову фабрику
-STR_4822_PLASTIC_FOUNTAINS                                      :Пластиковий фонтан
-STR_4822_PLASTIC_FOUNTAINS.z                                    :пластиковий фонтан
+STR_4822_PLASTIC_FOUNTAINS                                      :Пластиліновий фонтан
+STR_4822_PLASTIC_FOUNTAINS.z                                    :пластиліновий фонтан
 STR_4823_FIZZY_DRINK_FACTORY                                    :Завод газованої води
 STR_4823_FIZZY_DRINK_FACTORY.z                                  :завод газованої води
 STR_4824_BUBBLE_GENERATOR                                       :Бульбашкова фабрика
@@ -2434,7 +2436,7 @@ STR_8031_CANDY_VAN                                              :Вагон дл
 STR_8032_TOY_VAN                                                :Вагон для іграшок
 STR_8033_BATTERY_TRUCK                                          :вантажівка для батарейок
 STR_8034_FIZZY_DRINK_TRUCK                                      :вантажівка для газованої води
-STR_8035_PLASTIC_TRUCK                                          :вантажівка для пластику
+STR_8035_PLASTIC_TRUCK                                          :вантажівка для пластиліну
 STR_8036_X2001_ELECTRIC                                         :'X2001' (Електричка)
 STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Електричка)
 STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
@@ -2464,7 +2466,7 @@ STR_804F_CANDY_VAN                                              :вагон дл
 STR_8050_TOY_VAN                                                :вагон для іграшок
 STR_8051_BATTERY_TRUCK                                          :вагон для батарейок
 STR_8052_FIZZY_DRINK_TRUCK                                      :вантажівка для газованої води
-STR_8053_PLASTIC_TRUCK                                          :вантажівка для пластику
+STR_8053_PLASTIC_TRUCK                                          :вантажівка для пластиліну
 STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (електричка)
 STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (електричка)
 STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (електричка)
@@ -2496,7 +2498,7 @@ STR_806F_CANDY_VAN                                              :вагон дл
 STR_8070_TOY_VAN                                                :вагон для іграшок
 STR_8071_BATTERY_TRUCK                                          :вагон для батарейок
 STR_8072_FIZZY_DRINK_TRUCK                                      :вагон для газованої води
-STR_8073_PLASTIC_TRUCK                                          :вагон для пластику
+STR_8073_PLASTIC_TRUCK                                          :вагон для пластиліну
 STR_8074_MPS_REGAL_BUS                                          :MPS Regal автобус
 STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard автобус
 STR_8076_FOSTER_BUS                                             :Foster автобус
@@ -2562,8 +2564,8 @@ STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover в�
 STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught вантажівка для коли
 STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow вантажівка для коли
 STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover вантажівка для цукрової вати
-STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught вантажівка для солодощів
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow вантажівка для солодощів
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught вантажівка для цукрової вати
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow вантажівка для цукрової вати
 STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover вантажівка для ірисок
 STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught вантажівка для ірисок
 STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow вантажівка для ірисок
@@ -2579,9 +2581,9 @@ STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow ван
 STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover вантажівка для газованої води
 STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught вантажівка для газованої води
 STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow вантажівка для газованої води
-STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover вантажівка для пластику
-STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught вантажівка для пластику
-STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow вантажівка для пластику
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover вантажівка для пластиліну
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught вантажівка для пластиліну
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow вантажівка для пластиліну
 STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover вантажівка для кульок
 STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught вантажівка для кульок
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow вантажівка для кульок
@@ -2638,7 +2640,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario гел
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 гелікоптер
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut гелікоптер
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Повідомлення від виробника транспорту
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Ми розробили новий {STRING} - бажаєте екслюзивно користуватись ним протягом року, так ми побачимо як він зарекомендує себе перед тим як буде доступним для всіх?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Ми розробили новий {STRING} - чи бажаєте ексклюзивно користуватись ним протягом року, так ми побачимо, як він зарекомендує себе, перед тим як буде доступним для всіх?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :локомотив
 STR_8103_ROAD_VEHICLE                                           :автомобіль
 STR_8104_AIRCRAFT                                               :літак
@@ -3060,6 +3062,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}ID гр�
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5сума: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Ви хочете зробити зміни у вже запущеній грі; це може привести до зависання OpenTTD.{}Ви впевнені що хочете зробити це?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Попередження: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Помилка: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Збій: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} не буде працювати з версією TTDPatch, вказаною OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} для {STRING} вірсії TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} розроблено для {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Помилковий параметр для {STRING}: параметр {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} має бути завантажений до {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} має бути завантажений після {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Додати
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Додати файли NewGRF до списку
 STR_NEWGRF_REMOVE                                               :{BLACK}Видалити
@@ -3284,5 +3297,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Довж
 STR_MEASURE_AREA                                                :{BLACK}Область: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Довжина: {NUM}{}Різниця висот: {NUM} м
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ділянка: {NUM} x {NUM}{}Різниця висот: {NUM} м
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

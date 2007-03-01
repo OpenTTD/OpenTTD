@@ -3030,6 +3030,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}suma MD5: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Zamierzasz wprowadzić zmiany do gry w toku; to może zawiesić OpenTTD.{}Czy jesteś całkowicie pewien?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Ostrzeżenie: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Błąd: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Błąd krytyczny: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} nie zadziała z wersją TTDPatcha zgłoszoną przez OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} jest przeznaczony dla TTD wersji {STRING}.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} jest zaprojektowany do użycia z {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Niewłaściwy parametr dla {STRING}: parametr {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musi być wczytany przed {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musi być wczytany po {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj plik NewGRF do listy
 STR_NEWGRF_REMOVE                                               :{BLACK}Usuń
@@ -3254,5 +3265,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Długoś
 STR_MEASURE_AREA                                                :{BLACK}Obszar: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Długość: {NUM}{}Różnica wysokości: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Obszar: {NUM} x {NUM}{}Różnica wysokości: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

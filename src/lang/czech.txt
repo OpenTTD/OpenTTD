@@ -3,7 +3,7 @@
 ##isocode cs_CS
 ##plural 6
 ##case nom gen dat acc voc loc ins big
-##gender m f n
+##gender f m n
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -2965,6 +2965,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Právě se chystáš změnit nastavení grafik za běžící hry; může to shodit OpenTTD.{}Jsi si s tím opravdu jist/a?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varování: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Chyba: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Závažná chyba: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} nebude fungovat s verzí TTDPatche, kterou OpenTTD hlásí.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} je pro TTD verzi {STRING}.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} je navržen pro práci s {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parametr pro {STRING}: parametr {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musí být nahráván před {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musí být nahráván po {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Přidat
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Přidat NewGRF soubor do seznamu
 STR_NEWGRF_REMOVE                                               :{BLACK}Odebrat
@@ -3189,5 +3200,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Délka: 
 STR_MEASURE_AREA                                                :{BLACK}Oblast: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Délka: {NUM}{}Výškový rozdíl: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Oblast: {NUM} x {NUM}{}Výškový rozdíl: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

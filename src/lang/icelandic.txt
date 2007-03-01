@@ -2902,6 +2902,7 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF eink
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5 summa: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Þú ert í þann mund að eiga við leik í gangi, við það gæti OpenTTD hrunið.{}Ertu viss um að þú viljir halda áfram?
 
+
 STR_NEWGRF_ADD                                                  :{BLACK}Bæta við
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Bæta NewGRF skrá við listann
 STR_NEWGRF_REMOVE                                               :{BLACK}Fjarlægja
@@ -3126,5 +3127,7 @@ STR_MEASURE_LENGTH                                              :{BLACK}Lengd: {
 STR_MEASURE_AREA                                                :{BLACK}Svæði: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengd: {NUM}{}Hæðarmunur {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Svæði: {NUM} x {NUM}{}Hæðarmunur: {NUM} m
+
+############ Date formatting
 
 ########

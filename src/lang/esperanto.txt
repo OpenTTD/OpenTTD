@@ -2902,6 +2902,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vi ĉi tiel ŝanĝos al kuranta ludo; tio povas kraŝigi la ludon.{}Ĉu vi nepre volas fari tion?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Averto: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eraro: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalo: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} ne funkcios kun la versio de TTDPatch menciata de OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} estas por versio {STRING} de TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} estas intencita por uzo kun {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Nevalida parametro por {STRING}: parametro{STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} estu ŝarĝata antaŭ {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} estu ŝarĝata post {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Aldonu
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Aldonu NewGRF-dosieron al la listo
 STR_NEWGRF_REMOVE                                               :{BLACK}Forviŝu
@@ -3126,5 +3137,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Longo: {
 STR_MEASURE_AREA                                                :{BLACK}Regiono: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longo: {NUM}{}Altecdiferenco: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Regiono: {NUM} x {NUM}{}Altecdiferenco: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

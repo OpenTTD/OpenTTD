@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}町議�
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}不統一の駅を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}新型グローバルパスファインダー（NPF）：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}重い列車のシミュレーションのための重量乗数の設定：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}町有道路上に通過点の建設を許容：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}常に小型空港の建設を許容：{ORANGE}{STRING}
 
@@ -1584,6 +1585,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :街路照明の
 STR_1816_TREE_LINED_ROAD                                        :並木道
 STR_1817_ROAD_VEHICLE_DEPOT                                     :車庫
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :踏切
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}バス停が破壊できません...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}荷役所が破壊できません...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}市町村
@@ -2898,6 +2901,7 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID�
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum：{SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}実行中のゲームに変更を適用して、クラッシュのリスクがあります。{}続けてもよろしいですか？
 
+
 STR_NEWGRF_ADD                                                  :{BLACK}追加
 STR_NEWGRF_ADD_TIP                                              :{BLACK}NewGRFファイルをリストに追加します
 STR_NEWGRF_REMOVE                                               :{BLACK}削除
@@ -3122,5 +3126,7 @@ STR_MEASURE_LENGTH                                              :{BLACK}長さ�
 STR_MEASURE_AREA                                                :{BLACK}地域：{NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長さ：{NUM}{}高さの違い：{NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域：{NUM} x {NUM}{}高さの違い：{NUM} m
+
+############ Date formatting
 
 ########

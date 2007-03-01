@@ -1871,6 +1871,7 @@ STR_4801                                                        :{WHITE}{INDUSTR
 STR_4802_COAL_MINE                                              :Premogovnik
 STR_4802_COAL_MINE.r                                            :Premogovnika
 STR_4803_POWER_STATION                                          :Termo elektrarna
+STR_4803_POWER_STATION.r                                        :Termo elektrarne
 STR_4804_SAWMILL                                                :Žaga
 STR_4804_SAWMILL.r                                              :Žage
 STR_4805_FOREST                                                 :Gozd
@@ -2980,6 +2981,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Pripravljaš se narediti spremembe na zagnani igri; to lahko sesuje OpenTTD.{}Si zagotovo želiš tega?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Pozor: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Napaka: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Usodno: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} ne deluje s TTDPatch različico prijavljeno v OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} je za {STRING} različico TTD-ja.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} je izdelano za uporabo v {STRING} kombinaciji
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neveljavna nastavitev za {STRING}: nastavitev {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} je potrebno naložiti pred {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} je potrebno naložiti po {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj NewGRF datoteko na seznam
 STR_NEWGRF_REMOVE                                               :{BLACK}Odstrani
@@ -3204,5 +3216,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Dolžina
 STR_MEASURE_AREA                                                :{BLACK}Območje: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dolžina: {NUM}{}Višinska razlika: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Območje: {NUM} x {NUM}{}Višinska razlika: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

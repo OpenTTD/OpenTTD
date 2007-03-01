@@ -2139,7 +2139,7 @@ STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Affiche 
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Légende du graphique des compagnies
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Cliquer ici pour activer/désactiver l'affichage de la compagnie
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Cargaison livrée
-STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Historique de performace (performance max=1000)
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Historique de performance (performance max=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Valeur de la compagnie
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Classement des compagnies
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
@@ -2902,6 +2902,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vous êtes sur le point de faire des changements dans une partie en cours; cela peut faire planter OpenTTD.{}Etes-vous absolument sûr ?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Avertissement: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erreur: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} ne fonctionnera pas avec la version de TTDPatch reportée par OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} est pour la version {STRING} de TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} est conçu pour être utilisé avec {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paramètre invalide pour {STRING}: paramètre {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} doit être chargé avant {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} doit être chargé après {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Ajouter
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Ajouter un fichier NewGRF à la liste
 STR_NEWGRF_REMOVE                                               :{BLACK}Retirer
@@ -3126,5 +3137,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Longueur
 STR_MEASURE_AREA                                                :{BLACK}Région: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longueur: {NUM}{}Ecart d'altitude: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Région: {NUM} x {NUM}{}Ecart d'altitude: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}/{STRING}/{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

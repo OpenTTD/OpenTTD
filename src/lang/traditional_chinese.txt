@@ -447,7 +447,7 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}鋪設�
 STR_0182_BUILD_ROADS                                            :{BLACK}鋪設道路
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}興建碼頭設施
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}興建機場設施
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}植樹
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}植樹/置放標示
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}土地資訊
 STR_0187_OPTIONS                                                :{BLACK}選項
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -477,7 +477,7 @@ STR_AGE                                                         :{COMMA} 年 ({C
 STR_AGE_RED                                                     :{RED}{COMMA} 年 ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :巴士/貨車
+STR_019C_ROAD_VEHICLE                                           :車輛
 STR_019D_AIRCRAFT                                               :飛機
 STR_019E_SHIP                                                   :船舶
 STR_019F_TRAIN                                                  :列車
@@ -816,7 +816,7 @@ STR_02E4                                                        :{BLACK}{SKIP}{S
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}量度單位
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}公車/貨車
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}選擇運具在路上的行駛位置
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}選擇車輛在路上的行駛位置
 STR_02E9_DRIVE_ON_LEFT                                          :靠左行駛
 STR_02EA_DRIVE_ON_RIGHT                                         :靠右行駛
 STR_02EB_TOWN_NAMES                                             :{BLACK}市鎮名稱
@@ -2901,6 +2901,16 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF 編�
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5 雜湊值: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}您正準備修改進行中的遊戲；這可能使 OpenTTD 當掉。{}您絕對確定要這麼做嗎？
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}錯誤: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}嚴重錯誤: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :已知 {STRING} 跟 TTDPatch 版本不合。
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} 只適合用於 TTD 版本 {STRING}
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} 必須跟 {STRING} 一起使用
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              : {STRING} 的參數無效: {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :載入前 {1:STRING} 必須先載入 {0:STRING}。
+
 STR_NEWGRF_ADD                                                  :{BLACK}新增
 STR_NEWGRF_ADD_TIP                                              :{BLACK}為清單加入新的 NewGRF 檔
 STR_NEWGRF_REMOVE                                               :{BLACK}移除
@@ -3125,5 +3135,7 @@ STR_MEASURE_LENGTH                                              :{BLACK}長度: 
 STR_MEASURE_AREA                                                :{BLACK}區域: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長度: {NUM}{}高度差: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}區域: {NUM} x {NUM}{}高度差: {NUM} m
+
+############ Date formatting
 
 ########

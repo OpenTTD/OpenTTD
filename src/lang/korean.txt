@@ -2902,6 +2902,10 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}게임이 진행중인데 설정을 변경하려고 하면 게임과 충돌할 수도 있습니다.{}정말로 설정을 변경하시겠습니까?
 
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING}은/는 {STRING} 버젼의 TTD를 위한 것입니다.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING}은/는 반드시 {STRING}이전에 불러와야 합니다.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING}은/는 반드시 {STRING}다음에 불러와야 합니다.
+
 STR_NEWGRF_ADD                                                  :{BLACK}추가
 STR_NEWGRF_ADD_TIP                                              :{BLACK}NewGRF 파일을 목록에 추가
 STR_NEWGRF_REMOVE                                               :{BLACK}제거
@@ -3126,5 +3130,7 @@ STR_MEASURE_LENGTH                                              :{BLACK}길이: 
 STR_MEASURE_AREA                                                :{BLACK}넓이: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}길이: {NUM}{}고도차: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}넓이: {NUM} x {NUM}{}고도차: {NUM} m
+
+############ Date formatting
 
 ########

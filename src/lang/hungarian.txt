@@ -3004,6 +3004,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Te éppen a jelenleg futó játékot akarod megváltoztatni; ettől elszállhat az OpenTTD.{}Teljesen biztos vagy benne, hogy ezt akarod?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Figyelmeztetés: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hiba: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Végzetes hiba: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} a TTD {STRING} verziójához van.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} úgy lett tervezve, hogy ezzel lesz használva: {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Hibás paraméterérték ehhez: {STRING}: paraméter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} muszáj hogy betöltődjön ezelőtt: {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} muszáj hogy ezután töltődjön be: {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Hozzáad
 STR_NEWGRF_ADD_TIP                                              :{BLACK}A NewGRF-et hozzáadja a listához
 STR_NEWGRF_REMOVE                                               :{BLACK}Eltávolít
@@ -3228,5 +3239,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Távols�
 STR_MEASURE_AREA                                                :{BLACK}Terület: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Távolság: {NUM}{}Magasságkülönbség: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Terület: {NUM} x {NUM}{}Magasságkülönbség: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

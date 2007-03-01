@@ -559,48 +559,48 @@ STR_01AA_NAME                                                   :{BLACK}Meno
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days starts
-STR_01AC_1ST                                                    :1/
-STR_01AD_2ND                                                    :2
-STR_01AE_3RD                                                    :3
-STR_01AF_4TH                                                    :4
-STR_01B0_5TH                                                    :5
-STR_01B1_6TH                                                    :6
-STR_01B2_7TH                                                    :7
-STR_01B3_8TH                                                    :8
-STR_01B4_9TH                                                    :9
-STR_01B5_10TH                                                   :10
-STR_01B6_11TH                                                   :11
-STR_01B7_12TH                                                   :12
-STR_01B8_13TH                                                   :13
-STR_01B9_14TH                                                   :14
-STR_01BA_15TH                                                   :15
-STR_01BB_16TH                                                   :16
-STR_01BC_17TH                                                   :17
-STR_01BD_18TH                                                   :18
-STR_01BE_19TH                                                   :19
-STR_01BF_20TH                                                   :20
-STR_01C0_21ST                                                   :21
-STR_01C1_22ND                                                   :22
-STR_01C2_23RD                                                   :23
-STR_01C3_24TH                                                   :24
-STR_01C4_25TH                                                   :25
-STR_01C5_26TH                                                   :26
-STR_01C6_27TH                                                   :27
-STR_01C7_28TH                                                   :28
-STR_01C8_29TH                                                   :29
-STR_01C9_30TH                                                   :30
-STR_01CA_31ST                                                   :31
+STR_01AC_1ST                                                    :1.
+STR_01AD_2ND                                                    :2/
+STR_01AE_3RD                                                    :3/
+STR_01AF_4TH                                                    :4/
+STR_01B0_5TH                                                    :5/
+STR_01B1_6TH                                                    :6/
+STR_01B2_7TH                                                    :7/
+STR_01B3_8TH                                                    :8/
+STR_01B4_9TH                                                    :9/
+STR_01B5_10TH                                                   :10/
+STR_01B6_11TH                                                   :11/
+STR_01B7_12TH                                                   :12/
+STR_01B8_13TH                                                   :13/
+STR_01B9_14TH                                                   :14/
+STR_01BA_15TH                                                   :15/
+STR_01BB_16TH                                                   :16/
+STR_01BC_17TH                                                   :17/
+STR_01BD_18TH                                                   :18/
+STR_01BE_19TH                                                   :19/
+STR_01BF_20TH                                                   :20/
+STR_01C0_21ST                                                   :21/
+STR_01C1_22ND                                                   :22/
+STR_01C2_23RD                                                   :23/
+STR_01C3_24TH                                                   :24/
+STR_01C4_25TH                                                   :25/
+STR_01C5_26TH                                                   :26/
+STR_01C6_27TH                                                   :27/
+STR_01C7_28TH                                                   :28/
+STR_01C8_29TH                                                   :29/
+STR_01C9_30TH                                                   :30/
+STR_01CA_31ST                                                   :31/
 ############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
-STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Prijma naklad: {LTBLUE}
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Prijíma náklad: {LTBLUE}
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jukebox
 STR_01D3_SOUND_MUSIC                                            :Zvuk/Hudba
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Zobraz okno zvuku a hudby
-STR_01D5_ALL                                                    :{TINYFONT}Vsetko
+STR_01D5_ALL                                                    :{TINYFONT}Všetko
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Stary styl
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Novy styl
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
@@ -1105,6 +1105,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Umoznit
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Roznorode stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novy globalny algoritmus hladania cesty (NPF namiesto NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Váhový násobok pre nákladné vlaky: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit prejazdné zastávky na mestských cestách: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vzdy povolit stavbu malych letisk: {ORANGE}{STRING}
 
@@ -1648,6 +1649,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Cesta s lampami
 STR_1816_TREE_LINED_ROAD                                        :Cesta v aleji
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garaz
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Zeleznicne priecestie
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nie je možné odstránit autobusovú stanicu ...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nie je možné odstránit nakladaciu rampu ...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Mesta
@@ -2962,6 +2965,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Chystáte sa vykonat zmeny v spustenej hre, co može sposobit pád hry.{}Naozaj ich chcete vykonat?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozornenie: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Chyba: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kritická chyba: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} nebude fungovat s TTDPatch verziou hlásenou OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} je pre {STRING} verziu TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} je navrhnutý pre použitie s {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parameter {STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musí byt nahratý pred {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musí byt nahratý po {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Pridat
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Pridat NewGRF súbor do zoznamu
 STR_NEWGRF_REMOVE                                               :{BLACK}Odstránit
@@ -3186,5 +3200,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Dlžka: 
 STR_MEASURE_AREA                                                :{BLACK}Plocha: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dlžka: {NUM}{}Výškový rozdiel: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Plocha: {NUM} x {NUM}{}Výškový rozdiel: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

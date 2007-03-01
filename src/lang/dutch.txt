@@ -2901,6 +2901,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Je staat op het punt om wijzigingen te maken aan een lopend spel; dit dan OpenTTD laten crashen.{}Weet je het heel zeker?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarschuwing: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kritiek: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} werkt niet met de TTDPatch versie, gerapporteerd door OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} is voor de {STRING} versie van TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} is ontwikkeld voor {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ongeldide parameter voor {STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} moet geladen zijn voor {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} moet geladen zijn na {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Toevoegen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg een NewGRF bestand toe aan te lijst
 STR_NEWGRF_REMOVE                                               :{BLACK}Verwijderen
@@ -3125,5 +3136,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Lengte: 
 STR_MEASURE_AREA                                                :{BLACK}Gebied: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengte: {NUM}{}Hoogte verschil: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Gebied: {NUM} x {NUM}{}Hoogte verschil: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

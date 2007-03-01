@@ -2901,6 +2901,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Stai per fare cambiamenti a una partita in corso; questa cosa può crashare OpenTTD.{}Sei assolutamente sicuro di farlo?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Attenzione: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Errore: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Errore Fatale: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} può non funzionare con la versione di TTDPatch riportata da OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} è per la versione {STRING} di TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} è progettato per essere usato con {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parametri invalidi per {STRING}: parametri {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} deve essere caricato prima di {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} deve essere caricato dopo {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Aggiungi
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Aggiungi un file NewGRF alla lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Togli
@@ -3125,5 +3136,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Lunghezz
 STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lunghezza: {NUM}{}Differenza in altezza: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Differenza in altezza: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

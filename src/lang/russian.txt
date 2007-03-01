@@ -970,7 +970,7 @@ STR_TONS                                                        :тонн
 STR_LITERS                                                      :литров
 STR_ITEMS                                                       :штук
 STR_CRATES                                                      :мешков
-STR_RES_OTHER                                                   :прочее
+STR_RES_OTHER                                                   :Другое
 STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
@@ -1017,46 +1017,46 @@ STR_CONFIG_PATCHES_OFF                                          :нет
 STR_CONFIG_PATCHES_ON                                           :да
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Показывать скорость в панели статуса транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и берегу: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Разрешить более реалистичные зоны покрытия: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Зона покрытия зависит от типа станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Разрешить удаление всех принадлежащих городу объектов: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Включить строительство очень длинных поездов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Разрешить строительство очень длинных поездов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Включить реалистичное ускорение для поездов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Запретить резкие повороты поездам и кораблям: {ORANGE}{STRING} {LTBLUE}(NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Объединять построенные рядом станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Покидать станцию, когда любой груз полностью загружен: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Использовать улучшенный алгоритм загрузки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Постепенная загрузка транспорта: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Инфляция: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Доставлять груз на станцию, только если она его принимает: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Включить инфляцию: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Поставлять груз на станцию, только если на него был спрос: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Разрешить строительство очень длинных мостов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Разрешить добавлять депо в маршрут: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Разрешить строительство сырьевых предприятий: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Строить неск. предприятий 1 типа в одном городе: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Одинаковые предприятия можно строить рядом: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Разрешить несколько предприятий одного типа на город: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Одинаковые предприятия могут быть рядом друг с другом: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Всегда показывать длинную дату в панели состояния: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Показывать светофоры на стороне движения: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Показывать финансовую статистику в конце года: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Использовать поведение TTDP для приказа "без остановок": {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Разрешить автомобилям ожидать въезда на станцию: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Смещать обзор, когда курсор находится у края экрана: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Разрешить взятку местной администрации: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Разрешить подкупать муниципальную власть: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Станции могут быть произвольной формы: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Включить новый алгоритм навигации (NPF, заменяет NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Множитель увеличения веса груза для товарных поездов: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Позволять строить сквозные остановки на городских дорогах: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Позволять строить остановки на городских дорогах: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Всегда разрешать строительство малых аэропортов: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Предупреждать, если поезд заблудился: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Проверять маршруты транспортных средств на правильность: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Проверять маршруты на правильность: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :нет
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :да, кроме остановленных трансп. средств
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :да, кроме остановленного транспорта
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :всего транспорта
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждать, если поезд приносит убыток: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт никогда не устаревает: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Автоматически обновлять изношенный транспорт
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Обновлять через {ORANGE}{STRING}{LTBLUE} месяцев после истечения срока службы
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Минимальная сумма, необходимая для автообновления: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Сумма, необходимая для автообновления: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Длительность сообщений об ошибке: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей города после названия: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Убирать деревья при включении прозрачности зданий: {ORANGE}{STRING}
@@ -1080,9 +1080,9 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Против ч
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовой
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Уровень высоты для карт с плоским рельефом: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. площадь станции : {ORANGE}{STRING} {RED}Большие значения замедляют игру
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Автоматически обслуживать вертолеты в вертопортах: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Связать ландшафтную панель с транспортными: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Протяженность станции: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Включить обслуживание на вертолетных площадках: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Открывать ландшафтную панель вместе с транспортными: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Обратить направление перетаскивания обзора: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Показывать замеры при строительстве: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Показывать окраску транспорта: {ORANGE}{STRING}
@@ -1091,10 +1091,10 @@ STR_CONFIG_PATCHES_LIVERIES_OWN                                 :только д
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :для всех компаний
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Предпочитать командный чат при нажатии Enter: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов у игрока: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Максимальное количество кол-во автомобилей у игрока: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Максимальное количество авиатранспорта у игрока: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Максимальное количество кораблей у игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов на игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Максимальное количество автомобилей на игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Максимальное количество авиатранспорта на игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Максимальное количество кораблей на игрока: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Не допускать постройки поездов конкурентами: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Не допускать постройки автомобилей конкурентами: {ORANGE}{STRING}
@@ -1116,13 +1116,13 @@ STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Отк�
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Включить ограничение скорости вагонов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Отключить электрофицированную железную дорогу: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}"Цветные" новости появл. в : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Цветные газеты появляются: {ORANGE}в {STRING} году
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Год начала игры: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Год окончания игры: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (более мелкие изменения)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Разрешить покупку акций других компаний
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Заканчивать игру: {ORANGE}в {STRING} году
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (частые, небольшие изменения)
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Разрешить покупать акции других компаний
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При перетаскивании ставить светофоры каждые: {ORANGE}{STRING} клетки
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Автоматически строить семафоры: до {ORANGE}{STRING} года
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Автоматически строить семафоры: {ORANGE}до {STRING} года
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :слева
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :в центре
@@ -1272,7 +1272,7 @@ STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Инт�
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Изменить производительность
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Добро пожаловать в новый ИИ, он совершенствуется. Вы должны быть готовы к проблемам. Когда это случится, сделайте снимок и отправьте на форум. Наслаждайтесь!
-TEMP_AI_ACTIVATED                                               :{WHITE}Внимание: это новый ИИ еще тестируется! В настоящее время работает только с грузовиками и автобусами!
+TEMP_AI_ACTIVATED                                               :{WHITE}Внимание: новый AI всё еще находится в состоянии альфа-версии! В настоящее время работает только с автотранспортом!
 TEMP_AI_MULTIPLAYER                                             :{WHITE}Внимание: тестовое использование (новый ИИ). Пожалуйста, сообщайте обо всех проблемах на truelight@openttd.org.
 
 ############ network gui strings
@@ -2914,6 +2914,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}Сумма MD5: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы хотите сделать изменения в уже запущенной игре - это может привести к ошибке игры, и ее вылету.{}Вы абсолютно уверены в том, что хотите сделать?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Внимание: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Ошибка: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Критическая ошибка: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} не будет работать с версией TTDPatch, сообщенной OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} для {STRING}-версии TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} сделан для использования в {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Неверный параметр {STRING}: параметр {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} должен быть загружен перед {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} должен быть загружен после {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Добавить
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавить файл NewGRF в список
 STR_NEWGRF_REMOVE                                               :{BLACK}Удалить
@@ -3138,5 +3149,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Длин
 STR_MEASURE_AREA                                                :{BLACK}Площадь: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Длина: {NUM}{}Разница высоты: {NUM} м
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площадь: {NUM} x {NUM}{}Разница высот: {NUM} м
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}.{STRING}.{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
