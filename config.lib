@@ -671,6 +671,10 @@ make_cflags_and_ldflags() {
 	if [ "$os" = "CYGWIN" ] || [ "$os" = "MINGW" ]; then
 		LDFLAGS="$LDFLAGS -Wl,--subsystem,windows"
 		LIBS="$LIBS -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32"
+		# GCC 4.0+ complains about that we break strict-aliasing.
+		#  On most places we don't see how to fix it, and it doesn't
+		#  break anything. So disable strict-aliasing to make the
+		#  compiler all happy.
 		if [ $cc_version -ge 40 ]; then
 			CFLAGS="$CFLAGS -fno-strict-aliasing"
 		fi
@@ -793,6 +797,12 @@ make_cflags_and_ldflags() {
 
 	if [ "$with_direct_music" != "0" ]; then
 		CFLAGS="$CFLAGS -DWIN32_ENABLE_DIRECTMUSIC_SUPPORT"
+		# GCC 4.0+ doesn't like the DirectX includes (gives tons of
+		#  warnings on it we won't be able to fix). For now just
+		#  suppress those warnings.
+		if [ $cc_version -ge 40 ]; then
+			CFLAGS="$CFLAGS -Wno-non-virtual-dtor"
+		fi
 	fi
 
 	if [ -n "$libtimidity" ]; then
