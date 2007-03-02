@@ -126,6 +126,15 @@
 /* Stuff for MSVC */
 #if defined(_MSC_VER)
 # pragma once
+/* Define a win32 target platform, to override defaults of the SDK
+ * We need to define NTDDI version for Vista SDK, but win2k is minimum */
+# define NTDDI_VERSION NTDDI_WIN2K // Windows 2000
+# define _WIN32_WINNT 0x0500       // Windows 2000
+
+# define _WIN32_WINDOWS 0x400      // Windows 95
+# define WINVER 0x0400             // Windows NT 4.0 / Windows 95
+# define _WIN32_IE_ 0x0401         // 4.01 (win98 and NT4SP5+)
+
 # define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
 # pragma warning(disable: 4244)  // 'conversion' conversion from 'type1' to 'type2', possible loss of data
 # pragma warning(disable: 4761)  // integral size mismatch in argument : conversion supplied
