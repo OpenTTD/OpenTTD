@@ -8,6 +8,14 @@
 
 #ifdef WITH_COCOA
 
+#include <AvailabilityMacros.h>
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
+/* On 10.4, we get tons of warnings that the QuickDraw functions are deprecated.
+ *  We know that. Don't keep bugging us about that. */
+#	undef AVAILABLE_MAC_OS_X_VERSION_10_0_AND_LATER_BUT_DEPRECATED_IN_MAC_OS_X_VERSION_10_4
+#	define AVAILABLE_MAC_OS_X_VERSION_10_0_AND_LATER_BUT_DEPRECATED_IN_MAC_OS_X_VERSION_10_4 AVAILABLE_MAC_OS_X_VERSION_10_0_AND_LATER
+#endif
+
 #import <Cocoa/Cocoa.h>
 #import <sys/time.h> /* gettimeofday */
 #import <sys/param.h> /* for MAXPATHLEN */
