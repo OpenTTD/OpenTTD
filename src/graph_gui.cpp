@@ -713,17 +713,9 @@ void ShowCompanyValueGraph(void)
 static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: {
-		uint i;
-		for (i = 3; i < w->widget_count; i++) {
-			if (!HASBIT(_legend_excluded_cargo, i - 3)) LowerWindowWidget(w, i);
-		}
-		break;
-	}
-
 	case WE_PAINT: {
 		int j, x, y;
-		CargoID i;
+		uint i = 0;
 		GraphDrawer gd;
 
 		DrawWindowWidgets(w);
@@ -734,34 +726,44 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		gd.excluded_data = _legend_excluded_cargo;
 		gd.left = 2;
 		gd.top = 24;
-		gd.height = 104;
+		gd.height = w->height - 38;
 		gd.has_negative_values = false;
 		gd.format_str_y_axis = STR_CURRCOMPACT;
-		gd.num_dataset = NUM_CARGO;
 		gd.num_on_x_axis = 20;
 		gd.num_vert_lines = 20;
 		gd.month = 0xFF;
 		gd.x_values_start     = 10;
 		gd.x_values_increment = 10;
 
-		for (i = 0; i != NUM_CARGO; i++) {
-			/* Since the buttons have no text, no images,
-			 * both the text and the colored box have to be manually painted.
-			 * clk_dif will move one pixel down and one pixel to the right
-			 * when the button is clicked */
-			byte clk_dif = IsWindowWidgetLowered(w, i + 3) ? 1 : 0;
-			const CargoSpec *cs = GetCargo(i);
+		for (CargoID c = 0; c != NUM_CARGO; c++) {
+			const CargoSpec *cs = GetCargo(c);
+			if (!cs->IsValid()) continue;
 
-			GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
-			GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
-			SetDParam(0, cs->name != 0 ? cs->name : (StringID)STR_EMPTY);
-			DrawString(x + 14 + clk_dif, y + clk_dif, STR_7065, 0);
-			y += 8;
+			/* Only draw labels for widgets that exist. If the widget doesn't
+			 * exist then the local player has used the climate cheat or
+			 * changed the NewGRF configuration with this window open. */
+			if (i + 3 < w->widget_count) {
+				/* Since the buttons have no text, no images,
+				 * both the text and the colored box have to be manually painted.
+				 * clk_dif will move one pixel down and one pixel to the right
+				 * when the button is clicked */
+				byte clk_dif = IsWindowWidgetLowered(w, i + 3) ? 1 : 0;
+
+				GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
+				GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
+				SetDParam(0, cs->name);
+				DrawString(x + 14 + clk_dif, y + clk_dif, STR_7065, 0);
+				y += 8;
+			}
+
 			gd.colors[i] = cs->legend_colour;
 			for (j = 0; j != 20; j++) {
-				gd.cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 6 + 6, i);
+				gd.cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 6 + 6, c);
 			}
+
+			i++;
 		}
+		gd.num_dataset = i;
 
 		DrawGraph(&gd);
 
@@ -770,14 +772,10 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		switch (e->we.click.widget) {
-		case 3: case 4: case 5: case 6:
-		case 7: case 8: case 9: case 10:
-		case 11: case 12: case 13: case 14:
+		if (e->we.click.widget >= 3 && e->we.click.widget < (int)w->widget_count) {
 			TOGGLEBIT(_legend_excluded_cargo, e->we.click.widget - 3);
 			ToggleWidgetLoweredState(w, e->we.click.widget);
 			SetWindowDirty(w);
-			break;
 		}
 	} break;
 	}
@@ -786,24 +784,12 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 static const Widget _cargo_payment_rates_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   567,     0,    13, STR_7061_CARGO_PAYMENT_RATES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   567,    14,   141, 0x0,                          STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,    24,    31, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,    32,    39, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,    40,    47, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,    48,    55, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,    56,    63, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,    64,    71, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,    72,    79, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,    80,    87, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,    88,    95, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,    96,   103, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,   104,   111, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
-{      WWT_PANEL,   RESIZE_NONE,    12,   493,   562,   112,   119, 0x0,                          STR_7064_TOGGLE_GRAPH_FOR_CARGO},
+{      WWT_PANEL, RESIZE_BOTTOM,    14,     0,   567,    14,    45, 0x0,                          STR_NULL},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _cargo_payment_rates_desc = {
-	WDP_AUTO, WDP_AUTO, 568, 142,
+	WDP_AUTO, WDP_AUTO, 568, 46,
 	WC_PAYMENT_RATES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_cargo_payment_rates_widgets,
@@ -813,7 +799,39 @@ static const WindowDesc _cargo_payment_rates_desc = {
 
 void ShowCargoPaymentRates(void)
 {
-	AllocateWindowDescFront(&_cargo_payment_rates_desc, 0);
+	Window *w = AllocateWindowDescFront(&_cargo_payment_rates_desc, 0);
+	if (w == NULL) return;
+
+	/* Count the number of active cargo types */
+	uint num_active = 0;
+	for (CargoID c = 0; c != NUM_CARGO; c++) {
+		if (GetCargo(c)->IsValid()) num_active++;
+	}
+
+	/* Resize the window to fit the cargo types */
+	ResizeWindow(w, 0, num_active * 8);
+
+	/* Add widgets for each cargo type */
+	w->widget_count = 3 + num_active;
+	w->widget = ReallocT(w->widget, w->widget_count);
+
+	/* Set the properties of each widget */
+	for (uint i = 0; i != num_active; i++) {
+		Widget *wi = &w->widget[3 + i];
+		wi->type     = WWT_PANEL;
+		wi->display_flags = RESIZE_NONE;
+		wi->color    = 12;
+		wi->left     = 493;
+		wi->right    = 562;
+		wi->top      = 24 + i * 8;
+		wi->bottom   = wi->top + 7;
+		wi->data     = 0;
+		wi->tooltips = STR_7064_TOGGLE_GRAPH_FOR_CARGO;
+
+		if (!HASBIT(_legend_excluded_cargo, i)) LowerWindowWidget(w, i + 3);
+	}
+
+	SetWindowDirty(w);
 }
 
 /************************/
