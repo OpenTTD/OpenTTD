@@ -1017,16 +1017,16 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 	width = length = 0;
 
 	for (ptr = utf8_buf; (c = Utf8Consume(&ptr)) != '\0';) {
-		byte charwidth;
-
 		if (!IsPrintable(c)) break;
-		if (tb->length + length >= tb->maxlength - 1) break;
-		charwidth = GetCharacterWidth(FS_NORMAL, c);
 
+		size_t len = Utf8CharLen(c);
+		if (tb->length + length >= tb->maxlength - (uint16)len) break;
+
+		byte charwidth = GetCharacterWidth(FS_NORMAL, c);
 		if (tb->maxwidth != 0 && width + tb->width + charwidth > tb->maxwidth) break;
 
 		width += charwidth;
-		length += Utf8CharLen(c);
+		length += len;
 	}
 
 	if (length == 0) return false;
@@ -1038,6 +1038,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 
 	tb->length += length;
 	tb->caretpos += length;
+	assert(tb->length < tb->maxlength);
 	tb->buf[tb->length] = '\0'; // terminating zero
 
 	return true;
