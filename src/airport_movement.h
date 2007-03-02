@@ -86,7 +86,7 @@ static const AirportMovingData _airport_moving_data_commuter[37] = {
 };
 
 // City Airport (large) 6x6
-static const AirportMovingData _airport_moving_data_town[25] = {
+static const AirportMovingData _airport_moving_data_town[] = {
 	{   85,    3, AMED_EXACTPOS,                   {DIR_SE} }, // 00 In Hangar
 	{   85,   27, 0,                               {DIR_N} }, // 01 Taxi to right outside depot
 	{   26,   41, AMED_EXACTPOS,                   {DIR_SW} }, // 02 Terminal 1
@@ -100,18 +100,23 @@ static const AirportMovingData _airport_moving_data_town[25] = {
 	{   89,   85, AMED_EXACTPOS,                   {DIR_NE} }, // 10 Taxi to start of runway (takeoff)
 	{    3,   85, AMED_NOSPDCLAMP,                 {DIR_N} }, // 11 Accelerate to end of runway
 	{  -79,   85, AMED_NOSPDCLAMP | AMED_TAKEOFF,  {DIR_N} }, // 12 Take off
-	{  177,   85, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 13 Fly to landing position in air
-	{   89,   85, AMED_NOSPDCLAMP | AMED_LAND,     {DIR_N} }, // 14 Going down for land
-	{    3,   85, AMED_NOSPDCLAMP | AMED_BRAKE,    {DIR_N} }, // 15 Just landed, brake until end of runway
-	{   20,   87, 0,                               {DIR_N} }, // 16 Just landed, turn around and taxi 1 square
+	{  177,   87, AMED_HOLD       | AMED_SLOWTURN, {DIR_N} }, // 13 Fly to landing position in air
+	{   89,   87, AMED_HOLD       | AMED_LAND,     {DIR_N} }, // 14 Going down for land
+	{   20,   87, AMED_NOSPDCLAMP | AMED_BRAKE,    {DIR_N} }, // 15 Just landed, brake until end of runway
+	{   20,   87, 0,                               {DIR_N} }, // 16 Just landed, turn around and taxi 1 square /* NOT USED */
 	{   36,   71, 0,                               {DIR_N} }, // 17 Taxi from runway to crossing
-	{  -31,  193, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 18 Fly around waiting for a landing spot (north-east)
-	{    1,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 19 Fly around waiting for a landing spot (north-west)
-	{  257,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 20 Fly around waiting for a landing spot (south-west)
-	{  273,   49, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 21 Fly around waiting for a landing spot (south)
+	{  160,   87, AMED_HOLD       | AMED_SLOWTURN, {DIR_N} }, // 18 Fly around waiting for a landing spot (north-east)
+	{  140,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 19 Final approach fix
+	{  257,    1, AMED_HOLD       | AMED_SLOWTURN, {DIR_N} }, // 20 Fly around waiting for a landing spot (south-west)
+	{  273,   49, AMED_HOLD       | AMED_SLOWTURN, {DIR_N} }, // 21 Fly around waiting for a landing spot (south)
 	{   44,   63, AMED_HELI_RAISE,                 {DIR_N} }, // 22 Helicopter takeoff
 	{   28,   74, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 23 In position above landing spot helicopter
 	{   28,   74, AMED_HELI_LOWER,                 {DIR_N} }, // 24 Helicopter landing
+	{  145,    1, AMED_HOLD       | AMED_SLOWTURN, {DIR_N} }, // 25 Fly around waiting for a landing spot (north-west)
+	{  -32,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 26 Initial approach fix (north)
+	{  300,  -48, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 27 Initial approach fix (south)
+	{  140,  -48, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 28 Intermediadate Approach fix (south), IAF (west)
+	{  -32,  120, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 29 Initial approach fix (east)
 };
 
 // Metropolitan Airport (metropolitan) - 2 runways
@@ -458,7 +463,7 @@ static const AirportFTAbuildup _airport_fta_commuter[] = {
 
 static const TileIndexDiffC _airport_depots_city[] = { { 5, 0 } };
 static const byte _airport_terminal_city[] = { 1, 3 };
-static const byte _airport_entries_city[] = {19, 19, 19, 19};
+static const byte _airport_entries_city[] = {26, 29, 27, 28};
 static const AirportFTAbuildup _airport_fta_city[] = {
 	{  0, HANGAR, NOTHING_block, 1 }, { 0, TAKEOFF, OUT_WAY_block, 1 }, { 0, 0, 0, 1 },
 	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TERM2, 0, 6 }, { 1, TERM3, 0, 6 }, { 1, 0, 0, 7 }, // for all else, go to 7
@@ -477,11 +482,11 @@ static const AirportFTAbuildup _airport_fta_city[] = {
 	// landing
 	{ 13, FLYING, NOTHING_block, 18 }, { 13, LANDING, 0, 14 }, { 13, HELILANDING, 0, 23 },
 	{ 14, LANDING, RUNWAY_IN_OUT_block, 15 },
-	{ 15, 0, RUNWAY_IN_OUT_block, 16 },
-	{ 16, 0, RUNWAY_IN_OUT_block, 17 },
+	{ 15, 0, RUNWAY_IN_OUT_block, 17 },
+	{ 16, 0, RUNWAY_IN_OUT_block, 17 }, /* not used, left for compatibility */
 	{ 17, ENDLANDING, IN_WAY_block, 7 },
 	// In Air
-	{ 18, 0, NOTHING_block, 19 },
+	{ 18, 0, NOTHING_block, 25 },
 	{ 19, 0, NOTHING_block, 20 },
 	{ 20, 0, NOTHING_block, 21 },
 	{ 21, 0, NOTHING_block, 13 },
@@ -489,6 +494,11 @@ static const AirportFTAbuildup _airport_fta_city[] = {
 	{ 22, HELITAKEOFF, NOTHING_block, 0 },
 	{ 23, HELILANDING, IN_WAY_block, 24 },
 	{ 24, HELIENDLANDING, IN_WAY_block, 17 },
+	{ 25, 0, NOTHING_block, 20},
+	{ 26, 0, NOTHING_block, 19},
+	{ 27, 0, NOTHING_block, 28},
+	{ 28, 0, NOTHING_block, 19},
+	{ 29, 0, NOTHING_block, 26},
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
 

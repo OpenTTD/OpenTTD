@@ -68,7 +68,7 @@ typedef struct AircraftVehicleInfo {
 	byte subtype;
 	SoundFxByte sfx;
 	byte acceleration;
-	byte max_speed;
+	uint16 max_speed;
 	byte mail_capacity;
 	uint16 passenger_capacity;
 } AircraftVehicleInfo;

@@ -40,6 +40,7 @@
 #include "fileio.h"
 #include "hal.h"
 #include "airport.h"
+#include "aircraft.h"
 #include "console.h"
 #include "screenshot.h"
 #include "network/network.h"
@@ -1815,6 +1816,20 @@ bool AfterLoadGame(void)
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (st->IsBuoy() && IsTileOwner(st->xy, OWNER_NONE)) SetTileOwner(st->xy, OWNER_WATER);
+		}
+	}
+
+	if (CheckSavegameVersion(50)) {
+		Vehicle *v;
+		/* Aircraft units changed from 8 mph to 1 km/h */
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_Aircraft && v->subtype <= AIR_AIRCRAFT) {
+				const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
+				v->cur_speed *= 129;
+				v->cur_speed /= 10;
+				v->max_speed = avi->max_speed;
+				v->acceleration = avi->acceleration;
+			}
 		}
 	}
 

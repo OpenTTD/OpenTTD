@@ -781,12 +781,12 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			FOR_EACH_OBJECT avi[i].base_cost = grf_load_byte(&buf); // ?? is it base_cost?
 			break;
 
-		case 0x0C: /* Speed (1 unit is 8 mph) */
-			FOR_EACH_OBJECT avi[i].max_speed = grf_load_byte(&buf);
+		case 0x0C: /* Speed (1 unit is 8 mph, we translate to 1 unit is 1 km/h) */
+			FOR_EACH_OBJECT avi[i].max_speed = (grf_load_byte(&buf) * 129) / 10;
 			break;
 
 		case 0x0D: /* Acceleration */
-			FOR_EACH_OBJECT avi[i].acceleration = grf_load_byte(&buf);
+			FOR_EACH_OBJECT avi[i].acceleration = (grf_load_byte(&buf) * 129) / 10;
 			break;
 
 		case 0x0E: /* Running cost factor */

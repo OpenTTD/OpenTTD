@@ -36,6 +36,7 @@ enum {
 	AMED_BRAKE      = 1 << 5,
 	AMED_HELI_RAISE = 1 << 6,
 	AMED_HELI_LOWER = 1 << 7,
+	AMED_HOLD       = 1 << 8
 };
 
 /* Movement States on Airports (headings target) */
@@ -114,7 +115,7 @@ static const uint64
 typedef struct AirportMovingData {
 	int16 x;
 	int16 y;
-	byte flag;
+	uint16 flag;
 	DirectionByte direction;
 } AirportMovingData;
 

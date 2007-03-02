@@ -494,7 +494,7 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, avi->base_cost * (_price.aircraft_base>>3)>>5);
-	SetDParam(1, avi->max_speed * 8);
+	SetDParam(1, avi->max_speed * 10 / 16);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
 

@@ -862,21 +862,35 @@ static void PlayAircraftSound(const Vehicle* v)
 	}
 }
 
-/** Special velocities for aircraft
+/**
+ * Special velocities for aircraft
  */
 enum AircraftSpeedLimits {
-	SPEED_LIMIT_NONE   =  0,  ///< No environmental speed limit. Speed limit is type dependent
-	SPEED_LIMIT_TAXI   = 12,  ///< Maximum speed of an aircraft while taxiing
-	SPEED_LIMIT_BROKEN = 27,  ///< Maximum speed of an aircraft that is broken
+	SPEED_LIMIT_TAXI     =     50,  ///< Maximum speed of an aircraft while taxiing
+	SPEED_LIMIT_APPROACH =    230,  ///< Maximum speed of an aircraft on finals
+	SPEED_LIMIT_BROKEN   =    320,  ///< Maximum speed of an aircraft that is broken
+	SPEED_LIMIT_HOLD     =    425,  ///< Maximum speed of an aircraft that flies the holding pattern
+	SPEED_LIMIT_NONE     = 0xFFFF   ///< No environmental speed limit. Speed limit is type dependent
 };
 
-static bool UpdateAircraftSpeed(Vehicle *v, uint speed_limit)
+/**
+ * Sets the new speed for an aircraft
+ * @param v The vehicle for which the speed should be obtained
+ * @param speed_limit The maximum speed the vehicle may have.
+ * @param hard_limit If true, the limit is directly enforced, otherwise the plane is slowed down gradually
+ * @return The number of position updates needed within the tick
+ */
+static int UpdateAircraftSpeed(Vehicle *v, uint speed_limit = SPEED_LIMIT_NONE, bool hard_limit = true)
 {
-	uint spd = v->acceleration * 2;
+	uint spd = v->acceleration * 16;
 	byte t;
 
+	speed_limit = min(speed_limit, v->max_speed);
+
 	v->subspeed = (t=v->subspeed) + (byte)spd;
-	if (speed_limit == SPEED_LIMIT_NONE) speed_limit = v->max_speed;
+
+	if (!hard_limit && v->cur_speed > speed_limit) speed_limit = v->cur_speed - (v->cur_speed / 48);
+
 	spd = min(v->cur_speed + (spd >> 8) + (v->subspeed < t), speed_limit);
 
 	/* adjust speed for broken vehicles */
@@ -891,13 +905,9 @@ static bool UpdateAircraftSpeed(Vehicle *v, uint speed_limit)
 
 	if (!(v->direction & 1)) spd = spd * 3 / 4;
 
-	if (spd == 0) return false;
-
-	if ((byte)++spd == 0) return true;
-
-	v->progress = (t = v->progress) - (byte)spd;
-
-	return t < v->progress;
+	spd += v->progress;
+	v->progress = (byte)spd;
+	return spd >> 8;
 }
 
 /**
@@ -922,20 +932,28 @@ static byte GetAircraftFlyingAltitude(const Vehicle *v)
 		case DIR_NE:
 		case DIR_E:
 		case DIR_SE:
-			base_altitude += 15;
+			base_altitude += 10;
 			break;
 
 		default: break;
 	}
 
 	/* Make faster planes fly higher so that they can overtake slower ones */
-	base_altitude += min(30 * (v->max_speed / 37), 90);
+	base_altitude += min(20 * (v->max_speed / 200), 90);
 
 	return base_altitude;
 }
 
+/**
+ * Controls the movement of an aircraft. This function actually moves the vehicle
+ * on the map and takes care of minor things like sound playback.
+ * @todo    De-mystify the cur_speed values for helicopter rotors.
+ * @param v The vehicle that is moved. Must be the first vehicle of the chain
+ * @return  Whether the position requested by the State Machine has been reached
+ */
 static bool AircraftController(Vehicle *v)
 {
+	int count;
 	const Station *st = GetStation(v->u.air.targetairport);
 
 	/* prevent going to 0,0 if airport is deleted. */
@@ -958,7 +976,8 @@ static bool AircraftController(Vehicle *v)
 			if (--u->cur_speed == 32) SndPlayVehicleFx(SND_18_HELICOPTER, v);
 		} else {
 			u->cur_speed = 32;
-			if (UpdateAircraftSpeed(v, SPEED_LIMIT_NONE)) {
+			count = UpdateAircraftSpeed(v);
+			if (count > 0) {
 				v->tile = 0;
 
 				/* Reached altitude? */
@@ -966,7 +985,7 @@ static bool AircraftController(Vehicle *v)
 					v->cur_speed = 0;
 					return true;
 				}
-				SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos+1);
+				SetAircraftPosition(v, v->x_pos, v->y_pos, min(v->z_pos + count, 184));
 			}
 		}
 		return false;
@@ -974,7 +993,8 @@ static bool AircraftController(Vehicle *v)
 
 	/* Helicopter landing. */
 	if (amd->flag & AMED_HELI_LOWER) {
-		if (UpdateAircraftSpeed(v, SPEED_LIMIT_NONE)) {
+		count = UpdateAircraftSpeed(v);
+		if (count > 0) {
 			if (st->airport_tile == 0) {
 				/* FIXME - AircraftController -> if station no longer exists, do not land
 				 * helicopter will circle until sign disappears, then go to next order
@@ -988,7 +1008,7 @@ static bool AircraftController(Vehicle *v)
 			v->tile = st->airport_tile;
 
 			/* Find altitude of landing position. */
-			uint z = GetSlopeZ(x, y) + 1 + afc->delta_z;
+			int z = GetSlopeZ(x, y) + 1 + afc->delta_z;
 
 			if (z == v->z_pos) {
 				Vehicle *u = v->next->next;
@@ -997,9 +1017,9 @@ static bool AircraftController(Vehicle *v)
 				if (u->cur_speed >= 80) return true;
 				u->cur_speed += 4;
 			} else if (v->z_pos > z) {
-				SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos-1);
+				SetAircraftPosition(v, v->x_pos, v->y_pos, max(v->z_pos - count, z));
 			} else {
-				SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos+1);
+				SetAircraftPosition(v, v->x_pos, v->y_pos, min(v->z_pos + count, z));
 			}
 		}
 		return false;
@@ -1009,8 +1029,7 @@ static bool AircraftController(Vehicle *v)
 	uint dist = myabs(x + amd->x - v->x_pos) +  myabs(y + amd->y - v->y_pos);
 
 	/* Need exact position? */
-	if (!(amd->flag & AMED_EXACTPOS) && dist <= (amd->flag & AMED_SLOWTURN ? 8U : 4U))
-		return true;
+	if (!(amd->flag & AMED_EXACTPOS) && dist <= (amd->flag & AMED_SLOWTURN ? 8U : 4U)) return true;
 
 	/* At final pos? */
 	if (dist == 0) {
@@ -1032,71 +1051,82 @@ static bool AircraftController(Vehicle *v)
 		return false;
 	}
 
-	if (!UpdateAircraftSpeed(v, ((amd->flag & AMED_NOSPDCLAMP) == 0) ? SPEED_LIMIT_TAXI : SPEED_LIMIT_NONE)) return false;
+	uint speed_limit = SPEED_LIMIT_TAXI;
+	bool hard_limit = true;
+
+	if (amd->flag & AMED_NOSPDCLAMP)   speed_limit = SPEED_LIMIT_NONE;
+	if (amd->flag & AMED_HOLD)       { speed_limit = SPEED_LIMIT_HOLD;     hard_limit = false; }
+	if (amd->flag & AMED_LAND)       { speed_limit = SPEED_LIMIT_APPROACH; hard_limit = false; }
+	if (amd->flag & AMED_BRAKE)      { speed_limit = SPEED_LIMIT_TAXI;     hard_limit = false; }
+
+	count = UpdateAircraftSpeed(v, speed_limit, hard_limit);
+	if (count == 0) return false;
 
 	if (v->load_unload_time_rem != 0) v->load_unload_time_rem--;
 
-	/* Turn. Do it slowly if in the air. */
-	Direction newdir = GetDirectionTowards(v, x + amd->x, y + amd->y);
-	if (newdir != v->direction) {
-		if (amd->flag & AMED_SLOWTURN) {
-			if (v->load_unload_time_rem == 0) v->load_unload_time_rem = 8;
+	do {
+		/* Turn. Do it slowly if in the air. */
+		Direction newdir = GetDirectionTowards(v, x + amd->x, y + amd->y);
+		if (newdir != v->direction) {
 			v->direction = newdir;
-		} else {
-			v->cur_speed >>= 1;
-			v->direction = newdir;
-		}
-	}
-
-	/* Move vehicle. */
-	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-	v->tile = gp.new_tile;
-
-	/* If vehicle is in the air, use tile coordinate 0. */
-	if (amd->flag & (AMED_TAKEOFF | AMED_SLOWTURN | AMED_LAND)) v->tile = 0;
-
-	/* Adjust Z for land or takeoff? */
-	uint z = v->z_pos;
-
-	if (amd->flag & AMED_TAKEOFF) {
-		z = min(z + 2, GetAircraftFlyingAltitude(v));
-	}
-
-	if (amd->flag & AMED_LAND) {
-		if (st->airport_tile == 0) {
-			v->u.air.state = FLYING;
-			AircraftNextAirportPos_and_Order(v);
-			/* get aircraft back on running altitude */
-			SetAircraftPosition(v, gp.x, gp.y, GetAircraftFlyingAltitude(v));
-			return false;
+			if (amd->flag & AMED_SLOWTURN) {
+				if (v->load_unload_time_rem == 0) v->load_unload_time_rem = 8;
+			} else {
+				v->cur_speed >>= 1;
+			}
 		}
 
-		uint curz = GetSlopeZ(x, y) + 1;
+		/* Move vehicle. */
+		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
+		v->tile = gp.new_tile;
+		/* If vehicle is in the air, use tile coordinate 0. */
+		// if (amd->flag & (AMED_TAKEOFF | AMED_SLOWTURN | AMED_LAND)) v->tile = 0;
 
-		if (curz > z) {
-			z++;
-		} else {
-			int t = max(1U, dist - 4);
+		/* Adjust Z for land or takeoff? */
+		uint z = v->z_pos;
 
-			z -= ((z - curz) + t - 1) / t;
-			if (z < curz) z = curz;
-		}
-	}
-
-	/* We've landed. Decrase speed when we're reaching end of runway. */
-	if (amd->flag & AMED_BRAKE) {
-		uint curz = GetSlopeZ(x, y) + 1;
-
-		if (z > curz) {
-			z--;
-		} else if (z < curz) {
-			z++;
+		if (amd->flag & AMED_TAKEOFF) {
+			z = min(z + 2, GetAircraftFlyingAltitude(v));
 		}
 
-		if (dist < 64 && v->cur_speed > 12) v->cur_speed -= 4;
-	}
+		if ((amd->flag & AMED_HOLD) && (z > 150)) z--;
 
-	SetAircraftPosition(v, gp.x, gp.y, z);
+		if (amd->flag & AMED_LAND) {
+			if (st->airport_tile == 0) {
+				/* Airport has been removed, abort the landing procedure */
+				v->u.air.state = FLYING;
+				AircraftNextAirportPos_and_Order(v);
+				/* get aircraft back on running altitude */
+				SetAircraftPosition(v, gp.x, gp.y, GetAircraftFlyingAltitude(v));
+				continue;
+			}
+
+			uint curz = GetSlopeZ(x, y) + 1;
+
+			if (curz > z) {
+				z++;
+			} else {
+				int t = max(1U, dist - 4);
+
+				z -= ((z - curz) + t - 1) / t;
+				if (z < curz) z = curz;
+			}
+		}
+
+		/* We've landed. Decrase speed when we're reaching end of runway. */
+		if (amd->flag & AMED_BRAKE) {
+			uint curz = GetSlopeZ(x, y) + 1;
+
+			if (z > curz) {
+				z--;
+			} else if (z < curz) {
+				z++;
+			}
+
+		}
+
+		SetAircraftPosition(v, gp.x, gp.y, z);
+	} while (--count != 0);
 	return false;
 }
 
@@ -2067,7 +2097,7 @@ void Aircraft_Tick(Vehicle *v)
 
 	AgeAircraftCargo(v);
 
-	for (uint i = 0; i != 6; i++) {
+	for (uint i = 0; i != 2; i++) {
 		AircraftEventHandler(v, i);
 		if (v->type != VEH_Aircraft) // In case it was deleted
 			break;
