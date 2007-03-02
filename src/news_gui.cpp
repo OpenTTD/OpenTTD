@@ -135,7 +135,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 				if (!(ni->flags & NF_VIEWPORT)) {
 					COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
 					DrawStringMultiCenter(215, ni->display_mode == NM_NORMAL ? 76 : 56,
-						ni->string_id, 426);
+						ni->string_id, w->width - 4);
 				} else {
 					byte bk = _display_opt;
 					_display_opt &= ~DO_TRANS_BUILDINGS;
@@ -150,7 +150,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 					);
 
 					COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
-					DrawStringMultiCenter(w->width / 2, 20, ni->string_id, 428);
+					DrawStringMultiCenter(w->width / 2, 20, ni->string_id, w->width - 4);
 				}
 				break;
 			}
@@ -168,7 +168,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 				} else {
 					DrawWindowViewport(w);
 					COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
-					DrawStringMultiCenter(w->width / 2, w->height - 16, ni->string_id, 276);
+					DrawStringMultiCenter(w->width / 2, w->height - 16, ni->string_id, w->width - 4);
 				}
 				break;
 			}

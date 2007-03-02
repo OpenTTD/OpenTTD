@@ -61,7 +61,7 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 		DoDrawStringCentered(140, 38, _landinfo_data[2], 0);
 		DoDrawStringCentered(140, 49, _landinfo_data[3], 0);
 		DoDrawStringCentered(140, 60, _landinfo_data[4], 0);
-		if (_landinfo_data[5][0] != '\0') DrawStringMultiCenter(140, 76, BindCString(_landinfo_data[5]), 276);
+		if (_landinfo_data[5][0] != '\0') DrawStringMultiCenter(140, 76, BindCString(_landinfo_data[5]), w->width - 4);
 		if (_landinfo_data[6][0] != '\0') DoDrawStringCentered(140, 71, _landinfo_data[6], 0);
 	}
 }
@@ -505,13 +505,13 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 				120,
 				(_errmsg_message_1 == INVALID_STRING_ID ? 25 : 15),
 				_errmsg_message_2,
-				238);
+				w->width - 2);
 			if (_errmsg_message_1 != INVALID_STRING_ID)
 				DrawStringMultiCenter(
 					120,
 					30,
 					_errmsg_message_1,
-					238);
+					w->width - 2);
 		} else {
 			const Player *p = GetPlayer((PlayerID)GetDParamX(_errmsg_decode_params,2));
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
@@ -520,13 +520,13 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 				214,
 				(_errmsg_message_1 == INVALID_STRING_ID ? 65 : 45),
 				_errmsg_message_2,
-				238);
+				w->width - 2);
 			if (_errmsg_message_1 != INVALID_STRING_ID)
 				DrawStringMultiCenter(
 					214,
 					90,
 					_errmsg_message_1,
-					238);
+					w->width - 2);
 		}
 		break;
 
@@ -657,7 +657,7 @@ static void TooltipsWndProc(Window *w, WindowEvent *e)
 			for (arg = 0; arg < WP(w, tooltips_d).paramcount; arg++) {
 				SetDParam(arg, WP(w, tooltips_d).params[arg]);
 			}
-			DrawStringMultiCenter((w->width >> 1), (w->height >> 1) - 5, WP(w, tooltips_d).string_id, 197);
+			DrawStringMultiCenter((w->width >> 1), (w->height >> 1) - 5, WP(w, tooltips_d).string_id, w->width - 2);
 			break;
 		}
 
@@ -1210,7 +1210,7 @@ static void QueryWndProc(Window *w, WindowEvent *e)
 			DrawWindowWidgets(w);
 			COPY_IN_DPARAM(0, q->params, lengthof(q->params));
 
-			DrawStringMultiCenter(w->width / 2, (w->height / 2) - 10, q->message, w->width);
+			DrawStringMultiCenter(w->width / 2, (w->height / 2) - 10, q->message, w->width - 2);
 			break;
 
 		case WE_CLICK:
@@ -1800,7 +1800,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 
-		DrawStringMultiCenter(200, 25, STR_CHEATS_WARNING, 350);
+		DrawStringMultiCenter(200, 25, STR_CHEATS_WARNING, w->width - 50);
 
 		x = 0;
 		y = 45;
