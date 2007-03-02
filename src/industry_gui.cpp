@@ -552,24 +552,29 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 	return r;
 }
 
+/**
+ * Makes a sorted industry list.
+ * When there are no industries, the list has to be made. This so when one
+ * starts a new game without industries after playing a game with industries
+ * the list is not populated with invalid industries from the previous game.
+ */
 static void MakeSortedIndustryList(void)
 {
 	const Industry* i;
 	int n = 0;
 
-	/* Don't attempt a sort if there are no industries */
-	if (GetNumIndustries() == 0) return;
-
 	/* Create array for sorting */
 	_industry_sort = ReallocT(_industry_sort, GetMaxIndustryIndex() + 1);
 	if (_industry_sort == NULL) error("Could not allocate memory for the industry-sorting-list");
 
-	FOR_ALL_INDUSTRIES(i) _industry_sort[n++] = i;
+	/* Don't attempt a sort if there are no industries */
+	if (GetNumIndustries() != 0) {
+		FOR_ALL_INDUSTRIES(i) _industry_sort[n++] = i;
+		qsort((void*)_industry_sort, n, sizeof(_industry_sort[0]), GeneralIndustrySorter);
+	}
 
 	_num_industry_sort = n;
 	_last_industry = NULL; // used for "cache"
-
-	qsort((void*)_industry_sort, n, sizeof(_industry_sort[0]), GeneralIndustrySorter);
 
 	DEBUG(misc, 3, "Resorting industries list");
 }
