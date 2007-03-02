@@ -1453,7 +1453,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 
 				/* if there is not enough to unload from pending, ensure it does not go -ve
 				 * else deduct amount actually unloaded from unload_pending */
-				SB(ge->unload_pending, 0, 12, max(GB(ge->unload_pending, 0, 12) - amount_unloaded, 0));
+				SB(ge->unload_pending, 0, 12, max(GB(ge->unload_pending, 0, 12) - amount_unloaded, 0U));
 
 				if (u->current_order.flags & OF_TRANSFER) {
 					ge->feeder_profit += virtual_profit;
