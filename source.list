@@ -152,6 +152,7 @@ oldpool.h
 openttd.h
 pathfind.h
 player.h
+player_face.h
 queue.h
 rail.h
 road_cmd.h

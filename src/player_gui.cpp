@@ -21,6 +21,7 @@
 #include "newgrf.h"
 #include "network/network_data.h"
 #include "network/network_client.h"
+#include "player_face.h"
 
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied);
 
@@ -505,6 +506,44 @@ static const WindowDesc _select_player_livery_desc = {
 	SelectPlayerLiveryWndProc
 };
 
+/**
+ * Draws the face of a player.
+ * @param pf    the player's face
+ * @param color the (background) color of the gradient
+ * @param x     x-position to draw the face
+ * @param y     y-position to draw the face
+ */
+void DrawPlayerFace(PlayerFace pf, int color, int x, int y)
+{
+	GenderEthnicity ge = (GenderEthnicity)GetPlayerFaceBits(pf, PFV_GEN_ETHN, GE_WM);
+
+	bool has_moustache   = !HASBIT(ge, GENDER_FEMALE) && GetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE,   ge) != 0;
+	bool has_tie_earring = !HASBIT(ge, GENDER_FEMALE) || GetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge) != 0;
+	bool has_glasses     = GetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge) != 0;
+	SpriteID pal;
+	switch (GetPlayerFaceBits(pf, PFV_EYE_COLOUR, ge)) {
+		default: NOT_REACHED();
+		case 0: pal = PALETTE_TO_BROWN; break;
+		case 1: pal = PALETTE_TO_BLUE;  break;
+		case 2: pal = PALETTE_TO_GREEN; break;
+	}
+
+	/* Draw the gradient (background) */
+	DrawSprite(SPR_GRADIENT, GENERAL_SPRITE_COLOR(color), x, y);
+
+	for (PlayerFaceVariable pfv = PFV_CHEEKS; pfv < PFV_END; pfv++) {
+		switch (pfv) {
+			case PFV_MOUSTACHE:   if (!has_moustache)   continue; break;
+			case PFV_LIPS:        /* FALL THROUGH */
+			case PFV_NOSE:        if (has_moustache)    continue; break;
+			case PFV_TIE_EARRING: if (!has_tie_earring) continue; break;
+			case PFV_GLASSES:     if (!has_glasses)     continue; break;
+			default: break;
+		}
+		DrawSprite(GetPlayerFaceSprite(pf, pfv, ge), (pfv == PFV_EYEBROWS) ? pal : PAL_NONE, x, y);
+	}
+}
+
 static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -531,7 +570,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			break;
 		case 7:
-			WP(w,facesel_d).face = (WP(w,facesel_d).gender << 31) + GB(InteractiveRandom(), 0, 31);
+			WP(w,facesel_d).face = ConvertFromOldPlayerFace((WP(w, facesel_d).gender << 31) + GB(InteractiveRandom(), 0, 31));
 			SetWindowDirty(w);
 			break;
 		}

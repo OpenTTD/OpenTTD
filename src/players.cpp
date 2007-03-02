@@ -26,6 +26,7 @@
 #include "ai/ai.h"
 #include "date.h"
 #include "window.h"
+#include "player_face.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a
@@ -64,22 +65,10 @@ void DrawPlayerIcon(PlayerID p, int x, int y)
 	DrawSprite(SPR_PLAYER_ICON, PLAYER_SPRITE_COLOR(p), x, y);
 }
 
-/** The gender/race combinations that we have faces for */
-enum GenderRace {
-	GENDER_FEMALE = 0,                                    ///< This bit set means a female, otherwise male
-	RACE_BLACK    = 1,                                    ///< This bit set means black, otherwise white
-
-	WHITE_MALE    = 0,                                    ///< A male of Caucasian origin
-	WHITE_FEMALE  = 1 << GENDER_FEMALE,                   ///< A female of Caucasian origin
-	BLACK_MALE    = 1 << RACE_BLACK,                      ///< A male of African origin
-	BLACK_FEMALE  = 1 << RACE_BLACK | 1 << GENDER_FEMALE, ///< A female of African origin
-};
-DECLARE_ENUM_AS_BIT_SET(GenderRace); ///< See GenderRace as a bitset
-
 /**
- * Draws the face of a player.
+ * Converts an old player face format to the new player face format
  *
- * Meaning of the bits in face (some bits are used in several times):
+ * Meaning of the bits in the old face (some bits are used in several times):
  * - 4 and 5: chin
  * - 6 to 9: eyebrows
  * - 10 to 13: nose
@@ -91,124 +80,87 @@ DECLARE_ENUM_AS_BIT_SET(GenderRace); ///< See GenderRace as a bitset
  * - 19, 26 and 27: race (bit 27 set and bit 19 equal to bit 26 = black, otherwise white)
  * - 31: gender (0 = male, 1 = female)
  *
- * @param face  the bit-encoded representation of the face
- * @param color the (background) color of the gradient
- * @param x     x-position to draw the face
- * @param y     y-position to draw the face
- *
- * @note all magic hexadecimal numbers in this function as sprite IDs.
- * @todo replace magic hexadecimal numbers with enums
+ * @param face the face in the old format
+ * @return the face in the new format
  */
-void DrawPlayerFace(uint32 face, int color, int x, int y)
+PlayerFace ConvertFromOldPlayerFace(uint32 face)
 {
-	GenderRace gen_race = WHITE_MALE;
+	PlayerFace pf = 0;
+	GenderEthnicity ge = GE_WM;
 
-	if (HASBIT(face, 31)) SetBitT(gen_race, GENDER_FEMALE);
-	if (HASBIT(face, 27) && (HASBIT(face, 26) == HASBIT(face, 19))) SetBitT(gen_race, RACE_BLACK);
+	if (HASBIT(face, 31)) SetBitT(ge, GENDER_FEMALE);
+	if (HASBIT(face, 27) && (HASBIT(face, 26) == HASBIT(face, 19))) SetBitT(ge, ETHNICITY_BLACK);
 
-	/* Draw the gradient (background) */
-	DrawSprite(SPR_GRADIENT, GENERAL_SPRITE_COLOR(color), x, y);
+	SetPlayerFaceBits(pf, PFV_GEN_ETHN,    ge, ge);
+	SetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge, GB(face, 28, 3) <= 1);
+	SetPlayerFaceBits(pf, PFV_EYE_COLOUR,  ge, clampu(GB(face, 20, 3), 5, 7) - 5);
+	SetPlayerFaceBits(pf, PFV_CHIN,        ge, ScalePlayerFaceValue(PFV_CHIN,     ge, GB(face,  4, 2)));
+	SetPlayerFaceBits(pf, PFV_EYEBROWS,    ge, ScalePlayerFaceValue(PFV_EYEBROWS, ge, GB(face,  6, 4)));
+	SetPlayerFaceBits(pf, PFV_HAIR,        ge, ScalePlayerFaceValue(PFV_HAIR,     ge, GB(face, 16, 4)));
+	SetPlayerFaceBits(pf, PFV_JACKET,      ge, ScalePlayerFaceValue(PFV_JACKET,   ge, GB(face, 20, 2)));
+	SetPlayerFaceBits(pf, PFV_COLLAR,      ge, ScalePlayerFaceValue(PFV_COLLAR,   ge, GB(face, 22, 2)));
+	SetPlayerFaceBits(pf, PFV_GLASSES,     ge, GB(face, 28, 1));
 
-	/* Draw the cheeks */
-	static const SpriteID cheeks_table[] = { 0x325, 0x326, 0x390, 0x3B0 };
-	DrawSprite(cheeks_table[gen_race], PAL_NONE, x, y);
-
-	/* Draw the chin */
-	uint chin = GB(face, 4, 2);
-	if (HASBIT(gen_race, RACE_BLACK)) {
-		DrawSprite((HASBIT(gen_race, GENDER_FEMALE) ? 0x3B1 : 0x391) + (chin >> 1), PAL_NONE, x, y);
-	} else {
-		DrawSprite(0x327 + (HASBIT(gen_race, GENDER_FEMALE) ? 0 : chin), PAL_NONE, x, y);
-	}
-
-	/* Draw the eyes */
-	uint eye_colour = GB(face, 20, 3);
-	uint eyebrows   = GB(face,  6, 4);
-	SpriteID pal;
-
-	if (eye_colour < 6) {
-		pal = PALETTE_TO_BROWN;
-	} else if (eye_colour == 6) {
-		pal = PALETTE_TO_BLUE;
-	} else {
-		pal = PALETTE_TO_GREEN;
-	}
-
-	switch (gen_race) {
-		case WHITE_MALE:   DrawSprite(0x32B + (eyebrows * 12 >> 4), pal, x, y); break;
-		case WHITE_FEMALE: DrawSprite(0x337 + eyebrows,             pal, x, y); break;
-		case BLACK_MALE:   DrawSprite(0x39A + (eyebrows * 11 >> 4), pal, x, y); break;
-		case BLACK_FEMALE: DrawSprite(0x3B8 + eyebrows,             pal, x, y); break;
-	}
-
-	/* Draw the mouth */
-	uint nose = GB(face, 13, 3);
 	uint lips = GB(face, 10, 4);
-
-	if (!HASBIT(gen_race, GENDER_FEMALE)) {
-		lips = (lips * 15 >> 4);
-
-		if (lips < 3) {
-			/* Moustache, including nose and lips */
-			DrawSprite((HASBIT(gen_race, RACE_BLACK) ? 0x397 : 0x367) + lips, PAL_NONE, x, y);
-
-			/* Skip the rest */
-			goto skip_mouth;
-		}
-
-		/* Lips */
-		lips -= 3;
-		if (HASBIT(gen_race, RACE_BLACK)) {
-			if (lips > 8) lips = 0;
-			lips += 0x3A5 - 0x35B;
-		}
-		DrawSprite(lips + 0x35B, PAL_NONE, x, y);
-	} else if (HASBIT(gen_race, RACE_BLACK)) {
-		/* Female lips with make up */
-		DrawSprite((lips * 9 >> 4) + 0x3C8, PAL_NONE, x, y);
+	if (!HASBIT(ge, GENDER_FEMALE) && lips < 4) {
+		SetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE, ge, true);
+		SetPlayerFaceBits(pf, PFV_MOUSTACHE,     ge, max(lips, 1U) - 1);
 	} else {
-		/* Female lips */
-		DrawSprite((lips * 10 >> 4) + 0x351, PAL_NONE, x, y);
-	}
-
-	{
-		/* Nose */
-		static const SpriteID mouth_table[] = { 0x34C, 0x34D, 0x34F };
-		switch (gen_race) {
-			case WHITE_MALE:   DrawSprite(0x349 + nose,                 PAL_NONE, x, y); break;
-			case WHITE_FEMALE: DrawSprite(mouth_table[(nose * 3 >> 3)], PAL_NONE, x, y); break;
-			case BLACK_MALE:   DrawSprite(0x393 + (nose & 3),           PAL_NONE, x, y); break;
-			case BLACK_FEMALE: DrawSprite(0x3B3 + (nose * 5 >> 3),      PAL_NONE, x, y); break;
+		if (!HASBIT(ge, GENDER_FEMALE)) {
+			lips -= 3;
+			if (HASBIT(ge, ETHNICITY_BLACK) && lips > 8) lips = 0;
+		} else {
+			lips = ScalePlayerFaceValue(PFV_LIPS, ge, lips);
 		}
-	}
-skip_mouth:
+		SetPlayerFaceBits(pf, PFV_LIPS, ge, lips);
 
-	/* Draw the hair */
-	uint hair = GB(face, 16, 4);
-	switch (gen_race) {
-		case WHITE_MALE:   DrawSprite(0x382 + (hair * 9 >> 4), PAL_NONE, x, y); break;
-		case WHITE_FEMALE: DrawSprite(0x38B + (hair * 5 >> 4), PAL_NONE, x, y); break;
-		case BLACK_MALE:   DrawSprite(0x3D4 + (hair * 5 >> 4), PAL_NONE, x, y); break;
-		case BLACK_FEMALE: DrawSprite(0x3D9 + (hair * 5 >> 4), PAL_NONE, x, y); break;
-	}
-
-	/* Draw the tie, ear rings etc. */
-	uint tie = GB(face, 20, 8);
-	if (HASBIT(gen_race, GENDER_FEMALE)) {
-		DrawSprite(0x378 + (GB(tie, 0, 2) * 3 >> 2), PAL_NONE, x, y);
-		DrawSprite(0x37B + (GB(tie, 2, 2) * 4 >> 2), PAL_NONE, x, y);
-
-		tie >>= 4;
-		if (tie < 3) DrawSprite((HASBIT(gen_race, RACE_BLACK) ? 0x3D1 : 0x37F) + tie, PAL_NONE, x, y);
-	} else {
-		DrawSprite(0x36B + (GB(tie, 0, 2) * 3 >> 2), PAL_NONE, x, y);
-		DrawSprite(0x36E + (GB(tie, 2, 2) * 4 >> 2), PAL_NONE, x, y);
-		DrawSprite(0x372 + (GB(tie, 4, 4) * 6 >> 4), PAL_NONE, x, y);
+		uint nose = GB(face, 13, 3);
+		if (ge == GE_WF) {
+			nose = (nose * 3 >> 3) * 3 >> 2; // There is 'hole' in the nose sprites for females
+		} else {
+			nose = ScalePlayerFaceValue(PFV_NOSE, ge, nose);
+		}
+		SetPlayerFaceBits(pf, PFV_NOSE, ge, nose);
 	}
 
-	/* draw the glasses */
-	uint glasses = GB(face, 28, 3);
-	if (glasses <= 1) DrawSprite((HASBIT(gen_race, RACE_BLACK) ? 0x3AE : 0x347) + glasses, PAL_NONE, x, y);
+	uint tie_earring = GB(face, 24, 4);
+	if (!HASBIT(ge, GENDER_FEMALE) || tie_earring < 3) { // Not all females have an earring
+		if (HASBIT(ge, GENDER_FEMALE)) SetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge, true);
+		SetPlayerFaceBits(pf, PFV_TIE_EARRING, ge, HASBIT(ge, GENDER_FEMALE) ? tie_earring : ScalePlayerFaceValue(PFV_TIE_EARRING, ge, tie_earring / 2));
+	}
+
+	return pf;
+}
+
+/**
+ * Checks whether a player's face is a valid encoding.
+ * Unused bits are not enforced to be 0.
+ * @param pf the fact to check
+ * @return true if and only if the face is valid
+ */
+bool IsValidPlayerFace(PlayerFace pf)
+{
+	if (!ArePlayerFaceBitsValid(pf, PFV_GEN_ETHN, GE_WM)) return false;
+
+	GenderEthnicity ge   = (GenderEthnicity)GetPlayerFaceBits(pf, PFV_GEN_ETHN, GE_WM);
+	bool has_moustache   = !HASBIT(ge, GENDER_FEMALE) && GetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE,   ge) != 0;
+	bool has_tie_earring = !HASBIT(ge, GENDER_FEMALE) || GetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge) != 0;
+	bool has_glasses     = GetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge) != 0;
+
+	if (!ArePlayerFaceBitsValid(pf, PFV_EYE_COLOUR, ge)) return false;
+	for (PlayerFaceVariable pfv = PFV_CHEEKS; pfv < PFV_END; pfv++) {
+		switch (pfv) {
+			case PFV_MOUSTACHE:   if (!has_moustache)   continue; break;
+			case PFV_LIPS:        /* FALL THROUGH */
+			case PFV_NOSE:        if (has_moustache)    continue; break;
+			case PFV_TIE_EARRING: if (!has_tie_earring) continue; break;
+			case PFV_GLASSES:     if (!has_glasses)     continue; break;
+			default: break;
+		}
+		if (!ArePlayerFaceBitsValid(pf, pfv, ge)) return false;
+	}
+
+	return true;
 }
 
 void InvalidatePlayerWindows(const Player *p)
@@ -519,7 +471,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 
 	p->avail_railtypes = GetPlayerRailtypes(p->index);
 	p->inaugurated_year = _cur_year;
-	p->face = Random();
+	p->face = ConvertFromOldPlayerFace(Random());
 
 	/* Engine renewal settings */
 	p->engine_renew_list = NULL;

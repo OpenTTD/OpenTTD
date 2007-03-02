@@ -31,6 +31,7 @@
 #include "settings.h"
 #include "date.h"
 #include "cargotype.h"
+#include "player_face.h"
 
 #include "fios.h"
 /* Variables to display file lists */

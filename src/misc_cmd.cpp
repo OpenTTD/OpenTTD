@@ -14,6 +14,7 @@
 #include "network/network.h"
 #include "variables.h"
 #include "livery.h"
+#include "player_face.h"
 
 /** Change the player's face.
  * @param tile unused
@@ -22,8 +23,12 @@
  */
 int32 CmdSetPlayerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
+	PlayerFace pf = (PlayerFace)p2;
+
+	if (!IsValidPlayerFace(pf)) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
-		GetPlayer(_current_player)->face = p2;
+		GetPlayer(_current_player)->face = pf;
 		MarkWholeScreenDirty();
 	}
 	return 0;

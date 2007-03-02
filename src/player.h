@@ -147,6 +147,7 @@ typedef struct PlayerAiNew {
 } PlayerAiNew;
 
 
+typedef uint32 PlayerFace;
 
 typedef struct Player {
 	uint32 name_2;
@@ -155,7 +156,7 @@ typedef struct Player {
 	uint16 president_name_1;
 	uint32 president_name_2;
 
-	uint32 face;
+	PlayerFace face;
 
 	int32 player_money;
 	int32 current_loan;

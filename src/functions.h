@@ -106,9 +106,6 @@ static inline TileIndex RandomTile(void) { return TILE_MASK(Random()); }
 uint32 InteractiveRandom(void); // Used for random sequences that are not the same on the other end of the multiplayer link
 uint InteractiveRandomRange(uint max);
 
-/* facedraw.cpp */
-void DrawPlayerFace(uint32 face, int color, int x, int y);
-
 /* texteff.cpp */
 void MoveAllTextEffects(void);
 void AddTextEffect(StringID msg, int x, int y, uint16 duration);

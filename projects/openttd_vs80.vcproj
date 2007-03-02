@@ -968,6 +968,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\player_face.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\queue.h"
 				>
 			</File>

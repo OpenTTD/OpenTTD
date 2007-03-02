@@ -36,6 +36,7 @@
 #include "unmovable.h"
 #include "date.h"
 #include "cargotype.h"
+#include "player_face.h"
 
 /* Score info */
 const ScoreInfo _score_info[] = {

@@ -55,6 +55,7 @@
 #include "clear_map.h"
 #include "fontcache.h"
 #include "newgrf_config.h"
+#include "player_face.h"
 
 #include "bridge_map.h"
 #include "clear_map.h"
@@ -1816,6 +1817,8 @@ bool AfterLoadGame(void)
 			if (st->IsBuoy() && IsTileOwner(st->xy, OWNER_NONE)) SetTileOwner(st->xy, OWNER_WATER);
 		}
 	}
+
+	if (CheckSavegameVersion(49)) FOR_ALL_PLAYERS(p) p->face = ConvertFromOldPlayerFace(p->face);
 
 	return true;
 }
