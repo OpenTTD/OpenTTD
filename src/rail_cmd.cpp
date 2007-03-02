@@ -1845,16 +1845,21 @@ set_ground:
 
 static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 {
-	byte a;
-	uint16 b;
-
 	if (mode != TRANSPORT_RAIL) return 0;
 
-	if (IsPlainRailTile(tile)) {
-		TrackBits rails = GetTrackBits(tile);
-		uint32 ret = rails * 0x101;
+	switch (GetRailTileType(tile)) {
+		default: NOT_REACHED();
+		case RAIL_TILE_NORMAL: {
+			TrackBits rails = GetTrackBits(tile);
+			uint32 ret = rails * 0x101;
+			return (rails == TRACK_BIT_CROSS) ? ret | 0x40 : ret;
+		}
 
-		if (HasSignals(tile)) {
+		case RAIL_TILE_SIGNALS: {
+			uint32 ret = GetTrackBits(tile) * 0x101;
+			byte a;
+			uint16 b;
+
 			a = _m[tile].m3;
 			b = _m[tile].m2;
 
@@ -1871,25 +1876,21 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 			if ((b & 0x40) == 0) ret |= 0x07100000;
 			if ((b & 0x20) == 0) ret |= 0x20080000;
 			if ((b & 0x10) == 0) ret |= 0x08200000;
-		} else {
-			if (rails == TRACK_BIT_CROSS) ret |= 0x40;
+
+			return ret;
 		}
-		return ret;
-	} else {
-		if (IsRailDepot(tile)) {
-			return AxisToTrackBits(DiagDirToAxis(GetRailDepotDirection(tile))) * 0x101;
-		} else {
-			return GetRailWaypointBits(tile) * 0x101;
-		}
+
+		case RAIL_TILE_DEPOT:    return AxisToTrackBits(DiagDirToAxis(GetRailDepotDirection(tile))) * 0x101;
+		case RAIL_TILE_WAYPOINT: return GetRailWaypointBits(tile) * 0x101;
 	}
 }
 
 static void ClickTile_Track(TileIndex tile)
 {
-	if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
-		ShowDepotWindow(tile, VEH_Train);
-	} else if (IsRailWaypoint(tile)) {
-		ShowRenameWaypointWindow(GetWaypointByTile(tile));
+	switch (GetRailTileType(tile)) {
+		case RAIL_TILE_DEPOT:    ShowDepotWindow(tile, VEH_Train);                  break;
+		case RAIL_TILE_WAYPOINT: ShowRenameWaypointWindow(GetWaypointByTile(tile)); break;
+		default: break;
 	}
 }
 
