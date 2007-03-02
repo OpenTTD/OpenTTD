@@ -76,7 +76,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		{
 			SetDParam(0, v->service_interval);
 			SetDParam(1, v->date_of_last_service);
-			DrawString(13, 90, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
+			DrawString(13, 102, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
 		}
 
 		DrawShipImage(v, 3, 57, INVALID_VEHICLE);
@@ -98,6 +98,11 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 			str = STR_8813_FROM;
 		}
 		DrawString(74, 78, str, 0);
+
+		/* Draw Transfer credits text */
+		SetDParam(0, v->cargo_feeder_share);
+		DrawString(74, 89, STR_FEEDER_CARGO_VALUE, 0);
+
 	} break;
 
 	case WE_CLICK: {
@@ -141,15 +146,15 @@ static const Widget _ship_details_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   364,     0,    13, STR_9811_DETAILS, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   365,   404,     0,    13, STR_01AA_NAME,    STR_982F_NAME_SHIP},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   404,    14,    55, 0x0,              STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   404,    56,    88, 0x0,              STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    89,    94, STR_0188,         STR_884D_INCREASE_SERVICING_INTERVAL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    95,   100, STR_0189,         STR_884E_DECREASE_SERVICING_INTERVAL},
-{      WWT_PANEL,   RESIZE_NONE,    14,    11,   404,    89,   100, 0x0,              STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   404,    56,   100, 0x0,              STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   101,   106, STR_0188,         STR_884D_INCREASE_SERVICING_INTERVAL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   107,   112, STR_0189,         STR_884E_DECREASE_SERVICING_INTERVAL},
+{      WWT_PANEL,   RESIZE_NONE,    14,    11,   404,   101,   112, 0x0,              STR_NULL},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _ship_details_desc = {
-	WDP_AUTO, WDP_AUTO, 405, 101,
+	WDP_AUTO, WDP_AUTO, 405, 113,
 	WC_VEHICLE_DETAILS,WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_ship_details_widgets,

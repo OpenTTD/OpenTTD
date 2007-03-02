@@ -3053,6 +3053,8 @@ extern const SaveLoad _common_veh_desc[] = {
 
 	    SLE_VAR(Vehicle, profit_this_year,     SLE_INT32),
 	    SLE_VAR(Vehicle, profit_last_year,     SLE_INT32),
+	SLE_CONDVAR(Vehicle, cargo_feeder_share,   SLE_INT32,                 51, SL_MAX_VERSION),
+	SLE_CONDVAR(Vehicle, cargo_loaded_at_xy,   SLE_UINT32,                51, SL_MAX_VERSION),
 	    SLE_VAR(Vehicle, value,                SLE_UINT32),
 
 	    SLE_VAR(Vehicle, random_bits,          SLE_UINT8),

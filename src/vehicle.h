@@ -298,6 +298,8 @@ struct Vehicle {
 
 	int32 profit_this_year;
 	int32 profit_last_year;
+	int32 cargo_feeder_share;      ///< value of feeder pickup to be paid for on delivery of cargo
+	TileIndex cargo_loaded_at_xy;  ///< tile index where feeder cargo was loaded
 	uint32 value;
 
 	union {

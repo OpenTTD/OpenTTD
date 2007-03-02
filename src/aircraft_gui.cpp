@@ -106,7 +106,13 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 		{
 			SetDParam(0, v->service_interval);
 			SetDParam(1, v->date_of_last_service);
-			DrawString(13, 103, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
+			DrawString(13, 115, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
+		}
+
+		/* Draw Transfer credits text */
+		{
+			SetDParam(0, v->cargo_feeder_share);
+			DrawString(60, 101, STR_FEEDER_CARGO_VALUE, 0);
 		}
 
 		DrawAircraftImage(v, 3, 57, INVALID_VEHICLE);
@@ -187,15 +193,15 @@ static const Widget _aircraft_details_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   349,     0,    13, STR_A00C_DETAILS, STR_018C_WINDOW_TITLE_DRAG_THIS },
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   350,   389,     0,    13, STR_01AA_NAME,    STR_A032_NAME_AIRCRAFT },
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   389,    14,    55, 0x0,              STR_NULL },
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   389,    56,   101, 0x0,              STR_NULL },
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   102,   107, STR_0188,         STR_884D_INCREASE_SERVICING_INTERVAL },
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   108,   113, STR_0189,         STR_884E_DECREASE_SERVICING_INTERVAL },
-{      WWT_PANEL,   RESIZE_NONE,    14,    11,   389,   102,   113, 0x0,              STR_NULL },
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   389,    56,   113, 0x0,              STR_NULL },
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   114,   119, STR_0188,         STR_884D_INCREASE_SERVICING_INTERVAL },
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   120,   125, STR_0189,         STR_884E_DECREASE_SERVICING_INTERVAL },
+{      WWT_PANEL,   RESIZE_NONE,    14,    11,   389,   114,   125, 0x0,              STR_NULL },
 {   WIDGETS_END},
 };
 
 static const WindowDesc _aircraft_details_desc = {
-	WDP_AUTO, WDP_AUTO, 390, 114,
+	WDP_AUTO, WDP_AUTO, 390, 126,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_aircraft_details_widgets,

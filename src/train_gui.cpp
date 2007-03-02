@@ -503,6 +503,8 @@ static void DrawTrainDetailsWindow(Window *w)
 				DrawString(x, y + 2, FreightWagonMult(i) > 1 ? STR_TOTAL_CAPACITY_MULT : STR_013F_TOTAL_CAPACITY, 0);
 			}
 		}
+		SetDParam(0, v->cargo_feeder_share);
+		DrawString(x, y + 15, STR_FEEDER_CARGO_VALUE, 0);
 	}
 }
 

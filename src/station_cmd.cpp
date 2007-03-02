@@ -2764,6 +2764,7 @@ static const SaveLoad _station_desc[] = {
 
 static const SaveLoad _goods_desc[] = {
 	    SLE_VAR(GoodsEntry, waiting_acceptance, SLE_UINT16),
+	SLE_CONDVAR(GoodsEntry, unload_pending,     SLE_UINT16,                51, SL_MAX_VERSION),
 	    SLE_VAR(GoodsEntry, days_since_pickup,  SLE_UINT8),
 	    SLE_VAR(GoodsEntry, rating,             SLE_UINT8),
 	SLE_CONDVAR(GoodsEntry, enroute_from,       SLE_FILE_U8 | SLE_VAR_U16,  0, 6),

@@ -15,6 +15,7 @@ static const StationID INVALID_STATION = 0xFFFF;
 typedef struct GoodsEntry {
 	GoodsEntry() :
 		waiting_acceptance(0),
+		unload_pending(0),
 		days_since_pickup(0),
 		rating(175),
 		enroute_from(INVALID_STATION),
@@ -25,6 +26,7 @@ typedef struct GoodsEntry {
 	{}
 
 	uint16 waiting_acceptance;
+	uint16 unload_pending;        ///< records how much cargo is awaiting transfer during gradual loading to allow correct fee calc
 	byte days_since_pickup;
 	byte rating;
 	StationID enroute_from;
