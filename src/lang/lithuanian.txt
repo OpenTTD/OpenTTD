@@ -2637,8 +2637,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Iterpti 
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Pazymetoje stoteleje laukti, kol transporto priemone pilnai pasikraus
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Iskrauti krovini pazymetoje stoteleje
 STR_SERVICE_HINT                                                :{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}{STRING} jau išrastas!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kaina: {CURRENCY} Svoris: {WEIGHT_S}{}Greitis: {VELOCITY}  Galia: {POWER}{}Eksplotacijos išlaidos: {CURRENCY}/metus{}Talpa: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Sugedo
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met
@@ -2706,8 +2704,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Nutempk 
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Rodyti automobiliu garaza ekrano centre
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Automobiliu pasirinkimo sarasas - paspausk ant automobilio jei nori detalesnes informacijos
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Isigyti pazymeta automobili
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Atsirado naujas automobilis!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kaina: {CURRENCY}{}Greitis: {VELOCITY}{}Eksploatavimo kaina: {CURRENCY}/met{}Talpa: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Pavadinti automobili
@@ -2779,8 +2775,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Rodyti l
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Rodyti laiva ekrano centre
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Nukreipti laiva i depa
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Rodyti laivo informacija
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Atsirado naujas laivas!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kainuoja: {CURRENCY} Maks. Greitis: {VELOCITY}{}Talpa: {CARGO}{}Vaziavimo kaina: {CURRENCY}/m
 STR_982F_NAME_SHIP                                              :{BLACK}Laivo vardas
 
@@ -2853,8 +2847,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Rodyti l
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Rodyti lektuva ektrano centre
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Siusti lektuva i angara
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Rodyti lektuvo informacija
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Atsirado naujas lektuvas!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kaina: {CURRENCY} Maks. greitis: {VELOCITY}{}Talpa: {COMMA} keleiviu, {COMMA} pasto maisail{}Eksploatacijos islaidos: {CURRENCY}/met.
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Pervardinti lektuva

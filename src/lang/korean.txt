@@ -2607,8 +2607,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}선택�
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택된 경로에서 모든 화물을 가득 싣도록 변경합니다.
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택된 경로에서 모든 화물을 전부 내리도록 변경합니다.
 STR_SERVICE_HINT                                                :{BLACK}점검이 필요하면 이 경로를 건너뜁니다.
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}새로운 {STRING}을/를 이제 사용할 수 있습니다!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}가격: {CURRENCY} 무게: {WEIGHT_S}{}속도: {VELOCITY}  힘: {POWER}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}고장
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
@@ -2676,8 +2674,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}자동�
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}이 차고가 있는 곳으로 이동
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}자동차 선택 목록 - 차량 정보를 보려면 클릭
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}선택한 자동차 만들기
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}새로운 자동차를 이제 사용할 수 있습니다!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}가격: {CURRENCY}{}속력: {VELOCITY}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}자동차 이름 지정
@@ -2749,8 +2745,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}선박�
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}이 선박이 있는 곳으로 이동합니다
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}선박을 정박소로 보냅니다. CTRL+클릭하면 점검만 합니다.
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}선박 상세정보 보기
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}새로운 선박을 이제 사용할 수 있습니다!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}가격: {CURRENCY} 최고속력: {VELOCITY}{}수송량: {CARGO}{}운행비용: {CURRENCY}/년
 STR_982F_NAME_SHIP                                              :{BLACK}선박 이름 지정
 
@@ -2823,8 +2817,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}항공�
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}이 항공기가 있는 곳으로 이동
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}항공기를 격납고로 보냅니다. CTRL+클릭하면 점검만 합니다
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}항공기 상세정보 보기
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}새로운 항공기를 이제 사용할 수 있습니다!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}가격: {CURRENCY} 최고속력: {VELOCITY}{}수송량: 승객 {COMMA}명, 우편 {COMMA}가방{}운행비용: {CURRENCY}/년
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}항공기 이름 지정

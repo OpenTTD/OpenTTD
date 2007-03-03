@@ -2619,8 +2619,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Вста
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Задать ожидание полной загрузки
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Задать ожидание полной разгрузки
 STR_SERVICE_HINT                                                :{BLACK}Пропустить это задание, если обслуживание не требуется
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Теперь доступно {STRING}!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Цена обслуж.: {CURRENCY}/год{}Емкость: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Поломка
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK} Стоимость обслуживания: {LTBLUE}{CURRENCY}/год
@@ -2688,8 +2686,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Пере
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Показать гараж в главном окне
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Список автомобилей - кликните для получения информации
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Построить выделенный автомобиль
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Доступна новая модель автомобиля!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорость: {VELOCITY}{}Стоимость обслуж.: {CURRENCY}/год{}Емкость: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Назвать автомобиль
@@ -2761,8 +2757,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Пока
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Показать корабль в главном окне
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Отправить корабль в док. CTRL+клик - только для обслуживания
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Показать информацию о корабле
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Доступен новый корабль!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Макс. Скорость: {VELOCITY}{}Емкость: {CARGO}{}Стоимость обслуж.: {CURRENCY}/год
 STR_982F_NAME_SHIP                                              :{BLACK}Название корабля
 
@@ -2835,8 +2829,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Пока
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Показать транспорт в главном окне
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Послать авиатранспорт в ангар. CTRL+клик - только для обслуживания.
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Показать сведения об авиатранспорте.
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Новое воздушное судно!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Макс. Скорость: {VELOCITY}{}Емкость: {COMMA} пассажиров, {COMMA} почты{}Цена обслуж.: {CURRENCY}/год
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Название самолета

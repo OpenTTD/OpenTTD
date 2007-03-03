@@ -2605,8 +2605,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Lisää 
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Aseta korostettu pysähdys pakottamaan ajoneuvon odottamaan täyttä lastausta.
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Aseta korostettu pysähdys pakottamaan ajoneuvo odottamaan purkua.
 STR_SERVICE_HINT                                                :{BLACK}Ohita tämä määräys, ellei palvelua tarvita.
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Uusi {STRING} saatavilla!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kulu: {CURRENCY} Paino: {WEIGHT_S}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Rikki
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustannukset: {LTBLUE}{CURRENCY}/vuosi
@@ -2674,8 +2672,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Vedä aj
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Keskitä päänäkymä huoltoaseman sijaintiin.
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Ajoneuvon valintalista - napsauta ajoneuvoa saadaksesi tietoja.
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Rakenna valittu ajoneuvo.
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Uusi ajoneuvo on saatavilla!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kulu: {CURRENCY}{}Nopeus: {VELOCITY}{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nimeä ajoneuvo
@@ -2747,8 +2743,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Näytä 
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Keskitä näkymä laivan sijaintiin.
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Lähetä laiva telakalle.
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Näytä laivan tiedot.
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Uusi laiva saatavilla!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kulu: {CURRENCY} Huippunopeus: {VELOCITY}{}Kapasiteetti: {CARGO}{}Käyttökustannukset: {CURRENCY}/vuosi
 STR_982F_NAME_SHIP                                              :{BLACK}Nimeä laiva
 
@@ -2821,8 +2815,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Näytä 
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Keskitä näkymä lentokoneen sijaintiin.
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Lähetä lentokone lentokonehalliin.
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Näytä lentokoneen tiedot.
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Uusi lentokone saatavilla!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kulu: {CURRENCY} Huippunopeus: {VELOCITY}{}Kapasiteetti: {COMMA} matkustajaa, {COMMA} säkkiä postia{}Käyttökustannus: {CURRENCY}/vuosi
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nimeä lentokone

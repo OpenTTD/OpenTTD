@@ -2610,8 +2610,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Inserir 
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem selecionada fará com que o veículo espere carregar completamente
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem selecionada forçará o veículo a descarregar
 STR_SERVICE_HINT                                                :{BLACK}Saltar esta ordem a menos que seja necessário manutenção
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nov{G o a} {STRING} agora disponível!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Custo: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potência: {POWER}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Quebrado
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de circulação: {LTBLUE}{CURRENCY}/ano
@@ -2679,8 +2677,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arraste 
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrar visualização na localização da garagem
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista de automóveis - clique num automóvel para informações
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construir o veículo selecionado
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Novo automóvel agora disponível!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Custo: {CURRENCY}{}Velocidade: {VELOCITY}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Renomear automóvel
@@ -2752,8 +2748,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Exibir o
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrar visualização na localização da embarcação
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Enviar embarcação para o depósito. CTRL+clique fará apenas manutenção
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Exibir detalhes da embarcação
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nova embarcação agora disponível!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Custo: {CURRENCY} Velocidade Máx.: {VELOCITY}{}Capacidade: {CARGO}{}Custo de circulação: {CURRENCY}/ano
 STR_982F_NAME_SHIP                                              :{BLACK}Renomear embarcação
 
@@ -2826,8 +2820,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Exibir o
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrar visualização na localização da aeronave
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Enviar aeronave para o hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Exibir detalhes da aeronave
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nova aeronave agora disponível!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Custo: {CURRENCY} Velocidade Máx.: {VELOCITY}{}Capacidade: {COMMA} passageiros, {COMMA} sacos de correio{}Custo de circulação: {CURRENCY}/ano
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Renomear aeronave

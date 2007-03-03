@@ -2606,8 +2606,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}選択�
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に全負荷まで待つことを強制します
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に降ろすことを強制します
 STR_SERVICE_HINT                                                :{BLACK}修理が必要でないとこの指令をスキップ
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}{STRING}が新登場！
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}価格：{CURRENCY}　重量：{WEIGHT_S}{}最大速度：{VELOCITY}　出力：{POWER}{}運転費：一年間{CURRENCY}{}容量：{CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}故障
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}1年間に{CURRENCY}
@@ -2675,8 +2673,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}販売�
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}主の画面を車庫の場所に移動します
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}道路車両のリスト - 情報を見るには車両をクリックします
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}選択した道路車両を購入します
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}新しい道路車両が新登場！
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}価格：{CURRENCY}{}最大速度：{VELOCITY}{}運転費：一年間{CURRENCY}{}容量：{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}道路車両を名付ける
@@ -2748,8 +2744,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}船舶�
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}主の画面を船舶の場所に移動します
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}船舶を造船所へ回送します。Contorl+クリックすると修理のみをします
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}船舶の情報を表示
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}新しい船舶が新登場！
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}価格：{CURRENCY}　最大速度：{VELOCITY}{}容量：{CARGO}{}運転費：一年間{CURRENCY}
 STR_982F_NAME_SHIP                                              :{BLACK}船舶を名付ける
 
@@ -2822,8 +2816,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}飛行�
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}主の画面を飛行機の場所に移動します
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}飛行機を格納庫へ回送します。Control+クリックすると修理のみします
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}飛行機の情報を表示
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}新しい飛行機が新登場！
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}価格：{CURRENCY}　最大速度：{VELOCITY}{}容量：{COMMA}人の乗客、{COMMA}袋の郵便袋{}運転費：一年間{CURRENCY}
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}飛行機を名付ける

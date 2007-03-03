@@ -2607,8 +2607,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insérer
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forcer le véhicule à attendre un chargement complet pour l'ordre sélectionné
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forcer le véhicule à attendre un déchargement complet pour l'ordre sélectionné
 STR_SERVICE_HINT                                                :{BLACK}Sauter cet ordre tant qu'aucun entretien n'est requis
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nouv{G eau el elle} {STRING} disponible!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Prix: {CURRENCY} Poids: {WEIGHT_S}{}Vitesse: {VELOCITY}  Puissance: {POWER}{}Coût d'entretien: {CURRENCY}/an{}Capacité: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}En panne
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Âge: {LTBLUE}{STRING}{BLACK}   Coût d'entretien: {LTBLUE}{CURRENCY}/an
@@ -2676,8 +2674,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Glisser 
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centre la vue sur le dépôt
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Choix du véhicule - cliquer sur un véhicule pour obtenir des informations
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construire le véhicule sélectionné
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nouveau véhicule disponible!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Prix: {CURRENCY}{}Vitesse: {VELOCITY}{}Coût d'entretien: {CURRENCY}/an{}Capacité: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Renommer le véhicule
@@ -2749,8 +2745,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Afficher
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer la vue sur l'emplacement du navire
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Envoyer le navire au dépôt. Ctrl-clic pour entretien seul
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Afficher détails du navire
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nouveau navire maintenant disponible!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Prix: {CURRENCY} Vitesse max.: {VELOCITY}{}Capacité: {CARGO}{}Coût d'entretien: {CURRENCY}/an
 STR_982F_NAME_SHIP                                              :{BLACK}Nommer navire
 
@@ -2823,8 +2817,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Afficher
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrer la vue principale sur l'emplacement de l'aéronef
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envoyer l'aéronef au hangar. Ctrl-clic pour entretien seul
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Afficher détails de l'aéronef
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nouvel aéronef maintenant disponible!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Prix: {CURRENCY}    Vitesse max.: {VELOCITY}{}Capacité: {COMMA} passagers, {COMMA} sacs de courrier{}Coût d'entretien: {CURRENCY}/an
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nommer l'aéronef

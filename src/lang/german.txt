@@ -2607,8 +2607,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Füge ei
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Der markierte Auftrag wird nur nach voller Beladung ausgeführt
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Beim markierten Auftrag wird die volle Entladung veranlasst
 STR_SERVICE_HINT                                                :{BLACK}Überspringe diesen Auftrag, sofern keine Wartung benötigt wird
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Neue {STRING} ist jetzt verfügbar!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosten: {CURRENCY}   Gewicht: {WEIGHT_S}{}Geschwindigk.: {VELOCITY} Leistung: {POWER}{}Betriebskosten: {CURRENCY}/Jahr{}Kapazität: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Panne
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY}/Jahr
@@ -2676,8 +2674,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Ziehe Fa
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Ansicht auf das Fahrzeugdepot zentrieren
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Fahrzeugauswahlliste - Klicke auf ein Fahrzeug für Einzelheiten
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Baue das ausgewählte Fahrzeug
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Neues Fahrzeug jetzt erhältlich!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosten: {CURRENCY}{}Geschwindigk.: {VELOCITY}{}Betriebskosten: {CURRENCY}/Jahr{}Ladevermögen: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Name des Fahrzeuges
@@ -2749,8 +2745,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Aufträg
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Anzeige auf das Schiff zentrieren
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Schicke das Schiff zur Werft
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zeige Einzelheiten des Schiffes
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Neues Schiff ist erhältlich!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}  Höchstgeschwindigk.: {VELOCITY}{}Kapazität: {CARGO}{}Betriebskosten: {CURRENCY}/Jahr
 STR_982F_NAME_SHIP                                              :{BLACK}Schiffsname
 
@@ -2823,8 +2817,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Zeige Au
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Ansicht auf das Flugzeug zentrieren
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Schicke das Flugzeug in den Hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Zeige Einzelheiten des Flugzeuges
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Neues Flugzeug ist jetzt verfügbar!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}  Höchstgeschwindigk.: {VELOCITY}{}Kapazität: {COMMA} Passagiere, {COMMA} Postsäcke{}Betriebskosten: {CURRENCY}/Jahr
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Flugzeugname

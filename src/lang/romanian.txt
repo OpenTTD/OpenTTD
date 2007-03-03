@@ -2606,8 +2606,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Introdu 
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forteazã trenul sã astepte la destinatia selectatã pânã la umplerea la capacitate maximã
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forteazã trenul sã descarce marfa la destinatia selectatã
 STR_SERVICE_HINT                                                :{BLACK}Sãri peste aceastã comandã dacã nu este necesar un service
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Stiri: {STRING} este acum disponibil!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Greutate: {WEIGHT_S}{}Vitezã: {VELOCITY}  Putere: {POWER}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Defectiune
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vechimea: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
@@ -2675,8 +2673,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Mutã un
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centreazã imaginea pe locatia acestei autobaze
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista selectie vehicule rutiere - apasa pe vehicul pentru informatii
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Cumpãrã autovehiculul selectat
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Un nou autovehicul disponibil!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pret: {CURRENCY}{}Vitezã: {VELOCITY}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Numele autovehiculului
@@ -2748,8 +2744,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Afiseaz�
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centreazã imaginea pe locatia curentã a navei
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Trimite nava într-un santier
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Afiseazã detaliile navei
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}O nouã navã este disponibilã!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Viteza max.: {VELOCITY}{}Capacitate: {CARGO}{}Cost de rulare: {CURRENCY}/an
 STR_982F_NAME_SHIP                                              :{BLACK}Alege un nume pentru aceastã navã
 
@@ -2822,8 +2816,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Afiseaz�
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centreazã imaginea pe locatia curentã a aeronavei
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Trimite aeronava într-un hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Afiseazã detaliile aeronavei
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Un nou tip de aeronavã disponibil!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pret: {CURRENCY} Viteza max.: {VELOCITY}{}Capacitate: {COMMA} cãlãtori, {COMMA} saci de postã{}Cost de rulare: {CURRENCY}/an
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Redenumeste aeronava

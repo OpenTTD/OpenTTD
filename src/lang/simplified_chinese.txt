@@ -2606,8 +2606,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}在调�
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}命令列车在高亮项目对应的车站装满货物
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}命令列车在高亮项目对应的车站卸载货物
 STR_SERVICE_HINT                                                :{BLACK}除非需要在此处保养，否则跳过这一项目
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}新的 {STRING} 投入使用!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}费用：{CURRENCY} 重量：{WEIGHT_S}{}速度：{VELOCITY}  功率：{POWER}{}运行费用：{CURRENCY}/yr{}Capacity: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}抛锚
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}年龄: {LTBLUE}{STRING}{BLACK}   运行成本: {LTBLUE}{CURRENCY}/年
@@ -2675,8 +2673,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}将汽�
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}将屏幕中心移动到车库所在的位置
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}汽车列表 - 点击可以查看详细信息
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}购买高亮的汽车
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}新的汽车上市！
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}价格：{CURRENCY}{}速度：{VELOCITY}{}运行成本：{CURRENCY}/年{}装载能力：{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}命名汽车
@@ -2748,8 +2744,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}显示�
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}将屏幕中心移动到船只所在的位置
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}命令船只前往船坞。Ctrl+单击时船只只进行保养。
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}显示船只的详情
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}新的船只上市！
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}价格：{CURRENCY} 最大速度：{VELOCITY}{}装载能力：{CARGO}{}运行费用：{CURRENCY}/yr
 STR_982F_NAME_SHIP                                              :{BLACK}命名船只
 
@@ -2822,8 +2816,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}显示�
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}将屏幕中心移动到飞机所在的位置
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}命令飞机前往机库。Ctrl+单击时飞机只进行保养。
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}显示飞机的详情
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}新的飞机上市！
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}价格：{CURRENCY} 最大速度：{VELOCITY}{}运载能力：{COMMA} 位旅客，{COMMA} 包邮件{}运行费用：{CURRENCY}/年
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}命名飞机

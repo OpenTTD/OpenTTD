@@ -2482,8 +2482,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Invoeg '
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak die beklemtoonde opdrag dwing die voertuig om vir 'n volle lading te wag
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak die beklemtoonde opdrag dwing die voertuig te aflaai
 STR_SERVICE_HINT                                                :{BLACK}Sprong die opdraag tensy 'n versiening nodig is
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nuwe {STRING} nou beskikbaar!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koste: {CURRENCY} Gewig: {WEIGHT_S}{}Spoed: {VELOCITY}  Krag: {POWER}{}Loopkoste: {CURRENCY}/jr{}Kapasitiet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Oponthoud
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ouderdom: {LTBLUE}{STRING}{BLACK}   Loopkoste: {LTBLUE}{CURRENCY}/Jr
@@ -2550,8 +2548,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Sleep pa
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Senter skerm op pad voertuig depot
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Pad voertuig keuse lys - kliek op voertuig vir inligting
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bou die beklemtoonde pad voertuig
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nuwe pad voertuig nou beskikbaar!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koste: {CURRENCY}{}Spoed: {VELOCITY}{}Loopkoste: {CURRENCY}/yr{}Kapasitiet: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Benaam pad voertuig
@@ -2621,8 +2617,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Wys skip
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Senter skerm op skip
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Stuur skip na depot
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Wys skip se aanwyse
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nuwe skip nou beskikbaar!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koste: {CURRENCY} Max. Spoed: {VELOCITY}{}Kapasitiet: {CARGO}{}Loopkoste: {CURRENCY}/yr
 STR_982F_NAME_SHIP                                              :{BLACK}Benaam skip
 
@@ -2695,8 +2689,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Wys vlie
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Senter skerm op vliegtuig
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Stuur vliegtuig na hangar. CTRL+kliek sal net diens
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Wys vliegtuig aanwyse
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nuwe vliegtuig nou beskikbaar!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koste: {CURRENCY} Max. Spoed: {VELOCITY}{}Kapasiteit: {COMMA} passasiers, {COMMA} sakke van pos{}Loopkoste: {CURRENCY}/Jr
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Benaam vliegtuig

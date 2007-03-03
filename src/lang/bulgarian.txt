@@ -2608,8 +2608,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Доба
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Изчакай на избраното назначение до пълно зареждане с товар
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Разтоварва на избраното назначение целия товар
 STR_SERVICE_HINT                                                :{BLACK}Пропусни освен ако е необходим ремонт
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Нов {STRING} вече е достъпен!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена: {CURRENCY} Тегло: {WEIGHT_S}{}Скорост: {VELOCITY}  Мощност: {POWER}{}Разход: {CURRENCY}/г.{}Капацитет: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Развален
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Възраст: {LTBLUE}{STRING}{BLACK}   Оперативни разходи: {LTBLUE}{CURRENCY}/г.
@@ -2677,8 +2675,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Прем
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Фокусирай общия план върху местонахождението на МПС-депото
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Списък с избор на МПС-та - натисни върху МПС за информация
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Купи посоченото МПС
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Ново МПС излезе на пазара!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорост: {VELOCITY}{}Оперативен разход: {CURRENCY}/год{}Вместимост: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Преименувай МПС-то
@@ -2750,8 +2746,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Пока
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Фокусирай общия план върху местонахождението на кораба
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Прати кораба в депото
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Покажи детайлите за кораба
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Нов кораб излезе на пазара!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Макс. Скорост: {VELOCITY}{}Вместимост: {CARGO}{}Разход: {CURRENCY}/год.
 STR_982F_NAME_SHIP                                              :{BLACK}Наименувай кораба
 
@@ -2824,8 +2818,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Марш
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Центриране на главния прозорец върху самолета
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Изпращане на самолета в хангар
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Информация за самолета
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Нов самолет е достъпен!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Макс. скорост: {VELOCITY}{}Капацитет: {COMMA} пътника, {COMMA} чувала поща{}Разход: {CURRENCY}/г.
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Име на самолет

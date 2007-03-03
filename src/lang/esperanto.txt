@@ -2607,8 +2607,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Enigu no
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon atendi ĝis plena ŝarĝo
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon deŝarĝi
 STR_SERVICE_HINT                                                :{BLACK}Transsaltu ordenon ĝis prizorgo necesos
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nova {STRING} nun haveblas!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosto: {CURRENCY} Pezo: {WEIGHT_S}{}Rapideco: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Rompite
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}po {CURRENCY} jare
@@ -2676,8 +2674,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Tiru voj
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centre vidu vojveturilan deponejon en la ĉefvido
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Vojveturilelektan liston - alklaku veturilon por informoj
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Kreu la elektitan vojveturilon
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nova vojveturilo nun haveblas!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosto: {CURRENCY}{}Rapideco: {VELOCITY}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nomu vojveturilon
@@ -2749,8 +2745,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Montru �
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centre vidu ŝipon en ĉefvido
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Sendu ŝipon al deponejo. CTRL+klako nur prizorgos
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Montru ŝipajn detalojn
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nova ŝipo nun haveblas!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosto: {CURRENCY} Maksimuma rapideco: {VELOCITY}{}Kapablo: {CARGO}{}Irkosto: po {CURRENCY} jare
 STR_982F_NAME_SHIP                                              :{BLACK}Nomu ŝipon
 
@@ -2823,8 +2817,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Montru a
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centre vidu aviadilon en la ĉefvido
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Sendu aviadilon al hangaro. CTRL+klako nur prizorgos
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Montru aviadilajn detalojn
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nova aviadilo nun haveblas!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosto: {CURRENCY} Maksimuma rapideco: {VELOCITY}{}Kapablo: {COMMA} pasaĝeroj, {COMMA} sakoj da poŝto{}Irkosto: po {CURRENCY} jare
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nomu aviadilon

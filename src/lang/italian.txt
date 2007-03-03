@@ -2606,8 +2606,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Aggiungi
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fai diventare l'ordine evidenziato 'forza il veicolo ad attendere il carico completo'
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fai diventare l'ordine evidenziato 'forza il veicolo a scaricare'
 STR_SERVICE_HINT                                                :{BLACK}Ignora l'ordine finché non sia necessaria la manutenzione
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nuova {STRING} ora disponibile!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Costo: {CURRENCY} Peso: {WEIGHT_S}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Consumi: {CURRENCY}/anno{}Capienza: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Guasto!
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Consumi: {LTBLUE}{CURRENCY}/anno
@@ -2675,8 +2673,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Trascina
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centra visuale sul deposito veicoli
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista veicoli - fai clic sul veicolo per le informazioni
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Costruisci veicolo stradale evidenziato
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nuovo veicolo stradale disponibile!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Costo: {CURRENCY}{}Velocità: {VELOCITY}{}Consumi: {CURRENCY}/anno{}Capienza: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nome veicolo stradale
@@ -2748,8 +2744,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostra g
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra la visuale sulla nave
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Manda la nave al deposito
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Mostra dettagli sulla nave
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}E' disponibile una nuova nave!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Costo: {CURRENCY} Velocità Max: {VELOCITY}{}Capienza: {CARGO}{}Consumi: {CURRENCY}/anno
 STR_982F_NAME_SHIP                                              :{BLACK}Nome Nave
 
@@ -2822,8 +2816,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra o
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centra visuale sull'aereo
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Manda l'aereo all'hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostra dettagli dell'aereo
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}E' disponibile un nuovo aereo!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Costo: {CURRENCY} Velocità Max: {VELOCITY}{}Capienza: {COMMA} passeggeri, {COMMA} sacchi postali{}Consumi: {CURRENCY}/anno
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nome aereo

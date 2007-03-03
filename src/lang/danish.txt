@@ -2605,8 +2605,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Indsæt 
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den markerede ordre til at tvinge toget til at vente på en fuld last
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den markerede ordre til at tvinge toget til at aflæsse
 STR_SERVICE_HINT                                                :{BLACK}Spring denne ordre over medmindre der er behov for service
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Ny {STRING} tilgængelig nu!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
@@ -2674,8 +2672,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Træk k�
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrer skærmen over værkstedets lokalitet
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Liste over køretøjstyper - klik på køretøj for information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Byg det markerede køretøj
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nyt vejkøretøj er tilgængeligt!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pris: {CURRENCY}{}Hastighed: {VELOCITY}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Giv køretøjet et navn
@@ -2747,8 +2743,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Vis skib
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer skærmen over skibets lokalitet
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send skibet til dok. CTRL+klik vil kun servicere
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Vis detaljer omkring skibet
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nyt skib er tilgængeligt!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks. hastighed: {VELOCITY}{}Kapacitet: {CARGO}{}Driftsomkostninger: {CURRENCY}/år
 STR_982F_NAME_SHIP                                              :{BLACK}Giv skibet et navn
 
@@ -2821,8 +2815,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Vis flye
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrer skærmen over flyets lokalitet
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send flyet til en hangar. CTRL+klik vil kun servicere
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Vis detaljet omkring flyet
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nyt fly tilgængeligt!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks. hastighed: {VELOCITY}{}Kapacitet: {COMMA} passagerer, {COMMA} sække post{}Driftsomkostninger: {CURRENCY}/år
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Navngiv flyet

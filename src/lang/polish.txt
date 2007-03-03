@@ -2735,8 +2735,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Wstaw no
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw aby zaznaczone polecenie zmusiło pojazd do czekania na pełny załadunek
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw aby zaznaczone polecenie zmusiło pojazd do wyładunku
 STR_SERVICE_HINT                                                :{BLACK}Pomiń to polecenie jesli serwis nie jest wymagany
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Dostępna nowa {STRING}!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koszt: {CURRENCY} Waga: {WEIGHT_S}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Awaria
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
@@ -2804,8 +2802,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Przecią
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centruj główne okno na pozycji zajezdni samochodowej
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista wyboru samochodów - klik na pojeździe po więcej informacji
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zbuduj wybrany samochód
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Dostępny nowy samochód!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koszt: {CURRENCY}{}Prędkość: {VELOCITY}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nazwij samochód
@@ -2877,8 +2873,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Pokaż p
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centruj główne okno na pozycji statku
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Wyślij statek do stoczni
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Pokaż szczegóły statku
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Dostępny nowy statek!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koszt: {CURRENCY} Max. Prędkość: {VELOCITY}{}Pojemność: {CARGO}{}Utrzymanie: {CURRENCY}/rok
 STR_982F_NAME_SHIP                                              :{BLACK}Nazwa statku
 
@@ -2951,8 +2945,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Pokaż p
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centruj główne okno na pozycji samolotu
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Wyślij samolot do hangaru
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Pokaż szczegóły samolotu
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Dostępny nowy samolot!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koszt: {CURRENCY} Max. Prędkość: {VELOCITY}{}Pojemność: {COMMA} pasażerów, {COMMA} paczek poczty{}Utrzymanie: {CURRENCY}/rok
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nazwa samolotu

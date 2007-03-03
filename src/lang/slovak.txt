@@ -2670,8 +2670,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vlozit n
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznacenom prikaze bude vozidlo cakat na plne nalozenie
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznacenom prikaze bude vozidlo uplne vylozene
 STR_SERVICE_HINT                                                :{BLACK}Vynechat tento prikaz pokial nie je potrebna oprava
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nove {STRING} je uz dostupne!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rýchlost: {VELOCITY}  Výkon: {POWER}{}Náklady na prevádzku: {CURRENCY}/rok{}Kapacita: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Pokazene
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Naklady na prevadzku: {LTBLUE}{CURRENCY}/rok
@@ -2739,8 +2737,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Potiahni
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrovat pohlad na poziciu garaze
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Vyber vozidiel - kliknut pre detaily
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zakupit vybrany automobil
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Novy automobil dostupny!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Rychlost: {VELOCITY}{}Naklady na prevadzku: {CURRENCY}/rok{}Kapacita: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Pomenovat automobil
@@ -2812,8 +2808,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Zobrazit
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vycentrovat pohlad na lod
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Poslat lod do lodenice
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zobrazit detaily o lodi
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nová lod je dostupná!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO}{}Naklady na prevadzku: {CURRENCY}/rok
 STR_982F_NAME_SHIP                                              :{BLACK}Pomenovat lod
 
@@ -2886,8 +2880,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Zobrazit
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Vycentrovat pohlad na lietadlo
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Poslat lietadlo do hangaru
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Zobrazit detaily o lietadle
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nove lietadlo dostupne!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {COMMA} cestujucich, {COMMA} balikov posty{}Naklady na prevadzku: {CURRENCY}/rok
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Pomenovat lietadlo

@@ -2398,8 +2398,6 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokaži 
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenutnu naredbu i počni sa sljedećom
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Obriši označenu naredbu
 STR_SERVICE_HINT                                                :{BLACK}Preskoči ovu narudžbu osim ako servis nije potreban
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Novi {STRING} od sada dostupan!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Trošak: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY} Snaga: {POWER}{}Troškovi održavanja: {CURRENCY}/god{}Kapacitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Pokvaren
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Troškovi uporabe: {LTBLUE}{CURRENCY}/god
@@ -2459,8 +2457,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Povuci c
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centriraj glavni pogled na lokaciju spremišta cestovnih vozila
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Popis cestovnih vozila - klikni na vozilo za informacije
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Izgradi označeno cestovno vozilo
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Novo cestovno vozilo od sada dostupno!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Trošak: {CURRENCY}{}Brzina: {VELOCITY}{}Trošak uporabe: {CURRENCY}/god{}Kapacitet: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Imenuj cestovno vozilo
@@ -2572,8 +2568,6 @@ STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Popis zr
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Izgradi označeni zrakoplov
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Prikaži naredbe zrakoplova
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Prikaži detalje zrakoplova
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Novi zrakoplov od sada dostupan!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Imenuj zrakoplov
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Ne mogu imenovati zrakoplov...
