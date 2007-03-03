@@ -246,40 +246,41 @@ static void DrawGraph(const GraphDrawer *gw)
 
 static void GraphLegendWndProc(Window *w, WindowEvent *e)
 {
-	const Player* p;
-
 	switch (e->event) {
-	case WE_CREATE: {
-		uint i;
-		for (i = 3; i < w->widget_count; i++) {
-			if (!HASBIT(_legend_excluded_players, i - 3)) LowerWindowWidget(w, i);
-		}
-		break;
-	}
+		case WE_CREATE:
+			for (uint i = 3; i < w->widget_count; i++) {
+				if (!HASBIT(_legend_excluded_players, i - 3)) LowerWindowWidget(w, i);
+			}
+			break;
 
-	case WE_PAINT:
-		FOR_ALL_PLAYERS(p) {
-			if (!p->is_active) {
+		case WE_PAINT: {
+			const Player *p;
+
+			FOR_ALL_PLAYERS(p) {
+				if (p->is_active) continue;
+
 				SETBIT(_legend_excluded_players, p->index);
 				RaiseWindowWidget(w, p->index + 3);
 			}
+
+			DrawWindowWidgets(w);
+
+			FOR_ALL_PLAYERS(p) {
+				if (!p->is_active) continue;
+
+				DrawPlayerIcon(p->index, 4, 18+p->index*12);
+
+				SetDParam(0, p->name_1);
+				SetDParam(1, p->name_2);
+				SetDParam(2, GetPlayerNameString(p->index, 3));
+				DrawString(21, 17 + p->index * 12, STR_7021, HASBIT(_legend_excluded_players, p->index) ? 0x10 : 0xC);
+			}
+			break;
 		}
-		DrawWindowWidgets(w);
 
-		FOR_ALL_PLAYERS(p) {
-			if (!p->is_active) continue;
+		case WE_CLICK:
+			if (!IS_INT_INSIDE(e->we.click.widget, 3, 11)) return;
 
-			DrawPlayerIcon(p->index, 4, 18+p->index*12);
-
-			SetDParam(0, p->name_1);
-			SetDParam(1, p->name_2);
-			SetDParam(2, GetPlayerNameString(p->index, 3));
-			DrawString(21, 17 + p->index * 12, STR_7021, HASBIT(_legend_excluded_players, p->index) ? 0x10 : 0xC);
-		}
-		break;
-
-	case WE_CLICK:
-		if (IS_INT_INSIDE(e->we.click.widget, 3, 11)) {
 			TOGGLEBIT(_legend_excluded_players, e->we.click.widget - 3);
 			ToggleWidgetLoweredState(w, e->we.click.widget);
 			SetWindowDirty(w);
@@ -288,8 +289,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 			InvalidateWindow(WC_DELIVERED_CARGO, 0);
 			InvalidateWindow(WC_PERFORMANCE_HISTORY, 0);
 			InvalidateWindow(WC_COMPANY_VALUE, 0);
-		}
-		break;
+			break;
 	}
 }
 
@@ -341,11 +341,11 @@ static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
 
 	nums = 0;
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active) nums = max(nums,p->num_valid_stat_ent);
+		if (p->is_active) nums = max(nums, p->num_valid_stat_ent);
 	}
-	gd->num_on_x_axis = min(nums,24);
+	gd->num_on_x_axis = min(nums, 24);
 
-	mo = (_cur_month/3-nums)*3;
+	mo = (_cur_month / 3 - nums) * 3;
 	yr = _cur_year;
 	while (mo < 0) {
 		yr--;
@@ -359,42 +359,42 @@ static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
 static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		GraphDrawer gd;
-		const Player* p;
-		int i,j;
-		int numd;
+		case WE_PAINT: {
+			GraphDrawer gd;
+			const Player* p;
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
 
-		gd.left = 2;
-		gd.top = 18;
-		gd.height = 136;
-		gd.has_negative_values = true;
-		gd.format_str_y_axis = STR_CURRCOMPACT;
+			gd.left = 2;
+			gd.top = 18;
+			gd.height = 136;
+			gd.has_negative_values = true;
+			gd.format_str_y_axis = STR_CURRCOMPACT;
 
-		SetupGraphDrawerForPlayers(&gd);
+			SetupGraphDrawerForPlayers(&gd);
 
-		numd = 0;
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				gd.colors[numd] = _colour_gradient[p->player_color][6];
-				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : (p->old_economy[j].income + p->old_economy[j].expenses);
-					i++;
+			int numd = 0;
+			FOR_ALL_PLAYERS(p) {
+				if (p->is_active) {
+					gd.colors[numd] = _colour_gradient[p->player_color][6];
+					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
+						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : (p->old_economy[j].income + p->old_economy[j].expenses);
+						i++;
+					}
 				}
+				numd++;
 			}
-			numd++;
+
+			gd.num_dataset = numd;
+
+			DrawGraph(&gd);
+			break;
 		}
 
-		gd.num_dataset = numd;
-
-		DrawGraph(&gd);
-	}	break;
-	case WE_CLICK:
-		if (e->we.click.widget == 2) /* Clicked on Legend */
-			ShowGraphLegend();
-		break;
+		case WE_CLICK:
+			/* Clicked on legend? */
+			if (e->we.click.widget == 2) ShowGraphLegend();
+			break;
 	}
 }
 
@@ -430,43 +430,40 @@ void ShowOperatingProfitGraph(void)
 static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		GraphDrawer gd;
-		const Player* p;
-		int i,j;
-		int numd;
+		case WE_PAINT: {
+			GraphDrawer gd;
+			const Player* p;
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
 
-		gd.left = 2;
-		gd.top = 18;
-		gd.height = 104;
-		gd.has_negative_values = false;
-		gd.format_str_y_axis = STR_CURRCOMPACT;
-		SetupGraphDrawerForPlayers(&gd);
+			gd.left = 2;
+			gd.top = 18;
+			gd.height = 104;
+			gd.has_negative_values = false;
+			gd.format_str_y_axis = STR_CURRCOMPACT;
+			SetupGraphDrawerForPlayers(&gd);
 
-		numd = 0;
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				gd.colors[numd] = _colour_gradient[p->player_color][6];
-				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].income;
-					i++;
+			int numd = 0;
+			FOR_ALL_PLAYERS(p) {
+				if (p->is_active) {
+					gd.colors[numd] = _colour_gradient[p->player_color][6];
+					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
+						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].income;
+						i++;
+					}
 				}
+				numd++;
 			}
-			numd++;
+
+			gd.num_dataset = numd;
+
+			DrawGraph(&gd);
+			break;
 		}
 
-		gd.num_dataset = numd;
-
-		DrawGraph(&gd);
-		break;
-	}
-
-	case WE_CLICK:
-		if (e->we.click.widget == 2)
-			ShowGraphLegend();
-		break;
+		case WE_CLICK:
+			if (e->we.click.widget == 2) ShowGraphLegend();
+			break;
 	}
 }
 
@@ -500,43 +497,40 @@ void ShowIncomeGraph(void)
 static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		GraphDrawer gd;
-		const Player* p;
-		int i,j;
-		int numd;
+		case WE_PAINT: {
+			GraphDrawer gd;
+			const Player* p;
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
 
-		gd.left = 2;
-		gd.top = 18;
-		gd.height = 104;
-		gd.has_negative_values = false;
-		gd.format_str_y_axis = STR_7024;
-		SetupGraphDrawerForPlayers(&gd);
+			gd.left = 2;
+			gd.top = 18;
+			gd.height = 104;
+			gd.has_negative_values = false;
+			gd.format_str_y_axis = STR_7024;
+			SetupGraphDrawerForPlayers(&gd);
 
-		numd = 0;
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				gd.colors[numd] = _colour_gradient[p->player_color][6];
-				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].delivered_cargo;
-					i++;
+			int numd = 0;
+			FOR_ALL_PLAYERS(p) {
+				if (p->is_active) {
+					gd.colors[numd] = _colour_gradient[p->player_color][6];
+					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
+						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].delivered_cargo;
+						i++;
+					}
 				}
+				numd++;
 			}
-			numd++;
+
+			gd.num_dataset = numd;
+
+			DrawGraph(&gd);
+			break;
 		}
 
-		gd.num_dataset = numd;
-
-		DrawGraph(&gd);
-		break;
-	}
-
-	case WE_CLICK:
-		if (e->we.click.widget == 2)
-			ShowGraphLegend();
-		break;
+		case WE_CLICK:
+			if (e->we.click.widget == 2) ShowGraphLegend();
+			break;
 	}
 }
 
@@ -570,45 +564,41 @@ void ShowDeliveredCargoGraph(void)
 static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		GraphDrawer gd;
-		const Player* p;
-		int i,j;
-		int numd;
+		case WE_PAINT: {
+			GraphDrawer gd;
+			const Player* p;
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
 
-		gd.left = 2;
-		gd.top = 18;
-		gd.height = 200;
-		gd.has_negative_values = false;
-		gd.format_str_y_axis = STR_7024;
-		SetupGraphDrawerForPlayers(&gd);
+			gd.left = 2;
+			gd.top = 18;
+			gd.height = 200;
+			gd.has_negative_values = false;
+			gd.format_str_y_axis = STR_7024;
+			SetupGraphDrawerForPlayers(&gd);
 
-		numd = 0;
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				gd.colors[numd] = _colour_gradient[p->player_color][6];
-				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].performance_history;
-					i++;
+			int numd = 0;
+			FOR_ALL_PLAYERS(p) {
+				if (p->is_active) {
+					gd.colors[numd] = _colour_gradient[p->player_color][6];
+					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
+						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].performance_history;
+						i++;
+					}
 				}
+				numd++;
 			}
-			numd++;
+
+			gd.num_dataset = numd;
+
+			DrawGraph(&gd);
+			break;
 		}
 
-		gd.num_dataset = numd;
-
-		DrawGraph(&gd);
-		break;
-	}
-
-	case WE_CLICK:
-		if (e->we.click.widget == 2)
-			ShowGraphLegend();
-		if (e->we.click.widget == 3)
-			ShowPerformanceRatingDetail();
-		break;
+		case WE_CLICK:
+			if (e->we.click.widget == 2) ShowGraphLegend();
+			if (e->we.click.widget == 3) ShowPerformanceRatingDetail();
+			break;
 	}
 }
 
@@ -643,43 +633,40 @@ void ShowPerformanceHistoryGraph(void)
 static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		GraphDrawer gd;
-		const Player* p;
-		int i,j;
-		int numd;
+		case WE_PAINT: {
+			GraphDrawer gd;
+			const Player* p;
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
 
-		gd.left = 2;
-		gd.top = 18;
-		gd.height = 200;
-		gd.has_negative_values = false;
-		gd.format_str_y_axis = STR_CURRCOMPACT;
-		SetupGraphDrawerForPlayers(&gd);
+			gd.left = 2;
+			gd.top = 18;
+			gd.height = 200;
+			gd.has_negative_values = false;
+			gd.format_str_y_axis = STR_CURRCOMPACT;
+			SetupGraphDrawerForPlayers(&gd);
 
-		numd = 0;
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				gd.colors[numd] = _colour_gradient[p->player_color][6];
-				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].company_value;
-					i++;
+			int numd = 0;
+			FOR_ALL_PLAYERS(p) {
+				if (p->is_active) {
+					gd.colors[numd] = _colour_gradient[p->player_color][6];
+					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
+						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].company_value;
+						i++;
+					}
 				}
+				numd++;
 			}
-			numd++;
+
+			gd.num_dataset = numd;
+
+			DrawGraph(&gd);
+			break;
 		}
 
-		gd.num_dataset = numd;
-
-		DrawGraph(&gd);
-		break;
-	}
-
-	case WE_CLICK:
-		if (e->we.click.widget == 2)
-			ShowGraphLegend();
-		break;
+		case WE_CLICK:
+			if (e->we.click.widget == 2) ShowGraphLegend();
+			break;
 	}
 }
 
@@ -713,71 +700,71 @@ void ShowCompanyValueGraph(void)
 static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		int j, x, y;
-		uint i = 0;
-		GraphDrawer gd;
+		case WE_PAINT: {
+			GraphDrawer gd;
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
 
-		x = 495;
-		y = 24;
+			int x = 495;
+			int y = 24;
 
-		gd.excluded_data = _legend_excluded_cargo;
-		gd.left = 2;
-		gd.top = 24;
-		gd.height = w->height - 38;
-		gd.has_negative_values = false;
-		gd.format_str_y_axis = STR_CURRCOMPACT;
-		gd.num_on_x_axis = 20;
-		gd.num_vert_lines = 20;
-		gd.month = 0xFF;
-		gd.x_values_start     = 10;
-		gd.x_values_increment = 10;
+			gd.excluded_data = _legend_excluded_cargo;
+			gd.left = 2;
+			gd.top = 24;
+			gd.height = w->height - 38;
+			gd.has_negative_values = false;
+			gd.format_str_y_axis = STR_CURRCOMPACT;
+			gd.num_on_x_axis = 20;
+			gd.num_vert_lines = 20;
+			gd.month = 0xFF;
+			gd.x_values_start     = 10;
+			gd.x_values_increment = 10;
 
-		for (CargoID c = 0; c != NUM_CARGO; c++) {
-			const CargoSpec *cs = GetCargo(c);
-			if (!cs->IsValid()) continue;
+			uint i = 0;
+			for (CargoID c = 0; c != NUM_CARGO; c++) {
+				const CargoSpec *cs = GetCargo(c);
+				if (!cs->IsValid()) continue;
 
-			/* Only draw labels for widgets that exist. If the widget doesn't
-			 * exist then the local player has used the climate cheat or
-			 * changed the NewGRF configuration with this window open. */
-			if (i + 3 < w->widget_count) {
-				/* Since the buttons have no text, no images,
-				 * both the text and the colored box have to be manually painted.
-				 * clk_dif will move one pixel down and one pixel to the right
-				 * when the button is clicked */
-				byte clk_dif = IsWindowWidgetLowered(w, i + 3) ? 1 : 0;
+				/* Only draw labels for widgets that exist. If the widget doesn't
+				 * exist then the local player has used the climate cheat or
+				 * changed the NewGRF configuration with this window open. */
+				if (i + 3 < w->widget_count) {
+					/* Since the buttons have no text, no images,
+					 * both the text and the colored box have to be manually painted.
+					 * clk_dif will move one pixel down and one pixel to the right
+					 * when the button is clicked */
+					byte clk_dif = IsWindowWidgetLowered(w, i + 3) ? 1 : 0;
 
-				GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
-				GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
-				SetDParam(0, cs->name);
-				DrawString(x + 14 + clk_dif, y + clk_dif, STR_7065, 0);
-				y += 8;
+					GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
+					GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
+					SetDParam(0, cs->name);
+					DrawString(x + 14 + clk_dif, y + clk_dif, STR_7065, 0);
+					y += 8;
+				}
+
+				gd.colors[i] = cs->legend_colour;
+				for (uint j = 0; j != 20; j++) {
+					gd.cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 6 + 6, c);
+				}
+
+				i++;
 			}
+			gd.num_dataset = i;
 
-			gd.colors[i] = cs->legend_colour;
-			for (j = 0; j != 20; j++) {
-				gd.cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 6 + 6, c);
+			DrawGraph(&gd);
+
+			DrawString(2 + 46, 24 + gd.height + 7, STR_7062_DAYS_IN_TRANSIT, 0);
+			DrawString(2 + 84, 24 - 9, STR_7063_PAYMENT_FOR_DELIVERING, 0);
+			break;
+		}
+
+		case WE_CLICK:
+			if (e->we.click.widget >= 3) {
+				TOGGLEBIT(_legend_excluded_cargo, e->we.click.widget - 3);
+				ToggleWidgetLoweredState(w, e->we.click.widget);
+				SetWindowDirty(w);
 			}
-
-			i++;
-		}
-		gd.num_dataset = i;
-
-		DrawGraph(&gd);
-
-		DrawString(2 + 46, 24 + gd.height + 7, STR_7062_DAYS_IN_TRANSIT, 0);
-		DrawString(2 + 84, 24 - 9, STR_7063_PAYMENT_FOR_DELIVERING, 0);
-	} break;
-
-	case WE_CLICK: {
-		if (e->we.click.widget >= 3 && e->we.click.widget < (int)w->widget_count) {
-			TOGGLEBIT(_legend_excluded_cargo, e->we.click.widget - 3);
-			ToggleWidgetLoweredState(w, e->we.click.widget);
-			SetWindowDirty(w);
-		}
-	} break;
+			break;
 	}
 }
 
@@ -876,17 +863,15 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 		case WE_PAINT: {
 			const Player* plist[MAX_PLAYERS];
 			const Player* p;
-			uint pl_num;
-			uint i;
 
 			DrawWindowWidgets(w);
 
-			pl_num = 0;
+			uint pl_num = 0;
 			FOR_ALL_PLAYERS(p) if (p->is_active) plist[pl_num++] = p;
 
 			qsort((void*)plist, pl_num, sizeof(*plist), PerfHistComp);
 
-			for (i = 0; i != pl_num; i++) {
+			for (uint i = 0; i != pl_num; i++) {
 				p = plist[i];
 				SetDParam(0, i + STR_01AC_1ST);
 				SetDParam(1, p->name_1);
@@ -1083,11 +1068,10 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_CREATE: {
-			PlayerID i;
 			Player *p2;
 
 			/* Disable the players who are not active */
-			for (i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
+			for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
 				SetWindowWidgetDisabledState(w, i + 13, !GetPlayer(i)->is_active);
 			}
 			/* Update all player stats with the current data
@@ -1105,7 +1089,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
-		case WE_TICK: {
+		case WE_TICK:
 			/* Update the player score every 5 days */
 			if (--w->custom[0] == 0) {
 				w->custom[0] = DAY_TICKS;
@@ -1122,7 +1106,6 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			}
 
 			break;
-		}
 	}
 }
 
