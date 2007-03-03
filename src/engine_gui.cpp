@@ -206,7 +206,7 @@ StringID GetNewsStringNewAircraftAvail(const NewsItem *ni)
 {
 	EngineID engine = ni->string_id;
 	SetDParam(0, STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE);
-	SetDParam(1, GetCustomEngineName(engine));
+	SetDParam(2, GetCustomEngineName(engine));
 	return STR_02B6;
 }
 
@@ -245,7 +245,7 @@ StringID GetNewsStringNewRoadVehAvail(const NewsItem *ni)
 {
 	EngineID engine = ni->string_id;
 	SetDParam(0, STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE);
-	SetDParam(1, GetCustomEngineName(engine));
+	SetDParam(2, GetCustomEngineName(engine));
 	return STR_02B6;
 }
 
@@ -283,6 +283,6 @@ StringID GetNewsStringNewShipAvail(const NewsItem *ni)
 {
 	EngineID engine = ni->string_id;
 	SetDParam(0, STR_982C_NEW_SHIP_NOW_AVAILABLE);
-	SetDParam(1, GetCustomEngineName(engine));
+	SetDParam(2, GetCustomEngineName(engine));
 	return STR_02B6;
 }

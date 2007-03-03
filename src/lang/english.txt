@@ -752,7 +752,7 @@ STR_02A3_LARGE                                                  :{BLACK}Large
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Select town size
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Town size:
 
-STR_02B6                                                        :{STRING}  -  {STRING5}
+STR_02B6                                                        :{STRING1}  -  {STRING5}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Show last message or news report
 STR_OFF                                                         :Off
 STR_SUMMARY                                                     :Summary
