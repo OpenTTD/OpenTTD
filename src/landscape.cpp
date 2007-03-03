@@ -172,7 +172,7 @@ static Slope GetFoundationSlope(TileIndex tile, uint* z)
 	Slope tileh = GetTileSlope(tile, z);
 	Slope slope = _tile_type_procs[GetTileType(tile)]->get_slope_tileh_proc(tile, tileh);
 
-	// Flatter slope -> higher base height
+	/* Flatter slope -> higher base height */
 	if (slope < tileh) *z += TILE_HEIGHT;
 	return slope;
 }
@@ -223,7 +223,7 @@ void DrawFoundation(TileInfo *ti, uint f)
 	if (IsSteepSlope(ti->tileh)) {
 		SpriteID lower_base;
 
-		// Lower part of foundation
+		/* Lower part of foundation */
 		lower_base = sprite_base;
 		if (lower_base == SPR_SLOPES_BASE - 15) lower_base = SPR_FOUNDATION_BASE;
 		AddSortableSpriteToDraw(
@@ -232,24 +232,24 @@ void DrawFoundation(TileInfo *ti, uint f)
 		ti->z += TILE_HEIGHT;
 		ti->tileh = _inclined_tileh[f - 15];
 		if (f < 15 + 8) {
-			// inclined
+			/* inclined */
 			AddSortableSpriteToDraw(sprite_base + f, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
 			OffsetGroundSprite(31, 9);
 		} else if (f >= 15 + 8 + 4) {
-			// three corners raised
+			/* three corners raised */
 			SpriteID upper = sprite_base + 15 + (f - 15 - 8 - 4) * 2;
 
 			AddSortableSpriteToDraw(upper, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
 			AddChildSpriteScreen(upper + 1, PAL_NONE, 31, 9);
 			OffsetGroundSprite(31, 9);
 		} else {
-			// one corner raised
+			/* one corner raised */
 			OffsetGroundSprite(31, 1);
 		}
 	} else {
 		if (f < 15) {
-			// leveled foundation
-			// Use the original slope sprites if NW and NE borders should be visible
+			/* leveled foundation
+			 * Use the original slope sprites if NW and NE borders should be visible */
 			if (sprite_base  == SPR_SLOPES_BASE - 15) sprite_base = SPR_FOUNDATION_BASE;
 
 			AddSortableSpriteToDraw(sprite_base + f, PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
@@ -257,7 +257,7 @@ void DrawFoundation(TileInfo *ti, uint f)
 			ti->tileh = SLOPE_FLAT;
 			OffsetGroundSprite(31, 1);
 		} else {
-			// inclined foundation
+			/* inclined foundation */
 			AddSortableSpriteToDraw(sprite_base + f, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
 			ti->tileh = _inclined_tileh[f - 15];
 			OffsetGroundSprite(31, 9);
@@ -304,6 +304,7 @@ void GetTileDesc(TileIndex tile, TileDesc *td)
 
 /** Clear a piece of landscape
  * @param tile tile to clear
+ * @param flags of operation to conduct
  * @param p1 unused
  * @param p2 unused
  */
@@ -317,6 +318,7 @@ int32 CmdLandscapeClear(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /** Clear a big piece of landscape
  * @param tile end tile of area dragging
  * @param p1 start tile of area dragging
+ * @param flags of operation to conduct
  * @param p2 unused
  */
 int32 CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -332,7 +334,7 @@ int32 CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	// make sure sx,sy are smaller than ex,ey
+	/* make sure sx,sy are smaller than ex,ey */
 	ex = TileX(tile);
 	ey = TileY(tile);
 	sx = TileX(p1);
@@ -357,9 +359,9 @@ int32 CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				}
 				DoCommand(TileXY(x, y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
-				// draw explosion animation...
+				/* draw explosion animation... */
 				if ((x == sx || x == ex) && (y == sy || y == ey)) {
-					// big explosion in each corner, or small explosion for single tiles
+					/* big explosion in each corner, or small explosion for single tiles */
 					CreateEffectVehicleAbove(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2, 2,
 						sy == ey && sx == ex ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
 					);
@@ -390,7 +392,7 @@ void RunTileLoop(void)
 		_tile_type_procs[GetTileType(tile)]->tile_loop_proc(tile);
 
 		if (TileX(tile) < MapSizeX() - TILELOOP_SIZE) {
-			tile += TILELOOP_SIZE; /* no overflow */
+			tile += TILELOOP_SIZE; // no overflow
 		} else {
 			tile = TILE_MASK(tile - TILELOOP_SIZE * (MapSizeX() / TILELOOP_SIZE - 1) + TileDiffXY(0, TILELOOP_SIZE)); /* x would overflow, also increase y */
 		}

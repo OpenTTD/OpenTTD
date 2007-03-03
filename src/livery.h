@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file livery.h */
+
 #ifndef LIVERY_H
 #define LIVERY_H
 

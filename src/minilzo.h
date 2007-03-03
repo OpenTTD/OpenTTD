@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/* minilzo.h -- mini subset of the LZO real-time data compression library
+/* @file minilzo.h -- mini subset of the LZO real-time data compression library
 
    This file is part of the LZO real-time data compression library.
 

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file main_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "heightmap.h"
@@ -60,25 +62,25 @@ void HandleOnEditText(const char *str)
 	_cmd_text = str;
 
 	switch (_rename_what) {
-	case 0: /* Rename a s sign, if string is empty, delete sign */
+	case 0: // Rename a s sign, if string is empty, delete sign
 		DoCommandP(0, id, 0, NULL, CMD_RENAME_SIGN | CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME));
 		break;
-	case 1: /* Rename a waypoint */
+	case 1: // Rename a waypoint
 		if (*str == '\0') return;
 		DoCommandP(0, id, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
 		break;
 #ifdef ENABLE_NETWORK
-	case 3: { /* Give money, you can only give money in excess of loan */
+	case 3: { // Give money, you can only give money in excess of loan
 		const Player *p = GetPlayer(_current_player);
 		int32 money = min(p->money64 - p->current_loan, atoi(str) / _currency->rate);
 		char msg[20];
 
 		money = clamp(money, 0, 20000000); // Clamp between 20 million and 0
 
-		// Give 'id' the money, and substract it from ourself
+		/* Give 'id' the money, and substract it from ourself */
 		if (!DoCommandP(0, money, id, NULL, CMD_GIVE_MONEY | CMD_MSG(STR_INSUFFICIENT_FUNDS))) break;
 
-		// Inform the player of this action
+		/* Inform the player of this action */
 		snprintf(msg, sizeof(msg), "%d", money);
 
 		if (!_network_server) {
@@ -103,7 +105,6 @@ void HandleOnEditText(const char *str)
  * @param cursor How should the cursor image change? E.g. cursor with depot image in it
  * @param mode Tile highlighting mode, e.g. drawing a rectangle or a dot on the ground
  * @param placeproc Procedure which will be called when someone clicks on the map
-
  * @return true if the button is clicked, false if it's unclicked
  */
 bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, PlaceProc *placeproc)
@@ -526,7 +527,7 @@ static void UpdatePlayerMenuHeight(Window *w)
 {
 	byte num = ActivePlayerCount();
 
-	// Increase one to fit in PlayerList in the menu when in network
+	/* Increase one to fit in PlayerList in the menu when in network */
 	if (_networking && WP(w,menu_d).main_button == 9) num++;
 
 	if (WP(w,menu_d).item_count != num) {
@@ -556,7 +557,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		sel = WP(w,menu_d).sel_index;
 		chk = WP(w,menu_d).checked_items; // let this mean gray items.
 
-		// 9 = playerlist
+		/* 9 = playerlist */
 		if (_networking && WP(w,menu_d).main_button == 9) {
 			if (sel == 0) {
 				GfxFillRect(x, y, x + 238, y + 9, 0);
@@ -601,8 +602,8 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		int index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
 		int action_id = WP(w,menu_d).action_id;
 
-		// We have a new entry at the top of the list of menu 9 when networking
-		//  so keep that in count
+		/* We have a new entry at the top of the list of menu 9 when networking
+		 *  so keep that in count */
 		if (_networking && WP(w,menu_d).main_button == 9) {
 			if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
 		} else {
@@ -628,8 +629,8 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		UpdatePlayerMenuHeight(w);
 		index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
 
-		// We have a new entry at the top of the list of menu 9 when networking
-		//  so keep that in count
+		/* We have a new entry at the top of the list of menu 9 when networking
+		 * so keep that in count */
 		if (_networking && WP(w,menu_d).main_button == 9) {
 			if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
 		} else {
@@ -973,7 +974,7 @@ static void ToolbarScenSaveOrLoad(Window *w)
 
 static void ToolbarScenDateBackward(Window *w)
 {
-	// don't allow too fast scrolling
+	/* don't allow too fast scrolling */
 	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 		HandleButtonClick(w, 6);
 		SetWindowDirty(w);
@@ -986,7 +987,7 @@ static void ToolbarScenDateBackward(Window *w)
 
 static void ToolbarScenDateForward(Window *w)
 {
-	// don't allow too fast scrolling
+	/* don't allow too fast scrolling */
 	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 		HandleButtonClick(w, 7);
 		SetWindowDirty(w);
@@ -1041,12 +1042,12 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 	}
 }
 
-// TODO - Incorporate into game itself to allow for ingame raising/lowering of
-// larger chunks at the same time OR remove altogether, as we have 'level land' ?
 /**
  * Raise/Lower a bigger chunk of land at the same time in the editor. When
  * raising get the lowest point, when lowering the highest point, and set all
  * tiles in the selection to that height.
+ * @todo : Incorporate into game itself to allow for ingame raising/lowering of
+ *         larger chunks at the same time OR remove altogether, as we have 'level land' ?
  * @param tile The top-left tile where the terraforming will start
  * @param mode 1 for raising, 0 for lowering land
  */
@@ -1066,7 +1067,7 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 
 		assert(_terraform_size != 0);
-		// check out for map overflows
+		/* check out for map overflows */
 		sizex = min(MapSizeX() - TileX(tile) - 1, _terraform_size);
 		sizey = min(MapSizeY() - TileY(tile) - 1, _terraform_size);
 
@@ -1174,8 +1175,10 @@ static const int8 _multi_terraform_coords[][2] = {
 	{-28,  0}, {-24, -2}, {-20, -4}, {-16, -6}, {-12, -8}, { -8,-10}, { -4,-12}, {  0,-14}, {  4,-12}, {  8,-10}, { 12, -8}, { 16, -6}, { 20, -4}, { 24, -2}, { 28,  0},
 };
 
-// TODO - Merge with terraform_gui.c (move there) after I have cooled down at its braindeadness
-// and changed OnButtonClick to include the widget as well in the function decleration. Post 0.4.0 - Darkvater
+/**
+ * @todo Merge with terraform_gui.cpp (move there) after I have cooled down at its braindeadness
+ * and changed OnButtonClick to include the widget as well in the function declaration. Post 0.4.0 - Darkvater
+ */
 static void EditorTerraformClick_Dynamite(Window *w)
 {
 	HandlePlacePushButton(w, 4, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
@@ -1271,7 +1274,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE:
-		// XXX - lighthouse button is widget 10!! Don't forget when changing
+		/* XXX - lighthouse button is widget 10!! Don't forget when changing */
 		w->widget[10].tooltips = (_opt.landscape == LT_DESERT) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
 		break;
 
@@ -1311,7 +1314,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11:
 			_editor_terraform_button_proc[e->we.click.widget - 4](w);
 			break;
-		case 12: case 13: { /* Increase/Decrease terraform size */
+		case 12: case 13: { // Increase/Decrease terraform size
 			int size = (e->we.click.widget == 12) ? 1 : -1;
 			HandleButtonClick(w, e->we.click.widget);
 			size += _terraform_size;
@@ -1322,11 +1325,11 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 		} break;
-		case 14: /* gen random land */
+		case 14: // gen random land
 			HandleButtonClick(w, 14);
 			ShowCreateScenario();
 			break;
-		case 15: /* Reset landscape */
+		case 15: // Reset landscape
 			ShowQuery(
 			  STR_022C_RESET_LANDSCAPE,
 			  STR_RESET_LANDSCAPE_CONFIRMATION_TEXT,
@@ -1431,10 +1434,10 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 4: /* new town */
+		case 4: // new town
 			HandlePlacePushButton(w, 4, SPR_CURSOR_TOWN, 1, PlaceProc_Town);
 			break;
-		case 5: {/* random town */
+		case 5: {// random town
 			Town *t;
 
 			HandleButtonClick(w, 5);
@@ -1450,7 +1453,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 
 			break;
 		}
-		case 6: {/* many random towns */
+		case 6: {// many random towns
 			HandleButtonClick(w, 6);
 
 			_generating_world = true;
@@ -1605,7 +1608,7 @@ extern Industry *CreateNewIndustry(TileIndex tile, IndustryType type);
  * Search callback function for TryBuildIndustry
  * @param tile to test
  * @param data that is passed by the caller.  In this case, the type of industry been tested
- * @result of the operation
+ * @return the success (or not) of the operation
  */
 static bool SearchTileForIndustry(TileIndex tile, uint32 data)
 {
@@ -1617,6 +1620,7 @@ static bool SearchTileForIndustry(TileIndex tile, uint32 data)
  * in order to find a suitable zone to create the desired industry
  * @param tile to start search for
  * @param type of the desired industry
+ * @return the success (or not) of the operation
  */
 static bool TryBuildIndustry(TileIndex tile, int type)
 {
@@ -1665,7 +1669,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 	case WE_PLACE_OBJ: {
 		int type;
 
-		// Show error if no town exists at all
+		/* Show error if no town exists at all */
 		type = _industry_type_to_place;
 		if (!AnyTownExists()) {
 			SetDParam(0, GetIndustrySpec(type)->name);
@@ -1804,7 +1808,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
-		// Draw brown-red toolbar bg.
+		/* Draw brown-red toolbar bg. */
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
 
@@ -2017,7 +2021,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w, 6, _patches_newgame.starting_year <= MIN_YEAR);
 		SetWindowWidgetDisabledState(w, 7, _patches_newgame.starting_year >= MAX_YEAR);
 
-		// Draw brown-red toolbar bg.
+		/* Draw brown-red toolbar bg. */
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
 
@@ -2155,12 +2159,12 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		);
 
 		if (p != NULL) {
-			// Draw player money
+			/* Draw player money */
 			SetDParam64(0, p->money64);
 			DrawStringCentered(570, 1, p->player_money >= 0 ? STR_0004 : STR_0005, 0);
 		}
 
-		// Draw status bar
+		/* Draw status bar */
 		if (w->message.msg) { // true when saving is active
 			DrawStringCentered(320, 1, STR_SAVING_GAME, 0);
 		} else if (_do_autosave) {
@@ -2168,12 +2172,12 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		} else if (_pause) {
 			DrawStringCentered(320, 1, STR_0319_PAUSED, 0);
 		} else if (WP(w,def_d).data_1 > -1280 && FindWindowById(WC_NEWS_WINDOW,0) == NULL && _statusbar_news_item.string_id != 0) {
-			// Draw the scrolling news text
+			/* Draw the scrolling news text */
 			if (!DrawScrollingStatusText(&_statusbar_news_item, WP(w,def_d).data_1))
 				WP(w,def_d).data_1 = -1280;
 		} else {
 			if (p != NULL) {
-				// This is the default text
+				/* This is the default text */
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
 				DrawStringCentered(320, 1, STR_02BA, 0);
@@ -2199,12 +2203,12 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 	case WE_TICK: {
 		if (_pause) return;
 
-		if (WP(w, def_d).data_1 > -1280) { /* Scrolling text */
+		if (WP(w, def_d).data_1 > -1280) { // Scrolling text
 			WP(w, def_d).data_1 -= 2;
 			InvalidateWidget(w, 1);
 		}
 
-		if (WP(w, def_d).data_2 > 0) { /* Red blot to show there are new unread newsmessages */
+		if (WP(w, def_d).data_2 > 0) { // Red blot to show there are new unread newsmessages
 			WP(w, def_d).data_2 -= 2;
 		} else if (WP(w, def_d).data_2 < 0) {
 			WP(w, def_d).data_2 = 0;
@@ -2311,17 +2315,17 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 			case 'R' | WKC_CTRL: MarkWholeScreenDirty(); break;
 
 #if defined(_DEBUG)
-			case '0' | WKC_ALT: /* Crash the game */
+			case '0' | WKC_ALT: // Crash the game
 				*(byte*)0 = 0;
 				break;
 
-			case '1' | WKC_ALT: /* Gimme money */
+			case '1' | WKC_ALT: // Gimme money
 				/* Server can not cheat in advertise mode either! */
 				if (!_networking || !_network_server || !_network_advertise)
 					DoCommandP(0, 10000000, 0, NULL, CMD_MONEY_CHEAT);
 				break;
 
-			case '2' | WKC_ALT: /* Update the coordinates of all station signs */
+			case '2' | WKC_ALT: // Update the coordinates of all station signs
 				UpdateAllStationVirtCoord();
 				break;
 #endif
@@ -2418,7 +2422,7 @@ void SetupColorsAndInitialWindow(void)
 	w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
 	AssignWindowViewport(w, 0, 0, width, height, TileXY(32, 32), 0);
 
-	// XXX: these are not done
+	/* XXX: these are not done */
 	switch (_game_mode) {
 		default: NOT_REACHED();
 		case GM_MENU:

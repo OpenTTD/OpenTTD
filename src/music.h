@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file music.h */
+
 #ifndef MUSIC_H
 #define MUSIC_H
 

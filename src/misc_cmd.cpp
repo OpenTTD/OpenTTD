@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file misc_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"

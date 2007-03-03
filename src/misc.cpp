@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file misc.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
@@ -234,7 +236,7 @@ void ConvertNameArray(void)
 	}
 }
 
-// Calculate constants that depend on the landscape type.
+/* Calculate constants that depend on the landscape type. */
 void InitializeLandscapeVariables(bool only_constants)
 {
 	if (only_constants) return;
@@ -249,8 +251,8 @@ void InitializeLandscapeVariables(bool only_constants)
 
 int FindFirstBit(uint32 value)
 {
-	// The macro FIND_FIRST_BIT is better to use when your value is
-	// not more than 128.
+	/* The macro FIND_FIRST_BIT is better to use when your value is
+	  not more than 128. */
 	byte i = 0;
 
 	if (value == 0) return 0;
@@ -310,8 +312,8 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	    SLEG_END()
 };
 
-// Save load date related variables as well as persistent tick counters
-// XXX: currently some unrelated stuff is just put here
+/* Save load date related variables as well as persistent tick counters
+ * XXX: currently some unrelated stuff is just put here */
 static void SaveLoad_DATE(void)
 {
 	SlGlobList(_date_desc);

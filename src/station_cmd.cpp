@@ -141,7 +141,7 @@ static Station* GetStationAround(TileIndex tile, int w, int h, StationID closest
  * @param type the type of tile searched for
  * @param industry when type == MP_INDUSTRY, the type of the industry,
  *                 in all other cases this parameter is ignored
- * @result the noumber of matching tiles around
+ * @return the result the noumber of matching tiles around
  */
 static int CountMapSquareAround(TileIndex tile, TileType type, IndustryType industry)
 {

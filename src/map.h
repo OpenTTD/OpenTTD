@@ -1,12 +1,14 @@
 /* $Id$ */
 
+/** @file map.h */
+
 #ifndef MAP_H
 #define MAP_H
 
 #include "stdafx.h"
 
-// Putting externs inside inline functions seems to confuse the aliasing
-// checking on MSVC6. Never use those variables directly.
+/* Putting externs inside inline functions seems to confuse the aliasing
+ * checking on MSVC6. Never use those variables directly. */
 extern uint _map_log_x;
 extern uint _map_size_x;
 extern uint _map_size_y;
@@ -30,7 +32,7 @@ extern Tile* _m;
 
 void AllocateMap(uint size_x, uint size_y);
 
-// binary logarithm of the map size, try to avoid using this one
+/* binary logarithm of the map size, try to avoid using this one */
 static inline uint MapLogX(void)  { return _map_log_x; }
 /* The size of the map */
 static inline uint MapSizeX(void) { return _map_size_x; }
@@ -41,7 +43,7 @@ static inline uint MapMaxY(void) { return _map_size_y - 1; }
 /* The number of tiles in the map */
 static inline uint MapSize(void) { return _map_size; }
 
-// Scale a number relative to the map size
+/* Scale a number relative to the map size */
 uint ScaleByMapSize(uint); // Scale relative to the number of tiles
 uint ScaleByMapSize1D(uint); // Scale relative to the circumference of the map
 
@@ -55,10 +57,10 @@ static inline TileIndex TileXY(uint x, uint y)
 
 static inline TileIndexDiff TileDiffXY(int x, int y)
 {
-	// Multiplication gives much better optimization on MSVC than shifting.
-	// 0 << shift isn't optimized to 0 properly.
-	// Typically x and y are constants, and then this doesn't result
-	// in any actual multiplication in the assembly code..
+	/* Multiplication gives much better optimization on MSVC than shifting.
+	 * 0 << shift isn't optimized to 0 properly.
+	 * Typically x and y are constants, and then this doesn't result
+	 * in any actual multiplication in the assembly code.. */
 	return (y * MapSizeX()) + x;
 }
 
@@ -73,9 +75,9 @@ enum {
 };
 
 enum {
-	TILE_SIZE   = 16,   /* Tiles are 16x16 "units" in size */
-	TILE_PIXELS = 32,   /* a tile is 32x32 pixels */
-	TILE_HEIGHT =  8,   /* The standard height-difference between tiles on two levels is 8 (z-diff 8) */
+	TILE_SIZE   = 16,   ///< Tiles are 16x16 "units" in size
+	TILE_PIXELS = 32,   ///< a tile is 32x32 pixels
+	TILE_HEIGHT =  8,   ///< The standard height-difference between tiles on two levels is 8 (z-diff 8)
 };
 
 
@@ -132,12 +134,12 @@ static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC dif
 		return TileXY(x, y);
 }
 
-// Functions to calculate distances
-uint DistanceManhattan(TileIndex, TileIndex); // also known as L1-Norm. Is the shortest distance one could go over diagonal tracks (or roads)
-uint DistanceSquare(TileIndex, TileIndex); // euclidian- or L2-Norm squared
-uint DistanceMax(TileIndex, TileIndex); // also known as L-Infinity-Norm
-uint DistanceMaxPlusManhattan(TileIndex, TileIndex); // Max + Manhattan
-uint DistanceFromEdge(TileIndex); // shortest distance from any edge of the map
+/* Functions to calculate distances */
+uint DistanceManhattan(TileIndex, TileIndex); ///< also known as L1-Norm. Is the shortest distance one could go over diagonal tracks (or roads)
+uint DistanceSquare(TileIndex, TileIndex); ///< euclidian- or L2-Norm squared
+uint DistanceMax(TileIndex, TileIndex); ///< also known as L-Infinity-Norm
+uint DistanceMaxPlusManhattan(TileIndex, TileIndex); ///< Max + Manhattan
+uint DistanceFromEdge(TileIndex); ///< shortest distance from any edge of the map
 
 
 #define BEGIN_TILE_LOOP(var,w,h,tile)                      \

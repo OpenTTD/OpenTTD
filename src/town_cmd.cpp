@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file town_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -1492,7 +1494,7 @@ static bool DoBuildStatueOfCompany(TileIndex tile)
 /**
  * Search callback function for TownActionBuildStatue
  * @param data that is passed by the caller.  In this case, nothing
- * @result of the test
+ * @return the result of the test
  */
 static bool SearchTileForStatue(TileIndex tile, uint32 data)
 {

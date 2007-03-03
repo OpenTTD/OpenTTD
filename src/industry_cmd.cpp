@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file industry_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "clear_map.h"
@@ -80,6 +82,7 @@ IndustryType GetIndustryType(TileIndex tile)
  * not allowing modifications of it.
  * @param thistype of industry (which is the index in _industry_specs)
  * @pre thistype < IT_END
+ * @return a pointer to the corresponding industry spec
  **/
 const IndustrySpec *GetIndustrySpec(IndustryType thistype)
 {
@@ -87,6 +90,14 @@ const IndustrySpec *GetIndustrySpec(IndustryType thistype)
 	return &_industry_specs[thistype];
 }
 
+/**
+ * Accessor for array _industry_tile_specs.
+ * This will ensure at once : proper access and
+ * not allowing modifications of it.
+ * @param gfx of industrytile (which is the index in _industry_specs)
+ * @pre gfx < NUM_INDUSTRY_GFXES
+ * @return a pointer to the corresponding industrytile spec
+ **/
 const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx)
 {
 	assert(gfx < NUM_INDUSTRY_GFXES);
@@ -427,7 +438,7 @@ static void AnimateTile_Industry(TileIndex tile)
 		}
 		break;
 
-	// Sparks on a coal plant
+	/* Sparks on a coal plant */
 	case GFX_POWERPLANT_SPARKS:
 		if ((_tick_counter & 3) == 0) {
 			m = GetIndustryAnimationState(tile);
@@ -869,7 +880,7 @@ static void MaybePlantFarmField(const Industry *i)
  * Search callback function for ChopLumberMillTrees
  * @param tile to test
  * @param data that is passed by the caller.  In this case, nothing
- * @result of the test
+ * @return the result of the test
  */
 static bool SearchLumberMillTrees(TileIndex tile, uint32 data)
 {
@@ -1317,12 +1328,12 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	const Industry *i;
 
-	// accepting industries won't be close, not even with patch
+	/* accepting industries won't be close, not even with patch */
 	if (_patches.same_industry_close && indspec->accepts_cargo[0] == CT_INVALID)
 		return true;
 
 	FOR_ALL_INDUSTRIES(i) {
-		// check if an industry that accepts the same goods is nearby
+		/* check if an industry that accepts the same goods is nearby */
 		if (DistanceMax(tile, i->xy) <= 14 &&
 				indspec->accepts_cargo[0] != CT_INVALID &&
 				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
@@ -1334,7 +1345,7 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 			return false;
 		}
 
-		// check "not close to" field.
+		/* check "not close to" field. */
 		if ((i->type == indspec->conflicting[0] || i->type == indspec->conflicting[1] || i->type == indspec->conflicting[2]) &&
 				DistanceMax(tile, i->xy) <= 14) {
 			_error_message = STR_INDUSTRY_TOO_CLOSE;
@@ -1445,6 +1456,14 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
 }
 
+/** Helper function for Build/Fund an industry
+ * @param tile tile where industry is built
+ * @param type of industry to build
+ * @param flags of operations to conduct
+ * @param indspec pointer to industry specifications
+ * @param it pointer to list of tile type to build
+ * @return the pointer of the newly created industry, or NULL if it failed
+ */
 static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint32 flags, const IndustrySpec *indspec, const IndustryTileTable *it)
 {
 	const Town *t;
@@ -1474,8 +1493,10 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 
 /** Build/Fund an industry
  * @param tile tile where industry is built
- * @param p1 industry type @see build_industry.h and @see industry.h
+ * @param flags of operations to conduct
+ * @param p1 industry type see build_industry.h and see industry.h
  * @param p2 unused
+ * @return index of the newly create industry, or CMD_ERROR if it failed
  */
 int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1524,7 +1545,7 @@ Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 }
 
 static const byte _numof_industry_table[4][12] = {
-	// difficulty settings for number of industries
+	/* difficulty settings for number of industries */
 	{0, 0, 0, 0, 0, 0, 0, 0,  0,  0,  0},   //none
 	{0, 1, 1, 1, 2, 2, 3, 3,  4,  4,  5},   //low
 	{0, 1, 2, 3, 4, 5, 6, 7,  8,  9, 10},   //normal
@@ -1536,7 +1557,7 @@ static void PlaceInitialIndustry(IndustryType type, int amount)
 	int num = _numof_industry_table[_opt.diff.number_industries][amount];
 
 	if (type == IT_OIL_REFINERY || type == IT_OIL_RIG) {
-		// These are always placed next to the coastline, so we scale by the perimeter instead.
+		/* These are always placed next to the coastline, so we scale by the perimeter instead. */
 		num = ScaleByMapSize1D(num);
 	} else {
 		num = ScaleByMapSize(num);
@@ -1823,7 +1844,7 @@ void IndustryMonthlyLoop(void)
 
 	_current_player = old_player;
 
-	// production-change
+	/* production-change */
 	_industry_sort_dirty = true;
 	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
 }
@@ -1881,7 +1902,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, last_prod_year,      SLE_INT32,                 31, SL_MAX_VERSION),
 	    SLE_VAR(Industry, was_cargo_delivered, SLE_UINT8),
 
-	// reserve extra space in savegame here. (currently 32 bytes)
+	/* reserve extra space in savegame here. (currently 32 bytes) */
 	SLE_CONDNULL(32, 2, SL_MAX_VERSION),
 
 	SLE_END()
@@ -1891,7 +1912,7 @@ static void Save_INDY(void)
 {
 	Industry *ind;
 
-	// Write the vehicles
+	/* Write the vehicles */
 	FOR_ALL_INDUSTRIES(ind) {
 		SlSetArrayIndex(ind->index);
 		SlObject(ind, _industry_desc);

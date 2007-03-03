@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file fileio.h Declarations for Standard In/Out file operations*/
+/** @file fileio.h Declarations for Standard In/Out file operations */
 
 #ifndef FILEIO_H
 #define FILEIO_H

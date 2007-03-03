@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file industry_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -19,6 +21,7 @@
 #include "helpers.hpp"
 #include "cargotype.h"
 
+/* industries per climate, according to the different construction windows */
 const byte _build_industry_types[4][12] = {
 	{  1,  2,  4,  6,  8,  0,  3,  5,  9, 11, 18 },
 	{  1, 14,  4, 13,  7,  0,  3,  9, 11, 15 },
@@ -290,9 +293,9 @@ static inline bool IsProductionAlterable(const Industry *i)
 
 static void IndustryViewWndProc(Window *w, WindowEvent *e)
 {
-	// WP(w,vp2_d).data_1 is for the editbox line
-	// WP(w,vp2_d).data_2 is for the clickline
-	// WP(w,vp2_d).data_3 is for the click pos (left or right)
+	/* WP(w,vp2_d).data_1 is for the editbox line
+	 * WP(w,vp2_d).data_2 is for the clickline
+	 * WP(w,vp2_d).data_3 is for the click pos (left or right) */
 
 	switch (e->event) {
 	case WE_PAINT: {
@@ -325,7 +328,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 			SetDParam(2, i->pct_transported[0] * 100 >> 8);
 			DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 127, STR_482B_TRANSPORTED, 0);
-			// Let's put out those buttons..
+			/* Let's put out those buttons.. */
 			if (IsProductionAlterable(i)) {
 				DrawArrowButtons(5, 127, 3, (WP(w,vp2_d).data_2 == 1) ? WP(w,vp2_d).data_3 : 0,
 						!isProductionMinimum(i, 0), !isProductionMaximum(i, 0));
@@ -336,7 +339,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				SetDParam(1, i->total_production[1]);
 				SetDParam(2, i->pct_transported[1] * 100 >> 8);
 				DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
-				// Let's put out those buttons..
+				/* Let's put out those buttons.. */
 				if (IsProductionAlterable(i)) {
 					DrawArrowButtons(5, 137, 3, (WP(w,vp2_d).data_2 == 2) ? WP(w,vp2_d).data_3 : 0,
 						!isProductionMinimum(i, 1), !isProductionMaximum(i, 1));
@@ -357,7 +360,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 			i = GetIndustry(w->window_number);
 
-			// We should work if needed..
+			/* We should work if needed.. */
 			if (!IsProductionAlterable(i)) return;
 
 			x = e->we.click.pt.x;
@@ -379,7 +382,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					WP(w,vp2_d).data_2 = line+1;
 					WP(w,vp2_d).data_3 = (x < 15 ? 1 : 2);
 				} else if (IS_INT_INSIDE(x, 34, 160)) {
-					// clicked the text
+					/* clicked the text */
 					WP(w,vp2_d).data_1 = line;
 					SetDParam(0, i->production_rate[line] * 8);
 					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_GAME_PRODUCTION, 10, 100, w, CS_ALPHANUMERAL);
@@ -533,7 +536,7 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 			break;
 	}
 
-	// default to string sorting if they are otherwise equal
+	/* default to string sorting if they are otherwise equal */
 	if (r == 0) {
 		char buf1[96];
 

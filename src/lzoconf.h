@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/* lzoconf.h -- configuration for the LZO real-time data compression library
+/** @file lzoconf.h -- configuration for the LZO real-time data compression library
 
    This file is part of the LZO real-time data compression library.
 

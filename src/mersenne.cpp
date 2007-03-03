@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file mersenne.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 

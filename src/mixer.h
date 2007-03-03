@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file mixer.h */
+
 #ifndef MIXER_H
 #define MIXER_H
 

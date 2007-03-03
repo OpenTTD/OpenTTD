@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file misc_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "hal.h"
@@ -249,7 +251,7 @@ static const char *credits[] = {
 static void AboutWindowProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: /* Set up window counter and start position of scroller */
+	case WE_CREATE: // Set up window counter and start position of scroller
 		WP(w, scroller_d).counter = 0;
 		WP(w, scroller_d).height = w->height - 40;
 		break;
@@ -258,11 +260,11 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 		int y = WP(w, scroller_d).height;
 		DrawWindowWidgets(w);
 
-		// Show original copyright and revision version
+		/* Show original copyright and revision version */
 		DrawStringCentered(210, 17, STR_00B6_ORIGINAL_COPYRIGHT, 0);
 		DrawStringCentered(210, 17 + 10, STR_00B7_VERSION, 0);
 
-		// Show all scrolling credits
+		/* Show all scrolling credits */
 		for (i = 0; i < lengthof(credits); i++) {
 			if (y >= 50 && y < (w->height - 40)) {
 				DoDrawString(credits[i], 10, y, 0x10);
@@ -270,13 +272,13 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 			y += 10;
 		}
 
-		// If the last text has scrolled start anew from the start
+		/* If the last text has scrolled start anew from the start */
 		if (y < 50) WP(w, scroller_d).height = w->height - 40;
 
 		DoDrawStringCentered(210, w->height - 25, "Website: http://www.openttd.org", 16);
 		DrawStringCentered(210, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, 0);
 	}	break;
-	case WE_MOUSELOOP: /* Timer to scroll the text and adjust the new top */
+	case WE_MOUSELOOP: // Timer to scroll the text and adjust the new top
 		if (WP(w, scroller_d).counter++ % 3 == 0) {
 			WP(w, scroller_d).height--;
 			SetWindowDirty(w);
@@ -369,7 +371,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 				_tree_to_plant = -1;
 			break;
 
-		case 16: /* place trees randomly over the landscape*/
+		case 16: // place trees randomly over the landscape
 			LowerWindowWidget(w, 16);
 			w->flags4 |= 5 << WF_TIMEOUT_SHL;
 			SndPlayFx(SND_15_BEEP);
@@ -545,7 +547,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS:
 		if (e->we.keypress.keycode == WKC_SPACE) {
-			// Don't continue.
+			/* Don't continue. */
 			e->we.keypress.cont = false;
 			DeleteWindow(w);
 		}
@@ -576,11 +578,11 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 			pt = RemapCoords2(x, y);
 			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
-			// move x pos to opposite corner
+			/* move x pos to opposite corner */
 			pt.x = ((pt.x - vp->virtual_left) >> vp->zoom) + vp->left;
 			pt.x = (pt.x < (_screen.width >> 1)) ? _screen.width - 260 : 20;
 
-			// move y pos to opposite corner
+			/* move y pos to opposite corner */
 			pt.y = ((pt.y - vp->virtual_top) >> vp->zoom) + vp->top;
 			pt.y = (pt.y < (_screen.height >> 1)) ? _screen.height - 80 : 100;
 
@@ -1105,12 +1107,12 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 
 		case WE_KEYPRESS:
 			switch (HandleEditBoxKey(w, qs, QUERY_STR_WIDGET_TEXT, e)) {
-				case 1: goto press_ok; /* Enter pressed, confirms change */
-				case 2: DeleteWindow(w); break; /* ESC pressed, closes window, abandons changes */
+				case 1: goto press_ok; // Enter pressed, confirms change
+				case 2: DeleteWindow(w); break; // ESC pressed, closes window, abandons changes
 			}
 			break;
 
-		case WE_DESTROY: /* Call cancellation of query, if we have not handled it before */
+		case WE_DESTROY: // Call cancellation of query, if we have not handled it before
 			if (!qs->handled && w->parent != NULL) {
 				WindowEvent e;
 				Window *parent = w->parent;
@@ -1225,7 +1227,7 @@ static void QueryWndProc(Window *w, WindowEvent *e)
 				}
 			break;
 
-		case WE_KEYPRESS: /* ESC closes the window, Enter confirms the action */
+		case WE_KEYPRESS: // ESC closes the window, Enter confirms the action
 			switch (e->we.keypress.keycode) {
 				case WKC_RETURN:
 				case WKC_NUM_ENTER:
@@ -1239,7 +1241,7 @@ static void QueryWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_DESTROY: /* Call callback function (if any) on window close if not yet called */
+		case WE_DESTROY: // Call callback function (if any) on window close if not yet called
 			if (!q->calledback && q->proc != NULL) {
 				q->calledback = true;
 				q->proc(w->parent, false);
@@ -1327,7 +1329,7 @@ static const Widget _save_dialog_widgets[] = {
 {   WIDGETS_END},
 };
 
-// Colors for fios types
+/* Colors for fios types */
 const byte _fios_colors[] = {13, 9, 9, 6, 5, 6, 5, 6, 6, 8};
 
 void BuildFileList(void)
@@ -1406,7 +1408,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 	static FiosItem o_dir;
 
 	switch (e->event) {
-	case WE_CREATE: { /* Set up OPENTTD button */
+	case WE_CREATE: { // Set up OPENTTD button
 		o_dir.type = FIOS_TYPE_DIRECT;
 		switch (_saveload_mode) {
 			case SLD_SAVE_GAME:
@@ -1466,27 +1468,27 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 2: /* Sort save names by name */
+		case 2: // Sort save names by name
 			_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
 				SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
 			_savegame_sort_dirty = true;
 			SetWindowDirty(w);
 			break;
 
-		case 3: /* Sort save names by date */
+		case 3: // Sort save names by date
 			_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ?
 				SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
 			_savegame_sort_dirty = true;
 			SetWindowDirty(w);
 			break;
 
-		case 6: /* OpenTTD 'button', jumps to OpenTTD directory */
+		case 6: // OpenTTD 'button', jumps to OpenTTD directory
 			FiosBrowseTo(&o_dir);
 			SetWindowDirty(w);
 			BuildFileList();
 			break;
 
-		case 7: { /* Click the listbox */
+		case 7: { // Click the listbox
 			int y = (e->we.click.pt.y - w->widget[e->we.click.widget].top - 1) / 10;
 			char *name;
 			const FiosItem *file;
@@ -1513,20 +1515,20 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 					DeleteWindow(w);
 					ShowHeightmapLoad();
 				} else {
-					// SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox
+					/* SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox */
 					ttd_strlcpy(WP(w, querystr_d).text.buf, file->title, WP(w, querystr_d).text.maxlength);
 					UpdateTextBufferSize(&WP(w, querystr_d).text);
 					InvalidateWidget(w, 10);
 				}
 			} else {
-				// Changed directory, need repaint.
+				/* Changed directory, need repaint. */
 				SetWindowDirty(w);
 				BuildFileList();
 			}
 			break;
 		}
 
-		case 11: case 12: /* Delete, Save game */
+		case 11: case 12: // Delete, Save game
 			break;
 		}
 		break;
@@ -1542,7 +1544,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			if (HandleEditBoxKey(w, &WP(w, querystr_d), 10, e) == 1) /* Press Enter */
+			if (HandleEditBoxKey(w, &WP(w, querystr_d), 10, e) == 1) // Press Enter
 					HandleButtonClick(w, 12);
 		}
 		break;
@@ -1551,7 +1553,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		 * in those two saveload mode  */
 		if (!(_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO)) break;
 
-		if (IsWindowWidgetLowered(w, 11)) { /* Delete button clicked */
+		if (IsWindowWidgetLowered(w, 11)) { // Delete button clicked
 			if (!FiosDelete(WP(w,querystr_d).text.buf)) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
 			} else {
@@ -1562,7 +1564,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 
 			UpdateTextBufferSize(&WP(w, querystr_d).text);
 			SetWindowDirty(w);
-		} else if (IsWindowWidgetLowered(w, 12)) { /* Save button clicked */
+		} else if (IsWindowWidgetLowered(w, 12)) { // Save button clicked
 			_switch_mode = SM_SAVE;
 			FiosMakeSavegameName(_file_to_saveload.name, WP(w,querystr_d).text.buf, sizeof(_file_to_saveload.name));
 
@@ -1571,7 +1573,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	case WE_DESTROY:
-		// pause is only used in single-player, non-editor mode, non menu mode
+		/* pause is only used in single-player, non-editor mode, non menu mode */
 		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		}
@@ -1652,8 +1654,8 @@ void ShowSaveLoadDialog(int mode)
 	WP(w, querystr_d).afilter = CS_ALPHANUMERAL;
 	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), 240);
 
-	// pause is only used in single-player, non-editor mode, non-menu mode. It
-	// will be unpaused in the WE_DESTROY event handler.
+	/* pause is only used in single-player, non-editor mode, non-menu mode. It
+	 * will be unpaused in the WE_DESTROY event handler. */
 	if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 	}
@@ -1703,7 +1705,10 @@ static int32 ClickMoneyCheat(int32 p1, int32 p2)
 		return true;
 }
 
-// p1 player to set to, p2 is -1 or +1 (down/up)
+/**
+ * @param p1 player to set to
+ * @param p2 is -1 or +1 (down/up)
+ */
 static int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 {
 	while (IsValidPlayer((PlayerID)p1)) {
@@ -1719,7 +1724,9 @@ static int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 	return _local_player;
 }
 
-// p1 -1 or +1 (down/up)
+/**
+ * @param p1 -1 or +1 (down/up)
+ */
 static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 {
 	if (p1 == -1) p1 = 3;
@@ -1731,7 +1738,9 @@ static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 
 extern void EnginesMonthlyLoop(void);
 
-// p2 1 (increase) or -1 (decrease)
+/**
+ * @param p2 1 (increase) or -1 (decrease)
+ */
 static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 {
 	YearMonthDay ymd;
@@ -1760,13 +1769,13 @@ typedef TinyEnumT<ce_flags_long> ce_flags;
 
 
 typedef struct CheatEntry {
-	VarType type;          // type of selector
-	ce_flags flags;        // selector flags
-	StringID str;          // string with descriptive text
-	void *variable;        // pointer to the variable
-	bool *been_used;       // has this cheat been used before?
-	CheckButtonClick *proc;// procedure
-	int16 min, max;        // range for spinbox setting
+	VarType type;          ///< type of selector
+	ce_flags flags;        ///< selector flags
+	StringID str;          ///< string with descriptive text
+	void *variable;        ///< pointer to the variable
+	bool *been_used;       ///< has this cheat been used before?
+	CheckButtonClick *proc;///< procedure
+	int16 min, max;        ///< range for spinbox setting
 } CheatEntry;
 
 static const CheatEntry _cheats_ui[] = {
@@ -1863,7 +1872,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 			int32 value, oldvalue;
 			uint x = e->we.click.pt.x;
 
-			// not clicking a button?
+			/* not clicking a button? */
 			if (!IS_INT_INSIDE(x, 20, 40) || btn >= lengthof(_cheats_ui)) break;
 
 			ce = &_cheats_ui[btn];
@@ -1887,7 +1896,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				value += (x >= 30) ? step : -step;
 				value = clamp(value, ce->min, ce->max);
 
-				// take whatever the function returns
+				/* take whatever the function returns */
 				value = ce->proc(value, (x >= 30) ? 1 : -1);
 
 				if (value != oldvalue) {

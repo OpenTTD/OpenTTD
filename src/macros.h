@@ -1,13 +1,15 @@
 /* $Id$ */
 
+/** @file macros.h */
+
 #ifndef MACROS_H
 #define MACROS_H
 
-/// Fetch n bits starting at bit s from x
+/* Fetch n bits starting at bit s from x */
 #define GB(x, s, n) (((x) >> (s)) & ((1U << (n)) - 1))
-/// Set n bits starting at bit s in x to d
+/* Set n bits starting at bit s in x to d */
 #define SB(x, s, n, d) ((x) = ((x) & ~(((1U << (n)) - 1) << (s))) | ((d) << (s)))
-/// Add i to the n bits starting at bit s in x
+/* Add i to the n bits starting at bit s in x */
 #define AB(x, s, n, i) ((x) = ((x) & ~(((1U << (n)) - 1) << (s))) | (((x) + ((i) << (s))) & (((1U << (n)) - 1) << (s))))
 
 #ifdef min
@@ -79,7 +81,7 @@ template<typename T> static inline T TOGGLEBIT(T& x, int y)
 }
 
 
-// checking more bits. Maybe unneccessary, but easy to use
+/* checking more bits. Maybe unneccessary, but easy to use */
 #define HASBITS(x,y) ((x) & (y))
 #define SETBITS(x,y) ((x) |= (y))
 #define CLRBITS(x,y) ((x) &= ~(y))

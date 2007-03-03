@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file fileio.cpp Standard In/Out file operations*/
+/** @file fileio.cpp Standard In/Out file operations */
 
 #include "stdafx.h"
 #include "openttd.h"

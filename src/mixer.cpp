@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file mixer.cpp*/
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "mixer.h"
@@ -7,16 +9,16 @@
 struct MixerChannel {
 	bool active;
 
-	// pointer to allocated buffer memory
+	/* pointer to allocated buffer memory */
 	int8 *memory;
 
-	// current position in memory
+	/* current position in memory */
 	uint32 pos;
 	uint32 frac_pos;
 	uint32 frac_speed;
 	uint32 samples_left;
 
-	// Mixing volume
+	/* Mixing volume */
 	uint volume_left;
 	uint volume_right;
 
@@ -46,7 +48,7 @@ static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 	volume_right = sc->volume_right;
 
 	if (frac_speed == 0x10000) {
-		// Special case when frac_speed is 0x10000
+		/* Special case when frac_speed is 0x10000 */
 		do {
 			buffer[0] += *b * volume_left >> 8;
 			buffer[1] += *b * volume_right >> 8;
@@ -79,10 +81,10 @@ void MxMixSamples(void *buffer, uint samples)
 {
 	MixerChannel *mc;
 
-	// Clear the buffer
+	/* Clear the buffer */
 	memset(buffer, 0, sizeof(int16) * 2 * samples);
 
-	// Mix each channel
+	/* Mix each channel */
 	for (mc = _channels; mc != endof(_channels); mc++) {
 		if (mc->active) {
 			mix_int8_to_int16(mc, (int16*)buffer, samples);
@@ -111,7 +113,7 @@ void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, uint size, uint rate, uint 
 
 	mc->frac_speed = (rate << 16) / _play_rate;
 
-	// adjust the magnitude to prevent overflow
+	/* adjust the magnitude to prevent overflow */
 	while (size & 0xFFFF0000) {
 		size >>= 1;
 		rate = (rate >> 1) + 1;

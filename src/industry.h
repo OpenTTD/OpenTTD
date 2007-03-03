@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file industry.h */
+
 #ifndef INDUSTRY_H
 #define INDUSTRY_H
 
@@ -18,30 +20,33 @@ typedef enum IndustryLifeTypes {
 	INDUSTRYLIFE_CLOSABLE,         ///< Industry can only close (no production change)
 } IndustryLifeType;
 
+/**
+ * Defines the internal data of a functionnal industry
+ */
 struct Industry {
-	TileIndex xy;
-	byte width; /* swapped order of w/h with town */
+	TileIndex xy;                   ///< coordinates of the primary tile the industry is built one
+	byte width;
 	byte height;
-	const Town* town;
-	CargoID produced_cargo[2];
-	uint16 cargo_waiting[2];
-	byte production_rate[2];
-	CargoID accepts_cargo[3];
-	byte prod_level;
-	uint16 last_mo_production[2];
-	uint16 last_mo_transported[2];
-	byte pct_transported[2];
-	uint16 total_production[2];
-	uint16 total_transported[2];
-	uint16 counter;
+	const Town* town;               ///< Nearest town
+	CargoID produced_cargo[2];      ///< 2 production cargo slots
+	uint16 cargo_waiting[2];        ///< amount of cargo produced per cargo
+	byte production_rate[2];        ///< production rate for each cargo
+	CargoID accepts_cargo[3];       ///< 3 input cargo slots
+	byte prod_level;                ///< general production level
+	uint16 last_mo_production[2];   ///< stats of last month production per cargo
+	uint16 last_mo_transported[2];  ///< stats of last month transport per cargo
+	byte pct_transported[2];        ///< percentage transported per cargo
+	uint16 total_production[2];     ///< total units produced per cargo
+	uint16 total_transported[2];    ///< total units transported per cargo
+	uint16 counter;                 ///< used for animation and/or production (if available cargo)
 
-	byte type;
-	OwnerByte owner;
-	byte random_color;
-	Year last_prod_year;
-	byte was_cargo_delivered;
+	byte type;                      ///< type of industry. see IT_COAL_MINE and others
+	OwnerByte owner;                ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE
+	byte random_color;              ///< randomized colour of the industry, for display purpose
+	Year last_prod_year;            ///< last year of production
+	byte was_cargo_delivered;       ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
 
-	IndustryID index;
+	IndustryID index;               ///< index of the industry in the pool of industries
 };
 
 typedef struct IndustryTileTable {
@@ -49,59 +54,62 @@ typedef struct IndustryTileTable {
 	IndustryGfx gfx;
 } IndustryTileTable;
 
+/**
+ * Defines the data structure for constructing industry.
+ */
 typedef struct IndustrySpec {
-	/** Tables with the 'layout' of different composition of GFXes */
-	const IndustryTileTable *const *table;
-	/** Number of elements in the table */
-	byte num_table;
-	/** Base cost multiplier*/
-	byte cost_multiplier;
-	/** Industries this industry cannot be close to */
-	IndustryType conflicting[3];
-	/** index to a procedure to check for conflicting circumstances */
-	byte check_proc;
-
+	const IndustryTileTable *const *table;///< List of the tiles composing the industry
+	byte num_table;                       ///< Number of elements in the table
+	byte cost_multiplier;                 ///< Base cost multiplier*/
+	IndustryType conflicting[3];          ///< Industries this industry cannot be close to
+	byte check_proc;                      ///< Index to a procedure to check for conflicting circumstances
 	CargoID produced_cargo[2];
 	byte production_rate[2];
-	/** The minimum amount of cargo transported to the stations; if the
-	 * waiting cargo is less than this number, no cargo is moved to it*/
-	byte minimal_cargo;
-	CargoID accepts_cargo[3];
-
-	IndustryLifeType life_type;  ///< This is also known as Industry production flag, in newgrf specs
-
-	byte climate_availability;  ///< Bitmask, giving landscape enums as bit position
-
-	StringID name;
-	StringID closure_text;
-	StringID production_up_text;
-	StringID production_down_text;
+	byte minimal_cargo;                   ///< minimum amount of cargo transported to the stations
+	                                      ///< If the waiting cargo is less than this number, no cargo is moved to it
+	CargoID accepts_cargo[3];             ///< 3 accepted cargos
+	IndustryLifeType life_type;           ///< This is also known as Industry production flag, in newgrf specs
+	byte climate_availability;            ///< Bitmask, giving landscape enums as bit position
+	StringID name;                        ///< Displayed name of the industry
+	StringID closure_text;                ///< Message appearing when the industry closes
+	StringID production_up_text;          ///< Message appearing when the industry's production is increasing
+	StringID production_down_text;        ///< Message appearing when the industry's production is decreasing
 } IndustrySpec;
 
+/**
+ * Defines the data structure of each indivudual tile of an industry.
+ */
 typedef struct IndustryTileSpec {
-	CargoID accepts_cargo[3];
-	Slope slopes_refused;
+	CargoID accepts_cargo[3];             ///< Cargo accepted by this tile
+	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
 } IndustryTileSpec;
 
-const IndustrySpec *GetIndustrySpec(IndustryType thistype);
-const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);
+const IndustrySpec *GetIndustrySpec(IndustryType thistype);    ///< Array of industries default data
+const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);  ///< Array of industry tiles default data
 
 DECLARE_OLD_POOL(Industry, Industry, 3, 8000)
 
 /**
  * Check if an Industry really exists.
+ * @param industry to check
+ * @return true if position is a valid one
  */
 static inline bool IsValidIndustry(const Industry *industry)
 {
 	return industry->xy != 0;
 }
 
+/**
+ * Check if an Industry exists whithin the pool of industries
+ * @param index of the desired industry
+ * @return true if it is inside the pool
+ */
 static inline bool IsValidIndustryID(IndustryID index)
 {
 	return index < GetIndustryPoolSize() && IsValidIndustry(GetIndustry(index));
 }
 
-VARDEF int _total_industries;
+VARDEF int _total_industries; //general counter
 
 static inline IndustryID GetMaxIndustryIndex(void)
 {

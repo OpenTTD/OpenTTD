@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file md5.h */
+
 /*
   Copyright (C) 1999, 2002 Aladdin Enterprises.  All rights reserved.
 
@@ -23,7 +25,7 @@
   ghost@aladdin.com
 
  */
-/* $Id$ */
+
 /*
   Independent implementation of MD5 (RFC 1321).
 

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file map.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -25,8 +27,8 @@ Tile* _m = NULL;
 
 void AllocateMap(uint size_x, uint size_y)
 {
-	// Make sure that the map size is within the limits and that
-	// the x axis size is a power of 2.
+	/* Make sure that the map size is within the limits and that
+	 * the x axis size is a power of 2. */
 	if (size_x < 64 || size_x > 2048 ||
 			size_y < 64 || size_y > 2048 ||
 			(size_x&(size_x-1)) != 0 ||
@@ -44,7 +46,7 @@ void AllocateMap(uint size_x, uint size_y)
 	free(_m);
 	_m = CallocT<Tile>(_map_size);
 
-	// XXX TODO handle memory shortage more gracefully
+	/* XXX TODO handle memory shortage more gracefully */
 	if (_m == NULL) error("Failed to allocate memory for the map");
 }
 
@@ -86,36 +88,36 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 
 uint ScaleByMapSize(uint n)
 {
-	// First shift by 12 to prevent integer overflow for large values of n.
-	// >>12 is safe since the min mapsize is 64x64
-	// Add (1<<4)-1 to round upwards.
+	/* First shift by 12 to prevent integer overflow for large values of n.
+	 * >>12 is safe since the min mapsize is 64x64
+	 * Add (1<<4)-1 to round upwards. */
 	return (n * (MapSize() >> 12) + (1<<4) - 1) >> 4;
 }
 
 
-// Scale relative to the circumference of the map
+/* Scale relative to the circumference of the map */
 uint ScaleByMapSize1D(uint n)
 {
-	// Normal circumference for the X+Y is 256+256 = 1<<9
-	// Note, not actually taking the full circumference into account,
-	// just half of it.
-	// (1<<9) - 1 is there to scale upwards.
+	/* Normal circumference for the X+Y is 256+256 = 1<<9
+	 * Note, not actually taking the full circumference into account,
+	 * just half of it.
+	 * (1<<9) - 1 is there to scale upwards. */
 	return (n * (MapSizeX() + MapSizeY()) + (1<<9) - 1) >> 9;
 }
 
 
-// This function checks if we add addx/addy to tile, if we
-//  do wrap around the edges. For example, tile = (10,2) and
-//  addx = +3 and addy = -4. This function will now return
-//  INVALID_TILE, because the y is wrapped. This is needed in
-//  for example, farmland. When the tile is not wrapped,
-//  the result will be tile + TileDiffXY(addx, addy)
+/* This function checks if we add addx/addy to tile, if we
+ *  do wrap around the edges. For example, tile = (10,2) and
+ *  addx = +3 and addy = -4. This function will now return
+ *  INVALID_TILE, because the y is wrapped. This is needed in
+ *  for example, farmland. When the tile is not wrapped,
+ *  the result will be tile + TileDiffXY(addx, addy) */
 uint TileAddWrap(TileIndex tile, int addx, int addy)
 {
 	uint x = TileX(tile) + addx;
 	uint y = TileY(tile) + addy;
 
-	// Are we about to wrap?
+	/* Are we about to wrap? */
 	if (x < MapMaxX() && y < MapMaxY())
 		return tile + TileDiffXY(addx, addy);
 
@@ -123,21 +125,21 @@ uint TileAddWrap(TileIndex tile, int addx, int addy)
 }
 
 extern const TileIndexDiffC _tileoffs_by_diagdir[] = {
-	{-1,  0}, // DIAGDIR_NE
-	{ 0,  1}, // DIAGDIR_SE
-	{ 1,  0}, // DIAGDIR_SW
-	{ 0, -1}  // DIAGDIR_NW
+	{-1,  0}, ///< DIAGDIR_NE
+	{ 0,  1}, ///< DIAGDIR_SE
+	{ 1,  0}, ///< DIAGDIR_SW
+	{ 0, -1}  ///< DIAGDIR_NW
 };
 
 extern const TileIndexDiffC _tileoffs_by_dir[] = {
-	{-1, -1}, // DIR_N
-	{-1,  0}, // DIR_NE
-	{-1,  1}, // DIR_E
-	{ 0,  1}, // DIR_SE
-	{ 1,  1}, // DIR_S
-	{ 1,  0}, // DIR_SW
-	{ 1, -1}, // DIR_W
-	{ 0, -1}  // DIR_NW
+	{-1, -1}, ///< DIR_N
+	{-1,  0}, ///< DIR_NE
+	{-1,  1}, ///< DIR_E
+	{ 0,  1}, ///< DIR_SE
+	{ 1,  1}, ///< DIR_S
+	{ 1,  0}, ///< DIR_SW
+	{ 1, -1}, ///< DIR_W
+	{ 0, -1}  ///< DIR_NW
 };
 
 uint DistanceManhattan(TileIndex t0, TileIndex t1)
@@ -191,7 +193,7 @@ uint DistanceFromEdge(TileIndex tile)
  * @param size: number of tiles per side of the desired search area
  * @param proc: callback testing function pointer.
  * @param data to be passed to the callback function. Depends on the implementation
- * @result of the search
+ * @return result of the search
  * @pre proc != NULL
  * @pre size > 0
  */
