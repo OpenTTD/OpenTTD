@@ -37,7 +37,6 @@ enum StationListWidgets {
 	STATIONLIST_WIDGET_SORTBY,
 	STATIONLIST_WIDGET_SORTCRITERIA,
 	STATIONLIST_WIDGET_SORTDROPBTN,
-	CARGO_ALL_SELECTED = 0x1FFF,
 };
 
 typedef int CDECL StationSortListingTypeFunction(const void*, const void*);
@@ -114,7 +113,7 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 		GetString(_bufcache, STR_STATION, lastof(_bufcache));
 	}
 
-	r =  strcmp(buf1, _bufcache); // sort by name
+	r = strcmp(buf1, _bufcache); // sort by name
 	return (_internal_sort_order & 1) ? -r : r;
 }
 
@@ -130,9 +129,8 @@ static int CDECL StationWaitingSorter(const void *a, const void *b)
 	const Station* st1 = *(const Station**)a;
 	const Station* st2 = *(const Station**)b;
 	int sum1 = 0, sum2 = 0;
-	int j;
 
-	for (j = 0; j < NUM_CARGO; j++) {
+	for (CargoID j = 0; j < NUM_CARGO; j++) {
 		if (st1->goods[j].waiting_acceptance & 0xfff) sum1 += GetTransportedGoodsIncome(st1->goods[j].waiting_acceptance & 0xfff, 20, 50, j);
 		if (st2->goods[j].waiting_acceptance & 0xfff) sum2 += GetTransportedGoodsIncome(st2->goods[j].waiting_acceptance & 0xfff, 20, 50, j);
 	}
@@ -146,9 +144,8 @@ static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 	const Station* st2 = *(const Station**)b;
 	byte maxr1 = 0;
 	byte maxr2 = 0;
-	int j;
 
-	for (j = 0; j < NUM_CARGO; j++) {
+	for (CargoID j = 0; j < NUM_CARGO; j++) {
 		if (st1->goods[j].waiting_acceptance & 0xfff) maxr1 = max(maxr1, st1->goods[j].rating);
 		if (st2->goods[j].waiting_acceptance & 0xfff) maxr2 = max(maxr2, st2->goods[j].rating);
 	}
@@ -202,7 +199,6 @@ void ResortStationLists(void)
 static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities, uint16 cargo_filter)
 {
 	uint n = 0;
-	uint i, j;
 	const Station *st;
 
 	if (!(sl->flags & SL_REBUILD)) return;
@@ -217,7 +213,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 		if (st->owner == owner) {
 			if (facilities & st->facilities) { //only stations with selected facilities
 				int num_waiting_cargo = 0;
-				for (j = 0; j < NUM_CARGO; j++) {
+				for (CargoID j = 0; j < NUM_CARGO; j++) {
 					if (st->goods[j].waiting_acceptance & 0xFFF) {
 						num_waiting_cargo++; //count number of waiting cargo
 						if (HASBIT(cargo_filter, j)) {
@@ -239,7 +235,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 	if (n != 0 && sl->sort_list == NULL) error("Could not allocate memory for the station-sorting-list");
 	sl->list_length = n;
 
-	for (i = 0; i < n; ++i) sl->sort_list[i] = station_sort[i];
+	for (uint i = 0; i < n; ++i) sl->sort_list[i] = station_sort[i];
 
 	sl->flags &= ~SL_REBUILD;
 	sl->flags |= SL_RESORT;
@@ -267,6 +263,8 @@ static void SortStationsList(plstations_d *sl)
 
 static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 {
+	static const uint16 CARGO_ALL_SELECTED = 0x1FFF;
+
 	const PlayerID owner = (PlayerID)w->window_number;
 	static byte facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 	static uint16 cargo_filter = CARGO_ALL_SELECTED;
@@ -275,60 +273,51 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 	plstations_d *sl = &WP(w, plstations_d);
 
 	switch (e->event) {
-	case WE_CREATE: { /* set up resort timer */
-		int i;
-		for (i = 0; i < 5; i++) {
-			if (HASBIT(facilities, i)) LowerWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
-		}
-		for (i = 0; i < NUM_CARGO; i++) {
-			if (HASBIT(cargo_filter, i)) LowerWindowWidget(w, i + STATIONLIST_WIDGET_CARGOSTART);
-		}
-		SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
-		SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_CARGOALL, cargo_filter == CARGO_ALL_SELECTED);
-		SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_NOCARGOWAITING, HASBIT(cargo_filter, STATIONLIST_WIDGET_NOCARGOWAITING - NUM_CARGO));
+		case WE_CREATE: /* set up resort timer */
+			for (uint i = 0; i < 5; i++) {
+				if (HASBIT(facilities, i)) LowerWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
+			}
+			for (CargoID i = 0; i < NUM_CARGO; i++) {
+				if (HASBIT(cargo_filter, i)) LowerWindowWidget(w, i + STATIONLIST_WIDGET_CARGOSTART);
+			}
+			SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+			SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_CARGOALL, cargo_filter == CARGO_ALL_SELECTED);
+			SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_NOCARGOWAITING, HASBIT(cargo_filter, STATIONLIST_WIDGET_NOCARGOWAITING - NUM_CARGO));
 
-		sl->sort_list = NULL;
-		sl->flags = SL_REBUILD;
-		sl->sort_type = station_sort.criteria;
-		if (station_sort.order) sl->flags |= SL_ORDER;
-		sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-		break;
-	}
+			sl->sort_list = NULL;
+			sl->flags = SL_REBUILD;
+			sl->sort_type = station_sort.criteria;
+			if (station_sort.order) sl->flags |= SL_ORDER;
+			sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+			break;
 
-	case WE_PAINT: {
-		BuildStationsList(sl, owner, facilities, cargo_filter);
-		SortStationsList(sl);
+		case WE_PAINT: {
+			BuildStationsList(sl, owner, facilities, cargo_filter);
+			SortStationsList(sl);
 
-		SetVScrollCount(w, sl->list_length);
+			SetVScrollCount(w, sl->list_length);
 
-		/* draw widgets, with player's name in the caption */
-		{
+			/* draw widgets, with player's name in the caption */
 			const Player* p = GetPlayer(owner);
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
 			SetDParam(2, w->vscroll.count);
 			DrawWindowWidgets(w);
-		}
-
-		{
-			int max;
-			int i, cg_ofst;
-			int x = 0, y = 0, xb = 2; // offset from top of widget
 
 			/* draw sorting criteria string */
 			DrawString(85, 26, _station_sort_listing[sl->sort_type], 0x10);
 			/* draw arrow pointing up/down for ascending/descending sorting */
 			DoDrawString(sl->flags & SL_ORDER ? DOWNARROW : UPARROW, 69, 26, 0x10);
 
+			int cg_ofst;
+			int x = 89;
+			int y = 14;
+			int xb = 2; // offset from left of widget
 
-			x = 89;
-			y = 14;
-
-			for (i = 0; i < NUM_CARGO; i++) {
-				cg_ofst = IsWindowWidgetLowered(w, i + STATIONLIST_WIDGET_CARGOSTART) ? 2 : 1;
-
+			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				const CargoSpec *cs = GetCargo(i);
 				if (cs->IsValid()) {
+					cg_ofst = IsWindowWidgetLowered(w, i + STATIONLIST_WIDGET_CARGOSTART) ? 2 : 1;
 					GfxFillRect(x + cg_ofst, y + cg_ofst, x + cg_ofst + 10 , y + cg_ofst + 7, cs->rating_colour);
 					DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, cs->abbrev, 0x10);
 				}
@@ -350,12 +339,11 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				return;
 			}
 
-			max = min(w->vscroll.pos + w->vscroll.cap, sl->list_length);
+			int max = min(w->vscroll.pos + w->vscroll.cap, sl->list_length);
 			y = 40; // start of the list-widget
 
-			for (i = w->vscroll.pos; i < max; ++i) { // do until max number of stations of owner
+			for (int i = w->vscroll.pos; i < max; ++i) { // do until max number of stations of owner
 				const Station *st = sl->sort_list[i];
-				CargoID j;
 				int x;
 
 				assert(st->xy != 0);
@@ -366,9 +354,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				x = DrawString(xb, y, STR_3049_0, 0) + 5;
 
 				// show cargo waiting and station ratings
-				for (j = 0; j != NUM_CARGO; j++) {
+				for (CargoID j = 0; j != NUM_CARGO; j++) {
 					uint amount = GB(st->goods[j].waiting_acceptance, 0, 12);
-
 					if (amount != 0) {
 						StationsWndShowStationRating(x, y, j, amount, st->goods[j].rating);
 						x += 20;
@@ -376,135 +363,130 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				}
 				y += 10;
 			}
-		}
-	} break;
-
-	case WE_CLICK: {
-		switch (e->we.click.widget) {
-		case STATIONLIST_WIDGET_LIST: {
-			const Station* st;
-
-			uint32 id_v = (e->we.click.pt.y - 41) / 10;
-
-			if (id_v >= w->vscroll.cap) return; // click out of bounds
-
-			id_v += w->vscroll.pos;
-
-			if (id_v >= sl->list_length) return; // click out of list bound
-
-			st = sl->sort_list[id_v];
-			assert(st->owner == owner);
-			ScrollMainWindowToTile(st->xy);
 			break;
 		}
 
-		case STATIONLIST_WIDGET_TRAIN:
-		case STATIONLIST_WIDGET_TRUCK:
-		case STATIONLIST_WIDGET_BUS:
-		case STATIONLIST_WIDGET_AIRPLANE:
-		case STATIONLIST_WIDGET_SHIP:
-			if (_ctrl_pressed) {
-				TOGGLEBIT(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
-				ToggleWidgetLoweredState(w, e->we.click.widget);
-			} else {
-				int i;
-				for (i = 0; facilities != 0; i++, facilities >>= 1) {
-					if (HASBIT(facilities, 0)) RaiseWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case STATIONLIST_WIDGET_LIST: {
+					uint32 id_v = (e->we.click.pt.y - 41) / 10;
+
+					if (id_v >= w->vscroll.cap) return; // click out of bounds
+
+					id_v += w->vscroll.pos;
+
+					if (id_v >= sl->list_length) return; // click out of list bound
+
+					const Station *st = sl->sort_list[id_v];
+					assert(st->owner == owner);
+					ScrollMainWindowToTile(st->xy);
+					break;
 				}
-				SETBIT(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
-				LowerWindowWidget(w, e->we.click.widget);
-			}
-			SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
-			sl->flags |= SL_REBUILD;
-			SetWindowDirty(w);
-		break;
 
-		case STATIONLIST_WIDGET_FACILALL: {
-			int i;
-			for (i = 0; i < 5; i++) {
-				LowerWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
-			}
-			LowerWindowWidget(w, STATIONLIST_WIDGET_FACILALL);
-
-			facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
-			sl->flags |= SL_REBUILD;
-			SetWindowDirty(w);
-			break;
-		}
-		case STATIONLIST_WIDGET_CARGOALL: {
-			int i;
-			for (i = 0; i < NUM_CARGO; i++) {
-				LowerWindowWidget(w, i + STATIONLIST_WIDGET_CARGOSTART);
-			}
-			LowerWindowWidget(w, STATIONLIST_WIDGET_NOCARGOWAITING);
-			LowerWindowWidget(w, STATIONLIST_WIDGET_CARGOALL);
-
-			cargo_filter = CARGO_ALL_SELECTED;
-			sl->flags |= SL_REBUILD;
-			SetWindowDirty(w);
-			break;
-		}
-		case STATIONLIST_WIDGET_SORTBY: /*flip sorting method asc/desc*/
-			sl->flags ^= SL_ORDER; //DESC-flag
-			station_sort.order = GB(sl->flags, 0, 1);
-			sl->flags |= SL_RESORT;
-			w->flags4 |= 5 << WF_TIMEOUT_SHL;
-			LowerWindowWidget(w, STATIONLIST_WIDGET_SORTBY);
-			SetWindowDirty(w);
-		break;
-
-		case STATIONLIST_WIDGET_SORTCRITERIA:
-		case STATIONLIST_WIDGET_SORTDROPBTN: /* select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _station_sort_listing, sl->sort_type, STATIONLIST_WIDGET_SORTDROPBTN, 0, 0);
-		break;
-
-		default:
-			if (e->we.click.widget >= STATIONLIST_WIDGET_CARGOSTART && e->we.click.widget <= STATIONLIST_WIDGET_NOCARGOWAITING) { //change cargo_filter
-				if (_ctrl_pressed) {
-					TOGGLEBIT(cargo_filter, e->we.click.widget - STATIONLIST_WIDGET_CARGOSTART);
-					ToggleWidgetLoweredState(w, e->we.click.widget);
-				} else {
-					int i;
-					for (i = 0; cargo_filter != 0; i++, cargo_filter >>= 1) {
-						if (HASBIT(cargo_filter, 0)) RaiseWindowWidget(w, i + STATIONLIST_WIDGET_CARGOSTART);
+				case STATIONLIST_WIDGET_TRAIN:
+				case STATIONLIST_WIDGET_TRUCK:
+				case STATIONLIST_WIDGET_BUS:
+				case STATIONLIST_WIDGET_AIRPLANE:
+				case STATIONLIST_WIDGET_SHIP:
+					if (_ctrl_pressed) {
+						TOGGLEBIT(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
+						ToggleWidgetLoweredState(w, e->we.click.widget);
+					} else {
+						for (uint i = 0; facilities != 0; i++, facilities >>= 1) {
+							if (HASBIT(facilities, 0)) RaiseWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
+						}
+						SETBIT(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
+						LowerWindowWidget(w, e->we.click.widget);
 					}
-					SETBIT(cargo_filter, e->we.click.widget - STATIONLIST_WIDGET_CARGOSTART);
-					LowerWindowWidget(w, e->we.click.widget);
-				}
+					SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+					sl->flags |= SL_REBUILD;
+					SetWindowDirty(w);
+					break;
+
+				case STATIONLIST_WIDGET_FACILALL:
+					for (uint i = 0; i < 5; i++) {
+						LowerWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
+					}
+					LowerWindowWidget(w, STATIONLIST_WIDGET_FACILALL);
+
+					facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
+					sl->flags |= SL_REBUILD;
+					SetWindowDirty(w);
+					break;
+
+				case STATIONLIST_WIDGET_CARGOALL:
+					for (CargoID i = 0; i < NUM_CARGO; i++) {
+						LowerWindowWidget(w, i + STATIONLIST_WIDGET_CARGOSTART);
+					}
+					LowerWindowWidget(w, STATIONLIST_WIDGET_NOCARGOWAITING);
+					LowerWindowWidget(w, STATIONLIST_WIDGET_CARGOALL);
+
+					cargo_filter = CARGO_ALL_SELECTED;
+					sl->flags |= SL_REBUILD;
+					SetWindowDirty(w);
+					break;
+
+				case STATIONLIST_WIDGET_SORTBY: /*flip sorting method asc/desc*/
+					sl->flags ^= SL_ORDER; //DESC-flag
+					station_sort.order = GB(sl->flags, 0, 1);
+					sl->flags |= SL_RESORT;
+					w->flags4 |= 5 << WF_TIMEOUT_SHL;
+					LowerWindowWidget(w, STATIONLIST_WIDGET_SORTBY);
+					SetWindowDirty(w);
+					break;
+
+				case STATIONLIST_WIDGET_SORTCRITERIA:
+				case STATIONLIST_WIDGET_SORTDROPBTN: /* select sorting criteria dropdown menu */
+					ShowDropDownMenu(w, _station_sort_listing, sl->sort_type, STATIONLIST_WIDGET_SORTDROPBTN, 0, 0);
+					break;
+
+				default:
+					if (e->we.click.widget >= STATIONLIST_WIDGET_CARGOSTART && e->we.click.widget <= STATIONLIST_WIDGET_NOCARGOWAITING) { //change cargo_filter
+						if (_ctrl_pressed) {
+							TOGGLEBIT(cargo_filter, e->we.click.widget - STATIONLIST_WIDGET_CARGOSTART);
+							ToggleWidgetLoweredState(w, e->we.click.widget);
+						} else {
+							for (uint i = 0; cargo_filter != 0; i++, cargo_filter >>= 1) {
+								if (HASBIT(cargo_filter, 0)) RaiseWindowWidget(w, i + STATIONLIST_WIDGET_CARGOSTART);
+							}
+							SETBIT(cargo_filter, e->we.click.widget - STATIONLIST_WIDGET_CARGOSTART);
+							LowerWindowWidget(w, e->we.click.widget);
+						}
+						sl->flags |= SL_REBUILD;
+						SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_CARGOALL, cargo_filter == CARGO_ALL_SELECTED);
+						SetWindowDirty(w);
+					}
+					break;
+			}
+			break;
+
+		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
+			if (sl->sort_type != e->we.dropdown.index) {
+				// value has changed -> resort
+				sl->sort_type = e->we.dropdown.index;
+				station_sort.criteria = sl->sort_type;
+				sl->flags |= SL_RESORT;
+			}
+			SetWindowDirty(w);
+			break;
+
+		case WE_TICK:
+			if (--sl->resort_timer == 0) {
+				DEBUG(misc, 3, "Periodic rebuild station list player %d", owner);
+				sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 				sl->flags |= SL_REBUILD;
-				SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_CARGOALL, cargo_filter == CARGO_ALL_SELECTED);
 				SetWindowDirty(w);
 			}
-		}
-	} break;
+			break;
 
-	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-		if (sl->sort_type != e->we.dropdown.index) {
-			// value has changed -> resort
-			sl->sort_type = e->we.dropdown.index;
-			station_sort.criteria = sl->sort_type;
-			sl->flags |= SL_RESORT;
-		}
-		SetWindowDirty(w);
-		break;
-
-	case WE_TICK:
-		if (--sl->resort_timer == 0) {
-			DEBUG(misc, 3, "Periodic rebuild station list player %d", owner);
-			sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-			sl->flags |= SL_REBUILD;
+		case WE_TIMEOUT:
+			RaiseWindowWidget(w, STATIONLIST_WIDGET_SORTBY);
 			SetWindowDirty(w);
-		}
-		break;
+			break;
 
-	case WE_TIMEOUT:
-		RaiseWindowWidget(w, STATIONLIST_WIDGET_SORTBY);
-		SetWindowDirty(w);
-		break;
-
-	case WE_RESIZE:
-		w->vscroll.cap += e->we.sizing.diff.y / 10;
-		break;
+		case WE_RESIZE:
+			w->vscroll.cap += e->we.sizing.diff.y / 10;
+			break;
 	}
 }
 
@@ -561,17 +543,15 @@ static const WindowDesc _player_stations_desc = {
 
 void ShowPlayerStations(PlayerID player)
 {
-	Window *w;
-
 	if (!IsValidPlayer(player)) return;
 
-	w = AllocateWindowDescFront(&_player_stations_desc, player);
-	if (w != NULL) {
-		w->caption_color = (byte)w->window_number;
-		w->vscroll.cap = 12;
-		w->resize.step_height = 10;
-		w->resize.height = w->height - 10 * 7; // minimum if 5 in the list
-	}
+	Window *w = AllocateWindowDescFront(&_player_stations_desc, player);
+	if (w == NULL) return;
+
+	w->caption_color = (byte)w->window_number;
+	w->vscroll.cap = 12;
+	w->resize.step_height = 10;
+	w->resize.height = w->height - 10 * 7; // minimum if 5 in the list
 }
 
 static const Widget _station_view_expanded_widgets[] = {
@@ -614,14 +594,13 @@ static void DrawStationViewWindow(Window *w)
 {
 	StationID station_id = w->window_number;
 	const Station* st = GetStation(station_id);
-	uint i;
 	uint num;
 	int x,y;
 	int pos;
 	StringID str;
 
 	num = 1;
-	for (i = 0; i != NUM_CARGO; i++) {
+	for (CargoID i = 0; i != NUM_CARGO; i++) {
 		if (GB(st->goods[i].waiting_acceptance, 0, 12) != 0) {
 			num++;
 			if (st->goods[i].enroute_from != station_id) num++;
@@ -645,7 +624,7 @@ static void DrawStationViewWindow(Window *w)
 
 	if (--pos < 0) {
 		str = STR_00D0_NOTHING;
-		for (i = 0; i != NUM_CARGO; i++) {
+		for (CargoID i = 0; i != NUM_CARGO; i++) {
 			if (GB(st->goods[i].waiting_acceptance, 0, 12) != 0) str = STR_EMPTY;
 		}
 		SetDParam(0, str);
@@ -653,7 +632,7 @@ static void DrawStationViewWindow(Window *w)
 		y += 10;
 	}
 
-	i = 0;
+	CargoID i = 0;
 	do {
 		uint waiting = GB(st->goods[i].waiting_acceptance, 0, 12);
 		if (waiting == 0) continue;
@@ -668,7 +647,7 @@ static void DrawStationViewWindow(Window *w)
 			} while (--num);
 		}
 
-		if ( st->goods[i].enroute_from == station_id) {
+		if (st->goods[i].enroute_from == station_id) {
 			if (--pos < 0) {
 				SetDParam(1, waiting);
 				SetDParam(0, i);
@@ -698,7 +677,7 @@ static void DrawStationViewWindow(Window *w)
 
 		b = InlineString(b, STR_000C_ACCEPTS);
 
-		for (i = 0; i != NUM_CARGO; i++) {
+		for (CargoID i = 0; i != NUM_CARGO; i++) {
 			if (b >= endof(_userstring) - 5 - 1) break;
 			if (st->goods[i].waiting_acceptance & 0x8000) {
 				if (first) {
@@ -721,7 +700,7 @@ static void DrawStationViewWindow(Window *w)
 		DrawString(2, 67, STR_3034_LOCAL_RATING_OF_TRANSPORT, 0);
 
 		y = 77;
-		for (i = 0; i != NUM_CARGO; i++) {
+		for (CargoID i = 0; i != NUM_CARGO; i++) {
 			if (st->goods[i].enroute_from != INVALID_STATION) {
 				SetDParam(0, GetCargo(i)->name);
 				SetDParam(2, st->goods[i].rating * 101 >> 8);
@@ -737,84 +716,84 @@ static void DrawStationViewWindow(Window *w)
 static void StationViewWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT:
-		DrawStationViewWindow(w);
-		break;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 7:
-			ScrollMainWindowToTile(GetStation(w->window_number)->xy);
+		case WE_PAINT:
+			DrawStationViewWindow(w);
 			break;
 
-		case 8:
-			SetWindowDirty(w);
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case 7:
+					ScrollMainWindowToTile(GetStation(w->window_number)->xy);
+					break;
 
-			/* toggle height/widget set */
-			if (IsWindowOfPrototype(w, _station_view_expanded_widgets)) {
-				AssignWidgetToWindow(w, _station_view_widgets);
-				w->height = 110;
-			} else {
-				AssignWidgetToWindow(w, _station_view_expanded_widgets);
-				w->height = 210;
+				case 8:
+					SetWindowDirty(w);
+
+					/* toggle height/widget set */
+					if (IsWindowOfPrototype(w, _station_view_expanded_widgets)) {
+						AssignWidgetToWindow(w, _station_view_widgets);
+						w->height = 110;
+					} else {
+						AssignWidgetToWindow(w, _station_view_expanded_widgets);
+						w->height = 210;
+					}
+
+					SetWindowDirty(w);
+					break;
+
+				case 9:
+					SetDParam(0, w->window_number);
+					ShowQueryString(STR_STATION, STR_3030_RENAME_STATION_LOADING, 31, 180, w, CS_ALPHANUMERAL);
+					break;
+
+				case 10: { /* Show a list of scheduled trains to this station */
+					const Station *st = GetStation(w->window_number);
+					ShowVehicleListWindow(st->owner, VEH_Train, (StationID)w->window_number);
+					break;
+				}
+
+				case 11: { /* Show a list of scheduled road-vehicles to this station */
+					const Station *st = GetStation(w->window_number);
+					ShowVehicleListWindow(st->owner, VEH_Road, (StationID)w->window_number);
+					break;
+				}
+
+				case 12: { /* Show a list of scheduled aircraft to this station */
+					const Station *st = GetStation(w->window_number);
+					/* Since oilrigs have no owners, show the scheduled aircraft of current player */
+					PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
+					ShowVehicleListWindow(owner, VEH_Aircraft, (StationID)w->window_number);
+					break;
+				}
+
+				case 13: { /* Show a list of scheduled ships to this station */
+					const Station *st = GetStation(w->window_number);
+					/* Since oilrigs/bouys have no owners, show the scheduled ships of current player */
+					PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
+					ShowVehicleListWindow(owner, VEH_Ship, (StationID)w->window_number);
+					break;
+				}
 			}
-
-			SetWindowDirty(w);
 			break;
 
-		case 9: {
-			SetDParam(0, w->window_number);
-			ShowQueryString(STR_STATION, STR_3030_RENAME_STATION_LOADING, 31, 180, w, CS_ALPHANUMERAL);
-		} break;
+		case WE_ON_EDIT_TEXT:
+			if (e->we.edittext.str[0] != '\0') {
+				_cmd_text = e->we.edittext.str;
+				DoCommandP(0, w->window_number, 0, NULL,
+					CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
+			}
+			break;
 
-		case 10: { /* Show a list of scheduled trains to this station */
-			const Station *st = GetStation(w->window_number);
-			ShowVehicleListWindow(st->owner, VEH_Train, (StationID)w->window_number);
+		case WE_DESTROY: {
+			WindowNumber wno =
+				(w->window_number << 16) | GetStation(w->window_number)->owner;
+
+			DeleteWindowById(WC_TRAINS_LIST, wno);
+			DeleteWindowById(WC_ROADVEH_LIST, wno);
+			DeleteWindowById(WC_SHIPS_LIST, wno);
+			DeleteWindowById(WC_AIRCRAFT_LIST, wno);
 			break;
 		}
-
-		case 11: { /* Show a list of scheduled road-vehicles to this station */
-			const Station *st = GetStation(w->window_number);
-			ShowVehicleListWindow(st->owner, VEH_Road, (StationID)w->window_number);
-			break;
-		}
-
-		case 12: { /* Show a list of scheduled aircraft to this station */
-			const Station *st = GetStation(w->window_number);
-			/* Since oilrigs have no owners, show the scheduled aircraft of current player */
-			PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
-			ShowVehicleListWindow(owner, VEH_Aircraft, (StationID)w->window_number);
-			break;
-		}
-
-		case 13: { /* Show a list of scheduled ships to this station */
-			const Station *st = GetStation(w->window_number);
-			/* Since oilrigs/bouys have no owners, show the scheduled ships of current player */
-			PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
-			ShowVehicleListWindow(owner, VEH_Ship, (StationID)w->window_number);
-			break;
-		}
-		}
-		break;
-
-	case WE_ON_EDIT_TEXT:
-		if (e->we.edittext.str[0] != '\0') {
-			_cmd_text = e->we.edittext.str;
-			DoCommandP(0, w->window_number, 0, NULL,
-				CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
-		}
-		break;
-
-	case WE_DESTROY: {
-		WindowNumber wno =
-			(w->window_number << 16) | GetStation(w->window_number)->owner;
-
-		DeleteWindowById(WC_TRAINS_LIST, wno);
-		DeleteWindowById(WC_ROADVEH_LIST, wno);
-		DeleteWindowById(WC_SHIPS_LIST, wno);
-		DeleteWindowById(WC_AIRCRAFT_LIST, wno);
-		break;
-	}
 	}
 }
 
@@ -829,12 +808,10 @@ static const WindowDesc _station_view_desc = {
 
 void ShowStationViewWindow(StationID station)
 {
-	Window *w;
+	Window *w = AllocateWindowDescFront(&_station_view_desc, station);
+	if (w == NULL) return;
 
-	w = AllocateWindowDescFront(&_station_view_desc, station);
-	if (w != NULL) {
-		PlayerID owner = GetStation(w->window_number)->owner;
-		if (owner != OWNER_NONE) w->caption_color = owner;
-		w->vscroll.cap = 5;
-	}
+	PlayerID owner = GetStation(w->window_number)->owner;
+	if (owner != OWNER_NONE) w->caption_color = owner;
+	w->vscroll.cap = 5;
 }
