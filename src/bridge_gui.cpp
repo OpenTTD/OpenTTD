@@ -41,40 +41,38 @@ static void BuildBridge(Window *w, int i)
 static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		uint i;
+		case WE_PAINT:
+			DrawWindowWidgets(w);
 
-		DrawWindowWidgets(w);
+			for (uint i = 0; i < 4 && i + w->vscroll.pos < _bridgedata.count; i++) {
+				const Bridge *b = &_bridge[_bridgedata.indexes[i + w->vscroll.pos]];
 
-		for (i = 0; i < 4 && i + w->vscroll.pos < _bridgedata.count; i++) {
-			const Bridge *b = &_bridge[_bridgedata.indexes[i + w->vscroll.pos]];
+				SetDParam(2, _bridgedata.costs[i + w->vscroll.pos]);
+				SetDParam(1, b->speed * 10 / 16);
+				SetDParam(0, b->material);
+				DrawSprite(b->sprite, b->pal, 3, 15 + i * 22);
 
-			SetDParam(2, _bridgedata.costs[i + w->vscroll.pos]);
-			SetDParam(1, b->speed * 10 / 16);
-			SetDParam(0, b->material);
-			DrawSprite(b->sprite, b->pal, 3, 15 + i * 22);
+				DrawString(44, 15 + i * 22 , STR_500D, 0);
+			}
+			break;
 
-			DrawString(44, 15 + i * 22 , STR_500D, 0);
+		case WE_KEYPRESS: {
+			uint i = e->we.keypress.keycode - '1';
+			if (i < 9 && i < _bridgedata.count) {
+				e->we.keypress.cont = false;
+				BuildBridge(w, i);
+			}
+
+			break;
 		}
-	} break;
 
-	case WE_KEYPRESS: {
-		uint i = e->we.keypress.keycode - '1';
-		if (i < 9 && i < _bridgedata.count) {
-			e->we.keypress.cont = false;
-			BuildBridge(w, i);
-		}
-
-		break;
-	}
-
-	case WE_CLICK:
-		if (e->we.click.widget == 2) {
-			uint ind = ((int)e->we.click.pt.y - 14) / 22;
-			if (ind < 4 && (ind += w->vscroll.pos) < _bridgedata.count)
-				BuildBridge(w, ind);
-		}
-		break;
+		case WE_CLICK:
+			if (e->we.click.widget == 2) {
+				uint ind = ((int)e->we.click.pt.y - 14) / 22;
+				if (ind < 4 && (ind += w->vscroll.pos) < _bridgedata.count)
+					BuildBridge(w, ind);
+			}
+			break;
 	}
 }
 
@@ -134,12 +132,11 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 		errmsg = _error_message;
 	} else {
 		// check which bridges can be built
-		int bridge_len;         // length of the middle parts of the bridge
-		int tot_bridgedata_len; // total length of bridge
-
 		// get absolute bridge length
-		bridge_len = GetBridgeLength(start, end);
-		tot_bridgedata_len = bridge_len + 2;
+		// length of the middle parts of the bridge
+		int bridge_len = GetBridgeLength(start, end);
+		// total length of bridge
+		int tot_bridgedata_len = bridge_len + 2;
 
 		tot_bridgedata_len = CalcBridgeLenCostFactor(tot_bridgedata_len);
 
