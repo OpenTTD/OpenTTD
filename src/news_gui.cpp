@@ -53,33 +53,21 @@ static NewsID _forced_news = INVALID_NEWS;
 
 static byte _total_news = 0; // total news count
 
-void DrawNewsNewTrainAvail(Window *w);
-void DrawNewsNewRoadVehAvail(Window *w);
-void DrawNewsNewShipAvail(Window *w);
-void DrawNewsNewAircraftAvail(Window *w);
+void DrawNewsNewVehicleAvail(Window *w);
 void DrawNewsBankrupcy(Window *w);
 static void MoveToNextItem(void);
 
-StringID GetNewsStringNewTrainAvail(const NewsItem *ni);
-StringID GetNewsStringNewRoadVehAvail(const NewsItem *ni);
-StringID GetNewsStringNewShipAvail(const NewsItem *ni);
-StringID GetNewsStringNewAircraftAvail(const NewsItem *ni);
+StringID GetNewsStringNewVehicleAvail(const NewsItem *ni);
 StringID GetNewsStringBankrupcy(const NewsItem *ni);
 
 static DrawNewsCallbackProc * const _draw_news_callback[] = {
-	DrawNewsNewTrainAvail,    /* DNC_TRAINAVAIL */
-	DrawNewsNewRoadVehAvail,  /* DNC_ROADAVAIL */
-	DrawNewsNewShipAvail,     /* DNC_SHIPAVAIL */
-	DrawNewsNewAircraftAvail, /* DNC_AIRCRAFTAVAIL */
+	DrawNewsNewVehicleAvail,  /* DNC_VEHICLEAVAIL */
 	DrawNewsBankrupcy,        /* DNC_BANKRUPCY */
 };
 
 extern GetNewsStringCallbackProc * const _get_news_string_callback[];
 GetNewsStringCallbackProc * const _get_news_string_callback[] = {
-	GetNewsStringNewTrainAvail,    /* DNC_TRAINAVAIL */
-	GetNewsStringNewRoadVehAvail,  /* DNC_ROADAVAIL */
-	GetNewsStringNewShipAvail,     /* DNC_SHIPAVAIL */
-	GetNewsStringNewAircraftAvail, /* DNC_AIRCRAFTAVAIL */
+	GetNewsStringNewVehicleAvail,  /* DNC_VEHICLEAVAIL */
 	GetNewsStringBankrupcy,        /* DNC_BANKRUPCY */
 };
 

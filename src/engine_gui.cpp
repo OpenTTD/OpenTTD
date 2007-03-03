@@ -20,23 +20,20 @@
 
 static StringID GetEngineCategoryName(EngineID engine)
 {
-	if (engine < NUM_TRAIN_ENGINES) {
-		switch (RailVehInfo(engine)->railtype) {
-			case RAILTYPE_RAIL:     return STR_8102_RAILROAD_LOCOMOTIVE;
-			case RAILTYPE_ELECTRIC: return STR_8102_RAILROAD_LOCOMOTIVE;
-			case RAILTYPE_MONO:     return STR_8106_MONORAIL_LOCOMOTIVE;
-			case RAILTYPE_MAGLEV:   return STR_8107_MAGLEV_LOCOMOTIVE;
-			default: NOT_REACHED();
-		}
+	switch (GetEngine(engine)->type) {
+		default: NOT_REACHED();
+		case VEH_Road:              return STR_8103_ROAD_VEHICLE;
+		case VEH_Aircraft:          return STR_8104_AIRCRAFT;
+		case VEH_Ship:              return STR_8105_SHIP;
+		case VEH_Train:
+			switch (RailVehInfo(engine)->railtype) {
+				default: NOT_REACHED();
+				case RAILTYPE_RAIL:     return STR_8102_RAILROAD_LOCOMOTIVE;
+				case RAILTYPE_ELECTRIC: return STR_8102_RAILROAD_LOCOMOTIVE;
+				case RAILTYPE_MONO:     return STR_8106_MONORAIL_LOCOMOTIVE;
+				case RAILTYPE_MAGLEV:   return STR_8107_MAGLEV_LOCOMOTIVE;
+			}
 	}
-
-	if (engine < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES)
-		return STR_8103_ROAD_VEHICLE;
-
-	if (engine < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES + NUM_SHIP_ENGINES)
-		return STR_8105_SHIP;
-
-	return STR_8104_AIRCRAFT;
 }
 
 static const Widget _engine_preview_widgets[] = {
@@ -62,10 +59,10 @@ static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw);
 static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw);
 
 static const DrawEngineInfo _draw_engine_list[4] = {
-	{DrawTrainEngine,DrawTrainEngineInfo},
-	{DrawRoadVehEngine,DrawRoadVehEngineInfo},
-	{DrawShipEngine,DrawShipEngineInfo},
-	{DrawAircraftEngine,DrawAircraftEngineInfo},
+	{ DrawTrainEngine,    DrawTrainEngineInfo    },
+	{ DrawRoadVehEngine,  DrawRoadVehEngineInfo  },
+	{ DrawShipEngine,     DrawShipEngineInfo     },
+	{ DrawAircraftEngine, DrawAircraftEngineInfo },
 };
 
 static void EnginePreviewWndProc(Window *w, WindowEvent *e)
@@ -83,10 +80,7 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 
 		DrawStringCentered(w->width >> 1, 80, GetCustomEngineName(engine), 0x10);
 
-		(dei = _draw_engine_list,engine < NUM_TRAIN_ENGINES) ||
-		(dei++,engine < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES) ||
-		(dei++,engine < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES + NUM_SHIP_ENGINES) ||
-		(dei++, true);
+		dei = &_draw_engine_list[GetEngine(engine)->type];
 
 		width = w->width;
 		dei->engine_proc(width >> 1, 100, engine, 0);
@@ -142,35 +136,6 @@ static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 	DrawStringMultiCenter(x, y, STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER, maxw);
 }
 
-void DrawNewsNewTrainAvail(Window *w)
-{
-	EngineID engine;
-
-	DrawNewsBorder(w);
-
-	engine = WP(w,news_d).ni->string_id;
-	SetDParam(0, GetEngineCategoryName(engine));
-	DrawStringMultiCenter(w->width >> 1, 20, STR_8859_NEW_NOW_AVAILABLE, w->width - 2);
-
-	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
-
-	SetDParam(0, GetCustomEngineName(engine));
-	DrawStringMultiCenter(w->width >> 1, 57, STR_885A, w->width - 2);
-
-	DrawTrainEngine(w->width >> 1, 88, engine, 0);
-	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
-	DrawTrainEngineInfo(engine, w->width >> 1, 129, w->width - 52);
-}
-
-StringID GetNewsStringNewTrainAvail(const NewsItem *ni)
-{
-	EngineID engine = ni->string_id;
-	SetDParam(0, STR_8859_NEW_NOW_AVAILABLE);
-	SetDParam(1, GetEngineCategoryName(engine));
-	SetDParam(2, GetCustomEngineName(engine));
-	return STR_02B6;
-}
-
 static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
@@ -181,33 +146,6 @@ static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw)
 	SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
 
 	DrawStringMultiCenter(x, y, STR_A02E_COST_MAX_SPEED_CAPACITY, maxw);
-}
-
-void DrawNewsNewAircraftAvail(Window *w)
-{
-	EngineID engine;
-
-	DrawNewsBorder(w);
-
-	engine = WP(w,news_d).ni->string_id;
-
-	DrawStringMultiCenter(w->width >> 1, 20, STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE, w->width - 2);
-	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
-
-	SetDParam(0, GetCustomEngineName(engine));
-	DrawStringMultiCenter(w->width >> 1, 57, STR_A02D, w->width - 2);
-
-	DrawAircraftEngine(w->width >> 1, 93, engine, 0);
-	GfxFillRect(25, 56, w->width - 56, 110, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
-	DrawAircraftEngineInfo(engine, w->width >> 1, 131, w->width - 52);
-}
-
-StringID GetNewsStringNewAircraftAvail(const NewsItem *ni)
-{
-	EngineID engine = ni->string_id;
-	SetDParam(0, STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE);
-	SetDParam(2, GetCustomEngineName(engine));
-	return STR_02B6;
 }
 
 static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw)
@@ -223,32 +161,6 @@ static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw)
 	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
 }
 
-void DrawNewsNewRoadVehAvail(Window *w)
-{
-	EngineID engine;
-
-	DrawNewsBorder(w);
-
-	engine = WP(w,news_d).ni->string_id;
-	DrawStringMultiCenter(w->width >> 1, 20, STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE, w->width - 2);
-	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
-
-	SetDParam(0, GetCustomEngineName(engine));
-	DrawStringMultiCenter(w->width >> 1, 57, STR_9029, w->width - 2);
-
-	DrawRoadVehEngine(w->width >> 1, 88, engine, 0);
-	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
-	DrawRoadVehEngineInfo(engine, w->width >> 1, 129, w->width - 52);
-}
-
-StringID GetNewsStringNewRoadVehAvail(const NewsItem *ni)
-{
-	EngineID engine = ni->string_id;
-	SetDParam(0, STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE);
-	SetDParam(2, GetCustomEngineName(engine));
-	return STR_02B6;
-}
-
 static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const ShipVehicleInfo *svi = ShipVehInfo(engine);
@@ -260,29 +172,31 @@ static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw)
 	DrawStringMultiCenter(x, y, STR_982E_COST_MAX_SPEED_CAPACITY, maxw);
 }
 
-void DrawNewsNewShipAvail(Window *w)
-{
-	EngineID engine;
 
+StringID GetNewsStringNewVehicleAvail(const NewsItem *ni)
+{
+	EngineID engine = ni->string_id;
+	SetDParam(0, GetEngineCategoryName(engine));
+	SetDParam(1, GetCustomEngineName(engine));
+	return STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE;
+}
+
+void DrawNewsNewVehicleAvail(Window *w)
+{
 	DrawNewsBorder(w);
 
-	engine = WP(w,news_d).ni->string_id;
+	EngineID engine = WP(w, news_d).ni->string_id;
+	const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
 
-	DrawStringMultiCenter(w->width >> 1, 20, STR_982C_NEW_SHIP_NOW_AVAILABLE, w->width - 2);
+	SetDParam(0, GetEngineCategoryName(engine));
+	DrawStringMultiCenter(w->width >> 1, 20, STR_NEW_VEHICLE_NOW_AVAILABLE, w->width - 2);
+
 	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
 
 	SetDParam(0, GetCustomEngineName(engine));
-	DrawStringMultiCenter(w->width >> 1, 57, STR_982D, w->width - 2);
+	DrawStringMultiCenter(w->width >> 1, 57, STR_NEW_VEHICLE_TYPE, w->width - 2);
 
-	DrawShipEngine(w->width >> 1, 93, engine, 0);
-	GfxFillRect(25, 56, w->width - 56, 110, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
-	DrawShipEngineInfo(engine, w->width >> 1, 131, w->width - 52);
-}
-
-StringID GetNewsStringNewShipAvail(const NewsItem *ni)
-{
-	EngineID engine = ni->string_id;
-	SetDParam(0, STR_982C_NEW_SHIP_NOW_AVAILABLE);
-	SetDParam(2, GetCustomEngineName(engine));
-	return STR_02B6;
+	dei->engine_proc(w->width >> 1, 88, engine, 0);
+	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
+	dei->info_proc(engine, w->width >> 1, 129, w->width - 52);
 }

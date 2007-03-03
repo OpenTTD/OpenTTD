@@ -317,15 +317,8 @@ static void NewVehicleAvailable(Engine *e)
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) SETBIT(p->avail_railtypes, railtype);
 		}
-
-		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_TRAINAVAIL), 0, 0);
-	} else if (index < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES) {
-		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_ROADAVAIL), 0, 0);
-	} else if (index < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES + NUM_SHIP_ENGINES) {
-		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_SHIPAVAIL), 0, 0);
-	} else {
-		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_AIRCRAFTAVAIL), 0, 0);
 	}
+	AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_VEHICLEAVAIL), 0, 0);
 }
 
 void EnginesMonthlyLoop(void)

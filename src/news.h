@@ -59,11 +59,8 @@ enum NewsFlags {
 };
 
 enum NewsCallback {
-	DNC_TRAINAVAIL    = 0, ///< Show new train available message. StringID is EngineID
-	DNC_ROADAVAIL     = 1, ///< Show new road vehicle available message. StringID is EngineID
-	DNC_SHIPAVAIL     = 2, ///< Show new ship available message. StringID is EngineID
-	DNC_AIRCRAFTAVAIL = 3, ///< Show new aircraft available message. StringID is EngineID
-	DNC_BANKRUPCY     = 4, ///< Show bankrupcy message. StringID is PlayerID (0-3) and NewsBankrupcy (4-7)
+	DNC_VEHICLEAVAIL  = 0, ///< Show new vehicle available message. StringID is EngineID
+	DNC_BANKRUPCY     = 1, ///< Show bankrupcy message. StringID is PlayerID (0-3) and NewsBankrupcy (4-7)
 };
 
 enum NewsBankrupcy {
