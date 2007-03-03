@@ -56,7 +56,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 
 		/* Draw max speed */
 		{
-			SetDParam(0, v->max_speed / 2);
+			SetDParam(0, v->max_speed * 10 / 32);
 			DrawString(2, 25, STR_900E_MAX_SPEED, 0);
 		}
 
