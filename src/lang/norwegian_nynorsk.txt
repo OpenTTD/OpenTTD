@@ -1042,6 +1042,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillat 
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikkje-einsarta stasjonar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global rutesøking (NGR, overstyrer NTK): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat å køyre gjennom stoppestadar på vegar som byane eig: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Alltid tillat bygging av små flyplassar: {ORANGE}{STRING}
 
@@ -1315,7 +1316,7 @@ STR_NETWORK_SERVER_FULL                                         :{SILVER}TENAREN
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}DU HAR EIN ANNAN VERSJON ENN TENAREN
 STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF PASSAR IKKJE
 
-STR_NETWORK_JOIN_GAME                                           :{BLACK}Ver med på spel
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Bli med på spel
 
 
 STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Start eit nytt fleirspelarspel
@@ -1585,6 +1586,8 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Veg med gatelyk
 STR_1816_TREE_LINED_ROAD                                        :Aveny
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garasje
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Jernbaneovergang
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kan ikkje fjerne busstasjon
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kan ikkje fjerne lastebilstasjon
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Byar
@@ -2631,6 +2634,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Jernbanetypane 
 STR_TRAIN_NO_POWER                                              :{RED}Ingen straum
 STR_TRAIN_START_NO_CATENARY                                     :Dette sporet manglar eit kjede, så toget kan ikkje starte
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Ny {STRING}type er tilgjengeleg!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ny {STRING}type er tilgjengeleg!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køyretøy i vegen
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} køyretøy
@@ -2891,6 +2898,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjere forandringar i eit spel som er i gang.  Det kan få OpenTTD til å krasje.  Er du heilt sikker på at du vil gjere dette?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Åtvaring: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Feil: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} vil ikkje virke med den TTDPatch versjonen som OpenTTD oppgjer
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} er for {STRING} utgåva av TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} er laga for å brukast saman med {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} må være lasta før{STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} må være lasta etter {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Legg til
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Legg ei ny NewGRF-fil til lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Fjern
@@ -3116,4 +3134,11 @@ STR_MEASURE_AREA                                                :{BLACK}Område:
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengd: {NUM}{}Høgdeskilnad: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Område: {NUM} x {NUM}{}Høgdeskilnad: {NUM} m
 
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Overfør kreditt: {LTBLUE}{CURRENCY}

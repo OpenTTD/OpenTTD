@@ -2632,6 +2632,7 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Skinnetyperne p
 STR_TRAIN_NO_POWER                                              :{RED}Ingen strøm
 STR_TRAIN_START_NO_CATENARY                                     :Toget kan ikke køre, fordi sporet ikke har køreledninger
 
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køretøj i vejen
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Køretøj{P "" er}
@@ -2892,6 +2893,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er ved at ændre et igangværende spil; dette kan få OpenTTD til at gå ned.{}Er du helt sikker på at du vil fortsætte?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Advarsel: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fejl: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalt: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} virker ikke med TTDPatch-versionen rapporteret af OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} er beregnet til {STRING}-versionen af TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} er designet til brug sammen med {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} skal indlæses før {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} skal indlæses efter {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Tilføj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Tilføj et NewGRF sæt til listen
 STR_NEWGRF_REMOVE                                               :{BLACK}Fjern
@@ -3117,4 +3129,10 @@ STR_MEASURE_AREA                                                :{BLACK}Areal: {
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Længde: {NUM}{}Højdeforskel: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Areal: {NUM} x {NUM}{}Højdeforskel: {NUM} m
 
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+
 ########
+

@@ -2713,6 +2713,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Nezdružljiv ti
 STR_TRAIN_NO_POWER                                              :{RED}Ni napetosti
 STR_TRAIN_START_NO_CATENARY                                     :Ta proga nima napetostnih vodov, zato vlak ne more z mesta
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Novo! {STRING} sedaj na razpolago!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo! {STRING} sedaj na razpolago!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestno vozilo na poti
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Cestn{P o i a ih} vozil{P o i a ""}
@@ -3215,3 +3219,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Prenesi kredite: {LTBLUE}{CURRENCY}

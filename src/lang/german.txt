@@ -2634,6 +2634,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :inkompatible Gl
 STR_TRAIN_NO_POWER                                              :{RED}Keine Energie
 STR_TRAIN_START_NO_CATENARY                                     :Wegen fehlender Oberleitung kann der Zug nicht starten.
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Neue(s) {STRING} jetzt erhältlich!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Neue(s) {STRING} jetzt erhältlich!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Fahrzeug ist im Weg
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Fahrzeug{P "" e}
@@ -3136,3 +3140,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Überweise Geld: {LTBLUE}{CURRENCY}

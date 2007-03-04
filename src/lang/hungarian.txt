@@ -2736,6 +2736,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :inkompatibilis 
 STR_TRAIN_NO_POWER                                              :{RED}Nincs áram
 STR_TRAIN_START_NO_CATENARY                                     :Ennek a sínnek nincs felsővezetéke, a vonat nem tud indulni
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Új {STRING} elérhető!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Új {STRING} elérhető!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Közúti jármű van az útban
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} közúti járművei - {COMMA}
@@ -3238,3 +3242,4 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+

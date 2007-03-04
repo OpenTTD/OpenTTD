@@ -2633,6 +2633,7 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :铁路类型不
 STR_TRAIN_NO_POWER                                              :{RED}没有电力
 STR_TRAIN_START_NO_CATENARY                                     :这不是电气化铁路，电力机车不能启动
 
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}指定的位置有汽车
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} 汽车
@@ -2893,6 +2894,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID�
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum：{SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}你将要改变一个正在运行的游戏，这可能导致该游戏崩溃，你确定要这样做吗？
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}错误：{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}严重错误：{SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} 不能与 OpenTTD 报告的 TTDPatch 版本兼容。
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} 是为 {STRING} 版 TTD 开发的。
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} 应当与 {STRING} 配合
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING} 参数错误：参数 {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} 必须在 {STRING} 前加载。
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} 必须在 {STRING} 后加载。
+
 STR_NEWGRF_ADD                                                  :{BLACK}增加
 STR_NEWGRF_ADD_TIP                                              :{BLACK}向列表中增加一个 NewGRF 文件
 STR_NEWGRF_REMOVE                                               :{BLACK}删除
@@ -3118,4 +3130,10 @@ STR_MEASURE_AREA                                                :{BLACK}面积�
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}长度：{NUM}{}高度差：{NUM} 米
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}面积：{NUM} x {NUM}{}高度差：{NUM}米
 
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+
 ########
+

@@ -2633,6 +2633,7 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Inkompatible je
 STR_TRAIN_NO_POWER                                              :{RED}Ingen strøm
 STR_TRAIN_START_NO_CATENARY                                     :Dette sporet mangler et kjede, så toget kan ikke starte
 
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kjøretøy i veien
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} kjøretøy
@@ -2893,6 +2894,16 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjøre forandringer i et kjørende spill; Dette kan krasje OpenTTD.{}Er du helt sikker på at du vil gjøre dette?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Advarsel: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Feil: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} virker ikke med TTDPatch versjonen som er rapportert av OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} er for versjon {STRING} av TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} er designet for å bli brukt med {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} må være lastet før {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} må være lastet etter {STRING}.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Legg til
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Legg en ny NewGRF-fil til listen
@@ -3120,5 +3131,9 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengde: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Område: {NUM} x {NUM}{}Høydeforskjell: {NUM} m
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+

@@ -2633,6 +2633,7 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Vias férreas i
 STR_TRAIN_NO_POWER                                              :{RED}Sem energia
 STR_TRAIN_START_NO_CATENARY                                     :Esta linha não tem catenária, o comboio não pode arrancar
 
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Veículo de estrada no caminho
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Veículos de Estrada
@@ -3130,5 +3131,10 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Comprime
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {NUM} x {NUM}{}Diferença de altura: {NUM} m
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Créditos de Transferência: {LTBLUE}{CURRENCY}

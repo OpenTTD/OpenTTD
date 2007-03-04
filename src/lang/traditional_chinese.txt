@@ -2633,6 +2633,7 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :軌道類型不
 STR_TRAIN_NO_POWER                                              :{RED}沒有電力
 STR_TRAIN_START_NO_CATENARY                                     :這個軌道沒有電氣化，所以列車無法起動
 
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}前方有汽車
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - 汽車 {COMMA} 輛
@@ -2902,6 +2903,7 @@ STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} 只適
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} 必須跟 {STRING} 一起使用
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              : {STRING} 的參數無效: {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :載入前 {1:STRING} 必須先載入 {0:STRING}。
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} 必須在 {STRING} 之後載入。
 
 STR_NEWGRF_ADD                                                  :{BLACK}新增
 STR_NEWGRF_ADD_TIP                                              :{BLACK}為清單加入新的 NewGRF 檔
@@ -3129,5 +3131,7 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長度: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}區域: {NUM} x {NUM}{}高度差: {NUM} m
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 
 ########
+

@@ -1016,9 +1016,9 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Наст
 STR_CONFIG_PATCHES_OFF                                          :нет
 STR_CONFIG_PATCHES_ON                                           :да
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Показывать скорость в панели статуса транспорта: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и берегу: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и на берегу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Зона покрытия зависит от типа станции: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Разрешить удаление всех принадлежащих городу объектов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Разрешить удаление всех городских объектов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Разрешить строительство очень длинных поездов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Включить реалистичное ускорение для поездов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Запретить резкие повороты поездам и кораблям: {ORANGE}{STRING} {LTBLUE}(NPF)
@@ -1050,7 +1050,7 @@ STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Все�
 STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Предупреждать, если поезд заблудился: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Проверять маршруты на правильность: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :нет
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :да, кроме остановленного транспорта
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :кроме остановленного
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :всего транспорта
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждать, если поезд приносит убыток: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт никогда не устаревает: {ORANGE}{STRING}
@@ -1062,7 +1062,7 @@ STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Пок�
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Убирать деревья при включении прозрачности зданий: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Генератор земли: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Оригинальный
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :оригинальный
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. расстояние от края карты до нефтепер. заводов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Высота "снежной" линии: {ORANGE}{STRING}
@@ -1075,12 +1075,12 @@ STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Алг�
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Нет
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Оригинальный
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Продвинутый
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Вращение ЛАНДШАФТА: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Против часовой
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовой
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Вращение карты высот: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Против часовой стрелки
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовой стрелке
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Уровень высоты для карт с плоским рельефом: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Протяженность станции: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. протяженность: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Включить обслуживание на вертолетных площадках: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Открывать ландшафтную панель вместе с транспортными: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Обратить направление перетаскивания обзора: {ORANGE}{STRING}
@@ -1142,7 +1142,7 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Изменить значение
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Некоторые из выбранных интервалов обслуживания не совместимы с выбранной установкой. Допускаются значения 5-90% или 30-800 дней.
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Некоторые интервалы обслуживания не совместимы с выбранной установкой. Допускаются значения 5-90% или 30-800 дней.
 STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Использовать YAPF для кораблей: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Использовать YAPF для автомобилей: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Использовать YAPF для поездов: {ORANGE}{STRING}
@@ -1273,7 +1273,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Изме
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Добро пожаловать в новый ИИ, он совершенствуется. Вы должны быть готовы к проблемам. Когда это случится, сделайте снимок и отправьте на форум. Наслаждайтесь!
 TEMP_AI_ACTIVATED                                               :{WHITE}Внимание: новый AI всё еще находится в состоянии альфа-версии! В настоящее время работает только с автотранспортом!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Внимание: тестовое использование (новый ИИ). Пожалуйста, сообщайте обо всех проблемах на truelight@openttd.org.
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Внимание: экспериментальная эксплуатация нового AI. Пожалуйста, сообщайте обо всех проблемах на truelight@openttd.org.
 
 ############ network gui strings
 
@@ -2646,6 +2646,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :IНесовме
 STR_TRAIN_NO_POWER                                              :{RED}Нет тока.
 STR_TRAIN_START_NO_CATENARY                                     :Кто-то украл все провода, поезд не может ехать...
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Появился новый {STRING}!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Появился новый {STRING}!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Машина на пути
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Автомашин{P а ы ""}
@@ -3148,3 +3152,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Выручка перевозки: {LTBLUE}{CURRENCY}

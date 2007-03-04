@@ -1040,7 +1040,7 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Mise en
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Défiler la vue horizontalement avec le pointeur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permettre la corruption de la municipalité: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Gares non uniformes: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nouvelle recherche de chemin globale (NPF, écrase NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nouvelle recherche de chemin global (NPF, écrase NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplier le poid pour les trains fret (simule des trains lourds): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Autoriser les arrêts de bus sur les routes des municipalités: {ORANGE}{STRING}
 
@@ -1879,8 +1879,8 @@ STR_482F_COST                                                   :{BLACK}Prix: {Y
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Impossible de construire cette industrie ici...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...les forêts ne peuvent pas être plantées sur de la neige
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} annonce une fermeture imminente!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Des problèmes d'approvisionnement forcent {INDUSTRY} à fermer bientôt!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Le manque d'arbres proches force {INDUSTRY} à fermer bientôt!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Des problèmes d'approvisionnement obligent {INDUSTRY} à fermer bientôt!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Le manque d'arbres proches oblige {INDUSTRY} à fermer bientôt!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} augmente la production!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nouveau filon de charbon trouvé à {INDUSTRY}!{}La production devrait doubler!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nouveaux gisements pétrolifères découverts à {INDUSTRY}!{}La production devrait doubler!
@@ -2634,6 +2634,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Types de rail i
 STR_TRAIN_NO_POWER                                              :{RED}Pas de puissance
 STR_TRAIN_START_NO_CATENARY                                     :Cette voie n'a pas de caténaire, le train ne peut pas démarrer
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nouv{G eau el elle} {STRING} disponible!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nouv{G eau el elle} {STRING} disponible!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Véhicule Routier présent
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Véhicule{P "" s} routier{P "" s}
@@ -2843,10 +2847,10 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Entretien au ha
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Désastre impliquant un Zeppelin à {STATION}!
-STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Véhicule routier détruit dans use collision avec un 'OVNI'!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Un véhicule routier est détruit dans une collision avec un 'OVNI'!
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Explosion d'une raffinerie pétrolière près de {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Usine détruite dans des circonstances suspectes près de {TOWN}!
-STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}Un 'OVNI' attérit près de {TOWN}!
+STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}Un 'OVNI' a été découvert près de {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Affaissement d'une veine de charbon entraîne la desctruction de la mine de {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Inondations!{}Au moins {COMMA} présumé{P "" s} manquant{P "" s} ou mort{P "" s} après des inondations meurtrières!
 
@@ -2895,7 +2899,7 @@ STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: 
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vous êtes sur le point de faire des changements dans une partie en cours; cela peut faire planter OpenTTD.{}Etes-vous absolument sûr ?
 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Avertissement: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Attention: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erreur: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} ne fonctionnera pas avec la version de TTDPatch reportée par OpenTTD.
@@ -3136,3 +3140,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Crédits de transfert: {LTBLUE}{CURRENCY}
