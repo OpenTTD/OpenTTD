@@ -106,6 +106,28 @@ static inline bool IsUtf8Part(char c)
 	return GB(c, 6, 2) == 2;
 }
 
+/**
+ * Retrieve the (partial) length of the previous UNICODE character
+ * in an UTF-8 encoded string.
+ * @param s char pointer pointing to the first char of the next character
+ * @returns the decoded length in bytes (size) of the UNICODE character
+ * that was just before the one where 's' is pointing to
+ * @note If 's' is not pointing to the first byte of the next UNICODE character
+ * only a partial length of the sequence will be returned.
+ * For example given this sequence: 0xE3 0x85 0x80, 0xE3 0x81 0x9E
+ * 1. 's' is pointing to the second 0xE3, return value is 3
+ * 2. 's' is pointing to 0x80, return value is 2.
+ * So take care with the return values of this function. To get the real length
+ * for an (invalid) sequence, pass the string offset of this function's return
+ * value to Utf8EncodedCharLen() or Utf8Decode()
+ */
+static inline size_t Utf8PrevCharLen(const char *s)
+{
+	size_t len = 1;
+	while (IsUtf8Part(*--s)) len++;
+	return len;
+}
+
 
 static inline bool IsPrintable(WChar c)
 {

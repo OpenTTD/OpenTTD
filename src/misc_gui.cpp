@@ -805,11 +805,7 @@ static void DelChar(Textbuf *tb, bool backspace)
 	uint width;
 	size_t len;
 
-	if (backspace) {
-		do {
-			tb->caretpos--;
-		} while (IsUtf8Part(*(tb->buf + tb->caretpos)));
-	}
+	if (backspace) tb->caretpos -= Utf8PrevCharLen(tb->buf + tb->caretpos);
 
 	len = Utf8Decode(&c, tb->buf + tb->caretpos);
 	width = GetCharacterWidth(FS_NORMAL, c);
@@ -892,10 +888,7 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
 		if (tb->caretpos != 0) {
 			WChar c;
 
-			do {
-				tb->caretpos--;
-			} while (IsUtf8Part(*(tb->buf + tb->caretpos)));
-
+			tb->caretpos -= Utf8PrevCharLen(tb->buf + tb->caretpos);
 			Utf8Decode(&c, tb->buf + tb->caretpos);
 			tb->caretxoffs -= GetCharacterWidth(FS_NORMAL, c);
 
