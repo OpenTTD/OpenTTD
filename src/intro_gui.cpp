@@ -123,6 +123,8 @@ void AskExitGame(void)
 		SetDParam(0, STR_OSNAME_AMIGAOS);
 #elif defined(__OS2__)
 		SetDParam(0, STR_OSNAME_OS2);
+#elif defined(SUNOS)
+		SetDParam(0, STR_OSNAME_SUNOS);
 #else
 		SetDParam(0, STR_0134_UNIX);
 #endif
