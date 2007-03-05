@@ -371,7 +371,7 @@ static const AirportMovingData _airport_moving_data_oilrig[9] = {
 	{  -31,   69, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 5 - circle #1 (north-east)
 	{  -31,  -49, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 6 - circle #2 (north-west)
 	{   69,  -49, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 7 - circle #3 (south-west)
-	{   70,    9, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 8 - circle #4 (south)
+	{   69,    9, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 8 - circle #4 (south)
 };
 
 ///////////////////////////////////////////////////////////////////////
