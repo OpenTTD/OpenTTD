@@ -1212,6 +1212,7 @@ detect_os() {
 					/morphos/      { print "MORPHOS"; exit}
 					/beos/         { print "BEOS";    exit}
 					/sunos/        { print "SUNOS";   exit}
+					/solaris/      { print "SUNOS";   exit}
 					/cygwin/       { print "CYGWIN";  exit}
 					/mingw/        { print "MINGW";   exit}
 					/os2/          { print "OS2";     exit}
