@@ -560,36 +560,36 @@ STR_01AB                                                        :{BLACK}{TINYFON
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1.
-STR_01AD_2ND                                                    :2/
-STR_01AE_3RD                                                    :3/
-STR_01AF_4TH                                                    :4/
-STR_01B0_5TH                                                    :5/
-STR_01B1_6TH                                                    :6/
-STR_01B2_7TH                                                    :7/
-STR_01B3_8TH                                                    :8/
-STR_01B4_9TH                                                    :9/
-STR_01B5_10TH                                                   :10/
-STR_01B6_11TH                                                   :11/
-STR_01B7_12TH                                                   :12/
-STR_01B8_13TH                                                   :13/
-STR_01B9_14TH                                                   :14/
-STR_01BA_15TH                                                   :15/
-STR_01BB_16TH                                                   :16/
-STR_01BC_17TH                                                   :17/
-STR_01BD_18TH                                                   :18/
-STR_01BE_19TH                                                   :19/
-STR_01BF_20TH                                                   :20/
-STR_01C0_21ST                                                   :21/
-STR_01C1_22ND                                                   :22/
-STR_01C2_23RD                                                   :23/
-STR_01C3_24TH                                                   :24/
-STR_01C4_25TH                                                   :25/
-STR_01C5_26TH                                                   :26/
-STR_01C6_27TH                                                   :27/
-STR_01C7_28TH                                                   :28/
-STR_01C8_29TH                                                   :29/
-STR_01C9_30TH                                                   :30/
-STR_01CA_31ST                                                   :31/
+STR_01AD_2ND                                                    :2.
+STR_01AE_3RD                                                    :3.
+STR_01AF_4TH                                                    :4.
+STR_01B0_5TH                                                    :5.
+STR_01B1_6TH                                                    :6.
+STR_01B2_7TH                                                    :7.
+STR_01B3_8TH                                                    :8.
+STR_01B4_9TH                                                    :9.
+STR_01B5_10TH                                                   :10.
+STR_01B6_11TH                                                   :11.
+STR_01B7_12TH                                                   :12.
+STR_01B8_13TH                                                   :13.
+STR_01B9_14TH                                                   :14.
+STR_01BA_15TH                                                   :15.
+STR_01BB_16TH                                                   :16.
+STR_01BC_17TH                                                   :17.
+STR_01BD_18TH                                                   :18.
+STR_01BE_19TH                                                   :19.
+STR_01BF_20TH                                                   :20.
+STR_01C0_21ST                                                   :21.
+STR_01C1_22ND                                                   :22.
+STR_01C2_23RD                                                   :23.
+STR_01C3_24TH                                                   :24.
+STR_01C4_25TH                                                   :25.
+STR_01C5_26TH                                                   :26.
+STR_01C6_27TH                                                   :27.
+STR_01C7_28TH                                                   :28.
+STR_01C8_29TH                                                   :29.
+STR_01C9_30TH                                                   :30.
+STR_01CA_31ST                                                   :31.
 ############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
@@ -2697,6 +2697,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Nekompatibilne 
 STR_TRAIN_NO_POWER                                              :{RED}Nie je prud
 STR_TRAIN_START_NO_CATENARY                                     :Vlak nemoze nastartovat, pretoze trat nie je pripojena
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nové {STRING} dostupné!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nové {STRING} dostupné!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automobil v ceste
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Automobil{P "" y ov}
@@ -3199,3 +3203,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer kredity: {LTBLUE}{CURRENCY}

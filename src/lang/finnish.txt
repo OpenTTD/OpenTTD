@@ -2192,6 +2192,7 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Yhtiön {COMPANY} on ottanut haltuun {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Tällä yhtiöllä ei ole vielä osakkeita...
 
+STR_LIVERY_DEFAULT                                              :
 STR_LIVERY_STEAM                                                :Höyryveturi
 STR_LIVERY_DIESEL                                               :Dieselveturi
 STR_LIVERY_ELECTRIC                                             :Sähköveturi
@@ -2632,6 +2633,8 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Raiteet eivät 
 STR_TRAIN_NO_POWER                                              :{RED}Ei virtaa
 STR_TRAIN_START_NO_CATENARY                                     :Radasta puuttuu "catenary"; junaa ei voi käynnistää
 
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Ajoneuvo tiellä.
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} ajoneuvoa
@@ -2892,6 +2895,10 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5-summa: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Olet tekemässä muutoksia käynnissä olevaan peliin. OpenTTD voi kaatua.{}Oletko varma?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varoitus: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Virhe: {SILVER}{STRING}
+
 STR_NEWGRF_ADD                                                  :{BLACK}Lisää
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lisää NewGRF-tiedosto listaan
 STR_NEWGRF_REMOVE                                               :{BLACK}Poista
@@ -3117,4 +3124,10 @@ STR_MEASURE_AREA                                                :{BLACK}Pinta-al
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Pituus: {NUM}{}Korkeusero: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pinta-ala: {NUM} x {NUM}{}Korkeusero: {NUM} m
 
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+
 ########
+

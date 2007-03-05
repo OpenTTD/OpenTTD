@@ -2361,6 +2361,8 @@ STR_LIVERY_DIESEL                                               :Дизельн�
 STR_LIVERY_ELECTRIC                                             :Електричні потяги
 STR_LIVERY_MONORAIL                                             :Монорельс
 STR_LIVERY_MAGLEV                                               :Потяги на магнітній подушці
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (пар)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (дизель)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажирський вагон (електричка)
@@ -2793,6 +2795,10 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Зупин
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Залізничні колій несумісні
 STR_TRAIN_NO_POWER                                              :{RED}Неелектрифіковано
 STR_TRAIN_START_NO_CATENARY                                     :Нема електрики, поїзд стоїть
+
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Став доступним новий {STRING}!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Став доступним новий {STRING}!  -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}На шляху авто
@@ -3296,3 +3302,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Дохід перевезень: {LTBLUE}{CURRENCY}

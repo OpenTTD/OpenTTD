@@ -2633,6 +2633,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Vias férreas i
 STR_TRAIN_NO_POWER                                              :{RED}Sem energia
 STR_TRAIN_START_NO_CATENARY                                     :Esta linha não tem catenária, o comboio não pode arrancar
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Novo {STRING} agora disponível!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo {STRING} agora disponível! - {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Veículo de estrada no caminho

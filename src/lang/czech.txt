@@ -338,6 +338,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}... vlastněno {STRING}
 STR_013C_CARGO                                                  :{BLACK}Náklad
@@ -2307,60 +2308,60 @@ STR_8017_SH_30_ELECTRIC                                         :SH '30' (elektr
 STR_8018_SH_40_ELECTRIC                                         :SH '40' (elektrická)
 STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (elektrická)
 STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (elektrická)
-STR_801B_PASSENGER_CAR                                          :Osobní vagon pro cestující
+STR_801B_PASSENGER_CAR                                          :Osobní vagon
 STR_801C_MAIL_VAN                                               :Poštovní vagon
 STR_801D_COAL_CAR                                               :Vagon na uhlí
 STR_801E_OIL_TANKER                                             :Cisternový vagon na ropu
-STR_801F_LIVESTOCK_VAN                                          :Vagon pro dobytek
-STR_8020_GOODS_VAN                                              :Vagon na zboží
-STR_8021_GRAIN_HOPPER                                           :Vagon na zrní
+STR_801F_LIVESTOCK_VAN                                          :Krytý vůz na dobytek
+STR_8020_GOODS_VAN                                              :Krytý vůz na zboží
+STR_8021_GRAIN_HOPPER                                           :Násypný vůz na zrní
 STR_8022_WOOD_TRUCK                                             :Vagon na dřevo
-STR_8023_IRON_ORE_HOPPER                                        :Vagon na železnou rudu
+STR_8023_IRON_ORE_HOPPER                                        :Násypný vůz na železnou rudu
 STR_8024_STEEL_TRUCK                                            :Vagon na ocel
-STR_8025_ARMORED_VAN                                            :Vagon na ceniny
-STR_8026_FOOD_VAN                                               :Vagon na jídlo
+STR_8025_ARMORED_VAN                                            :Krytý vůz na ceniny
+STR_8026_FOOD_VAN                                               :Krytý vůz na jídlo
 STR_8027_PAPER_TRUCK                                            :Vagon na papír
-STR_8028_COPPER_ORE_HOPPER                                      :Vagon na měděnou rudu
+STR_8028_COPPER_ORE_HOPPER                                      :Násypný vůz na měděnou rudu
 STR_8029_WATER_TANKER                                           :Cisternový vagon na vodu
 STR_802A_FRUIT_TRUCK                                            :Vagon na ovoce
 STR_802B_RUBBER_TRUCK                                           :Vagon na kaučuk
 STR_802C_SUGAR_TRUCK                                            :Vagon na cukr
-STR_802D_COTTON_CANDY_HOPPER                                    :Vagon na cukrovou vatu
-STR_802E_TOFFEE_HOPPER                                          :Vagon na karamel
-STR_802F_BUBBLE_VAN                                             :Vagon na bubliny
+STR_802D_COTTON_CANDY_HOPPER                                    :Násypný vůz na cukrovou vatu
+STR_802E_TOFFEE_HOPPER                                          :Násypný vůz na karamel
+STR_802F_BUBBLE_VAN                                             :Krytý vůz na bubliny
 STR_8030_COLA_TANKER                                            :Cisternový vagon na kolu
-STR_8031_CANDY_VAN                                              :Vagon na bonbony
-STR_8032_TOY_VAN                                                :Vagon na hračky
+STR_8031_CANDY_VAN                                              :Krytý vůz na bonbony
+STR_8032_TOY_VAN                                                :Krytý vůz na hračky
 STR_8033_BATTERY_TRUCK                                          :Vagon na baterie
 STR_8034_FIZZY_DRINK_TRUCK                                      :Vagon na limonády
 STR_8035_PLASTIC_TRUCK                                          :Vagon na plast
 STR_8036_X2001_ELECTRIC                                         :'X2001' (elektrická)
 STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (elektrická)
 STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
-STR_8039_PASSENGER_CAR                                          :Osobní vagon pro cestující
+STR_8039_PASSENGER_CAR                                          :Osobní vagon
 STR_803A_MAIL_VAN                                               :Poštovní vagon
 STR_803B_COAL_CAR                                               :Vagon na uhlí
 STR_803C_OIL_TANKER                                             :Cisternový vagon na ropu
-STR_803D_LIVESTOCK_VAN                                          :Vagon pro dobytek
-STR_803E_GOODS_VAN                                              :Vagon na zboží
-STR_803F_GRAIN_HOPPER                                           :Vagon na zrní
+STR_803D_LIVESTOCK_VAN                                          :Krytý vůz na dobytek
+STR_803E_GOODS_VAN                                              :Krytý vůz na zboží
+STR_803F_GRAIN_HOPPER                                           :Násypný vůz na zrní
 STR_8040_WOOD_TRUCK                                             :Vagon na dřevo
-STR_8041_IRON_ORE_HOPPER                                        :Vagon na železnou rudu
+STR_8041_IRON_ORE_HOPPER                                        :Násypný vůz na železnou rudu
 STR_8042_STEEL_TRUCK                                            :Vagon na ocel
-STR_8043_ARMORED_VAN                                            :Vagon na ceniny
-STR_8044_FOOD_VAN                                               :Vagon na jídlo
+STR_8043_ARMORED_VAN                                            :Krytý vůz na ceniny
+STR_8044_FOOD_VAN                                               :Krytý vůz na jídlo
 STR_8045_PAPER_TRUCK                                            :Vagon na papír
-STR_8046_COPPER_ORE_HOPPER                                      :Vagon na měděnou rudu
+STR_8046_COPPER_ORE_HOPPER                                      :Násypný vůz na měděnou rudu
 STR_8047_WATER_TANKER                                           :Cisternový vagon na vodu
 STR_8048_FRUIT_TRUCK                                            :Vagon na ovoce
 STR_8049_RUBBER_TRUCK                                           :Vagon na kaučuk
 STR_804A_SUGAR_TRUCK                                            :Vagon na cukr
-STR_804B_COTTON_CANDY_HOPPER                                    :Vagon na cukrovou vatu
-STR_804C_TOFFEE_HOPPER                                          :Vagon na karamel
-STR_804D_BUBBLE_VAN                                             :Vagon na bubliny
+STR_804B_COTTON_CANDY_HOPPER                                    :Násypný vůz na cukrovou vatu
+STR_804C_TOFFEE_HOPPER                                          :Násypný vůz na karamel
+STR_804D_BUBBLE_VAN                                             :Krytý vůz na bubliny
 STR_804E_COLA_TANKER                                            :Cisternový vagon na kolu
-STR_804F_CANDY_VAN                                              :Vagon na bonbony
-STR_8050_TOY_VAN                                                :Vagon na hračky
+STR_804F_CANDY_VAN                                              :Krytý vůz na bonbony
+STR_8050_TOY_VAN                                                :Krytý vůz na hračky
 STR_8051_BATTERY_TRUCK                                          :Vagon na baterie
 STR_8052_FIZZY_DRINK_TRUCK                                      :Vagon na limonády
 STR_8053_PLASTIC_TRUCK                                          :Vagon na plast
@@ -2369,30 +2370,30 @@ STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' 
 STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (elektrická)
 STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (elektrická)
 STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
-STR_8059_PASSENGER_CAR                                          :Osobní vagon pro cestující
+STR_8059_PASSENGER_CAR                                          :Osobní vagon
 STR_805A_MAIL_VAN                                               :Poštovní vagon
 STR_805B_COAL_CAR                                               :Vagon na uhlí
 STR_805C_OIL_TANKER                                             :Cisternový vagon na ropu
-STR_805D_LIVESTOCK_VAN                                          :Vagon pro dobytek
-STR_805E_GOODS_VAN                                              :Vagon na zboží
-STR_805F_GRAIN_HOPPER                                           :Vagon na zrní
+STR_805D_LIVESTOCK_VAN                                          :Krytý vůz na dobytek
+STR_805E_GOODS_VAN                                              :Krytý vůz na zboží
+STR_805F_GRAIN_HOPPER                                           :Násypný vůz na zrní
 STR_8060_WOOD_TRUCK                                             :Vagon na dřevo
-STR_8061_IRON_ORE_HOPPER                                        :Vagon na železnou rudu
+STR_8061_IRON_ORE_HOPPER                                        :Násypný vůz na železnou rudu
 STR_8062_STEEL_TRUCK                                            :Vagon na ocel
-STR_8063_ARMORED_VAN                                            :Vagon na ceniny
-STR_8064_FOOD_VAN                                               :Vagon na jídlo
+STR_8063_ARMORED_VAN                                            :Krytý vůz na ceniny
+STR_8064_FOOD_VAN                                               :Krytý vůz na jídlo
 STR_8065_PAPER_TRUCK                                            :Vagon na papír
-STR_8066_COPPER_ORE_HOPPER                                      :Vagon na měděnou rudu
+STR_8066_COPPER_ORE_HOPPER                                      :Násypný vůz na měděnou rudu
 STR_8067_WATER_TANKER                                           :Cisternový vagon na vodu
 STR_8068_FRUIT_TRUCK                                            :Vagon na ovoce
 STR_8069_RUBBER_TRUCK                                           :Vagon na kaučuk
 STR_806A_SUGAR_TRUCK                                            :Vagon na cukr
-STR_806B_COTTON_CANDY_HOPPER                                    :Vagon na cukrovou vatu
-STR_806C_TOFFEE_HOPPER                                          :Vagon na karamel
-STR_806D_BUBBLE_VAN                                             :Vagon na bubliny
+STR_806B_COTTON_CANDY_HOPPER                                    :Násypný vůz na cukrovou vatu
+STR_806C_TOFFEE_HOPPER                                          :Násypný vůz na karamel
+STR_806D_BUBBLE_VAN                                             :Krytý vůz na bubliny
 STR_806E_COLA_TANKER                                            :Cisternový vagon na kolu
-STR_806F_CANDY_VAN                                              :Vagon na bonbony
-STR_8070_TOY_VAN                                                :Vagon na hračky
+STR_806F_CANDY_VAN                                              :Krytý vůz na bonbony
+STR_8070_TOY_VAN                                                :Krytý vůz na hračky
 STR_8071_BATTERY_TRUCK                                          :Vagon na baterie
 STR_8072_FIZZY_DRINK_TRUCK                                      :Vagon na limonády
 STR_8073_PLASTIC_TRUCK                                          :Vagon na plast
@@ -2696,6 +2697,10 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje,
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Neslučitelné druhy kolejí
 STR_TRAIN_NO_POWER                                              :{RED}Bez proudu
 STR_TRAIN_START_NO_CATENARY                                     :Tato trať není elektrifikována, vlak nemůže odjet
+
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nov{G á ý é} {STRING} k dispozici!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nov{G á ý é} {STRING} k dispozici!  -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Silniční vozidlo v cestě
@@ -3199,3 +3204,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Podíl za převoz: {LTBLUE}{CURRENCY}

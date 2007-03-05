@@ -2633,6 +2633,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo binario in
 STR_TRAIN_NO_POWER                                              :{RED}Nessuna potenza
 STR_TRAIN_START_NO_CATENARY                                     :Questo tratto manca la catenaria, per questo il treno non può partire
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nuovo {STRING} è disponibile!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nuovo {STRING} è disponibile! -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Veicolo in mezzo
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Veicol{P o i} stradal{P e i}
@@ -3135,3 +3139,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Crediti Trasferiti: {LTBLUE}{CURRENCY}

@@ -5,11 +5,13 @@
 ##gender m f n
 
 ##id 0x0000
+STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Απο την άκρη του χάρτη
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Πολυ κοντά στην άκρη του χάρτη
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτούνται {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}.
 STR_0005                                                        :{RED}{CURRENCY64}.
+STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Απαιτείται επίπεδο εδαφος
 STR_0008_WAITING                                                :{BLACK}Αναμονη: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
@@ -81,6 +83,14 @@ STR_004A_TOFFEE                                                 :Τόφυ
 STR_004B_BATTERY                                                :Μπαταρία
 STR_004C_PLASTIC                                                :Πλαστικό
 STR_004D_FIZZY_DRINK                                            :Αναψυκτικό
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} επιβάτης{P "" s}
+STR_QUANTITY_COAL                                               :{WEIGHT} άνθρακα
+STR_QUANTITY_MAIL                                               :{COMMA} σάκος{P "" s} με αλληλογραφία
+STR_QUANTITY_OIL                                                :{VOLUME} πετρελαίου
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} αντικείμενο{P "" s} ζώων
+STR_QUANTITY_GOODS                                              :{COMMA} κιβώτιο{P "" s} αγαθών
+STR_QUANTITY_GRAIN                                              :{WEIGHT} σιτάρι
 STR_QUANTITY_WOOD                                               :{WEIGHT} ξύλου
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} μεταλλεύματος σιδήρου
 STR_QUANTITY_STEEL                                              :{WEIGHT} ατσαλιού
@@ -480,6 +490,7 @@ STR_01FE_DIFFICULTY                                             :{BLACK}{G=f}Δ�
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Τελευταίο μήνυμα/αναφορά νέων
 STR_0201_MESSAGE_SETTINGS                                       :Ρυθμίσεις μηνυμάτων
+STR_MESSAGE_HISTORY_MENU                                        :
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Εμφάνιση τελευταίου μηνύματος/αναφοράς νέων, επιλογές μηνυμάτων
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Επιλογές Μηνυμάτων
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Τύποι μηνυμάτων:
@@ -508,20 +519,16 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} έφτασε  στο επίπεδο '{STRING}'
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} της εταιρείας {COMPANY} έφτασε στο επίπεδο '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Δημιουργία Σεναρίου
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Πρόγραμμα Επεξερτασίας Σεναρίου
 STR_0223_LAND_GENERATION                                        :{WHITE}Δημιουργία Γης
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Τυχαία Γη
-STR_0227_RESET_LAND                                             :{BLACK}Επαναφορά Γης
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Αύξηση περιοχής για χαμήλωμα/ανύψωση γης
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Μείωση περιοχής για χαμήλωμα/ανύψωση γης
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Δημιουργία τυχαίου εδάφους
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Επαναφορά τοπίου
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Επαναφορά Τοπίου
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Είστε σίγουρος ότι θέλετε να επαναφέρετε το τοπίο;
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Δημιουργία τοπίου
 STR_022F_TOWN_GENERATION                                        :{BLACK}Δημιουργία πόλης
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Δημιουργία Βιομηχανίας
@@ -1608,6 +1615,7 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 
 
 
+
 ##id 0x9000
 
 
@@ -1626,6 +1634,7 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Επισκευ�
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 
@@ -1667,4 +1676,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Tooltip measurment
 
 
+############ Date formatting
+
 ########
+

@@ -391,6 +391,7 @@ STR_ENGINE_SORT_POWER                                           :Putere
 STR_ENGINE_SORT_INTRO_DATE                                      :Data lansarii
 STR_ENGINE_SORT_RUNNING_COST                                    :Cost exploatare
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Cost exploatare/putere
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :
 STR_NO_WAITING_CARGO                                            :{BLACK}Nu este în asteptare nici un fel de încãrcãturã
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege toate facilitãtile
 STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
@@ -455,7 +456,7 @@ STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Nu pot s
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Închide fereastra
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
 STR_STICKY_BUTTON                                               :{BLACK}Mark this window as undeletable for the 'Close All Windows' key
-STR_RESIZE_BUTTON                                               :{BLACK}Click&trage pt redimensionarea ferestrei
+STR_RESIZE_BUTTON                                               :{BLACK}Apasa si trage pentru redimensionarea ferestrei
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Click aici pentru a ajunge la directorul predefinit pentru salvari
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demoleazã clãdiri, strãzi, etc. pe un pãtrat de teren
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Scade altitudinea unui vârf de teren
@@ -988,7 +989,7 @@ STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trenul {
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trenul {COMMA} are o statie inexistentã în comenzi
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Autovehiculul {COMMA} are prea putine comenzi în listã
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Autovehiculul {COMMA} nu are comenzi
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Autovehiculul {COMMA} are comenzi repetate
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Autovehiculul {COMMA} are comenzi duplicat
 STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Autovehiculul {COMMA} are o statie inexistentã în comenzi
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Nava {COMMA} are prea putine comenzi în listã
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Nava {COMMA} nu are comenzi
@@ -2632,6 +2633,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipuri de sine 
 STR_TRAIN_NO_POWER                                              :{RED}Fara curent
 STR_TRAIN_START_NO_CATENARY                                     :Aceasta sina nu este electrificata, deci trenul nu poate porni
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Un nou {STRING} este acum disponibil!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Un nou {STRING} este acum disponibil!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Autovehicul in cale
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA}Autovehicule
@@ -2892,6 +2897,17 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Esti pe cale sa faci modificari intr-un joc activ. Aceasta poate destabiliza OpenTTD.{}Esti absolut sigur ca vrei sa faci asta?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atentie: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eroare: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} nu va functiona cu versiunea TTDPatch raportata de OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} este pentru versiunea {STRING} a TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} este conceput pentru a fi folosit cu {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parametru invalid pentru {STRING}: parametrul {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} trebuie sa fie incarcat inaintea {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} trebuie sa fie incarcat dupa {STRING}.
+
 STR_NEWGRF_ADD                                                  :{BLACK}Adauga
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adauga un fisier NewGRF in lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Elimina
@@ -2977,12 +2993,12 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Incepere
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire inlocuire vehicuke
 STR_NOT_REPLACING                                               :{BLACK}Neinlocuire
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Nici un vehicul selectat
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Alege tipul de vehicul pentru inlocuire
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Alege noul tip de vehicul cu care doresti sa inlocuiesti tipul de vehicul din stanga
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Apasa acest buton daca nu doresti sa inlocuiesti vehiculele selectate in stanga
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Apasa acest buton daca doresti sa inlocuiesti vehiculele selectate in stanga cu cele selectate in dreapta
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferata pentru care sa selectezi vehiculele
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Afiseaza cu ce model vor fi inlocuite vehiculele din stanga
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Alege tipul de motor pentru inlocuire
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Alege noul tip de motor pe care doresti sa-l folosesti in locul motorului selectat in stanga
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Apasa aici pentru oprirea inlocuirii motorului selectat in stanga
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Apasa aici pentru a incepe inlocuirea motorului selectat in stanga cu cel selectat in dreapta
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferata pentru care sa inlocuiesti motoarele
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Arata care va fi  inlocuitorul motorului selectat in stanga
 STR_REPLACE_HELP                                                :{BLACK}Aceasta functie iti permite sa selectezi un model de vehicul si sa-l inlocuiesti cu altul. Schimbarea se va efectua automat la intrarea vehiculului intr-un depou.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fã optiunea de autoînlocuire sã pãstreze identicã lungimea unui tren prin eliminarea vagoanelor (începând din fatã), dacã înlocuirea motorului ar face trenul mai lung.
@@ -3117,4 +3133,11 @@ STR_MEASURE_AREA                                                :{BLACK}Suprafat
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lungime: {NUM}{}Diferenta inaltime: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Suprafata: {NUM} x {NUM}{}Diferenta inaltime: {NUM} m
 
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfera Credit: {LTBLUE}{CURRENCY}

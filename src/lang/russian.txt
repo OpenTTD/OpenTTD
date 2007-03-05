@@ -1021,8 +1021,8 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Зон�
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Разрешить удаление всех городских объектов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Разрешить строительство очень длинных поездов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Включить реалистичное ускорение для поездов: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Запретить резкие повороты поездам и кораблям: {ORANGE}{STRING} {LTBLUE}(NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Объединять построенные рядом станции: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Запретить резкие повороты поездам и кораблям: {ORANGE}{STRING} {LTBLUE}(NPF/YAPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Объединять построенные рядом ж/д станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Покидать станцию, когда любой груз полностью загружен: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Использовать улучшенный алгоритм загрузки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Постепенная загрузка транспорта: {ORANGE}{STRING}
@@ -1142,7 +1142,7 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Изменить значение
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Некоторые интервалы обслуживания не совместимы с выбранной установкой. Допускаются значения 5-90% или 30-800 дней.
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Некоторые интервалы не совместимы с выбранной установкой. Допускаются значения 5-90% или 30-800 дней.
 STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Использовать YAPF для кораблей: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Использовать YAPF для автомобилей: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Использовать YAPF для поездов: {ORANGE}{STRING}

@@ -2633,6 +2633,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :spoortypes niet
 STR_TRAIN_NO_POWER                                              :{RED}Geen stroom
 STR_TRAIN_START_NO_CATENARY                                     :Er is geen bovenleiding, de trein kan niet starten
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nieuw {STRING} nu beschikbaar!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nieuw {STRING} nu beschikbaar!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Wegvoertuig in de weg
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Wegvoertuigen
@@ -3135,3 +3139,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Geldoverdracht: {LTBLUE}{CURRENCY}

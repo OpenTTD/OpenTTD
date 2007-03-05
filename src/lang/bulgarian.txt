@@ -2635,6 +2635,7 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Несъвме�
 STR_TRAIN_NO_POWER                                              :{RED}Няма мощност
 STR_TRAIN_START_NO_CATENARY                                     :Влака не може да тръгне, защото ЖП линията няма catenary
 
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Кола на пътя

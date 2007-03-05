@@ -2637,6 +2637,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo de ferrovi
 STR_TRAIN_NO_POWER                                              :{RED}Sem força
 STR_TRAIN_START_NO_CATENARY                                     :Essa linha não tem energia, portanto o trem não parte
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Novo {STRING} agora disponível!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo {STRING} agora disponível!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automóvel no caminho
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Automóve{P l is}
@@ -3139,3 +3143,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transferir Dinheiro: {LTBLUE}{CURRENCY}

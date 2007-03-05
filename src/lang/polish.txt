@@ -275,7 +275,7 @@ STR_0100_FACTORY                                                :{BLACK}{TINYFON
 STR_0100_FACTORY.d                                              :{BLACK}{TINYFONT}{G=f}Fabryki
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}{G=f}Drukarnia
 STR_0101_PRINTING_WORKS.d                                       :{BLACK}{TINYFONT}{G=f}Drukarnii
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}{G=m}Pole naftowe
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}{G=m}Pole Naftowe
 STR_0102_OIL_WELLS.d                                            :{BLACK}{TINYFONT}{G=m}Pola naftowego
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}{G=f}Kopalnia rudy żelaza
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}{G=f}Huta
@@ -776,7 +776,7 @@ STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Zbuduj F
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Zbuduj Hutę
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Zbuduj Farmę
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Zbuduj Kopalnię Rudy Żelaza
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Zbuduj Pole naftowe
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Zbuduj Pole Naftowe
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Zbuduj Bank (Można zbudować tylko w miastach z populacją wiekszą niż 1200)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Zbuduj Zakłady Papiernicze
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Zbuduj Przetwórnię Żywności
@@ -1502,7 +1502,7 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer j
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma jest chroniona. Wprowadź hasło
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista klientów
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Brak interface'u sieciowego lub skompilowane bez opcji ENABLE_NETWORK
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Brak interface'u sieciowego lub skompilowano bez opcji ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nie można znaleźć żadnej gry w sieci
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Serwer nie odpowiada
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}  Nie można było połączyć z powodu niezgodności NewGRF
@@ -1746,7 +1746,7 @@ STR_2041_SHOPPING_MALL                                          :Centrum handlow
 STR_2042_DO_IT                                                  :{BLACK}Wykonaj
 STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Lista rzeczy do zrobienia w tym mieście - klik po więcej detali
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Wykonaj podświetloną akcję z poniższej listy
-STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Możliwe działanie:
+STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Możliwe działania:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Mała kampania reklamowa
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Średnia kampania reklamowa
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Duża kampania reklamowa
@@ -2087,7 +2087,7 @@ STR_SV_STNAME_WOODS                                             :{STRING} Las
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Jezioro
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Wymiana
 STR_SV_STNAME_AIRPORT                                           :Lotnisko {STRING}
-STR_SV_STNAME_OILFIELD                                          :{STRING} Pole naftowe
+STR_SV_STNAME_OILFIELD                                          :{STRING} Platforma Wiertnicza
 STR_SV_STNAME_MINES                                             :{STRING} Kopalnia
 STR_SV_STNAME_DOCKS                                             :{STRING} Port
 STR_SV_STNAME_BUOY_1                                            :{STRING} Boja 1
@@ -2762,6 +2762,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Niezgodne typy 
 STR_TRAIN_NO_POWER                                              :{RED}Brak zasilania
 STR_TRAIN_START_NO_CATENARY                                     :Ta trasa nie jest zelektryfikowana, wiec pociąg nie wystartuje
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Dostępn{G y a e} now{G y a e} {STRING}!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Dostępn{G y a e} now{G y a e} {STRING} - {STRING}!
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Samochód na drodze
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Samoch{P ód ody odów}
@@ -3264,3 +3268,4 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
