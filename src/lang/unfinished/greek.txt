@@ -490,7 +490,6 @@ STR_01FE_DIFFICULTY                                             :{BLACK}{G=f}Δ�
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Τελευταίο μήνυμα/αναφορά νέων
 STR_0201_MESSAGE_SETTINGS                                       :Ρυθμίσεις μηνυμάτων
-STR_MESSAGE_HISTORY_MENU                                        :
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Εμφάνιση τελευταίου μηνύματος/αναφοράς νέων, επιλογές μηνυμάτων
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Επιλογές Μηνυμάτων
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Τύποι μηνυμάτων:

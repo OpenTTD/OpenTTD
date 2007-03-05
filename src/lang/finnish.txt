@@ -2192,7 +2192,6 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Yhtiön {COMPANY} on ottanut haltuun {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Tällä yhtiöllä ei ole vielä osakkeita...
 
-STR_LIVERY_DEFAULT                                              :
 STR_LIVERY_STEAM                                                :Höyryveturi
 STR_LIVERY_DIESEL                                               :Dieselveturi
 STR_LIVERY_ELECTRIC                                             :Sähköveturi

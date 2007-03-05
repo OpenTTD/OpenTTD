@@ -391,7 +391,6 @@ STR_ENGINE_SORT_POWER                                           :Putere
 STR_ENGINE_SORT_INTRO_DATE                                      :Data lansarii
 STR_ENGINE_SORT_RUNNING_COST                                    :Cost exploatare
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Cost exploatare/putere
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :
 STR_NO_WAITING_CARGO                                            :{BLACK}Nu este în asteptare nici un fel de încãrcãturã
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege toate facilitãtile
 STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
