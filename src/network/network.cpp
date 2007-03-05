@@ -491,7 +491,7 @@ static void NetworkFindIPs(void)
 		}
 
 		p += sizeof(struct ifreq);
-#ifdef AF_LINK
+#if defined(AF_LINK) && !defined(SUNOS)
 		p += req->ifr_addr.sa_len - sizeof(struct sockaddr);
 #endif
 	}

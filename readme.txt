@@ -146,6 +146,14 @@ Windows:
   You can also build it using the Makefile with MSYS/MinGW or Cygwin/MinGW.
   Please read the Makefile for more information.
 
+Solaris 10:
+  You need g++ (version 3 or higher), together with SDL. Installation of
+  libpng and zlib is recommended. For the first build it is required
+  to execute "bash configure" first. Note that ./configure does not work
+  yet. It is likely that you don't have a strip binary, so use the
+  --disable-strip option in that case. Fontconfig (>2.3.0) and freetype
+  are optional. "make run" will then run the program.
+
 Unix:
   OpenTTD can be built with GNU "make". On non-GNU systems it's called "gmake".
   However, for the first build one has to do a "./configure" first.
