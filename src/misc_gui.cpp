@@ -215,6 +215,7 @@ static const char *credits[] = {
 	"  Tamás Faragó (Darkvater) - Lead coder",
 	"  Loïc Guilloux (glx) - In training, not yet specialized",
 	"  Jaroslav Mazanec (KUDr) - YAPG (Yet Another Pathfinder God) ;)",
+	"  Jonathan Coome (Maedhros) - High priest of the newGRF Temple",
 	"  Attila Bán (MiHaMiX) - WebTranslator, Nightlies, Wiki and bugtracker host",
 	"  Peter Nelson (peter1138) - Spiritual descendant from newgrf gods",
 	"  Remko Bijker (Rubidium) - THE desync hunter",
