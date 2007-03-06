@@ -37,7 +37,7 @@ DrawPixelInfo _screen;
 bool _exit_game;
 bool _networking;         ///< are we in networking mode?
 byte _game_mode;
-byte _pause;
+byte _pause_game;
 int _pal_first_dirty;
 int _pal_last_dirty;
 

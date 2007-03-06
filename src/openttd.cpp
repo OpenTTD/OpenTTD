@@ -319,7 +319,7 @@ static void LoadIntroGame(void)
 		WaitTillGeneratedWorld();
 	}
 
-	_pause = 0;
+	_pause_game = 0;
 	SetLocalPlayer(PLAYER_FIRST);
 	/* Make sure you can't scroll in the menu */
 	_scrolling_viewport = 0;
@@ -903,7 +903,7 @@ void SwitchMode(int new_mode)
 void StateGameLoop(void)
 {
 	// dont execute the state loop during pause
-	if (_pause) return;
+	if (_pause_game) return;
 	if (IsGeneratingWorld()) return;
 
 	if (_game_mode == GM_EDITOR) {
@@ -1064,9 +1064,9 @@ void GameLoop(void)
 	StateGameLoop();
 #endif /* ENABLE_NETWORK */
 
-	if (!_pause && _display_opt & DO_FULL_ANIMATION) DoPaletteAnimations();
+	if (!_pause_game && _display_opt & DO_FULL_ANIMATION) DoPaletteAnimations();
 
-	if (!_pause || _cheats.build_in_pause.value) MoveAllTextEffects();
+	if (!_pause_game || _cheats.build_in_pause.value) MoveAllTextEffects();
 
 	InputLoop();
 

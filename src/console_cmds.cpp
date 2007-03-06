@@ -499,7 +499,7 @@ DEF_CONSOLE_CMD(ConPauseGame)
 		return true;
 	}
 
-	if (_pause == 0) {
+	if (_pause_game == 0) {
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 		IConsolePrint(_icolour_def, "Game paused.");
 	} else {
@@ -516,7 +516,7 @@ DEF_CONSOLE_CMD(ConUnPauseGame)
 		return true;
 	}
 
-	if (_pause != 0) {
+	if (_pause_game != 0) {
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		IConsolePrint(_icolour_def, "Game unpaused.");
 	} else {

@@ -104,7 +104,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 
 	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, 0, WC_MAIN_WINDOW, 0);
 
-	_pause = 0;
+	_pause_game = 0;
 	_fast_forward = 0;
 	_tick_counter = 0;
 	_date_fract = 0;
@@ -307,7 +307,7 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	    SLEG_VAR(_cur_player_tick_index,  SLE_FILE_U8  | SLE_VAR_U32),
 	    SLEG_VAR(_next_competitor_start,  SLE_FILE_U16 | SLE_VAR_U32),
 	    SLEG_VAR(_trees_tick_ctr,         SLE_UINT8),
-	SLEG_CONDVAR(_pause,                  SLE_UINT8,                   4, SL_MAX_VERSION),
+	SLEG_CONDVAR(_pause_game,             SLE_UINT8,                   4, SL_MAX_VERSION),
 	SLEG_CONDVAR(_cur_town_iter,          SLE_UINT32,                 11, SL_MAX_VERSION),
 	    SLEG_END()
 };

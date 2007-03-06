@@ -835,7 +835,7 @@ static void Win32GdiMainLoop(void)
 		}
 
 		cur_ticks = GetTickCount();
-		if (cur_ticks >= next_tick || (_fast_forward && !_pause) || cur_ticks < prev_cur_ticks) {
+		if (cur_ticks >= next_tick || (_fast_forward && !_pause_game) || cur_ticks < prev_cur_ticks) {
 			next_tick = cur_ticks + 30;
 			_ctrl_pressed = _wnd.has_focus && GetAsyncKeyState(VK_CONTROL)<0;
 			_shift_pressed = _wnd.has_focus && GetAsyncKeyState(VK_SHIFT)<0;

@@ -257,8 +257,8 @@ int32 CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
-		_pause += (p1 == 1) ? 1 : -1;
-		if (_pause == (byte)-1) _pause = 0;
+		_pause_game += (p1 == 1) ? 1 : -1;
+		if (_pause_game == (byte)-1) _pause_game = 0;
 		InvalidateWindow(WC_STATUS_BAR, 0);
 		InvalidateWindow(WC_MAIN_TOOLBAR, 0);
 	}

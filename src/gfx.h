@@ -156,7 +156,7 @@ extern DrawPixelInfo _screen;
 extern bool _exit_game;
 extern bool _networking;         ///< are we in networking mode?
 extern byte _game_mode;
-extern byte _pause;
+extern byte _pause_game;
 
 extern int _pal_first_dirty;
 extern int _pal_last_dirty;

@@ -1611,7 +1611,7 @@ bool LoadOldSaveGame(const char *file)
 
 	fclose(ls.file);
 
-	_pause = 2;
+	_pause_game = 2;
 
 	return true;
 }

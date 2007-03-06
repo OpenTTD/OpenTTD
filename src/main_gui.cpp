@@ -136,7 +136,7 @@ static void ToolbarPauseClick(Window *w)
 {
 	if (_networking && !_network_server) return; // only server can pause the game
 
-	if (DoCommandP(0, _pause ? 0 : 1, 0, NULL, CMD_PAUSE)) SndPlayFx(SND_15_BEEP);
+	if (DoCommandP(0, _pause_game ? 0 : 1, 0, NULL, CMD_PAUSE)) SndPlayFx(SND_15_BEEP);
 }
 
 static void ToolbarFastForwardClick(Window *w)
@@ -1873,7 +1873,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_MOUSELOOP:
-		if (IsWindowWidgetLowered(w, 0) != !!_pause) {
+		if (IsWindowWidgetLowered(w, 0) != !!_pause_game) {
 			ToggleWidgetLoweredState(w, 0);
 			InvalidateWidget(w, 0);
 		}
@@ -2072,7 +2072,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_MOUSELOOP:
-		if (IsWindowWidgetLowered(w, 0) != !!_pause) {
+		if (IsWindowWidgetLowered(w, 0) != !!_pause_game) {
 			ToggleWidgetLoweredState(w, 0);
 			SetWindowDirty(w);
 		}
@@ -2155,7 +2155,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 		SetDParam(0, _date);
 		DrawStringCentered(
-			70, 1, (_pause || _patches.status_long_date) ? STR_00AF : STR_00AE, 0
+			70, 1, (_pause_game || _patches.status_long_date) ? STR_00AF : STR_00AE, 0
 		);
 
 		if (p != NULL) {
@@ -2169,7 +2169,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 			DrawStringCentered(320, 1, STR_SAVING_GAME, 0);
 		} else if (_do_autosave) {
 			DrawStringCentered(320, 1, STR_032F_AUTOSAVE, 0);
-		} else if (_pause) {
+		} else if (_pause_game) {
 			DrawStringCentered(320, 1, STR_0319_PAUSED, 0);
 		} else if (WP(w,def_d).data_1 > -1280 && FindWindowById(WC_NEWS_WINDOW,0) == NULL && _statusbar_news_item.string_id != 0) {
 			/* Draw the scrolling news text */
@@ -2201,7 +2201,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_TICK: {
-		if (_pause) return;
+		if (_pause_game) return;
 
 		if (WP(w, def_d).data_1 > -1280) { // Scrolling text
 			WP(w, def_d).data_1 -= 2;

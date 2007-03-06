@@ -452,7 +452,7 @@ static void SdlVideoMainLoop(void)
 		}
 
 		cur_ticks = SDL_CALL SDL_GetTicks();
-		if (cur_ticks >= next_tick || (_fast_forward && !_pause) || cur_ticks < prev_cur_ticks) {
+		if (cur_ticks >= next_tick || (_fast_forward && !_pause_game) || cur_ticks < prev_cur_ticks) {
 			next_tick = cur_ticks + 30;
 
 			_ctrl_pressed  = !!(mod & KMOD_CTRL);
