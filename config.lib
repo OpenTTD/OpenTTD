@@ -779,10 +779,10 @@ make_cflags_and_ldflags() {
 			if [ "$os" = "OSX" ]; then
 				LIBS="$LIBS `$png_config --prefix`/lib/libpng.a"
 			else
-				LIBS="$LIBS `$png_config --static --ldflags --libs --L_opts | tr '\n\r' '  '`"
+				LIBS="$LIBS `$png_config --static --ldflags | tr '\n\r' '  '`"
 			fi
 		else
-			LIBS="$LIBS `$png_config --ldflags --libs --L_opts | tr '\n\r' '  '`"
+			LIBS="$LIBS `$png_config --ldflags | tr '\n\r' '  '`"
 		fi
 	fi
 
