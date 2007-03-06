@@ -60,7 +60,7 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 bool FillGRFDetails(GRFConfig *config, bool is_static)
 {
 	if (!FioCheckFileExists(config->filename)) {
-		SETBIT(config->flags, GCF_NOT_FOUND);
+		config->status = GCS_NOT_FOUND;
 		return false;
 	}
 
@@ -210,14 +210,14 @@ void ResetGRFConfig(bool defaults)
 /** Check if all GRFs in the GRF config from a savegame can be loaded.
  * @return will return any of the following 3 values:<br>
  * <ul>
- * <li> GCF_ACTIVATED: No problems occured, all GRF files were found and loaded
- * <li> GCF_COMPATIBLE: For one or more GRF's no exact match was found, but a
+ * <li> GLC_ALL_GOOD: No problems occured, all GRF files were found and loaded
+ * <li> GLC_COMPATIBLE: For one or more GRF's no exact match was found, but a
  *     compatible GRF with the same grfid was found and used instead
- * <li> GCF_NOT_FOUND: For one or more GRF's no match was found at all
+ * <li> GLC_NOT_FOUND: For one or more GRF's no match was found at all
  * </ul> */
-GCF_Flags IsGoodGRFConfigList(void)
+GRFListCompatibility IsGoodGRFConfigList(void)
 {
-	GCF_Flags res = GCF_ACTIVATED;
+	GRFListCompatibility res = GLC_ALL_GOOD;
 
 	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 		const GRFConfig *f = FindGRFConfig(c->grfid, c->md5sum);
@@ -233,7 +233,7 @@ GCF_Flags IsGoodGRFConfigList(void)
 				SETBIT(c->flags, GCF_COMPATIBLE);
 
 				/* Non-found has precedence over compatibility load */
-				if (res != GCF_NOT_FOUND) res = GCF_COMPATIBLE;
+				if (res != GLC_NOT_FOUND) res = GLC_COMPATIBLE;
 				goto compatible_grf;
 			}
 
@@ -241,8 +241,8 @@ GCF_Flags IsGoodGRFConfigList(void)
 			md5sumToString(buf, lastof(buf), c->md5sum);
 			DEBUG(grf, 0, "NewGRF %08X (%s) not found; checksum %s", BSWAP32(c->grfid), c->filename, buf);
 
-			SETBIT(c->flags, GCF_NOT_FOUND);
-			res = GCF_NOT_FOUND;
+			c->status = GCS_NOT_FOUND;
+			res = GLC_NOT_FOUND;
 		} else {
 compatible_grf:
 			DEBUG(grf, 1, "Loading GRF %08X from %s", BSWAP32(f->grfid), f->filename);

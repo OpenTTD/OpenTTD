@@ -288,8 +288,8 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 		struct sockaddr_in out_addr;
 
 		for (c = item->info.grfconfig; c != NULL; c = c->next) {
-			if (HASBIT(c->flags, GCF_NOT_FOUND)) item->info.compatible = false;
-			if (!HASBIT(c->flags, GCF_NOT_FOUND) || strcmp(c->name, UNKNOWN_GRF_NAME_PLACEHOLDER) != 0) continue;
+			if (c->status == GCS_NOT_FOUND) item->info.compatible = false;
+			if (c->status == GCS_NOT_FOUND || strcmp(c->name, UNKNOWN_GRF_NAME_PLACEHOLDER) != 0) continue;
 			in_request[in_request_count] = c;
 			in_request_count++;
 		}
@@ -392,7 +392,7 @@ void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFCo
 		 * already resolved name for this GRF (another server has sent the
 		 * name of the GRF already */
 		config->name     = FindUnknownGRFName(config->grfid, config->md5sum, true);
-		SETBIT(config->flags, GCF_NOT_FOUND);
+		config->status   = GCS_NOT_FOUND;
 	} else {
 		config->filename = f->filename;
 		config->name     = f->name;

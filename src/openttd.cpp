@@ -1209,12 +1209,12 @@ bool AfterLoadGame(void)
 	if (_opt.road_side) _opt.road_side = 1;
 
 	/* Check if all NewGRFs are present, we are very strict in MP mode */
-	GCF_Flags gcf_res = IsGoodGRFConfigList();
-	if (_networking && gcf_res != GCF_ACTIVATED) return false;
+	GRFListCompatibility gcf_res = IsGoodGRFConfigList();
+	if (_networking && gcf_res != GLC_ALL_GOOD) return false;
 
 	switch (gcf_res) {
-		case GCF_COMPATIBLE: _switch_mode_errorstr = STR_NEWGRF_COMPATIBLE_LOAD_WARNING; break;
-		case GCF_NOT_FOUND: _switch_mode_errorstr = STR_NEWGRF_DISABLED_WARNING; break;
+		case GLC_COMPATIBLE: _switch_mode_errorstr = STR_NEWGRF_COMPATIBLE_LOAD_WARNING; break;
+		case GLC_NOT_FOUND: _switch_mode_errorstr = STR_NEWGRF_DISABLED_WARNING; break;
 		default: break;
 	}
 

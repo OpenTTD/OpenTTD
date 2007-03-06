@@ -1530,7 +1530,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 		if (!FillGRFDetails(c, is_static)) {
 			const char *msg;
 
-			if (HASBIT(c->flags, GCF_NOT_FOUND)) {
+			if (c->status == GCS_NOT_FOUND) {
 				msg = "not found";
 			} else if (HASBIT(c->flags, GCF_UNSAFE)) {
 				msg = "unsafe for static use";

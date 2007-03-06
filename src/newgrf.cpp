@@ -2535,24 +2535,24 @@ static void SkipIf(byte *buf, int len)
 		switch (condtype) {
 			/* Tests 6 to 10 are only for param 0x88, GRFID checks */
 			case 6: /* Is GRFID active? */
-				result = HASBIT(c->flags, GCF_ACTIVATED);
+				result = c->status == GCS_ACTIVATED;
 				break;
 
 			case 7: /* Is GRFID non-active? */
-				result = !HASBIT(c->flags, GCF_ACTIVATED);
+				result = c->status != GCS_ACTIVATED;
 				break;
 
 			case 8: /* GRFID is not but will be active? */
-				result = !HASBIT(c->flags, GCF_ACTIVATED) && !HASBIT(c->flags, GCF_DISABLED);
+				result = c->status == GCS_INITIALISED;
 				break;
 
 			case 9: /* GRFID is or will be active? */
-				result = !HASBIT(c->flags, GCF_NOT_FOUND) && !HASBIT(c->flags, GCF_DISABLED);
+				result = c->status == GCS_ACTIVATED || c->status == GCS_INITIALISED;
 				break;
 
 			case 10: /* GRFID is not nor will be active */
 				/* This is the only condtype that doesn't get ignored if the GRFID is not found */
-				result = c == NULL || HASBIT(c->flags, GCF_DISABLED) || HASBIT(c->flags, GCF_NOT_FOUND);
+				result = c == NULL || c->flags == GCS_DISABLED || c->status == GCS_NOT_FOUND;
 				break;
 
 			default: grfmsg(1, "Unsupported GRF test %d. Ignoring", condtype); return;
@@ -2616,7 +2616,7 @@ static void SkipIf(byte *buf, int len)
 		_skip_sprites = -1;
 
 		/* If an action 8 hasn't been encountered yet, disable the grf. */
-		if (!HASBIT(_cur_grfconfig->flags, GCF_ACTIVATED)) SETBIT(_cur_grfconfig->flags, GCF_DISABLED);
+		if (_cur_grfconfig->status != GCS_ACTIVATED) _cur_grfconfig->status = GCS_DISABLED;
 	}
 }
 
@@ -2673,7 +2673,7 @@ static void GRFInfo(byte *buf, int len)
 
 	_cur_grffile->grfid = grfid;
 	_cur_grffile->grf_version = version;
-	SETBIT(_cur_grfconfig->flags, GCF_ACTIVATED);
+	_cur_grfconfig->status = _cur_stage < GLS_ACTIVATION ? GCS_INITIALISED : GCS_ACTIVATED;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
 	DEBUG(grf, 1, "Loaded GRFv%d set %08lX - %s", version, BSWAP32(grfid), name);
@@ -2779,8 +2779,7 @@ static void GRFLoadError(byte *buf, int len)
 	} else if (severity == 3) {
 		/* This is a fatal error, so make sure the GRF is deactivated and no
 		 * more of it gets loaded. */
-		SETBIT(_cur_grfconfig->flags, GCF_DISABLED);
-		CLRBIT(_cur_grfconfig->flags, GCF_ACTIVATED);
+		_cur_grfconfig->status = GCS_DISABLED;
 
 		_skip_sprites = -1;
 	}
@@ -2981,8 +2980,7 @@ static void ParamSet(byte *buf, int len)
 								if (op != 4 && op != 5) {
 									/* Deactivate GRF */
 									grfmsg(0, "GRM: Unable to allocate %d vehicles, deactivating", count);
-									SETBIT(_cur_grfconfig->flags, GCF_DISABLED);
-									CLRBIT(_cur_grfconfig->flags, GCF_ACTIVATED);
+									_cur_grfconfig->status = GCS_DISABLED;
 
 									_skip_sprites = -1;
 									return;
@@ -3000,8 +2998,7 @@ static void ParamSet(byte *buf, int len)
 									/* Check if the allocated sprites will fit below the original sprite limit */
 									if (_cur_spriteid + count >= 16384) {
 										grfmsg(0, "GRM: Unable to allocate %d sprites; try changing NewGRF order", count);
-										SETBIT(_cur_grfconfig->flags, GCF_DISABLED);
-										CLRBIT(_cur_grfconfig->flags, GCF_ACTIVATED);
+										_cur_grfconfig->status = GCS_DISABLED;
 
 										_skip_sprites = -1;
 										return;
@@ -3218,8 +3215,7 @@ static void GRFInhibit(byte *buf, int len)
 		/* Unset activation flag */
 		if (file != NULL && file != _cur_grfconfig) {
 			grfmsg(2, "GRFInhibit: Deactivating file '%s'", file->filename);
-			SETBIT(file->flags, GCF_DISABLED);
-			CLRBIT(file->flags, GCF_ACTIVATED);
+			file->status = GCS_DISABLED;
 		}
 	}
 }
@@ -3950,10 +3946,8 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 	if (stage != GLS_FILESCAN && stage != GLS_SAFETYSCAN && stage != GLS_LABELSCAN) {
 		_cur_grffile = GetFileByFilename(filename);
 		if (_cur_grffile == NULL) error("File '%s' lost in cache.\n", filename);
-		if (stage == GLS_ACTIVATION && !HASBIT(config->flags, GCF_ACTIVATED)) return;
+		if (stage == GLS_ACTIVATION && config->status != GCS_INITIALISED) return;
 	}
-
-	if (stage == GLS_ACTIVATION) CLRBIT(config->flags, GCF_ACTIVATED);
 
 	FioOpenFile(file_index, filename);
 	_file_index = file_index; // XXX
@@ -4037,7 +4031,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 		_cur_stage = stage;
 		_cur_spriteid = load_index;
 		for (c = _grfconfig; c != NULL; c = c->next) {
-			if (HASBIT(c->flags, GCF_DISABLED) || HASBIT(c->flags, GCF_NOT_FOUND)) continue;
+			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 
 			// TODO usererror()
 			if (!FioCheckFileExists(c->filename)) error("NewGRF file is missing '%s'", c->filename);

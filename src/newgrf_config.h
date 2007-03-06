@@ -7,15 +7,26 @@
 
 /* GRF config bit flags */
 typedef enum {
-	GCF_DISABLED,  ///< GRF file is disabled
-	GCF_NOT_FOUND, ///< GRF file was not found in the local cache
-	GCF_ACTIVATED, ///< GRF file is active
 	GCF_SYSTEM,    ///< GRF file is an openttd-internal system grf
 	GCF_UNSAFE,    ///< GRF file is unsafe for static usage
 	GCF_STATIC,    ///< GRF file is used statically (can be used in any MP game)
 	GCF_COMPATIBLE,///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
 	GCF_COPY,      ///< The data is copied from a grf in _all_grfs
 } GCF_Flags;
+
+typedef enum {
+	GCS_UNKNOWN,      ///< The status of this grf file is unknown
+	GCS_DISABLED,     ///< GRF file is disabled
+	GCS_NOT_FOUND,    ///< GRF file was not found in the local cache
+	GCS_INITIALISED,  ///< GRF file has been initialised
+	GCS_ACTIVATED     ///< GRF file has been activated
+} GRFStatus;
+
+typedef enum {
+	GLC_ALL_GOOD,
+	GLC_COMPATIBLE,
+	GLC_NOT_FOUND
+} GRFListCompatibility;
 
 typedef struct GRFIdentifier {
 	uint32 grfid;
@@ -37,6 +48,7 @@ typedef struct GRFConfig : public GRFIdentifier {
 	GRFError *error;
 
 	uint8 flags;
+	GRFStatus status;
 	uint32 param[0x80];
 	uint8 num_params;
 
@@ -64,7 +76,7 @@ void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el);
 void ClearGRFConfig(GRFConfig **config);
 void ClearGRFConfigList(GRFConfig **config);
 void ResetGRFConfig(bool defaults);
-GCF_Flags IsGoodGRFConfigList(void);
+GRFListCompatibility IsGoodGRFConfigList(void);
 bool FillGRFDetails(GRFConfig *config, bool is_static);
 char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 
