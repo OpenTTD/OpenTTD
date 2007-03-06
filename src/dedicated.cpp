@@ -14,6 +14,14 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#if defined(SUNOS) && !defined(_LP64) && !defined(_I32LPx)
+/* Solaris has, in certain situation, pid_t defined as long, while in other
+ *  cases it has it defined as int... this handles all cases nicely. */
+# define PRINTF_PID_T "%ld"
+#else
+# define PRINTF_PID_T "%d"
+#endif
+
 void DedicatedFork(void)
 {
 	/* Fork the program */
@@ -47,7 +55,7 @@ void DedicatedFork(void)
 		default:
 			/* We're the parent */
 			printf("Loading dedicated server...\n");
-			printf("  - Forked to background with pid %d\n", pid);
+			printf("  - Forked to background with pid " PRINTF_PID_T "\n", pid);
 			exit(0);
 	}
 }
