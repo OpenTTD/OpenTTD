@@ -41,6 +41,7 @@ set_default() {
 	enable_strip="1"
 	enable_universal="1"
 	enable_osx_g5="0"
+	enable_unicode="1"
 	with_osx_sysroot="1"
 	with_application_bundle="1"
 	with_sdl="1"
@@ -58,7 +59,7 @@ set_default() {
 	with_fontconfig="1"
 	with_psp_config="1"
 
-	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_osx_sysroot enable_universal enable_osx_g5 with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config CC CXX CFLAGS LDFLAGS"
+	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_osx_sysroot enable_universal enable_osx_g5 enable_unicode with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config CC CXX CFLAGS LDFLAGS"
 }
 
 detect_params() {
@@ -168,6 +169,9 @@ detect_params() {
 			--disable-osx-g5)             enable_osx_g5="0";;
 			--enable-osx-g5)              enable_osx_g5="2";;
 			--enable-osx-g5=*)            enable_osx_g5="$optarg";;
+			--disable-unicode)            enable_unicode="0";;
+			--enable-unicode)             enable_unicode="2";;
+			--enable-unicode=*)           enable_unicode="$optarg";;
 
 			--with-sdl)                   with_sdl="2";;
 			--without-sdl)                with_sdl="0";;
@@ -368,6 +372,20 @@ check_params() {
 		fi
 	else
 		log 1 "checking static... no"
+	fi
+
+	if [ "$enable_unicode" = "1" ]; then
+		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
+			enable_unicode="2"
+		else
+			enable_unicode="0"
+		fi
+	fi
+
+	if [ "$enable_unicode" != "0" ]; then
+		log 1 "checking unicode... yes"
+	else
+		log 1 "checking unicode... no"
 	fi
 
 	# Show what we configured
@@ -832,6 +850,10 @@ make_cflags_and_ldflags() {
 
 	if [ "$enable_dedicated" != "0" ]; then
 		CFLAGS="$CFLAGS -DDEDICATED"
+	fi
+
+	if [ "$enable_unicode" != "0" ]; then
+		CFLAGS="$CFLAGS -DUNICODE -D_UNICODE"
 	fi
 
 	if [ "$enable_network" != "0" ]; then
