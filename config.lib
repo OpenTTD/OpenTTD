@@ -792,6 +792,7 @@ make_cflags_and_ldflags() {
 
 		if [ "$enable_static" != "0" ]; then
 			if [ "$os" = "OSX" ]; then
+				# fontconfig_config goes via pkg-config on all systems, which doesn't know --prefix
 				LIBS="$LIBS `$fontconfig_config --variable=prefix`/lib/libfontconfig.a"
 			else
 				LIBS="$LIBS `$fontconfig_config --libs --static | tr '\n\r' '  '`"
