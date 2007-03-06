@@ -53,7 +53,7 @@ static inline bool IsAircraftBuildableAtStation(EngineID engine, TileIndex tile)
 	const AirportFTAClass *apc = st->Airport();
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
 
-	return apc->flags & (avi->subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS);
+	return (apc->flags & (avi->subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS)) != 0;
 }
 
 uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo*);
