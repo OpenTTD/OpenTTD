@@ -694,26 +694,11 @@ static void GenerateBuildAircraftList(Window *w)
 	 * when planes become obsolete and are removed */
 	sel_id = INVALID_ENGINE;
 	for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
-		if (IsEngineBuildable(eid, VEH_Aircraft, _local_player)) {
-			const AircraftVehicleInfo *avi = AircraftVehInfo(eid);
-			switch (bv->filter.flags & ~AirportFTAClass::SHORT_STRIP) { // we don't care about the length of the runway here
-				case AirportFTAClass::HELICOPTERS:
-					if (avi->subtype != AIR_HELI) continue;
-					break;
+		if (!IsEngineBuildable(eid, VEH_Aircraft, _local_player)) continue;
+		if (w->window_number != 0 && !IsAircraftBuildableAtStation(eid, w->window_number)) continue;
 
-				case AirportFTAClass::AIRPLANES:
-					if (!(avi->subtype & AIR_CTOL)) continue;
-					break;
-
-				case AirportFTAClass::ALL: break;
-				default:
-					NOT_REACHED();
-			}
-
-			EngList_Add(&bv->eng_list, eid);
-
-			if (eid == bv->sel_engine) sel_id = eid;
-		}
+		EngList_Add(&bv->eng_list, eid);
+		if (eid == bv->sel_engine) sel_id = eid;
 	}
 
 	bv->sel_engine = sel_id;

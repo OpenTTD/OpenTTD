@@ -42,6 +42,20 @@ static inline bool IsAircraftInHangarStopped(const Vehicle* v)
 	return IsAircraftInHangar(v) && v->vehstatus & VS_STOPPED;
 }
 
+/** Checks if an aircraft is buildable at the tile in question
+ * @param engine The engine to test
+ * @param tile The tile where the hangar is
+ * @return true if the aircraft can be build
+ */
+static inline bool IsAircraftBuildableAtStation(EngineID engine, TileIndex tile)
+{
+	const Station *st = GetStationByTile(tile);
+	const AirportFTAClass *apc = st->Airport();
+	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
+
+	return apc->flags & (avi->subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS);
+}
+
 uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo*);
 
 void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);

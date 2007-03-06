@@ -227,7 +227,6 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
 	}
 }
 
-
 /** Build an aircraft.
  * @param tile tile of depot where aircraft is built
  * @param flags for command
@@ -250,11 +249,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	/* Prevent building aircraft types at places which can't handle them */
-	const Station* st = GetStationByTile(tile);
-	const AirportFTAClass* apc = st->Airport();
-	if (!(apc->flags & (avi->subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS))) {
-		return CMD_ERROR;
-	}
+	if (!IsAircraftBuildableAtStation(p1, tile)) return CMD_ERROR;
 
 	/* Allocate 2 or 3 vehicle structs, depending on type
 	 * vl[0] = aircraft, vl[1] = shadow, [vl[2] = rotor] */
@@ -367,6 +362,9 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		 * layout for #th position of depot. Since layout must start with a listing
 		 * of all depots, it is simple */
 		for (uint i = 0;; i++) {
+			const Station *st = GetStationByTile(tile);
+			const AirportFTAClass *apc = st->Airport();
+
 			assert(i != apc->nof_depots);
 			if (st->airport_tile + ToTileIndexDiff(apc->airport_depots[i]) == tile) {
 				assert(apc->layout[i].heading == HANGAR);
