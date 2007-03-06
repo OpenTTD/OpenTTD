@@ -544,6 +544,7 @@ DEF_CONSOLE_CMD(ConStatus)
 {
 	static const char* const stat_str[] = {
 		"inactive",
+		"authorizing",
 		"authorized",
 		"waiting",
 		"loading map",

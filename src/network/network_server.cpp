@@ -214,6 +214,11 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkTCPSocketHandl
 	//    uint8:  Type of password
 	//
 
+	/* Invalid packet when status is AUTH or higher */
+	if (cs->status >= STATUS_AUTH) return;
+
+	cs->status = STATUS_AUTHORIZING;
+
 	Packet *p = NetworkSend_Init(PACKET_SERVER_NEED_PASSWORD);
 	p->Send_uint8(type);
 	cs->Send_Packet(p);
@@ -1531,6 +1536,12 @@ void NetworkServer_Tick(bool send_frame)
 			int lag = NetworkCalculateLag(cs);
 			if (lag > _network_max_join_time) {
 				IConsolePrintF(_icolour_err,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->index, _network_max_join_time);
+				NetworkCloseClient(cs);
+			}
+		} else if (cs->status == STATUS_INACTIVE) {
+			int lag = NetworkCalculateLag(cs);
+			if (lag > 4 * DAY_TICKS) {
+				IConsolePrintF(_icolour_err,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->index, 4 * DAY_TICKS);
 				NetworkCloseClient(cs);
 			}
 		}
