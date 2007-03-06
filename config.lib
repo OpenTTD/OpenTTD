@@ -496,6 +496,10 @@ check_params() {
 			strip_arg=""
 			# OS2 uses strip via gcc, because it needs to be feed to emxbind
 			LDFLAGS="$LDFLAGS -s"
+		elif [ "$os" = "SUNOS" ]; then
+			# The GNU strip does know -s, the non-GNU doesn't
+			#  So try to detect it (in a bit of an ugly way)
+			strip_arg="`$strip -s strip.test 2>/dev/null && echo \"-s\"`"
 		else
 			strip_arg="-s"
 		fi
