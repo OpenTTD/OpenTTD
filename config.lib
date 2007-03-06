@@ -786,6 +786,21 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
+	if [ -n "$fontconfig_config" ]; then
+		CFLAGS="$CFLAGS -DWITH_FONTCONFIG"
+		CFLAGS="$CFLAGS `$fontconfig_config --cflags | tr '\n\r' '  '`"
+
+		if [ "$enable_static" != "0" ]; then
+			if [ "$os" = "OSX" ]; then
+				LIBS="$LIBS `$fontconfig_config --variable=prefix`/lib/libfontconfig.a"
+			else
+				LIBS="$LIBS `$fontconfig_config --libs --static | tr '\n\r' '  '`"
+			fi
+		else
+			LIBS="$LIBS `$fontconfig_config --libs | tr '\n\r' '  '`"
+		fi
+	fi
+
 	if [ -n "$freetype_config" ]; then
 		CFLAGS="$CFLAGS -DWITH_FREETYPE"
 		CFLAGS="$CFLAGS `$freetype_config --cflags | tr '\n\r' '  '`"
@@ -799,21 +814,6 @@ make_cflags_and_ldflags() {
 			fi
 		else
 			LIBS="$LIBS `$freetype_config --libs | tr '\n\r' '  '`"
-		fi
-	fi
-
-	if [ -n "$fontconfig_config" ]; then
-		CFLAGS="$CFLAGS -DWITH_FONTCONFIG"
-		CFLAGS="$CFLAGS `$fontconfig_config --cflags | tr '\n\r' '  '`"
-
-		if [ "$enable_static" != "0" ]; then
-			if [ "$os" = "OSX" ]; then
-				LIBS="$LIBS `$fontconfig_config --variable=prefix`/lib/libfontconfig.a"
-			else
-				LIBS="$LIBS `$fontconfig_config --libs --static | tr '\n\r' '  '`"
-			fi
-		else
-			LIBS="$LIBS `$fontconfig_config --libs | tr '\n\r' '  '`"
 		fi
 	fi
 
