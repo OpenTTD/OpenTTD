@@ -8,8 +8,14 @@
  * does not have stdint.h and apparently neither does MorphOS, so define
  * INT64_MAX for them ourselves. */
 #if !defined(_MSC_VER) && !defined( __MORPHOS__)
-# define __STDC_LIMIT_MACROS
-# include <stdint.h>
+# if defined (SUNOS)
+/* SunOS/Solaris does not have stdint.h, but inttypes.h defines everything
+ * stdint.h defines and we need. */
+#  include <inttypes.h>
+# else
+#  define __STDC_LIMIT_MACROS
+#  include <stdint.h>
+# endif
 #else
 # define INT64_MAX 9223372036854775807LL
 #endif
