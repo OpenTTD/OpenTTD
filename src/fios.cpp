@@ -33,6 +33,7 @@ static int _fios_count, _fios_alloc;
 /* OS-specific functions are taken from their respective files (win32/unix/os2 .c) */
 extern bool FiosIsRoot(const char *path);
 extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
+extern bool FiosIsHiddenFile(const struct dirent *ent);
 extern void FiosGetDrives(void);
 extern bool FiosGetDiskFreeSpace(const char *path, uint32 *tot);
 
@@ -227,7 +228,8 @@ static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_
 
 			/* found file must be directory, but not '.' or '..' */
 			if (FiosIsValidFile(_fios_path, dirent, &sb) && (sb.st_mode & S_IFDIR) &&
-				strcmp(d_name, ".") != 0 && strcmp(d_name, "..") != 0) {
+					(!FiosIsHiddenFile(dirent) || strncasecmp(d_name, PERSONAL_DIR, strlen(d_name)) == 0) &&
+					strcmp(d_name, ".") != 0 && strcmp(d_name, "..") != 0) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
@@ -258,7 +260,7 @@ static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_
 			char *t;
 			ttd_strlcpy(d_name, FS2OTTD(dirent->d_name), sizeof(d_name));
 
-			if (!FiosIsValidFile(_fios_path, dirent, &sb) || !(sb.st_mode & S_IFREG)) continue;
+			if (!FiosIsValidFile(_fios_path, dirent, &sb) || !(sb.st_mode & S_IFREG) || FiosIsHiddenFile(dirent)) continue;
 
 			/* File has no extension, skip it */
 			if ((t = strrchr(d_name, '.')) == NULL) continue;

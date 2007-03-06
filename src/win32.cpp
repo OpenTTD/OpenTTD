@@ -749,7 +749,6 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 	// hectonanoseconds between Windows and POSIX epoch
 	static const int64 posix_epoch_hns = 0x019DB1DED53E8000LL;
 	const WIN32_FIND_DATAW *fd = &ent->dir->fd;
-	if (fd->dwFileAttributes & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM)) return false;
 
 	sb->st_size  = ((uint64) fd->nFileSizeHigh << 32) + fd->nFileSizeLow;
 	/* UTC FILETIME to seconds-since-1970 UTC
@@ -761,6 +760,11 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 	sb->st_mode  = (fd->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)? S_IFDIR : S_IFREG;
 
 	return true;
+}
+
+bool FiosIsHiddenFile(const struct dirent *ent)
+{
+	return (ent->dir->fd.dwFileAttributes & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM)) != 0;
 }
 
 bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)

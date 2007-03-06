@@ -114,10 +114,14 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 	char filename[MAX_PATH];
 
 	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, ent->d_name);
-	if (stat(filename, sb) != 0) return false;
-
-	return (ent->d_name[0] != '.'); // hidden file
+	return stat(filename, sb) == 0;
 }
+
+bool FiosIsHiddenFile(const struct dirent *ent)
+{
+	return ent->d_name[0] == '.';
+}
+
 
 static void ChangeWorkingDirectory(char *exe)
 {
