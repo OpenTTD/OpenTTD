@@ -275,7 +275,7 @@ save_params() {
 	echo "Running configure with following options:" >> $config_log
 	echo "" >> $config_log
 
-	configure="$0 --ignore-extra-parameters"
+	configure="$CONFIGURE_EXECUTABLE --ignore-extra-parameters"
 	for p in $save_params_array; do
 		eval "v=\"\$$p\""
 		p=`echo "$p" | sed 's/_/-/g;s/\n//g;'`

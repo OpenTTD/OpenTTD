@@ -1,5 +1,10 @@
 #!/bin/sh
 
+CONFIGURE_EXECUTABLE="$_"
+# On *nix systems those two are equal when ./configure is done
+if [ "$0" != "$CONFIGURE_EXECUTABLE" ]; then
+	CONFIGURE_EXECUTABLE="$CONFIGURE_EXECUTABLE $0"
+fi
 # Find out where configure is (in what dir)
 ROOT_DIR="`dirname $0`"
 ROOT_DIR="`cd $ROOT_DIR && pwd`"
