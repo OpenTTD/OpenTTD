@@ -19,8 +19,8 @@ enum CallbackID {
 	// only for train vehicles
 	CBID_TRAIN_VEHICLE_LENGTH       = 0x11,
 
-	/* Called to determine the amount of cargo to load per unit of time when
-	 * using gradual loading. */
+	/* Called (if appropriate bit in callback mask is set) to determine the
+	 * amount of cargo to load per unit of time when using gradual loading. */
 	CBID_VEHICLE_LOAD_AMOUNT        = 0x12,
 
 	/* Called (if appropriate bit in callback mask is set) to determine if a
