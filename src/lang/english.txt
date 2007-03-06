@@ -2908,6 +2908,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} is des
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invalid parameter for {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} must be loaded before {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} must be loaded after {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :the GRF file it was designed to translate
 
 STR_NEWGRF_ADD                                                  :{BLACK}Add
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Add a NewGRF file to the list

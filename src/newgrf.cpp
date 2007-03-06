@@ -3420,6 +3420,72 @@ static void LoadFontGlyph(byte *buf, int len)
 	}
 }
 
+/* Action 0x13 */
+static void TranslateGRFStrings(byte *buf, int len)
+{
+	/* <13> <grfid> <num-ent> <offset> <text...>
+	 *
+	 * 4*B grfid     The GRFID of the file whose texts are to be translated
+	 * B   num-ent   Number of strings
+	 * W   offset    First text ID
+	 * S   text...   Zero-terminated strings */
+
+	buf++; len--;
+	if (!check_length(len, 7, "TranslateGRFString")) return;
+
+	uint32 grfid = grf_load_dword(&buf);
+	const GRFConfig *c = GetGRFConfig(grfid);
+	if (c == NULL || (c->status != GCS_INITIALISED && c->status != GCS_ACTIVATED)) {
+		grfmsg(7, "GRFID 0x%08x unknown, skipping action 13", BSWAP32(grfid));
+		return;
+	}
+
+	if (c->status == GCS_INITIALISED) {
+		/* If the file is not active but will be activated later, give an error
+		 * and disable this file. */
+		GRFError *error = CallocT<GRFError>(1);
+		error->message  = STR_NEWGRF_ERROR_LOAD_AFTER;
+		error->data     = STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE;
+		error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
+
+		if (_cur_grfconfig->error != NULL) free(_cur_grfconfig->error);
+		_cur_grfconfig->error = error;
+
+		_cur_grfconfig->status = GCS_DISABLED;
+		_skip_sprites = -1;
+		return;
+	}
+
+	byte num_strings = grf_load_byte(&buf);
+	uint16 first_id  = grf_load_word(&buf);
+
+	if (!((first_id >= 0xD000 && first_id + num_strings <= 0xD3FF) || (first_id >= 0xDC00 && first_id + num_strings <= 0xDCFF))) {
+		grfmsg(7, "Attempting to set out-of-range string IDs in action 13 (first: 0x%4X, number: 0x%2X)", first_id, num_strings);
+		return;
+	}
+
+	len -= 7;
+
+	for (uint i = 0; i < num_strings && len > 0; i++) {
+		const char *string   = grf_load_string(&buf, len);
+		size_t string_length = strlen(string) + 1;
+
+		len -= (int)string_length;
+
+		if (string_length == 1) {
+			grfmsg(7, "TranslateGRFString: Ignoring empty string.");
+			continue;
+		}
+
+		/* Since no language id is supplied this string has to be added as a
+		 * generic string, thus the language id of 0x7F. For this to work
+		 * new_scheme has to be true as well. A language id of 0x7F will be
+		 * overridden by a non-generic id, so this will not change anything if
+		 * a string has been provided specifically for this language. */
+		AddGRFString(grfid, first_id + i, 0x7F, true, string, STR_UNDEFINED);
+	}
+}
+
 /* 'Action 0xFF' */
 static void GRFDataBlock(byte *buf, int len)
 {
@@ -3888,6 +3954,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x10 */ { NULL,     NULL,      DefineGotoLabel, NULL,       NULL, },
 		/* 0x11 */ { NULL,     GRFUnsafe, NULL,            NULL,       GRFSound, },
 		/* 0x12 */ { NULL,     NULL,      NULL,            NULL,       LoadFontGlyph, },
+		/* 0x13 */ { NULL,     NULL,      NULL,            NULL,       TranslateGRFStrings, },
 	};
 
 	byte* buf;
