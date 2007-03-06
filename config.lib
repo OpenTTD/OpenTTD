@@ -808,7 +808,7 @@ make_cflags_and_ldflags() {
 
 		if [ "$enable_static" != "0" ]; then
 			if [ "$os" = "OSX" ]; then
-				LIBS="$LIBS `$fontconfig_config --prefix`/lib/libfontconfig.a"
+				LIBS="$LIBS `$fontconfig_config --variable=prefix`/lib/libfontconfig.a"
 			else
 				LIBS="$LIBS `$fontconfig_config --libs --static | tr '\n\r' '  '`"
 			fi
