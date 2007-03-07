@@ -198,14 +198,16 @@
  * call to the same function and is not thread- or reentrancy-safe */
 #if !defined(STRGEN)
 # if defined(WIN32) || defined(WIN64)
-#  if defined(WINCE)
+#  include <tchar.h>
 /* XXX - WinCE without MSVCRT doesn't support wfopen, so it seems */
-#  else
-#   define fopen(file, mode) _wfopen(OTTD2FS(file), L ## mode)
-#  endif
-   const char *FS2OTTD(const wchar_t *name);
-   const wchar_t *OTTD2FS(const char *name);
+#  if !defined(WINCE)
+#   define fopen(file, mode) _tfopen(OTTD2FS(file), _T(mode))
+#  endif /* WINCE */
+
+   const char *FS2OTTD(const TCHAR *name);
+   const TCHAR *OTTD2FS(const char *name);
 # else
+
 #  define fopen(file, mode) fopen(OTTD2FS(file), mode)
    const char *FS2OTTD(const char *name);
    const char *OTTD2FS(const char *name);

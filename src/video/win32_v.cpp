@@ -36,6 +36,9 @@ bool _window_maximize;
 uint _display_hz;
 uint _fullscreen_bpp;
 static uint16 _bck_resolution[2];
+#if !defined(UNICODE)
+uint _codepage;
+#endif
 
 static void MakePalette()
 {
@@ -211,6 +214,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 	switch (msg) {
 		case WM_CREATE:
 			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+#if !defined(UNICODE)
+			_codepage = GetACP(); // get system codepage as some kind of a default
+#endif /* UNICODE */
 			break;
 
 		case WM_PAINT: {
@@ -346,6 +352,17 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			HandleMouseEvents();
 			return 0;
 		}
+
+#if !defined(UNICODE)
+		case WM_INPUTLANGCHANGE: {
+			TCHAR locale[6];
+			LCID lcid = GB(lParam, 0, 16);
+
+			int len = GetLocaleInfo(lcid, LOCALE_IDEFAULTANSICODEPAGE, locale, lengthof(locale));
+			if (len != 0) _codepage = _ttoi(locale);
+			return 1;
+		}
+#endif /* UNICODE */
 
 		case WM_KEYDOWN: {
 			// this is the rewritten ascii input function
