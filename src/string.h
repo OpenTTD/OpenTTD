@@ -37,11 +37,11 @@ void str_strip_colours(char *str);
 /**
  * Valid filter types for IsValidChar.
  */
-typedef enum CharSetFilter {
+enum CharSetFilter {
 	CS_ALPHANUMERAL,      //! Both numeric and alphabetic and spaces and stuff
 	CS_NUMERAL,           //! Only numeric ones
 	CS_ALPHA,             //! Only alphabetic values
-} CharSetFilter;
+};
 
 /** Convert the given string to lowercase, only works with ASCII! */
 void strtolower(char *str);

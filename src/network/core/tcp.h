@@ -58,8 +58,8 @@ enum {
 };
 
 /** Packet that wraps a command */
-typedef struct CommandPacket {
-	struct CommandPacket *next; ///< the next command packet (if in queue)
+struct CommandPacket {
+	CommandPacket *next; ///< the next command packet (if in queue)
 	PlayerByte player; ///< player that is executing the command
 	uint32 cmd;        ///< command being executed
 	uint32 p1;         ///< parameter p1
@@ -68,10 +68,10 @@ typedef struct CommandPacket {
 	char text[80];     ///< possible text sent for name changes etc
 	uint32 frame;      ///< the frame in which this packet is executed
 	byte callback;     ///< any callback function executed upon successful completion of the command
-} CommandPacket;
+};
 
 /** Status of a client */
-typedef enum {
+enum ClientStatus {
 	STATUS_INACTIVE,   ///< The client is not connected nor active
 	STATUS_AUTHORIZING,///< The client is authorizing
 	STATUS_AUTH,       ///< The client is authorized
@@ -80,7 +80,7 @@ typedef enum {
 	STATUS_DONE_MAP,   ///< The client has downloaded the map
 	STATUS_PRE_ACTIVE, ///< The client is catching up the delayed frames
 	STATUS_ACTIVE,     ///< The client is an active player in the game
-} ClientStatus;
+};
 
 /** Base socket handler for all TCP sockets */
 class NetworkTCPSocketHandler : public NetworkSocketHandler {

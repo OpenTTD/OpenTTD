@@ -5,7 +5,7 @@
 
 #include "oldpool.h"
 
-typedef struct Sign {
+struct Sign {
 	StringID     str;
 	ViewportSign sign;
 	int32        x;
@@ -14,7 +14,7 @@ typedef struct Sign {
 	PlayerByte   owner; // placed by this player. Anyone can delete them though. OWNER_NONE for gray signs from old games.
 
 	SignID       index;
-} Sign;
+};
 
 DECLARE_OLD_POOL(Sign, Sign, 2, 16000)
 

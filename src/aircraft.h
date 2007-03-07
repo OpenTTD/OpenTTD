@@ -8,12 +8,12 @@
 #include "station_map.h"
 #include "vehicle.h"
 
-typedef enum AircraftSubTypes {
+enum AircraftSubType {
 	AIR_HELICOPTER = 0,
 	AIR_AIRCRAFT   = 2,
 	AIR_SHADOW     = 4,
 	AIR_ROTOR      = 6
-} AircraftSubType;
+};
 
 
 /** Check if the aircraft type is a normal flying device; eg

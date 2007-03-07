@@ -106,10 +106,10 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 
 
 /* Dialogue for adding NewGRF files to the selection */
-typedef struct newgrf_add_d {
+struct newgrf_add_d {
 	GRFConfig **list;
 	const GRFConfig *sel;
-} newgrf_add_d;
+};
 
 
 static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
@@ -236,14 +236,14 @@ static const WindowDesc _newgrf_add_dlg_desc = {
 
 
 /* 'NewGRF Settings' dialogue */
-typedef struct newgrf_d {
+struct newgrf_d {
 	GRFConfig **orig_list; ///< grf list the window is shown with
 	GRFConfig **list;      ///< temporary grf list to which changes are made
 	GRFConfig *sel;        ///< selected grf item
 	bool editable;         ///< is the window editable
 	bool show_params;      ///< are the grf-parameters shown in the info-panel
 	bool execute;          ///< on pressing 'apply changes' are grf changes applied immediately, or only list is updated
-} newgrf_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(newgrf_d));
 
 

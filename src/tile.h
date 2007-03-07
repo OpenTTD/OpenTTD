@@ -8,7 +8,7 @@
 #include "map.h"
 #include "slope.h"
 
-typedef enum TileTypes {
+enum TileType {
 	MP_CLEAR,
 	MP_RAILWAY,
 	MP_STREET,
@@ -20,13 +20,13 @@ typedef enum TileTypes {
 	MP_INDUSTRY,
 	MP_TUNNELBRIDGE,
 	MP_UNMOVABLE,
-} TileType;
+};
 
-typedef enum TropicZones {
+enum TropicZone {
 	TROPICZONE_INVALID    = 0,
 	TROPICZONE_DESERT     = 1,
 	TROPICZONE_RAINFOREST = 2,
-} TropicZone;
+};
 
 Slope GetTileSlope(TileIndex tile, uint *h);
 uint GetTileZ(TileIndex tile);

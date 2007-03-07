@@ -14,7 +14,7 @@ enum {
 //#define PF_BENCH // perform simple benchmarks on the train pathfinder (not
 //supported on all archs)
 
-typedef struct TrackPathFinder TrackPathFinder;
+struct TrackPathFinder;
 typedef bool TPFEnumProc(TileIndex tile, void *data, Trackdir trackdir, uint length, byte *state);
 typedef void TPFAfterProc(TrackPathFinder *tpf);
 
@@ -30,17 +30,17 @@ typedef bool NTPEnumProc(TileIndex tile, void *data, int track, uint length);
  */
 #define PATHFIND_HASH_TILE(tile) (TileX(tile) & 0x1F) + ((TileY(tile) & 0x1F) << 5)
 
-typedef struct TrackPathFinderLink {
+struct TrackPathFinderLink {
 	TileIndex tile;
 	uint16 flags;
 	uint16 next;
-} TrackPathFinderLink;
+};
 
-typedef struct RememberData {
+struct RememberData {
 	uint16 cur_length;
 	byte depth;
 	byte pft_var6;
-} RememberData;
+};
 
 struct TrackPathFinder {
 	int num_links_left;
@@ -67,10 +67,10 @@ struct TrackPathFinder {
 
 void FollowTrack(TileIndex tile, uint16 flags, DiagDirection direction, TPFEnumProc* enum_proc, TPFAfterProc* after_proc, void* data);
 
-typedef struct {
+struct FindLengthOfTunnelResult {
 	TileIndex tile;
 	int length;
-} FindLengthOfTunnelResult;
+};
 FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection direction);
 
 void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypeMask railtypes, DiagDirection direction, NTPEnumProc* enum_proc, void* data);

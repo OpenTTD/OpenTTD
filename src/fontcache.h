@@ -14,14 +14,14 @@ void InitializeUnicodeGlyphMap();
 
 #ifdef WITH_FREETYPE
 
-typedef struct FreeTypeSettings {
+struct FreeTypeSettings {
 	char small_font[260];
 	char medium_font[260];
 	char large_font[260];
 	uint small_size;
 	uint medium_size;
 	uint large_size;
-} FreeTypeSettings;
+};
 
 extern FreeTypeSettings _freetype;
 

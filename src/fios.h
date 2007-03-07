@@ -6,12 +6,12 @@
 #define FIOS_H
 
 /* Deals with finding savegames */
-typedef struct {
+struct FiosItem {
 	byte type;
 	uint64 mtime;
 	char title[64];
 	char name[256 - 12 - 64];
-} FiosItem;
+};
 
 enum {
 	FIOS_TYPE_DRIVE        =   0,
@@ -56,15 +56,15 @@ int CDECL compare_FiosItems(const void *a, const void *b);
 /* Implementation of opendir/readdir/closedir for Windows */
 #if defined(WIN32)
 #include <windows.h>
-typedef struct DIR DIR;
+struct DIR;
 
-typedef struct dirent { // XXX - only d_name implemented
+struct dirent { // XXX - only d_name implemented
 	wchar_t *d_name; // name of found file
 	/* little hack which will point to parent DIR struct which will
 	 * save us a call to GetFileAttributes if we want information
 	 * about the file (for example in function fio_bla) */
 	DIR *dir;
-} dirent;
+};
 
 struct DIR {
 	HANDLE hFind;

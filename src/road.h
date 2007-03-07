@@ -5,7 +5,7 @@
 
 #include "helpers.hpp"
 
-typedef enum RoadBits {
+enum RoadBits {
 	ROAD_NONE = 0U,
 	ROAD_NW  = 1U,
 	ROAD_SW  = 2U,
@@ -14,7 +14,7 @@ typedef enum RoadBits {
 	ROAD_X   = ROAD_SW | ROAD_NE,
 	ROAD_Y   = ROAD_NW | ROAD_SE,
 	ROAD_ALL = ROAD_X  | ROAD_Y
-} RoadBits;
+};
 
 DECLARE_ENUM_AS_BIT_SET(RoadBits);
 

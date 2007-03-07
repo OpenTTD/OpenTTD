@@ -31,7 +31,7 @@
 
 typedef void (*ParseCmdProc)(char *buf, int value);
 
-typedef struct LanguagePackHeader {
+struct LanguagePackHeader {
 	uint32 ident;
 	uint32 version;     // 32-bits of auto generated version info which is basically a hash of strings.h
 	char name[32];      // the international name of this language
@@ -40,15 +40,15 @@ typedef struct LanguagePackHeader {
 	uint16 offsets[32]; // the offsets
 	byte plural_form;   // plural form index
 	byte pad[3];        // pad header to be a multiple of 4
-} LanguagePackHeader;
+};
 
-typedef struct CmdStruct {
+struct CmdStruct {
 	const char *cmd;
 	ParseCmdProc proc;
 	long value;
 	int8 consumes;
 	byte flags;
-} CmdStruct;
+};
 
 enum {
 	C_DONTCOUNT = 1,
@@ -56,11 +56,11 @@ enum {
 };
 
 
-typedef struct Case {
+struct Case {
 	int caseidx;
 	char *string;
-	struct Case *next;
-} Case;
+	Case *next;
+};
 
 static bool _masterlang;
 static bool _translated;
@@ -68,7 +68,7 @@ static const char* _file = "(unknown file)";
 static int _cur_line;
 static int _errors, _warnings;
 
-typedef struct LangString {
+struct LangString {
 	char *name;            // Name of the string
 	char *english;         // English text
 	char *translated;      // Translated text
@@ -77,7 +77,7 @@ typedef struct LangString {
 	int line;              // line of string in source-file
 	Case *english_case;    // cases for english
 	Case *translated_case; // cases for foreign
-} LangString;
+};
 
 static LangString *_strings[65536];
 
@@ -106,16 +106,16 @@ static const byte _plural_form_counts[] = { 2, 1, 2, 3, 3, 3, 3, 3, 4 };
 
 static const char *_cur_ident;
 
-typedef struct CmdPair {
+struct CmdPair {
 	const CmdStruct *a;
 	const char *v;
-} CmdPair;
+};
 
-typedef struct ParsedCommandStruct {
+struct ParsedCommandStruct {
 	int np;
 	CmdPair pairs[32];
 	const CmdStruct *cmd[32]; // ordered by param #
-} ParsedCommandStruct;
+};
 
 // Used when generating some advanced commands.
 static ParsedCommandStruct _cur_pcs;

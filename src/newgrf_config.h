@@ -6,42 +6,42 @@
 #include "openttd.h"
 
 /* GRF config bit flags */
-typedef enum {
+enum GCF_Flags {
 	GCF_SYSTEM,    ///< GRF file is an openttd-internal system grf
 	GCF_UNSAFE,    ///< GRF file is unsafe for static usage
 	GCF_STATIC,    ///< GRF file is used statically (can be used in any MP game)
 	GCF_COMPATIBLE,///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
 	GCF_COPY,      ///< The data is copied from a grf in _all_grfs
-} GCF_Flags;
+};
 
-typedef enum {
+enum GRFStatus {
 	GCS_UNKNOWN,      ///< The status of this grf file is unknown
 	GCS_DISABLED,     ///< GRF file is disabled
 	GCS_NOT_FOUND,    ///< GRF file was not found in the local cache
 	GCS_INITIALISED,  ///< GRF file has been initialised
 	GCS_ACTIVATED     ///< GRF file has been activated
-} GRFStatus;
+};
 
-typedef enum {
+enum GRFListCompatibility{
 	GLC_ALL_GOOD,
 	GLC_COMPATIBLE,
 	GLC_NOT_FOUND
-} GRFListCompatibility;
+};
 
-typedef struct GRFIdentifier {
+struct GRFIdentifier {
 	uint32 grfid;
 	uint8 md5sum[16];
-} GRF;
+};
 
-typedef struct GRFError {
+struct GRFError {
 	StringID message;
 	StringID data;
 	StringID severity;
 	uint8 num_params;
 	uint8 param_number[2];
-} GRFError;
+};
 
-typedef struct GRFConfig : public GRFIdentifier {
+struct GRFConfig : public GRFIdentifier {
 	char *filename;
 	char *name;
 	char *info;
@@ -53,7 +53,7 @@ typedef struct GRFConfig : public GRFIdentifier {
 	uint8 num_params;
 
 	struct GRFConfig *next;
-} GRFConfig;
+};
 
 /* First item in list of all scanned NewGRFs */
 extern GRFConfig *_all_grfs;

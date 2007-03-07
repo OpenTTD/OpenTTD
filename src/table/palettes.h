@@ -141,7 +141,7 @@ static const Colour _palettes[][256] = {
 
 #define GET_PALETTE(x) _palettes[x]
 
-typedef struct {
+struct ExtraPaletteValues {
 	Colour a[15];  // dark blue water
 	Colour ac[15]; // dark blue water Toyland
 	Colour lighthouse[12]; // lighthouse & stadium
@@ -149,7 +149,7 @@ typedef struct {
 	Colour e[15];  // ???
 	Colour b[45];  // glittery water
 	Colour bc[45]; // glittery water Toyland
-} ExtraPaletteValues;
+};
 
 static const ExtraPaletteValues _extra_palette_values = {
 	{ M( 32,  68, 112), M( 36,  72, 116), M( 40,  76, 120), M( 44,  80, 124),
@@ -173,10 +173,10 @@ static const ExtraPaletteValues _extra_palette_values = {
 #undef M
 
 // Color table for colors in lang files (e.g. {BLACK})
-typedef struct StringColor {
+struct StringColor {
 	byte text;
 	byte shadow;
-} StringColor;
+};
 
 static const StringColor _string_colormap[] = {
 	{ 150, 215 }, // BLUE

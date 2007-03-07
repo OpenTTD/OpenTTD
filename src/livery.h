@@ -8,7 +8,7 @@
 #include "helpers.hpp"
 
 /* List of different livery schemes. */
-typedef enum LiverySchemes {
+enum LiveryScheme {
 	LS_BEGIN = 0,
 	LS_DEFAULT = 0,
 
@@ -39,25 +39,25 @@ typedef enum LiverySchemes {
 	LS_LARGE_PLANE,
 
 	LS_END
-} LiveryScheme;
+};
 
 DECLARE_POSTFIX_INCREMENT(LiveryScheme);
 
 /* List of different livery classes, used only by the livery GUI. */
-typedef enum LiveryClasses {
+enum LiveryClass {
 	LC_OTHER,
 	LC_RAIL,
 	LC_ROAD,
 	LC_SHIP,
 	LC_AIRCRAFT,
 	LC_END
-} LiveryClass;
+};
 
 
-typedef struct Livery {
+struct Livery {
 	bool in_use;  ///< Set if this livery should be used instead of the default livery.
 	byte colour1; ///< First colour, for all vehicles.
 	byte colour2; ///< Second colour, for vehicles with 2CC support.
-} Livery;
+};
 
 #endif /* LIVERY_H */

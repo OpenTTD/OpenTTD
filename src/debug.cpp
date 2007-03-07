@@ -33,10 +33,10 @@ int _debug_sl_level;
 int _debug_station_level;
 
 
-typedef struct DebugLevel {
+struct DebugLevel {
 	const char *name;
 	int *level;
-} DebugLevel;
+};
 
 #define DEBUG_LEVEL(x) { #x, &_debug_##x##_level }
 	static const DebugLevel debug_level[] = {

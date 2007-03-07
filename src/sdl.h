@@ -13,7 +13,7 @@ void SdlClose(uint32 x);
 #ifdef DYNAMICALLY_LOADED_SDL
 	#include <SDL.h>
 
-	typedef struct SDLProcs {
+	struct SDLProcs {
 		int (SDLCALL *SDL_Init)(Uint32);
 		int (SDLCALL *SDL_InitSubSystem)(Uint32);
 		char *(SDLCALL *SDL_GetError)();
@@ -46,7 +46,7 @@ void SdlClose(uint32 x);
 		int (SDLCALL *SDL_SetColorKey)(SDL_Surface *, Uint32, Uint32);
 		void (SDLCALL *SDL_WM_SetIcon)(SDL_Surface *, Uint8 *);
 		Uint32 (SDLCALL *SDL_MapRGB)(SDL_PixelFormat *, Uint8, Uint8, Uint8);
-	} SDLProcs;
+	};
 
 	extern SDLProcs sdl_proc;
 

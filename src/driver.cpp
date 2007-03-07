@@ -30,17 +30,17 @@
 #include "video/cocoa_v.h"
 #include "video/win32_v.h"
 
-typedef struct DriverDesc {
+struct DriverDesc {
 	const char* name;
 	const char* longname;
 	const HalCommonDriver* drv;
-} DriverDesc;
+};
 
-typedef struct DriverClass {
+struct DriverClass {
 	const DriverDesc *descs;
 	const char *name;
 	const HalCommonDriver** drv;
-} DriverClass;
+};
 
 
 #define M(x, y, z) { x, y, (const HalCommonDriver *)(void *)z }

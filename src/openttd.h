@@ -11,43 +11,43 @@
 #include "hal.h"
 #include "helpers.hpp"
 
-typedef struct Oblong {
+struct Oblong {
 	int x, y;
 	int width, height;
-} Oblong;
+};
 
-typedef struct BoundingRect {
+struct BoundingRect {
 	int width;
 	int height;
-} BoundingRect;
+};
 
-typedef struct Pair {
+struct Pair {
 	int a;
 	int b;
-} Pair;
+};
 
 #include "map.h"
 #include "slope.h"
 
 // Forward declarations of structs.
-typedef struct Vehicle Vehicle;
-typedef struct Depot Depot;
-typedef struct Waypoint Waypoint;
-typedef struct Window Window;
-typedef struct Station Station;
-typedef struct ViewPort ViewPort;
-typedef struct Town Town;
-typedef struct NewsItem NewsItem;
-typedef struct Industry Industry;
-typedef struct DrawPixelInfo DrawPixelInfo;
+struct Vehicle;
+struct Depot;
+struct Waypoint;
+struct Window;
+struct Station;
+struct ViewPort;
+struct Town;
+struct NewsItem;
+struct Industry;
+struct DrawPixelInfo;
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
 typedef byte CargoID;
 typedef byte LandscapeID;
 typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colortables
-typedef struct PalSpriteID {
+struct PalSpriteID {
 	SpriteID sprite;
 	SpriteID pal;
-} PalSpriteID;
+};
 typedef uint16 EngineID;
 typedef uint16 UnitID;
 typedef uint16 StringID;
@@ -140,7 +140,7 @@ typedef TinyEnumT<Owner> OwnerByte;
 typedef OwnerByte PlayerByte;
 
 
-typedef enum TransportTypes {
+enum TransportType {
 	/* These constants are for now linked to the representation of bridges
 	 * and tunnels, so they can be used by GetTileTrackStatus_TunnelBridge.
 	 * In an ideal world, these constants would be used everywhere when
@@ -153,20 +153,20 @@ typedef enum TransportTypes {
 	TRANSPORT_WATER, // = 2
 	TRANSPORT_END,
 	INVALID_TRANSPORT = 0xff,
-} TransportType;
+};
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<TransportType> : MakeEnumPropsT<TransportType, byte, TRANSPORT_BEGIN, TRANSPORT_END, INVALID_TRANSPORT> {};
 typedef TinyEnumT<TransportType> TransportTypeByte;
 
 
-typedef struct TileInfo {
+struct TileInfo {
 	uint x;
 	uint y;
 	Slope tileh;
 	TileIndex tile;
 	uint z;
-} TileInfo;
+};
 
 
 /* Display Options */
@@ -195,7 +195,7 @@ enum {
 	NUM_PRICES = 49,
 };
 
-typedef struct Prices {
+struct Prices {
 	int32 station_value;
 	int32 build_rail;
 	int32 build_road;
@@ -243,11 +243,11 @@ typedef struct Prices {
 	int32 roadveh_running;
 	int32 ship_running;
 	int32 build_industry;
-} Prices;
+};
 
 #define GAME_DIFFICULTY_NUM 18
 
-typedef struct GameDifficulty {
+struct GameDifficulty {
 	int max_no_competitors;
 	int competitor_start_time;
 	int number_towns;
@@ -266,7 +266,7 @@ typedef struct GameDifficulty {
 	int line_reverse_mode;
 	int disasters;
 	int town_council_tolerance; // minimum required town ratings to be allowed to demolish stuff
-} GameDifficulty;
+};
 
 enum {
 	// Temperate
@@ -317,18 +317,18 @@ enum {
 
 typedef uint AcceptedCargo[NUM_CARGO];
 
-typedef struct TileDesc {
+struct TileDesc {
 	StringID str;
 	Owner owner;
 	Date build_date;
 	uint32 dparam[2];
-} TileDesc;
+};
 
-typedef struct {
+struct ViewportSign {
 	int32 left;
 	int32 top;
 	byte width_1, width_2;
-} ViewportSign;
+};
 
 
 typedef void DrawTileProc(TileInfo *ti);
@@ -365,7 +365,7 @@ typedef void ChangeTileOwnerProc(TileIndex tile, PlayerID old_player, PlayerID n
 typedef uint32 VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
 typedef Slope GetSlopeTilehProc(TileIndex, Slope tileh);
 
-typedef struct {
+struct TileTypeProcs {
 	DrawTileProc *draw_tile_proc;
 	GetSlopeZProc *get_slope_z_proc;
 	ClearTileProc *clear_tile_proc;
@@ -379,7 +379,7 @@ typedef struct {
 	GetProducedCargoProc *get_produced_cargo_proc;
 	VehicleEnterTileProc *vehicle_enter_tile_proc;
 	GetSlopeTilehProc *get_slope_tileh_proc;
-} TileTypeProcs;
+};
 
 
 enum WindowClass {
@@ -575,11 +575,11 @@ VARDEF byte _no_scroll;
 /** To have a concurrently running thread interface with the main program, use
  * the OTTD_SendThreadMessage() function. Actions to perform upon the message are handled
  * in the ProcessSentMessage() function */
-typedef enum ThreadMsgs {
+enum ThreadMsg {
 	MSG_OTTD_NO_MESSAGE,
 	MSG_OTTD_SAVETHREAD_DONE,
 	MSG_OTTD_SAVETHREAD_ERROR,
-} ThreadMsg;
+};
 
 void OTTD_SendThreadMessage(ThreadMsg msg);
 

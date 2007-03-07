@@ -1,24 +1,24 @@
 /* $Id$ */
 
-typedef struct {
+struct AiDefaultBlockData {
 	byte mode;
 	byte attr;
 	TileIndexDiffC tileoffs;
-} AiDefaultBlockData;
+};
 
-typedef struct {
+struct AiDefaultRailBlock {
 	byte p0;
 	byte p1;
 	byte p2;
 	byte p3;
 	byte dir;
 	const AiDefaultBlockData *data;
-} AiDefaultRailBlock;
+};
 
-typedef struct {
+struct AiDefaultRoadBlock {
 	byte dir;
 	const AiDefaultBlockData *data;
-} AiDefaultRoadBlock;
+};
 
 
 #define MKHDR(a,b,c,d,e) a,b,c,d,e,

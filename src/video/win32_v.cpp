@@ -73,11 +73,11 @@ static void UpdatePalette(HDC dc, uint start, uint count)
 	SetDIBColorTable(dc, start, count, rgb);
 }
 
-typedef struct {
+struct VkMapping {
 	byte vk_from;
 	byte vk_count;
 	byte map_to;
-} VkMapping;
+};
 
 #define AS(x, z) {x, 0, z}
 #define AM(x, y, z, w) {x, y - x, z}

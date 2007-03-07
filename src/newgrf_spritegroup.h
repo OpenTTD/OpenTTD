@@ -4,12 +4,12 @@
 #define NEWGRF_SPRITEGROUP_H
 
 
-typedef struct SpriteGroup SpriteGroup;
+struct SpriteGroup;
 
 
 /* 'Real' sprite groups contain a list of other result or callback sprite
  * groups. */
-typedef struct RealSpriteGroup {
+struct RealSpriteGroup {
 	// Loaded = in motion, loading = not moving
 	// Each group contains several spritesets, for various loading stages
 
@@ -21,28 +21,28 @@ typedef struct RealSpriteGroup {
 	byte num_loading;      ///< Number of loading groups
 	const SpriteGroup **loaded;  ///< List of loaded groups (can be SpriteIDs or Callback results)
 	const SpriteGroup **loading; ///< List of loading groups (can be SpriteIDs or Callback results)
-} RealSpriteGroup;
+};
 
 /* Shared by deterministic and random groups. */
-typedef enum VarSpriteGroupScopes {
+enum VarSpriteGroupScope {
 	VSG_SCOPE_SELF,
 	// Engine of consists for vehicles, city for stations.
 	VSG_SCOPE_PARENT,
-} VarSpriteGroupScope;
+};
 
-typedef enum DeterministicSpriteGroupSizes {
+enum DeterministicSpriteGroupSize {
 	DSG_SIZE_BYTE,
 	DSG_SIZE_WORD,
 	DSG_SIZE_DWORD,
-} DeterministicSpriteGroupSize;
+};
 
-typedef enum DeterministicSpriteGroupAdjustTypes {
+enum DeterministicSpriteGroupAdjustType {
 	DSGA_TYPE_NONE,
 	DSGA_TYPE_DIV,
 	DSGA_TYPE_MOD,
-} DeterministicSpriteGroupAdjustType;
+};
 
-typedef enum DeterministicSpriteGroupAdjustOperations {
+enum DeterministicSpriteGroupAdjustOperation {
 	DSGA_OP_ADD,  // a + b
 	DSGA_OP_SUB,  // a - b
 	DSGA_OP_SMIN, // (signed) min(a, b)
@@ -57,10 +57,10 @@ typedef enum DeterministicSpriteGroupAdjustOperations {
 	DSGA_OP_AND,  // a & b
 	DSGA_OP_OR,   // a | b
 	DSGA_OP_XOR,  // a ^ b
-} DeterministicSpriteGroupAdjustOperation;
+};
 
 
-typedef struct DeterministicSpriteGroupAdjust {
+struct DeterministicSpriteGroupAdjust {
 	DeterministicSpriteGroupAdjustOperation operation;
 	DeterministicSpriteGroupAdjustType type;
 	byte variable;
@@ -70,17 +70,17 @@ typedef struct DeterministicSpriteGroupAdjust {
 	uint32 add_val;
 	uint32 divmod_val;
 	const SpriteGroup *subroutine;
-} DeterministicSpriteGroupAdjust;
+};
 
 
-typedef struct DeterministicSpriteGroupRange {
+struct DeterministicSpriteGroupRange {
 	const SpriteGroup *group;
 	uint32 low;
 	uint32 high;
-} DeterministicSpriteGroupRange;
+};
 
 
-typedef struct DeterministicSpriteGroup {
+struct DeterministicSpriteGroup {
 	VarSpriteGroupScope var_scope;
 	DeterministicSpriteGroupSize size;
 	byte num_adjusts;
@@ -90,14 +90,14 @@ typedef struct DeterministicSpriteGroup {
 
 	// Dynamically allocated, this is the sole owner
 	const SpriteGroup *default_group;
-} DeterministicSpriteGroup;
+};
 
-typedef enum RandomizedSpriteGroupCompareModes {
+enum RandomizedSpriteGroupCompareMode {
 	RSG_CMP_ANY,
 	RSG_CMP_ALL,
-} RandomizedSpriteGroupCompareMode;
+};
 
-typedef struct RandomizedSpriteGroup {
+struct RandomizedSpriteGroup {
 	// Take this object:
 	VarSpriteGroupScope var_scope;
 
@@ -111,32 +111,32 @@ typedef struct RandomizedSpriteGroup {
 
 	// Take the group with appropriate index:
 	const SpriteGroup **groups;
-} RandomizedSpriteGroup;
+};
 
 
 /* This contains a callback result. A failed callback has a value of
  * CALLBACK_FAILED */
-typedef struct CallbackResultSpriteGroup {
+struct CallbackResultSpriteGroup {
 	uint16 result;
-} CallbackResultSpriteGroup;
+};
 
 
 /* A result sprite group returns the first SpriteID and the number of
  * sprites in the set */
-typedef struct ResultSpriteGroup {
+struct ResultSpriteGroup {
 	SpriteID sprite;
 	byte num_sprites;
-} ResultSpriteGroup;
+};
 
 /* List of different sprite group types */
-typedef enum SpriteGroupType {
+enum SpriteGroupType {
 	SGT_INVALID,
 	SGT_REAL,
 	SGT_DETERMINISTIC,
 	SGT_RANDOMIZED,
 	SGT_CALLBACK,
 	SGT_RESULT,
-} SpriteGroupType;
+};
 
 /* Common wrapper for all the different sprite group types */
 struct SpriteGroup {
@@ -156,7 +156,7 @@ SpriteGroup *AllocateSpriteGroup();
 void InitializeSpriteGroupPool();
 
 
-typedef struct ResolverObject {
+struct ResolverObject {
 	uint16 callback;
 	uint32 callback_param1;
 	uint32 callback_param2;
@@ -187,7 +187,7 @@ typedef struct ResolverObject {
 	void (*SetTriggers)(const struct ResolverObject*, int);
 	uint32 (*GetVariable)(const struct ResolverObject*, byte, byte, bool*);
 	const SpriteGroup *(*ResolveReal)(const struct ResolverObject*, const SpriteGroup*);
-} ResolverObject;
+};
 
 
 /* Base sprite group resolver */

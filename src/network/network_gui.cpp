@@ -32,20 +32,20 @@
 #define BGC 5
 #define BTC 15
 
-typedef struct network_d {
+struct network_d {
 	PlayerID company;        // select company in network lobby
 	byte field;              // select text-field in start-server and game-listing
 	NetworkGameList *server; // selected server in lobby and game-listing
 	FiosItem *map;           // selected map in start-server
-} network_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_d));
 
-typedef struct network_ql_d {
+struct network_ql_d {
 	network_d n;                 // see above; general stuff
 	querystr_d q;                // text-input in start-server and game-listing
 	NetworkGameList **sort_list; // list of games (sorted)
 	list_d l;                    // accompanying list-administration
-} network_ql_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_ql_d));
 
 /* Global to remember sorting after window has been closed */

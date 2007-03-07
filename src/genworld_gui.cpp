@@ -29,12 +29,12 @@
 /**
  * In what 'mode' the GenerateLandscapeWindowProc is.
  */
-typedef enum glwp_modes {
+enum glwp_modes {
 	GLWP_GENERATE,
 	GLWP_HEIGHTMAP,
 	GLWP_SCENARIO,
 	GLWP_END
-} glwp_modes;
+};
 
 static uint _heightmap_x = 0;
 static uint _heightmap_y = 0;
@@ -740,13 +740,13 @@ static const Widget _show_terrain_progress_widgets[] = {
 {   WIDGETS_END},
 };
 
-typedef struct tp_info {
+struct tp_info {
 	uint percent;
 	StringID cls;
 	uint current;
 	uint total;
 	int timer;
-} tp_info;
+};
 
 static tp_info _tp;
 

@@ -8,11 +8,11 @@ void InitializeScreenshotFormats();
 const char *GetScreenshotFormatDesc(int i);
 void SetScreenshotFormat(int i);
 
-typedef enum ScreenshotType {
+enum ScreenshotType {
 	SC_NONE,
 	SC_VIEWPORT,
 	SC_WORLD
-} ScreenshotType;
+};
 
 bool MakeScreenshot();
 void SetScreenshotType(ScreenshotType t);

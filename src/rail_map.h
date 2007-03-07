@@ -8,12 +8,12 @@
 #include "tile.h"
 
 
-typedef enum RailTileType {
+enum RailTileType {
 	RAIL_TILE_NORMAL   = 0,
 	RAIL_TILE_SIGNALS  = 1,
 	RAIL_TILE_WAYPOINT = 2,
 	RAIL_TILE_DEPOT    = 3,
-} RailTileType;
+};
 
 static inline RailTileType GetRailTileType(TileIndex t)
 {
@@ -118,12 +118,12 @@ static inline WaypointID GetWaypointIndex(TileIndex t)
 	return (WaypointID)_m[t].m2;
 }
 
-typedef enum SignalType {
+enum SignalType {
 	SIGTYPE_NORMAL  = 0, // normal signal
 	SIGTYPE_ENTRY   = 1, // presignal block entry
 	SIGTYPE_EXIT    = 2, // presignal block exit
 	SIGTYPE_COMBO   = 3  // presignal inter-block
-} SignalType;
+};
 
 static inline SignalType GetSignalType(TileIndex t)
 {
@@ -159,10 +159,10 @@ static inline void CycleSignalSide(TileIndex t, Track track)
 }
 
 
-typedef enum SignalVariant {
+enum SignalVariant {
 	SIG_ELECTRIC  = 0,
 	SIG_SEMAPHORE = 1
-} SignalVariant;
+};
 
 static inline SignalVariant GetSignalVariant(TileIndex t)
 {
@@ -183,10 +183,10 @@ static inline bool IsSignalPresent(TileIndex t, byte signalbit)
  * simple boolean logic will do. But do try to compare to this enum instead of
  * normal boolean evaluation, since that will make future additions easier.
  */
-typedef enum SignalStates {
+enum SignalState {
 	SIGNAL_STATE_RED   = 0,
 	SIGNAL_STATE_GREEN = 1,
-} SignalState;
+};
 
 static inline SignalState GetSingleSignalState(TileIndex t, byte signalbit)
 {
@@ -242,7 +242,7 @@ static inline SignalState GetSignalStateByTrackdir(TileIndex tile, Trackdir trac
 RailType GetTileRailType(TileIndex tile);
 
 
-typedef enum RailGroundType {
+enum RailGroundType {
 	RAIL_GROUND_BARREN       =  0,
 	RAIL_GROUND_GRASS        =  1,
 	RAIL_GROUND_FENCE_NW     =  2,
@@ -256,7 +256,7 @@ typedef enum RailGroundType {
 	RAIL_GROUND_FENCE_HORIZ1 = 10,
 	RAIL_GROUND_FENCE_HORIZ2 = 11,
 	RAIL_GROUND_ICE_DESERT   = 12,
-} RailGroundType;
+};
 
 static inline void SetRailGroundType(TileIndex t, RailGroundType rgt)
 {

@@ -401,11 +401,11 @@ void DrawCanalWater(TileIndex tile)
 	}
 }
 
-typedef struct LocksDrawTileStruct {
+struct LocksDrawTileStruct {
 	int8 delta_x, delta_y, delta_z;
 	byte width, height, depth;
 	SpriteID image;
-} LocksDrawTileStruct;
+};
 
 #include "table/water_land.h"
 

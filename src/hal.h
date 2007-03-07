@@ -5,26 +5,26 @@
 #ifndef HAL_H
 #define HAL_H
 
-typedef struct {
+struct HalCommonDriver {
 	const char *(*start)(const char * const *parm);
 	void (*stop)();
-} HalCommonDriver;
+};
 
-typedef struct {
+struct HalVideoDriver {
 	const char *(*start)(const char * const *parm);
 	void (*stop)();
 	void (*make_dirty)(int left, int top, int width, int height);
 	void (*main_loop)();
 	bool (*change_resolution)(int w, int h);
 	void (*toggle_fullscreen)(bool fullscreen);
-} HalVideoDriver;
+};
 
-typedef struct {
+struct HalSoundDriver {
 	const char *(*start)(const char * const *parm);
 	void (*stop)();
-} HalSoundDriver;
+};
 
-typedef struct {
+struct HalMusicDriver {
 	const char *(*start)(const char * const *parm);
 	void (*stop)();
 
@@ -32,7 +32,7 @@ typedef struct {
 	void (*stop_song)();
 	bool (*is_song_playing)();
 	void (*set_volume)(byte vol);
-} HalMusicDriver;
+};
 
 extern HalMusicDriver *_music_driver;
 extern HalSoundDriver *_sound_driver;

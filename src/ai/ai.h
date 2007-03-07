@@ -7,7 +7,7 @@
 #include "../command.h"
 
 /* How DoCommands look like for an AI */
-typedef struct AICommand {
+struct AICommand {
 	uint32 tile;
 	uint32 p1;
 	uint32 p2;
@@ -17,22 +17,22 @@ typedef struct AICommand {
 	char *text;
 	uint uid;
 
-	struct AICommand *next;
-} AICommand;
+	AICommand *next;
+};
 
 /* The struct for an AIScript Player */
-typedef struct AIPlayer {
+struct AIPlayer {
 	bool active;            ///< Is this AI active?
 	AICommand *queue;       ///< The commands that he has in his queue
 	AICommand *queue_tail;  ///< The tail of this queue
-} AIPlayer;
+};
 
 /* The struct to keep some data about the AI in general */
-typedef struct AIStruct {
+struct AIStruct {
 	/* General */
 	bool enabled;           ///< Is AI enabled?
 	uint tick;              ///< The current tick (something like _frame_counter, only for AIs)
-} AIStruct;
+};
 
 VARDEF AIStruct _ai;
 VARDEF AIPlayer _ai_player[MAX_PLAYERS];

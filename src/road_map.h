@@ -9,11 +9,11 @@
 #include "tile.h"
 
 
-typedef enum RoadTileType {
+enum RoadTileType {
 	ROAD_TILE_NORMAL,
 	ROAD_TILE_CROSSING,
 	ROAD_TILE_DEPOT
-} RoadTileType;
+};
 
 static inline RoadTileType GetRoadTileType(TileIndex t)
 {
@@ -105,7 +105,7 @@ static inline void ToggleSnow(TileIndex t)
 }
 
 
-typedef enum Roadside {
+enum Roadside {
 	ROADSIDE_BARREN           = 0,
 	ROADSIDE_GRASS            = 1,
 	ROADSIDE_PAVED            = 2,
@@ -113,7 +113,7 @@ typedef enum Roadside {
 	ROADSIDE_TREES            = 5,
 	ROADSIDE_GRASS_ROAD_WORKS = 6,
 	ROADSIDE_PAVED_ROAD_WORKS = 7
-} Roadside;
+};
 
 static inline Roadside GetRoadside(TileIndex tile)
 {

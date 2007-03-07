@@ -12,7 +12,7 @@ enum {
 	CUSTOM_CURRENCY_ID = NUM_CURRENCY - 1
 };
 
-typedef struct {
+struct CurrencySpec {
 	uint16 rate;
 	char separator;
 	Year to_euro;
@@ -29,7 +29,7 @@ typedef struct {
 	 */
 	byte symbol_pos;
 	StringID name;
-} CurrencySpec;
+};
 
 
 extern CurrencySpec _currency_specs[NUM_CURRENCY];

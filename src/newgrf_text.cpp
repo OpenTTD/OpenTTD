@@ -30,16 +30,16 @@
  * the grf base will not be used in order to find the string, but rather for
  * jumping from standard langID scheme to the new one.
  */
-typedef enum grf_base_languages {
+enum grf_base_languages {
 	GRFLB_AMERICAN    = 0x01,
 	GRFLB_ENGLISH     = 0x02,
 	GRFLB_GERMAN      = 0x04,
 	GRFLB_FRENCH      = 0x08,
 	GRFLB_SPANISH     = 0x10,
 	GRFLB_GENERIC     = 0x80,
-} grf_base_language;
+};
 
-typedef enum grf_extended_languages {
+enum grf_extended_languages {
 	GRFLX_AMERICAN    = 0x00,
 	GRFLX_ENGLISH     = 0x01,
 	GRFLX_GERMAN      = 0x02,
@@ -73,13 +73,13 @@ typedef enum grf_extended_languages {
 	GRFLX_CROATIAN    = 0x38,
 	GRFLX_TURKISH     = 0x3E,
 	GRFLX_UNSPECIFIED = 0x7F,
-} grf_language;
+};
 
 
-typedef struct iso_grf {
+struct iso_grf {
 	char code[6];
 	byte grfLangID;
-} iso_grf;
+};
 
 /**
  * ISO code VS NewGrf langID conversion array.
@@ -170,12 +170,12 @@ public:
  * Putting both grfid and stringid together allows us to avoid duplicates,
  * since it is NOT SUPPOSED to happen.
  */
-typedef struct GRFTextEntry {
+struct GRFTextEntry {
 	uint32 grfid;
 	uint16 stringid;
 	StringID def_string;
 	GRFText *textholder;
-} GRFTextEntry;
+};
 
 
 static uint _num_grf_texts = 0;

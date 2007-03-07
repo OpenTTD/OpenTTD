@@ -8,24 +8,24 @@
 void ResetPriceBaseMultipliers();
 void SetPriceBaseMultiplier(uint price, byte factor);
 
-typedef struct {
+struct Economy {
 	int32 max_loan;         ///< Maximum possible loan
 	int32 max_loan_unround; ///< Economy fluctuation status
 	int fluct;
 	byte interest_rate;     ///< Interest
 	byte infl_amount;       ///< inflation amount
 	byte infl_amount_pr;    ///< "floating" portion of inflation
-} Economy;
+};
 
 VARDEF Economy _economy;
 
-typedef struct Subsidy {
+struct Subsidy {
 	CargoID cargo_type;
 	byte age;
 	/* from and to can either be TownID, StationID or IndustryID */
 	uint16 from;
 	uint16 to;
-} Subsidy;
+};
 
 
 enum ScoreID {
@@ -48,11 +48,11 @@ enum ScoreID {
 
 DECLARE_POSTFIX_INCREMENT(ScoreID);
 
-typedef struct ScoreInfo {
+struct ScoreInfo {
 	byte id;    ///< Unique ID of the score
 	int needed; ///< How much you need to get the perfect score
 	int score;  ///< How much score it will give
-} ScoreInfo;
+};
 
 extern const ScoreInfo _score_info[];
 extern int _score_part[MAX_PLAYERS][SCORE_END];

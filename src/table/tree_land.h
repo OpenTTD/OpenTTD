@@ -13,10 +13,10 @@ static const SpriteID _tree_sprites_1[] = {
 static const byte _tree_base_by_landscape[4] = {0, 12, 20, 32};
 static const byte _tree_count_by_landscape[4] = {12, 8, 12, 9};
 
-typedef struct TreePos {
+struct TreePos {
 	uint8 x;
 	uint8 y;
-} TreePos;
+};
 
 static const TreePos _tree_layout_xy[][4] = {
 	{ { 9, 3 }, { 1, 8 }, { 0, 0 }, { 8, 9 } },

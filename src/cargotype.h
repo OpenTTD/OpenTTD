@@ -9,7 +9,7 @@
 typedef uint32 CargoLabel;
 
 
-typedef struct CargoSpec {
+struct CargoSpec {
 	uint8 bitnum;
 	CargoLabel label;
 	uint32 grfid;
@@ -35,7 +35,7 @@ typedef struct CargoSpec {
 	uint16 classes;
 
 	bool IsValid() const;
-} CargoSpec;
+};
 
 
 extern uint32 _cargo_mask;

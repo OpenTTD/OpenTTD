@@ -599,11 +599,11 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 }
 
 
-typedef struct DrawRoadTileStruct {
+struct DrawRoadTileStruct {
 	uint16 image;
 	byte subcoord_x;
 	byte subcoord_y;
-} DrawRoadTileStruct;
+};
 
 #include "table/road_land.h"
 

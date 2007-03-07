@@ -310,11 +310,11 @@ int32 CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 }
 
-typedef struct TreeListEnt {
+struct TreeListEnt {
 	SpriteID image;
 	SpriteID pal;
 	byte x,y;
-} TreeListEnt;
+};
 
 static void DrawTile_Trees(TileInfo *ti)
 {

@@ -901,12 +901,12 @@ void DeleteSubsidyWithStation(StationID index)
 		InvalidateWindow(WC_SUBSIDIES_LIST, 0);
 }
 
-typedef struct FoundRoute {
+struct FoundRoute {
 	uint distance;
 	CargoID cargo;
 	void *from;
 	void *to;
-} FoundRoute;
+};
 
 static void FindSubsidyPassengerRoute(FoundRoute *fr)
 {

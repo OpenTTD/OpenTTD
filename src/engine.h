@@ -16,7 +16,7 @@ enum RailVehicleTypes {
 	RAILVEH_WAGON,       ///< simple wagon, not motorized
 };
 
-typedef struct RailVehicleInfo {
+struct RailVehicleInfo {
 	byte image_index;
 	RailVehicleTypes railveh_type;
 	byte base_cost;
@@ -39,9 +39,9 @@ typedef struct RailVehicleInfo {
 	byte shorten_factor;   ///< length on main map for this type is 8 - shorten_factor
 	byte tractive_effort; ///< Tractive effort coefficient
 	byte user_def_data;    ///< Property 0x25: "User-defined bit mask" Used only for (very few) NewGRF vehicles
-} RailVehicleInfo;
+};
 
-typedef struct ShipVehicleInfo {
+struct ShipVehicleInfo {
 	byte image_index;
 	byte base_cost;
 	uint16 max_speed;
@@ -50,7 +50,7 @@ typedef struct ShipVehicleInfo {
 	byte running_cost;
 	SoundFxByte sfx;
 	bool refittable;
-} ShipVehicleInfo;
+};
 
 /* AircraftVehicleInfo subtypes, bitmask type.
  * If bit 0 is 0 then it is a helicopter, otherwise it is a plane
@@ -61,7 +61,7 @@ enum {
 	AIR_FAST = 2
 };
 
-typedef struct AircraftVehicleInfo {
+struct AircraftVehicleInfo {
 	byte image_index;
 	byte base_cost;
 	byte running_cost;
@@ -71,9 +71,9 @@ typedef struct AircraftVehicleInfo {
 	uint16 max_speed;
 	byte mail_capacity;
 	uint16 passenger_capacity;
-} AircraftVehicleInfo;
+};
 
-typedef struct RoadVehicleInfo {
+struct RoadVehicleInfo {
 	byte image_index;
 	byte base_cost;
 	byte running_cost;
@@ -81,12 +81,12 @@ typedef struct RoadVehicleInfo {
 	byte max_speed;
 	byte capacity;
 	CargoID cargo_type;
-} RoadVehicleInfo;
+};
 
 /** Information about a vehicle
  *  @see table/engines.h
  */
-typedef struct EngineInfo {
+struct EngineInfo {
 	Date base_intro;
 	Year lifelength;
 	Year base_life;
@@ -97,9 +97,9 @@ typedef struct EngineInfo {
 	byte refit_cost;
 	byte misc_flags;
 	byte callbackmask;
-} EngineInfo;
+};
 
-typedef struct Engine {
+struct Engine {
 	Date intro_date;
 	Date age;
 	uint16 reliability;
@@ -112,7 +112,7 @@ typedef struct Engine {
 	byte preview_wait;
 	byte player_avail;
 	byte type; ///< type, ie VEH_Road, VEH_Train, etc. Same as in vehicle.h
-} Engine;
+};
 
 /**
  * EngineInfo.misc_flags is a bitmask, with the following values
@@ -261,10 +261,8 @@ struct EngineRenew {
 	EngineRenewID index;
 	EngineID from;
 	EngineID to;
-	struct EngineRenew *next;
+	EngineRenew *next;
 };
-
-typedef struct EngineRenew EngineRenew;
 
 /**
  * Memory pool for engine renew elements. DO NOT USE outside of engine.c. Is

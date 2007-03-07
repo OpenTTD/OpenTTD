@@ -18,7 +18,7 @@ extern uint _map_size;
 #define TILE_MASK(x) ((x) & _map_tile_mask)
 #define TILE_ASSERT(x) assert(TILE_MASK(x) == (x));
 
-typedef struct Tile {
+struct Tile {
 	byte type_height;
 	byte m1;
 	uint16 m2;
@@ -26,7 +26,7 @@ typedef struct Tile {
 	byte m4;
 	byte m5;
 	byte m6;
-} Tile;
+};
 
 extern Tile* _m;
 
@@ -92,10 +92,10 @@ static inline uint TileY(TileIndex tile)
 }
 
 
-typedef struct TileIndexDiffC {
+struct TileIndexDiffC {
 	int16 x;
 	int16 y;
-} TileIndexDiffC;
+};
 
 static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 {

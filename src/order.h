@@ -88,8 +88,8 @@ enum {
  * - Vehicle -> current_order
  * - REF_SHEDULE (all REFs are currently limited to 16 bits!!)
  */
-typedef struct Order {
-	struct Order *next;   ///< Pointer to next order. If NULL, end of list
+struct Order {
+	Order *next;          ///< Pointer to next order. If NULL, end of list
 
 	OrderTypeByte type;
 	uint8  flags;
@@ -99,17 +99,17 @@ typedef struct Order {
 
 	CargoID refit_cargo; // Refit CargoID
 	byte refit_subtype; // Refit subtype
-} Order;
+};
 
 #define MAX_BACKUP_ORDER_COUNT 40
 
-typedef struct {
+struct BackuppedOrders {
 	VehicleID clone;
 	VehicleOrderID orderindex;
 	Order order[MAX_BACKUP_ORDER_COUNT + 1];
 	uint16 service_interval;
 	char name[32];
-} BackuppedOrders;
+};
 
 VARDEF TileIndex _backup_orders_tile;
 VARDEF BackuppedOrders _backup_orders_data[1];

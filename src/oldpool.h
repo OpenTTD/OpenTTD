@@ -3,7 +3,7 @@
 #ifndef OLDPOOL_H
 #define OLDPOOL_H
 
-typedef struct OldMemoryPool OldMemoryPool;
+struct OldMemoryPool;
 
 /* The function that is called after a new block is added
      start_item is the first item of the new made block */

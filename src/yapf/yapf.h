@@ -88,7 +88,7 @@ extern int _aystar_stats_closed_size;
  */
 
 /** Base struct for track followers. */
-typedef struct FollowTrack_t
+struct FollowTrack_t
 {
 	const Vehicle*      m_veh;           ///< moving vehicle
 	TileIndex           m_old_tile;      ///< the origin (vehicle moved from) before move
@@ -100,7 +100,7 @@ typedef struct FollowTrack_t
 	bool                m_is_bridge;     ///< last turn passed bridge ramp
 	bool                m_is_station;    ///< last turn passed station
 	int                 m_tiles_skipped; ///< number of skipped tunnel or station tiles
-} FollowTrack_t;
+};
 
 /** Initializes FollowTrack_t structure */
 void FollowTrackInit(FollowTrack_t *This, const Vehicle* v);

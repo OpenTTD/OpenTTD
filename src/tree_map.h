@@ -5,7 +5,7 @@
 
 #include "macros.h"
 
-typedef enum TreeType {
+enum TreeType {
 	TREE_INVALID      = -1,
 	TREE_TEMPERATE    = 0,
 	TREE_SUB_ARCTIC   = 12,
@@ -13,7 +13,7 @@ typedef enum TreeType {
 	TREE_CACTUS       = 27,
 	TREE_SUB_TROPICAL = 28,
 	TREE_TOYLAND      = 32
-} TreeType;
+};
 
 enum {
 	TREE_COUNT_TEMPERATE    = TREE_SUB_ARCTIC   - TREE_TEMPERATE,
@@ -25,11 +25,11 @@ enum {
 
 /* ground type, m2 bits 4...5
  * valid densities (bits 6...7) in comments after the enum */
-typedef enum TreeGround {
+enum TreeGround {
 	TREE_GROUND_GRASS       = 0, // 0
 	TREE_GROUND_ROUGH       = 1, // 0
 	TREE_GROUND_SNOW_DESERT = 2  // 0-3 for snow, 3 for desert
-} TreeGround;
+};
 
 
 static inline TreeType GetTreeType(TileIndex t)

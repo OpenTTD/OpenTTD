@@ -1068,7 +1068,7 @@ static const IndustryTileTable * const _tile_table_sugar_mine[] = {
 
 /* Procedures that can be run to check whether an industry may
  * build at location the given to the procedure */
-typedef enum CheckProcs {
+enum CheckProc {
 	CHECK_NOTHING    = 0,
 	CHECK_FOREST     = 1,
 	CHECK_REFINERY   = 2,
@@ -1079,7 +1079,7 @@ typedef enum CheckProcs {
 	CHECK_BUBBLEGEN  = 7,
 	CHECK_OIL_RIG    = 8,
 	CHECK_END,
-} CheckProc;
+};
 
 #define MK(tbl, d, c1, c2, c3, proc, p1, r1, p2, r2, m, a1, a2, a3, pr, clim, in, s1, s2, s3) \
 	{tbl, lengthof(tbl), d, {c1, c2, c3}, proc, {p1, p2}, {r1, r2}, m,            \

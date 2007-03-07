@@ -2017,9 +2017,9 @@ static const uint16 _housetype_remove_ratingmod[] = {
 assert_compile(lengthof(_housetype_remove_ratingmod) == HOUSE_MAX);
 
 
-typedef struct {
+struct HousetypeYear {
 	Year min, max;
-} HousetypeYear;
+};
 
 static const HousetypeYear _housetype_years[] = {
 	{ 1963, MAX_YEAR },

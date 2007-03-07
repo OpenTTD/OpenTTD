@@ -1,17 +1,17 @@
 /* $Id$ */
 
-typedef struct DrawIndustrySpec1Struct {
+struct DrawIndustrySpec1Struct {
 	byte x;
 	byte image_1;
 	byte image_2;
 	byte image_3;
-} DrawIndustrySpec1Struct;
+};
 
-typedef struct DrawIndustrySpec4Struct {
+struct DrawIndustrySpec4Struct {
 	byte image_1;
 	byte image_2;
 	byte image_3;
-} DrawIndustrySpec4Struct;
+};
 
 #define M(s1, p1, s2, p2, sx, sy, w, h, dz, p) { { s1, p1 }, { s2, p2 }, sx, sy, w - 1, h - 1, dz, p }
 

@@ -29,7 +29,7 @@ enum {
 typedef void gw_done_proc();
 typedef void gw_abort_proc();
 
-typedef struct gw_info {
+struct gw_info {
 	bool active;           ///< Is generating world active
 	bool abort;            ///< Whether to abort the thread ASAP
 	bool wait_for_draw;    ///< Are we waiting on a draw event
@@ -42,14 +42,14 @@ typedef struct gw_info {
 	gw_done_proc *proc;    ///< Proc that is called when done (can be NULL)
 	gw_abort_proc *abortp; ///< Proc that is called when aborting (can be NULL)
 	OTTDThread *thread;    ///< The thread we are in (can be NULL)
-} gw_info;
+};
 
 #ifdef TEMPORARY_OTTDTHREAD_DEFINITION
 #undef OTTDThread
 #undef TEMPORARY_OTTDTHREAD_DEFINITION
 #endif
 
-typedef enum gwp_classes {
+enum gwp_class {
 	GWP_MAP_INIT,    ///< Initialize/allocate the map, start economy
 	GWP_LANDSCAPE,   ///< Create the landscape
 	GWP_ROUGH_ROCKY, ///< Make rough and rocky areas
@@ -61,7 +61,7 @@ typedef enum gwp_classes {
 	GWP_RUNTILELOOP, ///< Runs the tile loop 1280 times to make snow etc
 	GWP_GAME_START,  ///< Really prepare to start the game
 	GWP_CLASS_COUNT
-} gwp_class;
+};
 
 /**
  * Check if we are currently in the process of generating a world.

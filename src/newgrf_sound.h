@@ -3,7 +3,7 @@
 #ifndef NEWGRF_SOUND_H
 #define NEWGRF_SOUND_H
 
-typedef enum VehicleSoundEvents {
+enum VehicleSoundEvent {
 	VSE_START        = 1,
 	VSE_TUNNEL       = 2,
 	VSE_BREAKDOWN    = 3,
@@ -13,7 +13,7 @@ typedef enum VehicleSoundEvents {
 	VSE_RUNNING_16   = 7,
 	VSE_STOPPED_16   = 8,
 	VSE_LOAD_UNLOAD  = 9,
-} VehicleSoundEvent;
+};
 
 
 FileEntry *AllocateFileEntry();

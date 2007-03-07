@@ -24,11 +24,11 @@ ScreenshotType current_screenshot_type;
 typedef void ScreenshotCallback(void *userdata, Pixel *buf, uint y, uint pitch, uint n);
 typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette);
 
-typedef struct {
+struct ScreenshotFormat {
 	const char *name;
 	const char *extension;
 	ScreenshotHandlerProc *proc;
-} ScreenshotFormat;
+};
 
 //************************************************
 //*** SCREENSHOT CODE FOR WINDOWS BITMAP (.BMP)
@@ -37,29 +37,29 @@ typedef struct {
 #pragma pack(push, 1)
 #endif
 
-typedef struct BitmapFileHeader {
+struct BitmapFileHeader {
 	uint16 type;
 	uint32 size;
 	uint32 reserved;
 	uint32 off_bits;
-} GCC_PACK BitmapFileHeader;
+} GCC_PACK;
 assert_compile(sizeof(BitmapFileHeader) == 14);
 
 #if defined(_MSC_VER) || defined(__WATCOMC__)
 #pragma pack(pop)
 #endif
 
-typedef struct BitmapInfoHeader {
+struct BitmapInfoHeader {
 	uint32 size;
 	int32 width, height;
 	uint16 planes, bitcount;
 	uint32 compression, sizeimage, xpels, ypels, clrused, clrimp;
-} BitmapInfoHeader;
+};
 assert_compile(sizeof(BitmapInfoHeader) == 40);
 
-typedef struct RgbQuad {
+struct RgbQuad {
 	byte blue, green, red, reserved;
-} RgbQuad;
+};
 assert_compile(sizeof(RgbQuad) == 4);
 
 // generic .BMP writer
@@ -260,7 +260,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 //*** SCREENSHOT CODE FOR ZSOFT PAINTBRUSH (.PCX)
 //************************************************
 
-typedef struct {
+struct PcxHeader {
 	byte manufacturer;
 	byte version;
 	byte rle;
@@ -276,7 +276,7 @@ typedef struct {
 	uint16 width;
 	uint16 height;
 	byte filler[54];
-} PcxHeader;
+};
 assert_compile(sizeof(PcxHeader) == 128);
 
 static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)

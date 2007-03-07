@@ -447,12 +447,12 @@ static void ShipArrivesAt(const Vehicle* v, Station* st)
 	}
 }
 
-typedef struct {
+struct PathFindShip {
 	TileIndex skiptile;
 	TileIndex dest_coords;
 	uint best_bird_dist;
 	uint best_length;
-} PathFindShip;
+};
 
 static bool ShipTrackFollower(TileIndex tile, PathFindShip *pfs, int track, uint length, byte *state)
 {

@@ -112,17 +112,17 @@ static const uint64
 
 	NOTHING_block            = 1 << 30;
 
-typedef struct AirportMovingData {
+struct AirportMovingData {
 	int16 x;
 	int16 y;
 	uint16 flag;
 	DirectionByte direction;
-} AirportMovingData;
+};
 
 struct AirportFTAbuildup;
 
 // Finite sTate mAchine --> FTA
-typedef struct AirportFTAClass {
+struct AirportFTAClass {
 	public:
 		enum Flags {
 			AIRPLANES   = 0x1,
@@ -167,19 +167,19 @@ typedef struct AirportFTAClass {
 	byte size_y;
 	byte delta_z;                         // Z adjustment for helicopter pads
 	byte catchment;
-} AirportFTAClass;
+};
 
 DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)
 
 
 // internal structure used in openttd - Finite sTate mAchine --> FTA
-typedef struct AirportFTA {
-	struct AirportFTA *next; // possible extra movement choices from this position
+struct AirportFTA {
+	AirportFTA *next;        // possible extra movement choices from this position
 	uint64 block;            // 64 bit blocks (st->airport_flags), should be enough for the most complex airports
 	byte position;           // the position that an airplane is at
 	byte next_position;      // next position from this position
 	byte heading;            // heading (current orders), guiding an airplane to its target on an airport
-} AirportFTA;
+};
 
 void InitializeAirports();
 void UnInitializeAirports();

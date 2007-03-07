@@ -24,17 +24,17 @@
 int _traininfo_vehicle_pitch = 0;
 int _traininfo_vehicle_width = 29;
 
-typedef struct WagonOverride {
+struct WagonOverride {
 	byte *train_id;
 	int trains;
 	CargoID cargo;
 	const SpriteGroup *group;
-} WagonOverride;
+};
 
-typedef struct WagonOverrides {
+struct WagonOverrides {
 	int overrides_count;
 	WagonOverride *overrides;
-} WagonOverrides;
+};
 
 static WagonOverrides _engine_wagon_overrides[TOTAL_NUM_ENGINES];
 

@@ -43,7 +43,7 @@ enum {
 static const int64 INVALID_DATAPOINT     = INT64_MAX; // Value used for a datapoint that shouldn't be drawn.
 static const uint  INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
 
-typedef struct GraphDrawer {
+struct GraphDrawer {
 	uint excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
 	byte num_dataset;
 	byte num_on_x_axis;
@@ -65,7 +65,7 @@ typedef struct GraphDrawer {
 	StringID format_str_y_axis;
 	byte colors[GRAPH_MAX_DATASETS];
 	int64 cost[GRAPH_MAX_DATASETS][24]; ///< last 2 years
-} GraphDrawer;
+};
 
 static void DrawGraph(const GraphDrawer *gw)
 {

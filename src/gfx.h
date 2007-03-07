@@ -93,13 +93,13 @@ void CreateConsole();
 typedef int32 CursorID;
 typedef byte Pixel;
 
-typedef struct Point {
+struct Point {
 	int x,y;
-} Point;
+};
 
-typedef struct Rect {
+struct Rect {
 	int left,top,right,bottom;
-} Rect;
+};
 
 /** A single sprite of a list of animated cursors */
 struct AnimCursor {
@@ -108,7 +108,7 @@ struct AnimCursor {
 	byte display_time; ///< Amount of ticks this sprite will be shown
 };
 
-typedef struct CursorVars {
+struct CursorVars {
 	Point pos, size, offs, delta; ///< position, size, offset from top-left, and movement
 	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
 	SpriteID sprite; ///< current image of cursor
@@ -123,20 +123,20 @@ typedef struct CursorVars {
 	bool dirty;      ///< the rect occupied by the mouse is dirty (redraw)
 	bool fix_at;     ///< mouse is moving, but cursor is not (used for scrolling)
 	bool in_window;  ///< mouse inside this window, determines drawing logic
-} CursorVars;
+};
 
-typedef struct DrawPixelInfo {
+struct DrawPixelInfo {
 	Pixel *dst_ptr;
 	int left, top, width, height;
 	int pitch;
 	uint16 zoom;
-} DrawPixelInfo;
+};
 
-typedef struct Colour {
+struct Colour {
 	byte r;
 	byte g;
 	byte b;
-} Colour;
+};
 
 
 
@@ -181,12 +181,12 @@ void UndrawMouseCursor();
 
 #include "helpers.hpp"
 
-typedef enum FontSizes {
+enum FontSize {
 	FS_NORMAL,
 	FS_SMALL,
 	FS_LARGE,
 	FS_END,
-} FontSize;
+};
 
 DECLARE_POSTFIX_INCREMENT(FontSize);
 
@@ -292,9 +292,9 @@ VARDEF byte _colour_gradient[16][8];
 
 VARDEF bool _use_dos_palette;
 
-typedef enum StringColorFlags {
+enum StringColorFlags {
 	IS_PALETTE_COLOR = 0x100, ///< color value is already a real palette color index, not an index of a StringColor
-} StringColorFlags;
+};
 
 
 #ifdef _DEBUG

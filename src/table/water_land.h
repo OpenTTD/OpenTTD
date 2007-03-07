@@ -1,6 +1,6 @@
 /* $Id$ */
 
-typedef struct WaterDrawTileStruct {
+struct WaterDrawTileStruct {
 	byte delta_x;
 	byte delta_y;
 	byte delta_z;
@@ -8,7 +8,7 @@ typedef struct WaterDrawTileStruct {
 	byte height;
 	byte unk;
 	SpriteID image;
-} WaterDrawTileStruct;
+};
 
 #define BEGIN(image) { 0, 0, 0, 0, 0, 0, image }
 #define END(y) { 0x80, y, 0, 0, 0, 0, 0 }

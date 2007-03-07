@@ -1822,7 +1822,7 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-typedef struct TrainFindDepotData {
+struct TrainFindDepotData {
 	uint best_length;
 	TileIndex tile;
 	PlayerID owner;
@@ -1831,7 +1831,7 @@ typedef struct TrainFindDepotData {
 	 * This value is unused when new depot finding and NPF are both disabled
 	 */
 	bool reverse;
-} TrainFindDepotData;
+};
 
 static bool NtpCallbFindDepot(TileIndex tile, TrainFindDepotData *tfdd, int track, uint length)
 {
@@ -2134,13 +2134,13 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 }
 
 /* Check for station tiles */
-typedef struct TrainTrackFollowerData {
+struct TrainTrackFollowerData {
 	TileIndex dest_coords;
 	StationID station_index; // station index we're heading for
 	uint best_bird_dist;
 	uint best_track_dist;
 	TrackdirByte best_track;
-} TrainTrackFollowerData;
+};
 
 static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, Trackdir track, uint length)
 {
@@ -2712,11 +2712,11 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 		);
 }
 
-typedef struct {
+struct RailtypeSlowdownParams {
 	byte small_turn, large_turn;
 	byte z_up; // fraction to remove when moving up
 	byte z_down; // fraction to remove when moving down
-} RailtypeSlowdownParams;
+};
 
 static const RailtypeSlowdownParams _railtype_slowdown[] = {
 	// normal accel
@@ -2768,10 +2768,10 @@ static void TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
 }
 
 
-typedef struct TrainCollideChecker {
+struct TrainCollideChecker {
 	const Vehicle *v;
 	const Vehicle *v_skip;
-} TrainCollideChecker;
+};
 
 static void *FindTrainCollideEnum(Vehicle *v, void *data)
 {
@@ -2861,10 +2861,10 @@ static void CheckTrainCollision(Vehicle *v)
 	SndPlayVehicleFx(SND_13_BIG_CRASH, v);
 }
 
-typedef struct VehicleAtSignalData {
+struct VehicleAtSignalData {
 	TileIndex tile;
 	Direction direction;
-} VehicleAtSignalData;
+};
 
 static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 {

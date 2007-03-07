@@ -8,31 +8,31 @@
 #include "helpers.hpp"
 #include "cargotype.h"
 
-typedef enum GrfLoadingStage {
+enum GrfLoadingStage {
 	GLS_FILESCAN,
 	GLS_SAFETYSCAN,
 	GLS_LABELSCAN,
 	GLS_INIT,
 	GLS_ACTIVATION,
 	GLS_END,
-} GrfLoadingStage;
+};
 
 DECLARE_POSTFIX_INCREMENT(GrfLoadingStage);
 
 
-typedef struct GRFLabel {
+struct GRFLabel {
 	byte label;
 	uint32 nfo_line;
 	uint32 pos;
 	struct GRFLabel *next;
-} GRFLabel;
+};
 
-typedef struct GRFFile {
+struct GRFFile {
 	char *filename;
 	uint32 grfid;
 	uint16 sprite_offset;
 	byte grf_version;
-	struct GRFFile *next;
+	GRFFile *next;
 
 	/* A sprite group contains all sprites of a given vehicle (or multiple
 	 * vehicles) when carrying given cargo. It consists of several sprite
@@ -65,7 +65,7 @@ typedef struct GRFFile {
 	uint8 cargo_max;
 	CargoLabel *cargo_list;
 	uint8 cargo_map[NUM_CARGO];
-} GRFFile;
+};
 
 extern GRFFile *_first_grffile;
 

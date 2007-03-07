@@ -449,12 +449,12 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	}
 }
 
-typedef struct ottd_Rectangle {
+struct ottd_Rectangle {
 	uint min_x;
 	uint min_y;
 	uint max_x;
 	uint max_y;
-} ottd_Rectangle;
+};
 
 static inline void MergePoint(ottd_Rectangle* rect, TileIndex tile)
 {
@@ -2071,11 +2071,11 @@ static void TileLoop_Station(TileIndex tile)
 
 static void AnimateTile_Station(TileIndex tile)
 {
-	typedef struct AnimData {
+	struct AnimData {
 		StationGfx from; // first sprite
 		StationGfx to;   // last sprite
 		byte delay;
-	} AnimData;
+	};
 
 	static const AnimData data[] = {
 		{ GFX_RADAR_LARGE_FIRST,         GFX_RADAR_LARGE_LAST,         3 },

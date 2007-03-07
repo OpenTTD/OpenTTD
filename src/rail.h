@@ -9,7 +9,7 @@
 #include "direction.h"
 #include "tile.h"
 
-typedef enum RailTypes {
+enum RailType {
 	RAILTYPE_BEGIN    = 0,
 	RAILTYPE_RAIL     = 0,
 	RAILTYPE_ELECTRIC = 1,
@@ -17,7 +17,7 @@ typedef enum RailTypes {
 	RAILTYPE_MAGLEV   = 3,
 	RAILTYPE_END,
 	INVALID_RAILTYPE  = 0xFF
-} RailType;
+};
 
 typedef byte RailTypeMask;
 
@@ -30,7 +30,7 @@ typedef TinyEnumT<RailType> RailTypeByte;
 
 /** These are used to specify a single track.
  * Can be translated to a trackbit with TrackToTrackbit */
-typedef enum Track {
+enum Track {
 	TRACK_BEGIN = 0,
 	TRACK_X     = 0,
 	TRACK_Y     = 1,
@@ -40,7 +40,7 @@ typedef enum Track {
 	TRACK_RIGHT = 5,
 	TRACK_END,
 	INVALID_TRACK = 0xFF
-} Track;
+};
 
 /** Allow incrementing of Track variables */
 DECLARE_POSTFIX_INCREMENT(Track);
@@ -61,7 +61,7 @@ static inline Track AxisToTrack(Axis a)
 
 
 /** Bitfield corresponding to Track */
-typedef enum TrackBits {
+enum TrackBits {
 	TRACK_BIT_NONE    = 0U,
 	TRACK_BIT_X       = 1U << TRACK_X,
 	TRACK_BIT_Y       = 1U << TRACK_Y,
@@ -81,7 +81,7 @@ typedef enum TrackBits {
 	TRACK_BIT_WORMHOLE = 0x40U,
 	TRACK_BIT_DEPOT   = 0x80U,
 	INVALID_TRACK_BIT = 0xFF
-} TrackBits;
+};
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<TrackBits> : MakeEnumPropsT<TrackBits, byte, TRACK_BIT_NONE, TRACK_BIT_ALL, INVALID_TRACK_BIT> {};
@@ -110,7 +110,7 @@ static inline TrackBits AxisToTrackBits(Axis a)
  * reversing track dirs are not considered to be 'valid' except in a small
  * corner in the road vehicle controller.
  */
-typedef enum Trackdirs {
+enum Trackdir {
 	TRACKDIR_BEGIN    =  0,
 	TRACKDIR_X_NE     =  0,
 	TRACKDIR_Y_SE     =  1,
@@ -130,7 +130,7 @@ typedef enum Trackdirs {
 	TRACKDIR_RVREV_NW = 15,
 	TRACKDIR_END,
 	INVALID_TRACKDIR  = 0xFF,
-} Trackdir;
+};
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<Trackdir> : MakeEnumPropsT<Trackdir, byte, TRACKDIR_BEGIN, TRACKDIR_END, INVALID_TRACKDIR> {};
@@ -138,7 +138,7 @@ typedef TinyEnumT<Trackdir> TrackdirByte;
 
 /** These are a combination of tracks and directions. Values are 0-5 in one
  * direction (corresponding to the Track enum) and 8-13 in the other direction. */
-typedef enum TrackdirBits {
+enum TrackdirBits {
 	TRACKDIR_BIT_NONE     = 0x0000,
 	TRACKDIR_BIT_X_NE     = 0x0001,
 	TRACKDIR_BIT_Y_SE     = 0x0002,
@@ -155,7 +155,7 @@ typedef enum TrackdirBits {
 	TRACKDIR_BIT_RIGHT_N  = 0x2000,
 	TRACKDIR_BIT_MASK     = 0x3F3F,
 	INVALID_TRACKDIR_BIT  = 0xFFFF,
-} TrackdirBits;
+};
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<TrackdirBits> : MakeEnumPropsT<TrackdirBits, uint16, TRACKDIR_BIT_NONE, TRACKDIR_BIT_MASK, INVALID_TRACKDIR_BIT> {};
@@ -164,7 +164,7 @@ DECLARE_ENUM_AS_BIT_SET(TrackdirBits);
 
 /** This struct contains all the info that is needed to draw and construct tracks.
  */
-typedef struct RailtypeInfo {
+struct RailtypeInfo {
 	/** Struct containing the main sprites. @note not all sprites are listed, but only
 	 *  the ones used directly in the code */
 	struct {
@@ -237,7 +237,7 @@ typedef struct RailtypeInfo {
 	 * Offset to add to ground sprite when drawing custom waypoints / stations
 	 */
 	byte custom_ground_offset;
-} RailtypeInfo;
+};
 
 
 // these are the maximums used for updating signal blocks, and checking if a depot is in a pbs block

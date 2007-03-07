@@ -166,10 +166,10 @@ static inline void ResetIndustryConstructionStage(TileIndex tile)
 	_m[tile].m1 = 0;
 }
 
-typedef struct IndustryTypeSolver {
+struct IndustryTypeSolver {
 	IndustryGfx MinGfx;
 	IndustryGfx MaxGfx;
-} IndustryTypeSolver;
+};
 
 static const IndustryTypeSolver industry_gfx_Solver [IT_END] = {
 	{  0,   6}, ///< IT_COAL_MINE

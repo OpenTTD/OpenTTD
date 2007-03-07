@@ -47,34 +47,34 @@ static bool _offset_ground_sprites;
  *   X <                             > Y         *
  */
 
-typedef struct StringSpriteToDraw {
+struct StringSpriteToDraw {
 	uint16 string;
 	uint16 color;
-	struct StringSpriteToDraw *next;
+	StringSpriteToDraw *next;
 	int32 x;
 	int32 y;
 	uint32 params[2];
 	uint16 width;
-} StringSpriteToDraw;
+};
 
-typedef struct TileSpriteToDraw {
+struct TileSpriteToDraw {
 	SpriteID image;
 	SpriteID pal;
-	struct TileSpriteToDraw *next;
+	TileSpriteToDraw *next;
 	int32 x;
 	int32 y;
 	byte z;
-} TileSpriteToDraw;
+};
 
-typedef struct ChildScreenSpriteToDraw {
+struct ChildScreenSpriteToDraw {
 	SpriteID image;
 	SpriteID pal;
 	int32 x;
 	int32 y;
-	struct ChildScreenSpriteToDraw *next;
-} ChildScreenSpriteToDraw;
+	ChildScreenSpriteToDraw *next;
+};
 
-typedef struct ParentSpriteToDraw {
+struct ParentSpriteToDraw {
 	SpriteID image;
 	SpriteID pal;
 	int32 left;
@@ -89,13 +89,13 @@ typedef struct ParentSpriteToDraw {
 	byte unk16;
 	byte zmin;
 	byte zmax;
-} ParentSpriteToDraw;
+};
 
 // Quick hack to know how much memory to reserve when allocating from the spritelist
 // to prevent a buffer overflow.
 #define LARGEST_SPRITELIST_STRUCT ParentSpriteToDraw
 
-typedef struct ViewportDrawer {
+struct ViewportDrawer {
 	DrawPixelInfo dpi;
 
 	byte *spritelist_mem;
@@ -112,7 +112,7 @@ typedef struct ViewportDrawer {
 	byte combine_sprites;
 
 	int offs_x, offs_y; // used when drawing ground sprites relative
-} ViewportDrawer;
+};
 
 static ViewportDrawer *_cur_vd;
 

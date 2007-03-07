@@ -5,7 +5,7 @@
 
 #include "helpers.hpp"
 
-typedef struct MusicFileSettings {
+struct MusicFileSettings {
 	byte playlist;
 	byte music_vol;
 	byte effect_vol;
@@ -14,11 +14,11 @@ typedef struct MusicFileSettings {
 	bool playing;
 	bool shuffle;
 	char extmidi[80];
-} MusicFileSettings;
+};
 
 VARDEF MusicFileSettings msf;
 
-typedef struct FileEntry {
+struct FileEntry {
 	uint32 file_offset;
 	uint32 file_size;
 	uint16 rate;
@@ -26,12 +26,12 @@ typedef struct FileEntry {
 	uint8 channels;
 	uint8 volume;
 	uint8 priority;
-} FileEntry;
+};
 
 bool SoundInitialize(const char *filename);
 uint GetNumOriginalSounds();
 
-typedef enum SoundFx {
+enum SoundFx {
 	SND_BEGIN = 0,
 	SND_02_SPLAT = 0,                          //  0 == 0x00 !
 	SND_03_FACTORY_WHISTLE,
@@ -107,7 +107,7 @@ typedef enum SoundFx {
 	SND_47_MAGLEV_2,
 	SND_48_DISTANT_BIRD,                    // 72 == 0x48
 	SND_END
-} SoundFx;
+};
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<SoundFx> : MakeEnumPropsT<SoundFx, byte, SND_BEGIN, SND_END, SND_END> {};

@@ -1690,7 +1690,7 @@ static const char *name_czech_real[] = {
  * with cloning this for your own language. */
 
 // Sing., pl.
-typedef enum CzechGender {
+enum CzechGender {
 	CZG_SMASC,
 	CZG_SFEM,
 	CZG_SNEUT,
@@ -1701,12 +1701,14 @@ typedef enum CzechGender {
 	CZG_FREE,
 	// Like CZG_FREE, but disallow CZG_SNEUT.
 	CZG_NFREE
-} CzechGender;
-typedef enum CzechPattern {
+};
+
+enum CzechPattern {
 	CZP_JARNI,
 	CZP_MLADY,
 	CZP_PRIVL
-} CzechPattern;
+};
+
 /* [CzechGender][CzechPattern] - replaces the last character of the adjective
  * by this. */
 // XXX: [CZG_SMASC][CZP_PRIVL] needs special handling: -ovX -> -uv.
@@ -1721,38 +1723,38 @@ static const char *name_czech_patmod[][3] = {
 
 // This way the substantives can choose only some adjectives/endings:
 // At least one of these flags must be satisfied:
-typedef enum CzechAllow {
+enum CzechAllow {
 	CZA_SHORT = 1,
 	CZA_MIDDLE = 2,
 	CZA_LONG = 4,
 	CZA_ALL = ~0
-} CzechAllow;
+};
 
 DECLARE_ENUM_AS_BIT_SET(CzechAllow);
 
 // All these flags must be satisfied (in the stem->others direction):
-typedef enum CzechChoose {
+enum CzechChoose {
 	CZC_NONE = 0, // No requirements.
 	CZC_COLOR = 1,
 	CZC_POSTFIX = 2, // Matched if postfix was inserted.
 	CZC_NOPOSTFIX = 4, // Matched if no postfix was inserted.
 	CZC_ANY = ~0
-} CzechChoose;
+};
 
 DECLARE_ENUM_AS_BIT_SET(CzechChoose);
 
-typedef struct CzechNameSubst {
+struct CzechNameSubst {
 	CzechGender gender;
 	CzechAllow allow;
 	CzechChoose choose;
 	const char *name;
-} CzechNameSubst;
+};
 
-typedef struct CzechNameAdj {
+struct CzechNameAdj {
 	CzechPattern pattern;
 	CzechChoose choose;
 	const char *name;
-} CzechNameAdj;
+};
 
 // Some of items which should be common are doubled.
 static const CzechNameAdj name_czech_adj[] = {

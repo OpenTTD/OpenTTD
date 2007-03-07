@@ -9,12 +9,12 @@
 #include "newgrf_cargo.h"
 #include "helpers.hpp"
 
-typedef enum {
+enum StationClassID {
 	STAT_CLASS_BEGIN = 0,    ///< the lowest valid value
 	STAT_CLASS_DFLT = 0,     ///< Default station class.
 	STAT_CLASS_WAYP,         ///< Waypoint class.
 	STAT_CLASS_MAX = 32,     ///< Maximum number of classes.
-} StationClassID;
+};
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<StationClassID> : MakeEnumPropsT<StationClassID, byte, STAT_CLASS_BEGIN, STAT_CLASS_MAX, STAT_CLASS_MAX> {};
@@ -27,7 +27,7 @@ DECLARE_POSTFIX_INCREMENT(StationClassID);
  * where index is computed as (x * platforms) + platform. */
 typedef byte *StationLayout;
 
-typedef struct StationSpec {
+struct StationSpec {
 	uint32 grfid; ///< ID of GRF file station belongs to.
 	int localidx; ///< Index within GRF file of station.
 
@@ -84,17 +84,17 @@ typedef struct StationSpec {
 	 * evaluating callbacks.
 	 */
 	const struct SpriteGroup *spritegroup[NUM_CARGO + 3];
-} StationSpec;
+};
 
 /**
  * Struct containing information relating to station classes.
  */
-typedef struct StationClass {
+struct StationClass {
 	uint32 id;          ///< ID of this class, e.g. 'DFLT', 'WAYP', etc.
 	StringID name;      ///< Name of this class.
 	uint stations;      ///< Number of stations in this class.
 	StationSpec **spec; ///< Array of station specifications.
-} StationClass;
+};
 
 void ResetStationClasses();
 StationClassID AllocateStationClass(uint32 cls);

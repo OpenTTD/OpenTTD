@@ -1191,7 +1191,7 @@ enum Sprites {
 };
 
 /** Cursor sprite numbers */
-typedef enum CursorSprites {
+enum CursorSprite {
 	/* Terraform */
 	/* Cursors */
 	SPR_CURSOR_MOUSE          = 0,
@@ -1278,7 +1278,7 @@ typedef enum CursorSprites {
 	SPR_CURSOR_CLONE_ROADVEH  = SPR_OPENTTD_BASE + 110,
 	SPR_CURSOR_CLONE_SHIP     = SPR_OPENTTD_BASE + 112,
 	SPR_CURSOR_CLONE_AIRPLANE = SPR_OPENTTD_BASE + 114,
-} CursorSprite;
+};
 
 /// Animation macro in table/animcursors.h (_animcursors[])
 enum AnimCursors {

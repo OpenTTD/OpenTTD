@@ -109,7 +109,7 @@ enum HighLightStyles {
 	HT_DIR_MASK = 0x7 ///< masks the drag-direction
 };
 
-typedef struct TileHighlightData {
+struct TileHighlightData {
 	Point size;
 	Point outersize;
 	Point pos;
@@ -135,7 +135,7 @@ typedef struct TileHighlightData {
 
 	int userdata;
 	TileIndex redsq;
-} TileHighlightData;
+};
 
 
 // common button handler

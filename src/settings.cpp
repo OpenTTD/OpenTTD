@@ -49,10 +49,10 @@
 /** The patch values that are used for new games and/or modified in config file */
 Patches _patches_newgame;
 
-typedef struct IniFile IniFile;
-typedef struct IniItem IniItem;
-typedef struct IniGroup IniGroup;
-typedef struct SettingsMemoryPool SettingsMemoryPool;
+struct IniFile;
+struct IniItem;
+struct IniGroup;
+struct SettingsMemoryPool;
 
 typedef const char *SettingListCallbackProc(const IniItem *item, uint index);
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname, void *object);

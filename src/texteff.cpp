@@ -23,7 +23,7 @@ enum {
 	MAX_ANIMATED_TILES     = 256,
 };
 
-typedef struct TextEffect {
+struct TextEffect {
 	StringID string_id;
 	int32 x;
 	int32 y;
@@ -32,14 +32,14 @@ typedef struct TextEffect {
 	uint16 duration;
 	uint32 params_1;
 	uint32 params_2;
-} TextEffect;
+};
 
 
-typedef struct TextMessage {
+struct TextMessage {
 	char message[MAX_TEXTMESSAGE_LENGTH];
 	uint16 color;
 	Date end_date;
-} TextMessage;
+};
 
 static TextEffect _text_effect_list[MAX_TEXT_MESSAGES];
 static TextMessage _textmsg_list[MAX_CHAT_MESSAGES];

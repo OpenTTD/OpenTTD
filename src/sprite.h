@@ -8,7 +8,7 @@
  * bounding box. Used especially for various multi-sprite buildings (like
  * depots or stations): */
 
-typedef struct DrawTileSeqStruct {
+struct DrawTileSeqStruct {
 	int8 delta_x; // 0x80 is sequence terminator
 	int8 delta_y;
 	int8 delta_z;
@@ -17,19 +17,19 @@ typedef struct DrawTileSeqStruct {
 	byte size_z;
 	SpriteID image;
 	SpriteID pal;
-} DrawTileSeqStruct;
+};
 
-typedef struct DrawTileSprites {
+struct DrawTileSprites {
 	SpriteID ground_sprite;
 	SpriteID ground_pal;
 	const DrawTileSeqStruct* seq;
-} DrawTileSprites;
+};
 
 /**
  * This structure is the same for both Industries and Houses.
  * Buildings here reference a general type of construction
  */
-typedef struct DrawBuildingsTileStruct {
+struct DrawBuildingsTileStruct {
 	PalSpriteID ground;
 	PalSpriteID building;
 	byte subtile_x:4;
@@ -38,7 +38,7 @@ typedef struct DrawBuildingsTileStruct {
 	byte height:4;
 	byte dz;
 	byte draw_proc;  /* this allows to specify a special drawing procedure.*/
-} DrawBuildingsTileStruct;
+};
 
 // Iterate through all DrawTileSeqStructs in DrawTileSprites.
 #define foreach_draw_tile_seq(idx, list) for (idx = list; ((byte) idx->delta_x) != 0x80; idx++)

@@ -18,7 +18,7 @@
 #define FIO_BUFFER_SIZE 512
 #define MAX_HANDLES 64
 
-typedef struct {
+struct Fio {
 	byte *buffer, *buffer_end;          ///< position pointer in local buffer and last valid byte of buffer
 	uint32 pos;                         ///< current (system) position in file
 	FILE *cur_fh;                       ///< current file handle
@@ -29,7 +29,7 @@ typedef struct {
 	const char *filename[MAX_HANDLES];  ///< array of filenames we (should) have open
 	uint usage_count[MAX_HANDLES];      ///< count how many times this file has been opened
 #endif /* LIMITED_FDS */
-} Fio;
+};
 
 static Fio _fio;
 

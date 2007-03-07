@@ -14,11 +14,11 @@ enum {
 	INVALID_INDUSTRY = 0xFFFF,
 };
 
-typedef enum IndustryLifeTypes {
+enum IndustryLifeType {
 	INDUSTRYLIFE_NOT_CLOSABLE,     ///< Industry can never close
 	INDUSTRYLIFE_PRODUCTION,       ///< Industry can close and change of production
 	INDUSTRYLIFE_CLOSABLE,         ///< Industry can only close (no production change)
-} IndustryLifeType;
+};
 
 /**
  * Defines the internal data of a functionnal industry
@@ -49,15 +49,15 @@ struct Industry {
 	IndustryID index;               ///< index of the industry in the pool of industries
 };
 
-typedef struct IndustryTileTable {
+struct IndustryTileTable {
 	TileIndexDiffC ti;
 	IndustryGfx gfx;
-} IndustryTileTable;
+};
 
 /**
  * Defines the data structure for constructing industry.
  */
-typedef struct IndustrySpec {
+struct IndustrySpec {
 	const IndustryTileTable *const *table;///< List of the tiles composing the industry
 	byte num_table;                       ///< Number of elements in the table
 	byte cost_multiplier;                 ///< Base cost multiplier*/
@@ -74,15 +74,15 @@ typedef struct IndustrySpec {
 	StringID closure_text;                ///< Message appearing when the industry closes
 	StringID production_up_text;          ///< Message appearing when the industry's production is increasing
 	StringID production_down_text;        ///< Message appearing when the industry's production is decreasing
-} IndustrySpec;
+};
 
 /**
  * Defines the data structure of each indivudual tile of an industry.
  */
-typedef struct IndustryTileSpec {
+struct IndustryTileSpec {
 	CargoID accepts_cargo[3];             ///< Cargo accepted by this tile
 	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
-} IndustryTileSpec;
+};
 
 const IndustrySpec *GetIndustrySpec(IndustryType thistype);    ///< Array of industries default data
 const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);  ///< Array of industry tiles default data

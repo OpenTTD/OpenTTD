@@ -13,14 +13,14 @@
  * This is an enum to tell what bit to access as it is a bitmask
  */
 
-typedef enum TrainSubtypes {
+enum TrainSubtype {
 	Train_Front             = 0, // Leading engine of a train
 	Train_Articulated_Part  = 1, // Articulated part of an engine
 	Train_Wagon             = 2, // Wagon
 	Train_Engine            = 3, // Engine, that can be front engines, but might be placed behind another engine
 	Train_Free_Wagon        = 4, // First in a wagon chain (in depot)
 	Train_Multiheaded       = 5, // Engine is a multiheaded
-} TrainSubtype;
+};
 
 
 /** Check if a vehicle is front engine

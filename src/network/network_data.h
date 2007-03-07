@@ -20,13 +20,13 @@
 #define NETWORK_SERVER_INDEX 1
 #define NETWORK_EMPTY_INDEX 0
 
-typedef enum {
+enum MapPacket {
 	MAP_PACKET_START,
 	MAP_PACKET_NORMAL,
 	MAP_PACKET_END,
-} MapPacket;
+};
 
-typedef enum {
+enum NetworkErrorCode {
 	NETWORK_ERROR_GENERAL, // Try to use thisone like never
 
 	// Signals from clients
@@ -46,10 +46,10 @@ typedef enum {
 	NETWORK_ERROR_KICKED,
 	NETWORK_ERROR_CHEATER,
 	NETWORK_ERROR_FULL,
-} NetworkErrorCode;
+};
 
 // Actions that can be used for NetworkTextMessage
-typedef enum {
+enum NetworkAction {
 	NETWORK_ACTION_JOIN,
 	NETWORK_ACTION_LEAVE,
 	NETWORK_ACTION_SERVER_MESSAGE,
@@ -58,18 +58,18 @@ typedef enum {
 	NETWORK_ACTION_CHAT_CLIENT,
 	NETWORK_ACTION_GIVE_MONEY,
 	NETWORK_ACTION_NAME_CHANGE,
-} NetworkAction;
+};
 
-typedef enum {
+enum NetworkPasswordType {
 	NETWORK_GAME_PASSWORD,
 	NETWORK_COMPANY_PASSWORD,
-} NetworkPasswordType;
+};
 
-typedef enum {
+enum DestType {
 	DESTTYPE_BROADCAST, ///< Send message/notice to all players (All)
 	DESTTYPE_TEAM,    ///< Send message/notice to everyone playing the same company (Team)
 	DESTTYPE_CLIENT,    ///< Send message/notice to only a certain player (Private)
-} DestType;
+};
 
 // following externs are instantiated at network.cpp
 extern CommandPacket *_local_command_queue;

@@ -15,11 +15,11 @@
 #endif /* SPRITE_CACHE_SIZE */
 
 
-typedef struct SpriteCache {
+struct SpriteCache {
 	void *ptr;
 	uint32 file_pos;
 	int16 lru;
-} SpriteCache;
+};
 
 
 static uint _spritecache_items = 0;
@@ -55,10 +55,10 @@ static SpriteCache *AllocateSpriteCache(uint index)
 }
 
 
-typedef struct MemBlock {
+struct MemBlock {
 	uint32 size;
 	byte data[VARARRAY_SIZE];
-} MemBlock;
+};
 
 static uint _sprite_lru_counter;
 static MemBlock *_spritecache_ptr;

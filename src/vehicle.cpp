@@ -1098,11 +1098,11 @@ static void BulldozerInit(Vehicle *v)
 	v->u.special.unk2 = 0;
 }
 
-typedef struct BulldozerMovement {
+struct BulldozerMovement {
 	byte direction:2;
 	byte image:2;
 	byte duration:3;
-} BulldozerMovement;
+};
 
 static const BulldozerMovement _bulldozer_movement[] = {
 	{ 0, 0, 4 },
@@ -1172,12 +1172,12 @@ static void BubbleInit(Vehicle *v)
 	v->progress = 0;
 }
 
-typedef struct BubbleMovement {
+struct BubbleMovement {
 	int8 x:4;
 	int8 y:4;
 	int8 z:4;
 	byte image:4;
-} BubbleMovement;
+};
 
 #define MK(x, y, z, i) { x, y, z, i }
 #define ME(i) { i, 4, 0, 0 }

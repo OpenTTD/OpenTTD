@@ -12,7 +12,7 @@
 
 static const StationID INVALID_STATION = 0xFFFF;
 
-typedef struct GoodsEntry {
+struct GoodsEntry {
 	GoodsEntry() :
 		waiting_acceptance(0),
 		unload_pending(0),
@@ -35,7 +35,7 @@ typedef struct GoodsEntry {
 	byte last_speed;
 	byte last_age;
 	int32 feeder_profit;
-} GoodsEntry;
+};
 
 /** A Stop for a Road Vehicle */
 struct RoadStop {
@@ -79,11 +79,11 @@ protected:
 	static RoadStop *AllocateRaw();
 };
 
-typedef struct StationSpecList {
+struct StationSpecList {
 	const StationSpec *spec;
 	uint32 grfid;      /// GRF ID of this custom station
 	uint8  localidx;   /// Station ID within GRF of station
-} StationSpecList;
+};
 
 /** StationRect - used to track station spread out rectangle - cheaper than scanning whole map */
 struct StationRect : public Rect {
@@ -207,13 +207,13 @@ enum {
 	HVOT_BUOY     = 1 << 6
 };
 
-typedef enum CatchmentAreas {
+enum CatchmentArea {
 	CA_NONE            =  0,
 	CA_BUS             =  3,
 	CA_TRUCK           =  3,
 	CA_TRAIN           =  4,
 	CA_DOCK            =  5
-} CatchmentArea;
+};
 
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);
 

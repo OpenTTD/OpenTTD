@@ -3,7 +3,7 @@
 #ifndef THREAD_H
 #define THREAD_H
 
-typedef struct OTTDThread OTTDThread;
+struct OTTDThread;
 
 typedef void* (*OTTDThreadFunc)(void*);
 

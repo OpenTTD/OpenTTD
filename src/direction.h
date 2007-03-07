@@ -8,7 +8,7 @@
 #include "helpers.hpp"
 
 /* Direction as commonly used in v->direction, 8 way. */
-typedef enum Direction {
+enum Direction {
 	DIR_BEGIN = 0,
 	DIR_N   = 0,
 	DIR_NE  = 1,      ///< Northeast, upper right on your monitor
@@ -20,7 +20,7 @@ typedef enum Direction {
 	DIR_NW  = 7,
 	DIR_END,
 	INVALID_DIR = 0xFF,
-} Direction;
+};
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<Direction> : MakeEnumPropsT<Direction, byte, DIR_BEGIN, DIR_END, INVALID_DIR> {};
@@ -32,14 +32,14 @@ static inline Direction ReverseDir(Direction d)
 }
 
 
-typedef enum DirDiff {
+enum DirDiff {
 	DIRDIFF_SAME    = 0,
 	DIRDIFF_45RIGHT = 1,
 	DIRDIFF_90RIGHT = 2,
 	DIRDIFF_REVERSE = 4,
 	DIRDIFF_90LEFT  = 6,
 	DIRDIFF_45LEFT  = 7
-} DirDiff;
+};
 
 static inline DirDiff DirDifference(Direction d0, Direction d1)
 {
@@ -59,7 +59,7 @@ static inline Direction ChangeDir(Direction d, DirDiff delta)
 
 
 /* Direction commonly used as the direction of entering and leaving tiles, 4-way */
-typedef enum DiagDirection {
+enum DiagDirection {
 	DIAGDIR_BEGIN = 0,
 	DIAGDIR_NE  = 0,      ///< Northeast, upper right on your monitor
 	DIAGDIR_SE  = 1,
@@ -67,7 +67,7 @@ typedef enum DiagDirection {
 	DIAGDIR_NW  = 3,
 	DIAGDIR_END,
 	INVALID_DIAGDIR = 0xFF,
-} DiagDirection;
+};
 
 DECLARE_POSTFIX_INCREMENT(DiagDirection);
 
@@ -81,12 +81,12 @@ static inline DiagDirection ReverseDiagDir(DiagDirection d)
 }
 
 
-typedef enum DiagDirDiff {
+enum DiagDirDiff {
 	DIAGDIRDIFF_SAME    = 0,
 	DIAGDIRDIFF_90RIGHT = 1,
 	DIAGDIRDIFF_REVERSE = 2,
 	DIAGDIRDIFF_90LEFT  = 3
-} DiagDirDiff;
+};
 
 static inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
 {
@@ -107,11 +107,11 @@ static inline Direction DiagDirToDir(DiagDirection dir)
 
 
 /* the 2 axis */
-typedef enum Axis {
+enum Axis {
 	AXIS_X = 0,
 	AXIS_Y = 1,
 	AXIS_END
-} Axis;
+};
 
 
 static inline Axis OtherAxis(Axis a)

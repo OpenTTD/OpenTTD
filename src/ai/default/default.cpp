@@ -446,12 +446,12 @@ static void AiStateDoReplaceVehicle(Player *p)
 	_veh_do_replace_proc[v->type - VEH_Train](p);
 }
 
-typedef struct FoundRoute {
+struct FoundRoute {
 	int distance;
 	CargoID cargo;
 	void *from;
 	void *to;
-} FoundRoute;
+};
 
 static Town *AiFindRandomTown()
 {
@@ -1824,12 +1824,12 @@ static TileIndex AiGetEdgeOfDefaultRailBlock(byte rule, TileIndex tile, byte cmd
 	return tile + ToTileIndexDiff(p->tileoffs) - TileOffsByDiagDir(*dir = p->attr);
 }
 
-typedef struct AiRailPathFindData {
+struct AiRailPathFindData {
 	TileIndex tile;
 	TileIndex tile2;
 	int count;
 	bool flag;
-} AiRailPathFindData;
+};
 
 static bool AiEnumFollowTrack(TileIndex tile, AiRailPathFindData *a, int track, uint length, byte *state)
 {
@@ -1858,7 +1858,7 @@ static bool AiDoFollowTrack(const Player* p)
 	return arpfd.count > 8;
 }
 
-typedef struct AiRailFinder {
+struct AiRailFinder {
 	TileIndex final_tile;
 	byte final_dir;
 	byte depth;
@@ -1873,7 +1873,7 @@ typedef struct AiRailFinder {
 	TileIndex cur_best_tile, best_tile;
 	TileIndex bridge_end_tile;
 	Player *player;
-} AiRailFinder;
+};
 
 static const byte _ai_table_15[4][8] = {
 	{0, 0, 4, 3, 3, 1, 128 + 0, 64},
@@ -2713,7 +2713,7 @@ static void AiStateBuildDefaultRoadBlocks(Player *p)
 	p->ai.state_mode = 255;
 }
 
-typedef struct {
+struct AiRoadFinder {
 	TileIndex final_tile;
 	byte final_dir;
 	byte depth;
@@ -2728,14 +2728,14 @@ typedef struct {
 	TileIndex cur_best_tile, best_tile;
 	TileIndex bridge_end_tile;
 	Player *player;
-} AiRoadFinder;
+};
 
-typedef struct AiRoadEnum {
+struct AiRoadEnum {
 	TileIndex dest;
 	TileIndex best_tile;
 	int best_track;
 	uint best_dist;
-} AiRoadEnum;
+};
 
 static const byte _dir_by_track[] = {
 	0, 1, 0, 1, 2, 1,

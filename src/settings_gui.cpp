@@ -295,12 +295,12 @@ void ShowGameOptions()
 	AllocateWindowDesc(&_game_options_desc);
 }
 
-typedef struct {
+struct GameSettingData {
 	int16 min;
 	int16 max;
 	int16 step;
 	StringID str;
-} GameSettingData;
+};
 
 static const GameSettingData _game_setting_info[] = {
 	{  0,   7,  1, STR_NULL},
@@ -655,16 +655,16 @@ static const char *_patches_vehicles[] = {
 	"freight_trains",
 };
 
-typedef struct PatchEntry {
+struct PatchEntry {
 	const SettingDesc *setting;
 	uint index;
-} PatchEntry;
+};
 
-typedef struct PatchPage {
+struct PatchPage {
 	const char **names;
 	PatchEntry *entries;
 	byte num;
-} PatchPage;
+};
 
 /* PatchPage holds the categories, the number of elements in each category
  * and (in NULL) a dynamic array of settings based on the string-representations

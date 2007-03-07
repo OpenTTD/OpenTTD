@@ -153,21 +153,21 @@ static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 	return (_internal_sort_order & 1) ? maxr2 - maxr1 : maxr1 - maxr2;
 }
 
-typedef enum StationListFlags {
+enum StationListFlags {
 	SL_ORDER   = 0x01,
 	SL_RESORT  = 0x02,
 	SL_REBUILD = 0x04,
-} StationListFlags;
+};
 
 DECLARE_ENUM_AS_BIT_SET(StationListFlags);
 
-typedef struct plstations_d {
+struct plstations_d {
 	const Station** sort_list;
 	uint16 list_length;
 	byte sort_type;
 	StationListFlags flags;
 	uint16 resort_timer;  //was byte refresh_counter;
-} plstations_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(plstations_d));
 
 void RebuildStationLists()

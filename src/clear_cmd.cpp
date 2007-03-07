@@ -22,12 +22,12 @@
 #include "genworld.h"
 #include "industry.h"
 
-typedef struct TerraformerHeightMod {
+struct TerraformerHeightMod {
 	TileIndex tile;
 	byte height;
-} TerraformerHeightMod;
+};
 
-typedef struct TerraformerState {
+struct TerraformerState {
 	int height[4];
 	uint32 flags;
 
@@ -40,7 +40,7 @@ typedef struct TerraformerState {
 	TileIndex *tile_table;
 	TerraformerHeightMod *modheight;
 
-} TerraformerState;
+};
 
 static int TerraformAllowTileProcess(TerraformerState *ts, TileIndex tile)
 {

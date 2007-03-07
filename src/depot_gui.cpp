@@ -290,10 +290,10 @@ static void DrawDepotWindow(Window *w)
 	}
 }
 
-typedef struct GetDepotVehiclePtData {
+struct GetDepotVehiclePtData {
 	Vehicle *head;
 	Vehicle *wagon;
-} GetDepotVehiclePtData;
+};
 
 enum {
 	MODE_ERROR        =  1,

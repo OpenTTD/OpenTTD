@@ -9,21 +9,19 @@
 //#define HASH_STATS
 
 
-typedef struct Queue Queue;
+struct Queue;
 typedef bool Queue_PushProc(Queue* q, void* item, int priority);
 typedef void* Queue_PopProc(Queue* q);
 typedef bool Queue_DeleteProc(Queue* q, void* item, int priority);
 typedef void Queue_ClearProc(Queue* q, bool free_values);
 typedef void Queue_FreeProc(Queue* q, bool free_values);
 
-typedef struct InsSortNode InsSortNode;
 struct InsSortNode {
 	void* item;
 	int priority;
 	InsSortNode* next;
 };
 
-typedef struct BinaryHeapNode BinaryHeapNode;
 struct BinaryHeapNode {
 	void* item;
 	int priority;
@@ -99,7 +97,6 @@ void init_BinaryHeap(Queue* q, uint max_size);
 /*
  * Hash
  */
-typedef struct HashNode HashNode;
 struct HashNode {
 	uint key1;
 	uint key2;
@@ -111,7 +108,7 @@ struct HashNode {
  * the resulting range is clearly defined.
  */
 typedef uint Hash_HashProc(uint key1, uint key2);
-typedef struct Hash {
+struct Hash {
 	/* The hash function used */
 	Hash_HashProc* hash;
 	/* The amount of items in the hash */
@@ -123,7 +120,7 @@ typedef struct Hash {
 	/* A pointer to an array of numbuckets booleans, which will be true if
 	 * there are any Nodes in the bucket */
 	bool* buckets_in_use;
-} Hash;
+};
 
 /* Call these function to manipulate a hash */
 

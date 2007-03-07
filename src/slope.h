@@ -3,7 +3,7 @@
 #ifndef SLOPE_H
 #define SLOPE_H
 
-typedef enum Slope {
+enum Slope {
 	SLOPE_FLAT     = 0x00,
 	SLOPE_W        = 0x01,
 	SLOPE_S        = 0x02,
@@ -25,7 +25,7 @@ typedef enum Slope {
 	SLOPE_STEEP_S  = SLOPE_STEEP | SLOPE_WSE,
 	SLOPE_STEEP_E  = SLOPE_STEEP | SLOPE_SEN,
 	SLOPE_STEEP_N  = SLOPE_STEEP | SLOPE_ENW
-} Slope;
+};
 
 static inline bool IsSteepSlope(Slope s)
 {

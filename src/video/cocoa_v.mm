@@ -31,10 +31,10 @@
 
 
 /* Portions of CPS.h */
-typedef struct CPSProcessSerNum {
+struct CPSProcessSerNum {
 	UInt32 lo;
 	UInt32 hi;
-} CPSProcessSerNum;
+};
 
 extern "C" OSErr CPSGetCurrentProcess(CPSProcessSerNum* psn);
 extern "C" OSErr CPSEnableForegroundOperation(CPSProcessSerNum* psn, UInt32 _arg2, UInt32 _arg3, UInt32 _arg4, UInt32 _arg5);
@@ -103,11 +103,11 @@ extern bool _dbg_screen_rect;
  */
 #define QZ_GAMMA_TABLE_SIZE 256
 
-typedef struct {
+struct OTTD_QuartzGammaTable {
 	CGGammaValue red[QZ_GAMMA_TABLE_SIZE];
 	CGGammaValue green[QZ_GAMMA_TABLE_SIZE];
 	CGGammaValue blue[QZ_GAMMA_TABLE_SIZE];
-} OTTD_QuartzGammaTable;
+};
 
 /* Add methods to get at private members of NSScreen.
  * Since there is a bug in Apple's screen switching code that does not update
@@ -210,10 +210,10 @@ static void QZ_CheckPaletteAnim()
 
 
 
-typedef struct VkMapping {
+struct VkMapping {
 	unsigned short vk_from;
 	byte map_to;
-} VkMapping;
+};
 
 #define AS(x, z) {x, z}
 

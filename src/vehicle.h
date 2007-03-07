@@ -90,7 +90,7 @@ enum VehicleFlags {
 };
 
 /* Effect vehicle types */
-typedef enum EffectVehicle {
+enum EffectVehicle {
 	EV_CHIMNEY_SMOKE   = 0,
 	EV_STEAM_SMOKE     = 1,
 	EV_DIESEL_SMOKE    = 2,
@@ -101,9 +101,9 @@ typedef enum EffectVehicle {
 	EV_EXPLOSION_SMALL = 7,
 	EV_BULLDOZER       = 8,
 	EV_BUBBLE          = 9
-} EffectVehicle;
+};
 
-typedef struct VehicleRail {
+struct VehicleRail {
 	uint16 last_speed; // NOSAVE: only used in UI
 	uint16 crash_anim_pos;
 	uint16 days_since_order_progr;
@@ -140,7 +140,7 @@ typedef struct VehicleRail {
 
 	// Link between the two ends of a multiheaded engine
 	Vehicle *other_multiheaded_part;
-} VehicleRail;
+};
 
 enum {
 	VRF_REVERSING         = 0,
@@ -162,15 +162,15 @@ enum {
 	VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL = 6,
 };
 
-typedef struct VehicleAir {
+struct VehicleAir {
 	uint16 crashed_counter;
 	byte pos;
 	byte previous_pos;
 	StationID targetairport;
 	byte state;
-} VehicleAir;
+};
 
-typedef struct VehicleRoad {
+struct VehicleRoad {
 	byte state;             /// @see RoadVehicleStates
 	byte frame;
 	uint16 blocked_ctr;
@@ -180,21 +180,21 @@ typedef struct VehicleRoad {
 	byte reverse_ctr;
 	struct RoadStop *slot;
 	byte slot_age;
-} VehicleRoad;
+};
 
-typedef struct VehicleSpecial {
+struct VehicleSpecial {
 	uint16 unk0;
 	byte unk2;
-} VehicleSpecial;
+};
 
-typedef struct VehicleDisaster {
+struct VehicleDisaster {
 	uint16 image_override;
 	uint16 unk2;
-} VehicleDisaster;
+};
 
-typedef struct VehicleShip {
+struct VehicleShip {
 	TrackBitsByte state;
-} VehicleShip;
+};
 
 
 struct Vehicle {
@@ -409,11 +409,11 @@ enum {
 	DEPOT_LOCATE_HANGAR = (1 << 3), // Find another airport if the target one lacks a hangar
 };
 
-typedef struct GetNewVehiclePosResult {
+struct GetNewVehiclePosResult {
 	int x,y;
 	TileIndex old_tile;
 	TileIndex new_tile;
-} GetNewVehiclePosResult;
+};
 
 /**
  * Returns the Trackdir on which the vehicle is currently located.

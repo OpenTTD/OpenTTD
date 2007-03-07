@@ -165,14 +165,14 @@ typedef int amplitude_t;
 static const int amplitude_decimal_bits = 10;
 
 /** Height map - allocated array of heights (MapSizeX() + 1) x (MapSizeY() + 1) */
-typedef struct HeightMap
+struct HeightMap
 {
 	height_t *h;         //! array of heights
 	uint     dim_x;      //! height map size_x MapSizeX() + 1
 	uint     total_size; //! height map total size
 	uint     size_x;     //! MapSizeX()
 	uint     size_y;     //! MapSizeY()
-} HeightMap;
+};
 
 /** Global height map instance */
 static HeightMap _height_map = {NULL, 0, 0, 0, 0};

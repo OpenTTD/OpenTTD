@@ -12,14 +12,14 @@
 /* ground type, m5 bits 2...4
  * valid densities (bits 0...1) in comments after the enum
  */
-typedef enum ClearGround {
+enum ClearGround {
 	CLEAR_GRASS  = 0, ///< 0-3
 	CLEAR_ROUGH  = 1, ///< 3
 	CLEAR_ROCKS  = 2, ///< 3
 	CLEAR_FIELDS = 3, ///< 3
 	CLEAR_SNOW   = 4, ///< 0-3
 	CLEAR_DESERT = 5  ///< 1,3
-} ClearGround;
+};
 
 
 static inline ClearGround GetClearGround(TileIndex t)

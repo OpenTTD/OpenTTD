@@ -48,10 +48,10 @@ static const Widget _engine_preview_widgets[] = {
 typedef void DrawEngineProc(int x, int y, EngineID engine, SpriteID pal);
 typedef void DrawEngineInfoProc(EngineID, int x, int y, int maxw);
 
-typedef struct DrawEngineInfo {
+struct DrawEngineInfo {
 	DrawEngineProc *engine_proc;
 	DrawEngineInfoProc *info_proc;
-} DrawEngineInfo;
+};
 
 static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw);
 static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw);

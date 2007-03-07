@@ -46,7 +46,7 @@ typedef TinyEnumT<SettingGuiFlagLong> SettingGuiFlag;
 
 typedef int32 OnChange(int32 var);
 
-typedef struct SettingDescBase {
+struct SettingDescBase {
 	const char *name;       ///< name of the setting. Used in configuration file and for console
 	const void *def;        ///< default value given when none is present
 	SettingDescType cmd;    ///< various flags for the variable
@@ -56,12 +56,12 @@ typedef struct SettingDescBase {
 	const char *many;       ///< ONE/MANY_OF_MANY: string of possible values for this type
 	StringID str;           ///< (translated) string with descriptive text; gui and console
 	OnChange *proc;         ///< callback procedure for when the value is changed
-} SettingDescBase;
+};
 
-typedef struct SettingDesc {
+struct SettingDesc {
 	SettingDescBase desc;   ///< Settings structure (going to configuration file)
 	SaveLoad save;          ///< Internal structure (going to savegame, parts to config)
-} SettingDesc;
+};
 
 /* NOTE: The only difference between SettingDesc and SettingDescGlob is
  * that one uses global variables as a source and the other offsets
@@ -72,10 +72,10 @@ typedef struct SettingDesc {
  * offset in a certain struct */
 typedef SettingDesc SettingDescGlobVarList;
 
-typedef enum {
+enum IniGroupType {
 	IGT_VARIABLES = 0, ///< values of the form "landscape = hilly"
 	IGT_LIST      = 1, ///< a list of values, seperated by \n and terminated by the next group block
-} IniGroupType;
+};
 
 /** The patch values that are used for new games and/or modified in config file */
 extern Patches _patches_newgame;

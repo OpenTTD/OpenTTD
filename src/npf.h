@@ -35,10 +35,10 @@ enum {
 	NPF_INFINITE_PENALTY = 1000 * NPF_TILE_LENGTH
 };
 
-typedef struct NPFFindStationOrTileData { /* Meant to be stored in AyStar.targetdata */
+struct NPFFindStationOrTileData { /* Meant to be stored in AyStar.targetdata */
 	TileIndex dest_coords; /* An indication of where the station is, for heuristic purposes, or the target tile */
 	StationID station_index; /* station index we're heading for, or INVALID_STATION when we're heading for a tile */
-} NPFFindStationOrTileData;
+};
 
 enum { /* Indices into AyStar.userdata[] */
 	NPF_TYPE = 0, /* Contains a TransportTypes value */
@@ -51,18 +51,18 @@ enum { /* Indices into AyStarNode.userdata[] */
 	NPF_NODE_FLAGS,
 };
 
-typedef enum { /* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFGetBit() and NPFGetBit() to use them. */
+enum NPFNodeFlag { /* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFGetBit() and NPFGetBit() to use them. */
 	NPF_FLAG_SEEN_SIGNAL, /* Used to mark that a signal was seen on the way, for rail only */
 	NPF_FLAG_REVERSE, /* Used to mark that this node was reached from the second start node, if applicable */
 	NPF_FLAG_LAST_SIGNAL_RED, /* Used to mark that the last signal on this path was red */
-} NPFNodeFlag;
+};
 
-typedef struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */
+struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */
 	uint best_bird_dist; /* The best heuristic found. Is 0 if the target was found */
 	uint best_path_dist; /* The shortest path. Is (uint)-1 if no path is found */
 	Trackdir best_trackdir; /* The trackdir that leads to the shortest path/closest birds dist */
 	AyStarNode node; /* The node within the target the search led us to */
-} NPFFoundTargetData;
+};
 
 /* These functions below are _not_ re-entrant, in favor of speed! */
 

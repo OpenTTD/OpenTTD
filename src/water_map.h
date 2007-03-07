@@ -3,25 +3,25 @@
 #ifndef WATER_MAP_H
 #define WATER_MAP_H
 
-typedef enum WaterTileType {
+enum WaterTileType {
 	WATER_TILE_CLEAR,
 	WATER_TILE_COAST,
 	WATER_TILE_LOCK,
 	WATER_TILE_DEPOT,
-} WaterTileType;
+};
 
-typedef enum DepotPart {
+enum DepotPart {
 	DEPOT_NORTH = 0x80,
 	DEPOT_SOUTH = 0x81,
 	DEPOT_END   = 0x84,
-} DepotPart;
+};
 
-typedef enum LockPart {
+enum LockPart {
 	LOCK_MIDDLE = 0x10,
 	LOCK_LOWER  = 0x14,
 	LOCK_UPPER  = 0x18,
 	LOCK_END    = 0x1C
-} LockPart;
+};
 
 static inline WaterTileType GetWaterTileType(TileIndex t)
 {

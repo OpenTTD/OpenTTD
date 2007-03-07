@@ -1417,7 +1417,7 @@ void DrawDefaultWaypointSprite(int x, int y, RailType railtype)
 	DrawTileSequence(x, y, dts->ground_sprite + offset, dts->seq, 0);
 }
 
-typedef struct SetSignalsData {
+struct SetSignalsData {
 	int cur;
 	int cur_stack;
 	bool stop;
@@ -1435,7 +1435,7 @@ typedef struct SetSignalsData {
 	TileIndex next_tile[NUM_SSD_STACK];
 	DiagDirectionByte next_dir[NUM_SSD_STACK];
 
-} SetSignalsData;
+};
 
 static bool SetSignalsEnumProc(TileIndex tile, void* data, Trackdir trackdir, uint length, byte* state)
 {
@@ -1473,10 +1473,10 @@ static bool SetSignalsEnumProc(TileIndex tile, void* data, Trackdir trackdir, ui
 }
 
 /* Struct to parse data from VehicleFromPos to SignalVehicleCheckProc */
-typedef struct SignalVehicleCheckStruct {
+struct SignalVehicleCheckStruct {
 	TileIndex tile;
 	uint track;
-} SignalVehicleCheckStruct;
+};
 
 static void *SignalVehicleCheckProc(Vehicle *v, void *data)
 {

@@ -19,7 +19,7 @@
  * some fields will be empty on the client (like game_password) by default
  * and only filled with data a player enters.
  */
-typedef struct NetworkGameInfo {
+struct NetworkGameInfo {
 	byte game_info_version;                         ///< Version of the game info
 	char server_name[NETWORK_NAME_LENGTH];          ///< Server name
 	char hostname[NETWORK_HOSTNAME_LENGTH];         ///< Hostname of the server (if any)
@@ -43,8 +43,8 @@ typedef struct NetworkGameInfo {
 	byte map_set;                                   ///< Graphical set
 	bool dedicated;                                 ///< Is this a dedicated server?
 	char rcon_password[NETWORK_PASSWORD_LENGTH];    ///< RCon password for the server. "" if rcon is disabled
-	struct GRFConfig *grfconfig;                    ///< List of NewGRF files used
-} NetworkGameInfo;
+	GRFConfig *grfconfig;                           ///< List of NewGRF files used
+};
 
 #endif /* ENABLE_NETWORK */
 

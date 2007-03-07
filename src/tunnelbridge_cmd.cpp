@@ -77,7 +77,7 @@ int CalcBridgeLenCostFactor(int x)
 }
 
 #define M(x) (1 << (x))
-typedef enum BridgeFoundations{
+enum BridgeFoundation {
 	// foundation, whole tile is leveled up --> 3 corners raised
 	BRIDGE_FULL_LEVELED_FOUNDATION = M(SLOPE_WSE) | M(SLOPE_NWS) | M(SLOPE_ENW) | M(SLOPE_SEN),
 	// foundation, tile is partly leveled up --> 1 corner raised
@@ -85,7 +85,7 @@ typedef enum BridgeFoundations{
 	// no foundations (X,Y direction)
 	BRIDGE_NO_FOUNDATION = M(SLOPE_FLAT) | M(SLOPE_SW) | M(SLOPE_SE) | M(SLOPE_NW) | M(SLOPE_NE),
 	BRIDGE_HORZ_RAMP = (BRIDGE_PARTLY_LEVELED_FOUNDATION | BRIDGE_NO_FOUNDATION) & ~M(SLOPE_FLAT)
-} BridgeFoundataion;
+};
 #undef M
 
 static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)

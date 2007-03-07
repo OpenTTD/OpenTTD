@@ -1,10 +1,10 @@
 /* $Id$ */
 
 
-typedef struct DefaultUnicodeMapping {
+struct DefaultUnicodeMapping {
 	WChar code; ///< Unicode value
 	byte key;   ///< Character index of sprite
-} DefaultUnicodeMapping;
+};
 
 
 /* Default unicode mapping table for sprite based glyphs.

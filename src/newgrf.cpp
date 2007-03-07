@@ -73,15 +73,15 @@ static const uint _default_cargo_max = 27;
 static CargoLabel _default_cargo_list[_default_cargo_max];
 
 
-typedef enum GrfDataType {
+enum GrfDataType {
 	GDT_SOUND,
-} GrfDataType;
+};
 
 static byte _grf_data_blocks;
 static GrfDataType _grf_data_type;
 
 
-typedef enum grfspec_feature {
+enum grfspec_feature {
 	GSF_TRAIN,
 	GSF_ROAD,
 	GSF_SHIP,
@@ -95,7 +95,7 @@ typedef enum grfspec_feature {
 	GSF_INDUSTRIES,
 	GSF_CARGOS,
 	GSF_SOUNDFX,
-} grfspec_feature;
+};
 
 
 typedef void (*SpecialSpriteHandler)(byte *buf, int len);

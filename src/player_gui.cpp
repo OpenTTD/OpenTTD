@@ -286,10 +286,10 @@ static const byte livery_height[] = {
 	3,
 };
 
-typedef struct livery_d {
+struct livery_d {
 	uint32 sel;
 	LiveryClass livery_class;
-} livery_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(livery_d));
 
 static void ShowColourDropDownMenu(Window *w, uint32 widget)

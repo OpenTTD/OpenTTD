@@ -11,7 +11,7 @@
 #include "rail.h"
 #include "airport.h"
 
-typedef struct WindowEvent WindowEvent;
+struct WindowEvent;
 
 typedef void WindowProc(Window *w, WindowEvent *e);
 
@@ -42,7 +42,7 @@ typedef void WindowProc(Window *w, WindowEvent *e);
      w->resize.width or w->resize.height.
    That was all.. good luck, and enjoy :) -- TrueLight */
 
-typedef enum ResizeFlags {
+enum ResizeFlag {
 	RESIZE_NONE   = 0,  ///< no resize required
 
 	RESIZE_LEFT   = 1,  ///< left resize flag
@@ -64,28 +64,28 @@ typedef enum ResizeFlags {
 	WIDG_DISABLED = 4,  ///< widget is greyed out, not available
 	WIDG_HIDDEN   = 5,  ///< widget is made invisible
 	WIDG_LOWERED  = 6,  ///< widget is paint lowered, a pressed button in fact
-} ResizeFlag;
+};
 
 enum {
 	WIDGET_LIST_END = -1, ///< indicate the end of widgets' list for vararg functions
 };
 
-typedef struct Widget {
+struct Widget {
 	byte type;                        ///< Widget type, see WindowWidgetTypes
 	byte display_flags;               ///< Resize direction, alignment, etc. during resizing, see ResizeFlags
 	byte color;                       ///< Widget colour, see docs/ottd-colourtext-palette.png
 	int16 left, right, top, bottom;   ///< The position offsets inside the window
 	uint16 data;                      ///< The String/Image or special code (list-matrixes) of a widget
 	StringID tooltips;                ///< Tooltips that are shown when rightclicking on a widget
-} Widget;
+};
 
-typedef enum FrameFlags {
+enum FrameFlags {
 	FR_NONE         = 0x00,
 	FR_TRANSPARENT  = 0x01,  ///< Makes the background transparent if set
 	FR_BORDERONLY   = 0x10,  ///< Draw border only, no background
 	FR_LOWERED      = 0x20,  ///< If set the frame is lowered and the background color brighter (ie. buttons when pressed)
 	FR_DARKENED     = 0x40,  ///< If set the background is darker, allows for lowered frames with normal background color when used with FR_LOWERED (ie. dropdown boxes)
-} FrameFlags;
+};
 
 DECLARE_ENUM_AS_BIT_SET(FrameFlags);
 
@@ -186,14 +186,14 @@ struct WindowEvent {
 	} we;
 };
 
-typedef struct WindowDesc {
+struct WindowDesc {
 	int16 left, top, width, height;
 	WindowClass cls;
 	WindowClass parent_cls;
 	uint32 flags;
 	const Widget *widgets;
 	WindowProc *proc;
-} WindowDesc;
+};
 
 enum WindowDefaultFlag {
 	WDF_STD_TOOLTIPS    =   1, ///< use standard routine when displaying tooltips
@@ -214,14 +214,14 @@ enum WindowDefaultPosition {
 	WDP_ALIGN_TBL = -4, ///< Align the left side of the window with the left side of the main toolbar
 };
 
-typedef struct Textbuf {
+struct Textbuf {
 	char *buf;                  ///< buffer in which text is saved
 	uint16 maxlength, maxwidth; ///< the maximum size of the buffer. Maxwidth specifies screensize in pixels, maxlength is in bytes
 	uint16 length, width;       ///< the current size of the string. Width specifies screensize in pixels, length is in bytes
 	bool caret;                 ///< is the caret ("_") visible or not
 	uint16 caretpos;            ///< the current position of the caret in the buffer, in bytes
 	uint16 caretxoffs;          ///< the current position of the caret in pixels
-} Textbuf;
+};
 
 #define WP(ptr,str) (*(str*)(ptr)->custom)
 /* You cannot 100% reliably calculate the biggest custom struct as
@@ -229,22 +229,22 @@ typedef struct Textbuf {
  * 96 is the largest window-size for 64-bit machines currently */
 #define WINDOW_CUSTOM_SIZE 96
 
-typedef struct Scrollbar {
+struct Scrollbar {
 	uint16 count, cap, pos;
-} Scrollbar;
+};
 
-typedef struct ResizeInfo {
+struct ResizeInfo {
 	uint width; ///< Minimum width and height
 	uint height;
 	uint step_width; ///< In how big steps the width and height go
 	uint step_height;
-} ResizeInfo;
+};
 
-typedef struct WindowMessage {
-		int msg;
-		int wparam;
-		int lparam;
-} WindowMessage;
+struct WindowMessage {
+	int msg;
+	int wparam;
+	int lparam;
+};
 
 struct Window {
 	uint16 flags4;
@@ -271,16 +271,16 @@ struct Window {
 	byte custom[WINDOW_CUSTOM_SIZE];
 };
 
-typedef struct querystr_d {
+struct querystr_d {
 	StringID caption;
 	Textbuf text;
 	const char *orig;
 	CharSetFilter afilter;
 	bool handled;
-} querystr_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(querystr_d));
 
-typedef struct {
+struct menu_d {
 	byte item_count;      ///< follow_vehicle
 	byte sel_index;       ///< scrollpos_x
 	byte main_button;     ///< scrollpos_y
@@ -288,36 +288,36 @@ typedef struct {
 	StringID string_id;   ///< unk30
 	uint16 checked_items; ///< unk32
 	byte disabled_items;
-} menu_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(menu_d));
 
-typedef struct {
+struct def_d {
 	int16 data_1, data_2, data_3;
 	int16 data_4, data_5;
 	bool close;
 	byte byte_1;
-} def_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(def_d));
 
-typedef struct {
+struct void_d {
 	void *data;
-} void_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(void_d));
 
-typedef struct {
+struct tree_d {
 	uint16 base;
 	uint16 count;
-} tree_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tree_d));
 
-typedef struct {
+struct tooltips_d {
 	StringID string_id;
 	byte paramcount;
 	uint32 params[5];
-} tooltips_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
 
-typedef struct {
+struct buildvehicle_d {
 	byte vehicle_type;
 	union {
 		RailTypeByte railtype;
@@ -330,10 +330,10 @@ typedef struct {
 	EngineID sel_engine;
 	EngineID rename_engine;
 	EngineList eng_list;
-} buildvehicle_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildvehicle_d));
 
-typedef struct {
+struct replaceveh_d {
 	byte sel_index[2];
 	EngineID sel_engine[2];
 	uint16 count[2];
@@ -342,10 +342,10 @@ typedef struct {
 	bool update_left;
 	bool update_right;
 	bool init_lists;
-} replaceveh_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(replaceveh_d));
 
-typedef struct {
+struct depot_d {
 	VehicleID sel;
 	byte type;
 	bool generate_list;
@@ -355,110 +355,110 @@ typedef struct {
 	uint16 wagon_count;
 	Vehicle **vehicle_list;
 	Vehicle **wagon_list;
-} depot_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(depot_d));
 
-typedef struct {
+struct order_d {
 	int sel;
-} order_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(order_d));
 
-typedef struct {
+struct traindetails_d {
 	byte tab;
-} traindetails_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(traindetails_d));
 
-typedef struct {
+struct smallmap_d {
 	int32 scroll_x;
 	int32 scroll_y;
 	int32 subscroll;
-} smallmap_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(smallmap_d));
 
-typedef struct {
+struct facesel_d {
 	uint32 face;
 	byte gender;
-} facesel_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(facesel_d));
 
-typedef struct {
+struct refit_d {
 	int sel;
 	struct RefitOption *cargo;
 	struct RefitList *list;
 	uint length;
 	VehicleOrderID order;
-} refit_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(refit_d));
 
-typedef struct {
+struct vp_d {
 	VehicleID follow_vehicle;
 	int32 scrollpos_x;
 	int32 scrollpos_y;
-} vp_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp_d));
 
 /* vp2_d is the same as vp_d, except for the data_# values.. */
-typedef struct {
+struct vp2_d {
 	VehicleID follow_vehicle;
 	int32 scrollpos_x;
 	int32 scrollpos_y;
 	byte data_1;
 	byte data_2;
 	byte data_3;
-} vp2_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp2_d));
 
-typedef struct {
+struct news_d {
 	uint16 follow_vehicle;
 	int32 scrollpos_x;
 	int32 scrollpos_y;
 	NewsItem *ni;
-} news_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(news_d));
 
-typedef struct {
+struct highscore_d {
 	uint32 background_img;
 	int8 rank;
-} highscore_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(highscore_d));
 
-typedef struct {
+struct scroller_d {
 	int height;
 	uint16 counter;
-} scroller_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(scroller_d));
 
-typedef enum SortListFlags {
+enum SortListFlags {
 	VL_NONE    = 0x00,  ///< no sort
 	VL_DESC    = 0x01,  ///< sort descending or ascending
 	VL_RESORT  = 0x02,  ///< instruct the code to resort the list in the next loop
 	VL_REBUILD = 0x04,  ///< create sort-listing to use for qsort and friends
 	VL_END     = 0x08
-} SortListFlags;
+};
 
 DECLARE_ENUM_AS_BIT_SET(SortListFlags);
 
-typedef struct Listing {
+struct Listing {
 	bool order;    ///< Ascending/descending
 	byte criteria; ///< Sorting criteria
-} Listing;
+};
 
-typedef struct list_d {
+struct list_d {
 	uint16 list_length;  ///< length of the list being sorted
 	byte sort_type;      ///< what criteria to sort on
 	SortListFlags flags; ///< used to control sorting/resorting/etc.
 	uint16 resort_timer; ///< resort list after a given amount of ticks if set
-} list_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(list_d));
 
-typedef struct message_d {
+struct message_d {
 	int msg;
 	int wparam;
 	int lparam;
-} message_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(message_d));
 
-typedef struct dropdown_d {
+struct dropdown_d {
 	uint32 disabled_state;
 	uint32 hidden_state;
 	WindowClass parent_wnd_class;
@@ -469,7 +469,7 @@ typedef struct dropdown_d {
 	const StringID *items;
 	byte click_delay;
 	bool drag_mode;
-} dropdown_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(dropdown_d));
 
 

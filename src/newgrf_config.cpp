@@ -364,7 +364,6 @@ const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum)
 #ifdef ENABLE_NETWORK
 
 /** Structure for UnknownGRFs; this is a lightweight variant of GRFConfig */
-typedef struct UnknownGRF UnknownGRF;
 struct UnknownGRF : public GRFIdentifier {
 	UnknownGRF *next;
 	char   name[NETWORK_GRF_NAME_LENGTH];

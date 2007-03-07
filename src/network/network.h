@@ -40,7 +40,7 @@
 #define NETWORK_VEHICLE_TYPES 5
 #define NETWORK_STATION_TYPES 5
 
-typedef struct NetworkPlayerInfo {
+struct NetworkPlayerInfo {
 	char company_name[NETWORK_NAME_LENGTH];         // Company name
 	char password[NETWORK_PASSWORD_LENGTH];         // The password for the player
 	Year inaugurated_year;                          // What year the company started in
@@ -53,9 +53,9 @@ typedef struct NetworkPlayerInfo {
 	uint16 num_station[NETWORK_STATION_TYPES];      // How many stations are there of this type?
 	char players[NETWORK_PLAYERS_LENGTH];           // The players that control this company (Name1, name2, ..)
 	uint16 months_empty;                            // How many months the company is empty
-} NetworkPlayerInfo;
+};
 
-typedef struct NetworkClientInfo {
+struct NetworkClientInfo {
 	uint16 client_index;                            // Index of the client (same as ClientState->index)
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];   // Name of the client
 	byte client_lang;                               // The language of the client
@@ -63,9 +63,9 @@ typedef struct NetworkClientInfo {
 	uint32 client_ip;                               // IP-address of the client (so he can be banned)
 	Date join_date;                                 // Gamedate the player has joined
 	char unique_id[NETWORK_NAME_LENGTH];            // Every play sends an unique id so we can indentify him
-} NetworkClientInfo;
+};
 
-typedef enum {
+enum NetworkJoinStatus {
 	NETWORK_JOIN_STATUS_CONNECTING,
 	NETWORK_JOIN_STATUS_AUTHORIZING,
 	NETWORK_JOIN_STATUS_WAITING,
@@ -74,15 +74,15 @@ typedef enum {
 	NETWORK_JOIN_STATUS_REGISTERING,
 
 	NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO,
-} NetworkJoinStatus;
+};
 
 // language ids for server_lang and client_lang
-typedef enum {
+enum NetworkLanguage {
 	NETLANG_ANY     = 0,
 	NETLANG_ENGLISH = 1,
 	NETLANG_GERMAN  = 2,
 	NETLANG_FRENCH  = 3,
-} NetworkLanguage;
+};
 
 VARDEF NetworkGameInfo _network_game_info;
 VARDEF NetworkPlayerInfo _network_player_info[MAX_PLAYERS];

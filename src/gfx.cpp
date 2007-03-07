@@ -44,11 +44,11 @@ int _pal_last_dirty;
 Colour _cur_palette[256];
 byte _stringwidth_table[FS_END][224];
 
-typedef enum BlitterModes {
+enum BlitterMode {
 	BM_NORMAL,
 	BM_COLOUR_REMAP,
 	BM_TRANSPARENT,
-} BlitterMode;
+};
 
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode);
 
@@ -718,7 +718,7 @@ void DrawSprite(SpriteID img, SpriteID pal, int x, int y)
 	}
 }
 
-typedef struct BlitterParams {
+struct BlitterParams {
 	int start_x, start_y;
 	const byte *sprite;
 	Pixel *dst;
@@ -726,7 +726,7 @@ typedef struct BlitterParams {
 	int width, height;
 	int width_org;
 	int pitch;
-} BlitterParams;
+};
 
 static void GfxBlitTileZoomIn(BlitterParams *bp)
 {

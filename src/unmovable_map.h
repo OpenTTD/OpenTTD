@@ -8,7 +8,7 @@ enum {
 	HQ_NUM_SIZE = 5
 };
 
-typedef enum UnmovableType {
+enum UnmovableType {
 	UNMOVABLE_TRANSMITTER = 0,
 	UNMOVABLE_LIGHTHOUSE  = 1,
 	UNMOVABLE_STATUE      = 2,
@@ -19,7 +19,7 @@ typedef enum UnmovableType {
 	UNMOVABLE_HQ_SOUTH    = 0x83,
 
 	UNMOVABLE_HQ_END      = UNMOVABLE_HQ_NORTH + HQ_NUM_SIZE * HQ_NUM_TILE
-} UnmovableType;
+};
 
 
 

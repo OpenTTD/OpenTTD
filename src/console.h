@@ -10,7 +10,7 @@
 /* maximum length of a totally expanded command */
 #define ICON_MAX_STREAMSIZE 1024
 
-typedef enum IConsoleVarTypes {
+enum IConsoleVarTypes {
 	ICONSOLE_VAR_BOOLEAN,
 	ICONSOLE_VAR_BYTE,
 	ICONSOLE_VAR_UINT16,
@@ -18,19 +18,19 @@ typedef enum IConsoleVarTypes {
 	ICONSOLE_VAR_INT16,
 	ICONSOLE_VAR_INT32,
 	ICONSOLE_VAR_STRING
-} IConsoleVarTypes;
+};
 
-typedef enum IConsoleModes {
+enum IConsoleModes {
 	ICONSOLE_FULL,
 	ICONSOLE_OPENED,
 	ICONSOLE_CLOSED
-} IConsoleModes;
+};
 
-typedef enum IConsoleHookTypes {
+enum IConsoleHookTypes {
 	ICONSOLE_HOOK_ACCESS,
 	ICONSOLE_HOOK_PRE_ACTION,
 	ICONSOLE_HOOK_POST_ACTION
-} IConsoleHookTypes;
+};
 
 /** --Hooks--
  * Hooks are certain triggers get get accessed/executed on either
@@ -38,11 +38,11 @@ typedef enum IConsoleHookTypes {
  * for general flow of permissions or special action needed in some cases
  */
 typedef bool IConsoleHook();
-typedef struct IConsoleHooks{
+struct IConsoleHooks{
 	IConsoleHook *access; ///< trigger when accessing the variable/command
 	IConsoleHook *pre;    ///< trigger before the variable/command is changed/executed
 	IConsoleHook *post;   ///< trigger after the variable/command is changed/executed
-} IConsoleHooks;
+};
 
 /** --Commands--
  * Commands are commands, or functions. They get executed once and any
@@ -53,14 +53,13 @@ typedef struct IConsoleHooks{
  */
 typedef bool (IConsoleCmdProc)(byte argc, char *argv[]);
 
-struct IConsoleCmd;
-typedef struct IConsoleCmd {
+struct IConsoleCmd {
 	char *name;               ///< name of command
-	struct IConsoleCmd *next; ///< next command in list
+	IConsoleCmd *next;        ///< next command in list
 
 	IConsoleCmdProc *proc;    ///< process executed when command is typed
 	IConsoleHooks hook;       ///< any special trigger action that needs executing
-} IConsoleCmd;
+};
 
 /** --Variables--
  * Variables are pointers to real ingame variables which allow for
@@ -71,10 +70,9 @@ typedef struct IConsoleCmd {
  * - '++' to increase value by one
  * - '--' to decrease value by one
  */
-struct IConsoleVar;
-typedef struct IConsoleVar {
+struct IConsoleVar {
 	char *name;               ///< name of the variable
-	struct IConsoleVar *next; ///< next variable in list
+	IConsoleVar *next;        ///< next variable in list
 
 	void *addr;               ///< the address where the variable is pointing at
 	uint32 size;              ///< size of the variable, used for strings
@@ -82,7 +80,7 @@ typedef struct IConsoleVar {
 	IConsoleVarTypes type;    ///< type of variable (for correct assignment/output)
 	IConsoleCmdProc *proc;    ///< some variables need really special handling, use a callback function for that
 	IConsoleHooks hook;       ///< any special trigger action that needs executing
-} IConsoleVar;
+};
 
 /** --Aliases--
  * Aliases are like shortcuts for complex functions, variable assignments,
@@ -95,13 +93,12 @@ typedef struct IConsoleVar {
  * - "%!" also lists all parameters but presenting them to the aliased command as one argument
  * - ";" allows for combining commands (see example 'ng')
  */
-struct IConsoleAlias;
-typedef struct IConsoleAlias {
+struct IConsoleAlias {
 	char *name;                 ///< name of the alias
-	struct IConsoleAlias *next; ///< next alias in list
+	IConsoleAlias *next;        ///< next alias in list
 
 	char *cmdline;              ///< command(s) that is/are being aliased
-} IConsoleAlias;
+};
 
 /* console parser */
 VARDEF IConsoleCmd   *_iconsole_cmds;    ///< list of registred commands

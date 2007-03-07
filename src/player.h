@@ -9,15 +9,15 @@
 #include "engine.h"
 #include "livery.h"
 
-typedef struct PlayerEconomyEntry {
+struct PlayerEconomyEntry {
 	int32 income;
 	int32 expenses;
 	int32 delivered_cargo;
 	int32 performance_history; // player score (scale 0-1000)
 	int64 company_value;
-} PlayerEconomyEntry;
+};
 
-typedef struct AiBuildRec {
+struct AiBuildRec {
 	TileIndex spec_tile;
 	TileIndex use_tile;
 	byte rand_rng;
@@ -28,9 +28,9 @@ typedef struct AiBuildRec {
 	byte buildcmd_b;
 	byte direction;
 	CargoID cargo;
-} AiBuildRec;
+};
 
-typedef struct PlayerAI {
+struct PlayerAI {
 	byte state;
 	byte tick;            // Used to determine how often to move
 	uint32 state_counter; // Can hold tile index!
@@ -68,9 +68,9 @@ typedef struct PlayerAI {
 
 	TileIndex banned_tiles[16];
 	byte banned_val[16];
-} PlayerAI;
+};
 
-typedef struct Ai_PathFinderInfo {
+struct Ai_PathFinderInfo {
 	TileIndex start_tile_tl; // tl = top-left
 	TileIndex start_tile_br; // br = bottom-right
 	TileIndex end_tile_tl;   // tl = top-left
@@ -84,17 +84,17 @@ typedef struct Ai_PathFinderInfo {
 	int position;            // Current position in the build-path, needed to build the path
 
 	bool rail_or_road;       // true = rail, false = road
-} Ai_PathFinderInfo;
+};
 
 // The amount of memory reserved for the AI-special-vehicles
 #define AI_MAX_SPECIAL_VEHICLES 100
 
-typedef struct Ai_SpecialVehicle {
+struct Ai_SpecialVehicle {
 	VehicleID veh_id;
 	uint32 flag;
-} Ai_SpecialVehicle;
+};
 
-typedef struct PlayerAiNew {
+struct PlayerAiNew {
 	uint8 state;
 	uint tick;
 	uint idle;
@@ -144,12 +144,12 @@ typedef struct PlayerAiNew {
 	int to_ic;
 	byte to_type;
 
-} PlayerAiNew;
+};
 
 
 typedef uint32 PlayerFace;
 
-typedef struct Player {
+struct Player {
 	uint32 name_2;
 	uint16 name_1;
 
@@ -198,7 +198,7 @@ typedef struct Player {
 	int16 engine_renew_months;
 	uint32 engine_renew_money;
 	uint16 num_engines[TOTAL_NUM_ENGINES]; // caches the number of engines of each type the player owns (no need to save this)
-} Player;
+};
 
 uint16 GetDrawStringPlayerColor(PlayerID player);
 
@@ -282,11 +282,11 @@ static inline RailType GetBestRailtype(const Player* p)
 	return RAILTYPE_RAIL;
 }
 
-typedef struct HighScore {
+struct HighScore {
 	char company[100];
 	StringID title; // NO_SAVE, has troubles with changing string-numbers.
 	uint16 score;   // do NOT change type, will break hs.dat
-} HighScore;
+};
 
 VARDEF HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
 void SaveToHighScore();

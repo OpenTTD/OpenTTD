@@ -30,22 +30,22 @@
 #include "helpers.hpp"
 #include "cargotype.h"
 
-typedef struct Sorting {
+struct Sorting {
 	Listing aircraft;
 	Listing roadveh;
 	Listing ship;
 	Listing train;
-} Sorting;
+};
 
 static Sorting _sorting;
 
-typedef struct vehiclelist_d {
+struct vehiclelist_d {
 	const Vehicle** sort_list;  // List of vehicles (sorted)
 	Listing *_sorting;          // pointer to the appropiate subcategory of _sorting
 	uint16 length_of_sort_list; // Keeps track of how many vehicle pointers sort list got space for
 	byte vehicle_type;          // The vehicle type that is sorted
 	list_d l;                   // General list struct
-} vehiclelist_d;
+};
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
 
 static bool   _internal_sort_order;     // descending/ascending
@@ -180,17 +180,17 @@ void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 	DrawSprite(SPR_BLOT, pal, x, y);
 }
 
-typedef struct RefitOption {
+struct RefitOption {
 	CargoID cargo;
 	byte subtype;
 	uint16 value;
 	EngineID engine;
-} RefitOption;
+};
 
-typedef struct RefitList {
+struct RefitList {
 	uint num_lines;
 	RefitOption *items;
-} RefitList;
+};
 
 static RefitList *BuildRefitList(const Vehicle *v)
 {

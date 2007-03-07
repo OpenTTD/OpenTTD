@@ -256,10 +256,10 @@ static const uint32 _map_height_bits[16] = {
 	MKCOLOR(0x27272727),
 };
 
-typedef struct AndOr {
+struct AndOr {
 	uint32 mor;
 	uint32 mand;
-} AndOr;
+};
 
 static inline uint32 ApplyMask(uint32 colour, const AndOr *mask)
 {

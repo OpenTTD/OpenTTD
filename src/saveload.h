@@ -9,20 +9,20 @@
 
 #define SIZE_MAX ((size_t)-1)
 
-typedef enum SaveOrLoadResult {
+enum SaveOrLoadResult {
 	SL_OK     = 0, // completed successfully
 	SL_ERROR  = 1, // error that was caught before internal structures were modified
 	SL_REINIT = 2, // error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
-} SaveOrLoadResult;
+};
 
-typedef enum SaveOrLoadMode {
+enum SaveOrLoadMode {
 	SL_INVALID  = -1,
 	SL_LOAD     =  0,
 	SL_SAVE     =  1,
 	SL_OLD_LOAD =  2,
 	SL_PNG      =  3,
 	SL_BMP      =  4,
-} SaveOrLoadMode;
+};
 
 SaveOrLoadResult SaveOrLoad(const char *filename, int mode);
 void WaitTillSaved();
@@ -32,18 +32,18 @@ void DoExitSave();
 typedef void ChunkSaveLoadProc();
 typedef void AutolengthProc(void *arg);
 
-typedef struct {
+struct ChunkHandler {
 	uint32 id;
 	ChunkSaveLoadProc *save_proc;
 	ChunkSaveLoadProc *load_proc;
 	uint32 flags;
-} ChunkHandler;
+};
 
-typedef struct {
+struct NullStruct {
 	byte null;
-} NullStruct;
+};
 
-typedef enum SLRefType {
+enum SLRefType {
 	REF_ORDER         = 0,
 	REF_VEHICLE       = 1,
 	REF_STATION       = 2,
@@ -51,7 +51,7 @@ typedef enum SLRefType {
 	REF_VEHICLE_OLD   = 4,
 	REF_ROADSTOPS     = 5,
 	REF_ENGINE_RENEWS = 6,
-} SLRefType;
+};
 
 #define SL_MAX_VERSION 255
 
@@ -166,7 +166,7 @@ enum SaveLoadTypes {
 typedef byte SaveLoadType;
 
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
-typedef struct SaveLoad {
+struct SaveLoad {
 	SaveLoadType cmd;    ///< the action to take with the saved/loaded type, All types need different action
 	VarType conv;        ///< type of the variable to be saved, int
 	uint16 length;       ///< (conditional) length of the variable (eg. arrays) (max array size is 65536 elements)
@@ -177,7 +177,7 @@ typedef struct SaveLoad {
 	 * during runtime. Decision on which one to use is controlled by the function
 	 * that is called to save it. address: SlGlobList, offset: SlObject */
 	void *address;       ///< address of variable OR offset of variable in the struct (max offset is 65536)
-} SaveLoad;
+};
 
 /* Same as SaveLoad but global variables are used (for better readability); */
 typedef SaveLoad SaveLoadGlobVarList;

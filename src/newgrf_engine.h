@@ -36,7 +36,7 @@ bool UsesWagonOverride(const Vehicle *v);
 #define GetCustomVehicleSprite(v, direction) GetCustomEngineSprite(v->engine_type, v, direction)
 #define GetCustomVehicleIcon(et, direction) GetCustomEngineSprite(et, NULL, direction)
 
-typedef enum VehicleTrigger {
+enum VehicleTrigger {
 	VEHICLE_TRIGGER_NEW_CARGO     = 1,
 	// Externally triggered only for the first vehicle in chain
 	VEHICLE_TRIGGER_DEPOT         = 2,
@@ -44,7 +44,7 @@ typedef enum VehicleTrigger {
 	VEHICLE_TRIGGER_EMPTY         = 4,
 	// Not triggered externally (called for the whole chain if we got NEW_CARGO)
 	VEHICLE_TRIGGER_ANY_NEW_CARGO = 8,
-} VehicleTrigger;
+};
 void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 
 void SetCustomEngineName(EngineID engine, StringID name);

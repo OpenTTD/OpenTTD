@@ -306,11 +306,11 @@ int32 CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return -(int32)v->value;
 }
 
-typedef struct RoadFindDepotData {
+struct RoadFindDepotData {
 	uint best_length;
 	TileIndex tile;
 	OwnerByte owner;
-} RoadFindDepotData;
+};
 
 static const DiagDirection _road_pf_directions[] = {
 	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, INVALID_DIAGDIR, INVALID_DIAGDIR,
@@ -785,12 +785,12 @@ static void StartRoadVehSound(const Vehicle* v)
 	}
 }
 
-typedef struct RoadVehFindData {
+struct RoadVehFindData {
 	int x;
 	int y;
 	const Vehicle* veh;
 	Direction dir;
-} RoadVehFindData;
+};
 
 static void* EnumCheckRoadVehClose(Vehicle *v, void* data)
 {
@@ -933,12 +933,12 @@ static Direction RoadVehGetSlidingDirection(const Vehicle* v, int x, int y)
 	return ChangeDir(old_dir, delta);
 }
 
-typedef struct OvertakeData {
+struct OvertakeData {
 	const Vehicle* u;
 	const Vehicle* v;
 	TileIndex tile;
 	byte tilebits;
-} OvertakeData;
+};
 
 static void* EnumFindVehToOvertake(Vehicle* v, void* data)
 {
@@ -1030,11 +1030,11 @@ static int PickRandomBit(uint bits)
 	return i;
 }
 
-typedef struct {
+struct FindRoadToChooseData {
 	TileIndex dest;
 	uint maxtracklen;
 	uint mindist;
-} FindRoadToChooseData;
+};
 
 static bool EnumRoadTrackFindDist(TileIndex tile, void* data, Trackdir trackdir, uint length, byte* state)
 {
@@ -1256,9 +1256,9 @@ enum {
 	RVC_DRIVE_THROUGH_STOP_FRAME = 7
 };
 
-typedef struct RoadDriveEntry {
-	byte x,y;
-} RoadDriveEntry;
+struct RoadDriveEntry {
+	byte x, y;
+};
 
 #include "table/roadveh.h"
 

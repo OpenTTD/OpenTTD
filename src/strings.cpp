@@ -35,7 +35,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv, 
 
 static char *FormatString(char *buff, const char *str, const int32 *argv, uint casei, const char* last);
 
-typedef struct LanguagePack {
+struct LanguagePack {
 	uint32 ident;
 	uint32 version;     // 32-bits of auto generated version info which is basically a hash of strings.h
 	char name[32];      // the international name of this language
@@ -45,7 +45,7 @@ typedef struct LanguagePack {
 	byte plural_form;   // how to compute plural forms
 	byte pad[3];        // pad header to be a multiple of 4
 	char data[VARARRAY_SIZE];
-} LanguagePack;
+};
 
 static char **_langpack_offs;
 static LanguagePack *_langpack;
@@ -461,7 +461,7 @@ static const char *ParseStringChoice(const char *b, uint form, char *dst, int *d
 	return b + pos;
 }
 
-typedef struct Units {
+struct Units {
 	int s_m;           ///< Multiplier for velocity
 	int s_s;           ///< Shift for velocity
 	StringID velocity; ///< String for velocity
@@ -479,7 +479,7 @@ typedef struct Units {
 	int f_m;           ///< Multiplier for force
 	int f_s;           ///< Shift for force
 	StringID force;    ///< String for force
-} Units;
+};
 
 /* Unit conversions */
 static const Units units[] = {

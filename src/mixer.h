@@ -5,7 +5,7 @@
 #ifndef MIXER_H
 #define MIXER_H
 
-typedef struct MixerChannel MixerChannel;
+struct MixerChannel;
 
 enum {
 	MX_AUTOFREE = 1,

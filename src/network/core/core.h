@@ -16,7 +16,7 @@ bool NetworkCoreInitialize();
 void NetworkCoreShutdown();
 
 /** Status of a network client; reasons why a client has quit */
-typedef enum {
+enum NetworkRecvStatus {
 	NETWORK_RECV_STATUS_OKAY,             ///< Everything is okay
 	NETWORK_RECV_STATUS_DESYNC,           ///< A desync did occur
 	NETWORK_RECV_STATUS_NEWGRF_MISMATCH,  ///< We did not have the required NewGRFs
@@ -27,7 +27,7 @@ typedef enum {
 	NETWORK_RECV_STATUS_SERVER_FULL,      ///< The server is full
 	NETWORK_RECV_STATUS_SERVER_BANNED,    ///< The server has banned us
 	NETWORK_RECV_STATUS_CLOSE_QUERY,      ///< Done quering the server
-} NetworkRecvStatus;
+};
 
 /** Forward declaration due to circular dependencies */
 struct Packet;

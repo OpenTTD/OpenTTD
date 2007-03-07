@@ -1,6 +1,6 @@
 /* $Id$ */
 
-typedef struct DrawTileUnmovableStruct {
+struct DrawTileUnmovableStruct {
 	uint16 image;
 	byte subcoord_x;
 	byte subcoord_y;
@@ -8,7 +8,7 @@ typedef struct DrawTileUnmovableStruct {
 	byte height;
 	byte z_size;
 	byte unused;
-} DrawTileUnmovableStruct;
+};
 
 #define TILE_SEQ_END() { (byte)0x80, 0, 0, 0, 0, 0, 0, 0 }
 

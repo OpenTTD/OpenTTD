@@ -209,11 +209,11 @@ static bool CreateMainSurface(int w, int h)
 	return true;
 }
 
-typedef struct VkMapping {
+struct VkMapping {
 	uint16 vk_from;
 	byte vk_count;
 	byte map_to;
-} VkMapping;
+};
 
 #define AS(x, z) {x, 0, z}
 #define AM(x, y, z, w) {x, y - x, z}

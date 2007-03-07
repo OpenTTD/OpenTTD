@@ -665,9 +665,9 @@ Window *AllocateWindow(
 	return LocalAllocateWindow(x, y, width, height, proc, cls, widget, 0);
 }
 
-typedef struct SizeRect {
+struct SizeRect {
 	int left,top,width,height;
-} SizeRect;
+};
 
 
 static SizeRect _awap_r;

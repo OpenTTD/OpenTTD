@@ -27,7 +27,6 @@ enum{
 	AYSTAR_INVALID_NODE = -1,
 };
 
-typedef struct AyStarNode AyStarNode;
 struct AyStarNode {
 	TileIndex tile;
 	int direction;
@@ -35,7 +34,6 @@ struct AyStarNode {
 };
 
 // The resulting path has nodes looking like this.
-typedef struct PathNode PathNode;
 struct PathNode {
 	AyStarNode node;
 	// The parent of this item
@@ -45,13 +43,12 @@ struct PathNode {
 // For internal use only
 // We do not save the h-value, because it is only needed to calculate the f-value.
 //  h-value should _always_ be the distance left to the end-tile.
-typedef struct OpenListNode OpenListNode;
 struct OpenListNode {
 	int g;
 	PathNode path;
 };
 
-typedef struct AyStar AyStar;
+struct AyStar;
 /*
  * This function is called to check if the end-tile is found
  *  return values can be:

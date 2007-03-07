@@ -315,10 +315,10 @@ static FT_Face GetFontFace(FontSize size)
 }
 
 
-typedef struct GlyphEntry {
+struct GlyphEntry {
 	Sprite *sprite;
 	byte width;
-} GlyphEntry;
+};
 
 
 /* The glyph cache. This is structured to reduce memory consumption.

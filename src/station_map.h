@@ -58,16 +58,16 @@ enum {
 	BUS_SIZE_EXT = GFX_BASE_END - GFX_BUS_BASE_EXT,
 };
 
-typedef enum HangarTiles {
+enum HangarTile {
 	HANGAR_TILE_0 = 32,
 	HANGAR_TILE_1 = 65,
 	HANGAR_TILE_2 = 86,
 	HANGAR_TILE_3 = 129, // added for west facing hangar
 	HANGAR_TILE_4 = 130, // added for north facing hangar
 	HANGAR_TILE_5 = 131 // added for east facing hangar
-} HangarTiles;
+};
 
-typedef enum StationType {
+enum StationType {
 	STATION_RAIL,
 	STATION_AIRPORT,
 	STATION_TRUCK,
@@ -75,7 +75,7 @@ typedef enum StationType {
 	STATION_OILRIG,
 	STATION_DOCK,
 	STATION_BUOY
-} StationType;
+};
 
 StationType GetStationType(TileIndex);
 

@@ -7,23 +7,23 @@
 
 /** Tile Location group.
  * This defines whether the X and or Y coordinate of a tile is even */
-typedef enum TLG {
+enum TLG {
 	XEVEN_YEVEN = 0,
 	XEVEN_YODD  = 1,
 	XODD_YEVEN  = 2,
 	XODD_YODD   = 3,
 	TLG_END
-} TLG;
+};
 
 /** When determining the pylon configuration on the edge, two tiles are taken
  * into account: the tile being drawn itself (the home tile, the one in
  * ti->tile), and the neighbouring tile */
-typedef enum {
+enum TileSource {
 	TS_HOME      = 0,
 	TS_NEIGHBOUR = 1,
 
 	TS_END
-} TileSource;
+};
 
 enum {
 	NUM_TRACKS_AT_PCP = 6
@@ -253,7 +253,7 @@ static const SpriteID pylons_bridge[] = {
 	SPR_PYLON_Y_SW
 };
 
-typedef struct {
+struct SortableSpriteStruct {
 	SpriteID image;
 	int8 x_offset;
 	int8 y_offset;
@@ -261,7 +261,7 @@ typedef struct {
 	int8 y_size;
 	int8 z_size;
 	int8 z_offset;
-} SortableSpriteStruct;
+};
 
 enum {
 	/** Distance between wire and rail */
@@ -351,7 +351,7 @@ static const SortableSpriteStruct CatenarySpriteData_Depot[] = {
  * <li>Position of the Pylon relative to the track</li>
  * <li>Position of the Pylon inside the tile</li></ol>
  */
-typedef enum {
+enum CatenarySprite {
 	WIRE_X_FLAT_SW,
 	WIRE_X_FLAT_NE,
 	WIRE_X_FLAT_BOTH,
@@ -395,7 +395,7 @@ typedef enum {
 	WIRE_EW_S_E,
 
 	INVALID_CATENARY = 0xFF
-} CatenarySprite;
+};
 
 /* Selects a Wire (with white and grey ends) depending on whether:
  * a) none (should never happen)

@@ -44,11 +44,11 @@ typedef uint8  Month;
 typedef uint8  Day;
 typedef uint16 DateFract;
 
-typedef struct YearMonthDay {
+struct YearMonthDay {
 	Year  year;
 	Month month;
 	Day   day;
-} YearMonthDay;
+};
 
 extern Year      _cur_year;
 extern Month     _cur_month;

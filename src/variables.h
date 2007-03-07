@@ -19,7 +19,7 @@ VARDEF uint16 _price_frac[NUM_PRICES];
 VARDEF uint32 _cargo_payment_rates[NUM_CARGO];
 VARDEF uint16 _cargo_payment_rates_frac[NUM_CARGO];
 
-typedef struct {
+struct GameOptions {
 	GameDifficulty diff;
 	byte diff_level;
 	byte currency;
@@ -29,7 +29,7 @@ typedef struct {
 	byte snow_line;
 	byte autosave;
 	byte road_side;
-} GameOptions;
+};
 
 /* These are the options for the current game
  * either ingame, or loaded. Also used for networking games */
@@ -80,7 +80,7 @@ VARDEF byte _saved_scrollpos_zoom;
 
 // ********* END OF SAVE REGION
 
-typedef struct Patches {
+struct Patches {
 	bool modified_catchment;            // different-size catchment areas
 	bool vehicle_speed;                 // show vehicle speed
 	bool build_on_slopes;               // allow building on slopes
@@ -221,22 +221,22 @@ typedef struct Patches {
 	/** YAPF settings */
 	YapfSettings  yapf;
 
-} Patches;
+};
 
 VARDEF Patches _patches;
 
 
-typedef struct Cheat {
+struct Cheat {
 	bool been_used; // has this cheat been used before?
 	bool value;     // tells if the bool cheat is active or not
-} Cheat;
+};
 
 
 // WARNING! Do _not_ remove entries in Cheats struct or change the order
 // of the existing ones! Would break downward compatibility.
 // Only add new entries at the end of the struct!
 
-typedef struct Cheats {
+struct Cheats {
 	Cheat magic_bulldozer;  // dynamite industries, unmovables
 	Cheat switch_player;    // change to another player
 	Cheat money;            // get rich
@@ -247,11 +247,11 @@ typedef struct Cheats {
 	Cheat change_date;      // changes date ingame
 	Cheat setup_prod;       // setup raw-material production in game
 	Cheat dummy;            // empty cheat (enable running el-engines on normal rail)
-} Cheats;
+};
 
 VARDEF Cheats _cheats;
 
-typedef struct Paths {
+struct Paths {
 	char *personal_dir;  // includes cfg file and save folder
 	char *game_data_dir; // includes data, gm, lang
 	char *data_dir;
@@ -262,7 +262,7 @@ typedef struct Paths {
 	char *scenario_dir;
 	char *heightmap_dir;
 	char *second_data_dir;
-} Paths;
+};
 
 VARDEF Paths _paths;
 
@@ -296,11 +296,11 @@ VARDEF TileIndex _build_tunnel_endtile;
 VARDEF bool _generating_world;
 
 // Deals with the type of the savegame, independent of extension
-typedef struct {
+struct SmallFiosItem {
 	int mode;             // savegame/scenario type (old, new)
 	char name[MAX_PATH];  // name
 	char title[255];      // internal name of the game
-} SmallFiosItem;
+};
 
 // Used when switching from the intro menu.
 VARDEF byte _switch_mode;
@@ -314,7 +314,7 @@ VARDEF Vehicle *_place_clicked_vehicle;
 VARDEF char _ini_videodriver[32], _ini_musicdriver[32], _ini_sounddriver[32];
 
 // Used for dynamic language support
-typedef struct {
+struct DynamicLanguages {
 	int num; // number of languages
 	int curr; // currently selected language index
 	char curr_file[MAX_LANG]; // currently selected language file
@@ -323,7 +323,7 @@ typedef struct {
 		char *name;
 		char *file;
 	} ent[MAX_LANG];
-} DynamicLanguages;
+};
 
 VARDEF DynamicLanguages _dynlang;
 

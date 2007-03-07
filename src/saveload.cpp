@@ -1045,12 +1045,12 @@ static void UninitNoComp()
 #include "gfx.h"
 #include "gui.h"
 
-typedef struct ThreadedSave {
+struct ThreadedSave {
 	uint count;
 	byte ff_state;
 	bool saveinprogress;
 	CursorID cursor;
-} ThreadedSave;
+};
 
 /* A maximum size of of 128K * 500 = 64.000KB savegames */
 STATIC_OLD_POOL(Savegame, byte, 17, 500, NULL, NULL)
@@ -1326,7 +1326,7 @@ static void *IntToReference(uint index, SLRefType rt)
 }
 
 /** The format for a reader/writer type of a savegame */
-typedef struct {
+struct SaveLoadFormat {
 	const char *name;           ///< name of the compressor/decompressor (debug-only)
 	uint32 tag;                 ///< the 4-letter tag by which it is identified in the savegame
 
@@ -1337,7 +1337,7 @@ typedef struct {
 	bool (*init_write)();       ///< function executed upon intialization of the saver
 	WriterProc *writer;         ///< function that saves the data to the file
 	void (*uninit_write)();     ///< function executed when writing is done
-} SaveLoadFormat;
+};
 
 static const SaveLoadFormat _saveload_formats[] = {
 	{"memory", 0,                NULL,         NULL,       NULL,           InitMem,       WriteMem,    UnInitMem},

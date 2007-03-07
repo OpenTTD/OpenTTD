@@ -423,7 +423,7 @@ void FollowTrack(TileIndex tile, uint16 flags, DiagDirection direction, TPFEnumP
 		after_proc(&tpf);
 }
 
-typedef struct {
+struct StackedItem {
 	TileIndex tile;
 	uint16 cur_length; // This is the current length to this tile.
 	uint16 priority; // This is the current length + estimated length to the goal.
@@ -431,7 +431,7 @@ typedef struct {
 	byte depth;
 	byte state;
 	byte first_track;
-} StackedItem;
+};
 
 static const Trackdir _new_trackdir[6][4] = {
 {TRACKDIR_X_NE,    INVALID_TRACKDIR, TRACKDIR_X_SW,    INVALID_TRACKDIR,},
@@ -442,13 +442,13 @@ static const Trackdir _new_trackdir[6][4] = {
 {INVALID_TRACKDIR, INVALID_TRACKDIR, TRACKDIR_RIGHT_S, TRACKDIR_RIGHT_N,},
 };
 
-typedef struct HashLink {
+struct HashLink {
 	TileIndex tile;
 	uint16 typelength;
 	uint16 next;
-} HashLink;
+};
 
-typedef struct {
+struct NewTrackPathFinder {
 	NTPEnumProc *enum_proc;
 	void *userdata;
 	TileIndex dest;
@@ -468,7 +468,7 @@ typedef struct {
 
 	HashLink links[0x400]; // hash links
 
-} NewTrackPathFinder;
+};
 #define NTP_GET_LINK_OFFS(tpf, link) ((byte*)(link) - (byte*)tpf->links)
 #define NTP_GET_LINK_PTR(tpf, link_offs) (HashLink*)((byte*)tpf->links + (link_offs))
 

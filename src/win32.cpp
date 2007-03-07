@@ -100,11 +100,11 @@ static bool _expanded;
 static bool _did_emerg_save;
 static int _ident;
 
-typedef struct DebugFileInfo {
+struct DebugFileInfo {
 	uint32 size;
 	uint32 crc32;
 	SYSTEMTIME file_time;
-} DebugFileInfo;
+};
 
 static uint32 *_crc_table;
 
@@ -230,14 +230,14 @@ static bool EmergencySave()
 /* Disable the crash-save submit code as it's not used */
 #if 0
 
-typedef struct {
+struct WinInetProcs {
 	HINTERNET (WINAPI *InternetOpen)(LPCTSTR,DWORD, LPCTSTR, LPCTSTR, DWORD);
 	HINTERNET (WINAPI *InternetConnect)(HINTERNET, LPCTSTR, INTERNET_PORT, LPCTSTR, LPCTSTR, DWORD, DWORD, DWORD);
 	HINTERNET (WINAPI *HttpOpenRequest)(HINTERNET, LPCTSTR, LPCTSTR, LPCTSTR, LPCTSTR, LPCTSTR *, DWORD, DWORD);
 	BOOL (WINAPI *HttpSendRequest)(HINTERNET, LPCTSTR, DWORD, LPVOID, DWORD);
 	BOOL (WINAPI *InternetCloseHandle)(HINTERNET);
 	BOOL (WINAPI *HttpQueryInfo)(HINTERNET, DWORD, LPVOID, LPDWORD, LPDWORD);
-} WinInetProcs;
+};
 
 #define M(x) x "\0"
 #if defined(UNICODE)

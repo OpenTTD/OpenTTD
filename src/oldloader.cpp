@@ -27,7 +27,7 @@ enum {
 	OLD_MAP_SIZE = 256 * 256
 };
 
-typedef struct LoadgameState {
+struct LoadgameState {
 	FILE *file;
 
 	uint chunk_size;
@@ -41,10 +41,10 @@ typedef struct LoadgameState {
 
 	uint total_read;
 	bool failed;
-} LoadgameState;
+};
 
 /* OldChunk-Type */
-typedef enum OldChunkTypes {
+enum OldChunkType {
 	OC_SIMPLE    = 0,
 	OC_NULL      = 1,
 	OC_CHUNK     = 2,
@@ -78,20 +78,20 @@ typedef enum OldChunkTypes {
 	OC_TILE      = OC_VAR_U32  | OC_FILE_U16,
 
 	OC_END       = 0 ///< End of the whole chunk, all 32bits set to zero
-} OldChunkType;
+};
 
 DECLARE_ENUM_AS_BIT_SET(OldChunkType);
 
 typedef bool OldChunkProc(LoadgameState *ls, int num);
 
-typedef struct OldChunks {
+struct OldChunks {
 	OldChunkType type;   ///< Type of field
 	uint32 amount;       ///< Amount of fields
 
 	void *ptr;           ///< Pointer where to save the data (may only be set if offset is 0)
 	uint offset;         ///< Offset from basepointer (may only be set if ptr is NULL)
 	OldChunkProc *proc;  ///< Pointer to function that is called with OC_CHUNK
-} OldChunks;
+};
 
 /* If it fails, check lines above.. */
 assert_compile(sizeof(TileIndex) == 4);

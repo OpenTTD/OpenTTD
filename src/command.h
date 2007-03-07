@@ -176,10 +176,10 @@ enum {
 
 typedef int32 CommandProc(TileIndex tile, uint32 flags, uint32 p1, uint32 p2);
 
-typedef struct Command {
+struct Command {
 	CommandProc *proc;
 	byte flags;
-} Command;
+};
 
 //#define return_cmd_error(errcode) do { _error_message=(errcode); return CMD_ERROR; } while(0)
 #define return_cmd_error(errcode) do { return CMD_ERROR | (errcode); } while (0)
