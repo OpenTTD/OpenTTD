@@ -280,6 +280,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...已被{STRING}擁有
 STR_013C_CARGO                                                  :{BLACK}貨物
@@ -2633,6 +2634,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :軌道類型不
 STR_TRAIN_NO_POWER                                              :{RED}沒有電力
 STR_TRAIN_START_NO_CATENARY                                     :這個軌道沒有電氣化，所以列車無法起動
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} 問世了!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} 問世了! -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}前方有汽車
@@ -3132,6 +3136,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}區域: 
 
 ############ Date formatting
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}轉運進帳: {LTBLUE}{CURRENCY}

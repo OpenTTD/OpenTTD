@@ -333,6 +333,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...w posiadaniu {STRING}
 STR_013C_CARGO                                                  :{BLACK}Ładunek
@@ -3036,6 +3037,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} jest z
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Niewłaściwy parametr dla {STRING}: parametr {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musi być wczytany przed {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musi być wczytany po {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku GRF który miał być tłumaczony
 
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj plik NewGRF do listy

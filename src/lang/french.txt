@@ -281,6 +281,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...appartient à {STRING}
 STR_013C_CARGO                                                  :{BLACK}Cargaison
@@ -2908,6 +2909,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} est co
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paramètre invalide pour {STRING}: paramètre {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} doit être chargé avant {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} doit être chargé après {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :le fichier GRF qu'il doit traduire
 
 STR_NEWGRF_ADD                                                  :{BLACK}Ajouter
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Ajouter un fichier NewGRF à la liste

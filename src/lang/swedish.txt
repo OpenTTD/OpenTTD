@@ -280,6 +280,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...ägs av {STRING}
 STR_013C_CARGO                                                  :{BLACK}Gods
@@ -2633,6 +2634,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Fel järnvägst
 STR_TRAIN_NO_POWER                                              :{RED}Ingen Kraft
 STR_TRAIN_START_NO_CATENARY                                     :Detta spår saknar kedjekurva, så tåget kan inte starta
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nya {STRING} är nu tillgänglig!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nya {STRING} är nu tillgänglig  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vägfordon i vägen
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Vägfordon
@@ -3135,3 +3140,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Överföringingskredit: {LTBLUE}{CURRENCY}

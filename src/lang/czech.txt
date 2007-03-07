@@ -444,13 +444,13 @@ STR_SORT_BY_VALUE                                               :hodnoty
 STR_SORT_BY_FACILITY                                            :druhu stanice
 STR_SORT_BY_WAITING                                             :množství čekajícího nákladu
 STR_SORT_BY_RATING_MAX                                          :hodnocení přepravy
-STR_ENGINE_SORT_ENGINE_ID                                       :ID lokomotivy (klasické pořadí)
-STR_ENGINE_SORT_COST                                            :Cena
-STR_ENGINE_SORT_POWER                                           :Výkon
-STR_ENGINE_SORT_INTRO_DATE                                      :Datum uvedení na trh
-STR_ENGINE_SORT_RUNNING_COST                                    :Provozní náklady
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Výkon/Provozní náklady
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Přepravní kapacita
+STR_ENGINE_SORT_ENGINE_ID                                       :ID vozu (klasické pořadí)
+STR_ENGINE_SORT_COST                                            :ceny
+STR_ENGINE_SORT_POWER                                           :výkonu
+STR_ENGINE_SORT_INTRO_DATE                                      :data uvedení na trh
+STR_ENGINE_SORT_RUNNING_COST                                    :provozních nákladů
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :výkon/provozních nákladů
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :přepravní kapacity
 STR_NO_WAITING_CARGO                                            :{BLACK}Nečeká žádná komodita jakéhokoli druhu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Označit všechny druhy stanic
 STR_SELECT_ALL_TYPES                                            :{BLACK}Označit všechny druhy komodit (včetne žádného čekajícího nákladu)
@@ -1697,7 +1697,7 @@ STR_202C_FROM_TO                                                :{ORANGE}{STRING
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z{NBSP}{STRING} do {STRING} nebude dále nabízena.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z{NBSP}{STATION} do {STATION} již nebude dále poskytována.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z{NBSP}{STRING} do {STRING} bude jeden rok dotována místní správou!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING.gen} z{NBSP}{STRING} do {STRING} bude jeden rok dotována místní správou!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet 150 % normální ceny.
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet dvojnásobek normální ceny!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet trojnásobek normální ceny!
@@ -2397,105 +2397,105 @@ STR_8070_TOY_VAN                                                :Krytý vůz na 
 STR_8071_BATTERY_TRUCK                                          :Vagon na baterie
 STR_8072_FIZZY_DRINK_TRUCK                                      :Vagon na limonády
 STR_8073_PLASTIC_TRUCK                                          :Vagon na plast
-STR_8074_MPS_REGAL_BUS                                          :MPS Regal Bus
-STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard Bus
-STR_8076_FOSTER_BUS                                             :Foster Bus
-STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII Superbus
-STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI Bus
-STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII Bus
-STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII Bus
-STR_807B_BALOGH_COAL_TRUCK                                      :Balogh vůz na uhlí
-STR_807C_UHL_COAL_TRUCK                                         :Uhl vůz na uhlí
-STR_807D_DW_COAL_TRUCK                                          :DW vůz na uhlí
-STR_807E_MPS_MAIL_TRUCK                                         :MPS poštovní vůz
-STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard poštovní vůz
-STR_8080_PERRY_MAIL_TRUCK                                       :Perry poštovní vůz
-STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover poštovní vůz
-STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught poštovní vůz
-STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow poštovní vůz
-STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe cisterna na ropu
-STR_8085_FOSTER_OIL_TANKER                                      :Foster cisterna na ropu
-STR_8086_PERRY_OIL_TANKER                                       :Perry cisterna na ropu
-STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott vůz na dobytek
-STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl vůz na dobytek
-STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster vůz na dobytek
-STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh vůz na zboží
-STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead vůz na zboží
-STR_808C_GOSS_GOODS_TRUCK                                       :Goss vůz na zboží
-STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford vůz na zrní
-STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas vůz na zrní
-STR_808F_GOSS_GRAIN_TRUCK                                       :Goss vůz na zrní
-STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe vůz na dřevo
-STR_8091_FOSTER_WOOD_TRUCK                                      :Foster vůz na dřevo
-STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland vůz na dřevo
-STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS vůz na železnou rudu
-STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl vůz na železnou rudu
-STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy vůz na železnou rudu
-STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh vůz na ocel
-STR_8097_UHL_STEEL_TRUCK                                        :Uhl vůz na ocel
-STR_8098_KELLING_STEEL_TRUCK                                    :Kelling vůz na ocel
-STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh obrněný vůz
-STR_809A_UHL_ARMORED_TRUCK                                      :Uhl obrněný vůz
-STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster obrněný vůz
-STR_809C_FOSTER_FOOD_VAN                                        :Foster vůz na jídlo
-STR_809D_PERRY_FOOD_VAN                                         :Perry vůz na jídlo
-STR_809E_CHIPPY_FOOD_VAN                                        :Chippy vůz na jídlo
-STR_809F_UHL_PAPER_TRUCK                                        :Uhl vůz na papír
-STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh vůz na papír
-STR_80A1_MPS_PAPER_TRUCK                                        :MPS vůz na papír
-STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS vůz na měděnou rudu
-STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl vůz na měděnou rudu
-STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss vůz na měděnou rudu
-STR_80A5_UHL_WATER_TANKER                                       :Uhl cisterna na vodu
-STR_80A6_BALOGH_WATER_TANKER                                    :Balogh cisterna na vodu
-STR_80A7_MPS_WATER_TANKER                                       :MPS cisterna na vodu
-STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh vůz na ovoce
-STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl vůz na ovoce
-STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling vůz na ovoce
-STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh vůz na kaučuk
-STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl vůz na kaučuk
-STR_80AD_RMT_RUBBER_TRUCK                                       :RMT vůz na kaučuk
-STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover vůz na cukr
-STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught vůz na cukr
-STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow vůz na cukr
-STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover cisterna na kolu
-STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught cisterna na kolu
-STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow cisterna na kolu
-STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover vůz na cukrovou vatu
-STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught vůz na cukrovou vatu
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow vůz na cukrovou vatu
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover vůz na karamel
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught vůz na karamel
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow vůz na karamel
-STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover vůz na hračky
-STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught vůz na hračky
-STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow vůz na hračky
-STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover vůz na bonbony
-STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught vůz na bonbony
-STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow vůz na bonbony
-STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover vůz na baterie
-STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught vůz na baterie
-STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow vůz na baterie
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover vůz na limonády
-STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught vůz na limonády
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow vůz na limonády
-STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover vůz na plast
-STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught vůz na plast
-STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow vůz na plast
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover vůz na bubliny
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught vůz na bubliny
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow vůz na bubliny
-STR_80CC_MPS_OIL_TANKER                                         :MPS ropný tanker
-STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. ropný tanker
-STR_80CE_MPS_PASSENGER_FERRY                                    :MPS trajekt pro cestující
-STR_80CF_FFP_PASSENGER_FERRY                                    :FFP trajekt pro cestující
-STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 vznášedlo
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug trajekt pro cestující
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake trajekt pro cestující
-STR_80D3_YATE_CARGO_SHIP                                        :Yate nákladní loď
-STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell nákladní loď
-STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover nákladní loď
-STR_80D6_POWERNAUT_CARGO_SHIP                                   :Powernaut nákladní loď
+STR_8074_MPS_REGAL_BUS                                          :Autobus MPS Regal
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Autobus Hereford Leopard
+STR_8076_FOSTER_BUS                                             :Autobus Foster
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Autobus Foster MkII Superbus
+STR_8078_PLODDYPHUT_MKI_BUS                                     :Autobus Ploddyphut MkI
+STR_8079_PLODDYPHUT_MKII_BUS                                    :Autobus Ploddyphut MkII
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :Autobus Ploddyphut MkIII
+STR_807B_BALOGH_COAL_TRUCK                                      :Vůz na uhlí Balogh
+STR_807C_UHL_COAL_TRUCK                                         :Vůz na uhlí Uhl
+STR_807D_DW_COAL_TRUCK                                          :Vůz na uhlí DW
+STR_807E_MPS_MAIL_TRUCK                                         :Poštovní vůz MPS
+STR_807F_REYNARD_MAIL_TRUCK                                     :Poštovní vůz Reynard
+STR_8080_PERRY_MAIL_TRUCK                                       :Poštovní vůz Perry
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :Poštovní vůz MightyMover
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Poštovní vůz Powernaught
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Poštovní vůz Wizzowow
+STR_8084_WITCOMBE_OIL_TANKER                                    :Cisterna na ropu Witcombe
+STR_8085_FOSTER_OIL_TANKER                                      :Cisterna na ropu Foster
+STR_8086_PERRY_OIL_TANKER                                       :Cisterna na ropu Perry
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Vůz na dobytek Talbott
+STR_8088_UHL_LIVESTOCK_VAN                                      :Vůz na dobytek Uhl
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Vůz na dobytek Foster
+STR_808A_BALOGH_GOODS_TRUCK                                     :Vůz na zboží Balogh
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Vůz na zboží Craighead
+STR_808C_GOSS_GOODS_TRUCK                                       :Vůz na zboží Goss
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Vůz na zrní Hereford
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Vůz na zrní Thomas
+STR_808F_GOSS_GRAIN_TRUCK                                       :Vůz na zrní Goss
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Vůz na dřevo Witcombe
+STR_8091_FOSTER_WOOD_TRUCK                                      :Vůz na dřevo Foster
+STR_8092_MORELAND_WOOD_TRUCK                                    :Vůz na dřevo Moreland
+STR_8093_MPS_IRON_ORE_TRUCK                                     :Vůz na železnou rudu MPS
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Vůz na železnou rudu Uhl
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Vůz na železnou rudu Chippy
+STR_8096_BALOGH_STEEL_TRUCK                                     :Vůz na ocel Balogh
+STR_8097_UHL_STEEL_TRUCK                                        :Vůz na ocel Uhl
+STR_8098_KELLING_STEEL_TRUCK                                    :Vůz na ocel Kelling
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Obrněný vůz Balogh
+STR_809A_UHL_ARMORED_TRUCK                                      :Obrněný vůz Uhl
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Obrněný vůz Foster
+STR_809C_FOSTER_FOOD_VAN                                        :Vůz na jídlo Foster
+STR_809D_PERRY_FOOD_VAN                                         :Vůz na jídlo Perry
+STR_809E_CHIPPY_FOOD_VAN                                        :Vůz na jídlo Chippy
+STR_809F_UHL_PAPER_TRUCK                                        :Vůz na papír Uhl
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Vůz na papír Balogh
+STR_80A1_MPS_PAPER_TRUCK                                        :Vůz na papír MPS
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :Vůz na měděnou rudu MPS
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Vůz na měděnou rudu Uhl
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Vůz na měděnou rudu Goss
+STR_80A5_UHL_WATER_TANKER                                       :Cisterna na vodu Uhl
+STR_80A6_BALOGH_WATER_TANKER                                    :Cisterna na vodu Balogh
+STR_80A7_MPS_WATER_TANKER                                       :Cisterna na vodu MPS
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Vůz na ovoce Balogh
+STR_80A9_UHL_FRUIT_TRUCK                                        :Vůz na ovoce Uhl
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Vůz na ovoce Kelling
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Vůz na kaučuk Balogh
+STR_80AC_UHL_RUBBER_TRUCK                                       :Vůz na kaučuk Uhl
+STR_80AD_RMT_RUBBER_TRUCK                                       :Vůz na kaučuk RMT
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :Vůz na cukr MightyMover
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Vůz na cukr Powernaught
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Vůz na cukr Wizzowow
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :Cisterna na kolu MightyMover
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Cisterna na kolu Powernaught
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Cisterna na kolu Wizzowow
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :Vůz na cukrovou vatu MightyMover
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Vůz na cukrovou vatu Powernaught
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Vůz na cukrovou vatu Wizzowow
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :Vůz na karamel MightyMover
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Vůz na karamel Powernaught
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Vůz na karamel Wizzowow
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :Vůz na hračky MightyMover
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :Vůz na hračky Powernaught
+STR_80BC_WIZZOWOW_TOY_VAN                                       :Vůz na hračky Wizzowow
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :Vůz na bonbony MightyMover
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Vůz na bonbony Powernaught
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Vůz na bonbony Wizzowow
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :Vůz na baterie MightyMover
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Vůz na baterie Powernaught
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Vůz na baterie Wizzowow
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :Vůz na limonády MightyMover
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Vůz na limonády Powernaught
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Vůz na limonády Wizzowow
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :Vůz na plast MightyMover
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Vůz na plast Powernaught
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Vůz na plast Wizzowow
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :Vůz na bubliny MightyMover
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Vůz na bubliny Powernaught
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Vůz na bubliny Wizzowow
+STR_80CC_MPS_OIL_TANKER                                         :Ropný tanker MPS
+STR_80CD_CS_INC_OIL_TANKER                                      :Ropný tanker CS-Inc.
+STR_80CE_MPS_PASSENGER_FERRY                                    :Trajekt pro cestující MPS
+STR_80CF_FFP_PASSENGER_FERRY                                    :Trajekt pro cestující FFP
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Vznášedlo Bakewell 300
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Trajekt pro cestující Chugger-Chug
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Trajekt pro cestující Shivershake
+STR_80D3_YATE_CARGO_SHIP                                        :Nákladní loď Yate
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Nákladní loď Bakewell
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Nákladní loď Mightymover
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Nákladní loď Powernaut
 STR_80D7_SAMPSON_U52                                            :Sampson U52
 STR_80D8_COLEMAN_COUNT                                          :Coleman Count
 STR_80D9_FFP_DART                                               :FFP Dart
@@ -2534,23 +2534,20 @@ STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
 STR_80FA_FLASHBANG_X1                                           :Flashbang X1
 STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
 STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
-STR_80FD_TRICARIO_HELICOPTER                                    :Vrtulník Tricairo
+STR_80FD_TRICARIO_HELICOPTER                                    :Vrtulník Tricario
 STR_80FE_GURU_X2_HELICOPTER                                     :Vrtulník Guru X2
 STR_80FF_POWERNAUT_HELICOPTER                                   :Vrtulník Powernaut
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Zpráva od výrobce dopravních prostředků
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Právě jsme vyvinuli nov{G ý ou é} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Právě jsme vyvinuli nov{G ou ý é} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=f}lokomotiva
 STR_8102_RAILROAD_LOCOMOTIVE.acc                                :{G=f}lokomotivu
-STR_8102_RAILROAD_LOCOMOTIVE.dat                                :{G=f}lokomotivu
 STR_8103_ROAD_VEHICLE                                           :{G=n}silniční vozidlo
 STR_8104_AIRCRAFT                                               :{G=n}letadlo
 STR_8105_SHIP                                                   :{G=f}loď
 STR_8106_MONORAIL_LOCOMOTIVE                                    :{G=f}lokomotiva pro monorail
 STR_8106_MONORAIL_LOCOMOTIVE.acc                                :{G=f}lokomotivu pro monorail
-STR_8106_MONORAIL_LOCOMOTIVE.dat                                :{G=f}lokomotivu pro monorail
 STR_8107_MAGLEV_LOCOMOTIVE                                      :{G=f}lokomotiva Maglev
 STR_8107_MAGLEV_LOCOMOTIVE.acc                                  :{G=f}lokomotivu Maglev
-STR_8107_MAGLEV_LOCOMOTIVE.dat                                  :{G=f}lokomotivu Maglev
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Železniční depo {TOWN}
@@ -2972,6 +2969,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} je nav
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parametr pro {STRING}: parametr {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musí být nahráván před {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musí být nahráván po {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF soubor, který se měl přeložit
 
 STR_NEWGRF_ADD                                                  :{BLACK}Přidat
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Přidat NewGRF soubor do seznamu

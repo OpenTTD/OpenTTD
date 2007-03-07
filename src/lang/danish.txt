@@ -280,6 +280,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...ejes af {STRING}
 STR_013C_CARGO                                                  :{BLACK}Last
@@ -2632,6 +2633,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Skinnetyperne p
 STR_TRAIN_NO_POWER                                              :{RED}Ingen strøm
 STR_TRAIN_START_NO_CATENARY                                     :Toget kan ikke køre, fordi sporet ikke har køreledninger
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Ny {STRING} er nu tilgængelig!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ny {STRING} er nu tilgængelig!  -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køretøj i vejen

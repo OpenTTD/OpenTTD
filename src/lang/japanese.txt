@@ -280,6 +280,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...所有者は {STRING}
 STR_013C_CARGO                                                  :{BLACK}貨物
@@ -2633,6 +2634,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :互換性がな
 STR_TRAIN_NO_POWER                                              :{RED}電源はありません
 STR_TRAIN_START_NO_CATENARY                                     :線路は懸垂線がないため、この列車が動けません
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING}が新登場！
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING}が新登場！ー{STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}道路車両があります
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - 道路車両{COMMA}両
@@ -2893,6 +2898,14 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID�
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum：{SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}実行中のゲームに変更を適用して、クラッシュのリスクがあります。{}続けてもよろしいですか？
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}エラー：{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}エラー：{SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING}はOpenTTDのTTDPatchバージョンに対応していません。
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING}はTTDの{STRING}バージョンのみに対応しています。
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING}を使用時に、{STRING}を入にしなければなりません
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING}のパラメータが不正：パラメータ　{STRING}（{NUM}）
 
 STR_NEWGRF_ADD                                                  :{BLACK}追加
 STR_NEWGRF_ADD_TIP                                              :{BLACK}NewGRFファイルをリストに追加します
@@ -3120,5 +3133,8 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長さ�
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域：{NUM} x {NUM}{}高さの違い：{NUM} m
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{2:NUM}-{1:STRING}-{0:STRING}
+STR_DATE_SHORT                                                  :{1:NUM}年{0:STRING}
 
 ########
+

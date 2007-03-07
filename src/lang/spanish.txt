@@ -281,6 +281,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...propiedad de {STRING}
 STR_013C_CARGO                                                  :{BLACK}Carga
@@ -2634,6 +2635,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo de vía in
 STR_TRAIN_NO_POWER                                              :{RED}Sin potencia
 STR_TRAIN_START_NO_CATENARY                                     :Esta vía carece la catenaria, así que el tren no puede comenzar
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nuevo{STRING} ahora disponible!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nuevo {STRING} ahora disponible!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vehículo de carretera en camino
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Vehículos de Carretera
@@ -3136,3 +3141,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transferir Créditos: {LTBLUE}{CURRENCY}

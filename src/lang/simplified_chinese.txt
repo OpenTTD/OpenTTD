@@ -280,6 +280,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}归 {STRING} 所有
 STR_013C_CARGO                                                  :{BLACK}货物
@@ -2633,6 +2634,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :铁路类型不
 STR_TRAIN_NO_POWER                                              :{RED}没有电力
 STR_TRAIN_START_NO_CATENARY                                     :这不是电气化铁路，电力机车不能启动
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}新 {STRING} 上市了！
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}新 {STRING} 上市了！  -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}指定的位置有汽车
@@ -3137,3 +3141,4 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}转运评分： {LTBLUE}{CURRENCY}

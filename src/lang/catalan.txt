@@ -280,6 +280,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...propietat de {STRING}
 STR_013C_CARGO                                                  :{BLACK}Càrrega
@@ -2907,6 +2908,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} està 
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paràmetre invàlid per {STRING}: paràmetre {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} ha de ser carregat abans de {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} ha de ser carregat després de {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :l'arxiu GRF dissenyat està pendent de traduir
 
 STR_NEWGRF_ADD                                                  :{BLACK}Afegeix
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Afegeix un arxiu NewGRF a la llista

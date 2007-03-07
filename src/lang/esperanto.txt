@@ -281,6 +281,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...posedata de {STRING}
 STR_013C_CARGO                                                  :{BLACK}Ŝarĝo
@@ -2634,6 +2635,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Neinterŝanĝeb
 STR_TRAIN_NO_POWER                                              :{RED}Senforte
 STR_TRAIN_START_NO_CATENARY                                     :Mankas ĉi-trake supera elektro, do la trajno ne povas starti
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nova {STRING} nun haveblas!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nova {STRING} nun haveblas!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vojveturilo okupas la lokon
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Vojveturilo{P "" j}
@@ -3136,3 +3141,5 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transigaj Kreditoj: {LTBLUE}{CURRENCY}
