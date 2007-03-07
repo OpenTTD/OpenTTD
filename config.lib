@@ -749,10 +749,12 @@ make_cflags_and_ldflags() {
 	if [ -n "$sdl_config" ]; then
 		CFLAGS="$CFLAGS -DWITH_SDL"
 		CFLAGS="$CFLAGS `$sdl_config --cflags`"
-		if [ "$enable_static" != "0" ]; then
-			LIBS="$LIBS `$sdl_config --static-libs`"
-		else
-			LIBS="$LIBS `$sdl_config --libs`"
+		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "WINCE" ]; then
+			if [ "$enable_static" != "0" ]; then
+				LIBS="$LIBS `$sdl_config --static-libs`"
+			else
+				LIBS="$LIBS `$sdl_config --libs`"
+			fi
 		fi
 	fi
 
@@ -1565,6 +1567,12 @@ detect_fontconfig() {
 	if [ "$with_fontconfig" = "0" ]; then
 		log 1 "checking libfontconfig... disabled"
 
+		fontconfig_config=""
+		return 0
+	fi
+
+	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
+		log 1 "checking libfontconfig... WIN32, skipping"
 		fontconfig_config=""
 		return 0
 	fi
