@@ -22,7 +22,7 @@
 # define PRINTF_PID_T "%d"
 #endif
 
-void DedicatedFork(void)
+void DedicatedFork()
 {
 	/* Fork the program */
 	pid_t pid = fork();
@@ -63,6 +63,6 @@ void DedicatedFork(void)
 
 #else
 
-void DedicatedFork(void) {}
+void DedicatedFork() {}
 
 #endif /* ENABLE_NETWORK */

@@ -9,6 +9,6 @@ typedef void* (*OTTDThreadFunc)(void*);
 
 OTTDThread* OTTDCreateThread(OTTDThreadFunc, void*);
 void*       OTTDJoinThread(OTTDThread*);
-void        OTTDExitThread(void);
+void        OTTDExitThread();
 
 #endif /* THREAD_H */

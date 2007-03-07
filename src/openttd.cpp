@@ -67,11 +67,11 @@
 
 #include <stdarg.h>
 
-void CallLandscapeTick(void);
-void IncreaseDate(void);
-void DoPaletteAnimations(void);
-void MusicLoop(void);
-void ResetMusic(void);
+void CallLandscapeTick();
+void IncreaseDate();
+void DoPaletteAnimations();
+void MusicLoop();
+void ResetMusic();
 
 extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern Player* DoStartupNewPlayer(bool is_ai);
@@ -137,7 +137,7 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 }
 
 extern const char _openttd_revision[];
-static void showhelp(void)
+static void showhelp()
 {
 	char buf[4096], *p;
 
@@ -265,7 +265,7 @@ static void ParseResolution(int res[2], const char *s)
 	res[1] = clamp(strtoul(t + 1, NULL, 0), 64, MAX_SCREEN_HEIGHT);
 }
 
-static void InitializeDynamicVariables(void)
+static void InitializeDynamicVariables()
 {
 	/* Dynamic stuff needs to be initialized somewhere... */
 	_town_sort     = NULL;
@@ -273,7 +273,7 @@ static void InitializeDynamicVariables(void)
 }
 
 
-static void UnInitializeGame(void)
+static void UnInitializeGame()
 {
 	UnInitWindowSystem();
 
@@ -294,7 +294,7 @@ static void UnInitializeGame(void)
 	free(_config_file);
 }
 
-static void LoadIntroGame(void)
+static void LoadIntroGame()
 {
 	char filename[256];
 
@@ -331,7 +331,7 @@ static void LoadIntroGame(void)
 }
 
 #if defined(UNIX) && !defined(__MORPHOS__)
-extern void DedicatedFork(void);
+extern void DedicatedFork();
 #endif
 
 int ttd_main(int argc, char *argv[])
@@ -593,7 +593,7 @@ int ttd_main(int argc, char *argv[])
 	return 0;
 }
 
-void HandleExitGameRequest(void)
+void HandleExitGameRequest()
 {
 	if (_game_mode == GM_MENU) { // do not ask to quit on the main screen
 		_exit_game = true;
@@ -610,8 +610,8 @@ void HandleExitGameRequest(void)
  * at any given time */
 static ThreadMsg _message = MSG_OTTD_NO_MESSAGE;
 
-static inline void OTTD_ReleaseMutex(void) {_message = MSG_OTTD_NO_MESSAGE;}
-static inline ThreadMsg OTTD_PollThreadEvent(void) {return _message;}
+static inline void OTTD_ReleaseMutex() {_message = MSG_OTTD_NO_MESSAGE;}
+static inline ThreadMsg OTTD_PollThreadEvent() {return _message;}
 
 /** Called by running thread to execute some action in the main game.
  * It will stall as long as the mutex is not freed (handled) by the game */
@@ -649,7 +649,7 @@ static void ShowScreenshotResult(bool b)
 
 }
 
-static void MakeNewGameDone(void)
+static void MakeNewGameDone()
 {
 	/* In a dedicated server, the server does not play */
 	if (_network_dedicated) {
@@ -679,14 +679,14 @@ static void MakeNewGame(bool from_heightmap)
 	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _patches.map_x, 1 << _patches.map_y);
 }
 
-static void MakeNewEditorWorldDone(void)
+static void MakeNewEditorWorldDone()
 {
 	SetLocalPlayer(OWNER_NONE);
 
 	MarkWholeScreenDirty();
 }
 
-static void MakeNewEditorWorld(void)
+static void MakeNewEditorWorld()
 {
 	_game_mode = GM_EDITOR;
 
@@ -696,16 +696,16 @@ static void MakeNewEditorWorld(void)
 	GenerateWorld(GW_EMPTY, 1 << _patches.map_x, 1 << _patches.map_y);
 }
 
-void StartupPlayers(void);
-void StartupDisasters(void);
-extern void StartupEconomy(void);
+void StartupPlayers();
+void StartupDisasters();
+extern void StartupEconomy();
 
 /**
  * Start Scenario starts a new game based on a scenario.
  * Eg 'New Game' --> select a preset scenario
  * This starts a scenario based on your current difficulty settings
  */
-static void StartScenario(void)
+static void StartScenario()
 {
 	_game_mode = GM_NORMAL;
 
@@ -900,7 +900,7 @@ void SwitchMode(int new_mode)
 // The state must not be changed from anywhere
 // but here.
 // That check is enforced in DoCommand.
-void StateGameLoop(void)
+void StateGameLoop()
 {
 	// dont execute the state loop during pause
 	if (_pause_game) return;
@@ -932,7 +932,7 @@ void StateGameLoop(void)
 	}
 }
 
-static void DoAutosave(void)
+static void DoAutosave()
 {
 	char buf[200];
 
@@ -998,7 +998,7 @@ static const int8 scrollamt[16][2] = {
 	{ 0,  0}, // 15 : impossible
 };
 
-static void HandleKeyScrolling(void)
+static void HandleKeyScrolling()
 {
 	if (_dirkeys && !_no_scroll) {
 		int factor = _shift_pressed ? 50 : 10;
@@ -1006,7 +1006,7 @@ static void HandleKeyScrolling(void)
 	}
 }
 
-void GameLoop(void)
+void GameLoop()
 {
 	ThreadMsg message;
 
@@ -1073,7 +1073,7 @@ void GameLoop(void)
 	MusicLoop();
 }
 
-void BeforeSaveGame(void)
+void BeforeSaveGame()
 {
 	const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 
@@ -1084,7 +1084,7 @@ void BeforeSaveGame(void)
 	}
 }
 
-static void ConvertTownOwner(void)
+static void ConvertTownOwner()
 {
 	TileIndex tile;
 
@@ -1106,7 +1106,7 @@ static void ConvertTownOwner(void)
 }
 
 // before savegame version 4, the name of the company determined if it existed
-static void CheckIsPlayerActive(void)
+static void CheckIsPlayerActive()
 {
 	Player *p;
 
@@ -1116,7 +1116,7 @@ static void CheckIsPlayerActive(void)
 }
 
 // since savegame version 4.1, exclusive transport rights are stored at towns
-static void UpdateExclusiveRights(void)
+static void UpdateExclusiveRights()
 {
 	Town *t;
 
@@ -1142,7 +1142,7 @@ static const byte convert_currency[] = {
 	18,  2, 20, };
 
 // since savegame version 4.2 the currencies are arranged differently
-static void UpdateCurrencies(void)
+static void UpdateCurrencies()
 {
 	_opt.currency = convert_currency[_opt.currency];
 }
@@ -1150,7 +1150,7 @@ static void UpdateCurrencies(void)
 /* Up to revision 1413 the invisible tiles at the southern border have not been
  * MP_VOID, even though they should have. This is fixed by this function
  */
-static void UpdateVoidTiles(void)
+static void UpdateVoidTiles()
 {
 	uint i;
 
@@ -1159,14 +1159,14 @@ static void UpdateVoidTiles(void)
 }
 
 // since savegame version 6.0 each sign has an "owner", signs without owner (from old games are set to 255)
-static void UpdateSignOwner(void)
+static void UpdateSignOwner()
 {
 	Sign *si;
 
 	FOR_ALL_SIGNS(si) si->owner = OWNER_NONE;
 }
 
-extern void UpdateOldAircraft( void );
+extern void UpdateOldAircraft();
 
 
 static inline RailType UpdateRailType(RailType rt, RailType min)
@@ -1174,7 +1174,7 @@ static inline RailType UpdateRailType(RailType rt, RailType min)
 	return rt >= min ? (RailType)(rt + 1): rt;
 }
 
-bool AfterLoadGame(void)
+bool AfterLoadGame()
 {
 	TileIndex map_size = MapSize();
 	Window *w;
@@ -1844,7 +1844,7 @@ bool AfterLoadGame(void)
  * hash AfterLoadVehicles() will loop infinitely. We need AfterLoadVehicles()
  * to recalculate vehicle data as some NewGRF vehicle sets could have been
  * removed or added and changed statistics */
-void ReloadNewGRFData(void)
+void ReloadNewGRFData()
 {
 	/* reload grf data */
 	GfxLoadSprites();

@@ -9,7 +9,7 @@
 extern "C" {
 #endif //__cplusplus
 
-	void DisplaySplashImage(void);
+	void DisplaySplashImage();
 
 #ifdef __cplusplus
 }

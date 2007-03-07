@@ -985,7 +985,7 @@ static void ProduceIndustryGoods(Industry *i)
 	}
 }
 
-void OnTick_Industry(void)
+void OnTick_Industry()
 {
 	Industry *i;
 
@@ -1355,7 +1355,7 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 	return true;
 }
 
-static Industry *AllocateIndustry(void)
+static Industry *AllocateIndustry()
 {
 	Industry *i;
 
@@ -1582,7 +1582,7 @@ static void PlaceInitialIndustry(IndustryType type, int amount)
 	}
 }
 
-void GenerateIndustries(void)
+void GenerateIndustries()
 {
 	const byte *b;
 	uint i = 0;
@@ -1824,7 +1824,7 @@ static void ChangeIndustryProduction(Industry *i)
 	}
 }
 
-void IndustryMonthlyLoop(void)
+void IndustryMonthlyLoop()
 {
 	Industry *i;
 	PlayerID old_player = _current_player;
@@ -1850,7 +1850,7 @@ void IndustryMonthlyLoop(void)
 }
 
 
-void InitializeIndustries(void)
+void InitializeIndustries()
 {
 	CleanPool(&_Industry_pool);
 	AddBlockToPool(&_Industry_pool);
@@ -1908,7 +1908,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_END()
 };
 
-static void Save_INDY(void)
+static void Save_INDY()
 {
 	Industry *ind;
 
@@ -1919,7 +1919,7 @@ static void Save_INDY(void)
 	}
 }
 
-static void Load_INDY(void)
+static void Load_INDY()
 {
 	int index;
 

@@ -84,7 +84,7 @@ extern NetworkTCPSocketHandler _clients[MAX_CLIENTS];
 
 // Macros to make life a bit more easier
 #define DEF_CLIENT_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(Packet *p)
-#define DEF_CLIENT_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command(void)
+#define DEF_CLIENT_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command()
 #define DEF_CLIENT_SEND_COMMAND_PARAM(type) void NetworkPacketSend_ ## type ## _command
 #define DEF_SERVER_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(NetworkTCPSocketHandler *cs, Packet *p)
 #define DEF_SERVER_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command(NetworkTCPSocketHandler *cs)
@@ -104,7 +104,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs);
 void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send, const char *name, const char *str, ...);
 void NetworkGetClientName(char *clientname, size_t size, const NetworkTCPSocketHandler *cs);
 uint NetworkCalculateLag(const NetworkTCPSocketHandler *cs);
-byte NetworkGetCurrentLanguageIndex(void);
+byte NetworkGetCurrentLanguageIndex();
 NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index);
 NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip);
 NetworkTCPSocketHandler *NetworkFindClientStateFromIndex(uint16 client_index);

@@ -107,7 +107,7 @@ static const char* DMusicMidiStart(const char* const* parm)
 }
 
 
-static void DMusicMidiStop(void)
+static void DMusicMidiStop()
 {
 	seeking = false;
 
@@ -186,7 +186,7 @@ static void DMusicMidiPlaySong(const char* filename)
 }
 
 
-static void DMusicMidiStopSong(void)
+static void DMusicMidiStopSong()
 {
 	if (FAILED(performance->Stop(segment, NULL, 0, 0))) {
 		DEBUG(driver, 0, "DirectMusic: StopSegment failed");
@@ -195,7 +195,7 @@ static void DMusicMidiStopSong(void)
 }
 
 
-static bool DMusicMidiIsSongPlaying(void)
+static bool DMusicMidiIsSongPlaying()
 {
 	/* Not the nicest code, but there is a short delay before playing actually
 	 * starts. OpenTTD makes no provision for this. */

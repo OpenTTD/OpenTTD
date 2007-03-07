@@ -49,7 +49,7 @@ static void SpriteGroupPoolCleanBlock(uint start_item, uint end_item)
 
 
 /* Allocate a new SpriteGroup */
-SpriteGroup *AllocateSpriteGroup(void)
+SpriteGroup *AllocateSpriteGroup()
 {
 	/* This is totally different to the other pool allocators, as we never remove an item from the pool. */
 	if (_spritegroup_count == GetSpriteGroupPoolSize()) {
@@ -60,7 +60,7 @@ SpriteGroup *AllocateSpriteGroup(void)
 }
 
 
-void InitializeSpriteGroupPool(void)
+void InitializeSpriteGroupPool()
 {
 	CleanPool(&_SpriteGroup_pool);
 

@@ -379,7 +379,7 @@ int32 CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 #define TILELOOP_ASSERTMASK ((TILELOOP_SIZE-1) + ((TILELOOP_SIZE-1) << MapLogX()))
 #define TILELOOP_CHKMASK (((1 << (MapLogX() - TILELOOP_BITS))-1) << TILELOOP_BITS)
 
-void RunTileLoop(void)
+void RunTileLoop()
 {
 	TileIndex tile;
 	uint count;
@@ -405,7 +405,7 @@ void RunTileLoop(void)
 	_cur_tileloop_tile = tile;
 }
 
-void InitializeLandscape(void)
+void InitializeLandscape()
 {
 	uint maxx = MapMaxX();
 	uint maxy = MapMaxY();
@@ -425,7 +425,7 @@ void InitializeLandscape(void)
 	for (x = 0; x < sizex; x++) MakeVoid(sizex * y + x);
 }
 
-void ConvertGroundTilesIntoWaterTiles(void)
+void ConvertGroundTilesIntoWaterTiles()
 {
 	TileIndex tile;
 	uint z;
@@ -587,7 +587,7 @@ static void GenerateTerrain(int type, int flag)
 
 #include "table/genland.h"
 
-static void CreateDesertOrRainForest(void)
+static void CreateDesertOrRainForest()
 {
 	TileIndex tile;
 	TileIndex update_freq = MapSize() / 4;
@@ -697,15 +697,15 @@ void GenerateLandscape(byte mode)
 	if (_opt.landscape == LT_DESERT) CreateDesertOrRainForest();
 }
 
-void OnTick_Town(void);
-void OnTick_Trees(void);
-void OnTick_Station(void);
-void OnTick_Industry(void);
+void OnTick_Town();
+void OnTick_Trees();
+void OnTick_Station();
+void OnTick_Industry();
 
-void OnTick_Players(void);
-void OnTick_Train(void);
+void OnTick_Players();
+void OnTick_Train();
 
-void CallLandscapeTick(void)
+void CallLandscapeTick()
 {
 	OnTick_Town();
 	OnTick_Trees();

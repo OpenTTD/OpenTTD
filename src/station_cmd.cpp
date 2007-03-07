@@ -330,7 +330,7 @@ static void UpdateStationVirtCoord(Station *st)
 }
 
 // Update the virtual coords needed to draw the station sign for all stations.
-void UpdateAllStationVirtCoord(void)
+void UpdateAllStationVirtCoord()
 {
 	Station* st;
 
@@ -2299,7 +2299,7 @@ static void StationHandleSmallTick(Station *st)
 	if (b == 0) UpdateStationRating(st);
 }
 
-void OnTick_Station(void)
+void OnTick_Station()
 {
 	if (_game_mode == GM_EDITOR) return;
 
@@ -2312,7 +2312,7 @@ void OnTick_Station(void)
 	FOR_ALL_STATIONS(st) StationHandleSmallTick(st);
 }
 
-void StationMonthlyLoop(void)
+void StationMonthlyLoop()
 {
 }
 
@@ -2643,7 +2643,7 @@ static int32 ClearTile_Station(TileIndex tile, byte flags)
 	return CMD_ERROR;
 }
 
-void InitializeStations(void)
+void InitializeStations()
 {
 	/* Clean the station pool and create 1 block in it */
 	CleanPool(&_Station_pool);
@@ -2658,7 +2658,7 @@ void InitializeStations(void)
 }
 
 
-void AfterLoadStations(void)
+void AfterLoadStations()
 {
 	/* Update the speclists of all stations to point to the currently loaded custom stations. */
 	Station *st;
@@ -2814,7 +2814,7 @@ static void SaveLoad_STNS(Station *st)
 	}
 }
 
-static void Save_STNS(void)
+static void Save_STNS()
 {
 	Station *st;
 	// Write the stations
@@ -2824,7 +2824,7 @@ static void Save_STNS(void)
 	}
 }
 
-static void Load_STNS(void)
+static void Load_STNS()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
@@ -2847,7 +2847,7 @@ static void Load_STNS(void)
 	if (_station_tick_ctr > GetMaxStationIndex()) _station_tick_ctr = 0;
 }
 
-static void Save_ROADSTOP(void)
+static void Save_ROADSTOP()
 {
 	RoadStop *rs;
 
@@ -2857,7 +2857,7 @@ static void Save_ROADSTOP(void)
 	}
 }
 
-static void Load_ROADSTOP(void)
+static void Load_ROADSTOP()
 {
 	int index;
 

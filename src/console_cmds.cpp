@@ -32,7 +32,7 @@ static bool _script_running;
 
 // ** console command / variable defines ** //
 #define DEF_CONSOLE_CMD(function) static bool function(byte argc, char *argv[])
-#define DEF_CONSOLE_HOOK(function) static bool function(void)
+#define DEF_CONSOLE_HOOK(function) static bool function()
 
 
 /* **************************** */
@@ -41,7 +41,7 @@ static bool _script_running;
 
 #ifdef ENABLE_NETWORK
 
-static inline bool NetworkAvailable(void)
+static inline bool NetworkAvailable()
 {
 	if (!_network_available) {
 		IConsoleError("You cannot use this command because there is no network available.");
@@ -175,7 +175,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 }
 
 extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
-extern void BuildFileList(void);
+extern void BuildFileList();
 extern void SetFiosType(const byte fiostype);
 
 /* Save the map to a file */
@@ -853,7 +853,7 @@ DEF_CONSOLE_CMD(ConReturn)
 /* **************************** */
 /*   default console commands   */
 /* **************************** */
-extern bool CloseConsoleLogIfActive(void);
+extern bool CloseConsoleLogIfActive();
 
 DEF_CONSOLE_CMD(ConScript)
 {
@@ -1442,7 +1442,7 @@ DEF_CONSOLE_CMD(ConListDumpVariables)
 /*  debug commands and variables */
 /* ****************************************** */
 
-static void IConsoleDebugLibRegister(void)
+static void IConsoleDebugLibRegister()
 {
 	/* debugging variables and functions */
 	extern bool _stdlib_con_developer; // XXX extern in .cpp
@@ -1459,7 +1459,7 @@ static void IConsoleDebugLibRegister(void)
 /*  console command and variable registration */
 /* ****************************************** */
 
-void IConsoleStdLibRegister(void)
+void IConsoleStdLibRegister()
 {
 	/* stdlib */
 	extern byte _stdlib_developer; // XXX extern in .cpp

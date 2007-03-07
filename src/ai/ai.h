@@ -40,9 +40,9 @@ VARDEF AIPlayer _ai_player[MAX_PLAYERS];
 // ai.c
 void AI_StartNewAI(PlayerID player);
 void AI_PlayerDied(PlayerID player);
-void AI_RunGameLoop(void);
-void AI_Initialize(void);
-void AI_Uninitialize(void);
+void AI_RunGameLoop();
+void AI_Initialize();
+void AI_Uninitialize();
 int32 AI_DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
 int32 AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc, CommandCallback* callback);
 
@@ -50,7 +50,7 @@ int32 AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint pr
  * This function checks some boundries to see if we should launch a new AI.
  * @return True if we can start a new AI.
  */
-static inline bool AI_AllowNewAI(void)
+static inline bool AI_AllowNewAI()
 {
 	/* If disabled, no AI */
 	if (!_ai.enabled)
@@ -97,7 +97,7 @@ static inline uint AI_RandomRange(uint max)
 /**
  * The random-function that should be used by ALL AIs.
  */
-static inline uint32 AI_Random(void)
+static inline uint32 AI_Random()
 {
 /* We pick RandomRange if we are in SP (so when saved, we do the same over and over)
 	 *   but we pick InteractiveRandomRange if we are a network_server or network-client.

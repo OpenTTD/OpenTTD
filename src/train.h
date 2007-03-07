@@ -215,8 +215,8 @@ static inline Vehicle *GetNextVehicle(const Vehicle *v)
 	return v->next;
 }
 
-void ConvertOldMultiheadToNew(void);
-void ConnectMultiheadedTrains(void);
+void ConvertOldMultiheadToNew();
+void ConnectMultiheadedTrains();
 uint CountArticulatedParts(EngineID engine_type);
 
 int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped);

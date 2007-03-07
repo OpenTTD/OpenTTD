@@ -533,17 +533,17 @@ static void _ShowGenerateLandscape(glwp_modes mode)
 	if (w != NULL) InvalidateWindow(WC_GENERATE_LANDSCAPE, mode);
 }
 
-void ShowGenerateLandscape(void)
+void ShowGenerateLandscape()
 {
 	_ShowGenerateLandscape(GLWP_GENERATE);
 }
 
-void ShowHeightmapLoad(void)
+void ShowHeightmapLoad()
 {
 	_ShowGenerateLandscape(GLWP_HEIGHTMAP);
 }
 
-void StartScenarioEditor(void)
+void StartScenarioEditor()
 {
 	StartGeneratingLandscape(GLWP_SCENARIO);
 }
@@ -726,7 +726,7 @@ static const WindowDesc _create_scenario_desc = {
 	CreateScenarioWndProc,
 };
 
-void ShowCreateScenario(void)
+void ShowCreateScenario()
 {
 	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
 	AllocateWindowDescFront(&_create_scenario_desc, GLWP_SCENARIO);
@@ -809,7 +809,7 @@ static const WindowDesc _show_terrain_progress_desc = {
 /**
  * Initializes the progress counters to the starting point.
  */
-void PrepareGenerateWorldProgress(void)
+void PrepareGenerateWorldProgress()
 {
 	_tp.cls   = STR_WORLD_GENERATION;
 	_tp.current = 0;
@@ -821,7 +821,7 @@ void PrepareGenerateWorldProgress(void)
 /**
  * Show the window where a user can follow the process of the map generation.
  */
-void ShowGenerateWorldProgress(void)
+void ShowGenerateWorldProgress()
 {
 	AllocateWindowDescFront(&_show_terrain_progress_desc, 0);
 }

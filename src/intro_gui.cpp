@@ -99,7 +99,7 @@ static const WindowDesc _select_game_desc = {
 	SelectGameWndProc
 };
 
-void ShowSelectGameWindow(void)
+void ShowSelectGameWindow()
 {
 	AllocateWindowDesc(&_select_game_desc);
 }
@@ -109,7 +109,7 @@ static void AskExitGameCallback(Window *w, bool confirmed)
 	if (confirmed) _exit_game = true;
 }
 
-void AskExitGame(void)
+void AskExitGame()
 {
 #if defined(_WIN32)
 		SetDParam(0, STR_0133_WINDOWS);
@@ -142,7 +142,7 @@ static void AskExitToGameMenuCallback(Window *w, bool confirmed)
 	if (confirmed) _switch_mode = SM_MENU;
 }
 
-void AskExitToGameMenu(void)
+void AskExitToGameMenu()
 {
 	ShowQuery(
 		STR_0161_QUIT_GAME,

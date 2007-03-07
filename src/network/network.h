@@ -153,7 +153,7 @@ VARDEF uint8 _network_min_players;           // Minimum number of players for ga
 
 void NetworkTCPQueryServer(const char* host, unsigned short port);
 
-byte NetworkSpectatorCount(void);
+byte NetworkSpectatorCount();
 
 VARDEF char *_network_host_list[10];
 VARDEF char *_network_ban_list[25];
@@ -161,22 +161,22 @@ VARDEF char *_network_ban_list[25];
 void ParseConnectionString(const char **player, const char **port, char *connection_string);
 void NetworkUpdateClientInfo(uint16 client_index);
 void NetworkAddServer(const char *b);
-void NetworkRebuildHostList(void);
+void NetworkRebuildHostList();
 bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
-void NetworkPopulateCompanyInfo(void);
+void NetworkPopulateCompanyInfo();
 void UpdateNetworkGameWindow(bool unselect);
-void CheckMinPlayers(void);
+void CheckMinPlayers();
 void NetworkStartDebugLog(const char *hostname, uint16 port);
 
-void NetworkStartUp(void);
+void NetworkStartUp();
 void NetworkUDPCloseAll();
-void NetworkShutDown(void);
-void NetworkGameLoop(void);
-void NetworkUDPGameLoop(void);
-bool NetworkServerStart(void);
+void NetworkShutDown();
+void NetworkGameLoop();
+void NetworkUDPGameLoop();
+bool NetworkServerStart();
 bool NetworkClientConnectGame(const char *host, uint16 port);
-void NetworkReboot(void);
-void NetworkDisconnect(void);
+void NetworkReboot();
+void NetworkDisconnect();
 
 bool IsNetworkCompatibleVersion(const char *version);
 
@@ -188,8 +188,8 @@ VARDEF bool _network_advertise;  ///< is the server advertising to the master se
 #else /* ENABLE_NETWORK */
 /* Network function stubs when networking is disabled */
 
-static inline void NetworkStartUp(void) {}
-static inline void NetworkShutDown(void) {}
+static inline void NetworkStartUp() {}
+static inline void NetworkShutDown() {}
 
 #define _networking 0
 #define _network_server 0

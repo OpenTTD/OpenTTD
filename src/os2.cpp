@@ -33,7 +33,7 @@ bool FiosIsRoot(const char *file)
 	return file[3] == '\0';
 }
 
-void FiosGetDrives(void)
+void FiosGetDrives()
 {
 	unsigned disk, disk2, save, total;
 
@@ -178,7 +178,7 @@ int CDECL main(int argc, char* argv[])
 	return ttd_main(argc, argv);
 }
 
-void DeterminePaths(void)
+void DeterminePaths()
 {
 	char *s;
 

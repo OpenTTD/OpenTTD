@@ -217,7 +217,7 @@ void VehiclePositionChanged(Vehicle *v)
 }
 
 // Called after load to update coordinates
-void AfterLoadVehicles(void)
+void AfterLoadVehicles()
 {
 	Vehicle *v;
 
@@ -284,12 +284,12 @@ static Vehicle *InitializeVehicle(Vehicle *v)
  * Get a value for a vehicle's random_bits.
  * @return A random value from 0 to 255.
  */
-byte VehicleRandomBits(void)
+byte VehicleRandomBits()
 {
 	return GB(Random(), 0, 8);
 }
 
-Vehicle *ForceAllocateSpecialVehicle(void)
+Vehicle *ForceAllocateSpecialVehicle()
 {
 	/* This stays a strange story.. there should always be room for special
 	 * vehicles (special effects all over the map), but with 65k of vehicles
@@ -344,7 +344,7 @@ static Vehicle *AllocateSingleVehicle(VehicleID *skip_vehicles)
 }
 
 
-Vehicle *AllocateVehicle(void)
+Vehicle *AllocateVehicle()
 {
 	VehicleID counter = 0;
 	return AllocateSingleVehicle(&counter);
@@ -446,12 +446,12 @@ static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 	}
 }
 
-void ResetVehiclePosHash(void)
+void ResetVehiclePosHash()
 {
 	memset(_vehicle_position_hash, 0, sizeof(_vehicle_position_hash));
 }
 
-void InitializeVehicles(void)
+void InitializeVehicles()
 {
 	uint i;
 
@@ -647,7 +647,7 @@ static VehicleTickProc* _vehicle_tick_procs[] = {
 	DisasterVehicle_Tick,
 };
 
-void CallVehicleTicks(void)
+void CallVehicleTicks()
 {
 	Vehicle *v;
 
@@ -3223,7 +3223,7 @@ static const void *_veh_descs[] = {
 };
 
 // Will be called when the vehicles need to be saved.
-static void Save_VEHS(void)
+static void Save_VEHS()
 {
 	Vehicle *v;
 	// Write the vehicles
@@ -3234,7 +3234,7 @@ static void Save_VEHS(void)
 }
 
 // Will be called when vehicles need to be loaded.
-static void Load_VEHS(void)
+static void Load_VEHS()
 {
 	int index;
 	Vehicle *v;

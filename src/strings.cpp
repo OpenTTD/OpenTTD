@@ -1180,7 +1180,7 @@ static int GetLanguageList(char **languages, int max)
 }
 
 // make a list of the available language packs. put the data in _dynlang struct.
-void InitializeLanguagePacks(void)
+void InitializeLanguagePacks()
 {
 	DynamicLanguages *dl = &_dynlang;
 	int i;

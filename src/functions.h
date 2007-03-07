@@ -8,7 +8,7 @@
 #include "gfx.h"
 
 void DoClearSquare(TileIndex tile);
-void RunTileLoop(void);
+void RunTileLoop();
 
 uint GetPartialZ(int x, int y, Slope corners);
 uint GetSlopeZ(int x, int y);
@@ -80,11 +80,11 @@ void NORETURN CDECL error(const char *str, ...);
 
 // Mersenne twister functions
 void SeedMT(uint32 seed);
-uint32 RandomMT(void);
+uint32 RandomMT();
 
 
 #ifdef MERSENNE_TWISTER
-	static inline uint32 Random(void) { return RandomMT(); }
+	static inline uint32 Random() { return RandomMT(); }
 	uint RandomRange(uint max);
 #else
 
@@ -94,33 +94,33 @@ uint32 RandomMT(void);
 	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
 	uint DoRandomRange(uint max, int line, const char *file);
 #else
-	uint32 Random(void);
+	uint32 Random();
 	uint RandomRange(uint max);
 #endif
 #endif // MERSENNE_TWISTER
 
 static inline TileIndex RandomTileSeed(uint32 r) { return TILE_MASK(r); }
-static inline TileIndex RandomTile(void) { return TILE_MASK(Random()); }
+static inline TileIndex RandomTile() { return TILE_MASK(Random()); }
 
 
-uint32 InteractiveRandom(void); // Used for random sequences that are not the same on the other end of the multiplayer link
+uint32 InteractiveRandom(); // Used for random sequences that are not the same on the other end of the multiplayer link
 uint InteractiveRandomRange(uint max);
 
 /* texteff.cpp */
-void MoveAllTextEffects(void);
+void MoveAllTextEffects();
 void AddTextEffect(StringID msg, int x, int y, uint16 duration);
-void InitTextEffects(void);
+void InitTextEffects();
 void DrawTextEffects(DrawPixelInfo *dpi);
 
-void InitTextMessage(void);
-void DrawTextMessage(void);
+void InitTextMessage();
+void DrawTextMessage();
 void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...);
-void UndrawTextMessage(void);
+void UndrawTextMessage();
 
 bool AddAnimatedTile(TileIndex tile);
 void DeleteAnimatedTile(TileIndex tile);
-void AnimateAnimatedTiles(void);
-void InitializeAnimatedTiles(void);
+void AnimateAnimatedTiles();
+void InitializeAnimatedTiles();
 
 /* tunnelbridge_cmd.cpp */
 bool CheckBridge_Stuff(byte bridge_type, uint bridge_len);
@@ -128,7 +128,7 @@ uint32 GetBridgeLength(TileIndex begin, TileIndex end);
 int CalcBridgeLenCostFactor(int x);
 
 /* misc_cmd.cpp */
-void PlaceTreesRandomly(void);
+void PlaceTreesRandomly();
 
 void InitializeLandscapeVariables(bool only_constants);
 
@@ -142,7 +142,7 @@ char *GetName(char *buff, StringID id, const char* last);
 #define AllocateNameUnique(name, skip) RealAllocateName(name, skip, true)
 #define AllocateName(name, skip) RealAllocateName(name, skip, false)
 StringID RealAllocateName(const char *name, byte skip, bool check_double);
-void ConvertNameArray(void);
+void ConvertNameArray();
 
 /* misc functions */
 void MarkTileDirty(int x, int y);
@@ -157,7 +157,7 @@ void DeleteWindowByClass(WindowClass cls);
 void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, byte mode, Window *w);
 void SetObjectToPlace(CursorID icon, SpriteID pal, byte mode, WindowClass window_class, WindowNumber window_num);
 
-void ResetObjectToPlace(void);
+void ResetObjectToPlace();
 
 bool ScrollWindowTo(int x, int y, Window * w);
 
@@ -181,12 +181,12 @@ int FindFirstBit(uint32 x);
 void ShowHighscoreTable(int difficulty, int8 rank);
 TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng);
 
-void AfterLoadTown(void);
-void UpdatePatches(void);
-void AskExitGame(void);
-void AskExitToGameMenu(void);
+void AfterLoadTown();
+void UpdatePatches();
+void AskExitGame();
+void AskExitToGameMenu();
 
-void RedrawAutosave(void);
+void RedrawAutosave();
 
 StringID RemapOldStringID(StringID s);
 
@@ -203,19 +203,19 @@ enum {
 void ShowSaveLoadDialog(int mode);
 
 /* callback from drivers that is called if the game size changes dynamically */
-void GameSizeChanged(void);
+void GameSizeChanged();
 bool FileExists(const char *filename);
 bool ReadLanguagePack(int index);
-void InitializeLanguagePacks(void);
+void InitializeLanguagePacks();
 const char *GetCurrentLocale(const char *param);
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 
-void LoadFromConfig(void);
-void SaveToConfig(void);
-void CheckConfig(void);
+void LoadFromConfig();
+void SaveToConfig();
+void CheckConfig();
 int ttd_main(int argc, char* argv[]);
-void HandleExitGameRequest(void);
+void HandleExitGameRequest();
 
-void DeterminePaths(void);
+void DeterminePaths();
 
 #endif /* FUNCTIONS_H */

@@ -37,7 +37,7 @@ typedef enum IConsoleHookTypes {
  * access, before execution/change or after execution/change. This allows
  * for general flow of permissions or special action needed in some cases
  */
-typedef bool IConsoleHook(void);
+typedef bool IConsoleHook();
 typedef struct IConsoleHooks{
 	IConsoleHook *access; ///< trigger when accessing the variable/command
 	IConsoleHook *pre;    ///< trigger before the variable/command is changed/executed
@@ -117,13 +117,13 @@ VARDEF byte _icolour_cmd;
 VARDEF IConsoleModes _iconsole_mode;
 
 /* console functions */
-void IConsoleInit(void);
-void IConsoleFree(void);
-void IConsoleClearBuffer(void);
+void IConsoleInit();
+void IConsoleFree();
+void IConsoleClearBuffer();
 void IConsoleResize(Window *w);
-void IConsoleSwitch(void);
-void IConsoleClose(void);
-void IConsoleOpen(void);
+void IConsoleSwitch();
+void IConsoleClose();
+void IConsoleOpen();
 
 /* console output */
 void IConsolePrint(uint16 color_code, const char *string);
@@ -150,7 +150,7 @@ void IConsoleCmdExec(const char *cmdstr);
 void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[]);
 
 /* console std lib (register ingame commands/aliases/variables) */
-void IConsoleStdLibRegister(void);
+void IConsoleStdLibRegister();
 
 /* Hooking code */
 void IConsoleCmdHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *proc);

@@ -7,11 +7,11 @@
 
 void FioSeekTo(uint32 pos, int mode);
 void FioSeekToFile(uint32 pos);
-uint32 FioGetPos(void);
-byte FioReadByte(void);
-uint16 FioReadWord(void);
-uint32 FioReadDword(void);
-void FioCloseAll(void);
+uint32 FioGetPos();
+byte FioReadByte();
+uint16 FioReadWord();
+uint32 FioReadDword();
+void FioCloseAll();
 FILE *FioFOpenFile(const char *filename);
 void FioOpenFile(int slot, const char *filename);
 void FioReadBlock(void *ptr, uint size);

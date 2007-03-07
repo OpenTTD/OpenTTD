@@ -4,7 +4,7 @@
 #include "null_s.h"
 
 static const char *NullSoundStart(const char * const *parm) { return NULL; }
-static void NullSoundStop(void) {}
+static void NullSoundStop() {}
 
 const HalSoundDriver _null_sound_driver = {
 	NullSoundStart,

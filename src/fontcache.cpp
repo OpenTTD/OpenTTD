@@ -278,7 +278,7 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 }
 
 
-void InitFreeType(void)
+void InitFreeType()
 {
 	if (StrEmpty(_freetype.small_font) && StrEmpty(_freetype.medium_font) && StrEmpty(_freetype.large_font)) {
 		DEBUG(freetype, 1, "No font faces specified, using sprite fonts instead");
@@ -492,7 +492,7 @@ void SetUnicodeGlyph(FontSize size, uint32 key, SpriteID sprite)
 }
 
 
-void InitializeUnicodeGlyphMap(void)
+void InitializeUnicodeGlyphMap()
 {
 	FontSize size;
 	SpriteID base;

@@ -40,7 +40,7 @@ static void WaypointPoolNewBlock(uint start_item)
 DEFINE_OLD_POOL(Waypoint, Waypoint, WaypointPoolNewBlock, NULL)
 
 /* Create a new waypoint */
-static Waypoint* AllocateWaypoint(void)
+static Waypoint* AllocateWaypoint()
 {
 	Waypoint *wp;
 
@@ -82,7 +82,7 @@ static void RedrawWaypointSign(const Waypoint* wp)
 }
 
 /* Update all signs */
-void UpdateAllWaypointSigns(void)
+void UpdateAllWaypointSigns()
 {
 	Waypoint *wp;
 
@@ -151,7 +151,7 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
  * Update waypoint graphics id against saved GRFID/localidx.
  * This is to ensure the chosen graphics are correct if GRF files are changed.
  */
-void AfterLoadWaypoints(void)
+void AfterLoadWaypoints()
 {
 	Waypoint *wp;
 
@@ -254,7 +254,7 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /* Daily loop for waypoints */
-void WaypointsDailyLoop(void)
+void WaypointsDailyLoop()
 {
 	Waypoint *wp;
 
@@ -379,7 +379,7 @@ void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 }
 
 /* Fix savegames which stored waypoints in their old format */
-void FixOldWaypoints(void)
+void FixOldWaypoints()
 {
 	Waypoint *wp;
 
@@ -394,7 +394,7 @@ void FixOldWaypoints(void)
 	}
 }
 
-void InitializeWaypoints(void)
+void InitializeWaypoints()
 {
 	CleanPool(&_Waypoint_pool);
 	AddBlockToPool(&_Waypoint_pool);
@@ -416,7 +416,7 @@ static const SaveLoad _waypoint_desc[] = {
 	SLE_END()
 };
 
-static void Save_WAYP(void)
+static void Save_WAYP()
 {
 	Waypoint *wp;
 
@@ -426,7 +426,7 @@ static void Save_WAYP(void)
 	}
 }
 
-static void Load_WAYP(void)
+static void Load_WAYP()
 {
 	int index;
 

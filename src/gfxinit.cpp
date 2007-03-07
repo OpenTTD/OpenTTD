@@ -162,7 +162,7 @@ static bool FileMD5(const MD5File file, bool warn)
  * If neither are found, Windows palette is assumed.
  *
  * (Note: Also checks sample.cat for corruption) */
-void CheckExternalFiles(void)
+void CheckExternalFiles()
 {
 	uint i;
 	/* count of files from this version */
@@ -340,7 +340,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 };
 
 
-static void LoadSpriteTables(void)
+static void LoadSpriteTables()
 {
 	const FileList* files = _use_dos_palette ? &files_dos : &files_win;
 	uint load_index;
@@ -400,7 +400,7 @@ static void LoadSpriteTables(void)
 }
 
 
-void GfxLoadSprites(void)
+void GfxLoadSprites()
 {
 	DEBUG(sprite, 2, "Loading sprite set %d", _opt.landscape);
 

@@ -3,7 +3,7 @@
 #ifndef SCREENSHOT_H
 #define SCREENSHOT_H
 
-void InitializeScreenshotFormats(void);
+void InitializeScreenshotFormats();
 
 const char *GetScreenshotFormatDesc(int i);
 void SetScreenshotFormat(int i);
@@ -14,9 +14,9 @@ typedef enum ScreenshotType {
 	SC_WORLD
 } ScreenshotType;
 
-bool MakeScreenshot(void);
+bool MakeScreenshot();
 void SetScreenshotType(ScreenshotType t);
-bool IsScreenshotRequested(void);
+bool IsScreenshotRequested();
 
 extern char _screenshot_format_name[8];
 extern uint _num_screenshot_formats;

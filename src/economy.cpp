@@ -581,7 +581,7 @@ StringID GetNewsStringBankrupcy(const NewsItem *ni)
 	return 0;
 }
 
-static void PlayersGenStatistics(void)
+static void PlayersGenStatistics()
 {
 	Station *st;
 	Player *p;
@@ -625,7 +625,7 @@ static void AddSingleInflation(int32 *value, uint16 *frac, int32 amt)
 	*value += tmp >> 16;
 }
 
-static void AddInflation(void)
+static void AddInflation()
 {
 	/* Approximation for (100 + infl_amount)% ** (1 / 12) - 100%
 	 * scaled by 65536
@@ -658,7 +658,7 @@ static void AddInflation(void)
 	InvalidateWindow(WC_PAYMENT_RATES, 0);
 }
 
-static void PlayersPayInterest(void)
+static void PlayersPayInterest()
 {
 	const Player* p;
 	int interest = _economy.interest_rate * 54;
@@ -676,7 +676,7 @@ static void PlayersPayInterest(void)
 	}
 }
 
-static void HandleEconomyFluctuations(void)
+static void HandleEconomyFluctuations()
 {
 	if (_opt.diff.economy == 0) return;
 
@@ -756,7 +756,7 @@ static byte price_base_multiplier[NUM_PRICES];
 /**
  * Reset changes to the price base multipliers.
  */
-void ResetPriceBaseMultipliers(void)
+void ResetPriceBaseMultipliers()
 {
 	uint i;
 
@@ -778,7 +778,7 @@ void SetPriceBaseMultiplier(uint price, byte factor)
 	price_base_multiplier[price] = factor;
 }
 
-void StartupEconomy(void)
+void StartupEconomy()
 {
 	int i;
 
@@ -995,7 +995,7 @@ static bool CheckSubsidyDuplicate(Subsidy *s)
 }
 
 
-static void SubsidyMonthlyHandler(void)
+static void SubsidyMonthlyHandler()
 {
 	Subsidy *s;
 	Pair pair;
@@ -1074,7 +1074,7 @@ static const SaveLoad _subsidies_desc[] = {
 	SLE_END()
 };
 
-static void Save_SUBS(void)
+static void Save_SUBS()
 {
 	int i;
 	Subsidy *s;
@@ -1088,7 +1088,7 @@ static void Save_SUBS(void)
 	}
 }
 
-static void Load_SUBS(void)
+static void Load_SUBS()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1)
@@ -1603,7 +1603,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 	return result;
 }
 
-void PlayersMonthlyLoop(void)
+void PlayersMonthlyLoop()
 {
 	PlayersGenStatistics();
 	if (_patches.inflation && _cur_year < MAX_YEAR)
@@ -1757,14 +1757,14 @@ int32 CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Prices */
-static void SaveLoad_PRIC(void)
+static void SaveLoad_PRIC()
 {
 	SlArray(&_price,      NUM_PRICES, SLE_INT32);
 	SlArray(&_price_frac, NUM_PRICES, SLE_UINT16);
 }
 
 /** Cargo payment rates */
-static void SaveLoad_CAPR(void)
+static void SaveLoad_CAPR()
 {
 	SlArray(&_cargo_payment_rates,      NUM_CARGO, SLE_INT32);
 	SlArray(&_cargo_payment_rates_frac, NUM_CARGO, SLE_UINT16);
@@ -1781,7 +1781,7 @@ static const SaveLoad _economy_desc[] = {
 };
 
 /** Economy variables */
-static void SaveLoad_ECMY(void)
+static void SaveLoad_ECMY()
 {
 	SlObject(&_economy, _economy_desc);
 }

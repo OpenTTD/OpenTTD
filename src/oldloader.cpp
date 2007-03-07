@@ -290,7 +290,7 @@ static void InitLoading(LoadgameState *ls)
 
 extern uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type);
 
-static void FixOldTowns(void)
+static void FixOldTowns()
 {
 	Town *town;
 
@@ -303,7 +303,7 @@ static void FixOldTowns(void)
 	}
 }
 
-static void FixOldStations(void)
+static void FixOldStations()
 {
 	Station *st;
 
@@ -315,7 +315,7 @@ static void FixOldStations(void)
 	}
 }
 
-static void FixOldVehicles(void)
+static void FixOldVehicles()
 {
 	/* Check for shared orders, and link them correctly */
 	Vehicle* v;
@@ -374,7 +374,7 @@ static uint16 _old_string_id;
 static uint16 _old_string_id_2;
 static uint16 _old_extra_chunk_nums;
 
-static void ReadTTDPatchFlags(void)
+static void ReadTTDPatchFlags()
 {
 	int i;
 

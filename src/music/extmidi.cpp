@@ -21,8 +21,8 @@ static struct {
 	pid_t pid;
 } _midi;
 
-static void DoPlay(void);
-static void DoStop(void);
+static void DoPlay();
+static void DoStop();
 
 static const char* ExtMidiStart(const char* const * parm)
 {
@@ -31,7 +31,7 @@ static const char* ExtMidiStart(const char* const * parm)
 	return NULL;
 }
 
-static void ExtMidiStop(void)
+static void ExtMidiStop()
 {
 	_midi.song[0] = '\0';
 	DoStop();
@@ -43,13 +43,13 @@ static void ExtMidiPlaySong(const char* filename)
 	DoStop();
 }
 
-static void ExtMidiStopSong(void)
+static void ExtMidiStopSong()
 {
 	_midi.song[0] = '\0';
 	DoStop();
 }
 
-static bool ExtMidiIsPlaying(void)
+static bool ExtMidiIsPlaying()
 {
 	if (_midi.pid != -1 && waitpid(_midi.pid, NULL, WNOHANG) == _midi.pid)
 		_midi.pid = -1;
@@ -62,7 +62,7 @@ static void ExtMidiSetVolume(byte vol)
 	DEBUG(driver, 1, "extmidi: set volume not implemented");
 }
 
-static void DoPlay(void)
+static void DoPlay()
 {
 	_midi.pid = fork();
 	switch (_midi.pid) {
@@ -91,7 +91,7 @@ static void DoPlay(void)
 	}
 }
 
-static void DoStop(void)
+static void DoStop()
 {
 	if (_midi.pid != -1) kill(_midi.pid, SIGTERM);
 }

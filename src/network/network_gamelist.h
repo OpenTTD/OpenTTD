@@ -19,6 +19,6 @@ extern NetworkGameList *_network_game_list;
 
 NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port);
 void NetworkGameListRemoveItem(NetworkGameList *remove);
-void NetworkGameListRequery(void);
+void NetworkGameListRequery();
 
 #endif /* NETWORK_GAMELIST_H */

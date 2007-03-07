@@ -24,9 +24,9 @@ typedef StringID GetNewsStringCallbackProc(const NewsItem *ni);
 
 #define NEWS_FLAGS(mode,flag,type,cb) ((cb)<<24 | (type)<<16 | (flag)<<8 | (mode))
 void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b);
-void NewsLoop(void);
+void NewsLoop();
 void DrawNewsBorder(const Window *w);
-void InitNewsItemStructs(void);
+void InitNewsItemStructs();
 
 VARDEF NewsItem _statusbar_news_item;
 

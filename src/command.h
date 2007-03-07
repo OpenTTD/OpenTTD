@@ -209,6 +209,6 @@ extern const char* _cmd_text; ///< Text, which gets sent with a command
 
 bool IsValidCommand(uint cmd);
 byte GetCommandFlags(uint cmd);
-int32 GetAvailableMoneyForCommand(void);
+int32 GetAvailableMoneyForCommand();
 
 #endif /* COMMAND_H */

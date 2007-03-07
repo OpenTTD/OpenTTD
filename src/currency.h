@@ -38,10 +38,10 @@ extern CurrencySpec _currency_specs[NUM_CURRENCY];
 #define _custom_currency (_currency_specs[CUSTOM_CURRENCY_ID])
 #define _currency ((const CurrencySpec*)&_currency_specs[_opt_ptr->currency])
 
-uint GetMaskOfAllowedCurrencies(void);
-void CheckSwitchToEuro(void);
-void ResetCurrencies(void);
-StringID* BuildCurrencyDropdown(void);
+uint GetMaskOfAllowedCurrencies();
+void CheckSwitchToEuro();
+void ResetCurrencies();
+StringID* BuildCurrencyDropdown();
 byte GetNewgrfCurrencyIdConverted(byte grfcurr_id);
 
 #endif /* CURRENCY_H */

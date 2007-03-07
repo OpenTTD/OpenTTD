@@ -533,7 +533,7 @@ enum WindowFlags {
 
 /* window.cpp */
 void CallWindowEventNP(Window *w, int event);
-void CallWindowTickEvent(void);
+void CallWindowTickEvent();
 void SetWindowDirty(const Window *w);
 void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, int msg, int wparam, int lparam);
 void SendWindowMessageClass(WindowClass wnd_class, int msg, int wparam, int lparam);
@@ -709,11 +709,11 @@ static inline bool IsWindowWidgetLowered(const Window *w, byte widget_index)
 	return HASBIT(w->widget[widget_index].display_flags, WIDG_LOWERED);
 }
 
-void InitWindowSystem(void);
-void UnInitWindowSystem(void);
-void ResetWindowSystem(void);
+void InitWindowSystem();
+void UnInitWindowSystem();
+void ResetWindowSystem();
 int GetMenuItemIndex(const Window *w, int x, int y);
-void InputLoop(void);
+void InputLoop();
 void InvalidateWidget(const Window *w, byte widget_index);
 void InvalidateThisWindowData(Window *w);
 void InvalidateWindowData(WindowClass cls, WindowNumber number);
@@ -738,11 +738,11 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 
 void HandleButtonClick(Window *w, byte widget);
 
-Window *GetCallbackWnd(void);
-void DeleteNonVitalWindows(void);
-void DeleteAllNonVitalWindows(void);
-void HideVitalWindows(void);
-void ShowVitalWindows(void);
+Window *GetCallbackWnd();
+void DeleteNonVitalWindows();
+void DeleteAllNonVitalWindows();
+void HideVitalWindows();
+void ShowVitalWindows();
 Window **FindWindowZPosition(const Window *w);
 
 /* window.cpp */

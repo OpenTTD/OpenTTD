@@ -1979,7 +1979,7 @@ int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-void OnTick_Train(void)
+void OnTick_Train()
 {
 	_age_cargo_skip_counter = (_age_cargo_skip_counter == 0) ? 184 : (_age_cargo_skip_counter - 1);
 }
@@ -3495,7 +3495,7 @@ void OnNewDay_Train(Vehicle *v)
 	}
 }
 
-void TrainsYearlyLoop(void)
+void TrainsYearlyLoop()
 {
 	Vehicle *v;
 
@@ -3520,7 +3520,7 @@ void TrainsYearlyLoop(void)
 }
 
 
-void InitializeTrains(void)
+void InitializeTrains()
 {
 	_age_cargo_skip_counter = 1;
 }
@@ -3529,7 +3529,7 @@ void InitializeTrains(void)
  * Link front and rear multiheaded engines to each other
  * This is done when loading a savegame
  */
-void ConnectMultiheadedTrains(void)
+void ConnectMultiheadedTrains()
 {
 	Vehicle *v;
 
@@ -3577,7 +3577,7 @@ void ConnectMultiheadedTrains(void)
  *  Converts all trains to the new subtype format introduced in savegame 16.2
  *  It also links multiheaded engines or make them forget they are multiheaded if no suitable partner is found
  */
-void ConvertOldMultiheadToNew(void)
+void ConvertOldMultiheadToNew()
 {
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {

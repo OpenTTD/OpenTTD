@@ -37,7 +37,7 @@ uint _display_hz;
 uint _fullscreen_bpp;
 static uint16 _bck_resolution[2];
 
-static void MakePalette(void)
+static void MakePalette()
 {
 	LOGPALETTE *pal;
 	uint i;
@@ -156,7 +156,7 @@ static void ClientSizeChanged(int w, int h)
 #ifdef _DEBUG
 // Keep this function here..
 // It allows you to redraw the screen from within the MSVC debugger
-int RedrawScreenDebug(void)
+int RedrawScreenDebug()
 {
 	HDC dc,dc2;
 	static int _fooctr;
@@ -511,7 +511,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
-static void RegisterWndClass(void)
+static void RegisterWndClass()
 {
 	static bool registered = false;
 
@@ -681,7 +681,7 @@ static const uint16 default_resolutions[][2] = {
 	{ 1920, 1200 }
 };
 
-static void FindResolutions(void)
+static void FindResolutions()
 {
 	uint n = 0;
 #if defined(WINCE)
@@ -749,7 +749,7 @@ static const char *Win32GdiStart(const char * const *parm)
 	return NULL;
 }
 
-static void Win32GdiStop(void)
+static void Win32GdiStop()
 {
 	DeleteObject(_wnd.gdi_palette);
 	DeleteObject(_wnd.dib_sect);
@@ -798,14 +798,14 @@ static void Win32GdiMakeDirty(int left, int top, int width, int height)
 	InvalidateRect(_wnd.main_wnd, &r, FALSE);
 }
 
-static void CheckPaletteAnim(void)
+static void CheckPaletteAnim()
 {
 	if (_pal_last_dirty == -1)
 		return;
 	InvalidateRect(_wnd.main_wnd, NULL, FALSE);
 }
 
-static void Win32GdiMainLoop(void)
+static void Win32GdiMainLoop()
 {
 	MSG mesg;
 	uint32 cur_ticks = GetTickCount();

@@ -111,7 +111,7 @@ static inline bool IsValidIndustryID(IndustryID index)
 
 VARDEF int _total_industries; //general counter
 
-static inline IndustryID GetMaxIndustryIndex(void)
+static inline IndustryID GetMaxIndustryIndex()
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that
@@ -121,7 +121,7 @@ static inline IndustryID GetMaxIndustryIndex(void)
 	return GetIndustryPoolSize() - 1;
 }
 
-static inline uint GetNumIndustries(void)
+static inline uint GetNumIndustries()
 {
 	return _total_industries;
 }
@@ -129,7 +129,7 @@ static inline uint GetNumIndustries(void)
 /**
  * Return a random valid industry.
  */
-static inline Industry *GetRandomIndustry(void)
+static inline Industry *GetRandomIndustry()
 {
 	int num = RandomRange(GetNumIndustries());
 	IndustryID index = INVALID_INDUSTRY;

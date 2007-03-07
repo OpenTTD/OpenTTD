@@ -59,7 +59,7 @@ bool FiosIsRoot(const char *path)
 #endif
 }
 
-void FiosGetDrives(void)
+void FiosGetDrives()
 {
 	return;
 }
@@ -130,9 +130,9 @@ void ShowOSErrorBox(const char *buf)
 }
 
 #ifdef WITH_COCOA
-void cocoaSetWorkingDirectory(void);
-void cocoaSetupAutoreleasePool(void);
-void cocoaReleaseAutoreleasePool(void);
+void cocoaSetWorkingDirectory();
+void cocoaSetupAutoreleasePool();
+void cocoaReleaseAutoreleasePool();
 #endif
 
 int CDECL main(int argc, char* argv[])
@@ -168,7 +168,7 @@ int CDECL main(int argc, char* argv[])
 	return ret;
 }
 
-void DeterminePaths(void)
+void DeterminePaths()
 {
 	char *s;
 
@@ -299,7 +299,7 @@ void CSleep(int milliseconds)
 /** Try and try to decipher the current locale from environmental
  * variables. MacOSX is hardcoded, other OS's are dynamic. If no suitable
  * locale can be found, don't do any conversion "" */
-static const char *GetLocalCode(void)
+static const char *GetLocalCode()
 {
 #if defined(__APPLE__)
 	return "UTF-8-MAC";

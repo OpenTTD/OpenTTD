@@ -15,7 +15,7 @@ STATIC_OLD_POOL(SoundInternal, FileEntry, 3, 1000, NULL, NULL)
 
 
 /* Allocate a new FileEntry */
-FileEntry *AllocateFileEntry(void)
+FileEntry *AllocateFileEntry()
 {
 	if (_sound_count == GetSoundInternalPoolSize()) {
 		if (!AddBlockToPool(&_SoundInternal_pool)) return NULL;
@@ -25,7 +25,7 @@ FileEntry *AllocateFileEntry(void)
 }
 
 
-void InitializeSoundPool(void)
+void InitializeSoundPool()
 {
 	CleanPool(&_SoundInternal_pool);
 	_sound_count = 0;
@@ -42,7 +42,7 @@ FileEntry *GetSound(uint index)
 }
 
 
-uint GetNumSounds(void)
+uint GetNumSounds()
 {
 	return _sound_count;
 }

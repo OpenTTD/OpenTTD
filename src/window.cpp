@@ -499,7 +499,7 @@ static void BringWindowToFront(const Window *w)
  * - Any sticked windows since we wanted to keep these
  * @return w pointer to the window that is going to be deleted
  */
-static Window *FindDeletableWindow(void)
+static Window *FindDeletableWindow()
 {
 	Window* const *wz;
 
@@ -519,7 +519,7 @@ static Window *FindDeletableWindow(void)
  * @see FindDeletableWindow()
  * @return w Pointer to the window that is being deleted
  */
-static Window *ForceFindDeletableWindow(void)
+static Window *ForceFindDeletableWindow()
 {
 	Window* const *wz;
 
@@ -555,7 +555,7 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 	}
 }
 
-static Window *FindFreeWindow(void)
+static Window *FindFreeWindow()
 {
 	Window *w;
 
@@ -891,7 +891,7 @@ Window *FindWindowFromPt(int x, int y)
 	return NULL;
 }
 
-void InitWindowSystem(void)
+void InitWindowSystem()
 {
 	IConsoleClose();
 
@@ -901,7 +901,7 @@ void InitWindowSystem(void)
 	_no_scroll = 0;
 }
 
-void UnInitWindowSystem(void)
+void UnInitWindowSystem()
 {
 	Window **wz;
 
@@ -919,7 +919,7 @@ restart_search:
 	assert(_last_z_window == _z_windows);
 }
 
-void ResetWindowSystem(void)
+void ResetWindowSystem()
 {
 	UnInitWindowSystem();
 	InitWindowSystem();
@@ -929,7 +929,7 @@ void ResetWindowSystem(void)
 	_thd.new_pos.y = 0;
 }
 
-static void DecreaseWindowCounters(void)
+static void DecreaseWindowCounters()
 {
 	Window *w;
 	Window* const *wz;
@@ -954,12 +954,12 @@ static void DecreaseWindowCounters(void)
 	}
 }
 
-Window *GetCallbackWnd(void)
+Window *GetCallbackWnd()
 {
 	return FindWindowById(_thd.window_class, _thd.window_number);
 }
 
-static void HandlePlacePresize(void)
+static void HandlePlacePresize()
 {
 	Window *w;
 	WindowEvent e;
@@ -979,7 +979,7 @@ static void HandlePlacePresize(void)
 	w->wndproc(w, &e);
 }
 
-static bool HandleDragDrop(void)
+static bool HandleDragDrop()
 {
 	Window *w;
 	WindowEvent e;
@@ -1003,7 +1003,7 @@ static bool HandleDragDrop(void)
 	return false;
 }
 
-static bool HandlePopupMenu(void)
+static bool HandlePopupMenu()
 {
 	Window *w;
 	WindowEvent e;
@@ -1030,7 +1030,7 @@ static bool HandlePopupMenu(void)
 	return false;
 }
 
-static bool HandleMouseOver(void)
+static bool HandleMouseOver()
 {
 	Window *w;
 	WindowEvent e;
@@ -1114,7 +1114,7 @@ void ResizeWindow(Window *w, int x, int y)
 
 static bool _dragging_window;
 
-static bool HandleWindowDragging(void)
+static bool HandleWindowDragging()
 {
 	Window* const *wz;
 	// Get out immediately if no window is being dragged at all.
@@ -1338,7 +1338,7 @@ static void StartWindowSizing(Window *w)
 }
 
 
-static bool HandleScrollbarScrolling(void)
+static bool HandleScrollbarScrolling()
 {
 	Window* const *wz;
 	int i;
@@ -1385,7 +1385,7 @@ static bool HandleScrollbarScrolling(void)
 	return false;
 }
 
-static bool HandleViewportScroll(void)
+static bool HandleViewportScroll()
 {
 	WindowEvent e;
 	Window *w;
@@ -1580,12 +1580,12 @@ void HandleKeypress(uint32 key)
 	}
 }
 
-extern void UpdateTileSelection(void);
-extern bool VpHandlePlaceSizingDrag(void);
+extern void UpdateTileSelection();
+extern bool VpHandlePlaceSizingDrag();
 
 static int _input_events_this_tick = 0;
 
-static void HandleAutoscroll(void)
+static void HandleAutoscroll()
 {
 	Window *w;
 	ViewPort *vp;
@@ -1700,7 +1700,7 @@ void MouseLoop(int click, int mousewheel)
 	}
 }
 
-void HandleMouseEvents(void)
+void HandleMouseEvents()
 {
 	int click;
 	int mousewheel;
@@ -1738,13 +1738,13 @@ void HandleMouseEvents(void)
 	MouseLoop(click, mousewheel);
 }
 
-void InputLoop(void)
+void InputLoop()
 {
 	HandleMouseEvents();
 	HandleAutoscroll();
 }
 
-void UpdateWindows(void)
+void UpdateWindows()
 {
 	Window* const *wz;
 	static int we4_timer = 0;
@@ -1857,7 +1857,7 @@ void InvalidateWindowClassesData(WindowClass cls)
 	}
 }
 
-void CallWindowTickEvent(void)
+void CallWindowTickEvent()
 {
 	Window* const *wz;
 
@@ -1866,7 +1866,7 @@ void CallWindowTickEvent(void)
 	}
 }
 
-void DeleteNonVitalWindows(void)
+void DeleteNonVitalWindows()
 {
 	Window* const *wz;
 
@@ -1895,7 +1895,7 @@ restart_search:
  * with this function. It closes all windows calling the standard function,
  * then, does a little hacked loop of closing all stickied windows. Note
  * that standard windows (status bar, etc.) are not stickied, so these aren't affected */
-void DeleteAllNonVitalWindows(void)
+void DeleteAllNonVitalWindows()
 {
 	Window* const *wz;
 
@@ -1915,7 +1915,7 @@ restart_search:
 }
 
 /* Delete all always on-top windows to get an empty screen */
-void HideVitalWindows(void)
+void HideVitalWindows()
 {
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 	DeleteWindowById(WC_MAIN_TOOLBAR, 0);

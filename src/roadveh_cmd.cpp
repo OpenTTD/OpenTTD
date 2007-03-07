@@ -1824,7 +1824,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 }
 
 
-void RoadVehiclesYearlyLoop(void)
+void RoadVehiclesYearlyLoop()
 {
 	Vehicle *v;
 

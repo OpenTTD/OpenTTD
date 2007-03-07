@@ -24,7 +24,7 @@ static void PrepareHeader(WAVEHDR *hdr)
 		error("waveOutPrepareHeader failed");
 }
 
-static void FillHeaders(void)
+static void FillHeaders()
 {
 	WAVEHDR *hdr;
 
@@ -69,7 +69,7 @@ static const char *Win32SoundStart(const char* const* parm)
 	return NULL;
 }
 
-static void Win32SoundStop(void)
+static void Win32SoundStop()
 {
 	HWAVEOUT waveout = _waveout;
 

@@ -8,7 +8,7 @@
 #if defined(__AMIGA__) || defined(__MORPHOS__) || defined(PSP) || defined(NO_THREADS)
 OTTDThread *OTTDCreateThread(OTTDThreadFunc function, void *arg) { return NULL; }
 void *OTTDJoinThread(OTTDThread *t) { return NULL; }
-void OTTDExitThread(void) { NOT_REACHED(); };
+void OTTDExitThread() { NOT_REACHED(); };
 
 #elif defined(__OS2__)
 
@@ -58,7 +58,7 @@ void* OTTDJoinThread(OTTDThread* t)
 	return ret;
 }
 
-void OTTDExitThread(void)
+void OTTDExitThread()
 {
 	_endthread();
 }
@@ -96,7 +96,7 @@ void* OTTDJoinThread(OTTDThread* t)
 	return ret;
 }
 
-void OTTDExitThread(void)
+void OTTDExitThread()
 {
 	pthread_exit(NULL);
 }
@@ -151,7 +151,7 @@ void* OTTDJoinThread(OTTDThread* t)
 	return ret;
 }
 
-void OTTDExitThread(void)
+void OTTDExitThread()
 {
 	ExitThread(0);
 }

@@ -181,8 +181,8 @@ typedef struct AirportFTA {
 	byte heading;            // heading (current orders), guiding an airplane to its target on an airport
 } AirportFTA;
 
-void InitializeAirports(void);
-void UnInitializeAirports(void);
+void InitializeAirports();
+void UnInitializeAirports();
 const AirportFTAClass *GetAirport(const byte airport_type);
 
 /** Get buildable airport bitmask.
@@ -190,6 +190,6 @@ const AirportFTAClass *GetAirport(const byte airport_type);
  * Bit 0 means the small airport is buildable, etc.
  * @todo set availability of airports by year, instead of airplane
  */
-uint32 GetValidAirports(void);
+uint32 GetValidAirports();
 
 #endif /* AIRPORT_H */

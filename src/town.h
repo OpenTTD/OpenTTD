@@ -80,10 +80,10 @@ struct Town {
 	uint16 radius[5];
 };
 
-uint32 GetWorldPopulation(void);
+uint32 GetWorldPopulation();
 
 void UpdateTownVirtCoord(Town *t);
-void InitializeTown(void);
+void InitializeTown();
 void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
 Town *CreateRandomTown(uint attempts, uint size_mode);
@@ -173,7 +173,7 @@ static inline bool IsValidTownID(TownID index)
 
 VARDEF uint _total_towns;
 
-static inline TownID GetMaxTownIndex(void)
+static inline TownID GetMaxTownIndex()
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that
@@ -183,7 +183,7 @@ static inline TownID GetMaxTownIndex(void)
 	return GetTownPoolSize() - 1;
 }
 
-static inline uint GetNumTowns(void)
+static inline uint GetNumTowns()
 {
 	return _total_towns;
 }
@@ -191,7 +191,7 @@ static inline uint GetNumTowns(void)
 /**
  * Return a random valid town.
  */
-static inline Town *GetRandomTown(void)
+static inline Town *GetRandomTown()
 {
 	int num = RandomRange(GetNumTowns());
 	TownID index = INVALID_TOWN;

@@ -270,7 +270,7 @@
 
 __LZO_EXTERN_C int __lzo_init_done;
 __LZO_EXTERN_C const lzo_byte __lzo_copyright[];
-LZO_EXTERN(const lzo_byte *) lzo_copyright(void);
+LZO_EXTERN(const lzo_byte *) lzo_copyright();
 __LZO_EXTERN_C const lzo_uint32 _lzo_crc32_table[256];
 
 #define _LZO_STRINGIZE(x)		   #x
@@ -709,7 +709,7 @@ lzo_adler32(lzo_uint32 adler, const lzo_byte *buf, lzo_uint len)
 
 #define IS_POWER_OF_2(x)		(((x) & ((x) - 1)) == 0)
 
-// static lzo_bool schedule_insns_bug(void);
+// static lzo_bool schedule_insns_bug();
 // static lzo_bool strength_reduce_bug(int *);
 
 #if 0 || defined(LZO_DEBUG)

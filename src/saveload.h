@@ -25,11 +25,11 @@ typedef enum SaveOrLoadMode {
 } SaveOrLoadMode;
 
 SaveOrLoadResult SaveOrLoad(const char *filename, int mode);
-void WaitTillSaved(void);
-void DoExitSave(void);
+void WaitTillSaved();
+void DoExitSave();
 
 
-typedef void ChunkSaveLoadProc(void);
+typedef void ChunkSaveLoadProc();
 typedef void AutolengthProc(void *arg);
 
 typedef struct {
@@ -290,14 +290,14 @@ int64 ReadValue(const void *ptr, VarType conv);
 void WriteValue(void *ptr, VarType conv, int64 val);
 
 void SlSetArrayIndex(uint index);
-int SlIterateArray(void);
+int SlIterateArray();
 
 void SlAutolength(AutolengthProc *proc, void *arg);
-uint SlGetFieldLength(void);
+uint SlGetFieldLength();
 void SlSetLength(size_t length);
 size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld);
 
-byte SlReadByte(void);
+byte SlReadByte();
 void SlWriteByte(byte b);
 
 void SlGlobList(const SaveLoadGlobVarList *sldg);
@@ -305,7 +305,7 @@ void SlArray(void *array, uint length, VarType conv);
 void SlObject(void *object, const SaveLoad *sld);
 bool SlObjectMember(void *object, const SaveLoad *sld);
 
-void SaveFileStart(void);
-void SaveFileDone(void);
-void SaveFileError(void);
+void SaveFileStart();
+void SaveFileDone();
+void SaveFileError();
 #endif /* SAVELOAD_H */

@@ -1,4 +1,4 @@
-/* $Id:$ */
+/* $Id$ */
 
 #ifndef AUTOPTR_HPP
 #define AUTOPTR_HPP

@@ -26,8 +26,8 @@ enum {
 	GENERATE_NEW_SEED = (uint)-1, ///< Create a new random seed
 };
 
-typedef void gw_done_proc(void);
-typedef void gw_abort_proc(void);
+typedef void gw_done_proc();
+typedef void gw_abort_proc();
 
 typedef struct gw_info {
 	bool active;           ///< Is generating world active
@@ -66,7 +66,7 @@ typedef enum gwp_classes {
 /**
  * Check if we are currently in the process of generating a world.
  */
-static inline bool IsGeneratingWorld(void)
+static inline bool IsGeneratingWorld()
 {
 	extern gw_info _gw;
 
@@ -75,23 +75,23 @@ static inline bool IsGeneratingWorld(void)
 
 /* genworld.cpp */
 void SetGeneratingWorldPaintStatus(bool status);
-bool IsGeneratingWorldReadyForPaint(void);
-bool IsGenerateWorldThreaded(void);
+bool IsGeneratingWorldReadyForPaint();
+bool IsGenerateWorldThreaded();
 void GenerateWorldSetCallback(gw_done_proc *proc);
 void GenerateWorldSetAbortCallback(gw_abort_proc *proc);
-void WaitTillGeneratedWorld(void);
+void WaitTillGeneratedWorld();
 void GenerateWorld(int mode, uint size_x, uint size_y);
-void AbortGeneratingWorld(void);
-bool IsGeneratingWorldAborted(void);
-void HandleGeneratingWorldAbortion(void);
+void AbortGeneratingWorld();
+bool IsGeneratingWorldAborted();
+void HandleGeneratingWorldAbortion();
 
 /* genworld_gui.cpp */
 void SetGeneratingWorldProgress(gwp_class cls, uint total);
 void IncreaseGeneratingWorldProgress(gwp_class cls);
-void PrepareGenerateWorldProgress(void);
-void ShowGenerateWorldProgress(void);
+void PrepareGenerateWorldProgress();
+void ShowGenerateWorldProgress();
 void StartNewGameWithoutGUI(uint seed);
-void ShowCreateScenario(void);
-void StartScenarioEditor(void);
+void ShowCreateScenario();
+void StartScenarioEditor();
 
 #endif /* GENWORLD_H */

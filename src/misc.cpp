@@ -29,7 +29,7 @@ char _name_array[512][32];
 #include "network/network_data.h"
 uint32 DoRandom(int line, const char *file)
 #else // RANDOM_DEBUG
-uint32 Random(void)
+uint32 Random()
 #endif // RANDOM_DEBUG
 {
 
@@ -61,7 +61,7 @@ uint RandomRange(uint max)
 #endif
 
 
-uint32 InteractiveRandom(void)
+uint32 InteractiveRandom()
 {
 	uint32 t = _random_seeds[1][1];
 	uint32 s = _random_seeds[1][0];
@@ -74,27 +74,27 @@ uint InteractiveRandomRange(uint max)
 	return GB(InteractiveRandom(), 0, 16) * max >> 16;
 }
 
-void InitializeVehicles(void);
-void InitializeWaypoints(void);
-void InitializeDepots(void);
-void InitializeEngines(void);
-void InitializeOrders(void);
-void InitializeClearLand(void);
-void InitializeRailGui(void);
-void InitializeRoadGui(void);
-void InitializeAirportGui(void);
-void InitializeDockGui(void);
-void InitializeIndustries(void);
-void InitializeMainGui(void);
-void InitializeLandscape(void);
-void InitializeTowns(void);
-void InitializeTrees(void);
-void InitializeSigns(void);
-void InitializeStations(void);
-static void InitializeNameMgr(void);
-void InitializePlayers(void);
-static void InitializeCheats(void);
-void InitializeNPF(void);
+void InitializeVehicles();
+void InitializeWaypoints();
+void InitializeDepots();
+void InitializeEngines();
+void InitializeOrders();
+void InitializeClearLand();
+void InitializeRailGui();
+void InitializeRoadGui();
+void InitializeAirportGui();
+void InitializeDockGui();
+void InitializeIndustries();
+void InitializeMainGui();
+void InitializeLandscape();
+void InitializeTowns();
+void InitializeTrees();
+void InitializeSigns();
+void InitializeStations();
+static void InitializeNameMgr();
+void InitializePlayers();
+static void InitializeCheats();
+void InitializeNPF();
 
 void InitializeGame(int mode, uint size_x, uint size_y)
 {
@@ -170,13 +170,13 @@ char *GetName(char *buff, StringID id, const char* last)
 }
 
 
-static void InitializeCheats(void)
+static void InitializeCheats()
 {
 	memset(&_cheats, 0, sizeof(Cheats));
 }
 
 
-static void InitializeNameMgr(void)
+static void InitializeNameMgr()
 {
 	memset(_name_array, 0, sizeof(_name_array));
 }
@@ -204,7 +204,7 @@ StringID RealAllocateName(const char *name, byte skip, bool check_double)
 	}
 }
 
-void ConvertNameArray(void)
+void ConvertNameArray()
 {
 	uint i;
 
@@ -267,7 +267,7 @@ int FindFirstBit(uint32 value)
 }
 
 
-static void Save_NAME(void)
+static void Save_NAME()
 {
 	int i;
 
@@ -279,7 +279,7 @@ static void Save_NAME(void)
 	}
 }
 
-static void Load_NAME(void)
+static void Load_NAME()
 {
 	int index;
 
@@ -314,7 +314,7 @@ static const SaveLoadGlobVarList _date_desc[] = {
 
 /* Save load date related variables as well as persistent tick counters
  * XXX: currently some unrelated stuff is just put here */
-static void SaveLoad_DATE(void)
+static void SaveLoad_DATE()
 {
 	SlGlobList(_date_desc);
 }
@@ -329,7 +329,7 @@ static const SaveLoadGlobVarList _view_desc[] = {
 	    SLEG_END()
 };
 
-static void SaveLoad_VIEW(void)
+static void SaveLoad_VIEW()
 {
 	SlGlobList(_view_desc);
 }
@@ -343,20 +343,20 @@ static const SaveLoadGlobVarList _map_dimensions[] = {
 	    SLEG_END()
 };
 
-static void Save_MAPS(void)
+static void Save_MAPS()
 {
 	_map_dim_x = MapSizeX();
 	_map_dim_y = MapSizeY();
 	SlGlobList(_map_dimensions);
 }
 
-static void Load_MAPS(void)
+static void Load_MAPS()
 {
 	SlGlobList(_map_dimensions);
 	AllocateMap(_map_dim_x, _map_dim_y);
 }
 
-static void Load_MAPT(void)
+static void Load_MAPT()
 {
 	uint size = MapSize();
 	uint i;
@@ -370,7 +370,7 @@ static void Load_MAPT(void)
 	}
 }
 
-static void Save_MAPT(void)
+static void Save_MAPT()
 {
 	uint size = MapSize();
 	uint i;
@@ -385,7 +385,7 @@ static void Save_MAPT(void)
 	}
 }
 
-static void Load_MAP1(void)
+static void Load_MAP1()
 {
 	uint size = MapSize();
 	uint i;
@@ -399,7 +399,7 @@ static void Load_MAP1(void)
 	}
 }
 
-static void Save_MAP1(void)
+static void Save_MAP1()
 {
 	uint size = MapSize();
 	uint i;
@@ -414,7 +414,7 @@ static void Save_MAP1(void)
 	}
 }
 
-static void Load_MAP2(void)
+static void Load_MAP2()
 {
 	uint size = MapSize();
 	uint i;
@@ -431,7 +431,7 @@ static void Load_MAP2(void)
 	}
 }
 
-static void Save_MAP2(void)
+static void Save_MAP2()
 {
 	uint size = MapSize();
 	uint i;
@@ -446,7 +446,7 @@ static void Save_MAP2(void)
 	}
 }
 
-static void Load_MAP3(void)
+static void Load_MAP3()
 {
 	uint size = MapSize();
 	uint i;
@@ -460,7 +460,7 @@ static void Load_MAP3(void)
 	}
 }
 
-static void Save_MAP3(void)
+static void Save_MAP3()
 {
 	uint size = MapSize();
 	uint i;
@@ -475,7 +475,7 @@ static void Save_MAP3(void)
 	}
 }
 
-static void Load_MAP4(void)
+static void Load_MAP4()
 {
 	uint size = MapSize();
 	uint i;
@@ -489,7 +489,7 @@ static void Load_MAP4(void)
 	}
 }
 
-static void Save_MAP4(void)
+static void Save_MAP4()
 {
 	uint size = MapSize();
 	uint i;
@@ -504,7 +504,7 @@ static void Save_MAP4(void)
 	}
 }
 
-static void Load_MAP5(void)
+static void Load_MAP5()
 {
 	uint size = MapSize();
 	uint i;
@@ -518,7 +518,7 @@ static void Load_MAP5(void)
 	}
 }
 
-static void Save_MAP5(void)
+static void Save_MAP5()
 {
 	uint size = MapSize();
 	uint i;
@@ -533,7 +533,7 @@ static void Save_MAP5(void)
 	}
 }
 
-static void Load_MAP6(void)
+static void Load_MAP6()
 {
 	/* Still available for loading old games */
 	uint size = MapSize();
@@ -563,7 +563,7 @@ static void Load_MAP6(void)
 	}
 }
 
-static void Save_MAP6(void)
+static void Save_MAP6()
 {
 	uint size = MapSize();
 	uint i;
@@ -579,7 +579,7 @@ static void Save_MAP6(void)
 }
 
 
-static void Save_CHTS(void)
+static void Save_CHTS()
 {
 	byte count = sizeof(_cheats)/sizeof(Cheat);
 	Cheat* cht = (Cheat*) &_cheats;
@@ -592,7 +592,7 @@ static void Save_CHTS(void)
 	}
 }
 
-static void Load_CHTS(void)
+static void Load_CHTS()
 {
 	Cheat* cht = (Cheat*)&_cheats;
 	uint count = SlGetFieldLength() / 2;

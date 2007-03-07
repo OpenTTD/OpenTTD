@@ -1524,9 +1524,9 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 	}
 }
 
-void DoPaletteAnimations(void);
+void DoPaletteAnimations();
 
-void GfxInitPalettes(void)
+void GfxInitPalettes()
 {
 	memcpy(_cur_palette, _palettes[_use_dos_palette ? 1 : 0], sizeof(_cur_palette));
 
@@ -1538,7 +1538,7 @@ void GfxInitPalettes(void)
 #define EXTR(p, q) (((uint16)(_timer_counter * (p)) * (q)) >> 16)
 #define EXTR2(p, q) (((uint16)(~_timer_counter * (p)) * (q)) >> 16)
 
-void DoPaletteAnimations(void)
+void DoPaletteAnimations()
 {
 	const Colour *s;
 	Colour *d;
@@ -1649,7 +1649,7 @@ void DoPaletteAnimations(void)
 }
 
 
-void LoadStringWidthTable(void)
+void LoadStringWidthTable()
 {
 	uint i;
 
@@ -1678,7 +1678,7 @@ byte GetCharacterWidth(FontSize size, WChar key)
 }
 
 
-void ScreenSizeChanged(void)
+void ScreenSizeChanged()
 {
 	/* check the dirty rect */
 	if (_invalid_rect.right >= _screen.width) _invalid_rect.right = _screen.width;
@@ -1688,7 +1688,7 @@ void ScreenSizeChanged(void)
 	_cursor.visible = false;
 }
 
-void UndrawMouseCursor(void)
+void UndrawMouseCursor()
 {
 	if (_cursor.visible) {
 		_cursor.visible = false;
@@ -1701,7 +1701,7 @@ void UndrawMouseCursor(void)
 	}
 }
 
-void DrawMouseCursor(void)
+void DrawMouseCursor()
 {
 	int x;
 	int y;
@@ -1794,7 +1794,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 	_video_driver->make_dirty(left, top, right - left, bottom - top);
 }
 
-void DrawDirtyBlocks(void)
+void DrawDirtyBlocks()
 {
 	byte *b = _dirty_blocks;
 	const int w = ALIGN(_screen.width, 64);
@@ -1916,7 +1916,7 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
 	} while (--height != 0);
 }
 
-void MarkWholeScreenDirty(void)
+void MarkWholeScreenDirty()
 {
 	SetDirtyBlocks(0, 0, _screen.width, _screen.height);
 }
@@ -1995,7 +1995,7 @@ static void SetCursorSprite(SpriteID cursor, SpriteID pal)
 	cv->dirty = true;
 }
 
-static void SwitchAnimatedCursor(void)
+static void SwitchAnimatedCursor()
 {
 	const AnimCursor *cur = _cursor.animate_cur;
 
@@ -2007,7 +2007,7 @@ static void SwitchAnimatedCursor(void)
 	_cursor.animate_cur     = cur + 1;
 }
 
-void CursorTick(void)
+void CursorTick()
 {
 	if (_cursor.animate_timeout != 0 && --_cursor.animate_timeout == 0)
 		SwitchAnimatedCursor();

@@ -166,7 +166,7 @@ static void AI_RunTick(PlayerID player)
  * The gameloop for AIs.
  *  Handles one tick for all the AIs.
  */
-void AI_RunGameLoop(void)
+void AI_RunGameLoop()
 {
 	/* Don't do anything if ai is disabled */
 	if (!_ai.enabled) return;
@@ -224,7 +224,7 @@ void AI_PlayerDied(PlayerID player)
 /**
  * Initialize some AI-related stuff.
  */
-void AI_Initialize(void)
+void AI_Initialize()
 {
 	/* First, make sure all AIs are DEAD! */
 	AI_Uninitialize();
@@ -238,7 +238,7 @@ void AI_Initialize(void)
 /**
  * Deinitializer for AI-related stuff.
  */
-void AI_Uninitialize(void)
+void AI_Uninitialize()
 {
 	const Player* p;
 

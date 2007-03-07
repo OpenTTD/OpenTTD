@@ -16,10 +16,10 @@ typedef enum VehicleSoundEvents {
 } VehicleSoundEvent;
 
 
-FileEntry *AllocateFileEntry(void);
-void InitializeSoundPool(void);
+FileEntry *AllocateFileEntry();
+void InitializeSoundPool();
 FileEntry *GetSound(uint index);
-uint GetNumSounds(void);
+uint GetNumSounds();
 bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event);
 
 #endif /* NEWGRF_SOUND_H */

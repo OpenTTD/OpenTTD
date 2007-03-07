@@ -32,7 +32,7 @@ static const char *SdlSoundStart(const char * const *parm)
 	return NULL;
 }
 
-static void SdlSoundStop(void)
+static void SdlSoundStop()
 {
 	SDL_CALL SDL_CloseAudio();
 	SdlClose(SDL_INIT_AUDIO);

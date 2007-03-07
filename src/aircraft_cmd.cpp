@@ -724,7 +724,7 @@ void OnNewDay_Aircraft(Vehicle *v)
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
-void AircraftYearlyLoop(void)
+void AircraftYearlyLoop()
 {
 	Vehicle *v;
 
@@ -2104,7 +2104,7 @@ void Aircraft_Tick(Vehicle *v)
 
 
 /** need to be called to load aircraft from old version */
-void UpdateOldAircraft(void)
+void UpdateOldAircraft()
 {
 	/* set airport_flags to 0 for all airports just to be sure */
 	Station *st;

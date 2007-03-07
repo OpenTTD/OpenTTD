@@ -93,7 +93,7 @@ void MxMixSamples(void *buffer, uint samples)
 	}
 }
 
-MixerChannel *MxAllocateChannel(void)
+MixerChannel *MxAllocateChannel()
 {
 	MixerChannel *mc;
 	for (mc = _channels; mc != endof(_channels); mc++)

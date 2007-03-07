@@ -23,7 +23,7 @@
 #include "../debug.h"
 
 extern Patches _patches_newgame;
-extern uint64 _rdtsc(void);
+extern uint64 _rdtsc();
 
 #include <limits.h>
 #include <new>

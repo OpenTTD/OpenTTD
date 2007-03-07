@@ -84,7 +84,7 @@
 #endif /* NO_DEBUG_MESSAGES */
 
 void SetDebugString(const char *s);
-const char *GetDebugString(void);
+const char *GetDebugString();
 
 /* MSVCRT of course has to have a different syntax for long long *sigh* */
 #if defined(_MSC_VER) || defined(__MINGW32__)
@@ -95,7 +95,7 @@ const char *GetDebugString(void);
 
 /* Used for profiling */
 #define TIC() {\
-	extern uint64 _rdtsc(void);\
+	extern uint64 _rdtsc();\
 	uint64 _xxx_ = _rdtsc();\
 	static uint64 __sum__ = 0;\
 	static uint32 __i__ = 0;

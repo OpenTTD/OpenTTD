@@ -404,7 +404,7 @@ static int CDECL TownPopSorter(const void *a, const void *b)
 	return r;
 }
 
-static void MakeSortedTownList(void)
+static void MakeSortedTownList()
 {
 	const Town* t;
 	uint n = 0;
@@ -513,7 +513,7 @@ static const WindowDesc _town_directory_desc = {
 };
 
 
-void ShowTownDirectory(void)
+void ShowTownDirectory()
 {
 	Window *w = AllocateWindowDescFront(&_town_directory_desc, 0);
 

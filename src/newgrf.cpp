@@ -3523,7 +3523,7 @@ static void GRFUnsafe(byte *buf, int len)
 }
 
 
-static void InitializeGRFSpecial(void)
+static void InitializeGRFSpecial()
 {
 	_ttdpatch_flags[0] =  ((_patches.always_small_airport ? 1 : 0) << 0x0C)  // keepsmallairport
 	                   |                                        (1 << 0x0D)  // newairports
@@ -3602,7 +3602,7 @@ static void InitializeGRFSpecial(void)
 	                   |                                        (0 << 0x17); // articulatedrvs
 }
 
-static void ResetCustomStations(void)
+static void ResetCustomStations()
 {
 	StationSpec *statspec;
 	GRFFile *file;
@@ -3646,7 +3646,7 @@ static void ResetCustomStations(void)
 	}
 }
 
-static void ResetNewGRF(void)
+static void ResetNewGRF()
 {
 	GRFFile *f, *next;
 
@@ -3665,7 +3665,7 @@ static void ResetNewGRF(void)
  * Reset all NewGRF loaded data
  * TODO
  */
-static void ResetNewGRFData(void)
+static void ResetNewGRFData()
 {
 	uint i;
 
@@ -3743,7 +3743,7 @@ static void ResetNewGRFData(void)
 }
 
 /** Reset all NewGRFData that was used only while processing data */
-static void ClearTemporaryNewGRFData(void)
+static void ClearTemporaryNewGRFData()
 {
 	/* Clear the GOTO labels used for GRF processing */
 	GRFLabel *l;
@@ -3852,7 +3852,7 @@ static const CargoLabel *_default_refitmasks[] = {
 /**
  * Precalculate refit masks from cargo classes for all vehicles.
  */
-static void CalculateRefitMasks(void)
+static void CalculateRefitMasks()
 {
 	EngineID engine;
 
@@ -4078,7 +4078,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 	}
 }
 
-void InitDepotWindowBlockSizes(void);
+void InitDepotWindowBlockSizes();
 
 void LoadNewGRF(uint load_index, uint file_index)
 {

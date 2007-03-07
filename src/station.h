@@ -76,7 +76,7 @@ struct RoadStop {
 	bool IsEntranceBusy() const;
 	void SetEntranceBusy(bool busy);
 protected:
-	static RoadStop *AllocateRaw(void);
+	static RoadStop *AllocateRaw();
 };
 
 typedef struct StationSpecList {
@@ -184,7 +184,7 @@ struct Station {
 	bool IsValid() const;
 
 protected:
-	static Station *AllocateRaw(void);
+	static Station *AllocateRaw();
 };
 
 enum {
@@ -218,15 +218,15 @@ typedef enum CatchmentAreas {
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);
 
 void ShowStationViewWindow(StationID station);
-void UpdateAllStationVirtCoord(void);
+void UpdateAllStationVirtCoord();
 
 /* sorter stuff */
-void RebuildStationLists(void);
-void ResortStationLists(void);
+void RebuildStationLists();
+void ResortStationLists();
 
 DECLARE_OLD_POOL(Station, Station, 6, 1000)
 
-static inline StationID GetMaxStationIndex(void)
+static inline StationID GetMaxStationIndex()
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that
@@ -236,7 +236,7 @@ static inline StationID GetMaxStationIndex(void)
 	return GetStationPoolSize() - 1;
 }
 
-static inline uint GetNumStations(void)
+static inline uint GetNumStations()
 {
 	return GetStationPoolSize();
 }
@@ -260,7 +260,7 @@ DECLARE_OLD_POOL(RoadStop, RoadStop, 5, 2000)
 /* End of stuff for ROADSTOPS */
 
 
-void AfterLoadStations(void);
+void AfterLoadStations();
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile, int w, int h, int rad);
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int h, int rad);
 
@@ -270,7 +270,7 @@ void StationPickerDrawSprite(int x, int y, RailType railtype, int image);
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStop::Type type);
 uint GetNumRoadStops(const Station* st, RoadStop::Type type);
-RoadStop * AllocateRoadStop( void );
+RoadStop * AllocateRoadStop();
 void ClearSlot(Vehicle *v);
 
 void DeleteOilRig(TileIndex t);

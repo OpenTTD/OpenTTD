@@ -40,7 +40,7 @@ static void OS2MidiPlaySong(const char *filename)
 	MidiSendCommand("play song from 0");
 }
 
-static void OS2MidiStopSong(void)
+static void OS2MidiStopSong()
 {
 	MidiSendCommand("close all");
 }
@@ -50,7 +50,7 @@ static void OS2MidiSetVolume(byte vol)
 	MidiSendCommand("set song audio volume %d", ((vol/127)*100));
 }
 
-static bool OS2MidiIsSongPlaying(void)
+static bool OS2MidiIsSongPlaying()
 {
 	char buf[16];
 	mciSendString("status song mode", buf, sizeof(buf), NULL, 0);
@@ -62,7 +62,7 @@ static const char *OS2MidiStart(const char * const *parm)
 	return 0;
 }
 
-static void OS2MidiStop(void)
+static void OS2MidiStop()
 {
 	MidiSendCommand("close all");
 }

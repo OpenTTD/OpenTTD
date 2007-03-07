@@ -9,7 +9,7 @@
 StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid, bool new_scheme, const char *text_to_add, StringID def_string);
 StringID GetGRFStringID(uint32 grfid, uint16 stringid);
 char *GetGRFString(char *buff, uint16 stringid, const char* last);
-void CleanUpStrings(void);
+void CleanUpStrings();
 void SetCurrentGrfLangID(const char *iso_name);
 char *TranslateTTDPatchCodes(const char *str);
 

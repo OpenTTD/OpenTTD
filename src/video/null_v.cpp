@@ -17,11 +17,11 @@ static const char* NullVideoStart(const char* const* parm)
 	return NULL;
 }
 
-static void NullVideoStop(void) { free(_null_video_mem); }
+static void NullVideoStop() { free(_null_video_mem); }
 
 static void NullVideoMakeDirty(int left, int top, int width, int height) {}
 
-static void NullVideoMainLoop(void)
+static void NullVideoMainLoop()
 {
 	uint i;
 

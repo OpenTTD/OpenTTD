@@ -140,8 +140,8 @@ enum {
 static const EngineID INVALID_ENGINE = 0xFFFF;
 
 
-void AddTypeToEngines(void);
-void StartupEngines(void);
+void AddTypeToEngines();
+void StartupEngines();
 
 
 void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal);
@@ -149,8 +149,8 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal);
 void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal);
 void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal);
 
-void LoadCustomEngineNames(void);
-void DeleteCustomEngineNames(void);
+void LoadCustomEngineNames();
+void DeleteCustomEngineNames();
 
 bool IsEngineBuildable(EngineID engine, byte type, PlayerID player);
 

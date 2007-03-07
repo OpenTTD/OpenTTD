@@ -39,7 +39,7 @@ FiosItem *FiosGetScenarioList(int mode);
 /* Get a list of Heightmaps */
 FiosItem *FiosGetHeightmapList(int mode);
 /* Free the list of savegames */
-void FiosFreeSavegameList(void);
+void FiosFreeSavegameList();
 /* Browse to. Returns a filename w/path if we reached a file. */
 char *FiosBrowseTo(const FiosItem *item);
 /* Return path, free space and stringID */
@@ -49,7 +49,7 @@ bool FiosDelete(const char *name);
 /* Make a filename from a name */
 void FiosMakeSavegameName(char *buf, const char *name, size_t size);
 /* Allocate a new FiosItem */
-FiosItem *FiosAlloc(void);
+FiosItem *FiosAlloc();
 
 int CDECL compare_FiosItems(const void *a, const void *b);
 

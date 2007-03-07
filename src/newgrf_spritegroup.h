@@ -152,8 +152,8 @@ struct SpriteGroup {
 };
 
 
-SpriteGroup *AllocateSpriteGroup(void);
-void InitializeSpriteGroupPool(void);
+SpriteGroup *AllocateSpriteGroup();
+void InitializeSpriteGroupPool();
 
 
 typedef struct ResolverObject {

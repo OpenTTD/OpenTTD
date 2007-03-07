@@ -170,7 +170,7 @@ typedef struct plstations_d {
 } plstations_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(plstations_d));
 
-void RebuildStationLists(void)
+void RebuildStationLists()
 {
 	Window* const *wz;
 
@@ -183,7 +183,7 @@ void RebuildStationLists(void)
 	}
 }
 
-void ResortStationLists(void)
+void ResortStationLists()
 {
 	Window* const *wz;
 

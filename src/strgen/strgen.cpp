@@ -938,7 +938,7 @@ static uint32 MyHashStr(uint32 hash, const char *s)
 
 
 // make a hash of the file to get a unique "version number"
-static void MakeHashOfStrings(void)
+static void MakeHashOfStrings()
 {
 	uint32 hash = 0;
 	uint i;
@@ -1069,7 +1069,7 @@ static int TranslateArgumentIdx(int argidx)
 	return sum;
 }
 
-static void PutArgidxCommand(void)
+static void PutArgidxCommand()
 {
 	PutUtf8(SCC_ARG_INDEX);
 	PutByte(TranslateArgumentIdx(_cur_argidx));

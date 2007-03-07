@@ -153,7 +153,7 @@ struct IniFile {
 };
 
 // allocate an inifile object
-static IniFile *ini_alloc(void)
+static IniFile *ini_alloc()
 {
 	IniFile *ini;
 	SettingsMemoryPool *pool;
@@ -1599,7 +1599,7 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 }
 
 /** Load the values from the configuration files */
-void LoadFromConfig(void)
+void LoadFromConfig()
 {
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, ini_load_settings, ini_load_setting_list);
@@ -1609,7 +1609,7 @@ void LoadFromConfig(void)
 }
 
 /** Save the values to the configuration file */
-void SaveToConfig(void)
+void SaveToConfig()
 {
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, ini_save_settings, ini_save_setting_list);
@@ -1794,7 +1794,7 @@ static inline void SaveSettingsGlobList(const SettingDescGlobVarList *sdg)
 	SaveSettings((const SettingDesc*)sdg, NULL);
 }
 
-static void Load_OPTS(void)
+static void Load_OPTS()
 {
 	/* Copy over default setting since some might not get loaded in
 	 * a networking environment. This ensures for example that the local
@@ -1803,12 +1803,12 @@ static void Load_OPTS(void)
 	LoadSettings(_gameopt_settings, &_opt);
 }
 
-static void Save_OPTS(void)
+static void Save_OPTS()
 {
 	SaveSettings(_gameopt_settings, &_opt);
 }
 
-static void Load_PATS(void)
+static void Load_PATS()
 {
 	/* Copy over default setting since some might not get loaded in
 	 * a networking environment. This ensures for example that the local
@@ -1817,12 +1817,12 @@ static void Load_PATS(void)
 	LoadSettings(_patch_settings, &_patches);
 }
 
-static void Save_PATS(void)
+static void Save_PATS()
 {
 	SaveSettings(_patch_settings, &_patches);
 }
 
-void CheckConfig(void)
+void CheckConfig()
 {
 	// fix up news_display_opt from old to new
 	int i;
@@ -1842,7 +1842,7 @@ void CheckConfig(void)
 	}
 }
 
-void UpdatePatches(void)
+void UpdatePatches()
 {
 	/* Since old(er) savegames don't have any patches saved, we initialise
 	 * them with the default values just as it was in the old days.

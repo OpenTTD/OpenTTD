@@ -52,8 +52,8 @@ static byte _terraform_size = 1;
 RailType _last_built_railtype;
 static int _scengen_town_size = 2; // depress medium-sized towns per default
 
-extern void GenerateIndustries(void);
-extern bool GenerateTowns(void);
+extern void GenerateIndustries();
+extern bool GenerateTowns();
 
 
 void HandleOnEditText(const char *str)
@@ -337,7 +337,7 @@ void ShowRenameWaypointWindow(const Waypoint *wp)
 	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, 30, 180, NULL, CS_ALPHANUMERAL);
 }
 
-static void SelectSignTool(void)
+static void SelectSignTool()
 {
 	if (_cursor.sprite == SPR_CURSOR_SIGN) {
 		ResetObjectToPlace();
@@ -370,12 +370,12 @@ static void MenuClickNewspaper(int index)
 	}
 }
 
-static void MenuClickSmallScreenshot(void)
+static void MenuClickSmallScreenshot()
 {
 	SetScreenshotType(SC_VIEWPORT);
 }
 
-static void MenuClickWorldScreenshot(void)
+static void MenuClickWorldScreenshot()
 {
 	SetScreenshotType(SC_WORLD);
 }
@@ -1379,7 +1379,7 @@ static const WindowDesc _scen_edit_land_gen_desc = {
 	ScenEditLandGenWndProc,
 };
 
-static inline void ShowEditorTerraformToolBar(void)
+static inline void ShowEditorTerraformToolBar()
 {
 	AllocateWindowDescFront(&_scen_edit_land_gen_desc, 0);
 }
@@ -1593,7 +1593,7 @@ static const Widget _scenedit_industry_candy_widgets[] = {
 };
 
 
-static bool AnyTownExists(void)
+static bool AnyTownExists()
 {
 	const Town *t;
 
@@ -2235,7 +2235,7 @@ static WindowDesc _main_status_desc = {
 	StatusBarWndProc
 };
 
-extern void UpdateAllStationVirtCoord(void);
+extern void UpdateAllStationVirtCoord();
 
 static void MainWindowWndProc(Window *w, WindowEvent *e)
 {
@@ -2401,9 +2401,9 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 }
 
 
-void ShowSelectGameWindow(void);
+void ShowSelectGameWindow();
 
-void SetupColorsAndInitialWindow(void)
+void SetupColorsAndInitialWindow()
 {
 	uint i;
 	Window *w;
@@ -2436,7 +2436,7 @@ void SetupColorsAndInitialWindow(void)
 	}
 }
 
-void ShowVitalWindows(void)
+void ShowVitalWindows()
 {
 	Window *w;
 
@@ -2461,7 +2461,7 @@ void ShowVitalWindows(void)
 	WP(w,def_d).data_1 = -1280;
 }
 
-void GameSizeChanged(void)
+void GameSizeChanged()
 {
 	_cur_resolution[0] = _screen.width;
 	_cur_resolution[1] = _screen.height;
@@ -2470,7 +2470,7 @@ void GameSizeChanged(void)
 	MarkWholeScreenDirty();
 }
 
-void InitializeMainGui(void)
+void InitializeMainGui()
 {
 	/* Clean old GUI values */
 	_last_built_railtype = RAILTYPE_RAIL;

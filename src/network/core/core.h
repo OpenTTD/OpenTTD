@@ -12,8 +12,8 @@
 #include "os_abstraction.h"
 #include "../../newgrf_config.h"
 
-bool NetworkCoreInitialize(void);
-void NetworkCoreShutdown(void);
+bool NetworkCoreInitialize();
+void NetworkCoreShutdown();
 
 /** Status of a network client; reasons why a client has quit */
 typedef enum {

@@ -353,7 +353,7 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
  * This function takes care of the fact that land in OpenTTD can never differ
  * more than 1 in height
  */
-static void FixSlopes(void)
+static void FixSlopes()
 {
 	uint width, height;
 	uint row, col;

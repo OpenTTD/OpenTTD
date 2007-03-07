@@ -33,7 +33,7 @@ uint16 _sl_version;       ///< the major savegame version identifier
 byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 
 typedef void WriterProc(uint len);
-typedef uint ReaderProc(void);
+typedef uint ReaderProc();
 
 /** The saveload struct, containing reader-writer functions, bufffer, version, etc. */
 static struct {
@@ -63,7 +63,7 @@ static struct {
 	uint bufsize;                        ///< the size of the temporary memory *buf
 	FILE *fh;                            ///< the file from which is read or written to
 
-	void (*excpt_uninit)(void);          ///< the function to execute on any encountered error
+	void (*excpt_uninit)();              ///< the function to execute on any encountered error
 	const char *excpt_msg;               ///< the error message
 	jmp_buf excpt;                       ///< @todo used to jump to "exception handler";  really ugly
 } _sl;
@@ -74,7 +74,7 @@ enum NeedLengthValues {NL_NONE = 0, NL_WANTLENGTH = 1, NL_CALCLENGTH = 2};
 /**
  * Fill the input buffer by reading from the file with the given reader
  */
-static void SlReadFill(void)
+static void SlReadFill()
 {
 	uint len = _sl.read_bytes();
 	assert(len != 0);
@@ -84,7 +84,7 @@ static void SlReadFill(void)
 	_sl.offs_base += len;
 }
 
-static inline uint32 SlGetOffs(void) {return _sl.offs_base - (_sl.bufe - _sl.bufp);}
+static inline uint32 SlGetOffs() {return _sl.offs_base - (_sl.bufe - _sl.bufp);}
 
 /** Return the size in bytes of a certain type of normal/atomic variable
  * as it appears in memory. See VarTypes
@@ -111,13 +111,13 @@ static inline byte SlCalcConvFileLen(VarType conv)
 }
 
 /** Return the size in bytes of a reference (pointer) */
-static inline size_t SlCalcRefLen(void) {return 2;}
+static inline size_t SlCalcRefLen() {return 2;}
 
 /** Flush the output buffer by writing to disk with the given reader.
  * If the buffer pointer has not yet been set up, set it up now. Usually
  * only called when the buffer is full, or there is no more data to be processed
  */
-static void SlWriteFill(void)
+static void SlWriteFill()
 {
 	/* flush the buffer to disk (the writer) */
 	if (_sl.bufp != NULL) {
@@ -145,14 +145,14 @@ static void NORETURN SlError(const char *msg)
  * flush it to its final destination
  * @return return the read byte from file
  */
-static inline byte SlReadByteInternal(void)
+static inline byte SlReadByteInternal()
 {
 	if (_sl.bufp == _sl.bufe) SlReadFill();
 	return *_sl.bufp++;
 }
 
 /** Wrapper for SlReadByteInternal */
-byte SlReadByte(void) {return SlReadByteInternal();}
+byte SlReadByte() {return SlReadByteInternal();}
 
 /** Write away a single byte from memory. If the temporary buffer is full,
  * flush it to its destination (file)
@@ -167,19 +167,19 @@ static inline void SlWriteByteInternal(byte b)
 /** Wrapper for SlWriteByteInternal */
 void SlWriteByte(byte b) {SlWriteByteInternal(b);}
 
-static inline int SlReadUint16(void)
+static inline int SlReadUint16()
 {
 	int x = SlReadByte() << 8;
 	return x | SlReadByte();
 }
 
-static inline uint32 SlReadUint32(void)
+static inline uint32 SlReadUint32()
 {
 	uint32 x = SlReadUint16() << 16;
 	return x | SlReadUint16();
 }
 
-static inline uint64 SlReadUint64(void)
+static inline uint64 SlReadUint64()
 {
 	uint32 x = SlReadUint32();
 	uint32 y = SlReadUint32();
@@ -213,7 +213,7 @@ static inline void SlWriteUint64(uint64 x)
  * x = ((x & 0x7F) << 8) + SlReadByte();
  * @return Return the value of the index
  */
-static uint SlReadSimpleGamma(void)
+static uint SlReadSimpleGamma()
 {
 	uint i = SlReadByte();
 	if (HASBIT(i, 7)) {
@@ -269,10 +269,10 @@ static inline uint SlGetGammaLength(uint i) {
 	return 1 + (i >= (1 << 7)) + (i >= (1 << 14)) + (i >= (1 << 21));
 }
 
-static inline uint SlReadSparseIndex(void) {return SlReadSimpleGamma();}
+static inline uint SlReadSparseIndex() {return SlReadSimpleGamma();}
 static inline void SlWriteSparseIndex(uint index) {SlWriteSimpleGamma(index);}
 
-static inline uint SlReadArrayLength(void) {return SlReadSimpleGamma();}
+static inline uint SlReadArrayLength() {return SlReadSimpleGamma();}
 static inline void SlWriteArrayLength(uint length) {SlWriteSimpleGamma(length);}
 static inline uint SlGetArrayLength(uint length) {return SlGetGammaLength(length);}
 
@@ -286,7 +286,7 @@ void SlSetArrayIndex(uint index)
  * Iterate through the elements of an array and read the whole thing
  * @return The index of the object, or -1 if we have reached the end of current block
  */
-int SlIterateArray(void)
+int SlIterateArray()
 {
 	int index;
 	static uint32 next_offs;
@@ -382,7 +382,7 @@ static inline void SlSkipBytes(size_t length)
 }
 
 /* Get the length of the current object */
-uint SlGetFieldLength(void) {return _sl.obj_len;}
+uint SlGetFieldLength() {return _sl.obj_len;}
 
 /** Return a signed-long version of the value of a setting
  * @param ptr pointer to the variable
@@ -850,7 +850,7 @@ static void SlLoadChunk(const ChunkHandler *ch)
 /* Stub Chunk handlers to only calculate length and do nothing else */
 static ChunkSaveLoadProc *_tmp_proc_1;
 static inline void SlStubSaveProc2(void *arg) {_tmp_proc_1();}
-static void SlStubSaveProc(void) {SlAutolength(SlStubSaveProc2, NULL);}
+static void SlStubSaveProc() {SlAutolength(SlStubSaveProc2, NULL);}
 
 /** Save a chunk of data (eg. vehicles, stations, etc.). Each chunk is
  * prefixed by an ID identifying it, followed by data, and terminator where appropiate
@@ -891,7 +891,7 @@ static void SlSaveChunk(const ChunkHandler *ch)
 }
 
 /** Save all chunks */
-static void SlSaveChunks(void)
+static void SlSaveChunks()
 {
 	const ChunkHandler *ch;
 	const ChunkHandler* const *chsc;
@@ -933,7 +933,7 @@ static const ChunkHandler *SlFindChunkHandler(uint32 id)
 }
 
 /** Load all chunks */
-static void SlLoadChunks(void)
+static void SlLoadChunks()
 {
 	uint32 id;
 	const ChunkHandler *ch;
@@ -954,7 +954,7 @@ static void SlLoadChunks(void)
 
 #include "minilzo.h"
 
-static uint ReadLZO(void)
+static uint ReadLZO()
 {
 	byte out[LZO_SIZE + LZO_SIZE / 64 + 16 + 3 + 8];
 	uint32 tmp[2];
@@ -999,14 +999,14 @@ static void WriteLZO(uint size)
 	if (fwrite(out, outlen + sizeof(uint32)*2, 1, _sl.fh) != 1) SlError("file write failed");
 }
 
-static bool InitLZO(void)
+static bool InitLZO()
 {
 	_sl.bufsize = LZO_SIZE;
 	_sl.buf = _sl.buf_ori = (byte*)malloc(LZO_SIZE);
 	return true;
 }
 
-static void UninitLZO(void)
+static void UninitLZO()
 {
 	free(_sl.buf_ori);
 }
@@ -1014,7 +1014,7 @@ static void UninitLZO(void)
 /*********************************************
  ******** START OF NOCOMP CODE (uncompressed)*
  *********************************************/
-static uint ReadNoComp(void)
+static uint ReadNoComp()
 {
 	return fread(_sl.buf, 1, LZO_SIZE, _sl.fh);
 }
@@ -1024,14 +1024,14 @@ static void WriteNoComp(uint size)
 	fwrite(_sl.buf, 1, size, _sl.fh);
 }
 
-static bool InitNoComp(void)
+static bool InitNoComp()
 {
 	_sl.bufsize = LZO_SIZE;
 	_sl.buf = _sl.buf_ori =(byte*)malloc(LZO_SIZE);
 	return true;
 }
 
-static void UninitNoComp(void)
+static void UninitNoComp()
 {
 	free(_sl.buf_ori);
 }
@@ -1056,7 +1056,7 @@ typedef struct ThreadedSave {
 STATIC_OLD_POOL(Savegame, byte, 17, 500, NULL, NULL)
 static ThreadedSave _ts;
 
-static bool InitMem(void)
+static bool InitMem()
 {
 	_ts.count = 0;
 
@@ -1069,7 +1069,7 @@ static bool InitMem(void)
 	return true;
 }
 
-static void UnInitMem(void)
+static void UnInitMem()
 {
 	CleanPool(&_Savegame_pool);
 }
@@ -1091,7 +1091,7 @@ static void WriteMem(uint size)
 
 static z_stream _z;
 
-static bool InitReadZlib(void)
+static bool InitReadZlib()
 {
 	memset(&_z, 0, sizeof(_z));
 	if (inflateInit(&_z) != Z_OK) return false;
@@ -1101,7 +1101,7 @@ static bool InitReadZlib(void)
 	return true;
 }
 
-static uint ReadZlib(void)
+static uint ReadZlib()
 {
 	int r;
 
@@ -1126,13 +1126,13 @@ static uint ReadZlib(void)
 	return 4096 - _z.avail_out;
 }
 
-static void UninitReadZlib(void)
+static void UninitReadZlib()
 {
 	inflateEnd(&_z);
 	free(_sl.buf_ori);
 }
 
-static bool InitWriteZlib(void)
+static bool InitWriteZlib()
 {
 	memset(&_z, 0, sizeof(_z));
 	if (deflateInit(&_z, 6) != Z_OK) return false;
@@ -1168,7 +1168,7 @@ static void WriteZlib(uint len)
 	WriteZlibLoop(&_z, _sl.buf, len, 0);
 }
 
-static void UninitWriteZlib(void)
+static void UninitWriteZlib()
 {
 	/* flush any pending output. */
 	if (_sl.fh) WriteZlibLoop(&_z, NULL, 0, Z_FINISH);
@@ -1330,13 +1330,13 @@ typedef struct {
 	const char *name;           ///< name of the compressor/decompressor (debug-only)
 	uint32 tag;                 ///< the 4-letter tag by which it is identified in the savegame
 
-	bool (*init_read)(void);    ///< function executed upon initalization of the loader
+	bool (*init_read)();        ///< function executed upon initalization of the loader
 	ReaderProc *reader;         ///< function that loads the data from the file
-	void (*uninit_read)(void);  ///< function executed when reading is finished
+	void (*uninit_read)();      ///< function executed when reading is finished
 
-	bool (*init_write)(void);   ///< function executed upon intialization of the saver
+	bool (*init_write)();       ///< function executed upon intialization of the saver
 	WriterProc *writer;         ///< function that saves the data to the file
-	void (*uninit_write)(void); ///< function executed when writing is done
+	void (*uninit_write)();     ///< function executed when writing is done
 } SaveLoadFormat;
 
 static const SaveLoadFormat _saveload_formats[] = {
@@ -1377,12 +1377,12 @@ static const SaveLoadFormat *GetSavegameFormat(const char *s)
 
 /* actual loader/saver function */
 void InitializeGame(int mode, uint size_x, uint size_y);
-extern bool AfterLoadGame(void);
-extern void BeforeSaveGame(void);
+extern bool AfterLoadGame();
+extern void BeforeSaveGame();
 extern bool LoadOldSaveGame(const char *file);
 
 /** Small helper function to close the to be loaded savegame an signal error */
-static inline SaveOrLoadResult AbortSaveLoad(void)
+static inline SaveOrLoadResult AbortSaveLoad()
 {
 	if (_sl.fh != NULL) fclose(_sl.fh);
 
@@ -1393,7 +1393,7 @@ static inline SaveOrLoadResult AbortSaveLoad(void)
 /** Update the gui accordingly when starting saving
  * and set locks on saveload. Also turn off fast-forward cause with that
  * saving takes Aaaaages */
-void SaveFileStart(void)
+void SaveFileStart()
 {
 	_ts.ff_state = _fast_forward;
 	_fast_forward = 0;
@@ -1405,7 +1405,7 @@ void SaveFileStart(void)
 
 /** Update the gui accordingly when saving is done and release locks
  * on saveload */
-void SaveFileDone(void)
+void SaveFileDone()
 {
 	_fast_forward = _ts.ff_state;
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
@@ -1415,7 +1415,7 @@ void SaveFileDone(void)
 }
 
 /** Show a gui message when saving has failed */
-void SaveFileError(void)
+void SaveFileError()
 {
 	ShowErrorMessage(STR_4007_GAME_SAVE_FAILED, STR_NULL, 0, 0);
 	SaveFileDone();
@@ -1487,7 +1487,7 @@ static void* SaveFileToDiskThread(void *arg)
 	return NULL;
 }
 
-void WaitTillSaved(void)
+void WaitTillSaved()
 {
 	OTTDJoinThread(save_thread);
 	save_thread = NULL;
@@ -1658,7 +1658,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 }
 
 /** Do a save when exiting the game (patch option) _patches.autosave_on_exit */
-void DoExitSave(void)
+void DoExitSave()
 {
 	char buf[200];
 	snprintf(buf, sizeof(buf), "%s%sexit.sav", _paths.autosave_dir, PATHSEP);

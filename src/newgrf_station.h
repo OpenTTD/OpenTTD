@@ -96,13 +96,13 @@ typedef struct StationClass {
 	StationSpec **spec; ///< Array of station specifications.
 } StationClass;
 
-void ResetStationClasses(void);
+void ResetStationClasses();
 StationClassID AllocateStationClass(uint32 cls);
 void SetStationClassName(StationClassID sclass, StringID name);
 StringID GetStationClassName(StationClassID sclass);
-StringID *BuildStationClassDropdown(void);
+StringID *BuildStationClassDropdown();
 
-uint GetNumStationClasses(void);
+uint GetNumStationClasses();
 uint GetNumCustomStations(StationClassID sclass);
 
 void SetCustomStationSpec(StationSpec *statspec);

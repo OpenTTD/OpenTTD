@@ -77,7 +77,7 @@ static const char *LibtimidityMidiStart(const char *const *param)
 	return NULL;
 }
 
-static void LibtimidityMidiStop(void)
+static void LibtimidityMidiStop()
 {
 	if (_midi.status == MIDI_PLAYING) {
 		_midi.status = MIDI_STOPPED;
@@ -107,13 +107,13 @@ static void LibtimidityMidiPlaySong(const char *filename)
 	_midi.status = MIDI_PLAYING;
 }
 
-static void LibtimidityMidiStopSong(void)
+static void LibtimidityMidiStopSong()
 {
 	_midi.status = MIDI_STOPPED;
 	mid_song_free(_midi.song);
 }
 
-static bool LibtimidityMidiIsPlaying(void)
+static bool LibtimidityMidiIsPlaying()
 {
 	if (_midi.status == MIDI_PLAYING) {
 		_midi.song_position = mid_song_get_time(_midi.song);

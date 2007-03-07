@@ -34,7 +34,7 @@ enum {
 
 void ShowEnginePreviewWindow(EngineID engine);
 
-void DeleteCustomEngineNames(void)
+void DeleteCustomEngineNames()
 {
 	uint i;
 	StringID old;
@@ -48,13 +48,13 @@ void DeleteCustomEngineNames(void)
 	_vehicle_design_names &= ~1;
 }
 
-void LoadCustomEngineNames(void)
+void LoadCustomEngineNames()
 {
 	/* XXX: not done */
 	DEBUG(misc, 1, "LoadCustomEngineNames: not done");
 }
 
-static void SetupEngineNames(void)
+static void SetupEngineNames()
 {
 	StringID *name;
 
@@ -92,7 +92,7 @@ static void CalcEngineReliability(Engine *e)
 	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
 }
 
-void AddTypeToEngines(void)
+void AddTypeToEngines()
 {
 	Engine* e = _engines;
 
@@ -102,7 +102,7 @@ void AddTypeToEngines(void)
 	do e->type = VEH_Aircraft; while (++e < &_engines[TOTAL_NUM_ENGINES]);
 }
 
-void StartupEngines(void)
+void StartupEngines()
 {
 	Engine *e;
 	const EngineInfo *ei;
@@ -209,7 +209,7 @@ static PlayerID GetBestPlayer(PlayerID pp)
 	return best_player;
 }
 
-void EnginesDailyLoop(void)
+void EnginesDailyLoop()
 {
 	EngineID i;
 
@@ -321,7 +321,7 @@ static void NewVehicleAvailable(Engine *e)
 	AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_VEHICLEAVAIL), 0, 0);
 }
 
-void EnginesMonthlyLoop(void)
+void EnginesMonthlyLoop()
 {
 	Engine *e;
 
@@ -423,7 +423,7 @@ static void EngineRenewPoolNewBlock(uint start_item)
 }
 
 
-static EngineRenew *AllocateEngineRenew(void)
+static EngineRenew *AllocateEngineRenew()
 {
 	EngineRenew *er;
 
@@ -538,7 +538,7 @@ static const SaveLoad _engine_renew_desc[] = {
 	SLE_END()
 };
 
-static void Save_ERNW(void)
+static void Save_ERNW()
 {
 	EngineRenew *er;
 
@@ -548,7 +548,7 @@ static void Save_ERNW(void)
 	}
 }
 
-static void Load_ERNW(void)
+static void Load_ERNW()
 {
 	int index;
 
@@ -590,7 +590,7 @@ static const SaveLoad _engine_desc[] = {
 	SLE_END()
 };
 
-static void Save_ENGN(void)
+static void Save_ENGN()
 {
 	uint i;
 
@@ -600,7 +600,7 @@ static void Save_ENGN(void)
 	}
 }
 
-static void Load_ENGN(void)
+static void Load_ENGN()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
@@ -608,7 +608,7 @@ static void Load_ENGN(void)
 	}
 }
 
-static void LoadSave_ENGS(void)
+static void LoadSave_ENGS()
 {
 	SlArray(_engine_name_strings, lengthof(_engine_name_strings), SLE_STRINGID);
 }
@@ -619,7 +619,7 @@ extern const ChunkHandler _engine_chunk_handlers[] = {
 	{ 'ERNW', Save_ERNW,     Load_ERNW,     CH_ARRAY | CH_LAST},
 };
 
-void InitializeEngines(void)
+void InitializeEngines()
 {
 	/* Clean the engine renew pool and create 1 block in it */
 	CleanPool(&_EngineRenew_pool);

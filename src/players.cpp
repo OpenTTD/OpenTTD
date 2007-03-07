@@ -337,7 +337,7 @@ static const byte _color_sort[16] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1
 static const byte _color_similar_1[16] = {8, 6, 255, 12,  255, 0, 1, 1, 0, 13,  11,  10, 3,   9,  15, 14};
 static const byte _color_similar_2[16] = {5, 7, 255, 255, 255, 8, 7, 6, 5, 12, 255, 255, 9, 255, 255, 255};
 
-static byte GeneratePlayerColor(void)
+static byte GeneratePlayerColor()
 {
 	byte colors[16], pcolor, t2;
 	int i,j,n;
@@ -425,7 +425,7 @@ restart:;
 	}
 }
 
-static Player *AllocatePlayer(void)
+static Player *AllocatePlayer()
 {
 	Player *p;
 	// Find a free slot
@@ -494,13 +494,13 @@ Player *DoStartupNewPlayer(bool is_ai)
 	return p;
 }
 
-void StartupPlayers(void)
+void StartupPlayers()
 {
 	// The AI starts like in the setting with +2 month max
 	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
 }
 
-static void MaybeStartNewPlayer(void)
+static void MaybeStartNewPlayer()
 {
 	uint n;
 	Player *p;
@@ -527,14 +527,14 @@ static void MaybeStartNewPlayer(void)
 	_next_competitor_start += _network_server ? InteractiveRandomRange(60 * DAY_TICKS) : RandomRange(60 * DAY_TICKS);
 }
 
-void InitializePlayers(void)
+void InitializePlayers()
 {
 	memset(_players, 0, sizeof(_players));
 	for (PlayerID i = PLAYER_FIRST; i != MAX_PLAYERS; i++) _players[i].index = i;
 	_cur_player_tick_index = 0;
 }
 
-void OnTick_Players(void)
+void OnTick_Players()
 {
 	Player *p;
 
@@ -560,7 +560,7 @@ StringID GetPlayerNameString(PlayerID player, uint index)
 
 extern void ShowPlayerFinances(PlayerID player);
 
-void PlayersYearlyLoop(void)
+void PlayersYearlyLoop()
 {
 	Player *p;
 
@@ -946,7 +946,7 @@ StringID EndGameGetPerformanceTitleFromValue(uint value)
 }
 
 /* Return true if any cheat has been used, false otherwise */
-static bool CheatHasBeenUsed(void)
+static bool CheatHasBeenUsed()
 {
 	const Cheat* cht = (Cheat*)&_cheats;
 	const Cheat* cht_last = &cht[sizeof(_cheats) / sizeof(Cheat)];
@@ -998,7 +998,7 @@ static int CDECL HighScoreSorter(const void *a, const void *b)
 
 /* Save the highscores in a network game when it has ended */
 #define LAST_HS_ITEM lengthof(_highscore_table) - 1
-int8 SaveHighScoreValueNetwork(void)
+int8 SaveHighScoreValueNetwork()
 {
 	const Player* p;
 	const Player* pl[MAX_PLAYERS];
@@ -1036,7 +1036,7 @@ int8 SaveHighScoreValueNetwork(void)
 }
 
 /* Save HighScore table to file */
-void SaveToHighScore(void)
+void SaveToHighScore()
 {
 	FILE *fp = fopen(_highscore_file, "wb");
 
@@ -1060,7 +1060,7 @@ void SaveToHighScore(void)
 }
 
 /* Initialize the highscore table to 0 and if any file exists, load in values */
-void LoadFromHighScore(void)
+void LoadFromHighScore()
 {
 	FILE *fp = fopen(_highscore_file, "rb");
 
@@ -1257,7 +1257,7 @@ static void SaveLoad_PLYR(Player* p)
 	}
 }
 
-static void Save_PLYR(void)
+static void Save_PLYR()
 {
 	Player *p;
 	FOR_ALL_PLAYERS(p) {
@@ -1268,7 +1268,7 @@ static void Save_PLYR(void)
 	}
 }
 
-static void Load_PLYR(void)
+static void Load_PLYR()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {

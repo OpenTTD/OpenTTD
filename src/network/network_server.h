@@ -17,8 +17,8 @@ void NetworkServer_HandleChat(NetworkAction action, DestType type, int dest, con
 
 bool NetworkServer_ReadPackets(NetworkTCPSocketHandler *cs);
 void NetworkServer_Tick(bool send_frame);
-void NetworkServerMonthlyLoop(void);
-void NetworkServerYearlyLoop(void);
+void NetworkServerMonthlyLoop();
+void NetworkServerYearlyLoop();
 
 static inline const char* GetPlayerIP(const NetworkClientInfo* ci)
 {
@@ -31,8 +31,8 @@ static inline const char* GetPlayerIP(const NetworkClientInfo* ci)
 #else /* ENABLE_NETWORK */
 /* Network function stubs when networking is disabled */
 
-static inline void NetworkServerMonthlyLoop(void) {}
-static inline void NetworkServerYearlyLoop(void) {}
+static inline void NetworkServerMonthlyLoop() {}
+static inline void NetworkServerYearlyLoop() {}
 
 #endif /* ENABLE_NETWORK */
 

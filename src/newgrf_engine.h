@@ -50,12 +50,12 @@ void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 void SetCustomEngineName(EngineID engine, StringID name);
 StringID GetCustomEngineName(EngineID engine);
 
-void UnloadWagonOverrides(void);
-void UnloadRotorOverrideSprites(void);
-void UnloadCustomEngineSprites(void);
-void UnloadCustomEngineNames(void);
+void UnloadWagonOverrides();
+void UnloadRotorOverrideSprites();
+void UnloadCustomEngineSprites();
+void UnloadCustomEngineNames();
 
-void ResetEngineListOrder(void);
+void ResetEngineListOrder();
 EngineID GetRailVehAtPosition(EngineID pos);
 uint16 ListPositionOfEngine(EngineID engine);
 void AlterRailVehListOrder(EngineID engine, EngineID target);

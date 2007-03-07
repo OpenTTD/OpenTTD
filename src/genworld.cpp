@@ -20,19 +20,19 @@
 #include "date.h"
 
 void GenerateLandscape(byte mode);
-void GenerateClearTile(void);
-void GenerateIndustries(void);
-void GenerateUnmovables(void);
-bool GenerateTowns(void);
-void GenerateTrees(void);
+void GenerateClearTile();
+void GenerateIndustries();
+void GenerateUnmovables();
+bool GenerateTowns();
+void GenerateTrees();
 
-void StartupEconomy(void);
-void StartupPlayers(void);
-void StartupDisasters(void);
+void StartupEconomy();
+void StartupPlayers();
+void StartupDisasters();
 
 void InitializeGame(int mode, uint size_x, uint size_y);
 
-void ConvertGroundTilesIntoWaterTiles(void);
+void ConvertGroundTilesIntoWaterTiles();
 
 /* Please only use this variable in genworld.h and genworld.c and
  *  nowhere else. For speed improvements we need it to be global, but
@@ -58,7 +58,7 @@ void SetGeneratingWorldPaintStatus(bool status)
  *  writing in a thread, it can cause damaged data (reading and writing the
  *  same tile at the same time).
  */
-bool IsGeneratingWorldReadyForPaint(void)
+bool IsGeneratingWorldReadyForPaint()
 {
 	/* If we are in quit_thread mode, ignore this and always return false. This
 	 *  forces the screen to not be drawn, and the GUI not to wait for a draw. */
@@ -70,7 +70,7 @@ bool IsGeneratingWorldReadyForPaint(void)
 /**
  * Tells if the world generation is done in a thread or not.
  */
-bool IsGenerateWorldThreaded(void)
+bool IsGenerateWorldThreaded()
 {
 	return _gw.threaded && !_gw.quit_thread;
 }
@@ -180,7 +180,7 @@ void GenerateWorldSetAbortCallback(gw_abort_proc *proc)
  * This will wait for the thread to finish up his work. It will not continue
  *  till the work is done.
  */
-void WaitTillGeneratedWorld(void)
+void WaitTillGeneratedWorld()
 {
 	if (_gw.thread == NULL) return;
 	_gw.quit_thread = true;
@@ -192,7 +192,7 @@ void WaitTillGeneratedWorld(void)
 /**
  * Initializes the abortion process
  */
-void AbortGeneratingWorld(void)
+void AbortGeneratingWorld()
 {
 	_gw.abort = true;
 }
@@ -200,7 +200,7 @@ void AbortGeneratingWorld(void)
 /**
  * Is the generation being aborted?
  */
-bool IsGeneratingWorldAborted(void)
+bool IsGeneratingWorldAborted()
 {
 	return _gw.abort;
 }
@@ -208,7 +208,7 @@ bool IsGeneratingWorldAborted(void)
 /**
  * Really handle the abortion, i.e. clean up some of the mess
  */
-void HandleGeneratingWorldAbortion(void)
+void HandleGeneratingWorldAbortion()
 {
 	/* Clean up - in SE create an empty map, otherwise, go to intro menu */
 	_switch_mode = (_game_mode == GM_EDITOR) ? SM_EDITOR : SM_MENU;

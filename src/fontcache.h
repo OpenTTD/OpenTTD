@@ -10,7 +10,7 @@ SpriteID GetUnicodeGlyph(FontSize size, uint32 key);
 void SetUnicodeGlyph(FontSize size, uint32 key, SpriteID sprite);
 
 /** Initialize the glyph map */
-void InitializeUnicodeGlyphMap(void);
+void InitializeUnicodeGlyphMap();
 
 #ifdef WITH_FREETYPE
 
@@ -25,14 +25,14 @@ typedef struct FreeTypeSettings {
 
 extern FreeTypeSettings _freetype;
 
-void InitFreeType(void);
+void InitFreeType();
 const struct Sprite *GetGlyph(FontSize size, uint32 key);
 uint GetGlyphWidth(FontSize size, uint32 key);
 
 #else
 
 /* Stub for initializiation */
-static inline void InitFreeType(void) {}
+static inline void InitFreeType() {}
 
 /** Get the Sprite for a glyph */
 static inline const Sprite *GetGlyph(FontSize size, uint32 key)

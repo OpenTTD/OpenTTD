@@ -1228,7 +1228,7 @@ static NetworkServerPacket* const _network_server_packet[] = {
 assert_compile(lengthof(_network_server_packet) == PACKET_END);
 
 // This update the company_info-stuff
-void NetworkPopulateCompanyInfo(void)
+void NetworkPopulateCompanyInfo()
 {
 	char password[NETWORK_PASSWORD_LENGTH];
 	const Player *p;
@@ -1355,7 +1355,7 @@ void NetworkUpdateClientInfo(uint16 client_index)
 }
 
 /* Check if we want to restart the map */
-static void NetworkCheckRestartMap(void)
+static void NetworkCheckRestartMap()
 {
 	if (_network_restart_game_year != 0 && _cur_year >= _network_restart_game_year) {
 		DEBUG(net, 0, "Auto-restarting map. Year %d reached", _cur_year);
@@ -1369,7 +1369,7 @@ static void NetworkCheckRestartMap(void)
       1) If a company is not protected, it is closed after 1 year (for example)
       2) If a company is protected, protection is disabled after 3 years (for example)
            (and item 1. happens a year later) */
-static void NetworkAutoCleanCompanies(void)
+static void NetworkAutoCleanCompanies()
 {
 	NetworkTCPSocketHandler *cs;
 	const NetworkClientInfo *ci;
@@ -1564,12 +1564,12 @@ void NetworkServer_Tick(bool send_frame)
 	NetworkUDPAdvertise();
 }
 
-void NetworkServerYearlyLoop(void)
+void NetworkServerYearlyLoop()
 {
 	NetworkCheckRestartMap();
 }
 
-void NetworkServerMonthlyLoop(void)
+void NetworkServerMonthlyLoop()
 {
 	NetworkAutoCleanCompanies();
 }

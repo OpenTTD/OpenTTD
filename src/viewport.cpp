@@ -129,7 +129,7 @@ static Point MapXYZToViewport(const ViewPort *vp, uint x, uint y, uint z)
 	return p;
 }
 
-void InitViewports(void) {
+void InitViewports() {
 	memset(_viewports, 0, sizeof(_viewports));
 	_active_viewports = 0;
 }
@@ -371,7 +371,7 @@ static Point GetTileFromScreenXY(int x, int y, int zoom_x, int zoom_y)
 	return pt;
 }
 
-Point GetTileBelowCursor(void)
+Point GetTileBelowCursor()
 {
 	return GetTileFromScreenXY(_cursor.pos.x, _cursor.pos.y, _cursor.pos.x, _cursor.pos.y);
 }
@@ -534,12 +534,12 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	if (vd->combine_sprites == 1) vd->combine_sprites = 2;
 }
 
-void StartSpriteCombine(void)
+void StartSpriteCombine()
 {
 	_cur_vd->combine_sprites = 1;
 }
 
-void EndSpriteCombine(void)
+void EndSpriteCombine()
 {
 	_cur_vd->combine_sprites = 0;
 }
@@ -725,7 +725,7 @@ static void DrawTileSelection(const TileInfo *ti)
 	}
 }
 
-static void ViewportAddLandscape(void)
+static void ViewportAddLandscape()
 {
 	ViewportDrawer *vd = _cur_vd;
 	int x, y, width, height;
@@ -1445,7 +1445,7 @@ void MarkTileDirty(int x, int y)
 	);
 }
 
-static void SetSelectionTilesDirty(void)
+static void SetSelectionTilesDirty()
 {
 	int y_size, x_size;
 	int x = _thd.pos.x;
@@ -1743,7 +1743,7 @@ void HandleViewportClicked(const ViewPort *vp, int x, int y)
 	}
 }
 
-Vehicle *CheckMouseOverVehicle(void)
+Vehicle *CheckMouseOverVehicle()
 {
 	const Window *w;
 	const ViewPort *vp;
@@ -1760,7 +1760,7 @@ Vehicle *CheckMouseOverVehicle(void)
 
 
 
-void PlaceObject(void)
+void PlaceObject()
 {
 	Point pt;
 	Window *w;
@@ -1866,7 +1866,7 @@ static byte GetAutorailHT(int x, int y)
 }
 
 // called regular to update tile highlighting in all cases
-void UpdateTileSelection(void)
+void UpdateTileSelection()
 {
 	int x1;
 	int y1;
@@ -1976,7 +1976,7 @@ void VpSetPresizeRange(TileIndex from, TileIndex to)
 	if (distance > 1) GuiShowTooltipsWithArgs(STR_MEASURE_LENGTH, 1, &distance);
 }
 
-static void VpStartPreSizing(void)
+static void VpStartPreSizing()
 {
 	_thd.selend.x = -1;
 	_special_mouse_mode = WSM_PRESIZE;
@@ -2385,7 +2385,7 @@ calc_heightdiff_single_direction:;
 }
 
 // while dragging
-bool VpHandlePlaceSizingDrag(void)
+bool VpHandlePlaceSizingDrag()
 {
 	Window *w;
 	WindowEvent e;
@@ -2477,7 +2477,7 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, byte mode, WindowClass window
 		SetMouseCursor(icon, pal);
 }
 
-void ResetObjectToPlace(void)
+void ResetObjectToPlace()
 {
 	SetObjectToPlace(SPR_CURSOR_MOUSE, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 }

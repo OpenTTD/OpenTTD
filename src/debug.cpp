@@ -153,7 +153,7 @@ void SetDebugString(const char *s)
  * Just return a string with the values of all the debug categorites
  * @return string with debug-levels
  */
-const char *GetDebugString(void)
+const char *GetDebugString()
 {
 	const DebugLevel *i;
 	static char dbgstr[100];

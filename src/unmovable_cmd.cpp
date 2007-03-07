@@ -335,7 +335,7 @@ static bool IsRadioTowerNearby(TileIndex tile)
 	return false;
 }
 
-void GenerateUnmovables(void)
+void GenerateUnmovables()
 {
 	int i, li, j, loop_count;
 	TileIndex tile;

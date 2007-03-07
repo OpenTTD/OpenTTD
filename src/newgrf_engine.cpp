@@ -85,7 +85,7 @@ static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID car
 /**
  * Unload all wagon override sprite groups.
  */
-void UnloadWagonOverrides(void)
+void UnloadWagonOverrides()
 {
 	WagonOverrides *wos;
 	WagonOverride *wo;
@@ -123,7 +123,7 @@ void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *grou
 /**
  * Unload all engine sprite groups.
  */
-void UnloadCustomEngineSprites(void)
+void UnloadCustomEngineSprites()
 {
 	memset(_engine_custom_sprites, 0, sizeof(_engine_custom_sprites));
 	memset(_engine_grf, 0, sizeof(_engine_grf));
@@ -144,7 +144,7 @@ void SetRotorOverrideSprites(EngineID engine, const SpriteGroup *group)
 }
 
 /** Unload all rotor override sprite groups */
-void UnloadRotorOverrideSprites(void)
+void UnloadRotorOverrideSprites()
 {
 	EngineID engine;
 
@@ -1007,7 +1007,7 @@ void SetCustomEngineName(EngineID engine, StringID name)
 	_engine_custom_names[engine] = name;
 }
 
-void UnloadCustomEngineNames(void)
+void UnloadCustomEngineNames()
 {
 	EngineID i;
 	for (i = 0; i < TOTAL_NUM_ENGINES; i++) {
@@ -1025,7 +1025,7 @@ StringID GetCustomEngineName(EngineID engine)
 static EngineID _engine_list_order[NUM_TRAIN_ENGINES];
 static byte _engine_list_position[NUM_TRAIN_ENGINES];
 
-void ResetEngineListOrder(void)
+void ResetEngineListOrder()
 {
 	EngineID i;
 

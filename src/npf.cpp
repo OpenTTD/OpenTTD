@@ -869,7 +869,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 	return best_result;
 }
 
-void InitializeNPF(void)
+void InitializeNPF()
 {
 	init_AyStar(&_npf_aystar, NPFHash, NPF_HASH_SIZE);
 	_npf_aystar.loops_per_tick = 0;

@@ -90,7 +90,7 @@ static const StringID _vehicle_sort_listing[] = {
 	INVALID_STRING_ID
 };
 
-void RebuildVehicleLists(void)
+void RebuildVehicleLists()
 {
 	Window* const *wz;
 
@@ -111,7 +111,7 @@ void RebuildVehicleLists(void)
 	}
 }
 
-void ResortVehicleLists(void)
+void ResortVehicleLists()
 {
 	Window* const *wz;
 
@@ -702,7 +702,7 @@ static int CDECL VehicleValueSorter(const void *a, const void *b)
 	return (_internal_sort_order & 1) ? -r : r;
 }
 
-void InitializeGUI(void)
+void InitializeGUI()
 {
 	memset(&_sorting, 0, sizeof(_sorting));
 }

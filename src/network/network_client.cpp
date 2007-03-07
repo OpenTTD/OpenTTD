@@ -839,7 +839,7 @@ static NetworkClientPacket* const _network_client_packet[] = {
 assert_compile(lengthof(_network_client_packet) == PACKET_END);
 
 // Is called after a client is connected to the server
-void NetworkClient_Connected(void)
+void NetworkClient_Connected()
 {
 	// Set the frame-counter to 0 so nothing happens till we are ready
 	_frame_counter = 0;

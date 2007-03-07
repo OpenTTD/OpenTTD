@@ -1132,7 +1132,7 @@ void ShowHighscoreTable(int difficulty, int8 ranking)
 
 /* Show the endgame victory screen in 2050. Update the new highscore
  * if it was high enough */
-void ShowEndGameChart(void)
+void ShowEndGameChart()
 {
 	Window *w;
 

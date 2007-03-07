@@ -31,7 +31,7 @@ enum {
  * This includes initialising the Default and Waypoint classes with an empty
  * entry, for standard stations and waypoints.
  */
-void ResetStationClasses(void)
+void ResetStationClasses()
 {
 	for (StationClassID i = STAT_CLASS_BEGIN; i < STAT_CLASS_MAX; i++) {
 		station_classes[i].id = 0;
@@ -95,7 +95,7 @@ StringID GetStationClassName(StationClassID sclass)
 /** Build a list of station class name StringIDs to use in a dropdown list
  * @return Pointer to a (static) array of StringIDs
  */
-StringID *BuildStationClassDropdown(void)
+StringID *BuildStationClassDropdown()
 {
 	/* Allow room for all station classes, plus a terminator entry */
 	static StringID names[STAT_CLASS_MAX + 1];
@@ -115,7 +115,7 @@ StringID *BuildStationClassDropdown(void)
  * Get the number of station classes in use.
  * @return Number of station classes.
  */
-uint GetNumStationClasses(void)
+uint GetNumStationClasses()
 {
 	uint i;
 	for (i = 0; i < STAT_CLASS_MAX && station_classes[i].id != 0; i++);

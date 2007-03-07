@@ -86,9 +86,9 @@ enum GameModes {
 	GM_EDITOR
 };
 
-void GameLoop(void);
+void GameLoop();
 
-void CreateConsole(void);
+void CreateConsole();
 
 typedef int32 CursorID;
 typedef byte Pixel;
@@ -166,18 +166,18 @@ extern uint16 _cur_resolution[2];
 extern Colour _cur_palette[256];
 
 void HandleKeypress(uint32 key);
-void HandleMouseEvents(void);
+void HandleMouseEvents();
 void CSleep(int milliseconds);
-void UpdateWindows(void);
+void UpdateWindows();
 
-uint32 InteractiveRandom(void); //< Used for random sequences that are not the same on the other end of the multiplayer link
+uint32 InteractiveRandom(); //< Used for random sequences that are not the same on the other end of the multiplayer link
 uint InteractiveRandomRange(uint max);
-void DrawTextMessage(void);
-void DrawMouseCursor(void);
-void ScreenSizeChanged(void);
-void HandleExitGameRequest(void);
-void GameSizeChanged(void);
-void UndrawMouseCursor(void);
+void DrawTextMessage();
+void DrawMouseCursor();
+void ScreenSizeChanged();
+void HandleExitGameRequest();
+void GameSizeChanged();
+void UndrawMouseCursor();
 
 #include "helpers.hpp"
 
@@ -222,14 +222,14 @@ void GfxDrawLine(int left, int top, int right, int bottom, int color);
 
 BoundingRect GetStringBoundingBox(const char *str);
 uint32 FormatStringLinebreaks(char *str, int maxw);
-void LoadStringWidthTable(void);
+void LoadStringWidthTable();
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw);
 uint DrawStringMultiLine(int x, int y, StringID str, int maxw);
-void DrawDirtyBlocks(void);
+void DrawDirtyBlocks();
 void SetDirtyBlocks(int left, int top, int right, int bottom);
-void MarkWholeScreenDirty(void);
+void MarkWholeScreenDirty();
 
-void GfxInitPalettes(void);
+void GfxInitPalettes();
 
 bool FillDrawPixelInfo(DrawPixelInfo* n, int left, int top, int width, int height);
 
@@ -239,10 +239,10 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 void SetMouseCursor(CursorID cursor);
 void SetMouseCursor(SpriteID sprite, SpriteID pal);
 void SetAnimatedMouseCursor(const AnimCursor *table);
-void CursorTick(void);
-void DrawMouseCursor(void);
-void ScreenSizeChanged(void);
-void UndrawMouseCursor(void);
+void CursorTick();
+void DrawMouseCursor();
+void ScreenSizeChanged();
+void UndrawMouseCursor();
 bool ChangeResInGame(int w, int h);
 void SortResolutions(int count);
 void ToggleFullScreen(bool fs);

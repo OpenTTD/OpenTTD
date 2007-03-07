@@ -5,7 +5,7 @@
 #ifndef GFXINIT_H
 #define GFXINIT_H
 
-void CheckExternalFiles(void);
-void GfxLoadSprites(void);
+void CheckExternalFiles();
+void GfxLoadSprites();
 
 #endif /* GFXINIT_H */

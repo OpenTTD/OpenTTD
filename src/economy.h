@@ -5,7 +5,7 @@
 #ifndef ECONOMY_H
 #define ECONOMY_H
 
-void ResetPriceBaseMultipliers(void);
+void ResetPriceBaseMultipliers();
 void SetPriceBaseMultiplier(uint price, byte factor);
 
 typedef struct {

@@ -215,7 +215,7 @@ void ResetGRFConfig(bool defaults)
  *     compatible GRF with the same grfid was found and used instead
  * <li> GLC_NOT_FOUND: For one or more GRF's no match was found at all
  * </ul> */
-GRFListCompatibility IsGoodGRFConfigList(void)
+GRFListCompatibility IsGoodGRFConfigList()
 {
 	GRFListCompatibility res = GLC_ALL_GOOD;
 
@@ -335,7 +335,7 @@ static uint ScanPath(const char *path)
 
 
 /* Scan for all NewGRFs */
-void ScanNewGRFFiles(void)
+void ScanNewGRFFiles()
 {
 	uint num;
 
@@ -452,7 +452,7 @@ static const SaveLoad _grfconfig_desc[] = {
 };
 
 
-static void Save_NGRF(void)
+static void Save_NGRF()
 {
 	int index = 0;
 
@@ -464,7 +464,7 @@ static void Save_NGRF(void)
 }
 
 
-static void Load_NGRF(void)
+static void Load_NGRF()
 {
 	ClearGRFConfigList(&_grfconfig);
 	while (SlIterateArray() != -1) {

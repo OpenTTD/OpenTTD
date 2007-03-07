@@ -191,7 +191,7 @@ static void Place_LandInfo(TileIndex tile)
 #undef LANDINFOD_LEVEL
 }
 
-void PlaceLandBlockInfo(void)
+void PlaceLandBlockInfo()
 {
 	if (_cursor.sprite == SPR_CURSOR_QUERY) {
 		ResetObjectToPlace();
@@ -305,7 +305,7 @@ static const WindowDesc _about_desc = {
 };
 
 
-void ShowAboutWindow(void)
+void ShowAboutWindow()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	AllocateWindowDesc(&_about_desc);
@@ -466,13 +466,13 @@ static const WindowDesc _build_trees_scen_desc = {
 };
 
 
-void ShowBuildTreesToolbar(void)
+void ShowBuildTreesToolbar()
 {
 	if (!IsValidPlayer(_current_player)) return;
 	AllocateWindowDescFront(&_build_trees_desc, 0);
 }
 
-void ShowBuildTreesScenToolbar(void)
+void ShowBuildTreesScenToolbar()
 {
 	AllocateWindowDescFront(&_build_trees_scen_desc, 0);
 }
@@ -1330,7 +1330,7 @@ static const Widget _save_dialog_widgets[] = {
 /* Colors for fios types */
 const byte _fios_colors[] = {13, 9, 9, 6, 5, 6, 5, 6, 6, 8};
 
-void BuildFileList(void)
+void BuildFileList()
 {
 	_fios_path_changed = true;
 	FiosFreeSavegameList();
@@ -1363,7 +1363,7 @@ static void DrawFiosTexts(uint maxw)
 	DoDrawStringTruncated(path, 2, 27, 16, maxw);
 }
 
-static void MakeSortedSaveGameList(void)
+static void MakeSortedSaveGameList()
 {
 	uint sort_start = 0;
 	uint sort_end = 0;
@@ -1387,7 +1387,7 @@ static void MakeSortedSaveGameList(void)
 		qsort(_fios_list + sort_start, s_amount, sizeof(FiosItem), compare_FiosItems);
 }
 
-static void GenerateFileName(void)
+static void GenerateFileName()
 {
 	/* Check if we are not a specatator who wants to generate a name..
 	    Let's use the name of player #0 for now. */
@@ -1399,7 +1399,7 @@ static void GenerateFileName(void)
 	GetString(_edit_str_buf, STR_4004, lastof(_edit_str_buf));
 }
 
-extern void StartupEngines(void);
+extern void StartupEngines();
 
 static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 {
@@ -1663,7 +1663,7 @@ void ShowSaveLoadDialog(int mode)
 	ResetObjectToPlace();
 }
 
-void RedrawAutosave(void)
+void RedrawAutosave()
 {
 	SetWindowDirty(FindWindowById(WC_STATUS_BAR, 0));
 }
@@ -1734,7 +1734,7 @@ static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 	return _opt.landscape;
 }
 
-extern void EnginesMonthlyLoop(void);
+extern void EnginesMonthlyLoop();
 
 /**
  * @param p2 1 (increase) or -1 (decrease)
@@ -1929,7 +1929,7 @@ static const WindowDesc _cheats_desc = {
 };
 
 
-void ShowCheatWindow(void)
+void ShowCheatWindow()
 {
 	DeleteWindowById(WC_CHEATS, 0);
 	AllocateWindowDesc(&_cheats_desc);

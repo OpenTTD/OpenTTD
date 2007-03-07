@@ -109,7 +109,7 @@ static void SwapOrders(Order *order1, Order *order2)
  * @return Order* if a free space is found, else NULL.
  *
  */
-static Order *AllocateOrder(void)
+static Order *AllocateOrder()
 {
 	Order *order;
 
@@ -1199,7 +1199,7 @@ bool CheckForValidOrders(const Vehicle* v)
 	return false;
 }
 
-void InitializeOrders(void)
+void InitializeOrders()
 {
 	CleanPool(&_Order_pool);
 	AddBlockToPool(&_Order_pool);
@@ -1221,7 +1221,7 @@ static const SaveLoad _order_desc[] = {
 	SLE_END()
 };
 
-static void Save_ORDR(void)
+static void Save_ORDR()
 {
 	Order *order;
 
@@ -1231,7 +1231,7 @@ static void Save_ORDR(void)
 	}
 }
 
-static void Load_ORDR(void)
+static void Load_ORDR()
 {
 	if (CheckSavegameVersionOldStyle(5, 2)) {
 		/* Version older than 5.2 did not have a ->next pointer. Convert them

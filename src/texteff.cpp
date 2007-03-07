@@ -55,7 +55,7 @@ static Pixel _textmessage_backup[150 * 500]; // (height * width)
 
 extern void memcpy_pitch(void *dst, void *src, int w, int h, int srcpitch, int dstpitch);
 
-static inline uint GetTextMessageCount(void)
+static inline uint GetTextMessageCount()
 {
 	uint i;
 
@@ -112,7 +112,7 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 	_textmessage_dirty = true;
 }
 
-void InitTextMessage(void)
+void InitTextMessage()
 {
 	uint i;
 
@@ -122,7 +122,7 @@ void InitTextMessage(void)
 }
 
 /* Hide the textbox */
-void UndrawTextMessage(void)
+void UndrawTextMessage()
 {
 	if (_textmessage_visible) {
 		/* Sometimes we also need to hide the cursor
@@ -160,7 +160,7 @@ void UndrawTextMessage(void)
 }
 
 /* Check if a message is expired every day */
-void TextMessageDailyLoop(void)
+void TextMessageDailyLoop()
 {
 	uint i;
 
@@ -184,7 +184,7 @@ void TextMessageDailyLoop(void)
 }
 
 /* Draw the textmessage-box */
-void DrawTextMessage(void)
+void DrawTextMessage()
 {
 	uint y, count;
 
@@ -277,7 +277,7 @@ static void MoveTextEffect(TextEffect *te)
 	MarkTextEffectAreaDirty(te);
 }
 
-void MoveAllTextEffects(void)
+void MoveAllTextEffects()
 {
 	TextEffect *te;
 
@@ -286,7 +286,7 @@ void MoveAllTextEffects(void)
 	}
 }
 
-void InitTextEffects(void)
+void InitTextEffects()
 {
 	TextEffect *te;
 
@@ -357,7 +357,7 @@ bool AddAnimatedTile(TileIndex tile)
 	return false;
 }
 
-void AnimateAnimatedTiles(void)
+void AnimateAnimatedTiles()
 {
 	const TileIndex* ti;
 
@@ -366,12 +366,12 @@ void AnimateAnimatedTiles(void)
 	}
 }
 
-void InitializeAnimatedTiles(void)
+void InitializeAnimatedTiles()
 {
 	memset(_animated_tile_list, 0, sizeof(_animated_tile_list));
 }
 
-static void SaveLoad_ANIT(void)
+static void SaveLoad_ANIT()
 {
 	/* In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;) */
 	if (CheckSavegameVersion(6)) {

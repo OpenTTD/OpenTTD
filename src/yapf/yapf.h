@@ -66,7 +66,7 @@ bool YapfCheckReverseTrain(Vehicle* v);
 void YapfNotifyTrackLayoutChange(TileIndex tile, Track track);
 
 /** performance measurement helpers */
-void* NpfBeginInterval(void);
+void* NpfBeginInterval();
 int NpfEndInterval(void* perf);
 
 

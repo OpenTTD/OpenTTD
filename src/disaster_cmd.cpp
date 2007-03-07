@@ -758,12 +758,12 @@ void OnNewDay_DisasterVehicle(Vehicle *v)
 	// not used
 }
 
-typedef void DisasterInitProc(void);
+typedef void DisasterInitProc();
 
 
 /** Zeppeliner which crashes on a small airport if one found,
  * otherwise crashes on a random tile */
-static void Disaster_Zeppeliner_Init(void)
+static void Disaster_Zeppeliner_Init()
 {
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	Station *st;
@@ -797,7 +797,7 @@ static void Disaster_Zeppeliner_Init(void)
 
 /** Ufo which flies around aimlessly from the middle of the map a bit
  * until it locates a road vehicle which it targets and then destroys */
-static void Disaster_Small_Ufo_Init(void)
+static void Disaster_Small_Ufo_Init()
 {
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	int x;
@@ -821,7 +821,7 @@ static void Disaster_Small_Ufo_Init(void)
 
 
 /* Combat airplane which destroys an oil refinery */
-static void Disaster_Airplane_Init(void)
+static void Disaster_Airplane_Init()
 {
 	Industry *i, *found;
 	Vehicle *v, *u;
@@ -857,7 +857,7 @@ static void Disaster_Airplane_Init(void)
 
 
 /** Combat helicopter that destroys a factory */
-static void Disaster_Helicopter_Init(void)
+static void Disaster_Helicopter_Init()
 {
 	Industry *i, *found;
 	Vehicle *v, *u, *w;
@@ -899,7 +899,7 @@ static void Disaster_Helicopter_Init(void)
 
 /* Big Ufo which lands on a piece of rail and will consequently be shot
  * down by a combat airplane, destroying the surroundings */
-static void Disaster_Big_Ufo_Init(void)
+static void Disaster_Big_Ufo_Init()
 {
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	int x, y;
@@ -924,7 +924,7 @@ static void Disaster_Big_Ufo_Init(void)
 
 
 /* Curious submarine #1, just floats around */
-static void Disaster_Small_Submarine_Init(void)
+static void Disaster_Small_Submarine_Init()
 {
 	Vehicle *v = ForceAllocateSpecialVehicle();
 	int x, y;
@@ -949,7 +949,7 @@ static void Disaster_Small_Submarine_Init(void)
 
 
 /* Curious submarine #2, just floats around */
-static void Disaster_Big_Submarine_Init(void)
+static void Disaster_Big_Submarine_Init()
 {
 	Vehicle *v = ForceAllocateSpecialVehicle();
 	int x,y;
@@ -975,7 +975,7 @@ static void Disaster_Big_Submarine_Init(void)
 
 /** Coal mine catastrophe, destroys a stretch of 30 tiles of
  * land in a certain direction */
-static void Disaster_CoalMine_Init(void)
+static void Disaster_CoalMine_Init()
 {
 	int index = GB(Random(), 0, 4);
 	uint m;
@@ -1031,7 +1031,7 @@ static const struct {
 };
 
 
-static void DoDisaster(void)
+static void DoDisaster()
 {
 	byte buf[lengthof(_dis_years)];
 	uint i;
@@ -1048,12 +1048,12 @@ static void DoDisaster(void)
 }
 
 
-static void ResetDisasterDelay(void)
+static void ResetDisasterDelay()
 {
 	_disaster_delay = GB(Random(), 0, 9) + 730;
 }
 
-void DisasterDailyLoop(void)
+void DisasterDailyLoop()
 {
 	if (--_disaster_delay != 0) return;
 
@@ -1062,7 +1062,7 @@ void DisasterDailyLoop(void)
 	if (_opt.diff.disasters != 0) DoDisaster();
 }
 
-void StartupDisasters(void)
+void StartupDisasters()
 {
 	ResetDisasterDelay();
 }

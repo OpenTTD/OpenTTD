@@ -65,7 +65,7 @@ static const char sdl_files[] =
 
 SDLProcs sdl_proc;
 
-static const char *LoadSdlDLL(void)
+static const char *LoadSdlDLL()
 {
 	if (sdl_proc.SDL_Init != NULL)
 		return NULL;

@@ -116,7 +116,7 @@ static const char *CocoaSoundStart(const char * const *parm)
 }
 
 
-static void CocoaSoundStop(void)
+static void CocoaSoundStop()
 {
 	struct AudioUnitInputCallback callback;
 

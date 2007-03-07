@@ -32,7 +32,7 @@ static AirportFTAClass *IntercontinentalAirport;
 static AirportFTAClass *HeliStation;
 
 
-void InitializeAirports(void)
+void InitializeAirports()
 {
 	CountryAirport = new AirportFTAClass(
 		_airport_moving_data_country,
@@ -175,7 +175,7 @@ void InitializeAirports(void)
 	);
 }
 
-void UnInitializeAirports(void)
+void UnInitializeAirports()
 {
 	delete CountryAirport;
 	delete CityAirport;
@@ -467,7 +467,7 @@ const AirportFTAClass *GetAirport(const byte airport_type)
 }
 
 
-uint32 GetValidAirports(void)
+uint32 GetValidAirports()
 {
 	uint32 mask = 0;
 

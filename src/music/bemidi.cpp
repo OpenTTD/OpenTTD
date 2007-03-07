@@ -14,7 +14,7 @@ static const char *bemidi_start(const char * const *parm)
 	return NULL;
 }
 
-static void bemidi_stop(void)
+static void bemidi_stop()
 {
 	midiSynthFile.UnloadFile();
 }
@@ -28,12 +28,12 @@ static void bemidi_play_song(const char *filename)
 	midiSynthFile.Start();
 }
 
-static void bemidi_stop_song(void)
+static void bemidi_stop_song()
 {
 	midiSynthFile.UnloadFile();
 }
 
-static bool bemidi_is_playing(void)
+static bool bemidi_is_playing()
 {
 	return !midiSynthFile.IsFinished();
 }

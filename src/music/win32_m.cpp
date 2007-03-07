@@ -23,7 +23,7 @@ static void Win32MidiPlaySong(const char *filename)
 	SetEvent(_midi.wait_obj);
 }
 
-static void Win32MidiStopSong(void)
+static void Win32MidiStopSong()
 {
 	if (_midi.playing) {
 		_midi.stop_song = true;
@@ -32,7 +32,7 @@ static void Win32MidiStopSong(void)
 	}
 }
 
-static bool Win32MidiIsSongPlaying(void)
+static bool Win32MidiIsSongPlaying()
 {
 	return _midi.playing;
 }
@@ -62,7 +62,7 @@ static bool MidiIntPlaySong(const char *filename)
 	return MidiSendCommand("play song from 0") == 0;
 }
 
-static void MidiIntStopSong(void)
+static void MidiIntStopSong()
 {
 	MidiSendCommand("close all");
 }
@@ -73,7 +73,7 @@ static void MidiIntSetVolume(int vol)
 	midiOutSetVolume((HMIDIOUT)_midi.devid, v + (v << 16));
 }
 
-static bool MidiIntIsSongPlaying(void)
+static bool MidiIntIsSongPlaying()
 {
 	char buf[16];
 	mciSendStringA("status song mode", buf, sizeof(buf), 0);
@@ -146,7 +146,7 @@ static const char *Win32MidiStart(const char * const *parm)
 	return NULL;
 }
 
-static void Win32MidiStop(void)
+static void Win32MidiStop()
 {
 	_midi.terminate = true;
 	SetEvent(_midi.wait_obj);

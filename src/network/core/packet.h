@@ -43,7 +43,7 @@ public:
 	Packet(PacketType type);
 
 	/* Sending/writing of packets */
-	void PrepareToSend(void);
+	void PrepareToSend();
 
 	void Send_bool  (bool   data);
 	void Send_uint8 (uint8  data);
@@ -53,15 +53,15 @@ public:
 	void Send_string(const char* data);
 
 	/* Reading/receiving of packets */
-	void ReadRawPacketSize(void);
-	void PrepareToRead(void);
+	void ReadRawPacketSize();
+	void PrepareToRead();
 
 	bool   CanReadFromPacket (uint bytes_to_read);
-	bool   Recv_bool  (void);
-	uint8  Recv_uint8 (void);
-	uint16 Recv_uint16(void);
-	uint32 Recv_uint32(void);
-	uint64 Recv_uint64(void);
+	bool   Recv_bool  ();
+	uint8  Recv_uint8 ();
+	uint16 Recv_uint16();
+	uint32 Recv_uint32();
+	uint64 Recv_uint64();
 	void   Recv_string(char* buffer, size_t size);
 };
 

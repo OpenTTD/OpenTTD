@@ -33,7 +33,7 @@
 /**
  * Switches OpenTTD to a console app at run-time, instead of a PM app
  * Necessary to see stdout, etc. */
-static void OS2_SwitchToConsoleMode(void)
+static void OS2_SwitchToConsoleMode()
 {
 	PPIB pib;
 	PTIB tib;
@@ -74,7 +74,7 @@ static HANDLE _hThread; // Thread to close
 static char _win_console_thread_buffer[200];
 
 /* Windows Console thread. Just loop and signal when input has been received */
-static void WINAPI CheckForConsoleInput(void)
+static void WINAPI CheckForConsoleInput()
 {
 	while (true) {
 		fgets(_win_console_thread_buffer, lengthof(_win_console_thread_buffer), stdin);
@@ -85,7 +85,7 @@ static void WINAPI CheckForConsoleInput(void)
 	}
 }
 
-static void CreateWindowsConsoleThread(void)
+static void CreateWindowsConsoleThread()
 {
 	DWORD dwThreadId;
 	/* Create event to signal when console input is ready */
@@ -99,7 +99,7 @@ static void CreateWindowsConsoleThread(void)
 	DEBUG(driver, 2, "Windows console thread started");
 }
 
-static void CloseWindowsConsoleThread(void)
+static void CloseWindowsConsoleThread()
 {
 	CloseHandle(_hThread);
 	CloseHandle(_hInputReady);
@@ -140,7 +140,7 @@ static const char *DedicatedVideoStart(const char * const *parm)
 	return NULL;
 }
 
-static void DedicatedVideoStop(void)
+static void DedicatedVideoStop()
 {
 #ifdef WIN32
 	CloseWindowsConsoleThread();
@@ -153,7 +153,7 @@ static bool DedicatedVideoChangeRes(int w, int h) { return false; }
 static void DedicatedVideoFullScreen(bool fs) {}
 
 #if defined(UNIX) || defined(__OS2__) || defined(PSP)
-static bool InputWaiting(void)
+static bool InputWaiting()
 {
 	struct timeval tv;
 	fd_set readfds;
@@ -168,7 +168,7 @@ static bool InputWaiting(void)
 	return select(STDIN + 1, &readfds, NULL, NULL, &tv) > 0;
 }
 
-static uint32 GetTime(void)
+static uint32 GetTime()
 {
 	struct timeval tim;
 
@@ -178,19 +178,19 @@ static uint32 GetTime(void)
 
 #else
 
-static bool InputWaiting(void)
+static bool InputWaiting()
 {
 	return WaitForSingleObject(_hInputReady, 1) == WAIT_OBJECT_0;
 }
 
-static uint32 GetTime(void)
+static uint32 GetTime()
 {
 	return GetTickCount();
 }
 
 #endif
 
-static void DedicatedHandleKeyInput(void)
+static void DedicatedHandleKeyInput()
 {
 	static char input_line[200] = "";
 
@@ -225,7 +225,7 @@ static void DedicatedHandleKeyInput(void)
 	IConsoleCmdExec(input_line); // execute command
 }
 
-static void DedicatedVideoMainLoop(void)
+static void DedicatedVideoMainLoop()
 {
 	uint32 cur_ticks = GetTime();
 	uint32 next_tick = cur_ticks + 30;

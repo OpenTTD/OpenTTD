@@ -64,7 +64,7 @@ static StringID *BuildDynamicDropdown(StringID base, int num)
 	return buf;
 }
 
-static int GetCurRes(void)
+static int GetCurRes()
 {
 	int i;
 
@@ -77,7 +77,7 @@ static int GetCurRes(void)
 	return i;
 }
 
-static inline bool RoadVehiclesAreBuilt(void)
+static inline bool RoadVehiclesAreBuilt()
 {
 	const Vehicle* v;
 
@@ -88,7 +88,7 @@ static inline bool RoadVehiclesAreBuilt(void)
 }
 
 
-static void ShowCustCurrency(void);
+static void ShowCustCurrency();
 
 static void GameOptionsWndProc(Window *w, WindowEvent *e)
 {
@@ -289,7 +289,7 @@ static const WindowDesc _game_options_desc = {
 };
 
 
-void ShowGameOptions(void)
+void ShowGameOptions()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	AllocateWindowDesc(&_game_options_desc);
@@ -369,7 +369,7 @@ void SetDifficultyLevel(int mode, GameOptions *gm_opt)
 	}
 }
 
-extern void StartupEconomy(void);
+extern void StartupEconomy();
 
 enum {
 	GAMEDIFF_WND_TOP_OFFSET = 45,
@@ -551,7 +551,7 @@ static const WindowDesc _game_difficulty_desc = {
 	GameDifficultyWndProc
 };
 
-void ShowGameDifficulty(void)
+void ShowGameDifficulty()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	/* Copy current settings (ingame or in intro) to temporary holding place
@@ -914,7 +914,7 @@ static const WindowDesc _patches_selection_desc = {
 	PatchesSelectionWndProc,
 };
 
-void ShowPatchesSelection(void)
+void ShowPatchesSelection()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	AllocateWindowDesc(&_patches_selection_desc);
@@ -1134,7 +1134,7 @@ static const WindowDesc _cust_currency_desc = {
 	CustCurrencyWndProc,
 };
 
-static void ShowCustCurrency(void)
+static void ShowCustCurrency()
 {
 	_str_separator[0] = _custom_currency.separator;
 	_str_separator[1] = '\0';

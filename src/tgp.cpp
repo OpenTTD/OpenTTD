@@ -229,7 +229,7 @@ static inline bool IsValidXY(uint x, uint y)
 
 
 /** Allocate array of (MapSizeX()+1)*(MapSizeY()+1) heights and init the _height_map structure members */
-static inline bool AllocHeightMap(void)
+static inline bool AllocHeightMap()
 {
 	height_t *h;
 
@@ -249,7 +249,7 @@ static inline bool AllocHeightMap(void)
 }
 
 /** Free height map */
-static inline void FreeHeightMap(void)
+static inline void FreeHeightMap()
 {
 	if (_height_map.h == NULL) return;
 	free(_height_map.h);
@@ -321,7 +321,7 @@ static bool ApplyNoise(uint log_frequency, amplitude_t amplitude)
 }
 
 /** Base Perlin noise generator - fills height map with raw Perlin noise */
-static void HeightMapGenerate(void)
+static void HeightMapGenerate()
 {
 	uint size_min = min(_height_map.size_x, _height_map.size_y);
 	uint iteration_round = 0;
@@ -524,7 +524,7 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
  * Please note that all the small numbers; 53, 101, 167, etc. are small primes
  * to help give the perlin noise a bit more of a random feel.
  */
-static void HeightMapCoastLines(void)
+static void HeightMapCoastLines()
 {
 	int smallest_size = min(_patches.map_x, _patches.map_y);
 	const int margin = 4;
@@ -610,7 +610,7 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 }
 
 /** Smooth coasts by modulating height of tiles close to map edges with cosine of distance from edge */
-static void HeightMapSmoothCoasts(void)
+static void HeightMapSmoothCoasts()
 {
 	uint x, y;
 	/* First Smooth NW and SE coasts (y close to 0 and y close to size_y) */
@@ -654,7 +654,7 @@ static void HeightMapSmoothSlopes(height_t dh_max)
  *  - coast Smoothing
  *  - slope Smoothing
  *  - height histogram redistribution by sine wave transform */
-static void HeightMapNormalize(void)
+static void HeightMapNormalize()
 {
 	const amplitude_t water_percent = _water_percent[_opt.diff.quantity_sea_lakes];
 	const height_t h_max_new = I2H(_max_height[_opt.diff.terrain_type]);
@@ -793,7 +793,7 @@ static void TgenSetTileHeight(TileIndex tile, int height)
  * areas wont be high enough, and there will be very little tropic on the map.
  * Thus Tropic works best on Hilly or Mountainous.
  */
-void GenerateTerrainPerlin(void)
+void GenerateTerrainPerlin()
 {
 	uint x, y;
 

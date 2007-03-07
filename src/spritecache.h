@@ -25,8 +25,8 @@ static inline const byte *GetNonSprite(SpriteID sprite)
 	return (byte*)GetRawSprite(sprite);
 }
 
-void GfxInitSpriteMem(void);
-void IncreaseSpriteLRU(void);
+void GfxInitSpriteMem();
+void IncreaseSpriteLRU();
 
 bool LoadNextSprite(int load_index, byte file_index);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);

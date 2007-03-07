@@ -24,7 +24,7 @@
 
 void ToggleFullScreen(bool fs);
 
-static char *GetOSString(void)
+static char *GetOSString()
 {
 	static char buffer[175];
 	const char* CPU;

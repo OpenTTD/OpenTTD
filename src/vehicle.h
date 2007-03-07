@@ -322,12 +322,12 @@ struct Vehicle {
 typedef void *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
-Vehicle *AllocateVehicle(void);
+Vehicle *AllocateVehicle();
 bool AllocateVehicles(Vehicle **vl, int num);
-Vehicle *ForceAllocateVehicle(void);
-Vehicle *ForceAllocateSpecialVehicle(void);
+Vehicle *ForceAllocateVehicle();
+Vehicle *ForceAllocateSpecialVehicle();
 void VehiclePositionChanged(Vehicle *v);
-void AfterLoadVehicles(void);
+void AfterLoadVehicles();
 Vehicle *GetLastVehicleInChain(Vehicle *v);
 Vehicle *GetPrevVehicleInChain(const Vehicle *v);
 Vehicle *GetFirstVehicleInChain(const Vehicle *v);
@@ -335,12 +335,12 @@ uint CountVehiclesInChain(const Vehicle* v);
 bool IsEngineCountable(const Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
-void CallVehicleTicks(void);
+void CallVehicleTicks();
 Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z);
 
-void InitializeTrains(void);
-byte VehicleRandomBits(void);
-void ResetVehiclePosHash(void);
+void InitializeTrains();
+byte VehicleRandomBits();
+void ResetVehiclePosHash();
 
 bool CanFillVehicle(Vehicle *v);
 bool CanRefitTo(EngineID engine_type, CargoID cid_to);
@@ -437,7 +437,7 @@ Direction GetDirectionTowards(const Vehicle* v, int x, int y);
 
 DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
 
-static inline VehicleID GetMaxVehicleIndex(void)
+static inline VehicleID GetMaxVehicleIndex()
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that
@@ -447,7 +447,7 @@ static inline VehicleID GetMaxVehicleIndex(void)
 	return GetVehiclePoolSize() - 1;
 }
 
-static inline uint GetNumVehicles(void)
+static inline uint GetNumVehicles()
 {
 	return GetVehiclePoolSize();
 }

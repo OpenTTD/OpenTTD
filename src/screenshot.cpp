@@ -421,7 +421,7 @@ static const ScreenshotFormat _screenshot_formats[] = {
 	{"PCX", "pcx", &MakePCXImage},
 };
 
-void InitializeScreenshotFormats(void)
+void InitializeScreenshotFormats()
 {
 	int i, j;
 	for (i = 0, j = 0; i != lengthof(_screenshot_formats); i++)
@@ -524,18 +524,18 @@ void SetScreenshotType(ScreenshotType t)
 	current_screenshot_type = t;
 }
 
-bool IsScreenshotRequested(void)
+bool IsScreenshotRequested()
 {
 	return (current_screenshot_type != SC_NONE);
 }
 
-static bool MakeSmallScreenshot(void)
+static bool MakeSmallScreenshot()
 {
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
 	return sf->proc(MakeScreenshotName(sf->extension), CurrentScreenCallback, NULL, _screen.width, _screen.height, 8, _cur_palette);
 }
 
-static bool MakeWorldScreenshot(void)
+static bool MakeWorldScreenshot()
 {
 	ViewPort vp;
 	const ScreenshotFormat *sf;
@@ -554,7 +554,7 @@ static bool MakeWorldScreenshot(void)
 	return sf->proc(MakeScreenshotName(sf->extension), LargeWorldCallback, &vp, vp.width, vp.height, 8, _cur_palette);
 }
 
-bool MakeScreenshot(void)
+bool MakeScreenshot()
 {
 	switch (current_screenshot_type) {
 		case SC_VIEWPORT:

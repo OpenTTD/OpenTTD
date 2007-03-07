@@ -3,6 +3,6 @@
 #ifndef TGP_H
 #define TGP_H
 
-void GenerateTerrainPerlin(void);
+void GenerateTerrainPerlin();
 
 #endif /* TGP_H */

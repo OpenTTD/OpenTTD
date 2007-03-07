@@ -107,8 +107,8 @@ static inline bool CanBuildDepotByTileh(DiagDirection direction, Slope tileh)
 }
 
 Depot *GetDepotByTile(TileIndex tile);
-void InitializeDepots(void);
-Depot *AllocateDepot(void);
+void InitializeDepots();
+Depot *AllocateDepot();
 
 void DeleteDepotHighlightOfVehicle(const Vehicle *v);
 

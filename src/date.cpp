@@ -178,24 +178,24 @@ static OnNewVehicleDayProc * _on_new_vehicle_day_proc[] = {
 	OnNewDay_DisasterVehicle,
 };
 
-extern void WaypointsDailyLoop(void);
-extern void TextMessageDailyLoop(void);
-extern void EnginesDailyLoop(void);
-extern void DisasterDailyLoop(void);
+extern void WaypointsDailyLoop();
+extern void TextMessageDailyLoop();
+extern void EnginesDailyLoop();
+extern void DisasterDailyLoop();
 
-extern void PlayersMonthlyLoop(void);
-extern void EnginesMonthlyLoop(void);
-extern void TownsMonthlyLoop(void);
-extern void IndustryMonthlyLoop(void);
-extern void StationMonthlyLoop(void);
+extern void PlayersMonthlyLoop();
+extern void EnginesMonthlyLoop();
+extern void TownsMonthlyLoop();
+extern void IndustryMonthlyLoop();
+extern void StationMonthlyLoop();
 
-extern void PlayersYearlyLoop(void);
-extern void TrainsYearlyLoop(void);
-extern void RoadVehiclesYearlyLoop(void);
-extern void AircraftYearlyLoop(void);
-extern void ShipsYearlyLoop(void);
+extern void PlayersYearlyLoop();
+extern void TrainsYearlyLoop();
+extern void RoadVehiclesYearlyLoop();
+extern void AircraftYearlyLoop();
+extern void ShipsYearlyLoop();
 
-extern void ShowEndGameChart(void);
+extern void ShowEndGameChart();
 
 
 static const Month _autosave_months[] = {
@@ -221,7 +221,7 @@ static void RunVehicleDayProc(uint daytick)
 	}
 }
 
-void IncreaseDate(void)
+void IncreaseDate()
 {
 	YearMonthDay ymd;
 

@@ -33,15 +33,15 @@ extern Tile* _m;
 void AllocateMap(uint size_x, uint size_y);
 
 /* binary logarithm of the map size, try to avoid using this one */
-static inline uint MapLogX(void)  { return _map_log_x; }
+static inline uint MapLogX()  { return _map_log_x; }
 /* The size of the map */
-static inline uint MapSizeX(void) { return _map_size_x; }
-static inline uint MapSizeY(void) { return _map_size_y; }
+static inline uint MapSizeX() { return _map_size_x; }
+static inline uint MapSizeY() { return _map_size_y; }
 /* The maximum coordinates */
-static inline uint MapMaxX(void) { return _map_size_x - 1; }
-static inline uint MapMaxY(void) { return _map_size_y - 1; }
+static inline uint MapMaxX() { return _map_size_x - 1; }
+static inline uint MapMaxY() { return _map_size_y - 1; }
 /* The number of tiles in the map */
-static inline uint MapSize(void) { return _map_size; }
+static inline uint MapSize() { return _map_size; }
 
 /* Scale a number relative to the map size */
 uint ScaleByMapSize(uint); // Scale relative to the number of tiles

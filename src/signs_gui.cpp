@@ -37,7 +37,7 @@ static int CDECL SignNameSorter(const void *a, const void *b)
 	return strcmp(buf1, _bufcache); // sort by name
 }
 
-static void GlobalSortSignList(void)
+static void GlobalSortSignList()
 {
 	const Sign *si;
 	uint n = 0;
@@ -137,7 +137,7 @@ static const WindowDesc _sign_list_desc = {
 };
 
 
-void ShowSignList(void)
+void ShowSignList()
 {
 	Window *w;
 

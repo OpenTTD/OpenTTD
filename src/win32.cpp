@@ -221,7 +221,7 @@ static const TCHAR _save_succeeded[] =
 	_T("Be aware that critical parts of the internal game state may have become ")
 	_T("corrupted. The saved game is not guaranteed to work.");
 
-static bool EmergencySave(void)
+static bool EmergencySave()
 {
 	SaveOrLoad("crash.sav", SL_SAVE);
 	return true;
@@ -431,14 +431,14 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM l
 	return FALSE;
 }
 
-static void Handler2(void)
+static void Handler2()
 {
 	ShowCursor(TRUE);
 	ShowWindow(GetActiveWindow(), FALSE);
 	DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(100), NULL, CrashDialogFunc);
 }
 
-extern bool CloseConsoleLogIfActive(void);
+extern bool CloseConsoleLogIfActive();
 
 static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 {
@@ -607,10 +607,10 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 }
 
 #ifdef _M_AMD64
-extern "C" void *_get_save_esp(void);
+extern "C" void *_get_save_esp();
 #endif
 
-static void Win32InitializeExceptions(void)
+static void Win32InitializeExceptions()
 {
 #ifdef _M_AMD64
 	_safe_esp = _get_save_esp();
@@ -636,7 +636,7 @@ static void Win32InitializeExceptions(void)
 static DIR _global_dir;
 static LONG _global_dir_is_in_use = false;
 
-static inline DIR *dir_calloc(void)
+static inline DIR *dir_calloc()
 {
 	DIR *d;
 
@@ -728,7 +728,7 @@ bool FiosIsRoot(const char *file)
 	return file[3] == '\0'; // C:\...
 }
 
-void FiosGetDrives(void)
+void FiosGetDrives()
 {
 	TCHAR drives[256];
 	const TCHAR *s;
@@ -815,7 +815,7 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 	return n;
 }
 
-void CreateConsole(void)
+void CreateConsole()
 {
 	HANDLE hand;
 	CONSOLE_SCREEN_BUFFER_INFO coninfo;
@@ -944,7 +944,7 @@ void GetCurrentDirectoryW(int length, wchar_t *path)
 }
 #endif
 
-void DeterminePaths(void)
+void DeterminePaths()
 {
 	char *s, *cfg;
 	wchar_t path[MAX_PATH];
@@ -1057,7 +1057,7 @@ void CSleep(int milliseconds)
 
 // Utility function to get the current timestamp in milliseconds
 // Useful for profiling
-int64 GetTS(void)
+int64 GetTS()
 {
 	static double freq;
 	__int64 value;

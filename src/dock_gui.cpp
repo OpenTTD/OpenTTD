@@ -17,8 +17,8 @@
 #include "command.h"
 #include "variables.h"
 
-static void ShowBuildDockStationPicker(void);
-static void ShowBuildDocksDepotPicker(void);
+static void ShowBuildDockStationPicker();
+static void ShowBuildDocksDepotPicker();
 
 static Axis _ship_depot_direction;
 
@@ -216,7 +216,7 @@ static const WindowDesc _build_docks_toolbar_desc = {
 	BuildDocksToolbWndProc
 };
 
-void ShowBuildDocksToolbar(void)
+void ShowBuildDocksToolbar()
 {
 	if (!IsValidPlayer(_current_player)) return;
 
@@ -290,12 +290,12 @@ static const WindowDesc _build_dock_station_desc = {
 	BuildDockStationWndProc
 };
 
-static void ShowBuildDockStationPicker(void)
+static void ShowBuildDockStationPicker()
 {
 	AllocateWindowDesc(&_build_dock_station_desc);
 }
 
-static void UpdateDocksDirection(void)
+static void UpdateDocksDirection()
 {
 	if (_ship_depot_direction != AXIS_X) {
 		SetTileSelectSize(1, 2);
@@ -360,14 +360,14 @@ static const WindowDesc _build_docks_depot_desc = {
 };
 
 
-static void ShowBuildDocksDepotPicker(void)
+static void ShowBuildDocksDepotPicker()
 {
 	AllocateWindowDesc(&_build_docks_depot_desc);
 	UpdateDocksDirection();
 }
 
 
-void InitializeDockGui(void)
+void InitializeDockGui()
 {
 	_ship_depot_direction = AXIS_X;
 }

@@ -63,7 +63,7 @@ Packet *NetworkSend_Init(PacketType type)
 /**
  * Writes the packet size from the raw packet from packet->size
  */
-void Packet::PrepareToSend(void)
+void Packet::PrepareToSend()
 {
 	assert(this->cs == NULL && this->next == NULL);
 
@@ -163,7 +163,7 @@ bool Packet::CanReadFromPacket(uint bytes_to_read)
 /**
  * Reads the packet size from the raw packet and stores it in the packet->size
  */
-void Packet::ReadRawPacketSize(void)
+void Packet::ReadRawPacketSize()
 {
 	assert(this->cs != NULL && this->next == NULL);
 	this->size  = (PacketSize)this->buffer[0];
@@ -173,7 +173,7 @@ void Packet::ReadRawPacketSize(void)
 /**
  * Prepares the packet so it can be read
  */
-void Packet::PrepareToRead(void)
+void Packet::PrepareToRead()
 {
 	this->ReadRawPacketSize();
 
@@ -181,12 +181,12 @@ void Packet::PrepareToRead(void)
 	this->pos = sizeof(PacketSize);
 }
 
-bool Packet::Recv_bool(void)
+bool Packet::Recv_bool()
 {
 	return this->Recv_uint8() != 0;
 }
 
-uint8 Packet::Recv_uint8(void)
+uint8 Packet::Recv_uint8()
 {
 	uint8 n;
 
@@ -196,7 +196,7 @@ uint8 Packet::Recv_uint8(void)
 	return n;
 }
 
-uint16 Packet::Recv_uint16(void)
+uint16 Packet::Recv_uint16()
 {
 	uint16 n;
 
@@ -207,7 +207,7 @@ uint16 Packet::Recv_uint16(void)
 	return n;
 }
 
-uint32 Packet::Recv_uint32(void)
+uint32 Packet::Recv_uint32()
 {
 	uint32 n;
 
@@ -220,7 +220,7 @@ uint32 Packet::Recv_uint32(void)
 	return n;
 }
 
-uint64 Packet::Recv_uint64(void)
+uint64 Packet::Recv_uint64()
 {
 	uint64 n;
 

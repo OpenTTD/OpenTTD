@@ -34,7 +34,7 @@ static int _fios_count, _fios_alloc;
 extern bool FiosIsRoot(const char *path);
 extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
 extern bool FiosIsHiddenFile(const struct dirent *ent);
-extern void FiosGetDrives(void);
+extern void FiosGetDrives();
 extern bool FiosGetDiskFreeSpace(const char *path, uint32 *tot);
 
 /* get the name of an oldstyle savegame */
@@ -44,7 +44,7 @@ extern void GetOldSaveGameName(char *title, const char *path, const char *file);
  * Allocate a new FiosItem.
  * @return A pointer to the newly allocated FiosItem.
  */
-FiosItem *FiosAlloc(void)
+FiosItem *FiosAlloc()
 {
 	if (_fios_count == _fios_alloc) {
 		_fios_alloc += 256;
@@ -78,7 +78,7 @@ int CDECL compare_FiosItems(const void *a, const void *b)
 /**
  * Free the list of savegames
  */
-void FiosFreeSavegameList(void)
+void FiosFreeSavegameList()
 {
 	free(_fios_items);
 	_fios_items = NULL;

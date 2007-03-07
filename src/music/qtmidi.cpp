@@ -173,7 +173,7 @@ static bool _quicktime_started = false;
  * #_quicktime_started flag to @c true if QuickTime is present in the system
  * and it was initialized properly.
  */
-static void InitQuickTimeIfNeeded(void)
+static void InitQuickTimeIfNeeded()
 {
 	OSStatus dummy;
 
@@ -207,7 +207,7 @@ static int   _quicktime_state  = QT_STATE_IDLE; /**< Current player state. */
 #define VOLUME  ((short)((0x00FF & _quicktime_volume) << 1))
 
 
-static void StopSong(void);
+static void StopSong();
 
 
 /**
@@ -230,7 +230,7 @@ static const char* StartDriver(const char * const *parm)
  * This function is called at regular intervals from OpenTTD's main loop, so
  * we call @c MoviesTask() from here to let QuickTime do its work.
  */
-static bool SongIsPlaying(void)
+static bool SongIsPlaying()
 {
 	if (!_quicktime_started) return true;
 
@@ -258,7 +258,7 @@ static bool SongIsPlaying(void)
  * Stops playing and frees any used resources before returning. As it
  * deinitilizes QuickTime, the #_quicktime_started flag is set to @c false.
  */
-static void StopDriver(void)
+static void StopDriver()
 {
 	if (!_quicktime_started) return;
 
@@ -312,7 +312,7 @@ static void PlaySong(const char *filename)
 /**
  * Stops playing the current song, if the player is active.
  */
-static void StopSong(void)
+static void StopSong()
 {
 	if (!_quicktime_started) return;
 

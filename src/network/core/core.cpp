@@ -21,7 +21,7 @@ struct Library *SocketBase = NULL;
  * Initializes the network core (as that is needed for some platforms
  * @return true if the core has been initialized, false otherwise
  */
-bool NetworkCoreInitialize(void)
+bool NetworkCoreInitialize()
 {
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 	/*
@@ -72,7 +72,7 @@ bool NetworkCoreInitialize(void)
 /**
  * Shuts down the network core (as that is needed for some platforms
  */
-void NetworkCoreShutdown(void)
+void NetworkCoreShutdown()
 {
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 	/* free allocated resources */

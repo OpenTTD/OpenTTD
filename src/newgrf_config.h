@@ -67,7 +67,7 @@ extern GRFConfig *_grfconfig_newgame;
 /* First item in list of static GRF set up */
 extern GRFConfig *_grfconfig_static;
 
-void ScanNewGRFFiles(void);
+void ScanNewGRFFiles();
 const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum = NULL);
 GRFConfig *GetGRFConfig(uint32 grfid);
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src);
@@ -76,7 +76,7 @@ void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el);
 void ClearGRFConfig(GRFConfig **config);
 void ClearGRFConfigList(GRFConfig **config);
 void ResetGRFConfig(bool defaults);
-GRFListCompatibility IsGoodGRFConfigList(void);
+GRFListCompatibility IsGoodGRFConfigList();
 bool FillGRFDetails(GRFConfig *config, bool is_static);
 char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 

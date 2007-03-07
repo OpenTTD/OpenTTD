@@ -49,12 +49,12 @@ static void UpdatePalette(uint start, uint count)
 	SDL_CALL SDL_SetColors(_sdl_screen, pal, start, count);
 }
 
-static void InitPalette(void)
+static void InitPalette()
 {
 	UpdatePalette(0, 256);
 }
 
-static void CheckPaletteAnim(void)
+static void CheckPaletteAnim()
 {
 	if (_pal_last_dirty != -1) {
 		UpdatePalette(_pal_first_dirty, _pal_last_dirty - _pal_first_dirty + 1);
@@ -62,7 +62,7 @@ static void CheckPaletteAnim(void)
 	}
 }
 
-static void DrawSurfaceToScreen(void)
+static void DrawSurfaceToScreen()
 {
 	int n = _num_dirty_rects;
 	if (n != 0) {
@@ -88,7 +88,7 @@ static const uint16 default_resolutions[][2] = {
 	{1920, 1200}
 };
 
-static void GetVideoModes(void)
+static void GetVideoModes()
 {
 	int i;
 	SDL_Rect **modes;
@@ -301,7 +301,7 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	return (key << 16) + sym->unicode;
 }
 
-static int PollEvent(void)
+static int PollEvent()
 {
 	SDL_Event ev;
 
@@ -415,12 +415,12 @@ static const char *SdlVideoStart(const char * const *parm)
 	return NULL;
 }
 
-static void SdlVideoStop(void)
+static void SdlVideoStop()
 {
 	SdlClose(SDL_INIT_VIDEO);
 }
 
-static void SdlVideoMainLoop(void)
+static void SdlVideoMainLoop()
 {
 	uint32 cur_ticks = SDL_CALL SDL_GetTicks();
 	uint32 next_tick = cur_ticks + 30;

@@ -9,12 +9,12 @@
 #if defined(_MSC_VER) && !defined(RDTSC_AVAILABLE)
 # if _MSC_VER >= 1400
 #include <intrin.h>
-uint64 _rdtsc(void)
+uint64 _rdtsc()
 {
 	return __rdtsc();
 }
 #	else
-uint64 _declspec(naked) _rdtsc(void)
+uint64 _declspec(naked) _rdtsc()
 {
 	_asm {
 		rdtsc
@@ -27,14 +27,14 @@ uint64 _declspec(naked) _rdtsc(void)
 
 /* rdtsc for OS/2. Hopefully this works, who knows */
 #if defined (__WATCOMC__) && !defined(RDTSC_AVAILABLE)
-unsigned __int64 _rdtsc( void);
+unsigned __int64 _rdtsc();
 # pragma aux _rdtsc = 0x0F 0x31 value [edx eax] parm nomemory modify exact [edx eax] nomemory;
 # define RDTSC_AVAILABLE
 #endif
 
 /* rdtsc for all other *nix-en (hopefully). Use GCC syntax */
 #if defined(__i386__) || defined(__x86_64__) && !defined(RDTSC_AVAILABLE)
-uint64 _rdtsc(void)
+uint64 _rdtsc()
 {
 	uint32 high, low;
 	__asm__ __volatile__ ("rdtsc" : "=a" (low), "=d" (high));
@@ -45,7 +45,7 @@ uint64 _rdtsc(void)
 
 /* rdtsc for PPC which has this not */
 #if (defined(__POWERPC__) || defined(__powerpc__)) && !defined(RDTSC_AVAILABLE)
-uint64 _rdtsc(void)
+uint64 _rdtsc()
 {
 	uint32 high = 0, high2 = 0, low;
 	/* PPC does not have rdtsc, so we cheat by reading the two 32-bit time-counters
@@ -70,5 +70,5 @@ uint64 _rdtsc(void)
  * you just won't be able to profile your code with TIC()/TOC() */
 #if !defined(RDTSC_AVAILABLE)
 #warning "(non-fatal) No support for rdtsc(), you won't be able to profile with TIC/TOC"
-uint64 _rdtsc(void) {return 0;}
+uint64 _rdtsc() {return 0;}
 #endif

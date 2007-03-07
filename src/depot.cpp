@@ -47,7 +47,7 @@ Depot *GetDepotByTile(TileIndex tile)
 /**
  * Allocate a new depot
  */
-Depot *AllocateDepot(void)
+Depot *AllocateDepot()
 {
 	Depot *d;
 
@@ -85,7 +85,7 @@ void DestroyDepot(Depot *depot)
 	DeleteWindowById(WC_VEHICLE_DEPOT, depot->xy);
 }
 
-void InitializeDepots(void)
+void InitializeDepots()
 {
 	CleanPool(&_Depot_pool);
 	AddBlockToPool(&_Depot_pool);
@@ -99,7 +99,7 @@ static const SaveLoad _depot_desc[] = {
 	SLE_END()
 };
 
-static void Save_DEPT(void)
+static void Save_DEPT()
 {
 	Depot *depot;
 
@@ -109,7 +109,7 @@ static void Save_DEPT(void)
 	}
 }
 
-static void Load_DEPT(void)
+static void Load_DEPT()
 {
 	int index;
 

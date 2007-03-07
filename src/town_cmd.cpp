@@ -251,7 +251,7 @@ static void ChangePopulation(Town *t, int mod)
 	if (_town_sort_order & 2) _town_sort_dirty = true;
 }
 
-uint32 GetWorldPopulation(void)
+uint32 GetWorldPopulation()
 {
 	uint32 pop;
 	const Town* t;
@@ -442,7 +442,7 @@ static void TownTickHandler(Town *t)
 	UpdateTownRadius(t);
 }
 
-void OnTick_Town(void)
+void OnTick_Town()
 {
 	if (_game_mode == GM_EDITOR) return;
 
@@ -760,7 +760,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 // Generate a random road block
 // The probability of a straight road
 // is somewhat higher than a curved.
-static RoadBits GenRandomRoadBits(void)
+static RoadBits GenRandomRoadBits()
 {
 	uint32 r = Random();
 	uint a = GB(r, 0, 2);
@@ -987,7 +987,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, uint siz
 	UpdateTownMaxPass(t);
 }
 
-static Town *AllocateTown(void)
+static Town *AllocateTown()
 {
 	Town *t;
 
@@ -1090,7 +1090,7 @@ Town *CreateRandomTown(uint attempts, uint size_mode)
 
 static const byte _num_initial_towns[3] = {11, 23, 46};
 
-bool GenerateTowns(void)
+bool GenerateTowns()
 {
 	uint num = 0;
 	uint n = ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
@@ -1807,7 +1807,7 @@ bool CheckforTownRating(uint32 flags, Town *t, byte type)
 	return true;
 }
 
-void TownsMonthlyLoop(void)
+void TownsMonthlyLoop()
 {
 	Town *t;
 
@@ -1823,7 +1823,7 @@ void TownsMonthlyLoop(void)
 	}
 }
 
-void InitializeTowns(void)
+void InitializeTowns()
 {
 	Subsidy *s;
 
@@ -1922,7 +1922,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_END()
 };
 
-static void Save_TOWN(void)
+static void Save_TOWN()
 {
 	Town *t;
 
@@ -1932,7 +1932,7 @@ static void Save_TOWN(void)
 	}
 }
 
-static void Load_TOWN(void)
+static void Load_TOWN()
 {
 	int index;
 
@@ -1956,7 +1956,7 @@ static void Load_TOWN(void)
 		_cur_town_ctr = 0;
 }
 
-void AfterLoadTown(void)
+void AfterLoadTown()
 {
 	Town *t;
 	FOR_ALL_TOWNS(t) {

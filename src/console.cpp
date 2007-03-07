@@ -46,7 +46,7 @@ static byte _iconsole_historypos;
  *  end of header  *
  * *************** */
 
-static void IConsoleClearCommand(void)
+static void IConsoleClearCommand()
 {
 	memset(_iconsole_cmdline.buf, 0, ICON_CMDLN_SIZE);
 	_iconsole_cmdline.length = 0;
@@ -56,7 +56,7 @@ static void IConsoleClearCommand(void)
 	SetWindowDirty(FindWindowById(WC_CONSOLE, 0));
 }
 
-static inline void IConsoleResetHistoryPos(void) {_iconsole_historypos = ICON_HISTORY_SIZE - 1;}
+static inline void IConsoleResetHistoryPos() {_iconsole_historypos = ICON_HISTORY_SIZE - 1;}
 
 
 static void IConsoleHistoryAdd(const char *cmd);
@@ -207,7 +207,7 @@ static const WindowDesc _iconsole_window_desc = {
 	IConsoleWndProc,
 };
 
-void IConsoleInit(void)
+void IConsoleInit()
 {
 	extern const char _openttd_revision[];
 	_iconsole_output_file = NULL;
@@ -238,7 +238,7 @@ void IConsoleInit(void)
 	IConsoleHistoryAdd("");
 }
 
-void IConsoleClearBuffer(void)
+void IConsoleClearBuffer()
 {
 	uint i;
 	for (i = 0; i <= ICON_BUFFER; i++) {
@@ -247,7 +247,7 @@ void IConsoleClearBuffer(void)
 	}
 }
 
-static void IConsoleClear(void)
+static void IConsoleClear()
 {
 	free(_iconsole_cmdline.buf);
 	IConsoleClearBuffer();
@@ -262,7 +262,7 @@ static void IConsoleWriteToLogFile(const char *string)
 	}
 }
 
-bool CloseConsoleLogIfActive(void)
+bool CloseConsoleLogIfActive()
 {
 	if (_iconsole_output_file != NULL) {
 		IConsolePrintF(_icolour_def, "file output complete");
@@ -274,7 +274,7 @@ bool CloseConsoleLogIfActive(void)
 	return false;
 }
 
-void IConsoleFree(void)
+void IConsoleFree()
 {
 	IConsoleClear();
 	CloseConsoleLogIfActive();
@@ -297,7 +297,7 @@ void IConsoleResize(Window *w)
 	MarkWholeScreenDirty();
 }
 
-void IConsoleSwitch(void)
+void IConsoleSwitch()
 {
 	switch (_iconsole_mode) {
 		case ICONSOLE_CLOSED: {
@@ -317,8 +317,8 @@ void IConsoleSwitch(void)
 	MarkWholeScreenDirty();
 }
 
-void IConsoleClose(void) {if (_iconsole_mode == ICONSOLE_OPENED) IConsoleSwitch();}
-void IConsoleOpen(void)  {if (_iconsole_mode == ICONSOLE_CLOSED) IConsoleSwitch();}
+void IConsoleClose() {if (_iconsole_mode == ICONSOLE_OPENED) IConsoleSwitch();}
+void IConsoleOpen()  {if (_iconsole_mode == ICONSOLE_CLOSED) IConsoleSwitch();}
 
 /**
  * Add the entered line into the history so you can look it back

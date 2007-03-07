@@ -128,7 +128,7 @@ byte GetNewgrfCurrencyIdConverted(byte grfcurr_id)
  * get a mask of the allowed currencies depending on the year
  * @return mask of currencies
  */
-uint GetMaskOfAllowedCurrencies(void)
+uint GetMaskOfAllowedCurrencies()
 {
 	uint mask = 0;
 	uint i;
@@ -147,7 +147,7 @@ uint GetMaskOfAllowedCurrencies(void)
 /**
  * Verify if the currency chosen by the user is about to be converted to Euro
  **/
-void CheckSwitchToEuro(void)
+void CheckSwitchToEuro()
 {
 	if (_currency_specs[_opt.currency].to_euro != CF_NOEURO &&
 			_currency_specs[_opt.currency].to_euro != CF_ISEURO &&
@@ -161,7 +161,7 @@ void CheckSwitchToEuro(void)
  * Called only from newgrf.c.  Will fill _currency_specs array with
  * default values from origin_currency_specs
  **/
-void ResetCurrencies(void)
+void ResetCurrencies()
 {
 	memcpy(&_currency_specs, &origin_currency_specs, sizeof(origin_currency_specs));
 }
@@ -170,7 +170,7 @@ void ResetCurrencies(void)
  * Build a list of currency names StringIDs to use in a dropdown list
  * @return Pointer to a (static) array of StringIDs
  */
-StringID* BuildCurrencyDropdown(void)
+StringID* BuildCurrencyDropdown()
 {
 	/* Allow room for all currencies, plus a terminator entry */
 	static StringID names[NUM_CURRENCY + 1];

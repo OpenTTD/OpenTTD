@@ -84,7 +84,7 @@ static void DoPlaceMoreTrees(TileIndex tile)
 	}
 }
 
-static void PlaceMoreTrees(void)
+static void PlaceMoreTrees()
 {
 	uint i = ScaleByMapSize(GB(Random(), 0, 5) + 25);
 	do {
@@ -124,7 +124,7 @@ void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 	}
 }
 
-void PlaceTreesRandomly(void)
+void PlaceTreesRandomly()
 {
 	uint i, j, ht;
 
@@ -180,7 +180,7 @@ void PlaceTreesRandomly(void)
 	}
 }
 
-void GenerateTrees(void)
+void GenerateTrees()
 {
 	uint i, total;
 
@@ -604,7 +604,7 @@ static void TileLoop_Trees(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-void OnTick_Trees(void)
+void OnTick_Trees()
 {
 	uint32 r;
 	TileIndex tile;
@@ -654,7 +654,7 @@ static void ChangeTileOwner_Trees(TileIndex tile, PlayerID old_player, PlayerID 
 	/* not used */
 }
 
-void InitializeTrees(void)
+void InitializeTrees()
 {
 	_trees_tick_ctr = 0;
 }

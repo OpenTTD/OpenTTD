@@ -93,7 +93,7 @@ static void OpenBankFile(const char *filename)
 	}
 }
 
-uint GetNumOriginalSounds(void)
+uint GetNumOriginalSounds()
 {
 	return _file_count;
 }
@@ -177,7 +177,7 @@ static const byte _sound_idx[] = {
 	72,
 };
 
-void SndCopyToPool(void)
+void SndCopyToPool()
 {
 	uint i;
 

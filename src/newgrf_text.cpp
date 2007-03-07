@@ -441,7 +441,7 @@ void SetCurrentGrfLangID(const char *iso_name)
  * House cleaning.
  * Remove all strings and reset the text counter.
  */
-void CleanUpStrings(void)
+void CleanUpStrings()
 {
 	uint id;
 

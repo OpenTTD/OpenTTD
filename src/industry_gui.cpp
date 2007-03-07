@@ -271,7 +271,7 @@ static const WindowDesc * const _industry_window_desc[2][4] = {
 	},
 };
 
-void ShowBuildIndustryWindow(void)
+void ShowBuildIndustryWindow()
 {
 	if (!IsValidPlayer(_current_player)) return;
 	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt_ptr->landscape],0);
@@ -561,7 +561,7 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
  * starts a new game without industries after playing a game with industries
  * the list is not populated with invalid industries from the previous game.
  */
-static void MakeSortedIndustryList(void)
+static void MakeSortedIndustryList()
 {
 	const Industry* i;
 	int n = 0;
@@ -690,7 +690,7 @@ static const WindowDesc _industry_directory_desc = {
 };
 
 
-void ShowIndustryDirectory(void)
+void ShowIndustryDirectory()
 {
 	Window *w = AllocateWindowDescFront(&_industry_directory_desc, 0);
 

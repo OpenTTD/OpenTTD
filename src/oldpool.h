@@ -68,7 +68,7 @@ bool AddBlockIfNeeded(OldMemoryPool *array, uint index);
 		); \
 	} \
 \
-	static inline uint Get##name##PoolSize(void) \
+	static inline uint Get##name##PoolSize() \
 	{ \
 		return _##name##_pool.total_items; \
 	}

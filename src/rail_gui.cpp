@@ -45,9 +45,9 @@ static struct {
 
 
 static void HandleStationPlacement(TileIndex start, TileIndex end);
-static void ShowBuildTrainDepotPicker(void);
-static void ShowBuildWaypointPicker(void);
-static void ShowStationBuilder(void);
+static void ShowBuildTrainDepotPicker();
+static void ShowBuildWaypointPicker();
+static void ShowStationBuilder();
 
 void CcPlaySound1E(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
@@ -348,7 +348,7 @@ static void DoRailroadTrack(int mode)
 	);
 }
 
-static void HandleAutodirPlacement(void)
+static void HandleAutodirPlacement()
 {
 	TileHighlightData *thd = &_thd;
 	int trackstat = thd->drawstyle & 0xF; // 0..5
@@ -361,7 +361,7 @@ static void HandleAutodirPlacement(void)
 	DoRailroadTrack(trackstat);
 }
 
-static void HandleAutoSignalPlacement(void)
+static void HandleAutoSignalPlacement()
 {
 	TileHighlightData *thd = &_thd;
 	uint32 p2 = GB(thd->drawstyle, 0, 3); // 0..5
@@ -1012,7 +1012,7 @@ static const WindowDesc _newstation_builder_desc = {
 	StationBuildWndProc
 };
 
-static void ShowStationBuilder(void)
+static void ShowStationBuilder()
 {
 	Window *w;
 	if (GetNumStationClasses() <= 2 && GetNumCustomStations(STAT_CLASS_DFLT) == 1) {
@@ -1091,7 +1091,7 @@ static const WindowDesc _build_depot_desc = {
 	BuildTrainDepotWndProc
 };
 
-static void ShowBuildTrainDepotPicker(void)
+static void ShowBuildTrainDepotPicker()
 {
 	AllocateWindowDesc(&_build_depot_desc);
 }
@@ -1177,7 +1177,7 @@ static const WindowDesc _build_waypoint_desc = {
 	BuildWaypointWndProc
 };
 
-static void ShowBuildWaypointPicker(void)
+static void ShowBuildWaypointPicker()
 {
 	Window *w = AllocateWindowDesc(&_build_waypoint_desc);
 	w->hscroll.cap = 5;
@@ -1185,7 +1185,7 @@ static void ShowBuildWaypointPicker(void)
 }
 
 
-void InitializeRailGui(void)
+void InitializeRailGui()
 {
 	_build_depot_direction = DIAGDIR_NW;
 	_railstation.numtracks = 1;

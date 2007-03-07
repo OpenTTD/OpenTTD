@@ -8,11 +8,11 @@
 
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order);
-void InitializeVehiclesGuiList(void);
+void InitializeVehiclesGuiList();
 
 /* sorter stuff */
-void RebuildVehicleLists(void);
-void ResortVehicleLists(void);
+void RebuildVehicleLists();
+void ResortVehicleLists();
 
 #define PERIODIC_RESORT_DAYS 10
 

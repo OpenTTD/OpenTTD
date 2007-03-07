@@ -63,7 +63,7 @@ static byte _network_clients_connected = 0;
 static uint16 _network_client_index = NETWORK_SERVER_INDEX + 1;
 
 /* Some externs / forwards */
-extern void StateGameLoop(void);
+extern void StateGameLoop();
 
 // Function that looks up the CI for a given client-index
 NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index)
@@ -117,7 +117,7 @@ void NetworkGetClientName(char *client_name, size_t size, const NetworkTCPSocket
 	}
 }
 
-byte NetworkSpectatorCount(void)
+byte NetworkSpectatorCount()
 {
 	NetworkTCPSocketHandler *cs;
 	byte count = 0;
@@ -301,7 +301,7 @@ char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last)
 }
 
 /* Count the number of active clients connected */
-static uint NetworkCountPlayers(void)
+static uint NetworkCountPlayers()
 {
 	NetworkTCPSocketHandler *cs;
 	uint count = 0;
@@ -317,7 +317,7 @@ static uint NetworkCountPlayers(void)
 static bool _min_players_paused = false;
 
 /* Check if the minimum number of players has been reached and pause or unpause the game as appropriate */
-void CheckMinPlayers(void)
+void CheckMinPlayers()
 {
 	if (!_network_dedicated) return;
 
@@ -337,7 +337,7 @@ void CheckMinPlayers(void)
 }
 
 // Find all IP-aliases for this host
-static void NetworkFindIPs(void)
+static void NetworkFindIPs()
 {
 #if !defined(PSP)
 	int i;
@@ -717,7 +717,7 @@ static bool NetworkConnect(const char *hostname, int port)
 }
 
 // For the server, to accept new clients
-static void NetworkAcceptClients(void)
+static void NetworkAcceptClients()
 {
 	struct sockaddr_in sin;
 	NetworkTCPSocketHandler *cs;
@@ -782,7 +782,7 @@ static void NetworkAcceptClients(void)
 }
 
 // Set up the listen socket for the server
-static bool NetworkListen(void)
+static bool NetworkListen()
 {
 	SOCKET ls;
 	struct sockaddr_in sin;
@@ -826,7 +826,7 @@ static bool NetworkListen(void)
 }
 
 // Close all current connections
-static void NetworkClose(void)
+static void NetworkClose()
 {
 	NetworkTCPSocketHandler *cs;
 
@@ -848,7 +848,7 @@ static void NetworkClose(void)
 }
 
 // Inits the network (cleans sockets and stuff)
-static void NetworkInitialize(void)
+static void NetworkInitialize()
 {
 	NetworkTCPSocketHandler *cs;
 
@@ -921,7 +921,7 @@ void NetworkAddServer(const char *b)
 /* Generates the list of manually added hosts from NetworkGameList and
  * dumps them into the array _network_host_list. This array is needed
  * by the function that generates the config file. */
-void NetworkRebuildHostList(void)
+void NetworkRebuildHostList()
 {
 	uint i = 0;
 	const NetworkGameList *item = _network_game_list;
@@ -968,7 +968,7 @@ bool NetworkClientConnectGame(const char *host, uint16 port)
 	return _networking;
 }
 
-static void NetworkInitGameInfo(void)
+static void NetworkInitGameInfo()
 {
 	NetworkClientInfo *ci;
 
@@ -1013,7 +1013,7 @@ static void NetworkInitGameInfo(void)
 	ttd_strlcpy(ci->unique_id, _network_unique_id, sizeof(ci->unique_id));
 }
 
-bool NetworkServerStart(void)
+bool NetworkServerStart()
 {
 	if (!_network_available) return false;
 
@@ -1060,7 +1060,7 @@ bool NetworkServerStart(void)
 
 // The server is rebooting...
 // The only difference with NetworkDisconnect, is the packets that is sent
-void NetworkReboot(void)
+void NetworkReboot()
 {
 	if (_network_server) {
 		NetworkTCPSocketHandler *cs;
@@ -1084,7 +1084,7 @@ void NetworkReboot(void)
 }
 
 // We want to disconnect from the host/clients
-void NetworkDisconnect(void)
+void NetworkDisconnect()
 {
 	if (_network_server) {
 		NetworkTCPSocketHandler *cs;
@@ -1112,7 +1112,7 @@ void NetworkDisconnect(void)
 }
 
 // Receives something from the network
-static bool NetworkReceive(void)
+static bool NetworkReceive()
 {
 	NetworkTCPSocketHandler *cs;
 	int n;
@@ -1167,7 +1167,7 @@ static bool NetworkReceive(void)
 }
 
 // This sends all buffered commands (if possible)
-static void NetworkSend(void)
+static void NetworkSend()
 {
 	NetworkTCPSocketHandler *cs;
 	FOR_ALL_CLIENTS(cs) {
@@ -1183,7 +1183,7 @@ static void NetworkSend(void)
 }
 
 // Handle the local-command-queue
-static void NetworkHandleLocalQueue(void)
+static void NetworkHandleLocalQueue()
 {
 	CommandPacket *cp, **cp_prev;
 
@@ -1218,7 +1218,7 @@ static void NetworkHandleLocalQueue(void)
 
 }
 
-static bool NetworkDoClientLoop(void)
+static bool NetworkDoClientLoop()
 {
 	_frame_counter++;
 
@@ -1259,7 +1259,7 @@ static bool NetworkDoClientLoop(void)
 }
 
 // We have to do some UDP checking
-void NetworkUDPGameLoop(void)
+void NetworkUDPGameLoop()
 {
 	if (_network_udp_server) {
 		_udp_server_socket->ReceivePackets();
@@ -1273,7 +1273,7 @@ void NetworkUDPGameLoop(void)
 
 // The main loop called from ttd.c
 //  Here we also have to do StateGameLoop if needed!
-void NetworkGameLoop(void)
+void NetworkGameLoop()
 {
 	if (!_networking) return;
 
@@ -1318,7 +1318,7 @@ void NetworkGameLoop(void)
 	NetworkSend();
 }
 
-static void NetworkGenerateUniqueId(void)
+static void NetworkGenerateUniqueId()
 {
 	md5_state_t state;
 	md5_byte_t digest[16];
@@ -1372,7 +1372,7 @@ void NetworkStartDebugLog(const char *hostname, uint16 port)
 }
 
 /** This tries to launch the network for a given OS */
-void NetworkStartUp(void)
+void NetworkStartUp()
 {
 	DEBUG(net, 3, "[core] starting network...");
 
@@ -1409,7 +1409,7 @@ void NetworkStartUp(void)
 }
 
 /** This shuts the network down */
-void NetworkShutDown(void)
+void NetworkShutDown()
 {
 	NetworkDisconnect();
 	NetworkUDPShutdown();

@@ -29,8 +29,7 @@
    59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
    Markus F.X.J. Oberhumer
-   <markus@oberhumer.com>
-   http://www.oberhumer.com/opensource/lzo/
+   <markus@oberhumer.com>   http://www.oberhumer.com/opensource/lzo/
  */
 
 
@@ -407,11 +406,11 @@ typedef void (__LZO_ENTRY *lzo_progress_callback_t) (lzo_uint, lzo_uint);
 LZO_EXTERN(int) __lzo_init2(unsigned,int,int,int,int,int,int,int,int,int);
 
 /* version functions (useful for shared libraries) */
-LZO_EXTERN(unsigned) lzo_version(void);
-LZO_EXTERN(const char *) lzo_version_string(void);
-LZO_EXTERN(const char *) lzo_version_date(void);
-LZO_EXTERN(const lzo_charp) _lzo_version_string(void);
-LZO_EXTERN(const lzo_charp) _lzo_version_date(void);
+LZO_EXTERN(unsigned) lzo_version();
+LZO_EXTERN(const char *) lzo_version_string();
+LZO_EXTERN(const char *) lzo_version_date();
+LZO_EXTERN(const lzo_charp) _lzo_version_string();
+LZO_EXTERN(const lzo_charp) _lzo_version_date();
 
 /* string functions */
 LZO_EXTERN(int)
@@ -431,7 +430,7 @@ lzo_crc32(lzo_uint32 _c, const lzo_byte *_buf, lzo_uint _len);
 
 /* misc. */
 LZO_EXTERN(lzo_bool) lzo_assert(int _expr);
-LZO_EXTERN(int) _lzo_config_check(void);
+LZO_EXTERN(int) _lzo_config_check();
 typedef union { lzo_bytep p; lzo_uint u; } __lzo_pu_u;
 typedef union { lzo_bytep p; lzo_uint32 u32; } __lzo_pu32_u;
 typedef union { void *vp; lzo_bytep bp; lzo_uint32 u32; long l; } lzo_align_t;

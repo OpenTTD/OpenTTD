@@ -46,7 +46,7 @@ static byte * const _playlists[] = {
 	msf.custom_2,
 };
 
-static void SkipToPrevSong(void)
+static void SkipToPrevSong()
 {
 	byte *b = _cur_playlist;
 	byte *p = b;
@@ -66,7 +66,7 @@ static void SkipToPrevSong(void)
 	_song_is_active = false;
 }
 
-static void SkipToNextSong(void)
+static void SkipToNextSong()
 {
 	byte* b = _cur_playlist;
 	byte t;
@@ -88,7 +88,7 @@ static void MusicVolumeChanged(byte new_vol)
 	_music_driver->set_volume(new_vol);
 }
 
-static void DoPlaySong(void)
+static void DoPlaySong()
 {
 	char filename[256];
 	snprintf(filename, sizeof(filename), "%s%s",
@@ -96,12 +96,12 @@ static void DoPlaySong(void)
 	_music_driver->play_song(filename);
 }
 
-static void DoStopMusic(void)
+static void DoStopMusic()
 {
 	_music_driver->stop_song();
 }
 
-static void SelectSongToPlay(void)
+static void SelectSongToPlay()
 {
 	uint i = 0;
 	uint j = 0;
@@ -138,7 +138,7 @@ static void SelectSongToPlay(void)
 	}
 }
 
-static void StopMusic(void)
+static void StopMusic()
 {
 	_music_wnd_cursong = 0;
 	DoStopMusic();
@@ -146,7 +146,7 @@ static void StopMusic(void)
 	InvalidateWindowWidget(WC_MUSIC_WINDOW, 0, 9);
 }
 
-static void PlayPlaylistSong(void)
+static void PlayPlaylistSong()
 {
 	if (_cur_playlist[0] == 0) {
 		SelectSongToPlay();
@@ -167,13 +167,13 @@ static void PlayPlaylistSong(void)
 	InvalidateWindowWidget(WC_MUSIC_WINDOW, 0, 9);
 }
 
-void ResetMusic(void)
+void ResetMusic()
 {
 	_music_wnd_cursong = 1;
 	DoPlaySong();
 }
 
-void MusicLoop(void)
+void MusicLoop()
 {
 	if (!msf.playing && _song_is_active) {
 		StopMusic();
@@ -333,7 +333,7 @@ static const WindowDesc _music_track_selection_desc = {
 	MusicTrackSelectionWndProc
 };
 
-static void ShowMusicTrackSelection(void)
+static void ShowMusicTrackSelection()
 {
 	AllocateWindowDescFront(&_music_track_selection_desc, 0);
 }
@@ -501,7 +501,7 @@ static const WindowDesc _music_window_desc = {
 	MusicWindowWndProc
 };
 
-void ShowMusicWindow(void)
+void ShowMusicWindow()
 {
 	AllocateWindowDescFront(&_music_window_desc, 0);
 }

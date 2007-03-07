@@ -55,7 +55,7 @@ static byte _total_news = 0; // total news count
 
 void DrawNewsNewVehicleAvail(Window *w);
 void DrawNewsBankrupcy(Window *w);
-static void MoveToNextItem(void);
+static void MoveToNextItem();
 
 StringID GetNewsStringNewVehicleAvail(const NewsItem *ni);
 StringID GetNewsStringBankrupcy(const NewsItem *ni);
@@ -71,7 +71,7 @@ GetNewsStringCallbackProc * const _get_news_string_callback[] = {
 	GetNewsStringBankrupcy,        /* DNC_BANKRUPCY */
 };
 
-void InitNewsItemStructs(void)
+void InitNewsItemStructs()
 {
 	memset(_news_items, 0, sizeof(_news_items));
 	_current_news = INVALID_NEWS;
@@ -452,7 +452,7 @@ static void ShowTicker(const NewsItem *ni)
 
 // Are we ready to show another news item?
 // Only if nothing is in the newsticker and no newspaper is displayed
-static bool ReadyForNextItem(void)
+static bool ReadyForNextItem()
 {
 	const Window *w;
 	NewsID item = (_forced_news == INVALID_NEWS) ? _current_news : _forced_news;
@@ -473,7 +473,7 @@ static bool ReadyForNextItem(void)
 	return (ni->duration == 0 || FindWindowById(WC_NEWS_WINDOW, 0) == NULL);
 }
 
-static void MoveToNextItem(void)
+static void MoveToNextItem()
 {
 	DeleteWindowById(WC_NEWS_WINDOW, 0);
 	_forced_news = INVALID_NEWS;
@@ -513,7 +513,7 @@ static void MoveToNextItem(void)
 	}
 }
 
-void NewsLoop(void)
+void NewsLoop()
 {
 	// no news item yet
 	if (_total_news == 0) return;
@@ -541,7 +541,7 @@ static void ShowNewsMessage(NewsID i)
 	}
 }
 
-void ShowLastNewsMessage(void)
+void ShowLastNewsMessage()
 {
 	if (_forced_news == INVALID_NEWS) {
 		/* Not forced any news yet, show the current one, unless a news window is
@@ -681,7 +681,7 @@ static const WindowDesc _message_history_desc = {
 	MessageHistoryWndProc
 };
 
-void ShowMessageHistory(void)
+void ShowMessageHistory()
 {
 	Window *w;
 
@@ -859,7 +859,7 @@ static const WindowDesc _message_options_desc = {
 	MessageOptionsWndProc
 };
 
-void ShowMessageOptions(void)
+void ShowMessageOptions()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	AllocateWindowDesc(&_message_options_desc);

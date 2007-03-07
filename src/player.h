@@ -217,7 +217,7 @@ VARDEF Player _players[MAX_PLAYERS];
 // NOSAVE: can be determined from player structs
 VARDEF byte _player_colors[MAX_PLAYERS];
 
-static inline byte ActivePlayerCount(void)
+static inline byte ActivePlayerCount()
 {
 	const Player *p;
 	byte count = 0;
@@ -235,7 +235,7 @@ static inline Player* GetPlayer(PlayerID i)
 	return &_players[i];
 }
 
-static inline bool IsLocalPlayer(void)
+static inline bool IsLocalPlayer()
 {
 	return _local_player == _current_player;
 }
@@ -289,10 +289,10 @@ typedef struct HighScore {
 } HighScore;
 
 VARDEF HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
-void SaveToHighScore(void);
-void LoadFromHighScore(void);
+void SaveToHighScore();
+void LoadFromHighScore();
 int8 SaveHighScoreValue(const Player *p);
-int8 SaveHighScoreValueNetwork(void);
+int8 SaveHighScoreValueNetwork();
 
 /* Engine Replacement Functions */
 

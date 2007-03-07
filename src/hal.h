@@ -7,30 +7,30 @@
 
 typedef struct {
 	const char *(*start)(const char * const *parm);
-	void (*stop)(void);
+	void (*stop)();
 } HalCommonDriver;
 
 typedef struct {
 	const char *(*start)(const char * const *parm);
-	void (*stop)(void);
+	void (*stop)();
 	void (*make_dirty)(int left, int top, int width, int height);
-	void (*main_loop)(void);
+	void (*main_loop)();
 	bool (*change_resolution)(int w, int h);
 	void (*toggle_fullscreen)(bool fullscreen);
 } HalVideoDriver;
 
 typedef struct {
 	const char *(*start)(const char * const *parm);
-	void (*stop)(void);
+	void (*stop)();
 } HalSoundDriver;
 
 typedef struct {
 	const char *(*start)(const char * const *parm);
-	void (*stop)(void);
+	void (*stop)();
 
 	void (*play_song)(const char *filename);
-	void (*stop_song)(void);
-	bool (*is_song_playing)(void);
+	void (*stop_song)();
+	bool (*is_song_playing)();
 	void (*set_volume)(byte vol);
 } HalMusicDriver;
 

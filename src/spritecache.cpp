@@ -64,9 +64,9 @@ static uint _sprite_lru_counter;
 static MemBlock *_spritecache_ptr;
 static int _compact_cache_counter;
 
-static void CompactSpriteCache(void);
+static void CompactSpriteCache();
 
-static bool ReadSpriteHeaderSkipData(void)
+static bool ReadSpriteHeaderSkipData()
 {
 	uint16 num = FioReadWord();
 	byte type;
@@ -223,7 +223,7 @@ static inline MemBlock* NextBlock(MemBlock* block)
 	return (MemBlock*)((byte*)block + (block->size & ~S_FREE_MASK));
 }
 
-static uint32 GetSpriteCacheUsage(void)
+static uint32 GetSpriteCacheUsage()
 {
 	uint32 tot_size = 0;
 	MemBlock* s;
@@ -235,7 +235,7 @@ static uint32 GetSpriteCacheUsage(void)
 }
 
 
-void IncreaseSpriteLRU(void)
+void IncreaseSpriteLRU()
 {
 	// Increase all LRU values
 	if (_sprite_lru_counter > 16384) {
@@ -265,7 +265,7 @@ void IncreaseSpriteLRU(void)
 
 // Called when holes in the sprite cache should be removed.
 // That is accomplished by moving the cached data.
-static void CompactSpriteCache(void)
+static void CompactSpriteCache()
 {
 	MemBlock *s;
 
@@ -306,7 +306,7 @@ static void CompactSpriteCache(void)
 	}
 }
 
-static void DeleteEntryFromSpriteCache(void)
+static void DeleteEntryFromSpriteCache()
 {
 	SpriteID i;
 	uint best = UINT_MAX;
@@ -403,7 +403,7 @@ const void *GetRawSprite(SpriteID sprite)
 }
 
 
-void GfxInitSpriteMem(void)
+void GfxInitSpriteMem()
 {
 	// initialize sprite cache heap
 	if (_spritecache_ptr == NULL) _spritecache_ptr = (MemBlock*)malloc(SPRITE_CACHE_SIZE);

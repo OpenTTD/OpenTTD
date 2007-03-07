@@ -34,7 +34,7 @@ typedef struct {
 static Fio _fio;
 
 /* Get current position in file */
-uint32 FioGetPos(void)
+uint32 FioGetPos()
 {
 	return _fio.pos + (_fio.buffer - _fio.buffer_start) - FIO_BUFFER_SIZE;
 }
@@ -73,7 +73,7 @@ void FioSeekToFile(uint32 pos)
 	FioSeekTo(GB(pos, 0, 24), SEEK_SET);
 }
 
-byte FioReadByte(void)
+byte FioReadByte()
 {
 	if (_fio.buffer == _fio.buffer_end) {
 		_fio.pos += FIO_BUFFER_SIZE;
@@ -94,13 +94,13 @@ void FioSkipBytes(int n)
 	}
 }
 
-uint16 FioReadWord(void)
+uint16 FioReadWord()
 {
 	byte b = FioReadByte();
 	return (FioReadByte() << 8) | b;
 }
 
-uint32 FioReadDword(void)
+uint32 FioReadDword()
 {
 	uint b = FioReadWord();
 	return (FioReadWord() << 16) | b;
@@ -124,7 +124,7 @@ static inline void FioCloseFile(int slot)
 	}
 }
 
-void FioCloseAll(void)
+void FioCloseAll()
 {
 	int i;
 

@@ -821,7 +821,7 @@ void Ship_Tick(Vehicle *v)
 }
 
 
-void ShipsYearlyLoop(void)
+void ShipsYearlyLoop()
 {
 	Vehicle *v;
 

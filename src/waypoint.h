@@ -66,8 +66,8 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove);
 Station *ComposeWaypointStation(TileIndex tile);
 void ShowRenameWaypointWindow(const Waypoint *cp);
 void DrawWaypointSprite(int x, int y, int image, RailType railtype);
-void FixOldWaypoints(void);
-void UpdateAllWaypointSigns(void);
-void AfterLoadWaypoints(void);
+void FixOldWaypoints();
+void UpdateAllWaypointSigns();
+void AfterLoadWaypoints();
 
 #endif /* WAYPOINT_H */

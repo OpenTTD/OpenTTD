@@ -30,7 +30,7 @@ static const StringID _rail_types_list[] = {
 };
 
 /* General Vehicle GUI based procedures that are independent of vehicle types */
-void InitializeVehiclesGuiList(void)
+void InitializeVehiclesGuiList()
 {
 	_railtype_selected_in_replace_gui = RAILTYPE_RAIL;
 }

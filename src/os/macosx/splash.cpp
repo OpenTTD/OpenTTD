@@ -26,7 +26,7 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 	DEBUG(misc, 1, "[libpng] warning: %s - %s", message, (char *)png_get_error_ptr(png_ptr));
 }
 
-void DisplaySplashImage(void)
+void DisplaySplashImage()
 {
 	png_byte header[8];
 	FILE *f;
@@ -139,6 +139,6 @@ void DisplaySplashImage(void)
 
 #else /* WITH_PNG */
 
-void DisplaySplashImage(void) {}
+void DisplaySplashImage() {}
 
 #endif /* WITH_PNG */

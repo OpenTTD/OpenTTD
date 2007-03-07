@@ -155,7 +155,7 @@ bool Station::TileBelongsToRailStation(TileIndex tile) const
 	return IsTileType(tile, MP_STATION) && GetStationIndex(tile) == index && IsRailwayStation(tile);
 }
 
-/*static*/ Station *Station::AllocateRaw(void)
+/*static*/ Station *Station::AllocateRaw()
 {
 	Station *st = NULL;
 
@@ -467,7 +467,7 @@ RoadStop::~RoadStop()
 
 
 /** Low-level function for allocating a RoadStop on the pool */
-RoadStop *RoadStop::AllocateRaw( void )
+RoadStop *RoadStop::AllocateRaw()
 {
 	RoadStop *rs;
 

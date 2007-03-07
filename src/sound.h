@@ -29,7 +29,7 @@ typedef struct FileEntry {
 } FileEntry;
 
 bool SoundInitialize(const char *filename);
-uint GetNumOriginalSounds(void);
+uint GetNumOriginalSounds();
 
 typedef enum SoundFx {
 	SND_BEGIN = 0,
@@ -116,6 +116,6 @@ typedef TinyEnumT<SoundFx> SoundFxByte;
 void SndPlayTileFx(SoundFx sound, TileIndex tile);
 void SndPlayVehicleFx(SoundFx sound, const Vehicle *v);
 void SndPlayFx(SoundFx sound);
-void SndCopyToPool(void);
+void SndCopyToPool();
 
 #endif /* SOUND_H */

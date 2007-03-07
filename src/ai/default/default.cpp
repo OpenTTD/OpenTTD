@@ -453,12 +453,12 @@ typedef struct FoundRoute {
 	void *to;
 } FoundRoute;
 
-static Town *AiFindRandomTown(void)
+static Town *AiFindRandomTown()
 {
 	return GetRandomTown();
 }
 
-static Industry *AiFindRandomIndustry(void)
+static Industry *AiFindRandomIndustry()
 {
 	return GetRandomIndustry();
 }

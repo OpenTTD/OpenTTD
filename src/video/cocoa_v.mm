@@ -41,8 +41,8 @@ extern "C" OSErr CPSEnableForegroundOperation(CPSProcessSerNum* psn, UInt32 _arg
 extern "C" OSErr CPSSetFrontProcess(CPSProcessSerNum* psn);
 
 /* From Menus.h (according to Xcode Developer Documentation) */
-extern "C" void ShowMenuBar(void);
-extern "C" void HideMenuBar(void);
+extern "C" void ShowMenuBar();
+extern "C" void HideMenuBar();
 
 /* Disables a warning. This is needed since the method exists but has been dropped from the header, supposedly as of 10.4. */
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
@@ -126,12 +126,12 @@ typedef struct {
 @end
 
 
-static void QZ_Draw(void);
-static void QZ_UnsetVideoMode(void);
+static void QZ_Draw();
+static void QZ_UnsetVideoMode();
 static void QZ_UpdatePalette(uint start, uint count);
 static void QZ_WarpCursor(int x, int y);
-static void QZ_ShowMouse(void);
-static void QZ_HideMouse(void);
+static void QZ_ShowMouse();
+static void QZ_HideMouse();
 static void CocoaVideoFullScreen(bool full_screen);
 
 
@@ -192,7 +192,7 @@ static bool _cocoa_video_dialog = false;
  *                             Game loop and accessories                      *
  ******************************************************************************/
 
-static uint32 GetTick(void)
+static uint32 GetTick()
 {
 	struct timeval tim;
 
@@ -200,7 +200,7 @@ static uint32 GetTick(void)
 	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
 }
 
-static void QZ_CheckPaletteAnim(void)
+static void QZ_CheckPaletteAnim()
 {
 	if (_pal_last_dirty != -1) {
 		QZ_UpdatePalette(_pal_first_dirty, _pal_last_dirty - _pal_first_dirty + 1);
@@ -469,7 +469,7 @@ static bool QZ_MouseIsInsideView(NSPoint *pt)
 }
 
 
-static bool QZ_PollEvent(void)
+static bool QZ_PollEvent()
 {
 	NSEvent *event;
 	NSPoint pt;
@@ -663,7 +663,7 @@ static bool QZ_PollEvent(void)
 }
 
 
-static void QZ_GameLoop(void)
+static void QZ_GameLoop()
 {
 	uint32 cur_ticks = GetTick();
 	uint32 next_tick = cur_ticks + 30;
@@ -764,7 +764,7 @@ static void QZ_GameLoop(void)
  * The genie effect uses the alpha component. Otherwise,
  * it doesn't seem to matter what value it has.
  */
-static void QZ_SetPortAlphaOpaque(void)
+static void QZ_SetPortAlphaOpaque()
 {
 	if (_cocoa_video_data.device_bpp == 32) {
 		uint32* pixels = (uint32*)_cocoa_video_data.realpixels;
@@ -1032,7 +1032,7 @@ static bool _resize_icon[] = {
 	1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0
 };
 
-static void QZ_DrawResizeIcon(void)
+static void QZ_DrawResizeIcon()
 {
 	int xoff = _cocoa_video_data.width - 16;
 	int yoff = _cocoa_video_data.height - 16;
@@ -1054,7 +1054,7 @@ static void QZ_DrawResizeIcon(void)
 	}
 }
 
-static void QZ_DrawWindow(void)
+static void QZ_DrawWindow()
 {
 	int i;
 	RgnHandle dirty, temp;
@@ -1421,7 +1421,7 @@ static void QZ_UpdateFullscreenPalette(uint first_color, uint num_colors)
 }
 
 /* Wait for the VBL to occur (estimated since we don't have a hardware interrupt) */
-static void QZ_WaitForVerticalBlank(void)
+static void QZ_WaitForVerticalBlank()
 {
 	/* The VBL delay is based on Ian Ollmann's RezLib <iano@cco.caltech.edu> */
 	double refreshRate;
@@ -1452,7 +1452,7 @@ static void QZ_WaitForVerticalBlank(void)
 }
 
 
-static void QZ_DrawScreen(void)
+static void QZ_DrawScreen()
 {
 	const uint8* src = _cocoa_video_data.pixels;
 	uint8* dst       = (uint8*)_cocoa_video_data.realpixels;
@@ -1579,12 +1579,12 @@ static void QZ_UpdatePalette(uint start, uint count)
 	}
 }
 
-static void QZ_InitPalette(void)
+static void QZ_InitPalette()
 {
 	QZ_UpdatePalette(0, 256);
 }
 
-static void QZ_Draw(void)
+static void QZ_Draw()
 {
 	if (_cocoa_video_data.fullscreen) {
 		QZ_DrawScreen();
@@ -1608,7 +1608,7 @@ static const OTTDPoint _default_resolutions[] = {
 	{1920, 1200}
 };
 
-static void QZ_UpdateVideoModes(void)
+static void QZ_UpdateVideoModes()
 {
 	uint i, j, count;
 	OTTDPoint modes[32];
@@ -1636,7 +1636,7 @@ static void QZ_UpdateVideoModes(void)
 	_num_resolutions = j;
 }
 
-static void QZ_UnsetVideoMode(void)
+static void QZ_UnsetVideoMode()
 {
 	if (_cocoa_video_data.fullscreen) {
 		/* Release fullscreen resources */
@@ -1719,7 +1719,7 @@ static const char* QZ_SetVideoModeAndRestoreOnFailure(uint width, uint height, b
 	return ret;
 }
 
-static void QZ_VideoInit(void)
+static void QZ_VideoInit()
 {
 	memset(&_cocoa_video_data, 0, sizeof(_cocoa_video_data));
 
@@ -1789,7 +1789,7 @@ static void QZ_WarpCursor(int x, int y)
 	/* Generate the mouse moved event */
 }
 
-static void QZ_ShowMouse(void)
+static void QZ_ShowMouse()
 {
 	if (!_cocoa_video_data.cursor_visible) {
 		[ NSCursor unhide ];
@@ -1802,7 +1802,7 @@ static void QZ_ShowMouse(void)
 	}
 }
 
-static void QZ_HideMouse(void)
+static void QZ_HideMouse()
 {
 	if (_cocoa_video_data.cursor_visible) {
 #ifndef _DEBUG
@@ -1842,7 +1842,7 @@ static void QZ_HideMouse(void)
 }
 @end
 
-static void setApplicationMenu(void)
+static void setApplicationMenu()
 {
 	/* warning: this code is very odd */
 	NSMenu *appleMenu;
@@ -1887,7 +1887,7 @@ static void setApplicationMenu(void)
 }
 
 /* Create a window menu */
-static void setupWindowMenu(void)
+static void setupWindowMenu()
 {
 	NSMenu* windowMenu;
 	NSMenuItem* windowMenuItem;
@@ -1913,7 +1913,7 @@ static void setupWindowMenu(void)
 	[windowMenuItem release];
 }
 
-static void setupApplication(void)
+static void setupApplication()
 {
 	CPSProcessSerNum PSN;
 
@@ -1942,7 +1942,7 @@ static void setupApplication(void)
  *                             Video driver interface                         *
  ******************************************************************************/
 
-static void CocoaVideoStop(void)
+static void CocoaVideoStop()
 {
 	if (!_cocoa_video_started) return;
 
@@ -1986,7 +1986,7 @@ static void CocoaVideoMakeDirty(int left, int top, int width, int height)
 	_cocoa_video_data.num_dirty_rects++;
 }
 
-static void CocoaVideoMainLoop(void)
+static void CocoaVideoMainLoop()
 {
 	/* Start the main event loop */
 	[NSApp run];
@@ -2044,7 +2044,7 @@ void CocoaDialog(const char* title, const char* message, const char* buttonLabel
 
 
 /* This is needed since OS X applications are started with the working dir set to / when double-clicked */
-void cocoaSetWorkingDirectory(void)
+void cocoaSetWorkingDirectory()
 {
 	char parentdir[MAXPATHLEN];
 	int chdir_ret;
@@ -2061,12 +2061,12 @@ void cocoaSetWorkingDirectory(void)
 /* These are called from main() to prevent a _NSAutoreleaseNoPool error when
  * exiting before the cocoa video driver has been loaded
  */
-void cocoaSetupAutoreleasePool(void)
+void cocoaSetupAutoreleasePool()
 {
 	_ottd_autorelease_pool = [[NSAutoreleasePool alloc] init];
 }
 
-void cocoaReleaseAutoreleasePool(void)
+void cocoaReleaseAutoreleasePool()
 {
 	[_ottd_autorelease_pool release];
 }

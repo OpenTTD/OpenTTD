@@ -89,7 +89,7 @@ enum {
 };
 
 /** Requeries the (game) servers we have not gotten a reply from */
-void NetworkGameListRequery(void)
+void NetworkGameListRequery()
 {
 	static uint8 requery_cnt = 0;
 

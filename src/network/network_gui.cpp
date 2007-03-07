@@ -54,7 +54,7 @@ static Listing _ng_sorting;
 static char _edit_str_buf[150];
 static bool _chat_tab_completion_active;
 
-static void ShowNetworkStartServerWindow(void);
+static void ShowNetworkStartServerWindow();
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
 extern void SwitchMode(int new_mode);
 
@@ -551,7 +551,7 @@ static const WindowDesc _network_game_window_desc = {
 	NetworkGameWindowWndProc,
 };
 
-void ShowNetworkGameWindow(void)
+void ShowNetworkGameWindow()
 {
 	static bool first = true;
 	Window *w;
@@ -778,7 +778,7 @@ static const WindowDesc _network_start_server_window_desc = {
 	NetworkStartServerWindowWndProc,
 };
 
-static void ShowNetworkStartServerWindow(void)
+static void ShowNetworkStartServerWindow()
 {
 	Window *w;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
@@ -1151,7 +1151,7 @@ static bool CheckClientListHeight(Window *w)
 }
 
 // Finds the amount of actions in the popup and set the height correct
-static uint ClientListPopupHeigth(void) {
+static uint ClientListPopupHeigth() {
 	int i, num = 0;
 
 	// Find the amount of actions
@@ -1368,7 +1368,7 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-void ShowClientList(void)
+void ShowClientList()
 {
 	AllocateWindowDescFront(&_client_list_desc, 0);
 }
@@ -1460,7 +1460,7 @@ static const WindowDesc _network_join_status_window_desc = {
 	NetworkJoinStatusWindowWndProc,
 };
 
-void ShowJoinStatusWindow(void)
+void ShowJoinStatusWindow()
 {
 	Window *w;
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);

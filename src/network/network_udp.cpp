@@ -402,7 +402,7 @@ void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFCo
 }
 
 // Close UDP connection
-void NetworkUDPCloseAll(void)
+void NetworkUDPCloseAll()
 {
 	DEBUG(net, 1, "[udp] closed listeners");
 
@@ -435,7 +435,7 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 
 
 // Request the the server-list from the master server
-void NetworkUDPQueryMasterServer(void)
+void NetworkUDPQueryMasterServer()
 {
 	struct sockaddr_in out_addr;
 
@@ -458,7 +458,7 @@ void NetworkUDPQueryMasterServer(void)
 }
 
 // Find all servers
-void NetworkUDPSearchGame(void)
+void NetworkUDPSearchGame()
 {
 	// We are still searching..
 	if (_network_udp_broadcast > 0) return;
@@ -504,7 +504,7 @@ void NetworkUDPQueryServer(const char* host, unsigned short port, bool manually)
 }
 
 /* Remove our advertise from the master-server */
-void NetworkUDPRemoveAdvertise(void)
+void NetworkUDPRemoveAdvertise()
 {
 	struct sockaddr_in out_addr;
 
@@ -533,7 +533,7 @@ void NetworkUDPRemoveAdvertise(void)
 
 /* Register us to the master server
      This function checks if it needs to send an advertise */
-void NetworkUDPAdvertise(void)
+void NetworkUDPAdvertise()
 {
 	struct sockaddr_in out_addr;
 
@@ -580,7 +580,7 @@ void NetworkUDPAdvertise(void)
 	_udp_master_socket->SendPacket(&p, &out_addr);
 }
 
-void NetworkUDPInitialize(void)
+void NetworkUDPInitialize()
 {
 	_udp_client_socket = new ClientNetworkUDPSocketHandler();
 	_udp_server_socket = new ServerNetworkUDPSocketHandler();
@@ -590,7 +590,7 @@ void NetworkUDPInitialize(void)
 	_network_udp_broadcast = 0;
 }
 
-void NetworkUDPShutdown(void)
+void NetworkUDPShutdown()
 {
 	NetworkUDPCloseAll();
 

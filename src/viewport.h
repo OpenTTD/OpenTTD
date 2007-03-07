@@ -16,12 +16,12 @@ struct ViewPort {
 void SetSelectionRed(bool);
 
 /* viewport.c */
-void InitViewports(void);
+void InitViewports();
 void DeleteWindowViewport(Window *w);
 void AssignWindowViewport(Window *w, int x, int y,
 	int width, int height, uint32 follow_flags, byte zoom);
 ViewPort *IsPtInWindowViewport(const Window *w, int x, int y);
-Point GetTileBelowCursor(void);
+Point GetTileBelowCursor();
 void UpdateViewportPosition(Window *w);
 
 enum {
@@ -49,11 +49,11 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y);
 
 
-void StartSpriteCombine(void);
-void EndSpriteCombine(void);
+void StartSpriteCombine();
+void EndSpriteCombine();
 
 void HandleViewportClicked(const ViewPort *vp, int x, int y);
-void PlaceObject(void);
+void PlaceObject();
 void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);
 void SetTileSelectBigSize(int ox, int oy, int sx, int sy);
@@ -62,7 +62,7 @@ void VpStartPlaceSizing(TileIndex tile, int user);
 void VpSetPresizeRange(uint from, uint to);
 void VpSetPlaceSizingLimit(int limit);
 
-Vehicle *CheckMouseOverVehicle(void);
+Vehicle *CheckMouseOverVehicle();
 
 enum {
 	VPM_X_OR_Y          = 0,

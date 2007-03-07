@@ -18,7 +18,7 @@ typedef struct Sign {
 
 DECLARE_OLD_POOL(Sign, Sign, 2, 16000)
 
-static inline SignID GetMaxSignIndex(void)
+static inline SignID GetMaxSignIndex()
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that
@@ -28,7 +28,7 @@ static inline SignID GetMaxSignIndex(void)
 	return GetSignPoolSize() - 1;
 }
 
-static inline uint GetNumSigns(void)
+static inline uint GetNumSigns()
 {
 	return GetSignPoolSize();
 }
@@ -59,12 +59,12 @@ static inline void DeleteSign(Sign *si)
 
 VARDEF bool _sign_sort_dirty;
 
-void UpdateAllSignVirtCoords(void);
+void UpdateAllSignVirtCoords();
 void PlaceProc_Sign(TileIndex tile);
 
 /* misc.c */
 void ShowRenameSignWindow(const Sign *si);
 
-void ShowSignList(void);
+void ShowSignList();
 
 #endif /* SIGNS_H */
