@@ -370,6 +370,40 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	MarkWholeScreenDirty();
 }
 
+static void ChangeNetworkOwner(PlayerID current_player, PlayerID new_player)
+{
+#ifdef ENABLE_NETWORK
+	if (!_networking) return;
+
+	if (current_player == _local_player) {
+		_network_playas = new_player;
+		SetLocalPlayer(new_player);
+	}
+
+	if (!_network_server) return;
+
+	/* The server has to handle all administrative issues, for example
+	* updating and notifying all clients of what has happened */
+	NetworkTCPSocketHandler *cs;
+	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+
+	/* The server has just changed from player */
+	if (current_player == ci->client_playas) {
+		ci->client_playas = new_player;
+		NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+	}
+
+	/* Find all clients that were in control of this company, and mark them as new_player */
+	FOR_ALL_CLIENTS(cs) {
+		ci = DEREF_CLIENT_INFO(cs);
+		if (current_player == ci->client_playas) {
+			ci->client_playas = new_player;
+			NetworkUpdateClientInfo(ci->client_index);
+		}
+	}
+#endif /* ENABLE_NETWORK */
+}
+
 static void PlayersCheckBankrupt(Player *p)
 {
 	PlayerID owner;
@@ -427,35 +461,9 @@ static void PlayersCheckBankrupt(Player *p)
 					p->bankrupt_asked = 0xFF;
 					p->bankrupt_timeout = 0x456;
 					break;
-				} else if (owner == _local_player) {
-					_network_playas = PLAYER_SPECTATOR;
-					SetLocalPlayer(PLAYER_SPECTATOR);
 				}
 
-#ifdef ENABLE_NETWORK
-				/* The server has to handle all administrative issues, for example
-				 * updating and notifying all clients of what has happened */
-				if (_network_server) {
-					NetworkTCPSocketHandler *cs;
-					NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
-
-					/* The server has just gone belly-up, mark it as spectator */
-					if (owner == ci->client_playas) {
-						ci->client_playas = PLAYER_SPECTATOR;
-						NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
-					}
-
-					/* Find all clients that were in control of this company,
-					 * and mark them as spectator; broadcast this message to everyone */
-					FOR_ALL_CLIENTS(cs) {
-						ci = DEREF_CLIENT_INFO(cs);
-						if (ci->client_playas == owner) {
-							ci->client_playas = PLAYER_SPECTATOR;
-							NetworkUpdateClientInfo(ci->client_index);
-						}
-					}
-				}
-#endif /* ENABLE_NETWORK */
+				ChangeNetworkOwner(owner, PLAYER_SPECTATOR);
 			}
 
 			/* Remove the player */
@@ -1628,6 +1636,7 @@ static void DoAcquireCompany(Player *p)
 
 	/* original code does this a little bit differently */
 	PlayerID pi = p->index;
+	ChangeNetworkOwner(pi, _current_player);
 	ChangeOwnershipOfPlayerItems(pi, _current_player);
 
 	if (p->bankrupt_value == 0) {
