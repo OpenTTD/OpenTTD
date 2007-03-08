@@ -697,7 +697,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 	type = (NetworkPasswordType)p->Recv_uint8();
 	p->Recv_string(password, sizeof(password));
 
-	if (cs->status == STATUS_INACTIVE && type == NETWORK_GAME_PASSWORD) {
+	if (cs->status == STATUS_AUTHORIZING && type == NETWORK_GAME_PASSWORD) {
 		// Check game-password
 		if (strcmp(password, _network_game_info.server_password) != 0) {
 			// Password is invalid
@@ -715,7 +715,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 		// Valid password, allow user
 		SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
 		return;
-	} else if (cs->status == STATUS_INACTIVE && type == NETWORK_COMPANY_PASSWORD) {
+	} else if (cs->status == STATUS_AUTHORIZING && type == NETWORK_COMPANY_PASSWORD) {
 		ci = DEREF_CLIENT_INFO(cs);
 
 		if (strcmp(password, _network_player_info[ci->client_playas].password) != 0) {
