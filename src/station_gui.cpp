@@ -138,6 +138,14 @@ static int CDECL StationWaitingSorter(const void *a, const void *b)
 	return (_internal_sort_order & 1) ? sum2 - sum1 : sum1 - sum2;
 }
 
+/**
+ * qsort-compatible version of sorting two stations by maximum rating
+ * @param a   First object to be sorted, must be of type (const Station *)
+ * @param b   Second object to be sorted, must be of type (const Station *)
+ * @return    The sort order
+ * @retval >0 a should come before b in the list
+ * @retval <0 b should come before a in the list
+ */
 static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 {
 	const Station* st1 = *(const Station**)a;
@@ -146,8 +154,8 @@ static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 	byte maxr2 = 0;
 
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
-		if (st1->goods[j].waiting_acceptance & 0xfff) maxr1 = max(maxr1, st1->goods[j].rating);
-		if (st2->goods[j].waiting_acceptance & 0xfff) maxr2 = max(maxr2, st2->goods[j].rating);
+		if (st1->goods[j].enroute_from != INVALID_STATION) maxr1 = max(maxr1, st1->goods[j].rating);
+		if (st2->goods[j].enroute_from != INVALID_STATION) maxr2 = max(maxr2, st2->goods[j].rating);
 	}
 
 	return (_internal_sort_order & 1) ? maxr2 - maxr1 : maxr1 - maxr2;
