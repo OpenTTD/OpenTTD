@@ -11,13 +11,14 @@
 #include "newgrf_station.h"
 
 static const StationID INVALID_STATION = 0xFFFF;
+static const byte INITIAL_STATION_RATING = 175;
 
 struct GoodsEntry {
 	GoodsEntry() :
 		waiting_acceptance(0),
 		unload_pending(0),
 		days_since_pickup(0),
-		rating(175),
+		rating(INITIAL_STATION_RATING),
 		enroute_from(INVALID_STATION),
 		enroute_from_xy(INVALID_TILE),
 		last_speed(0),
