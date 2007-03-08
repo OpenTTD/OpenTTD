@@ -640,8 +640,7 @@ static void DrawStationViewWindow(Window *w)
 		y += 10;
 	}
 
-	CargoID i = 0;
-	do {
+	for (CargoID i = 0; i != NUM_CARGO && pos > -5; i++) {
 		uint waiting = GB(st->goods[i].waiting_acceptance, 0, 12);
 		if (waiting == 0) continue;
 
@@ -677,7 +676,7 @@ static void DrawStationViewWindow(Window *w)
 				y += 10;
 			}
 		}
-	} while (pos > -5 && ++i != NUM_CARGO);
+	}
 
 	if (IsWindowOfPrototype(w, _station_view_widgets)) {
 		char *b = _userstring;
