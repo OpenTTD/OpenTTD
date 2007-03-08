@@ -64,6 +64,7 @@
 #include "road_map.h"
 #include "water_map.h"
 #include "industry_map.h"
+#include "unmovable_map.h"
 
 #include <stdarg.h>
 
@@ -1834,6 +1835,14 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(49)) FOR_ALL_PLAYERS(p) p->face = ConvertFromOldPlayerFace(p->face);
+
+	if (CheckSavegameVersion(52)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsStatueTile(t)) {
+				_m[t].m2 = CalcClosestTownFromTile(t, (uint)-1)->index;
+			}
+		}
+	}
 
 	return true;
 }

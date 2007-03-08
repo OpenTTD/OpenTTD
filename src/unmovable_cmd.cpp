@@ -233,6 +233,12 @@ static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
 	if (_game_mode != GM_EDITOR && _current_player != OWNER_WATER && ((flags & DC_AUTO || !_cheats.magic_bulldozer.value)) )
 		return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 
+	if (IsStatue(tile)) {
+		TownID town = GetStatueTownID(tile);
+		CLRBIT(GetTown(town)->statues, _current_player);
+		InvalidateWindow(WC_TOWN_AUTHORITY, town);
+	}
+
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile);
 	}

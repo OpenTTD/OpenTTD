@@ -54,6 +54,23 @@ static inline bool IsCompanyHQ(TileIndex t)
 	return IS_INT_INSIDE(GetUnmovableType(t), UNMOVABLE_HQ_NORTH, UNMOVABLE_HQ_END);
 }
 
+static inline bool IsStatue(TileIndex t)
+{
+	assert(IsTileType(t, MP_UNMOVABLE));
+	return GetUnmovableType(t) == UNMOVABLE_STATUE;
+}
+
+static inline bool IsStatueTile(TileIndex t)
+{
+	return IsTileType(t, MP_UNMOVABLE) && IsStatue(t);
+}
+
+static inline TownID GetStatueTownID(TileIndex t)
+{
+	assert(IsStatue(t));
+	return _m[t].m2;
+}
+
 static inline byte GetCompanyHQSize(TileIndex t)
 {
 	assert(IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t));
@@ -100,9 +117,10 @@ static inline void MakeLighthouse(TileIndex t)
 	MakeUnmovable(t, UNMOVABLE_LIGHTHOUSE, OWNER_NONE);
 }
 
-static inline void MakeStatue(TileIndex t, Owner o)
+static inline void MakeStatue(TileIndex t, Owner o, TownID town_id)
 {
 	MakeUnmovable(t, UNMOVABLE_STATUE, o);
+	_m[t].m2 = town_id;
 }
 
 static inline void MakeOwnedLand(TileIndex t, Owner o)

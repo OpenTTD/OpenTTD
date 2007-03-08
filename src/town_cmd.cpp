@@ -1465,7 +1465,7 @@ static void TownActionRoadRebuild(Town* t)
 		NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_GENERAL, 0), t->xy, 0);
 }
 
-static bool DoBuildStatueOfCompany(TileIndex tile)
+static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
 {
 	PlayerID old;
 	int32 r;
@@ -1485,7 +1485,7 @@ static bool DoBuildStatueOfCompany(TileIndex tile)
 
 	if (CmdFailed(r)) return false;
 
-	MakeStatue(tile, _current_player);
+	MakeStatue(tile, _current_player, town_id);
 	MarkTileDirtyByTile(tile);
 
 	return true;
@@ -1493,12 +1493,12 @@ static bool DoBuildStatueOfCompany(TileIndex tile)
 
 /**
  * Search callback function for TownActionBuildStatue
- * @param data that is passed by the caller.  In this case, nothing
+ * @param town_id The town_id for which we want a statue
  * @return the result of the test
  */
-static bool SearchTileForStatue(TileIndex tile, uint32 data)
+static bool SearchTileForStatue(TileIndex tile, uint32 town_id)
 {
-	return DoBuildStatueOfCompany(tile);
+	return DoBuildStatueOfCompany(tile, town_id);
 }
 
 /**
@@ -1510,7 +1510,7 @@ static void TownActionBuildStatue(Town* t)
 {
 	TileIndex tile = t->xy;
 
-	if (CircularTileSearch(tile, 9, SearchTileForStatue, 0))
+	if (CircularTileSearch(tile, 9, SearchTileForStatue, t->index))
 		SETBIT(t->statues, _current_player); ///< Once found and built, "inform" the Town
 }
 
