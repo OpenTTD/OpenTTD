@@ -70,7 +70,7 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
 		// you can remove all kind of roads with extra dynamite
 		if (_patches.extra_dynamite) return true;
 
-		t = ClosestTownFromTile(tile, _patches.dist_local_authority);
+		t = ClosestTownFromTile(tile, (uint)-1);
 
 		SetDParam(0, t->index);
 		_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
