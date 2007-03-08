@@ -135,9 +135,7 @@ static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Directio
 	v->owner = OWNER_NONE;
 	v->vehstatus = VS_UNCLICKABLE;
 	v->u.disaster.image_override = 0;
-	v->current_order.type = OT_NOTHING;
-	v->current_order.flags = 0;
-	v->current_order.dest = 0;
+	v->current_order.Free();
 
 	DisasterVehicleUpdateImage(v);
 	VehiclePositionChanged(v);

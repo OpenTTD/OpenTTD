@@ -486,9 +486,9 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 	AssignOrder(GetOrder(num), UnpackOldOrder(_old_order));
 
 	/* Relink the orders to eachother (in TTD(Patch) the orders for one
-	vehicle are behind eachother, with OT_NOTHING as indication that
+	vehicle are behind eachother, with an invalid order (OT_NOTHING) as indication that
 	it is the last order */
-	if (num > 0 && GetOrder(num)->type != OT_NOTHING)
+	if (num > 0 && GetOrder(num)->IsValid())
 		GetOrder(num - 1)->next = GetOrder(num);
 
 	return true;

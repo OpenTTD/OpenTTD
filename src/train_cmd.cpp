@@ -2454,8 +2454,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 
 	// If no order, do nothing.
 	if (order == NULL) {
-		v->current_order.type = OT_NOTHING;
-		v->current_order.flags = 0;
+		v->current_order.Free();
 		v->dest_tile = 0;
 		return false;
 	}
@@ -2910,8 +2909,7 @@ static void TrainController(Vehicle *v, bool update_image)
 					}
 
 					if (v->current_order.type == OT_LEAVESTATION) {
-						v->current_order.type = OT_NOTHING;
-						v->current_order.flags = 0;
+						v->current_order.Free();
 						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 					}
 				}

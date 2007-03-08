@@ -99,6 +99,10 @@ struct Order {
 
 	CargoID refit_cargo; // Refit CargoID
 	byte refit_subtype; // Refit subtype
+
+	bool IsValid() const;
+	void Free();
+	void FreeChain();
 };
 
 #define MAX_BACKUP_ORDER_COUNT 40
@@ -134,18 +138,26 @@ static inline VehicleOrderID GetNumOrders()
 /**
  * Check if a Order really exists.
  */
-static inline bool IsValidOrder(const Order *o)
+inline bool Order::IsValid() const
 {
-	return o->type != OT_NOTHING;
+	return type != OT_NOTHING;
 }
 
-static inline void DeleteOrder(Order *o)
+inline void Order::Free()
 {
-	o->type = OT_NOTHING;
-	o->next = NULL;
+	type  = OT_NOTHING;
+	flags = 0;
+	dest  = 0;
+	next  = NULL;
 }
 
-#define FOR_ALL_ORDERS_FROM(order, start) for (order = GetOrder(start); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? GetOrder(order->index + 1U) : NULL) if (IsValidOrder(order))
+inline void Order::FreeChain()
+{
+	if (next != NULL) next->FreeChain();
+	Free();
+}
+
+#define FOR_ALL_ORDERS_FROM(order, start) for (order = GetOrder(start); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? GetOrder(order->index + 1U) : NULL) if (order->IsValid())
 #define FOR_ALL_ORDERS(order) FOR_ALL_ORDERS_FROM(order, 0)
 
 
@@ -160,7 +172,7 @@ static inline bool HasOrderPoolFree(uint amount)
 		return true;
 
 	FOR_ALL_ORDERS(order)
-		if (order->type == OT_NOTHING)
+		if (!order->IsValid())
 			if (--amount == 0)
 				return true;
 

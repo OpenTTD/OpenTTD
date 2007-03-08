@@ -1273,8 +1273,7 @@ static void ProcessAircraftOrder(Vehicle *v)
 
 			if (CmdFailed(ret)) CrashAirplane(v);
 		} else if (v->current_order.type != OT_GOTO_DEPOT) {
-			v->current_order.type = OT_NOTHING;
-			v->current_order.flags = 0;
+			v->current_order.Free();
 		}
 		return;
 	}
@@ -1326,8 +1325,7 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 			}
 
 			Order b = v->current_order;
-			v->current_order.type = OT_NOTHING;
-			v->current_order.flags = 0;
+			v->current_order.Free();
 			MarkAircraftDirty(v);
 			if (!(b.flags & OF_NON_STOP)) return;
 			break;
@@ -1552,8 +1550,7 @@ static void AircraftEventHandler_InHangar(Vehicle *v, const AirportFTAClass *apc
 
 	/* if we were sent to the depot, stay there */
 	if (v->current_order.type == OT_GOTO_DEPOT && (v->vehstatus & VS_STOPPED)) {
-		v->current_order.type = OT_NOTHING;
-		v->current_order.flags = 0;
+		v->current_order.Free();
 		return;
 	}
 
@@ -1601,7 +1598,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 		return;
 	}
 
-	if (v->current_order.type == OT_NOTHING) return;
+	if (!v->current_order.IsValid()) return;
 
 	/* if the block of the next position is busy, stay put */
 	if (AirportHasBlock(v, &apc->layout[v->u.air.pos], apc)) return;
@@ -1622,8 +1619,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 			}
 			break;
 		default:  // orders have been deleted (no orders), goto depot and don't bother us
-			v->current_order.type = OT_NOTHING;
-			v->current_order.flags = 0;
+			v->current_order.Free();
 			v->u.air.state = HANGAR;
 	}
 	AirportMove(v, apc);

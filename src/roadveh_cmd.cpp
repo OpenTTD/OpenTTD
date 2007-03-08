@@ -682,8 +682,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 	order = GetVehicleOrder(v, v->cur_order_index);
 
 	if (order == NULL) {
-		v->current_order.type = OT_NOTHING;
-		v->current_order.flags = 0;
+		v->current_order.Free();
 		v->dest_tile = 0;
 		ClearSlot(v);
 		return;
@@ -1618,8 +1617,7 @@ again:
 				v->cur_speed = 0;
 				return;
 			}
-			v->current_order.type = OT_NOTHING;
-			v->current_order.flags = 0;
+			v->current_order.Free();
 			ClearSlot(v);
 		}
 

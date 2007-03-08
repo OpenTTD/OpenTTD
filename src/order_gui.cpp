@@ -309,8 +309,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	}
 
 	// not found
-	order.type = OT_NOTHING;
-	order.flags = 0;
+	order.Free();
 	order.dest = INVALID_STATION;
 	return order;
 }
@@ -347,7 +346,7 @@ static void OrdersPlaceObj(const Vehicle *v, TileIndex tile, Window *w)
 	if (u != NULL && HandleOrderVehClick(v, u, w)) return;
 
 	cmd = GetOrderCmdFromTile(v, tile);
-	if (cmd.type == OT_NOTHING) return;
+	if (!cmd.IsValid()) return;
 
 	if (DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), PackOrder(&cmd), NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
 		if (WP(w,order_d).sel != -1) WP(w,order_d).sel++;

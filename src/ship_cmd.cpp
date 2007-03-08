@@ -264,8 +264,7 @@ static void ProcessShipOrder(Vehicle *v)
 	order = GetVehicleOrder(v, v->cur_order_index);
 
 	if (order == NULL) {
-		v->current_order.type  = OT_NOTHING;
-		v->current_order.flags = 0;
+		v->current_order.Free();
 		v->dest_tile = 0;
 		return;
 	}
@@ -705,8 +704,7 @@ static void ShipController(Vehicle *v)
 			/* A leave station order only needs one tick to get processed, so we can
 			 * always skip ahead. */
 			if (v->current_order.type == OT_LEAVESTATION) {
-				v->current_order.type = OT_NOTHING;
-				v->current_order.flags = 0;
+				v->current_order.Free();
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			} else if (v->dest_tile != 0) {
 				/* We have a target, let's see if we reached it... */

@@ -49,7 +49,7 @@ Order UnpackOldOrder(uint16 packed)
 
 	// Sanity check
 	// TTD stores invalid orders as OT_NOTHING with non-zero flags/station
-	if (order.type == OT_NOTHING && (order.flags != 0 || order.dest != 0)) {
+	if (!order.IsValid() && (order.flags != 0 || order.dest != 0)) {
 		order.type = OT_DUMMY;
 		order.flags = 0;
 	}
@@ -116,7 +116,7 @@ static Order *AllocateOrder()
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
 	for (order = GetOrder(0); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? GetOrder(order->index + 1U) : NULL) {
-		if (!IsValidOrder(order)) {
+		if (!order->IsValid()) {
 			OrderID index = order->index;
 
 			memset(order, 0, sizeof(*order));
@@ -496,8 +496,7 @@ int32 CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		/* Give the item free */
-		order->type = OT_NOTHING;
-		order->next = NULL;
+		order->Free();
 
 		u = GetFirstVehicleFromSharedList(v);
 		DeleteOrderWarnings(u);
@@ -871,9 +870,8 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 			*dest = *order;
 			dest++;
 		}
-		/* End the list with an OT_NOTHING */
-		dest->type = OT_NOTHING;
-		dest->next = NULL;
+		/* End the list with an empty order */
+		dest->Free();
 	}
 }
 
@@ -902,7 +900,7 @@ void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* bak)
 	 *  order number is one more than the current amount of orders, and because
 	 *  in network the commands are queued before send, the second insert always
 	 *  fails in test mode. By bypassing the test-mode, that no longer is a problem. */
-	for (i = 0; bak->order[i].type != OT_NOTHING; i++) {
+	for (i = 0; bak->order[i].IsValid(); i++) {
 		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
 	}
@@ -1112,8 +1110,6 @@ bool VehicleHasDepotOrders(const Vehicle *v)
  */
 void DeleteVehicleOrders(Vehicle *v)
 {
-	Order *cur, *next;
-
 	DeleteOrderWarnings(v);
 
 	/* If we have a shared order-list, don't delete the list, but just
@@ -1146,7 +1142,7 @@ void DeleteVehicleOrders(Vehicle *v)
 	}
 
 	/* Remove the orders */
-	cur = v->orders;
+	Order *cur = v->orders;
 	v->orders = NULL;
 	v->num_orders = 0;
 
@@ -1162,12 +1158,8 @@ void DeleteVehicleOrders(Vehicle *v)
 			case VEH_AIRCRAFT: window_class = WC_AIRCRAFT_LIST; break;
 		}
 		DeleteWindowById(window_class, (cur->index << 16) | (v->type << 11) | VLW_SHARED_ORDERS | v->owner);
-	}
 
-	while (cur != NULL) {
-		next = cur->next;
-		DeleteOrder(cur);
-		cur = next;
+		cur->FreeChain(); // Free the orders.
 	}
 }
 
@@ -1274,9 +1266,9 @@ static void Load_ORDR()
 		/* Update all the next pointer */
 		for (i = 1; i < len; ++i) {
 			/* The orders were built like this:
-			 *   Vehicle one had order[0], and as long as order++.type was not
-			 *   OT_NOTHING, it was part of the order-list of that vehicle */
-			if (GetOrder(i)->type != OT_NOTHING)
+			 *   While the order is valid, set the previous will get it's next pointer set
+			 *   We start with index 1 because no order will have the first in it's next pointer */
+			if (GetOrder(i)->IsValid())
 				GetOrder(i - 1)->next = GetOrder(i);
 		}
 	} else {
