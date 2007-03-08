@@ -79,10 +79,10 @@ int64 CalculateCompanyValue(const Player* p)
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner != owner) continue;
 
-			if (v->type == VEH_Train ||
-					v->type == VEH_Road ||
-					(v->type == VEH_Aircraft && IsNormalAircraft(v)) ||
-					v->type == VEH_Ship) {
+			if (v->type == VEH_TRAIN ||
+					v->type == VEH_ROAD ||
+					(v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) ||
+					v->type == VEH_SHIP) {
 				value += v->value * 3 >> 1;
 			}
 		}
@@ -115,10 +115,10 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner != owner) continue;
-			if ((v->type == VEH_Train && IsFrontEngine(v)) ||
-					 v->type == VEH_Road ||
-					(v->type == VEH_Aircraft && IsNormalAircraft(v)) ||
-					 v->type == VEH_Ship) {
+			if ((v->type == VEH_TRAIN && IsFrontEngine(v)) ||
+					 v->type == VEH_ROAD ||
+					(v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) ||
+					 v->type == VEH_SHIP) {
 				num++;
 				if (v->age > 730) {
 					/* Find the vehicle with the lowest amount of profit */
@@ -305,17 +305,17 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == new_player) {
 				switch (v->type) {
-					case VEH_Train:    if (IsFrontEngine(v)) num_train++; break;
-					case VEH_Road:     num_road++; break;
-					case VEH_Ship:     num_ship++; break;
-					case VEH_Aircraft: if (IsNormalAircraft(v)) num_aircraft++; break;
+					case VEH_TRAIN:    if (IsFrontEngine(v)) num_train++; break;
+					case VEH_ROAD:     num_road++; break;
+					case VEH_SHIP:     num_ship++; break;
+					case VEH_AIRCRAFT: if (IsNormalAircraft(v)) num_aircraft++; break;
 					default: break;
 				}
 			}
 		}
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->owner == old_player && IS_BYTE_INSIDE(v->type, VEH_Train, VEH_Aircraft + 1)) {
+			if (v->owner == old_player && IS_BYTE_INSIDE(v->type, VEH_TRAIN, VEH_AIRCRAFT + 1)) {
 				if (new_player == PLAYER_SPECTATOR) {
 					DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 					DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
@@ -325,10 +325,10 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					v->owner = new_player;
 					if (IsEngineCountable(v)) GetPlayer(new_player)->num_engines[v->engine_type]++;
 					switch (v->type) {
-						case VEH_Train:    if (IsFrontEngine(v)) v->unitnumber = ++num_train; break;
-						case VEH_Road:     v->unitnumber = ++num_road; break;
-						case VEH_Ship:     v->unitnumber = ++num_ship; break;
-						case VEH_Aircraft: if (IsNormalAircraft(v)) v->unitnumber = ++num_aircraft; break;
+						case VEH_TRAIN:    if (IsFrontEngine(v)) v->unitnumber = ++num_train; break;
+						case VEH_ROAD:     v->unitnumber = ++num_road; break;
+						case VEH_SHIP:     v->unitnumber = ++num_ship; break;
+						case VEH_AIRCRAFT: if (IsNormalAircraft(v)) v->unitnumber = ++num_aircraft; break;
 					}
 				}
 			}
@@ -1295,7 +1295,7 @@ static bool LoadWait(const Vehicle* v, const Vehicle* u)
 	}
 
 	FOR_ALL_VEHICLES(x) {
-		if ((x->type != VEH_Train || IsFrontEngine(x)) && // for all locs
+		if ((x->type != VEH_TRAIN || IsFrontEngine(x)) && // for all locs
 				u->last_station_visited == x->last_station_visited && // at the same station
 				!(x->vehstatus & (VS_STOPPED | VS_CRASHED)) && // not stopped or crashed
 				x->current_order.type == OT_LOADING && // loading
@@ -1481,8 +1481,8 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 		/* update stats */
 		ge->days_since_pickup = 0;
 		switch (u->type) {
-			case VEH_Train: t = u->u.rail.cached_max_speed; break;
-			case VEH_Road:  t = u->max_speed / 2;           break;
+			case VEH_TRAIN: t = u->u.rail.cached_max_speed; break;
+			case VEH_ROAD:  t = u->max_speed / 2;           break;
 			default:        t = u->max_speed;               break;
 		}
 
@@ -1566,7 +1566,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 		ShowFeederIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, virtual_profit_total);
 	}
 
-	if (v->type == VEH_Train) {
+	if (v->type == VEH_TRAIN) {
 		/* Each platform tile is worth 2 rail vehicles. */
 		int overhang = v->u.rail.cached_total_length - st->GetPlatformLength(v->tile) * TILE_SIZE;
 		if (overhang > 0) {

@@ -140,7 +140,7 @@ void TrainConsistChanged(Vehicle* v)
 {
 	uint16 max_speed = 0xFFFF;
 
-	assert(v->type == VEH_Train);
+	assert(v->type == VEH_TRAIN);
 	assert(IsFrontEngine(v) || IsFreeWagon(v));
 
 	const RailVehicleInfo *rvi_v = RailVehInfo(v->engine_type);
@@ -262,7 +262,7 @@ static bool TrainShouldStop(const Vehicle* v, TileIndex tile)
 	const Order* o = &v->current_order;
 	StationID sid = GetStationIndex(tile);
 
-	assert(v->type == VEH_Train);
+	assert(v->type == VEH_TRAIN);
 	//When does a train drive through a station
 	//first we deal with the "new nonstop handling"
 	if (_patches.new_nonstop && o->flags & OF_NON_STOP && sid == o->dest) {
@@ -545,7 +545,7 @@ static void AddArticulatedParts(Vehicle **vl)
 		u->max_age = 0;
 		u->engine_type = engine_type;
 		u->value = 0;
-		u->type = VEH_Train;
+		u->type = VEH_TRAIN;
 		u->subtype = 0;
 		SetArticulatedPart(u);
 		u->cur_image = 0xAC2;
@@ -580,7 +580,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 
 			Vehicle *w;
 			FOR_ALL_VEHICLES(w) {
-				if (w->type == VEH_Train && w->tile == tile &&
+				if (w->type == VEH_TRAIN && w->tile == tile &&
 				    IsFreeWagon(w) && w->engine_type == engine) {
 					u = GetLastVehicleInChain(w);
 					break;
@@ -623,7 +623,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->u.rail.railtype = rvi->railtype;
 
 			v->build_year = _cur_year;
-			v->type = VEH_Train;
+			v->type = VEH_TRAIN;
 			v->cur_image = 0xAC2;
 			v->random_bits = VehicleRandomBits();
 
@@ -636,7 +636,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 			if (IsLocalPlayer()) {
-				InvalidateAutoreplaceWindow(VEH_Train); // updates the replace Train window
+				InvalidateAutoreplaceWindow(VEH_TRAIN); // updates the replace Train window
 			}
 			GetPlayer(_current_player)->num_engines[engine]++;
 		}
@@ -651,7 +651,7 @@ static void NormalizeTrainVehInDepot(const Vehicle* u)
 	const Vehicle* v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && IsFreeWagon(v) &&
+		if (v->type == VEH_TRAIN && IsFreeWagon(v) &&
 				v->tile == u->tile &&
 				v->u.rail.track == TRACK_BIT_DEPOT) {
 			if (CmdFailed(DoCommand(0, v->index | (u->index << 16), 1, DC_EXEC,
@@ -689,7 +689,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 	u->build_year = v->build_year;
 	if (building) v->value >>= 1;
 	u->value = v->value;
-	u->type = VEH_Train;
+	u->type = VEH_TRAIN;
 	u->cur_image = 0xAC2;
 	u->random_bits = VehicleRandomBits();
 	VehiclePositionChanged(u);
@@ -704,7 +704,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	/* Check if the engine-type is valid (for the player) */
-	if (!IsEngineBuildable(p1, VEH_Train, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
+	if (!IsEngineBuildable(p1, VEH_TRAIN, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
 	/* Check if the train is actually being built in a depot belonging
 	 * to the player. Doesn't matter if only the cost is queried */
@@ -739,7 +739,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		Vehicle *v = vl[0];
 
-		UnitID unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_Train);
+		UnitID unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_TRAIN);
 		if (unit_num > _patches.max_trains)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
@@ -781,7 +781,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->service_interval = _patches.servint_trains;
 			v->date_of_last_service = _date;
 			v->build_year = _cur_year;
-			v->type = VEH_Train;
+			v->type = VEH_TRAIN;
 			v->cur_image = 0xAC2;
 			v->random_bits = VehicleRandomBits();
 
@@ -818,7 +818,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			RebuildVehicleLists();
 			InvalidateWindow(WC_COMPANY, v->owner);
 			if (IsLocalPlayer())
-				InvalidateAutoreplaceWindow(VEH_Train); // updates the replace Train window
+				InvalidateAutoreplaceWindow(VEH_TRAIN); // updates the replace Train window
 
 			GetPlayer(_current_player)->num_engines[p1]++;
 		}
@@ -897,7 +897,7 @@ static Vehicle *FindGoodVehiclePos(const Vehicle *src)
 	TileIndex tile = src->tile;
 
 	FOR_ALL_VEHICLES(dst) {
-		if (dst->type == VEH_Train && IsFreeWagon(dst) && dst->tile == tile) {
+		if (dst->type == VEH_TRAIN && IsFreeWagon(dst) && dst->tile == tile) {
 			// check so all vehicles in the line have the same engine.
 			Vehicle *v = dst;
 
@@ -964,7 +964,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Vehicle *src = GetVehicle(s);
 
-	if (src->type != VEH_Train || !CheckOwnership(src->owner)) return CMD_ERROR;
+	if (src->type != VEH_TRAIN || !CheckOwnership(src->owner)) return CMD_ERROR;
 
 	// if nothing is selected as destination, try and find a matching vehicle to drag to.
 	Vehicle *dst;
@@ -973,7 +973,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} else {
 		if (!IsValidVehicleID(d)) return CMD_ERROR;
 		dst = GetVehicle(d);
-		if (dst->type != VEH_Train || !CheckOwnership(dst->owner)) return CMD_ERROR;
+		if (dst->type != VEH_TRAIN || !CheckOwnership(dst->owner)) return CMD_ERROR;
 	}
 
 	// if an articulated part is being handled, deal with its parent vehicle
@@ -1078,7 +1078,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	// moving a loco to a new line?, then we need to assign a unitnumber.
 	if (dst == NULL && !IsFrontEngine(src) && IsTrainEngine(src)) {
-		UnitID unit_num = GetFreeUnitNumber(VEH_Train);
+		UnitID unit_num = GetFreeUnitNumber(VEH_TRAIN);
 		if (unit_num > _patches.max_trains)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
@@ -1242,7 +1242,7 @@ int32 CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Check if this train can be started/stopped. The callback will fail or
 	 * return 0xFF if it can. */
@@ -1283,7 +1283,7 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -1562,7 +1562,7 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 /* Check if the vehicle is a train and is on the tile we are testing */
 static void *TestTrainOnCrossing(Vehicle *v, void *data)
 {
-	if (v->tile != *(const TileIndex*)data || v->type != VEH_Train) return NULL;
+	if (v->tile != *(const TileIndex*)data || v->type != VEH_TRAIN) return NULL;
 	return v;
 }
 
@@ -1669,7 +1669,7 @@ int32 CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (p2) {
 		// turn a single unit around
@@ -1717,7 +1717,7 @@ int32 CmdForceTrainProceed(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) v->u.rail.force_proceed = 0x50;
 
@@ -1740,7 +1740,7 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (CheckTrainStoppedInDepot(v) < 0) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
 
 	/* Check cargo */
@@ -1918,14 +1918,14 @@ int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
 		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		return SendAllVehiclesToDepot(VEH_Train, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
+		return SendAllVehiclesToDepot(VEH_TRAIN, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
 	}
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
@@ -2779,7 +2779,7 @@ static void *FindTrainCollideEnum(Vehicle *v, void *data)
 
 	if (v != tcc->v &&
 			v != tcc->v_skip &&
-			v->type == VEH_Train &&
+			v->type == VEH_TRAIN &&
 			v->u.rail.track != TRACK_BIT_DEPOT &&
 			myabs(v->z_pos - tcc->v->z_pos) <= 6 &&
 			myabs(v->x_pos - tcc->v->x_pos) < 6 &&
@@ -2870,7 +2870,7 @@ static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 {
 	const VehicleAtSignalData* vasd = (VehicleAtSignalData*)data;
 
-	if (v->type == VEH_Train && IsFrontEngine(v) && v->tile == vasd->tile) {
+	if (v->type == VEH_TRAIN && IsFrontEngine(v) && v->tile == vasd->tile) {
 		DirDiff diff = ChangeDirDiff(DirDifference(v->direction, vasd->direction), DIRDIFF_90RIGHT);
 
 		if (diff == DIRDIFF_90RIGHT || (v->cur_speed <= 5 && diff <= DIRDIFF_REVERSE)) return v;
@@ -3391,7 +3391,7 @@ void Train_Tick(Vehicle *v)
 		TrainLocoHandler(v, false);
 
 		// make sure vehicle wasn't deleted.
-		if (v->type == VEH_Train && IsFrontEngine(v))
+		if (v->type == VEH_TRAIN && IsFrontEngine(v))
 			TrainLocoHandler(v, true);
 	} else if (IsFreeWagon(v) && HASBITS(v->vehstatus, VS_CRASHED)) {
 		// Delete flooded standalone wagon
@@ -3500,7 +3500,7 @@ void TrainsYearlyLoop()
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && IsFrontEngine(v)) {
+		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
 			// show warning if train is not generating enough income last 2 years (corresponds to a red icon in the vehicle list)
 			if (_patches.train_income_warn && v->owner == _local_player && v->age >= 730 && v->profit_this_year < 0) {
 				SetDParam(1, v->profit_this_year);
@@ -3534,13 +3534,13 @@ void ConnectMultiheadedTrains()
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train) {
+		if (v->type == VEH_TRAIN) {
 			v->u.rail.other_multiheaded_part = NULL;
 		}
 	}
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && IsFrontEngine(v)) {
+		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
 			Vehicle *u = v;
 
 			BEGIN_ENUM_WAGONS(u) {
@@ -3581,13 +3581,13 @@ void ConvertOldMultiheadToNew()
 {
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train) {
+		if (v->type == VEH_TRAIN) {
 			SETBIT(v->subtype, 7); // indicates that it's the old format and needs to be converted in the next loop
 		}
 	}
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train) {
+		if (v->type == VEH_TRAIN) {
 			if (HASBIT(v->subtype, 7) && ((v->subtype & ~0x80) == 0 || (v->subtype & ~0x80) == 4)) {
 				Vehicle *u = v;
 

@@ -418,7 +418,7 @@ int32 SettingsDisableElrail(int32 p1)
 	*  normal rail too */
 	if (disable) {
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_Train && v->u.rail.railtype == RAILTYPE_ELECTRIC) {
+			if (v->type == VEH_TRAIN && v->u.rail.railtype == RAILTYPE_ELECTRIC) {
 				/* this railroad vehicle is now compatible only with elrail,
 				*  so add there also normal rail compatibility */
 				v->u.rail.compatible_railtypes |= (1 << RAILTYPE_RAIL);
@@ -431,7 +431,7 @@ int32 SettingsDisableElrail(int32 p1)
 	/* setup total power for trains */
 	FOR_ALL_VEHICLES(v) {
 		/* power is cached only for front engines */
-		if (v->type == VEH_Train && IsFrontEngine(v)) TrainPowerChanged(v);
+		if (v->type == VEH_TRAIN && IsFrontEngine(v)) TrainPowerChanged(v);
 	}
 
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);

@@ -543,7 +543,7 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 
 	v = FindVehicleBetween(starttile, tile, z);
 	if (v != NULL) {
-		_error_message = v->type == VEH_Train ?
+		_error_message = v->type == VEH_TRAIN ?
 			STR_5000_TRAIN_IN_TUNNEL : STR_5001_ROAD_VEHICLE_IN_TUNNEL;
 		return INVALID_TILE;
 	}
@@ -1257,7 +1257,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 		DiagDirection dir;
 		DiagDirection vdir;
 
-		if (v->type == VEH_Train) {
+		if (v->type == VEH_TRAIN) {
 			fc = (x & 0xF) + (y << 4);
 
 			dir = GetTunnelDirection(tile);
@@ -1286,7 +1286,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				v->vehstatus &= ~VS_HIDDEN;
 				return VETSB_ENTERED_WORMHOLE;
 			}
-		} else if (v->type == VEH_Road) {
+		} else if (v->type == VEH_ROAD) {
 			fc = (x & 0xF) + (y << 4);
 			dir = GetTunnelDirection(tile);
 			vdir = DirToDiagDir(v->direction);
@@ -1320,11 +1320,11 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 	} else if (IsBridge(tile)) { // XXX is this necessary?
 		DiagDirection dir;
 
-		if (v->type == VEH_Road || (v->type == VEH_Train && IsFrontEngine(v))) {
+		if (v->type == VEH_ROAD || (v->type == VEH_TRAIN && IsFrontEngine(v))) {
 			/* modify speed of vehicle */
 			uint16 spd = _bridge[GetBridgeType(tile)].speed;
 
-			if (v->type == VEH_Road) spd *= 2;
+			if (v->type == VEH_ROAD) spd *= 2;
 			if (v->cur_speed > spd) v->cur_speed = spd;
 		}
 
@@ -1337,7 +1337,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				case DIAGDIR_SW: if ((x & 0xF) != TILE_SIZE - 1) return VETSB_CONTINUE; break;
 				case DIAGDIR_NW: if ((y & 0xF) != 0)             return VETSB_CONTINUE; break;
 			}
-			if (v->type == VEH_Train) {
+			if (v->type == VEH_TRAIN) {
 				v->u.rail.track = TRACK_BIT_WORMHOLE;
 				CLRBIT(v->u.rail.flags, VRF_GOINGUP);
 				CLRBIT(v->u.rail.flags, VRF_GOINGDOWN);
@@ -1347,7 +1347,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			return VETSB_ENTERED_WORMHOLE;
 		} else if (DirToDiagDir(v->direction) == ReverseDiagDir(dir)) {
 			v->tile = tile;
-			if (v->type == VEH_Train) {
+			if (v->type == VEH_TRAIN) {
 				if (v->u.rail.track == TRACK_BIT_WORMHOLE) {
 					v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 					return VETSB_ENTERED_WORMHOLE;

@@ -935,7 +935,7 @@ static void TileLoop_Road(TileIndex tile)
 
 static void ClickTile_Road(TileIndex tile)
 {
-	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) ShowDepotWindow(tile, VEH_Road);
+	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) ShowDepotWindow(tile, VEH_ROAD);
 }
 
 static const byte _road_trackbits[16] = {
@@ -1001,7 +1001,7 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_CROSSING:
-			if (v->type == VEH_Train && !IsCrossingBarred(tile)) {
+			if (v->type == VEH_TRAIN && !IsCrossingBarred(tile)) {
 				/* train crossing a road */
 				SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
 				BarCrossing(tile);
@@ -1010,7 +1010,7 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 			break;
 
 		case ROAD_TILE_DEPOT:
-			if (v->type == VEH_Road &&
+			if (v->type == VEH_ROAD &&
 					v->u.road.frame == 11 &&
 					_roadveh_enter_depot_unk0[GetRoadDepotDirection(tile)] == v->u.road.state) {
 				VehicleEnterDepot(v);

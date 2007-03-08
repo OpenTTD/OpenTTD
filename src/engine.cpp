@@ -96,10 +96,10 @@ void AddTypeToEngines()
 {
 	Engine* e = _engines;
 
-	do e->type = VEH_Train;    while (++e < &_engines[ROAD_ENGINES_INDEX]);
-	do e->type = VEH_Road;     while (++e < &_engines[SHIP_ENGINES_INDEX]);
-	do e->type = VEH_Ship;     while (++e < &_engines[AIRCRAFT_ENGINES_INDEX]);
-	do e->type = VEH_Aircraft; while (++e < &_engines[TOTAL_NUM_ENGINES]);
+	do e->type = VEH_TRAIN;    while (++e < &_engines[ROAD_ENGINES_INDEX]);
+	do e->type = VEH_ROAD;     while (++e < &_engines[SHIP_ENGINES_INDEX]);
+	do e->type = VEH_SHIP;     while (++e < &_engines[AIRCRAFT_ENGINES_INDEX]);
+	do e->type = VEH_AIRCRAFT; while (++e < &_engines[TOTAL_NUM_ENGINES]);
 }
 
 void StartupEngines()
@@ -169,7 +169,7 @@ static void AcceptEnginePreview(EngineID eid, PlayerID player)
 	Engine *e = GetEngine(eid);
 
 	SETBIT(e->player_avail, player);
-	if (e->type == VEH_Train) {
+	if (e->type == VEH_TRAIN) {
 		const RailVehicleInfo *rvi = RailVehInfo(eid);
 		Player *p = GetPlayer(player);
 
@@ -289,8 +289,8 @@ static void NewVehicleAvailable(Engine *e)
 			p->block_preview = 20;
 
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == VEH_Train || v->type == VEH_Road || v->type == VEH_Ship ||
-						(v->type == VEH_Aircraft && IsNormalAircraft(v))) {
+				if (v->type == VEH_TRAIN || v->type == VEH_ROAD || v->type == VEH_SHIP ||
+						(v->type == VEH_AIRCRAFT && IsNormalAircraft(v))) {
 					if (v->owner == p->index && v->engine_type == index) {
 						/* The user did prove me wrong, so restore old value */
 						p->block_preview = block_preview;

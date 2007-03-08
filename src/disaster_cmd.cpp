@@ -116,11 +116,11 @@ static void DisasterVehicleUpdateImage(Vehicle *v)
 }
 
 
-/** Initialize a disaster vehicle. These vehicles are of type VEH_Disaster, are unclickable
+/** Initialize a disaster vehicle. These vehicles are of type VEH_DISASTER, are unclickable
  * and owned by nobody */
 static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Direction direction, byte subtype)
 {
-	v->type = VEH_Disaster;
+	v->type = VEH_DISASTER;
 	v->x_pos = x;
 	v->y_pos = y;
 	v->z_pos = z;
@@ -330,7 +330,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 		v->current_order.dest = 1;
 
 		FOR_ALL_VEHICLES(u) {
-			if (u->type == VEH_Road && IsHumanPlayer(u->owner)) {
+			if (u->type == VEH_ROAD && IsHumanPlayer(u->owner)) {
 				v->dest_tile = u->index;
 				v->age = 0;
 				return;
@@ -341,7 +341,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 	} else {
 		/* Target a vehicle */
 		u = GetVehicle(v->dest_tile);
-		if (u->type != VEH_Road) {
+		if (u->type != VEH_ROAD) {
 			DeleteDisasterVeh(v);
 			return;
 		}
@@ -590,7 +590,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		v->current_order.dest = 2;
 
 		FOR_ALL_VEHICLES(u) {
-			if (u->type == VEH_Train || u->type == VEH_Road) {
+			if (u->type == VEH_TRAIN || u->type == VEH_ROAD) {
 				if (delta(u->x_pos, v->x_pos) + delta(u->y_pos, v->y_pos) <= 12 * TILE_SIZE) {
 					u->breakdown_ctr = 5;
 					u->breakdown_delay = 0xF0;

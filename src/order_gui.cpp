@@ -98,7 +98,7 @@ static void DrawOrdersWindow(Window *w)
 				(uint)v->num_orders + ((shared_orders || v->num_orders != 0) ? 1 : 0) <= (uint)WP(w, order_d).sel);
 
 		/* non-stop only for trains */
-		SetWindowWidgetDisabledState(w, ORDER_WIDGET_NON_STOP,  v->type != VEH_Train || order == NULL);
+		SetWindowWidgetDisabledState(w, ORDER_WIDGET_NON_STOP,  v->type != VEH_TRAIN || order == NULL);
 		SetWindowWidgetDisabledState(w, ORDER_WIDGET_FULL_LOAD, order == NULL); // full load
 		SetWindowWidgetDisabledState(w, ORDER_WIDGET_UNLOAD,    order == NULL); // unload
 		SetWindowWidgetDisabledState(w, ORDER_WIDGET_TRANSFER,  order == NULL); // transfer
@@ -162,16 +162,16 @@ static void DrawOrdersWindow(Window *w)
 				case OT_GOTO_DEPOT: {
 					StringID s = STR_NULL;
 
-					if (v->type == VEH_Aircraft) {
+					if (v->type == VEH_AIRCRAFT) {
 						s = STR_GO_TO_AIRPORT_HANGAR;
 						SetDParam(2, order->dest);
 					} else {
 						SetDParam(2, GetDepot(order->dest)->town_index);
 
 						switch (v->type) {
-							case VEH_Train: s = (order->flags & OF_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
-							case VEH_Road:  s = STR_9038_GO_TO_ROADVEH_DEPOT; break;
-							case VEH_Ship:  s = STR_GO_TO_SHIP_DEPOT; break;
+							case VEH_TRAIN: s = (order->flags & OF_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
+							case VEH_ROAD:  s = STR_9038_GO_TO_ROADVEH_DEPOT; break;
+							case VEH_SHIP:  s = STR_GO_TO_SHIP_DEPOT; break;
 							default: break;
 						}
 					}
@@ -231,7 +231,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	if (_patches.gotodepot) {
 		switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if (v->type == VEH_Train && IsTileOwner(tile, _local_player)) {
+			if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_player)) {
 				if (IsRailDepot(tile)) {
 					order.type = OT_GOTO_DEPOT;
 					order.flags = OF_PART_OF_ORDERS;
@@ -242,7 +242,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			break;
 
 		case MP_STREET:
-			if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && v->type == VEH_Road && IsTileOwner(tile, _local_player)) {
+			if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && v->type == VEH_ROAD && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
 				order.dest = GetDepotByTile(tile)->index;
@@ -251,7 +251,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			break;
 
 		case MP_STATION:
-			if (v->type != VEH_Aircraft) break;
+			if (v->type != VEH_AIRCRAFT) break;
 			if (IsHangar(tile) && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
@@ -261,7 +261,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			break;
 
 		case MP_WATER:
-			if (v->type != VEH_Ship) break;
+			if (v->type != VEH_SHIP) break;
 			if (IsTileDepotType(tile, TRANSPORT_WATER) &&
 					IsTileOwner(tile, _local_player)) {
 				TileIndex tile2 = GetOtherShipDepotTile(tile);
@@ -279,7 +279,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 	// check waypoint
 	if (IsTileType(tile, MP_RAILWAY) &&
-			v->type == VEH_Train &&
+			v->type == VEH_TRAIN &&
 			IsTileOwner(tile, _local_player) &&
 			IsRailWaypoint(tile)) {
 		order.type = OT_GOTO_WAYPOINT;
@@ -294,10 +294,10 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 		if (st->owner == _current_player || st->owner == OWNER_NONE) {
 			byte facil;
-			(facil=FACIL_DOCK, v->type == VEH_Ship) ||
-			(facil=FACIL_TRAIN, v->type == VEH_Train) ||
-			(facil=FACIL_AIRPORT, v->type == VEH_Aircraft) ||
-			(facil=FACIL_BUS_STOP, v->type == VEH_Road && v->cargo_type == CT_PASSENGERS) ||
+			(facil=FACIL_DOCK, v->type == VEH_SHIP) ||
+			(facil=FACIL_TRAIN, v->type == VEH_TRAIN) ||
+			(facil=FACIL_AIRPORT, v->type == VEH_AIRCRAFT) ||
+			(facil=FACIL_BUS_STOP, v->type == VEH_ROAD && v->cargo_type == CT_PASSENGERS) ||
 			(facil=FACIL_TRUCK_STOP, 1);
 			if (st->facilities & facil) {
 				order.type = OT_GOTO_STATION;
@@ -319,7 +319,7 @@ static bool HandleOrderVehClick(const Vehicle *v, const Vehicle *u, Window *w)
 {
 	if (u->type != v->type) return false;
 
-	if (u->type == VEH_Train && !IsFrontEngine(u)) {
+	if (u->type == VEH_TRAIN && !IsFrontEngine(u)) {
 		u = GetFirstVehicleInChain(u);
 		if (!IsFrontEngine(u)) return false;
 	}
@@ -465,7 +465,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 				switch (ord->type) {
 					case OT_GOTO_STATION:  xy = GetStation(ord->dest)->xy ; break;
-					case OT_GOTO_DEPOT:    xy = (v->type == VEH_Aircraft) ?  GetStation(ord->dest)->xy : GetDepot(ord->dest)->xy;    break;
+					case OT_GOTO_DEPOT:    xy = (v->type == VEH_AIRCRAFT) ?  GetStation(ord->dest)->xy : GetDepot(ord->dest)->xy;    break;
 					case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->dest)->xy; break;
 					default:               xy = 0; break;
 				}
@@ -677,7 +677,7 @@ void ShowOrdersWindow(const Vehicle *v)
 	if (v->owner != _local_player) {
 		w = AllocateWindowDescFront(&_other_orders_desc, veh);
 	} else {
-		w = AllocateWindowDescFront((v->type == VEH_Train) ? &_orders_train_desc : &_orders_desc, veh);
+		w = AllocateWindowDescFront((v->type == VEH_TRAIN) ? &_orders_train_desc : &_orders_desc, veh);
 	}
 
 	if (w != NULL) {

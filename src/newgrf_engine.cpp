@@ -195,7 +195,7 @@ uint32 GetEngineGRFID(EngineID engine)
 
 static int MapOldSubType(const Vehicle *v)
 {
-	if (v->type != VEH_Train) return v->subtype;
+	if (v->type != VEH_TRAIN) return v->subtype;
 	if (IsTrainEngine(v)) return 0;
 	if (IsFreeWagon(v)) return 4;
 	return 2;
@@ -489,7 +489,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 	switch (variable) {
 		case 0x40: /* Get length of consist */
 		case 0x41: /* Get length of same consecutive wagons */
-			if (v->type != VEH_Train) return 1;
+			if (v->type != VEH_TRAIN) return 1;
 
 			{
 				const Vehicle* u;
@@ -545,7 +545,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			return v->owner;
 
 		case 0x44: /* Aircraft information */
-			if (v->type != VEH_Aircraft) return UINT_MAX;
+			if (v->type != VEH_AIRCRAFT) return UINT_MAX;
 
 			{
 				const Vehicle *w = v->next;
@@ -590,7 +590,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 		/* Variables which use the parameter */
 		case 0x60: /* Count consist's engine ID occurance */
-			if (v->type != VEH_Train) return v->engine_type == parameter;
+			if (v->type != VEH_TRAIN) return v->engine_type == parameter;
 
 			{
 				uint count = 0;
@@ -699,7 +699,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 	/* Vehicle specific properties */
 	switch (v->type) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			switch (variable - 0x80) {
 				case 0x62: return v->u.rail.track;
 				case 0x66: return v->u.rail.railtype;
@@ -714,7 +714,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			}
 			break;
 
-		case VEH_Road:
+		case VEH_ROAD:
 			switch (variable - 0x80) {
 				case 0x62: return v->u.road.state;
 				case 0x64: return v->u.road.blocked_ctr;
@@ -726,7 +726,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			}
 			break;
 
-		case VEH_Aircraft:
+		case VEH_AIRCRAFT:
 			switch (variable - 0x80) {
 				case 0x62: return MapAircraftMovementState(v);  // Current movement state
 				case 0x63: return v->u.air.targetairport;       // Airport to which the action refers
@@ -751,7 +751,7 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 
 	if (v == NULL) return group->g.real.loading[0];
 
-	if (v->type == VEH_Train) {
+	if (v->type == VEH_TRAIN) {
 		in_motion = GetFirstVehicleInChain(v)->current_order.type != OT_LOADING;
 	} else {
 		in_motion = v->current_order.type != OT_LOADING;
@@ -780,7 +780,7 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 	res->ResolveReal   = &VehicleResolveReal;
 
 	res->u.vehicle.self   = v;
-	res->u.vehicle.parent = (v != NULL && v->type == VEH_Train) ? GetFirstVehicleInChain(v) : v;
+	res->u.vehicle.parent = (v != NULL && v->type == VEH_TRAIN) ? GetFirstVehicleInChain(v) : v;
 
 	res->u.vehicle.self_type = engine_type;
 
@@ -812,7 +812,7 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 	} else {
 		cargo = v->cargo_type;
 
-		if (v->type == VEH_Train) {
+		if (v->type == VEH_TRAIN) {
 			group = GetWagonOverrideSpriteSet(engine, cargo, v->u.rail.first_engine);
 
 			if (group != NULL) return group;
@@ -874,7 +874,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_vie
  */
 bool UsesWagonOverride(const Vehicle* v)
 {
-	assert(v->type == VEH_Train);
+	assert(v->type == VEH_TRAIN);
 	return GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, v->u.rail.first_engine) != NULL;
 }
 
@@ -962,7 +962,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 			 * i.e.), so we give them all the NEW_CARGO triggered
 			 * vehicle's portion of random bits. */
 			assert(first);
-			DoTriggerVehicle((v->type == VEH_Train) ? GetFirstVehicleInChain(v) : v, VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
+			DoTriggerVehicle((v->type == VEH_TRAIN) ? GetFirstVehicleInChain(v) : v, VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
 			break;
 
 		case VEHICLE_TRIGGER_DEPOT:

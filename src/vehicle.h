@@ -63,13 +63,13 @@ enum RoadVehicleStates {
 };
 
 enum {
-	VEH_Train,
-	VEH_Road,
-	VEH_Ship,
-	VEH_Aircraft,
-	VEH_Special,
-	VEH_Disaster,
-	VEH_Invalid = 0xFF,
+	VEH_TRAIN,
+	VEH_ROAD,
+	VEH_SHIP,
+	VEH_AIRCRAFT,
+	VEH_SPECIAL,
+	VEH_DISASTER,
+	VEH_INVALID = 0xFF,
 } ;
 
 enum VehStatus {
@@ -457,7 +457,7 @@ static inline uint GetNumVehicles()
  */
 static inline bool IsValidVehicle(const Vehicle *v)
 {
-	return v->type != VEH_Invalid;
+	return v->type != VEH_INVALID;
 }
 
 void DestroyVehicle(Vehicle *v);
@@ -465,16 +465,16 @@ void DestroyVehicle(Vehicle *v);
 static inline void DeleteVehicle(Vehicle *v)
 {
 	DestroyVehicle(v);
-	v->type = VEH_Invalid;
+	v->type = VEH_INVALID;
 }
 
 static inline bool IsPlayerBuildableVehicleType(byte type)
 {
 	switch (type) {
-		case VEH_Train:
-		case VEH_Road:
-		case VEH_Ship:
-		case VEH_Aircraft:
+		case VEH_TRAIN:
+		case VEH_ROAD:
+		case VEH_SHIP:
+		case VEH_AIRCRAFT:
 			return true;
 	}
 	return false;

@@ -87,7 +87,7 @@ static void VehiclePoolNewBlock(uint start_item)
 	 * TODO - This is just a temporary stage, this will be removed. */
 	for (v = GetVehicle(start_item); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
 		v->index = start_item++;
-		v->type  = VEH_Invalid;
+		v->type  = VEH_INVALID;
 	}
 }
 
@@ -119,16 +119,16 @@ bool VehicleNeedsService(const Vehicle *v)
 StringID VehicleInTheWayErrMsg(const Vehicle* v)
 {
 	switch (v->type) {
-		case VEH_Train:    return STR_8803_TRAIN_IN_THE_WAY;
-		case VEH_Road:     return STR_9000_ROAD_VEHICLE_IN_THE_WAY;
-		case VEH_Aircraft: return STR_A015_AIRCRAFT_IN_THE_WAY;
+		case VEH_TRAIN:    return STR_8803_TRAIN_IN_THE_WAY;
+		case VEH_ROAD:     return STR_9000_ROAD_VEHICLE_IN_THE_WAY;
+		case VEH_AIRCRAFT: return STR_A015_AIRCRAFT_IN_THE_WAY;
 		default:           return STR_980E_SHIP_IN_THE_WAY;
 	}
 }
 
 static void *EnsureNoVehicleProc(Vehicle *v, void *data)
 {
-	if (v->tile != *(const TileIndex*)data || v->type == VEH_Disaster)
+	if (v->tile != *(const TileIndex*)data || v->type == VEH_DISASTER)
 		return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
@@ -144,7 +144,7 @@ static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
 	const TileInfo *ti = (const TileInfo*)data;
 
-	if (v->tile != ti->tile || v->type == VEH_Disaster) return NULL;
+	if (v->tile != ti->tile || v->type == VEH_DISASTER) return NULL;
 	if (v->z_pos > ti->z) return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
@@ -186,7 +186,7 @@ Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_c
 	}
 	FOR_ALL_VEHICLES(veh) {
 		if (without_crashed && (veh->vehstatus & VS_CRASHED) != 0) continue;
-		if ((veh->type == VEH_Train || veh->type == VEH_Road) && (z==0xFF || veh->z_pos == z)) {
+		if ((veh->type == VEH_TRAIN || veh->type == VEH_ROAD) && (z==0xFF || veh->z_pos == z)) {
 			if ((veh->x_pos>>4) >= x1 && (veh->x_pos>>4) <= x2 &&
 					(veh->y_pos>>4) >= y1 && (veh->y_pos>>4) <= y2) {
 				return veh;
@@ -223,20 +223,20 @@ void AfterLoadVehicles()
 
 	FOR_ALL_VEHICLES(v) {
 		v->first = NULL;
-		if (v->type == VEH_Train) v->u.rail.first_engine = INVALID_ENGINE;
+		if (v->type == VEH_TRAIN) v->u.rail.first_engine = INVALID_ENGINE;
 	}
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && (IsFrontEngine(v) || IsFreeWagon(v)))
+		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v)))
 			TrainConsistChanged(v);
 	}
 
 	FOR_ALL_VEHICLES(v) {
 		switch (v->type) {
-			case VEH_Train: v->cur_image = GetTrainImage(v, v->direction); break;
-			case VEH_Road: v->cur_image = GetRoadVehImage(v, v->direction); break;
-			case VEH_Ship: v->cur_image = GetShipImage(v, v->direction); break;
-			case VEH_Aircraft:
+			case VEH_TRAIN: v->cur_image = GetTrainImage(v, v->direction); break;
+			case VEH_ROAD: v->cur_image = GetRoadVehImage(v, v->direction); break;
+			case VEH_SHIP: v->cur_image = GetShipImage(v, v->direction); break;
+			case VEH_AIRCRAFT:
 				if (IsNormalAircraft(v)) {
 					v->cur_image = GetAircraftImage(v, v->direction);
 
@@ -267,7 +267,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 
 	assert(v->orders == NULL);
 
-	v->type = VEH_Invalid;
+	v->type = VEH_INVALID;
 	v->left_coord = INVALID_COORD;
 	v->first = NULL;
 	v->next = NULL;
@@ -483,7 +483,7 @@ static Vehicle *GetPrevVehicleInChain_bruteforce(const Vehicle *v)
 {
 	Vehicle *u;
 
-	FOR_ALL_VEHICLES(u) if (u->type == VEH_Train && u->next == v) return u;
+	FOR_ALL_VEHICLES(u) if (u->type == VEH_TRAIN && u->next == v) return u;
 
 	return NULL;
 }
@@ -516,7 +516,7 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	Vehicle* u;
 
 	assert(v != NULL);
-	assert(v->type == VEH_Train);
+	assert(v->type == VEH_TRAIN);
 
 	if (v->first != NULL) {
 		if (IsFrontEngine(v->first) || IsFreeWagon(v->first)) return v->first;
@@ -553,12 +553,12 @@ uint CountVehiclesInChain(const Vehicle* v)
 bool IsEngineCountable(const Vehicle *v)
 {
 	switch (v->type) {
-		case VEH_Aircraft: return IsNormalAircraft(v); // don't count plane shadows and helicopter rotors
-		case VEH_Train:
+		case VEH_AIRCRAFT: return IsNormalAircraft(v); // don't count plane shadows and helicopter rotors
+		case VEH_TRAIN:
 			return !IsArticulatedPart(v) && // tenders and other articulated parts
 			(!IsMultiheaded(v) || IsTrainEngine(v)); // rear parts of multiheaded engines
-		case VEH_Road:
-		case VEH_Ship:
+		case VEH_ROAD:
+		case VEH_SHIP:
 			return true;
 		default: return false; // Only count player buildable vehicles
 	}
@@ -574,9 +574,9 @@ void DestroyVehicle(Vehicle *v)
 	DeleteVehicleNews(v->index, INVALID_STRING_ID);
 
 	DeleteName(v->string_id);
-	if (v->type == VEH_Road) ClearSlot(v);
+	if (v->type == VEH_ROAD) ClearSlot(v);
 
-	if (v->type != VEH_Train || (v->type == VEH_Train && (IsFrontEngine(v) || IsFreeWagon(v)))) {
+	if (v->type != VEH_TRAIN || (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v)))) {
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
@@ -665,12 +665,12 @@ void CallVehicleTicks()
 		_vehicle_tick_procs[v->type](v);
 
 		switch (v->type) {
-			case VEH_Train:
-			case VEH_Road:
-			case VEH_Aircraft:
-			case VEH_Ship:
-				if (v->type == VEH_Train && IsTrainWagon(v)) continue;
-				if (v->type == VEH_Aircraft && v->subtype != AIR_HELICOPTER) continue;
+			case VEH_TRAIN:
+			case VEH_ROAD:
+			case VEH_AIRCRAFT:
+			case VEH_SHIP:
+				if (v->type == VEH_TRAIN && IsTrainWagon(v)) continue;
+				if (v->type == VEH_AIRCRAFT && v->subtype != AIR_HELICOPTER) continue;
 
 				v->motion_counter += (v->direction & 1) ? (v->cur_speed * 3) / 4 : v->cur_speed;
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
@@ -701,7 +701,7 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 
 	//if the aircraft carries passengers and is NOT full, then
 	//continue loading, no matter how much mail is in
-	if (v->type == VEH_Aircraft &&
+	if (v->type == VEH_AIRCRAFT &&
 			v->cargo_type == CT_PASSENGERS &&
 			v->cargo_cap != v->cargo_count) {
 		return true;
@@ -737,7 +737,7 @@ bool CanFillVehicle(Vehicle *v)
 	TileIndex tile = v->tile;
 
 	if (IsTileType(tile, MP_STATION) ||
-			(v->type == VEH_Ship && (
+			(v->type == VEH_SHIP && (
 				IsTileType(TILE_ADDXY(tile,  1,  0), MP_STATION) ||
 				IsTileType(TILE_ADDXY(tile, -1,  0), MP_STATION) ||
 				IsTileType(TILE_ADDXY(tile,  0,  1), MP_STATION) ||
@@ -791,10 +791,10 @@ int32 GetRefitCost(EngineID engine_type)
 	int32 base_cost = 0;
 
 	switch (GetEngine(engine_type)->type) {
-		case VEH_Ship: base_cost = _price.ship_base; break;
-		case VEH_Road: base_cost = _price.roadveh_base; break;
-		case VEH_Aircraft: base_cost = _price.aircraft_base; break;
-		case VEH_Train:
+		case VEH_SHIP: base_cost = _price.ship_base; break;
+		case VEH_ROAD: base_cost = _price.roadveh_base; break;
+		case VEH_AIRCRAFT: base_cost = _price.aircraft_base; break;
+		case VEH_TRAIN:
 			base_cost = 2 * ((RailVehInfo(engine_type)->railveh_type == RAILVEH_WAGON) ?
 							 _price.build_railwagon : _price.build_railvehicle);
 			break;
@@ -1431,7 +1431,7 @@ Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type)
 
 	v = ForceAllocateSpecialVehicle();
 	if (v != NULL) {
-		v->type = VEH_Special;
+		v->type = VEH_SPECIAL;
 		v->subtype = type;
 		v->x_pos = x;
 		v->y_pos = y;
@@ -1542,7 +1542,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 
 	/* calculate reliability value to use in comparison */
 	rel = v->reliability;
-	if (v->type == VEH_Ship) rel += 0x6666;
+	if (v->type == VEH_SHIP) rel += 0x6666;
 
 	/* disabled breakdowns? */
 	if (_opt.diff.vehicle_breakdowns < 1) return;
@@ -1621,10 +1621,10 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	bool vehicle_list_window = HASBIT(p2, 6);
 
 	switch (vehicle_type) {
-		case VEH_Train:    stop_command = CMD_START_STOP_TRAIN;    break;
-		case VEH_Road:     stop_command = CMD_START_STOP_ROADVEH;  break;
-		case VEH_Ship:     stop_command = CMD_START_STOP_SHIP;     break;
-		case VEH_Aircraft: stop_command = CMD_START_STOP_AIRCRAFT; break;
+		case VEH_TRAIN:    stop_command = CMD_START_STOP_TRAIN;    break;
+		case VEH_ROAD:     stop_command = CMD_START_STOP_ROADVEH;  break;
+		case VEH_SHIP:     stop_command = CMD_START_STOP_SHIP;     break;
+		case VEH_AIRCRAFT: stop_command = CMD_START_STOP_AIRCRAFT; break;
 		default: return CMD_ERROR;
 	}
 
@@ -1645,7 +1645,7 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		if (!!(v->vehstatus & VS_STOPPED) != start_stop) continue;
 
 		if (!vehicle_list_window) {
-			if (vehicle_type == VEH_Train) {
+			if (vehicle_type == VEH_TRAIN) {
 				if (CheckTrainInDepot(v, false) == -1) continue;
 			} else {
 				if (!(v->vehstatus & VS_HIDDEN)) continue;
@@ -1685,10 +1685,10 @@ int32 CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	byte vehicle_type = GB(p1, 0, 8);
 
 	switch (vehicle_type) {
-		case VEH_Train:    sell_command = CMD_SELL_RAIL_WAGON; break;
-		case VEH_Road:     sell_command = CMD_SELL_ROAD_VEH;   break;
-		case VEH_Ship:     sell_command = CMD_SELL_SHIP;       break;
-		case VEH_Aircraft: sell_command = CMD_SELL_AIRCRAFT;   break;
+		case VEH_TRAIN:    sell_command = CMD_SELL_RAIL_WAGON; break;
+		case VEH_ROAD:     sell_command = CMD_SELL_ROAD_VEH;   break;
+		case VEH_SHIP:     sell_command = CMD_SELL_SHIP;       break;
+		case VEH_AIRCRAFT: sell_command = CMD_SELL_AIRCRAFT;   break;
 		default: return CMD_ERROR;
 	}
 
@@ -1814,7 +1814,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->type == VEH_Train && (!IsFrontEngine(v) || v->u.rail.crash_anim_pos >= 4400)) return CMD_ERROR;
+	if (v->type == VEH_TRAIN && (!IsFrontEngine(v) || v->u.rail.crash_anim_pos >= 4400)) return CMD_ERROR;
 
 	// check that we can allocate enough vehicles
 	if (!(flags & DC_EXEC)) {
@@ -1857,13 +1857,13 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					DoCommand(0, w->index, v2->cargo_type | (v2->cargo_subtype << 8), flags, GetCmdRefitVeh(v));
 					break; // We learned that the engine in question needed a refit. No need to check anymore
 				}
-			} while (v->type == VEH_Train && (w2 = w2->next) != NULL && (v2 = v2->next) != NULL);
+			} while (v->type == VEH_TRAIN && (w2 = w2->next) != NULL && (v2 = v2->next) != NULL);
 
-			if (v->type == VEH_Train && HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
+			if (v->type == VEH_TRAIN && HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
 				SETBIT(w->u.rail.flags, VRF_REVERSE_DIRECTION);
 			}
 
-			if (v->type == VEH_Train && !IsFrontEngine(v)) {
+			if (v->type == VEH_TRAIN && !IsFrontEngine(v)) {
 				// this s a train car
 				// add this unit to the end of the train
 				DoCommand(0, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
@@ -1875,9 +1875,9 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 			w_rear = w; // trains needs to know the last car in the train, so they can add more in next loop
 		}
-	} while (v->type == VEH_Train && (v = GetNextVehicle(v)) != NULL);
+	} while (v->type == VEH_TRAIN && (v = GetNextVehicle(v)) != NULL);
 
-	if (flags & DC_EXEC && v_front->type == VEH_Train) {
+	if (flags & DC_EXEC && v_front->type == VEH_TRAIN) {
 		// for trains this needs to be the front engine due to the callback function
 		_new_vehicle_id = w_front->index;
 	}
@@ -1924,7 +1924,7 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 	 * the complete train, which is without the weight of cargo we just
 	 * moved back into some (of the) new wagon(s).
 	 */
-	if (dest->type == VEH_Train) TrainConsistChanged(dest->first);
+	if (dest->type == VEH_TRAIN) TrainConsistChanged(dest->first);
 }
 
 static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, const EngineID engine_type)
@@ -1932,7 +1932,7 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, const EngineID eng
 	const Order *o;
 	const Vehicle *u;
 
-	if (v->type == VEH_Train) {
+	if (v->type == VEH_TRAIN) {
 		u = GetFirstVehicleInChain(v);
 	} else {
 		u = v;
@@ -1961,21 +1961,21 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 	CargoID new_cargo_type = CT_INVALID;
 
 	switch (v->type) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			new_cargo_capacity = (RailVehInfo(engine_type)->capacity > 0);
 			new_cargo_type     = RailVehInfo(engine_type)->cargo_type;
 			break;
 
-		case VEH_Road:
+		case VEH_ROAD:
 			new_cargo_capacity = (RoadVehInfo(engine_type)->capacity > 0);
 			new_cargo_type     = RoadVehInfo(engine_type)->cargo_type;
 			break;
-		case VEH_Ship:
+		case VEH_SHIP:
 			new_cargo_capacity = (ShipVehInfo(engine_type)->capacity > 0);
 			new_cargo_type     = ShipVehInfo(engine_type)->cargo_type;
 			break;
 
-		case VEH_Aircraft:
+		case VEH_AIRCRAFT:
 			/* all aircraft starts as passenger planes with cargo capacity
 			 * new_cargo_capacity is always true for aircraft, which is the init value. No need to set it here */
 			new_cargo_type     = CT_PASSENGERS;
@@ -1993,7 +1993,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 			return CT_INVALID;
 		}
 	}
-	if (v->type != VEH_Train) return CT_INVALID; // We can't refit the vehicle to carry the cargo we want
+	if (v->type != VEH_TRAIN) return CT_INVALID; // We can't refit the vehicle to carry the cargo we want
 
 	/* Below this line it's safe to assume that the vehicle in question is a train */
 
@@ -2068,12 +2068,12 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			}
 		}
 
-		if (new_v->type == VEH_Train && HASBIT(old_v->u.rail.flags, VRF_REVERSE_DIRECTION) && !IsMultiheaded(new_v) && !(new_v->next != NULL && IsArticulatedPart(new_v->next))) {
+		if (new_v->type == VEH_TRAIN && HASBIT(old_v->u.rail.flags, VRF_REVERSE_DIRECTION) && !IsMultiheaded(new_v) && !(new_v->next != NULL && IsArticulatedPart(new_v->next))) {
 			// we are autorenewing to a single engine, so we will turn it as the old one was turned as well
 			SETBIT(new_v->u.rail.flags, VRF_REVERSE_DIRECTION);
 		}
 
-		if (old_v->type == VEH_Train && !IsFrontEngine(old_v)) {
+		if (old_v->type == VEH_TRAIN && !IsFrontEngine(old_v)) {
 			/* this is a railcar. We need to move the car into the train
 			 * We add the new engine after the old one instead of replacing it. It will give the same result anyway when we
 			 * sell the old engine in a moment
@@ -2093,7 +2093,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			new_v->unitnumber = old_v->unitnumber; // use the same unit number
 
 			new_v->current_order = old_v->current_order;
-			if (old_v->type == VEH_Train && GetNextVehicle(old_v) != NULL){
+			if (old_v->type == VEH_TRAIN && GetNextVehicle(old_v) != NULL){
 				Vehicle *temp_v = GetNextVehicle(old_v);
 
 				// move the entire train to the new engine, excluding the old engine
@@ -2108,7 +2108,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			}
 		}
 		/* We are done setting up the new vehicle. Now we move the cargo from the old one to the new one */
-		MoveVehicleCargo(new_v->type == VEH_Train ? GetFirstVehicleInChain(new_v) : new_v, old_v);
+		MoveVehicleCargo(new_v->type == VEH_TRAIN ? GetFirstVehicleInChain(new_v) : new_v, old_v);
 
 		// Get the name of the old vehicle if it has a custom name.
 		if (!IsCustomName(old_v->string_id)) {
@@ -2168,7 +2168,7 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 	 * If it's not a train, the value is unused
 	 * round up to the length of the tiles used for the train instead of the train length instead
 	 * Useful when newGRF uses custom length */
-	uint16 old_total_length = (v->type == VEH_Train ?
+	uint16 old_total_length = (v->type == VEH_TRAIN ?
 		(v->u.rail.cached_total_length + TILE_SIZE - 1) / TILE_SIZE * TILE_SIZE :
 		-1
 	);
@@ -2190,7 +2190,7 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 		cost = 0;
 		w = v;
 		do {
-			if (w->type == VEH_Train && IsMultiheaded(w) && !IsTrainEngine(w)) {
+			if (w->type == VEH_TRAIN && IsMultiheaded(w) && !IsTrainEngine(w)) {
 				/* we build the rear ends of multiheaded trains with the front ones */
 				continue;
 			}
@@ -2207,7 +2207,7 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 			temp_cost = ReplaceVehicle(&w, flags, cost);
 
 			if (flags & DC_EXEC &&
-					(w->type != VEH_Train || w->u.rail.first_engine == INVALID_ENGINE)) {
+					(w->type != VEH_TRAIN || w->u.rail.first_engine == INVALID_ENGINE)) {
 				/* now we bought a new engine and sold the old one. We need to fix the
 				 * pointers in order to avoid pointing to the old one for trains: these
 				 * pointers should point to the front engine and not the cars
@@ -2218,17 +2218,17 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 			if (!CmdFailed(temp_cost)) {
 				cost += temp_cost;
 			}
-		} while (w->type == VEH_Train && (w = GetNextVehicle(w)) != NULL);
+		} while (w->type == VEH_TRAIN && (w = GetNextVehicle(w)) != NULL);
 
 		if (!(flags & DC_EXEC) && (p->money64 < (int32)(cost + p->engine_renew_money) || cost == 0)) {
 			if (!check && p->money64 < (int32)(cost + p->engine_renew_money) && ( _local_player == v->owner ) && cost != 0) {
 				StringID message;
 				SetDParam(0, v->unitnumber);
 				switch (v->type) {
-					case VEH_Train:    message = STR_TRAIN_AUTORENEW_FAILED;       break;
-					case VEH_Road:     message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;
-					case VEH_Ship:     message = STR_SHIP_AUTORENEW_FAILED;        break;
-					case VEH_Aircraft: message = STR_AIRCRAFT_AUTORENEW_FAILED;    break;
+					case VEH_TRAIN:    message = STR_TRAIN_AUTORENEW_FAILED;       break;
+					case VEH_ROAD:     message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;
+					case VEH_SHIP:     message = STR_SHIP_AUTORENEW_FAILED;        break;
+					case VEH_AIRCRAFT: message = STR_AIRCRAFT_AUTORENEW_FAILED;    break;
 						// This should never happen
 					default: NOT_REACHED(); message = 0; break;
 				}
@@ -2252,7 +2252,7 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 	}
 
 	/* If setting is on to try not to exceed the old length of the train with the replacement */
-	if (v->type == VEH_Train && p->renew_keep_length) {
+	if (v->type == VEH_TRAIN && p->renew_keep_length) {
 		Vehicle *temp;
 		w = v;
 
@@ -2307,8 +2307,8 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 	Vehicle *v;
 
 	/* This function should never be called without an array to store results */
-	assert(!(engine_list == NULL && type != VEH_Train));
-	assert(!(type == VEH_Train && engine_list == NULL && wagon_list == NULL));
+	assert(!(engine_list == NULL && type != VEH_TRAIN));
+	assert(!(type == VEH_TRAIN && engine_list == NULL && wagon_list == NULL));
 
 	/* Both array and the length should either be NULL to disable the list or both should not be NULL */
 	assert((engine_list == NULL && engine_list_length == NULL) || (engine_list != NULL && engine_list_length != NULL));
@@ -2321,9 +2321,9 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 	if (wagon_count != NULL) *wagon_count = 0;
 
 	switch (type) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			FOR_ALL_VEHICLES(v) {
-				if (v->tile == tile && v->type == VEH_Train && v->u.rail.track == TRACK_BIT_DEPOT) {
+				if (v->tile == tile && v->type == VEH_TRAIN && v->u.rail.track == TRACK_BIT_DEPOT) {
 					if (IsFrontEngine(v)) {
 						if (engine_list == NULL) continue;
 						if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
@@ -2337,28 +2337,28 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 			}
 			break;
 
-		case VEH_Road:
+		case VEH_ROAD:
 			FOR_ALL_VEHICLES(v) {
-				if (v->tile == tile && v->type == VEH_Road && IsRoadVehInDepot(v)) {
+				if (v->tile == tile && v->type == VEH_ROAD && IsRoadVehInDepot(v)) {
 					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 					(*engine_list)[(*engine_count)++] = v;
 				}
 			}
 			break;
 
-		case VEH_Ship:
+		case VEH_SHIP:
 			FOR_ALL_VEHICLES(v) {
-				if (v->tile == tile && v->type == VEH_Ship && IsShipInDepot(v)) {
+				if (v->tile == tile && v->type == VEH_SHIP && IsShipInDepot(v)) {
 					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 					(*engine_list)[(*engine_count)++] = v;
 				}
 			}
 			break;
 
-		case VEH_Aircraft:
+		case VEH_AIRCRAFT:
 			FOR_ALL_VEHICLES(v) {
 				if (v->tile == tile &&
-						v->type == VEH_Aircraft && IsNormalAircraft(v) &&
+						v->type == VEH_AIRCRAFT && IsNormalAircraft(v) &&
 						v->vehstatus & VS_HIDDEN) {
 					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 					(*engine_list)[(*engine_count)++] = v;
@@ -2385,7 +2385,7 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 */
 uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, byte type, PlayerID owner, uint32 index, uint16 window_type)
 {
-	const byte subtype = (type != VEH_Aircraft) ? (byte)Train_Front : (byte)AIR_AIRCRAFT;
+	const byte subtype = (type != VEH_AIRCRAFT) ? (byte)Train_Front : (byte)AIR_AIRCRAFT;
 	uint n = 0;
 	const Vehicle *v;
 
@@ -2393,8 +2393,8 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 		case VLW_STATION_LIST: {
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == type && (
-					(type == VEH_Train && IsFrontEngine(v)) ||
-					(type != VEH_Train && v->subtype <= subtype))) {
+					(type == VEH_TRAIN && IsFrontEngine(v)) ||
+					(type != VEH_TRAIN && v->subtype <= subtype))) {
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
@@ -2428,8 +2428,8 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 		case VLW_STANDARD: {
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == type && v->owner == owner && (
-					(type == VEH_Train && IsFrontEngine(v)) ||
-					(type != VEH_Train && v->subtype <= subtype))) {
+					(type == VEH_TRAIN && IsFrontEngine(v)) ||
+					(type != VEH_TRAIN && v->subtype <= subtype))) {
 					/* TODO find a better estimate on the total number of vehicles for current player */
 					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, GetNumVehicles()/4);
 					(*sort_list)[n++] = v;
@@ -2441,8 +2441,8 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 		case VLW_DEPOT_LIST: {
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == type && (
-					(type == VEH_Train && IsFrontEngine(v)) ||
-					(type != VEH_Train && v->subtype <= subtype))) {
+					(type == VEH_TRAIN && IsFrontEngine(v)) ||
+					(type != VEH_TRAIN && v->subtype <= subtype))) {
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
@@ -2510,10 +2510,10 @@ int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID own
 bool IsVehicleInDepot(const Vehicle *v)
 {
 	switch (v->type) {
-		case VEH_Train:    return CheckTrainInDepot(v, false) != -1;
-		case VEH_Road:     return IsRoadVehInDepot(v);
-		case VEH_Ship:     return IsShipInDepot(v);
-		case VEH_Aircraft: return IsAircraftInHangar(v);
+		case VEH_TRAIN:    return CheckTrainInDepot(v, false) != -1;
+		case VEH_ROAD:     return IsRoadVehInDepot(v);
+		case VEH_SHIP:     return IsShipInDepot(v);
+		case VEH_AIRCRAFT: return IsAircraftInHangar(v);
 		default: NOT_REACHED();
 	}
 	return false;
@@ -2522,32 +2522,32 @@ bool IsVehicleInDepot(const Vehicle *v)
 void VehicleEnterDepot(Vehicle *v)
 {
 	switch (v->type) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			if (!IsFrontEngine(v)) v = GetFirstVehicleInChain(v);
 			UpdateSignalsOnSegment(v->tile, GetRailDepotDirection(v->tile));
 			v->load_unload_time_rem = 0;
 			break;
 
-		case VEH_Road:
+		case VEH_ROAD:
 			InvalidateWindowClasses(WC_ROADVEH_LIST);
 			v->u.road.state = RVSB_IN_DEPOT;
 			break;
 
-		case VEH_Ship:
+		case VEH_SHIP:
 			InvalidateWindowClasses(WC_SHIPS_LIST);
 			v->u.ship.state = TRACK_BIT_DEPOT;
 			RecalcShipStuff(v);
 			break;
 
-		case VEH_Aircraft:
+		case VEH_AIRCRAFT:
 			InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 			HandleAircraftEnterHangar(v);
 			break;
 		default: NOT_REACHED();
 	}
 
-	if (v->type != VEH_Train) {
+	if (v->type != VEH_TRAIN) {
 		/* Trains update the vehicle list when the first unit enters the depot and calls VehicleEnterDepot() when the last unit enters.
 		 * We only increase the number of vehicles when the first one enters, so we will not need to search for more vehicles in the depot */
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -2591,7 +2591,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) {
 			/* Part of orders */
-			if (v->type == VEH_Train) v->u.rail.days_since_order_progr = 0;
+			if (v->type == VEH_TRAIN) v->u.rail.days_since_order_progr = 0;
 			v->cur_order_index++;
 		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) {
 			/* Force depot visit */
@@ -2600,10 +2600,10 @@ void VehicleEnterDepot(Vehicle *v)
 				StringID string;
 
 				switch (v->type) {
-					case VEH_Train:    string = STR_8814_TRAIN_IS_WAITING_IN_DEPOT; break;
-					case VEH_Road:     string = STR_9016_ROAD_VEHICLE_IS_WAITING;   break;
-					case VEH_Ship:     string = STR_981C_SHIP_IS_WAITING_IN_DEPOT;  break;
-					case VEH_Aircraft: string = STR_A014_AIRCRAFT_IS_WAITING_IN;    break;
+					case VEH_TRAIN:    string = STR_8814_TRAIN_IS_WAITING_IN_DEPOT; break;
+					case VEH_ROAD:     string = STR_9016_ROAD_VEHICLE_IS_WAITING;   break;
+					case VEH_SHIP:     string = STR_981C_SHIP_IS_WAITING_IN_DEPOT;  break;
+					case VEH_AIRCRAFT: string = STR_A014_AIRCRAFT_IS_WAITING_IN;    break;
 					default: NOT_REACHED(); string = STR_EMPTY; // Set the string to something to avoid a compiler warning
 				}
 
@@ -2744,7 +2744,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 	if (v->vehstatus & VS_CRASHED) return INVALID_TRACKDIR;
 
 	switch (v->type) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			if (v->u.rail.track == TRACK_BIT_DEPOT) /* We'll assume the train is facing outwards */
 				return DiagdirToDiagTrackdir(GetRailDepotDirection(v->tile)); /* Train in depot */
 
@@ -2753,14 +2753,14 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 
 			return TrackDirectionToTrackdir(FindFirstTrack(v->u.rail.track), v->direction);
 
-		case VEH_Ship:
+		case VEH_SHIP:
 			if (IsShipInDepot(v))
 				/* We'll assume the ship is facing outwards */
 				return DiagdirToDiagTrackdir(GetShipDepotDirection(v->tile));
 
 			return TrackDirectionToTrackdir(FindFirstTrack(v->u.ship.state), v->direction);
 
-		case VEH_Road:
+		case VEH_ROAD:
 			if (IsRoadVehInDepot(v)) /* We'll assume the road vehicle is facing outwards */
 				return DiagdirToDiagTrackdir(GetRoadDepotDirection(v->tile));
 
@@ -2775,7 +2775,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 			/* Vehicle is turning around, get the direction from vehicle's direction */
 			return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 
-		/* case VEH_Aircraft: case VEH_Special: case VEH_Disaster: */
+		/* case VEH_AIRCRAFT: case VEH_SPECIAL: case VEH_DISASTER: */
 		default: return INVALID_TRACKDIR;
 	}
 }
@@ -2797,10 +2797,10 @@ UnitID GetFreeUnitNumber(byte type)
 	static UnitID gmax = 0;
 
 	switch (type) {
-		case VEH_Train:    max = _patches.max_trains; break;
-		case VEH_Road:     max = _patches.max_roadveh; break;
-		case VEH_Ship:     max = _patches.max_ships; break;
-		case VEH_Aircraft: max = _patches.max_aircraft; break;
+		case VEH_TRAIN:    max = _patches.max_trains; break;
+		case VEH_ROAD:     max = _patches.max_roadveh; break;
+		case VEH_SHIP:     max = _patches.max_ships; break;
+		case VEH_AIRCRAFT: max = _patches.max_aircraft; break;
 		default: NOT_REACHED();
 	}
 
@@ -2860,7 +2860,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 	if (p->livery[LS_DEFAULT].in_use && (_patches.liveries == 2 || (_patches.liveries == 1 && player == _local_player))) {
 		/* Determine the livery scheme to use */
 		switch (GetEngine(engine_type)->type) {
-			case VEH_Train: {
+			case VEH_TRAIN: {
 				const RailVehicleInfo *rvi = RailVehInfo(engine_type);
 
 				switch (rvi->railtype) {
@@ -2901,21 +2901,21 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 				break;
 			}
 
-			case VEH_Road: {
+			case VEH_ROAD: {
 				const RoadVehicleInfo *rvi = RoadVehInfo(engine_type);
 				if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
 				scheme = (cargo_type == CT_PASSENGERS) ? LS_BUS : LS_TRUCK;
 				break;
 			}
 
-			case VEH_Ship: {
+			case VEH_SHIP: {
 				const ShipVehicleInfo *svi = ShipVehInfo(engine_type);
 				if (cargo_type == CT_INVALID) cargo_type = svi->cargo_type;
 				scheme = (cargo_type == CT_PASSENGERS) ? LS_PASSENGER_SHIP : LS_FREIGHT_SHIP;
 				break;
 			}
 
-			case VEH_Aircraft: {
+			case VEH_AIRCRAFT: {
 				const AircraftVehicleInfo *avi = AircraftVehInfo(engine_type);
 				if (cargo_type == CT_INVALID) cargo_type = CT_PASSENGERS;
 				switch (avi->subtype) {
@@ -2948,7 +2948,7 @@ SpriteID GetEnginePalette(EngineID engine_type, PlayerID player)
 
 SpriteID GetVehiclePalette(const Vehicle *v)
 {
-	if (v->type == VEH_Train) {
+	if (v->type == VEH_TRAIN) {
 		return GetEngineColourMap(
 			(v->u.rail.first_engine != INVALID_ENGINE && (IsArticulatedPart(v) || UsesWagonOverride(v))) ?
 				v->u.rail.first_engine : v->engine_type,
@@ -3071,7 +3071,7 @@ extern const SaveLoad _common_veh_desc[] = {
 
 
 static const SaveLoad _train_desc[] = {
-	SLE_WRITEBYTE(Vehicle, type, VEH_Train, 0), // Train type. VEH_Train in mem, 0 in file.
+	SLE_WRITEBYTE(Vehicle, type, VEH_TRAIN, 0), // Train type. VEH_TRAIN in mem, 0 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRail, crash_anim_pos),         SLE_UINT16),
 	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRail, force_proceed),          SLE_UINT8),
@@ -3089,7 +3089,7 @@ static const SaveLoad _train_desc[] = {
 };
 
 static const SaveLoad _roadveh_desc[] = {
-	SLE_WRITEBYTE(Vehicle, type, VEH_Road, 1), // Road type. VEH_Road in mem, 1 in file.
+	SLE_WRITEBYTE(Vehicle, type, VEH_ROAD, 1), // Road type. VEH_ROAD in mem, 1 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRoad, state),          SLE_UINT8),
 	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRoad, frame),          SLE_UINT8),
@@ -3109,7 +3109,7 @@ static const SaveLoad _roadveh_desc[] = {
 };
 
 static const SaveLoad _ship_desc[] = {
-	SLE_WRITEBYTE(Vehicle, type, VEH_Ship, 2), // Ship type. VEH_Ship in mem, 2 in file.
+	SLE_WRITEBYTE(Vehicle, type, VEH_SHIP, 2), // Ship type. VEH_SHIP in mem, 2 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleShip, state), SLE_UINT8),
 
@@ -3120,7 +3120,7 @@ static const SaveLoad _ship_desc[] = {
 };
 
 static const SaveLoad _aircraft_desc[] = {
-	SLE_WRITEBYTE(Vehicle, type, VEH_Aircraft, 3), // Aircraft type. VEH_Aircraft in mem, 3 in file.
+	SLE_WRITEBYTE(Vehicle, type, VEH_AIRCRAFT, 3), // Aircraft type. VEH_AIRCRAFT in mem, 3 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleAir, crashed_counter), SLE_UINT16),
 	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleAir, pos),             SLE_UINT8),
@@ -3139,7 +3139,7 @@ static const SaveLoad _aircraft_desc[] = {
 };
 
 static const SaveLoad _special_desc[] = {
-	SLE_WRITEBYTE(Vehicle,type,VEH_Special, 4),
+	SLE_WRITEBYTE(Vehicle,type,VEH_SPECIAL, 4),
 
 	    SLE_VAR(Vehicle, subtype,       SLE_UINT8),
 
@@ -3171,7 +3171,7 @@ static const SaveLoad _special_desc[] = {
 };
 
 static const SaveLoad _disaster_desc[] = {
-	SLE_WRITEBYTE(Vehicle, type, VEH_Disaster, 5),
+	SLE_WRITEBYTE(Vehicle, type, VEH_DISASTER, 5),
 
 	    SLE_REF(Vehicle, next,          REF_VEHICLE_OLD),
 
@@ -3284,13 +3284,13 @@ extern const ChunkHandler _veh_chunk_handlers[] = {
 
 void Vehicle::BeginLoading()
 {
-	assert(IsTileType(tile, MP_STATION) || type == VEH_Ship);
+	assert(IsTileType(tile, MP_STATION) || type == VEH_SHIP);
 	current_order.type = OT_LOADING;
 }
 
 void Vehicle::LeaveStation()
 {
-	assert(IsTileType(tile, MP_STATION) || type == VEH_Ship);
+	assert(IsTileType(tile, MP_STATION) || type == VEH_SHIP);
 	assert(current_order.type == OT_LOADING);
 	current_order.type = OT_LEAVESTATION;
 	current_order.flags = 0;

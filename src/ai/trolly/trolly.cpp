@@ -126,7 +126,7 @@ static void AiNew_State_WakeUp(Player *p)
 			p->ainew.last_vehiclecheck_date = _date;
 		} else if (c < 100 && !_patches.ai_disable_veh_roadveh) {
 			// Do we have any spots for road-vehicles left open?
-			if (GetFreeUnitNumber(VEH_Road) <= _patches.max_roadveh) {
+			if (GetFreeUnitNumber(VEH_ROAD) <= _patches.max_roadveh) {
 				if (c < 85) {
 					p->ainew.action = AI_ACTION_TRUCK_ROUTE;
 				} else {
@@ -135,7 +135,7 @@ static void AiNew_State_WakeUp(Player *p)
 			}
 #if 0
 		} else if (c < 200 && !_patches.ai_disable_veh_train) {
-			if (GetFreeUnitNumber(VEH_Train) <= _patches.max_trains) {
+			if (GetFreeUnitNumber(VEH_TRAIN) <= _patches.max_trains) {
 				p->ainew.action = AI_ACTION_TRAIN_ROUTE;
 			}
 #endif
@@ -173,7 +173,7 @@ static void AiNew_State_WakeUp(Player *p)
 	//  to build the route anyway..
 	if (p->ainew.action == AI_ACTION_BUS_ROUTE &&
 			money > AI_MINIMUM_BUS_ROUTE_MONEY) {
-		if (GetFreeUnitNumber(VEH_Road) > _patches.max_roadveh) {
+		if (GetFreeUnitNumber(VEH_ROAD) > _patches.max_roadveh) {
 			p->ainew.action = AI_ACTION_NONE;
 			return;
 		}
@@ -184,7 +184,7 @@ static void AiNew_State_WakeUp(Player *p)
 	}
 	if (p->ainew.action == AI_ACTION_TRUCK_ROUTE &&
 			money > AI_MINIMUM_TRUCK_ROUTE_MONEY) {
-		if (GetFreeUnitNumber(VEH_Road) > _patches.max_roadveh) {
+		if (GetFreeUnitNumber(VEH_ROAD) > _patches.max_roadveh) {
 			p->ainew.action = AI_ACTION_NONE;
 			return;
 		}
@@ -1264,7 +1264,7 @@ static void AiNew_CheckVehicle(Player *p, Vehicle *v)
 
 			// We are already sending him back
 			if (AiNew_GetSpecialVehicleFlag(p, v) & AI_VEHICLEFLAG_SELL) {
-				if (v->type == VEH_Road && IsTileDepotType(v->tile, TRANSPORT_ROAD) &&
+				if (v->type == VEH_ROAD && IsTileDepotType(v->tile, TRANSPORT_ROAD) &&
 						(v->vehstatus&VS_STOPPED)) {
 					// We are at the depot, sell the vehicle
 					AI_DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
@@ -1275,7 +1275,7 @@ static void AiNew_CheckVehicle(Player *p, Vehicle *v)
 			if (!AiNew_SetSpecialVehicleFlag(p, v, AI_VEHICLEFLAG_SELL)) return;
 			{
 				int ret = 0;
-				if (v->type == VEH_Road)
+				if (v->type == VEH_ROAD)
 					ret = AI_DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_ROADVEH_TO_DEPOT);
 				// This means we can not find a depot :s
 				//				if (CmdFailed(ret))
@@ -1293,7 +1293,7 @@ static void AiNew_State_CheckAllVehicles(Player *p)
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner != p->index) continue;
 		// Currently, we only know how to handle road-vehicles
-		if (v->type != VEH_Road) continue;
+		if (v->type != VEH_ROAD) continue;
 
 		AiNew_CheckVehicle(p, v);
 	}

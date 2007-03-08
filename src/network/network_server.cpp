@@ -1281,11 +1281,11 @@ void NetworkPopulateCompanyInfo()
 		if (!IsValidPlayer(v->owner)) continue;
 
 		switch (v->type) {
-			case VEH_Train:
+			case VEH_TRAIN:
 				if (IsFrontEngine(v)) _network_player_info[v->owner].num_vehicle[0]++;
 				break;
 
-			case VEH_Road:
+			case VEH_ROAD:
 				if (v->cargo_type != CT_PASSENGERS) {
 					_network_player_info[v->owner].num_vehicle[1]++;
 				} else {
@@ -1293,16 +1293,16 @@ void NetworkPopulateCompanyInfo()
 				}
 				break;
 
-			case VEH_Aircraft:
+			case VEH_AIRCRAFT:
 				if (IsNormalAircraft(v)) _network_player_info[v->owner].num_vehicle[3]++;
 				break;
 
-			case VEH_Ship:
+			case VEH_SHIP:
 				_network_player_info[v->owner].num_vehicle[4]++;
 				break;
 
-			case VEH_Special:
-			case VEH_Disaster:
+			case VEH_SPECIAL:
+			case VEH_DISASTER:
 				break;
 		}
 	}

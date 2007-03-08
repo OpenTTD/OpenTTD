@@ -1445,7 +1445,7 @@ bool AfterLoadGame()
 		}
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->type != VEH_Train && v->type != VEH_Road) continue;
+			if (v->type != VEH_TRAIN && v->type != VEH_ROAD) continue;
 			if (IsBridgeTile(v->tile)) {
 				DiagDirection dir = GetBridgeRampDirection(v->tile);
 
@@ -1462,7 +1462,7 @@ bool AfterLoadGame()
 			} else {
 				continue;
 			}
-			if (v->type == VEH_Train) {
+			if (v->type == VEH_TRAIN) {
 				v->u.rail.track = TRACK_BIT_WORMHOLE;
 			} else {
 				v->u.road.state = RVSB_WORMHOLE;
@@ -1504,7 +1504,7 @@ bool AfterLoadGame()
 		RailType min_rail = RAILTYPE_ELECTRIC;
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_Train) {
+			if (v->type == VEH_TRAIN) {
 				RailType rt = RailVehInfo(v->engine_type)->railtype;
 
 				v->u.rail.railtype = rt;
@@ -1549,7 +1549,7 @@ bool AfterLoadGame()
 		}
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_Train && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v);
+			if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v);
 		}
 
 	}
@@ -1641,7 +1641,7 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(25)) {
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_Road) {
+			if (v->type == VEH_ROAD) {
 				v->vehstatus &= ~0x40;
 				v->u.road.slot = NULL;
 				v->u.road.slot_age = 0;
@@ -1650,14 +1650,14 @@ bool AfterLoadGame()
 	} else {
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_Road && v->u.road.slot != NULL) v->u.road.slot->num_vehicles++;
+			if (v->type == VEH_ROAD && v->u.road.slot != NULL) v->u.road.slot->num_vehicles++;
 		}
 	}
 
 	if (CheckSavegameVersion(26)) {
 		Station *st;
 		FOR_ALL_STATIONS(st) {
-			st->last_vehicle_type = VEH_Invalid;
+			st->last_vehicle_type = VEH_INVALID;
 		}
 	}
 
@@ -1824,7 +1824,7 @@ bool AfterLoadGame()
 		Vehicle *v;
 		/* Aircraft units changed from 8 mph to 1 km/h */
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_Aircraft && v->subtype <= AIR_AIRCRAFT) {
+			if (v->type == VEH_AIRCRAFT && v->subtype <= AIR_AIRCRAFT) {
 				const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
 				v->cur_speed *= 129;
 				v->cur_speed /= 10;

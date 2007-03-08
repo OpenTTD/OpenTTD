@@ -56,17 +56,17 @@ void ShowReplaceVehicleWindow(byte vehicletype);
 static inline void DrawVehicleImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
 {
 	switch (v->type) {
-		case VEH_Train:    DrawTrainImage(v, x, y, count, skip, selection); break;
-		case VEH_Road:     DrawRoadVehImage(v, x, y, selection);            break;
-		case VEH_Ship:     DrawShipImage(v, x, y, selection);               break;
-		case VEH_Aircraft: DrawAircraftImage(v, x, y, selection);           break;
+		case VEH_TRAIN:    DrawTrainImage(v, x, y, count, skip, selection); break;
+		case VEH_ROAD:     DrawRoadVehImage(v, x, y, selection);            break;
+		case VEH_SHIP:     DrawShipImage(v, x, y, selection);               break;
+		case VEH_AIRCRAFT: DrawAircraftImage(v, x, y, selection);           break;
 		default: NOT_REACHED();
 	}
 }
 
 static inline uint GetVehicleListHeight(byte type)
 {
-	return (type == VEH_Train || type == VEH_Road) ? 14 : 24;
+	return (type == VEH_TRAIN || type == VEH_ROAD) ? 14 : 24;
 }
 
 #endif /* VEHICLE_GUI_H */

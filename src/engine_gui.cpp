@@ -22,10 +22,10 @@ static StringID GetEngineCategoryName(EngineID engine)
 {
 	switch (GetEngine(engine)->type) {
 		default: NOT_REACHED();
-		case VEH_Road:              return STR_8103_ROAD_VEHICLE;
-		case VEH_Aircraft:          return STR_8104_AIRCRAFT;
-		case VEH_Ship:              return STR_8105_SHIP;
-		case VEH_Train:
+		case VEH_ROAD:              return STR_8103_ROAD_VEHICLE;
+		case VEH_AIRCRAFT:          return STR_8104_AIRCRAFT;
+		case VEH_SHIP:              return STR_8105_SHIP;
+		case VEH_TRAIN:
 			switch (RailVehInfo(engine)->railtype) {
 				default: NOT_REACHED();
 				case RAILTYPE_RAIL:     return STR_8102_RAILROAD_LOCOMOTIVE;

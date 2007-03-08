@@ -645,10 +645,10 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == player) {
 			switch (v->type) {
-				case VEH_Train:    if (IsFrontEngine(v)) train++; break;
-				case VEH_Road:     road++; break;
-				case VEH_Aircraft: if (IsNormalAircraft(v)) air++; break;
-				case VEH_Ship:     ship++; break;
+				case VEH_TRAIN:    if (IsFrontEngine(v)) train++; break;
+				case VEH_ROAD:     road++; break;
+				case VEH_AIRCRAFT: if (IsNormalAircraft(v)) air++; break;
+				case VEH_SHIP:     ship++; break;
 				default: break;
 			}
 		}

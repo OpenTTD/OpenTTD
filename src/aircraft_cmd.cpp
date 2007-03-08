@@ -236,7 +236,7 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
  */
 int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsEngineBuildable(p1, VEH_Aircraft, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
+	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
 	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
 	int32 value = EstimateAircraftCost(avi);
@@ -258,7 +258,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
-	UnitID unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_Aircraft);
+	UnitID unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_AIRCRAFT);
 	if (unit_num > _patches.max_aircraft)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
@@ -267,7 +267,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Vehicle *u = vl[1]; // shadow
 
 		v->unitnumber = unit_num;
-		v->type = u->type = VEH_Aircraft;
+		v->type = u->type = VEH_AIRCRAFT;
 		v->direction = DIR_SE;
 
 		v->owner = u->owner = _current_player;
@@ -400,7 +400,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			u->next = w;
 
-			w->type = VEH_Aircraft;
+			w->type = VEH_AIRCRAFT;
 			w->direction = DIR_N;
 			w->owner = _current_player;
 			w->x_pos = v->x_pos;
@@ -423,7 +423,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
-			InvalidateAutoreplaceWindow(VEH_Aircraft); //updates the replace Aircraft window
+			InvalidateAutoreplaceWindow(VEH_AIRCRAFT); //updates the replace Aircraft window
 
 		GetPlayer(_current_player)->num_engines[p1]++;
 	}
@@ -455,7 +455,7 @@ int32 CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!IsAircraftInHangarStopped(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
@@ -482,7 +482,7 @@ int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* cannot stop airplane when in flight, or when taking off / landing */
 	if (v->u.air.state >= STARTTAKEOFF && v->u.air.state < TERM7)
@@ -524,14 +524,14 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
 		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		return SendAllVehiclesToDepot(VEH_Aircraft, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
+		return SendAllVehiclesToDepot(VEH_AIRCRAFT, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
 	}
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner) || IsAircraftInHangar(v)) return CMD_ERROR;
+	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner) || IsAircraftInHangar(v)) return CMD_ERROR;
 
 	if (v->current_order.type == OT_GOTO_DEPOT && !(p2 & DEPOT_LOCATE_HANGAR)) {
 		if (!!(p2 & DEPOT_SERVICE) == HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
@@ -601,7 +601,7 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!IsAircraftInHangarStopped(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	/* Check cargo */
@@ -729,7 +729,7 @@ void AircraftYearlyLoop()
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Aircraft && IsNormalAircraft(v)) {
+		if (v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) {
 			v->profit_last_year = v->profit_this_year;
 			v->profit_this_year = 0;
 			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
@@ -2097,7 +2097,7 @@ void Aircraft_Tick(Vehicle *v)
 
 	for (uint i = 0; i != 2; i++) {
 		AircraftEventHandler(v, i);
-		if (v->type != VEH_Aircraft) // In case it was deleted
+		if (v->type != VEH_AIRCRAFT) // In case it was deleted
 			break;
 	}
 }
@@ -2116,7 +2116,7 @@ void UpdateOldAircraft()
 	FOR_ALL_VEHICLES(v_oldstyle) {
 	/* airplane has another vehicle with subtype 4 (shadow), helicopter also has 3 (rotor)
 	 * skip those */
-		if (v_oldstyle->type == VEH_Aircraft && IsNormalAircraft(v_oldstyle)) {
+		if (v_oldstyle->type == VEH_AIRCRAFT && IsNormalAircraft(v_oldstyle)) {
 			/* airplane in terminal stopped doesn't hurt anyone, so goto next */
 			if (v_oldstyle->vehstatus & VS_STOPPED && v_oldstyle->u.air.state == 0) {
 				v_oldstyle->u.air.state = HANGAR;
@@ -2146,7 +2146,7 @@ void UpdateAirplanesOnNewStation(const Station *st)
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Aircraft && IsNormalAircraft(v)) {
+		if (v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) {
 			if (v->u.air.targetairport == st->index) { // if heading to this airport
 				/* update position of airplane. If plane is not flying, landing, or taking off
 				 *you cannot delete airport, so it doesn't matter */

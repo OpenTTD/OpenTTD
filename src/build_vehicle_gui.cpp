@@ -63,7 +63,7 @@ static const Widget _build_vehicle_widgets[] = {
 static void SetupWindowStrings(Window *w, byte type)
 {
 	switch (type) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_JUST_STRING;
 			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_8843_TRAIN_VEHICLE_SELECTION;
 			w->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_881F_BUILD_VEHICLE;
@@ -71,7 +71,7 @@ static void SetupWindowStrings(Window *w, byte type)
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_8820_RENAME;
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_8845_RENAME_TRAIN_VEHICLE_TYPE;
 			break;
-		case VEH_Road:
+		case VEH_ROAD:
 			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_9006_NEW_ROAD_VEHICLES;
 			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9026_ROAD_VEHICLE_SELECTION;
 			w->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9007_BUILD_VEHICLE;
@@ -79,7 +79,7 @@ static void SetupWindowStrings(Window *w, byte type)
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_9034_RENAME;
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_9035_RENAME_ROAD_VEHICLE_TYPE;
 			break;
-		case VEH_Ship:
+		case VEH_SHIP:
 			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_9808_NEW_SHIPS;
 			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9825_SHIP_SELECTION_LIST_CLICK;
 			w->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9809_BUILD_SHIP;
@@ -87,7 +87,7 @@ static void SetupWindowStrings(Window *w, byte type)
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_9836_RENAME;
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_9837_RENAME_SHIP_TYPE;
 			break;
-		case VEH_Aircraft:
+		case VEH_AIRCRAFT:
 			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_A005_NEW_AIRCRAFT;
 			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_A025_AIRCRAFT_SELECTION_LIST;
 			w->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_A006_BUILD_AIRCRAFT;
@@ -536,7 +536,7 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 	bool refitable = false;
 
 	switch (e->type) {
-		case VEH_Train: {
+		case VEH_TRAIN: {
 			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
 
 			refitable = (EngInfo(engine_number)->refit_mask != 0) && (rvi->capacity > 0);
@@ -562,23 +562,23 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 			y += 10;
 		}
 			break;
-		case VEH_Road:
+		case VEH_ROAD:
 			y = DrawRoadVehPurchaseInfo(x, y, engine_number, RoadVehInfo(engine_number));
 			refitable = true;
 			break;
-		case VEH_Ship: {
+		case VEH_SHIP: {
 			const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
 			y = DrawShipPurchaseInfo(x, y, engine_number, svi);
 			refitable = svi->refittable;
 		} break;
-		case VEH_Aircraft:
+		case VEH_AIRCRAFT:
 			y = DrawAircraftPurchaseInfo(x, y, engine_number, AircraftVehInfo(engine_number));
 			refitable = true;
 			break;
 	}
 
 	/* Draw details, that applies to all types except rail wagons */
-	if (e->type != VEH_Train || RailVehInfo(engine_number)->railveh_type != RAILVEH_WAGON) {
+	if (e->type != VEH_TRAIN || RailVehInfo(engine_number)->railveh_type != RAILVEH_WAGON) {
 		/* Design date - Life length */
 		SetDParam(0, ymd.year);
 		SetDParam(1, e->lifelength);
@@ -616,7 +616,7 @@ static void GenerateBuildTrainList(Window *w)
 		const RailVehicleInfo *rvi = RailVehInfo(eid);
 
 		if (bv->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, bv->filter.railtype)) continue;
-		if (!IsEngineBuildable(eid, VEH_Train, _local_player)) continue;
+		if (!IsEngineBuildable(eid, VEH_TRAIN, _local_player)) continue;
 
 		EngList_Add(&bv->eng_list, eid);
 		if (rvi->railveh_type != RAILVEH_WAGON) {
@@ -653,7 +653,7 @@ static void GenerateBuildRoadVehList(Window *w)
 	sel_id = INVALID_ENGINE;
 
 	for (eid = ROAD_ENGINES_INDEX; eid < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; eid++) {
-		if (!IsEngineBuildable(eid, VEH_Road, _local_player)) continue;
+		if (!IsEngineBuildable(eid, VEH_ROAD, _local_player)) continue;
 		EngList_Add(&bv->eng_list, eid);
 
 		if (eid == bv->sel_engine) sel_id = eid;
@@ -672,7 +672,7 @@ static void GenerateBuildShipList(Window *w)
 	sel_id = INVALID_ENGINE;
 
 	for (eid = SHIP_ENGINES_INDEX; eid < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; eid++) {
-		if (!IsEngineBuildable(eid, VEH_Ship, _local_player)) continue;
+		if (!IsEngineBuildable(eid, VEH_SHIP, _local_player)) continue;
 		EngList_Add(&bv->eng_list, eid);
 
 		if (eid == bv->sel_engine) sel_id = eid;
@@ -694,7 +694,7 @@ static void GenerateBuildAircraftList(Window *w)
 	 * when planes become obsolete and are removed */
 	sel_id = INVALID_ENGINE;
 	for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
-		if (!IsEngineBuildable(eid, VEH_Aircraft, _local_player)) continue;
+		if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_player)) continue;
 		if (w->window_number != 0 && !IsAircraftBuildableAtStation(eid, w->window_number)) continue;
 
 		EngList_Add(&bv->eng_list, eid);
@@ -710,16 +710,16 @@ static void GenerateBuildList(Window *w)
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
 	switch (bv->vehicle_type) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			GenerateBuildTrainList(w);
 			return; // trains should not reach the last sorting
-		case VEH_Road:
+		case VEH_ROAD:
 			GenerateBuildRoadVehList(w);
 			break;
-		case VEH_Ship:
+		case VEH_SHIP:
 			GenerateBuildShipList(w);
 			break;
-		case VEH_Aircraft:
+		case VEH_AIRCRAFT:
 			GenerateBuildAircraftList(w);
 			break;
 	}
@@ -730,10 +730,10 @@ static void GenerateBuildList(Window *w)
 static void DrawVehicleEngine(byte type, int x, int y, EngineID engine, SpriteID pal)
 {
 	switch (type) {
-		case VEH_Train:    DrawTrainEngine(   x, y, engine, pal); break;
-		case VEH_Road:     DrawRoadVehEngine( x, y, engine, pal); break;
-		case VEH_Ship:     DrawShipEngine(    x, y, engine, pal); break;
-		case VEH_Aircraft: DrawAircraftEngine(x, y, engine, pal); break;
+		case VEH_TRAIN:    DrawTrainEngine(   x, y, engine, pal); break;
+		case VEH_ROAD:     DrawRoadVehEngine( x, y, engine, pal); break;
+		case VEH_SHIP:     DrawShipEngine(    x, y, engine, pal); break;
+		case VEH_AIRCRAFT: DrawAircraftEngine(x, y, engine, pal); break;
 		default: NOT_REACHED();
 	}
 }
@@ -757,22 +757,22 @@ void DrawEngineList(byte type, int x, int y, const EngineList eng_list, uint16 m
 	assert(max <= EngList_Count(&eng_list));
 
 	switch (type) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			x++; // train and road vehicles use the same offset, except trains are one more pixel to the right
 			/* Fallthough */
-		case VEH_Road:
+		case VEH_ROAD:
 			x += 26;
 			x_offset = 30;
 			y += 2;
 			y_offset = 4;
 			break;
-		case VEH_Ship:
+		case VEH_SHIP:
 			x += 35;
 			x_offset = 40;
 			y += 7;
 			y_offset = 3;
 			break;
-		case VEH_Aircraft:
+		case VEH_AIRCRAFT:
 			x += 27;
 			x_offset = 33;
 			y += 7;
@@ -843,17 +843,17 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 			EngineID sel_eng = bv->sel_engine;
 			if (sel_eng != INVALID_ENGINE) {
 				switch (bv->vehicle_type) {
-					case VEH_Train:
+					case VEH_TRAIN:
 						DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildLoco,
 								   CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
 						break;
-					case VEH_Road:
+					case VEH_ROAD:
 						DoCommandP(w->window_number, sel_eng, 0, CcBuildRoadVeh, CMD_BUILD_ROAD_VEH | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
 						break;
-					case VEH_Ship:
+					case VEH_SHIP:
 						DoCommandP(w->window_number, sel_eng, 0, CcBuildShip, CMD_BUILD_SHIP | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP));
 						break;
-					case VEH_Aircraft:
+					case VEH_AIRCRAFT:
 						DoCommandP(w->window_number, sel_eng, 0, CcBuildAircraft, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
 						break;
 				}
@@ -868,10 +868,10 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 
 				bv->rename_engine = sel_eng;
 				switch (bv->vehicle_type) {
-					case VEH_Train:    str = STR_886A_RENAME_TRAIN_VEHICLE_TYPE; break;
-					case VEH_Road:     str = STR_9036_RENAME_ROAD_VEHICLE_TYPE;  break;
-					case VEH_Ship:     str = STR_9838_RENAME_SHIP_TYPE;          break;
-					case VEH_Aircraft: str = STR_A039_RENAME_AIRCRAFT_TYPE;      break;
+					case VEH_TRAIN:    str = STR_886A_RENAME_TRAIN_VEHICLE_TYPE; break;
+					case VEH_ROAD:     str = STR_9036_RENAME_ROAD_VEHICLE_TYPE;  break;
+					case VEH_SHIP:     str = STR_9838_RENAME_SHIP_TYPE;          break;
+					case VEH_AIRCRAFT: str = STR_A039_RENAME_AIRCRAFT_TYPE;      break;
 				}
 				ShowQueryString(GetCustomEngineName(sel_eng), str, 31, 160, w, CS_ALPHANUMERAL);
 			}
@@ -911,10 +911,10 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 				StringID str = STR_NULL;
 				_cmd_text = e->we.edittext.str;
 				switch (bv->vehicle_type) {
-					case VEH_Train:    str = STR_886B_CAN_T_RENAME_TRAIN_VEHICLE; break;
-					case VEH_Road:     str = STR_9037_CAN_T_RENAME_ROAD_VEHICLE;  break;
-					case VEH_Ship:     str = STR_9839_CAN_T_RENAME_SHIP_TYPE;     break;
-					case VEH_Aircraft: str = STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE; break;
+					case VEH_TRAIN:    str = STR_886B_CAN_T_RENAME_TRAIN_VEHICLE; break;
+					case VEH_ROAD:     str = STR_9037_CAN_T_RENAME_ROAD_VEHICLE;  break;
+					case VEH_SHIP:     str = STR_9839_CAN_T_RENAME_SHIP_TYPE;     break;
+					case VEH_AIRCRAFT: str = STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE; break;
 				}
 				DoCommandP(0, bv->rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(str));
 			}
@@ -977,16 +977,16 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 	bv->descending_sort_order = _last_sort_order[type];
 
 	switch (type) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			WP(w,buildvehicle_d).filter.railtype = (tile == 0) ? RAILTYPE_END : GetRailType(tile);
 			ResizeWindow(w, 0, 16);
 			break;
-		case VEH_Road:
+		case VEH_ROAD:
 			ResizeWindow(w, 20, 16);
-		case VEH_Ship:
+		case VEH_SHIP:
 			ResizeWindow(w, 27, 0);
 			break;
-		case VEH_Aircraft:
+		case VEH_AIRCRAFT:
 			bv->filter.flags =
 				tile == 0 ? AirportFTAClass::ALL : GetStationByTile(tile)->Airport()->flags;
 			ResizeWindow(w, 12, 0);

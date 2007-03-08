@@ -25,7 +25,7 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	// find a locomotive in the depot.
 	found = NULL;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && IsFrontEngine(v) &&
+		if (v->type == VEH_TRAIN && IsFrontEngine(v) &&
 				v->tile == tile &&
 				v->u.rail.track == TRACK_BIT_DEPOT) {
 			if (found != NULL) return; // must be exactly one.

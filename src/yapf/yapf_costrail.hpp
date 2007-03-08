@@ -154,7 +154,7 @@ public:
 		int cost = 0;
 		const Vehicle* v = Yapf().GetVehicle();
 		assert(v != NULL);
-		assert(v->type == VEH_Train);
+		assert(v->type == VEH_TRAIN);
 		assert(v->u.rail.cached_total_length != 0);
 		int needed_platform_length = (v->u.rail.cached_total_length + TILE_SIZE - 1) / TILE_SIZE;
 		if (platform_length > needed_platform_length) {

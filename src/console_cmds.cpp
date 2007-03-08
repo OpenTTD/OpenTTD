@@ -141,7 +141,7 @@ DEF_CONSOLE_CMD(ConStopAllVehicles)
 	FOR_ALL_VEHICLES(v) {
 		/* Code ripped from CmdStartStopTrain. Can't call it, because of
 		 * ownership problems, so we'll duplicate some code, for now */
-		if (v->type == VEH_Train)
+		if (v->type == VEH_TRAIN)
 			v->u.rail.days_since_order_progr = 0;
 		v->vehstatus |= VS_STOPPED;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);

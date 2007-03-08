@@ -879,7 +879,7 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 
 			/* update power of trains in this depot */
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == VEH_Train && IsFrontEngine(v) && v->tile == tile && v->u.rail.track == 0x80) {
+				if (v->type == VEH_TRAIN && IsFrontEngine(v) && v->tile == tile && v->u.rail.track == 0x80) {
 					TrainPowerChanged(v);
 				}
 			}
@@ -1482,7 +1482,7 @@ static void *SignalVehicleCheckProc(Vehicle *v, void *data)
 {
 	const SignalVehicleCheckStruct* dest = (SignalVehicleCheckStruct*)data;
 
-	if (v->type != VEH_Train) return NULL;
+	if (v->type != VEH_TRAIN) return NULL;
 
 	/* Wrong tile, or no train? Not a match */
 	if (v->tile != dest->tile) return NULL;
@@ -1888,7 +1888,7 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 static void ClickTile_Track(TileIndex tile)
 {
 	switch (GetRailTileType(tile)) {
-		case RAIL_TILE_DEPOT:    ShowDepotWindow(tile, VEH_Train);                  break;
+		case RAIL_TILE_DEPOT:    ShowDepotWindow(tile, VEH_TRAIN);                  break;
 		case RAIL_TILE_WAYPOINT: ShowRenameWaypointWindow(GetWaypointByTile(tile)); break;
 		default: break;
 	}
@@ -1951,7 +1951,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	int length;
 
 	// this routine applies only to trains in depot tiles
-	if (v->type != VEH_Train || !IsTileDepotType(tile, TRANSPORT_RAIL)) return VETSB_CONTINUE;
+	if (v->type != VEH_TRAIN || !IsTileDepotType(tile, TRANSPORT_RAIL)) return VETSB_CONTINUE;
 
 	/* depot direction */
 	dir = GetRailDepotDirection(tile);

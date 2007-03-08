@@ -3872,7 +3872,7 @@ static void CalculateRefitMasks()
 		} else {
 			// Don't apply default refit mask to wagons or engines with no capacity
 			if (xor_mask == 0 && (
-						GetEngine(engine)->type != VEH_Train || (
+						GetEngine(engine)->type != VEH_TRAIN || (
 							RailVehInfo(engine)->capacity != 0 &&
 							RailVehInfo(engine)->railveh_type != RAILVEH_WAGON
 						)
@@ -3895,17 +3895,17 @@ static void CalculateRefitMasks()
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
 		 * cargo type. Apparently cargo_type isn't a common property... */
 		switch (GetEngine(engine)->type) {
-			case VEH_Train: {
+			case VEH_TRAIN: {
 				RailVehicleInfo *rvi = &_rail_vehicle_info[engine];
 				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
 				break;
 			}
-			case VEH_Road: {
+			case VEH_ROAD: {
 				RoadVehicleInfo *rvi = &_road_vehicle_info[engine - ROAD_ENGINES_INDEX];
 				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
 				break;
 			}
-			case VEH_Ship: {
+			case VEH_SHIP: {
 				ShipVehicleInfo *svi = &_ship_vehicle_info[engine - SHIP_ENGINES_INDEX];
 				if (svi->cargo_type == CT_INVALID) svi->cargo_type = FindFirstRefittableCargo(engine);
 				break;

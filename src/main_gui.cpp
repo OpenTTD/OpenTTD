@@ -265,22 +265,22 @@ static void MenuClickIndustry(int index)
 
 static void MenuClickShowTrains(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, VEH_Train);
+	ShowVehicleListWindow((PlayerID)index, VEH_TRAIN);
 }
 
 static void MenuClickShowRoad(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, VEH_Road);
+	ShowVehicleListWindow((PlayerID)index, VEH_ROAD);
 }
 
 static void MenuClickShowShips(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, VEH_Ship);
+	ShowVehicleListWindow((PlayerID)index, VEH_SHIP);
 }
 
 static void MenuClickShowAir(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, VEH_Aircraft);
+	ShowVehicleListWindow((PlayerID)index, VEH_AIRCRAFT);
 }
 
 static void MenuClickBuildRail(int index)
@@ -812,7 +812,7 @@ static void ToolbarTrainClick(Window *w)
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && IsFrontEngine(v)) CLRBIT(dis, v->owner);
+		if (v->type == VEH_TRAIN && IsFrontEngine(v)) CLRBIT(dis, v->owner);
 	}
 	PopupMainPlayerToolbMenu(w, 310, 13, dis);
 }
@@ -823,7 +823,7 @@ static void ToolbarRoadClick(Window *w)
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road) CLRBIT(dis, v->owner);
+		if (v->type == VEH_ROAD) CLRBIT(dis, v->owner);
 	}
 	PopupMainPlayerToolbMenu(w, 332, 14, dis);
 }
@@ -834,7 +834,7 @@ static void ToolbarShipClick(Window *w)
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship) CLRBIT(dis, v->owner);
+		if (v->type == VEH_SHIP) CLRBIT(dis, v->owner);
 	}
 	PopupMainPlayerToolbMenu(w, 354, 15, dis);
 }
@@ -845,7 +845,7 @@ static void ToolbarAirClick(Window *w)
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Aircraft) CLRBIT(dis, v->owner);
+		if (v->type == VEH_AIRCRAFT) CLRBIT(dis, v->owner);
 	}
 	PopupMainPlayerToolbMenu(w, 376, 16, dis);
 }
@@ -1841,10 +1841,10 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_F10:ShowOperatingProfitGraph(); break;
 		case WKC_F11: ShowCompanyLeagueTable(); break;
 		case WKC_F12: ShowBuildIndustryWindow(); break;
-		case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(_local_player, VEH_Train); break;
-		case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(_local_player, VEH_Road); break;
-		case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(_local_player, VEH_Ship); break;
-		case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(_local_player, VEH_Aircraft); break;
+		case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(_local_player, VEH_TRAIN); break;
+		case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(_local_player, VEH_ROAD); break;
+		case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(_local_player, VEH_SHIP); break;
+		case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(_local_player, VEH_AIRCRAFT); break;
 		case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
 		case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
 		case WKC_SHIFT | WKC_F7: ShowBuildRailToolbar(_last_built_railtype, -1); break;

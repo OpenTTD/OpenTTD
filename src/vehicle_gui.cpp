@@ -267,7 +267,7 @@ static RefitList *BuildRefitList(const Vehicle *v)
 				}
 			}
 		}
-	} while (v->type == VEH_Train && (u = u->next) != NULL && num_lines < max_lines);
+	} while (v->type == VEH_TRAIN && (u = u->next) != NULL && num_lines < max_lines);
 
 	list->num_lines = num_lines;
 	list->items = refit;
@@ -320,7 +320,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 		case WE_PAINT: {
 			Vehicle *v = GetVehicle(w->window_number);
 
-			if (v->type == VEH_Train) {
+			if (v->type == VEH_TRAIN) {
 				uint length = CountVehiclesInChain(v);
 
 				if (length != WP(w, refit_d).length) {
@@ -372,10 +372,10 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 							int command = 0;
 
 							switch (v->type) {
-								case VEH_Train:    command = CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_RAIL_CAN_T_REFIT_VEHICLE);  break;
-								case VEH_Road:     command = CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_REFIT_ROAD_VEHICLE_CAN_T);  break;
-								case VEH_Ship:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP);     break;
-								case VEH_Aircraft: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT); break;
+								case VEH_TRAIN:    command = CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_RAIL_CAN_T_REFIT_VEHICLE);  break;
+								case VEH_ROAD:     command = CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_REFIT_ROAD_VEHICLE_CAN_T);  break;
+								case VEH_SHIP:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP);     break;
+								case VEH_AIRCRAFT: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT); break;
 							}
 							if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8, NULL, command)) DeleteWindow(w);
 						} else {
@@ -437,26 +437,26 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 		w->resize.step_height = 14;
 		WP(w, refit_d).sel  = -1;
 		WP(w, refit_d).list = BuildRefitList(v);
-		if (v->type == VEH_Train) WP(w, refit_d).length = CountVehiclesInChain(v);
+		if (v->type == VEH_TRAIN) WP(w, refit_d).length = CountVehiclesInChain(v);
 		SetVScrollCount(w, WP(w, refit_d).list->num_lines);
 
 		switch (v->type) {
-			case VEH_Train:
+			case VEH_TRAIN:
 				w->widget[3].tooltips = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
 				w->widget[6].data     = STR_RAIL_REFIT_VEHICLE;
 				w->widget[6].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
 				break;
-			case VEH_Road:
+			case VEH_ROAD:
 				w->widget[3].tooltips = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
 				w->widget[6].data     = STR_REFIT_ROAD_VEHICLE;
 				w->widget[6].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
 				break;
-			case VEH_Ship:
+			case VEH_SHIP:
 				w->widget[3].tooltips = STR_983D_SELECT_TYPE_OF_CARGO_FOR;
 				w->widget[6].data     = STR_983C_REFIT_SHIP;
 				w->widget[6].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
 				break;
-			case VEH_Aircraft:
+			case VEH_AIRCRAFT:
 				w->widget[3].tooltips = STR_A03E_SELECT_TYPE_OF_CARGO_FOR;
 				w->widget[6].data     = STR_A03D_REFIT_AIRCRAFT;
 				w->widget[6].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
@@ -652,7 +652,7 @@ static int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
 	int r;
 	const Vehicle *ua = va, *ub = vb;
 
-	if (va->type == VEH_Train && vb->type == VEH_Train) {
+	if (va->type == VEH_TRAIN && vb->type == VEH_TRAIN) {
 		do {
 			if (RailVehInfo(ua->engine_type)->max_speed != 0)
 				max_speed_a = min(max_speed_a, RailVehInfo(ua->engine_type)->max_speed);
@@ -826,22 +826,22 @@ static void CreateVehicleListWindow(Window *w)
 
 	/* Set up the window widgets */
 	switch (vl->vehicle_type) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			w->widget[VLW_WIDGET_LIST].tooltips          = STR_883D_TRAINS_CLICK_ON_TRAIN_FOR;
 			w->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_TRAINS;
 			break;
 
-		case VEH_Road:
+		case VEH_ROAD:
 			w->widget[VLW_WIDGET_LIST].tooltips          = STR_901A_ROAD_VEHICLES_CLICK_ON;
 			w->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_ROAD_VEHICLES;
 			break;
 
-		case VEH_Ship:
+		case VEH_SHIP:
 			w->widget[VLW_WIDGET_LIST].tooltips          = STR_9823_SHIPS_CLICK_ON_SHIP_FOR;
 			w->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_SHIPS;
 			break;
 
-		case VEH_Aircraft:
+		case VEH_AIRCRAFT:
 			w->widget[VLW_WIDGET_LIST].tooltips          = STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT;
 			w->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_AIRCRAFT;
 			break;
@@ -855,29 +855,29 @@ static void CreateVehicleListWindow(Window *w)
 			break;
 		case VLW_STANDARD: /* Company Name - standard widget setup */
 			switch (vl->vehicle_type) {
-				case VEH_Train:    w->widget[VLW_WIDGET_CAPTION].data = STR_881B_TRAINS;        break;
-				case VEH_Road:     w->widget[VLW_WIDGET_CAPTION].data = STR_9001_ROAD_VEHICLES; break;
-				case VEH_Ship:     w->widget[VLW_WIDGET_CAPTION].data = STR_9805_SHIPS;         break;
-				case VEH_Aircraft: w->widget[VLW_WIDGET_CAPTION].data = STR_A009_AIRCRAFT;      break;
+				case VEH_TRAIN:    w->widget[VLW_WIDGET_CAPTION].data = STR_881B_TRAINS;        break;
+				case VEH_ROAD:     w->widget[VLW_WIDGET_CAPTION].data = STR_9001_ROAD_VEHICLES; break;
+				case VEH_SHIP:     w->widget[VLW_WIDGET_CAPTION].data = STR_9805_SHIPS;         break;
+				case VEH_AIRCRAFT: w->widget[VLW_WIDGET_CAPTION].data = STR_A009_AIRCRAFT;      break;
 				default: NOT_REACHED(); break;
 			}
 			break;
 		case VLW_STATION_LIST: /* Station Name */
 			switch (vl->vehicle_type) {
-				case VEH_Train:    w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_TRAINS;        break;
-				case VEH_Road:     w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_ROAD_VEHICLES; break;
-				case VEH_Ship:     w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_SHIPS;         break;
-				case VEH_Aircraft: w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_AIRCRAFT;      break;
+				case VEH_TRAIN:    w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_TRAINS;        break;
+				case VEH_ROAD:     w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_ROAD_VEHICLES; break;
+				case VEH_SHIP:     w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_SHIPS;         break;
+				case VEH_AIRCRAFT: w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_AIRCRAFT;      break;
 				default: NOT_REACHED(); break;
 			}
 			break;
 
 		case VLW_DEPOT_LIST:
 			switch (vl->vehicle_type) {
-				case VEH_Train:    w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_DEPOT;    break;
-				case VEH_Road:     w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_ROADVEH_DEPOT;  break;
-				case VEH_Ship:     w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_SHIP_DEPOT;     break;
-				case VEH_Aircraft: w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_AIRCRAFT_DEPOT; break;
+				case VEH_TRAIN:    w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_DEPOT;    break;
+				case VEH_ROAD:     w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_ROADVEH_DEPOT;  break;
+				case VEH_SHIP:     w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_SHIP_DEPOT;     break;
+				case VEH_AIRCRAFT: w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_AIRCRAFT_DEPOT; break;
 				default: NOT_REACHED(); break;
 			}
 			break;
@@ -885,16 +885,16 @@ static void CreateVehicleListWindow(Window *w)
 	}
 
 	switch (vl->vehicle_type) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			w->resize.step_width = 1;
 			/* Fallthrough */
-		case VEH_Road:
+		case VEH_ROAD:
 			w->vscroll.cap = 7;
 			w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 			w->resize.height = 220 - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 3); // Minimum of 4 vehicles
 			break;
-		case VEH_Ship:
-		case VEH_Aircraft:
+		case VEH_SHIP:
+		case VEH_AIRCRAFT:
 			w->vscroll.cap = 4;
 			w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
 			break;
@@ -907,10 +907,10 @@ static void CreateVehicleListWindow(Window *w)
 		* point to the correct global _sorting struct so we are freed
 		* from having conditionals during window operation */
 	switch (vl->vehicle_type) {
-		case VEH_Train:    vl->_sorting = &_sorting.train; break;
-		case VEH_Road:     vl->_sorting = &_sorting.roadveh; break;
-		case VEH_Ship:     vl->_sorting = &_sorting.ship; break;
-		case VEH_Aircraft: vl->_sorting = &_sorting.aircraft; break;
+		case VEH_TRAIN:    vl->_sorting = &_sorting.train; break;
+		case VEH_ROAD:     vl->_sorting = &_sorting.roadveh; break;
+		case VEH_SHIP:     vl->_sorting = &_sorting.ship; break;
+		case VEH_AIRCRAFT: vl->_sorting = &_sorting.aircraft; break;
 		default: NOT_REACHED(); break;
 	}
 
@@ -932,7 +932,7 @@ static void DrawSmallOrderList(const Vehicle *v, int x, int y)
 		sel--;
 
 		if (order->type == OT_GOTO_STATION) {
-			if (v->type == VEH_Ship && GetStation(order->dest)->IsBuoy()) continue;
+			if (v->type == VEH_SHIP && GetStation(order->dest)->IsBuoy()) continue;
 
 			SetDParam(0, order->dest);
 			DrawString(x, y, STR_A036, 0);
@@ -983,13 +983,13 @@ static void DrawVehicleListWindow(Window *w)
 
 		case VLW_DEPOT_LIST:
 			switch (vl->vehicle_type) {
-				case VEH_Train:    SetDParam(0, STR_8800_TRAIN_DEPOT);        break;
-				case VEH_Road:     SetDParam(0, STR_9003_ROAD_VEHICLE_DEPOT); break;
-				case VEH_Ship:     SetDParam(0, STR_9803_SHIP_DEPOT);         break;
-				case VEH_Aircraft: SetDParam(0, STR_A002_AIRCRAFT_HANGAR);    break;
+				case VEH_TRAIN:    SetDParam(0, STR_8800_TRAIN_DEPOT);        break;
+				case VEH_ROAD:     SetDParam(0, STR_9003_ROAD_VEHICLE_DEPOT); break;
+				case VEH_SHIP:     SetDParam(0, STR_9803_SHIP_DEPOT);         break;
+				case VEH_AIRCRAFT: SetDParam(0, STR_A002_AIRCRAFT_HANGAR);    break;
 				default: NOT_REACHED(); break;
 			}
-			if (vl->vehicle_type == VEH_Aircraft) {
+			if (vl->vehicle_type == VEH_AIRCRAFT) {
 				SetDParam(1, index); // Airport name
 			} else {
 				SetDParam(1, GetDepot(index)->town_index);
@@ -1024,10 +1024,10 @@ static void DrawVehicleListWindow(Window *w)
 		DrawVehicleImage(v, x + 19, y + 6, w->widget[VLW_WIDGET_LIST].right - w->widget[VLW_WIDGET_LIST].left - 20, 0, INVALID_VEHICLE);
 		DrawString(x + 19, y + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
-		if ((v->type == VEH_Train    && v->string_id != STR_SV_TRAIN_NAME)   ||
-			(v->type == VEH_Road     && v->string_id != STR_SV_ROADVEH_NAME) ||
-			(v->type == VEH_Ship     && v->string_id != STR_SV_SHIP_NAME)    ||
-			(v->type == VEH_Aircraft && v->string_id != STR_SV_AIRCRAFT_NAME)) {
+		if ((v->type == VEH_TRAIN    && v->string_id != STR_SV_TRAIN_NAME)   ||
+			(v->type == VEH_ROAD     && v->string_id != STR_SV_ROADVEH_NAME) ||
+			(v->type == VEH_SHIP     && v->string_id != STR_SV_SHIP_NAME)    ||
+			(v->type == VEH_AIRCRAFT && v->string_id != STR_SV_AIRCRAFT_NAME)) {
 
 			/* The vehicle got a name so we will print it */
 			SetDParam(0, v->string_id);
@@ -1096,10 +1096,10 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					v = vl->sort_list[id_v];
 
 					switch (vl->vehicle_type) {
-						case VEH_Train: ShowTrainViewWindow(v); break;
-						case VEH_Road: ShowRoadVehViewWindow(v); break;
-						case VEH_Ship: ShowShipViewWindow(v); break;
-						case VEH_Aircraft: ShowAircraftViewWindow(v); break;
+						case VEH_TRAIN: ShowTrainViewWindow(v); break;
+						case VEH_ROAD: ShowRoadVehViewWindow(v); break;
+						case VEH_SHIP: ShowShipViewWindow(v); break;
+						case VEH_AIRCRAFT: ShowAircraftViewWindow(v); break;
 						default: NOT_REACHED(); break;
 					}
 				} break;
@@ -1244,18 +1244,18 @@ static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, byte ve
 	 * some of the windows to the correct size */
 	switch (vehicle_type) {
 		default: NOT_REACHED();
-		case VEH_Train:
+		case VEH_TRAIN:
 			w = AllocateWindowDescFront(&_player_vehicle_list_train_desc, num);
 			if (w != NULL) ResizeWindow(w, 65, 38);
 			break;
-		case VEH_Road:
+		case VEH_ROAD:
 			w = AllocateWindowDescFront(&_player_vehicle_list_road_veh_desc, num);
 			if (w != NULL) ResizeWindow(w, 0, 38);
 			break;
-		case VEH_Ship:
+		case VEH_SHIP:
 			w = AllocateWindowDescFront(&_player_vehicle_list_ship_desc, num);
 			break;
-		case VEH_Aircraft:
+		case VEH_AIRCRAFT:
 			w = AllocateWindowDescFront(&_player_vehicle_list_aircraft_desc, num);
 			break;
 	}
@@ -1287,7 +1287,7 @@ void ShowVehicleListWindow(PlayerID player, byte vehicle_type, TileIndex depot_t
 {
 	uint16 depot_airport_index;
 
-	if (vehicle_type == VEH_Aircraft) {
+	if (vehicle_type == VEH_AIRCRAFT) {
 		depot_airport_index = GetStationIndex(depot_tile);
 	} else {
 		Depot *depot = GetDepotByTile(depot_tile);

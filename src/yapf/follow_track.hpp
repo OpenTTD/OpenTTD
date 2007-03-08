@@ -22,7 +22,7 @@ struct CFollowTrackT : public FollowTrack_t
 
 	FORCEINLINE void Init(const Vehicle* v, CPerformanceTimer* pPerf)
 	{
-		assert(!IsRailTT() || (v != NULL && v->type == VEH_Train));
+		assert(!IsRailTT() || (v != NULL && v->type == VEH_TRAIN));
 		m_veh = v;
 		m_pPerf = pPerf;
 		// don't worry, all is inlined so compiler should remove unnecessary initializations

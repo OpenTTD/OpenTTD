@@ -48,7 +48,7 @@ Station::Station(TileIndex tile)
 	delete_ctr = 0;
 	facilities = 0;
 
-	last_vehicle_type = VEH_Invalid;
+	last_vehicle_type = VEH_INVALID;
 
 	random_bits = 0; // Random() must be called when station is really built (DC_EXEC)
 	waiting_triggers = 0;
@@ -455,7 +455,7 @@ RoadStop::~RoadStop()
 		Vehicle *v;
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_Road && v->u.road.slot == this) ClearSlot(v);
+			if (v->type == VEH_ROAD && v->u.road.slot == this) ClearSlot(v);
 		}
 	}
 	assert(num_vehicles == 0);

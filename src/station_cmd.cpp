@@ -1670,7 +1670,7 @@ static bool CheckShipsOnBuoy(Station *st)
 {
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship) {
+		if (v->type == VEH_SHIP) {
 			const Order *order;
 			FOR_VEHICLE_ORDERS(v, order) {
 				if (order->type == OT_GOTO_STATION && order->dest == st->index) {
@@ -2103,7 +2103,7 @@ static void AnimateTile_Station(TileIndex tile)
 static void ClickTile_Station(TileIndex tile)
 {
 	if (IsHangar(tile)) {
-		ShowDepotWindow(tile, VEH_Aircraft);
+		ShowDepotWindow(tile, VEH_AIRCRAFT);
 	} else {
 		ShowStationViewWindow(GetStationIndex(tile));
 	}
@@ -2115,7 +2115,7 @@ static const byte _enter_station_speedtable[12] = {
 
 static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
-	if (v->type == VEH_Train) {
+	if (v->type == VEH_TRAIN) {
 		if (IsRailwayStation(tile) && IsFrontEngine(v) &&
 				!IsCompatibleTrainStationTile(tile + TileOffsByDiagDir(DirToDiagDir(v->direction)), tile)) {
 			StationID station_id = GetStationIndex(tile);
@@ -2145,7 +2145,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 				}
 			}
 		}
-	} else if (v->type == VEH_Road) {
+	} else if (v->type == VEH_ROAD) {
 		if (v->u.road.state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir((Trackdir)v->u.road.state) && v->u.road.frame == 0) {
 			if (IsRoadStop(tile)) {
 				/* Attempt to allocate a parking bay in a road stop */
@@ -2234,7 +2234,7 @@ static void UpdateStationRating(Station *st)
 
 			{
 				byte days = ge->days_since_pickup;
-				if (st->last_vehicle_type == VEH_Ship)
+				if (st->last_vehicle_type == VEH_SHIP)
 							days >>= 2;
 				(days > 21) ||
 				(rating += 25, days > 12) ||
@@ -2537,7 +2537,7 @@ void BuildOilRig(TileIndex tile)
 	st->time_since_load = 255;
 	st->time_since_unload = 255;
 	st->delete_ctr = 0;
-	st->last_vehicle_type = VEH_Invalid;
+	st->last_vehicle_type = VEH_INVALID;
 	st->facilities = FACIL_AIRPORT | FACIL_DOCK;
 	st->build_date = _date;
 

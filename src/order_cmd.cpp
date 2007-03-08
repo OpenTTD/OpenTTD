@@ -213,11 +213,11 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			switch (v->type) {
-				case VEH_Train:
+				case VEH_TRAIN:
 					if (!(st->facilities & FACIL_TRAIN)) return CMD_ERROR;
 					break;
 
-				case VEH_Road:
+				case VEH_ROAD:
 					if (v->cargo_type == CT_PASSENGERS) {
 						if (!(st->facilities & FACIL_BUS_STOP)) return CMD_ERROR;
 					} else {
@@ -225,11 +225,11 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					}
 					break;
 
-				case VEH_Ship:
+				case VEH_SHIP:
 					if (!(st->facilities & FACIL_DOCK)) return CMD_ERROR;
 					break;
 
-				case VEH_Aircraft:
+				case VEH_AIRCRAFT:
 					if (!(st->facilities & FACIL_AIRPORT)) return CMD_ERROR;
 					break;
 
@@ -254,7 +254,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				case OF_NON_STOP | OF_UNLOAD:
 				case OF_NON_STOP | OF_UNLOAD | OF_TRANSFER:
 				case OF_NON_STOP | OF_TRANSFER:
-					if (v->type != VEH_Train) return CMD_ERROR;
+					if (v->type != VEH_TRAIN) return CMD_ERROR;
 					break;
 
 				default: return CMD_ERROR;
@@ -263,7 +263,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		case OT_GOTO_DEPOT: {
-			if (v->type == VEH_Aircraft) {
+			if (v->type == VEH_AIRCRAFT) {
 				const Station* st;
 
 				if (!IsValidStationID(new_order.dest)) return CMD_ERROR;
@@ -283,15 +283,15 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (!CheckOwnership(GetTileOwner(dp->xy))) return CMD_ERROR;
 
 				switch (v->type) {
-					case VEH_Train:
+					case VEH_TRAIN:
 						if (!IsTileDepotType(dp->xy, TRANSPORT_RAIL)) return CMD_ERROR;
 						break;
 
-					case VEH_Road:
+					case VEH_ROAD:
 						if (!IsTileDepotType(dp->xy, TRANSPORT_ROAD)) return CMD_ERROR;
 						break;
 
-					case VEH_Ship:
+					case VEH_SHIP:
 						if (!IsTileDepotType(dp->xy, TRANSPORT_WATER)) return CMD_ERROR;
 						break;
 
@@ -309,7 +309,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				case OF_NON_STOP | OF_PART_OF_ORDERS:
 				case OF_NON_STOP | OF_PART_OF_ORDERS | OF_HALT_IN_DEPOT:
-					if (v->type != VEH_Train) return CMD_ERROR;
+					if (v->type != VEH_TRAIN) return CMD_ERROR;
 					break;
 
 				default: return CMD_ERROR;
@@ -320,7 +320,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case OT_GOTO_WAYPOINT: {
 			const Waypoint* wp;
 
-			if (v->type != VEH_Train) return CMD_ERROR;
+			if (v->type != VEH_TRAIN) return CMD_ERROR;
 
 			if (!IsValidWaypointID(new_order.dest)) return CMD_ERROR;
 			wp = GetWaypoint(new_order.dest);
@@ -334,7 +334,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				case 0: break;
 
 				case OF_NON_STOP:
-					if (v->type != VEH_Train) return CMD_ERROR;
+					if (v->type != VEH_TRAIN) return CMD_ERROR;
 					break;
 
 				default: return CMD_ERROR;
@@ -353,7 +353,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	 * handle any more then this.. */
 	if (v->num_orders >= MAX_BACKUP_ORDER_COUNT) return_cmd_error(STR_8832_TOO_MANY_ORDERS);
 
-	if (v->type == VEH_Ship &&
+	if (v->type == VEH_SHIP &&
 			IsHumanPlayer(v->owner) &&
 			!_patches.new_pathfinding_all) {
 		// Make sure the new destination is not too far away from the previous
@@ -553,9 +553,9 @@ int32 CmdSkipOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->cur_order_index = b;
 
-		if (v->type == VEH_Train) v->u.rail.days_since_order_progr = 0;
+		if (v->type == VEH_TRAIN) v->u.rail.days_since_order_progr = 0;
 
-		if (v->type == VEH_Road) ClearSlot(v);
+		if (v->type == VEH_ROAD) ClearSlot(v);
 
 		/* NON-stop flag is misused to see if a train is in a station that is
 		 * on his order list or not */
@@ -566,8 +566,8 @@ int32 CmdSkipOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	/* We have an aircraft/ship, they have a mini-schedule, so update them all */
-	if (v->type == VEH_Aircraft) InvalidateWindowClasses(WC_AIRCRAFT_LIST);
-	if (v->type == VEH_Ship) InvalidateWindowClasses(WC_SHIPS_LIST);
+	if (v->type == VEH_AIRCRAFT) InvalidateWindowClasses(WC_AIRCRAFT_LIST);
+	if (v->type == VEH_SHIP) InvalidateWindowClasses(WC_SHIPS_LIST);
 
 	return 0;
 }
@@ -685,7 +685,7 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				return CMD_ERROR;
 
 			/* Trucks can't share orders with busses (and visa versa) */
-			if (src->type == VEH_Road) {
+			if (src->type == VEH_ROAD) {
 				if (src->cargo_type != dst->cargo_type && (src->cargo_type == CT_PASSENGERS || dst->cargo_type == CT_PASSENGERS))
 					return CMD_ERROR;
 			}
@@ -732,7 +732,7 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				return CMD_ERROR;
 
 			/* Trucks can't copy all the orders from busses (and visa versa) */
-			if (src->type == VEH_Road) {
+			if (src->type == VEH_ROAD) {
 				const Order *order;
 				TileIndex required_dst = INVALID_TILE;
 
@@ -951,10 +951,10 @@ static TileIndex GetStationTileForVehicle(const Vehicle* v, const Station* st)
 {
 	switch (v->type) {
 		default: NOT_REACHED();
-		case VEH_Train:     return st->train_tile;
-		case VEH_Aircraft:  return st->airport_tile;
-		case VEH_Ship:      return st->dock_tile;
-		case VEH_Road:
+		case VEH_TRAIN:     return st->train_tile;
+		case VEH_AIRCRAFT:  return st->airport_tile;
+		case VEH_SHIP:      return st->dock_tile;
+		case VEH_ROAD:
 			if (v->cargo_type == CT_PASSENGERS) {
 				return (st->bus_stops != NULL) ? st->bus_stops->xy : 0;
 			} else {
@@ -1063,7 +1063,7 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 		}
 
 		order = &v->current_order;
-		if ((v->type == VEH_Aircraft && order->type == OT_GOTO_DEPOT ? OT_GOTO_STATION : order->type) == type &&
+		if ((v->type == VEH_AIRCRAFT && order->type == OT_GOTO_DEPOT ? OT_GOTO_STATION : order->type) == type &&
 				v->current_order.dest == destination) {
 			order->type = OT_DUMMY;
 			order->flags = 0;
@@ -1073,7 +1073,7 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 		/* Clear the order from the order-list */
 		invalidate = false;
 		FOR_VEHICLE_ORDERS(v, order) {
-			if ((v->type == VEH_Aircraft && order->type == OT_GOTO_DEPOT ? OT_GOTO_STATION : order->type) == type &&
+			if ((v->type == VEH_AIRCRAFT && order->type == OT_GOTO_DEPOT ? OT_GOTO_STATION : order->type) == type &&
 					order->dest == destination) {
 				order->type = OT_DUMMY;
 				order->flags = 0;
@@ -1156,10 +1156,10 @@ void DeleteVehicleOrders(Vehicle *v)
 
 		switch (v->type) {
 			default: NOT_REACHED();
-			case VEH_Train:    window_class = WC_TRAINS_LIST;   break;
-			case VEH_Road:     window_class = WC_ROADVEH_LIST;  break;
-			case VEH_Ship:     window_class = WC_SHIPS_LIST;    break;
-			case VEH_Aircraft: window_class = WC_AIRCRAFT_LIST; break;
+			case VEH_TRAIN:    window_class = WC_TRAINS_LIST;   break;
+			case VEH_ROAD:     window_class = WC_ROADVEH_LIST;  break;
+			case VEH_SHIP:     window_class = WC_SHIPS_LIST;    break;
+			case VEH_AIRCRAFT: window_class = WC_AIRCRAFT_LIST; break;
 		}
 		DeleteWindowById(window_class, (cur->index << 16) | (v->type << 11) | VLW_SHARED_ORDERS | v->owner);
 	}

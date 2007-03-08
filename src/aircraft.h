@@ -23,7 +23,7 @@ enum AircraftSubType {
  * false if it is a shadow or a rotor) */
 static inline bool IsNormalAircraft(const Vehicle *v)
 {
-	assert(v->type == VEH_Aircraft);
+	assert(v->type == VEH_AIRCRAFT);
 	/* To be fully correct the commented out functionality is the proper one,
 	 * but since value can only be 0 or 2, it is sufficient to only check <= 2
 	 * return (v->subtype == AIR_HELICOPTER) || (v->subtype == AIR_AIRCRAFT); */
@@ -33,7 +33,7 @@ static inline bool IsNormalAircraft(const Vehicle *v)
 
 static inline bool IsAircraftInHangar(const Vehicle* v)
 {
-	assert(v->type == VEH_Aircraft);
+	assert(v->type == VEH_AIRCRAFT);
 	return v->vehstatus & VS_HIDDEN && IsHangarTile(v->tile);
 }
 

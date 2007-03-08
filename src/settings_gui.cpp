@@ -82,7 +82,7 @@ static inline bool RoadVehiclesAreBuilt()
 	const Vehicle* v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road) return true;
+		if (v->type == VEH_ROAD) return true;
 	}
 	return false;
 }

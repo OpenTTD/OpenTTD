@@ -826,7 +826,7 @@ void ShipsYearlyLoop()
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship) {
+		if (v->type == VEH_SHIP) {
 			v->profit_last_year = v->profit_this_year;
 			v->profit_this_year = 0;
 			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
@@ -846,7 +846,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	UnitID unit_num;
 	Engine *e;
 
-	if (!IsEngineBuildable(p1, VEH_Ship, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
+	if (!IsEngineBuildable(p1, VEH_SHIP, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -859,7 +859,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	v = AllocateVehicle();
-	unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_Ship);
+	unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_SHIP);
 
 	if (v == NULL || unit_num > _patches.max_ships)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
@@ -910,7 +910,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 		v->cur_image = 0x0E5E;
-		v->type = VEH_Ship;
+		v->type = VEH_SHIP;
 		v->random_bits = VehicleRandomBits();
 
 		v->vehicle_flags = 0;
@@ -922,7 +922,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
-			InvalidateAutoreplaceWindow(VEH_Ship); // updates the replace Ship window
+			InvalidateAutoreplaceWindow(VEH_SHIP); // updates the replace Ship window
 
 		GetPlayer(_current_player)->num_engines[p1]++;
 	}
@@ -943,7 +943,7 @@ int32 CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -977,7 +977,7 @@ int32 CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Check if this ship can be started/stopped. The callback will fail or
 	 * return 0xFF if it can. */
@@ -1016,14 +1016,14 @@ int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
 		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		return SendAllVehiclesToDepot(VEH_Ship, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
+		return SendAllVehiclesToDepot(VEH_SHIP, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
 	}
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
@@ -1092,7 +1092,7 @@ int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (!IsShipInDepotStopped(v)) {
 		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);

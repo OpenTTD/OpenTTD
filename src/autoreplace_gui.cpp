@@ -80,12 +80,12 @@ static CargoID EngineCargo(EngineID engine)
 
 	switch (GetEngine(engine)->type) {
 		default: NOT_REACHED();
-		case VEH_Train:
+		case VEH_TRAIN:
 			if (RailVehInfo(engine)->capacity == 0) return CT_INVALID; // no capacity -> can't carry cargo
 			return RailVehInfo(engine)->cargo_type;
-		case VEH_Road:       return RoadVehInfo(engine)->cargo_type;
-		case VEH_Ship:       return ShipVehInfo(engine)->cargo_type;
-		case VEH_Aircraft:   return CT_PASSENGERS; // all planes are build with passengers by default
+		case VEH_ROAD:       return RoadVehInfo(engine)->cargo_type;
+		case VEH_SHIP:       return ShipVehInfo(engine)->cargo_type;
+		case VEH_AIRCRAFT:   return CT_PASSENGERS; // all planes are build with passengers by default
 	}
 }
 
@@ -147,7 +147,7 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 	EngList_RemoveAll(list);
 
 	FOR_ALL_ENGINEIDS_OF_TYPE(e, type) {
-		if (type == VEH_Train && !GenerateReplaceRailList(e, draw_left, WP(w, replaceveh_d).wagon_btnstate)) continue; // special rules for trains
+		if (type == VEH_TRAIN && !GenerateReplaceRailList(e, draw_left, WP(w, replaceveh_d).wagon_btnstate)) continue; // special rules for trains
 
 		if (draw_left) {
 			/* Skip drawing the engines we don't have any of and haven't set for replacement */
@@ -255,7 +255,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			/* now the actual drawing of the window itself takes place */
 			SetDParam(0, _vehicle_type_names[w->window_number]);
 
-			if (w->window_number == VEH_Train) {
+			if (w->window_number == VEH_TRAIN) {
 				/* set on/off for renew_keep_length */
 				SetDParam(1, p->renew_keep_length ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 
@@ -269,7 +269,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			DrawWindowWidgets(w);
 
 
-			if (w->window_number == VEH_Train) {
+			if (w->window_number == VEH_TRAIN) {
 				/* Draw the selected railtype in the pulldown menu */
 				RailType railtype = _railtype_selected_in_replace_gui;
 				DrawString(157, w->widget[14].top + 1, _rail_types_list[railtype], 0x10);
@@ -487,19 +487,19 @@ void ShowReplaceVehicleWindow(byte vehicletype)
 	DeleteWindowById(WC_REPLACE_VEHICLE, vehicletype);
 
 	switch (vehicletype) {
-		case VEH_Train:
+		case VEH_TRAIN:
 			w = AllocateWindowDescFront(&_replace_rail_vehicle_desc, vehicletype);
 			w->vscroll.cap  = 8;
 			w->resize.step_height = 14;
 			WP(w, replaceveh_d).wagon_btnstate = true;
 			break;
-		case VEH_Road:
+		case VEH_ROAD:
 			w = AllocateWindowDescFront(&_replace_road_vehicle_desc, vehicletype);
 			w->vscroll.cap  = 8;
 			w->resize.step_height = 14;
 			break;
-		case VEH_Ship:
-		case VEH_Aircraft:
+		case VEH_SHIP:
+		case VEH_AIRCRAFT:
 			w = AllocateWindowDescFront(&_replace_ship_aircraft_vehicle_desc, vehicletype);
 			w->vscroll.cap  = 4;
 			w->resize.step_height = 24;

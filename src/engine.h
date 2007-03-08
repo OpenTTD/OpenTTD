@@ -111,7 +111,7 @@ struct Engine {
 	PlayerByte preview_player;
 	byte preview_wait;
 	byte player_avail;
-	byte type; ///< type, ie VEH_Road, VEH_Train, etc. Same as in vehicle.h
+	byte type; ///< type, ie VEH_ROAD, VEH_TRAIN, etc. Same as in vehicle.h
 };
 
 /**

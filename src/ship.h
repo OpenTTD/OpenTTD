@@ -12,7 +12,7 @@ void GetShipSpriteSize(EngineID engine, uint &width, uint &height);
 
 static inline bool IsShipInDepot(const Vehicle* v)
 {
-	assert(v->type == VEH_Ship);
+	assert(v->type == VEH_SHIP);
 	return v->u.ship.state == 0x80;
 }
 

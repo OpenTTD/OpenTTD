@@ -128,7 +128,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	UnitID unit_num;
 	Engine *e;
 
-	if (!IsEngineBuildable(p1, VEH_Road, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
+	if (!IsEngineBuildable(p1, VEH_ROAD, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -144,7 +144,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v == NULL) return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	/* find the first free roadveh id */
-	unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_Road);
+	unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_ROAD);
 	if (unit_num > _patches.max_roadveh)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
@@ -200,7 +200,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 
-		v->type = VEH_Road;
+		v->type = VEH_ROAD;
 		v->cur_image = 0xC15;
 		v->random_bits = VehicleRandomBits();
 
@@ -213,7 +213,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
-			InvalidateAutoreplaceWindow(VEH_Road); // updates the replace Road window
+			InvalidateAutoreplaceWindow(VEH_ROAD); // updates the replace Road window
 
 		GetPlayer(_current_player)->num_engines[p1]++;
 	}
@@ -235,7 +235,7 @@ int32 CmdStartStopRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Check if this road veh can be started/stopped. The callback will fail or
 	 * return 0xFF if it can. */
@@ -285,7 +285,7 @@ int32 CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -384,14 +384,14 @@ int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
 		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		return SendAllVehiclesToDepot(VEH_Road, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
+		return SendAllVehiclesToDepot(VEH_ROAD, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
 	}
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
@@ -454,7 +454,7 @@ int32 CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->vehstatus & VS_STOPPED ||
 			v->u.road.crashed_ctr != 0 ||
@@ -577,7 +577,7 @@ static void* EnumCheckRoadVehCrashTrain(Vehicle* v, void* data)
 	const Vehicle* u = (Vehicle*)data;
 
 	return
-		v->type == VEH_Train &&
+		v->type == VEH_TRAIN &&
 		myabs(v->z_pos - u->z_pos) <= 6 &&
 		myabs(v->x_pos - u->x_pos) <= 4 &&
 		myabs(v->y_pos - u->y_pos) <= 4 ?
@@ -804,7 +804,7 @@ static void* EnumCheckRoadVehClose(Vehicle *v, void* data)
 
 	return
 		rvf->veh != v &&
-		v->type == VEH_Road &&
+		v->type == VEH_ROAD &&
 		!IsRoadVehInDepot(v) &&
 		myabs(v->z_pos - rvf->veh->z_pos) < 6 &&
 		v->direction == rvf->dir &&
@@ -945,7 +945,7 @@ static void* EnumFindVehToOvertake(Vehicle* v, void* data)
 	const OvertakeData* od = (OvertakeData*)data;
 
 	return
-		v->tile == od->tile && v->type == VEH_Road && v != od->u && v != od->v ?
+		v->tile == od->tile && v->type == VEH_ROAD && v != od->u && v != od->v ?
 			v : NULL;
 }
 
@@ -1829,7 +1829,7 @@ void RoadVehiclesYearlyLoop()
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road) {
+		if (v->type == VEH_ROAD) {
 			v->profit_last_year = v->profit_this_year;
 			v->profit_this_year = 0;
 			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
@@ -1856,7 +1856,7 @@ int32 CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!IsRoadVehInDepotStopped(v)) return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
 
 	if (new_cid > NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;

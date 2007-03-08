@@ -8,7 +8,7 @@
 
 static inline bool IsRoadVehInDepot(const Vehicle* v)
 {
-	assert(v->type == VEH_Road);
+	assert(v->type == VEH_ROAD);
 	return v->u.road.state == 254;
 }
 

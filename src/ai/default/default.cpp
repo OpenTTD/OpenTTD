@@ -93,12 +93,12 @@ static void AiStateVehLoop(Player *p)
 	FOR_ALL_VEHICLES_FROM(v, index) {
 		if (v->owner != _current_player) continue;
 
-		if ((v->type == VEH_Train && v->subtype == 0) ||
-				v->type == VEH_Road ||
-				(v->type == VEH_Aircraft && IsNormalAircraft(v)) ||
-				v->type == VEH_Ship) {
+		if ((v->type == VEH_TRAIN && v->subtype == 0) ||
+				v->type == VEH_ROAD ||
+				(v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) ||
+				v->type == VEH_SHIP) {
 			/* replace engine? */
-			if (v->type == VEH_Train && v->engine_type < 3 &&
+			if (v->type == VEH_TRAIN && v->engine_type < 3 &&
 					(_price.build_railvehicle >> 3) < p->player_money) {
 				p->ai.state = AIS_VEH_CHECK_REPLACE_VEHICLE;
 				p->ai.cur_veh = v;
@@ -427,8 +427,8 @@ static void AiStateCheckReplaceVehicle(Player *p)
 
 	if (!IsValidVehicle(v) ||
 			v->owner != _current_player ||
-			v->type > VEH_Ship ||
-			_veh_check_replace_proc[v->type - VEH_Train](p, v) == INVALID_ENGINE) {
+			v->type > VEH_SHIP ||
+			_veh_check_replace_proc[v->type - VEH_TRAIN](p, v) == INVALID_ENGINE) {
 		p->ai.state = AIS_VEH_LOOP;
 	} else {
 		p->ai.state_counter = 0;
@@ -443,7 +443,7 @@ static void AiStateDoReplaceVehicle(Player *p)
 	p->ai.state = AIS_VEH_LOOP;
 	// vehicle is not owned by the player anymore, something went very wrong.
 	if (!IsValidVehicle(v) || v->owner != _current_player) return;
-	_veh_do_replace_proc[v->type - VEH_Train](p);
+	_veh_do_replace_proc[v->type - VEH_TRAIN](p);
 }
 
 struct FoundRoute {
@@ -3515,7 +3515,7 @@ static void AiStateSellVeh(Player *p)
 	Vehicle *v = p->ai.cur_veh;
 
 	if (v->owner == _current_player) {
-		if (v->type == VEH_Train) {
+		if (v->type == VEH_TRAIN) {
 
 			if (!IsTileDepotType(v->tile, TRANSPORT_RAIL) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
 				if (v->current_order.type != OT_GOTO_DEPOT)
@@ -3526,7 +3526,7 @@ static void AiStateSellVeh(Player *p)
 			// Sell whole train
 			DoCommand(v->tile, v->index, 1, DC_EXEC, CMD_SELL_RAIL_WAGON);
 
-		} else if (v->type == VEH_Road) {
+		} else if (v->type == VEH_ROAD) {
 			if (!IsRoadVehInDepotStopped(v)) {
 				if (v->current_order.type != OT_GOTO_DEPOT)
 					DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_ROADVEH_TO_DEPOT);
@@ -3534,7 +3534,7 @@ static void AiStateSellVeh(Player *p)
 			}
 
 			DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
-		} else if (v->type == VEH_Aircraft) {
+		} else if (v->type == VEH_AIRCRAFT) {
 			if (!IsAircraftInHangarStopped(v)) {
 				if (v->current_order.type != OT_GOTO_DEPOT)
 					DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
@@ -3542,9 +3542,9 @@ static void AiStateSellVeh(Player *p)
 			}
 
 			DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_AIRCRAFT);
-			} else if (v->type == VEH_Ship) {
+			} else if (v->type == VEH_SHIP) {
 			// XXX: not implemented
-			error("!v->type == VEH_Ship");
+			error("!v->type == VEH_SHIP");
 		}
 	}
 

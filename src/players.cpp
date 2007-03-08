@@ -593,7 +593,7 @@ byte GetPlayerRailtypes(PlayerID p)
 		const Engine* e = GetEngine(i);
 		const EngineInfo *ei = EngInfo(i);
 
-		if (e->type == VEH_Train && HASBIT(ei->climates, _opt.landscape) &&
+		if (e->type == VEH_TRAIN && HASBIT(ei->climates, _opt.landscape) &&
 				(HASBIT(e->player_avail, p) || _date >= e->intro_date + 365)) {
 			const RailVehicleInfo *rvi = RailVehInfo(i);
 
@@ -704,7 +704,7 @@ int32 CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					return CMD_ERROR;
 
 				// make sure that we do not replace a plane with a helicopter or vise versa
-				if (GetEngine(new_engine_type)->type == VEH_Aircraft &&
+				if (GetEngine(new_engine_type)->type == VEH_AIRCRAFT &&
 						(AircraftVehInfo(old_engine_type)->subtype & AIR_CTOL) != (AircraftVehInfo(new_engine_type)->subtype & AIR_CTOL))
 					return CMD_ERROR;
 
@@ -743,7 +743,7 @@ int32 CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (flags & DC_EXEC) {
 				p->renew_keep_length = (bool)GB(p2, 0, 1);
 				if (IsLocalPlayer()) {
-					InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
+					InvalidateWindow(WC_REPLACE_VEHICLE, VEH_TRAIN);
 				}
 			}
 		break;
