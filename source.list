@@ -1,6 +1,7 @@
 # Source Files
 airport.cpp
 aystar.cpp
+autoreplace_cmd.cpp
 bmp.cpp
 callback_table.cpp
 cargotype.cpp

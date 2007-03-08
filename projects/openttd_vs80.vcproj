@@ -452,6 +452,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\autoreplace_cmd.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\bmp.cpp"
 				>
 			</File>

@@ -400,6 +400,8 @@ void VehicleEnterDepot(Vehicle *v);
 
 void InvalidateAutoreplaceWindow(EngineID e);
 
+int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs);
+
 /* Flags to add to p2 for goto depot commands */
 /* Note: bits 8-10 are used for VLW flags */
 enum {
