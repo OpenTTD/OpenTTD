@@ -94,7 +94,7 @@ depend:
 	done
 
 run: all
-	$(Q)cd !!BIN_DIR!! && ./!!TTD!!
+	$(Q)cd !!BIN_DIR!! && ./!!TTD!! $(OPENTTD_ARGS)
 
 %.o:
 	@for dir in $(SRC_DIRS); do \
