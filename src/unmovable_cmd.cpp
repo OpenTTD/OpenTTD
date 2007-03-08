@@ -152,12 +152,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			DrawClearLandTile(ti, 0);
 
 			image = SPR_BOUGHT_LAND;
-			if (_display_opt & DO_TRANS_BUILDINGS) {
-				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-				pal = PALETTE_TO_TRANSPARENT;
-			} else {
-				pal = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
-			}
+			pal = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 			AddSortableSpriteToDraw(
 				image, pal,
 				ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 10, GetSlopeZ(ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2)
