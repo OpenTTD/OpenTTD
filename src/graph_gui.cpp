@@ -799,8 +799,9 @@ void ShowCargoPaymentRates()
 	ResizeWindow(w, 0, num_active * 8);
 
 	/* Add widgets for each cargo type */
-	w->widget_count = 3 + num_active;
-	w->widget = ReallocT(w->widget, w->widget_count);
+	w->widget_count += num_active;
+	w->widget = ReallocT(w->widget, w->widget_count + 1);
+	w->widget[w->widget_count].type = WWT_LAST;
 
 	/* Set the properties of each widget */
 	for (uint i = 0; i != num_active; i++) {
