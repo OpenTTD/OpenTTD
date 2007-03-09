@@ -125,18 +125,16 @@ static void AdjustTileh(TileIndex tile, Slope *tileh)
 {
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		if (IsTunnel(tile)) {
-			*tileh = SLOPE_STEEP; /* XXX - Hack to make tunnel entrances to always have a pylon */
+			*tileh = SLOPE_STEEP; // XXX - Hack to make tunnel entrances to always have a pylon
+		} else if (*tileh != SLOPE_FLAT) {
+			*tileh = SLOPE_FLAT;
 		} else {
-			if (*tileh != SLOPE_FLAT) {
-				*tileh = SLOPE_FLAT;
-			} else {
-				switch (GetBridgeRampDirection(tile)) {
-					case DIAGDIR_NE: *tileh = SLOPE_NE; break;
-					case DIAGDIR_SE: *tileh = SLOPE_SE; break;
-					case DIAGDIR_SW: *tileh = SLOPE_SW; break;
-					case DIAGDIR_NW: *tileh = SLOPE_NW; break;
-					default: NOT_REACHED();
-				}
+			switch (GetBridgeRampDirection(tile)) {
+				case DIAGDIR_NE: *tileh = SLOPE_NE; break;
+				case DIAGDIR_SE: *tileh = SLOPE_SE; break;
+				case DIAGDIR_SW: *tileh = SLOPE_SW; break;
+				case DIAGDIR_NW: *tileh = SLOPE_NW; break;
+				default: NOT_REACHED();
 			}
 		}
 	}
@@ -187,7 +185,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		if (IsTunnelTile(neighbour) && i != GetTunnelDirection(neighbour)) trackconfig[TS_NEIGHBOUR] = TRACK_BIT_NONE;
 		isflat[TS_NEIGHBOUR] = ((trackconfig[TS_NEIGHBOUR] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
 
-		PPPpreferred[i] = 0xFF; /* We start with preferring everything (end-of-line in any direction) */
+		PPPpreferred[i] = 0xFF; // We start with preferring everything (end-of-line in any direction)
 		PPPallowed[i] = AllowedPPPonPCP[i];
 
 		/* We cycle through all the existing tracks at a PCP and see what
@@ -206,7 +204,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 				/* track found, if track is in the neighbour tile, adjust the number
 				 * of the PCP for preferred/allowed determination*/
 				DiagDirection PCPpos = (TrackSourceTile[i][k] == TS_HOME) ? i : ReverseDiagDir(i);
-				SETBIT(PCPstatus, i); /* This PCP is in use */
+				SETBIT(PCPstatus, i); // This PCP is in use
 
 				PPPpreferred[i] &= PreferredPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
 				PPPallowed[i] &= ~DisallowedPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
@@ -227,11 +225,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		}
 
 		if (foundation != 0) {
-			if (foundation < 15) {
-				tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
-			} else {
-				tileh[TS_NEIGHBOUR] = _inclined_tileh[foundation - 15];
-			}
+			tileh[TS_NEIGHBOUR] = foundation < 15 ? SLOPE_FLAT : _inclined_tileh[foundation - 15];
 		}
 
 		AdjustTileh(neighbour, &tileh[TS_NEIGHBOUR]);
@@ -255,7 +249,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
 			if ((height <= TilePixelHeight(ti->tile) + TILE_HEIGHT) &&
-			(i == PCPpositions[bridgetrack][0] || i == PCPpositions[bridgetrack][1])) SETBIT(OverridePCP, i);
+					(i == PCPpositions[bridgetrack][0] || i == PCPpositions[bridgetrack][1])) {
+				SETBIT(OverridePCP, i);
+			}
 		}
 
 		if (PPPallowed[i] != 0 && HASBIT(PCPstatus, i) && !HASBIT(OverridePCP, i)) {
@@ -292,7 +288,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	for (t = TRACK_BEGIN; t < TRACK_END; t++) {
 		if (HASBIT(trackconfig[TS_HOME], t)) {
 			if (IsTunnelTile(ti->tile)) {
-				const SortableSpriteStruct* sss = &CatenarySpriteData_Tunnel[GetTunnelDirection(ti->tile)];
+				const SortableSpriteStruct *sss = &CatenarySpriteData_Tunnel[GetTunnelDirection(ti->tile)];
 
 				AddSortableSpriteToDraw(
 					sss->image, PAL_NONE, ti->x + sss->x_offset, ti->y + sss->y_offset,
@@ -380,8 +376,8 @@ void DrawCatenary(const TileInfo *ti)
 
 	switch (GetTileType(ti->tile)) {
 		case MP_RAILWAY:
-			if ( IsRailDepot(ti->tile)) {
-				const SortableSpriteStruct* sss = &CatenarySpriteData_Depot[GetRailDepotDirection(ti->tile)];
+			if (IsRailDepot(ti->tile)) {
+				const SortableSpriteStruct *sss = &CatenarySpriteData_Depot[GetRailDepotDirection(ti->tile)];
 
 				AddSortableSpriteToDraw(
 					sss->image, PAL_NONE, ti->x + sss->x_offset, ti->y + sss->y_offset,
@@ -405,7 +401,7 @@ void DrawCatenary(const TileInfo *ti)
 int32 SettingsDisableElrail(int32 p1)
 {
 	EngineID e_id;
-	Vehicle* v;
+	Vehicle *v;
 	Player *p;
 	bool disable = (p1 != 0);
 
