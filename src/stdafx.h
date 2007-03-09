@@ -20,6 +20,8 @@
 # define INT64_MAX 9223372036854775807LL
 #endif
 
+#include <limits>
+
 #include <cstdio>
 #include <cstddef>
 #include <cstring>

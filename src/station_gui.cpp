@@ -269,7 +269,7 @@ static void SortStationsList(plstations_d *sl)
 	sl->flags &= ~SL_RESORT;
 }
 
-static uint32 _cargo_filter = UINT32_MAX;
+static uint32 _cargo_filter = std::numeric_limits<uint32>::max();
 
 static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 {
@@ -282,7 +282,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 		case WE_CREATE: /* set up resort timer */
-			if (_cargo_filter == UINT32_MAX) _cargo_filter = _cargo_mask;
+			if (_cargo_filter == std::numeric_limits<uint32>::max()) _cargo_filter = _cargo_mask;
 
 			for (uint i = 0; i < 5; i++) {
 				if (HASBIT(facilities, i)) LowerWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
