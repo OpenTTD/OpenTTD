@@ -1731,11 +1731,10 @@ static const byte _new_industry_rand[4][32] = {
 
 static void MaybeNewIndustry(uint32 r)
 {
-	int type;
+	int type =_new_industry_rand[_opt.landscape][GB(r, 16, 5)];
 	int j;
 	Industry *i;
-
-	type = _new_industry_rand[_opt.landscape][GB(r, 16, 5)];
+	const IndustrySpec *ind_spc = GetIndustrySpec(type);;
 
 	if (type == IT_OIL_WELL && _cur_year > 1950) return;
 	if (type == IT_OIL_RIG  && _cur_year < 1960) return;
@@ -1747,13 +1746,10 @@ static void MaybeNewIndustry(uint32 r)
 		if (--j == 0) return;
 	}
 
-	SetDParam(0, GetIndustrySpec(type)->name);
+	SetDParam(0, ind_spc->name);
 	SetDParam(1, i->town->index);
-	AddNewsItem(
-		(type != IT_FOREST && type != IT_FRUIT_PLANTATION && type != IT_RUBBER_PLANTATION && type != IT_COTTON_CANDY) ?
-			STR_482D_NEW_UNDER_CONSTRUCTION : STR_482E_NEW_BEING_PLANTED_NEAR,
-		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY,0), i->xy, 0
-	);
+	AddNewsItem(ind_spc->new_industry_text,
+		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY,0), i->xy, 0);
 }
 
 static void ChangeIndustryProduction(Industry *i)

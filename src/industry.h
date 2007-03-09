@@ -71,6 +71,7 @@ struct IndustrySpec {
 	IndustryLifeType life_type;           ///< This is also known as Industry production flag, in newgrf specs
 	byte climate_availability;            ///< Bitmask, giving landscape enums as bit position
 	StringID name;                        ///< Displayed name of the industry
+	StringID new_industry_text;           ///< Message appearing when the industry is built
 	StringID closure_text;                ///< Message appearing when the industry closes
 	StringID production_up_text;          ///< Message appearing when the industry's production is increasing
 	StringID production_down_text;        ///< Message appearing when the industry's production is decreasing
