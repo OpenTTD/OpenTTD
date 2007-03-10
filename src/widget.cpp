@@ -235,6 +235,13 @@ void DrawWindowWidgets(const Window *w)
 			goto draw_default;
 		}
 
+		case WWT_TEXT: {
+			StringID str = wi->data;
+
+			if (str != STR_NULL) DrawStringTruncated(r.left, r.top, str, wi->color, r.right - r.left);
+			break;
+		}
+
 		case WWT_INSET: {
 			StringID str = wi->data;
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);

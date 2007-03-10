@@ -492,6 +492,7 @@ enum WindowWidgetTypes {
 	WWT_TEXTBTN,    ///< button with text
 	WWT_TEXTBTN_2,  ///< button with diff text when clicked
 	WWT_LABEL,      ///< centered label
+	WWT_TEXT,       ///< pure simple text
 	WWT_MATRIX,
 	WWT_SCROLLBAR,
 	WWT_FRAME,      ///< frame
