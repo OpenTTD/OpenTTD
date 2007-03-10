@@ -884,12 +884,16 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	char *argv[64]; // max 64 command line arguments
 	char *cmdline;
 
+#if !defined(UNICODE)
+	_codepage = GetACP(); // get system codepage as some kind of a default
+#endif /* UNICODE */
+
 #if defined(UNICODE)
 	/* For UNICODE we need to convert the commandline to char* _AND_
 	 * save it because argv[] points into this buffer and thus needs to
 	 * be available between subsequent calls to FS2OTTD() */
 	char cmdlinebuf[MAX_PATH];
-#endif
+#endif /* UNICODE */
 
 	cmdline = WIDE_TO_MB_BUFFER(GetCommandLine(), cmdlinebuf, lengthof(cmdlinebuf));
 

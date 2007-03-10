@@ -214,9 +214,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 	switch (msg) {
 		case WM_CREATE:
 			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
-#if !defined(UNICODE)
-			_codepage = GetACP(); // get system codepage as some kind of a default
-#endif /* UNICODE */
 			break;
 
 		case WM_PAINT: {
