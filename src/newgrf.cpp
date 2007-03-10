@@ -365,7 +365,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 ctype = grf_load_byte(&buf);
 
-				if (ctype < NUM_CARGO) {
+				if (ctype < NUM_CARGO && HASBIT(_cargo_mask, ctype)) {
 					rvi[i].cargo_type = ctype;
 				} else {
 					rvi[i].cargo_type = CT_INVALID;
@@ -557,7 +557,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 cargo = grf_load_byte(&buf);
 
-				if (cargo < NUM_CARGO) {
+				if (cargo < NUM_CARGO && HASBIT(_cargo_mask, cargo)) {
 					rvi[i].cargo_type = cargo;
 				} else {
 					rvi[i].cargo_type = CT_INVALID;
@@ -671,7 +671,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 cargo = grf_load_byte(&buf);
 
-				if (cargo < NUM_CARGO) {
+				if (cargo < NUM_CARGO && HASBIT(_cargo_mask, cargo)) {
 					svi[i].cargo_type = cargo;
 				} else {
 					svi[i].cargo_type = CT_INVALID;
