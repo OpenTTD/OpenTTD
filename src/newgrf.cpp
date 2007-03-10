@@ -100,14 +100,14 @@ enum grfspec_feature {
 
 typedef void (*SpecialSpriteHandler)(byte *buf, int len);
 
-static const int _vehcounts[4] = {
+static const uint _vehcounts[4] = {
 	/* GSF_TRAIN */    NUM_TRAIN_ENGINES,
 	/* GSF_ROAD */     NUM_ROAD_ENGINES,
 	/* GSF_SHIP */     NUM_SHIP_ENGINES,
 	/* GSF_AIRCRAFT */ NUM_AIRCRAFT_ENGINES
 };
 
-static const int _vehshifts[4] = {
+static const uint _vehshifts[4] = {
 	/* GSF_TRAIN */    0,
 	/* GSF_ROAD */     ROAD_ENGINES_INDEX,
 	/* GSF_SHIP */     SHIP_ENGINES_INDEX,
@@ -881,13 +881,11 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	switch (prop) {
 		case 0x08: /* Class ID */
 			FOR_EACH_OBJECT {
-				uint32 classid;
-
 				/* Property 0x08 is special; it is where the station is allocated */
 				if (statspec[i] == NULL) statspec[i] = CallocT<StationSpec>(1);
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
-				classid = grf_load_dword(&buf);
+				uint32 classid = grf_load_dword(&buf);
 				statspec[i]->sclass = AllocateStationClass(BSWAP32(classid));
 			}
 			break;
@@ -895,13 +893,12 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x09: /* Define sprite layout */
 			FOR_EACH_OBJECT {
 				StationSpec *statspec = _cur_grffile->stations[stid + i];
-				uint t;
 
 				statspec->tiles = grf_load_extended(&buf);
 				statspec->renderdata = CallocT<DrawTileSprites>(statspec->tiles);
 				statspec->copied_renderdata = false;
 
-				for (t = 0; t < statspec->tiles; t++) {
+				for (uint t = 0; t < statspec->tiles; t++) {
 					DrawTileSprites *dts = &statspec->renderdata[t];
 					uint seq_count = 0;
 
@@ -1127,11 +1124,9 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 				}
 
 				for (; numtables-- != 0; tableid++) {
-					byte sprite;
-
 					if (tableid >= 7) { // skip invalid data
 						grfmsg(1, "BridgeChangeInfo: Table %d >= 7, skipping", tableid);
-						for (sprite = 0; sprite < 32; sprite++) grf_load_dword(&buf);
+						for (byte sprite = 0; sprite < 32; sprite++) grf_load_dword(&buf);
 						continue;
 					}
 
@@ -1139,7 +1134,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 						bridge->sprite_table[tableid] = MallocT<PalSpriteID>(32);
 					}
 
-					for (sprite = 0; sprite < 32; sprite++) {
+					for (byte sprite = 0; sprite < 32; sprite++) {
 						SpriteID image = grf_load_word(&buf);
 						SpriteID pal   = grf_load_word(&buf);
 
@@ -1388,10 +1383,6 @@ static void FeatureChangeInfo(byte *buf, int len)
 		/* GSF_SOUNDFX */      SoundEffectChangeInfo,
 	};
 
-	uint8 feature;
-	uint8 numprops;
-	uint8 numinfo;
-	byte engine;
 	EngineInfo *ei = NULL;
 
 	if (len == 1) {
@@ -1401,10 +1392,10 @@ static void FeatureChangeInfo(byte *buf, int len)
 
 	if (!check_length(len, 6, "FeatureChangeInfo")) return;
 	buf++;
-	feature  = grf_load_byte(&buf);
-	numprops = grf_load_byte(&buf);
-	numinfo  = grf_load_byte(&buf);
-	engine   = grf_load_byte(&buf);
+	uint8 feature  = grf_load_byte(&buf);
+	uint8 numprops = grf_load_byte(&buf);
+	uint8 numinfo  = grf_load_byte(&buf);
+	uint8 engine   = grf_load_byte(&buf);
 
 	grfmsg(6, "FeatureChangeInfo: feature %d, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
@@ -1461,15 +1452,17 @@ static void FeatureChangeInfo(byte *buf, int len)
 						break;
 
 					default:
-						if (handler[feature](engine, numinfo, prop, &buf, bufend - buf))
+						if (handler[feature](engine, numinfo, prop, &buf, bufend - buf)) {
 							ignoring = true;
+						}
 						break;
 				}
 				break;
 
 			default:
-				if (handler[feature](engine, numinfo, prop, &buf, bufend - buf))
+				if (handler[feature](engine, numinfo, prop, &buf, bufend - buf)) {
 					ignoring = true;
+				}
 				break;
 		}
 
@@ -1480,11 +1473,6 @@ static void FeatureChangeInfo(byte *buf, int len)
 /* Action 0x00 (GLS_SAFETYSCAN) */
 static void SafeChangeInfo(byte *buf, int len)
 {
-	uint8 feature;
-	uint8 numprops;
-	uint8 numinfo;
-	uint8 index;
-
 	if (len == 1) {
 		grfmsg(8, "Silently ignoring one-byte special sprite 0x00");
 		return;
@@ -1492,10 +1480,10 @@ static void SafeChangeInfo(byte *buf, int len)
 
 	if (!check_length(len, 6, "SafeChangeInfo")) return;
 	buf++;
-	feature  = grf_load_byte(&buf);
-	numprops = grf_load_byte(&buf);
-	numinfo  = grf_load_byte(&buf);
-	index    = grf_load_byte(&buf);
+	uint8 feature  = grf_load_byte(&buf);
+	uint8 numprops = grf_load_byte(&buf);
+	grf_load_byte(&buf);
+	grf_load_byte(&buf);
 
 	if (feature == GSF_BRIDGE && numprops == 1) {
 		uint8 prop = grf_load_byte(&buf);
@@ -1514,10 +1502,6 @@ static void SafeChangeInfo(byte *buf, int len)
 static void InitChangeInfo(byte *buf, int len)
 {
 	byte *bufend = buf + len;
-	uint8 feature;
-	uint8 numprops;
-	uint8 numinfo;
-	uint8 index;
 
 	if (len == 1) {
 		grfmsg(8, "Silently ignoring one-byte special sprite 0x00");
@@ -1526,10 +1510,10 @@ static void InitChangeInfo(byte *buf, int len)
 
 	if (!check_length(len, 6, "InitChangeInfo")) return;
 	buf++;
-	feature  = grf_load_byte(&buf);
-	numprops = grf_load_byte(&buf);
-	numinfo  = grf_load_byte(&buf);
-	index    = grf_load_byte(&buf);
+	uint8 feature  = grf_load_byte(&buf);
+	uint8 numprops = grf_load_byte(&buf);
+	uint8 numinfo  = grf_load_byte(&buf);
+	uint8 index    = grf_load_byte(&buf);
 
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
@@ -1613,19 +1597,13 @@ static void NewSpriteSet(byte *buf, int len)
 	 *                         vehicle directions in each sprite set
 	 *                         Set num-dirs=8, unless your sprites are symmetric.
 	 *                         In that case, use num-dirs=4.
-	 *                 For stations, must be 12 (hex) for the eighteen
-	 *                         different sprites that make up a station */
-	/* TODO: No stations support. */
-	uint8 feature;
-	uint num_sets;
-	uint num_ents;
-	uint i;
+	 */
 
 	if (!check_length(len, 4, "NewSpriteSet")) return;
 	buf++;
-	feature  = grf_load_byte(&buf);
-	num_sets = grf_load_byte(&buf);
-	num_ents = grf_load_extended(&buf);
+	uint8 feature   = grf_load_byte(&buf);
+	uint8 num_sets  = grf_load_byte(&buf);
+	uint16 num_ents = grf_load_extended(&buf);
 
 	_cur_grffile->spriteset_start = _cur_spriteid;
 	_cur_grffile->spriteset_feature = feature;
@@ -1636,7 +1614,7 @@ static void NewSpriteSet(byte *buf, int len)
 		_cur_spriteid, feature, num_sets, num_ents, num_sets * num_ents
 	);
 
-	for (i = 0; i < num_sets * num_ents; i++) {
+	for (uint i = 0; i < num_sets * num_ents; i++) {
 		LoadNextSprite(_cur_spriteid++, _file_index);
 		_nfo_line++;
 	}
@@ -1699,18 +1677,15 @@ static void NewSpriteGroup(byte *buf, int len)
 	 *                 otherwise it specifies a number of entries, the exact
 	 *                 meaning depends on the feature
 	 * V feature-specific-data (huge mess, don't even look it up --pasky) */
-	uint8 feature;
-	uint8 setid;
-	uint8 type;
 	SpriteGroup *group = NULL;
 	byte *bufend = buf + len;
 
 	if (!check_length(len, 5, "NewSpriteGroup")) return;
 	buf++;
 
-	feature = grf_load_byte(&buf);
-	setid   = grf_load_byte(&buf);
-	type    = grf_load_byte(&buf);
+	uint8 feature = grf_load_byte(&buf);
+	uint8 setid   = grf_load_byte(&buf);
+	uint8 type    = grf_load_byte(&buf);
 
 	if (setid >= _cur_grffile->spritegroups_count) {
 		// Allocate memory for new sprite group references.
@@ -1731,7 +1706,6 @@ static void NewSpriteGroup(byte *buf, int len)
 		{
 			byte varadjust;
 			byte varsize;
-			uint i;
 
 			/* Check we can load the var size parameter */
 			if (!check_length(bufend - buf, 1, "NewSpriteGroup (Deterministic) (1)")) return;
@@ -1794,7 +1768,7 @@ static void NewSpriteGroup(byte *buf, int len)
 
 			if (!check_length(bufend - buf, 2 + (2 + 2 * varsize) * group->g.determ.num_ranges, "NewSpriteGroup (Deterministic)")) return;
 
-			for (i = 0; i < group->g.determ.num_ranges; i++) {
+			for (uint i = 0; i < group->g.determ.num_ranges; i++) {
 				group->g.determ.ranges[i].group = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
 				group->g.determ.ranges[i].low   = grf_load_var(varsize, &buf);
 				group->g.determ.ranges[i].high  = grf_load_var(varsize, &buf);
@@ -1808,16 +1782,13 @@ static void NewSpriteGroup(byte *buf, int len)
 		case 0x80: // Self scope
 		case 0x83: // Parent scope
 		{
-			byte triggers;
-			uint i;
-
 			if (!check_length(bufend - buf, 7, "NewSpriteGroup (Randomized) (1)")) return;
 
 			group = AllocateSpriteGroup();
 			group->type = SGT_RANDOMIZED;
 			group->g.random.var_scope = HASBIT(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
-			triggers = grf_load_byte(&buf);
+			uint8 triggers = grf_load_byte(&buf);
 			group->g.random.triggers       = GB(triggers, 0, 7);
 			group->g.random.cmp_mode       = HASBIT(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
 			group->g.random.lowest_randbit = grf_load_byte(&buf);
@@ -1826,7 +1797,7 @@ static void NewSpriteGroup(byte *buf, int len)
 
 			if (!check_length(bufend - buf, 2 * group->g.random.num_groups, "NewSpriteGroup (Randomized) (2)")) return;
 
-			for (i = 0; i < group->g.random.num_groups; i++) {
+			for (uint i = 0; i < group->g.random.num_groups; i++) {
 				group->g.random.groups[i] = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
 			}
 
@@ -1848,7 +1819,6 @@ static void NewSpriteGroup(byte *buf, int len)
 					byte sprites     = _cur_grffile->spriteset_numents;
 					byte num_loaded  = type;
 					byte num_loading = grf_load_byte(&buf);
-					uint i;
 
 					if (_cur_grffile->spriteset_start == 0) {
 						grfmsg(0, "NewSpriteGroup: No sprite set to work on! Skipping");
@@ -1868,13 +1838,13 @@ static void NewSpriteGroup(byte *buf, int len)
 					grfmsg(6, "NewSpriteGroup: New SpriteGroup 0x%02X, %u views, %u loaded, %u loading",
 							setid, sprites, num_loaded, num_loading);
 
-					for (i = 0; i < num_loaded; i++) {
+					for (uint i = 0; i < num_loaded; i++) {
 						uint16 spriteid = grf_load_word(&buf);
 						group->g.real.loaded[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
 						grfmsg(8, "NewSpriteGroup: + rg->loaded[%i]  = subset %u", i, spriteid);
 					}
 
-					for (i = 0; i < num_loading; i++) {
+					for (uint i = 0; i < num_loading; i++) {
 						uint16 spriteid = grf_load_word(&buf);
 						group->g.real.loading[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
 						grfmsg(8, "NewSpriteGroup: + rg->loading[%i] = subset %u", i, spriteid);
@@ -1943,26 +1913,22 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 
 	static byte *last_engines;
 	static int last_engines_count;
-	uint8 feature;
-	uint8 idcount;
-	bool wagover;
-	uint8 cidcount;
-	int c, i;
 
 	if (!check_length(len, 6, "FeatureMapSpriteGroup")) return;
-	feature = buf[1];
-	idcount = buf[2] & 0x7F;
-	wagover = (buf[2] & 0x80) == 0x80;
+
+	uint8 feature = buf[1];
+	uint8 idcount = buf[2] & 0x7F;
+	bool wagover = (buf[2] & 0x80) == 0x80;
+
 	if (!check_length(len, 3 + idcount, "FeatureMapSpriteGroup")) return;
 
-	/* If ``n-id'' (or ``idcount'') is zero, this is a ``feature
-	 * callback''. */
+	/* If idcount is zero, this is a feature callback */
 	if (idcount == 0) {
 		grfmsg(2, "FeatureMapSpriteGroup: Feature callbacks not implemented yet");
 		return;
 	}
 
-	cidcount = buf[3 + idcount];
+	uint8 cidcount = buf[3 + idcount];
 	if (!check_length(len, 4 + idcount + cidcount * 3, "FeatureMapSpriteGroup")) return;
 
 	grfmsg(6, "FeatureMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d",
@@ -1977,12 +1943,12 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 	if (feature == GSF_STATION) {
 		// We do things differently for stations.
 
-		for (i = 0; i < idcount; i++) {
+		for (uint i = 0; i < idcount; i++) {
 			uint8 stid = buf[3 + i];
 			StationSpec *statspec = _cur_grffile->stations[stid];
 			byte *bp = &buf[4 + idcount];
 
-			for (c = 0; c < cidcount; c++) {
+			for (uint c = 0; c < cidcount; c++) {
 				uint8 ctype = grf_load_byte(&bp);
 				uint16 groupid = grf_load_word(&bp);
 
@@ -2009,7 +1975,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 				return;
 			}
 
-			for (i = 0; i < idcount; i++) {
+			for (uint i = 0; i < idcount; i++) {
 				uint8 stid = buf[3 + i];
 				StationSpec *statspec = _cur_grffile->stations[stid];
 
@@ -2046,7 +2012,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 	}
 
 
-	for (i = 0; i < idcount; i++) {
+	for (uint i = 0; i < idcount; i++) {
 		uint8 engine_id = buf[3 + i];
 		uint8 engine = engine_id + _vehshifts[feature];
 		byte *bp = &buf[4 + idcount];
@@ -2058,7 +2024,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 
 		grfmsg(7, "FeatureMapSpriteGroup: [%d] Engine %d...", i, engine);
 
-		for (c = 0; c < cidcount; c++) {
+		for (uint c = 0; c < cidcount; c++) {
 			uint8 ctype = grf_load_byte(&bp);
 			uint16 groupid = grf_load_word(&bp);
 
@@ -2087,7 +2053,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 
 		grfmsg(8, "-- Default group id 0x%04X", groupid);
 
-		for (i = 0; i < idcount; i++) {
+		for (uint i = 0; i < idcount; i++) {
 			uint8 engine = buf[3 + i] + _vehshifts[feature];
 
 			// Don't tell me you don't love duplicated code!
@@ -2132,35 +2098,23 @@ static void FeatureNewName(byte *buf, int len)
 	 *                 Word : ID of string to change/add
 	 * S data          new texts, each of them zero-terminated, after
 	 *                 which the next name begins. */
-	/* TODO: No support for changing non-vehicle text. Perhaps we shouldn't
-	 * implement it at all, but it could be useful for some "modpacks"
-	 * (completely new scenarios changing all graphics and logically also
-	 * factory names etc). We should then also support all languages (by
-	 * name), not only the original four ones. --pasky
-	 * All of the above are coming.  In Time.  Some sooner than others :)*/
 
-	uint8 feature;
-	uint8 lang;
-	uint8 num;
-	uint16 id;
-	uint16 endid;
 	bool new_scheme = _cur_grffile->grf_version >= 7;
-	bool generic;
 
 	if (!check_length(len, 6, "FeatureNewName")) return;
 	buf++;
-	feature  = grf_load_byte(&buf);
-	lang     = grf_load_byte(&buf);
-	num      = grf_load_byte(&buf);
-	generic  = HASBIT(lang, 7);
-	id       = generic ? grf_load_word(&buf) : grf_load_byte(&buf);
+	uint8 feature  = grf_load_byte(&buf);
+	uint8 lang     = grf_load_byte(&buf);
+	uint8 num      = grf_load_byte(&buf);
+	bool generic   = HASBIT(lang, 7);
+	uint16 id      = generic ? grf_load_word(&buf) : grf_load_byte(&buf);
 
 	CLRBIT(lang, 7);
 
 	if (feature <= GSF_AIRCRAFT && id < _vehcounts[feature]) {
 		id += _vehshifts[feature];
 	}
-	endid    = id + num;
+	uint16 endid = id + num;
 
 	grfmsg(6, "FeatureNewName: About to rename engines %d..%d (feature %d) in language 0x%02X",
 	               id, endid, feature, lang);
@@ -2260,14 +2214,12 @@ static void GraphicsNew(byte *buf, int len)
 	 * V other data    Graphics type specific data.  Currently unused. */
 	/* TODO */
 
-	uint8 type;
-	uint16 num;
 	SpriteID replace = 0;
 
 	if (!check_length(len, 2, "GraphicsNew")) return;
 	buf++;
-	type = grf_load_byte(&buf);
-	num  = grf_load_extended(&buf);
+	uint8 type = grf_load_byte(&buf);
+	uint16 num = grf_load_extended(&buf);
 
 	switch (type) {
 		case 0x04: /* Signal graphics */
@@ -2484,22 +2436,15 @@ static void SkipIf(byte *buf, int len)
 	 * V value
 	 * B num-sprites */
 	/* TODO: More params. More condition types. */
-	uint8 param;
-	uint8 paramsize;
-	uint8 condtype;
-	uint8 numsprites;
-	uint32 param_val = 0;
 	uint32 cond_val = 0;
 	uint32 mask = 0;
 	bool result;
-	GRFLabel *label;
-	GRFLabel *choice = NULL;
 
 	if (!check_length(len, 6, "SkipIf")) return;
 	buf++;
-	param     = grf_load_byte(&buf);
-	paramsize = grf_load_byte(&buf);
-	condtype  = grf_load_byte(&buf);
+	uint8 param     = grf_load_byte(&buf);
+	uint8 paramsize = grf_load_byte(&buf);
+	uint8 condtype  = grf_load_byte(&buf);
 
 	if (condtype < 2) {
 		/* Always 1 for bit tests, the given value should be ignored. */
@@ -2518,7 +2463,7 @@ static void SkipIf(byte *buf, int len)
 		return;
 	}
 
-	param_val = GetParamVal(param, &cond_val);
+	uint32 param_val = GetParamVal(param, &cond_val);
 
 	grfmsg(7, "Test condtype %d, param 0x%08X, condval 0x%08X", condtype, param_val, cond_val);
 
@@ -2582,13 +2527,14 @@ static void SkipIf(byte *buf, int len)
 		return;
 	}
 
-	numsprites = grf_load_byte(&buf);
+	uint8 numsprites = grf_load_byte(&buf);
 
 	/* numsprites can be a GOTO label if it has been defined in the GRF
 	 * file. The jump will always be the first matching label that follows
 	 * the current nfo_line. If no matching label is found, the first matching
 	 * label in the file is used. */
-	for (label = _cur_grffile->label; label != NULL; label = label->next) {
+	GRFLabel *choice = NULL;
+	for (GRFLabel *label = _cur_grffile->label; label != NULL; label = label->next) {
 		if (label->label != numsprites) continue;
 
 		/* Remember a goto before the current line */
@@ -2624,14 +2570,10 @@ static void SkipIf(byte *buf, int len)
 /* Action 0x08 (GLS_FILESCAN) */
 static void ScanInfo(byte *buf, int len)
 {
-	uint8 version;
-	uint32 grfid;
-	const char *name;
-	const char *info;
-
-	if (!check_length(len, 8, "Info")) return; buf++;
-	version = grf_load_byte(&buf);
-	grfid = grf_load_dword(&buf);
+	if (!check_length(len, 8, "Info")) return;
+	buf++;
+	grf_load_byte(&buf);
+	uint32 grfid  = grf_load_dword(&buf);
 
 	_cur_grfconfig->grfid = grfid;
 
@@ -2639,12 +2581,12 @@ static void ScanInfo(byte *buf, int len)
 	if (GB(grfid, 24, 8) == 0xFF) SETBIT(_cur_grfconfig->flags, GCF_SYSTEM);
 
 	len -= 6;
-	name = grf_load_string(&buf, len);
+	const char *name = grf_load_string(&buf, len);
 	_cur_grfconfig->name = TranslateTTDPatchCodes(name);
 
 	len -= strlen(name) + 1;
 	if (len > 0) {
-		info = grf_load_string(&buf, len);
+		const char *info = grf_load_string(&buf, len);
 		_cur_grfconfig->info = TranslateTTDPatchCodes(info);
 	}
 
@@ -2661,15 +2603,12 @@ static void GRFInfo(byte *buf, int len)
 	 * 4*B grf-id      globally unique ID of this .grf file
 	 * S name          name of this .grf set
 	 * S info          string describing the set, and e.g. author and copyright */
-	/* TODO: Check version. (We should have own versioning done somehow.) */
-	uint8 version;
-	uint32 grfid;
-	const char *name;
 
-	if (!check_length(len, 8, "GRFInfo")) return; buf++;
-	version = grf_load_byte(&buf);
-	grfid = grf_load_dword(&buf);
-	name = grf_load_string(&buf, len - 6);
+	if (!check_length(len, 8, "GRFInfo")) return;
+	buf++;
+	uint8 version    = grf_load_byte(&buf);
+	uint32 grfid     = grf_load_dword(&buf);
+	const char *name = grf_load_string(&buf, len - 6);
 
 	_cur_grffile->grfid = grfid;
 	_cur_grffile->grf_version = version;
@@ -2689,22 +2628,19 @@ static void SpriteReplace(byte *buf, int len)
 	 * Each set:
 	 * B num-sprites   How many sprites are in this set
 	 * W first-sprite  First sprite number to replace */
-	uint8 num_sets;
-	uint i;
 
 	buf++; /* skip action byte */
-	num_sets = grf_load_byte(&buf);
+	uint8 num_sets = grf_load_byte(&buf);
 
-	for (i = 0; i < num_sets; i++) {
+	for (uint i = 0; i < num_sets; i++) {
 		uint8 num_sprites = grf_load_byte(&buf);
 		uint16 first_sprite = grf_load_word(&buf);
-		uint j;
 
 		grfmsg(2, "SpriteReplace: [Set %d] Changing %d sprites, beginning with %d",
 			i, num_sprites, first_sprite
 		);
 
-		for (j = 0; j < num_sprites; j++) {
+		for (uint j = 0; j < num_sprites; j++) {
 			LoadNextSprite(first_sprite + j, _file_index); // XXX
 			_nfo_line++;
 		}
@@ -2844,11 +2780,9 @@ static void GRFComment(byte *buf, int len)
 /* Action 0x0D (GLS_SAFETYSCAN) */
 static void SafeParamSet(byte *buf, int len)
 {
-	uint8 target;
-
 	if (!check_length(len, 5, "SafeParamSet")) return;
 	buf++;
-	target = grf_load_byte(&buf);
+	uint8 target = grf_load_byte(&buf);
 
 	/* Only writing GRF parameters is considered safe */
 	if (target < 0x80) return;
@@ -2889,20 +2823,14 @@ static void ParamSet(byte *buf, int len)
 	 *         (source2 like in 05, and source1 as well)
 	 */
 
-	byte target;
-	byte oper;
-	uint32 src1;
-	uint32 src2;
-	uint32 data = 0;
-	uint32 res;
-
 	if (!check_length(len, 5, "ParamSet")) return;
 	buf++;
-	target = grf_load_byte(&buf);
-	oper = grf_load_byte(&buf);
-	src1 = grf_load_byte(&buf);
-	src2 = grf_load_byte(&buf);
+	uint8 target = grf_load_byte(&buf);
+	uint8 oper   = grf_load_byte(&buf);
+	uint32 src1  = grf_load_byte(&buf);
+	uint32 src2  = grf_load_byte(&buf);
 
+	uint32 data = 0;
 	if (len >= 8) data = grf_load_dword(&buf);
 
 	/* You can add 80 to the operation to make it apply only if the target
@@ -2911,13 +2839,13 @@ static void ParamSet(byte *buf, int len)
 	 * - it has been set to any value in the newgrf(w).cfg parameter list
 	 * - it OR A PARAMETER WITH HIGHER NUMBER has been set to any value by
 	 *   an earlier action D */
-	if (oper & 0x80) {
+	if (HASBIT(oper, 7)) {
 		if (target < 0x80 && target < _cur_grffile->param_end) {
 			grfmsg(7, "Param %u already defined, skipping", target);
 			return;
 		}
 
-		oper &= 0x7F;
+		oper = GB(oper, 0, 7);
 	}
 
 	if (src2 == 0xFE) {
@@ -2945,7 +2873,6 @@ static void ParamSet(byte *buf, int len)
 							uint start = 0;
 							uint size  = 0;
 							uint shift = _vehshifts[feature];
-							int i;
 
 							if (op == 6) {
 								/* Return GRFID of set that reserved ID */
@@ -2956,7 +2883,7 @@ static void ParamSet(byte *buf, int len)
 							/* With an operation of 2 or 3, we want to reserve a specific block of IDs */
 							if (op == 2 || op == 3) start = _cur_grffile->param[target];
 
-							for (i = start; i < _vehcounts[feature]; i++) {
+							for (uint i = start; i < _vehcounts[feature]; i++) {
 								if (_grm_engines[shift + i] == 0) {
 									size++;
 								} else {
@@ -2972,7 +2899,7 @@ static void ParamSet(byte *buf, int len)
 								/* Got the slot... */
 								if (op == 0 || op == 3) {
 									grfmsg(2, "GRM: Reserving %d vehicles at %d", count, start);
-									for (i = 0; i < count; i++) _grm_engines[shift + start + i] = _cur_grffile->grfid;
+									for (uint i = 0; i < count; i++) _grm_engines[shift + start + i] = _cur_grffile->grfid;
 								}
 								src1 = start;
 							} else {
@@ -3048,6 +2975,7 @@ static void ParamSet(byte *buf, int len)
 	 * cannot be found, a value of 0 is used for the parameter value
 	 * instead. */
 
+	uint32 res;
 	switch (oper) {
 		case 0x00:
 			res = src1;
@@ -3169,15 +3097,12 @@ static void SafeGRFInhibit(byte *buf, int len)
 	 * B num           Number of GRFIDs that follow
 	 * D grfids        GRFIDs of the files to deactivate */
 
-	byte num;
-	int i;
+	if (!check_length(len, 2, "GRFInhibit")) return;
+	buf++;
+	uint8 num = grf_load_byte(&buf);
+	if (!check_length(len, 2 + 4 * num, "GRFInhibit")) return;
 
-	if (!check_length(len, 1, "GRFInhibit")) return;
-	buf++, len--;
-	num = grf_load_byte(&buf); len--;
-	if (!check_length(len, 4 * num, "GRFInhibit")) return;
-
-	for (i = 0; i < num; i++) {
+	for (uint i = 0; i < num; i++) {
 		uint32 grfid = grf_load_dword(&buf);
 
 		/* GRF is unsafe it if tries to deactivate other GRFs */
@@ -3200,15 +3125,12 @@ static void GRFInhibit(byte *buf, int len)
 	 * B num           Number of GRFIDs that follow
 	 * D grfids        GRFIDs of the files to deactivate */
 
-	byte num;
-	int i;
+	if (!check_length(len, 2, "GRFInhibit")) return;
+	buf++;
+	uint8 num = grf_load_byte(&buf);
+	if (!check_length(len, 2 + 4 * num, "GRFInhibit")) return;
 
-	if (!check_length(len, 1, "GRFInhibit")) return;
-	buf++, len--;
-	num = grf_load_byte(&buf); len--;
-	if (!check_length(len, 4 * num, "GRFInhibit")) return;
-
-	for (i = 0; i < num; i++) {
+	for (uint i = 0; i < num; i++) {
 		uint32 grfid = grf_load_dword(&buf);
 		GRFConfig *file = GetGRFConfig(grfid);
 
@@ -3228,12 +3150,10 @@ static void DefineGotoLabel(byte *buf, int len)
 	 * B label      The label to define
 	 * V comment    Optional comment - ignored */
 
-	GRFLabel *label;
-
 	if (!check_length(len, 1, "DefineGotoLabel")) return;
 	buf++; len--;
 
-	label = MallocT<GRFLabel>(1);
+	GRFLabel *label = MallocT<GRFLabel>(1);
 	label->label    = grf_load_byte(&buf);
 	label->nfo_line = _nfo_line;
 	label->pos      = FioGetPos();
@@ -3259,11 +3179,9 @@ static void GRFSound(byte *buf, int len)
 	 *
 	 * W num      Number of sound files that follow */
 
-	uint16 num;
-
 	if (!check_length(len, 1, "GRFSound")) return;
 	buf++;
-	num = grf_load_word(&buf);
+	uint16 num = grf_load_word(&buf);
 
 	_grf_data_blocks = num;
 	_grf_data_type   = GDT_SOUND;
@@ -3325,11 +3243,10 @@ static void GRFImportBlock(byte *buf, int len)
 static void LoadGRFSound(byte *buf, int len)
 {
 	byte *buf_start = buf;
-	FileEntry *se;
 
 	/* Allocate a sound entry. This is done even if the data is not loaded
 	 * so that the indices used elsewhere are still correct. */
-	se = AllocateFileEntry();
+	FileEntry *se = AllocateFileEntry();
 
 	if (grf_load_dword(&buf) != BSWAP32('RIFF')) {
 		grfmsg(1, "LoadGRFSound: Missing RIFF header");
@@ -3394,25 +3311,21 @@ static void LoadFontGlyph(byte *buf, int len)
 	 * B num_char     Number of consecutive glyphs
 	 * W base_char    First character index */
 
-	uint8 num_def;
-	uint i;
-
 	buf++; len--;
 	if (!check_length(len, 1, "LoadFontGlyph")) return;
 
-	num_def = grf_load_byte(&buf);
+	uint8 num_def = grf_load_byte(&buf);
 
 	if (!check_length(len, 1 + num_def * 4, "LoadFontGlyph")) return;
 
-	for (i = 0; i < num_def; i++) {
+	for (uint i = 0; i < num_def; i++) {
 		FontSize size    = (FontSize)grf_load_byte(&buf);
 		uint8  num_char  = grf_load_byte(&buf);
 		uint16 base_char = grf_load_word(&buf);
-		uint c;
 
 		grfmsg(7, "LoadFontGlyph: Loading %u glyph(s) at 0x%04X for size %u", num_char, base_char, size);
 
-		for (c = 0; c < num_char; c++) {
+		for (uint c = 0; c < num_char; c++) {
 			SetUnicodeGlyph(size, base_char + c, _cur_spriteid);
 			LoadNextSprite(_cur_spriteid++, _file_index);
 			_nfo_line++;
@@ -3489,17 +3402,14 @@ static void TranslateGRFStrings(byte *buf, int len)
 /* 'Action 0xFF' */
 static void GRFDataBlock(byte *buf, int len)
 {
-	byte name_len;
-	const char *name;
-
 	if (_grf_data_blocks == 0) {
 		grfmsg(2, "GRFDataBlock: unexpected data block, skipping");
 		return;
 	}
 
 	buf++;
-	name_len = grf_load_byte(&buf);
-	name = (const char *)buf;
+	uint8 name_len = grf_load_byte(&buf);
+	const char *name = (const char *)buf;
 	buf += name_len + 1;
 
 	grfmsg(2, "GRFDataBlock: block name '%s'...", name);
@@ -3604,20 +3514,15 @@ static void InitializeGRFSpecial()
 
 static void ResetCustomStations()
 {
-	StationSpec *statspec;
-	GRFFile *file;
-	uint i;
-	uint t;
-
-	for (file = _first_grffile; file != NULL; file = file->next) {
+	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
 		if (file->stations == NULL) continue;
-		for (i = 0; i < MAX_STATIONS; i++) {
+		for (uint i = 0; i < MAX_STATIONS; i++) {
 			if (file->stations[i] == NULL) continue;
-			statspec = file->stations[i];
+			StationSpec *statspec = file->stations[i];
 
 			/* Release renderdata, if it wasn't copied from another custom station spec  */
 			if (!statspec->copied_renderdata) {
-				for (t = 0; t < statspec->tiles; t++) {
+				for (uint t = 0; t < statspec->tiles; t++) {
 					free((void*)statspec->renderdata[t].seq);
 				}
 				free(statspec->renderdata);
@@ -3625,9 +3530,8 @@ static void ResetCustomStations()
 
 			/* Release platforms and layouts */
 			if (!statspec->copied_layouts) {
-				uint l, p;
-				for (l = 0; l < statspec->lengths; l++) {
-					for (p = 0; p < statspec->platforms[l]; p++) {
+				for (uint l = 0; l < statspec->lengths; l++) {
+					for (uint p = 0; p < statspec->platforms[l]; p++) {
 						free(statspec->layouts[l][p]);
 					}
 					free(statspec->layouts[l]);
@@ -3648,9 +3552,9 @@ static void ResetCustomStations()
 
 static void ResetNewGRF()
 {
-	GRFFile *f, *next;
+	GRFFile *next;
 
-	for (f = _first_grffile; f != NULL; f = next) {
+	for (GRFFile *f = _first_grffile; f != NULL; f = next) {
 		next = f->next;
 
 		free(f->filename);
@@ -3667,8 +3571,6 @@ static void ResetNewGRF()
  */
 static void ResetNewGRFData()
 {
-	uint i;
-
 	CleanUpStrings();
 
 	// Copy/reset original engine info data
@@ -3680,11 +3582,9 @@ static void ResetNewGRFData()
 
 	// Copy/reset original bridge info data
 	// First, free sprite table data
-	for (i = 0; i < MAX_BRIDGES; i++) {
+	for (uint i = 0; i < MAX_BRIDGES; i++) {
 		if (_bridge[i].sprite_table != NULL) {
-			uint j;
-
-			for (j = 0; j < 7; j++) free(_bridge[i].sprite_table[j]);
+			for (uint j = 0; j < 7; j++) free(_bridge[i].sprite_table[j]);
 			free(_bridge[i].sprite_table);
 		}
 	}
@@ -3746,8 +3646,7 @@ static void ResetNewGRFData()
 static void ClearTemporaryNewGRFData()
 {
 	/* Clear the GOTO labels used for GRF processing */
-	GRFLabel *l;
-	for (l = _cur_grffile->label; l != NULL;) {
+	for (GRFLabel *l = _cur_grffile->label; l != NULL;) {
 		GRFLabel *l2 = l->next;
 		free(l);
 		l = l2;
@@ -3785,9 +3684,7 @@ static void BuildCargoTranslationMap()
 
 static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 {
-	GRFFile *newfile;
-
-	newfile = GetFileByFilename(config->filename);
+	GRFFile *newfile = GetFileByFilename(config->filename);
 	if (newfile != NULL) {
 		/* We already loaded it once. */
 		newfile->sprite_offset = sprite_offset;
@@ -3854,17 +3751,14 @@ static const CargoLabel *_default_refitmasks[] = {
  */
 static void CalculateRefitMasks()
 {
-	EngineID engine;
-
-	for (engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
+	for (EngineID engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
 		uint32 mask = 0;
 		uint32 not_mask = 0;
 		uint32 xor_mask = _engine_info[engine].refit_mask;
-		byte i;
 
 		if (cargo_allowed[engine] != 0) {
 			// Build up the list of cargo types from the set cargo classes.
-			for (i = 0; i < NUM_CARGO; i++) {
+			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				const CargoSpec *cs = GetCargo(i);
 				if (cargo_allowed[engine]    & cs->classes) SETBIT(mask,     i);
 				if (cargo_disallowed[engine] & cs->classes) SETBIT(not_mask, i);
@@ -3958,7 +3852,6 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 	};
 
 	byte* buf;
-	byte action;
 
 	if (_preload_sprite == NULL) {
 		/* No preloaded sprite to work with; allocate and read the
@@ -3976,7 +3869,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		FioSeekTo(num, SEEK_CUR);
 	}
 
-	action = buf[0];
+	byte action = buf[0];
 
 	if (action == 0xFF) {
 		grfmsg(7, "Handling data block in stage %d", stage);
@@ -4082,8 +3975,6 @@ void InitDepotWindowBlockSizes();
 
 void LoadNewGRF(uint load_index, uint file_index)
 {
-	GrfLoadingStage stage;
-
 	InitializeGRFSpecial();
 
 	ResetNewGRFData();
@@ -4091,13 +3982,12 @@ void LoadNewGRF(uint load_index, uint file_index)
 	/* Load newgrf sprites
 	 * in each loading stage, (try to) open each file specified in the config
 	 * and load information from it. */
-	for (stage = GLS_LABELSCAN; stage <= GLS_ACTIVATION; stage++) {
+	for (GrfLoadingStage stage = GLS_LABELSCAN; stage <= GLS_ACTIVATION; stage++) {
 		uint slot = file_index;
-		GRFConfig *c;
 
 		_cur_stage = stage;
 		_cur_spriteid = load_index;
-		for (c = _grfconfig; c != NULL; c = c->next) {
+		for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 
 			// TODO usererror()
@@ -4119,8 +4009,3 @@ void LoadNewGRF(uint load_index, uint file_index)
 	/* Set the block size in the depot windows based on vehicle sprite sizes */
 	InitDepotWindowBlockSizes();
 }
-
-
-
-
-
