@@ -3752,6 +3752,9 @@ static const CargoLabel *_default_refitmasks[] = {
 static void CalculateRefitMasks()
 {
 	for (EngineID engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
+		/* Skip engine if not available in this climate */
+		if (!HASBIT(_engine_info[engine].climates, _opt.landscape)) continue;
+
 		uint32 mask = 0;
 		uint32 not_mask = 0;
 		uint32 xor_mask = _engine_info[engine].refit_mask;
@@ -3792,16 +3795,19 @@ static void CalculateRefitMasks()
 			case VEH_TRAIN: {
 				RailVehicleInfo *rvi = &_rail_vehicle_info[engine];
 				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
+				if (rvi->cargo_type == CT_INVALID) _engine_info[engine].climates = 0;
 				break;
 			}
 			case VEH_ROAD: {
 				RoadVehicleInfo *rvi = &_road_vehicle_info[engine - ROAD_ENGINES_INDEX];
 				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
+				if (rvi->cargo_type == CT_INVALID) _engine_info[engine].climates = 0;
 				break;
 			}
 			case VEH_SHIP: {
 				ShipVehicleInfo *svi = &_ship_vehicle_info[engine - SHIP_ENGINES_INDEX];
 				if (svi->cargo_type == CT_INVALID) svi->cargo_type = FindFirstRefittableCargo(engine);
+				if (svi->cargo_type == CT_INVALID) _engine_info[engine].climates = 0;
 				break;
 			}
 		}
