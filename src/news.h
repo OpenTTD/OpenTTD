@@ -31,16 +31,17 @@ void InitNewsItemStructs();
 VARDEF NewsItem _statusbar_news_item;
 
 enum NewsType {
-	NT_ARRIVAL_PLAYER = 0,
-	NT_ARRIVAL_OTHER  = 1,
-	NT_ACCIDENT       = 2,
-	NT_COMPANY_INFO   = 3,
-	NT_ECONOMY        = 4,
-	NT_ADVICE         = 5,
-	NT_NEW_VEHICLES   = 6,
-	NT_ACCEPTANCE     = 7,
-	NT_SUBSIDIES      = 8,
-	NT_GENERAL        = 9,
+	NT_ARRIVAL_PLAYER,
+	NT_ARRIVAL_OTHER,
+	NT_ACCIDENT,
+	NT_COMPANY_INFO,
+	NT_ECONOMY,
+	NT_ADVICE,
+	NT_NEW_VEHICLES,
+	NT_ACCEPTANCE,
+	NT_SUBSIDIES,
+	NT_GENERAL,
+	NT_END,
 };
 
 enum NewsMode {

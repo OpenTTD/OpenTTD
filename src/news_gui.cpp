@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file news_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -38,6 +40,7 @@
  */
 
 #define MAX_NEWS 30
+#define NB_WIDG_PER_SETTING 4
 
 typedef byte NewsID;
 #define INVALID_NEWS 255
@@ -372,7 +375,7 @@ static const SoundFx _news_sounds[] = {
  */
 static inline byte GetNewsDisplayValue(byte item)
 {
-	assert(item < 10 && GB(_news_display_opt, item * 2, 2) <= 2);
+	assert(item < NT_END && GB(_news_display_opt, item * 2, 2) <= 2);
 	return GB(_news_display_opt, item * 2, 2);
 }
 
@@ -383,7 +386,7 @@ static inline byte GetNewsDisplayValue(byte item)
  */
 static inline void SetNewsDisplayValue(byte item, byte val)
 {
-	assert(item < 10 && val <= 2);
+	assert(item < NT_END && val <= 2);
 	SB(_news_display_opt, item * 2, 2, val);
 }
 
@@ -699,155 +702,175 @@ void ShowMessageHistory()
 	}
 }
 
+
+enum {
+	WIDGET_NEWSOPT_BTN_SUMMARY  = 4,  ///< Button that adjusts at once the level for all settings
+	WIDGET_NEWSOPT_DROP_SUMMARY,      ///< Drop down button for same upper button
+	WIDGET_NEWSOPT_SOUNDTICKER  = 7,  ///< Button activating sound on events
+	WIDGET_NEWSOPT_START_OPTION = 9,  ///< First widget that is part of a group [<] .. [.]
+};
+
 /** Setup the disabled/enabled buttons in the message window
  * If the value is 'off' disable the [<] widget, and enable the [>] one
- * Same-wise for all the others. Starting value of 3 is the first widget
+ * Same-wise for all the others. Starting value of 4 is the first widget
  * group. These are grouped as [<][>] .. [<][>], etc.
+ * @param w Window been used
+ * @param value to set in the widget
+ * @param element index of the group of widget to set
  */
 static void SetMessageButtonStates(Window *w, byte value, int element)
 {
-	element *= 2;
+	element *= NB_WIDG_PER_SETTING;
 
-	SetWindowWidgetDisabledState(w, element + 3, value == 0);
-	SetWindowWidgetDisabledState(w, element + 3 + 1, value == 2);
+	SetWindowWidgetDisabledState(w, element + WIDGET_NEWSOPT_START_OPTION, value == 0);
+	SetWindowWidgetDisabledState(w, element + WIDGET_NEWSOPT_START_OPTION + 2, value == 2);
 }
 
+/**
+ * Event handler of the Message Options window
+ * @param w window pointer
+ * @param e event been triggered
+ */
 static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 {
 	static const StringID message_opt[] = {STR_OFF, STR_SUMMARY, STR_FULL, INVALID_STRING_ID};
 
-	/* WP(w, def_d).data_1 are stores the clicked state of the fake widgets
-	 * WP(w, def_d).data_2 stores state of the ALL on/off/summary button */
+	/* WP(w, def_d).data_1 stores state of the ALL on/off/summary button */
 	switch (e->event) {
-	case WE_CREATE: {
-		uint32 val = _news_display_opt;
-		int i;
-		WP(w, def_d).data_1 = WP(w, def_d).data_2 = 0;
+		case WE_CREATE: {
+			uint32 val = _news_display_opt;
+			int i;
+			WP(w, def_d).data_1 = 0;
 
-		// Set up the initial disabled buttons in the case of 'off' or 'full'
-		for (i = 0; i != 10; i++, val >>= 2) SetMessageButtonStates(w, val & 0x3, i);
-	} break;
-
-	case WE_PAINT: {
-		uint32 val = _news_display_opt;
-		int click_state = WP(w, def_d).data_1;
-		int i, y;
-
-		if (_news_ticker_sound) LowerWindowWidget(w, 25);
-		DrawWindowWidgets(w);
-
-		/* XXX - Draw the fake widgets-buttons. Can't add these to the widget-desc since
-		 * openttd currently can only handle 32 widgets. So hack it *g* */
-		for (i = 0, y = 26; i != 10; i++, y += 12, click_state >>= 1, val >>= 2) {
-			bool clicked = !!(click_state & 1);
-
-			DrawFrameRect(13, y, 89, 11 + y, 3, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawStringCentered(((13 + 89 + 1) >> 1) + clicked, ((y + 11 + y + 1) >> 1) - 5 + clicked, message_opt[val & 0x3], 0x10);
-			DrawString(103, y + 1, i + STR_0206_ARRIVAL_OF_FIRST_VEHICLE, 0);
-		}
-
-		DrawString(  8, y + 9, message_opt[WP(w, def_d).data_2], 0x10);
-		DrawString(103, y + 9, STR_MESSAGES_ALL, 0);
-		DrawString(103, y + 9 + 12, STR_MESSAGE_SOUND, 0);
-
-	} break;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 2: /* Clicked on any of the fake widgets */
-			if (e->we.click.pt.x > 13 && e->we.click.pt.x < 89 && e->we.click.pt.y > 26 && e->we.click.pt.y < 146) {
-				int element = (e->we.click.pt.y - 26) / 12;
-				byte val = (GetNewsDisplayValue(element) + 1) % 3;
-
-				SetMessageButtonStates(w, val, element);
-				SetNewsDisplayValue(element, val);
-
-				WP(w, def_d).data_1 |= (1 << element);
-				w->flags4 |= 5 << WF_TIMEOUT_SHL; // XXX - setup unclick (fake widget)
-				SetWindowDirty(w);
-			}
-			break;
-		case 23: case 24: /* Dropdown menu for all settings */
-			ShowDropDownMenu(w, message_opt, WP(w, def_d).data_2, 24, 0, 0);
-			break;
-		case 25: /* Change ticker sound on/off */
-			_news_ticker_sound ^= 1;
-			ToggleWidgetLoweredState(w, e->we.click.widget);
-			InvalidateWidget(w, e->we.click.widget);
-			break;
-		default: { /* Clicked on the [<] .. [>] widgets */
-			int wid = e->we.click.widget;
-			if (wid > 2 && wid < 23) {
-				int element = (wid - 3) / 2;
-				byte val = (GetNewsDisplayValue(element) + ((wid & 1) ? -1 : 1)) % 3;
-
-				SetMessageButtonStates(w, val, element);
-				SetNewsDisplayValue(element, val);
-				SetWindowDirty(w);
-			}
-		} break;
+			/* Set up the initial disabled buttons in the case of 'off' or 'full' */
+			for (i = 0; i < NT_END; i++, val >>= 2) SetMessageButtonStates(w, val & 0x3, i);
 		} break;
 
-	case WE_DROPDOWN_SELECT: {/* Select all settings for newsmessages */
-		int i;
+		case WE_PAINT: {
+			uint32 val = _news_display_opt;
+			int i, y;
 
-		WP(w, def_d).data_2 = e->we.dropdown.index;
+			if (_news_ticker_sound) LowerWindowWidget(w, WIDGET_NEWSOPT_SOUNDTICKER);
+			DrawWindowWidgets(w);
 
-		for (i = 0; i != 10; i++) {
-			SB(_news_display_opt, i*2, 2, e->we.dropdown.index);
-			SetMessageButtonStates(w, e->we.dropdown.index, i);
-		}
-		SetWindowDirty(w);
-		break;
-		}
+			/* Draw the string of each setting on each button. */
+			for (i = 0, y = 26; i < NT_END; i++, y += 12, val >>= 2) {
+				/* 51 comes from 13 + 89 (left and right of the button)+1, shiefted by one as to get division,
+				 * which will give centered position */
+				DrawStringCentered(51, y + 1, message_opt[val & 0x3], 0x10);
+			}
 
-	case WE_TIMEOUT: /* XXX - Hack to animate 'fake' buttons */
-		WP(w, def_d).data_1 = 0;
-		SetWindowDirty(w);
-		break;
+			/* Draw the general bottom button string as well */
+			DrawString(8, y + 10, message_opt[WP(w, def_d).data_1], 0x10);
+		} break;
+
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case WIDGET_NEWSOPT_BTN_SUMMARY:
+				case WIDGET_NEWSOPT_DROP_SUMMARY: // Dropdown menu for all settings
+					ShowDropDownMenu(w, message_opt, WP(w, def_d).data_1, WIDGET_NEWSOPT_DROP_SUMMARY, 0, 0);
+					break;
+
+				case WIDGET_NEWSOPT_SOUNDTICKER: // Change ticker sound on/off
+					_news_ticker_sound ^= 1;
+					ToggleWidgetLoweredState(w, e->we.click.widget);
+					InvalidateWidget(w, e->we.click.widget);
+					break;
+
+				default: { // Clicked on the [<] .. [>] widgets
+					int wid = e->we.click.widget - WIDGET_NEWSOPT_START_OPTION;
+					if (wid >= 0 && wid < (NB_WIDG_PER_SETTING * NT_END)) {
+						int element = wid / NB_WIDG_PER_SETTING;
+						byte val = (GetNewsDisplayValue(element) + ((wid % NB_WIDG_PER_SETTING) ? 1 : -1)) % 3;
+
+						SetMessageButtonStates(w, val, element);
+						SetNewsDisplayValue(element, val);
+						SetWindowDirty(w);
+					}
+				} break;
+			} break;
+
+		case WE_DROPDOWN_SELECT: { // Select all settings for newsmessages
+			int i;
+
+			WP(w, def_d).data_1 = e->we.dropdown.index;
+
+			for (i = 0; i < NT_END; i++) {
+				SetNewsDisplayValue(i, e->we.dropdown.index);
+				SetMessageButtonStates(w, e->we.dropdown.index, i);
+			}
+			SetWindowDirty(w);
+		} break;
 	}
 }
 
 static const Widget _message_options_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,   10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    13,    11,  409,     0,    13, STR_0204_MESSAGE_OPTIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,  409,    14,   184, 0x0,                      STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,   10,     0,    13, STR_00C5,                              STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    13,    11,  409,     0,    13, STR_0204_MESSAGE_OPTIONS,              STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,    13,     0,  409,    14,   184, 0x0,                                   STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    26,    37, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    26,    37, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
+/* Text at the top of the main panel, in black */
+{      WWT_LABEL,   RESIZE_NONE,    13,     0,  409,    13,    26, STR_0205_MESSAGE_TYPES,                STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    38,    49, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    38,    49, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
+/* General drop down and sound button */
+{      WWT_PANEL,   RESIZE_NONE,     3,     4,   86,   154,   165, 0x0,                                   STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     3,    87,   98,   154,   165, STR_0225,                              STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   155,   167, STR_MESSAGES_ALL,                      STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    50,    61, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    50,    61, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
+{  WWT_TEXTBTN_2,   RESIZE_NONE,     3,     4,   98,   166,   177, STR_02DB_OFF,                          STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   167,   179, STR_MESSAGE_SOUND,                     STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    62,    73, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    62,    73, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
+/* Each four group is composed of the buttons [<] [..] [>] and the descriptor of the setting */
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    26,    37, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    26,    37, STR_EMPTY,                             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    26,    37, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    27,    39, STR_0206_ARRIVAL_OF_FIRST_VEHICLE,     STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    74,    85, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    74,    85, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    38,    49, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    38,    49, STR_EMPTY,                             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    38,    49, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    39,    51, STR_0207_ARRIVAL_OF_FIRST_VEHICLE,     STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    86,    97, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    86,    97, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    50,    61, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    50,    61, STR_EMPTY,                             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    50,    61, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    51,    63, STR_0208_ACCIDENTS_DISASTERS,          STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    98,   109, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    98,   109, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    62,    73, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    62,    73, STR_EMPTY,                             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    62,    73, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    63,    75, STR_0209_COMPANY_INFORMATION,          STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   110,   121, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   110,   121, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    74,    85, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    74,    85, STR_EMPTY,                             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    74,    85, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    75,    87, STR_020A_ECONOMY_CHANGES,              STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   122,   133, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   122,   133, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    86,    97, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    86,    97, STR_EMPTY,                             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    86,    97, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    87,    99, STR_020B_ADVICE_INFORMATION_ON_PLAYER, STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   134,   145, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   134,   145, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    98,   109, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    98,   109, STR_EMPTY,                             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    98,   109, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    99,   111, STR_020C_NEW_VEHICLES,                 STR_NULL},
 
-{      WWT_PANEL,   RESIZE_NONE,     3,     4,   86,   154,   165, 0x0,                      STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    87,   98,   154,   165, STR_0225,                 STR_NULL},
-{  WWT_TEXTBTN_2,   RESIZE_NONE,     3,     4,   98,   166,   177, STR_02DB_OFF,             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   110,   121, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,   110,   121, STR_EMPTY,                             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   110,   121, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   111,   123, STR_020D_CHANGES_OF_CARGO_ACCEPTANCE,  STR_NULL},
 
-{      WWT_LABEL,   RESIZE_NONE,    13,     0,  409,    13,    26, STR_0205_MESSAGE_TYPES,   STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   122,   133, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,   122,   133, STR_EMPTY,                             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   122,   133, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   123,   135, STR_020E_SUBSIDIES,                    STR_NULL},
+
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   134,   145, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,   134,   145, STR_EMPTY,                             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   134,   145, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   135,   147, STR_020F_GENERAL_INFORMATION,          STR_NULL},
+
 {   WIDGETS_END},
 };
 
