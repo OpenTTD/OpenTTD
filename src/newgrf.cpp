@@ -3757,7 +3757,31 @@ static void CalculateRefitMasks()
 
 		uint32 mask = 0;
 		uint32 not_mask = 0;
-		uint32 xor_mask = _engine_info[engine].refit_mask;
+		uint32 xor_mask = 0;
+
+		if (_engine_info[engine].refit_mask != 0) {
+			const GRFFile *file = GetEngineGRF(engine);
+			if (file != NULL && file->cargo_max != 0) {
+				/* Apply cargo translation table to the refit mask */
+				uint num_cargo = min(32, file->cargo_max);
+				for (uint i = 0; i < num_cargo; i++) {
+					if (!HASBIT(_engine_info[engine].refit_mask, i)) continue;
+
+					CargoID c = GetCargoIDByLabel(file->cargo_list[i]);
+					if (c == CT_INVALID) continue;
+
+					SETBIT(xor_mask, c);
+				}
+			} else {
+				/* No cargo table, so use the cargo bitnum values */
+				for (CargoID c = 0; c < NUM_CARGO; c++) {
+					const CargoSpec *cs = GetCargo(c);
+					if (!cs->IsValid()) continue;
+
+					if (HASBIT(_engine_info[engine].refit_mask, cs->bitnum)) SETBIT(xor_mask, c);
+				}
+			}
+		}
 
 		if (cargo_allowed[engine] != 0) {
 			// Build up the list of cargo types from the set cargo classes.
