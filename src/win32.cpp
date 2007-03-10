@@ -993,25 +993,26 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 	uint16 width, length;
 
 	if (IsClipboardFormatAvailable(CF_UNICODETEXT)) {
-		const char *ret;
-
 		OpenClipboard(NULL);
 		cbuf = GetClipboardData(CF_UNICODETEXT);
 
 		ptr = (const char*)GlobalLock(cbuf);
-		ret = convert_from_fs((wchar_t*)ptr, utf8_buf, lengthof(utf8_buf));
+		const char *ret = convert_from_fs((wchar_t*)ptr, utf8_buf, lengthof(utf8_buf));
 		GlobalUnlock(cbuf);
 		CloseClipboard();
 
 		if (*ret == '\0') return false;
+#if !defined(UNICODE)
 	} else if (IsClipboardFormatAvailable(CF_TEXT)) {
 		OpenClipboard(NULL);
 		cbuf = GetClipboardData(CF_TEXT);
 
 		ptr = (const char*)GlobalLock(cbuf);
-		ttd_strlcpy(utf8_buf, ptr, lengthof(utf8_buf));
+		ttd_strlcpy(utf8_buf, FS2OTTD(ptr), lengthof(utf8_buf));
+
 		GlobalUnlock(cbuf);
 		CloseClipboard();
+#endif /* UNICODE */
 	} else {
 		return false;
 	}
