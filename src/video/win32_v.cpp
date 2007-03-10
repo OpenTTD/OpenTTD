@@ -211,6 +211,8 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD 
 
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
+	static uint32 keycode = 0;
+
 	switch (msg) {
 		case WM_CREATE:
 			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
@@ -361,40 +363,40 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		}
 #endif /* UNICODE */
 
+		case WM_CHAR: {
+			/* Silently drop all non-text messages as those were handled by WM_KEYDOWN */
+			if (wParam < VK_SPACE) return 0;
+			uint scancode = GB(lParam, 16, 8);
+			uint charcode = wParam;
+
+#if !defined(UNICODE)
+			wchar_t w;
+			int len = MultiByteToWideChar(_codepage, 0, (char*)&charcode, 1, &w, 1);
+			charcode = len == 1 ? w : 0;
+#endif /* UNICODE */
+
+			/* No matter the keyboard layout, we will map the '~' to the console */
+			scancode = scancode == 41 ? (int)WKC_BACKQUOTE : keycode;
+			HandleKeypress(GB(charcode, 0, 16) | (scancode << 16));
+			return 0;
+		}
+
 		case WM_KEYDOWN: {
-			// this is the rewritten ascii input function
-			// it disables windows deadkey handling --> more linux like :D
-			wchar_t w = 0;
-#if !defined(WINCE)
-			byte ks[256];
-#endif
-			uint scancode;
-			uint32 pressed_key;
+			keycode = MapWindowsKey(wParam);
 
-#if defined(WINCE)
-			/* On WinCE GetKeyboardState isn't supported */
-			w = wParam;
-#else
-			GetKeyboardState(ks);
-			if (ToUnicode(wParam, 0, ks, &w, 1, 0) != 1) {
-				/* On win9x ToUnicode always fails, so fall back to ToAscii */
-				if (ToAscii(wParam, 0, ks, (LPWORD)&w, 0) != 1) w = 0; // no translation was possible
-			}
-#endif
+			/* Silently drop all text messages as those will be handled by WM_CHAR
+			 * WM_KEYDOWN only handles CTRL+ commands and special keys like VK_LEFT, etc. */
+			if (keycode == 0 || (keycode > WKC_PAUSE && GB(keycode, 13, 4) == 0)) return 0;
 
-			pressed_key = w | MapWindowsKey(wParam) << 16;
-
-			scancode = GB(lParam, 16, 8);
-			if (scancode == 41) pressed_key = w | WKC_BACKQUOTE << 16;
-
-			if (GB(pressed_key, 16, 16) == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
+			if (keycode == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
 				_double_size ^= 1;
 				_wnd.double_size = _double_size;
 				ClientSizeChanged(_wnd.width, _wnd.height);
 				MarkWholeScreenDirty();
 			}
-			HandleKeypress(pressed_key);
-			break;
+
+			HandleKeypress(0 | (keycode << 16));
+			return 0;
 		}
 
 		case WM_SYSKEYDOWN: /* user presses F10 or Alt, both activating the title-menu */
@@ -832,6 +834,7 @@ static void Win32GdiMainLoop()
 
 		while (PeekMessage(&mesg, NULL, 0, 0, PM_REMOVE)) {
 			InteractiveRandom(); // randomness
+			TranslateMessage(&mesg);
 			DispatchMessage(&mesg);
 		}
 		if (_exit_game) return;
