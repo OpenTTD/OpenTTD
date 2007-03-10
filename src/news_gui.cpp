@@ -355,9 +355,10 @@ static WindowDesc _news_type0_desc = {
 	NewsWindowProc
 };
 
-static const SoundFx _news_sounds[] = {
+static const SoundFx _news_sounds[NT_END] = {
 	SND_1D_APPLAUSE,
 	SND_1D_APPLAUSE,
+	SND_BEGIN,
 	SND_BEGIN,
 	SND_BEGIN,
 	SND_BEGIN,
@@ -365,7 +366,21 @@ static const SoundFx _news_sounds[] = {
 	SND_1E_OOOOH,
 	SND_BEGIN,
 	SND_BEGIN,
-	SND_BEGIN
+	SND_BEGIN,
+};
+
+const char *_news_display_name[NT_END] = {
+	"arrival_player",
+	"arrival_other",
+	"accident",
+	"company_info",
+	"openclose",
+	"economy",
+	"advice",
+	"new_vehicles",
+	"acceptance",
+	"subsidies",
+	"general",
 };
 
 /** Get the value of an item of the news-display settings. This is
@@ -761,7 +776,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 			}
 
 			/* Draw the general bottom button string as well */
-			DrawString(8, y + 10, message_opt[WP(w, def_d).data_1], 0x10);
+			DrawStringCentered(51, y + 10, message_opt[WP(w, def_d).data_1], 0x10);
 		} break;
 
 		case WE_CLICK:
@@ -796,8 +811,8 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 			WP(w, def_d).data_1 = e->we.dropdown.index;
 
 			for (i = 0; i < NT_END; i++) {
-				SetNewsDisplayValue(i, e->we.dropdown.index);
 				SetMessageButtonStates(w, e->we.dropdown.index, i);
+				SetNewsDisplayValue(i, e->we.dropdown.index);
 			}
 			SetWindowDirty(w);
 		} break;
@@ -807,18 +822,18 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 static const Widget _message_options_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,   10,     0,    13, STR_00C5,                              STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,  409,     0,    13, STR_0204_MESSAGE_OPTIONS,              STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,  409,    14,   184, 0x0,                                   STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    13,     0,  409,    14,   196, 0x0,                                   STR_NULL},
 
 /* Text at the top of the main panel, in black */
 {      WWT_LABEL,   RESIZE_NONE,    13,     0,  409,    13,    26, STR_0205_MESSAGE_TYPES,                STR_NULL},
 
 /* General drop down and sound button */
-{      WWT_PANEL,   RESIZE_NONE,     3,     4,   86,   154,   165, 0x0,                                   STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    87,   98,   154,   165, STR_0225,                              STR_NULL},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   155,   167, STR_MESSAGES_ALL,                      STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     3,     4,   86,   166,   177, 0x0,                                   STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     3,    87,   98,   166,   177, STR_0225,                              STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   167,   179, STR_MESSAGES_ALL,                      STR_NULL},
 
-{  WWT_TEXTBTN_2,   RESIZE_NONE,     3,     4,   98,   166,   177, STR_02DB_OFF,                          STR_NULL},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   167,   179, STR_MESSAGE_SOUND,                     STR_NULL},
+{  WWT_TEXTBTN_2,   RESIZE_NONE,     3,     4,   98,   178,   189, STR_02DB_OFF,                          STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   179,   191, STR_MESSAGE_SOUND,                     STR_NULL},
 
 /* Each four group is composed of the buttons [<] [..] [>] and the descriptor of the setting */
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    26,    37, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
@@ -844,38 +859,43 @@ static const Widget _message_options_widgets[] = {
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    74,    85, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    74,    85, STR_EMPTY,                             STR_NULL},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    74,    85, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    75,    87, STR_020A_ECONOMY_CHANGES,              STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    75,    87, STR_NEWS_OPEN_CLOSE,                   STR_NULL},
 
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    86,    97, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    86,    97, STR_EMPTY,                             STR_NULL},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    86,    97, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    87,    99, STR_020B_ADVICE_INFORMATION_ON_PLAYER, STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    87,    99, STR_020A_ECONOMY_CHANGES,              STR_NULL},
 
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    98,   109, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    98,   109, STR_EMPTY,                             STR_NULL},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    98,   109, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    99,   111, STR_020C_NEW_VEHICLES,                 STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    99,   111, STR_020B_ADVICE_INFORMATION_ON_PLAYER, STR_NULL},
 
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   110,   121, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,   110,   121, STR_EMPTY,                             STR_NULL},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   110,   121, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   111,   123, STR_020D_CHANGES_OF_CARGO_ACCEPTANCE,  STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   111,   123, STR_020C_NEW_VEHICLES,                 STR_NULL},
 
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   122,   133, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,   122,   133, STR_EMPTY,                             STR_NULL},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   122,   133, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   123,   135, STR_020E_SUBSIDIES,                    STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   123,   135, STR_020D_CHANGES_OF_CARGO_ACCEPTANCE,  STR_NULL},
 
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   134,   145, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,   134,   145, STR_EMPTY,                             STR_NULL},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   134,   145, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   135,   147, STR_020F_GENERAL_INFORMATION,          STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   135,   147, STR_020E_SUBSIDIES,                    STR_NULL},
+
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   146,   157, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,   146,   157, STR_EMPTY,                             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   146,   157, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
+{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   147,   159, STR_020F_GENERAL_INFORMATION,          STR_NULL},
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _message_options_desc = {
-	270, 22, 410, 185,
+	270, 22, 410, 197,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_message_options_widgets,

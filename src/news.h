@@ -35,6 +35,7 @@ enum NewsType {
 	NT_ARRIVAL_OTHER,
 	NT_ACCIDENT,
 	NT_COMPANY_INFO,
+	NT_OPENCLOSE,
 	NT_ECONOMY,
 	NT_ADVICE,
 	NT_NEW_VEHICLES,
@@ -43,6 +44,8 @@ enum NewsType {
 	NT_GENERAL,
 	NT_END,
 };
+
+extern const char *_news_display_name[NT_END];
 
 enum NewsMode {
 	NM_SMALL    = 0, ///< Show only a small popup informing us about vehicle age for example

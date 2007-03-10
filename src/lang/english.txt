@@ -591,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrival
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrival of first vehicle at competitor's station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / disasters
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Company information
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Open / close of industries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Economy changes
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Advice / information on player's vehicles
 STR_020C_NEW_VEHICLES                                           :{YELLOW}New vehicles
