@@ -31,7 +31,7 @@
 				AssemblerOutput="2"
 				AssemblerListingLocation="$(IntDir)"
 				ObjectFile="$(IntDir)"
-				ProgramDataBaseFileName="$(IntDir)"
+				ProgramDataBaseFileName="$(IntDir)\$(TargetName).pdb"
 				WarningLevel="3"
 				WarnAsError="TRUE"
 				SuppressStartupBanner="TRUE"
@@ -40,11 +40,11 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(OutDir)\strgen.exe"
+				OutputFile="$(IntDir)\strgen.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)\strgen.pdb"
+				ProgramDatabaseFile="$(IntDir)\strgen.pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
 			<Tool
@@ -84,12 +84,6 @@
 			</File>
 			<File
 				RelativePath="..\src\string.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)/$(InputName)1.obj"/>
-				</FileConfiguration>
 			</File>
 		</Filter>
 		<File

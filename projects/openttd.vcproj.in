@@ -13,12 +13,12 @@
 	<Configurations>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\objs\$(ConfigurationName)"
-			IntermediateDirectory="..\objs\$(ConfigurationName)"
+			OutputDirectory="..\objs\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="..\objs\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2"
+			CharacterSet="1"
 			WholeProgramOptimization="TRUE">
 			<Tool
 				Name="VCCLCompilerTool"
@@ -57,7 +57,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="unicows.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib libfreetype2.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib libfreetype2.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				IgnoreDefaultLibraryNames=""
@@ -93,8 +93,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\objs\$(ConfigurationName)\"
-			IntermediateDirectory="..\objs\$(ConfigurationName)\"
+			OutputDirectory="..\objs\$(PlatformName)\$(ConfigurationName)\"
+			IntermediateDirectory="..\objs\$(PlatformName)\$(ConfigurationName)\"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
