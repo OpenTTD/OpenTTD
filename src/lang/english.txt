@@ -1093,6 +1093,7 @@ STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Prefer 
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Function of scrollwheel: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom map
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll map
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Map scrollwheel speed: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING1}

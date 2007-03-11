@@ -576,13 +576,11 @@ static const char *_patches_ui[] = {
 	"link_terraform_toolbar",
 	"liveries",
 	"prefer_teamchat",
-#if defined(__APPLE__)
 	/* While the horizontal scrollwheel scrolling is written as general code, only
 	 *  the cocoa (OSX) driver generates input for it.
-	 *  Until some other driver will read this input, we will hide the GUI to control this from other systems. */
+	 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
 	"scrollwheel_scrolling",
 	"scrollwheel_multiplier",
-#endif
 };
 
 static const char *_patches_construction[] = {

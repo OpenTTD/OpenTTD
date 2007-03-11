@@ -1665,12 +1665,15 @@ void MouseLoop(int click, int mousewheel)
 	if (vp != NULL && (_game_mode == GM_MENU || IsGeneratingWorld())) return;
 
 	if (mousewheel != 0) {
-		WindowEvent e;
+		if (_patches.scrollwheel_scrolling == 0) {
+			/* Scrollwheel is in zoom mode. Make the zoom event. */
+			WindowEvent e;
 
-		/* Send WE_MOUSEWHEEL event to window */
-		e.event = WE_MOUSEWHEEL;
-		e.we.wheel.wheel = mousewheel;
-		if (!scrollwheel_scrolling) w->wndproc(w, &e);
+			/* Send WE_MOUSEWHEEL event to window */
+			e.event = WE_MOUSEWHEEL;
+			e.we.wheel.wheel = mousewheel;
+			w->wndproc(w, &e);
+		}
 
 		/* Dispatch a MouseWheelEvent for widgets if it is not a viewport */
 		if (vp == NULL) DispatchMouseWheelEvent(w, GetWidgetFromPos(w, x - w->left, y - w->top), mousewheel);
