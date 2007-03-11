@@ -727,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Metu rok
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Metu lumturon
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Metu transmitilon
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Difinu dezertan regionon.{}Premu kaj tenu CTRL por forigi ĝin
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Forigu
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Plene forigu ĉi tiun urbon
 STR_0292_SAVE_SCENARIO                                          :Konservu scenaron
@@ -1207,6 +1208,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Arboj de
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Metu arbojn de hazardaj tipoj
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Ne povas konstrui kanalojn ĉi tie...
+STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :Kanalo
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Ne povas konstrui kluzojn ĉi tie...
@@ -2907,6 +2909,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} estas 
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Nevalida parametro por {STRING}: parametro{STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} estu ŝarĝata antaŭ {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} estu ŝarĝata post {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :la GRF-dosiero estas farita por traduki
 
 STR_NEWGRF_ADD                                                  :{BLACK}Aldonu
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Aldonu NewGRF-dosieron al la listo

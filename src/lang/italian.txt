@@ -591,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo 
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo del primo veicolo alle stazioni della concorrenza
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Incidenti / disastri
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informazioni sulla società
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Apertura / chiusura delle industrie
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Cambiamenti economici
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Avvisi / informazioni sui veicoli del giocatore
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nuovi veicoli
@@ -726,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Piazza t
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Piazza faro
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Piazza trasmettitore
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definisce area desertica.{}Clicca premendo CTRL per rimuoverla
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Elimina
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Elimina completamente questa città
 STR_0292_SAVE_SCENARIO                                          :Salva scenario
@@ -1206,6 +1208,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Alberi c
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Pianta alberi di tipo casuale
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Non puoi costruire qui un canale...
+STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :Canale
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Non puoi costruire qui una chiusa...

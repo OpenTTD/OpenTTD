@@ -592,6 +592,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in einer Station eines Gegners
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Unfälle / Katastrophen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmendaten
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Öffnen und Schließen von Industrien
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Änderungen der Wirtschaftslage
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rat / Informationen zu Fahrzeugen des Spielers
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Neue Fahrzeuge
@@ -727,6 +728,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Felsige 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Leuchtturm errichten
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender errichten
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Lege Wüstengebiet an.{}STRG drücken zum entfernen
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Löschen
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Diese Stadt vollständig löschen
 STR_0292_SAVE_SCENARIO                                          :Szenario speichern
@@ -1207,6 +1209,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Zufälli
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Zufällige Baumart pflanzen
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kann hier keinen Kanal bauen...
+STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kann hier keine Schleuse bauen...

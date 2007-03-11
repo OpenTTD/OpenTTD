@@ -591,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arribad
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arribada del 1er. vehicle a una estació competidora
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / desastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informació de l'Empresa
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Obrir / tancar d'indústries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Canvis de l'Economia
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Avisos / informació dels teus vehicles
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nous vehicles
@@ -726,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Situa à
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Situa un far
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Situa un repetidor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Defineix àrea de desert.{}Prem i mantingues la tecla CTRL per treure'l
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Esborra
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Esborra totalment aquesta població
 STR_0292_SAVE_SCENARIO                                          :Desa l'escenari
@@ -1088,6 +1090,10 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Cap
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Pròpia companyia
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Totes les companyies
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Prefereix fer un chat d'equip amb <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funció de la rodeta del ratolí: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom mapa
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Moure mapa
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocitat del mapa amb la rodeta del ratolí: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automòbils per jugador: {ORANGE}{STRING}
@@ -1206,6 +1212,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres d
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Situar arbres de tipus aleatori
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Aquí no es poden construir canals...
+STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Aquí no es pot construir una resclosa...

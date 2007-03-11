@@ -449,7 +449,7 @@ STR_ENGINE_SORT_COST                                            :ceny
 STR_ENGINE_SORT_POWER                                           :výkonu
 STR_ENGINE_SORT_INTRO_DATE                                      :data uvedení na trh
 STR_ENGINE_SORT_RUNNING_COST                                    :provozních nákladů
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :výkon/provozních nákladů
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :výkonu/provozních nákladů
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :přepravní kapacity
 STR_NO_WAITING_CARGO                                            :{BLACK}Nečeká žádná komodita jakéhokoli druhu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Označit všechny druhy stanic
@@ -784,6 +784,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umístit
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umístit maják
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umístit vysílač
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Vytvořit pouštní oblast{}Stiskem CTRL ji odstraníš
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Smaž
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Smazat celé toto město
 STR_0292_SAVE_SCENARIO                                          :Uložit mapu
@@ -1264,6 +1265,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Různé 
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Umístit nahodné stromy
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Zde nemohu postavit průplav...
+STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :Průplav
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Zde nemohu postavit zdymadlo...
@@ -2539,13 +2541,16 @@ STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Zpráva 
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Právě jsme vyvinuli nov{G ou ý é} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=f}lokomotiva
 STR_8102_RAILROAD_LOCOMOTIVE.acc                                :{G=f}lokomotivu
+STR_8102_RAILROAD_LOCOMOTIVE.dat                                :
 STR_8103_ROAD_VEHICLE                                           :{G=n}silniční vozidlo
 STR_8104_AIRCRAFT                                               :{G=n}letadlo
 STR_8105_SHIP                                                   :{G=f}loď
 STR_8106_MONORAIL_LOCOMOTIVE                                    :{G=f}lokomotiva pro monorail
 STR_8106_MONORAIL_LOCOMOTIVE.acc                                :{G=f}lokomotivu pro monorail
+STR_8106_MONORAIL_LOCOMOTIVE.dat                                :
 STR_8107_MAGLEV_LOCOMOTIVE                                      :{G=f}lokomotiva Maglev
 STR_8107_MAGLEV_LOCOMOTIVE.acc                                  :{G=f}lokomotivu Maglev
+STR_8107_MAGLEV_LOCOMOTIVE.dat                                  :
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Železniční depo {TOWN}

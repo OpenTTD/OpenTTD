@@ -592,6 +592,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}1er vé
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}1er véhicule dans la station d'un competiteur
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / désastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informations corporatives
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Ouvertures/fermetures d'industries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Changements économiques
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Conseils / information sur les véhicules du joueur
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nouveaux véhicules
@@ -727,6 +728,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placer d
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placer un Phare
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placer un Transmetteur
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Définir une zone désertique.{}Garder Ctrl enfoncé pour retrait
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Supprimer
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Supprimer complètement cette ville
 STR_0292_SAVE_SCENARIO                                          :Sauvegarder scénario
@@ -1089,6 +1091,10 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Aucune
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propre compagnie
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Toutes les compagnies
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Préférer le chat d'équipe avec <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Fonction de la molette: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom de la carte
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Défilement de la carte
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Vitesse de défilement avec molette: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nombre de véhicules routiers max. par joueur: {ORANGE}{STRING}
@@ -1207,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Au hasar
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Planter des arbres de types choisis au hasard
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Impossible de construire un canal ici...
+STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossible de construire un écluse ici...

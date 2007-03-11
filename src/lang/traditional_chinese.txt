@@ -411,16 +411,16 @@ STR_SEND_AIRCRAFT_TO_HANGAR                                     :送到機棚
 STR_SEND_FOR_SERVICING                                          :送去維護
 
 ############ range for months starts
-STR_0162_JAN                                                    :一月
-STR_0163_FEB                                                    :二月
-STR_0164_MAR                                                    :三月
-STR_0165_APR                                                    :四月
-STR_0166_MAY                                                    :五月
-STR_0167_JUN                                                    :六月
-STR_0168_JUL                                                    :七月
-STR_0169_AUG                                                    :八月
-STR_016A_SEP                                                    :九月
-STR_016B_OCT                                                    :十月
+STR_0162_JAN                                                    :1
+STR_0163_FEB                                                    :2
+STR_0164_MAR                                                    :3
+STR_0165_APR                                                    :4
+STR_0166_MAY                                                    :5
+STR_0167_JUN                                                    :6
+STR_0168_JUL                                                    :7
+STR_0169_AUG                                                    :8
+STR_016A_SEP                                                    :9
+STR_016B_OCT                                                    :10
 STR_016C_NOV                                                    :十一月
 STR_016D_DEC                                                    :十二月
 ############ range for months ends
@@ -496,37 +496,37 @@ STR_01AA_NAME                                                   :{BLACK}名稱
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days starts
-STR_01AC_1ST                                                    :一日
-STR_01AD_2ND                                                    :二日
-STR_01AE_3RD                                                    :三日
-STR_01AF_4TH                                                    :四日
-STR_01B0_5TH                                                    :五日
-STR_01B1_6TH                                                    :六日
-STR_01B2_7TH                                                    :七日
-STR_01B3_8TH                                                    :八日
-STR_01B4_9TH                                                    :九日
-STR_01B5_10TH                                                   :十日
-STR_01B6_11TH                                                   :十一日
-STR_01B7_12TH                                                   :十二日
-STR_01B8_13TH                                                   :十三日
-STR_01B9_14TH                                                   :十四日
-STR_01BA_15TH                                                   :十五日
-STR_01BB_16TH                                                   :十六日
-STR_01BC_17TH                                                   :十七日
-STR_01BD_18TH                                                   :十八日
-STR_01BE_19TH                                                   :十九日
-STR_01BF_20TH                                                   :二十日
-STR_01C0_21ST                                                   :二十一日
-STR_01C1_22ND                                                   :二十二日
-STR_01C2_23RD                                                   :二十三日
-STR_01C3_24TH                                                   :二十四日
-STR_01C4_25TH                                                   :二十五日
-STR_01C5_26TH                                                   :二十六日
-STR_01C6_27TH                                                   :二十七日
-STR_01C7_28TH                                                   :二十八日
-STR_01C8_29TH                                                   :二十九日
-STR_01C9_30TH                                                   :三十日
-STR_01CA_31ST                                                   :三十一日
+STR_01AC_1ST                                                    :1
+STR_01AD_2ND                                                    :2
+STR_01AE_3RD                                                    :3
+STR_01AF_4TH                                                    :4
+STR_01B0_5TH                                                    :5
+STR_01B1_6TH                                                    :6
+STR_01B2_7TH                                                    :7
+STR_01B3_8TH                                                    :8
+STR_01B4_9TH                                                    :9
+STR_01B5_10TH                                                   :10
+STR_01B6_11TH                                                   :11
+STR_01B7_12TH                                                   :12
+STR_01B8_13TH                                                   :13
+STR_01B9_14TH                                                   :14
+STR_01BA_15TH                                                   :15
+STR_01BB_16TH                                                   :16
+STR_01BC_17TH                                                   :17
+STR_01BD_18TH                                                   :18
+STR_01BE_19TH                                                   :19
+STR_01BF_20TH                                                   :20
+STR_01C0_21ST                                                   :21
+STR_01C1_22ND                                                   :22
+STR_01C2_23RD                                                   :23
+STR_01C3_24TH                                                   :24
+STR_01C4_25TH                                                   :25
+STR_01C5_26TH                                                   :26
+STR_01C6_27TH                                                   :27
+STR_01C7_28TH                                                   :28
+STR_01C8_29TH                                                   :29
+STR_01C9_30TH                                                   :30
+STR_01CA_31ST                                                   :31
 ############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
@@ -726,6 +726,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}在場�
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}建立燈塔
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}建立發射站
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}定義沙漠區。{}請按住 CTRL 移除
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}刪除
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}完全移除這個市鎮
 STR_0292_SAVE_SCENARIO                                          :儲存場景
@@ -1206,6 +1207,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}隨機�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}種植隨機種類樹木
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}不可以在這裏興建運河...
+STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :運河
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}不可以在這裏興建水閘...
@@ -2906,6 +2908,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} 必須
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              : {STRING} 的參數無效: {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :載入前 {1:STRING} 必須先載入 {0:STRING}。
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} 必須在 {STRING} 之後載入。
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 檔案翻譯後出現錯誤
 
 STR_NEWGRF_ADD                                                  :{BLACK}新增
 STR_NEWGRF_ADD_TIP                                              :{BLACK}為清單加入新的 NewGRF 檔
@@ -3135,7 +3138,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}區域: 
 ############ Date formatting
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
-STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_LONG                                                   :{2:NUM} 年 {1:STRING} 月 {0:STRING} 日
 
 ########
 

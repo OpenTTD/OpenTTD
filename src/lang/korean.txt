@@ -592,6 +592,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}당신�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}경쟁사의 첫 차량 도착
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}사고 / 재앙
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}회사 정보
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}산업 띄우기 / 끄기
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}경제적 변화
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}조언 / 당신 차량에 대한 정보
 STR_020C_NEW_VEHICLES                                           :{YELLOW}새로운 차량
@@ -727,6 +728,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}암석 �
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}등대를 놓습니다.
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}송신기를 놓습니다.
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}사막 지역을 지정합니다.{}CTRL키를 누른채로 지우십시오.
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}삭제
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}이 도시를 완전히 삭제
 STR_0292_SAVE_SCENARIO                                          :시나리오 저장
@@ -1089,6 +1091,10 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :없음
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :내 회사
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :모든 회사
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER>키로 우리 팀원끼리 채팅 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}스크롤의 역할: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :맵 줌
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :맵 스크롤
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}맵 스크롤 속도: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}최대 열차 수: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}최대 자동차 수: {ORANGE}{STRING}
@@ -1207,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}무작�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}모든 종류의 나무를 무작위로 심습니다.
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}여기에 운하를 건설할 수 없습니다...
+STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :운하
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}여기에 갑문을 지을 수 없습니다...
@@ -2901,10 +2908,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}경고: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}오류: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}치명적 오류: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING}은 OpenTTD에서 보고된 TTD패치 버전에서 작동하지 않을 것입니다.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING}은/는 {STRING} 버젼의 TTD를 위한 것입니다.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING}(은)는 {STRING}(와)과 사용되도록 디자인되었습니다
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING}의 부적절한 파라미터: 파라미터 {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING}은/는 반드시 {STRING}이전에 불러와야 합니다.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING}은/는 반드시 {STRING}다음에 불러와야 합니다.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 파일 자체는 번역용으로 디자인됨
 
 STR_NEWGRF_ADD                                                  :{BLACK}추가
 STR_NEWGRF_ADD_TIP                                              :{BLACK}NewGRF 파일을 목록에 추가
@@ -3132,6 +3142,10 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}길이: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}넓이: {NUM} x {NUM}{}고도차: {NUM} m
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}환승 단위: {LTBLUE}{CURRENCY}

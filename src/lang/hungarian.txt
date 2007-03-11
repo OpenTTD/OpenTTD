@@ -657,6 +657,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Első j
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Első jármű megérkezése az ellenfél megállójába
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Balesetek / természeti csapások
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Céginformációk
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Ipari létesítmények létrejötte / bezárása
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Gazdasági változások
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Tanácsok / információk a játékos járműveiről
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Új járművek
@@ -792,6 +793,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Sziklás
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Világítótorony építése
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Rádióadó építése
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Sivatagot hoz létre.{}Nyomj CTRL-t az eltávolításához
+STR_CREATE_LAKE                                                 :{BLACK}Vizi terület definiálása.{}Csatornát készít, kivéve ha tengerszinten CTRL-t lenyomva hívod meg, ekkor elárasztja a területet
 STR_0290_DELETE                                                 :{BLACK}Töröl
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}A város teljes eltüntetése
 STR_0292_SAVE_SCENARIO                                          :Pálya mentése
@@ -1154,6 +1156,10 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Egyikét sem
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Csak a sajátét
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Minden cégét
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Alapesetben csapatban beszélsz <ENTER>-re: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Scrollgomb funkció: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Térkép nagyítás
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Térkép mozgatás
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollgomb sebessége a térképen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum közúti jármű játékosonként: {ORANGE}{STRING}
@@ -1272,6 +1278,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Véletle
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Véletlenszerűen kiválasztott fákat helyez el
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Nem lehet csatornát építeni ide...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Csatorna építése (vagy rosszabb esetben terület elárasztása!)
 STR_LANDINFO_CANAL                                              :Csatorna
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Nem lehet zsilipet építeni ide...
@@ -3009,6 +3016,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} úgy l
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Hibás paraméterérték ehhez: {STRING}: paraméter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} muszáj hogy betöltődjön ezelőtt: {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} muszáj hogy ezután töltődjön be: {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :az adott GRF fájl célja egy másik lefordítása
 
 STR_NEWGRF_ADD                                                  :{BLACK}Hozzáad
 STR_NEWGRF_ADD_TIP                                              :{BLACK}A NewGRF-et hozzáadja a listához

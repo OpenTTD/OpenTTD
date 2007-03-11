@@ -282,6 +282,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...propriedade de {STRING}
 STR_013C_CARGO                                                  :{BLACK}Carga
@@ -727,6 +728,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar farol
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmissor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desértica.{} Pressione e segure CTRL para removê-la
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Remover
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Remover esta cidade completamente
 STR_0292_SAVE_SCENARIO                                          :Salvar cenário
@@ -1207,6 +1209,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plantar árvores de tipo aleatório
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Impossível construir canais aqui...
+STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossível construir eclusas aqui...
@@ -2909,6 +2912,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} é pro
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :parâmetro inválido para {STRING}: parâmetro {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} deve ser carregado antes de {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} deve ser carregado depois de {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF foi designado para tradução
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adiciona um NewGRF à lista
