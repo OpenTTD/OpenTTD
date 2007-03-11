@@ -1283,7 +1283,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, link_terraform_toolbar,        S, 0, false,        STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR,NULL),
 	 SDT_VAR(Patches, liveries,           SLE_UINT8, S,MS,  2, 0,  2, 0, STR_CONFIG_PATCHES_LIVERIES,              RedrawScreen),
 	SDT_BOOL(Patches, prefer_teamchat,               S, 0, false,        STR_CONFIG_PATCHES_PREFER_TEAMCHAT,       NULL),
-	SDT_VAR(Patches, scrollwheel_scrolling,SLE_UINT8,S,MS, 1,  0,  1, 0, STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING, NULL),
+	SDT_VAR(Patches, scrollwheel_scrolling,SLE_UINT8,S,MS, 0,  0,  1, 0, STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING, NULL),
 	SDT_VAR(Patches,scrollwheel_multiplier,SLE_UINT8,S, 0, 5,  1, 15, 1, STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER,NULL),
 
 	/***************************************************************************/
