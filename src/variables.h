@@ -221,6 +221,8 @@ struct Patches {
 	/** YAPF settings */
 	YapfSettings  yapf;
 
+	uint8 scrollwheel_scrolling;
+	uint8 scrollwheel_multiplier;
 };
 
 VARDEF Patches _patches;

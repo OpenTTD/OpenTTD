@@ -68,6 +68,7 @@ extern "C" void HideMenuBar();
 #include "../debug.h"
 #include "../macros.h"
 #include "../os/macosx/splash.h"
+#include "../variables.h"
 #include "cocoa_v.h"
 #include "cocoa_keys.h"
 
@@ -653,6 +654,10 @@ static bool QZ_PollEvent()
 			} else if ([ event deltaY ] < 0.0) { /* Scroll down */
 				_cursor.wheel++;
 			} /* else: deltaY was 0.0 and we don't want to do anything */
+
+			/* Set the scroll count for scrollwheel scrolling */
+			_cursor.h_wheel -= (int)([ event deltaX ]* 5 * _patches.scrollwheel_multiplier);
+			_cursor.v_wheel -= (int)([ event deltaY ]* 5 * _patches.scrollwheel_multiplier);
 			break;
 
 		default:

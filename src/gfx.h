@@ -5,6 +5,7 @@
 #ifndef GFX_H
 #define GFX_H
 
+#include "openttd.h"
 
 enum WindowKeyCodes {
 	WKC_SHIFT = 0x8000,
@@ -115,6 +116,12 @@ struct CursorVars {
 	SpriteID pal;
 
 	int wheel;       ///< mouse wheel movement
+
+	/* We need two different vars to keep track of how far the scrollwheel moved.
+	 * OSX uses this for scrolling around the map. */
+	int v_wheel;
+	int h_wheel;
+
 	const AnimCursor *animate_list; ///< in case of animated cursor, list of frames
 	const AnimCursor *animate_cur;  ///< in case of animated cursor, current frame
 	uint animate_timeout;           ///< in case of animated cursor, number of ticks to show the current cursor

@@ -1390,11 +1390,13 @@ static bool HandleViewportScroll()
 	WindowEvent e;
 	Window *w;
 
+	bool scrollwheel_scrolling = _patches.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
+
 	if (!_scrolling_viewport) return true;
 
 	w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
-	if (!_right_button_down || w == NULL) {
+	if (!(_right_button_down || scrollwheel_scrolling) || w == NULL) {
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
 		return true;
@@ -1406,6 +1408,14 @@ static bool HandleViewportScroll()
 	} else {
 		e.we.scroll.delta.x = _cursor.delta.x;
 		e.we.scroll.delta.y = _cursor.delta.y;
+	}
+
+	if (scrollwheel_scrolling) {
+		/* We are using scrollwheels for scrolling */
+		e.we.scroll.delta.x = _cursor.h_wheel;
+		e.we.scroll.delta.y = _cursor.v_wheel;
+		_cursor.v_wheel = 0;
+		_cursor.h_wheel = 0;
 	}
 
 	/* Create a scroll-event and send it to the window */
@@ -1628,6 +1638,7 @@ void MouseLoop(int click, int mousewheel)
 	int x,y;
 	Window *w;
 	ViewPort *vp;
+	bool scrollwheel_scrolling = _patches.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
 
 	DecreaseWindowCounters();
 	HandlePlacePresize();
@@ -1643,7 +1654,7 @@ void MouseLoop(int click, int mousewheel)
 	x = _cursor.pos.x;
 	y = _cursor.pos.y;
 
-	if (click == 0 && mousewheel == 0) return;
+	if (click == 0 && mousewheel == 0 && !scrollwheel_scrolling) return;
 
 	w = FindWindowFromPt(x, y);
 	if (w == NULL) return;
@@ -1659,13 +1670,14 @@ void MouseLoop(int click, int mousewheel)
 		/* Send WE_MOUSEWHEEL event to window */
 		e.event = WE_MOUSEWHEEL;
 		e.we.wheel.wheel = mousewheel;
-		w->wndproc(w, &e);
+		if (!scrollwheel_scrolling) w->wndproc(w, &e);
 
 		/* Dispatch a MouseWheelEvent for widgets if it is not a viewport */
 		if (vp == NULL) DispatchMouseWheelEvent(w, GetWidgetFromPos(w, x - w->left, y - w->top), mousewheel);
 	}
 
 	if (vp != NULL) {
+		if (scrollwheel_scrolling) click = 2; // we are using the scrollwheel in a viewport, so we emulate right mouse button
 		switch (click) {
 			case 1:
 				DEBUG(misc, 2, "Cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
