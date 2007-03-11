@@ -725,7 +725,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Place ro
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Place lighthouse
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Place transmitter
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area.{}Press and hold CTRL to remove it
-STR_CREATE_LAKE                                                 :{BLACK}Define water area.{}It will flood its surroundings if at sea level
 STR_0290_DELETE                                                 :{BLACK}Delete
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely
 STR_0292_SAVE_SCENARIO                                          :Save scenario
@@ -1206,7 +1205,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Trees of
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Place trees of random type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Can't build canals here...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Build canals
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Can't build locks here...

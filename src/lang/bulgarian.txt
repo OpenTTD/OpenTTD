@@ -727,7 +727,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Пост
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Поставяне фар
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Постави предавател
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Избери пустинен терен.{}Задръж CTRL за да го премахнеш.
-STR_CREATE_LAKE                                                 :{BLACK}Посочване на водна зона.{}Ще наводни съседните ако са на морското ниво
 STR_0290_DELETE                                                 :{BLACK}Изтрий
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Премахни напълно града
 STR_0292_SAVE_SCENARIO                                          :Запис на сценарий
@@ -1208,7 +1207,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Дърв
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Постави дървета от произволен тип
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Тук не може да се строят канали...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Строене на канали. Натиснете CTRL за да поставите морска плочка (само на нивото на морето).
 STR_LANDINFO_CANAL                                              :Канал
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Тук не може да се строят шлюзове...

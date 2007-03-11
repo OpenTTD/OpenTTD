@@ -792,7 +792,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Sziklás
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Világítótorony építése
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Rádióadó építése
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Sivatagot hoz létre.{}Nyomj CTRL-t az eltávolításához
-STR_CREATE_LAKE                                                 :{BLACK}Vizet hoz létre.{}A tengerszinten lévő elemeket elárasztja
 STR_0290_DELETE                                                 :{BLACK}Töröl
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}A város teljes eltüntetése
 STR_0292_SAVE_SCENARIO                                          :Pálya mentése
@@ -1273,7 +1272,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Véletle
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Véletlenszerűen kiválasztott fákat helyez el
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Nem lehet csatornát építeni ide...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Csatorna építése. Nyomj CTRL-t hogy tengert csinálj (tengerszinten csak).
 STR_LANDINFO_CANAL                                              :Csatorna
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Nem lehet zsilipet építeni ide...

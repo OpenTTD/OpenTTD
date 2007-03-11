@@ -784,7 +784,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umístit
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umístit maják
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umístit vysílač
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Vytvořit pouštní oblast{}Stiskem CTRL ji odstraníš
-STR_CREATE_LAKE                                                 :{BLACK}Vytvořit vodní plochu.{}Sousední dílky se zaplaví také, pokud jsou na úrovni moře
 STR_0290_DELETE                                                 :{BLACK}Smaž
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Smazat celé toto město
 STR_0292_SAVE_SCENARIO                                          :Uložit mapu
@@ -1265,7 +1264,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Různé 
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Umístit nahodné stromy
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Zde nemohu postavit průplav...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Stavět průplav. Podržením CTRL můžete vytvořit vodní plochu (pouze na úrovni moře).
 STR_LANDINFO_CANAL                                              :Průplav
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Zde nemohu postavit zdymadlo...

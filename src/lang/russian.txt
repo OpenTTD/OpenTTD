@@ -727,7 +727,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Разм
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Поставить маяк
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Поставить передатчик
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Задать площадь пустыни.{}Нажмите и держите CTRL для удаления
-STR_CREATE_LAKE                                                 :{BLACK}Определить водный простор.{} Затопит землю, если на уровне моря
 STR_0290_DELETE                                                 :{BLACK}Уничтожить
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Полностью уничтожить этот город
 STR_0292_SAVE_SCENARIO                                          :Сохранить сценарий
@@ -1208,7 +1207,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Дере
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Разместить деревья случайного типа
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Невозможно построить канал здесь...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Проложить канал
 STR_LANDINFO_CANAL                                              :Канал
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Невозможно построить шлюз здесь...

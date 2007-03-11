@@ -726,7 +726,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Situa à
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Situa un far
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Situa un repetidor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Defineix àrea de desert.{}Prem i mantingues la tecla CTRL per treure'l
-STR_CREATE_LAKE                                                 :{BLACK}Defineix àrea d'aigua.{}Inundarà els voltants si és a nivell del mar
 STR_0290_DELETE                                                 :{BLACK}Esborra
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Esborra totalment aquesta població
 STR_0292_SAVE_SCENARIO                                          :Desa l'escenari
@@ -1207,7 +1206,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres d
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Situar arbres de tipus aleatori
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Aquí no es poden construir canals...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Construeix canals
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Aquí no es pot construir una resclosa...

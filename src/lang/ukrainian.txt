@@ -852,7 +852,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Розм
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Поставити маяк
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Поставити ретранслятор
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Позначити територію пустелі.{}Натисніть і утримуйте CTRL, щоб відмінити
-STR_CREATE_LAKE                                                 :{BLACK}Позначити територію води.{}Заповниться водою, якщо на рівні моря
 STR_0290_DELETE                                                 :{BLACK}Видалити
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Видалити місто повністю
 STR_0292_SAVE_SCENARIO                                          :Зберегти сценарій
@@ -1333,7 +1332,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Дере
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Садити дерева випадкового типу
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Неможливо будувати канал тут...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Будувати канал
 STR_LANDINFO_CANAL                                              :Канал
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Неможливо будувати шлюз тут...

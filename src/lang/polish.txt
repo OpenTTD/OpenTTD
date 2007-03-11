@@ -813,7 +813,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umieść
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umieść latarnię morską
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umieść nadajnik
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiuj obszar pustyni.{}Wciśnij i trzymaj CTRL by usunąć
-STR_CREATE_LAKE                                                 :{BLACK}Definiuj akwen wodny.{}Okolice będą zalane jeśli są na poziomie morza
 STR_0290_DELETE                                                 :{BLACK}Skasuj
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Skasuj to miasto
 STR_0292_SAVE_SCENARIO                                          :Zapisz scenariusz
@@ -1294,7 +1293,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Drzewa r
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Sadzenie drzew rożnych rodzajów
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Nie można tutaj wybudować kanału...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Buduj kanały
 STR_LANDINFO_CANAL                                              :Kanał
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Nie można tutaj wybudować śluzy...

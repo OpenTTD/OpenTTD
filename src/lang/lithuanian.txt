@@ -759,7 +759,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Sukurti 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Statyti švyturį
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Statyti siųstuvą
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Nurodyti dykumos plotus{}Laikant nuspaustą VALD (CTRL) galima ją pašalinti
-STR_CREATE_LAKE                                                 :{BLACK}Pazymeti kaip vandeni, aplinkines zemes bus uztvindytos, jei bus juros lygyje
 STR_0290_DELETE                                                 :{BLACK}Šalinti
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Šalinti šį miestą
 STR_0292_SAVE_SCENARIO                                          :Išsaugoti scenarijų
@@ -1239,7 +1238,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Atsitikt
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Sodina atsitiktinės rūšies medžius
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Neimanoma cia iskasti kanalu...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Kasti kanalus
 STR_LANDINFO_CANAL                                              :Kanalas
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Neimanoma cia irengti sliuzu...

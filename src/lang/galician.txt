@@ -706,7 +706,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar faro
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmisor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definir área de deserto
-STR_CREATE_LAKE                                                 :{BLACK}Definir área de auga.{}Inundará os arredores se está a nivel do mar
 STR_0290_DELETE                                                 :{BLACK}Borrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Borrar completamente esta cidade
 STR_0292_SAVE_SCENARIO                                          :Grabar Escenario
@@ -1159,7 +1158,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árbores
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Colocar árbores dun tipo aleatorio
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Non se pode construí-los canais aí...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Construír canais
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Non se pode construí-lo peche aí...

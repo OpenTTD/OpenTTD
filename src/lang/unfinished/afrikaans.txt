@@ -717,7 +717,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaas ro
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaas vuurtoring
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaas sender
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Bepaal woestyn area.{}Druk en hou CTRL om te verwyder
-STR_CREATE_LAKE                                                 :{BLACK}Bepaal water area.{}Dit sal die omgewing vloed as dit teen seevlak is
 STR_0290_DELETE                                                 :{BLACK}Uitwis
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Uitwis hele stad
 STR_0292_SAVE_SCENARIO                                          :Bewaar draaiboek
@@ -1136,7 +1135,6 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Vlakte l
 
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan nie kanaale hier bou nie...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Bou kanaale. Druk CRTL om see blokkies te plaas (slegs op see-vlak)
 STR_LANDINFO_CANAL                                              :Kanaal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan nie sluite hier bou nie...

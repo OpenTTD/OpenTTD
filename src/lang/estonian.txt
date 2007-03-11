@@ -823,7 +823,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Loo maas
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Ehita tuletorn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Paigalda saatjamast
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Loo kõrbealad.{}Eemaldamiseks klõpsa hoides all CTRL nuppu
-STR_CREATE_LAKE                                                 :{BLACK}Märgi vee ala.{}See uputab kogu läheduse kui on mereveetasemel
 STR_0290_DELETE                                                 :{BLACK}Kustuta
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Hävita see linn täielikult
 STR_0292_SAVE_SCENARIO                                          :Salvesta kaart
@@ -1303,7 +1302,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Suvalise
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Istutab suvalisi puid
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Siia ei saa kanaleid ehitada...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Kanali ehitamine. Veeruutude ehitamiseks vajuta CTRL (ainult merepinna kõrgusel)
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Siia ei saa lüüse ehitada...

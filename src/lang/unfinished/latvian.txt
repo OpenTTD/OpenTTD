@@ -660,7 +660,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Novietot
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Bu've't ba'ku
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Bu've't raidi'ta'ju
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Nora'di't tuksnes'a plati'bu.{}Spiest un turet CTRL lai to izdze'stu
-STR_CREATE_LAKE                                                 :{BLACK}Nora'di't u'dens plati'bu.{}Ta' tiks appludina'ta ja bu's ju'ras li'meni'
 STR_0290_DELETE                                                 :{BLACK}Izdzest
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Pilni'ba' izdze'st s'o pilse'tu
 STR_0292_SAVE_SCENARIO                                          :Saglaba't scena'riju

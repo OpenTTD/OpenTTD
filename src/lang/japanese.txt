@@ -726,7 +726,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}土地�
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}灯台を建設します
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}送信機を建設します
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}砂漠を作成します。{}Control+クリックすると消去します
-STR_CREATE_LAKE                                                 :{BLACK}湖を作成します。{}海水位の場合は周辺地域を水浸します
 STR_0290_DELETE                                                 :{BLACK}破壊
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}この町を完全に破壊します
 STR_0292_SAVE_SCENARIO                                          :シナリオを保存
@@ -1207,7 +1206,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}ラン�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}ランドムな木を植林します
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}ここに運河が建設できません...
-STR_BUILD_CANALS_TIP                                            :{BLACK}運河を建設します。Control+クリックすると海のタイルも建設できます（海水位にのみ）
 STR_LANDINFO_CANAL                                              :運河
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}ここに水門が建設できません...

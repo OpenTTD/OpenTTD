@@ -726,7 +726,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placér 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placér fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placér sender
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Hold CTRL nede for at fjerne det
-STR_CREATE_LAKE                                                 :{BLACK}Definer vandområde.{}Vil oversvømme nærlæggende land i samme plan
 STR_0290_DELETE                                                 :{BLACK}Slet
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slet denne by fuldstændigt
 STR_0292_SAVE_SCENARIO                                          :Gem scenarie
@@ -1206,7 +1205,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Træer a
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Placer træer af tilfældig type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan ikke bygge en kanal her...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Byg kanaler
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan ikke bygge en sluse her...

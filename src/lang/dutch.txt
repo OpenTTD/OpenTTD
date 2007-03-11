@@ -726,7 +726,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaats s
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaats vuurtoren
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaats radiomast
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definieer woestijn gebied.{}Gebruik CTRL om het te verwijderen
-STR_CREATE_LAKE                                                 :{BLACK}Definieer watergebied.{}Het zal de omgeving overstromen als deze op zeeniveau ligt
 STR_0290_DELETE                                                 :{BLACK}Verwijder
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Verwijder deze hele stad
 STR_0292_SAVE_SCENARIO                                          :Scenario opslaan
@@ -1207,7 +1206,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeu
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plant bomen van willekeurig type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan hier geen kanaal bouwen...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Bouw kanaal
 STR_LANDINFO_CANAL                                              :Kanaal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan hier geen sluis bouwen...

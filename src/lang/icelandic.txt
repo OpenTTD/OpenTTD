@@ -726,7 +726,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Setja kl
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Setja vita
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Setja sendi
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Afmarkaðu eyðimörk.{}Smelltu og haltu CTRL til að fjarlægja hana
-STR_CREATE_LAKE                                                 :{BLACK}Afmarkaðu vantssvæði.{}Það mun flæða yfir aðlægt svæði ef það er við sjávarmál
 STR_0290_DELETE                                                 :{BLACK}Eyða
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Eyða þessum bæ algjörlega
 STR_0292_SAVE_SCENARIO                                          :Vista kort
@@ -1207,7 +1206,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Tré af 
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Gróðursetja tré af handahófskenndri gerð
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Ekki hægt að grafa skipaskurð hér...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Grafa skipaskurð
 STR_LANDINFO_CANAL                                              :Skipaskurður
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Ekki hægt að gera skurðgátt hér

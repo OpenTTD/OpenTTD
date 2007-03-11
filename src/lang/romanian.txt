@@ -724,7 +724,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaseaza
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaseazã far
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaseazã transmitãtor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Defineste suprafata de desert.{}Apasã si mentine apasat CTRL pentru a o sterge
-STR_CREATE_LAKE                                                 :{BLACK}Defineste suprafata cu apã.{}Împrejurimile aflate la acelasi nivel vor fi inundate
 STR_0290_DELETE                                                 :{BLACK}Sterge
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Sterge acest oras
 STR_0292_SAVE_SCENARIO                                          :Salveazã scenariul
@@ -1205,7 +1204,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbori d
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Planteazã arbori din diverse specii la întâmplare
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Nu pot construi un canal aici...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Construieste canale
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Nu pot construi o ecluzã aici...

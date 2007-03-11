@@ -725,7 +725,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Sijoita 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Sijoita majakka.
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sijoita lähetin.
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Määrittele aavikon alue.{}Paina ja pidä pohjassa CTRL-nappia poistaaksesi aavikkoa.
-STR_CREATE_LAKE                                                 :{BLACK}Määrittele veden alue.{}Vesi tulvii ympäröivään maastoon, jos se on merenpinnan tasolla.
 STR_0290_DELETE                                                 :{BLACK}Poista
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Poista tämä kaupunki kokonaan.
 STR_0292_SAVE_SCENARIO                                          :Tallenna skenaario
@@ -1206,7 +1205,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Sattuman
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Aseta sattumanvaraisia puita
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kanaalia ei voi rakentaa tähän...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Rakenna kanaali
 STR_LANDINFO_CANAL                                              :Kanaali
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Sulkua ei voi rakentaa tähän...

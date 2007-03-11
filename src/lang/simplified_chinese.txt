@@ -726,7 +726,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}在地�
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}放置灯塔
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}放置转播塔
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}定义沙漠区域。{}摁住 CTRL 可以去掉沙漠区域。
-STR_CREATE_LAKE                                                 :{BLACK}定义睡眠。{}在海平面高度的水面将淹没周围的区域。
 STR_0290_DELETE                                                 :{BLACK}删除
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}完全删除这座城镇
 STR_0292_SAVE_SCENARIO                                          :保存场景
@@ -1207,7 +1206,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}随机�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}种植随机类型的树木
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}不能在这里兴建运河……
-STR_BUILD_CANALS_TIP                                            :{BLACK}兴建运河。点击 CTRL 可以增加海面 (仅在平面有效)。
 STR_LANDINFO_CANAL                                              :运河
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}不能在这里兴建船闸……
