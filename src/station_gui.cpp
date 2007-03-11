@@ -777,13 +777,17 @@ static void DrawStationViewWindow(Window *w)
 
 		y = 77;
 		for (CargoID i = 0; i != NUM_CARGO; i++) {
-			if (st->goods[i].enroute_from != INVALID_STATION) {
-				SetDParam(0, GetCargo(i)->name);
-				SetDParam(2, st->goods[i].rating * 101 >> 8);
-				SetDParam(1, STR_3035_APPALLING + (st->goods[i].rating >> 5));
-				DrawString(8, y, STR_303D, 0);
-				y += 10;
-			}
+			const CargoSpec *cs = GetCargo(i);
+			if (!cs->IsValid()) continue;
+
+			const GoodsEntry *ge = &st->goods[i];
+			if (ge->enroute_from == INVALID_STATION) continue;
+
+			SetDParam(0, cs->name);
+			SetDParam(2, ge->rating * 101 >> 8);
+			SetDParam(1, STR_3035_APPALLING + (ge->rating >> 5));
+			DrawString(8, y, STR_303D, 0);
+			y += 10;
 		}
 	}
 }
