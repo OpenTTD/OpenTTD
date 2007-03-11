@@ -392,6 +392,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w,  6, _game_mode == GM_NORMAL);
 		SetWindowWidgetDisabledState(w,  7, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
 		SetWindowWidgetDisabledState(w, 10, _networking && !_network_server); // Save-button in multiplayer (and if client)
+		LowerWindowWidget(w, _opt_mod_temp.diff_level + 3);
 
 		break;
 	case WE_PAINT: {
