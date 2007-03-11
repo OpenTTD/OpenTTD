@@ -1352,7 +1352,7 @@ static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, 
 static void FeatureChangeInfo(byte *buf, int len)
 {
 	byte *bufend = buf + len;
-	int i;
+	uint i;
 
 	/* <00> <feature> <num-props> <num-info> <id> (<property <new-info>)...
 	 *
@@ -1394,8 +1394,8 @@ static void FeatureChangeInfo(byte *buf, int len)
 	buf++;
 	uint8 feature  = grf_load_byte(&buf);
 	uint8 numprops = grf_load_byte(&buf);
-	uint8 numinfo  = grf_load_byte(&buf);
-	uint8 engine   = grf_load_byte(&buf);
+	uint numinfo  = grf_load_byte(&buf);
+	uint engine   = grf_load_byte(&buf);
 
 	grfmsg(6, "FeatureChangeInfo: feature %d, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
@@ -1614,7 +1614,7 @@ static void NewSpriteSet(byte *buf, int len)
 		_cur_spriteid, feature, num_sets, num_ents, num_sets * num_ents
 	);
 
-	for (uint i = 0; i < num_sets * num_ents; i++) {
+	for (uint16 i = 0; i < num_sets * num_ents; i++) {
 		LoadNextSprite(_cur_spriteid++, _file_index);
 		_nfo_line++;
 	}
