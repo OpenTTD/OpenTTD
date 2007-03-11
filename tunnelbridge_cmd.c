@@ -1430,7 +1430,13 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 		}
 	} else if (IsBridge(tile)) { // XXX is this necessary?
 		if (v->type == VEH_Road || (v->type == VEH_Train && IsFrontEngine(v))) {
-			if (IsBridgeRamp(tile) || v->z_pos > GetTileMaxZ(tile)) {
+			/* The train calls this (EnterTile) function before entering the tile.
+			 * This has a drawback that the position of the train has not yet
+			 * changed. So, when a train comes down a slope it is above the tile
+			 * height of the current slope. Catch this situation by adding a
+			 * small correction when trying to determine whether the train is on
+			 * the bridge or under the bridge */
+			if (IsBridgeRamp(tile) || v->z_pos > (GetTileMaxZ(tile) + 1)) {
 				/* modify speed of vehicle */
 				uint16 spd = _bridge[GetBridgeType(tile)].speed;
 				if (v->type == VEH_Road) spd *= 2;
