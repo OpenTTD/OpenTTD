@@ -728,7 +728,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placer d
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placer un Phare
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placer un Transmetteur
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Définir une zone désertique.{}Garder Ctrl enfoncé pour retrait
-STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Supprimer
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Supprimer complètement cette ville
 STR_0292_SAVE_SCENARIO                                          :Sauvegarder scénario
@@ -1213,7 +1212,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Au hasar
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Planter des arbres de types choisis au hasard
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Impossible de construire un canal ici...
-STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossible de construire un écluse ici...

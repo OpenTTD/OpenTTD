@@ -728,7 +728,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Τοπο
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Τοποθέτηση φάρου
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Τοποθέτηση αναμεταδότη
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Ορίστε περιοχή ερήμου.{}Πατήστε και κρατήστε το CTRL για αφαίρεση
-STR_CREATE_LAKE                                                 :{BLACK}Ορισμός περιοχής νερού.{}It θα πλημμυρίσουν την περιοχή γύρω άν είναι κάτω από το επίπεδο του νερού
 STR_0290_DELETE                                                 :{BLACK}Διαγραφή
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Πλήρης διαγραφή πόλεως
 STR_0292_SAVE_SCENARIO                                          :Απποθήκευση σεναρίου

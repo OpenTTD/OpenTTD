@@ -728,7 +728,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}암석 �
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}등대를 놓습니다.
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}송신기를 놓습니다.
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}사막 지역을 지정합니다.{}CTRL키를 누른채로 지우십시오.
-STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}삭제
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}이 도시를 완전히 삭제
 STR_0292_SAVE_SCENARIO                                          :시나리오 저장
@@ -1213,7 +1212,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}무작�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}모든 종류의 나무를 무작위로 심습니다.
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}여기에 운하를 건설할 수 없습니다...
-STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :운하
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}여기에 갑문을 지을 수 없습니다...
