@@ -133,8 +133,8 @@ endif
 
 # An OSX application bundle needs the data files, lang files and openttd executable in a different location.
 ifdef OSXAPP
-DATA_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Data
-LANG_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Lang
+DATA_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/data
+LANG_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/lang
 TTD_DIR  = $(BUNDLE_DIR)/$(OSXAPP)/Contents/MacOS
 else
 DATA_DIR = $(BUNDLE_DIR)/data
