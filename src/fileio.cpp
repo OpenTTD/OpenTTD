@@ -136,15 +136,6 @@ void FioCloseAll()
 		FioCloseFile(i);
 }
 
-bool FioCheckFileExists(const char *filename)
-{
-	FILE *f = FioFOpenFile(filename);
-	if (f == NULL) return false;
-
-	fclose(f);
-	return true;
-}
-
 #if defined(LIMITED_FDS)
 static void FioFreeHandle()
 {
@@ -169,6 +160,45 @@ static void FioFreeHandle()
 }
 #endif /* LIMITED_FDS */
 
+void FioOpenFile(int slot, const char *filename)
+{
+	FILE *f;
+
+#if defined(LIMITED_FDS)
+	FioFreeHandle();
+#endif /* LIMITED_FDS */
+	f = FioFOpenFile(filename);
+	if (f == NULL) error("Cannot open file '%s%s'", _paths.data_dir, filename);
+
+	FioCloseFile(slot); // if file was opened before, close it
+	_fio.handles[slot] = f;
+#if defined(LIMITED_FDS)
+	_fio.filename[slot] = filename;
+	_fio.usage_count[slot] = 0;
+	_fio.open_handles++;
+#endif /* LIMITED_FDS */
+	FioSeekToFile(slot << 24);
+}
+
+/**
+ * Check whether the given file exists
+ * @param filename the file to try for existance
+ * @return true if and only if the file can be opened
+ */
+bool FioCheckFileExists(const char *filename)
+{
+	FILE *f = FioFOpenFile(filename);
+	if (f == NULL) return false;
+
+	fclose(f);
+	return true;
+}
+
+/**
+ * Opens the file with the given name
+ * @param filename the file to open (in either data_dir or second_data_dir)
+ * @return the opened file or NULL when it failed.
+ */
 FILE *FioFOpenFile(const char *filename)
 {
 	FILE *f;
@@ -194,26 +224,6 @@ FILE *FioFOpenFile(const char *filename)
 #endif
 
 	return f;
-}
-
-void FioOpenFile(int slot, const char *filename)
-{
-	FILE *f;
-
-#if defined(LIMITED_FDS)
-	FioFreeHandle();
-#endif /* LIMITED_FDS */
-	f = FioFOpenFile(filename);
-	if (f == NULL) error("Cannot open file '%s%s'", _paths.data_dir, filename);
-
-	FioCloseFile(slot); // if file was opened before, close it
-	_fio.handles[slot] = f;
-#if defined(LIMITED_FDS)
-	_fio.filename[slot] = filename;
-	_fio.usage_count[slot] = 0;
-	_fio.open_handles++;
-#endif /* LIMITED_FDS */
-	FioSeekToFile(slot << 24);
 }
 
 /**
@@ -243,8 +253,8 @@ void AppendPathSeparator(char *buf, size_t buflen)
 
 	/* Length of string + path separator + '\0' */
 	if (s != 0 && buf[s - 1] != PATHSEPCHAR && s + 2 < buflen) {
-		buf[s] = PATHSEPCHAR;
-		buf[s + 1]     = '\0';
+		buf[s]     = PATHSEPCHAR;
+		buf[s + 1] = '\0';
 	}
 }
 
@@ -270,7 +280,7 @@ void DeterminePaths()
 	_paths.save_dir      = str_fmt("%ssave", _paths.personal_dir);
 	_paths.autosave_dir  = str_fmt("%s" PATHSEP "autosave", _paths.save_dir);
 	_paths.scenario_dir  = str_fmt("%sscenario", _paths.personal_dir);
-	_paths.heightmap_dir = str_fmt("%s" PATHSEP "heightmap", _paths.heightmap_dir);
+	_paths.heightmap_dir = str_fmt("%s" PATHSEP "heightmap", _paths.scenario_dir);
 	_paths.gm_dir        = str_fmt("%sgm" PATHSEP, _paths.game_data_dir);
 	_paths.data_dir      = str_fmt("%sdata" PATHSEP, _paths.game_data_dir);
 #if defined(CUSTOM_LANG_DIR)
