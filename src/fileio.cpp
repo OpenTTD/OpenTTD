@@ -10,6 +10,10 @@
 #include "macros.h"
 #include "variables.h"
 #include "debug.h"
+#include "fios.h"
+#ifndef WIN32
+#include <sys/stat.h>
+#endif
 
 /*************************************************/
 /* FILE IO ROUTINES ******************************/
@@ -210,4 +214,83 @@ void FioOpenFile(int slot, const char *filename)
 	_fio.open_handles++;
 #endif /* LIMITED_FDS */
 	FioSeekToFile(slot << 24);
+}
+
+/**
+ * Create a directory with the given name
+ * @param name the new name of the directory
+ */
+void FioCreateDirectory(const char *name)
+{
+#if defined(WIN32) || defined(WINCE)
+	CreateDirectory(OTTD2FS(name), NULL);
+#elif defined(OS2) && !defined(__INNOTEK_LIBC__)
+	mkdir(OTTD2FS(name));
+#else
+	mkdir(OTTD2FS(name), 0755);
+#endif
+}
+
+/**
+ * Appends, if necessary, the path separator character to the end of the string.
+ * It does not add the path separator to zero-sized strings.
+ * @param buf    string to append the separator to
+ * @param buflen the length of the buf
+ */
+void AppendPathSeparator(char *buf, size_t buflen)
+{
+	size_t s = strlen(buf);
+
+	/* Length of string + path separator + '\0' */
+	if (s != 0 && buf[s - 1] != PATHSEPCHAR && s + 2 < buflen) {
+		buf[s] = PATHSEPCHAR;
+		buf[s + 1]     = '\0';
+	}
+}
+
+/**
+ * Determine the base (personal dir and game data dir) paths
+ * @note defined in the OS related files (os2.cpp, win32.cpp, unix.cpp etc)
+ */
+extern void DetermineBasePaths();
+
+/**
+ * Acquire the base paths (personal dir and game data dir),
+ * fill all other paths (save dir, autosave dir etc) and
+ * make the save and scenario directories.
+ * @todo for save_dir, autosave_dir, scenario_dir and heightmap_dir the
+ *       assumption is that there is no path separator, however for gm_dir
+ *       lang_dir and data_dir that assumption is made.
+ *       This inconsistency should be resolved.
+ */
+void DeterminePaths()
+{
+	DetermineBasePaths();
+
+	_paths.save_dir      = str_fmt("%ssave", _paths.personal_dir);
+	_paths.autosave_dir  = str_fmt("%s" PATHSEP "autosave", _paths.save_dir);
+	_paths.scenario_dir  = str_fmt("%sscenario", _paths.personal_dir);
+	_paths.heightmap_dir = str_fmt("%s" PATHSEP "heightmap", _paths.heightmap_dir);
+	_paths.gm_dir        = str_fmt("%sgm" PATHSEP, _paths.game_data_dir);
+	_paths.data_dir      = str_fmt("%sdata" PATHSEP, _paths.game_data_dir);
+#if defined(CUSTOM_LANG_DIR)
+	/* Sets the search path for lng files to the custom one */
+	_paths.lang_dir = MallocT<char>(MAX_PATH);
+	ttd_strlcpy(_paths.lang_dir, CUSTOM_LANG_DIR, MAX_PATH);
+#else
+	_paths.lang_dir = str_fmt("%slang" PATHSEP, _paths.game_data_dir);
+#endif
+
+	if (_config_file == NULL) {
+		_config_file = str_fmt("%sopenttd.cfg", _paths.personal_dir);
+	}
+
+	_highscore_file = str_fmt("%shs.dat", _paths.personal_dir);
+	_log_file = str_fmt("%sopenttd.log",  _paths.personal_dir);
+
+	/* Make (auto)save and scenario folder */
+	FioCreateDirectory(_paths.save_dir);
+	FioCreateDirectory(_paths.autosave_dir);
+	FioCreateDirectory(_paths.scenario_dir);
+	FioCreateDirectory(_paths.heightmap_dir);
 }

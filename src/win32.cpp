@@ -13,6 +13,7 @@
 #include "string.h"
 #include "gfx.h"
 #include "window.h"
+#include "fileio.h"
 #include <windows.h>
 #include <winnt.h>
 #include <wininet.h>
@@ -942,42 +943,19 @@ void GetCurrentDirectoryW(int length, wchar_t *path)
 }
 #endif
 
-void DeterminePaths()
+void DetermineBasePaths()
 {
-	char *s, *cfg;
-
-	_paths.personal_dir = _paths.game_data_dir = cfg = (char*)malloc(MAX_PATH);
+	_paths.personal_dir = _paths.game_data_dir = MallocT<char>(MAX_PATH);
 #if defined(UNICODE)
 	TCHAR path[MAX_PATH];
 	GetCurrentDirectory(MAX_PATH - 1, path);
-	convert_from_fs(path, cfg, MAX_PATH);
+	convert_from_fs(path, _paths.personal_dir, MAX_PATH);
 #else
-	GetCurrentDirectory(MAX_PATH - 1, cfg);
+	GetCurrentDirectory(MAX_PATH - 1, _paths.personal_dir);
 #endif
 
-	cfg[0] = toupper(cfg[0]);
-	s = strchr(cfg, '\0');
-	if (s[-1] != '\\') strcpy(s, "\\");
-
-	_paths.save_dir = str_fmt("%ssave", cfg);
-	_paths.autosave_dir = str_fmt("%s\\autosave", _paths.save_dir);
-	_paths.scenario_dir = str_fmt("%sscenario", cfg);
-	_paths.heightmap_dir = str_fmt("%sscenario\\heightmap", cfg);
-	_paths.gm_dir = str_fmt("%sgm\\", cfg);
-	_paths.data_dir = str_fmt("%sdata\\", cfg);
-	_paths.lang_dir = str_fmt("%slang\\", cfg);
-
-	if (_config_file == NULL)
-		_config_file = str_fmt("%sopenttd.cfg", _paths.personal_dir);
-
-	_highscore_file = str_fmt("%shs.dat", _paths.personal_dir);
-	_log_file = str_fmt("%sopenttd.log", _paths.personal_dir);
-
-	// make (auto)save and scenario folder
-	CreateDirectory(OTTD2FS(_paths.save_dir), NULL);
-	CreateDirectory(OTTD2FS(_paths.autosave_dir), NULL);
-	CreateDirectory(OTTD2FS(_paths.scenario_dir), NULL);
-	CreateDirectory(OTTD2FS(_paths.heightmap_dir), NULL);
+	_paths.personal_dir[0] = toupper(_paths.personal_dir[0]);
+	AppendPathSeparator(_paths.personal_dir,  MAX_PATH);
 }
 
 /**

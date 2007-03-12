@@ -9,7 +9,7 @@
 #include "gui.h"
 #include "functions.h"
 #include "macros.h"
-#include "fios.h"
+#include "fileio.h"
 
 #include <dirent.h>
 #include <unistd.h>
@@ -178,87 +178,41 @@ int CDECL main(int argc, char* argv[])
 	return ttd_main(argc, argv);
 }
 
-void DeterminePaths()
+void DetermineBasePaths()
 {
-	char *s;
-
-	_paths.game_data_dir = (char *)malloc(MAX_PATH);
+	_paths.game_data_dir = MallocT<char>(MAX_PATH);
 	ttd_strlcpy(_paths.game_data_dir, GAME_DATA_DIR, MAX_PATH);
-#if defined SECOND_DATA_DIR
-	_paths.second_data_dir = malloc(MAX_PATH);
+#if defined(SECOND_DATA_DIR)
+	_paths.second_data_dir = MallocT<char>(MAX_PATH);
 	ttd_strlcpy(_paths.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
 #endif
 
 #if defined(USE_HOMEDIR)
-	{
-		const char *homedir = getenv("HOME");
+	const char *homedir = getenv("HOME");
 
-		if (homedir == NULL) {
-			const struct passwd *pw = getpwuid(getuid());
-			if (pw != NULL) homedir = pw->pw_dir;
-		}
-
-		_paths.personal_dir = str_fmt("%s" PATHSEP "%s", homedir, PERSONAL_DIR);
+	if (homedir == NULL) {
+		const struct passwd *pw = getpwuid(getuid());
+		if (pw != NULL) homedir = pw->pw_dir;
 	}
 
+	_paths.personal_dir = str_fmt("%s" PATHSEP "%s", homedir, PERSONAL_DIR);
 #else /* not defined(USE_HOMEDIR) */
-
-	_paths.personal_dir = (char *)malloc(MAX_PATH);
+	_paths.personal_dir = MallocT<char>(MAX_PATH);
 	ttd_strlcpy(_paths.personal_dir, PERSONAL_DIR, MAX_PATH);
 
-	// check if absolute or relative path
-	s = strchr(_paths.personal_dir, PATHSEPCHAR);
+	/* check if absolute or relative path */
+	const char *s = strchr(_paths.personal_dir, PATHSEPCHAR);
 
-	// add absolute path
+	/* add absolute path */
 	if (s == NULL || _paths.personal_dir != s) {
 		getcwd(_paths.personal_dir, MAX_PATH);
-		s = strchr(_paths.personal_dir, 0);
-		*s++ = PATHSEPCHAR;
-		ttd_strlcpy(s, PERSONAL_DIR, MAX_PATH);
+		AppendPathSeparator(_paths.personal_dir, MAX_PATH);
+		ttd_strlcat(_paths.personal_dir, PERSONAL_DIR, MAX_PATH);
 	}
-
 #endif /* defined(USE_HOMEDIR) */
 
-	s = strchr(_paths.personal_dir, 0);
-
-	// append a / ?
-	if (s[-1] != PATHSEPCHAR) strcpy(s, PATHSEP);
-
-	_paths.save_dir = str_fmt("%ssave", _paths.personal_dir);
-	_paths.autosave_dir = str_fmt("%s" PATHSEP "autosave", _paths.save_dir);
-	_paths.scenario_dir = str_fmt("%sscenario", _paths.personal_dir);
-	_paths.heightmap_dir = str_fmt("%sscenario" PATHSEP "heightmap", _paths.personal_dir);
-	_paths.gm_dir = str_fmt("%sgm" PATHSEP, _paths.game_data_dir);
-	_paths.data_dir = str_fmt("%sdata" PATHSEP, _paths.game_data_dir);
-
-	if (_config_file == NULL)
-		_config_file = str_fmt("%sopenttd.cfg", _paths.personal_dir);
-
-	_highscore_file = str_fmt("%shs.dat", _paths.personal_dir);
-	_log_file = str_fmt("%sopenttd.log", _paths.personal_dir);
-
-#if defined CUSTOM_LANG_DIR
-	// sets the search path for lng files to the custom one
-	_paths.lang_dir = malloc( MAX_PATH );
-	ttd_strlcpy( _paths.lang_dir, CUSTOM_LANG_DIR, MAX_PATH);
-#else
-	_paths.lang_dir = str_fmt("%slang" PATHSEP, _paths.game_data_dir);
-#endif
-
-	// create necessary folders
-#ifndef __INNOTEK_LIBC__
-	mkdir(_paths.personal_dir);
-	mkdir(_paths.save_dir);
-	mkdir(_paths.autosave_dir);
-	mkdir(_paths.scenario_dir);
-	mkdir(_paths.heightmap_dir);
-#else
-	mkdir(_paths.personal_dir, 0755);
-	mkdir(_paths.save_dir, 0755);
-	mkdir(_paths.autosave_dir, 0755);
-	mkdir(_paths.scenario_dir, 0755);
-	mkdir(_paths.heightmap_dir, 0755);
-#endif
+	AppendPathSeparator(_paths.personal_dir,  MAX_PATH);
+	AppendPathSeparator(_paths.game_data_dir, MAX_PATH);
 }
 
 /**

@@ -12,10 +12,15 @@ byte FioReadByte();
 uint16 FioReadWord();
 uint32 FioReadDword();
 void FioCloseAll();
-FILE *FioFOpenFile(const char *filename);
 void FioOpenFile(int slot, const char *filename);
 void FioReadBlock(void *ptr, uint size);
 void FioSkipBytes(int n);
+
+FILE *FioFOpenFile(const char *filename);
 bool FioCheckFileExists(const char *filename);
+void FioCreateDirectory(const char *filename);
+
+void AppendPathSeparator(char *buf, size_t buflen);
+void DeterminePaths();
 
 #endif /* FILEIO_H */

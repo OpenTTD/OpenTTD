@@ -216,6 +216,4 @@ void CheckConfig();
 int ttd_main(int argc, char* argv[]);
 void HandleExitGameRequest();
 
-void DeterminePaths();
-
 #endif /* FUNCTIONS_H */
