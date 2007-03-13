@@ -754,11 +754,18 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_CREATE: {
 			uint32 val = _news_display_opt;
+			uint32 all_val;
 			int i;
-			WP(w, def_d).data_1 = 0;
 
 			/* Set up the initial disabled buttons in the case of 'off' or 'full' */
-			for (i = 0; i < NT_END; i++, val >>= 2) SetMessageButtonStates(w, val & 0x3, i);
+			all_val = val & 0x3;
+			for (i = 0; i < NT_END; i++, val >>= 2) {
+				SetMessageButtonStates(w, val & 0x3, i);
+				/* If the value doesn't match the ALL-button value, set the ALL-button value to 'off' */
+				if ((val & 0x3) != all_val) all_val = 0;
+			}
+			/* If all values are the same value, the ALL-button will take over this value */
+			WP(w, def_d).data_1 = all_val;
 		} break;
 
 		case WE_PAINT: {
