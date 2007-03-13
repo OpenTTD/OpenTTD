@@ -1792,6 +1792,25 @@ bool AfterLoadGame()
 		FOR_ALL_VEHICLES(v) {
 			v->cargo_source_xy = IsValidStationID(v->cargo_source) ? GetStation(v->cargo_source)->xy : v->tile;
 		}
+
+		/* Store position of the station where the goods come from, so there
+		 * are no very high payments when stations get removed. However, if the
+		 * station where the goods came from is already removed, the source
+		 * information is lost. In that case we set it to the position of this
+		 * station */
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			for (CargoID c = 0; c < NUM_CARGO; c++) {
+				GoodsEntry *ge = &st->goods[c];
+
+				/* In old versions, enroute_from used 0xFF as INVALID_STATION */
+				if (CheckSavegameVersion(7) && ge->enroute_from == 0xFF) {
+					ge->enroute_from = INVALID_STATION;
+				}
+
+				ge->enroute_from_xy = IsValidStationID(ge->enroute_from) ? GetStation(ge->enroute_from)->xy : st->xy;
+			}
+		}
 	}
 
 	if (CheckSavegameVersion(45)) {
