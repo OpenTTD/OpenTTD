@@ -233,7 +233,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	ind = GetIndustryByTile(ti->tile);
 
 	/* Retrieve pointer to the draw industry tile struct */
-	dits = &_industry_draw_tile_data[gfx << 2 | (_industry_section_draw_animation_state[gfx] ?
+	dits = &_industry_draw_tile_data[gfx << 2 | (GetIndustryTileSpec(gfx)->anim_state ?
 			GetIndustryAnimationState(ti->tile) & 3 :
 			GetIndustryConstructionStage(ti->tile))];
 
@@ -357,9 +357,9 @@ static void TransportIndustryGoods(TileIndex tile)
 		am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[0], cw);
 		i->last_mo_transported[0] += am;
 		if (am != 0) {
-			uint newgfx = _industry_produce_section[GetIndustryGfx(tile)];
+			uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
 
-			if (newgfx != 0xFF) {
+			if (newgfx != INDUTILE_NOAMIN) {
 				ResetIndustryConstructionStage(tile);
 				SetIndustryCompleted(tile, true);
 				SetIndustryGfx(tile, newgfx);
@@ -645,8 +645,8 @@ static void TileLoop_Industry(TileIndex tile)
 
 	TransportIndustryGoods(tile);
 
-	newgfx = _industry_section_animation_next[GetIndustryGfx(tile)];
-	if (newgfx != 255) {
+	newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_next;
+	if (newgfx != INDUTILE_NOAMIN) {
 		ResetIndustryConstructionStage(tile);
 		SetIndustryGfx(tile, newgfx);
 		MarkTileDirtyByTile(tile);

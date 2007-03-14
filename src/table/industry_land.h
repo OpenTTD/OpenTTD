@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file industry_land.h */
+
 struct DrawIndustrySpec1Struct {
 	byte x;
 	byte image_1;
@@ -718,6 +720,7 @@ static const DrawBuildingsTileStruct _industry_draw_tile_data[NUM_INDUSTRY_GFXES
 	M(     0xf8d, PAL_NONE,     0x12a5 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE,  0,  0, 16, 16,  50, 1),
 };
 
+/* this is ONLY used for Sugar Mine*/
 static const DrawIndustrySpec1Struct _draw_industry_spec1[96] = {
 	{  8,   4,   0,   0},
 	{  6,   0,   1,   0},
@@ -817,14 +820,17 @@ static const DrawIndustrySpec1Struct _draw_industry_spec1[96] = {
 	{ 10,   4,   0,   4},
 };
 
+/* this is ONLY used for Sugar Mine*/
 static const byte _drawtile_proc1_x[5] = {
 	22, 17, 14, 10, 8
 };
 
+/* this is ONLY used for Sugar Mine*/
 static const byte _drawtile_proc1_y[5] = {
 	73, 70, 69, 66, 41
 };
 
+/* this is ONLY used for Toy Factory*/
 static const DrawIndustrySpec4Struct _industry_anim_offs_3[] = {
 	{255, 255,   0},
 	{  0, 255,   0},
@@ -878,6 +884,7 @@ static const DrawIndustrySpec4Struct _industry_anim_offs_3[] = {
 	{255, 255,   0},
 };
 
+/* this is ONLY used for Toffee Quarry*/
 static const byte _industry_anim_offs[] = {
 	255,   0,   0,   0,   2,   4,   6,   8,  10,   9,
 	  7,   5,   3,   1, 255,   0,   0,   0,   2,   4,
@@ -888,6 +895,7 @@ static const byte _industry_anim_offs[] = {
 	  2,   4,   6,   8,  10,   9,   7,   5,   3,   1
 };
 
+/* this is ONLY used for the Bubble Generator*/
 static const byte _industry_anim_offs_2[] = {
 	68, 69, 71, 74, 77, 80, 83, 85, 86, 86,
 	86, 86, 86, 86, 86, 86, 86, 86, 86, 86,
@@ -895,100 +903,6 @@ static const byte _industry_anim_offs_2[] = {
 	77, 76, 75, 74, 73, 72, 71, 70, 69, 68,
 };
 
+/* those are ONLY used for Power Station*/
 static const byte _coal_plant_sparks_x[] = {11, 11, 14, 13, 18, 15};
 static const byte _coal_plant_sparks_y[] = {23, 11,  6,  3,  1,  0};
-
-#define N 255
-/**
- * Next frame in an animation
- * The indices into this table are the ones as described by
- * the enum with GFX_*s in industry_map.h.
- */
-static const byte _industry_section_animation_next[NUM_INDUSTRY_GFXES] = {
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   16,  N,   N,   N,   N,   N,   N, // <- growing forest
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   129, N,   N,   N,   N,   N, // <- growing candyfloss
-135, N,   N,   N,   N,   N,   N,   N, // <- 'growing' batteries
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,
-};
-
-/**
- * Animation to start when goods is produced
- * The indices into this table are the ones as described by
- * the enum with GFX_*s in industry_map.h.
- */
-static const byte _industry_produce_section[NUM_INDUSTRY_GFXES] = {
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-17,  N,   N,   N,   N,   N,   N,   N, // <- chopping forest
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   130, N,   N,   N,   N,   N,   136,  // <- chopping candyfloss and reaping batteries
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,   N,
-N,   N,   N,   N,   N,   N,   N,
-};
-
-#undef N
-
-
-/**
- * When true, the tile has to be drawn using the animation
- * state instead of the construction state.
- * The indices into this table are the ones as described by
- * the enum with GFX_*s in industry_map.h.
- */
-static const bool _industry_section_draw_animation_state[NUM_INDUSTRY_GFXES] = {
-	false, true,  false, false, false, false, false, false, // <- animated wheel tower of coal mine
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, true,  true,  // <- animated oil well
-	true,  false, false, false, false, false, false, false, // <- animated oil well
-	false, false, false, false, false, false, false, false,
-	true,  false, false, false, false, false, false, false, // <- animated wheel tower of copper mine
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	true,  false, false, false, false, false, false, false, // <- animated wheel tower of gold mine
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false,
-};

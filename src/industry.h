@@ -12,6 +12,7 @@ typedef uint8 IndustryType;
 
 enum {
 	INVALID_INDUSTRY = 0xFFFF,
+	INDUTILE_NOAMIN = 0xFF,        ///< flag to mark industry tiles as having no animation
 };
 
 enum IndustryLifeType {
@@ -83,6 +84,10 @@ struct IndustrySpec {
 struct IndustryTileSpec {
 	CargoID accepts_cargo[3];             ///< Cargo accepted by this tile
 	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
+	byte anim_production;                 ///< Animation frame to start when goods are produced
+	byte anim_next;                       ///< Next frame in an animation
+	bool anim_state;                      ///< When true, the tile has to be drawn using the animation
+                                         ///< state instead of the construction state
 };
 
 const IndustrySpec *GetIndustrySpec(IndustryType thistype);    ///< Array of industries default data
