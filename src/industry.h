@@ -12,7 +12,7 @@ typedef uint8 IndustryType;
 
 enum {
 	INVALID_INDUSTRY = 0xFFFF,
-	INDUTILE_NOAMIN = 0xFF,        ///< flag to mark industry tiles as having no animation
+	INDUTILE_NOANIM = 0xFF,        ///< flag to mark industry tiles as having no animation
 };
 
 enum IndustryLifeType {

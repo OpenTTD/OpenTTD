@@ -359,7 +359,7 @@ static void TransportIndustryGoods(TileIndex tile)
 		if (am != 0) {
 			uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
 
-			if (newgfx != INDUTILE_NOAMIN) {
+			if (newgfx != INDUTILE_NOANIM) {
 				ResetIndustryConstructionStage(tile);
 				SetIndustryCompleted(tile, true);
 				SetIndustryGfx(tile, newgfx);
@@ -646,7 +646,7 @@ static void TileLoop_Industry(TileIndex tile)
 	TransportIndustryGoods(tile);
 
 	newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_next;
-	if (newgfx != INDUTILE_NOAMIN) {
+	if (newgfx != INDUTILE_NOANIM) {
 		ResetIndustryConstructionStage(tile);
 		SetIndustryGfx(tile, newgfx);
 		MarkTileDirtyByTile(tile);
