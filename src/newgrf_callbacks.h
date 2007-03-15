@@ -11,12 +11,12 @@
  * Names are formatted as CBID_<CLASS>_<CALLBACK>
  */
 enum CallbackID {
-	// Powered wagons, if the result is lower as 0x40 then the wagon is powered
-	// TODO: interpret the rest of the result, aka "visual effects"
+	/* Powered wagons, if the result is lower as 0x40 then the wagon is powered
+	 * @todo : interpret the rest of the result, aka "visual effects" */
 	CBID_TRAIN_WAGON_POWER          = 0x10,
 
-	// Vehicle length, returns the amount of 1/8's the vehicle is shorter
-	// only for train vehicles
+	/* Vehicle length, returns the amount of 1/8's the vehicle is shorter
+	 * only for train vehicles */
 	CBID_TRAIN_VEHICLE_LENGTH       = 0x11,
 
 	/* Called (if appropriate bit in callback mask is set) to determine the
@@ -31,8 +31,8 @@ enum CallbackID {
 	 * to choose a sprite layout to draw, instead of the standard 0-7 range */
 	CBID_STATION_SPRITE_LAYOUT      = 0x14,
 
-	// Refit capacity, the passed vehicle needs to have its ->cargo_type set to
-	// the cargo we are refitting to, returns the new cargo capacity
+	/* Refit capacity, the passed vehicle needs to have its ->cargo_type set to
+	 * the cargo we are refitting to, returns the new cargo capacity */
 	CBID_VEHICLE_REFIT_CAPACITY     = 0x15,
 
 	CBID_TRAIN_ARTIC_ENGINE         = 0x16,
