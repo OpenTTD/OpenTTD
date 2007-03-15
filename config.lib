@@ -581,8 +581,8 @@ check_params() {
 			# First, are we a real OSX system, else we can't detect it
 			native=`LC_ALL=C uname | tr '[A-Z]' '[a-z]' | grep darwin`
 			# If $host doesn't match $build , we are cross-compiling
-			if [ -n "$native" ] && [ "$build" != "$host" ]; then
-				$cc_build $SRC_DIR/os/macosx/G5_detector.cpp -o G5_detector
+			if [ -n "$native" ] && [ "$build" == "$host" ]; then
+				$cxx_build $SRC_DIR/os/macosx/G5_detector.cpp -o G5_detector
 				res=`./G5_detector`
 				rm -f G5_detector
 				if [ -n "$res" ]; then
