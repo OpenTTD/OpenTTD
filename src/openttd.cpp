@@ -419,6 +419,8 @@ int ttd_main(int argc, char *argv[])
 				_switch_mode = SM_LOAD;
 			} else {
 				_switch_mode = SM_NEWGAME;
+				/* Give a random map */
+				generation_seed = InteractiveRandom();
 			}
 			break;
 		case 'G': generation_seed = atoi(mgo.opt); break;
