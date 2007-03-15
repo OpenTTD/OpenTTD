@@ -96,6 +96,9 @@ depend:
 run: all
 	$(Q)cd !!BIN_DIR!! && ./!!TTD!! $(OPENTTD_ARGS)
 
+run-gdb: all
+	$(Q)cd !!BIN_DIR!! && gdb --ex run --args ./!!TTD!! $(OPENTTD_ARGS)
+
 %.o:
 	@for dir in $(SRC_DIRS); do \
 		$(MAKE) -C $$dir $(@:src/%=%); \
