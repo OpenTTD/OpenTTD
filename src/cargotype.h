@@ -8,6 +8,15 @@
 
 typedef uint32 CargoLabel;
 
+enum TownEffect {
+	TE_NONE,
+	TE_PASSENGERS,
+	TE_MAIL,
+	TE_GOODS,
+	TE_WATER,
+	TE_FOOD,
+};
+
 
 struct CargoSpec {
 	uint8 bitnum;
@@ -20,7 +29,7 @@ struct CargoSpec {
 	uint8 transit_days[2];
 
 	bool is_freight;
-	uint8 substitutetowngrowth;
+	TownEffect town_effect; ///< The effect this cargo type has on towns
 	uint16 multipliertowngrowth;
 	uint8 callbackflags;
 
