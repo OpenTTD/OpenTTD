@@ -1744,7 +1744,7 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (CheckTrainStoppedInDepot(v) < 0) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
 
 	/* Check cargo */
-	if (new_cid > NUM_CARGO) return CMD_ERROR;
+	if (new_cid >= NUM_CARGO) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_TRAIN_RUN);
 

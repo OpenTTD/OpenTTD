@@ -1098,7 +1098,7 @@ int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Check cargo */
 	if (!ShipVehInfo(v->engine_type)->refittable) return CMD_ERROR;
-	if (new_cid > NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
+	if (new_cid >= NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
 

@@ -606,7 +606,7 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Check cargo */
 	CargoID new_cid = GB(p2, 0, 8);
-	if (new_cid > NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
+	if (new_cid >= NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
 

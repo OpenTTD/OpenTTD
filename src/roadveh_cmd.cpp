@@ -1857,7 +1857,7 @@ int32 CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!IsRoadVehInDepotStopped(v)) return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
 
-	if (new_cid > NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
+	if (new_cid >= NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_ROADVEH_RUN);
 
