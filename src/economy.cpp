@@ -829,12 +829,12 @@ Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode)
 	SetDParam(0, mode ? cs->name_plural : cs->name);
 
 	if (s->age < 12) {
-		if (s->cargo_type != CT_PASSENGERS && s->cargo_type != CT_MAIL) {
+		if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL) {
 			SetDParam(1, STR_INDUSTRY);
 			SetDParam(2, s->from);
 			tile = GetIndustry(s->from)->xy;
 
-			if (s->cargo_type != CT_GOODS && s->cargo_type != CT_FOOD) {
+			if (cs->town_effect != TE_GOODS && cs->town_effect != TE_FOOD) {
 				SetDParam(4, STR_INDUSTRY);
 				SetDParam(5, s->to);
 				tile2 = GetIndustry(s->to)->xy;
@@ -871,10 +871,12 @@ void DeleteSubsidyWithTown(TownID index)
 	Subsidy *s;
 
 	for (s = _subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type != CT_INVALID && s->age < 12 &&
-				(((s->cargo_type == CT_PASSENGERS || s->cargo_type == CT_MAIL) && (index == s->from || index == s->to)) ||
-				((s->cargo_type == CT_GOODS || s->cargo_type == CT_FOOD) && index == s->to))) {
-			s->cargo_type = CT_INVALID;
+		if (s->cargo_type != CT_INVALID && s->age < 12) {
+			const CargoSpec *cs = GetCargo(s->cargo_type);
+			if (((cs->town_effect == TE_PASSENGERS || cs->town_effect == TE_MAIL) && (index == s->from || index == s->to)) ||
+				((cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) && index == s->to)) {
+				s->cargo_type = CT_INVALID;
+			}
 		}
 	}
 }
@@ -884,10 +886,12 @@ void DeleteSubsidyWithIndustry(IndustryID index)
 	Subsidy *s;
 
 	for (s = _subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type != CT_INVALID && s->age < 12 &&
-				s->cargo_type != CT_PASSENGERS && s->cargo_type != CT_MAIL &&
-				(index == s->from || (s->cargo_type != CT_GOODS && s->cargo_type != CT_FOOD && index == s->to))) {
-			s->cargo_type = CT_INVALID;
+		if (s->cargo_type != CT_INVALID && s->age < 12) {
+			const CargoSpec *cs = GetCargo(s->cargo_type);
+			if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL &&
+				(index == s->from || (cs->town_effect != TE_GOODS && cs->town_effect != TE_FOOD && index == s->to))) {
+				s->cargo_type = CT_INVALID;
+			}
 		}
 	}
 }
@@ -957,12 +961,14 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	/* Quit if no production in this industry
 	 * or if the cargo type is passengers
 	 * or if the pct transported is already large enough */
-	if (total == 0 || trans > 42 || cargo == CT_INVALID || cargo == CT_PASSENGERS)
-		return;
+	if (total == 0 || trans > 42 || cargo == CT_INVALID) return;
+
+	const CargoSpec *cs = GetCargo(cargo);
+	if (cs->town_effect == TE_PASSENGERS) return;
 
 	fr->cargo = cargo;
 
-	if (cargo == CT_GOODS || cargo == CT_FOOD) {
+	if (cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) {
 		/*  The destination is a town */
 		Town *t = GetRandomTown();
 
@@ -1055,7 +1061,10 @@ static void SubsidyMonthlyHandler()
 			if (fr.distance <= 70) {
 				s->cargo_type = fr.cargo;
 				s->from = ((Industry*)fr.from)->index;
-				s->to = (fr.cargo == CT_GOODS || fr.cargo == CT_FOOD) ? ((Town*)fr.to)->index : ((Industry*)fr.to)->index;
+				{
+					const CargoSpec *cs = GetCargo(fr.cargo);
+					s->to = (cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) ? ((Town*)fr.to)->index : ((Industry*)fr.to)->index;
+				}
 	add_subsidy:
 				if (!CheckSubsidyDuplicate(s)) {
 					s->age = 0;
@@ -1110,7 +1119,7 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	byte f;
 
 	/* zero the distance if it's the bank and very short transport. */
-	if (_opt.landscape == LT_NORMAL && cargo == CT_VALUABLES && dist < 10)
+	if (_opt.landscape == LT_NORMAL && cs->label == 'VALU' && dist < 10)
 		dist = 0;
 
 	f = 255;
@@ -1187,7 +1196,8 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type == cargo_type && s->age < 12) {
 			/* Check distance from source */
-			if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL) {
+			const CargoSpec *cs = GetCargo(cargo_type);
+			if (cs->town_effect == TE_PASSENGERS || cs->town_effect == TE_MAIL) {
 				xy = GetTown(s->from)->xy;
 			} else {
 				xy = (GetIndustry(s->from))->xy;
@@ -1195,11 +1205,11 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 			if (DistanceMax(xy, from->xy) > 9) continue;
 
 			/* Check distance from dest */
-			switch (cargo_type) {
-				case CT_PASSENGERS:
-				case CT_MAIL:
-				case CT_GOODS:
-				case CT_FOOD:
+			switch (cs->town_effect) {
+				case TE_PASSENGERS:
+				case TE_MAIL:
+				case TE_GOODS:
+				case TE_FOOD:
 					xy = GetTown(s->to)->xy;
 					break;
 
@@ -1257,8 +1267,9 @@ static int32 DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	subsidised = CheckSubsidised(s_from, s_to, cargo_type);
 
 	/* Increase town's counter for some special goods types */
-	if (cargo_type == CT_FOOD) s_to->town->new_act_food += num_pieces;
-	if (cargo_type == CT_WATER)  s_to->town->new_act_water += num_pieces;
+	const CargoSpec *cs = GetCargo(cargo_type);
+	if (cs->town_effect == TE_FOOD) s_to->town->new_act_food += num_pieces;
+	if (cs->town_effect == TE_WATER) s_to->town->new_act_water += num_pieces;
 
 	/* Give the goods to the industry. */
 	DeliverGoodsToIndustry(s_to->xy, cargo_type, num_pieces);
