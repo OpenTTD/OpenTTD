@@ -14,10 +14,6 @@
 #include <time.h>
 #include <signal.h>
 
-#ifdef USE_HOMEDIR
-#include <pwd.h>
-#endif
-
 #if (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__GLIBC__)
 	#define HAS_STATVFS
 #endif
