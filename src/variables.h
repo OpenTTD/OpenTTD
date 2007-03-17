@@ -315,19 +315,22 @@ VARDEF Vehicle *_place_clicked_vehicle;
 
 VARDEF char _ini_videodriver[32], _ini_musicdriver[32], _ini_sounddriver[32];
 
-// Used for dynamic language support
-struct DynamicLanguages {
-	int num; // number of languages
-	int curr; // currently selected language index
-	char curr_file[MAX_LANG]; // currently selected language file
-	StringID dropdown[MAX_LANG + 1]; // used in settings dialog
-	struct {
-		char *name;
-		char *file;
-	} ent[MAX_LANG];
+/** Information about a language */
+struct Language {
+	char *name; ///< The internal name of the language
+	char *file; ///< The name of the language as it appears on disk
 };
 
-VARDEF DynamicLanguages _dynlang;
+/** Used for dynamic language support */
+struct DynamicLanguages {
+	int num;                         ///< Number of languages
+	int curr;                        ///< Currently selected language index
+	char curr_file[MAX_PATH];        ///< Currently selected language file (needed for saving the filename of the loaded language
+	StringID dropdown[MAX_LANG + 1]; ///< List of languages in the settings gui
+	Language ent[MAX_LANG];          ///< Information about the languages
+};
+
+extern DynamicLanguages _dynlang; // defined in strings.cpp
 
 VARDEF int _num_resolutions;
 VARDEF uint16 _resolutions[32][2];

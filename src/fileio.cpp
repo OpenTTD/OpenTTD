@@ -362,6 +362,7 @@ void DeterminePaths(const char *exe)
 	/* Sets the search path for lng files to the custom one */
 	_paths.lang_dir = MallocT<char>(MAX_PATH);
 	ttd_strlcpy(_paths.lang_dir, CUSTOM_LANG_DIR, MAX_PATH);
+	AppendPathSeparator(_paths.lang_dir, MAX_PATH);
 #else
 	_paths.lang_dir = str_fmt("%slang" PATHSEP, _paths.game_data_dir);
 #endif

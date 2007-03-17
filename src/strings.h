@@ -11,4 +11,7 @@ extern char _userstring[128];
 void InjectDParam(int amount);
 int32 GetParamInt32();
 
+bool ReadLanguagePack(int index);
+void InitializeLanguagePacks();
+
 #endif /* STRINGS_H */

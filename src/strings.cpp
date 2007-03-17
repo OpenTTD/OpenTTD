@@ -27,6 +27,7 @@
 /* for opendir/readdir/closedir */
 # include "fios.h"
 
+DynamicLanguages _dynlang;
 char _userstring[128];
 
 static char *StationGetSpecialString(char *buff, int x, const char* last);
@@ -1068,16 +1069,12 @@ StringID RemapOldStringID(StringID s)
 bool ReadLanguagePack(int lang_index)
 {
 	int tot_count, i;
-	LanguagePack *lang_pack;
 	size_t len;
 	char **langpack_offs;
 	char *s;
 
-	{
-		char *lang = str_fmt("%s%s", _paths.lang_dir, _dynlang.ent[lang_index].file);
-		lang_pack = (LanguagePack*)ReadFileToMem(lang, &len, 200000);
-		free(lang);
-	}
+	LanguagePack *lang_pack = (LanguagePack*)ReadFileToMem(_dynlang.ent[lang_index].file, &len, 200000);
+
 	if (lang_pack == NULL) return false;
 	if (len < sizeof(LanguagePack) ||
 			lang_pack->ident != TO_LE32(LANGUAGE_PACK_IDENT) ||
@@ -1119,7 +1116,7 @@ bool ReadLanguagePack(int lang_index)
 	free(_langpack_offs);
 	_langpack_offs = langpack_offs;
 
-	ttd_strlcpy(_dynlang.curr_file, _dynlang.ent[lang_index].file, sizeof(_dynlang.curr_file));
+	ttd_strlcpy(_dynlang.curr_file, _dynlang.ent[lang_index].file, lengthof(_dynlang.curr_file));
 
 	_dynlang.curr = lang_index;
 	SetCurrentGrfLangID(_langpack->isocode);
@@ -1152,96 +1149,145 @@ const char *GetCurrentLocale(const char *param)
 
 static int CDECL LanguageCompareFunc(const void *a, const void *b)
 {
-	return strcmp(*(const char* const *)a, *(const char* const *)b);
+	const Language *cmp1 = (const Language*)a;
+	const Language *cmp2 = (const Language*)b;
+
+	return strcmp(cmp1->file, cmp2->file);
 }
 
-static int GetLanguageList(char **languages, int max)
+/**
+ * Checks whether the given language is already found.
+ * @param langs    languages we've found so fa
+ * @param max      the length of the language list
+ * @param language name of the language to check
+ * @return true if and only if a language file with the same name has not been found
+ */
+static bool UniqueLanguageFile(const Language *langs, uint max, const char *language)
 {
-	DIR *dir;
-	struct dirent *dirent;
-	int num = 0;
+	for (uint i = 0; i < max; i++) {
+		const char *f_name = strrchr(langs[i].file, PATHSEPCHAR);
+		if (strcmp(f_name, language) == 0) return false; // duplicates
+	}
 
-	dir = ttd_opendir(_paths.lang_dir);
+	return true;
+}
+
+/**
+ * Reads the language file header and checks compatability.
+ * @param file the file to read
+ * @param hdr  the place to write the header information to
+ * @return true if and only if the language file is of a compatible version
+ */
+static bool GetLanguageFileHeader(const char *file, LanguagePack *hdr)
+{
+	FILE *f = fopen(file, "rb");
+	if (f == NULL) return false;
+
+	size_t read = fread(hdr, sizeof(*hdr), 1, f);
+	fclose(f);
+
+	return read == 1 &&
+			hdr->ident == TO_LE32(LANGUAGE_PACK_IDENT) &&
+			hdr->version == TO_LE32(LANGUAGE_PACK_VERSION);
+}
+
+/**
+ * Gets a list of languages from the given directory.
+ * @param langs the list to write to
+ * @param start the initial offset in the list
+ * @param max   the length of the language list
+ * @param path  the base directory to search in
+ * @return the number of added languages
+ */
+static int GetLanguageList(Language *langs, int start, int max, const char *path)
+{
+	int i = start;
+
+	DIR *dir = ttd_opendir(path);
 	if (dir != NULL) {
-		while ((dirent = readdir(dir)) != NULL) {
-			const char *d_name = FS2OTTD(dirent->d_name);
-			const char *t = strrchr(d_name, '.');
+		struct dirent *dirent;
+		while ((dirent = readdir(dir)) != NULL && i < max) {
+			const char *d_name    = FS2OTTD(dirent->d_name);
+			const char *extension = strrchr(d_name, '.');
 
-			if (t != NULL && strcmp(t, ".lng") == 0) {
-				languages[num++] = strdup(d_name);
-				if (num == max) break;
+			/* Not a language file */
+			if (extension == NULL || strcmp(extension, ".lng") != 0) continue;
+
+			/* Filter any duplicate language-files, first-come first-serve */
+			if (!UniqueLanguageFile(langs, i, d_name)) continue;
+
+			langs[i].file = str_fmt("%s%s", path, d_name);
+
+			/* Check whether the file is of the correct version */
+			LanguagePack hdr;
+			if (!GetLanguageFileHeader(langs[i].file, &hdr)) {
+				free(langs[i].file);
+				continue;
 			}
+
+			i++;
 		}
 		closedir(dir);
 	}
-
-	qsort(languages, num, sizeof(char*), LanguageCompareFunc);
-	return num;
+	return i - start;
 }
 
-// make a list of the available language packs. put the data in _dynlang struct.
+/**
+ * Make a list of the available language packs. put the data in
+ * _dynlang struct.
+ */
 void InitializeLanguagePacks()
 {
-	DynamicLanguages *dl = &_dynlang;
-	int i;
-	int n;
-	int m;
-	int def;
-	int def2;
-	int fallback;
-	LanguagePack hdr;
-	FILE *in;
-	char *files[MAX_LANG];
-	const char* lang;
+	Language files[MAX_LANG];
+	uint language_count = GetLanguageList(files, 0, lengthof(files), _paths.lang_dir);
+	if (language_count == 0) error("No available language packs (invalid versions?)");
 
-	lang = GetCurrentLocale("LC_MESSAGES");
+	/* Sort the language names alphabetically */
+	qsort(files, language_count, sizeof(Language), LanguageCompareFunc);
+
+	/* Acquire the locale of the current system */
+	const char *lang = GetCurrentLocale("LC_MESSAGES");
 	if (lang == NULL) lang = "en_GB";
 
-	n = GetLanguageList(files, lengthof(files));
+	int chosen_language   = -1; ///< Matching the language in the configuartion file or the current locale
+	int language_fallback = -1; ///< Using pt_PT for pt_BR locale when pt_BR is not available
+	int en_GB_fallback    =  0; ///< Fallback when no locale-matching language has been found
 
-	def = -1;
-	def2 = -1;
-	fallback = 0;
+	DynamicLanguages *dl = &_dynlang;
+	dl->num = 0;
+	/* Fill the dynamic languages structures */
+	for (uint i = 0; i < language_count; i++) {
+		/* File read the language header */
+		LanguagePack hdr;
+		if (!GetLanguageFileHeader(files[i].file, &hdr)) continue;
 
-	// go through the language files and make sure that they are valid.
-	for (i = m = 0; i != n; i++) {
-		size_t j;
+		dl->ent[dl->num].file = files[i].file;
+		dl->ent[dl->num].name = strdup(hdr.name);
+		dl->dropdown[dl->num] = SPECSTR_LANGUAGE_START + dl->num;
 
-		char *s = str_fmt("%s%s", _paths.lang_dir, files[i]);
-		in = fopen(s, "rb");
-		free(s);
-		if (in == NULL ||
-				(j = fread(&hdr, sizeof(hdr), 1, in), fclose(in), j) != 1 ||
-				hdr.ident != TO_LE32(LANGUAGE_PACK_IDENT) ||
-				hdr.version != TO_LE32(LANGUAGE_PACK_VERSION)) {
-			free(files[i]);
-			continue;
+		/* We are trying to find a default language. The priority is by
+		 * configuration file, local environment and last, if nothing found,
+		 * english. If def equals -1, we have not picked a default language */
+		if (strcmp(dl->ent[dl->num].file, dl->curr_file) == 0) chosen_language = dl->num;
+
+		if (chosen_language == -1) {
+			if (strcmp (hdr.isocode, "en_GB") == 0) en_GB_fallback    = dl->num;
+			if (strncmp(hdr.isocode, lang, 5) == 0) chosen_language   = dl->num;
+			if (strncmp(hdr.isocode, lang, 2) == 0) language_fallback = dl->num;
 		}
 
-		dl->ent[m].file = files[i];
-		dl->ent[m].name = strdup(hdr.name);
-
-		if (strcmp(hdr.isocode, "en_GB")  == 0) fallback = m;
-		if (strncmp(hdr.isocode, lang, 2) == 0) def2 = m;
-		if (strncmp(hdr.isocode, lang, 5) == 0) def = m;
-
-		m++;
+		dl->num++;
 	}
-	if (def == -1) def = (def2 != -1 ? def2 : fallback);
+	/* Terminate the dropdown list */
+	dl->dropdown[dl->num] = INVALID_STRING_ID;
 
-	if (m == 0)
-		error(n == 0 ? "No available language packs" : "Invalid version of language packs");
+	if (dl->num == 0) error("Invalid version of language packs");
 
-	dl->num = m;
-	for (i = 0; i != dl->num; i++) dl->dropdown[i] = SPECSTR_LANGUAGE_START + i;
-	dl->dropdown[i] = INVALID_STRING_ID;
+	/* We haven't found the language in the config nor the one in the locale.
+	 * Now we set it to one of the fallback languages */
+	if (chosen_language == -1) {
+		chosen_language = (language_fallback != -1) ? language_fallback : en_GB_fallback;
+	}
 
-	for (i = 0; i != dl->num; i++)
-		if (strcmp(dl->ent[i].file, dl->curr_file) == 0) {
-			def = i;
-			break;
-		}
-
-	if (!ReadLanguagePack(def))
-		error("can't read language pack '%s'", dl->ent[def].file);
+	if (!ReadLanguagePack(chosen_language)) error("Can't read language pack '%s'", dl->ent[chosen_language].file);
 }

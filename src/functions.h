@@ -205,8 +205,6 @@ void ShowSaveLoadDialog(int mode);
 /* callback from drivers that is called if the game size changes dynamically */
 void GameSizeChanged();
 bool FileExists(const char *filename);
-bool ReadLanguagePack(int index);
-void InitializeLanguagePacks();
 const char *GetCurrentLocale(const char *param);
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 
