@@ -122,18 +122,6 @@ bool FiosIsHiddenFile(const struct dirent *ent)
 	return ent->d_name[0] == '.';
 }
 
-
-static void ChangeWorkingDirectory(char *exe)
-{
-	char *s = strrchr(exe, PATHSEPCHAR);
-
-	if (s != NULL) {
-		*s = '\0';
-		chdir(exe);
-		*s = PATHSEPCHAR;
-	}
-}
-
 void ShowInfo(const unsigned char *str)
 {
 	HAB hab;
@@ -176,43 +164,6 @@ int CDECL main(int argc, char* argv[])
 	_random_seeds[1][1] = _random_seeds[1][0] = _random_seeds[0][1] = _random_seeds[0][0] = time(NULL);
 
 	return ttd_main(argc, argv);
-}
-
-void DetermineBasePaths()
-{
-	_paths.game_data_dir = MallocT<char>(MAX_PATH);
-	ttd_strlcpy(_paths.game_data_dir, GAME_DATA_DIR, MAX_PATH);
-#if defined(SECOND_DATA_DIR)
-	_paths.second_data_dir = MallocT<char>(MAX_PATH);
-	ttd_strlcpy(_paths.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
-#endif
-
-#if defined(USE_HOMEDIR)
-	const char *homedir = getenv("HOME");
-
-	if (homedir == NULL) {
-		const struct passwd *pw = getpwuid(getuid());
-		if (pw != NULL) homedir = pw->pw_dir;
-	}
-
-	_paths.personal_dir = str_fmt("%s" PATHSEP "%s", homedir, PERSONAL_DIR);
-#else /* not defined(USE_HOMEDIR) */
-	_paths.personal_dir = MallocT<char>(MAX_PATH);
-	ttd_strlcpy(_paths.personal_dir, PERSONAL_DIR, MAX_PATH);
-
-	/* check if absolute or relative path */
-	const char *s = strchr(_paths.personal_dir, PATHSEPCHAR);
-
-	/* add absolute path */
-	if (s == NULL || _paths.personal_dir != s) {
-		getcwd(_paths.personal_dir, MAX_PATH);
-		AppendPathSeparator(_paths.personal_dir, MAX_PATH);
-		ttd_strlcat(_paths.personal_dir, PERSONAL_DIR, MAX_PATH);
-	}
-#endif /* defined(USE_HOMEDIR) */
-
-	AppendPathSeparator(_paths.personal_dir,  MAX_PATH);
-	AppendPathSeparator(_paths.game_data_dir, MAX_PATH);
 }
 
 /**

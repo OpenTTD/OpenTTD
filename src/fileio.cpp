@@ -12,6 +12,7 @@
 #include "debug.h"
 #include "fios.h"
 #ifndef WIN32
+#include <unistd.h>
 #include <sys/stat.h>
 #endif
 
@@ -258,24 +259,98 @@ void AppendPathSeparator(char *buf, size_t buflen)
 	}
 }
 
+#if defined(WIN32) || defined(WINCE)
 /**
  * Determine the base (personal dir and game data dir) paths
- * @note defined in the OS related files (os2.cpp, win32.cpp, unix.cpp etc)
+ * @param exe the path to the executable
  */
-extern void DetermineBasePaths();
+extern void DetermineBasePaths(const char *exe);
+#else /* defined(WIN32) || defined(WINCE) */
+
+/**
+ * Changes the working directory to the path of the give executable.
+ * For OSX application bundles '.app' is the required extension of the bundle,
+ * so when we crop the path to there, when can remove the name of the bundle
+ * in the same way we remove the name from the executable name.
+ * @param exe the path to the executable
+ */
+void ChangeWorkingDirectory(const char *exe)
+{
+#ifdef WITH_COCOA
+	char *app_bundle = strchr(exe, '.');
+	while (app_bundle != NULL && strncasecmp(app_bundle, ".app", 4) != 0) app_bundle = strchr(&app_bundle[1], '.');
+
+	if (app_bundle != NULL) app_bundle[0] = '\0';
+#endif /* WITH_COCOA */
+	char *s = strrchr(exe, PATHSEPCHAR);
+	if (s != NULL) {
+		*s = '\0';
+		chdir(exe);
+		*s = PATHSEPCHAR;
+	}
+#ifdef WITH_COCOA
+	if (app_bundle != NULL) app_bundle[0] = '.';
+#endif /* WITH_COCOA */
+}
+
+/**
+ * Determine the base (personal dir and game data dir) paths
+ * @param exe the path to the executable
+ */
+void DetermineBasePaths(const char *exe)
+{
+	/* Change the working directory to enable doubleclicking in UIs */
+	ChangeWorkingDirectory(exe);
+
+	_paths.game_data_dir = MallocT<char>(MAX_PATH);
+	ttd_strlcpy(_paths.game_data_dir, GAME_DATA_DIR, MAX_PATH);
+#if defined(SECOND_DATA_DIR)
+	_paths.second_data_dir = MallocT<char>(MAX_PATH);
+	ttd_strlcpy(_paths.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
+#endif
+
+#if defined(USE_HOMEDIR)
+	const char *homedir = getenv("HOME");
+
+	if (homedir == NULL) {
+		const struct passwd *pw = getpwuid(getuid());
+		if (pw != NULL) homedir = pw->pw_dir;
+	}
+
+	_paths.personal_dir = str_fmt("%s" PATHSEP "%s", homedir, PERSONAL_DIR);
+#else /* not defined(USE_HOMEDIR) */
+	_paths.personal_dir = MallocT<char>(MAX_PATH);
+	ttd_strlcpy(_paths.personal_dir, PERSONAL_DIR, MAX_PATH);
+
+	/* check if absolute or relative path */
+	const char *s = strchr(_paths.personal_dir, PATHSEPCHAR);
+
+	/* add absolute path */
+	if (s == NULL || _paths.personal_dir != s) {
+		getcwd(_paths.personal_dir, MAX_PATH);
+		AppendPathSeparator(_paths.personal_dir, MAX_PATH);
+		ttd_strlcat(_paths.personal_dir, PERSONAL_DIR, MAX_PATH);
+	}
+#endif /* defined(USE_HOMEDIR) */
+
+	AppendPathSeparator(_paths.personal_dir,  MAX_PATH);
+	AppendPathSeparator(_paths.game_data_dir, MAX_PATH);
+}
+#endif /* defined(WIN32) || defined(WINCE) */
 
 /**
  * Acquire the base paths (personal dir and game data dir),
  * fill all other paths (save dir, autosave dir etc) and
  * make the save and scenario directories.
+ * @param exe the path to the executable
  * @todo for save_dir, autosave_dir, scenario_dir and heightmap_dir the
  *       assumption is that there is no path separator, however for gm_dir
  *       lang_dir and data_dir that assumption is made.
  *       This inconsistency should be resolved.
  */
-void DeterminePaths()
+void DeterminePaths(const char *exe)
 {
-	DetermineBasePaths();
+	DetermineBasePaths(exe);
 
 	_paths.save_dir      = str_fmt("%ssave", _paths.personal_dir);
 	_paths.autosave_dir  = str_fmt("%s" PATHSEP "autosave", _paths.save_dir);

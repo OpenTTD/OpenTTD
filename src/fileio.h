@@ -21,6 +21,6 @@ bool FioCheckFileExists(const char *filename);
 void FioCreateDirectory(const char *filename);
 
 void AppendPathSeparator(char *buf, size_t buflen);
-void DeterminePaths();
+void DeterminePaths(const char *exe);
 
 #endif /* FILEIO_H */

@@ -433,7 +433,7 @@ int ttd_main(int argc, char *argv[])
 		}
 	}
 
-	DeterminePaths();
+	DeterminePaths(argv[0]);
 	CheckExternalFiles();
 
 #if defined(UNIX) && !defined(__MORPHOS__)

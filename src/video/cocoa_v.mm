@@ -2047,22 +2047,6 @@ void CocoaDialog(const char* title, const char* message, const char* buttonLabel
 	_cocoa_video_dialog = false;
 }
 
-
-/* This is needed since OS X applications are started with the working dir set to / when double-clicked */
-void cocoaSetWorkingDirectory()
-{
-	char parentdir[MAXPATHLEN];
-	int chdir_ret;
-	CFURLRef url = CFBundleCopyBundleURL(CFBundleGetMainBundle());
-	CFURLRef url2 = CFURLCreateCopyDeletingLastPathComponent(0, url);
-	if (CFURLGetFileSystemRepresentation(url2, true, (unsigned char*)parentdir, MAXPATHLEN)) {
-		chdir_ret = chdir(parentdir); /* chdir to the binary app's parent */
-		assert(chdir_ret == 0);
-	}
-	CFRelease(url);
-	CFRelease(url2);
-}
-
 /* These are called from main() to prevent a _NSAutoreleaseNoPool error when
  * exiting before the cocoa video driver has been loaded
  */
