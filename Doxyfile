@@ -84,6 +84,7 @@ FILE_PATTERNS          = *.c \
                          *.cpp \
                          *.c++ \
                          *.h \
+                         *.hpp \
                          table/*.h
 RECURSIVE              = YES
 EXCLUDE                =
