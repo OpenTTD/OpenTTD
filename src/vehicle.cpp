@@ -2508,14 +2508,14 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 			case VEH_ROAD: {
 				const RoadVehicleInfo *rvi = RoadVehInfo(engine_type);
 				if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
-				scheme = (cargo_type == CT_PASSENGERS) ? LS_BUS : LS_TRUCK;
+				scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_BUS : LS_TRUCK;
 				break;
 			}
 
 			case VEH_SHIP: {
 				const ShipVehicleInfo *svi = ShipVehInfo(engine_type);
 				if (cargo_type == CT_INVALID) cargo_type = svi->cargo_type;
-				scheme = (cargo_type == CT_PASSENGERS) ? LS_PASSENGER_SHIP : LS_FREIGHT_SHIP;
+				scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_SHIP : LS_FREIGHT_SHIP;
 				break;
 			}
 
