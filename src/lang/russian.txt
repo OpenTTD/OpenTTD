@@ -282,6 +282,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...принадлежащий {STRING}
 STR_013C_CARGO                                                  :{BLACK}Груз
@@ -592,6 +593,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Пер�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Первое трансп. средство противника на станции
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Аварии/Катастрофы
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Информация о Компании
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Открытие / закрытие промышленности
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Изменения в экономике
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Сообщения о транспорте игрока
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Новый транспорт
@@ -727,6 +729,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Разм
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Поставить маяк
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Поставить передатчик
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Задать площадь пустыни.{}Нажмите и держите CTRL для удаления
+STR_CREATE_LAKE                                                 :{BLACK}Указать водную область.{}Создать канал, или наводнить всю окружающую область при зажатом CTRL на уровне моря.
 STR_0290_DELETE                                                 :{BLACK}Уничтожить
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Полностью уничтожить этот город
 STR_0292_SAVE_SCENARIO                                          :Сохранить сценарий
@@ -1020,7 +1023,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Зон�
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Разрешить удаление всех городских объектов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Разрешить строительство очень длинных поездов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Включить реалистичное ускорение для поездов: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Запретить резкие повороты поездам и кораблям: {ORANGE}{STRING} {LTBLUE}(NPF/YAPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Запретить резкие повороты поездам и кораблям: {ORANGE}{STRING} {LTBLUE}(NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Объединять построенные рядом ж/д станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Покидать станцию, когда любой груз полностью загружен: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Использовать улучшенный алгоритм загрузки: {ORANGE}{STRING}
@@ -1089,6 +1092,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :нет
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :только для своей компании
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :для всех компаний
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Предпочитать командный чат при нажатии Enter: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Использовать колесо прокрутки: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :для масштабирования
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :для смещения обзора
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :не использовать
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Скорость смещения обзора прокруткой колеса мыши: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов на игрока: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Максимальное количество автомобилей на игрока: {ORANGE}{STRING}
@@ -1207,6 +1215,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Дере
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Разместить деревья случайного типа
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Невозможно построить канал здесь...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Строить каналы.
 STR_LANDINFO_CANAL                                              :Канал
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Невозможно построить шлюз здесь...

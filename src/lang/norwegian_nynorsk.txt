@@ -592,6 +592,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Første
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Første køyretøy kjem fram på stasjonen til motstandaren
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ulykker/katastrofar
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firma informasjon
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Opning / stenging av industriar
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiske endringar
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Råd/informasjon om køyretøya til spelaren
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye køyretøy
@@ -727,6 +728,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plasser 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plasser fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plasser radiosendar
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Trykk og held inne CTRL for å fjerne det
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Slett
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett byen heilt
 STR_0292_SAVE_SCENARIO                                          :Lagre scenario
@@ -1089,6 +1091,9 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eige firma
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle firma
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Foretrekk lagchat med <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funksjonen til scrollhjulet: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom kart
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll kart
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal køyretøy per spelar: {ORANGE}{STRING}
@@ -1207,6 +1212,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Tre av t
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plasser tre av tilfeldig type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan ikkje byggje kanalar her...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Lag kanalar
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan ikkje byggje sluser her...
@@ -2907,6 +2913,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} er lag
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} må være lasta før{STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} må være lasta etter {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fila den var laga for å omsetje
 
 STR_NEWGRF_ADD                                                  :{BLACK}Legg til
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Legg ei ny NewGRF-fil til lista

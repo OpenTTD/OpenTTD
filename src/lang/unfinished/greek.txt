@@ -584,7 +584,6 @@ STR_01FE_DIFFICULTY                                             :{BLACK}{G=f}Δ�
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Τελευταίο μήνυμα/αναφορά νέων
 STR_0201_MESSAGE_SETTINGS                                       :Ρυθμίσεις μηνυμάτων
-STR_MESSAGE_HISTORY_MENU                                        :
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Εμφάνιση τελευταίου μηνύματος/αναφοράς νέων, επιλογές μηνυμάτων
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Επιλογές Μηνυμάτων
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Τύποι μηνυμάτων:
@@ -1084,22 +1083,73 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Μέγ�
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Αυτόματη επισκευή ελικοπτέρων στα ελικοδρόμια: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Σύνδεση γραμμής εργαλείων τοπίου με γραμμή εργαλείων σιδηρόδρομου/δρόμου/νερού/αεροδρομίου: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ανάποδη μετακίνηση οθόνης: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Εμφάνιση χρωμάτων των εταιρειών: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Κανένας
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Η Εταιρεία μου
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Όλες οι εταιρίες
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Προτίμηση ομαδικού chat με <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Λειτουργία ροδέλας κύλισης: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom στο χάρτη
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Μετακίνηση στο χάρτη
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Κλειστό
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Ταχύτητα ροδέλας μετακίνησης χάρτη: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Μέγιστα τρένα ανα παίκτη: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Μέγιστα οχήματα ανα παίκτη: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Μέγιστα αεροσκάφη ανα παίκτη: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Μέγιστα πλοία ανά παίκτη: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Απενεργοποίηση τρένων υπολογιστή: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Απενεργοποίηση οχημάτων υπολογιστή: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Απενεργοποίηση αεροσκαφών υπολογιστή: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Απενεργοποίηση πλοίων υπολογιστή: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Ενεγοποίηση νέας AI (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Επιτρέπονται οι AI σε παιχνίδι για πολλούς παίκτες (πειραματικό): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}{STRING} μέρες/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}απενεργοποιημένο
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα: {ORANGE}{STRING} μέρες/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα:: {ORANGE}απενεργοποιημένο
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για αεροσκάφη: {ORANGE}{STRING} μέρες/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για αεροσκάφη: {ORANGE}απενεργοποιημένο
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για πλοία: {ORANGE}{STRING} μέρες/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για πλοία: {ORANGE}απενεργοποιημένο
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Απενεργοποίηση επισκευών όταν οι βλάβες είναι απενεργοποιημένες: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Ενεργοποίηση ορίων ταχύτητας βαγονιών: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Απενεργοποίηση ηλεκτρικών γραμμών: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Τα έγχρωμα νέα εμφανίζονται το: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Έτος εκκίνησης: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Τέλος παιχνιδιού το: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ενεργοποίηση ομαλής οικονομίας (περισσότερες, μικρότερες αλλαγές)
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Ενεργοποίηση δυνατότητας αγοράς μετοχών από άλλες εταιρείες
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Κατά το σύρσιμο, τοποθέτησε σήματα κάθε: {ORANGE}{STRING} τετράγωνο(α)
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Αυτόματο χτίσιμο σηματοφόρων πρίν: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Θέση κύριας εργαλειοθήκης: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Αριστερά
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Κέντρο
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Δεξιά
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}απενεργοποιημένο
 
+STR_CONFIG_PATCHES_GUI                                          :{BLACK}Σύστημα Διεπαφής
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Κατασκευή
+STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Οχήματα
+STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Σταθμοί
+STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Οικονομία
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Ανταγωνιστές
 
+STR_CONFIG_PATCHES_DISABLED                                     :απενεργοποιημένο
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
+STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Αλλαγή τιμής ρύθμισης
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Κάποια ή όλα τα προεπιλεγμένα διαστήματα επισκευών παρακάτω δεν είναι συμβατά με την επιλεγμένη ρύθμιση! 5-90% και 30-800 μέρες είναι τα αποδεκτά
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Χρησιμοποίηση YAPF για τα πλοία: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Χρησιμοποίηση YAPF για τα οχήματα: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Χρησιμοποίηση YAPF για τα τρένα: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Συγκρατημένο τοπίο
 STR_SUB_ARCTIC_LANDSCAPE                                        :Πολικό τοπίο
@@ -1107,19 +1157,48 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :Υποτροπ�
 STR_TOYLAND_LANDSCAPE                                           :Παιχνιδιάστικο τοπίο
 
 STR_CHEATS                                                      :{WHITE}Κλεψιές
+STR_CHEATS_TIP                                                  :{BLACK}Τα κουτάκια δείχνουν αν έχετε χρησιμοποιήσει αυτό το κόλπο πρίν
+STR_CHEATS_WARNING                                              :{BLACK}Προσοχή! Είστε έτοιμος να προδώσετε τους φίλους ανταγωνιστές σας. Θυμηθείτε ότι αυτή η ντροπή θα μείνει για πάντα.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Αύξηση χρημάτων κατά {CURRENCY64}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Παίξτε σαν παίκτης: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Μαγική μπουλντόζα (αφαιρεί βιομηχανίες, αμετακίνητα): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Τα τούνελ διασταυρώνονται: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Χτήσιμο ενώ βρίσκεστε σε παύση: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Τα Jet δεν θα συγκρούονται (συχνά) σε μικρά αεροδρόμια: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Αλλαγή κλίματος: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Αλλαγή ημ/νίας: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ενεργοποίηση δυνατότητας αλλαγής τιμών παραγωγής: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Καθ' οδόν {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Πορεία προς {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :Πήγαινε δια μέσου {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Πήγαινε χωρίς στάση μέσω {WAYPOINT}
 
+STR_WAYPOINTNAME_CITY                                           :Σημείο πορείας {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Σημείο πορείας {TOWN} #{COMMA}
+STR_LANDINFO_WAYPOINT                                           :Σημείο πορείας
 
+STR_WAYPOINT                                                    :{WHITE}Σημείο πορείας
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Επιλογή τύπου σημείου πορείας
 
+STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου πορείας
 
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Αδύνατο να αλλαχτεί το όνομα του σημείου πορείας...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Μετατροπή γραμμής σε σημείο πορείας
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Αδύνατο να χτιστεί σημείο πορείας τρένου εδώ...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Αδύνατο να αφαιρεθεί το σημείο πορείας τρένου εδώ...
 
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Γραμμή
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...δεν υπάρχει καμία πόλη στην πίστα
 
+STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Είστε σίγουρος ότι θέλετε να δημιουργήσετε ένα τυχαίο τοπίο;
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Πολλές τυχαίες πόλεις
+STR_RANDOM_TOWNS_TIP                                            :{BLACK}Κάλυψη του χάρτη με τυχαία τοποθετημένες πόλεις
 STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Πολλές τυχαίες βιομηχανίες
 
 

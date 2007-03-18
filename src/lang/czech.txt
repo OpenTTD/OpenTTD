@@ -649,6 +649,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Příje
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Příjezd prvního vozidla do konkurenční stanice
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nehody / katastrofy
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informace o společnosti
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Otevření / zavření továren
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Změny v ekonomice
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rady / informace o hráčových vozidlech
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nový dopravní prostředek
@@ -784,6 +785,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umístit
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umístit maják
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umístit vysílač
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Vytvořit pouštní oblast{}Stiskem CTRL ji odstraníš
+STR_CREATE_LAKE                                                 :{BLACK}Vytvořit vodní plochu.{}Pokud není držen CTRL, vytvoří se na úrovni moře průplav; v opačném případě se zaplaví ostatní dílky
 STR_0290_DELETE                                                 :{BLACK}Smaž
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Smazat celé toto město
 STR_0292_SAVE_SCENARIO                                          :Uložit mapu
@@ -1146,6 +1148,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :žádnou spole�
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :jen vlastní společnost
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :všechny společnosti
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Přepnout na týmový chat <ENTER>em: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Chování skrolovacího tlačítka: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :zoomování mapy
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :pohyb po mapě
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :nic
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rychlost skrolovacího kolečka: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vlaků na hráče: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum silničních vozidel na hráče: {ORANGE}{STRING}
@@ -1264,6 +1271,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Různé 
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Umístit nahodné stromy
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Zde nemohu postavit průplav...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Vytvořit průplav
 STR_LANDINFO_CANAL                                              :Průplav
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Zde nemohu postavit zdymadlo...

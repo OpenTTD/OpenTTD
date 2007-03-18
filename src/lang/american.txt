@@ -280,6 +280,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...owned by {STRING}
 STR_013C_CARGO                                                  :{BLACK}Cargo
@@ -590,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrival
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrival of first vehicle at competitor's station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / disasters
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Company information
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Open / close of industries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Economy changes
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Advice / information on player's vehicles
 STR_020C_NEW_VEHICLES                                           :{YELLOW}New vehicles
@@ -725,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Place ro
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Place lighthouse
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Place transmitter
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area.{}Press and hold CTRL to remove it
+STR_CREATE_LAKE                                                 :{BLACK}Define water area.{}Make a canal, unless CTRL is held down at sea level, when it will flood the surroundings instead
 STR_0290_DELETE                                                 :{BLACK}Delete
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely
 STR_0292_SAVE_SCENARIO                                          :Save scenario
@@ -1087,6 +1090,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :None
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Own company
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :All companies
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Prefer team chat with <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Function of scrollwheel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom map
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll map
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Map scrollwheel speed: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING}
@@ -1205,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Trees of
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Place trees of random type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Can't build canals here...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Build canals.
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Can't build locks here...
@@ -2905,6 +2914,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} is des
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invalid parameter for {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} must be loaded before {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} must be loaded after {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :the GRF file it was designed to translate
 
 STR_NEWGRF_ADD                                                  :{BLACK}Add
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Add a NewGRF file to the list

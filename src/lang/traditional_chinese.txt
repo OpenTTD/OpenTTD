@@ -591,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}首個�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}首個交通工具已到達競爭對手的車站
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}意外 / 災難
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}公司資訊
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}工業開張/倒閉消息
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}經濟氣候變化
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}給玩家的載具的建議或資訊
 STR_020C_NEW_VEHICLES                                           :{YELLOW}新載具
@@ -738,7 +739,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}儲存�
 STR_0298_LOAD_SCENARIO                                          :{WHITE}載入場景
 STR_0299_SAVE_SCENARIO                                          :{WHITE}儲存場景
 STR_029A_PLAY_SCENARIO                                          :{BLACK}以此場景開始
-STR_PLAY_HEIGHTMAP                                              :{BLACK}玩高度圖
+STR_PLAY_HEIGHTMAP                                              :{BLACK}載入高度圖
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}以高度圖為地形開始新遊戲
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}你要離開這個場景嗎?
 STR_029C_QUIT_EDITOR                                            :{WHITE}離開編輯器
@@ -1088,6 +1089,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :不顯示
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :自己的公司
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :所有公司
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}按 <ENTER> 鍵與小隊交談: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}滑鼠滾輪作用： {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :放大地圖
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :捲動地圖
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :關閉
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}滾輪地圖捲動速度： {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}每位玩家可擁有列車數目: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}每位玩家可擁有車輛數目: {ORANGE}{STRING}
@@ -1205,7 +1211,7 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}移平�
 STR_TREES_RANDOM_TYPE                                           :{BLACK}隨機種類樹木
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}種植隨機種類樹木
 
-STR_CANT_BUILD_CANALS                                           :{WHITE}不可以在這裏興建運河...
+STR_CANT_BUILD_CANALS                                           :{WHITE}不可以在這裏開鑿運河...
 STR_LANDINFO_CANAL                                              :運河
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}不可以在這裏興建水閘...
@@ -2497,13 +2503,13 @@ STR_8806_GO_TO                                                  :前往 {STATION
 STR_8807_GO_TO_TRANSFER                                         :前往 {STATION} (轉運，僅載不卸)
 STR_8808_GO_TO_UNLOAD                                           :前往 {STATION} (卸客貨)
 STR_8809_GO_TO_TRANSFER_UNLOAD                                  :前往 {STATION} (轉運，卸客貨清空離站)
-STR_880A_GO_TO_LOAD                                             :前往 {STATION} (載客貨)
+STR_880A_GO_TO_LOAD                                             :前往 {STATION} (載貨)
 STR_880B_GO_TO_TRANSFER_LOAD                                    :前往 {STATION} (轉運，等待滿載)
 STR_880C_GO_NON_STOP_TO                                         :前往 {STATION} 不停靠/中途不停
 STR_880D_GO_TO_NON_STOP_TRANSFER                                :前往 {STATION} (轉運，僅載不卸) 中途不停
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :前往 {STATION} (卸客貨) 中途不停
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :前往 {STATION} (轉運，卸客貨清空離站) 中途不停
-STR_8810_GO_NON_STOP_TO_LOAD                                    :前往 {STATION} (載客貨) 中途不停
+STR_8810_GO_NON_STOP_TO_LOAD                                    :前往 {STATION} (載貨) 中途不停
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :前往 {STATION} (轉運，等待滿載) 中途不停
 STR_GO_TO_TRAIN_DEPOT                                           :前往 {TOWN} 機廠
 STR_SERVICE_AT_TRAIN_DEPOT                                      :在 {TOWN} 機廠維護

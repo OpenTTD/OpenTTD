@@ -591,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Eerste 
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Eerste voertuig bij concurrerend station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ongelukken/rampen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Bedrijfsinformatie
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Openen / sluiten van industrieën
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Veranderingen in de economie
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Advies/informatie over voertuigen van de speler
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nieuwe voertuigen
@@ -726,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaats s
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaats vuurtoren
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaats radiomast
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definieer woestijn gebied.{}Gebruik CTRL om het te verwijderen
+STR_CREATE_LAKE                                                 :{BLACK}Definiëer water gebied.{}Maak een kanaal, tenzij CTRL wordt vastgehouden op zee niveau, dan zal de omgeving overstromen
 STR_0290_DELETE                                                 :{BLACK}Verwijder
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Verwijder deze hele stad
 STR_0292_SAVE_SCENARIO                                          :Scenario opslaan
@@ -1088,6 +1090,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Niets
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eigen bedrijf
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle bedrijven
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Voorkeur voor team chat met <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Functie van muiswiel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom kaart
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll kaart
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Uit
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaart muiswiel snelheid: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximaal aantal wegvoertuigen per speler: {ORANGE}{STRING}
@@ -1206,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeu
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plant bomen van willekeurig type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan hier geen kanaal bouwen...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Bouw kanalen.
 STR_LANDINFO_CANAL                                              :Kanaal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan hier geen sluis bouwen...

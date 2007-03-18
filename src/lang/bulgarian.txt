@@ -593,6 +593,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Пър�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Първо пристигане на превозно средство в конкурентна станция
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Инциденти / бедствия
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Информация за компанията
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Отворени / затворени промишлености
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Промени в икономиката
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Съвет / информация за превозните средства
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Нови превозни средства
@@ -728,6 +729,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Пост
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Поставяне фар
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Постави предавател
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Избери пустинен терен.{}Задръж CTRL за да го премахнеш.
+STR_CREATE_LAKE                                                 :{BLACK}Определи водна площ.{}Построи канал, освем когато CTRL е натиснат на морско ниво, когато ще наводни околната среда в замяна
 STR_0290_DELETE                                                 :{BLACK}Изтрий
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Премахни напълно града
 STR_0292_SAVE_SCENARIO                                          :Запис на сценарий
@@ -1090,6 +1092,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Нито едн
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Твоята компания
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Всички компании
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Избери предпочитания отбор за чатене <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Предназначение на scrollwheel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Промени фокусат на картата
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Разгледай картата
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Изклучен
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollwheel скорост на картата: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. влакове на играч: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. брой коли на играч: {ORANGE}{STRING}
@@ -1208,6 +1215,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Дърв
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Постави дървета от произволен тип
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Тук не може да се строят канали...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Построи канал.
 STR_LANDINFO_CANAL                                              :Канал
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Тук не може да се строят шлюзове...
@@ -2634,7 +2642,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Несъвме�
 STR_TRAIN_NO_POWER                                              :{RED}Няма мощност
 STR_TRAIN_START_NO_CATENARY                                     :Влака не може да тръгне, защото ЖП линията няма catenary
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Нов {STRING} е на разположение!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Нов {STRING} е на разположение! - {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Кола на пътя
@@ -2906,6 +2916,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} е п�
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Невалиден параметър за {STRING}: параметър {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} трябва да бъде зареден преди {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} трябва да бъде зареден след {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF файлат беше предназначен да преведе
 
 STR_NEWGRF_ADD                                                  :{BLACK}Добави
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавяне на NewGRF файл към списъка
@@ -3139,3 +3150,4 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Сума за преместване: {LTBLUE}{CURRENCY}

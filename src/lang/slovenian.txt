@@ -633,6 +633,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prihod 
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prihod prvega vozila na nasprotnikovo postajo
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nesreče / katastrofe
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacije o podjetju
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Odpiranje / zapiranje industrij
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomske spremembe
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Nasveti / informacije o igralčevem vozilu
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nova vozila
@@ -1130,6 +1131,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Brez
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Lastno podjetje
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Vsa podjetja
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Izberi skupinski pogovor z <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funkcija kolesca miške: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Približaj zemljevid
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Premikaj zemljevid
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Izklopljeno
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Hitrost premika s kolescem miške: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Največ vlakov na igralca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Največ cestnih vozil na igralca: {ORANGE}{STRING}

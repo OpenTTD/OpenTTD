@@ -592,6 +592,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Llegada
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Llegada del 1er veh. estación de la competencia
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidentes / desastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Información de la empresa
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Aperturas/ cierres de industrias
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Cambios en la economía
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Sugerencias/info. sobre vehículos del jugador
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nuevos vehículos
@@ -727,6 +728,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Coloca z
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar faro
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmisor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desertica.{}Pulsa y mantén CTRL para quitarla
+STR_CREATE_LAKE                                                 :{BLACK}Define el area de agua.{}Haz un canal, a menos que mantengas pulsado CTRL a nivel del mar, entonces se inundarán los alrededores del lugar
 STR_0290_DELETE                                                 :{BLACK}Borrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Borrar esta población completamente
 STR_0292_SAVE_SCENARIO                                          :Guardar escenario
@@ -1089,6 +1091,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ninguno
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propia empresa
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Todas las empresas
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Charla de equipo preferida con <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Función de la rueda de scroll: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom sobre el mapa
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll sobre el mapa
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Nada
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidad del scroll sobre el mapa: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máx vehículos de carretera por jugador: {ORANGE}{STRING}
@@ -1207,6 +1214,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árboles
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Colocar distintos árboles al azar
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}No se pueden construir canales aquí...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Construir canales.
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}No se pueden construir dársenas aquí...
@@ -2907,6 +2915,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} está 
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parámetro incorrecto para {STRING}: parametro {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} debe ser cargado antes de {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} debe ser cargado después de {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :el fichero GRF ha sido diseñado para ser traducido
 
 STR_NEWGRF_ADD                                                  :{BLACK}Añadir
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Añadir un NewGRF a la lista

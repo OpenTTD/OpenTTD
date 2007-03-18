@@ -728,6 +728,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}암석 �
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}등대를 놓습니다.
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}송신기를 놓습니다.
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}사막 지역을 지정합니다.{}CTRL키를 누른채로 지우십시오.
+STR_CREATE_LAKE                                                 :{BLACK}수면 지역을 정의하세요.{}바다 높이에서 CTRL이 눌려 있지 않으면, 운하를 만들때 침수할 것입니다.
 STR_0290_DELETE                                                 :{BLACK}삭제
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}이 도시를 완전히 삭제
 STR_0292_SAVE_SCENARIO                                          :시나리오 저장
@@ -1093,6 +1094,7 @@ STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER>
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}스크롤의 역할: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :맵 줌
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :맵 스크롤
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :끄기
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}맵 스크롤 속도: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}최대 열차 수: {ORANGE}{STRING}
@@ -1212,6 +1214,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}무작�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}모든 종류의 나무를 무작위로 심습니다.
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}여기에 운하를 건설할 수 없습니다...
+STR_BUILD_CANALS_TIP                                            :{BLACK}운하 만들기
 STR_LANDINFO_CANAL                                              :운하
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}여기에 갑문을 지을 수 없습니다...

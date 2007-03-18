@@ -591,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}プレ�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}競争者の駅へ車両の初めての到着
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}事故／災害
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}会社情報
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}産業の開業／閉業
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}経済の変化
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}プレヤーの車両についての情報
 STR_020C_NEW_VEHICLES                                           :{YELLOW}車両の新登場
@@ -726,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}土地�
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}灯台を建設します
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}送信機を建設します
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}砂漠を作成します。{}Control+クリックすると消去します
+STR_CREATE_LAKE                                                 :{BLACK}。水を作成します。{}通常の使用時に運河を建設します。Controlをクリックすると、海水位にある地域が浸水できます。
 STR_0290_DELETE                                                 :{BLACK}破壊
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}この町を完全に破壊します
 STR_0292_SAVE_SCENARIO                                          :シナリオを保存
@@ -1088,6 +1090,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :なし
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :プレヤーの会社
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :すべての会社
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER>でのチームチャットを優先：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}マウススクロールの動作：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :地図をズーム
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :地図をスクロール
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :切
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}地図のスクロール速度：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}一人のプレヤーの列車数上限：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}一人のプレヤーの道路車両数上限：{ORANGE}{STRING}
@@ -1206,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}ラン�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}ランドムな木を植林します
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}ここに運河が建設できません...
+STR_BUILD_CANALS_TIP                                            :{BLACK}運河を建設します
 STR_LANDINFO_CANAL                                              :運河
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}ここに水門が建設できません...
@@ -2904,6 +2912,8 @@ STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING}はOpen
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING}はTTDの{STRING}バージョンのみに対応しています。
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING}を使用時に、{STRING}を入にしなければなりません
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING}のパラメータが不正：パラメータ　{STRING}（{NUM}）
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}を読み込む前、{0:STRING}を読み込まなければなりません。
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING}は{STRING}の読み込み後のみに読み込めます。
 
 STR_NEWGRF_ADD                                                  :{BLACK}追加
 STR_NEWGRF_ADD_TIP                                              :{BLACK}NewGRFファイルをリストに追加します
@@ -3133,6 +3143,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域�
 ############ Date formatting
 STR_DATE_TINY                                                   :{2:NUM}-{1:STRING}-{0:STRING}
 STR_DATE_SHORT                                                  :{1:NUM}年{0:STRING}
+STR_DATE_LONG                                                   :{2:NUM}年{1:STRING}{0:STRING}
 
 ########
 

@@ -593,6 +593,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Chegada
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Chegada do primeiro veículo à estação de um oponente
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acidentes / desastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informações da empresa
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Abrir / fechar industrias
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Alterações econômicas
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Avisos / informações dos veículos do jogador
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Novos veículos
@@ -1090,6 +1091,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Minha empresa
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Todas as empresas
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Falar em time com <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Função do scrollwheel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom map
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll map
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Desligado
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidade do scrollwheel do mapa: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de automóveis por jogador: {ORANGE}{STRING}
@@ -1208,6 +1214,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plantar árvores de tipo aleatório
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Impossível construir canais aqui...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Construir canais.
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossível construir eclusas aqui...

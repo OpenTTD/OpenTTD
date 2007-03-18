@@ -591,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst av första fordonet vid konkurrenternas stn.
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Olyckor / katastrofer
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Företagsinformation
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Öppning / stängning av industrier
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Förändringar av ekonomin
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Råd / information om spelarens fordon
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nya fordon
@@ -726,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placera 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placera fyrtorn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placera radiosändare
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiera ökenområde.{}Tryck och håll CTRL för att ta bort
+STR_CREATE_LAKE                                                 :{BLACK}Definiera vattenyta.{}Skapa en kanal, om inte CTRL är nedhållen vid havsnivå, då den kommer att översvämma närliggande områden istället
 STR_0290_DELETE                                                 :{BLACK}Ta bort
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Ta bort staden helt och hållet
 STR_0292_SAVE_SCENARIO                                          :Spara scenario
@@ -1088,6 +1090,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Inga
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Egna företaget
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alla företag
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Prioritera lagchat med <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Mushjulsfunktion: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zooma kartan
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scrolla kartan
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Avstängd
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mushjulshastighet: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max antal tåg per spelare: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max antal vägfordon per spelare: {ORANGE}{STRING}
@@ -1206,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Träd av
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Placera träd av olika typ
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan inte bygga kanaler här...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Bygg kanaler.
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan inte bygga slussar här...
@@ -2906,6 +2914,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} är de
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Felaktig parameter för {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} måste laddas innan {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} måste laddas efter {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var designad att översätta
 
 STR_NEWGRF_ADD                                                  :{BLACK}Lägg till
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lägg till en ny NewGRF-fil till listan

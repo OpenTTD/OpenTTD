@@ -344,6 +344,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}... vlastníkom je {STRING}
 STR_013C_CARGO                                                  :{BLACK}Náklad
@@ -654,6 +655,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prijazd
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prijazd prveho vozidla do stanice konkurencie
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Havarie / Katastrofy
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacie o spolocnosti
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Vznik a zánik priemyslu
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Zmeny v ekonomike
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Oznamenia / Informacie o vozidlach hraca
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nove vozidla
@@ -789,6 +791,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umiestni
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umiestnit majak
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umiestnit vysielac
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Vytvorit oblast puste.{}Drzanim CTRL ju odstranite
+STR_CREATE_LAKE                                                 :{BLACK}Definovat oblast vody.{}Vytvorí kanál, pri stlacení CTRL na úrovni mora zaplaví okolie
 STR_0290_DELETE                                                 :{BLACK}Vymazat
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Kompletne vymazat toto mesto
 STR_0292_SAVE_SCENARIO                                          :Ulozit scenar
@@ -1151,6 +1154,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ziadne
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Vlastna spolocnost
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Vsetky spolocnosti
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Preferovaný teamový chat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funkcia scrolovacieho kolieska: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zvacšit mapu
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Posúvat mapu
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Vypnuté
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rychlost posúvania mapy: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximalny pocet automobilov hraca: {ORANGE}{STRING}
@@ -1269,6 +1277,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Nahodne 
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Umiestnit nahodne stromy
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Tu sa neda postavit prieplav ...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Stavba kanálov.
 STR_LANDINFO_CANAL                                              :Prieplav
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Tu sa neda postavit stavidlo ...
@@ -2969,6 +2978,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} je nav
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parameter {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musí byt nahratý pred {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musí byt nahratý po {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF súbor bol navrhnutý na preklad
 
 STR_NEWGRF_ADD                                                  :{BLACK}Pridat
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Pridat NewGRF súbor do zoznamu

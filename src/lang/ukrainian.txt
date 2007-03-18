@@ -717,6 +717,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}При�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Прибуття першого транспорту на станцію конкурента
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Нещасні випадки/стихійні лиха
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Інформація компанії
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Відкриття / закриття підприємств
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Зміни в економіці
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Поради/інформація про транспорт гравця
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Новий транспорт
@@ -852,6 +853,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Розм
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Поставити маяк
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Поставити ретранслятор
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Позначити територію пустелі.{}Натисніть і утримуйте CTRL, щоб відмінити
+STR_CREATE_LAKE                                                 :{BLACK}Позначити, де буде вода.{}Make a canal, unless CTRL is held down at sea level, when it will flood the surroundings instead
 STR_0290_DELETE                                                 :{BLACK}Видалити
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Видалити місто повністю
 STR_0292_SAVE_SCENARIO                                          :Зберегти сценарій
@@ -1214,6 +1216,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Жодна
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Моя компанія
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Всі компанії
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Командний чат по <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Функція колеса миші: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Масштаб карти
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Прокрутка карти
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Відкл.
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Швидкість прокрутки колесом миші: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. поїздів у гравця: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. авто у гравця: {ORANGE}{STRING}
@@ -1332,6 +1339,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Дере
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Садити дерева випадкового типу
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Неможливо будувати канал тут...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Будувати канали.
 STR_LANDINFO_CANAL                                              :Канал
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Неможливо будувати шлюз тут...
@@ -3069,6 +3077,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} роз
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Помилковий параметр для {STRING}: параметр {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} має бути завантажений до {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} має бути завантажений після {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-файл, для якого це призначалось перекласти
 
 STR_NEWGRF_ADD                                                  :{BLACK}Додати
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Додати файли NewGRF до списку

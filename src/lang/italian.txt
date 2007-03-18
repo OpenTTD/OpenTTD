@@ -399,7 +399,7 @@ STR_SELECT_ALL_TYPES                                            :{BLACK}Selezion
 STR_AVAILABLE_TRAINS                                            :{BLACK}Treni Disponibili
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Veicoli Disponibili
 STR_AVAILABLE_SHIPS                                             :{BLACK}Navi Disponibili
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aerei Disponibili
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Available Aircraft
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Mostra una lista di motrici disponibili per quel tipo di veicolo
 STR_MANAGE_LIST                                                 :{BLACK}Gestisci lista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Manda istruzioni a tutti i veicoli in questa lista
@@ -727,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Piazza t
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Piazza faro
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Piazza trasmettitore
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definisce area desertica.{}Clicca premendo CTRL per rimuoverla
+STR_CREATE_LAKE                                                 :{BLACK}Definisci la zona d'acqua.{}Crei un canale, a meno che CTRL non venga premuto a livello del mare, allagando così i dintorni
 STR_0290_DELETE                                                 :{BLACK}Elimina
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Elimina completamente questa città
 STR_0292_SAVE_SCENARIO                                          :Salva scenario
@@ -1089,6 +1090,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nessuna
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propria società
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tutte le società
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Preferisce team chat con <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funzione della rotellina: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom mappa
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scrolla mappa
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocità rotellina mappa: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max veicoli stradali per giocatore: {ORANGE}{STRING}
@@ -1207,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Alberi c
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Pianta alberi di tipo casuale
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Non puoi costruire qui un canale...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Costruisci canali.
 STR_LANDINFO_CANAL                                              :Canale
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Non puoi costruire qui una chiusa...
@@ -2781,7 +2788,7 @@ STR_CLONE_AIRCRAFT                                              :{BLACK}Clona Ae
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Costruisce una copia dell'aereo. Premere contemporaneamente Control per condividere gli ordini
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Costruisce una copia di un aereo. Cliccare su questo pulsante e poi sull'aereo (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nuovo Aereo
-STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construisci Aereo
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Costruisci Aereo
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Non puoi costruire l'aereo
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aereo
 STR_A00A                                                        :{WHITE}{VEHICLE}
@@ -2998,8 +3005,8 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selezion
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Premi per fermare il rimpiazzo delle locomotive del tipo selezionato a sinistra
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Premi per iniziare il rimpiazzo delle locomotive del tipo selezionato a sinistra con quello selezionato a destra
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleziona il tipo di binario per la quale vuoi rimpiazzare le locomotive
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotiva verrà rimpiazzato il tipo selezionato a sinistra, se qualcuna
-STR_REPLACE_HELP                                                :{BLACK}Permette di rimpiazzare un locomotere con uno di un'altro tipo, quando il treno entra in un deposito
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotore verrà rimpiazzato il tipo selezionato a sinistra, se disponibile
+STR_REPLACE_HELP                                                :{BLACK}Permette di rimpiazzare un locomotore con uno di un altro tipo, quando i treni con quel locomotore entrano in un deposito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimozione vagoni: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}La autosostituzione mantiene la lunghezza del treno togliendo vagoni (iniziando dalla testa), se la sostituzione della locomotiva lo farebbe piu lungo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sostituzione: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3079,7 +3086,7 @@ STR_SNOW_LINE_DOWN                                              :{BLACK}Sposta g
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Cambia l'altezza delle nevi perenni
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Cambia l'anno di partenza
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Avviso scala
-STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ridimenzionare di molto la mappa sorgente non è consigliabile. Continuo con la generazione?
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ridimensionare di molto la mappa sorgente non è consigliabile. Continuo con la generazione?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nome Heightmap:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Dim.: {ORANGE}{NUM} x {NUM}
@@ -3092,7 +3099,7 @@ STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / 
 STR_WORLD_GENERATION                                            :{BLACK}Generazione mondo
 STR_TREE_GENERATION                                             :{BLACK}Generazione alberi
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Generazione oggetti non spostabili
-STR_CLEARING_TILES                                              :{BLACK}generazione aree brulle e rocciose
+STR_CLEARING_TILES                                              :{BLACK}Generazione aree brulle e rocciose
 STR_SETTINGUP_GAME                                              :{BLACK}Settaggio del gioco
 STR_PREPARING_TILELOOP                                          :{BLACK}Loop generazione tile del terreno
 STR_PREPARING_GAME                                              :{BLACK}Preparazione del gioco
@@ -3119,7 +3126,7 @@ STR_COMMUTER_AIRPORT                                            :{BLACK}Commuter
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinentale
 STR_HELIPORT                                                    :{BLACK}Eliporto
 STR_HELIDEPOT                                                   :{BLACK}Elideposito
-STR_HELISTATION                                                 :{BLACK}Elistatione
+STR_HELISTATION                                                 :{BLACK}Elistazione
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Aeroporti piccoli
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeroporti grandi

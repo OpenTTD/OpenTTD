@@ -814,6 +814,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umieść
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umieść latarnię morską
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umieść nadajnik
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiuj obszar pustyni.{}Wciśnij i trzymaj CTRL by usunąć
+STR_CREATE_LAKE                                                 :{BLACK}Stwórz akwen wodny.{}Tworzy kanał, chyba że przyrzymany jest CTRL na poziomie morza, wtedy pobliski teren zostanie zatopiony
 STR_0290_DELETE                                                 :{BLACK}Skasuj
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Skasuj to miasto
 STR_0292_SAVE_SCENARIO                                          :Zapisz scenariusz
@@ -1176,6 +1177,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Żadne
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Własnej firmy
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Wszystkich firm
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Preferuj czat drużynowy po użyciu <ENTER> lub <T>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funkcja rolki myszy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Powiększ widok
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Przesuń widok
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Rolka wyłączona
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Prędkość przesuwania widoku: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. liczba pociągów na gracza: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. liczba samochodów na gracza: {ORANGE}{STRING}
@@ -1294,6 +1300,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Drzewa r
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Sadzenie drzew rożnych rodzajów
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Nie można tutaj wybudować kanału...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Buduj kanały.
 STR_LANDINFO_CANAL                                              :Kanał
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Nie można tutaj wybudować śluzy...
