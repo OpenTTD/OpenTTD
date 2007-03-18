@@ -30,6 +30,7 @@
 #include "newgrf_sound.h"
 #include "yapf/yapf.h"
 #include "date.h"
+#include "cargotype.h"
 
 static const uint16 _roadveh_images[63] = {
 	0xCD4, 0xCDC, 0xCE4, 0xCEC, 0xCF4, 0xCFC, 0xD0C, 0xD14,
@@ -705,7 +706,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 			}
 
 			rs = GetStation(order->dest)->GetPrimaryRoadStop(
-				v->cargo_type == CT_PASSENGERS ? RoadStop::BUS : RoadStop::TRUCK
+				IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK
 			);
 
 			if (rs != NULL) {
@@ -843,7 +844,7 @@ static Vehicle* RoadVehFindCloseTo(Vehicle* v, int x, int y, Direction dir)
 
 static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 {
-	if (v->cargo_type == CT_PASSENGERS) {
+	if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
 		/* Check if station was ever visited before */
 		if (!(st->had_vehicle_of_type & HVOT_BUS)) {
 			uint32 flags;
@@ -1091,7 +1092,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 			trackdirs = TRACKDIR_BIT_NONE;
 		} else {
 			/* Our station */
-			RoadStop::Type rstype = (v->cargo_type == CT_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK;
+			RoadStop::Type rstype = IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK;
 
 			if (GetRoadStopType(tile) != rstype) {
 				/* Wrong station type */
@@ -1546,7 +1547,7 @@ again:
 			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_opt.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) ||
 			(IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
 			v->current_order.dest == GetStationIndex(v->tile) &&
-			GetRoadStopType(v->tile) == ((v->cargo_type == CT_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK) &&
+			GetRoadStopType(v->tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK) &&
 			v->u.road.frame == RVC_DRIVE_THROUGH_STOP_FRAME)) {
 
 		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
@@ -1562,7 +1563,7 @@ again:
 
 			if (IsDriveThroughStopTile(v->tile)) {
 				TileIndex next_tile = TILE_ADD(v->tile, TileOffsByDir(v->direction));
-				RoadStop::Type type = (v->cargo_type == CT_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK;
+				RoadStop::Type type = IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK;
 
 				assert(HASBIT(v->u.road.state, RVS_IS_STOPPING));
 
@@ -1754,7 +1755,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot == NULL && !(v->vehstatus & VS_CRASHED)) {
 		Station* st = GetStation(v->current_order.dest);
-		RoadStop* rs = st->GetPrimaryRoadStop(v->cargo_type == CT_PASSENGERS ? RoadStop::BUS : RoadStop::TRUCK);
+		RoadStop* rs = st->GetPrimaryRoadStop(IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK);
 		RoadStop* best = NULL;
 
 		if (rs != NULL) {

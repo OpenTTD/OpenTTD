@@ -57,5 +57,10 @@ const CargoSpec *GetCargo(CargoID c);
 /* Get the cargo ID with the cargo label */
 CargoID GetCargoIDByLabel(CargoLabel cl);
 
+static inline bool IsCargoInClass(CargoID c, uint16 cc)
+{
+	return GetCargo(c)->classes & cc;
+}
+
 
 #endif /* CARGOTYPE_H */

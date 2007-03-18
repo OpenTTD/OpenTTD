@@ -529,8 +529,9 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 		uint amt = min(accepts[i], 15);
 
 		// Make sure the station can accept the goods type.
-		if ((i != CT_PASSENGERS && !(st->facilities & (byte)~FACIL_BUS_STOP)) ||
-				(i == CT_PASSENGERS && !(st->facilities & (byte)~FACIL_TRUCK_STOP)))
+		bool is_passengers = IsCargoInClass(i, CC_PASSENGERS);
+		if ((!is_passengers && !(st->facilities & (byte)~FACIL_BUS_STOP)) ||
+				(is_passengers && !(st->facilities & (byte)~FACIL_TRUCK_STOP)))
 			amt = 0;
 
 		SB(st->goods[i].waiting_acceptance, 12, 4, amt);
@@ -2163,7 +2164,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 					if (!rs->IsFreeBay(side)) return VETSB_CANNOT_ENTER;
 
 					/* Check if the vehicle is stopping at this road stop */
-					if (GetRoadStopType(tile) == ((v->cargo_type == CT_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK) &&
+					if (GetRoadStopType(tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK) &&
 							v->current_order.dest == GetStationIndex(tile)) {
 						SETBIT(v->u.road.state, RVS_IS_STOPPING);
 						rs->AllocateDriveThroughBay(side);
@@ -2425,8 +2426,8 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 						(st->town->exclusive_counter == 0 || st->town->exclusivity == st->owner) && // check exclusive transport rights
 						st->goods[type].rating != 0 &&
 						(!_patches.selectgoods || st->goods[type].last_speed > 0) && // if last_speed is 0, no vehicle has been there.
-						((st->facilities & ~FACIL_BUS_STOP)   != 0 || type == CT_PASSENGERS) && // if we have other fac. than a bus stop, or the cargo is passengers
-						((st->facilities & ~FACIL_TRUCK_STOP) != 0 || type != CT_PASSENGERS)) { // if we have other fac. than a cargo bay or the cargo is not passengers
+						((st->facilities & ~FACIL_BUS_STOP)   != 0 || IsCargoInClass(type, CC_PASSENGERS)) && // if we have other fac. than a bus stop, or the cargo is passengers
+						((st->facilities & ~FACIL_TRUCK_STOP) != 0 || !IsCargoInClass(type, CC_PASSENGERS))) { // if we have other fac. than a cargo bay or the cargo is not passengers
 					if (_patches.modified_catchment) {
 						// min and max coordinates of the producer relative
 						const int x_min_prod = 9;

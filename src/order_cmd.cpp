@@ -15,6 +15,7 @@
 #include "news.h"
 #include "saveload.h"
 #include "vehicle_gui.h"
+#include "cargotype.h"
 
 /**
  * Called if a new block is added to the order-pool
@@ -218,7 +219,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					break;
 
 				case VEH_ROAD:
-					if (v->cargo_type == CT_PASSENGERS) {
+					if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
 						if (!(st->facilities & FACIL_BUS_STOP)) return CMD_ERROR;
 					} else {
 						if (!(st->facilities & FACIL_TRUCK_STOP)) return CMD_ERROR;
@@ -685,7 +686,7 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* Trucks can't share orders with busses (and visa versa) */
 			if (src->type == VEH_ROAD) {
-				if (src->cargo_type != dst->cargo_type && (src->cargo_type == CT_PASSENGERS || dst->cargo_type == CT_PASSENGERS))
+				if (src->cargo_type != dst->cargo_type && (IsCargoInClass(src->cargo_type, CC_PASSENGERS) || IsCargoInClass(dst->cargo_type, CC_PASSENGERS)))
 					return CMD_ERROR;
 			}
 
@@ -738,7 +739,7 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				FOR_VEHICLE_ORDERS(src, order) {
 					if (order->type == OT_GOTO_STATION) {
 						const Station *st = GetStation(order->dest);
-						if (dst->cargo_type == CT_PASSENGERS) {
+						if (IsCargoInClass(dst->cargo_type, CC_PASSENGERS)) {
 							if (st->bus_stops != NULL) required_dst = st->bus_stops->xy;
 						} else {
 							if (st->truck_stops != NULL) required_dst = st->truck_stops->xy;
@@ -953,7 +954,7 @@ static TileIndex GetStationTileForVehicle(const Vehicle* v, const Station* st)
 		case VEH_AIRCRAFT:  return st->airport_tile;
 		case VEH_SHIP:      return st->dock_tile;
 		case VEH_ROAD:
-			if (v->cargo_type == CT_PASSENGERS) {
+			if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
 				return (st->bus_stops != NULL) ? st->bus_stops->xy : 0;
 			} else {
 				return (st->truck_stops != NULL) ? st->truck_stops->xy : 0;
