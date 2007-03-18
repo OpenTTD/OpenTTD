@@ -140,7 +140,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
 	SetDParam(0, (_price.aircraft_base >> 3) * avi->base_cost >> 5);
-	SetDParam(1, avi->max_speed);
+	SetDParam(1, avi->max_speed * 10 / 16);
 	SetDParam(2, avi->passenger_capacity);
 	SetDParam(3, avi->mail_capacity);
 	SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
