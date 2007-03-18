@@ -596,7 +596,7 @@ static void RoadVehCrash(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 
 	pass = 1;
-	if (v->cargo_type == CT_PASSENGERS) pass += v->cargo_count;
+	if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo_count;
 	v->cargo_count = 0;
 
 	SetDParam(0, pass);

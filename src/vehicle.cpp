@@ -700,7 +700,7 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 	//if the aircraft carries passengers and is NOT full, then
 	//continue loading, no matter how much mail is in
 	if (v->type == VEH_AIRCRAFT &&
-			v->cargo_type == CT_PASSENGERS &&
+			IsCargoInClass(v->cargo_type, CC_PASSENGERS) &&
 			v->cargo_cap != v->cargo_count) {
 		return true;
 	}
