@@ -13,6 +13,7 @@
 #include "economy.h"
 #include "variables.h"
 #include "date.h"
+#include "cargotype.h"
 
 static void HandleSubsidyClick(int y)
 {
@@ -50,22 +51,24 @@ static void HandleSubsidyClick(int y)
 
 handle_click:
 
+	TownEffect te = GetCargo(s->cargo_type)->town_effect;
+
 	/* determine from coordinate for subsidy and try to scroll to it */
 	offs = s->from;
 	if (s->age >= 12) {
 		xy = GetStation(offs)->xy;
-	} else if (s->cargo_type == CT_PASSENGERS || s->cargo_type == CT_MAIL) {
+	} else if (te == TE_PASSENGERS || te == TE_MAIL) {
 		xy = GetTown(offs)->xy;
 	} else {
 		xy = GetIndustry(offs)->xy;
-
 	}
+
 	if (!ScrollMainWindowToTile(xy)) {
 		/* otherwise determine to coordinate for subsidy and scroll to it */
 		offs = s->to;
 		if (s->age >= 12) {
 			xy = GetStation(offs)->xy;
-		} else if (s->cargo_type == CT_PASSENGERS || s->cargo_type == CT_MAIL || s->cargo_type == CT_GOODS || s->cargo_type == CT_FOOD) {
+		} else if (te == TE_PASSENGERS || te == TE_MAIL || te == TE_GOODS || te == TE_FOOD) {
 			xy = GetTown(offs)->xy;
 		} else {
 			xy = GetIndustry(offs)->xy;
