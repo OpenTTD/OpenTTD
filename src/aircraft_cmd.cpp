@@ -1063,19 +1063,38 @@ static bool AircraftController(Vehicle *v)
 	if (v->load_unload_time_rem != 0) v->load_unload_time_rem--;
 
 	do {
-		/* Turn. Do it slowly if in the air. */
-		Direction newdir = GetDirectionTowards(v, x + amd->x, y + amd->y);
-		if (newdir != v->direction) {
-			v->direction = newdir;
-			if (amd->flag & AMED_SLOWTURN) {
-				if (v->load_unload_time_rem == 0) v->load_unload_time_rem = 8;
-			} else {
-				v->cur_speed >>= 1;
+
+		GetNewVehiclePosResult gp;
+
+		if (dist < 4) {
+			/* move vehicle one pixel towards target */
+			gp.x = (v->x_pos != (x + amd->x)) ?
+					v->x_pos + ((x + amd->x > v->x_pos) ? 1 : -1) :
+					v->x_pos;
+			gp.y = (v->y_pos != (y + amd->y)) ?
+					v->y_pos + ((y + amd->y > v->y_pos) ? 1 : -1) :
+					v->y_pos;
+
+			/* Oilrigs must keep v->tile as st->airport_tile, since the landing pad is in a non-airport tile */
+			gp.new_tile = (st->airport_type == AT_OILRIG) ? st->airport_tile : TileVirtXY(gp.x, gp.y);
+
+		} else {
+
+			/* Turn. Do it slowly if in the air. */
+			Direction newdir = GetDirectionTowards(v, x + amd->x, y + amd->y);
+			if (newdir != v->direction) {
+				v->direction = newdir;
+				if (amd->flag & AMED_SLOWTURN) {
+					if (v->load_unload_time_rem == 0) v->load_unload_time_rem = 8;
+				} else {
+					v->cur_speed >>= 1;
+				}
 			}
+
+			/* Move vehicle. */
+			gp = GetNewVehiclePos(v);
 		}
 
-		/* Move vehicle. */
-		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 		v->tile = gp.new_tile;
 		/* If vehicle is in the air, use tile coordinate 0. */
 		// if (amd->flag & (AMED_TAKEOFF | AMED_SLOWTURN | AMED_LAND)) v->tile = 0;
