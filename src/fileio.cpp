@@ -12,6 +12,7 @@
 #include "debug.h"
 #include "fios.h"
 #ifndef WIN32
+#include <pwd.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #endif
