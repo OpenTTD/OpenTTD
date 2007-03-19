@@ -3133,6 +3133,9 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長度: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}區域: {NUM} x {NUM}{}高度差: {NUM} m
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{2:NUM} 年 {1:STRING} 月 {0:STRING} 日
 
 ########
 

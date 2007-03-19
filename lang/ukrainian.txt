@@ -3298,6 +3298,9 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Довж
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ділянка: {NUM} x {NUM}{}Різниця висот: {NUM} м
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
 

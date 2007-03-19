@@ -3110,6 +3110,9 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}长度�
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}面积：{NUM} x {NUM}{}高度差：{NUM}米
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
 

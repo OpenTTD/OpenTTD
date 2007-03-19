@@ -3147,6 +3147,9 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Длин
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площадь: {NUM} x {NUM}{}Разница высот: {NUM} м
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}.{STRING}.{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
 

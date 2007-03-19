@@ -3237,6 +3237,9 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Távols�
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Terület: {NUM} x {NUM}{}Magasságkülönbség: {NUM} m
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
 

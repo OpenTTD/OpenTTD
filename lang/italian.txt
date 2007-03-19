@@ -3134,6 +3134,9 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lunghezz
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Differenza in altezza: {NUM} m
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
 

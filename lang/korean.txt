@@ -3136,6 +3136,9 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}길이: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}넓이: {NUM} x {NUM}{}고도차: {NUM} m
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
 

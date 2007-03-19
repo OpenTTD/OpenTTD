@@ -2894,6 +2894,9 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dužina:
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područje:{NUM}x{NUM}Visinska razlika:{NUM} m
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
 
