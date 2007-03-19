@@ -59,7 +59,7 @@ CargoID GetCargoIDByLabel(CargoLabel cl);
 
 static inline bool IsCargoInClass(CargoID c, uint16 cc)
 {
-	return GetCargo(c)->classes & cc;
+	return (GetCargo(c)->classes & cc) != 0;
 }
 
 
