@@ -3,7 +3,11 @@
 CONFIGURE_EXECUTABLE="$_"
 # On *nix systems those two are equal when ./configure is done
 if [ "$0" != "$CONFIGURE_EXECUTABLE" ]; then
-	CONFIGURE_EXECUTABLE="$CONFIGURE_EXECUTABLE $0"
+	if [ -z "`echo $CONFIGURE_EXECUTABLE | grep make`" ]; then
+		CONFIGURE_EXECUTABLE="$0"
+	else
+		CONFIGURE_EXECUTABLE="$CONFIGURE_EXECUTABLE $0"
+	fi
 fi
 # Find out where configure is (in what dir)
 ROOT_DIR="`dirname $0`"
