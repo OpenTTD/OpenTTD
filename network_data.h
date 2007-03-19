@@ -49,6 +49,7 @@ typedef struct CommandPacket {
 
 typedef enum {
 	STATUS_INACTIVE,
+	STATUS_AUTHORIZING, // This means that the client is authorizing
 	STATUS_AUTH, // This means that the client is authorized
 	STATUS_MAP_WAIT, // This means that the client is put on hold because someone else is getting the map
 	STATUS_MAP,

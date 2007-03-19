@@ -215,7 +215,14 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkClientState *c
 	//    uint8:  Type of password
 	//
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_NEED_PASSWORD);
+	Packet *p;
+
+	/* Invalid packet when status is AUTH or higher */
+	if (cs->status >= STATUS_AUTH) return;
+
+	cs->status = STATUS_AUTHORIZING;
+
+	p = NetworkSend_Init(PACKET_SERVER_NEED_PASSWORD);
 	NetworkSend_uint8(p, type);
 	NetworkSend_Packet(p, cs);
 }
@@ -694,7 +701,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 	type = NetworkRecv_uint8(cs, p);
 	NetworkRecv_string(cs, p, password, sizeof(password));
 
-	if (cs->status == STATUS_INACTIVE && type == NETWORK_GAME_PASSWORD) {
+	if (cs->status == STATUS_AUTHORIZING && type == NETWORK_GAME_PASSWORD) {
 		// Check game-password
 		if (strcmp(password, _network_game_info.server_password) != 0) {
 			// Password is invalid
@@ -712,7 +719,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 		// Valid password, allow user
 		SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
 		return;
-	} else if (cs->status == STATUS_INACTIVE && type == NETWORK_COMPANY_PASSWORD) {
+	} else if (cs->status == STATUS_AUTHORIZING && type == NETWORK_COMPANY_PASSWORD) {
 		ci = DEREF_CLIENT_INFO(cs);
 
 		if (strcmp(password, _network_player_info[ci->client_playas].password) != 0) {
@@ -1532,6 +1539,12 @@ void NetworkServer_Tick(bool send_frame)
 			int lag = NetworkCalculateLag(cs);
 			if (lag > _network_max_join_time) {
 				IConsolePrintF(_icolour_err,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->index, _network_max_join_time);
+				NetworkCloseClient(cs);
+			}
+		} else if (cs->status == STATUS_INACTIVE) {
+			int lag = NetworkCalculateLag(cs);
+			if (lag > 4 * DAY_TICKS) {
+				IConsolePrintF(_icolour_err,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->index, 4 * DAY_TICKS);
 				NetworkCloseClient(cs);
 			}
 		}

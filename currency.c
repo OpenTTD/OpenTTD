@@ -168,7 +168,7 @@ void ResetCurrencies(void)
 StringID* BuildCurrencyDropdown(void)
 {
 	/* Allow room for all currencies, plus a terminator entry */
-	static StringID names[CUSTOM_CURRENCY_ID];
+	static StringID names[NUM_CURRENCY + 1];
 	uint i;
 
 	/* Add each name */
