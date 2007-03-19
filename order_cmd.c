@@ -455,6 +455,24 @@ static int32 DecloneOrder(Vehicle *dst, uint32 flags)
 	return 0;
 }
 
+/**
+ * Remove the VehicleList that shows all the vehicles with the same shared
+ *  orders.
+ */
+static void RemoveSharedOrderVehicleList(Vehicle *v)
+{
+	WindowClass window_class;
+
+	switch (v->type) {
+		default: NOT_REACHED();
+		case VEH_Train:    window_class = WC_TRAINS_LIST;   break;
+		case VEH_Road:     window_class = WC_ROADVEH_LIST;  break;
+		case VEH_Ship:     window_class = WC_SHIPS_LIST;    break;
+		case VEH_Aircraft: window_class = WC_AIRCRAFT_LIST; break;
+	}
+	DeleteWindowById(window_class, (v->orders->index << 16) | (v->type << 11) | VLW_SHARED_ORDERS | v->owner);
+}
+
 /** Delete an order from the orderlist of a vehicle.
  * @param tile unused
  * @param p1 the ID of the vehicle
@@ -489,6 +507,10 @@ int32 CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				order = GetVehicleOrder(v, sel_ord + 1);
 				SwapOrders(v->orders, order);
 			} else {
+				/* XXX -- The system currently can't handle a shared-order vehicle list
+				 *  open when there aren't any orders in the list, so close the window
+				 *  in this case. Of course it needs a better fix later */
+				RemoveSharedOrderVehicleList(v);
 				/* Last item, so clean the list */
 				v->orders = NULL;
 			}
@@ -1120,7 +1142,7 @@ void DeleteVehicleOrders(Vehicle *v)
 	/* If we have a shared order-list, don't delete the list, but just
 	    remove our pointer */
 	if (IsOrderListShared(v)) {
-		const Vehicle *u = v;
+		Vehicle *u = v;
 
 		v->orders = NULL;
 		v->num_orders = 0;
@@ -1137,6 +1159,10 @@ void DeleteVehicleOrders(Vehicle *v)
 		v->prev_shared = NULL;
 		v->next_shared = NULL;
 
+		/* If we are the only one left in the Shared Order Vehicle List,
+		 *  remove it, as we are no longer a Shared Order Vehicle */
+		if (u->prev_shared == NULL && u->next_shared == NULL) RemoveSharedOrderVehicleList(u);
+
 		/* We only need to update this-one, because if there is a third
 		 *  vehicle which shares the same order-list, nothing will change. If
 		 *  this is the last vehicle, the last line of the order-window
@@ -1148,22 +1174,10 @@ void DeleteVehicleOrders(Vehicle *v)
 
 	/* Remove the orders */
 	cur = v->orders;
+	/* Delete the vehicle list of shared orders, if any */
+	if (cur != NULL) RemoveSharedOrderVehicleList(v);
 	v->orders = NULL;
 	v->num_orders = 0;
-
-	if (cur != NULL) {
-		/* Delete the vehicle list of shared orders, if any */
-		int window_type = 0;
-
-		switch (v->type) {
-			case VEH_Train:    window_type = WC_TRAINS_LIST;   break;
-			case VEH_Road:     window_type = WC_ROADVEH_LIST;  break;
-			case VEH_Ship:     window_type = WC_SHIPS_LIST;    break;
-			case VEH_Aircraft: window_type = WC_AIRCRAFT_LIST; break;
-			default: NOT_REACHED();
-		}
-		DeleteWindowById(window_type, (cur->index << 16) | (v->type << 11) | VLW_SHARED_ORDERS | v->owner);
-	}
 
 	while (cur != NULL) {
 		next = cur->next;

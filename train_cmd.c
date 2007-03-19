@@ -1386,30 +1386,37 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				for (tmp = first; tmp != NULL; tmp = tmp->next) tmp->first = NULL;
 
 				/* 2.2 If there are wagons present after the deleted front engine, check
-         * if the second wagon (which will be first) is an engine. If it is one,
-         * promote it as a new train, retaining the unitnumber, orders */
-				if (new_f != NULL) {
-					if (IsTrainEngine(new_f)) {
-						switch_engine = true;
-						/* Copy important data from the front engine */
-						new_f->unitnumber = first->unitnumber;
-						new_f->current_order = first->current_order;
-						new_f->cur_order_index = first->cur_order_index;
-						new_f->orders = first->orders;
-						if (first->prev_shared != NULL) {
-							first->prev_shared->next_shared = new_f;
-							new_f->prev_shared = first->prev_shared;
-						}
+				 * if the second wagon (which will be first) is an engine. If it is one,
+				 * promote it as a new train, retaining the unitnumber, orders */
+				if (new_f != NULL && IsTrainEngine(new_f)) {
+					switch_engine = true;
+					/* Copy important data from the front engine */
+					new_f->unitnumber      = first->unitnumber;
+					new_f->current_order   = first->current_order;
+					new_f->cur_order_index = first->cur_order_index;
+					new_f->orders          = first->orders;
+					new_f->num_orders      = first->num_orders;
 
-						if (first->next_shared != NULL) {
-							first->next_shared->prev_shared = new_f;
-							new_f->next_shared = first->next_shared;
-						}
-
-						new_f->num_orders = first->num_orders;
-						first->orders = NULL; // XXX - to not to delete the orders */
-						if (IsLocalPlayer()) ShowTrainViewWindow(new_f);
+					if (first->prev_shared != NULL) {
+						first->prev_shared->next_shared = new_f;
+						new_f->prev_shared = first->prev_shared;
 					}
+
+					if (first->next_shared != NULL) {
+						first->next_shared->prev_shared = new_f;
+						new_f->next_shared = first->next_shared;
+					}
+
+					/*
+					 * Remove all order information from the front train, to
+					 * prevent the order and the shared order list to be
+					 * destroyed by Destroy/DeleteVehicle.
+					 */
+					first->orders      = NULL;
+					first->prev_shared = NULL;
+					first->next_shared = NULL;
+
+					if (IsLocalPlayer()) ShowTrainViewWindow(new_f);
 				}
 			}
 
