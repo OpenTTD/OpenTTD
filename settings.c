@@ -1350,7 +1350,7 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, starting_year,    SLE_INT32, 0,NC,  1950, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_STARTING_YEAR,NULL),
 	 SDT_VAR(Patches, ending_year,      SLE_INT32,0,NC|NO,2051, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_ENDING_YEAR,  NULL),
 	SDT_BOOL(Patches, smooth_economy,             0, 0,  true,            STR_CONFIG_PATCHES_SMOOTH_ECONOMY,   NULL),
-	SDT_BOOL(Patches, allow_shares,               0, 0,  true,            STR_CONFIG_PATCHES_ALLOW_SHARES,     NULL),
+	SDT_BOOL(Patches, allow_shares,               0, 0, false,            STR_CONFIG_PATCHES_ALLOW_SHARES,     NULL),
 
 	/***************************************************************************/
 	/* AI section of the GUI-configure patches window */
@@ -1465,7 +1465,7 @@ const SettingDesc _patch_settings[] = {
 	/***************************************************************************/
 	/* Terrain genation related patch options */
 	SDT_CONDVAR(Patches,      land_generator,           SLE_UINT8,  30, SL_MAX_VERSION, 0, MS,   1,                   0,    1,               0, STR_CONFIG_PATCHES_LAND_GENERATOR,           NULL),
-	SDT_CONDVAR(Patches,      oil_refinery_limit,       SLE_UINT8,  30, SL_MAX_VERSION, 0, 0,   16,                  12,   48,               0, STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE,    NULL),
+	SDT_CONDVAR(Patches,      oil_refinery_limit,       SLE_UINT8,  30, SL_MAX_VERSION, 0, 0,   32,                  12,   48,               0, STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE,    NULL),
 	SDT_CONDVAR(Patches,      tgen_smoothness,          SLE_UINT8,  30, SL_MAX_VERSION, 0, MS,   1,                   0,    3,               0, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN,     NULL),
 	SDT_CONDVAR(Patches,      generation_seed,          SLE_UINT32, 30, SL_MAX_VERSION, 0, 0,    GENERATE_NEW_SEED,   0, MAX_UVALUE(uint32), 0, STR_NULL,                                    NULL),
 	SDT_CONDVAR(Patches,      tree_placer,              SLE_UINT8,  30, SL_MAX_VERSION, 0, MS,   2,                   0,    2,               0, STR_CONFIG_PATCHES_TREE_PLACER,              NULL),
