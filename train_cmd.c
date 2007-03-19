@@ -2250,6 +2250,7 @@ static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, in
 		 * approximation of where the station is */
 		// found station
 		ttfd->best_track = track;
+		ttfd->best_bird_dist = 0;
 		return true;
 	} else {
 		uint dist;

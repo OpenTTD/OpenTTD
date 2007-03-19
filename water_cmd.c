@@ -203,7 +203,7 @@ int32 CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /** Build a piece of canal.
  * @param tile end tile of stretch-dragging
  * @param p1 start tile of stretch-dragging
- * @param p2 ctrl pressed - toggles ocean / canals at sealevel
+ * @param p2 ctrl pressed - toggles ocean / canals at sealevel (ocean only allowed in the scenario editor)
  */
 int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -214,6 +214,8 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int sx, sy;
 
 	if (p1 >= MapSize()) return CMD_ERROR;
+	/* Outside of the editor you can only build canals, not oceans */
+	if (HASBIT(p2, 0) && _game_mode != GM_EDITOR) return CMD_ERROR;
 
 	x = TileX(tile);
 	y = TileY(tile);
