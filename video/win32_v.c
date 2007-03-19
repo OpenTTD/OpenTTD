@@ -736,7 +736,7 @@ static void Win32GdiStop(void)
 	DestroyWindow(_wnd.main_wnd);
 
 	if (_wnd.fullscreen) ChangeDisplaySettings(NULL, 0);
-	if (_double_size) {
+	if (_wnd.double_size) {
 		_cur_resolution[0] *= 2;
 		_cur_resolution[1] *= 2;
 	}
