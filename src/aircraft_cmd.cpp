@@ -30,6 +30,7 @@
 #include "newgrf_sound.h"
 #include "date.h"
 #include "spritecache.h"
+#include "cargotype.h"
 
 /** this maps the terminal to its corresponding state and block flag
  *  currently set for 10 terms, 4 helipads */
@@ -647,7 +648,7 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->cargo_cap = pass;
 
 		Vehicle *u = v->next;
-		uint mail = new_cid != CT_PASSENGERS ? 0 : avi->mail_capacity;
+		uint mail = IsCargoInClass(new_cid, CC_PASSENGERS) ? avi->mail_capacity : 0;
 		u->cargo_cap = mail;
 		if (v->cargo_type == new_cid) {
 			v->cargo_count = min(pass, v->cargo_count);
