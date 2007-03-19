@@ -133,7 +133,7 @@ static void AdjustTileh(TileIndex tile, Slope *tileh)
 {
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		if (IsTunnel(tile)) {
-			*tileh = SLOPE_FLAT;
+			*tileh = SLOPE_STEEP; /* XXX - Hack to make tunnel entrances to always have a pylon */
 		} else {
 			if (IsBridgeRamp(tile)) {
 				if (*tileh != SLOPE_FLAT) {
@@ -294,12 +294,24 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	/* Drawing of pylons is finished, now draw the wires */
 	for (t = 0; t < TRACK_END; t++) {
 		if (HASBIT(trackconfig[TS_HOME], t)) {
+			byte PCPconfig;
+			const SortableSpriteStruct *sss;
+			int tileh_selector;
 
-			byte PCPconfig = HASBIT(PCPstatus, PCPpositions[t][0]) +
+			if (IsTunnelTile(ti->tile)) {
+				const SortableSpriteStruct* sss = &CatenarySpriteData_Tunnel[GetTunnelDirection(ti->tile)];
+
+				AddSortableSpriteToDraw(
+					sss->image, ti->x + sss->x_offset, ti->y + sss->y_offset,
+					sss->x_size, sss->y_size, sss->z_size,
+					GetTileZ(ti->tile) + sss->z_offset
+				);
+				break;
+			}
+			PCPconfig = HASBIT(PCPstatus, PCPpositions[t][0]) +
 				(HASBIT(PCPstatus, PCPpositions[t][1]) << 1);
 
-			const SortableSpriteStruct *sss;
-			int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; /* tileh for the slopes, 0 otherwise */
+			tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; /* tileh for the slopes, 0 otherwise */
 
 			assert(PCPconfig != 0); /* We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that) */
 			assert(!IsSteepSlope(tileh[TS_HOME]));
@@ -367,7 +379,7 @@ void DrawCatenary(const TileInfo *ti)
 
 	switch (GetTileType(ti->tile)) {
 		case MP_RAILWAY:
-			if (IsRailDepot(ti->tile)) {
+			if ( IsRailDepot(ti->tile)) {
 				const SortableSpriteStruct* sss = &CatenarySpriteData_Depot[GetRailDepotDirection(ti->tile)];
 
 				AddSortableSpriteToDraw(

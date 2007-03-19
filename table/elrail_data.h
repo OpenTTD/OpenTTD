@@ -340,6 +340,14 @@ static const SortableSpriteStruct CatenarySpriteData_Depot[] = {
 	{ SPR_WIRE_DEPOT_NW,      8,  0,  1,  8,  1, ELRAIL_ELEVATION }  //! Wire for NW depot exit
 };
 
+static const SortableSpriteStruct CatenarySpriteData_Tunnel[] = {
+	{ SPR_WIRE_TUNNEL_NE,      0,  8,  8,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE tunnel exit
+	{ SPR_WIRE_TUNNEL_SE,      8,  0,  1,  8,  1, ELRAIL_ELEVATION }, //! Wire for SE tunnel exit
+	{ SPR_WIRE_TUNNEL_SW,      0,  8,  8,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW tunnel exit
+	{ SPR_WIRE_TUNNEL_NW,      8,  0,  1,  8,  1, ELRAIL_ELEVATION }  //! Wire for NW tunnel exit
+};
+
+
 /** Refers to a certain element of the catenary.
  * Identifiers for Wires:
  * <ol><li>Direction of the wire</li>

@@ -1589,7 +1589,7 @@ static const byte _airport_sections_international[] = {
 // Intercontinental Airport (vlarge) - 4 runways
 static const byte _airport_sections_intercontinental[] = {
 	102, 120,  89,  89,  89,  89,  89,  89, 118,
-	120,  22,  22,  22,  22,  22,  22, 119, 117,
+	120,  23,  23,  23,  23,  23,  23, 119, 117,
 	 87,  54,  87,   8,   8,   8,   8,  51, 117,
 	 87, 162,  87,  85, 116, 116,   8,   9,  10,
 	 87,   8,   8,  11,  31,  11,   8, 160,  32,
@@ -1598,7 +1598,7 @@ static const byte _airport_sections_intercontinental[] = {
 	 87, 142,   8,  11,  29,  11,  10, 163,  10,
 	 87, 164,  87,   8,   8,   8,  10,  37, 117,
 	 87, 120,  89,  89,  89,  89,  89,  89, 119,
-	121,  22,  22,  22,  22,  22,  22, 119,  37
+	121,  23,  23,  23,  23,  23,  23, 119,  37
 };
 
 

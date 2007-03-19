@@ -29,7 +29,7 @@ static inline byte RGBToGrayscale(byte red, byte green, byte blue)
 
 #ifdef WITH_PNG
 
-#include "png.h"
+#include <png.h>
 
 /**
  * The PNG Heightmap loader.

@@ -365,6 +365,8 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 static void ChangeNetworkOwner(PlayerID current_player, PlayerID new_player)
 {
 #ifdef ENABLE_NETWORK
+	NetworkClientState *cs;
+	NetworkClientInfo *ci;
 	if (!_networking) return;
 
 	if (current_player == _local_player) {
@@ -376,8 +378,7 @@ static void ChangeNetworkOwner(PlayerID current_player, PlayerID new_player)
 
 	/* The server has to handle all administrative issues, for example
 	* updating and notifying all clients of what has happened */
-	NetworkClientState *cs;
-	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 
 	/* The server has just changed from player */
 	if (current_player == ci->client_playas) {
