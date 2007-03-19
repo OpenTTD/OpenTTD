@@ -1758,9 +1758,9 @@ bool AfterLoadGame()
 	/* do the same as when elrails were enabled/disabled manually just now */
 	SettingsDisableElrail(_patches.disable_elrails);
 
-	/* From version 52, the map array was changed for house tiles to allow
+	/* From version 53, the map array was changed for house tiles to allow
 	 * space for newhouses grf features. A new byte, m7, was also added. */
-	if (CheckSavegameVersion(52)) {
+	if (CheckSavegameVersion(53)) {
 		for (TileIndex t = 0; t < map_size; t++) {
 			_me[t].m7 = 0;
 
