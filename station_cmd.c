@@ -3064,11 +3064,6 @@ static void SaveLoad_STNS(Station *st)
 	SlObject(st, _station_desc);
 	for (i = 0; i != NUM_CARGO; i++) {
 		SlObject(&st->goods[i], _goods_desc);
-
-		/* In older versions, enroute_from had 0xFF as INVALID_STATION, is now 0xFFFF */
-		if (CheckSavegameVersion(7) && st->goods[i].enroute_from == 0xFF) {
-			st->goods[i].enroute_from = INVALID_STATION;
-		}
 	}
 
 	if (st->num_specs != 0) {

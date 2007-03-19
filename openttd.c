@@ -385,6 +385,8 @@ int ttd_main(int argc, char *argv[])
 				_switch_mode = SM_LOAD;
 			} else {
 				_switch_mode = SM_NEWGAME;
+				/* Give a random map */
+				generation_seed = InteractiveRandom();
 			}
 			break;
 		case 'G': generation_seed = atoi(mgo.opt); break;
@@ -1591,6 +1593,21 @@ bool AfterLoadGame(void)
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (IsBuoy(st) && IsTileOwner(st->xy, OWNER_NONE)) SetTileOwner(st->xy, OWNER_WATER);
+		}
+	}
+
+	if (CheckSavegameVersion(7)) {
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			CargoID c;
+			for (c = 0; c < NUM_CARGO; c++) {
+				GoodsEntry *ge = &st->goods[c];
+
+				/* In old versions, enroute_from used 0xFF as INVALID_STATION */
+				if (ge->enroute_from == 0xFF) {
+					ge->enroute_from = INVALID_STATION;
+				}
+			}
 		}
 	}
 

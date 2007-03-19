@@ -459,7 +459,10 @@ static Town *AiFindRandomTown(void)
 
 static Industry *AiFindRandomIndustry(void)
 {
-	return GetRandomIndustry();
+	int num = RandomRange(GetMaxIndustryIndex());
+	if (IsValidIndustry(GetIndustry(num))) return GetIndustry(num);
+
+	return NULL;
 }
 
 static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
