@@ -1653,7 +1653,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 		SetDParam(0, i->index);
 		AddNewsItem(
 			indspec->closure_text,
-			NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
+			NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_OPENCLOSE, 0),
 			i->xy + TileDiffXY(1, 1), 0
 		);
 	}
@@ -1735,7 +1735,7 @@ static void MaybeNewIndustry(uint32 r)
 	AddNewsItem(
 		(type != IT_FOREST && type != IT_FRUIT_PLANTATION && type != IT_RUBBER_PLANTATION && type != IT_COTTON_CANDY) ?
 			STR_482D_NEW_UNDER_CONSTRUCTION : STR_482E_NEW_BEING_PLANTED_NEAR,
-		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY,0), i->xy, 0
+		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_OPENCLOSE,0), i->xy, 0
 	);
 }
 
@@ -1803,7 +1803,7 @@ static void ChangeIndustryProduction(Industry *i)
 
 	if (str != STR_NULL) {
 		SetDParam(0, i->index);
-		AddNewsItem(str, NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0), i->xy + TileDiffXY(1, 1), 0);
+		AddNewsItem(str, NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, str == indspec->closure_text ? NT_OPENCLOSE : NT_ECONOMY, 0), i->xy + TileDiffXY(1, 1), 0);
 	}
 }
 

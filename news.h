@@ -31,17 +31,21 @@ void InitNewsItemStructs(void);
 VARDEF NewsItem _statusbar_news_item;
 
 enum NewsType {
-	NT_ARRIVAL_PLAYER = 0,
-	NT_ARRIVAL_OTHER  = 1,
-	NT_ACCIDENT       = 2,
-	NT_COMPANY_INFO   = 3,
-	NT_ECONOMY        = 4,
-	NT_ADVICE         = 5,
-	NT_NEW_VEHICLES   = 6,
-	NT_ACCEPTANCE     = 7,
-	NT_SUBSIDIES      = 8,
-	NT_GENERAL        = 9,
+	NT_ARRIVAL_PLAYER,
+	NT_ARRIVAL_OTHER,
+	NT_ACCIDENT,
+	NT_COMPANY_INFO,
+	NT_OPENCLOSE,
+	NT_ECONOMY,
+	NT_ADVICE,
+	NT_NEW_VEHICLES,
+	NT_ACCEPTANCE,
+	NT_SUBSIDIES,
+	NT_GENERAL,
+	NT_END,
 };
+
+extern const char *_news_display_name[NT_END];
 
 enum NewsMode {
 	NM_SMALL    = 0, ///< Show only a small popup informing us about vehicle age for example
@@ -59,11 +63,8 @@ enum NewsFlags {
 };
 
 enum NewsCallback {
-	DNC_TRAINAVAIL    = 0, ///< Show new train available message. StringID is EngineID
-	DNC_ROADAVAIL     = 1, ///< Show new road vehicle available message. StringID is EngineID
-	DNC_SHIPAVAIL     = 2, ///< Show new ship available message. StringID is EngineID
-	DNC_AIRCRAFTAVAIL = 3, ///< Show new aircraft available message. StringID is EngineID
-	DNC_BANKRUPCY     = 4, ///< Show bankrupcy message. StringID is PlayerID (0-3) and NewsBankrupcy (4-7)
+	DNC_VEHICLEAVAIL  = 0, ///< Show new vehicle available message. StringID is EngineID
+	DNC_BANKRUPCY     = 1, ///< Show bankrupcy message. StringID is PlayerID (0-3) and NewsBankrupcy (4-7)
 };
 
 enum NewsBankrupcy {

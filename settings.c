@@ -40,6 +40,7 @@
 #include "genworld.h"
 #include "date.h"
 #include "rail.h"
+#include "news.h"
 #ifdef WITH_FREETYPE
 #include "gfx.h"
 #include "fontcache.h"
@@ -1181,7 +1182,6 @@ static const SettingDescGlobVarList _win32_settings[] = {
 
 static const SettingDescGlobVarList _misc_settings[] = {
 	SDTG_MMANY("display_opt",     SLE_UINT8, S, 0, _display_opt,       (DO_SHOW_TOWN_NAMES|DO_SHOW_STATION_NAMES|DO_SHOW_SIGNS|DO_FULL_ANIMATION|DO_FULL_DETAIL|DO_TRANS_BUILDINGS|DO_WAYPOINTS), "SHOW_TOWN_NAMES|SHOW_STATION_NAMES|SHOW_SIGNS|FULL_ANIMATION|TRANS_BUILDINGS|FULL_DETAIL|WAYPOINTS", STR_NULL, NULL),
-	  SDTG_VAR("news_display_opt", SLE_UINT, S, 0, _news_display_opt,0xAAAAAAAA,0,0xAAAAAAAA,0,STR_NULL, NULL), // default to all full messages: 10101010101010101010 = 0xAAAAAAAA
 	 SDTG_BOOL("news_ticker_sound",          S, 0, _news_ticker_sound,     true,    STR_NULL, NULL),
 	 SDTG_BOOL("fullscreen",                 S, 0, _fullscreen,           false,    STR_NULL, NULL),
 	  SDTG_STR("videodriver",      SLE_STRB,C|S,0, _ini_videodriver,       NULL,    STR_NULL, NULL),
@@ -1495,6 +1495,44 @@ static const SettingDesc _currency_settings[] = {
 #undef NO
 #undef CR
 
+static uint NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
+{
+	IniGroup *group = ini_getgroup(ini, grpname, -1);
+	IniItem *item;
+	/* By default, set everything to full (0xAAAAAAAA = 1010101010101010) */
+	uint res = 0xAAAAAAAA;
+
+	/* If no group exists, return everything FULL */
+	if (group == NULL) return res;
+
+	for (item = group->item; item != NULL; item = item->next) {
+		int news_item = -1;
+		int i;
+		for (i = 0; i < NT_END; i++) {
+			if (strcasecmp(item->name, _news_display_name[i]) == 0) {
+				news_item = i;
+				break;
+			}
+		}
+		if (news_item == -1) {
+			DEBUG(misc, 0)("Invalid display option: %s", item->name);
+			continue;
+		}
+
+		if (strcasecmp(item->value, "full") == 0) {
+			SB(res, news_item * 2, 2, 2);
+		} else if (strcasecmp(item->value, "off") == 0) {
+			SB(res, news_item * 2, 2, 0);
+		} else if (strcasecmp(item->value, "summarized") == 0) {
+			SB(res, news_item * 2, 2, 1);
+		} else {
+			DEBUG(misc, 0)("Invalid display value: %s", item->value);
+			continue;
+		}
+	}
+
+	return res;
+}
 
 /* Load a GRF configuration from the given group name */
 static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_static)
@@ -1549,6 +1587,27 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 	return first;
 }
 
+static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname, uint news_display)
+{
+	IniGroup *group = ini_getgroup(ini, grpname, -1);
+	IniItem **item;
+	int i;
+
+	if (group == NULL) return;
+	group->item = NULL;
+	item = &group->item;
+
+	for (i = 0; i < NT_END; i++) {
+		const char *value;
+		int v = GB(news_display, i * 2, 2);
+
+		value = (v == 0 ? "off" : (v == 1 ? "summarized" : "full"));
+
+		*item = ini_item_alloc(group, _news_display_name[i], strlen(_news_display_name[i]));
+		(*item)->value = (char*)pool_strdup(&ini->pool, value, strlen(value));
+		item = &(*item)->next;
+	}
+}
 
 /* Save a GRF configuration to the given group name */
 static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *list)
@@ -1598,6 +1657,7 @@ void LoadFromConfig(void)
 	HandleSettingDescs(ini, ini_load_settings, ini_load_setting_list);
 	_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
 	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
+	_news_display_opt  = NewsDisplayLoadConfig(ini, "news_display");
 	ini_free(ini);
 }
 
@@ -1608,6 +1668,7 @@ void SaveToConfig(void)
 	HandleSettingDescs(ini, ini_save_settings, ini_save_setting_list);
 	GRFSaveConfig(ini, "newgrf", _grfconfig_newgame);
 	GRFSaveConfig(ini, "newgrf-static", _grfconfig_static);
+	NewsDisplaySaveConfig(ini, "news_display", _news_display_opt);
 	ini_save(_config_file, ini);
 	ini_free(ini);
 }
@@ -1817,16 +1878,6 @@ static void Save_PATS(void)
 
 void CheckConfig(void)
 {
-	// fix up news_display_opt from old to new
-	int i;
-	uint32 tmp;
-	for (i = 0, tmp = _news_display_opt; i != 10; i++, tmp >>= 2) {
-		if ((tmp & 0x3) == 0x3) { // old settings
-			_news_display_opt = 0xAAAAAAAA; // set all news-messages to full 1010101010...
-			break;
-		}
-	}
-
 	// Increase old default values for pf_maxdepth and pf_maxlength
 	// to support big networks.
 	if (_patches_newgame.pf_maxdepth == 16 && _patches_newgame.pf_maxlength == 512) {

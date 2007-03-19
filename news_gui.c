@@ -53,32 +53,21 @@ static NewsID _forced_news = INVALID_NEWS;
 
 static byte _total_news = 0; // total news count
 
-void DrawNewsNewTrainAvail(Window *w);
-void DrawNewsNewRoadVehAvail(Window *w);
-void DrawNewsNewShipAvail(Window *w);
-void DrawNewsNewAircraftAvail(Window *w);
+void DrawNewsNewVehicleAvail(Window *w);
 void DrawNewsBankrupcy(Window *w);
 static void MoveToNextItem(void);
 
-StringID GetNewsStringNewTrainAvail(const NewsItem *ni);
-StringID GetNewsStringNewRoadVehAvail(const NewsItem *ni);
-StringID GetNewsStringNewShipAvail(const NewsItem *ni);
-StringID GetNewsStringNewAircraftAvail(const NewsItem *ni);
+StringID GetNewsStringNewVehicleAvail(const NewsItem *ni);
 StringID GetNewsStringBankrupcy(const NewsItem *ni);
 
 static DrawNewsCallbackProc * const _draw_news_callback[] = {
-	DrawNewsNewTrainAvail,    /* DNC_TRAINAVAIL */
-	DrawNewsNewRoadVehAvail,  /* DNC_ROADAVAIL */
-	DrawNewsNewShipAvail,     /* DNC_SHIPAVAIL */
-	DrawNewsNewAircraftAvail, /* DNC_AIRCRAFTAVAIL */
+	DrawNewsNewVehicleAvail,  /* DNC_VEHICLEAVAIL */
 	DrawNewsBankrupcy,        /* DNC_BANKRUPCY */
 };
 
+extern GetNewsStringCallbackProc * const _get_news_string_callback[];
 GetNewsStringCallbackProc * const _get_news_string_callback[] = {
-	GetNewsStringNewTrainAvail,    /* DNC_TRAINAVAIL */
-	GetNewsStringNewRoadVehAvail,  /* DNC_ROADAVAIL */
-	GetNewsStringNewShipAvail,     /* DNC_SHIPAVAIL */
-	GetNewsStringNewAircraftAvail, /* DNC_AIRCRAFTAVAIL */
+	GetNewsStringNewVehicleAvail,  /* DNC_VEHICLEAVAIL */
 	GetNewsStringBankrupcy,        /* DNC_BANKRUPCY */
 };
 
@@ -363,9 +352,10 @@ static WindowDesc _news_type0_desc = {
 	NewsWindowProc
 };
 
-static const SoundFx _news_sounds[] = {
+static const SoundFx _news_sounds[NT_END] = {
 	SND_1D_APPLAUSE,
 	SND_1D_APPLAUSE,
+	0,
 	0,
 	0,
 	0,
@@ -376,6 +366,20 @@ static const SoundFx _news_sounds[] = {
 	0
 };
 
+const char *_news_display_name[NT_END] = {
+	"arrival_player",
+	"arrival_other",
+	"accident",
+	"company_info",
+	"openclose",
+	"economy",
+	"advice",
+	"new_vehicles",
+	"acceptance",
+	"subsidies",
+	"general",
+};
+
 /** Get the value of an item of the news-display settings. This is
  * a little tricky since on/off/summary must use 2 bits to store the value
  * @param item the item whose value is requested
@@ -383,7 +387,7 @@ static const SoundFx _news_sounds[] = {
  */
 static inline byte GetNewsDisplayValue(byte item)
 {
-	assert(item < 10 && GB(_news_display_opt, item * 2, 2) <= 2);
+	assert(item < NT_END && GB(_news_display_opt, item * 2, 2) <= 2);
 	return GB(_news_display_opt, item * 2, 2);
 }
 
@@ -394,7 +398,7 @@ static inline byte GetNewsDisplayValue(byte item)
  */
 static inline void SetNewsDisplayValue(byte item, byte val)
 {
-	assert(item < 10 && val <= 2);
+	assert(item < NT_END && val <= 2);
 	SB(_news_display_opt, item * 2, 2, val);
 }
 
@@ -732,11 +736,19 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_CREATE: {
 		uint32 val = _news_display_opt;
+		uint32 all_val;
 		int i;
-		WP(w, def_d).data_1 = WP(w, def_d).data_2 = 0;
+		WP(w, def_d).data_1 = 0;
 
-		// Set up the initial disabled buttons in the case of 'off' or 'full'
-		for (i = 0; i != 10; i++, val >>= 2) SetMessageButtonStates(w, val & 0x3, i);
+		/* Set up the initial disabled buttons in the case of 'off' or 'full' */
+		all_val = val & 0x3;
+		for (i = 0; i != 10; i++, val >>= 2) {
+			SetMessageButtonStates(w, val & 0x3, i);
+			/* If the value doesn't match the ALL-button value, set the ALL-button value to 'off' */
+			if ((val & 0x3) != all_val) all_val = 0;
+		}
+		/* If all values are the same value, the ALL-button will take over this value */
+		WP(w, def_d).data_2 = all_val;
 	} break;
 
 	case WE_PAINT: {
@@ -744,12 +756,12 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 		int click_state = WP(w, def_d).data_1;
 		int i, y;
 
-		if (_news_ticker_sound) LowerWindowWidget(w, 25);
+		if (_news_ticker_sound) LowerWindowWidget(w, 27);
 		DrawWindowWidgets(w);
 
 		/* XXX - Draw the fake widgets-buttons. Can't add these to the widget-desc since
 		 * openttd currently can only handle 32 widgets. So hack it *g* */
-		for (i = 0, y = 26; i != 10; i++, y += 12, click_state >>= 1, val >>= 2) {
+		for (i = 0, y = 26; i < NT_END; i++, y += 12, click_state >>= 1, val >>= 2) {
 			bool clicked = !!(click_state & 1);
 
 			DrawFrameRect(13, y, 89, 11 + y, 3, (clicked) ? FR_LOWERED : 0);
@@ -757,7 +769,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 			DrawString(103, y + 1, i + STR_0206_ARRIVAL_OF_FIRST_VEHICLE, 0);
 		}
 
-		DrawString(  8, y + 9, message_opt[WP(w, def_d).data_2], 0x10);
+		DrawStringCentered(((13 + 89 + 1) >> 1), y + 9, message_opt[WP(w, def_d).data_2], 0x10);
 		DrawString(103, y + 9, STR_MESSAGES_ALL, 0);
 		DrawString(103, y + 9 + 12, STR_MESSAGE_SOUND, 0);
 
@@ -766,7 +778,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 		case 2: /* Clicked on any of the fake widgets */
-			if (e->we.click.pt.x > 13 && e->we.click.pt.x < 89 && e->we.click.pt.y > 26 && e->we.click.pt.y < 146) {
+			if (e->we.click.pt.x > 13 && e->we.click.pt.x < 89 && e->we.click.pt.y > 26 && e->we.click.pt.y < NT_END * 12 + 26) {
 				int element = (e->we.click.pt.y - 26) / 12;
 				byte val = (GetNewsDisplayValue(element) + 1) % 3;
 
@@ -778,17 +790,17 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 				SetWindowDirty(w);
 			}
 			break;
-		case 23: case 24: /* Dropdown menu for all settings */
-			ShowDropDownMenu(w, message_opt, WP(w, def_d).data_2, 24, 0, 0);
+		case 25: case 26: /* Dropdown menu for all settings */
+			ShowDropDownMenu(w, message_opt, WP(w, def_d).data_2, 26, 0, 0);
 			break;
-		case 25: /* Change ticker sound on/off */
+		case 27: /* Change ticker sound on/off */
 			_news_ticker_sound ^= 1;
 			ToggleWidgetLoweredState(w, e->we.click.widget);
 			InvalidateWidget(w, e->we.click.widget);
 			break;
 		default: { /* Clicked on the [<] .. [>] widgets */
 			int wid = e->we.click.widget;
-			if (wid > 2 && wid < 23) {
+			if (wid > 2 && wid <= NT_END * 2 + 2) {
 				int element = (wid - 3) / 2;
 				byte val = (GetNewsDisplayValue(element) + ((wid & 1) ? -1 : 1)) % 3;
 
@@ -804,9 +816,9 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 
 		WP(w, def_d).data_2 = e->we.dropdown.index;
 
-		for (i = 0; i != 10; i++) {
-			SB(_news_display_opt, i*2, 2, e->we.dropdown.index);
+		for (i = 0; i < NT_END; i++) {
 			SetMessageButtonStates(w, e->we.dropdown.index, i);
+			SetNewsDisplayValue(i, e->we.dropdown.index);
 		}
 		SetWindowDirty(w);
 		break;
@@ -822,7 +834,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 static const Widget _message_options_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,   10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,  409,     0,    13, STR_0204_MESSAGE_OPTIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,  409,    14,   184, 0x0,                      STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    13,     0,  409,    14,   196, 0x0,                      STR_NULL},
 
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    26,    37, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    26,    37, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
@@ -854,16 +866,19 @@ static const Widget _message_options_widgets[] = {
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   134,   145, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   134,   145, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
 
-{      WWT_PANEL,   RESIZE_NONE,     3,     4,   86,   154,   165, 0x0,                      STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    87,   98,   154,   165, STR_0225,                 STR_NULL},
-{  WWT_TEXTBTN_2,   RESIZE_NONE,     3,     4,   98,   166,   177, STR_02DB_OFF,             STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   146,   157, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   146,   157, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
+
+{      WWT_PANEL,   RESIZE_NONE,     3,     4,   86,   166,   177, 0x0,                      STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     3,    87,   98,   166,   177, STR_0225,                 STR_NULL},
+{  WWT_TEXTBTN_2,   RESIZE_NONE,     3,     4,   98,   178,   189, STR_02DB_OFF,             STR_NULL},
 
 {      WWT_LABEL,   RESIZE_NONE,    13,     0,  409,    13,    26, STR_0205_MESSAGE_TYPES,   STR_NULL},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _message_options_desc = {
-	270, 22, 410, 185,
+	270, 22, 410, 197,
 	WC_GAME_OPTIONS, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_message_options_widgets,
