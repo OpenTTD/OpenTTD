@@ -455,6 +455,24 @@ static int32 DecloneOrder(Vehicle *dst, uint32 flags)
 	return 0;
 }
 
+/**
+ * Remove the VehicleList that shows all the vehicles with the same shared
+ *  orders.
+ */
+static void RemoveSharedOrderVehicleList(Vehicle *v)
+{
+	WindowClass window_class = WC_NONE;
+
+	switch (v->type) {
+		default: NOT_REACHED();
+		case VEH_TRAIN:    window_class = WC_TRAINS_LIST;   break;
+		case VEH_ROAD:     window_class = WC_ROADVEH_LIST;  break;
+		case VEH_SHIP:     window_class = WC_SHIPS_LIST;    break;
+		case VEH_AIRCRAFT: window_class = WC_AIRCRAFT_LIST; break;
+	}
+	DeleteWindowById(window_class, (v->orders->index << 16) | (v->type << 11) | VLW_SHARED_ORDERS | v->owner);
+}
+
 /** Delete an order from the orderlist of a vehicle.
  * @param tile unused
  * @param p1 the ID of the vehicle
@@ -489,6 +507,10 @@ int32 CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				order = GetVehicleOrder(v, sel_ord + 1);
 				SwapOrders(v->orders, order);
 			} else {
+				/* XXX -- The system currently can't handle a shared-order vehicle list
+				 *  open when there aren't any orders in the list, so close the window
+				 *  in this case. Of course it needs a better fix later */
+				RemoveSharedOrderVehicleList(v);
 				/* Last item, so clean the list */
 				v->orders = NULL;
 			}
@@ -1144,22 +1166,12 @@ void DeleteVehicleOrders(Vehicle *v)
 
 	/* Remove the orders */
 	Order *cur = v->orders;
+	/* Delete the vehicle list of shared orders, if any */
+	if (cur != NULL) RemoveSharedOrderVehicleList(v);
 	v->orders = NULL;
 	v->num_orders = 0;
 
 	if (cur != NULL) {
-		/* Delete the vehicle list of shared orders, if any */
-		WindowClass window_class = WC_NONE;
-
-		switch (v->type) {
-			default: NOT_REACHED();
-			case VEH_TRAIN:    window_class = WC_TRAINS_LIST;   break;
-			case VEH_ROAD:     window_class = WC_ROADVEH_LIST;  break;
-			case VEH_SHIP:     window_class = WC_SHIPS_LIST;    break;
-			case VEH_AIRCRAFT: window_class = WC_AIRCRAFT_LIST; break;
-		}
-		DeleteWindowById(window_class, (cur->index << 16) | (v->type << 11) | VLW_SHARED_ORDERS | v->owner);
-
 		cur->FreeChain(); // Free the orders.
 	}
 }
