@@ -3,6 +3,7 @@
 #ifndef NEWGRF_SPRITEGROUP_H
 #define NEWGRF_SPRITEGROUP_H
 
+#include "town.h"
 
 struct SpriteGroup;
 
@@ -128,6 +129,11 @@ struct ResultSpriteGroup {
 	byte num_sprites;
 };
 
+struct TileLayoutSpriteGroup {
+	byte num_sprites; /* Number of sprites in the spriteset, used for loading stages */
+	struct DrawTileSprites *dts;
+};
+
 /* List of different sprite group types */
 enum SpriteGroupType {
 	SGT_INVALID,
@@ -136,6 +142,7 @@ enum SpriteGroupType {
 	SGT_RANDOMIZED,
 	SGT_CALLBACK,
 	SGT_RESULT,
+	SGT_TILELAYOUT,
 };
 
 /* Common wrapper for all the different sprite group types */
@@ -148,6 +155,7 @@ struct SpriteGroup {
 		RandomizedSpriteGroup random;
 		CallbackResultSpriteGroup callback;
 		ResultSpriteGroup result;
+		TileLayoutSpriteGroup layout;
 	} g;
 };
 
@@ -180,6 +188,11 @@ struct ResolverObject {
 			const struct StationSpec *statspec;
 			CargoID cargo_type;
 		} station;
+		struct {
+			TileIndex tile;
+			Town *town;
+			HouseID house_id;
+		} house;
 	} u;
 
 	uint32 (*GetRandomBits)(const struct ResolverObject*);

@@ -35,7 +35,6 @@
  * @todo Split the "Sprites" enum into smaller chunks and document them
  */
 
-
 enum Sprites {
 	SPR_SELECT_TILE  = 752,
 	SPR_DOT          = 774, // corner marker for lower/raise land
@@ -1324,6 +1323,7 @@ enum SpriteSetup {
  */
 enum Modifiers {
 	SPRITE_MODIFIER_USE_OFFSET    = OFFSET_BIT,
+	SPRITE_MODIFIER_OPAQUE        = OFFSET_BIT,
 	///when a sprite is to be displayed transparently, this bit needs to be set.
 	PALETTE_MODIFIER_TRANSPARENT  = TRANSPARENT_BIT,
 	///this bit is set when a recoloring process is in action
@@ -1418,6 +1418,5 @@ enum PaletteSprites {
 	PALETTE_59E                 = 0x59E,
 	PALETTE_59F                 = 0x59F,
 };
-#undef PALETTE_RECOLOR_SPRITE
 
 #endif /* SPRITES_H */

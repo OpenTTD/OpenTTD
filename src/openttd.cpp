@@ -56,6 +56,7 @@
 #include "clear_map.h"
 #include "fontcache.h"
 #include "newgrf_config.h"
+#include "newgrf_house.h"
 #include "player_face.h"
 
 #include "bridge_map.h"
@@ -677,6 +678,7 @@ static void MakeNewGame(bool from_heightmap)
 	_game_mode = GM_NORMAL;
 
 	ResetGRFConfig(true);
+	ResetHouseIDMapping();
 
 	GenerateWorldSetCallback(&MakeNewGameDone);
 	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _patches.map_x, 1 << _patches.map_y);
@@ -1756,6 +1758,47 @@ bool AfterLoadGame()
 	/* do the same as when elrails were enabled/disabled manually just now */
 	SettingsDisableElrail(_patches.disable_elrails);
 
+	/* From version 52, the map array was changed for house tiles to allow
+	 * space for newhouses grf features. A new byte, m7, was also added. */
+	if (CheckSavegameVersion(52)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			_me[t].m7 = 0;
+
+			if (IsTileType(t, MP_HOUSE)) {
+				if (GB(_m[t].m3, 6, 2) != TOWN_HOUSE_COMPLETED) {
+					/* Move the construction stage from m3[7..6] to m5[5..4].
+					 * The construction counter does not have to move. */
+					SB(_m[t].m5, 3, 2, GB(_m[t].m3, 6, 2));
+					SB(_m[t].m3, 6, 2, 0);
+
+					/* The "house is completed" bit is now in m6[2]. */
+					SetHouseCompleted(t, false);
+				} else {
+					/* The "lift has destination" bit has been moved from
+					 * m5[7] to m7[0]. */
+					SB(_me[t].m7, 0, 1, HASBIT(_m[t].m5, 7));
+					CLRBIT(_m[t].m5, 7);
+
+					/* The "lift is moving" bit has been removed, as it does
+					 * the same job as the "lift has destination" bit. */
+					CLRBIT(_m[t].m1, 7);
+
+					/* The position of the lift goes from m1[7..0] to m6[7..2],
+					 * making m1 totally free, now. The lift position does not
+					 * have to be a full byte since the maximum value is 36. */
+					SetLiftPosition(t, GB(_m[t].m1, 0, 6 ));
+
+					_m[t].m1 = 0;
+					_m[t].m3 = 0;
+					SetHouseCompleted(t, true);
+				}
+			}
+		}
+	}
+
+	/* Count the buildings after updating the map array. */
+	AfterLoadCountBuildings();
+
 	if (CheckSavegameVersion(43)) {
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_INDUSTRY)) {
@@ -1886,6 +1929,8 @@ void ReloadNewGRFData()
 	/* update station and waypoint graphics */
 	AfterLoadWaypoints();
 	AfterLoadStations();
+	/* check that house ids are still valid */
+	CheckHouseIDs();
 	/* redraw the whole screen */
 	MarkWholeScreenDirty();
 }

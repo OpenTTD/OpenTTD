@@ -66,3 +66,12 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 	if (callback < GetNumSounds()) SndPlayVehicleFx((SoundFx)callback, v);
 	return true;
 }
+
+bool PlayHouseSound(uint16 sound_id, TileIndex tile)
+{
+	if (sound_id < GetNumOriginalSounds()) {
+		SndPlayTileFx((SoundFx)sound_id, tile);
+		return true;
+	}
+	return false;
+}

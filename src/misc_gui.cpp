@@ -188,6 +188,7 @@ static void Place_LandInfo(TileIndex tile)
 	DEBUG(misc, LANDINFOD_LEVEL, "m4           = %#x", _m[tile].m4);
 	DEBUG(misc, LANDINFOD_LEVEL, "m5           = %#x", _m[tile].m5);
 	DEBUG(misc, LANDINFOD_LEVEL, "m6           = %#x", _m[tile].m6);
+	DEBUG(misc, LANDINFOD_LEVEL, "m7           = %#x", _me[tile].m7);
 #undef LANDINFOD_LEVEL
 }
 

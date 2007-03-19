@@ -8,6 +8,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
 #include "date.h"
+#include "sprite.h"
 
 static void SpriteGroupPoolCleanBlock(uint start_item, uint end_item);
 
@@ -31,6 +32,11 @@ static void DestroySpriteGroup(SpriteGroup *group)
 
 		case SGT_RANDOMIZED:
 			free((SpriteGroup**)group->g.random.groups);
+			break;
+
+		case SGT_TILELAYOUT:
+			free((void*)group->g.layout.dts->seq);
+			free(group->g.layout.dts);
 			break;
 
 		default:

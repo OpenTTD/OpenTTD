@@ -568,621 +568,67 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
-     <li>m2: Index into the array of towns</li>
-     <li>m3 bits 7..6: stage of construction (<tt>3</tt> = completed)</li>
-     <li>m4: <a name="HouseTypes">town building type</a>:<br>
-      <small>Note: In the climate list, 'sub-arctic' means below the snow line, and 'snow' means above the snow line in the sub-arctic climate.</small>
-      <table>
-       <tr>
-        <th align=left>Type&nbsp;</th>
-        <th align=left>Size&nbsp;</th>
-        <th align=left>Climates&nbsp;</th>
-        <th align=left>Description</th>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>00</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>01</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>02</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>small block of flats</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>03</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>church</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>04</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate, sub-arctic, sub-tropical</td>
-        <td align=left>large office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>05</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>large office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>06</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>town houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>07</tt>..<tt>08</tt>&nbsp; </td>
-        <td>1&times;2</td>
-        <td>temperate</td>
-        <td align=left>hotel</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>09</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate, sub-arctic, sub-tropical&nbsp;&nbsp;</td>
-        <td align=left>statue</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>0A</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate, sub-arctic, sub-tropical</td>
-        <td align=left>fountain</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>0B</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>park (with a pond)</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>0C</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>park (with an alley)</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>0D</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>0E</tt>..<tt>10</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>various types of shops and offices</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>11</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate, sub-arctic, sub-tropical</td>
-        <td align=left>modern office building</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>12</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>warehouse</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>13</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>office block (with spiral stairway on the side)</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>14</tt>..<tt>17</tt>&nbsp; </td>
-        <td>2&times;2</td>
-        <td>temperate</td>
-        <td align=left>stadium</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>18</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>old houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>19</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>cottages</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>1A</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>1B</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>flats</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>1C</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>1D</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>shops and offices</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>1E</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate, sub-tropical</td>
-        <td align=left>shops and offices</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>1F</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>theatre</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>20</tt>..<tt>23</tt>&nbsp; </td>
-        <td>2&times;2</td>
-        <td>temperate, sub-arctic, sub-tropical</td>
-        <td align=left>stadium (modern style)</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>24</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate, sub-arctic, sub-tropical</td>
-        <td align=left>offices (the modern 'vertical tube' style)</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>25</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>26</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>27</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>temperate</td>
-        <td align=left>cinema</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>28</tt>..<tt>2B</tt>&nbsp; </td>
-        <td>2&times;2</td>
-        <td>temperate</td>
-        <td align=left>shopping mall</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>2C</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>flats</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>2D</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>flats</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>2E</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>2F</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>30</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>31</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>32</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic, sub-tropical</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>33</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>34</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>35</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>36</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic, sub-tropical</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>37</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>38</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>39</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>3A</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>shops and offices</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>3B</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>shops and offices</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>3C</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>church</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>3D</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>church</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>3E</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>3F</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>40</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>shops and offices</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>41</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>shops and offices</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>42</tt>..<tt>43</tt>&nbsp; </td>
-        <td>1&times;2</td>
-        <td>sub-arctic</td>
-        <td align=left>hotel</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>44</tt>..<tt>45</tt>&nbsp; </td>
-        <td>1&times;2</td>
-        <td>snow</td>
-        <td align=left>hotel</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>46</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic, sub-tropical</td>
-        <td align=left>shops and offices</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>47</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>shops and offices</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>48</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>49</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>snow</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>4A</tt>..<tt>4B</tt>&nbsp; </td>
-        <td>2&times;1</td>
-        <td>sub-arctic</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>4C</tt>..<tt>4D</tt>&nbsp; </td>
-        <td>2&times;1</td>
-        <td>snow</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>4E</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-tropical</td>
-        <td align=left>houses (with a tree in a corner)</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>4F</tt>, <tt>50</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-tropical</td>
-        <td align=left>houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>51</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-tropical</td>
-        <td align=left>houses (suburb-type)</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>52</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-tropical</td>
-        <td align=left>flats</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>53</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-tropical</td>
-        <td align=left>church</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>54</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-tropical</td>
-        <td align=left>houses (with two trees in front)</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>55</tt>, <tt>56</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-tropical</td>
-        <td align=left>flats</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>57</tt>..<tt>58</tt>&nbsp; </td>
-        <td>2&times;1</td>
-        <td>sub-tropical</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>59</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-tropical</td>
-        <td align=left>flats</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>5A</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>sub-tropical</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>5B</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>toyland</td>
-        <td align=left>church</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>5C</tt>..<tt>61</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>toyland</td>
-        <td align=left>various types of toyland houses</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>62</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>toyland</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>63</tt>..<tt>64</tt>&nbsp; </td>
-        <td>1&times;2</td>
-        <td>toyland</td>
-        <td align=left>houses ('shoe' style)</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>65</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>toyland</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>66</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>toyland</td>
-        <td align=left>igloo</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>67</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>toyland</td>
-        <td align=left>tepees</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>68</tt>, <tt>69</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>toyland</td>
-        <td align=left>shops and offices</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>6A</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>toyland</td>
-        <td align=left>tall office block</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>6B</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>toyland</td>
-        <td align=left>statue</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>6C</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>toyland</td>
-        <td align=left>teapot-house</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>6D</tt>&nbsp; </td>
-        <td>1&times;1</td>
-        <td>toyland</td>
-        <td align=left>piggy-bank</td>
-       </tr>
-      </table>
-     </li>
-     <li>m5 bits 2..0: construction counter, for buildings under construction incremented on every periodic tile processing<br>
-         On wraparound the stage of construction in m3 is increased
-     </li>
-     <li>for large office blocks (types <tt>04</tt> and <tt>05</tt>):
+     <li>m1 : Random bits <a href="#newhouses">(newhouses)</a> </li>
+     <li>m2 : index into the array of industries</li>
+     <li>m3 bit 7 :
       <ul>
-       <li>m1 bits 6..0: position of the lift</li>
-       <li>m1 bit 7: if set the lift is moving</li>
-       <li>m5 bit 7: if set then m5 bits 5..0 hold the destination floor of the lift, which could be 0..6, except 1.<br>
-           So the building has 6 effective floors. This is due to the fact that the first floor is 2 'normal' floors high.<br>
-           One 'normal' floor has a height of 6 lift positions.</li>
+       <li> set : House is complete
+        <ul>
+         <li>m5 : age of House. Maximum been 255, which means 255 years and more</li>
+        </ul>
+       </li>
+       <li> clear : House is in construction
+        <ul>
+         <li>m5 bits 7..5 : free</li>
+         <li>m5 bits 4..3 : construction stage</li>
+         <li>m5 bits 2..0 : construction counter</li>
+        </ul>
+       </li>
+      </ul>
+     <li>m3 bit 6 : 9th bit of house type (m4), allowing 512 different types.</li>
+     <li>m3 bits 5..0 : triggers activated <a href="#newhouses">(newhouses)</a></li>
+     <li>m4 : <a href="landscape_externals.html">town building type</a> (with m3[6] bit)</li>
+     <li>m5 : see m3 bit 7</li>
+     <li>m6 :
+      <ul>
+       <li>If <a href="#newhouses">newhouses</a> is activated
+        <ul>
+         <li>bits 7..3 : Current animation frame</li>
+         <li>bit 2 : free</li>
+        </ul>
+       </li>
+       <li>Standard behaviour
+        <ul>
+         <li>bits 7..2 : lift position (for houses type 04 and 05)</li>
+        </ul>
+       </li>
+       <li>bits 1..0 : tropic zone specifier</li>
       </ul>
      </li>
-     <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
+     <li>m7 :
+      <ul>
+       <li>If <a href="#newhouses">newhouses</a> is activated
+        <ul>
+         <li>Periodic processing time remaining</li>
+        </ul>
+       </li>
+       <li>Standard behaviour (only for houses type 04 and 05)
+        <ul>
+         <li>bits 7..4 : free</li>
+         <li>bits 3..1 : lift destination.  Values can be 0..6, except 1.<br>
+             So the building has 6 effective floors. This is due to the fact that the first floor is 2 'normal' floors high.<br>
+             One 'normal' floor has a height of 6 lift positions.
+         </li>
+         <li>bit 0 : Lift has destination when set</li>
+        </ul>
+       </li>
+      </ul>
+     </li>
     </ul>
+    <small><a name="newhouses">Newhouses is the name englobing a newGRF feature developped by TTDPatch devs (mainly Csaboka).<br>
+    It allows the replacement of the properties as well as the graphics of houses in the game.<br>
+    To distinguish between the standard behaviour and the newGRF one, HouseID (m4 + m3[6]) is tested for anything above 110.<br>
+    110 is the count of standard houses. So above 110 means there is a new definition of at least one house</small>
    </td>
   </tr>
 

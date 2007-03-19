@@ -18,6 +18,7 @@
 #include "vehicle_gui.h"
 #include "variables.h"
 #include "ai/ai.h"
+#include "newgrf_house.h"
 #include "date.h"
 #include "cargotype.h"
 
@@ -132,6 +133,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	InitializeSigns();
 	InitializeStations();
 	InitializeIndustries();
+	InitializeBuildingCounts();
 	InitializeMainGui();
 
 	InitializeNameMgr();
@@ -578,6 +580,34 @@ static void Save_MAP6()
 	}
 }
 
+static void Load_MAP7()
+{
+	uint size = MapSize();
+	uint i;
+
+	for (i = 0; i != size;) {
+		uint8 buf[4096];
+		uint j;
+
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+		for (j = 0; j != lengthof(buf); j++) _me[i++].m7 = buf[j];
+	}
+}
+
+static void Save_MAP7()
+{
+	uint size = MapSize();
+	uint i;
+
+	SlSetLength(size);
+	for (i = 0; i != size;) {
+		uint8 buf[4096];
+		uint j;
+
+		for (j = 0; j != lengthof(buf); j++) buf[j] = _me[i++].m7;
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+	}
+}
 
 static void Save_CHTS()
 {
@@ -614,6 +644,7 @@ extern const ChunkHandler _misc_chunk_handlers[] = {
 	{ 'M3HI', Save_MAP4,     Load_MAP4,     CH_RIFF },
 	{ 'MAP5', Save_MAP5,     Load_MAP5,     CH_RIFF },
 	{ 'MAPE', Save_MAP6,     Load_MAP6,     CH_RIFF },
+	{ 'MAP7', Save_MAP7,     Load_MAP7,     CH_RIFF },
 
 	{ 'NAME', Save_NAME,     Load_NAME,     CH_ARRAY},
 	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, CH_RIFF},

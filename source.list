@@ -140,10 +140,12 @@ newgrf_callbacks.h
 newgrf_cargo.h
 newgrf_config.h
 newgrf_engine.h
+newgrf_house.h
 newgrf_sound.h
 newgrf_spritegroup.h
 newgrf_station.h
 newgrf_text.h
+newgrf_town.h
 news.h
 npf.h
 music/null_m.h
@@ -279,10 +281,12 @@ ai/trolly/trolly.cpp
 newgrf.cpp
 newgrf_config.cpp
 newgrf_engine.cpp
+newgrf_house.cpp
 newgrf_sound.cpp
 newgrf_spritegroup.cpp
 newgrf_station.cpp
 newgrf_text.cpp
+newgrf_town.cpp
 
 # Map Accessors
 bridge_map.cpp

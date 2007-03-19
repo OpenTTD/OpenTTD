@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
+#include "debug.h"
 #include "strings.h"
 #include "road_map.h"
 #include "table/strings.h"
@@ -19,6 +20,7 @@
 #include "gfx.h"
 #include "industry.h"
 #include "station.h"
+#include "vehicle.h"
 #include "player.h"
 #include "news.h"
 #include "saveload.h"
@@ -32,6 +34,9 @@
 #include "date.h"
 #include "table/town_land.h"
 #include "genworld.h"
+#include "newgrf.h"
+#include "newgrf_callbacks.h"
+#include "newgrf_house.h"
 
 /**
  * Called if a new block is added to the town-pool
@@ -91,7 +96,6 @@ void DestroyTown(Town *t)
 static int _grow_town_result;
 
 static bool BuildTownHouse(Town *t, TileIndex tile);
-static void ClearTownHouse(Town *t, TileIndex tile);
 static void DoBuildTownHouse(Town *t, TileIndex tile);
 
 static void TownDrawHouseLift(const TileInfo *ti)
@@ -104,24 +108,31 @@ static TownDrawTileProc * const _town_draw_tile_procs[1] = {
 	TownDrawHouseLift
 };
 
+uint OriginalTileRandomiser(uint x, uint y)
+{
+	uint variant;
+	variant  = x >> 4;
+	variant ^= x >> 6;
+	variant ^= y >> 4;
+	variant -= y >> 6;
+	variant &= 3;
+	return variant;
+}
 
 static void DrawTile_Town(TileInfo *ti)
 {
 	const DrawBuildingsTileStruct *dcts;
 	SpriteID image;
 	SpriteID pal;
+	HouseID house_id = GetHouseType(ti->tile);
+
+	if (house_id >= NEW_HOUSE_OFFSET) {
+		DrawNewHouseTile(ti, house_id);
+		return;
+	}
 
 	/* Retrieve pointer to the draw town tile struct */
-	{
-		/* this "randomizes" on the (up to) 4 variants of a building */
-		uint variant;
-		variant  = ti->x >> 4;
-		variant ^= ti->x >> 6;
-		variant ^= ti->y >> 4;
-		variant -= ti->y >> 6;
-		variant &= 3;
-		dcts = &_town_draw_tile_data[GetHouseType(ti->tile) << 4 | variant << 2 | GetHouseBuildingStage(ti->tile)];
-	}
+	dcts = &_town_draw_tile_data[house_id << 4 | OriginalTileRandomiser(ti->x, ti->y) << 2 | GetHouseBuildingStage(ti->tile)];
 
 	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
@@ -172,18 +183,23 @@ static void AnimateTile_Town(TileIndex tile)
 {
 	int pos, dest;
 
+	if (GetHouseType(tile) >= NEW_HOUSE_OFFSET) {
+		AnimateNewHouseTile(tile);
+		return;
+	}
+
 	if (_tick_counter & 3) return;
 
 	// If the house is not one with a lift anymore, then stop this animating.
 	// Not exactly sure when this happens, but probably when a house changes.
 	// Before this was just a return...so it'd leak animated tiles..
 	// That bug seems to have been here since day 1??
-	if (!(_housetype_extra_flags[GetHouseType(tile)] & 0x20)) {
+	if (!(GetHouseSpecs(GetHouseType(tile))->building_flags & BUILDING_IS_ANIMATED)) {
 		DeleteAnimatedTile(tile);
 		return;
 	}
 
-	if (!IsLiftMoving(tile)) {
+	if (!LiftHasDestination(tile)) {
 		int i;
 
 		/** Building has 6 floors, number 0 .. 6, where 1 is illegal.
@@ -270,44 +286,53 @@ static void MakeSingleHouseBigger(TileIndex tile)
 	IncHouseConstructionTick(tile);
 	if (GetHouseConstructionTick(tile) != 0) return;
 
-	IncHouseBuildingStage(tile);  /*increase construction stage of one more step*/
+	if (HASBIT(GetHouseSpecs(GetHouseType(tile))->callback_mask, CBM_CONSTRUCTION_STATE_CHANGE)) {
+		uint16 callback_res = GetHouseCallback(CBID_CONSTRUCTION_STATE_CHANGE, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(tile, callback_res);
+	}
 
-	if (GetHouseBuildingStage(tile) == TOWN_HOUSE_COMPLETED){
-		/*Now, construction is completed.  Can add population of building to the town*/
-		ChangePopulation(GetTownByTile(tile), _housetype_population[GetHouseType(tile)]);
+	if (IsHouseCompleted(tile)) {
+		/* Now that construction is complete, we can add the population of the
+		 * building to the town. */
+		ChangePopulation(GetTownByTile(tile), GetHouseSpecs(GetHouseType(tile))->population);
 	}
 	MarkTileDirtyByTile(tile);
 }
 
 static void MakeTownHouseBigger(TileIndex tile)
 {
-	uint flags = _house_more_flags[GetHouseType(tile)];
-	if (flags & 8) MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 0));
-	if (flags & 4) MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 1));
-	if (flags & 2) MakeSingleHouseBigger(TILE_ADDXY(tile, 1, 0));
-	if (flags & 1) MakeSingleHouseBigger(TILE_ADDXY(tile, 1, 1));
+	uint flags = GetHouseSpecs(GetHouseType(tile))->building_flags;
+	if (flags & BUILDING_HAS_1_TILE)  MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 0));
+	if (flags & BUILDING_2_TILES_Y)   MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 1));
+	if (flags & BUILDING_2_TILES_X)   MakeSingleHouseBigger(TILE_ADDXY(tile, 1, 0));
+	if (flags & BUILDING_HAS_4_TILES) MakeSingleHouseBigger(TILE_ADDXY(tile, 1, 1));
 }
 
 static void TileLoop_Town(TileIndex tile)
 {
-	int house;
 	Town *t;
 	uint32 r;
+	HouseID house_id = GetHouseType(tile);
+	HouseSpec *hs = GetHouseSpecs(house_id);
 
-	if (GetHouseBuildingStage(tile) != TOWN_HOUSE_COMPLETED) {
+	/* NewHouseTileLoop returns false if Callback 21 succeeded, i.e. the house
+	 * doesn't exist any more, so don't continue here. */
+	if (house_id >= NEW_HOUSE_OFFSET && !NewHouseTileLoop(tile)) return;
+
+	if (!IsHouseCompleted(tile)) {
 		/*Construction is not completed. See if we can go further in construction*/
 		MakeTownHouseBigger(tile);
 		return;
 	}
 
-	house = GetHouseType(tile);
-	if ((_housetype_extra_flags[house] & 0x20) && !LiftHasDestination(tile) && CHANCE16(1, 2) && AddAnimatedTile(tile)) BeginLiftMovement(tile);
+	/* If the lift has a destination, it is already an animated tile. */
+	if ((hs->building_flags & BUILDING_IS_ANIMATED) && house_id < NEW_HOUSE_OFFSET && !LiftHasDestination(tile) && CHANCE16(1, 2)) AddAnimatedTile(tile);
 
 	t = GetTownByTile(tile);
 
 	r = Random();
 
-	if (GB(r, 0, 8) < _housetype_population[house]) {
+	if (GB(r, 0, 8) < hs->population) {
 		uint amt = GB(r, 0, 8) / 8 + 1;
 		uint moved;
 
@@ -317,7 +342,7 @@ static void TileLoop_Town(TileIndex tile)
 		t->new_act_pass += moved;
 	}
 
-	if (GB(r, 8, 8) < _housetype_mailamount[house] ) {
+	if (GB(r, 8, 8) < hs->mail_generation) {
 		uint amt = GB(r, 8, 8) / 8 + 1;
 		uint moved;
 
@@ -327,18 +352,18 @@ static void TileLoop_Town(TileIndex tile)
 		t->new_act_mail += moved;
 	}
 
-	if (_house_more_flags[house] & 8 && HASBIT(t->flags12, TOWN_IS_FUNDED) && --t->time_until_rebuild == 0) {
-		t->time_until_rebuild = GB(r, 16, 6) + 130;
+	_current_player = OWNER_TOWN;
 
-		_current_player = OWNER_TOWN;
+	if (hs->building_flags & BUILDING_HAS_1_TILE && HASBIT(t->flags12, TOWN_IS_FUNDED) && CanDeleteHouse(tile) && --t->time_until_rebuild == 0) {
+		t->time_until_rebuild = GB(r, 16, 6) + 130;
 
 		ClearTownHouse(t, tile);
 
 		// rebuild with another house?
 		if (GB(r, 24, 8) >= 12) DoBuildTownHouse(t, tile);
-
-		_current_player = OWNER_NONE;
 	}
+
+	_current_player = OWNER_NONE;
 }
 
 static void ClickTile_Town(TileIndex tile)
@@ -348,16 +373,17 @@ static void ClickTile_Town(TileIndex tile)
 
 static int32 ClearTile_Town(TileIndex tile, byte flags)
 {
-	int house, rating;
+	int rating;
 	int32 cost;
 	Town *t;
+	HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
 
 	if (flags&DC_AUTO && !(flags&DC_AI_BUILDING)) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
+	if (!CanDeleteHouse(tile)) return CMD_ERROR;
 
-	house = GetHouseType(tile);
-	cost = _price.remove_house * _housetype_remove_cost[house] >> 8;
+	cost = _price.remove_house * hs->removal_cost >> 8;
 
-	rating = _housetype_remove_ratingmod[house];
+	rating = hs->remove_rating_decrease;
 	_cleared_town_rating += rating;
 	_cleared_town = t = GetTownByTile(tile);
 
@@ -378,18 +404,18 @@ static int32 ClearTile_Town(TileIndex tile, byte flags)
 
 static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 {
-	byte type = GetHouseType(tile);
+	HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
 
-	ac[CT_PASSENGERS] = _housetype_cargo_passengers[type];
-	ac[CT_MAIL]       = _housetype_cargo_mail[type];
-	ac[CT_GOODS]      = _housetype_cargo_goods[type];
-	ac[CT_FOOD]       = _housetype_cargo_food[type];
+	ac[CT_PASSENGERS] = hs->passenger_acceptance;
+	ac[CT_MAIL]       = hs->mail_acceptance;
+	ac[CT_GOODS]      = hs->goods_acceptance;
+	ac[CT_FOOD]       = hs->food_acceptance;
 }
 
 static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 {
-	td->str = _town_tile_names[GetHouseType(tile)];
-	if (GetHouseBuildingStage(tile) != TOWN_HOUSE_COMPLETED) {
+	td->str = GetHouseSpecs(GetHouseType(tile))->building_name;
+	if (!IsHouseCompleted(tile)) {
 		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
 	}
@@ -1186,10 +1212,11 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 {
 	int i;
 	uint bitmask;
-	int house;
+	HouseID house;
 	Slope slope;
 	uint z;
 	uint oneof = 0;
+	HouseSpec *hs;
 
 	// Above snow?
 	slope = GetTileSlope(tile, &z);
@@ -1208,45 +1235,63 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 	// bits 11-15 are used
 	// bits 5-10 are not used.
 	{
-		byte houses[lengthof(_housetype_flags)];
+		HouseID houses[HOUSE_MAX];
 		int num = 0;
+		uint cumulative_probs[HOUSE_MAX];
+		uint probability_max = 0;
 
 		// Generate a list of all possible houses that can be built.
-		for (i=0; i!=lengthof(_housetype_flags); i++) {
-			if ((~_housetype_flags[i] & bitmask) == 0)
-				houses[num++] = (byte)i;
+		for (i = 0; i < HOUSE_MAX; i++) {
+			hs = GetHouseSpecs(i);
+			if ((~hs->building_availability & bitmask) == 0 && hs->enabled) {
+				if (_have_newhouses) {
+					probability_max += hs->probability;
+					cumulative_probs[num] = probability_max;
+				}
+				houses[num++] = (HouseID)i;
+			}
 		}
 
 		for (;;) {
-			house = houses[RandomRange(num)];
+			if (_have_newhouses) {
+				uint r = RandomRange(probability_max);
+				for (i = 0; i < num; i++) if (cumulative_probs[i] >= r) break;
 
-			if (_cur_year < _housetype_years[house].min || _cur_year > _housetype_years[house].max)
-				continue;
+				house = houses[i];
+			} else {
+				house = houses[RandomRange(num)];
+			}
+
+			hs = GetHouseSpecs(house);
+
+			if (_have_newhouses) {
+				if (hs->override != 0) hs = GetHouseSpecs(hs->override);
+
+				if ((hs->extra_flags & BUILDING_IS_HISTORICAL) && !_generating_world) continue;
+
+				if (HASBIT(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
+					uint16 callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, house, t, tile);
+					if (callback_res != CALLBACK_FAILED && callback_res == 0) continue;
+				}
+			}
+
+			if (_cur_year < hs->min_date || _cur_year > hs->max_date) continue;
 
 			// Special houses that there can be only one of.
-			switch (house) {
-				case HOUSE_TEMP_CHURCH:
-				case HOUSE_ARCT_CHURCH:
-				case HOUSE_SNOW_CHURCH:
-				case HOUSE_TROP_CHURCH:
-				case HOUSE_TOY_CHURCH:
-					SETBIT(oneof, TOWN_HAS_CHURCH);
-					break;
-				case HOUSE_STADIUM:
-				case HOUSE_MODERN_STADIUM:
-					SETBIT(oneof, TOWN_HAS_STADIUM);
-					break;
-				default:
-					oneof = 0;
-					break;
+			if (hs->building_flags & BUILDING_IS_CHURCH) {
+				SETBIT(oneof, TOWN_HAS_CHURCH);
+			} else if (hs->building_flags & BUILDING_IS_STADIUM) {
+				SETBIT(oneof, TOWN_HAS_STADIUM);
+			} else {
+				oneof = 0;
 			}
 
 			if (HASBITS(t->flags12 , oneof)) continue;
 
 			// Make sure there is no slope?
-			if (_housetype_extra_flags[house] & 0x12 && slope != SLOPE_FLAT) continue;
+			if (hs->building_flags & TILE_NOT_SLOPED && slope != SLOPE_FLAT) continue;
 
-			if (_housetype_extra_flags[house] & 0x10) {
+			if (hs->building_flags & TILE_SIZE_2x2) {
 				if (CheckFree2x2Area(tile) ||
 						CheckFree2x2Area(tile += TileDiffXY(-1,  0)) ||
 						CheckFree2x2Area(tile += TileDiffXY( 0, -1)) ||
@@ -1254,14 +1299,14 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 					break;
 				}
 				tile += TileDiffXY(0, 1);
-			} else if (_housetype_extra_flags[house] & 4) {
+			} else if (hs->building_flags & TILE_SIZE_2x1) {
 				if (CheckBuildHouseMode(tile + TileDiffXY(1, 0), slope, 0)) break;
 
 				if (CheckBuildHouseMode(tile + TileDiffXY(-1, 0), slope, 1)) {
 					tile += TileDiffXY(-1, 0);
 					break;
 				}
-			} else if (_housetype_extra_flags[house] & 8) {
+			} else if (hs->building_flags & TILE_SIZE_1x2) {
 				if (CheckBuildHouseMode(tile + TileDiffXY(0, 1), slope, 2)) break;
 
 				if (CheckBuildHouseMode(tile + TileDiffXY(0, -1), slope, 3)) {
@@ -1275,12 +1320,13 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 	}
 
 	t->num_houses++;
+	IncreaseBuildingCount(t, house);
 
 	// Special houses that there can be only one of.
 	t->flags12 |= oneof;
 
 	{
-		byte construction_counter = 0, construction_stage = 0, size_flags;
+		byte construction_counter = 0, construction_stage = 0;
 
 		if (_generating_world) {
 			uint32 r = Random();
@@ -1289,13 +1335,12 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 			if (CHANCE16(1, 7)) construction_stage = GB(r, 0, 2);
 
 			if (construction_stage == TOWN_HOUSE_COMPLETED) {
-				ChangePopulation(t, _housetype_population[house]);
+				ChangePopulation(t, hs->population);
 			} else {
 				construction_counter = GB(r, 2, 2);
 			}
 		}
-		size_flags = GB(_housetype_extra_flags[house], 2, 3);
-		MakeTownHouse(tile, t->index, construction_counter, construction_stage, size_flags, house);
+		MakeTownHouse(tile, t->index, construction_counter, construction_stage, house, VehicleRandomBits());
 	}
 }
 
@@ -1321,60 +1366,54 @@ static void DoClearTownHouseHelper(TileIndex tile)
 	DeleteAnimatedTile(tile);
 }
 
-static void ClearTownHouse(Town *t, TileIndex tile)
+void ClearTownHouse(Town *t, TileIndex tile)
 {
-	uint house = GetHouseType(tile);
+	HouseID house = GetHouseType(tile);
 	uint eflags;
+	HouseSpec *hs;
 
 	assert(IsTileType(tile, MP_HOUSE));
 
 	// need to align the tile to point to the upper left corner of the house
 	if (house >= 3) { // house id 0,1,2 MUST be single tile houses, or this code breaks.
-		if (_housetype_extra_flags[house-1] & 0x04) {
+		if (GetHouseSpecs(house-1)->building_flags & TILE_SIZE_2x1) {
 			house--;
 			tile += TileDiffXY(-1, 0);
-		} else if (_housetype_extra_flags[house-1] & 0x18) {
+		} else if (GetHouseSpecs(house-1)->building_flags & BUILDING_2_TILES_Y) {
 			house--;
 			tile += TileDiffXY(0, -1);
-		} else if (_housetype_extra_flags[house-2] & 0x10) {
+		} else if (GetHouseSpecs(house-2)->building_flags & BUILDING_HAS_4_TILES) {
 			house-=2;
 			tile += TileDiffXY(-1, 0);
-		} else if (_housetype_extra_flags[house-3] & 0x10) {
+		} else if (GetHouseSpecs(house-3)->building_flags & BUILDING_HAS_4_TILES) {
 			house-=3;
 			tile += TileDiffXY(-1, -1);
 		}
 	}
 
+	hs = GetHouseSpecs(house);
+
 	// Remove population from the town if the house is finished.
-	if (GetHouseBuildingStage(tile) == TOWN_HOUSE_COMPLETED) {
-		ChangePopulation(t, -_housetype_population[house]);
+	if (IsHouseCompleted(tile)) {
+		ChangePopulation(t, -hs->population);
 	}
 
 	t->num_houses--;
+	DecreaseBuildingCount(t, house);
 
 	// Clear flags for houses that only may exist once/town.
-	switch (house) {
-		case HOUSE_TEMP_CHURCH:
-		case HOUSE_ARCT_CHURCH:
-		case HOUSE_SNOW_CHURCH:
-		case HOUSE_TROP_CHURCH:
-		case HOUSE_TOY_CHURCH:
-			CLRBIT(t->flags12, TOWN_HAS_CHURCH);
-			break;
-		case HOUSE_STADIUM:
-		case HOUSE_MODERN_STADIUM:
-			CLRBIT(t->flags12, TOWN_HAS_STADIUM);
-			break;
-		default:
-			break;
+	if (hs->building_flags & BUILDING_IS_CHURCH) {
+		CLRBIT(t->flags12, TOWN_HAS_CHURCH);
+	} else if (hs->building_flags & BUILDING_IS_STADIUM) {
+		CLRBIT(t->flags12, TOWN_HAS_STADIUM);
 	}
 
 	// Do the actual clearing of tiles
-	eflags = _housetype_extra_flags[house];
+	eflags = hs->building_flags;
 	DoClearTownHouseHelper(tile);
-	if (eflags & 0x14) DoClearTownHouseHelper(tile + TileDiffXY(1, 0));
-	if (eflags & 0x18) DoClearTownHouseHelper(tile + TileDiffXY(0, 1));
-	if (eflags & 0x10) DoClearTownHouseHelper(tile + TileDiffXY(1, 1));
+	if (eflags & BUILDING_2_TILES_X)   DoClearTownHouseHelper(tile + TileDiffXY(1, 0));
+	if (eflags & BUILDING_2_TILES_Y)   DoClearTownHouseHelper(tile + TileDiffXY(0, 1));
+	if (eflags & BUILDING_HAS_4_TILES) DoClearTownHouseHelper(tile + TileDiffXY(1, 1));
 }
 
 /** Rename a town (server-only).
@@ -1922,6 +1961,37 @@ static const SaveLoad _town_desc[] = {
 	SLE_END()
 };
 
+/* Save and load the mapping between the house id on the map, and the grf file
+ * it came from. */
+static const SaveLoad _house_id_mapping_desc[] = {
+	SLE_VAR(HouseIDMapping, grfid,         SLE_UINT32),
+	SLE_VAR(HouseIDMapping, house_id,      SLE_UINT8),
+	SLE_VAR(HouseIDMapping, substitute_id, SLE_UINT8),
+	SLE_END()
+};
+
+static void Save_HOUSEIDS()
+{
+	uint i;
+
+	for (i = 0; i != lengthof(_house_id_mapping); i++) {
+		SlSetArrayIndex(i);
+		SlObject(&_house_id_mapping[i], _house_id_mapping_desc);
+	}
+}
+
+static void Load_HOUSEIDS()
+{
+	int index;
+
+	ResetHouseIDMapping();
+
+	while ((index = SlIterateArray()) != -1) {
+		if ((uint)index >= lengthof(_house_id_mapping)) break;
+		SlObject(&_house_id_mapping[index], _house_id_mapping_desc);
+	}
+}
+
 static void Save_TOWN()
 {
 	Town *t;
@@ -1966,7 +2036,13 @@ void AfterLoadTown()
 	_town_sort_dirty = true;
 }
 
-
 extern const ChunkHandler _town_chunk_handlers[] = {
-	{ 'CITY', Save_TOWN, Load_TOWN, CH_ARRAY | CH_LAST},
+	{ 'HIDS', Save_HOUSEIDS, Load_HOUSEIDS, CH_ARRAY },
+	{ 'CITY', Save_TOWN,     Load_TOWN,     CH_ARRAY | CH_LAST},
 };
+
+void ResetHouses()
+{
+	memset(&_house_specs, 0, sizeof(_house_specs));
+	memcpy(&_house_specs, &_original_house_specs, sizeof(_original_house_specs));
+}

@@ -18,6 +18,7 @@
 #include "string.h"
 #include "table/strings.h"
 #include "bridge.h"
+#include "town.h"
 #include "economy.h"
 #include "newgrf_engine.h"
 #include "vehicle.h"
@@ -28,9 +29,11 @@
 #include "currency.h"
 #include "sound.h"
 #include "newgrf_config.h"
+#include "newgrf_house.h"
 #include "newgrf_sound.h"
 #include "newgrf_spritegroup.h"
 #include "helpers.hpp"
+#include "table/town_land.h"
 #include "cargotype.h"
 
 /* TTDPatch extended GRF format codec
@@ -67,6 +70,9 @@ static byte *_preload_sprite = NULL;
 
 /* Set if any vehicle is loaded which uses 2cc (two company colours) */
 bool _have_2cc = false;
+
+/* Set if there are any newhouses loaded. */
+bool _have_newhouses = false;
 
 /* Default cargo translation table. By default there are 27 possible cargo types */
 static const uint _default_cargo_max = 27;
@@ -224,6 +230,32 @@ static GRFFile *GetFileByFilename(const char *filename)
 		if (strcmp(file->filename, filename) == 0) break;
 	}
 	return file;
+}
+
+
+/** Used when setting an object's property to map to the GRF's strings
+ * while taking in consideration the "drift" between TTDPatch string system and OpenTTD's one
+ * @param str StringID that we want to have the equivalent in OoenTTD
+ * @return the properly adjusted StringID
+ */
+static StringID MapGRFStringID(StringID str)
+{
+	/* 0xD0 and 0xDC stand for all the TextIDs in the range
+	*  of 0xD000 (misc graphics texts) and 0xDC00 (misc persistent texts).
+	 * These strings are unique to each grf file, and thus require to be used with the
+	 * grfid in which they are declared */
+	if (GB(str, 8, 8) == 0xD0 || GB(str, 8, 8) == 0xDC) {
+		return GetGRFStringID(_cur_grffile->grfid, str);
+	}
+
+	/* Map building names according to our lang file changes
+	 * 0x200F = Tall Office Block, first house name in the original data, the one that TTDPatch stil uses
+	 * 0x201F = Old houses is the last house name.
+	 * OpenTTD does not have exactly the same order aymore, so, the code below allows
+	 * to compensate for the difference */
+	if (str >= 0x200F && str <= 0x201F) return str + (STR_200F_TALL_OFFICE_BLOCK - 0x200F);
+
+	return str;
 }
 
 
@@ -1168,6 +1200,206 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 	return ret;
 }
 
+static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, int len)
+{
+	HouseSpec **housespec;
+	byte *buf = *bufp;
+	int i;
+	bool ret = false;
+
+	if (hid + numinfo >= HOUSE_MAX) {
+		grfmsg(1, "TownHouseChangeInfo: Too many houses loaded (%u), max (%u). Ignoring.", hid + numinfo, HOUSE_MAX-1);
+		return false;
+	}
+
+	/* Allocate house specs if they haven't been allocated already. */
+	if (_cur_grffile->housespec == NULL) {
+		_cur_grffile->housespec = CallocT<HouseSpec*>(HOUSE_MAX);
+
+		/* Reset any overrides that have been set. */
+		ResetHouseOverrides();
+	}
+
+	housespec = &_cur_grffile->housespec[hid];
+
+	if (prop != 0x08) {
+		/* Check that all the houses being modified have been defined. */
+		FOR_EACH_OBJECT {
+			if (housespec[i] == NULL) {
+				grfmsg(2, "TownHouseChangeInfo: Attempt to modify undefined house %u. Ignoring.", hid + i);
+				return false;
+			}
+		}
+	}
+
+	switch (prop) {
+		case 0x08: // Substitute building type, and definition of a new house
+			FOR_EACH_OBJECT {
+				byte subs_id = grf_load_byte(&buf);
+
+				if (subs_id == 0xFF) {
+					/* Instead of defining a new house, a substitute house id
+					 * of 0xFF disables the old house with the current id. */
+					_house_specs[hid + i].enabled = false;
+					continue;
+				} else if (subs_id >= NEW_HOUSE_OFFSET) {
+					/* The substitute id must be one of the original houses. */
+					grfmsg(2, "TownHouseChangeInfo: Attempt to use new house %u as substitute house for %u. Ignoring.", subs_id, hid + i);
+					return false;
+				}
+
+				/* Allocate space for this house. */
+				if (housespec[i] == NULL) housespec[i] = CallocT<HouseSpec>(1);
+
+				memcpy(housespec[i], &_house_specs[subs_id], sizeof(_house_specs[subs_id]));
+
+				housespec[i]->enabled = true;
+				housespec[i]->local_id = hid + i;
+				housespec[i]->substitute_id = subs_id;
+				housespec[i]->random_colour[0] = 0x04;  // those 4 random colours are the base colour
+				housespec[i]->random_colour[1] = 0x08;  // for all new houses
+				housespec[i]->random_colour[2] = 0x0C;  // they stand for red, blue, orange and green
+				housespec[i]->random_colour[3] = 0x06;
+
+				/* New houses do not (currently) expect to have a default start
+				 * date before 1930, as this breaks the build date stuff. See
+				 * FinaliseHouseArray() for more details. */
+				if (housespec[i]->min_date < 1930) housespec[i]->min_date = 1930;
+			}
+			_have_newhouses = true;
+			break;
+
+		case 0x09: // Building flags
+			FOR_EACH_OBJECT {
+				byte state = grf_load_byte(&buf);
+				housespec[i]->building_flags = (BuildingFlags)state;
+			}
+			break;
+
+		case 0x0A: // Availability years
+			FOR_EACH_OBJECT {
+				uint16 years = grf_load_word(&buf);
+				housespec[i]->min_date = GB(years, 0, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 0, 8);
+				housespec[i]->max_date = GB(years, 8, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 8, 8);
+			}
+			break;
+
+		case 0x0B: // Population
+			FOR_EACH_OBJECT housespec[i]->population = grf_load_byte(&buf);
+			break;
+
+		case 0x0C: // Mail generation multiplier
+			FOR_EACH_OBJECT housespec[i]->mail_generation = grf_load_byte(&buf);
+			break;
+
+		case 0x0D: // Passenger acceptance
+			FOR_EACH_OBJECT housespec[i]->passenger_acceptance = grf_load_byte(&buf);
+			break;
+
+		case 0x0E: // Mail acceptance
+			FOR_EACH_OBJECT housespec[i]->mail_acceptance = grf_load_byte(&buf);
+			break;
+
+		case 0x0F: // Goods, food or fizzy drinks acceptance
+			FOR_EACH_OBJECT {
+				int8 goods = grf_load_byte(&buf);
+				if (goods > 0) {
+					housespec[i]->goods_acceptance = goods;
+				} else {
+					housespec[i]->food_acceptance = -goods;
+				}
+			}
+			break;
+
+		case 0x10: // Local authority rating decrease on removal
+			FOR_EACH_OBJECT housespec[i]->remove_rating_decrease = grf_load_word(&buf);
+			break;
+
+		case 0x11: // Removal cost multiplier
+			FOR_EACH_OBJECT housespec[i]->removal_cost = grf_load_byte(&buf);
+			break;
+
+		case 0x12: // Building name ID
+			FOR_EACH_OBJECT housespec[i]->building_name = MapGRFStringID(grf_load_word(&buf));
+			break;
+
+		case 0x13: // Building availability mask
+			FOR_EACH_OBJECT {
+				uint16 avail = grf_load_word(&buf);
+				housespec[i]->building_availability = (HouseZones)avail;
+			}
+			break;
+
+		case 0x14: // House callback flags
+			FOR_EACH_OBJECT housespec[i]->callback_mask = grf_load_byte(&buf);
+			break;
+
+		case 0x15: // House override byte
+			FOR_EACH_OBJECT {
+				byte override = grf_load_byte(&buf);
+
+				/* The house being overridden must be an original house. */
+				if (override >= NEW_HOUSE_OFFSET) {
+					grfmsg(2, "TownHouseChangeInfo: Attempt to override new house %u with house id %u. Ignoring.", override, hid);
+					return false;
+				}
+
+				AddHouseOverride(hid, override);
+			}
+			break;
+
+		case 0x16: // Periodic refresh multiplier
+			FOR_EACH_OBJECT housespec[i]->processing_time = grf_load_byte(&buf);
+			break;
+
+		case 0x17: // Four random colours to use
+			FOR_EACH_OBJECT {
+				uint j;
+				for (j = 0; j < 4; j++)	housespec[i]->random_colour[j] = grf_load_byte(&buf);
+			}
+			break;
+
+		case 0x18: // Relative probability of appearing
+			FOR_EACH_OBJECT housespec[i]->probability = grf_load_byte(&buf);
+			break;
+
+		case 0x19: // Extra flags
+			FOR_EACH_OBJECT {
+				byte flags = grf_load_byte(&buf);
+				housespec[i]->extra_flags = (HouseExtraFlags)flags;
+			}
+			break;
+
+		case 0x1A: // Animation frames
+			FOR_EACH_OBJECT housespec[i]->animation_frames = grf_load_byte(&buf);
+			break;
+
+		case 0x1B: // Animation speed
+			FOR_EACH_OBJECT housespec[i]->animation_speed = clamp(grf_load_byte(&buf), 2, 16);
+			break;
+
+		case 0x1C: // Class of the building type
+			FOR_EACH_OBJECT housespec[i]->class_id = AllocateHouseClassID(grf_load_byte(&buf), _cur_grffile->grfid);
+			break;
+
+		case 0x1D: // Callback flags 2
+			FOR_EACH_OBJECT housespec[i]->callback_mask |= (grf_load_byte(&buf) << 8);
+			break;
+
+		case 0x1E: // Accepted cargo types
+			FOR_EACH_OBJECT grf_load_dword(&buf);
+			ret = true;
+			break;
+
+		default:
+			ret = true;
+			break;
+	}
+
+	*bufp = buf;
+	return ret;
+}
+
 static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
@@ -1375,7 +1607,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 		/* GSF_STATION */      StationChangeInfo,
 		/* GSF_CANAL */        NULL,
 		/* GSF_BRIDGE */       BridgeChangeInfo,
-		/* GSF_TOWNHOUSE */    NULL,
+		/* GSF_TOWNHOUSE */    TownHouseChangeInfo,
 		/* GSF_GLOBALVAR */    GlobalVarChangeInfo,
 		/* GSF_INDUSTRYTILES */NULL,
 		/* GSF_INDUSTRIES */   NULL,
@@ -1853,6 +2085,86 @@ static void NewSpriteGroup(byte *buf, int len)
 					break;
 				}
 
+				case GSF_TOWNHOUSE: {
+					byte sprites     = _cur_grffile->spriteset_numents;
+					byte num_sprites = max((uint8)1, type);
+					uint i;
+
+					group = AllocateSpriteGroup();
+					group->type = SGT_TILELAYOUT;
+					group->g.layout.num_sprites = sprites;
+					group->g.layout.dts = CallocT<DrawTileSprites>(1);
+
+					/* Groundsprite */
+					group->g.layout.dts->ground_sprite = grf_load_word(&buf);
+					group->g.layout.dts->ground_pal    = grf_load_word(&buf);
+					/* Remap transparent/colour modifier bits */
+					if (HASBIT(group->g.layout.dts->ground_sprite, 14)) {
+						CLRBIT(group->g.layout.dts->ground_sprite, 14);
+						SETBIT(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_TRANSPARENT);
+					}
+					if (HASBIT(group->g.layout.dts->ground_sprite, 15)) {
+						CLRBIT(group->g.layout.dts->ground_sprite, 15);
+						SETBIT(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_COLOR);
+					}
+					if (HASBIT(group->g.layout.dts->ground_pal, 14)) {
+						CLRBIT(group->g.layout.dts->ground_pal, 14);
+						SETBIT(group->g.layout.dts->ground_sprite, SPRITE_MODIFIER_OPAQUE);
+					}
+					if (HASBIT(group->g.layout.dts->ground_pal, 15)) {
+						/* Bit 31 set means this is a custom sprite, so rewrite it to the
+						 * last spriteset defined. */
+						SpriteID sprite = _cur_grffile->spriteset_start + GB(group->g.layout.dts->ground_sprite, 0, 14) * sprites;
+						SB(group->g.layout.dts->ground_sprite, 0, SPRITE_WIDTH, sprite);
+						CLRBIT(group->g.layout.dts->ground_pal, 15);
+					}
+
+					group->g.layout.dts->seq = CallocT<DrawTileSeqStruct>(num_sprites + 1);
+
+					for (i = 0; i < num_sprites; i++) {
+						DrawTileSeqStruct *seq = (DrawTileSeqStruct*)&group->g.layout.dts->seq[i];
+
+						seq->image = grf_load_word(&buf);
+						seq->pal   = grf_load_word(&buf);
+						seq->delta_x = grf_load_byte(&buf);
+						seq->delta_y = grf_load_byte(&buf);
+
+						if (HASBIT(seq->image, 14)) {
+							CLRBIT(seq->image, 14);
+							SETBIT(seq->image, PALETTE_MODIFIER_TRANSPARENT);
+						}
+						if (HASBIT(seq->image, 15)) {
+							CLRBIT(seq->image, 15);
+							SETBIT(seq->image, PALETTE_MODIFIER_COLOR);
+						}
+						if (HASBIT(seq->pal, 14)) {
+							CLRBIT(seq->pal, 14);
+							SETBIT(seq->image, SPRITE_MODIFIER_OPAQUE);
+						}
+						if (HASBIT(seq->pal, 15)) {
+							/* Bit 31 set means this is a custom sprite, so rewrite it to the
+							 * last spriteset defined. */
+							SpriteID sprite = _cur_grffile->spriteset_start + GB(seq->image, 0, 14) * sprites;
+							SB(seq->image, 0, SPRITE_WIDTH, sprite);
+							CLRBIT(seq->pal, 15);
+						}
+
+						if (type > 0) {
+							seq->delta_z = grf_load_byte(&buf);
+							if ((byte)seq->delta_z == 0x80) continue;
+						}
+
+						seq->size_x = grf_load_byte(&buf);
+						seq->size_y = grf_load_byte(&buf);
+						seq->size_z = grf_load_byte(&buf);
+					}
+
+					/* Set the terminator value. */
+					((DrawTileSeqStruct*)group->g.layout.dts->seq)[i].delta_x = (byte)0x80;
+
+					break;
+				}
+
 				/* Loading of Tile Layout and Production Callback groups would happen here */
 				default: grfmsg(1, "NewSpriteGroup: Unsupported feature %d, skipping", feature);
 			}
@@ -1934,7 +2246,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 	grfmsg(6, "FeatureMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d",
 			feature, idcount, cidcount, wagover);
 
-	if (feature > GSF_STATION) {
+	if (feature > GSF_STATION && feature != GSF_TOWNHOUSE) {
 		grfmsg(1, "FeatureMapSpriteGroup: Unsupported feature %d, skipping", feature);
 		return;
 	}
@@ -1984,6 +2296,29 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 				statspec->localidx = stid;
 				SetCustomStationSpec(statspec);
 			}
+		}
+		return;
+	} else if (feature == GSF_TOWNHOUSE) {
+		byte *bp = &buf[4 + idcount + cidcount * 3];
+		uint16 groupid = grf_load_word(&bp);
+
+		if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+			grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
+			       groupid, _cur_grffile->spritegroups_count);
+			return;
+		}
+
+		for (uint i = 0; i < idcount; i++) {
+			uint8 hid = buf[3 + i];
+			HouseSpec *hs = _cur_grffile->housespec[hid];
+
+			if (hs == NULL) {
+				grfmsg(1, "FeatureMapSpriteGroup: Too many houses defined, skipping");
+				return;
+			}
+
+			hs->spritegroup = _cur_grffile->spritegroups[groupid];
+			hs->grffile = _cur_grffile;
 		}
 		return;
 	}
@@ -2148,6 +2483,7 @@ static void FeatureNewName(byte *buf, int len)
 					break;
 				}
 
+				case GSF_TOWNHOUSE:
 				default:
 					switch (GB(id, 8, 8)) {
 						case 0xC4: /* Station class name */
@@ -2167,7 +2503,15 @@ static void FeatureNewName(byte *buf, int len)
 							}
 							break;
 
-						case 0xC9:
+						case 0xC9: { /* House name */
+							if (_cur_grffile->housespec == NULL || _cur_grffile->housespec[GB(id, 0, 8)] == NULL) {
+								grfmsg(1, "FeatureNewName: Attempt to name undefined house 0x%X, ignoring.", GB(id, 0, 8));
+							} else {
+								_cur_grffile->housespec[GB(id, 0, 8)]->building_name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+							}
+							break;
+						}
+
 						case 0xD0:
 						case 0xDC:
 							AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
@@ -2182,7 +2526,6 @@ static void FeatureNewName(byte *buf, int len)
 #if 0
 				case GSF_CANAL :
 				case GSF_BRIDGE :
-				case GSF_TOWNHOUSE :
 					AddGRFString(_cur_spriteid, id, lang, name);
 					switch (GB(id, 8,8)) {
 						case 0xC9: /* House name */
@@ -3478,7 +3821,7 @@ static void InitializeGRFSpecial()
 	                   |                                        (1 << 0x16)  // canals
 	                   |                                        (1 << 0x17)  // newstartyear
 	                   |                                        (0 << 0x18)  // freighttrains
-	                   |                                        (0 << 0x19)  // newhouses
+	                   |                                        (1 << 0x19)  // newhouses
 	                   |                                        (1 << 0x1A)  // newbridges
 	                   |                                        (0 << 0x1B)  // newtownnames
 	                   |                                        (0 << 0x1C)  // moreanimations
@@ -3550,6 +3893,20 @@ static void ResetCustomStations()
 	}
 }
 
+static void ResetCustomHouses()
+{
+	GRFFile *file;
+	uint i;
+
+	for (file = _first_grffile; file != NULL; file = file->next) {
+		if (file->housespec == NULL) continue;
+		for (i = 0; i < HOUSE_MAX; i++) free(file->housespec[i]);
+
+		free(file->housespec);
+		file->housespec = NULL;
+	}
+}
+
 static void ResetNewGRF()
 {
 	GRFFile *next;
@@ -3610,6 +3967,10 @@ static void ResetNewGRFData()
 	/* Reset the curencies array */
 	ResetCurrencies();
 
+	/* Reset the house array */
+	ResetCustomHouses();
+	ResetHouses();
+
 	// Reset station classes
 	ResetStationClasses();
 	ResetCustomStations();
@@ -3635,6 +3996,7 @@ static void ResetNewGRFData()
 	_traininfo_vehicle_pitch = 0;
 	_traininfo_vehicle_width = 29;
 	_have_2cc = false;
+	_have_newhouses = false;
 	_signal_base = 0;
 	_coast_base = 0;
 
@@ -3838,6 +4200,41 @@ static void CalculateRefitMasks()
 	}
 }
 
+/** Add all new houses to the house array. House properties can be set at any
+ * time in the GRF file, so we can only add a house spec to the house array
+ * after the file has finished loading. We also need to check the dates, due to
+ * the TTDPatch behaviour described below that we need to emulate. */
+static void FinaliseHouseArray()
+{
+	/* If there are no houses with start dates before 1930, then all houses
+	 * with start dates of 1930 have them reset to 0. This is in order to be
+	 * compatible with TTDPatch, where if no houses have start dates before
+	 * 1930 and the date is before 1930, the game pretends that this is 1930.
+	 * If there have been any houses defined with start dates before 1930 then
+	 * the dates are left alone. */
+	bool reset_dates = true;
+
+	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
+		if (file->housespec == NULL) continue;
+
+		for (int i = 0; i < HOUSE_MAX; i++) {
+			HouseSpec *hs = file->housespec[i];
+			if (hs != NULL) {
+				SetHouseSpec(hs);
+				if (hs->min_date < 1930) reset_dates = false;
+			}
+		}
+	}
+
+	if (reset_dates) {
+		for (int i = NEW_HOUSE_OFFSET; i < HOUSE_MAX; i++) {
+			HouseSpec *hs = GetHouseSpecs(i);
+
+			if (hs->enabled && hs->min_date == 1930) hs->min_date = 0;
+		}
+	}
+}
+
 /* Here we perform initial decoding of some special sprites (as are they
  * described at http://www.ttdpatch.net/src/newgrf.txt, but this is only a very
  * partial implementation yet). */
@@ -4003,6 +4400,18 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 
 void InitDepotWindowBlockSizes();
 
+static void AfterLoadGRFs()
+{
+	/* Pre-calculate all refit masks after loading GRF files. */
+	CalculateRefitMasks();
+
+	/* Set the block size in the depot windows based on vehicle sprite sizes */
+	InitDepotWindowBlockSizes();
+
+	/* Add all new houses to the house array. */
+	FinaliseHouseArray();
+}
+
 void LoadNewGRF(uint load_index, uint file_index)
 {
 	InitializeGRFSpecial();
@@ -4033,9 +4442,6 @@ void LoadNewGRF(uint load_index, uint file_index)
 		}
 	}
 
-	// Pre-calculate all refit masks after loading GRF files
-	CalculateRefitMasks();
-
-	/* Set the block size in the depot windows based on vehicle sprite sizes */
-	InitDepotWindowBlockSizes();
+	/* Call any functions that should be run after GRFs have been loaded. */
+	AfterLoadGRFs();
 }

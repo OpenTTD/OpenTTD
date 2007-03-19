@@ -37,9 +37,41 @@ enum CallbackID {
 
 	CBID_TRAIN_ARTIC_ENGINE         = 0x16,
 
+	/* Called (if appropriate bit in callback mask is set) to determine whether
+	 * the house can be built on the specified tile. */
+	CBID_HOUSE_ALLOW_CONSTRUCTION   = 0x17,
+
 	CBID_VEHICLE_CARGO_SUFFIX       = 0x19,
 
+	/* Called (if appropriate bit in callback mask is set) to determine
+	 * the next animation frame. */
+	CBID_HOUSE_ANIMATION_NEXT_FRAME = 0x1A,
+
+	/* Called (if appropriate bit in callback mask is set) for periodically
+	 * starting or stopping the animation. */
+	CBID_HOUSE_ANIMATION_START_STOP = 0x1B,
+
+	/* Called (if appropriate bit in callback mask is set) whenever the
+	 * construction state of a house changes. */
+	CBID_CONSTRUCTION_STATE_CHANGE  = 0x1C,
+
 	CBID_TRAIN_ALLOW_WAGON_ATTACH   = 0x1D,
+
+	/* Called (if appropriate bit in callback mask is set) to determine the
+	 * colour of a town building. */
+	CBID_BUILDING_COLOUR            = 0x1E,
+
+	/* Called (if appropriate bit in callback mask is set) to decide how much
+	 * cargo a town building can accept. */
+	CBID_HOUSE_CARGO_ACCEPTANCE     = 0x1F, // not yet implemented
+
+	/* Called (if appropriate bit in callback mask is set) to indicate
+	 * how long the current animation frame should last. */
+	CBID_HOUSE_ANIMATION_SPEED      = 0x20,
+
+	/* Called (if appropriate bit in callback mask is set) periodically to
+	 * determine if a house should be destroyed. */
+	CBID_HOUSE_DESTRUCTION          = 0x21,
 
 	/* This callback is called from vehicle purchase lists. It returns a value to be
 	 * used as a custom string ID in the 0xD000 range. */
@@ -48,9 +80,17 @@ enum CallbackID {
 	/* Called when building a station to customize the tile layout */
 	CBID_STATION_TILE_LAYOUT        = 0x24,
 
+	/* Called (if appropriate bit in callback mask is set) to determine which
+	 * cargoes a town building should accept. */
+	CBID_HOUSE_ACCEPT_CARGO         = 0x2A, // not yet implemented
+
 	/* Called to determine if a specific colour map should be used for a vehicle
 	 * instead of the default livery */
 	CBID_VEHICLE_COLOUR_MAPPING     = 0x2D,
+
+	/* Called (if appropriate bit in callback mask is set) to determine how much
+	 * cargo a town building produces. */
+	CBID_HOUSE_PRODUCE_CARGO        = 0x2E, // not yet implemented
 
 	/* Called when the player (or AI) tries to start or stop a vehicle. Mainly
 	 * used for preventing a vehicle from leaving the depot. */
@@ -58,6 +98,10 @@ enum CallbackID {
 
 	/* Called to play a special sound effect */
 	CBID_VEHICLE_SOUND_EFFECT       = 0x33,
+
+	/* Called (if appropriate bit in callback mask set) to determine whether a
+	 * town building can be destroyed. */
+	CBID_HOUSE_DENY_DESTRUCTION     = 0x143,
 };
 
 /**
@@ -81,6 +125,23 @@ enum VehicleCallbackMask {
 enum StationCallbackMask {
 	CBM_STATION_AVAIL = 0, ///< Availability of station in construction window
 	CBM_CUSTOM_LAYOUT = 1, ///< Use callback to select a tile layout to use
+};
+
+/**
+ * Callback masks for houses.
+ */
+enum HouseCallbackMask {
+	CBM_HOUSE_ALLOW_CONSTRUCTION  = 0,
+	CBM_ANIMATION_NEXT_FRAME      = 1,
+	CBM_ANIMATION_START_STOP      = 2,
+	CBM_CONSTRUCTION_STATE_CHANGE = 3,
+	CBM_BUILDING_COLOUR           = 4,
+	CBM_CARGO_ACCEPTANCE          = 5,
+	CBM_ANIMATION_SPEED           = 6,
+	CBM_HOUSE_DESTRUCTION         = 7,
+	CBM_HOUSE_ACCEPT_CARGO        = 8,
+	CBM_HOUSE_PRODUCE_CARGO       = 9,
+	CBM_HOUSE_DENY_DESTRUCTION    = 10,
 };
 
 /**

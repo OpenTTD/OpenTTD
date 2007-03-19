@@ -4,6 +4,7 @@
 #define NEWGRF_H
 
 #include "station.h"
+#include "town.h"
 #include "newgrf_config.h"
 #include "helpers.hpp"
 #include "cargotype.h"
@@ -56,6 +57,7 @@ struct GRFFile {
 	uint sound_offset;
 
 	StationSpec **stations;
+	HouseSpec **housespec;
 
 	uint32 param[0x80];
 	uint param_end; /// one more than the highest set parameter
@@ -72,6 +74,7 @@ extern GRFFile *_first_grffile;
 extern SpriteID _signal_base;
 extern SpriteID _coast_base;
 extern bool _have_2cc;
+extern bool _have_newhouses;
 
 void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage);
 void LoadNewGRF(uint load_index, uint file_index);

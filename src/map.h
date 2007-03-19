@@ -28,7 +28,12 @@ struct Tile {
 	byte m6;
 };
 
-extern Tile* _m;
+struct TileExtended {
+	byte m7;
+};
+
+extern Tile *_m;
+extern TileExtended *_me;
 
 void AllocateMap(uint size_x, uint size_y);
 

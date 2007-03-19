@@ -519,6 +519,9 @@
 				RelativePath=".\..\src\newgrf_engine.h">
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_house.h">
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_sound.h">
 			</File>
 			<File
@@ -529,6 +532,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_text.h">
+			</File>
+			<File
+				RelativePath=".\..\src\newgrf_town.h">
 			</File>
 			<File
 				RelativePath=".\..\src\news.h">
@@ -926,6 +932,9 @@
 				RelativePath=".\..\src\newgrf_engine.cpp">
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_house.cpp">
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_sound.cpp">
 			</File>
 			<File
@@ -936,6 +945,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_text.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\newgrf_town.cpp">
 			</File>
 		</Filter>
 		<Filter
