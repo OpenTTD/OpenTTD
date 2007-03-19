@@ -2815,7 +2815,7 @@ static uint CountPassengersInTrain(const Vehicle* v)
 {
 	uint num = 0;
 	BEGIN_ENUM_WAGONS(v)
-		if (v->cargo_type == CT_PASSENGERS) num += v->cargo_count;
+		if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) num += v->cargo_count;
 	END_ENUM_WAGONS(v)
 	return num;
 }

@@ -614,8 +614,7 @@ static void FloodVehicle(Vehicle *v)
 
 		if (v->type == VEH_ROAD) { // flood bus/truck
 			pass = 1; // driver
-			if (v->cargo_type == CT_PASSENGERS)
-				pass += v->cargo_count;
+			if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo_count;
 
 			v->vehstatus |= VS_CRASHED;
 			v->u.road.crashed_ctr = 2000; // max 2220, disappear pretty fast
@@ -629,7 +628,7 @@ static void FloodVehicle(Vehicle *v)
 
 			// crash all wagons, and count passangers
 			BEGIN_ENUM_WAGONS(v)
-				if (v->cargo_type == CT_PASSENGERS) pass += v->cargo_count;
+				if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo_count;
 				v->vehstatus |= VS_CRASHED;
 				MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
 			END_ENUM_WAGONS(v)

@@ -1369,7 +1369,7 @@ static void CrashAirplane(Vehicle *v)
 	InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 
 	uint amt = 2;
-	if (v->cargo_type == CT_PASSENGERS) amt += v->cargo_count;
+	if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) amt += v->cargo_count;
 	SetDParam(0, amt);
 
 	v->cargo_count = 0;
