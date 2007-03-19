@@ -410,16 +410,16 @@ STR_SEND_AIRCRAFT_TO_HANGAR                                     :送到機棚
 STR_SEND_FOR_SERVICING                                          :送去維護
 
 ############ range for months starts
-STR_0162_JAN                                                    :一月
-STR_0163_FEB                                                    :二月
-STR_0164_MAR                                                    :三月
-STR_0165_APR                                                    :四月
-STR_0166_MAY                                                    :五月
-STR_0167_JUN                                                    :六月
-STR_0168_JUL                                                    :七月
-STR_0169_AUG                                                    :八月
-STR_016A_SEP                                                    :九月
-STR_016B_OCT                                                    :十月
+STR_0162_JAN                                                    :1
+STR_0163_FEB                                                    :2
+STR_0164_MAR                                                    :3
+STR_0165_APR                                                    :4
+STR_0166_MAY                                                    :5
+STR_0167_JUN                                                    :6
+STR_0168_JUL                                                    :7
+STR_0169_AUG                                                    :8
+STR_016A_SEP                                                    :9
+STR_016B_OCT                                                    :10
 STR_016C_NOV                                                    :十一月
 STR_016D_DEC                                                    :十二月
 ############ range for months ends
@@ -447,7 +447,7 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}鋪設�
 STR_0182_BUILD_ROADS                                            :{BLACK}鋪設道路
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}興建碼頭設施
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}興建機場設施
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}植樹
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}植樹/置放標示
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}土地資訊
 STR_0187_OPTIONS                                                :{BLACK}選項
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -477,7 +477,7 @@ STR_AGE                                                         :{COMMA} 年 ({C
 STR_AGE_RED                                                     :{RED}{COMMA} 年 ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :巴士/貨車
+STR_019C_ROAD_VEHICLE                                           :車輛
 STR_019D_AIRCRAFT                                               :飛機
 STR_019E_SHIP                                                   :船舶
 STR_019F_TRAIN                                                  :列車
@@ -495,37 +495,37 @@ STR_01AA_NAME                                                   :{BLACK}名稱
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days starts
-STR_01AC_1ST                                                    :一日
-STR_01AD_2ND                                                    :二日
-STR_01AE_3RD                                                    :三日
-STR_01AF_4TH                                                    :四日
-STR_01B0_5TH                                                    :五日
-STR_01B1_6TH                                                    :六日
-STR_01B2_7TH                                                    :七日
-STR_01B3_8TH                                                    :八日
-STR_01B4_9TH                                                    :九日
-STR_01B5_10TH                                                   :十日
-STR_01B6_11TH                                                   :十一日
-STR_01B7_12TH                                                   :十二日
-STR_01B8_13TH                                                   :十三日
-STR_01B9_14TH                                                   :十四日
-STR_01BA_15TH                                                   :十五日
-STR_01BB_16TH                                                   :十六日
-STR_01BC_17TH                                                   :十七日
-STR_01BD_18TH                                                   :十八日
-STR_01BE_19TH                                                   :十九日
-STR_01BF_20TH                                                   :二十日
-STR_01C0_21ST                                                   :二十一日
-STR_01C1_22ND                                                   :二十二日
-STR_01C2_23RD                                                   :二十三日
-STR_01C3_24TH                                                   :二十四日
-STR_01C4_25TH                                                   :二十五日
-STR_01C5_26TH                                                   :二十六日
-STR_01C6_27TH                                                   :二十七日
-STR_01C7_28TH                                                   :二十八日
-STR_01C8_29TH                                                   :二十九日
-STR_01C9_30TH                                                   :三十日
-STR_01CA_31ST                                                   :三十一日
+STR_01AC_1ST                                                    :1
+STR_01AD_2ND                                                    :2
+STR_01AE_3RD                                                    :3
+STR_01AF_4TH                                                    :4
+STR_01B0_5TH                                                    :5
+STR_01B1_6TH                                                    :6
+STR_01B2_7TH                                                    :7
+STR_01B3_8TH                                                    :8
+STR_01B4_9TH                                                    :9
+STR_01B5_10TH                                                   :10
+STR_01B6_11TH                                                   :11
+STR_01B7_12TH                                                   :12
+STR_01B8_13TH                                                   :13
+STR_01B9_14TH                                                   :14
+STR_01BA_15TH                                                   :15
+STR_01BB_16TH                                                   :16
+STR_01BC_17TH                                                   :17
+STR_01BD_18TH                                                   :18
+STR_01BE_19TH                                                   :19
+STR_01BF_20TH                                                   :20
+STR_01C0_21ST                                                   :21
+STR_01C1_22ND                                                   :22
+STR_01C2_23RD                                                   :23
+STR_01C3_24TH                                                   :24
+STR_01C4_25TH                                                   :25
+STR_01C5_26TH                                                   :26
+STR_01C6_27TH                                                   :27
+STR_01C7_28TH                                                   :28
+STR_01C8_29TH                                                   :29
+STR_01C9_30TH                                                   :30
+STR_01CA_31ST                                                   :31
 ############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
@@ -590,6 +590,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}首個�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}首個交通工具已到達競爭對手的車站
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}意外 / 災難
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}公司資訊
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}工業開張/倒閉消息
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}經濟氣候變化
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}給玩家的載具的建議或資訊
 STR_020C_NEW_VEHICLES                                           :{YELLOW}新載具
@@ -729,7 +730,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}在場�
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}建立燈塔
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}建立發射站
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}定義沙漠區。{}請按住 CTRL 移除
-STR_CREATE_LAKE                                                 :{BLACK}定義水區。{}如果在海平面的話會淹沒周圍地區
 STR_0290_DELETE                                                 :{BLACK}刪除
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}完全移除這個市鎮
 STR_0292_SAVE_SCENARIO                                          :儲存場景
@@ -741,7 +741,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}儲存�
 STR_0298_LOAD_SCENARIO                                          :{WHITE}載入場景
 STR_0299_SAVE_SCENARIO                                          :{WHITE}儲存場景
 STR_029A_PLAY_SCENARIO                                          :{BLACK}以此場景開始
-STR_PLAY_HEIGHTMAP                                              :{BLACK}玩高度圖
+STR_PLAY_HEIGHTMAP                                              :{BLACK}載入高度圖
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}以高度圖為地形開始新遊戲
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}你是否確認放棄要編輯中的場景?
 STR_029C_QUIT_EDITOR                                            :{WHITE}離開編輯器
@@ -819,7 +819,7 @@ STR_02E4                                                        :{BLACK}{SKIP}{S
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}量度單位
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}公車/貨車
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}選擇運具在路上的行駛位置
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}選擇車輛在路上的行駛位置
 STR_02E9_DRIVE_ON_LEFT                                          :靠左行駛
 STR_02EA_DRIVE_ON_RIGHT                                         :靠右行駛
 STR_02EB_TOWN_NAMES                                             :{BLACK}市鎮名稱
@@ -1206,8 +1206,7 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}移平�
 STR_TREES_RANDOM_TYPE                                           :{BLACK}隨機種類樹木
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}種植隨機種類樹木
 
-STR_CANT_BUILD_CANALS                                           :{WHITE}不可以在這裏興建運河...
-STR_BUILD_CANALS_TIP                                            :{BLACK}興建運河。按 CTRL 鍵 (只限於海平面)
+STR_CANT_BUILD_CANALS                                           :{WHITE}不可以在這裏開鑿運河...
 STR_LANDINFO_CANAL                                              :運河
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}不可以在這裏興建水閘...
@@ -2497,13 +2496,13 @@ STR_8806_GO_TO                                                  :前往 {STATION
 STR_8807_GO_TO_TRANSFER                                         :前往 {STATION} (轉運，僅載不卸)
 STR_8808_GO_TO_UNLOAD                                           :前往 {STATION} (卸客貨)
 STR_8809_GO_TO_TRANSFER_UNLOAD                                  :前往 {STATION} (轉運，卸客貨清空離站)
-STR_880A_GO_TO_LOAD                                             :前往 {STATION} (載客貨)
+STR_880A_GO_TO_LOAD                                             :前往 {STATION} (載貨)
 STR_880B_GO_TO_TRANSFER_LOAD                                    :前往 {STATION} (轉運，等待滿載)
 STR_880C_GO_NON_STOP_TO                                         :前往 {STATION} 不停靠/中途不停
 STR_880D_GO_TO_NON_STOP_TRANSFER                                :前往 {STATION} (轉運，僅載不卸) 中途不停
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :前往 {STATION} (卸客貨) 中途不停
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :前往 {STATION} (轉運，卸客貨清空離站) 中途不停
-STR_8810_GO_NON_STOP_TO_LOAD                                    :前往 {STATION} (載客貨) 中途不停
+STR_8810_GO_NON_STOP_TO_LOAD                                    :前往 {STATION} (載貨) 中途不停
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :前往 {STATION} (轉運，等待滿載) 中途不停
 STR_GO_TO_TRAIN_DEPOT                                           :前往 {TOWN} 機廠
 STR_SERVICE_AT_TRAIN_DEPOT                                      :在 {TOWN} 機廠維護
@@ -2605,8 +2604,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}在選�
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}讓列車在選定的指令等待載滿
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}讓列車在選定的指令強制卸載
 STR_SERVICE_HINT                                                :{BLACK}跳過這個指令，除非需要維護
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}{STRING} 新登場！
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}價格: {CURRENCY} 重量: {WEIGHT_S}{}速度: {VELOCITY}  功率: {POWER}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}故障
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}使用年數: {LTBLUE}{STRING}{BLACK}   營運支出: {LTBLUE}{CURRENCY}/年
@@ -2632,6 +2629,10 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}正在停�
 STR_INCOMPATIBLE_RAIL_TYPES                                     :軌道類型不相容
 STR_TRAIN_NO_POWER                                              :{RED}沒有電力
 STR_TRAIN_START_NO_CATENARY                                     :這個軌道沒有電氣化，所以列車無法起動
+
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} 問世了!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} 問世了! -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}前方有汽車
@@ -2673,8 +2674,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}將氣�
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}將主視野移到車庫位置
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}汽車清單 - 點選汽車可看到詳細資訊
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}購買選定的汽車
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}新汽車登場！
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}價格: {CURRENCY}{}速度: {VELOCITY}{}營運費用: {CURRENCY}/年{}容量: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}命名汽車
@@ -2746,8 +2745,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}顯示�
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}將主視窗移到船舶位置
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}將船舶送往船塢。按住 CTRL 點選則只做維護
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}顯示船舶詳細資料
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}新船舶登場！
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}價格: {CURRENCY} 極速: {VELOCITY}{}容量: {CARGO}{}營運支出: {CURRENCY}/年
 STR_982F_NAME_SHIP                                              :{BLACK}命名船舶
 
@@ -2820,8 +2817,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}顯示�
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}將主視野帶到飛機位置
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}將飛機送到機棚。按住 CTRL 點選則只做維護
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}顯示飛機詳細資料
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}新飛機登場！
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}價格: {CURRENCY} 極速: {VELOCITY}{}容量: 乘客 {COMMA} 名，郵件 {COMMA} 袋{}營運支出: {CURRENCY}/年
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}命名飛機
@@ -2898,6 +2893,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}檔名: 
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF 編號: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5 雜湊值: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}您正準備修改進行中的遊戲；這可能使 OpenTTD 當掉。{}您絕對確定要這麼做嗎？
+
 
 STR_NEWGRF_ADD                                                  :{BLACK}新增
 STR_NEWGRF_ADD_TIP                                              :{BLACK}為清單加入新的 NewGRF 檔
@@ -3136,4 +3132,7 @@ STR_MEASURE_AREA                                                :{BLACK}區域: 
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長度: {NUM}{}高度差: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}區域: {NUM} x {NUM}{}高度差: {NUM} m
 
+############ Date formatting
+
 ########
+

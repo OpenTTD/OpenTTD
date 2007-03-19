@@ -729,7 +729,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plasser 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plasser fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plasser radiosender
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Trykk og hold inne CTRL for å fjerne den
-STR_CREATE_LAKE                                                 :{BLACK}Definer vannområde.{}Det vil oversvømme området rundt hvis det er på sjønivå
 STR_0290_DELETE                                                 :{BLACK}Slett
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett denne byen fullstendig
 STR_0292_SAVE_SCENARIO                                          :Lagre scenario
@@ -1207,7 +1206,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Trær av
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plasser trær av tilfeldig type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan ikke bygge kanaler her...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Bygg kanaler. Trykk CTRL for å plassere sjøområder (kun på havnivå).
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan ikke bygge sluser her...
@@ -2605,8 +2603,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Sett inn
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fyll alltid kjøretøyet ved valgte stasjon
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Tøm alltid kjøretøyet ved valgte stasjon
 STR_SERVICE_HINT                                                :{BLACK}Hopp over ordren med mindre vedlikehold trengs.
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nytt {STRING} er nå tilgjengelig!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koster: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Havarert
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnad: {LTBLUE}{CURRENCY}/år
@@ -2632,6 +2628,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Stopper, {
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Inkompatible jernbanetyper
 STR_TRAIN_NO_POWER                                              :{RED}Ingen strøm
 STR_TRAIN_START_NO_CATENARY                                     :Dette sporet mangler et kjede, så toget kan ikke starte
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kjøretøy i veien
@@ -2673,8 +2670,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Dra kjø
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Vis hvor garasjen ligger
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Kjøretøyliste - trykk på kjøretøy for mer informasjon
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bygg det valgte kjøretøyet
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nytt kjøretøy er nå tilgjengelig!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koster: {CURRENCY}{}Fart: {VELOCITY}{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Navngi kjøretøy
@@ -2746,8 +2741,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Vis skip
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vis skipets gjeldende posisjon
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send skipet til depotet
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Vis detaljer om skipet
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nytt skip er nå tilgjengelig!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koster: {CURRENCY} Maks. fart: {VELOCITY}{}Kapasitet: {CARGO}{}Driftkostnader: {CURRENCY}/år
 STR_982F_NAME_SHIP                                              :{BLACK}Navngi skip
 
@@ -2820,8 +2813,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Vis flye
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Vis flyets gjeldende posisjon
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send fly til hangar. CTRL-klikk for kun å utføre vedlikehold
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Vis detaljer om flyet
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nytt fly er nå tilgjengelig
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koster: {CURRENCY} Maks. fart: {VELOCITY}{}Kapasitet: {COMMA} passasjerer, {COMMA} sekker post {}Driftkostnader: {CURRENCY}/år
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Navngi fly
@@ -2898,6 +2889,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn:
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjøre forandringer i et kjørende spill; Dette kan krasje OpenTTD.{}Er du helt sikker på at du vil gjøre dette?
+
 
 STR_NEWGRF_ADD                                                  :{BLACK}Legg til
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Legg en ny NewGRF-fil til listen
@@ -3136,4 +3128,7 @@ STR_MEASURE_AREA                                                :{BLACK}Område:
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengde: {NUM}{}Høydeforskjell: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Område: {NUM} x {NUM}{}Høydeforskjell: {NUM} m
 
+############ Date formatting
+
 ########
+

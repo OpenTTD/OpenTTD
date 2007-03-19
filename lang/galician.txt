@@ -710,7 +710,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar faro
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmisor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definir área de deserto
-STR_CREATE_LAKE                                                 :{BLACK}Definir área de auga.{}Inundará os arredores se está a nivel do mar
 STR_0290_DELETE                                                 :{BLACK}Borrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Borrar completamente esta cidade
 STR_0292_SAVE_SCENARIO                                          :Grabar Escenario
@@ -1163,7 +1162,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árbores
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Colocar árbores dun tipo aleatorio
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Non se pode construí-los canais aí...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Construír canais
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Non se pode construí-lo peche aí...
@@ -2532,8 +2530,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insertar
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A orde seleccionada forzará o vehículo a esperar ata que a carga estea completa
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A orde seleccionada forzará o vehículo a descargar
 STR_SERVICE_HINT                                                :{BLACK}saltar esta orde a non ser que sexa necesario o servicio
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}¡Nov@ {STRING} dispoñible!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Coste: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potencia: {POWER}{}Coste de Mantemento: {CURRENCY}/ano{}Capacidade: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Roto
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Coste de Mantemento: {LTBLUE}{CURRENCY}/ano
@@ -2597,8 +2593,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arrastra
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centra-la vista principal na situación do depósito de vehículos de estrada
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista de selección de vehículos de estrada - pincha nun vehículo para máis información
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construí-lo vehículo de estrada seleccionado
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}¡Novo vehículo de estrada dispoñible!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Coste: {CURRENCY}{}Velocidade: {VELOCITY}{}Coste de Mantemento: {CURRENCY}/ano{}Capacidade: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Renomear vehículo de estrada
@@ -2668,8 +2662,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostra-l
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra-la vista principal na situación do barco
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Envia-lo barco o depósito
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Mostra-los detalles do barco
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}¡Novo barco dispoñible!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Coste: {CURRENCY} Velocidade Máx: {VELOCITY}{}Capacidade: {CARGO}{}Coste de Mantemento: {CURRENCY}/ano
 STR_982F_NAME_SHIP                                              :{BLACK}Renomear barco
 
@@ -2742,8 +2734,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra-l
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centra-la vista principal na situación da aeronave
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envia-la aeronave ó hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostra-los detalles da aeronave
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}¡Nova aeronave dispoñible!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Coste: {CURRENCY} Velocidade Máx.: {VELOCITY}{}Capacidade: {COMMA} pasaxeiros, {COMMA} sacos de correo{}Coste de Mantemento: {CURRENCY}/ano
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Cambia-lo nome da aeronave

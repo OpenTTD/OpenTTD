@@ -590,6 +590,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arribad
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arribada del 1er. vehicle a una estació competidora
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / desastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informació de l'Empresa
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Obrir / tancar d'indústries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Canvis de l'Economia
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Avisos / informació dels teus vehicles
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nous vehicles
@@ -729,7 +730,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Situa à
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Situa un far
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Situa un repetidor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Defineix àrea de desert.{}Prem i mantingues la tecla CTRL per treure'l
-STR_CREATE_LAKE                                                 :{BLACK}Defineix àrea d'aigua.{}Inundarà els voltants si és a nivell del mar
+STR_CREATE_LAKE                                                 :{BLACK}Defineix l'area d'aigua.{}Fa un canal, excepte si CTRL està apretat al nivell del mar, llavors s'inundaran els voltants
 STR_0290_DELETE                                                 :{BLACK}Esborra
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Esborra totalment aquesta població
 STR_0292_SAVE_SCENARIO                                          :Desa l'escenari
@@ -1207,7 +1208,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres d
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Situar arbres de tipus aleatori
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Aquí no es poden construir canals...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Construeix canals
+STR_BUILD_CANALS_TIP                                            :{BLACK}Construir canals.
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Aquí no es pot construir una resclosa...
@@ -2605,8 +2606,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Afegeix 
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que en l'ordre seleccionada s'esperi a que l'element tingui càrrega total
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Obliga en l'ordre seleccionada a descarregar l'element
 STR_SERVICE_HINT                                                :{BLACK}Saltar l'ordre a menys que es necessiti manteniment
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nova {STRING} disponible!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Pes: {WEIGHT_S}{}Velocitat: {VELOCITY}  Potència: {POWER}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Avariat
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Edat: {LTBLUE}{STRING}{BLACK}   Cost de Circulació: {LTBLUE}{CURRENCY}/any
@@ -2632,6 +2631,10 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Parant, a 
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipus de rail incompatible
 STR_TRAIN_NO_POWER                                              :{RED}Sense energia
 STR_TRAIN_START_NO_CATENARY                                     :Aquesta via no té catenària, el tren no pot arrencar
+
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nou {STRING} disponible!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nou {STRING} disponible!  -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automòbil en camí
@@ -2673,8 +2676,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arrosseg
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centra la pantalla principal en la situació de la cotxera
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Llista de selecció de Vehicles Rodats - clica en un vehicle per informació
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construeix l'automòbil seleccionat
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nou automòbil disponible!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Velocitat: {VELOCITY}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Anomena automòbil
@@ -2746,8 +2747,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostra l
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra la pantalla principal en la situació del vaixell
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Envia el vaixell a la drassana. CTRL+Clic per només revisió
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Mostra els detalls del vaixell
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nou vaixell disponible!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Max. Velocitat: {VELOCITY}{}Capacitat: {CARGO}{}Cost de Circulació: {CURRENCY}/any
 STR_982F_NAME_SHIP                                              :{BLACK}Anomena vaixell
 
@@ -2820,8 +2819,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra l
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centra la pantalla principal a la situació de l'aeronau
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envia aeronau a l'hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostra els detalls de l'aeronau
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nova aeronau disponible!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Max. Velocitat: {VELOCITY}{}Capacitat: {COMMA} passatgers, {COMMA} sacs de correu{}Cost de Circulació: {CURRENCY}/any
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Anomena aeronau
@@ -2898,6 +2895,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Nom d'ar
 STR_NEWGRF_GRF_ID                                               :{BLACK}Id de GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Estàs a punt de fer canvis en un joc actiu; això pot fer que OpenTTD es pengi.{}Estàs completament segur que vols fer-los?
+
 
 STR_NEWGRF_ADD                                                  :{BLACK}Afegeix
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Afegeix un arxiu NewGRF a la llista
@@ -3136,4 +3134,7 @@ STR_MEASURE_AREA                                                :{BLACK}Àrea: {
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Llargada: {NUM}{}Diferència d'alçada: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Àrea: {NUM} x {NUM}{}Diferència d'alçada: {NUM} m
 
+############ Date formatting
+
 ########
+

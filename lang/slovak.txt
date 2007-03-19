@@ -559,48 +559,48 @@ STR_01AA_NAME                                                   :{BLACK}Meno
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days starts
-STR_01AC_1ST                                                    :1/
-STR_01AD_2ND                                                    :2
-STR_01AE_3RD                                                    :3
-STR_01AF_4TH                                                    :4
-STR_01B0_5TH                                                    :5
-STR_01B1_6TH                                                    :6
-STR_01B2_7TH                                                    :7
-STR_01B3_8TH                                                    :8
-STR_01B4_9TH                                                    :9
-STR_01B5_10TH                                                   :10
-STR_01B6_11TH                                                   :11
-STR_01B7_12TH                                                   :12
-STR_01B8_13TH                                                   :13
-STR_01B9_14TH                                                   :14
-STR_01BA_15TH                                                   :15
-STR_01BB_16TH                                                   :16
-STR_01BC_17TH                                                   :17
-STR_01BD_18TH                                                   :18
-STR_01BE_19TH                                                   :19
-STR_01BF_20TH                                                   :20
-STR_01C0_21ST                                                   :21
-STR_01C1_22ND                                                   :22
-STR_01C2_23RD                                                   :23
-STR_01C3_24TH                                                   :24
-STR_01C4_25TH                                                   :25
-STR_01C5_26TH                                                   :26
-STR_01C6_27TH                                                   :27
-STR_01C7_28TH                                                   :28
-STR_01C8_29TH                                                   :29
-STR_01C9_30TH                                                   :30
-STR_01CA_31ST                                                   :31
+STR_01AC_1ST                                                    :1.
+STR_01AD_2ND                                                    :2.
+STR_01AE_3RD                                                    :3.
+STR_01AF_4TH                                                    :4.
+STR_01B0_5TH                                                    :5.
+STR_01B1_6TH                                                    :6.
+STR_01B2_7TH                                                    :7.
+STR_01B3_8TH                                                    :8.
+STR_01B4_9TH                                                    :9.
+STR_01B5_10TH                                                   :10.
+STR_01B6_11TH                                                   :11.
+STR_01B7_12TH                                                   :12.
+STR_01B8_13TH                                                   :13.
+STR_01B9_14TH                                                   :14.
+STR_01BA_15TH                                                   :15.
+STR_01BB_16TH                                                   :16.
+STR_01BC_17TH                                                   :17.
+STR_01BD_18TH                                                   :18.
+STR_01BE_19TH                                                   :19.
+STR_01BF_20TH                                                   :20.
+STR_01C0_21ST                                                   :21.
+STR_01C1_22ND                                                   :22.
+STR_01C2_23RD                                                   :23.
+STR_01C3_24TH                                                   :24.
+STR_01C4_25TH                                                   :25.
+STR_01C5_26TH                                                   :26.
+STR_01C6_27TH                                                   :27.
+STR_01C7_28TH                                                   :28.
+STR_01C8_29TH                                                   :29.
+STR_01C9_30TH                                                   :30.
+STR_01CA_31ST                                                   :31.
 ############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
-STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Prijma naklad: {LTBLUE}
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Prijíma náklad: {LTBLUE}
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jukebox
 STR_01D3_SOUND_MUSIC                                            :Zvuk/Hudba
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Zobraz okno zvuku a hudby
-STR_01D5_ALL                                                    :{TINYFONT}Vsetko
+STR_01D5_ALL                                                    :{TINYFONT}Všetko
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Stary styl
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Novy styl
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
@@ -654,6 +654,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prijazd
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prijazd prveho vozidla do stanice konkurencie
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Havarie / Katastrofy
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacie o spolocnosti
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Vznik a zánik priemyslu
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Zmeny v ekonomike
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Oznamenia / Informacie o vozidlach hraca
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nove vozidla
@@ -793,7 +794,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umiestni
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umiestnit majak
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umiestnit vysielac
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Vytvorit oblast puste.{}Drzanim CTRL ju odstranite
-STR_CREATE_LAKE                                                 :{BLACK}Vytvorit oblast vody.{}Okolie bude tiez zaplavene, ak je na urovni mora
+STR_CREATE_LAKE                                                 :{BLACK}Definovat oblast vody.{}Vytvorí kanál, pri stlacení CTRL na úrovni mora zaplaví okolie
 STR_0290_DELETE                                                 :{BLACK}Vymazat
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Kompletne vymazat toto mesto
 STR_0292_SAVE_SCENARIO                                          :Ulozit scenar
@@ -1271,7 +1272,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Nahodne 
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Umiestnit nahodne stromy
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Tu sa neda postavit prieplav ...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Postavit prieplavy
+STR_BUILD_CANALS_TIP                                            :{BLACK}Stavba kanálov.
 STR_LANDINFO_CANAL                                              :Prieplav
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Tu sa neda postavit stavidlo ...
@@ -2669,8 +2670,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vlozit n
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznacenom prikaze bude vozidlo cakat na plne nalozenie
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznacenom prikaze bude vozidlo uplne vylozene
 STR_SERVICE_HINT                                                :{BLACK}Vynechat tento prikaz pokial nie je potrebna oprava
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nove {STRING} je uz dostupne!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rýchlost: {VELOCITY}  Výkon: {POWER}{}Náklady na prevádzku: {CURRENCY}/rok{}Kapacita: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Pokazene
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Naklady na prevadzku: {LTBLUE}{CURRENCY}/rok
@@ -2696,6 +2695,10 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje,
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Nekompatibilne typy kolaji
 STR_TRAIN_NO_POWER                                              :{RED}Nie je prud
 STR_TRAIN_START_NO_CATENARY                                     :Vlak nemoze nastartovat, pretoze trat nie je pripojena
+
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nové {STRING} dostupné!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nové {STRING} dostupné!  -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automobil v ceste
@@ -2737,8 +2740,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Potiahni
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrovat pohlad na poziciu garaze
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Vyber vozidiel - kliknut pre detaily
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zakupit vybrany automobil
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Novy automobil dostupny!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Rychlost: {VELOCITY}{}Naklady na prevadzku: {CURRENCY}/rok{}Kapacita: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Pomenovat automobil
@@ -2810,8 +2811,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Zobrazit
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vycentrovat pohlad na lod
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Poslat lod do lodenice
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zobrazit detaily o lodi
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nová lod je dostupná!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO}{}Naklady na prevadzku: {CURRENCY}/rok
 STR_982F_NAME_SHIP                                              :{BLACK}Pomenovat lod
 
@@ -2884,8 +2883,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Zobrazit
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Vycentrovat pohlad na lietadlo
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Poslat lietadlo do hangaru
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Zobrazit detaily o lietadle
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nove lietadlo dostupne!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {COMMA} cestujucich, {COMMA} balikov posty{}Naklady na prevadzku: {CURRENCY}/rok
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Pomenovat lietadlo
@@ -2962,6 +2959,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Názov s
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Chystáte sa vykonat zmeny v spustenej hre, co može sposobit pád hry.{}Naozaj ich chcete vykonat?
+
 
 STR_NEWGRF_ADD                                                  :{BLACK}Pridat
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Pridat NewGRF súbor do zoznamu
@@ -3200,4 +3198,7 @@ STR_MEASURE_AREA                                                :{BLACK}Plocha: 
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dlžka: {NUM}{}Výškový rozdiel: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Plocha: {NUM} x {NUM}{}Výškový rozdiel: {NUM} m
 
+############ Date formatting
+
 ########
+

@@ -729,7 +729,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Haritaya
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Deniz feneri koy
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Verici koy
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Çöl yap, kaldırmak için CTRL'ye basılı tut
-STR_CREATE_LAKE                                                 :{BLACK}Su yap, deniz seviyesindeki yerler suyla dolar
 STR_0290_DELETE                                                 :{BLACK}Sil
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Sehri tamamen sil
 STR_0292_SAVE_SCENARIO                                          :Kaydet
@@ -1207,7 +1206,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Rastgele
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Rastgele türde ağaçlar koy
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Buraya kanal yapılamaz...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Kanal Yap
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Buraya kilit yapılamaz...
@@ -2605,8 +2603,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Seçili 
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren dolana kadar beklesin
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren mutlaka yükünü boşaltsın
 STR_SERVICE_HINT                                                :{BLACK}Bakım gerekmiyorsa bunu atla
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Yeni bir araç üretildi: {STRING}
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Fiyat: {CURRENCY} Ağırlık: {WEIGHT_S}{}Hız: {VELOCITY}  Güç: {POWER}{}Bakım: {CURRENCY}/sene{}Kapasite: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Bozuldu
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Yaş: {LTBLUE}{STRING}{BLACK}   Bakım: {LTBLUE}{CURRENCY}/sene
@@ -2673,8 +2669,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Satmak i
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Araba garajını göster
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Araba listesi - bilgi için arabayı tıklayın
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Seçili arabayı al
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Yeni bir araba üretildi!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Fiyat: {CURRENCY}{}Hız: {VELOCITY}{}Bakım: {CURRENCY}/sene{}Kapasite: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Arabayı adlandır
@@ -2746,8 +2740,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Geminin 
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Gemiyi göster
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Tersaneye gönder
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Gemi ayrıntılarını göster
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Yeni gemi üretildi!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Fiyatı: {CURRENCY} Mak. Hız: {VELOCITY}{}Kapasite: {CARGO}{}Bakım: {CURRENCY}/sene
 STR_982F_NAME_SHIP                                              :{BLACK}Gemiyi adlandır
 
@@ -2820,8 +2812,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Uçağı
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Uçağı göster
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Uçağı hangara gönder
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Uçak ayrıntılarını göster
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Yeni bir uçak yapıldı!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Fiyat: {CURRENCY} Mak. Hız: {VELOCITY}{}Kapasite: {COMMA} yolcu, {COMMA} çanta posta{}Bakım: {CURRENCY}/yıl
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Uçağı adlandır
@@ -2898,6 +2888,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Dosya ad
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz; bu OpenTTD'yi çökertebilir.{}Emin misiniz?
+
 
 STR_NEWGRF_ADD                                                  :{BLACK}Ekle
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Listeye NewGRF dosyası ekle
@@ -3134,5 +3125,7 @@ STR_MEASURE_LENGTH                                              :{BLACK}Uzunluk:
 STR_MEASURE_AREA                                                :{BLACK}Alan: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Uzunluk: {NUM}{}Yükseklik farkı: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Alan: {NUM} x {NUM}{}Yükseklik farkı: {NUM} m
+
+############ Date formatting
 
 ########

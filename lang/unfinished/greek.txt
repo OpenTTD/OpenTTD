@@ -5,11 +5,13 @@
 ##gender m f n
 
 ##id 0x0000
+STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Απο την άκρη του χάρτη
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Πολυ κοντά στην άκρη του χάρτη
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτούνται {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}.
 STR_0005                                                        :{RED}{CURRENCY64}.
+STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Απαιτείται επίπεδο εδαφος
 STR_0008_WAITING                                                :{BLACK}Αναμονη: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
@@ -81,6 +83,14 @@ STR_004A_TOFFEE                                                 :Τόφυ
 STR_004B_BATTERY                                                :Μπαταρία
 STR_004C_PLASTIC                                                :Πλαστικό
 STR_004D_FIZZY_DRINK                                            :Αναψυκτικό
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} επιβάτης{P "" s}
+STR_QUANTITY_COAL                                               :{WEIGHT} άνθρακα
+STR_QUANTITY_MAIL                                               :{COMMA} σάκος{P "" s} με αλληλογραφία
+STR_QUANTITY_OIL                                                :{VOLUME} πετρελαίου
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} αντικείμενο{P "" s} ζώων
+STR_QUANTITY_GOODS                                              :{COMMA} κιβώτιο{P "" s} αγαθών
+STR_QUANTITY_GRAIN                                              :{WEIGHT} σιτάρι
 STR_QUANTITY_WOOD                                               :{WEIGHT} ξύλου
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} μεταλλεύματος σιδήρου
 STR_QUANTITY_STEEL                                              :{WEIGHT} ατσαλιού
@@ -101,9 +111,44 @@ STR_QUANTITY_SWEETS                                             :{COMMA} τσά�
 STR_QUANTITY_COLA                                               :{VOLUME} κόλας
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} μαλλί της γριάς
 STR_QUANTITY_BUBBLES                                            :{COMMA} φυσαλίδ{P α ες}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} τόφυ
 STR_QUANTITY_BATTERIES                                          :{COMMA} μπαταρί{P α ες}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} πλαστικού
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} αναψυκτικ{P ό ά}
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
+STR_ABBREV_COAL                                                 :{TINYFONT}CL
+STR_ABBREV_MAIL                                                 :{TINYFONT}ML
+STR_ABBREV_OIL                                                  :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
+STR_ABBREV_GOODS                                                :{TINYFONT}GD
+STR_ABBREV_GRAIN                                                :{TINYFONT}GR
+STR_ABBREV_WOOD                                                 :{TINYFONT}WD
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
+STR_ABBREV_STEEL                                                :{TINYFONT}ST
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
+STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
+STR_ABBREV_FRUIT                                                :{TINYFONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}FD
+STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_GOLD                                                 :{TINYFONT}GD
+STR_ABBREV_WATER                                                :{TINYFONT}WR
+STR_ABBREV_WHEAT                                                :{TINYFONT}WH
+STR_ABBREV_RUBBER                                               :{TINYFONT}RB
+STR_ABBREV_SUGAR                                                :{TINYFONT}SG
+STR_ABBREV_TOYS                                                 :{TINYFONT}TY
+STR_ABBREV_SWEETS                                               :{TINYFONT}SW
+STR_ABBREV_COLA                                                 :{TINYFONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
+STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_NONE                                                 :{TINYFONT}NO
+STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Χάρτης - {STRING}
@@ -232,6 +277,10 @@ STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Το ό�
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
 STR_0135_OSX                                                    :OS X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
 
 STR_013B_OWNED_BY                                               :{WHITE}...ιδιοκτησία του {STRING}
 STR_013C_CARGO                                                  :{BLACK}Φορτίο
@@ -242,10 +291,12 @@ STR_013F_CAPACITY                                               :{BLACK}Χωρη
 STR_CAPACITY_MULT                                               :{BLACK}Χωριτηκότητα: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Συνολική χωρητικότητα φορτίου του τραίνου:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Νέο Παιχνίδι
 STR_0141_LOAD_GAME                                              :{BLACK}Φόρτωση Παιχνιδιού
 STR_SINGLE_PLAYER                                               :{BLACK}Ένας παίκτης
 STR_MULTIPLAYER                                                 :{BLACK}Πολοί παίκτες
+STR_SCENARIO_EDITOR                                             :{BLACK}Διαμόρφωση Σεναρίου
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -254,6 +305,7 @@ STR_512                                                         :512
 STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Διάσταση χάρτη:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Επιλογές Παιχνιδιού
 
 STR_0150_SOMEONE                                                :κάποιος{SKIP}{SKIP}
@@ -261,14 +313,37 @@ STR_0151_MAP_OF_WORLD                                           :Χάρτης τ
 STR_0152_TOWN_DIRECTORY                                         :Κατάλογος Πόλεων
 STR_0153_SUBSIDIES                                              :Επιχορηγήσεις
 
+STR_UNITS_IMPERIAL                                              :Αυτοκρατορικό
+STR_UNITS_METRIC                                                :Μετρικό
+STR_UNITS_SI                                                    :SI
 
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} μαω
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} χλμ/ώρα
+STR_UNITS_VELOCITY_SI                                           :{COMMA} μ/δ
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} τονος{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} τόνοι{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}γαλ
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}λ
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} γαλλόνι{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} λίτρα{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} δύναμη τόνου
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Γράφημα λειτουργικού κέρδους
@@ -278,6 +353,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Γράφημα 
 STR_0158_COMPANY_VALUE_GRAPH                                    :Γράφημα εταιρικής αξίας
 STR_0159_CARGO_PAYMENT_RATES                                    :Ποσοστά πληρωμής φορτίου
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Πίνακας κατάταξης επιχείρησης
+STR_PERFORMANCE_DETAIL_MENU                                     :Λεπτομερής εκτίμηση απόδοσης
 ############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Σχετικά με το OpenTTD
@@ -285,10 +361,16 @@ STR_015C_SAVE_GAME                                              :Αποθήκε�
 STR_015D_LOAD_GAME                                              :Φόρτωση παιχνιδιού
 STR_015E_QUIT_GAME                                              :Παραίτηση από το παιχνίδι
 STR_015F_QUIT                                                   :Έξοδος
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Είστε σίγουρος ότι θέλετε να εγκαταλείψετε το παιχνίδι;
 STR_0161_QUIT_GAME                                              :{WHITE}Παραίτηση από το Παιχνίδι
+STR_SORT_ORDER_TIP                                              :{BLACK}Επιλογή σειράς ταξινόμησης  (καθοδικά/ανοδικά)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Επιλογή κριτηρίου ταξινόμησης
+STR_SORT_BY                                                     :{BLACK}Ταξινόμηση κατά
 
+STR_SORT_BY_POPULATION                                          :{BLACK}Πληθυσμός
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Παραγωγή
 STR_SORT_BY_TYPE                                                :{BLACK}Τύπος
+STR_SORT_BY_TRANSPORTED                                         :{BLACK}Μεταφέρθηκαν
 STR_SORT_BY_NAME                                                :{BLACK}Όνομα
 STR_SORT_BY_DROPDOWN_NAME                                       :Όνομα
 STR_SORT_BY_DATE                                                :{BLACK}Μέρα
@@ -297,13 +379,29 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Κέρδος π
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Κέρδος αυτού του χρόνου
 STR_SORT_BY_AGE                                                 :Ηλικία
 STR_SORT_BY_RELIABILITY                                         :αξιοπιστία
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Συνολική χωρητικότητα ανά τύπο φορτίου
 STR_SORT_BY_MAX_SPEED                                           :Μέγιστη ταχύτητα
 STR_SORT_BY_MODEL                                               :Μοντέλο
 STR_SORT_BY_VALUE                                               :Αξία
 STR_SORT_BY_FACILITY                                            :Τύπος σταθμού
+STR_SORT_BY_WAITING                                             :Αξία φορτίου σε αναμονή
+STR_SORT_BY_RATING_MAX                                          :Εκτίμηση φορτίου
+STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (κλασσική ταξινόμηση)
 STR_ENGINE_SORT_COST                                            :Κόστος
 STR_ENGINE_SORT_POWER                                           :Δύναμη
+STR_ENGINE_SORT_INTRO_DATE                                      :Ημέρα Κυκλοφορίας
+STR_ENGINE_SORT_RUNNING_COST                                    :Κόστος Συντήρησης
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Δύναμη/Κόστος Συντήρησης
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Χωρητικότητα Φορτίου
 STR_NO_WAITING_CARGO                                            :{BLACK}Κανένα εμπόρευμα κανενός τύπου δεν περιμένει
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Επιλογή όλων των εγκαταστάσεων
+STR_SELECT_ALL_TYPES                                            :{BLACK}Επιλογή όλων των τύπων φορτίου (συμπεριλαμβανομένου φορτίου μη-αναμονής)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Διαθέσιμα Τρένα
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Διαθέσιμα Οχήματα
+STR_AVAILABLE_SHIPS                                             :{BLACK}Διαθέσιμα Πλοία
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Διαθέσιμα Αεροσκάφη
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Προβολή λίστας διαθέσιμων σχεδίων μηχανών για τον τύπο οχήματος.
+STR_MANAGE_LIST                                                 :{BLACK}Διαχείριση λίστας
 STR_MANAGE_LIST_TIP                                             :{BLACK}Στείλε οδηγίες σε όλα τα οχήματα σε αυτή λίστα
 STR_REPLACE_VEHICLES                                            :Αντικατέστησε τα οχήματα
 STR_SEND_TRAIN_TO_DEPOT                                         :Στείλε στο υπόστεγο
@@ -358,10 +456,14 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Δεν μπορεί να αλλάξει το διάστημα της συντήρησης...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Κλείσιμο παραθύρου
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Τίτλος παραθύρου - σύρετε για να το μετακινήσετε
+STR_STICKY_BUTTON                                               :{BLACK}Σημείωση αυτού του παραθύρου να μην κλείνει από το πλήκτρο 'Κλείσιμο Παραθύρων'
+STR_RESIZE_BUTTON                                               :{BLACK}Κάντε κλίκ και σύρετε για να αλλάξετε το μέγεθος του παραθύρου
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Κάντε κλίκ εδώ για να πάτε στον τρέχων φάκελλο αποθήκευσης
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Κατεδάφιση των κτηρίων κ.λπ. σε ένα τετράγωνο εδάφους
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Χαμηλώστε μια γωνία του εδάφους
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Ανυψώστε μια γωνία του εδάφους
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Μπάρα Κύλισης - μετακινεί την λίστα πάνω/κάτω
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Μπάρα κίνησης - κινεί τη λίστα  αριστερά/δεξιά
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Εμφάνιση περιγραμμάτων εδάφους στο χάρτη
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Εμφάνιση οχημάτων στο χάρτη
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Εμφάνιση βιομηχανιών στο χάρτη
@@ -473,6 +575,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Επιλ
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Καθαρισμός τρέχοντος προγράμματος (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Αποθήκευση επιλογών μουσικής
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Κάντε κλίκ στο μουσικό κομμάτι για προσθήκη στο τρέχον πρόγραμμα (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Κάντε κλικ στο τραγούδι για να το αφαιρέσετε από το πρόγραμμα (Προσαρμοσμένο 1 ή 2 μόνο)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Εναλλαγή τυχαίας αναπαραγωγής on/off στο πρόγραμμα
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Εμφάνιση παραθύρου επιλογής μουσικού κομματιού
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Κάντε κλίκ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη
@@ -487,14 +590,18 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Άφι�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Άφιξη του πρώτου οχήματος το σταθμό του αντιπάλου
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ατυχήματα / καταστροφές
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Πληροφορίες εταιρείας
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Άνοιγμα / κλείσιμο  των βιομηχανιών
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Οικονομικές αλλαγές
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Συμβουλές / πληροφορίες για τα οχήματα του παίκτη
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Νέα οχήματα
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Αλλαγές στην αποδοχή φορτίου
 STR_020E_SUBSIDIES                                              :{YELLOW}Επιχορηγήσεις
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Γενικές πληροφορίες
+STR_MESSAGES_ALL                                                :{YELLOW}Ρύθμιση όλων των μηνυμάτων σε: Κλειστά / Περιγραφή / Ολόκληρα
+STR_MESSAGE_SOUND                                               :{YELLOW}Αναπαραγωγή ήχου για μηνύματα σε περιγραφή
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...πολύ μακριά από τον προηγούμενο προορισμό
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Οι καλύτερες εταιρείες που έφτασαν το {NUM}{}({STRING} Επίπεδο)
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Πίνακας Πρωταθλήματος Εταιρειών σε {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA},
 STR_0213_BUSINESSMAN                                            :Επαγγελματίας
 STR_0214_ENTREPRENEUR                                           :Επιχειρηματίας
@@ -508,20 +615,18 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} έφτασε  στο επίπεδο '{STRING}'
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} της εταιρείας {COMPANY} έφτασε στο επίπεδο '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Δημιουργία Σεναρίου
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Πρόγραμμα Επεξερτασίας Σεναρίου
 STR_0223_LAND_GENERATION                                        :{WHITE}Δημιουργία Γης
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Τυχαία Γη
-STR_0227_RESET_LAND                                             :{BLACK}Επαναφορά Γης
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Αύξηση περιοχής για χαμήλωμα/ανύψωση γης
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Μείωση περιοχής για χαμήλωμα/ανύψωση γης
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Δημιουργία τυχαίου εδάφους
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Επαναφορά τοπίου
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Επαναφορά Τοπίου
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Είστε σίγουρος ότι θέλετε να επαναφέρετε το τοπίο;
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Αφαίρεση όλων των ιδιοκτησιών παικτών από το χάρτη
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Είστε σίγουρος ότι θέλετε να αφαιρέσετε όλες τις ιδιοκτησίες παικτών;
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Δημιουργία τοπίου
 STR_022F_TOWN_GENERATION                                        :{BLACK}Δημιουργία πόλης
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Δημιουργία Βιομηχανίας
@@ -534,6 +639,7 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...πο�
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...πολύ κοντά σε άλλη πόλη
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...ακατάλληλη περιοχή
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...πάρα πολλές πόλεις
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Αδύνατο να χτιστούν πόλεις
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...δεν υπάρχει αλλος χώρος στον χάρτη
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Αύξηση μεγέθους πόλεως
 STR_023C_EXPAND                                                 :{BLACK}Επέκταση
@@ -624,6 +730,7 @@ STR_0290_DELETE                                                 :{BLACK}Διαγ
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Πλήρης διαγραφή πόλεως
 STR_0292_SAVE_SCENARIO                                          :Απποθήκευση σεναρίου
 STR_0293_LOAD_SCENARIO                                          :Φόρτωση σεναρίου
+STR_LOAD_HEIGHTMAP                                              :Φόρτωση heightmap
 STR_0294_QUIT_EDITOR                                            :Έξοδος από το πρόγραμμα επεξεργασίας
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Έξοδος
@@ -631,6 +738,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Αποθ
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Φόρτωση Σεναρίου
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Αποθήκευση Σεναρίου
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Παιξτε το Σενάριο
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Παίξτε Heightmap
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Εκκίνηση νέου παιχνιδιού, χρησιμοποιώντας heightmap για χάρτη
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Είστε σίγουροι οτι θέλετε ναφύγετε από το πίστα;
 STR_029C_QUIT_EDITOR                                            :{WHITE}Έξοδος από το Πρόγραμμα Επεξεργασίας
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...μπορεί να χτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
@@ -645,6 +754,9 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Μέγ�
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Εμφάνιση τελευταίου μηνύματος ή αναφοράς νέων
+STR_OFF                                                         :Κλειστό
+STR_SUMMARY                                                     :Περιγραφή
+STR_FULL                                                        :Ολόκληρο
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Καταλογος πόλεων
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Ονόματα σχεδίων οχημάτων
@@ -655,13 +767,17 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Αποθ
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Επιλογή ονομάτων σχεδίασης οχημάτων
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Αποθήκευση προσαρμοσμένων ονομάτων σχεδίασης οχημάτων
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Επιλογές παιχνιδιού
 STR_02C5_DIFFICULTY_SETTINGS                                    :Ρυθμίσεις δυσκολίας
 STR_02C7_CONFIG_PATCHES                                         :Ρύθμιση διορθώσεων
+STR_NEWGRF_SETTINGS                                             :Ρυθμίσεις NewGRF
+STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ονόματα πόλεων που εμφανίζονται
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Ονόματα σταθμών που εμφανίζονται
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Πινακίδες που εμφανίζονται
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Εμφάνιση σημείων διαδρομής
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Πλήρες animation
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Πλήρης λεπτομέρεια
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Διαφανή κτίρια
@@ -671,6 +787,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Δια
 ############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Πληροφορίες περιοχής εδάφους
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Ενναλαγή Κονσόλας
 STR_02D7_SCREENSHOT_CTRL_S                                      :Φωτογραφία εικόνας (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Γιγαντιαία Φωτογραφία Εικόνας (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Σχετικά με το 'OpenTTD'
@@ -681,13 +798,22 @@ STR_02DA_ON                                                     :{BLACK}Ενερ
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Εμφάνιση χρηματοδοτήσεων
 STR_02DD_SUBSIDIES                                              :Χρηματοδοτήσεις
 STR_02DE_MAP_OF_WORLD                                           :Χάρτης του κόσμου
+STR_EXTRA_VIEW_PORT                                             :Πρόσθετη εμφάνιση
 STR_SIGN_LIST                                                   :Λίστα ταμπελών
 STR_02DF_TOWN_DIRECTORY                                         :Κατάλογος πόλεων
+STR_TOWN_POPULATION                                             :{BLACK}Παγκόσμιος πληθυσμός: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Εμφάνιση {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Αντιγραφή στην εμφάνιση
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Αντιγραφή της περιοχής της παγκόσμιας προβολής σε αυτή την εμφάνιση
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Επικόλληση από εμφάνιση
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Επικόλληση της περιοχής αυτής της εμφάνισης στην παγκόσμια προβολή
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Νομισματικές μονάδες
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Επιλογή νομισματικών μονάδων
+STR_MEASURING_UNITS                                             :{BLACK}Μονάδες μέτρησης
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Επιλογή μονάδων μέτρησης
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Οχήματα δρόμου
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Επιλογή πλευράς δρόμου όπου τα οχήματα οδηγούν
@@ -723,10 +849,12 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Επιλ
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Χρηματοδοτήστε την κατασκευή νέας βιομηχανίας
 
 ############ range for menu starts
+STR_INDUSTRY_DIR                                                :Κατάλογος Βιομηχανιών
 STR_0313_FUND_NEW_INDUSTRY                                      :Χρηματοδότηση νέας βιομηχανίας
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Χρηματοδότηση νέας βιομηχανίας
+STR_JUST_STRING                                                 :{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...μπορεί να χτιστεί μόνο σε πόλεις
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...μπορεί να χτιστεί μόνο σε δασώδεις περιοχές
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...μπορεί να χτιστεί μόνο σε περιοχές με έρημο
@@ -737,19 +865,70 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Φωτο
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Αγορά γης για μελλοντική χρήση
 STR_032F_AUTOSAVE                                               :{RED}ΑΥΤΟΜΑΤΗ ΑΠΟΘΗΚΕΥΣΗ
+STR_SAVING_GAME                                                 :{RED}*  *  ΑΠΟΘΗΚΕΥΣΗ ΠΑΙΧΝΙΔΙΟΥ  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Η αποθήκευση είναι σε εξέλιξη,{}παρακαλώ περιμένετε να τελειώσει!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Επιλογή προγράμματος 'Ezy Street στυλ μουσικής'
 
 STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Αγγλικά (Αυθεντικά)
+STR_TOWNNAME_FRENCH                                             :Γαλλικά
+STR_TOWNNAME_GERMAN                                             :Γερμανικά
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Αγγλικά (Πρόσθετα)
+STR_TOWNNAME_LATIN_AMERICAN                                     :Λατινοαμερικάνικα
+STR_TOWNNAME_SILLY                                              :Αστεία
+STR_TOWNNAME_SWEDISH                                            :Σουηδικά
+STR_TOWNNAME_DUTCH                                              :Ολλανδικά
+STR_TOWNNAME_FINNISH                                            :Φινλανδικά
+STR_TOWNNAME_POLISH                                             :Πολωνικά
+STR_TOWNNAME_SLOVAKISH                                          :Σλοβάκικα
+STR_TOWNNAME_NORWEGIAN                                          :Νορβηγικά
+STR_TOWNNAME_HUNGARIAN                                          :Όυγγαρικά
+STR_TOWNNAME_AUSTRIAN                                           :Αυστριακά
+STR_TOWNNAME_ROMANIAN                                           :Ρουμάνικα
+STR_TOWNNAME_CZECH                                              :Τσέχικα
+STR_TOWNNAME_SWISS                                              :Ελβετικά
+STR_TOWNNAME_DANISH                                             :Δανέζικα
+STR_TOWNNAME_TURKISH                                            :Τούρκικα
+STR_TOWNNAME_ITALIAN                                            :Ιταλικά
+STR_TOWNNAME_CATALAN                                            :Καταλανικά
 ############ end of townname region
 
 STR_CURR_GBP                                                    :Αγγλική Λίρα (£)
+STR_CURR_USD                                                    :Δολλάρια ($)
+STR_CURR_EUR                                                    :Ευρώ (€)
+STR_CURR_YEN                                                    :Γιεν (¥)
+STR_CURR_ATS                                                    :Αυστραικό Σελίνι (ATS)
+STR_CURR_BEF                                                    :Βελγικό Φράγκο (BEF)
+STR_CURR_CHF                                                    :Ελβετικό Φράγκο (CHF)
+STR_CURR_CZK                                                    :Τσέχικη Κορώνα (CZK)
+STR_CURR_DEM                                                    :Γερμανικό Μάρκο (DEM)
+STR_CURR_DKK                                                    :Δανέζικη Κορώνα (DKK)
+STR_CURR_ESP                                                    :Πεσέτα (ESP)
+STR_CURR_FIM                                                    :Φινλανδικό Μάρκο (FIM)
+STR_CURR_FRF                                                    :Φράγκο (FRF)
 STR_CURR_GRD                                                    :Δραχμή(δρχ.)
+STR_CURR_HUF                                                    :Ουγγρικό Φλουρί (HUF)
+STR_CURR_ISK                                                    :Ισλανδική Κορώνα (ISK)
+STR_CURR_ITL                                                    :Ιταλική Λίρα (ITL)
+STR_CURR_NLG                                                    :Ολλανδικό Φιορίνι (NLG)
+STR_CURR_NOK                                                    :Νορβηγική Κορώνα (NOK)
+STR_CURR_PLN                                                    :Πολωνικό Zloty (PLN)
+STR_CURR_ROL                                                    :Ρουμάνικο Λευ (ROL)
+STR_CURR_RUR                                                    :Ρώσσικες Ρούβλες (RUR)
+STR_CURR_SIT                                                    :Σλοβένικο Tolar (SIT)
+STR_CURR_SEK                                                    :Σουηδική Κορώνα (SEK)
+STR_CURR_YTL                                                    :Τούρκικη Λίρα (YTL)
+STR_CURR_SKK                                                    :Σλοβάκικη Κορώνα (SKK)
+STR_CURR_BRR                                                    :Βραζιλιάνικο Real (BRL)
 
+STR_CURR_CUSTOM                                                 :Άλλο...
 
+STR_OPTIONS_LANG                                                :{BLACK}Γλώσσα
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Επιλογή της γλώσσας σε χρήση
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Σε όλη την οθόνη
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Τσεκάρεται αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
@@ -758,7 +937,9 @@ STR_OPTIONS_RES                                                 :{BLACK}Ανάλ
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
 
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Διαμόρφωση φωτογραφίας
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Επιλογή της διαμόρφωσης της φωτογραφίας σε χρήση
 
 STR_AUTOSAVE_1_MONTH                                            :Κάθε μήνα
 STR_AUTOSAVE_FAILED                                             :{WHITE}Το αυτόματο σώσιμο απέτυχε
@@ -785,55 +966,183 @@ STR_PASSENGERS                                                  :Επιβάτε�
 STR_BAGS                                                        :Τσάντες
 STR_TONS                                                        :Τόνοι
 STR_LITERS                                                      :Λίτρα
+STR_ITEMS                                                       :αντικείμενα
 STR_CRATES                                                      :Κουτιά
 STR_RES_OTHER                                                   :άλλα
 STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Αδύνατο να μοιραστεί η λίστα οδηγιών...
+STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Αδύνατο να αντιγραφεί η λίστα οδηγιών...
+STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Τέλος Μοιρασμένων Οδηγιών - -
 
 STR_TRAIN_IS_LOST                                               :{WHITE}Το τραίνο {COMMA} Χάθηκε
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Τα κέρδη του Τρένου {COMMA}το προηγούμενο έτος ήταν {CURRENCY}
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Το τραίνο {COMMA} έχει τόσες λίγες οδηγίες
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Το τρένο {COMMA} έχει κενές εντολές
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Το τρένο {COMMA} έχει διπλές εντολές
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Το τρένο {COMMA} έχει έναν λανθασμένο σταθμό στις οδηγίες του
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Το Οδικό όχημα {COMMA} έχει τόσες λίγες οδηγίες
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Το Όχημα {COMMA} έχει μία κενή εντολή
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Το Όχημα {COMMA} έχει διπλές εντολές
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Το Όχημα {COMMA} έχε έναν λανθασμένο σταθμό στις οδηγίες του
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Το πλοίο {COMMA} έχει τόσες λίγες οδηγίες
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Το Πλοίο {COMMA} έχει μία κενή οδηγία
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Το Πλοίο {COMMA} έχει διπλές οδηγίες
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Το Πλοίο {COMMA} έχει έναν λανθασμένο σταθμό στις οδηγίες του
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Το αεροσκάφος {COMMA} has too few orders in the schedule
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Το Αεροσκάφος {COMMA} έχει μία κενή οδηγία
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Το Αεροσκάφος {COMMA} έχει διπλές οδηγίες
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Το Αεροσκάφος {COMMA} έχει ένα λανθασμένο σταθμό στις οδηγίες του
 # end of order system
 
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο τρένο {COMMA} (χρηματικό όριο)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο όχημα {COMMA} (χρηματικό όριο)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο πλοίο {COMMA} (χρηματικό όριο)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο αεροσκάφος {COMMA} (χρηματικό όριο)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Το τρένο {COMMA} είναι πολύ μακρύ μετά την αντικατάσταση
 
+STR_CONFIG_PATCHES                                              :{BLACK}Ρύθμιση Διορθώσεων
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Ρύθμιση των Διορθώσεων
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Ρύθμιση Διορθώσεων
 
+STR_CONFIG_PATCHES_OFF                                          :Κλειστό
+STR_CONFIG_PATCHES_ON                                           :Ανοιχτό
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Εμφάνιση της ταχύτητας του οχήματος στη γραμμή κατάστασης: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Επιτρέπεται η δημιουργία πολύ μακριών τρένων: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Ενεργοποίηση ρεαλιστικής επιτάχυνσης για τα τρένα: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στροφών 90 μοιρών για τρένα και πλοία: {ORANGE}{STRING} {LTBLUE} (απαιτεί NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Σύνδεση σταθμών τρένων χτισμένων κοντά: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Αναχώρηση από το σταθμό όταν οποιοδήποτε φορτίο είναι πλήρες, όταν 'πλήρης φόρτος': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Φόρτωση οχημάτων σταδιακά: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Πληθωρισμός: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Παράδοση φορτίου σε σταθμό μόνο όταν υπάρχει ζήτηση: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Επιτρέπεται να χτίζονται πολύ μακριές γέφυρες: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Επιτρέπονται οι εντολές αποστολής σε αμαξοστάσιο: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Επιτρέπεται η κατασκευή βιομηχανιών πρώτων υλών: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανα πόλη: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Βιομηχανίες ίδου τύπου μπορούν να χτιστούν κοντά η μία στην άλλη: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Εμφάνιση ολόκληρης ημερομηνίες στη γραμμή κατάστασης: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Εμφάνιση σήμανσης στην πλευρά οδήγησης: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Εμφάνιση παράθυρου οικονομικών στο τέλος του έτους: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch συμβατός απ'ευθείας χειρισμός: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ουρά οχημάτων (με κβαντικά εφφέ): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ανομοιόμορφοι σταθμοί: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Νέο παγκόσμιο σύστημα εύρεσης μονοπατιού (NPF, αγνοεί το NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Πολλαπλασιαστής βάρους σε φορία για εξομοίωση βαρέων τρένων: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Επιτρέπονται τα μικρά αεροδρόμια πάντα: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Προειδοποίηση αν χαθεί τρένο: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Επανεξέταση οδηγιών τρένων: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :όχι
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ναι, αλλά εξαιρούνται τα σταματημένα οχήματα
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :από όλα τα οχήματα
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Προειδοποίηση όταν τα έσοδα ενός τρένου είναι αρνητικά: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Τα οχήματα δεν λήγουν ποτέ: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Αυτόματη Ανανέωση όταν ένα όχημα παλιώνει
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Αυτόματη Ανανέωση όταν ένα όχημα είναι {ORANGE}{STRING}{LTBLUE} μήνες πρίν/μετά την μέγιστη ηληκία
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Αυτόματη Ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Διάρκεια μηνύματος σφάλματος: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Αόρατα δέντρα (με διαφανή κτίρια): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Γεννήτρια Γης: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Αυθεντικό
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :ΤεραΓένεση
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Μέγιστη απόσταση από την άκρη για τα Διυλιστήρια {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Κορυφογραμμή χιονιού: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Σκληρότητα επιφάνειας (ΤεραΓέννεση μόνο) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ απαλός
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Απαλός
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Σκληρή
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ ανώμαλος
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Αλγόριθμος τοποθέτησης Δέντρων: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Κανένας
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Αυθεντικό
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Βελτιωμένος
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Περιστροφή Heightmap: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Αντίθετη Φορά Ρολογιού
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Δεξιόστροφα
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Το επίπεδο ύψους που παίρνει ένα επίπεδο σενάριο: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Μέγιστη διασπορά σταθμών: {ORANGE}{STRING} {RED}Προσοχή: Η υψηλή ρύθμιση καθυστερεί το παιχνίδι
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Αυτόματη επισκευή ελικοπτέρων στα ελικοδρόμια: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Σύνδεση γραμμής εργαλείων τοπίου με γραμμή εργαλείων σιδηρόδρομου/δρόμου/νερού/αεροδρομίου: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ανάποδη μετακίνηση οθόνης: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Εμφάνιση χρωμάτων των εταιρειών: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Κανένας
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Η Εταιρεία μου
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Όλες οι εταιρίες
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Προτίμηση ομαδικού chat με <ENTER>: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Μέγιστα τρένα ανα παίκτη: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Μέγιστα οχήματα ανα παίκτη: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Μέγιστα αεροσκάφη ανα παίκτη: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Μέγιστα πλοία ανά παίκτη: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Απενεργοποίηση τρένων υπολογιστή: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Απενεργοποίηση οχημάτων υπολογιστή: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Απενεργοποίηση αεροσκαφών υπολογιστή: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Απενεργοποίηση πλοίων υπολογιστή: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Ενεγοποίηση νέας AI (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Επιτρέπονται οι AI σε παιχνίδι για πολλούς παίκτες (πειραματικό): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}{STRING} μέρες/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}απενεργοποιημένο
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα: {ORANGE}{STRING} μέρες/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα:: {ORANGE}απενεργοποιημένο
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για αεροσκάφη: {ORANGE}{STRING} μέρες/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για αεροσκάφη: {ORANGE}απενεργοποιημένο
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για πλοία: {ORANGE}{STRING} μέρες/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για πλοία: {ORANGE}απενεργοποιημένο
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Απενεργοποίηση επισκευών όταν οι βλάβες είναι απενεργοποιημένες: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Ενεργοποίηση ορίων ταχύτητας βαγονιών: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Απενεργοποίηση ηλεκτρικών γραμμών: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Τα έγχρωμα νέα εμφανίζονται το: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Έτος εκκίνησης: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Τέλος παιχνιδιού το: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ενεργοποίηση ομαλής οικονομίας (περισσότερες, μικρότερες αλλαγές)
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Ενεργοποίηση δυνατότητας αγοράς μετοχών από άλλες εταιρείες
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Κατά το σύρσιμο, τοποθέτησε σήματα κάθε: {ORANGE}{STRING} τετράγωνο(α)
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Αυτόματο χτίσιμο σηματοφόρων πρίν: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Θέση κύριας εργαλειοθήκης: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Αριστερά
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Κέντρο
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Δεξιά
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}απενεργοποιημένο
 
+STR_CONFIG_PATCHES_GUI                                          :{BLACK}Σύστημα Διεπαφής
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Κατασκευή
+STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Οχήματα
+STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Σταθμοί
+STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Οικονομία
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Ανταγωνιστές
 
+STR_CONFIG_PATCHES_DISABLED                                     :απενεργοποιημένο
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
+STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Αλλαγή τιμής ρύθμισης
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Κάποια ή όλα τα προεπιλεγμένα διαστήματα επισκευών παρακάτω δεν είναι συμβατά με την επιλεγμένη ρύθμιση! 5-90% και 30-800 μέρες είναι τα αποδεκτά
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Χρησιμοποίηση YAPF για τα πλοία: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Χρησιμοποίηση YAPF για τα οχήματα: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Χρησιμοποίηση YAPF για τα τρένα: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Συγκρατημένο τοπίο
 STR_SUB_ARCTIC_LANDSCAPE                                        :Πολικό τοπίο
@@ -841,19 +1150,48 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :Υποτροπ�
 STR_TOYLAND_LANDSCAPE                                           :Παιχνιδιάστικο τοπίο
 
 STR_CHEATS                                                      :{WHITE}Κλεψιές
+STR_CHEATS_TIP                                                  :{BLACK}Τα κουτάκια δείχνουν αν έχετε χρησιμοποιήσει αυτό το κόλπο πρίν
+STR_CHEATS_WARNING                                              :{BLACK}Προσοχή! Είστε έτοιμος να προδώσετε τους φίλους ανταγωνιστές σας. Θυμηθείτε ότι αυτή η ντροπή θα μείνει για πάντα.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Αύξηση χρημάτων κατά {CURRENCY64}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Παίξτε σαν παίκτης: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Μαγική μπουλντόζα (αφαιρεί βιομηχανίες, αμετακίνητα): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Τα τούνελ διασταυρώνονται: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Χτήσιμο ενώ βρίσκεστε σε παύση: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Τα Jet δεν θα συγκρούονται (συχνά) σε μικρά αεροδρόμια: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Αλλαγή κλίματος: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Αλλαγή ημ/νίας: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ενεργοποίηση δυνατότητας αλλαγής τιμών παραγωγής: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Καθ' οδόν {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Πορεία προς {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :Πήγαινε δια μέσου {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Πήγαινε χωρίς στάση μέσω {WAYPOINT}
 
+STR_WAYPOINTNAME_CITY                                           :Σημείο πορείας {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Σημείο πορείας {TOWN} #{COMMA}
+STR_LANDINFO_WAYPOINT                                           :Σημείο πορείας
 
+STR_WAYPOINT                                                    :{WHITE}Σημείο πορείας
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Επιλογή τύπου σημείου πορείας
 
+STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου πορείας
 
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Αδύνατο να αλλαχτεί το όνομα του σημείου πορείας...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Μετατροπή γραμμής σε σημείο πορείας
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Αδύνατο να χτιστεί σημείο πορείας τρένου εδώ...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Αδύνατο να αφαιρεθεί το σημείο πορείας τρένου εδώ...
 
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Γραμμή
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...δεν υπάρχει καμία πόλη στην πίστα
 
+STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Είστε σίγουρος ότι θέλετε να δημιουργήσετε ένα τυχαίο τοπίο;
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Πολλές τυχαίες πόλεις
+STR_RANDOM_TOWNS_TIP                                            :{BLACK}Κάλυψη του χάρτη με τυχαία τοποθετημένες πόλεις
 STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Πολλές τυχαίες βιομηχανίες
 
 
@@ -1608,6 +1946,7 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 
 
 
+
 ##id 0x9000
 
 
@@ -1626,6 +1965,7 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Επισκευ�
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 
@@ -1667,4 +2007,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Tooltip measurment
 
 
+############ Date formatting
+
 ########
+

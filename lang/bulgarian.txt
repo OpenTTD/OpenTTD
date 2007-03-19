@@ -592,6 +592,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Пър�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Първо пристигане на превозно средство в конкурентна станция
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Инциденти / бедствия
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Информация за компанията
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Отворени / затворени промишлености
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Промени в икономиката
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Съвет / информация за превозните средства
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Нови превозни средства
@@ -731,7 +732,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Пост
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Поставяне фар
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Постави предавател
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Избери пустинен терен.{}Задръж CTRL за да го премахнеш.
-STR_CREATE_LAKE                                                 :{BLACK}Посочване на водна зона.{}Ще наводни съседните ако са на морското ниво
+STR_CREATE_LAKE                                                 :{BLACK}Определи водна площ.{}Построи канал, освем когато CTRL е натиснат на морско ниво, когато ще наводни околната среда в замяна
 STR_0290_DELETE                                                 :{BLACK}Изтрий
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Премахни напълно града
 STR_0292_SAVE_SCENARIO                                          :Запис на сценарий
@@ -1209,7 +1210,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Дърв
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Постави дървета от произволен тип
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Тук не може да се строят канали...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Строене на канали. Натиснете CTRL за да поставите морска плочка (само на нивото на морето).
+STR_BUILD_CANALS_TIP                                            :{BLACK}Построи канал.
 STR_LANDINFO_CANAL                                              :Канал
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Тук не може да се строят шлюзове...
@@ -2607,8 +2608,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Доба
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Изчакай на избраното назначение до пълно зареждане с товар
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Разтоварва на избраното назначение целия товар
 STR_SERVICE_HINT                                                :{BLACK}Пропусни освен ако е необходим ремонт
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Нов {STRING} вече е достъпен!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена: {CURRENCY} Тегло: {WEIGHT_S}{}Скорост: {VELOCITY}  Мощност: {POWER}{}Разход: {CURRENCY}/г.{}Капацитет: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Развален
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Възраст: {LTBLUE}{STRING}{BLACK}   Оперативни разходи: {LTBLUE}{CURRENCY}/г.
@@ -2634,6 +2633,10 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Спира
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Несъвместими ЖП линии
 STR_TRAIN_NO_POWER                                              :{RED}Няма мощност
 STR_TRAIN_START_NO_CATENARY                                     :Влака не може да тръгне, защото ЖП линията няма catenary
+
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Нов {STRING} е на разположение!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Нов {STRING} е на разположение! - {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Кола на пътя
@@ -2675,8 +2678,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Прем
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Фокусирай общия план върху местонахождението на МПС-депото
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Списък с избор на МПС-та - натисни върху МПС за информация
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Купи посоченото МПС
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Ново МПС излезе на пазара!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорост: {VELOCITY}{}Оперативен разход: {CURRENCY}/год{}Вместимост: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Преименувай МПС-то
@@ -2748,8 +2749,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Пока
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Фокусирай общия план върху местонахождението на кораба
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Прати кораба в депото
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Покажи детайлите за кораба
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Нов кораб излезе на пазара!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Макс. Скорост: {VELOCITY}{}Вместимост: {CARGO}{}Разход: {CURRENCY}/год.
 STR_982F_NAME_SHIP                                              :{BLACK}Наименувай кораба
 
@@ -2822,8 +2821,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Марш
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Центриране на главния прозорец върху самолета
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Изпращане на самолета в хангар
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Информация за самолета
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Нов самолет е достъпен!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Макс. скорост: {VELOCITY}{}Капацитет: {COMMA} пътника, {COMMA} чувала поща{}Разход: {CURRENCY}/г.
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Име на самолет
@@ -2900,6 +2897,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Име �
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5 сума: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}На път си да извършиш промени в активна игра; това може да крашне OpenTTD.{}Напълно ли си сигурен в това?
+
 
 STR_NEWGRF_ADD                                                  :{BLACK}Добави
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавяне на NewGRF файл към списъка
@@ -3138,4 +3136,7 @@ STR_MEASURE_AREA                                                :{BLACK}Площ
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Дължина: {NUM}{}Разлика във височината: {NUM} м
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площ: {NUM} x {NUM}{}Разлика във височината: {NUM} м
 
+############ Date formatting
+
 ########
+

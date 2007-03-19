@@ -656,6 +656,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Első j
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Első jármű megérkezése az ellenfél megállójába
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Balesetek / természeti csapások
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Céginformációk
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Ipari létesítmények létrejötte / bezárása
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Gazdasági változások
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Tanácsok / információk a játékos járműveiről
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Új járművek
@@ -795,7 +796,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Sziklás
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Világítótorony építése
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Rádióadó építése
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Sivatagot hoz létre.{}Nyomj CTRL-t az eltávolításához
-STR_CREATE_LAKE                                                 :{BLACK}Vizet hoz létre.{}A tengerszinten lévő elemeket elárasztja
+STR_CREATE_LAKE                                                 :{BLACK}Vizi terület definiálása.{}Csatornát készít, kivéve ha tengerszinten CTRL-t lenyomva hívod meg, ekkor elárasztja a területet
 STR_0290_DELETE                                                 :{BLACK}Töröl
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}A város teljes eltüntetése
 STR_0292_SAVE_SCENARIO                                          :Pálya mentése
@@ -1273,7 +1274,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Véletle
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Véletlenszerűen kiválasztott fákat helyez el
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Nem lehet csatornát építeni ide...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Csatorna építése. Nyomj CTRL-t hogy tengert csinálj (tengerszinten csak).
+STR_BUILD_CANALS_TIP                                            :{BLACK}Csatorna építése (vagy rosszabb esetben terület elárasztása!)
 STR_LANDINFO_CANAL                                              :Csatorna
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Nem lehet zsilipet építeni ide...
@@ -2708,8 +2709,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Új cél
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelölt célponton meg kell várni, amíg telerakják a járművet
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelölt célponton le kell pakolni a rakományt
 STR_SERVICE_HINT                                                :{BLACK}Célpont kihagyása, ha javítás szükséges
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Új {STRING} használható!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ár: {CURRENCY}    Súly: {WEIGHT_S}{}Sebesség: {VELOCITY}    Teljesítmény: {POWER}{}Működtetési költség: {CURRENCY}/év{}Kapacitás: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Lerobbant
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Működtetési költség: {LTBLUE}{CURRENCY}/év
@@ -2735,6 +2734,10 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Lassít, {
 STR_INCOMPATIBLE_RAIL_TYPES                                     :inkompatibilis sintípusok
 STR_TRAIN_NO_POWER                                              :{RED}Nincs áram
 STR_TRAIN_START_NO_CATENARY                                     :Ennek a sínnek nincs felsővezetéke, a vonat nem tud indulni
+
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Új {STRING} elérhető!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Új {STRING} elérhető!  -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Közúti jármű van az útban
@@ -2776,8 +2779,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Dobj ide
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}A fő nézetet a garázsra állítja
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Közúti jármű kiválasztása - kattints egy járműre az adataihoz
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}A kijelölt közúti jármű megvétele
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Új közúti jármű használható!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Ár: {CURRENCY}{}Sebesség: {VELOCITY}{}Működtetési költség: {CURRENCY}/év{}Kapacitás: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Közúti jármű átnevezése
@@ -2849,8 +2850,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}A hajó 
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}A fő nézetet a hajóra állítja
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Dokkba küldi a hajót
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}A hajó adatai
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Új hajó használható!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ár: {CURRENCY}    Végsebesség: {VELOCITY}{}Kapacitás: {CARGO}{}Működtetési költség: {CURRENCY}/év
 STR_982F_NAME_SHIP                                              :{BLACK}Hajó átnevezése
 
@@ -2923,8 +2922,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}A repül
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}A fő nézetet a repülőgépre állítja
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Hangárba küldi a repülőgépet
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}A repülőgép adatai
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Új repülőgép használható!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ár: {CURRENCY}    Végsebesség: {VELOCITY}{}Kapacitás: {COMMA} utas, {COMMA} csomag levél{}Működtetési költség: {CURRENCY}/év
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Repülőgép átnevezése
@@ -3001,6 +2998,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Fájlné
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Te éppen a jelenleg futó játékot akarod megváltoztatni; ettől elszállhat az OpenTTD.{}Teljesen biztos vagy benne, hogy ezt akarod?
+
 
 STR_NEWGRF_ADD                                                  :{BLACK}Hozzáad
 STR_NEWGRF_ADD_TIP                                              :{BLACK}A NewGRF-et hozzáadja a listához
@@ -3238,4 +3236,7 @@ STR_MEASURE_AREA                                                :{BLACK}Terület
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Távolság: {NUM}{}Magasságkülönbség: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Terület: {NUM} x {NUM}{}Magasságkülönbség: {NUM} m
 
+############ Date formatting
+
 ########
+

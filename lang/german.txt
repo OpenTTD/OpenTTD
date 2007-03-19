@@ -591,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in einer Station eines Gegners
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Unfälle / Katastrophen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmendaten
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Öffnen und Schließen von Industrien
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Änderungen der Wirtschaftslage
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rat / Informationen zu Fahrzeugen des Spielers
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Neue Fahrzeuge
@@ -730,7 +731,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Felsige 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Leuchtturm errichten
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender errichten
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Lege Wüstengebiet an.{}STRG drücken zum entfernen
-STR_CREATE_LAKE                                                 :{BLACK}Gebiet fluten.{}Auf Meereshöhe entsteht ein Gewässer
 STR_0290_DELETE                                                 :{BLACK}Löschen
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Diese Stadt vollständig löschen
 STR_0292_SAVE_SCENARIO                                          :Szenario speichern
@@ -1208,7 +1208,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Zufälli
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Zufällige Baumart pflanzen
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kann hier keinen Kanal bauen...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Kanal bauen
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kann hier keine Schleuse bauen...
@@ -2606,8 +2605,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Füge ei
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Der markierte Auftrag wird nur nach voller Beladung ausgeführt
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Beim markierten Auftrag wird die volle Entladung veranlasst
 STR_SERVICE_HINT                                                :{BLACK}Überspringe diesen Auftrag, sofern keine Wartung benötigt wird
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Neue {STRING} ist jetzt verfügbar!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosten: {CURRENCY}   Gewicht: {WEIGHT_S}{}Geschwindigk.: {VELOCITY} Leistung: {POWER}{}Betriebskosten: {CURRENCY}/Jahr{}Kapazität: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Panne
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY}/Jahr
@@ -2633,6 +2630,10 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Halte an, 
 STR_INCOMPATIBLE_RAIL_TYPES                                     :inkompatible Gleistypen
 STR_TRAIN_NO_POWER                                              :{RED}Keine Energie
 STR_TRAIN_START_NO_CATENARY                                     :Wegen fehlender Oberleitung kann der Zug nicht starten.
+
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} jetzt erhältlich!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Neue{G r "" s} {STRING} jetzt erhältlich!  -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Fahrzeug ist im Weg
@@ -2674,8 +2675,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Ziehe Fa
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Ansicht auf das Fahrzeugdepot zentrieren
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Fahrzeugauswahlliste - Klicke auf ein Fahrzeug für Einzelheiten
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Baue das ausgewählte Fahrzeug
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Neues Fahrzeug jetzt erhältlich!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosten: {CURRENCY}{}Geschwindigk.: {VELOCITY}{}Betriebskosten: {CURRENCY}/Jahr{}Ladevermögen: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Name des Fahrzeuges
@@ -2747,8 +2746,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Aufträg
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Anzeige auf das Schiff zentrieren
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Schicke das Schiff zur Werft
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zeige Einzelheiten des Schiffes
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Neues Schiff ist erhältlich!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}  Höchstgeschwindigk.: {VELOCITY}{}Kapazität: {CARGO}{}Betriebskosten: {CURRENCY}/Jahr
 STR_982F_NAME_SHIP                                              :{BLACK}Schiffsname
 
@@ -2821,8 +2818,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Zeige Au
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Ansicht auf das Flugzeug zentrieren
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Schicke das Flugzeug in den Hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Zeige Einzelheiten des Flugzeuges
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Neues Flugzeug ist jetzt verfügbar!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}  Höchstgeschwindigk.: {VELOCITY}{}Kapazität: {COMMA} Passagiere, {COMMA} Postsäcke{}Betriebskosten: {CURRENCY}/Jahr
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Flugzeugname
@@ -2899,6 +2894,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Dateinam
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5-Summe: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du bist dabei Änderungen während eines laufenden Spiels zu machen. Dies kann zum Absturz von OpenTTD führen.{}Bist du Dir wirklich sicher?
+
 
 STR_NEWGRF_ADD                                                  :{BLACK}Hinzufügen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Füge eine neue NewGRF Datei zu Liste hinzu
@@ -3137,4 +3133,7 @@ STR_MEASURE_AREA                                                :{BLACK}Gebiet: 
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Länge: {NUM}{}Höhenunterschied: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Gebiet: {NUM} x {NUM}{}Höhenunterschied: {NUM} m
 
+############ Date formatting
+
 ########
+

@@ -829,7 +829,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Loo maas
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Ehita tuletorn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Paigalda saatjamast
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Loo kõrbealad.{}Eemaldamiseks klõpsa hoides all CTRL nuppu
-STR_CREATE_LAKE                                                 :{BLACK}Märgi vee ala.{}See uputab kogu läheduse kui on mereveetasemel
 STR_0290_DELETE                                                 :{BLACK}Kustuta
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Hävita see linn täielikult
 STR_0292_SAVE_SCENARIO                                          :Salvesta kaart
@@ -1307,7 +1306,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Suvalise
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Istutab suvalisi puid
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Siia ei saa kanaleid ehitada...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Kanali ehitamine. Veeruutude ehitamiseks vajuta CTRL (ainult merepinna kõrgusel)
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Siia ei saa lüüse ehitada...
@@ -2705,8 +2703,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Lisa uus
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Sunni valitud käsu juures oodata täis laadingut
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Sunni valitud käsu juures maha laadida.
 STR_SERVICE_HINT                                                :{BLACK}Jäta see käsk vahele, kui teenindust ei vajata
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Uus {STRING} on nüüd olemas!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Maksumus: {CURRENCY} Mass: {WEIGHT_S}{}Kiirus: {VELOCITY}  Võimsus: {POWER}{}Kulu: {CURRENCY}/aastas{}Mahutus: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Lagunes
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Kulud: {LTBLUE}{CURRENCY}/aastas
@@ -2773,8 +2769,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Et müü
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Vii vaade garaaþi asukohale
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Nimekiri maanteesõidukitest - maanteesõiduki kohta info saamiseks vajuta sellele
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Ehita valitud maanteesõiduk
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Uus maanteesõiduk on nüüdsest saadaval!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Hind: {CURRENCY}{}Kiirus: {VELOCITY}{}Hoolduskulud: {CURRENCY}/aastas{}Mahutavus: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nimeta maanteeveok ümber
@@ -2846,8 +2840,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Näita l
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vii vaade laeva asukohale
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Saada laev paadikuuri
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Näita laeva detaile
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Uus laev on nüüdsest saadaval!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Hind: {CURRENCY} Maks. Kiirus: {VELOCITY}{}Mahutavus: {CARGO}{}Hoolduskulud: {CURRENCY}/aasta
 STR_982F_NAME_SHIP                                              :{BLACK}Anna laevale nimi
 
@@ -2920,8 +2912,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Näita l
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Vii peavaade lennukile
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Saada lennuk angaari
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Näita lennuki detaile
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Uus lennuk on saadaval!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Hind: {CURRENCY} Maks. kiirus: {VELOCITY}{}Mahutavus: {COMMA} reisijat, {COMMA} kotti kirju{}Hoolduskulud: {CURRENCY}/aastas
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Anna lennukile nimi

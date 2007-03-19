@@ -730,7 +730,6 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Setja kl
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Setja vita
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Setja sendi
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Afmarkaðu eyðimörk.{}Smelltu og haltu CTRL til að fjarlægja hana
-STR_CREATE_LAKE                                                 :{BLACK}Afmarkaðu vantssvæði.{}Það mun flæða yfir aðlægt svæði ef það er við sjávarmál
 STR_0290_DELETE                                                 :{BLACK}Eyða
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Eyða þessum bæ algjörlega
 STR_0292_SAVE_SCENARIO                                          :Vista kort
@@ -1208,7 +1207,6 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Tré af 
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Gróðursetja tré af handahófskenndri gerð
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Ekki hægt að grafa skipaskurð hér...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Grafa skipaskurð
 STR_LANDINFO_CANAL                                              :Skipaskurður
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Ekki hægt að gera skurðgátt hér
@@ -2606,8 +2604,6 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Skeyta i
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Neyða lest til að bíða eftir fullum farmi í valdri skipun
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Neyða lest til að afferma sig í valdri skipun
 STR_SERVICE_HINT                                                :{BLACK}Sleppa þessarri skipun nema þörf sé á viðgerð
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Ný {STRING} er nú fáanleg!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Verð: {CURRENCY} Þyngd: {WEIGHT_S}{}Hraði: {VELOCITY}  Afl: {POWER}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Bilaður
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY} á ári
@@ -2674,8 +2670,6 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Dragðu 
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Miðja aðalsjónarhorn á bifreiðaskýli
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Bifreiðalisti - ýttu á bifreið fyrir nánari upplýsingar
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Smíða valda bifreið
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Ný bifreið fáanleg!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Verð: {CURRENCY}{}Hraði: {VELOCITY}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nefna bifreið
@@ -2747,8 +2741,6 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Sýna sk
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Miðja aðalsjónarhorn á staðsetningu skips
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Senda skipið í slipp
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Sýna nánari upplýsingar um skip
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nýtt skip fáanlegt!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO}{}Rekstrarkostnaður: {CURRENCY}á ári
 STR_982F_NAME_SHIP                                              :{BLACK}Nefna skip
 
@@ -2821,8 +2813,6 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Sýna sk
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Miðja aðalsjónarhorn á flugvélina
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Senda flugvélina i flugskýli
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Sýna nánari upplýsingar um skip
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Ný flugvél nú fáanleg!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {COMMA} farþegar, {COMMA} pokar af pósti{}Rekstrarkostnaður: {CURRENCY}á ári
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nefna flugvélina
@@ -2899,6 +2889,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Skráarn
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF einkenni: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5 summa: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Þú ert í þann mund að eiga við leik í gangi, við það gæti OpenTTD hrunið.{}Ertu viss um að þú viljir halda áfram?
+
 
 STR_NEWGRF_ADD                                                  :{BLACK}Bæta við
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Bæta NewGRF skrá við listann
@@ -3136,5 +3127,7 @@ STR_MEASURE_LENGTH                                              :{BLACK}Lengd: {
 STR_MEASURE_AREA                                                :{BLACK}Svæði: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengd: {NUM}{}Hæðarmunur {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Svæði: {NUM} x {NUM}{}Hæðarmunur: {NUM} m
+
+############ Date formatting
 
 ########
