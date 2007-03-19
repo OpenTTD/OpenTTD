@@ -71,6 +71,7 @@ bool IsValidChar(WChar key, CharSetFilter afilter);
 
 size_t Utf8Decode(WChar *c, const char *s);
 size_t Utf8Encode(char *buf, WChar c);
+size_t Utf8TrimString(char *s, size_t maxlen);
 
 
 static inline WChar Utf8Consume(const char **s)
@@ -97,10 +98,41 @@ static inline size_t Utf8CharLen(WChar c)
 }
 
 
+/**
+ * Return the length of an UTF-8 encoded value based on a single char. This
+ * char should be the first byte of the UTF-8 encoding. If not, or encoding
+ * is invalid, return value is 0
+ */
+static inline size_t Utf8EncodedCharLen(char c)
+{
+	if (GB(c, 3, 5) == 0x1E) return 4;
+	if (GB(c, 4, 4) == 0x0E) return 3;
+	if (GB(c, 5, 3) == 0x06) return 2;
+	if (GB(c, 7, 1) == 0x00) return 1;
+
+	/* Invalid UTF8 start encoding */
+	return 0;
+}
+
+
 /* Check if the given character is part of a UTF8 sequence */
 static inline bool IsUtf8Part(char c)
 {
 	return GB(c, 6, 2) == 2;
+}
+
+/**
+ * Retrieve the previous UNICODE character in an UTF-8 encoded string.
+ * @param s char pointer pointing to (the first char of) the next character
+ * @returns a pointer in 's' to the previous UNICODE character's first byte
+ * @note The function should not be used to determine the length of the previous
+ * encoded char because it might be an invalid/corrupt start-sequence
+ */
+static inline char *Utf8PrevChar(const char *s)
+{
+	const char *ret = s;
+	while (IsUtf8Part(*--ret));
+	return (char*)ret;
 }
 
 
@@ -110,6 +142,21 @@ static inline bool IsPrintable(WChar c)
 	if (c < 0xE000) return true;
 	if (c < 0xE200) return false;
 	return true;
+}
+
+/**
+ * Check whether UNICODE character is whitespace or not
+ * @param c UNICODE character to check
+ * @return a boolean value whether 'c' is a whitespace character or not
+ * @see http://www.fileformat.info/info/unicode/category/Zs/list.htm
+ */
+static inline bool IsWhitespace(WChar c)
+{
+	return
+	  c == 0x0020 /* SPACE */ ||
+	  c == 0x00A0 /* NO-BREAK SPACE */ ||
+	  c == 0x3000 /* IDEOGRAPHIC SPACE */
+	;
 }
 
 

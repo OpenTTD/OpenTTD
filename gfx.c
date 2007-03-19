@@ -270,7 +270,7 @@ static int TruncateString(char *str, int maxw)
 			if (w >= maxw) {
 				// string got too big... insert dotdotdot
 				ddd_pos[0] = ddd_pos[1] = ddd_pos[2] = '.';
-				ddd_pos[3] = 0;
+				ddd_pos[3] = '\0';
 				return ddd_w;
 			}
 		} else {
@@ -410,11 +410,12 @@ uint32 FormatStringLinebreaks(char *str, int maxw)
 	for (;;) {
 		char *last_space = NULL;
 		int w = 0;
+		char *s;
 
 		for (;;) {
 			WChar c = Utf8Consume((const char **)&str);
 			/* whitespace is where we will insert the line-break */
-			if (c == ' ') last_space = str;
+			if (IsWhitespace(c)) last_space = str;
 
 			if (IsPrintable(c)) {
 				w += GetCharacterWidth(size, c);
@@ -425,7 +426,7 @@ uint32 FormatStringLinebreaks(char *str, int maxw)
 				 * 2. In all other cases force a linebreak at the last seen whitespace */
 				if (w > maxw) {
 					if (last_space == NULL) {
-						str[-1] = '\0';
+						*Utf8PrevChar(str) = '\0';
 						return num + (size << 16);
 					}
 					str = last_space;
@@ -443,9 +444,17 @@ uint32 FormatStringLinebreaks(char *str, int maxw)
 			}
 		}
 end_of_inner_loop:
-		/* string didn't fit on line, so 'dummy' terminate and increase linecount */
+		/* String didn't fit on line (or a '\n' was encountered), so 'dummy' terminate
+		 * and increase linecount. We use Utf8PrevChar() as also non 1 char long
+		 * whitespace seperators are supported */
 		num++;
-		str[-1] = '\0';
+		s = Utf8PrevChar(str);
+		*s++ = '\0';
+
+		/* In which case (see above) we will shift remainder to left and close the gap */
+		if (str - s >= 1) {
+			for (; str[-1] != '\0';) *s++ = *str++;
+		}
 	}
 }
 

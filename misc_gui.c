@@ -794,21 +794,21 @@ static void DelChar(Textbuf *tb, bool backspace)
 	WChar c;
 	uint width;
 	size_t len;
+	char *s = tb->buf + tb->caretpos;
 
-	if (backspace) {
-		do {
-			tb->caretpos--;
-		} while (IsUtf8Part(*(tb->buf + tb->caretpos)));
-	}
+	if (backspace) s = Utf8PrevChar(s);
 
-	len = Utf8Decode(&c, tb->buf + tb->caretpos);
+	len = Utf8Decode(&c, s);
 	width = GetCharacterWidth(FS_NORMAL, c);
 
 	tb->width  -= width;
-	if (backspace) tb->caretxoffs -= width;
+	if (backspace) {
+		tb->caretpos   -= len;
+		tb->caretxoffs -= width;
+	}
 
 	/* Move the remaining characters over the marker */
-	memmove(tb->buf + tb->caretpos, tb->buf + tb->caretpos + len, tb->length - tb->caretpos - len + 1);
+	memmove(s, s + len, tb->length - (s - tb->buf) - len + 1);
 	tb->length -= len;
 }
 
@@ -881,12 +881,9 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
 	case WKC_LEFT:
 		if (tb->caretpos != 0) {
 			WChar c;
-
-			do {
-				tb->caretpos--;
-			} while (IsUtf8Part(*(tb->buf + tb->caretpos)));
-
-			Utf8Decode(&c, tb->buf + tb->caretpos);
+			const char *s = Utf8PrevChar(tb->buf + tb->caretpos);
+			Utf8Decode(&c, s);
+			tb->caretpos    = s - tb->buf; // -= (tb->buf + tb->caretpos - s)
 			tb->caretxoffs -= GetCharacterWidth(FS_NORMAL, c);
 
 			return true;

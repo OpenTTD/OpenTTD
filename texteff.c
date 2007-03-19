@@ -27,7 +27,7 @@ typedef struct TextEffect {
 	uint32 params_2;
 } TextEffect;
 
-#define MAX_TEXTMESSAGE_LENGTH 150
+#define MAX_TEXTMESSAGE_LENGTH 200
 
 typedef struct TextMessage {
 	char message[MAX_TEXTMESSAGE_LENGTH];
@@ -76,6 +76,9 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 	va_start(va, message);
 	vsnprintf(buf, lengthof(buf), message, va);
 	va_end(va);
+
+
+	Utf8TrimString(buf, MAX_TEXTMESSAGE_LENGTH);
 
 	/* Force linebreaks for strings that are too long */
 	lines = GB(FormatStringLinebreaks(buf, _textmsg_box.width - 8), 0, 16) + 1;
