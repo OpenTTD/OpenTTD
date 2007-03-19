@@ -1611,6 +1611,7 @@ void ReloadNewGRFData(void)
 	/* reload vehicles */
 	ResetVehiclePosHash();
 	AfterLoadVehicles();
+	StartupEngines();
 	/* update station and waypoint graphics */
 	AfterLoadWaypoints();
 	AfterLoadStations();

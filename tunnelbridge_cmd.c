@@ -1376,7 +1376,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 
 			if (v->u.rail.track != 0x40 && dir == vdir) {
 				if (IsFrontEngine(v) && fc == _tunnel_fractcoord_1[dir]) {
-					if (!PlayVehicleSound(v, VSE_TUNNEL) && v->spritenum < 4) {
+					if (!PlayVehicleSound(v, VSE_TUNNEL) && RailVehInfo(v->engine_type)->engclass == 0) {
 						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
 					}
 					return 0;

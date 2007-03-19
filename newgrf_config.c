@@ -241,8 +241,8 @@ compatible_grf:
 				free(c->filename);
 				c->filename = strdup(f->filename);
 				memcpy(c->md5sum, f->md5sum, sizeof(c->md5sum));
-				if (c->name == NULL) c->name = strdup(f->name);
-				if (c->info == NULL) c->info = strdup(f->info);
+				if (c->name == NULL && f->name != NULL) c->name = strdup(f->name);
+				if (c->info == NULL && f->info != NULL) c->info = strdup(f->info);
 			}
 		}
 	}

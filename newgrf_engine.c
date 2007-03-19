@@ -523,21 +523,6 @@ static void VehicleSetTriggers(const ResolverObject *object, int triggers)
 }
 
 
-static uint32 GetVehicleTypeInfo(EngineID engine_type)
-{
-	/* Bit 0  Vehicle type is available on the market
-	 * Bit 1  Vehicle type is in the testing phase
-	 * Bit 2  Exclusive testing offer for a human player active */
-	const Engine *e = GetEngine(engine_type);
-	uint32 var = 0;
-
-	if (e->player_avail == 0xFF) SETBIT(var, 0);
-	if (e->age < e->duration_phase_1) SETBIT(var, 1);
-	if (e->player_avail > 0 && e->player_avail != 0xFF) SETBIT(var, 2);
-	return var;
-}
-
-
 static uint32 GetGRFParameter(EngineID engine_type, byte parameter)
 {
 	const GRFFile *file = GetEngineGRF(engine_type);
@@ -556,7 +541,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		switch (variable) {
 			case 0x43: return _current_player; /* Owner information */
 			case 0x46: return 0;               /* Motion counter */
-			case 0x48: return GetVehicleTypeInfo(object->u.vehicle.self_type); /* Vehicle Type Info */
+			case 0x48: return GetEngine(object->u.vehicle.self_type)->flags; /* Vehicle Type Info */
 			case 0xC4: return clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; /* Build year */
 			case 0xDA: return INVALID_VEHICLE; /* Next vehicle */
 			case 0x7F: return GetGRFParameter(object->u.vehicle.self_type, parameter); /* Read GRF parameter */
@@ -669,7 +654,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			return (_cargo_classes[cid] << 16) | (_cargoc.weights[v->cargo_type] << 8) | cid;
 		}
 
-		case 0x48: return GetVehicleTypeInfo(v->engine_type); /* Vehicle Type Info */
+		case 0x48: return GetEngine(v->engine_type)->flags; /* Vehicle Type Info */
 
 		/* Variables which use the parameter */
 		case 0x60: /* Count consist's engine ID occurance */

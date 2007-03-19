@@ -795,16 +795,33 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case 8:
 		case 9:
 		case 10:
-		case 11:
+		case 11: {
+			const StationSpec *statspec;
 			RaiseWindowWidget(w, _railstation.numtracks + 4);
 			RaiseWindowWidget(w, 19);
+
 			_railstation.numtracks = (e->we.click.widget - 5) + 1;
 			_railstation.dragdrop = false;
+
+			statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
+			if (statspec != NULL && HASBIT(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+				/* The previously selected number of platforms in invalid */
+				uint i;
+				for (i = 0; i < 7; i++) {
+					if (!HASBIT(statspec->disallowed_lengths, i)) {
+						RaiseWindowWidget(w, _railstation.platlength + 11);
+						_railstation.platlength = i + 1;
+						break;
+					}
+				}
+			}
+
 			LowerWindowWidget(w, _railstation.platlength + 11);
 			LowerWindowWidget(w, _railstation.numtracks + 4);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
+		}
 
 		case 12:
 		case 13:
@@ -812,16 +829,33 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case 15:
 		case 16:
 		case 17:
-		case 18:
+		case 18: {
+			const StationSpec *statspec;
 			RaiseWindowWidget(w, _railstation.platlength + 11);
 			RaiseWindowWidget(w, 19);
+
 			_railstation.platlength = (e->we.click.widget - 12) + 1;
 			_railstation.dragdrop = false;
+
+			statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
+			if (statspec != NULL && HASBIT(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+				/* The previously selected number of tracks in invalid */
+				uint i;
+				for (i = 0; i < 7; i++) {
+					if (!HASBIT(statspec->disallowed_platforms, i)) {
+						RaiseWindowWidget(w, _railstation.numtracks + 4);
+						_railstation.numtracks = i + 1;
+						break;
+					}
+				}
+			}
+
 			LowerWindowWidget(w, _railstation.platlength + 11);
 			LowerWindowWidget(w, _railstation.numtracks + 4);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
+		}
 
 		case 19:
 			_railstation.dragdrop ^= true;
