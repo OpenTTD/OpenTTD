@@ -1138,7 +1138,7 @@ void DeleteVehicleOrders(Vehicle *v)
 	/* If we have a shared order-list, don't delete the list, but just
 	    remove our pointer */
 	if (IsOrderListShared(v)) {
-		const Vehicle *u = v;
+		Vehicle *u = v;
 
 		v->orders = NULL;
 		v->num_orders = 0;
@@ -1154,6 +1154,10 @@ void DeleteVehicleOrders(Vehicle *v)
 		}
 		v->prev_shared = NULL;
 		v->next_shared = NULL;
+
+		/* If we are the only one left in the Shared Order Vehicle List,
+		 *  remove it, as we are no longer a Shared Order Vehicle */
+		if (u->prev_shared == NULL && u->next_shared == NULL) RemoveSharedOrderVehicleList(u);
 
 		/* We only need to update this-one, because if there is a third
 		 *  vehicle which shares the same order-list, nothing will change. If
