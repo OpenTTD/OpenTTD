@@ -467,7 +467,7 @@ static void StationInitialize(Station *st, TileIndex tile)
 		ge->waiting_acceptance = 0;
 		ge->days_since_pickup = 0;
 		ge->enroute_from = INVALID_STATION;
-		ge->rating = 175;
+		ge->rating = INITIAL_STATION_RATING;
 		ge->last_speed = 0;
 		ge->last_age = 0xFF;
 		ge->feeder_profit = 0;
@@ -2473,6 +2473,12 @@ static void UpdateStationRating(Station *st)
 
 	ge = st->goods;
 	do {
+		/* Slowly increase the rating back to his original level in the case we
+		 *  didn't deliver cargo yet to this station. This happens when a bribe
+		 *  failed while you didn't moved that cargo yet to a station. */
+		if (ge->enroute_from == INVALID_STATION && ge->rating < INITIAL_STATION_RATING)
+			ge->rating++;
+		/* Only change the rating if we are moving this cargo */
 		if (ge->enroute_from != INVALID_STATION) {
 			byte_inc_sat(&ge->enroute_time);
 			byte_inc_sat(&ge->days_since_pickup);
@@ -2832,7 +2838,7 @@ void BuildOilRig(TileIndex tile)
 		st->goods[j].waiting_acceptance = 0;
 		st->goods[j].days_since_pickup = 0;
 		st->goods[j].enroute_from = INVALID_STATION;
-		st->goods[j].rating = 175;
+		st->goods[j].rating = INITIAL_STATION_RATING;
 		st->goods[j].last_speed = 0;
 		st->goods[j].last_age = 255;
 	}

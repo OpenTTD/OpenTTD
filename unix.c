@@ -92,9 +92,12 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 #endif
 	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, ent->d_name);
 
-	if (stat(filename, sb) != 0) return false;
+	return stat(filename, sb) == 0;
+}
 
-	return (ent->d_name[0] != '.'); // hidden file
+bool FiosIsHiddenFile(const struct dirent *ent)
+{
+	return ent->d_name[0] == '.';
 }
 
 #if defined(__BEOS__) || defined(__linux__)

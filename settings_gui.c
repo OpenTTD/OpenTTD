@@ -823,8 +823,8 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 						if (value < sdb->min) value = (sdb->flags & SGF_0ISDISABLED) ? 0 : sdb->min;
 					}
 
-					/* Set up scroller timeout */
-					if (value != oldvalue) {
+					/* Set up scroller timeout for numeric values */
+					if (value != oldvalue && !(sd->desc.flags & SGF_MULTISTRING)) {
 						WP(w,def_d).data_2 = btn * 2 + 1 + ((x >= 10) ? 1 : 0);
 						w->flags4 |= 5 << WF_TIMEOUT_SHL;
 						_left_button_clicked = false;

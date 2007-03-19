@@ -27,6 +27,7 @@ typedef enum RoadStopType {
 
 enum {
 	INVALID_STATION = 0xFFFF,
+	INITIAL_STATION_RATING = 175,
 	ROAD_STOP_LIMIT = 16,
 };
 
