@@ -1256,6 +1256,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 				housespec[i]->enabled = true;
 				housespec[i]->local_id = hid + i;
 				housespec[i]->substitute_id = subs_id;
+				housespec[i]->grffile = _cur_grffile;
 				housespec[i]->random_colour[0] = 0x04;  // those 4 random colours are the base colour
 				housespec[i]->random_colour[1] = 0x08;  // for all new houses
 				housespec[i]->random_colour[2] = 0x0C;  // they stand for red, blue, orange and green
@@ -2316,7 +2317,6 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 			}
 
 			hs->spritegroup = _cur_grffile->spritegroups[groupid];
-			hs->grffile = _cur_grffile;
 		}
 		return;
 	}

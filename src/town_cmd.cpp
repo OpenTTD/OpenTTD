@@ -127,8 +127,15 @@ static void DrawTile_Town(TileInfo *ti)
 	HouseID house_id = GetHouseType(ti->tile);
 
 	if (house_id >= NEW_HOUSE_OFFSET) {
-		DrawNewHouseTile(ti, house_id);
-		return;
+		/* Houses don't necessarily need new graphics. If they don't have a
+		 * spritegroup associated with them, then the sprite for the substitute
+		 * house id is drawn instead. */
+		if (GetHouseSpecs(house_id)->spritegroup != NULL) {
+			DrawNewHouseTile(ti, house_id);
+			return;
+		} else {
+			house_id = GetHouseSpecs(house_id)->substitute_id;
+		}
 	}
 
 	/* Retrieve pointer to the draw town tile struct */
