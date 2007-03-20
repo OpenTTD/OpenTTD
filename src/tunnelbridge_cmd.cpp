@@ -14,6 +14,7 @@
 #include "table/strings.h"
 #include "functions.h"
 #include "map.h"
+#include "landscape.h"
 #include "tile.h"
 #include "tunnel_map.h"
 #include "unmovable_map.h"
@@ -1178,7 +1179,7 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 	bool snow_or_desert = IsTunnelTile(tile) ? HasTunnelSnowOrDesert(tile) : HasBridgeSnowOrDesert(tile);
 	switch (_opt.landscape) {
 		case LT_HILLY:
-			if (snow_or_desert != (GetTileZ(tile) > _opt.snow_line)) {
+			if (snow_or_desert != (GetTileZ(tile) > GetSnowLine())) {
 				if (IsTunnelTile(tile)) {
 					SetTunnelSnowOrDesert(tile, !snow_or_desert);
 				} else {

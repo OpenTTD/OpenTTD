@@ -11,6 +11,7 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "map.h"
+#include "landscape.h"
 #include "tile.h"
 #include "town_map.h"
 #include "tunnel_map.h"
@@ -1700,7 +1701,7 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	if (_opt.landscape == LT_HILLY) {
-		if (TilePixelHeight(t->xy) >= _opt.snow_line && t->act_food == 0 && t->population > 90)
+		if (TilePixelHeight(t->xy) >= GetSnowLine() && t->act_food == 0 && t->population > 90)
 			return;
 	} else if (_opt.landscape == LT_DESERT) {
 		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->act_food==0 || t->act_water==0) && t->population > 60)

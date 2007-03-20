@@ -6,6 +6,7 @@
 #include "openttd.h"
 #include "variables.h"
 #include "functions.h"
+#include "landscape.h"
 #include "debug.h"
 #include "sprite.h"
 #include "table/sprites.h"
@@ -370,7 +371,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0x40: return GetPlatformInfoHelper(tile, false, false, false);
 		case 0x41: return GetPlatformInfoHelper(tile, true,  false, false);
 		case 0x42: /* Terrain and rail type */
-			return ((_opt.landscape == LT_HILLY && GetTileZ(tile) > _opt.snow_line) ? 4 : 0) |
+			return ((_opt.landscape == LT_HILLY && GetTileZ(tile) > GetSnowLine()) ? 4 : 0) |
 			       (_opt.landscape == LT_DESERT ? GetTropicZone(tile) : 0) |
 			       (GetRailType(tile) << 8);
 		case 0x43: return st->owner; /* Station owner */

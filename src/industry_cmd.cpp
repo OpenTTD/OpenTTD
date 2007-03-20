@@ -12,6 +12,7 @@
 #include "table/sprites.h"
 #include "map.h"
 #include "tile.h"
+#include "landscape.h"
 #include "viewport.h"
 #include "command.h"
 #include "industry.h"
@@ -814,7 +815,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	int type;
 
 	if (_opt.landscape == LT_HILLY) {
-		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= _opt.snow_line)
+		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= GetSnowLine())
 			return;
 	}
 
@@ -1016,7 +1017,7 @@ static bool CheckNewIndustry_NULL(TileIndex tile)
 static bool CheckNewIndustry_Forest(TileIndex tile)
 {
 	if (_opt.landscape == LT_HILLY) {
-		if (GetTileZ(tile) < _opt.snow_line + TILE_HEIGHT * 2U) {
+		if (GetTileZ(tile) < HighestSnowLine() + TILE_HEIGHT * 2U) {
 			_error_message = STR_4831_FOREST_CAN_ONLY_BE_PLANTED;
 			return false;
 		}
@@ -1048,7 +1049,7 @@ static bool CheckNewIndustry_OilRig(TileIndex tile)
 static bool CheckNewIndustry_Farm(TileIndex tile)
 {
 	if (_opt.landscape == LT_HILLY) {
-		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= _opt.snow_line) {
+		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= HighestSnowLine()) {
 			_error_message = STR_0239_SITE_UNSUITABLE;
 			return false;
 		}

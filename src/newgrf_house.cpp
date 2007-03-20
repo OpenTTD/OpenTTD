@@ -8,6 +8,7 @@
 #include "variables.h"
 #include "debug.h"
 #include "viewport.h"
+#include "landscape.h"
 #include "date.h"
 #include "town.h"
 #include "town_map.h"
@@ -252,7 +253,7 @@ static uint32 GetTerrainType(TileIndex tile)
 {
 	switch (_opt.landscape) {
 		case LT_DESERT: return GetTropicZone(tile) == TROPICZONE_DESERT ? 1 : 2;
-		case LT_HILLY:  return GetTileZ(tile) >= _opt.snow_line ? 4 : 0;
+		case LT_HILLY:  return GetTileZ(tile) >= GetSnowLine() ? 4 : 0;
 		default:        return 0;
 	}
 }

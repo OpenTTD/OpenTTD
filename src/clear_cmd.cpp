@@ -16,6 +16,7 @@
 #include "tunnel_map.h"
 #include "bridge_map.h"
 #include "bridge.h"
+#include "landscape.h"
 #include "variables.h"
 #include "table/sprites.h"
 #include "unmovable_map.h"
@@ -620,7 +621,7 @@ void TileLoopClearHelper(TileIndex tile)
 /* convert into snowy tiles */
 static void TileLoopClearAlps(TileIndex tile)
 {
-	int k = GetTileZ(tile) - _opt.snow_line + TILE_HEIGHT;
+	int k = GetTileZ(tile) - GetSnowLine() + TILE_HEIGHT;
 
 	if (k < 0) { // well below the snow line
 		if (!IsClearGround(tile, CLEAR_SNOW)) return;

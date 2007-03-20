@@ -5,6 +5,7 @@
 #include "bridge_map.h"
 #include "heightmap.h"
 #include "clear_map.h"
+#include "date.h"
 #include "functions.h"
 #include "map.h"
 #include "player.h"
@@ -14,6 +15,7 @@
 #include <stdarg.h>
 #include "viewport.h"
 #include "command.h"
+#include "landscape.h"
 #include "vehicle.h"
 #include "variables.h"
 #include "void_map.h"
@@ -61,6 +63,7 @@ const Slope _inclined_tileh[] = {
 	SLOPE_NWS, SLOPE_WSE, SLOPE_SEN, SLOPE_ENW
 };
 
+SnowLine *_snow_line = NULL;
 
 uint GetPartialZ(int x, int y, Slope corners)
 {
@@ -300,6 +303,62 @@ void ClickTile(TileIndex tile)
 void GetTileDesc(TileIndex tile, TileDesc *td)
 {
 	_tile_type_procs[GetTileType(tile)]->get_tile_desc_proc(tile, td);
+}
+
+/**
+ * Has a snow line table already been loaded.
+ * @return true if the table has been loaded already.
+ */
+bool IsSnowLineSet(void)
+{
+	return _snow_line != NULL;
+}
+
+/**
+ * Set a variable snow line, as loaded from a newgrf file.
+ * @param table the 12 * 32 byte table containing the snowline for each day
+ */
+void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS])
+{
+	_snow_line = CallocT<SnowLine>(1);
+	memcpy(_snow_line->table, table, sizeof(_snow_line->table));
+
+	for (uint i = 0; i < SNOW_LINE_MONTHS; i++) {
+		for (uint j = 0; j < SNOW_LINE_DAYS; j++) {
+			_snow_line->highest_value = max(_snow_line->highest_value, table[i][j]);
+		}
+	}
+}
+
+/**
+ * Get the current snow line, either variable or static.
+ * @return the snow line height.
+ */
+byte GetSnowLine(void)
+{
+	if (_snow_line == NULL) return _opt.snow_line;
+
+	YearMonthDay ymd;
+	ConvertDateToYMD(_date, &ymd);
+	return _snow_line->table[ymd.month][ymd.day];
+}
+
+/**
+ * Get the highest possible snow line height, either variable or static.
+ * @return the highest snow line height.
+ */
+byte HighestSnowLine(void)
+{
+	return _snow_line == NULL ? _opt.snow_line : _snow_line->highest_value;
+}
+
+/**
+ * Clear the variable snow line table and free the memory.
+ */
+void ClearSnowLine(void)
+{
+	free(_snow_line);
+	_snow_line = NULL;
 }
 
 /** Clear a piece of landscape

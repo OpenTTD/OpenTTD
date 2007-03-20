@@ -12,6 +12,7 @@
 #include "table/strings.h"
 #include "functions.h"
 #include "map.h"
+#include "landscape.h"
 #include "tile.h"
 #include "town_map.h"
 #include "vehicle.h"
@@ -864,7 +865,7 @@ static void TileLoop_Road(TileIndex tile)
 {
 	switch (_opt.landscape) {
 		case LT_HILLY:
-			if (IsOnSnow(tile) != (GetTileZ(tile) > _opt.snow_line)) {
+			if (IsOnSnow(tile) != (GetTileZ(tile) > GetSnowLine())) {
 				ToggleSnow(tile);
 				MarkTileDirtyByTile(tile);
 			}

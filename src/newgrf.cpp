@@ -27,6 +27,7 @@
 #include "fontcache.h"
 #include "date.h"
 #include "currency.h"
+#include "landscape.h"
 #include "sound.h"
 #include "newgrf_config.h"
 #include "newgrf_house.h"
@@ -1510,6 +1511,22 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 			break;
 
 		case 0x10: // 12 * 32 * B Snow line height table
+			if (numinfo > 1 || IsSnowLineSet()) {
+				grfmsg(1, "GlobalVarChangeInfo: The snowline can only be set once (%d)", numinfo);
+			} else if (len < SNOW_LINE_MONTHS * SNOW_LINE_DAYS) {
+				grfmsg(1, "GlobalVarChangeInfo: Not enough entries set in the snowline table (%d)", len);
+			} else {
+				byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS];
+
+				for (uint i = 0; i < SNOW_LINE_MONTHS; i++) {
+					for (uint j = 0; j < SNOW_LINE_DAYS; j++) {
+						table[i][j] = grf_load_byte(&buf);
+					}
+				}
+				SetSnowLine(table);
+			}
+			break;
+
 		default:
 			ret = true;
 	}
@@ -3972,6 +3989,9 @@ static void ResetNewGRFData()
 	// Reset station classes
 	ResetStationClasses();
 	ResetCustomStations();
+
+	/* Reset the snowline table. */
+	ClearSnowLine();
 
 	/* Reset NewGRF files */
 	ResetNewGRF();

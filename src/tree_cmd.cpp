@@ -9,6 +9,7 @@
 #include "table/tree_land.h"
 #include "functions.h"
 #include "map.h"
+#include "landscape.h"
 #include "tile.h"
 #include "tree_map.h"
 #include "viewport.h"
@@ -53,7 +54,7 @@ static void PlaceTree(TileIndex tile, uint32 r)
 		MakeTree(tile, tree, GB(r, 22, 2), min(GB(r, 16, 3), 6), TREE_GROUND_GRASS, 0);
 
 		// above snowline?
-		if (_opt.landscape == LT_HILLY && GetTileZ(tile) > _opt.snow_line) {
+		if (_opt.landscape == LT_HILLY && GetTileZ(tile) > GetSnowLine()) {
 			SetTreeGroundDensity(tile, TREE_GROUND_SNOW_DESERT, 3);
 			SetTreeCounter(tile, (TreeGround)GB(r, 24, 3));
 		} else {
@@ -150,7 +151,7 @@ void PlaceTreesRandomly()
 			j = GetTileZ(tile) / TILE_HEIGHT * 2;
 			while (j--) {
 				/* Above snowline more trees! */
-				if (_opt.landscape == LT_HILLY && ht > _opt.snow_line) {
+				if (_opt.landscape == LT_HILLY && ht > GetSnowLine()) {
 					PlaceTreeAtSameHeight(tile, ht);
 					PlaceTreeAtSameHeight(tile, ht);
 				};
@@ -496,7 +497,7 @@ static void TileLoopTreesDesert(TileIndex tile)
 
 static void TileLoopTreesAlps(TileIndex tile)
 {
-	int k = GetTileZ(tile) - _opt.snow_line + TILE_HEIGHT;
+	int k = GetTileZ(tile) - GetSnowLine() + TILE_HEIGHT;
 
 	if (k < 0) {
 		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT) return;

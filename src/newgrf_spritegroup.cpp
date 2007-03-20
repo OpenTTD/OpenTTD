@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "variables.h"
 #include "macros.h"
+#include "landscape.h"
 #include "oldpool.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
@@ -91,7 +92,7 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 		case 0x1A: return UINT_MAX;
 		case 0x1B: return GB(_display_opt, 0, 6);
 		case 0x1C: return object->last_value;
-		case 0x20: return _opt.landscape == LT_HILLY ? _opt.snow_line : 0xFF;
+		case 0x20: return _opt.landscape == LT_HILLY ? GetSnowLine() : 0xFF;
 
 		/* Not a common variable, so evalute the feature specific variables */
 		default: return object->GetVariable(object, variable, parameter, available);

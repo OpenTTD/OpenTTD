@@ -12,6 +12,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
+#include "landscape.h"
 #include "tile.h"
 #include "town_map.h"
 #include "tunnel_map.h"
@@ -1738,7 +1739,7 @@ static void TileLoop_Track(TileIndex tile)
 
 	switch (_opt.landscape) {
 		case LT_HILLY:
-			if (GetTileZ(tile) > _opt.snow_line) {
+			if (GetTileZ(tile) > GetSnowLine()) {
 				new_ground = RAIL_GROUND_ICE_DESERT;
 				goto set_ground;
 			}
