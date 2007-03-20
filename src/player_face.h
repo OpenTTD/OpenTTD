@@ -64,7 +64,7 @@ static const PlayerFaceBitsInfo _pf_info[] = {
 	/* PFV_CHIN            */ {  7, 2, {  4,  1,  2,  2 }, { 0x327, 0x327, 0x391, 0x3B1 } },
 	/* PFV_EYEBROWS        */ {  9, 4, { 12, 16, 11, 16 }, { 0x32B, 0x337, 0x39A, 0x3B8 } },
 	/* PFV_MOUSTACHE       */ { 13, 2, {  3,  0,  3,  0 }, { 0x367,     0, 0x397,     0 } }, ///< Depends on PFV_HAS_MOUSTACHE
-	/* PFV_LIPS            */ { 13, 4, { 13, 10,  9,  9 }, { 0x35B, 0x351, 0x3A5, 0x3C8 } }, ///< Depends on !PFV_HAS_MOUSTACHE
+	/* PFV_LIPS            */ { 13, 4, { 12, 10,  9,  9 }, { 0x35B, 0x351, 0x3A5, 0x3C8 } }, ///< Depends on !PFV_HAS_MOUSTACHE
 	/* PFV_NOSE            */ { 17, 3, {  8,  4,  4,  5 }, { 0x349, 0x34C, 0x393, 0x3B3 } }, ///< Depends on !PFV_HAS_MOUSTACHE
 	/* PFV_HAIR            */ { 20, 4, {  9,  5,  5,  4 }, { 0x382, 0x38B, 0x3D4, 0x3D9 } },
 	/* PFV_JACKET          */ { 24, 2, {  3,  3,  3,  3 }, { 0x36B, 0x378, 0x36B, 0x378 } },
