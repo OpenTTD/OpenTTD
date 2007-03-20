@@ -268,14 +268,7 @@ ENDIAN_CHECK=endian_check$(EXE)
 STRGEN=strgen/strgen$(EXE)
 OSXAPP="OpenTTD.app"
 
-ifdef RELEASE
-REV:=$(RELEASE)
-else
-ifeq ($(shell if test -d .svn; then echo 1; fi), 1)
-REV_MODIFIED := $(shell svnversion . | sed -n 's/.*\(M\).*/\1/p' )
-REV := $(shell LC_ALL=C svn info | awk '/^URL:.*branch/ { BRANCH="-"a[split($$2, a, "/")] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
-endif
-endif
+REV := 0.5.1-RC1
 
 # define flag to use for -lrt (some OSes overwrites this later for compatibility)
 ifndef LRT
