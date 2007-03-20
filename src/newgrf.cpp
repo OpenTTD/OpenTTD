@@ -1293,21 +1293,19 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 			break;
 
 		case 0x0D: // Passenger acceptance
-			FOR_EACH_OBJECT housespec[i]->passenger_acceptance = grf_load_byte(&buf);
-			break;
-
 		case 0x0E: // Mail acceptance
-			FOR_EACH_OBJECT housespec[i]->mail_acceptance = grf_load_byte(&buf);
+			FOR_EACH_OBJECT housespec[i]->cargo_acceptance[prop - 0x0D] = grf_load_byte(&buf);
 			break;
-
-		case 0x0F: // Goods, food or fizzy drinks acceptance
+		case 0x0F: // Goods/candy, food/fizzy drinks acceptance
 			FOR_EACH_OBJECT {
 				int8 goods = grf_load_byte(&buf);
-				if (goods > 0) {
-					housespec[i]->goods_acceptance = goods;
-				} else {
-					housespec[i]->food_acceptance = -goods;
-				}
+
+				/* If value of goods is negative, it means in fact food or, if in toyland, fizzy_drink acceptance.
+				 * Else, we have "standard" 3rd cargo type, goods or candy, for toyland once more */
+				housespec[i]->accepts_cargo[2] = (goods >= 0) ? ((_opt.landscape == LT_CANDY) ? CT_CANDY : CT_GOODS) :
+						((_opt.landscape == LT_CANDY) ? CT_FIZZY_DRINKS : CT_FOOD);
+
+				housespec[i]->cargo_acceptance[2] = abs(goods); // but we do need positive value here
 			}
 			break;
 

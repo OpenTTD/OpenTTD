@@ -155,10 +155,8 @@ struct HouseSpec {
 	StringID building_name;            ///< building name
 	uint16 remove_rating_decrease;     ///< rating decrease if removed
 	byte mail_generation;              ///< mail generation multiplier (tile based, as the acceptances below)
-	byte passenger_acceptance;         ///< passenger acceptance, given in 1/8th unit, max is 8, as the 3 next properies
-	byte mail_acceptance;              ///< mail acceptance
-	byte goods_acceptance;             ///< good acceptance
-	byte food_acceptance;              ///< food (or fizzy drink) acceptance
+	byte cargo_acceptance[3];          ///< acceptance level for the cargo slots
+	CargoID accepts_cargo[3];          ///< 3 input cargo slots
 	BuildingFlags building_flags;      ///< some flags that describe the house (size, stadium etc...)
 	HouseZones building_availability;  ///< where can it be built (climates, zones)
 	bool enabled;                      ///< the house is still avaible (by default, true.newgrf can disable it, though)

@@ -406,10 +406,7 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 {
 	HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
 
-	ac[CT_PASSENGERS] = hs->passenger_acceptance;
-	ac[CT_MAIL]       = hs->mail_acceptance;
-	ac[CT_GOODS]      = hs->goods_acceptance;
-	ac[CT_FOOD]       = hs->food_acceptance;
+	for (uint8 i = 0; i < 3; i++) ac[hs->accepts_cargo[i]] = hs->cargo_acceptance[i];
 }
 
 static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
