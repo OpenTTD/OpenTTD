@@ -659,7 +659,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 
 	if (_network_server) {
 		// We just lost one client :(
-		if (cs->status > STATUS_INACTIVE) _network_game_info.clients_on--;
+		if (cs->status >= STATUS_AUTH) _network_game_info.clients_on--;
 		_network_clients_connected--;
 
 		while ((cs + 1) != DEREF_CLIENT(MAX_CLIENTS) && (cs + 1)->sock != INVALID_SOCKET) {
