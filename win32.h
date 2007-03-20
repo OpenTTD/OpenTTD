@@ -24,6 +24,7 @@ wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen);
 # define WIDE_TO_MB(str) FS2OTTD(str)
 # define WIDE_TO_MB_BUFFER(str, buffer, buflen) convert_from_fs(str, buffer, buflen)
 #else
+extern uint _codepage; // local code-page in the system @see win32_v.cpp:WM_INPUTLANGCHANGE
 # define MB_TO_WIDE(str) (str)
 # define MB_TO_WIDE_BUFFER(str, buffer, buflen) (str)
 # define WIDE_TO_MB(str) (str)

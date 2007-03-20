@@ -54,7 +54,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="unicows.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib libfreetype2.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib libfreetype2.lib"
 				OutputFile=".\Release/openttd.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"

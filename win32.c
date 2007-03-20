@@ -652,23 +652,23 @@ static inline void dir_free(DIR *d)
 	}
 }
 
-DIR *opendir(const wchar_t *path)
+DIR *opendir(const TCHAR *path)
 {
 	DIR *d;
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
-	DWORD fa = GetFileAttributesW(path);
+	DWORD fa = GetFileAttributes(path);
 
 	if ((fa != INVALID_FILE_ATTRIBUTES) && (fa & FILE_ATTRIBUTE_DIRECTORY)) {
 		d = dir_calloc();
 		if (d != NULL) {
-			wchar_t search_path[MAX_PATH];
-			bool slash = path[wcslen(path) - 1] == L'\\';
+			TCHAR search_path[MAX_PATH];
+			bool slash = path[_tcslen(path) - 1] == '\\';
 
 			/* build search path for FindFirstFile, try not to append additional slashes
 			 * as it throws Win9x off its groove for root directories */
-			_snwprintf(search_path, lengthof(search_path), L"%s%s*", path, slash ? L"" : L"\\");
+			_sntprintf(search_path, lengthof(search_path), _T("%s%s*"), path, slash ? _T("") : _T("\\"));
 			*lastof(search_path) = '\0';
-			d->hFind = FindFirstFileW(search_path, &d->fd);
+			d->hFind = FindFirstFile(search_path, &d->fd);
 
 			if (d->hFind != INVALID_HANDLE_VALUE ||
 					GetLastError() == ERROR_NO_MORE_FILES) { // the directory is empty
@@ -699,7 +699,7 @@ struct dirent *readdir(DIR *d)
 		/* the directory was empty when opened */
 		if (d->hFind == INVALID_HANDLE_VALUE) return NULL;
 		d->at_first_entry = false;
-	} else if (!FindNextFileW(d->hFind, &d->fd)) { // determine cause and bail
+	} else if (!FindNextFile(d->hFind, &d->fd)) { // determine cause and bail
 		if (GetLastError() == ERROR_NO_MORE_FILES) SetLastError(prev_err);
 		return NULL;
 	}
@@ -742,7 +742,7 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 {
 	// hectonanoseconds between Windows and POSIX epoch
 	static const int64 posix_epoch_hns = 0x019DB1DED53E8000LL;
-	const WIN32_FIND_DATAW *fd = &ent->dir->fd;
+	const WIN32_FIND_DATA *fd = &ent->dir->fd;
 
 	sb->st_size  = ((uint64) fd->nFileSizeHigh << 32) + fd->nFileSizeLow;
 	/* UTC FILETIME to seconds-since-1970 UTC
@@ -872,19 +872,22 @@ void ShowInfo(const char *str)
 	int _set_error_mode(int);
 #endif
 
-int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-	LPTSTR lpCmdLine, int nCmdShow)
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	int argc;
 	char *argv[64]; // max 64 command line arguments
 	char *cmdline;
+
+#if !defined(UNICODE)
+	_codepage = GetACP(); // get system codepage as some kind of a default
+#endif /* UNICODE */
 
 #if defined(UNICODE)
 	/* For UNICODE we need to convert the commandline to char* _AND_
 	 * save it because argv[] points into this buffer and thus needs to
 	 * be available between subsequent calls to FS2OTTD() */
 	char cmdlinebuf[MAX_PATH];
-#endif
+#endif /* UNICODE */
 
 	cmdline = WIDE_TO_MB_BUFFER(GetCommandLine(), cmdlinebuf, lengthof(cmdlinebuf));
 
@@ -921,11 +924,17 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 void DeterminePaths(void)
 {
 	char *s, *cfg;
-	wchar_t path[MAX_PATH];
 
-	_paths.personal_dir = _paths.game_data_dir = cfg = malloc(MAX_PATH);
-	GetCurrentDirectoryW(MAX_PATH - 1, path);
-	convert_from_fs(path, cfg, MAX_PATH);
+	_paths.personal_dir = _paths.game_data_dir = cfg = (char*)malloc(MAX_PATH);
+#if defined(UNICODE)
+	{
+		TCHAR path[MAX_PATH];
+		GetCurrentDirectory(MAX_PATH - 1, path);
+		convert_from_fs(path, cfg, MAX_PATH);
+	}
+#else
+	GetCurrentDirectory(MAX_PATH - 1, cfg);
+#endif
 
 	cfg[0] = toupper(cfg[0]);
 	s = strchr(cfg, '\0');
@@ -946,10 +955,10 @@ void DeterminePaths(void)
 	_log_file = str_fmt("%sopenttd.log", _paths.personal_dir);
 
 	// make (auto)save and scenario folder
-	CreateDirectoryW(OTTD2FS(_paths.save_dir), NULL);
-	CreateDirectoryW(OTTD2FS(_paths.autosave_dir), NULL);
-	CreateDirectoryW(OTTD2FS(_paths.scenario_dir), NULL);
-	CreateDirectoryW(OTTD2FS(_paths.heightmap_dir), NULL);
+	CreateDirectory(OTTD2FS(_paths.save_dir), NULL);
+	CreateDirectory(OTTD2FS(_paths.autosave_dir), NULL);
+	CreateDirectory(OTTD2FS(_paths.scenario_dir), NULL);
+	CreateDirectory(OTTD2FS(_paths.heightmap_dir), NULL);
 }
 
 /**
@@ -980,14 +989,16 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 		CloseClipboard();
 
 		if (*ret == '\0') return false;
+#if !defined(UNICODE)
 	} else if (IsClipboardFormatAvailable(CF_TEXT)) {
 		OpenClipboard(NULL);
 		cbuf = GetClipboardData(CF_TEXT);
 
 		ptr = GlobalLock(cbuf);
-		ttd_strlcpy(utf8_buf, ptr, lengthof(utf8_buf));
+		ttd_strlcpy(utf8_buf, FS2OTTD(ptr), lengthof(utf8_buf));
 		GlobalUnlock(cbuf);
 		CloseClipboard();
+#endif /* UNICODE */
 	} else {
 		return false;
 	}
@@ -1045,8 +1056,104 @@ int64 GetTS(void)
 	return (__int64)(value * freq);
 }
 
-/** Convert from OpenTTD's encoding to that of the local environment in
- * UNICODE. OpenTTD encoding is UTF8, local is wide-char
+
+/**
+ * Convert to OpenTTD's encoding from that of the local environment.
+ * When the project is built in UNICODE, the system codepage is irrelevant and
+ * the input string is wide. In ANSI mode, the string is in the
+ * local codepage which we'll convert to wide-char, and then to UTF-8.
+ * OpenTTD internal encoding is UTF8.
+ * The returned value's contents can only be guaranteed until the next call to
+ * this function. So if the value is needed for anything else, use convert_from_fs
+ * @param name pointer to a valid string that will be converted (local, or wide)
+ * @return pointer to the converted string; if failed string is of zero-length
+ * @see the current code-page comes from video\win32_v.cpp, event-notification
+ * WM_INPUTLANGCHANGE */
+const char *FS2OTTD(const TCHAR *name)
+{
+	static char utf8_buf[512];
+#if defined(UNICODE)
+	return convert_from_fs(name, utf8_buf, lengthof(utf8_buf));
+#else
+	char *s = utf8_buf;
+
+	for (; *name != '\0'; name++) {
+		wchar_t w;
+		int len = MultiByteToWideChar(_codepage, 0, name, 1, &w, 1);
+		if (len != 1) {
+			DEBUG(misc, 0) ("[utf8] M2W error converting '%c'. Errno %d", *name, GetLastError());
+			continue;
+		}
+
+		if (s + Utf8CharLen(w) >= lastof(utf8_buf)) break;
+		s += Utf8Encode(s, w);
+	}
+
+	*s = '\0';
+	return utf8_buf;
+#endif /* UNICODE */
+}
+
+/**
+ * Convert from OpenTTD's encoding to that of the local environment.
+ * When the project is built in UNICODE the system codepage is irrelevant and
+ * the converted string is wide. In ANSI mode, the UTF8 string is converted
+ * to multi-byte.
+ * OpenTTD internal encoding is UTF8.
+ * The returned value's contents can only be guaranteed until the next call to
+ * this function. So if the value is needed for anything else, use convert_from_fs
+ * @param name pointer to a valid string that will be converted (UTF8)
+ * @return pointer to the converted string; if failed string is of zero-length
+ * @see the current code-page comes from video\win32_v.cpp, event-notification
+ * WM_INPUTLANGCHANGE */
+const TCHAR *OTTD2FS(const char *name)
+{
+	static TCHAR system_buf[512];
+#if defined(UNICODE)
+	return convert_to_fs(name, system_buf, lengthof(system_buf));
+#else
+	char *s = system_buf;
+	WChar c;
+	for (; (c = Utf8Consume(&name)) != '\0';) {
+		char mb;
+		int len;
+
+		if (s >= lastof(system_buf)) break;
+		len = WideCharToMultiByte(_codepage, 0, (wchar_t*)&c, 1, &mb, 1, NULL, NULL);
+		if (len != 1) {
+			DEBUG(misc, 0) ("[utf8] W2M error converting '0x%X'. Errno %d", c, GetLastError());
+			continue;
+		}
+
+		*s++ = mb;
+	}
+
+	*s = '\0';
+	return system_buf;
+#endif /* UNICODE */
+}
+
+
+/** Convert to OpenTTD's encoding from that of the environment in
+ * UNICODE. OpenTTD encoding is UTF8, local is wide
+ * @param name pointer to a valid string that will be converted
+ * @param utf8_buf pointer to a valid buffer that will receive the converted string
+ * @param buflen length in characters of the receiving buffer
+ * @return pointer to utf8_buf. If conversion fails the string is of zero-length */
+char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
+{
+	int len = WideCharToMultiByte(CP_UTF8, 0, name, -1, utf8_buf, buflen, NULL, NULL);
+	if (len == 0) {
+		DEBUG(misc, 0) ("[utf8] W2M error converting wide-string. Errno %d", GetLastError());
+		utf8_buf[0] = '\0';
+	}
+
+	return utf8_buf;
+}
+
+
+/** Convert from OpenTTD's encoding to that of the environment in
+ * UNICODE. OpenTTD encoding is UTF8, local is wide
  * @param name pointer to a valid string that will be converted
  * @param utf16_buf pointer to a valid wide-char buffer that will receive the
  * converted string
@@ -1056,53 +1163,11 @@ wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen)
 {
 	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, utf16_buf, buflen);
 	if (len == 0) {
-		DEBUG(misc, 0) ("[utf8] Error converting '%s'. Errno %d", name, GetLastError());
+		DEBUG(misc, 0) ("[utf8] M2W error converting '%s'. Errno %d", name, GetLastError());
 		utf16_buf[0] = '\0';
 	}
 
 	return utf16_buf;
-}
-
-/** Convert from OpenTTD's encoding to that of the local environment in
- * UNICODE. OpenTTD encoding is UTF8, local is wide-char.
- * The returned value's contents can only be guaranteed until the next call to
- * this function. So if the value is needed for anything else, use convert_from_fs
- * @param name pointer to a valid string that will be converted
- * @return pointer to the converted string; if failed string is of zero-length */
-const wchar_t *OTTD2FS(const char *name)
-{
-	static wchar_t utf16_buf[512];
-	return convert_to_fs(name, utf16_buf, lengthof(utf16_buf));
-}
-
-
-/** Convert to OpenTTD's encoding from that of the local environment in
- * UNICODE. OpenTTD encoding is UTF8, local is wide-char
- * @param name pointer to a valid string that will be converted
- * @param utf8_buf pointer to a valid buffer that will receive the converted string
- * @param buflen length in characters of the receiving buffer
- * @return pointer to utf8_buf. If conversion fails the string is of zero-length */
-char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
-{
-	int len = WideCharToMultiByte(CP_UTF8, 0, name, -1, utf8_buf, buflen, NULL, NULL);
-	if (len == 0) {
-		DEBUG(misc, 0) ("[utf8] Error converting wide-string. Errno %d", GetLastError());
-		utf8_buf[0] = '\0';
-	}
-
-	return utf8_buf;
-}
-
-/** Convert to OpenTTD's encoding from that of the local environment in
- * UNICODE. OpenTTD encoding is UTF8, local is wide-char.
- * The returned value's contents can only be guaranteed until the next call to
- * this function. So if the value is needed for anything else, use convert_from_fs
- * @param name pointer to a valid string that will be converted
- * @return pointer to the converted string; if failed string is of zero-length */
-const char *FS2OTTD(const wchar_t *name)
-{
-	static char utf8_buf[512];
-	return convert_from_fs(name, utf8_buf, lengthof(utf8_buf));
 }
 
 /** Our very own SHGetFolderPath function for support of windows operating

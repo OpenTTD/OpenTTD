@@ -283,7 +283,8 @@ size_t Utf8TrimString(char *s, size_t maxlen)
 	const char *ptr = strchr(s, '\0');
 	while (*s != '\0') {
 		size_t len = Utf8EncodedCharLen(*s);
-		if (len == 0) break; // invalid encoding
+		/* Silently ignore invalid UTF8 sequences, our only concern trimming */
+		if (len == 0) len = 1;
 
 		/* Take care when a hard cutoff was made for the string and
 		 * the last UTF8 sequence is invalid */

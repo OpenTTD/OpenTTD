@@ -167,9 +167,10 @@
  * call to the same function and is not thread- or reentrancy-safe */
 #if !defined(STRGEN)
 # if defined(WIN32) || defined(WIN64)
-#  define fopen(file, mode) _wfopen(OTTD2FS(file), L ## mode)
-   const char *FS2OTTD(const wchar_t *name);
-   const wchar_t *OTTD2FS(const char *name);
+#  include <tchar.h>
+#  define fopen(file, mode) _tfopen(OTTD2FS(file), _T(mode))
+   const char *FS2OTTD(const TCHAR *name);
+   const TCHAR *OTTD2FS(const char *name);
 # else
 #  define fopen(file, mode) fopen(OTTD2FS(file), mode)
    const char *FS2OTTD(const char *name);

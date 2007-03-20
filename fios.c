@@ -17,6 +17,7 @@
 #include <sys/stat.h>
 
 #ifdef WIN32
+# include <tchar.h>
 # include <io.h>
 #else
 # include <unistd.h>
@@ -170,8 +171,8 @@ void FiosMakeSavegameName(char *buf, const char *name, size_t size)
 	snprintf(buf, size, "%s" PATHSEP "%s%s", _fios_path, name, extension);
 }
 
-#if defined(WIN32) || defined(WIN64)
-# define unlink _wunlink
+#if defined(WIN32)
+# define unlink _tunlink
 #endif
 
 bool FiosDelete(const char *name)
