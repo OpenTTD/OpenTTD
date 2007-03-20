@@ -1116,7 +1116,8 @@ bool ReadLanguagePack(int lang_index)
 	free(_langpack_offs);
 	_langpack_offs = langpack_offs;
 
-	ttd_strlcpy(_dynlang.curr_file, _dynlang.ent[lang_index].file, lengthof(_dynlang.curr_file));
+	const char *c_file = strrchr(_dynlang.ent[lang_index].file, PATHSEPCHAR) + 1;
+	ttd_strlcpy(_dynlang.curr_file, c_file, lengthof(_dynlang.curr_file));
 
 	_dynlang.curr = lang_index;
 	SetCurrentGrfLangID(_langpack->isocode);
@@ -1165,7 +1166,7 @@ static int CDECL LanguageCompareFunc(const void *a, const void *b)
 static bool UniqueLanguageFile(const Language *langs, uint max, const char *language)
 {
 	for (uint i = 0; i < max; i++) {
-		const char *f_name = strrchr(langs[i].file, PATHSEPCHAR);
+		const char *f_name = strrchr(langs[i].file, PATHSEPCHAR) + 1;
 		if (strcmp(f_name, language) == 0) return false; // duplicates
 	}
 
@@ -1268,7 +1269,8 @@ void InitializeLanguagePacks()
 		/* We are trying to find a default language. The priority is by
 		 * configuration file, local environment and last, if nothing found,
 		 * english. If def equals -1, we have not picked a default language */
-		if (strcmp(dl->ent[dl->num].file, dl->curr_file) == 0) chosen_language = dl->num;
+		const char *lang_file = strrchr(dl->ent[dl->num].file, PATHSEPCHAR) + 1;
+		if (strcmp(lang_file, dl->curr_file) == 0) chosen_language = dl->num;
 
 		if (chosen_language == -1) {
 			if (strcmp (hdr.isocode, "en_GB") == 0) en_GB_fallback    = dl->num;
