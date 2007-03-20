@@ -107,6 +107,7 @@ PlayerFace ConvertFromOldPlayerFace(uint32 face)
 		SetPlayerFaceBits(pf, PFV_MOUSTACHE,     ge, max(lips, 1U) - 1);
 	} else {
 		if (!HASBIT(ge, GENDER_FEMALE)) {
+			lips = lips * 15 / 16;
 			lips -= 3;
 			if (HASBIT(ge, ETHNICITY_BLACK) && lips > 8) lips = 0;
 		} else {
