@@ -1,7 +1,8 @@
 ##name Italian
-##ownname Italian (IT)
-##isocode it_IT
+##ownname Italiano
+##isocode it
 ##plural 0
+##gender m f
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -33,55 +34,55 @@ STR_0019_VALUABLES                                              :Valori
 STR_001A_COPPER_ORE                                             :Minerali di Rame
 STR_001B_MAIZE                                                  :Mais
 STR_001C_FRUIT                                                  :Frutta
-STR_001D_DIAMONDS                                               :Diamanti
-STR_001E_FOOD                                                   :Cibo
-STR_001F_PAPER                                                  :Carta
-STR_0020_GOLD                                                   :Oro
-STR_0021_WATER                                                  :Acqua
-STR_0022_WHEAT                                                  :Frumento
-STR_0023_RUBBER                                                 :Gomma
-STR_0024_SUGAR                                                  :Zucchero
-STR_0025_TOYS                                                   :Giocattoli
-STR_0026_CANDY                                                  :Caramelle
-STR_0027_COLA                                                   :Cola
-STR_0028_COTTON_CANDY                                           :Cotone Candito
-STR_0029_BUBBLES                                                :Bolle
-STR_002A_TOFFEE                                                 :Toffee
-STR_002B_BATTERIES                                              :Batterie
-STR_002C_PLASTIC                                                :Plastica
-STR_002D_FIZZY_DRINKS                                           :Bibite Frizzanti
+STR_001D_DIAMONDS                                               :{G=m}Diamanti
+STR_001E_FOOD                                                   :{G=m}Cibo
+STR_001F_PAPER                                                  :{G=f}Carta
+STR_0020_GOLD                                                   :{G=m}Oro
+STR_0021_WATER                                                  :{G=f}Acqua
+STR_0022_WHEAT                                                  :{G=m}Frumento
+STR_0023_RUBBER                                                 :{G=f}Gomma
+STR_0024_SUGAR                                                  :{G=m}Zucchero
+STR_0025_TOYS                                                   :{G=m}Giocattoli
+STR_0026_CANDY                                                  :{G=f}Caramelle
+STR_0027_COLA                                                   :{G=f}Cola
+STR_0028_COTTON_CANDY                                           :{G=m}Cotone Candito
+STR_0029_BUBBLES                                                :{G=f}Bolle
+STR_002A_TOFFEE                                                 :{G=m}Toffee
+STR_002B_BATTERIES                                              :{G=f}Batterie
+STR_002C_PLASTIC                                                :{G=f}Plastica
+STR_002D_FIZZY_DRINKS                                           :{G=f}Bibite Frizzanti
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Passeggero
-STR_0030_COAL                                                   :Carbone
-STR_0031_MAIL                                                   :Posta
-STR_0032_OIL                                                    :Petrolio
-STR_0033_LIVESTOCK                                              :Bestiame
-STR_0034_GOODS                                                  :Beni
-STR_0035_GRAIN                                                  :Grano
-STR_0036_WOOD                                                   :Legname
-STR_0037_IRON_ORE                                               :Minerale Ferroso
-STR_0038_STEEL                                                  :Acciaio
-STR_0039_VALUABLES                                              :Valori
-STR_003A_COPPER_ORE                                             :Minerale di Rame
-STR_003B_MAIZE                                                  :Mais
-STR_003C_FRUIT                                                  :Frutta
-STR_003D_DIAMOND                                                :Diamante
-STR_003E_FOOD                                                   :Cibo
-STR_003F_PAPER                                                  :Carta
-STR_0040_GOLD                                                   :Oro
-STR_0041_WATER                                                  :Acqua
-STR_0042_WHEAT                                                  :Frumento
-STR_0043_RUBBER                                                 :Gomma
-STR_0044_SUGAR                                                  :Zucchero
-STR_0045_TOY                                                    :Giocattolo
-STR_0046_CANDY                                                  :Caramella
-STR_0047_COLA                                                   :Cola
-STR_0048_COTTON_CANDY                                           :Cotone Candito
-STR_0049_BUBBLE                                                 :Bolla
-STR_004A_TOFFEE                                                 :Toffee
-STR_004B_BATTERY                                                :Batteria
-STR_004C_PLASTIC                                                :Plastica
-STR_004D_FIZZY_DRINK                                            :Bevanda Frizzante
+STR_002F_PASSENGER                                              :{G=m}Passeggero
+STR_0030_COAL                                                   :{G=m}Carbone
+STR_0031_MAIL                                                   :{G=f}Posta
+STR_0032_OIL                                                    :{G=m}Petrolio
+STR_0033_LIVESTOCK                                              :{G=m}Bestiame
+STR_0034_GOODS                                                  :{G=m}Beni
+STR_0035_GRAIN                                                  :{G=m}Grano
+STR_0036_WOOD                                                   :{G=m}Legname
+STR_0037_IRON_ORE                                               :{G=m}Minerale Ferroso
+STR_0038_STEEL                                                  :{G=m}Acciaio
+STR_0039_VALUABLES                                              :{G=m}Valori
+STR_003A_COPPER_ORE                                             :{G=m}Minerale di Rame
+STR_003B_MAIZE                                                  :{G=m}Mais
+STR_003C_FRUIT                                                  :{G=f}Frutta
+STR_003D_DIAMOND                                                :{G=m}Diamante
+STR_003E_FOOD                                                   :{G=m}Cibo
+STR_003F_PAPER                                                  :{G=f}Carta
+STR_0040_GOLD                                                   :{G=m}Oro
+STR_0041_WATER                                                  :{G=f}Acqua
+STR_0042_WHEAT                                                  :{G=m}Frumento
+STR_0043_RUBBER                                                 :{G=f}Gomma
+STR_0044_SUGAR                                                  :{G=m}Zucchero
+STR_0045_TOY                                                    :{G=m}Giocattolo
+STR_0046_CANDY                                                  :{G=f}Caramella
+STR_0047_COLA                                                   :{G=f}Cola
+STR_0048_COTTON_CANDY                                           :{G=m}Cotone Candito
+STR_0049_BUBBLE                                                 :{G=f}Bolla
+STR_004A_TOFFEE                                                 :{G=m}Toffee
+STR_004B_BATTERY                                                :{G=f}Batteria
+STR_004C_PLASTIC                                                :{G=f}Plastica
+STR_004D_FIZZY_DRINK                                            :{G=f}Bevanda Frizzante
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passegger{P o i}
 STR_QUANTITY_COAL                                               :{WEIGHT} di carbone
@@ -399,7 +400,7 @@ STR_SELECT_ALL_TYPES                                            :{BLACK}Selezion
 STR_AVAILABLE_TRAINS                                            :{BLACK}Treni Disponibili
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Veicoli Disponibili
 STR_AVAILABLE_SHIPS                                             :{BLACK}Navi Disponibili
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Available Aircraft
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aerei Disponibili
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Mostra una lista di motrici disponibili per quel tipo di veicolo
 STR_MANAGE_LIST                                                 :{BLACK}Gestisci lista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Manda istruzioni a tutti i veicoli in questa lista
@@ -2914,6 +2915,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} è pro
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parametri invalidi per {STRING}: parametri {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} deve essere caricato prima di {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} deve essere caricato dopo {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :il file GRF se questo era progettato per essere tradotto
 
 STR_NEWGRF_ADD                                                  :{BLACK}Aggiungi
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Aggiungi un file NewGRF alla lista

@@ -727,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}在場�
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}建立燈塔
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}建立發射站
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}定義沙漠區。{}請按住 CTRL 移除
+STR_CREATE_LAKE                                                 :{BLACK}劃出湖泊範圍。{}開鑿運河。在海平面上按 CTRL 鍵則會淹沫週遭土地
 STR_0290_DELETE                                                 :{BLACK}刪除
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}完全移除這個市鎮
 STR_0292_SAVE_SCENARIO                                          :儲存場景
@@ -1212,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}隨機�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}種植隨機種類樹木
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}不可以在這裏開鑿運河...
+STR_BUILD_CANALS_TIP                                            :{BLACK}開鑿運河。
 STR_LANDINFO_CANAL                                              :運河
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}不可以在這裏興建水閘...

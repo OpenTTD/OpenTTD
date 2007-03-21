@@ -380,6 +380,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...omanik on {STRING}
 STR_013C_CARGO                                                  :{BLACK}Laadung
@@ -724,6 +725,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Vähenda
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Juhusliku kaardi loomine
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nulli maastik
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nulli maastik
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Eemalda kogu mängija omand kaardilt
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Kas oled kindel, et tahad eemaldada kogu mängija omandi?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Maastiku loomine
 STR_022F_TOWN_GENERATION                                        :{BLACK}Linnade loomine
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Tööstuste loomine
@@ -1184,6 +1187,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Mitte ükski
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Enda firma
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Kõik Firmad
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Eelista Meeskonnajututuba <ENTER>i vajutamisega: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Kerimisratta funktsioon: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Suurenda kaarti
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Keri kaarti
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Väljas
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaarti kerimisratta kiirus: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. rongide arv mängija kohta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Suurim maanteesõidukite arv mängija kohta: {ORANGE}{STRING}
@@ -1302,6 +1310,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Suvalise
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Istutab suvalisi puid
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Siia ei saa kanaleid ehitada...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Ehita kanaleid.
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Siia ei saa lüüse ehitada...
@@ -1681,6 +1690,7 @@ STR_1816_TREE_LINED_ROAD                                        :Kolmerajaline t
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Depoo
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Raudtee ülesõit
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Bussijaama ei saa eemaldada...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Ei saa eemaldada veoauto jaama...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Linnad
@@ -2727,6 +2737,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Ühildamatud ra
 STR_TRAIN_NO_POWER                                              :{RED}Vool puudub
 STR_TRAIN_START_NO_CATENARY                                     :Selle raja ahel puudub, rong ei saa sõitu alustada
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Uus {STRING} saadaval!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Uus {STRING} saadaval!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Maanteesõiduk on teel ees
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} maanteesõiduk{P "" it}
@@ -2987,6 +3001,18 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Sa oled tegemas muudatusi töötavasse mängu; see võib OpenTTD kokku jooksutada.{}Kas sa oled täielikult veendunud selles?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Hoiatus: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Viga: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Saatuslik viga: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} ei tööta TTDPatch versiooniga OpenTTD väitel.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} on {STRING} TTD versiooni jaoks.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} on mõeldud kasutamiseks {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :vigane parameeter {STRING} jaoks: parameeter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} peab olema laetud enne {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} peab olema laetud pärast{STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fail, mis tehti tõlkimiseks,
+
 STR_NEWGRF_ADD                                                  :{BLACK}Lisa
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lisa nimekirja NewGRF fail
 STR_NEWGRF_REMOVE                                               :{BLACK}Eemalda
@@ -3212,4 +3238,11 @@ STR_MEASURE_AREA                                                :{BLACK}Pindala:
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Pikkus: {NUM}{}Kürguste erinevusj: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pindala: {NUM} x {NUM}{}Kõrguste erinevus: {NUM} m
 
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+
 ########
+
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Kanna Raha: {LTBLUE}{CURRENCY}

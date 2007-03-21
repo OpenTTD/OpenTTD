@@ -236,7 +236,7 @@ STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFON
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Mina de Cobre
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Plantação de Frutas
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Plantação de Seringueiras
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Poço de Água
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Poço Artesiano
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Reservatório
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Serraria
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Floresta de Algodão Doce
@@ -1898,7 +1898,7 @@ STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Infestação de insetos causa destruição em {INDUSTRY}!{}Produção diminui em 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...só pode ser colocado perto das bordas do mapa
 STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}A produção de {STRING} em {INDUSTRY} aumentou em {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}A produção de {STRING} na {INDUSTRY} diminuiu em {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}A produção de {STRING} em {INDUSTRY} diminuiu em {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Há um trem no túnel
