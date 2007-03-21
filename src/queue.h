@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file queue.h */
+
 #ifndef QUEUE_H
 #define QUEUE_H
 
@@ -64,14 +66,14 @@ struct Queue{
 		struct {
 			uint max_size;
 			uint size;
-			uint blocks; /* The amount of blocks for which space is reserved in elements */
+			uint blocks; ///< The amount of blocks for which space is reserved in elements
 			BinaryHeapNode** elements;
 		} binaryheap;
 	} data;
 };
 
 
-/*
+/**
  * Insertion Sorter
  */
 
@@ -89,7 +91,7 @@ void init_InsSort(Queue* q);
 /* The amount of elements that will be malloc'd at a time */
 #define BINARY_HEAP_BLOCKSIZE_BITS 10
 
-/* Initializes a binary heap and allocates internal memory for maximum of
+/** Initializes a binary heap and allocates internal memory for maximum of
  * max_size elements */
 void init_BinaryHeap(Queue* q, uint max_size);
 
@@ -124,33 +126,33 @@ struct Hash {
 
 /* Call these function to manipulate a hash */
 
-/* Deletes the value with the specified key pair from the hash and returns
+/** Deletes the value with the specified key pair from the hash and returns
  * that value. Returns NULL when the value was not present. The value returned
  * is _not_ free()'d! */
 void* Hash_Delete(Hash* h, uint key1, uint key2);
-/* Sets the value associated with the given key pair to the given value.
+/** Sets the value associated with the given key pair to the given value.
  * Returns the old value if the value was replaced, NULL when it was not yet present. */
 void* Hash_Set(Hash* h, uint key1, uint key2, void* value);
-/* Gets the value associated with the given key pair, or NULL when it is not
+/** Gets the value associated with the given key pair, or NULL when it is not
  * present. */
 void* Hash_Get(const Hash* h, uint key1, uint key2);
 
 /* Call these function to create/destroy a hash */
 
-/* Builds a new hash in an existing struct. Make sure that hash() always
+/** Builds a new hash in an existing struct. Make sure that hash() always
  * returns a hash less than num_buckets! Call delete_hash after use */
 void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets);
-/*
+/**
  * Deletes the hash and cleans up. Only cleans up memory allocated by new_Hash
  * & friends. If free is true, it will call free() on all the values that
  * are left in the hash.
  */
 void delete_Hash(Hash* h, bool free_values);
-/*
+/**
  * Cleans the hash, but keeps the memory allocated
  */
 void clear_Hash(Hash* h, bool free_values);
-/*
+/**
  * Gets the current size of the Hash
  */
 uint Hash_Size(const Hash* h);

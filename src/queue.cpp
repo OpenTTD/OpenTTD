@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file queue.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "queue.h"
@@ -91,10 +93,10 @@ void init_InsSort(Queue* q)
 #define BINARY_HEAP_BLOCKSIZE (1 << BINARY_HEAP_BLOCKSIZE_BITS)
 #define BINARY_HEAP_BLOCKSIZE_MASK (BINARY_HEAP_BLOCKSIZE - 1)
 
-// To make our life easy, we make the next define
-//  Because Binary Heaps works with array from 1 to n,
-//  and C with array from 0 to n-1, and we don't like typing
-//  q->data.binaryheap.elements[i - 1] every time, we use this define.
+/* To make our life easy, we make the next define
+ *  Because Binary Heaps works with array from 1 to n,
+ *  and C with array from 0 to n-1, and we don't like typing
+ *  q->data.binaryheap.elements[i - 1] every time, we use this define. */
 #define BIN_HEAP_ARR(i) q->data.binaryheap.elements[((i) - 1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i) - 1) & BINARY_HEAP_BLOCKSIZE_MASK]
 
 static void BinaryHeap_Clear(Queue* q, bool free_values)
@@ -114,7 +116,7 @@ static void BinaryHeap_Clear(Queue* q, bool free_values)
 				/* For every element in the block */
 				if ((q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS) == i &&
 						(q->data.binaryheap.size & BINARY_HEAP_BLOCKSIZE_MASK) == j) {
-					break; /* We're past the last element */
+					break; // We're past the last element
 				}
 				free(q->data.binaryheap.elements[i][j].item);
 			}
@@ -160,13 +162,13 @@ static bool BinaryHeap_Push(Queue* q, void* item, int priority)
 #endif
 	}
 
-	// Add the item at the end of the array
+	/* Add the item at the end of the array */
 	BIN_HEAP_ARR(q->data.binaryheap.size + 1).priority = priority;
 	BIN_HEAP_ARR(q->data.binaryheap.size + 1).item = item;
 	q->data.binaryheap.size++;
 
-	// Now we are going to check where it belongs. As long as the parent is
-	// bigger, we switch with the parent
+	/* Now we are going to check where it belongs. As long as the parent is
+	 * bigger, we switch with the parent */
 	{
 		BinaryHeapNode temp;
 		int i;
@@ -174,16 +176,16 @@ static bool BinaryHeap_Push(Queue* q, void* item, int priority)
 
 		i = q->data.binaryheap.size;
 		while (i > 1) {
-			// Get the parent of this object (divide by 2)
+			/* Get the parent of this object (divide by 2) */
 			j = i / 2;
-			// Is the parent bigger then the current, switch them
+			/* Is the parent bigger then the current, switch them */
 			if (BIN_HEAP_ARR(i).priority <= BIN_HEAP_ARR(j).priority) {
 				temp = BIN_HEAP_ARR(j);
 				BIN_HEAP_ARR(j) = BIN_HEAP_ARR(i);
 				BIN_HEAP_ARR(i) = temp;
 				i = j;
 			} else {
-				// It is not, we're done!
+				/* It is not, we're done! */
 				break;
 			}
 		}
@@ -200,20 +202,20 @@ static bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 	printf("[BinaryHeap] Deleting an element. There are %d elements left\n", q->data.binaryheap.size);
 #endif
 
-	// First, we try to find the item..
+	/* First, we try to find the item.. */
 	do {
 		if (BIN_HEAP_ARR(i + 1).item == item) break;
 		i++;
 	} while (i < q->data.binaryheap.size);
-	// We did not find the item, so we return false
+	/* We did not find the item, so we return false */
 	if (i == q->data.binaryheap.size) return false;
 
-	// Now we put the last item over the current item while decreasing the size of the elements
+	/* Now we put the last item over the current item while decreasing the size of the elements */
 	q->data.binaryheap.size--;
 	BIN_HEAP_ARR(i + 1) = BIN_HEAP_ARR(q->data.binaryheap.size + 1);
 
-	// Now the only thing we have to do, is resort it..
-	// On place i there is the item to be sorted.. let's start there
+	/* Now the only thing we have to do, is resort it..
+	 * On place i there is the item to be sorted.. let's start there */
 	{
 		uint j;
 		BinaryHeapNode temp;
@@ -224,25 +226,25 @@ static bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 
 		for (;;) {
 			j = i;
-			// Check if we have 2 childs
+			/* Check if we have 2 childs */
 			if (2 * j + 1 <= q->data.binaryheap.size) {
-				// Is this child smaller than the parent?
+				/* Is this child smaller than the parent? */
 				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2 * j).priority) i = 2 * j;
-				// Yes, we _need_ to use i here, not j, because we want to have the smallest child
-				//  This way we get that straight away!
+				/* Yes, we _need_ to use i here, not j, because we want to have the smallest child
+				 *  This way we get that straight away! */
 				if (BIN_HEAP_ARR(i).priority >= BIN_HEAP_ARR(2 * j + 1).priority) i = 2 * j + 1;
-			// Do we have one child?
+			/* Do we have one child? */
 			} else if (2 * j <= q->data.binaryheap.size) {
 				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2 * j).priority) i = 2 * j;
 			}
 
-			// One of our childs is smaller than we are, switch
+			/* One of our childs is smaller than we are, switch */
 			if (i != j) {
 				temp = BIN_HEAP_ARR(j);
 				BIN_HEAP_ARR(j) = BIN_HEAP_ARR(i);
 				BIN_HEAP_ARR(i) = temp;
 			} else {
-				// None of our childs is smaller, so we stay here.. stop :)
+				/* None of our childs is smaller, so we stay here.. stop :) */
 				break;
 			}
 		}
@@ -261,9 +263,9 @@ static void* BinaryHeap_Pop(Queue* q)
 
 	if (q->data.binaryheap.size == 0) return NULL;
 
-	// The best item is always on top, so give that as result
+	/* The best item is always on top, so give that as result */
 	result = BIN_HEAP_ARR(1).item;
-	// And now we should get rid of this item...
+	/* And now we should get rid of this item... */
 	BinaryHeap_Delete(q, BIN_HEAP_ARR(1).item, BIN_HEAP_ARR(1).priority);
 
 	return result;
@@ -279,8 +281,8 @@ void init_BinaryHeap(Queue* q, uint max_size)
 	q->free = BinaryHeap_Free;
 	q->data.binaryheap.max_size = max_size;
 	q->data.binaryheap.size = 0;
-	// We malloc memory in block of BINARY_HEAP_BLOCKSIZE
-	//   It autosizes when it runs out of memory
+	/* We malloc memory in block of BINARY_HEAP_BLOCKSIZE
+	 *   It autosizes when it runs out of memory */
 	q->data.binaryheap.elements = CallocT<BinaryHeapNode*>((max_size - 1) / BINARY_HEAP_BLOCKSIZE + 1);
 	q->data.binaryheap.elements[0] = MallocT<BinaryHeapNode>(BINARY_HEAP_BLOCKSIZE);
 	q->data.binaryheap.blocks = 1;
@@ -428,7 +430,7 @@ void clear_Hash(Hash* h, bool free_values)
 	h->size = 0;
 }
 
-/* Finds the node that that saves this key pair. If it is not
+/** Finds the node that that saves this key pair. If it is not
  * found, returns NULL. If it is found, *prev is set to the
  * node before the one found, or if the node found was the first in the bucket
  * to NULL. If it is not found, *prev is set to the last HashNode in the
@@ -482,7 +484,7 @@ static HashNode* Hash_FindNode(const Hash* h, uint key1, uint key2, HashNode** p
 void* Hash_Delete(Hash* h, uint key1, uint key2)
 {
 	void* result;
-	HashNode* prev; /* Used as output var for below function call */
+	HashNode* prev; // Used as output var for below function call
 	HashNode* node = Hash_FindNode(h, key1, key2, &prev);
 
 	if (node == NULL) {

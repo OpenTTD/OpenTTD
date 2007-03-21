@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file player.h */
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -13,7 +15,7 @@ struct PlayerEconomyEntry {
 	int32 income;
 	int32 expenses;
 	int32 delivered_cargo;
-	int32 performance_history; // player score (scale 0-1000)
+	int32 performance_history; ///< player score (scale 0-1000)
 	int64 company_value;
 };
 
@@ -32,8 +34,8 @@ struct AiBuildRec {
 
 struct PlayerAI {
 	byte state;
-	byte tick;            // Used to determine how often to move
-	uint32 state_counter; // Can hold tile index!
+	byte tick;            ///< Used to determine how often to move
+	uint32 state_counter; ///< Can hold tile index!
 	uint16 timeout_counter;
 
 	byte state_mode;
@@ -59,7 +61,7 @@ struct PlayerAI {
 	byte cur_dir_b;
 	byte start_dir_b;
 
-	Vehicle *cur_veh; /* only used by some states */
+	Vehicle *cur_veh; ///< only used by some states
 
 	AiBuildRec src, dst, mid1, mid2;
 
@@ -71,22 +73,22 @@ struct PlayerAI {
 };
 
 struct Ai_PathFinderInfo {
-	TileIndex start_tile_tl; // tl = top-left
-	TileIndex start_tile_br; // br = bottom-right
-	TileIndex end_tile_tl;   // tl = top-left
-	TileIndex end_tile_br;   // br = bottom-right
-	byte start_direction;    // 0 to 3 or AI_PATHFINDER_NO_DIRECTION
-	byte end_direction;      // 0 to 3 or AI_PATHFINDER_NO_DIRECTION
+	TileIndex start_tile_tl; ///< tl = top-left
+	TileIndex start_tile_br; ///< br = bottom-right
+	TileIndex end_tile_tl;   ///< tl = top-left
+	TileIndex end_tile_br;   ///< br = bottom-right
+	byte start_direction;    ///< 0 to 3 or AI_PATHFINDER_NO_DIRECTION
+	byte end_direction;      ///< 0 to 3 or AI_PATHFINDER_NO_DIRECTION
 
 	TileIndex route[500];
-	byte route_extra[500];   // Some extra information about the route like bridge/tunnel
+	byte route_extra[500];   ///< Some extra information about the route like bridge/tunnel
 	int route_length;
-	int position;            // Current position in the build-path, needed to build the path
+	int position;            ///< Current position in the build-path, needed to build the path
 
-	bool rail_or_road;       // true = rail, false = road
+	bool rail_or_road;       ///< true = rail, false = road
 };
 
-// The amount of memory reserved for the AI-special-vehicles
+/* The amount of memory reserved for the AI-special-vehicles */
 #define AI_MAX_SPECIAL_VEHICLES 100
 
 struct Ai_SpecialVehicle {
@@ -99,28 +101,28 @@ struct PlayerAiNew {
 	uint tick;
 	uint idle;
 
-	int temp;    // A value used in more than one function, but it just temporary
-	             // The use is pretty simple: with this we can 'think' about stuff
-	             //   in more than one tick, and more than one AI. A static will not
-	             //   do, because they are not saved. This way, the AI is almost human ;)
-	int counter; // For the same reason as temp, we have counter. It can count how
-	             //  long we are trying something, and just abort if it takes too long
+	int temp;    ///< A value used in more than one function, but it just temporary
+	             ///< The use is pretty simple: with this we can 'think' about stuff
+	             ///<   in more than one tick, and more than one AI. A static will not
+	             ///<   do, because they are not saved. This way, the AI is almost human ;)
+	int counter; ///< For the same reason as temp, we have counter. It can count how
+	             ///<  long we are trying something, and just abort if it takes too long
 
-	// Pathfinder stuff
+	/* Pathfinder stuff */
 	Ai_PathFinderInfo path_info;
 	AyStar *pathfinder;
 
-	// Route stuff
+	/* Route stuff */
 
 	CargoID cargo;
-	byte tbt; // train/bus/truck 0/1/2 AI_TRAIN/AI_BUS/AI_TRUCK
+	byte tbt;    ///< train/bus/truck 0/1/2 AI_TRAIN/AI_BUS/AI_TRUCK
 	int new_cost;
 
 	byte action;
 
-	int last_id; // here is stored the last id of the searched city/industry
+	int last_id; ///< here is stored the last id of the searched city/industry
 	Date last_vehiclecheck_date; // Used in CheckVehicle
-	Ai_SpecialVehicle special_vehicles[AI_MAX_SPECIAL_VEHICLES]; // Some vehicles have some special flags
+	Ai_SpecialVehicle special_vehicles[AI_MAX_SPECIAL_VEHICLES]; ///< Some vehicles have some special flags
 
 	TileIndex from_tile;
 	TileIndex to_tile;
@@ -128,19 +130,19 @@ struct PlayerAiNew {
 	byte from_direction;
 	byte to_direction;
 
-	bool from_deliver; // True if this is the station that GIVES cargo
+	bool from_deliver; ///< True if this is the station that GIVES cargo
 	bool to_deliver;
 
 	TileIndex depot_tile;
 	DiagDirectionByte depot_direction;
 
-	byte amount_veh;       // How many vehicles we are going to build in this route
-	byte cur_veh;          // How many vehicles did we bought?
-	VehicleID veh_id;      // Used when bought a vehicle
-	VehicleID veh_main_id; // The ID of the first vehicle, for shared copy
+	byte amount_veh;       ///< How many vehicles we are going to build in this route
+	byte cur_veh;          ///< How many vehicles did we bought?
+	VehicleID veh_id;      ///< Used when bought a vehicle
+	VehicleID veh_main_id; ///< The ID of the first vehicle, for shared copy
 
-	int from_ic;           // ic = industry/city. This is the ID of them
-	byte from_type;        // AI_NO_TYPE/AI_CITY/AI_INDUSTRY
+	int from_ic;           ///< ic = industry/city. This is the ID of them
+	byte from_type;        ///< AI_NO_TYPE/AI_CITY/AI_INDUSTRY
 	int to_ic;
 	byte to_type;
 
@@ -160,7 +162,7 @@ struct Player {
 
 	int32 player_money;
 	int32 current_loan;
-	int64 money64; // internal 64-bit version of the money. the 32-bit field will be clamped to plus minus 2 billion
+	int64 money64; ///< internal 64-bit version of the money. the 32-bit field will be clamped to plus minus 2 billion
 
 	byte player_color;
 	Livery livery[LS_END];
@@ -169,7 +171,7 @@ struct Player {
 	byte block_preview;
 	PlayerByte index;
 
-	uint16 cargo_types; /* which cargo types were transported the last year */
+	uint16 cargo_types; ///< which cargo types were transported the last year
 
 	TileIndex location_of_house;
 	TileIndex last_build_coordinate;
@@ -180,7 +182,7 @@ struct Player {
 	byte num_valid_stat_ent;
 
 	byte quarters_of_bankrupcy;
-	byte bankrupt_asked; // which players were asked about buying it?
+	byte bankrupt_asked; ///< which players were asked about buying it?
 	int16 bankrupt_timeout;
 	int32 bankrupt_value;
 
@@ -192,12 +194,12 @@ struct Player {
 	int64 yearly_expenses[3][13];
 	PlayerEconomyEntry cur_economy;
 	PlayerEconomyEntry old_economy[24];
-	EngineRenewList engine_renew_list; // Defined later
+	EngineRenewList engine_renew_list; ///< Defined later
 	bool engine_renew;
 	bool renew_keep_length;
 	int16 engine_renew_months;
 	uint32 engine_renew_money;
-	uint16 num_engines[TOTAL_NUM_ENGINES]; // caches the number of engines of each type the player owns (no need to save this)
+	uint16 num_engines[TOTAL_NUM_ENGINES]; ///< caches the number of engines of each type the player owns (no need to save this)
 };
 
 uint16 GetDrawStringPlayerColor(PlayerID player);
@@ -214,7 +216,7 @@ VARDEF PlayerID _local_player;
 VARDEF PlayerID _current_player;
 
 VARDEF Player _players[MAX_PLAYERS];
-// NOSAVE: can be determined from player structs
+/* NOSAVE: can be determined from player structs */
 VARDEF byte _player_colors[MAX_PLAYERS];
 
 static inline byte ActivePlayerCount()
@@ -284,8 +286,8 @@ static inline RailType GetBestRailtype(const Player* p)
 
 struct HighScore {
 	char company[100];
-	StringID title; // NO_SAVE, has troubles with changing string-numbers.
-	uint16 score;   // do NOT change type, will break hs.dat
+	StringID title; ///< NO_SAVE, has troubles with changing string-numbers.
+	uint16 score;   ///< do NOT change type, will break hs.dat
 };
 
 VARDEF HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file pathfind.h */
+
 #ifndef PATHFIND_H
 #define PATHFIND_H
 
@@ -60,9 +62,9 @@ struct TrackPathFinder {
 	bool hasbit_13;
 
 	uint16 hash_head[0x400];
-	TileIndex hash_tile[0x400]; /* stores the link index when multi link. */
+	TileIndex hash_tile[0x400];       ///< stores the link index when multi link.
 
-	TrackPathFinderLink links[0x400]; /* hopefully, this is enough. */
+	TrackPathFinderLink links[0x400]; ///< hopefully, this is enough.
 };
 
 void FollowTrack(TileIndex tile, uint16 flags, DiagDirection direction, TPFEnumProc* enum_proc, TPFAfterProc* after_proc, void* data);

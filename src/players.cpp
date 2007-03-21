@@ -219,7 +219,7 @@ void SubtractMoneyFromPlayerFract(PlayerID player, int32 cost)
 	if (cost != 0) SubtractMoneyFromAnyPlayer(p, cost);
 }
 
-// the player_money field is kept as it is, but money64 contains the actual amount of money.
+/** the player_money field is kept as it is, but money64 contains the actual amount of money. */
 void UpdatePlayerMoney32(Player *p)
 {
 	if (p->money64 < -2000000000) {
@@ -272,7 +272,7 @@ bool CheckTileOwnership(TileIndex tile)
 	if (owner == _current_player) return true;
 	_error_message = STR_013B_OWNED_BY;
 
-	// no need to get the name of the owner unless we're the local player (saves some time)
+	/* no need to get the name of the owner unless we're the local player (saves some time) */
 	if (IsLocalPlayer()) GetNameOfOwner(owner, tile);
 	return false;
 }
@@ -298,7 +298,7 @@ static void GenerateCompanyName(Player *p)
 		strp = t->townnameparts;
 
 verify_name:;
-		// No player must have this name already
+		/* No player must have this name already */
 		FOR_ALL_PLAYERS(pp) {
 			if (pp->name_1 == str && pp->name_2 == strp) goto bad_town_name;
 		}
@@ -345,17 +345,17 @@ static byte GeneratePlayerColor()
 	uint32 r;
 	Player *p;
 
-	// Initialize array
+	/* Initialize array */
 	for (i = 0; i != 16; i++) colors[i] = i;
 
-	// And randomize it
+	/* And randomize it */
 	n = 100;
 	do {
 		r = Random();
 		COLOR_SWAP(GB(r, 0, 4), GB(r, 4, 4));
 	} while (--n);
 
-	// Bubble sort it according to the values in table 1
+	/* Bubble sort it according to the values in table 1 */
 	i = 16;
 	do {
 		for (j = 0; j != 15; j++) {
@@ -365,7 +365,7 @@ static byte GeneratePlayerColor()
 		}
 	} while (--i);
 
-	// Move the colors that look similar to each player's color to the side
+	/* Move the colors that look similar to each player's color to the side */
 	FOR_ALL_PLAYERS(p) if (p->is_active) {
 		pcolor = p->player_color;
 		for (i=0; i!=16; i++) if (colors[i] == pcolor) {
@@ -392,7 +392,7 @@ static byte GeneratePlayerColor()
 		}
 	}
 
-	// Return the first available color
+	/* Return the first available color */
 	for (i = 0;; i++) {
 		if (colors[i] != 0xFF) return colors[i];
 	}
@@ -429,7 +429,7 @@ restart:;
 static Player *AllocatePlayer()
 {
 	Player *p;
-	// Find a free slot
+	/* Find a free slot */
 	FOR_ALL_PLAYERS(p) {
 		if (!p->is_active) {
 			PlayerID i = p->index;
@@ -457,7 +457,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p = AllocatePlayer();
 	if (p == NULL) return NULL;
 
-	// Make a color
+	/* Make a color */
 	p->player_color = GeneratePlayerColor();
 	ResetPlayerLivery(p);
 	_player_colors[p->index] = p->player_color;
@@ -467,7 +467,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->money64 = p->player_money = p->current_loan = 100000;
 
 	p->is_ai = is_ai;
-	p->ai.state = 5; /* AIS_WANT_NEW_ROUTE */
+	p->ai.state = 5; // AIS_WANT_NEW_ROUTE
 	p->share_owners[0] = p->share_owners[1] = p->share_owners[2] = p->share_owners[3] = PLAYER_SPECTATOR;
 
 	p->avail_railtypes = GetPlayerRailtypes(p->index);
@@ -497,7 +497,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 
 void StartupPlayers()
 {
-	// The AI starts like in the setting with +2 month max
+	/* The AI starts like in the setting with +2 month max */
 	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
 }
 
@@ -506,13 +506,13 @@ static void MaybeStartNewPlayer()
 	uint n;
 	Player *p;
 
-	// count number of competitors
+	/* count number of competitors */
 	n = 0;
 	FOR_ALL_PLAYERS(p) {
 		if (p->is_active && p->is_ai) n++;
 	}
 
-	// when there's a lot of computers in game, the probability that a new one starts is lower
+	/* when there's a lot of computers in game, the probability that a new one starts is lower */
 	if (n < (uint)_opt.diff.max_no_competitors &&
 			n < (_network_server ?
 				InteractiveRandomRange(_opt.diff.max_no_competitors + 2) :
@@ -523,7 +523,7 @@ static void MaybeStartNewPlayer()
 		DoCommandP(0, 1, 0, NULL, CMD_PLAYER_CTRL);
 	}
 
-	// The next AI starts like the difficulty setting said, with +2 month max
+	/* The next AI starts like the difficulty setting said, with +2 month max */
 	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + 1;
 	_next_competitor_start += _network_server ? InteractiveRandomRange(60 * DAY_TICKS) : RandomRange(60 * DAY_TICKS);
 }
@@ -549,7 +549,7 @@ void OnTick_Players()
 		MaybeStartNewPlayer();
 }
 
-// index is the next parameter in _decode_parameters to set up
+/** index is the next parameter in _decode_parameters to set up */
 StringID GetPlayerNameString(PlayerID player, uint index)
 {
 	if (IsHumanPlayer(player) && IsValidPlayer(player)) {
@@ -565,7 +565,7 @@ void PlayersYearlyLoop()
 {
 	Player *p;
 
-	// Copy statistics
+	/* Copy statistics */
 	FOR_ALL_PLAYERS(p) {
 		if (p->is_active) {
 			memmove(&p->yearly_expenses[1], &p->yearly_expenses[0], sizeof(p->yearly_expenses) - sizeof(p->yearly_expenses[0]));
@@ -700,16 +700,16 @@ int32 CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (!IsEngineIndex(new_engine_type))
 					return CMD_ERROR;
 
-				// check that the new vehicle type is the same as the original one
+				/* check that the new vehicle type is the same as the original one */
 				if (GetEngine(old_engine_type)->type != GetEngine(new_engine_type)->type)
 					return CMD_ERROR;
 
-				// make sure that we do not replace a plane with a helicopter or vise versa
+				/* make sure that we do not replace a plane with a helicopter or vise versa */
 				if (GetEngine(new_engine_type)->type == VEH_AIRCRAFT &&
 						(AircraftVehInfo(old_engine_type)->subtype & AIR_CTOL) != (AircraftVehInfo(new_engine_type)->subtype & AIR_CTOL))
 					return CMD_ERROR;
 
-				// make sure that the player can actually buy the new engine
+				/* make sure that the player can actually buy the new engine */
 				if (!HASBIT(GetEngine(new_engine_type)->player_avail, _current_player))
 					return CMD_ERROR;
 
@@ -946,7 +946,7 @@ StringID EndGameGetPerformanceTitleFromValue(uint value)
 	return _endgame_perf_titles[value];
 }
 
-/* Return true if any cheat has been used, false otherwise */
+/** Return true if any cheat has been used, false otherwise */
 static bool CheatHasBeenUsed()
 {
 	const Cheat* cht = (Cheat*)&_cheats;
@@ -959,7 +959,7 @@ static bool CheatHasBeenUsed()
 	return false;
 }
 
-/* Save the highscore for the player */
+/** Save the highscore for the player */
 int8 SaveHighScoreValue(const Player *p)
 {
 	HighScore *hs = _highscore_table[_opt.diff_level];
@@ -972,7 +972,7 @@ int8 SaveHighScoreValue(const Player *p)
 	for (i = 0; i < lengthof(_highscore_table[0]); i++) {
 		/* You are in the TOP5. Move all values one down and save us there */
 		if (hs[i].score <= score) {
-			// move all elements one down starting from the replaced one
+			/* move all elements one down starting from the replaced one */
 			memmove(&hs[i + 1], &hs[i], sizeof(HighScore) * (lengthof(_highscore_table[0]) - i - 1));
 			SetDParam(0, p->president_name_1);
 			SetDParam(1, p->president_name_2);
@@ -988,7 +988,7 @@ int8 SaveHighScoreValue(const Player *p)
 	return -1; // too bad; we did not make it into the top5
 }
 
-/* Sort all players given their performance */
+/** Sort all players given their performance */
 static int CDECL HighScoreSorter(const void *a, const void *b)
 {
 	const Player *pa = *(const Player* const*)a;
@@ -1027,7 +1027,7 @@ int8 SaveHighScoreValueNetwork()
 			hs->score = pl[i]->old_economy[0].performance_history;
 			hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
 
-			// get the ranking of the local player
+			/* get the ranking of the local player */
 			if (pl[i]->index == _local_player) player = i;
 		}
 	}
@@ -1036,7 +1036,7 @@ int8 SaveHighScoreValueNetwork()
 	return player;
 }
 
-/* Save HighScore table to file */
+/** Save HighScore table to file */
 void SaveToHighScore()
 {
 	FILE *fp = fopen(_highscore_file, "wb");
@@ -1053,14 +1053,14 @@ void SaveToHighScore()
 				fwrite(&length, sizeof(length), 1, fp); // write away string length
 				fwrite(hs->company, length, 1, fp);
 				fwrite(&hs->score, sizeof(hs->score), 1, fp);
-				fwrite("", 2, 1, fp); /* XXX - placeholder for hs->title, not saved anymore; compatibility */
+				fwrite("", 2, 1, fp); // XXX - placeholder for hs->title, not saved anymore; compatibility
 			}
 		}
 		fclose(fp);
 	}
 }
 
-/* Initialize the highscore table to 0 and if any file exists, load in values */
+/** Initialize the highscore table to 0 and if any file exists, load in values */
 void LoadFromHighScore()
 {
 	FILE *fp = fopen(_highscore_file, "rb");
@@ -1078,7 +1078,7 @@ void LoadFromHighScore()
 
 				fread(hs->company, 1, length, fp);
 				fread(&hs->score, sizeof(hs->score), 1, fp);
-				fseek(fp, 2, SEEK_CUR); /* XXX - placeholder for hs->title, not saved anymore; compatibility */
+				fseek(fp, 2, SEEK_CUR); // XXX - placeholder for hs->title, not saved anymore; compatibility
 				hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
 			}
 		}
@@ -1089,7 +1089,7 @@ void LoadFromHighScore()
 	_patches.ending_year = 2051;
 }
 
-// Save/load of players
+/* Save/load of players */
 static const SaveLoad _player_desc[] = {
 	    SLE_VAR(Player, name_2,          SLE_UINT32),
 	    SLE_VAR(Player, name_1,          SLE_STRINGID),
@@ -1099,7 +1099,7 @@ static const SaveLoad _player_desc[] = {
 
 	    SLE_VAR(Player, face,            SLE_UINT32),
 
-	// money was changed to a 64 bit field in savegame version 1.
+	/* money was changed to a 64 bit field in savegame version 1. */
 	SLE_CONDVAR(Player, money64,               SLE_VAR_I64 | SLE_FILE_I32, 0, 0),
 	SLE_CONDVAR(Player, money64,               SLE_INT64, 1, SL_MAX_VERSION),
 
@@ -1127,14 +1127,14 @@ static const SaveLoad _player_desc[] = {
 	    SLE_VAR(Player, bankrupt_timeout,      SLE_INT16),
 	    SLE_VAR(Player, bankrupt_value,        SLE_INT32),
 
-	// yearly expenses was changed to 64-bit in savegame version 2.
+	/* yearly expenses was changed to 64-bit in savegame version 2. */
 	SLE_CONDARR(Player, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, 0, 1),
 	SLE_CONDARR(Player, yearly_expenses,       SLE_INT64, 3 * 13,                  2, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Player, is_ai,                 SLE_BOOL, 2, SL_MAX_VERSION),
 	SLE_CONDVAR(Player, is_active,             SLE_BOOL, 4, SL_MAX_VERSION),
 
-	// Engine renewal settings
+	/* Engine renewal settings */
 	SLE_CONDNULL(512, 16, 18),
 	SLE_CONDREF(Player, engine_renew_list,     REF_ENGINE_RENEWS,          19, SL_MAX_VERSION),
 	SLE_CONDVAR(Player, engine_renew,          SLE_BOOL,                   16, SL_MAX_VERSION),
@@ -1142,14 +1142,14 @@ static const SaveLoad _player_desc[] = {
 	SLE_CONDVAR(Player, engine_renew_money,    SLE_UINT32,                 16, SL_MAX_VERSION),
 	SLE_CONDVAR(Player, renew_keep_length,     SLE_BOOL,                    2, SL_MAX_VERSION), // added with 16.1, but was blank since 2
 
-	// reserve extra space in savegame here. (currently 63 bytes)
+	/* reserve extra space in savegame here. (currently 63 bytes) */
 	SLE_CONDNULL(63, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
 
 static const SaveLoad _player_economy_desc[] = {
-	// these were changed to 64-bit in savegame format 2
+	/* these were changed to 64-bit in savegame format 2 */
 	SLE_CONDVAR(PlayerEconomyEntry, income,              SLE_INT32,                  0, 1),
 	SLE_CONDVAR(PlayerEconomyEntry, expenses,            SLE_INT32,                  0, 1),
 	SLE_CONDVAR(PlayerEconomyEntry, company_value,       SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
@@ -1236,7 +1236,7 @@ static void SaveLoad_PLYR(Player* p)
 
 	SlObject(p, _player_desc);
 
-	// Write AI?
+	/* Write AI? */
 	if (!IsHumanPlayer(p->index)) {
 		SlObject(&p->ai, _player_ai_desc);
 		for (i = 0; i != p->ai.num_build_rec; i++) {
@@ -1244,15 +1244,15 @@ static void SaveLoad_PLYR(Player* p)
 		}
 	}
 
-	// Write economy
+	/* Write economy */
 	SlObject(&p->cur_economy, _player_economy_desc);
 
-	// Write old economy entries.
+	/* Write old economy entries. */
 	for (i = 0; i < p->num_valid_stat_ent; i++) {
 		SlObject(&p->old_economy[i], _player_economy_desc);
 	}
 
-	// Write each livery entry.
+	/* Write each livery entry. */
 	for (i = 0; i < LS_END; i++) {
 		SlObject(&p->livery[i], _player_livery_desc);
 	}

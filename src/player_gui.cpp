@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file player_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/sprites.h"
@@ -76,7 +78,7 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 
 		y = 171;
 
-		// draw max loan aligned to loan below (y += 10)
+		/* draw max loan aligned to loan below (y += 10) */
 		SetDParam64(0, (uint64)_economy.max_loan);
 		DrawString(202, y+10, STR_MAX_LOAN, 0);
 	} else {
@@ -404,12 +406,12 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 				}
 
 				case 9:
-				case 10: // First colour dropdown
+				case 10: /* First colour dropdown */
 					ShowColourDropDownMenu(w, 10);
 					break;
 
 				case 11:
-				case 12: // Second colour dropdown
+				case 12: /* Second colour dropdown */
 					ShowColourDropDownMenu(w, 12);
 					break;
 
@@ -761,7 +763,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			DrawPlayerVehiclesAmount((PlayerID)w->window_number);
 
 			DrawString(110,48, STR_7006_COLOR_SCHEME, 0);
-			// Draw company-colour bus
+			/* Draw company-colour bus */
 			DrawSprite(SPR_VEH_BUS_SW_VIEW, PLAYER_SPRITE_COLOR(p->index), 215, 49);
 
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
@@ -882,7 +884,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		case WE_ON_EDIT_TEXT: {
 			char *b = e->we.edittext.str;
 
-			// empty string is allowed for password
+			/* empty string is allowed for password */
 			if (*b == '\0' && WP(w,def_d).byte_1 != 2) return;
 
 			_cmd_text = b;
@@ -987,7 +989,7 @@ void ShowBuyCompanyDialog(uint player)
 static void SetupHighScoreEndWindow(Window *w, uint *x, uint *y)
 {
 	uint i;
-	// resize window to "full-screen"
+	/* resize window to "full-screen" */
 	w->width = _screen.width;
 	w->height = _screen.height;
 	w->widget[0].right = w->width - 1;
@@ -1004,7 +1006,7 @@ static void SetupHighScoreEndWindow(Window *w, uint *x, uint *y)
 
 extern StringID EndGameGetPerformanceTitleFromValue(uint value);
 
-/* End game window shown at the end of the game */
+/** End game window shown at the end of the game */
 static void EndGameWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -1106,14 +1108,14 @@ static const WindowDesc _endgame_desc = {
 	EndGameWndProc
 };
 
-/* Show the highscore table for a given difficulty. When called from
+/** Show the highscore table for a given difficulty. When called from
  * endgame ranking is set to the top5 element that was newly added
  * and is thus highlighted */
 void ShowHighscoreTable(int difficulty, int8 ranking)
 {
 	Window *w;
 
-	// pause game to show the chart
+	/* pause game to show the chart */
 	if (!_networking) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 
 	/* Close all always on-top windows to get a clean screen */
@@ -1130,7 +1132,7 @@ void ShowHighscoreTable(int difficulty, int8 ranking)
 	}
 }
 
-/* Show the endgame victory screen in 2050. Update the new highscore
+/** Show the endgame victory screen in 2050. Update the new highscore
  * if it was high enough */
 void ShowEndGameChart()
 {
@@ -1162,7 +1164,7 @@ void ShowEndGameChart()
 			w->window_number = lengthof(_highscore_table) - 1;
 			WP(w, highscore_d).rank = SaveHighScoreValueNetwork();
 		} else {
-			// in single player _local player is always valid
+			/* in single player _local player is always valid */
 			const Player *p = GetPlayer(_local_player);
 			w->window_number = _opt.diff_level;
 			WP(w, highscore_d).rank = SaveHighScoreValue(p);
