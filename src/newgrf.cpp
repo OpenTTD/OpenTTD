@@ -3964,7 +3964,7 @@ static void ResetNewGRFData()
 	}
 	memcpy(&_bridge, &orig_bridge, sizeof(_bridge));
 
-	/* Reset refit/cargo class data /*
+	/* Reset refit/cargo class data */
 	memset(&cargo_allowed, 0, sizeof(cargo_allowed));
 	memset(&cargo_disallowed, 0, sizeof(cargo_disallowed));
 
