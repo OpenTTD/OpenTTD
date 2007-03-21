@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file os_timer.cpp */
+
 #include "stdafx.h"
 
 #undef RDTSC_AVAILABLE

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file openttd.cpp */
+
 #include "stdafx.h"
 #define VARDEF
 #include "string.h"
@@ -220,17 +222,17 @@ static int MyGetOpt(MyGetOptData *md)
 md_continue_here:;
 			s++;
 			if (*s != 0) {
-				// Found argument, try to locate it in options.
+				/* Found argument, try to locate it in options. */
 				if (*s == ':' || (r = strchr(md->options, *s)) == NULL) {
-					// ERROR!
+					/* ERROR! */
 					return -2;
 				}
 				if (r[1] == ':') {
-					// Item wants an argument. Check if the argument follows, or if it comes as a separate arg.
+					/* Item wants an argument. Check if the argument follows, or if it comes as a separate arg. */
 					if (!*(t = s + 1)) {
-						// It comes as a separate arg. Check if out of args?
+						/* It comes as a separate arg. Check if out of args? */
 						if (--md->numleft < 0 || *(t = *md->argv) == '-') {
-							// Check if item is optional?
+							/* Check if item is optional? */
 							if (r[2] != ':')
 								return -2;
 							md->numleft++;
@@ -248,7 +250,7 @@ md_continue_here:;
 				return *s;
 			}
 		} else {
-			// This is currently not supported.
+			/* This is currently not supported. */
 			return -2;
 		}
 	}
@@ -305,11 +307,11 @@ static void LoadIntroGame()
 	_opt_ptr = &_opt_newgame;
 	ResetGRFConfig(false);
 
-	// Setup main window
+	/* Setup main window */
 	ResetWindowSystem();
 	SetupColorsAndInitialWindow();
 
-	// Generate a world.
+	/* Generate a world. */
 	snprintf(filename, lengthof(filename), "%sopntitle.dat",  _paths.data_dir);
 #if defined SECOND_DATA_DIR
 	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {
@@ -328,7 +330,7 @@ static void LoadIntroGame()
 	_cursor.fix_at = false;
 	MarkWholeScreenDirty();
 
-	// Play main theme
+	/* Play main theme */
 	if (_music_driver->is_song_playing()) ResetMusic();
 }
 
@@ -362,10 +364,10 @@ int ttd_main(int argc, char *argv[])
 	_dedicated_forks = false;
 	_config_file = NULL;
 
-	// The last param of the following function means this:
-	//   a letter means: it accepts that param (e.g.: -h)
-	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
-	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
+	/* The last param of the following function means this:
+	 *   a letter means: it accepts that param (e.g.: -h)
+	 *   a ':' behind it means: it need a param (e.g.: -m<driver>)
+	 *   a '::' behind it means: it can optional have a param (e.g.: -d<debug>) */
 	optformat = "m:s:v:hD::n::eit:d::r:g::G:c:xl:"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"f"
@@ -438,7 +440,7 @@ int ttd_main(int argc, char *argv[])
 	CheckExternalFiles();
 
 #if defined(UNIX) && !defined(__MORPHOS__)
-	// We must fork here, or we'll end up without some resources we need (like sockets)
+	/* We must fork here, or we'll end up without some resources we need (like sockets) */
 	if (_dedicated_forks)
 		DedicatedFork();
 #endif
@@ -447,7 +449,7 @@ int ttd_main(int argc, char *argv[])
 	CheckConfig();
 	LoadFromHighScore();
 
-	// override config?
+	/* override config? */
 	if (!StrEmpty(musicdriver)) ttd_strlcpy(_ini_musicdriver, musicdriver, sizeof(_ini_musicdriver));
 	if (!StrEmpty(sounddriver)) ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
 	if (!StrEmpty(videodriver)) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
@@ -461,13 +463,13 @@ int ttd_main(int argc, char *argv[])
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 #endif /* ENABLE_NETWORK */
 
-	// enumerate language files
+	/* enumerate language files */
 	InitializeLanguagePacks();
 
-	// initialize screenshot formats
+	/* initialize screenshot formats */
 	InitializeScreenshotFormats();
 
-	// initialize airport state machines
+	/* initialize airport state machines */
 	InitializeAirports();
 
 	/* initialize all variables that are allocated dynamically */
@@ -476,7 +478,7 @@ int ttd_main(int argc, char *argv[])
 	/* start the AI */
 	AI_Initialize();
 
-	// Sample catalogue
+	/* Sample catalogue */
 	DEBUG(misc, 1, "Loading sound effects...");
 	MxInitialize(11025);
 	SoundInitialize("sample.cat");
@@ -484,7 +486,7 @@ int ttd_main(int argc, char *argv[])
 	/* Initialize FreeType */
 	InitFreeType();
 
-	// This must be done early, since functions use the InvalidateWindow* calls
+	/* This must be done early, since functions use the InvalidateWindow* calls */
 	InitWindowSystem();
 
 	/* Initialize game palette */
@@ -496,7 +498,7 @@ int ttd_main(int argc, char *argv[])
 	LoadDriver(VIDEO_DRIVER, _ini_videodriver); // load video last, to prevent an empty window while sound and music loads
 	_savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
-	// restore saved music volume
+	/* restore saved music volume */
 	_music_driver->set_volume(msf.music_vol);
 
 	NetworkStartUp(); // initialize network-core
@@ -530,7 +532,7 @@ int ttd_main(int argc, char *argv[])
 		UpdatePatches();
 	}
 
-	// initialize the ingame console
+	/* initialize the ingame console */
 	IConsoleInit();
 	_cursor.in_window = true;
 	InitializeGUI();
@@ -714,7 +716,7 @@ static void StartScenario()
 {
 	_game_mode = GM_NORMAL;
 
-	// invalid type
+	/* invalid type */
 	if (_file_to_saveload.mode == SL_INVALID) {
 		DEBUG(sl, 0, "Savegame is obsolete or invalid format: '%s'", _file_to_saveload.name);
 		ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
@@ -722,14 +724,14 @@ static void StartScenario()
 		return;
 	}
 
-	// Reinitialize windows
+	/* Reinitialize windows */
 	ResetWindowSystem();
 
 	SetupColorsAndInitialWindow();
 
 	ResetGRFConfig(true);
 
-	// Load game
+	/* Load game */
 	if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode) != SL_OK) {
 		LoadIntroGame();
 		ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
@@ -739,7 +741,7 @@ static void StartScenario()
 	_opt_ptr->diff = _opt_newgame.diff;
 	_opt.diff_level = _opt_newgame.diff_level;
 
-	// Inititalize data
+	/* Inititalize data */
 	StartupEconomy();
 	StartupPlayers();
 	StartupEngines();
@@ -777,9 +779,9 @@ bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
 void SwitchMode(int new_mode)
 {
 #ifdef ENABLE_NETWORK
-	// If we are saving something, the network stays in his current state
+	/* If we are saving something, the network stays in his current state */
 	if (new_mode != SM_SAVE) {
-		// If the network is active, make it not-active
+		/* If the network is active, make it not-active */
 		if (_networking) {
 			if (_network_server && (new_mode == SM_LOAD || new_mode == SM_NEWGAME)) {
 				NetworkReboot();
@@ -790,13 +792,13 @@ void SwitchMode(int new_mode)
 			}
 		}
 
-		// If we are a server, we restart the server
+		/* If we are a server, we restart the server */
 		if (_is_network_server) {
-			// But not if we are going to the menu
+			/* But not if we are going to the menu */
 			if (new_mode != SM_MENU) {
 				NetworkServerStart();
 			} else {
-				// This client no longer wants to be a network-server
+				/* This client no longer wants to be a network-server */
 				_is_network_server = false;
 			}
 		}
@@ -890,7 +892,7 @@ void SwitchMode(int new_mode)
 	case SM_GENRANDLAND: /* Generate random land within scenario editor */
 		SetLocalPlayer(OWNER_NONE);
 		GenerateWorld(GW_RANDOM, 1 << _patches.map_x, 1 << _patches.map_y);
-		// XXX: set date
+		/* XXX: set date */
 		MarkWholeScreenDirty();
 		break;
 	}
@@ -901,13 +903,13 @@ void SwitchMode(int new_mode)
 }
 
 
-// State controlling game loop.
-// The state must not be changed from anywhere
-// but here.
-// That check is enforced in DoCommand.
+/* State controlling game loop.
+ * The state must not be changed from anywhere
+ * but here.
+ * That check is enforced in DoCommand. */
 void StateGameLoop()
 {
-	// dont execute the state loop during pause
+	/* dont execute the state loop during pause */
 	if (_pause_game) return;
 	if (IsGeneratingWorld()) return;
 
@@ -918,8 +920,8 @@ void StateGameLoop()
 		CallWindowTickEvent();
 		NewsLoop();
 	} else {
-		// All these actions has to be done from OWNER_NONE
-		//  for multiplayer compatibility
+		/* All these actions has to be done from OWNER_NONE
+		 *  for multiplayer compatibility */
 		PlayerID p = _current_player;
 		_current_player = OWNER_NONE;
 
@@ -958,12 +960,12 @@ static void DoAutosave()
 		SetDParam(2, _date);
 		s = GetString(s, STR_4004, lastof(buf));
 		strecpy(s, ".sav", lastof(buf));
-	} else { /* generate a savegame name and number according to _patches.max_num_autosaves */
+	} else { // generate a savegame name and number according to _patches.max_num_autosaves
 		snprintf(buf, lengthof(buf), "%s%sautosave%d.sav", _paths.autosave_dir, PATHSEP, _autosave_ctr);
 
 		_autosave_ctr++;
 		if (_autosave_ctr >= _patches.max_num_autosaves) {
-			// we reached the limit for numbers of autosaves. We will start over
+			/* we reached the limit for numbers of autosaves. We will start over */
 			_autosave_ctr = 0;
 		}
 	}
@@ -986,21 +988,21 @@ static void ScrollMainViewport(int x, int y)
 
 static const int8 scrollamt[16][2] = {
 	{ 0,  0},
-	{-2,  0}, //  1 : left
-	{ 0, -2}, //  2 : up
-	{-2, -1}, //  3 : left + up
-	{ 2,  0}, //  4 : right
-	{ 0,  0}, //  5 : left + right
-	{ 2, -1}, //  6 : right + up
-	{ 0, -2}, //  7 : left + right + up = up
-	{ 0  ,2}, //  8 : down
-	{-2  ,1}, //  9 : down+left
-	{ 0,  0}, // 10 : impossible
-	{-2,  0}, // 11 : left + up + down = left
-	{ 2,  1}, // 12 : down+right
-	{ 0,  2}, // 13 : left + right + down = down
-	{ 0, -2}, // 14 : left + right + up = up
-	{ 0,  0}, // 15 : impossible
+	{-2,  0}, ///<  1 : left
+	{ 0, -2}, ///<  2 : up
+	{-2, -1}, ///<  3 : left + up
+	{ 2,  0}, ///<  4 : right
+	{ 0,  0}, ///<  5 : left + right
+	{ 2, -1}, ///<  6 : right + up
+	{ 0, -2}, ///<  7 : left + right + up = up
+	{ 0  ,2}, ///<  8 : down
+	{-2  ,1}, ///<  9 : down+left
+	{ 0,  0}, ///< 10 : impossible
+	{-2,  0}, ///< 11 : left + up + down = left
+	{ 2,  1}, ///< 12 : down+right
+	{ 0,  2}, ///< 13 : left + right + down = down
+	{ 0, -2}, ///< 14 : left + right + up = up
+	{ 0,  0}, ///< 15 : impossible
 };
 
 static void HandleKeyScrolling()
@@ -1017,20 +1019,20 @@ void GameLoop()
 
 	if ((message = OTTD_PollThreadEvent()) != 0) ProcessSentMessage(message);
 
-	// autosave game?
+	/* autosave game? */
 	if (_do_autosave) {
 		_do_autosave = false;
 		DoAutosave();
 		RedrawAutosave();
 	}
 
-	// handle scrolling of the main window
+	/* handle scrolling of the main window */
 	HandleKeyScrolling();
 
-	// make a screenshot?
+	/* make a screenshot? */
 	if (IsScreenshotRequested()) ShowScreenshotResult(MakeScreenshot());
 
-	// switch game mode?
+	/* switch game mode? */
 	if (_switch_mode != SM_NONE) {
 		SwitchMode(_switch_mode);
 		_switch_mode = SM_NONE;
@@ -1050,19 +1052,19 @@ void GameLoop()
 	CursorTick();
 
 #ifdef ENABLE_NETWORK
-	// Check for UDP stuff
+	/* Check for UDP stuff */
 	if (_network_available) NetworkUDPGameLoop();
 
 	if (_networking && !IsGeneratingWorld()) {
-		// Multiplayer
+		/* Multiplayer */
 		NetworkGameLoop();
 	} else {
 		if (_network_reconnect > 0 && --_network_reconnect == 0) {
-			// This means that we want to reconnect to the last host
-			// We do this here, because it means that the network is really closed
+			/* This means that we want to reconnect to the last host
+			 * We do this here, because it means that the network is really closed */
 			NetworkClientConnectGame(_network_last_host, _network_last_port);
 		}
-		// Singleplayer
+		/* Singleplayer */
 		StateGameLoop();
 	}
 #else
@@ -1110,7 +1112,7 @@ static void ConvertTownOwner()
 	}
 }
 
-// before savegame version 4, the name of the company determined if it existed
+/* before savegame version 4, the name of the company determined if it existed */
 static void CheckIsPlayerActive()
 {
 	Player *p;
@@ -1120,7 +1122,7 @@ static void CheckIsPlayerActive()
 	}
 }
 
-// since savegame version 4.1, exclusive transport rights are stored at towns
+/* since savegame version 4.1, exclusive transport rights are stored at towns */
 static void UpdateExclusiveRights()
 {
 	Town *t;
@@ -1146,7 +1148,7 @@ static const byte convert_currency[] = {
 	16, 22, 21,  7, 15,
 	18,  2, 20, };
 
-// since savegame version 4.2 the currencies are arranged differently
+/* since savegame version 4.2 the currencies are arranged differently */
 static void UpdateCurrencies()
 {
 	_opt.currency = convert_currency[_opt.currency];
@@ -1163,7 +1165,7 @@ static void UpdateVoidTiles()
 	for (i = 0; i < MapSizeX(); ++i) MakeVoid(MapSizeX() * MapMaxY() + i);
 }
 
-// since savegame version 6.0 each sign has an "owner", signs without owner (from old games are set to 255)
+/* since savegame version 6.0 each sign has an "owner", signs without owner (from old games are set to 255) */
 static void UpdateSignOwner()
 {
 	Sign *si;
@@ -1186,16 +1188,16 @@ bool AfterLoadGame()
 	ViewPort *vp;
 	Player *p;
 
-	// in version 2.1 of the savegame, town owner was unified.
+	/* in version 2.1 of the savegame, town owner was unified. */
 	if (CheckSavegameVersionOldStyle(2, 1)) ConvertTownOwner();
 
-	// from version 4.1 of the savegame, exclusive rights are stored at towns
+	/* from version 4.1 of the savegame, exclusive rights are stored at towns */
 	if (CheckSavegameVersionOldStyle(4, 1)) UpdateExclusiveRights();
 
-	// from version 4.2 of the savegame, currencies are in a different order
+	/* from version 4.2 of the savegame, currencies are in a different order */
 	if (CheckSavegameVersionOldStyle(4, 2)) UpdateCurrencies();
 
-	// from version 6.1 of the savegame, signs have an "owner"
+	/* from version 6.1 of the savegame, signs have an "owner" */
 	if (CheckSavegameVersionOldStyle(6, 1)) UpdateSignOwner();
 
 	/* In old version there seems to be a problem that water is owned by
@@ -1210,7 +1212,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	// convert road side to my format.
+	/* convert road side to my format. */
 	if (_opt.road_side) _opt.road_side = 1;
 
 	/* Check if all NewGRFs are present, we are very strict in MP mode */
@@ -1227,7 +1229,7 @@ bool AfterLoadGame()
 	 * must be done before loading sprites as some newgrfs check it */
 	SetDate(_date);
 
-	// Load the sprites
+	/* Load the sprites */
 	GfxLoadSprites();
 	LoadStringWidthTable();
 
@@ -1238,33 +1240,33 @@ bool AfterLoadGame()
 	/* Connect front and rear engines of multiheaded trains */
 	ConnectMultiheadedTrains();
 
-	// reinit the landscape variables (landscape might have changed)
+	/* reinit the landscape variables (landscape might have changed) */
 	InitializeLandscapeVariables(true);
 
-	// Update all vehicles
+	/* Update all vehicles */
 	AfterLoadVehicles();
 
-	// Update all waypoints
+	/* Update all waypoints */
 	if (CheckSavegameVersion(12)) FixOldWaypoints();
 
 	UpdateAllWaypointSigns();
 
-	// in version 2.2 of the savegame, we have new airports
+	/* in version 2.2 of the savegame, we have new airports */
 	if (CheckSavegameVersionOldStyle(2, 2)) UpdateOldAircraft();
 
 	UpdateAllStationVirtCoord();
 
-	// Setup town coords
+	/* Setup town coords */
 	AfterLoadTown();
 	UpdateAllSignVirtCoords();
 
-	// make sure there is a town in the game
+	/* make sure there is a town in the game */
 	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, (uint)-1)) {
 		_error_message = STR_NO_TOWN_IN_SCENARIO;
 		return false;
 	}
 
-	// Initialize windows
+	/* Initialize windows */
 	ResetWindowSystem();
 	SetupColorsAndInitialWindow();
 
@@ -1278,17 +1280,17 @@ bool AfterLoadGame()
 	vp->virtual_width = vp->width << vp->zoom;
 	vp->virtual_height = vp->height << vp->zoom;
 
-	// in version 4.1 of the savegame, is_active was introduced to determine
-	// if a player does exist, rather then checking name_1
+	/* in version 4.1 of the savegame, is_active was introduced to determine
+	 * if a player does exist, rather then checking name_1 */
 	if (CheckSavegameVersionOldStyle(4, 1)) CheckIsPlayerActive();
 
-	// the void tiles on the southern border used to belong to a wrong class (pre 4.3).
+	/* the void tiles on the southern border used to belong to a wrong class (pre 4.3). */
 	if (CheckSavegameVersionOldStyle(4, 3)) UpdateVoidTiles();
 
-	// If Load Scenario / New (Scenario) Game is used,
-	//  a player does not exist yet. So create one here.
-	// 1 exeption: network-games. Those can have 0 players
-	//   But this exeption is not true for network_servers!
+	/* If Load Scenario / New (Scenario) Game is used,
+	 *  a player does not exist yet. So create one here.
+	 * 1 exeption: network-games. Those can have 0 players
+	 *   But this exeption is not true for network_servers! */
 	if (!_players[0].is_active && (!_networking || (_networking && _network_server)))
 		DoStartupNewPlayer(false);
 
@@ -1584,15 +1586,15 @@ bool AfterLoadGame()
 					wp->grfid = statspec->grfid;
 					wp->localidx = statspec->localidx;
 				} else {
-					// No custom graphics set, so set to default.
+					/* No custom graphics set, so set to default. */
 					wp->stat_id = 0;
 					wp->grfid = 0;
 					wp->localidx = 0;
 				}
 
-				// Move ground type bits from m2 to m4.
+				/* Move ground type bits from m2 to m4. */
 				_m[wp->xy].m4 = GB(_m[wp->xy].m2, 0, 4);
-				// Store waypoint index in the tile.
+				/* Store waypoint index in the tile. */
 				_m[wp->xy].m2 = wp->index;
 			}
 		}
@@ -1609,15 +1611,15 @@ bool AfterLoadGame()
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
 					if (HasSignals(t)) {
-						// convert PBS signals to combo-signals
+						/* convert PBS signals to combo-signals */
 						if (HASBIT(_m[t].m2, 2)) SetSignalType(t, SIGTYPE_COMBO);
 
-						// move the signal variant back
+						/* move the signal variant back */
 						SetSignalVariant(t, HASBIT(_m[t].m2, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
 						CLRBIT(_m[t].m2, 3);
 					}
 
-					// Clear PBS reservation on track
+					/* Clear PBS reservation on track */
 					if (!IsTileDepotType(t, TRANSPORT_RAIL)) {
 						SB(_m[t].m4, 4, 4, 0);
 					} else {
@@ -1625,13 +1627,11 @@ bool AfterLoadGame()
 					}
 					break;
 
-				case MP_STREET:
-					// Clear PBS reservation on crossing
+				case MP_STREET: /* Clear PBS reservation on crossing */
 					if (IsLevelCrossing(t)) CLRBIT(_m[t].m5, 0);
 					break;
 
-				case MP_STATION:
-					// Clear PBS reservation on station
+				case MP_STATION: /* Clear PBS reservation on station */
 					CLRBIT(_m[t].m3, 6);
 					break;
 

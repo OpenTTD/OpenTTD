@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file order_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "road_map.h"

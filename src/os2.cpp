@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file os2.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"

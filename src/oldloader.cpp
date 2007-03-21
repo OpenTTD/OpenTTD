@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file oldloader.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "station_map.h"
@@ -415,11 +417,11 @@ static const OldChunks town_chunk[] = {
 	OCL_SVAR( OC_UINT16, Town, townnametype ),
 	OCL_SVAR( OC_UINT32, Town, townnameparts ),
 	OCL_SVAR(  OC_UINT8, Town, grow_counter ),
-	OCL_NULL( 1 ),         // sort_index,        no longer in use
-	OCL_NULL( 4 ),         // sign-coordinates,  no longer in use
-	OCL_NULL( 2 ),         // namewidth,         no longer in use
+	OCL_NULL( 1 ),         ///< sort_index,        no longer in use
+	OCL_NULL( 4 ),         ///< sign-coordinates,  no longer in use
+	OCL_NULL( 2 ),         ///< namewidth,         no longer in use
 	OCL_SVAR( OC_UINT16, Town, flags12 ),
-	OCL_NULL( 10 ),        // radius,            no longer in use
+	OCL_NULL( 10 ),        ///< radius,            no longer in use
 
 	OCL_SVAR( OC_UINT16, Town, ratings[0] ),
 	OCL_SVAR( OC_UINT16, Town, ratings[1] ),
@@ -458,7 +460,7 @@ static const OldChunks town_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Town, road_build_months ),
 	OCL_SVAR(  OC_UINT8, Town, fund_buildings_months ),
 
-	OCL_NULL( 8 ),         // some junk at the end of the record
+	OCL_NULL( 8 ),         ///< some junk at the end of the record
 
 	OCL_END()
 };
@@ -538,7 +540,7 @@ static const OldChunks cargo_payment_rate_chunk[] = {
 	OCL_VAR (  OC_INT32,   1, &_old_price ),
 	OCL_VAR ( OC_UINT16,   1, &_old_price_frac ),
 
-	OCL_NULL( 2 ),         // Junk
+	OCL_NULL( 2 ),         ///< Junk
 	OCL_END()
 };
 
@@ -577,19 +579,19 @@ static const OldChunks station_chunk[] = {
 	OCL_SVAR(   OC_TILE, Station, xy ),
 	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
 
-	OCL_NULL( 4 ), // bus/lorry tile
+	OCL_NULL( 4 ), ///< bus/lorry tile
 	OCL_SVAR(   OC_TILE, Station, train_tile ),
 	OCL_SVAR(   OC_TILE, Station, airport_tile ),
 	OCL_SVAR(   OC_TILE, Station, dock_tile ),
 
 	OCL_VAR (  OC_UINT8,   1, &_old_platforms ),
 
-	OCL_NULL( 1 ),         // sort-index, no longer in use
-	OCL_NULL( 2 ),         // sign-width, no longer in use
+	OCL_NULL( 1 ),         ///< sort-index, no longer in use
+	OCL_NULL( 2 ),         ///< sign-width, no longer in use
 
 	OCL_VAR ( OC_UINT16,   1, &_old_string_id ),
 
-	OCL_NULL( 4 ),         // sign left/top, no longer in use
+	OCL_NULL( 4 ),         ///< sign left/top, no longer in use
 
 	OCL_SVAR( OC_UINT16, Station, had_vehicle_of_type ),
 
@@ -607,9 +609,9 @@ static const OldChunks station_chunk[] = {
 	 */
 	OCL_NULL( 4 ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Station, airport_flags ),
-	OCL_NULL( 2 ),         // last_vehicle. now last_vehicle_type
+	OCL_NULL( 2 ),         ///< last_vehicle. now last_vehicle_type
 
-	OCL_NULL( 4 ),         // Junk at end of chunk
+	OCL_NULL( 4 ),         ///< Junk at end of chunk
 
 	OCL_END()
 };
@@ -682,7 +684,7 @@ static const OldChunks industry_chunk[] = {
 	OCL_SVAR( OC_UINT16, Industry, counter ),
 	OCL_SVAR(  OC_UINT8, Industry, was_cargo_delivered ),
 
-	OCL_NULL( 9 ), // Random junk at the end of this chunk
+	OCL_NULL( 9 ), ///< Random junk at the end of this chunk
 
 	OCL_END()
 };
@@ -769,7 +771,7 @@ static const OldChunks player_ai_build_rec_chunk[] = {
 	OCL_SVAR(  OC_UINT8, AiBuildRec, direction ),
 	OCL_SVAR(  OC_UINT8, AiBuildRec, cargo ),
 
-	OCL_NULL( 8 ),  // Junk...
+	OCL_NULL( 8 ),  ///< Junk...
 
 	OCL_END()
 };
@@ -789,14 +791,14 @@ static bool OldLoadAIBuildRec(LoadgameState *ls, int num)
 }
 static const OldChunks player_ai_chunk[] = {
 	OCL_SVAR(  OC_UINT8, PlayerAI, state ),
-	OCL_NULL( 1 ),         // Junk
+	OCL_NULL( 1 ),         ///< Junk
 	OCL_SVAR(  OC_UINT8, PlayerAI, state_mode ),
 	OCL_SVAR( OC_UINT16, PlayerAI, state_counter ),
 	OCL_SVAR( OC_UINT16, PlayerAI, timeout_counter ),
 
 	OCL_CHUNK( 4, OldLoadAIBuildRec ),
 
-	OCL_NULL( 20 ),        // More junk
+	OCL_NULL( 20 ),        ///< More junk
 
 	OCL_SVAR(  OC_UINT8, PlayerAI, cargo_type ),
 	OCL_SVAR(  OC_UINT8, PlayerAI, num_wagons ),
@@ -805,9 +807,9 @@ static const OldChunks player_ai_chunk[] = {
 	OCL_SVAR(  OC_UINT8, PlayerAI, num_loco_to_build ),
 	OCL_SVAR(  OC_UINT8, PlayerAI, num_want_fullload ),
 
-	OCL_NULL( 14 ),        // Oh no more junk :|
+	OCL_NULL( 14 ),        ///< Oh no more junk :|
 
-	OCL_NULL( 2 ),         // Loco-id, not used
+	OCL_NULL( 2 ),         ///< Loco-id, not used
 
 	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[0] ),
 	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[1] ),
@@ -934,7 +936,7 @@ static const OldChunks player_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Player, share_owners[2] ),
 	OCL_SVAR(  OC_UINT8, Player, share_owners[3] ),
 
-	OCL_NULL( 8 ), // junk at end of chunk
+	OCL_NULL( 8 ), ///< junk at end of chunk
 
 	OCL_END()
 };
@@ -996,7 +998,7 @@ static const OldChunks vehicle_train_chunk[] = {
 	OCL_SVAR( OC_UINT16, VehicleRail, crash_anim_pos ),
 	OCL_SVAR(  OC_UINT8, VehicleRail, railtype ),
 
-	OCL_NULL( 5 ), // Junk
+	OCL_NULL( 5 ), ///< Junk
 
 	OCL_END()
 };
@@ -1010,7 +1012,7 @@ static const OldChunks vehicle_road_chunk[] = {
 	OCL_SVAR( OC_UINT16, VehicleRoad, crashed_ctr ),
 	OCL_SVAR(  OC_UINT8, VehicleRoad, reverse_ctr ),
 
-	OCL_NULL( 1 ), // Junk
+	OCL_NULL( 1 ), ///< Junk
 
 	OCL_END()
 };
@@ -1018,7 +1020,7 @@ static const OldChunks vehicle_road_chunk[] = {
 static const OldChunks vehicle_ship_chunk[] = {
 	OCL_SVAR(  OC_UINT8, VehicleShip, state ),
 
-	OCL_NULL( 9 ), // Junk
+	OCL_NULL( 9 ), ///< Junk
 
 	OCL_END()
 };
@@ -1029,7 +1031,7 @@ static const OldChunks vehicle_air_chunk[] = {
 	OCL_SVAR( OC_UINT16, VehicleAir, crashed_counter ),
 	OCL_SVAR(  OC_UINT8, VehicleAir, state ),
 
-	OCL_NULL( 5 ), // Junk
+	OCL_NULL( 5 ), ///< Junk
 
 	OCL_END()
 };
@@ -1047,13 +1049,13 @@ static const OldChunks vehicle_disaster_chunk[] = {
 	OCL_SVAR( OC_UINT16, VehicleDisaster, image_override ),
 	OCL_SVAR( OC_UINT16, VehicleDisaster, unk2 ),
 
-	OCL_NULL( 6 ), // Junk
+	OCL_NULL( 6 ), ///< Junk
 
 	OCL_END()
 };
 
 static const OldChunks vehicle_empty_chunk[] = {
-	OCL_NULL( 10 ), // Junk
+	OCL_NULL( 10 ), ///< Junk
 
 	OCL_END()
 };
@@ -1090,8 +1092,8 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Vehicle, type ),
 	OCL_SVAR(  OC_UINT8, Vehicle, subtype ),
 
-	OCL_NULL( 2 ),         // Hash, calculated automatically
-	OCL_NULL( 2 ),         // Index, calculated automatically
+	OCL_NULL( 2 ),         ///< Hash, calculated automatically
+	OCL_NULL( 2 ),         ///< Index, calculated automatically
 
 	OCL_VAR ( OC_UINT32,   1, &_old_order_ptr ),
 	OCL_VAR ( OC_UINT16,   1, &_old_order ),
@@ -1120,7 +1122,7 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR(   OC_TILE, Vehicle, tile ),
 	OCL_SVAR( OC_UINT16, Vehicle, cur_image ),
 
-	OCL_NULL( 8 ),        // Vehicle sprite box, calculated automatically
+	OCL_NULL( 8 ),        ///< Vehicle sprite box, calculated automatically
 
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U8, Vehicle, vehstatus ),
 	OCL_SVAR( OC_UINT16, Vehicle, cur_speed ),
@@ -1163,7 +1165,7 @@ static const OldChunks vehicle_chunk[] = {
 
 	OCL_CHUNK( 1, LoadOldVehicleUnion ),
 
-	OCL_NULL( 20 ), // Junk at end of struct (TTDPatch has some data in it)
+	OCL_NULL( 20 ), ///< Junk at end of struct (TTDPatch has some data in it)
 
 	OCL_END()
 };
@@ -1221,7 +1223,7 @@ static const OldChunks sign_chunk[] = {
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32,Sign, y ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I8, Sign, z ),
 
-	OCL_NULL( 6 ),         // Width of sign, no longer in use
+	OCL_NULL( 6 ),         ///< Width of sign, no longer in use
 
 	OCL_END()
 };
@@ -1252,7 +1254,7 @@ static const OldChunks engine_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Engine, preview_player ),
 	OCL_SVAR(  OC_UINT8, Engine, preview_wait ),
 
-	OCL_NULL( 2 ), // Junk
+	OCL_NULL( 2 ), ///< Junk
 
 	OCL_END()
 };
@@ -1385,7 +1387,8 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 				AppendStaticGRFConfigs(&_grfconfig);
 			} break;
 
-			case 0x3: { /* TTDPatch version and configuration */
+			/* TTDPatch version and configuration */
+			case 0x3: {
 				uint32 ttdpv = ReadUint32(ls);
 				DEBUG(oldloader, 3, "Game saved with TTDPatch version %d.%d.%d r%d", GB(ttdpv, 24, 8), GB(ttdpv, 20, 4), GB(ttdpv, 16, 4), GB(ttdpv, 0, 16));
 				len -= 4;
@@ -1407,7 +1410,7 @@ static const OldChunks main_chunk[] = {
 	OCL_ASSERT( 0 ),
 	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32, 1, &_date ),
 	OCL_VAR ( OC_UINT16,   1, &_date_fract ),
-	OCL_NULL( 600 ),            // TextEffects
+	OCL_NULL( 600 ),            ///< TextEffects
 	OCL_VAR ( OC_UINT32,   2, &_random_seeds[0] ),
 
 	OCL_ASSERT( 0x264 ),
@@ -1417,14 +1420,14 @@ static const OldChunks main_chunk[] = {
 	OCL_ASSERT( 0x4328 ),
 
 	OCL_VAR (   OC_TILE, 256, &_animated_tile_list[0] ),
-	OCL_NULL( 4 ),              // old end-of-order-list-pointer, no longer in use
+	OCL_NULL( 4 ),              ///< old end-of-order-list-pointer, no longer in use
 
 	OCL_CHUNK( 255, LoadOldDepot ),
 	OCL_ASSERT( 0x4B26 ),
 
 	OCL_VAR ( OC_UINT32,   1, &_old_cur_town_ctr ),
-	OCL_NULL( 2 ),              // timer_counter, no longer in use
-	OCL_NULL( 2 ),              // land_code,     no longer in use
+	OCL_NULL( 2 ),              ///< timer_counter, no longer in use
+	OCL_NULL( 2 ),              ///< land_code,     no longer in use
 
 	OCL_VAR ( OC_FILE_U16 | OC_VAR_U8, 1, &_age_cargo_skip_counter ),
 	OCL_VAR ( OC_UINT16,   1, &_tick_counter ),
@@ -1451,7 +1454,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_VAR (  OC_UINT8, 32 * 500, &_name_array[0] ),
 
-	OCL_NULL( 0x2000 ),            // Old hash-table, no longer in use
+	OCL_NULL( 0x2000 ),            ///< Old hash-table, no longer in use
 
 	OCL_CHUNK( 40, LoadOldSign ),
 	OCL_CHUNK(256, LoadOldEngine ),
@@ -1471,12 +1474,12 @@ static const OldChunks main_chunk[] = {
 
 	OCL_VAR ( OC_UINT16,    1, &_disaster_delay ),
 
-	OCL_NULL( 144 ),             // cargo-stuff, calculated in InitializeLandscapeVariables
+	OCL_NULL( 144 ),             ///< cargo-stuff, calculated in InitializeLandscapeVariables
 
 	OCL_VAR ( OC_UINT16,  256, &_engine_name_strings[0] ),
 
-	OCL_NULL( 144 ),             // AI cargo-stuff, calculated in InitializeLandscapeVariables
-	OCL_NULL( 2 ),               // Company indexes of players, no longer in use
+	OCL_NULL( 144 ),             ///< AI cargo-stuff, calculated in InitializeLandscapeVariables
+	OCL_NULL( 2 ),               ///< Company indexes of players, no longer in use
 
 	OCL_VAR ( OC_FILE_U8 | OC_VAR_U16,    1, &_station_tick_ctr ),
 
@@ -1484,8 +1487,8 @@ static const OldChunks main_chunk[] = {
 	OCL_VAR (  OC_UINT8,    1, &_opt.units ),
 	OCL_VAR ( OC_FILE_U8 | OC_VAR_U32,    1, &_cur_player_tick_index ),
 
-	OCL_NULL( 2 ),               // Date stuff, calculated automatically
-	OCL_NULL( 8 ),               // Player colors, calculated automatically
+	OCL_NULL( 2 ),               ///< Date stuff, calculated automatically
+	OCL_NULL( 8 ),               ///< Player colors, calculated automatically
 
 	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount ),
 	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount_pr ),
@@ -1502,11 +1505,11 @@ static const OldChunks main_chunk[] = {
 	OCL_VAR (  OC_UINT8,    1, &_opt.landscape ),
 	OCL_VAR (  OC_UINT8,    1, &_trees_tick_ctr ),
 
-	OCL_NULL( 1 ),               // Custom vehicle types yes/no, no longer used
+	OCL_NULL( 1 ),               ///< Custom vehicle types yes/no, no longer used
 	OCL_VAR (  OC_UINT8,    1, &_opt.snow_line ),
 
-	OCL_NULL( 32 ),              // new_industry_randtable, no longer used (because of new design)
-	OCL_NULL( 36 ),              // cargo-stuff, calculated in InitializeLandscapeVariables
+	OCL_NULL( 32 ),              ///< new_industry_randtable, no longer used (because of new design)
+	OCL_NULL( 36 ),              ///< cargo-stuff, calculated in InitializeLandscapeVariables
 
 	OCL_ASSERT( 0x77179 ),
 

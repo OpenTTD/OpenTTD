@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file oldpool.h */
+
 #ifndef OLDPOOL_H
 #define OLDPOOL_H
 

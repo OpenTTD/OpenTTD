@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file order_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "order.h"
