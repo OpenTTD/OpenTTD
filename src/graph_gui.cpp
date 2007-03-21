@@ -721,7 +721,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 			gd.x_values_increment = 10;
 
 			uint i = 0;
-			for (CargoID c = 0; c != NUM_CARGO; c++) {
+			for (CargoID c = 0; c < NUM_CARGO; c++) {
 				const CargoSpec *cs = GetCargo(c);
 				if (!cs->IsValid()) continue;
 
@@ -791,7 +791,7 @@ void ShowCargoPaymentRates()
 
 	/* Count the number of active cargo types */
 	uint num_active = 0;
-	for (CargoID c = 0; c != NUM_CARGO; c++) {
+	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		if (GetCargo(c)->IsValid()) num_active++;
 	}
 

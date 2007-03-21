@@ -209,7 +209,7 @@ static RefitList *BuildRefitList(const Vehicle *v)
 		if (u->cargo_cap == 0) continue;
 
 		/* Loop through all cargos in the refit mask */
-		for (CargoID cid = 0; cid != NUM_CARGO && num_lines < max_lines; cid++) {
+		for (CargoID cid = 0; cid < NUM_CARGO && num_lines < max_lines; cid++) {
 			/* Skip cargo type if it's not listed */
 			if (!HASBIT(cmask, cid)) continue;
 
@@ -616,14 +616,13 @@ static int CDECL VehicleCargoSorter(const void *a, const void *b)
 	AcceptedCargo cargoa;
 	AcceptedCargo cargob;
 	int r = 0;
-	int i;
 
 	memset(cargoa, 0, sizeof(cargoa));
 	memset(cargob, 0, sizeof(cargob));
 	for (v = va; v != NULL; v = v->next) cargoa[v->cargo_type] += v->cargo_cap;
 	for (v = vb; v != NULL; v = v->next) cargob[v->cargo_type] += v->cargo_cap;
 
-	for (i = 0; i < NUM_CARGO; i++) {
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		r = cargoa[i] - cargob[i];
 		if (r != 0) break;
 	}

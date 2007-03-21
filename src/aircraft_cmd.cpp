@@ -1408,7 +1408,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 	if (GB(Random(), 0, 16) > prob) return;
 
 	/* Crash the airplane. Remove all goods stored at the station. */
-	for (uint i = 0; i != NUM_CARGO; i++) {
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		st->goods[i].rating = 1;
 		SB(st->goods[i].waiting_acceptance, 0, 12, 0);
 	}

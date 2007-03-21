@@ -141,11 +141,10 @@ static void Place_LandInfo(TileIndex tile)
 	GetString(_landinfo_data[4], STR_01A8_LOCAL_AUTHORITY, lastof(_landinfo_data[4]));
 
 	{
-		int i;
 		char *p = GetString(_landinfo_data[5], STR_01CE_CARGO_ACCEPTED, lastof(_landinfo_data[5]));
 		bool found = false;
 
-		for (i = 0; i < NUM_CARGO; ++i) {
+		for (CargoID i = 0; i < NUM_CARGO; ++i) {
 			if (ac[i] > 0) {
 				/* Add a comma between each item. */
 				if (found) {
@@ -732,11 +731,10 @@ static void DrawStationCoverageText(const AcceptedCargo accepts,
 {
 	char *b = _userstring;
 	bool first = true;
-	int i;
 
 	b = InlineString(b, STR_000D_ACCEPTS);
 
-	for (i = 0; i != NUM_CARGO; i++, mask >>= 1) {
+	for (CargoID i = 0; i < NUM_CARGO; i++, mask >>= 1) {
 		if (b >= lastof(_userstring) - 5) break;
 		if (accepts[i] >= 8 && mask & 1) {
 			if (first) {

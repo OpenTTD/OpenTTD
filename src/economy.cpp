@@ -652,7 +652,7 @@ static void AddInflation()
 		_economy.max_loan += 50000;
 
 	inf = _economy.infl_amount_pr * 54;
-	for (uint i = 0; i != NUM_CARGO; i++) {
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		AddSingleInflation(
 			(int32*)_cargo_payment_rates + i,
 			_cargo_payment_rates_frac + i,

@@ -1587,9 +1587,7 @@ static void TownActionBribe(Town* t)
 		// set all close by station ratings to 0
 		FOR_ALL_STATIONS(st) {
 			if (st->town == t && st->owner == _current_player) {
-				uint i;
-
-				for (i = 0; i != NUM_CARGO; i++) st->goods[i].rating = 0;
+				for (CargoID i = 0; i < NUM_CARGO; i++) st->goods[i].rating = 0;
 			}
 		}
 

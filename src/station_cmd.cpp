@@ -352,7 +352,7 @@ static uint GetAcceptanceMask(const Station *st)
 {
 	uint mask = 0;
 
-	for (uint i = 0; i != NUM_CARGO; i++) {
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		if (st->goods[i].waiting_acceptance & 0x8000) mask |= 1 << i;
 	}
 	return mask;
@@ -525,7 +525,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	// Adjust in case our station only accepts fewer kinds of goods
-	for (uint i = 0; i != NUM_CARGO; i++) {
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		uint amt = min(accepts[i], 15);
 
 		// Make sure the station can accept the goods type.
@@ -2336,7 +2336,7 @@ void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint 
 	FOR_ALL_STATIONS(st) {
 		if (st->owner == owner &&
 				DistanceManhattan(tile, st->xy) <= radius) {
-			for (uint i = 0; i != NUM_CARGO; i++) {
+			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				GoodsEntry* ge = &st->goods[i];
 
 				if (ge->enroute_from != INVALID_STATION) {
@@ -2347,7 +2347,7 @@ void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint 
 	}
 }
 
-static void UpdateStationWaiting(Station *st, int type, uint amount)
+static void UpdateStationWaiting(Station *st, CargoID type, uint amount)
 {
 	SB(st->goods[type].waiting_acceptance, 0, 12,
 		min(0xFFF, GB(st->goods[type].waiting_acceptance, 0, 12) + amount)
@@ -2391,7 +2391,7 @@ int32 CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
+uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 {
 	Station* around[8];
 
@@ -2553,7 +2553,7 @@ void BuildOilRig(TileIndex tile)
 	st->facilities = FACIL_AIRPORT | FACIL_DOCK;
 	st->build_date = _date;
 
-	for (uint j = 0; j != NUM_CARGO; j++) {
+	for (CargoID j = 0; j < NUM_CARGO; j++) {
 		st->goods[j].waiting_acceptance = 0;
 		st->goods[j].days_since_pickup = 0;
 		st->goods[j].enroute_from = INVALID_STATION;
@@ -2801,7 +2801,7 @@ static const SaveLoad _station_speclist_desc[] = {
 static void SaveLoad_STNS(Station *st)
 {
 	SlObject(st, _station_desc);
-	for (uint i = 0; i != NUM_CARGO; i++) {
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		SlObject(&st->goods[i], _goods_desc);
 	}
 

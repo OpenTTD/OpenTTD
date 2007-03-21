@@ -364,7 +364,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				x = DrawString(xb, y, STR_3049_0, 0) + 5;
 
 				// show cargo waiting and station ratings
-				for (CargoID j = 0; j != NUM_CARGO; j++) {
+				for (CargoID j = 0; j < NUM_CARGO; j++) {
 					uint amount = GB(st->goods[j].waiting_acceptance, 0, 12);
 					if (amount != 0) {
 						StationsWndShowStationRating(x, y, j, amount, st->goods[j].rating);
@@ -677,7 +677,7 @@ static void DrawStationViewWindow(Window *w)
 	StringID str;
 
 	num = 1;
-	for (CargoID i = 0; i != NUM_CARGO; i++) {
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		if (GB(st->goods[i].waiting_acceptance, 0, 12) != 0) {
 			num++;
 			if (st->goods[i].enroute_from != station_id) num++;
@@ -701,7 +701,7 @@ static void DrawStationViewWindow(Window *w)
 
 	if (--pos < 0) {
 		str = STR_00D0_NOTHING;
-		for (CargoID i = 0; i != NUM_CARGO; i++) {
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (GB(st->goods[i].waiting_acceptance, 0, 12) != 0) str = STR_EMPTY;
 		}
 		SetDParam(0, str);
@@ -709,7 +709,7 @@ static void DrawStationViewWindow(Window *w)
 		y += 10;
 	}
 
-	for (CargoID i = 0; i != NUM_CARGO && pos > -5; i++) {
+	for (CargoID i = 0; i < NUM_CARGO && pos > -5; i++) {
 		uint waiting = GB(st->goods[i].waiting_acceptance, 0, 12);
 		if (waiting == 0) continue;
 
@@ -753,7 +753,7 @@ static void DrawStationViewWindow(Window *w)
 
 		b = InlineString(b, STR_000C_ACCEPTS);
 
-		for (CargoID i = 0; i != NUM_CARGO; i++) {
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (b >= endof(_userstring) - 5 - 1) break;
 			if (st->goods[i].waiting_acceptance & 0x8000) {
 				if (first) {
@@ -776,7 +776,7 @@ static void DrawStationViewWindow(Window *w)
 		DrawString(2, 67, STR_3034_LOCAL_RATING_OF_TRANSPORT, 0);
 
 		y = 77;
-		for (CargoID i = 0; i != NUM_CARGO; i++) {
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			const CargoSpec *cs = GetCargo(i);
 			if (!cs->IsValid()) continue;
 

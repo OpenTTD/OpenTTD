@@ -243,7 +243,7 @@ void InitializeLandscapeVariables(bool only_constants)
 {
 	if (only_constants) return;
 
-	for (CargoID i = 0; i != NUM_CARGO; i++) {
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		_cargo_payment_rates[i] = GetCargo(i)->initial_payment;
 		_cargo_payment_rates_frac[i] = 0;
 	}

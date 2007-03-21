@@ -772,7 +772,7 @@ CargoID FindFirstRefittableCargo(EngineID engine_type)
 	uint32 refit_mask = EngInfo(engine_type)->refit_mask;
 
 	if (refit_mask != 0) {
-		for (CargoID cid = CT_PASSENGERS; cid < NUM_CARGO; cid++) {
+		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
 			if (HASBIT(refit_mask, cid)) return cid;
 		}
 	}

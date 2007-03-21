@@ -4006,7 +4006,7 @@ static void ResetNewGRFData()
 
 	/* Generate default cargo translation table */
 	memset(_default_cargo_list, 0, sizeof(_default_cargo_list));
-	for (CargoID c = 0; c != NUM_CARGO; c++) {
+	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		const CargoSpec *cs = GetCargo(c);
 		if (cs->IsValid()) _default_cargo_list[cs->bitnum] = cs->label;
 	}

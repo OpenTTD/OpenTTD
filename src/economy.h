@@ -66,6 +66,6 @@ void DeleteSubsidyWithIndustry(IndustryID index);
 void DeleteSubsidyWithStation(StationID index);
 
 int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type);
-uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount);
+uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount);
 
 #endif /* ECONOMY_H */

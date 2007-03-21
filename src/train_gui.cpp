@@ -371,7 +371,6 @@ static void DrawTrainDetailsWindow(Window *w)
 	const Vehicle *u;
 	AcceptedCargo act_cargo;
 	AcceptedCargo max_cargo;
-	uint i;
 	int num;
 	int x;
 	int y;
@@ -380,7 +379,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	num = 0;
 	u = v = GetVehicle(w->window_number);
 	if (det_tab == 3) { // Total cargo tab
-		for (i = 0; i < lengthof(act_cargo); i++) {
+		for (CargoID i = 0; i < lengthof(act_cargo); i++) {
 			act_cargo[i] = 0;
 			max_cargo[i] = 0;
 		}
@@ -393,7 +392,7 @@ static void DrawTrainDetailsWindow(Window *w)
 		/* Set scroll-amount seperately from counting, as to not compute num double
 		 * for more carriages of the same type
 		 */
-		for (i = 0; i != NUM_CARGO; i++) {
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (max_cargo[i] > 0) num++; // only count carriages that the train has
 		}
 		num++; // needs one more because first line is description string
@@ -492,7 +491,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	} else {
 		// draw total cargo tab
 		DrawString(x, y + 2, STR_013F_TOTAL_CAPACITY_TEXT, 0);
-		for (i = 0; i != NUM_CARGO; i++) {
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (max_cargo[i] > 0 && --sel < 0 && sel > -w->vscroll.cap) {
 				y += 14;
 				SetDParam(0, i);            // {CARGO} #1
