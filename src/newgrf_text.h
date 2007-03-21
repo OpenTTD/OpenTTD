@@ -2,7 +2,7 @@
 #ifndef NEWGRF_TEXT_H
 #define NEWGRF_TEXT_H
 
-/** @file
+/** @file newgrf_text.h
  * Header of Action 04 "universal holder" structure and functions
  */
 

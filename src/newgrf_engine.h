@@ -1,14 +1,13 @@
 /* $Id$ */
 
+/** @file newgrf_engine.h */
+
 #ifndef NEWGRF_ENGINE_H
 #define NEWGRF_ENGINE_H
 
 #include "newgrf.h"
 #include "direction.h"
 #include "newgrf_cargo.h"
-
-/** @file newgrf_engine.h
- */
 
 extern int _traininfo_vehicle_pitch;
 extern int _traininfo_vehicle_width;
@@ -38,11 +37,11 @@ bool UsesWagonOverride(const Vehicle *v);
 
 enum VehicleTrigger {
 	VEHICLE_TRIGGER_NEW_CARGO     = 1,
-	// Externally triggered only for the first vehicle in chain
+	/* Externally triggered only for the first vehicle in chain */
 	VEHICLE_TRIGGER_DEPOT         = 2,
-	// Externally triggered only for the first vehicle in chain, only if whole chain is empty
+	/* Externally triggered only for the first vehicle in chain, only if whole chain is empty */
 	VEHICLE_TRIGGER_EMPTY         = 4,
-	// Not triggered externally (called for the whole chain if we got NEW_CARGO)
+	/* Not triggered externally (called for the whole chain if we got NEW_CARGO) */
 	VEHICLE_TRIGGER_ANY_NEW_CARGO = 8,
 };
 void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);

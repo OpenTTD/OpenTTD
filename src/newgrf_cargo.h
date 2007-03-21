@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_cargo.h */
+
 #ifndef NEWGRF_CARGO_H
 #define NEWGRF_CARGO_H
 

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file
+/** @file newgrf_text.cpp
  * Implementation of  Action 04 "universal holder" structure and functions.
  * This file implements a linked-lists of strings,
  * holding everything that the newgrf action 04 will send over to OpenTTD.
@@ -122,7 +122,7 @@ const iso_grf iso_codes[] = {
 	{"sv_SE", GRFLX_SWEDISH},
 	{"tr_TR", GRFLX_TURKISH},
 	{"uk_UA", GRFLX_UKRAINIAN},
-	{"gen",   GRFLB_GENERIC}   //this is not iso code, but there has to be something...
+	{"gen",   GRFLB_GENERIC}   ///< this is not iso code, but there has to be something...
 };
 
 
@@ -180,12 +180,12 @@ struct GRFTextEntry {
 
 static uint _num_grf_texts = 0;
 static GRFTextEntry _grf_text[(1 << TABSIZE) * 3];
-static byte _currentLangID = GRFLX_ENGLISH;  //by default, english is used.
+static byte _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
 
 
 char *TranslateTTDPatchCodes(const char *str)
 {
-	char *tmp = MallocT<char>(strlen(str) * 10 + 1); /* Allocate space to allow for expansion */
+	char *tmp = MallocT<char>(strlen(str) * 10 + 1); // Allocate space to allow for expansion
 	char *d = tmp;
 	bool unicode = false;
 	WChar c;
@@ -198,7 +198,7 @@ char *TranslateTTDPatchCodes(const char *str)
 	}
 
 	for (;;) {
-		const char *tmp = str; /* Used for UTF-8 decoding */
+		const char *tmp = str; // Used for UTF-8 decoding
 
 		c = (byte)*str++;
 		if (c == 0) break;

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -157,7 +159,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK:
 			switch (e->we.click.widget) {
 				case 3: {
-					// Get row...
+					/* Get row... */
 					const GRFConfig *c;
 					uint i = (e->we.click.pt.y - w->widget[3].top) / 10 + w->vscroll.pos;
 
@@ -167,7 +169,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 
-				case 6: /* Add selection to list */
+				case 6: // Add selection to list
 					if (WP(w, newgrf_add_d).sel != NULL) {
 						const GRFConfig *src = WP(w, newgrf_add_d).sel;
 						GRFConfig **list;
@@ -196,7 +198,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 					}
 					break;
 
-				case 7: /* Rescan list */
+				case 7: // Rescan list
 					WP(w, newgrf_add_d).sel = NULL;
 					ScanNewGRFFiles();
 					SetWindowDirty(w);
@@ -376,7 +378,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
-				case SNGRFS_ADD: { /* Add GRF */
+				case SNGRFS_ADD: { // Add GRF
 					GRFConfig **list = WP(w, newgrf_d).list;
 					Window *w;
 
@@ -388,7 +390,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 
-				case SNGRFS_REMOVE: { /* Remove GRF */
+				case SNGRFS_REMOVE: { // Remove GRF
 					GRFConfig **pc, *c, *newsel;
 
 					/* Choose the next GRF file to be the selected file */
@@ -412,7 +414,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 
-				case SNGRFS_MOVE_UP: { /* Move GRF up */
+				case SNGRFS_MOVE_UP: { // Move GRF up
 					GRFConfig **pc, *c;
 					if (WP(w, newgrf_d).sel == NULL) break;
 
@@ -428,7 +430,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 
-				case SNGRFS_MOVE_DOWN: { /* Move GRF down */
+				case SNGRFS_MOVE_DOWN: { // Move GRF down
 					GRFConfig **pc, *c;
 					if (WP(w, newgrf_d).sel == NULL) break;
 
@@ -444,7 +446,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 
-				case SNGRFS_FILE_LIST: { /* Select a GRF */
+				case SNGRFS_FILE_LIST: { // Select a GRF
 					GRFConfig *c;
 					uint i = (e->we.click.pt.y - w->widget[SNGRFS_FILE_LIST].top) / 14 + w->vscroll.pos;
 
@@ -455,7 +457,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 
-				case SNGRFS_APPLY_CHANGES: /* Apply changes made to GRF list */
+				case SNGRFS_APPLY_CHANGES: // Apply changes made to GRF list
 					if (WP(w, newgrf_d).execute) {
 						ShowQuery(
 							STR_POPUP_CAUTION_CAPTION,
@@ -468,7 +470,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					}
 					break;
 
-				case SNGRFS_SET_PARAMETERS: { /* Edit parameters */
+				case SNGRFS_SET_PARAMETERS: { // Edit parameters
 					char buff[512];
 					if (WP(w, newgrf_d).sel == NULL) break;
 

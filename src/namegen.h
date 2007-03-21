@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file namegen.h */
+
 #ifndef NAMEGEN_H
 #define NAMEGEN_H
 

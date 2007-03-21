@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf.h */
+
 #ifndef NEWGRF_H
 #define NEWGRF_H
 
@@ -60,7 +62,7 @@ struct GRFFile {
 	HouseSpec **housespec;
 
 	uint32 param[0x80];
-	uint param_end; /// one more than the highest set parameter
+	uint param_end;  ///< one more than the highest set parameter
 
 	GRFLabel *label; ///< Pointer to the first label. This is a linked list, not an array.
 
@@ -78,7 +80,7 @@ extern bool _have_newhouses;
 
 void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage);
 void LoadNewGRF(uint load_index, uint file_index);
-void ReloadNewGRFData(); // in openttd.c
+void ReloadNewGRFData(); // in openttd.cpp
 
 void CDECL grfmsg(int severity, const char *str, ...);
 

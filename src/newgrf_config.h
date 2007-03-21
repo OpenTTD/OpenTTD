@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_config.h */
+
 #ifndef NEWGRF_CONFIG_H
 #define NEWGRF_CONFIG_H
 
@@ -80,7 +82,7 @@ GRFListCompatibility IsGoodGRFConfigList();
 bool FillGRFDetails(GRFConfig *config, bool is_static);
 char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 
-/* In newgrf_gui.c */
+/* In newgrf_gui.cpp */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config);
 
 #ifdef ENABLE_NETWORK

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_spritegroup.h */
+
 #ifndef NEWGRF_SPRITEGROUP_H
 #define NEWGRF_SPRITEGROUP_H
 
@@ -11,12 +13,12 @@ struct SpriteGroup;
 /* 'Real' sprite groups contain a list of other result or callback sprite
  * groups. */
 struct RealSpriteGroup {
-	// Loaded = in motion, loading = not moving
-	// Each group contains several spritesets, for various loading stages
+	/* Loaded = in motion, loading = not moving
+	 * Each group contains several spritesets, for various loading stages */
 
-	// XXX: For stations the meaning is different - loaded is for stations
-	// with small amount of cargo whilst loading is for stations with a lot
-	// of da stuff.
+	/* XXX: For stations the meaning is different - loaded is for stations
+	 * with small amount of cargo whilst loading is for stations with a lot
+	 * of da stuff. */
 
 	byte num_loaded;       ///< Number of loaded groups
 	byte num_loading;      ///< Number of loading groups
@@ -27,7 +29,7 @@ struct RealSpriteGroup {
 /* Shared by deterministic and random groups. */
 enum VarSpriteGroupScope {
 	VSG_SCOPE_SELF,
-	// Engine of consists for vehicles, city for stations.
+	/* Engine of consists for vehicles, city for stations. */
 	VSG_SCOPE_PARENT,
 };
 
@@ -44,20 +46,20 @@ enum DeterministicSpriteGroupAdjustType {
 };
 
 enum DeterministicSpriteGroupAdjustOperation {
-	DSGA_OP_ADD,  // a + b
-	DSGA_OP_SUB,  // a - b
-	DSGA_OP_SMIN, // (signed) min(a, b)
-	DSGA_OP_SMAX, // (signed) max(a, b)
-	DSGA_OP_UMIN, // (unsigned) min(a, b)
-	DSGA_OP_UMAX, // (unsigned) max(a, b)
-	DSGA_OP_SDIV, // (signed) a / b
-	DSGA_OP_SMOD, // (signed) a % b
-	DSGA_OP_UDIV, // (unsigned) a / b
-	DSGA_OP_UMOD, // (unsigned) a & b
-	DSGA_OP_MUL,  // a * b
-	DSGA_OP_AND,  // a & b
-	DSGA_OP_OR,   // a | b
-	DSGA_OP_XOR,  // a ^ b
+	DSGA_OP_ADD,  ///< a + b
+	DSGA_OP_SUB,  ///< a - b
+	DSGA_OP_SMIN, ///< (signed) min(a, b)
+	DSGA_OP_SMAX, ///< (signed) max(a, b)
+	DSGA_OP_UMIN, ///< (unsigned) min(a, b)
+	DSGA_OP_UMAX, ///< (unsigned) max(a, b)
+	DSGA_OP_SDIV, ///< (signed) a / b
+	DSGA_OP_SMOD, ///< (signed) a % b
+	DSGA_OP_UDIV, ///< (unsigned) a / b
+	DSGA_OP_UMOD, ///< (unsigned) a & b
+	DSGA_OP_MUL,  ///< a * b
+	DSGA_OP_AND,  ///< a & b
+	DSGA_OP_OR,   ///< a | b
+	DSGA_OP_XOR,  ///< a ^ b
 };
 
 
@@ -89,7 +91,7 @@ struct DeterministicSpriteGroup {
 	DeterministicSpriteGroupAdjust *adjusts;
 	DeterministicSpriteGroupRange *ranges; // Dynamically allocated
 
-	// Dynamically allocated, this is the sole owner
+	/* Dynamically allocated, this is the sole owner */
 	const SpriteGroup *default_group;
 };
 
@@ -99,19 +101,15 @@ enum RandomizedSpriteGroupCompareMode {
 };
 
 struct RandomizedSpriteGroup {
-	// Take this object:
-	VarSpriteGroupScope var_scope;
+	VarSpriteGroupScope var_scope;  ///< Take this object:
 
-	// Check for these triggers:
-	RandomizedSpriteGroupCompareMode cmp_mode;
+	RandomizedSpriteGroupCompareMode cmp_mode; ///< Check for these triggers:
 	byte triggers;
 
-	// Look for this in the per-object randomized bitmask:
-	byte lowest_randbit;
-	byte num_groups; // must be power of 2
+	byte lowest_randbit; ///< Look for this in the per-object randomized bitmask:
+	byte num_groups; ///< must be power of 2
 
-	// Take the group with appropriate index:
-	const SpriteGroup **groups;
+	const SpriteGroup **groups; ///< Take the group with appropriate index:
 };
 
 
@@ -130,7 +128,7 @@ struct ResultSpriteGroup {
 };
 
 struct TileLayoutSpriteGroup {
-	byte num_sprites; /* Number of sprites in the spriteset, used for loading stages */
+	byte num_sprites; ///< Number of sprites in the spriteset, used for loading stages
 	struct DrawTileSprites *dts;
 };
 

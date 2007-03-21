@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file npf.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
@@ -99,14 +101,14 @@ static TileIndex CalcClosestStationTile(StationID station, TileIndex tile)
 	uint x;
 	uint y;
 
-	// we are going the aim for the x coordinate of the closest corner
-	// but if we are between those coordinates, we will aim for our own x coordinate
+	/* we are going the aim for the x coordinate of the closest corner
+	 * but if we are between those coordinates, we will aim for our own x coordinate */
 	x = clamp(TileX(tile), minx, maxx);
 
-	// same for y coordinate, see above comment
+	/* same for y coordinate, see above comment */
 	y = clamp(TileY(tile), miny, maxy);
 
-	// return the tile of our target coordinates
+	/* return the tile of our target coordinates */
 	return TileXY(x, y);
 }
 
@@ -121,7 +123,7 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, Open
 	TileIndex to = fstd->dest_coords;
 	uint dist;
 
-	// for train-stations, we are going to aim for the closest station tile
+	/* for train-stations, we are going to aim for the closest station tile */
 	if (as->user_data[NPF_TYPE] == TRANSPORT_RAIL && fstd->station_index != INVALID_STATION)
 		to = CalcClosestStationTile(fstd->station_index, from);
 
@@ -173,7 +175,7 @@ static uint NPFTunnelCost(AyStarNode* current)
 		FindLengthOfTunnelResult flotr;
 		flotr = FindLengthOfTunnel(tile, ReverseDiagDir(exitdir));
 		return flotr.length * NPF_TILE_LENGTH;
-		//TODO: Penalty for tunnels?
+		/* @todo: Penalty for tunnels? */
 	} else {
 		/* We are entering the tunnel, the enter tile is just a
 		 * straight track */
@@ -244,19 +246,19 @@ static void NPFMarkTile(TileIndex tile)
 
 static int32 NPFWaterPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent)
 {
-	//TileIndex tile = current->tile;
+	/* TileIndex tile = current->tile; */
 	int32 cost = 0;
 	Trackdir trackdir = (Trackdir)current->direction;
 
-	cost = _trackdir_length[trackdir]; /* Should be different for diagonal tracks */
+	cost = _trackdir_length[trackdir]; // Should be different for diagonal tracks
 
 	if (IsBuoyTile(current->tile) && IsDiagonalTrackdir(trackdir))
-		cost += _patches.npf_buoy_penalty; /* A small penalty for going over buoys */
+		cost += _patches.npf_buoy_penalty; // A small penalty for going over buoys
 
 	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction))
 		cost += _patches.npf_water_curve_penalty;
 
-	/* TODO More penalties? */
+	/* @todo More penalties? */
 
 	return cost;
 }
@@ -385,8 +387,8 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	/* Check for turns */
 	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction))
 		cost += _patches.npf_rail_curve_penalty;
-	//TODO, with realistic acceleration, also the amount of straight track between
-	//      curves should be taken into account, as this affects the speed limit.
+	/*TODO, with realistic acceleration, also the amount of straight track between
+	 *      curves should be taken into account, as this affects the speed limit. */
 
 	/* Check for reverse in depot */
 	if (IsTileDepotType(tile, TRANSPORT_RAIL) && as->EndNodeCheck(as, &new_node) != AYSTAR_FOUND_END_NODE) {
@@ -484,7 +486,7 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 			break;
 	}
 
-	return true; /* no need to check */
+	return true; // no need to check
 }
 
 
@@ -544,7 +546,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		/* Find out the exit direction first */
 		if (IsRoadStopTile(src_tile)) {
 			exitdir = GetRoadStopDir(src_tile);
-		} else { /* Train or road depot */
+		} else { // Train or road depot
 			exitdir = GetDepotDirection(src_tile, type);
 		}
 
@@ -610,7 +612,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		DiagDirection exitdir;
 		if (IsRoadStopTile(dst_tile)) {
 			exitdir = GetRoadStopDir(dst_tile);
-		} else { /* Road or train depot */
+		} else { // Road or train depot
 			exitdir = GetDepotDirection(dst_tile, type);
 		}
 		/* Find the trackdirs that are available for a depot or station with this
@@ -640,7 +642,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		/* Check for oneway signal against us */
 		if (IsTileType(dst_tile, MP_RAILWAY) && GetRailTileType(dst_tile) == RAIL_TILE_SIGNALS) {
 			if (HasSignalOnTrackdir(dst_tile, ReverseTrackdir(dst_trackdir)) && !HasSignalOnTrackdir(dst_tile, dst_trackdir))
-				// if one way signal not pointing towards us, stop going in this direction.
+				/* if one way signal not pointing towards us, stop going in this direction. */
 				break;
 		}
 		{

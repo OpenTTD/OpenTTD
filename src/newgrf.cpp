@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf.cpp */
+
 #include "stdafx.h"
 
 #include <stdarg.h>
@@ -242,7 +244,7 @@ static GRFFile *GetFileByFilename(const char *filename)
 static StringID MapGRFStringID(StringID str)
 {
 	/* 0xD0 and 0xDC stand for all the TextIDs in the range
-	*  of 0xD000 (misc graphics texts) and 0xDC00 (misc persistent texts).
+	 * of 0xD000 (misc graphics texts) and 0xDC00 (misc persistent texts).
 	 * These strings are unique to each grf file, and thus require to be used with the
 	 * grfid in which they are declared */
 	if (GB(str, 8, 8) == 0xD0 || GB(str, 8, 8) == 0xDC) {
@@ -288,7 +290,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	bool ret = false;
 
 	switch (prop) {
-		case 0x05: /* Track type */
+		case 0x05: // Track type
 			FOR_EACH_OBJECT {
 				uint8 tracktype = grf_load_byte(&buf);
 
@@ -303,13 +305,13 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x08: /* AI passenger service */
-			/* TODO */
+		case 0x08: // AI passenger service
+			/* @todo missing feature */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
 			break;
 
-		case 0x09: /* Speed (1 unit is 1 kmh) */
+		case 0x09: // Speed (1 unit is 1 kmh)
 			FOR_EACH_OBJECT {
 				uint16 speed = grf_load_word(&buf);
 				if (speed == 0xFFFF) speed = 0;
@@ -318,7 +320,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x0B: /* Power */
+		case 0x0B: // Power
 			FOR_EACH_OBJECT {
 				uint16 power = grf_load_word(&buf);
 
@@ -329,7 +331,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x0D: /* Running cost factor */
+		case 0x0D: // Running cost factor
 			FOR_EACH_OBJECT {
 				uint8 runcostfact = grf_load_byte(&buf);
 
@@ -339,7 +341,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x0E: /* Running cost base */
+		case 0x0E: // Running cost base
 			FOR_EACH_OBJECT {
 				uint32 base = grf_load_dword(&buf);
 
@@ -347,7 +349,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 					case 0x4C30: rvi[i].running_cost_class = 0; break;
 					case 0x4C36: rvi[i].running_cost_class = 1; break;
 					case 0x4C3C: rvi[i].running_cost_class = 2; break;
-					case 0: break; /* Used by wagons */
+					case 0: break; // Used by wagons
 					default:
 						grfmsg(1, "RailVehicleChangeInfo: Unsupported running cost base 0x%04X, ignoring", base);
 						break;
@@ -355,7 +357,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x12: /* Sprite ID */
+		case 0x12: // Sprite ID
 			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
@@ -367,7 +369,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x13: /* Dual-headed */
+		case 0x13: // Dual-headed
 			FOR_EACH_OBJECT {
 				uint8 dual = grf_load_byte(&buf);
 
@@ -390,11 +392,11 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x14: /* Cargo capacity */
+		case 0x14: // Cargo capacity
 			FOR_EACH_OBJECT rvi[i].capacity = grf_load_byte(&buf);
 			break;
 
-		case 0x15: /* Cargo type */
+		case 0x15: // Cargo type
 			FOR_EACH_OBJECT {
 				uint8 ctype = grf_load_byte(&buf);
 
@@ -407,19 +409,19 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x16: /* Weight */
+		case 0x16: // Weight
 			FOR_EACH_OBJECT SB(rvi[i].weight, 0, 8, grf_load_byte(&buf));
 			break;
 
-		case 0x17: /* Cost factor */
+		case 0x17: // Cost factor
 			FOR_EACH_OBJECT rvi[i].base_cost = grf_load_byte(&buf);
 			break;
 
-		case 0x18: /* AI rank */
+		case 0x18: // AI rank
 			FOR_EACH_OBJECT rvi[i].ai_rank = grf_load_byte(&buf);
 			break;
 
-		case 0x19: /* Engine traction type */
+		case 0x19: // Engine traction type
 			/* What do the individual numbers mean?
 			 * 0x00 .. 0x07: Steam
 			 * 0x08 .. 0x27: Diesel
@@ -449,7 +451,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x1A: /* Alter purchase list sort order */
+		case 0x1A: // Alter purchase list sort order
 			FOR_EACH_OBJECT {
 				EngineID pos = grf_load_byte(&buf);
 
@@ -461,40 +463,40 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x1B: /* Powered wagons power bonus */
+		case 0x1B: // Powered wagons power bonus
 			FOR_EACH_OBJECT rvi[i].pow_wag_power = grf_load_word(&buf);
 			break;
 
-		case 0x1C: /* Refit cost */
+		case 0x1C: // Refit cost
 			FOR_EACH_OBJECT ei[i].refit_cost = grf_load_byte(&buf);
 			break;
 
-		case 0x1D: /* Refit cargo */
+		case 0x1D: // Refit cargo
 			FOR_EACH_OBJECT ei[i].refit_mask = grf_load_dword(&buf);
 			break;
 
-		case 0x1E: /* Callback */
+		case 0x1E: // Callback
 			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
-		case 0x1F: /* Tractive effort coefficient */
+		case 0x1F: // Tractive effort coefficient
 			FOR_EACH_OBJECT rvi[i].tractive_effort = grf_load_byte(&buf);
 			break;
 
-		case 0x21: /* Shorter vehicle */
+		case 0x21: // Shorter vehicle
 			FOR_EACH_OBJECT rvi[i].shorten_factor = grf_load_byte(&buf);
 			break;
 
-		case 0x22: /* Visual effect */
-			// see note in engine.h about rvi->visual_effect
+		case 0x22: // Visual effect
+			/* see note in engine.h about rvi->visual_effect */
 			FOR_EACH_OBJECT rvi[i].visual_effect = grf_load_byte(&buf);
 			break;
 
-		case 0x23: /* Powered wagons weight bonus */
+		case 0x23: // Powered wagons weight bonus
 			FOR_EACH_OBJECT rvi[i].pow_wag_weight = grf_load_byte(&buf);
 			break;
 
-		case 0x24: /* High byte of vehicle weight */
+		case 0x24: // High byte of vehicle weight
 			FOR_EACH_OBJECT {
 				byte weight = grf_load_byte(&buf);
 
@@ -506,34 +508,33 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x25: /* User-defined bit mask to set when checking veh. var. 42 */
+		case 0x25: // User-defined bit mask to set when checking veh. var. 42
 			FOR_EACH_OBJECT rvi[i].user_def_data = grf_load_byte(&buf);
 			break;
 
-		case 0x27: /* Miscellaneous flags */
+		case 0x27: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
 				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
 			}
 			break;
 
-		case 0x28: /* Cargo classes allowed */
+		case 0x28: // Cargo classes allowed
 			FOR_EACH_OBJECT cargo_allowed[engine + i] = grf_load_word(&buf);
 			break;
 
-		case 0x29: /* Cargo classes disallowed */
+		case 0x29: // Cargo classes disallowed
 			FOR_EACH_OBJECT cargo_disallowed[engine + i] = grf_load_word(&buf);
 			break;
 
-		case 0x2A: /* Long format introduction date (days since year 0) */
+		case 0x2A: // Long format introduction date (days since year 0)
 			FOR_EACH_OBJECT ei[i].base_intro = grf_load_dword(&buf);
 			break;
 
-		/* TODO */
-		/* Fall-through for unimplemented one byte long properties. */
-		case 0x20: /* Air drag */
-		case 0x26: /* Retire vehicle early */
-			/* TODO */
+		/* @todo air drag and retire vehicle early
+		 * Fall-through for unimplemented one byte long properties. */
+		case 0x20: // Air drag
+		case 0x26: // Retire vehicle early
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
 			break;
@@ -555,25 +556,26 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	bool ret = false;
 
 	switch (prop) {
-		case 0x08: /* Speed (1 unit is 0.5 kmh) */
+		case 0x08: // Speed (1 unit is 0.5 kmh)
 			FOR_EACH_OBJECT rvi[i].max_speed = grf_load_byte(&buf);
 			break;
 
-		case 0x09: /* Running cost factor */
+		case 0x09: // Running cost factor
 			FOR_EACH_OBJECT rvi[i].running_cost = grf_load_byte(&buf);
 			break;
 
-		case 0x0A: /* Running cost base */
-			/* TODO: I have no idea. --pasky */
+		case 0x0A: // Running cost base
+			/* @todo : I have no idea. --pasky
+			 * I THINK it is used for overriding the base cost of all road vehicle (_price.roadveh_base) --belugas */
 			FOR_EACH_OBJECT grf_load_dword(&buf);
 			ret = true;
 			break;
 
-		case 0x0E: /* Sprite ID */
+		case 0x0E: // Sprite ID
 			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
-				// cars have different custom id in the GRF file
+				/* cars have different custom id in the GRF file */
 				if (spriteid == 0xFF) spriteid = 0xFD;
 
 				if (spriteid < 0xFD) spriteid >>= 1;
@@ -582,11 +584,11 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x0F: /* Cargo capacity */
+		case 0x0F: // Cargo capacity
 			FOR_EACH_OBJECT rvi[i].capacity = grf_load_byte(&buf);
 			break;
 
-		case 0x10: /* Cargo type */
+		case 0x10: // Cargo type
 			FOR_EACH_OBJECT {
 				uint8 cargo = grf_load_byte(&buf);
 
@@ -599,17 +601,17 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x11: /* Cost factor */
+		case 0x11: // Cost factor
 			FOR_EACH_OBJECT rvi[i].base_cost = grf_load_byte(&buf); // ?? is it base_cost?
 			break;
 
-		case 0x12: /* SFX */
+		case 0x12: // SFX
 			FOR_EACH_OBJECT rvi[i].sfx = (SoundFx)grf_load_byte(&buf);
 			break;
 
-		case 0x13: /* Power in 10hp */
-		case 0x14: /* Weight in 1/4 tons */
-		case 0x15: /* Speed in mph*0.8 */
+		case 0x13: // Power in 10hp
+		case 0x14: // Weight in 1/4 tons
+		case 0x15: // Speed in mph*0.8
 			/* TODO: Support for road vehicles realistic power
 			 * computations (called rvpower in TTDPatch) is just
 			 * missing in OTTD yet. --pasky */
@@ -617,41 +619,41 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			ret = true;
 			break;
 
-		case 0x16: /* Cargos available for refitting */
+		case 0x16: // Cargos available for refitting
 			FOR_EACH_OBJECT ei[i].refit_mask = grf_load_dword(&buf);
 			break;
 
-		case 0x17: /* Callback mask */
+		case 0x17: // Callback mask
 			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
-		case 0x1A: /* Refit cost */
+		case 0x1A: // Refit cost
 			FOR_EACH_OBJECT ei[i].refit_cost = grf_load_byte(&buf);
 			break;
 
-		case 0x1C: /* Miscellaneous flags */
+		case 0x1C: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
 				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
 			}
 			break;
 
-		case 0x1D: /* Cargo classes allowed */
+		case 0x1D: // Cargo classes allowed
 			FOR_EACH_OBJECT cargo_allowed[ROAD_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			break;
 
-		case 0x1E: /* Cargo classes disallowed */
+		case 0x1E: // Cargo classes disallowed
 			FOR_EACH_OBJECT cargo_disallowed[ROAD_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			break;
 
-		case 0x1F: /* Long format introduction date (days since year 0) */
+		case 0x1F: // Long format introduction date (days since year 0)
 			FOR_EACH_OBJECT ei[i].base_intro = grf_load_dword(&buf);
 			break;
 
-		case 0x18: /* Tractive effort */
-		case 0x19: /* Air drag */
-		case 0x1B: /* Retire vehicle early */
-			/* TODO */
+		case 0x18: // Tractive effort
+		case 0x19: // Air drag
+		case 0x1B: // Retire vehicle early
+			/* @todo */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
 			break;
@@ -675,11 +677,11 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 	//printf("e %x prop %x?\n", engine, prop);
 	switch (prop) {
-		case 0x08: /* Sprite ID */
+		case 0x08: // Sprite ID
 			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
-				// ships have different custom id in the GRF file
+				/* ships have different custom id in the GRF file */
 				if (spriteid == 0xFF) spriteid = 0xFD;
 
 				if (spriteid < 0xFD) spriteid >>= 1;
@@ -688,19 +690,19 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x09: /* Refittable */
+		case 0x09: // Refittable
 			FOR_EACH_OBJECT svi[i].refittable = (grf_load_byte(&buf) != 0);
 			break;
 
-		case 0x0A: /* Cost factor */
+		case 0x0A: // Cost factor
 			FOR_EACH_OBJECT svi[i].base_cost = grf_load_byte(&buf); // ?? is it base_cost?
 			break;
 
-		case 0x0B: /* Speed (1 unit is 0.5 kmh) */
+		case 0x0B: // Speed (1 unit is 0.5 kmh)
 			FOR_EACH_OBJECT svi[i].max_speed = grf_load_byte(&buf);
 			break;
 
-		case 0x0C: /* Cargo type */
+		case 0x0C: // Cargo type
 			FOR_EACH_OBJECT {
 				uint8 cargo = grf_load_byte(&buf);
 
@@ -713,53 +715,53 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
-		case 0x0D: /* Cargo capacity */
+		case 0x0D: // Cargo capacity
 			FOR_EACH_OBJECT svi[i].capacity = grf_load_word(&buf);
 			break;
 
-		case 0x0F: /* Running cost factor */
+		case 0x0F: // Running cost factor
 			FOR_EACH_OBJECT svi[i].running_cost = grf_load_byte(&buf);
 			break;
 
-		case 0x10: /* SFX */
+		case 0x10: // SFX
 			FOR_EACH_OBJECT svi[i].sfx = (SoundFx)grf_load_byte(&buf);
 			break;
 
-		case 0x11: /* Cargos available for refitting */
+		case 0x11: // Cargos available for refitting
 			FOR_EACH_OBJECT ei[i].refit_mask = grf_load_dword(&buf);
 			break;
 
-		case 0x12: /* Callback mask */
+		case 0x12: // Callback mask
 			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
-		case 0x13: /* Refit cost */
+		case 0x13: // Refit cost
 			FOR_EACH_OBJECT ei[i].refit_cost = grf_load_byte(&buf);
 			break;
 
-		case 0x17: /* Miscellaneous flags */
+		case 0x17: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
 				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
 			}
 			break;
 
-		case 0x18: /* Cargo classes allowed */
+		case 0x18: // Cargo classes allowed
 			FOR_EACH_OBJECT cargo_allowed[SHIP_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			break;
 
-		case 0x19: /* Cargo classes disallowed */
+		case 0x19: // Cargo classes disallowed
 			FOR_EACH_OBJECT cargo_disallowed[SHIP_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			break;
 
-		case 0x1A: /* Long format introduction date (days since year 0) */
+		case 0x1A: // Long format introduction date (days since year 0)
 			FOR_EACH_OBJECT ei[i].base_intro = grf_load_dword(&buf);
 			break;
 
-		case 0x14: /* Ocean speed fraction */
-		case 0x15: /* Canal speed fraction */
-		case 0x16: /* Retire vehicle early */
-			/* TODO */
+		case 0x14: // Ocean speed fraction
+		case 0x15: // Canal speed fraction
+		case 0x16: // Retire vehicle early
+			/* @todo */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
 			break;
@@ -783,11 +785,11 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 
 	//printf("e %x prop %x?\n", engine, prop);
 	switch (prop) {
-		case 0x08: /* Sprite ID */
+		case 0x08: // Sprite ID
 			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
-				// aircraft have different custom id in the GRF file
+				/* aircraft have different custom id in the GRF file */
 				if (spriteid == 0xFF) spriteid = 0xFD;
 
 				if (spriteid < 0xFD) spriteid >>= 1;
@@ -796,7 +798,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			}
 			break;
 
-		case 0x09: /* Helicopter */
+		case 0x09: // Helicopter
 			FOR_EACH_OBJECT {
 				if (grf_load_byte(&buf) == 0) {
 					avi[i].subtype = AIR_HELI;
@@ -806,71 +808,71 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			}
 			break;
 
-		case 0x0A: /* Large */
+		case 0x0A: // Large
 			FOR_EACH_OBJECT SB(avi[i].subtype, 1, 1, (grf_load_byte(&buf) != 0 ? 1 : 0)); // AIR_FAST
 			break;
 
-		case 0x0B: /* Cost factor */
+		case 0x0B: // Cost factor
 			FOR_EACH_OBJECT avi[i].base_cost = grf_load_byte(&buf); // ?? is it base_cost?
 			break;
 
-		case 0x0C: /* Speed (1 unit is 8 mph, we translate to 1 unit is 1 km/h) */
+		case 0x0C: // Speed (1 unit is 8 mph, we translate to 1 unit is 1 km/h)
 			FOR_EACH_OBJECT avi[i].max_speed = (grf_load_byte(&buf) * 129) / 10;
 			break;
 
-		case 0x0D: /* Acceleration */
+		case 0x0D: // Acceleration
 			FOR_EACH_OBJECT avi[i].acceleration = (grf_load_byte(&buf) * 129) / 10;
 			break;
 
-		case 0x0E: /* Running cost factor */
+		case 0x0E: // Running cost factor
 			FOR_EACH_OBJECT avi[i].running_cost = grf_load_byte(&buf);
 			break;
 
-		case 0x0F: /* Passenger capacity */
+		case 0x0F: // Passenger capacity
 			FOR_EACH_OBJECT avi[i].passenger_capacity = grf_load_word(&buf);
 			break;
 
-		case 0x11: /* Mail capacity */
+		case 0x11: // Mail capacity
 			FOR_EACH_OBJECT avi[i].mail_capacity = grf_load_byte(&buf);
 			break;
 
-		case 0x12: /* SFX */
+		case 0x12: // SFX
 			FOR_EACH_OBJECT avi[i].sfx = (SoundFx)grf_load_byte(&buf);
 			break;
 
-		case 0x13: /* Cargos available for refitting */
+		case 0x13: // Cargos available for refitting
 			FOR_EACH_OBJECT ei[i].refit_mask = grf_load_dword(&buf);
 			break;
 
-		case 0x14: /* Callback mask */
+		case 0x14: // Callback mask
 			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
-		case 0x15: /* Refit cost */
+		case 0x15: // Refit cost
 			FOR_EACH_OBJECT ei[i].refit_cost = grf_load_byte(&buf);
 			break;
 
-		case 0x17: /* Miscellaneous flags */
+		case 0x17: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
 				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
 			}
 			break;
 
-		case 0x18: /* Cargo classes allowed */
+		case 0x18: // Cargo classes allowed
 			FOR_EACH_OBJECT cargo_allowed[AIRCRAFT_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			break;
 
-		case 0x19: /* Cargo classes disallowed */
+		case 0x19: // Cargo classes disallowed
 			FOR_EACH_OBJECT cargo_disallowed[AIRCRAFT_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			break;
 
-		case 0x1A: /* Long format introduction date (days since year 0) */
+		case 0x1A: // Long format introduction date (days since year 0)
 			FOR_EACH_OBJECT ei[i].base_intro = grf_load_dword(&buf);
 			break;
 
-		case 0x16: /* Retire vehicle early */
-			/* TODO */
+		case 0x16: // Retire vehicle early
+			/* @todo */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
 			break;
@@ -912,7 +914,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	}
 
 	switch (prop) {
-		case 0x08: /* Class ID */
+		case 0x08: // Class ID
 			FOR_EACH_OBJECT {
 				/* Property 0x08 is special; it is where the station is allocated */
 				if (statspec[i] == NULL) statspec[i] = CallocT<StationSpec>(1);
@@ -923,7 +925,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			}
 			break;
 
-		case 0x09: /* Define sprite layout */
+		case 0x09: // Define sprite layout
 			FOR_EACH_OBJECT {
 				StationSpec *statspec = _cur_grffile->stations[stid + i];
 
@@ -947,7 +949,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					while (buf < *bufp + len) {
 						DrawTileSeqStruct *dtss;
 
-						// no relative bounding box support
+						/* no relative bounding box support */
 						dts->seq = ReallocT((DrawTileSeqStruct*)dts->seq, ++seq_count);
 						dtss = (DrawTileSeqStruct*) &dts->seq[seq_count - 1];
 
@@ -980,7 +982,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			}
 			break;
 
-		case 0x0A: /* Copy sprite layout */
+		case 0x0A: // Copy sprite layout
 			FOR_EACH_OBJECT {
 				StationSpec *statspec = _cur_grffile->stations[stid + i];
 				byte srcid = grf_load_byte(&buf);
@@ -992,19 +994,19 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			}
 			break;
 
-		case 0x0B: /* Callback mask */
+		case 0x0B: // Callback mask
 			FOR_EACH_OBJECT statspec[i]->callbackmask = grf_load_byte(&buf);
 			break;
 
-		case 0x0C: /* Disallowed number of platforms */
+		case 0x0C: // Disallowed number of platforms
 			FOR_EACH_OBJECT statspec[i]->disallowed_platforms = grf_load_byte(&buf);
 			break;
 
-		case 0x0D: /* Disallowed platform lengths */
+		case 0x0D: // Disallowed platform lengths
 			FOR_EACH_OBJECT statspec[i]->disallowed_lengths = grf_load_byte(&buf);
 			break;
 
-		case 0x0E: /* Define custom layout */
+		case 0x0E: // Define custom layout
 			FOR_EACH_OBJECT {
 				StationSpec *statspec = _cur_grffile->stations[stid + i];
 
@@ -1034,7 +1036,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					//debug("p %d > %d ?", number, stat->platforms[l]);
 					if (number > statspec->platforms[l]) {
 						statspec->layouts[l] = ReallocT(statspec->layouts[l], number);
-						// We expect NULL being 0 here, but C99 guarantees that.
+						/* We expect NULL being 0 here, but C99 guarantees that. */
 						memset(statspec->layouts[l] + statspec->platforms[l], 0,
 						       (number - statspec->platforms[l]) * sizeof(**statspec->layouts));
 
@@ -1057,7 +1059,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			}
 			break;
 
-		case 0x0F: /* Copy custom layout */
+		case 0x0F: // Copy custom layout
 			FOR_EACH_OBJECT {
 				StationSpec *statspec = _cur_grffile->stations[stid + i];
 				byte srcid = grf_load_byte(&buf);
@@ -1070,41 +1072,41 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			}
 			break;
 
-		case 0x10: /* Little/lots cargo threshold */
+		case 0x10: // Little/lots cargo threshold
 			FOR_EACH_OBJECT statspec[i]->cargo_threshold = grf_load_word(&buf);
 			break;
 
-		case 0x11: /* Pylon placement */
+		case 0x11: // Pylon placement
 			FOR_EACH_OBJECT statspec[i]->pylons = grf_load_byte(&buf);
 			break;
 
-		case 0x12: /* Cargo types for random triggers */
+		case 0x12: // Cargo types for random triggers
 			FOR_EACH_OBJECT statspec[i]->cargo_triggers = grf_load_dword(&buf);
 			break;
 
-		case 0x13: /* General flags */
+		case 0x13: // General flags
 			FOR_EACH_OBJECT statspec[i]->flags = grf_load_byte(&buf);
 			break;
 
-		case 0x14: /* Overhead wire placement */
+		case 0x14: // Overhead wire placement
 			FOR_EACH_OBJECT statspec[i]->wires = grf_load_byte(&buf);
 			break;
 
-		case 0x15: /* Blocked tiles */
+		case 0x15: // Blocked tiles
 			FOR_EACH_OBJECT statspec[i]->blocked = grf_load_byte(&buf);
 			break;
 
-		case 0x16: /* TODO Animation info */
+		case 0x16: // @todo Animation info
 			FOR_EACH_OBJECT grf_load_word(&buf);
 			ret = true;
 			break;
 
-		case 0x17: /* TODO Animation speed */
+		case 0x17: // @todo Animation speed
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
 			break;
 
-		case 0x18: /* TODO Animation triggers */
+		case 0x18: // @todo Animation triggers
 			FOR_EACH_OBJECT grf_load_word(&buf);
 			ret = true;
 			break;
@@ -1125,27 +1127,27 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 	bool ret = false;
 
 	switch (prop) {
-		case 0x08: /* Year of availability */
+		case 0x08: // Year of availability
 			FOR_EACH_OBJECT _bridge[brid + i].avail_year = ORIGINAL_BASE_YEAR + grf_load_byte(&buf);
 			break;
 
-		case 0x09: /* Minimum length */
+		case 0x09: // Minimum length
 			FOR_EACH_OBJECT _bridge[brid + i].min_length = grf_load_byte(&buf);
 			break;
 
-		case 0x0A: /* Maximum length */
+		case 0x0A: // Maximum length
 			FOR_EACH_OBJECT _bridge[brid + i].max_length = grf_load_byte(&buf);
 			break;
 
-		case 0x0B: /* Cost factor */
+		case 0x0B: // Cost factor
 			FOR_EACH_OBJECT _bridge[brid + i].price = grf_load_byte(&buf);
 			break;
 
-		case 0x0C: /* Maximum speed */
+		case 0x0C: // Maximum speed
 			FOR_EACH_OBJECT _bridge[brid + i].speed = grf_load_word(&buf);
 			break;
 
-		case 0x0D: /* Bridge sprite tables */
+		case 0x0D: // Bridge sprite tables
 			FOR_EACH_OBJECT {
 				Bridge *bridge = &_bridge[brid + i];
 				byte tableid = grf_load_byte(&buf);
@@ -1185,11 +1187,11 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 			}
 			break;
 
-		case 0x0E: /* Flags; bit 0 - disable far pillars */
+		case 0x0E: // Flags; bit 0 - disable far pillars
 			FOR_EACH_OBJECT _bridge[brid + i].flags = grf_load_byte(&buf);
 			break;
 
-		case 0x0F: /* Long format year of availability (year since year 0) */
+		case 0x0F: // Long format year of availability (year since year 0)
 			FOR_EACH_OBJECT _bridge[brid + i].avail_year = clamp(grf_load_dword(&buf), MIN_YEAR, MAX_YEAR);
 			break;
 
@@ -1547,7 +1549,7 @@ static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, 
 	}
 
 	switch (prop) {
-		case 0x08: /* Relative volume */
+		case 0x08: // Relative volume
 			FOR_EACH_OBJECT {
 				uint sound = sid + i + _cur_grffile->sound_offset - GetNumOriginalSounds();
 
@@ -1559,7 +1561,7 @@ static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, 
 			}
 			break;
 
-		case 0x09: /* Priority */
+		case 0x09: // Priority
 			FOR_EACH_OBJECT {
 				uint sound = sid + i + _cur_grffile->sound_offset - GetNumOriginalSounds();
 
@@ -1571,7 +1573,7 @@ static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, 
 			}
 			break;
 
-		case 0x0A: /* Override old sound */
+		case 0x0A: // Override old sound
 			FOR_EACH_OBJECT {
 				uint sound = sid + i + _cur_grffile->sound_offset - GetNumOriginalSounds();
 				uint orig_sound = grf_load_byte(&buf);
@@ -1672,27 +1674,27 @@ static void FeatureChangeInfo(byte *buf, int len)
 			case GSF_AIRCRAFT:
 				/* Common properties for vehicles */
 				switch (prop) {
-					case 0x00: /* Introduction date */
+					case 0x00: // Introduction date
 						FOR_EACH_OBJECT ei[i].base_intro = grf_load_word(&buf) + DAYS_TILL_ORIGINAL_BASE_YEAR;
 						break;
 
-					case 0x02: /* Decay speed */
+					case 0x02: // Decay speed
 						FOR_EACH_OBJECT SB(ei[i].unk2, 0, 7, grf_load_byte(&buf) & 0x7F);
 						break;
 
-					case 0x03: /* Vehicle life */
+					case 0x03: // Vehicle life
 						FOR_EACH_OBJECT ei[i].lifelength = grf_load_byte(&buf);
 						break;
 
-					case 0x04: /* Model life */
+					case 0x04: // Model life
 						FOR_EACH_OBJECT ei[i].base_life = grf_load_byte(&buf);
 						break;
 
-					case 0x06: /* Climates available */
+					case 0x06: // Climates available
 						FOR_EACH_OBJECT ei[i].climates = grf_load_byte(&buf);
 						break;
 
-					case 0x07: /* Loading speed */
+					case 0x07: // Loading speed
 						/* Hyronymus explained me what does
 						 * this mean and insists on having a
 						 * credit ;-). --pasky */
@@ -1769,7 +1771,7 @@ static void InitChangeInfo(byte *buf, int len)
 		switch (feature) {
 			case GSF_GLOBALVAR:
 				switch (prop) {
-					case 0x09: /* Cargo Translation Table */
+					case 0x09: // Cargo Translation Table
 						if (index != 0) {
 							grfmsg(1, "InitChangeInfo: Cargo translation table must start at zero");
 							return;
@@ -1804,8 +1806,8 @@ static const SpriteGroup* NewCallBackResultSpriteGroup(uint16 value)
 
 	group->type = SGT_CALLBACK;
 
-	// Old style callback results have the highest byte 0xFF so signify it is a callback result
-	// New style ones only have the highest bit set (allows 15-bit results, instead of just 8)
+	/* Old style callback results have the highest byte 0xFF so signify it is a callback result
+	 * New style ones only have the highest bit set (allows 15-bit results, instead of just 8) */
 	if ((value >> 8) == 0xFF) {
 		value &= ~0xFF00;
 	} else {
@@ -1936,9 +1938,9 @@ static void NewSpriteGroup(byte *buf, int len)
 	uint8 type    = grf_load_byte(&buf);
 
 	if (setid >= _cur_grffile->spritegroups_count) {
-		// Allocate memory for new sprite group references.
+		/* Allocate memory for new sprite group references. */
 		_cur_grffile->spritegroups = ReallocT(_cur_grffile->spritegroups, setid + 1);
-		// Initialise new space to NULL
+		/* Initialise new space to NULL */
 		for (; _cur_grffile->spritegroups_count < (setid + 1); _cur_grffile->spritegroups_count++)
 			_cur_grffile->spritegroups[_cur_grffile->spritegroups_count] = NULL;
 	}
@@ -2269,7 +2271,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 
 
 	if (feature == GSF_STATION) {
-		// We do things differently for stations.
+		/* We do things differently for stations. */
 
 		for (uint i = 0; i < idcount; i++) {
 			uint8 stid = buf[3 + i];
@@ -2338,9 +2340,9 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 		return;
 	}
 
-	// FIXME: Tropicset contains things like:
-	// 03 00 01 19 01 00 00 00 00 - this is missing one 00 at the end,
-	// what should we exactly do with that? --pasky
+	/* FIXME: Tropicset contains things like:
+	 * 03 00 01 19 01 00 00 00 00 - this is missing one 00 at the end,
+	 * what should we exactly do with that? --pasky */
 
 	if (_cur_grffile->spriteset_start == 0 || _cur_grffile->spritegroups == 0) {
 		grfmsg(1, "FeatureMapSpriteGroup: No sprite set to work on! Skipping");
@@ -2406,7 +2408,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 		for (uint i = 0; i < idcount; i++) {
 			uint8 engine = buf[3 + i] + _vehshifts[feature];
 
-			// Don't tell me you don't love duplicated code!
+			/* Don't tell me you don't love duplicated code! */
 			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
 				grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping", groupid, _cur_grffile->spritegroups_count);
 				return;
@@ -2418,7 +2420,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 				if (feature == GSF_AIRCRAFT && engine == last_engines[i]) {
 					SetRotorOverrideSprites(engine, _cur_grffile->spritegroups[groupid]);
 				} else {
-					// TODO: No multiple cargo types per vehicle yet. --pasky
+					/* TODO: No multiple cargo types per vehicle yet. --pasky */
 					SetWagonOverrideSprites(engine, CT_DEFAULT, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
 				}
 			} else {
@@ -2501,7 +2503,7 @@ static void FeatureNewName(byte *buf, int len)
 				case GSF_TOWNHOUSE:
 				default:
 					switch (GB(id, 8, 8)) {
-						case 0xC4: /* Station class name */
+						case 0xC4: // Station class name
 							if (_cur_grffile->stations == NULL || _cur_grffile->stations[GB(id, 0, 8)] == NULL) {
 								grfmsg(1, "FeatureNewName: Attempt to name undefined station 0x%X, ignoring", GB(id, 0, 8));
 							} else {
@@ -2510,7 +2512,7 @@ static void FeatureNewName(byte *buf, int len)
 							}
 							break;
 
-						case 0xC5: /* Station name */
+						case 0xC5: // Station name
 							if (_cur_grffile->stations == NULL || _cur_grffile->stations[GB(id, 0, 8)] == NULL) {
 								grfmsg(1, "FeatureNewName: Attempt to name undefined station 0x%X, ignoring", GB(id, 0, 8));
 							} else {
@@ -2518,7 +2520,7 @@ static void FeatureNewName(byte *buf, int len)
 							}
 							break;
 
-						case 0xC9: { /* House name */
+						case 0xC9: { // House name
 							if (_cur_grffile->housespec == NULL || _cur_grffile->housespec[GB(id, 0, 8)] == NULL) {
 								grfmsg(1, "FeatureNewName: Attempt to name undefined house 0x%X, ignoring.", GB(id, 0, 8));
 							} else {
@@ -2543,14 +2545,14 @@ static void FeatureNewName(byte *buf, int len)
 				case GSF_BRIDGE :
 					AddGRFString(_cur_spriteid, id, lang, name);
 					switch (GB(id, 8,8)) {
-						case 0xC9: /* House name */
+						case 0xC9: // House name
 						default:
 							grfmsg(7, "FeatureNewName: Unsupported ID (0x%04X)", id);
 					}
 					break;
 
 				case GSF_INDUSTRIES :
-				case 0x48 :   /* for generic strings */
+				case 0x48 :   // for generic strings
 					AddGRFString(_cur_spriteid, id, lang, name);
 					break;
 				default :
@@ -2580,7 +2582,7 @@ static void GraphicsNew(byte *buf, int len)
 	uint16 num = grf_load_extended(&buf);
 
 	switch (type) {
-		case 0x04: /* Signal graphics */
+		case 0x04: // Signal graphics
 			if (num != 112 && num != 240) {
 				grfmsg(1, "GraphicsNews: Signal graphics sprite count must be 112 or 240, skipping");
 				return;
@@ -2588,7 +2590,7 @@ static void GraphicsNew(byte *buf, int len)
 			_signal_base = _cur_spriteid;
 			break;
 
-		case 0x05: /* Catenary graphics */
+		case 0x05: // Catenary graphics
 			if (num != 48) {
 				grfmsg(1, "GraphicsNews: Catenary graphics sprite count must be 48, skipping");
 				return;
@@ -2596,7 +2598,7 @@ static void GraphicsNew(byte *buf, int len)
 			replace = SPR_ELRAIL_BASE + 3;
 			break;
 
-		case 0x06: /* Foundations */
+		case 0x06: // Foundations
 			if (num != 74) {
 				grfmsg(1, "GraphicsNews: Foundation graphics sprite count must be 74, skipping");
 				return;
@@ -2604,7 +2606,7 @@ static void GraphicsNew(byte *buf, int len)
 			replace = SPR_SLOPES_BASE;
 			break;
 
-		case 0x08: /* Canal graphics */
+		case 0x08: // Canal graphics
 			if (num != 65) {
 				grfmsg(1, "GraphicsNews: Canal graphics sprite count must be 65, skipping");
 				return;
@@ -2612,7 +2614,7 @@ static void GraphicsNew(byte *buf, int len)
 			replace = SPR_CANALS_BASE + 5;
 			break;
 
-		case 0x0D: /* Coast graphics */
+		case 0x0D: // Coast graphics
 			if (num != 16) {
 				grfmsg(1, "GraphicsNews: Coast graphics sprite count must be 16, skipping");
 				return;
@@ -2641,16 +2643,16 @@ static void GraphicsNew(byte *buf, int len)
 static uint32 GetParamVal(byte param, uint32 *cond_val)
 {
 	switch (param) {
-		case 0x81: /* current year */
+		case 0x81: // current year
 			return clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 
-		case 0x83: /* current climate, 0=temp, 1=arctic, 2=trop, 3=toyland */
+		case 0x83: // current climate, 0=temp, 1=arctic, 2=trop, 3=toyland
 			return _opt.landscape;
 
-		case 0x84: /* GRF loading stage */
+		case 0x84: // GRF loading stage
 			return (_cur_stage > GLS_INIT) | ((_cur_stage == GLS_ACTIVATION) << 9);
 
-		case 0x85: /* TTDPatch flags, only for bit tests */
+		case 0x85: // TTDPatch flags, only for bit tests
 			if (cond_val == NULL) {
 				/* Supported in Action 0x07 and 0x09, not 0x0D */
 				return 0;
@@ -2660,13 +2662,13 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 				return param_val;
 			}
 
-		case 0x86: /* road traffic side, bit 4 clear=left, set=right */
+		case 0x86: // road traffic side, bit 4 clear=left, set=right
 			return _opt.road_side << 4;
 
-		case 0x88: /* GRF ID check */
+		case 0x88: // GRF ID check
 			return 0;
 
-		case 0x8B: { /* TTDPatch version */
+		case 0x8B: { // TTDPatch version
 			uint major    = 2;
 			uint minor    = 6;
 			uint revision = 0; // special case: 2.0.1 is 2.0.10
@@ -2674,22 +2676,22 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 			return (major << 24) | (minor << 20) | (revision << 16) | build;
 		}
 
-		case 0x8D: /* TTD Version, 00=DOS, 01=Windows */
+		case 0x8D: // TTD Version, 00=DOS, 01=Windows
 			return !_use_dos_palette;
 
-		case 0x8E: /* Y-offset for train sprites */
+		case 0x8E: // Y-offset for train sprites
 			return _traininfo_vehicle_pitch;
 
-		case 0x92: /* Game mode */
+		case 0x92: // Game mode
 			return _game_mode;
 
-		case 0x9A: /* Always -1 */
+		case 0x9A: // Always -1
 			return UINT_MAX;
 
-		case 0x9D: /* TTD Platform, 00=TTDPatch, 01=OpenTTD */
+		case 0x9D: // TTD Platform, 00=TTDPatch, 01=OpenTTD
 			return 1;
 
-		case 0x9E: /* Miscellaneous GRF features */
+		case 0x9E: // Miscellaneous GRF features
 			return _misc_grf_features;
 
 		default:
@@ -2837,23 +2839,23 @@ static void SkipIf(byte *buf, int len)
 
 		switch (condtype) {
 			/* Tests 6 to 10 are only for param 0x88, GRFID checks */
-			case 6: /* Is GRFID active? */
+			case 6: // Is GRFID active?
 				result = c->status == GCS_ACTIVATED;
 				break;
 
-			case 7: /* Is GRFID non-active? */
+			case 7: // Is GRFID non-active?
 				result = c->status != GCS_ACTIVATED;
 				break;
 
-			case 8: /* GRFID is not but will be active? */
+			case 8: // GRFID is not but will be active?
 				result = c->status == GCS_INITIALISED;
 				break;
 
-			case 9: /* GRFID is or will be active? */
+			case 9: // GRFID is or will be active?
 				result = c->status == GCS_ACTIVATED || c->status == GCS_INITIALISED;
 				break;
 
-			case 10: /* GRFID is not nor will be active */
+			case 10: // GRFID is not nor will be active
 				/* This is the only condtype that doesn't get ignored if the GRFID is not found */
 				result = c == NULL || c->flags == GCS_DISABLED || c->status == GCS_NOT_FOUND;
 				break;
@@ -2987,7 +2989,7 @@ static void SpriteReplace(byte *buf, int len)
 	 * B num-sprites   How many sprites are in this set
 	 * W first-sprite  First sprite number to replace */
 
-	buf++; /* skip action byte */
+	buf++; // skip action byte
 	uint8 num_sets = grf_load_byte(&buf);
 
 	for (uint i = 0; i < num_sets; i++) {
@@ -3053,7 +3055,7 @@ static void GRFLoadError(byte *buf, int len)
 	/* For now we can only show one message per newgrf file. */
 	if (_cur_grfconfig->error != NULL) return;
 
-	buf++; /* Skip the action byte. */
+	buf++; // Skip the action byte.
 	byte severity   = grf_load_byte(&buf);
 	byte lang       = grf_load_byte(&buf);
 	byte message_id = grf_load_byte(&buf);
@@ -3223,10 +3225,10 @@ static void ParamSet(byte *buf, int len)
 					uint16 count   = GB(data, 16, 16);
 
 					switch (feature) {
-						case 0x00: /* Trains */
-						case 0x01: /* Road Vehicles */
-						case 0x02: /* Ships */
-						case 0x03: /* Aircraft */
+						case 0x00: // Trains
+						case 0x01: // Road Vehicles
+						case 0x02: // Ships
+						case 0x03: // Aircraft
 						{
 							uint start = 0;
 							uint size  = 0;
@@ -3277,7 +3279,7 @@ static void ParamSet(byte *buf, int len)
 							break;
 						}
 
-						case 0x08: /* General sprites */
+						case 0x08: // General sprites
 							switch (op) {
 								case 0:
 									/* Check if the allocated sprites will fit below the original sprite limit */
@@ -3371,15 +3373,15 @@ static void ParamSet(byte *buf, int len)
 			}
 			break;
 
-		case 0x07: /* Bitwise AND */
+		case 0x07: // Bitwise AND
 			res = src1 & src2;
 			break;
 
-		case 0x08: /* Bitwise OR */
+		case 0x08: // Bitwise OR
 			res = src1 | src2;
 			break;
 
-		case 0x09: /* Unsigned division */
+		case 0x09: // Unsigned division
 			if (src2 == 0) {
 				res = src1;
 			} else {
@@ -3387,7 +3389,7 @@ static void ParamSet(byte *buf, int len)
 			}
 			break;
 
-		case 0x0A: /* Signed divison */
+		case 0x0A: // Signed divison
 			if (src2 == 0) {
 				res = src1;
 			} else {
@@ -3395,7 +3397,7 @@ static void ParamSet(byte *buf, int len)
 			}
 			break;
 
-		case 0x0B: /* Unsigned modulo */
+		case 0x0B: // Unsigned modulo
 			if (src2 == 0) {
 				res = src1;
 			} else {
@@ -3403,7 +3405,7 @@ static void ParamSet(byte *buf, int len)
 			}
 			break;
 
-		case 0x0C: /* Signed modulo */
+		case 0x0C: // Signed modulo
 			if (src2 == 0) {
 				res = src1;
 			} else {
@@ -3419,7 +3421,7 @@ static void ParamSet(byte *buf, int len)
 			_traininfo_vehicle_pitch = res;
 			break;
 
-		// TODO implement
+		/* @todo implement */
 		case 0x8F: // Rail track type cost factors
 		case 0x93: // Tile refresh offset to left
 		case 0x94: // Tile refresh offset to right
@@ -3430,7 +3432,7 @@ static void ParamSet(byte *buf, int len)
 			grfmsg(7, "ParamSet: Skipping unimplemented target 0x%02X", target);
 			break;
 
-		case 0x9E: /* Miscellaneous GRF features */
+		case 0x9E: // Miscellaneous GRF features
 			_misc_grf_features = res;
 			/* Set train list engine width */
 			_traininfo_vehicle_width = HASBIT(res, 3) ? 32 : 29;
@@ -3624,7 +3626,7 @@ static void LoadGRFSound(byte *buf, int len)
 		uint32 size = grf_load_dword(&buf);
 
 		switch (tag) {
-			case ' tmf': /* 'fmt ' */
+			case ' tmf': // 'fmt '
 				/* Audio format, must be 1 (PCM) */
 				if (grf_load_word(&buf) != 1) {
 					grfmsg(1, "LoadGRFSound: Invalid audio format");
@@ -3640,7 +3642,7 @@ static void LoadGRFSound(byte *buf, int len)
 				for (; size > 16; size--) grf_load_byte(&buf);
 				break;
 
-			case 'atad': /* 'data' */
+			case 'atad': // 'data'
 				se->file_size    = size;
 				se->file_offset  = FioGetPos() - (len - (buf - buf_start)) + 1;
 				se->file_offset |= _file_index << 24;
@@ -3945,15 +3947,15 @@ static void ResetNewGRFData()
 {
 	CleanUpStrings();
 
-	// Copy/reset original engine info data
+	/* Copy/reset original engine info data */
 	memcpy(&_engine_info, &orig_engine_info, sizeof(orig_engine_info));
 	memcpy(&_rail_vehicle_info, &orig_rail_vehicle_info, sizeof(orig_rail_vehicle_info));
 	memcpy(&_ship_vehicle_info, &orig_ship_vehicle_info, sizeof(orig_ship_vehicle_info));
 	memcpy(&_aircraft_vehicle_info, &orig_aircraft_vehicle_info, sizeof(orig_aircraft_vehicle_info));
 	memcpy(&_road_vehicle_info, &orig_road_vehicle_info, sizeof(orig_road_vehicle_info));
 
-	// Copy/reset original bridge info data
-	// First, free sprite table data
+	/* Copy/reset original bridge info data
+	 * First, free sprite table data */
 	for (uint i = 0; i < MAX_BRIDGES; i++) {
 		if (_bridge[i].sprite_table != NULL) {
 			for (uint j = 0; j < 7; j++) free(_bridge[i].sprite_table[j]);
@@ -3962,21 +3964,21 @@ static void ResetNewGRFData()
 	}
 	memcpy(&_bridge, &orig_bridge, sizeof(_bridge));
 
-	// Reset refit/cargo class data
+	/* Reset refit/cargo class data /*
 	memset(&cargo_allowed, 0, sizeof(cargo_allowed));
 	memset(&cargo_disallowed, 0, sizeof(cargo_disallowed));
 
-	// Reset GRM reservations
+	/* Reset GRM reservations */
 	memset(&_grm_engines, 0, sizeof(_grm_engines));
 
-	// Unload sprite group data
+	/* Unload sprite group data */
 	UnloadWagonOverrides();
 	UnloadRotorOverrideSprites();
 	UnloadCustomEngineSprites();
 	UnloadCustomEngineNames();
 	ResetEngineListOrder();
 
-	// Reset price base data
+	/* Reset price base data */
 	ResetPriceBaseMultipliers();
 
 	/* Reset the curencies array */
@@ -3986,7 +3988,7 @@ static void ResetNewGRFData()
 	ResetCustomHouses();
 	ResetHouses();
 
-	// Reset station classes
+	/* Reset station classes */
 	ResetStationClasses();
 	ResetCustomStations();
 
@@ -3996,7 +3998,7 @@ static void ResetNewGRFData()
 	/* Reset NewGRF files */
 	ResetNewGRF();
 
-	// Add engine type to engine data. This is needed for the refit precalculation.
+	/* Add engine type to engine data. This is needed for the refit precalculation. */
 	AddTypeToEngines();
 
 	/* Set up the default cargo types */
@@ -4164,14 +4166,14 @@ static void CalculateRefitMasks()
 		}
 
 		if (cargo_allowed[engine] != 0) {
-			// Build up the list of cargo types from the set cargo classes.
+			/* Build up the list of cargo types from the set cargo classes. */
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				const CargoSpec *cs = GetCargo(i);
 				if (cargo_allowed[engine]    & cs->classes) SETBIT(mask,     i);
 				if (cargo_disallowed[engine] & cs->classes) SETBIT(not_mask, i);
 			}
 		} else {
-			// Don't apply default refit mask to wagons or engines with no capacity
+			/* Don't apply default refit mask to wagons or engines with no capacity */
 			if (xor_mask == 0 && (
 						GetEngine(engine)->type != VEH_TRAIN || (
 							RailVehInfo(engine)->capacity != 0 &&
@@ -4447,7 +4449,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 		for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 
-			// TODO usererror()
+			/* @todo usererror() */
 			if (!FioCheckFileExists(c->filename)) error("NewGRF file is missing '%s'", c->filename);
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);

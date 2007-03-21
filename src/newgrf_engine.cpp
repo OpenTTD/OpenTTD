@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_engine.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
@@ -66,10 +68,10 @@ static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID car
 	const WagonOverrides *wos = &_engine_wagon_overrides[engine];
 	int i;
 
-	// XXX: This could turn out to be a timesink on profiles. We could
-	// always just dedicate 65535 bytes for an [engine][train] trampoline
-	// for O(1). Or O(logMlogN) and searching binary tree or smt. like
-	// that. --pasky
+	/* XXX: This could turn out to be a timesink on profiles. We could
+	 * always just dedicate 65535 bytes for an [engine][train] trampoline
+	 * for O(1). Or O(logMlogN) and searching binary tree or smt. like
+	 * that. --pasky */
 
 	for (i = 0; i < wos->overrides_count; i++) {
 		const WagonOverride *wo = &wos->overrides[i];
@@ -260,11 +262,11 @@ static byte MapAircraftMovementState(const Vehicle *v)
 			 * to a landing by the hanger of an international airport. */
 			if (amdflag & AMED_SLOWTURN) return AMS_TTDP_FLIGHT_TO_TOWER;
 
-			// The final two conditions apply to helicopters or aircraft.
-			/* Has reached hanger? */
+			/* The final two conditions apply to helicopters or aircraft.
+			 * Has reached hanger? */
 			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_HANGAR;
 
-			// Still moving towards hanger.
+			/* Still moving towards hanger. */
 			return AMS_TTDP_TO_HANGAR;
 
 		case TERM1:
@@ -318,7 +320,7 @@ static byte MapAircraftMovementState(const Vehicle *v)
 
 		case ENDLANDING: // On the runway braking
 			if (amdflag & AMED_BRAKE) return AMS_TTDP_BRAKING;
-			// Landed - moving off runway
+			/* Landed - moving off runway */
 			return AMS_TTDP_TO_INWAY;
 
 		case HELILANDING:
@@ -393,7 +395,7 @@ static byte MapAircraftMovementAction(const Vehicle *v)
 		case STARTTAKEOFF: // Accelerating down runway
 		case ENDTAKEOFF:   // Ascent
 		case HELITAKEOFF:
-			// TODO Need to find which terminal (or hanger) we've come from. How?
+			/* @todo Need to find which terminal (or hanger) we've come from. How? */
 			return AMA_TTDP_PAD1_TO_TAKEOFF;
 
 		case FLYING:
@@ -403,7 +405,7 @@ static byte MapAircraftMovementAction(const Vehicle *v)
 		case ENDLANDING: // On the runway braking
 		case HELILANDING:
 		case HELIENDLANDING:
-			// TODO Need to check terminal we're landing to. Is it known yet?
+			/* @todo Need to check terminal we're landing to. Is it known yet? */
 			return (v->current_order.type == OT_GOTO_DEPOT) ?
 				AMA_TTDP_LANDING_TO_HANGAR : AMA_TTDP_LANDING_TO_PAD1;
 
@@ -473,12 +475,12 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 	if (v == NULL) {
 		/* Vehicle does not exist, so we're in a purchase list */
 		switch (variable) {
-			case 0x43: return _current_player; /* Owner information */
-			case 0x46: return 0;               /* Motion counter */
-			case 0x48: return GetEngine(object->u.vehicle.self_type)->flags; /* Vehicle Type Info */
-			case 0xC4: return clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; /* Build year */
-			case 0xDA: return INVALID_VEHICLE; /* Next vehicle */
-			case 0x7F: return GetGRFParameter(object->u.vehicle.self_type, parameter); /* Read GRF parameter */
+			case 0x43: return _current_player; // Owner information
+			case 0x46: return 0;               // Motion counter
+			case 0x48: return GetEngine(object->u.vehicle.self_type)->flags; // Vehicle Type Info
+			case 0xC4: return clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
+			case 0xDA: return INVALID_VEHICLE; // Next vehicle
+			case 0x7F: return GetGRFParameter(object->u.vehicle.self_type, parameter); // Read GRF parameter
 		}
 
 		*available = false;
@@ -487,8 +489,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 	/* Calculated vehicle parameters */
 	switch (variable) {
-		case 0x40: /* Get length of consist */
-		case 0x41: /* Get length of same consecutive wagons */
+		case 0x40: // Get length of consist
+		case 0x41: // Get length of same consecutive wagons
 			if (v->type != VEH_TRAIN) return 1;
 
 			{
@@ -509,7 +511,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				return chain_before | chain_after << 8 | (chain_before + chain_after + (variable == 0x41)) << 16;
 			}
 
-		case 0x42: { /* Consist cargo information */
+		case 0x42: { // Consist cargo information
 			/* XXX Missing support for common refit cycle and property 25 */
 			const Vehicle *u;
 			byte cargo_classes = 0;
@@ -541,15 +543,15 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			return cargo_classes | (common_cargo_type << 8) | (user_def_data << 24);
 		}
 
-		case 0x43: /* Player information */
+		case 0x43: // Player information
 			return v->owner;
 
-		case 0x44: /* Aircraft information */
+		case 0x44: // Aircraft information
 			if (v->type != VEH_AIRCRAFT) return UINT_MAX;
 
 			{
 				const Vehicle *w = v->next;
-				uint16 altitude = v->z_pos - w->z_pos; /* Aircraft height - shadow height */
+				uint16 altitude = v->z_pos - w->z_pos; // Aircraft height - shadow height
 				byte airporttype;
 
 				switch (GetStation(v->u.air.targetairport)->airport_type) {
@@ -571,10 +573,10 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				return (altitude << 8) | airporttype;
 			}
 
-		case 0x46: /* Motion counter */
+		case 0x46: // Motion counter
 			return v->motion_counter;
 
-		case 0x47: { /* Vehicle cargo info */
+		case 0x47: { // Vehicle cargo info
 			/* Format: ccccwwtt
 			 * tt - the cargo type transported by the vehicle,
 			 *     translated if a translation table has been installed.
@@ -586,10 +588,10 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			return (cs->classes << 16) | (cs->weight << 8) | GetEngineGRF(v->engine_type)->cargo_map[v->cargo_type];
 		}
 
-		case 0x48: return GetEngine(v->engine_type)->flags; /* Vehicle Type Info */
+		case 0x48: return GetEngine(v->engine_type)->flags; // Vehicle Type Info
 
 		/* Variables which use the parameter */
-		case 0x60: /* Count consist's engine ID occurance */
+		case 0x60: // Count consist's engine ID occurance
 			if (v->type != VEH_TRAIN) return v->engine_type == parameter;
 
 			{
@@ -600,13 +602,13 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				return count;
 			}
 
-		case 0x7F: return GetGRFParameter(v->engine_type, parameter); /* Read GRF parameter */
+		case 0x7F: return GetGRFParameter(v->engine_type, parameter); // Read GRF parameter
 
 		case 0xFE:
 		case 0xFF: {
 			uint16 modflags = 0;
 
-			/* TODO: There are some other bits that should be implemented:
+			/* @todo: There are some other bits that should be implemented:
 			 *   bit 5: Whether the rail vehicle is powered or not (mostly useful for wagons).
 			 *   bit 6: This is an electrically powered rail vehicle which is running on normal rail.
 			 *   bit 8: (Maybe?) Toggled whenever the train reverses.
@@ -992,7 +994,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 void TriggerVehicle(Vehicle *v, VehicleTrigger trigger)
 {
 	if (trigger == VEHICLE_TRIGGER_DEPOT) {
-		// store that the vehicle entered a depot this tick
+		/* store that the vehicle entered a depot this tick */
 		VehicleEnteredDepotThisTick(v);
 	}
 
@@ -1020,8 +1022,8 @@ StringID GetCustomEngineName(EngineID engine)
 	return _engine_custom_names[engine] == 0 ? _engine_name_strings[engine] : _engine_custom_names[engine];
 }
 
-// Functions for changing the order of vehicle purchase lists
-// This is currently only implemented for rail vehicles.
+/* Functions for changing the order of vehicle purchase lists
+ * This is currently only implemented for rail vehicles. */
 static EngineID _engine_list_order[NUM_TRAIN_ENGINES];
 static byte _engine_list_position[NUM_TRAIN_ENGINES];
 
@@ -1066,13 +1068,13 @@ void AlterRailVehListOrder(EngineID engine, EngineID target)
 
 	if (engine == target) return;
 
-	// First, remove our ID from the list.
+	/* First, remove our ID from the list. */
 	for (i = 0; i < NUM_TRAIN_ENGINES - 1; i++) {
 		if (_engine_list_order[i] == engine) moving = true;
 		if (moving) _engine_list_order[i] = _engine_list_order[i + 1];
 	}
 
-	// Now, insert it again, before the target engine.
+	/* Now, insert it again, before the target engine. */
 	for (i = NUM_TRAIN_ENGINES - 1; i > 0; i--) {
 		_engine_list_order[i] = _engine_list_order[i - 1];
 		if (_engine_list_order[i] == target) {
@@ -1081,7 +1083,7 @@ void AlterRailVehListOrder(EngineID engine, EngineID target)
 		}
 	}
 
-	// Update the engine list position (a reverse of engine list order)
+	/* Update the engine list position (a reverse of engine list order) */
 	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 		_engine_list_position[_engine_list_order[i]] = i;
 	}

@@ -64,14 +64,14 @@ StringID GetNewsStringNewVehicleAvail(const NewsItem *ni);
 StringID GetNewsStringBankrupcy(const NewsItem *ni);
 
 static DrawNewsCallbackProc * const _draw_news_callback[] = {
-	DrawNewsNewVehicleAvail,  /* DNC_VEHICLEAVAIL */
-	DrawNewsBankrupcy,        /* DNC_BANKRUPCY */
+	DrawNewsNewVehicleAvail,  //< DNC_VEHICLEAVAIL
+	DrawNewsBankrupcy,        //< DNC_BANKRUPCY
 };
 
 extern GetNewsStringCallbackProc * const _get_news_string_callback[];
 GetNewsStringCallbackProc * const _get_news_string_callback[] = {
-	GetNewsStringNewVehicleAvail,  /* DNC_VEHICLEAVAIL */
-	GetNewsStringBankrupcy,        /* DNC_BANKRUPCY */
+	GetNewsStringNewVehicleAvail,  ///< DNC_VEHICLEAVAIL
+	GetNewsStringBankrupcy,        ///< DNC_BANKRUPCY
 };
 
 void InitNewsItemStructs()
@@ -104,7 +104,7 @@ void DrawNewsBorder(const Window *w)
 static void NewsWindowProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: { /* If chatbar is open at creation time, we need to go above it */
+	case WE_CREATE: { // If chatbar is open at creation time, we need to go above it
 		const Window *w1 = FindWindowById(WC_SEND_NETWORK_MSG, 0);
 		w->message.msg = (w1 != NULL) ? w1->height : 0;
 	} break;
@@ -189,20 +189,20 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS:
 		if (e->we.keypress.keycode == WKC_SPACE) {
-			// Don't continue.
+			/* Don't continue. */
 			e->we.keypress.cont = false;
 			DeleteWindow(w);
 		}
 		break;
 
-	case WE_MESSAGE: /* The chatbar has notified us that is was either created or closed */
+	case WE_MESSAGE: // The chatbar has notified us that is was either created or closed
 		switch (e->we.message.msg) {
 			case WE_CREATE: w->message.msg = e->we.message.wparam; break;
 			case WE_DESTROY: w->message.msg = 0; break;
 		}
 		break;
 
-	case WE_TICK: { /* Scroll up newsmessages from the bottom in steps of 4 pixels */
+	case WE_TICK: { // Scroll up newsmessages from the bottom in steps of 4 pixels
 		int diff;
 		int y = max(w->top - 4, _screen.height - w->height - 12 - w->message.msg);
 		if (y == w->top) return;
@@ -260,7 +260,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 
 	if (_game_mode == GM_MENU) return;
 
-	// check the rare case that the oldest (to be overwritten) news item is open
+	/* check the rare case that the oldest (to be overwritten) news item is open */
 	if (_total_news == MAX_NEWS && (_oldest_news == _current_news || _oldest_news == _forced_news))
 		MoveToNextItem();
 
@@ -281,7 +281,8 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 	/*DEBUG(misc, 0, "+cur %3d, old %2d, lat %3d, for %3d, tot %2d",
 	  _current_news, _oldest_news, _latest_news, _forced_news, _total_news);*/
 
-	{ /* Add news to _latest_news */
+	/* Add news to _latest_news */
+	{
 		Window *w;
 		NewsItem *ni = &_news_items[_latest_news];
 		memset(ni, 0, sizeof(*ni));
@@ -290,7 +291,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 		ni->display_mode = (byte)flags;
 		ni->flags = (byte)(flags >> 8);
 
-		// show this news message in color?
+		/* show this news message in color? */
 		if (_cur_year >= _patches.colored_news_year) ni->flags |= NF_INCOLOR;
 
 		ni->type = (byte)(flags >> 16);
@@ -405,7 +406,7 @@ static inline void SetNewsDisplayValue(byte item, byte val)
 	SB(_news_display_opt, item * 2, 2, val);
 }
 
-// open up an own newspaper window for the news item
+/* open up an own newspaper window for the news item */
 static void ShowNewspaper(NewsItem *ni)
 {
 	Window *w;
@@ -455,7 +456,7 @@ static void ShowNewspaper(NewsItem *ni)
 	w->flags4 |= WF_DISABLE_VP_SCROLL;
 }
 
-// show news item in the ticker
+/* show news item in the ticker */
 static void ShowTicker(const NewsItem *ni)
 {
 	Window *w;
@@ -468,8 +469,8 @@ static void ShowTicker(const NewsItem *ni)
 }
 
 
-// Are we ready to show another news item?
-// Only if nothing is in the newsticker and no newspaper is displayed
+/** Are we ready to show another news item?
+ * Only if nothing is in the newsticker and no newspaper is displayed */
 static bool ReadyForNextItem()
 {
 	const Window *w;
@@ -479,15 +480,15 @@ static bool ReadyForNextItem()
 	if (item >= MAX_NEWS) return true;
 	ni = &_news_items[item];
 
-	// Ticker message
-	// Check if the status bar message is still being displayed?
+	/* Ticker message
+	 * Check if the status bar message is still being displayed? */
 	w = FindWindowById(WC_STATUS_BAR, 0);
 	if (w != NULL && WP(w, const def_d).data_1 > -1280) return false;
 
-	// Newspaper message, decrement duration counter
+	/* Newspaper message, decrement duration counter */
 	if (ni->duration != 0) ni->duration--;
 
-	// neither newsticker nor newspaper are running
+	/* neither newsticker nor newspaper are running */
 	return (ni->duration == 0 || FindWindowById(WC_NEWS_WINDOW, 0) == NULL);
 }
 
@@ -496,18 +497,18 @@ static void MoveToNextItem()
 	DeleteWindowById(WC_NEWS_WINDOW, 0);
 	_forced_news = INVALID_NEWS;
 
-	// if we're not at the last item, then move on
+	/* if we're not at the last item, then move on */
 	if (_current_news != _latest_news) {
 		NewsItem *ni;
 
 		_current_news = (_current_news == INVALID_NEWS) ? _oldest_news : increaseIndex(_current_news);
 		ni = &_news_items[_current_news];
 
-		// check the date, don't show too old items
+		/* check the date, don't show too old items */
 		if (_date - _news_items_age[ni->type] > ni->date) return;
 
 		switch (GetNewsDisplayValue(ni->type)) {
-		case 0: { /* Off - show nothing only a small reminder in the status bar */
+		case 0: { // Off - show nothing only a small reminder in the status bar
 			Window *w = FindWindowById(WC_STATUS_BAR, 0);
 
 			if (w != NULL) {
@@ -517,14 +518,14 @@ static void MoveToNextItem()
 			break;
 		}
 
-		case 1: /* Summary - show ticker, but if forced big, cascade to full */
+		case 1: // Summary - show ticker, but if forced big, cascade to full
 			if (!(ni->flags & NF_FORCE_BIG)) {
 				ShowTicker(ni);
 				break;
 			}
 			/* Fallthrough */
 
-		case 2: /* Full - show newspaper*/
+		case 2: // Full - show newspaper
 			ShowNewspaper(ni);
 			break;
 		}
@@ -533,7 +534,7 @@ static void MoveToNextItem()
 
 void NewsLoop()
 {
-	// no news item yet
+	/* no news item yet */
 	if (_total_news == 0) return;
 
 	if (ReadyForNextItem()) MoveToNextItem();
@@ -544,10 +545,10 @@ static void ShowNewsMessage(NewsID i)
 {
 	if (_total_news == 0) return;
 
-	// Delete the news window
+	/* Delete the news window */
 	DeleteWindowById(WC_NEWS_WINDOW, 0);
 
-	// setup forced news item
+	/* setup forced news item */
 	_forced_news = i;
 
 	if (_forced_news != INVALID_NEWS) {
@@ -649,7 +650,7 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 		show = min(_total_news, w->vscroll.cap);
 
 		for (p = w->vscroll.pos; p < w->vscroll.pos + show; p++) {
-			// get news in correct order
+			/* get news in correct order */
 			const NewsItem *ni = &_news_items[getNews(p)];
 
 			SetDParam(0, ni->date);

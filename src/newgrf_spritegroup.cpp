@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_spritegroup.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"

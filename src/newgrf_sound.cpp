@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_sound.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "oldpool.h"

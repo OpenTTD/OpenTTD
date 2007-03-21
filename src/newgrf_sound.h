@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_sound.h */
+
 #ifndef NEWGRF_SOUND_H
 #define NEWGRF_SOUND_H
 

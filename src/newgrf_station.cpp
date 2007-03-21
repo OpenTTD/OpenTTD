@@ -43,7 +43,7 @@ void ResetStationClasses()
 		station_classes[i].spec = NULL;
 	}
 
-	// Set up initial data
+	/* Set up initial data */
 	station_classes[0].id = 'DFLT';
 	station_classes[0].name = STR_STAT_CLASS_DFLT;
 	station_classes[0].stations = 1;
@@ -66,10 +66,10 @@ StationClassID AllocateStationClass(uint32 cls)
 {
 	for (StationClassID i = STAT_CLASS_BEGIN; i < STAT_CLASS_MAX; i++) {
 		if (station_classes[i].id == cls) {
-			// ClassID is already allocated, so reuse it.
+			/* ClassID is already allocated, so reuse it. */
 			return i;
 		} else if (station_classes[i].id == 0) {
-			// This class is empty, so allocate it to the ClassID.
+			/* This class is empty, so allocate it to the ClassID. */
 			station_classes[i].id = cls;
 			return i;
 		}
@@ -168,8 +168,8 @@ const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station)
 	if (station < station_classes[sclass].stations)
 		return station_classes[sclass].spec[station];
 
-	// If the custom station isn't defined any more, then the GRF file
-	// probably was not loaded.
+	/* If the custom station isn't defined any more, then the GRF file
+	 * probably was not loaded. */
 	return NULL;
 }
 
@@ -355,11 +355,11 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			case 0x41:
 			case 0x46:
 			case 0x47:
-			case 0x49: return 0x2110000;       /* Platforms, tracks & position */
-			case 0x42: return 0;               /* Rail type (XXX Get current type from GUI?) */
-			case 0x43: return _current_player; /* Station owner */
-			case 0x44: return 2;               /* PBS status */
-			case 0xFA: return max(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0); /* Build date */
+			case 0x49: return 0x2110000;       // Platforms, tracks & position
+			case 0x42: return 0;               // Rail type (XXX Get current type from GUI?)
+			case 0x43: return _current_player; // Station owner
+			case 0x44: return 2;               // PBS status
+			case 0xFA: return max(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0); // Build date
 		}
 
 		*available = false;
@@ -370,16 +370,16 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		/* Calculated station variables */
 		case 0x40: return GetPlatformInfoHelper(tile, false, false, false);
 		case 0x41: return GetPlatformInfoHelper(tile, true,  false, false);
-		case 0x42: /* Terrain and rail type */
+		case 0x42: // Terrain and rail type
 			return ((_opt.landscape == LT_HILLY && GetTileZ(tile) > GetSnowLine()) ? 4 : 0) |
 			       (_opt.landscape == LT_DESERT ? GetTropicZone(tile) : 0) |
 			       (GetRailType(tile) << 8);
-		case 0x43: return st->owner; /* Station owner */
-		case 0x44: return 2;         /* PBS status */
+		case 0x43: return st->owner; // Station owner
+		case 0x44: return 2;         // PBS status
 		case 0x45: return GetRailContinuationInfo(tile);
 		case 0x46: return GetPlatformInfoHelper(tile, false, false, true);
 		case 0x47: return GetPlatformInfoHelper(tile, true,  false, true);
-		case 0x48: { /* Accepted cargo types */
+		case 0x48: { // Accepted cargo types
 			CargoID cargo_type;
 			uint32 value = 0;
 
@@ -557,7 +557,7 @@ SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Sta
 	ResolverObject object;
 
 	NewStationResolver(&object, statspec, st, tile);
-	object.callback_param1 = 1; /* Indicate we are resolving the ground sprite */
+	object.callback_param1 = 1; // Indicate we are resolving the ground sprite
 
 	group = ResolveStation(&object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;

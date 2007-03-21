@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgfr_config.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -479,5 +481,6 @@ static void Load_NGRF()
 extern const ChunkHandler _newgrf_chunk_handlers[] = {
 	{ 'NGRF', Save_NGRF, Load_NGRF, CH_ARRAY | CH_LAST }
 };
+
 
 

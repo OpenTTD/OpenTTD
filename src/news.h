@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file news.h */
+
 #ifndef NEWS_H
 #define NEWS_H
 
