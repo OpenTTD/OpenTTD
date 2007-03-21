@@ -79,7 +79,7 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 
 		DrawStringCentered(w->width >> 1, 80, GetCustomEngineName(engine), 0x10);
 
-		dei = &_draw_engine_list[GetEngine(engine)->type];
+		dei = &_draw_engine_list[GetEngine(engine)->type - VEH_Train];
 
 		width = w->width;
 		dei->engine_proc(width >> 1, 100, engine, 0);
@@ -182,7 +182,7 @@ StringID GetNewsStringNewVehicleAvail(const NewsItem *ni)
 void DrawNewsNewVehicleAvail(Window *w)
 {
 	EngineID engine = WP(w, news_d).ni->string_id;
-	const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
+	const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type - VEH_Train];
 
 	DrawNewsBorder(w);
 
