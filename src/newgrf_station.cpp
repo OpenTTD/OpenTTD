@@ -20,6 +20,8 @@
 #include "date.h"
 #include "helpers.hpp"
 #include "cargotype.h"
+#include "town_map.h"
+#include "newgrf_town.h"
 
 static StationClass station_classes[STAT_CLASS_MAX];
 
@@ -347,6 +349,22 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 {
 	const Station *st = object->u.station.st;
 	TileIndex tile = object->u.station.tile;
+
+	if (object->scope == VSG_SCOPE_PARENT) {
+		/* Pass the request on to the town of the station */
+		Town *t;
+
+		if (st != NULL) {
+			t = st->town;
+		} else if (tile != INVALID_TILE) {
+			t = GetTownByTile(tile);
+		} else {
+			*available = false;
+			return UINT_MAX;
+		}
+
+		return TownGetVariable(variable, parameter, available, t);
+	}
 
 	if (st == NULL) {
 		/* Station does not exist, so we're in a purchase list */
