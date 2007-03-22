@@ -44,7 +44,8 @@ template <> struct EnumPropsT<SettingGuiFlagLong> : MakeEnumPropsT<SettingGuiFla
 typedef TinyEnumT<SettingGuiFlagLong> SettingGuiFlag;
 
 
-typedef int32 OnChange(int32 var);
+typedef int32 OnChange(int32 var);          ///< callback prototype on data modification
+typedef int32 OnConvert(const char *value); ///< callback prototype for convertion error
 
 struct SettingDescBase {
 	const char *name;       ///< name of the setting. Used in configuration file and for console
@@ -56,6 +57,7 @@ struct SettingDescBase {
 	const char *many;       ///< ONE/MANY_OF_MANY: string of possible values for this type
 	StringID str;           ///< (translated) string with descriptive text; gui and console
 	OnChange *proc;         ///< callback procedure for when the value is changed
+	OnConvert *proc_cnvt;   ///< callback procedure when loading value mechanism fails
 };
 
 struct SettingDesc {

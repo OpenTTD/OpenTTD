@@ -945,15 +945,22 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
  * If nothing fits you, you can use the GENERAL macros, but it exposes the
  * internal structure somewhat so it needs a little looking. There are _NULL()
  * macros as well, these fill up space so you can add more patches there (in
- * place) and you DON'T have to increase the savegame version. */
+ * place) and you DON'T have to increase the savegame version.
+ *
+ * While reading values from openttd.cfg, some values may not be converted
+ * properly, for any kind of reasons.  In order to allow a process of self-cleaning
+ * mechanism, a callback procedure is made available.  You will have to supply the function, which
+ * will work on a string, one function per patch.  And of course, enable the callback param
+ * on the appropriate macro.
+ */
 
-#define NSD_GENERAL(name, def, cmd, guiflags, min, max, interval, many, str, proc)\
-	{name, (const void*)(def), {cmd}, {guiflags}, min, max, interval, many, str, proc}
+#define NSD_GENERAL(name, def, cmd, guiflags, min, max, interval, many, str, proc, load)\
+	{name, (const void*)(def), {cmd}, {guiflags}, min, max, interval, many, str, proc, load}
 
 /* Macros for various objects to go in the configuration file.
  * This section is for global variables */
 #define SDTG_GENERAL(name, sdt_cmd, sle_cmd, type, flags, guiflags, var, length, def, min, max, interval, full, str, proc, from, to)\
-	{NSD_GENERAL(name, def, sdt_cmd, guiflags, min, max, interval, full, str, proc), SLEG_GENERAL(sle_cmd, var, type | flags, length, from, to)}
+	{NSD_GENERAL(name, def, sdt_cmd, guiflags, min, max, interval, full, str, proc, NULL), SLEG_GENERAL(sle_cmd, var, type | flags, length, from, to)}
 
 #define SDTG_CONDVAR(name, type, flags, guiflags, var, def, min, max, interval, str, proc, from, to)\
 	SDTG_GENERAL(name, SDT_NUMX, SL_VAR, type, flags, guiflags, var, 0, def, min, max, interval, NULL, str, proc, from, to)
@@ -986,14 +993,14 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 	SDTG_CONDMMANY(name, type, flags, guiflags, var, def, full, str, proc, 0, SL_MAX_VERSION)
 
 #define SDTG_CONDNULL(length, from, to)\
-	{{"", NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL}, SLEG_CONDNULL(length, from, to)}
+	{{"", NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL, NULL}, SLEG_CONDNULL(length, from, to)}
 
-#define SDTG_END() {{NULL, NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL}, SLEG_END()}
+#define SDTG_END() {{NULL, NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL, NULL}, SLEG_END()}
 
 /* Macros for various objects to go in the configuration file.
  * This section is for structures where their various members are saved */
 #define SDT_GENERAL(name, sdt_cmd, sle_cmd, type, flags, guiflags, base, var, length, def, min, max, interval, full, str, proc, from, to)\
-	{NSD_GENERAL(name, def, sdt_cmd, guiflags, min, max, interval, full, str, proc), SLE_GENERAL(sle_cmd, base, var, type | flags, length, from, to)}
+	{NSD_GENERAL(name, def, sdt_cmd, guiflags, min, max, interval, full, str, proc, NULL), SLE_GENERAL(sle_cmd, base, var, type | flags, length, from, to)}
 
 #define SDT_CONDVAR(base, var, type, from, to, flags, guiflags, def, min, max, interval, str, proc)\
 	SDT_GENERAL(#var, SDT_NUMX, SL_VAR, type, flags, guiflags, base, var, 1, def, min, max, interval, NULL, str, proc, from, to)
@@ -1035,9 +1042,9 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 	SDT_CONDMMANY(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, full, str, proc)
 
 #define SDT_CONDNULL(length, from, to)\
-	{{"", NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL}, SLE_CONDNULL(length, from, to)}
+	{{"", NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL, NULL}, SLE_CONDNULL(length, from, to)}
 
-#define SDT_END() {{NULL, NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL}, SLE_END()}
+#define SDT_END() {{NULL, NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL, NULL}, SLE_END()}
 
 /* Shortcuts for macros below. Logically if we don't save the value
  * we also don't sync it in a network game */
