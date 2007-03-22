@@ -1211,7 +1211,7 @@ static void EditorTerraformClick_RockyArea(Window *w)
 
 static void EditorTerraformClick_DesertLightHouse(Window *w)
 {
-	HandlePlacePushButton(w, 10, SPR_CURSOR_LIGHTHOUSE, 1, (_opt.landscape == LT_DESERT) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
+	HandlePlacePushButton(w, 10, SPR_CURSOR_LIGHTHOUSE, 1, (_opt.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
 }
 
 static void EditorTerraformClick_Transmitter(Window *w)
@@ -1275,7 +1275,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_CREATE:
 		/* XXX - lighthouse button is widget 10!! Don't forget when changing */
-		w->widget[10].tooltips = (_opt.landscape == LT_DESERT) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
+		w->widget[10].tooltips = (_opt.landscape == LT_TROPIC) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
 		break;
 
 	case WE_PAINT:

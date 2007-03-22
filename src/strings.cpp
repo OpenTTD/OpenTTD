@@ -953,7 +953,7 @@ static char *GenAndCoName(char *buff, uint32 arg, const char* last)
 	const char* const* base;
 	uint num;
 
-	if (_opt_ptr->landscape == LT_CANDY) {
+	if (_opt_ptr->landscape == LT_TOYLAND) {
 		base = _silly_surname_list;
 		num  = lengthof(_silly_surname_list);
 	} else {
@@ -983,7 +983,7 @@ static char *GenPresidentName(char *buff, uint32 x, const char* last)
 		buff = strecpy(buff, initial, last);
 	}
 
-	if (_opt_ptr->landscape == LT_CANDY) {
+	if (_opt_ptr->landscape == LT_TOYLAND) {
 		base = _silly_surname_list;
 		num  = lengthof(_silly_surname_list);
 	} else {

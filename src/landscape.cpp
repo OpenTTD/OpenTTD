@@ -692,15 +692,15 @@ void GenerateLandscape(byte mode)
 	uint32 r;
 
 	if (mode == GW_HEIGHTMAP) {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_opt.landscape == LT_DESERT) ? 1 + gwp_desert_amount : 1);
+		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_opt.landscape == LT_TROPIC) ? 1 + gwp_desert_amount : 1);
 		LoadHeightmap(_file_to_saveload.name);
 		IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 	} else if (_patches.land_generator == LG_TERRAGENESIS) {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_opt.landscape == LT_DESERT) ? 3 + gwp_desert_amount : 3);
+		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_opt.landscape == LT_TROPIC) ? 3 + gwp_desert_amount : 3);
 		GenerateTerrainPerlin();
 	} else {
 		switch (_opt.landscape) {
-			case LT_HILLY:
+			case LT_ARCTIC:
 				SetGeneratingWorldProgress(GWP_LANDSCAPE, 2);
 
 				for (i = ScaleByMapSize((Random() & 0x7F) + 950); i != 0; --i) {
@@ -716,7 +716,7 @@ void GenerateLandscape(byte mode)
 				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 				break;
 
-			case LT_DESERT:
+			case LT_TROPIC:
 				SetGeneratingWorldProgress(GWP_LANDSCAPE, 3 + gwp_desert_amount);
 
 				for (i = ScaleByMapSize((Random() & 0x7F) + 170); i != 0; --i) {
@@ -753,7 +753,7 @@ void GenerateLandscape(byte mode)
 
 	ConvertGroundTilesIntoWaterTiles();
 
-	if (_opt.landscape == LT_DESERT) CreateDesertOrRainForest();
+	if (_opt.landscape == LT_TROPIC) CreateDesertOrRainForest();
 }
 
 void OnTick_Town();

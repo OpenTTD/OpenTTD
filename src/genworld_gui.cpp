@@ -240,7 +240,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			SetWindowWidgetDisabledState(w, GLAND_SMOOTHNESS_PULLDOWN, _patches_newgame.land_generator == 0);
 		}
 		/* Disable snowline if not hilly */
-		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_TEXT, _opt_newgame.landscape != LT_HILLY);
+		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_TEXT, _opt_newgame.landscape != LT_ARCTIC);
 		/* Disable town, industry and trees in SE */
 		SetWindowWidgetDisabledState(w, GLAND_TOWN_TEXT,         _game_mode == GM_EDITOR);
 		SetWindowWidgetDisabledState(w, GLAND_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
@@ -251,13 +251,13 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 		SetWindowWidgetDisabledState(w, GLAND_START_DATE_DOWN, _patches_newgame.starting_year <= MIN_YEAR);
 		SetWindowWidgetDisabledState(w, GLAND_START_DATE_UP,   _patches_newgame.starting_year >= MAX_YEAR);
-		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_DOWN, _patches_newgame.snow_line_height <= 2 || _opt_newgame.landscape != LT_HILLY);
-		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_UP,   _patches_newgame.snow_line_height >= 13 || _opt_newgame.landscape != LT_HILLY);
+		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_DOWN, _patches_newgame.snow_line_height <= 2 || _opt_newgame.landscape != LT_ARCTIC);
+		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_UP,   _patches_newgame.snow_line_height >= 13 || _opt_newgame.landscape != LT_ARCTIC);
 
-		SetWindowWidgetLoweredState(w, GLAND_TEMPERATE, _opt_newgame.landscape == LT_NORMAL);
-		SetWindowWidgetLoweredState(w, GLAND_ARCTIC,    _opt_newgame.landscape == LT_HILLY);
-		SetWindowWidgetLoweredState(w, GLAND_TROPICAL,  _opt_newgame.landscape == LT_DESERT);
-		SetWindowWidgetLoweredState(w, GLAND_TOYLAND,   _opt_newgame.landscape == LT_CANDY);
+		SetWindowWidgetLoweredState(w, GLAND_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
+		SetWindowWidgetLoweredState(w, GLAND_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
+		SetWindowWidgetLoweredState(w, GLAND_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
+		SetWindowWidgetLoweredState(w, GLAND_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
 		DrawWindowWidgets(w);
 
 		y = (mode == GLWP_HEIGHTMAP) ? 22 : 0;
@@ -589,10 +589,10 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w, CSCEN_FLAT_LAND_HEIGHT_DOWN, _patches_newgame.se_flat_world_height <= 0);
 		SetWindowWidgetDisabledState(w, CSCEN_FLAT_LAND_HEIGHT_UP,   _patches_newgame.se_flat_world_height >= 15);
 
-		SetWindowWidgetLoweredState(w, CSCEN_TEMPERATE, _opt_newgame.landscape == LT_NORMAL);
-		SetWindowWidgetLoweredState(w, CSCEN_ARCTIC,    _opt_newgame.landscape == LT_HILLY);
-		SetWindowWidgetLoweredState(w, CSCEN_TROPICAL,  _opt_newgame.landscape == LT_DESERT);
-		SetWindowWidgetLoweredState(w, CSCEN_TOYLAND,   _opt_newgame.landscape == LT_CANDY);
+		SetWindowWidgetLoweredState(w, CSCEN_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
+		SetWindowWidgetLoweredState(w, CSCEN_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
+		SetWindowWidgetLoweredState(w, CSCEN_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
+		SetWindowWidgetLoweredState(w, CSCEN_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
 		DrawWindowWidgets(w);
 
 		DrawStringRightAligned(211, 97, STR_MAPSIZE, 0);

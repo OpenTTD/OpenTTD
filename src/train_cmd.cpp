@@ -3214,7 +3214,7 @@ static void HandleBrokenTrain(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
-			SndPlayVehicleFx((_opt.landscape != LT_CANDY) ?
+			SndPlayVehicleFx((_opt.landscape != LT_TOYLAND) ?
 				SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
 		}
 

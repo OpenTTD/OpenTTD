@@ -1555,7 +1555,7 @@ void DoPaletteAnimations()
 	memcpy(old_val, d, c * sizeof(*old_val));
 
 	/* Dark blue water */
-	s = (_opt.landscape == LT_CANDY) ? ev->ac : ev->a;
+	s = (_opt.landscape == LT_TOYLAND) ? ev->ac : ev->a;
 	j = EXTR(320, 5);
 	for (i = 0; i != 5; i++) {
 		*d++ = s[j];
@@ -1564,7 +1564,7 @@ void DoPaletteAnimations()
 	}
 
 	/* Glittery water */
-	s = (_opt.landscape == LT_CANDY) ? ev->bc : ev->b;
+	s = (_opt.landscape == LT_TOYLAND) ? ev->bc : ev->b;
 	j = EXTR(128, 15);
 	for (i = 0; i != 5; i++) {
 		*d++ = s[j];
@@ -1624,7 +1624,7 @@ void DoPaletteAnimations()
 	/* Animate water for old DOS graphics */
 	if (_use_dos_palette) {
 		/* Dark blue water DOS */
-		s = (_opt.landscape == LT_CANDY) ? ev->ac : ev->a;
+		s = (_opt.landscape == LT_TOYLAND) ? ev->ac : ev->a;
 		j = EXTR(320, 5);
 		for (i = 0; i != 5; i++) {
 			*d++ = s[j];
@@ -1633,7 +1633,7 @@ void DoPaletteAnimations()
 		}
 
 		/* Glittery water DOS */
-		s = (_opt.landscape == LT_CANDY) ? ev->bc : ev->b;
+		s = (_opt.landscape == LT_TOYLAND) ? ev->bc : ev->b;
 		j = EXTR(128, 15);
 		for (i = 0; i != 5; i++) {
 			*d++ = s[j];

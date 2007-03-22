@@ -1231,7 +1231,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		uint rad = GetTownRadiusGroup(t, tile);
 
 		int land = _opt.landscape;
-		if (land == LT_HILLY && z >= _opt.snow_line) land = -1;
+		if (land == LT_ARCTIC && z >= _opt.snow_line) land = -1;
 
 		bitmask = (1 << rad) + (1 << (land + 12));
 	}
@@ -1698,10 +1698,10 @@ static void UpdateTownGrowRate(Town *t)
 		m = _grow_count_values[min(n, 5) - 1];
 	}
 
-	if (_opt.landscape == LT_HILLY) {
+	if (_opt.landscape == LT_ARCTIC) {
 		if (TilePixelHeight(t->xy) >= GetSnowLine() && t->act_food == 0 && t->population > 90)
 			return;
-	} else if (_opt.landscape == LT_DESERT) {
+	} else if (_opt.landscape == LT_TROPIC) {
 		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->act_food==0 || t->act_water==0) && t->population > 60)
 			return;
 	}

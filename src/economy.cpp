@@ -1119,7 +1119,7 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	byte f;
 
 	/* zero the distance if it's the bank and very short transport. */
-	if (_opt.landscape == LT_NORMAL && cs->label == 'VALU' && dist < 10)
+	if (_opt.landscape == LT_TEMPERATE && cs->label == 'VALU' && dist < 10)
 		dist = 0;
 
 	f = 255;

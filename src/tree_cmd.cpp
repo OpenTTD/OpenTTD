@@ -28,13 +28,13 @@ enum TreePlacer {
 static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 {
 	switch (_opt.landscape) {
-		case LT_NORMAL:
+		case LT_TEMPERATE:
 			return (TreeType)(seed * TREE_COUNT_TEMPERATE / 256 + TREE_TEMPERATE);
 
-		case LT_HILLY:
+		case LT_ARCTIC:
 			return (TreeType)(seed * TREE_COUNT_SUB_ARCTIC / 256 + TREE_SUB_ARCTIC);
 
-		case LT_DESERT:
+		case LT_TROPIC:
 			switch (GetTropicZone(tile)) {
 				case TROPICZONE_INVALID: return (TreeType)(seed * TREE_COUNT_SUB_TROPICAL / 256 + TREE_SUB_TROPICAL);
 				case TROPICZONE_DESERT:  return (TreeType)((seed > 12) ? TREE_INVALID : TREE_CACTUS);
@@ -54,7 +54,7 @@ static void PlaceTree(TileIndex tile, uint32 r)
 		MakeTree(tile, tree, GB(r, 22, 2), min(GB(r, 16, 3), 6), TREE_GROUND_GRASS, 0);
 
 		// above snowline?
-		if (_opt.landscape == LT_HILLY && GetTileZ(tile) > GetSnowLine()) {
+		if (_opt.landscape == LT_ARCTIC && GetTileZ(tile) > GetSnowLine()) {
 			SetTreeGroundDensity(tile, TREE_GROUND_SNOW_DESERT, 3);
 			SetTreeCounter(tile, (TreeGround)GB(r, 24, 3));
 		} else {
@@ -151,7 +151,7 @@ void PlaceTreesRandomly()
 			j = GetTileZ(tile) / TILE_HEIGHT * 2;
 			while (j--) {
 				/* Above snowline more trees! */
-				if (_opt.landscape == LT_HILLY && ht > GetSnowLine()) {
+				if (_opt.landscape == LT_ARCTIC && ht > GetSnowLine()) {
 					PlaceTreeAtSameHeight(tile, ht);
 					PlaceTreeAtSameHeight(tile, ht);
 				};
@@ -162,7 +162,7 @@ void PlaceTreesRandomly()
 	} while (--i);
 
 	/* place extra trees at rainforest area */
-	if (_opt.landscape == LT_DESERT) {
+	if (_opt.landscape == LT_TROPIC) {
 		i = ScaleByMapSize(15000);
 
 		do {
@@ -187,16 +187,16 @@ void GenerateTrees()
 
 	if (_patches.tree_placer == TP_NONE) return;
 
-	if (_opt.landscape != LT_CANDY) PlaceMoreTrees();
+	if (_opt.landscape != LT_TOYLAND) PlaceMoreTrees();
 
 	switch (_patches.tree_placer) {
-		case TP_ORIGINAL: i = _opt.landscape == LT_HILLY ? 15 : 6; break;
-		case TP_IMPROVED: i = _opt.landscape == LT_HILLY ?  4 : 2; break;
+		case TP_ORIGINAL: i = _opt.landscape == LT_ARCTIC ? 15 : 6; break;
+		case TP_IMPROVED: i = _opt.landscape == LT_ARCTIC ?  4 : 2; break;
 		default: NOT_REACHED(); return;
 	}
 
 	total = ScaleByMapSize(1000);
-	if (_opt.landscape == LT_DESERT) total += ScaleByMapSize(15000);
+	if (_opt.landscape == LT_TROPIC) total += ScaleByMapSize(15000);
 	total *= i;
 	SetGeneratingWorldProgress(GWP_TREE, total);
 
@@ -524,8 +524,8 @@ static void TileLoopTreesAlps(TileIndex tile)
 static void TileLoop_Trees(TileIndex tile)
 {
 	switch (_opt.landscape) {
-		case LT_DESERT: TileLoopTreesDesert(tile); break;
-		case LT_HILLY:  TileLoopTreesAlps(tile);   break;
+		case LT_TROPIC: TileLoopTreesDesert(tile); break;
+		case LT_ARCTIC: TileLoopTreesAlps(tile);   break;
 	}
 
 	TileLoopClearHelper(tile);
@@ -538,7 +538,7 @@ static void TileLoop_Trees(TileIndex tile)
 
 	switch (GetTreeGrowth(tile)) {
 		case 3: /* regular sized tree */
-			if (_opt.landscape == LT_DESERT &&
+			if (_opt.landscape == LT_TROPIC &&
 					GetTreeType(tile) != TREE_CACTUS &&
 					GetTropicZone(tile) == TROPICZONE_DESERT) {
 				AddTreeGrowth(tile, 1);
@@ -613,7 +613,7 @@ void OnTick_Trees()
 	TreeType tree;
 
 	/* place a tree at a random rainforest spot */
-	if (_opt.landscape == LT_DESERT &&
+	if (_opt.landscape == LT_TROPIC &&
 			(r = Random(), tile = RandomTileSeed(r), GetTropicZone(tile) == TROPICZONE_RAINFOREST) &&
 			IsTileType(tile, MP_CLEAR) &&
 			!IsBridgeAbove(tile) &&

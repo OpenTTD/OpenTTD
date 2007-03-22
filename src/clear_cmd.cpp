@@ -668,8 +668,8 @@ static void TileLoop_Clear(TileIndex tile)
 	TileLoopClearHelper(tile);
 
 	switch (_opt.landscape) {
-		case LT_DESERT: TileLoopClearDesert(tile); break;
-		case LT_HILLY:  TileLoopClearAlps(tile);   break;
+		case LT_TROPIC: TileLoopClearDesert(tile); break;
+		case LT_ARCTIC: TileLoopClearAlps(tile);   break;
 	}
 
 	switch (GetClearGround(tile)) {

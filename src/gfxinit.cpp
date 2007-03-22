@@ -357,7 +357,7 @@ static void LoadSpriteTables()
 	}
 
 	/* Load additional sprites for climates other than temperate */
-	if (_opt.landscape != LT_NORMAL) {
+	if (_opt.landscape != LT_TEMPERATE) {
 		LoadGrfIndexed(
 			files->landscape[_opt.landscape - 1].filename,
 			_landscape_spriteindexes[_opt.landscape - 1],

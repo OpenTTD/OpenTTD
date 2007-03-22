@@ -1306,8 +1306,8 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 
 				/* If value of goods is negative, it means in fact food or, if in toyland, fizzy_drink acceptance.
 				 * Else, we have "standard" 3rd cargo type, goods or candy, for toyland once more */
-				housespec[i]->accepts_cargo[2] = (goods >= 0) ? ((_opt.landscape == LT_CANDY) ? CT_CANDY : CT_GOODS) :
-						((_opt.landscape == LT_CANDY) ? CT_FIZZY_DRINKS : CT_FOOD);
+				housespec[i]->accepts_cargo[2] = (goods >= 0) ? ((_opt.landscape == LT_TOYLAND) ? CT_CANDY : CT_GOODS) :
+						((_opt.landscape == LT_TOYLAND) ? CT_FIZZY_DRINKS : CT_FOOD);
 
 				housespec[i]->cargo_acceptance[2] = abs(goods); // but we do need positive value here
 			}

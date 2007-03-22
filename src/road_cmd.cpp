@@ -864,14 +864,14 @@ static const Roadside _town_road_types_2[][2] = {
 static void TileLoop_Road(TileIndex tile)
 {
 	switch (_opt.landscape) {
-		case LT_HILLY:
+		case LT_ARCTIC:
 			if (IsOnSnow(tile) != (GetTileZ(tile) > GetSnowLine())) {
 				ToggleSnow(tile);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
 
-		case LT_DESERT:
+		case LT_TROPIC:
 			if (GetTropicZone(tile) == TROPICZONE_DESERT && !IsOnDesert(tile)) {
 				ToggleDesert(tile);
 				MarkTileDirtyByTile(tile);
@@ -909,7 +909,7 @@ static void TileLoop_Road(TileIndex tile)
 
 		{
 			/* Adjust road ground type depending on 'grp' (grp is the distance to the center) */
-			const Roadside* new_rs = (_opt.landscape == LT_CANDY) ? _town_road_types_2[grp] : _town_road_types[grp];
+			const Roadside* new_rs = (_opt.landscape == LT_TOYLAND) ? _town_road_types_2[grp] : _town_road_types[grp];
 			Roadside cur_rs = GetRoadside(tile);
 
 			/* We have our desired type, do nothing */

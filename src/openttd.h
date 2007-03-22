@@ -183,10 +183,10 @@ enum {
 
 /* Landscape types */
 enum {
-	LT_NORMAL     = 0,
-	LT_HILLY      = 1,
-	LT_DESERT     = 2,
-	LT_CANDY      = 3,
+	LT_TEMPERATE  = 0,
+	LT_ARCTIC     = 1,
+	LT_TROPIC     = 2,
+	LT_TOYLAND    = 3,
 
 	NUM_LANDSCAPE = 4,
 };

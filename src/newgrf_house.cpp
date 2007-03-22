@@ -252,8 +252,8 @@ static uint32 GetNumHouses(HouseID house_id, const Town *town)
 static uint32 GetTerrainType(TileIndex tile)
 {
 	switch (_opt.landscape) {
-		case LT_DESERT: return GetTropicZone(tile) == TROPICZONE_DESERT ? 1 : 2;
-		case LT_HILLY:  return GetTileZ(tile) >= GetSnowLine() ? 4 : 0;
+		case LT_TROPIC: return GetTropicZone(tile) == TROPICZONE_DESERT ? 1 : 2;
+		case LT_ARCTIC: return GetTileZ(tile) >= GetSnowLine() ? 4 : 0;
 		default:        return 0;
 	}
 }

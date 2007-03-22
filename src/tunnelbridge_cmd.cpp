@@ -1178,7 +1178,7 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 {
 	bool snow_or_desert = IsTunnelTile(tile) ? HasTunnelSnowOrDesert(tile) : HasBridgeSnowOrDesert(tile);
 	switch (_opt.landscape) {
-		case LT_HILLY:
+		case LT_ARCTIC:
 			if (snow_or_desert != (GetTileZ(tile) > GetSnowLine())) {
 				if (IsTunnelTile(tile)) {
 					SetTunnelSnowOrDesert(tile, !snow_or_desert);
@@ -1189,7 +1189,7 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 			}
 			break;
 
-		case LT_DESERT:
+		case LT_TROPIC:
 			if (GetTropicZone(tile) == TROPICZONE_DESERT && !snow_or_desert) {
 				if (IsTunnelTile(tile)) {
 					SetTunnelSnowOrDesert(tile, true);

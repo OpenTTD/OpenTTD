@@ -344,7 +344,7 @@ void GenerateUnmovables()
 	uint maxx;
 	uint maxy;
 
-	if (_opt.landscape == LT_CANDY) return;
+	if (_opt.landscape == LT_TOYLAND) return;
 
 	/* add radio tower */
 	i = ScaleByMapSize(1000);
@@ -362,7 +362,7 @@ void GenerateUnmovables()
 		}
 	} while (--i);
 
-	if (_opt.landscape == LT_DESERT) return;
+	if (_opt.landscape == LT_TROPIC) return;
 
 	/* add lighthouses */
 	i = li;

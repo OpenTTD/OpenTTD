@@ -250,7 +250,7 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 				CountMapSquareAround(tile, MP_TREES, 0) >= 8 ||
 				CountMapSquareAround(tile, MP_INDUSTRY, IT_FOREST) >= 2)
 			) {
-		found = _opt.landscape == LT_DESERT ?
+		found = _opt.landscape == LT_TROPIC ?
 			M(STR_SV_STNAME_FOREST) : M(STR_SV_STNAME_WOODS);
 		goto done;
 	}

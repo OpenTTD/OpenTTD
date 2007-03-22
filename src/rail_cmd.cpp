@@ -1294,7 +1294,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 			// adjust ground tile for desert
 			// don't adjust for snow, because snow in depots looks weird
-			if (IsSnowRailGround(ti->tile) && _opt.landscape == LT_DESERT) {
+			if (IsSnowRailGround(ti->tile) && _opt.landscape == LT_TROPIC) {
 				if (image != SPR_FLAT_GRASS_TILE) {
 					image += rti->snow_offset; // tile with tracks
 				} else {
@@ -1738,14 +1738,14 @@ static void TileLoop_Track(TileIndex tile)
 	RailGroundType new_ground;
 
 	switch (_opt.landscape) {
-		case LT_HILLY:
+		case LT_ARCTIC:
 			if (GetTileZ(tile) > GetSnowLine()) {
 				new_ground = RAIL_GROUND_ICE_DESERT;
 				goto set_ground;
 			}
 			break;
 
-		case LT_DESERT:
+		case LT_TROPIC:
 			if (GetTropicZone(tile) == TROPICZONE_DESERT) {
 				new_ground = RAIL_GROUND_ICE_DESERT;
 				goto set_ground;

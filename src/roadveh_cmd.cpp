@@ -639,7 +639,7 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
-			SndPlayVehicleFx((_opt.landscape != LT_CANDY) ?
+			SndPlayVehicleFx((_opt.landscape != LT_TOYLAND) ?
 				SND_0F_VEHICLE_BREAKDOWN : SND_35_COMEDY_BREAKDOWN, v);
 		}
 

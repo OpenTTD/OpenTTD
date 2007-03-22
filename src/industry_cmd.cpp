@@ -814,14 +814,14 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	uint field_type;
 	int type;
 
-	if (_opt.landscape == LT_HILLY) {
+	if (_opt.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= GetSnowLine())
 			return;
 	}
 
 	/* determine field size */
 	r = (Random() & 0x303) + 0x404;
-	if (_opt.landscape == LT_HILLY) r += 0x404;
+	if (_opt.landscape == LT_ARCTIC) r += 0x404;
 	size_x = GB(r, 0, 8);
 	size_y = GB(r, 8, 8);
 
@@ -852,7 +852,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	END_TILE_LOOP(cur_tile, size_x, size_y, tile)
 
 	type = 3;
-	if (_opt.landscape != LT_HILLY && _opt.landscape != LT_DESERT) {
+	if (_opt.landscape != LT_ARCTIC && _opt.landscape != LT_TROPIC) {
 		type = _plantfarmfield_type[Random() & 0xF];
 	}
 
@@ -1016,7 +1016,7 @@ static bool CheckNewIndustry_NULL(TileIndex tile)
 
 static bool CheckNewIndustry_Forest(TileIndex tile)
 {
-	if (_opt.landscape == LT_HILLY) {
+	if (_opt.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) < HighestSnowLine() + TILE_HEIGHT * 2U) {
 			_error_message = STR_4831_FOREST_CAN_ONLY_BE_PLANTED;
 			return false;
@@ -1048,7 +1048,7 @@ static bool CheckNewIndustry_OilRig(TileIndex tile)
 
 static bool CheckNewIndustry_Farm(TileIndex tile)
 {
-	if (_opt.landscape == LT_HILLY) {
+	if (_opt.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= HighestSnowLine()) {
 			_error_message = STR_0239_SITE_UNSUITABLE;
 			return false;
@@ -1766,7 +1766,7 @@ static void ChangeIndustryProduction(Industry *i)
 
 		case INDUSTRYLIFE_PRODUCTION:
 			/* decrease or increase */
-			if (type == IT_OIL_WELL && _opt.landscape == LT_NORMAL)
+			if (type == IT_OIL_WELL && _opt.landscape == LT_TEMPERATE)
 				only_decrease = true;
 
 			if (only_decrease || CHANCE16(1,3)) {
