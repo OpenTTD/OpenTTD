@@ -64,6 +64,7 @@ bool CargoSpec::IsValid() const
 CargoID GetCargoIDByLabel(CargoLabel cl)
 {
 	for (CargoID c = 0; c < lengthof(_cargo); c++) {
+		if (_cargo[c].bitnum == INVALID_CARGO) continue;
 		if (_cargo[c].label == cl) return c;
 	}
 
