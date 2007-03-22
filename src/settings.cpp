@@ -585,8 +585,11 @@ static const void *string_to_val(const SettingDescBase *desc, const char *str)
 	}
 	case SDT_ONEOFMANY: {
 		long r = lookup_oneofmany(desc->many, str, -1);
-		if (r != -1) return (void*)r;
-		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name);
+		/* if the first attempt of conversion from string to the appropriate value fails,
+		 * look if we have defined a converter from old value to new value. */
+		if (r == -1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
+		if (r != -1) return (void*)r; //and here goes converted value
+		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name); //sorry, we failed
 		return 0;
 	}
 	case SDT_MANYOFMANY: {
@@ -999,45 +1002,45 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 
 /* Macros for various objects to go in the configuration file.
  * This section is for structures where their various members are saved */
-#define SDT_GENERAL(name, sdt_cmd, sle_cmd, type, flags, guiflags, base, var, length, def, min, max, interval, full, str, proc, from, to)\
-	{NSD_GENERAL(name, def, sdt_cmd, guiflags, min, max, interval, full, str, proc, NULL), SLE_GENERAL(sle_cmd, base, var, type | flags, length, from, to)}
+#define SDT_GENERAL(name, sdt_cmd, sle_cmd, type, flags, guiflags, base, var, length, def, min, max, interval, full, str, proc, load, from, to)\
+	{NSD_GENERAL(name, def, sdt_cmd, guiflags, min, max, interval, full, str, proc, load), SLE_GENERAL(sle_cmd, base, var, type | flags, length, from, to)}
 
 #define SDT_CONDVAR(base, var, type, from, to, flags, guiflags, def, min, max, interval, str, proc)\
-	SDT_GENERAL(#var, SDT_NUMX, SL_VAR, type, flags, guiflags, base, var, 1, def, min, max, interval, NULL, str, proc, from, to)
+	SDT_GENERAL(#var, SDT_NUMX, SL_VAR, type, flags, guiflags, base, var, 1, def, min, max, interval, NULL, str, proc, NULL, from, to)
 #define SDT_VAR(base, var, type, flags, guiflags, def, min, max, interval, str, proc)\
 	SDT_CONDVAR(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, min, max, interval, str, proc)
 
 #define SDT_CONDBOOL(base, var, from, to, flags, guiflags, def, str, proc)\
-	SDT_GENERAL(#var, SDT_BOOLX, SL_VAR, SLE_BOOL, flags, guiflags, base, var, 1, def, 0, 1, 0, NULL, str, proc, from, to)
+	SDT_GENERAL(#var, SDT_BOOLX, SL_VAR, SLE_BOOL, flags, guiflags, base, var, 1, def, 0, 1, 0, NULL, str, proc, NULL, from, to)
 #define SDT_BOOL(base, var, flags, guiflags, def, str, proc)\
 	SDT_CONDBOOL(base, var, 0, SL_MAX_VERSION, flags, guiflags, def, str, proc)
 
 #define SDT_CONDLIST(base, var, type, from, to, flags, guiflags, def, str, proc)\
-	SDT_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, base, var, lengthof(((base*)8)->var), def, 0, 0, 0, NULL, str, proc, from, to)
+	SDT_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, base, var, lengthof(((base*)8)->var), def, 0, 0, 0, NULL, str, proc, NULL, from, to)
 #define SDT_LIST(base, var, type, flags, guiflags, def, str, proc)\
 	SDT_CONDLIST(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, str, proc)
 #define SDT_CONDLISTO(base, var, length, type, from, to, flags, guiflags, def, str, proc)\
-	SDT_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, base, var, length, def, 0, 0, 0, NULL, str, proc, from, to)
+	SDT_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, base, var, length, def, 0, 0, 0, NULL, str, proc, NULL, from, to)
 
 #define SDT_CONDSTR(base, var, type, from, to, flags, guiflags, def, str, proc)\
-	SDT_GENERAL(#var, SDT_STRING, SL_STR, type, flags, guiflags, base, var, lengthof(((base*)8)->var), def, 0, 0, 0, NULL, str, proc, from, to)
+	SDT_GENERAL(#var, SDT_STRING, SL_STR, type, flags, guiflags, base, var, lengthof(((base*)8)->var), def, 0, 0, 0, NULL, str, proc, NULL, from, to)
 #define SDT_STR(base, var, type, flags, guiflags, def, str, proc)\
 	SDT_CONDSTR(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, str, proc)
 #define SDT_CONDSTRO(base, var, length, type, from, to, flags, def, str, proc)\
 	SDT_GENERAL(#var, SDT_STRING, SL_STR, type, flags, 0, base, var, length, def, 0, 0, NULL, str, proc, from, to)
 
 #define SDT_CONDCHR(base, var, from, to, flags, guiflags, def, str, proc)\
-	SDT_GENERAL(#var, SDT_STRING, SL_VAR, SLE_CHAR, flags, guiflags, base, var, 1, def, 0, 0, 0, NULL, str, proc, from, to)
+	SDT_GENERAL(#var, SDT_STRING, SL_VAR, SLE_CHAR, flags, guiflags, base, var, 1, def, 0, 0, 0, NULL, str, proc, NULL, from, to)
 #define SDT_CHR(base, var, flags, guiflags, def, str, proc)\
 	SDT_CONDCHR(base, var, 0, SL_MAX_VERSION, flags, guiflags, def, str, proc)
 
-#define SDT_CONDOMANY(base, var, type, from, to, flags, guiflags, def, max, full, str, proc)\
-	SDT_GENERAL(#var, SDT_ONEOFMANY, SL_VAR, type, flags, guiflags, base, var, 1, def, 0, max, 0, full, str, proc, from, to)
-#define SDT_OMANY(base, var, type, flags, guiflags, def, max, full, str, proc)\
-	SDT_CONDOMANY(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, max, full, str, proc)
+#define SDT_CONDOMANY(base, var, type, from, to, flags, guiflags, def, max, full, str, proc, load)\
+	SDT_GENERAL(#var, SDT_ONEOFMANY, SL_VAR, type, flags, guiflags, base, var, 1, def, 0, max, 0, full, str, proc, load, from, to)
+#define SDT_OMANY(base, var, type, flags, guiflags, def, max, full, str, proc, load)\
+	SDT_CONDOMANY(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, max, full, str, proc, load)
 
 #define SDT_CONDMMANY(base, var, type, from, to, flags, guiflags, def, full, str, proc)\
-	SDT_GENERAL(#var, SDT_MANYOFMANY, SL_VAR, type, flags, guiflags, base, var, 1, def, 0, 0, 0, full, str, proc, from, to)
+	SDT_GENERAL(#var, SDT_MANYOFMANY, SL_VAR, type, flags, guiflags, base, var, 1, def, 0, 0, 0, full, str, proc, NULL, from, to)
 #define SDT_MMANY(base, var, type, flags, guiflags, def, full, str, proc)\
 	SDT_CONDMMANY(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, full, str, proc)
 
@@ -1156,6 +1159,18 @@ static int32 EngineRenewMoneyUpdate(int32 p1)
 	DoCommandP(0, 2, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 	return 0;
 }
+/** Conversion callback for _gameopt_settings.landscape
+ * It converts (or try) between old values and the new ones,
+ * without loosing initial setting  of the user
+ * @param value that was read from config file
+ * @return the "hopefully" converted value
+ */
+static int32 ConvertLandscape(const char *value)
+{
+	/* try with the old values */
+	return lookup_oneofmany("normal|hilly|desert|candy", value, -1);
+}
+
 /* End - Callback Functions */
 
 #ifndef EXTERNAL_PLAYER
@@ -1248,17 +1263,17 @@ static const SettingDesc _gameopt_settings[] = {
 	 * XXX - To save file-space and since values are never bigger than about 10? only
 	 * save the first 16 bits in the savegame. Question is why the values are still int32
 	 * and why not byte for example? */
-	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, (SLE_FILE_I16 | SLE_VAR_I32), 0, 0, GameOptions, diff, 17, 0, 0, 0, 0, NULL, STR_NULL, NULL, 0, 3),
-	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, (SLE_FILE_I16 | SLE_VAR_I32), 0, 0, GameOptions, diff, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, 4, SL_MAX_VERSION),
+	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, (SLE_FILE_I16 | SLE_VAR_I32), 0, 0, GameOptions, diff, 17, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 0, 3),
+	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, (SLE_FILE_I16 | SLE_VAR_I32), 0, 0, GameOptions, diff, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 4, SL_MAX_VERSION),
 	    SDT_VAR(GameOptions, diff_level,SLE_UINT8, 0, 0, 9, 0,  9, 0, STR_NULL, NULL),
-	  SDT_OMANY(GameOptions, currency,  SLE_UINT8, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL),
-	  SDT_OMANY(GameOptions, units,     SLE_UINT8, N, 0, 1,     2, "imperial|metric|si", STR_NULL, NULL),
-	  SDT_OMANY(GameOptions, town_name, SLE_UINT8, 0, 0, 0,    20, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL),
-	  SDT_OMANY(GameOptions, landscape, SLE_UINT8, 0, 0, 0,     3, "normal|hilly|desert|candy", STR_NULL, NULL),
+	  SDT_OMANY(GameOptions, currency,  SLE_UINT8, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
+	  SDT_OMANY(GameOptions, units,     SLE_UINT8, N, 0, 1,     2, "imperial|metric|si", STR_NULL, NULL, NULL),
+	  SDT_OMANY(GameOptions, town_name, SLE_UINT8, 0, 0, 0,    20, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
+	  SDT_OMANY(GameOptions, landscape, SLE_UINT8, 0, 0, 0,     3, "temperate|arctic|tropic|toyland", STR_NULL, NULL, ConvertLandscape),
 	    SDT_VAR(GameOptions, snow_line, SLE_UINT8, 0, 0, 1, 0, 56, 0, STR_NULL, NULL),
-	SDT_CONDOMANY(GameOptions,autosave, SLE_UINT8, 0, 22,             N, 0, 0, 0, "", STR_NULL, NULL),
-	SDT_CONDOMANY(GameOptions,autosave, SLE_UINT8,23, SL_MAX_VERSION, S, 0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL, NULL),
-	  SDT_OMANY(GameOptions, road_side, SLE_UINT8, 0, 0, 1,   1, "left|right", STR_NULL, NULL),
+	SDT_CONDOMANY(GameOptions,autosave, SLE_UINT8, 0, 22,             N, 0, 0, 0, "", STR_NULL, NULL, NULL),
+	SDT_CONDOMANY(GameOptions,autosave, SLE_UINT8,23, SL_MAX_VERSION, S, 0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL, NULL, NULL),
+	  SDT_OMANY(GameOptions, road_side, SLE_UINT8, 0, 0, 1,   1, "left|right", STR_NULL, NULL, NULL),
 	    SDT_END()
 };
 
