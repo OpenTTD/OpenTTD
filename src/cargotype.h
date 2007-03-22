@@ -31,7 +31,7 @@ struct CargoSpec {
 	bool is_freight;
 	TownEffect town_effect; ///< The effect this cargo type has on towns
 	uint16 multipliertowngrowth;
-	uint8 callbackflags;
+	uint8 callback_mask;
 
 	StringID name;
 	StringID name_plural;
@@ -48,6 +48,7 @@ struct CargoSpec {
 
 
 extern uint32 _cargo_mask;
+extern CargoSpec _cargo[NUM_CARGO];
 
 
 /* Set up the default cargo types for the given landscape type */

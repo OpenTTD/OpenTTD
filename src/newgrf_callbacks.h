@@ -99,9 +99,15 @@ enum CallbackID {
 	/* Called to play a special sound effect */
 	CBID_VEHICLE_SOUND_EFFECT       = 0x33,
 
+	/* Called to calculate the income of delivered cargo */
+	CBID_CARGO_PROFIT_CALC          = 0x39,
+
 	/* Called (if appropriate bit in callback mask set) to determine whether a
 	 * town building can be destroyed. */
 	CBID_HOUSE_DENY_DESTRUCTION     = 0x143,
+
+	/* Called to calculate part of a station rating */
+	CBID_CARGO_STATION_RATING_CALC  = 0x145,
 };
 
 /**
@@ -142,6 +148,14 @@ enum HouseCallbackMask {
 	CBM_HOUSE_ACCEPT_CARGO        = 8,
 	CBM_HOUSE_PRODUCE_CARGO       = 9,
 	CBM_HOUSE_DENY_DESTRUCTION    = 10,
+};
+
+/**
+ * Callback masks for cargos.
+ */
+enum CargoCallbackMask {
+	CBM_CARGO_PROFIT_CALC         = 0,
+	CBM_CARGO_STATION_RATING_CALC = 1,
 };
 
 /**

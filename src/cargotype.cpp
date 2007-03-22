@@ -12,7 +12,7 @@
 
 #include "table/cargo_const.h"
 
-static CargoSpec _cargo[NUM_CARGO];
+CargoSpec _cargo[NUM_CARGO];
 
 static const byte INVALID_CARGO = 0xFF;
 

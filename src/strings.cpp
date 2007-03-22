@@ -585,9 +585,15 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 					}
 
 					default:
-						buff = FormatCommaNumber(buff, GetInt32(&argv), last);
-						buff = strecpy(buff, " ", last);
-						buff = strecpy(buff, GetStringPtr(cargo_str), last);
+						if (cargo_str >= 0xE000 && cargo_str < 0xF800) {
+							/* NewGRF strings from Action 4 use a different format here,
+							 * of e.g. "x tonnes of coal", so process accordingly. */
+							buff = GetStringWithArgs(buff, cargo_str, argv++, last);
+						} else {
+							buff = FormatCommaNumber(buff, GetInt32(&argv), last);
+							buff = strecpy(buff, " ", last);
+							buff = strecpy(buff, GetStringPtr(cargo_str), last);
+						}
 						break;
 				}
 			} break;

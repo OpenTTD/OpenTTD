@@ -241,15 +241,19 @@ static GRFFile *GetFileByFilename(const char *filename)
  * @param str StringID that we want to have the equivalent in OoenTTD
  * @return the properly adjusted StringID
  */
-static StringID MapGRFStringID(StringID str)
+static StringID MapGRFStringID(uint32 grfid, StringID str)
 {
 	/* 0xD0 and 0xDC stand for all the TextIDs in the range
 	 * of 0xD000 (misc graphics texts) and 0xDC00 (misc persistent texts).
 	 * These strings are unique to each grf file, and thus require to be used with the
 	 * grfid in which they are declared */
 	if (GB(str, 8, 8) == 0xD0 || GB(str, 8, 8) == 0xDC) {
-		return GetGRFStringID(_cur_grffile->grfid, str);
+		return GetGRFStringID(grfid, str);
 	}
+
+	/* We have some changes in our cargo strings, resulting in some missing. */
+	if (str >= 0x006E && str <= 0x008D) return str - 0x20;
+	if (str >= 0x008E && str <= 0x00AD) return str - 0x20;
 
 	/* Map building names according to our lang file changes
 	 * 0x200F = Tall Office Block, first house name in the original data, the one that TTDPatch stil uses
@@ -1322,7 +1326,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 			break;
 
 		case 0x12: // Building name ID
-			FOR_EACH_OBJECT housespec[i]->building_name = MapGRFStringID(grf_load_word(&buf));
+			FOR_EACH_OBJECT housespec[i]->building_name = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
 			break;
 
 		case 0x13: // Building availability mask
@@ -1537,6 +1541,129 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 	return ret;
 }
 
+static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int len)
+{
+	if (cid + numinfo > NUM_CARGO) {
+		grfmsg(2, "CargoChangeInfo: Cargo type %d out of range (max %d)", cid + numinfo, NUM_CARGO - 1);
+		return false;
+	}
+
+	CargoSpec *cs = &_cargo[cid];
+	byte *buf = *bufp;
+	int i;
+	bool ret = false;
+
+	switch (prop) {
+		case 0x08: /* Bit number of cargo */
+			FOR_EACH_OBJECT {
+				cs[i].bitnum = grf_load_byte(&buf);
+				cs[i].grfid = _cur_grffile->grfid;
+				if (cs->IsValid()) {
+					SETBIT(_cargo_mask, cid + i);
+				} else {
+					CLRBIT(_cargo_mask, cid + i);
+				}
+			}
+			break;
+
+		case 0x09: /* String ID for cargo type name */
+			FOR_EACH_OBJECT cs[i].name = grf_load_word(&buf);
+			break;
+
+		case 0x0A: /* String for cargo name, plural */
+			FOR_EACH_OBJECT cs[i].name_plural = grf_load_word(&buf);
+			break;
+
+		case 0x0B:
+			/* String for units of cargo. This is different in OpenTTD to TTDPatch
+			 * (e.g. 10 tonnes of coal) */
+			FOR_EACH_OBJECT cs[i].units_volume = grf_load_word(&buf);
+			break;
+
+		case 0x0C: /* String for quantity of cargo (e.g. 10 tonnes of coal) */
+			FOR_EACH_OBJECT cs[i].quantifier = grf_load_word(&buf);
+			break;
+
+		case 0x0D: /* String for two letter cargo abbreviation */
+			FOR_EACH_OBJECT cs[i].abbrev = grf_load_word(&buf);
+			break;
+
+		case 0x0E: /* Sprite ID for cargo icon */
+			FOR_EACH_OBJECT cs[i].sprite = grf_load_word(&buf);
+			break;
+
+		case 0x0F: /* Weight of one unit of cargo */
+			FOR_EACH_OBJECT cs[i].weight = grf_load_byte(&buf);
+			break;
+
+		case 0x10: /* Used for payment calculation */
+			FOR_EACH_OBJECT cs[i].transit_days[0] = grf_load_byte(&buf);
+			break;
+
+		case 0x11: /* Used for payment calculation */
+			FOR_EACH_OBJECT cs[i].transit_days[1] = grf_load_byte(&buf);
+			break;
+
+		case 0x12: /* Base cargo price */
+			FOR_EACH_OBJECT cs[i].initial_payment = grf_load_dword(&buf);
+			break;
+
+		case 0x13: /* Colour for station rating bars */
+			FOR_EACH_OBJECT cs[i].rating_colour = grf_load_byte(&buf);
+			break;
+
+		case 0x14: /* Colour for cargo graph */
+			FOR_EACH_OBJECT cs[i].legend_colour = grf_load_byte(&buf);
+			break;
+
+		case 0x15: /* Freight status */
+			FOR_EACH_OBJECT cs[i].is_freight = grf_load_byte(&buf) != 0;
+			break;
+
+		case 0x16: /* Cargo classes */
+			FOR_EACH_OBJECT cs[i].classes = grf_load_word(&buf);
+			break;
+
+		case 0x17: /* Cargo label */
+			FOR_EACH_OBJECT {
+				cs[i].label = grf_load_dword(&buf);
+				cs[i].label = BSWAP32(cs[i].label);
+			}
+			break;
+
+		case 0x18: /* Town growth substitute type */
+			FOR_EACH_OBJECT {
+				uint8 substitute_type = grf_load_byte(&buf);
+				switch (substitute_type) {
+					case 0x00: cs[i].town_effect = TE_PASSENGERS; break;
+					case 0x02: cs[i].town_effect = TE_MAIL; break;
+					case 0x05: cs[i].town_effect = TE_GOODS; break;
+					case 0x09: cs[i].town_effect = TE_WATER; break;
+					case 0x0B: cs[i].town_effect = TE_FOOD; break;
+					default:
+						grfmsg(1, "CargoChangeInfo: Unknown town growth substitute value %d, setting to none.", substitute_type);
+					case 0xFF: cs[i].town_effect = TE_NONE; break;
+				}
+			}
+			break;
+
+		case 0x19: /* Town growth coefficient */
+			FOR_EACH_OBJECT cs[i].multipliertowngrowth = grf_load_word(&buf);
+			break;
+
+		case 0x1A: /* Bitmask of callbacks to use */
+			FOR_EACH_OBJECT cs[i].callback_mask = grf_load_byte(&buf);
+			break;
+
+		default:
+			ret = true;
+	}
+
+	*bufp = buf;
+	return ret;
+}
+
+
 static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
@@ -1629,7 +1756,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 		/* GSF_GLOBALVAR */    GlobalVarChangeInfo,
 		/* GSF_INDUSTRYTILES */NULL,
 		/* GSF_INDUSTRIES */   NULL,
-		/* GSF_CARGOS */       NULL,
+		/* GSF_CARGOS */       NULL, /* Cargo is handled during reservation */
 		/* GSF_SOUNDFX */      SoundEffectChangeInfo,
 	};
 
@@ -1789,6 +1916,35 @@ static void InitChangeInfo(byte *buf, int len)
 						break;
 				}
 				break;
+		}
+	}
+}
+
+/* Action 0x00 (GLS_RESERVE) */
+static void ReserveChangeInfo(byte *buf, int len)
+{
+	byte *bufend = buf + len;
+
+	if (len == 1) {
+		grfmsg(8, "Silently ignoring one-byte special sprite 0x00");
+		return;
+	}
+
+	if (!check_length(len, 6, "InitChangeInfo")) return;
+	buf++;
+	uint8 feature  = grf_load_byte(&buf);
+
+	if (feature != GSF_CARGOS) return;
+
+	uint8 numprops = grf_load_byte(&buf);
+	uint8 numinfo  = grf_load_byte(&buf);
+	uint8 index    = grf_load_byte(&buf);
+
+	while (numprops-- && buf < bufend) {
+		uint8 prop = grf_load_byte(&buf);
+
+		if (CargoChangeInfo(index, numinfo, prop, &buf, bufend - buf)) {
+			grfmsg(2, "FeatureChangeInfo: Ignoring property 0x%02X (not implemented)", prop);
 		}
 	}
 }
@@ -4255,6 +4411,26 @@ static void FinaliseHouseArray()
 	}
 }
 
+
+/** Each cargo string needs to be mapped from TTDPatch to OpenTTD string IDs.
+ * This is done after loading so that strings from Action 4 will be mapped
+ * properly. */
+static void MapNewCargoStrings()
+{
+	for (CargoID c = 0; c < NUM_CARGO; c++) {
+		CargoSpec *cs = &_cargo[c];
+		/* Don't map if the cargo is unavailable or not from NewGRF */
+		if (!cs->IsValid() || cs->grfid == 0) continue;
+
+		cs->name         = MapGRFStringID(cs->grfid, cs->name);
+		cs->name_plural  = MapGRFStringID(cs->grfid, cs->name_plural);
+		cs->units_volume = MapGRFStringID(cs->grfid, cs->units_volume);
+		cs->quantifier   = MapGRFStringID(cs->grfid, cs->quantifier);
+		cs->abbrev       = MapGRFStringID(cs->grfid, cs->abbrev);
+	}
+}
+
+
 /* Here we perform initial decoding of some special sprites (as are they
  * described at http://www.ttdpatch.net/src/newgrf.txt, but this is only a very
  * partial implementation yet). */
@@ -4276,26 +4452,26 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 	 * is not in memory and scanning the file every time would be too expensive.
 	 * In other stages we skip action 0x10 since it's already dealt with. */
 	static const SpecialSpriteHandler handlers[][GLS_END] = {
-		/* 0x00 */ { NULL,     SafeChangeInfo, NULL,       InitChangeInfo, FeatureChangeInfo, },
-		/* 0x01 */ { NULL,     GRFUnsafe, NULL,            NULL,       NewSpriteSet, },
-		/* 0x02 */ { NULL,     GRFUnsafe, NULL,            NULL,       NewSpriteGroup, },
-		/* 0x03 */ { NULL,     GRFUnsafe, NULL,            NULL,       FeatureMapSpriteGroup, },
-		/* 0x04 */ { NULL,     NULL,      NULL,            NULL,       FeatureNewName, },
-		/* 0x05 */ { NULL,     NULL,      NULL,            NULL,       GraphicsNew, },
-		/* 0x06 */ { NULL,     NULL,      NULL,            CfgApply,   CfgApply, },
-		/* 0x07 */ { NULL,     NULL,      NULL,            NULL,       SkipIf, },
-		/* 0x08 */ { ScanInfo, NULL,      NULL,            GRFInfo,    GRFInfo, },
-		/* 0x09 */ { NULL,     NULL,      NULL,            SkipIf,     SkipIf, },
-		/* 0x0A */ { NULL,     NULL,      NULL,            NULL,       SpriteReplace, },
-		/* 0x0B */ { NULL,     NULL,      NULL,            GRFLoadError, GRFLoadError, },
-		/* 0x0C */ { NULL,     NULL,      NULL,            GRFComment, GRFComment, },
-		/* 0x0D */ { NULL,     SafeParamSet, NULL,         ParamSet,   ParamSet, },
-		/* 0x0E */ { NULL,     SafeGRFInhibit, NULL,       GRFInhibit, GRFInhibit, },
-		/* 0x0F */ { NULL,     NULL,      NULL,            NULL,       NULL, },
-		/* 0x10 */ { NULL,     NULL,      DefineGotoLabel, NULL,       NULL, },
-		/* 0x11 */ { NULL,     GRFUnsafe, NULL,            NULL,       GRFSound, },
-		/* 0x12 */ { NULL,     NULL,      NULL,            NULL,       LoadFontGlyph, },
-		/* 0x13 */ { NULL,     NULL,      NULL,            NULL,       TranslateGRFStrings, },
+		/* 0x00 */ { NULL,     SafeChangeInfo, NULL,       InitChangeInfo, ReserveChangeInfo, FeatureChangeInfo, },
+		/* 0x01 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              NewSpriteSet, },
+		/* 0x02 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              NewSpriteGroup, },
+		/* 0x03 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              FeatureMapSpriteGroup, },
+		/* 0x04 */ { NULL,     NULL,      NULL,            NULL,           NULL,              FeatureNewName, },
+		/* 0x05 */ { NULL,     NULL,      NULL,            NULL,           NULL,              GraphicsNew, },
+		/* 0x06 */ { NULL,     NULL,      NULL,            CfgApply,       NULL,              CfgApply, },
+		/* 0x07 */ { NULL,     NULL,      NULL,            NULL,           SkipIf,            SkipIf, },
+		/* 0x08 */ { ScanInfo, NULL,      NULL,            GRFInfo,        NULL,              GRFInfo, },
+		/* 0x09 */ { NULL,     NULL,      NULL,            SkipIf,         SkipIf,            SkipIf, },
+		/* 0x0A */ { NULL,     NULL,      NULL,            NULL,           NULL,              SpriteReplace, },
+		/* 0x0B */ { NULL,     NULL,      NULL,            GRFLoadError,   GRFLoadError,      GRFLoadError, },
+		/* 0x0C */ { NULL,     NULL,      NULL,            GRFComment,     NULL,              GRFComment, },
+		/* 0x0D */ { NULL,     SafeParamSet, NULL,         ParamSet,       ParamSet,          ParamSet, },
+		/* 0x0E */ { NULL,     SafeGRFInhibit, NULL,       GRFInhibit,     GRFInhibit,        GRFInhibit, },
+		/* 0x0F */ { NULL,     NULL,      NULL,            NULL,           NULL,              NULL, },
+		/* 0x10 */ { NULL,     NULL,      DefineGotoLabel, NULL,           NULL,              NULL, },
+		/* 0x11 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              GRFSound, },
+		/* 0x12 */ { NULL,     NULL,      NULL,            NULL,           NULL,              LoadFontGlyph, },
+		/* 0x13 */ { NULL,     NULL,      NULL,            NULL,           NULL,              TranslateGRFStrings, },
 	};
 
 	byte* buf;
@@ -4430,6 +4606,10 @@ static void AfterLoadGRFs()
 
 	/* Add all new houses to the house array. */
 	FinaliseHouseArray();
+
+	/* Map cargo strings. This is a separate step because cargos are
+	 * loaded before strings... */
+	MapNewCargoStrings();
 }
 
 void LoadNewGRF(uint load_index, uint file_index)
