@@ -15,7 +15,7 @@ or http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version.
 
-Bugs for 0.5.0
+Bugs for 0.5.1
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
@@ -83,7 +83,7 @@ URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 -1116638	"More, but smaller changes" deficiency
 -1106356	re-offered prototypes
 
-Minor Bugs for 0.5.0
+Minor Bugs for 0.5.1
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 
