@@ -2217,6 +2217,7 @@ static void NewSpriteGroup(byte *buf, int len)
 				case GSF_SHIP:
 				case GSF_AIRCRAFT:
 				case GSF_STATION:
+				case GSF_CARGOS:
 				{
 					byte sprites     = _cur_grffile->spriteset_numents;
 					byte num_loaded  = type;
@@ -2556,6 +2557,33 @@ static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 	}
 }
 
+
+static void CargoMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+{
+	byte *bp = &buf[4 + idcount + cidcount * 3];
+	uint16 groupid = grf_load_word(&bp);
+
+	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+		grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
+		       groupid, _cur_grffile->spritegroups_count);
+		return;
+	}
+
+	for (uint i = 0; i < idcount; i++) {
+		CargoID cid = buf[3 + i];
+
+		if (cid >= NUM_CARGO) {
+			grfmsg(1, "FeatureMapSpriteGroup: Cargo ID %d out of range, skipping");
+			continue;
+		}
+
+		CargoSpec *cs = &_cargo[cid];
+		cs->grfid = _cur_grffile->grfid;
+		cs->group = _cur_grffile->spritegroups[groupid];
+	}
+}
+
+
 /* Action 0x03 */
 static void FeatureMapSpriteGroup(byte *buf, int len)
 {
@@ -2612,6 +2640,10 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 
 		case GSF_TOWNHOUSE:
 			TownHouseMapSpriteGroup(buf, idcount, cidcount);
+			return;
+
+		case GSF_CARGOS:
+			CargoMapSpriteGroup(buf, idcount, cidcount);
 			return;
 
 		default:

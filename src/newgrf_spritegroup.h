@@ -191,6 +191,9 @@ struct ResolverObject {
 			Town *town;
 			HouseID house_id;
 		} house;
+		struct {
+			const struct CargoSpec *cs;
+		} cargo;
 	} u;
 
 	uint32 (*GetRandomBits)(const struct ResolverObject*);

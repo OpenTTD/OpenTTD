@@ -42,6 +42,7 @@ struct CargoSpec {
 	SpriteID sprite;
 
 	uint16 classes;
+	const struct SpriteGroup *group;
 
 	bool IsValid() const;
 };

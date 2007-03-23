@@ -674,7 +674,16 @@ static void DrawCargoIcons(CargoID i, uint waiting, int x, int y)
 	if (num == 0) return;
 
 	const CargoSpec *cs = GetCargo(i);
-	SpriteID sprite = cs->sprite;
+	SpriteID sprite;
+
+	if (cs->sprite == 0xFFFF) {
+		/* A value of 0xFFFF indicates we should draw a custom icon */
+		sprite = GetCustomCargoSprite(cs);
+	} else {
+		sprite = cs->sprite;
+	}
+
+	if (sprite == 0) return;
 
 	do {
 		DrawSprite(sprite, PAL_NONE, x, y);
