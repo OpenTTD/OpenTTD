@@ -727,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar farol
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmissor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definir área de deserto.{}Manter a tecla CTRL pressionada para remover
+STR_CREATE_LAKE                                                 :{BLACK}Definir área de água.{}Construir um canal com a tecla CTRL numa área que não seja a do mar, senão inundar-se-iam as zonas circundantes
 STR_0290_DELETE                                                 :{BLACK}Apagar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Apagar completamente esta cidade
 STR_0292_SAVE_SCENARIO                                          :Guardar cenário
@@ -1089,6 +1090,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Própria companhia
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Todas as companhias
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Escolher chat de equipa com <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Função de scrollwheel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Ampliar mapa
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Percorrer mapa
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Desligado
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidade do scrollwheel no mapa: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
@@ -1207,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Colocar árvores de tipo aleatório
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Não é possível construir canais aqui...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Construir canais.
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Não é possível construir diques aqui...
@@ -2907,6 +2914,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} foi fe
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parâmetro inválido para {STRING}: parâmetro {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} deve ser carregado antes de {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} deve ser carregado antes de {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :O ficheiro GRF foi desenhado para traduzir
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adicionar um ficheiro NewGRF à lista

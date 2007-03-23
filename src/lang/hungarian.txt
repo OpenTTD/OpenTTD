@@ -1159,6 +1159,7 @@ STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Alapese
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Scrollgomb funkció: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Térkép nagyítás
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Térkép mozgatás
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Ki
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollgomb sebessége a térképen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}

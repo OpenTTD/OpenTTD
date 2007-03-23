@@ -591,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}玩家�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}对手车站的剪彩仪式
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}事故/灾难
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}公司信息
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}开启/关闭工业设施
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}经济变化
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}玩家车辆的状况报告
 STR_020C_NEW_VEHICLES                                           :{YELLOW}新的车辆类型
@@ -726,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}在地�
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}放置灯塔
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}放置转播塔
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}定义沙漠区域。{}摁住 CTRL 可以去掉沙漠区域。
+STR_CREATE_LAKE                                                 :{BLACK}定义水域。{}修建运河，仅在CTRL被按下的情况下不会在海平面淹没周围的区域。
 STR_0290_DELETE                                                 :{BLACK}删除
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}完全删除这座城镇
 STR_0292_SAVE_SCENARIO                                          :保存场景
@@ -1088,6 +1090,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :不显示
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :本公司
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :所有公司
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}输入 <ENTER> 时与偏好的团队交谈：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}鼠标滚轮的作用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :缩放地图
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :滚动地图
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :关闭
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}地图滚动速度：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}每位玩家最大火车数量：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}每位玩家最大汽车数量：{ORANGE}{STRING}
@@ -1206,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}随机�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}种植随机类型的树木
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}不能在这里兴建运河……
+STR_BUILD_CANALS_TIP                                            :{BLACK}修建运河。
 STR_LANDINFO_CANAL                                              :运河
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}不能在这里兴建船闸……
@@ -2906,6 +2914,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} 应当
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING} 参数错误：参数 {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} 必须在 {STRING} 前加载。
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} 必须在 {STRING} 后加载。
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 被设计为可平移
 
 STR_NEWGRF_ADD                                                  :{BLACK}增加
 STR_NEWGRF_ADD_TIP                                              :{BLACK}向列表中增加一个 NewGRF 文件

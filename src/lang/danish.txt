@@ -2772,7 +2772,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Ombyg skibet
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den slags last skibet skal sejle med
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Ombyg skibet til den markerede slags last
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den lasttype der skal sejles med:
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den lasttype der skal transporteres:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{CARGO}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
 STR_9842_REFITTABLE                                             :(kan ombygges)

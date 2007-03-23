@@ -728,6 +728,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Felsige 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Leuchtturm errichten
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender errichten
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Lege Wüstengebiet an.{}STRG drücken zum entfernen
+STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Bei gedrückter Strg.-Taste wird ein Wasserfeld erzeugt, das umliegendes Land flutet.
 STR_0290_DELETE                                                 :{BLACK}Löschen
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Diese Stadt vollständig löschen
 STR_0292_SAVE_SCENARIO                                          :Szenario speichern
@@ -1090,6 +1091,9 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Keine
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eigene Firma
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle Firmen
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Bevorzuge Teamchat mit <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Karte vergrößern
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Kartenansicht verschieben
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Aus
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximale Anzahl der Straßenfahrzeuge pro Spieler: {ORANGE}{STRING}
@@ -1208,6 +1212,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Zufälli
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Zufällige Baumart pflanzen
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kann hier keinen Kanal bauen...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Kanalbau.
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kann hier keine Schleuse bauen...
