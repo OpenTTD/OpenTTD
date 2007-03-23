@@ -596,7 +596,7 @@ STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Пока
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Показати рослинність на карті
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Показати власників землі на карті
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Показати назви міст на карті
-STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Прибуток цього року: {CURRENCY} (минулого року: {CURRENCY})
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Прибуток цього року: {CURRENCY} (торік: {CURRENCY})
 
 ############ range for service numbers starts
 STR_AGE                                                         :{COMMA} р{P ік оки оків} ({COMMA})
@@ -1108,7 +1108,7 @@ STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Немо
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Кінець наказів - -
 
 STR_TRAIN_IS_LOST                                               :{WHITE}Поїзд {COMMA} заблукав.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Поїзд {COMMA} приніс прибуток минулого року {CURRENCY}
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Поїзд {COMMA} торік приніс прибуток {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Європейська грошова одиниця!{}{}У вашій країні введено євро - єдину валюту для розрахунків!
 
 # Start of order review system.
@@ -1513,7 +1513,7 @@ STR_NETWORK_COMPANY_NAME                                        :{SILVER}Наз�
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Засновано:  {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}Вартість компанії:  {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Поточний баланс:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Прибуток минулого року:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Прибуток торік:  {WHITE}{CURRENCY64}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Продуктивність:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Транспорт:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2311,16 +2311,16 @@ STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Керівник)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Компанії об'єдналися!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} була викуплена {COMPANY} за {CURRENCY}!
-STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Ми шукаємо нового власника нашої компанії.{}{}Ви бажаєте купити {COMPANY} за {CURRENCY}?
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Ми шукаємо нового власника нашої компанії.{}{}Чи бажаєте Ви купити {COMPANY} за {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}БАНКРУТ!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} буде закрита кредиторами і все майно буде продане!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} була закрита кредиторами і все майно продане!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Засновано нову компанію!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} починає будівництво біля {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Неможливо купити компанію...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Тарифи на доставку вантажів
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Днів у дорозі
 STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Плата за доставку 10 одиниць (або 10,000 літрів) вантажу на відстань 20 квадратів
-STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Вкл/викл графік типів вантажу
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Вкл/відкл графік типів вантажу
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Інженер
 STR_7067_TRAFFIC_MANAGER                                        :Регулювальник
@@ -2341,7 +2341,7 @@ STR_COMPANY_PASSWORD                                            :{BLACK}Паро
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Пароль захищає вашу компанію від приєднання інших гравців.
 STR_SET_COMPANY_PASSWORD                                        :Встановлення паролю
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Світова економічна криза!{}{}Фінансисти очікують спад виробництва та попиту!
-STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Криза минула!{}{}Збільшення діяльності підніме промисловість коли економіка стабілізується!
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Криза минула!{}{}Збільшення виробництва внаслідок стабілізації економіки надає впевненості підприємствам!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Розмір вікна великий/малий
 STR_7076_COMPANY_VALUE                                          :{GOLD}Вартість компанії: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Купити 25% акцій компанії
@@ -2773,7 +2773,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ціна
 STR_885C_BROKEN_DOWN                                            :{RED}Зламався
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Транспортні витрати: {LTBLUE}{CURRENCY}/рік
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_S}  {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток: {LTBLUE}{CURRENCY}  (торік: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Зупинений
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Неможливо проїхати сигнал - небезпечно...

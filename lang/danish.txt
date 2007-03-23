@@ -590,6 +590,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst af første køretøj til modstanderens station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Uheld / katastrofer
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Selskabsinformation
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Åbning / lukning af industrier
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiændringer
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rådgivning / information om spillerens køretøjer
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye køretøjer
@@ -729,6 +730,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placér 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placér fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placér sender
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Hold CTRL nede for at fjerne det
+STR_CREATE_LAKE                                                 :{BLACK}Definer vandområde.{}Lav en kanal, med mindre CTRL-tasten holdes ved havniveau, hvorved omgivelserne oversvømmes i stedet
 STR_0290_DELETE                                                 :{BLACK}Slet
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slet denne by fuldstændigt
 STR_0292_SAVE_SCENARIO                                          :Gem scenarie
@@ -1206,6 +1208,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Træer a
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Placer træer af tilfældig type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan ikke bygge en kanal her...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Byg kanaler.
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan ikke bygge en sluse her...
@@ -1501,8 +1504,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Pris: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Indkomst: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Indkomst: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Overfør: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Overfør: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Overført: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Overført: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Anslået Pris: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Anslået Indkomst: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kan ikke hæve landet her...
@@ -2761,7 +2764,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Ombyg skibet
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den slags last skibet skal sejle med
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Ombyg skibet til den markerede slags last
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den lasttype der skal sejles med:
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den lasttype der skal transporteres:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{CARGO}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
 STR_9842_REFITTABLE                                             :(kan ombygges)

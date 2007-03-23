@@ -617,7 +617,6 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Verminde
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Ontwikkel lukraak land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Herstel landerye
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Herstel landerye
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Is jy seker jy wil alle speler-besittend eiendom verwyder?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landerye ontwikkeling
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stad ontwikkeling
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Nyweheid ontwikkeling

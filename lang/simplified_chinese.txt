@@ -360,6 +360,7 @@ STR_015C_SAVE_GAME                                              :保存游戏
 STR_015D_LOAD_GAME                                              :读取存档
 STR_015E_QUIT_GAME                                              :放弃游戏
 STR_015F_QUIT                                                   :退出
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}你确定要放弃当前的游戏吗？
 STR_0161_QUIT_GAME                                              :{WHITE}放弃游戏
 STR_SORT_ORDER_TIP                                              :{BLACK}选择排序方法 (降序/升序)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}选择排序标准
@@ -589,6 +590,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}玩家�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}对手车站的剪彩仪式
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}事故/灾难
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}公司信息
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}开启/关闭工业设施
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}经济变化
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}玩家车辆的状况报告
 STR_020C_NEW_VEHICLES                                           :{YELLOW}新的车辆类型
@@ -613,16 +615,22 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} 达到 '{STRING}' 的状态！
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} 在 {COMPANY} 达到 '{STRING}' 状态！
 STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}创建场景
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}场景编辑器
 STR_0223_LAND_GENERATION                                        :{WHITE}生成土地
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}随机地形
+STR_0227_RESET_LAND                                             :{BLACK}重置地形
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}增加要升高/降低的土地面积
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}减少要升高/降低的土地面积
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}随机生成土地
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}重置景观
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}重置景观
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}使用高度图
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}使用高度图
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}你确定要重置地形吗？
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}生成景观
 STR_022F_TOWN_GENERATION                                        :{BLACK}生成城镇
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}生成工业
@@ -722,6 +730,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}在地�
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}放置灯塔
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}放置转播塔
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}定义沙漠区域。{}摁住 CTRL 可以去掉沙漠区域。
+STR_CREATE_LAKE                                                 :{BLACK}定义水域。{}修建运河，仅在CTRL被按下的情况下不会在海平面淹没周围的区域。
 STR_0290_DELETE                                                 :{BLACK}删除
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}完全删除这座城镇
 STR_0292_SAVE_SCENARIO                                          :保存场景
@@ -735,6 +744,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}保存�
 STR_029A_PLAY_SCENARIO                                          :{BLACK}以场景开始游戏
 STR_PLAY_HEIGHTMAP                                              :{BLACK}以高度图开始游戏
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}以高度图决定的地形开始一个新游戏。
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}你确定要推出当前场景吗？
 STR_029C_QUIT_EDITOR                                            :{WHITE}推出编辑器
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}只能在人口超过 1200 的城镇建造……
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}将开始年份向前调整 1 年
@@ -1198,6 +1208,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}随机�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}种植随机类型的树木
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}不能在这里兴建运河……
+STR_BUILD_CANALS_TIP                                            :{BLACK}修建运河。
 STR_LANDINFO_CANAL                                              :运河
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}不能在这里兴建船闸……
@@ -2944,6 +2955,20 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}与 {COM
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}显示所有共享此调度计划的车辆/船只/飞机
 
 ### depot strings
+
+STR_SELL                                                        :{BLACK}出售
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}你将出售车库/船坞/机库中的全部车辆/船只/飞机
+STR_ARE_YOU_SURE                                                :{BLACK}你确定吗？
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}确认你将要出售车库中的所有列车
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}确定你将要出售车库中的所有汽车
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}确定你要你将要出售船坞中的全部船只
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}确定你将要出售机库中的全部飞机
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}不要出售车库中的列车
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}不要出售车库中的汽车
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}不要出售船坞中的船只
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}不要出售机库中的飞机
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}出售车库中的所有列车
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}出售车库中的所有汽车

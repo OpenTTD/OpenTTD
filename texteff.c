@@ -120,6 +120,8 @@ void InitTextMessage(void)
 void UndrawTextMessage(void)
 {
 	if (_textmessage_visible) {
+		int x, y, width, height;
+
 		// Sometimes we also need to hide the cursor
 		//   This is because both textmessage and the cursor take a shot of the
 		//   screen before drawing.
@@ -139,15 +141,27 @@ void UndrawTextMessage(void)
 			}
 		}
 
+		x      = _textmsg_box.x;
+		y      = _screen.height - _textmsg_box.y - _textmsg_box.height;
+		width  = _textmsg_box.width;
+		height = _textmsg_box.height;
+		if (y < 0) {
+			height = max(height + y, min(_textmsg_box.height, _screen.height));
+			y = 0;
+		}
+		if (x + width >= _screen.width) {
+			width = _screen.width - x;
+		}
+
 		_textmessage_visible = false;
 		// Put our 'shot' back to the screen
 		memcpy_pitch(
-			_screen.dst_ptr + _textmsg_box.x + (_screen.height - _textmsg_box.y - _textmsg_box.height) * _screen.pitch,
+			_screen.dst_ptr + x + y * _screen.pitch,
 			_textmessage_backup,
-			_textmsg_box.width, _textmsg_box.height, _textmsg_box.width, _screen.pitch);
+			width, height, _textmsg_box.width, _screen.pitch);
 
 		// And make sure it is updated next time
-		_video_driver->make_dirty(_textmsg_box.x, _screen.height - _textmsg_box.y - _textmsg_box.height, _textmsg_box.width, _textmsg_box.height);
+		_video_driver->make_dirty(x, y, width, height);
 
 		_textmessage_dirty = true;
 	}
@@ -180,7 +194,8 @@ void TextMessageDailyLoop(void)
 // Draw the textmessage-box
 void DrawTextMessage(void)
 {
-	uint y, count;
+	int x, y, width, height;
+	uint offset_y, count;
 
 	if (!_textmessage_dirty) return;
 
@@ -193,11 +208,22 @@ void DrawTextMessage(void)
 	count = GetTextMessageCount();
 	if (count == 0) return;
 
+	x      = _textmsg_box.x;
+	y      = _screen.height - _textmsg_box.y - _textmsg_box.height;
+	width  = _textmsg_box.width;
+	height = _textmsg_box.height;
+	if (y < 0) {
+		height = max(height + y, min(_textmsg_box.height, _screen.height));
+		y = 0;
+	}
+	if (x + width >= _screen.width) {
+		width = _screen.width - x;
+	}
 	// Make a copy of the screen as it is before painting (for undraw)
 	memcpy_pitch(
 		_textmessage_backup,
-		_screen.dst_ptr + _textmsg_box.x + (_screen.height - _textmsg_box.y - _textmsg_box.height) * _screen.pitch,
-		_textmsg_box.width, _textmsg_box.height, _screen.pitch, _textmsg_box.width);
+		_screen.dst_ptr + x + y * _screen.pitch,
+		width, height, _screen.pitch, _textmsg_box.width);
 
 	_cur_dpi = &_screen; // switch to _screen painting
 
@@ -211,12 +237,12 @@ void DrawTextMessage(void)
 		);
 
 	/* Paint the messages starting with the lowest at the bottom */
-	for (y = 13; count-- != 0; y += 13) {
-		DoDrawString(_textmsg_list[count].message, _textmsg_box.x + 3, _screen.height - _textmsg_box.y - y + 1, _textmsg_list[count].color);
+	for (offset_y = 13; count-- != 0; offset_y += 13) {
+		DoDrawString(_textmsg_list[count].message, _textmsg_box.x + 3, _screen.height - _textmsg_box.y - offset_y + 1, _textmsg_list[count].color);
  	}
 
 	// Make sure the data is updated next flush
-	_video_driver->make_dirty(_textmsg_box.x, _screen.height - _textmsg_box.y - _textmsg_box.height, _textmsg_box.width, _textmsg_box.height);
+	_video_driver->make_dirty(x, y, width, height);
 
 	_textmessage_visible = true;
 	_textmessage_dirty = false;

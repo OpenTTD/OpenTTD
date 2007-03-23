@@ -625,8 +625,6 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Μείω
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Δημιουργία τυχαίου εδάφους
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Επαναφορά τοπίου
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Επαναφορά Τοπίου
-STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Αφαίρεση όλων των ιδιοκτησιών παικτών από το χάρτη
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Είστε σίγουρος ότι θέλετε να αφαιρέσετε όλες τις ιδιοκτησίες παικτών;
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Δημιουργία τοπίου
 STR_022F_TOWN_GENERATION                                        :{BLACK}Δημιουργία πόλης
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Δημιουργία Βιομηχανίας

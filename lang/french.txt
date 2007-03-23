@@ -1283,14 +1283,14 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multijou
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nom du joueur:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Ceci est le nom avec lequel les autres joueurs pourront vous identifier
 STR_NETWORK_CONNECTION                                          :{BLACK}Connexion :
-STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Choisir entre un jeu Internet ou sur réseau local
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Choisir entre un jeu sur Internet ou sur réseau local
 
 STR_NETWORK_START_SERVER                                        :{BLACK}Démarrer le serveur
 STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Démarre son propre serveur
 
 STR_NETWORK_GAME_NAME                                           :{BLACK}Nom
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nom de la partie
-STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Langage, version du serveur, etc.
+STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Langue, version du serveur, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Cliquer sur une partie de la liste pour la sélectionner
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Trouver un serveur
@@ -1337,7 +1337,7 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (publier)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 joueur
+STR_NETWORK_0_PLAYERS                                           :0 joueurs
 STR_NETWORK_1_PLAYERS                                           :1 joueur
 STR_NETWORK_2_PLAYERS                                           :2 joueurs
 STR_NETWORK_3_PLAYERS                                           :3 joueurs
@@ -1408,8 +1408,8 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) En
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Rapatriement des infos sur le jeu..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Rapatriement des infos sur la compagnie..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} avant nous
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} ko déjà téléchargés
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} avant vous
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} ko téléchargés
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Déconnecter
 
@@ -1421,7 +1421,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste de
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Aucun périphérique réseau trouvé ou programme compilé sans ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Aucune partie réseau n'a été trouvée
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Le serveur n'a pas répondu à la requête
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Echec de la connexion à cause de NewGRF différents
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Echec de la connexion : NewGRF requis
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} La synchronisation de la partie réseau a échouée.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} La connection de la partie réseau a été perdue.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} La sauvegarde serveur n'a pas pu être chargée.
@@ -1431,7 +1431,7 @@ STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} La conn
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Il y a eu une erreur de protocole et la connection est donc fermée.
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} La révision de ce client ne correspond pas à celle du serveur.
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Mot de passe incorrect.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Le serveur est plein
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Le serveur est complet
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Vous êtes bannis de ce serveur
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Vous avez été exclu de la partie
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Tricher n'est pas autorisé sur ce serveur
@@ -1443,7 +1443,7 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :erreur de désy
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :chargement de la carte impossible
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :connection perdue
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :erreur de protocole
-STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF différents
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF requis
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :non autorisé
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :paquet étrange reçu
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :révision incorrecte
@@ -1717,7 +1717,7 @@ STR_3002_ORIENTATION                                            :{BLACK}Orientat
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Nombre de voies
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Longueur du quai
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Trop près d'une autre gare
-STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Ajouter une ou plusieurs gares
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Adjacent à plus d'une gare à la fois
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Trop de gares dans cette ville
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Trop de gares
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Trop d'arrêts d'autobus
