@@ -667,6 +667,21 @@ static const Widget _station_view_widgets[] = {
 {   WIDGETS_END},
 };
 
+
+static void DrawCargoIcons(CargoID i, uint waiting, int x, int y)
+{
+	uint num = min((waiting + 5) / 10, 23);
+	if (num == 0) return;
+
+	const CargoSpec *cs = GetCargo(i);
+	SpriteID sprite = cs->sprite;
+
+	do {
+		DrawSprite(sprite, PAL_NONE, x, y);
+		x += 10;
+	} while (--num);
+}
+
 static void DrawStationViewWindow(Window *w)
 {
 	StationID station_id = w->window_number;
@@ -713,18 +728,9 @@ static void DrawStationViewWindow(Window *w)
 		uint waiting = GB(st->goods[i].waiting_acceptance, 0, 12);
 		if (waiting == 0) continue;
 
-		num = (waiting + 5) / 10;
-		if (num != 0) {
-			int cur_x = x;
-			num = min(num, 23);
-			do {
-				DrawSprite(GetCargo(i)->sprite, PAL_NONE, cur_x, y);
-				cur_x += 10;
-			} while (--num);
-		}
-
 		if (st->goods[i].enroute_from == station_id) {
 			if (--pos < 0) {
+				DrawCargoIcons(i, waiting, x, y);
 				SetDParam(1, waiting);
 				SetDParam(0, i);
 				DrawStringRightAligned(x + 234, y, STR_0009, 0);
@@ -733,6 +739,7 @@ static void DrawStationViewWindow(Window *w)
 		} else {
 			/* enroute */
 			if (--pos < 0) {
+				DrawCargoIcons(i, waiting, x, y);
 				SetDParam(1, waiting);
 				SetDParam(0, i);
 				DrawStringRightAligned(x + 234, y, STR_000A_EN_ROUTE_FROM, 0);
