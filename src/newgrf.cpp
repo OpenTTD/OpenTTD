@@ -2394,148 +2394,26 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 	return ctype;
 }
 
-/* Action 0x03 */
-static void FeatureMapSpriteGroup(byte *buf, int len)
-{
-	/* <03> <feature> <n-id> <ids>... <num-cid> [<cargo-type> <cid>]... <def-cid>
-	 * id-list    := [<id>] [id-list]
-	 * cargo-list := <cargo-type> <cid> [cargo-list]
-	 *
-	 * B feature       see action 0
-	 * B n-id          bits 0-6: how many IDs this definition applies to
-	 *                 bit 7: if set, this is a wagon override definition (see below)
-	 * B ids           the IDs for which this definition applies
-	 * B num-cid       number of cargo IDs (sprite group IDs) in this definition
-	 *                 can be zero, in that case the def-cid is used always
-	 * B cargo-type    type of this cargo type (e.g. mail=2, wood=7, see below)
-	 * W cid           cargo ID (sprite group ID) for this type of cargo
-	 * W def-cid       default cargo ID (sprite group ID) */
-	/* TODO: Bridges, town houses. */
-	/* TODO: Multiple cargo support could be useful even for trains/cars -
-	 * cargo id 0xff is used for showing images in the build train list. */
 
+static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount, uint8 cidcount, bool wagover)
+{
 	static byte *last_engines;
 	static int last_engines_count;
 
-	if (!check_length(len, 6, "FeatureMapSpriteGroup")) return;
-
-	uint8 feature = buf[1];
-	uint8 idcount = buf[2] & 0x7F;
-	bool wagover = (buf[2] & 0x80) == 0x80;
-
-	if (!check_length(len, 3 + idcount, "FeatureMapSpriteGroup")) return;
-
-	/* If idcount is zero, this is a feature callback */
-	if (idcount == 0) {
-		grfmsg(2, "FeatureMapSpriteGroup: Feature callbacks not implemented yet");
-		return;
-	}
-
-	uint8 cidcount = buf[3 + idcount];
-	if (!check_length(len, 4 + idcount + cidcount * 3, "FeatureMapSpriteGroup")) return;
-
-	grfmsg(6, "FeatureMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d",
-			feature, idcount, cidcount, wagover);
-
-	if (feature > GSF_STATION && feature != GSF_TOWNHOUSE) {
-		grfmsg(1, "FeatureMapSpriteGroup: Unsupported feature %d, skipping", feature);
-		return;
-	}
-
-
-	if (feature == GSF_STATION) {
-		/* We do things differently for stations. */
-
-		for (uint i = 0; i < idcount; i++) {
-			uint8 stid = buf[3 + i];
-			StationSpec *statspec = _cur_grffile->stations[stid];
-			byte *bp = &buf[4 + idcount];
-
-			for (uint c = 0; c < cidcount; c++) {
-				uint8 ctype = grf_load_byte(&bp);
-				uint16 groupid = grf_load_word(&bp);
-
-				if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-					grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping",
-					       groupid, _cur_grffile->spritegroups_count);
-					return;
-				}
-
-				ctype = TranslateCargo(feature, ctype);
-				if (ctype == CT_INVALID) continue;
-
-				statspec->spritegroup[ctype] = _cur_grffile->spritegroups[groupid];
-			}
+	if (!wagover) {
+		if (last_engines_count != idcount) {
+			last_engines = ReallocT(last_engines, idcount);
+			last_engines_count = idcount;
 		}
-
-		{
-			byte *bp = buf + 4 + idcount + cidcount * 3;
-			uint16 groupid = grf_load_word(&bp);
-
-			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-				grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping",
-				       groupid, _cur_grffile->spritegroups_count);
-				return;
-			}
-
-			for (uint i = 0; i < idcount; i++) {
-				uint8 stid = buf[3 + i];
-				StationSpec *statspec = _cur_grffile->stations[stid];
-
-				statspec->spritegroup[CT_DEFAULT] = _cur_grffile->spritegroups[groupid];
-				statspec->grfid = _cur_grffile->grfid;
-				statspec->localidx = stid;
-				SetCustomStationSpec(statspec);
-			}
-		}
-		return;
-	} else if (feature == GSF_TOWNHOUSE) {
-		byte *bp = &buf[4 + idcount + cidcount * 3];
-		uint16 groupid = grf_load_word(&bp);
-
-		if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-			grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
-			       groupid, _cur_grffile->spritegroups_count);
-			return;
-		}
-
-		for (uint i = 0; i < idcount; i++) {
-			uint8 hid = buf[3 + i];
-			HouseSpec *hs = _cur_grffile->housespec[hid];
-
-			if (hs == NULL) {
-				grfmsg(1, "FeatureMapSpriteGroup: Too many houses defined, skipping");
-				return;
-			}
-
-			hs->spritegroup = _cur_grffile->spritegroups[groupid];
-		}
-		return;
-	}
-
-	/* FIXME: Tropicset contains things like:
-	 * 03 00 01 19 01 00 00 00 00 - this is missing one 00 at the end,
-	 * what should we exactly do with that? --pasky */
-
-	if (_cur_grffile->spriteset_start == 0 || _cur_grffile->spritegroups == 0) {
-		grfmsg(1, "FeatureMapSpriteGroup: No sprite set to work on! Skipping");
-		return;
-	}
-
-	if (!wagover && last_engines_count != idcount) {
-		last_engines = ReallocT(last_engines, idcount);
-		last_engines_count = idcount;
-	}
-
-	if (wagover) {
+	} else {
 		if (last_engines_count == 0) {
 			grfmsg(0, "FeatureMapSpriteGroup: WagonOverride: No engine to do override with");
 			return;
 		}
+
 		grfmsg(6, "FeatureMapSpriteGroup: WagonOverride: %u engines, %u wagons",
 				last_engines_count, idcount);
 	}
-
 
 	for (uint i = 0; i < idcount; i++) {
 		uint8 engine_id = buf[3 + i];
@@ -2557,7 +2435,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 
 			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
 				grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping", groupid, _cur_grffile->spritegroups_count);
-				return;
+				continue;
 			}
 
 			ctype = TranslateCargo(feature, ctype);
@@ -2573,7 +2451,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 	}
 
 	{
-		byte *bp = buf + 4 + idcount + cidcount * 3;
+		byte *bp = &buf[4 + idcount + cidcount * 3];
 		uint16 groupid = grf_load_word(&bp);
 
 		grfmsg(8, "-- Default group id 0x%04X", groupid);
@@ -2583,13 +2461,14 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 
 			/* Don't tell me you don't love duplicated code! */
 			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-				grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping", groupid, _cur_grffile->spritegroups_count);
-				return;
+				grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping",
+				       groupid, _cur_grffile->spritegroups_count);
+				continue;
 			}
 
 			if (wagover) {
 				/* If the ID for this action 3 is the same as the vehicle ID,
-				 * this indicates we have a helicopter rotor override. */
+ * this indicates we have a helicopter rotor override. */
 				if (feature == GSF_AIRCRAFT && engine == last_engines[i]) {
 					SetRotorOverrideSprites(engine, _cur_grffile->spritegroups[groupid]);
 				} else {
@@ -2602,6 +2481,142 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 				last_engines[i] = engine;
 			}
 		}
+	}
+}
+
+
+static void StationMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+{
+	for (uint i = 0; i < idcount; i++) {
+		uint8 stid = buf[3 + i];
+		StationSpec *statspec = _cur_grffile->stations[stid];
+		byte *bp = &buf[4 + idcount];
+
+		for (uint c = 0; c < cidcount; c++) {
+			uint8 ctype = grf_load_byte(&bp);
+			uint16 groupid = grf_load_word(&bp);
+
+			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+				grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping",
+				       groupid, _cur_grffile->spritegroups_count);
+				continue;
+			}
+
+			ctype = TranslateCargo(GSF_STATION, ctype);
+			if (ctype == CT_INVALID) continue;
+
+			statspec->spritegroup[ctype] = _cur_grffile->spritegroups[groupid];
+		}
+	}
+
+	{
+		byte *bp = &buf[4 + idcount + cidcount * 3];
+		uint16 groupid = grf_load_word(&bp);
+
+		if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+			grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping",
+			       groupid, _cur_grffile->spritegroups_count);
+			return;
+		}
+
+		for (uint i = 0; i < idcount; i++) {
+			uint8 stid = buf[3 + i];
+			StationSpec *statspec = _cur_grffile->stations[stid];
+
+			statspec->spritegroup[CT_DEFAULT] = _cur_grffile->spritegroups[groupid];
+			statspec->grfid = _cur_grffile->grfid;
+			statspec->localidx = stid;
+			SetCustomStationSpec(statspec);
+		}
+	}
+}
+
+
+static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+{
+	byte *bp = &buf[4 + idcount + cidcount * 3];
+	uint16 groupid = grf_load_word(&bp);
+
+	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+		grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
+		       groupid, _cur_grffile->spritegroups_count);
+		return;
+	}
+
+	for (uint i = 0; i < idcount; i++) {
+		uint8 hid = buf[3 + i];
+		HouseSpec *hs = _cur_grffile->housespec[hid];
+
+		if (hs == NULL) {
+			grfmsg(1, "FeatureMapSpriteGroup: Too many houses defined, skipping");
+			return;
+		}
+
+		hs->spritegroup = _cur_grffile->spritegroups[groupid];
+	}
+}
+
+/* Action 0x03 */
+static void FeatureMapSpriteGroup(byte *buf, int len)
+{
+	/* <03> <feature> <n-id> <ids>... <num-cid> [<cargo-type> <cid>]... <def-cid>
+	 * id-list    := [<id>] [id-list]
+	 * cargo-list := <cargo-type> <cid> [cargo-list]
+	 *
+	 * B feature       see action 0
+	 * B n-id          bits 0-6: how many IDs this definition applies to
+	 *                 bit 7: if set, this is a wagon override definition (see below)
+	 * B ids           the IDs for which this definition applies
+	 * B num-cid       number of cargo IDs (sprite group IDs) in this definition
+	 *                 can be zero, in that case the def-cid is used always
+	 * B cargo-type    type of this cargo type (e.g. mail=2, wood=7, see below)
+	 * W cid           cargo ID (sprite group ID) for this type of cargo
+	 * W def-cid       default cargo ID (sprite group ID) */
+
+	if (!check_length(len, 6, "FeatureMapSpriteGroup")) return;
+
+	uint8 feature = buf[1];
+	uint8 idcount = buf[2] & 0x7F;
+	bool wagover = (buf[2] & 0x80) == 0x80;
+
+	if (!check_length(len, 3 + idcount, "FeatureMapSpriteGroup")) return;
+
+	/* If idcount is zero, this is a feature callback */
+	if (idcount == 0) {
+		grfmsg(2, "FeatureMapSpriteGroup: Feature callbacks not implemented yet");
+		return;
+	}
+
+	uint8 cidcount = buf[3 + idcount];
+	if (!check_length(len, 4 + idcount + cidcount * 3, "FeatureMapSpriteGroup")) return;
+
+	grfmsg(6, "FeatureMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d",
+			feature, idcount, cidcount, wagover);
+
+	if (_cur_grffile->spriteset_start == 0 || _cur_grffile->spritegroups == 0) {
+		grfmsg(1, "FeatureMapSpriteGroup: No sprite set to work on! Skipping");
+		return;
+	}
+
+	switch (feature) {
+		case GSF_TRAIN:
+		case GSF_ROAD:
+		case GSF_SHIP:
+		case GSF_AIRCRAFT:
+			VehicleMapSpriteGroup(buf, feature, idcount, cidcount, wagover);
+			return;
+
+		case GSF_STATION:
+			StationMapSpriteGroup(buf, idcount, cidcount);
+			return;
+
+		case GSF_TOWNHOUSE:
+			TownHouseMapSpriteGroup(buf, idcount, cidcount);
+			return;
+
+		default:
+			grfmsg(1, "FeatureMapSpriteGroup: Unsupported feature %d, skipping", feature);
+			return;
 	}
 }
 
