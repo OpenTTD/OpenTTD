@@ -77,10 +77,6 @@ bool _have_2cc = false;
 /* Set if there are any newhouses loaded. */
 bool _have_newhouses = false;
 
-/* Default cargo translation table. By default there are 27 possible cargo types */
-static const uint _default_cargo_max = 27;
-static CargoLabel _default_cargo_list[_default_cargo_max];
-
 
 enum GrfDataType {
 	GDT_SOUND,
@@ -2354,14 +2350,35 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 	if (feature == GSF_STATION && ctype == 0xFE) return CT_DEFAULT_NA;
 	if (ctype == 0xFF) return CT_PURCHASE;
 
+	if (_cur_grffile->cargo_max == 0) {
+		/* No cargo table, so use bitnum values */
+		if (ctype >= 32) {
+			grfmsg(1, "FeatureMapSpriteGroup: Cargo bitnum %d out of range (max 31), skipping.", ctype);
+			return CT_INVALID;
+		}
+
+		for (CargoID c = 0; c < NUM_CARGO; c++) {
+			const CargoSpec *cs = GetCargo(c);
+			if (!cs->IsValid()) continue;
+
+			if (cs->bitnum == ctype) {
+				grfmsg(6, "FeatureMapSpriteGroup: Cargo bitnum %d mapped to cargo type %d.", ctype, c);
+				return c;
+			}
+		}
+
+		grfmsg(5, "FeatureMapSpriteGroup: Cargo bitnum %d not available in this climate, skipping.", ctype);
+		return CT_INVALID;
+	}
+
 	/* Check if the cargo type is out of bounds of the cargo translation table */
-	if (ctype >= (_cur_grffile->cargo_max == 0 ? _default_cargo_max : _cur_grffile->cargo_max)) {
-		grfmsg(1, "FeatureMapSpriteGroup: Cargo type %d out of range (max %d), skipping.", ctype, (_cur_grffile->cargo_max == 0 ? _default_cargo_max : _cur_grffile->cargo_max) - 1);
+	if (ctype >= _cur_grffile->cargo_max) {
+		grfmsg(1, "FeatureMapSpriteGroup: Cargo type %d out of range (max %d), skipping.", ctype, _cur_grffile->cargo_max - 1);
 		return CT_INVALID;
 	}
 
 	/* Look up the cargo label from the translation table */
-	CargoLabel cl = _cur_grffile->cargo_max == 0 ? _default_cargo_list[ctype] : _cur_grffile->cargo_list[ctype];
+	CargoLabel cl = _cur_grffile->cargo_list[ctype];
 	if (cl == 0) {
 		grfmsg(5, "FeatureMapSpriteGroup: Cargo type %d not available in this climate, skipping.", ctype);
 		return CT_INVALID;
@@ -4159,13 +4176,6 @@ static void ResetNewGRFData()
 
 	/* Set up the default cargo types */
 	SetupCargoForClimate(_opt.landscape);
-
-	/* Generate default cargo translation table */
-	memset(_default_cargo_list, 0, sizeof(_default_cargo_list));
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		const CargoSpec *cs = GetCargo(c);
-		if (cs->IsValid()) _default_cargo_list[cs->bitnum] = cs->label;
-	}
 
 	/* Reset misc GRF features and train list display variables */
 	_misc_grf_features = 0;
