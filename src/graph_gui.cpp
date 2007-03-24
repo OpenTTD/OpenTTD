@@ -796,7 +796,7 @@ void ShowCargoPaymentRates()
 	}
 
 	/* Resize the window to fit the cargo types */
-	ResizeWindow(w, 0, num_active * 8);
+	ResizeWindow(w, 0, max(num_active, 12U) * 8);
 
 	/* Add widgets for each cargo type */
 	w->widget_count += num_active;
