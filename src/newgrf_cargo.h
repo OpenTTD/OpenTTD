@@ -21,7 +21,7 @@ static const CargoID CT_DEFAULT      = NUM_CARGO + 0;
 static const CargoID CT_PURCHASE     = NUM_CARGO + 1;
 static const CargoID CT_DEFAULT_NA   = NUM_CARGO + 2;
 
-typedef struct CargoSpec;
+struct CargoSpec;
 
 SpriteID GetCustomCargoSprite(const CargoSpec *cs);
 uint16 GetCargoCallback(uint16 callback, uint32 param1, uint32 param2, const CargoSpec *cs);
