@@ -15,43 +15,39 @@ or http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version.
 
-Bugs for 0.5.0
+Bugs for 0.5.1
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+-677 	Badspacing in news summaries
+-674 	Map signs allow less nonenglish characters than english ones
+-672 	Non-transparent station names' backgrounds do not resize properly upon language change
+-669	Docks/Airports/RV Stations can be built without available vehicles
+-646	AI builds useless stations
 -601	airports can't get flooded when they have planes in them
 -599	reloaded game lost company passwords
--595	Sort by max cargo rating does not sort correctly
 -594	terraforming wipes out canals
 -591	Autorenew fails under certain conditions
 -583	Fatal fault or crash during startup
--578	No loading at my industrial centre
--574	Open TTD overiding Power Warnings
 -571	Problems with vehicle purchase lists with NewGRFs
 -559	Front-/Rear-facing engines don't line up with each other
 -553	Autorenew doesn't warn when replacement isn't available
 -546	[0.5.0 RC3] Inflation overflow
 -540	Planes vanished when offered exclusive
 -539	Trains can cash the same cargo multiple times
--529	newairport's sprite issue
 -522	overflow on vehicle costs
 -508	Destroying trees and replanting => raised rating
 -502	OSX can incorrectly print "dbg: [sl] Cannot open savegame 'data/opntitle.dat' for saving/loading."
 -501	Mouse pointer gets hidden, when draging out of window and back again. Only affects Wacom etc.
 -494	Get free money abusing a stock bug
 -474	Overtaking car doesn't hit the against-riding car.
--459	Merging is buggy
 -458	Crash when changing Resolution on Mac OS X (x86)
--450	GUI selecting disabled numbers (newstations)
 -442	Alt-tab behaviour flawed whilst full screen (win32)
--441	Transparent stuff
 -435	Assertion window doesn't show when in fullscreen on Mac OS X
 -423	Improved loading causes high CPU use with long trains
 -410	Openttd in dedicated mode don't run without data files
--404	Cargo never delivered to station after bribe and before first pickup
 -365	Blimp Stuck at airport
 -362	Changing signal type affects whole square
--357	CPU spikes in game
 -355	graphics bugs with trains - water, tunnels
 -354	Maglev Trains faster than All Planes
 -339	Crash in Quicktime when exiting game
@@ -67,7 +63,6 @@ URL: http://bugs.openttd.org
 -165	vehicle length not taken into account
 -153	Language crash with app renaming OSX
 -119	Clipping problems with vehicles on slopes
--115	inactive logins do not get auto kicked
 - 89	Able to build railways/stations before engines become available
 - 65	short wagons bug
 - 51	Windows doesn't support CUSTOM_LANG_DIR
@@ -87,7 +82,7 @@ URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 -1116638	"More, but smaller changes" deficiency
 -1106356	re-offered prototypes
 
-Minor Bugs for 0.5.0
+Minor Bugs for 0.5.1
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 
