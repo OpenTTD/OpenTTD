@@ -463,6 +463,8 @@ static void RemoveSharedOrderVehicleList(Vehicle *v)
 {
 	WindowClass window_class;
 
+	assert(v->orders != NULL);
+
 	switch (v->type) {
 		default: NOT_REACHED();
 		case VEH_Train:    window_class = WC_TRAINS_LIST;   break;
@@ -1161,7 +1163,7 @@ void DeleteVehicleOrders(Vehicle *v)
 
 		/* If we are the only one left in the Shared Order Vehicle List,
 		 *  remove it, as we are no longer a Shared Order Vehicle */
-		if (u->prev_shared == NULL && u->next_shared == NULL) RemoveSharedOrderVehicleList(u);
+		if (u->prev_shared == NULL && u->next_shared == NULL && u->orders != NULL) RemoveSharedOrderVehicleList(u);
 
 		/* We only need to update this-one, because if there is a third
 		 *  vehicle which shares the same order-list, nothing will change. If
