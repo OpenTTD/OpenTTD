@@ -3142,7 +3142,7 @@ static void SkipIf(byte *buf, int len)
 		_skip_sprites = -1;
 
 		/* If an action 8 hasn't been encountered yet, disable the grf. */
-		if (_cur_grfconfig->status != GCS_ACTIVATED) _cur_grfconfig->status = GCS_DISABLED;
+		if (_cur_stage != GLS_RESERVE && _cur_grfconfig->status != GCS_ACTIVATED) _cur_grfconfig->status = GCS_DISABLED;
 	}
 }
 
@@ -4515,7 +4515,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x03 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              FeatureMapSpriteGroup, },
 		/* 0x04 */ { NULL,     NULL,      NULL,            NULL,           NULL,              FeatureNewName, },
 		/* 0x05 */ { NULL,     NULL,      NULL,            NULL,           NULL,              GraphicsNew, },
-		/* 0x06 */ { NULL,     NULL,      NULL,            CfgApply,       NULL,              CfgApply, },
+		/* 0x06 */ { NULL,     NULL,      NULL,            CfgApply,       CfgApply,          CfgApply, },
 		/* 0x07 */ { NULL,     NULL,      NULL,            NULL,           SkipIf,            SkipIf, },
 		/* 0x08 */ { ScanInfo, NULL,      NULL,            GRFInfo,        NULL,              GRFInfo, },
 		/* 0x09 */ { NULL,     NULL,      NULL,            SkipIf,         SkipIf,            SkipIf, },
