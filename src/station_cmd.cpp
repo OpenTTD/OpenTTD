@@ -1120,6 +1120,14 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 	return cost;
 }
 
+/**
+ * Switches the rail type at a railway station tile.
+ * @param tile        The tile on which the railtype is to be convert.
+ * @param totype      The railtype we want to convert to
+ * @param exec        Switches between test and execute mode
+ * @return            The cost and state of the operation
+ * @retval CMD_ERROR  An error occured during the operation.
+ */
 int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 {
 	const Station* st = GetStationByTile(tile);
@@ -1140,7 +1148,7 @@ int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 		YapfNotifyTrackLayoutChange(tile, GetRailStationTrack(tile));
 	}
 
-	return _price.build_rail >> 1;
+	return _price.build_rail / 2;
 }
 
 /**

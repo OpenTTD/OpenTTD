@@ -367,6 +367,14 @@ do_clear:;
 	return cost;
 }
 
+/**
+ * Switches the rail type on a level crossing.
+ * @param tile        The tile on which the railtype is to be convert.
+ * @param totype      The railtype we want to convert to
+ * @param exec        Switches between test and execute mode
+ * @return            The cost and state of the operation
+ * @retval CMD_ERROR  An error occured during the operation.
+ */
 int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 {
 	// not a railroad crossing?
@@ -386,7 +394,7 @@ int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 		YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetCrossingRailBits(tile)));
 	}
 
-	return _price.build_rail >> 1;
+	return _price.build_rail / 2;
 }
 
 
