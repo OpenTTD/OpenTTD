@@ -1114,7 +1114,6 @@ static void Load_SUBS()
 
 int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type)
 {
-	CargoID cargo = cargo_type;
 	const CargoSpec *cs = GetCargo(cargo_type);
 	byte f;
 
@@ -1139,7 +1138,7 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	}
 	if (f < 31) f = 31;
 
-	return BIGMULSS(dist * f * num_pieces, _cargo_payment_rates[cargo], 21);
+	return BIGMULSS(dist * f * num_pieces, _cargo_payment_rates[cargo_type], 21);
 }
 
 static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pieces)
