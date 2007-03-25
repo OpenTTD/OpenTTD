@@ -4420,8 +4420,6 @@ static void CalculateRefitMasks()
 		}
 		_engine_info[engine].refit_mask = ((mask & ~not_mask) ^ xor_mask) & _cargo_mask;
 
-		if (_engine_info[engine].refit_mask == 0) continue;
-
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
 		 * cargo type. Apparently cargo_type isn't a common property... */
 		switch (GetEngine(engine)->type) {
