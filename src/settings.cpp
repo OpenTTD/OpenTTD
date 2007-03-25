@@ -1685,6 +1685,7 @@ extern void CheckDifficultyLevels();
 void LoadFromConfig()
 {
 	IniFile *ini = ini_load(_config_file);
+	ResetCurrencies(false); // Initialize the array of curencies, without preserving the custom one
 	HandleSettingDescs(ini, ini_load_settings, ini_load_setting_list);
 	_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
 	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);

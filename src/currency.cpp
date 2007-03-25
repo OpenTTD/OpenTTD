@@ -158,12 +158,17 @@ void CheckSwitchToEuro()
 }
 
 /**
- * Called only from newgrf.c.  Will fill _currency_specs array with
+ * Will fill _currency_specs array with
  * default values from origin_currency_specs
+ * Called only from newgrf.cpp and settings.cpp.
+ * @param preserve_custom will not reset custom currency (the latest one on the list)
+ *        if ever it is flagged to true. In which case, the total size of the memory to move
+ *        will be one currency spec less, thus preserving the custom curreny from been
+ *        overwritten.
  **/
-void ResetCurrencies()
+void ResetCurrencies(bool preserve_custom)
 {
-	memcpy(&_currency_specs, &origin_currency_specs, sizeof(origin_currency_specs));
+	memcpy(&_currency_specs, &origin_currency_specs, sizeof(origin_currency_specs) - (preserve_custom ? sizeof(_custom_currency) : 0));
 }
 
 /**
