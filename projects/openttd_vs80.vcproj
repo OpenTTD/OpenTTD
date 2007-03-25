@@ -308,7 +308,7 @@
 				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib libfreetype2.lib"
 				LinkIncremental="0"
 				SuppressStartupBanner="true"
-				IgnoreDefaultLibraryNames="LIBCMT.lib"
+				IgnoreDefaultLibraryNames="LIBCMT.lib;LIBC.lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -448,11 +448,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\aystar.cpp"
+				RelativePath=".\..\src\autoreplace_cmd.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\autoreplace_cmd.cpp"
+				RelativePath=".\..\src\aystar.cpp"
 				>
 			</File>
 			<File
