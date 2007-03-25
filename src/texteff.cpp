@@ -156,6 +156,7 @@ void UndrawTextMessage()
 		if (x + width >= _screen.width) {
 			width = _screen.width - x;
 		}
+		if (width <= 0 || height <= 0) return;
 
 		_textmessage_visible = false;
 		/* Put our 'shot' back to the screen */
@@ -220,6 +221,8 @@ void DrawTextMessage()
 	if (x + width >= _screen.width) {
 		width = _screen.width - x;
 	}
+	if (width <= 0 || height <= 0) return;
+
 	/* Make a copy of the screen as it is before painting (for undraw) */
 	memcpy_pitch(
 		_textmessage_backup,
