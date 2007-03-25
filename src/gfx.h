@@ -231,7 +231,7 @@ BoundingRect GetStringBoundingBox(const char *str);
 uint32 FormatStringLinebreaks(char *str, int maxw);
 void LoadStringWidthTable();
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw);
-uint DrawStringMultiLine(int x, int y, StringID str, int maxw);
+uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh = -1);
 void DrawDirtyBlocks();
 void SetDirtyBlocks(int left, int top, int right, int bottom);
 void MarkWholeScreenDirty();

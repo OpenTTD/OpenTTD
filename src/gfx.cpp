@@ -531,7 +531,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 }
 
 
-uint DrawStringMultiLine(int x, int y, StringID str, int maxw)
+uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh)
 {
 	char buffer[512];
 	uint32 tmp;
@@ -547,6 +547,13 @@ uint DrawStringMultiLine(int x, int y, StringID str, int maxw)
 
 	mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
 	total_height = (num + 1) * mt;
+
+	if (maxh != -1 && total_height > (uint)maxh) {
+		num = maxh / mt - 1;
+		if (num < 1) return 0;
+
+		total_height = (num + 1) * mt;
+	}
 
 	src = buffer;
 

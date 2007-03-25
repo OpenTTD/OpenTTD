@@ -42,7 +42,7 @@ static int parse_intlist(const char *p, int *items, int maxitems)
 }
 
 
-static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show_params)
+static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bottom, bool show_params)
 {
 	char buff[256];
 
@@ -62,24 +62,24 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 		GetString(message, c->error->message, lastof(message));
 
 		SetDParamStr(0, message);
-		y += DrawStringMultiLine(x, y, c->error->severity, w);
+		y += DrawStringMultiLine(x, y, c->error->severity, w, bottom - y);
 	}
 
 	/* Draw filename or not if it is not known (GRF sent over internet) */
 	if (c->filename != NULL) {
 		SetDParamStr(0, c->filename);
-		y += DrawStringMultiLine(x, y, STR_NEWGRF_FILENAME, w);
+		y += DrawStringMultiLine(x, y, STR_NEWGRF_FILENAME, w, bottom - y);
 	}
 
 	/* Prepare and draw GRF ID */
 	snprintf(buff, lengthof(buff), "%08X", BSWAP32(c->grfid));
 	SetDParamStr(0, buff);
-	y += DrawStringMultiLine(x, y, STR_NEWGRF_GRF_ID, w);
+	y += DrawStringMultiLine(x, y, STR_NEWGRF_GRF_ID, w, bottom - y);
 
 	/* Prepare and draw MD5 sum */
 	md5sumToString(buff, lastof(buff), c->md5sum);
 	SetDParamStr(0, buff);
-	y += DrawStringMultiLine(x, y, STR_NEWGRF_MD5SUM, w);
+	y += DrawStringMultiLine(x, y, STR_NEWGRF_MD5SUM, w, bottom - y);
 
 	/* Show GRF parameter list */
 	if (show_params) {
@@ -89,20 +89,20 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, bool show
 		} else {
 			SetDParam(0, STR_01A9_NONE);
 		}
-		y += DrawStringMultiLine(x, y, STR_NEWGRF_PARAMETER, w);
+		y += DrawStringMultiLine(x, y, STR_NEWGRF_PARAMETER, w, bottom - y);
 	}
 
 	/* Show flags */
-	if (c->status == GCS_NOT_FOUND)        y += DrawStringMultiLine(x, y, STR_NEWGRF_NOT_FOUND, w);
-	if (c->status == GCS_DISABLED)         y += DrawStringMultiLine(x, y, STR_NEWGRF_DISABLED, w);
-	if (HASBIT(c->flags, GCF_COMPATIBLE)) y += DrawStringMultiLine(x, y, STR_NEWGRF_COMPATIBLE_LOADED, w);
+	if (c->status == GCS_NOT_FOUND)        y += DrawStringMultiLine(x, y, STR_NEWGRF_NOT_FOUND, w, bottom - y);
+	if (c->status == GCS_DISABLED)         y += DrawStringMultiLine(x, y, STR_NEWGRF_DISABLED, w, bottom - y);
+	if (HASBIT(c->flags, GCF_COMPATIBLE)) y += DrawStringMultiLine(x, y, STR_NEWGRF_COMPATIBLE_LOADED, w, bottom - y);
 
 	/* Draw GRF info if it exists */
 	if (c->info != NULL && !StrEmpty(c->info)) {
 		SetDParamStr(0, c->info);
-		y += DrawStringMultiLine(x, y, STR_02BD, w);
+		y += DrawStringMultiLine(x, y, STR_02BD, w, bottom - y);
 	} else {
-		y += DrawStringMultiLine(x, y, STR_NEWGRF_NO_INFO, w);
+		y += DrawStringMultiLine(x, y, STR_NEWGRF_NO_INFO, w, bottom - y);
 	}
 }
 
@@ -151,7 +151,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 
 			if (WP(w, newgrf_add_d).sel != NULL) {
 				const Widget *wi = &w->widget[5];
-				ShowNewGRFInfo(WP(w, newgrf_add_d).sel, wi->left + 2, wi->top + 2, wi->right - wi->left - 2, false);
+				ShowNewGRFInfo(WP(w, newgrf_add_d).sel, wi->left + 2, wi->top + 2, wi->right - wi->left - 2, wi->bottom, false);
 			}
 			break;
 		}
@@ -366,7 +366,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 			if (WP(w, newgrf_d).sel != NULL) {
 				/* Draw NewGRF file info */
 				const Widget *wi = &w->widget[SNGRFS_NEWGRF_INFO];
-				ShowNewGRFInfo(WP(w, newgrf_d).sel, wi->left + 2, wi->top + 2, wi->right - wi->left - 2, WP(w, newgrf_d).show_params);
+				ShowNewGRFInfo(WP(w, newgrf_d).sel, wi->left + 2, wi->top + 2, wi->right - wi->left - 2, wi->bottom, WP(w, newgrf_d).show_params);
 			}
 
 			break;
