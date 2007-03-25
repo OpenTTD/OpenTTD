@@ -1265,12 +1265,12 @@ static const SettingDesc _gameopt_settings[] = {
 	 * and why not byte for example? */
 	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, (SLE_FILE_I16 | SLE_VAR_I32), 0, 0, GameOptions, diff, 17, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 0, 3),
 	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, (SLE_FILE_I16 | SLE_VAR_I32), 0, 0, GameOptions, diff, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 4, SL_MAX_VERSION),
-	    SDT_VAR(GameOptions, diff_level,SLE_UINT8, 0, 0, 9, 0,  9, 0, STR_NULL, NULL),
+	    SDT_VAR(GameOptions, diff_level,SLE_UINT8, 0, 0, 0, 0,  3, 0, STR_NULL, NULL),
 	  SDT_OMANY(GameOptions, currency,  SLE_UINT8, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
 	  SDT_OMANY(GameOptions, units,     SLE_UINT8, N, 0, 1,     2, "imperial|metric|si", STR_NULL, NULL, NULL),
 	  SDT_OMANY(GameOptions, town_name, SLE_UINT8, 0, 0, 0,    20, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
 	  SDT_OMANY(GameOptions, landscape, SLE_UINT8, 0, 0, 0,     3, "temperate|arctic|tropic|toyland", STR_NULL, NULL, ConvertLandscape),
-	    SDT_VAR(GameOptions, snow_line, SLE_UINT8, 0, 0, 1, 0, 56, 0, STR_NULL, NULL),
+	    SDT_VAR(GameOptions, snow_line, SLE_UINT8, 0, 0, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL, NULL),
 	SDT_CONDOMANY(GameOptions,autosave, SLE_UINT8, 0, 22,             N, 0, 0, 0, "", STR_NULL, NULL, NULL),
 	SDT_CONDOMANY(GameOptions,autosave, SLE_UINT8,23, SL_MAX_VERSION, S, 0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL, NULL, NULL),
 	  SDT_OMANY(GameOptions, road_side, SLE_UINT8, 0, 0, 1,   1, "left|right", STR_NULL, NULL, NULL),
@@ -1679,6 +1679,8 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 #endif /* ENABLE_NETWORK */
 }
 
+extern void CheckDifficultyLevels();
+
 /** Load the values from the configuration files */
 void LoadFromConfig()
 {
@@ -1687,6 +1689,7 @@ void LoadFromConfig()
 	_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
 	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
 	_news_display_opt  = NewsDisplayLoadConfig(ini, "news_display");
+	CheckDifficultyLevels();
 	ini_free(ini);
 }
 
