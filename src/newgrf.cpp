@@ -261,6 +261,20 @@ static StringID MapGRFStringID(uint32 grfid, StringID str)
 	return str;
 }
 
+static uint8 MapDOSColour(uint8 colour)
+{
+	if (_use_dos_palette) return colour;
+
+	if (colour < 10) {
+		static uint8 dos_to_win_colour_map[] = { 0, 215, 216, 136, 88, 106, 32, 33, 40, 245 };
+		return dos_to_win_colour_map[colour];
+	}
+
+	if (colour >= 245 && colour < 254) return colour - 28;
+
+	return colour;
+}
+
 
 typedef bool (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
 
@@ -1605,11 +1619,11 @@ static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int le
 			break;
 
 		case 0x13: /* Colour for station rating bars */
-			FOR_EACH_OBJECT cs[i].rating_colour = grf_load_byte(&buf);
+			FOR_EACH_OBJECT cs[i].rating_colour = MapDOSColour(grf_load_byte(&buf));
 			break;
 
 		case 0x14: /* Colour for cargo graph */
-			FOR_EACH_OBJECT cs[i].legend_colour = grf_load_byte(&buf);
+			FOR_EACH_OBJECT cs[i].legend_colour = MapDOSColour(grf_load_byte(&buf));
 			break;
 
 		case 0x15: /* Freight status */
