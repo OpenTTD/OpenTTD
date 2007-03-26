@@ -38,7 +38,7 @@ extern CurrencySpec _currency_specs[NUM_CURRENCY];
 
 uint GetMaskOfAllowedCurrencies(void);
 void CheckSwitchToEuro(void);
-void ResetCurrencies(void);
+void ResetCurrencies(bool preserve_custom);
 StringID* BuildCurrencyDropdown(void);
 byte GetNewgrfCurrencyIdConverted(byte grfcurr_id);
 

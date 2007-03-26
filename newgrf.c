@@ -3505,7 +3505,7 @@ static void ResetNewGRFData(void)
 	ResetPriceBaseMultipliers();
 
 	/* Reset the curencies array */
-	ResetCurrencies();
+	ResetCurrencies(false);
 
 	// Reset station classes
 	ResetStationClasses();

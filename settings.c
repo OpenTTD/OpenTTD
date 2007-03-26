@@ -1478,7 +1478,7 @@ const SettingDesc _patch_settings[] = {
 static const SettingDesc _currency_settings[] = {
 	SDT_VAR(CurrencySpec, rate,    SLE_UINT16, S, 0,  1, 0, 100, 0, STR_NULL, NULL),
 	SDT_CHR(CurrencySpec, separator,           S, 0,        ".",    STR_NULL, NULL),
-	SDT_VAR(CurrencySpec, to_euro,  SLE_INT32, S, 0,  0, 0,1000, 0, STR_NULL, NULL),
+	SDT_VAR(CurrencySpec, to_euro,  SLE_INT32, S, 0,  0, 0,3000, 0, STR_NULL, NULL),
 	SDT_STR(CurrencySpec, prefix,   SLE_STRBQ, S, 0,       NULL,    STR_NULL, NULL),
 	SDT_STR(CurrencySpec, suffix,   SLE_STRBQ, S, 0, " credits",    STR_NULL, NULL),
 	SDT_END()
@@ -1654,6 +1654,7 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 void LoadFromConfig(void)
 {
 	IniFile *ini = ini_load(_config_file);
+	ResetCurrencies(false);
 	HandleSettingDescs(ini, ini_load_settings, ini_load_setting_list);
 	_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
 	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
