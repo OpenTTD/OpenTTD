@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "debug.h"
 #include "cargotype.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"
@@ -29,6 +30,8 @@ static void CargoSetTriggers(const ResolverObject *object, int triggers)
 
 static uint32 CargoGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
+	DEBUG(grf, 1, "Unhandled cargo property 0x%X", variable);
+
 	*available = false;
 	return 0;
 }
