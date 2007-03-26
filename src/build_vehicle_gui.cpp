@@ -41,6 +41,7 @@ enum BuildVehicleWidgets {
 	BUILD_VEHICLE_WIDGET_BUILD,
 	BUILD_VEHICLE_WIDGET_RENAME,
 	BUILD_VEHICLE_WIDGET_RESIZE,
+	BUILD_VEHICLE_WIDGET_END
 };
 
 static const Widget _build_vehicle_widgets[] = {
@@ -527,8 +528,9 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
  * @param x,y location where to draw the info
  * @param w how wide are the text allowed to be (size of widget/window to Draw in)
  * @param engine_number the engine of which to draw the info of
+ * @return y after drawing all the text
  */
-void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
+int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 {
 	const Engine *e = GetEngine(engine_number);
 	YearMonthDay ymd;
@@ -594,6 +596,8 @@ void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 	/* Additional text from NewGRF */
 	y += ShowAdditionalText(x, y, w, engine_number);
 	if (refitable) y += ShowRefitOptionsList(x, y, w, engine_number);
+
+	return y;
 }
 
 /* Figure out what train EngineIDs to put in the list */
@@ -793,6 +797,23 @@ void DrawEngineList(byte type, int x, int y, const EngineList eng_list, uint16 m
 	}
 }
 
+static void ExpandPurchaseInfoWidget(Window *w, int expand_by)
+{
+	Widget *wi = &w->widget[BUILD_VEHICLE_WIDGET_PANEL];
+
+	SetWindowDirty(w);
+	wi->bottom += expand_by;
+
+	for (uint i = BUILD_VEHICLE_WIDGET_BUILD; i < BUILD_VEHICLE_WIDGET_END; i++) {
+		wi = &w->widget[i];
+		wi->top += expand_by;
+		wi->bottom += expand_by;
+	}
+
+	w->height += expand_by;
+	SetWindowDirty(w);
+}
+
 static void DrawBuildVehicleWindow(Window *w)
 {
 	const buildvehicle_d *bv = &WP(w, buildvehicle_d);
@@ -808,7 +829,9 @@ static void DrawBuildVehicleWindow(Window *w)
 
 	if (bv->sel_engine != INVALID_ENGINE) {
 		const Widget *wi = &w->widget[BUILD_VEHICLE_WIDGET_PANEL];
-		DrawVehiclePurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, bv->sel_engine);
+		int text_end = DrawVehiclePurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, bv->sel_engine);
+
+		if (text_end > wi->bottom) ExpandPurchaseInfoWidget(w, text_end - wi->bottom);
 	}
 
 	DrawString(85, 15, _sort_listing[bv->vehicle_type][bv->sort_criteria], 0x10);

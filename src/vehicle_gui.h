@@ -32,7 +32,7 @@ static inline bool ValidVLWFlags(uint16 flags)
 
 void PlayerVehWndProc(Window *w, WindowEvent *e);
 
-void DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number);
+int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number);
 
 void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection);
 void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection);
