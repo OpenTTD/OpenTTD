@@ -46,17 +46,17 @@ enum BuildVehicleWidgets {
 
 static const Widget _build_vehicle_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW },
-	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   227,     0,    13, 0x0,                     STR_018C_WINDOW_TITLE_DRAG_THIS },
+	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   239,     0,    13, 0x0,                     STR_018C_WINDOW_TITLE_DRAG_THIS },
 	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,             STR_SORT_ORDER_TIP},
-	{      WWT_PANEL,  RESIZE_RIGHT,    14,    81,   215,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},
-	{    WWT_TEXTBTN,     RESIZE_LR,    14,   216,   227,    14,    25, STR_0225,                STR_SORT_CRITERIA_TIP},
-	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   215,    26,   121, 0x0,                     STR_NULL },
-	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   216,   227,    26,   121, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
-	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   227,   122,   243, 0x0,                     STR_NULL },
+	{      WWT_PANEL,  RESIZE_RIGHT,    14,    81,   227,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},
+	{    WWT_TEXTBTN,     RESIZE_LR,    14,   228,   239,    14,    25, STR_0225,                STR_SORT_CRITERIA_TIP},
+	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   227,    26,   121, 0x0,                     STR_NULL },
+	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   228,   239,    26,   121, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
+	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   239,   122,   243, 0x0,                     STR_NULL },
 
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   244,   255, 0x0,                     STR_NULL },
-	{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   115,   215,   244,   255, 0x0,                     STR_NULL },
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   216,   227,   244,   255, 0x0,                     STR_RESIZE_BUTTON },
+	{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   115,   227,   244,   255, 0x0,                     STR_NULL },
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   228,   239,   244,   255, 0x0,                     STR_RESIZE_BUTTON },
 	{   WIDGETS_END},
 };
 
@@ -964,7 +964,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _build_vehicle_desc = {
-	WDP_AUTO, WDP_AUTO, 228, 256,
+	WDP_AUTO, WDP_AUTO, 240, 256,
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_build_vehicle_widgets,
@@ -1005,14 +1005,12 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 			ResizeWindow(w, 0, 16);
 			break;
 		case VEH_ROAD:
-			ResizeWindow(w, 20, 16);
+			ResizeWindow(w, 0, 16);
 		case VEH_SHIP:
-			ResizeWindow(w, 27, 0);
 			break;
 		case VEH_AIRCRAFT:
 			bv->filter.flags =
 				tile == 0 ? AirportFTAClass::ALL : GetStationByTile(tile)->Airport()->flags;
-			ResizeWindow(w, 12, 0);
 			break;
 	}
 	SetupWindowStrings(w, type);
