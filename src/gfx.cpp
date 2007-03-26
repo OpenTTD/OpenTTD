@@ -548,10 +548,11 @@ uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh)
 	mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
 	total_height = (num + 1) * mt;
 
-	if (maxh != -1 && total_height > (uint)maxh) {
-		num = maxh / mt - 1;
-		if (num < 1) return 0;
+	if (maxh != -1 && (int)total_height > maxh) {
+		/* Check there's room enough for at least one line. */
+		if (maxh < mt) return 0;
 
+		num = maxh / mt - 1;
 		total_height = (num + 1) * mt;
 	}
 
