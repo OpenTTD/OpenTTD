@@ -3,7 +3,10 @@
 CONFIGURE_EXECUTABLE="$_"
 # On *nix systems those two are equal when ./configure is done
 if [ "$0" != "$CONFIGURE_EXECUTABLE" ]; then
-	if [ -z "`echo $CONFIGURE_EXECUTABLE | grep make`" ]; then
+	# On some systems, when ./configure is triggered from 'make'
+	#  the $_ is filled with 'make'. So if that is true, skip 'make'
+	#  and use $0 (and hope that is correct ;))
+	if [ -n "`echo $CONFIGURE_EXECUTABLE | grep make`" ]; then
 		CONFIGURE_EXECUTABLE="$0"
 	else
 		CONFIGURE_EXECUTABLE="$CONFIGURE_EXECUTABLE $0"
