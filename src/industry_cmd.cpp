@@ -117,7 +117,7 @@ void DestroyIndustry(Industry *i)
 		}
 	END_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
 
-	if (i->type == IT_FARM || i->type == IT_FARM_2) {
+	if (GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_PLANT_FIELDS) {
 		/* Remove the farmland and convert it to regular tiles over time. */
 		BEGIN_TILE_LOOP(tile_cur, 42, 42, i->xy - TileDiffXY(21, 21)) {
 			tile_cur = TILE_MASK(tile_cur);
@@ -323,6 +323,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 static int32 ClearTile_Industry(TileIndex tile, byte flags)
 {
 	Industry *i = GetIndustryByTile(tile);
+	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 
 	/* water can destroy industries
 	 * in editor you can bulldoze industries
@@ -331,8 +332,8 @@ static int32 ClearTile_Industry(TileIndex tile, byte flags)
 	 */
 	if ((_current_player != OWNER_WATER && _game_mode != GM_EDITOR &&
 			!_cheats.magic_bulldozer.value) ||
-			(_current_player == OWNER_WATER && i->type == IT_OIL_RIG)) {
-		SetDParam(0, GetIndustrySpec(i->type)->name);
+			(_current_player == OWNER_WATER && (indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER))) {
+		SetDParam(0, indspec->name);
 		return_cmd_error(STR_4800_IN_THE_WAY);
 	}
 
@@ -975,12 +976,13 @@ static void ProduceIndustryGoods(Industry *i)
 
 	/* produce some cargo */
 	if ((i->counter & 0xFF) == 0) {
+		IndustyBehaviour indbehav = GetIndustrySpec(i->type)->behaviour;
 		i->cargo_waiting[0] = min(0xffff, i->cargo_waiting[0] + i->production_rate[0]);
 		i->cargo_waiting[1] = min(0xffff, i->cargo_waiting[1] + i->production_rate[1]);
 
-		if (i->type == IT_FARM || i->type == IT_FARM_2) {
+		if (indbehav & INDUSTRYBEH_PLANT_FIELDS) {
 			MaybePlantFarmField(i);
-		} else if (i->type == IT_LUMBER_MILL && (i->counter & 0x1FF) == 0) {
+		} else if ((indbehav & INDUSTRYBEH_CUT_TREES) && (i->counter & 0x1FF) == 0) {
 			ChopLumberMillTrees(i);
 		}
 	}
@@ -1156,9 +1158,10 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			}
 		} else {
 			if (!EnsureNoVehicle(cur_tile)) return false;
+			IndustyBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
-			if (type == IT_OIL_RIG)  {
-				if (!IsClearWaterTile(cur_tile)) return false;
+			if (ind_behav & INDUSTRYBEH_BUILT_ONWATER) {
+				return IsClearWaterTile(cur_tile);
 			} else {
 				Slope tileh;
 
@@ -1186,27 +1189,19 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 					}
 				}
 
-				if (type == IT_BANK_TEMP) {
+				if (ind_behav & INDUSTRYBEH_ONLY_INTOWN) {
 					if (!IsTileType(cur_tile, MP_HOUSE)) {
 						_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 						return false;
 					}
-				} else if (type == IT_BANK_TROPIC_ARCTIC) {
-					if (!IsTileType(cur_tile, MP_HOUSE)) {
-						_error_message = STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS;
-						return false;
-					}
-				} else if (type == IT_TOY_SHOP) {
-					if (!IsTileType(cur_tile, MP_HOUSE)) goto do_clear;
-				} else if (type == IT_WATER_TOWER) {
-					if (!IsTileType(cur_tile, MP_HOUSE)) {
-						_error_message = STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS;
-						return false;
-					}
 				} else {
+					if (ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) {
+						if (!IsTileType(cur_tile, MP_HOUSE)) goto do_clear;
+					} else {
 do_clear:
-					if (CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
-						return false;
+						if (CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
+							return false;
+					}
 				}
 			}
 		}
@@ -1217,12 +1212,12 @@ do_clear:
 
 static bool CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town *t)
 {
-	if (type == IT_BANK_TEMP && t->population < 1200) {
+	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_TOWN1200_MORE) && t->population < 1200) {
 		_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 		return false;
 	}
 
-	if (type == IT_TOY_SHOP && DistanceMax(t->xy, tile) > 9) {
+	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_ONLY_NEARTOWN) && DistanceMax(t->xy, tile) > 9) {
 		_error_message = STR_0239_SITE_UNSUITABLE;
 		return false;
 	}
@@ -1450,7 +1445,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->width++;
 	i->height++;
 
-	if (i->type == IT_FARM || i->type == IT_FARM_2) {
+	if (GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_PLANT_ON_BUILT) {
 		for (j = 0; j != 50; j++) PlantRandomFarmField(i);
 	}
 	_industry_sort_dirty = true;
@@ -1737,8 +1732,8 @@ static void MaybeNewIndustry(uint32 r)
 	Industry *i;
 	const IndustrySpec *ind_spc = GetIndustrySpec(type);;
 
-	if (type == IT_OIL_WELL && _cur_year > 1950) return;
-	if (type == IT_OIL_RIG  && _cur_year < 1960) return;
+	if ((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && _cur_year > 1950) return;
+	if ((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && _cur_year < 1960) return;
 
 	j = 2000;
 	for (;;) {
@@ -1766,7 +1761,7 @@ static void ChangeIndustryProduction(Industry *i)
 
 		case INDUSTRYLIFE_PRODUCTION:
 			/* decrease or increase */
-			if (type == IT_OIL_WELL && _opt.landscape == LT_TEMPERATE)
+			if ((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _opt.landscape == LT_TEMPERATE)
 				only_decrease = true;
 
 			if (only_decrease || CHANCE16(1,3)) {

@@ -459,7 +459,7 @@ static void DisasterTick_Airplane(Vehicle *v)
 		ind = GetIndustryIndex(tile);
 		v->dest_tile = ind;
 
-		if (GetIndustry(ind)->type == IT_OIL_REFINERY) {
+		if (GetIndustrySpec(GetIndustry(ind)->type)->behaviour & INDUSTRYBEH_AIRPLANE_ATTACKS) {
 			v->current_order.dest = 1;
 			v->age = 0;
 		}
@@ -532,7 +532,7 @@ static void DisasterTick_Helicopter(Vehicle *v)
 		ind = GetIndustryIndex(tile);
 		v->dest_tile = ind;
 
-		if (GetIndustry(ind)->type == IT_FACTORY) {
+		if (GetIndustrySpec(GetIndustry(ind)->type)->behaviour & INDUSTRYBEH_CHOPPER_ATTACKS) {
 			v->current_order.dest = 1;
 			v->age = 0;
 		}
@@ -828,7 +828,7 @@ static void Disaster_Airplane_Init()
 	found = NULL;
 
 	FOR_ALL_INDUSTRIES(i) {
-		if (i->type == IT_OIL_REFINERY &&
+		if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_AIRPLANE_ATTACKS) &&
 				(found == NULL || CHANCE16(1, 2))) {
 			found = i;
 		}
@@ -864,7 +864,7 @@ static void Disaster_Helicopter_Init()
 	found = NULL;
 
 	FOR_ALL_INDUSTRIES(i) {
-		if (i->type == IT_FACTORY &&
+		if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CHOPPER_ATTACKS) &&
 				(found == NULL || CHANCE16(1, 2))) {
 			found = i;
 		}
@@ -982,7 +982,7 @@ static void Disaster_CoalMine_Init()
 		const Industry *i;
 
 		FOR_ALL_INDUSTRIES(i) {
-			if (i->type == IT_COAL_MINE && --index < 0) {
+			if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CAN_SUBSIDENCE) && --index < 0) {
 				SetDParam(0, i->town->index);
 				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES,
 					NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy + TileDiffXY(1, 1), 0);

@@ -6,6 +6,7 @@
 #define INDUSTRY_H
 
 #include "oldpool.h"
+#include "helpers.hpp"
 
 typedef byte IndustryGfx;
 typedef uint8 IndustryType;
@@ -20,6 +21,27 @@ enum IndustryLifeType {
 	INDUSTRYLIFE_PRODUCTION,       ///< Industry can close and change of production
 	INDUSTRYLIFE_CLOSABLE,         ///< Industry can only close (no production change)
 };
+
+enum IndustyBehaviour {
+	INDUSTRYBEH_NONE                  =      0,
+	INDUSTRYBEH_PLANT_FIELDS          = 1 << 0,  ///< periodically plants fileds around itself (temp and artic farms)
+	INDUSTRYBEH_CUT_TREES             = 1 << 1,  ///< cuts trees and produce first output cargo from them (lumber mill)
+	INDUSTRYBEH_BUILT_ONWATER         = 1 << 2,  ///< is built on water (oil rig)
+	INDUSTRYBEH_TOWN1200_MORE         = 1 << 3,  ///< can only be built in towns larger then 1200 inhabitants (temperate bank)
+	INDUSTRYBEH_ONLY_INTOWN           = 1 << 4,  ///< can only be built in towns (arctic/tropic banks, water tower)
+	INDUSTRYBEH_ONLY_NEARTOWN         = 1 << 5,  ///< is always built near towns (toy shop)
+	INDUSTRYBEH_PLANT_ON_BUILT        = 1 << 6,  ///< Fields are planted around when built (all farms)
+	INDUSTRYBEH_DONT_INCR_PROD        = 1 << 7,  ///< do not increase production (oil wells)
+	INDUSTRYBEH_BEFORE_1950           = 1 << 8,  ///< can only be built before 1950 (oil wells)
+	INDUSTRYBEH_AFTER_1960            = 1 << 9,  ///< can only be built after 1960 (oil rigs)
+	INDUSTRYBEH_AI_AIRSHIP_ROUTES     = 1 << 10, ///< ai will attempt to establish air/ship routes to this industry (oil rig)
+	INDUSTRYBEH_AIRPLANE_ATTACKS      = 1 << 11, ///< can be exploded by a military airplane (oil refinery)
+	INDUSTRYBEH_CHOPPER_ATTACKS       = 1 << 12, ///< can be exploded by a military helicopter (factory)
+	INDUSTRYBEH_CAN_SUBSIDENCE        = 1 << 13, ///< can cause a subsidence (coal mine, shaft that collapses)
+};
+
+
+DECLARE_ENUM_AS_BIT_SET(IndustyBehaviour);
 
 /**
  * Defines the internal data of a functionnal industry
@@ -71,6 +93,7 @@ struct IndustrySpec {
 	CargoID accepts_cargo[3];             ///< 3 accepted cargos
 	IndustryLifeType life_type;           ///< This is also known as Industry production flag, in newgrf specs
 	byte climate_availability;            ///< Bitmask, giving landscape enums as bit position
+	IndustyBehaviour behaviour;           ///< How this industry will behave, and how others entities can use it
 	StringID name;                        ///< Displayed name of the industry
 	StringID new_industry_text;           ///< Message appearing when the industry is built
 	StringID closure_text;                ///< Message appearing when the industry closes

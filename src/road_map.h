@@ -166,7 +166,7 @@ static inline DiagDirection GetRoadDepotDirection(TileIndex t)
 
 /**
  * Returns the RoadBits on an arbitrary tile
- * Special behavior:
+ * Special behaviour:
  * - road depots: entrance is treated as road piece
  * - road tunnels: entrance is treated as road piece
  * - bridge ramps: start of the ramp is treated as road piece
