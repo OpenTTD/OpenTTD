@@ -146,10 +146,10 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	} while ((FT_Long)++index != (*face)->num_faces);
 
 
-folder_error:
 #if defined(UNICODE)
 	free(font_path);
 #endif
+folder_error:
 registry_no_font_found:
 	RegCloseKey(hKey);
 	return err;
