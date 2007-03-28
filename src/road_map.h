@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file road_map.h */
+
 #ifndef ROAD_MAP_H
 #define ROAD_MAP_H
 

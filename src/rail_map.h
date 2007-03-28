@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file rail_map.h Hides the direct accesses to the map array with map accessors */
+
 #ifndef RAIL_MAP_H
 #define RAIL_MAP_H
 

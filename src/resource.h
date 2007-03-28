@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file resource.h */
+
 //{{NO_DEPENDENCIES}}
 // Microsoft Developer Studio generated include file.
 // Used by ttd.rc

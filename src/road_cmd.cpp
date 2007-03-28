@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file road_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
@@ -46,16 +48,16 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
 
 	if (_game_mode == GM_EDITOR) return true;
 
-	// Only do the special processing for actual players.
+	/* Only do the special processing for actual players. */
 	if (!IsValidPlayer(_current_player)) return true;
 
-	// Only do the special processing if the road is owned
-	// by a town
+	/* Only do the special processing if the road is owned
+	 * by a town */
 	if (owner != OWNER_TOWN) return (owner == OWNER_NONE) || CheckOwnership(owner);
 
 	if (_cheats.magic_bulldozer.value) return true;
 
-	// Get a bitmask of which neighbouring roads has a tile
+	/* Get a bitmask of which neighbouring roads has a tile */
 	n = ROAD_NONE;
 	present = GetAnyRoadBits(tile);
 	if (present & ROAD_NE && GetAnyRoadBits(TILE_ADDXY(tile,-1, 0)) & ROAD_SW) n |= ROAD_NE;
@@ -63,12 +65,12 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
 	if (present & ROAD_SW && GetAnyRoadBits(TILE_ADDXY(tile, 1, 0)) & ROAD_NE) n |= ROAD_SW;
 	if (present & ROAD_NW && GetAnyRoadBits(TILE_ADDXY(tile, 0,-1)) & ROAD_SE) n |= ROAD_NW;
 
-	// If 0 or 1 bits are set in n, or if no bits that match the bits to remove,
-	// then allow it
+	/* If 0 or 1 bits are set in n, or if no bits that match the bits to remove,
+	 * then allow it */
 	if ((n & (n - 1)) != 0 && (n & remove) != 0) {
 		Town *t;
 		*edge_road = false;
-		// you can remove all kind of roads with extra dynamite
+		/* you can remove all kind of roads with extra dynamite */
 		if (_patches.extra_dynamite) return true;
 
 		t = ClosestTownFromTile(tile, (uint)-1);
@@ -93,7 +95,7 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool *edge_roa
  */
 int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	// cost for removing inner/edge -roads
+	/* cost for removing inner/edge -roads */
 	static const uint16 road_remove_cost[2] = {50, 18};
 
 	Owner owner;
@@ -120,8 +122,8 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	// check if you're allowed to remove the street owned by a town
-	// removal allowance depends on difficulty setting
+	/* check if you're allowed to remove the street owned by a town
+	 * removal allowance depends on difficulty setting */
 	if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
 
 	switch (GetRoadTileType(tile)) {
@@ -137,7 +139,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				c |= (RoadBits)((c & 0x3) << 2);
 			}
 
-			// limit the bits to delete to the existing bits.
+			/* limit the bits to delete to the existing bits. */
 			c &= present;
 			if (c == 0) return CMD_ERROR;
 
@@ -178,7 +180,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 
 static const RoadBits _valid_tileh_slopes_road[][15] = {
-	// set of normal ones
+	/* set of normal ones */
 	{
 		ROAD_ALL, ROAD_NONE, ROAD_NONE,
 		ROAD_X,   ROAD_NONE, ROAD_NONE,  // 3, 4, 5
@@ -186,7 +188,7 @@ static const RoadBits _valid_tileh_slopes_road[][15] = {
 		ROAD_Y,   ROAD_NONE, ROAD_NONE,  // 9, 10, 11
 		ROAD_X,   ROAD_NONE, ROAD_NONE
 	},
-	// allowed road for an evenly raised platform
+	/* allowed road for an evenly raised platform */
 	{
 		ROAD_NONE,
 		ROAD_SW | ROAD_NW,
@@ -216,7 +218,7 @@ static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 
 	if (IsSteepSlope(tileh)) {
 		if (existing == 0) {
-			// force full pieces.
+			/* force full pieces. */
 			*pieces |= (RoadBits)((*pieces & 0xC) >> 2);
 			*pieces |= (RoadBits)((*pieces & 0x3) << 2);
 			if (*pieces == ROAD_X || *pieces == ROAD_Y) return _price.terraform;
@@ -225,21 +227,21 @@ static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 	}
 	road_bits = *pieces | existing;
 
-	// no special foundation
+	/* no special foundation */
 	if ((~_valid_tileh_slopes_road[0][tileh] & road_bits) == 0) {
-		// force that all bits are set when we have slopes
+		/* force that all bits are set when we have slopes */
 		if (tileh != SLOPE_FLAT) *pieces |= _valid_tileh_slopes_road[0][tileh];
 		return 0; // no extra cost
 	}
 
-	// foundation is used. Whole tile is leveled up
+	/* foundation is used. Whole tile is leveled up */
 	if ((~_valid_tileh_slopes_road[1][tileh] & road_bits) == 0) {
 		return existing != 0 ? 0 : _price.terraform;
 	}
 
-	// partly leveled up tile, only if there's no road on that tile
+	/* partly leveled up tile, only if there's no road on that tile */
 	if (existing == 0 && (tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)) {
-		// force full pieces.
+		/* force full pieces. */
 		*pieces |= (RoadBits)((*pieces & 0xC) >> 2);
 		*pieces |= (RoadBits)((*pieces & 0x3) << 2);
 		if (*pieces == ROAD_X || *pieces == ROAD_Y) return _price.terraform;
@@ -349,7 +351,7 @@ do_clear:;
 	cost += ret;
 
 	if (IsTileType(tile, MP_STREET)) {
-		// Don't put the pieces that already exist
+		/* Don't put the pieces that already exist */
 		pieces &= ComplementRoadBits(existing);
 	}
 
@@ -377,15 +379,15 @@ do_clear:;
  */
 int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 {
-	// not a railroad crossing?
+	/* not a railroad crossing? */
 	if (!IsLevelCrossing(tile)) return CMD_ERROR;
 
-	// not owned by me?
+	/* not owned by me? */
 	if (!CheckTileOwnership(tile) || !EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	if (GetRailType(tile) == totype) return CMD_ERROR;
 
-	// 'hidden' elrails can't be downgraded to normal rail when elrails are disabled
+	/* 'hidden' elrails can't be downgraded to normal rail when elrails are disabled */
 	if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailType(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
 
 	if (exec) {
@@ -431,7 +433,7 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 	cost = 0;
 	tile = start_tile;
-	// Start tile is the small number.
+	/* Start tile is the small number. */
 	for (;;) {
 		RoadBits bits = HASBIT(p2, 2) ? ROAD_Y : ROAD_X;
 
@@ -487,14 +489,14 @@ int32 CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 	cost = 0;
 	tile = start_tile;
-	// Start tile is the small number.
+	/* Start tile is the small number. */
 	for (;;) {
 		RoadBits bits = HASBIT(p2, 2) ? ROAD_Y : ROAD_X;
 
 		if (tile == end_tile && !HASBIT(p2, 1)) bits &= ROAD_NW | ROAD_NE;
 		if (tile == start_tile && HASBIT(p2, 0)) bits &= ROAD_SE | ROAD_SW;
 
-		// try to remove the halves.
+		/* try to remove the halves. */
 		if (bits != 0) {
 			ret = DoCommand(tile, bits, 0, flags, CMD_REMOVE_ROAD);
 			if (!CmdFailed(ret)) cost += ret;
@@ -621,13 +623,13 @@ uint GetRoadFoundation(Slope tileh, RoadBits bits)
 {
 	uint i;
 
-	// normal level sloped building
+	/* normal level sloped building */
 	if (!IsSteepSlope(tileh) &&
 			(~_valid_tileh_slopes_road[1][tileh] & bits) == 0) {
 		return tileh;
 	}
 
-	// inclined sloped building
+	/* inclined sloped building */
 	switch (bits) {
 		case ROAD_X: i = 0; break;
 		case ROAD_Y: i = 1; break;
@@ -672,8 +674,8 @@ static void DrawRoadBits(TileInfo* ti)
 
 		if (foundation != 0) DrawFoundation(ti, foundation);
 
-		// DrawFoundation() modifies ti.
-		// Default sloped sprites..
+		/* DrawFoundation() modifies ti.
+		 * Default sloped sprites.. */
 		if (ti->tileh != SLOPE_FLAT) image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
 	}
 
@@ -695,15 +697,15 @@ static void DrawRoadBits(TileInfo* ti)
 	DrawGroundSprite(image, pal);
 
 	if (HasRoadWorks(ti->tile)) {
-		// Road works
+		/* Road works */
 		DrawGroundSprite(road & ROAD_X ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y, PAL_NONE);
 		return;
 	}
 
-	// Return if full detail is disabled, or we are zoomed fully out.
+	/* Return if full detail is disabled, or we are zoomed fully out. */
 	if (!(_display_opt & DO_FULL_DETAIL) || _cur_dpi->zoom == 2) return;
 
-	// Draw extra details.
+	/* Draw extra details. */
 	for (drts = _road_display_table[roadside][road]; drts->image != 0; drts++) {
 		int x = ti->x | drts->subcoord_x;
 		int y = ti->y | drts->subcoord_y;
@@ -896,7 +898,7 @@ static void TileLoop_Road(TileIndex tile)
 		if (t != NULL) {
 			grp = GetTownRadiusGroup(t, tile);
 
-			// Show an animation to indicate road work
+			/* Show an animation to indicate road work */
 			if (t->road_build_months != 0 &&
 					(DistanceManhattan(t->xy, tile) < 8 || grp != 0) &&
 					GetRoadTileType(tile) == ROAD_TILE_NORMAL && (GetRoadBits(tile) == ROAD_X || GetRoadBits(tile) == ROAD_Y)) {

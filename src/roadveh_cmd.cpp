@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file roadveh_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -533,7 +535,7 @@ static byte SetRoadVehPosition(Vehicle *v, int x, int y)
 {
 	byte new_z, old_z;
 
-	// need this hint so it returns the right z coordinate on bridges.
+	/* need this hint so it returns the right z coordinate on bridges. */
 	v->x_pos = x;
 	v->y_pos = y;
 	new_z = GetSlopeZ(x, y);
@@ -663,7 +665,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 
 	switch (v->current_order.type) {
 		case OT_GOTO_DEPOT:
-			// Let a depot order in the orderlist interrupt.
+			/* Let a depot order in the orderlist interrupt. */
 			if (!(v->current_order.flags & OF_PART_OF_ORDERS)) return;
 			if (v->current_order.flags & OF_SERVICE_IF_NEEDED &&
 					!VehicleNeedsService(v)) {
@@ -723,7 +725,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 				}
 				v->dest_tile = dest;
 			} else {
-				// There is no stop left at the station, so don't even TRY to go there
+				/* There is no stop left at the station, so don't even TRY to go there */
 				v->cur_order_index++;
 				v->dest_tile = 0;
 			}
@@ -828,10 +830,10 @@ static Vehicle* RoadVehFindCloseTo(Vehicle* v, int x, int y, Direction dir)
 	rvf.veh = v;
 	u = (Vehicle*)VehicleFromPos(TileVirtXY(x, y), &rvf, EnumCheckRoadVehClose);
 
-	// This code protects a roadvehicle from being blocked for ever
-	//  If more than 1480 / 74 days a road vehicle is blocked, it will
-	//  drive just through it. The ultimate backup-code of TTD.
-	// It can be disabled.
+	/* This code protects a roadvehicle from being blocked for ever
+	 * If more than 1480 / 74 days a road vehicle is blocked, it will
+	 * drive just through it. The ultimate backup-code of TTD.
+	 * It can be disabled. */
 	if (u == NULL) {
 		v->u.road.blocked_ctr = 0;
 		return NULL;
@@ -881,13 +883,13 @@ static bool RoadVehAccelerate(Vehicle *v)
 	uint spd = v->cur_speed + 1 + (v->u.road.overtaking != 0 ? 1 : 0);
 	byte t;
 
-	// Clamp
+	/* Clamp */
 	spd = min(spd, v->max_speed);
 	if (v->u.road.state == RVSB_WORMHOLE && !(v->vehstatus & VS_HIDDEN)) {
 		spd = min(spd, GetBridge(GetBridgeType(v->tile))->speed * 2);
 	}
 
-	//updates statusbar only if speed have changed to save CPU time
+	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
 		if (_patches.vehicle_speed) {
@@ -895,7 +897,7 @@ static bool RoadVehAccelerate(Vehicle *v)
 		}
 	}
 
-	// Decrease somewhat when turning
+	/* Decrease somewhat when turning */
 	if (!(v->direction & 1)) spd = spd * 3 >> 2;
 
 	if (spd == 0) return false;
@@ -1153,9 +1155,9 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 
 		ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE);
 		if (ftd.best_trackdir == INVALID_TRACKDIR) {
-			/* We are already at our target. Just do something */
-			//TODO: maybe display error?
-			//TODO: go straight ahead if possible?
+			/* We are already at our target. Just do something
+			 * @todo: maybe display error?
+			 * @todo: go straight ahead if possible? */
 			return_track(FindFirstBit2x64(trackdirs));
 		} else {
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
@@ -1223,10 +1225,10 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 {
 	uint dist;
 	if (_patches.yapf.road_use_yapf) {
-		// use YAPF
+		/* use YAPF */
 		dist = YapfRoadVehDistanceToTile(v, tile);
 	} else {
-		// use NPF
+		/* use NPF */
 		NPFFindStationOrTileData fstd;
 		Trackdir trackdir = GetVehicleTrackdir(v);
 		assert(trackdir != INVALID_TRACKDIR);
@@ -1235,7 +1237,7 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 		fstd.station_index = INVALID_STATION; // indicates that the destination is a tile, not a station
 
 		dist = NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE).best_path_dist;
-		// change units from NPF_TILE_LENGTH to # of tiles
+		/* change units from NPF_TILE_LENGTH to # of tiles */
 		if (dist != UINT_MAX)
 			dist = (dist + NPF_TILE_LENGTH - 1) / NPF_TILE_LENGTH;
 	}
@@ -1277,11 +1279,11 @@ static void RoadVehController(Vehicle *v)
 	int x,y;
 	uint32 r;
 
-	// decrease counters
+	/* decrease counters */
 	v->tick_counter++;
 	if (v->u.road.reverse_ctr != 0) v->u.road.reverse_ctr--;
 
-	// handle crashed
+	/* handle crashed */
 	if (v->u.road.crashed_ctr != 0) {
 		RoadVehIsCrashed(v);
 		return;
@@ -1289,7 +1291,7 @@ static void RoadVehController(Vehicle *v)
 
 	RoadVehCheckTrainCrash(v);
 
-	// road vehicle has broken down?
+	/* road vehicle has broken down? */
 	if (v->breakdown_ctr != 0) {
 		if (v->breakdown_ctr <= 2) {
 			HandleBrokenRoadVeh(v);
@@ -1628,9 +1630,9 @@ again:
 			/* We are leaving the correct station */
 			ClearSlot(v);
 		} else if (v->u.road.slot != NULL) {
-			/* We are leaving the wrong station */
-			//XXX The question is .. what to do? Actually we shouldn't be here
-			//but I guess we need to clear the slot
+			/* We are leaving the wrong station
+			 * XXX The question is .. what to do? Actually we shouldn't be here
+			 * but I guess we need to clear the slot */
 			DEBUG(ms, 0, "Vehicle %d (index %d) arrived at wrong stop", v->unitnumber, v->index);
 			if (v->tile != v->dest_tile) {
 				DEBUG(ms, 2, " current tile 0x%X is not destination tile 0x%X. Route problem", v->tile, v->dest_tile);
@@ -1692,13 +1694,13 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED) return;
 	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
 
-	// Don't interfere with a depot visit scheduled by the user, or a
-	// depot visit by the order list.
+	/* Don't interfere with a depot visit scheduled by the user, or a
+	 * depot visit by the order list. */
 	if (v->current_order.type == OT_GOTO_DEPOT &&
 			(v->current_order.flags & (OF_HALT_IN_DEPOT | OF_PART_OF_ORDERS)) != 0)
 		return;
 
-	// If we already got a slot at a stop, use that FIRST, and go to a depot later
+	/* If we already got a slot at a stop, use that FIRST, and go to a depot later */
 	if (v->u.road.slot != NULL) return;
 
 	if (IsRoadVehInDepot(v)) {
@@ -1706,7 +1708,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 		return;
 	}
 
-	// XXX If we already have a depot order, WHY do we search over and over?
+	/* XXX If we already have a depot order, WHY do we search over and over? */
 	depot = FindClosestRoadDepot(v);
 
 	if (depot == NULL || DistanceManhattan(v->tile, depot->xy) > 12) {
@@ -1743,7 +1745,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 	CheckOrders(v);
 
-	//Current slot has expired
+	/* Current slot has expired */
 	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot != NULL && v->u.road.slot_age-- == 0) {
 		DEBUG(ms, 3, "Slot expired for vehicle %d (index %d) at stop 0x%X",
 			v->unitnumber, v->index, v->u.road.slot->xy);

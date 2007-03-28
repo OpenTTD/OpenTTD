@@ -1,11 +1,11 @@
 /* $Id$ */
 
-#ifndef RAILTYPES_H
-#define RAILTYPES_H
-
 /** @file railtypes.h
  * All the railtype-specific information is stored here.
  */
+
+#ifndef RAILTYPES_H
+#define RAILTYPES_H
 
 /** Global Railtype definition
  */

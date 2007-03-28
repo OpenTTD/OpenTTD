@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file rail_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"

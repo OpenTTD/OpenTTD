@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file road_cmd.h */
+
 #ifndef ROAD_CMD_H
 #define ROAD_CMD_H
 

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file road_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "road_cmd.h"
