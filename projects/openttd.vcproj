@@ -164,10 +164,10 @@
 				RelativePath=".\..\src\airport.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\aystar.cpp">
+				RelativePath=".\..\src\autoreplace_cmd.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\autoreplace_cmd.cpp">
+				RelativePath=".\..\src\aystar.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\bmp.cpp">
