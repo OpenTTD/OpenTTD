@@ -118,7 +118,7 @@ struct Station {
 
 		const AirportFTAClass *Airport() const
 		{
-			assert(airport_tile != 0);
+			if (airport_tile == 0) return GetAirport(AT_DUMMY);
 			return GetAirport(airport_type);
 		}
 

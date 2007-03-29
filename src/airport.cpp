@@ -20,6 +20,7 @@
  * - false: give a summarized report which only shows current and next position */
 //#define DEBUG_AIRPORT false
 
+static AirportFTAClass *DummyAirport;
 static AirportFTAClass *CountryAirport;
 static AirportFTAClass *CityAirport;
 static AirportFTAClass *Oilrig;
@@ -34,6 +35,20 @@ static AirportFTAClass *HeliStation;
 
 void InitializeAirports()
 {
+	DummyAirport = new AirportFTAClass(
+		_airport_moving_data_dummy,
+		NULL,
+		NULL,
+		_airport_entries_dummy,
+		AirportFTAClass::ALL,
+		_airport_fta_dummy,
+		NULL,
+		0,
+		0, 0,
+		0,
+		0
+	);
+
 	CountryAirport = new AirportFTAClass(
 		_airport_moving_data_country,
 		_airport_terminal_country,
@@ -463,6 +478,7 @@ const AirportFTAClass *GetAirport(const byte airport_type)
 		case AT_HELIDEPOT:     return HeliDepot;
 		case AT_INTERCON:      return IntercontinentalAirport;
 		case AT_HELISTATION:   return HeliStation;
+		case AT_DUMMY:         return DummyAirport;
 	}
 }
 

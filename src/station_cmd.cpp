@@ -1600,6 +1600,13 @@ static int32 RemoveAirport(Station *st, uint32 flags)
 
 	int32 cost = w * h * _price.remove_airport;
 
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (!(v->type == VEH_AIRCRAFT && IsNormalAircraft(v))) continue;
+
+		if (v->u.air.targetairport == st->index && v->u.air.state != FLYING) return CMD_ERROR;
+	}
+
 	BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
 		if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
 

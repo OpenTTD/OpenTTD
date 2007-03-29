@@ -14,16 +14,17 @@ enum {MAX_HEADINGS  =  22};
 
 // Airport types
 enum {
-	AT_SMALL         =  0,
-	AT_LARGE         =  1,
-	AT_HELIPORT      =  2,
-	AT_METROPOLITAN  =  3,
-	AT_INTERNATIONAL =  4,
-	AT_COMMUTER      =  5,
-	AT_HELIDEPOT     =  6,
-	AT_INTERCON      =  7,
-	AT_HELISTATION   =  8,
-	AT_OILRIG        = 15
+	AT_SMALL         =   0,
+	AT_LARGE         =   1,
+	AT_HELIPORT      =   2,
+	AT_METROPOLITAN  =   3,
+	AT_INTERNATIONAL =   4,
+	AT_COMMUTER      =   5,
+	AT_HELIDEPOT     =   6,
+	AT_INTERCON      =   7,
+	AT_HELISTATION   =   8,
+	AT_OILRIG        =  15,
+	AT_DUMMY         = 255
 };
 
 

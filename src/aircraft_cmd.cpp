@@ -944,6 +944,42 @@ static byte GetAircraftFlyingAltitude(const Vehicle *v)
 }
 
 /**
+ * Find the entry point to an airport depending on direction which
+ * the airport is being approached from. Each airport can have up to
+ * four entry points for its approach system so that approaching
+ * aircraft do not fly through each other or are forced to do 180
+ * degree turns during the approach. The arrivals are grouped into
+ * four sectors dependent on the DiagDirection from which the airport
+ * is approached.
+ *
+ * @param v   The vehicle that is approaching the airport
+ * @param apc The Airport Class being approached.
+ * @returns   The index of the entry point
+ */
+static byte AircraftGetEntryPoint(const Vehicle *v, const AirportFTAClass *apc)
+{
+	assert(v != NULL);
+	assert(apc != NULL);
+
+	const Station *st = GetStation(v->u.air.targetairport);
+	/* Make sure we don't go to 0,0 if the airport has been removed. */
+	TileIndex tile = (st->airport_tile != 0) ? st->airport_tile : st->xy;
+
+	int delta_x = v->x_pos - TileX(tile) * TILE_SIZE;
+	int delta_y = v->y_pos - TileY(tile) * TILE_SIZE;
+
+	DiagDirection dir;
+	if (abs(delta_y) < abs(delta_x)) {
+		/* We are northeast or southwest of the airport */
+		dir = delta_x < 0 ? DIAGDIR_NE : DIAGDIR_SW;
+	} else {
+		/* We are northwest or southeast of the airport */
+		dir = delta_y < 0 ? DIAGDIR_NW : DIAGDIR_SE;
+	}
+	return apc->entry_points[dir];
+}
+
+/**
  * Controls the movement of an aircraft. This function actually moves the vehicle
  * on the map and takes care of minor things like sound playback.
  * @todo    De-mystify the cur_speed values for helicopter rotors.
@@ -954,16 +990,23 @@ static bool AircraftController(Vehicle *v)
 {
 	int count;
 	const Station *st = GetStation(v->u.air.targetairport);
+	const AirportFTAClass *afc = st->Airport();
+	const AirportMovingData *amd;
 
 	/* prevent going to 0,0 if airport is deleted. */
 	TileIndex tile = st->airport_tile;
-	if (tile == 0) tile = st->xy;
-	int x = TileX(tile) * TILE_SIZE;
-	int y = TileY(tile) * TILE_SIZE;
+	if (tile == 0) {
+		tile = st->xy;
+
+		/* Jump into our "holding pattern" state machine if possible */
+	if (v->u.air.pos >= afc->nofelements) v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, afc);
+	}
 
 	/*  get airport moving data */
-	const AirportFTAClass *afc = st->Airport();
-	const AirportMovingData *amd = afc->MovingData(v->u.air.pos);
+	amd = afc->MovingData(v->u.air.pos);
+
+	int x = TileX(tile) * TILE_SIZE;
+	int y = TileY(tile) * TILE_SIZE;
 
 	/* Helicopter raise */
 	if (amd->flag & AMED_HELI_RAISE) {
@@ -1468,42 +1511,6 @@ static void AircraftLandAirplane(Vehicle *v)
 		SndPlayVehicleFx(SND_17_SKID_PLANE, v);
 	}
 	MaybeCrashAirplane(v);
-}
-
-/**
- * Find the entry point to an airport depending on direction which
- * the airport is being approached from. Each airport can have up to
- * four entry points for its approach system so that approaching
- * aircraft do not fly through each other or are forced to do 180
- * degree turns during the approach. The arrivals are grouped into
- * four sectors dependent on the DiagDirection from which the airport
- * is approached.
- *
- * @param v   The vehicle that is approaching the airport
- * @param apc The Airport Class being approached.
- * @returns   The index of the entry point
- */
-static byte AircraftGetEntryPoint(const Vehicle *v, const AirportFTAClass *apc)
-{
-	assert(v != NULL);
-	assert(apc != NULL);
-
-	const Station *st = GetStation(v->u.air.targetairport);
-	/* Make sure we don't go to 0,0 if the airport has been removed. */
-	TileIndex tile = (st->airport_tile != 0) ? st->airport_tile : st->xy;
-
-	int delta_x = v->x_pos - TileX(tile) * TILE_SIZE;
-	int delta_y = v->y_pos - TileY(tile) * TILE_SIZE;
-
-	DiagDirection dir;
-	if (abs(delta_y) < abs(delta_x)) {
-		/* We are northeast or southwest of the airport */
-		dir = delta_x < 0 ? DIAGDIR_NE : DIAGDIR_SW;
-	} else {
-		/* We are northwest or southeast of the airport */
-		dir = delta_y < 0 ? DIAGDIR_NW : DIAGDIR_SE;
-	}
-	return apc->entry_points[dir];
 }
 
 

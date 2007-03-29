@@ -17,6 +17,14 @@ struct AirportFTAbuildup {
 
 ///////////////////////////////////////////////////////////////////////
 /////*********Movement Positions on Airports********************///////
+
+static const AirportMovingData _airport_moving_data_dummy[] = {
+	{    0,    0, AMED_NOSPDCLAMP | AMED_SLOWTURN,     {DIR_N} },
+	{    0,   96, AMED_NOSPDCLAMP | AMED_SLOWTURN,     {DIR_N} },
+	{   96,   96, AMED_NOSPDCLAMP | AMED_SLOWTURN,     {DIR_N} },
+	{   96,    0, AMED_NOSPDCLAMP | AMED_SLOWTURN,     {DIR_N} },
+};
+
 // Country Airfield (small) 4x3
 static const AirportMovingData _airport_moving_data_country[22] = {
 	{   53,    3, AMED_EXACTPOS,                   {DIR_SE} }, // 00 In Hangar
@@ -376,6 +384,15 @@ static const AirportMovingData _airport_moving_data_oilrig[9] = {
 
 ///////////////////////////////////////////////////////////////////////
 /////**********Movement Machine on Airports*********************///////
+static const byte _airport_entries_dummy[] = {0, 1, 2, 3};
+static const AirportFTAbuildup _airport_fta_dummy[] = {
+	{ 0, 0, 0, 3},
+	{ 1, 0, 0, 0},
+	{ 2, 0, 0, 1},
+	{ 3, 0, 0, 2},
+	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
+};
+
 /* First element of terminals array tells us how many depots there are (to know size of array)
  * this may be changed later when airports are moved to external file  */
 static const TileIndexDiffC _airport_depots_country[] = {{3, 0}};
