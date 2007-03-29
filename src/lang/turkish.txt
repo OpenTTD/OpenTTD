@@ -280,6 +280,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...sahibi {STRING}
 STR_013C_CARGO                                                  :{BLACK}Kargo
@@ -590,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oyuncun
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Rakibin durağına ilk aracın gelişi
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kazalar / felaketler
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Şirket bilgisi
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Fabrika açılış/kapanışları
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomi değişimleri
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Oyuncunun araçlarıyla ilgili ögüt / bilgi
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Yeni araçlar
@@ -725,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Haritaya
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Deniz feneri koy
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Verici koy
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Çöl yap, kaldırmak için CTRL'ye basılı tut
+STR_CREATE_LAKE                                                 :{BLACK}Su alanını belirle.{}Deniz seviyesinde CTRL tuşu basılı olmadığı sürece kanal yapar, basılıysa etraftakileri su altında bırakır
 STR_0290_DELETE                                                 :{BLACK}Sil
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Sehri tamamen sil
 STR_0292_SAVE_SCENARIO                                          :Kaydet
@@ -1087,6 +1090,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Hiçbiri
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Şirketi al
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tüm şirketler
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER> tuşu takım içi sohbette kullanılsın: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Fare tekerleğinin fonksiyonu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Haritayı yakınaştır
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Haritayı kaydır
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Kapalı
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Tekerlek hızı: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
@@ -1205,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Rastgele
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Rastgele türde ağaçlar koy
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Buraya kanal yapılamaz...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Kanal yap.
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Buraya kilit yapılamaz...
@@ -2631,6 +2640,10 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Uyumsuz ray tü
 STR_TRAIN_NO_POWER                                              :{RED}Elektrik yok
 STR_TRAIN_START_NO_CATENARY                                     :Bu rayda elektrik olmadiği için bu tren çalışamaz
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} artık kullanılabilir!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} artık kullanılabilir!  -  {STRING}
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Yolda araba var
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Arabalar
@@ -3133,3 +3146,4 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########
+
