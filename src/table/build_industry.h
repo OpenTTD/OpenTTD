@@ -1120,7 +1120,7 @@ static const IndustrySpec _industry_specs[] = {
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_WOOD,           CT_INVALID,          CT_INVALID,
 	   INDUSTRYLIFE_CLOSABLE,                  1 << LT_TEMPERATE,
-	   INDUSTRYBEH_CUT_TREES,
+	   INDUSTRYBEH_NONE,
 	   STR_4804_SAWMILL,                       STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
