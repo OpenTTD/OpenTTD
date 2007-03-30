@@ -261,13 +261,13 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 				/* set wagon/engine button */
 				SetDParam(2, WP(w, replaceveh_d).wagon_btnstate ? STR_ENGINES : STR_WAGONS);
+
+				/* sets the colour of that art thing */
+				w->widget[13].color = _player_colors[_local_player];
+				w->widget[16].color = _player_colors[_local_player];
 			}
 
-			w->widget[13].color = _player_colors[_local_player]; // sets the colour of that art thing
-			w->widget[16].color = _player_colors[_local_player]; // sets the colour of that art thing
-
 			DrawWindowWidgets(w);
-
 
 			if (w->window_number == VEH_TRAIN) {
 				/* Draw the selected railtype in the pulldown menu */
