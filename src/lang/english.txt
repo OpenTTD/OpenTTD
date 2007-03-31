@@ -3149,3 +3149,5 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...this is a town owned road
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...road facing in the wrong direction

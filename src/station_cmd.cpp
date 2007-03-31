@@ -1190,9 +1190,12 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* If it is a drive-through stop check for valid axis */
 	if (is_drive_through && !IsValidAxis((Axis)p1)) return CMD_ERROR;
 	/* Road bits in the wrong direction */
-	if (build_over_road && (GetRoadBits(tile) & ((Axis)p1 == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return CMD_ERROR;
+	if (build_over_road && (GetRoadBits(tile) & ((Axis)p1 == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_DRIVE_THROUGH_ERROR_DIRECTION);
 	/* Not allowed to build over this road */
-	if (build_over_road && !IsTileOwner(tile, _current_player) && !(IsTileOwner(tile, OWNER_TOWN) && _patches.road_stop_on_town_road)) return CMD_ERROR;
+	if (build_over_road) {
+		if (IsTileOwner(tile, OWNER_TOWN) && !_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
+		if (!IsTileOwner(tile, OWNER_TOWN) && !CheckOwnership(GetTileOwner(tile))) return CMD_ERROR;
+	}
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
