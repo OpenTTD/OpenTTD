@@ -254,6 +254,39 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 {
 	Town *t;
 	PlayerID old = _current_player;
+
+	{
+		Player *p;
+		uint i;
+
+		/* See if the old_player had shares in other companies */
+		_current_player = old_player;
+		FOR_ALL_PLAYERS(p) {
+			for (i = 0; i < 4; i++) {
+				if (p->share_owners[i] == old_player) {
+					/* Sell his shares */
+					int32 res = DoCommand(0, p->index, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+					/* Because we are in a DoCommand, we can't just execute an other one and
+					 *  expect the money to be removed. We need to do it ourself! */
+					SubtractMoneyFromPlayer(res);
+				}
+			}
+		}
+
+		/* Sell all the shares that people have on this company */
+		p = GetPlayer(old_player);
+		for (i = 0; i < 4; i++) {
+			_current_player = p->share_owners[i];
+			if (_current_player != PLAYER_SPECTATOR) {
+				/* Sell the shares */
+				int32 res = DoCommand(0, old_player, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+				/* Because we are in a DoCommand, we can't just execute an other one and
+				 *  expect the money to be removed. We need to do it ourself! */
+				SubtractMoneyFromPlayer(res);
+			}
+		}
+	}
+
 	_current_player = old_player;
 
 	/* Temporarily increase the player's money, to be sure that
@@ -345,25 +378,6 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 
 	/* Change color of existing windows */
 	if (new_player != PLAYER_SPECTATOR) ChangeWindowOwner(old_player, new_player);
-
-	{
-		Player *p;
-		uint i;
-
-		/* Check for shares */
-		FOR_ALL_PLAYERS(p) {
-			for (i = 0; i < 4; i++) {
-				/* 'Sell' the share if this player has any */
-				if (p->share_owners[i] == _current_player) {
-					p->share_owners[i] = PLAYER_SPECTATOR;
-				}
-			}
-		}
-		p = GetPlayer(_current_player);
-		/* Sell all the shares that people have on this company */
-		for (i = 0; i < 4; i++)
-			p->share_owners[i] = PLAYER_SPECTATOR;
-	}
 
 	_current_player = old;
 
