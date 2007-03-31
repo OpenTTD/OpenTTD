@@ -176,7 +176,7 @@ static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 
 	switch (v->type) {
 		case VEH_TRAIN:
-			DrawTrainImage(v, x + 21, sprite_y, w->widget[DEPOT_WIDGET_MATRIX].right - 32, w->hscroll.pos, WP(w,depot_d).sel);
+			DrawTrainImage(v, x + 21, sprite_y, w->hscroll.cap + 4, w->hscroll.pos, WP(w,depot_d).sel);
 
 			/* Number of wagons relative to a standard length wagon (rounded up) */
 			SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
@@ -638,7 +638,7 @@ uint _block_sizes[4][2];
 /* Array to hold the default resize capacities
 * First part is the vehicle type, while the last is 0 = x, 1 = y */
 const uint _resize_cap[][2] = {
-/* VEH_TRAIN */    {6, 10 * 29 + 36}, ///< flags, unitnumber and unit count uses a total of 36 pixels and we set default to 10 units
+/* VEH_TRAIN */    {6, 10 * 29},
 /* VEH_ROAD */     {5, 5},
 /* VEH_SHIP */     {3, 3},
 /* VEH_AIRCRAFT */ {3, 4},
@@ -719,8 +719,9 @@ static void CreateDepotListWindow(Window *w, byte type)
 				 _block_sizes[type][1] * w->vscroll.cap);
 
 	if (type == VEH_TRAIN) {
-		/* The train depot has a horizontal scroller so we should make room for it */
-		ResizeWindow(w, 0, 12);
+		/* Make space for the horizontal scrollbar vertically, and the unit
+		 * number, flag, and length counter horizontally. */
+		ResizeWindow(w, 36, 12);
 		/* substract the newly added space from the matrix since it was meant for the scrollbar */
 		w->widget[DEPOT_WIDGET_MATRIX].bottom -= 12;
 	}
