@@ -255,6 +255,8 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	Town *t;
 	PlayerID old = _current_player;
 
+	assert(old_player != new_player);
+
 	{
 		Player *p;
 		uint i;
@@ -1774,12 +1776,16 @@ int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
+	PlayerID pid = (PlayerID)p1;
 
 	/* Disable takeovers in multiplayer games */
-	if (!IsValidPlayer((PlayerID)p1) || _networking) return CMD_ERROR;
+	if (!IsValidPlayer(pid) || _networking) return CMD_ERROR;
+
+	/* Do not allow players to take over themselves */
+	if (pid == _current_player) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = GetPlayer((PlayerID)p1);
+	p = GetPlayer(pid);
 
 	if (!p->is_ai) return CMD_ERROR;
 
