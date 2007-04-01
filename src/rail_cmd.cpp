@@ -254,7 +254,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			if (!CheckTrackCombination(tile, trackbit, flags) ||
-					!EnsureNoVehicle(tile)) {
+					!EnsureNoVehicleOnGround(tile)) {
 				return CMD_ERROR;
 			}
 			if (!IsTileOwner(tile, _current_player) ||
@@ -289,7 +289,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 #undef M
 
-			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 			if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
 				if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
@@ -352,7 +352,7 @@ int32 CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (!IsLevelCrossing(tile) ||
 					GetCrossingRailBits(tile) != trackbit ||
 					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
-					!EnsureNoVehicle(tile)) {
+					!EnsureNoVehicleOnGround(tile)) {
 				return CMD_ERROR;
 			}
 
@@ -367,7 +367,7 @@ int32 CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			if (!IsPlainRailTile(tile) ||
 					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
-					!EnsureNoVehicle(tile)) {
+					!EnsureNoVehicleOnGround(tile)) {
 				return CMD_ERROR;
 			}
 
@@ -623,7 +623,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SignalVariant sigvar = (pre_signal ^ HASBIT(p1, 4)) ? SIG_SEMAPHORE : SIG_ELECTRIC;
 	int32 cost;
 
-	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoVehicle(tile))
+	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoVehicleOnGround(tile))
 		return CMD_ERROR;
 
 	/* Protect against invalid signal copying */
@@ -810,7 +810,7 @@ int32 CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!ValParamTrackOrientation(track) ||
 			!IsTileType(tile, MP_RAILWAY) ||
-			!EnsureNoVehicle(tile) ||
+			!EnsureNoVehicleOnGround(tile) ||
 			!HasSignalOnTrack(tile, track)) {
 		return CMD_ERROR;
 	}
@@ -867,7 +867,7 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 
 	if (GetRailType(tile) == totype) return CMD_ERROR;
 
-	if (!EnsureNoVehicle(tile) && (!IsCompatibleRail(GetRailType(tile), totype) || IsPlainRailTile(tile))) return CMD_ERROR;
+	if (!EnsureNoVehicleOnGround(tile) && (!IsCompatibleRail(GetRailType(tile), totype) || IsPlainRailTile(tile))) return CMD_ERROR;
 
 	// 'hidden' elrails can't be downgraded to normal rail when elrails are disabled
 	if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailType(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
@@ -971,7 +971,7 @@ static int32 RemoveTrainDepot(TileIndex tile, uint32 flags)
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER)
 		return CMD_ERROR;
 
-	if (!EnsureNoVehicle(tile))
+	if (!EnsureNoVehicleOnGround(tile))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
