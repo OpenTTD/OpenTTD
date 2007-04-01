@@ -3822,7 +3822,7 @@ static void AiHandleTakeover(Player *p)
 		if (best_pl->player_money >> 1 >= p->bankrupt_value) {
 			// Computer wants to buy it.
 			PlayerID old_p = _current_player;
-			_current_player = p->index;
+			_current_player = best_pl->index;
 			DoCommand(0, old_p, 0, DC_EXEC, CMD_BUY_COMPANY);
 			_current_player = old_p;
 		}
