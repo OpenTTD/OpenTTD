@@ -11,7 +11,7 @@
 /* An aircraft can be one ot those types */
 enum AircraftSubType {
 	AIR_HELICOPTER = 0, ///< an helicopter
-	AIR_AIRCRAFT   = 2, ///< an airplace
+	AIR_AIRCRAFT   = 2, ///< an airplane
 	AIR_SHADOW     = 4, ///< shadow of the aircraft
 	AIR_ROTOR      = 6  ///< rotor of an helicopter
 };
@@ -71,7 +71,7 @@ static inline bool IsAircraftBuildableAtStation(EngineID engine, TileIndex tile)
  * @param avi Which engine to find a cargo capacity for.
  * @return New cargo capacity value.
  */
-uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo avi*);
+uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi);
 
 void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcCloneAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);
