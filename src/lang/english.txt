@@ -3012,7 +3012,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon re
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Replacing: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL FEATURE {}Switch between engine and wagon replacement windows.{}Wagon replacement will only be done if the new wagon can be refitted into carrying the same type of cargo as the old one. This is checked for each wagon when the actual replacement takes place.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Engine is not buildable
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vehicle is not available
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vehicle is not available
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Ship is not available
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Aircraft is not available
 
 STR_ENGINES                                                     :Engines
 STR_WAGONS                                                      :Wagons

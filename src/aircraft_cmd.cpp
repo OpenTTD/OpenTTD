@@ -237,7 +237,7 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
  */
 int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
+	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_player)) return_cmd_error(STR_AIRCRAFT_NOT_AVAILABLE);
 
 	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
 	int32 value = EstimateAircraftCost(avi);

@@ -844,7 +844,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	UnitID unit_num;
 	Engine *e;
 
-	if (!IsEngineBuildable(p1, VEH_SHIP, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
+	if (!IsEngineBuildable(p1, VEH_SHIP, _current_player)) return_cmd_error(STR_SHIP_NOT_AVAILABLE);
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
