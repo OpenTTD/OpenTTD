@@ -3010,7 +3010,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjer
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Lat den automatiske utskiftinga behalde lengda på toget ved å fjerne vogner (frå første vogn), dersom utskiftinga gjer toget lenger.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Erstatter: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} Eksperimentell del {}Skift mellom tog- og vognvindauget.{} Utskiftinga av vogner skjer berre dersom den nye vogna kan ha same last som den nye.  Dette vert sjekka når skiftet skjer.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motoren kan ikkje byggjast
 
 STR_ENGINES                                                     :Motorar
 STR_WAGONS                                                      :Vogner

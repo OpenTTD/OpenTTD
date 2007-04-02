@@ -3012,7 +3012,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagnbort
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gör så att automatiskt utbytning behåller ett tågs längd genom att ta bort vagnar (med början längst fram) om utbytandet av loket skulle göra tåget längre.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersätter: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTIELL FEATURE {}Välj mellan lok och vagn ersättnings-fönster.{}Vagns-ersättning kommer endast ske om den nya vagnen kan bli omrustad till att bära samma typ av last som den gamla. Detta kollas för varje vagn när den faktiska ersättningen sker
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Loket går inte att bygga
 
 STR_ENGINES                                                     :Lok
 STR_WAGONS                                                      :Vagnar

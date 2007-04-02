@@ -3012,7 +3012,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaunun p
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvaus pitäköön junan vakiopituisena poistamalla vaunuja (edestä) jos veturi pidentäisi junaa.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Korvataan: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ERIKOIS OMINAISUUS {} Vaihda toiseen korvausikkunaan. {} Vaunu vaihdetaan ainoastaan jos uusi vaunu kuljettaa samaa rahtia. Tämä tarkistetaan, joka kerta kun vaunu korvataan.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Veturi ei ole rakennettavissa
 
 STR_ENGINES                                                     :Veturit
 STR_WAGONS                                                      :Vaunut

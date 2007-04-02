@@ -3112,7 +3112,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagunite
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Sunni automaatvahetus hoidma rongi pikkust samaks eemaldades vaguneid (alustades eestpoolt), kui vahetatav mootor muudaks rongi pikemaks.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vahetamisel: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} TESTIMISEL! {}Vaheta aken mootori ja vaguni vahetamise aknate vahel.{}Vaguni vahetus tehakse ainult siis kui uus vagun suudetakse muuta kandmaks sama tüüpi kaupa kui vana vagun. See valitakse igale vagunile kui tegelik vahetus käib
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Vedurit ei saa ehitada
 
 STR_ENGINES                                                     :Vedurid
 STR_WAGONS                                                      :Vaguneid

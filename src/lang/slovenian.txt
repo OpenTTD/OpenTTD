@@ -3092,7 +3092,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstrani
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Dovoli samozamenjavi, da z odstranitvijo vagonov, začenši na začetku, ohrani isto dolžino vlaka, če bi ga menjava lokomotive podaljšala.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamenjuje: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} POSKUSNA MOŽNOST {}Preklop med okni za menjavo lokomotiv in vagonov.{}Zamenjava vagonov je možna edino, če je lahko drugi tip vagona predelan za prevoz iste vrste tovora, kot prvi. To je preverjeno za vsak vagon, ko se izvrši zamenjava,
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotive ni moč zgraditi
 
 STR_ENGINES                                                     :Lokomotive
 STR_WAGONS                                                      :Vagoni

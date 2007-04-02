@@ -3015,7 +3015,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoçã
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Faz autosubstituição manter o tamanho do trem removendo vagões (começando pela frente), se ao substituir a locomotiva o trem ficar maior.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituindo: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL {}Troca entre substituir máquinas e substituir vagões.{} Só haverá a substituição se puder haver o reacondicionamento para carregar o mesmo tipo de carga. Essa checagem ocorre para cada vagão enquanto a substituição ocorre.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A locomotiva não pode ser construída
 
 STR_ENGINES                                                     :Motores
 STR_WAGONS                                                      :Vagões

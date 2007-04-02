@@ -3076,7 +3076,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstrane
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena rusna vlak predlzila.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymena: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTALNA VLASTNOST {}Prepne medzi oknami na vymenu lokomotiv a vagonov.{}Vagon sa vymeni, len ked je nový vagon schopny vozit rovnaky naklad, ako ten stary. Toto sa overuje pre kazdy vagon.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotiva sa nevyraba
 
 STR_ENGINES                                                     :Lokomotívy
 STR_WAGONS                                                      :Vagonov

@@ -3001,7 +3001,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrager
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fã optiunea de autoînlocuire sã pãstreze identicã lungimea unui tren prin eliminarea vagoanelor (începând din fatã), dacã înlocuirea motorului ar face trenul mai lung.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Înlocuire: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ELEMENT EXPERIMENTAL {}Comutã între ferestrele de ]nlocuire motoare si vagoane.{}Înlocuirea de vagoane va fi efectuatã numai dacã noul vagon poate transporta acelasi tip de încãrcãturã ca cel vechi. Aceast lucru este verificat pentru fiecare vagon atunci când este fãcutã înlocuirea efectivã.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motorul nu poate fi construit
 
 STR_ENGINES                                                     :Motoare
 STR_WAGONS                                                      :Vagoane

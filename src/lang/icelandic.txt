@@ -2989,7 +2989,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja le
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá) ef útskipting dráttarvagna myndi lengja hana.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Skipti út: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} TILRAUNAEIGINLEIKI {}Skipta á milli útskiptiglugga dráttar- og flutningavagna.{}Útskipting vagna fer aðeins fram ef hægt er að breyta nýju vögnunum til að flytja sama farm og þeir gömlu. Það er kannað fyrir hvern vagn þegar útskipting á honum fer fram.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ekki hægt að smíða dráttarvagn
 
 STR_ENGINES                                                     :Dráttarvagnar
 STR_WAGONS                                                      :Vagnar

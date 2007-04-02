@@ -3012,7 +3012,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure v
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la sustitució automàtica mantingui la llargària del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sustituint: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} CARACTERÍSTICA EXPERIMENTAL {}Alterna entre finestres de sustitució de vagons i de motors{}La sustitució del vagó només tindrà lloc si el nou vagó pot ser remodelat per admetre el mateix tipus de càrrega que el vell. Això es comprova per a cada vagó quan el reemplaçament es produeix.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}El motor no es pot construir
 
 STR_ENGINES                                                     :Motors
 STR_WAGONS                                                      :Vagons

@@ -3013,7 +3013,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimozion
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}La autosostituzione mantiene la lunghezza del treno togliendo vagoni (iniziando dalla testa), se la sostituzione della locomotiva lo farebbe piu lungo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sostituzione: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FEATURE SPERIMENTALE {}Scambia tra loro le finestre di sostituizione locomotive e vagoni. {}La sostituizione del vagone avverrà solo se il nuovo vagone può essere convertito nello stesso tipo di merce del  vecchio vagone. Questo controllo viene fatto per ogni vagone sostituito.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Non puoi costruire la locomotiva
 
 STR_ENGINES                                                     :Locomotive
 STR_WAGONS                                                      :Vagoni

@@ -3011,7 +3011,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}列車�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}自動交換によって列車の長さが長くなる場合は、列車の長さを保守するには客車／貨車を取り除くことができます。列車の先頭から開始します。
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}交換：{ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}実験的機能{}機関車／貨車のウィンドウに切り替えます。{}貨車交換は新貨車が旧貨車と同様の貨物種類に再装備できるときのみに行います。自動交換中に各貨車を検査します。
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}機関車が購入できません
 
 STR_ENGINES                                                     :機関車
 STR_WAGONS                                                      :貨車

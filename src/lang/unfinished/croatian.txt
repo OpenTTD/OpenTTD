@@ -2781,7 +2781,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Brisanje
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Neka automatska zamijena drži dužinu vlaka istom brišući vagone(počevši od naprijed), ako bi zamijena lokomotive vlak učinila dužim.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamjenjujem:{ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}EXPERIMENTALNA FUNKCIJA {} Prebaci između prozora za izmjenu lokomotiva i vagona.{}Izmjena vagona će se izvršiti samo ako novi vagon može biti prenamijenjen za prijevoz istog tipa tereta kao i stari vagon. Ovo se provjerava za svaki vagon kada se stvarna zamjena odvija.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotiva se nemože izgraditi
 
 STR_ENGINES                                                     :Lokomotive
 STR_WAGONS                                                      :Vagoni

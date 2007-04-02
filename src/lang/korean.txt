@@ -3013,7 +3013,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동교체시에 열차가 기존보다 길어지면 화물차를 제거함으로써 교체시 달라지는 열차의 길이를 같게 조정합니다 (앞쪽부터 시작됨)
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}교체중: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} 실험적 기능! {}기관차/화물차 교체 창을 번갈아 띄웁니다.{}화물차 교체는 예전 화물차가 싣던 화물을 실을 수 있도록 개조할 수 있는 새로운 화물차에만 성공할 것입니다. 실제 교체가 이루어질 때 각 화물차에 체크되었습니다.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}기관차를 생성할 수 없습니다!
 
 STR_ENGINES                                                     :기관차
 STR_WAGONS                                                      :화물차

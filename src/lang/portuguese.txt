@@ -3012,7 +3012,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remover 
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o comprimento do comboio, removendo vagões (do início), nas situações em que a substituição da locomotiva resultar num comboio maior.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Trocando: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FUNCIONALIDADE EXPERIMENTAL{}Alternar entre a janela de substituição de locomotivas e a janela de substituição de vagões.{}A substituição de vagões só ocorrerá se o novo vagão puder ser reconvertido para o mesmo tipo de carga que o vagão antigo. Esta verificação ocorre para cada vagão, durante a substituição.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva não construível
 
 STR_ENGINES                                                     :Locomotivas
 STR_WAGONS                                                      :Vagões

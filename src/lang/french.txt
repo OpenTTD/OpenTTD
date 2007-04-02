@@ -3013,7 +3013,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait 
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}L'autoremplacement conserve la même longueur du train en retirant des wagons (d'abord par la tête), si le remplacement fait en sorte que le train ne devienne plus long.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}En Remplacement: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FONCTION EXPERIMENTALE {}Passer à la fenêtre de remplacement de locomotives/wagons.{}Le remplacement de wagon ne se fera que si le nouveau wagon peut être réaménagé pour le même type de cargaison que l'ancien. Ceci est vérifié pour chaque wagon lors du remplacement.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ce véhicule ne peut pas être construit
 
 STR_ENGINES                                                     :Locomotives
 STR_WAGONS                                                      :Wagons

@@ -3012,7 +3012,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons v
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aan het vervangen: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTEEL {}Wissel tussen motor- en wagonvervangvensters.{}Wagonvervanging wordt alleen uitgevoerd als de nieuwe wagon omgebouwd kan worden om hetzelfde ladingtype te dragen als de oude wagon. Dit wordt gecontroleerd voor elke wagon wanneer de daadwerkelijke vervanging plaats vindt.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotief kan niet gebouwd worden
 
 STR_ENGINES                                                     :Motoren
 STR_WAGONS                                                      :Wagons

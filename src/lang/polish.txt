@@ -3141,7 +3141,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usunięc
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje długość pociągu poprzez usuwanie wagonów (począwszy od początku), jeśli wymiana lokomotywy spowoduje wydłużenie pociągu.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zastępowanie: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERYMENTALNE NARZEDZIE {}Przejdź pomiędzy oknami zamiany lokomotyw i wagonów.{}Wymiana wagonu nastąpi tylko jeśli nowy wagon może być przebudowany do przewożenia tego samego towaru co poprzedni. Każdy wagon pociągu jest sprawdzany podczas procesu zamiany.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotywa nie może być zbudowana
 
 STR_ENGINES                                                     :Lokomotywy
 STR_WAGONS                                                      :Wagony

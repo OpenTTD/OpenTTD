@@ -3010,7 +3010,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-E
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zwinge das automatische Ersetzen die Länge eines Zuges beizubehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersetze: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTELLE FUNKTION {}Umschalter für Lok- oder Waggonersetzung{}Waggons werden nur ersetzt, wenn der neue Waggon den selben Warentyp transportieren kann wie der alte. Dies wird beim Ersetzen eines jeden Waggons einzeln geprüft.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotive ist nicht baubar
 
 STR_ENGINES                                                     :Loks
 STR_WAGONS                                                      :Waggons

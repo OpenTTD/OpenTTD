@@ -3175,7 +3175,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Прод
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони зберігаючи довжину потягу(починаючи спереду), якщо оновлення робить поїзд довшим.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ЕКСПЕРИМЕНТАЛЬНО {}Переключення між вікнами заміни потягів та вагонів.{}Автозаміна потягів відбудеться лише в тому випадку, якщо співпаде тип вантажу що перевозиться. Ця перевірка проводиться для кожного вагону під час автозаміни.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}потяг неможливо побудувати
 
 STR_ENGINES                                                     :Потяги
 STR_WAGONS                                                      :Вагони

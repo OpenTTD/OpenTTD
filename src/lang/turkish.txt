@@ -3011,7 +3011,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon ka
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artması gerekiyorsa vagonları kaldır(en önden başlayarak yeterli sayıda vagon silinir).
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Değiştiriyor: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} DENEYSEL ÖZELLiK {}Lokomotif ve vagon değişimi pencereleri arasında geçiş yap.{}Vagon değişimi sadece yeni vagon eskisinin taşıdığı türde yükü taşıyabiliyorsa yapılir. Değiştirme işlemi sırasında tüm vagonlar için bu durum kontrol edilir.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotif alınamaz
 
 STR_ENGINES                                                     :Lokomotifler
 STR_WAGONS                                                      :Vagon

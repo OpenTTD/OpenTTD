@@ -3115,7 +3115,6 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon t�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása kocsik lekapcsolásával (előröl kezdve), ha a csere után a mozdony hosszabb lenne.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Lecserél: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} KISÉRLETI TULAJDONSÁG {}Váltás a mozdony és a vasúti-kocsi cserélő ablak között.{}A vagonok cseréje csak akkor történik meg, ha az új vagon átalakítható ugyanolyan típusú teher szállítására. Ez minden vagoncserénél ellenőrződik.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A mozdony így nem építhető meg
 
 STR_ENGINES                                                     :Mozdonyok
 STR_WAGONS                                                      :Vagonok
