@@ -3148,3 +3148,5 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Geldoverdracht: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...deze weg is van een stad
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...weg is in de verkeerde richting

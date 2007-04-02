@@ -280,6 +280,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...eies av {STRING}
 STR_013C_CARGO                                                  :{BLACK}Last
@@ -590,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomms
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankommst av første kjøretøy på motstanders stasjon
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ulykker/katastrofer
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmainformasjon
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Åpninger / Stengninger av industrier
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiske endringer
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Råd/informasjon om spillers kjøretøy
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye kjøretøy
@@ -725,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plasser 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plasser fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plasser radiosender
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Trykk og hold inne CTRL for å fjerne den
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Slett
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett denne byen fullstendig
 STR_0292_SAVE_SCENARIO                                          :Lagre scenario
@@ -1087,6 +1090,11 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eget firma
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle firmaer
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Foretrekk lagchat med <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Rullehjulets funksjon: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom kartet
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Rull kartet
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Av
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rullehjulets hastighet på kartet: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antall tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antall kjøretøy per spiller: {ORANGE}{STRING}
@@ -1205,6 +1213,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Trær av
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plasser trær av tilfeldig type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan ikke bygge kanaler her...
+STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan ikke bygge sluser her...
@@ -2631,6 +2640,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Inkompatible je
 STR_TRAIN_NO_POWER                                              :{RED}Ingen strøm
 STR_TRAIN_START_NO_CATENARY                                     :Dette sporet mangler et kjede, så toget kan ikke starte
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Ny {STRING} nå tilgjengelig!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ny {STRING} Nå tilgjengelig!  -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kjøretøy i veien
@@ -2902,6 +2914,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} er des
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} må være lastet før {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} må være lastet etter {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen den var laget for å oversette
 
 STR_NEWGRF_ADD                                                  :{BLACK}Legg til
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Legg en ny NewGRF-fil til listen
@@ -3134,3 +3147,4 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Overfør kreditt: {LTBLUE}{CURRENCY}

@@ -989,7 +989,7 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Trajno {COMMA} havas maltro da ordenoj enplane
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Trajno {COMMA} havas malplenan ordenon
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trajno {COMMA} havas duoblajn ordenojn
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trajnno {COMMA} havas nevalidan stacion en la ordenoj
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trajno {COMMA} havas nevalidan stacion en la ordenoj
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Vojveturilo {COMMA} havas maltro da ordenoj enplane
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Vojveturilo {COMMA} havas malplenan ordenon
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Vojveturilo {COMMA} havas duoblajn ordenojn
@@ -3149,3 +3149,5 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transigaj Kreditoj: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ĉi tiun vojon posedas la urbo
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...vojo direktiĝas malĝuste

@@ -3076,6 +3076,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebír�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylepšování vlaků může udržovat stejnou délku vlaku odstraňovaním vagonů (od začátku vlaku), pokud by změna mašiny vlak prodloužila.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vyměňování: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTÁLNÍ VLASTNOST {}Přepne mezi okny na výměnu lokomotiv a vagonů.{}Vagon se vymění, jen když je nový vagon schopen vozit stejnou komoditu, jako ten starý. Toto se ověřuje pro každý vagon.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vozidlo není dostupné
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vůz není dostupné
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Loď není dostupná
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Letadlo není dostupné
 
 STR_ENGINES                                                     :lokomotivy
 STR_WAGONS                                                      :vagony
@@ -3212,3 +3216,5 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Podíl za převoz: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}... tato silnice je ve vlastnictví obce
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}... silnice je otočena jiným směrem

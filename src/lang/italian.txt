@@ -3149,3 +3149,5 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Crediti Trasferiti: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...questa è una strada di proprietà della città
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...strada rivolta nella direzione sbagliata

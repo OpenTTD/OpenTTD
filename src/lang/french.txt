@@ -3013,6 +3013,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait 
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}L'autoremplacement conserve la même longueur du train en retirant des wagons (d'abord par la tête), si le remplacement fait en sorte que le train ne devienne plus long.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}En Remplacement: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FONCTION EXPERIMENTALE {}Passer à la fenêtre de remplacement de locomotives/wagons.{}Le remplacement de wagon ne se fera que si le nouveau wagon peut être réaménagé pour le même type de cargaison que l'ancien. Ceci est vérifié pour chaque wagon lors du remplacement.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Véhicule non disponible
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Véhicule non disponible
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Navire non disponible
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Aéronef non disponible
 
 STR_ENGINES                                                     :Locomotives
 STR_WAGONS                                                      :Wagons
@@ -3149,3 +3153,5 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Crédits de transfert: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...cette route appartient à une ville
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...mauvaise orientation de la route

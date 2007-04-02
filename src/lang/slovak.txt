@@ -3076,6 +3076,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstrane
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena rusna vlak predlzila.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymena: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTALNA VLASTNOST {}Prepne medzi oknami na vymenu lokomotiv a vagonov.{}Vagon sa vymeni, len ked je nový vagon schopny vozit rovnaky naklad, ako ten stary. Toto sa overuje pre kazdy vagon.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vozidlo nie je dostupné
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vozidlo nie je dostupné
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Lod nie je dostupná
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Lietadlo nie je dostupné
 
 STR_ENGINES                                                     :Lokomotívy
 STR_WAGONS                                                      :Vagonov
@@ -3212,3 +3216,5 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer kredity: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}... cesta vlastnená mestom
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}... nesprávna orientácia cesty

@@ -3115,6 +3115,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon t�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása kocsik lekapcsolásával (előröl kezdve), ha a csere után a mozdony hosszabb lenne.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Lecserél: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} KISÉRLETI TULAJDONSÁG {}Váltás a mozdony és a vasúti-kocsi cserélő ablak között.{}A vagonok cseréje csak akkor történik meg, ha az új vagon átalakítható ugyanolyan típusú teher szállítására. Ez minden vagoncserénél ellenőrződik.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}A jármű nem elérhető.
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}A jármű nem elérhető.
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}A hajó nem elérhető.
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}A repülő nem elérhető.
 
 STR_ENGINES                                                     :Mozdonyok
 STR_WAGONS                                                      :Vagonok
@@ -3250,3 +3254,6 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Szállítási díj: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ez egy városi tulajdonú út
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...az út másik irányba vezet

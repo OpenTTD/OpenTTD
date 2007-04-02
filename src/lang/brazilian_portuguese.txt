@@ -729,6 +729,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar farol
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmissor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desértica.{} Pressione e segure CTRL para removê-la
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Remover
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Remover esta cidade completamente
 STR_0292_SAVE_SCENARIO                                          :Salvar cenário
@@ -3151,3 +3152,5 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transferir Dinheiro: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...é uma rua local
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...rua na direção errada
