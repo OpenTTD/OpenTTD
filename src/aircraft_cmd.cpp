@@ -174,8 +174,8 @@ void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal)
 
 /** Get the size of the sprite of an aircraft sprite heading west (used for lists)
  * @param engine The engine to get the sprite from
- * @param &width The width of the sprite
- * @param &height The height of the sprite
+ * @param width The width of the sprite
+ * @param height The height of the sprite
  */
 void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 {
@@ -207,7 +207,7 @@ static int32 EstimateAircraftCost(const AircraftVehicleInfo *avi)
  * Calculates cargo capacity based on an aircraft's passenger
  * and mail capacities.
  * @param cid Which cargo type to calculate a capacity for.
- * @param engine Which engine to find a cargo capacity for.
+ * @param avi Which engine to find a cargo capacity for.
  * @return New cargo capacity value.
  */
 uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
@@ -1913,9 +1913,9 @@ static bool AirportHasBlock(Vehicle *v, const AirportFTA *current_pos, const Air
 }
 
 /**
- * ...
+ * "reserve" a block for the plane
  * @param v airplane that requires the operation
- * @param currentpos of the vehicle in the list of blocks
+ * @param current_pos of the vehicle in the list of blocks
  * @param apc airport on which block is requsted to be set
  * @returns true on success. Eg, next block was free and we have occupied it
  */

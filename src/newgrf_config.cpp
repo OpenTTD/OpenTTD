@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgfr_config.cpp */
+/** @file newgrf_config.cpp */
 
 #include "stdafx.h"
 #include "openttd.h"
