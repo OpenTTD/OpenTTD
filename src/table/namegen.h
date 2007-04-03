@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file table/namegen.h Namepart tables for the town name generator */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 

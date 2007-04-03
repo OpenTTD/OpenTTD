@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file roadveh.h */
+/** @file src/roadveh.h Road vehicle states */
 
 #ifndef ROADVEH_H
 #define ROADVEH_H
