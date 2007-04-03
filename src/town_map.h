@@ -127,7 +127,7 @@ static inline byte GetLiftPosition(TileIndex t)
 /**
  * Set the position of the lift on this animated house
  * @param t the tile
- * @param pos, from 0 to 36
+ * @param pos from 0 to 36
  */
 static inline void SetLiftPosition(TileIndex t, byte pos)
 {
@@ -315,7 +315,8 @@ static inline byte GetHouseRandomBits(TileIndex t)
 /**
  * Set the activated triggers bits for this house.
  * This is required for newgrf house
- * @param t the tile of this house
+ * @param t        the tile of this house
+ * @param triggers the activated triggers
  * @pre IsTileType(t, MP_HOUSE)
  */
 static inline void SetHouseTriggers(TileIndex t, byte triggers)

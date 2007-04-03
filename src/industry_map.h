@@ -51,17 +51,35 @@ enum {
 	NUM_INDUSTRY_GFXES                 = 175,
 };
 
+/**
+ * Get the industry ID of the given tile
+ * @param t the tile to get the industry ID from
+ * @pre IsTileType(t, MP_INDUSTRY)
+ * @return the industry ID
+ */
 static inline IndustryID GetIndustryIndex(TileIndex t)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
 	return _m[t].m2;
 }
 
+/**
+ * Get the industry of the given tile
+ * @param t the tile to get the industry from
+ * @pre IsTileType(t, MP_INDUSTRY)
+ * @return the industry
+ */
 static inline Industry* GetIndustryByTile(TileIndex t)
 {
 	return GetIndustry(GetIndustryIndex(t));
 }
 
+/**
+ * Is this industry tile fully built?
+ * @param t the tile to analyze
+ * @pre IsTileType(t, MP_INDUSTRY)
+ * @return true if and only if the industry tile is fully built
+ */
 static inline bool IsIndustryCompleted(TileIndex t)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
@@ -106,18 +124,36 @@ static inline void SetIndustryConstructionStage(TileIndex tile, byte value)
 	SB(_m[tile].m1, 0, 2, value);
 }
 
+/**
+ * Get the industry graphics ID for the given industry tile
+ * @param t the tile to get the gfx for
+ * @pre IsTileType(t, MP_INDUSTRY)
+ * @return the gfx ID
+ */
 static inline IndustryGfx GetIndustryGfx(TileIndex t)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
 	return _m[t].m5;
 }
 
+/**
+ * Set the industry graphics ID for the given industry tile
+ * @param t   the tile to set the gfx for
+ * @pre IsTileType(t, MP_INDUSTRY)
+ * @param gfx the graphics ID
+ */
 static inline void SetIndustryGfx(TileIndex t, IndustryGfx gfx)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
 	_m[t].m5 = gfx;
 }
 
+/**
+ * Make the given tile an industry tile
+ * @param t     the tile to make an industry tile
+ * @param index the industry this tile belongs to
+ * @param gfx   the graphics to use for the tile
+ */
 static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx)
 {
 	SetTileType(t, MP_INDUSTRY);
@@ -157,7 +193,6 @@ static inline void SetIndustryConstructionCounter(TileIndex tile, byte value)
  * as well as the completion bit.
  * In fact, it is the same as restarting construction frmo ground up
  * @param tile the tile to query
- * @param generating_world whether generating a world or not
  * @pre IsTileType(tile, MP_INDUSTRY)
  */
 static inline void ResetIndustryConstructionStage(TileIndex tile)
@@ -166,12 +201,14 @@ static inline void ResetIndustryConstructionStage(TileIndex tile)
 	_m[tile].m1 = 0;
 }
 
+/** Structure used to make a mapping from industry gfx to industry type */
 struct IndustryTypeSolver {
-	IndustryGfx MinGfx;
-	IndustryGfx MaxGfx;
+	IndustryGfx MinGfx; ///< The first gfx index for the industry type
+	IndustryGfx MaxGfx; ///< The last gfx index for the industry type
 };
 
-static const IndustryTypeSolver industry_gfx_Solver [IT_END] = {
+/** Mapping of industry gfx to industry type */
+static const IndustryTypeSolver industry_gfx_Solver[IT_END] = {
 	{  0,   6}, ///< IT_COAL_MINE
 	{  7,  10}, ///< IT_POWER_STATION,
 	{ 11,  15}, ///< IT_SAWMILL,
@@ -247,7 +284,7 @@ static inline byte GetIndustryAnimationState(TileIndex tile)
 /**
  * Set the animation state
  * @param tile the tile to set the animation state of
- * @param count the new animation state
+ * @param state the new animation state
  * @pre IsTileType(tile, MP_INDUSTRY)
  */
 static inline void SetIndustryAnimationState(TileIndex tile, byte state)

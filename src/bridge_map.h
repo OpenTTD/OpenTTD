@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file bridge_map.h */
+/** @file bridge_map.h Map accessor functions for bridges. */
 
 #ifndef BRIDGE_MAP_H
 #define BRIDGE_MAP_H
@@ -55,6 +55,7 @@ static inline bool MayHaveBridgeAbove(TileIndex t)
 /**
  * checks if a bridge is set above the ground of this tile
  * @param t The tile to analyze
+ * @pre MayHaveBridgeAbove(t)
  * @return true if a bridge is detected above
  */
 static inline bool IsBridgeAbove(TileIndex t)
@@ -67,6 +68,7 @@ static inline bool IsBridgeAbove(TileIndex t)
 /**
  * Determines the type of bridge on a tile
  * @param t The tile to analyze
+ * @pre IsBridgeTile(t)
  * @return The bridge type
  */
 static inline uint GetBridgeType(TileIndex t)
@@ -79,6 +81,7 @@ static inline uint GetBridgeType(TileIndex t)
 /**
  * Get the direction pointing onto the bridge
  * @param t The tile to analyze
+ * @pre IsBridgeTile(t)
  * @return the above mentionned direction
  */
 static inline DiagDirection GetBridgeRampDirection(TileIndex t)
@@ -88,6 +91,12 @@ static inline DiagDirection GetBridgeRampDirection(TileIndex t)
 }
 
 
+/**
+ * Get the axis of the bridge that goes over the tile. Not the axis or the ramp.
+ * @param t The tile to analyze
+ * @pre IsBridgeAbove(t)
+ * @return the above mentioned axis
+ */
 static inline Axis GetBridgeAxis(TileIndex t)
 {
 	assert(IsBridgeAbove(t));
@@ -95,6 +104,12 @@ static inline Axis GetBridgeAxis(TileIndex t)
 }
 
 
+/**
+ * Get the transport type of the bridge's ramp.
+ * @param t The ramp tile to analyze
+ * @pre IsBridgeTile(t)
+ * @return the transport type of the bridge
+ */
 static inline TransportType GetBridgeTransportType(TileIndex t)
 {
 	assert(IsBridgeTile(t));
@@ -102,6 +117,12 @@ static inline TransportType GetBridgeTransportType(TileIndex t)
 }
 
 
+/**
+ * Does the bridge ramp lie in a snow or desert area?
+ * @param t The ramp tile to analyze
+ * @pre IsBridgeTile(t)
+ * @return true if and only if in a snow or desert area
+ */
 static inline bool HasBridgeSnowOrDesert(TileIndex t)
 {
 	assert(IsBridgeTile(t));
@@ -109,6 +130,12 @@ static inline bool HasBridgeSnowOrDesert(TileIndex t)
 }
 
 
+/**
+ * Sets whether the bridge ramp lies in a snow or desert area.
+ * @param t              The ramp tile to set (un)make a snow/desert area
+ * @param snow_or_desert Make (true) or unmake the tile a snow/desert area
+ * @pre IsBridgeTile(t)
+ */
 static inline void SetBridgeSnowOrDesert(TileIndex t, bool snow_or_desert)
 {
 	assert(IsBridgeTile(t));
@@ -117,28 +144,43 @@ static inline void SetBridgeSnowOrDesert(TileIndex t, bool snow_or_desert)
 
 /**
  * Finds the end of a bridge in the specified direction starting at a middle tile
+ * @param t the bridge tile to find the bridge ramp for
+ * @param d the direction to search in
  */
-TileIndex GetBridgeEnd(TileIndex, DiagDirection);
+TileIndex GetBridgeEnd(TileIndex t, DiagDirection d);
 
 /**
  * Finds the northern end of a bridge starting at a middle tile
+ * @param t the bridge tile to find the bridge ramp for
  */
 TileIndex GetNorthernBridgeEnd(TileIndex t);
 
 /**
  * Finds the southern end of a bridge starting at a middle tile
+ * @param t the bridge tile to find the bridge ramp for
  */
 TileIndex GetSouthernBridgeEnd(TileIndex t);
 
 
 /**
  * Starting at one bridge end finds the other bridge end
+ * @param t the bridge ramp tile to find the other bridge ramp for
  */
-TileIndex GetOtherBridgeEnd(TileIndex);
+TileIndex GetOtherBridgeEnd(TileIndex t);
 
+/**
+ * Get the height ('z') of a bridge in pixels.
+ * @param tile the bridge ramp tile to get the bridge height from
+ * @return the height of the bridge in pixels
+ */
 uint GetBridgeHeight(TileIndex tile);
-uint GetBridgeFoundation(Slope tileh, Axis axis);
 
+/**
+ * Remove the bridge over the given axis.
+ * @param t the tile to remove the bridge from
+ * @param a the axis of the bridge to remove
+ * @pre MayHaveBridgeAbove(t)
+ */
 static inline void ClearSingleBridgeMiddle(TileIndex t, Axis a)
 {
 	assert(MayHaveBridgeAbove(t));
@@ -146,12 +188,23 @@ static inline void ClearSingleBridgeMiddle(TileIndex t, Axis a)
 }
 
 
+/**
+ * Removes bridges from the given, that is bridges along the X and Y axis.
+ * @param t the tile to remove the bridge from
+ * @pre MayHaveBridgeAbove(t)
+ */
 static inline void ClearBridgeMiddle(TileIndex t)
 {
 	ClearSingleBridgeMiddle(t, AXIS_X);
 	ClearSingleBridgeMiddle(t, AXIS_Y);
 }
 
+/**
+ * Set that there is a bridge over the given axis.
+ * @param t the tile to add the bridge to
+ * @param a the axis of the bridge to add
+ * @pre MayHaveBridgeAbove(t)
+ */
 static inline void SetBridgeMiddle(TileIndex t, Axis a)
 {
 	assert(MayHaveBridgeAbove(t));
@@ -159,6 +212,15 @@ static inline void SetBridgeMiddle(TileIndex t, Axis a)
 }
 
 
+/**
+ * Generic part to make a bridge ramp for both roads and rails.
+ * @param t          the tile to make a bridge ramp
+ * @param o          the new owner of the bridge ramp
+ * @param bridgetype the type of bridge this bridge ramp belongs to
+ * @param d          the direction this ramp must be facing
+ * @param tt         the transport type of the bridge
+ * @note this function should not be called directly.
+ */
 static inline void MakeBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d, TransportType tt)
 {
 	SetTileType(t, MP_TUNNELBRIDGE);
@@ -168,12 +230,27 @@ static inline void MakeBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDir
 	_m[t].m5 = 1 << 7 | tt << 2 | d;
 }
 
+/**
+ * Make a bridge ramp for roads.
+ * @param t          the tile to make a bridge ramp
+ * @param o          the new owner of the bridge ramp
+ * @param bridgetype the type of bridge this bridge ramp belongs to
+ * @param d          the direction this ramp must be facing
+ */
 static inline void MakeRoadBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d)
 {
 	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_ROAD);
 	_m[t].m3 = 0;
 }
 
+/**
+ * Make a bridge ramp for rails.
+ * @param t          the tile to make a bridge ramp
+ * @param o          the new owner of the bridge ramp
+ * @param bridgetype the type of bridge this bridge ramp belongs to
+ * @param d          the direction this ramp must be facing
+ * @param r          the rail type of the bridge
+ */
 static inline void MakeRailBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d, RailType r)
 {
 	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_RAIL);

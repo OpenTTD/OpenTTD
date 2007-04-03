@@ -173,10 +173,19 @@ static inline DiagDirection GetRoadDepotDirection(TileIndex t)
  * - road tunnels: entrance is treated as road piece
  * - bridge ramps: start of the ramp is treated as road piece
  * - bridge middle parts: bridge itself is ignored
+ * @param tile the tile to get the road bits for
+ * @return the road bits of the given tile
  */
-RoadBits GetAnyRoadBits(TileIndex);
+RoadBits GetAnyRoadBits(TileIndex tile);
 
-
+/**
+ * Get the accessible track bits for the given tile.
+ * Special behaviour:
+ *  - road depots: no track bits
+ *  - non-drive-through stations: no track bits
+ * @param tile the tile to get the track bits for
+ * @return the track bits for the given tile
+ */
 TrackBits GetAnyRoadTrackBits(TileIndex tile);
 
 

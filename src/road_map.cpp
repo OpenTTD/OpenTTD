@@ -47,7 +47,7 @@ TrackBits GetAnyRoadTrackBits(TileIndex tile)
 {
 	uint32 r;
 
-	// Don't allow local authorities to build roads through road depots or road stops.
+	/* Don't allow local authorities to build roads through road depots or road stops. */
 	if ((IsTileType(tile, MP_STREET) && IsTileDepotType(tile, TRANSPORT_ROAD)) || (IsTileType(tile, MP_STATION) && !IsDriveThroughStopTile(tile))) {
 		return TRACK_BIT_NONE;
 	}

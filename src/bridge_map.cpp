@@ -1,10 +1,11 @@
 /* $Id$ */
 
-/** @file bridge_map.cpp */
+/** @file bridge_map.cpp Map accessor functions for bridges. */
 
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
+#include "bridge.h"
 #include "variables.h"
 
 
