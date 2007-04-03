@@ -13,18 +13,34 @@
 #include "tile.h"
 
 
+/**
+ * Checks if this is a bridge, instead of a tunnel
+ * @param t The tile to analyze
+ * @pre IsTileType(t, MP_TUNNELBRIDGE)
+ * @return true if the structure is a bridge one
+ */
 static inline bool IsBridge(TileIndex t)
 {
 	assert(IsTileType(t, MP_TUNNELBRIDGE));
 	return HASBIT(_m[t].m5, 7);
 }
 
+/**
+ * checks if there is a bridge on this tile
+ * @param t The tile to analyze
+ * @return true if a bridge is present
+ */
 static inline bool IsBridgeTile(TileIndex t)
 {
 	return IsTileType(t, MP_TUNNELBRIDGE) && IsBridge(t);
 }
 
-
+/**
+ * checks for the possibility that a bridge may be on this tile
+ * These are in fact all the tile types on which a bridge can be found
+ * @param t The tile to analyze
+ * @return true if a bridge migh be present
+ */
 static inline bool MayHaveBridgeAbove(TileIndex t)
 {
 	return
@@ -36,7 +52,11 @@ static inline bool MayHaveBridgeAbove(TileIndex t)
 		IsTileType(t, MP_UNMOVABLE);
 }
 
-
+/**
+ * checks if a bridge is set above the ground of this tile
+ * @param t The tile to analyze
+ * @return true if a bridge is detected above
+ */
 static inline bool IsBridgeAbove(TileIndex t)
 {
 	assert(MayHaveBridgeAbove(t));
@@ -46,7 +66,7 @@ static inline bool IsBridgeAbove(TileIndex t)
 
 /**
  * Determines the type of bridge on a tile
- * @param tile The tile to analyze
+ * @param t The tile to analyze
  * @return The bridge type
  */
 static inline uint GetBridgeType(TileIndex t)
@@ -58,7 +78,7 @@ static inline uint GetBridgeType(TileIndex t)
 
 /**
  * Get the direction pointing onto the bridge
- * @param tile The tile to analyze
+ * @param t The tile to analyze
  * @return the above mentionned direction
  */
 static inline DiagDirection GetBridgeRampDirection(TileIndex t)

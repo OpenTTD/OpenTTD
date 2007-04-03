@@ -428,7 +428,7 @@ void CDECL IConsolePrintF(uint16 color_code, const char *s, ...)
 /**
  * It is possible to print debugging information to the console,
  * which is achieved by using this function. Can only be used by
- * @debug() in debug.c. You need at least a level 2 (developer) for debugging
+ * debug() in debug.cpp. You need at least a level 2 (developer) for debugging
  * messages to show up
  * @param dbg debugging category
  * @param string debugging message
@@ -489,7 +489,7 @@ bool GetArgumentInteger(uint32 *value, const char *arg)
 
 /**
  * General internal hooking code that is the same for both commands and variables
- * @param hooks @IConsoleHooks structure that will be set according to
+ * @param hooks IConsoleHooks structure that will be set according to
  * @param type type access trigger
  * @param proc function called when the hook criteria is met
  */
@@ -514,7 +514,7 @@ static void IConsoleHookAdd(IConsoleHooks *hooks, IConsoleHookTypes type, IConso
 /**
  * Handle any special hook triggers. If the hook type is met check if
  * there is a function associated with that and if so, execute it
- * @param hooks @IConsoleHooks structure that will be checked
+ * @param hooks IConsoleHooks structure that will be checked
  * @param type type of hook, trigger that needs to be activated
  * @return true on a successfull execution of the hook command or if there
  * is no hook/trigger present at all. False otherwise
@@ -767,8 +767,11 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 /**
  * Special function for adding string-type variables. They in addition
  * also need a 'size' value saying how long their string buffer is.
+ * @param name name of the variable that will be used
+ * @param addr memory location the variable will point to
  * @param size the length of the string buffer
- * For more information see @IConsoleVarRegister()
+ * @param help the help string shown for the variable
+ * For more information see IConsoleVarRegister()
  */
 void IConsoleVarStringRegister(const char *name, void *addr, uint32 size, const char *help)
 {
