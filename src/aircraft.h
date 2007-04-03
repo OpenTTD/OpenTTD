@@ -8,7 +8,7 @@
 #include "station_map.h"
 #include "vehicle.h"
 
-/* An aircraft can be one ot those types */
+/** An aircraft can be one ot those types */
 enum AircraftSubType {
 	AIR_HELICOPTER = 0, ///< an helicopter
 	AIR_AIRCRAFT   = 2, ///< an airplane
@@ -73,7 +73,22 @@ static inline bool IsAircraftBuildableAtStation(EngineID engine, TileIndex tile)
  */
 uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi);
 
+/**
+ * This is the Callback method after the construction attempt of an aircraft
+ * @param success indicates completion (or not) of the operation
+ * @param tile of depot where aircraft is built
+ * @param p1 unused
+ * @param p2 unused
+ */
 void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);
+
+/**
+ * This is the Callback method after the cloning attempt of an aircraft
+ * @param success indicates completion (or not) of the operation
+ * @param tile unused
+ * @param p1 unused
+ * @param p2 unused
+ */
 void CcCloneAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
 /** Handle Aircraft specific tasks when a an Aircraft enters a hangar
@@ -88,6 +103,10 @@ void HandleAircraftEnterHangar(Vehicle *v);
  */
 void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height);
 
+/**
+ * Updates the status of the Aircraft heading or in the station
+ * @param st Station been updated
+ */
 void UpdateAirplanesOnNewStation(const Station *st);
 
 #endif /* AIRCRAFT_H */

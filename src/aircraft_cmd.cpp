@@ -2162,6 +2162,10 @@ void UpdateOldAircraft()
 	}
 }
 
+/**
+ * Updates the status of the Aircraft heading or in the station
+ * @param st Station been updated
+ */
 void UpdateAirplanesOnNewStation(const Station *st)
 {
 	/* only 1 station is updated per function call, so it is enough to get entry_point once */
@@ -2172,7 +2176,7 @@ void UpdateAirplanesOnNewStation(const Station *st)
 		if (v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) {
 			if (v->u.air.targetairport == st->index) { // if heading to this airport
 				/* update position of airplane. If plane is not flying, landing, or taking off
-				 *you cannot delete airport, so it doesn't matter */
+				 * you cannot delete airport, so it doesn't matter */
 				if (v->u.air.state >= FLYING) { // circle around
 					v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, ap);
 					v->u.air.state = FLYING;
