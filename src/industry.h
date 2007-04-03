@@ -99,6 +99,8 @@ struct IndustrySpec {
 	StringID closure_text;                ///< Message appearing when the industry closes
 	StringID production_up_text;          ///< Message appearing when the industry's production is increasing
 	StringID production_down_text;        ///< Message appearing when the industry's production is decreasing
+	byte appear_ingame[NUM_LANDSCAPE];    ///< Probability of appearance in game
+	byte appear_creation[NUM_LANDSCAPE];  ///< Probability of appearance during map creation
 };
 
 /**
