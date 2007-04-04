@@ -417,6 +417,9 @@
 				RelativePath=".\..\src\depot.h">
 			</File>
 			<File
+				RelativePath=".\..\src\direction.h">
+			</File>
+			<File
 				RelativePath=".\..\src\music\dmusic.h">
 			</File>
 			<File

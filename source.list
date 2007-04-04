@@ -106,6 +106,7 @@ date.h
 debug.h
 video/dedicated_v.h
 depot.h
+direction.h
 music/dmusic.h
 driver.h
 economy.h
