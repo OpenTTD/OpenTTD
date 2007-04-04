@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file tree_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
@@ -53,7 +55,7 @@ static void PlaceTree(TileIndex tile, uint32 r)
 	if (tree != TREE_INVALID) {
 		MakeTree(tile, tree, GB(r, 22, 2), min(GB(r, 16, 3), 6), TREE_GROUND_GRASS, 0);
 
-		// above snowline?
+		/* above snowline? */
 		if (_opt.landscape == LT_ARCTIC && GetTileZ(tile) > GetSnowLine()) {
 			SetTreeGroundDensity(tile, TREE_GROUND_SNOW_DESERT, 3);
 			SetTreeCounter(tile, (TreeGround)GB(r, 24, 3));
@@ -207,6 +209,7 @@ void GenerateTrees()
 
 /** Plant a tree.
  * @param tile start tile of area-drag of tree plantation
+ * @param flags type of operation
  * @param p1 tree type, -1 means random.
  * @param p2 end tile of area-drag
  */
@@ -240,7 +243,7 @@ int32 CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			switch (GetTileType(tile)) {
 				case MP_TREES:
-					// no more space for trees?
+					/* no more space for trees? */
 					if (_game_mode != GM_EDITOR && GetTreeCount(tile) == 3) {
 						msg = STR_2803_TREE_ALREADY_HERE;
 						continue;
@@ -250,7 +253,7 @@ int32 CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						AddTreeCount(tile, 1);
 						MarkTileDirtyByTile(tile);
 					}
-					// 2x as expensive to add more trees to an existing tile
+					/* 2x as expensive to add more trees to an existing tile */
 					cost += _price.build_trees * 2;
 					break;
 
@@ -622,7 +625,7 @@ void OnTick_Trees()
 		MakeTree(tile, tree, 0, 0, ct == CLEAR_ROUGH ? TREE_GROUND_ROUGH : TREE_GROUND_GRASS, 0);
 	}
 
-	// byte underflow
+	/* byte underflow */
 	if (--_trees_tick_ctr != 0) return;
 
 	/* place a tree at a random spot */

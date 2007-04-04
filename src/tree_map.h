@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file tree_map.h */
+
 #ifndef TREE_MAP_H
 #define TREE_MAP_H
 
@@ -26,9 +28,9 @@ enum {
 /* ground type, m2 bits 4...5
  * valid densities (bits 6...7) in comments after the enum */
 enum TreeGround {
-	TREE_GROUND_GRASS       = 0, // 0
-	TREE_GROUND_ROUGH       = 1, // 0
-	TREE_GROUND_SNOW_DESERT = 2  // 0-3 for snow, 3 for desert
+	TREE_GROUND_GRASS       = 0, ///< 0
+	TREE_GROUND_ROUGH       = 1, ///< 0
+	TREE_GROUND_SNOW_DESERT = 2  ///< 0-3 for snow, 3 for desert
 };
 
 

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file train.h */
+
 #ifndef TRAIN_H
 #define TRAIN_H
 
@@ -14,12 +16,12 @@
  */
 
 enum TrainSubtype {
-	Train_Front             = 0, // Leading engine of a train
-	Train_Articulated_Part  = 1, // Articulated part of an engine
-	Train_Wagon             = 2, // Wagon
-	Train_Engine            = 3, // Engine, that can be front engines, but might be placed behind another engine
-	Train_Free_Wagon        = 4, // First in a wagon chain (in depot)
-	Train_Multiheaded       = 5, // Engine is a multiheaded
+	Train_Front             = 0, ///< Leading engine of a train
+	Train_Articulated_Part  = 1, ///< Articulated part of an engine
+	Train_Wagon             = 2, ///< Wagon
+	Train_Engine            = 3, ///< Engine, that can be front engines, but might be placed behind another engine
+	Train_Free_Wagon        = 4, ///< First in a wagon chain (in depot)
+	Train_Multiheaded       = 5, ///< Engine is a multiheaded
 };
 
 

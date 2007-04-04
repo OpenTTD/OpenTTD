@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file thread.cpp */
+
 #include "stdafx.h"
 #include "thread.h"
 #include <stdlib.h>

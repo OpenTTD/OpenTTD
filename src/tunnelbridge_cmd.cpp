@@ -61,8 +61,9 @@ const Bridge orig_bridge[] = {
 Bridge _bridge[MAX_BRIDGES];
 
 
-// calculate the price factor for building a long bridge.
-// basically the cost delta is 1,1, 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5, 6,6,6,6,6,6,  7,7,7,7,7,7,7,  8,8,8,8,8,8,8,8,
+/** calculate the price factor for building a long bridge.
+ * basically the cost delta is 1,1, 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5, 6,6,6,6,6,6,  7,7,7,7,7,7,7,  8,8,8,8,8,8,8,8,
+ */
 int CalcBridgeLenCostFactor(int x)
 {
 	int n;
@@ -79,11 +80,11 @@ int CalcBridgeLenCostFactor(int x)
 
 #define M(x) (1 << (x))
 enum BridgeFoundation {
-	// foundation, whole tile is leveled up --> 3 corners raised
+	/* foundation, whole tile is leveled up --> 3 corners raised */
 	BRIDGE_FULL_LEVELED_FOUNDATION = M(SLOPE_WSE) | M(SLOPE_NWS) | M(SLOPE_ENW) | M(SLOPE_SEN),
-	// foundation, tile is partly leveled up --> 1 corner raised
+	/* foundation, tile is partly leveled up --> 1 corner raised */
 	BRIDGE_PARTLY_LEVELED_FOUNDATION = M(SLOPE_W) | M(SLOPE_S) | M(SLOPE_E) | M(SLOPE_N),
-	// no foundations (X,Y direction)
+	/* no foundations (X,Y direction) */
 	BRIDGE_NO_FOUNDATION = M(SLOPE_FLAT) | M(SLOPE_SW) | M(SLOPE_SE) | M(SLOPE_NW) | M(SLOPE_NE),
 	BRIDGE_HORZ_RAMP = (BRIDGE_PARTLY_LEVELED_FOUNDATION | BRIDGE_NO_FOUNDATION) & ~M(SLOPE_FLAT)
 };
@@ -167,6 +168,7 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
 
 /** Build a Bridge
  * @param end_tile end tile
+ * @param flags type of operation
  * @param p1 packed start tile coords (~ dx)
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0- 7) - bridge type (hi bh)
@@ -202,7 +204,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
-	// type of bridge
+	/* type of bridge */
 	if (HASBIT(p2, 15)) {
 		railtype = INVALID_RAILTYPE; // road bridge
 	} else {
@@ -255,7 +257,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (z_start != z_end) return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
 
-	// Towns are not allowed to use bridges on slopes.
+	/* Towns are not allowed to use bridges on slopes. */
 	allow_on_slopes = (!_is_old_ai_player
 	                   && _current_player != OWNER_TOWN && _patches.build_on_slopes);
 
@@ -315,7 +317,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 		if (CmdFailed(ret)) return ret;
 		cost += ret;
 
-		// false - end tile slope check
+		/* false - end tile slope check */
 		terraformcost = CheckBridgeSlopeSouth(direction, tileh_end);
 		if (CmdFailed(terraformcost) || (terraformcost != 0 && !allow_on_slopes))
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
@@ -439,6 +441,7 @@ not_valid_below:;
 
 /** Build Tunnel.
  * @param tile start tile of tunnel
+ * @param flags type of operation
  * @param p1 railtype, 0x200 for road tunnel
  * @param p2 unused
  */
@@ -496,10 +499,10 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Add the cost of the entrance */
 	cost += _price.build_tunnel + ret;
 
-	// if the command fails from here on we want the end tile to be highlighted
+	/* if the command fails from here on we want the end tile to be highlighted */
 	_build_tunnel_endtile = end_tile;
 
-	// slope of end tile must be complementary to the slope of the start tile
+	/* slope of end tile must be complementary to the slope of the start tile */
 	if (end_tileh != ComplementSlope(start_tileh)) {
 		ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
 		if (CmdFailed(ret)) return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
@@ -591,12 +594,12 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 	}
 
 	if (flags & DC_EXEC) {
-		// We first need to request the direction before calling DoClearSquare
-		//  else the direction is always 0.. dah!! ;)
+		/* We first need to request the direction before calling DoClearSquare
+		 *  else the direction is always 0.. dah!! ;) */
 		DiagDirection dir = GetTunnelDirection(tile);
 		Track track;
 
-		// Adjust the town's player rating. Do this before removing the tile owner info.
+		/* Adjust the town's player rating. Do this before removing the tile owner info. */
 		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
 			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
 
@@ -661,8 +664,8 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 		TileIndex c;
 		Track track;
 
-		//checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
-		// you have a "Poor" (0) town rating
+		/* checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
+		 * you have a "Poor" (0) town rating */
 		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
 			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
 
@@ -717,7 +720,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 
 		if (GetRailType(tile) == totype) return CMD_ERROR;
 
-		// 'hidden' elrails can't be downgraded to normal rail when elrails are disabled
+		/* 'hidden' elrails can't be downgraded to normal rail when elrails are disabled */
 		if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailType(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
 
 		endtile = CheckTunnelBusy(tile, &length);
@@ -829,7 +832,7 @@ uint GetBridgeFoundation(Slope tileh, Axis axis)
 
 	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) return tileh;
 
-	// inclined sloped building
+	/* inclined sloped building */
 	switch (tileh) {
 		case SLOPE_W:
 		case SLOPE_STEEP_W: i = 0; break;
@@ -850,6 +853,7 @@ uint GetBridgeFoundation(Slope tileh, Axis axis)
  * For tunnels, this is rather simple, as you only needa draw the entrance.
  * Bridges are a bit more complex. base_offset is where the sprite selection comes into play
  * and it works a bit like a bitmask.<p> For bridge heads:
+ * @param ti TileInfo of the structure to draw
  * <ul><li>Bit 0: direction</li>
  * <li>Bit 1: northern or southern heads</li>
  * <li>Bit 2: Set if the bridge head is sloped</li>
@@ -884,7 +888,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		if (GetBridgeTransportType(ti->tile) == TRANSPORT_RAIL) {
 			base_offset = GetRailTypeInfo(GetRailType(ti->tile))->bridge_offset;
-			assert(base_offset != 8); /* This one is used for roads */
+			assert(base_offset != 8); // This one is used for roads
 		} else {
 			base_offset = 8;
 		}
@@ -897,7 +901,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			if (f != 0) DrawFoundation(ti, f);
 		}
 
-		// HACK Wizardry to convert the bridge ramp direction into a sprite offset
+		/* HACK Wizardry to convert the bridge ramp direction into a sprite offset */
 		base_offset += (6 - GetBridgeRampDirection(ti->tile)) % 4;
 
 		if (ti->tileh == SLOPE_FLAT) base_offset += 4; // sloped bridge head
@@ -915,7 +919,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		image = psid->sprite;
 
-		// draw ramp
+		/* draw ramp */
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 			pal = PALETTE_TO_TRANSPARENT;
@@ -1030,7 +1034,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 		pal = psid->pal;
 	}
 
-	// draw roof, the component of the bridge which is logically between the vehicle and the camera
+	/* draw roof, the component of the bridge which is logically between the vehicle and the camera */
 	if (axis == AXIS_X) {
 		y += 12;
 		if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, pal, x, y, 16, 1, 0x28, z);
@@ -1043,7 +1047,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 	psid++;
 	if (ti->z + 5 == z) {
-		// draw poles below for small bridges
+		/* draw poles below for small bridges */
 		if (psid->sprite != 0) {
 			image = psid->sprite;
 			if (_display_opt & DO_TRANS_BUILDINGS) {
@@ -1056,7 +1060,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 			DrawGroundSpriteAt(image, pal, x, y, z);
 		}
 	} else if (_patches.bridge_pillars) {
-		// draw pillars below for high bridges
+		/* draw pillars below for high bridges */
 		DrawBridgePillars(psid, ti, axis, type, x, y, z);
 	}
 }
@@ -1073,13 +1077,13 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 	if (IsTunnel(tile)) {
 		uint pos = (DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? y : x);
 
-		// In the tunnel entrance?
+		/* In the tunnel entrance? */
 		if (5 <= pos && pos <= 10) return z;
 	} else {
 		DiagDirection dir = GetBridgeRampDirection(tile);
 		uint pos = (DiagDirToAxis(dir) == AXIS_X ? y : x);
 
-		// On the bridge ramp?
+		/* On the bridge ramp? */
 		if (5 <= pos && pos <= 10) {
 			uint delta;
 
@@ -1302,7 +1306,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			dir = GetTunnelDirection(tile);
 			vdir = DirToDiagDir(v->direction);
 
-			// Enter tunnel?
+			/* Enter tunnel? */
 			if (v->u.road.state != RVSB_WORMHOLE && dir == vdir) {
 				if (fc == _tunnel_fractcoord_4[dir] ||
 						fc == _tunnel_fractcoord_5[dir]) {

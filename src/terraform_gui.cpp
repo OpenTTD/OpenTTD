@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file terraform_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
@@ -91,11 +93,11 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 
 /**
  * A central place to handle all X_AND_Y dragged GUI functions.
- * @param e @WindowEvent variable holding in its higher bits (excluding the lower
+ * @param e WindowEvent variable holding in its higher bits (excluding the lower
  * 4, since that defined the X_Y drag) the type of action to be performed
  * @return Returns true if the action was found and handled, and false otherwise. This
  * allows for additional implements that are more local. For example X_Y drag
- * of convertrail which belongs in rail_gui.c and not terraform_gui.c
+ * of convertrail which belongs in rail_gui.cpp and not terraform_gui.cpp
  **/
 bool GUIPlaceProcDragXY(const WindowEvent *e)
 {

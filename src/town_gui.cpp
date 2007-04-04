@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file town_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -32,9 +34,9 @@ static const Widget _town_authority_widgets[] = {
 extern const byte _town_action_costs[8];
 
 /** Get a list of available actions to do at a town.
- * @param *nump if not NULL add put the number of available actions in it
+ * @param nump if not NULL add put the number of available actions in it
  * @param pid the player that is querying the town
- * @param *t the town that is queried
+ * @param t the town that is queried
  * @return bitmasked value of enabled actions
  */
 uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
@@ -47,9 +49,9 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 	if (pid != PLAYER_SPECTATOR) {
 		uint i;
 
-		// bribe option enabled?
+		/* bribe option enabled? */
 		if (_patches.bribe) {
-			// if unwanted, disable everything.
+			/* if unwanted, disable everything. */
 			if (t->unwanted[pid]) {
 				avail_buttons = 0;
 			} else if (t->ratings[pid] < RATING_BRIBE_MAXIMUM) {
@@ -57,7 +59,7 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 			}
 		}
 
-		// Things worth more than this are not shown
+		/* Things worth more than this are not shown */
 		avail = GetPlayer(pid)->player_money + _price.station_value * 200;
 		ref = _price.build_industry >> 8;
 
@@ -119,7 +121,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 
 			DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, 0);
 
-			// Draw list of players
+			/* Draw list of players */
 			y = 25;
 			FOR_ALL_PLAYERS(p) {
 				if (p->is_active && (HASBIT(t->have_ratings, p->index) || t->exclusivity == p->index)) {
@@ -150,7 +152,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			}
 		}
 
-		// Draw actions list
+		/* Draw actions list */
 		{
 			int y = 107, i;
 			int pos = w->vscroll.pos;
@@ -234,7 +236,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 	case WE_PAINT:
-		// disable renaming town in network games if you are not the server
+		/* disable renaming town in network games if you are not the server */
 		SetWindowWidgetDisabledState(w, 8, _networking && !_network_server);
 
 		SetDParam(0, t->index);
@@ -365,7 +367,7 @@ static const Widget _town_directory_widgets[] = {
 };
 
 
-// used to get a sorted list of the towns
+/* used to get a sorted list of the towns */
 static uint _num_town_sort;
 
 static char _bufcache[64];

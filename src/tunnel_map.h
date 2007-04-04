@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file tunnel_map.h */
+
 #ifndef TUNNEL_MAP_H
 #define TUNNEL_MAP_H
 

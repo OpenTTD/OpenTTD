@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file tunnel_map.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "tile.h"

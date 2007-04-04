@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file texteff.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -121,7 +123,7 @@ void InitTextMessage()
 	}
 }
 
-/* Hide the textbox */
+/** Hide the textbox */
 void UndrawTextMessage()
 {
 	if (_textmessage_visible) {
@@ -172,7 +174,7 @@ void UndrawTextMessage()
 	}
 }
 
-/* Check if a message is expired every day */
+/** Check if a message is expired every day */
 void TextMessageDailyLoop()
 {
 	uint i;
@@ -196,7 +198,7 @@ void TextMessageDailyLoop()
 	}
 }
 
-/* Draw the textmessage-box */
+/** Draw the textmessage-box */
 void DrawTextMessage()
 {
 	if (!_textmessage_dirty) return;

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file tgp.cpp OTTD Perlin Noise Landscape Generator, aka TerraGenesis Perlin */
+
 #include "stdafx.h"
 #include <math.h>
 #include "openttd.h"
@@ -17,7 +19,6 @@
 #include "helpers.hpp"
 
 /*
- * OTTD Perlin Noise Landscape Generator, aka TerraGenesis Perlin
  *
  * Quickie guide to Perlin Noise
  * Perlin noise is a predictable pseudo random number sequence. By generating
@@ -167,11 +168,11 @@ static const int amplitude_decimal_bits = 10;
 /** Height map - allocated array of heights (MapSizeX() + 1) x (MapSizeY() + 1) */
 struct HeightMap
 {
-	height_t *h;         //! array of heights
-	uint     dim_x;      //! height map size_x MapSizeX() + 1
-	uint     total_size; //! height map total size
-	uint     size_x;     //! MapSizeX()
-	uint     size_y;     //! MapSizeY()
+	height_t *h;         //< array of heights
+	uint     dim_x;      //< height map size_x MapSizeX() + 1
+	uint     total_size; //< height map total size
+	uint     size_x;     //< MapSizeX()
+	uint     size_y;     //< MapSizeY()
 };
 
 /** Global height map instance */
@@ -200,13 +201,13 @@ static HeightMap _height_map = {NULL, 0, 0, 0, 0};
 /** Noise amplitudes (multiplied by 1024)
  * - indexed by "smoothness setting" and log2(frequency) */
 static const amplitude_t _amplitudes_by_smoothness_and_frequency[4][12] = {
-	// Very smooth
+	/* Very smooth */
 	{1000,  350,  123,   43,   15,    1,     1,    0,    0,    0,    0,    0},
-	// Smooth
+	/* Smooth */
 	{1000, 1000,  403,  200,   64,    8,     1,    0,    0,    0,    0,    0},
-	// Rough
+	/* Rough */
 	{1000, 1200,  800,  500,  200,   16,     4,    0,    0,    0,    0,    0},
-	// Very Rough
+	/* Very Rough */
 	{1500, 1000, 1200, 1000,  500,   32,    20,    0,    0,    0,    0,    0},
 };
 
@@ -215,13 +216,17 @@ static const amplitude_t _water_percent[4] = {20, 80, 250, 400};
 
 /** Desired maximum height - indexed by _opt.diff.terrain_type */
 static const int8 _max_height[4] = {
-	6,       // Very flat
-	9,       // Flat
-	12,      // Hilly
-	15       // Mountainous
+	6,       ///< Very flat
+	9,       ///< Flat
+	12,      ///< Hilly
+	15       ///< Mountainous
 };
 
-/** Check if a X/Y set are within the map. */
+/** Check if a X/Y set are within the map.
+ * @param x coordinate x
+ * @param y coordinate y
+ * @return true if within the map
+ */
 static inline bool IsValidXY(uint x, uint y)
 {
 	return ((int)x) >= 0 && x < _height_map.size_x && ((int)y) >= 0 && y < _height_map.size_y;
@@ -680,10 +685,10 @@ static inline int perlin_landXY(uint x, uint y)
 
 /* The following decimals are the octave power modifiers for the Perlin noise */
 static const double _perlin_p_values[][7] = {    // perlin frequency per power
-	{ 0.35, 0.35, 0.35, 0.35, 0.35, 0.25, 0.539 }, // Very smooth
-	{ 0.45, 0.55, 0.45, 0.45, 0.35, 0.25, 0.89  }, // Smooth
-	{ 0.85, 0.80, 0.70, 0.45, 0.45, 0.35, 1.825 }, // Rough 1.825
-	{ 0.95, 0.85, 0.80, 0.55, 0.55, 0.45, 2.245 }  // Very Rough 2.25
+	{ 0.35, 0.35, 0.35, 0.35, 0.35, 0.25, 0.539 }, ///< Very smooth
+	{ 0.45, 0.55, 0.45, 0.45, 0.35, 0.25, 0.89  }, ///< Smooth
+	{ 0.85, 0.80, 0.70, 0.45, 0.45, 0.35, 1.825 }, ///< Rough 1.825
+	{ 0.95, 0.85, 0.80, 0.55, 0.55, 0.45, 2.245 }  //< Very Rough 2.25
 };
 
 /**

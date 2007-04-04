@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file train_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -22,7 +24,7 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 	if (!success) return;
 
-	// find a locomotive in the depot.
+	/* find a locomotive in the depot. */
 	found = NULL;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN && IsFrontEngine(v) &&
@@ -33,10 +35,10 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 		}
 	}
 
-	// if we found a loco,
+	/* if we found a loco, */
 	if (found != NULL) {
 		found = GetLastVehicleInChain(found);
-		// put the new wagon at the end of the loco.
+		/* put the new wagon at the end of the loco. */
 		DoCommandP(0, _new_vehicle_id | (found->index << 16), 0, NULL, CMD_MOVE_RAIL_VEHICLE);
 		RebuildVehicleLists();
 	}
@@ -447,7 +449,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	y = 57;
 	sel = w->vscroll.pos;
 
-	// draw the first 3 details tabs
+	/* draw the first 3 details tabs */
 	if (det_tab != 3) {
 		x = 1;
 		for (;;) {
@@ -470,7 +472,7 @@ static void DrawTrainDetailsWindow(Window *w)
 					default: NOT_REACHED();
 					case 0: TrainDetailsCargoTab(   v, px, py); break;
 					case 1:
-						// Only show name and value for the 'real' part
+						/* Only show name and value for the 'real' part */
 						if (!IsArticulatedPart(v)) {
 							TrainDetailsInfoTab(v, px, py);
 						}
@@ -481,7 +483,7 @@ static void DrawTrainDetailsWindow(Window *w)
 
 				v = u;
 			} else {
-				// Move to the next line
+				/* Move to the next line */
 				do {
 					v = v->next;
 				} while (v != NULL && IsArticulatedPart(v) && v->cargo_cap == 0);
@@ -489,7 +491,7 @@ static void DrawTrainDetailsWindow(Window *w)
 			if (v == NULL) return;
 		}
 	} else {
-		// draw total cargo tab
+		/* draw total cargo tab */
 		DrawString(x, y + 2, STR_013F_TOTAL_CAPACITY_TEXT, 0);
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (max_cargo[i] > 0 && --sel < 0 && sel > -w->vscroll.cap) {

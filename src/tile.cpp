@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file tile.cpp */
+
 #include "stdafx.h"
 #include "tile.h"
 

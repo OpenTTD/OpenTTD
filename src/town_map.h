@@ -127,7 +127,7 @@ static inline byte GetLiftPosition(TileIndex t)
 /**
  * Set the position of the lift on this animated house
  * @param t the tile
- * @param pos from 0 to 36
+ * @param pos position, from 0 to 36
  */
 static inline void SetLiftPosition(TileIndex t, byte pos)
 {

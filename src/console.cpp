@@ -411,7 +411,7 @@ void IConsolePrint(uint16 color_code, const char *string)
 /**
  * Handle the printing of text entered into the console or redirected there
  * by any other means. Uses printf() style format, for more information look
- * at @IConsolePrint()
+ * at IConsolePrint()
  */
 void CDECL IConsolePrintF(uint16 color_code, const char *s, ...)
 {
