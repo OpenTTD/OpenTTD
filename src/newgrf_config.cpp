@@ -64,6 +64,10 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 		return false;
 	}
 
+	if (config->filename == NULL) {
+		config->filename = strdup(strrchr(config->full_path, PATHSEPCHAR) + 1);
+	}
+
 	/* Find and load the Action 8 information */
 	/* 62 is the last file slot before sample.cat.
 	 * Should perhaps be some "don't care" value */
@@ -305,7 +309,6 @@ static uint ScanPath(const char *path)
 
 			GRFConfig *c = CallocT<GRFConfig>(1);
 			c->full_path = strdup(filename);
-			c->filename = strdup(strrchr(filename, PATHSEPCHAR) + 1);
 
 			bool added = true;
 			if (FillGRFDetails(c, false)) {
