@@ -35,14 +35,12 @@ GRFConfig *_grfconfig_static;
 static bool CalcGRFMD5Sum(GRFConfig *config)
 {
 	FILE *f;
-	char filename[MAX_PATH];
 	md5_state_t md5state;
 	md5_byte_t buffer[1024];
 	size_t len;
 
 	/* open the file */
-	snprintf(filename, lengthof(filename), "%s%s", _paths.data_dir, config->filename);
-	f = fopen(filename, "rb");
+	f = fopen(config->full_path, "rb");
 	if (f == NULL) return false;
 
 	/* calculate md5sum */
@@ -61,7 +59,7 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 /* Find the GRFID and calculate the md5sum */
 bool FillGRFDetails(GRFConfig *config, bool is_static)
 {
-	if (!FioCheckFileExists(config->filename)) {
+	if (!FileExists(config->full_path)) {
 		config->status = GCS_NOT_FOUND;
 		return false;
 	}
@@ -91,6 +89,7 @@ void ClearGRFConfig(GRFConfig **config)
 	/* GCF_COPY as in NOT strdupped/alloced the filename, name and info */
 	if (!HASBIT((*config)->flags, GCF_COPY)) {
 		free((*config)->filename);
+		free((*config)->full_path);
 		free((*config)->name);
 		free((*config)->info);
 		free((*config)->error);
@@ -123,10 +122,11 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 	for (; src != NULL; src = src->next) {
 		GRFConfig *c = CallocT<GRFConfig>(1);
 		*c = *src;
-		if (src->filename != NULL) c->filename = strdup(src->filename);
-		if (src->name     != NULL) c->name     = strdup(src->name);
-		if (src->info     != NULL) c->info     = strdup(src->info);
-		if (src->error    != NULL) {
+		if (src->filename  != NULL) c->filename  = strdup(src->filename);
+		if (src->full_path != NULL) c->full_path = strdup(src->full_path);
+		if (src->name      != NULL) c->name      = strdup(src->name);
+		if (src->info      != NULL) c->info      = strdup(src->info);
+		if (src->error     != NULL) {
 			c->error = CallocT<GRFError>(1);
 			memcpy(c->error, src->error, sizeof(GRFError));
 		}
@@ -255,7 +255,9 @@ compatible_grf:
 			 * already a local one, so there is no need to replace it. */
 			if (!HASBIT(c->flags, GCF_COPY)) {
 				free(c->filename);
+				free(c->full_path);
 				c->filename = strdup(f->filename);
+				c->full_path = strdup(f->full_path);
 				memcpy(c->md5sum, f->md5sum, sizeof(c->md5sum));
 				if (c->name == NULL && f->name != NULL) c->name = strdup(f->name);
 				if (c->info == NULL && f->info != NULL) c->info = strdup(f->info);
@@ -278,7 +280,7 @@ static uint ScanPath(const char *path)
 	struct dirent *dirent;
 	DIR *dir;
 
-	if ((dir = ttd_opendir(path)) == NULL) return 0;
+	if (path == NULL || (dir = ttd_opendir(path)) == NULL) return 0;
 
 	while ((dirent = readdir(dir)) != NULL) {
 		const char *d_name = FS2OTTD(dirent->d_name);
@@ -286,24 +288,26 @@ static uint ScanPath(const char *path)
 
 		if (!FiosIsValidFile(path, dirent, &sb)) continue;
 
-		snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, d_name);
+		snprintf(filename, lengthof(filename), "%s%s", path, d_name);
 
 		if (sb.st_mode & S_IFDIR) {
 			/* Directory */
 			if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
+			AppendPathSeparator(filename, lengthof(filename));
 			num += ScanPath(filename);
 		} else if (sb.st_mode & S_IFREG) {
 			/* File */
 			char *ext = strrchr(filename, '.');
-			char *file = filename + strlen(_paths.data_dir) + 1; // Crop base path
 
 			/* If no extension or extension isn't .grf, skip the file */
 			if (ext == NULL) continue;
 			if (strcasecmp(ext, ".grf") != 0) continue;
 
 			GRFConfig *c = CallocT<GRFConfig>(1);
-			c->filename = strdup(file);
+			c->full_path = strdup(filename);
+			c->filename = strdup(strrchr(filename, PATHSEPCHAR) + 1);
 
+			bool added = true;
 			if (FillGRFDetails(c, false)) {
 				if (_all_grfs == NULL) {
 					_all_grfs = c;
@@ -312,20 +316,28 @@ static uint ScanPath(const char *path)
 					 * name, so the list is sorted as we go along */
 					GRFConfig **pd, *d;
 					for (pd = &_all_grfs; (d = *pd) != NULL; pd = &d->next) {
+						if (c->grfid == d->grfid && memcmp(c->md5sum, d->md5sum, sizeof(c->md5sum)) == 0) added = false;
 						if (strcasecmp(c->name, d->name) <= 0) break;
 					}
-					c->next = d;
-					*pd = c;
+					if (added) {
+						c->next = d;
+						*pd = c;
+					}
 				}
-
-				num++;
 			} else {
+				added = false;
+			}
+
+			if (!added) {
 				/* File couldn't be opened, or is either not a NewGRF or is a
-				 * 'system' NewGRF, so forget about it. */
+				 * 'system' NewGRF or it's already known, so forget about it. */
 				free(c->filename);
+				free(c->full_path);
 				free(c->name);
 				free(c->info);
 				free(c);
+			} else {
+				num++;
 			}
 		}
 	}
@@ -344,7 +356,8 @@ void ScanNewGRFFiles()
 	ClearGRFConfigList(&_all_grfs);
 
 	DEBUG(grf, 1, "Scanning for NewGRFs");
-	num = ScanPath(_paths.data_dir);
+	num  = ScanPath(_paths.data_dir);
+	num += ScanPath(_paths.second_data_dir);
 	DEBUG(grf, 1, "Scan complete, found %d files", num);
 }
 

@@ -4305,7 +4305,7 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 
 	if (newfile == NULL) error ("Out of memory");
 
-	newfile->filename = strdup(config->filename);
+	newfile->filename = strdup(config->full_path);
 	newfile->sprite_offset = sprite_offset;
 
 	/* Copy the initial parameter list */
@@ -4583,7 +4583,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 
 void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 {
-	const char *filename = config->filename;
+	const char *filename = config->full_path;
 	uint16 num;
 
 	/* A .grf file is activated only if it was active when the game was
@@ -4699,7 +4699,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 
 			/* @todo usererror() */
-			if (!FioCheckFileExists(c->filename)) error("NewGRF file is missing '%s'", c->filename);
+			if (!FileExists(c->full_path)) error("NewGRF file is missing '%s'", c->filename);
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
 			LoadNewGRFFile(c, slot++, stage);

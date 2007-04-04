@@ -170,7 +170,7 @@ void FioOpenFile(int slot, const char *filename)
 	FioFreeHandle();
 #endif /* LIMITED_FDS */
 	f = FioFOpenFile(filename);
-	if (f == NULL) error("Cannot open file '%s%s'", _paths.data_dir, filename);
+	if (f == NULL) error("Cannot open file '%s'", filename);
 
 	FioCloseFile(slot); // if file was opened before, close it
 	_fio.handles[slot] = f;
@@ -206,12 +206,16 @@ FILE *FioFOpenFile(const char *filename)
 	FILE *f;
 	char buf[MAX_PATH];
 
-	snprintf(buf, lengthof(buf), "%s%s", _paths.data_dir, filename);
+	if (strrchr(filename, PATHSEPCHAR) == NULL) {
+		snprintf(buf, lengthof(buf), "%s%s", _paths.data_dir, filename);
+	} else {
+		ttd_strlcpy(buf, filename, lengthof(buf));
+	}
 
 	f = fopen(buf, "rb");
 #if !defined(WIN32)
 	if (f == NULL) {
-		strtolower(buf + strlen(_paths.data_dir) - 1);
+		strtolower(strrchr(buf, PATHSEPCHAR));
 		f = fopen(buf, "rb");
 
 #if defined SECOND_DATA_DIR
@@ -308,6 +312,8 @@ void DetermineBasePaths(const char *exe)
 #if defined(SECOND_DATA_DIR)
 	_paths.second_data_dir = MallocT<char>(MAX_PATH);
 	ttd_strlcpy(_paths.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
+#else
+	_paths.second_data_dir = NULL;
 #endif
 
 #if defined(USE_HOMEDIR)

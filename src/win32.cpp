@@ -946,6 +946,7 @@ void GetCurrentDirectoryW(int length, wchar_t *path)
 void DetermineBasePaths(const char *exe)
 {
 	_paths.personal_dir = _paths.game_data_dir = MallocT<char>(MAX_PATH);
+	_paths.second_data_dir = NULL;
 #if defined(UNICODE)
 	TCHAR path[MAX_PATH];
 	GetCurrentDirectory(MAX_PATH - 1, path);

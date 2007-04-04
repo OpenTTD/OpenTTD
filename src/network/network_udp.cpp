@@ -391,12 +391,13 @@ void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFCo
 		/* Don't know the GRF, so mark game incompatible and the (possibly)
 		 * already resolved name for this GRF (another server has sent the
 		 * name of the GRF already */
-		config->name     = FindUnknownGRFName(config->grfid, config->md5sum, true);
-		config->status   = GCS_NOT_FOUND;
+		config->name   = FindUnknownGRFName(config->grfid, config->md5sum, true);
+		config->status = GCS_NOT_FOUND;
 	} else {
-		config->filename = f->filename;
-		config->name     = f->name;
-		config->info     = f->info;
+		config->filename  = f->filename;
+		config->full_path = f->full_path;
+		config->name      = f->name;
+		config->info      = f->info;
 	}
 	SETBIT(config->flags, GCF_COPY);
 }
