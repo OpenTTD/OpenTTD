@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file settings.h */
+
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
@@ -12,12 +14,12 @@
 enum SettingDescTypeLong {
 	/* 4 bytes allocated a maximum of 16 types for GenericType */
 	SDT_BEGIN       = 0,
-	SDT_NUMX        = 0, // any number-type
-	SDT_BOOLX       = 1, // a boolean number
-	SDT_ONEOFMANY   = 2, // bitmasked number where only ONE bit may be set
-	SDT_MANYOFMANY  = 3, // bitmasked number where MULTIPLE bits may be set
-	SDT_INTLIST     = 4, // list of integers seperated by a comma ','
-	SDT_STRING      = 5, // string with a pre-allocated buffer
+	SDT_NUMX        = 0, ///< any number-type
+	SDT_BOOLX       = 1, ///< a boolean number
+	SDT_ONEOFMANY   = 2, ///< bitmasked number where only ONE bit may be set
+	SDT_MANYOFMANY  = 3, ///< bitmasked number where MULTIPLE bits may be set
+	SDT_INTLIST     = 4, ///< list of integers seperated by a comma ','
+	SDT_STRING      = 5, ///< string with a pre-allocated buffer
 	SDT_END,
 	/* 10 more possible primitives */
 };

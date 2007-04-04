@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file settings_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
@@ -352,9 +354,9 @@ static inline bool GetBitAndShift(uint32 *b)
  */
 static const int16 _default_game_diff[3][GAME_DIFFICULTY_NUM] = { /*
 	 A, B, C, D,   E, F, G, H, I, J, K, L, M, N, O, P, Q, R*/
-	{2, 2, 1, 3, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0}, //easy
-	{4, 1, 1, 2, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1}, //medium
-	{7, 0, 2, 2, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2}, //hard
+	{2, 2, 1, 3, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0}, ///< easy
+	{4, 1, 1, 2, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1}, ///< medium
+	{7, 0, 2, 2, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2}, ///< hard
 };
 
 void SetDifficultyLevel(int mode, GameOptions *gm_opt)
@@ -393,7 +395,7 @@ enum {
 	GAMEDIFF_WND_ROWSIZE    = 9
 };
 
-// Temporary holding place of values in the difficulty window until 'Save' is clicked
+/* Temporary holding place of values in the difficulty window until 'Save' is clicked */
 static GameOptions _opt_mod_temp;
 // 0x383E = (1 << 13) | (1 << 12) | (1 << 11) | (1 << 5) | (1 << 4) | (1 << 3) | (1 << 2) | (1 << 1)
 #define DIFF_INGAME_DISABLED_BUTTONS 0x383E
@@ -457,7 +459,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			uint btn, dis;
 			int16 val;
 
-			// Don't allow clients to make any changes
+			/* Don't allow clients to make any changes */
 			if  (_networking && !_network_server)
 				return;
 
@@ -469,12 +471,12 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			if (y < 0)
 				return;
 
-			// Get button from Y coord.
+			/* Get button from Y coord. */
 			btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
 			if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9)
 				return;
 
-			// Clicked disabled button?
+			/* Clicked disabled button? */
 			dis = (_game_mode == GM_NORMAL) ? DIFF_INGAME_DISABLED_BUTTONS : 0;
 
 			if (HASBIT(dis, btn))

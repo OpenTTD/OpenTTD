@@ -223,7 +223,7 @@ struct RailtypeInfo {
 	 * 1) All the sprites in a railset MUST be in the same order. This order
 	 *    is determined by normal rail. Check sprites 1005 and following for this order<p>
 	 * 2) The position where the railtype is loaded must always be the same, otherwise
-	 *    the offset will fail.<p>
+	 *    the offset will fail.
 	 * @note: Something more flexible might be desirable in the future.
 	 */
 	SpriteID total_offset;
@@ -240,10 +240,10 @@ struct RailtypeInfo {
 };
 
 
-// these are the maximums used for updating signal blocks, and checking if a depot is in a pbs block
+/** these are the maximums used for updating signal blocks, and checking if a depot is in a pbs block */
 enum {
-	NUM_SSD_ENTRY = 256, // max amount of blocks
-	NUM_SSD_STACK =  32, // max amount of blocks to check recursively
+	NUM_SSD_ENTRY = 256, ///< max amount of blocks
+	NUM_SSD_STACK =  32, ///< max amount of blocks to check recursively
 };
 
 /**

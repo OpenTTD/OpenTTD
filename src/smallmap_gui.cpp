@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file smallmap_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -332,13 +334,13 @@ static void DrawSmallMapStuff(Pixel *dst, uint xc, uint yc, int pitch, int reps,
 	Pixel *dst_ptr_end = _screen.dst_ptr + _screen.width * _screen.height - _screen.width;
 
 	do {
-		// check if the tile (xc,yc) is within the map range
+		/* check if the tile (xc,yc) is within the map range */
 		if (xc < MapMaxX() && yc < MapMaxY()) {
-			// check if the dst pointer points to a pixel inside the screen buffer
+			/* check if the dst pointer points to a pixel inside the screen buffer */
 			if (dst > _screen.dst_ptr && dst < dst_ptr_end)
 				WRITE_PIXELS_OR(dst, proc(TileXY(xc, yc)) & mask);
 		}
-	// switch to next tile in the column
+	/* switch to next tile in the column */
 	} while (xc++, yc++, dst += pitch, --reps != 0);
 }
 
@@ -454,7 +456,7 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 			default:              bits = MKCOLOR(0xFFFFFFFF); break;
 		}
 	} else {
-		// ground color
+		/* ground color */
 		bits = ApplyMask(MKCOLOR(0x54545454), &_smallmap_contours_andor[t]);
 	}
 	return bits;
@@ -693,7 +695,7 @@ skip_column:
 		FOR_ALL_VEHICLES(v) {
 			if (v->type != VEH_SPECIAL &&
 					(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
-				// Remap into flat coordinates.
+				/* Remap into flat coordinates. */
 				Point pt = RemapCoords(
 					v->x_pos / TILE_SIZE - WP(w,smallmap_d).scroll_x / TILE_SIZE, // divide each one separately because (a-b)/c != a/c-b/c in integer world
 					v->y_pos / TILE_SIZE - WP(w,smallmap_d).scroll_y / TILE_SIZE, //    dtto
@@ -701,32 +703,32 @@ skip_column:
 				x = pt.x;
 				y = pt.y;
 
-				// Check if y is out of bounds?
+				/* Check if y is out of bounds? */
 				y -= dpi->top;
 				if (!IS_INT_INSIDE(y, 0, dpi->height)) continue;
 
-				// Default is to draw both pixels.
+				/* Default is to draw both pixels. */
 				skip = false;
 
-				// Offset X coordinate
+				/* Offset X coordinate */
 				x -= WP(w,smallmap_d).subscroll + 3 + dpi->left;
 
 				if (x < 0) {
-					// if x+1 is 0, that means we're on the very left edge,
-					//  and should thus only draw a single pixel
+					/* if x+1 is 0, that means we're on the very left edge,
+					 *  and should thus only draw a single pixel */
 					if (++x != 0) continue;
 					skip = true;
 				} else if (x >= dpi->width - 1) {
-					// Check if we're at the very right edge, and if so draw only a single pixel
+					/* Check if we're at the very right edge, and if so draw only a single pixel */
 					if (x != dpi->width - 1) continue;
 					skip = true;
 				}
 
-				// Calculate pointer to pixel and the color
+				/* Calculate pointer to pixel and the color */
 				ptr = dpi->dst_ptr + y * dpi->pitch + x;
 				color = (type == 1) ? _vehicle_type_colors[v->type] : 0xF;
 
-				// And draw either one or two pixels depending on clipping
+				/* And draw either one or two pixels depending on clipping */
 				ptr[0] = color;
 				if (!skip) ptr[1] = color;
 			}
@@ -737,7 +739,7 @@ skip_column:
 		const Town *t;
 
 		FOR_ALL_TOWNS(t) {
-			// Remap the town coordinate
+			/* Remap the town coordinate */
 			Point pt = RemapCoords(
 				(int)(TileX(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_x) / TILE_SIZE,
 				(int)(TileY(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_y) / TILE_SIZE,
@@ -745,23 +747,23 @@ skip_column:
 			x = pt.x - WP(w,smallmap_d).subscroll + 3 - (t->sign.width_2 >> 1);
 			y = pt.y;
 
-			// Check if the town sign is within bounds
+			/* Check if the town sign is within bounds */
 			if (x + t->sign.width_2 > dpi->left &&
 					x < dpi->left + dpi->width &&
 					y + 6 > dpi->top &&
 					y < dpi->top + dpi->height) {
-				// And draw it.
+				/* And draw it. */
 				SetDParam(0, t->index);
 				DrawString(x, y, STR_2056, 12);
 			}
 		}
 	}
 
-	// Draw map indicators
+	/* Draw map indicators */
 	{
 		Point pt;
 
-		// Find main viewport.
+		/* Find main viewport. */
 		vp = FindWindowById(WC_MAIN_WINDOW,0)->viewport;
 
 		pt = RemapCoords(WP(w, smallmap_d).scroll_x, WP(w, smallmap_d).scroll_y, 0);
@@ -1033,7 +1035,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 			int x = WP(w, vp_d).scrollpos_x; // Where is the main looking at
 			int y = WP(w, vp_d).scrollpos_y;
 
-			// set this view to same location. Based on the center, adjusting for zoom
+			/* set this view to same location. Based on the center, adjusting for zoom */
 			WP(w2, vp_d).scrollpos_x =  x - (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
 			WP(w2, vp_d).scrollpos_y =  y - (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
 		} break;
@@ -1094,18 +1096,18 @@ void ShowExtraViewPortWindow()
 	Window *w, *v;
 	int i = 0;
 
-	// find next free window number for extra viewport
+	/* find next free window number for extra viewport */
 	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) != NULL) i++;
 
 	w = AllocateWindowDescFront(&_extra_view_port_desc, i);
 	if (w != NULL) {
 		int x, y;
-		// the main window with the main view
+		/* the main window with the main view */
 		v = FindWindowById(WC_MAIN_WINDOW, 0);
-		// New viewport start ats (zero,zero)
+		/* New viewport start ats (zero,zero) */
 		AssignWindowViewport(w, 3, 17, 294, 214, 0 , 0);
 
-		// center on same place as main window (zoom is maximum, no adjustment needed)
+		/* center on same place as main window (zoom is maximum, no adjustment needed) */
 		x = WP(v, vp_d).scrollpos_x;
 		y = WP(v, vp_d).scrollpos_y;
 		WP(w, vp_d).scrollpos_x = x + (v->viewport->virtual_width  - (294)) / 2;

@@ -118,7 +118,7 @@ static uint FindCatchmentRadius(const Station* st)
 
 static Station* GetStationAround(TileIndex tile, int w, int h, StationID closest_station)
 {
-	// check around to see if there's any stations there
+	/* check around to see if there's any stations there */
 	BEGIN_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1))
 		if (IsTileType(tile_cur, MP_STATION)) {
 			StationID t = GetStationIndex(tile_cur);

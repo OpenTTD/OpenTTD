@@ -55,12 +55,12 @@ Station::Station(TileIndex tile)
 }
 
 /**
-	* Clean up a station by clearing vehicle orders and invalidating windows.
-	* Aircraft-Hangar orders need special treatment here, as the hangars are
-	* actually part of a station (tiletype is STATION), but the order type
-	* is OT_GOTO_DEPOT.
-	* @param st Station to be deleted
-	*/
+ * Clean up a station by clearing vehicle orders and invalidating windows.
+ * Aircraft-Hangar orders need special treatment here, as the hangars are
+ * actually part of a station (tiletype is STATION), but the order type
+ * is OT_GOTO_DEPOT.
+ * @param st Station to be deleted
+ */
 Station::~Station()
 {
 	DEBUG(station, cDebugCtorLevel, "I-%3d", index);
@@ -106,7 +106,7 @@ void Station::operator delete(void *p, int st_idx)
 }
 
 /** Called when new facility is built on the station. If it is the first facility
-	* it initializes also 'xy' and 'random_bits' members */
+ * it initializes also 'xy' and 'random_bits' members */
 void Station::AddFacility(byte new_facility_bit, TileIndex facil_xy)
 {
 	if (facilities == 0) {
@@ -182,7 +182,7 @@ bool Station::TileBelongsToRailStation(TileIndex tile) const
 /** Obtain the length of a platform
  * @pre tile must be a railway station tile
  * @param tile A tile that contains the platform in question
- * @returns The length of the platform
+ * @return The length of the platform
  */
 uint Station::GetPlatformLength(TileIndex tile) const
 {

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file ship.h */
+
 #ifndef SHIP_H
 #define SHIP_H
 

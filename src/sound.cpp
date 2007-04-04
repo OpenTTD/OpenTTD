@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file sound.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -51,12 +53,12 @@ static void OpenBankFile(const char *filename)
 
 		FioSeekTo(fe->file_offset, SEEK_SET);
 
-		// Check for special case, see else case
+		/* Check for special case, see else case */
 		FioReadBlock(name, FioReadByte()); // Read the name of the sound
 		if (strcmp(name, "Corrupt sound") != 0) {
 			FioSeekTo(12, SEEK_CUR); // Skip past RIFF header
 
-			// Read riff tags
+			/* Read riff tags */
 			for (;;) {
 				uint32 tag = FioReadDword();
 				uint32 size = FioReadDword();
@@ -130,7 +132,7 @@ bool SoundInitialize(const char *filename)
 	return true;
 }
 
-// Low level sound player
+/* Low level sound player */
 static void StartSound(uint sound, int panning, uint volume)
 {
 	MixerChannel *mc;

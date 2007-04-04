@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file signs_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"

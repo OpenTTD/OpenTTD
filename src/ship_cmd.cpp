@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file ship_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "ship.h"
@@ -62,8 +64,8 @@ void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal)
 
 /** Get the size of the sprite of a ship sprite heading west (used for lists)
  * @param engine The engine to get the sprite from
- * @param &width The width of the sprite
- * @param &height The height of the sprite
+ * @param width The width of the sprite
+ * @param height The height of the sprite
  */
 void GetShipSpriteSize(EngineID engine, uint &width, uint &height)
 {
@@ -191,7 +193,7 @@ void OnNewDay_Ship(Vehicle *v)
 	SubtractMoneyFromPlayerFract(v->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-	//we need this for the profit
+	/* we need this for the profit */
 	InvalidateWindowClasses(WC_SHIPS_LIST);
 }
 
@@ -376,10 +378,10 @@ static void CheckShipLeaveDepot(Vehicle *v)
 	tile = v->tile;
 	axis = GetShipDepotAxis(tile);
 
-	// Check first side
+	/* Check first side */
 	if (_ship_sometracks[axis] & GetTileShipTrackStatus(TILE_ADD(tile, ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
 		m = (axis == AXIS_X) ? 0x101 : 0x207;
-	// Check second side
+	/* Check second side */
 	} else if (_ship_sometracks[axis + 2] & GetTileShipTrackStatus(TILE_ADD(tile, -2 * ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
 		m = (axis == AXIS_X) ? 0x105 : 0x203;
 	} else {
@@ -405,14 +407,14 @@ static bool ShipAccelerate(Vehicle *v)
 
 	spd = min(v->cur_speed + 1, v->max_speed);
 
-	//updates statusbar only if speed have changed to save CPU time
+	/*updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
 		if (_patches.vehicle_speed)
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
-	// Decrease somewhat when turning
+	/* Decrease somewhat when turning */
 	if (!(v->direction & 1)) spd = spd * 3 / 4;
 
 	if (spd == 0) return false;
@@ -455,7 +457,7 @@ struct PathFindShip {
 
 static bool ShipTrackFollower(TileIndex tile, PathFindShip *pfs, int track, uint length, byte *state)
 {
-	// Found dest?
+	/* Found dest? */
 	if (tile == pfs->dest_coords) {
 		pfs->best_bird_dist = 0;
 
@@ -463,7 +465,7 @@ static bool ShipTrackFollower(TileIndex tile, PathFindShip *pfs, int track, uint
 		return true;
 	}
 
-	// Skip this tile in the calculation
+	/* Skip this tile in the calculation */
 	if (tile != pfs->skiptile) {
 		pfs->best_bird_dist = minu(pfs->best_bird_dist, DistanceMaxPlusManhattan(pfs->dest_coords, tile));
 	}
@@ -543,7 +545,7 @@ static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Tra
 	return ret;
 }
 
-/* returns the track to choose on the next tile, or -1 when it's better to
+/** returns the track to choose on the next tile, or -1 when it's better to
  * reverse. The tile given is the tile we are about to enter, enterdir is the
  * direction in which we are entering the tile */
 static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
@@ -558,7 +560,7 @@ static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 		NPFFoundTargetData ftd;
 		TileIndex src_tile = TILE_ADD(tile, TileOffsByDiagDir(ReverseDiagDir(enterdir)));
 		Trackdir trackdir = GetVehicleTrackdir(v);
-		assert(trackdir != INVALID_TRACKDIR); /* Check that we are not in a depot */
+		assert(trackdir != INVALID_TRACKDIR); // Check that we are not in a depot
 
 		NPFFillWithOrderData(&fstd, v);
 
@@ -731,7 +733,7 @@ static void ShipController(Vehicle *v)
 
 							/* Process station in the orderlist. */
 							st = GetStation(v->current_order.dest);
-							if (st->facilities & FACIL_DOCK) { /* ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations */
+							if (st->facilities & FACIL_DOCK) { // ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations
 								v->BeginLoading();
 								v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER;
 								v->current_order.flags |= OF_NON_STOP;
@@ -743,7 +745,7 @@ static void ShipController(Vehicle *v)
 									MarkShipDirty(v);
 								}
 								InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-							} else { /* leave stations without docks right aways */
+							} else { // leave stations without docks right aways
 								v->current_order.type = OT_LEAVESTATION;
 								v->cur_order_index++;
 								InvalidateVehicleOrder(v);
@@ -834,6 +836,7 @@ void ShipsYearlyLoop()
 
 /** Build a ship.
  * @param tile tile of depot where ship is built
+ * @param flags type of operation
  * @param p1 ship type being built (engine)
  * @param p2 bit 0 when set, the unitnumber will be 0, otherwise it will be a free number
  */
@@ -930,6 +933,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Sell a ship.
  * @param tile unused
+ * @param flags type of operation
  * @param p1 vehicle ID to be sold
  * @param p2 unused
  */
@@ -963,6 +967,7 @@ int32 CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Start/Stop a ship.
  * @param tile unused
+ * @param flags type of operation
  * @param p1 ship ID to start/stop
  * @param p2 unused
  */
@@ -1001,6 +1006,7 @@ int32 CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Send a ship to the depot.
  * @param tile unused
+ * @param flags type of operation
  * @param p1 vehicle ID to send to the depot
  * @param p2 various bitmasked elements
  * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
@@ -1073,6 +1079,7 @@ int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Refits a ship to the specified cargo type.
  * @param tile unused
+ * @param flags type of operation
  * @param p1 vehicle ID of the ship to refit
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to (p2 & 0xFF)

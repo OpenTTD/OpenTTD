@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file string.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -123,7 +125,8 @@ void str_strip_colours(char *str)
  * not found, this is sufficient. If more, or general functionality is
  * needed, look to r7271 where it was removed because it was broken when
  * using certain locales: eg in Turkish the uppercase 'I' was converted to
- * '?', so just revert to the old functionality */
+ * '?', so just revert to the old functionality
+ * @param str string to convert */
 void strtolower(char *str)
 {
 	for (; *str != '\0'; str++) *str = tolower(*str);

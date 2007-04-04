@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file strings.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
@@ -37,7 +39,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv, 
 static char *FormatString(char *buff, const char *str, const int32 *argv, uint casei, const char* last);
 
 struct LanguagePack {
-	uint32 ident;
+	uint32 ident;       // 32-bits identifier
 	uint32 version;     // 32-bits of auto generated version info which is basically a hash of strings.h
 	char name[32];      // the international name of this language
 	char own_name[32];  // the localized name of this language
@@ -45,16 +47,16 @@ struct LanguagePack {
 	uint16 offsets[32]; // the offsets
 	byte plural_form;   // how to compute plural forms
 	byte pad[3];        // pad header to be a multiple of 4
-	char data[VARARRAY_SIZE];
+	char data[VARARRAY_SIZE]; // list of strings
 };
 
 static char **_langpack_offs;
 static LanguagePack *_langpack;
-static uint _langtab_num[32]; // Offset into langpack offs
+static uint _langtab_num[32];   // Offset into langpack offs
 static uint _langtab_start[32]; // Offset into langpack offs
 
 
-// Read an int64 from the argv array.
+/** Read an int64 from the argv array. */
 static inline int64 GetInt64(const int32 **argv)
 {
 	int64 result;
@@ -65,14 +67,14 @@ static inline int64 GetInt64(const int32 **argv)
 	return result;
 }
 
-// Read an int32 from the argv array.
+/** Read an int32 from the argv array. */
 static inline int32 GetInt32(const int32 **argv)
 {
 	assert(argv);
 	return *(*argv)++;
 }
 
-// Read an array from the argv array.
+/** Read an array from the argv array. */
 static inline const int32 *GetArgvPtr(const int32 **argv, int n)
 {
 	const int32 *result;
@@ -85,13 +87,13 @@ static inline const int32 *GetArgvPtr(const int32 **argv, int n)
 
 #define NUM_BOUND_STRINGS 8
 
-// Array to hold the bound strings.
+/* Array to hold the bound strings. */
 static const char *_bound_strings[NUM_BOUND_STRINGS];
 
-// This index is used to implement a "round-robin" allocating of
-// slots for BindCString. NUM_BOUND_STRINGS slots are reserved.
-// Which means that after NUM_BOUND_STRINGS calls to BindCString,
-// the indices will be reused.
+/* This index is used to implement a "round-robin" allocating of
+ * slots for BindCString. NUM_BOUND_STRINGS slots are reserved.
+ * Which means that after NUM_BOUND_STRINGS calls to BindCString,
+ * the indices will be reused. */
 static int _bind_index;
 
 static const char *GetStringPtr(StringID string)
@@ -99,10 +101,16 @@ static const char *GetStringPtr(StringID string)
 	return _langpack_offs[_langtab_start[string >> 11] + (string & 0x7FF)];
 }
 
-// The highest 8 bits of string contain the "case index".
-// These 8 bits will only be set when FormatString wants to print
-// the string in a different case. No one else except FormatString
-// should set those bits, therefore string CANNOT be StringID, but uint32.
+/** The highest 8 bits of string contain the "case index".
+ * These 8 bits will only be set when FormatString wants to print
+ * the string in a different case. No one else except FormatString
+ * should set those bits, therefore string CANNOT be StringID, but uint32.
+ * @param buffr
+ * @param string
+ * @param argv
+ * @param last
+ * @return a formatted string of char
+ */
 static char *GetStringWithArgs(char *buffr, uint string, const int32 *argv, const char* last)
 {
 	uint index = GB(string,  0, 11);
@@ -122,8 +130,8 @@ static char *GetStringWithArgs(char *buffr, uint string, const int32 *argv, cons
 				return GetSpecialPlayerNameString(buffr, index - 0xE4, argv, last);
 			break;
 
-		// User defined name
 		case 15:
+			/* User defined name */
 			return GetName(buffr, index, last);
 
 		case 26:
@@ -147,8 +155,8 @@ static char *GetStringWithArgs(char *buffr, uint string, const int32 *argv, cons
 			return FormatString(buffr, buff, argv, 0, last);
 
 		case 31:
-			// dynamic strings. These are NOT to be passed through the formatter,
-			// but passed through verbatim.
+			/* dynamic strings. These are NOT to be passed through the formatter,
+			 * but passed through verbatim. */
 			if (index < (STR_SPEC_USERSTRING & 0x7FF)) {
 				return strecpy(buffr, _bound_strings[index], last);
 			}
@@ -184,7 +192,8 @@ char *InlineString(char *buf, StringID string)
  * This function takes a C-string and allocates a temporary string ID.
  * The StringID of the bound string is valid until BindCString is called
  * another NUM_BOUND_STRINGS times. So be careful when using it.
- *
+ * @param str temp string to add
+ * @return the id of that temp string
  * @note formatting a DATE_TINY calls BindCString twice, thus reduces the
  *       amount of 'user' bound strings by 2.
  * @todo rewrite the BindCString system to make the limit flexible and
@@ -198,7 +207,10 @@ StringID BindCString(const char *str)
 	return idx + STR_SPEC_DYNSTRING;
 }
 
-// This function is used to "bind" a C string to a OpenTTD dparam slot.
+/** This function is used to "bind" a C string to a OpenTTD dparam slot.
+ * @param n slot of the string
+ * @param str string to bind
+ */
 void SetDParamStr(uint n, const char *str)
 {
 	SetDParam(n, BindCString(str));
@@ -331,10 +343,10 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 	char* p;
 	int j;
 
-	// multiply by exchange rate
+	/* multiply by exchange rate */
 	number *= spec->rate;
 
-	// convert from negative
+	/* convert from negative */
 	if (number < 0) {
 		buff = strecpy(buff, "-", last);
 		number = -number;
@@ -345,7 +357,7 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 	 * The only remaining value is 1 (suffix), so everything that is not 1 */
 	if (spec->symbol_pos != 1) buff = strecpy(buff, spec->prefix, last);
 
-	// for huge numbers, compact the number into k or M
+	/* for huge numbers, compact the number into k or M */
 	if (compact) {
 		if (number >= 1000000000) {
 			number = (number + 500000) / 1000000;
@@ -356,7 +368,7 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 		}
 	}
 
-	// convert to ascii number and add commas
+	/* convert to ascii number and add commas */
 	p = endof(buf);
 	*--p = '\0';
 	j = 4;
@@ -381,63 +393,63 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 
 static int DeterminePluralForm(int32 n)
 {
-	// The absolute value determines plurality
+	/* The absolute value determines plurality */
 	if (n < 0) n = -n;
 
 	switch (_langpack->plural_form) {
-	// Two forms, singular used for one only
-	// Used in:
-	//   Danish, Dutch, English, German, Norwegian, Swedish, Estonian, Finnish,
-	//   Greek, Hebrew, Italian, Portuguese, Spanish, Esperanto
+	/* Two forms, singular used for one only
+	 * Used in:
+	 *   Danish, Dutch, English, German, Norwegian, Swedish, Estonian, Finnish,
+	 *   Greek, Hebrew, Italian, Portuguese, Spanish, Esperanto */
 	case 0:
 	default:
 		return n != 1;
 
-	// Only one form
-	// Used in:
-	//   Hungarian, Japanese, Korean, Turkish
+	/* Only one form
+	 * Used in:
+	 *   Hungarian, Japanese, Korean, Turkish */
 	case 1:
 		return 0;
 
-	// Two forms, singular used for zero and one
-	// Used in:
-	//   French, Brazilian Portuguese
+	/* Two forms, singular used for zero and one
+	 * Used in:
+	 *   French, Brazilian Portuguese */
 	case 2:
 		return n > 1;
 
-	// Three forms, special case for zero
-	// Used in:
-	//   Latvian
+	/* Three forms, special case for zero
+	 * Used in:
+	 *   Latvian */
 	case 3:
 		return n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;
 
-	// Three forms, special case for one and two
-	// Used in:
-	//   Gaelige (Irish)
+	/* Three forms, special case for one and two
+	 * Used in:
+	 *   Gaelige (Irish) */
 	case 4:
 		return n==1 ? 0 : n==2 ? 1 : 2;
 
-	// Three forms, special case for numbers ending in 1[2-9]
-	// Used in:
-	//   Lithuanian
+	/* Three forms, special case for numbers ending in 1[2-9]
+	 * Used in:
+	 *   Lithuanian */
 	case 5:
 		return n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;
 
-	// Three forms, special cases for numbers ending in 1 and 2, 3, 4, except those ending in 1[1-4]
-	// Used in:
-	//   Croatian, Czech, Russian, Slovak, Ukrainian
+	/* Three forms, special cases for numbers ending in 1 and 2, 3, 4, except those ending in 1[1-4]
+	 * Used in:
+	 *   Croatian, Czech, Russian, Slovak, Ukrainian */
 	case 6:
 		return n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;
 
-	// Three forms, special case for one and some numbers ending in 2, 3, or 4
-	// Used in:
-	//   Polish
+	/* Three forms, special case for one and some numbers ending in 2, 3, or 4
+	 * Used in:
+	 *   Polish */
 	case 7:
 		return n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;
 
-	// Four forms, special case for one and all numbers ending in 02, 03, or 04
-	// Used in:
-	//   Slovenian
+	/* Four forms, special case for one and all numbers ending in 02, 03, or 04
+	 * Used in:
+	 *   Slovenian */
 	case 8:
 		return n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;
 	}
@@ -561,9 +573,9 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 
 			case SCC_CARGO_SHORT: { /* {SHORTCARGO} */
-				// Short description of cargotypes. Layout:
-				// 8-bit = cargo type
-				// 16-bit = cargo count
+				/* Short description of cargotypes. Layout:
+				 * 8-bit = cargo type
+				 * 16-bit = cargo count */
 				StringID cargo_str = GetCargo(GetInt32(&argv))->units_volume;
 				switch (cargo_str) {
 					case STR_TONS: {
@@ -599,13 +611,13 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			} break;
 
 			case SCC_CURRENCY_COMPACT_64: { /* {CURRCOMPACT64} */
-				// 64 bit compact currency-unit
+				/* 64 bit compact currency-unit */
 				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), true, last);
 				break;
 			}
 
 			case SCC_STRING1: { /* {STRING1} */
-				// String that consumes ONE argument
+				/* String that consumes ONE argument */
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 1), last);
 				modifier = 0;
@@ -613,7 +625,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_STRING2: { /* {STRING2} */
-				// String that consumes TWO arguments
+				/* String that consumes TWO arguments */
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 2), last);
 				modifier = 0;
@@ -621,7 +633,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_STRING3: { /* {STRING3} */
-				// String that consumes THREE arguments
+				/* String that consumes THREE arguments */
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 3), last);
 				modifier = 0;
@@ -629,7 +641,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_STRING4: { /* {STRING4} */
-				// String that consumes FOUR arguments
+				/* String that consumes FOUR arguments */
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 4), last);
 				modifier = 0;
@@ -637,7 +649,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_STRING5: { /* {STRING5} */
-				// String that consumes FIVE arguments
+				/* String that consumes FIVE arguments */
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 5), last);
 				modifier = 0;
@@ -653,11 +665,11 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				const Industry* i = GetIndustry(GetInt32(&argv));
 				int32 args[2];
 
-				// industry not valid anymore?
+				/* industry not valid anymore? */
 				if (!IsValidIndustry(i)) break;
 
-				// First print the town name and the industry type name
-				// The string STR_INDUSTRY_PATTERN controls the formatting
+				/* First print the town name and the industry type name
+				 * The string STR_INDUSTRY_PATTERN controls the formatting */
 				args[0] = i->town->index;
 				args[1] = GetIndustrySpec(i->type)->name;
 				buff = FormatString(buff, GetStringPtr(STR_INDUSTRY_FORMAT), args, modifier >> 24, last);
@@ -690,9 +702,9 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_CARGO: { // {CARGO}
-				// Layout now is:
-				//   8bit   - cargo type
-				//   16-bit - cargo count
+				/* Layout now is:
+				 *   8bit   - cargo type
+				 *   16-bit - cargo count */
 				CargoID cargo = GetInt32(&argv);
 				StringID cargo_str = (cargo == CT_INVALID) ? (StringID)STR_8838_N_A : GetCargo(cargo)->quantifier;
 				buff = GetStringWithArgs(buff, cargo_str, argv++, last);
@@ -748,17 +760,17 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				argv++;
 				break;
 
-			// This sets up the gender for the string.
-			// We just ignore this one. It's used in {G 0 Der Die Das} to determine the case.
+			/* This sets up the gender for the string.
+			 * We just ignore this one. It's used in {G 0 Der Die Das} to determine the case. */
 			case SCC_GENDER_INDEX: // {GENDER 0}
 				str++;
 				break;
 
 			case SCC_STRING: {// {STRING}
 				uint str = modifier + GetInt32(&argv);
-				// WARNING. It's prohibited for the included string to consume any arguments.
-				// For included strings that consume argument, you should use STRING1, STRING2 etc.
-				// To debug stuff you can set argv to NULL and it will tell you
+				/* WARNING. It's prohibited for the included string to consume any arguments.
+				 * For included strings that consume argument, you should use STRING1, STRING2 etc.
+				 * To debug stuff you can set argv to NULL and it will tell you */
 				buff = GetStringWithArgs(buff, str, argv, last);
 				modifier = 0;
 				break;
@@ -834,23 +846,23 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_SETCASE: { // {SETCASE}
-				// This is a pseudo command, it's outputted when someone does {STRING.ack}
-				// The modifier is added to all subsequent GetStringWithArgs that accept the modifier.
+				/* This is a pseudo command, it's outputted when someone does {STRING.ack}
+				 * The modifier is added to all subsequent GetStringWithArgs that accept the modifier. */
 				modifier = (byte)*str++ << 24;
 				break;
 			}
 
 			case SCC_SWITCH_CASE: { // {Used to implement case switching}
-				// <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
-				// Each LEN is printed using 2 bytes in big endian order.
+				/* <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
+				 * Each LEN is printed using 2 bytes in big endian order. */
 				uint num = (byte)*str++;
 				while (num) {
 					if ((byte)str[0] == casei) {
-						// Found the case, adjust str pointer and continue
+						/* Found the case, adjust str pointer and continue */
 						str += 3;
 						break;
 					}
-					// Otherwise skip to the next case
+					/* Otherwise skip to the next case */
 					str += 3 + (str[1] << 8) + str[2];
 					num--;
 				}
@@ -1018,20 +1030,20 @@ static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv, 
 			return strecpy(buff, origin_songs_specs[GetInt32(&argv) - 1].song_name, last);
 	}
 
-	// town name?
+	/* town name? */
 	if (IS_INT_INSIDE(ind - 6, 0, SPECSTR_TOWNNAME_LAST-SPECSTR_TOWNNAME_START + 1)) {
 		buff = GetSpecialTownNameString(buff, ind - 6, GetInt32(&argv), last);
 		return strecpy(buff, " Transport", last);
 	}
 
-	// language name?
+	/* language name? */
 	if (IS_INT_INSIDE(ind, (SPECSTR_LANGUAGE_START - 0x70E4), (SPECSTR_LANGUAGE_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_LANGUAGE_START - 0x70E4);
 		return strecpy(buff,
 			i == _dynlang.curr ? _langpack->own_name : _dynlang.ent[i].name, last);
 	}
 
-	// resolution size?
+	/* resolution size? */
 	if (IS_INT_INSIDE(ind, (SPECSTR_RESOLUTION_START - 0x70E4), (SPECSTR_RESOLUTION_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_RESOLUTION_START - 0x70E4);
 		buff += snprintf(
@@ -1040,7 +1052,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv, 
 		return buff;
 	}
 
-	// screenshot format name?
+	/* screenshot format name? */
 	if (IS_INT_INSIDE(ind, (SPECSTR_SCREENSHOT_START - 0x70E4), (SPECSTR_SCREENSHOT_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_SCREENSHOT_START - 0x70E4);
 		return strecpy(buff, GetScreenshotFormatDesc(i), last);
@@ -1050,7 +1062,10 @@ static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv, 
 	return NULL;
 }
 
-// remap a string ID from the old format to the new format
+/**
+ * remap a string ID from the old format to the new format
+ * @param s StringID that requires remapping
+ * @return translated ID*/
 StringID RemapOldStringID(StringID s)
 {
 	switch (s) {
@@ -1103,10 +1118,10 @@ bool ReadLanguagePack(int lang_index)
 		tot_count += num;
 	}
 
-	// Allocate offsets
+	/* Allocate offsets */
 	langpack_offs = MallocT<char*>(tot_count);
 
-	// Fill offsets
+	/* Fill offsets */
 	s = lang_pack->data;
 	for (i = 0; i != tot_count; i++) {
 		len = (byte)*s;
@@ -1133,7 +1148,7 @@ bool ReadLanguagePack(int lang_index)
 /** Determine the current charset based on the environment
  * First check some default values, after this one we passed ourselves
  * and if none exist return the value for $LANG
- * @param environment variable to check conditionally if default ones are not
+ * @param param environment variable to check conditionally if default ones are not
  *        set. Pass NULL if you don't want additional checks.
  * @return return string containing current charset, or NULL if not-determinable */
 const char *GetCurrentLocale(const char *param)

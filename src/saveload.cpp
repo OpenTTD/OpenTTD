@@ -412,8 +412,8 @@ int64 ReadValue(const void *ptr, VarType conv)
 /** Write the value of a setting
  * @param ptr pointer to the variable
  * @param conv type of variable, can be a non-clean type, eg
- * with other flags. It is parsed upon read
- * @param var the new value being given to the variable */
+ *             with other flags. It is parsed upon read
+ * @param val the new value being given to the variable */
 void WriteValue(void *ptr, VarType conv, int64 val)
 {
 	switch (GetVarMemType(conv)) {
@@ -498,6 +498,7 @@ static inline size_t SlCalcNetStringLen(const char *ptr, size_t length)
  * by SlCalcNetStringLen and the length that the index will occupy.
  * @param ptr pointer to the stringbuffer
  * @param length maximum length of the string (buffer size, etc.)
+ * @param conv type of data been used
  * @return return the gross length of the string */
 static inline size_t SlCalcStringLen(const void *ptr, size_t length, VarType conv)
 {
@@ -525,7 +526,7 @@ static inline size_t SlCalcStringLen(const void *ptr, size_t length, VarType con
 /**
  * Save/Load a string.
  * @param ptr the string being manipulated
- * @param the length of the string (full length)
+ * @param length of the string (full length)
  * @param conv must be SLE_FILE_STRING */
 static void SlString(void *ptr, size_t length, VarType conv)
 {
@@ -650,7 +651,9 @@ static inline bool SlSkipVariableOnLoad(const SaveLoad *sld)
 
 /**
  * Calculate the size of an object.
+ * @param object to be measured
  * @param sld The SaveLoad description of the object so we know how to manipulate it
+ * @return size of given objetc
  */
 static size_t SlCalcObjLength(const void *object, const SaveLoad *sld)
 {
@@ -768,7 +771,7 @@ void SlObject(void *object, const SaveLoad *sld)
 
 /**
  * Save or Load (a list of) global variables
- * @param desc The global variable that is being loaded or saved
+ * @param sldg The global variable that is being loaded or saved
  */
 void SlGlobList(const SaveLoadGlobVarList *sldg)
 {

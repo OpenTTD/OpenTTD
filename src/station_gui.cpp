@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file station_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -51,7 +53,8 @@ static StationSortListingTypeFunction StationRatingMaxSorter;
  * goes for the rating: at above 90% orso (224) it is also 'full'
  * Each cargo-bar is 16 pixels wide and 6 pixels high
  * Each rating 14 pixels wide and 1 pixel high and is 1 pixel below the cargo-bar
- * @param x,y X/Y coordinate to draw the box at
+ * @param x coordinate to draw the box at
+ * @param y coordinate to draw the box at
  * @param type Cargo type
  * @param amount Cargo amount
  * @param rating ratings data for that particular cargo */
@@ -230,7 +233,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 						}
 					}
 				}
-				//stations without waiting cargo
+				/* stations without waiting cargo */
 				if (num_waiting_cargo == 0 && include_empty) {
 					station_sort[n++] = st;
 				}
@@ -320,7 +323,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			int cg_ofst;
 			int x = 89;
 			int y = 14;
-			int xb = 2; // offset from left of widget
+			int xb = 2; ///< offset from left of widget
 
 			uint i = 0;
 			for (CargoID c = 0; c < NUM_CARGO; c++) {
@@ -363,7 +366,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				SetDParam(1, st->facilities);
 				x = DrawString(xb, y, STR_3049_0, 0) + 5;
 
-				// show cargo waiting and station ratings
+				/* show cargo waiting and station ratings */
 				for (CargoID j = 0; j < NUM_CARGO; j++) {
 					uint amount = GB(st->goods[j].waiting_acceptance, 0, 12);
 					if (amount != 0) {
@@ -510,7 +513,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 			if (sl->sort_type != e->we.dropdown.index) {
-				// value has changed -> resort
+				/* value has changed -> resort */
 				sl->sort_type = e->we.dropdown.index;
 				station_sort.criteria = sl->sort_type;
 				sl->flags |= SL_RESORT;

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file spritechache.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -237,7 +239,7 @@ static uint32 GetSpriteCacheUsage()
 
 void IncreaseSpriteLRU()
 {
-	// Increase all LRU values
+	/* Increase all LRU values */
 	if (_sprite_lru_counter > 16384) {
 		SpriteID i;
 
@@ -256,15 +258,15 @@ void IncreaseSpriteLRU()
 		_sprite_lru_counter = 0;
 	}
 
-	// Compact sprite cache every now and then.
+	/* Compact sprite cache every now and then. */
 	if (++_compact_cache_counter >= 740) {
 		CompactSpriteCache();
 		_compact_cache_counter = 0;
 	}
 }
 
-// Called when holes in the sprite cache should be removed.
-// That is accomplished by moving the cached data.
+/** Called when holes in the sprite cache should be removed.
+ * That is accomplished by moving the cached data. */
 static void CompactSpriteCache()
 {
 	MemBlock *s;
@@ -277,26 +279,26 @@ static void CompactSpriteCache()
 			MemBlock temp;
 			SpriteID i;
 
-			// Since free blocks are automatically coalesced, this should hold true.
+			/* Since free blocks are automatically coalesced, this should hold true. */
 			assert(!(next->size & S_FREE_MASK));
 
-			// If the next block is the sentinel block, we can safely return
+			/* If the next block is the sentinel block, we can safely return */
 			if (next->size == 0)
 				break;
 
-			// Locate the sprite belonging to the next pointer.
+			/* Locate the sprite belonging to the next pointer. */
 			for (i = 0; GetSpriteCache(i)->ptr != next->data; i++) {
 				assert(i != _spritecache_items);
 			}
 
 			GetSpriteCache(i)->ptr = s->data; // Adjust sprite array entry
-			// Swap this and the next block
+			/* Swap this and the next block */
 			temp = *s;
 			memmove(s, next, next->size);
 			s = NextBlock(s);
 			*s = temp;
 
-			// Coalesce free blocks
+			/* Coalesce free blocks */
 			while (NextBlock(s)->size & S_FREE_MASK) {
 				s->size += NextBlock(s)->size & ~S_FREE_MASK;
 			}
@@ -324,18 +326,18 @@ static void DeleteEntryFromSpriteCache()
 		}
 	}
 
-	// Display an error message and die, in case we found no sprite at all.
-	// This shouldn't really happen, unless all sprites are locked.
+	/* Display an error message and die, in case we found no sprite at all.
+	 * This shouldn't really happen, unless all sprites are locked. */
 	if (best == (uint)-1)
 		error("Out of sprite memory");
 
-	// Mark the block as free (the block must be in use)
+	/* Mark the block as free (the block must be in use) */
 	s = (MemBlock*)GetSpriteCache(best)->ptr - 1;
 	assert(!(s->size & S_FREE_MASK));
 	s->size |= S_FREE_MASK;
 	GetSpriteCache(best)->ptr = NULL;
 
-	// And coalesce adjacent free blocks
+	/* And coalesce adjacent free blocks */
 	for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s)) {
 		if (s->size & S_FREE_MASK) {
 			while (NextBlock(s)->size & S_FREE_MASK) {
@@ -364,10 +366,10 @@ static void* AllocSprite(size_t mem_req)
 				 * big enough for an additional free block? */
 				if (cur_size == mem_req ||
 						cur_size >= mem_req + sizeof(MemBlock)) {
-					// Set size and in use
+					/* Set size and in use */
 					s->size = mem_req;
 
-					// Do we need to inject a free block too?
+					/* Do we need to inject a free block too? */
 					if (cur_size != mem_req) {
 						NextBlock(s)->size = (cur_size - mem_req) | S_FREE_MASK;
 					}
@@ -377,7 +379,7 @@ static void* AllocSprite(size_t mem_req)
 			}
 		}
 
-		// Reached sentinel, but no block found yet. Delete some old entry.
+		/* Reached sentinel, but no block found yet. Delete some old entry. */
 		DeleteEntryFromSpriteCache();
 	}
 }
@@ -392,12 +394,12 @@ const void *GetRawSprite(SpriteID sprite)
 
 	sc = GetSpriteCache(sprite);
 
-	// Update LRU
+	/* Update LRU */
 	sc->lru = ++_sprite_lru_counter;
 
 	p = sc->ptr;
 
-	// Load the sprite, if it is not loaded, yet
+	/* Load the sprite, if it is not loaded, yet */
 	if (p == NULL) p = ReadSprite(sc, sprite);
 	return p;
 }
@@ -405,12 +407,12 @@ const void *GetRawSprite(SpriteID sprite)
 
 void GfxInitSpriteMem()
 {
-	// initialize sprite cache heap
+	/* initialize sprite cache heap */
 	if (_spritecache_ptr == NULL) _spritecache_ptr = (MemBlock*)malloc(SPRITE_CACHE_SIZE);
 
-	// A big free block
+	/* A big free block */
 	_spritecache_ptr->size = (SPRITE_CACHE_SIZE - sizeof(MemBlock)) | S_FREE_MASK;
-	// Sentinel block (identified by size == 0)
+	/* Sentinel block (identified by size == 0) */
 	NextBlock(_spritecache_ptr)->size = 0;
 
 	/* Reset the spritecache 'pool' */

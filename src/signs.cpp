@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file signs.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
@@ -30,6 +32,7 @@ DEFINE_OLD_POOL(Sign, Sign, SignPoolNewBlock, NULL)
 /**
  *
  * Update the coordinate of one sign
+ * @param si Pointer to the Sign
  *
  */
 static void UpdateSignVirtCoords(Sign *si)
@@ -97,6 +100,10 @@ static Sign *AllocateSign()
 	return NULL;
 }
 
+/**
+ * Destroy a sign placed on the map
+ * @param si Pointer to the Sign to remove
+ */
 void DestroySign(Sign *si)
 {
 	DeleteName(si->str);
@@ -107,6 +114,7 @@ void DestroySign(Sign *si)
  * no effect whatsoever except for the colour the sign gets for easy recognition,
  * but everybody is able to rename/remove it.
  * @param tile tile to place sign at
+ * @param flags type of operation
  * @param p1 unused
  * @param p2 unused
  */
@@ -142,8 +150,10 @@ int32 CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * the user wanted to delete it. So delete it. Ownership of signs
  * has no meaning/effect whatsoever except for eyecandy
  * @param tile unused
+ * @param flags type of operation
  * @param p1 index of the sign to be renamed/removed
  * @param p2 unused
+ * @return 0 if succesfull, otherwise CMD_ERROR
  */
 int32 CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -175,7 +185,7 @@ int32 CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Free the name, because we did not assign it yet */
 			DeleteName(str);
 		}
-	} else { /* Delete sign */
+	} else { // Delete sign
 		if (flags & DC_EXEC) {
 			Sign *si = GetSign(p1);
 
@@ -191,9 +201,11 @@ int32 CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /**
- *
  * Callback function that is called after a sign is placed
- *
+ * @param success of the operation
+ * @param tile unused
+ * @param p1 unused
+ * @param p2 unused
  */
 void CcPlaceSign(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
@@ -207,7 +219,7 @@ void CcPlaceSign(bool success, TileIndex tile, uint32 p1, uint32 p2)
  *
  * PlaceProc function, called when someone pressed the button if the
  *  sign-tool is selected
- *
+ * @param tile on which to place the sign
  */
 void PlaceProc_Sign(TileIndex tile)
 {

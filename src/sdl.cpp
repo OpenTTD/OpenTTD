@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file sdl.cpp */
+
 #include "stdafx.h"
 
 #ifdef WITH_SDL

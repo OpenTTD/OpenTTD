@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file subsidy_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"

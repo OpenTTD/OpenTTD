@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file station_map.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "station_map.h"

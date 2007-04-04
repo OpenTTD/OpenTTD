@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file spritecache.h */
+
 #ifndef SPRITECACHE_H
 #define SPRITECACHE_H
 

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file station_map.h */
+
 #ifndef STATION_MAP_H
 #define STATION_MAP_H
 

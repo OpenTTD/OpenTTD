@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file slope.h */
+
 #ifndef SLOPE_H
 #define SLOPE_H
 

@@ -81,7 +81,7 @@ extern const Trackdir _track_exitdir_to_trackdir[][DIAGDIR_END] = {
 	{TRACKDIR_RIGHT_N,  TRACKDIR_RIGHT_S,  INVALID_TRACKDIR,  INVALID_TRACKDIR}
 };
 
-extern const Trackdir _track_enterdir_to_trackdir[][DIAGDIR_END] = { // TODO: replace magic with enums
+extern const Trackdir _track_enterdir_to_trackdir[][DIAGDIR_END] = {
 	{TRACKDIR_X_NE,     INVALID_TRACKDIR,  TRACKDIR_X_SW,     INVALID_TRACKDIR},
 	{INVALID_TRACKDIR,  TRACKDIR_Y_SE,     INVALID_TRACKDIR,  TRACKDIR_Y_NW},
 	{INVALID_TRACKDIR,  TRACKDIR_UPPER_E,  TRACKDIR_UPPER_W,  INVALID_TRACKDIR},

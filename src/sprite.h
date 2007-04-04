@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file sprite.h */
+
 #ifndef SPRITE_H
 #define SPRITE_H
 
@@ -40,7 +42,7 @@ struct DrawBuildingsTileStruct {
 	byte draw_proc;  /* this allows to specify a special drawing procedure.*/
 };
 
-// Iterate through all DrawTileSeqStructs in DrawTileSprites.
+/** Iterate through all DrawTileSeqStructs in DrawTileSprites. */
 #define foreach_draw_tile_seq(idx, list) for (idx = list; ((byte) idx->delta_x) != 0x80; idx++)
 
 

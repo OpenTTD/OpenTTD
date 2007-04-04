@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file ship_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -32,7 +34,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		StringID str;
 
 		SetWindowWidgetDisabledState(w, 2, v->owner != _local_player);
-		// disable service-scroller when interval is set to disabled
+		/* disable service-scroller when interval is set to disabled */
 		SetWindowWidgetDisabledState(w, 5, !_patches.servint_ships);
 		SetWindowWidgetDisabledState(w, 6, !_patches.servint_ships);
 

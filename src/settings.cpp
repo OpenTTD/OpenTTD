@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file
+/** @file settings.cpp
  * All actions handling saving and loading of the settings/configuration goes on in this file.
  * The file consists of four parts:
  * <ol>
@@ -95,10 +95,10 @@ static void *pool_alloc(SettingsMemoryPool **pool, uint size)
 
 	size = ALIGN(size, sizeof(void*));
 
-	// first check if there's memory in the next pool
+	/* first check if there's memory in the next pool */
 	if (p->next && p->next->pos + size <= p->next->size) {
 		p = p->next;
-	// then check if there's not memory in the cur pool
+	/* then check if there's not memory in the cur pool */
 	} else if (p->pos + size > p->size) {
 		SettingsMemoryPool *n = pool_new(size);
 		*pool = n;
@@ -130,7 +130,7 @@ static void pool_free(SettingsMemoryPool **pool)
 	}
 }
 
-// structs describing the ini format.
+/** structs describing the ini format. */
 struct IniItem {
 	char *name;
 	char *value;
@@ -139,21 +139,21 @@ struct IniItem {
 };
 
 struct IniGroup {
-	char *name; // name of group
-	char *comment; //comment for group
+	char *name;        ///< name of group
+	char *comment;     ///<comment for group
 	IniItem *item, **last_item;
 	IniGroup *next;
 	IniFile *ini;
-	IniGroupType type; // type of group
+	IniGroupType type; ///< type of group
 };
 
 struct IniFile {
 	SettingsMemoryPool *pool;
 	IniGroup *group, **last_group;
-	char *comment; // last comment in file
+	char *comment;     ///< last comment in file
 };
 
-// allocate an inifile object
+/** allocate an inifile object */
 static IniFile *ini_alloc()
 {
 	IniFile *ini;
@@ -167,7 +167,7 @@ static IniFile *ini_alloc()
 	return ini;
 }
 
-// allocate an ini group object
+/** allocate an ini group object */
 static IniGroup *ini_group_alloc(IniFile *ini, const char *grpt, int len)
 {
 	IniGroup *grp = (IniGroup*)pool_alloc(&ini->pool, sizeof(IniGroup));
@@ -199,7 +199,7 @@ static IniItem *ini_item_alloc(IniGroup *group, const char *name, int len)
 	return item;
 }
 
-// load an ini file into the "abstract" format
+/** load an ini file into the "abstract" format */
 static IniFile *ini_load(const char *filename)
 {
 	char buffer[1024], c, *s, *t, *e;
@@ -217,23 +217,23 @@ static IniFile *ini_load(const char *filename)
 	in = fopen(filename, "r");
 	if (in == NULL) return ini;
 
-	// for each line in the file
+	/* for each line in the file */
 	while (fgets(buffer, sizeof(buffer), in)) {
 
-		// trim whitespace from the left side
+		/* trim whitespace from the left side */
 		for (s = buffer; *s == ' ' || *s == '\t'; s++);
 
-		// trim whitespace from right side.
+		/* trim whitespace from right side. */
 		e = s + strlen(s);
 		while (e > s && ((c=e[-1]) == '\n' || c == '\r' || c == ' ' || c == '\t')) e--;
 		*e = '\0';
 
-		// skip comments and empty lines
+		/* skip comments and empty lines */
 		if (*s == '#' || *s == ';' || *s == '\0') {
 			uint ns = comment_size + (e - s + 1);
 			uint a = comment_alloc;
 			uint pos;
-			// add to comment
+			/* add to comment */
 			if (ns > a) {
 				a = max(a, 128U);
 				do a*=2; while (a < ns);
@@ -246,7 +246,7 @@ static IniFile *ini_load(const char *filename)
 			continue;
 		}
 
-		// it's a group?
+		/* it's a group? */
 		if (s[0] == '[') {
 			if (e[-1] != ']') {
 				ShowInfoF("ini: invalid group name '%s'", buffer);
@@ -260,30 +260,30 @@ static IniFile *ini_load(const char *filename)
 				comment_size = 0;
 			}
 		} else if (group) {
-			// find end of keyname
+			/* find end of keyname */
 			for (t = s; *t != '\0' && *t != '=' && *t != '\t' && *t != ' '; t++);
 
-			// it's an item in an existing group
+			/* it's an item in an existing group */
 			item = ini_item_alloc(group, s, t-s);
 			if (comment_size) {
 				item->comment = (char*)pool_strdup(&ini->pool, comment, comment_size);
 				comment_size = 0;
 			}
 
-			// find start of parameter
+			/* find start of parameter */
 			while (*t == '=' || *t == ' ' || *t == '\t') t++;
 
 
-			// remove starting quotation marks
+			/* remove starting quotation marks */
 			if (*t == '\"') t++;
-			// remove ending quotation marks
+			/* remove ending quotation marks */
 			e = t + strlen(t);
 			if (e > t && e[-1] == '\"') e--;
 			*e = '\0';
 
 			item->value = (char*)pool_strdup(&ini->pool, t, e - t);
 		} else {
-			// it's an orphan item
+			/* it's an orphan item */
 			ShowInfoF("ini: '%s' outside of group", buffer);
 		}
 	}
@@ -299,25 +299,25 @@ static IniFile *ini_load(const char *filename)
 	return ini;
 }
 
-// lookup a group or make a new one
+/** lookup a group or make a new one */
 static IniGroup *ini_getgroup(IniFile *ini, const char *name, int len)
 {
 	IniGroup *group;
 
 	if (len == -1) len = strlen(name);
 
-	// does it exist already?
+	/* does it exist already? */
 	for (group = ini->group; group; group = group->next)
 		if (!memcmp(group->name, name, len) && group->name[len] == 0)
 			return group;
 
-	// otherwise make a new one
+	/* otherwise make a new one */
 	group = ini_group_alloc(ini, name, len);
 	group->comment = (char*)pool_strdup(&ini->pool, "\n", 1);
 	return group;
 }
 
-// lookup an item or make a new one
+/** lookup an item or make a new one */
 static IniItem *ini_getitem(IniGroup *group, const char *name, bool create)
 {
 	IniItem *item;
@@ -328,11 +328,11 @@ static IniItem *ini_getitem(IniGroup *group, const char *name, bool create)
 
 	if (!create) return NULL;
 
-	// otherwise make a new one
+	/* otherwise make a new one */
 	return ini_item_alloc(group, name, len);
 }
 
-// save ini file from the "abstract" format.
+/** save ini file from the "abstract" format. */
 static bool ini_save(const char *filename, IniFile *ini)
 {
 	FILE *f;
@@ -380,13 +380,13 @@ static int lookup_oneofmany(const char *many, const char *one, int onelen)
 
 	if (onelen == -1) onelen = strlen(one);
 
-	// check if it's an integer
+	/* check if it's an integer */
 	if (*one >= '0' && *one <= '9')
 		return strtoul(one, NULL, 0);
 
 	idx = 0;
 	for (;;) {
-		// find end of item
+		/* find end of item */
 		s = many;
 		while (*s != '|' && *s != 0) s++;
 		if (s - many == onelen && !memcmp(one, many, onelen)) return idx;
@@ -408,7 +408,7 @@ static uint32 lookup_manyofmany(const char *many, const char *str)
 	uint32 res = 0;
 
 	for (;;) {
-		// skip "whitespace"
+		/* skip "whitespace" */
 		while (*str == ' ' || *str == '\t' || *str == '|') str++;
 		if (*str == 0) break;
 
@@ -522,7 +522,7 @@ static void make_oneofmany(char *buf, const char *many, int id)
 {
 	int orig_id = id;
 
-	// Look for the id'th element
+	/* Look for the id'th element */
 	while (--id >= 0) {
 		for (; *many != '|'; many++) {
 			if (*many == '\0') { // not found
@@ -533,7 +533,7 @@ static void make_oneofmany(char *buf, const char *many, int id)
 		many++; // pass the |-character
 	}
 
-	// copy string until next item (|) or the end of the list if this is the last one
+	/* copy string until next item (|) or the end of the list if this is the last one */
 	while (*many != '\0' && *many != '|') *buf++ = *many++;
 	*buf = '\0';
 }
@@ -685,7 +685,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 
 		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
 
-		// XXX - wtf is this?? (group override?)
+		/* XXX - wtf is this?? (group override?) */
 		s = strchr(sdb->name, '.');
 		if (s != NULL) {
 			group = ini_getgroup(ini, sdb->name, s - sdb->name);
@@ -761,7 +761,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
 		if (sld->conv & SLF_CONFIG_NO) continue;
 
-		// XXX - wtf is this?? (group override?)
+		/* XXX - wtf is this?? (group override?) */
 		s = strchr(sdb->name, '.');
 		if (s != NULL) {
 			group = ini_getgroup(ini, sdb->name, s - sdb->name);
@@ -776,7 +776,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		ptr = GetVariableAddress(object, sld);
 
 		if (item->value != NULL) {
-			// check if the value is the same as the old value
+			/* check if the value is the same as the old value */
 			const void *p = string_to_val(sdb, item->value);
 
 			/* The main type of a variable/setting is in bytes 8-15
@@ -1069,7 +1069,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 #include "gui.h"
 #include "town.h"
 #include "gfx.h"
-// virtual PositionMainToolbar function, calls the right one.
+/* virtual PositionMainToolbar function, calls the right one.*/
 static int32 v_PositionMainToolbar(int32 p1)
 {
 	if (_game_mode != GM_MENU) PositionMainToolbar(NULL);
@@ -1460,7 +1460,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDVAR (Patches, npf_road_drive_through_penalty, SLE_UINT, 47, SL_MAX_VERSION, 0, 0,  8 * NPF_TILE_LENGTH, 0, 1000000, 0, STR_NULL, NULL),
 
 
-	// The maximum number of nodes to search
+	/* The maximum number of nodes to search */
 	SDT_CONDBOOL(Patches, yapf.disable_node_optimization  ,           28, SL_MAX_VERSION, 0, 0, false                   ,                       STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.max_search_nodes           , SLE_UINT, 28, SL_MAX_VERSION, 0, 0, 10000                   ,      500, 1000000, 0, STR_NULL, NULL),
 	SDT_CONDBOOL(Patches, yapf.rail_firstred_twoway_eol   ,           28, SL_MAX_VERSION, 0, 0,  true                   ,                       STR_NULL, NULL),
@@ -1472,22 +1472,22 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDVAR (Patches, yapf.rail_slope_penalty         , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,     2 * YAPF_TILE_LENGTH,        0, 1000000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.rail_curve45_penalty       , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,     1 * YAPF_TILE_LENGTH,        0, 1000000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.rail_curve90_penalty       , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,     6 * YAPF_TILE_LENGTH,        0, 1000000, 0, STR_NULL, NULL),
-	// This penalty is applied when a train reverses inside a depot
+	/* This penalty is applied when a train reverses inside a depot */
 	SDT_CONDVAR (Patches, yapf.rail_depot_reverse_penalty , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,    50 * YAPF_TILE_LENGTH,        0, 1000000, 0, STR_NULL, NULL),
-	// This is the penalty for level crossings (for trains only)
+	/* This is the penalty for level crossings (for trains only) */
 	SDT_CONDVAR (Patches, yapf.rail_crossing_penalty      , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,     3 * YAPF_TILE_LENGTH,        0, 1000000, 0, STR_NULL, NULL),
-	// look-ahead how many signals are checked
+	/* look-ahead how many signals are checked */
 	SDT_CONDVAR (Patches, yapf.rail_look_ahead_max_signals, SLE_UINT, 28, SL_MAX_VERSION, 0, 0,    10                   ,        1,     100, 0, STR_NULL, NULL),
-	// look-ahead n-th red signal penalty polynomial: penalty = p2 * n^2 + p1 * n + p0
+	/* look-ahead n-th red signal penalty polynomial: penalty = p2 * n^2 + p1 * n + p0 */
 	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p0  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,   500                   , -1000000, 1000000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p1  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,  -100                   , -1000000, 1000000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p2  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,     5                   , -1000000, 1000000, 0, STR_NULL, NULL),
-	// penalties for too long or too short station platforms
+	/* penalties for too long or too short station platforms */
 	SDT_CONDVAR (Patches, yapf.rail_longer_platform_penalty,           SLE_UINT, 33, SL_MAX_VERSION, 0, 0,  8 * YAPF_TILE_LENGTH, 0,   20000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.rail_longer_platform_per_tile_penalty,  SLE_UINT, 33, SL_MAX_VERSION, 0, 0,  0 * YAPF_TILE_LENGTH, 0,   20000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.rail_shorter_platform_penalty,          SLE_UINT, 33, SL_MAX_VERSION, 0, 0, 40 * YAPF_TILE_LENGTH, 0,   20000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.rail_shorter_platform_per_tile_penalty, SLE_UINT, 33, SL_MAX_VERSION, 0, 0,  0 * YAPF_TILE_LENGTH, 0,   20000, 0, STR_NULL, NULL),
-	// road vehicles - penalties
+	/* road vehicles - penalties */
 	SDT_CONDVAR (Patches, yapf.road_slope_penalty                    , SLE_UINT, 33, SL_MAX_VERSION, 0, 0,  2 * YAPF_TILE_LENGTH, 0, 1000000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.road_curve_penalty                    , SLE_UINT, 33, SL_MAX_VERSION, 0, 0,  1 * YAPF_TILE_LENGTH, 0, 1000000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.road_crossing_penalty                 , SLE_UINT, 33, SL_MAX_VERSION, 0, 0,  3 * YAPF_TILE_LENGTH, 0, 1000000, 0, STR_NULL, NULL),

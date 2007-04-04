@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file signs.h */
+
 #ifndef SIGNS_H
 #define SIGNS_H
 
@@ -62,7 +64,7 @@ VARDEF bool _sign_sort_dirty;
 void UpdateAllSignVirtCoords();
 void PlaceProc_Sign(TileIndex tile);
 
-/* misc.c */
+/* misc.cpp */
 void ShowRenameSignWindow(const Sign *si);
 
 void ShowSignList();

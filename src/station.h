@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file station.h */
+
 #ifndef STATION_H
 #define STATION_H
 
@@ -82,8 +84,8 @@ protected:
 
 struct StationSpecList {
 	const StationSpec *spec;
-	uint32 grfid;      /// GRF ID of this custom station
-	uint8  localidx;   /// Station ID within GRF of station
+	uint32 grfid;      ///< GRF ID of this custom station
+	uint8  localidx;   ///< Station ID within GRF of station
 };
 
 /** StationRect - used to track station spread out rectangle - cheaper than scanning whole map */
@@ -142,7 +144,7 @@ struct Station {
 	byte facilities;
 	byte airport_type;
 
-	// trainstation width/height
+	/* trainstation width/height */
 	byte trainst_w, trainst_h;
 
 	/** List of custom stations (StationSpecs) allocated to the station */
@@ -151,7 +153,7 @@ struct Station {
 
 	Date build_date;
 
-	uint64 airport_flags;   /// stores which blocks on the airport are taken. was 16 bit earlier on, then 32
+	uint64 airport_flags;   ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
 	StationID index;
 
 	byte last_vehicle_type;

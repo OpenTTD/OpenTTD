@@ -1,26 +1,28 @@
 /* $Id$ */
 
+/** @file string.h */
+
 #ifndef STRING_H
 #define STRING_H
 
 #include "macros.h"
 
-/*
- * dst: destination buffer
- * src: string to copy/concatenate
- * size: size of the destination buffer
- * usage: ttd_strlcpy(dst, src, lengthof(dst));
+/**
+ * usage ttd_strlcpy(dst, src, lengthof(dst));
+ * @param dst destination buffer
+ * @param src string to copy/concatenate
+ * @param size size of the destination buffer
  */
 void ttd_strlcat(char *dst, const char *src, size_t size);
 void ttd_strlcpy(char *dst, const char *src, size_t size);
 
-/*
- * dst: destination buffer
- * src: string to copy
- * last: pointer to the last element in the dst array
- *       if NULL no boundary check is performed
- * returns a pointer to the terminating \0 in the destination buffer
+/**
  * usage: strecpy(dst, src, lastof(dst));
+ * @param dst destination buffer
+ * @param src string to copy
+ * @param last pointer to the last element in the dst array
+ *             if NULL no boundary check is performed
+ * @return a pointer to the terminating \0 in the destination buffer
  */
 char* strecat(char* dst, const char* src, const char* last);
 char* strecpy(char* dst, const char* src, const char* last);
@@ -38,9 +40,9 @@ void str_strip_colours(char *str);
  * Valid filter types for IsValidChar.
  */
 enum CharSetFilter {
-	CS_ALPHANUMERAL,      //! Both numeric and alphabetic and spaces and stuff
-	CS_NUMERAL,           //! Only numeric ones
-	CS_ALPHA,             //! Only alphabetic values
+	CS_ALPHANUMERAL,      ///< Both numeric and alphabetic and spaces and stuff
+	CS_NUMERAL,           ///< Only numeric ones
+	CS_ALPHA,             ///< Only alphabetic values
 };
 
 /** Convert the given string to lowercase, only works with ASCII! */
@@ -105,6 +107,8 @@ static inline size_t Utf8CharLen(WChar c)
  * Return the length of an UTF-8 encoded value based on a single char. This
  * char should be the first byte of the UTF-8 encoding. If not, or encoding
  * is invalid, return value is 0
+ * @param c char to query length of
+ * @return requested size
  */
 static inline size_t Utf8EncodedCharLen(char c)
 {
@@ -127,7 +131,7 @@ static inline bool IsUtf8Part(char c)
 /**
  * Retrieve the previous UNICODE character in an UTF-8 encoded string.
  * @param s char pointer pointing to (the first char of) the next character
- * @returns a pointer in 's' to the previous UNICODE character's first byte
+ * @return a pointer in 's' to the previous UNICODE character's first byte
  * @note The function should not be used to determine the length of the previous
  * encoded char because it might be an invalid/corrupt start-sequence
  */

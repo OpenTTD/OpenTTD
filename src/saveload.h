@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file saveload.h */
+
 #ifndef SAVELOAD_H
 #define SAVELOAD_H
 
@@ -10,9 +12,9 @@
 #define SIZE_MAX ((size_t)-1)
 
 enum SaveOrLoadResult {
-	SL_OK     = 0, // completed successfully
-	SL_ERROR  = 1, // error that was caught before internal structures were modified
-	SL_REINIT = 2, // error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
+	SL_OK     = 0, ///< completed successfully
+	SL_ERROR  = 1, ///< error that was caught before internal structures were modified
+	SL_REINIT = 2, ///< error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
 };
 
 enum SaveOrLoadMode {
