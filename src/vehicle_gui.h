@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file vehicle_gui.h */
+
 #ifndef VEHICLE_GUI_H
 #define VEHICLE_GUI_H
 

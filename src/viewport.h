@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file viewport.h */
+
 #ifndef VIEWPORT_H
 #define VIEWPORT_H
 
@@ -15,7 +17,7 @@ struct ViewPort {
 
 void SetSelectionRed(bool);
 
-/* viewport.c */
+/* viewport.cpp */
 void InitViewports();
 void DeleteWindowViewport(Window *w);
 void AssignWindowViewport(Window *w, int x, int y,
@@ -74,28 +76,28 @@ enum {
 	VPM_SIGNALDIRS      = 6
 };
 
-// viewport highlight mode (for highlighting tiles below cursor)
+/* viewport highlight mode (for highlighting tiles below cursor) */
 enum {
-	VHM_NONE    = 0, // default
-	VHM_RECT    = 1, // rectangle (stations, depots, ...)
-	VHM_POINT   = 2, // point (lower land, raise land, level land, ...)
-	VHM_SPECIAL = 3, // special mode used for highlighting while dragging (and for tunnels/docks)
-	VHM_DRAG    = 4, // dragging items in the depot windows
-	VHM_RAIL    = 5, // rail pieces
+	VHM_NONE    = 0, ///< default
+	VHM_RECT    = 1, ///< rectangle (stations, depots, ...)
+	VHM_POINT   = 2, ///< point (lower land, raise land, level land, ...)
+	VHM_SPECIAL = 3, ///< special mode used for highlighting while dragging (and for tunnels/docks)
+	VHM_DRAG    = 4, ///< dragging items in the depot windows
+	VHM_RAIL    = 5, ///< rail pieces
 };
 
 void VpSelectTilesWithMethod(int x, int y, int method);
 
-// highlighting draw styles
+/* highlighting draw styles */
 typedef byte HighLightStyle;
 enum HighLightStyles {
 	HT_NONE   = 0x00,
 	HT_RECT   = 0x80,
 	HT_POINT  = 0x40,
-	HT_LINE   = 0x20, /* used for autorail highlighting (longer streches)
-	                   * (uses lower bits to indicate direction) */
-	HT_RAIL   = 0x10, /* autorail (one piece)
-	                  * (uses lower bits to indicate direction) */
+	HT_LINE   = 0x20,    ///< used for autorail highlighting (longer streches)
+	                     ///< (uses lower bits to indicate direction)
+	HT_RAIL   = 0x10,    ///< autorail (one piece)
+	                     ///< (uses lower bits to indicate direction)
 	HT_DRAG_MASK = 0xF0, ///< masks the drag-type
 
 	/* lower bits (used with HT_LINE and HT_RAIL):
@@ -138,7 +140,7 @@ struct TileHighlightData {
 };
 
 
-// common button handler
+/* common button handler */
 bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, PlaceProc *placeproc);
 
 VARDEF Point _tile_fract_coords;

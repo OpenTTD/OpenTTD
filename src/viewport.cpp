@@ -25,7 +25,7 @@
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 
-// XXX - maximum viewports is maximum windows - 2 (main toolbar + status bar)
+/* XXX - maximum viewports is maximum windows - 2 (main toolbar + status bar) */
 static ViewPort _viewports[25 - 2];
 static uint32 _active_viewports;    ///< bitmasked variable where each bit signifies if a viewport is in use or not
 assert_compile(lengthof(_viewports) < sizeof(_active_viewports) * 8);
@@ -91,8 +91,8 @@ struct ParentSpriteToDraw {
 	byte zmax;
 };
 
-// Quick hack to know how much memory to reserve when allocating from the spritelist
-// to prevent a buffer overflow.
+/* Quick hack to know how much memory to reserve when allocating from the spritelist
+ * to prevent a buffer overflow. */
 #define LARGEST_SPRITELIST_STRUCT ParentSpriteToDraw
 
 struct ViewportDrawer {
@@ -438,7 +438,7 @@ void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z)
 void DrawGroundSprite(SpriteID image, SpriteID pal)
 {
 	if (_offset_ground_sprites) {
-		// offset ground sprite because of foundation?
+		/* offset ground sprite because of foundation? */
 		AddChildSpriteScreen(image, pal, _cur_vd->offs_x, _cur_vd->offs_y);
 	} else {
 		_added_tile_sprite = true;
@@ -493,12 +493,12 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	ps = (ParentSpriteToDraw*)vd->spritelist_mem;
 
 	if (vd->parent_list >= vd->eof_parent_list) {
-		// This can happen rarely, mostly when you zoom out completely
-		//  and have a lot of stuff that moves (and is added to the
-		//  sort-list, this function). To solve it, increase
-		//  parent_list somewhere below to a higher number.
-		// This can not really hurt you, it just gives some black
-		//  spots on the screen ;)
+		/* This can happen rarely, mostly when you zoom out completely
+		 *  and have a lot of stuff that moves (and is added to the
+		 *  sort-list, this function). To solve it, increase
+		 *  parent_list somewhere below to a higher number.
+		 * This can not really hurt you, it just gives some black
+		 *  spots on the screen ;) */
 		DEBUG(sprite, 0, "Out of sprite memory (parent_list)");
 		return;
 	}
@@ -646,23 +646,23 @@ static void DrawTileSelection(const TileInfo *ti)
 	SpriteID image;
 	SpriteID pal;
 
-	// Draw a red error square?
+	/* Draw a red error square? */
 	if (_thd.redsq != 0 && _thd.redsq == ti->tile) {
 		DrawSelectionSprite(SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh], PALETTE_TILE_RED_PULSATING, ti);
 		return;
 	}
 
-	// no selection active?
+	/* no selection active? */
 	if (_thd.drawstyle == 0) return;
 
-	// Inside the inner area?
+	/* Inside the inner area? */
 	if (IS_INSIDE_1D(ti->x, _thd.pos.x, _thd.size.x) &&
 			IS_INSIDE_1D(ti->y, _thd.pos.y, _thd.size.y)) {
 		if (_thd.drawstyle & HT_RECT) {
 			image = SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh];
 			DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE, ti);
 		} else if (_thd.drawstyle & HT_POINT) {
-			// Figure out the Z coordinate for the single dot.
+			/* Figure out the Z coordinate for the single dot. */
 			byte z = ti->z;
 			if (ti->tileh & SLOPE_N) {
 				z += TILE_HEIGHT;
@@ -670,7 +670,7 @@ static void DrawTileSelection(const TileInfo *ti)
 			}
 			DrawGroundSpriteAt(_cur_dpi->zoom != 2 ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti->x, ti->y, z);
 		} else if (_thd.drawstyle & HT_RAIL /*&& _thd.place_mode == VHM_RAIL*/) {
-			// autorail highlight piece under cursor
+			/* autorail highlight piece under cursor */
 			uint type = _thd.drawstyle & 0xF;
 			int offset;
 
@@ -688,7 +688,7 @@ static void DrawTileSelection(const TileInfo *ti)
 			DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti);
 
 		} else if (IsPartOfAutoLine(ti->x, ti->y)) {
-			// autorail highlighting long line
+			/* autorail highlighting long line */
 			int dir = _thd.drawstyle & ~0xF0;
 			int offset;
 			uint side;
@@ -714,12 +714,12 @@ static void DrawTileSelection(const TileInfo *ti)
 		return;
 	}
 
-	// Check if it's inside the outer area?
+	/* Check if it's inside the outer area? */
 	if (_thd.outersize.x &&
 			_thd.size.x < _thd.size.x + _thd.outersize.x &&
 			IS_INSIDE_1D(ti->x, _thd.pos.x + _thd.offs.x, _thd.size.x + _thd.outersize.x) &&
 			IS_INSIDE_1D(ti->y, _thd.pos.y + _thd.offs.y, _thd.size.y + _thd.outersize.y)) {
-		// Draw a blue rect.
+		/* Draw a blue rect. */
 		DrawSelectionSprite(SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh], PALETTE_SEL_TILE_BLUE, ti);
 		return;
 	}
@@ -734,11 +734,11 @@ static void ViewportAddLandscape()
 
 	_cur_ti = &ti;
 
-	// Transform into tile coordinates and round to closest full tile
+	/* Transform into tile coordinates and round to closest full tile */
 	x = ((vd->dpi.top >> 1) - (vd->dpi.left >> 2)) & ~0xF;
 	y = ((vd->dpi.top >> 1) + (vd->dpi.left >> 2) - 0x10) & ~0xF;
 
-	// determine size of area
+	/* determine size of area */
 	{
 		Point pt = RemapCoords(x, y, 241);
 		width = (vd->dpi.left + vd->dpi.width - pt.x + 95) >> 6;
@@ -1128,7 +1128,7 @@ static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 					}
 				}
 
-				// Swap the two sprites ps and ps2 using bubble-sort algorithm.
+				/* Swap the two sprites ps and ps2 using bubble-sort algorithm. */
 				psd3 = psd;
 				do {
 					ParentSpriteToDraw* temp = *psd3;
@@ -1273,8 +1273,8 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	ViewportAddSigns(&vd.dpi);
 	ViewportAddWaypoints(&vd.dpi);
 
-	// This assert should never happen (because the length of the parent_list
-	//  is checked)
+	/* This assert should never happen (because the length of the parent_list
+	 *  is checked) */
 	assert(vd.parent_list <= endof(parent_list));
 
 	if (vd.first_tile != NULL) ViewportDrawTileSprites(vd.first_tile);
@@ -1290,8 +1290,8 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	_cur_dpi = old_dpi;
 }
 
-// Make sure we don't draw a too big area at a time.
-// If we do, the sprite memory will overflow.
+/** Make sure we don't draw a too big area at a time.
+ * If we do, the sprite memory will overflow. */
 static void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int bottom)
 {
 	if (((bottom - top) * (right - left) << (2 * vp->zoom)) > 180000) {
@@ -1359,20 +1359,20 @@ void UpdateViewportPosition(Window *w)
 		int vx;
 		int vy;
 
-		// Center of the viewport is hot spot
+		/* Center of the viewport is hot spot */
 		x = WP(w,vp_d).scrollpos_x + vp->virtual_width / 2;
 		y = WP(w,vp_d).scrollpos_y + vp->virtual_height / 2;
-		// Convert viewport coordinates to map coordinates
-		// Calculation is scaled by 4 to avoid rounding errors
+		/* Convert viewport coordinates to map coordinates
+		 * Calculation is scaled by 4 to avoid rounding errors */
 		vx = -x + y * 2;
 		vy =  x + y * 2;
-		// clamp to size of map
+		/* clamp to size of map */
 		vx = clamp(vx, 0 * 4, MapMaxX() * TILE_SIZE * 4);
 		vy = clamp(vy, 0 * 4, MapMaxY() * TILE_SIZE * 4);
-		// Convert map coordinates to viewport coordinates
+		/* Convert map coordinates to viewport coordinates */
 		x = (-vx + vy) / 2;
 		y = ( vx + vy) / 4;
-		// Set position
+		/* Set position */
 		WP(w, vp_d).scrollpos_x = x - vp->virtual_width / 2;
 		WP(w, vp_d).scrollpos_y = y - vp->virtual_height / 2;
 
@@ -1859,13 +1859,13 @@ void SetTileSelectBigSize(int ox, int oy, int sx, int sy)
 	_thd.new_outersize.y = sy * TILE_SIZE;
 }
 
-/* returns the best autorail highlight type from map coordinates */
+/** returns the best autorail highlight type from map coordinates */
 static byte GetAutorailHT(int x, int y)
 {
 	return HT_RAIL | _AutorailPiece[x & 0xF][y & 0xF];
 }
 
-// called regular to update tile highlighting in all cases
+/** called regular to update tile highlighting in all cases */
 void UpdateTileSelection()
 {
 	int x1;
@@ -1912,13 +1912,13 @@ void UpdateTileSelection()
 		}
 	}
 
-	// redraw selection
+	/* redraw selection */
 	if (_thd.drawstyle != _thd.new_drawstyle ||
 			_thd.pos.x != _thd.new_pos.x || _thd.pos.y != _thd.new_pos.y ||
 			_thd.size.x != _thd.new_size.x || _thd.size.y != _thd.new_size.y ||
 	    _thd.outersize.x != _thd.new_outersize.x ||
 	    _thd.outersize.y != _thd.new_outersize.y) {
-		// clear the old selection?
+		/* clear the old selection? */
 		if (_thd.drawstyle) SetSelectionTilesDirty();
 
 		_thd.drawstyle = _thd.new_drawstyle;
@@ -1927,12 +1927,12 @@ void UpdateTileSelection()
 		_thd.outersize = _thd.new_outersize;
 		_thd.dirty = 0xff;
 
-		// draw the new selection?
+		/* draw the new selection? */
 		if (_thd.new_drawstyle) SetSelectionTilesDirty();
 	}
 }
 
-// highlighting tiles while only going over them with the mouse
+/** highlighting tiles while only going over them with the mouse */
 void VpStartPlaceSizing(TileIndex tile, int user)
 {
 	_thd.userdata = user;
@@ -1982,7 +1982,7 @@ static void VpStartPreSizing()
 	_special_mouse_mode = WSM_PRESIZE;
 }
 
-/* returns information about the 2x1 piece to be build.
+/** returns information about the 2x1 piece to be build.
  * The lower bits (0-3) are the track type. */
 static byte Check2x1AutoRail(int mode)
 {
@@ -2133,7 +2133,7 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 
 static const StringID measure_strings_length[] = {STR_NULL, STR_MEASURE_LENGTH, STR_MEASURE_LENGTH_HEIGHTDIFF};
 
-// while dragging
+/** while dragging */
 static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int method)
 {
 	HighLightStyle b;
@@ -2384,7 +2384,7 @@ calc_heightdiff_single_direction:;
 	_thd.selend.y = y;
 }
 
-// while dragging
+/** while dragging */
 bool VpHandlePlaceSizingDrag()
 {
 	Window *w;
@@ -2394,14 +2394,14 @@ bool VpHandlePlaceSizingDrag()
 
 	e.we.place.userdata = _thd.userdata;
 
-	// stop drag mode if the window has been closed
+	/* stop drag mode if the window has been closed */
 	w = FindWindowById(_thd.window_class,_thd.window_number);
 	if (w == NULL) {
 		ResetObjectToPlace();
 		return false;
 	}
 
-	// while dragging execute the drag procedure of the corresponding window (mostly VpSelectTilesWithMethod() )
+	/* while dragging execute the drag procedure of the corresponding window (mostly VpSelectTilesWithMethod() ) */
 	if (_left_button_down) {
 		e.event = WE_PLACE_DRAG;
 		e.we.place.pt = GetTileBelowCursor();
@@ -2409,8 +2409,8 @@ bool VpHandlePlaceSizingDrag()
 		return false;
 	}
 
-	// mouse button released..
-	// keep the selected tool, but reset it to the original mode.
+	/* mouse button released..
+	 * keep the selected tool, but reset it to the original mode. */
 	_special_mouse_mode = WSM_NONE;
 	if (_thd.next_drawstyle == HT_RECT) {
 		_thd.place_mode = VHM_RECT;
@@ -2425,7 +2425,7 @@ bool VpHandlePlaceSizingDrag()
 	}
 	SetTileSelectSize(1, 1);
 
-	// and call the mouseup event.
+	/* and call the mouseup event. */
 	e.event = WE_PLACE_MOUSEUP;
 	e.we.place.pt = _thd.selend;
 	e.we.place.tile = TileVirtXY(e.we.place.pt.x, e.we.place.pt.y);
@@ -2446,7 +2446,7 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, byte mode, WindowClass window
 {
 	Window *w;
 
-	// undo clicking on button
+	/* undo clicking on button */
 	if (_thd.place_mode != 0) {
 		_thd.place_mode = 0;
 		w = FindWindowById(_thd.window_class, _thd.window_number);

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file vehicle.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "road_map.h"
@@ -104,7 +106,7 @@ void VehicleServiceInDepot(Vehicle *v)
 bool VehicleNeedsService(const Vehicle *v)
 {
 	if (v->vehstatus & VS_CRASHED)
-		return false; /* Crashed vehicles don't need service anymore */
+		return false; // Crashed vehicles don't need service anymore
 
 	if (_patches.no_servicing_if_no_breakdowns && _opt.diff.vehicle_breakdowns == 0) {
 		return EngineHasReplacementForPlayer(GetPlayer(v->owner), v->engine_type);  /* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off */
@@ -215,7 +217,7 @@ void VehiclePositionChanged(Vehicle *v)
 	v->bottom_coord = pt.y + spr->height + 2;
 }
 
-// Called after load to update coordinates
+/** Called after load to update coordinates */
 void AfterLoadVehicles()
 {
 	Vehicle *v;
@@ -311,7 +313,7 @@ Vehicle *ForceAllocateSpecialVehicle()
 	return NULL;
 }
 
-/*
+/**
  * finds a free vehicle in the memory or allocates a new one
  * returns a pointer to the first free vehicle or NULL if all vehicles are in use
  * *skip_vehicles is an offset to where in the array we should begin looking
@@ -327,7 +329,7 @@ static Vehicle *AllocateSingleVehicle(VehicleID *skip_vehicles)
 	const int offset = (1 << Vehicle_POOL_BLOCK_SIZE_BITS) * BLOCKS_FOR_SPECIAL_VEHICLES;
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
+	 * @todo - This is just a temporary stage, this will be removed. */
 	if (*skip_vehicles < (_Vehicle_pool.total_items - offset)) { // make sure the offset in the array is not larger than the array itself
 		for (v = GetVehicle(offset + *skip_vehicles); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
 			(*skip_vehicles)++;
@@ -381,7 +383,7 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 {
 	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, 0);
 
-	// The hash area to scan
+	/* The hash area to scan */
 	const int xl = GB(pt.x - 174, 7, 6);
 	const int xu = GB(pt.x + 104, 7, 6);
 	const int yl = GB(pt.y - 294, 6, 6) << 6;
@@ -498,7 +500,7 @@ Vehicle *GetPrevVehicleInChain(const Vehicle *v)
 
 	u = GetFirstVehicleInChain(v);
 
-	// Check to see if this is the first
+	/* Check to see if this is the first */
 	if (v == u) return NULL;
 
 	for (; u->next != v; u = u->next) assert(u->next != NULL);
@@ -606,7 +608,7 @@ void Train_Tick(Vehicle *v);
 static void EffectVehicle_Tick(Vehicle *v);
 void DisasterVehicle_Tick(Vehicle *v);
 
-// head of the linked list to tell what vehicles that visited a depot in a tick
+/** head of the linked list to tell what vehicles that visited a depot in a tick */
 static Vehicle* _first_veh_in_depot_list;
 
 /** Adds a vehicle to the list of vehicles, that visited a depot this tick
@@ -614,14 +616,14 @@ static Vehicle* _first_veh_in_depot_list;
  */
 void VehicleEnteredDepotThisTick(Vehicle *v)
 {
-	// we need to set v->leave_depot_instantly as we have no control of it's contents at this time
+	/* we need to set v->leave_depot_instantly as we have no control of it's contents at this time */
 	if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS) && v->current_order.type == OT_GOTO_DEPOT) {
-		// we keep the vehicle in the depot since the user ordered it to stay
+		/* we keep the vehicle in the depot since the user ordered it to stay */
 		v->leave_depot_instantly = false;
 	} else {
-		// the vehicle do not plan on stopping in the depot, so we stop it to ensure that it will not reserve the path
-		// out of the depot before we might autoreplace it to a different engine. The new engine would not own the reserved path
-		// we store that we stopped the vehicle, so autoreplace can start it again
+		/* the vehicle do not plan on stopping in the depot, so we stop it to ensure that it will not reserve the path
+		 * out of the depot before we might autoreplace it to a different engine. The new engine would not own the reserved path
+		 * we store that we stopped the vehicle, so autoreplace can start it again */
 		v->vehstatus |= VS_STOPPED;
 		v->leave_depot_instantly = true;
 	}
@@ -650,8 +652,8 @@ void CallVehicleTicks()
 	Vehicle *v;
 
 #ifdef ENABLE_NETWORK
-	// hotfix for desync problem:
-	//  for MP games invalidate the YAPF cache every tick to keep it exactly the same on the server and all clients
+	/* hotfix for desync problem:
+	 *  for MP games invalidate the YAPF cache every tick to keep it exactly the same on the server and all clients */
 	if (_networking) {
 		YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
 	}
@@ -679,7 +681,7 @@ void CallVehicleTicks()
 		}
 	}
 
-	// now we handle all the vehicles that entered a depot this tick
+	/* now we handle all the vehicles that entered a depot this tick */
 	v = _first_veh_in_depot_list;
 	while (v != NULL) {
 		Vehicle *w = v->depot_list;
@@ -695,19 +697,19 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 	bool keep_loading = false;
 	const GoodsEntry *ge = GetStation(v->last_station_visited)->goods;
 
-	//special handling of aircraft
+	/* special handling of aircraft */
 
-	//if the aircraft carries passengers and is NOT full, then
-	//continue loading, no matter how much mail is in
+	/* if the aircraft carries passengers and is NOT full, then
+	 *continue loading, no matter how much mail is in */
 	if (v->type == VEH_AIRCRAFT &&
 			IsCargoInClass(v->cargo_type, CC_PASSENGERS) &&
 			v->cargo_cap != v->cargo_count) {
 		return true;
 	}
 
-	// patch should return "true" to continue loading, i.e. when there is no cargo type that is fully loaded.
+	/* patch should return "true" to continue loading, i.e. when there is no cargo type that is fully loaded. */
 	do {
-		//Should never happen, but just in case future additions change this
+		/* Should never happen, but just in case future additions change this */
 		assert(v->cargo_type<32);
 
 		if (v->cargo_cap != 0) {
@@ -726,7 +728,7 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 		}
 	} while ((v = v->next) != NULL);
 
-	// continue loading if there is a non full cargo type and no cargo type that is full
+	/* continue loading if there is a non full cargo type and no cargo type that is full */
 	return keep_loading || (not_full && (full & ~not_full) == 0);
 }
 
@@ -743,7 +745,7 @@ bool CanFillVehicle(Vehicle *v)
 				IsTileType(TILE_ADDXY(tile, -2,  0), MP_STATION)
 			))) {
 
-		// If patch is active, use alternative CanFillVehicle-function
+		/* If patch is active, use alternative CanFillVehicle-function */
 		if (_patches.full_load_any && v->current_order.flags & OF_FULL_LOAD) return CanFillVehicle_FullLoadAny(v);
 
 		do {
@@ -821,13 +823,13 @@ static void DoDrawVehicle(const Vehicle *v)
 
 void ViewportAddVehicles(DrawPixelInfo *dpi)
 {
-	// The bounding rectangle
+	/* The bounding rectangle */
 	const int l = dpi->left;
 	const int r = dpi->left + dpi->width;
 	const int t = dpi->top;
 	const int b = dpi->top + dpi->height;
 
-	// The hash area to scan
+	/* The hash area to scan */
 	const int xl = GB(l - 70, 7, 6);
 	const int xu = GB(r,      7, 6);
 	const int yl = GB(t - 70, 6, 6) << 6;
@@ -1567,7 +1569,7 @@ static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 {
 	if (v->owner != _local_player) return;
 
-	// Do not show getting-old message if autorenew is active
+	/* Do not show getting-old message if autorenew is active */
 	if (GetPlayer(v->owner)->engine_renew) return;
 
 	SetDParam(0, _vehicle_type_names[v->type]);
@@ -1599,6 +1601,7 @@ void AgeVehicle(Vehicle *v)
 
 /** Starts or stops a lot of vehicles
  * @param tile Tile of the depot where the vehicles are started/stopped (only used for depots)
+ * @param flags type of operation
  * @param p1 Station/Order/Depot ID (only used for vehicle list windows)
  * @param p2 bitmask
  *   - bit 0-4 Vehicle type
@@ -1665,10 +1668,11 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 }
 
 /** Sells all vehicles in a depot
-* @param tile Tile of the depot where the depot is
-* @param p1 Vehicle type
-* @param p2 unused
-*/
+ * @param tile Tile of the depot where the depot is
+ * @param flags type of operation
+ * @param p1 Vehicle type
+ * @param p2 unused
+ */
 int32 CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle **engines = NULL;
@@ -1717,10 +1721,11 @@ int32 CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 }
 
 /** Autoreplace all vehicles in the depot
-* @param tile Tile of the depot where the vehicles are
-* @param p1 Type of vehicle
-* @param p2 Unused
-*/
+ * @param tile Tile of the depot where the vehicles are
+ * @param flags type of operation
+ * @param p1 Type of vehicle
+ * @param p2 Unused
+ */
 int32 CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle **vl = NULL;
@@ -1784,6 +1789,7 @@ int32 CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 /** Clone a vehicle. If it is a train, it will clone all the cars too
  * @param tile tile of the depot where the cloned vehicle is build
+ * @param flags type of operation
  * @param p1 the original vehicle's index
  * @param p2 1 = shared orders, else copied orders
  */
@@ -1814,7 +1820,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->type == VEH_TRAIN && (!IsFrontEngine(v) || v->u.rail.crash_anim_pos >= 4400)) return CMD_ERROR;
 
-	// check that we can allocate enough vehicles
+	/* check that we can allocate enough vehicles */
 	if (!(flags & DC_EXEC)) {
 		int veh_counter = 0;
 		do {
@@ -1862,11 +1868,11 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			if (v->type == VEH_TRAIN && !IsFrontEngine(v)) {
-				// this s a train car
-				// add this unit to the end of the train
+				/* this s a train car
+				 * add this unit to the end of the train */
 				DoCommand(0, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
 			} else {
-				// this is a front engine or not a train. It need orders
+				/* this is a front engine or not a train. It need orders */
 				w_front = w;
 				w->service_interval = v->service_interval;
 				DoCommand(0, (v->index << 16) | w->index, p2 & 1 ? CO_SHARE : CO_COPY, flags, CMD_CLONE_ORDER);
@@ -1876,7 +1882,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} while (v->type == VEH_TRAIN && (v = GetNextVehicle(v)) != NULL);
 
 	if (flags & DC_EXEC && v_front->type == VEH_TRAIN) {
-		// for trains this needs to be the front engine due to the callback function
+		/* for trains this needs to be the front engine due to the callback function */
 		_new_vehicle_id = w_front->index;
 	}
 
@@ -2220,6 +2226,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 /** Give a custom name to your vehicle
  * @param tile unused
+ * @param flags type of operation
  * @param p1 vehicle ID to name
  * @param p2 unused
  */
@@ -2253,6 +2260,7 @@ int32 CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Change the service interval of a vehicle
  * @param tile unused
+ * @param flags type of operation
  * @param p1 vehicle ID that is being service-interval-changed
  * @param p2 new service interval
  */
@@ -2349,27 +2357,27 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 
 	switch (v->type) {
 		case VEH_TRAIN:
-			if (v->u.rail.track == TRACK_BIT_DEPOT) /* We'll assume the train is facing outwards */
-				return DiagdirToDiagTrackdir(GetRailDepotDirection(v->tile)); /* Train in depot */
+			if (v->u.rail.track == TRACK_BIT_DEPOT) // We'll assume the train is facing outwards
+				return DiagdirToDiagTrackdir(GetRailDepotDirection(v->tile)); // Train in depot
 
-			if (v->u.rail.track == TRACK_BIT_WORMHOLE) /* train in tunnel, so just use his direction and assume a diagonal track */
+			if (v->u.rail.track == TRACK_BIT_WORMHOLE) // train in tunnel, so just use his direction and assume a diagonal track
 				return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 
 			return TrackDirectionToTrackdir(FindFirstTrack(v->u.rail.track), v->direction);
 
 		case VEH_SHIP:
 			if (IsShipInDepot(v))
-				/* We'll assume the ship is facing outwards */
+				// We'll assume the ship is facing outwards
 				return DiagdirToDiagTrackdir(GetShipDepotDirection(v->tile));
 
 			return TrackDirectionToTrackdir(FindFirstTrack(v->u.ship.state), v->direction);
 
 		case VEH_ROAD:
-			if (IsRoadVehInDepot(v)) /* We'll assume the road vehicle is facing outwards */
+			if (IsRoadVehInDepot(v)) // We'll assume the road vehicle is facing outwards
 				return DiagdirToDiagTrackdir(GetRoadDepotDirection(v->tile));
 
-			if (IsStandardRoadStopTile(v->tile)) /* We'll assume the road vehicle is facing outwards */
-				return DiagdirToDiagTrackdir(GetRoadStopDir(v->tile)); /* Road vehicle in a station */
+			if (IsStandardRoadStopTile(v->tile)) // We'll assume the road vehicle is facing outwards
+				return DiagdirToDiagTrackdir(GetRoadStopDir(v->tile)); // Road vehicle in a station
 
 			if (IsDriveThroughStopTile(v->tile)) return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 
@@ -2422,16 +2430,16 @@ UnitID GetFreeUnitNumber(byte type)
 		cache = MallocT<bool>(max + 1);
 	}
 
-	// Clear the cache
+	/* Clear the cache */
 	memset(cache, 0, (max + 1) * sizeof(*cache));
 
-	// Fill the cache
+	/* Fill the cache */
 	FOR_ALL_VEHICLES(u) {
 		if (u->type == type && u->owner == _current_player && u->unitnumber != 0 && u->unitnumber <= max)
 			cache[u->unitnumber] = true;
 	}
 
-	// Find the first unused unit number
+	/* Find the first unused unit number */
 	for (unit = 1; unit <= max; unit++) {
 		if (!cache[unit]) break;
 	}
@@ -2562,7 +2570,7 @@ SpriteID GetVehiclePalette(const Vehicle *v)
 	return GetEngineColourMap(v->engine_type, v->owner, INVALID_ENGINE, v);
 }
 
-// Save and load of vehicles
+/** Save and load of vehicles */
 extern const SaveLoad _common_veh_desc[] = {
 	    SLE_VAR(Vehicle, subtype,              SLE_UINT8),
 
@@ -2667,7 +2675,7 @@ extern const SaveLoad _common_veh_desc[] = {
 	    SLE_REF(Vehicle, next_shared,          REF_VEHICLE),
 	    SLE_REF(Vehicle, prev_shared,          REF_VEHICLE),
 
-	// reserve extra space in savegame here. (currently 10 bytes)
+	/* reserve extra space in savegame here. (currently 10 bytes) */
 	SLE_CONDNULL(10,                                                       2, SL_MAX_VERSION),
 
 	SLE_END()
@@ -2686,7 +2694,7 @@ static const SaveLoad _train_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle, u) + offsetof(VehicleRail, days_since_order_progr), SLE_UINT16, 2, SL_MAX_VERSION),
 
 	SLE_CONDNULL(2, 2, 19),
-	// reserve extra space in savegame here. (currently 11 bytes)
+	/* reserve extra space in savegame here. (currently 11 bytes) */
 	SLE_CONDNULL(11, 2, SL_MAX_VERSION),
 
 	SLE_END()
@@ -2706,7 +2714,7 @@ static const SaveLoad _roadveh_desc[] = {
 	SLE_CONDREFX(offsetof(Vehicle, u) + offsetof(VehicleRoad, slot),     REF_ROADSTOPS, 6, SL_MAX_VERSION),
 	SLE_CONDNULL(1,                                                                     6, SL_MAX_VERSION),
 	SLE_CONDVARX(offsetof(Vehicle, u) + offsetof(VehicleRoad, slot_age), SLE_UINT8,     6, SL_MAX_VERSION),
-	// reserve extra space in savegame here. (currently 16 bytes)
+	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16,                                                                    2, SL_MAX_VERSION),
 
 	SLE_END()
@@ -2717,7 +2725,7 @@ static const SaveLoad _ship_desc[] = {
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleShip, state), SLE_UINT8),
 
-	// reserve extra space in savegame here. (currently 16 bytes)
+	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
 
 	SLE_END()
@@ -2736,7 +2744,7 @@ static const SaveLoad _aircraft_desc[] = {
 
 	SLE_CONDVARX(offsetof(Vehicle, u) + offsetof(VehicleAir, previous_pos),    SLE_UINT8,                 2, SL_MAX_VERSION),
 
-	// reserve extra space in savegame here. (currently 15 bytes)
+	/* reserve extra space in savegame here. (currently 15 bytes) */
 	SLE_CONDNULL(15,                                                                                      2, SL_MAX_VERSION),
 
 	SLE_END()
@@ -2768,7 +2776,7 @@ static const SaveLoad _special_desc[] = {
 	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleSpecial, unk0), SLE_UINT16),
 	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleSpecial, unk2), SLE_UINT8),
 
-	// reserve extra space in savegame here. (currently 16 bytes)
+	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
 
 	SLE_END()
@@ -2810,7 +2818,7 @@ static const SaveLoad _disaster_desc[] = {
 	   SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleDisaster, image_override), SLE_UINT16),
 	   SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleDisaster, unk2),           SLE_UINT16),
 
-	// reserve extra space in savegame here. (currently 16 bytes)
+	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16,                                                 2, SL_MAX_VERSION),
 
 	SLE_END()
@@ -2826,18 +2834,18 @@ static const void *_veh_descs[] = {
 	_disaster_desc,
 };
 
-// Will be called when the vehicles need to be saved.
+/** Will be called when the vehicles need to be saved. */
 static void Save_VEHS()
 {
 	Vehicle *v;
-	// Write the vehicles
+	/* Write the vehicles */
 	FOR_ALL_VEHICLES(v) {
 		SlSetArrayIndex(v->index);
 		SlObject(v, (SaveLoad*)_veh_descs[v->type]);
 	}
 }
 
-// Will be called when vehicles need to be loaded.
+/** Will be called when vehicles need to be loaded. */
 static void Load_VEHS()
 {
 	int index;

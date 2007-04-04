@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file unmovable_map.h */
+
 #ifndef UNMOVABLE_MAP_H
 #define UNMOVABLE_MAP_H
 

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file void_map.h */
+
 #ifndef VOID_MAP_H
 #define VOID_MAP_H
 

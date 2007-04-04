@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file unix.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -27,7 +29,7 @@
 #include <exec/types.h>
 ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 
-// The system supplied definition of SIG_IGN does not match
+/* The system supplied definition of SIG_IGN does not match */
 #undef SIG_IGN
 #define SIG_IGN (void (*)(int))1
 #endif /* __MORPHOS__ */
@@ -39,7 +41,7 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 
 #if defined(__APPLE__)
 	#if defined(WITH_SDL)
-		//the mac implementation needs this file included in the same file as main()
+		/*the mac implementation needs this file included in the same file as main() */
 		#include <SDL.h>
 	#endif
 #endif
@@ -104,11 +106,11 @@ void ShowInfo(const char *str)
 void ShowOSErrorBox(const char *buf)
 {
 #if defined(__APPLE__)
-	// this creates an NSAlertPanel with the contents of 'buf'
-	// this is the native and nicest way to do this on OSX
+	/* this creates an NSAlertPanel with the contents of 'buf'
+	 * this is the native and nicest way to do this on OSX */
 	ShowMacDialog( buf, "See readme for more info\nMost likely you are missing files from the original TTD", "Quit" );
 #else
-	// all systems, but OSX
+	/* all systems, but OSX */
 	fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);
 #endif
 }
@@ -151,10 +153,10 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 }
 
 
-// multi os compatible sleep function
+/* multi os compatible sleep function */
 
 #ifdef __AMIGA__
-// usleep() implementation
+/* usleep() implementation */
 #	include <devices/timer.h>
 #	include <dos/dos.h>
 
@@ -174,7 +176,7 @@ void CSleep(int milliseconds)
 		ULONG signals;
 		ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
 
-		// send IORequest
+		/* send IORequest */
 		TimerRequest->tr_node.io_Command = TR_ADDREQUEST;
 		TimerRequest->tr_time.tv_secs    = (milliseconds * 1000) / 1000000;
 		TimerRequest->tr_time.tv_micro   = (milliseconds * 1000) % 1000000;
@@ -243,7 +245,7 @@ static const char *convert_tofrom_fs(iconv_t convd, const char *name)
 	}
 
 	*outbuf = '\0';
-	// FIX: invalid characters will abort conversion, but they shouldn't occur?
+	/* FIX: invalid characters will abort conversion, but they shouldn't occur? */
 	return buf;
 }
 

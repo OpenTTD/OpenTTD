@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file unmovable_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
@@ -44,7 +46,7 @@ static int32 DestroyCompanyHQ(PlayerID pid, uint32 flags)
 		InvalidateWindow(WC_COMPANY, pid);
 	}
 
-	// cost of relocating company is 1% of company value
+	/* cost of relocating company is 1% of company value */
 	return CalculateCompanyValue(p) / 100;
 }
 
@@ -69,12 +71,14 @@ void UpdateCompanyHQ(Player *p, uint score)
 	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
 }
 
+extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station);
+
 /** Build or relocate the HQ. This depends if the HQ is already built or not
  * @param tile tile where the HQ will be built or relocated to
+ * @param flags type of operation
  * @param p1 unused
  * @param p2 unused
  */
-extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station);
 int32 CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p = GetPlayer(_current_player);
@@ -87,7 +91,7 @@ int32 CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (CmdFailed(ret)) return ret;
 	cost = ret;
 
-	if (p->location_of_house != 0) { /* Moving HQ */
+	if (p->location_of_house != 0) { // Moving HQ
 		cost += DestroyCompanyHQ(_current_player, flags);
 	}
 
@@ -224,7 +228,7 @@ static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
 		return DoCommand(tile, 0, 0, flags, CMD_SELL_LAND_AREA);
 	}
 
-	// checks if you're allowed to remove unmovable things
+	/* checks if you're allowed to remove unmovable things */
 	if (_game_mode != GM_EDITOR && _current_player != OWNER_WATER && ((flags & DC_AUTO || !_cheats.magic_bulldozer.value)) )
 		return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 
@@ -252,14 +256,14 @@ static void GetAcceptedCargo_Unmovable(TileIndex tile, AcceptedCargo ac)
 
 	level = GetCompanyHQSize(tile) + 1;
 
-	// Top town building generates 10, so to make HQ interesting, the top
-	// type makes 20.
+	/* Top town building generates 10, so to make HQ interesting, the top
+	 * type makes 20. */
 	ac[CT_PASSENGERS] = max(1U, level);
 
-	// Top town building generates 4, HQ can make up to 8. The
-	// proportion passengers:mail is different because such a huge
-	// commercial building generates unusually high amount of mail
-	// correspondence per physical visitor.
+	/* Top town building generates 4, HQ can make up to 8. The
+	 * proportion passengers:mail is different because such a huge
+	 * commercial building generates unusually high amount of mail
+	 * correspondence per physical visitor. */
 	ac[CT_MAIL] = max(1U, level / 2);
 }
 
@@ -295,16 +299,16 @@ static void TileLoop_Unmovable(TileIndex tile)
 	assert(level < 6);
 
 	r = Random();
-	// Top town buildings generate 250, so the top HQ type makes 256.
+	/* Top town buildings generate 250, so the top HQ type makes 256. */
 	if (GB(r, 0, 8) < (256 / 4 / (6 - level))) {
 		uint amt = GB(r, 0, 8) / 8 / 4 + 1;
 		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
 		MoveGoodsToStation(tile, 2, 2, CT_PASSENGERS, amt);
 	}
 
-	// Top town building generates 90, HQ can make up to 196. The
-	// proportion passengers:mail is about the same as in the acceptance
-	// equations.
+	/* Top town building generates 90, HQ can make up to 196. The
+	 * proportion passengers:mail is about the same as in the acceptance
+	 * equations. */
 	if (GB(r, 8, 8) < (196 / 4 / (6 - level))) {
 		uint amt = GB(r, 8, 8) / 8 / 4 + 1;
 		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;

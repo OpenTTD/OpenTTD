@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @vehicle.h */
+
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
@@ -108,13 +110,13 @@ struct VehicleRail {
 	uint16 crash_anim_pos;
 	uint16 days_since_order_progr;
 
-	// cached values, recalculated on load and each time a vehicle is added to/removed from the consist.
+	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
 	uint16 cached_max_speed;  // max speed of the consist. (minimum of the max speed of all vehicles in the consist)
 	uint32 cached_power;      // total power of the consist.
 	uint8 cached_veh_length;  // length of this vehicle in units of 1/8 of normal length, cached because this can be set by a callback
 	uint16 cached_total_length; ///< Length of the whole train, valid only for first engine.
 
-	// cached values, recalculated when the cargo on a train changes (in addition to the conditions above)
+	/* cached values, recalculated when the cargo on a train changes (in addition to the conditions above) */
 	uint32 cached_weight;     // total weight of the consist.
 	uint32 cached_veh_weight; // weight of the vehicle.
 	uint32 cached_max_te;     // max tractive effort of consist
@@ -127,8 +129,8 @@ struct VehicleRail {
 	 */
 	byte cached_vis_effect;
 
-	// NOSAVE: for wagon override - id of the first engine in train
-	// 0xffff == not in train
+	/* NOSAVE: for wagon override - id of the first engine in train
+	 * 0xffff == not in train */
 	EngineID first_engine;
 
 	TrackBitsByte track;
@@ -138,27 +140,27 @@ struct VehicleRail {
 
 	byte flags;
 
-	// Link between the two ends of a multiheaded engine
+	/* Link between the two ends of a multiheaded engine */
 	Vehicle *other_multiheaded_part;
 };
 
 enum {
 	VRF_REVERSING         = 0,
 
-	// used to calculate if train is going up or down
+	/* used to calculate if train is going up or down */
 	VRF_GOINGUP           = 1,
 	VRF_GOINGDOWN         = 2,
 
-	// used to store if a wagon is powered or not
+	/* used to store if a wagon is powered or not */
 	VRF_POWEREDWAGON      = 3,
 
-	// used to reverse the visible direction of the vehicle
+	/* used to reverse the visible direction of the vehicle */
 	VRF_REVERSE_DIRECTION = 4,
 
-	// used to mark train as lost because PF can't find the route
+	/* used to mark train as lost because PF can't find the route */
 	VRF_NO_PATH_TO_DESTINATION = 5,
 
-	// used to mark that electric train engine is allowed to run on normal rail
+	/* used to mark that electric train engine is allowed to run on normal rail */
 	VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL = 6,
 };
 
@@ -171,7 +173,7 @@ struct VehicleAir {
 };
 
 struct VehicleRoad {
-	byte state;             /// @see RoadVehicleStates
+	byte state;             ///< @see RoadVehicleStates
 	byte frame;
 	uint16 blocked_ctr;
 	byte overtaking;
@@ -210,7 +212,7 @@ struct Vehicle {
 	StringID string_id;      // Displayed string
 
 	UnitID unitnumber;       // unit number, for display purposes only
-	PlayerByte owner;          // which player owns the vehicle?
+	PlayerByte owner;        // which player owns the vehicle?
 
 	TileIndex tile;          // Current tile index
 	TileIndex dest_tile;     // Heading for this tile
@@ -231,9 +233,9 @@ struct Vehicle {
 	int8 y_offs;             // y offset for vehicle sprite
 	EngineID engine_type;
 
-	// for randomized variational spritegroups
-	// bitmask used to resolve them; parts of it get reseeded when triggers
-	// of corresponding spritegroups get matched
+	/* for randomized variational spritegroups
+	 * bitmask used to resolve them; parts of it get reseeded when triggers
+	 * of corresponding spritegroups get matched */
 	byte random_bits;
 	byte waiting_triggers;   // triggers to be yet matched
 
@@ -269,15 +271,15 @@ struct Vehicle {
 	Vehicle *prev_shared;    ///< If not NULL, this points to the prev vehicle that shared the order
 	/* End Order-stuff */
 
-	// Boundaries for the current position in the world and a next hash link.
-	// NOSAVE: All of those can be updated with VehiclePositionChanged()
+	/* Boundaries for the current position in the world and a next hash link.
+	 * NOSAVE: All of those can be updated with VehiclePositionChanged() */
 	int32 left_coord;
 	int32 top_coord;
 	int32 right_coord;
 	int32 bottom_coord;
 	Vehicle *next_hash;
 
-	// Related to age and service time
+	/* Related to age and service time */
 	Date age;     // Age in days
 	Date max_age; // Maximum age
 	Date date_of_last_service;
@@ -492,7 +494,7 @@ static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
 
 /**
  * Check if an index is a vehicle-index (so between 0 and max-vehicles)
- *
+ * @param index of the vehicle to query
  * @return Returns true if the vehicle-id is in range
  */
 static inline bool IsValidVehicleID(uint index)
@@ -513,7 +515,11 @@ static inline Order *GetVehicleOrder(const Vehicle *v, int index)
 	return order;
 }
 
-/* Returns the last order of a vehicle, or NULL if it doesn't exists */
+/**
+ * Returns the last order of a vehicle, or NULL if it doesn't exists
+ * @param v Vehicle to query
+ * @return last order of a vehicle, if available
+ */
 static inline Order *GetLastVehicleOrder(const Vehicle *v)
 {
 	Order *order = v->orders;
@@ -526,7 +532,10 @@ static inline Order *GetLastVehicleOrder(const Vehicle *v)
 	return order;
 }
 
-/* Get the first vehicle of a shared-list, so we only have to walk forwards */
+/** Get the first vehicle of a shared-list, so we only have to walk forwards
+ * @param v Vehicle to query
+ * @return first vehicle of a shared-list
+ */
 static inline Vehicle *GetFirstVehicleFromSharedList(const Vehicle *v)
 {
 	Vehicle *u = (Vehicle *)v;
@@ -535,7 +544,7 @@ static inline Vehicle *GetFirstVehicleFromSharedList(const Vehicle *v)
 	return u;
 }
 
-// NOSAVE: Return values from various commands.
+/* NOSAVE: Return values from various commands. */
 VARDEF VehicleID _new_vehicle_id;
 VARDEF uint16 _returned_refit_capacity;
 

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file unmovable.h */
+
 #ifndef UNMOVABLE_H
 #define UNMOVABLE_H
 

@@ -1,18 +1,20 @@
 /* $Id$ */
 
+/** @file variables.h */
+
 #ifndef VARIABLES_H
 #define VARIABLES_H
 
 #include "yapf/yapf_settings.h"
 
-// ********* START OF SAVE REGION
+/* ********* START OF SAVE REGION */
 #if !defined(MAX_PATH)
 # define MAX_PATH 260
 #endif
 
 #include "gfx.h"
 
-// Prices and also the fractional part.
+/* Prices and also the fractional part. */
 VARDEF Prices _price;
 VARDEF uint16 _price_frac[NUM_PRICES];
 
@@ -38,47 +40,47 @@ VARDEF GameOptions _opt;
 /* These are the default options for a new game */
 VARDEF GameOptions _opt_newgame;
 
-// Pointer to one of the two _opt OR _opt_newgame structs
+/* Pointer to one of the two _opt OR _opt_newgame structs */
 VARDEF GameOptions *_opt_ptr;
 
-// Amount of game ticks
+/* Amount of game ticks */
 VARDEF uint16 _tick_counter;
 
-// This one is not used anymore.
+/* This one is not used anymore. */
 VARDEF VehicleID _vehicle_id_ctr_day;
 
-// Skip aging of cargo?
+/* Skip aging of cargo? */
 VARDEF byte _age_cargo_skip_counter;
 
-// Position in tile loop
+/* Position in tile loop */
 VARDEF TileIndex _cur_tileloop_tile;
 
-// Also save scrollpos_x, scrollpos_y and zoom
+/* Also save scrollpos_x, scrollpos_y and zoom */
 VARDEF uint16 _disaster_delay;
 
-// Determines what station to operate on in the
-//  tick handler.
+/* Determines what station to operate on in the
+ *  tick handler. */
 VARDEF uint16 _station_tick_ctr;
 
 VARDEF uint32 _random_seeds[2][2];
 
-// Iterator through all towns in OnTick_Town
+/* Iterator through all towns in OnTick_Town */
 VARDEF uint32 _cur_town_ctr;
-// Frequency iterator at the same place
+/* Frequency iterator at the same place */
 VARDEF uint32 _cur_town_iter;
 
 VARDEF uint _cur_player_tick_index;
 VARDEF uint _next_competitor_start;
 
-// Determines how often to run the tree loop
+/* Determines how often to run the tree loop */
 VARDEF byte _trees_tick_ctr;
 
-// Keep track of current game position
+/* Keep track of current game position */
 VARDEF int _saved_scrollpos_x;
 VARDEF int _saved_scrollpos_y;
 VARDEF byte _saved_scrollpos_zoom;
 
-// ********* END OF SAVE REGION
+/* ********* END OF SAVE REGION */
 
 struct Patches {
 	bool modified_catchment;            // different-size catchment areas
@@ -201,22 +203,22 @@ struct Patches {
 	 */
 	uint32 npf_max_search_nodes;
 
-	uint32 npf_rail_firstred_penalty;      /* The penalty for when the first signal is red (and it is not an exit or combo signal) */
-	uint32 npf_rail_firstred_exit_penalty; /* The penalty for when the first signal is red (and it is an exit or combo signal) */
-	uint32 npf_rail_lastred_penalty;       /* The penalty for when the last signal is red */
-	uint32 npf_rail_station_penalty;       /* The penalty for station tiles */
-	uint32 npf_rail_slope_penalty;         /* The penalty for sloping upwards */
-	uint32 npf_rail_curve_penalty;         /* The penalty for curves */
-	uint32 npf_rail_depot_reverse_penalty; /* The penalty for reversing in depots */
-	uint32 npf_buoy_penalty;               /* The penalty for going over (through) a buoy */
-	uint32 npf_water_curve_penalty;        /* The penalty for curves */
-	uint32 npf_road_curve_penalty;         /* The penalty for curves */
-	uint32 npf_crossing_penalty;           /* The penalty for level crossings */
-	uint32 npf_road_drive_through_penalty; /* The penalty for going through a drive-through road stop */
+	uint32 npf_rail_firstred_penalty;      // The penalty for when the first signal is red (and it is not an exit or combo signal)
+	uint32 npf_rail_firstred_exit_penalty; // The penalty for when the first signal is red (and it is an exit or combo signal)
+	uint32 npf_rail_lastred_penalty;       // The penalty for when the last signal is red
+	uint32 npf_rail_station_penalty;       // The penalty for station tiles
+	uint32 npf_rail_slope_penalty;         // The penalty for sloping upwards
+	uint32 npf_rail_curve_penalty;         // The penalty for curves
+	uint32 npf_rail_depot_reverse_penalty; // The penalty for reversing in depots
+	uint32 npf_buoy_penalty;               // The penalty for going over (through) a buoy
+	uint32 npf_water_curve_penalty;        // The penalty for curves
+	uint32 npf_road_curve_penalty;         // The penalty for curves
+	uint32 npf_crossing_penalty;           // The penalty for level crossings
+	uint32 npf_road_drive_through_penalty; // The penalty for going through a drive-through road stop
 
 	bool population_in_label; // Show the population of a town in his label?
 
-	uint8 freight_trains; ///< Value to multiply the weight of cargo by
+	uint8 freight_trains; // Value to multiply the weight of cargo by
 
 	/** YAPF settings */
 	YapfSettings  yapf;
@@ -234,9 +236,9 @@ struct Cheat {
 };
 
 
-// WARNING! Do _not_ remove entries in Cheats struct or change the order
-// of the existing ones! Would break downward compatibility.
-// Only add new entries at the end of the struct!
+/* WARNING! Do _not_ remove entries in Cheats struct or change the order
+ * of the existing ones! Would break downward compatibility.
+ * Only add new entries at the end of the struct! */
 
 struct Cheats {
 	Cheat magic_bulldozer;  // dynamite industries, unmovables
@@ -268,7 +270,7 @@ struct Paths {
 
 VARDEF Paths _paths;
 
-// NOSAVE: Used in palette animations only, not really important.
+/* NOSAVE: Used in palette animations only, not really important. */
 VARDEF int _timer_counter;
 
 
@@ -291,20 +293,20 @@ VARDEF uint32 _decode_parameters[20];
 
 VARDEF bool _rightclick_emulate;
 
-// IN/OUT parameters to commands
+/* IN/OUT parameters to commands */
 VARDEF byte _yearly_expenses_type;
 VARDEF TileIndex _terraform_err_tile;
 VARDEF TileIndex _build_tunnel_endtile;
 VARDEF bool _generating_world;
 
-// Deals with the type of the savegame, independent of extension
+/* Deals with the type of the savegame, independent of extension */
 struct SmallFiosItem {
 	int mode;             // savegame/scenario type (old, new)
 	char name[MAX_PATH];  // name
 	char title[255];      // internal name of the game
 };
 
-// Used when switching from the intro menu.
+/* Used when switching from the intro menu. */
 VARDEF byte _switch_mode;
 VARDEF StringID _switch_mode_errorstr;
 VARDEF SmallFiosItem _file_to_saveload;
@@ -372,14 +374,14 @@ static inline uint32 GetDParam(uint n)
 	return _decode_parameters[n];
 }
 
-// Used to bind a C string name to a dparam number.
-// NOTE: This has a short lifetime. You can't
-//       use this string much later or it will be gone.
+/* Used to bind a C string name to a dparam number.
+ * NOTE: This has a short lifetime. You can't
+ *       use this string much later or it will be gone. */
 void SetDParamStr(uint n, const char *str);
 
-// This function takes a C-string and allocates a temporary string ID.
-// The duration of the bound string is valid only until the next acll to GetString,
-// so be careful.
+/** This function takes a C-string and allocates a temporary string ID.
+ * The duration of the bound string is valid only until the next acll to GetString,
+ * so be careful. */
 StringID BindCString(const char *str);
 
 
@@ -389,7 +391,7 @@ StringID BindCString(const char *str);
 
 #define SET_EXPENSES_TYPE(x) _yearly_expenses_type = x;
 
-/* landscape.c */
+/* landscape.cpp */
 extern const byte _tileh_to_sprite[32];
 extern const Slope _inclined_tileh[16];
 

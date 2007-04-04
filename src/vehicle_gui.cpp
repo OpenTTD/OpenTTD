@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file vehicle_gui.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -162,12 +164,12 @@ void DepotSortList(Vehicle **v, uint16 length)
 	qsort((void*)v, length, sizeof(v[0]), _vehicle_sorter[0]);
 }
 
-// draw the vehicle profit button in the vehicle list window.
+/** draw the vehicle profit button in the vehicle list window. */
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 {
 	SpriteID pal;
 
-	// draw profit-based colored icons
+	/* draw profit-based colored icons */
 	if (v->age <= 365 * 2) {
 		pal = PALETTE_TO_GREY;
 	} else if (v->profit_last_year < 0) {
@@ -421,6 +423,7 @@ static const WindowDesc _vehicle_refit_desc = {
 
 /** Show the refit window for a vehicle
 * @param *v The vehicle to show the refit window for
+* @param order of the vehicle (?)
 */
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 {
@@ -466,18 +469,18 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 	}
 }
 
-/* Display additional text from NewGRF in the purchase information window */
+/** Display additional text from NewGRF in the purchase information window */
 uint ShowAdditionalText(int x, int y, uint w, EngineID engine)
 {
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, NULL);
 	if (callback == CALLBACK_FAILED) return 0;
 
-	// STR_02BD is used to start the string with {BLACK}
+	/* STR_02BD is used to start the string with {BLACK} */
 	SetDParam(0, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback));
 	return DrawStringMultiLine(x, y, STR_02BD, w);
 }
 
-/* Count the number of bits that are set in a mask */
+/** Count the number of bits that are set in a mask */
 static uint CountBits(uint32 mask)
 {
 	uint c = 0;
@@ -485,7 +488,7 @@ static uint CountBits(uint32 mask)
 	return c;
 }
 
-/* Display list of cargo types of the engine, for the purchase information window */
+/** Display list of cargo types of the engine, for the purchase information window */
 uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 {
 	/* List of cargo types of this engine */
@@ -529,7 +532,7 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 }
 
 
-// if the sorting criteria had the same value, sort vehicle by unitnumber
+/* if the sorting criteria had the same value, sort vehicle by unitnumber */
 #define VEHICLEUNITNUMBERSORTER(r, a, b) {if (r == 0) {r = a->unitnumber - b->unitnumber;}}
 
 static int CDECL VehicleNumberSorter(const void *a, const void *b)
@@ -1140,7 +1143,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			switch (e->we.dropdown.button) {
 				case VLW_WIDGET_SORT_BY_PULLDOWN:
 					if (vl->l.sort_type != e->we.dropdown.index) {
-						// value has changed -> resort
+						/* value has changed -> resort */
 						vl->l.flags |= VL_RESORT;
 						vl->l.sort_type = e->we.dropdown.index;
 						vl->_sorting->criteria = vl->l.sort_type;
