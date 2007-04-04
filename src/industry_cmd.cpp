@@ -1718,34 +1718,52 @@ static void UpdateIndustryStatistics(Industry *i)
 	}
 }
 
-static const byte _new_industry_rand[4][32] = {
-	{12, 12, 12, 12, 12, 12, 12,  0,  0,  6,  6,  9,  9,  3,  3,  3, 18, 18,  4,  4,  2,  2,  5,  5,  5,  5,  5,  5,  1,  1,  8,  8},
-	{16, 16, 16,  0,  0,  0,  9,  9,  9,  9, 13, 13,  3,  3,  3,  3, 15, 15, 15,  4,  4, 11, 11, 11, 11, 11, 14, 14,  1,  1,  7,  7},
-	{21, 21, 21, 24, 22, 22, 22, 22, 23, 23, 16, 16, 16,  4,  4, 19, 19, 19, 13, 13, 20, 20, 20, 11, 11, 11, 17, 17, 17, 10, 10, 10},
-	{30, 30, 30, 36, 36, 31, 31, 31, 27, 27, 27, 28, 28, 28, 26, 26, 26, 34, 34, 34, 35, 35, 35, 29, 29, 29, 32, 32, 32, 33, 33, 33},
-};
-
-static void MaybeNewIndustry(uint32 r)
+/**
+ * Try to create a random industry, during gameplay
+ */
+static void MaybeNewIndustry(void)
 {
-	int type =_new_industry_rand[_opt.landscape][GB(r, 16, 5)];
-	int j;
-	Industry *i;
-	const IndustrySpec *ind_spc = GetIndustrySpec(type);;
+	Industry *ind;               //will receive the industry's creation pointer
+	IndustryType rndtype, j;     // Loop controlers
+	const IndustrySpec *ind_spc;
+	uint num = 0;
+	uint16 cumulative_probs[IT_END];
+	uint16 probability_max = 0;
 
+	/* Generate a list of all possible industries that can be built. */
+	for (j = 0; j < IT_END; j++) {
+		byte chance = GetIndustrySpec(j)->appear_ingame[_opt.landscape];
+
+		/* if appearing chance for this landscape is above 0, this industry can be chosen */
+		if (chance != 0) {
+			probability_max += chance;
+			cumulative_probs[num++] = probability_max;
+		}
+	}
+
+	/* Find a random type, with maximum been what has been evaluate above*/
+	rndtype = RandomRange(probability_max);
+	for (j = 0; j < num; j++) {
+		/* and choose the industry thta matches as close as possible this random type */
+		if (cumulative_probs[j] >= rndtype) break;
+	}
+
+	ind_spc = GetIndustrySpec(j);
+	/*  Check if it is allowed */
 	if ((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && _cur_year > 1950) return;
 	if ((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && _cur_year < 1960) return;
 
-	j = 2000;
+	num = 2000;
 	for (;;) {
-		i = CreateNewIndustry(RandomTile(), type);
-		if (i != NULL) break;
-		if (--j == 0) return;
+		ind = CreateNewIndustry(RandomTile(), j);
+		if (ind != NULL) break;
+		if (--num == 0) return;
 	}
 
 	SetDParam(0, ind_spc->name);
-	SetDParam(1, i->town->index);
+	SetDParam(1, ind->town->index);
 	AddNewsItem(ind_spc->new_industry_text,
-		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_OPENCLOSE, 0), i->xy, 0);
+		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_OPENCLOSE, 0), ind->xy, 0);
 }
 
 static void ChangeIndustryProduction(Industry *i)
@@ -1828,7 +1846,7 @@ void IndustryMonthlyLoop()
 
 	/* 3% chance that we start a new industry */
 	if (CHANCE16(3, 100)) {
-		MaybeNewIndustry(Random());
+		MaybeNewIndustry();
 	} else if (!_patches.smooth_economy) {
 		i = GetRandomIndustry();
 		if (i != NULL) ChangeIndustryProduction(i);
