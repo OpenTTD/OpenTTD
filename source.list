@@ -220,6 +220,7 @@ subsidy_gui.cpp
 terraform_gui.cpp
 town_gui.cpp
 train_gui.cpp
+transparency_gui.cpp
 vehicle_gui.cpp
 
 # Landscape

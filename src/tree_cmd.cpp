@@ -368,7 +368,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 	StartSpriteCombine();
 
-	if (!(_display_opt & DO_TRANS_BUILDINGS) || !_patches.invisible_trees) {
+	if (!HASBIT(_transparent_opt, TO_TREES) || !_patches.invisible_trees) {
 		TreeListEnt te[4];
 		uint i;
 
@@ -377,7 +377,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		do {
 			SpriteID image = s[0].sprite + (--i == 0 ? GetTreeGrowth(ti->tile) : 3);
 			SpriteID pal;
-			if (_display_opt & DO_TRANS_BUILDINGS) {
+			if (HASBIT(_transparent_opt, TO_TREES)) {
 				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 				pal = PALETTE_TO_TRANSPARENT;
 			} else {

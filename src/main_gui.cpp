@@ -37,6 +37,7 @@
 #include "settings.h"
 #include "date.h"
 #include "vehicle_gui.h"
+#include "transparency_gui.h"
 #include "newgrf_config.h"
 
 #include "network/network_data.h"
@@ -160,8 +161,8 @@ static void MenuClickSettings(int index)
 		case  8: _display_opt ^= DO_WAYPOINTS;          break;
 		case  9: _display_opt ^= DO_FULL_ANIMATION;     break;
 		case 10: _display_opt ^= DO_FULL_DETAIL;        break;
-		case 11: _display_opt ^= DO_TRANS_BUILDINGS;    break;
-		case 12: _display_opt ^= DO_TRANS_SIGNS;        break;
+		case 11: TOGGLEBIT(_transparent_opt, TO_BUILDINGS); break;
+		case 12: TOGGLEBIT(_transparent_opt, TO_SIGNS);     break;
 	}
 	MarkWholeScreenDirty();
 }
@@ -192,6 +193,7 @@ static void MenuClickMap(int index)
 		case 0: ShowSmallMap();            break;
 		case 1: ShowExtraViewPortWindow(); break;
 		case 2: ShowSignList();            break;
+		case 3: ShowTransparencyToolbar(); break;
 	}
 }
 
@@ -206,7 +208,8 @@ static void MenuClickScenMap(int index)
 		case 0: ShowSmallMap();            break;
 		case 1: ShowExtraViewPortWindow(); break;
 		case 2: ShowSignList();            break;
-		case 3: ShowTownDirectory();       break;
+		case 3: ShowTransparencyToolbar(); break;
+		case 4: ShowTownDirectory();       break;
 	}
 }
 
@@ -762,7 +765,7 @@ static void ToolbarSaveClick(Window *w)
 
 static void ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, 4, STR_02DE_MAP_OF_WORLD, 3, 0);
+	PopupMainToolbMenu(w, 4, STR_02DE_MAP_OF_WORLD, 4, 0);
 }
 
 static void ToolbarTownClick(Window *w)
@@ -961,8 +964,8 @@ static void ToolbarOptionsClick(Window *w)
 	if (_display_opt & DO_WAYPOINTS)          SETBIT(x,  8);
 	if (_display_opt & DO_FULL_ANIMATION)     SETBIT(x,  9);
 	if (_display_opt & DO_FULL_DETAIL)        SETBIT(x, 10);
-	if (_display_opt & DO_TRANS_BUILDINGS)    SETBIT(x, 11);
-	if (_display_opt & DO_TRANS_SIGNS)        SETBIT(x, 12);
+	if (HASBIT(_transparent_opt, TO_BUILDINGS)) SETBIT(x, 11);
+	if (HASBIT(_transparent_opt, TO_SIGNS))     SETBIT(x, 12);
 	WP(w,menu_d).checked_items = x;
 }
 
@@ -1001,7 +1004,7 @@ static void ToolbarScenDateForward(Window *w)
 static void ToolbarScenMapTownDir(Window *w)
 {
 	/* Scenario editor button, *hack*hack* use different button to activate */
-	PopupMainToolbMenu(w, 8 | (17 << 8), STR_02DE_MAP_OF_WORLD, 4, 0);
+	PopupMainToolbMenu(w, 8 | (17 << 8), STR_02DE_MAP_OF_WORLD, 5, 0);
 }
 
 static void ToolbarScenZoomIn(Window *w)
@@ -2330,10 +2333,33 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				break;
 #endif
 
-			case 'X':
-				_display_opt ^= DO_TRANS_BUILDINGS;
+			case '1' | WKC_CTRL:
+			case '2' | WKC_CTRL:
+			case '3' | WKC_CTRL:
+			case '4' | WKC_CTRL:
+			case '5' | WKC_CTRL:
+			case '6' | WKC_CTRL:
+			case '7' | WKC_CTRL:
+				/* Transparency toggle hot keys */
+				TOGGLEBIT(_transparent_opt, e->we.keypress.key - '1');
 				MarkWholeScreenDirty();
 				break;
+
+			case 'X' | WKC_CTRL:
+				ShowTransparencyToolbar();
+				break;
+
+			case 'X': {
+				static byte trans_opt = ~0;
+				if (_transparent_opt == 0) {
+					_transparent_opt = trans_opt;
+				} else {
+					trans_opt = _transparent_opt;
+					_transparent_opt = 0;
+				}
+				MarkWholeScreenDirty();
+				break;
+			}
 
 #ifdef ENABLE_NETWORK
 			case WKC_RETURN: case 'T': // smart chat; send to team if any, otherwise to all

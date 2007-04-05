@@ -128,10 +128,11 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 					DrawStringMultiCenter(215, ni->display_mode == NM_NORMAL ? 76 : 56,
 						ni->string_id, w->width - 4);
 				} else {
-					byte bk = _display_opt;
-					_display_opt &= ~DO_TRANS_BUILDINGS;
+					/* Back up transparency options to draw news view */
+					byte to_backup = _transparent_opt;
+					_transparent_opt = 0;
 					DrawWindowViewport(w);
-					_display_opt = bk;
+					_transparent_opt = to_backup;
 
 					/* Shade the viewport into gray, or color*/
 					vp = w->viewport;

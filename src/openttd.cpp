@@ -303,7 +303,10 @@ static void LoadIntroGame()
 	char filename[256];
 
 	_game_mode = GM_MENU;
-	CLRBITS(_display_opt, DO_TRANS_BUILDINGS); // don't make buildings transparent in intro
+
+	/* Clear transparency options */
+	_transparent_opt = 0;
+
 	_opt_ptr = &_opt_newgame;
 	ResetGRFConfig(false);
 

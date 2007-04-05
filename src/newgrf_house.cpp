@@ -406,7 +406,7 @@ void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte stage, Ho
 		image = dtss->image + stage;
 		pal   = dtss->pal;
 
-		if (!HASBIT(image, SPRITE_MODIFIER_OPAQUE) && ((_display_opt & DO_TRANS_BUILDINGS))) {
+		if (!HASBIT(image, SPRITE_MODIFIER_OPAQUE) && HASBIT(_transparent_opt, TO_HOUSES)) {
 			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 			pal = PALETTE_TO_TRANSPARENT;
 		} else if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {

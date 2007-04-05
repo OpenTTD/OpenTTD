@@ -784,7 +784,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\direction.h"
+				RelativePath=".\..\src\direction.h"
 				>
 			</File>
 			<File
@@ -1233,6 +1233,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\train_gui.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\transparency_gui.cpp"
 				>
 			</File>
 			<File

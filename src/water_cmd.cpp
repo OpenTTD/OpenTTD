@@ -421,7 +421,7 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 		SpriteID image = wdts->image + base;
 		SpriteID pal;
 
-		if (_display_opt & DO_TRANS_BUILDINGS) {
+		if (HASBIT(_transparent_opt, TO_BUILDINGS)) {
 			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 			pal = PALETTE_TO_TRANSPARENT;
 		} else {

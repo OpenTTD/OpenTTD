@@ -1193,11 +1193,12 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 
 		/* Draw the rectangle if 'tranparent station signs' is off,
 		 * or if we are drawing a general text sign (STR_2806) */
-			if (!(_display_opt & DO_TRANS_SIGNS) || ss->string == STR_2806)
+			if (!HASBIT(_transparent_opt, TO_SIGNS) || ss->string == STR_2806) {
 				DrawFrameRect(
 					x, y, x + w, bottom, ss->color,
-					(_display_opt & DO_TRANS_BUILDINGS) ? FR_TRANSPARENT : FR_NONE
+					HASBIT(_transparent_opt, TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
 				);
+			}
 		}
 
 		SetDParam(0, ss->params[0]);
@@ -1205,8 +1206,8 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 		/* if we didn't draw a rectangle, or if transparant building is on,
 		 * draw the text in the color the rectangle would have */
 		if ((
-					(_display_opt & DO_TRANS_BUILDINGS) ||
-					(_display_opt & DO_TRANS_SIGNS && ss->string != STR_2806)
+					HASBIT(_transparent_opt, TO_BUILDINGS) ||
+					(HASBIT(_transparent_opt, TO_SIGNS) && ss->string != STR_2806)
 				) && ss->width != 0) {
 			/* Real colors need the IS_PALETTE_COLOR flag
 			 * otherwise colors from _string_colormap are assumed. */

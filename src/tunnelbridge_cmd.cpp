@@ -795,7 +795,7 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis 
 			{ 2, 4, 8, 1,   2, 16, 9, 0 }
 		};
 
-		if (_display_opt & DO_TRANS_BUILDINGS) {
+		if (HASBIT(_transparent_opt, TO_BRIDGES)) {
 			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 			pal = PALETTE_TO_TRANSPARENT;
 		} else {
@@ -920,7 +920,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		image = psid->sprite;
 
 		/* draw ramp */
-		if (_display_opt & DO_TRANS_BUILDINGS) {
+		if (HASBIT(_transparent_opt, TO_BRIDGES)) {
 			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 			pal = PALETTE_TO_TRANSPARENT;
 		} else {
@@ -1012,7 +1012,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	z = GetBridgeHeight(rampsouth) - 3;
 
 	image = psid->sprite;
-	if (_display_opt & DO_TRANS_BUILDINGS) {
+	if (HASBIT(_transparent_opt, TO_BRIDGES)) {
 		SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 		pal = PALETTE_TO_TRANSPARENT;
 	} else {
@@ -1027,7 +1027,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 	psid++;
 	image = psid->sprite;
-	if (_display_opt & DO_TRANS_BUILDINGS) {
+	if (HASBIT(_transparent_opt, TO_BRIDGES)) {
 		SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 		pal = PALETTE_TO_TRANSPARENT;
 	} else {
@@ -1050,7 +1050,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 		/* draw poles below for small bridges */
 		if (psid->sprite != 0) {
 			image = psid->sprite;
-			if (_display_opt & DO_TRANS_BUILDINGS) {
+			if (HASBIT(_transparent_opt, TO_BRIDGES)) {
 				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 				pal = PALETTE_TO_TRANSPARENT;
 			} else {

@@ -125,7 +125,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			dtus = &_draw_tile_unmovable_data[GetUnmovableType(ti->tile)];
 
 			image = dtus->image;
-			if (_display_opt & DO_TRANS_BUILDINGS) {
+			if (HASBIT(_transparent_opt, TO_STRUCTURES)) {
 				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 				pal = PALETTE_TO_TRANSPARENT;
 			} else {
@@ -143,7 +143,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			DrawGroundSprite(SPR_CONCRETE_GROUND, PAL_NONE);
 
 			image = SPR_STATUE_COMPANY;
-			if (_display_opt & DO_TRANS_BUILDINGS) {
+			if (HASBIT(_transparent_opt, TO_STRUCTURES)) {
 				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 				pal = PALETTE_TO_TRANSPARENT;
 			} else {
@@ -179,7 +179,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			foreach_draw_tile_seq(dtss, t->seq) {
 				image = dtss->image;
-				if (_display_opt & DO_TRANS_BUILDINGS) {
+				if (HASBIT(_transparent_opt, TO_STRUCTURES)) {
 					SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 					pal = PALETTE_TO_TRANSPARENT;
 				} else {

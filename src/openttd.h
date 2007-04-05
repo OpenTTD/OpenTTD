@@ -175,10 +175,18 @@ enum {
 	DO_SHOW_STATION_NAMES = 1 << 1,
 	DO_SHOW_SIGNS         = 1 << 2,
 	DO_FULL_ANIMATION     = 1 << 3,
-	DO_TRANS_BUILDINGS    = 1 << 4,
 	DO_FULL_DETAIL        = 1 << 5,
 	DO_WAYPOINTS          = 1 << 6,
-	DO_TRANS_SIGNS        = 1 << 7,
+};
+
+enum {
+	TO_SIGNS,
+	TO_TREES,
+	TO_HOUSES,
+	TO_INDUSTRIES,
+	TO_BUILDINGS,
+	TO_BRIDGES,
+	TO_STRUCTURES,
 };
 
 /* Landscape types */
@@ -461,6 +469,7 @@ enum WindowClass {
 	WC_GENERATE_LANDSCAPE,
 	WC_GENERATE_PROGRESS_WINDOW,
 	WC_CONFIRM_POPUP_QUERY,
+	WC_TRANSPARENCY_TOOLBAR,
 };
 
 

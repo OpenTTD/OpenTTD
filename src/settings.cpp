@@ -1205,7 +1205,7 @@ static const SettingDescGlobVarList _win32_settings[] = {
 #endif /* WIN32 */
 
 static const SettingDescGlobVarList _misc_settings[] = {
-	SDTG_MMANY("display_opt",     SLE_UINT8, S, 0, _display_opt,       (DO_SHOW_TOWN_NAMES|DO_SHOW_STATION_NAMES|DO_SHOW_SIGNS|DO_FULL_ANIMATION|DO_FULL_DETAIL|DO_TRANS_BUILDINGS|DO_WAYPOINTS), "SHOW_TOWN_NAMES|SHOW_STATION_NAMES|SHOW_SIGNS|FULL_ANIMATION|TRANS_BUILDINGS|FULL_DETAIL|WAYPOINTS", STR_NULL, NULL),
+	SDTG_MMANY("display_opt",     SLE_UINT8, S, 0, _display_opt,       (DO_SHOW_TOWN_NAMES|DO_SHOW_STATION_NAMES|DO_SHOW_SIGNS|DO_FULL_ANIMATION|DO_FULL_DETAIL|DO_WAYPOINTS), "SHOW_TOWN_NAMES|SHOW_STATION_NAMES|SHOW_SIGNS|FULL_ANIMATION|FULL_DETAIL|WAYPOINTS", STR_NULL, NULL),
 	 SDTG_BOOL("news_ticker_sound",          S, 0, _news_ticker_sound,     true,    STR_NULL, NULL),
 	 SDTG_BOOL("fullscreen",                 S, 0, _fullscreen,           false,    STR_NULL, NULL),
 	  SDTG_STR("videodriver",      SLE_STRB,C|S,0, _ini_videodriver,       NULL,    STR_NULL, NULL),

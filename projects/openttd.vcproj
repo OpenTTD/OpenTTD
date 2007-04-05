@@ -757,6 +757,9 @@
 				RelativePath=".\..\src\train_gui.cpp">
 			</File>
 			<File
+				RelativePath=".\..\src\transparency_gui.cpp">
+			</File>
+			<File
 				RelativePath=".\..\src\vehicle_gui.cpp">
 			</File>
 		</Filter>

@@ -259,7 +259,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	/* Add industry on top of the ground? */
 	image = dits->building.sprite;
 	if (image != 0) {
-		if (_display_opt & DO_TRANS_BUILDINGS) {
+		if (HASBIT(_transparent_opt, TO_INDUSTRIES)) {
 			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 			pal = PALETTE_TO_TRANSPARENT;
 		} else {
@@ -274,7 +274,7 @@ static void DrawTile_Industry(TileInfo *ti)
 			dits->dz,
 			z);
 
-		if (_display_opt & DO_TRANS_BUILDINGS) return;
+		if (HASBIT(_transparent_opt, TO_INDUSTRIES)) return;
 	}
 
 	{

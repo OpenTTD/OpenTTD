@@ -765,7 +765,7 @@ static void DrawTile_Road(TileInfo *ti)
 				SpriteID image = dtss->image;
 				SpriteID pal;
 
-				if (_display_opt & DO_TRANS_BUILDINGS) {
+				if (HASBIT(_transparent_opt, TO_BUILDINGS)) {
 					SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 					pal = PALETTE_TO_TRANSPARENT;
 				} else if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
