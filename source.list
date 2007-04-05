@@ -177,6 +177,7 @@ thread.h
 tile.h
 town.h
 train.h
+transparency_gui.h
 variables.h
 vehicle.h
 vehicle_gui.h

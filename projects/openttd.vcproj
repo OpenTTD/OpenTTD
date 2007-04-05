@@ -630,6 +630,9 @@
 				RelativePath=".\..\src\train.h">
 			</File>
 			<File
+				RelativePath=".\..\src\transparency_gui.h">
+			</File>
+			<File
 				RelativePath=".\..\src\variables.h">
 			</File>
 			<File
