@@ -1829,6 +1829,25 @@ void IConsoleGetPatchSetting(const char *name)
 		name, value, (sd->desc.flags & SGF_0ISDISABLED) ? "(0) " : "", sd->desc.min, sd->desc.max);
 }
 
+void IConsoleListPatches()
+{
+	IConsolePrintF(_icolour_warn, "All patches with their current value:");
+
+	for (const SettingDesc *sd = _patch_settings; sd->save.cmd != SL_END; sd++) {
+		char value[80];
+		const void *ptr = GetVariableAddress((_game_mode == GM_MENU) ? &_patches_newgame : &_patches, &sd->save);
+
+		if (sd->desc.cmd == SDT_BOOLX) {
+			snprintf(value, lengthof(value), (*(bool*)ptr == 1) ? "on" : "off");
+		} else {
+			snprintf(value, lengthof(value), "%d", (uint32)ReadValue(ptr, sd->save.conv));
+		}
+		IConsolePrintF(_icolour_def, "%s = %s", sd->desc.name, value);
+	}
+
+	IConsolePrintF(_icolour_warn, "Use 'patch' command to change a value");
+}
+
 /** Save and load handler for patches/settings
  * @param osd SettingDesc struct containing all information
  * @param object can be either NULL in which case we load global variables or
