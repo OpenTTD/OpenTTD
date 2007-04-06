@@ -1718,6 +1718,12 @@ static void UpdateIndustryStatistics(Industry *i)
 	}
 }
 
+/** Simple helper that will collect data for the generation of industries */
+struct ProbabilityHelper {
+	uint16 prob;      ///< probability
+	IndustryType ind; ///< industry id correcponding
+};
+
 /**
  * Try to create a random industry, during gameplay
  */
@@ -1727,7 +1733,7 @@ static void MaybeNewIndustry(void)
 	IndustryType rndtype, j;     // Loop controlers
 	const IndustrySpec *ind_spc;
 	uint num = 0;
-	uint16 cumulative_probs[IT_END];
+	ProbabilityHelper cumulative_probs[IT_END]; // probability collector
 	uint16 probability_max = 0;
 
 	/* Generate a list of all possible industries that can be built. */
@@ -1737,25 +1743,28 @@ static void MaybeNewIndustry(void)
 		/* if appearing chance for this landscape is above 0, this industry can be chosen */
 		if (chance != 0) {
 			probability_max += chance;
-			cumulative_probs[num++] = probability_max;
+			/* adds the result for this industry */
+			cumulative_probs[num].ind = j;
+			cumulative_probs[num++].prob = probability_max;
 		}
 	}
 
-	/* Find a random type, with maximum been what has been evaluate above*/
+	/* Find a random type, with maximum being what has been evaluate above*/
 	rndtype = RandomRange(probability_max);
-	for (j = 0; j < num; j++) {
-		/* and choose the industry thta matches as close as possible this random type */
-		if (cumulative_probs[j] >= rndtype) break;
+	for (j = 0; j < IT_END; j++) {
+		/* and choose the index of the industry that matches as close as possible this random type */
+		if (cumulative_probs[j].prob >= rndtype) break;
 	}
 
-	ind_spc = GetIndustrySpec(j);
+	ind_spc = GetIndustrySpec(cumulative_probs[j].ind);
 	/*  Check if it is allowed */
 	if ((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && _cur_year > 1950) return;
 	if ((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && _cur_year < 1960) return;
 
+	/* try to create 2000 times this industry */
 	num = 2000;
 	for (;;) {
-		ind = CreateNewIndustry(RandomTile(), j);
+		ind = CreateNewIndustry(RandomTile(), cumulative_probs[j].ind);
 		if (ind != NULL) break;
 		if (--num == 0) return;
 	}
@@ -1845,7 +1854,7 @@ void IndustryMonthlyLoop()
 	}
 
 	/* 3% chance that we start a new industry */
-	if (CHANCE16(3, 100)) {
+	if (CHANCE16(99, 100)) {
 		MaybeNewIndustry();
 	} else if (!_patches.smooth_economy) {
 		i = GetRandomIndustry();
