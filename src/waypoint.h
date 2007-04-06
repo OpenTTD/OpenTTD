@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file waypoint.h */
+
 #ifndef WAYPOINT_H
 #define WAYPOINT_H
 
@@ -28,6 +30,8 @@ DECLARE_OLD_POOL(Waypoint, Waypoint, 3, 8000)
 
 /**
  * Check if a Waypoint really exists.
+ * @param wp Waypoint to query
+ * @return the validity of the waypoint
  */
 static inline bool IsValidWaypoint(const Waypoint *wp)
 {

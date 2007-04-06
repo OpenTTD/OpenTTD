@@ -1690,6 +1690,7 @@ extern int GetAmountOwnedBy(const Player *p, PlayerID owner);
 
 /** Acquire shares in an opposing company.
  * @param tile unused
+ * @param flags type of operation
  * @param p1 player to buy the shares from
  * @param p2 unused
  */
@@ -1735,6 +1736,7 @@ int32 CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Sell shares in an opposing company.
  * @param tile unused
+ * @param flags type of operation
  * @param p1 player to sell the shares from
  * @param p2 unused
  */
@@ -1770,6 +1772,7 @@ int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * that company.
  * @todo currently this only works for AI players
  * @param tile unused
+ * @param flags type of operation
  * @param p1 player/company to buy up
  * @param p2 unused
  */

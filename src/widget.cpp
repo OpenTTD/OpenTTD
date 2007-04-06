@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file widget.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
@@ -52,7 +54,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 
 	switch (wi->type) {
 		case WWT_SCROLLBAR: {
-			// vertical scroller
+			/* vertical scroller */
 			w->flags4 &= ~WF_HSCROLL;
 			w->flags4 &= ~WF_SCROLL2;
 			mi = wi->top;
@@ -62,7 +64,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 			break;
 		}
 		case WWT_SCROLL2BAR: {
-			// 2nd vertical scroller
+			/* 2nd vertical scroller */
 			w->flags4 &= ~WF_HSCROLL;
 			w->flags4 |= WF_SCROLL2;
 			mi = wi->top;
@@ -72,7 +74,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 			break;
 		}
 		case  WWT_HSCROLLBAR: {
-			// horizontal scroller
+			/* horizontal scroller */
 			w->flags4 &= ~WF_SCROLL2;
 			w->flags4 |= WF_HSCROLL;
 			mi = wi->left;
@@ -84,7 +86,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 		default: return; //this should never happen
 	}
 	if (pos <= mi+9) {
-		// Pressing the upper button?
+		/* Pressing the upper button? */
 		w->flags4 |= WF_SCROLL_UP;
 		if (_scroller_click_timeout == 0) {
 			_scroller_click_timeout = 6;
@@ -92,7 +94,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 		}
 		_left_button_clicked = false;
 	} else if (pos >= ma-10) {
-		// Pressing the lower button?
+		/* Pressing the lower button? */
 		w->flags4 |= WF_SCROLL_DOWN;
 
 		if (_scroller_click_timeout == 0) {
@@ -102,7 +104,6 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 		}
 		_left_button_clicked = false;
 	} else {
-		//
 		Point pt = HandleScrollbarHittest(sb, mi, ma);
 
 		if (pos < pt.x) {
@@ -127,7 +128,8 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 /** Returns the index for the widget located at the given position
  * relative to the window. It includes all widget-corner pixels as well.
  * @param *w Window to look inside
- * @param  x,y Window client coordinates
+ * @param  x
+ * @param  y Window client coordinates
  * @return A widget index, or -1 if no widget was found.
  */
 int GetWidgetFromPos(const Window *w, int x, int y)
@@ -135,8 +137,8 @@ int GetWidgetFromPos(const Window *w, int x, int y)
 	uint index;
 	int found_index = -1;
 
-	// Go through the widgets and check if we find the widget that the coordinate is
-	// inside.
+	/* Go through the widgets and check if we find the widget that the coordinate is
+	 * inside. */
 	for (index = 0; index < w->widget_count; index++) {
 		const Widget *wi = &w->widget[index];
 		if (wi->type == WWT_EMPTY || wi->type == WWT_FRAME) continue;
@@ -294,14 +296,14 @@ void DrawWindowWidgets(const Window *w)
 			goto draw_default;
 		}
 
-		// vertical scrollbar
+		/* vertical scrollbar */
 		case WWT_SCROLLBAR: {
 			Point pt;
 			int c1,c2;
 
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
-			// draw up/down buttons
+			/* draw up/down buttons */
 			clicked = ((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP);
 			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, 0x10);
@@ -313,11 +315,11 @@ void DrawWindowWidgets(const Window *w)
 			c1 = _colour_gradient[wi->color&0xF][3];
 			c2 = _colour_gradient[wi->color&0xF][7];
 
-			// draw "shaded" background
+			/* draw "shaded" background */
 			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c2);
 			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
 
-			// draw shaded lines
+			/* draw shaded lines */
 			GfxFillRect(r.left+2, r.top+10, r.left+2, r.bottom-10, c1);
 			GfxFillRect(r.left+3, r.top+10, r.left+3, r.bottom-10, c2);
 			GfxFillRect(r.left+7, r.top+10, r.left+7, r.bottom-10, c1);
@@ -333,7 +335,7 @@ void DrawWindowWidgets(const Window *w)
 
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
-			// draw up/down buttons
+			/* draw up/down buttons */
 			clicked = ((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2));
 			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color,  (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, 0x10);
@@ -345,11 +347,11 @@ void DrawWindowWidgets(const Window *w)
 			c1 = _colour_gradient[wi->color&0xF][3];
 			c2 = _colour_gradient[wi->color&0xF][7];
 
-			// draw "shaded" background
+			/* draw "shaded" background */
 			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c2);
 			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
 
-			// draw shaded lines
+			/* draw shaded lines */
 			GfxFillRect(r.left+2, r.top+10, r.left+2, r.bottom-10, c1);
 			GfxFillRect(r.left+3, r.top+10, r.left+3, r.bottom-10, c2);
 			GfxFillRect(r.left+7, r.top+10, r.left+7, r.bottom-10, c1);
@@ -360,7 +362,7 @@ void DrawWindowWidgets(const Window *w)
 			break;
 		}
 
-		// horizontal scrollbar
+		/* horizontal scrollbar */
 		case WWT_HSCROLLBAR: {
 			Point pt;
 			int c1,c2;
@@ -378,17 +380,17 @@ void DrawWindowWidgets(const Window *w)
 			c1 = _colour_gradient[wi->color&0xF][3];
 			c2 = _colour_gradient[wi->color&0xF][7];
 
-			// draw "shaded" background
+			/* draw "shaded" background */
 			GfxFillRect(r.left+10, r.top, r.right-10, r.bottom, c2);
 			GfxFillRect(r.left+10, r.top, r.right-10, r.bottom, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
 
-			// draw shaded lines
+			/* draw shaded lines */
 			GfxFillRect(r.left+10, r.top+2, r.right-10, r.top+2, c1);
 			GfxFillRect(r.left+10, r.top+3, r.right-10, r.top+3, c2);
 			GfxFillRect(r.left+10, r.top+7, r.right-10, r.top+7, c1);
 			GfxFillRect(r.left+10, r.top+8, r.right-10, r.top+8, c2);
 
-			// draw actual scrollbar
+			/* draw actual scrollbar */
 			pt = HandleScrollbarHittest(&w->hscroll, r.left, r.right);
 			DrawFrameRect(pt.x, r.top, pt.y, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL) ? FR_LOWERED : FR_NONE);
 
@@ -404,19 +406,19 @@ void DrawWindowWidgets(const Window *w)
 			c1 = _colour_gradient[wi->color][3];
 			c2 = _colour_gradient[wi->color][7];
 
-			//Line from upper left corner to start of text
+			/*Line from upper left corner to start of text */
 			GfxFillRect(r.left, r.top+4, r.left+4,r.top+4, c1);
 			GfxFillRect(r.left+1, r.top+5, r.left+4,r.top+5, c2);
 
-			// Line from end of text to upper right corner
+			/* Line from end of text to upper right corner */
 			GfxFillRect(x2, r.top+4, r.right-1,r.top+4,c1);
 			GfxFillRect(x2, r.top+5, r.right-2,r.top+5,c2);
 
-			// Line from upper left corner to bottom left corner
+			/* Line from upper left corner to bottom left corner */
 			GfxFillRect(r.left, r.top+5, r.left, r.bottom-1, c1);
 			GfxFillRect(r.left+1, r.top+6, r.left+1, r.bottom-2, c2);
 
-			//Line from upper right corner to bottom right corner
+			/*Line from upper right corner to bottom right corner */
 			GfxFillRect(r.right-1, r.top+5, r.right-1, r.bottom-2, c1);
 			GfxFillRect(r.right, r.top+4, r.right, r.bottom-1, c2);
 
@@ -501,7 +503,7 @@ static int GetDropdownItem(const Window *w)
 	if (item >= WP(w,dropdown_d).num_items || (HASBIT(WP(w,dropdown_d).disabled_state, item) && !HASBIT(WP(w,dropdown_d).hidden_state, item)) || WP(w,dropdown_d).items[item] == 0)
 		return - 1;
 
-	// Skip hidden items -- +1 for each hidden item before the clicked item.
+	/* Skip hidden items -- +1 for each hidden item before the clicked item. */
 	for (counter = 0; item >= counter; ++counter)
 		if (HASBIT(WP(w,dropdown_d).hidden_state, counter)) item++;
 

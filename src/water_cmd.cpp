@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file water_cmd.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
@@ -47,6 +49,7 @@ static void FloodVehicle(Vehicle *v);
 
 /** Build a ship depot.
  * @param tile tile where ship depot is built
+ * @param flags type of operation
  * @param p1 bit 0 depot orientation (Axis)
  * @param p2 unused
  */
@@ -76,7 +79,7 @@ int32 CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 
-	// pretend that we're not making land from the water even though we actually are.
+	/* pretend that we're not making land from the water even though we actually are. */
 	cost = 0;
 
 	depot = AllocateDepot();
@@ -120,25 +123,25 @@ static int32 RemoveShipDepot(TileIndex tile, uint32 flags)
 	return _price.remove_ship_depot;
 }
 
-// build a shiplift
+/** build a shiplift */
 static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 {
 	int32 ret;
 	int delta;
 
-	// middle tile
+	/* middle tile */
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 
 	delta = TileOffsByDiagDir(dir);
-	// lower tile
+	/* lower tile */
 	ret = DoCommand(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 	if (GetTileSlope(tile - delta, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
-	// upper tile
+	/* upper tile */
 	ret = DoCommand(tile + delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 	if (GetTileSlope(tile + delta, NULL) != SLOPE_FLAT) {
@@ -167,7 +170,7 @@ static int32 RemoveShiplift(TileIndex tile, uint32 flags)
 
 	if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
-	// make sure no vehicle is on the tile.
+	/* make sure no vehicle is on the tile. */
 	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(tile + delta) || !EnsureNoVehicle(tile - delta))
 		return CMD_ERROR;
 
@@ -190,6 +193,7 @@ static void MarkTilesAroundDirty(TileIndex tile)
 
 /** Builds a lock (ship-lift)
  * @param tile tile where to place the lock
+ * @param flags type of operation
  * @param p1 unused
  * @param p2 unused
  */
@@ -211,6 +215,7 @@ int32 CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Build a piece of canal.
  * @param tile end tile of stretch-dragging
+ * @param flags type of operation
  * @param p1 start tile of stretch-dragging
  * @param p2 ctrl pressed - toggles ocean / canals at sealevel (ocean only allowed in the scenario editor)
  */
@@ -249,7 +254,7 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
 
-		// can't make water of water!
+		/* can't make water of water! */
 		if (IsTileType(tile, MP_WATER) && (!IsTileOwner(tile, OWNER_WATER) || HASBIT(p2, 0))) continue;
 
 		ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -282,10 +287,10 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 		case WATER_TILE_CLEAR:
 			if (flags & DC_NO_WATER) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 
-			// Make sure no vehicle is on the tile
+			/* Make sure no vehicle is on the tile */
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-			// Make sure it's not an edge tile.
+			/* Make sure it's not an edge tile. */
 			if (!IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) ||
 					!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
 				return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
@@ -299,10 +304,10 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 		case WATER_TILE_COAST: {
 			Slope slope = GetTileSlope(tile, NULL);
 
-			// Make sure no vehicle is on the tile
+			/* Make sure no vehicle is on the tile */
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-			// Make sure it's not an edge tile.
+			/* Make sure it's not an edge tile. */
 			if (!IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) ||
 					!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
 				return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
@@ -325,7 +330,7 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 
 			if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 			if (_current_player == OWNER_WATER) return CMD_ERROR;
-			// move to the middle tile..
+			/* move to the middle tile.. */
 			return RemoveShiplift(tile + ToTileIndexDiff(_shiplift_tomiddle_offs[GetSection(tile)]), flags);
 		}
 
@@ -339,7 +344,7 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 	}
 }
 
-// return true if a tile is a water tile.
+/** return true if a tile is a water tile. */
 static bool IsWateredTile(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
@@ -362,12 +367,12 @@ static bool IsWateredTile(TileIndex tile)
 	}
 }
 
-// draw a canal styled water tile with dikes around
+/** draw a canal styled water tile with dikes around */
 void DrawCanalWater(TileIndex tile)
 {
 	uint wa;
 
-	// determine the edges around with water.
+	/* determine the edges around with water. */
 	wa = IsWateredTile(TILE_ADDXY(tile, -1, 0)) << 0;
 	wa += IsWateredTile(TILE_ADDXY(tile, 0, 1)) << 1;
 	wa += IsWateredTile(TILE_ADDXY(tile, 1, 0)) << 2;
@@ -378,25 +383,25 @@ void DrawCanalWater(TileIndex tile)
 	if (!(wa & 4)) DrawGroundSprite(SPR_CANALS_BASE + 59, PAL_NONE);
 	if (!(wa & 8)) DrawGroundSprite(SPR_CANALS_BASE + 60, PAL_NONE);
 
-	// right corner
+	/* right corner */
 	switch (wa & 0x03) {
 		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 4, PAL_NONE); break;
 		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 8, PAL_NONE); break;
 	}
 
-	// bottom corner
+	/* bottom corner */
 	switch (wa & 0x06) {
 		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 5, PAL_NONE); break;
 		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 9, PAL_NONE); break;
 	}
 
-	// left corner
+	/* left corner */
 	switch (wa & 0x0C) {
 		case  0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 6, PAL_NONE); break;
 		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 10, PAL_NONE); break;
 	}
 
-	// upper corner
+	/* upper corner */
 	switch (wa & 0x09) {
 		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 7, PAL_NONE); break;
 		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 11, PAL_NONE); break;
@@ -524,7 +529,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 {
 	TileIndex target = TILE_ADD(tile, ToTileIndexDiff(offs[0]));
 
-	// type of this tile mustn't be water already.
+	/* type of this tile mustn't be water already. */
 	if (IsTileType(target, MP_WATER)) return;
 
 	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[1]))) != 0 ||
@@ -534,7 +539,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 
 	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[3]))) != 0 ||
 			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[4]))) != 0) {
-		// make coast..
+		/* make coast.. */
 		switch (GetTileType(target)) {
 			case MP_RAILWAY: {
 				TrackBits tracks;
@@ -626,7 +631,7 @@ static void FloodVehicle(Vehicle *v)
 			u = v;
 			if (IsFrontEngine(v)) pass = 4; // driver
 
-			// crash all wagons, and count passangers
+			/* crash all wagons, and count passangers */
 			BEGIN_ENUM_WAGONS(v)
 				if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo_count;
 				v->vehstatus |= VS_CRASHED;
@@ -653,7 +658,7 @@ static void FloodVehicle(Vehicle *v)
 	}
 }
 
-// called from tunnelbridge_cmd, and by TileLoop_Industry()
+/** called from tunnelbridge_cmd, and by TileLoop_Industry() */
 void TileLoop_Water(TileIndex tile)
 {
 	static const TileIndexDiffC _tile_loop_offs_array[][5] = {
@@ -675,11 +680,10 @@ void TileLoop_Water(TileIndex tile)
 			TileLoopWaterHelper(tile, _tile_loop_offs_array[i]);
 		}
 	}
-	// _current_player can be changed by TileLoopWaterHelper.. reset it back
-	//   here
+	/* _current_player can be changed by TileLoopWaterHelper.. reset it back here */
 	_current_player = OWNER_NONE;
 
-	// edges
+	/* edges */
 	if (TileX(tile) == 0 && IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) { //NE
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[2]);
 	}
@@ -713,11 +717,11 @@ static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
 		default: return 0;
 	}
 	if (TileX(tile) == 0) {
-		// NE border: remove tracks that connects NE tile edge
+		/* NE border: remove tracks that connects NE tile edge */
 		ts &= ~(TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT);
 	}
 	if (TileY(tile) == 0) {
-		// NW border: remove tracks that connects NW tile edge
+		/* NW border: remove tracks that connects NW tile edge */
 		ts &= ~(TRACK_BIT_Y | TRACK_BIT_LEFT | TRACK_BIT_UPPER);
 	}
 	return ts * 0x101;

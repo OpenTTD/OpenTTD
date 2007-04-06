@@ -12,6 +12,10 @@
 #include <stdio.h>
 #include <string.h>
 
+/** Main call of the endian_check program
+ * @param argc argument count
+ * @param argv arguments themselves
+ * @return exit code */
 int main (int argc, char *argv[]) {
 	unsigned char EndianTest[2] = { 1, 0 };
 	int force_BE = 0, force_LE = 0, force_PREPROCESSOR = 0;

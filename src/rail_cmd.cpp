@@ -656,7 +656,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* convert signals <-> semaphores */
 			cost = _price.build_signals + _price.remove_signals;
 		} else {
-			// it is free to change orientation/pre-exit-combo signals
+			/* it is free to change orientation/pre-exit-combo signals */
 			cost = 0;
 		}
 	}
@@ -741,7 +741,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	track = TrackdirToTrack(trackdir); /* trackdir might have changed, keep track in sync */
 
-	// copy the signal-style of the first rail-piece if existing
+	/* copy the signal-style of the first rail-piece if existing */
 	if (HasSignals(tile)) {
 		signals = _m[tile].m3 & SignalOnTrack(track);
 		if (signals == 0) signals = SignalOnTrack(track); /* Can this actually occur? */

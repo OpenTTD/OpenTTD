@@ -659,7 +659,7 @@ static inline bool IsWindowWidgetHidden(const Window *w, byte widget_index)
  * Sets the lowered/raised status of a widget.
  * @param w : Window on which the widget is located
  * @param widget_index : index of this widget in the window
- * @param hidden_stat : status to use ie: lowered = true, raised = false
+ * @param lowered_stat : status to use ie: lowered = true, raised = false
  */
 static inline void SetWindowWidgetLoweredState(Window *w, byte widget_index, bool lowered_stat)
 {

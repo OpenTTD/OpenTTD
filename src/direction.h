@@ -24,7 +24,7 @@ enum Direction {
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<Direction> : MakeEnumPropsT<Direction, byte, DIR_BEGIN, DIR_END, INVALID_DIR> {};
-typedef TinyEnumT<Direction> DirectionByte;
+typedef TinyEnumT<Direction> DirectionByte; //typedefing-enumification of Direction
 
 static inline Direction ReverseDir(Direction d)
 {
@@ -73,7 +73,7 @@ DECLARE_POSTFIX_INCREMENT(DiagDirection);
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<DiagDirection> : MakeEnumPropsT<DiagDirection, byte, DIAGDIR_BEGIN, DIAGDIR_END, INVALID_DIAGDIR> {};
-typedef TinyEnumT<DiagDirection> DiagDirectionByte;
+typedef TinyEnumT<DiagDirection> DiagDirectionByte; //typedefing-enumification of DiagDirection
 
 static inline DiagDirection ReverseDiagDir(DiagDirection d)
 {
@@ -137,7 +137,9 @@ static inline DiagDirection AxisToDiagDir(Axis a)
 
 /**
  * Convert an axis and a flag for north/south into a DiagDirection
+ * @param xy axis to convert
  * @param ns north -> 0, south -> 1
+ * @return the desired DiagDirection
  */
 static inline DiagDirection XYNSToDiagDir(Axis xy, uint ns)
 {

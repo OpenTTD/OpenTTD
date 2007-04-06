@@ -63,6 +63,7 @@ void DedicatedFork()
 
 #else
 
+/** Empty helper function call for NOT(UNIX and not MORPHOS) systems */
 void DedicatedFork() {}
 
 #endif /* ENABLE_NETWORK */

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file water_map.h */
+
 #ifndef WATER_MAP_H
 #define WATER_MAP_H
 

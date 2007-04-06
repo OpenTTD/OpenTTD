@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file waypoint.cpp */
+
 #include "stdafx.h"
 #include "openttd.h"
 
@@ -39,7 +41,9 @@ static void WaypointPoolNewBlock(uint start_item)
 
 DEFINE_OLD_POOL(Waypoint, Waypoint, WaypointPoolNewBlock, NULL)
 
-/* Create a new waypoint */
+/**
+ * Create a new waypoint
+ * @return a pointer to the newly created Waypoint */
 static Waypoint* AllocateWaypoint()
 {
 	Waypoint *wp;
@@ -63,7 +67,9 @@ static Waypoint* AllocateWaypoint()
 	return NULL;
 }
 
-/* Update the sign for the waypoint */
+/**
+ * Update the sign for the waypoint
+ * @param wp Waypoint to update sign */
 static void UpdateWaypointSign(Waypoint* wp)
 {
 	Point pt = RemapCoords2(TileX(wp->xy) * TILE_SIZE, TileY(wp->xy) * TILE_SIZE);
@@ -71,7 +77,9 @@ static void UpdateWaypointSign(Waypoint* wp)
 	UpdateViewportSignPos(&wp->sign, pt.x, pt.y - 0x20, STR_WAYPOINT_VIEWPORT);
 }
 
-/* Redraw the sign of a waypoint */
+/**
+ * Redraw the sign of a waypoint
+ * @param wp Waypoint to redraw sign */
 static void RedrawWaypointSign(const Waypoint* wp)
 {
 	MarkAllViewportsDirty(
@@ -81,7 +89,9 @@ static void RedrawWaypointSign(const Waypoint* wp)
 		wp->sign.top + 48);
 }
 
-/* Update all signs */
+/**
+ * Update all signs
+ */
 void UpdateAllWaypointSigns()
 {
 	Waypoint *wp;
@@ -91,7 +101,10 @@ void UpdateAllWaypointSigns()
 	}
 }
 
-/* Internal handler to delete a waypoint */
+/**
+ * Internal handler to delete a waypoint
+ * @param wp Waypoint to delete
+ */
 void DestroyWaypoint(Waypoint *wp)
 {
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, wp->index);
@@ -101,7 +114,10 @@ void DestroyWaypoint(Waypoint *wp)
 	RedrawWaypointSign(wp);
 }
 
-/* Set the default name for a waypoint */
+/**
+ * Set the default name for a waypoint
+ * @param wp Waypoint to work on
+ */
 static void MakeDefaultWaypointName(Waypoint* wp)
 {
 	Waypoint *local_wp;
@@ -127,7 +143,10 @@ static void MakeDefaultWaypointName(Waypoint* wp)
 	wp->town_cn = i;
 }
 
-/* Find a deleted waypoint close to a tile. */
+/**
+ * Find a deleted waypoint close to a tile.
+ * @param tile to search from
+ */
 static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
 {
 	Waypoint *wp, *best = NULL;
@@ -173,6 +192,7 @@ void AfterLoadWaypoints()
 /** Convert existing rail to waypoint. Eg build a waypoint station over
  * piece of rail
  * @param tile tile where waypoint will be built
+ * @param flags type of operation
  * @param p1 graphics for waypoint type, 0 indicates standard graphics
  * @param p2 unused
  *
@@ -233,7 +253,7 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			wp->grfid = statspec->grfid;
 			wp->localidx = statspec->localidx;
 		} else {
-			// Specified custom graphics do not exist, so use default.
+			/* Specified custom graphics do not exist, so use default. */
 			wp->stat_id = 0;
 			wp->grfid = 0;
 			wp->localidx = 0;
@@ -253,7 +273,9 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return _price.build_train_depot;
 }
 
-/* Daily loop for waypoints */
+/**
+ * Daily loop for waypoints
+ */
 void WaypointsDailyLoop()
 {
 	Waypoint *wp;
@@ -264,7 +286,13 @@ void WaypointsDailyLoop()
 	}
 }
 
-/* Remove a waypoint */
+/**
+ * Remove a waypoint
+ * @param tile from which to remove waypoint
+ * @param flags type of operation
+ * @param justremove will indicate if it is removed from rail or if rails are removed too
+ * @return cost of operation or error
+ */
 int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 {
 	Waypoint *wp;
@@ -297,10 +325,13 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 	return _price.remove_train_depot;
 }
 
-/** Delete a waypoint
+/**
+ * Delete a waypoint
  * @param tile tile where waypoint is to be deleted
+ * @param flags type of operation
  * @param p1 unused
  * @param p2 unused
+ * @return cost of operation or error
  */
 int32 CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -308,10 +339,13 @@ int32 CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return RemoveTrainWaypoint(tile, flags, true);
 }
 
-/** Rename a waypoint.
+/**
+ * Rename a waypoint.
  * @param tile unused
+ * @param flags type of operation
  * @param p1 id of waypoint
  * @param p2 unused
+ * @return cost of operation or error
  */
 int32 CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -349,7 +383,11 @@ int32 CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-/* This hacks together some dummy one-shot Station structure for a waypoint. */
+/**
+ * This hacks together some dummy one-shot Station structure for a waypoint.
+ * @param tile on which to work
+ * @return pointer to a Station
+ */
 Station *ComposeWaypointStation(TileIndex tile)
 {
 	Waypoint *wp = GetWaypointByTile(tile);
@@ -367,7 +405,13 @@ Station *ComposeWaypointStation(TileIndex tile)
 	return &stat;
 }
 
-/* Draw a waypoint */
+/**
+ * Draw a waypoint
+ * @param x coordinate
+ * @param y coordinate
+ * @param stat_id station id
+ * @param railtype RailType to use for
+ */
 void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 {
 	x += 33;
@@ -378,7 +422,9 @@ void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 	}
 }
 
-/* Fix savegames which stored waypoints in their old format */
+/**
+ * Fix savegames which stored waypoints in their old format
+ */
 void FixOldWaypoints()
 {
 	Waypoint *wp;

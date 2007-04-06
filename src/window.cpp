@@ -18,7 +18,7 @@
 #include "genworld.h"
 #include "helpers.hpp"
 
-// delta between mouse cursor and upper left corner of dragged window
+/* delta between mouse cursor and upper left corner of dragged window */
 static Point _drag_delta;
 
 static Window _windows[25];
@@ -101,7 +101,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y)
 
 	if (w->desc_flags & WDF_DEF_WIDGET) {
 		e.we.click.widget = GetWidgetFromPos(w, x, y);
-		if (e.we.click.widget < 0) return; /* exit if clicked outside of widgets */
+		if (e.we.click.widget < 0) return; // exit if clicked outside of widgets
 
 		/* don't allow any interaction if the button has been disabled */
 		if (IsWindowWidgetDisabled(w, e.we.click.widget)) return;
@@ -157,7 +157,7 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 	if (w->desc_flags & WDF_STD_TOOLTIPS) {
 		e.we.click.widget = GetWidgetFromPos(w, x, y);
 		if (e.we.click.widget < 0)
-			return; /* exit if clicked outside of widgets */
+			return; // exit if clicked outside of widgets
 
 		if (w->widget[e.we.click.widget].tooltips != 0) {
 			GuiShowTooltips(w->widget[e.we.click.widget].tooltips);
@@ -596,7 +596,7 @@ static Window *LocalAllocateWindow(
 		DeleteWindow(w);
 	}
 
-	// Set up window properties
+	/* Set up window properties */
 	memset(w, 0, sizeof(*w));
 	w->window_class = cls;
 	w->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
@@ -685,7 +685,7 @@ static bool IsGoodAutoPlace1(int left, int top)
 	if (left < 0 || top < 22 || right > _screen.width || bottom > _screen.height)
 		return false;
 
-	// Make sure it is not obscured by any window.
+	/* Make sure it is not obscured by any window. */
 	FOR_ALL_WINDOWS(wz) {
 		const Window *w = *wz;
 		if (w->window_class == WC_MAIN_WINDOW) continue;
@@ -714,7 +714,7 @@ static bool IsGoodAutoPlace2(int left, int top)
 	if (left < -(width>>2) || left > _screen.width - (width>>1)) return false;
 	if (top < 22 || top > _screen.height - (height>>2)) return false;
 
-	// Make sure it is not obscured by any window.
+	/* Make sure it is not obscured by any window. */
 	FOR_ALL_WINDOWS(wz) {
 		const Window *w = *wz;
 		if (w->window_class == WC_MAIN_WINDOW) continue;
@@ -936,7 +936,7 @@ static void DecreaseWindowCounters()
 
 	for (wz = _last_z_window; wz != _z_windows;) {
 		w = *--wz;
-		// Unclick scrollbar buttons if they are pressed.
+		/* Unclick scrollbar buttons if they are pressed. */
 		if (w->flags4 & (WF_SCROLL_DOWN | WF_SCROLL_UP)) {
 			w->flags4 &= ~(WF_SCROLL_DOWN | WF_SCROLL_UP);
 			SetWindowDirty(w);
@@ -993,7 +993,7 @@ static bool HandleDragDrop()
 	ResetObjectToPlace();
 
 	if (w != NULL) {
-		// send an event in client coordinates.
+		/* send an event in client coordinates. */
 		e.event = WE_DRAGDROP;
 		e.we.dragdrop.pt.x = _cursor.pos.x - w->left;
 		e.we.dragdrop.pt.y = _cursor.pos.y - w->top;
@@ -1038,7 +1038,7 @@ static bool HandleMouseOver()
 
 	w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
-	// We changed window, put a MOUSEOVER event to the last window
+	/* We changed window, put a MOUSEOVER event to the last window */
 	if (last_w != NULL && last_w != w) {
 		e.event = WE_MOUSEOVER;
 		e.we.mouseover.pt.x = -1;
@@ -1048,7 +1048,7 @@ static bool HandleMouseOver()
 	last_w = w;
 
 	if (w != NULL) {
-		// send an event in client coordinates.
+		/* send an event in client coordinates. */
 		e.event = WE_MOUSEOVER;
 		e.we.mouseover.pt.x = _cursor.pos.x - w->left;
 		e.we.mouseover.pt.y = _cursor.pos.y - w->top;
@@ -1058,7 +1058,7 @@ static bool HandleMouseOver()
 		w->wndproc(w, &e);
 	}
 
-	// Mouseover never stops execution
+	/* Mouseover never stops execution */
 	return true;
 }
 
@@ -1117,10 +1117,10 @@ static bool _dragging_window;
 static bool HandleWindowDragging()
 {
 	Window* const *wz;
-	// Get out immediately if no window is being dragged at all.
+	/* Get out immediately if no window is being dragged at all. */
 	if (!_dragging_window) return true;
 
-	// Otherwise find the window...
+	/* Otherwise find the window... */
 	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
 
@@ -1132,7 +1132,7 @@ static bool HandleWindowDragging()
 			int nx;
 			int ny;
 
-			// Stop the dragging if the left mouse button was released
+			/* Stop the dragging if the left mouse button was released */
 			if (!_left_button_down) {
 				w->flags4 &= ~WF_DRAGGING;
 				break;
@@ -1158,14 +1158,14 @@ static bool HandleWindowDragging()
 					if (v == w) continue; // Don't snap at yourself
 
 					if (y + w->height > v->top && y < v->top + v->height) {
-						// Your left border <-> other right border
+						/* Your left border <-> other right border */
 						delta = abs(v->left + v->width - x);
 						if (delta <= hsnap) {
 							nx = v->left + v->width;
 							hsnap = delta;
 						}
 
-						// Your right border <-> other left border
+						/* Your right border <-> other left border */
 						delta = abs(v->left - x - w->width);
 						if (delta <= hsnap) {
 							nx = v->left - w->width;
@@ -1174,14 +1174,14 @@ static bool HandleWindowDragging()
 					}
 
 					if (w->top + w->height >= v->top && w->top <= v->top + v->height) {
-						// Your left border <-> other left border
+						/* Your left border <-> other left border */
 						delta = abs(v->left - x);
 						if (delta <= hsnap) {
 							nx = v->left;
 							hsnap = delta;
 						}
 
-						// Your right border <-> other right border
+						/* Your right border <-> other right border */
 						delta = abs(v->left + v->width - x - w->width);
 						if (delta <= hsnap) {
 							nx = v->left + v->width - w->width;
@@ -1190,14 +1190,14 @@ static bool HandleWindowDragging()
 					}
 
 					if (x + w->width > v->left && x < v->left + v->width) {
-						// Your top border <-> other bottom border
+						/* Your top border <-> other bottom border */
 						delta = abs(v->top + v->height - y);
 						if (delta <= vsnap) {
 							ny = v->top + v->height;
 							vsnap = delta;
 						}
 
-						// Your bottom border <-> other top border
+						/* Your bottom border <-> other top border */
 						delta = abs(v->top - y - w->height);
 						if (delta <= vsnap) {
 							ny = v->top - w->height;
@@ -1206,14 +1206,14 @@ static bool HandleWindowDragging()
 					}
 
 					if (w->left + w->width >= v->left && w->left <= v->left + v->width) {
-						// Your top border <-> other top border
+						/* Your top border <-> other top border */
 						delta = abs(v->top - y);
 						if (delta <= vsnap) {
 							ny = v->top;
 							vsnap = delta;
 						}
 
-						// Your bottom border <-> other bottom border
+						/* Your bottom border <-> other bottom border */
 						delta = abs(v->top + v->height - y - w->height);
 						if (delta <= vsnap) {
 							ny = v->top + v->height - w->height;
@@ -1223,12 +1223,12 @@ static bool HandleWindowDragging()
 				}
 			}
 
-			// Make sure the window doesn't leave the screen
-			// 13 is the height of the title bar
+			/* Make sure the window doesn't leave the screen
+			 * 13 is the height of the title bar */
 			nx = clamp(nx, 13 - t->right, _screen.width - 13 - t->left);
 			ny = clamp(ny, 0, _screen.height - 13);
 
-			// Make sure the title bar isn't hidden by behind the main tool bar
+			/* Make sure the title bar isn't hidden by behind the main tool bar */
 			v = FindWindowById(WC_MAIN_TOOLBAR, 0);
 			if (v != NULL) {
 				int v_bottom = v->top + v->height;
@@ -1345,15 +1345,15 @@ static bool HandleScrollbarScrolling()
 	int pos;
 	Scrollbar *sb;
 
-	// Get out quickly if no item is being scrolled
+	/* Get out quickly if no item is being scrolled */
 	if (!_scrolling_scrollbar) return true;
 
-	// Find the scrolling window
+	/* Find the scrolling window */
 	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
 
 		if (w->flags4 & WF_SCROLL_MIDDLE) {
-			// Abort if no button is clicked any more.
+			/* Abort if no button is clicked any more. */
 			if (!_left_button_down) {
 				w->flags4 &= ~WF_SCROLL_MIDDLE;
 				SetWindowDirty(w);
@@ -1371,7 +1371,7 @@ static bool HandleScrollbarScrolling()
 				i = _cursor.pos.y - _cursorpos_drag_start.y;
 			}
 
-			// Find the item we want to move to and make sure it's inside bounds.
+			/* Find the item we want to move to and make sure it's inside bounds. */
 			pos = min(max(0, i + _scrollbar_start_pos) * sb->count / _scrollbar_size, max(0, sb->count - sb->cap));
 			if (pos != sb->pos) {
 				sb->pos = pos;
@@ -1482,7 +1482,7 @@ static bool MaybeBringWindowToFront(const Window *w)
 }
 
 /** Send a message from one window to another. The receiving window is found by
- * @param w @see Window pointer pointing to the other window
+ * @param w see Window pointer pointing to the other window
  * @param msg Specifies the message to be sent
  * @param wparam Specifies additional message-specific information
  * @param lparam Specifies additional message-specific information
@@ -1500,8 +1500,8 @@ static void SendWindowMessageW(Window *w, uint msg, uint wparam, uint lparam)
 }
 
 /** Send a message from one window to another. The receiving window is found by
- * @param wnd_class @see WindowClass class AND
- * @param wnd_num @see WindowNumber number, mostly 0
+ * @param wnd_class see WindowClass class AND
+ * @param wnd_num see WindowNumber number, mostly 0
  * @param msg Specifies the message to be sent
  * @param wparam Specifies additional message-specific information
  * @param lparam Specifies additional message-specific information
@@ -1514,7 +1514,7 @@ void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, int msg, int
 
 /** Send a message from one window to another. The message will be sent
  * to ALL windows of the windowclass specified in the first parameter
- * @param wnd_class @see WindowClass class
+ * @param wnd_class see WindowClass class
  * @param msg Specifies the message to be sent
  * @param wparam Specifies additional message-specific information
  * @param lparam Specifies additional message-specific information
@@ -1551,13 +1551,13 @@ void HandleKeypress(uint32 key)
 	*/
 	if (!IsGeneratingWorld()) _current_player = _local_player;
 
-	// Setup event
+	/* Setup event */
 	e.event = WE_KEYPRESS;
 	e.we.keypress.key     = GB(key,  0, 16);
 	e.we.keypress.keycode = GB(key, 16, 16);
 	e.we.keypress.cont = true;
 
-	// check if we have a query string window open before allowing hotkeys
+	/* check if we have a query string window open before allowing hotkeys */
 	if (FindWindowById(WC_QUERY_STRING,       0) != NULL ||
 			FindWindowById(WC_SEND_NETWORK_MSG,   0) != NULL ||
 			FindWindowById(WC_GENERATE_LANDSCAPE, 0) != NULL ||
@@ -1566,11 +1566,11 @@ void HandleKeypress(uint32 key)
 		query_open = true;
 	}
 
-	// Call the event, start with the uppermost window.
+	/* Call the event, start with the uppermost window. */
 	for (wz = _last_z_window; wz != _z_windows;) {
 		Window *w = *--wz;
 
-		// if a query window is open, only call the event for certain window types
+		/* if a query window is open, only call the event for certain window types */
 		if (query_open &&
 				w->window_class != WC_QUERY_STRING &&
 				w->window_class != WC_SEND_NETWORK_MSG &&
@@ -1585,7 +1585,7 @@ void HandleKeypress(uint32 key)
 
 	if (e.we.keypress.cont) {
 		Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		// When there is no toolbar w is null, check for that
+		/* When there is no toolbar w is null, check for that */
 		if (w != NULL) w->wndproc(w, &e);
 	}
 }
@@ -1616,7 +1616,7 @@ static void HandleAutoscroll()
 		if (vp != NULL) {
 			x -= vp->left;
 			y -= vp->top;
-			//here allows scrolling in both x and y axis
+			/* here allows scrolling in both x and y axis */
 #define scrollspeed 3
 			if (x - 15 < 0) {
 				WP(w, vp_d).scrollpos_x += (x - 15) * scrollspeed << vp->zoom;
@@ -1685,7 +1685,7 @@ void MouseLoop(int click, int mousewheel)
 			case 1:
 				DEBUG(misc, 2, "Cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
 				if (_thd.place_mode != 0 &&
-						// query button and place sign button work in pause mode
+						/* query button and place sign button work in pause mode */
 						_cursor.sprite != SPR_CURSOR_QUERY &&
 						_cursor.sprite != SPR_CURSOR_SIGN &&
 						_pause_game != 0 &&
@@ -1736,7 +1736,7 @@ void HandleMouseEvents()
 	 */
 	if (!IsGeneratingWorld()) _current_player = _local_player;
 
-	// Mouse event?
+	/* Mouse event? */
 	click = 0;
 	if (_left_button_down && !_left_button_clicked) {
 		_left_button_clicked = true;
@@ -1793,7 +1793,7 @@ void UpdateWindows()
 		if ((*wz)->viewport != NULL) UpdateViewportPosition(*wz);
 	}
 	DrawTextMessage();
-	// Redraw mouse cursor in case it was hidden
+	/* Redraw mouse cursor in case it was hidden */
 	DrawMouseCursor();
 }
 

@@ -84,7 +84,7 @@ void ShowOSErrorBox(const char *buf)
 	MyShowCursor(true);
 	MessageBox(GetActiveWindow(), MB_TO_WIDE(buf), _T("Error!"), MB_ICONSTOP);
 
-// if exception tracker is enabled, we crash here to let the exception handler handle it.
+/* if exception tracker is enabled, we crash here to let the exception handler handle it. */
 #if defined(WIN32_EXCEPTION_TRACKER) && !defined(_DEBUG)
 	if (*buf == '!') {
 		_exception_string = buf;
@@ -747,7 +747,7 @@ void FiosGetDrives()
 
 bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
 {
-	// hectonanoseconds between Windows and POSIX epoch
+	/* hectonanoseconds between Windows and POSIX epoch */
 	static const int64 posix_epoch_hns = 0x019DB1DED53E8000LL;
 	const WIN32_FIND_DATA *fd = &ent->dir->fd;
 
@@ -790,13 +790,13 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 	int n = 0;
 
 	do {
-		// skip whitespace
+		/* skip whitespace */
 		while (*line == ' ' || *line == '\t') line++;
 
-		// end?
+		/* end? */
 		if (*line == '\0') break;
 
-		// special handling when quoted
+		/* special handling when quoted */
 		if (*line == '"') {
 			argv[n++] = ++line;
 			while (*line != '"') {
@@ -831,13 +831,13 @@ void CreateConsole()
 	coninfo.dwSize.Y = 500;
 	SetConsoleScreenBufferSize(hand, coninfo.dwSize);
 
-	// redirect unbuffered STDIN, STDOUT, STDERR to the console
+	/* redirect unbuffered STDIN, STDOUT, STDERR to the console */
 #if !defined(__CYGWIN__)
 	*stdout = *_fdopen( _open_osfhandle((intptr_t)hand, _O_TEXT), "w" );
 	*stdin = *_fdopen(_open_osfhandle((intptr_t)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "r" );
 	*stderr = *_fdopen(_open_osfhandle((intptr_t)GetStdHandle(STD_ERROR_HANDLE), _O_TEXT), "w" );
 #else
-	// open_osfhandle is not in cygwin
+	/* open_osfhandle is not in cygwin */
 	*stdout = *fdopen(1, "w" );
 	*stdin = *fdopen(0, "r" );
 	*stderr = *fdopen(2, "w" );
@@ -1037,8 +1037,8 @@ void CSleep(int milliseconds)
 }
 
 
-// Utility function to get the current timestamp in milliseconds
-// Useful for profiling
+/** Utility function to get the current timestamp in milliseconds
+ * Useful for profiling */
 int64 GetTS()
 {
 	static double freq;
