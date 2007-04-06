@@ -282,11 +282,11 @@ STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
-STR_013B_OWNED_BY                                               :{WHITE}...已被{STRING}擁有
+STR_013B_OWNED_BY                                               :{WHITE}...{STRING} 所有
 STR_013C_CARGO                                                  :{BLACK}貨物
 STR_013D_INFORMATION                                            :{BLACK}資訊
 STR_013E_CAPACITIES                                             :{BLACK}載量
-STR_013E_TOTAL_CARGO                                            :{BLACK}總貨物數
+STR_013E_TOTAL_CARGO                                            :{BLACK}總貨物量
 STR_013F_CAPACITY                                               :{BLACK}總載量: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}載量: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}此列車的總載量:
@@ -453,9 +453,9 @@ STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}土地�
 STR_0187_OPTIONS                                                :{BLACK}選項
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
-STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}不能更改維修週期...
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}不能更改檢修週期...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}關閉視窗
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}視窗標題 - 拖曳這裏以移動視窗
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}視窗標題 - 點此拖曳可移動視窗
 STR_STICKY_BUTTON                                               :{BLACK}「關閉所有視窗」不會關閉本視窗
 STR_RESIZE_BUTTON                                               :{BLACK}點按拖放更改視窗大小
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}跳到預設儲存檔目錄
@@ -464,7 +464,7 @@ STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}下降�
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}上昇土地上的一角
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}捲軸 - 上下捲動清單
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}捲動棒 - 左右捲動清單
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}於地圖上顯示地形
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}於地圖上顯示地形輪廓
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}於地圖上顯示交通公具
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}於地圖上顯示各種工業
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}於地圖上顯示運輸路線
@@ -802,6 +802,7 @@ STR_02DD_SUBSIDIES                                              :補助資訊
 STR_02DE_MAP_OF_WORLD                                           :世界地圖
 STR_EXTRA_VIEW_PORT                                             :打開新視野
 STR_SIGN_LIST                                                   :標誌清單
+STR_TRANSPARENCY_OPTIONS                                        :透明度選項
 STR_02DF_TOWN_DIRECTORY                                         :市鎮索引
 STR_TOWN_POPULATION                                             :{BLACK}世界人口: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}視野 {COMMA}
@@ -3012,6 +3013,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}移除�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}如果替換後的車廂較長的話，讓自動替換功能移除車廂 (從頭開始) 以便維持列車長度。
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}取代: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} 實驗功能 {}在車頭與車廂取代畫面之間切換。{}車廂取代只有在新車廂能改裝運送舊車廂酬載的時候才會執行。每個車廂都會進行一次檢查。
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}載具已經停產
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}車輛已經停產
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}船舶已經停產
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}飛機已經停產
 
 STR_ENGINES                                                     :車頭
 STR_WAGONS                                                      :車廂
@@ -3148,3 +3153,14 @@ STR_DATE_LONG                                                   :{2:NUM} 年 {1:
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}轉運進帳: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...此路段為市鎮所有
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...此路面向錯誤的方向
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}透明度選項
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}將透明度套用於車站名稱
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}將透明度套用於樹木
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}將透明度套用於房屋
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}將透明度套用於工業
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}將透明度套用於建物，如車站、廠棚、路標及電線
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}將透明度套用於橋樑
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}將透明度套用於設施，如燈塔、天線塔等

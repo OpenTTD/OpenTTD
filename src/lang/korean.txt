@@ -803,6 +803,7 @@ STR_02DD_SUBSIDIES                                              :보조금
 STR_02DE_MAP_OF_WORLD                                           :전체 지도 보기
 STR_EXTRA_VIEW_PORT                                             :추가 뷰포인트
 STR_SIGN_LIST                                                   :팻말 목록
+STR_TRANSPARENCY_OPTIONS                                        :투명 옵션
 STR_02DF_TOWN_DIRECTORY                                         :도시 목록
 STR_TOWN_POPULATION                                             :{BLACK}세계 인구: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}뷰포인트 {COMMA}
@@ -3013,6 +3014,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동교체시에 열차가 기존보다 길어지면 화물차를 제거함으로써 교체시 달라지는 열차의 길이를 같게 조정합니다 (앞쪽부터 시작됨)
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}교체중: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} 실험적 기능! {}기관차/화물차 교체 창을 번갈아 띄웁니다.{}화물차 교체는 예전 화물차가 싣던 화물을 실을 수 있도록 개조할 수 있는 새로운 화물차에만 성공할 것입니다. 실제 교체가 이루어질 때 각 화물차에 체크되었습니다.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}열차는 불가능합니다
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}차량은 불가능합니다
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}선박은 불가능합니다
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}항공기는 불가능합니다
 
 STR_ENGINES                                                     :기관차
 STR_WAGONS                                                      :화물차
@@ -3149,3 +3154,14 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}환승 단위: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...여기는 마을 소유의 도로 입니다
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...도로가 잘못된 반향을 향하고 있습니다
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}투명 옵션
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}역이름 팻말 투명 전환
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}나무 투명 전환
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}집 투명 전환
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}산업시설 투명 전환
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}정거장, 차량기지, 웨이포인트, 연결고리와 같은 건설 가능한 것들에 대한 투명 전환
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}다리 투명 전환
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}등대와 안테나와 같은 구조물 투명 전환

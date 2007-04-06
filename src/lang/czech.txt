@@ -860,6 +860,7 @@ STR_02DD_SUBSIDIES                                              :Dotace
 STR_02DE_MAP_OF_WORLD                                           :Mapa světa
 STR_EXTRA_VIEW_PORT                                             :Další pohled
 STR_SIGN_LIST                                                   :Seznam popisků
+STR_TRANSPARENCY_OPTIONS                                        :Nastavení průhlednosti
 STR_02DF_TOWN_DIRECTORY                                         :Seznam měst
 STR_TOWN_POPULATION                                             :{BLACK}Populace světa: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohled {COMMA}
@@ -3218,3 +3219,12 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Podíl za převoz: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}... tato silnice je ve vlastnictví obce
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}... silnice je otočena jiným směrem
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Nastavení průhlednosti
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Změna průhlednosti jmen stanic
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Změna průhlednosti stromů
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Změna průhlednosti domů
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Změna průhlednosti továren
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Změna průhlednosti postavitelných objektů, jako stanic, kontrolních bodů a vedení
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Změna průhlednosti mostů
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Změna průhlednosti staveb jako majáků, vysílačů a doplňků (v budoucnosti)

@@ -803,6 +803,7 @@ STR_02DD_SUBSIDIES                                              :Subvenciones
 STR_02DE_MAP_OF_WORLD                                           :Mapa del mundo
 STR_EXTRA_VIEW_PORT                                             :Punto de vista extra
 STR_SIGN_LIST                                                   :Lista de señales
+STR_TRANSPARENCY_OPTIONS                                        :Opciones de transparencia
 STR_02DF_TOWN_DIRECTORY                                         :Listado de poblaciones
 STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
@@ -3013,6 +3014,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Quitar v
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer que el cambio automático mantenga la longitud del tren quitando vagones (empezando por adelante), si el cambio de locomotora produce un tren más largo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemplazando: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FUNCIÓN EXPERIMENTAL {}Cambia entre las ventanas de cambio de vagón y locomotora.{}Los cambios de vagón solo se harán si el nuevo vagón puede ser reparado para transportar el mismo tipo de carga que el anterior. Está marcado para cada vagón cuando el cambio actual se realiza.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vehículo no disponible
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vehículo no disponible
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Barco no disponible
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Aeronave no disponible
 
 STR_ENGINES                                                     :Motores
 STR_WAGONS                                                      :Vagones
@@ -3149,3 +3154,14 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transferir Créditos: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...esta es una carretera propiedad de una ciudad
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...revestimientos del camino en la dirección incorrecta
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Opciones de Transparencia
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Activar transparencia para las señales de estaciones
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Activar transparencia para los árboles
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Activar transparencia para las casas
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Activar transparencia para las industrias
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Activar transparencias para construcciones como estaciones, depósitos, puntos de paso, etc.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activar transparencias para puentes
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activar transparencias para estructuras como faros, antenas, etc.

@@ -868,6 +868,7 @@ STR_02DD_SUBSIDIES                                              :Támogatások
 STR_02DE_MAP_OF_WORLD                                           :Világtérkép
 STR_EXTRA_VIEW_PORT                                             :Extra látkép
 STR_SIGN_LIST                                                   :Feliratok listája
+STR_TRANSPARENCY_OPTIONS                                        :Átlátszósági beállítások
 STR_02DF_TOWN_DIRECTORY                                         :Városlista
 STR_TOWN_POPULATION                                             :{BLACK}Világnépesség: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}{COMMA}. látkép
@@ -3257,3 +3258,12 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Szállítási díj: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ez egy városi tulajdonú út
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...az út másik irányba vezet
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Átlátszósági beállítások
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Átkapcsolni az állomásjelzésekre
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Átkapcsolni a fákra
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Átkapcsolni az épületekre
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Átkapcsolni az ipari létesítményekre
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Átkapcsolni az építhető elemekre (állomások, depók, útipontok és felsővezeték)
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Átkapcsolni a hidakra
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Átkapcsolni egyéb épületekre, mint világítótorony és antennák (esetleg egyéb jövőbeni díszek)

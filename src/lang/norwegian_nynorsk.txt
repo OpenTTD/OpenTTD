@@ -728,6 +728,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plasser 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plasser fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plasser radiosendar
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Trykk og held inne CTRL for å fjerne det
+STR_CREATE_LAKE                                                 :{BLACK}Definer vassområde.{}Lag ein kanal. Viss CTRL er halde nede ved havnivå, vil vatnet i staden fløyme over omgivnadene
 STR_0290_DELETE                                                 :{BLACK}Slett
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett byen heilt
 STR_0292_SAVE_SCENARIO                                          :Lagre scenario
@@ -802,6 +803,7 @@ STR_02DD_SUBSIDIES                                              :Subsidiar
 STR_02DE_MAP_OF_WORLD                                           :Verdskart
 STR_EXTRA_VIEW_PORT                                             :Ekstra vindauge
 STR_SIGN_LIST                                                   :Skiltliste
+STR_TRANSPARENCY_OPTIONS                                        :Gjennomsiktigheitsinnstillingar
 STR_02DF_TOWN_DIRECTORY                                         :Byoversikt
 STR_TOWN_POPULATION                                             :{BLACK}Verdsinnbyggjartal: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vindauge {COMMA}
@@ -1093,6 +1095,8 @@ STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Foretre
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funksjonen til scrollhjulet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom kart
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll kart
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Av
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Fart på rullehjul: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal køyretøy per spelar: {ORANGE}{STRING}
@@ -3010,6 +3014,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjer
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Lat den automatiske utskiftinga behalde lengda på toget ved å fjerne vogner (frå første vogn), dersom utskiftinga gjer toget lenger.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Erstatter: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} Eksperimentell del {}Skift mellom tog- og vognvindauget.{} Utskiftinga av vogner skjer berre dersom den nye vogna kan ha same last som den nye.  Dette vert sjekka når skiftet skjer.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Køyretøyet er ikkje tilgjengeleg
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Køyretøyet er ikkje tilgjengeleg
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Skipet er ikkje tilgjengeleg
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Flyet er ikkje tilgjengeleg
 
 STR_ENGINES                                                     :Motorar
 STR_WAGONS                                                      :Vogner
@@ -3146,3 +3154,5 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Overfør kreditt: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...denne vegen eigast av ein by
+

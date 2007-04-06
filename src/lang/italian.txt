@@ -803,6 +803,7 @@ STR_02DD_SUBSIDIES                                              :Sussidi
 STR_02DE_MAP_OF_WORLD                                           :Mappa del mondo
 STR_EXTRA_VIEW_PORT                                             :Mini visuale extra
 STR_SIGN_LIST                                                   :Lista cartelli
+STR_TRANSPARENCY_OPTIONS                                        :Opzioni trasparenza
 STR_02DF_TOWN_DIRECTORY                                         :Elenco città
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini visuale {COMMA}
@@ -3013,6 +3014,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimozion
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}La autosostituzione mantiene la lunghezza del treno togliendo vagoni (iniziando dalla testa), se la sostituzione della locomotiva lo farebbe piu lungo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sostituzione: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FEATURE SPERIMENTALE {}Scambia tra loro le finestre di sostituizione locomotive e vagoni. {}La sostituizione del vagone avverrà solo se il nuovo vagone può essere convertito nello stesso tipo di merce del  vecchio vagone. Questo controllo viene fatto per ogni vagone sostituito.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Il veicolo non è disponibile
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}L'automezzo non è disponibile
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}La nave non è disponibile
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}L'aeromobile non è disponibile
 
 STR_ENGINES                                                     :Locomotive
 STR_WAGONS                                                      :Vagoni
@@ -3151,3 +3156,12 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Crediti Trasferiti: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...questa è una strada di proprietà della città
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...strada rivolta nella direzione sbagliata
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Opzioni trasparenza
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Attiva/disattiva la trasparenza dei nomi delle stazioni
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Attiva/disattiva la trasparenza degli alberi
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Attiva/disattiva la trasparenza degli edifici
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Attiva/disattiva la trasparenza delle industrie
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Attiva/disattiva la trasparenza delle strutture edificabili come stazioni, depositi, waypoint e catenarie
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Attiva/disattiva la trasparenza dei ponti
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Attiva/disattiva la trasparenza di strutture come fari, antenne e altri futuri oggetti decorativi

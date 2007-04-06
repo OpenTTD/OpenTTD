@@ -866,6 +866,7 @@ STR_02DD_SUBSIDIES                                              :Dotacie
 STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
 STR_EXTRA_VIEW_PORT                                             :Dalsi pohlad
 STR_SIGN_LIST                                                   :Zoznam popisov
+STR_TRANSPARENCY_OPTIONS                                        :Nastavenia priehladnosti
 STR_02DF_TOWN_DIRECTORY                                         :Zoznam miest
 STR_TOWN_POPULATION                                             :{BLACK}Svetova populacia: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohlad {COMMA}
@@ -3218,3 +3219,12 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer kredity: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}... cesta vlastnená mestom
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}... nesprávna orientácia cesty
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Nastavenia priehladnosti
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Prepnút priehladnost názvov staníc
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Prepnút priehladnost stromov
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Prepnút priehladnost domov
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Prepnút priehladnost priemyslu
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Prepnút priehladnost staníc, garáží, tratí, ...
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Prepnút priehladnost mostov
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prepnút priehladnost objektov ako sú majáky a antény

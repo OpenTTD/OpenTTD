@@ -802,6 +802,7 @@ STR_02DD_SUBSIDIES                                              :Subsidies
 STR_02DE_MAP_OF_WORLD                                           :Kaart
 STR_EXTRA_VIEW_PORT                                             :Extra kijkvenster
 STR_SIGN_LIST                                                   :Bordenlijst
+STR_TRANSPARENCY_OPTIONS                                        :Doorzichtigheidsopties
 STR_02DF_TOWN_DIRECTORY                                         :Stedenlijst
 STR_TOWN_POPULATION                                             :{BLACK}Wereldbevolking: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Kijkvenster {COMMA}
@@ -3012,6 +3013,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons v
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aan het vervangen: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTEEL {}Wissel tussen motor- en wagonvervangvensters.{}Wagonvervanging wordt alleen uitgevoerd als de nieuwe wagon omgebouwd kan worden om hetzelfde ladingtype te dragen als de oude wagon. Dit wordt gecontroleerd voor elke wagon wanneer de daadwerkelijke vervanging plaats vindt.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Trein is niet beschikbaar
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Voertuig is niet beschikbaar
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Schip is niet beschikbaar
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Vliegtuig is niet beschikbaar
 
 STR_ENGINES                                                     :Motoren
 STR_WAGONS                                                      :Wagons
@@ -3150,3 +3155,12 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Geldoverdracht: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...deze weg is van een stad
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...weg is in de verkeerde richting
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Doorzichtigheidsopties
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Wissel doorzichtigheid voor stationsnamen
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Wissel doorzichtigheid voor bomen
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Wissel doorzichtigheid voor huizen
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Wissel doorzichtigheid voor industriën
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Wissel doorzichtigheid voor gebouwen zoals stations, depots, waypoints en bovenleiding
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Wissel doorzichtigheid voor bruggen
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Wissel doorzichtigheid voor structuren zoals vuurtoren en antennes, in de toekomst misschien voor eyecandy

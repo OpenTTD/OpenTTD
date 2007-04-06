@@ -2915,15 +2915,15 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}В на�
 STR_NEWGRF_FILENAME                                             :{BLACK}Имя файла: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}Сумма MD5: {SILVER}{STRING}
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы хотите сделать изменения в уже запущенной игре - это может привести к ошибке игры, и ее вылету.{}Вы абсолютно уверены в том, что хотите сделать?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы хотите сделать изменения в уже запущенной игре - это может привести к сбоям и игровым несоответствиям.{}Вы абсолютно уверены в том, что хотите сделать?
 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Внимание: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Ошибка: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Критическая ошибка: {SILVER}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} не будет работать с версией TTDPatch, сообщенной OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} для {STRING}-версии TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} сделан для использования в {STRING}
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Файл {STRING} требует {STRING}-версию TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} сделан для использования совместно с {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Неверный параметр {STRING}: параметр {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} должен быть загружен перед {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} должен быть загружен после {STRING}.
@@ -3024,6 +3024,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Удал
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разрешить при автозамене сохранять длину поездов удалением вагонов (начиная с головы поезда), если при автозамене локомотив увеличит длину поезда.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Заменяем: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}ЭКСПЕРИМЕНТАЛЬНО {}Переключение между окнами замены локомотивов и вагонов.{}Автозамена вагонов производится только в том случае, если совпадает тип перевозимых грузов. Эта проверка производится для каждого вагона во время автозамены.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Локомотив недоступен
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Автотранспорт недоступен
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Корабль недоступен
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Авиатранспорт недоступен
 
 STR_ENGINES                                                     :Локомотивы
 STR_WAGONS                                                      :Вагоны
@@ -3160,3 +3164,6 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Выручка перевозки: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...эта дорога принадлежит городу
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...дорога неправильного направления
+

@@ -803,6 +803,7 @@ STR_02DD_SUBSIDIES                                              :Subventionen
 STR_02DE_MAP_OF_WORLD                                           :Weltkarte
 STR_EXTRA_VIEW_PORT                                             :Zusatzansicht
 STR_SIGN_LIST                                                   :Schilderliste
+STR_TRANSPARENCY_OPTIONS                                        :Transparenzeinstellungen
 STR_02DF_TOWN_DIRECTORY                                         :Städteverzeichnis
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ansicht {COMMA}
@@ -3010,6 +3011,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-E
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zwinge das automatische Ersetzen die Länge eines Zuges beizubehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersetze: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTELLE FUNKTION {}Umschalter für Lok- oder Waggonersetzung{}Waggons werden nur ersetzt, wenn der neue Waggon den selben Warentyp transportieren kann wie der alte. Dies wird beim Ersetzen eines jeden Waggons einzeln geprüft.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Fahrzeug nicht verfügbar
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Fahrzeug nicht verfügbar
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Schiff nicht verfügbar
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Flugzeug nicht verfügbar
 
 STR_ENGINES                                                     :Loks
 STR_WAGONS                                                      :Waggons
@@ -3146,3 +3151,5 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Überweise Geld: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...diese Straße ist in kommunaler Trägerschaft
+

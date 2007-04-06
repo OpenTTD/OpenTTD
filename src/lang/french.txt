@@ -803,6 +803,7 @@ STR_02DD_SUBSIDIES                                              :Subventions
 STR_02DE_MAP_OF_WORLD                                           :Carte du monde
 STR_EXTRA_VIEW_PORT                                             :Vue supplémentaire
 STR_SIGN_LIST                                                   :Liste des panneaux
+STR_TRANSPARENCY_OPTIONS                                        :Options de transparence
 STR_02DF_TOWN_DIRECTORY                                         :Annuaire des villes
 STR_TOWN_POPULATION                                             :{BLACK}Population mondiale : {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vue {COMMA}
@@ -3155,3 +3156,12 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Crédits de transfert: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...cette route appartient à une ville
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...mauvaise orientation de la route
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Options de transparence
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Transparence des noms de station
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Transparence des arbres
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Transparence des maisons
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transparence des industries
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparence des éléments constructibles tels que stations, dépôts, points de contrôle et caténaire
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparence des ponts
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparence des structures telles que phares et antennes

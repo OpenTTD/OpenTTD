@@ -928,6 +928,7 @@ STR_02DD_SUBSIDIES                                              :Субсиді�
 STR_02DE_MAP_OF_WORLD                                           :Карта світу
 STR_EXTRA_VIEW_PORT                                             :Додаткове вікно
 STR_SIGN_LIST                                                   :Список позначень
+STR_TRANSPARENCY_OPTIONS                                        :Опції прозорості
 STR_02DF_TOWN_DIRECTORY                                         :Список міст
 STR_TOWN_POPULATION                                             :{BLACK}Населення світу: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вікно {COMMA}
@@ -3317,3 +3318,12 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Плата за трансфер: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ця дорога у власності міста
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...дорога не в тому напрямку
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Опції прозорості
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Переключити прозорість для знаків станцій
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Переключити прозорість для дерев
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Переключити прозорість для будинків
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Переключити прозорість для промисловості
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Переключити прозорість для споруд, таких як станції, депо, ЛЕП тощо
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Переключити прозорість для мостів
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключити прозорість для споруд, таких як маяки та антенни (може, потім)

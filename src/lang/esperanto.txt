@@ -803,6 +803,7 @@ STR_02DD_SUBSIDIES                                              :Subvencioj
 STR_02DE_MAP_OF_WORLD                                           :Mondomapo
 STR_EXTRA_VIEW_PORT                                             :Plia videjo
 STR_SIGN_LIST                                                   :Afiŝa listo
+STR_TRANSPARENCY_OPTIONS                                        :Ebloj por travidebleco
 STR_02DF_TOWN_DIRECTORY                                         :Urbaro
 STR_TOWN_POPULATION                                             :{BLACK}Monda enloĝantaro: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Videjo {COMMA}
@@ -3013,6 +3014,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagonfor
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ĉe aŭtomata anstataŭigo tenu saman longecon de la trajno per forigo de vagonoj (defronte), se per nova maŝino la trajno plilongiĝas
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Anstataŭante: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTA AĴO {}Ŝaltu inter maŝina kaj vagona anstataŭigo.{}Vagona anstataŭigo nur okazos se la nova vagono povas transformiĝi por porti saman ŝarĝon kiel la malnova. Por ĉiu vagono tio kontroliĝos dum anstataŭado.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Trajno ne haveblas
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Veturilo ne haveblas
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Ŝipo ne haveblas
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Aviadilo ne haveblas
 
 STR_ENGINES                                                     :Maŝinoj
 STR_WAGONS                                                      :Vagonoj
@@ -3151,3 +3156,12 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transigaj Kreditoj: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ĉi tiun vojon posedas la urbo
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...vojo direktiĝas malĝuste
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Ebloj por travidebleco
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}(Ne)travideblu la staciaj afiŝoj
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}(Ne)travideblu la arboj
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}(Ne)travideblu la domoj
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}(Ne)travideblu la industrioj
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}(Ne)travideblu konstrueblaĵoj kiel stacidomoj, deponejoj, trairejoj kaj kondukdratoj
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}(Ne)travideblu la pontoj
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}(Ne)travideblu aĵoj kiel lumturoj kaj antenoj, kaj eble estonte vidĝuaĵoj

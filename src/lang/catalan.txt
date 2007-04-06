@@ -802,6 +802,7 @@ STR_02DD_SUBSIDIES                                              :Subvencions
 STR_02DE_MAP_OF_WORLD                                           :Mapa del món
 STR_EXTRA_VIEW_PORT                                             :Vista extra
 STR_SIGN_LIST                                                   :Llista de senyals
+STR_TRANSPARENCY_OPTIONS                                        :Opcions de transparència
 STR_02DF_TOWN_DIRECTORY                                         :Directori de Poblacions
 STR_TOWN_POPULATION                                             :{BLACK}Població mundial: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
@@ -3012,6 +3013,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure v
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la sustitució automàtica mantingui la llargària del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sustituint: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} CARACTERÍSTICA EXPERIMENTAL {}Alterna entre finestres de sustitució de vagons i de motors{}La sustitució del vagó només tindrà lloc si el nou vagó pot ser remodelat per admetre el mateix tipus de càrrega que el vell. Això es comprova per a cada vagó quan el reemplaçament es produeix.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}El tren no està disponible
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}El vehicle no està disponible
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}El vaixell no està disponible
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}L'avió no està disponible
 
 STR_ENGINES                                                     :Motors
 STR_WAGONS                                                      :Vagons
@@ -3150,3 +3155,12 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transferir Crèdits: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...aquesta carretera es propietat del poble
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...sentit de la carretera en la direcció incorrecta
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Opcions de transparència
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Activa/Desactiva transparència dels rètols d'estació
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Activa/Desactiva transparència dels arbres
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Activa/Desactiva transparència de les cases
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Activa/Desactiva transparència de les indústries
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Activa/Desactiva transparència dels edificis com ara estacions, cotxeres, punts de trobada i catenàries
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activa/Desactiva transparència dels ponts
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activa/Desactiva transparència de les estructures com ara fars i antenes
