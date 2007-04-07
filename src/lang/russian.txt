@@ -804,6 +804,7 @@ STR_02DD_SUBSIDIES                                              :Субсиди�
 STR_02DE_MAP_OF_WORLD                                           :Карта мира
 STR_EXTRA_VIEW_PORT                                             :Доп. окно просмотра
 STR_SIGN_LIST                                                   :Список меток
+STR_TRANSPARENCY_OPTIONS                                        :Настройки прозрачности.
 STR_02DF_TOWN_DIRECTORY                                         :Список городов
 STR_TOWN_POPULATION                                             :{BLACK}Население: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Окно просмотра {COMMA}
@@ -2927,6 +2928,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} сде
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Неверный параметр {STRING}: параметр {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} должен быть загружен перед {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} должен быть загружен после {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, который им переводится.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Добавить
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавить файл NewGRF в список
@@ -3167,3 +3169,11 @@ STR_FEEDER_CARGO_VALUE                                          :{BLACK}Выру
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...эта дорога принадлежит городу
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...дорога неправильного направления
 
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Настройки прозрачности.
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Переключить прозрачность значков станций.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Переключить прозрачность деревьев.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Переключить прозрачность зданий.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Переключить прозрачность зданий промышленности.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Переключить прозрачность зданий, которые можно строить игроком. Например -- станции, депо, точки пути и столбы для электричества.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Переключить прозрачность мостов
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключить прозрачность зданий, вроде антенн и маяков.

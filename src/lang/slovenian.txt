@@ -844,6 +844,7 @@ STR_02DD_SUBSIDIES                                              :Subvencije
 STR_02DE_MAP_OF_WORLD                                           :Zemljevid sveta
 STR_EXTRA_VIEW_PORT                                             :Dodaten pogled
 STR_SIGN_LIST                                                   :Seznam napisov
+STR_TRANSPARENCY_OPTIONS                                        :Nastavitve prozornega pogleda
 STR_02DF_TOWN_DIRECTORY                                         :Imenik mest
 STR_TOWN_POPULATION                                             :{BLACK}Svetovno prebivalstvo: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled {COMMA}
@@ -3092,6 +3093,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstrani
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Dovoli samozamenjavi, da z odstranitvijo vagonov, začenši na začetku, ohrani isto dolžino vlaka, če bi ga menjava lokomotive podaljšala.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamenjuje: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} POSKUSNA MOŽNOST {}Preklop med okni za menjavo lokomotiv in vagonov.{}Zamenjava vagonov je možna edino, če je lahko drugi tip vagona predelan za prevoz iste vrste tovora, kot prvi. To je preverjeno za vsak vagon, ko se izvrši zamenjava,
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vozilo ni na voljo
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vozilo ni na voljo
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Ladja ni na voljo
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Letalo ni na voljo
 
 STR_ENGINES                                                     :Lokomotive
 STR_WAGONS                                                      :Vagoni
@@ -3228,3 +3233,14 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Prenesi kredite: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ta cesta je last mesta
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...cesta je obrnjena napačno
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Nastavitve prozornega pogleda
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Prozoren ali poln pogled imen postaj
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Prozoren ali poln pogled dreves
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Prozoren ali navaden pogled hiš
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Prozoren ali navaden pogled industrij
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Prozoren ali navaden pogled ostalih objektov kot so postaje, garaže...
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Prozoren ali navaden pogled mostov
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prozoren ali navaden pogled struktur kot so antene, svetilniki...

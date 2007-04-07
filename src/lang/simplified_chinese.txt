@@ -802,6 +802,7 @@ STR_02DD_SUBSIDIES                                              :财政补贴
 STR_02DE_MAP_OF_WORLD                                           :世界地图
 STR_EXTRA_VIEW_PORT                                             :额外视点
 STR_SIGN_LIST                                                   :标志列表
+STR_TRANSPARENCY_OPTIONS                                        :透明选项
 STR_02DF_TOWN_DIRECTORY                                         :城镇地图
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}视点 {COMMA}
@@ -3012,6 +3013,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}清理�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当引擎升级可能造成列车变长时，自动去掉最开始的若干挂车以保证列车长度不变。
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}替换项目： {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}试验功能：{}可以切换引擎/挂车替换模式。{}只有当新的挂车可以改装成与原始挂车装载货物类型相同的时候，才能替换挂车。当替换过程进行时，系统将自动检查每节挂车的类型。
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}列车不可用
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}车辆不可用
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}船只不可用
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}飞机不可用
 
 STR_ENGINES                                                     :引擎
 STR_WAGONS                                                      :挂车
@@ -3148,3 +3153,8 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}转运评分： {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}这是一条城镇所属的道路
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}道路方向不对
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}透明选项
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}调整站牌的透明度
