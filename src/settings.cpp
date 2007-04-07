@@ -261,7 +261,13 @@ static IniFile *ini_load(const char *filename)
 			}
 		} else if (group) {
 			/* find end of keyname */
-			for (t = s; *t != '\0' && *t != '=' && *t != '\t' && *t != ' '; t++);
+			if (*s == '\"') {
+				s++;
+				for (t = s; *t != '\0' && *t != '\"'; t++);
+				if (*t == '\"') *t = ' ';
+			} else {
+				for (t = s; *t != '\0' && *t != '=' && *t != '\t' && *t != ' '; t++);
+			}
 
 			/* it's an item in an existing group */
 			item = ini_item_alloc(group, s, t-s);
@@ -349,11 +355,18 @@ static bool ini_save(const char *filename, IniFile *ini)
 			assert(item->value != NULL);
 			if (item->comment != NULL) fputs(item->comment, f);
 
+			/* protect item->name with quotes if needed */
+			if (strchr(item->name, ' ') != NULL) {
+				fprintf(f, "\"%s\"", item->name);
+			} else {
+				fprintf(f, "%s", item->name);
+			}
+
 			/* Don't give an equal sign to list items that don't have a parameter */
 			if (group->type == IGT_LIST && *item->value == '\0') {
-				fprintf(f, "%s\n", item->name);
+				fprintf(f, "\n");
 			} else {
-				fprintf(f, "%s = %s\n", item->name, item->value);
+				fprintf(f, " = %s\n", item->value);
 			}
 		}
 	}
