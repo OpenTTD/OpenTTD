@@ -802,6 +802,7 @@ STR_02DD_SUBSIDIES                                              :Subsidies
 STR_02DE_MAP_OF_WORLD                                           :Map of world
 STR_EXTRA_VIEW_PORT                                             :Extra viewport
 STR_SIGN_LIST                                                   :Sign list
+STR_TRANSPARENCY_OPTIONS                                        :Transparency options
 STR_02DF_TOWN_DIRECTORY                                         :Town directory
 STR_TOWN_POPULATION                                             :{BLACK}World population: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
@@ -3012,6 +3013,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Car remo
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing cars (starting at the front), if replacing the engine would make the train longer.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Replacing: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL FEATURE {}Switch between engine and car replacement windows.{}Car replacement will only be done if the new car can be refitted into carrying the same type of cargo as the old one. This is checked for each car when the actual replacement takes place.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vehicle is not available
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vehicle is not available
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Ship is not available
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Aircraft is not available
 
 STR_ENGINES                                                     :Engines
 STR_WAGONS                                                      :Cars
@@ -3148,3 +3153,14 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...this is a town owned road
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...road facing in the wrong direction
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparency Options
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Toggle transparency for station signs
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Toggle transparency for trees
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Toggle transparency for houses
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Toggle transparency for industries
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Toggle transparency for buildables like stations, depots, waypoints and catenary
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle transparency for bridges
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas, maybe in future for eyecandy
