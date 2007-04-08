@@ -1161,7 +1161,10 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			IndustyBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
 			if (ind_behav & INDUSTRYBEH_BUILT_ONWATER) {
-				return IsClearWaterTile(cur_tile);
+				/* As soon as the tile is not water, bail out.
+				 * But that does not mean the search is over.  You have
+				 * to make sure every tile of the industry will be only water*/
+				if (!IsClearWaterTile(cur_tile)) return false;
 			} else {
 				Slope tileh;
 
