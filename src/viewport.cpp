@@ -397,7 +397,7 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
 
 /** Update the status of the zoom-buttons according to the zoom-level
  * of the viewport. This will update their status and invalidate accordingly
- * @param window pointer to the window that has the zoom buttons
+ * @param w Window pointer to the window that has the zoom buttons
  * @param vp pointer to the viewport whose zoom-level the buttons represent
  * @param widget_zoom_in widget index for window with zoom-in button
  * @param widget_zoom_out widget index for window with zoom-out button */

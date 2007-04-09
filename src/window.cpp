@@ -291,8 +291,8 @@ void SetWindowDirty(const Window *w)
 }
 
 /** Find the Window whose parent pointer points to this window
- * @parent w Window to find child of
- * @return return a Window pointer that is the child of w, or NULL otherwise */
+ * @param w parent Window to find child of
+ * @return a Window pointer that is the child of w, or NULL otherwise */
 static Window *FindChildWindow(const Window *w)
 {
 	Window* const *wz;
@@ -306,7 +306,9 @@ static Window *FindChildWindow(const Window *w)
 }
 
 /** Find the z-value of a window. A window must already be open
- * or the behaviour is undefined but function should never fail */
+ * or the behaviour is undefined but function should never fail
+ * @param w window to query Z Position
+ * @return the window that matches it */
 Window **FindWindowZPosition(const Window *w)
 {
 	Window **wz;
@@ -441,8 +443,9 @@ void ChangeWindowOwner(PlayerID old_player, PlayerID new_player)
 static void BringWindowToFront(const Window *w);
 
 /** Find a window and make it the top-window on the screen. The window
- * gets a white border for a brief period of time to visualize its
- * "activation"
+ * gets a white border for a brief period of time to visualize its "activation"
+ * @param cls WindowClass of the window to activate
+ * @param number WindowNumber of the window to activate
  * @return a pointer to the window thus activated */
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 {
@@ -535,7 +538,9 @@ bool IsWindowOfPrototype(const Window *w, const Widget *widget)
 	return (w->original_widget == widget);
 }
 
-/* Copies 'widget' to 'w->widget' to allow for resizable windows */
+/** Copies 'widget' to 'w->widget' to allow for resizable windows
+ * @param w Window on which to attach the widget array
+ * @param widget pointer of widget array to fill the window with */
 void AssignWidgetToWindow(Window *w, const Widget *widget)
 {
 	w->original_widget = widget;
@@ -577,12 +582,20 @@ static Window *FindFreeWindow()
 	return NULL;
 }
 
-/* Open a new window.
+/** Open a new window.
  * This function is called from AllocateWindow() or AllocateWindowDesc()
  * See descriptions for those functions for usage
  * See AllocateWindow() for description of arguments.
  * Only addition here is window_number, which is the window_number being assigned to the new window
- */
+ * @param x offset in pixels from the left of the screen
+ * @param y offset in pixels from the top of the screen
+ * @param width width in pixels of the window
+ * @param height height in pixels of the window
+ * @param *proc see WindowProc function to call when any messages/updates happen to the window
+ * @param cls see WindowClass class of the window, used for identification and grouping
+ * @param *widget see Widget pointer to the window layout and various elements
+ * @param window_number number being assigned to the new window
+ * @return Window pointer of the newly created window */
 static Window *LocalAllocateWindow(
 							int x, int y, int width, int height,
 							WindowProc *proc, WindowClass cls, const Widget *widget, int window_number)
@@ -653,11 +666,10 @@ static Window *LocalAllocateWindow(
  * @param y offset in pixels from the top of the screen
  * @param width width in pixels of the window
  * @param height height in pixels of the window
- * @param *proc @see WindowProc function to call when any messages/updates happen to the window
- * @param cls @see WindowClass class of the window, used for identification and grouping
- * @param *widget @see Widget pointer to the window layout and various elements
- * @return @see Window pointer of the newly created window
- */
+ * @param *proc see WindowProc function to call when any messages/updates happen to the window
+ * @param cls see WindowClass class of the window, used for identification and grouping
+ * @param *widget see Widget pointer to the window layout and various elements
+ * @return Window pointer of the newly created window */
 Window *AllocateWindow(
 							int x, int y, int width, int height,
 							WindowProc *proc, WindowClass cls, const Widget *widget)
@@ -852,7 +864,7 @@ allocate_window:
 /**
  * Open a new window.
  * @param *desc The pointer to the WindowDesc to be created
- * @return @see Window pointer of the newly created window
+ * @return Window pointer of the newly created window
  */
 Window *AllocateWindowDesc(const WindowDesc *desc)
 {
@@ -863,7 +875,7 @@ Window *AllocateWindowDesc(const WindowDesc *desc)
  * Open a new window.
  * @param *desc The pointer to the WindowDesc to be created
  * @param window_number the window number of the new window
- * @return @see Window pointer of the newly created window
+ * @return see Window pointer of the newly created window
  */
 Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number)
 {
@@ -876,6 +888,8 @@ Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number)
 
 /** Do a search for a window at specific coordinates. For this we start
  * at the topmost window, obviously and work our way down to the bottom
+ * @param x position x to query
+ * @param y position y to query
  * @return a pointer to the found window if any, NULL otherwise */
 Window *FindWindowFromPt(int x, int y)
 {
@@ -1482,7 +1496,7 @@ static bool MaybeBringWindowToFront(const Window *w)
 }
 
 /** Send a message from one window to another. The receiving window is found by
- * @param w see Window pointer pointing to the other window
+ * @param w Window pointer pointing to the other window
  * @param msg Specifies the message to be sent
  * @param wparam Specifies additional message-specific information
  * @param lparam Specifies additional message-specific information
@@ -1910,7 +1924,7 @@ restart_search:
 	}
 }
 
-/* It is possible that a stickied window gets to a position where the
+/** It is possible that a stickied window gets to a position where the
  * 'close' button is outside the gaming area. You cannot close it then; except
  * with this function. It closes all windows calling the standard function,
  * then, does a little hacked loop of closing all stickied windows. Note
@@ -1934,7 +1948,7 @@ restart_search:
 	}
 }
 
-/* Delete all always on-top windows to get an empty screen */
+/** Delete all always on-top windows to get an empty screen */
 void HideVitalWindows()
 {
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
