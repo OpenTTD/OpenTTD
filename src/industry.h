@@ -22,6 +22,21 @@ enum IndustryLifeType {
 	INDUSTRYLIFE_CLOSABLE,         ///< Industry can only close (no production change)
 };
 
+/* Procedures that can be run to check whether an industry may
+ * build at location the given to the procedure */
+enum CheckProc {
+	CHECK_NOTHING    = 0,
+	CHECK_FOREST     = 1,
+	CHECK_REFINERY   = 2,
+	CHECK_FARM       = 3,
+	CHECK_PLANTATION = 4,
+	CHECK_WATER      = 5,
+	CHECK_LUMBERMILL = 6,
+	CHECK_BUBBLEGEN  = 7,
+	CHECK_OIL_RIG    = 8,
+	CHECK_END,
+};
+
 enum IndustyBehaviour {
 	INDUSTRYBEH_NONE                  =      0,
 	INDUSTRYBEH_PLANT_FIELDS          = 1 << 0,  ///< periodically plants fileds around itself (temp and artic farms)
@@ -83,7 +98,7 @@ struct IndustryTileTable {
 struct IndustrySpec {
 	const IndustryTileTable *const *table;///< List of the tiles composing the industry
 	byte num_table;                       ///< Number of elements in the table
-	byte cost_multiplier;                 ///< Base cost multiplier*/
+	byte cost_multiplier;                 ///< Base cost multiplier. Watch out for this one, << 5  VS << 8
 	IndustryType conflicting[3];          ///< Industries this industry cannot be close to
 	byte check_proc;                      ///< Index to a procedure to check for conflicting circumstances
 	CargoID produced_cargo[2];
@@ -94,6 +109,7 @@ struct IndustrySpec {
 	IndustryLifeType life_type;           ///< This is also known as Industry production flag, in newgrf specs
 	byte climate_availability;            ///< Bitmask, giving landscape enums as bit position
 	IndustyBehaviour behaviour;           ///< How this industry will behave, and how others entities can use it
+	byte map_colour;                      ///< colour used for the small map
 	StringID name;                        ///< Displayed name of the industry
 	StringID new_industry_text;           ///< Message appearing when the industry is built
 	StringID closure_text;                ///< Message appearing when the industry closes
@@ -101,6 +117,11 @@ struct IndustrySpec {
 	StringID production_down_text;        ///< Message appearing when the industry's production is decreasing
 	byte appear_ingame[NUM_LANDSCAPE];    ///< Probability of appearance in game
 	byte appear_creation[NUM_LANDSCAPE];  ///< Probability of appearance during map creation
+	/* Newgrf stuff coming in */
+	uint16 callback_flags;                ///< Flags telling which grf callback is set
+	byte subst_id;
+	uint32 grfid;
+	byte override;
 };
 
 /**
