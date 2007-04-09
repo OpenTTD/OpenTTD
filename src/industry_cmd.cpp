@@ -1551,16 +1551,16 @@ static const byte _numof_industry_table[4][12] = {
 	{0, 2, 3, 4, 6, 7, 8, 9, 10, 10, 10},   //high
 };
 
+/** This function is the one who really do the creation work
+ * of random industries during game creation
+ * @param type IndustryType of the desired industry
+ * @param amount of industries that need to be built */
 static void PlaceInitialIndustry(IndustryType type, int amount)
 {
 	int num = _numof_industry_table[_opt.diff.number_industries][amount];
 
-	if (type == IT_OIL_REFINERY || type == IT_OIL_RIG) {
-		/* These are always placed next to the coastline, so we scale by the perimeter instead. */
-		num = ScaleByMapSize1D(num);
-	} else {
-		num = ScaleByMapSize(num);
-	}
+	/* These are always placed next to the coastline, so we scale by the perimeter instead. */
+	num = (type == IT_OIL_REFINERY || type == IT_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
 
 	if (_opt.diff.number_industries != 0) {
 		PlayerID old_player = _current_player;
@@ -1581,31 +1581,45 @@ static void PlaceInitialIndustry(IndustryType type, int amount)
 	}
 }
 
+/** This function will create ramdon industries during game creation.
+ * It will scale the amount of industries by map size as well as difficulty level */
 void GenerateIndustries()
 {
-	const byte *b;
 	uint i = 0;
+	uint8 chance;
+	IndustryType it;
+	const IndustrySpec *ind_spc;
 
 	/* Find the total amount of industries */
-	b = _industry_create_table[_opt.landscape];
-	do {
-		int num = _numof_industry_table[_opt.diff.number_industries][b[0]];
+	for (it = IT_COAL_MINE; it < IT_END; it++) {
+		int num;
 
-		if (b[1] == IT_OIL_REFINERY || b[1] == IT_OIL_RIG) {
+		ind_spc = GetIndustrySpec(it);
+		chance = ind_spc->appear_creation[_opt.landscape];
+
+		if (chance > 0) {
+			/* once the chance of appearance is determind, it have to be scaled by
+			 * the difficulty level. The "chance" in question is more an index into
+			 * the _numof_industry_table,in fact */
+			num = _numof_industry_table[_opt.diff.number_industries][chance];
+
 			/* These are always placed next to the coastline, so we scale by the perimeter instead. */
-			num = ScaleByMapSize1D(num);
-		} else {
-			num = ScaleByMapSize(num);
+			num = (it == IT_OIL_REFINERY || it == IT_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
+			i += num;
 		}
+	}
 
-		i += num;
-	} while ( (b+=2)[0] != 0);
 	SetGeneratingWorldProgress(GWP_INDUSTRY, i);
 
-	b = _industry_create_table[_opt.landscape];
-	do {
-		PlaceInitialIndustry(b[1], b[0]);
-	} while ( (b+=2)[0] != 0);
+	for (it = IT_COAL_MINE; it < IT_END; it++) {
+		/* Once the number of industries has been determined, let's really create them.
+		 * The test for chance allows us to try create industries that are available only
+		 * for this landscape.
+		 * @todo :  Do we really have to pass chance as un-scaled value, since we've already
+		 *          processed that scaling above? No, don't think so.  Will find a way. */
+		chance = GetIndustrySpec(it)->appear_creation[_opt.landscape];
+		if (chance > 0) PlaceInitialIndustry(it, chance);
+	};
 }
 
 /* Change industry production or do closure */
