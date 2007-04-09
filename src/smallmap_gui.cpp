@@ -392,32 +392,6 @@ static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile)
 	return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
 }
 
-/* Industry colours... a total of 175 gfx - XXX - increase if more industries */
-static const byte _industry_smallmap_colors[175] = {
-	215, 215, 215, 215, 215, 215, 215, 184,
-	184, 184, 184, 194, 194, 194, 194, 194,
-	 86,  86, 191, 191, 191, 191, 191, 191,
-	152, 152, 152, 152, 152, 152, 152, 152,
-	152,  48,  48,  48,  48,  48,  48, 174,
-	174, 174, 174, 174, 174, 174, 174,  10,
-	 10,  10,  10,  10,  10,  10,  10,  10,
-	 10,  10,  15,  15,  55,  55,  55,  55,
-	 10,  10,  10,  10,  10,  10,  10,  10,
-	194, 194, 194, 194, 194, 194, 194, 194,
-	194, 194, 194, 194, 194, 194, 194, 194,
-	194,  15,  15, 184, 184, 184, 184, 184,
-	184, 184, 184, 184,  55,  55,  55,  55,
-	 55,  55,  55,  55,  55,  55,  55,  55,
-	 55,  55,  55,  55,  86,  39,  37,  37,
-	208, 174, 174, 174, 174, 194, 194, 194,
-	194,  48,  48, 174, 174, 174, 174,  39,
-	 39,  55, 208, 208, 208, 208,  10,  10,
-	 10,  10,  10,  10,  37,  37,  37,  37,
-	 37,  37,  37,  37, 184, 184, 184, 184,
-	152, 152, 152, 152, 194, 194, 194,  15,
-	 15,  15,  15,  15,  15,  15,  15,
-};
-
 /**
  * Return the color a tile would be displayed with in the small map in mode "Industries".
  *
@@ -429,7 +403,7 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 	TileType t = GetEffectiveTileType(tile);
 
 	if (t == MP_INDUSTRY) {
-		return _industry_smallmap_colors[GetIndustryGfx(tile)] * 0x01010101;
+		return GetIndustrySpec(GetIndustryByTile(tile)->type)->map_colour * 0x01010101;
 	}
 
 	return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
