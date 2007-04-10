@@ -871,8 +871,8 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		/* This is the joining client who wants a new company */
-		if (_local_player != _network_playas) {
-			assert(_local_player == PLAYER_SPECTATOR && _network_playas == p->index);
+		if (_local_player != _network_playas && _network_playas == p->index) {
+			assert(_local_player == PLAYER_SPECTATOR);
 			SetLocalPlayer(p->index);
 			MarkWholeScreenDirty();
 		}

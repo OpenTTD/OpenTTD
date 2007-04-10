@@ -246,6 +246,41 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 {
 	Town *t;
 	PlayerID old = _current_player;
+
+	assert(old_player != new_player);
+
+	{
+		Player *p;
+		uint i;
+
+		/* See if the old_player had shares in other companies */
+		_current_player = old_player;
+		FOR_ALL_PLAYERS(p) {
+			for (i = 0; i < 4; i++) {
+				if (p->share_owners[i] == old_player) {
+					/* Sell his shares */
+					int32 res = DoCommand(0, p->index, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+					/* Because we are in a DoCommand, we can't just execute an other one and
+					 *  expect the money to be removed. We need to do it ourself! */
+					SubtractMoneyFromPlayer(res);
+				}
+			}
+		}
+
+		/* Sell all the shares that people have on this company */
+		p = GetPlayer(old_player);
+		for (i = 0; i < 4; i++) {
+			_current_player = p->share_owners[i];
+			if (_current_player != PLAYER_SPECTATOR) {
+				/* Sell the shares */
+				int32 res = DoCommand(0, old_player, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+				/* Because we are in a DoCommand, we can't just execute an other one and
+				 *  expect the money to be removed. We need to do it ourself! */
+				SubtractMoneyFromPlayer(res);
+			}
+		}
+	}
+
 	_current_player = old_player;
 
 	/* Temporarily increase the player's money, to be sure that
@@ -337,25 +372,6 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 
 	/* Change color of existing windows */
 	if (new_player != PLAYER_SPECTATOR) ChangeWindowOwner(old_player, new_player);
-
-	{
-		Player *p;
-		uint i;
-
-		/* Check for shares */
-		FOR_ALL_PLAYERS(p) {
-			for (i = 0; i < 4; i++) {
-				/* 'Sell' the share if this player has any */
-				if (p->share_owners[i] == _current_player) {
-					p->share_owners[i] = PLAYER_SPECTATOR;
-				}
-			}
-		}
-		p = GetPlayer(_current_player);
-		/* Sell all the shares that people have on this company */
-		for (i = 0; i < 4; i++)
-			p->share_owners[i] = PLAYER_SPECTATOR;
-	}
 
 	_current_player = old;
 
@@ -1695,12 +1711,16 @@ int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
+	PlayerID pid = (PlayerID)p1;
 
 	/* Disable takeovers in multiplayer games */
-	if (!IsValidPlayer((PlayerID)p1) || _networking) return CMD_ERROR;
+	if (!IsValidPlayer(pid) || _networking) return CMD_ERROR;
+
+	/* Do not allow players to take over themselves */
+	if (pid == _current_player) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = GetPlayer(p1);
+	p = GetPlayer(pid);
 
 	if (!p->is_ai) return CMD_ERROR;
 
