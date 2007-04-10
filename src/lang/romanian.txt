@@ -280,6 +280,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...apartine companiei {STRING}
 STR_013C_CARGO                                                  :{BLACK}Încãrcãturã
@@ -391,6 +392,7 @@ STR_ENGINE_SORT_POWER                                           :Putere
 STR_ENGINE_SORT_INTRO_DATE                                      :Data lansarii
 STR_ENGINE_SORT_RUNNING_COST                                    :Cost exploatare
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Cost exploatare/putere
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacitate incarcatura
 STR_NO_WAITING_CARGO                                            :{BLACK}Nu este în asteptare nici un fel de încãrcãturã
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege toate facilitãtile
 STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
@@ -589,6 +591,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sosirea
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sosirea primului vehicul la una din statiile competitorilor
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidente/dezastre
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informatii despre companie
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Deschidere / inchidere industrii
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Schimbãri economice
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Sfaturi/informatii despre vehiculele tale
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Vehicule noi
@@ -724,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaseaza
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaseazã far
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaseazã transmitãtor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Defineste suprafata de desert.{}Apasã si mentine apasat CTRL pentru a o sterge
+STR_CREATE_LAKE                                                 :{BLACK}Defineste zona apei.{}Creeaza un canal, mai putin cand CTRL este apasat la nivelul marii, cand va inunda, in loc, imprejurimile
 STR_0290_DELETE                                                 :{BLACK}Sterge
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Sterge acest oras
 STR_0292_SAVE_SCENARIO                                          :Salveazã scenariul
@@ -779,7 +783,7 @@ STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Afisar
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animatie completã
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detalii grafice complete
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Peisaj transparent (X)
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}Numele statiilor transparente
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Semne statii, transparente
 ############ range ends here
 
 ############ range for menu starts
@@ -798,6 +802,7 @@ STR_02DD_SUBSIDIES                                              :Subventii (F6)
 STR_02DE_MAP_OF_WORLD                                           :Harta lumii (F4)
 STR_EXTRA_VIEW_PORT                                             :Extra ecran
 STR_SIGN_LIST                                                   :Lista de semne
+STR_TRANSPARENCY_OPTIONS                                        :Optiuni transparenta
 STR_02DF_TOWN_DIRECTORY                                         :Lista oraselor
 STR_TOWN_POPULATION                                             :{BLACK}Populatia totala: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ecran{COMMA}
@@ -928,7 +933,7 @@ STR_OPTIONS_LANG                                                :{BLACK}Limba
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Alege limba în care doresti afisatã interfata
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Mod
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Ecran intreg
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Bifeaza aceasta casuta pentru a juca in modul
 
 STR_OPTIONS_RES                                                 :{BLACK}Rezolutia ecranului
@@ -1020,7 +1025,7 @@ STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Permite
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor si navelor sa faca intoarceri de 90 de grade: {ORANGE}{STRING} {LTBLUE} (necesita NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Uneste gãrile alãturate: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Pãrãseste statia când orice tip de marfã este 'full load': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Foloseste algoritmul de LOAD imbunatatit: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Foloseste algoritm incarcare imbunatatit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Incarca vehiculele gradual: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflatia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Livreazã marfa doar in statiile unde aceasta este ceruta: {ORANGE}{STRING}
@@ -1081,16 +1086,21 @@ STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Conecteaza bara de instrumente pentru peisaj cu cea de constructii feroviare/auto/aeriane: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Cand faci scroll cu mouse-ul muta ecranul in directia opusã: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Arata o bara de unelte de masuratori la folosirea uneltelor de constructie: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Arata unifromete companiilor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Arata uniformele companiilor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Niciunul
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propria companie
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Toate companiile
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Echipa preferata pentru chat <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Functia rotii mouse-ului: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Focus harta
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Ruleaza harta
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :inactiva
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Viteza harta la rotita mouse: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri pentru un jucãtor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri per jucãtor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nr. max. de autovehicule pentru un jucãtor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Nr. max. de aeronave pentru un jucãtor: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Nr. max. de nave pentru un jucãtor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Nr. max. de nave per jucãtor: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Dezactiveazã trenurile pentru jucãtorii PC: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Dezactiveazã autovehiculele pentru jucãtorii PC: {ORANGE}{STRING}
@@ -1204,6 +1214,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbori d
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Planteazã arbori din diverse specii la întâmplare
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Nu pot construi un canal aici...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Construieste canale.
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Nu pot construi o ecluzã aici...
@@ -2602,7 +2613,7 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Mergi no
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Introdu o comandã înaintea celei selectate sau adaugã o comandã la sfârsitul listei
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forteazã trenul sã astepte la destinatia selectatã pânã la umplerea la capacitate maximã
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forteazã trenul sã descarce marfa la destinatia selectatã
-STR_SERVICE_HINT                                                :{BLACK}Sãri peste aceastã comandã dacã nu este necesar un service
+STR_SERVICE_HINT                                                :{BLACK}Sari peste aceastã comandã dacã nu este necesar un service
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Greutate: {WEIGHT_S}{}Vitezã: {VELOCITY}  Putere: {POWER}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Defectiune
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vechimea: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
@@ -2904,6 +2915,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} este c
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parametru invalid pentru {STRING}: parametrul {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} trebuie sa fie incarcat inaintea {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} trebuie sa fie incarcat dupa {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fisierul GRF conceput pentru traducere
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adauga
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adauga un fisier NewGRF in lista
@@ -3001,6 +3013,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrager
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fã optiunea de autoînlocuire sã pãstreze identicã lungimea unui tren prin eliminarea vagoanelor (începând din fatã), dacã înlocuirea motorului ar face trenul mai lung.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Înlocuire: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ELEMENT EXPERIMENTAL {}Comutã între ferestrele de ]nlocuire motoare si vagoane.{}Înlocuirea de vagoane va fi efectuatã numai dacã noul vagon poate transporta acelasi tip de încãrcãturã ca cel vechi. Aceast lucru este verificat pentru fiecare vagon atunci când este fãcutã înlocuirea efectivã.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vehiculul nu este disponibil
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vehiculul nu este disponibil
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Vasul nu este disponibil
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Aeronava nu este disponibila
 
 STR_ENGINES                                                     :Motoare
 STR_WAGONS                                                      :Vagoane
@@ -3137,3 +3153,14 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfera Credit: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...drum in proprietatea orasului
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...drum orientat in directia gresita
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Optiuni transparenta
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Comuta transparenta pentru semnele de statii
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Comuta transparenta pentru copaci
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Comuta transparenta pentru case
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Comuta transparenta pentru industrii
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Comuta transparenta pentru construibile, precum statii, depouri, indicatoare si linii electrificate
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Comuta transparenta pentru poduri
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comuta transparenta pentru structuri ca farurile si antenele - poate in viitor, pentru efect

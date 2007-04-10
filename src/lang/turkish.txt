@@ -802,6 +802,7 @@ STR_02DD_SUBSIDIES                                              :İhaleler
 STR_02DE_MAP_OF_WORLD                                           :Dünya haritası
 STR_EXTRA_VIEW_PORT                                             :Ekstra görünüm
 STR_SIGN_LIST                                                   :Tabela listesi
+STR_TRANSPARENCY_OPTIONS                                        :Şeffaflık seçenekleri
 STR_02DF_TOWN_DIRECTORY                                         :Şehir listesi
 STR_TOWN_POPULATION                                             :{BLACK}Dünya nüfusu: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Görünüm {COMMA}
@@ -3146,3 +3147,14 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Aktarma Maliyeti: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...bu yol belediyeye ait
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Şeffaflık Seçenekleri
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Durak tabelaları için şeffaflık
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Ağaçlar için şeffaflık
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Evler için şeffaflık
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Fabrikalar için şeffaflık
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}İstasyonlar, garajlar tershaneler vb. için şeffaflık
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Köprüler için şeffaflık
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Antenler ve deniz fenerleri için şeffaflık
