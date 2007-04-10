@@ -281,11 +281,11 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_013B_OWNED_BY                                               :{WHITE}...已被{STRING}擁有
+STR_013B_OWNED_BY                                               :{WHITE}...{STRING} 所有
 STR_013C_CARGO                                                  :{BLACK}貨物
 STR_013D_INFORMATION                                            :{BLACK}資訊
 STR_013E_CAPACITIES                                             :{BLACK}載量
-STR_013E_TOTAL_CARGO                                            :{BLACK}總貨物數
+STR_013E_TOTAL_CARGO                                            :{BLACK}總貨物量
 STR_013F_CAPACITY                                               :{BLACK}總載量: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}載量: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}此列車的總載量:
@@ -452,9 +452,9 @@ STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}土地�
 STR_0187_OPTIONS                                                :{BLACK}選項
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
-STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}不能更改維修週期...
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}不能更改檢修週期...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}關閉視窗
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}視窗標題 - 拖曳這裏以移動視窗
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}視窗標題 - 點此拖曳可移動視窗
 STR_STICKY_BUTTON                                               :{BLACK}「關閉所有視窗」不會關閉本視窗
 STR_RESIZE_BUTTON                                               :{BLACK}點按拖放更改視窗大小
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}跳到預設儲存檔目錄
@@ -463,7 +463,7 @@ STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}下降�
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}上昇土地上的一角
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}捲軸 - 上下捲動清單
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}捲動棒 - 左右捲動清單
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}於地圖上顯示地形
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}於地圖上顯示地形輪廓
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}於地圖上顯示交通公具
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}於地圖上顯示各種工業
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}於地圖上顯示運輸路線
@@ -730,7 +730,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}在場�
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}建立燈塔
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}建立發射站
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}定義沙漠區。{}請按住 CTRL 移除
-STR_CREATE_LAKE                                                 :{BLACK}劃出湖泊範圍。{}開鑿運河。在海平面上按 CTRL 鍵則會淹沫週遭土地
+STR_CREATE_LAKE                                                 :{BLACK}劃出湖泊範圍。{}開鑿運河。在海平面上按 CTRL 鍵則會淹沒週遭土地
 STR_0290_DELETE                                                 :{BLACK}刪除
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}完全移除這個市鎮
 STR_0292_SAVE_SCENARIO                                          :儲存場景

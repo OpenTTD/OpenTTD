@@ -590,6 +590,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomms
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankommst av første kjøretøy på motstanders stasjon
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ulykker/katastrofer
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmainformasjon
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Åpninger / Stengninger av industrier
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiske endringer
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Råd/informasjon om spillers kjøretøy
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye kjøretøy
@@ -2629,6 +2630,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Inkompatible je
 STR_TRAIN_NO_POWER                                              :{RED}Ingen strøm
 STR_TRAIN_START_NO_CATENARY                                     :Dette sporet mangler et kjede, så toget kan ikke starte
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Ny {STRING} nå tilgjengelig!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ny {STRING} Nå tilgjengelig!  -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kjøretøy i veien

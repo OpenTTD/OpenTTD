@@ -3182,7 +3182,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Pojemno�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Waga: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można przebudować na: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy towarów
-STR_PURCHASE_INFO_ALL_BUT                                       :Wszystko oprócz {GOLD}}
+STR_PURCHASE_INFO_ALL_BUT                                       :Wszystko oprócz {GOLD}
 
 ########### String for New Landscape Generator
 
@@ -3225,7 +3225,7 @@ STR_CLEARING_TILES                                              :{BLACK}Generowa
 STR_SETTINGUP_GAME                                              :{BLACK}Ustawianie gry
 STR_PREPARING_TILELOOP                                          :{BLACK}Uaktywnianie pól
 STR_PREPARING_GAME                                              :{BLACK}Przygotowywanie gry
-STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Ta akcja zmieniła poziom trudności na "własny"
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Zmieniono poziom trudności na "własny"
 STR_SE_FLAT_WORLD                                               :{WHITE}Płaski świat
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Stwórz płaski świat
 STR_SE_RANDOM_LAND                                              :{WHITE}Losowy teren

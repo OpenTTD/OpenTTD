@@ -772,6 +772,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Ustvari 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Postavi svetilnik
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Postavi oddajnik
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Določi območja puščave.{}Pritisni in drži CTRL za odstranitev
+STR_CREATE_LAKE                                                 :{BLACK}Določi področje vode.{}Naredi kanal, razen če je pritisnjen CTRL na morski gladini, ko bo poplavilo okolico.
 STR_0290_DELETE                                                 :{BLACK}Izbriši
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Popolnoma izbriši mesto
 STR_0292_SAVE_SCENARIO                                          :Shrani scenarij
@@ -1249,6 +1250,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Drevesa 
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Postavi drevesa naključne vrste
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Ni mogoče zgraditi kanalov tukaj ...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Zgradi kanale.
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Ni mogoče zgraditi zapornic tukaj ...

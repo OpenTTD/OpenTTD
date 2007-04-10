@@ -2922,6 +2922,7 @@ STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Xeració
 STR_RANDOM_SEED                                                 :{BLACK}Semilla Aleatoria:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Pincha para introducir unha semilla
 STR_LAND_GENERATOR                                              :{BLACK}Xerador de terreo:
+STR_TREE_PLACER                                                 :{BLACK}Algoritmo para árbores:
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreo:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nivel do mar:
 STR_SMOOTHNESS                                                  :{BLACK}Suavidade:
@@ -2942,7 +2943,9 @@ STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / 
 STR_WORLD_GENERATION                                            :{BLACK}Xeración do mundo
 STR_SETTINGUP_GAME                                              :{BLACK}Configurando partida
 STR_PREPARING_GAME                                              :{BLACK}Preparando partida
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acción cambiou o nivel de dificultade a Personalizado
 STR_SE_FLAT_WORLD                                               :{WHITE}Terreo Chan
+STR_SE_RANDOM_LAND                                              :{WHITE}Terreo aleatorio
 STR_SE_NEW_WORLD                                                :{BLACK}Crear novo escenario
 STR_SE_CAPTION                                                  :{WHITE}Tipo de escenario
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
@@ -2970,5 +2973,10 @@ STR_MEASURE_LENGTH                                              :{BLACK}Lonxitud
 STR_MEASURE_AREA                                                :{BLACK}Área: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lonxitude: {NUM}{}Diferencia de altura: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {NUM} x {NUM}{}Diferencia de altura: {NUM} m
+
+############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
 ########

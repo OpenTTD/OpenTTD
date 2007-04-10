@@ -590,6 +590,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oyuncun
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Rakibin durağına ilk aracın gelişi
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kazalar / felaketler
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Şirket bilgisi
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Fabrika açılış/kapanışları
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomi değişimleri
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Oyuncunun araçlarıyla ilgili ögüt / bilgi
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Yeni araçlar
@@ -729,6 +730,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Haritaya
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Deniz feneri koy
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Verici koy
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Çöl yap, kaldırmak için CTRL'ye basılı tut
+STR_CREATE_LAKE                                                 :{BLACK}Su alanını belirle.{}Deniz seviyesinde CTRL tuşu basılı olmadığı sürece kanal yapar, basılıysa etraftakileri su altında bırakır
 STR_0290_DELETE                                                 :{BLACK}Sil
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Sehri tamamen sil
 STR_0292_SAVE_SCENARIO                                          :Kaydet
@@ -1206,6 +1208,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Rastgele
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Rastgele türde ağaçlar koy
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Buraya kanal yapılamaz...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Kanal yap.
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Buraya kilit yapılamaz...
@@ -2889,6 +2892,9 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz; bu OpenTTD'yi çökertebilir.{}Emin misiniz?
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} artık kullanılabilir!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} artık kullanılabilir!  -  {STRING}
 
 STR_NEWGRF_ADD                                                  :{BLACK}Ekle
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Listeye NewGRF dosyası ekle

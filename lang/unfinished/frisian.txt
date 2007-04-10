@@ -232,8 +232,10 @@ STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARG
 STR_0140_NEW_GAME                                               :{BLACK}Nei Spul
 STR_0141_LOAD_GAME                                              :{BLACK}Laad Spul
 
+STR_64                                                          :64
 STR_128                                                         :128
 STR_256                                                         :256
+STR_512                                                         :512
 STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spul Opsjes
@@ -1099,8 +1101,26 @@ STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}
 STR_482F_COST                                                   :{BLACK}Kostet: {YELLOW}{CURRENCY}
 
 ##id 0x5000
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Tunnel mat earst fuorthelle wurde
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Brêge mat earst fuorthelle wurde
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Begjin en ein kin net op itselde plak wêze
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Begjin en ein mat yn ien lijn wêze
+STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_5012_WOODEN                                                 :Hout
+STR_5013_CONCRETE                                               :Beton
+STR_5014_TUBULAR_STEEL                                          :Buis, Stiel
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Kin hjir gjin brêge bouwe...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Kin hjir gjin tunnel bouwe...
+STR_5017_RAILROAD_TUNNEL                                        :Spoartunnel
+STR_501F_WOODEN_RAIL_BRIDGE                                     :Houten spoarbrêge
+STR_5020_CONCRETE_RAIL_BRIDGE                                   :Betonnen spoarbrêge
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objekt yn it paad
+STR_5801_TRANSMITTER                                            :Sendmast
+STR_5802_LIGHTHOUSE                                             :Fjoertoer
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Kin dit stikje lân net keapje...
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...it is al fan dy!
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -1113,14 +1133,93 @@ STR_482F_COST                                                   :{BLACK}Kostet: 
 ##id 0x6800
 
 ############ range for difficulty levels starts
+STR_6801_EASY                                                   :{BLACK}Maklik
+STR_6802_MEDIUM                                                 :{BLACK}Gewoan
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maksimum oantal tsjinstanders: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Tsjinstander begjint: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Oantal stêden: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Oantal yndustrieen: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Konstruksjesnelhyd fan tsjinstanders: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Konstruksjekosten: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Terreinsoart: {ORANGE}{STRING}
+STR_6813_ECONOMY                                                :{LTBLUE}Ekonomy: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Gjin
+STR_6816_LOW                                                    :Leech
+STR_6817_NORMAL                                                 :Gewoan
+STR_6818_HIGH                                                   :Heech
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
+STR_681B_VERY_SLOW                                              :Hiel dreech
+STR_681C_SLOW                                                   :Dreech
+STR_681D_MEDIUM                                                 :Gewoan
+STR_681E_FAST                                                   :Hurd
+STR_681F_VERY_FAST                                              :Hiel hurd
+STR_6820_LOW                                                    :Leech
+STR_6821_MEDIUM                                                 :Gewoan
+STR_6822_HIGH                                                   :Heech
+STR_6823_NONE                                                   :Gjin
+STR_6824_REDUCED                                                :Minder
+STR_6825_NORMAL                                                 :Gewoan
+STR_6826_X1_5                                                   :x1.5
+STR_6827_X2                                                     :x2
+STR_6828_X3                                                     :x3
+STR_6829_X4                                                     :x4
+STR_682A_VERY_FLAT                                              :Hiel Flak
+STR_682B_FLAT                                                   :Flak
+STR_682D_MOUNTAINOUS                                            :Bergachtich
+STR_682F_FLUCTUATING                                            :Wikseljend
+STR_6830_IMMEDIATE                                              :Fuortendaliks
+STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 moannen nei spyler
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 moannen nei spyler
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 moannen nei spyler
+STR_6836_OFF                                                    :Ut
+STR_6837_ON                                                     :Oan
 
 ##id 0x7000
+STR_7000                                                        :
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7002_PLAYER                                                 :(Spyler {COMMA})
+STR_7004_NEW_FACE                                               :{BLACK}Nei Gesicht
+STR_7005_COLOR_SCHEME                                           :{BLACK}Kleurenskema
+STR_7006_COLOR_SCHEME                                           :{GOLD}Kleurenskema:
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nei Kleurenskema
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finansieen {BLACK}{PLAYERNAME}
+STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Utjeften/Ynkomsten
+STR_7010                                                        :{WHITE}{NUM}
+STR_7011_CONSTRUCTION                                           :{GOLD}Konstruksje
+STR_7018_TRAIN_INCOME                                           :{GOLD}Ynkomsten Treinen
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ynkomsten Fleantúgen
+STR_701B_SHIP_INCOME                                            :{GOLD}Ynkomsten Skepen
+STR_701C_LOAN_INTEREST                                          :{GOLD}Rinte Liening
+STR_701D_OTHER                                                  :{GOLD}Oaren
+STR_701E                                                        :{BLACK}-{CURRENCY64}
+STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_7020_TOTAL                                                  :{WHITE}Totaal:
+STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7022_INCOME_GRAPH                                           :{WHITE}Ynkomsten Grafyk
+STR_7024                                                        :{COMMA}
+STR_7027_LOAN                                                   :{WHITE}Liening
+STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_7029_BORROW                                                 :{BLACK}Lien {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Betelje {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} werom
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kin net mear jild liene
+STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} nedich
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kin liening net werombetelje
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Selektear nei gesicht foar de bedriuwslieder
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Lien mear jild
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Betelje in diel fan de liening werom
+STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Bedriuwslieder)
+STR_7038_INAUGURATED                                            :{GOLD}Oprjochte: {WHITE}{NUM}
+STR_7042_NONE                                                   :{WHITE}Gjin
+STR_7044_MALE                                                   :{BLACK}Man
+STR_7045_FEMALE                                                 :{BLACK}Frou
+STR_7046_NEW_FACE                                               :{BLACK}Nei Gesicht
+STR_704C_KEY                                                    :{BLACK}Kaai
 
 
 
@@ -1193,5 +1292,6 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 ############ Tooltip measurment
 
+############ Date formatting
 
 ########

@@ -690,6 +690,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Mängij
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Konkurendi jaama saabus esimene veovahend
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Õnnetused / katastroofid
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Ettevõtte teave
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Ava / sulge tööstuseid
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Muutused majanduses
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Soovitused ja teated mängija veovahendite kohta
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Uued veovahendid
@@ -733,7 +734,7 @@ STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Oled sa 
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Maastiku loomine
 STR_022F_TOWN_GENERATION                                        :{BLACK}Linnade loomine
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Tööstuste loomine
-STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Teede ehitamine
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Teeehitus
 STR_0233_TOWN_GENERATION                                        :{WHITE}Linnade loomine
 STR_0234_NEW_TOWN                                               :{BLACK}Uus linn
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Ehita uus linn
@@ -794,12 +795,12 @@ STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Ehita te
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Raja farm
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Ehita rauamaagikaevandus
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Ehita naftapuuraugud
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Ehita pank (seda saab ehitada vaid linnadesse, mille rahvastikuarv ületab 1200)
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Ehita pank (saab ehitada vaid linnadesse, mille rahvastikuarv ületab 1200)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Ehita paberitehas
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Ehita toidutööstus
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Ehita trükikoda
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Ehita kullakaevandus
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Ehita pank (seda saab vaid linnadesse ehitada)
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Ehita pank (saab vaid linnadesse ehitada)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Ehita saeveski (vihmametsade puhustamiseks ja puidu tootmiseks)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Istuta puuviljaistandus
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Istuta kummipuuistandus
@@ -829,6 +830,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Loo maas
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Ehita tuletorn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Paigalda saatjamast
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Loo kõrbealad.{}Eemaldamiseks klõpsa hoides all CTRL nuppu
+STR_CREATE_LAKE                                                 :{BLACK}Määratle veealad.{}Ehita kanal. CTRL-klahvi all hoides ujutab ümbruskonna üle.
 STR_0290_DELETE                                                 :{BLACK}Kustuta
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Hävita see linn täielikult
 STR_0292_SAVE_SCENARIO                                          :Salvesta kaart
@@ -2618,7 +2620,7 @@ STR_INVALID_ORDER                                               :{RED} (Ebasobiv
 
 STR_UNKNOWN_DESTINATION                                         :tundmatu sihtpunkt
 STR_8812_EMPTY                                                  :{LTBLUE}Tühi
-STR_8813_FROM                                                   :{LTBLUE}{CARGO} {STATION}'st
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} jaamast {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} jaamast {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Rong {COMMA} ootab depoos
 STR_8815_NEW_VEHICLES                                           :{BLACK}Uus rong

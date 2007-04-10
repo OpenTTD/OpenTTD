@@ -1828,7 +1828,7 @@ STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Заре
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} пречи
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Мина за въглища
-STR_4803_POWER_STATION                                          :
+STR_4803_POWER_STATION                                          :Електроцентрала
 STR_4804_SAWMILL                                                :Дъскорезница
 STR_4805_FOREST                                                 :Гора
 STR_4806_OIL_REFINERY                                           :Нефтена рафинерия
