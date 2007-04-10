@@ -1807,9 +1807,10 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	w_front = NULL;
 	w_rear = NULL;
 
+
 	/*
 	 * v_front is the front engine in the original vehicle
-	 * v is the car/vehicle of the original vehicle that is currently being copied
+	 * v is the car/vehicle of the original vehicle, that is currently being copied
 	 * w_front is the front engine of the cloned vehicle
 	 * w is the car/vehicle currently being cloned
 	 * w_rear is the rear end of the cloned train. It's used to add more cars and is only used by trains
@@ -1854,18 +1855,11 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			Vehicle *v2 = v;
 			do {
 				if (v2->cargo_type != w2->cargo_type || v2->cargo_subtype != w2->cargo_subtype) {
-					/* We need to check the whole chain if it is a train
-					 * because some newgrf articulated engines can refit some
-					 * units only (and not the front). */
-					cost = DoCommand(0, w->index, v2->cargo_type | (v2->cargo_subtype << 8), flags, GetCmdRefitVeh(v));
-					if (CmdFailed(cost)) return cost;
-
-					total_cost += cost;
-
-					/* The refit command will refit all the remaining
-					 * articulated parts if possible, so we don't need to
-					 * carry on checking. */
-					break;
+					/* We can't pay for refitting because we can't estimate refitting costs for a vehicle before it's build.
+					 * If we pay for it anyway, the cost and the estimated cost will not be the same and we will have an assert.
+					 * We need to check the whole chain if it is a train because some newgrf articulated engines can refit some units only (and not the front) */
+					DoCommand(0, w->index, v2->cargo_type | (v2->cargo_subtype << 8), flags, GetCmdRefitVeh(v));
+					break; // We learned that the engine in question needed a refit. No need to check anymore
 				}
 			} while (v->type == VEH_TRAIN && (w2 = w2->next) != NULL && (v2 = v2->next) != NULL);
 
