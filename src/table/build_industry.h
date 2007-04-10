@@ -1200,7 +1200,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480E_BANK,                          STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_food_process,               26,               0, 2, 2, 0,    0, 5, 8, 0,         55,
+	MK(_tile_table_food_process,               26,               0, 2, 2, 0,    0, 3, 4, 0,         55,
 	   IT_FRUIT_PLANTATION, IT_FARM,           IT_FARM_2,        CHECK_NOTHING,
 	   CT_FOOD,        0, CT_INVALID,       0, 5,
 	   CT_FRUIT,          CT_MAIZE,            CT_INVALID,
@@ -1209,7 +1209,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480F_FOOD_PROCESSING_PLANT,         STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_paper_mill,                 28,               0, 0, 2, 0,    0, 0, 5, 0,         10,
+	MK(_tile_table_paper_mill,                 28,               0, 2, 0, 0,    0, 5, 0, 0,         10,
 	   IT_FOREST,         IT_PRINTING_WORKS,   IT_INVALID,       CHECK_NOTHING,
 	   CT_PAPER,       0, CT_INVALID,       0, 5,
 	   CT_WOOD,           CT_INVALID,          CT_INVALID,
@@ -1218,11 +1218,11 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4810_PAPER_MILL,                    STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_gold_mine,                  208,              0, 0, 3, 0,    0, 0, 4, 0,        194,
+	MK(_tile_table_gold_mine,                  208,              0, 3, 0, 0,    0, 4, 0, 0,        194,
 	   IT_BANK_TROPIC_ARCTIC, IT_INVALID,      IT_INVALID,       CHECK_NOTHING,
 	   CT_GOLD,        7, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
-	   INDUSTRYLIFE_PRODUCTION,                1 << LT_TROPIC,
+	   INDUSTRYLIFE_PRODUCTION,                1 << LT_ARCTIC,
 	   INDUSTRYBEH_NONE,
 	   STR_4811_GOLD_MINE,                     STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
@@ -1254,7 +1254,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4814_IRON_ORE_MINE,                 STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_fruit_plantation,           225,              0, 0, 3, 0,    0, 0, 4, 0,         86,
+	MK(_tile_table_fruit_plantation,           225,              0, 0, 2, 0,    0, 0, 4, 0,         86,
 	   IT_FOOD_PROCESS,   IT_INVALID,          IT_INVALID,       CHECK_PLANTATION,
 	   CT_FRUIT,      10, CT_INVALID,       0, 15,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1407,7 +1407,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4825_TOFFEE_QUARRY,                 STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_sugar_mine,                 210,              0, 0, 0, 2,    0, 0, 0, 1,         15,
+	MK(_tile_table_sugar_mine,                 210,              0, 0, 0, 2,    0, 0, 0, 4,         15,
 	   IT_CANDY_FACTORY,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_SUGAR,      11, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
