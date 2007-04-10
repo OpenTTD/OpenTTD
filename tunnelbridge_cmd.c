@@ -764,6 +764,16 @@ static int32 ClearTile_TunnelBridge(TileIndex tile, byte flags)
 	return CMD_ERROR;
 }
 
+/**
+ * Switches the rail type for a tunnel or a bridgehead. As the railtype
+ * on the bridge are determined by the one of the bridgehead, this
+ * functions converts the railtype on the entire bridge.
+ * @param tile        The tile on which the railtype is to be convert.
+ * @param totype      The railtype we want to convert to
+ * @param exec        Switches between test and execute mode
+ * @return            The cost and state of the operation
+ * @retval CMD_ERROR  An error occured during the operation.
+ */
 int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 {
 	TileIndex endtile;
@@ -792,7 +802,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 			YapfNotifyTrackLayoutChange(tile, track);
 			YapfNotifyTrackLayoutChange(endtile, track);
 		}
-		return (length + 1) * (_price.build_rail >> 1);
+		return (length + 1) * (_price.build_rail / 2);
 	} else if (IsBridge(tile) &&
 			IsBridgeMiddle(tile) &&
 			IsTransportUnderBridge(tile) &&
@@ -809,7 +819,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 
 			YapfNotifyTrackLayoutChange(tile, GetRailUnderBridge(tile));
 		}
-		return _price.build_rail >> 1;
+		return _price.build_rail / 2;
 	} else if (IsBridge(tile) && IsBridgeRamp(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
 		TileIndexDiff delta;
 		int32 cost;
@@ -837,14 +847,14 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 			YapfNotifyTrackLayoutChange(tile, track);
 			YapfNotifyTrackLayoutChange(endtile, track);
 		}
-		cost = 2 * (_price.build_rail >> 1);
+		cost = 2 * (_price.build_rail / 2);
 		delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
 		for (tile += delta; tile != endtile; tile += delta) {
 			if (exec) {
 				SetRailTypeOnBridge(tile, totype);
 				MarkTileDirtyByTile(tile);
 			}
-			cost += _price.build_rail >> 1;
+			cost += _price.build_rail / 2;
 		}
 
 		return cost;

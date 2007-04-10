@@ -368,6 +368,24 @@ void SetDifficultyLevel(int mode, GameOptions *gm_opt)
 	}
 }
 
+/**
+ * Checks the difficulty levels read from the configuration and
+ * forces them to be correct when invalid.
+ */
+void CheckDifficultyLevels(void)
+{
+	if (_opt_newgame.diff_level != 3) {
+		SetDifficultyLevel(_opt_newgame.diff_level, &_opt_newgame);
+	} else {
+		uint i;
+		for (i = 0; i < GAME_DIFFICULTY_NUM; i++) {
+			int *diff = ((int*)&_opt_newgame.diff) + i;
+			*diff = clamp(*diff, _game_setting_info[i].min, _game_setting_info[i].max);
+			*diff -= *diff % _game_setting_info[i].step;
+		}
+	}
+}
+
 extern void StartupEconomy(void);
 
 enum {

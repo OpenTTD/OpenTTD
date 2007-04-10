@@ -874,14 +874,23 @@ int32 CmdRemoveSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 typedef int32 DoConvertRailProc(TileIndex tile, RailType totype, bool exec);
 
+/**
+ * Switches the rail type.
+ * Railtypes are stored on a per-tile basis, not on a per-track basis, so
+ * all the tracks in the given tile will be converted.
+ * @param tile        The tile on which the railtype is to be convert.
+ * @param totype      The railtype we want to convert to
+ * @param exec        Switches between test and execute mode
+ * @return            The cost and state of the operation
+ * @retval CMD_ERROR  An error occured during the operation.
+ */
 static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 {
 	if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
-	if (!EnsureNoVehicle(tile) && (!IsCompatibleRail(GetRailType(tile), totype) || IsPlainRailTile(tile))) return CMD_ERROR;
-
-	// tile is already of requested type?
 	if (GetRailType(tile) == totype) return CMD_ERROR;
+
+	if (!EnsureNoVehicle(tile) && (!IsCompatibleRail(GetRailType(tile), totype) || IsPlainRailTile(tile))) return CMD_ERROR;
 
 	// 'hidden' elrails can't be downgraded to normal rail when elrails are disabled
 	if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailType(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
