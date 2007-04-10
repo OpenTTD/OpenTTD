@@ -1939,6 +1939,9 @@ STR_5805_COMPANY_OWNED_LAND                                     :Satın alınmı
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Burası satın alınamaz...
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...zaten senin!
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} artık kullanılabilir!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} artık kullanılabilir!  -  {STRING}
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
@@ -2892,9 +2895,6 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz; bu OpenTTD'yi çökertebilir.{}Emin misiniz?
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} artık kullanılabilir!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} artık kullanılabilir!  -  {STRING}
 
 STR_NEWGRF_ADD                                                  :{BLACK}Ekle
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Listeye NewGRF dosyası ekle
