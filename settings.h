@@ -71,6 +71,7 @@ extern Patches _patches_newgame;
 
 bool IConsoleSetPatchSetting(const char *name, int32 value);
 void IConsoleGetPatchSetting(const char *name);
+void IConsoleListPatches(void);
 const SettingDesc *GetPatchFromName(const char *name, uint *i);
 bool SetPatchValue(uint index, const Patches *object, int32 value);
 

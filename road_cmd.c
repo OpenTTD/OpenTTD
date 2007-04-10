@@ -308,7 +308,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if ((existing & pieces) == pieces) {
 						return_cmd_error(STR_1007_ALREADY_BUILT);
 					}
-					if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+					if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 					break;
 
 				case ROAD_TILE_CROSSING:
@@ -352,7 +352,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				default: goto do_clear;
 			}
 
-			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
 				YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(GetTrackBits(tile)));
@@ -436,7 +436,7 @@ int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 	if (!IsLevelCrossing(tile)) return CMD_ERROR;
 
 	// not owned by me?
-	if (!CheckTileOwnership(tile) || !EnsureNoVehicle(tile)) return CMD_ERROR;
+	if (!CheckTileOwnership(tile) || !EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	if (GetRailTypeCrossing(tile) == totype) return CMD_ERROR;
 
@@ -581,7 +581,7 @@ int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p1 > 3) return CMD_ERROR; // check direction
 
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
 	if (tileh != SLOPE_FLAT && (
@@ -947,7 +947,7 @@ static void TileLoop_Road(TileIndex tile)
 			if (t->road_build_months != 0 &&
 					(DistanceManhattan(t->xy, tile) < 8 || grp != 0) &&
 					GetRoadTileType(tile) == ROAD_TILE_NORMAL && (GetRoadBits(tile) == ROAD_X || GetRoadBits(tile) == ROAD_Y)) {
-				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicle(tile) && CHANCE16(1, 20)) {
+				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile) && CHANCE16(1, 20)) {
 					StartRoadWorks(tile);
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);

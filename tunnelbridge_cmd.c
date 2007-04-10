@@ -675,7 +675,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 
 	endtile = GetOtherBridgeEnd(tile);
 
-	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(endtile)) return CMD_ERROR;
+	if (!EnsureNoVehicleOnGround(tile) || !EnsureNoVehicleOnGround(endtile)) return CMD_ERROR;
 
 	direction = GetBridgeRampDirection(tile);
 	delta = TileOffsByDiagDir(direction);
@@ -828,8 +828,8 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 
 		endtile = GetOtherBridgeEnd(tile);
 
-		if (!EnsureNoVehicle(tile) ||
-				!EnsureNoVehicle(endtile) ||
+		if (!EnsureNoVehicleOnGround(tile) ||
+				!EnsureNoVehicleOnGround(endtile) ||
 				FindVehicleBetween(tile, endtile, GetBridgeHeightRamp(tile), false) != NULL) {
 			return_cmd_error(STR_8803_TRAIN_IN_THE_WAY);
 		}

@@ -1402,6 +1402,19 @@ DEF_CONSOLE_CMD(ConPatch)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConListPatches)
+{
+	if (argc == 0) {
+		IConsoleHelp("List patch options. Usage: 'list_patches'");
+		return true;
+	}
+
+	if (argc != 1) return false;
+
+	IConsoleListPatches();
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConListDumpVariables)
 {
 	const IConsoleVar *var;
@@ -1482,6 +1495,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
 	IConsoleCmdRegister("clear",        ConClearBuffer);
 	IConsoleCmdRegister("patch",        ConPatch);
+	IConsoleCmdRegister("list_patches", ConListPatches);
 
 	IConsoleAliasRegister("dir",      "ls");
 	IConsoleAliasRegister("del",      "rm %+");
