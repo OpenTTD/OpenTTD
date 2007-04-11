@@ -1205,10 +1205,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 		SetDParam(1, ss->params[1]);
 		/* if we didn't draw a rectangle, or if transparant building is on,
 		 * draw the text in the color the rectangle would have */
-		if ((
-					HASBIT(_transparent_opt, TO_BUILDINGS) ||
-					(HASBIT(_transparent_opt, TO_SIGNS) && ss->string != STR_2806)
-				) && ss->width != 0) {
+		if (HASBIT(_transparent_opt, TO_SIGNS) && ss->string != STR_2806 && ss->width != 0) {
 			/* Real colors need the IS_PALETTE_COLOR flag
 			 * otherwise colors from _string_colormap are assumed. */
 			colour = _colour_gradient[ss->color][6] | IS_PALETTE_COLOR;
