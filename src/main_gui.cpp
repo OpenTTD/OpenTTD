@@ -2350,12 +2350,13 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				break;
 
 			case 'X': {
+				/* Toggle all transparency options except for signs */
 				static byte trans_opt = ~0;
-				if (_transparent_opt == 0) {
-					_transparent_opt = trans_opt;
+				if (GB(_transparent_opt, 1, 7) == 0) {
+					SB(_transparent_opt, 1, 7, GB(trans_opt, 1, 7));
 				} else {
 					trans_opt = _transparent_opt;
-					_transparent_opt = 0;
+					SB(_transparent_opt, 1, 7, 0);
 				}
 				MarkWholeScreenDirty();
 				break;
