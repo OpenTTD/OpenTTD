@@ -2539,7 +2539,7 @@ static void StationMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 			StationSpec *statspec = _cur_grffile->stations[stid];
 
 			statspec->spritegroup[CT_DEFAULT] = _cur_grffile->spritegroups[groupid];
-			statspec->grfid = _cur_grffile->grfid;
+			statspec->grffile = _cur_grffile;
 			statspec->localidx = stid;
 			SetCustomStationSpec(statspec);
 		}

@@ -22,6 +22,7 @@
 #include "vehicle.h"
 #include "yapf/yapf.h"
 #include "date.h"
+#include "newgrf.h"
 
 enum {
 	MAX_WAYPOINTS_PER_TOWN = 64,
@@ -181,7 +182,7 @@ void AfterLoadWaypoints()
 
 		for (i = 0; i < GetNumCustomStations(STAT_CLASS_WAYP); i++) {
 			const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, i);
-			if (statspec != NULL && statspec->grfid == wp->grfid && statspec->localidx == wp->localidx) {
+			if (statspec != NULL && statspec->grffile->grfid == wp->grfid && statspec->localidx == wp->localidx) {
 				wp->stat_id = i;
 				break;
 			}
@@ -250,7 +251,7 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (statspec != NULL) {
 			wp->stat_id = p1;
-			wp->grfid = statspec->grfid;
+			wp->grfid = statspec->grffile->grfid;
 			wp->localidx = statspec->localidx;
 		} else {
 			/* Specified custom graphics do not exist, so use default. */

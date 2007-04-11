@@ -184,7 +184,7 @@ const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx)
 		for (j = 0; j < station_classes[i].stations; j++) {
 			const StationSpec *statspec = station_classes[i].spec[j];
 			if (statspec == NULL) continue;
-			if (statspec->grfid == grfid && statspec->localidx == localidx) return statspec;
+			if (statspec->grffile->grfid == grfid && statspec->localidx == localidx) return statspec;
 		}
 	}
 
@@ -638,7 +638,7 @@ int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
 		}
 
 		st->speclist[i].spec     = statspec;
-		st->speclist[i].grfid    = statspec->grfid;
+		st->speclist[i].grfid    = statspec->grffile->grfid;
 		st->speclist[i].localidx = statspec->localidx;
 	}
 

@@ -28,7 +28,7 @@ DECLARE_POSTFIX_INCREMENT(StationClassID);
 typedef byte *StationLayout;
 
 struct StationSpec {
-	uint32 grfid; ///< ID of GRF file station belongs to.
+	const struct GRFFile *grffile; ///< ID of GRF file station belongs to.
 	int localidx; ///< Index within GRF file of station.
 
 	bool allocated; ///< Flag whether this station has been added to a station class list

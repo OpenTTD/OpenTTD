@@ -57,6 +57,7 @@
 #include "date.h"
 #include "clear_map.h"
 #include "fontcache.h"
+#include "newgrf.h"
 #include "newgrf_config.h"
 #include "newgrf_house.h"
 #include "player_face.h"
@@ -1586,7 +1587,7 @@ bool AfterLoadGame()
 
 				if (statspec != NULL) {
 					wp->stat_id = _m[wp->xy].m4 + 1;
-					wp->grfid = statspec->grfid;
+					wp->grfid = statspec->grffile->grfid;
 					wp->localidx = statspec->localidx;
 				} else {
 					/* No custom graphics set, so set to default. */
