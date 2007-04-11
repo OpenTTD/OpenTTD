@@ -271,7 +271,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 					SpriteID img = pylons_normal[temp];
 					SpriteID pal = PAL_NONE;
-					if (_transparent_opt & TO_BUILDINGS) {
+					if (HASBIT(_transparent_opt, TO_BUILDINGS)) {
 						SETBIT(img, PALETTE_MODIFIER_TRANSPARENT);
 						pal = PALETTE_TO_TRANSPARENT;
 					}
@@ -285,7 +285,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	}
 
 	/* Don't draw a wire under a low bridge */
-	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !(_transparent_opt & TO_BUILDINGS)) {
+	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !HASBIT(_transparent_opt, TO_BUILDINGS)) {
 		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
 		if (height <= TilePixelHeight(ti->tile) + TILE_HEIGHT) return;
