@@ -192,7 +192,7 @@ uint GetRailFoundation(Slope tileh, TrackBits bits)
 static uint32 CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits existing, TileIndex tile)
 {
 	if (IsSteepSlope(tileh)) {
-		if (existing == 0) {
+		if (_patches.build_on_slopes && existing == 0) {
 			TrackBits valid = TRACK_BIT_CROSS | (HASBIT(1 << SLOPE_STEEP_W | 1 << SLOPE_STEEP_E, tileh) ? TRACK_BIT_VERT : TRACK_BIT_HORZ);
 			if (valid & rail_bits) return _price.terraform;
 		}
