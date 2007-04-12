@@ -6,6 +6,7 @@
 #include "openttd.h"
 #include "currency.h"
 #include "functions.h"
+#include "landscape.h"
 #include "news.h"
 #include "player.h"
 #include "string.h"
@@ -87,7 +88,6 @@ void InitializeAirportGui();
 void InitializeDockGui();
 void InitializeIndustries();
 void InitializeMainGui();
-void InitializeLandscape();
 void InitializeTowns();
 void InitializeTrees();
 void InitializeSigns();

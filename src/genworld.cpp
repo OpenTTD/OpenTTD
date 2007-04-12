@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
+#include "landscape.h"
 #include "player.h"
 #include "table/sprites.h"
 #include "variables.h"
@@ -19,7 +20,6 @@
 #include "heightmap.h"
 #include "date.h"
 
-void GenerateLandscape(byte mode);
 void GenerateClearTile();
 void GenerateIndustries();
 void GenerateUnmovables();
@@ -31,8 +31,6 @@ void StartupPlayers();
 void StartupDisasters();
 
 void InitializeGame(int mode, uint size_x, uint size_y);
-
-void ConvertGroundTilesIntoWaterTiles();
 
 /* Please only use this variable in genworld.h and genworld.c and
  *  nowhere else. For speed improvements we need it to be global, but

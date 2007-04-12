@@ -8,6 +8,7 @@
 #include "aircraft.h"
 #include "debug.h"
 #include "functions.h"
+#include "landscape.h"
 #include "station_map.h"
 #include "table/strings.h"
 #include "map.h"

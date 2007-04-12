@@ -11,6 +11,7 @@
 #include "strings.h"
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "landscape.h"
 #include "map.h"
 #include "viewport.h"
 #include "window.h"

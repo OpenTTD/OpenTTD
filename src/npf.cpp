@@ -7,6 +7,7 @@
 #include "bridge_map.h"
 #include "debug.h"
 #include "functions.h"
+#include "landscape.h"
 #include "npf.h"
 #include "aystar.h"
 #include "macros.h"

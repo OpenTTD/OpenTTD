@@ -8,6 +8,7 @@
 #include "station_map.h"
 #include "depot.h"
 #include "functions.h"
+#include "landscape.h"
 #include "map.h"
 #include "tile.h"
 #include "pathfind.h"

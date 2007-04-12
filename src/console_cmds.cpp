@@ -8,6 +8,7 @@
 #include "debug.h"
 #include "engine.h"
 #include "functions.h"
+#include "landscape.h"
 #include "saveload.h"
 #include "string.h"
 #include "variables.h"

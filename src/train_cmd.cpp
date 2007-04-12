@@ -7,6 +7,7 @@
 #include "bridge_map.h"
 #include "debug.h"
 #include "functions.h"
+#include "landscape.h"
 #include "gui.h"
 #include "station_map.h"
 #include "table/strings.h"

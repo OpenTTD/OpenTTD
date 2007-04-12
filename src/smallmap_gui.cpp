@@ -11,6 +11,7 @@
 #include "station_map.h"
 #include "table/strings.h"
 #include "table/sprites.h"
+#include "landscape.h"
 #include "map.h"
 #include "tile.h"
 #include "gui.h"

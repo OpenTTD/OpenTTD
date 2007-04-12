@@ -24,6 +24,7 @@
 #include "gfx.h"
 #include "gfxinit.h"
 #include "gui.h"
+#include "landscape.h"
 #include "station.h"
 #include "station_map.h"
 #include "town_map.h"

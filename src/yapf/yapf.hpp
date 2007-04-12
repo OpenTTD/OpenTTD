@@ -17,6 +17,7 @@
 #include "../vehicle.h"
 #include "../date.h"
 #include "../functions.h"
+#include "../landscape.h"
 #include "yapf.h"
 #include "../pathfind.h"
 #include "../waypoint.h"

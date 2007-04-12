@@ -52,6 +52,7 @@
 #include "viewport.h"
 #include "functions.h" /* We should REALLY get rid of this goddamn file, as it is butt-ugly */
 #include "variables.h" /* ... same here */
+#include "landscape.h"
 #include "rail.h"
 #include "debug.h"
 #include "tunnel_map.h"

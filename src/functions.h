@@ -7,34 +7,7 @@
 
 #include "gfx.h"
 
-void DoClearSquare(TileIndex tile);
-void RunTileLoop();
-
-uint GetPartialZ(int x, int y, Slope corners);
-uint GetSlopeZ(int x, int y);
-uint32 GetTileTrackStatus(TileIndex tile, TransportType mode);
-void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
-void ChangeTileOwner(TileIndex tile, PlayerID old_player, PlayerID new_player);
-void AnimateTile(TileIndex tile);
-void ClickTile(TileIndex tile);
-void GetTileDesc(TileIndex tile, TileDesc *td);
 void UpdateTownMaxPass(Town *t);
-
-bool IsValidTile(TileIndex tile);
-
-static inline Point RemapCoords(int x, int y, int z)
-{
-	Point pt;
-	pt.x = (y - x) * 2;
-	pt.y = y + x - z;
-	return pt;
-}
-
-static inline Point RemapCoords2(int x, int y)
-{
-	return RemapCoords(x, y, GetSlopeZ(x, y));
-}
-
 
 /* clear_land.cpp */
 void DrawHillyLandTile(const TileInfo *ti);
@@ -170,8 +143,6 @@ void MarkAllViewportsDirty(int left, int top, int right, int bottom);
 void ShowCostOrIncomeAnimation(int x, int y, int z, int32 cost);
 void ShowFeederIncomeAnimation(int x, int y, int z, int32 cost);
 
-void DrawFoundation(TileInfo *ti, uint f);
-
 bool CheckIfAuthorityAllows(TileIndex tile);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);
@@ -179,7 +150,6 @@ void ChangeTownRating(Town *t, int add, int max);
 uint GetTownRadiusGroup(const Town* t, TileIndex tile);
 int FindFirstBit(uint32 x);
 void ShowHighscoreTable(int difficulty, int8 rank);
-TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng);
 
 void AfterLoadTown();
 void UpdatePatches();

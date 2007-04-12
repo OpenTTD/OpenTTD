@@ -6,6 +6,7 @@
 #include "openttd.h"
 #include "currency.h"
 #include "functions.h"
+#include "landscape.h"
 #include "strings.h" // XXX InjectDParam()
 #include "table/strings.h"
 #include "table/sprites.h"

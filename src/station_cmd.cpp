@@ -9,6 +9,7 @@
 #include "cmd_helper.h"
 #include "debug.h"
 #include "functions.h"
+#include "landscape.h"
 #include "station_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"

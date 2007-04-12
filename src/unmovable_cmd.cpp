@@ -7,6 +7,7 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "functions.h"
+#include "landscape.h"
 #include "map.h"
 #include "tile.h"
 #include "command.h"

@@ -8,6 +8,7 @@
 #include "heightmap.h"
 #include "debug.h"
 #include "functions.h"
+#include "landscape.h"
 #include "newgrf.h"
 #include "saveload.h"
 #include "strings.h"
@@ -40,8 +41,6 @@
 FiosItem *_fios_list;
 int _saveload_mode;
 
-extern void GenerateLandscape(byte mode);
-extern void SwitchMode(int new_mode);
 
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;

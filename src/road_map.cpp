@@ -6,6 +6,7 @@
 #include "openttd.h"
 #include "bridge_map.h"
 #include "functions.h"
+#include "landscape.h"
 #include "road_map.h"
 #include "station.h"
 #include "tunnel_map.h"

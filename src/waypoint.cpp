@@ -8,6 +8,7 @@
 #include "command.h"
 #include "functions.h"
 #include "gfx.h"
+#include "landscape.h"
 #include "map.h"
 #include "order.h"
 #include "rail_map.h"

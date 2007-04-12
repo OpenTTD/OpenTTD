@@ -8,6 +8,7 @@
 #include "macros.h"
 #include "strings.h"
 #include "gfx.h"
+#include "landscape.h"
 #include "viewport.h"
 #include "saveload.h"
 #include "hal.h"
