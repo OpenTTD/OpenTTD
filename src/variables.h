@@ -225,6 +225,9 @@ struct Patches {
 
 	uint8 scrollwheel_scrolling;
 	uint8 scrollwheel_multiplier;
+
+	uint8 town_growth_rate; ///< Town growth rate
+	uint8 larger_towns;     ///< 1 in the specified number of towns will grow twice as fast
 };
 
 VARDEF Patches _patches;

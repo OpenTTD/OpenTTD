@@ -363,11 +363,11 @@ static void TileLoop_Town(TileIndex tile)
 	_current_player = OWNER_TOWN;
 
 	if (hs->building_flags & BUILDING_HAS_1_TILE && HASBIT(t->flags12, TOWN_IS_FUNDED) && CanDeleteHouse(tile) && --t->time_until_rebuild == 0) {
-		t->time_until_rebuild = GB(r, 16, 6) + 130;
+		t->time_until_rebuild = GB(r, 16, 8) + 192;
 
 		ClearTownHouse(t, tile);
 
-		/* rebuild with another house? */
+		/* Rebuild with another house? */
 		if (GB(r, 24, 8) >= 12) DoBuildTownHouse(t, tile);
 	}
 
@@ -1662,7 +1662,7 @@ static void UpdateTownGrowRate(Town *t)
 {
 	int n;
 	Station *st;
-	byte m;
+	uint16 m;
 	Player *p;
 
 	/* Reset player ratings if they're low */
@@ -1687,22 +1687,21 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	CLRBIT(t->flags12, TOWN_IS_FUNDED);
+	if (_patches.town_growth_rate == 0) return;
+
+	/** Towns are processed every TOWN_GROWTH_FREQUENCY ticks, and this is the
+	 * number of times towns are processed before a new building is built. */
+	static const uint16 _grow_count_values[2][6] = {
+		{ 120, 120, 120, 100,  80,  60 }, ///< Fund new buildings has been activated
+		{ 320, 420, 300, 220, 160, 100 }  ///< Normal values
+	};
 
 	if (t->fund_buildings_months != 0) {
-		static const byte _grow_count_values[6] = {
-			60, 60, 60, 50, 40, 30
-		};
-		m = _grow_count_values[min(n, 5)];
+		m = _grow_count_values[0][min(n, 5)];
 		t->fund_buildings_months--;
-	} else if (n == 0) {
-		m = 160;
-		if (!CHANCE16(1, 12))
-			return;
 	} else {
-		static const byte _grow_count_values[5] = {
-			210, 150, 110, 80, 50
-		};
-		m = _grow_count_values[min(n, 5) - 1];
+		m = _grow_count_values[1][min(n, 5)];
+		if (n == 0 && !CHANCE16(1, 12)) return;
 	}
 
 	if (_opt.landscape == LT_ARCTIC) {
@@ -1712,6 +1711,9 @@ static void UpdateTownGrowRate(Town *t)
 		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->act_food==0 || t->act_water==0) && t->population > 60)
 			return;
 	}
+
+	m >>= (_patches.town_growth_rate - 1);
+	if (_patches.larger_towns != 0 && (t->index % _patches.larger_towns) == 0) m /= 2;
 
 	t->growth_rate = m / (t->num_houses / 50 + 1);
 	if (m <= t->grow_counter)
@@ -1957,9 +1959,14 @@ static const SaveLoad _town_desc[] = {
 	    SLE_VAR(Town, new_act_food,          SLE_UINT16),
 	    SLE_VAR(Town, new_act_water,         SLE_UINT16),
 
-	    SLE_VAR(Town, time_until_rebuild,    SLE_UINT8),
-	    SLE_VAR(Town, grow_counter,          SLE_UINT8),
-	    SLE_VAR(Town, growth_rate,           SLE_UINT8),
+	SLE_CONDVAR(Town, time_until_rebuild,    SLE_UINT8,                  0, 53),
+	SLE_CONDVAR(Town, grow_counter,          SLE_UINT8,                  0, 53),
+	SLE_CONDVAR(Town, growth_rate,           SLE_UINT8,                  0, 53),
+
+	SLE_CONDVAR(Town, time_until_rebuild,    SLE_UINT16,                 54, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, grow_counter,          SLE_UINT16,                 54, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, growth_rate,           SLE_INT16,                  54, SL_MAX_VERSION),
+
 	    SLE_VAR(Town, fund_buildings_months, SLE_UINT8),
 	    SLE_VAR(Town, road_build_months,     SLE_UINT8),
 

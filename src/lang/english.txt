@@ -1135,6 +1135,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centre
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Right
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING1} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Window snap radius: {ORANGE}disabled
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Town growth speed: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :None
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Slow
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Fast
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Very fast
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proportion of towns that will grow twice as fast: {ORANGE}1 in {STRING1}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportion of towns that will grow twice as fast: {ORANGE}None
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construction

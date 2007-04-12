@@ -126,11 +126,11 @@ struct Town {
 	uint16 new_act_water;
 
 	/* Time until we rebuild a house. */
-	byte time_until_rebuild;
+	uint16 time_until_rebuild;
 
 	/* When to grow town next time. */
-	byte grow_counter;
-	byte growth_rate;
+	uint16 grow_counter;
+	int16 growth_rate;
 
 	/* Fund buildings program in action? */
 	byte fund_buildings_months;
@@ -234,14 +234,14 @@ enum {
 	RATING_BRIBE_DOWN_TO = -50        // XXX SHOULD BE SOMETHING LOWER?
 };
 
-enum {
-/* This is the base "normal" number of towns on the 8x8 map, when
- * one town should get grown per tick. The other numbers of towns
- * are then scaled based on that. */
-	TOWN_GROWTH_FREQUENCY = 23,
-/* Simple value that indicates the house has reached final stage of construction*/
-	TOWN_HOUSE_COMPLETED  =  3,
-};
+/** This is the number of ticks between towns being processed for building new
+ * houses or roads. This value originally came from the size of the town array
+ * in TTD. */
+static const byte TOWN_GROWTH_FREQUENCY = 70;
+
+/** Simple value that indicates the house has reached the final stage of
+ * construction. */
+static const byte TOWN_HOUSE_COMPLETED = 3;
 
 /** This enum is used in conjonction with town->flags12.
  * IT simply states what bit is used for.

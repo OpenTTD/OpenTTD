@@ -637,6 +637,8 @@ static const char *_patches_economy[] = {
 	"ending_year",
 	"smooth_economy",
 	"allow_shares",
+	"town_growth_rate",
+	"larger_towns",
 };
 
 static const char *_patches_ai[] = {
