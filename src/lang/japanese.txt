@@ -802,6 +802,7 @@ STR_02DD_SUBSIDIES                                              :助成金
 STR_02DE_MAP_OF_WORLD                                           :世界の地図
 STR_EXTRA_VIEW_PORT                                             :特別ビューア
 STR_SIGN_LIST                                                   :標示のリスト
+STR_TRANSPARENCY_OPTIONS                                        :透明性の設定
 STR_02DF_TOWN_DIRECTORY                                         :市町村のリスト
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}人
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビューア {COMMA}
@@ -3146,3 +3147,14 @@ STR_DATE_LONG                                                   :{2:NUM}年{1:ST
 
 ########
 
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...町有の道路だからです
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...道路の配置に合わせません
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}透明性の設定
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}駅名の透明性を入／切
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}木の透明性を入／切
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}市町村の建物の透明性を入／切
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}工業の透明性を入／切
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}交通社所有の建物などの透明性を入／切
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}橋の透明性を入／切
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}灯台、送信機などの透明性を入／切

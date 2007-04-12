@@ -1201,6 +1201,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Középen
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Jobbra
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Ablakigazítás kiterjedése: {ORANGE}{STRING} képpont
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ablakigazítás kiterjedése: {ORANGE}letiltva
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Város növekedési sebesség: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Nincs
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lassú
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normális
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Gyors
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Nagyon gyors
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Dupla gyorsan növekvő városok aránya: {ORANGE}{STRING} városból 1
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Dupla gyorsan növekvő városok aránya: {ORANGE}Nincsennek
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Megjelenítés
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Építkezés
