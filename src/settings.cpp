@@ -942,7 +942,8 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
  * 2. SDT_something
  * The 'G' stands for global, so this is the one you will use for a
  * SettingDescGlobVarList section meaning global variables. The other uses a
- * Base/Offset and runtime variable selection mechanism, known from the saveload * convention (it also has global so it should not be hard).
+ * Base/Offset and runtime variable selection mechanism, known from the saveload
+ * convention (it also has global so it should not be hard).
  * Of each type there are again two versions, the normal one and one prefixed
  * with 'COND'.
  * COND means that the setting is only valid in certain savegame versions
@@ -1065,7 +1066,6 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 /* Shortcuts for macros below. Logically if we don't save the value
  * we also don't sync it in a network game */
 #define S SLF_SAVE_NO | SLF_NETWORK_NO
-#define NS SLF_SAVE_NO
 #define C SLF_CONFIG_NO
 #define N SLF_NETWORK_NO
 
