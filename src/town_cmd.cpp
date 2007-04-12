@@ -1687,7 +1687,7 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	CLRBIT(t->flags12, TOWN_IS_FUNDED);
-	if (_patches.town_growth_rate == 0) return;
+	if (_patches.town_growth_rate == 0 && t->fund_buildings_months == 0) return;
 
 	/** Towns are processed every TOWN_GROWTH_FREQUENCY ticks, and this is the
 	 * number of times towns are processed before a new building is built. */
@@ -1712,7 +1712,11 @@ static void UpdateTownGrowRate(Town *t)
 			return;
 	}
 
-	m >>= (_patches.town_growth_rate - 1);
+	/* Use the normal growth rate values if new buildings have been funded in
+	 * this town and the growth rate is set to none. */
+	uint growth_multiplier = _patches.town_growth_rate != 0 ? _patches.town_growth_rate - 1 : 1;
+
+	m >>= growth_multiplier;
 	if (_patches.larger_towns != 0 && (t->index % _patches.larger_towns) == 0) m /= 2;
 
 	t->growth_rate = m / (t->num_houses / 50 + 1);
