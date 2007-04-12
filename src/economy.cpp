@@ -1134,6 +1134,23 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	const CargoSpec *cs = GetCargo(cargo_type);
 	byte f;
 
+	/* Use callback to calculate cargo profit, if available */
+	if (HASBIT(cs->callback_mask, CBM_CARGO_PROFIT_CALC)) {
+		uint32 var18 = min(dist, 0xFFFF) | (min(num_pieces, 0xFF) << 16) | (transit_days << 24);
+		uint16 callback = GetCargoCallback(CBID_CARGO_PROFIT_CALC, 0, var18, cs);
+		if (callback != CALLBACK_FAILED) {
+			int result = GB(callback, 0, 14);
+
+			/* Simulate a 15 bit signed value */
+			if (HASBIT(callback, 14)) result = 0x4000 - result;
+
+			/* "The result should be a signed multiplier that gets multiplied
+			 * by the amount of cargo moved and the price factor, then gets
+			 * divided by 8192." */
+			return result * num_pieces * _cargo_payment_rates[cargo_type] / 8192;
+		}
+	}
+
 	/* zero the distance if it's the bank and very short transport. */
 	if (_opt.landscape == LT_TEMPERATE && cs->label == 'VALU' && dist < 10)
 		dist = 0;
