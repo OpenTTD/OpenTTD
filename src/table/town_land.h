@@ -5,17 +5,19 @@
 
 /** Writes the data into the Town Tile Drawing Struct
  * @param s1 The first sprite of the building, mostly the ground sprite
+ * @param p1 The first sprite's palette of the building, mostly the ground sprite
  * @param s2 The second sprite of the building.
+ * @param p2 The second sprite's palette of the building.
  * @param sx The x-position of the sprite within the tile
- * @param xy the y-position of the sprite within the tile
+ * @param sy the y-position of the sprite within the tile
  * @param w the width of the sprite
  * @param h the height of the sprite
  * @param dz the virtual height of the sprite
- * @param p set to 1 if a lift is present
- * @see DrawTownTileStruct
- */
+ * @param p set to 1 if a lift is present ()
+ * @see DrawBuildingsTileStruct */
 #define M(s1, p1, s2, p2, sx, sy, w, h, dz, p) { { s1, p1 }, { s2, p2 }, sx, sy, w - 1, h - 1, dz, p}
 
+/** structure of houses graphics*/
 static const DrawBuildingsTileStruct _town_draw_tile_data[] = {
 	M( 0xf54, PAL_NONE,  0x58d, PAL_NONE,  0,  0, 14, 14,   8, 0),
 	M( 0xf54, PAL_NONE,  0x58e, PAL_NONE,  0,  0, 14, 14,  60, 0),
