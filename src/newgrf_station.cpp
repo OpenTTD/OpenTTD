@@ -409,12 +409,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0x49: return GetPlatformInfoHelper(tile, false, true, false);
 
 		/* Variables which use the parameter */
-		case 0x60: return GB(st->goods[parameter].waiting_acceptance, 0, 12);
-		case 0x61: return st->goods[parameter].days_since_pickup;
-		case 0x62: return st->goods[parameter].rating;
-		case 0x63: return st->goods[parameter].enroute_time;
-		case 0x64: return st->goods[parameter].last_speed | (st->goods[parameter].last_age << 8);
-		case 0x65: return GB(st->goods[parameter].waiting_acceptance, 12, 4);
+		/* Variables 0x60 to 0x65 are handled separately below */
 
 		/* General station properties */
 		case 0x82: return 50;
@@ -428,6 +423,23 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0xF6: return st->airport_flags;
 		case 0xF7: return GB(st->airport_flags, 8, 8);
 		case 0xFA: return max(st->build_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0);
+	}
+
+	/* Handle cargo variables with parameter, 0x60 to 0x65 */
+	if (variable >= 0x60 && variable <= 0x65) {
+		CargoID c = GetCargoTranslation(parameter, object->u.station.statspec->grffile);
+
+		if (c == CT_INVALID) return 0;
+		const GoodsEntry *ge = &st->goods[c];
+
+		switch (variable) {
+			case 0x60: return GB(ge->waiting_acceptance, 0, 12);
+			case 0x61: return ge->days_since_pickup;
+			case 0x62: return ge->rating;
+			case 0x63: return ge->enroute_time;
+			case 0x64: return ge->last_speed | (ge->last_age << 8);
+			case 0x65: return GB(ge->waiting_acceptance, 12, 4);
+		}
 	}
 
 	/* Handle cargo variables (deprecated) */

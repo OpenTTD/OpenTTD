@@ -94,3 +94,17 @@ uint16 GetCargoCallback(uint16 callback, uint32 param1, uint32 param2, const Car
 
 	return group->g.callback.result;
 }
+
+
+CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile)
+{
+	/* Pre-version 7 uses the 'climate dependent' ID, i.e. cargo is the cargo ID */
+	if (grffile->grf_version < 7) return HASBIT(_cargo_mask, cargo) ? cargo : (CargoID) CT_INVALID;
+
+	/* If the GRF contains a translation table (and the cargo is in bounds)
+	 * then get the cargo ID for the label */
+	if (cargo < grffile->cargo_max) return GetCargoIDByLabel(grffile->cargo_list[cargo]);
+
+	/* Else the cargo value is a 'climate independent' 'bitnum' */
+	return GetCargoIDByBitnum(cargo);
+}

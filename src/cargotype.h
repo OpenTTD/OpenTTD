@@ -58,6 +58,7 @@ void SetupCargoForClimate(LandscapeID l);
 const CargoSpec *GetCargo(CargoID c);
 /* Get the cargo ID with the cargo label */
 CargoID GetCargoIDByLabel(CargoLabel cl);
+CargoID GetCargoIDByBitnum(uint8 bitnum);
 
 static inline bool IsCargoInClass(CargoID c, uint16 cc)
 {

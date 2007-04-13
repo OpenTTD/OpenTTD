@@ -71,3 +71,21 @@ CargoID GetCargoIDByLabel(CargoLabel cl)
 	/* No matching label was found, so it is invalid */
 	return CT_INVALID;
 }
+
+
+/** Find the CargoID of a 'bitnum' value.
+ * @param bitnum 'bitnum' to find.
+ * @return First CargoID with the given bitnum, or CT_INVALID if not found.
+ */
+CargoID GetCargoIDByBitnum(uint8 bitnum)
+{
+	if (bitnum == INVALID_CARGO) return CT_INVALID;
+
+	for (CargoID c = 0; c < lengthof(_cargo); c++) {
+		if (_cargo[c].bitnum == bitnum) return c;
+	}
+
+	/* No matching label was found, so it is invalid */
+	return CT_INVALID;
+}
+
