@@ -1403,8 +1403,25 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 			break;
 
 		case 0x1E: // Accepted cargo types
-			FOR_EACH_OBJECT grf_load_dword(&buf);
-			ret = true;
+			FOR_EACH_OBJECT {
+				uint32 cargotypes = grf_load_dword(&buf);
+
+				/* Check if the cargo types should not be changed */
+				if (cargotypes == 0xFFFFFFFF) break;
+
+				for (uint j = 0; j < 3; j++) {
+					/* Get the cargo number from the 'list' */
+					uint8 cargo_part = GB(cargotypes, 8 * j, 8);
+					CargoID cargo = GetCargoTranslation(cargo_part, _cur_grffile);
+
+					if (cargo == CT_INVALID) {
+						/* Disable acceptance of invalid cargo type */
+						housespec[i]->cargo_acceptance[j] = 0;
+					} else {
+						housespec[i]->accepts_cargo[j] = cargo;
+					}
+				}
+			}
 			break;
 
 		default:
