@@ -802,6 +802,7 @@ STR_02DD_SUBSIDIES                                              :Subventioner
 STR_02DE_MAP_OF_WORLD                                           :Världskarta
 STR_EXTRA_VIEW_PORT                                             :Nytt vyfönster
 STR_SIGN_LIST                                                   :Skyltlista
+STR_TRANSPARENCY_OPTIONS                                        :Genomskinlighetsinställningar
 STR_02DF_TOWN_DIRECTORY                                         :Stadslista
 STR_TOWN_POPULATION                                             :{BLACK}Världsbefolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vyfönster {COMMA}
@@ -1134,6 +1135,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centrerad
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Höger
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Fönstersnäppsradie: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fönstersnäppsradie: {ORANGE}avaktiverad
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Stadens tillväxthastighet: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ingen
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Långsamt
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normalt
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Snabbt
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Väldigt snabbt
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}1 av {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}Inga
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Gränssnitt
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruktion
@@ -3012,6 +3021,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagnbort
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gör så att automatiskt utbytning behåller ett tågs längd genom att ta bort vagnar (med början längst fram) om utbytandet av loket skulle göra tåget längre.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersätter: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTIELL FEATURE {}Välj mellan lok och vagn ersättnings-fönster.{}Vagns-ersättning kommer endast ske om den nya vagnen kan bli omrustad till att bära samma typ av last som den gamla. Detta kollas för varje vagn när den faktiska ersättningen sker
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Fordonet är ej tillgängligt
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Fordonet är ej tillgängligt
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Fartyget är ej tillgängligt
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Flygplanet är ej tillgängligt
 
 STR_ENGINES                                                     :Lok
 STR_WAGONS                                                      :Vagnar
@@ -3148,3 +3161,14 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Överföringingskredit: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...detta är en stadsägd väg
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...vägen pekar i fel riktning
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Genomskinlighetsinställningar
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Växla genomskinlighet för stationsskyltar
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Växla genomskinlighet för träd
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Växla genomskinlighet för byggnader
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Växla genomskinlighet för industrier
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Växla genomskinlighet för byggnader såsom stationer, depåer, riktmärken eller kedjelinje
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Växla genomskinlighet för industrier
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner, kanske i framtiden även ögongodis
