@@ -2820,7 +2820,9 @@ static const SaveLoad _station_speclist_desc[] = {
 static void SaveLoad_STNS(Station *st)
 {
 	SlObject(st, _station_desc);
-	for (CargoID i = 0; i < NUM_CARGO; i++) {
+
+	uint num_cargo = CheckSavegameVersion(55) ? 12 : NUM_CARGO;
+	for (CargoID i = 0; i < num_cargo; i++) {
 		SlObject(&st->goods[i], _goods_desc);
 	}
 

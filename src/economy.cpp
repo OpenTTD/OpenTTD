@@ -1826,8 +1826,9 @@ static void SaveLoad_PRIC()
 /** Cargo payment rates */
 static void SaveLoad_CAPR()
 {
-	SlArray(&_cargo_payment_rates,      NUM_CARGO, SLE_INT32);
-	SlArray(&_cargo_payment_rates_frac, NUM_CARGO, SLE_UINT16);
+	uint num_cargo = CheckSavegameVersion(55) ? 12 : NUM_CARGO;
+	SlArray(&_cargo_payment_rates,      num_cargo, SLE_INT32);
+	SlArray(&_cargo_payment_rates_frac, num_cargo, SLE_UINT16);
 }
 
 static const SaveLoad _economy_desc[] = {

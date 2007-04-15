@@ -26,7 +26,7 @@ static uint _legend_excluded_cargo;
 /************************/
 
 enum {
-	GRAPH_MAX_DATASETS = 16,
+	GRAPH_MAX_DATASETS = 32,
 	GRAPH_AXIS_LABEL_COLOUR = 16,
 	GRAPH_AXIS_LINE_COLOUR  = 215,
 

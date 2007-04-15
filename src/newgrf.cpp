@@ -4108,7 +4108,7 @@ static void InitializeGRFSpecial()
 	                   |                                        (0 << 0x08)  // fifoloading
 	                   |                                        (0 << 0x09)  // townroadbranchprob
 	                   |                                        (0 << 0x0A)  // tempsnowline
-	                   |                                        (0 << 0x0B)  // newcargo
+	                   |                                        (1 << 0x0B)  // newcargo
 	                   |                                        (1 << 0x0C)  // enhancemultiplayer
 	                   |                                        (1 << 0x0D)  // onewayroads
 	                   |   ((_patches.nonuniform_stations ? 1 : 0) << 0x0E)  // irregularstations
