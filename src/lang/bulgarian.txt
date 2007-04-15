@@ -1137,6 +1137,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Център
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Дясно
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Прилепване на прозорците: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилепване на прозорците: {ORANGE}изключено
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Скорост на разтеж на града: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Никаква
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Бавна
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Нормална
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Бърза
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Много бърза
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}1 в {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}Нито един
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Интерфейс
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Строене

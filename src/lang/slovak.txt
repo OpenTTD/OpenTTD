@@ -1199,6 +1199,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :V strede
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Napravo
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Vzdialenost pre prichytenie okna: {ORANGE}{STRING} bodov
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vzdialenost pre prichytenie okna: {ORANGE}vypnute
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Rozvoj miest: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Žiadny
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Pomalý
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normálny
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rýchly
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Velmi rýchly
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Pomer miest, ktoré budú rást 2x rýchlejšie: {ORANGE}1 v {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Pomer miest, ktoré budú rást 2x rýchlejšie: {ORANGE}Žiadny
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Rozhranie
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Vystavba

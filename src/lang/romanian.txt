@@ -1135,6 +1135,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :centru
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :dreapta
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Distanta de 'snap' pentru ferestre: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Distanta de 'snap' pentru ferestre: {ORANGE}dezactivata
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Viteza de dezvoltare a orasului: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Deloc
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lenta
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normala
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rapida
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Foarte rapida
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proportia oraselor care se vor dezvolta de doua ori mai repede: {ORANGE}1 in {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportia oraselor care se vor dezvolta de doua ori mai repede: {ORANGE}None
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfatã
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Constructie

@@ -1135,6 +1135,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :中
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :右
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}視窗自動黏貼範圍: {ORANGE}{STRING} 像素
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}視窗自動黏貼範圍: {ORANGE}關閉
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}城市增長速度： {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :不會增長
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :慢
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :正常
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :快
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :非常快
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}雙倍速增長城市比例： {ORANGE}{STRING} 分之一
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}雙倍速增長城市比例： {ORANGE}沒有
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}介面
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}建築

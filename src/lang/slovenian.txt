@@ -1177,6 +1177,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Sredina
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Desno
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Radij lepljenja oken: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radij lepljenja oken: {ORANGE}onemogočeno
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Hitrost rasti mesta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Brez
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Počasi
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normalno
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Hitro
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Zelo hitro
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Razmerje mest, ki bodo rastla z dvakratno hitrostjo: {ORANGE}1 v {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Razmerje mest, ki bodo rastla z dvakratno hitrostjo: {ORANGE}Brez
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Vmesnik
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Gradnja

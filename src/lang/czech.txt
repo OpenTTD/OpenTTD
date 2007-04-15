@@ -1193,6 +1193,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :uprostřed
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :vpravo
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Okno se přichytí k druhému, když je blíž než: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Okno se přichytí k druhému, když je blíž než: {ORANGE}vypnuto
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Rychlost růstu měst: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :nulová
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :pomalá
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :normální
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :rychlá
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :velmi rychlá
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Podíl měst, které budou růst dvakrát tak rychle: {ORANGE}1 z {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Podíl měst, které budou růst dvakrát tak rychle: {ORANGE}žádné
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Ovládaní
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Výstavba

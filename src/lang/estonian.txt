@@ -902,6 +902,7 @@ STR_02DD_SUBSIDIES                                              :Toetused
 STR_02DE_MAP_OF_WORLD                                           :Maailmakaart
 STR_EXTRA_VIEW_PORT                                             :Lisa vaateaken
 STR_SIGN_LIST                                                   :Siltide nimekiri
+STR_TRANSPARENCY_OPTIONS                                        :Läbipaistvuse valikud
 STR_02DF_TOWN_DIRECTORY                                         :Linnade nimistu
 STR_TOWN_POPULATION                                             :{BLACK}Maailma rahvastik: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vaateaken {COMMA}
@@ -1234,6 +1235,12 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Keskel
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Paremal
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Akna haaramise raadius: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Akna haaramise raadius: {ORANGE}välja lülitatud
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Linna suurenemise kiirus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Pole
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Aeglane
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normaalne
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Kiire
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Väga Kiire
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Välimus
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Ehitamine
@@ -3252,3 +3259,5 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Kanna Raha: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...see tee on omatud linna poolt
+

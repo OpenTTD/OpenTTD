@@ -1135,6 +1135,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Center
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Højre
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}slået fra
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Byvækst tempo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ingen
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Langsom
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Hurtig
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Meget hurtig
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel af byer der vil vokse dobbelt så hurtigt: {ORANGE}1 af {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel af byer der vil vokse dobbelt så hurtigt: {ORANGE}Ingen
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Brugerflade
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruktion

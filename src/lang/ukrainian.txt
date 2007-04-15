@@ -1261,6 +1261,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :По центр
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Праворуч
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Радіус прилипання вікон: {ORANGE}{STRING} пікс.
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилипання вікон {ORANGE}вимкнено
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Швидкість росту міста: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :не росте
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :повільна
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :нормальна
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :швидка
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :дуже швидка
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Кількість міст, які будуть рости вдвічі швидше: {ORANGE}1 з {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Кількість міст, які будуть рости вдвічі швидше: {ORANGE}нема
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Вигляд
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Споруди

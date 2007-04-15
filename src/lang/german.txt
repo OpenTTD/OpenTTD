@@ -1092,6 +1092,7 @@ STR_CONFIG_PATCHES_LIVERIES_NONE                                :Keine
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eigene Firma
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle Firmen
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Bevorzuge Teamchat mit <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funktion des Scrollrads: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Karte vergrößern
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Kartenansicht verschieben
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Aus
@@ -1134,6 +1135,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Mitte
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Rechts
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Fenster schnappen aneinander, wenn näher als: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fenster schnappen aneinander, wenn näher als: {ORANGE}ausgeschaltet
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Stadtwachstumgeschwindigkeit: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Keins
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Langsam
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Schnell
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Sehr schnell
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Anteil der Städte die doppelt so schnell wachsen: {ORANGE}1 in {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Anteil der Städte die doppelt so schnell wachsen: {ORANGE}Keine
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Oberfläche
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruktion
@@ -2914,6 +2923,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} Ist er
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Falscher Parameter für {STRING}: Parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} Muß vor {STRING} geladen werden.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} Muß nach {STRING} geladen werden.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Die GRF Datei, die zur Übersetzung erstellt wurde
 
 STR_NEWGRF_ADD                                                  :{BLACK}Hinzufügen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Füge eine neue NewGRF Datei zu Liste hinzu
@@ -3153,3 +3163,11 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Überweise Geld: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...diese Straße ist in kommunaler Trägerschaft
 
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparenzoptionen
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Verändere die Transparenz für Stationsschilder
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Verändere die Transparenz für Bäume
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Verändere die Transparenz für Häuser
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Verändere die Transparenz für Industrien
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Verändere die Transparenz für Gebäude wie Bahnhöfe, Depots, Wegpunkte und Oberleitung
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Verändere die Transparenz für Brücken
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Verändere die Transparenz für Bauten wie Leuchttürme und Antennen, evtl. in der Zukunft auch für Sehenswürdigkeiten

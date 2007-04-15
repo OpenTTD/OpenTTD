@@ -802,7 +802,7 @@ STR_02DD_SUBSIDIES                                              :助成金
 STR_02DE_MAP_OF_WORLD                                           :世界の地図
 STR_EXTRA_VIEW_PORT                                             :特別ビューア
 STR_SIGN_LIST                                                   :標示のリスト
-STR_TRANSPARENCY_OPTIONS                                        :透明性の設定
+STR_TRANSPARENCY_OPTIONS                                        :半透明設定
 STR_02DF_TOWN_DIRECTORY                                         :市町村のリスト
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}人
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビューア {COMMA}
@@ -2915,6 +2915,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING}を使�
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING}のパラメータが不正：パラメータ　{STRING}（{NUM}）
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}を読み込む前、{0:STRING}を読み込まなければなりません。
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING}は{STRING}の読み込み後のみに読み込めます。
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :訳しにデザインされたGRFファイル
 
 STR_NEWGRF_ADD                                                  :{BLACK}追加
 STR_NEWGRF_ADD_TIP                                              :{BLACK}NewGRFファイルをリストに追加します
@@ -3012,6 +3013,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}列車�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}自動交換によって列車の長さが長くなる場合は、列車の長さを保守するには客車／貨車を取り除くことができます。列車の先頭から開始します。
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}交換：{ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}実験的機能{}機関車／貨車のウィンドウに切り替えます。{}貨車交換は新貨車が旧貨車と同様の貨物種類に再装備できるときのみに行います。自動交換中に各貨車を検査します。
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}車を買えません
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}車を買えません
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}船を買えません
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}飛行機を買えません
 
 STR_ENGINES                                                     :機関車
 STR_WAGONS                                                      :貨車
@@ -3147,11 +3152,12 @@ STR_DATE_LONG                                                   :{2:NUM}年{1:ST
 
 ########
 
-STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...町有の道路だからです
-STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...道路の配置に合わせません
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}振り替えクレジット: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...これは町の道です。
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...道の方向は違いです。
 
-STR_TRANSPARENCY_TOOLB                                          :{WHITE}透明性の設定
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}駅名の透明性を入／切
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}半透明設定
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK} 駅のサインには半透明をスイッチ
 STR_TRANSPARENT_TREES_DESC                                      :{BLACK}木の透明性を入／切
 STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}市町村の建物の透明性を入／切
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}工業の透明性を入／切

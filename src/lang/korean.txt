@@ -1136,6 +1136,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :가운데
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :오른쪽
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}윈도우 자동 결합(가까이 옮기면 자석처럼 붙는 기능) : {ORANGE}{STRING} 픽셀
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}윈도우 자동 결합 : {ORANGE}사용불가
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}마을 성장 속도: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :없음
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :느림
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :보통
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :빠름
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :매우 빠름
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}2배 빠르게 성장하는 마을의 비율: {ORANGE}1 대 {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}2배 빠르게 성장하는 마을의 비율: {ORANGE}없음
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}인터페이스
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}건설

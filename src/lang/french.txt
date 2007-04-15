@@ -1136,6 +1136,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centrée
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :À droite
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Rayon d'attraction des fenêtres : {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Rayon d'attraction des fenêtres : {ORANGE}inactif
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Vitesse de croissance des villes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Aucune
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lente
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normale
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rapide
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Très rapide
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proportion des villes qui vont croitre deux fois plus vite: {ORANGE}1 sur {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportion des villes qui vont croitre deux fois plus vite: {ORANGE}Aucune
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construction

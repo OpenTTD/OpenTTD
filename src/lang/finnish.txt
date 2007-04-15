@@ -1135,6 +1135,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :keskellä
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :oikea
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}{STRING} piks.
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}pois päältä
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Kaupunkien kasvunopeus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ei kasvua
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Hidas
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Tavallinen
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Nopea
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Erittäin nopea
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Kaksinkertaisella nopeudella kasvavien kaupunkien osuus: {ORANGE}1/{STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Kaksinkertaisella nopeudella kasvavien kaupunkien osuus: {ORANGE}0
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Käyttöliittymä
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Rakentaminen
