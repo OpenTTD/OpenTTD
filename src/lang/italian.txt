@@ -1021,11 +1021,11 @@ STR_CONFIG_PATCHES_ON                                           :Si
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostra velocità veicoli sulla barra di stato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Consenti la costruzione sui pendii e coste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Consenti aree di copertura più realistiche: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione di più strade, ponti, etc. delle città: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione di strade, ponti, etc. delle città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Abilita accelerazione realistica per i treni: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Impredisci a treni e navi di curvare a 90°: {ORANGE}{STRING} {LTBLUE} (richiede NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unisci le stazioni ferroviari costruite una accanto all'altra: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Impedisci a treni e navi di curvare a 90°: {ORANGE}{STRING} {LTBLUE} (richiede NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unisci le stazioni ferroviarie costruite una accanto all'altra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Lascia stazione quando una qualsiasi merce è a pieno carico: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usa l'algoritmo di caricamento migliorato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Carica i veicoli gradualmente: {ORANGE}{STRING}
@@ -1035,7 +1035,7 @@ STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Consent
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Consenti gli ordini 'Vai al deposito': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Consenti la costruzione di industrie primarie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Consenti più industrie dello stesso tipo nella stessa città: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Consenti la costruzione di industrie uguali anche se molto vicine: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Consenti la costruzione di industrie uguali anche molto vicine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostra sempre la data lunga nella barra di stato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Mostra i segnali sul lato di guida: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Mostra la finestra delle finanze alla fine dell'anno: {ORANGE}{STRING}
@@ -1083,7 +1083,7 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antioraria
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Oraria
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Altitudine delle mappe pianeggiante: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max estensione stazioni: {ORANGE}{STRING} {RED}Attenzione: valori alti rallentano il gioco
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max estensione stazioni: {ORANGE}{STRING} {RED}Nota: Valori alti rallentano il gioco
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutieni automaticamente gli elicotteri presso gli eliporti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Apri strumenti terreno assieme a quelli di costruzione: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inverti direzione di scorrimento della mappa: {ORANGE}{STRING}
@@ -1112,14 +1112,14 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disabil
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Abilita la nuova IA (alpha): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permetti le IA nelle partite multigiocatore (sperimentale): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervallo manutenzione predefinito per i treni: {ORANGE}{STRING} giorni/%
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervallo manutenzione predefinito per i treni: {ORANGE}Disabilitato
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Intervallo manutenzione predefinito per gli automezzi: {ORANGE}{STRING} giorni/%
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Intervallo manutenzione predefinito per gli automezzi: {ORANGE}Disabilitato
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Intervallo manutenzione predefinito per gli aeromobili: {ORANGE}{STRING} giorni/%
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervallo manutenzione predefinito per gli aeromobili: {ORANGE}Disabilitato
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervallo manutenzione predefinito per le navi: {ORANGE}{STRING} giorni/%
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervallo manutenzione predefinito per le navi: {ORANGE}Disabilitato
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervallo manutenzione predefinito treni: {ORANGE}{STRING} giorni/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervallo manutenzione predefinito treni: {ORANGE}Disabilitato
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Intervallo manutenzione predefinito automezzi: {ORANGE}{STRING} giorni/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Intervallo manutenzione predefinito automezzi: {ORANGE}Disabilitato
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Intervallo manutenzione predefinito aeromobili: {ORANGE}{STRING} giorni/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervallo manutenzione predefinito aeromobili: {ORANGE}Disabilitato
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervallo manutenzione predefinito navi: {ORANGE}{STRING} giorni/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervallo manutenzione predefinito navi: {ORANGE}Disabilitato
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disabilita manutenzione con i guasti veicoli disattivati: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Abilita limiti di velocità dei vagoni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Disabilita ferrovie elettrificate: {ORANGE}{STRING}
@@ -1157,7 +1157,7 @@ STR_CONFIG_PATCHES_DISABLED                                     :disabilitato
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
-STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Cambia valore impostazione
+STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Cambia impostazione
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alcuni degli intervalli sottostanti sono incompatibili con l'impostazione scelta! Valori ammessi: 5-90% e 30-800 giorni
 STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Usa YAPF per le navi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Usa YAPF per gli automezzi: {ORANGE}{STRING}
@@ -1613,7 +1613,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
-STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}L'edificio dele essere demolito prima
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}L'edificio deve essere demolito prima
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Popolazione: {ORANGE}{COMMA}{BLACK}  Case: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Rinomina città
@@ -1651,13 +1651,13 @@ STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Sussidi 
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} da {STRING} a {STRING}
 STR_2028_BY                                                     :{YELLOW} (entro {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nessuno
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Servizi già sussidiati:
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Servizi già sovvenzionati:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} da {STATION} a {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, fino al {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offerta di sussidio scaduta:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non darà più diritto a sovvenzioni.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Sussidio terminato:{}{}servizio di {STRING} da {STATION} a {STATION} non è più sovvenzionato.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Offerta di sussidio:{}{}Primo servizio di {STRING} da {STRING} a {STRING} riceverà un'anno di sussidio dall'autorità locale!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sussidio aggiudicato da {COMPANY}!{}{}servizio di {STRING} da {STATION} a {STATION} verrà pagato il 50% in più per il prossimo anno!
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Sussidio terminato:{}{}Il trasporto di {STRING} da {STATION} a {STATION} non è più sovvenzionato.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Offerta di sussidio:{}{}Il primo servizio di {STRING} da {STRING} a {STRING} riceverà un'anno di sovvenzioni dall'autorità locale!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sussidio aggiudicato alla {COMPANY}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il 50% in più per il prossimo anno!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sussidio aggiudicato alla {COMPANY}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il doppio per il prossimo anno!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sussidio aggiudicato alla {COMPANY}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il triplo per il prossimo anno!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sussidio aggiudicato alla {COMPANY}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il quadruplo per il prossimo anno!
@@ -2016,10 +2016,10 @@ STR_6804_CUSTOM                                                 :{BLACK}Personal
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Numero max. di avversari: {ORANGE}{COMMA}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Numero massimo di avversari: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Partenza avversari: {ORANGE}{STRING}
-STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Num. di città: {ORANGE}{STRING}
-STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Num. di industrie: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Numero di città: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Numero di industrie: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Prestito massimo iniziale: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Tasso d'interesse iniziale: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Costi d'esercizio dei veicoli: {ORANGE}{STRING.mp}
@@ -2048,25 +2048,9 @@ STR_681D_MEDIUM                                                 :Media
 STR_681E_FAST                                                   :Veloce
 STR_681F_VERY_FAST                                              :Molto veloce
 STR_VERY_LOW                                                    :Molto basso
-STR_VERY_LOW.ms                                                 :Molto basso
-STR_VERY_LOW.mp                                                 :Molto bassi
-STR_VERY_LOW.fs                                                 :Molto bassa
-STR_VERY_LOW.fp                                                 :Molto basse
 STR_6820_LOW                                                    :Basso
-STR_6820_LOW.ms                                                 :Basso
-STR_6820_LOW.mp                                                 :Bassi
-STR_6820_LOW.fs                                                 :Bassa
-STR_6820_LOW.fp                                                 :Basse
 STR_6821_MEDIUM                                                 :Medio
-STR_6821_MEDIUM.ms                                              :Medio
-STR_6821_MEDIUM.mp                                              :Medi
-STR_6821_MEDIUM.fs                                              :Media
-STR_6821_MEDIUM.fp                                              :Medie
 STR_6822_HIGH                                                   :Alto
-STR_6822_HIGH.ms                                                :Alto
-STR_6822_HIGH.mp                                                :Alti
-STR_6822_HIGH.fs                                                :Alta
-STR_6822_HIGH.fp                                                :Alte
 STR_6823_NONE                                                   :Nessuno
 STR_6824_REDUCED                                                :Ridotti
 STR_6825_NORMAL                                                 :Normali
@@ -2185,7 +2169,7 @@ STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Stiamo cercando una compagnia di trasporti disposta a rilevare la nostra società.{}{} Vorrebbe acquistare la {COMPANY} per {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bancarotta!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}La {COMPANY} è stata chiusa dai creditori e tutti i suoi beni sono stati venduti!
-STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Lanciata nuova compagnia di trasporti!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nuova compagnia di trasporti!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}La {COMPANY} inizia a costruire vicino a {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Impossibile comprare la compagnia...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Tariffe di pagamento merci
@@ -2219,8 +2203,8 @@ STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Compra i
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vendi il 25% delle azioni
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Compra il 25% delle azioni di questa compagnia
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vende il 25% delle azioni di questa compagnia
-STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Impossibile comprare il 25% delle azioni di questa compagnia...
-STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Impossibile vendere il 25% delle azioni di questa compagnia...
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Impossibile comprare il 25% delle azioni...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Impossibile vendere il 25% delle azioni...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% posseduto dalla {COMPANY})
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% posseduto dalla {COMPANY}{}   {COMMA}% posseduto dalla {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}La {COMPANY} è stata rilevata dalla {COMPANY}!

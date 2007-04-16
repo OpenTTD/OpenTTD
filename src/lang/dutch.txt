@@ -1135,6 +1135,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Midden
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Rechts
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Vaste plaats venster radius: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vaste plaats venster radius: {ORANGE}uit
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Groeisnelheid steden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Niet
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Langzaam
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normaal
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Snel
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Heel snel
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Verhouding van steden die twee keer zo snel groeien: {ORANGE}1 in {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Verhouding van steden die twee keer zo snel groeien: {ORANGE}Niet
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Constructie

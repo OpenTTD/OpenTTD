@@ -1241,6 +1241,8 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Aeglane
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normaalne
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Kiire
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Väga Kiire
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Topeltkiirusel suurenevaid linnu: {ORANGE}1 iga {STRING} linna kohta
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Topeltkiirusel suurenevaid linnu: {ORANGE}puudub
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Välimus
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Ehitamine
@@ -3260,4 +3262,13 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Kanna Raha: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...see tee on omatud linna poolt
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...tee on vales suunas
 
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Läbipaistvusvalikud
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Vaheta jaamamärkide läbipaistvust
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Vaheta puude läbipaistvust
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Vaheta majade läbipaistvust
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Vaheta tööstusehitiste läbipaistvust
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Vaheta läbipaistvust ehitistel nagu: jaamad, depood, vahepunktid ja elektriliinid
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Vaheta sildade läbipaistvust
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Vaheta läbipaistvust objektidel, nagu: majakad, antennid ja võimalik, et tulevikus ka silmailu
