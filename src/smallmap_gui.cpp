@@ -49,12 +49,24 @@ static const Widget _smallmap_widgets[] = {
 static int _smallmap_type;
 static bool _smallmap_show_towns = true;
 
-#define MK(a,b) a, b
-#define MKEND() 0xFFFF
-#define MS(a,b) (a | 0x100), b
+/** Macro for ordinary entry of LegendAndColor */
+#define MK(a,b) {a, b, false, false}
+/** Macro for end of list marker in arrays of LegendAndColor */
+#define MKEND() {0, STR_NULL, false, true}
+/** Macro for break marker in arrays of LegendAndColor.
+ * It will have valid data, though */
+#define MS(a,b) {a, b, true, false}
 
-/* Legend text giving the colours to look for on the minimap */
-static const uint16 _legend_land_contours[] = {
+/** Structure for holding relevant data for legends in small map */
+struct LegendAndColour {
+	uint16 colour;     ///< color of the item on the map
+	StringID legend;   ///< string corresponding to the colored item
+	bool end;         ///< this is the end of the list
+	bool col_break;   ///< perform a break and go one collumn further
+};
+
+/** Legend text giving the colours to look for on the minimap */
+static const LegendAndColour _legend_land_contours[] = {
 	MK(0x5A, STR_00F0_100M),
 	MK(0x5C, STR_00F1_200M),
 	MK(0x5E, STR_00F2_300M),
@@ -69,7 +81,7 @@ static const uint16 _legend_land_contours[] = {
 	MKEND()
 };
 
-static const uint16 _legend_vehicles[] = {
+static const LegendAndColour _legend_vehicles[] = {
 	MK(0xB8, STR_00F5_TRAINS),
 	MK(0xBF, STR_00F6_ROAD_VEHICLES),
 	MK(0x98, STR_00F7_SHIPS),
@@ -79,7 +91,7 @@ static const uint16 _legend_vehicles[] = {
 	MKEND()
 };
 
-static const uint16 _legend_industries_normal[] = {
+static const LegendAndColour _legend_industries_normal[] = {
 	MK(0xD7, STR_00FA_COAL_MINE),
 	MK(0xB8, STR_00FB_POWER_STATION),
 	MK(0x56, STR_00FC_FOREST),
@@ -95,7 +107,7 @@ static const uint16 _legend_industries_normal[] = {
 	MKEND()
 };
 
-static const uint16 _legend_industries_hilly[] = {
+static const LegendAndColour _legend_industries_hilly[] = {
 	MK(0xD7, STR_00FA_COAL_MINE),
 	MK(0xB8, STR_00FB_POWER_STATION),
 	MK(0x56, STR_00FC_FOREST),
@@ -111,7 +123,7 @@ static const uint16 _legend_industries_hilly[] = {
 	MKEND()
 };
 
-static const uint16 _legend_industries_desert[] = {
+static const LegendAndColour _legend_industries_desert[] = {
 	MK(0xBF, STR_00FE_OIL_REFINERY),
 	MK(0x98, STR_0102_OIL_WELLS),
 	MK(0x0F, STR_0105_BANK),
@@ -129,7 +141,7 @@ static const uint16 _legend_industries_desert[] = {
 	MKEND()
 };
 
-static const uint16 _legend_industries_candy[] = {
+static const LegendAndColour _legend_industries_candy[] = {
 	MK(0x30, STR_0110_COTTON_CANDY_FOREST),
 	MK(0xAE, STR_0111_CANDY_FACTORY),
 	MK(0x27, STR_0112_BATTERY_FARM),
@@ -145,7 +157,7 @@ static const uint16 _legend_industries_candy[] = {
 	MKEND()
 };
 
-static const uint16 _legend_routes[] = {
+static const LegendAndColour _legend_routes[] = {
 	MK(0xD7, STR_00EB_ROADS),
 	MK(0x0A, STR_00EC_RAILROADS),
 	MK(0xB5, STR_00EE_BUILDINGS_INDUSTRIES),
@@ -158,7 +170,7 @@ static const uint16 _legend_routes[] = {
 	MKEND()
 };
 
-static const uint16 _legend_vegetation[] = {
+static const LegendAndColour _legend_vegetation[] = {
 	MK(0x52, STR_0120_ROUGH_LAND),
 	MK(0x54, STR_0121_GRASS_LAND),
 	MK(0x37, STR_0122_BARE_LAND),
@@ -174,7 +186,7 @@ static const uint16 _legend_vegetation[] = {
 	MKEND()
 };
 
-static const uint16 _legend_land_owners[] = {
+static const LegendAndColour _legend_land_owners[] = {
 	MK(0xCA, STR_0126_WATER),
 	MK(0x54, STR_0127_NO_OWNER),
 	MK(0xB4, STR_0128_TOWNS),
@@ -186,8 +198,9 @@ static const uint16 _legend_land_owners[] = {
 #undef MKEND
 
 
-enum { IND_OFFS = 6 };
-static const uint16 * const _legend_table[] = {
+enum { IND_OFFS = 6 };  ///< allow to "jump" to the industries corresponding to the landscape
+
+static const LegendAndColour * const _legend_table[] = {
 	_legend_land_contours,
 	_legend_vehicles,
 	NULL,
@@ -779,7 +792,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT: {
-			const uint16 *tbl;
+			LegendAndColour *tbl;
 			int x, y, y_org;
 			DrawPixelInfo new_dpi;
 
@@ -794,15 +807,16 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			y = y_org;
 			for (;;) {
 				GfxFillRect(x,     y + 1, x + 8, y + 5, 0);
-				GfxFillRect(x + 1, y + 2, x + 7, y + 4, (byte)tbl[0]);
-				DrawString(x + 11, y, tbl[1], 0);
+				GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour);
+				DrawString(x + 11, y, tbl->legend, 0);
 
-				tbl += 2;
+				tbl += 1;
 				y += 6;
 
-				if (tbl[0] == 0xFFFF) {
+				if (tbl->end) { // end of the list
 					break;
-				} else if (tbl[0] & 0x100) {
+				} else if (tbl->col_break) {
+					/*  break asked, continue at top, 123 pixels (one "row") to the right */
 					x += 123;
 					y = y_org;
 				}
