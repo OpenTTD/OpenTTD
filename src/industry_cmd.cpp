@@ -1693,6 +1693,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 static void UpdateIndustryStatistics(Industry *i)
 {
 	byte pct;
+	bool refresh = false;
 
 	if (i->produced_cargo[0] != CT_INVALID) {
 		pct = 0;
@@ -1707,6 +1708,7 @@ static void UpdateIndustryStatistics(Industry *i)
 
 		i->total_transported[0] = i->last_mo_transported[0];
 		i->last_mo_transported[0] = 0;
+		refresh = true;
 	}
 
 	if (i->produced_cargo[1] != CT_INVALID) {
@@ -1722,10 +1724,11 @@ static void UpdateIndustryStatistics(Industry *i)
 
 		i->total_transported[1] = i->last_mo_transported[1];
 		i->last_mo_transported[1] = 0;
+		refresh = true;
 	}
 
 
-	if (i->produced_cargo[0] != CT_INVALID || i->produced_cargo[1] != CT_INVALID)
+	if (refresh)
 		InvalidateWindow(WC_INDUSTRY_VIEW, i->index);
 
 	if (i->prod_level == 0) {
