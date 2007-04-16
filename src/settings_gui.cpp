@@ -325,13 +325,6 @@ static const GameSettingData _game_setting_info[] = {
 	{  0,   2,  1, STR_6839_PERMISSIVE},
 };
 
-static inline bool GetBitAndShift(uint32 *b)
-{
-	uint32 x = *b;
-	*b >>= 1;
-	return HASBIT(x, 0);
-}
-
 /*
  * A: competitors
  * B: start time in months / 3
@@ -430,9 +423,9 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 		y = GAMEDIFF_WND_TOP_OFFSET;
 		for (i = 0; i != GAME_DIFFICULTY_NUM; i++) {
-			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, GetBitAndShift(&click_a) ? FR_LOWERED : FR_NONE);
-			DrawFrameRect(15, y, 15 + 8, y + 8, 3, GetBitAndShift(&click_b) ? FR_LOWERED : FR_NONE);
-			if (GetBitAndShift(&disabled) || (_networking && !_network_server)) {
+			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, HASBIT(click_a, i) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(15, y, 15 + 8, y + 8, 3, HASBIT(click_b, i) ? FR_LOWERED : FR_NONE);
+			if (HASBIT(disabled, i) || (_networking && !_network_server)) {
 				int color = (1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[COLOUR_YELLOW][2];
 				GfxFillRect( 6, y + 1,  6 + 8, y + 8, color);
 				GfxFillRect(16, y + 1, 16 + 8, y + 8, color);
