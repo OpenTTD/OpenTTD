@@ -2835,7 +2835,7 @@ static void GraphicsNew(byte *buf, int len)
 	switch (type) {
 		case 0x04: // Signal graphics
 			if (num != 112 && num != 240) {
-				grfmsg(1, "GraphicsNews: Signal graphics sprite count must be 112 or 240, skipping");
+				grfmsg(1, "GraphicsNew: Signal graphics sprite count must be 112 or 240, skipping");
 				return;
 			}
 			_signal_base = _cur_spriteid;
@@ -2843,7 +2843,7 @@ static void GraphicsNew(byte *buf, int len)
 
 		case 0x05: // Catenary graphics
 			if (num != 48) {
-				grfmsg(1, "GraphicsNews: Catenary graphics sprite count must be 48, skipping");
+				grfmsg(1, "GraphicsNew: Catenary graphics sprite count must be 48, skipping");
 				return;
 			}
 			replace = SPR_ELRAIL_BASE + 3;
@@ -2851,7 +2851,7 @@ static void GraphicsNew(byte *buf, int len)
 
 		case 0x06: // Foundations
 			if (num != 74) {
-				grfmsg(1, "GraphicsNews: Foundation graphics sprite count must be 74, skipping");
+				grfmsg(1, "GraphicsNew: Foundation graphics sprite count must be 74, skipping");
 				return;
 			}
 			replace = SPR_SLOPES_BASE;
@@ -2859,18 +2859,42 @@ static void GraphicsNew(byte *buf, int len)
 
 		case 0x08: // Canal graphics
 			if (num != 65) {
-				grfmsg(1, "GraphicsNews: Canal graphics sprite count must be 65, skipping");
+				grfmsg(1, "GraphicsNew: Canal graphics sprite count must be 65, skipping");
 				return;
 			}
 			replace = SPR_CANALS_BASE + 5;
 			break;
 
+		case 0x0A: // 2CC colour maps
+			if (num != 256) {
+				grfmsg(1, "GraphicsNew: 2CC colour maps sprite count must be 256, skipping");
+				return;
+			}
+			replace = SPR_2CCMAP_BASE;
+			break;
+
 		case 0x0D: // Coast graphics
 			if (num != 16) {
-				grfmsg(1, "GraphicsNews: Coast graphics sprite count must be 16, skipping");
+				grfmsg(1, "GraphicsNew: Coast graphics sprite count must be 16, skipping");
 				return;
 			}
 			_coast_base = _cur_spriteid;
+			break;
+
+		case 0x10: // New airport sprites
+			if (num != 15) {
+				grfmsg(1, "GraphicsNew: Airport graphics sprite count must be 8, skipping");
+				return;
+			}
+			replace = SPR_AIRPORTX_BASE;
+			break;
+
+		case 0x11: // Road stop sprites
+			if (num != 8) {
+				grfmsg(1, "GraphicsNew: Road stop graphics sprite count must be 8, skipping");
+				return;
+			}
+			replace = SPR_ROADSTOP_BASE;
 			break;
 
 		default:
