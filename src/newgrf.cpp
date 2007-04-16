@@ -2883,7 +2883,7 @@ static void GraphicsNew(byte *buf, int len)
 
 		case 0x10: // New airport sprites
 			if (num != 15) {
-				grfmsg(1, "GraphicsNew: Airport graphics sprite count must be 8, skipping");
+				grfmsg(1, "GraphicsNew: Airport graphics sprite count must be 15, skipping");
 				return;
 			}
 			replace = SPR_AIRPORTX_BASE;
