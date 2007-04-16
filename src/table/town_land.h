@@ -1781,7 +1781,7 @@ static const DrawBuildingsTileStruct _town_draw_tile_data[] = {
 	M(0x1244, PAL_NONE, 0x125a, PAL_NONE,  0,  0, 16, 16,  50, 0),
 };
 #undef M
-/* 4 variants * 4 build stages */
+/** Make sure we have the right number of elements: 4 variants * 4 build stages for each house */
 assert_compile(lengthof(_town_draw_tile_data) == (NEW_HOUSE_OFFSET) * 4 * 4);
 
 /** Describes the data that defines each house in the game
@@ -1805,6 +1805,7 @@ assert_compile(lengthof(_town_draw_tile_data) == (NEW_HOUSE_OFFSET) * 4 * 4);
 #define MS(mnd, mxd, p, rc, bn, rr, mg, ca1, ca2, ca3, bf, ba, cg1, cg2, cg3) \
 	{mnd, mxd, p, rc, bn, rr, mg, {ca1, ca2, ca3}, {cg1, cg2, cg3}, bf, ba, true, \
 	 0, NULL, 0, 0, {0, 0, 0, 0}, 16, NO_EXTRA_FLAG, HOUSE_NO_CLASS, 0, 2, 0, 0, NULL}
+/** House specifications from original data */
 static const HouseSpec _original_house_specs[] = {
 	/**
 	 *                                                              remove_rating_decrease
@@ -2262,4 +2263,6 @@ static const HouseSpec _original_house_specs[] = {
 	   CT_PASSENGERS, CT_MAIL, CT_FIZZY_DRINKS), //6D
 };
 #undef MS
+
+/** Make sure we have the right number of elements: one entry for each house */
 assert_compile(lengthof(_original_house_specs) == NEW_HOUSE_OFFSET);
