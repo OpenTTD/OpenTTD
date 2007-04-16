@@ -1802,7 +1802,7 @@ assert_compile(lengthof(_town_draw_tile_data) == (NEW_HOUSE_OFFSET) * 4 * 4);
  * @param cg3 3rd CargoID available
  * @see HouseSpec
  */
-#define M(mnd, mxd, p, rc, bn, rr, mg, ca1, ca2, ca3, bf, ba, cg1, cg2, cg3) \
+#define MS(mnd, mxd, p, rc, bn, rr, mg, ca1, ca2, ca3, bf, ba, cg1, cg2, cg3) \
 	{mnd, mxd, p, rc, bn, rr, mg, {ca1, ca2, ca3}, {cg1, cg2, cg3}, bf, ba, true, \
 	 0, NULL, 0, 0, {0, 0, 0, 0}, 16, NO_EXTRA_FLAG, HOUSE_NO_CLASS, 0, 2, 0, 0, NULL}
 static const HouseSpec _original_house_specs[] = {
@@ -1820,446 +1820,446 @@ static const HouseSpec _original_house_specs[] = {
 	 * +-building_availability |    |                                |    |    |    |    |
 	 * +-cargoID accepted |    |    |                                |    |    |    |    |
 	 * |   |         |    |    |    |                                |    |    |    |    | */
-	M( 1963, MAX_YEAR, 187, 150, STR_200F_TALL_OFFICE_BLOCK,      140,  70,   8,   3,   4,
+	MS(1963, MAX_YEAR, 187, 150, STR_200F_TALL_OFFICE_BLOCK,      140,  70,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //00
-	M( 1957, MAX_YEAR,  85, 140, STR_2010_OFFICE_BLOCK,           130,  55,   8,   3,   4,
+	MS(1957, MAX_YEAR,  85, 140, STR_2010_OFFICE_BLOCK,           130,  55,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //01
-	M( 1968, MAX_YEAR,  40, 100, STR_2011_SMALL_BLOCK_OF_FLATS,    90,  20,   8,   3,   1,
+	MS(1968, MAX_YEAR,  40, 100, STR_2011_SMALL_BLOCK_OF_FLATS,    90,  20,   8,   3,   1,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //02
-	M(    0, MAX_YEAR,   5,  90, STR_2012_CHURCH,                 230,   2,   2,   0,   0,
+	MS(   0, MAX_YEAR,   5,  90, STR_2012_CHURCH,                 230,   2,   2,   0,   0,
 	   BUILDING_IS_CHURCH | TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //03
-	M( 1975, MAX_YEAR, 220, 160, STR_2013_LARGE_OFFICE_BLOCK,     160,  85,  10,   4,   6,
+	MS(1975, MAX_YEAR, 220, 160, STR_2013_LARGE_OFFICE_BLOCK,     160,  85,  10,   4,   6,
 	   BUILDING_IS_ANIMATED | TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //04
-	M( 1975, MAX_YEAR, 220, 160, STR_2013_LARGE_OFFICE_BLOCK,     160,  85,  10,   4,   6,
+	MS(1975, MAX_YEAR, 220, 160, STR_2013_LARGE_OFFICE_BLOCK,     160,  85,  10,   4,   6,
 	   BUILDING_IS_ANIMATED | TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE  | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //05
-	M(    0, MAX_YEAR,  30,  80, STR_2014_TOWN_HOUSES,             80,  12,   4,   1,   0,
+	MS(   0, MAX_YEAR,  30,  80, STR_2014_TOWN_HOUSES,             80,  12,   4,   1,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //06
-	M( 1959, MAX_YEAR, 140, 180, STR_2015_HOTEL,                  150,  22,   6,   1,   2,
+	MS(1959, MAX_YEAR, 140, 180, STR_2015_HOTEL,                  150,  22,   6,   1,   2,
 	   TILE_SIZE_1x2,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //07
-	M( 1959, MAX_YEAR,   0, 180, STR_2015_HOTEL,                  150,  22,   6,   1,   2,
+	MS(1959, MAX_YEAR,   0, 180, STR_2015_HOTEL,                  150,  22,   6,   1,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //08
-	M( 1945, MAX_YEAR,   0,  65, STR_2016_STATUE,                  40,   0,   2,   0,   0,
+	MS(1945, MAX_YEAR,   0,  65, STR_2016_STATUE,                  40,   0,   2,   0,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //09
-	M( 1945, MAX_YEAR,   0,  65, STR_2017_FOUNTAIN,                40,   0,   2,   0,   0,
+	MS(1945, MAX_YEAR,   0,  65, STR_2017_FOUNTAIN,                40,   0,   2,   0,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //0A
-	M(    0, MAX_YEAR,   0,  60, STR_2018_PARK,                    75,   0,   2,   0,   0,
+	MS(   0, MAX_YEAR,   0,  60, STR_2018_PARK,                    75,   0,   2,   0,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //0B
-	M( 1935, MAX_YEAR,   0,  60, STR_2018_PARK,                    75,   0,   2,   0,   0,
+	MS(1935, MAX_YEAR,   0,  60, STR_2018_PARK,                    75,   0,   2,   0,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //0C
-	M( 1951, MAX_YEAR, 150, 130, STR_2019_OFFICE_BLOCK,           110,  65,   8,   2,   4,
+	MS(1951, MAX_YEAR, 150, 130, STR_2019_OFFICE_BLOCK,           110,  65,   8,   2,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //0D
-	M( 1930, 1960,      95, 110, STR_201A_SHOPS_AND_OFFICES,      100,  48,   6,   2,   3,
+	MS(1930, 1960,      95, 110, STR_201A_SHOPS_AND_OFFICES,      100,  48,   6,   2,   3,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //0E
-	M( 1930, 1960,      95, 105, STR_201A_SHOPS_AND_OFFICES,      100,  48,   6,   2,   3,
+	MS(1930, 1960,      95, 105, STR_201A_SHOPS_AND_OFFICES,      100,  48,   6,   2,   3,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //0F
-	M( 1930, 1960,      95, 107, STR_201A_SHOPS_AND_OFFICES,      100,  48,   6,   2,   3,
+	MS(1930, 1960,      95, 107, STR_201A_SHOPS_AND_OFFICES,      100,  48,   6,   2,   3,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //10
-	M( 1977, MAX_YEAR, 130, 200, STR_201B_MODERN_OFFICE_BUILDING, 150,  50,  10,   3,   6,
+	MS(1977, MAX_YEAR, 130, 200, STR_201B_MODERN_OFFICE_BUILDING, 150,  50,  10,   3,   6,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //11
-	M( 1983, MAX_YEAR,   6, 145, STR_201C_WAREHOUSE,              110,  10,   6,   3,   8,
+	MS(1983, MAX_YEAR,   6, 145, STR_201C_WAREHOUSE,              110,  10,   6,   3,   8,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //12
-	M( 1985, MAX_YEAR, 110, 155, STR_201D_OFFICE_BLOCK,           110,  55,   6,   2,   6,
+	MS(1985, MAX_YEAR, 110, 155, STR_201D_OFFICE_BLOCK,           110,  55,   6,   2,   6,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //13
-	M(    0, MAX_YEAR,  65, 250, STR_201E_STADIUM,                300,   5,   4,   0,   0,
+	MS(   0, MAX_YEAR,  65, 250, STR_201E_STADIUM,                300,   5,   4,   0,   0,
 	   BUILDING_IS_STADIUM | TILE_SIZE_2x2,
 	   HZ_TEMP | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //14
-	M(    0, MAX_YEAR,   0, 250, STR_201E_STADIUM,                300,   5,   4,   0,   0,
+	MS(   0, MAX_YEAR,   0, 250, STR_201E_STADIUM,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //15
-	M(    0, MAX_YEAR,   0, 250, STR_201E_STADIUM,                300,   5,   4,   0,   0,
+	MS(   0, MAX_YEAR,   0, 250, STR_201E_STADIUM,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //16
-	M(    0, MAX_YEAR,   0, 250, STR_201E_STADIUM,                300,   5,   4,   0,   0,
+	MS(   0, MAX_YEAR,   0, 250, STR_201E_STADIUM,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //17
-	M(    0, 1951,      15,  70, STR_201F_OLD_HOUSES,              75,   6,   3,   1,   0,
+	MS(   0, 1951,      15,  70, STR_201F_OLD_HOUSES,              75,   6,   3,   1,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //18
-	M(    0, 1952,      12,  75, STR_2036_COTTAGES,                75,   7,   3,   1,   0,
+	MS(   0, 1952,      12,  75, STR_2036_COTTAGES,                75,   7,   3,   1,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //19
-	M( 1931, MAX_YEAR,  13,  71, STR_2037_HOUSES,                  75,   8,   3,   1,   0,
+	MS(1931, MAX_YEAR,  13,  71, STR_2037_HOUSES,                  75,   8,   3,   1,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //1A
-	M( 1935, MAX_YEAR, 100, 135, STR_2038_FLATS,                  100,  35,   7,   2,   2,
+	MS(1935, MAX_YEAR, 100, 135, STR_2038_FLATS,                  100,  35,   7,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //1B
-	M( 1963, MAX_YEAR, 170, 145, STR_2039_TALL_OFFICE_BLOCK,      170,  50,   8,   3,   3,
+	MS(1963, MAX_YEAR, 170, 145, STR_2039_TALL_OFFICE_BLOCK,      170,  50,   8,   3,   3,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //1C
-	M(    0, 1955,     100, 132, STR_203A_SHOPS_AND_OFFICES,      135,  40,   6,   2,   3,
+	MS(   0, 1955,     100, 132, STR_203A_SHOPS_AND_OFFICES,      135,  40,   6,   2,   3,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //1D
-	M( 1973, MAX_YEAR, 180, 155, STR_203B_SHOPS_AND_OFFICES,      180,  64,   8,   3,   3,
+	MS(1973, MAX_YEAR, 180, 155, STR_203B_SHOPS_AND_OFFICES,      180,  64,   8,   3,   3,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //1E
-	M(    0, MAX_YEAR,  35, 220, STR_203C_THEATER,                230,  23,   8,   2,   2,
+	MS(   0, MAX_YEAR,  35, 220, STR_203C_THEATER,                230,  23,   8,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //1F
-	M( 1958, MAX_YEAR,  65, 250, STR_203D_STADIUM,                300,   5,   4,   0,   0,
+	MS(1958, MAX_YEAR,  65, 250, STR_203D_STADIUM,                300,   5,   4,   0,   0,
 	   BUILDING_IS_STADIUM | TILE_SIZE_2x2,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //20
-	M( 1958, MAX_YEAR,   0, 250, STR_203D_STADIUM,                300,   5,   4,   0,   0,
+	MS(1958, MAX_YEAR,   0, 250, STR_203D_STADIUM,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //21
-	M( 1958, MAX_YEAR,   0, 250, STR_203D_STADIUM,                300,   5,   4,   0,   0,
+	MS(1958, MAX_YEAR,   0, 250, STR_203D_STADIUM,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //22
-	M( 1958, MAX_YEAR,   0, 250, STR_203D_STADIUM,                300,   5,   4,   0,   0,
+	MS(1958, MAX_YEAR,   0, 250, STR_203D_STADIUM,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //23
-	M( 2000, MAX_YEAR, 140, 170, STR_203E_OFFICES,                250,  65,   8,   3,   2,
+	MS(2000, MAX_YEAR, 140, 170, STR_203E_OFFICES,                250,  65,   8,   3,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //24
-	M(    0, 1960,      15,  70, STR_203F_HOUSES,                  75,   6,   3,   1,   1,
+	MS(   0, 1960,      15,  70, STR_203F_HOUSES,                  75,   6,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //25
-	M(    0, 1960,      15,  70, STR_203F_HOUSES,                  75,   6,   3,   1,   1,
+	MS(   0, 1960,      15,  70, STR_203F_HOUSES,                  75,   6,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //26
-	M( 1945, MAX_YEAR,  35, 210, STR_2040_CINEMA,                 230,  23,   8,   2,   2,
+	MS(1945, MAX_YEAR,  35, 210, STR_2040_CINEMA,                 230,  23,   8,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //27
-	M( 1983, MAX_YEAR, 180, 250, STR_2041_SHOPPING_MALL,          300,   5,   8,   2,   3,
+	MS(1983, MAX_YEAR, 180, 250, STR_2041_SHOPPING_MALL,          300,   5,   8,   2,   3,
 	   TILE_SIZE_2x2,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 |HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //28
-	M( 1983, MAX_YEAR,   0, 250, STR_2041_SHOPPING_MALL,          300,   5,   8,   2,   3,
+	MS(1983, MAX_YEAR,   0, 250, STR_2041_SHOPPING_MALL,          300,   5,   8,   2,   3,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //29
-	M( 1983, MAX_YEAR,   0, 250, STR_2041_SHOPPING_MALL,          300,   5,   8,   2,   3,
+	MS(1983, MAX_YEAR,   0, 250, STR_2041_SHOPPING_MALL,          300,   5,   8,   2,   3,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //2A
-	M( 1983, MAX_YEAR,   0, 250, STR_2041_SHOPPING_MALL,          300,   5,   8,   2,   3,
+	MS(1983, MAX_YEAR,   0, 250, STR_2041_SHOPPING_MALL,          300,   5,   8,   2,   3,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //2B
-	M(    0, MAX_YEAR,  80, 100, STR_2038_FLATS,                   90,  20,   5,   2,   2,
+	MS(   0, MAX_YEAR,  80, 100, STR_2038_FLATS,                   90,  20,   5,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //2C
-	M(    0, MAX_YEAR,  80, 100, STR_2038_FLATS,                   90,  20,   5,   2,   2,
+	MS(   0, MAX_YEAR,  80, 100, STR_2038_FLATS,                   90,  20,   5,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE  | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //2D
-	M(    0, MAX_YEAR,  16,  70, STR_203F_HOUSES,                  70,   6,   3,   1,   2,
+	MS(   0, MAX_YEAR,  16,  70, STR_203F_HOUSES,                  70,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //2E
-	M(    0, MAX_YEAR,  16,  70, STR_203F_HOUSES,                  70,   6,   3,   1,   2,
+	MS(   0, MAX_YEAR,  16,  70, STR_203F_HOUSES,                  70,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //2F
-	M(    0, 1963,      14,  80, STR_203F_HOUSES,                  70,   6,   3,   1,   2,
+	MS(   0, 1963,      14,  80, STR_203F_HOUSES,                  70,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //30
-	M(    0, 1963,      14,  80, STR_203F_HOUSES,                  70,   6,   3,   1,   2,
+	MS(   0, 1963,      14,  80, STR_203F_HOUSES,                  70,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //31
-	M( 1966, MAX_YEAR, 135, 150, STR_200F_TALL_OFFICE_BLOCK,      120,  60,   8,   3,   4,
+	MS(1966, MAX_YEAR, 135, 150, STR_200F_TALL_OFFICE_BLOCK,      120,  60,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //32
-	M( 1966, MAX_YEAR, 135, 150, STR_200F_TALL_OFFICE_BLOCK,      120,  60,   8,   3,   4,
+	MS(1966, MAX_YEAR, 135, 150, STR_200F_TALL_OFFICE_BLOCK,      120,  60,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //33
-	M( 1970, MAX_YEAR, 170, 170, STR_200F_TALL_OFFICE_BLOCK,      130,  70,   9,   3,   4,
+	MS(1970, MAX_YEAR, 170, 170, STR_200F_TALL_OFFICE_BLOCK,      130,  70,   9,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //34
-	M( 1970, MAX_YEAR, 170, 170, STR_200F_TALL_OFFICE_BLOCK,      130,  70,   9,   3,   4,
+	MS(1970, MAX_YEAR, 170, 170, STR_200F_TALL_OFFICE_BLOCK,      130,  70,   9,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //35
-	M( 1974, MAX_YEAR, 210, 200, STR_200F_TALL_OFFICE_BLOCK,      140,  80,  10,   3,   5,
+	MS(1974, MAX_YEAR, 210, 200, STR_200F_TALL_OFFICE_BLOCK,      140,  80,  10,   3,   5,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //36
-	M( 1974, MAX_YEAR, 210, 200, STR_200F_TALL_OFFICE_BLOCK,      140,  80,  10,   3,   5,
+	MS(1974, MAX_YEAR, 210, 200, STR_200F_TALL_OFFICE_BLOCK,      140,  80,  10,   3,   5,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //37
-	M(    0, MAX_YEAR,  10,  60, STR_203F_HOUSES,                  60,   5,   2,   1,   1,
+	MS(   0, MAX_YEAR,  10,  60, STR_203F_HOUSES,                  60,   5,   2,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //38
-	M(    0, MAX_YEAR,  10,  60, STR_203F_HOUSES,                  60,   5,   2,   1,   1,
+	MS(   0, MAX_YEAR,  10,  60, STR_203F_HOUSES,                  60,   5,   2,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //39
-	M(    0, MAX_YEAR,  25, 100, STR_201A_SHOPS_AND_OFFICES,       80,  20,   3,   1,   1,
+	MS(   0, MAX_YEAR,  25, 100, STR_201A_SHOPS_AND_OFFICES,       80,  20,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //3A
-	M(    0, MAX_YEAR,  25, 100, STR_201A_SHOPS_AND_OFFICES,       80,  20,   3,   1,   1,
+	MS(   0, MAX_YEAR,  25, 100, STR_201A_SHOPS_AND_OFFICES,       80,  20,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //3B
-	M(    0, MAX_YEAR,   6,  85, STR_2012_CHURCH,                 230,   2,   2,   0,   0,
+	MS(   0, MAX_YEAR,   6,  85, STR_2012_CHURCH,                 230,   2,   2,   0,   0,
 	   BUILDING_IS_CHURCH | TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //3C
-	M(    0, MAX_YEAR,   6,  85, STR_2012_CHURCH,                 230,   2,   2,   0,   0,
+	MS(   0, MAX_YEAR,   6,  85, STR_2012_CHURCH,                 230,   2,   2,   0,   0,
 	   BUILDING_IS_CHURCH | TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //3D
-	M(    0, MAX_YEAR,  17,  80, STR_203F_HOUSES,                  80,   7,   3,   1,   1,
+	MS(   0, MAX_YEAR,  17,  80, STR_203F_HOUSES,                  80,   7,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //3E
-	M(    0, MAX_YEAR,  17,  80, STR_203F_HOUSES,                  80,   7,   3,   1,   1,
+	MS(   0, MAX_YEAR,  17,  80, STR_203F_HOUSES,                  80,   7,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //3F
-	M(    0, 1960,      90, 140, STR_201A_SHOPS_AND_OFFICES,      110,  45,   6,   2,   3,
+	MS(   0, 1960,      90, 140, STR_201A_SHOPS_AND_OFFICES,      110,  45,   6,   2,   3,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW| HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //40
-	M(    0, 1960,      90, 140, STR_201A_SHOPS_AND_OFFICES,      110,  45,   6,   2,   3,
+	MS(   0, 1960,      90, 140, STR_201A_SHOPS_AND_OFFICES,      110,  45,   6,   2,   3,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE| HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //41
-	M( 1972, MAX_YEAR, 140, 160, STR_2015_HOTEL,                  160,  25,   6,   1,   3,
+	MS(1972, MAX_YEAR, 140, 160, STR_2015_HOTEL,                  160,  25,   6,   1,   3,
 	   TILE_SIZE_1x2,
 	   HZ_SUBARTC_BELOW| HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //42
-	M( 1972, MAX_YEAR,   0, 160, STR_2015_HOTEL,                  160,  25,   6,   1,   2,
+	MS(1972, MAX_YEAR,   0, 160, STR_2015_HOTEL,                  160,  25,   6,   1,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //43
-	M( 1972, MAX_YEAR, 140, 160, STR_2015_HOTEL,                  160,  25,   6,   1,   3,
+	MS(1972, MAX_YEAR, 140, 160, STR_2015_HOTEL,                  160,  25,   6,   1,   3,
 	   TILE_SIZE_1x2,
 	   HZ_SUBARTC_ABOVE| HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //44
-	M( 1972, MAX_YEAR,   0, 160, STR_2015_HOTEL,                  160,  25,   6,   1,   2,
+	MS(1972, MAX_YEAR,   0, 160, STR_2015_HOTEL,                  160,  25,   6,   1,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //45
-	M( 1963, MAX_YEAR, 105, 130, STR_201A_SHOPS_AND_OFFICES,      105,  50,   7,   2,   3,
+	MS(1963, MAX_YEAR, 105, 130, STR_201A_SHOPS_AND_OFFICES,      105,  50,   7,   2,   3,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //46
-	M( 1963, MAX_YEAR, 105, 130, STR_201A_SHOPS_AND_OFFICES,      105,  50,   7,   2,   3,
+	MS(1963, MAX_YEAR, 105, 130, STR_201A_SHOPS_AND_OFFICES,      105,  50,   7,   2,   3,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE| HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //47
-	M( 1978, MAX_YEAR, 190, 190, STR_200F_TALL_OFFICE_BLOCK,      135,  75,   9,   3,   4,
+	MS(1978, MAX_YEAR, 190, 190, STR_200F_TALL_OFFICE_BLOCK,      135,  75,   9,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //48
-	M( 1978, MAX_YEAR, 190, 190, STR_200F_TALL_OFFICE_BLOCK,      135,  75,   9,   3,   4,
+	MS(1978, MAX_YEAR, 190, 190, STR_200F_TALL_OFFICE_BLOCK,      135,  75,   9,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //49
-	M( 1967, MAX_YEAR, 250, 140, STR_200F_TALL_OFFICE_BLOCK,      200,  60,   7,   2,   2,
+	MS(1967, MAX_YEAR, 250, 140, STR_200F_TALL_OFFICE_BLOCK,      200,  60,   7,   2,   2,
 	   TILE_SIZE_2x1,
 	   HZ_SUBARTC_BELOW| HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //4A
-	M( 1967, MAX_YEAR,   0, 140, STR_200F_TALL_OFFICE_BLOCK,      200,  60,   7,   2,   2,
+	MS(1967, MAX_YEAR,   0, 140, STR_200F_TALL_OFFICE_BLOCK,      200,  60,   7,   2,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //4B
-	M( 1967, MAX_YEAR, 250, 140, STR_200F_TALL_OFFICE_BLOCK,      200,  60,   7,   2,   2,
+	MS(1967, MAX_YEAR, 250, 140, STR_200F_TALL_OFFICE_BLOCK,      200,  60,   7,   2,   2,
 	   TILE_SIZE_2x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //4C
-	M( 1967, MAX_YEAR,   0, 140, STR_200F_TALL_OFFICE_BLOCK,      200,  60,   7,   2,   2,
+	MS(1967, MAX_YEAR,   0, 140, STR_200F_TALL_OFFICE_BLOCK,      200,  60,   7,   2,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //4D
-	M(    0, MAX_YEAR,  16,  80, STR_203F_HOUSES,                  80,   6,   3,   1,   2,
+	MS(   0, MAX_YEAR,  16,  80, STR_203F_HOUSES,                  80,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //4E
-	M(    0, MAX_YEAR,  16,  80, STR_203F_HOUSES,                  80,   6,   3,   1,   2,
+	MS(   0, MAX_YEAR,  16,  80, STR_203F_HOUSES,                  80,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //4F
-	M(    0, MAX_YEAR,  16,  80, STR_203F_HOUSES,                  80,   5,   3,   1,   2,
+	MS(   0, MAX_YEAR,  16,  80, STR_203F_HOUSES,                  80,   5,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //50
-	M(    0, MAX_YEAR,   7,  30, STR_203F_HOUSES,                  30,   4,   3,   1,   1,
+	MS(   0, MAX_YEAR,   7,  30, STR_203F_HOUSES,                  30,   4,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //51
-	M(    0, MAX_YEAR,  45, 130, STR_2038_FLATS,                   95,  15,   6,   2,   1,
+	MS(   0, MAX_YEAR,  45, 130, STR_2038_FLATS,                   95,  15,   6,   2,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //52
-	M(    0, MAX_YEAR,   8,  90, STR_2012_CHURCH,                 200,   3,   2,   0,   0,
+	MS(   0, MAX_YEAR,   8,  90, STR_2012_CHURCH,                 200,   3,   2,   0,   0,
 	   BUILDING_IS_CHURCH | TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //53
-	M(    0, MAX_YEAR,  18,  80, STR_203F_HOUSES,                  80,   7,   3,   1,   2,
+	MS(   0, MAX_YEAR,  18,  80, STR_203F_HOUSES,                  80,   7,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), //54
-	M( 1973, MAX_YEAR,  90, 110, STR_2038_FLATS,                   95,  24,   6,   2,   1,
+	MS(1973, MAX_YEAR,  90, 110, STR_2038_FLATS,                   95,  24,   6,   2,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //55
-	M( 1962, MAX_YEAR, 120, 120, STR_2038_FLATS,                   95,  25,   6,   2,   1,
+	MS(1962, MAX_YEAR, 120, 120, STR_2038_FLATS,                   95,  25,   6,   2,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //56
-	M( 1984, MAX_YEAR, 250, 190, STR_200F_TALL_OFFICE_BLOCK,      140,  80,   8,   3,   4,
+	MS(1984, MAX_YEAR, 250, 190, STR_200F_TALL_OFFICE_BLOCK,      140,  80,   8,   3,   4,
 	   TILE_SIZE_2x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //57
-	M( 1984, MAX_YEAR,   0, 190, STR_200F_TALL_OFFICE_BLOCK,      140,  80,   8,   3,   4,
+	MS(1984, MAX_YEAR,   0, 190, STR_200F_TALL_OFFICE_BLOCK,      140,  80,   8,   3,   4,
 	   TILE_NO_FLAG,
 	   HZ_SUBTROPIC,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //58
-	M(    0, MAX_YEAR,  80, 110, STR_2038_FLATS,                   95,  23,   6,   2,   1,
+	MS(   0, MAX_YEAR,  80, 110, STR_2038_FLATS,                   95,  23,   6,   2,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //59
-	M( 1993, MAX_YEAR, 180, 180, STR_200F_TALL_OFFICE_BLOCK,      150,  90,   8,   3,   4,
+	MS(1993, MAX_YEAR, 180, 180, STR_200F_TALL_OFFICE_BLOCK,      150,  90,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), //5A
-	M(    0, MAX_YEAR,   8,  90, STR_2012_CHURCH,                 200,   3,   2,   0,   0,
+	MS(   0, MAX_YEAR,   8,  90, STR_2012_CHURCH,                 200,   3,   2,   0,   0,
 	   BUILDING_IS_CHURCH | TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //5B
-	M(    0, MAX_YEAR,  18,  90, STR_203F_HOUSES,                  90,   5,   6,   2,   2,
+	MS(   0, MAX_YEAR,  18,  90, STR_203F_HOUSES,                  90,   5,   6,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //5C
-	M(    0, MAX_YEAR,   7,  70, STR_203F_HOUSES,                  50,   3,   3,   1,   1,
+	MS(   0, MAX_YEAR,   7,  70, STR_203F_HOUSES,                  50,   3,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //5D
-	M(    0, MAX_YEAR,  15,  80, STR_203F_HOUSES,                  75,   6,   3,   1,   2,
+	MS(   0, MAX_YEAR,  15,  80, STR_203F_HOUSES,                  75,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //5E
-	M(    0, MAX_YEAR,  17,  80, STR_203F_HOUSES,                  75,   6,   3,   1,   2,
+	MS(   0, MAX_YEAR,  17,  80, STR_203F_HOUSES,                  75,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //5F
-	M(    0, MAX_YEAR,  19,  80, STR_203F_HOUSES,                  75,   6,   3,   1,   2,
+	MS(   0, MAX_YEAR,  19,  80, STR_203F_HOUSES,                  75,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //60
-	M(    0, MAX_YEAR,  21,  80, STR_203F_HOUSES,                  75,   6,   3,   1,   2,
+	MS(   0, MAX_YEAR,  21,  80, STR_203F_HOUSES,                  75,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //61
-	M(    0, MAX_YEAR,  75, 160, STR_200F_TALL_OFFICE_BLOCK,      130,  20,   8,   4,   2,
+	MS(   0, MAX_YEAR,  75, 160, STR_200F_TALL_OFFICE_BLOCK,      130,  20,   8,   4,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //62
-	M(    0, MAX_YEAR,  35,  90, STR_203F_HOUSES,                  80,   9,   4,   1,   2,
+	MS(   0, MAX_YEAR,  35,  90, STR_203F_HOUSES,                  80,   9,   4,   1,   2,
 	   TILE_SIZE_1x2,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //63
-	M(    0, MAX_YEAR,   0,  90, STR_203F_HOUSES,                  80,   0,   4,   1,   2,
+	MS(   0, MAX_YEAR,   0,  90, STR_203F_HOUSES,                  80,   0,   4,   1,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //64
-	M(    0, MAX_YEAR,  85, 150, STR_200F_TALL_OFFICE_BLOCK,      130,  18,   8,   4,   2,
+	MS(   0, MAX_YEAR,  85, 150, STR_200F_TALL_OFFICE_BLOCK,      130,  18,   8,   4,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //65
-	M(    0, MAX_YEAR,  11,  60, STR_2059_IGLOO,                   45,   3,   3,   1,   1,
+	MS(   0, MAX_YEAR,  11,  60, STR_2059_IGLOO,                   45,   3,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //66
-	M(    0, MAX_YEAR,  10,  60, STR_205A_TEPEES,                  45,   3,   3,   1,   1,
+	MS(   0, MAX_YEAR,  10,  60, STR_205A_TEPEES,                  45,   3,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //67
-	M(    0, MAX_YEAR,  67, 140, STR_201A_SHOPS_AND_OFFICES,      130,  22,   8,   4,   4,
+	MS(   0, MAX_YEAR,  67, 140, STR_201A_SHOPS_AND_OFFICES,      130,  22,   8,   4,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FIZZY_DRINKS), //68
-	M(    0, MAX_YEAR,  86, 145, STR_201A_SHOPS_AND_OFFICES,      130,  23,   8,   4,   4,
+	MS(   0, MAX_YEAR,  86, 145, STR_201A_SHOPS_AND_OFFICES,      130,  23,   8,   4,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FIZZY_DRINKS), //69
-	M(    0, MAX_YEAR,  95, 165, STR_200F_TALL_OFFICE_BLOCK,      130,  28,   8,   4,   2,
+	MS(   0, MAX_YEAR,  95, 165, STR_200F_TALL_OFFICE_BLOCK,      130,  28,   8,   4,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //6A
-	M(    0, MAX_YEAR,  30,  90, STR_2016_STATUE,                  70,  10,   4,   1,   2,
+	MS(   0, MAX_YEAR,  30,  90, STR_2016_STATUE,                  70,  10,   4,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //6B
-	M(    0, MAX_YEAR,  25,  75, STR_205B_TEAPOT_HOUSE,            65,   8,   3,   1,   2,
+	MS(   0, MAX_YEAR,  25,  75, STR_205B_TEAPOT_HOUSE,            65,   8,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), //6C
-	M(    0, MAX_YEAR,  18,  85, STR_205C_PIGGY_BANK,              95,   7,   3,   2,   4,
+	MS(   0, MAX_YEAR,  18,  85, STR_205C_PIGGY_BANK,              95,   7,   3,   2,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FIZZY_DRINKS), //6D
 };
-#undef M
+#undef MS
 assert_compile(lengthof(_original_house_specs) == NEW_HOUSE_OFFSET);
