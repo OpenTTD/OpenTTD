@@ -792,7 +792,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT: {
-			LegendAndColour *tbl;
+			const LegendAndColour *tbl;
 			int x, y, y_org;
 			DrawPixelInfo new_dpi;
 
