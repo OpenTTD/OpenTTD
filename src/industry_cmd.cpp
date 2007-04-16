@@ -458,23 +458,22 @@ static void AnimateTile_Industry(TileIndex tile)
 		if ((_tick_counter & 1) == 0) {
 			m = GetIndustryAnimationState(tile) + 1;
 
-			if (m == 1) {
-				SndPlayTileFx(SND_2C_MACHINERY, tile);
-			} else if (m == 23) {
-				SndPlayTileFx(SND_2B_COMEDY_HIT, tile);
-			} else if (m == 28) {
-				SndPlayTileFx(SND_2A_EXTRACT_AND_POP, tile);
+			switch (m) {
+				case  1: SndPlayTileFx(SND_2C_MACHINERY, tile); break;
+				case 23: SndPlayTileFx(SND_2B_COMEDY_HIT, tile); break;
+				case 28: SndPlayTileFx(SND_2A_EXTRACT_AND_POP, tile); break;
+				default:
+					if (m >= 50) {
+						int n = GetIndustryAnimationLoop(tile) + 1;
+						m = 0;
+						if (n >= 8) {
+							n = 0;
+							DeleteAnimatedTile(tile);
+						}
+						SetIndustryAnimationLoop(tile, n);
+					}
 			}
 
-			if (m >= 50) {
-				int n = GetIndustryAnimationLoop(tile) + 1;
-				m = 0;
-				if (n >= 8) {
-					n = 0;
-					DeleteAnimatedTile(tile);
-				}
-				SetIndustryAnimationLoop(tile, n);
-			}
 			SetIndustryAnimationState(tile, m);
 			MarkTileDirtyByTile(tile);
 		}
