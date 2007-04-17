@@ -4402,9 +4402,6 @@ static const CargoLabel *_default_refitmasks[] = {
 static void CalculateRefitMasks()
 {
 	for (EngineID engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
-		/* Skip engine if not available in this climate */
-		if (!HASBIT(_engine_info[engine].climates, _opt.landscape)) continue;
-
 		uint32 mask = 0;
 		uint32 not_mask = 0;
 		uint32 xor_mask = 0;
