@@ -19,20 +19,21 @@ Bugs for 0.5.1
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
--677 	Badspacing in news summaries
--674 	Map signs allow less nonenglish characters than english ones
--672 	Non-transparent station names' backgrounds do not resize properly upon language change
+-735	Plural rule not expanded correctly when non-numeric placeholder uses
+-732	Trains are lost after autorenewal/autoreplace
+-716	Train Crash in Depot
+-677	Badspacing in news summaries
+-674	Map signs allow less nonenglish characters than english ones
+-672	Non-transparent station names' backgrounds do not resize properly upon language change
 -669	Docks/Airports/RV Stations can be built without available vehicles
 -646	AI builds useless stations
--601	airports can't get flooded when they have planes in them
--599	reloaded game lost company passwords
--594	terraforming wipes out canals
+-601	Airports can't get flooded when they have planes in them
+-599	Reloaded game lost company passwords
+-594	Terraforming wipes out canals
 -591	Autorenew fails under certain conditions
--583	Fatal fault or crash during startup
--571	Problems with vehicle purchase lists with NewGRFs
 -559	Front-/Rear-facing engines don't line up with each other
 -553	Autorenew doesn't warn when replacement isn't available
--546	[0.5.0 RC3] Inflation overflow
+-546	Overflows due to inflation
 -540	Planes vanished when offered exclusive
 -539	Trains can cash the same cargo multiple times
 -524	OSX sometimes (not always) fails to find free disk space
