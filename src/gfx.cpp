@@ -652,10 +652,11 @@ int DoDrawString(const char *string, int x, int y, uint16 real_color)
 switch_color:;
 			if (real_color & IS_PALETTE_COLOR) {
 				_string_colorremap[1] = color;
-				_string_colorremap[2] = 215;
+				_string_colorremap[2] = _use_dos_palette ? 1 : 215;
 			} else {
-				_string_colorremap[1] = _string_colormap[color].text;
-				_string_colorremap[2] = _string_colormap[color].shadow;
+				uint palette = _use_dos_palette ? 1 : 0;
+				_string_colorremap[1] = _string_colormap[palette][color].text;
+				_string_colorremap[2] = _string_colormap[palette][color].shadow;
 			}
 			_color_remap_ptr = _string_colorremap;
 		}
