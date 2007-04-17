@@ -412,7 +412,7 @@ static int lookup_oneofmany(const char *many, const char *one, int onelen)
 /** Find the set-integer value MANYofMANY type in a string
  * @param many full domain of values the MANYofMANY setting can have
  * @param str the current string value of the setting, each individual
- * of seperated by a whitespace\tab or | character
+ * of seperated by a whitespace,tab or | character
  * @return the 'fully' set integer, or -1 if a set is not found */
 static uint32 lookup_manyofmany(const char *many, const char *str)
 {
@@ -682,7 +682,8 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
  * @param ini pointer to IniFile structure that holds administrative information
  * @param sd pointer to SettingDesc structure whose internally pointed variables will
  *        be given values
- * @param grpname the group of the IniFile to search in for the new values */
+ * @param grpname the group of the IniFile to search in for the new values
+ * @param object pointer to the object been loaded */
 static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *grpname, void *object)
 {
 	IniGroup *group;
@@ -752,6 +753,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
  * @param sd read-only SettingDesc structure which contains the unmodified,
  *        loaded values of the configuration file and various information about it
  * @param grpname holds the name of the group (eg. [network]) where these will be saved
+ * @param object pointer to the object been saved
  * The function works as follows: for each item in the SettingDesc structure we
  * have a look if the value has changed since we started the game (the original
  * values are reloaded when saving). If settings indeed have changed, we get
@@ -865,7 +867,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
  * The list parameter can be a NULL pointer, in this case nothing will be
  * saved and a callback function should be defined that will take over the
  * list-handling and store the data itself somewhere.
- * @param IniFile handle to the ini file with the source data
+ * @param ini IniFile handle to the ini file with the source data
  * @param grpname character string identifying the section-header of the ini
  * file that will be parsed
  * @param list pointer to an string(pointer) array that will store the parsed
@@ -1728,6 +1730,8 @@ static const SettingDesc *GetSettingDescription(uint index)
 }
 
 /** Network-safe changing of patch-settings (server-only).
+ * @param tile unused
+ * @param flags operation to perform
  * @param p1 the index of the patch in the SettingDesc array which identifies it
  * @param p2 the new value for the patch
  * The new value is properly clamped to its minimum/maximum when setting
@@ -1878,6 +1882,7 @@ static void LoadSettings(const SettingDesc *osd, void *object)
 }
 
 /** Loadhandler for a list of global variables
+ * @param sdg pointer for the global variable list SettingDescGlobVarList
  * @note this is actually a stub for LoadSettings with the
  * object pointer set to NULL */
 static inline void LoadSettingsGlobList(const SettingDescGlobVarList *sdg)
@@ -1886,7 +1891,7 @@ static inline void LoadSettingsGlobList(const SettingDescGlobVarList *sdg)
 }
 
 /** Save and load handler for patches/settings
- * @param osd SettingDesc struct containing all information
+ * @param sd SettingDesc struct containing all information
  * @param object can be either NULL in which case we load global variables or
  * a pointer to a struct which is getting saved */
 static void SaveSettings(const SettingDesc *sd, void *object)

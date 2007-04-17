@@ -396,7 +396,7 @@ static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
 /**
  * Return the color a tile would be displayed with in the small map in mode "Vehicles".
  *
- * @param t The tile of which we would like to get the color.
+ * @param tile The tile of which we would like to get the color.
  * @return The color of tile in the small map in mode "Vehicles"
  */
 static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile)
@@ -426,7 +426,7 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 /**
  * Return the color a tile would be displayed with in the small map in mode "Routes".
  *
- * @param t The tile of which we would like to get the color.
+ * @param tile The tile of which we would like to get the color.
  * @return The color of tile  in the small map in mode "Routes"
  */
 static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
@@ -502,7 +502,7 @@ static uint32 _owner_colors[OWNER_END + 1];
 /**
  * Return the color a tile would be displayed with in the small map in mode "Owner".
  *
- * @param t The tile of which we would like to get the color.
+ * @param tile The tile of which we would like to get the color.
  * @return The color of tile in the small map in mode "Owner"
  */
 static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)

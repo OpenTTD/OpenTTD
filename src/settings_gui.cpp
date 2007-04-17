@@ -225,6 +225,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 
 /** Change the side of the road vehicles drive on (server only).
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 the side of the road; 0 = left side and 1 = right side
  * @param p2 unused
  */

@@ -122,6 +122,7 @@ static int32 EstimateRoadVehCost(EngineID engine_type)
 
 /** Build a road vehicle.
  * @param tile tile of depot where road vehicle is built
+ * @param flags operation to perform
  * @param p1 bus/truck type being built (engine)
  * @param p2 bit 0 when set, the unitnumber will be 0, otherwise it will be a free number
  */
@@ -227,6 +228,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Start/Stop a road vehicle.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 road vehicle ID to start/stop
  * @param p2 unused
  */
@@ -278,6 +280,7 @@ void ClearSlot(Vehicle *v)
 
 /** Sell a road vehicle.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 vehicle ID to be sold
  * @param p2 unused
  */
@@ -375,6 +378,7 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 
 /** Send a road vehicle to the depot.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 vehicle ID to send to the depot
  * @param p2 various bitmasked elements
  * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
@@ -447,6 +451,7 @@ int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Turn a roadvehicle around.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 vehicle ID to turn
  * @param p2 unused
  */
@@ -1066,10 +1071,10 @@ static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Tra
 /**
  * Returns direction to for a road vehicle to take or
  * INVALID_TRACKDIR if the direction is currently blocked
- * @param v        the vehicle to do the pathfinding for
+ * @param v        the Vehicle to do the pathfinding for
  * @param tile     the where to start the pathfinding
  * @param enterdir the direction the vehicle enters the tile from
- * @return the trackdir to take
+ * @return the Trackdir to take
  */
 static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir)
 {
@@ -1841,6 +1846,7 @@ void RoadVehiclesYearlyLoop()
 
 /** Refit a road vehicle to the specified cargo type
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 Vehicle ID of the vehicle to refit
  * @param p2 Bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to

@@ -622,6 +622,7 @@ static void DeletePlayerStuff(PlayerID pi)
 
 /** Change engine renewal parameters
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 bits 0-3 command
  * - p1 = 0 - change auto renew bool
  * - p1 = 1 - change auto renew months
@@ -755,6 +756,7 @@ int32 CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Control the players: add, delete, etc.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 various functionality
  * - p1 = 0 - create a new player, Which player (network) it will be is in p2
  * - p1 = 1 - create a new AI player

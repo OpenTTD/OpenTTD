@@ -230,6 +230,7 @@ static inline bool ValParamTrackOrientation(Track track) {return IsValidTrack(tr
 
 /** Build a single piece of rail
  * @param tile tile  to build on
+ * @param flags operation to perform
  * @param p1 railtype of being built piece (normal, mono, maglev)
  * @param p2 rail track to build
  */
@@ -332,6 +333,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Remove a single piece of track
  * @param tile tile to remove track from
+ * @param flags operation to perform
  * @param p1 unused
  * @param p2 rail orientation
  */
@@ -477,6 +479,7 @@ static int32 ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileIndex end
 
 /** Build a stretch of railroad tracks.
  * @param tile start tile of drag
+ * @param flags operation to perform
  * @param p1 end tile of drag
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0-3) - railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev)
@@ -526,6 +529,13 @@ static int32 CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 /** Build rail on a stretch of track.
  * Stub for the unified rail builder/remover
+ * @param tile start tile of drag
+ * @param flags operation to perform
+ * @param p1 end tile of drag
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit 0-3) - railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev)
+ * - p2 = (bit 4-6) - track-orientation, valid values: 0-5 (Track enum)
+ * - p2 = (bit 7)   - 0 = build, 1 = remove tracks
  * @see CmdRailTrackHelper
  */
 int32 CmdBuildRailroadTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -535,6 +545,13 @@ int32 CmdBuildRailroadTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Build rail on a stretch of track.
  * Stub for the unified rail builder/remover
+ * @param tile start tile of drag
+ * @param flags operation to perform
+ * @param p1 end tile of drag
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit 0-3) - railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev)
+ * - p2 = (bit 4-6) - track-orientation, valid values: 0-5 (Track enum)
+ * - p2 = (bit 7)   - 0 = build, 1 = remove tracks
  * @see CmdRailTrackHelper
  */
 int32 CmdRemoveRailroadTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -544,6 +561,7 @@ int32 CmdRemoveRailroadTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Build a train depot
  * @param tile position of the train depot
+ * @param flags operation to perform
  * @param p1 rail type
  * @param p2 bit 0..1 entrance direction (DiagDirection)
  *
@@ -609,6 +627,7 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * pre/exit/combo-signals, and what-else not. If the rail piece does not
  * have any signals, bit 4 (cycle signal-type) is ignored
  * @param tile tile where to build the signals
+ * @param flags operation to perform
  * @param p1 various bitstuffed elements
  * - p1 = (bit 0-2) - track-orientation, valid values: 0-5 (Track enum)
  * - p1 = (bit 3)   - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
@@ -703,6 +722,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Build many signals by dragging; AutoSignals
  * @param tile start tile of drag
+ * @param flags operation to perform
  * @param p1  end tile of drag
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
@@ -790,6 +810,15 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 /** Build signals on a stretch of track.
  * Stub for the unified signal builder/remover
+ * @param tile start tile of drag
+ * @param flags operation to perform
+ * @param p1  end tile of drag
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
+ * - p2 = (bit  3)    - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
+ * - p2 = (bit  5)    - 0 = build, 1 = remove signals
+ * - p2 = (bit 24-31) - user defined signals_density
  * @see CmdSignalTrackHelper
  */
 int32 CmdBuildSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -799,6 +828,7 @@ int32 CmdBuildSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Remove signals
  * @param tile coordinates where signal is being deleted from
+ * @param flags operation to perform
  * @param various bitstuffed elements, only track information is used
  * - p1 = (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
  * - p1 = (bit  3)    - override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
@@ -842,6 +872,15 @@ int32 CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Remove signals on a stretch of track.
  * Stub for the unified signal builder/remover
+ * @param tile start tile of drag
+ * @param flags operation to perform
+ * @param p1  end tile of drag
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
+ * - p2 = (bit  3)    - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
+ * - p2 = (bit  5)    - 0 = build, 1 = remove signals
+ * - p2 = (bit 24-31) - user defined signals_density
  * @see CmdSignalTrackHelper
  */
 int32 CmdRemoveSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -908,6 +947,7 @@ extern int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exe
 /** Convert one rail type to the other. You can convert normal rail to
  * monorail/maglev easily or vice-versa.
  * @param tile end tile of rail conversion drag
+ * @param flags operation to perform
  * @param p1 start tile of drag
  * @param p2 new railtype to convert to
  */
@@ -1177,9 +1217,6 @@ static void DrawTrackDetails(const TileInfo* ti)
  * Draw ground sprite and track bits
  * @param ti TileInfo
  * @param track TrackBits to draw
- * @param earth Draw as earth
- * @param snow Draw as snow
- * @param flat Always draw foundation
  */
 static void DrawTrackBits(TileInfo* ti, TrackBits track)
 {

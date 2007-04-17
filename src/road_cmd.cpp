@@ -90,6 +90,7 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool *edge_roa
 
 /** Delete a piece of road.
  * @param tile tile where to remove road from
+ * @param flags operation to perform
  * @param p1 bit 0..3 road pieces to remove (RoadBits)
  * @param p2 unused
  */
@@ -251,6 +252,7 @@ static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 
 /** Build a piece of road.
  * @param tile tile where to build road
+ * @param flags operation to perform
  * @param p1 bit 0..3 road pieces to build (RoadBits)
  * @param p2 the town that is building the road (0 if not applicable)
  */
@@ -402,6 +404,7 @@ int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 
 /** Build a long piece of road.
  * @param end_tile end tile of drag
+ * @param flags operation to perform
  * @param p1 start tile of drag
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0) - start tile starts in the 2nd half of tile (p2 & 1)
@@ -458,6 +461,7 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Remove a long piece of road.
  * @param end_tile end tile of drag
+ * @param flags operation to perform
  * @param p1 start tile of drag
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0) - start tile starts in the 2nd half of tile (p2 & 1)
@@ -512,6 +516,7 @@ int32 CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Build a road depot.
  * @param tile tile where to build the depot
+ * @param flags operation to perform
  * @param p1 bit 0..1 entrance direction (DiagDirection)
  * @param p2 unused
  *
@@ -659,7 +664,6 @@ const byte _road_sloped_sprites[14] = {
 /**
  * Draw ground sprite and road pieces
  * @param ti TileInfo
- * @param road RoadBits to draw
  */
 static void DrawRoadBits(TileInfo* ti)
 {

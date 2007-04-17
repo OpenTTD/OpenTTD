@@ -789,6 +789,7 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
 
 /** Build railroad station
  * @param tile_org starting position of station dragging/placement
+ * @param flags operation to perform
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0)    - orientation (Axis)
  * - p1 = (bit  8-15) - number of tracks
@@ -1023,6 +1024,7 @@ restart:
 /** Remove a single tile from a railroad station.
  * This allows for custom-built station with holes and weird layouts
  * @param tile tile of station piece to remove
+ * @param flags operation to perform
  * @param p1 unused
  * @param p2 unused
  */
@@ -1174,6 +1176,8 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station* st)
 
 /** Build a bus or truck stop
  * @param tile tile to build the stop at
+ * @param flags operation to perform
+ * @param flags operation to perform
  * @param p1 entrance direction (DiagDirection)
  * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
  *           bit 1: 0 for normal, 1 for drive-through
@@ -1341,6 +1345,7 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 
 /** Remove a bus or truck stop
  * @param tile tile to remove the stop from
+ * @param flags operation to perform
  * @param p1 not used
  * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
  */
@@ -1466,6 +1471,7 @@ static const byte * const _airport_sections[] = {
 
 /** Place an Airport.
  * @param tile tile where airport will be built
+ * @param flags operation to perform
  * @param p1 airport type, @see airport.h
  * @param p2 unused
  */
@@ -1641,6 +1647,7 @@ static int32 RemoveAirport(Station *st, uint32 flags)
 
 /** Build a buoy.
  * @param tile tile where to place the bouy
+ * @param flags operation to perform
  * @param p1 unused
  * @param p2 unused
  */
@@ -1749,6 +1756,7 @@ static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
 
 /** Build a dock/haven.
  * @param tile tile where dock will be built
+ * @param flags operation to perform
  * @param p1 unused
  * @param p2 unused
  */
@@ -2381,6 +2389,7 @@ static void UpdateStationWaiting(Station *st, CargoID type, uint amount)
 
 /** Rename a station
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 station ID that is to be renamed
  * @param p2 unused
  */
