@@ -289,13 +289,13 @@ enum {
 	CT_IRON_ORE     =  8,
 	CT_STEEL        =  9,
 	CT_VALUABLES    = 10,
-	CT_FOOD         = 11,
 
 	// Arctic
 	CT_WHEAT        =  6,
 	CT_HILLY_UNUSED =  8,
 	CT_PAPER        =  9,
 	CT_GOLD         = 10,
+	CT_FOOD         = 11,
 
 	// Tropic
 	CT_RUBBER       =  1,
