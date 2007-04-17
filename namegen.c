@@ -281,7 +281,7 @@ static byte MakeFinnishTownName(char *buf, uint32 seed, const char *last)
 	if (SeedChance(0, 15, seed) >= 10) {
 		strecat(buf, name_finnish_real[SeedChance(2, lengthof(name_finnish_real), seed)], last);
 	} else if (SeedChance(0, 15, seed) >= 5) {
-		// A two-part name by combining one of name_finnish_1 + "la"/"l‰"
+		// A two-part name by combining one of name_finnish_1 + "la"/"l√§"
 		// The reason for not having the contents of name_finnish_{1,2} in the same table is
 		// that the ones in name_finnish_2 are not good for this purpose.
 		uint sel = SeedChance( 0, lengthof(name_finnish_1), seed);
@@ -295,7 +295,7 @@ static byte MakeFinnishTownName(char *buf, uint32 seed, const char *last)
 		{
 			strecat(buf, "la", last);
 		} else {
-			strecat(buf, "l‰", last);
+			strecat(buf, "l√§", last);
 		}
 	} else {
 		// A two-part name by combining one of name_finnish_{1,2} + name_finnish_3.

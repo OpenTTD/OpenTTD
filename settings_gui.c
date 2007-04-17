@@ -497,7 +497,9 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 			// save value in temporary variable
 			((int*)&_opt_mod_temp.diff)[btn] = val;
+			RaiseWindowWidget(w, _opt_mod_temp.diff_level + 3);
 			SetDifficultyLevel(3, &_opt_mod_temp); // set difficulty level to custom
+			LowerWindowWidget(w, _opt_mod_temp.diff_level + 3);
 			SetWindowDirty(w);
 		}	break;
 		case 3: case 4: case 5: case 6: /* Easy / Medium / Hard / Custom */
