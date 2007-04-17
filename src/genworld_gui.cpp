@@ -899,7 +899,7 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 
 /**
  * Set the total of a stage of the world generation.
- * @param class the current class we are in.
+ * @param cls the current class we are in.
  * @param total Set the total expected items for this class.
  *
  * Warning: this function isn't clever. Don't go from class 4 to 3. Go upwards, always.
@@ -914,7 +914,7 @@ void SetGeneratingWorldProgress(gwp_class cls, uint total)
 
 /**
  * Increases the current stage of the world generation with one.
- * @param class the current class we are in.
+ * @param cls the current class we are in.
  *
  * Warning: this function isn't clever. Don't go from class 4 to 3. Go upwards, always.
  *  Also, progress works if total is zero, total works if progress is zero.

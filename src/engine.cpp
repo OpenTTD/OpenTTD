@@ -249,6 +249,7 @@ void EnginesDailyLoop()
 /** Accept an engine prototype. XXX - it is possible that the top-player
  * changes while you are waiting to accept the offer? Then it becomes invalid
  * @param tile unused
+ * @param flags operation to perfom
  * @param p1 engine-prototype offered
  * @param p2 unused
  */
@@ -350,6 +351,7 @@ void EnginesMonthlyLoop()
 
 /** Rename an engine.
  * @param tile unused
+ * @param flags operation to perfom
  * @param p1 engine ID to rename
  * @param p2 unused
  */

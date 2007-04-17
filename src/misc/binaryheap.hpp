@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file binaryheap.hpp */
+
 #ifndef  BINARYHEAP_HPP
 #define  BINARYHEAP_HPP
 

@@ -44,7 +44,7 @@ uint EngList_Count(const EngineList *el)
 
 /** Add new item at the end of Engine List
  * @param el list o which to add an engine
- * @param eif engine to add to the list
+ * @param eid engine to add to the list
  */
 void EngList_Add(EngineList *el, EngineID eid)
 {
@@ -81,7 +81,7 @@ void EngList_Sort(EngineList *el, EngList_SortTypeFunction compare)
  * @param el list to be sorted
  * @param compare function for evaluation of the quicksort
  * @param begin start of sorting
- * @param count of items to be sorted
+ * @param num_items count of items to be sorted
  */
 void EngList_SortPartial(EngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items)
 {

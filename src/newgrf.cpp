@@ -136,7 +136,7 @@ static uint32 _grm_engines[TOTAL_NUM_ENGINES];
  * loading/parsing grf files, not for runtime debug messages as there
  * is no file information available during that time.
  * @param severity debugging severity level, see debug.h
- * @param debugging message in printf() format */
+ * @param str message in printf() format */
 void CDECL grfmsg(int severity, const char *str, ...)
 {
 	char buf[1024];
@@ -234,6 +234,7 @@ static GRFFile *GetFileByFilename(const char *filename)
 
 /** Used when setting an object's property to map to the GRF's strings
  * while taking in consideration the "drift" between TTDPatch string system and OpenTTD's one
+ * @param grfid Id of the grf file
  * @param str StringID that we want to have the equivalent in OoenTTD
  * @return the properly adjusted StringID
  */
@@ -2004,8 +2005,8 @@ static const SpriteGroup* NewCallBackResultSpriteGroup(uint16 value)
 
 /**
  * Creates a spritegroup representing a sprite number result.
- * @param value The sprite number.
- * @param sprites The number of sprites per set.
+ * @param sprite The sprite number.
+ * @param num_sprites The number of sprites per set.
  * @return A spritegroup representing the sprite number result.
  */
 static const SpriteGroup* NewResultSpriteGroup(SpriteID sprite, byte num_sprites)

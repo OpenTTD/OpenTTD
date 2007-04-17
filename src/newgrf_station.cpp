@@ -61,7 +61,7 @@ void ResetStationClasses()
 
 /**
  * Allocate a station class for the given class id.
- * @param classid A 32 bit value identifying the class.
+ * @param cls A 32 bit value identifying the class.
  * @return Index into station_classes of allocated class.
  */
 StationClassID AllocateStationClass(uint32 cls)
@@ -138,7 +138,7 @@ uint GetNumCustomStations(StationClassID sclass)
 
 /**
  * Tie a station spec to its station class.
- * @param spec The station spec.
+ * @param statspec The station spec.
  */
 void SetCustomStationSpec(StationSpec *statspec)
 {
@@ -614,7 +614,7 @@ uint16 GetStationCallback(uint16 callback, uint32 param1, uint32 param2, const S
 
 /**
  * Allocate a StationSpec to a Station. This is called once per build operation.
- * @param spec StationSpec to allocate.
+ * @param statspec StationSpec to allocate.
  * @param st Station to allocate it to.
  * @param exec Whether to actually allocate the spec.
  * @return Index within the Station's spec list, or -1 if the allocation failed.
@@ -695,10 +695,12 @@ void DeallocateSpecFromStation(Station* st, byte specindex)
 }
 
 /** Draw representation of a station tile for GUI purposes.
- * @param x, y Position of image.
- * @param dir Direction.
+ * @param x Position x of image.
+ * @param y Position y of image.
+ * @param axis Axis.
  * @param railtype Rail type.
  * @param sclass, station Type of station.
+ * @param station station ID
  * @return True if the tile was drawn (allows for fallback to default graphic)
  */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station)

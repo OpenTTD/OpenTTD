@@ -295,7 +295,7 @@ typedef EngineRenew* EngineRenewList;
 
 /**
  * Remove all engine replacement settings for the player.
- * @param  er The renewlist for a given player.
+ * @param  erl The renewlist for a given player.
  * @return The new renewlist for the player.
  */
 void RemoveAllEngineReplacement(EngineRenewList* erl);

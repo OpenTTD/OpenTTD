@@ -677,9 +677,10 @@ static void TooltipsWndProc(Window *w, WindowEvent *e)
 }
 
 /** Shows a tooltip
-* @param str String to be displayed
-* @param params (optional) up to 5 pieces of additional information that may be
-* added to a tooltip; currently only supports parameters of {NUM} (integer) */
+ * @param str String to be displayed
+ * @param paramcount number of params to deal with
+ * @param params (optional) up to 5 pieces of additional information that may be
+ * added to a tooltip; currently only supports parameters of {NUM} (integer) */
 void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint32 params[])
 {
 	char buffer[512];
@@ -824,8 +825,8 @@ static void DelChar(Textbuf *tb, bool backspace)
 /**
  * Delete a character from a textbuffer, either with 'Delete' or 'Backspace'
  * The character is delete from the position the caret is at
- * @param tb @Textbuf type to be changed
- * @param delmode Type of deletion, either @WKC_BACKSPACE or @WKC_DELETE
+ * @param tb Textbuf type to be changed
+ * @param delmode Type of deletion, either WKC_BACKSPACE or WKC_DELETE
  * @return Return true on successfull change of Textbuf, or false otherwise
  */
 bool DeleteTextBufferChar(Textbuf *tb, int delmode)
@@ -843,7 +844,7 @@ bool DeleteTextBufferChar(Textbuf *tb, int delmode)
 
 /**
  * Delete every character in the textbuffer
- * @param tb @Textbuf buffer to be emptied
+ * @param tb Textbuf buffer to be emptied
  */
 void DeleteTextBufferAll(Textbuf *tb)
 {
@@ -856,7 +857,7 @@ void DeleteTextBufferAll(Textbuf *tb)
  * Insert a character to a textbuffer. If maxwidth of the Textbuf is zero,
  * we don't care about the visual-length but only about the physical
  * length of the string
- * @param tb @Textbuf type to be changed
+ * @param tb Textbuf type to be changed
  * @param key Character to be inserted
  * @return Return true on successfull change of Textbuf, or false otherwise
  */
@@ -880,8 +881,8 @@ bool InsertTextBufferChar(Textbuf *tb, WChar key)
 /**
  * Handle text navigation with arrow keys left/right.
  * This defines where the caret will blink and the next characer interaction will occur
- * @param tb @Textbuf type where navigation occurs
- * @param navmode Direction in which navigation occurs @WKC_LEFT, @WKC_RIGHT, @WKC_END, @WKC_HOME
+ * @param tb Textbuf type where navigation occurs
+ * @param navmode Direction in which navigation occurs WKC_LEFT, WKC_RIGHT, WKC_END, WKC_HOME
  * @return Return true on successfull change of Textbuf, or false otherwise
  */
 bool MoveTextBufferPos(Textbuf *tb, int navmode)
@@ -924,7 +925,7 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
 /**
  * Initialize the textbuffer by supplying it the buffer to write into
  * and the maximum length of this buffer
- * @param tb @Textbuf type which is getting initialized
+ * @param tb Textbuf type which is getting initialized
  * @param buf the buffer that will be holding the data for input
  * @param maxlength maximum length in characters of this buffer
  * @param maxwidth maximum length in pixels of this buffer. If reached, buffer
@@ -940,10 +941,10 @@ void InitializeTextBuffer(Textbuf *tb, const char *buf, uint16 maxlength, uint16
 }
 
 /**
- * Update @Textbuf type with its actual physical character and screenlength
+ * Update Textbuf type with its actual physical character and screenlength
  * Get the count of characters in the string as well as the width in pixels.
  * Useful when copying in a larger amount of text at once
- * @param tb @Textbuf type which length is calculated
+ * @param tb Textbuf type which length is calculated
  */
 void UpdateTextBufferSize(Textbuf *tb)
 {
@@ -1271,8 +1272,7 @@ static const WindowDesc _query_desc = {
  * @param message string that will be shown for the window
  * @param parent pointer to parent window, if this pointer is NULL the parent becomes
  * the main window WC_MAIN_WINDOW
- * @param x,y coordinates to show the window at
- * @param yes_no_callback callback function called when window is closed through any button */
+ * @param callback callback function pointer to set in the window descriptor*/
 void ShowQuery(StringID caption, StringID message, Window *parent, void (*callback)(Window*, bool))
 {
 	Window *w = AllocateWindowDesc(&_query_desc);
@@ -1722,6 +1722,7 @@ static int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 
 /**
  * @param p1 -1 or +1 (down/up)
+ * @param p2 unused
  */
 static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 {
@@ -1735,6 +1736,7 @@ static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 extern void EnginesMonthlyLoop();
 
 /**
+ * @param p1 unused
  * @param p2 1 (increase) or -1 (decrease)
  */
 static int32 ClickChangeDateCheat(int32 p1, int32 p2)

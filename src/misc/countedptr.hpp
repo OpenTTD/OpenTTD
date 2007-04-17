@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file countedptr.hpp */
+
 #ifndef COUNTEDPTR_HPP
 #define COUNTEDPTR_HPP
 

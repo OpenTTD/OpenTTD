@@ -1080,7 +1080,7 @@ static bool HandleMouseOver()
  * Both the areas of the old window and the new sized window are set dirty
  * ensuring proper redrawal.
  * @param w Window to resize
- * @param x delta x-size of changed window (positive if larger, etc.(
+ * @param x delta x-size of changed window (positive if larger, etc.)
  * @param y delta y-size of changed window */
 void ResizeWindow(Window *w, int x, int y)
 {

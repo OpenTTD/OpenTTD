@@ -57,7 +57,7 @@ FiosItem *FiosAlloc()
 /**
  * Compare two FiosItem's. Used with qsort when sorting the file list.
  * @param a A pointer to the first FiosItem to compare.
- * @param a A pointer to the second FiosItem to compare.
+ * @param b A pointer to the second FiosItem to compare.
  * @return -1, 0 or 1, depending on how the two items should be sorted.
  */
 int CDECL compare_FiosItems(const void *a, const void *b)
@@ -200,9 +200,8 @@ bool FileExists(const char *filename)
 typedef byte fios_getlist_callback_proc(int mode, const char *filename, const char *ext, char *title);
 
 /** Create a list of the files in a directory, according to some arbitrary rule.
- *  @param num Will be filled with the amount of items.
  *  @param mode The mode we are in. Some modes don't allow 'parent'.
- *  @param callback The function that is called where you need to do the filtering.
+ *  @param callback_proc The function that is called where you need to do the filtering.
  *  @return Return the list of files. */
 static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_proc)
 {

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file blob.hpp */
+
 #ifndef  BLOB_HPP
 #define  BLOB_HPP
 

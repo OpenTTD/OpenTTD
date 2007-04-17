@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file hashtable.hpp */
+
 #ifndef  HASHTABLE_HPP
 #define  HASHTABLE_HPP
 
@@ -97,7 +99,7 @@ struct CHashTableSlotT
 	}
 };
 
-/** @class CHashTableT<Titem, Thash_bits> - simple hash table
+/** class CHashTableT<Titem, Thash_bits> - simple hash table
  *  of pointers allocated elsewhere.
  *
  *  Supports: Add/Find/Remove of Titems.

@@ -275,7 +275,7 @@ void GfxDrawLine(int x, int y, int x2, int y2, int color)
 
 /** Truncate a given string to a maximum width if neccessary.
  * If the string is truncated, add three dots ('...') to show this.
- * @param *dest string that is checked and possibly truncated
+ * @param *str string that is checked and possibly truncated
  * @param maxw maximum width in pixels of the string
  * @return new width of (truncated) string */
 static int TruncateString(char *str, int maxw)
@@ -413,11 +413,11 @@ void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, uin
 /** 'Correct' a string to a maximum length. Longer strings will be cut into
  * additional lines at whitespace characters if possible. The string parameter
  * is modified with terminating characters mid-string which are the
- * placeholders for the newlines.<br/>
+ * placeholders for the newlines.
  * The string WILL be truncated if there was no whitespace for the current
  * line's maximum width.
  *
- * @note To know if the the terminating '\0' is the string end or just a
+ * @note To know if the terminating '\0' is the string end or just a
  * newline, the returned 'num' value should be consulted. The num'th '\0',
  * starting with index 0 is the real string end.
  *
@@ -487,7 +487,7 @@ end_of_inner_loop:
  * @param x Centre the string around this pixel width
  * @param y Draw the string at this pixel height (first line's bottom)
  * @param str String to draw
- * @param max Maximum width the string can have before it is wrapped */
+ * @param maxw Maximum width the string can have before it is wrapped */
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 {
 	char buffer[512];
@@ -626,7 +626,7 @@ BoundingRect GetStringBoundingBox(const char *str)
 /** Draw a string at the given coordinates with the given colour
  * @param string the string to draw
  * @param x offset from left side of the screen, if negative offset from the right side
- * @param x offset from top side of the screen, if negative offset from the bottom
+ * @param y offset from top side of the screen, if negative offset from the bottom
  * @param real_color colour of the string, see _string_colormap in
  * table/palettes.h or docs/ottd-colourtext-palette.png
  * @return the x-coordinates where the drawing has finished. If nothing is drawn

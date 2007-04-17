@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file stdfax.h */
+/** @file stdafx.h */
 
 #ifndef STDAFX_H
 #define STDAFX_H

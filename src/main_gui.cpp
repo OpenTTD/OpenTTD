@@ -1247,7 +1247,8 @@ static OnButtonClick * const _editor_terraform_button_proc[] = {
 
 
 /** Callback function for the scenario editor 'reset landscape' confirmation window
- * @param yes_clicked boolean value, true when yes was clicked, false otherwise */
+ * @param w Window unused
+ * @param confirmed boolean value, true when yes was clicked, false otherwise */
 static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {

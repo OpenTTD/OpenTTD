@@ -187,7 +187,8 @@ void AppendStaticGRFConfigs(GRFConfig **dst)
 }
 
 /** Appends an element to a list of GRFs
- * @param dst the head of the list to add to */
+ * @param dst the head of the list to add to
+ * @param el the new tail to be */
 void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el)
 {
 	GRFConfig **tail = dst;

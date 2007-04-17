@@ -36,17 +36,13 @@ static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom)
 	return pt;
 }
 
-/*****************************************************
- * Special handling for the scrollbar widget type.
+/** Special handling for the scrollbar widget type.
  * Handles the special scrolling buttons and other
  * scrolling.
- * Parameters:
- *   w   - Window.
- *   wi  - Pointer to the scrollbar widget.
- *   x   - The X coordinate of the mouse click.
- *   y   - The Y coordinate of the mouse click.
- */
-
+ * @param w Window on which a scroll was performed.
+ * @param wi Pointer to the scrollbar widget.
+ * @param x The X coordinate of the mouse click.
+ * @param y The Y coordinate of the mouse click. */
 void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 {
 	int mi, ma, pos;
@@ -128,8 +124,8 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 /** Returns the index for the widget located at the given position
  * relative to the window. It includes all widget-corner pixels as well.
  * @param *w Window to look inside
- * @param  x
- * @param  y Window client coordinates
+ * @param  x The Window client X coordinate
+ * @param  y The Window client y coordinate
  * @return A widget index, or -1 if no widget was found.
  */
 int GetWidgetFromPos(const Window *w, int x, int y)
@@ -737,7 +733,7 @@ static void ResizeWidgets(Window *w, byte a, byte b, byte c)
 
 /** Evenly distribute some widgets when resizing horizontally (often a button row)
  *  When only two arguments are given, the widgets are presumed to be on a line and only the ends are given
- * @param w widow to modify
+ * @param w Window to modify
  * @param left The leftmost widget to resize
  * @param right The rightmost widget to resize. Since right side of it is used, remember to set it to RESIZE_RIGHT
  */

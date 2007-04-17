@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file crc32.hpp */
+
 #ifndef  CRC32_HPP
 #define  CRC32_HPP
 

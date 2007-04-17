@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file autocopyptr.hpp */
+
 #ifndef  AUTOCOPYPTR_HPP
 #define  AUTOCOPYPTR_HPP
 

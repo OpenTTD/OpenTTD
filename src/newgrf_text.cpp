@@ -418,8 +418,8 @@ char *GetGRFString(char *buff, uint16 stringid, const char* last)
  * The array iso_codes will be used to find that match.
  * If not found, it will have to be standard english
  * This function is called after the user changed language,
- * from strings.c:ReadLanguagePack
- * @param iso code of current selection
+ * from strings.cpp:ReadLanguagePack
+ * @param iso_name iso code of current selection
  */
 void SetCurrentGrfLangID(const char *iso_name)
 {

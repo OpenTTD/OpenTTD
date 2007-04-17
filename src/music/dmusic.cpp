@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file dmusic.cpp */
+
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
 
 #include "../stdafx.h"
@@ -14,13 +16,13 @@
 #include <dmusicf.h>
 
 
-// the performance object controls manipulation of the segments
+/** the performance object controls manipulation of the segments */
 static IDirectMusicPerformance* performance = NULL;
 
-// the loader object can load many types of DMusic related files
+/** the loader object can load many types of DMusic related files */
 static IDirectMusicLoader* loader = NULL;
 
-// the segment object is where the MIDI data is stored for playback
+/** the segment object is where the MIDI data is stored for playback */
 static IDirectMusicSegment* segment = NULL;
 
 static bool seeking = false;
@@ -54,12 +56,12 @@ static const char* DMusicMidiStart(const char* const* parm)
 			return "ole32.dll load failed";
 	}
 
-	// Initialize COM
+	/* Initialize COM */
 	if (FAILED(proc.CoInitialize(NULL))) {
 		return "COM initialization failed";
 	}
 
-	// create the performance object
+	/* create the performance object */
 	if (FAILED(proc.CoCreateInstance(
 				CLSID_DirectMusicPerformance,
 				NULL,
@@ -71,7 +73,7 @@ static const char* DMusicMidiStart(const char* const* parm)
 		return "Failed to create the performance object";
 	}
 
-	// initialize it
+	/* initialize it */
 	if (FAILED(performance->Init(NULL, NULL, NULL))) {
 		performance->Release();
 		performance = NULL;
@@ -79,7 +81,7 @@ static const char* DMusicMidiStart(const char* const* parm)
 		return "Failed to initialize performance object";
 	}
 
-	// choose default Windows synth
+	/* choose default Windows synth */
 	if (FAILED(performance->AddPort(NULL))) {
 		performance->CloseDown();
 		performance->Release();
@@ -88,7 +90,7 @@ static const char* DMusicMidiStart(const char* const* parm)
 		return "AddPort failed";
 	}
 
-	// create the loader object; this will be used to load the MIDI file
+	/* create the loader object; this will be used to load the MIDI file */
 	if (FAILED(proc.CoCreateInstance(
 				CLSID_DirectMusicLoader,
 				NULL,
@@ -136,7 +138,7 @@ static void DMusicMidiStop()
 
 static void DMusicMidiPlaySong(const char* filename)
 {
-	// set up the loader object info
+	/* set up the loader object info */
 	DMUS_OBJECTDESC obj_desc;
 	ZeroMemory(&obj_desc, sizeof(obj_desc));
 	obj_desc.dwSize = sizeof(obj_desc);
@@ -148,13 +150,13 @@ static void DMusicMidiPlaySong(const char* filename)
 		obj_desc.wszFileName, lengthof(obj_desc.wszFileName)
 	);
 
-	// release the existing segment if we have any
+	/* release the existing segment if we have any */
 	if (segment != NULL) {
 		segment->Release();
 		segment = NULL;
 	}
 
-	// make a new segment
+	/* make a new segment */
 	if (FAILED(loader->GetObject(
 				&obj_desc, IID_IDirectMusicSegment, (LPVOID*)&segment
 			))) {
@@ -162,7 +164,7 @@ static void DMusicMidiPlaySong(const char* filename)
 		return;
 	}
 
-	// tell the segment what kind of data it contains
+	/* tell the segment what kind of data it contains */
 	if (FAILED(segment->SetParam(
 				GUID_StandardMIDIFile, 0xFFFFFFFF, 0, 0, performance
 			))) {
@@ -170,13 +172,13 @@ static void DMusicMidiPlaySong(const char* filename)
 		return;
 	}
 
-	// tell the segment to 'download' the instruments
+	/* tell the segment to 'download' the instruments */
 	if (FAILED(segment->SetParam(GUID_Download, 0xFFFFFFFF, 0, 0, performance))) {
 		DEBUG(driver, 0, "DirectMusic: failed to download instruments");
 		return;
 	}
 
-	// start playing the MIDI file
+	/* start playing the MIDI file */
 	if (FAILED(performance->PlaySegment(segment, 0, 0, NULL))) {
 		DEBUG(driver, 0, "DirectMusic: PlaySegment failed");
 		return;
@@ -210,8 +212,7 @@ static bool DMusicMidiIsSongPlaying()
 
 static void DMusicMidiSetVolume(byte vol)
 {
-	// 0 - 127 -> -2000 - 0
-	long db = vol * 2000 / 127 - 2000;
+	long db = vol * 2000 / 127 - 2000; ///< 0 - 127 -> -2000 - 0
 	performance->SetGlobalParam(GUID_PerfMasterVolume, &db, sizeof(db));
 }
 

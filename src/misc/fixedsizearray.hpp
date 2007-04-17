@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file fixedsizearray.hpp */
+
 #ifndef  FIXEDSIZEARRAY_HPP
 #define  FIXEDSIZEARRAY_HPP
 

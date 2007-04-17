@@ -38,6 +38,7 @@ int32 CmdSetPlayerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Change the player's company-colour
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 bitstuffed:
  * p1 bits 0-7 scheme to set
  * p1 bits 8-9 set in use state or first/second colour
@@ -117,6 +118,7 @@ int32 CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Increase the loan of your company.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 unused
  * @param p2 when set, loans the maximum amount in one go (press CTRL)
  */
@@ -146,6 +148,7 @@ int32 CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Decrease the loan of your company.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 unused
  * @param p2 when set, pays back the maximum loan permitting money (press CTRL)
  */
@@ -186,6 +189,7 @@ int32 CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Change the name of the company.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 unused
  * @param p2 unused
  */
@@ -213,6 +217,7 @@ int32 CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Change the name of the president.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 unused
  * @param p2 unused
  */
@@ -251,6 +256,7 @@ int32 CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * the game is unpaused. A counter is used instead of a boolean value
  * to have more control over the game when saving/loading, etc.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 0 = decrease pause counter; 1 = increase pause counter
  * @param p2 unused
  */
@@ -269,6 +275,7 @@ int32 CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * This is normally only enabled in offline mode, but if there is a debug
  * build, you can cheat (to test).
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 the amount of money to receive (if negative), or spend (if positive)
  * @param p2 unused
  */
@@ -286,6 +293,7 @@ int32 CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * players if you have paid off your loan (either explicitely, or implicitely
  * given the fact that you have more money than loan).
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 the amount of money to transfer; max 20.000.000
  * @param p2 the player to transfer the money to
  */
@@ -317,6 +325,7 @@ int32 CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * in file 'settings_gui.c' _game_setting_info[]; we'll just trust the server it knows
  * what to do and does this correctly
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 the difficulty setting being changed. If it is -1, the difficulty level
  *           itself is changed. The new value is inside p2
  * @param p2 new value for a difficulty setting or difficulty level

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file bemidi.cpp */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "bemidi.h"

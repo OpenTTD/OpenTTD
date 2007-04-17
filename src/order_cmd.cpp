@@ -182,6 +182,7 @@ static TileIndex GetOrderLocation(const Order& o)
 
 /** Add an order to the orderlist of a vehicle.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 - 15) - ID of the vehicle
  * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
@@ -478,6 +479,7 @@ static void RemoveSharedOrderVehicleList(Vehicle *v)
 
 /** Delete an order from the orderlist of a vehicle.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 the ID of the vehicle
  * @param p2 the order to delete (max 255)
  */
@@ -557,6 +559,7 @@ int32 CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Goto next order of order-list.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 The ID of the vehicle which order is skipped
  * @param p2 unused
  */
@@ -600,6 +603,7 @@ int32 CmdSkipOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Modify an order in the orderlist of a vehicle.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 - 15) - ID of the vehicle
  * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
@@ -680,6 +684,8 @@ int32 CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Clone/share/copy an order-list of an other vehicle.
+ * @param tile unused
+ * @param flags operation to perform
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0-15) - destination vehicle to clone orders to (p1 & 0xFFFF)
  * - p1 = (bit 16-31) - source vehicle to clone orders from, if any (none for CO_UNSHARE)
@@ -812,6 +818,7 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Add/remove refit orders from an order
  * @param tile Not used
+ * @param flags operation to perform
  * @param p1 VehicleIndex of the vehicle having the order
  * @param p2 bitmask
  *   - bit 0-7 CargoID
@@ -937,6 +944,7 @@ void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* bak)
 
 /** Restore the current order-index of a vehicle and sets service-interval.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 the ID of the vehicle
  * @param p2 various bistuffed elements
  * - p2 = (bit  0-15) - current order-index (p2 & 0xFFFF)
