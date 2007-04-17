@@ -1,3 +1,18 @@
+0.5.1-RC3 (2007-04-17)
+------------------------------------------------------------------------
+- Feature: Add list_patches to console commands; shows all patches and values (r9565)
+- Fix: Select "Custom" in the difficulty settings gui when changing a setting [FS#733] (r9647)
+- Fix: Building rail on steep slopes ignored build_on_slopes patch setting (r9602)
+- Fix: Wrong characters in Finnish town names (r9641)
+- Fix: When checking for no vehicle on ground-tiles, do not take into account vehicles that are in the air (r9542)
+- Fix: Bankrupt AIs no longer buy over themselves (also added safeguards to prevent in future) (r9540 / r9541)
+- Fix: When company is removed, sell all shares of the and in the company (r9533)
+- Fix: Crash when 2 or more clients joined at roughly the same time (r9529)
+- Fix: Custom currency was overwritten and fix euro introduction (r9467, r9469)
+- Fix: Values of diff_custom and snow_line in .cfg were not checked properly (r9455)
+- Fix: When deleting a vehicle which has shared orders with one more vehicle and no orders, segfaulted (r9429)
+
+
 0.5.1-RC2 (2007-03-23)
 ------------------------------------------------------------------------
 - Fix: crashes when the chatbox would be drawn outside of the main window [FS#701] (r9420)
