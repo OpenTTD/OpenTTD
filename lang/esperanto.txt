@@ -1385,7 +1385,7 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Refreŝi
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}KOMPANIAJ INFORMOJ
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Kompaninomo:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Enaŭguro:  {WHITE}{NUM}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaŭguro:  {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}Kompanivaloro:  {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nuna monstato:  {WHITE}{CURRENCY64}
 STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Lastjara enspezo:  {WHITE}{CURRENCY64}
@@ -2118,7 +2118,7 @@ STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Alklaku 
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Grandigu prunton
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Repagu pruntparton
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Manaĝanto)
-STR_7038_INAUGURATED                                            :{GOLD}Enaŭguris: {WHITE}{NUM}
+STR_7038_INAUGURATED                                            :{GOLD}Inaŭgurita: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Veturiloj:
 STR_TRAINS                                                      :{WHITE}{COMMA} trajno{P "" j}
 STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} vojveturilo{P "" j}
