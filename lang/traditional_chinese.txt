@@ -286,9 +286,9 @@ STR_013C_CARGO                                                  :{BLACK}貨物
 STR_013D_INFORMATION                                            :{BLACK}資訊
 STR_013E_CAPACITIES                                             :{BLACK}載量
 STR_013E_TOTAL_CARGO                                            :{BLACK}總貨物量
-STR_013F_CAPACITY                                               :{BLACK}總載量: {LTBLUE}{CARGO}
-STR_CAPACITY_MULT                                               :{BLACK}載量: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}此列車的總載量:
+STR_013F_CAPACITY                                               :{BLACK}載量：{LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}載量：{LTBLUE}{CARGO} (x{NUM})
+STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}此列車的總載量：
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}開新遊戲

@@ -285,19 +285,19 @@ STR_OSNAME_OS2                                                  :OS/2
 
 STR_013B_OWNED_BY                                               :{WHITE}...posseduto da {STRING}
 STR_013C_CARGO                                                  :{BLACK}Carico
-STR_013D_INFORMATION                                            :{BLACK}Informazione
+STR_013D_INFORMATION                                            :{BLACK}Informazioni
 STR_013E_CAPACITIES                                             :{BLACK}Capienza
 STR_013E_TOTAL_CARGO                                            :{BLACK}Carico totale
 STR_013F_CAPACITY                                               :{BLACK}Capacità: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Capacità: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Carico totale (capacità) di questo treno:
+STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Capacità di carico totale di questo treno:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
-STR_0140_NEW_GAME                                               :{BLACK}Nuovo Gioco
-STR_0141_LOAD_GAME                                              :{BLACK}Carica Gioco
+STR_0140_NEW_GAME                                               :{BLACK}Nuova partita
+STR_0141_LOAD_GAME                                              :{BLACK}Carica partita
 STR_SINGLE_PLAYER                                               :{BLACK}Giocatore singolo
-STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
-STR_SCENARIO_EDITOR                                             :{BLACK}Editore di Scenari
+STR_MULTIPLAYER                                                 :{BLACK}Multigiocatore
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor di scenari
 
 STR_64                                                          :64
 STR_128                                                         :128
