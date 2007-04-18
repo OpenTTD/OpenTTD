@@ -1068,7 +1068,42 @@ static const IndustryTileTable * const _tile_table_sugar_mine[] = {
 #undef MK
 #undef MKEND
 
-#define MK(tbl, d, ai1, ai2, ai3, ai4, ag1, ag2, ag3, ag4, col,\
+/**
+ * Writes the properties of an industry into the IndustrySpec struct.
+ * @param tbl  tile table
+ * @param d    cost multiplier
+ * @param ai1  appear chance ingame - temperate
+ * @param ai2  appear chance ingame - arctic
+ * @param ai3  appear chance ingame - tropic
+ * @param ai4  appear chance ingame - toyland
+ * @param ag1  appear chance random creation - temperate
+ * @param ag2  appear chance random creation - arctic
+ * @param ag3  appear chance random creation - tropic
+ * @param ag4  appear chance random creation - toyland
+ * @param col  map colour
+ * @param c1   industry proximity refusal - 1st
+ * @param c2   industry proximity refusal - 2nd
+ * @param c3   industry proximity refusal - 3th
+ * @param proc check procedure index
+ * @param p1   produce cargo 1
+ * @param r1   rate of production 1
+ * @param p2   produce cargo 2
+ * @param r2   rate of production 1
+ * @param m    minimum cargo moved to station
+ * @param a1   accepted cargo 1
+ * @param a2   accepted cargo 2
+ * @param a3   accepted cargo 3
+ * @param pr   industry life (actually, the same as extractive, organic, processing in ttdpatch's specs)
+ * @param clim climate availaility
+ * @param bev  industry behaviour
+ * @param in   name
+ * @param intx text while building
+ * @param s1   text for closure
+ * @param s2   text for production up
+ * @param s3   text for production down
+ */
+
+#define MI(tbl, d, ai1, ai2, ai3, ai4, ag1, ag2, ag3, ag4, col,\
            c1, c2, c3, proc, p1, r1, p2, r2, m, a1, a2, a3, pr, clim, bev, in, intx, s1, s2, s3) \
 	{tbl, lengthof(tbl), d, {c1, c2, c3}, proc, {p1, p2}, {r1, r2}, m,            \
 	 {a1, a2, a3}, pr, clim, bev, col, in, intx, s1, s2, s3, {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, 0, 0, 0, 0}
@@ -1083,7 +1118,7 @@ static const IndustrySpec _industry_specs[] = {
 	   industry behaviours
 	   industry name                           building text
 	   messages : Closure                      production up                      production down   */
-	MK(_tile_table_coal_mine,                  210,              2, 3, 0, 0,    8, 8, 0, 0,        215,
+	MI(_tile_table_coal_mine,                  210,              2, 3, 0, 0,    8, 8, 0, 0,        215,
 	   IT_POWER_STATION,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_COAL,       15, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1092,7 +1127,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4802_COAL_MINE,                     STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4836_NEW_COAL_SEAM_FOUND_AT,   STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_power_station,              30,               2, 2, 0, 0,    5, 5, 0, 0,        184,
+	MI(_tile_table_power_station,              30,               2, 2, 0, 0,    5, 5, 0, 0,        184,
 	   IT_COAL_MINE,      IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_INVALID,     0, CT_INVALID,       0, 5,
 	   CT_COAL,           CT_INVALID,          CT_INVALID,
@@ -1101,7 +1136,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4803_POWER_STATION,                 STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_sawmill,                    28,               2, 0, 0, 0,    5, 0, 0, 0,        194,
+	MI(_tile_table_sawmill,                    28,               2, 0, 0, 0,    5, 0, 0, 0,        194,
 	   IT_FOREST,         IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_WOOD,           CT_INVALID,          CT_INVALID,
@@ -1110,7 +1145,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4804_SAWMILL,                       STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_forest,                     200,              3, 4, 0, 0,    5, 5, 0, 0,         86,
+	MI(_tile_table_forest,                     200,              3, 4, 0, 0,    5, 5, 0, 0,         86,
 	   IT_SAWMILL,        IT_PAPER_MILL,       IT_INVALID,       CHECK_FOREST,
 	   CT_WOOD,       13, CT_INVALID,       0, 30,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1119,7 +1154,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4805_FOREST,                        STR_482E_NEW_BEING_PLANTED_NEAR,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_oil_refinery,               31,               2, 2, 2, 0,    4, 4, 4, 0,        191,
+	MI(_tile_table_oil_refinery,               31,               2, 2, 2, 0,    4, 4, 4, 0,        191,
 	   IT_OIL_RIG,        IT_INVALID,          IT_INVALID,       CHECK_REFINERY,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_OIL,            CT_INVALID,          CT_INVALID,
@@ -1128,7 +1163,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4806_OIL_REFINERY,                  STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_oil_rig,                    240,              6, 0, 0, 0,    0, 0, 0, 0,        152,
+	MI(_tile_table_oil_rig,                    240,              6, 0, 0, 0,    0, 0, 0, 0,        152,
 	   IT_OIL_REFINERY,   IT_INVALID,          IT_INVALID,       CHECK_OIL_RIG,
 	   CT_OIL,        15, CT_PASSENGERS,    2, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1137,7 +1172,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4807_OIL_RIG,                       STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4837_NEW_OIL_RESERVES_FOUND,   STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_factory,                    26,               2, 0, 0, 0,    5, 0, 0, 0,        174,
+	MI(_tile_table_factory,                    26,               2, 0, 0, 0,    5, 0, 0, 0,        174,
 	   IT_FARM,           IT_STEEL_MILL,       IT_INVALID,       CHECK_NOTHING,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_LIVESTOCK,      CT_GRAIN,            CT_STEEL,
@@ -1146,7 +1181,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4808_FACTORY,                       STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_printing_works,             26,               0, 2, 0, 0,    0, 5, 0, 0,        174,
+	MI(_tile_table_printing_works,             26,               0, 2, 0, 0,    0, 5, 0, 0,        174,
 	   IT_PAPER_MILL,     IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_PAPER,          CT_INVALID,          CT_INVALID,
@@ -1155,7 +1190,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4809_PRINTING_WORKS,                STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_steel_mill,                 27,               2, 0, 0, 0,    5, 0, 0, 0,         10,
+	MI(_tile_table_steel_mill,                 27,               2, 0, 0, 0,    5, 0, 0, 0,         10,
 	   IT_IRON_MINE,      IT_FACTORY,          IT_INVALID,       CHECK_NOTHING,
 	   CT_STEEL,       0, CT_INVALID,       0, 5,
 	   CT_IRON_ORE,       CT_INVALID,          CT_INVALID,
@@ -1164,7 +1199,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480A_STEEL_MILL,                    STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_farm,                       250,              2, 4, 0, 0,    9, 9, 0, 0,         48,
+	MI(_tile_table_farm,                       250,              2, 4, 0, 0,    9, 9, 0, 0,         48,
 	   IT_FACTORY,        IT_FOOD_PROCESS,     IT_INVALID,       CHECK_FARM,
 	   CT_GRAIN,      10, CT_LIVESTOCK,    10, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1173,7 +1208,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480B_FARM,                          STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_copper_mine,                205,              0, 0, 3, 0,    0, 0, 4, 0,         10,
+	MI(_tile_table_copper_mine,                205,              0, 0, 3, 0,    0, 0, 4, 0,         10,
 	   IT_FACTORY_2,      IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_COPPER_ORE, 10, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1182,7 +1217,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480C_COPPER_ORE_MINE,               STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_oil_well,                   220,              0, 5, 3, 0,    4, 5, 5, 0,        152,
+	MI(_tile_table_oil_well,                   220,              0, 5, 3, 0,    4, 5, 5, 0,        152,
 	   IT_OIL_REFINERY,   IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_OIL,        12, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1191,7 +1226,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480D_OIL_WELLS,                     STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4837_NEW_OIL_RESERVES_FOUND,   STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_bank,                       193,              7, 0, 0, 0,    0, 0, 0, 0,         15,
+	MI(_tile_table_bank,                       193,              7, 0, 0, 0,    0, 0, 0, 0,         15,
 	   IT_BANK_TEMP,      IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_VALUABLES,   6, CT_INVALID,       0, 5,
 	   CT_VALUABLES,      CT_INVALID,          CT_INVALID,
@@ -1200,7 +1235,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480E_BANK,                          STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_food_process,               26,               0, 2, 2, 0,    0, 3, 4, 0,         55,
+	MI(_tile_table_food_process,               26,               0, 2, 2, 0,    0, 3, 4, 0,         55,
 	   IT_FRUIT_PLANTATION, IT_FARM,           IT_FARM_2,        CHECK_NOTHING,
 	   CT_FOOD,        0, CT_INVALID,       0, 5,
 	   CT_FRUIT,          CT_MAIZE,            CT_INVALID,
@@ -1209,7 +1244,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480F_FOOD_PROCESSING_PLANT,         STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_paper_mill,                 28,               0, 2, 0, 0,    0, 5, 0, 0,         10,
+	MI(_tile_table_paper_mill,                 28,               0, 2, 0, 0,    0, 5, 0, 0,         10,
 	   IT_FOREST,         IT_PRINTING_WORKS,   IT_INVALID,       CHECK_NOTHING,
 	   CT_PAPER,       0, CT_INVALID,       0, 5,
 	   CT_WOOD,           CT_INVALID,          CT_INVALID,
@@ -1218,7 +1253,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4810_PAPER_MILL,                    STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_gold_mine,                  208,              0, 3, 0, 0,    0, 4, 0, 0,        194,
+	MI(_tile_table_gold_mine,                  208,              0, 3, 0, 0,    0, 4, 0, 0,        194,
 	   IT_BANK_TROPIC_ARCTIC, IT_INVALID,      IT_INVALID,       CHECK_NOTHING,
 	   CT_GOLD,        7, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1227,7 +1262,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4811_GOLD_MINE,                     STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_bank2,                      19,               0, 3, 3, 0,    0, 6, 5, 0,         15,
+	MI(_tile_table_bank2,                      19,               0, 3, 3, 0,    0, 6, 5, 0,         15,
 	   IT_GOLD_MINE,      IT_DIAMOND_MINE,     IT_INVALID,       CHECK_NOTHING,
 	   CT_INVALID,     0, CT_INVALID,       0, 5,
 	   CT_GOLD,           CT_INVALID,          CT_INVALID,
@@ -1236,7 +1271,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4812_BANK,                          STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_diamond_mine,               213,              0, 0, 3, 0,    0, 0, 4, 0,        184,
+	MI(_tile_table_diamond_mine,               213,              0, 0, 3, 0,    0, 0, 4, 0,        184,
 	   IT_BANK_TROPIC_ARCTIC, IT_INVALID,      IT_INVALID,       CHECK_NOTHING,
 	   CT_DIAMONDS,    7, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1245,7 +1280,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4813_DIAMOND_MINE,                  STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_iron_mine,                  220,              2, 0, 0, 0,    5, 0, 0, 0,         55,
+	MI(_tile_table_iron_mine,                  220,              2, 0, 0, 0,    5, 0, 0, 0,         55,
 	   IT_STEEL_MILL,     IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_IRON_ORE,   10, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1254,7 +1289,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4814_IRON_ORE_MINE,                 STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_fruit_plantation,           225,              0, 0, 2, 0,    0, 0, 4, 0,         86,
+	MI(_tile_table_fruit_plantation,           225,              0, 0, 2, 0,    0, 0, 4, 0,         86,
 	   IT_FOOD_PROCESS,   IT_INVALID,          IT_INVALID,       CHECK_PLANTATION,
 	   CT_FRUIT,      10, CT_INVALID,       0, 15,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1263,7 +1298,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4815_FRUIT_PLANTATION,              STR_482E_NEW_BEING_PLANTED_NEAR,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_rubber_plantation,          218,              0, 0, 3, 0,    0, 0, 4, 0,         39,
+	MI(_tile_table_rubber_plantation,          218,              0, 0, 3, 0,    0, 0, 4, 0,         39,
 	   IT_FACTORY_2,      IT_INVALID,          IT_INVALID,       CHECK_PLANTATION,
 	   CT_RUBBER,     10, CT_INVALID,       0, 15,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1272,7 +1307,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4816_RUBBER_PLANTATION,             STR_482E_NEW_BEING_PLANTED_NEAR,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_water_supply,               199,              0, 0, 3, 0,    0, 0, 4, 0,         37,
+	MI(_tile_table_water_supply,               199,              0, 0, 3, 0,    0, 0, 4, 0,         37,
 	   IT_WATER_TOWER,    IT_INVALID,          IT_INVALID,       CHECK_WATER,
 	   CT_WATER,      12, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1281,7 +1316,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4817_WATER_SUPPLY,                  STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_water_tower,                14,               0, 0, 4, 0,    0, 0, 8, 0,        208,
+	MI(_tile_table_water_tower,                14,               0, 0, 4, 0,    0, 0, 8, 0,        208,
 	   IT_WATER_SUPPLY,   IT_INVALID,          IT_INVALID,       CHECK_WATER,
 	   CT_INVALID,     0, CT_INVALID,       0, 5,
 	   CT_WATER,          CT_INVALID,          CT_INVALID,
@@ -1290,7 +1325,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4818_WATER_TOWER,                   STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_factory2,                   26,               0, 0, 2, 0,    0, 0, 4, 0,        174,
+	MI(_tile_table_factory2,                   26,               0, 0, 2, 0,    0, 0, 4, 0,        174,
 	   IT_RUBBER_PLANTATION, IT_COPPER_MINE,   IT_LUMBER_MILL,   CHECK_PLANTATION,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_RUBBER,         CT_COPPER_ORE,       CT_WOOD,
@@ -1299,7 +1334,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4819_FACTORY,                       STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_farm2,                      250,              0, 0, 1, 0,    0, 0, 2, 0,         48,
+	MI(_tile_table_farm2,                      250,              0, 0, 1, 0,    0, 0, 2, 0,         48,
 	   IT_FOOD_PROCESS,   IT_INVALID,          IT_INVALID,       CHECK_PLANTATION,
 	   CT_MAIZE,      11, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1308,7 +1343,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481A_FARM,                          STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_lumber_mill,                17,               0, 0, 0, 0,    0, 0, 0, 0,        194,
+	MI(_tile_table_lumber_mill,                17,               0, 0, 0, 0,    0, 0, 0, 0,        194,
 	   IT_FACTORY_2,      IT_INVALID,          IT_INVALID,       CHECK_LUMBERMILL,
 	   CT_WOOD,        0, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1317,7 +1352,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481B_LUMBER_MILL,                   STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4834_LACK_OF_NEARBY_TREES_CAUSES,   STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_cotton_candy,               195,              0, 0, 0, 3,    0, 0, 0, 5,         48,
+	MI(_tile_table_cotton_candy,               195,              0, 0, 0, 3,    0, 0, 0, 5,         48,
 	   IT_CANDY_FACTORY,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_COTTON_CANDY, 13, CT_INVALID,    0, 30,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1326,7 +1361,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481C_COTTON_CANDY_FOREST,           STR_482E_NEW_BEING_PLANTED_NEAR,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_candy_factory,              26,               0, 0, 0, 3,    0, 0, 0, 5,        174,
+	MI(_tile_table_candy_factory,              26,               0, 0, 0, 3,    0, 0, 0, 5,        174,
 	   IT_COTTON_CANDY,   IT_TOFFEE_QUARRY,    IT_SUGAR_MINE,    CHECK_NOTHING,
 	   CT_CANDY,       0, CT_INVALID,       0, 5,
 	   CT_SUGAR,          CT_TOFFEE,           CT_COTTON_CANDY,
@@ -1335,7 +1370,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481D_CANDY_FACTORY,                 STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_battery_farm,               187,              0, 0, 0, 3,    0, 0, 0, 4,         39,
+	MI(_tile_table_battery_farm,               187,              0, 0, 0, 3,    0, 0, 0, 4,         39,
 	   IT_TOY_FACTORY,    IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_BATTERIES,  11, CT_INVALID,      0, 30,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1344,7 +1379,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481E_BATTERY_FARM,                  STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_cola_wells,                 193,              0, 0, 0, 3,    0, 0, 0, 5,         55,
+	MI(_tile_table_cola_wells,                 193,              0, 0, 0, 3,    0, 0, 0, 5,         55,
 	   IT_FIZZY_DRINK_FACTORY, IT_INVALID,     IT_INVALID,       CHECK_NOTHING,
 	   CT_COLA,       12, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1353,7 +1388,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481F_COLA_WELLS,                    STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_toy_shop,                   17,               0, 0, 0, 3,    0, 0, 0, 4,        208,
+	MI(_tile_table_toy_shop,                   17,               0, 0, 0, 3,    0, 0, 0, 4,        208,
 	   IT_TOY_FACTORY,    IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_INVALID,     0, CT_INVALID,       0, 5,
 	   CT_TOYS,           CT_INVALID,          CT_INVALID,
@@ -1362,7 +1397,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4820_TOY_SHOP,                      STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_toy_factory,                20,              0, 0, 0, 3,    0, 0, 0, 5,          10,
+	MI(_tile_table_toy_factory,                20,              0, 0, 0, 3,    0, 0, 0, 5,          10,
 	   IT_PLASTIC_FOUNTAINS, IT_BATTERY_FARM,  IT_TOY_SHOP,     CHECK_NOTHING,
 	   CT_TOYS,        0, CT_INVALID,       0, 5,
 	   CT_PLASTIC,        CT_BATTERIES,        CT_INVALID,
@@ -1371,7 +1406,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4821_TOY_FACTORY,                   STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_plastic_fountain,           192,              0, 0, 0, 3,    0, 0, 0, 5,         37,
+	MI(_tile_table_plastic_fountain,           192,              0, 0, 0, 3,    0, 0, 0, 5,         37,
 	   IT_TOY_FACTORY,    IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_PLASTIC,    14, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1380,7 +1415,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4822_PLASTIC_FOUNTAINS,             STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_fizzy_drink,                22,               0, 0, 0, 3,    0, 0, 0, 4,        184,
+	MI(_tile_table_fizzy_drink,                22,               0, 0, 0, 3,    0, 0, 0, 4,        184,
 	   IT_COLA_WELLS,     IT_BUBBLE_GENERATOR, IT_INVALID,       CHECK_NOTHING,
 	   CT_FIZZY_DRINKS, 0, CT_INVALID,      0, 5,
 	   CT_COLA,           CT_BUBBLES,          CT_INVALID,
@@ -1389,7 +1424,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4823_FIZZY_DRINK_FACTORY,           STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_bubble_generator,           203,              0, 0, 0, 3,    0, 0, 0, 5,        152,
+	MI(_tile_table_bubble_generator,           203,              0, 0, 0, 3,    0, 0, 0, 5,        152,
 	   IT_FIZZY_DRINK_FACTORY, IT_INVALID,     IT_INVALID,       CHECK_BUBBLEGEN,
 	   CT_BUBBLES,    13, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1398,7 +1433,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4824_BUBBLE_GENERATOR,              STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_toffee_quarry,              213,              0, 0, 0, 3,    0, 0, 0, 5,        194,
+	MI(_tile_table_toffee_quarry,              213,              0, 0, 0, 3,    0, 0, 0, 5,        194,
 	   IT_CANDY_FACTORY,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_TOFFEE,     10, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1407,7 +1442,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4825_TOFFEE_QUARRY,                 STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_sugar_mine,                 210,              0, 0, 0, 2,    0, 0, 0, 4,         15,
+	MI(_tile_table_sugar_mine,                 210,              0, 0, 0, 2,    0, 0, 0, 4,         15,
 	   IT_CANDY_FACTORY,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_SUGAR,      11, CT_INVALID,       0, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
@@ -1416,266 +1451,266 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4826_SUGAR_MINE,                    STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 };
-#undef MK
+#undef MI
 
-/** Writes the properties of a industry tile into the IndustryTileSpec struct.
+/** Writes the properties of an industry tile into the IndustryTileSpec struct.
  * @param c1 first type of cargo accepted for this tile
  * @param c2 second cargo
  * @param c3 and third cargo. Those three are in an array
  * @param s1 slope refused upon choosing a place to build
  * @param a1 animation frame on production
  * @param a2 next frame of animation
- * @param a3 chosses between animation of construction state
+ * @param a3 chooses between animation or construction state
  */
-#define MK(c1, c2, c3, sl, a1, a2, a3) {{c1, c2, c3}, sl, a1, a2, a3}
+#define MT(c1, c2, c3, sl, a1, a2, a3) {{c1, c2, c3}, sl, a1, a2, a3}
 static const IndustryTileSpec _industry_tile_specs[] = {
 	/* Coal Mine */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Power Station */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_COAL,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_COAL,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Sawmill */
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Forest Artic, temperate */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,               17,  INDUTILE_NOANIM,   false), // Chopping forest
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,               16,   false), // Growing forest
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,               17,  INDUTILE_NOANIM,   false), ///< Chopping forest
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,               16,   false), ///< Growing forest
 
 	/* Oil refinery */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_OIL,        SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_OIL,        SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* oil Rig */
-	MK(CT_INVALID,      CT_INVALID,   CT_PASSENGERS, SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_MAIL,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_PASSENGERS, SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_MAIL,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Oil Wells artic, temperate */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true ),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true ),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true ),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true ),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true ),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true ),
 
 	/* Farm tropic, arctic and temperate */
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Factory temperate */
-	MK(CT_GRAIN,        CT_STEEL,     CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_GRAIN,        CT_STEEL,     CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_GRAIN,        CT_STEEL,     CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_GRAIN,        CT_STEEL,     CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_GRAIN,        CT_STEEL,     CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_GRAIN,        CT_STEEL,     CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_GRAIN,        CT_STEEL,     CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_GRAIN,        CT_STEEL,     CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Printing works */
-	MK(CT_INVALID,      CT_INVALID,   CT_PAPER,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_PAPER,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_PAPER,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_PAPER,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_PAPER,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_PAPER,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_PAPER,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_PAPER,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Copper ore mine */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true ),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true ),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Steel mill */
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_IRON_ORE,   SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Bank temperate*/
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_VALUABLES,  SLOPE_E,      INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_PASSENGERS,   CT_INVALID,   CT_VALUABLES,  SLOPE_S,      INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_VALUABLES,  SLOPE_E,      INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_PASSENGERS,   CT_INVALID,   CT_VALUABLES,  SLOPE_S,      INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Food processing plant, tropic and arctic. CT_MAIZE or CT_WHEAT, CT_LIVESTOCK or CT_FRUIT*/
-	MK(CT_MAIZE,        CT_INVALID,   CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_MAIZE,        CT_INVALID,   CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_MAIZE,        CT_INVALID,   CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_MAIZE,        CT_INVALID,   CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_MAIZE,        CT_INVALID,   CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_MAIZE,        CT_INVALID,   CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_MAIZE,        CT_INVALID,   CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_MAIZE,        CT_INVALID,   CT_LIVESTOCK,  SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Paper mill */
-	MK(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_WOOD,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Gold mine */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true ),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  true ),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Bank Sub Arctic */
-	MK(CT_INVALID,      CT_INVALID,   CT_GOLD,       SLOPE_E,      INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_GOLD,       SLOPE_S,      INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_GOLD,       SLOPE_E,      INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_GOLD,       SLOPE_S,      INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Diamond mine */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Iron ore Mine */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Fruit plantation */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Rubber plantation */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Water supply */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Water tower */
-	MK(CT_INVALID,      CT_INVALID,   CT_WATER,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_WATER,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Factory (sub-tropical) */
-	MK(CT_COPPER_ORE,   CT_WOOD,      CT_RUBBER,     SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_COPPER_ORE,   CT_WOOD,      CT_RUBBER,     SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_COPPER_ORE,   CT_WOOD,      CT_RUBBER,     SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_COPPER_ORE,   CT_WOOD,      CT_RUBBER,     SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_COPPER_ORE,   CT_WOOD,      CT_RUBBER,     SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_COPPER_ORE,   CT_WOOD,      CT_RUBBER,     SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_COPPER_ORE,   CT_WOOD,      CT_RUBBER,     SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_COPPER_ORE,   CT_WOOD,      CT_RUBBER,     SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Lumber mill */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Candyfloss forest */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,              130,   INDUTILE_NOANIM,  false), // Chopping candyfloss
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,               129,  false), // Growing candyfloss
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,              130,   INDUTILE_NOANIM,  false), ///< Chopping candyfloss
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,               129,  false), ///< Growing candyfloss
 
 	/* Sweet factory */
-	MK(CT_COTTON_CANDY, CT_TOFFEE,    CT_SUGAR,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_COTTON_CANDY, CT_TOFFEE,    CT_SUGAR,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_COTTON_CANDY, CT_TOFFEE,    CT_SUGAR,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_COTTON_CANDY, CT_TOFFEE,    CT_SUGAR,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_COTTON_CANDY, CT_TOFFEE,    CT_SUGAR,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_COTTON_CANDY, CT_TOFFEE,    CT_SUGAR,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_COTTON_CANDY, CT_TOFFEE,    CT_SUGAR,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_COTTON_CANDY, CT_TOFFEE,    CT_SUGAR,      SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Batter farm */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,              136,   INDUTILE_NOANIM,  false), // Reaping batteries
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,               135,  false), // Growing batteries
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,              136,   INDUTILE_NOANIM,  false), ///< Reaping batteries
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,               135,  false), ///< Growing batteries
 
 	/* Cola wells */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Toy shop */
-	MK(CT_INVALID,      CT_INVALID,   CT_TOYS,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_TOYS,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_TOYS,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_TOYS,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_TOYS,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_TOYS,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_TOYS,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_TOYS,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Toy factory */
-	MK(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_BATTERIES,    CT_INVALID,   CT_PLASTIC,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Plastic Fountain */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Fizzy drink factory */
-	MK(CT_BUBBLES,      CT_INVALID,   CT_COLA,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_BUBBLES,      CT_INVALID,   CT_COLA,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_BUBBLES,      CT_INVALID,   CT_COLA,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_BUBBLES,      CT_INVALID,   CT_COLA,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_BUBBLES,      CT_INVALID,   CT_COLA,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_BUBBLES,      CT_INVALID,   CT_COLA,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_BUBBLES,      CT_INVALID,   CT_COLA,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_BUBBLES,      CT_INVALID,   CT_COLA,       SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Bubble generator */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Toffee quarry */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 
 	/* Sugar mine */
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
-	MK(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
+	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
 };
-#undef MK
+#undef MT
 
 #endif  /* BUILD_INDUSTRY_H */

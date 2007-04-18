@@ -1155,8 +1155,8 @@ int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 }
 
 /**
- * @param[in] truck_station Determines whether a stop is RoadStop::BUS or RoadStop::TRUCK
- * @param[in] station The station to do the whole procedure for
+ * @param truck_station Determines whether a stop is RoadStop::BUS or RoadStop::TRUCK
+ * @param st The Station to do the whole procedure for
  * @return a pointer to where to link a new RoadStop*
  */
 static RoadStop **FindRoadStopSpot(bool truck_station, Station* st)
@@ -1164,10 +1164,10 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station* st)
 	RoadStop **primary_stop = (truck_station) ? &st->truck_stops : &st->bus_stops;
 
 	if (*primary_stop == NULL) {
-		//we have no roadstop of the type yet, so write a "primary stop"
+		/* we have no roadstop of the type yet, so write a "primary stop" */
 		return primary_stop;
 	} else {
-		//there are stops already, so append to the end of the list
+		/* there are stops already, so append to the end of the list */
 		RoadStop *stop = *primary_stop;
 		while (stop->next != NULL) stop = stop->next;
 		return &stop->next;

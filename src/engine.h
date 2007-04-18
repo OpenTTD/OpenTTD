@@ -90,7 +90,7 @@ struct EngineInfo {
 	Date base_intro;
 	Year lifelength;
 	Year base_life;
-	byte unk2;         ///< Carriages have the highest bit set in this one
+	byte unk2;         ///< flag for carriage(bit 7) and decay speed(bits0..6)
 	byte load_amount;
 	byte climates;
 	uint32 refit_mask;

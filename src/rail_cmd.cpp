@@ -829,10 +829,11 @@ int32 CmdBuildSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /** Remove signals
  * @param tile coordinates where signal is being deleted from
  * @param flags operation to perform
- * @param various bitstuffed elements, only track information is used
- * - p1 = (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
- * - p1 = (bit  3)    - override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
- * - p1 = (bit  4)    - 0 = signals, 1 = semaphores
+ * @param p1 various bitstuffed elements, only track information is used
+ *           - (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
+ *           - (bit  3)    - override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ *           - (bit  4)    - 0 = signals, 1 = semaphores
+ * @param p2 unused
  */
 int32 CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {

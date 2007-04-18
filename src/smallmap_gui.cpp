@@ -566,7 +566,7 @@ static void DrawHorizMapIndicator(int x, int y, int x2, int y2)
  * are drawn directly into the screen buffer. The final map is drawn in multiple passes.
  * The passes are:
  * <ol><li>The colors of tiles in the different modes.</li>
- * <li>Town names (optional)</li>
+ * <li>Town names (optional)</li></ol>
  *
  * @param dpi pointer to pixel to write onto
  * @param w pointer to Window struct

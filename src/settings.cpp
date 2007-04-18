@@ -897,10 +897,10 @@ static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list
 /** Saves all items from a list into the 'grpname' section
  * The list parameter can be a NULL pointer, in this case a callback function
  * should be defined that will provide the source data to be saved.
- * @param IniFile handle to the ini file where the destination data is saved
+ * @param ini IniFile handle to the ini file where the destination data is saved
  * @param grpname character string identifying the section-header of the ini file
  * @param list pointer to an string(pointer) array that will be used as the
- * source to be saved into the relevant ini section
+ *             source to be saved into the relevant ini section
  * @param len the maximum number of items available for the above list
  * @param proc callback function that can will provide the source data if defined */
 static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc)

@@ -296,7 +296,9 @@ static void SetupNewGRFWindow(Window *w)
 
 
 /** Callback function for the newgrf 'apply changes' confirmation window
- * @param yes_clicked boolean value, true when yes was clicked, false otherwise */
+ * @param w Window which is calling this callback
+ * @param confirmed boolean value, true when yes was clicked, false otherwise
+ */
 static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {

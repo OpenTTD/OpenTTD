@@ -59,7 +59,6 @@ Station::Station(TileIndex tile)
  * Aircraft-Hangar orders need special treatment here, as the hangars are
  * actually part of a station (tiletype is STATION), but the order type
  * is OT_GOTO_DEPOT.
- * @param st Station to be deleted
  */
 Station::~Station()
 {

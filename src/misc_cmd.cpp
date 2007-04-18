@@ -20,6 +20,7 @@
 
 /** Change the player's face.
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 unused
  * @param p2 face bitmasked
  */
