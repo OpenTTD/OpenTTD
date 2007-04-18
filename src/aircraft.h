@@ -109,4 +109,10 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height);
  */
 void UpdateAirplanesOnNewStation(const Station *st);
 
+/** Update cached values of an aircraft.
+ * Currently caches callback 36 max speed.
+ * @param v Vehicle
+ */
+void UpdateAircraftCache(Vehicle *v);
+
 #endif /* AIRCRAFT_H */

@@ -251,6 +251,8 @@ void AfterLoadVehicles()
 						Vehicle *rotor = shadow->next;
 						rotor->cur_image = GetRotorImage(v);
 					}
+
+					UpdateAircraftCache(v);
 				}
 				break;
 			default: break;

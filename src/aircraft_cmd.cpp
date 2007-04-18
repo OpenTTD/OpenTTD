@@ -393,6 +393,8 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SETBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
+		UpdateAircraftCache(v);
+
 		VehiclePositionChanged(v);
 		VehiclePositionChanged(u);
 
@@ -862,6 +864,21 @@ static void PlayAircraftSound(const Vehicle* v)
 	}
 }
 
+
+void UpdateAircraftCache(Vehicle *v)
+{
+	uint max_speed = GetVehicleProperty(v, 0x0C, 0);
+	if (max_speed != 0) {
+		/* Convert from original units to (approx) km/h */
+		max_speed = (max_speed * 129) / 10;
+
+		v->u.air.cached_max_speed = max_speed;
+	} else {
+		v->u.air.cached_max_speed = 0xFFFF;
+	}
+}
+
+
 /**
  * Special velocities for aircraft
  */
@@ -884,6 +901,11 @@ static int UpdateAircraftSpeed(Vehicle *v, uint speed_limit = SPEED_LIMIT_NONE, 
 {
 	uint spd = v->acceleration * 16;
 	byte t;
+
+	if (v->u.air.cached_max_speed < speed_limit) {
+		if (v->cur_speed < speed_limit) hard_limit = false;
+		speed_limit = v->u.air.cached_max_speed;
+	}
 
 	speed_limit = min(speed_limit, v->max_speed);
 
@@ -1856,8 +1878,10 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *apc)
 	/* we have arrived in an important state (eg terminal, hangar, etc.) */
 	if (current->heading == v->u.air.state) {
 		byte prev_pos = v->u.air.pos; // location could be changed in state, so save it before-hand
+		byte prev_state = v->u.air.state;
 		_aircraft_state_handlers[v->u.air.state](v, apc);
 		if (v->u.air.state != FLYING) v->u.air.previous_pos = prev_pos;
+		if (v->u.air.state != prev_state) UpdateAircraftCache(v);
 		return true;
 	}
 

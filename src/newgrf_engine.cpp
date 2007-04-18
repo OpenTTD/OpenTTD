@@ -935,6 +935,17 @@ uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, E
 	return group->g.callback.result;
 }
 
+
+/* Callback 36 handler */
+uint GetVehicleProperty(const Vehicle *v, uint8 property, uint orig_value)
+{
+	uint16 callback = GetVehicleCallback(CBID_VEHICLE_MODIFY_PROPERTY, property, 0, v->engine_type, v);
+	if (callback != CALLBACK_FAILED) return callback;
+
+	return orig_value;
+}
+
+
 static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_random_bits, bool first)
 {
 	const SpriteGroup *group;

@@ -35,6 +35,10 @@ bool UsesWagonOverride(const Vehicle *v);
 #define GetCustomVehicleSprite(v, direction) GetCustomEngineSprite(v->engine_type, v, direction)
 #define GetCustomVehicleIcon(et, direction) GetCustomEngineSprite(et, NULL, direction)
 
+/* Handler to Evaluate callback 36. If the callback fails (i.e. most of the
+ * time) orig_value is returned */
+uint GetVehicleProperty(const Vehicle *v, uint8 property, uint orig_value);
+
 enum VehicleTrigger {
 	VEHICLE_TRIGGER_NEW_CARGO     = 1,
 	/* Externally triggered only for the first vehicle in chain */

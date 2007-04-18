@@ -133,6 +133,10 @@ enum CallbackID {
 	/* Called monthly on production changes, so it can be adjusted more frequently */
 	CBID_INDUSTRY_MONTHLYPROD_CHANGE= 0x35, // not yet implemented
 
+	/* Called to modify various vehicle properties. Callback parameter 1
+	 * specifies the property index, as used in Action 0, to change. */
+	CBID_VEHICLE_MODIFY_PROPERTY    = 0x36,
+
 	/* Called to determine text to display after cargo name */
 	CBID_INDUSTRY_CARGO_SUFFIX      = 0x37, // not yet implemented
 

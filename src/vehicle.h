@@ -166,6 +166,7 @@ enum {
 
 struct VehicleAir {
 	uint16 crashed_counter;
+	uint16 cached_max_speed;
 	byte pos;
 	byte previous_pos;
 	StationID targetairport;

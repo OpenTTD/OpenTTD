@@ -406,7 +406,7 @@ static bool ShipAccelerate(Vehicle *v)
 	uint spd;
 	byte t;
 
-	spd = min(v->cur_speed + 1, v->max_speed);
+	spd = min(v->cur_speed + 1, GetVehicleProperty(v, 0x0B, v->max_speed));
 
 	/*updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
