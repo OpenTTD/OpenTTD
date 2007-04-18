@@ -1543,6 +1543,7 @@ static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
 
 /**
  * Search callback function for TownActionBuildStatue
+ * @param tile on which to perform the search
  * @param town_id The town_id for which we want a statue
  * @return the result of the test
  */

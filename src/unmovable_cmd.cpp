@@ -27,8 +27,9 @@
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are
  * rebuilding it. Otherwise, only water can destroy it.
- * @param tile tile coordinates where HQ is located to destroy
+ * @param pid Player requesting the destruction of his HQ
  * @param flags docommand flags of calling function
+ * @return cost of the operation
  */
 static int32 DestroyCompanyHQ(PlayerID pid, uint32 flags)
 {

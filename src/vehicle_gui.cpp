@@ -279,8 +279,11 @@ static RefitList *BuildRefitList(const Vehicle *v)
 
 /** Draw the list of available refit options for a consist.
  * Draw the list and highlight the selected refit option (if any)
- * @param *v first vehicle in consist to get the refit-options of
+ * @param *list first vehicle in consist to get the refit-options of
  * @param sel selected refit cargo-type in the window
+ * @param pos position of the selected item in caller widow
+ * @param rows number of rows(capacity) in caller window
+ * @param delta step height in caller window
  * @return the refit option that is hightlighted, NULL if none
  */
 static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uint rows, uint delta)

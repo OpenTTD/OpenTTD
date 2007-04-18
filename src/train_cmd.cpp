@@ -3107,7 +3107,7 @@ extern TileIndex CheckTunnelBusy(TileIndex tile, uint *length);
  * train, then goes to the last wagon and deletes that. Each call to this function
  * will remove the last wagon of a crashed train. If this wagon was on a crossing,
  * or inside a tunnel, recalculate the signals as they might need updating
- * @param v the @Vehicle of which last wagon is to be removed
+ * @param v the Vehicle of which last wagon is to be removed
  */
 static void DeleteLastWagon(Vehicle *v)
 {

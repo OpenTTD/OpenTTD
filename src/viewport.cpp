@@ -2023,8 +2023,9 @@ static byte Check2x1AutoRail(int mode)
  * north-south (DIR_S) to obtain the same results with less code. This is what
  * the return value signifies.
  * @param style HighLightStyle dragging style
- * @param start_tile, end_tile start and end tile of drag
- * @param boolean value which when true means start/end should be swapped */
+ * @param start_tile start tile of drag
+ * @param end_tile end tile of drag
+ * @return boolean value which when true means start/end should be swapped */
 static bool SwapDirection(HighLightStyle style, TileIndex start_tile, TileIndex end_tile)
 {
 	uint start_x = TileX(start_tile);

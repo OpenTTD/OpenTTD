@@ -279,7 +279,7 @@ static inline bool IsValidTown(const Town* town)
 
 /**
  * Check if a TownID is valid.
- * @param TownID to inquiry
+ * @param index to inquiry in the pool of town
  * @return true if it exists
  */
 static inline bool IsValidTownID(TownID index)

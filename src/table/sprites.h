@@ -1302,7 +1302,7 @@ enum AnimCursors {
  * <li> TRANSPARENT_BIT is the bit number which toggles sprite transparency</li>
  * <li> RECOLOR_BIT toggles the recoloring system</li>
  * <li> PALETTE_SPRITE_WIDTH and PALETTE_SPRITE_START determine the position and number of
- * bits used for the recoloring process. For transparency, it must be 0x322.</li>
+ * bits used for the recoloring process. For transparency, it must be 0x322.</li></ul>
  */
 enum SpriteSetup {
 	TRANSPARENT_BIT = 31,       ///< toggles transparency in the sprite

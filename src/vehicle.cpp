@@ -767,7 +767,7 @@ bool CanRefitTo(EngineID engine_type, CargoID cid_to)
 }
 
 /** Find the first cargo type that an engine can be refitted to.
- * @param engine Which engine to find cargo for.
+ * @param engine_type Which engine to find cargo for.
  * @return A climate dependent cargo type. CT_INVALID is returned if not refittable.
  */
 CargoID FindFirstRefittableCargo(EngineID engine_type)
@@ -784,7 +784,7 @@ CargoID FindFirstRefittableCargo(EngineID engine_type)
 }
 
 /** Learn the price of refitting a certain engine
-* @param engine Which engine to refit
+* @param engine_type Which engine to refit
 * @return Price for refitting
 */
 int32 GetRefitCost(EngineID engine_type)
@@ -1904,7 +1904,7 @@ static inline void ExtendVehicleListSize(const Vehicle ***engine_list, uint16 *e
 /** Generates a list of vehicles inside a depot
  * Will enlarge allocated space for the list if they are too small, so it's ok to call with (pointer to NULL array, pointer to uninitised uint16, pointer to 0)
  * If one of the lists is not needed (say wagons when finding ships), all the pointers regarding that list should be set to NULL
- * @param Type type of vehicle
+ * @param type Type of vehicle
  * @param tile The tile the depot is located in
  * @param ***engine_list Pointer to a pointer to an array of vehicles in the depot (old list is freed and a new one is malloced)
  * @param *engine_list_length Allocated size of engine_list. Needs to be set to 0 when engine_list points to a NULL array
@@ -1986,11 +1986,13 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 * @param length_of_array informs the length allocated for sort_list. This is not the same as the number of vehicles in the list. Needs to be 0 when sort_list is NULL
 * @param type type of vehicle
 * @param owner PlayerID of owner to generate a list for
-* @param index This parameter got different meanings depending on window_type
-			VLW_STATION_LIST:  index of station to generate a list for
-			VLW_SHARED_ORDERS: index of order to generate a list for
-			VLW_STANDARD: not used
-			VLW_DEPOT_LIST: TileIndex of the depot/hangar to make the list for
+* @param index This parameter has different meanings depending on window_type
+    <ul>
+      <li>VLW_STATION_LIST:  index of station to generate a list for</li>
+      <li>VLW_SHARED_ORDERS: index of order to generate a list for<li>
+      <li>VLW_STANDARD: not used<li>
+      <li>VLW_DEPOT_LIST: TileIndex of the depot/hangar to make the list for</li>
+    </ul>
 * @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
 * @return the number of vehicles added to the list
 */
@@ -2088,7 +2090,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
  * @param flags the flags used for DoCommand()
  * @param service should the vehicles only get service in the depots
  * @param owner PlayerID of owner of the vehicles to send
- * @param VLW_flag tells what kind of list requested the goto depot
+ * @param vlw_flag tells what kind of list requested the goto depot
  * @return 0 for success and CMD_ERROR if no vehicle is able to go to depot
  */
 int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)

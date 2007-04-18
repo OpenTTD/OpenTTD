@@ -1177,7 +1177,6 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station* st)
 /** Build a bus or truck stop
  * @param tile tile to build the stop at
  * @param flags operation to perform
- * @param flags operation to perform
  * @param p1 entrance direction (DiagDirection)
  * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
  *           bit 1: 0 for normal, 1 for drive-through
