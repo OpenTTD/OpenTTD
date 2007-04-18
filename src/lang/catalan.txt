@@ -751,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...els e
 STR_02A1_SMALL                                                  :{BLACK}Petit
 STR_02A2_MEDIUM                                                 :{BLACK}Mitjà
 STR_02A3_LARGE                                                  :{BLACK}Gran
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Ciutat
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecciona mida de població
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Mida de població:
 
@@ -1143,6 +1144,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Ràpida
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Molt ràpida
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporció de ciutats que creixeran el doble de ràpid: {ORANGE}1 de cada {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporció de ciutats que creixeran el doble de ràpid: {ORANGE}Cap
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador de mida de ciutat inicial: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interficie
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcció

@@ -752,6 +752,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...교�
 STR_02A1_SMALL                                                  :{BLACK}소형
 STR_02A2_MEDIUM                                                 :{BLACK}중형
 STR_02A3_LARGE                                                  :{BLACK}대형
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}도시
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}도시 크기 선택
 STR_02A5_TOWN_SIZE                                              :{YELLOW}도시 크기:
 
@@ -1144,6 +1145,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :빠름
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :매우 빠름
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}2배 빠르게 성장하는 마을의 비율: {ORANGE}1 대 {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}2배 빠르게 성장하는 마을의 비율: {ORANGE}없음
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}초기의 도시 크기 배수: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}인터페이스
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}건설

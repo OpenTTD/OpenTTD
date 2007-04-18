@@ -752,6 +752,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...les d
 STR_02A1_SMALL                                                  :{BLACK}Petite
 STR_02A2_MEDIUM                                                 :{BLACK}Moyenne
 STR_02A3_LARGE                                                  :{BLACK}Grande
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Métropole
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Sélectionner la taille de la ville
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Taille:
 
@@ -1142,8 +1143,9 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lente
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normale
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rapide
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Très rapide
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proportion des villes qui vont croitre deux fois plus vite: {ORANGE}1 sur {STRING}
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportion des villes qui vont croitre deux fois plus vite: {ORANGE}Aucune
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proportion des villes qui deviendront des métropoles: {ORANGE}1 sur {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportion des villes qui deviendront des métropoles: {ORANGE}Aucune
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicateur de taille de ville initial: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construction

@@ -751,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...brons
 STR_02A1_SMALL                                                  :{BLACK}Liten
 STR_02A2_MEDIUM                                                 :{BLACK}Mellan
 STR_02A3_LARGE                                                  :{BLACK}Stor
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Stad
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Välj stadsstorlek
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadsstorlek:
 
@@ -1143,6 +1144,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Snabbt
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Väldigt snabbt
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}1 av {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}Inga
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initial stadsstorleks multiplikator: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Gränssnitt
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruktion
@@ -1687,7 +1689,7 @@ STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Muta de lokala 
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Starta en liten lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}  Kostnad: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Starta en mellanstor lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}  Kostnad: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Starta en stor lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}  Kostnad: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Bekosta ombyggnad av stadens vägnätverk. Orsakar ansenlig splittring för vägtrafik upp till 6 månader.{}  Kostnad: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Bekosta ombyggnad av stadens vägnätverk. Orsakar ansenliga störningar för vägtrafik i upp till 6 månader.{}  Kostnad: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bygg en staty i ditt företags ära.{} Kostnad: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Bekosta uppbyggnad av nya kommersiella byggnader i staden.{}  Kostnad: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Köp 1 års exklusiv transporträttighet i staden. Stadens myndigheter kommer bara tillåta passagerare och gods till användning för ditt företags stationer.{} Kostnad: {CURRENCY}

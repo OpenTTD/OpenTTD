@@ -817,6 +817,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...a hí
 STR_02A1_SMALL                                                  :{BLACK}Kicsi
 STR_02A2_MEDIUM                                                 :{BLACK}Közepes
 STR_02A3_LARGE                                                  :{BLACK}Nagy
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Város
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}A város méretének kiválasztása
 STR_02A5_TOWN_SIZE                                              :{YELLOW}A város mérete:
 
@@ -1209,6 +1210,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Gyors
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Nagyon gyors
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Dupla gyorsan növekvő városok aránya: {ORANGE}{STRING} városból 1
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Dupla gyorsan növekvő városok aránya: {ORANGE}Nincsennek
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Kezdeti városméret-szorzó: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Megjelenítés
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Építkezés
