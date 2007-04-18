@@ -251,14 +251,14 @@ static void SlWriteSimpleGamma(uint i)
 		if (i >= (1 << 14)) {
 			if (i >= (1 << 21)) {
 				assert(i < (1 << 28));
-				SlWriteByte((byte)0xE0 | (i>>24));
-				SlWriteByte((byte)(i>>16));
+				SlWriteByte((byte)0xE0 | (i >> 24));
+				SlWriteByte((byte)(i >> 16));
 			} else {
-				SlWriteByte((byte)0xC0 | (i>>16));
+				SlWriteByte((byte)0xC0 | (i >> 16));
 			}
-			SlWriteByte((byte)(i>>8));
+			SlWriteByte((byte)(i >> 8));
 		} else {
-			SlWriteByte((byte)(0x80 | (i>>8)));
+			SlWriteByte((byte)(0x80 | (i >> 8)));
 		}
 	}
 	SlWriteByte(i);
@@ -925,7 +925,7 @@ static const ChunkHandler *SlFindChunkHandler(uint32 id)
 {
 	const ChunkHandler *ch;
 	const ChunkHandler *const *chsc;
-	for (chsc = _sl.chs; (ch=*chsc++) != NULL;) {
+	for (chsc = _sl.chs; (ch = *chsc++) != NULL;) {
 		for (;;) {
 			if (ch->id == id) return ch;
 			if (ch->flags & CH_LAST) break;
@@ -1030,7 +1030,7 @@ static void WriteNoComp(uint size)
 static bool InitNoComp()
 {
 	_sl.bufsize = LZO_SIZE;
-	_sl.buf = _sl.buf_ori =(byte*)malloc(LZO_SIZE);
+	_sl.buf = _sl.buf_ori = (byte*)malloc(LZO_SIZE);
 	return true;
 }
 

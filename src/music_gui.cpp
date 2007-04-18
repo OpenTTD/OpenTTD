@@ -207,8 +207,8 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 		LowerWindowWidget(w, 4);
 		DrawWindowWidgets(w);
 
-		GfxFillRect(3, 23, 3+177,23+191,0);
-		GfxFillRect(251, 23, 251+177,23+191,0);
+		GfxFillRect(3, 23, 3 + 177, 23 + 191, 0);
+		GfxFillRect(251, 23, 251 + 177, 23 + 191, 0);
 
 		DrawStringCentered(92, 15, STR_01EE_TRACK_INDEX, 0);
 
@@ -219,14 +219,14 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, i);
 			SetDParam(2, i);
 			SetDParam(1, SPECSTR_SONGNAME);
-			DrawString(4, 23+(i-1)*6, (i < 10) ? STR_01EC_0 : STR_01ED, 0);
+			DrawString(4, 23 + (i - 1) * 6, (i < 10) ? STR_01EC_0 : STR_01ED, 0);
 		}
 
 		for (i = 0; i != 6; i++) {
 			DrawStringCentered(216, 45 + i * 8, STR_01D5_ALL + i, (i == msf.playlist) ? 0xC : 0x10);
 		}
 
-		DrawStringCentered(216, 45+8*6+16, STR_01F0_CLEAR, 0);
+		DrawStringCentered(216, 45 + 8 * 6 + 16, STR_01F0_CLEAR, 0);
 #if 0
 		DrawStringCentered(216, 45 + 8 * 6 + 16 * 2, STR_01F1_SAVE, 0);
 #endif

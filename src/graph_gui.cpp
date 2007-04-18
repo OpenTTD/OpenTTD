@@ -222,7 +222,7 @@ static void DrawGraph(const GraphDrawer *gw)
 					y = gw->top + x_axis_offset - (x_axis_offset * datapoint) / highest_value;
 
 					/* Draw the point. */
-					GfxFillRect(x-1, y-1, x+1, y+1, color);
+					GfxFillRect(x - 1, y - 1, x + 1, y + 1, color);
 
 					/* Draw the line connected to the previous point. */
 					if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, color);
@@ -268,7 +268,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 			FOR_ALL_PLAYERS(p) {
 				if (!p->is_active) continue;
 
-				DrawPlayerIcon(p->index, 4, 18+p->index*12);
+				DrawPlayerIcon(p->index, 4, 18 + p->index * 12);
 
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
@@ -330,7 +330,7 @@ static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
 	const Player* p;
 	uint excluded_players = _legend_excluded_players;
 	byte nums;
-	int mo,yr;
+	int mo, yr;
 
 	/* Exclude the players which aren't valid */
 	FOR_ALL_PLAYERS(p) {
@@ -908,7 +908,7 @@ static const WindowDesc _company_league_desc = {
 
 void ShowCompanyLeagueTable()
 {
-	AllocateWindowDescFront(&_company_league_desc,0);
+	AllocateWindowDescFront(&_company_league_desc, 0);
 }
 
 /*****************************/

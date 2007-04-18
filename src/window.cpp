@@ -235,25 +235,25 @@ static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right
 				bottom > v->top &&
 				left < v->left + v->width &&
 				top < v->top + v->height) {
-			if (left < (x=v->left)) {
+			if (left < (x = v->left)) {
 				DrawOverlappedWindow(wz, left, top, x, bottom);
 				DrawOverlappedWindow(wz, x, top, right, bottom);
 				return;
 			}
 
-			if (right > (x=v->left + v->width)) {
+			if (right > (x = v->left + v->width)) {
 				DrawOverlappedWindow(wz, left, top, x, bottom);
 				DrawOverlappedWindow(wz, x, top, right, bottom);
 				return;
 			}
 
-			if (top < (x=v->top)) {
+			if (top < (x = v->top)) {
 				DrawOverlappedWindow(wz, left, top, right, x);
 				DrawOverlappedWindow(wz, left, x, right, bottom);
 				return;
 			}
 
-			if (bottom > (x=v->top + v->height)) {
+			if (bottom > (x = v->top + v->height)) {
 				DrawOverlappedWindow(wz, left, top, right, x);
 				DrawOverlappedWindow(wz, left, x, right, bottom);
 				return;

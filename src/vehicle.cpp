@@ -188,9 +188,9 @@ Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_c
 	}
 	FOR_ALL_VEHICLES(veh) {
 		if (without_crashed && (veh->vehstatus & VS_CRASHED) != 0) continue;
-		if ((veh->type == VEH_TRAIN || veh->type == VEH_ROAD) && (z==0xFF || veh->z_pos == z)) {
-			if ((veh->x_pos>>4) >= x1 && (veh->x_pos>>4) <= x2 &&
-					(veh->y_pos>>4) >= y1 && (veh->y_pos>>4) <= y2) {
+		if ((veh->type == VEH_TRAIN || veh->type == VEH_ROAD) && (z == 0xFF || veh->z_pos == z)) {
+			if ((veh->x_pos >> 4) >= x1 && (veh->x_pos >> 4) <= x2 &&
+					(veh->y_pos >> 4) >= y1 && (veh->y_pos >> 4) <= y2) {
 				return veh;
 			}
 		}
@@ -421,7 +421,7 @@ static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 	int old_x = v->left_coord;
 	int old_y = v->top_coord;
 
-	new_hash = (x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(x,y)];
+	new_hash = (x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(x, y)];
 	old_hash = (old_x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(old_x, old_y)];
 
 	if (old_hash == new_hash) return;

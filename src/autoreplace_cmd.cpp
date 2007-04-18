@@ -137,7 +137,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 		/* Now we found a cargo type being carried on the train and we will see if it is possible to carry to this one */
 		if (v->cargo_type == new_cargo_type) return CT_NO_REFIT;
 		if (CanRefitTo(engine_type, v->cargo_type)) return v->cargo_type;
-	} while ((v=v->next) != NULL);
+	} while ((v = v->next) != NULL);
 	return CT_NO_REFIT; // We failed to find a cargo type on the old vehicle and we will not refit the new one
 }
 

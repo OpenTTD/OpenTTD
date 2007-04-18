@@ -199,7 +199,7 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 		Station *s;
 
 		FOR_ALL_STATIONS(s) {
-			if (s != st && s->town==t) {
+			if (s != st && s->town == t) {
 				uint str = M(s->string_id);
 				if (str <= 0x20) {
 					if (str == M(STR_SV_STNAME_FOREST))
@@ -230,7 +230,7 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 	}
 
 	/* check close enough to town to get central as name? */
-	if (DistanceMax(tile,t->xy) < 8) {
+	if (DistanceMax(tile, t->xy) < 8) {
 		found = M(STR_SV_STNAME);
 		if (HASBIT(free_names, M(STR_SV_STNAME))) goto done;
 
@@ -272,10 +272,10 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 	/* check direction compared to town */
 	{
 		static const int8 _direction_and_table[] = {
-			~( (1<<M(STR_SV_STNAME_WEST)) | (1<<M(STR_SV_STNAME_EAST)) | (1<<M(STR_SV_STNAME_NORTH)) ),
-			~( (1<<M(STR_SV_STNAME_SOUTH)) | (1<<M(STR_SV_STNAME_WEST)) | (1<<M(STR_SV_STNAME_NORTH)) ),
-			~( (1<<M(STR_SV_STNAME_SOUTH)) | (1<<M(STR_SV_STNAME_EAST)) | (1<<M(STR_SV_STNAME_NORTH)) ),
-			~( (1<<M(STR_SV_STNAME_SOUTH)) | (1<<M(STR_SV_STNAME_WEST)) | (1<<M(STR_SV_STNAME_EAST)) ),
+			~( (1 << M(STR_SV_STNAME_WEST)) | (1 << M(STR_SV_STNAME_EAST)) | (1 << M(STR_SV_STNAME_NORTH)) ),
+			~( (1 << M(STR_SV_STNAME_SOUTH)) | (1 << M(STR_SV_STNAME_WEST)) | (1 << M(STR_SV_STNAME_NORTH)) ),
+			~( (1 << M(STR_SV_STNAME_SOUTH)) | (1 << M(STR_SV_STNAME_EAST)) | (1 << M(STR_SV_STNAME_NORTH)) ),
+			~( (1 << M(STR_SV_STNAME_SOUTH)) | (1 << M(STR_SV_STNAME_WEST)) | (1 << M(STR_SV_STNAME_EAST)) ),
 		};
 
 		free_names &= _direction_and_table[
@@ -283,7 +283,7 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 			(TileY(tile) < TileY(t->xy)) * 2];
 	}
 
-	tmp = free_names & ((1<<1)|(1<<2)|(1<<3)|(1<<4)|(1<<6)|(1<<7)|(1<<12)|(1<<26)|(1<<27)|(1<<28)|(1<<29)|(1<<30));
+	tmp = free_names & ((1 << 1) | (1 << 2) | (1 << 3) | (1 << 4) | (1 << 6) | (1 << 7) | (1 << 12) | (1 << 26) | (1 << 27) | (1 << 28) | (1 << 29) | (1 << 30));
 	if (tmp == 0) {
 		_error_message = STR_3007_TOO_MANY_STATIONS_LOADING;
 		return false;
@@ -368,7 +368,7 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 	}
 
 	SetDParam(0, st->index);
-	AddNewsItem(msg, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_TILE, NT_ACCEPTANCE, 0), st->xy, 0);
+	AddNewsItem(msg, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT | NF_TILE, NT_ACCEPTANCE, 0), st->xy, 0);
 }
 
 // Get a list of the cargo types being produced around the tile.
@@ -646,10 +646,10 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 		int flat_z = z;
 		if (tileh != SLOPE_FLAT) {
 			// need to check so the entrance to the station is not pointing at a slope.
-			if ((invalid_dirs&1 && !(tileh & SLOPE_NE) && (uint)w_cur == w) ||
-					(invalid_dirs&2 && !(tileh & SLOPE_SE) && h_cur == 1) ||
-					(invalid_dirs&4 && !(tileh & SLOPE_SW) && w_cur == 1) ||
-					(invalid_dirs&8 && !(tileh & SLOPE_NW) && (uint)h_cur == h)) {
+			if ((invalid_dirs & 1 && !(tileh & SLOPE_NE) && (uint)w_cur == w) ||
+					(invalid_dirs & 2 && !(tileh & SLOPE_SE) && h_cur == 1) ||
+					(invalid_dirs & 4 && !(tileh & SLOPE_SW) && w_cur == 1) ||
+					(invalid_dirs & 8 && !(tileh & SLOPE_NW) && (uint)h_cur == h)) {
 				return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 			}
 			cost += _price.terraform;
@@ -748,7 +748,7 @@ static inline byte *CreateSingle(byte *layout, int n)
 {
 	int i = n;
 	do *layout++ = 0; while (--i);
-	layout[((n-1) >> 1)-n] = 2;
+	layout[((n - 1) >> 1) - n] = 2;
 	return layout;
 }
 
@@ -757,8 +757,8 @@ static inline byte *CreateMulti(byte *layout, int n, byte b)
 	int i = n;
 	do *layout++ = b; while (--i);
 	if (n > 4) {
-		layout[0-n] = 0;
-		layout[n-1-n] = 0;
+		layout[0 - n] = 0;
+		layout[n - 1 - n] = 0;
 	}
 	return layout;
 }
@@ -1623,7 +1623,7 @@ static int32 RemoveAirport(Station *st, uint32 flags)
 			DeleteAnimatedTile(tile_cur);
 			DoClearSquare(tile_cur);
 		}
-	} END_TILE_LOOP(tile_cur, w,h,tile)
+	} END_TILE_LOOP(tile_cur, w, h, tile)
 
 	if (flags & DC_EXEC) {
 		for (uint i = 0; i < afc->nof_depots; ++i) {

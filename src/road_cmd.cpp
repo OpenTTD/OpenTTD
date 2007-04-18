@@ -60,10 +60,10 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
 	/* Get a bitmask of which neighbouring roads has a tile */
 	n = ROAD_NONE;
 	present = GetAnyRoadBits(tile);
-	if (present & ROAD_NE && GetAnyRoadBits(TILE_ADDXY(tile,-1, 0)) & ROAD_SW) n |= ROAD_NE;
+	if (present & ROAD_NE && GetAnyRoadBits(TILE_ADDXY(tile, -1, 0)) & ROAD_SW) n |= ROAD_NE;
 	if (present & ROAD_SE && GetAnyRoadBits(TILE_ADDXY(tile, 0, 1)) & ROAD_NW) n |= ROAD_SE;
 	if (present & ROAD_SW && GetAnyRoadBits(TILE_ADDXY(tile, 1, 0)) & ROAD_NE) n |= ROAD_SW;
-	if (present & ROAD_NW && GetAnyRoadBits(TILE_ADDXY(tile, 0,-1)) & ROAD_SE) n |= ROAD_NW;
+	if (present & ROAD_NW && GetAnyRoadBits(TILE_ADDXY(tile, 0, -1)) & ROAD_SE) n |= ROAD_NW;
 
 	/* If 0 or 1 bits are set in n, or if no bits that match the bits to remove,
 	 * then allow it */
@@ -431,7 +431,7 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 		TileIndex t = start_tile;
 		start_tile = end_tile;
 		end_tile = t;
-		p2 ^= IS_INT_INSIDE(p2&3, 1, 3) ? 3 : 0;
+		p2 ^= IS_INT_INSIDE(p2 & 3, 1, 3) ? 3 : 0;
 	}
 
 	cost = 0;

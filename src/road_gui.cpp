@@ -257,11 +257,11 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 		InvalidateWidget(w, RTW_REMOVE);
 
 		w = FindWindowById(WC_BUS_STATION, 0);
-		if (w != NULL) WP(w,def_d).close = true;
+		if (w != NULL) WP(w, def_d).close = true;
 		w = FindWindowById(WC_TRUCK_STATION, 0);
-		if (w != NULL) WP(w,def_d).close = true;
+		if (w != NULL) WP(w, def_d).close = true;
 		w = FindWindowById(WC_BUILD_DEPOT, 0);
-		if (w != NULL) WP(w,def_d).close = true;
+		if (w != NULL) WP(w, def_d).close = true;
 		break;
 
 	case WE_PLACE_DRAG: {
@@ -414,11 +414,11 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_MOUSELOOP:
-		if (WP(w,def_d).close) DeleteWindow(w);
+		if (WP(w, def_d).close) DeleteWindow(w);
 		break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close) ResetObjectToPlace();
+		if (!WP(w, def_d).close) ResetObjectToPlace();
 		break;
 	}
 }
@@ -458,7 +458,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		int image;
 
-		if (WP(w,def_d).close) return;
+		if (WP(w, def_d).close) return;
 
 		DrawWindowWidgets(w);
 
@@ -472,9 +472,9 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 		image = (w->window_class == WC_BUS_STATION) ? GFX_BUS_BASE : GFX_TRUCK_BASE;
 
 		StationPickerDrawSprite(103, 35, RAILTYPE_BEGIN, image);
-		StationPickerDrawSprite(103, 85, RAILTYPE_BEGIN, image+1);
-		StationPickerDrawSprite(35, 85, RAILTYPE_BEGIN, image+2);
-		StationPickerDrawSprite(35, 35, RAILTYPE_BEGIN, image+3);
+		StationPickerDrawSprite(103, 85, RAILTYPE_BEGIN, image + 1);
+		StationPickerDrawSprite(35, 85, RAILTYPE_BEGIN, image + 2);
+		StationPickerDrawSprite(35, 35, RAILTYPE_BEGIN, image + 3);
 
 		image = (w->window_class == WC_BUS_STATION) ? GFX_BUS_BASE_EXT : GFX_TRUCK_BASE_EXT;
 
@@ -482,7 +482,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 		StationPickerDrawSprite(171, 85, RAILTYPE_BEGIN, image + 1);
 
 		DrawStationCoverageAreaText(2, 146,
-			((w->window_class == WC_BUS_STATION) ? (1<<CT_PASSENGERS) : ~(1<<CT_PASSENGERS)),
+			((w->window_class == WC_BUS_STATION) ? (1 << CT_PASSENGERS) : ~(1 << CT_PASSENGERS)),
 			3);
 
 	} break;
@@ -507,7 +507,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_MOUSELOOP: {
-		if (WP(w,def_d).close) {
+		if (WP(w, def_d).close) {
 			DeleteWindow(w);
 			return;
 		}
@@ -516,7 +516,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close) ResetObjectToPlace();
+		if (!WP(w, def_d).close) ResetObjectToPlace();
 		break;
 	}
 }

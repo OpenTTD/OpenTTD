@@ -335,7 +335,7 @@ static const TCHAR * const _expand_texts[] = {_T("S&how report >>"), _T("&Hide r
 
 static void SetWndSize(HWND wnd, int mode)
 {
-	RECT r,r2;
+	RECT r, r2;
 	int offs;
 
 	GetWindowRect(wnd, &r);
@@ -368,7 +368,7 @@ static bool DoEmergencySave(HWND wnd)
 	return b;
 }
 
-static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM lParam)
+static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg) {
 		case WM_INITDIALOG: {
@@ -549,7 +549,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	}
 
 	{
-		int i,j;
+		int i, j;
 #ifdef _M_AMD64
 		uint32 *b = (uint32*)ep->ContextRecord->Rsp;
 #else
@@ -557,7 +557,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 #endif
 		for (j = 0; j != 24; j++) {
 			for (i = 0; i != 8; i++) {
-				if (IsBadReadPtr(b,sizeof(uint32))) {
+				if (IsBadReadPtr(b, sizeof(uint32))) {
 					output += sprintf(output, " ????????"); //OCR: WAS - , 0);
 				} else {
 					output += sprintf(output, " %.8X", *b);

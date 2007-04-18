@@ -25,7 +25,7 @@ static const TreePos _tree_layout_xy[][4] = {
 	{ { 3, 9 }, { 8, 2 }, { 9, 9 }, { 1, 5 } }
 };
 
-static const PalSpriteID _tree_layout_sprite[164+(79-48+1)][4] = {
+static const PalSpriteID _tree_layout_sprite[164 + (79 - 48 + 1)][4] = {
 	{ { 0x652, PAL_NONE }, { 0x659, PAL_NONE }, { 0x660, PAL_NONE }, { 0x667, PAL_NONE } }, /* 0 */
 	{ { 0x652, PAL_NONE }, { 0x667, PAL_NONE }, { 0x66e, PAL_NONE }, { 0x675, PAL_NONE } }, /* 1 */
 	{ { 0x652, PAL_NONE }, { 0x66e, PAL_NONE }, { 0x659, PAL_NONE }, { 0x675, PAL_NONE } }, /* 2 */

@@ -78,7 +78,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		{
 			SetDParam(0, v->service_interval);
 			SetDParam(1, v->date_of_last_service);
-			DrawString(13, 102, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
+			DrawString(13, 102, _patches.servint_ispercent ? STR_SERVICING_INTERVAL_PERCENT : STR_883C_SERVICING_INTERVAL_DAYS, 0);
 		}
 
 		DrawShipImage(v, 3, 57, INVALID_VEHICLE);
@@ -120,7 +120,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 			mod = _ctrl_pressed? 5 : 10;
 			goto do_change_service_int;
 		case 6: /* decrease int */
-			mod = _ctrl_pressed?- 5 : -10;
+			mod = _ctrl_pressed ? - 5 : -10;
 do_change_service_int:
 			v = GetVehicle(w->window_number);
 
@@ -157,7 +157,7 @@ static const Widget _ship_details_widgets[] = {
 
 static const WindowDesc _ship_details_desc = {
 	WDP_AUTO, WDP_AUTO, 405, 113,
-	WC_VEHICLE_DETAILS,WC_VEHICLE_VIEW,
+	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_ship_details_widgets,
 	ShipDetailsWndProc
@@ -326,7 +326,7 @@ static const Widget _ship_view_widgets[] = {
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_SEND_SHIP_TODEPOT,   STR_982A_SEND_SHIP_TO_DEPOT},
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, SPR_REFIT_VEHICLE,       STR_983A_REFIT_CARGO_SHIP_TO_CARRY},
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, SPR_SHOW_ORDERS,         STR_9828_SHOW_SHIP_S_ORDERS},
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, SPR_SHOW_VEHICLE_DETAILS,STR_982B_SHOW_SHIP_DETAILS},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, SPR_SHOW_VEHICLE_DETAILS, STR_982B_SHOW_SHIP_DETAILS},
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_SHIP,          STR_CLONE_SHIP_INFO},
 {      WWT_PANEL, RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,                     STR_NULL },
 {  WWT_RESIZEBOX, RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,                     STR_NULL },

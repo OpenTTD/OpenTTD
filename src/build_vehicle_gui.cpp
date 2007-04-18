@@ -312,19 +312,19 @@ static EngList_SortTypeFunction * const _sorter[][9] = {{
 	&TrainEngineRunningCostSorter,
 	&TrainEnginePowerVsRunningCostSorter,
 	&EngineReliabilitySorter,
-},{
+}, {
 	/* Road vehicles */
 	&EngineNumberSorter,
 	&EngineIntroDateSorter,
 	&EngineNameSorter,
 	&EngineReliabilitySorter,
-},{
+}, {
 	/* Ships */
 	&EngineNumberSorter,
 	&EngineIntroDateSorter,
 	&EngineNameSorter,
 	&EngineReliabilitySorter,
-},{
+}, {
 	/* Aircraft */
 	&EngineNumberSorter,
 	&AircraftEngineCostSorter,
@@ -348,21 +348,21 @@ static const StringID _sort_listing[][10] = {{
 	STR_ENGINE_SORT_POWER_VS_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
 	INVALID_STRING_ID
-},{
+}, {
 	/* Road vehicles */
 	STR_ENGINE_SORT_ENGINE_ID,
 	STR_ENGINE_SORT_INTRO_DATE,
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_RELIABILITY,
 	INVALID_STRING_ID
-},{
+}, {
 	/* Ships */
 	STR_ENGINE_SORT_ENGINE_ID,
 	STR_ENGINE_SORT_INTRO_DATE,
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_RELIABILITY,
 	INVALID_STRING_ID
-},{
+}, {
 	/* Aircraft */
 	STR_ENGINE_SORT_ENGINE_ID,
 	STR_ENGINE_SORT_COST,
@@ -392,7 +392,7 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 	/* Wagon speed limit, displayed if above zero */
 	if (rvi->max_speed > 0 && _patches.wagon_speed_limits) {
 		SetDParam(0, rvi->max_speed * 10 / 16);
-		DrawString(x,y, STR_PURCHASE_INFO_SPEED, 0);
+		DrawString(x, y, STR_PURCHASE_INFO_SPEED, 0);
 		y += 10;
 	}
 	return y;
@@ -406,13 +406,13 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 	/* Purchase Cost - Engine weight */
 	SetDParam(0, rvi->base_cost * (_price.build_railvehicle >> 3) >> 5);
 	SetDParam(1, rvi->weight << multihead);
-	DrawString(x,y, STR_PURCHASE_INFO_COST_WEIGHT, 0);
+	DrawString(x, y, STR_PURCHASE_INFO_COST_WEIGHT, 0);
 	y += 10;
 
 	/* Max speed - Engine power */
 	SetDParam(0, rvi->max_speed * 10 / 16);
 	SetDParam(1, rvi->power << multihead);
-	DrawString(x,y, STR_PURCHASE_INFO_SPEED_POWER, 0);
+	DrawString(x, y, STR_PURCHASE_INFO_SPEED_POWER, 0);
 	y += 10;
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
@@ -424,14 +424,14 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 
 	/* Running cost */
 	SetDParam(0, (rvi->running_cost_base * _price.running_rail[rvi->running_cost_class] >> 8) << multihead);
-	DrawString(x,y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
+	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 
 	/* Powered wagons power - Powered wagons extra weight */
 	if (rvi->pow_wag_power != 0) {
 		SetDParam(0, rvi->pow_wag_power);
 		SetDParam(1, rvi->pow_wag_weight);
-		DrawString(x,y, STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT, 0);
+		DrawString(x, y, STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT, 0);
 		y += 10;
 	};
 
@@ -444,7 +444,7 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const R
 	bool refittable = (_engine_info[engine_number].refit_mask != 0);
 
 	/* Purchase cost - Max speed */
-	SetDParam(0, rvi->base_cost * (_price.roadveh_base>>3)>>5);
+	SetDParam(0, rvi->base_cost * (_price.roadveh_base >> 3) >> 5);
 	SetDParam(1, rvi->max_speed * 10 / 32);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
@@ -468,21 +468,21 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const R
 static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const ShipVehicleInfo *svi)
 {
 	/* Purchase cost - Max speed */
-	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
+	SetDParam(0, svi->base_cost * (_price.ship_base >> 3) >> 5);
 	SetDParam(1, svi->max_speed * 10 / 32);
-	DrawString(x,y, STR_PURCHASE_INFO_COST_SPEED, 0);
+	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
 
 	/* Cargo type + capacity */
 	SetDParam(0, svi->cargo_type);
 	SetDParam(1, svi->capacity);
 	SetDParam(2, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
-	DrawString(x,y, STR_PURCHASE_INFO_CAPACITY, 0);
+	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
 	y += 10;
 
 	/* Running cost */
 	SetDParam(0, svi->running_cost * _price.ship_running >> 8);
-	DrawString(x,y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
+	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 
 	return y;
@@ -494,7 +494,7 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 	CargoID cargo;
 
 	/* Purchase cost - Max speed */
-	SetDParam(0, avi->base_cost * (_price.aircraft_base>>3)>>5);
+	SetDParam(0, avi->base_cost * (_price.aircraft_base >> 3) >> 5);
 	SetDParam(1, avi->max_speed * 10 / 16);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
@@ -560,7 +560,7 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 				SetDParam(1, (rvi->capacity * (CountArticulatedParts(engine_number) + 1)) << multihead);
 				SetDParam(2, refitable ? STR_9842_REFITTABLE : STR_EMPTY);
 			}
-			DrawString(x,y, STR_PURCHASE_INFO_CAPACITY, 0);
+			DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
 			y += 10;
 		}
 			break;
@@ -1001,7 +1001,7 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 
 	switch (type) {
 		case VEH_TRAIN:
-			WP(w,buildvehicle_d).filter.railtype = (tile == 0) ? RAILTYPE_END : GetRailType(tile);
+			WP(w, buildvehicle_d).filter.railtype = (tile == 0) ? RAILTYPE_END : GetRailType(tile);
 			ResizeWindow(w, 0, 16);
 			break;
 		case VEH_ROAD:

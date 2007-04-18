@@ -123,7 +123,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 		}
 		// Bridge code
 		if ((AI_PATHFINDER_FLAG_BRIDGE & route_extra[part]) != 0) {
-			cost += AiNew_Build_Bridge(p, route[part], route[part-1], flag);
+			cost += AiNew_Build_Bridge(p, route[part], route[part - 1], flag);
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
@@ -173,7 +173,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 		}
 		// Bridge code
 		if ((AI_PATHFINDER_FLAG_BRIDGE & route_extra[part]) != 0) {
-			cost += AiNew_Build_Bridge(p, route[part], route[part+1], flag);
+			cost += AiNew_Build_Bridge(p, route[part], route[part + 1], flag);
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {

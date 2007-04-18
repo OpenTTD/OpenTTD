@@ -21,7 +21,7 @@ struct AiDefaultRoadBlock {
 };
 
 
-#define MKHDR(a,b,c,d,e) a,b,c,d,e,
+#define MKHDR(a, b, c, d, e) a, b, c, d, e,
 #define MKDEPOT(a, b, c)   {0, a, {b, c}}
 #define MKSTATION(a, b, c) {1, a, {b, c}}
 #define MKRAIL(a, b, c)    {2, a, {b, c}}
@@ -424,17 +424,17 @@ static const AiDefaultRailBlock * const _default_rail_track_data[] = {
 
 #undef MKHDR
 
-#define MKHDR(a) a,{
+#define MKHDR(a) a, {
 
 static const AiDefaultBlockData _roaddata_ai_0_data[] = {
-	MKDEPOT(2, -1,1),
-	MKSTATION(0x2, -1,0),
-	MKRAIL(0xC, 0,0),
-	MKRAIL(0x9, 0,1),
-	MKCLRRAIL(0, 0,-1),
-	MKCLRRAIL(0, 1,0),
-	MKCLRRAIL(0, 1,1),
-	MKCLRRAIL(0, 0,2),
+	MKDEPOT(2, -1, 1),
+	MKSTATION(0x2, -1, 0),
+	MKRAIL(0xC, 0, 0),
+	MKRAIL(0x9, 0, 1),
+	MKCLRRAIL(0, 0, -1),
+	MKCLRRAIL(0, 1, 0),
+	MKCLRRAIL(0, 1, 1),
+	MKCLRRAIL(0, 0, 2),
 	MKEND
 };
 
@@ -443,14 +443,14 @@ static const AiDefaultRoadBlock _roaddata_ai_0 = {
 };
 
 static const AiDefaultBlockData _roaddata_ai_1_data[] = {
-	MKDEPOT(1, 0,-1),
-	MKSTATION(0x1, 1,-1),
-	MKRAIL(0x3, 0,0),
-	MKRAIL(0x9, 1,0),
-	MKCLRRAIL(0, -1,0),
-	MKCLRRAIL(0, 0,1),
-	MKCLRRAIL(0, 1,1),
-	MKCLRRAIL(0, 2,0),
+	MKDEPOT(1, 0, -1),
+	MKSTATION(0x1, 1, -1),
+	MKRAIL(0x3, 0, 0),
+	MKRAIL(0x9, 1, 0),
+	MKCLRRAIL(0, -1, 0),
+	MKCLRRAIL(0, 0, 1),
+	MKCLRRAIL(0, 1, 1),
+	MKCLRRAIL(0, 2, 0),
 	MKEND
 };
 
@@ -459,14 +459,14 @@ static const AiDefaultRoadBlock _roaddata_ai_1 = {
 };
 
 static const AiDefaultBlockData _roaddata_ai_2_data[] = {
-	MKDEPOT(3, 1,1),
-	MKSTATION(0x3, 0,1),
-	MKRAIL(0x6, 0,0),
-	MKRAIL(0xC, 1,0),
-	MKCLRRAIL(0, -1,0),
-	MKCLRRAIL(0, 0,-1),
-	MKCLRRAIL(0, 1,-1),
-	MKCLRRAIL(0, 2,0),
+	MKDEPOT(3, 1, 1),
+	MKSTATION(0x3, 0, 1),
+	MKRAIL(0x6, 0, 0),
+	MKRAIL(0xC, 1, 0),
+	MKCLRRAIL(0, -1, 0),
+	MKCLRRAIL(0, 0, -1),
+	MKCLRRAIL(0, 1, -1),
+	MKCLRRAIL(0, 2, 0),
 	MKEND
 };
 
@@ -475,14 +475,14 @@ static const AiDefaultRoadBlock _roaddata_ai_2 = {
 };
 
 static const AiDefaultBlockData _roaddata_ai_3_data[] = {
-	MKDEPOT(0, 1,0),
-	MKSTATION(0x0, 1,1),
-	MKRAIL(0x6, 0,0),
-	MKRAIL(0x3, 0,1),
-	MKCLRRAIL(0, 0,-1),
-	MKCLRRAIL(0, -1,0),
-	MKCLRRAIL(0, -1,1),
-	MKCLRRAIL(0, 0,2),
+	MKDEPOT(0, 1, 0),
+	MKSTATION(0x0, 1, 1),
+	MKRAIL(0x6, 0, 0),
+	MKRAIL(0x3, 0, 1),
+	MKCLRRAIL(0, 0, -1),
+	MKCLRRAIL(0, -1, 0),
+	MKCLRRAIL(0, -1, 1),
+	MKCLRRAIL(0, 0, 2),
 	MKEND
 };
 
@@ -491,11 +491,11 @@ static const AiDefaultRoadBlock _roaddata_ai_3 = {
 };
 
 static const AiDefaultBlockData _roaddata_ai_4_data[] = {
-	MKSTATION(0x2, -1,0),
-	MKRAIL(0x8, 0,0),
-	MKCLRRAIL(0, 0,-1),
-	MKCLRRAIL(0, 1,0),
-	MKCLRRAIL(0, 0,1),
+	MKSTATION(0x2, -1, 0),
+	MKRAIL(0x8, 0, 0),
+	MKCLRRAIL(0, 0, -1),
+	MKCLRRAIL(0, 1, 0),
+	MKCLRRAIL(0, 0, 1),
 	MKEND
 };
 
@@ -504,11 +504,11 @@ static const AiDefaultRoadBlock _roaddata_ai_4 = {
 };
 
 static const AiDefaultBlockData _roaddata_ai_5_data[] = {
-	MKSTATION(0x3, 0,1),
-	MKRAIL(0x4, 0,0),
-	MKCLRRAIL(0, -1,0),
-	MKCLRRAIL(0, 0,-1),
-	MKCLRRAIL(0, 1,0),
+	MKSTATION(0x3, 0, 1),
+	MKRAIL(0x4, 0, 0),
+	MKCLRRAIL(0, -1, 0),
+	MKCLRRAIL(0, 0, -1),
+	MKCLRRAIL(0, 1, 0),
 	MKEND
 };
 
@@ -517,11 +517,11 @@ static const AiDefaultRoadBlock _roaddata_ai_5 = {
 };
 
 static const AiDefaultBlockData _roaddata_ai_6_data[] = {
-	MKSTATION(0x0, 1,1),
-	MKRAIL(0x2, 0,1),
-	MKCLRRAIL(0, 0,0),
-	MKCLRRAIL(0, -1,0),
-	MKCLRRAIL(0, 0,2),
+	MKSTATION(0x0, 1, 1),
+	MKRAIL(0x2, 0, 1),
+	MKCLRRAIL(0, 0, 0),
+	MKCLRRAIL(0, -1, 0),
+	MKCLRRAIL(0, 0, 2),
 	MKEND
 };
 
@@ -530,11 +530,11 @@ static const AiDefaultRoadBlock _roaddata_ai_6 = {
 };
 
 static const AiDefaultBlockData _roaddata_ai_7_data[] = {
-	MKSTATION(0x1, 1,-1),
-	MKRAIL(0x1, 1,0),
-	MKCLRRAIL(0, 0,0),
-	MKCLRRAIL(0, 1,1),
-	MKCLRRAIL(0, 2,0),
+	MKSTATION(0x1, 1, -1),
+	MKRAIL(0x1, 1, 0),
+	MKCLRRAIL(0, 0, 0),
+	MKCLRRAIL(0, 1, 1),
+	MKCLRRAIL(0, 2, 0),
 	MKEND
 };
 

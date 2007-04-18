@@ -201,7 +201,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 static void GfxSetPixel(int x, int y, int color)
 {
 	const DrawPixelInfo* dpi = _cur_dpi;
-	if ((x-=dpi->left) < 0 || x>=dpi->width || (y-=dpi->top)<0 || y>=dpi->height)
+	if ((x -= dpi->left) < 0 || x >= dpi->width || (y -= dpi->top)<0 || y >= dpi->height)
 		return;
 	dpi->dst_ptr[y * dpi->pitch + x] = color;
 }
@@ -461,7 +461,7 @@ uint32 FormatStringLinebreaks(char *str, int maxw)
 				switch (c) {
 					case '\0': return num + (size << 16); break;
 					case SCC_SETX:  str++; break;
-					case SCC_SETXY: str +=2; break;
+					case SCC_SETXY: str += 2; break;
 					case SCC_TINYFONT: size = FS_SMALL; break;
 					case SCC_BIGFONT:  size = FS_LARGE; break;
 					case '\n': goto end_of_inner_loop;
@@ -509,7 +509,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 
 	for (;;) {
 		w = GetStringBoundingBox(src).width;
-		DoDrawString(src, x - (w>>1), y, 0xFE);
+		DoDrawString(src, x - (w >> 1), y, 0xFE);
 		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
@@ -524,7 +524,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 			} else if (c == SCC_SETX) {
 				src++;
 			} else if (c == SCC_SETXY) {
-				src+=2;
+				src += 2;
 			}
 		}
 	}
@@ -574,7 +574,7 @@ uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh)
 			} else if (c == SCC_SETX) {
 				src++;
 			} else if (c == SCC_SETXY) {
-				src+=2;
+				src += 2;
 			}
 		}
 	}
@@ -643,7 +643,7 @@ int DoDrawString(const char *string, int x, int y, uint16 real_color)
 
 	if (color != 0xFE) {
 		if (x >= dpi->left + dpi->width ||
-				x + _screen.width*2 <= dpi->left ||
+				x + _screen.width * 2 <= dpi->left ||
 				y >= dpi->top + dpi->height ||
 				y + _screen.height <= dpi->top)
 					return x;

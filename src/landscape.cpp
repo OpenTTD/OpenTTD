@@ -76,13 +76,13 @@ uint GetPartialZ(int x, int y, Slope corners)
 		break;
 
 	case SLOPE_S:
-		y^=0xF;
+		y ^= 0xF;
 		if ( (x - y) >= 0)
 			z = (x - y) >> 1;
 		break;
 
 	case SLOPE_SW:
-		z = (x>>1) + 1;
+		z = (x >> 1) + 1;
 		break;
 
 	case SLOPE_E:
@@ -97,12 +97,12 @@ uint GetPartialZ(int x, int y, Slope corners)
 		break;
 
 	case SLOPE_SE:
-		z = (y>>1) + 1;
+		z = (y >> 1) + 1;
 		break;
 
 	case SLOPE_WSE:
 		z = 8;
-		y^=0xF;
+		y ^= 0xF;
 		if (x - y < 0)
 			z += (x - y) >> 1;
 		break;
@@ -114,7 +114,7 @@ uint GetPartialZ(int x, int y, Slope corners)
 		break;
 
 	case SLOPE_NW:
-		z = (y^0xF)>>1;
+		z = (y ^ 0xF) >> 1;
 		break;
 
 	case SLOPE_NWS:
@@ -124,7 +124,7 @@ uint GetPartialZ(int x, int y, Slope corners)
 		break;
 
 	case SLOPE_NE:
-		z = (x^0xF)>>1;
+		z = (x ^ 0xF) >> 1;
 		break;
 
 	case SLOPE_ENW:
@@ -141,19 +141,19 @@ uint GetPartialZ(int x, int y, Slope corners)
 		break;
 
 	case SLOPE_STEEP_S:
-		z = 1 + ((x+y)>>1);
+		z = 1 + ((x + y) >> 1);
 		break;
 
 	case SLOPE_STEEP_W:
-		z = 1 + ((x+(y^0xF))>>1);
+		z = 1 + ((x + (y ^ 0xF)) >> 1);
 		break;
 
 	case SLOPE_STEEP_N:
-		z = 1 + (((x^0xF)+(y^0xF))>>1);
+		z = 1 + (((x ^ 0xF) + (y ^ 0xF)) >> 1);
 		break;
 
 	case SLOPE_STEEP_E:
-		z = 1 + (((x^0xF)+(y^0xF))>>1);
+		z = 1 + (((x ^ 0xF) + (y ^ 0xF)) >> 1);
 		break;
 
 		default: break;
@@ -385,8 +385,8 @@ int32 CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost, ret, money;
 	int ex;
 	int ey;
-	int sx,sy;
-	int x,y;
+	int sx, sy;
+	int x, y;
 	bool success = false;
 
 	if (p1 >= MapSize()) return CMD_ERROR;
@@ -435,7 +435,7 @@ int32 CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 #define TILELOOP_BITS 4
 #define TILELOOP_SIZE (1 << TILELOOP_BITS)
-#define TILELOOP_ASSERTMASK ((TILELOOP_SIZE-1) + ((TILELOOP_SIZE-1) << MapLogX()))
+#define TILELOOP_ASSERTMASK ((TILELOOP_SIZE - 1) + ((TILELOOP_SIZE - 1) << MapLogX()))
 #define TILELOOP_CHKMASK (((1 << (MapLogX() - TILELOOP_BITS))-1) << TILELOOP_BITS)
 
 void RunTileLoop()

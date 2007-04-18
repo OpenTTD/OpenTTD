@@ -343,16 +343,16 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 			SetDParam(1, v->unitnumber);
 			DrawWindowWidgets(w);
 
-			WP(w,refit_d).cargo = DrawVehicleRefitWindow(WP(w, refit_d).list, WP(w, refit_d).sel, w->vscroll.pos, w->vscroll.cap, w->resize.step_height);
+			WP(w, refit_d).cargo = DrawVehicleRefitWindow(WP(w, refit_d).list, WP(w, refit_d).sel, w->vscroll.pos, w->vscroll.cap, w->resize.step_height);
 
-			if (WP(w,refit_d).cargo != NULL) {
+			if (WP(w, refit_d).cargo != NULL) {
 				int32 cost;
 
-				cost = DoCommand(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8,
+				cost = DoCommand(v->tile, v->index, WP(w, refit_d).cargo->cargo | WP(w, refit_d).cargo->subtype << 8,
 								 DC_QUERY_COST, GetCmdRefitVeh(GetVehicle(w->window_number)->type));
 
 				if (!CmdFailed(cost)) {
-					SetDParam(0, WP(w,refit_d).cargo->cargo);
+					SetDParam(0, WP(w, refit_d).cargo->cargo);
 					SetDParam(1, _returned_refit_capacity);
 					SetDParam(2, cost);
 					DrawString(2, w->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
@@ -365,12 +365,12 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 				case 3: { // listbox
 					int y = e->we.click.pt.y - w->widget[3].top;
 					if (y >= 0) {
-						WP(w,refit_d).sel = (y / (int)w->resize.step_height) + w->vscroll.pos;
+						WP(w, refit_d).sel = (y / (int)w->resize.step_height) + w->vscroll.pos;
 						SetWindowDirty(w);
 					}
 				} break;
 				case 6: // refit button
-					if (WP(w,refit_d).cargo != NULL) {
+					if (WP(w, refit_d).cargo != NULL) {
 						const Vehicle *v = GetVehicle(w->window_number);
 
 						if (WP(w, refit_d).order == INVALID_VEH_ORDER_ID) {
@@ -382,9 +382,9 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 								case VEH_SHIP:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP);     break;
 								case VEH_AIRCRAFT: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT); break;
 							}
-							if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8, NULL, command)) DeleteWindow(w);
+							if (DoCommandP(v->tile, v->index, WP(w, refit_d).cargo->cargo | WP(w, refit_d).cargo->subtype << 8, NULL, command)) DeleteWindow(w);
 						} else {
-							if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8 | WP(w, refit_d).order << 16, NULL, CMD_ORDER_REFIT)) DeleteWindow(w);
+							if (DoCommandP(v->tile, v->index, WP(w, refit_d).cargo->cargo | WP(w, refit_d).cargo->subtype << 8 | WP(w, refit_d).order << 16, NULL, CMD_ORDER_REFIT)) DeleteWindow(w);
 						}
 					}
 					break;
@@ -418,7 +418,7 @@ static const Widget _vehicle_refit_widgets[] = {
 
 static const WindowDesc _vehicle_refit_desc = {
 	WDP_AUTO, WDP_AUTO, 240, 174,
-	WC_VEHICLE_REFIT,WC_VEHICLE_VIEW,
+	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_vehicle_refit_widgets,
 	VehicleRefitWndProc,
@@ -426,7 +426,7 @@ static const WindowDesc _vehicle_refit_desc = {
 
 /** Show the refit window for a vehicle
 * @param *v The vehicle to show the refit window for
-* @param order of the vehicle (?)
+* @param order of the vehicle ( ? )
 */
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 {

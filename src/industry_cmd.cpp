@@ -69,7 +69,7 @@ IndustryType GetIndustryType(TileIndex tile)
 
 	for (iloop = IT_COAL_MINE; iloop < IT_END; iloop += 1) {
 		if (IS_BYTE_INSIDE(this_type, industry_gfx_Solver[iloop].MinGfx,
-				industry_gfx_Solver[iloop].MaxGfx+1)) {
+				industry_gfx_Solver[iloop].MaxGfx + 1)) {
 			return iloop;
 		}
 	}
@@ -496,7 +496,7 @@ static void AnimateTile_Industry(TileIndex tile)
 	case GFX_OILWELL_ANIMATED_2:
 	case GFX_OILWELL_ANIMATED_3:
 		if ((_tick_counter & 7) == 0) {
-			bool b = CHANCE16(1,7);
+			bool b = CHANCE16(1, 7);
 			IndustryGfx gfx = GetIndustryGfx(tile);
 
 			m = GetIndustryAnimationState(tile) + 1;
@@ -705,7 +705,7 @@ static void TileLoop_Industry(TileIndex tile)
 		break;
 
 	case GFX_POWERPLANT_SPARKS:
-		if (CHANCE16(1,3)) {
+		if (CHANCE16(1, 3)) {
 			SndPlayTileFx(SND_0C_ELECTRIC_SPARK, tile);
 			AddAnimatedTile(tile);
 		}
@@ -964,7 +964,7 @@ static void ProduceIndustryGoods(Industry *i)
 
 	/* play a sound? */
 	if ((i->counter & 0x3F) == 0) {
-		if (CHANCE16R(1,14,r) && (num=_industry_sounds[i->type][0]) != 0) {
+		if (CHANCE16R(1, 14, r) && (num = _industry_sounds[i->type][0]) != 0) {
 			SndPlayTileFx(
 				(SoundFx)(_industry_sounds[i->type][1] + (((r >> 16) * num) >> 16)),
 				i->xy);
@@ -1668,7 +1668,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 					SetDParam(1, i->index);
 					AddNewsItem(
 						percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
-						NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
+						NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ECONOMY, 0),
 						i->xy + TileDiffXY(1, 1), 0
 					);
 				}
@@ -1682,7 +1682,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 		SetDParam(0, i->index);
 		AddNewsItem(
 			indspec->closure_text,
-			NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_OPENCLOSE, 0),
+			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, 0),
 			i->xy + TileDiffXY(1, 1), 0
 		);
 	}
@@ -1698,7 +1698,7 @@ static void UpdateIndustryStatistics(Industry *i)
 		pct = 0;
 		if (i->last_mo_production[0] != 0) {
 			i->last_prod_year = _cur_year;
-			pct = min(i->last_mo_transported[0] * 256 / i->last_mo_production[0],255);
+			pct = min(i->last_mo_transported[0] * 256 / i->last_mo_production[0], 255);
 		}
 		i->pct_transported[0] = pct;
 
@@ -1714,7 +1714,7 @@ static void UpdateIndustryStatistics(Industry *i)
 		pct = 0;
 		if (i->last_mo_production[1] != 0) {
 			i->last_prod_year = _cur_year;
-			pct = min(i->last_mo_transported[1] * 256 / i->last_mo_production[1],255);
+			pct = min(i->last_mo_transported[1] * 256 / i->last_mo_production[1], 255);
 		}
 		i->pct_transported[1] = pct;
 
@@ -1791,7 +1791,7 @@ static void MaybeNewIndustry(void)
 	SetDParam(0, ind_spc->name);
 	SetDParam(1, ind->town->index);
 	AddNewsItem(ind_spc->new_industry_text,
-		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_OPENCLOSE, 0), ind->xy, 0);
+		NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, 0), ind->xy, 0);
 }
 
 static void ChangeIndustryProduction(Industry *i)
@@ -1810,9 +1810,9 @@ static void ChangeIndustryProduction(Industry *i)
 			if ((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _opt.landscape == LT_TEMPERATE)
 				only_decrease = true;
 
-			if (only_decrease || CHANCE16(1,3)) {
+			if (only_decrease || CHANCE16(1, 3)) {
 				/* If you transport > 60%, 66% chance we increase, else 33% chance we increase */
-				if (!only_decrease && (i->pct_transported[0] > 153) != CHANCE16(1,3)) {
+				if (!only_decrease && (i->pct_transported[0] > 153) != CHANCE16(1, 3)) {
 					/* Increase production */
 					if (i->prod_level != 0x80) {
 						byte b;
@@ -1849,7 +1849,7 @@ static void ChangeIndustryProduction(Industry *i)
 
 		case INDUSTRYLIFE_CLOSABLE:
 			/* maybe close */
-			if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1,2)) {
+			if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, 2)) {
 				i->prod_level = 0;
 				str = indspec->closure_text;
 			}
@@ -1858,7 +1858,7 @@ static void ChangeIndustryProduction(Industry *i)
 
 	if (str != STR_NULL) {
 		SetDParam(0, i->index);
-		AddNewsItem(str, NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, str == indspec->closure_text ? NT_OPENCLOSE : NT_ECONOMY, 0), i->xy + TileDiffXY(1, 1), 0);
+		AddNewsItem(str, NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, str == indspec->closure_text ? NT_OPENCLOSE : NT_ECONOMY, 0), i->xy + TileDiffXY(1, 1), 0);
 	}
 }
 

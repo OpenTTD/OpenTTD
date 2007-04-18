@@ -286,7 +286,7 @@ static void Load_NAME()
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
-		SlArray(_name_array[index],SlGetFieldLength(),SLE_UINT8);
+		SlArray(_name_array[index], SlGetFieldLength(), SLE_UINT8);
 	}
 }
 

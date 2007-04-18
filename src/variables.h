@@ -390,8 +390,8 @@ void SetDParamStr(uint n, const char *str);
 StringID BindCString(const char *str);
 
 
-#define COPY_IN_DPARAM(offs,src,num) memcpy(_decode_parameters + offs, src, sizeof(uint32) * (num))
-#define COPY_OUT_DPARAM(dst,offs,num) memcpy(dst,_decode_parameters + offs, sizeof(uint32) * (num))
+#define COPY_IN_DPARAM(offs, src, num) memcpy(_decode_parameters + offs, src, sizeof(uint32) * (num))
+#define COPY_OUT_DPARAM(dst, offs, num) memcpy(dst, _decode_parameters + offs, sizeof(uint32) * (num))
 
 
 #define SET_EXPENSES_TYPE(x) _yearly_expenses_type = x;

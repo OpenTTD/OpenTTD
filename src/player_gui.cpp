@@ -29,7 +29,7 @@ static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_sti
 
 static void DrawPlayerEconomyStats(const Player *p, byte mode)
 {
-	int x,y,i,j,year;
+	int x, y, i, j, year;
 	const int64 (*tbl)[13];
 	int64 sum, cost;
 	StringID str;
@@ -38,8 +38,8 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 		/* draw categories */
 		DrawStringCenterUnderline(61, 15, STR_700F_EXPENDITURE_INCOME, 0);
 		for (i = 0; i != 13; i++)
-			DrawString(2, 27 + i*10, STR_7011_CONSTRUCTION + i, 0);
-		DrawStringRightAligned(111, 27 + 10*13 + 2, STR_7020_TOTAL, 0);
+			DrawString(2, 27 + i * 10, STR_7011_CONSTRUCTION + i, 0);
+		DrawStringRightAligned(111, 27 + 10 * 13 + 2, STR_7020_TOTAL, 0);
 
 		/* draw the price columns */
 		year = _cur_year - 2;
@@ -60,16 +60,16 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 						str = STR_701E;
 						if (cost < 0) { cost = -cost; str++; }
 						SetDParam64(0, cost);
-						DrawStringRightAligned(x, 27+i*10, str, 0);
+						DrawStringRightAligned(x, 27 + i * 10, str, 0);
 					}
 				}
 
 				str = STR_701E;
 				if (sum < 0) { sum = -sum; str++; }
 				SetDParam64(0, sum);
-				DrawStringRightAligned(x, 27 + 13*10 + 2, str, 0);
+				DrawStringRightAligned(x, 27 + 13 * 10 + 2, str, 0);
 
-				GfxFillRect(x - 75, 27 + 10*13, x, 27 + 10*13, 215);
+				GfxFillRect(x - 75, 27 + 10 * 13, x, 27 + 10 * 13, 215);
 				x += 95;
 			}
 			year++;
@@ -80,7 +80,7 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 
 		/* draw max loan aligned to loan below (y += 10) */
 		SetDParam64(0, (uint64)_economy.max_loan);
-		DrawString(202, y+10, STR_MAX_LOAN, 0);
+		DrawString(202, y + 10, STR_MAX_LOAN, 0);
 	} else {
 		y = 15;
 	}
@@ -97,7 +97,7 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 
 	y += 12;
 
-	GfxFillRect(182 - 75, y-2, 182, y-2, 215);
+	GfxFillRect(182 - 75, y - 2, 182, y - 2, 215);
 
 	SetDParam64(0, p->money64 - p->current_loan);
 	DrawStringRightAligned(182, y, STR_7028, 0);
@@ -166,13 +166,13 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 		SetDParam(4, 10000);
 		DrawWindowWidgets(w);
 
-		DrawPlayerEconomyStats(p, (byte)WP(w,def_d).data_1);
+		DrawPlayerEconomyStats(p, (byte)WP(w, def_d).data_1);
 	} break;
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 		case 2: {/* toggle size */
-			byte mode = (byte)WP(w,def_d).data_1;
+			byte mode = (byte)WP(w, def_d).data_1;
 			bool stickied = !!(w->flags4 & WF_STICKY);
 			PlayerID player = (PlayerID)w->window_number;
 			DeleteWindow(w);
@@ -239,7 +239,7 @@ static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_sti
 	w = AllocateWindowDescFront(desc_table[mode], player);
 	if (w != NULL) {
 		w->caption_color = w->window_number;
-		WP(w,def_d).data_1 = mode;
+		WP(w, def_d).data_1 = mode;
 		if (show_stickied) w->flags4 |= WF_STICKY;
 	}
 }
@@ -554,14 +554,14 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 		LowerWindowWidget(w, WP(w, facesel_d).gender + 5);
 		DrawWindowWidgets(w);
 		p = GetPlayer((PlayerID)w->window_number);
-		DrawPlayerFace(WP(w,facesel_d).face, p->player_color, 2, 16);
+		DrawPlayerFace(WP(w, facesel_d).face, p->player_color, 2, 16);
 	} break;
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 		case 3: DeleteWindow(w); break;
 		case 4: /* ok click */
-			DoCommandP(0, 0, WP(w,facesel_d).face, NULL, CMD_SET_PLAYER_FACE);
+			DoCommandP(0, 0, WP(w, facesel_d).face, NULL, CMD_SET_PLAYER_FACE);
 			DeleteWindow(w);
 			break;
 		case 5: /* male click */
@@ -572,7 +572,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			break;
 		case 7:
-			WP(w,facesel_d).face = ConvertFromOldPlayerFace((WP(w, facesel_d).gender << 31) + GB(InteractiveRandom(), 0, 31));
+			WP(w, facesel_d).face = ConvertFromOldPlayerFace((WP(w, facesel_d).gender << 31) + GB(InteractiveRandom(), 0, 31));
 			SetWindowDirty(w);
 			break;
 		}
@@ -656,8 +656,8 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 		}
 	}
 
-	if (train+road+air+ship == 0) {
-		DrawString(x+70, y, STR_7042_NONE, 0);
+	if (train + road + air + ship == 0) {
+		DrawString(x + 70, y, STR_7042_NONE, 0);
 	} else {
 		if (train != 0) {
 			SetDParam(0, train);
@@ -762,7 +762,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 			DrawPlayerVehiclesAmount((PlayerID)w->window_number);
 
-			DrawString(110,48, STR_7006_COLOR_SCHEME, 0);
+			DrawString(110, 48, STR_7006_COLOR_SCHEME, 0);
 			/* Draw company-colour bus */
 			DrawSprite(SPR_VEH_BUS_SW_VIEW, PLAYER_SPRITE_COLOR(p->index), 215, 49);
 
@@ -786,8 +786,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					Window *wf = AllocateWindowDescFront(&_select_player_face_desc, w->window_number);
 					if (wf != NULL) {
 						wf->caption_color = w->window_number;
-						WP(wf,facesel_d).face = GetPlayer((PlayerID)wf->window_number)->face;
-						WP(wf,facesel_d).gender = 0;
+						WP(wf, facesel_d).face = GetPlayer((PlayerID)wf->window_number)->face;
+						WP(wf, facesel_d).gender = 0;
 					}
 					break;
 				}
@@ -796,8 +796,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					Window *wf = AllocateWindowDescFront(_have_2cc ? &_select_player_livery_2cc_desc : &_select_player_livery_desc, w->window_number);
 					if (wf != NULL) {
 						wf->caption_color = wf->window_number;
-						WP(wf,livery_d).livery_class = LC_OTHER;
-						WP(wf,livery_d).sel = 1;
+						WP(wf, livery_d).livery_class = LC_OTHER;
+						WP(wf, livery_d).sel = 1;
 						LowerWindowWidget(wf, 2);
 					}
 					break;
@@ -813,7 +813,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 				case PCW_WIDGET_COMPANY_NAME: {
 					Player *p = GetPlayer((PlayerID)w->window_number);
-					WP(w,def_d).byte_1 = 1;
+					WP(w, def_d).byte_1 = 1;
 					SetDParam(0, p->name_2);
 					ShowQueryString(p->name_1, STR_700A_COMPANY_NAME, 31, 150, w, CS_ALPHANUMERAL);
 					break;
@@ -852,7 +852,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				#ifdef ENABLE_NETWORK
 				case PCW_WIDGET_COMPANY_PASSWORD:
 					if (w->window_number == _local_player) {
-						WP(w,def_d).byte_1 = 2;
+						WP(w, def_d).byte_1 = 2;
 						ShowQueryString(BindCString(_network_player_info[_local_player].password),
 							STR_SET_COMPANY_PASSWORD, sizeof(_network_player_info[_local_player].password), 250, w, CS_ALPHANUMERAL);
 					}
@@ -885,10 +885,10 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			char *b = e->we.edittext.str;
 
 			/* empty string is allowed for password */
-			if (*b == '\0' && WP(w,def_d).byte_1 != 2) return;
+			if (*b == '\0' && WP(w, def_d).byte_1 != 2) return;
 
 			_cmd_text = b;
-			switch (WP(w,def_d).byte_1) {
+			switch (WP(w, def_d).byte_1) {
 				case 0: /* Change president name */
 					DoCommandP(0, 0, 0, NULL, CMD_CHANGE_PRESIDENT_NAME | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));
 					break;

@@ -158,7 +158,7 @@ enum {
 	CMD_ERROR = ((int32)0x80000000),
 };
 
-#define CMD_MSG(x) ((x)<<16)
+#define CMD_MSG(x) ((x) << 16)
 
 enum {
 	CMD_AUTO                  = 0x0200,

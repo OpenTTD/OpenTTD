@@ -730,7 +730,7 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 {
 	ParsedCommandStruct templ;
 	ParsedCommandStruct lang;
-	int i,j;
+	int i, j;
 	bool result = true;
 
 	ExtractCommandString(&templ, b, true);
@@ -914,7 +914,7 @@ static void ParseFile(const char *file, bool english)
 	in = fopen(file, "r");
 	if (in == NULL) fatal("Cannot open file");
 	_cur_line = 1;
-	while (fgets(buf, sizeof(buf),in) != NULL) {
+	while (fgets(buf, sizeof(buf), in) != NULL) {
 		rstrip(buf);
 		HandleString(buf, english);
 		_cur_line++;

@@ -268,7 +268,7 @@ struct PcxHeader {
 	uint32 unused;
 	uint16 xmax, ymax;
 	uint16 hdpi, vdpi;
-	byte pal_small[16*3];
+	byte pal_small[16 * 3];
 	byte reserved;
 	byte planes;
 	uint16 pitch;

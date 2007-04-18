@@ -348,7 +348,7 @@ int ttd_main(int argc, char *argv[])
 	int i;
 	const char *optformat;
 	char musicdriver[32], sounddriver[32], videodriver[32];
-	int resolution[2] = {0,0};
+	int resolution[2] = {0, 0};
 	Year startyear = INVALID_YEAR;
 	uint generation_seed = GENERATE_NEW_SEED;
 	bool save_config = true;
@@ -379,7 +379,7 @@ int ttd_main(int argc, char *argv[])
 #endif
 	;
 
-	MyGetOptData mgo(argc-1, argv+1, optformat);
+	MyGetOptData mgo(argc - 1, argv + 1, optformat);
 
 	while ((i = MyGetOpt(&mgo)) != -1) {
 		switch (i) {

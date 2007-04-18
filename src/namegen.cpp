@@ -90,7 +90,7 @@ static byte MakeEnglishAdditionalTownName(char *buf, uint32 seed, const char *la
 	/* optional first segment */
 	i = SeedChanceBias(0, lengthof(name_additional_english_prefix), seed, 50);
 	if (i >= 0)
-		strecat(buf,name_additional_english_prefix[i], last);
+		strecat(buf, name_additional_english_prefix[i], last);
 
 	if (SeedChance(3, 20, seed) >= 14) {
 		strecat(buf, name_additional_english_1a[SeedChance(6, lengthof(name_additional_english_1a), seed)], last);
@@ -176,13 +176,13 @@ static byte MakeGermanTownName(char *buf, uint32 seed, const char *last)
 	/* optional prefix */
 	if (seed_derivative == 12 || seed_derivative == 19) {
 		i = SeedChance(2, lengthof(name_german_pre), seed);
-		strecat(buf,name_german_pre[i], last);
+		strecat(buf, name_german_pre[i], last);
 	}
 
 	/* mandatory middle segments including option of hardcoded name */
 	i = SeedChance(3, lengthof(name_german_real) + lengthof(name_german_1), seed);
 	if (i < lengthof(name_german_real)) {
-		strecat(buf,name_german_real[i], last);
+		strecat(buf, name_german_real[i], last);
 	} else {
 		strecat(buf, name_german_1[i - lengthof(name_german_real)], last);
 
@@ -679,7 +679,7 @@ static byte MakeItalianTownName(char *buf, uint32 seed, const char *last)
 
 		if (SeedModChance(3, 3, seed) == 0) {
 			strecat(buf, name_italian_2[SeedModChance(11, lengthof(name_italian_2), seed)], last);
-			strecat(buf,mascul_femin_italian[i], last);
+			strecat(buf, mascul_femin_italian[i], last);
 		} else {
 			strecat(buf, name_italian_2i[SeedModChance(16, lengthof(name_italian_2i), seed)], last);
 		}

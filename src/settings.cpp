@@ -1140,15 +1140,15 @@ static int32 CheckInterval(int32 p1)
 	const Patches *ptc = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
 
 	if (p1) {
-		warning = ( (IS_INT_INSIDE(ptc->servint_trains,   5, 90+1) || ptc->servint_trains   == 0) &&
-								(IS_INT_INSIDE(ptc->servint_roadveh,  5, 90+1) || ptc->servint_roadveh  == 0) &&
-								(IS_INT_INSIDE(ptc->servint_aircraft, 5, 90+1) || ptc->servint_aircraft == 0) &&
-								(IS_INT_INSIDE(ptc->servint_ships,    5, 90+1) || ptc->servint_ships    == 0) );
+		warning = ( (IS_INT_INSIDE(ptc->servint_trains,   5, 90 + 1) || ptc->servint_trains   == 0) &&
+								(IS_INT_INSIDE(ptc->servint_roadveh,  5, 90 + 1) || ptc->servint_roadveh  == 0) &&
+								(IS_INT_INSIDE(ptc->servint_aircraft, 5, 90 + 1) || ptc->servint_aircraft == 0) &&
+								(IS_INT_INSIDE(ptc->servint_ships,    5, 90 + 1) || ptc->servint_ships    == 0) );
 	} else {
-		warning = ( (IS_INT_INSIDE(ptc->servint_trains,   30, 800+1) || ptc->servint_trains   == 0) &&
-								(IS_INT_INSIDE(ptc->servint_roadveh,  30, 800+1) || ptc->servint_roadveh  == 0) &&
-								(IS_INT_INSIDE(ptc->servint_aircraft, 30, 800+1) || ptc->servint_aircraft == 0) &&
-								(IS_INT_INSIDE(ptc->servint_ships,    30, 800+1) || ptc->servint_ships    == 0) );
+		warning = ( (IS_INT_INSIDE(ptc->servint_trains,   30, 800 + 1) || ptc->servint_trains   == 0) &&
+								(IS_INT_INSIDE(ptc->servint_roadveh,  30, 800 + 1) || ptc->servint_roadveh  == 0) &&
+								(IS_INT_INSIDE(ptc->servint_aircraft, 30, 800 + 1) || ptc->servint_aircraft == 0) &&
+								(IS_INT_INSIDE(ptc->servint_ships,    30, 800 + 1) || ptc->servint_ships    == 0) );
 	}
 
 	if (!warning)
@@ -1280,7 +1280,7 @@ static const SettingDesc _gameopt_settings[] = {
 	 * and why not byte for example? */
 	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, (SLE_FILE_I16 | SLE_VAR_I32), 0, 0, GameOptions, diff, 17, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 0, 3),
 	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, (SLE_FILE_I16 | SLE_VAR_I32), 0, 0, GameOptions, diff, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 4, SL_MAX_VERSION),
-	    SDT_VAR(GameOptions, diff_level,SLE_UINT8, 0, 0, 0, 0,  3, 0, STR_NULL, NULL),
+	    SDT_VAR(GameOptions, diff_level, SLE_UINT8, 0, 0, 0, 0,  3, 0, STR_NULL, NULL),
 	  SDT_OMANY(GameOptions, currency,  SLE_UINT8, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
 	  SDT_OMANY(GameOptions, units,     SLE_UINT8, N, 0, 1,     2, "imperial|metric|si", STR_NULL, NULL, NULL),
 	  SDT_OMANY(GameOptions, town_name, SLE_UINT8, 0, 0, 0,    20, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
@@ -1527,7 +1527,7 @@ const SettingDesc _patch_settings[] = {
 static const SettingDesc _currency_settings[] = {
 	SDT_VAR(CurrencySpec, rate,    SLE_UINT16, S, 0,  1, 0, 100, 0, STR_NULL, NULL),
 	SDT_CHR(CurrencySpec, separator,           S, 0,        ".",    STR_NULL, NULL),
-	SDT_VAR(CurrencySpec, to_euro,  SLE_INT32, S, 0,  0, 0,3000, 0, STR_NULL, NULL),
+	SDT_VAR(CurrencySpec, to_euro,  SLE_INT32, S, 0,  0, 0, 3000, 0, STR_NULL, NULL),
 	SDT_STR(CurrencySpec, prefix,   SLE_STRBQ, S, 0,       NULL,    STR_NULL, NULL),
 	SDT_STR(CurrencySpec, suffix,   SLE_STRBQ, S, 0, " credits",    STR_NULL, NULL),
 	SDT_END()

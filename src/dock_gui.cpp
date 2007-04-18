@@ -165,10 +165,10 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		RaiseWindowButtons(w);
 
 		w = FindWindowById(WC_BUILD_STATION, 0);
-		if (w != NULL) WP(w,def_d).close = true;
+		if (w != NULL) WP(w, def_d).close = true;
 
 		w = FindWindowById(WC_BUILD_DEPOT, 0);
-		if (w != NULL) WP(w,def_d).close = true;
+		if (w != NULL) WP(w, def_d).close = true;
 		break;
 
 	case WE_PLACE_PRESIZE: {
@@ -233,7 +233,7 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		int rad;
 
-		if (WP(w,def_d).close) return;
+		if (WP(w, def_d).close) return;
 		DrawWindowWidgets(w);
 
 		rad = (_patches.modified_catchment) ? CA_DOCK : 4;
@@ -258,7 +258,7 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if (WP(w,def_d).close) {
+		if (WP(w, def_d).close) {
 			DeleteWindow(w);
 			return;
 		}
@@ -267,7 +267,7 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close) ResetObjectToPlace();
+		if (!WP(w, def_d).close) ResetObjectToPlace();
 		break;
 	}
 }
@@ -333,11 +333,11 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_MOUSELOOP:
-		if (WP(w,def_d).close) DeleteWindow(w);
+		if (WP(w, def_d).close) DeleteWindow(w);
 		break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close) ResetObjectToPlace();
+		if (!WP(w, def_d).close) ResetObjectToPlace();
 		break;
 	}
 }

@@ -37,7 +37,7 @@ static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 		if (_thd.place_mode == 1 && _thd.window_class == WC_BUILD_INDUSTRY) {
-			int ind_type = _build_industry_types[_opt_ptr->landscape][WP(w,def_d).data_1];
+			int ind_type = _build_industry_types[_opt_ptr->landscape][WP(w, def_d).data_1];
 
 			SetDParam(0, (_price.build_industry >> 5) * GetIndustrySpec(ind_type)->cost_multiplier);
 			DrawStringCentered(85, w->height - 21, STR_482F_COST, 0);
@@ -48,12 +48,12 @@ static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 		int wid = e->we.click.widget;
 		if (wid >= 3) {
 			if (HandlePlacePushButton(w, wid, SPR_CURSOR_INDUSTRY, 1, NULL))
-				WP(w,def_d).data_1 = wid - 3;
+				WP(w, def_d).data_1 = wid - 3;
 		}
 	} break;
 
 	case WE_PLACE_OBJ:
-		if (DoCommandP(e->we.place.tile, _build_industry_types[_opt_ptr->landscape][WP(w,def_d).data_1], 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY)))
+		if (DoCommandP(e->we.place.tile, _build_industry_types[_opt_ptr->landscape][WP(w, def_d).data_1], 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY)))
 			ResetObjectToPlace();
 		break;
 
@@ -274,7 +274,7 @@ static const WindowDesc * const _industry_window_desc[2][4] = {
 void ShowBuildIndustryWindow()
 {
 	if (!IsValidPlayer(_current_player)) return;
-	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt_ptr->landscape],0);
+	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt_ptr->landscape], 0);
 }
 
 static inline bool isProductionMinimum(const Industry *i, int pt) {
@@ -330,7 +330,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 127, STR_482B_TRANSPORTED, 0);
 			/* Let's put out those buttons.. */
 			if (IsProductionAlterable(i)) {
-				DrawArrowButtons(5, 127, 3, (WP(w,vp2_d).data_2 == 1) ? WP(w,vp2_d).data_3 : 0,
+				DrawArrowButtons(5, 127, 3, (WP(w, vp2_d).data_2 == 1) ? WP(w, vp2_d).data_3 : 0,
 						!isProductionMinimum(i, 0), !isProductionMaximum(i, 0));
 			}
 
@@ -341,7 +341,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
 				/* Let's put out those buttons.. */
 				if (IsProductionAlterable(i)) {
-					DrawArrowButtons(5, 137, 3, (WP(w,vp2_d).data_2 == 2) ? WP(w,vp2_d).data_3 : 0,
+					DrawArrowButtons(5, 137, 3, (WP(w, vp2_d).data_2 == 2) ? WP(w, vp2_d).data_3 : 0,
 						!isProductionMinimum(i, 1), !isProductionMaximum(i, 1));
 				}
 			}
@@ -379,11 +379,11 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					UpdateIndustryProduction(i);
 					SetWindowDirty(w);
 					w->flags4 |= 5 << WF_TIMEOUT_SHL;
-					WP(w,vp2_d).data_2 = line+1;
-					WP(w,vp2_d).data_3 = (x < 15 ? 1 : 2);
+					WP(w, vp2_d).data_2 = line + 1;
+					WP(w, vp2_d).data_3 = (x < 15 ? 1 : 2);
 				} else if (IS_INT_INSIDE(x, 34, 160)) {
 					/* clicked the text */
-					WP(w,vp2_d).data_1 = line;
+					WP(w, vp2_d).data_1 = line;
 					SetDParam(0, i->production_rate[line] * 8);
 					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_GAME_PRODUCTION, 10, 100, w, CS_ALPHANUMERAL);
 				}
@@ -397,15 +397,15 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	case WE_TIMEOUT:
-		WP(w,vp2_d).data_2 = 0;
-		WP(w,vp2_d).data_3 = 0;
+		WP(w, vp2_d).data_2 = 0;
+		WP(w, vp2_d).data_3 = 0;
 		SetWindowDirty(w);
 		break;
 
 	case WE_ON_EDIT_TEXT:
 		if (e->we.edittext.str[0] != '\0') {
 			Industry* i = GetIndustry(w->window_number);
-			int line = WP(w,vp2_d).data_1;
+			int line = WP(w, vp2_d).data_1;
 
 			i->production_rate[line] = clampu(atoi(e->we.edittext.str), 0, 255);
 			UpdateIndustryProduction(i);
@@ -449,9 +449,9 @@ void ShowIndustryViewWindow(int industry)
 
 	if (w != NULL) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
-		WP(w,vp2_d).data_1 = 0;
-		WP(w,vp2_d).data_2 = 0;
-		WP(w,vp2_d).data_3 = 0;
+		WP(w, vp2_d).data_1 = 0;
+		WP(w, vp2_d).data_2 = 0;
+		WP(w, vp2_d).data_3 = 0;
 		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, GetIndustry(w->window_number)->xy + TileDiffXY(1, 1), 1);
 	}
 }
@@ -599,7 +599,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		SetVScrollCount(w, _num_industry_sort);
 
 		DrawWindowWidgets(w);
-		DoDrawString(_industry_sort_order & 1 ? DOWNARROW : UPARROW, _indicator_positions[_industry_sort_order>>1], 15, 0x10);
+		DoDrawString(_industry_sort_order & 1 ? DOWNARROW : UPARROW, _indicator_positions[_industry_sort_order >> 1], 15, 0x10);
 
 		p = w->vscroll.pos;
 		n = 0;
@@ -617,13 +617,13 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 					SetDParam(4, i->total_production[1]);
 					SetDParam(5, i->pct_transported[0] * 100 >> 8);
 					SetDParam(6, i->pct_transported[1] * 100 >> 8);
-					DrawString(4, 28+n*10, STR_INDUSTRYDIR_ITEM_TWO, 0);
+					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_TWO, 0);
 				} else {
 					SetDParam(3, i->pct_transported[0] * 100 >> 8);
-					DrawString(4, 28+n*10, STR_INDUSTRYDIR_ITEM, 0);
+					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM, 0);
 				}
 			} else {
-				DrawString(4, 28+n*10, STR_INDUSTRYDIR_ITEM_NOPROD, 0);
+				DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_NOPROD, 0);
 			}
 			p++;
 			if (++n == w->vscroll.cap) break;
@@ -633,25 +633,25 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 		case 3: {
-			_industry_sort_order = _industry_sort_order==0 ? 1 : 0;
+			_industry_sort_order = _industry_sort_order == 0 ? 1 : 0;
 			_industry_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
 
 		case 4: {
-			_industry_sort_order = _industry_sort_order==2 ? 3 : 2;
+			_industry_sort_order = _industry_sort_order == 2 ? 3 : 2;
 			_industry_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
 
 		case 5: {
-			_industry_sort_order = _industry_sort_order==4 ? 5 : 4;
+			_industry_sort_order = _industry_sort_order == 4 ? 5 : 4;
 			_industry_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
 
 		case 6: {
-			_industry_sort_order = _industry_sort_order==6 ? 7 : 6;
+			_industry_sort_order = _industry_sort_order == 6 ? 7 : 6;
 			_industry_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;

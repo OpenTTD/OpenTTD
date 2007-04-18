@@ -551,7 +551,7 @@ static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Tra
  * direction in which we are entering the tile */
 static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
-	assert(enterdir>=0 && enterdir<=3);
+	assert(enterdir >= 0 && enterdir <= 3);
 
 	if (_patches.yapf.ship_use_yapf) {
 		Trackdir trackdir = YapfChooseShipTrack(v, tile, enterdir, tracks);
@@ -654,11 +654,11 @@ static const byte _ship_subcoord[4][6][3] = {
 	},
 	{
 		{ 0, 0, 0},
-		{ 8,15, 7},
+		{ 8, 15, 7},
 		{ 0, 0, 0},
-		{ 8,15, 6},
+		{ 8, 15, 6},
 		{ 0, 0, 0},
-		{ 7,15, 0},
+		{ 7, 15, 0},
 	}
 };
 
@@ -880,7 +880,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		y = TileY(tile) * TILE_SIZE + TILE_SIZE / 2;
 		v->x_pos = x;
 		v->y_pos = y;
-		v->z_pos = GetSlopeZ(x,y);
+		v->z_pos = GetSlopeZ(x, y);
 
 		v->z_height = 6;
 		v->sprite_width = 6;

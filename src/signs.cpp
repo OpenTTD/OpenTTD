@@ -136,7 +136,7 @@ int32 CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		si->x = x;
 		si->y = y;
 		si->owner = _current_player; // owner of the sign; just eyecandy
-		si->z = GetSlopeZ(x,y);
+		si->z = GetSlopeZ(x, y);
 		UpdateSignVirtCoords(si);
 		MarkSignDirty(si);
 		InvalidateWindow(WC_SIGN_LIST, 0);

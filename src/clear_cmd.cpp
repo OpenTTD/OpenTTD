@@ -79,7 +79,7 @@ static void TerraformAddDirtyTile(TerraformerState *ts, TileIndex tile)
 
 	if (count >= 625) return;
 
-	for (t = ts->tile_table; count != 0; count--,t++) {
+	for (t = ts->tile_table; count != 0; count--, t++) {
 		if (*t == tile) return;
 	}
 
@@ -141,7 +141,7 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 		}
 	}
 
-	ret = DoCommand(tile, 0,0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommand(tile, 0, 0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
 	if (CmdFailed(ret)) {
 		_terraform_err_tile = tile;
@@ -215,8 +215,8 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 			tile += ToTileIndexDiff(*ttm);
 
 			r = TerraformGetHeightOfTile(ts, tile);
-			if (r != height && r-direction != height && r+direction != height) {
-				if (!TerraformTileHeight(ts, tile, r+direction))
+			if (r != height && r - direction != height && r + direction != height) {
+				if (!TerraformTileHeight(ts, tile, r + direction))
 					return false;
 			}
 		}
@@ -382,8 +382,8 @@ int32 CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (ey < sy) Swap(ey, sy);
 	tile = TileXY(sx, sy);
 
-	size_x = ex-sx+1;
-	size_y = ey-sy+1;
+	size_x = ex - sx + 1;
+	size_y = ey - sy + 1;
 
 	money = GetAvailableMoneyForCommand();
 	cost = 0;

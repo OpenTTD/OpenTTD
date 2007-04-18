@@ -821,7 +821,7 @@ start_at:
 			}
 
 			/* If we reach here, the tile has exactly one track, and this
-			 track is reachable => Rail segment continues */
+			 track is reachable = > Rail segment continues */
 
 			track = _new_trackdir[FIND_FIRST_BIT(bits)][direction];
 			assert(track != INVALID_TRACKDIR);

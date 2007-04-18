@@ -1523,7 +1523,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 				uint32 tempfix = grf_load_dword(&buf);
 
 				if (curidx < NUM_CURRENCY) {
-					memcpy(&_currency_specs[curidx].suffix,&tempfix,4);
+					memcpy(&_currency_specs[curidx].suffix, &tempfix, 4);
 					_currency_specs[curidx].suffix[4] = 0;
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Currency symbol %d out of range, ignoring", curidx);
@@ -2796,7 +2796,7 @@ static void FeatureNewName(byte *buf, int len)
 				case GSF_CANAL :
 				case GSF_BRIDGE :
 					AddGRFString(_cur_spriteid, id, lang, name);
-					switch (GB(id, 8,8)) {
+					switch (GB(id, 8, 8)) {
 						case 0xC9: // House name
 						default:
 							grfmsg(7, "FeatureNewName: Unsupported ID (0x%04X)", id);

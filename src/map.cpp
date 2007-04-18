@@ -86,9 +86,9 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 #endif
 	}
 
-	assert(TileXY(x,y) == TILE_MASK(tile + add));
+	assert(TileXY(x, y) == TILE_MASK(tile + add));
 
-	return TileXY(x,y);
+	return TileXY(x, y);
 }
 #endif
 
@@ -98,7 +98,7 @@ uint ScaleByMapSize(uint n)
 	/* First shift by 12 to prevent integer overflow for large values of n.
 	 * >>12 is safe since the min mapsize is 64x64
 	 * Add (1<<4)-1 to round upwards. */
-	return (n * (MapSize() >> 12) + (1<<4) - 1) >> 4;
+	return (n * (MapSize() >> 12) + (1 << 4) - 1) >> 4;
 }
 
 
@@ -109,7 +109,7 @@ uint ScaleByMapSize1D(uint n)
 	 * Note, not actually taking the full circumference into account,
 	 * just half of it.
 	 * (1<<9) - 1 is there to scale upwards. */
-	return (n * (MapSizeX() + MapSizeY()) + (1<<9) - 1) >> 9;
+	return (n * (MapSizeX() + MapSizeY()) + (1 << 9) - 1) >> 9;
 }
 
 

@@ -161,7 +161,7 @@ typedef unsigned long in_addr_t;
 /* Make the names compatible */
 #	define closesocket(s) CloseSocket(s)
 #	define GET_LAST_ERROR() Errno()
-#	define ioctlsocket(s,request,status) IoctlSocket((LONG)s,(ULONG)request,(char*)status)
+#	define ioctlsocket(s, request, status) IoctlSocket((LONG)s, (ULONG)request, (char*)status)
 #	define ioctl ioctlsocket
 
 	typedef unsigned int in_addr_t;

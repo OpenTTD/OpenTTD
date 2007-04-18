@@ -1931,7 +1931,7 @@ static const char *name_czech_suffix[] = {
 
 
 
-static const char *name_romanian_real[]= {
+static const char *name_romanian_real[] = {
 	"Adjud",
 	"Alba Iulia",
 	"Alexandria",

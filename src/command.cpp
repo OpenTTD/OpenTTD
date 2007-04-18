@@ -407,7 +407,7 @@ int32 GetAvailableMoneyForCommand()
  * the callback is called when the command succeeded or failed. */
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd)
 {
-	int32 res = 0,res2;
+	int32 res = 0, res2;
 	CommandProc *proc;
 	uint32 flags;
 	bool notest;
@@ -544,7 +544,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		if (res2 != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2);
 		if (_additional_cash_required) {
 			SetDParam(0, _additional_cash_required);
-			ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, error_part1, x,y);
+			ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, error_part1, x, y);
 			if (res2 == 0) goto callb_err;
 		}
 	}
@@ -558,7 +558,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 show_error:
 	/* show error message if the command fails? */
 	if (IsLocalPlayer() && error_part1 != 0) {
-		ShowErrorMessage(_error_message, error_part1, x,y);
+		ShowErrorMessage(_error_message, error_part1, x, y);
 	}
 
 callb_err:

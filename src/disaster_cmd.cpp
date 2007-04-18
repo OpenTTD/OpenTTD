@@ -233,7 +233,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 				SetDParam(0, GetStationIndex(tile));
 				AddNewsItem(STR_B000_ZEPPELIN_DISASTER_AT,
-					NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
+					NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, 0),
 					v->index,
 					0);
 			}
@@ -263,7 +263,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 	x = v->x_pos;
 	y = v->y_pos;
-	z = GetSlopeZ(x,y);
+	z = GetSlopeZ(x, y);
 	if (z < v->z_pos) z = v->z_pos - 1;
 	SetDisasterVehiclePos(v, x, y, z);
 
@@ -359,14 +359,14 @@ static void DisasterTick_Ufo(Vehicle *v)
 		if (dist <= TILE_SIZE && z > u->z_pos) z--;
 		SetDisasterVehiclePos(v, gp.x, gp.y, z);
 
-		if (z <= u->z_pos && (u->vehstatus & VS_HIDDEN)==0) {
+		if (z <= u->z_pos && (u->vehstatus & VS_HIDDEN) == 0) {
 			v->age++;
 			if (u->u.road.crashed_ctr == 0) {
 				u->u.road.crashed_ctr++;
 				u->vehstatus |= VS_CRASHED;
 
 				AddNewsItem(STR_B001_ROAD_VEHICLE_DESTROYED,
-					NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
+					NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, 0),
 					u->index,
 					0);
 			}
@@ -441,7 +441,7 @@ static void DisasterTick_Airplane(Vehicle *v)
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
-			AddNewsItem(STR_B002_OIL_REFINERY_EXPLOSION, NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy, 0);
+			AddNewsItem(STR_B002_OIL_REFINERY_EXPLOSION, NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, 0), i->xy, 0);
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
 	} else if (v->current_order.dest == 0) {
@@ -514,7 +514,7 @@ static void DisasterTick_Helicopter(Vehicle *v)
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
-			AddNewsItem(STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy, 0);
+			AddNewsItem(STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, 0), i->xy, 0);
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
 	} else if (v->current_order.dest == 0) {
@@ -600,7 +600,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		t = ClosestTownFromTile(v->dest_tile, (uint)-1);
 		SetDParam(0, t->index);
 		AddNewsItem(STR_B004_UFO_LANDS_NEAR,
-			NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ACCIDENT, 0),
+			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, 0),
 			v->tile,
 			0);
 
@@ -951,7 +951,7 @@ static void Disaster_Small_Submarine_Init()
 static void Disaster_Big_Submarine_Init()
 {
 	Vehicle *v = ForceAllocateSpecialVehicle();
-	int x,y;
+	int x, y;
 	Direction dir;
 	uint32 r;
 
@@ -986,7 +986,7 @@ static void Disaster_CoalMine_Init()
 			if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CAN_SUBSIDENCE) && --index < 0) {
 				SetDParam(0, i->town->index);
 				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES,
-					NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy + TileDiffXY(1, 1), 0);
+					NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, 0), i->xy + TileDiffXY(1, 1), 0);
 
 				{
 					TileIndex tile = i->xy;

@@ -789,7 +789,7 @@ static void ShowNetworkStartServerWindow()
 	_saveload_mode = SLD_NEW_GAME;
 	BuildFileList();
 	w->vscroll.cap = 12;
-	w->vscroll.count = _fios_num+1;
+	w->vscroll.count = _fios_num + 1;
 
 	WP(w, network_ql_d).q.afilter = CS_ALPHANUMERAL;
 	InitializeTextBuffer(&WP(w, network_ql_d).q.text, _edit_str_buf, lengthof(_edit_str_buf), 160);

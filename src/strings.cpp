@@ -63,7 +63,7 @@ static inline int64 GetInt64(const int32 **argv)
 
 	assert(argv);
 	result = (uint32)(*argv)[0] + ((uint64)(uint32)(*argv)[1] << 32);
-	(*argv)+=2;
+	(*argv) += 2;
 	return result;
 }
 
@@ -421,37 +421,37 @@ static int DeterminePluralForm(int32 n)
 	 * Used in:
 	 *   Latvian */
 	case 3:
-		return n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;
+		return n%10 == 1 && n%100 != 11 ? 0 : n != 0 ? 1 : 2;
 
 	/* Three forms, special case for one and two
 	 * Used in:
 	 *   Gaelige (Irish) */
 	case 4:
-		return n==1 ? 0 : n==2 ? 1 : 2;
+		return n == 1 ? 0 : n == 2 ? 1 : 2;
 
 	/* Three forms, special case for numbers ending in 1[2-9]
 	 * Used in:
 	 *   Lithuanian */
 	case 5:
-		return n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;
+		return n%10 == 1 && n%100 != 11 ? 0 : n%10 >= 2 && (n%100<10 || n%100 >= 20) ? 1 : 2;
 
 	/* Three forms, special cases for numbers ending in 1 and 2, 3, 4, except those ending in 1[1-4]
 	 * Used in:
 	 *   Croatian, Czech, Russian, Slovak, Ukrainian */
 	case 6:
-		return n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;
+		return n%10 == 1 && n%100 != 11 ? 0 : n%10 >= 2 && n%10 <= 4 && (n%100<10 || n%100 >= 20) ? 1 : 2;
 
 	/* Three forms, special case for one and some numbers ending in 2, 3, or 4
 	 * Used in:
 	 *   Polish */
 	case 7:
-		return n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;
+		return n == 1 ? 0 : n%10 >= 2 && n%10 <= 4 && (n%100<10 || n%100 >= 20) ? 1 : 2;
 
 	/* Four forms, special case for one and all numbers ending in 02, 03, or 04
 	 * Used in:
 	 *   Slovenian */
 	case 8:
-		return n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;
+		return n%100 == 1 ? 0 : n%100 == 2 ? 1 : n%100 == 3 || n%100 == 4 ? 2 : 3;
 	}
 }
 
@@ -459,7 +459,7 @@ static const char *ParseStringChoice(const char *b, uint form, char *dst, int *d
 {
 	//<NUM> {Length of each string} {each string}
 	uint n = (byte)*b++;
-	uint pos,i, mylen=0,mypos=0;
+	uint pos, i, mylen = 0, mypos = 0;
 
 	for (i = pos = 0; i != n; i++) {
 		uint len = (byte)*b++;

@@ -220,9 +220,9 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 
 		// Check if the rating in a city is high enough
 		//  If not, take a chance if we want to continue
-		if (t->ratings[_current_player] < 0 && AI_CHANCE16(1,4)) return false;
+		if (t->ratings[_current_player] < 0 && AI_CHANCE16(1, 4)) return false;
 
-		if (t->max_pass - t->act_pass < AI_CHECKCITY_NEEDED_CARGO && !AI_CHANCE16(1,AI_CHECKCITY_CITY_CHANCE)) return false;
+		if (t->max_pass - t->act_pass < AI_CHECKCITY_NEEDED_CARGO && !AI_CHANCE16(1, AI_CHECKCITY_CITY_CHANCE)) return false;
 
 		// Check if we have build a station in this town the last 6 months
 		//  else we don't do it. This is done, because stat updates can be slow
@@ -275,7 +275,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 		int count = 0;
 		int j = 0;
 
-		if (i->town != NULL && i->town->ratings[_current_player] < 0 && AI_CHANCE16(1,4)) return false;
+		if (i->town != NULL && i->town->ratings[_current_player] < 0 && AI_CHANCE16(1, 4)) return false;
 
 		// No limits on delevering stations!
 		//  Or for industry that does not give anything yet
@@ -642,8 +642,8 @@ static void AiNew_State_FindStation(Player *p)
 		int r;
 		uint best;
 		uint accepts[NUM_CARGO];
-		TileIndex found_spot[AI_FINDSTATION_TILE_RANGE*AI_FINDSTATION_TILE_RANGE*4];
-		uint found_best[AI_FINDSTATION_TILE_RANGE*AI_FINDSTATION_TILE_RANGE*4];
+		TileIndex found_spot[AI_FINDSTATION_TILE_RANGE*AI_FINDSTATION_TILE_RANGE * 4];
+		uint found_best[AI_FINDSTATION_TILE_RANGE*AI_FINDSTATION_TILE_RANGE * 4];
 		// To find a good spot we scan a range from the center, a get the point
 		//  where we get the most cargo and where it is buildable.
 		// TODO: also check for station of myself and make sure we are not
@@ -961,13 +961,13 @@ static void AiNew_State_VerifyRoute(Player *p)
 
 	// Now we can build the route, check the direction of the stations!
 	if (p->ainew.from_direction == AI_PATHFINDER_NO_DIRECTION) {
-		p->ainew.from_direction = AiNew_GetDirection(p->ainew.path_info.route[p->ainew.path_info.route_length-1], p->ainew.path_info.route[p->ainew.path_info.route_length-2]);
+		p->ainew.from_direction = AiNew_GetDirection(p->ainew.path_info.route[p->ainew.path_info.route_length - 1], p->ainew.path_info.route[p->ainew.path_info.route_length - 2]);
 	}
 	if (p->ainew.to_direction == AI_PATHFINDER_NO_DIRECTION) {
 		p->ainew.to_direction = AiNew_GetDirection(p->ainew.path_info.route[0], p->ainew.path_info.route[1]);
 	}
 	if (p->ainew.from_tile == AI_STATION_RANGE)
-		p->ainew.from_tile = p->ainew.path_info.route[p->ainew.path_info.route_length-1];
+		p->ainew.from_tile = p->ainew.path_info.route[p->ainew.path_info.route_length - 1];
 	if (p->ainew.to_tile == AI_STATION_RANGE)
 		p->ainew.to_tile = p->ainew.path_info.route[0];
 

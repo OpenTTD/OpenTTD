@@ -246,9 +246,9 @@ static bool IsCloseToTown(TileIndex tile, uint dist)
 static void MarkTownSignDirty(Town *t)
 {
 	MarkAllViewportsDirty(
-		t->sign.left-6,
-		t->sign.top-3,
-		t->sign.left+t->sign.width_1*4+12,
+		t->sign.left - 6,
+		t->sign.top - 3,
+		t->sign.left + t->sign.width_1 * 4 + 12,
 		t->sign.top + 45
 	);
 }
@@ -530,10 +530,10 @@ static bool IsRoadAllowedHere(TileIndex tile, int dir)
 no_slope:
 			/* Tile has no slope
 			 * Disallow the road if any neighboring tile has a road. */
-			if (HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir+1]))), dir^2) ||
-					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir+3]))), dir^2) ||
-					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir+1]) + ToTileIndexDiff(_roadblock_tileadd[dir+2]))), dir) ||
-					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir+3]) + ToTileIndexDiff(_roadblock_tileadd[dir+2]))), dir))
+			if (HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir + 1]))), dir ^ 2) ||
+					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir + 3]))), dir ^ 2) ||
+					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir + 1]) + ToTileIndexDiff(_roadblock_tileadd[dir + 2]))), dir) ||
+					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir + 3]) + ToTileIndexDiff(_roadblock_tileadd[dir + 2]))), dir))
 				return false;
 
 			/* Otherwise allow */
@@ -644,7 +644,7 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 		}
 		rcmd = (RoadBits)((1 << a) + (1 << b));
 
-	} else if (block < 5 && !HASBIT(mask,block^2)) {
+	} else if (block < 5 && !HASBIT(mask, block ^ 2)) {
 		/* Continue building on a partial road.
 		 * Always OK. */
 		_grow_town_result = 0;
@@ -771,7 +771,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 
 		/* Select a random bit from the blockmask, walk a step
 		 * and continue the search from there. */
-		do block = Random() & 3; while (!HASBIT(mask,block));
+		do block = Random() & 3; while (!HASBIT(mask, block));
 		tile += ToTileIndexDiff(_roadblock_tileadd[block]);
 
 		if (IsTileType(tile, MP_STREET)) {

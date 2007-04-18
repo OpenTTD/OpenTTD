@@ -168,11 +168,11 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		y = TileY(tile) * TILE_SIZE + TILE_SIZE / 2;
 		v->x_pos = x;
 		v->y_pos = y;
-		v->z_pos = GetSlopeZ(x,y);
+		v->z_pos = GetSlopeZ(x, y);
 		v->z_height = 6;
 
 		v->u.road.state = RVSB_IN_DEPOT;
-		v->vehstatus = VS_HIDDEN|VS_STOPPED|VS_DEFPAL;
+		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
 		v->spritenum = rvi->image_index;
 		v->cargo_type = rvi->cargo_type;

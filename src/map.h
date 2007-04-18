@@ -147,7 +147,7 @@ uint DistanceMaxPlusManhattan(TileIndex, TileIndex); ///< Max + Manhattan
 uint DistanceFromEdge(TileIndex); ///< shortest distance from any edge of the map
 
 
-#define BEGIN_TILE_LOOP(var,w,h,tile)                      \
+#define BEGIN_TILE_LOOP(var, w, h, tile)                      \
 	{                                                        \
 		int h_cur = h;                                         \
 		uint var = tile;                                       \
@@ -155,7 +155,7 @@ uint DistanceFromEdge(TileIndex); ///< shortest distance from any edge of the ma
 			int w_cur = w;                                       \
 			do {
 
-#define END_TILE_LOOP(var,w,h,tile)                        \
+#define END_TILE_LOOP(var, w, h, tile)                        \
 			} while (++var, --w_cur != 0);                       \
 		} while (var += TileDiffXY(0, 1) - (w), --h_cur != 0); \
 	}

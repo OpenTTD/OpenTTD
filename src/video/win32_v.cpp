@@ -45,7 +45,7 @@ static void MakePalette()
 	LOGPALETTE *pal;
 	uint i;
 
-	pal = (LOGPALETTE*)alloca(sizeof(LOGPALETTE) + (256-1) * sizeof(PALETTEENTRY));
+	pal = (LOGPALETTE*)alloca(sizeof(LOGPALETTE) + (256 - 1) * sizeof(PALETTEENTRY));
 
 	pal->palVersion = 0x300;
 	pal->palNumEntries = 256;
@@ -653,8 +653,8 @@ static bool AllocateDibSection(int w, int h)
 		_wnd.alloced_bits = NULL;
 	}
 
-	bi = (BITMAPINFO*)alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD)*256);
-	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD)*256);
+	bi = (BITMAPINFO*)alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
+	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
 	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
 
 	if (_wnd.double_size) {

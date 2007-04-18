@@ -105,7 +105,7 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 
 		w = FindWindowById(WC_BUILD_STATION, 0);
 		if (w != 0)
-			WP(w,def_d).close = true;
+			WP(w, def_d).close = true;
 		break;
 
 	case WE_DESTROY:
@@ -155,7 +155,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		uint32 avail_airports;
 		const AirportFTAClass *airport;
 
-		if (WP(w,def_d).close) return;
+		if (WP(w, def_d).close) return;
 
 		avail_airports = GetValidAirports();
 
@@ -207,7 +207,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_MOUSELOOP: {
-		if (WP(w,def_d).close) {
+		if (WP(w, def_d).close) {
 			DeleteWindow(w);
 			return;
 		}
@@ -216,7 +216,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close) ResetObjectToPlace();
+		if (!WP(w, def_d).close) ResetObjectToPlace();
 		break;
 	}
 }

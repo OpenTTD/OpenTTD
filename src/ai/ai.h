@@ -77,8 +77,8 @@ static inline bool AI_AllowNewAI()
 	return true;
 }
 
-#define AI_CHANCE16(a,b)    ((uint16)     AI_Random()  <= (uint16)((65536 * a) / b))
-#define AI_CHANCE16R(a,b,r) ((uint16)(r = AI_Random()) <= (uint16)((65536 * a) / b))
+#define AI_CHANCE16(a, b)    ((uint16)     AI_Random()  <= (uint16)((65536 * a) / b))
+#define AI_CHANCE16R(a, b, r) ((uint16)(r = AI_Random()) <= (uint16)((65536 * a) / b))
 
 /**
  * The random-function that should be used by ALL AIs.

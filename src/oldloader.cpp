@@ -149,7 +149,7 @@ static byte ReadByte(LoadgameState *ls)
 	/* Old savegames have a nice compression algorithm (RLE)
 	which means that we have a chunk, which starts with a length
 	byte. If that byte is negative, we have to repeat the next byte
-	that many times (+1). Else, we need to read that amount of bytes.
+	that many times ( + 1). Else, we need to read that amount of bytes.
 	Works pretty good if you have many zero's behind eachother */
 
 	if (ls->chunk_size == 0) {
@@ -433,7 +433,7 @@ static const OldChunks town_chunk[] = {
 	OCL_SVAR( OC_UINT16, Town, ratings[7] ),
 
 	/* XXX - This is pretty odd.. we read 32bit, but only write 8bit.. sure there is
-	nothing changed?? */
+	nothing changed ? ? */
 	OCL_SVAR( OC_FILE_U32 | OC_VAR_U8, Town, have_ratings ),
 	OCL_SVAR( OC_FILE_U32 | OC_VAR_U8, Town, statues ),
 	OCL_SVAR( OC_UINT16, Town, num_houses ),
@@ -1219,8 +1219,8 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 
 static const OldChunks sign_chunk[] = {
 	OCL_SVAR( OC_UINT16, Sign, str ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32,Sign, x ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32,Sign, y ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Sign, x ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Sign, y ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I8, Sign, z ),
 
 	OCL_NULL( 6 ),         ///< Width of sign, no longer in use
