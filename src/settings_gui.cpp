@@ -115,7 +115,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, 0); // fullscreen
-	}	break;
+	} break;
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
@@ -498,7 +498,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			SetDifficultyLevel(3, &_opt_mod_temp); // set difficulty level to custom
 			LowerWindowWidget(w, _opt_mod_temp.diff_level + 3);
 			SetWindowDirty(w);
-		}	break;
+		} break;
 		case 3: case 4: case 5: case 6: /* Easy / Medium / Hard / Custom */
 			// temporarily change difficulty level
 			RaiseWindowWidget(w, _opt_mod_temp.diff_level + 3);

@@ -222,7 +222,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 void CSleep(int milliseconds)
 {
 #ifndef __INNOTEK_LIBC__
- 	delay(milliseconds);
+	delay(milliseconds);
 #else
 	usleep(milliseconds * 1000);
 #endif

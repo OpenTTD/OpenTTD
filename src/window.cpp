@@ -823,7 +823,7 @@ static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number
 			case WDP_ALIGN_TBR: { /* Align the right side with the top toolbar */
 				w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 				pt.x = (w->left + w->width) - desc->width;
-			}	break;
+			} break;
 			case WDP_ALIGN_TBL: /* Align the left side with the top toolbar */
 				pt.x = FindWindowById(WC_MAIN_TOOLBAR, 0)->left;
 				break;

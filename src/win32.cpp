@@ -418,7 +418,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 					EnableWindow(GetDlgItem(wnd, 14), FALSE);
 					SetCursor(LoadCursor(NULL, IDC_ARROW));
 					MessageBox(wnd, _T("Crash report submitted. Thank you."), _T("Crash Report"), MB_ICONINFORMATION);
-				}	break;
+				} break;
 #endif /* Disabled crash-submit procedures */
 				case 15: /* Expand window to show crash-message */
 					_expanded ^= 1;

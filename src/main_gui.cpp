@@ -89,7 +89,7 @@ void HandleOnEditText(const char *str)
 		} else {
 			NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, id, msg, NETWORK_SERVER_INDEX);
 		}
-	}	break;
+	} break;
 #endif /* ENABLE_NETWORK */
 		default: NOT_REACHED();
 	}

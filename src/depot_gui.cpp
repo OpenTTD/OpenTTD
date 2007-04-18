@@ -535,9 +535,9 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 		case VEH_TRAIN:
 			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_8800_TRAIN_DEPOT;
 			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_TRAIN_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_DEPOT_TRAIN_TIP;
+			w->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_TRAIN_TIP;
 			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP;
+			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP;
 			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_883F_TRAINS_CLICK_ON_TRAIN_FOR;
 
 			w->widget[DEPOT_WIDGET_BUILD].data        = STR_8815_NEW_VEHICLES;
@@ -559,9 +559,9 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 		case VEH_ROAD:
 			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_9003_ROAD_VEHICLE_DEPOT;
 			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_ROADVEH_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_DEPOT_ROADVEH_TIP;
+			w->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_ROADVEH_TIP;
 			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9024_DRAG_ROAD_VEHICLE_TO_HERE;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP;
+			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP;
 			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_9022_VEHICLES_CLICK_ON_VEHICLE;
 
 			w->widget[DEPOT_WIDGET_BUILD].data        = STR_9004_NEW_VEHICLES;
@@ -583,9 +583,9 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 		case VEH_SHIP:
 			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_9803_SHIP_DEPOT;
 			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_SHIP_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_DEPOT_SHIP_TIP;
+			w->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_SHIP_TIP;
 			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9821_DRAG_SHIP_TO_HERE_TO_SELL;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP;
+			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP;
 			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_981F_SHIPS_CLICK_ON_SHIP_FOR;
 
 			w->widget[DEPOT_WIDGET_BUILD].data        = STR_9804_NEW_SHIPS;
@@ -607,9 +607,9 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 		case VEH_AIRCRAFT:
 			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_A002_AIRCRAFT_HANGAR;
 			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_HANGAR_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_HANGAR_TIP;
+			w->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_HANGAR_TIP;
 			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_A023_DRAG_AIRCRAFT_TO_HERE_TO;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP;
+			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP;
 			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT;
 
 			w->widget[DEPOT_WIDGET_BUILD].data        = STR_A003_NEW_AIRCRAFT;

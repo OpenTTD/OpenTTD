@@ -392,7 +392,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		case 6:
 			i = GetIndustry(w->window_number);
 			ScrollMainWindowToTile(i->xy + TileDiffXY(1, 1));
-		}	break;
+		} break;
 
 		}
 		break;

@@ -240,7 +240,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 		/* The name could be an empty string, if so take the filename */
 		ttd_strlcpy(name, (in_reply[i]->name != NULL && !StrEmpty(in_reply[i]->name)) ?
 				in_reply[i]->name : in_reply[i]->filename, sizeof(name));
-	 	this->Send_GRFIdentifier(&packet, in_reply[i]);
+		this->Send_GRFIdentifier(&packet, in_reply[i]);
 		packet.Send_string(name);
 	}
 

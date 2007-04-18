@@ -358,7 +358,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 					DrawString(2, w->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
 				}
 			}
-		}	break;
+		} break;
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
@@ -922,7 +922,7 @@ static void CreateVehicleListWindow(Window *w)
 	vl->l.flags = VL_REBUILD | (vl->_sorting->order ? VL_DESC : VL_NONE);
 	vl->l.sort_type = vl->_sorting->criteria;
 	vl->sort_list = NULL;
-	vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer
+	vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 }
 
 static void DrawSmallOrderList(const Vehicle *v, int x, int y)
@@ -1140,7 +1140,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					DoCommandP(0, GB(w->window_number, 16, 16), (w->window_number & VLW_MASK) | (1 << 6) | (e->we.click.widget == VLW_WIDGET_START_ALL ? (1 << 5) : 0) | vl->vehicle_type, NULL, CMD_MASS_START_STOP);
 					break;
 			}
-		}	break;
+		} break;
 
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 			switch (e->we.dropdown.button) {

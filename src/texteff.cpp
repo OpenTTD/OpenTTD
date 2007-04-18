@@ -246,7 +246,7 @@ void DrawTextMessage()
 	/* Paint the messages starting with the lowest at the bottom */
 	for (uint y = 13; count-- != 0; y += 13) {
 		DoDrawString(_textmsg_list[count].message, _textmsg_box.x + 3, _screen.height - _textmsg_box.y - y + 1, _textmsg_list[count].color);
- 	}
+	}
 
 	/* Make sure the data is updated next flush */
 	_video_driver->make_dirty(x, y, width, height);

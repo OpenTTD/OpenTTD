@@ -1372,7 +1372,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 		case 0x17: // Four random colours to use
 			FOR_EACH_OBJECT {
 				uint j;
-				for (j = 0; j < 4; j++)	housespec[i]->random_colour[j] = grf_load_byte(&buf);
+				for (j = 0; j < 4; j++) housespec[i]->random_colour[j] = grf_load_byte(&buf);
 			}
 			break;
 

@@ -523,7 +523,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		if (_network_join_kbytes_total == 0) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 		_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
- 		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
+		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
 		// The first packet does not contain any more data
 		return NETWORK_RECV_STATUS_OKAY;

@@ -478,7 +478,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			if (sel == WP(w,order_d).sel) sel = -1;
 			WP(w,order_d).sel = sel;
 			SetWindowDirty(w);
-		}	break;
+		} break;
 
 		case ORDER_WIDGET_SKIP:
 			OrderClick_Skip(w, v);

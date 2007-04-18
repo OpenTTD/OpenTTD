@@ -227,7 +227,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		if (e->we.click.widget >= 3) _build_road_button_proc[e->we.click.widget - 3](w);
-	}	break;
+	} break;
 
 	case WE_KEYPRESS:
 		switch (e->we.keypress.keycode) {
@@ -411,7 +411,7 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			break;
 		}
-	}	break;
+	} break;
 
 	case WE_MOUSELOOP:
 		if (WP(w, def_d).close) DeleteWindow(w);

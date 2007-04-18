@@ -277,7 +277,7 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 
 		DoDrawStringCentered(210, w->height - 25, "Website: http://www.openttd.org", 16);
 		DrawStringCentered(210, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, 0);
-	}	break;
+	} break;
 	case WE_MOUSELOOP: // Timer to scroll the text and adjust the new top
 		if (WP(w, scroller_d).counter++ % 3 == 0) {
 			WP(w, scroller_d).height--;

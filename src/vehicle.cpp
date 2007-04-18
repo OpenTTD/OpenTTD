@@ -2223,7 +2223,7 @@ void VehicleEnterDepot(Vehicle *v)
 				}
 
 				SetDParam(0, v->unitnumber);
-				AddNewsItem(string, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),	v->index, 0);
+				AddNewsItem(string, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
 			}
 		}
 	}

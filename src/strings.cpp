@@ -421,7 +421,7 @@ static int DeterminePluralForm(int32 n)
 	 * Used in:
 	 *   Latvian */
 	case 3:
-		return n%10 == 1 && n%100 != 11 ? 0 : n != 0 ? 1 : 2;
+		return n % 10 == 1 && n % 100 != 11 ? 0 : n != 0 ? 1 : 2;
 
 	/* Three forms, special case for one and two
 	 * Used in:
@@ -433,25 +433,25 @@ static int DeterminePluralForm(int32 n)
 	 * Used in:
 	 *   Lithuanian */
 	case 5:
-		return n%10 == 1 && n%100 != 11 ? 0 : n%10 >= 2 && (n%100<10 || n%100 >= 20) ? 1 : 2;
+		return n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2;
 
 	/* Three forms, special cases for numbers ending in 1 and 2, 3, 4, except those ending in 1[1-4]
 	 * Used in:
 	 *   Croatian, Czech, Russian, Slovak, Ukrainian */
 	case 6:
-		return n%10 == 1 && n%100 != 11 ? 0 : n%10 >= 2 && n%10 <= 4 && (n%100<10 || n%100 >= 20) ? 1 : 2;
+		return n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2;
 
 	/* Three forms, special case for one and some numbers ending in 2, 3, or 4
 	 * Used in:
 	 *   Polish */
 	case 7:
-		return n == 1 ? 0 : n%10 >= 2 && n%10 <= 4 && (n%100<10 || n%100 >= 20) ? 1 : 2;
+		return n == 1 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2;
 
 	/* Four forms, special case for one and all numbers ending in 02, 03, or 04
 	 * Used in:
 	 *   Slovenian */
 	case 8:
-		return n%100 == 1 ? 0 : n%100 == 2 ? 1 : n%100 == 3 || n%100 == 4 ? 2 : 3;
+		return n % 100 == 1 ? 0 : n % 100 == 2 ? 1 : n % 100 == 3 || n % 100 == 4 ? 2 : 3;
 	}
 }
 

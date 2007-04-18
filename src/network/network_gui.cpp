@@ -385,7 +385,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 			y += 10;
 		}
-	}	break;
+	} break;
 
 	case WE_CLICK:
 		nd->field = e->we.click.widget;
@@ -452,7 +452,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			if (nd->server != NULL) ShowNewGRFSettings(false, false, false, &nd->server->info.grfconfig);
 			break;
 
-	}	break;
+	} break;
 
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 		switch (e->we.dropdown.button) {
@@ -644,7 +644,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 
 			if (y >= w->vscroll.cap * NSSWND_ROWSIZE + NSSWND_START) break;
 		}
-	}	break;
+	} break;
 
 	case WE_CLICK:
 		nd->field = e->we.click.widget;
@@ -914,7 +914,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			SetDParamStr(0, _network_player_info[nd->company].players);
 			DrawStringTruncated(x, y, STR_NETWORK_PLAYERS, 2, trunc_width); // players
 		}
-	}	break;
+	} break;
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
@@ -929,7 +929,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			id_v += w->vscroll.pos;
 			nd->company = (id_v >= nd->server->info.companies_on) ? INVALID_PLAYER : NetworkLobbyFindCompanyIndex(id_v);
 			SetWindowDirty(w);
-		}	break;
+		} break;
 		case 7: /* Join company */
 			if (nd->company != (byte)-1) {
 				_network_playas = nd->company;
@@ -948,7 +948,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			NetworkTCPQueryServer(_network_last_host, _network_last_port); // company info
 			NetworkUDPQueryServer(_network_last_host, _network_last_port); // general data
 			break;
-		}	break;
+		} break;
 
 	case WE_MESSAGE:
 		SetWindowDirty(w);
@@ -1265,7 +1265,7 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 
 			DoDrawString(_clientlist_action[i], 4, y, colour);
 		}
-	}	break;
+	} break;
 
 	case WE_POPUPMENU_SELECT: {
 		// We selected an action
@@ -1275,7 +1275,7 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 			HandleClientListPopupClick(index, WP(w,menu_d).main_button);
 
 		DeleteWindowById(WC_TOOLBAR_MENU, 0);
-	}	break;
+	} break;
 
 	case WE_POPUPMENU_OVER: {
 		// Our mouse hoovers over an action? Select it!
@@ -1327,7 +1327,7 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 
 			y += CLNWND_ROWSIZE;
 		}
-	}	break;
+	} break;
 
 	case WE_CLICK:
 		// Show the popup with option
@@ -1420,7 +1420,7 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 
 		/* Draw nice progress bar :) */
 		DrawFrameRect(20, 18, (int)((w->width - 20) * progress / 100), 28, 10, FR_NONE);
-	}	break;
+	} break;
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
