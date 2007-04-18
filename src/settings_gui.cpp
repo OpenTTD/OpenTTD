@@ -635,6 +635,7 @@ static const char *_patches_economy[] = {
 	"allow_shares",
 	"town_growth_rate",
 	"larger_towns",
+	"initial_city_size",
 };
 
 static const char *_patches_ai[] = {

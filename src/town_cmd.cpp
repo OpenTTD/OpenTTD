@@ -954,7 +954,16 @@ void UpdateTownMaxPass(Town *t)
 	t->max_mail = t->population >> 4;
 }
 
-static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, uint size_mode)
+/**
+ * Does the actual town creation.
+ *
+ * @param t The town
+ * @param tile Where to put it
+ * @param townnameparts The town name
+ * @param size_mode How the size should be determined
+ * @param size Parameter for size determination
+ */
+static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSizeMode size_mode, uint size)
 {
 	int x, i;
 
@@ -1003,10 +1012,25 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, uint siz
 	UpdateTownVirtCoord(t);
 	_town_sort_dirty = true;
 
-	if (size_mode == 0) {
-		x = (Random() & 0xF) + 8;
-	} else {
-		x = (size_mode - 1) * 16 + 3;
+	/* Random town size. */
+	x = (Random() & 0xF) + 8;
+
+	switch (size_mode) {
+		default: NOT_REACHED();
+
+		case TSM_RANDOM:
+			t->larger_town = false;
+			break;
+
+		case TSM_FIXED:
+			x = size * 16 + 3;
+			t->larger_town = false;
+			break;
+
+		case TSM_CITY:
+			x *= _patches.initial_city_size;
+			t->larger_town = true;
+			break;
 	}
 
 	t->num_houses += x;
@@ -1051,8 +1075,8 @@ static Town *AllocateTown()
  * as it might be possible in the future to fund your own town :)
  * @param tile coordinates where town is built
  * @param flags type of operation
- * @param p1 size of the town (0 = random, 1 = small, 2 = medium, 3 = large)
- * @param p2 unused
+ * @param p1 size of the town (0 = small, 1 = medium, 2 = large)
+ * @param p2 size mode (@see TownSizeMode)
  */
 int32 CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1061,6 +1085,7 @@ int32 CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Only in the scenario editor */
 	if (_game_mode != GM_EDITOR) return CMD_ERROR;
+	if (p2 > TSM_CITY) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
@@ -1088,13 +1113,13 @@ int32 CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Create the town */
 	if (flags & DC_EXEC) {
 		_generating_world = true;
-		DoCreateTown(t, tile, townnameparts, p1);
+		DoCreateTown(t, tile, townnameparts, (TownSizeMode)p2, p1);
 		_generating_world = false;
 	}
 	return 0;
 }
 
-Town *CreateRandomTown(uint attempts, uint size_mode)
+Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size)
 {
 	TileIndex tile;
 	Town *t;
@@ -1118,7 +1143,7 @@ Town *CreateRandomTown(uint attempts, uint size_mode)
 		t = AllocateTown();
 		if (t == NULL) break;
 
-		DoCreateTown(t, tile, townnameparts, size_mode);
+		DoCreateTown(t, tile, townnameparts, mode, size);
 		return t;
 	} while (--attempts);
 	return NULL;
@@ -1130,17 +1155,20 @@ bool GenerateTowns()
 {
 	uint num = 0;
 	uint n = ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
+	uint num_cities = _patches.larger_towns == 0 ? 0 : n / _patches.larger_towns;
 
 	SetGeneratingWorldProgress(GWP_TOWN, n);
 
 	do {
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
 		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, 0) != NULL) num++;
+		TownSizeMode mode = num_cities > 0 ? TSM_CITY : TSM_RANDOM;
+		if (CreateRandomTown(20, mode, _patches.initial_city_size) != NULL) num++;
+		if (num_cities > 0) num_cities--;
 	} while (--n);
 
 	/* give it a last try, but now more aggressive */
-	if (num == 0 && CreateRandomTown(10000, 0) == NULL) {
+	if (num == 0 && CreateRandomTown(10000, TSM_RANDOM, 0) == NULL) {
 		if (GetNumTowns() == 0) {
 			/* XXX - can we handle that more gracefully? */
 			if (_game_mode != GM_EDITOR) error("Could not generate any town");
@@ -1718,7 +1746,7 @@ static void UpdateTownGrowRate(Town *t)
 	uint growth_multiplier = _patches.town_growth_rate != 0 ? _patches.town_growth_rate - 1 : 1;
 
 	m >>= growth_multiplier;
-	if (_patches.larger_towns != 0 && (t->index % _patches.larger_towns) == 0) m /= 2;
+	if (t->larger_town) m /= 2;
 
 	t->growth_rate = m / (t->num_houses / 50 + 1);
 	if (m <= t->grow_counter)
@@ -1977,6 +2005,9 @@ static const SaveLoad _town_desc[] = {
 
 	    SLE_VAR(Town, exclusivity,           SLE_UINT8),
 	    SLE_VAR(Town, exclusive_counter,     SLE_UINT8),
+
+	SLE_CONDVAR(Town, larger_town,           SLE_BOOL,                  56, SL_MAX_VERSION),
+
 	/* reserve extra space in savegame here. (currently 30 bytes) */
 	SLE_CONDNULL(30, 2, SL_MAX_VERSION),
 

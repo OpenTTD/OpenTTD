@@ -226,8 +226,9 @@ struct Patches {
 	uint8 scrollwheel_scrolling;
 	uint8 scrollwheel_multiplier;
 
-	uint8 town_growth_rate; ///< Town growth rate
-	uint8 larger_towns;     ///< 1 in the specified number of towns will grow twice as fast
+	uint8 town_growth_rate;  ///< Town growth rate
+	uint8 larger_towns;      ///< The number of cities to build. These start off larger and grow twice as fast
+	uint8 initial_city_size; ///< Multiplier for the initial size of the cities compared to towns
 };
 
 VARDEF Patches _patches;

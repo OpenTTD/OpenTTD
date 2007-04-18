@@ -1913,6 +1913,19 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* A patch option containing the proportion of towns that grow twice as
+	 * fast was added in version 54. From version 56 this is now saved in the
+	 * town as cities can be built specifically in the scenario editor. */
+	if (CheckSavegameVersion(56)) {
+		Town *t;
+
+		FOR_ALL_TOWNS(t) {
+			if (_patches.larger_towns != 0 && (t->index % _patches.larger_towns) == 0) {
+				t->larger_town = true;
+			}
+		}
+	}
+
 	return true;
 }
 

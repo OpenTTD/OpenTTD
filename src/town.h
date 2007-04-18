@@ -141,6 +141,9 @@ struct Town {
 	/* Index in town array */
 	TownID index;
 
+	/* If this is a larger town, and should grow more quickly. */
+	bool larger_town;
+
 	/* NOSAVE: UpdateTownRadius updates this given the house count. */
 	uint16 radius[5];
 
@@ -181,6 +184,12 @@ struct HouseSpec {
 	const struct GRFFile *grffile;     ///< grf file that introduced this house
 };
 
+enum TownSizeMode {
+	TSM_RANDOM,
+	TSM_FIXED,
+	TSM_CITY
+};
+
 VARDEF HouseSpec _house_specs[HOUSE_MAX];
 
 uint32 GetWorldPopulation();
@@ -189,7 +198,7 @@ void UpdateTownVirtCoord(Town *t);
 void InitializeTown();
 void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
-Town *CreateRandomTown(uint attempts, uint size_mode);
+Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size);
 
 enum {
 	ROAD_REMOVE = 0,
