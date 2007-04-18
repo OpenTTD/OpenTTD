@@ -52,10 +52,10 @@ static bool _smallmap_show_towns = true;
 /** Macro for ordinary entry of LegendAndColor */
 #define MK(a,b) {a, b, false, false}
 /** Macro for end of list marker in arrays of LegendAndColor */
-#define MKEND() {0, STR_NULL, false, true}
+#define MKEND() {0, STR_NULL, true, false}
 /** Macro for break marker in arrays of LegendAndColor.
  * It will have valid data, though */
-#define MS(a,b) {a, b, true, false}
+#define MS(a,b) {a, b, false, true}
 
 /** Structure for holding relevant data for legends in small map */
 struct LegendAndColour {
