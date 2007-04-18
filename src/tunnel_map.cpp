@@ -7,6 +7,12 @@
 #include "tile.h"
 #include "tunnel_map.h"
 
+/**
+ * Gets the other end of the tunnel. Where a vehicle would reappear when it
+ * enters at the given tile.
+ * @param tile the tile to search from.
+ * @return the tile of the other end of the tunnel.
+ */
 TileIndex GetOtherTunnelEnd(TileIndex tile)
 {
 	DiagDirection dir = GetTunnelDirection(tile);
@@ -26,6 +32,13 @@ TileIndex GetOtherTunnelEnd(TileIndex tile)
 }
 
 
+/**
+ * Is there a tunnel in the way in the given direction?
+ * @param tile the tile to search from.
+ * @param z    the 'z' to search on.
+ * @param dir  the direction to start searching to.
+ * @return true if and only if there is a tunnel.
+ */
 static bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir)
 {
 	TileIndexDiff delta = TileOffsByDiagDir(dir);
@@ -42,6 +55,12 @@ static bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir)
 		GetTunnelDirection(tile) == dir;
 }
 
+/**
+ * Is there a tunnel in the way in any direction?
+ * @param tile the tile to search from.
+ * @param z the 'z' to search on.
+ * @return true if and only if there is a tunnel.
+ */
 bool IsTunnelInWay(TileIndex tile, uint z)
 {
 	return

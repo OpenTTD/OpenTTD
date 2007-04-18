@@ -6,7 +6,12 @@
 #include "openttd.h"
 #include "station_map.h"
 
-
+/**
+ * Get the station type (rail, airport, truck etc) for the given tile.
+ * @param t the tile to get the station type of.
+ * @pre IsTileType(t, MP_STATION)
+ * @return the station type of the given tile.
+ */
 StationType GetStationType(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
