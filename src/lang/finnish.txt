@@ -1905,8 +1905,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY}: tuotanto vähenee 50{NBSP}%:lla.
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}{INDUSTRY}: hyönteisparvet aiheuttavat tuhoa!{}Tuotanto vähenee 50{NBSP}%:lla.
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...voidaan asettaa vain kartan reunoille.
-STR_INDUSTRY_PROD_GOUP                                          ::{BLACK}{BIGFONT}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA}{NBSP}% entistä enemmän!
-STR_INDUSTRY_PROD_GODOWN                                        ::{BLACK}{BIGFONT}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA}{NBSP}% entistä vähemmän!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA}{NBSP}% entistä enemmän!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA}{NBSP}% entistä vähemmän!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Juna on tunnelissa.
