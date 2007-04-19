@@ -753,6 +753,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...об�
 STR_02A1_SMALL                                                  :{BLACK}Малый
 STR_02A2_MEDIUM                                                 :{BLACK}Средний
 STR_02A3_LARGE                                                  :{BLACK}Большой
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Город
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Выбор размера города
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Размер города:
 
@@ -1145,6 +1146,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :быстрая
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :очень быстрая
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Соотношение городов, которые растут вдвое быстрее: {ORANGE}1 из {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Соотношение городов, которые растут вдвое быстрее: {ORANGE}Выкл.
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Изначальный множитель размера города: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Интерфейс
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Строительство

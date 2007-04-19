@@ -751,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...橋�
 STR_02A1_SMALL                                                  :{BLACK}村
 STR_02A2_MEDIUM                                                 :{BLACK}町
 STR_02A3_LARGE                                                  :{BLACK}市
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}市町村
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}町のサイズを選択します
 STR_02A5_TOWN_SIZE                                              :{YELLOW}町のサイズ：
 
@@ -1135,6 +1136,15 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :中位
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :右
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}切
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}市町村の展開：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :なし
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :遅い
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :普通
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :早い
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :特に早い
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}市に展開する町の割合：{ORANGE}{STRING}の１
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}市に展開する町の割合：{ORANGE}なし
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}初期の市町村のサイズの乗数：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}インターフェース
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}建設

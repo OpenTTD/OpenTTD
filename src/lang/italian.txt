@@ -753,6 +753,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...gli e
 STR_02A1_SMALL                                                  :{BLACK}Piccola
 STR_02A2_MEDIUM                                                 :{BLACK}Media
 STR_02A3_LARGE                                                  :{BLACK}Grande
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Metropoli
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Seleziona la dimensione della città
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Dimensione città:
 
@@ -1143,8 +1144,9 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lenta
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normale
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Veloce
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Molto veloce
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Città che cresceranno a velocità doppia: {ORANGE}1 su {STRING}
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Città che cresceranno a velocità doppia: {ORANGE}Nessuna
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Città che diventeranno metropoli: {ORANGE}1 su {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Città che diventeranno metropoli: {ORANGE}Nessuna
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Moltiplicatore iniziale dimensioni metropoli: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfaccia
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Costruzione
@@ -2048,9 +2050,25 @@ STR_681D_MEDIUM                                                 :Media
 STR_681E_FAST                                                   :Veloce
 STR_681F_VERY_FAST                                              :Molto veloce
 STR_VERY_LOW                                                    :Molto basso
+STR_VERY_LOW.ms                                                 :Molto basso
+STR_VERY_LOW.mp                                                 :Molto bassi
+STR_VERY_LOW.fp                                                 :Molto basse
+STR_VERY_LOW.fs                                                 :Molto bassa
 STR_6820_LOW                                                    :Basso
+STR_6820_LOW.ms                                                 :Basso
+STR_6820_LOW.mp                                                 :Bassi
+STR_6820_LOW.fs                                                 :Bassa
+STR_6820_LOW.fp                                                 :Basse
 STR_6821_MEDIUM                                                 :Medio
+STR_6821_MEDIUM.ms                                              :Medio
+STR_6821_MEDIUM.mp                                              :Medi
+STR_6821_MEDIUM.fs                                              :Media
+STR_6821_MEDIUM.fp                                              :Medie
 STR_6822_HIGH                                                   :Alto
+STR_6822_HIGH.ms                                                :Alto
+STR_6822_HIGH.mp                                                :Alti
+STR_6822_HIGH.fs                                                :Alta
+STR_6822_HIGH.fp                                                :Alte
 STR_6823_NONE                                                   :Nessuno
 STR_6824_REDUCED                                                :Ridotti
 STR_6825_NORMAL                                                 :Normali

@@ -751,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...uitei
 STR_02A1_SMALL                                                  :{BLACK}Klein
 STR_02A2_MEDIUM                                                 :{BLACK}Middel
 STR_02A3_LARGE                                                  :{BLACK}Groot
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Stad
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Kies stadsgrootte
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadsgrootte:
 
@@ -1143,6 +1144,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Snel
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Heel snel
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Verhouding van steden die twee keer zo snel groeien: {ORANGE}1 in {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Verhouding van steden die twee keer zo snel groeien: {ORANGE}Niet
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Stad groei indicator: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Constructie
@@ -3113,7 +3115,7 @@ STR_WORLD_GENERATION                                            :{BLACK}Wereld m
 STR_TREE_GENERATION                                             :{BLACK}Bos plaatsing
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Onverplaatsbare generatie
 STR_CLEARING_TILES                                              :{BLACK}Ruig en
-STR_SETTINGUP_GAME                                              :{BLACK}Spel aan het instellen
+STR_SETTINGUP_GAME                                              :{BLACK}Spel aan het configureren
 STR_PREPARING_TILELOOP                                          :{BLACK}Bezig met vlakken
 STR_PREPARING_GAME                                              :{BLACK}Voorbereiden spel
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Deze aktie past de moeilijkheidsgraag aan naam custom

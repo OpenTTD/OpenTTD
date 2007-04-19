@@ -851,6 +851,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...mõle
 STR_02A1_SMALL                                                  :{BLACK}Väike
 STR_02A2_MEDIUM                                                 :{BLACK}Keskmine
 STR_02A3_LARGE                                                  :{BLACK}Suur
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Linn
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vali linna suurus
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Linna suurus:
 
@@ -1243,6 +1244,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Kiire
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Väga Kiire
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Topeltkiirusel suurenevaid linnu: {ORANGE}1 iga {STRING} linna kohta
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Topeltkiirusel suurenevaid linnu: {ORANGE}puudub
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Algne linna suuruse kordaja: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Välimus
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Ehitamine

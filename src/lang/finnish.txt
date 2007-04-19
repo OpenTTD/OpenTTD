@@ -751,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...silla
 STR_02A1_SMALL                                                  :{BLACK}Pieni
 STR_02A2_MEDIUM                                                 :{BLACK}Keskisuuri
 STR_02A3_LARGE                                                  :{BLACK}Suuri
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Kaupunki
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Valitse kaupungin koko.
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Kaupungin koko:
 
@@ -1143,6 +1144,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Nopea
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Erittäin nopea
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Kaksinkertaisella nopeudella kasvavien kaupunkien osuus: {ORANGE}1/{STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Kaksinkertaisella nopeudella kasvavien kaupunkien osuus: {ORANGE}0
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Kasvukerroin alussa: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Käyttöliittymä
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Rakentaminen

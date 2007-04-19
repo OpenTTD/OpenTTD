@@ -751,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...köpr
 STR_02A1_SMALL                                                  :{BLACK}Küçük
 STR_02A2_MEDIUM                                                 :{BLACK}Orta
 STR_02A3_LARGE                                                  :{BLACK}Büyük
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Şehir
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Şehir büyüklüğü seç
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Şehir büyüklüğü:
 
@@ -1135,6 +1136,11 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Orta
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Sağ
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Pencere yapışma yarıçapı: {ORANGE}{STRING} piksel
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pencere yapışma yarıçapı: {ORANGE}kapalı
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Hiçbiri
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Yavaş
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Hızlı
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Çok Hızlı
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Arayüz
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}İnşaat
@@ -3012,6 +3018,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon ka
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artması gerekiyorsa vagonları kaldır(en önden başlayarak yeterli sayıda vagon silinir).
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Değiştiriyor: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} DENEYSEL ÖZELLiK {}Lokomotif ve vagon değişimi pencereleri arasında geçiş yap.{}Vagon değişimi sadece yeni vagon eskisinin taşıdığı türde yükü taşıyabiliyorsa yapılir. Değiştirme işlemi sırasında tüm vagonlar için bu durum kontrol edilir.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Tren kullanılamaz
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Araba kullanılamaz
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Gemi kullanılamaz
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Uçak kullanılamaz
 
 STR_ENGINES                                                     :Lokomotifler
 STR_WAGONS                                                      :Vagon
@@ -3149,6 +3159,7 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Aktarma Maliyeti: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...bu yol belediyeye ait
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...yol yanlış yönde
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Şeffaflık Seçenekleri
 STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Durak tabelaları için şeffaflık

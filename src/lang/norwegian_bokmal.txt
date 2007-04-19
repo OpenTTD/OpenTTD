@@ -727,6 +727,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plasser 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plasser fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plasser radiosender
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Trykk og hold inne CTRL for å fjerne den
+STR_CREATE_LAKE                                                 :{BLACK}Definer vannområde.{}Lag en kanal, untatt hvis CTRL holdes nede på havnivå, hvor områdene vil fylles istedenfor
 STR_0290_DELETE                                                 :{BLACK}Slett
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett denne byen fullstendig
 STR_0292_SAVE_SCENARIO                                          :Lagre scenario
@@ -750,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...broen
 STR_02A1_SMALL                                                  :{BLACK}Liten
 STR_02A2_MEDIUM                                                 :{BLACK}Middels
 STR_02A3_LARGE                                                  :{BLACK}Stor
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}By
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Velg bystørrelse
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystørrelse:
 
@@ -801,6 +803,7 @@ STR_02DD_SUBSIDIES                                              :Subsidier
 STR_02DE_MAP_OF_WORLD                                           :Verdenskart
 STR_EXTRA_VIEW_PORT                                             :Ekstra vindu
 STR_SIGN_LIST                                                   :Skiltliste
+STR_TRANSPARENCY_OPTIONS                                        :Instillinger for gjennomsiktighet
 STR_02DF_TOWN_DIRECTORY                                         :Byoversikt
 STR_TOWN_POPULATION                                             :{BLACK}Verdensbefolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vindu {COMMA}
@@ -1133,6 +1136,15 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Midtstilt
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Høyre
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Knipseradius for vindu: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Knipseradius for vindu: {ORANGE}deaktivert
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Hastighet for byenes vekst: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ingen
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Sakte
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rask
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Veldig rask
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel tettsteder som kommer til å bli byer: {ORANGE}1 av {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel tettsted som kommer til å bli byer: {ORANGE}Ingen
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Innledende bystørrelse multiplikator: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Grensesnitt
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruksjon
@@ -1212,6 +1224,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Trær av
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plasser trær av tilfeldig type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan ikke bygge kanaler her...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Bygg kanaler.
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan ikke bygge sluser her...
@@ -3010,6 +3023,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjer
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}La den automatiske utskiftningen beholde lengen på toget ved å fjerne vogner (fra første vogn), hvis utskiftningen gjør toget lenger.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Erstatter: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} Eksperimentell del {}Skift mellom tog- og vognvinduet.{}Vognutskiftningen vil bare bli utført hvis den nye vognen kan ha samme last som den gamle. Dette blir sjekket når utskiftingen finner sted.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Kjøretøyet er ikke tilgjengelig
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Kjøretøyet er ikke tilgjengelig
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Skipet er ikke tilgjengelig
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Flyfartøyet er ikke tilgjengelig
 
 STR_ENGINES                                                     :Motorer
 STR_WAGONS                                                      :Vogner
@@ -3146,3 +3163,14 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Overfør kreditt: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...denne veien er eid av en by
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...veien vender mot feil retning
+
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Instillinger for gjennomsiktighet
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Skru på gjennomsiktighet for stasjonskilt
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Skru på gjennomsiktighet for trær
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Skru på gjennomsiktighet for hus
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Skru på gjennomsiktighet for industrier
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Skru på gjennomsiktighet for stasjoner, depoter, lokalstasjoner og skinner
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Skru på gjennomsiktighet for broer
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Skru på gjennomsiktighet for fyrtårn og antenner

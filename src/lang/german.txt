@@ -752,6 +752,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...Brüc
 STR_02A1_SMALL                                                  :{BLACK}Klein
 STR_02A2_MEDIUM                                                 :{BLACK}Mittel
 STR_02A3_LARGE                                                  :{BLACK}Groß
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Stadt
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Stadtgröße bestimmen
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadtgröße:
 
@@ -1143,6 +1144,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Schnell
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Sehr schnell
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Anteil der Städte die doppelt so schnell wachsen: {ORANGE}1 in {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Anteil der Städte die doppelt so schnell wachsen: {ORANGE}Keine
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Startmultiplikator der Stadtgröße: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Oberfläche
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruktion
@@ -3162,6 +3164,7 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Überweise Geld: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...diese Straße ist in kommunaler Trägerschaft
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...Straße verläuft in die falsche Richtung
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparenzoptionen
 STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Verändere die Transparenz für Stationsschilder

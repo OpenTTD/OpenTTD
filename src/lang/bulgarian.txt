@@ -753,6 +753,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...кр�
 STR_02A1_SMALL                                                  :{BLACK}Малък
 STR_02A2_MEDIUM                                                 :{BLACK}Среден
 STR_02A3_LARGE                                                  :{BLACK}Голям
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Град
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Избери големина на града
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Големина на града:
 
@@ -1145,6 +1146,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Бърза
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Много бърза
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}1 в {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}Нито един
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Множител за големината на града: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Интерфейс
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Строене

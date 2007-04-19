@@ -838,6 +838,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...końc
 STR_02A1_SMALL                                                  :{BLACK}Male
 STR_02A2_MEDIUM                                                 :{BLACK}Średnie
 STR_02A3_LARGE                                                  :{BLACK}Duże
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Metropolia
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Wybierz wielkość miasta
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Wielkość miasta:
 
@@ -1222,6 +1223,15 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Wyśrodkowane
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Z prawej strony
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Strefa przyciągania okien: {ORANGE}{STRING} pkt
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Strefa przyciągania okien: {ORANGE}niedostępne
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Szybkość rozwoju miast: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Brak
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Mała
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normalna
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Duża
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Bardzo duża
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Ilość miast które staną się metropoliami: {ORANGE}1 na {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Ilość miast które staną się metropoliami: {ORANGE}Brak
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Początkowy mnożnik rozmiarów metropolii: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfejs
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstrukcje

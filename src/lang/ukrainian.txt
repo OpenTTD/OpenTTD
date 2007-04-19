@@ -877,6 +877,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...кі�
 STR_02A1_SMALL                                                  :{BLACK}Мале
 STR_02A2_MEDIUM                                                 :{BLACK}Середнє
 STR_02A3_LARGE                                                  :{BLACK}Велике
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Місто
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Вибір розміру міста
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Розмір міста:
 
@@ -1262,13 +1263,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Правору�
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Радіус прилипання вікон: {ORANGE}{STRING} пікс.
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилипання вікон {ORANGE}вимкнено
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Швидкість росту міста: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :не росте
-STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :повільна
-STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :нормальна
-STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :швидка
-STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :дуже швидка
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Немає
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Повільна
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Середня
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Швидка
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Дуже швидка
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Кількість міст, які будуть рости вдвічі швидше: {ORANGE}1 з {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Кількість міст, які будуть рости вдвічі швидше: {ORANGE}нема
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Початковий коєффіцієнт розміру міст: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Вигляд
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Споруди

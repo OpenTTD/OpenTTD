@@ -751,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...橋�
 STR_02A1_SMALL                                                  :{BLACK}小型
 STR_02A2_MEDIUM                                                 :{BLACK}中型
 STR_02A3_LARGE                                                  :{BLACK}大型
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}市鎮
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}選擇市鎮大小
 STR_02A5_TOWN_SIZE                                              :{YELLOW}市鎮大小：
 
@@ -1143,6 +1144,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :快
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :非常快
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}雙倍速增長城市比例： {ORANGE}{STRING} 分之一
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}雙倍速增長城市比例： {ORANGE}沒有
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}市鎮規模初始倍率：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}介面
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}建築

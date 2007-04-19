@@ -751,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...begge
 STR_02A1_SMALL                                                  :{BLACK}Lille
 STR_02A2_MEDIUM                                                 :{BLACK}Mellem
 STR_02A3_LARGE                                                  :{BLACK}Stor
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}By
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vælg bystørrelse
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystørrelse:
 
@@ -1143,6 +1144,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Hurtig
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Meget hurtig
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel af byer der vil vokse dobbelt så hurtigt: {ORANGE}1 af {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel af byer der vil vokse dobbelt så hurtigt: {ORANGE}Ingen
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Startværdi for bystørrelsesfaktor: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Brugerflade
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruktion
