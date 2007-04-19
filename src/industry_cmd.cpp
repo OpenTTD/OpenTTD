@@ -67,7 +67,7 @@ IndustryType GetIndustryType(TileIndex tile)
 
 	assert(IsTileType(tile, MP_INDUSTRY));
 
-	for (iloop = IT_COAL_MINE; iloop < IT_END; iloop += 1) {
+	for (iloop = IT_COAL_MINE; iloop < NUM_INDUSTRYTYPES; iloop += 1) {
 		if (IS_BYTE_INSIDE(this_type, industry_gfx_Solver[iloop].MinGfx,
 				industry_gfx_Solver[iloop].MaxGfx + 1)) {
 			return iloop;
@@ -82,12 +82,12 @@ IndustryType GetIndustryType(TileIndex tile)
  * This will ensure at once : proper access and
  * not allowing modifications of it.
  * @param thistype of industry (which is the index in _industry_specs)
- * @pre thistype < IT_END
+ * @pre thistype < NUM_INDUSTRYTYPES
  * @return a pointer to the corresponding industry spec
  **/
 const IndustrySpec *GetIndustrySpec(IndustryType thistype)
 {
-	assert(thistype < IT_END);
+	assert(thistype < NUM_INDUSTRYTYPES);
 	return &_industry_specs[thistype];
 }
 
@@ -1590,7 +1590,7 @@ void GenerateIndustries()
 	const IndustrySpec *ind_spc;
 
 	/* Find the total amount of industries */
-	for (it = IT_COAL_MINE; it < IT_END; it++) {
+	for (it = IT_COAL_MINE; it < NUM_INDUSTRYTYPES; it++) {
 		int num;
 
 		ind_spc = GetIndustrySpec(it);
@@ -1610,7 +1610,7 @@ void GenerateIndustries()
 
 	SetGeneratingWorldProgress(GWP_INDUSTRY, i);
 
-	for (it = IT_COAL_MINE; it < IT_END; it++) {
+	for (it = IT_COAL_MINE; it < NUM_INDUSTRYTYPES; it++) {
 		/* Once the number of industries has been determined, let's really create them.
 		 * The test for chance allows us to try create industries that are available only
 		 * for this landscape.
@@ -1752,11 +1752,11 @@ static void MaybeNewIndustry(void)
 	IndustryType rndtype, j;     // Loop controlers
 	const IndustrySpec *ind_spc;
 	uint num = 0;
-	ProbabilityHelper cumulative_probs[IT_END]; // probability collector
+	ProbabilityHelper cumulative_probs[NUM_INDUSTRYTYPES]; // probability collector
 	uint16 probability_max = 0;
 
 	/* Generate a list of all possible industries that can be built. */
-	for (j = 0; j < IT_END; j++) {
+	for (j = 0; j < NUM_INDUSTRYTYPES; j++) {
 		byte chance = GetIndustrySpec(j)->appear_ingame[_opt.landscape];
 
 		/* if appearing chance for this landscape is above 0, this industry can be chosen */
@@ -1770,7 +1770,7 @@ static void MaybeNewIndustry(void)
 
 	/* Find a random type, with maximum being what has been evaluate above*/
 	rndtype = RandomRange(probability_max);
-	for (j = 0; j < IT_END; j++) {
+	for (j = 0; j < NUM_INDUSTRYTYPES; j++) {
 		/* and choose the index of the industry that matches as close as possible this random type */
 		if (cumulative_probs[j].prob >= rndtype) break;
 	}
