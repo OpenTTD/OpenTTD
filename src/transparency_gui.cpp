@@ -12,6 +12,23 @@
 #include "sound.h"
 #include "variables.h"
 
+enum TransparencyToolbarWidgets{
+	/* Widgets not toggled when pressing the X key */
+	TTW_WIDGET_SIGNS = 3,    ///< Make signs background transparent
+
+	/* Widgets toggled when pressing the X key */
+	TTW_WIDGET_TREES,        ///< Make trees transparent
+	TTW_WIDGET_HOUSES,       ///< Make houses transparent
+	TTW_WIDGET_INDUSTRIES,   ///< Make Industries transparent
+	TTW_WIDGET_BUILDINGS,    ///< Make player buildings and structures transparent
+	TTW_WIDGET_BRIDGES,      ///< Make bridges transparent
+	TTW_WIDGET_STRUCTURES,   ///< Make unmovable structures transparent
+};
+
+/** Toggle the bits of the transparencies variable
+ * when clicking on a widget, and play a sound
+ * @param widget been clicked.
+ */
 static void Transparent_Click(byte widget)
 {
 	TOGGLEBIT(_transparent_opt, widget);
@@ -22,15 +39,17 @@ static void TransparencyToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT:
-			for (uint i = 0; i < 7; i++) {
-				SetWindowWidgetLoweredState(w, i + 3, HASBIT(_transparent_opt, i));
+			/* must be sure that the widgets show the transparency variable changes
+			 * also when we use shortcuts */
+			for (uint i = TTW_WIDGET_SIGNS; i < TTW_WIDGET_STRUCTURES; i++) {
+				SetWindowWidgetLoweredState(w, i, HASBIT(_transparent_opt, i - TTW_WIDGET_SIGNS));
 			}
 			DrawWindowWidgets(w);
 			break;
 
 		case WE_CLICK:
-			if (e->we.click.widget >= 3) {
-				Transparent_Click(e->we.click.widget - 3);
+			if (e->we.click.widget >= TTW_WIDGET_SIGNS) {
+				Transparent_Click(e->we.click.widget - TTW_WIDGET_SIGNS);
 				MarkWholeScreenDirty();
 			}
 			break;
@@ -42,7 +61,8 @@ static const Widget _transparency_widgets[] = {
 {  WWT_CAPTION,   RESIZE_NONE,  7,  11, 162,   0,  13, STR_TRANSPARENCY_TOOLB,   STR_018C_WINDOW_TITLE_DRAG_THIS},
 {WWT_STICKYBOX,   RESIZE_NONE,  7, 163, 174,   0,  13, STR_NULL,                 STR_STICKY_BUTTON},
 
-/* transparency widgets: transparent signs, trees, houses, industries, player's buildings */
+/* transparency widgets:
+ * transparent signs, trees, houses, industries, player's buildings, bridges and unmovable structures */
 {   WWT_IMGBTN,   RESIZE_NONE,  7,   0,  21,  14,  35, SPR_IMG_PLACE_SIGN,   STR_TRANSPARENT_SIGNS_DESC},
 {   WWT_IMGBTN,   RESIZE_NONE,  7,  22,  43,  14,  35, SPR_IMG_PLANTTREES,   STR_TRANSPARENT_TREES_DESC},
 {   WWT_IMGBTN,   RESIZE_NONE,  7,  44,  65,  14,  35, SPR_IMG_TOWN,         STR_TRANSPARENT_HOUSES_DESC},
