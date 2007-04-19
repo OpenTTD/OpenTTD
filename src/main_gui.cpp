@@ -147,6 +147,22 @@ static void ToolbarFastForwardClick(Window *w)
 }
 
 
+/** Toggle all transparency options, except for signs */
+static void ToggleTransparency()
+{
+	static byte trans_opt = ~0;
+
+	if (GB(_transparent_opt, 1, 7) == 0) {
+		SB(_transparent_opt, 1, 7, GB(trans_opt, 1, 7));
+	} else {
+		trans_opt = _transparent_opt;
+		SB(_transparent_opt, 1, 7, 0);
+	}
+
+	MarkWholeScreenDirty();
+}
+
+
 static void MenuClickSettings(int index)
 {
 	switch (index) {
@@ -161,8 +177,8 @@ static void MenuClickSettings(int index)
 		case  8: _display_opt ^= DO_WAYPOINTS;          break;
 		case  9: _display_opt ^= DO_FULL_ANIMATION;     break;
 		case 10: _display_opt ^= DO_FULL_DETAIL;        break;
-		case 11: TOGGLEBIT(_transparent_opt, TO_BUILDINGS); break;
-		case 12: TOGGLEBIT(_transparent_opt, TO_SIGNS);     break;
+		case 11: ToggleTransparency(); break;
+		case 12: TOGGLEBIT(_transparent_opt, TO_SIGNS); break;
 	}
 	MarkWholeScreenDirty();
 }
@@ -964,8 +980,8 @@ static void ToolbarOptionsClick(Window *w)
 	if (_display_opt & DO_WAYPOINTS)          SETBIT(x,  8);
 	if (_display_opt & DO_FULL_ANIMATION)     SETBIT(x,  9);
 	if (_display_opt & DO_FULL_DETAIL)        SETBIT(x, 10);
-	if (HASBIT(_transparent_opt, TO_BUILDINGS)) SETBIT(x, 11);
-	if (HASBIT(_transparent_opt, TO_SIGNS))     SETBIT(x, 12);
+	if (GB(_transparent_opt, 1, 7) != 0)      SETBIT(x, 11);
+	if (HASBIT(_transparent_opt, TO_SIGNS))   SETBIT(x, 12);
 	WP(w,menu_d).checked_items = x;
 }
 
@@ -2355,18 +2371,9 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				ShowTransparencyToolbar();
 				break;
 
-			case 'X': {
-				/* Toggle all transparency options except for signs */
-				static byte trans_opt = ~0;
-				if (GB(_transparent_opt, 1, 7) == 0) {
-					SB(_transparent_opt, 1, 7, GB(trans_opt, 1, 7));
-				} else {
-					trans_opt = _transparent_opt;
-					SB(_transparent_opt, 1, 7, 0);
-				}
-				MarkWholeScreenDirty();
+			case 'X':
+				ToggleTransparency();
 				break;
-			}
 
 #ifdef ENABLE_NETWORK
 			case WKC_RETURN: case 'T': // smart chat; send to team if any, otherwise to all
