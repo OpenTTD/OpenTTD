@@ -717,7 +717,7 @@ void OnNewDay_Aircraft(Vehicle *v)
 
 	if (v->vehstatus & VS_STOPPED) return;
 
-	int32 cost = AircraftVehInfo(v->engine_type)->running_cost * _price.aircraft_running / 364;
+	int32 cost = GetVehicleProperty(v, 0x0E, AircraftVehInfo(v->engine_type)->running_cost) * _price.aircraft_running / 364;
 
 	v->profit_this_year -= cost >> 8;
 
