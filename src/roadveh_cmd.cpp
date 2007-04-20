@@ -436,6 +436,8 @@ int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (dep == NULL) return_cmd_error(STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT);
 
 	if (flags & DC_EXEC) {
+		if (v->current_order.type == OT_LOADING) v->LeaveStation();
+
 		ClearSlot(v);
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP;

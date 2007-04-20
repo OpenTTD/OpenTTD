@@ -1985,6 +1985,8 @@ int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (tfdd.best_length == (uint)-1) return_cmd_error(STR_883A_UNABLE_TO_FIND_ROUTE_TO);
 
 	if (flags & DC_EXEC) {
+		if (v->current_order.type == OT_LOADING) v->LeaveStation();
+
 		v->dest_tile = tfdd.tile;
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP;
@@ -1993,8 +1995,7 @@ int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->current_order.refit_cargo = CT_INVALID;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		/* If there is no depot in front, reverse automatically */
-		if (tfdd.reverse)
-			DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
+		if (tfdd.reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
 	}
 
 	return 0;

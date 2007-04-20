@@ -571,6 +571,8 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		}
 
 		if (flags & DC_EXEC) {
+			if (v->current_order.type == OT_LOADING) v->LeaveStation();
+
 			v->current_order.type = OT_GOTO_DEPOT;
 			v->current_order.flags = OF_NON_STOP;
 			if (!(p2 & DEPOT_SERVICE)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
