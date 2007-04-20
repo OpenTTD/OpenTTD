@@ -61,7 +61,7 @@ public:
 		pf.SetOrigin(src_tile, trackdirs);
 		pf.SetDestination(v->dest_tile, dest_trackdirs);
 		// find best path
-		bool bFound = pf.FindPath(v);
+		pf.FindPath(v);
 
 		Trackdir next_trackdir = INVALID_TRACKDIR; // this would mean "path not found"
 
