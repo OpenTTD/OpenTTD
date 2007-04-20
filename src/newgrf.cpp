@@ -4104,6 +4104,7 @@ static void InitializeGRFSpecial()
 	                   |                                        (0 << 0x0B)  // enhancedgui
 	                   |                                        (0 << 0x0C)  // newagerating
 	                   |       ((_patches.build_on_slopes ? 1 : 0) << 0x0D)  // buildonslopes
+	                   |         ((_patches.full_load_any ? 1 : 0) << 0x0E)  // fullloadany
 	                   |                                        (0 << 0x0F)  // planespeed
 	                   |                                        (0 << 0x10)  // moreindustriesperclimate - obsolete
 	                   |                                        (0 << 0x11)  // moretoylandfeatures
@@ -4145,7 +4146,8 @@ static void InitializeGRFSpecial()
 	                   |                                        (0 << 0x14)  // trams
 	                   |                                        (0 << 0x15)  // enhancetunnels
 	                   |                                        (0 << 0x16)  // shortrvs
-	                   |                                        (0 << 0x17); // articulatedrvs
+	                   |                                        (0 << 0x17)  // articulatedrvs
+	                   |                                        (1 << 0x1E); // variablerunningcosts
 }
 
 static void ResetCustomStations()
