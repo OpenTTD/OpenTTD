@@ -27,6 +27,7 @@
 #include "network/network.h"
 #include "variables.h"
 #include <setjmp.h>
+#include <list>
 
 extern const uint16 SAVEGAME_VERSION = 56;
 uint16 _sl_version;       ///< the major savegame version identifier
@@ -627,6 +628,61 @@ void SlArray(void *array, uint length, VarType conv)
 	}
 }
 
+
+static uint ReferenceToInt(const void* obj, SLRefType rt);
+static void* IntToReference(uint index, SLRefType rt);
+
+
+/**
+ * Return the size in bytes of a list
+ * @param list The std::list to find the size of
+ */
+static inline size_t SlCalcListLen(const void *list)
+{
+	std::list<void *> *l = (std::list<void *> *) list;
+
+	/* Each entry is saved as 2 bytes, plus 2 bytes are used for the length
+	 * of the list */
+	return l->size() * 2 + 2;
+}
+
+
+/**
+ * Save/Load a list.
+ * @param list The list being manipulated
+ * @param conv SLRefType type of the list (Vehicle *, Station *, etc)
+ */
+void SlList(void *list, SLRefType conv)
+{
+	/* Automatically calculate the length? */
+	if (_sl.need_length != NL_NONE) {
+		SlSetLength(SlCalcListLen(list));
+		/* Determine length only? */
+		if (_sl.need_length == NL_CALCLENGTH) return;
+	}
+
+	std::list<void *> *l = (std::list<void *> *) list;
+
+	if (_sl.save) {
+		SlWriteUint16(l->size());
+
+		std::list<void *>::iterator iter;
+		for (iter = l->begin(); iter != l->end(); ++iter) {
+			void *ptr = *iter;
+			SlWriteUint16(ReferenceToInt(ptr, conv));
+		}
+	} else {
+		uint length = SlReadUint16();
+
+		/* Load each reference and push to the end of the list */
+		for (uint i = 0; i < length; i++) {
+			void *ptr = IntToReference(SlReadUint16(), conv);
+			l->push_back(ptr);
+		}
+	}
+}
+
+
 /** Are we going to save this object or not? */
 static inline bool SlIsObjectValidInSavegame(const SaveLoad *sld)
 {
@@ -675,6 +731,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
 		case SL_REF:
 		case SL_ARR:
 		case SL_STR:
+		case SL_LST:
 			/* CONDITIONAL saveload types depend on the savegame version */
 			if (!SlIsObjectValidInSavegame(sld)) break;
 
@@ -683,6 +740,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
 			case SL_REF: return SlCalcRefLen();
 			case SL_ARR: return SlCalcArrayLen(sld->length, sld->conv);
 			case SL_STR: return SlCalcStringLen(GetVariableAddress(object, sld), sld->length, sld->conv);
+			case SL_LST: return SlCalcListLen(GetVariableAddress(object, sld));
 			default: NOT_REACHED();
 			}
 			break;
@@ -694,10 +752,6 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
 }
 
 
-static uint ReferenceToInt(const void* obj, SLRefType rt);
-static void* IntToReference(uint index, SLRefType rt);
-
-
 bool SlObjectMember(void *ptr, const SaveLoad *sld)
 {
 	VarType conv = GB(sld->conv, 0, 8);
@@ -706,6 +760,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 	case SL_REF:
 	case SL_ARR:
 	case SL_STR:
+	case SL_LST:
 		/* CONDITIONAL saveload types depend on the savegame version */
 		if (!SlIsObjectValidInSavegame(sld)) return false;
 		if (SlSkipVariableOnLoad(sld)) return false;
@@ -722,6 +777,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 			break;
 		case SL_ARR: SlArray(ptr, sld->length, conv); break;
 		case SL_STR: SlString(ptr, sld->length, conv); break;
+		case SL_LST: SlList(ptr, (SLRefType)conv); break;
 		default: NOT_REACHED();
 		}
 		break;
