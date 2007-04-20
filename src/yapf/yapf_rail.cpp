@@ -61,11 +61,11 @@ public:
 
 		// some path found
 		// get found depot tile
-		Node& n = Yapf().GetBestNode();
-		*depot_tile = n.GetLastTile();
+		Node *n = Yapf().GetBestNode();
+		*depot_tile = n->GetLastTile();
 
 		// walk through the path back to the origin
-		Node* pNode = &n;
+		Node *pNode = n;
 		while (pNode->m_parent != NULL) {
 			pNode = pNode->m_parent;
 		}
@@ -128,7 +128,7 @@ public:
 
 		// if path not found - return INVALID_TRACKDIR
 		Trackdir next_trackdir = INVALID_TRACKDIR;
-		Node* pNode = &Yapf().GetBestNode();
+		Node *pNode = Yapf().GetBestNode();
 		if (pNode != NULL) {
 			// path was found or at least suggested
 			// walk through the path back to the origin
@@ -165,7 +165,7 @@ public:
 
 		// path was found
 		// walk through the path back to the origin
-		Node* pNode = &Yapf().GetBestNode();
+		Node *pNode = Yapf().GetBestNode();
 		while (pNode->m_parent != NULL) {
 			pNode = pNode->m_parent;
 		}

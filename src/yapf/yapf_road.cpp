@@ -287,7 +287,7 @@ public:
 
 		// if path not found - return INVALID_TRACKDIR
 		Trackdir next_trackdir = INVALID_TRACKDIR;
-		Node* pNode = &Yapf().GetBestNode();
+		Node *pNode = Yapf().GetBestNode();
 		if (pNode != NULL) {
 			// path was found or at least suggested
 			// walk through the path back to its origin
@@ -329,7 +329,7 @@ public:
 
 		// if path not found - return distance = UINT_MAX
 		uint dist = UINT_MAX;
-		Node* pNode = &Yapf().GetBestNode();
+		Node *pNode = Yapf().GetBestNode();
 		if (pNode != NULL) {
 			// path was found or at least suggested
 			// get the path cost estimate
@@ -371,8 +371,8 @@ public:
 
 		// some path found
 		// get found depot tile
-		Node& n = Yapf().GetBestNode();
-		TileIndex depot_tile = n.m_segment_last_tile;
+		Node *n = Yapf().GetBestNode();
+		TileIndex depot_tile = n->m_segment_last_tile;
 		assert(IsTileDepotType(depot_tile, TRANSPORT_ROAD));
 		Depot* ret = GetDepotByTile(depot_tile);
 		return ret;

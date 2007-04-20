@@ -67,7 +67,7 @@ public:
 		if (bFound) {
 			// path was found
 			// walk through the path back to the origin
-			Node* pNode = &pf.GetBestNode();
+			Node* pNode = pf.GetBestNode();
 			Node* pPrevNode = NULL;
 			while (pNode->m_parent != NULL) {
 				pPrevNode = pNode;

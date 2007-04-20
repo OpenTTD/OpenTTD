@@ -117,7 +117,8 @@ public:
 		while (true) {
 			m_num_steps++;
 			Node *n = m_nodes.GetBestOpenNode();
-			if (n == NULL) break;
+			if (n == NULL)
+				break;
 
 			// if the best open node was worse than the best path found, we can finish
 			if (m_pBestDestNode != NULL && m_pBestDestNode->GetCost() < n->GetCostEstimate())
@@ -160,9 +161,9 @@ public:
 	/** If path was found return the best node that has reached the destination. Otherwise
 	 *  return the best visited node (which was nearest to the destination).
 	 */
-	FORCEINLINE Node& GetBestNode()
+	FORCEINLINE Node* GetBestNode()
 	{
-		return (m_pBestDestNode != NULL) ? *m_pBestDestNode : *m_pBestIntermediateNode;
+		return (m_pBestDestNode != NULL) ? m_pBestDestNode : m_pBestIntermediateNode;
 	}
 
 	/** Calls NodeList::CreateNewNode() - allocates new node that can be filled and used
