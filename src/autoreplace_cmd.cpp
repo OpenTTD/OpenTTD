@@ -87,34 +87,9 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, const EngineID eng
  */
 static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 {
-	bool new_cargo_capacity = true;
-	CargoID new_cargo_type = CT_INVALID;
+	CargoID new_cargo_type = GetEngineCargoType(engine_type);
 
-	switch (v->type) {
-		case VEH_TRAIN:
-			new_cargo_capacity = (RailVehInfo(engine_type)->capacity > 0);
-			new_cargo_type     = RailVehInfo(engine_type)->cargo_type;
-			break;
-
-		case VEH_ROAD:
-			new_cargo_capacity = (RoadVehInfo(engine_type)->capacity > 0);
-			new_cargo_type     = RoadVehInfo(engine_type)->cargo_type;
-			break;
-		case VEH_SHIP:
-			new_cargo_capacity = (ShipVehInfo(engine_type)->capacity > 0);
-			new_cargo_type     = ShipVehInfo(engine_type)->cargo_type;
-			break;
-
-		case VEH_AIRCRAFT:
-			/* all aircraft starts as passenger planes with cargo capacity
-			 * new_cargo_capacity is always true for aircraft, which is the init value. No need to set it here */
-			new_cargo_type     = CT_PASSENGERS;
-			break;
-
-		default: NOT_REACHED(); break;
-	}
-
-	if (!new_cargo_capacity) return CT_NO_REFIT; // Don't try to refit an engine with no cargo capacity
+	if (new_cargo_type == CT_INVALID) return CT_NO_REFIT; // Don't try to refit an engine with no cargo capacity
 
 	if (v->cargo_type == new_cargo_type || CanRefitTo(engine_type, v->cargo_type)) {
 		if (VerifyAutoreplaceRefitForOrders(v, engine_type)) {

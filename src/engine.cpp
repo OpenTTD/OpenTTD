@@ -404,6 +404,35 @@ bool IsEngineBuildable(EngineID engine, byte type, PlayerID player)
 	return true;
 }
 
+/** Get the default cargo type for a certain engine type
+ * @param engine The ID to get the cargo for
+ * @return The cargo type. CT_INVALID means no cargo capacity
+ */
+CargoID GetEngineCargoType(EngineID engine)
+{
+	assert(IsEngineIndex(engine));
+
+	switch (GetEngine(engine)->type) {
+		case VEH_TRAIN:
+			if (RailVehInfo(engine)->capacity == 0) return CT_INVALID;
+			return RailVehInfo(engine)->cargo_type;
+
+		case VEH_ROAD:
+			if (RoadVehInfo(engine)->capacity == 0) return CT_INVALID;
+			return RoadVehInfo(engine)->cargo_type;
+
+		case VEH_SHIP:
+			if (ShipVehInfo(engine)->capacity == 0) return CT_INVALID;
+			return ShipVehInfo(engine)->cargo_type;
+
+		case VEH_AIRCRAFT:
+			/* all aircraft starts as passenger planes with cargo capacity */
+			return CT_PASSENGERS;
+
+		default: NOT_REACHED(); return CT_INVALID;
+	}
+}
+
 /************************************************************************
  * Engine Replacement stuff
  ************************************************************************/

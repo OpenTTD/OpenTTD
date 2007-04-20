@@ -153,6 +153,7 @@ void LoadCustomEngineNames();
 void DeleteCustomEngineNames();
 
 bool IsEngineBuildable(EngineID engine, byte type, PlayerID player);
+CargoID GetEngineCargoType(EngineID engine);
 
 enum {
 	NUM_NORMAL_RAIL_ENGINES = 54,
