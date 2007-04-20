@@ -3434,6 +3434,28 @@ static void SafeParamSet(byte *buf, int len)
 	_skip_sprites = -1;
 }
 
+
+static uint32 GetPatchVariable(uint8 param)
+{
+	switch (param) {
+		/* start year - 1920 */
+		case 0x0B: return _cur_year - ORIGINAL_BASE_YEAR;
+		/* freight trains weight factor */
+		case 0x0E: return _patches.freight_trains;
+		/* empty wagon speed increase */
+		case 0x0F: return 0;
+		/* plane speed factor */
+		case 0x10: return 4;
+		/* 2CC colormap base sprite */
+		case 0x11: return SPR_2CCMAP_BASE;
+
+		default:
+			grfmsg(2, "ParamSet: Unknown Patch variable 0x%02X.", param);
+			return 0;
+	}
+}
+
+
 /* Action 0x0D */
 static void ParamSet(byte *buf, int len)
 {
@@ -3488,8 +3510,7 @@ static void ParamSet(byte *buf, int len)
 		if (GB(data, 0, 8) == 0xFF) {
 			if (data == 0x0000FFFF) {
 				/* Patch variables */
-				grfmsg(2, "ParamSet: Reading Patch variables unsupported");
-				return;
+				src1 = GetPatchVariable(src1);
 			} else {
 				/* GRF Resource Management */
 				if (_cur_stage != GLS_ACTIVATION) {
