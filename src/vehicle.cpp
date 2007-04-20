@@ -570,7 +570,7 @@ bool IsEngineCountable(const Vehicle *v)
 
 void DestroyVehicle(Vehicle *v)
 {
-	if (v->last_station_visited != INVALID_STATION) {
+	if (IsValidStationID(v->last_station_visited)) {
 		GetStation(v->last_station_visited)->loading_vehicles.remove(v);
 	}
 
