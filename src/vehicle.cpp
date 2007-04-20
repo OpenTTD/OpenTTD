@@ -2916,5 +2916,5 @@ void Vehicle::LeaveStation()
 	assert(current_order.type == OT_LOADING);
 	current_order.type = OT_LEAVESTATION;
 	current_order.flags = 0;
-	GetStation(this->last_station_visited)->loading_vehicles.push_back(this);
+	GetStation(this->last_station_visited)->loading_vehicles.remove(this);
 }

@@ -1411,6 +1411,7 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 			}
 
 			Order b = v->current_order;
+			v->LeaveStation();
 			v->current_order.Free();
 			MarkAircraftDirty(v);
 			if (!(b.flags & OF_NON_STOP)) return;
