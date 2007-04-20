@@ -1331,7 +1331,6 @@ static int32 DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 static bool LoadWait(const Vehicle* v, const Vehicle* u)
 {
 	const Vehicle *w;
-	const Vehicle *x;
 	bool has_any_cargo = false;
 
 	if (!(u->current_order.flags & OF_FULL_LOAD)) return false;
@@ -1346,12 +1345,11 @@ static bool LoadWait(const Vehicle* v, const Vehicle* u)
 		}
 	}
 
-	FOR_ALL_VEHICLES(x) {
-		if ((x->type != VEH_TRAIN || IsFrontEngine(x)) && // for all locs
-				u->last_station_visited == x->last_station_visited && // at the same station
-				!(x->vehstatus & (VS_STOPPED | VS_CRASHED)) && // not stopped or crashed
-				x->current_order.type == OT_LOADING && // loading
-				u != x) { // not itself
+	const Station *st = GetStation(u->last_station_visited);
+	std::list<Vehicle *>::const_iterator iter;
+	for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {
+		const Vehicle *x = *iter;
+		if (!(x->vehstatus & (VS_STOPPED | VS_CRASHED)) && u != x) {
 			bool other_has_any_cargo = false;
 			bool has_space_for_same_type = false;
 			bool other_has_same_type = false;

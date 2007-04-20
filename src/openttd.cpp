@@ -1926,6 +1926,18 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(57)) {
+		Vehicle *v;
+		/* Added a FIFO queue of vehicles loading at stations */
+		FOR_ALL_VEHICLES(v) {
+			if ((v->type != VEH_TRAIN || IsFrontEngine(v)) &&  // for all locs
+					!(v->vehstatus & (VS_STOPPED | VS_CRASHED)) && // not stopped or crashed
+					v->current_order.type == OT_LOADING) {         // loading
+				GetStation(v->last_station_visited)->loading_vehicles.push_back(v);
+			}
+		}
+	}
+
 	return true;
 }
 

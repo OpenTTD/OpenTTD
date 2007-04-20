@@ -2795,6 +2795,8 @@ static const SaveLoad _station_desc[] = {
 	SLE_CONDVAR(Station, waiting_triggers,           SLE_UINT8,                  27, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, num_specs,                  SLE_UINT8,                  27, SL_MAX_VERSION),
 
+	SLE_CONDLST(Station, loading_vehicles,           REF_VEHICLE,                57, SL_MAX_VERSION),
+
 	// reserve extra space in savegame here. (currently 32 bytes)
 	SLE_CONDNULL(32, 2, SL_MAX_VERSION),
 

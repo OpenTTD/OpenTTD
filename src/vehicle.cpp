@@ -570,6 +570,10 @@ bool IsEngineCountable(const Vehicle *v)
 
 void DestroyVehicle(Vehicle *v)
 {
+	if (v->last_station_visited != INVALID_STATION) {
+		GetStation(v->last_station_visited)->loading_vehicles.remove(v);
+	}
+
 	if (IsEngineCountable(v)) {
 		GetPlayer(v->owner)->num_engines[v->engine_type]--;
 		if (v->owner == _local_player) InvalidateAutoreplaceWindow(v->engine_type);
@@ -2903,6 +2907,7 @@ void Vehicle::BeginLoading()
 {
 	assert(IsTileType(tile, MP_STATION) || type == VEH_SHIP);
 	current_order.type = OT_LOADING;
+	GetStation(this->last_station_visited)->loading_vehicles.push_back(this);
 }
 
 void Vehicle::LeaveStation()
@@ -2911,4 +2916,5 @@ void Vehicle::LeaveStation()
 	assert(current_order.type == OT_LOADING);
 	current_order.type = OT_LEAVESTATION;
 	current_order.flags = 0;
+	GetStation(this->last_station_visited)->loading_vehicles.push_back(this);
 }

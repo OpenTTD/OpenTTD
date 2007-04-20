@@ -11,6 +11,7 @@
 #include "sprite.h"
 #include "tile.h"
 #include "newgrf_station.h"
+#include <list>
 
 static const StationID INVALID_STATION = 0xFFFF;
 static const byte INITIAL_STATION_RATING = 175;
@@ -157,6 +158,7 @@ struct Station {
 	StationID index;
 
 	byte last_vehicle_type;
+	std::list<Vehicle *> loading_vehicles;
 	GoodsEntry goods[NUM_CARGO];
 
 	uint16 random_bits;
