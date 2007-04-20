@@ -751,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}桥的�
 STR_02A1_SMALL                                                  :{BLACK}小
 STR_02A2_MEDIUM                                                 :{BLACK}中
 STR_02A3_LARGE                                                  :{BLACK}大
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}城市
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}选择城镇规模
 STR_02A5_TOWN_SIZE                                              :{YELLOW}城镇规模：
 
@@ -1135,6 +1136,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :中央
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :右侧
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}窗口依附半径：{ORANGE}{STRING} 像素
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}窗口依附半径：{ORANGE}禁用
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}城镇发展速度：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :无
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :慢
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :正常
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :快
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :非常快
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}城镇发展为城市的比例：{ORANGE}1 / {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}城镇发展为城市的比例：{ORANGE}无
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}界面
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}建设

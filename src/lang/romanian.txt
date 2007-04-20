@@ -751,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...ambel
 STR_02A1_SMALL                                                  :{BLACK}Mic
 STR_02A2_MEDIUM                                                 :{BLACK}Mediu
 STR_02A3_LARGE                                                  :{BLACK}Mare
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Oras
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Alege mãrimea orasului
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Mãrime oras:
 
@@ -1143,6 +1144,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rapida
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Foarte rapida
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proportia oraselor care se vor dezvolta de doua ori mai repede: {ORANGE}1 in {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportia oraselor care se vor dezvolta de doua ori mai repede: {ORANGE}None
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicator initial dimensiune oras: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfatã
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Constructie

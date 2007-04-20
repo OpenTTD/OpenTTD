@@ -815,6 +815,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...konce
 STR_02A1_SMALL                                                  :{BLACK}Male
 STR_02A2_MEDIUM                                                 :{BLACK}Stredne
 STR_02A3_LARGE                                                  :{BLACK}Velke
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Mesto
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vyber velkost mesta
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Velkost mesta:
 
@@ -1207,6 +1208,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rýchly
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Velmi rýchly
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Pomer miest, ktoré budú rást 2x rýchlejšie: {ORANGE}1 v {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Pomer miest, ktoré budú rást 2x rýchlejšie: {ORANGE}Žiadny
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Násobok pociatocnej velkosti mesta: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Rozhranie
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Vystavba
