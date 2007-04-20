@@ -1843,6 +1843,17 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	do {
 
+		if (!(flags & DC_EXEC)) {
+			/* Get the refit cost.
+			 * This is only needed when estimating as when the command is executed, the cost from the refit command is used.
+			 * This needs to be done for every single unit, so it should be done before checking if it's a multiheaded engine. */
+			CargoID new_cargo_type = GetEngineCargoType(v->engine_type);
+
+			if (new_cargo_type != v->cargo_type && new_cargo_type != CT_INVALID) {
+				total_cost += GetRefitCost(v->engine_type);
+			}
+		}
+
 		if (IsMultiheaded(v) && !IsTrainEngine(v)) {
 			/* we build the rear ends of multiheaded trains with the front ones */
 			continue;
@@ -1865,7 +1876,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					/* We can't pay for refitting because we can't estimate refitting costs for a vehicle before it's build.
 					 * If we pay for it anyway, the cost and the estimated cost will not be the same and we will have an assert.
 					 * We need to check the whole chain if it is a train because some newgrf articulated engines can refit some units only (and not the front) */
-					DoCommand(0, w->index, v2->cargo_type | (v2->cargo_subtype << 8), flags, GetCmdRefitVeh(v));
+					total_cost += DoCommand(0, w->index, v2->cargo_type | (v2->cargo_subtype << 8), flags, GetCmdRefitVeh(v));
 					break; // We learned that the engine in question needed a refit. No need to check anymore
 				}
 			} while (v->type == VEH_TRAIN && (w2 = w2->next) != NULL && (v2 = v2->next) != NULL);
