@@ -3094,7 +3094,7 @@ STR_WORLD_GENERATION                                            :{BLACK}Wereld m
 STR_TREE_GENERATION                                             :{BLACK}Bos plaatsing
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Onverplaatsbare generatie
 STR_CLEARING_TILES                                              :{BLACK}Ruig en
-STR_SETTINGUP_GAME                                              :{BLACK}Spel aan het instellen
+STR_SETTINGUP_GAME                                              :{BLACK}Spel aan het configureren
 STR_PREPARING_TILELOOP                                          :{BLACK}Bezig met vlakken
 STR_PREPARING_GAME                                              :{BLACK}Voorbereiden spel
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Deze aktie past de moeilijkheidsgraag aan naam custom

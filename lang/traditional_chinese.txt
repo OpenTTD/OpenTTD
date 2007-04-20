@@ -37,7 +37,7 @@ STR_001D_DIAMONDS                                               :鑽石
 STR_001E_FOOD                                                   :食物
 STR_001F_PAPER                                                  :紙
 STR_0020_GOLD                                                   :金塊
-STR_0021_WATER                                                  :飲用水
+STR_0021_WATER                                                  :淡水
 STR_0022_WHEAT                                                  :小麥
 STR_0023_RUBBER                                                 :橡膠
 STR_0024_SUGAR                                                  :砂糖
@@ -69,7 +69,7 @@ STR_003D_DIAMOND                                                :鑽石
 STR_003E_FOOD                                                   :食品
 STR_003F_PAPER                                                  :紙張
 STR_0040_GOLD                                                   :金塊
-STR_0041_WATER                                                  :飲用水
+STR_0041_WATER                                                  :淡水
 STR_0042_WHEAT                                                  :小麥
 STR_0043_RUBBER                                                 :橡膠
 STR_0044_SUGAR                                                  :砂糖

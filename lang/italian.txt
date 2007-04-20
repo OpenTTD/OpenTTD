@@ -2032,9 +2032,25 @@ STR_681D_MEDIUM                                                 :Media
 STR_681E_FAST                                                   :Veloce
 STR_681F_VERY_FAST                                              :Molto veloce
 STR_VERY_LOW                                                    :Molto basso
+STR_VERY_LOW.ms                                                 :Molto basso
+STR_VERY_LOW.mp                                                 :Molto bassi
+STR_VERY_LOW.fp                                                 :Molto basse
+STR_VERY_LOW.fs                                                 :Molto bassa
 STR_6820_LOW                                                    :Basso
+STR_6820_LOW.ms                                                 :Basso
+STR_6820_LOW.mp                                                 :Bassi
+STR_6820_LOW.fs                                                 :Bassa
+STR_6820_LOW.fp                                                 :Basse
 STR_6821_MEDIUM                                                 :Medio
+STR_6821_MEDIUM.ms                                              :Medio
+STR_6821_MEDIUM.mp                                              :Medi
+STR_6821_MEDIUM.fs                                              :Media
+STR_6821_MEDIUM.fp                                              :Medie
 STR_6822_HIGH                                                   :Alto
+STR_6822_HIGH.ms                                                :Alto
+STR_6822_HIGH.mp                                                :Alti
+STR_6822_HIGH.fs                                                :Alta
+STR_6822_HIGH.fp                                                :Alte
 STR_6823_NONE                                                   :Nessuno
 STR_6824_REDUCED                                                :Ridotti
 STR_6825_NORMAL                                                 :Normali
