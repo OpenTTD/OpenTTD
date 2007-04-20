@@ -4109,11 +4109,11 @@ static void InitializeGRFSpecial()
 	                   |                                        (0 << 0x11)  // moretoylandfeatures
 	                   |                                        (1 << 0x12)  // newstations
 	                   |                                        (0 << 0x13)  // tracktypecostdiff
-	                   |                                        (0 << 0x14)  // manualconvert
+	                   |                                        (1 << 0x14)  // manualconvert
 	                   |       ((_patches.build_on_slopes ? 1 : 0) << 0x15)  // buildoncoasts
 	                   |                                        (1 << 0x16)  // canals
 	                   |                                        (1 << 0x17)  // newstartyear
-	                   |                                        (0 << 0x18)  // freighttrains
+	                   |    ((_patches.freight_trains > 1 ? 1 : 0) << 0x18)  // freighttrains
 	                   |                                        (1 << 0x19)  // newhouses
 	                   |                                        (1 << 0x1A)  // newbridges
 	                   |                                        (0 << 0x1B)  // newtownnames
