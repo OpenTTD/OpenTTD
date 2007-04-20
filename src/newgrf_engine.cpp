@@ -952,10 +952,19 @@ uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, E
 }
 
 
-/* Callback 36 handler */
+/* Callback 36 handlers */
 uint GetVehicleProperty(const Vehicle *v, uint8 property, uint orig_value)
 {
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_MODIFY_PROPERTY, property, 0, v->engine_type, v);
+	if (callback != CALLBACK_FAILED) return callback;
+
+	return orig_value;
+}
+
+
+uint GetEngineProperty(EngineID engine, uint8 property, uint orig_value)
+{
+	uint16 callback = GetVehicleCallback(CBID_VEHICLE_MODIFY_PROPERTY, property, 0, engine, NULL);
 	if (callback != CALLBACK_FAILED) return callback;
 
 	return orig_value;

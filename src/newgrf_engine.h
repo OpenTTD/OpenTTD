@@ -38,6 +38,7 @@ bool UsesWagonOverride(const Vehicle *v);
 /* Handler to Evaluate callback 36. If the callback fails (i.e. most of the
  * time) orig_value is returned */
 uint GetVehicleProperty(const Vehicle *v, uint8 property, uint orig_value);
+uint GetEngineProperty(EngineID engine, uint8 property, uint orig_value);
 
 enum VehicleTrigger {
 	VEHICLE_TRIGGER_NEW_CARGO     = 1,

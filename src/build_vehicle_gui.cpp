@@ -423,7 +423,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 	}
 
 	/* Running cost */
-	SetDParam(0, (rvi->running_cost_base * _price.running_rail[rvi->running_cost_class] >> 8) << multihead);
+	SetDParam(0, (GetEngineProperty(engine_number, 0x0D, rvi->running_cost_base) * _price.running_rail[rvi->running_cost_class] >> 8) << multihead);
 	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 
@@ -481,7 +481,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 	y += 10;
 
 	/* Running cost */
-	SetDParam(0, svi->running_cost * _price.ship_running >> 8);
+	SetDParam(0, GetEngineProperty(engine_number, 0x0B, svi->running_cost) * _price.ship_running >> 8);
 	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 
@@ -516,7 +516,7 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 	y += 10;
 
 	/* Running cost */
-	SetDParam(0, avi->running_cost * _price.aircraft_running >> 8);
+	SetDParam(0, GetEngineProperty(engine_number, 0x0E, avi->running_cost) * _price.aircraft_running >> 8);
 	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 
