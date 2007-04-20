@@ -64,10 +64,10 @@ public:
 		bool bFound = pf.FindPath(v);
 
 		Trackdir next_trackdir = INVALID_TRACKDIR; // this would mean "path not found"
-		if (bFound) {
-			// path was found
+
+		Node* pNode = pf.GetBestNode();
+		if (pNode != NULL) {
 			// walk through the path back to the origin
-			Node* pNode = pf.GetBestNode();
 			Node* pPrevNode = NULL;
 			while (pNode->m_parent != NULL) {
 				pPrevNode = pNode;
