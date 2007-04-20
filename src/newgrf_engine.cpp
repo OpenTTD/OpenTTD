@@ -468,6 +468,22 @@ static uint32 GetGRFParameter(EngineID engine_type, byte parameter)
 }
 
 
+static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
+{
+	const Livery *l;
+
+	if (v == NULL) {
+		l = GetEngineLivery(engine, _current_player, INVALID_ENGINE, NULL);
+	} else if (v->type == VEH_TRAIN) {
+		l = GetEngineLivery((v->u.rail.first_engine != INVALID_ENGINE && (IsArticulatedPart(v) || UsesWagonOverride(v))) ? v->u.rail.first_engine : v->engine_type, v->owner, v->u.rail.first_engine, v);
+	} else {
+		l = GetEngineLivery(v->engine_type, v->owner, INVALID_ENGINE, v);
+	}
+
+	return l->colour1 + l->colour2 * 16;
+}
+
+
 static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
 	const Vehicle *v = GRV(object);
@@ -475,7 +491,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 	if (v == NULL) {
 		/* Vehicle does not exist, so we're in a purchase list */
 		switch (variable) {
-			case 0x43: return _current_player; // Owner information
+			case 0x43: return _current_player | (LiveryHelper(object->u.vehicle.self_type, NULL) << 24); // Owner information
 			case 0x46: return 0;               // Motion counter
 			case 0x48: return GetEngine(object->u.vehicle.self_type)->flags; // Vehicle Type Info
 			case 0xC4: return clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
@@ -544,7 +560,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		}
 
 		case 0x43: // Player information
-			return v->owner;
+			return v->owner | (GetPlayer(v->owner)->is_ai ? 0x10000 : 0) | (LiveryHelper(v->engine_type, v) << 24);
 
 		case 0x44: // Aircraft information
 			if (v->type != VEH_AIRCRAFT) return UINT_MAX;

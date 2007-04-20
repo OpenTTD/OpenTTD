@@ -551,6 +551,8 @@ VARDEF uint16 _returned_refit_capacity;
 
 static const VehicleID INVALID_VEHICLE = 0xFFFF;
 
+const struct Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID parent_engine_type, const Vehicle *v);
+
 /**
  * Get the colour map for an engine. This used for unbuilt engines in the user interface.
  * @param engine_type ID of engine

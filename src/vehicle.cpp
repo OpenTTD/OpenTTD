@@ -2467,25 +2467,12 @@ UnitID GetFreeUnitNumber(byte type)
 	return unit;
 }
 
-static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, EngineID parent_engine_type, const Vehicle *v)
+
+const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID parent_engine_type, const Vehicle *v)
 {
-	SpriteID map = PAL_NONE;
 	const Player *p = GetPlayer(player);
 	LiveryScheme scheme = LS_DEFAULT;
 	CargoID cargo_type = v == NULL ? (CargoID)CT_INVALID : v->cargo_type;
-
-	/* Check if we should use the colour map callback */
-	if (HASBIT(EngInfo(engine_type)->callbackmask, CBM_COLOUR_REMAP)) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
-		/* A return value of 0xC000 is stated to "use the default two-color
-		 * maps" which happens to be the failure action too... */
-		if (callback != CALLBACK_FAILED && callback != 0xC000) {
-			map = GB(callback, 0, 14);
-			/* If bit 14 is set, then the company colours are applied to the
-			 * map else it's returned as-is. */
-			if (!HASBIT(callback, 14)) return map;
-		}
-	}
 
 	/* The default livery is always available for use, but its in_use flag determines
 	 * whether any _other_ liveries are in use. */
@@ -2563,12 +2550,35 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 		if (!p->livery[scheme].in_use) scheme = LS_DEFAULT;
 	}
 
+	return &p->livery[scheme];
+}
+
+
+static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, EngineID parent_engine_type, const Vehicle *v)
+{
+	SpriteID map = PAL_NONE;
+
+	/* Check if we should use the colour map callback */
+	if (HASBIT(EngInfo(engine_type)->callbackmask, CBM_COLOUR_REMAP)) {
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
+		/* A return value of 0xC000 is stated to "use the default two-color
+		 * maps" which happens to be the failure action too... */
+		if (callback != CALLBACK_FAILED && callback != 0xC000) {
+			map = GB(callback, 0, 14);
+			/* If bit 14 is set, then the company colours are applied to the
+			 * map else it's returned as-is. */
+			if (!HASBIT(callback, 14)) return map;
+		}
+	}
+
 	bool twocc = HASBIT(EngInfo(engine_type)->misc_flags, EF_USES_2CC);
 
 	if (map == PAL_NONE) map = twocc ? (SpriteID)SPR_2CCMAP_BASE : (SpriteID)PALETTE_RECOLOR_START;
 
-	map += p->livery[scheme].colour1;
-	if (twocc) map += p->livery[scheme].colour2 * 16;
+	const Livery *livery = GetEngineLivery(engine_type, player, parent_engine_type, v);
+
+	map += livery->colour1;
+	if (twocc) map += livery->colour2 * 16;
 
 	return map;
 }
