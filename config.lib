@@ -237,9 +237,9 @@ detect_params() {
 			--with-osx-sysroot)           with_osx_sysroot="2";;
 			--with-osx-sysroot=*)         with_osx_sysroot="$optarg";;
 
-			--without-application-bundle) with_applicant_bundle="0";;
-			--with-application-bundle)    with_applicant_bundle="1";;
-			--with-application-bundle=*)  with_applicant_bundle="$optarg";;
+			--without-application-bundle) with_application_bundle="0";;
+			--with-application-bundle)    with_application_bundle="1";;
+			--with-application-bundle=*)  with_application_bundle="$optarg";;
 
 			CC=* | --CC=*)                CC="$optarg";;
 			CXX=* | --CXX=*)              CXX="$optarg";;
