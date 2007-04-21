@@ -78,6 +78,9 @@
 # ifdef amiga
 #  undef amiga
 # endif
+/* Act like we already included this file, as it somehow gives linkage problems
+ *  (mismatch linkage of C++ and C between this include and unistd.h). */
+#define CLIB_USERGROUP_PROTOS_H
 #endif /* __MORPHOS__ */
 
 #ifdef __APPLE__
