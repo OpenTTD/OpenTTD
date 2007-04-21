@@ -60,6 +60,8 @@ enum DeterministicSpriteGroupAdjustOperation {
 	DSGA_OP_AND,  ///< a & b
 	DSGA_OP_OR,   ///< a | b
 	DSGA_OP_XOR,  ///< a ^ b
+	DSGA_OP_STO,  ///< store a into temporary storage, indexed by b. return a
+	DSGA_OP_RST,  ///< return b
 };
 
 

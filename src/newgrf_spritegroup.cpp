@@ -76,6 +76,8 @@ void InitializeSpriteGroupPool()
 	_spritegroup_count = 0;
 }
 
+static uint32 _temp_store[0x110];
+
 
 static inline uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
@@ -95,6 +97,8 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 		case 0x1B: return GB(_display_opt, 0, 6);
 		case 0x1C: return object->last_value;
 		case 0x20: return _opt.landscape == LT_ARCTIC ? GetSnowLine() : 0xFF;
+
+		case 0x7D: return _temp_store[parameter];
 
 		/* Not a common variable, so evalute the feature specific variables */
 		default: return object->GetVariable(object, variable, parameter, available);
@@ -133,6 +137,10 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value,
 		case DSGA_OP_AND:  return last_value & value;
 		case DSGA_OP_OR:   return last_value | value;
 		case DSGA_OP_XOR:  return last_value ^ value;
+		case DSGA_OP_STO:
+			if (value < lengthof(_temp_store)) _temp_store[value] = last_value;
+			return last_value;
+		case DSGA_OP_RST:  return value;
 		default:           return value;
 	}
 }
