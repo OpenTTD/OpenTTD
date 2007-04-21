@@ -21,7 +21,7 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Tow
 		/* Larger towns */
 		case 0x40:
 			if (_patches.larger_towns == 0) return 2;
-			if (t->index % _patches.larger_towns == 0) return 1;
+			if (t->larger_town) return 1;
 			return 0;
 
 		/* Town index */
