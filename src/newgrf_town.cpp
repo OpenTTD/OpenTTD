@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "variables.h"
 #include "debug.h"
 #include "functions.h"
 #include "town.h"
@@ -18,7 +19,10 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Tow
 {
 	switch (variable) {
 		/* Larger towns */
-		case 0x40: return 1;
+		case 0x40:
+			if (_patches.larger_towns == 0) return 2;
+			if (t->index % _patches.larger_towns == 0) return 1;
+			return 0;
 
 		/* Town index */
 		case 0x41: return t->index;
