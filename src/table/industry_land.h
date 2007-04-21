@@ -2,19 +2,29 @@
 
 /** @file industry_land.h */
 
-struct DrawIndustrySpec1Struct {
-	byte x;
-	byte image_1;
-	byte image_2;
-	byte image_3;
+/**
+ * This is used to gather some data about animation
+ * drawing in the industry code
+ * Image_1-2-3 are in fact only offset in the sprites
+ * used by the industry.
+ * To specify an invalid one, either 255 or 0 is used,
+ * depending of the industry.
+ */
+struct DrawIndustryAnimationStruct {
+	int x;        ///< coordinate x of the first image offset
+	byte image_1; ///< image offset 1
+	byte image_2; ///< image offset 2
+	byte image_3; ///< image offset 3
 };
 
-struct DrawIndustrySpec4Struct {
-	byte image_1;
-	byte image_2;
-	byte image_3;
+/**
+ * Simple structure gathering x,y coordinates for
+ * industries animations
+ */
+struct DrawIndustryCoordinates {
+	byte x;  ///< coordinate x of the pair
+	byte y;  ///< coordinate y of the pair
 };
-
 
 /**
  * Macro to ease the declaration of the array
@@ -734,9 +744,10 @@ static const DrawBuildingsTileStruct _industry_draw_tile_data[NUM_INDUSTRY_GFXES
 	M(     0xf8d, PAL_NONE,     0x12a5 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE,  0,  0, 16, 16,  50, 1),
 	M(     0xf8d, PAL_NONE,     0x12a5 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE,  0,  0, 16, 16,  50, 1),
 };
+#undef M
 
 /* this is ONLY used for Sugar Mine*/
-static const DrawIndustrySpec1Struct _draw_industry_spec1[96] = {
+static const DrawIndustryAnimationStruct _draw_industry_spec1[96] = {
 	{  8,   4,   0,   0},
 	{  6,   0,   1,   0},
 	{  4,   0,   2,   0},
@@ -836,71 +847,77 @@ static const DrawIndustrySpec1Struct _draw_industry_spec1[96] = {
 };
 
 /* this is ONLY used for Sugar Mine*/
-static const byte _drawtile_proc1_x[5] = {
-	22, 17, 14, 10, 8
+static const DrawIndustryCoordinates _drawtile_proc1[5] = {
+	{22, 73},
+	{17, 70},
+	{14, 69},
+	{10, 66},
+	{ 8, 41},
 };
 
-/* this is ONLY used for Sugar Mine*/
-static const byte _drawtile_proc1_y[5] = {
-	73, 70, 69, 66, 41
+/** this is ONLY used for Toy Factory.
+ * 255 means no drawing
+ * @param img1 offset from base sprite SPR_IT_SUGAR_MINE_SIEVE
+ * @param img2 offset from base sprite SPR_IT_SUGAR_MINE_CLOUDS
+ * @param img3 offset from base sprite SPR_IT_SUGAR_MINE_PILE
+ */
+#define MD( img1, img2, img3) { (50 - img1 * 2), img1, img2, img3 }
+static const DrawIndustryAnimationStruct _industry_anim_offs_toys[] = {
+	MD(255, 255,   0),
+	MD(  0, 255,   0),
+	MD(  1, 255,   0),
+	MD(  2, 255,   0),
+	MD(  3, 255,   0),
+	MD(  4, 255,   0),
+	MD(  5, 255,   0),
+	MD(  6, 255,   0),
+	MD(  7, 255,   0),
+	MD(  8, 255,   0),
+	MD(  9, 255,   0),
+	MD( 10, 255,   0),
+	MD( 11, 255,   0),
+	MD( 12, 255,   0),
+	MD( 13, 255,   0),
+	MD( 14, 255,   0),
+	MD( 15, 255,   0),
+	MD( 16, 255,   0),
+	MD( 17, 255,   0),
+	MD( 18, 255,   0),
+	MD( 18, 255,   1),
+	MD( 18, 255,   2),
+	MD( 18, 255,   4),
+	MD( 18, 255,   6),
+	MD( 18, 255,   8),
+	MD( 18, 255,  11),
+	MD( 18, 255,  14),
+	MD( 18, 255,  17),
+	MD( 18, 255,  20),
+	MD( 18, 255,  24),
+	MD(255,   0,  29),
+	MD(255,   0,  24),
+	MD(255,   0,  20),
+	MD(255,   0,  17),
+	MD(255,   0,  14),
+	MD(255,   0,  11),
+	MD(255,   0,   8),
+	MD(255,   0,   6),
+	MD(255,   0,   4),
+	MD(255,   0,   2),
+	MD(255,   0,   1),
+	MD(255,   1,   0),
+	MD(255,   2,   0),
+	MD(255,   3,   0),
+	MD(255,   4,   0),
+	MD(255,   5,   0),
+	MD(255,   6,   0),
+	MD(255,   7,   0),
+	MD(255,   8,   0),
+	MD(255, 255,   0),
 };
-
-/* this is ONLY used for Toy Factory*/
-static const DrawIndustrySpec4Struct _industry_anim_offs_3[] = {
-	{255, 255,   0},
-	{  0, 255,   0},
-	{  1, 255,   0},
-	{  2, 255,   0},
-	{  3, 255,   0},
-	{  4, 255,   0},
-	{  5, 255,   0},
-	{  6, 255,   0},
-	{  7, 255,   0},
-	{  8, 255,   0},
-	{  9, 255,   0},
-	{ 10, 255,   0},
-	{ 11, 255,   0},
-	{ 12, 255,   0},
-	{ 13, 255,   0},
-	{ 14, 255,   0},
-	{ 15, 255,   0},
-	{ 16, 255,   0},
-	{ 17, 255,   0},
-	{ 18, 255,   0},
-	{ 18, 255,   1},
-	{ 18, 255,   2},
-	{ 18, 255,   4},
-	{ 18, 255,   6},
-	{ 18, 255,   8},
-	{ 18, 255,  11},
-	{ 18, 255,  14},
-	{ 18, 255,  17},
-	{ 18, 255,  20},
-	{ 18, 255,  24},
-	{255,   0,  29},
-	{255,   0,  24},
-	{255,   0,  20},
-	{255,   0,  17},
-	{255,   0,  14},
-	{255,   0,  11},
-	{255,   0,   8},
-	{255,   0,   6},
-	{255,   0,   4},
-	{255,   0,   2},
-	{255,   0,   1},
-	{255,   1,   0},
-	{255,   2,   0},
-	{255,   3,   0},
-	{255,   4,   0},
-	{255,   5,   0},
-	{255,   6,   0},
-	{255,   7,   0},
-	{255,   8,   0},
-	{255, 255,   0},
-};
+#undef MD
 
 /* this is ONLY used for Toffee Quarry*/
-static const byte _industry_anim_offs[] = {
+static const byte _industry_anim_offs_toffee[] = {
 	255,   0,   0,   0,   2,   4,   6,   8,  10,   9,
 	  7,   5,   3,   1, 255,   0,   0,   0,   2,   4,
 	  6,   8,  10,   9,   7,   5,   3,   1, 255,   0,
@@ -911,13 +928,22 @@ static const byte _industry_anim_offs[] = {
 };
 
 /* this is ONLY used for the Bubble Generator*/
-static const byte _industry_anim_offs_2[] = {
+static const byte _industry_anim_offs_bubbles[] = {
 	68, 69, 71, 74, 77, 80, 83, 85, 86, 86,
 	86, 86, 86, 86, 86, 86, 86, 86, 86, 86,
 	86, 86, 85, 84, 83, 82, 81, 80, 79, 78,
 	77, 76, 75, 74, 73, 72, 71, 70, 69, 68,
 };
 
-/* those are ONLY used for Power Station*/
-static const byte _coal_plant_sparks_x[] = {11, 11, 14, 13, 18, 15};
-static const byte _coal_plant_sparks_y[] = {23, 11,  6,  3,  1,  0};
+/**
+ * Movement of the sparks , only used for Power Station
+ */
+static const DrawIndustryCoordinates _coal_plant_sparks[] = {
+	{11, 23},
+	{11, 11},
+	{14,  6},
+	{13,  3},
+	{18,  1},
+	{15,  0},
+};
+
