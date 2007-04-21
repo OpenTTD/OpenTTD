@@ -413,8 +413,44 @@ static int32 ClearTile_Town(TileIndex tile, byte flags)
 static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 {
 	HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
+	CargoID accepts[3];
 
-	for (uint8 i = 0; i < 3; i++) ac[hs->accepts_cargo[i]] = hs->cargo_acceptance[i];
+	/* Set the initial accepted cargo types */
+	for (uint8 i = 0; i < lengthof(accepts); i++) {
+		accepts[i] = hs->accepts_cargo[i];
+	}
+
+	/* Check for custom accepted cargo types */
+	if (HASBIT(hs->callback_mask, CBM_HOUSE_ACCEPT_CARGO)) {
+		uint16 callback = GetHouseCallback(CBID_HOUSE_ACCEPT_CARGO, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		if (callback != CALLBACK_FAILED) {
+			/* Replace accepted cargo types with translated values from callback */
+			accepts[0] = GetCargoTranslation(GB(callback,  0, 5), hs->grffile);
+			accepts[1] = GetCargoTranslation(GB(callback,  5, 5), hs->grffile);
+			accepts[2] = GetCargoTranslation(GB(callback, 10, 5), hs->grffile);
+		}
+	}
+
+	/* Check for custom cargo acceptance */
+	if (HASBIT(hs->callback_mask, CBM_CARGO_ACCEPTANCE)) {
+		uint16 callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		if (callback != CALLBACK_FAILED) {
+			if (accepts[0] != CT_INVALID) ac[accepts[0]] = GB(callback, 0, 4);
+			if (accepts[1] != CT_INVALID) ac[accepts[1]] = GB(callback, 4, 4);
+			if (_opt.landscape != LT_TEMPERATE && HASBIT(callback, 12)) {
+				/* The 'S' bit indicates food instead of goods */
+				ac[CT_FOOD] = GB(callback, 8, 4);
+			} else {
+				if (accepts[2] != CT_INVALID) ac[accepts[2]] = GB(callback, 8, 4);
+			}
+			return;
+		}
+	}
+
+	/* No custom acceptance, so fill in with the default values */
+	for (uint8 i = 0; i < lengthof(accepts); i++) {
+		if (accepts[i] != CT_INVALID) ac[accepts[i]] = hs->cargo_acceptance[i];
+	}
 }
 
 static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
