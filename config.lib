@@ -673,6 +673,13 @@ make_cflags_and_ldflags() {
 		CC_CFLAGS="$CC_CFLAGS -Wstrict-prototypes"
 	fi
 
+	gcc295=""
+	if [ "$cc_version" = 29 ]; then
+		# Make sure we mark GCC 2.95 flag for Makefile.src.in, as we
+		#  need a lovely hack there to make it compile correctly.
+		gcc295="1"
+	fi
+
 	if [ $cc_version -ge 30 ]; then
 		CFLAGS="$CFLAGS -W -Wno-unused-parameter"
 	fi
@@ -1853,6 +1860,7 @@ make_sed() {
 		s#!!CONFIGURE_FILES!!#$CONFIGURE_FILES#g;
 		s#!!REVISION!!#$revision#g;
 		s#!!AWK!!#$awk#g;
+		s#!!GCC295!!#$gcc295#g;
 		s#!!ENABLE_INSTALL!!#$enable_install#g;
 	"
 }

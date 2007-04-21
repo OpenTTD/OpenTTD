@@ -28,6 +28,7 @@ CFLAGS_MAKEDEP= !!CFLAGS_MAKEDEP!!
 SORT         = !!SORT!!
 REVISION     = !!REVISION!!
 AWK          = !!AWK!!
+GCC295       = !!GCC295!!
 CONFIG_CACHE_COMPILER = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_COMPILER!!
 CONFIG_CACHE_LINKER   = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_LINKER!!
 CONFIG_CACHE_ENDIAN   = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_ENDIAN!!
@@ -50,6 +51,17 @@ RES      := $(shell mkdir -p $(BIN_DIR) $(sort $(dir $(OBJS))))
 CFLAGS += -I $(SRC_OBJS_DIR) -I $(LANG_OBJS_DIR)
 
 ENDIAN_TARGETS := endian_target.h $(ENDIAN_CHECK)
+
+# This 'sed' basicly just removes 'const' from the line if it is a 2+D array
+# For more information, please check:
+#  http://maillist.openttd.org/pipermail/devs/2007-April/000284.html
+#  http://maillist.openttd.org/pipermail/devs/2007-February/000248.html
+GCC295_FIX=sed -r 's/^(\t*)(.*)( const )([A-Za-z0-9_ ]+(\[.*\]){2,})(( = \{)|(;))(.*)$$/\1\2 \4\6\8\9/g'
+# This 'sed' removes the 3rd '4' in the # lines of the -E output of
+#  gcc 2.95.3 and lower, as it should indicate that it is a C-linkage, but the
+#  compiler can't handle that information (just don't ask). So we remove it
+#  and then it compiles happily and without bitching :)
+GCC295_FIX_2=sed -e 's|\(^\# [0-9][0-9]* "[^"]*"[ 0-9]*\) 4$$|\1|g'
 
 # Check if we want to show what we are doing
 ifdef VERBOSE
@@ -210,7 +222,11 @@ $(OBJS_C): %.o: $(SRC_DIR)/%.c $(DEP_MASK) $(FILE_DEP)
 
 $(OBJS_CPP): %.o: $(SRC_DIR)/%.cpp $(DEP_MASK) $(FILE_DEP)
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
+ifeq ($(GCC295), 1)
+	$(Q)$(CXX_HOST) -E $(CFLAGS) $< | $(GCC295_FIX) | $(GCC295_FIX_2) | $(CXX_HOST) $(CFLAGS) -c -o $@ -x c++ -
+else
 	$(Q)$(CXX_HOST) $(CFLAGS) -c -o $@ $<
+endif
 
 $(OBJS_MM): %.o: $(SRC_DIR)/%.mm $(DEP_MASK) $(FILE_DEP)
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.mm=%.mm)'
