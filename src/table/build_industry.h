@@ -5,8 +5,19 @@
 #ifndef BUILD_INDUSTRY_H
 #define BUILD_INDUSTRY_H
 
+/**
+ * Definition of an industry tiles layout.
+ * @param x offset x of this tile
+ * @param y offset y of this tile
+ * @param m index of the tile.
+ * @see _industry_specs
+ * @see IndustryTileTable
+ */
 #define MK(x, y, m) {{x, y}, m}
 
+/**
+ * Terminator of industry tiles layout definition
+ */
 #define MKEND {{-0x80, 0}, 0}
 
 static const IndustryTileTable _tile_table_coal_mine_0[] = {
