@@ -751,6 +751,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...ambos
 STR_02A1_SMALL                                                  :{BLACK}Pequena
 STR_02A2_MEDIUM                                                 :{BLACK}Média
 STR_02A3_LARGE                                                  :{BLACK}Grande
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Cidade
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Seleccione o tamanho da cidade
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamanho da cidade:
 
@@ -1135,6 +1136,14 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Direita
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Raio de atracção de janelas: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raio de atracção de janelas: {ORANGE}desactivado
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Ritmo de crescimento de cidades: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Nenhum
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lento
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rápido
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Muito Rápido
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}1 em {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}Nenhuma
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construção

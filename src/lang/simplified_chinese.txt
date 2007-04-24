@@ -1144,6 +1144,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :快
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :非常快
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}城镇发展为城市的比例：{ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}城镇发展为城市的比例：{ORANGE}无
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}初始城市规模因子：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}界面
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}建设
@@ -3167,3 +3168,9 @@ STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}道路�
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}透明选项
 STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}调整站牌的透明度
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}调节树木透明度
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}调节建筑透明度
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}调节工业设施透明度
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}调节车站、码头及路点等的透明度
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}调节桥梁的透明度
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}调节灯塔及信号发射塔的透明度

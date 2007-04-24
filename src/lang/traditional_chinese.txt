@@ -2541,7 +2541,7 @@ STR_8812_EMPTY                                                  :{LTBLUE}空
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} 來自 {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} 來自 {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}列車 {COMMA} 已在機廠待命
-STR_8815_NEW_VEHICLES                                           :{BLACK}新造車輛
+STR_8815_NEW_VEHICLES                                           :{BLACK}購買新車輛
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}列車太長
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}列車只有在停放於機廠內的時候才能變動

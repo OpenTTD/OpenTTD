@@ -1386,7 +1386,7 @@ STR_NETWORK_LANG_GERMAN                                         :Tedesco
 STR_NETWORK_LANG_FRENCH                                         :Francese
 ############ End of leave-in-this-order
 
-STR_NETWORK_GAME_LOBBY                                          :{WHITE}Stanza principale partite multigiocatore
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Stanza principale partita multigiocatore
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparazione all'ingresso in:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Elenco di tutte le compagnie attualmente nella partita. È possibile unirsi ad una di esse o fondarne una nuova se è disponibile un posto
@@ -2050,25 +2050,9 @@ STR_681D_MEDIUM                                                 :Media
 STR_681E_FAST                                                   :Veloce
 STR_681F_VERY_FAST                                              :Molto veloce
 STR_VERY_LOW                                                    :Molto basso
-STR_VERY_LOW.ms                                                 :Molto basso
-STR_VERY_LOW.mp                                                 :Molto bassi
-STR_VERY_LOW.fp                                                 :Molto basse
-STR_VERY_LOW.fs                                                 :Molto bassa
 STR_6820_LOW                                                    :Basso
-STR_6820_LOW.ms                                                 :Basso
-STR_6820_LOW.mp                                                 :Bassi
-STR_6820_LOW.fs                                                 :Bassa
-STR_6820_LOW.fp                                                 :Basse
 STR_6821_MEDIUM                                                 :Medio
-STR_6821_MEDIUM.ms                                              :Medio
-STR_6821_MEDIUM.mp                                              :Medi
-STR_6821_MEDIUM.fs                                              :Media
-STR_6821_MEDIUM.fp                                              :Medie
 STR_6822_HIGH                                                   :Alto
-STR_6822_HIGH.ms                                                :Alto
-STR_6822_HIGH.mp                                                :Alti
-STR_6822_HIGH.fs                                                :Alta
-STR_6822_HIGH.fp                                                :Alte
 STR_6823_NONE                                                   :Nessuno
 STR_6824_REDUCED                                                :Ridotti
 STR_6825_NORMAL                                                 :Normali
@@ -2180,7 +2164,7 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Classifi
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Compagnia di trasporti in difficolta!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}La {COMPANY} verrà venduta o dichiarerà bancarotta a meno che le prestazioni non miglioreranno presto!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}La {COMPANY} verrà venduta o dichiarerà bancarotta a meno che le prestazioni non migliorino presto!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Presidente)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Fusione tra compagnie di trasporti!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}La {COMPANY} è stata venduta alla {COMPANY} per {CURRENCY}!
