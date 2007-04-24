@@ -2933,7 +2933,6 @@ void Vehicle::BeginLoading()
 
 void Vehicle::LeaveStation()
 {
-	assert(IsTileType(tile, MP_STATION) || type == VEH_SHIP);
 	assert(current_order.type == OT_LOADING);
 	current_order.type = OT_LEAVESTATION;
 	current_order.flags = 0;
