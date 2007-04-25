@@ -1395,11 +1395,13 @@ void NetworkStartUp()
 		byte cl_max = _network_game_info.clients_max;
 		byte cp_max = _network_game_info.companies_max;
 		byte sp_max = _network_game_info.spectators_max;
+		byte s_lang = _network_game_info.server_lang;
 
 		memset(&_network_game_info, 0, sizeof(_network_game_info));
 		_network_game_info.clients_max = cl_max;
 		_network_game_info.companies_max = cp_max;
 		_network_game_info.spectators_max = sp_max;
+		_network_game_info.server_lang = s_lang;
 	}
 
 
