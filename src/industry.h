@@ -140,6 +140,9 @@ struct IndustryTileSpec {
 const IndustrySpec *GetIndustrySpec(IndustryType thistype);    ///< Array of industries default data
 const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);  ///< Array of industry tiles default data
 
+/* smallmap_gui.cpp */
+void BuildIndustriesLegend();
+
 DECLARE_OLD_POOL(Industry, Industry, 3, 8000)
 
 /**

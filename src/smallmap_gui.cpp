@@ -91,72 +91,6 @@ static const LegendAndColour _legend_vehicles[] = {
 	MKEND()
 };
 
-static const LegendAndColour _legend_industries_normal[] = {
-	MK(0xD7, STR_00FA_COAL_MINE),
-	MK(0xB8, STR_00FB_POWER_STATION),
-	MK(0x56, STR_00FC_FOREST),
-	MK(0xC2, STR_00FD_SAWMILL),
-	MK(0xBF, STR_00FE_OIL_REFINERY),
-	MK(0x0F, STR_0105_BANK),
-
-	MS(0x30, STR_00FF_FARM),
-	MK(0xAE, STR_0100_FACTORY),
-	MK(0x98, STR_0102_OIL_WELLS),
-	MK(0x37, STR_0103_IRON_ORE_MINE),
-	MK(0x0A, STR_0104_STEEL_MILL),
-	MKEND()
-};
-
-static const LegendAndColour _legend_industries_hilly[] = {
-	MK(0xD7, STR_00FA_COAL_MINE),
-	MK(0xB8, STR_00FB_POWER_STATION),
-	MK(0x56, STR_00FC_FOREST),
-	MK(0x0A, STR_0106_PAPER_MILL),
-	MK(0xBF, STR_00FE_OIL_REFINERY),
-	MK(0x37, STR_0108_FOOD_PROCESSING_PLANT),
-	MS(0x30, STR_00FF_FARM),
-
-	MK(0xAE, STR_0101_PRINTING_WORKS),
-	MK(0x98, STR_0102_OIL_WELLS),
-	MK(0xC2, STR_0107_GOLD_MINE),
-	MK(0x0F, STR_0105_BANK),
-	MKEND()
-};
-
-static const LegendAndColour _legend_industries_desert[] = {
-	MK(0xBF, STR_00FE_OIL_REFINERY),
-	MK(0x98, STR_0102_OIL_WELLS),
-	MK(0x0F, STR_0105_BANK),
-	MK(0xB8, STR_0109_DIAMOND_MINE),
-	MK(0x37, STR_0108_FOOD_PROCESSING_PLANT),
-	MK(0x0A, STR_010A_COPPER_ORE_MINE),
-	MK(0x30, STR_00FF_FARM),
-	MS(0x56, STR_010B_FRUIT_PLANTATION),
-
-	MK(0x27, STR_010C_RUBBER_PLANTATION),
-	MK(0x25, STR_010D_WATER_SUPPLY),
-	MK(0xD0, STR_010E_WATER_TOWER),
-	MK(0xAE, STR_0100_FACTORY),
-	MK(0xC2, STR_010F_LUMBER_MILL),
-	MKEND()
-};
-
-static const LegendAndColour _legend_industries_candy[] = {
-	MK(0x30, STR_0110_COTTON_CANDY_FOREST),
-	MK(0xAE, STR_0111_CANDY_FACTORY),
-	MK(0x27, STR_0112_BATTERY_FARM),
-	MK(0x37, STR_0113_COLA_WELLS),
-	MK(0xD0, STR_0114_TOY_SHOP),
-	MK(0x0A, STR_0115_TOY_FACTORY),
-	MS(0x25, STR_0116_PLASTIC_FOUNTAINS),
-
-	MK(0xB8, STR_0117_FIZZY_DRINK_FACTORY),
-	MK(0x98, STR_0118_BUBBLE_GENERATOR),
-	MK(0xC2, STR_0119_TOFFEE_QUARRY),
-	MK(0x0F, STR_011A_SUGAR_MINE),
-	MKEND()
-};
-
 static const LegendAndColour _legend_routes[] = {
 	MK(0xD7, STR_00EB_ROADS),
 	MK(0x0A, STR_00EC_RAILROADS),
@@ -197,21 +131,40 @@ static const LegendAndColour _legend_land_owners[] = {
 #undef MS
 #undef MKEND
 
+/** Allow room for all industries, plus a terminator entry
+ * This is required in order to have the indutry slots all filled up */
+static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES+1];
 
-enum { IND_OFFS = 6 };  ///< allow to "jump" to the industries corresponding to the landscape
+/**
+ * Fills an array for the industries legends.
+ */
+void BuildIndustriesLegend()
+{
+	const IndustrySpec *indsp;
+	uint j = 0;
+
+	/* Add each name */
+	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
+		indsp = GetIndustrySpec(i);
+		if (HASBIT(indsp->climate_availability, _opt.landscape)) {
+			_legend_from_industries[j].legend = indsp->name;
+			_legend_from_industries[j].colour = indsp->map_colour;
+			_legend_from_industries[j].col_break = (j % 6) == 0;  // break is performed on the 7th item
+			_legend_from_industries[j].end = false;
+			j++;
+		}
+	}
+	/* Terminate the list */
+	_legend_from_industries[j].end = true;
+}
 
 static const LegendAndColour * const _legend_table[] = {
 	_legend_land_contours,
 	_legend_vehicles,
-	NULL,
+	_legend_from_industries,
 	_legend_routes,
 	_legend_vegetation,
 	_legend_land_owners,
-
-	_legend_industries_normal,
-	_legend_industries_hilly,
-	_legend_industries_desert,
-	_legend_industries_candy,
 };
 
 #if defined(OTTD_ALIGNMENT)
@@ -800,15 +753,23 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			SetDParam(0, STR_00E5_CONTOURS + _smallmap_type);
 			DrawWindowWidgets(w);
 
-			/* draw the legend */
-			tbl = _legend_table[(_smallmap_type != 2) ? _smallmap_type : (_opt.landscape + IND_OFFS)];
+			tbl = _legend_table[_smallmap_type];
+
 			x = 4;
 			y_org = w->height - 44 - 11;
 			y = y_org;
 			for (;;) {
 				GfxFillRect(x,     y + 1, x + 8, y + 5, 0);
 				GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour);
-				DrawString(x + 11, y, tbl->legend, 0);
+
+				if (_smallmap_type == 2) {
+					/* Industry name must be formated, since it's not in tiny font in the specs.
+					* So, draw with a parameter and use the STR_7065 string, which is tiny, black */
+					SetDParam(0, tbl->legend);
+					DrawString(x + 11, y, STR_7065, 0);
+				} else {
+					DrawString(x + 11, y, tbl->legend, 0);
+				}
 
 				tbl += 1;
 				y += 6;

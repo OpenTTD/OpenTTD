@@ -38,6 +38,7 @@
 #include "helpers.hpp"
 #include "table/town_land.h"
 #include "cargotype.h"
+#include "industry.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -4768,6 +4769,9 @@ static void AfterLoadGRFs()
 
 	/* Add all new houses to the house array. */
 	FinaliseHouseArray();
+
+	/* Create dynamic list of industry legends for smallmap_gui.cpp */
+	BuildIndustriesLegend();
 
 	/* Map cargo strings. This is a separate step because cargos are
 	 * loaded before strings... */
