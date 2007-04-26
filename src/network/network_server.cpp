@@ -1115,7 +1115,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 {
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
 	DestType desttype = (DestType)p->Recv_uint8();
-	int dest = p->Recv_uint8();
+	int dest = p->Recv_uint16();
 	char msg[MAX_TEXT_MSG_LEN];
 
 	p->Recv_string(msg, MAX_TEXT_MSG_LEN);

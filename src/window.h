@@ -280,6 +280,11 @@ struct querystr_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(querystr_d));
 
+struct chatquerystr_d : public querystr_d {
+	int dest;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(chatquerystr_d));
+
 struct menu_d {
 	byte item_count;      ///< follow_vehicle
 	byte sel_index;       ///< scrollpos_x

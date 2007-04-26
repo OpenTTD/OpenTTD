@@ -1469,7 +1469,7 @@ void ShowJoinStatusWindow()
 	if (w != NULL) w->parent = FindWindowById(WC_NETWORK_WINDOW, 0);
 }
 
-static void SendChat(const char *buf, DestType type, byte dest)
+static void SendChat(const char *buf, DestType type, int dest)
 {
 	if (buf[0] == '\0') return;
 	if (!_network_server) {
@@ -1533,7 +1533,7 @@ static char *ChatTabCompletionFindText(char *buf)
 static void ChatTabCompletion(Window *w)
 {
 	static char _chat_tab_completion_buf[lengthof(_edit_str_buf)];
-	Textbuf *tb = &WP(w, querystr_d).text;
+	Textbuf *tb = &WP(w, chatquerystr_d).text;
 	uint len, tb_len;
 	uint item;
 	char *tb_buf, *pre_buf;
@@ -1591,7 +1591,7 @@ static void ChatTabCompletion(Window *w)
 			}
 
 			/* Update the textbuffer */
-			UpdateTextBufferSize(&WP(w, querystr_d).text);
+			UpdateTextBufferSize(&WP(w, chatquerystr_d).text);
 
 			SetWindowDirty(w);
 			free(pre_buf);
@@ -1605,17 +1605,17 @@ static void ChatTabCompletion(Window *w)
 		_chat_tab_completion_active = false;
 
 		/* Update the textbuffer */
-		UpdateTextBufferSize(&WP(w, querystr_d).text);
+		UpdateTextBufferSize(&WP(w, chatquerystr_d).text);
 
 		SetWindowDirty(w);
 	}
 	free(pre_buf);
 }
 
-/* uses querystr_d WP macro
- * uses querystr_d->caption to store
- * - type of chat message (Private/Team/All) in bytes 0-7
- * - destination of chat message in the case of Team/Private in bytes 8-15 */
+/*
+ * uses chatquerystr_d WP macro
+ * uses chatquerystr_d->caption to store type of chat message (Private/Team/All)
+ */
 static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -1634,25 +1634,25 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 
-		assert(GB(WP(w, querystr_d).caption, 0, 8) < lengthof(chat_captions));
-		msg = chat_captions[GB(WP(w, querystr_d).caption, 0, 8)];
+		assert(WP(w, chatquerystr_d).caption < lengthof(chat_captions));
+		msg = chat_captions[WP(w, chatquerystr_d).caption];
 		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, msg, 16);
-		DrawEditBox(w, &WP(w, querystr_d), 2);
+		DrawEditBox(w, &WP(w, chatquerystr_d), 2);
 	} break;
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 			case 3: { /* Send */
-				DestType type = (DestType)GB(WP(w, querystr_d).caption, 0, 8);
-				byte dest = GB(WP(w, querystr_d).caption, 8, 8);
-				SendChat(WP(w, querystr_d).text.buf, type, dest);
+				DestType type = (DestType)WP(w, chatquerystr_d).caption;
+				int dest = WP(w, chatquerystr_d).dest;
+				SendChat(WP(w, chatquerystr_d).text.buf, type, dest);
 			} /* FALLTHROUGH */
 			case 0: /* Cancel */ DeleteWindow(w); break;
 		}
 		break;
 
 	case WE_MOUSELOOP:
-		HandleEditBox(w, &WP(w, querystr_d), 2);
+		HandleEditBox(w, &WP(w, chatquerystr_d), 2);
 		break;
 
 	case WE_KEYPRESS:
@@ -1660,11 +1660,11 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 			ChatTabCompletion(w);
 		} else {
 			_chat_tab_completion_active = false;
-			switch (HandleEditBoxKey(w, &WP(w, querystr_d), 2, e)) {
+			switch (HandleEditBoxKey(w, &WP(w, chatquerystr_d), 2, e)) {
 				case 1: { /* Return */
-				DestType type = (DestType)GB(WP(w, querystr_d).caption, 0, 8);
-				byte dest = GB(WP(w, querystr_d).caption, 8, 8);
-				SendChat(WP(w, querystr_d).text.buf, type, dest);
+				DestType type = (DestType)WP(w, chatquerystr_d).caption;
+				int dest = WP(w, chatquerystr_d).dest;
+				SendChat(WP(w, chatquerystr_d).text.buf, type, dest);
 			} /* FALLTHROUGH */
 				case 2: /* Escape */ DeleteWindow(w); break;
 			}
@@ -1694,7 +1694,7 @@ static const WindowDesc _chat_window_desc = {
 	ChatWindowWndProc
 };
 
-void ShowNetworkChatQueryWindow(DestType type, byte dest)
+void ShowNetworkChatQueryWindow(DestType type, int dest)
 {
 	Window *w;
 
@@ -1706,9 +1706,10 @@ void ShowNetworkChatQueryWindow(DestType type, byte dest)
 	w = AllocateWindowDesc(&_chat_window_desc);
 
 	LowerWindowWidget(w, 2);
-	WP(w, querystr_d).caption = GB(type, 0, 8) | (dest << 8); // Misuse of caption
-	WP(w, querystr_d).afilter = CS_ALPHANUMERAL;
-	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), 0);
+	WP(w, chatquerystr_d).caption = type; // Misuse of caption
+	WP(w, chatquerystr_d).dest    = dest;
+	WP(w, chatquerystr_d).afilter = CS_ALPHANUMERAL;
+	InitializeTextBuffer(&WP(w, chatquerystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), 0);
 }
 
 #endif /* ENABLE_NETWORK */

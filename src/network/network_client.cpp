@@ -184,7 +184,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	// Data:
 	//    uint8:  ActionID (see network_data.h, NetworkAction)
 	//    uint8:  Destination Type (see network_data.h, DestType);
-	//    uint8:  Destination Player (1..MAX_PLAYERS)
+	//    uint16: Destination Player
 	//    String: Message (max MAX_TEXT_MSG_LEN)
 	//
 
@@ -192,7 +192,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 
 	p->Send_uint8 (action);
 	p->Send_uint8 (type);
-	p->Send_uint8 (dest);
+	p->Send_uint16(dest);
 	p->Send_string(msg);
 	MY_CLIENT->Send_Packet(p);
 }
