@@ -682,17 +682,12 @@ struct SizeRect {
 };
 
 
-static SizeRect _awap_r;
-
-static bool IsGoodAutoPlace1(int left, int top)
+static bool IsGoodAutoPlace1(int left, int top, int width, int height, Point &pos)
 {
-	int right,bottom;
 	Window* const *wz;
 
-	_awap_r.left= left;
-	_awap_r.top = top;
-	right = _awap_r.width + left;
-	bottom = _awap_r.height + top;
+	int right  = width + left;
+	int bottom = height + top;
 
 	if (left < 0 || top < 22 || right > _screen.width || bottom > _screen.height)
 		return false;
@@ -710,18 +705,14 @@ static bool IsGoodAutoPlace1(int left, int top)
 		}
 	}
 
+	pos.x = left;
+	pos.y = top;
 	return true;
 }
 
-static bool IsGoodAutoPlace2(int left, int top)
+static bool IsGoodAutoPlace2(int left, int top, int width, int height, Point &pos)
 {
-	int width,height;
 	Window* const *wz;
-
-	_awap_r.left= left;
-	_awap_r.top = top;
-	width = _awap_r.width;
-	height = _awap_r.height;
 
 	if (left < -(width>>2) || left > _screen.width - (width>>1)) return false;
 	if (top < 22 || top > _screen.height - (height>>2)) return false;
@@ -739,6 +730,8 @@ static bool IsGoodAutoPlace2(int left, int top)
 		}
 	}
 
+	pos.x = left;
+	pos.y = top;
 	return true;
 }
 
@@ -747,39 +740,36 @@ static Point GetAutoPlacePosition(int width, int height)
 	Window* const *wz;
 	Point pt;
 
-	_awap_r.width = width;
-	_awap_r.height = height;
-
-	if (IsGoodAutoPlace1(0, 24)) goto ok_pos;
+	if (IsGoodAutoPlace1(0, 24, width, height, pt)) return pt;
 
 	FOR_ALL_WINDOWS(wz) {
 		const Window *w = *wz;
 		if (w->window_class == WC_MAIN_WINDOW) continue;
 
-		if (IsGoodAutoPlace1(w->left+w->width+2,w->top)) goto ok_pos;
-		if (IsGoodAutoPlace1(w->left-   width-2,w->top)) goto ok_pos;
-		if (IsGoodAutoPlace1(w->left,w->top+w->height+2)) goto ok_pos;
-		if (IsGoodAutoPlace1(w->left,w->top-   height-2)) goto ok_pos;
-		if (IsGoodAutoPlace1(w->left+w->width+2,w->top+w->height-height)) goto ok_pos;
-		if (IsGoodAutoPlace1(w->left-   width-2,w->top+w->height-height)) goto ok_pos;
-		if (IsGoodAutoPlace1(w->left+w->width-width,w->top+w->height+2)) goto ok_pos;
-		if (IsGoodAutoPlace1(w->left+w->width-width,w->top-   height-2)) goto ok_pos;
+		if (IsGoodAutoPlace1(w->left + w->width + 2, w->top, width, height, pt)) return pt;
+		if (IsGoodAutoPlace1(w->left - width - 2,    w->top, width, height, pt)) return pt;
+		if (IsGoodAutoPlace1(w->left, w->top + w->height + 2, width, height, pt)) return pt;
+		if (IsGoodAutoPlace1(w->left, w->top - height - 2,    width, height, pt)) return pt;
+		if (IsGoodAutoPlace1(w->left + w->width + 2, w->top + w->height - height, width, height, pt)) return pt;
+		if (IsGoodAutoPlace1(w->left - width - 2,    w->top + w->height - height, width, height, pt)) return pt;
+		if (IsGoodAutoPlace1(w->left + w->width - width, w->top + w->height + 2, width, height, pt)) return pt;
+		if (IsGoodAutoPlace1(w->left + w->width - width, w->top - height - 2,    width, height, pt)) return pt;
 	}
 
 	FOR_ALL_WINDOWS(wz) {
 		const Window *w = *wz;
 		if (w->window_class == WC_MAIN_WINDOW) continue;
 
-		if (IsGoodAutoPlace2(w->left+w->width+2,w->top)) goto ok_pos;
-		if (IsGoodAutoPlace2(w->left-   width-2,w->top)) goto ok_pos;
-		if (IsGoodAutoPlace2(w->left,w->top+w->height+2)) goto ok_pos;
-		if (IsGoodAutoPlace2(w->left,w->top-   height-2)) goto ok_pos;
+		if (IsGoodAutoPlace2(w->left + w->width + 2, w->top, width, height, pt)) return pt;
+		if (IsGoodAutoPlace2(w->left - width - 2,    w->top, width, height, pt)) return pt;
+		if (IsGoodAutoPlace2(w->left, w->top + w->height + 2, width, height, pt)) return pt;
+		if (IsGoodAutoPlace2(w->left, w->top - height - 2,    width, height, pt)) return pt;
 	}
 
 	{
-		int left=0,top=24;
+		int left = 0, top = 24;
 
-restart:;
+restart:
 		FOR_ALL_WINDOWS(wz) {
 			const Window *w = *wz;
 
@@ -794,11 +784,6 @@ restart:;
 		pt.y = top;
 		return pt;
 	}
-
-ok_pos:;
-	pt.x = _awap_r.left;
-	pt.y = _awap_r.top;
-	return pt;
 }
 
 static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number)
