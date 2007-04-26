@@ -2916,6 +2916,21 @@ static void GraphicsNew(byte *buf, int len)
 	}
 }
 
+/* Action 0x05 (SKIP) */
+static void SkipAct5(byte *buf, int len)
+{
+	if (!check_length(len, 2, "SkipAct5")) return;
+	buf++;
+
+	/* Ignore type byte */
+	grf_load_byte(&buf);
+
+	/* Skip the sprites of this action */
+	_skip_sprites = grf_load_extended(&buf);
+
+	grfmsg(3, "SkipAct5: Skipping %d sprites", _skip_sprites);
+}
+
 static uint32 GetParamVal(byte param, uint32 *cond_val)
 {
 	switch (param) {
@@ -3281,6 +3296,22 @@ static void SpriteReplace(byte *buf, int len)
 			_nfo_line++;
 		}
 	}
+}
+
+/* Action 0x0A (SKIP) */
+static void SkipActA(byte *buf, int len)
+{
+	buf++;
+	uint8 num_sets = grf_load_byte(&buf);
+
+	for (uint i = 0; i < num_sets; i++) {
+		/* Skip the sprites this replaces */
+		_skip_sprites += grf_load_byte(&buf);
+		/* But ignore where they go */
+		grf_load_word(&buf);
+	}
+
+	grfmsg(3, "SkipActA: Skipping %d sprites", _skip_sprites);
 }
 
 /* Action 0x0B */
@@ -4588,12 +4619,12 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x02 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              NewSpriteGroup, },
 		/* 0x03 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              FeatureMapSpriteGroup, },
 		/* 0x04 */ { NULL,     NULL,      NULL,            NULL,           NULL,              FeatureNewName, },
-		/* 0x05 */ { NULL,     NULL,      NULL,            NULL,           NULL,              GraphicsNew, },
+		/* 0x05 */ { SkipAct5, SkipAct5,  SkipAct5,        SkipAct5,       SkipAct5,          GraphicsNew, },
 		/* 0x06 */ { NULL,     NULL,      NULL,            CfgApply,       CfgApply,          CfgApply, },
 		/* 0x07 */ { NULL,     NULL,      NULL,            NULL,           SkipIf,            SkipIf, },
 		/* 0x08 */ { ScanInfo, NULL,      NULL,            GRFInfo,        NULL,              GRFInfo, },
 		/* 0x09 */ { NULL,     NULL,      NULL,            SkipIf,         SkipIf,            SkipIf, },
-		/* 0x0A */ { NULL,     NULL,      NULL,            NULL,           NULL,              SpriteReplace, },
+		/* 0x0A */ { SkipActA, SkipActA,  SkipActA,        SkipActA,       SkipActA,          SpriteReplace, },
 		/* 0x0B */ { NULL,     NULL,      NULL,            GRFLoadError,   GRFLoadError,      GRFLoadError, },
 		/* 0x0C */ { NULL,     NULL,      NULL,            GRFComment,     NULL,              GRFComment, },
 		/* 0x0D */ { NULL,     SafeParamSet, NULL,         ParamSet,       ParamSet,          ParamSet, },
