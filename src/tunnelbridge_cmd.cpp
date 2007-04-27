@@ -639,10 +639,11 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	if (!CheckAllowRemoveTunnelBridge(tile)) return CMD_ERROR;
 
 	endtile = GetOtherBridgeEnd(tile);
+	byte bridge_height = GetBridgeHeight(tile);
 
-	if (!EnsureNoVehicleOnGround(tile) ||
-			!EnsureNoVehicleOnGround(endtile) ||
-			IsVehicleOnBridge(tile, endtile, GetBridgeHeight(tile))) {
+	if (FindVehicleOnTileZ(tile, bridge_height) != NULL ||
+			FindVehicleOnTileZ(endtile, bridge_height) != NULL ||
+			IsVehicleOnBridge(tile, endtile, bridge_height)) {
 		return CMD_ERROR;
 	}
 
@@ -743,10 +744,11 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 		endtile = GetOtherBridgeEnd(tile);
+		byte bridge_height = GetBridgeHeight(tile);
 
-		if (!EnsureNoVehicleOnGround(tile) ||
-				!EnsureNoVehicleOnGround(endtile) ||
-				IsVehicleOnBridge(tile, endtile, GetBridgeHeight(tile))) {
+		if (FindVehicleOnTileZ(tile, bridge_height) != NULL ||
+				FindVehicleOnTileZ(endtile, bridge_height) != NULL ||
+				IsVehicleOnBridge(tile, endtile, bridge_height)) {
 			return CMD_ERROR;
 		}
 
