@@ -54,6 +54,11 @@ static void TownPoolNewBlock(uint start_item)
 /* Initialize the town-pool */
 DEFINE_OLD_POOL(Town, Town, TownPoolNewBlock, NULL)
 
+/**
+ * Removes a specific town as well as all industries
+ * under its "juridiction"
+ * @param t Town to remove
+ */
 void DestroyTown(Town *t)
 {
 	Industry *i;
@@ -120,6 +125,11 @@ uint OriginalTileRandomiser(uint x, uint y)
 	return variant;
 }
 
+/**
+ * House Tile drawing handler.
+ * Part of the tile loop process
+ * @param ti TileInfo of the tile to draw
+ */
 static void DrawTile_Town(TileInfo *ti)
 {
 	const DrawBuildingsTileStruct *dcts;
@@ -187,6 +197,12 @@ static Slope GetSlopeTileh_Town(TileIndex tile, Slope tileh)
 	return SLOPE_FLAT;
 }
 
+/**
+ * Animate a tile for a town
+ * Only certain houses can be animated
+ * The newhouses animation superseeds regular ones
+ * @param tile TileIndex of the house to animate
+ */
 static void AnimateTile_Town(TileIndex tile)
 {
 	int pos, dest;
@@ -233,6 +249,12 @@ static void AnimateTile_Town(TileIndex tile)
 
 static void UpdateTownRadius(Town *t);
 
+/**
+ * Determines if a town is close to a tile
+ * @param tile TileIndex of the tile to query
+ * @param dist maximum distance to be accepted
+ * @returns true if the tile correspond to the distance criteria
+ */
 static bool IsCloseToTown(TileIndex tile, uint dist)
 {
 	const Town* t;
@@ -243,6 +265,10 @@ static bool IsCloseToTown(TileIndex tile, uint dist)
 	return false;
 }
 
+/**
+ * Marks the town sign as needing a repaint
+ * @param t Town requesting repaint
+ */
 static void MarkTownSignDirty(Town *t)
 {
 	MarkAllViewportsDirty(
@@ -253,6 +279,11 @@ static void MarkTownSignDirty(Town *t)
 	);
 }
 
+/**
+ * Resize the sign(label) of the town after changes in
+ * population (creation or growth or else)
+ * @param t Town to update
+ */
 void UpdateTownVirtCoord(Town *t)
 {
 	Point pt;
@@ -266,6 +297,11 @@ void UpdateTownVirtCoord(Town *t)
 	MarkTownSignDirty(t);
 }
 
+/**
+ * Change the towns population
+ * @param t Town which polulation has changed
+ * @param mod polulation change (can be positive or negative)
+ */
 static void ChangePopulation(Town *t, int mod)
 {
 	t->population += mod;
@@ -275,6 +311,11 @@ static void ChangePopulation(Town *t, int mod)
 	if (_town_sort_order & 2) _town_sort_dirty = true;
 }
 
+/**
+ * Determines the world population
+ * Basically, count population of all towns, one by one
+ * @return uint32 the calculated population of the world
+ */
 uint32 GetWorldPopulation()
 {
 	uint32 pop;
@@ -285,15 +326,22 @@ uint32 GetWorldPopulation()
 	return pop;
 }
 
+/**
+ * Helper function for house completion stages progression
+ * @param tile TileIndex of the house (or parts of it) to "grow"
+ */
 static void MakeSingleHouseBigger(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_HOUSE));
 
+	/* means it is completed, get out. */
 	if (LiftHasDestination(tile)) return;
 
+	/* progress in construction stages */
 	IncHouseConstructionTick(tile);
 	if (GetHouseConstructionTick(tile) != 0) return;
 
+	/* Check and/or  */
 	if (HASBIT(GetHouseSpecs(GetHouseType(tile))->callback_mask, CBM_CONSTRUCTION_STATE_CHANGE)) {
 		uint16 callback_res = GetHouseCallback(CBID_CONSTRUCTION_STATE_CHANGE, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(tile, callback_res);
@@ -307,6 +355,9 @@ static void MakeSingleHouseBigger(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
+/** Make the house advances in its construction stages until completion
+ * @param tile TileIndex of house
+ */
 static void MakeTownHouseBigger(TileIndex tile)
 {
 	uint flags = GetHouseSpecs(GetHouseType(tile))->building_flags;
@@ -316,6 +367,10 @@ static void MakeTownHouseBigger(TileIndex tile)
 	if (flags & BUILDING_HAS_4_TILES) MakeSingleHouseBigger(TILE_ADDXY(tile, 1, 1));
 }
 
+/**
+ * Periodic tic handler for houses and town
+ * @param tile been asked to do its stuff
+ */
 static void TileLoop_Town(TileIndex tile)
 {
 	Town *t;
@@ -334,7 +389,11 @@ static void TileLoop_Town(TileIndex tile)
 	}
 
 	/* If the lift has a destination, it is already an animated tile. */
-	if ((hs->building_flags & BUILDING_IS_ANIMATED) && house_id < NEW_HOUSE_OFFSET && !LiftHasDestination(tile) && CHANCE16(1, 2)) AddAnimatedTile(tile);
+	if ((hs->building_flags & BUILDING_IS_ANIMATED) &&
+			house_id < NEW_HOUSE_OFFSET &&
+			!LiftHasDestination(tile) &&
+			CHANCE16(1, 2))
+		AddAnimatedTile(tile);
 
 	t = GetTownByTile(tile);
 
@@ -362,7 +421,10 @@ static void TileLoop_Town(TileIndex tile)
 
 	_current_player = OWNER_TOWN;
 
-	if (hs->building_flags & BUILDING_HAS_1_TILE && HASBIT(t->flags12, TOWN_IS_FUNDED) && CanDeleteHouse(tile) && --t->time_until_rebuild == 0) {
+	if (hs->building_flags & BUILDING_HAS_1_TILE &&
+			HASBIT(t->flags12, TOWN_IS_FUNDED) &&
+			CanDeleteHouse(tile) &&
+			--t->time_until_rebuild == 0) {
 		t->time_until_rebuild = GB(r, 16, 8) + 192;
 
 		ClearTownHouse(t, tile);
@@ -374,6 +436,10 @@ static void TileLoop_Town(TileIndex tile)
 	_current_player = OWNER_NONE;
 }
 
+/**
+ * Unused handler
+ * @param tile unused
+ */
 static void ClickTile_Town(TileIndex tile)
 {
 	/* not used */
