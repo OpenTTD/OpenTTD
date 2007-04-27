@@ -276,7 +276,7 @@ static const AirportMovingData _airport_moving_data_intercontinental[77] = {
 	{  136,   96, AMED_HELI_LOWER,                 {DIR_N} }, // 56 Land in front of hangar2
 	{  126,  104, 0,                               {DIR_SE} }, // 57 Outway 2
 	{  136,  136, 0,                               {DIR_NE} }, // 58 Airport OUTWAY 2
-	{  136,  152, AMED_EXACTPOS,                   {DIR_SW} }, // 59 Accelerate to end of runway2
+	{  136,  152, AMED_EXACTPOS,                   {DIR_NE} }, // 59 Accelerate to end of runway2
 	{   16,  152, AMED_NOSPDCLAMP,                 {DIR_N} }, // 60 Release control of runway2, for smoother movement
 	{   20,  152, AMED_NOSPDCLAMP,                 {DIR_N} }, // 61 End of runway2
 	{  -56,  152, AMED_NOSPDCLAMP | AMED_TAKEOFF,  {DIR_N} }, // 62 Take off2
