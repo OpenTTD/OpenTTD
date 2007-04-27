@@ -3764,7 +3764,7 @@ static void ParamSet(byte *buf, int len)
 		case 0x9E: // Miscellaneous GRF features
 			_misc_grf_features = res;
 			/* Set train list engine width */
-			_traininfo_vehicle_width = HASBIT(res, 3) ? 32 : 29;
+			_traininfo_vehicle_width = HasGrfMiscBit(GMB_TRAIN_WIDTH_32_PIXELS) ? 32 : 29;
 			break;
 
 		default:
@@ -4810,4 +4810,9 @@ void LoadNewGRF(uint load_index, uint file_index)
 
 	/* Call any functions that should be run after GRFs have been loaded. */
 	AfterLoadGRFs();
+}
+
+bool HasGrfMiscBit(GrfMiscBit bit)
+{
+	return HASBIT(_misc_grf_features, bit);
 }

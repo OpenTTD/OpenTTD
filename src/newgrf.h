@@ -23,6 +23,14 @@ enum GrfLoadingStage {
 
 DECLARE_POSTFIX_INCREMENT(GrfLoadingStage);
 
+enum GrfMiscBit {
+	GMB_DESERT_TREES_FIELDS    = 0, // Unsupported.
+	GMB_DESERT_PAVED_ROADS     = 1,
+	GMB_FIELD_BOUNDING_BOX     = 2, // Unsupported.
+	GMB_TRAIN_WIDTH_32_PIXELS  = 3,
+	GMB_AMBIENT_SOUND_CALLBACK = 4, // Unsupported.
+	GMB_CATENARY_ON_3RD_TRACK  = 5, // Unsupported.
+};
 
 struct GRFLabel {
 	byte label;
@@ -84,5 +92,7 @@ void LoadNewGRF(uint load_index, uint file_index);
 void ReloadNewGRFData(); // in openttd.cpp
 
 void CDECL grfmsg(int severity, const char *str, ...);
+
+bool HasGrfMiscBit(GrfMiscBit bit);
 
 #endif /* NEWGRF_H */

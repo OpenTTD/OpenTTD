@@ -26,6 +26,7 @@
 #include "sound.h"
 #include "yapf/yapf.h"
 #include "depot.h"
+#include "newgrf.h"
 
 
 static uint CountRoadBits(RoadBits r)
@@ -662,6 +663,23 @@ const byte _road_sloped_sprites[14] = {
 };
 
 /**
+ * Whether to draw unpaved roads regardless of the town zone.
+ * By default, OpenTTD always draws roads as unpaved if they are on a desert
+ * tile or above the snowline. Newgrf files, however, can set a bit that allows
+ * paved roads to be built on desert tiles as they would be on grassy tiles.
+ *
+ * @param tile The tile the road is on
+ * @param roadside What sort of road this is
+ * @return True if the road should be drawn unpaved regardless of the roadside.
+ */
+static bool AlwaysDrawUnpavedRoads(TileIndex tile, Roadside roadside)
+{
+	return (IsOnSnow(tile) &&
+			!(_opt.landscape == LT_TROPIC && HasGrfMiscBit(GMB_DESERT_PAVED_ROADS) &&
+				roadside != ROADSIDE_BARREN && roadside != ROADSIDE_GRASS && roadside != ROADSIDE_GRASS_ROAD_WORKS));
+}
+
+/**
  * Draw ground sprite and road pieces
  * @param ti TileInfo
  */
@@ -687,7 +705,7 @@ static void DrawRoadBits(TileInfo* ti)
 
 	roadside = GetRoadside(ti->tile);
 
-	if (IsOnSnow(ti->tile)) {
+	if (AlwaysDrawUnpavedRoads(ti->tile, roadside)) {
 		image += 19;
 	} else {
 		switch (roadside) {
@@ -729,6 +747,7 @@ static void DrawTile_Road(TileInfo *ti)
 		case ROAD_TILE_CROSSING: {
 			SpriteID image;
 			SpriteID pal = PAL_NONE;
+			Roadside roadside = GetRoadside(ti->tile);
 
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
@@ -737,10 +756,10 @@ static void DrawTile_Road(TileInfo *ti)
 			if (GetCrossingRoadAxis(ti->tile) == AXIS_X) image++;
 			if (IsCrossingBarred(ti->tile)) image += 2;
 
-			if (IsOnSnow(ti->tile)) {
+			if (AlwaysDrawUnpavedRoads(ti->tile, roadside)) {
 				image += 8;
 			} else {
-				switch (GetRoadside(ti->tile)) {
+				switch (roadside) {
 					case ROADSIDE_BARREN: pal = PALETTE_TO_BARE_LAND; break;
 					case ROADSIDE_GRASS:  break;
 					default:              image += 4; break; // Paved
