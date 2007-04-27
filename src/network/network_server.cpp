@@ -101,7 +101,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		p->Send_uint16(_network_player_info[player->index].performance);
 
 		/* Send 1 if there is a passord for the company else send 0 */
-		p->Send_bool(StrEmpty(_network_player_info[player->index].password));
+		p->Send_bool(!StrEmpty(_network_player_info[player->index].password));
 
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
 			p->Send_uint16(_network_player_info[player->index].num_vehicle[i]);
