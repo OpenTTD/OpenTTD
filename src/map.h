@@ -7,29 +7,41 @@
 
 #include "stdafx.h"
 
-/* Putting externs inside inline functions seems to confuse the aliasing
- * checking on MSVC6. Never use those variables directly. */
-extern uint _map_log_x;
-extern uint _map_size_x;
-extern uint _map_size_y;
 extern uint _map_tile_mask;
-extern uint _map_size;
+
+/**
+ * 'Wraps' the given tile to it is within the map. It does
+ * this by masking the 'high' bits of.
+ * @param x the tile to 'wrap'
+ */
 
 #define TILE_MASK(x) ((x) & _map_tile_mask)
+/**
+ * Asserts when the tile is outside of the map.
+ * @param x the tile to check
+ */
 #define TILE_ASSERT(x) assert(TILE_MASK(x) == (x));
 
+/**
+ * Data that is stored per tile. Also used TileExtended for this.
+ * Look at docs/landscape.html for the exact meaning of the members.
+ */
 struct Tile {
-	byte type_height;
-	byte m1;
-	uint16 m2;
-	byte m3;
-	byte m4;
-	byte m5;
-	byte m6;
+	byte type_height; ///< The type (bits 4..7) and height of the northern corner
+	byte m1;   ///< Primarily used for ownership information
+	uint16 m2; ///< Primarily used for indices to towns, industries and stations
+	byte m3;   ///< General purpose
+	byte m4;   ///< General purpose
+	byte m5;   ///< General purpose
+	byte m6;   ///< Primarily used for bridges and rainforest/desert
 };
 
+/**
+ * Data that is stored per tile. Also used Tile for this.
+ * Look at docs/landscape.html for the exact meaning of the members.
+ */
 struct TileExtended {
-	byte m7;
+	byte m7; ///< Primarily used for newgrf support
 };
 
 extern Tile *_m;
@@ -37,16 +49,64 @@ extern TileExtended *_me;
 
 void AllocateMap(uint size_x, uint size_y);
 
-/* binary logarithm of the map size, try to avoid using this one */
-static inline uint MapLogX()  { return _map_log_x; }
-/* The size of the map */
-static inline uint MapSizeX() { return _map_size_x; }
-static inline uint MapSizeY() { return _map_size_y; }
-/* The maximum coordinates */
-static inline uint MapMaxX() { return _map_size_x - 1; }
-static inline uint MapMaxY() { return _map_size_y - 1; }
-/* The number of tiles in the map */
-static inline uint MapSize() { return _map_size; }
+/**
+ * Logarithm of the map size along the X side.
+ * @note try to avoid using this one
+ * @return 2^"return value" == MapSizeX()
+ */
+static inline uint MapLogX()
+{
+	extern uint _map_log_x;
+	return _map_log_x;
+}
+
+/**
+ * Get the size of the map along the X
+ * @return the number of tiles along the X of the map
+ */
+static inline uint MapSizeX()
+{
+	extern uint _map_size_x;
+	return _map_size_x;
+}
+
+/**
+ * Get the size of the map along the Y
+ * @return the number of tiles along the Y of the map
+ */
+static inline uint MapSizeY()
+{
+	extern uint _map_size_y;
+	return _map_size_y;
+}
+
+/**
+ * Get the size of the map
+ * @return the number of tiles of the map
+ */
+static inline uint MapSize()
+{
+	extern uint _map_size;
+	return _map_size;
+}
+
+/**
+ * Gets the maximum X coordinate within the map, including MP_VOID
+ * @return the maximum X coordinate
+ */
+static inline uint MapMaxX()
+{
+	return MapSizeX() - 1;
+}
+
+/**
+ * Gets the maximum X coordinate within the map, including MP_VOID
+ * @return the maximum X coordinate
+ */
+static inline uint MapMaxY()
+{
+	return MapSizeY() - 1;
+}
 
 /* Scale a number relative to the map size */
 uint ScaleByMapSize(uint); // Scale relative to the number of tiles
@@ -76,7 +136,7 @@ static inline TileIndex TileVirtXY(uint x, uint y)
 
 
 enum {
-	INVALID_TILE = (TileIndex)-1
+	INVALID_TILE = (TileIndex)-1 ///< The very nice invalid tile marker
 };
 
 enum {
@@ -86,11 +146,21 @@ enum {
 };
 
 
+/**
+ * Get the X component of a tile
+ * @param tile the tile to get the X component of
+ * @return the X component
+ */
 static inline uint TileX(TileIndex tile)
 {
 	return tile & MapMaxX();
 }
 
+/**
+ * Get the Y component of a tile
+ * @param tile the tile to get the Y component of
+ * @return the Y component
+ */
 static inline uint TileY(TileIndex tile)
 {
 	return tile >> MapLogX();

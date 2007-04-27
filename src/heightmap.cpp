@@ -275,6 +275,13 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 	return true;
 }
 
+/**
+ * Converts a given grayscale map to something that fits in OTTD map system
+ * and create a map of that data.
+ * @param img_width  the with of the image in pixels/tiles
+ * @param img_height the height of the image in pixels/tiles
+ * @param map        the input map
+ */
 static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 {
 	/* Defines the detail of the aspect ratio (to avoid doubles) */

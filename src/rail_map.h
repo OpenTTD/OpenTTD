@@ -10,13 +10,21 @@
 #include "tile.h"
 
 
+/** Different types of Rail-related tiles */
 enum RailTileType {
-	RAIL_TILE_NORMAL   = 0,
-	RAIL_TILE_SIGNALS  = 1,
-	RAIL_TILE_WAYPOINT = 2,
-	RAIL_TILE_DEPOT    = 3,
+	RAIL_TILE_NORMAL   = 0, ///< Normal rail tile without signals
+	RAIL_TILE_SIGNALS  = 1, ///< Normal rail tile with signals
+	RAIL_TILE_WAYPOINT = 2, ///< Waypoint (X or Y direction)
+	RAIL_TILE_DEPOT    = 3, ///< Depot (one entrance)
 };
 
+/**
+ * Returns the RailTileType (normal with or without signals,
+ * waypoint or depot).
+ * @param t the tile to get the information from
+ * @pre IsTileType(t, MP_RAILWAY)
+ * @return the RailTileType
+ */
 static inline RailTileType GetRailTileType(TileIndex t)
 {
 	assert(IsTileType(t, MP_RAILWAY));
@@ -26,23 +34,32 @@ static inline RailTileType GetRailTileType(TileIndex t)
 /**
  * Returns whether this is plain rails, with or without signals. Iow, if this
  * tiles RailTileType is RAIL_TILE_NORMAL or RAIL_TILE_SIGNALS.
+ * @param t the tile to get the information from
+ * @pre IsTileType(t, MP_RAILWAY)
+ * @return true if and only if the tile is normal rail (with or without signals)
  */
-static inline bool IsPlainRailTile(TileIndex tile)
+static inline bool IsPlainRailTile(TileIndex t)
 {
-	RailTileType rtt = GetRailTileType(tile);
+	RailTileType rtt = GetRailTileType(t);
 	return rtt == RAIL_TILE_NORMAL || rtt == RAIL_TILE_SIGNALS;
 }
 
 /**
  * Checks if a rail tile has signals.
+ * @param t the tile to get the information from
+ * @pre IsTileType(t, MP_RAILWAY)
+ * @return true if and only if the tile has signals
  */
-static inline bool HasSignals(TileIndex tile)
+static inline bool HasSignals(TileIndex t)
 {
-	return GetRailTileType(tile) == RAIL_TILE_SIGNALS;
+	return GetRailTileType(t) == RAIL_TILE_SIGNALS;
 }
 
 /**
  * Add/remove the 'has signal' bit from the RailTileType
+ * @param tile the tile to add/remove the signals to/from
+ * @param signals whether the rail tile should have signals or not
+ * @pre IsPlainRailTile(tile)
  */
 static inline void SetHasSignals(TileIndex tile, bool signals)
 {
@@ -50,81 +67,144 @@ static inline void SetHasSignals(TileIndex tile, bool signals)
 	SB(_m[tile].m5, 6, 1, signals);
 }
 
-
+/**
+ * Is this tile a rail depot?
+ * @param t the tile to get the information from
+ * @pre IsTileType(t, MP_RAILWAY)
+ * @return true if and only if the tile is a rail depot
+ */
 static inline bool IsRailDepot(TileIndex t)
 {
 	return GetRailTileType(t) == RAIL_TILE_DEPOT;
 }
 
-
+/**
+ * Is this tile a rail waypoint?
+ * @param t the tile to get the information from
+ * @pre IsTileType(t, MP_RAILWAY)
+ * @return true if and only if the tile is a rail waypoint
+ */
 static inline bool IsRailWaypoint(TileIndex t)
 {
 	return GetRailTileType(t) == RAIL_TILE_WAYPOINT;
 }
 
 
+/**
+ * Gets the rail type of the given tile
+ * @param t the tile to get the rail type from
+ * @return the rail type of the tile
+ */
 static inline RailType GetRailType(TileIndex t)
 {
 	return (RailType)GB(_m[t].m3, 0, 4);
 }
 
+/**
+ * Sets the track bits of the given tile
+ * @param t the tile to set the track bits of
+ * @param r the new track bits for the tile
+ */
 static inline void SetRailType(TileIndex t, RailType r)
 {
 	SB(_m[t].m3, 0, 4, r);
 }
 
 
+/**
+ * Gets the rail type of the given tile
+ * @param t the tile to get the rail type from
+ * @return the rail type of the tile
+ */
 static inline TrackBits GetTrackBits(TileIndex tile)
 {
 	return (TrackBits)GB(_m[tile].m5, 0, 6);
 }
 
+/**
+ * Sets the track bits of the given tile
+ * @param t the tile to set the track bits of
+ * @param b the new track bits for the tile
+ */
 static inline void SetTrackBits(TileIndex t, TrackBits b)
 {
 	SB(_m[t].m5, 0, 6, b);
 }
 
 /**
- * Returns whether the given track is present on the given tile. Tile must be
- * a plain rail tile (IsPlainRailTile()).
+ * Returns whether the given track is present on the given tile.
+ * @param tile  the tile to check the track presence of
+ * @param track the track to search for on the tile
+ * @pre IsPlainRailTile(tile)
+ * @return true if and only if the given track exists on the tile
  */
 static inline bool HasTrack(TileIndex tile, Track track)
 {
 	return HASBIT(GetTrackBits(tile), track);
 }
 
-
+/**
+ * Returns the direction the depot is facing to
+ * @param t the tile to get the depot facing from
+ * @pre IsRailDepotTile(t)
+ * @return the direction the depot is facing
+ */
 static inline DiagDirection GetRailDepotDirection(TileIndex t)
 {
 	return (DiagDirection)GB(_m[t].m5, 0, 2);
 }
 
 
+/**
+ * Returns the axis of the waypoint
+ * @param t the tile to get the waypoint axis from
+ * @pre IsRailWaypointTile(t)
+ * @return the axis of the waypoint
+ */
 static inline Axis GetWaypointAxis(TileIndex t)
 {
 	return (Axis)GB(_m[t].m5, 0, 1);
 }
 
+/**
+ * Returns the track of the waypoint
+ * @param t the tile to get the waypoint track from
+ * @pre IsRailWaypointTile(t)
+ * @return the track of the waypoint
+ */
 static inline Track GetRailWaypointTrack(TileIndex t)
 {
 	return AxisToTrack(GetWaypointAxis(t));
 }
 
+/**
+ * Returns the track bits of the waypoint
+ * @param t the tile to get the waypoint track bits from
+ * @pre IsRailWaypointTile(t)
+ * @return the track bits of the waypoint
+ */
 static inline TrackBits GetRailWaypointBits(TileIndex t)
 {
 	return TrackToTrackBits(GetRailWaypointTrack(t));
 }
 
+/**
+ * Returns waypoint index (for the waypoint pool)
+ * @param t the tile to get the waypoint index from
+ * @pre IsRailWaypointTile(t)
+ * @return the waypoint index
+ */
 static inline WaypointID GetWaypointIndex(TileIndex t)
 {
 	return (WaypointID)_m[t].m2;
 }
 
+/** Type of signal, i.e. how does the signal behave? */
 enum SignalType {
-	SIGTYPE_NORMAL  = 0, // normal signal
-	SIGTYPE_ENTRY   = 1, // presignal block entry
-	SIGTYPE_EXIT    = 2, // presignal block exit
-	SIGTYPE_COMBO   = 3  // presignal inter-block
+	SIGTYPE_NORMAL  = 0, ///< normal signal
+	SIGTYPE_ENTRY   = 1, ///< presignal block entry
+	SIGTYPE_EXIT    = 2, ///< presignal block exit
+	SIGTYPE_COMBO   = 3  ///< presignal inter-block
 };
 
 static inline SignalType GetSignalType(TileIndex t)
@@ -160,10 +240,10 @@ static inline void CycleSignalSide(TileIndex t, Track track)
 	SB(_m[t].m3, pos, 2, sig);
 }
 
-
+/** Variant of the signal, i.e. how does the signal look? */
 enum SignalVariant {
-	SIG_ELECTRIC  = 0,
-	SIG_SEMAPHORE = 1
+	SIG_ELECTRIC  = 0, ///< Light signal
+	SIG_SEMAPHORE = 1  ///< Old-fashioned semaphore signal
 };
 
 static inline SignalVariant GetSignalVariant(TileIndex t)
@@ -186,8 +266,8 @@ static inline bool IsSignalPresent(TileIndex t, byte signalbit)
  * normal boolean evaluation, since that will make future additions easier.
  */
 enum SignalState {
-	SIGNAL_STATE_RED   = 0,
-	SIGNAL_STATE_GREEN = 1,
+	SIGNAL_STATE_RED   = 0, ///< The signal is red
+	SIGNAL_STATE_GREEN = 1, ///< The signal is green
 };
 
 static inline SignalState GetSingleSignalState(TileIndex t, byte signalbit)
@@ -243,21 +323,21 @@ static inline SignalState GetSignalStateByTrackdir(TileIndex tile, Trackdir trac
  */
 RailType GetTileRailType(TileIndex tile);
 
-
+/** The ground 'under' the rail */
 enum RailGroundType {
-	RAIL_GROUND_BARREN       =  0,
-	RAIL_GROUND_GRASS        =  1,
-	RAIL_GROUND_FENCE_NW     =  2,
-	RAIL_GROUND_FENCE_SE     =  3,
-	RAIL_GROUND_FENCE_SENW   =  4,
-	RAIL_GROUND_FENCE_NE     =  5,
-	RAIL_GROUND_FENCE_SW     =  6,
-	RAIL_GROUND_FENCE_NESW   =  7,
-	RAIL_GROUND_FENCE_VERT1  =  8,
-	RAIL_GROUND_FENCE_VERT2  =  9,
-	RAIL_GROUND_FENCE_HORIZ1 = 10,
-	RAIL_GROUND_FENCE_HORIZ2 = 11,
-	RAIL_GROUND_ICE_DESERT   = 12,
+	RAIL_GROUND_BARREN       =  0, ///< Nothing (dirt)
+	RAIL_GROUND_GRASS        =  1, ///< Grassy
+	RAIL_GROUND_FENCE_NW     =  2, ///< Grass with a fence at the NW edge
+	RAIL_GROUND_FENCE_SE     =  3, ///< Grass with a fence at the SE edge
+	RAIL_GROUND_FENCE_SENW   =  4, ///< Grass with a fence at the NW and SE edges
+	RAIL_GROUND_FENCE_NE     =  5, ///< Grass with a fence at the NE edge
+	RAIL_GROUND_FENCE_SW     =  6, ///< Grass with a fence at the SW edge
+	RAIL_GROUND_FENCE_NESW   =  7, ///< Grass with a fence at the NE and SW edges
+	RAIL_GROUND_FENCE_VERT1  =  8, ///< Grass with a fence at the western side
+	RAIL_GROUND_FENCE_VERT2  =  9, ///< Grass with a fence at the eastern side
+	RAIL_GROUND_FENCE_HORIZ1 = 10, ///< Grass with a fence at the southern side
+	RAIL_GROUND_FENCE_HORIZ2 = 11, ///< Grass with a fence at the northern side
+	RAIL_GROUND_ICE_DESERT   = 12, ///< Icy or sandy
 };
 
 static inline void SetRailGroundType(TileIndex t, RailGroundType rgt)
