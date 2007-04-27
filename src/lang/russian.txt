@@ -54,13 +54,11 @@ STR_002C_PLASTIC                                                :Пластик
 STR_002D_FIZZY_DRINKS                                           :Газировка
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Пассажир
-STR_002F_PASSENGER.p                                            :Пассажиры
 STR_0030_COAL                                                   :Уголь
 STR_0031_MAIL                                                   :Почта
 STR_0032_OIL                                                    :Нефть
 STR_0033_LIVESTOCK                                              :Скот
 STR_0034_GOODS                                                  :Товар
-STR_0034_GOODS.p                                                :Товары
 STR_0035_GRAIN                                                  :Зерно
 STR_0036_WOOD                                                   :Дерево
 STR_0037_IRON_ORE                                               :Железная руда
@@ -1115,13 +1113,13 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Не д
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Включить новый AI (альфа-версия): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Разрешить появление AI-конкурентов в сетевой игре: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Интервал обслуживания поездов: {ORANGE}{STRING} дней/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Обслуживание поездов по умолчанию: {ORANGE}кажд{P 1 ый ые ые} {STRING} д{P 1 ень ня ней}/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Обслуживание поездов по умолчанию: {ORANGE}не обслуживаются
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Интервал обслуживания автомобилей: {ORANGE}{STRING} дней/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Обслуживание автотранспорта: {ORANGE}кажд{P 1 ый ые ые} {STRING} д{P 1 ень ня ней}/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Обслуживание автотранспорта: {ORANGE}не обслуживаются
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Интервал обслуживания авиатранспорта: {ORANGE}{STRING} дней/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Обслуживание авиатранспорта: {ORANGE}кажд{P 1 ый ые ые} {STRING} д{P 1 ень ня ней}/%
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Обслуживание авиатранспорта: {ORANGE}не обслуживается
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Интервал обслуживания кораблей: {ORANGE}{STRING} дней/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Обслуживание кораблей: {ORANGE}кажд{P 1 ый ые ые} {STRING} д{P 1 ень ня ней}/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Обслуживание кораблей: {ORANGE}не обслуживаются
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Не обслуживать транспорт, если отключены поломки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Использовать органичение скорости у вагонов (если есть): {ORANGE}{STRING}
@@ -1132,7 +1130,7 @@ STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Год 
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Заканчивать игру: {ORANGE}в {STRING} году
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (частые, небольшие изменения)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Разрешить торговлю акциями других компаний
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При перетаскивании ставить светофоры каждые: {ORANGE}{STRING} клетки
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При установке светофоров линией, ставить кажд{P 1 ую ые ые}: {ORANGE}{STRING} клет{P 1 ку ки ок}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Строить семафоры старого стиля: {ORANGE}до {STRING} года
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :слева
@@ -1775,7 +1773,7 @@ STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Напр
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Ориентация станции
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Сначала удалите автобусную остановку
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Сначала удалите грузовой терминал
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Станции
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Станц{P 2 ия ии ий}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Нет -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...неподходящее место
@@ -2560,7 +2558,7 @@ STR_8815_NEW_VEHICLES                                           :{BLACK}Новы
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Поезд слишком длинный
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Структуру поезда можно менять только в депо
-STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Поезда
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Поезд{P 2 "" а ов}
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Новый поезд
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Новый электропоезд
@@ -2672,7 +2670,7 @@ STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Появ
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Машина на пути
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Автомашин{P а ы ""}
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Автомашин{P 2 а ы ""}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Гараж
 STR_9004_NEW_VEHICLES                                           :{BLACK}Новая машина
@@ -2740,7 +2738,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Стро
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Невозможно построить пристань здесь...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} ДОК
 STR_9804_NEW_SHIPS                                              :{BLACK}Новые корабли
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Корабли
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Корабл{P 2 ь я ей}
 STR_9808_NEW_SHIPS                                              :{WHITE}Новые корабли
 STR_9809_BUILD_SHIP                                             :{BLACK}Купить Корабль
 STR_CLONE_SHIP                                                  :{BLACK}Копировать Судно
@@ -2816,7 +2814,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Пост
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Новый
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Построить
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Невозможно построить возд. транспорт...
-STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Авиатранспорт
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Единиц{P 2 а ы ""} авиатранспорта
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Задания)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Детали)

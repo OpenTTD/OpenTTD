@@ -1270,7 +1270,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Швидка
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Дуже швидка
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Кількість міст, які будуть рости вдвічі швидше: {ORANGE}1 з {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Кількість міст, які будуть рости вдвічі швидше: {ORANGE}нема
-STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Початковий коєффіцієнт розміру міст: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Початковий коефіцієнт розміру міст: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Вигляд
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Споруди
