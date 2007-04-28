@@ -1575,8 +1575,6 @@ again:
 				TileIndex next_tile = TILE_ADD(v->tile, TileOffsByDir(v->direction));
 				RoadStop::Type type = IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK;
 
-				assert(HASBIT(v->u.road.state, RVS_IS_STOPPING));
-
 				/* Check if next inline bay is free */
 				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type)) {
 					RoadStop *rs_n = GetRoadStopByTile(next_tile, type);
