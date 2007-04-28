@@ -10,6 +10,7 @@
 #include "table/sprites.h"
 #include "variables.h"
 #include "thread.h"
+#include "command.h"
 #include "genworld.h"
 #include "gfx.h"
 #include "gfxinit.h"
@@ -152,6 +153,8 @@ static void *_GenerateWorld(void *arg)
 	MarkWholeScreenDirty();
 
 	if (_network_dedicated) DEBUG(net, 0, "Map generated, starting game");
+
+	if (_patches.pause_on_newgame) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 
 	return NULL;
 }

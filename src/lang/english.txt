@@ -1097,6 +1097,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom map
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Map scrollwheel speed: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatically pause when starting a new game: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING1}

@@ -596,6 +596,7 @@ static const char *_patches_ui[] = {
 	 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
 	"scrollwheel_scrolling",
 	"scrollwheel_multiplier",
+	"pause_on_newgame",
 };
 
 static const char *_patches_construction[] = {

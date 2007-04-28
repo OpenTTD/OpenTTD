@@ -229,6 +229,8 @@ struct Patches {
 	uint8 town_growth_rate;  ///< Town growth rate
 	uint8 larger_towns;      ///< The number of cities to build. These start off larger and grow twice as fast
 	uint8 initial_city_size; ///< Multiplier for the initial size of the cities compared to towns
+
+	bool pause_on_newgame;   ///< Whether to start new games paused or not.
 };
 
 VARDEF Patches _patches;

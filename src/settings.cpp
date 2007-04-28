@@ -1323,6 +1323,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, prefer_teamchat,               S, 0, false,        STR_CONFIG_PATCHES_PREFER_TEAMCHAT,       NULL),
 	SDT_VAR(Patches, scrollwheel_scrolling,SLE_UINT8,S,MS, 0,  0,  2, 0, STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING, NULL),
 	SDT_VAR(Patches,scrollwheel_multiplier,SLE_UINT8,S, 0, 5,  1, 15, 1, STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER,NULL),
+	SDT_BOOL(Patches, pause_on_newgame,              S, 0, false,        STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME,     NULL),
 
 	/***************************************************************************/
 	/* Construction section of the GUI-configure patches window */
