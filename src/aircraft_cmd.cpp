@@ -269,7 +269,8 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Vehicle *u = vl[1]; // shadow
 
 		v->unitnumber = unit_num;
-		v->type = u->type = VEH_AIRCRAFT;
+		v = new (v) Aircraft();
+		u = new (u) Aircraft();
 		v->direction = DIR_SE;
 
 		v->owner = u->owner = _current_player;
@@ -404,7 +405,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			u->next = w;
 
-			w->type = VEH_AIRCRAFT;
+			w = new (w) Aircraft();
 			w->direction = DIR_N;
 			w->owner = _current_player;
 			w->x_pos = v->x_pos;

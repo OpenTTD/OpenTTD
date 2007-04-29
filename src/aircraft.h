@@ -115,4 +115,22 @@ void UpdateAirplanesOnNewStation(const Station *st);
  */
 void UpdateAircraftCache(Vehicle *v);
 
+/**
+ * This class 'wraps' Vehicle; you do not actually instantiate this class.
+ * You create a Vehicle using AllocateVehicle, so it is added to the pool
+ * and you reinitialize that to a Train using:
+ *   v = new (v) Aircraft();
+ *
+ * As side-effect the vehicle type is set correctly.
+ */
+struct Aircraft : public Vehicle {
+	/** Initializes the Vehicle to an aircraft */
+	Aircraft() { this->type = VEH_AIRCRAFT; }
+
+	/** We want to 'destruct' the right class. */
+	virtual ~Aircraft() {}
+
+	const char *GetTypeString() { return "aircraft"; }
+};
+
 #endif /* AIRCRAFT_H */

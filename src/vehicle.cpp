@@ -89,7 +89,7 @@ static void VehiclePoolNewBlock(uint start_item)
 	 * TODO - This is just a temporary stage, this will be removed. */
 	for (v = GetVehicle(start_item); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
 		v->index = start_item++;
-		v->type  = VEH_INVALID;
+		v = new (v) InvalidVehicle();
 	}
 }
 
@@ -271,7 +271,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 
 	assert(v->orders == NULL);
 
-	v->type = VEH_INVALID;
+	v = new (v) InvalidVehicle();
 	v->left_coord = INVALID_COORD;
 	v->first = NULL;
 	v->next = NULL;
@@ -1438,7 +1438,7 @@ Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type)
 
 	v = ForceAllocateSpecialVehicle();
 	if (v != NULL) {
-		v->type = VEH_SPECIAL;
+		v = new (v) SpecialVehicle();
 		v->subtype = type;
 		v->x_pos = x;
 		v->y_pos = y;
@@ -2681,17 +2681,17 @@ extern const SaveLoad _common_veh_desc[] = {
 	/* This next line is for version 4 and prior compatibility.. it temporarily reads
 	    type and flags (which were both 4 bits) into type. Later on this is
 	    converted correctly */
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, type), SLE_UINT8,                 0, 4),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, type), SLE_UINT8,                 0, 4),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, dest), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
 
 	/* Orders for version 5 and on */
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, type),  SLE_UINT8,  5, SL_MAX_VERSION),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, flags), SLE_UINT8,  5, SL_MAX_VERSION),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest),  SLE_UINT16, 5, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, type),  SLE_UINT8,  5, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, flags), SLE_UINT8,  5, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, dest),  SLE_UINT16, 5, SL_MAX_VERSION),
 
 	/* Refit in current order */
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, refit_cargo),    SLE_UINT8, 36, SL_MAX_VERSION),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, refit_subtype),  SLE_UINT8, 36, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, refit_cargo),    SLE_UINT8, 36, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, refit_subtype),  SLE_UINT8, 36, SL_MAX_VERSION),
 
 	    SLE_REF(Vehicle, orders,               REF_ORDER),
 
@@ -2738,13 +2738,13 @@ extern const SaveLoad _common_veh_desc[] = {
 static const SaveLoad _train_desc[] = {
 	SLE_WRITEBYTE(Vehicle, type, VEH_TRAIN, 0), // Train type. VEH_TRAIN in mem, 0 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRail, crash_anim_pos),         SLE_UINT16),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRail, force_proceed),          SLE_UINT8),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRail, railtype),               SLE_UINT8),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRail, track),                  SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, crash_anim_pos),         SLE_UINT16),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, force_proceed),          SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, railtype),               SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, track),                  SLE_UINT8),
 
-	SLE_CONDVARX(offsetof(Vehicle, u) + offsetof(VehicleRail, flags),                  SLE_UINT8,  2, SL_MAX_VERSION),
-	SLE_CONDVARX(offsetof(Vehicle, u) + offsetof(VehicleRail, days_since_order_progr), SLE_UINT16, 2, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, flags),                  SLE_UINT8,  2, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, days_since_order_progr), SLE_UINT16, 2, SL_MAX_VERSION),
 
 	SLE_CONDNULL(2, 2, 19),
 	/* reserve extra space in savegame here. (currently 11 bytes) */
@@ -2756,17 +2756,17 @@ static const SaveLoad _train_desc[] = {
 static const SaveLoad _roadveh_desc[] = {
 	SLE_WRITEBYTE(Vehicle, type, VEH_ROAD, 1), // Road type. VEH_ROAD in mem, 1 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRoad, state),          SLE_UINT8),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRoad, frame),          SLE_UINT8),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRoad, blocked_ctr),    SLE_UINT16),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRoad, overtaking),     SLE_UINT8),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRoad, overtaking_ctr), SLE_UINT8),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRoad, crashed_ctr),    SLE_UINT16),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleRoad, reverse_ctr),    SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, state),          SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, frame),          SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, blocked_ctr),    SLE_UINT16),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, overtaking),     SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, overtaking_ctr), SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, crashed_ctr),    SLE_UINT16),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, reverse_ctr),    SLE_UINT8),
 
-	SLE_CONDREFX(offsetof(Vehicle, u) + offsetof(VehicleRoad, slot),     REF_ROADSTOPS, 6, SL_MAX_VERSION),
+	SLE_CONDREFX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, slot),     REF_ROADSTOPS, 6, SL_MAX_VERSION),
 	SLE_CONDNULL(1,                                                                     6, SL_MAX_VERSION),
-	SLE_CONDVARX(offsetof(Vehicle, u) + offsetof(VehicleRoad, slot_age), SLE_UINT8,     6, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, slot_age), SLE_UINT8,     6, SL_MAX_VERSION),
 	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16,                                                                    2, SL_MAX_VERSION),
 
@@ -2776,7 +2776,7 @@ static const SaveLoad _roadveh_desc[] = {
 static const SaveLoad _ship_desc[] = {
 	SLE_WRITEBYTE(Vehicle, type, VEH_SHIP, 2), // Ship type. VEH_SHIP in mem, 2 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
-	SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleShip, state), SLE_UINT8),
+	SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleShip, state), SLE_UINT8),
 
 	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
@@ -2787,15 +2787,15 @@ static const SaveLoad _ship_desc[] = {
 static const SaveLoad _aircraft_desc[] = {
 	SLE_WRITEBYTE(Vehicle, type, VEH_AIRCRAFT, 3), // Aircraft type. VEH_AIRCRAFT in mem, 3 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleAir, crashed_counter), SLE_UINT16),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleAir, pos),             SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, crashed_counter), SLE_UINT16),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, pos),             SLE_UINT8),
 
-	SLE_CONDVARX(offsetof(Vehicle, u) + offsetof(VehicleAir, targetairport),   SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
-	SLE_CONDVARX(offsetof(Vehicle, u) + offsetof(VehicleAir, targetairport),   SLE_UINT16,                5, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, targetairport),   SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, targetairport),   SLE_UINT16,                5, SL_MAX_VERSION),
 
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleAir, state),           SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, state),           SLE_UINT8),
 
-	SLE_CONDVARX(offsetof(Vehicle, u) + offsetof(VehicleAir, previous_pos),    SLE_UINT8,                 2, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, previous_pos),    SLE_UINT8,                 2, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 15 bytes) */
 	SLE_CONDNULL(15,                                                                                      2, SL_MAX_VERSION),
@@ -2826,8 +2826,8 @@ static const SaveLoad _special_desc[] = {
 	    SLE_VAR(Vehicle, progress,      SLE_UINT8),
 	    SLE_VAR(Vehicle, vehstatus,     SLE_UINT8),
 
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleSpecial, unk0), SLE_UINT16),
-	    SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleSpecial, unk2), SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleSpecial, unk0), SLE_UINT16),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleSpecial, unk2), SLE_UINT8),
 
 	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
@@ -2860,16 +2860,16 @@ static const SaveLoad _disaster_desc[] = {
 	    SLE_VAR(Vehicle, z_height,      SLE_UINT8),
 	    SLE_VAR(Vehicle, owner,         SLE_UINT8),
 	    SLE_VAR(Vehicle, vehstatus,     SLE_UINT8),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest), SLE_UINT16,                5, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, dest), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, dest), SLE_UINT16,                5, SL_MAX_VERSION),
 
 	    SLE_VAR(Vehicle, cur_image,     SLE_UINT16),
 	SLE_CONDVAR(Vehicle, age,           SLE_FILE_U16 | SLE_VAR_I32,  0, 30),
 	SLE_CONDVAR(Vehicle, age,           SLE_INT32,                  31, SL_MAX_VERSION),
 	    SLE_VAR(Vehicle, tick_counter,  SLE_UINT8),
 
-	   SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleDisaster, image_override), SLE_UINT16),
-	   SLE_VARX(offsetof(Vehicle, u) + offsetof(VehicleDisaster, unk2),           SLE_UINT16),
+	   SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleDisaster, image_override), SLE_UINT16),
+	   SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleDisaster, unk2),           SLE_UINT16),
 
 	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16,                                                 2, SL_MAX_VERSION),
@@ -2912,6 +2912,16 @@ static void Load_VEHS()
 
 		v = GetVehicle(index);
 		SlObject(v, (SaveLoad*)_veh_descs[SlReadByte()]);
+
+		switch (v->type) {
+			case VEH_TRAIN:    v = new (v) Train();           break;
+			case VEH_ROAD:     v = new (v) RoadVehicle();     break;
+			case VEH_SHIP:     v = new (v) Ship();            break;
+			case VEH_AIRCRAFT: v = new (v) Aircraft();        break;
+			case VEH_SPECIAL:  v = new (v) SpecialVehicle();  break;
+			case VEH_DISASTER: v = new (v) DisasterVehicle(); break;
+			case VEH_INVALID:  v = new (v) InvalidVehicle();  break;
+		}
 
 		/* Old savegames used 'last_station_visited = 0xFF' */
 		if (CheckSavegameVersion(5) && v->last_station_visited == 0xFF)

@@ -15,6 +15,10 @@
 #include "player.h"
 #include "engine.h"
 #include "vehicle.h"
+#include "aircraft.h"
+#include "roadveh.h"
+#include "ship.h"
+#include "train.h"
 #include "signs.h"
 #include "debug.h"
 #include "depot.h"
@@ -1070,13 +1074,13 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 	 * Basically v->type -= 0x10; would suffice, but play safely */
 	switch (v->type) {
 		default: NOT_REACHED();
-		case 0x00 /*VEH_INVALID */: v->type = VEH_INVALID;  res = LoadChunk(ls, NULL,           vehicle_empty_chunk);    break;
-		case 0x10 /*VEH_TRAIN   */: v->type = VEH_TRAIN;    res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
-		case 0x11 /*VEH_ROAD    */: v->type = VEH_ROAD;     res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
-		case 0x12 /*VEH_SHIP    */: v->type = VEH_SHIP;     res = LoadChunk(ls, &v->u.ship,     vehicle_ship_chunk);     break;
-		case 0x13 /*VEH_AIRCRAFT*/: v->type = VEH_AIRCRAFT; res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
-		case 0x14 /*VEH_SPECIAL */: v->type = VEH_SPECIAL;  res = LoadChunk(ls, &v->u.special,  vehicle_special_chunk);  break;
-		case 0x15 /*VEH_DISASTER*/: v->type = VEH_DISASTER; res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
+		case 0x00 /*VEH_INVALID */: v = new (v) InvalidVehicle();  res = LoadChunk(ls, NULL,           vehicle_empty_chunk);    break;
+		case 0x10 /*VEH_TRAIN   */: v = new (v) Train();           res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
+		case 0x11 /*VEH_ROAD    */: v = new (v) RoadVehicle();     res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
+		case 0x12 /*VEH_SHIP    */: v = new (v) Ship();            res = LoadChunk(ls, &v->u.ship,     vehicle_ship_chunk);     break;
+		case 0x13 /*VEH_AIRCRAFT*/: v = new (v) Aircraft();        res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
+		case 0x14 /*VEH_SPECIAL */: v = new (v) SpecialVehicle();  res = LoadChunk(ls, &v->u.special,  vehicle_special_chunk);  break;
+		case 0x15 /*VEH_DISASTER*/: v = new (v) DisasterVehicle(); res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
 	}
 
 	/* This chunk size should always be 10 bytes */

@@ -228,4 +228,22 @@ void CcCloneTrain(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
 byte FreightWagonMult(CargoID cargo);
 
+/**
+ * This class 'wraps' Vehicle; you do not actually instantiate this class.
+ * You create a Vehicle using AllocateVehicle, so it is added to the pool
+ * and you reinitialize that to a Train using:
+ *   v = new (v) Train();
+ *
+ * As side-effect the vehicle type is set correctly.
+ */
+struct Train : public Vehicle {
+	/** Initializes the Vehicle to a train */
+	Train() { this->type = VEH_TRAIN; }
+
+	/** We want to 'destruct' the right class. */
+	virtual ~Train() {}
+
+	const char *GetTypeString() { return "train"; }
+};
+
 #endif /* TRAIN_H */

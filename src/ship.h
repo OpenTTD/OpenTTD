@@ -23,4 +23,23 @@ static inline bool IsShipInDepotStopped(const Vehicle* v)
 	return IsShipInDepot(v) && v->vehstatus & VS_STOPPED;
 }
 
+
+/**
+ * This class 'wraps' Vehicle; you do not actually instantiate this class.
+ * You create a Vehicle using AllocateVehicle, so it is added to the pool
+ * and you reinitialize that to a Train using:
+ *   v = new (v) Ship();
+ *
+ * As side-effect the vehicle type is set correctly.
+ */
+struct Ship: public Vehicle {
+	/** Initializes the Vehicle to a ship */
+	Ship() { this->type = VEH_SHIP; }
+
+	/** We want to 'destruct' the right class. */
+	virtual ~Ship() {}
+
+	const char *GetTypeString() { return "ship"; }
+};
+
 #endif /* SHIP_H */

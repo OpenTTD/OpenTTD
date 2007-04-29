@@ -121,7 +121,7 @@ static void DisasterVehicleUpdateImage(Vehicle *v)
  * and owned by nobody */
 static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Direction direction, byte subtype)
 {
-	v->type = VEH_DISASTER;
+	v = new (v) DisasterVehicle();
 	v->x_pos = x;
 	v->y_pos = y;
 	v->z_pos = z;

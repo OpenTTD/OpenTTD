@@ -205,7 +205,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 
-		v->type = VEH_ROAD;
+		v = new (v) RoadVehicle();
 		v->cur_image = 0xC15;
 		v->random_bits = VehicleRandomBits();
 

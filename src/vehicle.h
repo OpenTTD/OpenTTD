@@ -316,6 +316,107 @@ struct Vehicle {
 
 	void BeginLoading();
 	void LeaveStation();
+
+	/**
+	 * An overriden version of new, so you can use the vehicle instance
+	 * instead of a newly allocated piece of memory.
+	 * @param size the size of the variable (unused)
+	 * @param v    the vehicle to use as 'storage' backend
+	 * @return the memory that is 'allocated'
+	 */
+	void* operator new(size_t size, Vehicle *v) { return v; }
+
+	/**
+	 * 'Free' the memory allocated by the overriden new.
+	 * @param p the memory to 'free'
+	 * @param v the vehicle that was given to 'new' on creation.
+	 * @note This function isn't used (at the moment) and only added
+	 *       to please some compiler.
+	 */
+	void operator delete(void *p, Vehicle *v) {}
+
+	/**
+	 * 'Free' the memory allocated by the overriden new.
+	 * @param p the memory to 'free'
+	 * @note This function isn't used (at the moment) and only added
+	 *       as the above function was needed to please some compiler
+	 *       which made it necessary to add this to please yet
+	 *       another compiler...
+	 */
+	void operator delete(void *p) {}
+
+	/** We want to 'destruct' the right class. */
+	virtual ~Vehicle() {}
+
+	/**
+	 * Get a string 'representation' of the vehicle type.
+	 * @return the string representation.
+	 */
+	virtual const char* GetTypeString() = 0;
+};
+
+/**
+ * This class 'wraps' Vehicle; you do not actually instantiate this class.
+ * You create a Vehicle using AllocateVehicle, so it is added to the pool
+ * and you reinitialize that to a Train using:
+ *   v = new (v) Train();
+ *
+ * As side-effect the vehicle type is set correctly.
+ *
+ * A special vehicle is one of the following:
+ *  - smoke
+ *  - electric sparks for trains
+ *  - explosions
+ *  - bulldozer (road works)
+ *  - bubbles (industry)
+ */
+struct SpecialVehicle : public Vehicle {
+	/** Initializes the Vehicle to a special vehicle */
+	SpecialVehicle() { this->type = VEH_SPECIAL; }
+
+	/** We want to 'destruct' the right class. */
+	virtual ~SpecialVehicle() {}
+
+	const char *GetTypeString() { return "special vehicle"; }
+};
+
+/**
+ * This class 'wraps' Vehicle; you do not actually instantiate this class.
+ * You create a Vehicle using AllocateVehicle, so it is added to the pool
+ * and you reinitialize that to a Train using:
+ *   v = new (v) Train();
+ *
+ * As side-effect the vehicle type is set correctly.
+ */
+struct DisasterVehicle : public Vehicle {
+	/** Initializes the Vehicle to a disaster vehicle */
+	DisasterVehicle() { this->type = VEH_DISASTER; }
+
+	/** We want to 'destruct' the right class. */
+	virtual ~DisasterVehicle() {}
+
+	const char *GetTypeString() { return "disaster vehicle"; }
+};
+
+/**
+ * This class 'wraps' Vehicle; you do not actually instantiate this class.
+ * You create a Vehicle using AllocateVehicle, so it is added to the pool
+ * and you reinitialize that to a Train using:
+ *   v = new (v) Train();
+ *
+ * As side-effect the vehicle type is set correctly.
+ *
+ * An invalid vehicle must never be used; all (virtual) functions from
+ * Vehicle should assert (NOT_REACHED).
+ */
+struct InvalidVehicle : public Vehicle {
+	/** Initializes the Vehicle to a invalid vehicle */
+	InvalidVehicle() { this->type = VEH_INVALID; }
+
+	/** We want to 'destruct' the right class. */
+	virtual ~InvalidVehicle() {}
+
+	const char *GetTypeString() { return "invalid vehicle"; }
 };
 
 #define is_custom_sprite(x) (x >= 0xFD)
@@ -470,7 +571,7 @@ void DestroyVehicle(Vehicle *v);
 static inline void DeleteVehicle(Vehicle *v)
 {
 	DestroyVehicle(v);
-	v->type = VEH_INVALID;
+	v = new (v) InvalidVehicle();
 }
 
 static inline bool IsPlayerBuildableVehicleType(byte type)

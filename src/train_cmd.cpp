@@ -552,7 +552,7 @@ static void AddArticulatedParts(Vehicle **vl)
 		u->max_age = 0;
 		u->engine_type = engine_type;
 		u->value = 0;
-		u->type = VEH_TRAIN;
+		u = new (u) Train();
 		u->subtype = 0;
 		SetArticulatedPart(u);
 		u->cur_image = 0xAC2;
@@ -630,7 +630,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->u.rail.railtype = rvi->railtype;
 
 			v->build_year = _cur_year;
-			v->type = VEH_TRAIN;
+			v = new (v) Train();
 			v->cur_image = 0xAC2;
 			v->random_bits = VehicleRandomBits();
 
@@ -696,7 +696,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 	u->build_year = v->build_year;
 	if (building) v->value >>= 1;
 	u->value = v->value;
-	u->type = VEH_TRAIN;
+	u = new (u) Train();
 	u->cur_image = 0xAC2;
 	u->random_bits = VehicleRandomBits();
 	VehiclePositionChanged(u);
@@ -789,7 +789,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->service_interval = _patches.servint_trains;
 			v->date_of_last_service = _date;
 			v->build_year = _cur_year;
-			v->type = VEH_TRAIN;
+			v = new (v) Train();
 			v->cur_image = 0xAC2;
 			v->random_bits = VehicleRandomBits();
 

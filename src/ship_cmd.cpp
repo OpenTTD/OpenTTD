@@ -910,7 +910,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 		v->cur_image = 0x0E5E;
-		v->type = VEH_SHIP;
+		v = new (v) Ship();
 		v->random_bits = VehicleRandomBits();
 
 		v->vehicle_flags = 0;
