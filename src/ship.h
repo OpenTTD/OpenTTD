@@ -40,6 +40,7 @@ struct Ship: public Vehicle {
 	virtual ~Ship() {}
 
 	const char *GetTypeString() { return "ship"; }
+	void MarkDirty();
 };
 
 #endif /* SHIP_H */

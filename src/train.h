@@ -244,6 +244,7 @@ struct Train : public Vehicle {
 	virtual ~Train() {}
 
 	const char *GetTypeString() { return "train"; }
+	void MarkDirty();
 };
 
 #endif /* TRAIN_H */

@@ -131,6 +131,7 @@ struct Aircraft : public Vehicle {
 	virtual ~Aircraft() {}
 
 	const char *GetTypeString() { return "aircraft"; }
+	void MarkDirty();
 };
 
 #endif /* AIRCRAFT_H */

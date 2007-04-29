@@ -229,10 +229,10 @@ static void HandleBrokenShip(Vehicle *v)
 	}
 }
 
-static void MarkShipDirty(Vehicle *v)
+void Ship::MarkDirty()
 {
-	v->cur_image = GetShipImage(v, v->direction);
-	MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
+	this->cur_image = GetShipImage(this, this->direction);
+	MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
 }
 
 static void PlayShipSound(Vehicle *v)
@@ -313,7 +313,7 @@ static void HandleShipLoading(Vehicle *v)
 				SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);
 				if (LoadUnloadVehicle(v, false)) {
 					InvalidateWindow(WC_SHIPS_LIST, v->owner);
-					MarkShipDirty(v);
+					v->MarkDirty();
 				}
 				return;
 			}
@@ -359,7 +359,7 @@ void RecalcShipStuff(Vehicle *v)
 {
 	UpdateShipDeltaXY(v, v->direction);
 	v->cur_image = GetShipImage(v, v->direction);
-	MarkShipDirty(v);
+	v->MarkDirty();
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 }
 
@@ -735,15 +735,8 @@ static void ShipController(Vehicle *v)
 							/* Process station in the orderlist. */
 							st = GetStation(v->current_order.dest);
 							if (st->facilities & FACIL_DOCK) { // ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations
-								v->BeginLoading();
 								ShipArrivesAt(v, st);
-
-								SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);
-								if (LoadUnloadVehicle(v, true)) {
-									InvalidateWindow(WC_SHIPS_LIST, v->owner);
-									MarkShipDirty(v);
-								}
-								InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+								v->BeginLoading();
 							} else { // leave stations without docks right aways
 								v->current_order.type = OT_LEAVESTATION;
 								v->cur_order_index++;

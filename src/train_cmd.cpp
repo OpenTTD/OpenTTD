@@ -2522,12 +2522,17 @@ static bool ProcessTrainOrder(Vehicle *v)
 	return !at_waypoint && CheckReverseTrain(v);
 }
 
-static void MarkTrainDirty(Vehicle *v)
+void Train::MarkDirty()
 {
+	Vehicle *v = this;
 	do {
 		v->cur_image = GetTrainImage(v, v->direction);
 		MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
 	} while ((v = v->next) != NULL);
+
+	/* need to update acceleration and cached values since the goods on the train changed. */
+	TrainCargoChanged(this);
+	UpdateTrainAcceleration(this);
 }
 
 static void HandleTrainLoading(Vehicle *v, bool mode)
@@ -2551,11 +2556,7 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 				SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
 				if (LoadUnloadVehicle(v, false)) {
 					InvalidateWindow(WC_TRAINS_LIST, v->owner);
-					MarkTrainDirty(v);
-
-					/* need to update acceleration and cached values since the goods on the train changed. */
-					TrainCargoChanged(v);
-					UpdateTrainAcceleration(v);
+					v->MarkDirty();
 				}
 				return;
 			}
@@ -2636,15 +2637,6 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 
 	v->BeginLoading();
 	v->current_order.dest = 0;
-
-	SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
-	if (LoadUnloadVehicle(v, true) != 0) {
-		InvalidateWindow(WC_TRAINS_LIST, v->owner);
-		TrainCargoChanged(v);
-		UpdateTrainAcceleration(v);
-	}
-	MarkTrainDirty(v);
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
 static byte AfterSetTrainPos(Vehicle *v, bool new_tile)

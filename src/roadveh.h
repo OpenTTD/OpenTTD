@@ -39,6 +39,7 @@ struct RoadVehicle : public Vehicle {
 	virtual ~RoadVehicle() {}
 
 	const char *GetTypeString() { return "road vehicle"; }
+	void MarkDirty();
 };
 
 #endif /* ROADVEH_H */

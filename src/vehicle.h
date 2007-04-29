@@ -353,6 +353,11 @@ struct Vehicle {
 	 * @return the string representation.
 	 */
 	virtual const char* GetTypeString() = 0;
+
+	/**
+	 * Marks the vehicles to be redrawn and updates cached variables
+	 */
+	virtual void MarkDirty() {}
 };
 
 /**
@@ -417,6 +422,7 @@ struct InvalidVehicle : public Vehicle {
 	virtual ~InvalidVehicle() {}
 
 	const char *GetTypeString() { return "invalid vehicle"; }
+	void MarkDirty() { NOT_REACHED(); }
 };
 
 #define is_custom_sprite(x) (x >= 0xFD)

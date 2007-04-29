@@ -486,10 +486,10 @@ int32 CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-static void MarkRoadVehDirty(Vehicle *v)
+void RoadVehicle::MarkDirty()
 {
-	v->cur_image = GetRoadVehImage(v, v->direction);
-	MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
+	this->cur_image = GetRoadVehImage(this, this->direction);
+	MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
 }
 
 static void UpdateRoadVehDeltaXY(Vehicle *v)
@@ -765,7 +765,7 @@ static void HandleRoadVehLoading(Vehicle *v)
 				SET_EXPENSES_TYPE(EXPENSES_ROADVEH_INC);
 				if (LoadUnloadVehicle(v, false)) {
 					InvalidateWindow(WC_ROADVEH_LIST, v->owner);
-					MarkRoadVehDirty(v);
+					v->MarkDirty();
 				}
 				return;
 			}
@@ -1598,15 +1598,8 @@ again:
 			v->last_station_visited = GetStationIndex(v->tile);
 
 			RoadVehArrivesAt(v, st);
-
 			v->BeginLoading();
 
-			SET_EXPENSES_TYPE(EXPENSES_ROADVEH_INC);
-			if (LoadUnloadVehicle(v, true)) {
-				InvalidateWindow(WC_ROADVEH_LIST, v->owner);
-				MarkRoadVehDirty(v);
-			}
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			return;
 		}
 

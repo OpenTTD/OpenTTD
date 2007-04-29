@@ -2980,6 +2980,17 @@ void Vehicle::BeginLoading()
 
 	current_order.type = OT_LOADING;
 	GetStation(this->last_station_visited)->loading_vehicles.push_back(this);
+
+	static const int expense_type[] = { EXPENSES_TRAIN_INC, EXPENSES_ROADVEH_INC, EXPENSES_SHIP_INC, EXPENSES_AIRCRAFT_INC };
+	SET_EXPENSES_TYPE(expense_type[this->type]);
+
+	if (LoadUnloadVehicle(this, true) != 0) {
+		static const WindowClass invalidate_windows[] = { WC_TRAINS_LIST, WC_ROADVEH_LIST, WC_SHIPS_LIST, WC_AIRCRAFT_LIST };
+		InvalidateWindow(invalidate_windows[this->type], this->owner);
+
+		this->MarkDirty();
+	}
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, STATUS_BAR);
 }
 
 void Vehicle::LeaveStation()

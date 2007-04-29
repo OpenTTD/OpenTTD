@@ -1385,14 +1385,11 @@ static void ProcessAircraftOrder(Vehicle *v)
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
-/** Mark all views dirty for an aircraft.
- * @param v vehicle to be redrawn.
- */
-static void MarkAircraftDirty(Vehicle *v)
+void Aircraft::MarkDirty()
 {
-		v->cur_image = GetAircraftImage(v, v->direction);
-		if (v->subtype == AIR_HELICOPTER) v->next->next->cur_image = GetRotorImage(v);
-		MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
+		this->cur_image = GetAircraftImage(this, this->direction);
+		if (this->subtype == AIR_HELICOPTER) this->next->next->cur_image = GetRotorImage(this);
+		MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
 }
 
 static void HandleAircraftLoading(Vehicle *v, int mode)
@@ -1409,7 +1406,7 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 				SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
 				if (LoadUnloadVehicle(v, false)) {
 					InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
-					MarkAircraftDirty(v);
+					v->MarkDirty();
 				}
 				return;
 			}
@@ -1417,7 +1414,7 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 			Order b = v->current_order;
 			v->LeaveStation();
 			v->current_order.Free();
-			MarkAircraftDirty(v);
+			v->MarkDirty();
 			if (!(b.flags & OF_NON_STOP)) return;
 			break;
 		}
@@ -1511,12 +1508,6 @@ static void AircraftEntersTerminal(Vehicle *v)
 	}
 
 	v->BeginLoading();
-
-	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
-	LoadUnloadVehicle(v, true);
-	MarkAircraftDirty(v);
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
 static void AircraftLand(Vehicle *v)
