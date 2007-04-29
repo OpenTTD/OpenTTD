@@ -456,13 +456,17 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	 * restrictions which may cause the test run to fail (the previous
 	 * road fragments still stay there and the town won't let you
 	 * disconnect the road system), but the exec will succeed and this
-	 * fact will trigger an assertion failure. --pasky */
+	 * fact will trigger an assertion failure. --pasky
+	 * CMD_CLONE_VEHICLE: Both building new vehicles and refitting them can be
+	 * influenced by newgrf callbacks, which makes it impossible to accurately
+	 * estimate the cost of cloning a vehicle. */
 	notest =
 		(cmd & 0xFF) == CMD_CLEAR_AREA ||
 		(cmd & 0xFF) == CMD_CONVERT_RAIL ||
 		(cmd & 0xFF) == CMD_LEVEL_LAND ||
 		(cmd & 0xFF) == CMD_REMOVE_ROAD ||
-		(cmd & 0xFF) == CMD_REMOVE_LONG_ROAD;
+		(cmd & 0xFF) == CMD_REMOVE_LONG_ROAD ||
+		(cmd & 0xFF) == CMD_CLONE_VEHICLE;
 
 	_docommand_recursive = 1;
 

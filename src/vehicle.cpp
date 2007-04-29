@@ -1804,7 +1804,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v_front, *v;
 	Vehicle *w_front, *w, *w_rear;
-	int cost, total_cost = 0;
+	int32 cost, total_cost = 0;
 	uint32 build_argument = 2;
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
@@ -1842,18 +1842,6 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	v = v_front;
 
 	do {
-
-		if (!(flags & DC_EXEC)) {
-			/* Get the refit cost.
-			 * This is only needed when estimating as when the command is executed, the cost from the refit command is used.
-			 * This needs to be done for every single unit, so it should be done before checking if it's a multiheaded engine. */
-			CargoID new_cargo_type = GetEngineCargoType(v->engine_type);
-
-			if (new_cargo_type != v->cargo_type && new_cargo_type != CT_INVALID) {
-				total_cost += GetRefitCost(v->engine_type);
-			}
-		}
-
 		if (IsMultiheaded(v) && !IsTrainEngine(v)) {
 			/* we build the rear ends of multiheaded trains with the front ones */
 			continue;
@@ -1868,18 +1856,6 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (flags & DC_EXEC) {
 			w = GetVehicle(_new_vehicle_id);
-
-			Vehicle *w2 = w;
-			Vehicle *v2 = v;
-			do {
-				if (v2->cargo_type != w2->cargo_type || v2->cargo_subtype != w2->cargo_subtype) {
-					/* We can't pay for refitting because we can't estimate refitting costs for a vehicle before it's build.
-					 * If we pay for it anyway, the cost and the estimated cost will not be the same and we will have an assert.
-					 * We need to check the whole chain if it is a train because some newgrf articulated engines can refit some units only (and not the front) */
-					total_cost += DoCommand(0, w->index, v2->cargo_type | (v2->cargo_subtype << 8), flags, GetCmdRefitVeh(v));
-					break; // We learned that the engine in question needed a refit. No need to check anymore
-				}
-			} while (v->type == VEH_TRAIN && (w2 = w2->next) != NULL && (v2 = v2->next) != NULL);
 
 			if (v->type == VEH_TRAIN && HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
 				SETBIT(w->u.rail.flags, VRF_REVERSE_DIRECTION);
@@ -1902,6 +1878,53 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC && v_front->type == VEH_TRAIN) {
 		/* for trains this needs to be the front engine due to the callback function */
 		_new_vehicle_id = w_front->index;
+	}
+
+	/* Take care of refitting. */
+	w = w_front;
+	v = v_front;
+
+	/* Both building and refitting are influenced by newgrf callbacks, which
+	 * makes it impossible to accurately estimate the cloning costs. In
+	 * particular, it is possible for engines of the same type to be built with
+	 * different numbers of articulated parts, so when refitting we have to
+	 * loop over real vehicles first, and then the articulated parts of those
+	 * vehicles in a different loop. */
+	do {
+		do {
+			if (flags & DC_EXEC) {
+				assert(w != NULL);
+
+				if (w->cargo_type != v->cargo_type || w->cargo_subtype != v->cargo_type) {
+					cost = DoCommand(0, w->index, v->cargo_type | (v->cargo_subtype << 8) | 1U << 16 , flags, GetCmdRefitVeh(v));
+					if (!CmdFailed(cost)) total_cost += cost;
+				}
+
+				if (w->type == VEH_TRAIN && EngineHasArticPart(w)) {
+					w = GetNextArticPart(w);
+				} else {
+					break;
+				}
+			} else {
+				CargoID initial_cargo = GetEngineCargoType(v->engine_type);
+
+				if (v->cargo_type != initial_cargo && initial_cargo != CT_INVALID) {
+					total_cost += GetRefitCost(v->engine_type);
+				}
+			}
+		} while (v->type == VEH_TRAIN && EngineHasArticPart(v) && (v = GetNextArticPart(v)) != NULL);
+
+		if (flags & DC_EXEC) w = GetNextVehicle(w);
+	} while (v->type == VEH_TRAIN && (v = GetNextVehicle(v)) != NULL);
+
+	/* Since we can't estimate the cost of cloning a vehicle accurately we must
+	 * check whether the player has enough money manually. */
+	if (!CheckPlayerHasMoney(total_cost)) {
+		if (flags & DC_EXEC) {
+			/* The vehicle has already been bought, so now it must be sold again. */
+			DoCommand(w_front->tile, w_front->index, 1, flags, GetCmdSellVeh(w_front));
+		}
+		return CMD_ERROR;
 	}
 
 	/* Set the expense type last as refitting will make the cost go towards

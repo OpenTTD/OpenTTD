@@ -1751,11 +1751,14 @@ int32 CmdForceTrainProceed(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * param p2 various bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to
  * - p2 = (bit 8-15) - the new cargo subtype to refit to
+ * - p2 = (bit 16) - refit only this vehicle
+ * @return cost of refit or error
  */
 int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	CargoID new_cid = GB(p2, 0, 8);
 	byte new_subtype = GB(p2, 8, 8);
+	bool only_this = HASBIT(p2, 16);
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
@@ -1833,7 +1836,7 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 		}
-	} while ((v = v->next) != NULL);
+	} while ((v = v->next) != NULL && !only_this);
 
 	_returned_refit_capacity = num;
 

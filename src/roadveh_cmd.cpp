@@ -1851,6 +1851,8 @@ void RoadVehiclesYearlyLoop()
  * @param p2 Bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to
  * - p2 = (bit 8-15) - the new cargo subtype to refit to
+ * - p2 = (bit 16) - refit only this vehicle (ignored)
+ * @return cost of refit or error
  */
 int32 CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
