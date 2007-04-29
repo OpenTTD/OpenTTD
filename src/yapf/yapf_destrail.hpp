@@ -95,8 +95,16 @@ public:
 
 			case OT_GOTO_WAYPOINT: {
 				Waypoint *wp = GetWaypoint(v->current_order.dest);
-				if (wp == NULL) break;
+				if (wp == NULL) {
+					/* Invalid waypoint in orders! */
+					DEBUG(yapf, 0, "Invalid waypoint in orders == 0x%04X (train %d, player %d)", v->current_order.dest, v->unitnumber, (PlayerID)v->owner);
+					break;
+				}
 				m_destTile = wp->xy;
+				if (m_destTile != v->dest_tile) {
+					/* Something is wrong with orders! */
+					DEBUG(yapf, 0, "Invalid v->dest_tile == 0x%04X (train %d, player %d)", v->dest_tile, v->unitnumber, (PlayerID)v->owner);
+				}
 				m_dest_station_id = INVALID_STATION;
 				m_destTrackdirs = TrackToTrackdirBits(AxisToTrack(GetWaypointAxis(wp->xy)));
 				break;
