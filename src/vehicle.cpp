@@ -2950,6 +2950,24 @@ extern const ChunkHandler _veh_chunk_handlers[] = {
 void Vehicle::BeginLoading()
 {
 	assert(IsTileType(tile, MP_STATION) || type == VEH_SHIP);
+
+	if (this->current_order.type == OT_GOTO_STATION &&
+			this->current_order.dest == this->last_station_visited) {
+		/* Arriving at the ordered station.
+		 * Keep the load/unload flags, as we (obviously) still need them. */
+		this->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER;
+
+		/* Furthermore add the Non Stop flag to mark that this station
+		 * is the actual destination of the vehicle, which is (for example)
+		 * necessary to be known for HandleTrainLoading to determine
+		 * whether the train is lost or not; not marking a train lost
+		 * that arrives at random stations is bad. */
+		this->current_order.flags |= OF_NON_STOP;
+	} else {
+		/* This is just an unordered intermediate stop */
+		this->current_order.flags = 0;
+	}
+
 	current_order.type = OT_LOADING;
 	GetStation(this->last_station_visited)->loading_vehicles.push_back(this);
 }

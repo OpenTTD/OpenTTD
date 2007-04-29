@@ -304,7 +304,7 @@ static void HandleShipLoading(Vehicle *v)
 {
 	switch (v->current_order.type) {
 		case OT_LOADING: {
-			if (--v->load_unload_time_rem) return;
+			if (--v->load_unload_time_rem != 0) return;
 
 			if (CanFillVehicle(v) && (
 						v->current_order.flags & OF_FULL_LOAD ||
@@ -736,8 +736,6 @@ static void ShipController(Vehicle *v)
 							st = GetStation(v->current_order.dest);
 							if (st->facilities & FACIL_DOCK) { // ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations
 								v->BeginLoading();
-								v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER;
-								v->current_order.flags |= OF_NON_STOP;
 								ShipArrivesAt(v, st);
 
 								SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);

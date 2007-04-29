@@ -1509,15 +1509,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 			0);
 	}
 
-	Order old_order = v->current_order;
 	v->BeginLoading();
-	v->current_order.flags = 0;
-
-	if (old_order.type == OT_GOTO_STATION &&
-			v->current_order.dest == v->last_station_visited) {
-		v->current_order.flags =
-			(old_order.flags & (OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER)) | OF_NON_STOP;
-	}
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
 	LoadUnloadVehicle(v, true);

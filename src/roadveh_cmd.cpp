@@ -1569,7 +1569,6 @@ again:
 		if (v->current_order.type != OT_LEAVESTATION &&
 				v->current_order.type != OT_GOTO_DEPOT) {
 			/* Vehicle has arrived at a bay in a road stop */
-			Order old_order;
 
 			if (IsDriveThroughStopTile(v->tile)) {
 				TileIndex next_tile = TILE_ADD(v->tile, TileOffsByDir(v->direction));
@@ -1600,15 +1599,7 @@ again:
 
 			RoadVehArrivesAt(v, st);
 
-			old_order = v->current_order;
 			v->BeginLoading();
-			v->current_order.flags = 0;
-
-			if (old_order.type == OT_GOTO_STATION &&
-					v->current_order.dest == v->last_station_visited) {
-				v->current_order.flags =
-					(old_order.flags & (OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER)) | OF_NON_STOP;
-			}
 
 			SET_EXPENSES_TYPE(EXPENSES_ROADVEH_INC);
 			if (LoadUnloadVehicle(v, true)) {

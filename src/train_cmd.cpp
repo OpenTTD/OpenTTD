@@ -2634,19 +2634,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 		);
 	}
 
-	/* Did we reach the final destination? */
-	if (v->current_order.type == OT_GOTO_STATION &&
-			v->current_order.dest == station) {
-		/* Yeah, keep the load/unload flags
-		 * Non Stop now means if the order should be increased. */
-		v->BeginLoading();
-		v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER;
-		v->current_order.flags |= OF_NON_STOP;
-	} else {
-		/* No, just do a simple load */
-		v->BeginLoading();
-		v->current_order.flags = 0;
-	}
+	v->BeginLoading();
 	v->current_order.dest = 0;
 
 	SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
