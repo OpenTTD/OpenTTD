@@ -86,14 +86,27 @@ protected:
 public:
 	void SetDestination(Vehicle* v)
 	{
-		if (v->current_order.type == OT_GOTO_STATION) {
-			m_destTile = CalcStationCenterTile(v->current_order.dest);
-			m_dest_station_id = v->current_order.dest;
-			m_destTrackdirs = INVALID_TRACKDIR_BIT;
-		} else {
-			m_destTile = v->dest_tile;
-			m_dest_station_id = INVALID_STATION;
-			m_destTrackdirs = (TrackdirBits)(GetTileTrackStatus(v->dest_tile, TRANSPORT_RAIL) & TRACKDIR_BIT_MASK);
+		switch (v->current_order.type) {
+			case OT_GOTO_STATION:
+				m_destTile = CalcStationCenterTile(v->current_order.dest);
+				m_dest_station_id = v->current_order.dest;
+				m_destTrackdirs = INVALID_TRACKDIR_BIT;
+				break;
+
+			case OT_GOTO_WAYPOINT: {
+				Waypoint *wp = GetWaypoint(v->current_order.dest);
+				if (wp == NULL) break;
+				m_destTile = wp->xy;
+				m_dest_station_id = INVALID_STATION;
+				m_destTrackdirs = TrackToTrackdirBits(AxisToTrack(GetWaypointAxis(wp->xy)));
+				break;
+			}
+
+			default:
+				m_destTile = v->dest_tile;
+				m_dest_station_id = INVALID_STATION;
+				m_destTrackdirs = (TrackdirBits)(GetTileTrackStatus(v->dest_tile, TRANSPORT_RAIL) & TRACKDIR_BIT_MASK);
+				break;
 		}
 		CYapfDestinationRailBase::SetDestination(v);
 	}
