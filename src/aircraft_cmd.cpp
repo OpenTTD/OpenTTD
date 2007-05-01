@@ -33,6 +33,35 @@
 #include "spritecache.h"
 #include "cargotype.h"
 
+void Aircraft::UpdateDeltaXY(Direction direction)
+{
+	uint32 x;
+#define MKIT(a, b, c, d) ((a & 0xFF) << 24) | ((b & 0xFF) << 16) | ((c & 0xFF) << 8) | ((d & 0xFF) << 0)
+	switch (this->subtype) {
+		default: NOT_REACHED();
+		case AIR_AIRCRAFT:
+		case AIR_HELICOPTER:
+			switch (this->u.air.state) {
+				case ENDTAKEOFF:
+				case LANDING:
+				case HELILANDING:
+				case FLYING:     x = MKIT(24, 24, -1, -1); break;
+				default:         x = MKIT( 2,  2, -1, -1); break;
+			}
+			this->z_height = 5;
+			break;
+		case AIR_SHADOW:     this->z_height = 1; x = MKIT(2,  2,  0,  0); break;
+		case AIR_ROTOR:      this->z_height = 1; x = MKIT(2,  2, -1, -1); break;
+	}
+#undef MKIT
+
+	this->x_offs        = GB(x,  0, 8);
+	this->y_offs        = GB(x,  8, 8);
+	this->sprite_width  = GB(x, 16, 8);
+	this->sprite_height = GB(x, 24, 8);
+}
+
+
 /** this maps the terminal to its corresponding state and block flag
  *  currently set for 10 terms, 4 helipads */
 static const byte _airport_terminal_state[] = {2, 3, 4, 5, 6, 7, 19, 20, 0, 0, 8, 9, 21, 22};
@@ -287,14 +316,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		u->z_pos = GetSlopeZ(x, y);
 		v->z_pos = u->z_pos + 1;
 
-		v->x_offs = v->y_offs = -1;
 //		u->delta_x = u->delta_y = 0;
-
-		v->sprite_width = v->sprite_height = 2;
-		v->z_height = 5;
-
-		u->sprite_width = u->sprite_height = 2;
-		u->z_height = 1;
 
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 		u->vehstatus = VS_HIDDEN | VS_UNCLICKABLE | VS_SHADOW;
@@ -323,9 +345,11 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->engine_type = p1;
 
 		v->subtype = (avi->subtype & AIR_CTOL ? AIR_AIRCRAFT : AIR_HELICOPTER);
+		v->UpdateDeltaXY(INVALID_DIR);
 		v->value = value;
 
 		u->subtype = AIR_SHADOW;
+		u->UpdateDeltaXY(INVALID_DIR);
 
 		/* Danger, Will Robinson!
 		 * If the aircraft is refittable, but cannot be refitted to
@@ -411,9 +435,6 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			w->x_pos = v->x_pos;
 			w->y_pos = v->y_pos;
 			w->z_pos = v->z_pos + 5;
-			w->x_offs = w->y_offs = -1;
-			w->sprite_width = w->sprite_height = 2;
-			w->z_height = 1;
 			w->vehstatus = VS_HIDDEN | VS_UNCLICKABLE;
 			w->spritenum = 0xFF;
 			w->subtype = AIR_ROTOR;
@@ -421,6 +442,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			w->random_bits = VehicleRandomBits();
 			/* Use rotor's air.state to store the rotor animation frame */
 			w->u.air.state = HRS_ROTOR_STOPPED;
+			w->UpdateDeltaXY(INVALID_DIR);
 			VehiclePositionChanged(w);
 		}
 
@@ -1510,14 +1532,10 @@ static void AircraftEntersTerminal(Vehicle *v)
 	v->BeginLoading();
 }
 
-static void AircraftLand(Vehicle *v)
-{
-	v->sprite_width = v->sprite_height = 2;
-}
-
 static void AircraftLandAirplane(Vehicle *v)
 {
-	AircraftLand(v);
+	v->UpdateDeltaXY(INVALID_DIR);
+
 	if (!PlayVehicleSound(v, VSE_TOUCHDOWN)) {
 		SndPlayVehicleFx(SND_17_SKID_PLANE, v);
 	}
@@ -1676,8 +1694,8 @@ static void AircraftEventHandler_TakeOff(Vehicle *v, const AirportFTAClass *apc)
 
 static void AircraftEventHandler_StartTakeOff(Vehicle *v, const AirportFTAClass *apc)
 {
-	v->sprite_width = v->sprite_height = 24; // ??? no idea what this is
 	v->u.air.state = ENDTAKEOFF;
+	v->UpdateDeltaXY(INVALID_DIR);
 }
 
 static void AircraftEventHandler_EndTakeOff(Vehicle *v, const AirportFTAClass *apc)
@@ -1690,8 +1708,9 @@ static void AircraftEventHandler_EndTakeOff(Vehicle *v, const AirportFTAClass *a
 static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *apc)
 {
 	const Player* p = GetPlayer(v->owner);
-	v->sprite_width = v->sprite_height = 24; // ??? no idea what this is
 	v->u.air.state = FLYING;
+	v->UpdateDeltaXY(INVALID_DIR);
+
 	/* get the next position to go to, differs per airport */
 	AircraftNextAirportPos_and_Order(v);
 
@@ -1749,8 +1768,9 @@ static void AircraftEventHandler_Flying(Vehicle *v, const AirportFTAClass *apc)
 
 static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *apc)
 {
-	AircraftLandAirplane(v);  // maybe crash airplane
 	v->u.air.state = ENDLANDING;
+	AircraftLandAirplane(v);  // maybe crash airplane
+
 	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed */
 	if (v->current_order.type != OT_GOTO_DEPOT && v->owner == _local_player) {
 		/* only the vehicle owner needs to calculate the rest (locally) */
@@ -1767,8 +1787,8 @@ static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *apc)
 
 static void AircraftEventHandler_HeliLanding(Vehicle *v, const AirportFTAClass *apc)
 {
-	AircraftLand(v); // helicopters don't crash
 	v->u.air.state = HELIENDLANDING;
+	v->UpdateDeltaXY(INVALID_DIR);
 }
 
 static void AircraftEventHandler_EndLanding(Vehicle *v, const AirportFTAClass *apc)

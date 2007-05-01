@@ -1109,7 +1109,7 @@ static const SaveLoad _player_desc[] = {
 
 	    SLE_VAR(Player, player_color,          SLE_UINT8),
 	    SLE_VAR(Player, player_money_fraction, SLE_UINT8),
-	    SLE_VAR(Player, avail_railtypes,       SLE_UINT8),
+	SLE_CONDVAR(Player, avail_railtypes,       SLE_UINT8,                   0, 57),
 	    SLE_VAR(Player, block_preview,         SLE_UINT8),
 
 	    SLE_VAR(Player, cargo_types,           SLE_UINT16),

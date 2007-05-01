@@ -245,6 +245,7 @@ struct Train : public Vehicle {
 
 	const char *GetTypeString() { return "train"; }
 	void MarkDirty();
+	void UpdateDeltaXY(Direction direction);
 };
 
 #endif /* TRAIN_H */

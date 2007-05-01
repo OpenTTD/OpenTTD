@@ -224,6 +224,8 @@ void AfterLoadVehicles()
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
+		v->UpdateDeltaXY(v->direction);
+
 		v->first = NULL;
 		if (v->type == VEH_TRAIN) v->u.rail.first_engine = INVALID_ENGINE;
 	}
@@ -1443,9 +1445,8 @@ Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type)
 		v->x_pos = x;
 		v->y_pos = y;
 		v->z_pos = z;
-		v->z_height = v->sprite_width = v->sprite_height = 1;
-		v->x_offs = v->y_offs = 0;
 		v->tile = 0;
+		v->UpdateDeltaXY(INVALID_DIR);
 		v->vehstatus = VS_UNCLICKABLE;
 
 		_effect_init_procs[type](v);
@@ -2644,13 +2645,13 @@ extern const SaveLoad _common_veh_desc[] = {
 	    SLE_VAR(Vehicle, z_pos,                SLE_UINT8),
 	    SLE_VAR(Vehicle, direction,            SLE_UINT8),
 
-	    SLE_VAR(Vehicle, cur_image,            SLE_UINT16),
+	SLE_CONDVAR(Vehicle, cur_image,            SLE_UINT16,                  0, 57),
 	    SLE_VAR(Vehicle, spritenum,            SLE_UINT8),
-	    SLE_VAR(Vehicle, sprite_width,         SLE_UINT8),
-	    SLE_VAR(Vehicle, sprite_height,        SLE_UINT8),
-	    SLE_VAR(Vehicle, z_height,             SLE_UINT8),
-	    SLE_VAR(Vehicle, x_offs,               SLE_INT8),
-	    SLE_VAR(Vehicle, y_offs,               SLE_INT8),
+	SLE_CONDVAR(Vehicle, sprite_width,         SLE_UINT8,                   0, 57),
+	SLE_CONDVAR(Vehicle, sprite_height,        SLE_UINT8,                   0, 57),
+	SLE_CONDVAR(Vehicle, z_height,             SLE_UINT8,                   0, 57),
+	SLE_CONDVAR(Vehicle, x_offs,               SLE_INT8,                    0, 57),
+	SLE_CONDVAR(Vehicle, y_offs,               SLE_INT8,                    0, 57),
 	    SLE_VAR(Vehicle, engine_type,          SLE_UINT16),
 
 	    SLE_VAR(Vehicle, max_speed,            SLE_UINT16),
@@ -2818,11 +2819,11 @@ static const SaveLoad _special_desc[] = {
 	    SLE_VAR(Vehicle, z_pos,         SLE_UINT8),
 
 	    SLE_VAR(Vehicle, cur_image,     SLE_UINT16),
-	    SLE_VAR(Vehicle, sprite_width,  SLE_UINT8),
-	    SLE_VAR(Vehicle, sprite_height, SLE_UINT8),
-	    SLE_VAR(Vehicle, z_height,      SLE_UINT8),
-	    SLE_VAR(Vehicle, x_offs,        SLE_INT8),
-	    SLE_VAR(Vehicle, y_offs,        SLE_INT8),
+	SLE_CONDVAR(Vehicle, sprite_width,  SLE_UINT8,                  0, 57),
+	SLE_CONDVAR(Vehicle, sprite_height, SLE_UINT8,                  0, 57),
+	SLE_CONDVAR(Vehicle, z_height,      SLE_UINT8,                  0, 57),
+	SLE_CONDVAR(Vehicle, x_offs,        SLE_INT8,                   0, 57),
+	SLE_CONDVAR(Vehicle, y_offs,        SLE_INT8,                   0, 57),
 	    SLE_VAR(Vehicle, progress,      SLE_UINT8),
 	    SLE_VAR(Vehicle, vehstatus,     SLE_UINT8),
 
@@ -2853,11 +2854,11 @@ static const SaveLoad _disaster_desc[] = {
 	    SLE_VAR(Vehicle, z_pos,         SLE_UINT8),
 	    SLE_VAR(Vehicle, direction,     SLE_UINT8),
 
-	    SLE_VAR(Vehicle, x_offs,        SLE_INT8),
-	    SLE_VAR(Vehicle, y_offs,        SLE_INT8),
-	    SLE_VAR(Vehicle, sprite_width,  SLE_UINT8),
-	    SLE_VAR(Vehicle, sprite_height, SLE_UINT8),
-	    SLE_VAR(Vehicle, z_height,      SLE_UINT8),
+	SLE_CONDVAR(Vehicle, x_offs,        SLE_INT8,                    0, 57),
+	SLE_CONDVAR(Vehicle, y_offs,        SLE_INT8,                    0, 57),
+	SLE_CONDVAR(Vehicle, sprite_width,  SLE_UINT8,                   0, 57),
+	SLE_CONDVAR(Vehicle, sprite_height, SLE_UINT8,                   0, 57),
+	SLE_CONDVAR(Vehicle, z_height,      SLE_UINT8,                   0, 57),
 	    SLE_VAR(Vehicle, owner,         SLE_UINT8),
 	    SLE_VAR(Vehicle, vehstatus,     SLE_UINT8),
 	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, dest), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
@@ -2999,4 +3000,14 @@ void Vehicle::LeaveStation()
 	current_order.type = OT_LEAVESTATION;
 	current_order.flags = 0;
 	GetStation(this->last_station_visited)->loading_vehicles.remove(this);
+}
+
+
+void SpecialVehicle::UpdateDeltaXY(Direction direction)
+{
+	this->x_offs        = 0;
+	this->y_offs        = 0;
+	this->sprite_width  = 1;
+	this->sprite_height = 1;
+	this->z_height      = 1;
 }

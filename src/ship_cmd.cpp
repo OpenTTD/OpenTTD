@@ -334,30 +334,32 @@ static void HandleShipLoading(Vehicle *v)
 	InvalidateVehicleOrder(v);
 }
 
-static void UpdateShipDeltaXY(Vehicle *v, int dir)
+void Ship::UpdateDeltaXY(Direction direction)
 {
-#define MKIT(d,c,b,a) ((a&0xFF)<<24) | ((b&0xFF)<<16) | ((c&0xFF)<<8) | ((d&0xFF)<<0)
+#define MKIT(a, b, c, d) ((a & 0xFF) << 24) | ((b & 0xFF) << 16) | ((c & 0xFF) << 8) | ((d & 0xFF) << 0)
 	static const uint32 _delta_xy_table[8] = {
-		MKIT( -3,  -3,  6,  6),
-		MKIT(-16,  -3, 32,  6),
-		MKIT( -3,  -3,  6,  6),
-		MKIT( -3, -16,  6, 32),
-		MKIT( -3,  -3,  6,  6),
-		MKIT(-16,  -3, 32,  6),
-		MKIT( -3,  -3,  6,  6),
-		MKIT( -3, -16,  6, 32),
+		MKIT( 6,  6,  -3,  -3),
+		MKIT( 6, 32,  -3, -16),
+		MKIT( 6,  6,  -3,  -3),
+		MKIT(32,  6, -16,  -3),
+		MKIT( 6,  6,  -3,  -3),
+		MKIT( 6, 32,  -3, -16),
+		MKIT( 6,  6,  -3,  -3),
+		MKIT(32,  6, -16,  -3),
 	};
 #undef MKIT
-	uint32 x = _delta_xy_table[dir];
-	v->x_offs        = GB(x,  0, 8);
-	v->y_offs        = GB(x,  8, 8);
-	v->sprite_width  = GB(x, 16, 8);
-	v->sprite_height = GB(x, 24, 8);
+
+	uint32 x = _delta_xy_table[direction];
+	this->x_offs        = GB(x,  0, 8);
+	this->y_offs        = GB(x,  8, 8);
+	this->sprite_width  = GB(x, 16, 8);
+	this->sprite_height = GB(x, 24, 8);
+	this->z_height      = 6;
 }
 
 void RecalcShipStuff(Vehicle *v)
 {
-	UpdateShipDeltaXY(v, v->direction);
+	v->UpdateDeltaXY(v->direction);
 	v->cur_image = GetShipImage(v, v->direction);
 	v->MarkDirty();
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
@@ -788,7 +790,7 @@ static void ShipController(Vehicle *v)
 	v->z_pos = GetSlopeZ(gp.x, gp.y);
 
 getout:
-	UpdateShipDeltaXY(v, dir);
+	v->UpdateDeltaXY(dir);
 	v->cur_image = GetShipImage(v, dir);
 	VehiclePositionChanged(v);
 	EndVehicleMove(v);
@@ -873,11 +875,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->y_pos = y;
 		v->z_pos = GetSlopeZ(x, y);
 
-		v->z_height = 6;
-		v->sprite_width = 6;
-		v->sprite_height = 6;
-		v->x_offs = -3;
-		v->y_offs = -3;
+		v->UpdateDeltaXY(v->direction);
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
 		v->spritenum = svi->image_index;

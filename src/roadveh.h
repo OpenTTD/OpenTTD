@@ -40,6 +40,7 @@ struct RoadVehicle : public Vehicle {
 
 	const char *GetTypeString() { return "road vehicle"; }
 	void MarkDirty();
+	void UpdateDeltaXY(Direction direction);
 };
 
 #endif /* ROADVEH_H */

@@ -41,6 +41,7 @@ struct Ship: public Vehicle {
 
 	const char *GetTypeString() { return "ship"; }
 	void MarkDirty();
+	void UpdateDeltaXY(Direction direction);
 };
 
 #endif /* SHIP_H */

@@ -169,7 +169,6 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->x_pos = x;
 		v->y_pos = y;
 		v->z_pos = GetSlopeZ(x, y);
-		v->z_height = 6;
 
 		v->u.road.state = RVSB_IN_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
@@ -492,9 +491,9 @@ void RoadVehicle::MarkDirty()
 	MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
 }
 
-static void UpdateRoadVehDeltaXY(Vehicle *v)
+void RoadVehicle::UpdateDeltaXY(Direction direction)
 {
-#define MKIT(a,b,c,d) ((a&0xFF)<<24) | ((b&0xFF)<<16) | ((c&0xFF)<<8) | ((d&0xFF)<<0)
+#define MKIT(a, b, c, d) ((a & 0xFF) << 24) | ((b & 0xFF) << 16) | ((c & 0xFF) << 8) | ((d & 0xFF) << 0)
 	static const uint32 _delta_xy_table[8] = {
 		MKIT(3, 3, -1, -1),
 		MKIT(3, 7, -1, -3),
@@ -506,11 +505,13 @@ static void UpdateRoadVehDeltaXY(Vehicle *v)
 		MKIT(7, 3, -3, -1),
 	};
 #undef MKIT
-	uint32 x = _delta_xy_table[v->direction];
-	v->x_offs        = GB(x,  0, 8);
-	v->y_offs        = GB(x,  8, 8);
-	v->sprite_width  = GB(x, 16, 8);
-	v->sprite_height = GB(x, 24, 8);
+
+	uint32 x = _delta_xy_table[direction];
+	this->x_offs        = GB(x,  0, 8);
+	this->y_offs        = GB(x,  8, 8);
+	this->sprite_width  = GB(x, 16, 8);
+	this->sprite_height = GB(x, 24, 8);
+	this->z_height      = 6;
 }
 
 static void ClearCrashedStation(Vehicle *v)
@@ -566,7 +567,7 @@ static void RoadVehSetRandomDirection(Vehicle *v)
 
 	v->direction = ChangeDir(v->direction, delta[r & 3]);
 	BeginVehicleMove(v);
-	UpdateRoadVehDeltaXY(v);
+	v->UpdateDeltaXY(v->direction);
 	v->cur_image = GetRoadVehImage(v, v->direction);
 	SetRoadVehPosition(v, v->x_pos, v->y_pos);
 }
@@ -1345,7 +1346,7 @@ static void RoadVehController(Vehicle *v)
 		v->u.road.frame = RVC_DEPOT_START_FRAME;
 
 		v->cur_image = GetRoadVehImage(v, v->direction);
-		UpdateRoadVehDeltaXY(v);
+		v->UpdateDeltaXY(v->direction);
 		SetRoadVehPosition(v,x,y);
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -1381,7 +1382,7 @@ static void RoadVehController(Vehicle *v)
 		if ((IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) && HASBIT(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 			/* Vehicle has just entered a bridge or tunnel */
 			v->cur_image = GetRoadVehImage(v, v->direction);
-			UpdateRoadVehDeltaXY(v);
+			v->UpdateDeltaXY(v->direction);
 			SetRoadVehPosition(v,gp.x,gp.y);
 			return;
 		}
@@ -1469,7 +1470,7 @@ again:
 		}
 
 		v->cur_image = GetRoadVehImage(v, newdir);
-		UpdateRoadVehDeltaXY(v);
+		v->UpdateDeltaXY(v->direction);
 		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
 		return;
 	}
@@ -1509,7 +1510,7 @@ again:
 		}
 
 		v->cur_image = GetRoadVehImage(v, newdir);
-		UpdateRoadVehDeltaXY(v);
+		v->UpdateDeltaXY(v->direction);
 		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
 		return;
 	}
@@ -1539,7 +1540,7 @@ again:
 		if (old_dir != v->u.road.state) {
 			/* The vehicle is in a road stop */
 			v->cur_image = GetRoadVehImage(v, new_dir);
-			UpdateRoadVehDeltaXY(v);
+			v->UpdateDeltaXY(v->direction);
 			SetRoadVehPosition(v, v->x_pos, v->y_pos);
 			/* Note, return here means that the frame counter is not incremented
 			 * for vehicles changing direction in a road stop. This causes frames to
@@ -1659,7 +1660,7 @@ again:
 	if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) v->u.road.frame++;
 
 	v->cur_image = GetRoadVehImage(v, v->direction);
-	UpdateRoadVehDeltaXY(v);
+	v->UpdateDeltaXY(v->direction);
 	RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
 }
 

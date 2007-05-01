@@ -358,6 +358,13 @@ struct Vehicle {
 	 * Marks the vehicles to be redrawn and updates cached variables
 	 */
 	virtual void MarkDirty() {}
+
+	/**
+	 * Updates the x and y offsets and the size of the sprite used
+	 * for this vehicle.
+	 * @param direction the direction the vehicle is facing
+	 */
+	virtual void UpdateDeltaXY(Direction direction) {}
 };
 
 /**
@@ -383,6 +390,7 @@ struct SpecialVehicle : public Vehicle {
 	virtual ~SpecialVehicle() {}
 
 	const char *GetTypeString() { return "special vehicle"; }
+	void UpdateDeltaXY(Direction direction);
 };
 
 /**
@@ -401,6 +409,7 @@ struct DisasterVehicle : public Vehicle {
 	virtual ~DisasterVehicle() {}
 
 	const char *GetTypeString() { return "disaster vehicle"; }
+	void UpdateDeltaXY(Direction direction);
 };
 
 /**
@@ -410,9 +419,6 @@ struct DisasterVehicle : public Vehicle {
  *   v = new (v) Train();
  *
  * As side-effect the vehicle type is set correctly.
- *
- * An invalid vehicle must never be used; all (virtual) functions from
- * Vehicle should assert (NOT_REACHED).
  */
 struct InvalidVehicle : public Vehicle {
 	/** Initializes the Vehicle to a invalid vehicle */
@@ -422,7 +428,6 @@ struct InvalidVehicle : public Vehicle {
 	virtual ~InvalidVehicle() {}
 
 	const char *GetTypeString() { return "invalid vehicle"; }
-	void MarkDirty() { NOT_REACHED(); }
 };
 
 #define is_custom_sprite(x) (x >= 0xFD)

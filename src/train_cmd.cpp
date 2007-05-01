@@ -535,7 +535,6 @@ static void AddArticulatedParts(Vehicle **vl)
 		u->x_pos = v->x_pos;
 		u->y_pos = v->y_pos;
 		u->z_pos = v->z_pos;
-		u->z_height = v->z_height;
 		u->u.rail.track = v->u.rail.track;
 		u->u.rail.railtype = v->u.rail.railtype;
 		u->build_year = v->build_year;
@@ -608,7 +607,6 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->y_pos = y;
 			v->z_pos = GetSlopeZ(x, y);
 			v->owner = _current_player;
-			v->z_height = 6;
 			v->u.rail.track = TRACK_BIT_DEPOT;
 			v->vehstatus = VS_HIDDEN | VS_DEFPAL;
 
@@ -681,7 +679,6 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 	u->x_pos = v->x_pos;
 	u->y_pos = v->y_pos;
 	u->z_pos = v->z_pos;
-	u->z_height = 6;
 	u->u.rail.track = TRACK_BIT_DEPOT;
 	u->vehstatus = v->vehstatus & ~VS_STOPPED;
 	u->subtype = 0;
@@ -763,7 +760,6 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->x_pos = x;
 			v->y_pos = y;
 			v->z_pos = GetSlopeZ(x, y);
-			v->z_height = 6;
 			v->u.rail.track = TRACK_BIT_DEPOT;
 			v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 			v->spritenum = rvi->image_index;
@@ -1463,9 +1459,9 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-static void UpdateTrainDeltaXY(Vehicle *v, Direction direction)
+void Train::UpdateDeltaXY(Direction direction)
 {
-#define MKIT(a,b,c,d) ((a&0xFF)<<24) | ((b&0xFF)<<16) | ((c&0xFF)<<8) | ((d&0xFF)<<0)
+#define MKIT(a, b, c, d) ((a & 0xFF) << 24) | ((b & 0xFF) << 16) | ((c & 0xFF) << 8) | ((d & 0xFF) << 0)
 	static const uint32 _delta_xy_table[8] = {
 		MKIT(3, 3, -1, -1),
 		MKIT(3, 7, -1, -3),
@@ -1479,16 +1475,16 @@ static void UpdateTrainDeltaXY(Vehicle *v, Direction direction)
 #undef MKIT
 
 	uint32 x = _delta_xy_table[direction];
-
-	v->x_offs        = GB(x,  0, 8);
-	v->y_offs        = GB(x,  8, 8);
-	v->sprite_width  = GB(x, 16, 8);
-	v->sprite_height = GB(x, 24, 8);
+	this->x_offs        = GB(x,  0, 8);
+	this->y_offs        = GB(x,  8, 8);
+	this->sprite_width  = GB(x, 16, 8);
+	this->sprite_height = GB(x, 24, 8);
+	this->z_height      = 6;
 }
 
 static void UpdateVarsAfterSwap(Vehicle *v)
 {
-	UpdateTrainDeltaXY(v, v->direction);
+	v->UpdateDeltaXY(v->direction);
 	v->cur_image = GetTrainImage(v, v->direction);
 	BeginVehicleMove(v);
 	VehiclePositionChanged(v);
@@ -2149,7 +2145,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 	v->vehstatus &= ~VS_HIDDEN;
 	v->cur_speed = 0;
 
-	UpdateTrainDeltaXY(v, v->direction);
+	v->UpdateDeltaXY(v->direction);
 	v->cur_image = GetTrainImage(v, v->direction);
 	VehiclePositionChanged(v);
 	UpdateSignalsOnSegment(v->tile, DirToDiagDir(v->direction));
@@ -3061,7 +3057,7 @@ static void TrainController(Vehicle *v, bool update_image)
 
 		/* update image of train, as well as delta XY */
 		Direction newdir = GetNewVehicleDirection(v, gp.x, gp.y);
-		UpdateTrainDeltaXY(v, newdir);
+		v->UpdateDeltaXY(newdir);
 		if (update_image) v->cur_image = GetTrainImage(v, newdir);
 
 		v->x_pos = gp.x;
@@ -3157,7 +3153,7 @@ static void ChangeTrainDirRandomly(Vehicle *v)
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			v->direction = ChangeDir(v->direction, delta[GB(Random(), 0, 2)]);
 			BeginVehicleMove(v);
-			UpdateTrainDeltaXY(v, v->direction);
+			v->UpdateDeltaXY(v->direction);
 			v->cur_image = GetTrainImage(v, v->direction);
 			/* Refrain from updating the z position of the vehicle when on
 			   a bridge, because AfterSetTrainPos will put the vehicle under

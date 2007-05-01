@@ -132,6 +132,7 @@ struct Aircraft : public Vehicle {
 
 	const char *GetTypeString() { return "aircraft"; }
 	void MarkDirty();
+	void UpdateDeltaXY(Direction direction);
 };
 
 #endif /* AIRCRAFT_H */

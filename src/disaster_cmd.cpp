@@ -116,7 +116,6 @@ static void DisasterVehicleUpdateImage(Vehicle *v)
 	v->cur_image = img;
 }
 
-
 /** Initialize a disaster vehicle. These vehicles are of type VEH_DISASTER, are unclickable
  * and owned by nobody */
 static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Direction direction, byte subtype)
@@ -128,11 +127,7 @@ static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Directio
 	v->tile = TileVirtXY(x, y);
 	v->direction = direction;
 	v->subtype = subtype;
-	v->x_offs = -1;
-	v->y_offs = -1;
-	v->sprite_width = 2;
-	v->sprite_height = 2;
-	v->z_height = 5;
+	v->UpdateDeltaXY(INVALID_DIR);
 	v->owner = OWNER_NONE;
 	v->vehstatus = VS_UNCLICKABLE;
 	v->u.disaster.image_override = 0;
@@ -1064,4 +1059,13 @@ void DisasterDailyLoop()
 void StartupDisasters()
 {
 	ResetDisasterDelay();
+}
+
+void DisasterVehicle::UpdateDeltaXY(Direction direction)
+{
+	this->x_offs        = -1;
+	this->y_offs        = -1;
+	this->sprite_width  =  2;
+	this->sprite_height =  2;
+	this->z_height      =  5;
 }
