@@ -1938,6 +1938,17 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(58)) {
+		/* patch difficulty number_industries other then zero get bumped to +1
+		 * since a new option (very low at position1) has been added */
+		if (_opt.diff.number_industries > 0) {
+			_opt.diff.number_industries++;
+		}
+
+		/* Same goes for number of towns, although no test is needed, just an increment */
+		_opt.diff.number_towns++;
+	}
+
 	return true;
 }
 

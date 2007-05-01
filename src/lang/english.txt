@@ -2038,6 +2038,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}City co
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :None
+STR_NUM_VERY_LOW                                                :Very low
 STR_6816_LOW                                                    :Low
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :High

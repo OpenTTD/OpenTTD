@@ -1251,7 +1251,7 @@ Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size)
 	return NULL;
 }
 
-static const byte _num_initial_towns[3] = {11, 23, 46};
+static const byte _num_initial_towns[4] = {5, 11, 23, 46};
 
 bool GenerateTowns()
 {

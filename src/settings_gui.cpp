@@ -309,8 +309,8 @@ struct GameSettingData {
 static const GameSettingData _game_setting_info[] = {
 	{  0,   7,  1, STR_NULL},
 	{  0,   3,  1, STR_6830_IMMEDIATE},
-	{  0,   2,  1, STR_6816_LOW},
-	{  0,   3,  1, STR_26816_NONE},
+	{  0,   3,  1, STR_NUM_VERY_LOW},
+	{  0,   4,  1, STR_26816_NONE},
 	{100, 500, 50, STR_NULL},
 	{  2,   4,  1, STR_NULL},
 	{  0,   2,  1, STR_6820_LOW},
@@ -330,8 +330,8 @@ static const GameSettingData _game_setting_info[] = {
 /*
  * A: competitors
  * B: start time in months / 3
- * C: town count (2 = high, 0 = low)
- * D: industry count (3 = high, 0 = none)
+ * C: town count (2 = high, 0 = very low)
+ * D: industry count (4 = high, 0 = none)
  * E: inital loan / 1000 (in GBP)
  * F: interest rate
  * G: running costs (0 = low, 2 = high)
@@ -349,9 +349,9 @@ static const GameSettingData _game_setting_info[] = {
  */
 static const int16 _default_game_diff[3][GAME_DIFFICULTY_NUM] = { /*
 	 A, B, C, D,   E, F, G, H, I, J, K, L, M, N, O, P, Q, R*/
-	{2, 2, 1, 3, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0}, ///< easy
-	{4, 1, 1, 2, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1}, ///< medium
-	{7, 0, 2, 2, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2}, ///< hard
+	{2, 2, 1, 4, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0}, ///< easy
+	{4, 1, 1, 3, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1}, ///< medium
+	{7, 0, 0, 2, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2}, ///< hard
 };
 
 void SetDifficultyLevel(int mode, GameOptions *gm_opt)

@@ -1541,9 +1541,10 @@ Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 	return CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, it);
 }
 
-static const byte _numof_industry_table[4][12] = {
+static const byte _numof_industry_table[5][12] = {
 	/* difficulty settings for number of industries */
 	{0, 0, 0, 0, 0, 0, 0, 0,  0,  0,  0},   //none
+	{0, 1, 1, 1, 1, 1, 1, 1,  1,  1,  1},   //very low
 	{0, 1, 1, 1, 2, 2, 3, 3,  4,  4,  5},   //low
 	{0, 1, 2, 3, 4, 5, 6, 7,  8,  9, 10},   //normal
 	{0, 2, 3, 4, 6, 7, 8, 9, 10, 10, 10},   //high
