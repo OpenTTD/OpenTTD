@@ -1378,15 +1378,98 @@ static bool LoadWait(const Vehicle* v, const Vehicle* u)
 	return false;
 }
 
+/**
+ * Performs the vehicle payment _and_ marks the vehicle to be unloaded.
+ * @param front_v the vehicle to be unloaded
+ * @return what windows need to be updated;
+ *         bit 0 set: only vehicle details,
+ *         bit 1 set: vehicle details and station details
+ */
+static int VehiclePayment(Vehicle *front_v)
+{
+	int result = 0;
+
+	int profit = 0;
+	int total_veh_profit = 0;         // accumulates the profit across the vehicle chain (used by trains)
+	int32 route_profit = 0;           // the grand total amount for the route. A-D of transfer chain A-B-C-D
+	int virtual_profit = 0;           // virtual profit of one vehicle element for feeder systems
+	int virtual_profit_total = 0;     // virtual profit for entire vehicle chain
+	int total_cargo_feeder_share = 0; // the feeder cash amount for the goods being loaded/unloaded in this load step
+
+	int all_vehicles_cargo_feeder_share = front_v->cargo_feeder_share; // used to hold transfer value of complete vehicle chain - used by trains
+
+	StationID last_visited = front_v->last_station_visited;
+	Station *st = GetStation(last_visited);
+
+	for (Vehicle *v = front_v; v != NULL; v = v->next) {
+		if (v->cargo_cap == 0) continue;
+
+		SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+		if (v->cargo_count == v->cargo_paid_for) continue;
+
+		GoodsEntry *ge = &st->goods[v->cargo_type];
+
+		if (v->cargo_source != last_visited &&
+				HASBIT(ge->waiting_acceptance, 15) &&
+				(front_v->current_order.flags & OF_TRANSFER) == 0) {
+			/* Deliver goods to the station */
+			st->time_since_unload = 0;
+
+			/* handle end of route payment */
+			profit += DeliverGoods(v->cargo_count - v->cargo_paid_for, v->cargo_type, v->cargo_source, last_visited, v->cargo_source_xy, v->cargo_days);
+			v->cargo_paid_for        = v->cargo_count;
+			route_profit             = profit;                                   // display amount paid for final route delivery, A-D of a chain A-B-C-D
+			total_veh_profit         = profit - all_vehicles_cargo_feeder_share; // whole vehicle is not payed for transfers picked up earlier
+			total_cargo_feeder_share = -all_vehicles_cargo_feeder_share;         // total of transfer fees in vehicle chain needs to be zero at end of unload
+
+			v->cargo_feeder_share = 0;   // clear transfer cost per vehicle
+			result |= 1;
+		} else if (front_v->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
+			if ((front_v->current_order.flags & OF_TRANSFER) != 0) {
+				virtual_profit = GetTransportedGoodsIncome(
+					v->cargo_count - v->cargo_paid_for,
+					/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
+					DistanceManhattan(v->cargo_loaded_at_xy, GetStation(last_visited)->xy),
+					v->cargo_days,
+					v->cargo_type);
+
+				ge->feeder_profit        += v->cargo_feeder_share; // transfer cargo transfer fees to station
+				total_cargo_feeder_share -= v->cargo_feeder_share; // accumulate deduction of feeder shares
+				v->cargo_feeder_share     = 0;                     // clear transfer cost
+
+				/* keep total of cargo unloaded (pending) for accurate cargoshare calculation on load */
+				SB(ge->unload_pending, 0, 12, GB(ge->unload_pending, 0, 12) + v->cargo_count);
+
+				virtual_profit_total += virtual_profit;   // accumulate transfer profits for whole vehicle
+				v->cargo_paid_for = v->cargo_count;       // record how much of the cargo has been paid for to eliminate double counting
+			}
+			result |= 2;
+		}
+	}
+
+	/* Ensure a negative total is only applied to the vehicle if there is value to reduce. */
+	front_v->cargo_feeder_share = max(front_v->cargo_feeder_share + total_cargo_feeder_share, 0);
+
+	if (virtual_profit_total > 0) {
+		ShowFeederIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, virtual_profit_total);
+	}
+
+	if (route_profit != 0) {
+		front_v->profit_this_year += total_veh_profit;
+		SubtractMoneyFromPlayer(-route_profit);
+
+		if (IsLocalPlayer() && !PlayVehicleSound(front_v, VSE_LOAD_UNLOAD)) {
+			SndPlayVehicleFx(SND_14_CASHTILL, front_v);
+		}
+
+		ShowCostOrIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, -total_veh_profit);
+	}
+
+	return result;
+}
+
 int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 {
-	int profit = 0;
-	int total_veh_profit = 0;      // accumulates the profit across the vehicle chain (used by trains)
-	int32 route_profit = 0;        // the grand total amount for the route. A-D of transfer chain A-B-C-D
-	int virtual_profit = 0;        // virtual profit of one vehicle element for feeder systems
-	int virtual_profit_total = 0;  // virtual profit for entire vehicle chain
-	int total_cargo_feeder_share = 0;  // the feeder cash amount for the goods being loaded/unloaded in this load step
-
 	int unloading_time = 20;
 	Vehicle *u = v;
 	int result = 0;
@@ -1396,6 +1479,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 	bool completely_empty = true;
 	byte load_amount;
 	bool anything_loaded = false;
+	int total_cargo_feeder_share = 0; // the feeder cash amount for the goods being loaded/unloaded in this load step
 
 	assert(v->current_order.type == OT_LOADING);
 
@@ -1413,7 +1497,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 	StationID last_visited = v->last_station_visited;
 	Station *st = GetStation(last_visited);
 
-	int all_vehicles_cargo_feeder_share = v->cargo_feeder_share; // used to hold transfer value of complete vehicle chain - used by trains
+	if (just_arrived) result |= VehiclePayment(v);
 
 	for (; v != NULL; v = v->next) {
 		GoodsEntry* ge;
@@ -1424,9 +1508,6 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 		}
 
 		if (v->cargo_cap == 0) continue;
-
-		/* If the vehicle has just arrived, set it to unload. */
-		if (just_arrived) SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
 
 		ge = &st->goods[v->cargo_type];
 		count = GB(ge->waiting_acceptance, 0, 12);
@@ -1443,44 +1524,14 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 
 				unloading_time += v->cargo_count; // TTDBUG: bug in original TTD
 
-				/* handle end of route payment */
-				if (just_arrived && v->cargo_paid_for < v->cargo_count) {
-					profit += DeliverGoods(v->cargo_count - v->cargo_paid_for, v->cargo_type, v->cargo_source, last_visited, v->cargo_source_xy, v->cargo_days);
-					v->cargo_paid_for = v->cargo_count;
-					route_profit = profit;       // display amount paid for final route delivery, A-D of a chain A-B-C-D
-					total_veh_profit = profit - all_vehicles_cargo_feeder_share;  // whole vehicle is not payed for transfers picked up earlier
-					total_cargo_feeder_share = -all_vehicles_cargo_feeder_share;  // total of transfer fees in vehicle chain needs to be zero at end of unload
-					v->cargo_feeder_share = 0;   // clear transfer cost per vehicle
-				}
 				result |= 1;
 				v->cargo_count -= amount_unloaded;
 				v->cargo_paid_for -= min(amount_unloaded, v->cargo_paid_for);
 				if (_patches.gradual_loading) continue;
 
 			} else if (u->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
-
 				/* unload goods and let it wait at the station */
 				st->time_since_unload = 0;
-
-				/* handle transfer */
-				if (just_arrived && (u->current_order.flags & OF_TRANSFER) && v->cargo_paid_for < v->cargo_count) {
-					virtual_profit = GetTransportedGoodsIncome(
-						v->cargo_count - v->cargo_paid_for,
-						/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
-						DistanceManhattan(v->cargo_loaded_at_xy, GetStation(last_visited)->xy),
-						v->cargo_days,
-						v->cargo_type);
-
-					ge->feeder_profit += v->cargo_feeder_share;         // transfer cargo transfer fees to station
-					total_cargo_feeder_share -= v->cargo_feeder_share;  // accumulate deduction of feeder shares
-					v->cargo_feeder_share = 0;                          // clear transfer cost
-
-					/* keep total of cargo unloaded (pending) for accurate cargoshare calculation on load */
-					SB(ge->unload_pending, 0, 12, GB(ge->unload_pending, 0, 12) + v->cargo_count);
-
-					virtual_profit_total += virtual_profit;   // accumulate transfer profits for whole vehicle
-					v->cargo_paid_for = v->cargo_count;       // record how much of the cargo has been paid for to eliminate double counting
-				}
 
 				unloading_time += v->cargo_count;
 				t = GB(ge->waiting_acceptance, 0, 12);
@@ -1505,10 +1556,6 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 				 * else deduct amount actually unloaded from unload_pending */
 				SB(ge->unload_pending, 0, 12, max(GB(ge->unload_pending, 0, 12) - amount_unloaded, 0U));
 
-				if (u->current_order.flags & OF_TRANSFER) {
-					ge->feeder_profit += virtual_profit;
-					u->profit_this_year += virtual_profit;
-				}
 				result |= 2;
 				v->cargo_count -= amount_unloaded;
 				v->cargo_paid_for -= min(amount_unloaded, v->cargo_paid_for);
@@ -1593,9 +1640,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 
 	v = u;
 
-	/* Ensure a negative total is only applied to the vehicle if there is value to reduce. */
-	if (!((v->cargo_feeder_share == 0) && (total_cargo_feeder_share < 0)))
-		v->cargo_feeder_share += total_cargo_feeder_share;
+	v->cargo_feeder_share += total_cargo_feeder_share;
 
 	if (_patches.gradual_loading) {
 		/* The time it takes to load one 'slice' of cargo or passengers depends
@@ -1610,10 +1655,6 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 				unloading_time = 20;
 			}
 		}
-	}
-
-	if (virtual_profit_total > 0) {
-		ShowFeederIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, virtual_profit_total);
 	}
 
 	if (v->type == VEH_TRAIN) {
@@ -1636,17 +1677,6 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 		st->MarkTilesDirty();
 
 		if (result & 2) InvalidateWindow(WC_STATION_VIEW, last_visited);
-
-		if (route_profit != 0) {
-			v->profit_this_year += total_veh_profit;
-			SubtractMoneyFromPlayer(-route_profit);
-
-			if (IsLocalPlayer() && !PlayVehicleSound(v, VSE_LOAD_UNLOAD)) {
-				SndPlayVehicleFx(SND_14_CASHTILL, v);
-			}
-
-			ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, -total_veh_profit);
-		}
 	}
 
 	_current_player = old_player;
