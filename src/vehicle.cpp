@@ -2645,13 +2645,9 @@ extern const SaveLoad _common_veh_desc[] = {
 	    SLE_VAR(Vehicle, z_pos,                SLE_UINT8),
 	    SLE_VAR(Vehicle, direction,            SLE_UINT8),
 
-	SLE_CONDVAR(Vehicle, cur_image,            SLE_UINT16,                  0, 57),
+	SLE_CONDNULL(2,                                                         0, 57),
 	    SLE_VAR(Vehicle, spritenum,            SLE_UINT8),
-	SLE_CONDVAR(Vehicle, sprite_width,         SLE_UINT8,                   0, 57),
-	SLE_CONDVAR(Vehicle, sprite_height,        SLE_UINT8,                   0, 57),
-	SLE_CONDVAR(Vehicle, z_height,             SLE_UINT8,                   0, 57),
-	SLE_CONDVAR(Vehicle, x_offs,               SLE_INT8,                    0, 57),
-	SLE_CONDVAR(Vehicle, y_offs,               SLE_INT8,                    0, 57),
+	SLE_CONDNULL(5,                                                         0, 57),
 	    SLE_VAR(Vehicle, engine_type,          SLE_UINT16),
 
 	    SLE_VAR(Vehicle, max_speed,            SLE_UINT16),
@@ -2819,11 +2815,7 @@ static const SaveLoad _special_desc[] = {
 	    SLE_VAR(Vehicle, z_pos,         SLE_UINT8),
 
 	    SLE_VAR(Vehicle, cur_image,     SLE_UINT16),
-	SLE_CONDVAR(Vehicle, sprite_width,  SLE_UINT8,                  0, 57),
-	SLE_CONDVAR(Vehicle, sprite_height, SLE_UINT8,                  0, 57),
-	SLE_CONDVAR(Vehicle, z_height,      SLE_UINT8,                  0, 57),
-	SLE_CONDVAR(Vehicle, x_offs,        SLE_INT8,                   0, 57),
-	SLE_CONDVAR(Vehicle, y_offs,        SLE_INT8,                   0, 57),
+	SLE_CONDNULL(5,                                                 0, 57),
 	    SLE_VAR(Vehicle, progress,      SLE_UINT8),
 	    SLE_VAR(Vehicle, vehstatus,     SLE_UINT8),
 
@@ -2854,11 +2846,7 @@ static const SaveLoad _disaster_desc[] = {
 	    SLE_VAR(Vehicle, z_pos,         SLE_UINT8),
 	    SLE_VAR(Vehicle, direction,     SLE_UINT8),
 
-	SLE_CONDVAR(Vehicle, x_offs,        SLE_INT8,                    0, 57),
-	SLE_CONDVAR(Vehicle, y_offs,        SLE_INT8,                    0, 57),
-	SLE_CONDVAR(Vehicle, sprite_width,  SLE_UINT8,                   0, 57),
-	SLE_CONDVAR(Vehicle, sprite_height, SLE_UINT8,                   0, 57),
-	SLE_CONDVAR(Vehicle, z_height,      SLE_UINT8,                   0, 57),
+	SLE_CONDNULL(5,                                                  0, 57),
 	    SLE_VAR(Vehicle, owner,         SLE_UINT8),
 	    SLE_VAR(Vehicle, vehstatus,     SLE_UINT8),
 	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, dest), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
