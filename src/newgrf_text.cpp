@@ -45,9 +45,11 @@ enum grf_extended_languages {
 	GRFLX_GERMAN      = 0x02,
 	GRFLX_FRENCH      = 0x03,
 	GRFLX_SPANISH     = 0x04,
+	GRFLX_ESPERANTO   = 0x05,
 	GRFLX_RUSSIAN     = 0x07,
 	GRFLX_CZECH       = 0x15,
 	GRFLX_SLOVAK      = 0x16,
+	GRFLX_BULGARIAN   = 0x18,
 	GRFLX_AFRIKAANS   = 0x1B,
 	GRFLX_GREEK       = 0x1E,
 	GRFLX_DUTCH       = 0x1F,
@@ -71,6 +73,8 @@ enum grf_extended_languages {
 	GRFLX_PORTUGUESE  = 0x36,
 	GRFLX_BRAZILIAN   = 0x37,
 	GRFLX_CROATIAN    = 0x38,
+	GRFLX_JAPANESE    = 0x39,
+	GRFLX_KOREAN      = 0x3A,
 	GRFLX_TURKISH     = 0x3E,
 	GRFLX_UNSPECIFIED = 0x7F,
 };
@@ -122,6 +126,10 @@ const iso_grf iso_codes[] = {
 	{"sv_SE", GRFLX_SWEDISH},
 	{"tr_TR", GRFLX_TURKISH},
 	{"uk_UA", GRFLX_UKRAINIAN},
+	{"eo_EO", GRFLX_ESPERANTO},
+	{"bg_BG", GRFLX_BULGARIAN},
+	{"ja_JP", GRFLX_JAPANESE},
+	{"ko_KR", GRFLX_KOREAN},
 	{"gen",   GRFLB_GENERIC}   ///< this is not iso code, but there has to be something...
 };
 
