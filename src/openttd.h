@@ -473,7 +473,7 @@ enum WindowClass {
 };
 
 
-enum {
+enum ExpensesType {
 	EXPENSES_CONSTRUCTION =  0,
 	EXPENSES_NEW_VEHICLES =  1,
 	EXPENSES_TRAIN_RUN    =  2,

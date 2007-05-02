@@ -42,6 +42,8 @@ struct Ship: public Vehicle {
 	const char *GetTypeString() { return "ship"; }
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
+	ExpensesType GetExpenseType(bool income) { return income ? EXPENSES_SHIP_INC : EXPENSES_SHIP_RUN; }
+	WindowClass GetVehicleListWindowClass() { return WC_SHIPS_LIST; }
 };
 
 #endif /* SHIP_H */

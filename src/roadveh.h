@@ -41,6 +41,8 @@ struct RoadVehicle : public Vehicle {
 	const char *GetTypeString() { return "road vehicle"; }
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
+	ExpensesType GetExpenseType(bool income) { return income ? EXPENSES_ROADVEH_INC : EXPENSES_ROADVEH_RUN; }
+	WindowClass GetVehicleListWindowClass() { return WC_ROADVEH_LIST; }
 };
 
 #endif /* ROADVEH_H */

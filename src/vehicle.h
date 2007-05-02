@@ -365,6 +365,17 @@ struct Vehicle {
 	 * @param direction the direction the vehicle is facing
 	 */
 	virtual void UpdateDeltaXY(Direction direction) {}
+
+	/**
+	 * Sets the expense type associated to this vehicle type
+	 * @param income whether this is income or (running) expenses of the vehicle
+	 */
+	virtual ExpensesType GetExpenseType(bool income) { return EXPENSES_OTHER; }
+
+	/**
+	 * Invalidates the vehicle list window of this type of vehicle
+	 */
+	virtual WindowClass GetVehicleListWindowClass() { return WC_NONE; }
 };
 
 /**

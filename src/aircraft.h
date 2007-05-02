@@ -133,6 +133,8 @@ struct Aircraft : public Vehicle {
 	const char *GetTypeString() { return "aircraft"; }
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
+	ExpensesType GetExpenseType(bool income) { return income ? EXPENSES_AIRCRAFT_INC : EXPENSES_AIRCRAFT_RUN; }
+	WindowClass GetVehicleListWindowClass() { return WC_AIRCRAFT_LIST; }
 };
 
 #endif /* AIRCRAFT_H */
