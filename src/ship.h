@@ -39,11 +39,11 @@ struct Ship: public Vehicle {
 	/** We want to 'destruct' the right class. */
 	virtual ~Ship() {}
 
-	const char *GetTypeString() { return "ship"; }
+	const char *GetTypeString() const { return "ship"; }
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
-	ExpensesType GetExpenseType(bool income) { return income ? EXPENSES_SHIP_INC : EXPENSES_SHIP_RUN; }
-	WindowClass GetVehicleListWindowClass() { return WC_SHIPS_LIST; }
+	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_SHIP_INC : EXPENSES_SHIP_RUN; }
+	WindowClass GetVehicleListWindowClass() const { return WC_SHIPS_LIST; }
 };
 
 #endif /* SHIP_H */

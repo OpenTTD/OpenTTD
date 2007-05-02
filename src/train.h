@@ -243,11 +243,11 @@ struct Train : public Vehicle {
 	/** We want to 'destruct' the right class. */
 	virtual ~Train() {}
 
-	const char *GetTypeString() { return "train"; }
+	const char *GetTypeString() const { return "train"; }
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
-	ExpensesType GetExpenseType(bool income) { return income ? EXPENSES_TRAIN_INC : EXPENSES_TRAIN_RUN; }
-	WindowClass GetVehicleListWindowClass() { return WC_TRAINS_LIST; }
+	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_TRAIN_INC : EXPENSES_TRAIN_RUN; }
+	WindowClass GetVehicleListWindowClass() const { return WC_TRAINS_LIST; }
 };
 
 #endif /* TRAIN_H */

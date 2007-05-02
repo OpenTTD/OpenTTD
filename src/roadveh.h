@@ -38,11 +38,11 @@ struct RoadVehicle : public Vehicle {
 	/** We want to 'destruct' the right class. */
 	virtual ~RoadVehicle() {}
 
-	const char *GetTypeString() { return "road vehicle"; }
+	const char *GetTypeString() const { return "road vehicle"; }
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
-	ExpensesType GetExpenseType(bool income) { return income ? EXPENSES_ROADVEH_INC : EXPENSES_ROADVEH_RUN; }
-	WindowClass GetVehicleListWindowClass() { return WC_ROADVEH_LIST; }
+	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_ROADVEH_INC : EXPENSES_ROADVEH_RUN; }
+	WindowClass GetVehicleListWindowClass() const { return WC_ROADVEH_LIST; }
 };
 
 #endif /* ROADVEH_H */

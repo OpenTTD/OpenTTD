@@ -352,7 +352,7 @@ struct Vehicle {
 	 * Get a string 'representation' of the vehicle type.
 	 * @return the string representation.
 	 */
-	virtual const char* GetTypeString() = 0;
+	virtual const char* GetTypeString() const = 0;
 
 	/**
 	 * Marks the vehicles to be redrawn and updates cached variables
@@ -370,12 +370,12 @@ struct Vehicle {
 	 * Sets the expense type associated to this vehicle type
 	 * @param income whether this is income or (running) expenses of the vehicle
 	 */
-	virtual ExpensesType GetExpenseType(bool income) { return EXPENSES_OTHER; }
+	virtual ExpensesType GetExpenseType(bool income) const { return EXPENSES_OTHER; }
 
 	/**
 	 * Invalidates the vehicle list window of this type of vehicle
 	 */
-	virtual WindowClass GetVehicleListWindowClass() { return WC_NONE; }
+	virtual WindowClass GetVehicleListWindowClass() const { return WC_NONE; }
 };
 
 /**
@@ -400,7 +400,7 @@ struct SpecialVehicle : public Vehicle {
 	/** We want to 'destruct' the right class. */
 	virtual ~SpecialVehicle() {}
 
-	const char *GetTypeString() { return "special vehicle"; }
+	const char *GetTypeString() const { return "special vehicle"; }
 	void UpdateDeltaXY(Direction direction);
 };
 
@@ -419,7 +419,7 @@ struct DisasterVehicle : public Vehicle {
 	/** We want to 'destruct' the right class. */
 	virtual ~DisasterVehicle() {}
 
-	const char *GetTypeString() { return "disaster vehicle"; }
+	const char *GetTypeString() const { return "disaster vehicle"; }
 	void UpdateDeltaXY(Direction direction);
 };
 
@@ -438,7 +438,7 @@ struct InvalidVehicle : public Vehicle {
 	/** We want to 'destruct' the right class. */
 	virtual ~InvalidVehicle() {}
 
-	const char *GetTypeString() { return "invalid vehicle"; }
+	const char *GetTypeString() const { return "invalid vehicle"; }
 };
 
 #define is_custom_sprite(x) (x >= 0xFD)
