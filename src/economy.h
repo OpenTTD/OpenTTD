@@ -68,4 +68,6 @@ void DeleteSubsidyWithStation(StationID index);
 int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type);
 uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount);
 
+void VehiclePayment(Vehicle *front_v);
+
 #endif /* ECONOMY_H */

@@ -1381,11 +1381,8 @@ static bool LoadWait(const Vehicle* v, const Vehicle* u)
 /**
  * Performs the vehicle payment _and_ marks the vehicle to be unloaded.
  * @param front_v the vehicle to be unloaded
- * @return what windows need to be updated;
- *         bit 0 set: only vehicle details,
- *         bit 1 set: vehicle details and station details
  */
-static int VehiclePayment(Vehicle *front_v)
+void VehiclePayment(Vehicle *front_v)
 {
 	int result = 0;
 
@@ -1401,10 +1398,22 @@ static int VehiclePayment(Vehicle *front_v)
 	StationID last_visited = front_v->last_station_visited;
 	Station *st = GetStation(last_visited);
 
+	/* The owner of the train wants to be paid */
+	PlayerID old_player = _current_player;
+	_current_player = front_v->owner;
+
+	/* At this moment loading cannot be finished */
+	CLRBIT(front_v->vehicle_flags, VF_LOADING_FINISHED);
+
+	/* Start unloading in at the first possible moment */
+	front_v->load_unload_time_rem = 1;
+
 	for (Vehicle *v = front_v; v != NULL; v = v->next) {
+		/* No cargo to unload */
 		if (v->cargo_cap == 0) continue;
 
 		SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+		/* All cargo has already been paid for, no need to pay again */
 		if (v->cargo_count == v->cargo_paid_for) continue;
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];
@@ -1465,17 +1474,17 @@ static int VehiclePayment(Vehicle *front_v)
 		ShowCostOrIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, -total_veh_profit);
 	}
 
-	return result;
+	_current_player = old_player;
 }
 
-int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
+int LoadUnloadVehicle(Vehicle *v)
 {
 	int unloading_time = 20;
 	Vehicle *u = v;
 	int result = 0;
 	int t;
 	uint count, cap;
-	PlayerID old_player;
+
 	bool completely_empty = true;
 	byte load_amount;
 	bool anything_loaded = false;
@@ -1491,13 +1500,8 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 	 * enabling though. */
 	SETBIT(v->vehicle_flags, VF_LOADING_FINISHED);
 
-	old_player = _current_player;
-	_current_player = v->owner;
-
 	StationID last_visited = v->last_station_visited;
 	Station *st = GetStation(last_visited);
-
-	if (just_arrived) result |= VehiclePayment(v);
 
 	for (; v != NULL; v = v->next) {
 		GoodsEntry* ge;
@@ -1596,7 +1600,10 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 
 			/* Skip loading this vehicle if another train/vehicle is already handling
 			 * the same cargo type at this station */
-			if (_patches.improved_load && (u->current_order.flags & OF_FULL_LOAD) && LoadWait(v,u)) continue;
+			if (_patches.improved_load && (u->current_order.flags & OF_FULL_LOAD) && LoadWait(v,u)) {
+				CLRBIT(u->vehicle_flags, VF_LOADING_FINISHED);
+				continue;
+			}
 
 			/* TODO: Regarding this, when we do gradual loading, we
 			 * should first unload all vehicles and then start
@@ -1673,13 +1680,15 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 	}
 
 	if (result != 0) {
+		InvalidateWindow(v->GetVehicleListWindowClass(), v->owner);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+
 		st->MarkTilesDirty();
+		v->MarkDirty();
 
 		if (result & 2) InvalidateWindow(WC_STATION_VIEW, last_visited);
 	}
 
-	_current_player = old_player;
 	return result;
 }
 

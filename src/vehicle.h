@@ -508,7 +508,7 @@ void ShowAircraftViewWindow(const Vehicle* v);
 
 UnitID GetFreeUnitNumber(byte type);
 
-int LoadUnloadVehicle(Vehicle *v, bool just_arrived);
+int LoadUnloadVehicle(Vehicle *v);
 
 void TrainConsistChanged(Vehicle *v);
 void TrainPowerChanged(Vehicle *v);

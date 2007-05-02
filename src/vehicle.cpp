@@ -40,6 +40,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "helpers.hpp"
+#include "economy.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
@@ -740,6 +741,7 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 	/* continue loading if there is a non full cargo type and no cargo type that is full */
 	return keep_loading || (not_full && (full & ~not_full) == 0);
 }
+
 
 bool CanFillVehicle(Vehicle *v)
 {
@@ -2971,11 +2973,15 @@ void Vehicle::BeginLoading()
 	GetStation(this->last_station_visited)->loading_vehicles.push_back(this);
 
 	SET_EXPENSES_TYPE(this->GetExpenseType(true));
-	if (LoadUnloadVehicle(this, true) != 0) {
-		InvalidateWindow(this->GetVehicleListWindowClass(), this->owner);
-		this->MarkDirty();
-	}
+	VehiclePayment(this);
+
+	InvalidateWindow(this->GetVehicleListWindowClass(), this->owner);
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, STATUS_BAR);
+	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
+	InvalidateWindow(WC_STATION_VIEW, this->last_station_visited);
+
+	GetStation(this->last_station_visited)->MarkTilesDirty();
+	this->MarkDirty();
 }
 
 void Vehicle::LeaveStation()
