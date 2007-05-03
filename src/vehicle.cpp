@@ -756,7 +756,7 @@ bool CanFillVehicle(Vehicle *front_v)
 				IsTileType(TILE_ADDXY(tile, -2,  0), MP_STATION)
 			)));
 
-	bool full_load = front_v->current_order.flags & OF_FULL_LOAD;
+	bool full_load = HASBIT(front_v->current_order.flags, OFB_FULL_LOAD);
 
 	/* If patch is active, use alternative CanFillVehicle-function */
 	if (_patches.full_load_any && full_load) return CanFillVehicle_FullLoadAny(front_v);
